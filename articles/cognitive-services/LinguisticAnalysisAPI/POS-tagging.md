@@ -1,6 +1,6 @@
 ---
 title: Part-of-Speech-Tagging in der API für linguistische Analyse | Microsoft-Dokumentation
-description: Erfahren Sie, wie im Rahmen der Wortartmarkierung (Part-of-Speech-Tagging) in Microsoft Cognitive Services die Kategorie oder eine Wortart der einzelnen Wörter des Texts identifiziert wird.
+description: Erfahren Sie, wie im Rahmen der Wortartmarkierung (Part-of-Speech-Tagging) in Microsoft Cognitive Services die Kategorie oder die Wortart der einzelnen Wörter des Texts identifiziert wird.
 services: cognitive-services
 author: RichardSunMS
 manager: wkwok
@@ -21,58 +21,58 @@ ms.locfileid: "37082637"
 ## <a name="background-and-motivation"></a>Hintergrund und Motivation
 
 Nachdem Sie einen Text in Sätze und Token segmentiert haben, besteht der nächste Analyseschritt darin, die Kategorie oder die Wortart der einzelnen Wörter zu identifizieren.
-Hierzu gehören Kategorien wie etwa *Nomen* (in der Regel Personen, Orte, Gegenstände, Konzepte etc.) und *Verben* (in der Regel Aktionen, Zustandsänderungen etc.). Bei einigen Wörtern lässt sich die Wortart eindeutig bestimmen (z.B. kann *quagmire* (Sumpf) nur ein Nomen sein), bei vielen anderen Wörtern ist diese jedoch schwieriger zu erkennen.
+Hierzu gehören Kategorien wie etwa *Nomen* (in der Regel Personen, Orte, Gegenstände, Konzepte etc.) und *Verben* (in der Regel Aktionen, Zustandsänderungen etc.). Bei einigen Wörtern lässt sich die Wortart eindeutig bestimmen (*Sumpf* ist beispielsweise tatsächlich nur ein Nomen), bei vielen anderen Wörtern ist die Wortart jedoch schwieriger zu erkennen.
 So könnte *table* ein Tisch zum Arbeiten (oder ein 2D-Layout von Zahlen) sein, jedoch auch den Ausdruck „table a discussion“ (eine Diskussion eröffnen) meinen.
 
 ## <a name="list-of-part-of-speech-tags"></a>Liste der Wortarttags
 
-| Tag | BESCHREIBUNG | Beispielwörter |
+| Tag | Beschreibung | Beispielwörter |
 |-----|-------------|---------------|
-| $ | US-Dollar | $ |
+| $ | Dollar | $ |
 | \`\` | Öffnendes Anführungszeichen | \` \`\` |
 | '' | Schließendes Anführungszeichen | ' '' |
 | ( | Öffnende Klammer | ( [ { |
 | ) | Schließende Klammer | ) ] } |
-| dann | Komma | dann |
+| , | Komma | , |
 | -- | Gedankenstrich | -- |
 | . | Satzendezeichen | . ! ? |
 | : | Doppelpunkt oder Auslassungszeichen | : ; ... |
-| CC | Konjunktion, gleichordnend | and, but, or, yet|
-| CD | Kardinalzahl | nine, 20, 1980, '96 |
-| DT | Artikel |a, the, an, all, both, neither|
-| EX | Existenzwort | there |
+| CC | Konjunktion, gleichordnend | und, aber, oder, jedoch|
+| CD | Kardinalzahl | neun, 20, 1980, '96 |
+| DT | Artikel |ein, der, eine, alle, beide, keine|
+| EX | Existenzwort | dort |
 | FW | Fremdwort | enfant terrible, hoi polloi, je ne sais quoi |
-| IN | Präposition oder subordinierende Konjunktion| in, inside, if, upon, whether |
-| JJ | Adjektiv oder Ordnungszahl | ninth, pretty, execrable, multimodal |
-| JJR | Adjektiv, Komparativ | better, faster, cheaper |
-| JJS | Adjektiv, Superlativ | best, fastest, cheapest | 
+| IN | Präposition oder subordinierende Konjunktion| in, innerhalb, falls, bei, ob |
+| JJ | Adjektiv oder Ordnungszahl | neunte, hübsch, scheußlich, multimodal |
+| JJR | Adjektiv, Komparativ | besser, schneller, günstiger |
+| JJS | Adjektiv, Superlativ | beste, schnellste, günstigste | 
 | LS | Listenelementmarkierung | (a) (b), 1 2, A B, A. B. |
-| MD | Modales Hilfsverb | can, may, shall, will, could, might, should, ought |
-| NN | Gattungsname, Singular oder Stoffname | potato, money, shoe |
+| MD | Modales Hilfsverb | können, sollen, werden, könnten, sollten |
+| NN | Gattungsname, Singular oder Stoffname | Kartoffel, Geld, Schuh |
 | NNP | Eigenname, Singular | Kennedy, Roosevelt, Chicago, Weehawken |
 | NNPS | Eigenname, Plural | Springfields, Bushes |
-| NNS | Gattungsname, Plural | pieces, mice, fields |
-| PDT | Predeterminer | all, both, half, many, quite, such, sure, this |
-| POS | Genitivmarkierung | ', 's |
-| PRP | Pronomen, Personal | she, he, it, I, we, they, you |
-| PRP$ | Pronomen, Possessiv | hers, his, its, my, our, their, your |
-| RB | Adverb | clinically, only |
-| RBR | Adverb, Komparativ | further, gloomier, grander, graver, greater, grimmer, harder, harsher, healthier, heavier, higher, however, larger, later, leaner, lengthier, less perfectly, lesser, lonelier, longer, louder, lower, more... |
-| RBS | Adverb, Superlativ | best, biggest, bluntest, earliest, farthest, first, furthest, hardest, heartiest, highest, largest, least, less, most, nearest, second, tightest, worst |
-| RP | Partikel | on, off, up, out, about |
+| NNS | Gattungsname, Plural | Stücke, Mäuse, Felder |
+| PDT | Predeterminer | alle, beide, halb, viele, ziemlich, solch, sicher, dies |
+| POS | Genitivmarkierung | s |
+| PRP | Pronomen, Personal | sie, er, es, ich, wir, sie, du |
+| PRP$ | Pronomen, Possessiv | ihr, sein, mein, unser, deren, dein |
+| RB | Adverb | klinisch, nur |
+| RBR | Adverb, Komparativ | weitere, dunkler, größer, ernster, stärker, grimmiger, härter, rauer, gesünder, schwerer, höher, hingegen, später, hagerer, langwieriger, weniger perfekt, geringer, einsamer, länger, lauter, niedriger, mehr... |
+| RBS | Adverb, Superlativ | am besten, am größten, am stumpfsten, frühestens, am weitesten, zuerst, am härtesten, am herzlichsten, am höchsten, am größten, am wenigsten, kleiner, am meisten, am nächsten, zweitens, am engsten, am schlechtesten |
+| RP | Partikel | ein, aus, hoch, herunter, hinaus, über |
 | SYM | Symbol | %, & |
-| TO | „to“ als Präposition oder Infinitivmarkierung | in: |
-| UH | Ausruf | uh, hooray, howdy, hello |
-| VB | Verb, Grundform | give, assign, fly |
-| VBD | Verb, Vergangenheitsform | gave, assigned, flew |
-| VBG | Verb, Präsenspartizip oder Gerundium | giving, assigning, flying |
-| VBN | Verb, Perfektpartizip | given, assigned, flown |
-| VBP | Verb, Präsens, nicht 3. Person Singular | give, assign, fly |
-| VBZ | Verb, Präsens, 3. Person Singular | gives, assigns, flies |
-| WDT | WH-Determiner, Determinativ mit W-Wort | that, what, which |
-| WP | WH-Pronoun, Pronomen mit W-Wort | who, whom |
-| WP$ | WH-Pronoun, Possessivpronomen mit W-Wort | whose |
-| WRB | Wh-adverb, Adverb mit W-Wort | how, however, whenever, where |
+| TO | „zu“ als Präposition oder Infinitivmarkierung | zu |
+| UH | Ausruf | äh, hurra, hallo |
+| VB | Verb, Grundform | geben, zuweisen, fliegen |
+| VBD | Verb, Vergangenheitsform | gab, wies zu, flog |
+| VBG | Verb, Präsenspartizip oder Gerundium | gebend, zuweisend, fliegend |
+| VBN | Verb, Perfektpartizip | gegeben, zugewiesen, geflogen |
+| VBP | Verb, Präsens, nicht 3. Person Singular | geben, zuweisen, fliegen |
+| VBZ | Verb, Präsens, 3. Person Singular | gibt, weist zu, fliegt |
+| WDT | W-Determinativ | welcher, welche, was |
+| WP | W-Pronomen | wer, wem |
+| WP$ | W-Possessivpronomen | wessen |
+| WRB | W-Adverb | wie, wiederum, wann auch immer, wo |
 
 ## <a name="specification"></a>Spezifikation
 

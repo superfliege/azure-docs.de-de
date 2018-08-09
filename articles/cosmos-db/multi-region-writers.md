@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: cc66b2f506d81a7ba10b26c3b24287472e890682
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4911a302bf9055948827a72f2e631663b8be741e
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724906"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39266834"
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Multimasterunterstützung auf globaler Ebene mit Azure Cosmos DB 
  
@@ -35,7 +35,7 @@ Wenn Sie bereits über ein Azure-Abonnement verfügen, können Sie sich im Azure
 
 2. Geben Sie auf der Seite „Neues Konto“ einen Namen für Ihr Azure Cosmos DB-Konto ein, und wählen Sie die API, das Abonnement, die Ressourcengruppe und den Speicherort.  
 
-3. Wählen Sie als Nächstes **Registrieren Sie sich noch heute für die Vorschauversion** unter dem Feld für die Multimaster-Vorschauversion aus.  
+3. Wählen Sie als Nächstes unter dem Feld für die Multimaster-Vorschauversion die Option **Registrieren Sie sich noch heute für die Vorschauversion**.  
 
    ![Für Multimaster-Vorschauversion registrieren](./media/multi-region-writers/sign-up-for-multi-master-preview.png)
 
@@ -71,7 +71,7 @@ Die selbstständige Implementierung von Multimasterunterstützung stellt für En
 
 Zusammenfassend bietet Multimasterunterstützung die folgenden Vorteile:
 
-* **Bessere Notfallwiederherstellung und Schreibverfügbarkeit und besseres Failover:** Mit mehreren Mastern kann die Hochverfügbarkeit einer unternehmenskritischen Datenbank in größerem Ausmaß beibehalten werden. Beispielsweise kann eine Multimaster-Datenbank Daten von einer Region in eine Failoverregion replizieren, wenn die primäre Region aufgrund eines Ausfalls oder eines regionalen Notfalls nicht mehr verfügbar ist. Eine solche Failoverregion dient als voll funktionsfähige Masterregion zur Unterstützung der Anwendung. Multimasterunterstützung bietet einen größeren Schutz der „Überlebensfähigkeit“ im Hinblick auf Naturkatastrophen, Stromausfälle oder Sabotage, da die übrigen Regionen sich in mehreren geografisch unterschiedlichen Mastern mit einer garantierten Schreibverfügbarkeit von über 99,999 % befinden können. 
+* **Bessere Notfallwiederherstellung und Schreibverfügbarkeit und besseres Failover:** Mit mehreren Mastern kann die Hochverfügbarkeit einer unternehmenskritischen Datenbank in größerem Ausmaß beibehalten werden. Beispielsweise kann eine Multimaster-Datenbank Daten von einer Region in eine Failoverregion replizieren, wenn die primäre Region aufgrund eines Ausfalls oder eines regionalen Notfalls nicht mehr verfügbar ist. Eine solche Failoverregion dient als voll funktionsfähige Masterregion zur Unterstützung der Anwendung. Multimasterunterstützung bietet einen größeren Schutz in Bezug auf die „Überlebensfähigkeit“ bei Naturkatastrophen, Stromausfällen oder Sabotage, da für die übrigen Regionen mehrere geografisch unterschiedliche Master mit einer garantierten Schreibverfügbarkeit von über 99,999% genutzt werden können. 
 
 * **Verbesserte Schreiblatenz für Endbenutzer:** Je näher sich Ihre Daten (die Sie bereitstellen) an den Endbenutzern befinden, desto besser ist die Benutzerfreundlichkeit. Wenn Sie beispielsweise über Benutzer in Europa verfügen, sich Ihre Datenbank jedoch in den USA oder Australien befindet, ergibt sich eine zusätzliche Latenz von 140 ms bzw. 300 ms für die jeweilige Region. Verzögerungen sind für viele gängige Spiele, Anforderungen im Bankgeschäft oder interaktive Anwendungen (Web- oder Mobilanwendungen) nicht akzeptabel. Latenz spielt eine große Rolle bei der Wahrnehmung der Kunden einer hochwertigen Erfahrung und beeinflusst das Verhalten von Benutzern nachweisbar in nennenswertem Ausmaß. Mit der beständigen Optimierung der Technologie und insbesondere durch die Einführung von AR, VR und MR, die eine immer immersivere und realistischere Erfahrung erforderlich machen, müssen Entwickler jetzt Softwaresysteme mit stringenten Latenzanforderungen erstellen. Daher werden lokal verfügbare Anwendungen und Daten (Inhalte für die Anwendungen) zunehmend wichtiger. Mit Multimasterunterstützung in Azure Cosmos DB ist die Leistung so schnell wie bei normalen Lese- und Schreibvorgängen und wird global durch geografische Verteilung verbessert.  
 

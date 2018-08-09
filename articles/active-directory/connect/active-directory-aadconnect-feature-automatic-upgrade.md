@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/16/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1cc58832d5f863f5bbfa6fc20d38b4be81ddad8f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: cfb09718c545d55b31250070fed0c8adff9d3fed
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089960"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263945"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatisches Upgrade
 Dieses Feature wurde mit [Build 1.1.105.0 (veröffentlicht im Februar 2016)](active-directory-aadconnect-version-history.md#111050) eingeführt.  Dieses Feature wurde in [Build 1.1.561](active-directory-aadconnect-version-history.md#115610) aktualisiert und unterstützt nun zusätzliche Szenarios, die zuvor nicht unterstützt wurden.
@@ -95,8 +95,8 @@ Im Folgenden finden Sie eine Liste der Meldungen, die am häufigsten angezeigt w
 | UpgradeNotSupportedInvalidPersistedState |Die Installation ist keine Express-Einstellung und kein DirSync-Upgrade. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Es sind mehr als 100.000 Objekte im Metaverse enthalten. |
 | UpgradeNotSupportedMultiForestSetup |Sie stellen Verbindungen mit mehr als einer Gesamtstruktur her. Beim Express-Setup wird nur eine Verbindung mit einer Gesamtstruktur hergestellt. |
-| UpgradeNotSupportedNonLocalDbInstall |Sie verwenden keine SQL Server Express LocalDB-Datenbank. |
-| UpgradeNotSupportedNonMsolAccount |Das [AD-Connector-Konto](active-directory-aadconnect-accounts-permissions.md#active-directory-account) ist nicht mehr das Standardkonto vom Typ „MSOL_“. |
+| UpgradeNotSupportedNonLocalDbInstall |Sie verwenden keine SQL Server Express LocalDB-Datenbank. |d
+| UpgradeNotSupportedNonMsolAccount |Das [AD DS-Connector-Konto](active-directory-aadconnect-accounts-permissions.md#ad-ds-connector-account) ist nicht mehr das Standardkonto vom Typ „MSOL_“. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Beim Einrichten von AAD Connect haben Sie *Nicht konfigurieren* beim Auswählen der Anmeldemethode gewählt. | 
 | UpgradeNotSupportedPtaSignInMethod | Sie haben Pass-Through-Authentifizierung als Anmeldemethode ausgewählt. |
 | UpgradeNotSupportedStagingModeEnabled |Der Server ist auf den [Stagingmodus](active-directory-aadconnectsync-operations.md#staging-mode)festgelegt. |

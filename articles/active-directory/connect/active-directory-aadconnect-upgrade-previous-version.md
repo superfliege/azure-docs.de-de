@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/12/2017
+ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1a6fe4fc7fd5f47bfd4bc4d9168f76c31c78b47b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 20c43669b9da24cea4b0b552a86ec7d5a77dc5a7
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592475"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264510"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren. Es wird empfohlen, immer die aktuelle Version von Azure AD Connect zu nutzen. Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
@@ -130,6 +130,38 @@ Manchmal sollen diese Außerkraftsetzungen aber möglicherweise nicht direkt nac
    > Die erforderlichen Synchronisierungsschritte sollten zum frühestmöglichen Zeitpunkt ausgeführt werden. Sie können die Schritte entweder manuell mit dem Synchronization Service Manager ausführen oder die Außerkraftsetzungen mithilfe des Cmdlets „Set-ADSyncSchedulerConnectorOverride“ wieder hinzufügen.
 
 Führen Sie das folgende Cmdlet aus, um die Außerkraftsetzungen für den vollständigen Import und die vollständige Synchronisierung eines beliebigen Connectors hinzuzufügen: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+
+## <a name="troubleshooting"></a>Problembehandlung
+Der folgende Abschnitt enthält Details zur Problembehandlung sowie Informationen, die hilfreich sind, wenn beim Upgrade von Azure AD Connect Probleme auftreten.
+
+### <a name="azure-active-directory-connector-missing-error-during-azure-ad-connect-upgrade"></a>Fehler aufgrund des fehlenden Azure Active Directory Connector während des Azure AD Connect-Upgrades
+
+Wenn Sie Azure AD Connect von einer vorherigen Version aktualisieren, tritt zu Beginn des Upgrades unter Umständen der folgende Fehler auf: 
+
+![Error](./media/active-directory-aadconnect-upgrade-previous-version/error1.png)
+
+Dieser Fehler tritt auf, weil Azure Active Directory Connector mit dem Bezeichner „b891884f-051e-4a83-95af-2544101c9083“ in der aktuellen Azure AD Connect-Konfiguration nicht vorhanden ist. Um zu überprüfen, ob dies der Fall ist, öffnen Sie ein PowerShell-Fenster, und führen Sie das Cmdlet `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083` aus:
+
+```
+PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083
+Get-ADSyncConnector : Operation failed because the specified MA could not be found.
+At line:1 char:1
++ Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ReadError: (Microsoft.Ident...ConnectorCmdlet:GetADSyncConnectorCmdlet) [Get-ADSyncConne
+   ctor], ConnectorNotFoundException
+    + FullyQualifiedErrorId : Operation failed because the specified MA could not be found.,Microsoft.IdentityManageme
+   nt.PowerShell.Cmdlet.GetADSyncConnectorCmdlet
+
+```
+
+Das PowerShell-Cmdlet meldet den Fehler, dass der **angegebene MA nicht gefunden** wurde.
+
+Die Ursache dieses Fehlers ist, dass ein Upgrade der aktuellen Azure AD Connect-Konfiguration nicht unterstützt wird. 
+
+Wenn Sie eine neuere Version von Azure AD Connect installieren möchten, gehen Sie wie folgt vor: Schließen Sie den Azure AD Connect-Assistenten, und deinstallieren Sie die vorhandene Azure AD Connect-Version. Führen Sie anschließend eine Neuinstallation der neueren Azure AD Connect-Version aus.
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr zum [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md).

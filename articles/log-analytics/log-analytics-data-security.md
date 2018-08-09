@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: b7fd880683eed9e742007d6e595e1f275467b664
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4cf04ceeb8650b2978389cefb561ae31e88bc853
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990114"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282435"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument enthält ergänzend zu den Informationen im [Azure Trust Center](../security/security-microsoft-trust-center.md) spezifische Informationen zu Azure Log Analytics.  
@@ -176,7 +176,7 @@ Wie oben beschrieben, werden die Daten von dem Verwaltungsserver oder den direkt
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Empfangen und Verarbeiten von Daten durch den Log Analytics-Dienst
 Der Log Analytics-Dienst stellt sicher, dass eingehende Daten aus einer vertrauenswürdigen Quelle stammen, indem Zertifikate und die Integrität der Daten mittels Azure-Authentifizierung überprüft werden. Die nicht verarbeiteten Rohdaten werden dann in einem Azure Event Hub in der Region gespeichert, in der die Daten schließlich im Ruhezustand gespeichert werden. Die Art der gespeicherten Daten ist abhängig von der Art der importierten und zum Sammeln von Daten verwendeten Lösungen. Der Log Analytics-Dienst verarbeitet dann die Rohdaten und erfasst sie in der Datenbank.
 
-Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert sind, hängt von dem ausgewählten Tarif ab. Beim *Free*-Tarif sind die gesammelten Daten 7 Tage verfügbar. Beim *kostenpflichtigen* Tarif sind die gesammelten Daten standardmäßig 31 Tage verfügbar, dies kann jedoch auf 720 Tage verlängert werden. Die Daten werden im Ruhezustand verschlüsselt in Azure gespeichert, um deren Vertraulichkeit zu gewährleisten. Die letzten zwei Wochen von Daten werden ebenfalls im SSD-basierten Cache gespeichert, und dieser Cache ist derzeit nicht verschlüsselt.  Diese Verschlüsselung soll jedoch noch in der zweiten Hälfte des Jahres 2018 unterstützt werden.  
+Die Beibehaltungsdauer der gesammelten Daten, die in der Datenbank gespeichert sind, hängt von dem ausgewählten Tarif ab. Beim *Free*-Tarif sind die gesammelten Daten 7 Tage verfügbar. Beim *kostenpflichtigen* Tarif sind die gesammelten Daten standardmäßig 31 Tage verfügbar, aber dieser Zeitraum kann auf 730 Tage verlängert werden. Die Daten werden im Ruhezustand verschlüsselt in Azure gespeichert, um deren Vertraulichkeit zu gewährleisten. Die letzten zwei Wochen von Daten werden ebenfalls im SSD-basierten Cache gespeichert, und dieser Cache ist derzeit nicht verschlüsselt.  Diese Verschlüsselung soll jedoch noch in der zweiten Hälfte des Jahres 2018 unterstützt werden.  
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Verwenden von Log Analytics für den Datenzugriff
 Für den Zugriff auf Ihren Log Analytics-Arbeitsbereich melden Sie sich über das zuvor eingerichtete Unternehmenskonto oder Microsoft-Konto im Azure-Portal an. Der gesamte Datenverkehr zwischen dem Portal und dem Log Analytics-Dienst erfolgt über einen sicheren HTTPS-Kanal. Bei Verwendung des Portals wird eine Sitzungs-ID auf dem Client des Benutzers (Webbrowser) generiert, und die Daten werden in einem lokalen Cache gespeichert, bis die Sitzung beendet wird. Wenn die Sitzung beendet ist, wird der Cache gelöscht. Clientseitige Cookies enthalten keine persönlich identifizierbaren Informationen und werden nicht automatisch entfernt. Sitzungscookies sind „HTTPOnly“ markiert und gesichert. Nach einer vorher festgelegten Zeit im Leerlauf wird die Sitzung im Azure-Portal beendet.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/10/2016
+ms.date: 07/24/2018
 ms.author: genli
-ms.openlocfilehash: a10bf96f06c3917913c479d81e8772cb86cfe36e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 8a6256ab9c511342b536919c69faed30d40a256d
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005265"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282589"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Übersicht über die öffentliche IP-Adresse (klassisch) auf Instanzebene
 Eine öffentliche IP-Adresse auf Instanzebene (Instance-Level Public IP, ILPIP) ist eine öffentliche IP-Adresse, die Sie einer VM oder Cloud Services-Rolleninstanz direkt zuweisen können, statt sie dem Clouddienst zuzuweisen, in dem sich Ihre VM oder Rolleninstanz befindet. Eine ILPIP tritt nicht an die Stelle der virtuellen IP-Adresse (VIP), die Ihrem Clouddienst zugeordnet ist. Es ist vielmehr eine zusätzliche IP-Adresse, mit der Sie direkt eine Verbindung mit der VM oder Rolleninstanz herstellen können.
@@ -144,6 +144,16 @@ Um eine ILPIP zu einer Cloud Services-Rolleninstanz hinzuzufügen, führen Sie d
     </ServiceConfiguration>
     ```
 3. Laden Sie die CSFG-Datei für den Clouddienst hoch, indem Sie Schritte ausführen, die im Artikel [Konfigurieren von Cloud-Diensten](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) aufgeführt sind.
+
+### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Abrufen von ILPIP-Informationen für einen Clouddienst
+Führen Sie zum Anzeigen der ILPIP-Informationen pro Rolleninstanz den folgenden PowerShell-Befehl aus, und beobachten Sie die Werte für *PublicIPAddress* und *PublicIPName*:
+
+```powershell
+$roles = Get-AzureRole -ServiceName PaaSFTPService -Slot Production -RoleName WorkerRole1 -InstanceDetails
+
+$roles[0].PublicIPAddress
+$roles[1].PublicIPAddress
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informieren Sie sich über die Funktionsweise der [IP-Adressierung](virtual-network-ip-addresses-overview-classic.md) im klassischen Bereitstellungsmodell.

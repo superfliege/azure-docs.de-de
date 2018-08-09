@@ -1,5 +1,5 @@
 ---
-title: Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen Anwendungsentwurf für hoch verfügbare Dienste mithilfe von Azure SQL-Datenbank erstellen.
 keywords: cloudbasierte Notfallwiederherstellung,Notfallwiederherstellungslösungen,App-Datensicherung,Georeplikation,Planen der Geschäftskontinuität
 services: sql-database
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/26/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: f1c228802bd0a2e65321a3abe47b87845f5f86a0
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 88a6e1a66390b2b317e1e30a71455ad693e6d7df
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092612"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264653"
 ---
-# <a name="designing-highly-available-services-using-azure-sql-database"></a>Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank
+# <a name="designing-globally-available-services-using-azure-sql-database"></a>Entwerfen von global verfügbaren Diensten mit Azure SQL-Datenbank
 
-Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten für Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz bei regionalen Ausfällen und schwerwiegenden Fehlern bereitzustellen. Zudem wird eine schnelle Wiederherstellung in den sekundären Datenbanken ermöglicht. Dieser Artikel konzentriert sich auf gängige Anwendungsmuster und erörtert die Vor- und Nachteile der einzelnen Optionen. Informationen zur Verwendung der aktiven Georeplikation mit Pools für elastische Datenbanken finden Sie unter [Strategien zur Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Beim Erstellen und Bereitstellen von Clouddiensten mit Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um bei regionalen Ausfällen und schwerwiegenden Fehlern für Resilienz zu sorgen. Mit demselben Feature können Sie global verteilte Anwendungen erstellen, die für den lokalen Zugriff auf die Daten optimiert sind. In diesem Artikel werden gängige Anwendungsmuster beschrieben, einschließlich der Vor- und Nachteile der einzelnen Optionen. 
 
 > [!NOTE]
 > Wenn Sie Premium-Datenbanken, unternehmenskritische Datenbanken oder Pools für elastische Datenbanken verwenden, können Sie sie resistent gegenüber regionalen Ausfällen machen, indem Sie sie auf die Konfiguration der zonenredundanten Bereitstellung umstellen. Informationen finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).  

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 32feac32af01e518ad6cede43cc4b4f00c097d3b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e07ed8f131697d6340b899ef76c988aed215556b
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041278"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283410"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Tutorial: Azure Active Directory-Integration mit SmarterU
 
@@ -126,11 +126,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Klicken Sie oben auf der Symbolleiste auf **Kontoeinstellungen**.
    
-    ![Konteneinstellungen](./media/smarteru-tutorial/IC777326.png "Konteneinstellungen")
+    ![Kontoeinstellungen](./media/smarteru-tutorial/accountsettings.png)
 
 8. Führen Sie auf der Kontenkonfigurationsseite die folgenden Schritte aus:
    
-    ![Externe Autorisierung](./media/smarteru-tutorial/IC777327.png "Externe Autorisierung") 
+    ![Externe Autorisierung](./media/smarteru-tutorial/externalauthorizationconfiguration.png) 
  
       a. Wählen Sie **Externe Autorisierung aktivieren**.
   
@@ -138,11 +138,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
   
       c. Wählen Sie im Abschnitt **Benutzer-Standardanmeldung** die Registerkarte **SmarterU** aus.
   
-      d. Wählen Sie **Okta aktivieren**.
+      d. Wählen Sie **SAML aktivieren**.
   
-      e. Kopieren Sie den Inhalt der heruntergeladenen Metadatendatei, und fügen Sie ihn in das Textfeld **Okta-Metadaten** ein.
+      e. Kopieren Sie den Inhalt der heruntergeladenen Metadatendatei, und fügen Sie ihn in das Textfeld **IdP-Metadaten** ein.
+      
+      f. Wählen Sie **ein Bezeichnerattribut bzw. einen Anspruch** aus.
   
-      f. Klicken Sie auf **Speichern**.
+      g. Klicken Sie auf **Speichern**.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -193,7 +195,7 @@ In SmarterU ist die Bereitstellung eine manuelle Aufgabe.
 
 3. Führen Sie im Abschnitt "Benutzer“ die folgenden Schritte aus:
    
-    ![Neuer Benutzer](./media/smarteru-tutorial/IC777329.png "Neuer Benutzer")  
+    ![Neuer Benutzer](./media/smarteru-tutorial/adduser.png)  
 
     a. Klicken Sie auf **+Benutzer**.
     

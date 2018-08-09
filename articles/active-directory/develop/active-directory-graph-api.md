@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 04/02/2018
 ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 4b4f698042f6688e3db484f7d96ccfb06c5cdd4f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: eb7e77af86628be7f92de1caf3137ae829511d0a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158012"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263026"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph-API
 > [!IMPORTANT]
@@ -60,7 +60,7 @@ Die Azure AD Graph-API bietet die folgenden Features:
 Die Azure AD Graph-API ermöglicht eine Vielzahl von Anwendungsszenarios. Die gängigsten Szenarios sind die folgenden:
 
 * **Branchenanwendung (Einzelinstanz):** In diesem Szenario arbeitet ein Unternehmensentwickler für eine Organisation, die über ein Office 365-Abonnement verfügt. Der Entwickler erstellt eine Webanwendung, die mit Azure AD interagiert, um Aufgaben wie das Zuweisen einer Lizenz zu einem Benutzer auszuführen. Für diese Aufgabe ist der Zugriff auf die Azure AD Graph-API erforderlich. Der Entwickler registriert daher die Einzelinstanzanwendung in Azure AD und konfiguriert Lese- und Schreibberechtigungen für die Azure AD Graph-API. Anschließend wird die Anwendung für die Verwendung eigener Anmeldeinformationen oder der Anmeldeinformationen des aktuell angemeldeten Benutzers konfiguriert, um ein Token zum Aufrufen der Azure AD Graph-API abzurufen.
-* **Software as a Service-Anwendung (mehrinstanzenfähig):** In diesem Szenario entwickelt ein unabhängiger Softwarehersteller (Independent Software Vendor, ISV) eine gehostete mehrinstanzenfähige Webanwendung, die Benutzerverwaltungsfeatures für andere Organisationen bereitstellt, die Azure AD verwenden. Da diese Features Zugriff auf Verzeichnisobjekte erfordern, muss die Anwendung die Azure AD Graph-API aufrufen. Der Entwickler registriert die Anwendung in Azure AD und konfiguriert sie so, dass Lese- und Schreibberechtigungen für die Azure AD Graph-API erforderlich sind. Anschließend aktiviert er den externen Zugriff, damit andere Organisationen der Verwendung der Anwendung in ihrem Verzeichnis zustimmen können. Wenn sich ein Benutzer in einer anderen Organisation erstmals bei der Anwendung authentifiziert, wird ein Zustimmungsdialogfeld mit den Berechtigungen angezeigt, die die Anwendung anfordert. Durch die Zustimmung erhält die Anwendung dann die angeforderten Berechtigungen für die Azure AD Graph-API im Verzeichnis des Benutzers. Weitere Informationen zum Consent Framework finden Sie unter [Übersicht über das Consent Framework](active-directory-integrating-applications.md).
+* **Software as a Service-Anwendung (mehrinstanzenfähig):** In diesem Szenario entwickelt ein unabhängiger Softwarehersteller (Independent Software Vendor, ISV) eine gehostete mehrinstanzenfähige Webanwendung, von der Benutzerverwaltungsfeatures für andere Organisationen bereitgestellt werden, die Azure AD verwenden. Da für diese Features Zugriff auf Verzeichnisobjekte erforderlich ist, muss die Anwendung die Azure AD Graph-API aufrufen. Der Entwickler registriert die Anwendung in Azure AD und konfiguriert sie so, dass Lese- und Schreibberechtigungen für die Azure AD Graph-API erforderlich sind. Anschließend aktiviert er den externen Zugriff, damit andere Organisationen der Verwendung der Anwendung in ihrem Verzeichnis zustimmen können. Wenn sich ein Benutzer in einer anderen Organisation erstmals bei der Anwendung authentifiziert, wird ein Zustimmungsdialogfeld mit den Berechtigungen angezeigt, die die Anwendung anfordert. Durch die Zustimmung erhält die Anwendung dann die angeforderten Berechtigungen für die Azure AD Graph-API im Verzeichnis des Benutzers. Weitere Informationen zum Consent Framework finden Sie unter [Übersicht über das Consent Framework](active-directory-integrating-applications.md).
 
 ## <a name="see-also"></a>Siehe auch
 [Schnellstartanleitung für die Azure AD Graph-API](active-directory-graph-api-quickstart.md)

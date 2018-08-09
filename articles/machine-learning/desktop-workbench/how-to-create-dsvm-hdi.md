@@ -7,16 +7,16 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 40711c424d3d552253deba85110b0c4447f4ec62
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 18cf885cd71822c2c24791f3c6f55835c3204d35
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831024"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39295207"
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Erstellen von DSVM- und HDI Spark-Clustern als Computeziele
 
@@ -150,7 +150,7 @@ $ az vm start -g <resource group name> -n <vm name>
 ```
 
 ## <a name="expand-the-dsvm-os-disk"></a>Erweitern des DSVM-Betriebssystemdatenträgers
-Der virtuelle DS-Computer unter Linux Ubuntu enthält einen Datenträger mit 50 GB für das Betriebssystem und einen Datenträger mit 100 GB für die Daten. Docker speichert die Bilder auf dem Datenträger für die Daten, da dort mehr Speicherplatz verfügbar ist. Bei Verwendung als Computeziel für Azure ML kann die Kapazität dieses Datenträgers schnell von der Docker-Engine, die Docker-Images abruft und zusätzlich Conda-Ebenen erstellt, aufgebraucht werden. Sie müssen möglicherweise den Betriebssystemdatenträger vergrößern (z. B. auf 200 GB), um den Fehler „Datenträger voll“ mitten in einer Ausführung zu vermeiden. Informationen zur einfachen Umsetzung über die Azure-CLI finden Sie unter [Erweitern virtueller Festplatten auf virtuellen Linux-Computern mit der Azure-CLI](../../virtual-machines/linux/expand-disks.md). 
+Der virtuelle DS-Computer unter Linux Ubuntu enthält einen Datenträger mit 50 GB für das Betriebssystem und einen Datenträger mit 100 GB für die Daten. Docker speichert die Bilder auf dem Datenträger für die Daten, da dort mehr Speicherplatz verfügbar ist. Bei Verwendung als Computeziel für Azure ML kann die Kapazität dieses Datenträgers schnell von der Docker-Engine, die Docker-Images abruft und zusätzlich Conda-Ebenen erstellt, aufgebraucht werden. Sie müssen unter Umständen den Betriebssystemdatenträger vergrößern (z.B. auf 200 GB), um den Fehler „Datenträger voll“ während eines Ausführungsvorgangs zu vermeiden. Informationen zur einfachen Umsetzung über die Azure-CLI finden Sie unter [Erweitern virtueller Festplatten auf virtuellen Linux-Computern mit der Azure-CLI](../../virtual-machines/linux/expand-disks.md). 
 
 ## <a name="create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal"></a>Erstellen eines Apache Spark für Azure HDInsight-Clusters im Azure-Portal
 

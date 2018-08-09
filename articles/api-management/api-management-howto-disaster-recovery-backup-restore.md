@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: apimpm
-ms.openlocfilehash: b06a179459a449762555879669d177f811cb9560
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090876"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283094"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -76,6 +76,7 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 
 7. Klicken Sie neben der neu hinzugefügten Anwendung auf **Delegierte Berechtigungen**, und aktivieren Sie das Kontrollkästchen **Access Azure Service Management (Vorschau)**.
 8. Drücken Sie **Auswählen**.
+9. Klicken Sie auf **Berechtigungen erteilen**.
 
 ### <a name="configuring-your-app"></a>Konfigurieren der App
 
@@ -92,7 +93,7 @@ namespace GetTokenResourceManagerRequests
         static void Main(string[] args)
         {
             var authenticationContext = new AuthenticationContext("https://login.microsoftonline.com/{tenant id}");
-            var result = authenticationContext.AcquireToken("https://management.azure.com/", {application id}, new Uri({redirect uri});
+            var result = authenticationContext.AcquireTokenAsync("https://management.azure.com/", "{application id}", new Uri("{redirect uri}"), new PlatformParameters(PromptBehavior.Auto)).Result;
 
             if (result == null) {
                 throw new InvalidOperationException("Failed to obtain the JWT token");
@@ -123,6 +124,8 @@ Ersetzen Sie `{tentand id}`, `{application id}` und `{redirect uri}` entsprechen
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Aufrufen der Sicherungs- und Wiederherstellungsvorgänge
 
+Die REST-APIs sind [API Management-Dienst – Backup](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/backup) und [API Management-Dienst – Restore](https://docs.microsoft.com/rest/api/apimanagement/apimanagementservice/restore).
+
 Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgänge zur Sicherung und Wiederherstellung den Autorisierungsanforderungsheader für den REST-Aufruf fest.
 
 ```csharp
@@ -132,24 +135,27 @@ request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ### <a name="step1"></a>Sichern eines API Management-Diensts
 Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderung aus:
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
+```
 
 Hierbei gilt:
 
 * `subscriptionId` – Abonnement-ID des API Management-Diensts, den Sie sichern möchten
 * `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
 * `serviceName` – Der Name des zu sichernden API Management-Diensts zum Zeitpunkt seiner Erstellung
-* `api-version` – ersetzen durch `2014-02-14`
+* `api-version` – ersetzen durch `2018-06-01-preview`
 
 Geben Sie im Hauptteil der Anforderung das Azure-Zielspeicherkonto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen an:
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json` fest.
@@ -168,24 +174,26 @@ Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen.
 ### <a name="step2"></a>Wiederherstellen eines API Management-Diensts
 Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sicherung führen Sie die folgende HTTP-Anforderung aus:
 
-`POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}`
+```
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
+```
 
 Hierbei gilt:
 
 * `subscriptionId`– Abonnement-ID des API Management-Diensts, den Sie sichern möchten
 * `resourceGroupName` – Zeichenfolge in der Form „Api-Default-{service-region}“, wobei `service-region` die Azure-Region angibt, in der der zu wiederherzustellende API Management-Dienst gehostet wird, z.B. `North-Central-US`
 * `serviceName` – Der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
-* `api-version` – ersetzen durch `2014-02-14`
+* `api-version` – ersetzen durch `2018-06-01-preview`
 
 Geben Sie im Hauptteil der Anforderung den Speicherort der Sicherungsdatei an, d.h. das Azure Storage-Konto, den Zugriffsschlüssel, den Blobcontainernamen und den Sicherungsnamen:
 
-```
-'{  
-    storageAccount : {storage account name for the backup},  
-    accessKey : {access key for the account},  
-    containerName : {backup container name},  
-    backupName : {backup blob name}  
-}'
+```json
+{
+  "storageAccount": "{storage account name for the backup}",
+  "accessKey": "{access key for the account}",
+  "containerName": "{backup container name}",
+  "backupName": "{backup blob name}"
+}
 ```
 
 Legen Sie für den `Content-Type`-Anforderungsheader den Wert `application/json` fest.

@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e2b8b1f63e4c23c0beeaff6fd246fa2ba8afe106
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036750"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39265063"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Optionale Ansprüche in Azure AD (Preview)
 
@@ -41,8 +41,8 @@ Eines der Ziele des [v2.0 Azure AD-Endpunkts](active-directory-appmodel-v2-overv
 
 | Kontotyp | V1.0-Endpunkt                      | V2.0-Endpunkt  |
 |--------------|------------------------------------|----------------|
-| MSA          | Nicht zutreffend – stattdessen werden RPS-Tickets verwendet | Unterstützung in Kürze verfügbar |
-| AAD          | Unterstützt                          | Unterstützt      |
+| Persönliches Microsoft-Konto  | Nicht zutreffend – stattdessen werden RPS-Tickets verwendet | Unterstützung in Kürze verfügbar |
+| Azure AD-Konto          | Unterstützt                          | Unterstützt      |
 
 ## <a name="standard-optional-claims-set"></a>Standardmäßige optionale Ansprüche
 Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendungen bereitstehen, sind nachfolgend aufgeführt.  Informationen zum Hinzufügen benutzerdefinierter optionaler Ansprüche für Ihre Anwendung finden Sie unter [Verzeichniserweiterungen](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions) weiter unten. 

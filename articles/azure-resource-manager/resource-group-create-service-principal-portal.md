@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7a1b6aa9afd26116253482a2e1a9c6a25bdf3c55
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441572"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282243"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
 
-Richten Sie eine Azure Active Directory-Anwendung (AD) ein, wenn Sie über Code verfügen, mit dem auf Ressourcen zugegriffen werden muss oder mit dem Änderungen dafür durchgeführt werden müssen. Sie weisen der AD-Anwendung die erforderlichen Berechtigungen zu. Dieser Ansatz ist dem Ausführen der App mit Ihren eigenen Anmeldeinformationen vorzuziehen, da Sie der App-Identität Berechtigungen zuweisen können, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
+Richten Sie eine Azure Active Directory-Anwendung (AD) ein, wenn Sie über Code verfügen, mit dem auf Ressourcen zugegriffen werden muss oder mit dem Änderungen dafür durchgeführt werden müssen. Sie können die erforderlichen Berechtigungen dann der AD-Anwendung zuweisen. Dieser Ansatz ist dem Ausführen der App mit Ihren eigenen Anmeldeinformationen vorzuziehen, da Sie der App-Identität Berechtigungen zuweisen können, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
 
 In diesem Artikel erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Es konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet.
 
@@ -156,7 +156,7 @@ Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene 
 
    ![„Hinzufügen“ wählen](./media/resource-group-create-service-principal-portal/select-add.png)
 
-1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. In der folgenden Abbildung ist die Rolle **Leser** dargestellt.
+1. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. Um Aktionen zur Anwendungsausführung zulassen zu können, z.B. das **Neustarten**, **Starten** und **Beenden** von Instanzen, müssen Sie über die Rolle **Mitwirkender** verfügen. In der folgenden Abbildung ist die Rolle **Leser** dargestellt.
 
    ![Rolle wählen](./media/resource-group-create-service-principal-portal/select-role.png)
 

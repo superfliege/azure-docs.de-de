@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/16/2018
+ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dfea1587cddbf7440771ca7007928f7e4054f61a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 46ab4a177cc7d86e5d967ff8e219dae96f82a0dc
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092289"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39263145"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen und 
 | --- | --- | --- | --- |--- |--- |
 | Point-in-Time-Wiederherstellung von Sicherung |Jeder Wiederherstellungspunkt innerhalb von 7 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|
 | Geowiederherstellung von georeplizierten Sicherungen |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h |Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h|Geschätzte Wiederherstellungszeit < 12 h, RPO < 1 h|
-| Wiederherstellen von Daten aus dem Azure-Sicherungstresor |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche|Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche|
+| Wiederherstellung aus SQL-Langzeitaufbewahrung |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche |Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche|Geschätzte Wiederherstellungszeit < 12 Stunden, RPO < 1 Woche|
 | Aktive Georeplikation |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s |Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s|Geschätzte Wiederherstellungszeit < 30 s, RPO < 5 s|
 
 ### <a name="use-point-in-time-restore-to-recover-a-database"></a>Verwenden der Point-in-Time-Wiederherstellung für die Wiederherstellung einer Datenbank
@@ -102,7 +102,7 @@ Weitere Informationen und die detaillierten Schritte zum Wiederherstellen einer 
 
 ### <a name="restore-backups-from-long-term-retention"></a>Wiederherstellen langfristig aufbewahrter Sicherungen
 
-Wenn der Datenverlust außerhalb des aktuellen Aufbewahrungszeitraums für automatisierte Sicherungen aufgetreten und Ihre Datenbank für die langfristige Aufbewahrung konfiguriert ist, können Sie die Daten aus einer vollständigen Sicherung im LTR-Speicher in einer neue Datenbank wiederherstellen. Zu diesem Zeitpunkt können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn Sie vor einem größeren Anwendungsupgrade eine alte Version Ihrer Datenbank abrufen oder Prüfanforderungen bzw. rechtliche Vorgaben erfüllen müssen, können Sie mithilfe einer im Azure Backup-Tresor gespeicherten vollständigen Sicherung eine Datenbank erstellen.  Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
+Wenn der Datenverlust außerhalb des aktuellen Aufbewahrungszeitraums für automatisierte Sicherungen aufgetreten und Ihre Datenbank für die langfristige Aufbewahrung mit Azure-Blobspeicher konfiguriert ist, können Sie die Daten aus einer vollständigen Sicherung im Azure-Blobspeicher in einer neuen Datenbank wiederherstellen. Zu diesem Zeitpunkt können Sie entweder die ursprüngliche Datenbank durch die wiederhergestellte Datenbank ersetzen oder die benötigten Daten aus der wiederhergestellten Datenbank in die ursprüngliche Datenbank kopieren. Wenn Sie vor einem größeren Anwendungsupgrade eine alte Version Ihrer Datenbank abrufen oder Prüfanforderungen bzw. rechtliche Vorgaben erfüllen müssen, können Sie mithilfe einer im Azure-Blobspeicher gespeicherten vollständigen Sicherung eine Datenbank erstellen.  Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 
 ## <a name="recover-a-database-to-another-region-from-an-azure-regional-data-center-outage"></a>Wiederherstellen einer Datenbank in einer anderen Region nach dem Ausfall eines Rechenzentrums in einer Azure-Region
 <!-- Explain this scenario -->
