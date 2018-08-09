@@ -9,12 +9,12 @@ ms.workload: storage-backup-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 120c78d9adb83ca58ae61700ae70d07ead42ebd0
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 9981db7e2994b9a4f20f99f4997a89b0368d343c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226559"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423673"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“
 
@@ -96,7 +96,7 @@ Das Tool verfügt für Hyper-V über drei Hauptphasen: Abrufen der VM-Liste, Pro
 
             set-item wsman:\localhost\Client\TrustedHosts -value '<ComputerName>[,<ComputerName>]' -Concatenate
 
-2.  Jeder Hyper-V-Host, für den die Profilerstellung durchgeführt werden soll, sollte über Folgendes verfügen:
+1.  Jeder Hyper-V-Host, für den die Profilerstellung durchgeführt werden soll, sollte über Folgendes verfügen:
 
     a. Die VM, auf der das Tool ausgeführt werden soll, muss in der Liste „TrustedHosts“ enthalten sein. Führen Sie den folgenden Befehl in einem PowerShell-Fenster mit erhöhten Rechten auf dem Hyper-V-Host aus:
 
@@ -111,10 +111,10 @@ Das Tool verfügt für Hyper-V über drei Hauptphasen: Abrufen der VM-Liste, Pro
 1.  [Laden Sie die aktuelle Version des Azure Site Recovery Deployment Planner herunter.](https://aka.ms/asr-deployment-planner)
 Das Tool ist in einem ZIP-Ordner enthalten. Das Tool unterstützt sowohl „VMware zu Azure“ als auch „Hyper-V zu Azure“ als Notfallwiederherstellungsszenario. Sie können dieses Tool auch für das Notfallwiederherstellungsszenario „Hyper-V zum sekundären Standort“ verwenden und die Empfehlung zur Azure-Infrastruktur im Bericht ignorieren.
 
-2.  Kopieren Sie den ZIP-Ordner auf die Windows Server-Instanz, unter der Sie das Tool ausführen möchten. Sie können das Tool unter Windows Server 2012 R2 oder Windows Server 2016 ausführen. Der Server muss über Netzwerkzugriff verfügen, um eine Verbindung mit dem Hyper-V-Cluster oder Hyper-V-Host herstellen zu können, in bzw. auf dem die VMs für die Profilerstellung enthalten sind. Wir empfehlen Ihnen, für die VM, auf der das Tool ausgeführt werden soll, die gleiche Hardwarekonfiguration wie für den zu schützenden Hyper-V-Server zu verwenden. Mit dieser Konfiguration wird sichergestellt, das der vom Tool gemeldete erzielte Durchsatz mit dem tatsächlichen Durchsatz übereinstimmt, den Azure Site Recovery während der Replikation erreichen kann. Die Berechnung des Durchsatzes richtet sich nach der verfügbaren Netzwerkbandbreite auf dem Server und der Hardwarekonfiguration (CPU, Speicher usw.) des Servers. Der Durchsatz wird vom Server, auf dem das Tool ausgeführt wird, zu Azure berechnet. Wenn sich die Hardwarekonfiguration des Servers vom Hyper-V-Server unterscheidet, ist der erzielte Durchsatz, der vom Tool gemeldet wird, fehlerhaft.
+1.  Kopieren Sie den ZIP-Ordner auf die Windows Server-Instanz, unter der Sie das Tool ausführen möchten. Sie können das Tool unter Windows Server 2012 R2 oder Windows Server 2016 ausführen. Der Server muss über Netzwerkzugriff verfügen, um eine Verbindung mit dem Hyper-V-Cluster oder Hyper-V-Host herstellen zu können, in bzw. auf dem die VMs für die Profilerstellung enthalten sind. Wir empfehlen Ihnen, für die VM, auf der das Tool ausgeführt werden soll, die gleiche Hardwarekonfiguration wie für den zu schützenden Hyper-V-Server zu verwenden. Mit dieser Konfiguration wird sichergestellt, das der vom Tool gemeldete erzielte Durchsatz mit dem tatsächlichen Durchsatz übereinstimmt, den Azure Site Recovery während der Replikation erreichen kann. Die Berechnung des Durchsatzes richtet sich nach der verfügbaren Netzwerkbandbreite auf dem Server und der Hardwarekonfiguration (CPU, Speicher usw.) des Servers. Der Durchsatz wird vom Server, auf dem das Tool ausgeführt wird, zu Azure berechnet. Wenn sich die Hardwarekonfiguration des Servers vom Hyper-V-Server unterscheidet, ist der erzielte Durchsatz, der vom Tool gemeldet wird, fehlerhaft.
 Die empfohlene Konfiguration der VM lautet wie folgt: 8 vCPUs, 16 GB RAM, 300 GB HDD.
 
-3.  Extrahieren Sie den ZIP-Ordner.
+1.  Extrahieren Sie den ZIP-Ordner.
 Der Ordner enthält mehrere Dateien und Unterordner. Die ausführbare Datei ist die Datei „ASRDeploymentPlanner.exe“ im übergeordneten Ordner.
 
 Beispiel: Kopieren Sie die ZIP-Datei auf das Laufwerk „E:\“, und extrahieren Sie sie. E:\ASR Deployment Planner_v2.2.zip

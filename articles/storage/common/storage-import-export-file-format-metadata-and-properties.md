@@ -2,24 +2,18 @@
 title: Format der Metadaten- und Eigenschaftendateien von Azure Import/Export | Microsoft Docs
 description: Informationen zum Angeben von Metadaten und Eigenschaften für mindestens ein Blob, das Teil eines Import- oder Exportauftrags ist.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 840364c6-d9a8-4b43-a9f3-f7441c625069
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 5a886244b43ad006a95e9be0350d9c69fd987ad9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059305"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526231"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Format der Metadaten- und Eigenschaftendateien des Azure Import/Export-Diensts
 Sie können Metadaten und Eigenschaften als Teil eines Import- oder Exportauftrags für mindestens ein Blob angeben. Zum Festlegen von Metadaten oder Eigenschaften für Blobs, die als Teil eines Importauftrags erstellt werden, geben Sie eine Metadaten- oder Eigenschaftendatei auf der Festplatte an, die die zu importierenden Daten enthält. Bei einem Exportauftrag werden Metadaten und Eigenschaften in eine entsprechende Datei auf der Festplatte geschrieben, die an Sie zurückgesendet wird.  
@@ -36,10 +30,10 @@ Das Format einer Metadatendatei lautet wie folgt:
 </Metadata>  
 ```
   
-|XML-Element|Typ|Beschreibung|  
+|XML-Element|Typ|BESCHREIBUNG|  
 |-----------------|----------|-----------------|  
 |`Metadata`|Stammelement|Das Stammelement der Metadatendatei|  
-|`metadata-name`|String|Optional. Das XML-Element gibt den Namen der Metadaten für das Blob an, und sein Wert gibt den Wert der Metadateneinstellung an.|  
+|`metadata-name`|Zeichenfolge|Optional. Das XML-Element gibt den Namen der Metadaten für das Blob an, und sein Wert gibt den Wert der Metadateneinstellung an.|  
   
 ## <a name="properties-file-format"></a>Format der Eigenschaftendatei  
 Das Format einer Eigenschaftendatei lautet wie folgt:  
@@ -58,17 +52,17 @@ Das Format einer Eigenschaftendatei lautet wie folgt:
 </Properties>  
 ```
   
-|XML-Element|Typ|Beschreibung|  
+|XML-Element|Typ|BESCHREIBUNG|  
 |-----------------|----------|-----------------|  
 |`Properties`|Stammelement|Das Stammelement der Eigenschaftendatei|  
-|`Last-Modified`|String|Optional. Die Zeit der letzten Änderung des Blobs. Nur für Exportaufträge|  
-|`Etag`|String|Optional. Der ETag-Wert des Blobs. Nur für Exportaufträge|  
-|`Content-Length`|String|Optional. Die Größe des Blobs in Byte. Nur für Exportaufträge|  
-|`Content-Type`|String|Optional. Der Inhaltstyp des Blobs|  
-|`Content-MD5`|String|Optional. MD5-Hash des Blobs|  
-|`Content-Encoding`|String|Optional. Inhaltscodierung des Blobs|  
-|`Content-Language`|String|Optional. Inhaltssprache des Blob|  
-|`Cache-Control`|String|Optional. Die Cachesteuerelement-Zeichenfolge für das Blob|  
+|`Last-Modified`|Zeichenfolge|Optional. Die Zeit der letzten Änderung des Blobs. Nur für Exportaufträge|  
+|`Etag`|Zeichenfolge|Optional. Der ETag-Wert des Blobs. Nur für Exportaufträge|  
+|`Content-Length`|Zeichenfolge|Optional. Die Größe des Blobs in Byte. Nur für Exportaufträge|  
+|`Content-Type`|Zeichenfolge|Optional. Der Inhaltstyp des Blobs|  
+|`Content-MD5`|Zeichenfolge|Optional. MD5-Hash des Blobs|  
+|`Content-Encoding`|Zeichenfolge|Optional. Inhaltscodierung des Blobs|  
+|`Content-Language`|Zeichenfolge|Optional. Inhaltssprache des Blob|  
+|`Cache-Control`|Zeichenfolge|Optional. Die Cachesteuerelement-Zeichenfolge für das Blob|  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cd231a6baad74cd88d82b219e2e58e9252187ff5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3ba235c60480c38a21ee3264c54b4a4dcdea340
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598996"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434600"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Häufig gestellte Fragen zu Azure Databricks
 
@@ -34,8 +34,8 @@ Im Rahmen der Bereitstellung von Databricks wird ein neues virtuelles Netzwerk e
 
 Folgen Sie diesen Schritten:
 1. Stellen Sie in Azure Active Directory (Azure AD) einen Dienstprinzipal bereit, und erfassen Sie dessen Schlüssel.
-2. Weisen Sie dem Dienstprinzipal in Data Lake Store die erforderlichen Berechtigungen zu.
-3. Verwenden Sie zum Zugreifen auf eine Datei in Data Lake Store die Anmeldeinformationen für den Dienstprinzipal in Notebook.
+1. Weisen Sie dem Dienstprinzipal in Data Lake Store die erforderlichen Berechtigungen zu.
+1. Verwenden Sie zum Zugreifen auf eine Datei in Data Lake Store die Anmeldeinformationen für den Dienstprinzipal in Notebook.
 
 Weitere Informationen finden Sie unter [Azure Data Lake Store](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html).
 
@@ -52,8 +52,8 @@ Hier folgen einige Probleme, die mit Databricks auftreten können.
 #### <a name="solution"></a>Lösung
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie **Abonnements** und das von Ihnen verwendete Abonnement aus. Wählen Sie anschließend **Ressourcenanbieter** aus. 
-3. Wählen Sie in der Liste der Ressourcenanbieter für **Microsoft.Databricks** die Option **Registrieren** aus. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um den Ressourcenanbieter zu registrieren.
+1. Wählen Sie **Abonnements** und das von Ihnen verwendete Abonnement aus. Wählen Sie anschließend **Ressourcenanbieter** aus. 
+1. Wählen Sie in der Liste der Ressourcenanbieter für **Microsoft.Databricks** die Option **Registrieren** aus. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um den Ressourcenanbieter zu registrieren.
 
 
 ### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>Problem: Ihr Konto {E-Mail} weist nicht die Rolle „Besitzer“ oder „Mitwirkender“ für die Databricks-Arbeitsbereichsressource im Azure-Portal auf.
@@ -107,8 +107,8 @@ Azure-Fehlercode: MissingSubscriptionRegistration; Azure-Fehlermeldung: Das Abon
 #### <a name="solution"></a>Lösung
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Wählen Sie **Abonnements** und das von Ihnen verwendete Abonnement aus. Wählen Sie anschließend **Ressourcenanbieter** aus. 
-3. Wählen Sie in der Liste der Ressourcenanbieter für **Microsoft.Compute** die Option **Registrieren** aus. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um den Ressourcenanbieter zu registrieren.
+1. Wählen Sie **Abonnements** und das von Ihnen verwendete Abonnement aus. Wählen Sie anschließend **Ressourcenanbieter** aus. 
+1. Wählen Sie in der Liste der Ressourcenanbieter für **Microsoft.Compute** die Option **Registrieren** aus. Sie müssen über die Rolle „Mitwirkender“ oder „Besitzer“ für das Abonnement verfügen, um den Ressourcenanbieter zu registrieren.
 
 Ausführlichere Anweisungen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md).
 

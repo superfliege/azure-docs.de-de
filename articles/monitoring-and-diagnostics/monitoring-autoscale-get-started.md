@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
 ms.component: autoscale
-ms.openlocfilehash: 2781e718e3829c13dcc8cdd998936cfba30d8550
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b303632c236e492bbf57ee60d5e7b0cc7b2f9e5c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263645"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448967"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -24,9 +24,9 @@ Die automatische Skalierung von Azure Monitor gilt nur für VM-Skalierungsgruppe
 Sie können alle Ressourcen ermitteln, für die die automatische Skalierung in Azure Monitor angewendet wird. Befolgen Sie die folgenden Schritte für eine ausführliche exemplarische Vorgehensweise:
 
 1. Öffnen Sie das [Azure-Portal][1].
-2. Klicken Sie auf das Azure Monitor-Zeichen im linken Bereich.
+1. Klicken Sie auf das Azure Monitor-Zeichen im linken Bereich.
   ![Öffnen Sie Azure Monitor][2].
-3. Klicken Sie auf **Automatische Skalierung**, um alle Ressourcen anzuzeigen, für die die automatische Skalierung zutrifft, zusammen mit dem aktuellen Status der automatischen Skalierung.
+1. Klicken Sie auf **Automatische Skalierung**, um alle Ressourcen anzuzeigen, für die die automatische Skalierung zutrifft, zusammen mit dem aktuellen Status der automatischen Skalierung.
   ![Entdecken von Metriken und automatischer Skalierung in Azure Monitor][3]
 
 Über den Filterbereich im oberen Bereich können Sie die Liste nach unten verschieben, um Ressourcen in einer bestimmten Ressourcengruppe, bestimmte Ressourcentypen oder eine bestimmte Ressource auszuwählen.
@@ -42,11 +42,11 @@ Zu jeder Ressource finden Sie die aktuelle Anzahl der Instanzen sowie den jeweil
 Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erstellen Ihrer ersten Einstellung für die automatische Skalierung durchgehen.
 
 1. Öffnen Sie in Azure Monitor das Blatt **Automatisch skalieren**, und wählen Sie eine Ressource aus, die skaliert werden soll. (Die folgenden Schritte beruhen auf einem App Service-Plan, der einer Web-App zugeordnet ist. Sie können [Ihre erste ASP.NET-Web-App in Azure in fünf Minuten erstellen][4].)
-2. Beachten Sie, dass die aktuelle Instanzenanzahl 1 beträgt. Klicken Sie auf **Automatische Skalierung aktivieren**.
+1. Beachten Sie, dass die aktuelle Instanzenanzahl 1 beträgt. Klicken Sie auf **Automatische Skalierung aktivieren**.
   ![Skalierungseinstellung für die neue Web-App][5]
-3. Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf **Regel hinzufügen**. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf **Hinzufügen**.
+1. Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf **Regel hinzufügen**. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf **Hinzufügen**.
   ![Erstellen der Skalierungseinstellung für eine Web-App][6]
-4. Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Skala in der Regel einzufügen. Gehen Sie dazu wie folgt vor:
+1. Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Skala in der Regel einzufügen. Gehen Sie dazu wie folgt vor:
   
     a. Klicken Sie auf **Hinzufügen einer Regel** 
 
@@ -58,7 +58,7 @@ Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erst
 
    Sie sollten nun über eine Skalierungseinstellung verfügen, die basierend auf der CPU-Auslastung zentral hoch- bzw. herunterskaliert.
    ![Skalieren basierend auf der CPU][8]
-5. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 Glückwunsch! Sie haben nun Ihre erste Skalierungseinstellung erfolgreich für die automatische Skalierung Ihrer Web-App basierend auf der CPU-Auslastung konfiguriert.
 
@@ -70,18 +70,18 @@ Glückwunsch! Sie haben nun Ihre erste Skalierungseinstellung erfolgreich für d
 Neben der Skalierung basierend auf der CPU können Sie festlegen, dass die Skalierung unterschiedlich an bestimmten Wochentage skaliert werden soll.
 
 1. Klicken Sie auf **Skalierungsbedingung hinzufügen**.
-2. Legen Sie den Skalierungsmodus fest. Es gelten dieselben Regeln wie bei der Standardbedingung.
-3. Wählen Sie für den Zeitplan **An bestimmten Tagen wiederholen** aus.
-4. Wählen Sie die Tage sowie Start- bzw. Endzeit aus, an denen bzw. zu der die Skalierungsbedingung angewendet werden soll.
+1. Legen Sie den Skalierungsmodus fest. Es gelten dieselben Regeln wie bei der Standardbedingung.
+1. Wählen Sie für den Zeitplan **An bestimmten Tagen wiederholen** aus.
+1. Wählen Sie die Tage sowie Start- bzw. Endzeit aus, an denen bzw. zu der die Skalierungsbedingung angewendet werden soll.
 
 ![Skalierungsbedingung basierend auf einem Zeitplan][9]
 ### <a name="scale-differently-on-specific-dates"></a>Individuelles Skalieren an bestimmten Daten
 Neben der Skalierung basierend auf der CPU können Sie auch festlegen, dass die Skalierung unterschiedlich an bestimmten Daten skaliert werden soll.
 
 1. Klicken Sie auf **Skalierungsbedingung hinzufügen**.
-2. Legen Sie den Skalierungsmodus fest. Es gelten dieselben Regeln wie bei der Standardbedingung.
-3. Wählen Sie für den Zeitplan **Start-/Enddatum angeben** aus.
-4. Wählen Sie die Start-/End-Datumsangaben sowie Start- bzw. Endzeit aus, an denen bzw. zu der die Skalierungsbedingung angewendet werden soll.
+1. Legen Sie den Skalierungsmodus fest. Es gelten dieselben Regeln wie bei der Standardbedingung.
+1. Wählen Sie für den Zeitplan **Start-/Enddatum angeben** aus.
+1. Wählen Sie die Start-/End-Datumsangaben sowie Start- bzw. Endzeit aus, an denen bzw. zu der die Skalierungsbedingung angewendet werden soll.
 
 ![Skalierungsbedingung basierend auf Daten][10]
 

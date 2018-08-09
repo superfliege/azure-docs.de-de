@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a538b23e829e309c10e745beef4fc8512c3294de
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6ba37a026a3c8f50fa47b0775a2ad49ee75f2769
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131426"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424646"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
 
@@ -49,29 +49,29 @@ Erstellen Sie eine VM mit Linux-Betriebssystem, um alle Syslog-Daten von den ESX
 ### <a name="configure-syslog-collection"></a>Konfigurieren der Syslog-Sammlung
 1. Richten Sie die Syslog-Weiterleitung für VSphere ein. Ausführliche Informationen zur Einrichtung der Syslog-Weiterleitung finden Sie unter [Configuring syslog on ESXi 5.0 and higher (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322) (Konfigurieren von Syslog auf ESXi 5.x und höher (2003322)). Wechseln Sie zu **ESXi Host Configuration** > **Software** > **Advanced Settings** > **Syslog**.
    ![vsphereconfig](./media/log-analytics-vmware/vsphere1.png)  
-2. Fügen Sie im Feld *Syslog.global.logHost* Ihren Linux-Server und die Portnummer *1514* hinzu. Beispiel: `tcp://hostname:1514` oder `tcp://123.456.789.101:1514`
-3. Öffnen Sie die ESXi-Hostfirewall für Syslog. **ESXi Host Configuration** > **Software** > **Security Profile** > **Firewall**, und öffnen Sie **Properties**.  
+1. Fügen Sie im Feld *Syslog.global.logHost* Ihren Linux-Server und die Portnummer *1514* hinzu. Beispiel: `tcp://hostname:1514` oder `tcp://123.456.789.101:1514`
+1. Öffnen Sie die ESXi-Hostfirewall für Syslog. **ESXi Host Configuration** > **Software** > **Security Profile** > **Firewall**, und öffnen Sie **Properties**.  
 
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
-4. Überprüfen Sie die vSphere-Konsole, um sicherzustellen, dass Syslog ordnungsgemäß eingerichtet ist. Vergewissern Sie sich auf dem ESXI-Host, dass der Port **1514** konfiguriert ist.
-5. Laden Sie den OMS-Agent für Linux auf den Linux-Server herunter, und installieren Sie ihn. Weitere Informationen finden Sie in der [Dokumentation zum OMS-Agent für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
-6. Nachdem der OMS-Agent für Linux installiert wurde, wechseln Sie zum Verzeichnis „/etc/opt/microsoft/omsagent/sysconf/omsagent.d“, und kopieren Sie die Datei „vmware_esxi.conf“ in das Verzeichnis „/etc/opt/microsoft/omsagent/conf/omsagent.d“. Ändern Sie dann den Besitzer/die Gruppe und die Berechtigungen der Datei. Beispiel: 
+1. Überprüfen Sie die vSphere-Konsole, um sicherzustellen, dass Syslog ordnungsgemäß eingerichtet ist. Vergewissern Sie sich auf dem ESXI-Host, dass der Port **1514** konfiguriert ist.
+1. Laden Sie den OMS-Agent für Linux auf den Linux-Server herunter, und installieren Sie ihn. Weitere Informationen finden Sie in der [Dokumentation zum OMS-Agent für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
+1. Nachdem der OMS-Agent für Linux installiert wurde, wechseln Sie zum Verzeichnis „/etc/opt/microsoft/omsagent/sysconf/omsagent.d“, und kopieren Sie die Datei „vmware_esxi.conf“ in das Verzeichnis „/etc/opt/microsoft/omsagent/conf/omsagent.d“. Ändern Sie dann den Besitzer/die Gruppe und die Berechtigungen der Datei. Beispiel: 
 
     ```
     sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/vmware_esxi.conf /etc/opt/microsoft/omsagent/conf/omsagent.d
    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf
     ```
-7. Starten Sie den OMS-Agent für Linux neu, indem Sie `sudo /opt/microsoft/omsagent/bin/service_control restart` ausführen.
-8. Testen Sie die Konnektivität zwischen dem Linux-Server und dem ESXi-Host mithilfe des Befehls `nc` auf dem ESXi-Host. Beispiel: 
+1. Starten Sie den OMS-Agent für Linux neu, indem Sie `sudo /opt/microsoft/omsagent/bin/service_control restart` ausführen.
+1. Testen Sie die Konnektivität zwischen dem Linux-Server und dem ESXi-Host mithilfe des Befehls `nc` auf dem ESXi-Host. Beispiel: 
 
     ```
     [root@ESXiHost:~] nc -z 123.456.789.101 1514
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-9. Führen Sie im Azure-Portal eine Protokollsuche nach `VMware_CL` aus. Wenn Log Analytics die syslog-Daten sammelt, bleibt das syslog-Format erhalten. Im Portal werden einige bestimmte Felder erfasst, z.B. *Hostname* und *ProcessName*.  
+1. Führen Sie im Azure-Portal eine Protokollsuche nach `VMware_CL` aus. Wenn Log Analytics die syslog-Daten sammelt, bleibt das syslog-Format erhalten. Im Portal werden einige bestimmte Felder erfasst, z.B. *Hostname* und *ProcessName*.  
 
     ![type](./media/log-analytics-vmware/type.png)  
 
@@ -191,11 +191,11 @@ Dafür kann es mehrere Gründe geben:
   1. Melden Sie sich zur Bestätigung über SSH beim ESXi-Host an, und führen Sie den folgenden Befehl aus: `nc -z ipaddressofVM 1514`
 
       Wenn dies nicht erfolgreich ist, sind wahrscheinlich die vSphere-Einstellungen in der erweiterten Konfiguration nicht richtig. Informationen zum Einrichten des ESXi-Hosts für die Syslog-Weiterleitung finden Sie unter [Konfigurieren der Syslog-Sammlung](#configure-syslog-collection).
-  2. Wenn die Portverbindung für Syslog erfolgreich hergestellt werden kann, Sie aber weiterhin keine Daten sehen, laden Sie das Syslog auf dem ESXi-Host neu, in dem Sie SSH verwenden, um folgenden Befehl auszuführen: ` esxcli system syslog reload`
+  1. Wenn die Portverbindung für Syslog erfolgreich hergestellt werden kann, Sie aber weiterhin keine Daten sehen, laden Sie das Syslog auf dem ESXi-Host neu, in dem Sie SSH verwenden, um folgenden Befehl auszuführen: ` esxcli system syslog reload`
 * Der virtuelle Computer mit dem OMS-Agent ist nicht ordnungsgemäß eingerichtet. Führen Sie zum Testen die folgenden Schritte aus:
 
   1. Log Analytics lauscht am Port 1514. Überprüfen Sie mit dem folgenden Befehl, ob der Port offen ist: `netstat -a | grep 1514`
-  2. Port `1514/tcp` sollte offen sein. Wenn dies nicht der Fall ist, stellen Sie sicher dass der OMS-Agent ordnungsgemäß installiert ist. Wenn keine Portinformationen angezeigt werden, ist der Syslog-Port auf dem virtuellen Computer nicht offen.
+  1. Port `1514/tcp` sollte offen sein. Wenn dies nicht der Fall ist, stellen Sie sicher dass der OMS-Agent ordnungsgemäß installiert ist. Wenn keine Portinformationen angezeigt werden, ist der Syslog-Port auf dem virtuellen Computer nicht offen.
 
     a. Überprüfen Sie mit dem Befehl `ps -ef | grep oms`, ob der OMS-Agent ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den Prozess, indem Sie diesen Befehl ausführen: ` sudo /opt/microsoft/omsagent/bin/service_control start`
 

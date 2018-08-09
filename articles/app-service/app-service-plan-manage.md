@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 1dfe8a903e19ff524a1c4a0228e6aefcbe9ff183
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2c08522df598bd5c6313c3f026efe48e1c4a2c56
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117679"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449358"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -35,7 +35,7 @@ Sie können einen leeren App Service-Plan erstellen; Sie können einen Plan aber
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Web + Mobil**, und wählen Sie dann die Option **Web-App** oder eine andere Art von App Service-App aus.
 
-2. Wählen Sie einen vorhandenen App Service-Plan auswählen, oder erstellen Sie einen Plan für die neue App.
+1. Wählen Sie einen vorhandenen App Service-Plan auswählen, oder erstellen Sie einen Plan für die neue App.
 
    ![Erstellen Sie eine App im Azure-Portal.][createWebApp]
 
@@ -59,13 +59,13 @@ Sie können eine App in einen anderen App Service-Plan verschieben, solange sich
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der App, die Sie verschieben möchten.
 
-2. Suchen Sie im Menü nach dem Abschnitt **App Service-Plan**.
+1. Suchen Sie im Menü nach dem Abschnitt **App Service-Plan**.
 
-3. Wählen Sie **App Service-Plan ändern** aus, um die Auswahlfunktion für den **App Service-Plan** zu öffnen.
+1. Wählen Sie **App Service-Plan ändern** aus, um die Auswahlfunktion für den **App Service-Plan** zu öffnen.
 
    ![Auswahlelement für App Service-Pläne][change] 
 
-4. Wählen Sie in der Auswahlfunktion **App Service-Plan** einen vorhandenen Plan aus, in den Sie die App verschieben möchten.   
+1. Wählen Sie in der Auswahlfunktion **App Service-Plan** einen vorhandenen Plan aus, in den Sie die App verschieben möchten.   
 
 > [!IMPORTANT]
 > Die Seite **App Service-Plan auswählen** wird anhand der folgenden Kriterien gefiltert: 

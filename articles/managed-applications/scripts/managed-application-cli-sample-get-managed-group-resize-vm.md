@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9c4032191738703b71319c05bce4f6bbbc61b44b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 85d58538e15881308ee1f645f7ddd12ec27c94de
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847198"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423411"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Abrufen von Ressourcen in einer verwalteten Ressourcengruppe und Ändern der Größe von virtuellen Computern mit der Azure CLI
 
@@ -39,9 +39,9 @@ Dieses Skript verwendet die folgenden Befehle zum Bereitstellen der verwalteten 
 
 | Get-Help | Notizen |
 |---|---|
-| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az_managedapp_list) | Auflisten der verwalteten Anwendungen. Geben Sie Abfragewerte an, um die Ergebnisse einzugrenzen. |
-| [az resource list](https://docs.microsoft.com/cli/azure/resource#az_resource_list) | Auflisten der Ressourcen. Geben Sie eine Ressourcengruppe und Abfragewerte an, um die Ergebnisse einzugrenzen. |
-| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az_vm_resize) | Aktualisieren der Größe eines virtuellen Computers |
+| [az managedapp list](https://docs.microsoft.com/cli/azure/managedapp#az-managedapp-list) | Auflisten der verwalteten Anwendungen. Geben Sie Abfragewerte an, um die Ergebnisse einzugrenzen. |
+| [az resource list](https://docs.microsoft.com/cli/azure/resource#az-resource-list) | Auflisten der Ressourcen. Geben Sie eine Ressourcengruppe und Abfragewerte an, um die Ergebnisse einzugrenzen. |
+| [az vm resize](https://docs.microsoft.com/cli/azure/vm#az-vm-resize) | Aktualisieren der Größe eines virtuellen Computers |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

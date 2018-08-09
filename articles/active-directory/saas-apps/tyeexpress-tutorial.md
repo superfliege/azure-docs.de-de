@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a9a2efffa057ee1e35e8074556043b8e515c39c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f3b9a2ed9b374192151a8a737a5b51d9085d53ff
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224129"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430916"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Tutorial: Azure Active Directory-Integration mit T&E Express
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von T&E Express aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-te-express-from-the-gallery"></a>Hinzufügen von T&E Express aus dem Katalog
 Zum Konfigurieren der Integration von T&E Express in Azure AD müssen Sie T&E Express aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von T&E Express in Azure AD müssen Sie T&E Ex
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld den Suchbegriff **T&E Express** ein.
+1. Geben Sie im Suchfeld den Suchbegriff **T&E Express** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/tyeexpress-tutorial/tutorial_tyeexpress_search.png)
 
-5. Wählen Sie im Ergebnisbereich **T&E Express** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **T&E Express** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/tyeexpress-tutorial/tutorial_tyeexpress_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei T&E Express müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines T&amp;E Express-Testbenutzers](#creating-a-te-express-test-user)**, um in T&amp;E Express eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines T&amp;E Express-Testbenutzers](#creating-a-te-express-test-user)**, um in T&amp;E Express eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **T&E Express** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/tyeexpress-tutorial/tutorial_tyeexpress_samlbase.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_samlbase.png)
 
-3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für T&E Express** aus:
+1. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für T&E Express** aus:
 
-    ![Configure Single Sign-On](./media/tyeexpress-tutorial/tutorial_tyeexpress_url.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** den Wert `https://<domain>.tyeexpress.com` ein.
 
@@ -119,25 +119,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL aktualisieren. Hier empfehlen wir Ihnen, den eindeutigen Wert der Zeichenfolge im Bezeichner zu verwenden. Wenden Sie sich an das [Supportteam von T&E Express](http://www.tyeexpress.com/contacto.aspx), um diese Werte zu erhalten.
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/tyeexpress-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_general_400.png)
 
-8. Um das einmalige Anmelden auf der **T&E Express**-Seite zu konfigurieren, melden Sie sich mit Administratoranmeldeinformationen ohne SAML-SSO bei der T&E Express-Anwendung an.
+1. Um das einmalige Anmelden auf der **T&E Express**-Seite zu konfigurieren, melden Sie sich mit Administratoranmeldeinformationen ohne SAML-SSO bei der T&E Express-Anwendung an.
 
-9. Klicken Sie auf der Registerkarte **Administrator** auf **SAML-Domäne**, um die Seite mit den SAML-Einstellungen zu öffnen.
+1. Klicken Sie auf der Registerkarte **Administrator** auf **SAML-Domäne**, um die Seite mit den SAML-Einstellungen zu öffnen.
 
-    ![Configure Single Sign-On](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tye-SAML.png)
 
-10. Stellen Sie die Option **Activar** (Aktivieren) von **No** (Nein) auf **SI** (Ja) um. Fügen Sie in das Textfeld mit den **Identitätsanbietermetadaten** die XML-Metadaten ein, die Sie aus dem Azure-Portal heruntergeladen haben.
+1. Stellen Sie die Option **Activar** (Aktivieren) von **No** (Nein) auf **SI** (Ja) um. Fügen Sie in das Textfeld mit den **Identitätsanbietermetadaten** die XML-Metadaten ein, die Sie aus dem Azure-Portal heruntergeladen haben.
 
-    ![Configure Single Sign-On](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tyeAdmin.png)
 
-11. Klicken Sie auf die Schaltfläche **Guardar** (Speichern), um die Änderungen zu speichern. 
+1. Klicken Sie auf die Schaltfläche **Guardar** (Speichern), um die Änderungen zu speichern.  
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
@@ -151,15 +151,15 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/tyeexpress-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/tyeexpress-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/tyeexpress-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/tyeexpress-tutorial/create_aaduser_04.png) 
 
@@ -180,15 +180,15 @@ Im Fall von T&E Express ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Melden Sie sich bei der T&E Express-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie unter dem Admin-Tag auf „Benutzer“ um die Masterseite für Benutzer zu öffnen.
+1. Klicken Sie unter dem Admin-Tag auf „Benutzer“ um die Masterseite für Benutzer zu öffnen.
 
     ![Mitarbeiter hinzufügen](./media/tyeexpress-tutorial/tye-adminusers.png)
 
-3. Klicken Sie auf der Startseite auf **+**, um die Benutzer hinzuzufügen.
+1. Klicken Sie auf der Startseite auf **+**, um die Benutzer hinzuzufügen.
 
     ![Mitarbeiter hinzufügen](./media/tyeexpress-tutorial/tye-usershome.png)
 
-4. Geben Sie alle obligatorischen Details ein, die im Formular abgefragt werden, und klicken Sie auf die Schaltfläche zum Speichern der Details.
+1. Geben Sie alle obligatorischen Details ein, die im Formular abgefragt werden, und klicken Sie auf die Schaltfläche zum Speichern der Details.
 
     ![Mitarbeiter hinzufügen](./media/tyeexpress-tutorial/tye-usersadd.png)
 
@@ -207,23 +207,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **T&E Express**aus.
+1. Wählen Sie in der Anwendungsliste **T&E Express**aus.
 
-    ![Configure Single Sign-On](./media/tyeexpress-tutorial/tutorial_tyeexpress_app.png) 
+    ![Configure single sign-on](./media/tyeexpress-tutorial/tutorial_tyeexpress_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

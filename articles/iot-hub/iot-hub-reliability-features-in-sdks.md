@@ -12,18 +12,18 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7717c026b4c09f47159fe62640f9a2eedf409d30
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: d321e82560f7676f77ed9161c1bce0304b7d5914
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247680"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397106"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs
 
-Dieser Leitfaden bietet eine allgemeine Anleitung für die Entwicklung stabiler Geräteanwendungen, indem die Vorteile der Features für Konnektivität und des zuverlässigen Messagings in den Azure IoT-Geräte-SDKs genutzt werden. Ziel dieses Artikels ist es, Fragen zu beantworten und die folgenden Szenarien zu meistern:
+Dieser Leitfaden bietet eine allgemeine Anleitung für die Entwicklung stabiler Geräteanwendungen, indem die Vorteile der Features für Konnektivität und des zuverlässigen Messagings in den Azure IoT-Geräte-SDKs genutzt werden. Ziel dieses Artikels ist es, Antworten auf Fragen zu liefern und Hilfe für die folgenden Szenarien bereitzustellen:
 
-- Getrennte Netzwerkverbindung
+- Verwalten einer getrennten Netzwerkverbindung
 - Umschalten zwischen verschiedenen Netzwerkverbindungen
 - Erneutes Verbinden aufgrund vorübergehender Verbindungsfehler im Dienst
 
@@ -116,3 +116,4 @@ Informationen zu anderen Sprachen finden Sie in der folgenden Implementierungsdo
 - [Verwenden des Azure IoT-Geräte-SDKs für C](.\iot-hub-device-sdk-c-intro.md)
 - [Entwickeln für eingeschränkte Geräte](.\iot-hub-devguide-develop-for-constrained-devices.md)
 - [Entwickeln für mobile Geräte](.\iot-hub-how-to-develop-for-mobile-devices.md)
+- [Troubleshoot device disconnects](iot-hub-troubleshoot-connectivity.md) (Problembehandlung bei getrennten Geräteverbindungen)

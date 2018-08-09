@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: dacc133f1c6d15aa1fc886ab9086109951478929
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6e3d8a3951a42e448eff005b055b3cf5169179f1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219899"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443448"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Tutorial: Azure Active Directory-Integration in FirmPlay – Employee Advocacy for Recruiting
 
@@ -55,7 +55,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von FirmPlay – Employee Advocacy for Recruiting aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 
 ## <a name="adding-firmplay---employee-advocacy-for-recruiting-from-the-gallery"></a>Hinzufügen von FirmPlay – Employee Advocacy for Recruiting aus dem Katalog
@@ -67,19 +67,19 @@ Damit Sie die Integration von FirmPlay – Employee Advocacy for Recruiting in A
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie **FirmPlay – Employee Advocacy for Recruiting** in das Suchfeld ein.
+1. Geben Sie **FirmPlay – Employee Advocacy for Recruiting** in das Suchfeld ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/firmplay-tutorial/tutorial_firmplay_001.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **FirmPlay – Employee Advocacy for Recruiting** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **FirmPlay – Employee Advocacy for Recruiting** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/firmplay-tutorial/tutorial_firmplay_0001.png)
 
@@ -94,10 +94,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei FirmPlay – Employee Advocacy for Recruiting müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines FirmPlay – Employee Advocacy for Recruiting-Testbenutzers](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** als Entsprechung von Britta Simon in FirmPlay – Employee Advocacy for Recruiting, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines FirmPlay – Employee Advocacy for Recruiting-Testbenutzers](#creating-a-firmplay---employee-advocacy-for-recruiting-test-user)** als Entsprechung von Britta Simon in FirmPlay – Employee Advocacy for Recruiting, der mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -107,46 +107,46 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite von **FirmPlay – Employee Advocacy for Recruiting** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_01.png)
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_01.png)
 
-3. Geben Sie im Abschnitt **FirmPlay – Employee Advocacy for Recruiting Domain and URLs** (Domäne und URLs für FirmPlay – Employee Advocacy for Recruiting) im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your-subdomain>.firmplay.com/`
+1. Geben Sie im Abschnitt **FirmPlay – Employee Advocacy for Recruiting Domain and URLs** (Domäne und URLs für FirmPlay – Employee Advocacy for Recruiting) im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your-subdomain>.firmplay.com/`
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_02.png)
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_02.png)
 
     > [!NOTE] 
     > Hinweis: Hierbei handelt es sich um einen Beispielwert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam von FirmPlay – Employee Advocacy for Recruiting](mailto:engineering@firmplay.com), um diesen Wert zu erhalten. 
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_03.png)     
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_03.png)     
 
-5. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
+1. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein **Ablaufdatum** aus. Klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_general_300.png)
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_general_300.png)
 
-6. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
+1. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Make new certificate active** (Neues Zertifikat zum aktiven Zertifikat machen), und klicken Sie auf die Schaltfläche **Speichern**.
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_04.png)
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_04.png)
 
-7. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
+1. Klicken Sie im Popupfenster **Rolloverzertifikat** auf **OK**.
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_general_400.png)
 
-8. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer. 
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer. 
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_05.png) 
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_05.png) 
 
-9. Klicken Sie im Abschnitt **FirmPlay - Employee Advocacy for Recruiting Configuration** (FirmPlay – Employee Advocacy for Recruiting-Konfiguration) auf **Configure FirmPlay - Employee Advocacy for Recruiting** (FirmPlay – Employee Advocacy for Recruiting konfigurieren), um das Dialogfeld **Anmeldung konfigurieren** zu öffnen.
+1. Klicken Sie im Abschnitt **FirmPlay - Employee Advocacy for Recruiting Configuration** (FirmPlay – Employee Advocacy for Recruiting-Konfiguration) auf **Configure FirmPlay - Employee Advocacy for Recruiting** (FirmPlay – Employee Advocacy for Recruiting konfigurieren), um das Dialogfeld **Anmeldung konfigurieren** zu öffnen.
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_06.png) 
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_06.png) 
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_07.png)
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_07.png)
 
-10. Wenden Sie sich an das [Supportteam von FirmPlay – Employee Advocacy for Recruiting](mailto:engineering@firmplay.com), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit: 
+1. Wenden Sie sich an das [Supportteam von FirmPlay – Employee Advocacy for Recruiting](mailto:engineering@firmplay.com), um SSO für Ihre Anwendung konfigurieren zu lassen, und stellen Sie Folgendes bereit: 
 
     •  Die heruntergeladene **Zertifikatsdatei**
 
@@ -168,15 +168,15 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/firmplay-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/firmplay-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/firmplay-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/firmplay-tutorial/create_aaduser_04.png) 
 
@@ -207,23 +207,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Liste der Anwendungen **FirmPlay – Employee Advocacy for Recruiting** aus.
+1. Wählen Sie in der Liste der Anwendungen **FirmPlay – Employee Advocacy for Recruiting** aus.
 
-    ![Configure Single Sign-On](./media/firmplay-tutorial/tutorial_firmplay_50.png) 
+    ![Configure single sign-on](./media/firmplay-tutorial/tutorial_firmplay_50.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 
 

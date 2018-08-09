@@ -5,6 +5,7 @@ documentationcenter: ''
 author: deguhath
 manager: cgronlun
 editor: cgronlun
+services: machine-learning
 ms.assetid: ''
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: deguhath
-ms.openlocfilehash: aaa965c507faba344ca717a76b3fb3a0a01fa0ee
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 1ebd640191ffbb1b3ea70ca07081522b370e4e2d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838567"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308186"
 ---
 # <a name="team-data-science-process-project-planning"></a>Projektplanung für einen Team Data Science-Prozess
 
@@ -55,9 +56,13 @@ Wenn Sie keinen Zugriff auf Microsoft Project haben, können Sie eine Excel-Tabe
 
 Die Verwendung dieser Vorlagen erfolgt auf eigene Gefahr. Es gelten die [üblichen Haftungsausschlüsse](https://www.gnu.org/licenses/gpl-3.0.en.html).
 
+## <a name="repository-template"></a>Repository-Vorlage
+
+Verwenden Sie dieses [Projektvorlagenrepository](https://github.com/Azure/Azure-TDSP-ProjectTemplate), um eine effiziente Projektausführung und Zusammenarbeit zu unterstützen. Dieses Repository enthält eine standardisierte Verzeichnisstruktur und Dokumentvorlagen, die Sie für Ihr eigenes TDSP-Projekt verwenden können.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Agile development of data science projects](agile-development.md) (Agile Entwicklung von Data Science-Projekten): Dieses Dokument beschreibt, wie ein Data Science-Projekt auf systematische Weise mit Versionskontrolle und Zusammenarbeit innerhalb eines Projektteams über den Team Data Science-Prozess ausgeführt werden kann.
 
-Exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Thema [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
+Exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Artikel [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 

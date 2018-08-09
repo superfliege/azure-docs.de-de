@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 0ae5c7c371f48eb4d9dd2d48efe7d26b44fbcdbe
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 938990e0c39e96d909c07bef05d2630a01e3076a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162159"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423758"
 ---
 # <a name="create-an-azure-container-service-kubernetes-linux-cluster"></a>Erstellen eines Kubernetes-Clusters von Azure Container Service für Linux
 
@@ -57,8 +57,8 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Erstellt einen ACS-Cluster. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Erstellt einen ACS-Cluster. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

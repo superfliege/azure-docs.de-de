@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/20/2018
 ms.reviewer: yshoukry, LADocs
 ms.suite: integration
-ms.openlocfilehash: 09e3879ed91a0e9c6d27940cae53f3e3f0397d7b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145205"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503647"
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure-Logik-Apps
 
@@ -84,7 +84,7 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
   > [!TIP]
   > Wenn Sie sich für ein Office 365-Angebot registriert und nicht Ihre tatsächliche Geschäfts-E-Mail-Adresse angegeben haben, haben Sie unter Umständen eine Anmeldeadresse, die beispielsweise wie folgt aussieht: `username@domain.onmicrosoft.com`. 
   >
-  > Wenn Sie ein Microsoft-Konto mit einem [Visual Studio-Standardabonnement](https://visualstudio.microsoft.com/vs/pricing/) verwenden möchten, [erstellen Sie zuerst ein Verzeichnis (Mandant) in Azure Active Directory](../active-directory/develop/active-directory-howto-tenant.md) mit Ihrem Microsoft-Konto, oder verwenden Sie das Standardverzeichnis. 
+  > Wenn Sie ein Microsoft-Konto mit einem [Visual Studio-Standardabonnement](https://visualstudio.microsoft.com/vs/pricing/) verwenden möchten, [erstellen Sie zuerst ein Verzeichnis (Mandant) in Azure Active Directory](../active-directory/develop/quickstart-create-new-tenant.md) mit Ihrem Microsoft-Konto, oder verwenden Sie das Standardverzeichnis. 
   > Fügen Sie dem Verzeichnis einen Benutzer mit einem Kennwort hinzu, und erteilen Sie diesem Benutzer Zugriff auf Ihr Abonnement. 
   > Sie können sich dann während der Installation des Gateways mit diesem Benutzernamen und Kennwort anmelden.
 

@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: dd9bb4cb2622651c2d1979166ad838b3b337d583
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343183"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307992"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Beispiel: Erstellen eines benutzerdefinierten Skills mithilfe der Textübersetzungs-API
 
@@ -244,6 +244,13 @@ Wenn Sie mit dem Funktionsverhalten zufrieden sind, können Sie sie veröffentli
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Ressourcengruppe, und suchen Sie nach der von Ihnen veröffentlichten Übersetzungsfunktion. Im Abschnitt **Verwalten** sollten Sie Hostschlüssel angezeigt werden. Wählen Sie das Symbol **Kopieren** für den Hostschlüssel *Standard* aus.  
 
+## <a name="update-ssl-settings"></a>Aktualisieren der SSL-Einstellungen
+
+Für alle Azure-Funktionen, die nach dem 30. Juni 2018 erstellt wurden, ist TLS 1.0 deaktiviert. Dies ist mit benutzerdefinierten Fertigkeiten derzeit nicht kompatibel.
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Ressourcengruppe, und suchen Sie nach der von Ihnen veröffentlichten Übersetzungsfunktion. Unter dem Abschnitt **Plattformfeatures** sollte SSL angezeigt werden.
+
+1. Nach der Auswahl von SSL sollten Sie die **TLS-Mindestversion** in 1.0 ändern. TLS 1.2-Funktionen werden noch nicht als benutzerdefinierte Fertigkeiten unterstützt.
 
 ## <a name="test-the-function-in-azure"></a>Testen der Funktion in Azure
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 97e77fdbb352e1fcf66044f48e17cb19a8aa2e1d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 266c9523f45294899e3cddbe782cbc54846eb119
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042145"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Tutorial: Azure Active Directory-Integration mit SAP Cloud Platform Identity Authentication
 
@@ -53,7 +53,7 @@ Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlun
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von SAP Cloud Platform Identity Authentication über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 Bevor Sie sich mit den technischen Details beschäftigen, müssen Sie die Konzepte verstehen, die hier behandelt werden. Durch den Verbund von SAP Cloud Platform Identity Authentication und Active Directory-Verbunddienste (AD FS) können Sie einmaliges Anmelden (SSO) für Anwendungen oder Dienste, die durch Azure AD (als IdP) geschützt sind, mit SAP-Anwendungen und -Diensten implementieren, die durch SAP Cloud Platform Identity Authentication geschützt sind.
 
@@ -84,17 +84,17 @@ Um die Integration von SAP Cloud Platform Identity Authentication in Azure AD zu
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen ausführen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen ausführen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Wählen Sie im oberen Bereich des Dialogfelds die Schaltfläche **Neue Anwendung** aus, um die neue Anwendung hinzuzufügen.
+1. Wählen Sie im oberen Bereich des Dialogfelds die Schaltfläche **Neue Anwendung** aus, um die neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie in das Suchfeld den Begriff **SAP Cloud Platform Identity Authentication** ein. 
+1. Geben Sie in das Suchfeld den Begriff **SAP Cloud Platform Identity Authentication** ein. 
 
-5. Wählen Sie **SAP Cloud Platform Identity Authentication** im Ergebnisbereich aus, und wählen Sie dann die Schaltfläche **Hinzufügen** aus.
+1. Wählen Sie **SAP Cloud Platform Identity Authentication** im Ergebnisbereich aus, und wählen Sie dann die Schaltfläche **Hinzufügen** aus.
 
     ![SAP Cloud Platform Identity Authentication in der Ergebnisliste](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_addfromgallery.png)
 
@@ -109,10 +109,10 @@ Geben Sie in SAP Cloud Platform Identity Authentication für **Username** dersel
 Um das einmalige Anmelden von Azure AD mit SAP Cloud Platform Identity Authentication zu konfigurieren und zu testen, müssen Sie die folgenden Bausteine ausführen:
 
 1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on), um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. [Erstellen eines SAP Cloud Platform Identity Authentication-Testbenutzers](#create-an-sap-cloud-platform-identity-authentication-test-user), um in SAP Cloud Platform Identity Authentication eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Azure AD-Darstellung verknüpft ist.
-4. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Testen des einmaligen Anmeldens](#test-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
+1. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. [Erstellen eines SAP Cloud Platform Identity Authentication-Testbenutzers](#create-an-sap-cloud-platform-identity-authentication-test-user), um in SAP Cloud Platform Identity Authentication eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Azure AD-Darstellung verknüpft ist.
+1. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. [Testen des einmaligen Anmeldens](#test-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -124,11 +124,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** unter **SAML-basierte Anmeldung** die Option **Modus** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** unter **SAML-basierte Anmeldung** die Option **Modus** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_samlbase.png)
 
-3. Wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten, führen Sie im Abschnitt **Domäne und URLs für SAP Cloud Platform Identity Authentication** die folgenden Schritte aus:  
+1. Wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten, führen Sie im Abschnitt **Domäne und URLs für SAP Cloud Platform Identity Authentication** die folgenden Schritte aus:  
 
     ![SSO-Informationen zur Domäne und zu den URLs für SAP Cloud Platform Identity Authentication](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url.png)
 
@@ -139,7 +139,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den SAP Cloud Platform Identity Authentication-Client](https://cloudplatform.sap.com/capabilities/security/trustcenter.html). Falls Sie diesen Bezeichnerwert nicht verstehen, können Sie die SAP Cloud Platform Identity Authentication-Dokumentation zum Thema [Tenant SAML 2.0 Configuration](https://help.hana.ondemand.com/cloud_identity/frameset.htm?e81a19b0067f4646982d7200a8dab3ca.html) lesen.
 
-4. Wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten, wählen Sie **Erweiterte URL-Einstellungen anzeigen** aus.
+1. Wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten, wählen Sie **Erweiterte URL-Einstellungen anzeigen** aus.
 
     ![SSO-Informationen zur Domäne und zu den URLs für SAP Cloud Platform Identity Authentication](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_url1.png)
 
@@ -148,15 +148,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE]
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Verwenden Sie Ihre jeweilige Anmelde-URL für die Geschäftsanwendung. Wenden Sie sich bei etwaigen Fragen an das [Supportteam für den SAP Cloud Platform Identity Authentication-Client](https://cloudplatform.sap.com/capabilities/security/trustcenter.html).
 
-5. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Metadaten-XML** aus. Speichern Sie dann die Metadatendatei auf Ihrem Computer.
+1. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Metadaten-XML** aus. Speichern Sie dann die Metadatendatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_certificate.png)
 
-6. Die SAP Cloud Platform Identity Authentication-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Verwalten Sie die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite. Der folgende Screenshot zeigt ein Beispiel für das Format. 
+1. Die SAP Cloud Platform Identity Authentication-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Verwalten Sie die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite. Der folgende Screenshot zeigt ein Beispiel für das Format. 
 
     ![Einmaliges Anmelden konfigurieren](./media/sap-hana-cloud-platform-identity-authentication-tutorial/attribute.png)
 
-7. Wenn Ihre SAP-Anwendung ein Attribut wie **firstName** erwartet, fügen Sie das **firstName**-Attribut im Abschnitt **Benutzerattribute** hinzu. Diese Option ist im Dialogfeld **Einmaliges Anmelden** in der Option **SAML-Tokenattribute** verfügbar.
+1. Wenn Ihre SAP-Anwendung ein Attribut wie **firstName** erwartet, fügen Sie das **firstName**-Attribut im Abschnitt **Benutzerattribute** hinzu. Diese Option ist im Dialogfeld **Einmaliges Anmelden** in der Option **SAML-Tokenattribute** verfügbar.
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Attribut hinzufügen** zu öffnen. 
     
@@ -170,25 +170,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     d. Klicken Sie auf **OK**.
 
-8. Wählen Sie die Schaltfläche **Speichern** aus.
+1. Wählen Sie die Schaltfläche **Speichern** aus.
 
     ![Einmaliges Anmelden konfigurieren: Schaltfläche „Speichern“](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_general_400.png)
 
-9. Wählen Sie im Abschnitt **Konfiguration für SAP Cloud Platform Identity Authentication** die Option **SAP Cloud Platform Identity Authentication konfigurieren** aus, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Wählen Sie im Abschnitt **Konfiguration für SAP Cloud Platform Identity Authentication** die Option **SAP Cloud Platform Identity Authentication konfigurieren** aus, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![SAP Cloud Platform Identity Authentication-Konfiguration](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_configure.png) 
 
-10. Wechseln Sie zum Konfigurieren von SSO für Ihre Anwendung zur SAP Cloud Platform Identity Authentication-Verwaltungskonsole. Die URL hat das folgende Muster: `https://<tenant-id>.accounts.ondemand.com/admin`. Lesen Sie dann in der Dokumentation von SAP Cloud Platform Identity Authentication den Artikel [Integration with Microsoft Azure AD](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html). 
+1. Wechseln Sie zum Konfigurieren von SSO für Ihre Anwendung zur SAP Cloud Platform Identity Authentication-Verwaltungskonsole. Die URL hat das folgende Muster: `https://<tenant-id>.accounts.ondemand.com/admin`. Lesen Sie dann in der Dokumentation von SAP Cloud Platform Identity Authentication den Artikel [Integration with Microsoft Azure AD](https://help.hana.ondemand.com/cloud_identity/frameset.htm?626b17331b4d4014b8790d3aea70b240.html). 
 
-11. Wählen Sie im Azure-Portal die Schaltfläche **Speichern** aus.
+1. Wählen Sie im Azure-Portal die Schaltfläche **Speichern** aus.
 
-12. Führen Sie die folgenden Schritte nur aus, wenn Sie SSO für eine weitere SAP-Anwendung hinzufügen und aktivieren möchten. Wiederholen Sie die Schritte aus dem Abschnitt **Hinzufügen von SAP Cloud Platform Identity Authentication über den Katalog**.
+1. Führen Sie die folgenden Schritte nur aus, wenn Sie SSO für eine weitere SAP-Anwendung hinzufügen und aktivieren möchten. Wiederholen Sie die Schritte aus dem Abschnitt **Hinzufügen von SAP Cloud Platform Identity Authentication über den Katalog**.
 
-13. Wählen Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SAP Cloud Platform Identity Authentication** die Option **Anmeldung über Link** aus.
+1. Wählen Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SAP Cloud Platform Identity Authentication** die Option **Anmeldung über Link** aus.
 
     ![Konfigurieren der Anmeldung über Link](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
 
-14. Speichern Sie die Konfiguration.
+1. Speichern Sie die Konfiguration.
 
 >[!NOTE] 
 >Die neue Anwendung nutzt die „Einmaliges Anmelden“-Konfiguration der vorherigen SAP-Anwendung. Achten Sie darauf, dass Sie in der SAP Cloud Platform Identity Authentication-Verwaltungskonsole dieselben Unternehmensidentitätsanbieter verwenden.
@@ -209,15 +209,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie im oberen Bereich des Dialogfelds **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie im oberen Bereich des Dialogfelds **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/sap-hana-cloud-platform-identity-authentication-tutorial/create_aaduser_04.png)
 
@@ -251,23 +251,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **SAP Cloud Platform Identity Authentication** aus.
+1. Wählen Sie in der Anwendungsliste **SAP Cloud Platform Identity Authentication** aus.
 
     ![Der Link „SAP Cloud Platform Identity Authentication“ in der Anwendungsliste](./media/sap-hana-cloud-platform-identity-authentication-tutorial/tutorial_sapcpia_app.png)  
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

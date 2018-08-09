@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 06898877a4f13182230c6d5fb12544f90525d84d
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 40a83b93443ebe1482f89a114505a1ba27b93bd2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960167"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445742"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -69,29 +69,29 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 So erstellen Sie einen Recovery Services-Tresor
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie im Menü **Hub** die Option **Durchsuchen**, und geben Sie dann **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**.
+1. Wählen Sie im Menü **Hub** die Option **Durchsuchen**, und geben Sie dann **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**.
 
     ![Eingabe im Feld und Auswahl von „Recovery Services-Tresore“ in den Ergebnissen](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
 
     Die Liste mit den Recovery Services-Tresoren wird angezeigt.
-3. Wählen Sie im Menü **Recovery Services-Tresore** die Option **Hinzufügen**.
+1. Wählen Sie im Menü **Recovery Services-Tresore** die Option **Hinzufügen**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
     Der Bereich **Recovery Services-Tresore** wird geöffnet. Sie werden aufgefordert, Informationen für **Name**, **Abonnement**, **Ressourcengruppe** und **Speicherort** anzugeben.
 
     ![Bereich „Recovery Services-Tresore“](./media/backup-azure-arm-vms-prepare/rs-vault-attributes.png)
-4. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen mit 2 bis 50 Zeichen ein. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-5. Wählen Sie **Abonnement** aus, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
-6. Wählen Sie **Ressourcengruppe** aus, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder wählen Sie **Neu** aus, um eine neue Ressourcengruppe zu erstellen. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-7. Wählen Sie **Standort** aus, um die geografische Region für den Tresor auszuwählen. Der Tresor *muss* sich in derselben Region wie die zu schützenden virtuellen Computer befinden.
+1. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen mit 2 bis 50 Zeichen ein. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+1. Wählen Sie **Abonnement** aus, um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
+1. Wählen Sie **Ressourcengruppe** aus, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder wählen Sie **Neu** aus, um eine neue Ressourcengruppe zu erstellen. Umfassende Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+1. Wählen Sie **Standort** aus, um die geografische Region für den Tresor auszuwählen. Der Tresor *muss* sich in derselben Region wie die zu schützenden virtuellen Computer befinden.
 
    > [!IMPORTANT]
    > Wenn Sie sich nicht sicher sind, an welchem Standort sich Ihr virtueller Computer befindet, schließen Sie das Dialogfeld zur Tresorerstellung, und wechseln Sie zur Liste der virtuellen Computer im Portal. Wenn Sie über virtuelle Computer in mehreren Regionen verfügen, müssen Sie in jeder Region einen Recovery Services-Tresor erstellen. Erstellen Sie den Tresor am ersten Standort, bevor Sie mit dem nächsten Standort fortfahren. Das Angeben von Speicherkonten zum Speichern der Sicherungsdaten ist nicht erforderlich. Der Recovery Services-Tresor und der Azure Backup-Dienst nehmen dies automatisch vor.
    >
    >
 
-8. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Statusbenachrichtigungen rechts oben im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
+1. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Statusbenachrichtigungen rechts oben im Portal. Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Recovery Services-Tresoren angezeigt. Sollte der Tresor nicht angezeigt werden, wählen Sie **Aktualisieren**.
 
     ![Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
@@ -107,13 +107,13 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
    ![Auswählen des Tresors aus der Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
 
-2. Scrollen Sie im Bereich **Einstellungen** mithilfe des vertikalen Schiebereglers nach unten zum **Verwaltungsabschnitt**, und klicken Sie auf **Sicherungsinfrastruktur**. Wählen Sie im Abschnitt **Allgemein** die Option **Sicherungskonfiguration**. Wählen Sie im Bereich **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher.
+1. Scrollen Sie im Bereich **Einstellungen** mithilfe des vertikalen Schiebereglers nach unten zum **Verwaltungsabschnitt**, und klicken Sie auf **Sicherungsinfrastruktur**. Wählen Sie im Abschnitt **Allgemein** die Option **Sicherungskonfiguration**. Wählen Sie im Bereich **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher.
 
    ![Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
    Wenn Sie Azure als primären Speicherendpunkt für die Sicherung verwenden, verwenden Sie weiterhin den georedundanten Speicher. Wenn Sie Azure nicht als primären Speicherendpunkt für die Sicherung verwenden, wählen Sie „Lokal redundanter Speicher“ aus. Weitere Informationen zu Speicheroptionen finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
-3. Wenn Sie den Speicherreplikationstyp geändert haben, wählen Sie **Speichern**.
+1. Wenn Sie den Speicherreplikationstyp geändert haben, wählen Sie **Speichern**.
     
 Nachdem Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
@@ -135,20 +135,20 @@ Bevor Sie einen virtuellen Computer mit einem Recovery Services-Tresor registrie
       Der Bereich **Einstellungen** und das Tresordashboard für den ausgewählten Tresor werden geöffnet.
 
       ![Bereich „Einstellungen“ und Tresordashboard](./media/backup-azure-arm-vms-prepare/new-vault-settings-blade.png)
-2. Wählen Sie im Menü des Tresordashboards die Option **Sicherung**.
+1. Wählen Sie im Menü des Tresordashboards die Option **Sicherung**.
 
    ![Schaltfläche „Sicherung“](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
    Die Bereiche **Sicherung** und **Sicherungsziel** werden geöffnet.
 
-3. Legen Sie im Bereich **Sicherungsziel** die Option **Wo wird Ihre Workload ausgeführt?** auf **Azure** und die Option **Was möchten Sie sichern?** auf **Virtueller Computer** fest. Wählen Sie dann **OK**aus.
+1. Legen Sie im Bereich **Sicherungsziel** die Option **Wo wird Ihre Workload ausgeführt?** auf **Azure** und die Option **Was möchten Sie sichern?** auf **Virtueller Computer** fest. Wählen Sie dann **OK**aus.
 
    ![Bereiche „Sicherung“ und „Sicherungsziel“](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
    In diesem Schritt wird die VM-Erweiterung im Tresor registriert. Der Bereich **Sicherungsziel** wird geschlossen, und der Bereich **Sicherungsrichtlinie** wird geöffnet.
 
    ![Bereiche „Sicherung“ und „Sicherungsrichtlinie“](./media/backup-azure-arm-vms-prepare/select-backup-goal-2.png)
-4. Wählen Sie im Bereich **Sicherungsrichtlinie** die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten.
+1. Wählen Sie im Bereich **Sicherungsrichtlinie** die Sicherungsrichtlinie aus, die Sie auf den Tresor anwenden möchten.
 
    ![Sicherungsrichtlinie auswählen](./media/backup-azure-arm-vms-prepare/setting-rs-backup-policy-new.png)
 
@@ -156,13 +156,13 @@ Bevor Sie einen virtuellen Computer mit einem Recovery Services-Tresor registrie
     Wählen Sie **OK**, um die Sicherungsrichtlinie mit dem Tresor zu verknüpfen.
 
    Der Bereich **Sicherungsrichtlinie** wird geschlossen, und der Bereich **Virtuelle Computer auswählen** wird geöffnet.
-5. Wählen Sie im Bereich **Virtuelle Computer auswählen** die virtuellen Computer aus, die der angegebenen Richtlinie zugeordnet werden sollen, und wählen Sie **OK**.
+1. Wählen Sie im Bereich **Virtuelle Computer auswählen** die virtuellen Computer aus, die der angegebenen Richtlinie zugeordnet werden sollen, und wählen Sie **OK**.
 
    ![Bereich „Virtuelle Computer auswählen“](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
    Der ausgewählte virtuelle Computer wird überprüft. Falls die erwarteten virtuellen Computer nicht angezeigt werden, sollten Sie überprüfen, ob sie sich in der gleichen Azure-Region wie der Recovery Services-Tresor befinden. Wenn die virtuellen Computer dennoch nicht angezeigt werden, stellen Sie sicher, dass sie nicht bereits durch einen anderen Tresor geschützt sind. Die Region des Recovery Services-Tresors wird auf dem Tresordashboard angezeigt.
 
-6. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, wählen Sie im Bereich **Sicherung** die Option **Sicherung aktivieren**. Mit diesem Schritt wird die Richtlinie im Tresor und auf den virtuellen Computern bereitgestellt. Der erste Wiederherstellungspunkt für den virtuellen Computer wird in diesem Schritt nicht erstellt.
+1. Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, wählen Sie im Bereich **Sicherung** die Option **Sicherung aktivieren**. Mit diesem Schritt wird die Richtlinie im Tresor und auf den virtuellen Computern bereitgestellt. Der erste Wiederherstellungspunkt für den virtuellen Computer wird in diesem Schritt nicht erstellt.
 
    ![Schaltfläche „Sicherung aktivieren“](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
@@ -241,15 +241,15 @@ Führen Sie die folgenden Schritte aus, um einen HTTP-Proxy für die Kommunikati
 Mit diesem Verfahren wird die Proxyserverkonfiguration für das lokale Systemkonto eingerichtet.
 
 1. Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553) herunter.
-2. Öffnen Sie Internet Explorer, indem Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten ausführen:
+1. Öffnen Sie Internet Explorer, indem Sie den folgenden Befehl in einer Eingabeaufforderung mit erhöhten Rechten ausführen:
 
     ```
     psexec -i -s "c:\Program Files\Internet Explorer\iexplore.exe"
     ```
 
-3. Rufen Sie in Internet Explorer **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen** auf.
-4. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest.
-5. Schließen Sie Internet Explorer.
+1. Rufen Sie in Internet Explorer **Extras** > **Internetoptionen** > **Verbindungen** > **LAN-Einstellungen** auf.
+1. Überprüfen Sie die Proxyeinstellungen für das Systemkonto. Legen Sie Proxy-IP und Port fest.
+1. Schließen Sie Internet Explorer.
 
 Mit dem folgenden Skript wird eine computerweite Proxykonfiguration eingerichtet und für den gesamten ausgehenden HTTP/HTTPS-Datenverkehr verwendet. Wenn Sie einen Proxyserver auf einem aktuellen Benutzerkonto (keinem lokalen Systemkonto) eingerichtet haben, verwenden Sie dieses Skript, um die Einstellungen dem SYSTEMKONTO zuzuweisen.
 
@@ -283,10 +283,10 @@ HttpProxy.Port=<proxy port>
 
 #### <a name="step-2-allow-incoming-connections-on-the-proxy-server"></a>Schritt 2: Zulassen von eingehenden Verbindungen auf dem Proxyserver
 1. Öffnen Sie auf dem Proxyserver die Windows-Firewall. Die einfachste Möglichkeit zum Zugriff auf die Firewall besteht darin, die **Windows-Firewall mit erweiterter Sicherheit** zu suchen.
-2. Klicken Sie im Dialogfeld **Windows-Firewall mit erweiterter Sicherheit** mit der rechten Maustaste auf **Regeln für eingehenden Datenverkehr**, und wählen Sie **Neue Regel**.
-3. Wählen Sie im Assistenten für neue eingehende Regeln auf der Seite **Regeltyp** die Option **Benutzerdefiniert** aus, und wählen Sie **Weiter**.
-4. Wählen Sie die auf der Seite **Programm** die Option **Alle Programme** aus, und wählen Sie **Weiter**.
-5. Geben Sie auf der Seite **Protokoll und Ports** die folgenden Informationen ein, und wählen Sie **Weiter**:
+1. Klicken Sie im Dialogfeld **Windows-Firewall mit erweiterter Sicherheit** mit der rechten Maustaste auf **Regeln für eingehenden Datenverkehr**, und wählen Sie **Neue Regel**.
+1. Wählen Sie im Assistenten für neue eingehende Regeln auf der Seite **Regeltyp** die Option **Benutzerdefiniert** aus, und wählen Sie **Weiter**.
+1. Wählen Sie die auf der Seite **Programm** die Option **Alle Programme** aus, und wählen Sie **Weiter**.
+1. Geben Sie auf der Seite **Protokoll und Ports** die folgenden Informationen ein, und wählen Sie **Weiter**:
    * Wählen Sie **TCP** als **Protokolltyp** aus.
    * Wählen Sie für **Lokaler Port** die Option **Bestimmte Ports** aus. Geben Sie im folgenden Feld die Anzahl der konfigurierten Proxyports an.
    * Wählen Sie bei **Remoteport** die Option **Alle Ports** aus.

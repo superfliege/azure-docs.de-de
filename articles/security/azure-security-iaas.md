@@ -1,5 +1,5 @@
 ---
-title: Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure | Microsoft-Dokumentation
+title: Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure | Microsoft Docs
 description: " Die Workloadmigration zu Azure IaaS ist eine gute Gelegenheit zur Neubewertung unserer Designs. "
 services: security
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: barclayn
-ms.openlocfilehash: 37620e70377e3f1fbeeeb73aaa294c5f54cf5b3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c28459aa04c67db8abda54d9f14eb417bd8ed60
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723772"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618596"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -188,7 +188,7 @@ Vergleichen Sie Ihre Standards mit den bewährten Methoden der Branche, passen S
 
 Für Umgebungen, die getrennt von Ihrer Produktionsumgebung gehostet werden, können Sie eine Antischadsoftware-Erweiterung verwenden, um den Schutz Ihrer virtuellen Computer und Clouddienste zu verbessern. Diese wird in [Azure Security Center](../security-center/security-center-intro.md) integriert.
 
-[Microsoft-Antischadsoftware](azure-security-antimalware.md) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Malwareproblembehandlung, Signaturupdates, Engine-Updates, Beispielberichte, Sammlungen von Ausschlussereignissen und [PowerShell-Unterstützung](https://msdn.microsoft.com/library/dn771715.aspx).
+[Microsoft-Antischadsoftware](azure-security-antimalware.md) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Malwareproblembehandlung, Signaturupdates, Engine-Updates, Beispielberichte, Sammlungen von Ausschlussereignissen und [PowerShell-Unterstützung](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension).
 
 ![Azure Antimalware](./media/azure-security-iaas/azantimalware.png)
 

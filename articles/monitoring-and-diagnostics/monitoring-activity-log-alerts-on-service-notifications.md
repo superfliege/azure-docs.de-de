@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/09/2018
 ms.author: shtabriz
 ms.component: alerts
-ms.openlocfilehash: 1cd82f7ffa9360dbc35f9c9d790df34355d9dd1a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 6e1a72c428425c73ff0446fc0d41b1b18333c3e3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035712"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423887"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
 ## <a name="overview"></a>Übersicht
@@ -43,32 +43,32 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
 
     ![Der Dienst „Dienstintegrität“](./media/monitoring-activity-log-alerts-on-service-notifications/home-servicehealth.png)
 
-2. Wählen Sie im Abschnitt **Warnungen** die Option **Integritätswarnungen** aus.
+1. Wählen Sie im Abschnitt **Warnungen** die Option **Integritätswarnungen** aus.
 
     ![Die Registerkarte „Integritätswarnungen“](./media/monitoring-activity-log-alerts-on-service-notifications/alerts-blades-sh.png)
 
-3. Wählen Sie **Dienstintegritätswarnung erstellen** aus, und füllen Sie die Felder aus.
+1. Wählen Sie **Dienstintegritätswarnung erstellen** aus, und füllen Sie die Felder aus.
 
     ![Der Befehl „Dienstintegritätswarnung erstellen“](./media/monitoring-activity-log-alerts-on-service-notifications/service-health-alert.png)
 
-4. Wählen Sie das **Abonnement**, die **Dienste** und die **Regionen** für Benachrichtigungen aus.
+1. Wählen Sie das **Abonnement**, die **Dienste** und die **Regionen** für Benachrichtigungen aus.
 
     ![Das Dialogfeld „Aktivitätsprotokollwarnung hinzufügen“](./media/monitoring-activity-log-alerts-on-service-notifications/activity-log-alert-new-ux.png)
 
 > [!NOTE]
 > Dieses Abonnement wird verwendet, um die Aktivitätsprotokollwarnung zu speichern. Die Warnungsressource wird für dieses Abonnement bereitgestellt und überwacht hierfür Ereignisse im Aktivitätsprotokoll.
 
-5. Wählen Sie die **Ereignistypen** für Benachrichtigungen aus: *Dienstproblem*, *Geplante Wartung* und *Integritätsempfehlungen* 
+1. Wählen Sie die **Ereignistypen** für Benachrichtigungen aus: *Dienstproblem*, *Geplante Wartung* und *Integritätsempfehlungen* 
 
-6. Definieren Sie die Warnungsdetails durch Eingeben eines **Namens für die Warnungsregel** und einer **Beschreibung**.
+1. Definieren Sie die Warnungsdetails durch Eingeben eines **Namens für die Warnungsregel** und einer **Beschreibung**.
 
-7. Wählen Sie die **Ressourcengruppe** aus, in der die Warnung gespeichert werden soll.
+1. Wählen Sie die **Ressourcengruppe** aus, in der die Warnung gespeichert werden soll.
 
-8. Erstellen Sie eine neue Aktionsgruppe, indem Sie **Neue Aktionsgruppe** auswählen. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Auf den kurzen Namen wird in den Benachrichtigungen verwiesen, die gesendet werden, wenn diese Warnung ausgelöst wird.
+1. Erstellen Sie eine neue Aktionsgruppe, indem Sie **Neue Aktionsgruppe** auswählen. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Auf den kurzen Namen wird in den Benachrichtigungen verwiesen, die gesendet werden, wenn diese Warnung ausgelöst wird.
 
     ![Erstellen einer neuen Aktionsgruppe](./media/monitoring-activity-log-alerts-on-service-notifications/action-group-creation.png)
 
-9. Definieren Sie eine Liste von Empfängern, indem Sie folgende Daten der Empfänger angeben:
+1. Definieren Sie eine Liste von Empfängern, indem Sie folgende Daten der Empfänger angeben:
 
     a. **Name:** Geben Sie Name, Alias oder Bezeichner des Empfängers ein.
 
@@ -76,7 +76,7 @@ Informationen zum Konfigurieren von Dienstintegritätsbenachrichtigungs-Warnunge
 
     c. **Details**: Geben Sie basierend auf dem ausgewählten Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI usw. ein.
 
-10. Wählen Sie **OK** aus, um die Aktionsgruppe zu erstellen, und dann **Warnungsregel erstellen**, um die Warnung abzuschließen.
+1. Wählen Sie **OK** aus, um die Aktionsgruppe zu erstellen, und dann **Warnungsregel erstellen**, um die Warnung abzuschließen.
 
 Innerhalb weniger Minuten wird die Warnung aktiv und entsprechend den Bedingungen ausgelöst, die Sie während der Erstellung angegeben haben.
 
@@ -91,9 +91,9 @@ Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltu
 
 1. Führen Sie die Schritte 1 bis 7 im vorherigen Abschnitt aus, um Ihre Dienstintegritätsbenachrichtigung zu erstellen. 
 
-2. Klicken Sie unter **Aktionsgruppe definieren** auf die Schaltfläche **Aktionsgruppe auswählen**. Wählen Sie die entsprechende Aktionsgruppe aus.
+1. Klicken Sie unter **Aktionsgruppe definieren** auf die Schaltfläche **Aktionsgruppe auswählen**. Wählen Sie die entsprechende Aktionsgruppe aus.
 
-3. Wählen Sie **Hinzufügen** aus, um die Aktionsgruppe hinzuzufügen, und dann **Warnungsregel erstellen**, um die Warnung abzuschließen.
+1. Wählen Sie **Hinzufügen** aus, um die Aktionsgruppe hinzuzufügen, und dann **Warnungsregel erstellen**, um die Warnung abzuschließen.
 
 Innerhalb weniger Minuten wird die Warnung aktiv und entsprechend den Bedingungen ausgelöst, die Sie während der Erstellung angegeben haben.
 

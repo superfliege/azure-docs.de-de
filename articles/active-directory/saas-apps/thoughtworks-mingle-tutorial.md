@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: b841210121cb2091b4c4130d3353a3ab85467d4b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a685b5702aa9f74f3e0abf2a06774a30ac0d996f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211382"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436989"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Tutorial: Azure Active Directory-Integration mit Thoughtworks Mingle
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Thoughtworks Mingle aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-thoughtworks-mingle-from-the-gallery"></a>Hinzufügen von Thoughtworks Mingle aus dem Katalog
 Zum Konfigurieren der Integration von Thoughtworks Mingle in Azure AD müssen Sie Thoughtworks Mingle aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Thoughtworks Mingle in Azure AD müssen Si
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Thoughtworks Mingle** ein, wählen Sie im Ergebnisbereich **Thoughtworks Mingle** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Thoughtworks Mingle** ein, wählen Sie im Ergebnisbereich **Thoughtworks Mingle** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Thoughtworks Mingle in der Ergebnisliste](./media/thoughtworks-mingle-tutorial/tutorial_thoughtworksmingle_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Weisen Sie in Thoughtworks Mingle den Wert für **Benutzername** in Azure AD als
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Thoughtworks Mingle müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Thoughtworks Mingle-Testbenutzers](#create-a-thoughtworks-mingle-test-user)**, um eine Entsprechung von Britta Simon in Thoughtworks Mingle zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Thoughtworks Mingle-Testbenutzers](#create-a-thoughtworks-mingle-test-user)**, um eine Entsprechung von Britta Simon in Thoughtworks Mingle zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -99,13 +99,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Thoughtworks Mingle** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/thoughtworks-mingle-tutorial/tutorial_thoughtworksmingle_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für Thoughtworks Mingle** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Domäne und URLs für Thoughtworks Mingle** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Thoughtworks Mingle](./media/thoughtworks-mingle-tutorial/tutorial_thoughtworksmingle_url.png)
 
@@ -114,21 +114,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von Thoughtworks Mingle](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support), um diese Werte zu erhalten. 
  
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/thoughtworks-mingle-tutorial/tutorial_thoughtworksmingle_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/thoughtworks-mingle-tutorial/tutorial_general_400.png)
 
-6. Melden Sie sich bei der **Thoughtworks Mingle** -Unternehmenswebsite als Administrator an.
+1. Melden Sie sich bei der **Thoughtworks Mingle** -Unternehmenswebsite als Administrator an.
 
-7. Klicken Sie auf die Registerkarte **Admin**, und klicken Sie dann auf **SSO-Config**.
+1. Klicken Sie auf die Registerkarte **Admin**, und klicken Sie dann auf **SSO-Config**.
    
     ![Registerkarte „Admin“](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO Config")
 
-8. Führen Sie im Abschnitt **SSO Config** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **SSO Config** die folgenden Schritte aus:
    
     ![SSO-Config](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO-Config")
     
@@ -151,15 +151,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/thoughtworks-mingle-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/thoughtworks-mingle-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Schaltfläche „Hinzufügen“](./media/thoughtworks-mingle-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Dialogfeld „Benutzer“](./media/thoughtworks-mingle-tutorial/create_aaduser_04.png) 
 
@@ -179,19 +179,19 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Thoughtworks M
 
 1. Melden Sie sich bei der Thoughtworks Mingle-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie auf **Profil**.
+1. Klicken Sie auf **Profil**.
    
     ![Ihr erstes Projekt](./media/thoughtworks-mingle-tutorial/ic785160.png "Ihr erstes Projekt")
 
-3. Klicken Sie auf die Registerkarte **Admin**, und klicken Sie dann auf **Benutzer**.
+1. Klicken Sie auf die Registerkarte **Admin**, und klicken Sie dann auf **Benutzer**.
    
     ![Benutzer](./media/thoughtworks-mingle-tutorial/ic785161.png "Benutzer")
 
-4. Klicken Sie auf **Neuer Benutzer**.
+1. Klicken Sie auf **Neuer Benutzer**.
    
     ![Neuer Benutzer](./media/thoughtworks-mingle-tutorial/ic785162.png "Neuer Benutzer")
 
-5. Führen Sie auf der Dialogfeldseite **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Neuer Benutzer** die folgenden Schritte aus:
    
     ![Dialogfeld „New User“](./media/thoughtworks-mingle-tutorial/ic785163.png "New User")  
  
@@ -217,23 +217,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Thoughtworks Mingle** aus.
+1. Wählen Sie in der Anwendungsliste **Thoughtworks Mingle** aus.
 
     ![Thoughtworks Mingle-Link in der Anwendungsliste](./media/thoughtworks-mingle-tutorial/tutorial_thoughtworksmingle_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

@@ -3,7 +3,7 @@ title: JavaScript-Entwicklerreferenz zu Azure Functions | Microsoft-Dokumentatio
 description: Erfahren Sie, wie Sie mithilfe von JavaScript Funktionen entwickeln können.
 services: functions
 documentationcenter: na
-author: tdykstra
+author: ggailey777
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
-ms.author: tdykstra
-ms.openlocfilehash: 78f29cd4a20861e40bb7f7f398979b8d93387a7b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: glenga
+ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936625"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391179"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -271,7 +271,7 @@ Die folgende Tabelle zeigt die jeweilige von den Hauptversionen von Functions Ru
 | Functions-Version | Node.js-Version | 
 |---|---|
 | 1.x | 6.11.2 (durch die Laufzeit gesperrt) |
-| 2.x  |>=8.4.0 mit aktuellem LTS 8.9.4 empfohlen. Legen Sie die Version mithilfe der [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_NODE_DEFAULT_VERSION“ fest.|
+| 2.x  | Node.js.-Versionen _Active LTS_ und _Current_ (8.11.1 und 10.6.0 empfohlen). Legen Sie die Version mithilfe der [App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) „WEBSITE_NODE_DEFAULT_VERSION“ fest.|
 
 Die aktuell von der Laufzeit verwendete Version finden Sie in der Ausgabe `process.version` einer Funktion.
 

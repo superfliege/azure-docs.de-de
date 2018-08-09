@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 66ef20616df77dc809a79e516a53133a80759dc7
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b3550c771b4c2916987c66f318010e5bb246fa39
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355303"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446849"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
@@ -51,20 +51,20 @@ So erstellen Sie eine Web-App in einer ASE:
 
 1. Wählen Sie **Ressource erstellen** > **Web + Mobil** > **Web-Apps** aus.
 
-2. Geben Sie einen Namen für die Web-App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
+1. Geben Sie einen Namen für die Web-App ein. Wenn Sie bereits einen App Service-Plan in einer ASE ausgewählt haben, entspricht der Domänenname der App dem Domänenname der ASE.
 
     ![Namensauswahl für Web-Apps][1]
 
-3. Wählen Sie ein Abonnement aus.
+1. Wählen Sie ein Abonnement aus.
 
-4. Geben Sie einen Namen für eine neue Ressourcengruppe ein, oder wählen Sie **Vorhandene verwenden** aus, und wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
+1. Geben Sie einen Namen für eine neue Ressourcengruppe ein, oder wählen Sie **Vorhandene verwenden** aus, und wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
 
-5. Wählen Sie Ihr Betriebssystem aus. 
+1. Wählen Sie Ihr Betriebssystem aus. 
 
     * Das Hosten einer Linux-App in einer ASE ist ein neues Feature in der Vorschau, daher wird empfohlen, einer ASE, in der derzeit eine Produktionsworkload ausgeführt wird, keine Apps für Linux hinzuzufügen. 
     * Durch das Hinzufügen einer Linux-App zu einer ASE befindet sich die ASE auch im Vorschaumodus. 
 
-5. Wählen Sie einen in Ihrer ASE vorhandenen App Service-Plan aus, oder erstellen Sie mit den folgenden Schritten einen neuen:
+1. Wählen Sie einen in Ihrer ASE vorhandenen App Service-Plan aus, oder erstellen Sie mit den folgenden Schritten einen neuen:
 
     a. Wählen Sie **Neu erstellen**.
 
@@ -82,7 +82,7 @@ So erstellen Sie eine Web-App in einer ASE:
     > Linux-Web-Apps und Windows-Web-Apps können sich nicht im selben App Service-Plan befinden, jedoch in derselben App Service-Umgebung. 
     >
 
-6. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
 ## <a name="how-scale-works"></a>Skalieren ##
 
@@ -160,7 +160,7 @@ So löschen Sie eine ASE
 
 1. Verwenden Sie **Löschen** im oberen Bereich des Blatts **App Service-Umgebung**. 
 
-2. Geben Sie den Namen Ihrer ASE ein, um zu bestätigen, dass Sie sie löschen möchten. Beim Löschen einer ASE wird auch ihr gesamter Inhalt gelöscht. 
+1. Geben Sie den Namen Ihrer ASE ein, um zu bestätigen, dass Sie sie löschen möchten. Beim Löschen einer ASE wird auch ihr gesamter Inhalt gelöscht. 
 
     ![Löschen einer ASE][3]
 

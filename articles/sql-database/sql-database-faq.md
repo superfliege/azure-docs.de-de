@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 07/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 2e4f2bf4303d2a6f52f6dac7e8d71eca24800f53
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092068"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308812"
 ---
 # <a name="sql-database-faq"></a>SQL-Datenbank – Häufig gestellte Fragen
 
@@ -90,7 +90,7 @@ Ja. Sie können die Computeebene, die für Ihre Anwendung benötigt wird, separa
 Sie können die Sicherungsaufbewahrung für PITR auf einen Wert zwischen 7 und 35 Tagen festlegen. Der Sicherungsspeicher wird basierend auf dem tatsächlichen Speicherverbrauch separat berechnet, wenn eine Speichermenge überschritten wird, die der maximalen Datengröße entspricht. In der Vorschauversion ist die PITR-Aufbewahrungsdauer standardmäßig auf sieben Tage festgelegt. In vielen Fällen reicht die maximale Datengröße zum Speichern von Sicherungen für einen Zeitraum von sieben Tagen aus.
 
 ## <a name="why-do-you-allow-selection-of-the-hardware-generation-for-compute"></a>Warum wird die Auswahl der Hardwaregeneration für Compute zugelassen?
-Unser Ziel ist maximale Flexibilität, damit Sie eine Leistungskonfiguration wählen können, die möglichst gut zu den Anforderungen der Anwendung passt. In der obigen Tabelle sind die Unterschiede zwischen Gen4 und Gen5 dargestellt. Vor allem Gen4-Hardware verfügt über deutlich mehr Arbeitsspeicher pro V-Kern. Bei Gen5-Hardware können die Computeressourcen aber viel stärker zentral hochskaliert werden. Wir möchten diese Unterschiede transparent machen, damit Sie für Ihre Anwendung das optimale Preis-Leistungs-Verhältnis erzielen können.
+Unser Ziel ist maximale Flexibilität, damit Sie eine Leistungskonfiguration wählen können, die möglichst gut zu den Anforderungen der Anwendung passt. Gen4-Hardware verfügt über deutlich mehr Arbeitsspeicher pro V-Kern. Bei Gen5-Hardware können die Computeressourcen aber viel stärker zentral hochskaliert werden. Weitere Informationen finden Sie unter [Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md).
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Muss ich meine Anwendung offline schalten, um von einer auf DTUs basierenden Datenbank auf einen V-Kern-basierten Diensttarif umzustellen? 
 Die neuen Diensttarife bieten eine einfache Onlinekonvertierungsmethode, die dem bestehenden Prozess zur Durchführung eines Upgrades für Datenbanken vom Diensttarif „Standard“ auf „Premium“ und umgekehrt ähnelt. Diese Konvertierung kann mit dem Azure-Portal, mit PowerShell, der Azure CLI, T-SQL oder der REST-API initiiert werden. Weitere Informationen finden Sie unter [Verwalten von Ressourcen für eine einzelne Datenbank in Azure SQL-Datenbank](sql-database-single-database-scale.md) und [Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen](sql-database-elastic-pool.md).

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b08033c53185e6229e6fa368a3456749e19eb1f0
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: eeaac4f694c3e7197a5f798d7462b39d42e14e03
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021322"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505830"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank
 
@@ -50,9 +50,8 @@ Falls Sie Visual Studio bereits installiert haben, können Sie die Workloads in 
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 
-<a name="-download-the-sample-projecthttpsgithubcomazure-samplesdotnet-sqldb-tutorialarchivemasterzip"></a>-[Laden Sie das Beispielprojekt herunter](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
--
-Extrahieren (entzippen) Sie die Datei *dotnet-sqldb-tutorial-master.zip*.
+- [Laden Sie das Beispielprojekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip) herunter.
+- Extrahieren (entzippen) Sie die Datei *dotnet-sqldb-tutorial-master.zip*.
 
 Das Beispielprojekt enthält eine einfache [ASP.NET MVC](https://www.asp.net/mvc)-CRUD-App (Create-Read-Update-Delete, Erstellen-Lesen-Aktualisieren-Löschen), die auf [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application) basiert.
 

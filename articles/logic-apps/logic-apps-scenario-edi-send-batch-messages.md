@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: LADocs; estfan; divswa
-ms.openlocfilehash: 6340d1fc409b64c5e681f9f69e4e2d0895ede61f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fb15688968cb29039fc669ed6b8685ba64df9e81
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299289"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432132"
 ---
 # <a name="send-x12-messages-in-batch-to-trading-partners"></a>Senden von X12-Nachrichten in Batches an Parteien
 
@@ -60,11 +60,11 @@ Um Nachrichten an einen Batch senden zu können, müssen Sie mit dem Trigger **B
 
 1. Erstellen Sie über das [Azure-Portal](https://portal.azure.com) eine Logik-App namens „BatchX12Messages“.
 
-2. Fügen Sie im Designer für Logik-Apps den Trigger **Batch** hinzu, um den Workflow Ihrer Logik-App zu starten. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. Wählen Sie den Trigger **Batch – Batchnachrichten** aus.
+1. Fügen Sie im Designer für Logik-Apps den Trigger **Batch** hinzu, um den Workflow Ihrer Logik-App zu starten. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. Wählen Sie den Trigger **Batch – Batchnachrichten** aus.
 
    ![Hinzufügen des Triggers „Batch“](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-receiver-trigger.png)
 
-3. Geben Sie einen Namen und Freigabekriterien für den Batch an:
+1. Geben Sie einen Namen und Freigabekriterien für den Batch an:
 
    * **Batchname**: Der Name zum Identifizieren des Batchs („TestBatch“ in diesem Beispiel).
 
@@ -81,7 +81,7 @@ Um Nachrichten an einen Batch senden zu können, müssen Sie mit dem Trigger **B
      ![Angeben von Details für den Batchtrigger](./media/logic-apps-scenario-EDI-send-batch-messages/receive-batch-schedule-based.png)
 
 
-4. Fügen Sie eine weitere Aktion hinzu, die die Gruppen- oder Batchnachrichten codiert und eine X12-Batchnachricht erstellt. 
+1. Fügen Sie eine weitere Aktion hinzu, die die Gruppen- oder Batchnachrichten codiert und eine X12-Batchnachricht erstellt. 
 
    a. Klicken Sie auf **+ Neuer Schritt** > **Aktion hinzufügen**.
 
@@ -89,7 +89,7 @@ Um Nachrichten an einen Batch senden zu können, müssen Sie mit dem Trigger **B
 
    ![Auswählen der X12-Codierungsaktion](./media/logic-apps-scenario-EDI-send-batch-messages/add-batch-encode-action.png)
    
-5. Legen Sie die Eigenschaften für die soeben hinzugefügte Aktion fest.
+1. Legen Sie die Eigenschaften für die soeben hinzugefügte Aktion fest.
 
    * Wählen Sie im Feld **Name der X12-Vereinbarung** die Vereinbarung aus der Dropdownliste aus. Sollte die Liste leer sein, vergewissern Sie sich, dass Sie eine Verbindung mit Ihrem Integrationskonto erstellt haben.
 
@@ -101,17 +101,17 @@ Um Nachrichten an einen Batch senden zu können, müssen Sie mit dem Trigger **B
 
    ![Batchcodierungsaktion – Details](./media/logic-apps-scenario-EDI-send-batch-messages/batch-encode-action-details.png)
 
-6. Fügen Sie zu Testzwecken eine HTTP-Aktion zum Senden der Batchnachricht an den [RequestBin-Dienst](https://requestbin.fullcontact.com/) hinzu. 
+1. Fügen Sie zu Testzwecken eine HTTP-Aktion zum Senden der Batchnachricht an den [RequestBin-Dienst](https://requestbin.fullcontact.com/) hinzu. 
 
    1. Geben Sie im Suchfeld den Begriff „HTTP“ als Filter ein. Wählen Sie die folgende Aktion aus: **HTTP - HTTP**
     
       ![Auswählen der HTTP-Aktion](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receive-add-http-action.png)
 
-   2. Wählen Sie in der Liste **Methode** die Option **POST** aus. Generieren Sie für das Feld **URI** einen URI für Ihre RequestBin-Instanz, und geben Sie ihn ein. Wählen Sie im Feld **Text** aus der Liste mit den dynamischen Inhalten unter dem Abschnitt **Nach Vereinbarungsname im Batch codieren** das Feld **Text** aus. Sollte **Text** nicht angezeigt werden, klicken Sie neben **Nach Vereinbarungsname im Batch codieren** auf **See more** (Mehr anzeigen).
+   1. Wählen Sie in der Liste **Methode** die Option **POST** aus. Generieren Sie für das Feld **URI** einen URI für Ihre RequestBin-Instanz, und geben Sie ihn ein. Wählen Sie im Feld **Text** aus der Liste mit den dynamischen Inhalten unter dem Abschnitt **Nach Vereinbarungsname im Batch codieren** das Feld **Text** aus. Sollte **Text** nicht angezeigt werden, klicken Sie neben **Nach Vereinbarungsname im Batch codieren** auf **See more** (Mehr anzeigen).
 
       ![Angeben von Details für die HTTP-Aktion](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receive-add-http-action-details.png)
 
-7.  Sie haben nun eine Logik-App für den Empfang erstellt. Speichern Sie Ihre Logik-App.
+1.  Sie haben nun eine Logik-App für den Empfang erstellt. Speichern Sie Ihre Logik-App.
 
     ![Speichern Ihrer Logik-App](./media/logic-apps-scenario-EDI-send-batch-messages/save-batch-receiver-logic-app.png)
 
@@ -131,24 +131,24 @@ Logik-Apps für den Versand müssen wissen, wohin die Elemente gesendet werden s
    
    ![Hinzufügen des Anforderungstriggers](./media/logic-apps-scenario-EDI-send-batch-messages/add-request-trigger-sender.png)
 
-2. Fügen Sie einen neuen Schritt hinzu, um Nachrichten an einen Batch zu senden.
+1. Fügen Sie einen neuen Schritt hinzu, um Nachrichten an einen Batch zu senden.
 
    1. Klicken Sie auf **+ Neuer Schritt** > **Aktion hinzufügen**.
 
-   2. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. 
+   1. Geben Sie im Suchfeld den Begriff „Batch“ als Filter ein. 
 
-3. Wählen Sie die Aktion **Nachrichten an Batch senden – Logik-App-Workflow mit Batchtrigger auswählen** aus.
+1. Wählen Sie die Aktion **Nachrichten an Batch senden – Logik-App-Workflow mit Batchtrigger auswählen** aus.
 
    ![Auswählen von „Nachrichten an Batch senden“](./media/logic-apps-scenario-EDI-send-batch-messages/send-messages-batch-action.png)
 
-4. Wählen Sie nun die zuvor erstellte Logik-App „BatchX12Messages“ aus, die jetzt als Aktion angezeigt wird.
+1. Wählen Sie nun die zuvor erstellte Logik-App „BatchX12Messages“ aus, die jetzt als Aktion angezeigt wird.
 
    ![Auswählen der Logik-App „BatchReceiver“](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-select-batch-receiver.png)
 
    > [!NOTE]
    > Die Liste enthält außerdem weitere Logik-Apps mit Batchtrigger.
 
-5. Legen Sie die Batcheigenschaften fest.
+1. Legen Sie die Batcheigenschaften fest.
 
    * **Batchname**: Der von der Logik-App für den Empfang definierte Batchname. Dieser wird zur Laufzeit überprüft und lautet in diesem Beispiel „TestBatch“.
 
@@ -160,7 +160,7 @@ Logik-Apps für den Versand müssen wissen, wohin die Elemente gesendet werden s
    
    ![Festlegen der Batcheigenschaften](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-select-batch-properties.png)
 
-6. Speichern Sie Ihre Logik-App. Ihre Logik-App für den Versand sieht nun in etwa wie folgt aus:
+1. Speichern Sie Ihre Logik-App. Ihre Logik-App für den Versand sieht nun in etwa wie folgt aus:
 
    ![Speichern Ihrer Logik-App für den Versand](./media/logic-apps-scenario-EDI-send-batch-messages/send-batch-finished.png)
 

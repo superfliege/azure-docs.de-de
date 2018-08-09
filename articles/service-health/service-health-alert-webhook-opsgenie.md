@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 6b8017f62dd895219f1d2cdac40f0efdf2db6c93
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6e9d44c4b64e41b04c40d0c511a638e539752da4
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179343"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435025"
 ---
 # <a name="configure-service-health-alerts-with-opsgenie"></a>Konfigurieren von Service Health-Warnungen mit OpsGenie
 
@@ -28,29 +28,29 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 ## <a name="creating-a-service-health-integration-url-in-opsgenie"></a>Erstellen einer URL für die Service Health-Integration in OpsGenie
 1.  Stellen Sie sicher, dass Sie Ihr [OpsGenie](https://www.opsgenie.com/)-Konto registriert haben und angemeldet sind.
 
-2.  Navigieren Sie zum Abschnitt **Integrations** (Integrationen) in OpsGenie.
+1.  Navigieren Sie zum Abschnitt **Integrations** (Integrationen) in OpsGenie.
 
     ![Abschnitt „Integrations“ in OpsGenie](./media/webhook-alerts/opsgenie-integrations-section.png)
 
-3.  Wählen Sie die Schaltfläche für die **Azure Service Health**-Integration aus.
+1.  Wählen Sie die Schaltfläche für die **Azure Service Health**-Integration aus.
 
     ![Schaltfläche „Azure Service Health“ in OpsGenie](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
 
-4.  **Benennen** Sie die Warnung, und füllen Sie das Feld **Assigned to Team** (Dem Team zugewiesen) aus.
+1.  **Benennen** Sie die Warnung, und füllen Sie das Feld **Assigned to Team** (Dem Team zugewiesen) aus.
 
-5.  Füllen Sie die anderen Felder aus: **Recipients** (Empfänger), **Enabled** (Aktiviert) und **Suppress Notifications** (Benachrichtigungen unterdrücken).
+1.  Füllen Sie die anderen Felder aus: **Recipients** (Empfänger), **Enabled** (Aktiviert) und **Suppress Notifications** (Benachrichtigungen unterdrücken).
 
-6.  Kopieren und speichern Sie die **Integrations-URL**, der am Ende bereits Ihr `apiKey` angefügt sein sollte.
+1.  Kopieren und speichern Sie die **Integrations-URL**, der am Ende bereits Ihr `apiKey` angefügt sein sollte.
 
     ![„Integration URL“ in OpsGenie](./media/webhook-alerts/opsgenie-integration-url.png)
 
-7.  Wählen Sie **Save Integration** (Integration speichern) aus.
+1.  Wählen Sie **Save Integration** (Integration speichern) aus.
 
 ## <a name="create-an-alert-using-opsgenie-in-the-azure-portal"></a>Erstellen einer Warnung mithilfe von OpsGenie im Azure-Portal
 ### <a name="for-a-new-action-group"></a>Für eine neue Aktionsgruppe:
 1. Befolgen Sie die Schritte 1 bis 8 in [Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
 
-2. Definieren Sie in der Liste der **Aktionen** Folgendes:
+1. Definieren Sie in der Liste der **Aktionen** Folgendes:
 
     a. **Action Type:** *Webhook*
 
@@ -58,16 +58,16 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     c. **Name:** Name, Alias oder Bezeichner des Webhook.
 
-3. Wählen Sie **Save** (Speichern) aus, wenn das Erstellen der Warnung abgeschlossen ist.
+1. Wählen Sie **Save** (Speichern) aus, wenn das Erstellen der Warnung abgeschlossen ist.
 
 ### <a name="for-an-existing-action-group"></a>Für eine vorhandene Aktionsgruppe:
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Überwachen** aus.
 
-2. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
+1. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
 
-3. Suchen und markieren Sie die Aktionsgruppe, die Sie bearbeiten möchten.
+1. Suchen und markieren Sie die Aktionsgruppe, die Sie bearbeiten möchten.
 
-4. Fügen Sie Folgendes zur Liste der **Aktionen** hinzu:
+1. Fügen Sie Folgendes zur Liste der **Aktionen** hinzu:
 
     a. **Action Type:** *Webhook*
 
@@ -75,12 +75,12 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     c. **Name:** Name, Alias oder Bezeichner des Webhook.
 
-5. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
+1. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
 1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
-2. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
+1. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
     ```
     POST        https://api.opsgenie.com/v1/json/azureservicehealth?apiKey=<APIKEY>
@@ -89,9 +89,9 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     BODY        <service health payload>
     ```
-3. Sie sollten eine `200 OK`-Antwort mit der Meldung „successful“ (Erfolgreich) erhalten.
+1. Sie sollten eine `200 OK`-Antwort mit der Meldung „successful“ (Erfolgreich) erhalten.
 
-4. Wechseln Sie zu [OpsGenie](https://www.opsgenie.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
+1. Wechseln Sie zu [OpsGenie](https://www.opsgenie.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).

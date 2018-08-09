@@ -3,18 +3,17 @@ title: Leitfaden für Azure Data Lake Storage Gen1-Kunden | Microsoft-Dokumentat
 description: Die Vorschauversion von Azure Data Lake Storage Gen2 verfügt über native Blobspeicherfunktionalität, z.B. Data Tiering, Lebenszyklusverwaltung und verbesserte Netzwerksicherheit – zusätzlich zum Hadoop-kompatiblen Dateisystem, das unter Data Lake Storage Gen1 verfügbar ist.
 services: storage
 author: roygara
-manager: twooley
 ms.topic: article
 ms.author: rogarana
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 786abbc10f21b137c328f10c5cbd20dce7653957
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: d247c2e96a45f0f6fceb64d4f3f274549c83ea66
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035105"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522423"
 ---
 # <a name="guidance-for-azure-data-lake-storage-gen1-customers"></a>Leitfaden für Azure Data Lake Storage Gen1-Kunden
 

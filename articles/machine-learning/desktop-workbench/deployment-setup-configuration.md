@@ -7,16 +7,16 @@ ms.author: aashishb
 manager: hjerez
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: bf96a6986abe858074decaaecfe38b3807822aab
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 150114184f6f04f22aa9da409758daa6a0d175b5
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830240"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39368498"
 ---
 # <a name="model-management-setup"></a>Einrichtung der Modellverwaltung
 
@@ -36,6 +36,14 @@ Um die CLIs (Befehlszeilenschnittstellen) in Workbench zu nutzen, klicken Sie au
 Stellen Sie auf einer DSVM eine Verbindung mit der Eingabeaufforderung her, und öffnen Sie sie. Geben Sie `az ml -h` ein, um die Optionen anzuzeigen. Geben Sie zum Anzeigen weiterer Informationen zu den Befehlen das Flag „--help“ ein.
 
 Auf anderen Systemen müssen Sie die CLIs installieren.
+
+>[!NOTE]
+> In einem Jupyter-Notebook auf einer Linux-DSVM können Sie auf die Azure CLI und die Azure ML CLI mit dem unten angegebenen Befehlsformat zugreifen.  **Dies gilt spezifisch für ein Jupyter-Notebook auf einer Linux-DSVM**.  Mit diesen Befehlen wird auf den aktuellen Python-Kernel im Notebook zugegriffen (z.B. die `py35`-Conda-Umgebung).
+>```
+>import sys
+>! {sys.executable} -m azure.cli login
+>! {sys.executable} -m azure.cli ml -h
+>```
 
 ### <a name="installing-or-updating-on-windows"></a>Installieren (oder Aktualisieren) unter Windows
 

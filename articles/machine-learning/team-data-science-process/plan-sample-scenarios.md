@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: a194061bf443f50bed673a518ab62746f67b4a78
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 62e035c0d28a797ae08480b982598d8265b18767
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838158"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423843"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Szenarien für die erweiterte Analyse in Azure Machine Learning
 Dieser Artikel beschreibt die verschiedenen Beispieldatenquellen und Zielszenarien, die mit dem [Team Data Science-Prozess (TDSP)](overview.md)verarbeitet werden können. Der TDSP bietet einen systematischen Ansatz für Teams zur Zusammenarbeit bei der Entwicklung intelligenter Anwendungen. Die hier gezeigten Szenarien veranschaulichen einige der Optionen im Datenverarbeitungs-Workflow, die von den Datenmerkmalen, Quellspeicherorten und Zielrepositorys in Azure abhängen.
@@ -48,47 +48,47 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 
 #### <a name="additional-azure-resources-none"></a>Zusätzliche Azure-Ressourcen: keine
 1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-2. Laden Sie ein Dataset hoch.
-3. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren hochgeladenen Datasets beginnt.
+1. Laden Sie ein Dataset hoch.
+1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren hochgeladenen Datasets beginnt.
 
 ## <a name="smalllocalprocess"></a>Szenario \#2: Kleines bis mittelgroßes Dataset lokaler Dateien, die verarbeitet werden müssen
 ![Kleine bis mittelgroße lokale Dateien mit Verarbeitung][2]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der IPython Notebook ausgeführt wird.
-2. Laden Sie Daten in einen Azure-Speichercontainer hoch.
-3. Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten aus dem Azure-Speichercontainer zugreifen.
-4. Transformieren Sie die Daten in eine bereinigte Tabellenform.
-5. Speichern Sie die transformierten Daten in Azure-Blobs.
-6. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-7. Lesen Sie die Daten aus den Azure-Blobs mithilfe des Moduls [Import Data][import-data].
-8. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
+1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
+1. Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten aus dem Azure-Speichercontainer zugreifen.
+1. Transformieren Sie die Daten in eine bereinigte Tabellenform.
+1. Speichern Sie die transformierten Daten in Azure-Blobs.
+1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
+1. Lesen Sie die Daten aus den Azure-Blobs mithilfe des Moduls [Import Data][import-data].
+1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren aufgenommenen Datasets beginnt.
 
 ## <a name="largelocal"></a>Szenario \#3: Großes Dataset lokaler Dateien, die auf Azure-Blobs ausgerichtet sind
 ![Große lokale Dateien][3]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der IPython Notebook ausgeführt wird.
-2. Laden Sie Daten in einen Azure-Speichercontainer hoch.
-3. Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten aus Azure-Blobs zugreifen.
-4. Transformieren Sie die Daten bei Bedarf in eine bereinigte Tabellenform.
-5. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf.
-6. Extrahieren Sie ein kleines bis mittelgroßes Datenbeispiel.
-7. Speichern Sie die Beispieldaten in Azure-Blobs.
-8. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-9. Lesen Sie die Daten aus den Azure-Blobs mithilfe des Moduls [Import Data][import-data].
-10. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
+1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
+1. Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten aus Azure-Blobs zugreifen.
+1. Transformieren Sie die Daten bei Bedarf in eine bereinigte Tabellenform.
+1. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf.
+1. Extrahieren Sie ein kleines bis mittelgroßes Datenbeispiel.
+1. Speichern Sie die Beispieldaten in Azure-Blobs.
+1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
+1. Lesen Sie die Daten aus den Azure-Blobs mithilfe des Moduls [Import Data][import-data].
+1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
 ## <a name="smalllocaltodb"></a>Szenario \#4: Kleines bis mittelgroßes Dataset lokaler Dateien, das auf SQL Server in einer Azure-VM ausgerichtet ist
 ![Kleine bis mittelgroße lokale Dateien in SQL DB in Azure][4]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der SQL Server und IPython Notebook ausgeführt werden.
-2. Laden Sie Daten in einen Azure-Speichercontainer hoch.
-3. Bereiten Sie die Daten in einem Azure-Speichercontainer mithilfe von IPython Notebook vor, und bereinigen Sie sie.
-4. Transformieren Sie die Daten bei Bedarf in eine bereinigte Tabellenform.
-5. Speichern Sie Daten in VM-lokalen Dateien (IPython Notebook wird auf dem virtuellen Computer ausgeführt, lokale Laufwerke beziehen sich auf VM-Laufwerke).
-6. Laden Sie Daten in einer SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird.
+1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
+1. Bereiten Sie die Daten in einem Azure-Speichercontainer mithilfe von IPython Notebook vor, und bereinigen Sie sie.
+1. Transformieren Sie die Daten bei Bedarf in eine bereinigte Tabellenform.
+1. Speichern Sie Daten in VM-lokalen Dateien (IPython Notebook wird auf dem virtuellen Computer ausgeführt, lokale Laufwerke beziehen sich auf VM-Laufwerke).
+1. Laden Sie Daten in einer SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird.
    
    Option \#1: Verwenden von SQL Server Management Studio
    
@@ -103,19 +103,19 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
    * Verwenden Sie die ODBC-Verbindungszeichenfolge, um von der VM auf SQL Server zuzugreifen.
    * Erstellen Sie eine Datenbank und Zieltabellen.
    * Verwenden Sie eine der Methoden für den Massenimport, um Daten aus lokalen VM-Dateien zu laden.
-7. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
-8. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
-9. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-10. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
-11. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
+1. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
+1. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
+1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
+1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
+1. Erstellen Sie einen Azure Machine Learning-Versuchsablauf, der mit einem oder mehreren erfassten Datasets beginnt.
 
 ## <a name="largelocaltodb"></a>Szenario \#5: Großes Dataset in lokalen Dateien, Ziel-SQL Server in Azure VM
 ![Große lokale Dateien in SQL DB in Azure][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der SQL Server und der IPython Notebook-Server ausgeführt werden.
-2. Laden Sie Daten in einen Azure-Speichercontainer hoch.
-3. (Optional) Bereiten Sie Daten vor, und bereinigen Sie sie.
+1. Laden Sie Daten in einen Azure-Speichercontainer hoch.
+1. (Optional) Bereiten Sie Daten vor, und bereinigen Sie sie.
    
    a.  Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten in Azure zugreifen.
    
@@ -124,7 +124,7 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
    b.  Transformieren Sie die Daten bei Bedarf in eine bereinigte Tabellenform.
    
    c.  Speichern Sie Daten in VM-lokalen Dateien (IPython Notebook wird auf dem virtuellen Computer ausgeführt, lokale Laufwerke beziehen sich auf VM-Laufwerke).
-4. Laden Sie Daten in einer SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird.
+1. Laden Sie Daten in einer SQL Server-Datenbank, die auf einem virtuellen Azure-Computer ausgeführt wird.
    
    a.  Melden Sie sich beim virtuellen SQL Server-Computer an.
    
@@ -144,25 +144,25 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
    > Zum schnelleren Laden großer Datenmengen empfiehlt es sich, die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durchzuführen. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](parallel-load-sql-partitioned-tables.md).
    > 
    > 
-5. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
-6. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
-7. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-8. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
-9. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
+1. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
+1. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
+1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
+1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
+1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ## <a name="largedbtodb"></a>Szenario \#6: Großes Dataset in einer lokalen SQL Server-Datenbank, das auf SQL Server auf einem virtuellen Azure-Computer ausgerichtet ist
 ![Große lokale SQL DB in SQL DB in Azure][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure-VM (SQL Server / IPython Notebook-Server)
 1. Erstellen Sie eine Azure-VM, auf der SQL Server und der IPython Notebook-Server ausgeführt werden.
-2. Verwenden Sie eine der Datenexportmethoden, um die Daten aus SQL Server in Dumpdateien zu exportieren.
+1. Verwenden Sie eine der Datenexportmethoden, um die Daten aus SQL Server in Dumpdateien zu exportieren.
    
    > [!NOTE]
    > Sie sich dazu entschließen, alle Daten aus der lokalen Datenbank zu verschieben, wählen Sie eine alternative (schnellere) Methode zum Verschieben der vollständigen Datenbank in die SQL Server-Instanz in Azure. Überspringen Sie die Schritte zum Exportieren von Daten, zum Erstellen der Datenbank und zum Laden/Importieren der Daten in die Zieldatenbank, und führen Sie die alternative Methode durch.
    > 
    > 
-3. Laden Sie Dumpdateien in den Azure-Speichercontainer hoch.
-4. Laden Sie die Daten in eine SQL Server-Datenbank auf einem virtuellen Azure-Computer.
+1. Laden Sie Dumpdateien in den Azure-Speichercontainer hoch.
+1. Laden Sie die Daten in eine SQL Server-Datenbank auf einem virtuellen Azure-Computer.
    
    a.  Melden Sie sich beim virtuellen SQL Server-Computer an.
    
@@ -180,11 +180,11 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
    > Zum schnelleren Laden großer Datenmengen führen Sie die Erstellung partitionierter Tabellen und den Massenimport der Daten parallel durch. Weitere Informationen finden Sie unter [Paralleler Datenimport in partitionierte SQL-Tabellen](parallel-load-sql-partitioned-tables.md).
    > 
    > 
-5. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
-6. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
-7. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-8. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
-9. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
+1. Erkunden Sie die Daten, und erstellen Sie Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
+1. Legen Sie eine Größe für das Datenbeispiel fest, falls dies erforderlich und/oder gewünscht ist.
+1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
+1. Lesen Sie die Daten mithilfe des Moduls [Import Data][import-data] direkt von der SQL Server-Instanz. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
+1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ### <a name="alternate-method-to-copy-a-full-database-from-an-on-premises--sql-server-to-azure-sql-database"></a>Alternative Methode zum Kopieren einer vollständigen Datenbank aus einem lokalen SQL Server in Azure SQL-Datenbank
 ![Trennen lokaler DB und Anfügen an SQL DB in Azure][7]
@@ -193,8 +193,8 @@ In jedem der folgenden Abschnitte wird ein Beispielszenario vorgestellt. Für je
 Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu replizieren, kopieren Sie eine Datenbank von einem Speicherort/Server auf einen anderen, vorausgesetzt, dass die Datenbank vorübergehend offline geschaltet werden kann. Hierzu verwenden Sie den Objekt-Explorer von SQL Server Management Studio oder die entsprechenden Transact-SQL-Befehle.
 
 1. Trennen Sie die Datenbank am Quellspeicherort. Weitere Informationen finden Sie unter [Trennen einer Datenbank](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
-2. Kopieren Sie im Windows-Explorer oder in der Windows-Eingabeaufforderung die getrennten Datenbankdateien und Protokolldateien in den Zielspeicherort auf dem virtuellen SQL Server-Computer in Azure.
-3. Fügen Sie die kopierten Dateien an die SQL Server-Zielinstanz an. Weitere Informationen finden Sie unter [Anfügen einer Datenbank](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
+1. Kopieren Sie im Windows-Explorer oder in der Windows-Eingabeaufforderung die getrennten Datenbankdateien und Protokolldateien in den Zielspeicherort auf dem virtuellen SQL Server-Computer in Azure.
+1. Fügen Sie die kopierten Dateien an die SQL Server-Zielinstanz an. Weitere Informationen finden Sie unter [Anfügen einer Datenbank](https://technet.microsoft.com/library/ms190209\(v=sql.110\).aspx).
 
 [Verschieben einer Datenbank durch Trennen und Anfügen (Transact-SQL)](https://technet.microsoft.com/library/ms187858\(v=sql.110\).aspx)
 
@@ -203,8 +203,8 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
 
 #### <a name="additional-azure-resources-azure-hdinsight-hadoop-cluster-and-azure-virtual-machine-ipython-notebook-server"></a>Zusätzliche Azure-Ressourcen: Azure HDInsight Hadoop-Cluster und Azure-VM (IPython Notebook-Server)
 1. Erstellen Sie einen virtuellen Azure-Computer, auf dem der IPython Notebook-Server ausgeführt wird.
-2. Erstellen Sie einen Azure HDInsight Hadoop-Cluster.
-3. (Optional) Bereiten Sie Daten vor, und bereinigen Sie sie.
+1. Erstellen Sie einen Azure HDInsight Hadoop-Cluster.
+1. (Optional) Bereiten Sie Daten vor, und bereinigen Sie sie.
    
    a.  Bereiten Sie die Daten in IPython Notebook vor, und bereinigen Sie sie, indem Sie auf Daten in Azure zugreifen.
    
@@ -213,8 +213,8 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
    b.  Transformieren Sie die Daten bei Bedarf in eine bereinigte Tabellenform.
    
    c.  Speichern Sie Daten in VM-lokalen Dateien (IPython Notebook wird auf dem virtuellen Computer ausgeführt, lokale Laufwerke beziehen sich auf VM-Laufwerke).
-4. Laden Sie Daten in den Standardcontainer des in Schritt 2 ausgewählten Hadoop-Clusters.
-5. Laden Sie Daten in die Strukturdatenbank im Azure HDInsight Hadoop-Cluster.
+1. Laden Sie Daten in den Standardcontainer des in Schritt 2 ausgewählten Hadoop-Clusters.
+1. Laden Sie Daten in die Strukturdatenbank im Azure HDInsight Hadoop-Cluster.
    
    a.  Melden Sie sich beim Hauptknoten des Hadoop-Clusters an.
    
@@ -228,7 +228,7 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
    > Wenn es sich um große Datenmengen handelt, können Benutzer die Strukturtabelle mit Partitionen erstellen. Benutzer können dann mithilfe einer `for` -Schleife in der Hadoop-Befehlszeile auf dem Hauptknoten Daten in die partitionierte Strukturtabelle laden.
    > 
    > 
-6. Erkunden Sie die Daten, und erstellen Sie in der Hadoop-Befehlszeile Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
+1. Erkunden Sie die Daten, und erstellen Sie in der Hadoop-Befehlszeile Features nach Bedarf. Beachten Sie, dass die Features nicht in den Datenbanktabellen materialisiert werden müssen. Beachten Sie nur die erforderliche Abfrage, um sie zu erstellen.
    
    a.  Melden Sie sich beim Hauptknoten des Hadoop-Clusters an.
    
@@ -237,10 +237,10 @@ Um die gesamte SQL Server-Datenbank auf dem virtuellen SQL Server-Computer zu re
    c.  Geben Sie das Strukturstammverzeichnis über den Befehl `cd %hive_home%\bin` in der Hadoop-Befehlszeile ein.
    
    d.  Führen Sie die Strukturabfragen in der Hadoop-Befehlszeile auf dem Hauptknoten des Hadoop-Clusters aus, um die Daten zu durchsuchen und Features nach Bedarf zu erstellen.
-7. Falls erforderlich und/oder gewünscht, entnehmen Sie passende Beispieldaten für Azure Machine Learning Studio.
-8. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
-9. Lesen Sie die Daten direkt von `Hive Queries` mithilfe des Moduls [Import Data][import-data]. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
-10. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
+1. Falls erforderlich und/oder gewünscht, entnehmen Sie passende Beispieldaten für Azure Machine Learning Studio.
+1. Melden Sie sich beim [Azure Machine Learning Studio](https://studio.azureml.net/)an.
+1. Lesen Sie die Daten direkt von `Hive Queries` mithilfe des Moduls [Import Data][import-data]. Fügen Sie die erforderliche Abfrage zum Extrahieren von Feldern, zum Erstellen von Features und zum Entnehmen von Datenproben bei Bedarf direkt in die [Import Data][import-data]-Abfrage ein.
+1. Einfacher Azure Machine Learning-Versuchsablauf, der mit hochgeladenem Dataset beginnt
 
 ## <a name="decisiontree"></a>Entscheidungsstruktur zur Auswahl des Szenarios
 - - -

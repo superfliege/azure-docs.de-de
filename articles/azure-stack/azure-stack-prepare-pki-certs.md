@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 934585082e2832c41885874c82ab43d64a1fa361
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 387c4ce51d7bc9b618bb87fd347b9448926452b7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203475"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426794"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Vorbereiten von Azure Stack-PKI-Zertifikaten für die Bereitstellung
 Die [von der Zertifizierungsstelle Ihrer Wahl bezogenen](azure-stack-get-pki-certs.md) Zertifikatdateien müssen mit Eigenschaften importiert und exportiert werden, die mit den Zertifikatanforderungen von Azure Stack in Einklang stehen.
@@ -35,13 +35,13 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
   > [!WARNING]
   > Kopieren Sie keine Dateien, die bereits importiert/exportiert wurden oder aus einem anderen Grund nicht mehr den Dateien entsprechen, die direkt von der Zertifizierungsstelle bereitgestellt wurden.
 
-2.  Klicken Sie mit der rechten Maustaste auf das Zertifikat, und wählen Sie **Zertifikat installieren** oder **PFX installieren** aus – je nachdem, wie das Zertifikat von Ihrer Zertifizierungsstelle übermittelt wurde.
+1.  Klicken Sie mit der rechten Maustaste auf das Zertifikat, und wählen Sie **Zertifikat installieren** oder **PFX installieren** aus – je nachdem, wie das Zertifikat von Ihrer Zertifizierungsstelle übermittelt wurde.
 
-3. Wählen Sie im **Zertifikatimport-Assistenten** als Importspeicherort die Option **Lokaler Computer** aus. Klicken Sie auf **Weiter**. Klicken Sie auf dem folgenden Bildschirm erneut auf „Weiter“.
+1. Wählen Sie im **Zertifikatimport-Assistenten** als Importspeicherort die Option **Lokaler Computer** aus. Klicken Sie auf **Weiter**. Klicken Sie auf dem folgenden Bildschirm erneut auf „Weiter“.
 
     ![Importspeicherort „Lokaler Computer“](.\media\prepare-pki-certs\1.png)
 
-4.  Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und anschließend **Enterprise Trust** als Speicherort aus. Klicken Sie auf **OK**, um das Dialogfeld für die Zertifikatspeicherauswahl zu schließen, und klicken Sie anschließend auf **Weiter**.
+1.  Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und anschließend **Enterprise Trust** als Speicherort aus. Klicken Sie auf **OK**, um das Dialogfeld für die Zertifikatspeicherauswahl zu schließen, und klicken Sie anschließend auf **Weiter**.
 
     ![Konfigurieren des Zertifikatspeichers](.\media\prepare-pki-certs\3.png)
 
@@ -49,7 +49,7 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
 
     ![Markieren des Schlüssels als exportierbar](.\media\prepare-pki-certs\2.png)
 
-5. Klicken Sie auf „Fertig stellen“, um den Import abzuschließen.
+1. Klicken Sie auf „Fertig stellen“, um den Import abzuschließen.
 
 ### <a name="export-the-certificate"></a>Zertifikat exportieren
 
@@ -57,30 +57,30 @@ Gehen Sie wie folgt vor, um die Azure Stack-PKI-Zertifikate vorzubereiten und zu
 
 1. Öffnen Sie Microsoft Management Console; klicken Sie in Windows 10 mit der rechten Maustaste auf das Startmenü, und klicken Sie auf „Ausführen“. Geben Sie **mmc** ein, und klicken Sie auf „OK“.
 
-2. Klicken Sie auf „Datei“, „Snap-In hinzufügen/entfernen“, wählen Sie „Zertifikate“ aus, und klicken Sie auf „Hinzufügen“.
+1. Klicken Sie auf „Datei“, „Snap-In hinzufügen/entfernen“, wählen Sie „Zertifikate“ aus, und klicken Sie auf „Hinzufügen“.
 
     ![Hinzufügen von Zertifikate-Snap-In](.\media\prepare-pki-certs\mmc-2.png)
  
-3. Wählen Sie „Computerkonto“ aus, klicken Sie auf „Weiter“, wählen Sie „Lokaler Computer“ und dann „Fertig stellen“ aus. Klicken Sie auf „OK“, um die Seite „Snap-In hinzufügen/entfernen“ zu schließen.
+1. Wählen Sie „Computerkonto“ aus, klicken Sie auf „Weiter“, wählen Sie „Lokaler Computer“ und dann „Fertig stellen“ aus. Klicken Sie auf „OK“, um die Seite „Snap-In hinzufügen/entfernen“ zu schließen.
 
     ![Hinzufügen von Zertifikate-Snap-In](.\media\prepare-pki-certs\mmc-3.png)
 
-4. Navigieren Sie zu „Zertifikate“ > „Organisationsvertrauen“ > „Zertifikatspeicherort“. Stellen Sie sicher, dass das Zertifikat auf der rechten Seite angezeigt wird.
+1. Navigieren Sie zu „Zertifikate“ > „Organisationsvertrauen“ > „Zertifikatspeicherort“. Stellen Sie sicher, dass das Zertifikat auf der rechten Seite angezeigt wird.
 
-5. Klicken Sie auf der Taskleiste der Zertifikat-Manager-Konsole auf **Aktionen** > **Alle Aufgaben** > **Exportieren**. Klicken Sie auf **Weiter**.
+1. Klicken Sie auf der Taskleiste der Zertifikat-Manager-Konsole auf **Aktionen** > **Alle Aufgaben** > **Exportieren**. Klicken Sie auf **Weiter**.
 
   > [!NOTE]
   > Je nachdem, über wie viele Azure Stack-Zertifikate Sie verfügen, müssen Sie diesen Vorgang möglicherweise mehrere Male abschließen.
 
-4. Wählen Sie **Ja, privaten Schlüssel exportieren** aus, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie **Ja, privaten Schlüssel exportieren** aus, und klicken Sie dann auf **Weiter**.
 
-5. Wählen Sie im Abschnitt für das Exportdateiformat **Alle erweiterten Eigenschaften exportieren** aus, und klicken Sie dann auf **Weiter**.
+1. Wählen Sie im Abschnitt für das Exportdateiformat **Alle erweiterten Eigenschaften exportieren** aus, und klicken Sie dann auf **Weiter**.
 
-6. Klicken Sie auf **Kennwort**, und geben Sie ein Kennwort für die Zertifikate an. Merken Sie sich dieses Kennwort. Es wird als Bereitstellungsparameter verwendet. Klicken Sie auf **Weiter**.
+1. Klicken Sie auf **Kennwort**, und geben Sie ein Kennwort für die Zertifikate an. Merken Sie sich dieses Kennwort. Es wird als Bereitstellungsparameter verwendet. Klicken Sie auf **Weiter**.
 
-7. Wählen Sie einen Dateinamen und einen Speicherort für die zu exportierende PFX-Datei. Klicken Sie auf **Weiter**.
+1. Wählen Sie einen Dateinamen und einen Speicherort für die zu exportierende PFX-Datei. Klicken Sie auf **Weiter**.
 
-8. Wählen Sie **Fertig stellen** aus.
+1. Wählen Sie **Fertig stellen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Überprüfen von Azure Stack-PKI-Zertifikaten](azure-stack-validate-pki-certs.md)

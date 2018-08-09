@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 6e9fcf20d368e270f9af4551c539acd873335498
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5f6f3f61b5f7a06ac4056499edfb811780838cdc
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178911"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441876"
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>Konfigurieren von Service Health-Warnungen mit PagerDuty
 
@@ -28,13 +28,13 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 ## <a name="creating-a-service-health-integration-url-in-pagerduty"></a>Erstellen einer URL für die Service Health-Integration in PagerDuty
 1.  Stellen Sie sicher, dass Sie Ihr [PagerDuty](https://www.pagerduty.com/)-Konto registriert haben und angemeldet sind.
 
-2.  Navigieren Sie zum Abschnitt **Services** (Dienste) in PagerDuty.
+1.  Navigieren Sie zum Abschnitt **Services** (Dienste) in PagerDuty.
 
     ![Der Abschnitt „Services“ in PagerDuty](./media/webhook-alerts/pagerduty-services-section.png)
 
-3.  Wählen Sie **Add New Service** (Neuen Dienst hinzufügen) aus, oder öffnen Sie einen vorhandenen Dienst, den Sie eingerichtet haben.
+1.  Wählen Sie **Add New Service** (Neuen Dienst hinzufügen) aus, oder öffnen Sie einen vorhandenen Dienst, den Sie eingerichtet haben.
 
-4.  Wählen Sie unter **Integration Settings** (Integrationseinstellungen) folgendes Einstellungen aus:
+1.  Wählen Sie unter **Integration Settings** (Integrationseinstellungen) folgendes Einstellungen aus:
 
     a. **Integration Type**: Microsoft Azure
 
@@ -42,9 +42,9 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 
     ![„Integration Settings“ in PagerDuty](./media/webhook-alerts/pagerduty-integration-settings.png)
 
-5.  Füllen Sie alle weiteren Pflichtfelder aus, und wählen Sie **Add** (Hinzufügen) aus.
+1.  Füllen Sie alle weiteren Pflichtfelder aus, und wählen Sie **Add** (Hinzufügen) aus.
 
-6.  Öffnen Sie diese neue Integration und kopieren und speichern Sie die Integrations-URL (**Integration URL**).
+1.  Öffnen Sie diese neue Integration und kopieren und speichern Sie die Integrations-URL (**Integration URL**).
 
     ![„Integration URL“ in PagerDuty](./media/webhook-alerts/pagerduty-integration-url.png)
 
@@ -52,7 +52,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 ### <a name="for-a-new-action-group"></a>Für eine neue Aktionsgruppe:
 1. Befolgen Sie die Schritte 1 bis 8 in [Erstellen einer Warnung zu einer Dienstintegritätsbenachrichtigung für eine neue Aktionsgruppe mit dem Azure-Portal](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md).
 
-2. Definieren Sie in der Liste der **Aktionen** Folgendes:
+1. Definieren Sie in der Liste der **Aktionen** Folgendes:
 
     a. **Action Type:** *Webhook*
 
@@ -60,16 +60,16 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 
     c. **Name:** Name, Alias oder Bezeichner des Webhook.
 
-3. Wählen Sie **Save** (Speichern) aus, wenn das Erstellen der Warnung abgeschlossen ist.
+1. Wählen Sie **Save** (Speichern) aus, wenn das Erstellen der Warnung abgeschlossen ist.
 
 ### <a name="for-an-existing-action-group"></a>Für eine vorhandene Aktionsgruppe:
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Überwachen** aus.
 
-2. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
+1. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
 
-3. Suchen und markieren Sie die Aktionsgruppe, die Sie bearbeiten möchten.
+1. Suchen und markieren Sie die Aktionsgruppe, die Sie bearbeiten möchten.
 
-4. Fügen Sie Folgendes zur Liste der **Aktionen** hinzu:
+1. Fügen Sie Folgendes zur Liste der **Aktionen** hinzu:
 
     a. **Action Type:** *Webhook*
 
@@ -77,12 +77,12 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 
     c. **Name:** Name, Alias oder Bezeichner des Webhook.
 
-5. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
+1. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
 1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
-2. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
+1. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
     ```
     POST        https://events.pagerduty.com/integration/<IntegrationKey>/enqueue
@@ -91,9 +91,9 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Benachrichtigungen 
 
     BODY        <service health payload>
     ```
-3. Sie sollten `202 Accepted` mit einer Meldung erhalten, die die „Ereignis-ID“ enthält.
+1. Sie sollten `202 Accepted` mit einer Meldung erhalten, die die „Ereignis-ID“ enthält.
 
-4. Wechseln Sie zu [PagerDuty](https://www.pagerduty.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
+1. Wechseln Sie zu [PagerDuty](https://www.pagerduty.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).

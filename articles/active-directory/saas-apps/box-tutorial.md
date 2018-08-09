@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: c15894f8cd559a08a1d75e2ac29cc0da0fc9e963
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f5aa724e9848c9794eef093aef15b0aaed9cae97
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226577"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435759"
 ---
 # <a name="integrate-azure-active-directory-with-box"></a>Integrieren von Azure Active Directory in Box
 
@@ -55,7 +55,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von Box aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="add-box-from-the-gallery"></a>Hinzufügen von Box aus dem Katalog
 Um die Integration von Azure AD in Box zu konfigurieren, fügen Sie Box wie folgt aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzu:
@@ -64,15 +64,15 @@ Um die Integration von Azure AD in Box zu konfigurieren, fügen Sie Box wie folg
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
+1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
 
     ![Fenster „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Fenster auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Fenster auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Box** ein, wählen Sie in der Ergebnisliste **Box** aus, und klicken Sie dann auf **Hinzufügen**.
+1. Geben Sie im Suchfeld **Box** ein, wählen Sie in der Ergebnisliste **Box** aus, und klicken Sie dann auf **Hinzufügen**.
 
     ![Box in der Ergebnisliste](./media/box-tutorial/tutorial_box_search.png)
 ### <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
@@ -93,11 +93,11 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
     ![Link „Einmaliges Anmelden“][4]
 
-2. Wählen Sie im Fenster **Einmaliges Anmelden** im Feld **SSO-Mode****SAML-basierte Anmeldung** aus.
+1. Wählen Sie im Fenster **Einmaliges Anmelden** im Feld **SSO-Mode****SAML-basierte Anmeldung** aus.
  
     ![Fenster „Einmaliges Anmelden“](./media/box-tutorial/tutorial_box_samlbase.png)
 
-3. Gehen Sie unter **Domäne und URLs für Box** folgendermaßen vor:
+1. Gehen Sie unter **Domäne und URLs für Box** folgendermaßen vor:
 
     ![SSO-Informationen unter „Domäne und URLs für Box“](./media/box-tutorial/url3.png)
 
@@ -108,15 +108,15 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
     > [!NOTE] 
     > Die vorangehenden Werte sind keine echten Werte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire), um diese Werte zu erhalten. 
 
-4. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/box-tutorial/tutorial_box_certificate.png) 
 
-5. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/box-tutorial/tutorial_general_400.png)
     
-6. Um SSO für Ihre Anwendung zu konfigurieren, gehen Sie wie unter [Setting Up SSO on your own](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) (Einrichten von SSO) beschrieben vor.
+1. Um SSO für Ihre Anwendung zu konfigurieren, gehen Sie wie unter [Setting Up SSO on your own](https://community.box.com/t5/How-to-Guides-for-Admins/Setting-Up-Single-Sign-On-SSO-for-your-Enterprise/ta-p/1263#ssoonyourown) (Einrichten von SSO) beschrieben vor.
 
 > [!NOTE] 
 > Falls Sie die SSO-Einstellungen für Ihr Box-Konto nicht aktivieren können, müssen Sie sich möglicherweise an das [Kundensupportteam von Box](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) wenden und die heruntergeladene XML-Datei bereitstellen.
@@ -135,17 +135,17 @@ In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer m
 
     ![Link „Azure Active Directory“](./media/box-tutorial/create_aaduser_01.png)
 
-2. Um die Liste der aktuellen Benutzer anzuzeigen, wählen Sie **Benutzer und Gruppen** > **Alle Benutzer** aus.
+1. Um die Liste der aktuellen Benutzer anzuzeigen, wählen Sie **Benutzer und Gruppen** > **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/box-tutorial/create_aaduser_02.png)
 
-3. Wählen Sie oben im Fenster **Alle Benutzer** die Option **Hinzufügen** aus.
+1. Wählen Sie oben im Fenster **Alle Benutzer** die Option **Hinzufügen** aus.
 
     ![Schaltfläche „Hinzufügen“](./media/box-tutorial/create_aaduser_03.png)
 
     Das Fenster **Benutzer** wird geöffnet.
 
-4. Gehen Sie im Fenster **Benutzer** wie folgt vor:
+1. Gehen Sie im Fenster **Benutzer** wie folgt vor:
 
     ![Fenster „Benutzer“](./media/box-tutorial/create_aaduser_04.png)
 
@@ -171,23 +171,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Links „Unternehmensanwendungen“ und „Alle Anwendungen“][201] 
 
-2. Wählen Sie in der Liste **Anwendungen** den Eintrag **Box** aus.
+1. Wählen Sie in der Liste **Anwendungen** den Eintrag **Box** aus.
 
     ![Link „Box“](./media/box-tutorial/tutorial_box_app.png)  
 
-3. Wählen Sie auf der linken Seite **Benutzer und Gruppen**.
+1. Wählen Sie auf der linken Seite **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Wählen Sie **Hinzufügen** und dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
+1. Wählen Sie **Hinzufügen** und dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Fenster **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
+1. Wählen Sie im Fenster **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
 
-6. Wählen Sie die Schaltfläche **Auswählen** aus.
+1. Wählen Sie die Schaltfläche **Auswählen** aus.
 
-7. Wählen Sie auf der Seite **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+1. Wählen Sie auf der Seite **Zuweisung hinzufügen** die Option **Zuweisen** aus.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

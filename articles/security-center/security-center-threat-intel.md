@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 832998a6028a8977b43e343ed778cc0b60388728
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561363"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434189"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Informationen zu Bedrohungen in Azure Security Center
 In diesem Artikel erfahren Sie, wie Sie anhand von Informationen zu Bedrohungen in Azure Security Center sicherheitsbezogene Probleme lösen.
@@ -50,22 +50,22 @@ Wählen Sie zunächst den Arbeitsbereich aus, in dem sich Ihre Informationen bef
 
 1. Öffnen Sie das Dashboard **Security Center**.
 
-2. Wählen Sie im linken Bereich unter **Bedrohungsschutz** die Option **Informationen zu Bedrohungen** aus. Eine Karte wird geöffnet.
+1. Wählen Sie im linken Bereich unter **Bedrohungsschutz** die Option **Informationen zu Bedrohungen** aus. Eine Karte wird geöffnet.
 
     ![Threat Intelligence-Karte](./media/security-center-threat-intel/security-center-threat-intel.png)
 
-3. Wählen Sie am oberen Rand der Karte **Klassische Threat Intelligence-Benutzeroberfläche** aus. Das Dashboard **Informationen zu Bedrohungen** wird geöffnet.
+1. Wählen Sie am oberen Rand der Karte **Klassische Threat Intelligence-Benutzeroberfläche** aus. Das Dashboard **Informationen zu Bedrohungen** wird geöffnet.
 
     ![Dashboard „Informationen zu Bedrohungen“](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
 
     > [!NOTE]
     > Wenn in der Spalte ganz rechts **UPGRADE PLAN** (PLAN UPGRADEN) angezeigt wird, wird für diesen Arbeitsbereich das kostenlose Abonnement verwendet. Führen Sie ein Upgrade auf „Standard“ durch, um das Feature verwenden zu können. Wenn in der Spalte ganz rechts **REQUIRES UPDATE** (UPDATE ERFORDERLICH) angezeigt wird, aktualisieren Sie [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), um das Feature verwenden zu können. Weitere Informationen zum Tarif finden Sie unter „Azure Security Center-Preise“.
     >
-3. Falls Sie mehrere Arbeitsbereiche untersuchen müssen, priorisieren Sie die Untersuchung anhand der Spalte **Schädliche IP**. Sie enthält die aktuelle Anzahl schädlicher IP-Adressen in diesem Arbeitsbereich. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Informationen zu Bedrohungen** wird angezeigt.
+1. Falls Sie mehrere Arbeitsbereiche untersuchen müssen, priorisieren Sie die Untersuchung anhand der Spalte **Schädliche IP**. Sie enthält die aktuelle Anzahl schädlicher IP-Adressen in diesem Arbeitsbereich. Wählen Sie den gewünschten Arbeitsbereich aus. Das Dashboard **Informationen zu Bedrohungen** wird angezeigt.
 
     ![Informationen zu Bedrohungen](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-4. Das Dashboard ist in vier Kacheln unterteilt:
+1. Das Dashboard ist in vier Kacheln unterteilt:
 
     a.  **Bedrohungstypen**. Hier sind die Arten von Bedrohungen zusammengefasst, die im ausgewählten Arbeitsbereich erkannt wurden.
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 9c0519181ec03394e7d732a8eb608501d6dd6657
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 5928896ab3c89972b7912f686be045afc988b1cd
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161829"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308874"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Vorschauversion: Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -56,7 +56,7 @@ Es gibt zwei erforderliche Installer für den Azure AD-Kennwortschutz, die vom [
 
 1. Wählen Sie einen oder mehrere Server, um den Azure AD-Kennwortschutz-Proxydienst zu hosten.
    * Jeder dieser Dienste kann nur Kennwortrichtlinien für eine einzelne Gesamtstruktur bereitstellen. Außerdem muss der Hostcomputer mit einer Domäne (Stammdomäne und untergeordnete Domäne werden beide gleichermaßen unterstützt) in dieser Gesamtstruktur verbunden sein. Damit der Azure AD-Kennwortschutz-Proxydienst seine Aufgabe erfüllen kann, muss eine Netzwerkverbindung zwischen mindestens einem Domänencontroller in jeder Domäne der Gesamtstruktur und dem Hostcomputer mit dem Azure AD-Kennwortschutz-Proxydienst bestehen.
-   * Sie haben die Möglichkeit, den Azure AD-Kennwortschutz-Proxydienst zu Testzwecken auf einem Domänencontroller zu installieren und auszuführen. Hierfür ist jedoch eine Internetverbindung erforderlich.
+   * Sie haben die Möglichkeit, den Azure AD-Kennwortschutz-Proxydienst zu Testzwecken auf einem Domänencontroller zu installieren und auszuführen. Für den Domänencontroller ist dann aber eine Internetverbindung erforderlich.
 
    > [!NOTE]
    > Die öffentliche Vorschauversion unterstützt höchstens zwei (2) Proxyserver pro Gesamtstruktur.
@@ -110,6 +110,9 @@ Es gibt zwei erforderliche Installer für den Azure AD-Kennwortschutz, die vom [
 
    > [!NOTE]
    > Die Registrierung der Active Directory-Gesamtstruktur muss für die Gesamtstruktur nur einmalig durchgeführt werden. Die Domänencontroller-Agents, die in der Gesamtstruktur ausgeführt werden, führen ab diesem Zeitpunkt automatisch alle weiteren notwendigen Wartungen durch. Sobald sie für eine bestimmte Gesamtstruktur erfolgreich war, sind auch weitere Aufrufe von `Register-AzureADPasswordProtectionForest` erfolgreich, aber unnötig.
+
+   > [!NOTE]
+   > Damit `Register-AzureADPasswordProtectionForest` erfolgreich ist, muss mindestens ein Windows Server 2012-Domänencontroller oder höher in der Domäne des Proxyservers verfügbar sein. Es besteht aber nicht die Anforderung, dass die Software des DC-Agents vor diesem Schritt auf Domänencontrollern installiert wird.
 
 6. Optional: Konfigurieren Sie den Azure AD-Kennwortschutz-Proxydienst so, dass er auf einem bestimmten Port lauscht.
    * Von der DC-Agent-Software für den Azure AD-Kennwortschutz wird auf den Domänencontrollern RPC über TCP verwendet, um mit dem Azure AD-Kennwortschutz-Proxydienst zu kommunizieren. Standardmäßig lauscht der Azure AD-Kennwortschutz-Proxydienst für die Kennwortrichtlinie auf jedem verfügbaren dynamischen RPC-Endpunkt. Wenn es aufgrund von Netzwerktopologie oder Firewallanforderungen erforderlich ist, kann der Dienst stattdessen so konfiguriert werden, dass er auf einem bestimmten TCP-Port lauscht.

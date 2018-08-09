@@ -2,20 +2,20 @@
 title: Vorbereitung auf eine Änderung der ausgehenden IP-Adresse – Azure
 description: Erfahren Sie, wie Sie vorgehen, wenn Ihre ausgehende IP-Adresse geändert werden soll, damit Ihre App nach der Änderung weiterhin funktioniert.
 services: app-service\web
-author: tdykstra
+author: cephalin
 manager: cfowler
 editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: tdykstra
-ms.openlocfilehash: a68085ee571654bc1bff2ea23303a02bfb2a9b0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.author: cephalin
+ms.openlocfilehash: 5e17638e030ae2827b0de7dc82ecf75062504112
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343483"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39575929"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Vorbereitung auf eine Änderung der ausgehenden IP-Adresse
 

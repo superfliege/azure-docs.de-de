@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 5d0ab8cf9e87fc13b78b00dbe77ec6f9fb38c4b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 72a9cc905adda5146cf943d8f0ed2789c3088422
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32189390"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447389"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Beispiele für die Integration von Azure Service Bus in Azure Event Grid
 
@@ -46,13 +46,13 @@ Sie können beliebige Verfahren zum Senden einer Nachricht an Ihr Service Bus-Th
 
 1. Klonen Sie das [GitHub-Repository „azure-service-bus“](https://github.com/Azure/azure-service-bus/).
 
-2. Navigieren Sie in Visual Studio zum Ordner *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration*, und öffnen Sie die Datei *SBEventGridIntegration.sln*.
+1. Navigieren Sie in Visual Studio zum Ordner *\samples\DotNet\Microsoft.ServiceBus.Messaging\ServiceBusEventGridIntegration*, und öffnen Sie die Datei *SBEventGridIntegration.sln*.
 
-3. Navigieren Sie zum Projekt **MessageSender**, und wählen Sie **Program.cs**.
+1. Navigieren Sie zum Projekt **MessageSender**, und wählen Sie **Program.cs**.
 
    ![8][]
 
-4. Geben Sie Ihren Themennamen und die Verbindungszeichenfolge ein, und führen Sie dann den folgenden Konsolenanwendungscode aus:
+1. Geben Sie Ihren Themennamen und die Verbindungszeichenfolge ein, und führen Sie dann den folgenden Konsolenanwendungscode aus:
 
     ```CSharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
@@ -65,7 +65,7 @@ Richten Sie vor dem Durcharbeiten des gesamten Szenarios mindestens eine kleine 
 
 1. Erstellen Sie im Azure-Portal eine neue Azure Functions-Anwendung. Informationen zu den Grundlagen von Azure Functions finden Sie in der [Azure Functions-Dokumentation](https://docs.microsoft.com/azure/azure-functions/).
 
-2. Wählen Sie in der neu erstellten Funktion das kleine Pluszeichen (+) aus, um eine HTTP-Triggerfunktion hinzuzufügen:
+1. Wählen Sie in der neu erstellten Funktion das kleine Pluszeichen (+) aus, um eine HTTP-Triggerfunktion hinzuzufügen:
 
     ![2][]
     
@@ -73,9 +73,9 @@ Richten Sie vor dem Durcharbeiten des gesamten Szenarios mindestens eine kleine 
 
     ![3][]
 
-3. Wählen Sie die Schaltfläche **Webhook + API**, die Option **CSharp** und dann **Diese Funktion erstellen**.
+1. Wählen Sie die Schaltfläche **Webhook + API**, die Option **CSharp** und dann **Diese Funktion erstellen**.
  
-4. Fügen Sie den folgenden Code in die Funktion ein:
+1. Fügen Sie den folgenden Code in die Funktion ein:
 
     ```CSharp
     #r "Newtonsoft.Json"
@@ -121,7 +121,7 @@ Richten Sie vor dem Durcharbeiten des gesamten Szenarios mindestens eine kleine 
     }
     ```
 
-5. Klicken Sie auf **Speichern und ausführen**.
+1. Klicken Sie auf **Speichern und ausführen**.
 
 ## <a name="connect-the-function-and-namespace-via-event-grid"></a>Verbinden der Funktion und des Namespace per Event Grid
 
@@ -133,16 +133,16 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 
     ![20][]
 
-2. Klicken Sie auf **Ereignisabonnement**.  
+1. Klicken Sie auf **Ereignisabonnement**.  
     Das Fenster **Ereignisabonnement** wird geöffnet. In der folgenden Abbildung ist ein Formular zum Abonnieren einer Azure-Funktion oder eines Webhooks ohne Anwendung von Filtern dargestellt.
 
     ![21][]
 
-3. Füllen Sie das Formular wie gezeigt aus, und denken Sie daran, im Feld **Suffixfilter** den relevanten Filter einzugeben.
+1. Füllen Sie das Formular wie gezeigt aus, und denken Sie daran, im Feld **Suffixfilter** den relevanten Filter einzugeben.
 
-4. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
-5. Senden Sie eine Nachricht an Ihr Service Bus-Thema, wie im Abschnitt „Voraussetzungen“ erwähnt, und vergewissern Sie sich mithilfe des Überwachungsfeatures von Azure Functions dann, dass Ereignisse fließen.
+1. Senden Sie eine Nachricht an Ihr Service Bus-Thema, wie im Abschnitt „Voraussetzungen“ erwähnt, und vergewissern Sie sich mithilfe des Überwachungsfeatures von Azure Functions dann, dass Ereignisse fließen.
 
 Im nächsten Schritt werden die Funktion und der Service Bus-Namespace miteinander verbunden. In diesem Beispiel wird das Azure-Portal verwendet. Informationen zur Verwendung von PowerShell oder der Azure CLI für diesen Schritt finden Sie unter [Übersicht über die Integration von Azure Service Bus in Azure Event Grid](service-bus-to-event-grid-integration-concept.md).
 
@@ -160,26 +160,26 @@ Sie fügen eine Azure-Funktion hinzu, wie im folgenden Beispiel gezeigt, da die 
 
     ![10][]
 
-2. Geben Sie Ihre Verbindungszeichenfolge im folgenden Code ein:
+1. Geben Sie Ihre Verbindungszeichenfolge im folgenden Code ein:
 
     ```Csharp
     const string ServiceBusConnectionString = "YOUR CONNECTION STRING";
     ```
 
-3. Laden Sie im Azure-Portal das Veröffentlichungsprofil für die Azure-Funktion herunter, die Sie im Abschnitt „Einrichten einer Testfunktion“ erstellt haben.
+1. Laden Sie im Azure-Portal das Veröffentlichungsprofil für die Azure-Funktion herunter, die Sie im Abschnitt „Einrichten einer Testfunktion“ erstellt haben.
 
     ![11][]
 
-4. Klicken Sie in Visual Studio mit der rechten Maustaste auf **SBEventGridIntegration**, und wählen Sie anschließend die Option **Veröffentlichen**. 
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf **SBEventGridIntegration**, und wählen Sie anschließend die Option **Veröffentlichen**. 
 
-5. Wählen Sie im Bereich **Veröffentlichen** für das Veröffentlichungsprofil, das Sie zuvor heruntergeladen haben, die Option **Profil importieren** und dann **Veröffentlichen**.
+1. Wählen Sie im Bereich **Veröffentlichen** für das Veröffentlichungsprofil, das Sie zuvor heruntergeladen haben, die Option **Profil importieren** und dann **Veröffentlichen**.
 
     ![12][]
 
-6. Erstellen Sie nach dem Veröffentlichen der neuen Azure-Funktion ein neues Azure Event Grid-Abonnement, das auf die neue Azure-Funktion verweist.  
+1. Erstellen Sie nach dem Veröffentlichen der neuen Azure-Funktion ein neues Azure Event Grid-Abonnement, das auf die neue Azure-Funktion verweist.  
     Achten Sie darauf, im Feld **Endet mit** den richtigen Filter anzuwenden. Hierbei muss es sich um den Namen Ihres Service Bus-Abonnements handeln.
 
-7. Senden Sie eine Nachricht an das Azure Service Bus-Thema, das Sie zuvor erstellt haben. Überwachen Sie anschließend das Azure Functions-Protokoll im Azure-Portal, um sicherzustellen, dass Ereignisse fließen und Nachrichten empfangen werden.
+1. Senden Sie eine Nachricht an das Azure Service Bus-Thema, das Sie zuvor erstellt haben. Überwachen Sie anschließend das Azure Functions-Protokoll im Azure-Portal, um sicherzustellen, dass Ereignisse fließen und Nachrichten empfangen werden.
 
     ![12-1][]
 
@@ -195,22 +195,22 @@ Gehen Sie wie folgt vor, um für eine Logik-App eine Verbindung mit Azure Servic
 
     ![14][]
 
-2. Fügen Sie Ihre Informationen wie folgt hinzu:
+1. Fügen Sie Ihre Informationen wie folgt hinzu:
 
     a. Geben Sie im Feld **Ressourcenname** Ihren eigenen Namespacenamen ein. 
 
     b. Geben Sie unter **Erweiterte Optionen** im Feld **Suffixfilter** den Filter für Ihr Abonnement ein.
 
-3. Fügen Sie eine Service Bus-Empfangsaktion hinzu, um Nachrichten von einem Themenabonnement zu empfangen.  
+1. Fügen Sie eine Service Bus-Empfangsaktion hinzu, um Nachrichten von einem Themenabonnement zu empfangen.  
     Die fertige Aktion ist in der folgenden Abbildung dargestellt:
 
     ![15][]
 
-4. Fügen Sie wie hier gezeigt ein vollständiges Ereignis hinzu:
+1. Fügen Sie wie hier gezeigt ein vollständiges Ereignis hinzu:
 
     ![16][]
 
-5. Speichern Sie die Logik-App, und senden Sie eine Nachricht an Ihr Service Bus-Thema, wie im Abschnitt „Voraussetzungen“ erwähnt.  
+1. Speichern Sie die Logik-App, und senden Sie eine Nachricht an Ihr Service Bus-Thema, wie im Abschnitt „Voraussetzungen“ erwähnt.  
     Verfolgen Sie die Ausführung der Logik-App. Wählen Sie zum Anzeigen von weiteren Daten für die Ausführung die Option **Übersicht**, und zeigen Sie dann die Daten unter **Ausführungsverlauf** an.
 
     ![17][]

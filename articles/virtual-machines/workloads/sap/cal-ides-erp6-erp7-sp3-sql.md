@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: b1895fb1910c5f30cbcff1c16ca66057d31a580b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 93824c8f0e7667fcb58fd6b8292cddfa2b4a482a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656481"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441458"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
 In diesem Artikel wird beschrieben, wie Sie ein SAP IDES-System mit SQL Server und einem Windows-Betriebssystem über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Führen Sie die gleichen Schritte aus, um eine andere Lösung bereitzustellen.
@@ -49,7 +49,7 @@ Nach der Anmeldung bei der SAP CAL gelangen Sie in der Regel über die erste Sei
     > [!NOTE]
     Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Resource Manager-Modell bereitgestellt werden.
 
-2. Beim Erstellen eines neuen SAP CAL-Kontos zeigt die Seite **Accounts** (Konten) für Azure zwei Optionen an: 
+1. Beim Erstellen eines neuen SAP CAL-Kontos zeigt die Seite **Accounts** (Konten) für Azure zwei Optionen an: 
 
     a. **Microsoft Azure (klassisch)** ist das klassische Bereitstellungsmodell, das nicht mehr empfohlen wird.
 
@@ -61,27 +61,27 @@ Nach der Anmeldung bei der SAP CAL gelangen Sie in der Regel über die erste Sei
 
     ![SAP CAL-Konten](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-3. Geben Sie die Azure-**Abonnement-ID** ein, die Sie im Azure-Portal finden. 
+1. Geben Sie die Azure-**Abonnement-ID** ein, die Sie im Azure-Portal finden. 
 
     ![SAP CAL-Abonnement-ID](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-4. Um die SAP CAL für die Bereitstellung im angegebenen Azure-Abonnement zu autorisieren, klicken Sie auf **Authorize** (Autorisieren). Die folgende Seite wird auf der Browserregisterkarte angezeigt:
+1. Um die SAP CAL für die Bereitstellung im angegebenen Azure-Abonnement zu autorisieren, klicken Sie auf **Authorize** (Autorisieren). Die folgende Seite wird auf der Browserregisterkarte angezeigt:
 
     ![Anmeldung beim Clouddienst in Internet Explorer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
 
-5. Wenn mehrere Benutzer aufgeführt sind, wählen Sie das Microsoft-Konto, das als Co-Administrator mit dem ausgewählten Azure-Abonnement verknüpft ist. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
+1. Wenn mehrere Benutzer aufgeführt sind, wählen Sie das Microsoft-Konto, das als Co-Administrator mit dem ausgewählten Azure-Abonnement verknüpft ist. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
 
     ![Bestätigung für Clouddienste in Internet Explorer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-6. Klicken Sie auf **Annehmen**. Wenn die Autorisierung erfolgreich ist, wird die Definition des SAP CAL-Kontos erneut angezeigt. Nach kurzer Zeit bestätigt eine Meldung, dass die Autorisierung erfolgreich war.
+1. Klicken Sie auf **Annehmen**. Wenn die Autorisierung erfolgreich ist, wird die Definition des SAP CAL-Kontos erneut angezeigt. Nach kurzer Zeit bestätigt eine Meldung, dass die Autorisierung erfolgreich war.
 
-7. Um Ihrem Benutzer das neu erstellte SAP CAL-Konto zuzuweisen, geben Sie Ihre **Benutzer-ID** in das Textfeld rechts ein, und klicken dann auf **Add** (Hinzufügen). 
+1. Um Ihrem Benutzer das neu erstellte SAP CAL-Konto zuzuweisen, geben Sie Ihre **Benutzer-ID** in das Textfeld rechts ein, und klicken dann auf **Add** (Hinzufügen). 
 
     ![Zuordnen des Kontos zum Benutzer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
 
-8. Um Ihr Konto dem Benutzer zuzuordnen, der sich bei der SAP CAL anmeldet, klicken Sie auf **Review** (Überprüfen). 
+1. Um Ihr Konto dem Benutzer zuzuordnen, der sich bei der SAP CAL anmeldet, klicken Sie auf **Review** (Überprüfen). 
 
-9. Um die Zuordnung zwischen dem Benutzer und dem neu erstellten SAP CAL-Konto zu erstellen, klicken Sie auf **Create** (Erstellen).
+1. Um die Zuordnung zwischen dem Benutzer und dem neu erstellten SAP CAL-Konto zu erstellen, klicken Sie auf **Create** (Erstellen).
 
     ![Zuordnung des Kontos zum Benutzer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
 
@@ -96,7 +96,7 @@ Bevor Sie Ihre auf Windows und SQL Server basierende SAP IDES-Lösung bereitstel
 ### <a name="deploy-a-solution"></a>Bereitstellen einer Lösung
 1. Wählen Sie nach dem Einrichten eines SAP CAL-Kontos die Lösung **The SAP IDES solution on Windows and SQL Server** (Die SAP IDES-Lösung unter Windows und SQL Server) aus. Klicken Sie auf **Create Instance** (Instanz erstellen), und bestätigen Sie die Nutzungsbedingungen. 
 
-2. Auf der Seite **Basic Mode: Create Instance** (Einfacher Modus: Instanz erstellen) müssen Sie Folgendes ausführen:
+1. Auf der Seite **Basic Mode: Create Instance** (Einfacher Modus: Instanz erstellen) müssen Sie Folgendes ausführen:
 
     a. Geben Sie einen **Namen** für die Instanz ein.
 
@@ -106,19 +106,19 @@ Bevor Sie Ihre auf Windows und SQL Server basierende SAP IDES-Lösung bereitstel
 
     ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-3. Klicken Sie auf **Create**. Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt: 
+1. Klicken Sie auf **Create**. Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt: 
 
     ![SAP CAL-Instanzen](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 
-4. Wechseln Sie zum Azure-Portal, um die Ressourcengruppe und die dazugehörigen Objekte zu suchen, die von der SAP CAL erstellt wurden. Der Name der virtuellen Computer beginnt jeweils mit dem gleichen Instanznamen, der in der SAP CAL vergeben wurde.
+1. Wechseln Sie zum Azure-Portal, um die Ressourcengruppe und die dazugehörigen Objekte zu suchen, die von der SAP CAL erstellt wurden. Der Name der virtuellen Computer beginnt jeweils mit dem gleichen Instanznamen, der in der SAP CAL vergeben wurde.
 
     ![Ressourcengruppenobjekte](./media/cal-ides-erp6-ehp7-sp3-sql/ides_resource_group.PNG)
 
-5. Navigieren Sie im SAP CAL-Portal zu den bereitgestellten Instanzen, und klicken Sie auf **Connect** (Verbindung herstellen). Das folgende Popupfenster wird angezeigt: 
+1. Navigieren Sie im SAP CAL-Portal zu den bereitgestellten Instanzen, und klicken Sie auf **Connect** (Verbindung herstellen). Das folgende Popupfenster wird angezeigt: 
 
     ![Herstellen einer Verbindung mit der Instanz](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
 
-6. Bevor Sie eine der Optionen zum Herstellen einer Verbindung mit den bereitgestellten Systemen nutzen können, klicken Sie auf **Getting Started Guide** (Leitfaden für erste Schritte). Die Dokumentation nennt die Benutzer für jede der Verbindungsmethoden. Die Kennwörter für diese Benutzer sind auf das Masterkennwort festgelegt, das Sie am Anfang des Bereitstellungsprozesses festgelegt haben. In der Dokumentation werden weitere Funktionsbenutzer mit ihren Kennwörtern aufgeführt, die Sie zum Anmelden beim bereitgestellten System verwenden können.
+1. Bevor Sie eine der Optionen zum Herstellen einer Verbindung mit den bereitgestellten Systemen nutzen können, klicken Sie auf **Getting Started Guide** (Leitfaden für erste Schritte). Die Dokumentation nennt die Benutzer für jede der Verbindungsmethoden. Die Kennwörter für diese Benutzer sind auf das Masterkennwort festgelegt, das Sie am Anfang des Bereitstellungsprozesses festgelegt haben. In der Dokumentation werden weitere Funktionsbenutzer mit ihren Kennwörtern aufgeführt, die Sie zum Anmelden beim bereitgestellten System verwenden können.
 
     ![SAP-Begrüßungsdokumentation](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
 

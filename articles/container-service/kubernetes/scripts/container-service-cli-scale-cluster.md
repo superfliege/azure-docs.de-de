@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 2daff49e90213b2fadc0f75e0209f668a94d3dea
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 1e5ca9fb44ea3ad15206f36a16e61f2865d79f5f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32161921"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427770"
 ---
 # <a name="scale-an-azure-container-service-cluster"></a>Skalieren eines Azure Container Service-Clusters
 
@@ -51,7 +51,7 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 | Get-Help | Notizen |
 |---|---|
-| [az acs scale](/cli/azure/acs#az_acs_scale) | Skaliert einen ACS-Cluster. |
+| [az acs scale](/cli/azure/acs#az-acs-scale) | Skaliert einen ACS-Cluster. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

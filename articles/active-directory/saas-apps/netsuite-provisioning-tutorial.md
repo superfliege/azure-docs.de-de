@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c98781112db7cd91bdeebdaab461afd1f0ec3fbc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3dac2b1c90f6555abc71a52d75f8d58958d978c7
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226623"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449494"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netsuite für die automatische Benutzerbereitstellung
 
@@ -60,33 +60,33 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
-2. Suchen Sie über das Suchfeld nach Ihrer Netsuite-Instanz, wenn Sie Netsuite bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Netsuite**. Wählen Sie Netsuite in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+1. Suchen Sie über das Suchfeld nach Ihrer Netsuite-Instanz, wenn Sie Netsuite bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **Netsuite**. Wählen Sie Netsuite in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-3. Wählen Sie Ihre Netsuite-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
+1. Wählen Sie Ihre Netsuite-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
 
-4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
+1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
     ![Bereitstellung](./media/netsuite-provisioning-tutorial/provisioning.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die folgenden Konfigurationseinstellungen an:
+1. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die folgenden Konfigurationseinstellungen an:
    
     a. Geben Sie im Textfeld für den **Benutzernamen des Administrators** den Namen eines Netsuite-Kontos ein, dem das Profil **Systemadministrator** auf „Netsuite.com“ zugewiesen ist.
    
     b. Geben Sie im Textfeld **Administratorkennwort** das Kennwort für dieses Konto ein.
       
-6. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Netsuite-App herstellen kann.
+1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Netsuite-App herstellen kann.
 
-7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
+1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 
-8. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
-9. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Netsuite synchronisieren**.
+1. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Netsuite synchronisieren**.
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Netsuite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Netsuite für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
+1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Netsuite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Netsuite für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-11. Um den Azure AD-Bereitstellungsdienst für Netsuite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**.
+1. Um den Azure AD-Bereitstellungsdienst für Netsuite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**.
 
-12. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Netsuite im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Netsuite-App ausgeführt werden.
 

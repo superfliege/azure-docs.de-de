@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 4a811c5354a9ff2aaa48a300d9b2655f91fdab23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 205938bbf615face0768028717a333c13c1fafa1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901091"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590312"
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für die Anmeldung 
 
@@ -38,7 +38,7 @@ Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwen
 
 ## <a name="overview"></a>Übersicht
 
-Eine MSI enthält ein [Dienstprinzipalobjekt](../develop/active-directory-dev-glossary.md#service-principal-object), das [beim Aktivieren der MSI](overview.md#how-does-it-work) auf der VM erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
+Eine MSI enthält ein [Dienstprinzipalobjekt](../develop/developer-glossary.md#service-principal-object), das [beim Aktivieren der MSI](overview.md#how-does-it-work) auf der VM erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
 
    - Registrierung und Zustimmung als vertrauliche und Webclientanwendung in Azure AD
    - Anmeldung unter dem zugehörigen Dienstprinzipal mit den Anmeldeinformationen der Anwendung (wahrscheinlich im Skript eingebettet)

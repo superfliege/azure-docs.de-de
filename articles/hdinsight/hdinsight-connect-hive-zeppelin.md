@@ -1,25 +1,21 @@
 ---
-title: Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight | Microsoft-Dokumentation
+title: Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight
 description: Erfahren Sie, wie Sie Zeppelin zum Ausführen von Hive-Abfragen verwenden.
 keywords: hdinsight, hadoop, hive, interactive query, LLAP
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: c8fe65d2eadaede1d99befbf76c4d06fab9598fc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: d4767c4d86d03827b0c055af41638988afd632a1
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202610"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595932"
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight 
 

@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 589cf1d297a335c36725917dd7012d877d1dcaeb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363076"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504514"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen
 
@@ -30,7 +30,7 @@ Der Anwendungsproxy unterstützt native Client-Apps durch das Akzeptieren der vo
 
 ![Beziehung zwischen Endbenutzern, Azure Active Directory und veröffentlichten Anwendung](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Verwenden Sie zum Veröffentlichen nativer Anwendungen die Active Directory Authentication Library (ADAL), die die Authentifizierung übernimmt und viele Clientumgebungen unterstützt. Der Anwendungsproxy gehört zum Szenario für eine [native Anwendung zu Web-API](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api). 
+Verwenden Sie zum Veröffentlichen nativer Anwendungen die Active Directory Authentication Library (ADAL), die die Authentifizierung übernimmt und viele Clientumgebungen unterstützt. Der Anwendungsproxy gehört zum Szenario für eine [native Anwendung zu Web-API](../develop/authentication-scenarios.md#native-application-to-web-api). 
 
 Dieser Artikel begleitet Sie durch die vier Schritte zum Veröffentlichen einer nativen Anwendung mit dem Anwendungsproxy und der Active Directory Authentication Library. 
 
@@ -48,7 +48,7 @@ Konfigurieren Sie Ihre systemeigene Anwendung wie folgt:
    ![Erstellen einer neuen App-Registrierung](./media/application-proxy-configure-native-client-application/create.png)
 5. Klicken Sie auf **Erstellen**.
 
-Ausführlichere Informationen zum Erstellen einer neuen App-Registrierung finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](./../develop/active-directory-integrating-applications.md).
+Ausführlichere Informationen zum Erstellen einer neuen App-Registrierung finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 
 ## <a name="step-3-grant-access-to-other-applications"></a>Schritt 3: Gewähren des Zugriffs auf andere Anwendungen
@@ -96,6 +96,6 @@ Nachdem die ADAL mit diesen Parametern bearbeitet wurde, sollten sich Ihre Benut
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über den Fluss bei nativen Anwendungen finden Sie unter [Systemeigene Anwendung zu Web-API](../develop/active-directory-authentication-scenarios.md#native-application-to-web-api).
+Weitere Informationen über den Fluss bei nativen Anwendungen finden Sie unter [Systemeigene Anwendung zu Web-API](../develop/authentication-scenarios.md#native-application-to-web-api).
 
 Informationen zum Einrichten von einmaligem Anmelden für den Anwendungsproxy finden Sie [hier](application-proxy-single-sign-on.md).

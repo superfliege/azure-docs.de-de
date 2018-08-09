@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9fdbfd0338b1c4b6ac863f07e5808ce6ccd9a6c7
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347283"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436691"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -58,17 +58,17 @@ So erstellen Sie eine ILB-ASE:
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **App Service-Umgebung**.
 
-2. Wählen Sie Ihr Abonnement aus.
+1. Wählen Sie Ihr Abonnement aus.
 
-3. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
+1. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
 
-4. Wählen Sie ein VNET aus, oder erstellen Sie eines.
+1. Wählen Sie ein VNET aus, oder erstellen Sie eines.
 
-5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/24` mit 256 Adressen, die eine ASE in maximaler Größe und alle Skalierungsanforderungen verarbeiten kann. 
+1. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/24` mit 256 Adressen, die eine ASE in maximaler Größe und alle Skalierungsanforderungen verarbeiten kann. 
 
-6. Wählen Sie **Virtuelles Netzwerk/Speicherort** > **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
+1. Wählen Sie **Virtuelles Netzwerk/Speicherort** > **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
 
-7. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
+1. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
 
     * net   
 
@@ -88,7 +88,7 @@ So erstellen Sie eine ILB-ASE:
 
    Wenn Sie die benutzerdefinierten Domänennamen für Ihre Apps kennen, wählen Sie eine Domäne für die ILB-ASE, die keinen Konflikt mit diesen benutzerdefinierten Domänennamen verursacht. In diesem Beispiel können Sie z.B. *contoso-internal.com* für die Domäne Ihrer ASE verwenden, da sie keinen Konflikt mit benutzerdefinierten Domänennamen, die auf *.contoso.com* enden, verursacht.
 
-8. Wählen Sie **OK** und anschließend **Erstellen**.
+1. Wählen Sie **OK** und anschließend **Erstellen**.
 
     ![ASE-Erstellung][1]
 
@@ -105,19 +105,19 @@ Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App nor
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **Web-App**.
 
-2. Geben Sie den Namen der App ein.
+1. Geben Sie den Namen der App ein.
 
-3. Wählen Sie das Abonnement aus.
+1. Wählen Sie das Abonnement aus.
 
-4. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
+1. Wählen Sie eine Ressourcengruppe aus, oder erstellen Sie sie.
 
-5. Wählen Sie Ihr Betriebssystem aus. 
+1. Wählen Sie Ihr Betriebssystem aus. 
 
     * Wenn Sie eine Linux-App mit einem benutzerdefinierten Docker-Container erstellen möchten, können Sie gemäß der [hier][linuxapp] aufgeführten Anweisungen Ihren eigenen Container verwenden. 
 
-6. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen. Wenn Sie einen neuen App Service-Plan erstellen möchten, wählen Sie Ihre ASE als Speicherort aus. Wählen Sie den Workerpool aus, in dem Ihr App Service-Plan erstellt werden soll. Wählen Sie beim Erstellen des App Service-Plans die ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, wird die Domäne unter Ihrem App-Namen durch die Domäne für Ihre ASE ersetzt.
+1. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen. Wenn Sie einen neuen App Service-Plan erstellen möchten, wählen Sie Ihre ASE als Speicherort aus. Wählen Sie den Workerpool aus, in dem Ihr App Service-Plan erstellt werden soll. Wählen Sie beim Erstellen des App Service-Plans die ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, wird die Domäne unter Ihrem App-Namen durch die Domäne für Ihre ASE ersetzt.
 
-7. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.
+1. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.
 
     ![Erstellung eines App Service-Plans][2]
 
@@ -156,27 +156,27 @@ So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
 1. Wechseln Sie nach der Erstellung der ASE zur ASE-Benutzeroberfläche. Wählen Sie **ASE** > **Einstellungen** > **ILB-Zertifikat**.
 
-2. Legen Sie das ILB-Zertifikat durch Auswahl der Zertifikat-PFX-Datei und Eingabe des Kennworts fest. Dieser Schritt kann eine Weile dauern. Es wird eine Meldung angezeigt, die besagt, dass ein Uploadvorgang ausgeführt wird.
+1. Legen Sie das ILB-Zertifikat durch Auswahl der Zertifikat-PFX-Datei und Eingabe des Kennworts fest. Dieser Schritt kann eine Weile dauern. Es wird eine Meldung angezeigt, die besagt, dass ein Uploadvorgang ausgeführt wird.
 
-3. Rufen Sie die ILB-Adresse für Ihre ASE ab. Wählen Sie **ASE** > **Eigenschaften** > **Virtuelle IP-Adresse** aus.
+1. Rufen Sie die ILB-Adresse für Ihre ASE ab. Wählen Sie **ASE** > **Eigenschaften** > **Virtuelle IP-Adresse** aus.
 
-4. Erstellen Sie nach der ASE-Erstellung eine Web-App in der ASE.
+1. Erstellen Sie nach der ASE-Erstellung eine Web-App in der ASE.
 
-5. Erstellen Sie eine VM, sofern im VNET noch keine vorhanden ist.
+1. Erstellen Sie eine VM, sofern im VNET noch keine vorhanden ist.
 
     > [!NOTE] 
     > Versuchen Sie nicht, diese VM im selben Subnetz wie die der ASE zu erstellen, da dies Fehler bzw. Probleme verursacht.
     >
 
-6. Legen Sie das DNS für Ihre ASE-Domäne fest. Sie können einen Platzhalter mit Ihrer Domäne in Ihrem DNS verwenden. Um einige einfache Tests auszuführen, bearbeiten Sie die Hostdatei auf Ihrer VM, um den Namen der Web-App auf die virtuelle IP-Adresse festzulegen:
+1. Legen Sie das DNS für Ihre ASE-Domäne fest. Sie können einen Platzhalter mit Ihrer Domäne in Ihrem DNS verwenden. Um einige einfache Tests auszuführen, bearbeiten Sie die Hostdatei auf Ihrer VM, um den Namen der Web-App auf die virtuelle IP-Adresse festzulegen:
 
     a. Wenn Ihre ASE den Domänennamen _.ilbase.com_ aufweist und Sie die Web-App _mytestapp_ erstellen, wird sie unter _mytestapp.ilbase.com_ adressiert. Anschließend legen Sie _mytestapp.ilbase.com_ so fest, dass eine Auflösung in die ILB-Adresse erfolgt. (Unter Windows befindet sich die Hostdatei unter „_C:\Windows\System32\drivers\etc\_“.)
 
     b. Um Web Deploy-Publishing oder den Zugriff auf die erweiterte Konsole zu testen, erstellen Sie einen Datensatz für _mytestapp.scm.ilbase.com_.
 
-7. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu http://mytestapp.ilbase.com. (Navigieren Sie alternativ zum Namen Ihrer Web-App, der in Ihrer Domäne verwendet wird.)
+1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu http://mytestapp.ilbase.com. (Navigieren Sie alternativ zum Namen Ihrer Web-App, der in Ihrer Domäne verwendet wird.)
 
-8. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
+1. Verwenden Sie einen Browser auf diesem virtuellen Computer, und wechseln Sie zu https://mytestapp.ilbase.com. Wenn Sie ein selbstsigniertes Zertifikat verwenden, müssen Sie eine Beeinträchtigung der Sicherheit in Kauf nehmen.
 
     Die IP-Adresse für Ihren ILB wird unter **IP-Adressen** aufgelistet. In dieser Liste sind auch die von der externen VIP und für eingehenden Datenverkehr für die Verwaltung verwendeten IP-Adressen aufgeführt.
 

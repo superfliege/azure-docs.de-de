@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0db357194aa4bd4d01b1d445cb407d983214b32b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 843b92c20b2ec930ce67659802a4287328a08650
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054125"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618868"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -289,7 +289,7 @@ Für den Fall, dass der Slice die Überprüfung aufgrund eines Richtlinienfehler
 ![Beheben von Fehlern und Überprüfen](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
-Sie können Ausführungen, bei denen Fehler aufgetreten sind, mit dem **Set-AzureRmDataFactorySliceStatus**-Cmdlet wiederholen. Im Thema [Set-AzureRmDataFactorySliceStatus](https://msdn.microsoft.com/library/mt603522.aspx) finden Sie die Syntax und ausführliche Informationen zum Cmdlet.
+Sie können Ausführungen, bei denen Fehler aufgetreten sind, mit dem **Set-AzureRmDataFactorySliceStatus**-Cmdlet wiederholen. Im Thema [Set-AzureRmDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus) finden Sie die Syntax und ausführliche Informationen zum Cmdlet.
 
 **Beispiel:**
 

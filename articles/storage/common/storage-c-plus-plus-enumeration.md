@@ -1,25 +1,19 @@
 ---
 title: Auflisten von Azure Storage-Ressourcen mit der Speicherclientbibliothek für C++ | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Auflistungs-APIs in Microsoft Azure Storage Client Library for C++ verwenden können, um Container, BLOBs, Warteschlangen, Tabellen und Entitäten aufzuzählen.
-documentationcenter: .net
 services: storage
 author: dineshmurthy
-manager: jahogg
-editor: tysonn
-ms.assetid: 33563639-2945-4567-9254-bc4a7e80698f
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
-ms.openlocfilehash: 9844412739f4f6f95416f81347f0f2eeeca62bea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 0a105122eccdfa671c806389908762941f23200c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059665"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525306"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Auflisten von Azure Storage-Ressourcen in C++
 Auflistungsvorgänge sind der Schlüssel für viele Entwicklungsszenarien mit Azure Storage. Dieser Artikel beschreibt, wie Objekte in Azure Storage mit den Auflistungs-APIs, die in der Microsoft Azure Storage Client Library for C++ bereitgestellt werden, am effizientesten aufgelistet werden können.
@@ -40,7 +34,7 @@ Die Storage Client Library stellt eine Vielzahl von Methoden bereit, um Objekte 
 Jede dieser Methoden wird mit unterschiedlichen Überladungen für unterschiedliche Szenarios dargestellt.
 
 ## <a name="asynchronous-versus-synchronous"></a>Asynchrone und synchrone Vorgänge
-Da die Storage Client Library for C++ auf Basis der [C++ REST-Bibliothek](https://github.com/Microsoft/cpprestsdk) erstellt wurde, werden asynchrone Vorgänge grundsätzlich unterstützt, indem [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) verwendet wird. Beispiel:
+Da die Storage Client Library for C++ auf Basis der [C++ REST-Bibliothek](https://github.com/Microsoft/cpprestsdk) erstellt wurde, werden asynchrone Vorgänge grundsätzlich unterstützt, indem [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) verwendet wird. Beispiel: 
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -202,5 +196,5 @@ Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie
 * [Verwenden des Warteschlangenspeichers in C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage Client Library for C++ API Documentation.](http://azure.github.io/azure-storage-cpp/)
 * [Azure Storage-Teamblog](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Azure-Speicherdokumentation](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
 

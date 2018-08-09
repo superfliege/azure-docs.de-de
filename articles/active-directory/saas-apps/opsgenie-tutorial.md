@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f978644a9de2eb8bb1fd6f6b4f4b26e91c8e8187
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 715035072ddc2ceb087d003dd5da5bc47572e9b9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229086"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39444350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Tutorial: Azure Active Directory-Integration mit OpsGenie
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von OpsGenie aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>Hinzufügen von OpsGenie aus dem Katalog
 Zum Konfigurieren der Integration von OpsGenie in Azure AD müssen Sie OpsGenie aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von OpsGenie in Azure AD müssen Sie OpsGenie
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **OpsGenie**ein.
+1. Geben Sie im Suchfeld als Suchbegriff **OpsGenie**ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/opsgenie-tutorial/tutorial_opsgenie_search.png)
 
-5. Wählen Sie im Ergebnisbereich **OpsGenie** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **OpsGenie** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/opsgenie-tutorial/tutorial_opsgenie_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in OpsGenie den Wert für **Benutzername** in Azure AD als Wert für 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei OpsGenie müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines OpsGenie-Testbenutzers](#creating-a-opsgenie-test-user)** , um eine Entsprechung von Britta Simon in OpsGenie zu erhalten, die mit Darstellung dieses Benutzers in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines OpsGenie-Testbenutzers](#creating-a-opsgenie-test-user)** , um eine Entsprechung von Britta Simon in OpsGenie zu erhalten, die mit Darstellung dieses Benutzers in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,45 +102,45 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **OpsGenie** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/opsgenie-tutorial/tutorial_opsgenie_samlbase.png)
+    ![Configure single sign-on](./media/opsgenie-tutorial/tutorial_opsgenie_samlbase.png)
 
-3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für OpsGenie** aus:
+1. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für OpsGenie** aus:
 
-    ![Configure Single Sign-On](./media/opsgenie-tutorial/tutorial_opsgenie_url.png)
+    ![Configure single sign-on](./media/opsgenie-tutorial/tutorial_opsgenie_url.png)
 
     Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://app.opsgenie.com/auth/login`
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
     ![Downloadlink für das Zertifikat](./media/opsgenie-tutorial/tutorial_opsgenie_certificate.png)
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/opsgenie-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/opsgenie-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **OpsGenie-Konfiguration** auf **OpsGenie konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Dienst-URL für einmaliges Anmelden** aus der Kurzübersicht.
+1. Klicken Sie im Abschnitt **OpsGenie-Konfiguration** auf **OpsGenie konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Dienst-URL für einmaliges Anmelden** aus der Kurzübersicht.
 
-    ![Configure Single Sign-On](./media/opsgenie-tutorial/tutorial_opsgenie_configure.png)
+    ![Configure single sign-on](./media/opsgenie-tutorial/tutorial_opsgenie_configure.png)
 
-7. Öffnen Sie eine weitere Browserinstanz, und melden Sie sich bei OpsGenie als Administrator an.
+1. Öffnen Sie eine weitere Browserinstanz, und melden Sie sich bei OpsGenie als Administrator an.
 
-8. Klicken Sie auf **Einstellungen** und dann auf die Registerkarte **Einmaliges Anmelden**.
+1. Klicken Sie auf **Einstellungen** und dann auf die Registerkarte **Einmaliges Anmelden**.
    
     ![Einmaliges Anmelden bei OpsGenie](./media/opsgenie-tutorial/tutorial_opsgenie_06.png)
 
-9. Um SSO (Single Sign-On, einmaliges Anmelden) zu aktivieren, wählen Sie **Enabled**aus.
+1. Um SSO (Single Sign-On, einmaliges Anmelden) zu aktivieren, wählen Sie **Enabled**aus.
    
     ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial_opsgenie_07.png) 
 
-10. Klicken Sie im Abschnitt **Anbieter** auf die Registerkarte **Azure Active Directory**.
+1. Klicken Sie im Abschnitt **Anbieter** auf die Registerkarte **Azure Active Directory**.
    
     ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial_opsgenie_08.png) 
 
-11. Führen Sie auf der Dialogfeldseite "Azure Active Directory" die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite "Azure Active Directory" die folgenden Schritte aus:
    
     ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial_opsgenie_09.png)
     
@@ -161,15 +161,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/opsgenie-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/opsgenie-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/opsgenie-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/opsgenie-tutorial/create_aaduser_04.png) 
 
@@ -187,13 +187,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 1. Melden Sie sich in einem Webbrowserfenster bei Ihrem OpsGenie-Mandanten als Administrator an.
 
-2. Navigieren Sie zur Liste der Benutzer, indem Sie im linken Bereich auf **User** klicken.
+1. Navigieren Sie zur Liste der Benutzer, indem Sie im linken Bereich auf **User** klicken.
    
    ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial_opsgenie_10.png) 
 
-3. Klicken Sie auf **Benutzer hinzufügen**.
+1. Klicken Sie auf **Benutzer hinzufügen**.
 
-4. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
    
    ![OpsGenie-Einstellungen](./media/opsgenie-tutorial/tutorial_opsgenie_11.png)
    
@@ -218,23 +218,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **OpsGenie**aus.
+1. Wählen Sie in der Anwendungsliste **OpsGenie**aus.
 
-    ![Configure Single Sign-On](./media/opsgenie-tutorial/tutorial_opsgenie_app.png) 
+    ![Configure single sign-on](./media/opsgenie-tutorial/tutorial_opsgenie_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

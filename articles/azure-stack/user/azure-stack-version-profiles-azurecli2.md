@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 1b59409e43a23dd63a6697a44a20df079a751516
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e5dd41b34c41c442034e0a7ccb74c8d5b6583753
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866857"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436708"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI 2.0 in Azure Stack
 
@@ -38,7 +38,7 @@ Daraufhin sollten die Version der Azure-CLI und die anderen abhängigen Biblioth
 
 1. Beschaffen Sie das Zertifizierungsstellen-Stammzertifikat für Azure Stack von [Ihrem Azure Stack-Betreiber](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate), und stufen Sie es als vertrauenswürdig ein. Zum Einstufen des Zertifizierungsstellen-Stammzertifikats für Azure Stack als vertrauenswürdig fügen Sie es an das vorhandene Python-Zertifikat an.
 
-2. Suchen Sie den Speicherort des Zertifikats auf Ihrem Computer. Der Speicherort kann je nachdem, wo Sie Python installiert haben, variieren. Es müssen die Module [pip](https://pip.pypa.io) und [certifi](https://pypi.org/project/certifi/) installiert sein. Sie können den folgenden Python-Befehl über die Bash-Aufforderung verwenden:
+1. Suchen Sie den Speicherort des Zertifikats auf Ihrem Computer. Der Speicherort kann je nachdem, wo Sie Python installiert haben, variieren. Es müssen die Module [pip](https://pip.pypa.io) und [certifi](https://pypi.org/project/certifi/) installiert sein. Sie können den folgenden Python-Befehl über die Bash-Aufforderung verwenden:
 
   ```bash  
     python -c "import certifi; print(certifi.where())"
@@ -60,9 +60,9 @@ Wenn Sie die CLI von **außerhalb** der Azure Stack-Umgebung ausführen, ist fol
 
 1. Sie müssen eine [VPN-Verbindung zu Azure Stack](azure-stack-connect-azure-stack.md) einrichten.
 
-2. Kopieren Sie das PEM-Zertifikat, das Sie von Ihrem Azure Stack-Betreiber erhalten haben, und notieren Sie sich den Speicherort der Datei (PATH_TO_PEM_FILE).
+1. Kopieren Sie das PEM-Zertifikat, das Sie von Ihrem Azure Stack-Betreiber erhalten haben, und notieren Sie sich den Speicherort der Datei (PATH_TO_PEM_FILE).
 
-3. Führen Sie die folgenden Befehle aus, abhängig vom Betriebssystem Ihrer Entwicklungsarbeitsstation.
+1. Führen Sie die folgenden Befehle aus, abhängig vom Betriebssystem Ihrer Entwicklungsarbeitsstation.
 
 #### <a name="linux"></a>Linux
 
@@ -140,7 +140,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
         --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
       ```
 
-2. Legen Sie die aktive Umgebung mithilfe der folgenden Befehle fest.
+1. Legen Sie die aktive Umgebung mithilfe der folgenden Befehle fest.
 
    a. Verwenden Sie für die Umgebung für *Cloudadministratoren* Folgendes:
 
@@ -156,14 +156,14 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
         -n AzureStackUser
       ```
 
-3. Aktualisieren Sie Ihre Umgebungskonfiguration so, dass das spezifische API-Versionsprofil für Azure Stack verwendet wird. Führen Sie den folgenden Befehl aus, um die Konfiguration zu aktualisieren:
+1. Aktualisieren Sie Ihre Umgebungskonfiguration so, dass das spezifische API-Versionsprofil für Azure Stack verwendet wird. Führen Sie den folgenden Befehl aus, um die Konfiguration zu aktualisieren:
 
    ```azurecli
    az cloud update \
      --profile 2017-03-09-profile
    ```
 
-4. Melden Sie sich bei der Azure Stack-Umgebung an, indem Sie den Befehl `az login` ausführen. Sie können sich entweder als Benutzer oder als [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects) an der Azure Stack-Umgebung anmelden. 
+1. Melden Sie sich bei der Azure Stack-Umgebung an, indem Sie den Befehl `az login` ausführen. Sie können sich entweder als Benutzer oder als [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects) an der Azure Stack-Umgebung anmelden. 
 
    * Anmeldung als *Benutzer*: Sie können entweder den Benutzernamen und das Kennwort direkt im Befehl `az login` eingeben oder die Authentifizierung über einen Browser ausführen. Sie müssen das letztgenannte Verfahren wählen, wenn für Ihr Konto mehrstufige Authentifizierung (Multi-Factor Authentication) aktiviert ist.
 

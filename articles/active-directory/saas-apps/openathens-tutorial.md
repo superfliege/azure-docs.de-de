@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: ddd669bb8ff8e520c5538457789d4f660a82255d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 269b216a94b1233c5f9f9a634fda3c05e46cac90
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051423"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Tutorial: Azure Active Directory-Integration mit OpenAthens
 
@@ -50,7 +50,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von OpenAthens aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-openathens-from-the-gallery"></a>Hinzufügen von OpenAthens aus dem Katalog
 Zum Konfigurieren der Integration von OpenAthens in Azure AD müssen Sie OpenAthens aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -61,15 +61,15 @@ Zum Konfigurieren der Integration von OpenAthens in Azure AD müssen Sie OpenAth
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
 
     ![Bereich „Unternehmensanwendungen“][2]
     
-3. Klicken Sie im oberen Bereich des Dialogfelds auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie im oberen Bereich des Dialogfelds auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld die Zeichenfolge **OpenAthens** ein, wählen Sie im Ergebnisbereich die Option **OpenAthens** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**.
+1. Geben Sie im Suchfeld die Zeichenfolge **OpenAthens** ein, wählen Sie im Ergebnisbereich die Option **OpenAthens** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**.
 
     ![OpenAthens in der Ergebnisliste](./media/openathens-tutorial/tutorial_openathens_addfromgallery.png)
 
@@ -84,10 +84,10 @@ Weisen Sie in OpenAthens den Wert für **Benutzername** in Azure AD als Wert fü
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei OpenAthens müssen Sie die folgenden Schritte ausführen:
 
 1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on), um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-2. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. [Erstellen eines OpenAthens-Testbenutzers](#create-a-openathens-test-user), um in OpenAthens eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Testen des einmaligen Anmeldens](#test-single-sign-on), um zu überprüfen, ob die Konfiguration funktioniert.
+1. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. [Erstellen eines OpenAthens-Testbenutzers](#create-a-openathens-test-user), um in OpenAthens eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. [Testen des einmaligen Anmeldens](#test-single-sign-on), um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -99,37 +99,37 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Link zum Konfigurieren des einmaligen Anmeldens][4]
 
-2. Wählen Sie zum Aktivieren des einmaligen Anmeldens im Dialogfeld **Einmaliges Anmelden** für **Modus** die Option **SAML-basierte Anmeldung** aus.
+1. Wählen Sie zum Aktivieren des einmaligen Anmeldens im Dialogfeld **Einmaliges Anmelden** für **Modus** die Option **SAML-basierte Anmeldung** aus.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/openathens-tutorial/tutorial_openathens_samlbase.png)
 
-3. Geben Sie im Abschnitt **Domäne und URLs für OpenAthens** den Wert `https://login.openathens.net/saml/2/metadata-sp` in das Textfeld **Bezeichner** ein.
+1. Geben Sie im Abschnitt **Domäne und URLs für OpenAthens** den Wert `https://login.openathens.net/saml/2/metadata-sp` in das Textfeld **Bezeichner** ein.
 
     ![SSO-Informationen zur Domäne und zu den URLs für OpenAthens](./media/openathens-tutorial/tutorial_openathens_url.png)
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das SAML-Signaturzertifikat](./media/openathens-tutorial/tutorial_openathens_certificate.png) 
 
-5. Wählen Sie die Schaltfläche **Speichern** aus.
+1. Wählen Sie die Schaltfläche **Speichern** aus.
 
     ![Schaltfläche „Speichern“ für einmaliges Anmelden](./media/openathens-tutorial/tutorial_general_400.png)
 
-6. Melden Sie sich in einem anderen Webbrowserfenster bei der OpenAthens-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der OpenAthens-Unternehmenswebsite als Administrator an.
 
-7. Wählen Sie in der Liste auf der Registerkarte **Management** (Verwaltung) die Option **Connections** (Verbindungen) aus. 
+1. Wählen Sie in der Liste auf der Registerkarte **Management** (Verwaltung) die Option **Connections** (Verbindungen) aus. 
 
     ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application1.png)
 
-8. Wählen Sie **SAML 1.1/2.0** aus, und klicken Sie anschließend auf die Schaltfläche **Configure** (Konfigurieren).
+1. Wählen Sie **SAML 1.1/2.0** aus, und klicken Sie anschließend auf die Schaltfläche **Configure** (Konfigurieren).
 
     ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application2.png)
     
-9. Klicken Sie zum Hinzufügen der Konfiguration auf die Schaltfläche **Browse** (Durchsuchen), um die Metadaten-XML-Datei hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben, und klicken Sie anschließend auf **Add** (Hinzufügen).
+1. Klicken Sie zum Hinzufügen der Konfiguration auf die Schaltfläche **Browse** (Durchsuchen), um die Metadaten-XML-Datei hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben, und klicken Sie anschließend auf **Add** (Hinzufügen).
 
     ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application3.png)
 
-10. Führen Sie auf der Registerkarte **Details** die folgenden Schritte aus.
+1. Führen Sie auf der Registerkarte **Details** die folgenden Schritte aus.
 
     ![Einmaliges Anmelden konfigurieren](./media/openathens-tutorial/tutorial_openathens_application4.png)
 
@@ -162,15 +162,15 @@ In diesem Abschnitt wird über das Azure-Portal ein Testbenutzer namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/openathens-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/openathens-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie im oberen Bereich des Dialogfelds **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie im oberen Bereich des Dialogfelds **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/openathens-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/openathens-tutorial/create_aaduser_04.png)
 
@@ -198,23 +198,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Liste **Anwendungen** die Option **OpenAthens** aus.
+1. Wählen Sie in der Liste **Anwendungen** die Option **OpenAthens** aus.
 
     ![OpenAthens-Link in der Anwendungsliste](./media/openathens-tutorial/tutorial_openathens_app.png)  
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Wählen Sie die Schaltfläche **Hinzufügen** aus. Klicken Sie im Bereich **Zuweisung hinzufügen** auf **Benutzer und Gruppen**.
+1. Wählen Sie die Schaltfläche **Hinzufügen** aus. Klicken Sie im Bereich **Zuweisung hinzufügen** auf **Benutzer und Gruppen**.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie in der Liste **Benutzer und Gruppen** die Option **Britta Simon** aus.
+1. Wählen Sie in der Liste **Benutzer und Gruppen** die Option **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie auf im Bereich **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Klicken Sie auf im Bereich **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

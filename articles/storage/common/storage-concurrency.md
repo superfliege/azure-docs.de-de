@@ -2,31 +2,26 @@
 title: Verwalten von Nebenläufigkeit Microsoft Azure Storage
 description: Verwalten von Nebenläufigkeit für die Blob-, Warteschlangen-, Tabellen- und Dateidienste
 services: storage
-documentationcenter: ''
 author: jasontang501
-manager: tadb
-editor: tysonn
-ms.assetid: cc6429c4-23ee-46e3-b22d-50dd68bd4680
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
-ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: common
+ms.openlocfilehash: 9c36347db2d1678e79e5ad80cda491f77850c4a6
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23060185"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525238"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
 Moderne Internet-basierte Anwendungen haben in der Regel mehrere Benutzer, die Daten gleichzeitig anzeigen und aktualisieren. Dies zwingt Anwendungsentwickler dazu, sorgfältig zu überlegen, wie sie ihren Endbenutzern ein vorhersagbares Erlebnis gewährleisten können, insbesondere in Situationen, in denen mehrere Benutzer die gleichen Daten aktualisieren können. Von Entwicklern werden für gewöhnlich die drei folgenden Hauptstrategien für die Datenparallelität in Betracht gezogen:  
 
 1. Optimistische Nebenläufigkeit – Eine Anwendung, die eine Aktualisierung ausführt, prüft während dieses Vorgangs, ob die Daten sich geändert haben, seitdem sie das letzte Mal gelesen wurden. Wenn z. B. zwei Benutzer eine Wiki-Seite aufrufen und dieselbe Seite aktualisieren, muss die Wiki-Plattform sicherstellen, dass die erste Aktualisierung nicht von der zweiten Aktualisierung überschrieben wird und dass beide Benutzer wissen, ob ihre Aktualisierung erfolgreich war oder nicht. Diese Strategie wird in Webanwendung sehr häufig verwendet.
-2. Pessimistische Nebenläufigkeit – Eine Anwendung, die eine Aktualisierung ausführt, sperrt ein Objekt, sodass andere Benutzer die Daten erst aktualisieren können, wenn die Sperre aufgehoben wird. Bei einer Datenreplikation zwischen Primär- und Sekundärgerät beispielsweise, bei der nur das Primärgerät Aktualisierungen vornimmt, richtet der Master in der Regel für einen bestimmten Zeitraum eine exklusive Sperre der Daten ein, damit sie von keinem anderen Benutzer aktualisiert werden können.
+2. Pessimistische Nebenläufigkeit – Eine Anwendung, die eine Aktualisierung ausführt, sperrt ein Objekt, sodass andere Benutzer die Daten erst aktualisieren können, wenn die Sperre aufgehoben wird. Bei einer Master/Slave-Datenreplikation beispielsweise, bei der nur der Master Aktualisierungen vornimmt, richtet der Master in der Regel für einen bestimmten Zeitraum eine exklusive Sperre der Daten ein, damit sie von keinem anderen Benutzer aktualisiert werden können.
 3. Letzter Schreiber gewinnt – Ein Verfahren, bei dem Aktualisierungsoperationen ausgeführt werden können, ohne dass geprüft wird, ob eine andere Anwendung die Daten aktualisiert hat, nachdem sie von der Anwendung erstmals gelesen wurden. Diese Strategie (oder das Fehlen einer formellen Strategie) wird in der Regel verwendet, wenn die Daten so partitioniert sind, dass der gleichzeitige Zugriff mehrerer Benutzer auf dieselben Daten unwahrscheinlich ist. Diese Strategie kann auch bei der Verarbeitung kurzlebiger Datenströme sinnvoll sein.  
 
 Dieser Artikel gibt eine Übersicht darüber, wie die Azure Storage-Plattform Entwicklungsprozesse durch die ausgezeichnete Unterstützung aller drei Nebenläufigkeitsstrategien vereinfacht.  
@@ -91,14 +86,14 @@ Die folgende Tabelle gibt eine Übersicht über die Containervorgänge, die bedi
 
 | Vorgang | Gibt Container-ETag-Wert zurück | Akzeptiert bedingte Header |
 |:--- |:--- |:--- |
-| Create Container |Ja |Nein  |
-| Get Container Properties |Ja |Nein  |
-| Get Container Metadata |Ja |Nein  |
-| Set Container Metadata |Ja |Ja |
-| Get Container ACL |Ja |Nein  |
-| Set Container ACL |Ja |Ja (*) |
-| Delete Container |Nein  |Ja |
-| Lease Container |Ja |Ja |
+| Create Container |JA |Nein  |
+| Get Container Properties |JA |Nein  |
+| Get Container Metadata |JA |Nein  |
+| Set Container Metadata |JA |JA |
+| Get Container ACL |JA |Nein  |
+| Set Container ACL |JA |Ja (*) |
+| Delete Container |Nein  |JA |
+| Lease Container |JA |JA |
 | List Blobs |Nein  |Nein  |
 
 (*) Die von SetContainerACL definierten Berechtigungen werden zwischengespeichert, und die Verteilung der Aktualisierungen dieser Berechtigungen dauert 30 Sekunden. Während dieser Zeitspanne kann die Konsistenz der Aktualisierungen nicht garantiert werden.  
@@ -107,22 +102,22 @@ Die folgende Tabelle gibt einen Überblick über die Blob-Vorgänge, die bedingt
 
 | Vorgang | Gibt ETag-Wert zurück | Akzeptiert bedingte Header |
 |:--- |:--- |:--- |
-| Put Blob |Ja |Ja |
-| Get Blob |Ja |Ja |
-| Get Blob Properties |Ja |Ja |
-| Set Blob Properties |Ja |Ja |
-| Get Blob Metadata |Ja |Ja |
-| Set Blob Metadata |Ja |Ja |
-| Lease Blob (*) |Ja |Ja |
-| Snapshot Blob |Ja |Ja |
-| Kopieren von Blobs |Ja |Ja (für Quell- und Ziel-Blob) |
+| Put Blob |JA |JA |
+| Get Blob |JA |JA |
+| Get Blob Properties |JA |JA |
+| Set Blob Properties |JA |JA |
+| Get Blob Metadata |JA |JA |
+| Set Blob Metadata |JA |JA |
+| Lease Blob (*) |JA |JA |
+| Snapshot Blob |JA |JA |
+| Kopieren von Blobs |JA |Ja (für Quell- und Ziel-Blob) |
 | Abort Copy Blob |Nein  |Nein  |
-| Delete Blob |Nein  |Ja |
+| Delete Blob |Nein  |JA |
 | Put Block |Nein  |Nein  |
-| Put Block List |Ja |Ja |
-| Get Block List |Ja |Nein  |
-| Put Page |Ja |Ja |
-| Get Page Ranges |Ja |Ja |
+| Put Block List |JA |JA |
+| Get Block List |JA |Nein  |
+| Put Page |JA |JA |
+| Get Page Ranges |JA |JA |
 
 (*) "Lease Blob" ändert das ETag eines Blob nicht.  
 
@@ -194,7 +189,7 @@ Zur Verwaltung der pessimistischen Nebenläufigkeit können die folgenden Contai
 * Set Container ACL
 * Lease Container  
 
-Weitere Informationen finden Sie unter   
+Weitere Informationen finden Sie unter  
 
 * [Angeben von bedingten Headern für Vorgänge des Blob-Diensts](http://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Lease Container](http://msdn.microsoft.com/library/azure/jj159103.aspx)
@@ -242,19 +237,19 @@ Die folgende Tabelle gibt eine Übersicht darüber, wie ETag-Werte in den Tabell
 
 | Vorgang | Gibt ETag-Wert zurück | Erfordert If-Match-Anforderungsheader |
 |:--- |:--- |:--- |
-| Entitäten abfragen |Ja |Nein  |
-| Entität einfügen |Ja |Nein  |
-| Entität aktualisieren |Ja |Ja |
-| Entität zusammenführen |Ja |Ja |
-| Entität löschen |Nein  |Ja |
-| Entität einfügen oder ersetzen |Ja |Nein  |
-| Entität einfügen oder zusammenführen |Ja |Nein  |
+| Entitäten abfragen |JA |Nein  |
+| Entität einfügen |JA |Nein  |
+| Entität aktualisieren |JA |JA |
+| Entität zusammenführen |JA |JA |
+| Entität löschen |Nein  |JA |
+| Entität einfügen oder ersetzen |JA |Nein  |
+| Entität einfügen oder zusammenführen |JA |Nein  |
 
 Bei den Vorgängen **Entität einfügen oder ersetzen** und **Entität einfügen oder zusammenführen** werden *keine* Nebenläufigkeitsprüfungen durchgeführt, da hierbei kein ETag-Wert an den Tabellenspeicherdienst gesendet wird.  
 
 Bei der Entwicklung skalierbarer Anwendung sollten Entwickler grundsätzlich auf die optimistische Nebenläufigkeit zurückgreifen. Wenn pessimistische Sperren erforderlich sind, können Entwickler beim Zugriff auf Tabelle u. a. folgendes Verfahren anwenden: Jeder Tabelle wird ein bestimmtes Blob zugewiesen, und es kann versucht werden, eine Lease für das Blob zu erhalten, bevor die Tabelle bearbeitet wird. Bei diesem Verfahren muss die Anwendung nicht sicherstellen, dass Datenzugriffspfade die Lease vor der Bearbeitung der Tabelle abrufen. Beachten Sie außerdem, dass die Mindestzeit für Leases 15 Sekunden beträgt, was bei der Skalierbarkeit sorgfältig zu beachten ist.  
 
-Weitere Informationen finden Sie unter   
+Weitere Informationen finden Sie unter  
 
 * [Vorgänge für Entitäten](http://msdn.microsoft.com/library/azure/dd179375.aspx)  
 
@@ -263,7 +258,7 @@ Ein Szenario, in dem Nebenläufigkeit ein Problem im Warteschlangendienst darste
 
 Der Warteschlangendienst unterstützt weder die optimistische noch die pessimistische Nebenläufigkeit. Aus diesem Grund müssen Clients, die aus einer Warteschlange abgerufene Nachrichten verarbeiten, sicherstellen, dass die Nachrichten auf eine idempotente Weise verarbeitet werden. Für Aktualisierungsvorgänge wie SetQueueServiceProperties, SetQueueMetaData, SetQueueACL und UpdateMessage wird die Strategie "Letzter Schreiber gewinnt" verwendet.  
 
-Weitere Informationen finden Sie unter   
+Weitere Informationen finden Sie unter  
 
 * [REST-API des Warteschlangendiensts](http://msdn.microsoft.com/library/azure/dd179363.aspx)
 * [Get Messages](http://msdn.microsoft.com/library/azure/dd179474.aspx)  
@@ -273,7 +268,7 @@ Der Zugriff auf den Dateidienst kann unter Verwendung zweier unterschiedlicher P
 
 Wenn ein SMB-Client eine Datei zum Löschen öffnet, markiert er die Datei als zum Löschen ausstehend, bis alle übrigen offenen SMB-Client-Handles für die betreffende Datei geschlossen sind. Wenn eine Datei als zum Löschen ausstehend markiert ist, geben alle REST-Vorgänge für diese Datei den Statuscode 409 (Konflikt) mit dem Fehlercode SMBDeletePending zurück. Der Statuscode 404 (Nicht gefunden) wird nicht zurückgegeben, da der SMB-Client das Kennzeichen für einen ausstehenden Löschvorgang entfernen kann, bevor die Datei geschlossen wird. Mit anderen Worten, der Statuscode 404 (Nicht gefunden) ist nur zu erwarten, wenn die Datei entfernt wurde. Wenn sich eine Datei im Status eines ausstehenden SMB-Löschvorgangs befindet, ist sie nicht in den Ergebnissen von Dateiauflistungen enthalten. Beachten Sie außerdem, dass die REST-Vorgänge „Datei löschen“ und „Verzeichnis löschen“ atomisch committet werden und nicht zum Status eines ausstehenden Löschvorgangs führen.  
 
-Weitere Informationen finden Sie unter   
+Weitere Informationen finden Sie unter  
 
 * [Verwalten von Dateisperren](http://msdn.microsoft.com/library/azure/dn194265.aspx)  
 

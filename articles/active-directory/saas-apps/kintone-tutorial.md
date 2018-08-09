@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 3497bfd261ec46cd66eb4f0c904200732c168cbf
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 693211245ee98849548bee4a52f7e424dd8b4cc6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231592"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430456"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Tutorial: Azure Active Directory-Integration mit Kintone
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Kintone über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-kintone-from-the-gallery"></a>Hinzufügen von Kintone über den Katalog
 Zum Konfigurieren der Integration von Kintone in Azure AD müssen Sie Kintone aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Kintone in Azure AD müssen Sie Kintone au
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **Kintone** ein.
+1. Geben Sie im Suchfeld als Suchbegriff **Kintone** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/kintone-tutorial/tutorial_kintone_search.png)
 
-5. Wählen Sie im Ergebnisbereich **Kintone** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **Kintone** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/kintone-tutorial/tutorial_kintone_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in Kintone den Wert für **Benutzername** in Azure AD als Wert für *
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Kintone müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Kintone-Testbenutzers](#creating-a-kintone-test-user)**, um ein Pendant von Britta Simon in Kintone zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Kintone-Testbenutzers](#creating-a-kintone-test-user)**, um ein Pendant von Britta Simon in Kintone zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Kintone** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/kintone-tutorial/tutorial_kintone_samlbase.png)
+    ![Configure single sign-on](./media/kintone-tutorial/tutorial_kintone_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Kintone** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für Kintone** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/kintone-tutorial/tutorial_kintone_url.png)
+    ![Configure single sign-on](./media/kintone-tutorial/tutorial_kintone_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.kintone.com`.
 
@@ -123,37 +123,37 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Kintone](https://www.kintone.com/contact/), um diese Werte zu erhalten. 
  
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/kintone-tutorial/tutorial_kintone_certificate.png) 
+    ![Configure single sign-on](./media/kintone-tutorial/tutorial_kintone_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/kintone-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/kintone-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Kintone-Konfiguration** auf **Kintone konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die SAML-Dienst-URL für einmalige Anmeldung** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Kintone-Konfiguration** auf **Kintone konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die SAML-Dienst-URL für einmalige Anmeldung** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/kintone-tutorial/tutorial_kintone_configure.png) 
+    ![Configure single sign-on](./media/kintone-tutorial/tutorial_kintone_configure.png) 
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der **Kintone** -Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der **Kintone** -Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie auf **Einstellungen**.
+1. Klicken Sie auf **Einstellungen**.
    
     ![Einstellungen](./media/kintone-tutorial/ic785879.png "Einstellungen")
 
-9. Klicken Sie auf **Benutzer und Systemadministration**.
+1. Klicken Sie auf **Benutzer und Systemadministration**.
    
     ![Benutzer und Systemadministration](./media/kintone-tutorial/ic785880.png "Benutzer und Systemadministration")
 
-10. Klicken Sie unter **Systemadministration \> Sicherheit** auf **Anmelden**.
+1. Klicken Sie unter **Systemadministration \> Sicherheit** auf **Anmelden**.
    
     ![Anmelden](./media/kintone-tutorial/ic785881.png "Anmelden")
 
-11. Klicken Sie auf **SAML-Authentifizierung aktivieren**.
+1. Klicken Sie auf **SAML-Authentifizierung aktivieren**.
    
     ![SAML-Authentifizierung](./media/kintone-tutorial/ic785882.png "SAML-Authentifizierung")
 
-12. Führen Sie im Abschnitt für die SAML-Authentifizierung die folgenden Schritte aus:
+1. Führen Sie im Abschnitt für die SAML-Authentifizierung die folgenden Schritte aus:
     
     ![SAML-Authentifizierung](./media/kintone-tutorial/ic785883.png "SAML-Authentifizierung")
     
@@ -180,15 +180,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/kintone-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/kintone-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/kintone-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/kintone-tutorial/create_aaduser_04.png) 
 
@@ -209,23 +209,23 @@ Im Fall von Kintone ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Melden Sie sich bei der **Kintone** -Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie auf **Einstellung**.
+1. Klicken Sie auf **Einstellung**.
    
     ![Einstellungen](./media/kintone-tutorial/ic785879.png "Einstellungen")
 
-3. Klicken Sie auf **Benutzer und Systemadministration**.
+1. Klicken Sie auf **Benutzer und Systemadministration**.
    
     ![Benutzer und Systemadministration](./media/kintone-tutorial/ic785880.png "Benutzer und Systemadministration")
 
-4. Klicken Sie unter **Benutzerverwaltung** auf **Abteilungen und Benutzer**.
+1. Klicken Sie unter **Benutzerverwaltung** auf **Abteilungen und Benutzer**.
    
     ![Abteilung und Benutzer](./media/kintone-tutorial/ic785888.png "Abteilung und Benutzer")
 
-5. Klicken Sie auf **Neuer Benutzer**.
+1. Klicken Sie auf **Neuer Benutzer**.
    
     ![Neue Benutzer](./media/kintone-tutorial/ic785889.png "Neue Benutzer")
 
-6. Führen Sie im Abschnitt **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Neuer Benutzer** die folgenden Schritte aus:
    
     ![Neue Benutzer](./media/kintone-tutorial/ic785890.png "Neue Benutzer")
    
@@ -248,23 +248,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Kintone** aus.
+1. Wählen Sie in der Anwendungsliste **Kintone** aus.
 
-    ![Configure Single Sign-On](./media/kintone-tutorial/tutorial_kintone_app.png) 
+    ![Configure single sign-on](./media/kintone-tutorial/tutorial_kintone_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

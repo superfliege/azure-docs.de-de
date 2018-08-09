@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 8032fd2a0150597c55178648511c80233e63a911
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054725"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390536"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Entwickeln und Debuggen von Node.js-Modulen mit Azure IoT Edge für Visual Studio Code
 
@@ -84,7 +84,8 @@ Wenn Sie bereit sind, die Node.js-Vorlage mit Ihrem eigenen Code anzupassen, ers
 
 In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Containertypen. Sie können jede Datei mit der Erweiterung **.debug** verwenden, um Ihr Modul zum Testen zu erstellen. C#-Module unterstützen derzeit nur das Debuggen in Containern vom Typ „linux-amd64“.
 
-1. Wechseln Sie in Visual Studio Code zur Datei `deployment.template.json`. Ersetzen Sie „createOptions“ für das Node.js-Modul in **deployment.template.json** durch den unten angegebenen Code, und speichern Sie die Datei: 
+1. Wechseln Sie in Visual Studio Code zu der Datei `deployment.template.json`. Aktualisieren Sie Ihre Modulimage-URL, indem Sie am Ende **.debug** hinzufügen.
+2. Ersetzen Sie „createOptions“ für das Node.js-Modul in **deployment.template.json** durch den unten angegebenen Code, und speichern Sie die Datei: 
     ```json
     "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
     ```

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 18465463e924c10ddc35d619992655773e12cc82
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19f190c66f7bb4042c640f2cbb82f911746ceb45
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179706"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422374"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -63,8 +63,8 @@ Die Data Science Virtual Machine für Linux enthält auch beliebte Tools für Da
 Die Durchführung des Data Science-Vorgangs umfasst eine Aufgabensequenz:
 
 1. Suchen, Laden und Vorverarbeiten von Daten
-2. Erstellen und Testen von Modellen
-3. Bereitstellen der Modelle für die Nutzung in intelligenten Anwendungen
+1. Erstellen und Testen von Modellen
+1. Bereitstellen der Modelle für die Nutzung in intelligenten Anwendungen
 
 Datenanalysten verwenden verschiedene Tools zum Ausführen dieser Aufgaben. Es kann sehr zeitaufwändig sein, die richtigen Versionen der Software zu finden und diese dann herunterzuladen, zu kompilieren und zu installieren.
 
@@ -82,8 +82,8 @@ Bevor Sie eine Data Science Virtual Machine für Linux erstellen können, benöt
 Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual Machine für Linux:
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)zur Auflistung der virtuellen Computer.
-2. Klicken Sie (unten auf der Seite) auf **Erstellen**, um den Assistenten aufzurufen.![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
-3. Die folgenden Abschnitte enthalten die Eingaben für jeden Schritt des Assistenten (im rechten Teil der obigen Abbildung aufgelistet), mit dem die Microsoft Data Science Virtual Machine erstellt wird. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
+1. Klicken Sie (unten auf der Seite) auf **Erstellen**, um den Assistenten aufzurufen.![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
+1. Die folgenden Abschnitte enthalten die Eingaben für jeden Schritt des Assistenten (im rechten Teil der obigen Abbildung aufgelistet), mit dem die Microsoft Data Science Virtual Machine erstellt wird. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
    
    a. **Grundlagen**:
    
@@ -118,8 +118,8 @@ Die Bereitstellung sollte ungefähr 5 bis 10 Minuten dauern. Der Status der Bere
 
 Es gibt drei Methoden, um auf die Ubuntu-DSVM zuzugreifen:
 1. SSH für Terminalsitzungen
-2. X2Go für grafische Sitzungen
-3. JupyterHub und JupyterLab für Jupyter-Notebooks
+1. X2Go für grafische Sitzungen
+1. JupyterHub und JupyterLab für Jupyter-Notebooks
 
 ### <a name="ssh"></a>SSH
 
@@ -134,7 +134,7 @@ Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmel
 Die Linux-VM wird mit X2Go-Server bereits bereitgestellt und ist zum Akzeptieren von Clientverbindungen bereit. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Desktop des virtuellen Linux-Computers herzustellen:
 
 1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
-2. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
+1. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
      * **Host:** Hostname oder IP-Adresse Ihrer Linux Data Science VM.
      * **Anmeldung:** Benutzername für die Linux-VM.
@@ -416,16 +416,16 @@ Eine grafische Benutzeroberfläche mit einer Reihe von Registerkarten wird geöf
 > 
 
 1. Klicken Sie auf **Ausführen**.
-2. Ein Dialogfeld wird geöffnet, in dem Sie gefragt werden, ob Sie das Beispiel-Wetterdataset verwenden möchten. Klicken Sie auf **Yes** , um das Beispiel zu laden.
-3. Klicken Sie auf die Registerkarte **Model** .
-4. Klicken Sie auf **Execute** , um eine Entscheidungsstruktur zu erstellen.
-5. Klicken Sie auf **Draw** , um die Entscheidungsstruktur anzuzeigen.
-6. Klicken Sie auf das Optionsfeld **Forest**, und klicken Sie auf **Execute**, um eine Random Forest zu erstellen.
-7. Klicken Sie auf die Registerkarte **Evaluate** .
-8. Klicken Sie auf das Optionsfeld **Risk**, und klicken Sie auf **Execute**, um zwei Leistungsdarstellungen (Risk [Cumulative]) anzuzeigen.
-9. Klicken Sie auf die Registerkarte **Log** , um den generierten R-Code für die obigen Vorgänge anzuzeigen.
+1. Ein Dialogfeld wird geöffnet, in dem Sie gefragt werden, ob Sie das Beispiel-Wetterdataset verwenden möchten. Klicken Sie auf **Yes** , um das Beispiel zu laden.
+1. Klicken Sie auf die Registerkarte **Model** .
+1. Klicken Sie auf **Execute** , um eine Entscheidungsstruktur zu erstellen.
+1. Klicken Sie auf **Draw** , um die Entscheidungsstruktur anzuzeigen.
+1. Klicken Sie auf das Optionsfeld **Forest**, und klicken Sie auf **Execute**, um eine Random Forest zu erstellen.
+1. Klicken Sie auf die Registerkarte **Evaluate** .
+1. Klicken Sie auf das Optionsfeld **Risk**, und klicken Sie auf **Execute**, um zwei Leistungsdarstellungen (Risk [Cumulative]) anzuzeigen.
+1. Klicken Sie auf die Registerkarte **Log** , um den generierten R-Code für die obigen Vorgänge anzuzeigen.
    (Aufgrund eines Fehlers in der aktuellen Version von Rattle müssen Sie im Text des Protokolls vor *Export this log ...* ein *#*-Zeichen eingeben.)
-10. Klicken Sie auf die Schaltfläche **Export**, um die R-Skriptdatei *weather_script.R* im Basisordner zu speichern.
+1. Klicken Sie auf die Schaltfläche **Export**, um die R-Skriptdatei *weather_script.R* im Basisordner zu speichern.
 
 Sie können Rattle und R jetzt beenden. Als Nächstes können Sie das generierte R-Skript ändern, oder Sie können es unverändert verwenden und bei Bedarf ausführen, um die auf der Rattle-Benutzeroberfläche ausgeführten Schritte zu wiederholen. Dies ist besonders für R-Anfänger eine einfache Möglichkeit, auf einer einfachen grafischen Benutzeroberfläche schnell Analysen und Machine Learning-Vorgänge durchzuführen, während automatisch Code in R zum Ändern bzw. Lernen generiert wird.
 

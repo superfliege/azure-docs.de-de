@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 74ce913548fbcefdc441d0d2b772c864dacd4482
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b20f19c504a7967d01d51d976315fa49c2317885
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38485443"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424801"
 ---
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Bereitstellen eines Kubernetes-Clusters für Windows-Container
 
@@ -34,7 +34,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist eine logische Gruppe, in der Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-kubernetes-cluster"></a>Erstellen eines Kubernetes-Clusters
-Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#az_acs_create) einen Kubernetes-Cluster in Azure Container Service. 
+Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#az-acs-create) einen Kubernetes-Cluster in Azure Container Service. 
 
 Im folgenden Beispiel wird ein Cluster mit dem Namen *myK8sCluster* mit einem Linux-Masterknoten und zwei Windows-Agentknoten erstellt. In diesem Beispiel werden die für die Verbindung mit dem Linux-Masterknoten erforderlichen SSH-Schlüssel erstellt. In dem Beispiel wird *azureuser* als Administratorbenutzername und *myPassword12* als Kennwort für die Windows-Knoten verwendet. Aktualisieren Sie diese Werte auf andere, für Ihre Umgebung geeignete Werte. 
 
@@ -184,7 +184,7 @@ Sie können die IIS-Standardwillkommensseite unter der externen IP-Adresse in ei
 
 
 ## <a name="delete-cluster"></a>Löschen von Clustern
-Wenn der Cluster nicht mehr benötigt wird, können Sie mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) die Ressourcengruppe, den Containerdienst und alle zugehörigen Ressourcen entfernen.
+Wenn der Cluster nicht mehr benötigt wird, können Sie mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) die Ressourcengruppe, den Containerdienst und alle zugehörigen Ressourcen entfernen.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

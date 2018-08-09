@@ -1,27 +1,23 @@
 ---
-title: 'Migrieren von BizTalk Server-EDI-Lösungen zu BizTalk Services: technische Anleitung | Microsoft Docs'
-description: Migrieren von EDI zu MABS; Microsoft Azure BizTalk Services
+title: Migrieren von BizTalk Server-EDI-Lösungen zu BizTalk Services | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Ihre Microsoft BizTalk Server-EDI-Lösungen zu Microsoft Azure BizTalk Services (MABS) migrieren.
 services: biztalk-services
-documentationcenter: na
-author: MandiOhlinger
-manager: anneta
-editor: ''
-ms.assetid: 61c179fa-3f37-495b-8016-dee7474fd3a6
 ms.service: biztalk-services
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: jonfancey
+ms.author: jonfan
+manager: jeconnoc
 ms.topic: article
-ms.date: 11/07/2016
-ms.author: mandia
-ms.openlocfilehash: aaa7028bb37ac4c2c313efce2afebc1dc5e814d2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.date: 07/31/2018
+ms.reviewer: jonfan, LADocs
+ms.suite: integration
+ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860077"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39365586"
 ---
-# <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrieren von BizTalk Server-EDI-Lösungen zu BizTalk Services: technische Anleitung
+# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrieren von BizTalk Server-EDI-Lösungen zu BizTalk Services: Technische Anleitung
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
@@ -34,7 +30,7 @@ Geschrieben mit: Microsoft Azure BizTalk Services (Version vom Februar 2014).
 ## <a name="introduction"></a>Einführung
 EDI (Electronic Data Interchange) ist eines der am häufigsten verwendeten Mittel für den elektronischen Datenaustausch von Unternehmen. Dieser Austausch wird auch als Business-to-Business-Transaktionen (oder B2B-Transaktionen) bezeichnet. EDI wird von BizTalk Server bereits seit der ersten Version (und damit seit mehr als zehn Jahren) unterstützt. Mit BizTalk Services setzt Microsoft die Unterstützung von EDI-Lösungen auf der Microsoft Azure Platform fort. B2B-Transaktionen finden größtenteils außerhalb einer Organisation statt und lassen sich daher einfacher über eine Cloudplattform implementieren. Microsoft Azure bietet diese Möglichkeit über BizTalk Services.
 
-Für einige Kunden ist BizTalk Services zwar eine „jungfräuliche“ Plattform für neue EDI-Lösungen, viele Kunden verfügen aber bereits über BizTalk Server-EDI-Lösungen, die Sie ggf. zu Azure migrieren möchten. Da die EDI-Architektur von BizTalk Services auf den gleichen zentralen Entitäten basiert wie die EDI-Architektur von BizTalk Server (Handelspartner, Entitäten, Vereinbarungen), ist es möglich, BizTalk Server-EDI-Artefakte zu BizTalk Services zu migrieren.
+Für einige Kunden ist BizTalk Services zwar eine „jungfräuliche“ Plattform für neue EDI-Lösungen, aber viele Kunden verfügen bereits über BizTalk Server-EDI-Lösungen, die sie ggf. zu Azure migrieren möchten. Da die EDI-Architektur von BizTalk Services auf den gleichen zentralen Entitäten basiert wie die EDI-Architektur von BizTalk Server (Handelspartner, Entitäten, Vereinbarungen), ist es möglich, BizTalk Server-EDI-Artefakte zu BizTalk Services zu migrieren.
 
 Dieses Dokument geht auf einige der Unterschiede bei der Migration von BizTalk Server-EDI-Artefakten zu BizTalk Services ein. Dabei wird vorausgesetzt, dass Sie angemessen mit der EDI-Verarbeitung von BizTalk Server sowie mit Handelspartnerverträgen vertraut sind. Weitere Informationen zu EDI in BizTalk Server finden Sie unter [Handelspartnerverwaltung mit BizTalk Server](https://msdn.microsoft.com/library/bb259970.aspx).
 
@@ -76,7 +72,7 @@ Pipelines sind bei EDI in BizTalk Server nachrichtenverarbeitende Entitäten, di
 
 Sie können einen Veröffentlichen/Abonnieren-Fluss mit benutzerdefiniertem Code versehen und/oder Service Bus-Messagingwarteschlangen und -Themen verwenden, bevor der Handelspartnervertrag die Nachricht empfängt oder nachdem der Vertrag die Nachricht verarbeitet und an einen Service Bus-Endpunkt weitergeleitet hat.
 
-Das Nachrichtenflussmuster finden Sie in diesem Artikel unter **Szenarien/Nachrichtenfluss** .
+Das Nachrichtenflussmuster finden Sie in diesem Artikel unter **Szenarien/Nachrichtenfluss**.
 
 ## <a name="agreements"></a>Vereinbarungen
 Wenn Sie mit den Handelspartnerverträgen für die EDI-Verarbeitung in BizTalk Server 2010 vertraut sind, werden Sie sich bei den Handelspartnerverträgen von BizTalk Services schnell zurechtfinden. Die meisten Vereinbarungseinstellungen sind identisch und verwenden dieselbe Terminologie. In einigen Fällen sind die Vereinbarungseinstellungen erheblich einfacher als in BizTalk Server. Microsoft Azure BizTalk Services unterstützt X12, EDIFACT und AS2 für den Transport.
@@ -118,10 +114,7 @@ Bei der EDI-Verarbeitung in BizTalk Server gibt es das Konzept der Ausweichverei
 ### <a name="routing-to-multiple-destinations"></a>Routing an mehrere Ziele
 BizTalk Services-Bridges unterstützen derzeit kein Routing von Nachrichten an mehrere Ziele mit einem Veröffentlichen/Abonnieren-Modell. Stattdessen können Nachrichten aus einer BizTalk Services-Bridge an ein Service Bus-Thema geroutet werden. Dieses kann mehrere Abonnements für den Nachrichtenempfang an mehreren Endpunkten besitzen.
 
-## <a name="conclusion"></a>Zusammenfassung
-Microsoft Azure BizTalk Services wird regelmäßig mit weiteren Features und Funktionen aktualisiert. Mit jeder Aktualisierung werden umfangreichere Funktionen unterstützt, um die Erstellung von End-to-End-Lösungen mit BizTalk Services und anderen Azure-Technologien zu vereinfachen.
-
 ## <a name="see-also"></a>Siehe auch
-[Entwickeln von Enterprise-Anwendungen mit Azure](https://msdn.microsoft.com/library/azure/hh674490.aspx)
+[Branchenanwendungen in Azure](https://azure.microsoft.com/solutions/lob-applications)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png

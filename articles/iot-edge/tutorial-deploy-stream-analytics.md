@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: f2ef53ee53eb2e95d84fc11f3190f62d0e3c2455
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: afbdf2171c1fc1eef95514526a509d171e262d4a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413874"
+ms.locfileid: "39435681"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Stream Analytics als IoT Edge-Modul (Vorschauversion)
 
@@ -60,7 +60,7 @@ Für Azure Stream Analytics-Aufträge ist ein Azure Storage-Konto erforderlich, 
 
 1. Wechseln Sie im Azure-Portal zu **Ressource erstellen**, geben Sie **Speicherkonto** in das Suchfeld ein und wählen Sie **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.
 
-2. Geben Sie im Bereich **Speicherkonto erstellen** einen Namen für Ihr Speicherkonto ein, und wählen Sie den gleichen Speicherort aus, in dem Ihr IoT Hub gespeichert ist. Wählen Sie die gleiche Ressourcengruppe wie für Ihren IoT Hub aus, und wählen Sie dann **Erstellen**. Notieren Sie sich den Namen für die spätere Verwendung.
+1. Geben Sie im Bereich **Speicherkonto erstellen** einen Namen für Ihr Speicherkonto ein, und wählen Sie den gleichen Speicherort aus, in dem Ihr IoT Hub gespeichert ist. Wählen Sie die gleiche Ressourcengruppe wie für Ihren IoT Hub aus, und wählen Sie dann **Erstellen**. Notieren Sie sich den Namen für die spätere Verwendung.
 
     ![Speicherkonto erstellen][1]
 
@@ -69,40 +69,40 @@ Für Azure Stream Analytics-Aufträge ist ein Azure Storage-Konto erforderlich, 
 
 1. Navigieren Sie im Azure-Portal zu **Ressource erstellen** > **Internet der Dinge**, und wählen Sie dann **Stream Analytics-Auftrag** aus.
 
-2. Gehen Sie im Bereich **Neuer Stream Analytics-Auftrag** wie folgt vor:
+1. Gehen Sie im Bereich **Neuer Stream Analytics-Auftrag** wie folgt vor:
 
    1. Geben Sie im Feld **Auftragsname** einen Auftragsnamen ein.
    
-   2. Verwenden Sie die gleiche **Ressourcengruppe** und den gleichen **Standort** wie für Ihre IoT Hub-Instanz. 
+   1. Verwenden Sie die gleiche **Ressourcengruppe** und den gleichen **Standort** wie für Ihre IoT Hub-Instanz. 
 
       > [!NOTE]
       > Aktuell werden Azure Stream Analytics-Aufträge für IoT Edge in der Region „USA, Westen 2“ nicht unterstützt. 
 
-   3. Wählen Sie unter **Hosting-Umgebung** die Option **Edge** aus.
+   1. Wählen Sie unter **Hosting-Umgebung** die Option **Edge** aus.
     
-3. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
-4. Öffnen Sie im erstellten Auftrag unter **Auftragstopologie** die Option **Eingaben**.
+1. Öffnen Sie im erstellten Auftrag unter **Auftragstopologie** die Option **Eingaben**.
 
    ![Azure Stream Analytics-Eingabe](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-5. Wählen Sie **Datenstromeingabe hinzufügen** und dann **Edge Hub** aus.
+1. Wählen Sie **Datenstromeingabe hinzufügen** und dann **Edge Hub** aus.
 
-6. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein. 
+1. Geben Sie im Bereich **Neue Eingabe** die **Temperatur** als Eingabealias ein. 
 
-7. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
-8. Öffnen Sie unter **Auftragstopologie** die Option **Ausgaben**.
+1. Öffnen Sie unter **Auftragstopologie** die Option **Ausgaben**.
 
    ![Azure Stream Analytics-Ausgabe](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-9. Wählen Sie **Hinzufügen** und dann **Edge Hub** aus.
+1. Wählen Sie **Hinzufügen** und dann **Edge Hub** aus.
 
-10. Geben Sie im Bereich **Neue Ausgabe** die **Warnung** als Ausgabealias ein. 
+1. Geben Sie im Bereich **Neue Ausgabe** die **Warnung** als Ausgabealias ein. 
 
-11. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
-12. Klicken Sie unter **Auftragstopologie** auf **Abfrage**, und ersetzen Sie den Standardtext durch die folgende Abfrage, die eine Warnung erstellt, wenn die Durchschnittstemperatur des Computers in einem Zeitfenster von 30 Sekunden 70 Grad erreicht:
+1. Klicken Sie unter **Auftragstopologie** auf **Abfrage**, und ersetzen Sie den Standardtext durch die folgende Abfrage, die eine Warnung erstellt, wenn die Durchschnittstemperatur des Computers in einem Zeitfenster von 30 Sekunden 70 Grad erreicht:
 
     ```sql
     SELECT  
@@ -115,15 +115,15 @@ Für Azure Stream Analytics-Aufträge ist ein Azure Storage-Konto erforderlich, 
     HAVING Avg(machine.temperature) > 70
     ```
 
-13. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
-14. Klicken Sie unter **Konfigurieren** auf **IoT Edge-Einstellungen**.
+1. Klicken Sie unter **Konfigurieren** auf **IoT Edge-Einstellungen**.
 
-15. Wählen Sie im Dropdownmenü Ihr **Speicherkonto** aus.
+1. Wählen Sie im Dropdownmenü Ihr **Speicherkonto** aus.
 
-16. Klicken Sie für das Feld **Container** auf **Neu erstellen**, und geben Sie einen Namen für den Speichercontainer an. 
+1. Klicken Sie für das Feld **Container** auf **Neu erstellen**, und geben Sie einen Namen für den Speichercontainer an. 
 
-17. Wählen Sie **Speichern**aus. 
+1. Wählen Sie **Speichern**aus. 
 
 
 ## <a name="deploy-the-job"></a>Bereitstellen des Auftrags
@@ -132,25 +132,25 @@ Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät b
 
 1. Wechseln Sie im Azure-Portal in Ihrem IoT-Hub zu **IoT Edge**, und öffnen Sie dann die Detailseite für Ihr IoT Edge-Gerät.
 
-2. Wählen Sie **Module festlegen** aus.  
+1. Wählen Sie **Module festlegen** aus.  
 
    Wenn Sie zuvor das tempSensor-Modul auf diesem Gerät bereitgestellt haben, wird es unter Umständen automatisch aufgefüllt. Gehen Sie andernfalls wie folgt vor, um das Modul hinzuzufügen:
 
    1. Klicken Sie auf **Hinzufügen** und anschließend auf **IoT Edge-Modul**.
-   2. Geben Sie für den Namen **tempSensor** ein.
-   3. Geben Sie als Bild-URI **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** ein. 
-   4. Behalten Sie die restlichen Einstellungen unverändert bei.
-   5. Wählen Sie **Speichern**aus.
+   1. Geben Sie für den Namen **tempSensor** ein.
+   1. Geben Sie als Bild-URI **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0** ein. 
+   1. Behalten Sie die restlichen Einstellungen unverändert bei.
+   1. Wählen Sie **Speichern**aus.
 
-3. Fügen Sie Ihren Azure Stream Analytics Edge-Auftrag wie folgt hinzu:
+1. Fügen Sie Ihren Azure Stream Analytics Edge-Auftrag wie folgt hinzu:
 
    1. Klicken Sie auf **Hinzufügen** und anschließend auf **Azure Stream Analytics-Modul**.
-   2. Wählen Sie das Abonnement und den erstellten Azure Stream Analytics Edge-Auftrag aus. 
-   3. Wählen Sie **Speichern**aus.
+   1. Wählen Sie das Abonnement und den erstellten Azure Stream Analytics Edge-Auftrag aus. 
+   1. Wählen Sie **Speichern**aus.
 
-4. Klicken Sie auf **Weiter**.
+1. Klicken Sie auf **Weiter**.
 
-5. Ersetzen Sie den Standardwert in **Routen** durch den folgenden Code. Aktualisieren Sie _{moduleName}_ mit dem Namen Ihres Azure Stream Analytics-Moduls. Das Modul muss den gleichen Namen haben wie der Auftrag, auf dessen Grundlage es erstellt wurde. 
+1. Ersetzen Sie den Standardwert in **Routen** durch den folgenden Code. Aktualisieren Sie _{moduleName}_ mit dem Namen Ihres Azure Stream Analytics-Moduls. Das Modul muss den gleichen Namen haben wie der Auftrag, auf dessen Grundlage es erstellt wurde. 
 
     ```json
     {
@@ -163,11 +163,11 @@ Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät b
     }
     ```
 
-6. Klicken Sie auf **Weiter**.
+1. Klicken Sie auf **Weiter**.
 
-7. Klicken Sie im Schritt für die **Bereitstellungsüberprüfung** auf **Übermitteln**.
+1. Klicken Sie im Schritt für die **Bereitstellungsüberprüfung** auf **Übermitteln**.
 
-8. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie dann **Aktualisieren** aus.  
+1. Kehren Sie zur Seite mit Gerätedetails zurück, und wählen Sie dann **Aktualisieren** aus.  
 
     Es sollte nun angezeigt werden, dass das neue Stream Analytics-Modul zusammen mit dem IoT Edge-Agent-Modul und dem IoT Edge-Hub ausgeführt wird.
 
@@ -185,7 +185,7 @@ Wechseln Sie nun zu Ihrem IoT Edge-Gerät, um sich über die Interaktion zwische
 <!--
    ![Docker output][8]
 -->
-2. Zeigen Sie alle Systemprotokolle und Metrikdaten an. Verwenden Sie den Namen des Stream Analytics-Moduls:
+1. Zeigen Sie alle Systemprotokolle und Metrikdaten an. Verwenden Sie den Namen des Stream Analytics-Moduls:
 
    ```cmd/sh
    iotedge logs -f {moduleName}  
@@ -210,7 +210,7 @@ Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen
 Wenn Sie nur die IoT Hub-Instanz löschen möchten, führen Sie den folgenden Befehl mit dem Namen des Hubs und dem Namen der Ressourcengruppe aus:
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 
@@ -218,14 +218,14 @@ Löschen Sie die gesamte Ressourcengruppe wie folgt anhand des Namens:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
-2. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre IoT Hub-Ressource enthält. 
+1. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre IoT Hub-Ressource enthält. 
 
-3. Klicken Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
+1. Klicken Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe auf **...** und dann auf **Ressourcengruppe löschen**.
 
 <!--
    ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
 -->
-4. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung erneut den Namen Ihrer Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**. Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
+1. Sie werden aufgefordert, das Löschen der Ressourcengruppe zu bestätigen. Geben Sie zur Bestätigung erneut den Namen Ihrer Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**. Daraufhin werden die Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

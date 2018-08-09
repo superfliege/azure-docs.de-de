@@ -2,24 +2,18 @@
 title: Format der Protokolldateien von Azure Import/Export | Microsoft Docs
 description: Erfahren Sie mehr über das Format der Protokolldateien, die erstellt werden, wenn Schritte für einen Auftrag des Import/Export-Diensts ausgeführt werden.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: b842a80762989c34ae278a397cc49c088ff77fb2
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23060005"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525517"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format der Protokolldateien des Azure Import/Export-Diensts
 Wenn der Microsoft Azure Import/Export-Dienst als Teil eines Import- oder Exportauftrags eine Aktion auf einem Laufwerk durchführt, werden Protokolle in Blockblobs in dem Speicherkonto geschrieben, das dem Auftrag zugeordnet ist.  
@@ -39,8 +33,8 @@ In der folgenden Tabelle sind die möglichen Optionen dargestellt:
   
 |Authentifizierungsmethode|Wert des `ImportExportStatesPath`-Elements|Speicherort des Protokollblobs|  
 |---------------------------|----------------------------------------------|---------------------------|  
-|Speicherkontoschlüssel|Standardwert|Ein Container namens `waimportexport`, dies ist der Standardcontainer. Beispiel:<br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
-|Speicherkontoschlüssel|Vom Benutzer angegebener Wert|Ein vom Benutzer benannter Container. Beispiel:<br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
+|Speicherkontoschlüssel|Standardwert|Ein Container namens `waimportexport`, dies ist der Standardcontainer. Beispiel: <br /><br /> `https://myaccount.blob.core.windows.net/waimportexport`|  
+|Speicherkontoschlüssel|Vom Benutzer angegebener Wert|Ein vom Benutzer benannter Container. Beispiel: <br /><br /> `https://myaccount.blob.core.windows.net/mylogcontainer`|  
 |Container-SAS|Standardwert|Ein virtuelles Verzeichnis namens `waimportexport` (der Standardname) unter dem Container, der in der SAS angegeben ist.<br /><br /> Beispiel: Wenn die für den Auftrag angegebene SAS `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` ist, wäre der Protokollspeicherort `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`.|  
 |Container-SAS|Vom Benutzer angegebener Wert|Ein virtuelles vom Benutzer benanntes Verzeichnis unter dem Container, der in der SAS angegeben ist.<br /><br /> Beispiel: Wenn die für den Auftrag angegebene SAS `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue` ist und das angegebene virtuelle Verzeichnis `mylogblobs` heißt, wäre der Protokollspeicherort `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
@@ -107,51 +101,51 @@ properties-status ::=
 
 Die folgende Tabelle beschreibt die Elemente der Protokolldatei.  
   
-|XML-Element|Typ|Beschreibung|  
+|XML-Element|Typ|BESCHREIBUNG|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML-Element|Stellt ein Laufwerkprotokoll dar.|  
-|`Version`|Attribut, Zeichenfolge|Die Version des Protokollformats.|  
-|`DriveId`|String|Der Hardwareseriennummer des Laufwerks.|  
-|`Status`|String|Status der Laufwerksverarbeitung. Weitere Informationen finden Sie weiter unten in der Tabelle `Drive Status Codes`.|  
+|`Version`|Attribut, String|Die Version des Protokollformats.|  
+|`DriveId`|Zeichenfolge|Der Hardwareseriennummer des Laufwerks.|  
+|`Status`|Zeichenfolge|Status der Laufwerksverarbeitung. Weitere Informationen finden Sie weiter unten in der Tabelle `Drive Status Codes`.|  
 |`Blob`|Geschachteltes XML-Element|Stellt ein Blob dar.|  
-|`Blob/BlobPath`|String|Der URI des Blobs.|  
-|`Blob/FilePath`|String|Der relative Pfad zur Datei auf dem Laufwerk.|  
-|`Blob/Snapshot`|DateTime|Die Momentaufnahmeversion des Blobs (nur für einen Exportauftrag).|  
-|`Blob/Length`|Integer|Die Gesamtlänge des Blobs in Bytes.|  
-|`Blob/LastModified`|DateTime|Datum/Uhrzeit der letzten Änderung des Blobs (nur für einen Exportauftrag).|  
-|`Blob/ImportDisposition`|String|Die Importdisposition des Blobs (nur für einen Importauftrag).|  
-|`Blob/ImportDisposition/@Status`|Attribut, Zeichenfolge|Der Status der Importdisposition.|  
+|`Blob/BlobPath`|Zeichenfolge|Der URI des Blobs.|  
+|`Blob/FilePath`|Zeichenfolge|Der relative Pfad zur Datei auf dem Laufwerk.|  
+|`Blob/Snapshot`|Datetime|Die Momentaufnahmeversion des Blobs (nur für einen Exportauftrag).|  
+|`Blob/Length`|Ganze Zahl |Die Gesamtlänge des Blobs in Bytes.|  
+|`Blob/LastModified`|Datetime|Datum/Uhrzeit der letzten Änderung des Blobs (nur für einen Exportauftrag).|  
+|`Blob/ImportDisposition`|Zeichenfolge|Die Importdisposition des Blobs (nur für einen Importauftrag).|  
+|`Blob/ImportDisposition/@Status`|Attribut, String|Der Status der Importdisposition.|  
 |`PageRangeList`|Geschachteltes XML-Element|Stellt eine Liste von Seitenbereichen für ein Seitenblob dar.|  
 |`PageRange`|XML-Element|Stellt einen Seitenbereich dar.|  
-|`PageRange/@Offset`|Attribut, ganze Zahl|Der Startoffset des Seitenbereichs im Blob.|  
+|`PageRange/@Offset`|Attribut, Integer|Der Startoffset des Seitenbereichs im Blob.|  
 |`PageRange/@Length`|Attribut, ganze Zahl|Länge des Seitenbereichs in Bytes.|  
-|`PageRange/@Hash`|Attribut, Zeichenfolge|Base16-codierter MD5-Hash des Seitenbereichs.|  
-|`PageRange/@Status`|Attribut, Zeichenfolge|Status der Verarbeitung des Seitenbereichs.|  
+|`PageRange/@Hash`|Attribut, String|Base16-codierter MD5-Hash des Seitenbereichs.|  
+|`PageRange/@Status`|Attribut, String|Status der Verarbeitung des Seitenbereichs.|  
 |`BlockList`|Geschachteltes XML-Element|Stellt eine Liste von Blöcken für ein Blockblob dar.|  
 |`Block`|XML-Element|Stellt einen Block dar.|  
-|`Block/@Offset`|Attribut, ganze Zahl|Der Startoffset des Blocks im Blob.|  
-|`Block/@Length`|Attribut, ganze Zahl|Länge des Blocks in Bytes.|  
-|`Block/@Id`|Attribut, Zeichenfolge|Die Block-ID.|  
-|`Block/@Hash`|Attribut, Zeichenfolge|Base16-codierter MD5-Hash des Blocks.|  
-|`Block/@Status`|Attribut, Zeichenfolge|Status der Verarbeitung des Blocks.|  
+|`Block/@Offset`|Attribut, Integer|Der Startoffset des Blocks im Blob.|  
+|`Block/@Length`|Attribut, Integer|Länge des Blocks in Bytes.|  
+|`Block/@Id`|Attribut, String|Die Block-ID.|  
+|`Block/@Hash`|Attribut, String|Base16-codierter MD5-Hash des Blocks.|  
+|`Block/@Status`|Attribut, String|Status der Verarbeitung des Blocks.|  
 |`Metadata`|Geschachteltes XML-Element|Stellt die Metadaten des Blobs dar.|  
 |`Metadata/@Status`|Attribut, Zeichenfolge|Status der Verarbeitung der Blobmetadaten.|  
-|`Metadata/GlobalPath`|String|Relativer Pfad zur globalen Metadatendatei.|  
-|`Metadata/GlobalPath/@Hash`|Attribut, Zeichenfolge|Base16-codierter MD5-Hash der globalen Metadatendatei.|  
-|`Metadata/Path`|String|Relativer Pfad zur Metadatendatei.|  
-|`Metadata/Path/@Hash`|Attribut, Zeichenfolge|Base16-codierter MD5-Hash der Metadatendatei.|  
+|`Metadata/GlobalPath`|Zeichenfolge|Relativer Pfad zur globalen Metadatendatei.|  
+|`Metadata/GlobalPath/@Hash`|Attribut, String|Base16-codierter MD5-Hash der globalen Metadatendatei.|  
+|`Metadata/Path`|Zeichenfolge|Relativer Pfad zur Metadatendatei.|  
+|`Metadata/Path/@Hash`|Attribut, String|Base16-codierter MD5-Hash der Metadatendatei.|  
 |`Properties`|Geschachteltes XML-Element|Stellt die Blobeigenschaften dar.|  
-|`Properties/@Status`|Attribut, Zeichenfolge|Status der Verarbeitung der Blobeigenschaften, z.B. Datei wurde nicht gefunden, abgeschlossen.|  
-|`Properties/GlobalPath`|String|Relativer Pfad zur globalen Eigenschaftendatei.|  
-|`Properties/GlobalPath/@Hash`|Attribut, Zeichenfolge|Base16-codierter MD5-Hash der globalen Eigenschaftendatei.|  
-|`Properties/Path`|String|Relativer Pfad zur Eigenschaftendatei.|  
-|`Properties/Path/@Hash`|Attribut, Zeichenfolge|Base16-codierter MD5-Hash der Eigenschaftendatei.|  
-|`Blob/Status`|String|Status der Verarbeitung des Blobs.|  
+|`Properties/@Status`|Attribut, String|Status der Verarbeitung der Blobeigenschaften, z.B. Datei wurde nicht gefunden, abgeschlossen.|  
+|`Properties/GlobalPath`|Zeichenfolge|Relativer Pfad zur globalen Eigenschaftendatei.|  
+|`Properties/GlobalPath/@Hash`|Attribut, String|Base16-codierter MD5-Hash der globalen Eigenschaftendatei.|  
+|`Properties/Path`|Zeichenfolge|Relativer Pfad zur Eigenschaftendatei.|  
+|`Properties/Path/@Hash`|Attribut, String|Base16-codierter MD5-Hash der Eigenschaftendatei.|  
+|`Blob/Status`|Zeichenfolge|Status der Verarbeitung des Blobs.|  
   
 # <a name="drive-status-codes"></a>Statuscodes für Laufwerke  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Laufwerks aufgeführt.  
   
-|Statuscode|Beschreibung|  
+|Statuscode|BESCHREIBUNG|  
 |-----------------|-----------------|  
 |`Completed`|Die Verarbeitung des Laufwerks wurde ohne Fehler abgeschlossen.|  
 |`CompletedWithWarnings`|Die Verarbeitung des Laufwerks wurde mit Warnungen in einem oder mehreren Blobs abgeschlossen, gemäß den für die Blobs angegebenen Importdispositionen.|  
@@ -180,7 +174,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Laufwe
 ## <a name="blob-status-codes"></a>Statuscodes für Blobs  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Blobs aufgeführt.  
   
-|Statuscode|Beschreibung|  
+|Statuscode|BESCHREIBUNG|  
 |-----------------|-----------------|  
 |`Completed`|Die Verarbeitung des Blobs wurde ohne Fehler abgeschlossen.|  
 |`CompletedWithErrors`|Die Verarbeitung des Blobs wurde mit Fehlern in einem oder mehren Seitenbereichen oder Blöcken, Metadaten oder Eigenschaften abgeschlossen.|  
@@ -199,7 +193,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Blobs 
 ## <a name="import-disposition-status-codes"></a>Statuscodes für Importdispositionen  
 In der folgenden Tabelle sind die Statuscodes zum Auflösen einer Importdisposition aufgeführt.  
   
-|Statuscode|Beschreibung|  
+|Statuscode|BESCHREIBUNG|  
 |-----------------|-----------------|  
 |`Created`|Das Blob wurde erstellt.|  
 |`Renamed`|Das Blob wurde gemäß der entsprechenden Importdisposition umbenannt. Das `Blob/BlobPath`-Element enthält den URI für das umbenannte Blob.|  
@@ -210,7 +204,7 @@ In der folgenden Tabelle sind die Statuscodes zum Auflösen einer Importdisposit
 ## <a name="page-rangeblock-status-codes"></a>Statuscodes für Seitenbereiche/Blöcke  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Seitenbereichs oder Blocks aufgeführt.  
   
-|Statuscode|Beschreibung|  
+|Statuscode|BESCHREIBUNG|  
 |-----------------|-----------------|  
 |`Completed`|Die Verarbeitung des Seitenbereichs oder Blocks wurde ohne Fehler abgeschlossen.|  
 |`Committed`|Für den Block wurde ein Commit ausgeführt, jedoch nicht in der vollständigen Blockliste, weil für andere Blöcke Fehler aufgetreten sind oder die Übergabe der vollständigen Blockliste selbst fehlgeschlagen ist.|  
@@ -226,7 +220,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung eines Seiten
 ## <a name="metadata-status-codes"></a>Statuscodes für Metadaten  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung von Blobmetadaten aufgeführt.  
   
-|Statuscode|Beschreibung|  
+|Statuscode|BESCHREIBUNG|  
 |-----------------|-----------------|  
 |`Completed`|Die Verarbeitung der Metadaten wurde ohne Fehler abgeschlossen.|  
 |`FileNameInvalid`|Der Name der Metadatendatei ist ungültig.|  
@@ -244,7 +238,7 @@ In der folgenden Tabelle sind die Statuscodes für die Verarbeitung von Blobmeta
 ## <a name="properties-status-codes"></a>Statuscodes für Eigenschaften  
 In der folgenden Tabelle sind die Statuscodes für die Verarbeitung von Blobeigenschaften aufgeführt.  
   
-|Statuscode|Beschreibung|  
+|Statuscode|BESCHREIBUNG|  
 |-----------------|-----------------|  
 |`Completed`|Die Verarbeitung der Eigenschaften wurde ohne Fehler abgeschlossen.|  
 |`FileNameInvalid`|Der Name der Eigenschaftendatei ist ungültig.|  

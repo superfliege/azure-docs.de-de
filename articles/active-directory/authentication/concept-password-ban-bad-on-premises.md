@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 07/25/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 5d4062ff2c21deeb56eb4ae6e8386452608f85fa
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158803"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308475"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vorschau: Erzwingen des Azure AD-Kennwortschutzes für Windows Server Active Directory
 
@@ -37,6 +37,7 @@ Es gibt drei Softwarekomponenten, die den Azure AD-Kennwortschutz bilden:
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Alle Computer, auf denen Azure AD-Kennwortschutzkomponenten einschließlich Domänencontrollern installiert sind, müssen Windows Server 2012 oder höher ausführen.
+* Alle Computer, auf denen Azure AD-Kennwortschutzkomponenten, einschließlich Domänencontrollern, installiert sind, müssen über eine Installation der Universal C Runtime verfügen. Dies wird vorzugsweise erreicht, indem der Computer über Windows Update mit allen Patches versehen wird. Andernfalls kann ein geeignetes betriebssystemspezifisches Updatepaket installiert werden. Weitere Informationen finden Sie unter [Update for Universal C Runtime in Windows](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows) (Update für Universal C Runtime in Windows).
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Azure AD-Kennwortschutz-Proxydienst hostet.
 * Alle Active Directory-Domänen, die die DC-Agent-Dienst-Software ausführen, müssen DFSR für die SYSVOL-Replikation verwenden.
 * Ein globales Administratorkonto zum Registrieren des Azure AD-Kennwortschutz-Proxydienstes bei Azure AD.
@@ -48,7 +49,7 @@ Die Vorteile der Liste global gesperrter Kennwörter gelten für alle Benutzer v
 
 Die Liste benutzerdefinierter gesperrter Kennwörter erfordert Azure AD Basic-Lizenzen.
 
-Azure AD-Kennwortschutz für Windows Server Active Directory erfordert Azure AD Premium-Lizenzen. 
+Azure AD-Kennwortschutz für Windows Server Active Directory erfordert Azure AD Premium-Lizenzen.
 
 Weitere Informationen zur Lizenzierung einschließlich der Kosten finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -61,7 +62,7 @@ Es gibt zwei erforderliche Installer für den Azure AD-Kennwortschutz, die vom [
 * Es ist keine Internetkonnektivität der Domänencontroller erforderlich. Nur die Computer, auf denen der Azure AD-Kennwortschutz-Proxydienst ausgeführt wird, benötigen Internetkonnektivität.
 * Auf Domänencontrollern sind keine Netzwerkports geöffnet.
 * Es sind keine Änderungen des Active Directory-Schemas erforderlich.
-   * Die Software verwendet die vorhandenen Active Directory-Container- und serviceConnectionPoint-Schemaobjekte.
+* Die Software verwendet die vorhandenen Active Directory-Container- und serviceConnectionPoint-Schemaobjekte.
 * Es besteht keine minimale Anforderung an die Funktionsebene von Active Directory-Domäne oder Gesamtstruktur (DFL\FFL).
 * Die Software erstellt weder Konten in den Active Directory-Domänen, die sie schützt, noch setzt sie sie voraus.
 * Inkrementelle Bereitstellung wird mit dem Nachteil unterstützt, dass die Kennwortrichtlinie nur dort erzwungen wird, wo der Domänencontroller-Agent installiert ist.

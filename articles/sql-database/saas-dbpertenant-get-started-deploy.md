@@ -10,12 +10,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: 95d4fc1886e16785b6de8f3a395b218b66d193ff
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc3e870d67f3c38fe4173275b6fd210d0c4ee05a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645360"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423557"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
@@ -56,7 +56,7 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
 
    <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-2. Geben Sie die Werte für die erforderlichen Parameter in die Vorlage ein.
+1. Geben Sie die Werte für die erforderlichen Parameter in die Vorlage ein.
 
     > [!IMPORTANT]
     > Der Schutz einiger Authentifizierungs- und Serverfirewalls wurde zu Vorführungszwecken absichtlich aufgehoben. Es wird empfohlen, eine neue Ressourcengruppe zu erstellen. Verwenden Sie keine vorhandenen Ressourcengruppen, Server oder Pools. Verwenden Sie diese Anwendung, die Skripts oder die damit bereitgestellten Ressourcen nicht für die Produktion. Wenn Sie sich umfassend mit der Anwendung vertraut gemacht haben, löschen Sie diese Ressourcengruppe, um die zugehörige Abrechnung einzustellen.
@@ -65,13 +65,13 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
     - **Standort:** Wählen Sie in der Dropdownliste einen Standort aus.
     - **Benutzer:** Verwenden Sie den zuvor ausgewählten Wert für den Benutzernamen.
 
-3. Stellen Sie die Anwendung bereit.
+1. Stellen Sie die Anwendung bereit.
 
     a. Wählen Sie die entsprechende Option aus, um den Geschäftsbedingungen zuzustimmen.
 
     b. Wählen Sie die Option **Kaufen**.
 
-4. Zum Überwachen des Bereitstellungsstatus wählen Sie **Benachrichtigungen** (das Glockensymbol rechts neben dem Suchfeld) aus. Das Bereitstellen der Wingtip Tickets SaaS-App dauert ungefähr fünf Minuten.
+1. Zum Überwachen des Bereitstellungsstatus wählen Sie **Benachrichtigungen** (das Glockensymbol rechts neben dem Suchfeld) aus. Das Bereitstellen der Wingtip Tickets SaaS-App dauert ungefähr fünf Minuten.
 
    ![Bereitstellung erfolgreich](media/saas-dbpertenant-get-started-deploy/succeeded.png)
 
@@ -83,11 +83,11 @@ Laden Sie, während die Anwendung bereitgestellt wird, den Quellcode und die Ver
 > Ausführbare Inhalte (Skripts und DLLs) können durch Windows blockiert werden, wenn ZIP-Dateien aus einer externen Quelle heruntergeladen und extrahiert werden. Führen Sie die Schritte zum Entsperren der ZIP-Datei aus, bevor Sie die Skripts extrahieren. Durch das Entsperren wird sichergestellt, dass die Skripts ausgeführt werden dürfen.
 
 1. Navigieren Sie zum GitHub-Repository [WingtipTicketsSaaS-DbPerTenant][github-wingtip-dpt].
-2. Wählen Sie **Clone or download**aus.
-3. Wählen Sie **ZIP herunterladen** aus, und speichern Sie die Datei.
-4. Klicken Sie mit der rechten Maustaste auf die Datei **WingtipTicketsSaaS-DbPerTenant-master.zip**, und wählen Sie **Eigenschaften** aus.
-5. Wählen Sie auf der Registerkarte **Allgemein** die Option **Blockierung aufheben** > **Anwenden** aus.
-6. Auswählen von **OK** und Extrahieren der Dateien
+1. Wählen Sie **Clone or download**aus.
+1. Wählen Sie **ZIP herunterladen** aus, und speichern Sie die Datei.
+1. Klicken Sie mit der rechten Maustaste auf die Datei **WingtipTicketsSaaS-DbPerTenant-master.zip**, und wählen Sie **Eigenschaften** aus.
+1. Wählen Sie auf der Registerkarte **Allgemein** die Option **Blockierung aufheben** > **Anwenden** aus.
+1. Auswählen von **OK** und Extrahieren der Dateien
 
 Skripts befinden sich im Ordner „...\\WingtipTicketsSaaS-DbPerTenant-master\\Learning Modules“.
 
@@ -96,8 +96,8 @@ Skripts befinden sich im Ordner „...\\WingtipTicketsSaaS-DbPerTenant-master\\L
 Ändern Sie vor dem Ausführen von Skripts die Werte „resource group“ und „user“ in der Datei „User Config“. Legen Sie diese Variablen auf die Werte fest, die Sie während der Bereitstellung angegeben haben.
 
 1. Öffnen Sie „...\\Learning Modules\\**UserConfig.psm1**“ in der PowerShell ISE. 
-2. Aktualisieren Sie **ResourceGroupName** und **Name** mit den jeweiligen Werten für Ihre Bereitstellung (nur in den Zeilen 10 und 11).
-3. Speichern Sie die Änderungen.
+1. Aktualisieren Sie **ResourceGroupName** und **Name** mit den jeweiligen Werten für Ihre Bereitstellung (nur in den Zeilen 10 und 11).
+1. Speichern Sie die Änderungen.
 
 Auf diese Werte wird in fast jedem Skript verwiesen.
 
@@ -113,7 +113,7 @@ Auf einer zentralen **Event Hub**-Seite wird eine Liste mit Links zu den Mandant
 
     ![Veranstaltungshub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Wählen Sie im Event Hub die Option **Fabrikam Jazz Club** aus.
+1. Wählen Sie im Event Hub die Option **Fabrikam Jazz Club** aus.
 
     ![Ereignisse](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
@@ -148,8 +148,8 @@ Nachdem die App bereitgestellt wurde, können wir sie nutzen.
 Mit dem PowerShell-Skript *Demo-LoadGenerator* wird eine Workload gestartet, die für alle Mandantendatenbanken ausgeführt wird. Die echte Auslastung vieler SaaS-Apps ist sporadischer Art und nicht vorhersagbar. Um diese Art der Auslastung zu simulieren, erzeugt der Generator eine Auslastung mit zufälligen Auslastungsspitzen oder Aktivitätsbursts für jeden Mandanten. Die Bursts treten in zufälligen Intervallen auf. Es dauert einige Minuten, bis das Auslastungsmuster ermittelt ist. Lassen Sie den Generator mindestens drei oder vier Minuten laufen, bevor Sie die Last überwachen.
 
 1. Öffnen Sie das Skript „...\\Learning Modules\\Utilities\\*Demo-LoadGenerator.ps1*“ in der PowerShell ISE.
-2. Drücken Sie F5, um das Skript auszuführen und den Lastgenerator zu starten. Lassen Sie in diesem Fall die Standardparameterwerte unverändert.
-3. Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie ggf. das zu verwendende Abonnement aus.
+1. Drücken Sie F5, um das Skript auszuführen und den Lastgenerator zu starten. Lassen Sie in diesem Fall die Standardparameterwerte unverändert.
+1. Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie ggf. das zu verwendende Abonnement aus.
 
 Das Lastengeneratorskript startet einen Hintergrundauftrag für jede Datenbank im Katalog und hält dann an. Wenn Sie das Lastgeneratorskript erneut ausführen, hält es zunächst alle aktuell ausgeführten Hintergrundaufträge an, bevor neue Aufträge gestartet werden.
 
@@ -169,16 +169,16 @@ Wenn Sie die Hintergrundaufträge steuern und überwachen möchten, verwenden Si
 
     - Beide PS1-Dateien werden unter den Ordnern „Learning Modules\\Utilities\\“ gespeichert.
 
-2. *LoadGenerator.ps1* durchläuft alle Mandantendatenbanken im Katalog.
+1. *LoadGenerator.ps1* durchläuft alle Mandantendatenbanken im Katalog.
 
-3. *LoadGenerator.ps1* startet einen PowerShell-Hintergrundauftrag für jede Mandantendatenbank:
+1. *LoadGenerator.ps1* startet einen PowerShell-Hintergrundauftrag für jede Mandantendatenbank:
 
     - Standardmäßig werden die Hintergrundaufträge für 120 Minuten ausgeführt.
     - Jeder Auftrag bewirkt eine CPU-basierte Last in einer Mandantendatenbank durch Ausführen von *Sp_CpuLoadGenerator*. Die Intensität und Dauer der Last variiert abhängig von `$DemoScenario`. 
     - *Sp_CpuLoadGenerator* durchläuft eine SQL-SELECT-Anweisung, die eine hohe CPU-Auslastung bewirkt. Das Zeitintervall zwischen den Ausgaben der SELECT-Anweisung variiert je nach Parameterwerten, um eine steuerbare CPU-Auslastung zu erzeugen. Auslastungsgrade und Intervalle werden zufällig festgelegt, um realistischere Auslastungen zu simulieren.
     - Diese SQL-Datei wird unter *WingtipTenantDB\\dbo\\StoredProcedures\\* gespeichert.
 
-4. Bei `$OneTime = $false` startet der Lastgenerator die Hintergrundaufträge und wird dann weiterhin ausgeführt. Alle 10 Sekunden überprüft er, ob neue Mandanten bereitgestellt wurden. Wenn Sie `$OneTime = $true` festlegen, startet der Lastgenerator die Hintergrundaufträge und beendet dann die Ausführung im Vordergrund. Behalten Sie `$OneTime = $false` für dieses Tutorial bei.
+1. Bei `$OneTime = $false` startet der Lastgenerator die Hintergrundaufträge und wird dann weiterhin ausgeführt. Alle 10 Sekunden überprüft er, ob neue Mandanten bereitgestellt wurden. Wenn Sie `$OneTime = $true` festlegen, startet der Lastgenerator die Hintergrundaufträge und beendet dann die Ausführung im Vordergrund. Behalten Sie `$OneTime = $false` für dieses Tutorial bei.
 
   Verwenden Sie STRG+C oder den Stoppvorgang STRG+UNTBR, wenn Sie den Lastgenerator beenden oder neu starten möchten. 
 
@@ -193,8 +193,8 @@ Bevor Sie zum nächsten Abschnitt übergehen, lassen Sie den Lastgenerator im Zu
 Bei der Erstbereitstellung werden drei Beispielmandanten erstellt. Jetzt erstellen Sie einen weiteren Mandanten, um zu sehen, wie sich dies auf die bereitgestellte Anwendung auswirkt. Der Arbeitsablauf zum Bereitstellen neuer Mandanten in der Wingtip-App wird im [Tutorial zum Bereitstellen und zum Katalog](saas-dbpertenant-provision-and-catalog.md) erläutert. In dieser Phase erstellen Sie in weniger als einer Minute einen neuen Mandanten.
 
 1. Öffnen Sie eine neue PowerShell ISE.
-2. Öffnen Sie „...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*“.
-3. Drücken Sie F5, um das Skript auszuführen. Lassen Sie die Standardwerte unverändert.
+1. Öffnen Sie „...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionAndCatalog.ps1*“.
+1. Drücken Sie F5, um das Skript auszuführen. Lassen Sie die Standardwerte unverändert.
 
    > [!NOTE]
    > In vielen Wingtip-SaaS-Skripts wird *$PSScriptRoot* für die Navigation in Ordnern zum Aufrufen von Funktionen in anderen Skripts verwendet. Diese Variable wird nur ausgewertet, wenn das vollständige Skript durch das Drücken von F5 ausgeführt wird. Das Hervorheben und Ausführen einer Auswahl mit F8 kann zu Fehlern führen. Drücken Sie F5, um die Skripts auszuführen.
@@ -220,11 +220,11 @@ Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Last ges
 
    ![Datenbanken](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
-2. Wechseln Sie zurück zur Liste der SQL-Server.
+1. Wechseln Sie zurück zur Liste der SQL-Server.
 
-3. Öffnen Sie den Server **tenants1-dpt-&lt;BENUTZER&gt;**, auf dem sich die Mandantendatenbanken befinden.
+1. Öffnen Sie den Server **tenants1-dpt-&lt;BENUTZER&gt;**, auf dem sich die Mandantendatenbanken befinden.
 
-4. Beachten Sie folgende Elemente:
+1. Beachten Sie folgende Elemente:
 
     - Bei jeder Mandantendatenbank handelt es sich um eine Datenbank vom Typ **Elastisch Standard** in einem Standardpool mit 50 eDTUs.
     - Die Datenbank „Red Maple Racing“ ist die zuvor von Ihnen bereitgestellte Mandantendatenbank.

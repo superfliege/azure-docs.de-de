@@ -2,24 +2,18 @@
 title: Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Vorschau der Liste der Blobs anzeigen, die Sie für einen Exportauftrag im Azure Import/Export-Dienst ausgewählt haben.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 21c0fd9b258100e769172332713769024fb12969
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059295"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520570"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Anzeigen einer Vorschau der Laufwerknutzung für einen Exportauftrag
 Bevor Sie einen Exportauftrag erstellen, müssen Sie eine Gruppe von Blobs auswählen, die Sie exportieren möchten. Der Microsoft Azure Import/Export-Dienst bietet Ihnen die Möglichkeit, die ausgewählten Blobs mithilfe einer Liste von Blobpfaden oder Blobpräfixen darzustellen.  
@@ -30,7 +24,7 @@ Als Nächstes müssen Sie bestimmen, wie viele Laufwerke Sie senden müssen. Im 
 
 Bei der Verwendung des Befehls `PreviewExport` des Import/Export-Tools können Sie die folgenden Parameter verwenden.
 
-|Befehlszeilenparameter|Beschreibung|  
+|Befehlszeilenparameter|BESCHREIBUNG|  
 |--------------------------|-----------------|  
 |**/logdir:**&lt;Protokollverzeichnis\>|Optional. Das Protokollverzeichnis. In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Wird kein Protokollverzeichnis angegeben, wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|  
 |**/sn:**&lt;Speicherkontoname\>|Erforderlich. Der Name des Speicherkontos für den Exportauftrag.|  

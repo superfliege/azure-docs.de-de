@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: a6f63fac85008425f473f431ae85d04f62eed667
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 56ad633807a59eaa7ae75dc334aa630fb3bf94a3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127590"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436725"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -44,9 +44,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | **Verbundene Quelle** | **Unterstützung** | **Beschreibung** |
 | --- | --- | --- |
-| [Windows-Agents](log-analytics-windows-agent.md) | Ja | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
+| [Windows-Agents](log-analytics-windows-agent.md) | JA | Die Lösung erfasst DNS-Informationen von Windows-Agents. |
 | [Linux-Agents](log-analytics-linux-agents.md) | Nein  | Die Lösung erfasst keine DNS-Informationen von direkten Linux-Agents. |
-| [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md) | Ja | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung des Operations Manager-Agents mit der Operations Management Suite erforderlich. Daten werden von der Verwaltungsgruppe an das Operations Management Suite-Repository weitergeleitet. |
+| [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md) | JA | Die Lösung erfasst DNS-Informationen von Agents in einer verbundenen Operations Manager-Verwaltungsgruppe. Es ist keine direkte Verbindung des Operations Manager-Agents mit der Operations Management Suite erforderlich. Daten werden von der Verwaltungsgruppe an das Operations Management Suite-Repository weitergeleitet. |
 | [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Azure-Speicher wird von der Lösung nicht verwendet. |
 
 ### <a name="data-collection-details"></a>Details zur Datensammlung
@@ -133,11 +133,11 @@ Mit den Informationen können Sie Folgendes identifizieren:
 
 1. Suchen Sie die Zone, die für den Namen autoritativ ist, den der Client aktualisieren möchte.
 
-2. Verwenden Sie die Lösung, um die Inventarinformationen dieser Zone zu überprüfen.
+1. Verwenden Sie die Lösung, um die Inventarinformationen dieser Zone zu überprüfen.
 
-3. Stellen Sie sicher, dass die dynamische Aktualisierung für die Zone aktiviert ist.
+1. Stellen Sie sicher, dass die dynamische Aktualisierung für die Zone aktiviert ist.
 
-4. Überprüfen Sie, ob die Zone für die sichere dynamische Aktualisierung konfiguriert ist.
+1. Überprüfen Sie, ob die Zone für die sichere dynamische Aktualisierung konfiguriert ist.
 
     ![Blatt „Dynamische DNS-Registrierungen“](./media/log-analytics-dns/dynamic-dns-reg-blade.png)
 
@@ -177,7 +177,7 @@ Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die 
 
     c. Um die Protokolldaten für Konfigurationsänderungen anzuzeigen, wählen Sie auf der linken Seite im Facetsteuerelement **ConfigurationChange** als **Untertyp**-Filter aus. Eine Tabelle mit allen Konfigurationsänderungsereignissen für den ausgewählten Zeitraum wird angezeigt.
 
-2. Geben Sie im **Feld für die Suchabfrage** `DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
+1. Geben Sie im **Feld für die Suchabfrage** `DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
 
     ![DnsInventory-Protokollsuche](./media/log-analytics-dns/log-search-dnsinventory.png)
 

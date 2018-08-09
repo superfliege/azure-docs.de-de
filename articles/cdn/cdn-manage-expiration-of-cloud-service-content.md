@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: mazha
-ms.openlocfilehash: ec5470587454a35bc7606a3518d61bd3491d653b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fc74d7fdd082cf497b7cabf30d96509ebe8b6b68
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765540"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426018"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>Verwalten des Ablaufs von Webinhalten in Azure CDN
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Web
 
 1. Wählen Sie im Azure-Portal ein CDN-Profil und anschließend den Endpunkt für den Webserver aus.
 
-2. Wählen Sie im linken Bereich unter „Einstellungen“ die Option **Cacheregeln** aus.
+1. Wählen Sie im linken Bereich unter „Einstellungen“ die Option **Cacheregeln** aus.
 
    ![Schaltfläche für CDN-Cacheregeln](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-rules-btn.png)
 
@@ -60,13 +60,13 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Web
 
 1. Legen Sie unter **Globale Cacheregeln** die Option **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** auf **Abfragezeichenfolgen ignorieren** fest. Legen Sie dann das **Verhalten beim Zwischenspeichern** auf **Außerkraftsetzung** fest.
       
-2. Geben Sie für **Dauer bis Cacheablauf** einen Wert von 3600 im Feld **Sekunden** ein, oder geben Sie im Feld **Stunden** den Wert 1 an. 
+1. Geben Sie für **Dauer bis Cacheablauf** einen Wert von 3600 im Feld **Sekunden** ein, oder geben Sie im Feld **Stunden** den Wert 1 an. 
 
    ![Beispiel für globale CDN-Cacheregeln](./media/cdn-manage-expiration-of-cloud-service-content/cdn-global-caching-rules-example.png)
 
    Mit diesen globalen Cacheregeln wird eine Cachedauer von 1 Stunde festgelegt, die sich auf alle Anforderungen an den Endpunkt auswirkt. Der festgelegte Ablauf überschreibt alle `Cache-Control`- oder `Expires`-HTTP-Header, die durch die vom Endpunkt festgelegten Ursprungsserver gesendet werden.   
 
-3. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
 **So legen Sie mit benutzerdefinierten Cacheregeln Cache-Control-Header für einen Webserver fest**
 
@@ -80,7 +80,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Web
 
     Die erste benutzerdefinierte Cacheregel legt eine Cachedauer von vier Stunden für alle Dateien im Ordner `/webfolder1` auf dem Ursprungsserver fest, der durch Ihren Endpunkt angegeben wird. Die zweite Regel setzt für die Datei `file1.txt` die erste Regel außer Kraft und legt eine Cachedauer von zwei Stunden fest.
 
-2. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
 
 ## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Festlegen von Cache-Control-Headern mithilfe von Konfigurationsdateien
@@ -113,10 +113,10 @@ Bei ASP.NET-Anwendungen steuern Sie das Verhalten von CDN beim Zwischenspeichern
 
 Führen Sie diese Schritte aus, um Anwendungsinhalt in ASP.NET programmgesteuert zwischenzuspeichern:
    1. Stellen Sie sicher, dass der Inhalt als für die Zwischenspeicherung geeignet gekennzeichnet ist, indem Sie `HttpCacheability` auf `Public` festlegen. 
-   2. Legen Sie eine Cachevalidierung fest, indem Sie eine der folgenden `HttpCachePolicy`-Methoden aufrufen:
+   1. Legen Sie eine Cachevalidierung fest, indem Sie eine der folgenden `HttpCachePolicy`-Methoden aufrufen:
       - Rufen Sie `SetLastModified` auf, um einen timestamp-Wert für den `Last-Modified`-Header festzulegen.
       - Rufen Sie `SetETag` auf, um einen Wert für den `ETag`-Header festzulegen.
-   3. Geben Sie optional eine Ablaufzeit für den Cache an, indem Sie `SetExpires` aufrufen, um einen Wert für den `Expires`-Header festzulegen. Andernfalls gilt die Standard-Cacheheuristik, die weiter oben in diesem Dokument beschrieben wurde.
+   1. Geben Sie optional eine Ablaufzeit für den Cache an, indem Sie `SetExpires` aufrufen, um einen Wert für den `Expires`-Header festzulegen. Andernfalls gilt die Standard-Cacheheuristik, die weiter oben in diesem Dokument beschrieben wurde.
 
 Fügen Sie beispielsweise folgenden C#-Code hinzu, um Inhalt eine Stunde lang zwischenzuspeichern:  
 

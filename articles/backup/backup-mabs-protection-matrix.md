@@ -5,16 +5,16 @@ services: backup
 author: markgalioto
 ms.service: backup
 keywords: ''
-ms.date: 11/28/2017
+ms.date: 7/14/2018
 ms.topic: conceptual
 ms.author: markgal
 manager: carmonm
-ms.openlocfilehash: 2edf6b4076dfafd775e723d44ed4d93b7493828b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4167e8214674527039fd838f81c3489840e6ef68
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607241"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39284911"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server-Schutzmatrix
 
@@ -80,8 +80,8 @@ In diesem Artikel sind verschiedene Server und Workloads aufgeführt, die Sie mi
 |Hyper-V-Host – DPM-Schutz-Agent auf Hyper-V-Hostserver, Cluster oder VM|Windows Server 2012 – Datacenter und Standard|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|J|J|Schutz: Hyper-V-Computer, freigegebene Clustervolumes (CSVs)<br /><br />Wiederherstellung: virtueller Computer, Wiederherstellung auf Elementebene von Dateien und Ordnern, Volumes, virtuelle Festplatten|
 |Hyper-V-Host – DPM-Schutz-Agent auf Hyper-V-Hostserver, Cluster oder VM|Windows Server 2008 R2 SP1 – Enterprise und Standard|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|J|J|Schutz: Hyper-V-Computer, freigegebene Clustervolumes (CSVs)<br /><br />Wiederherstellung: virtueller Computer, Wiederherstellung auf Elementebene von Dateien und Ordnern, Volumes, virtuelle Festplatten|
 |Hyper-V-Host – DPM-Schutz-Agent auf Hyper-V-Hostserver, Cluster oder VM|Windows Server 2008 SP2|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|N|N|Schutz: Hyper-V-Computer, freigegebene Clustervolumes (CSVs)<br /><br />Wiederherstellung: virtueller Computer, Wiederherstellung auf Elementebene von Dateien und Ordnern, Volumes, virtuelle Festplatten|
-|Virtuelle VMware-Computer|VMware Server 5.5 oder 6.0 oder 6.5 |Lokaler virtueller Hyper-V-Computer|J|Y (mit UR1)|VMware-Ms in freigegebenen Clustervolumen (CSVs), NFS und im SAN-Speicher<br /> Die Wiederherstellung von Dateien und Ordnern auf Elementebene ist nur für Windows verfügbar.<br /> VMware vApp wird nicht unterstützt|
-|Linux|Linux, ausgeführt als Hyper-V- oder VMware-Gast|Lokaler virtueller Hyper-V-Computer|J|J|Hyper-V muss unter Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. Schutz: gesamter virtueller Computer<br /><br />Wiederherstellung: gesamter virtueller Computer <br/><br/> Eine vollständige Liste der unterstützten Linux-Distributionen und -Versionen finden Sie im Artikel [Linux auf von Azure unterstützten Distributionen](../virtual-machines/linux/endorsed-distros.md).|
+|Virtuelle VMware-Computer|VMware Server 5.5 oder 6.0 oder 6.5 |Physischer Server <br/>Lokale Hyper-V-VM <br/> Windows-VM in VMware|J|Y (mit UR1)|VMware-Ms in freigegebenen Clustervolumen (CSVs), NFS und im SAN-Speicher<br /> Die Wiederherstellung von Dateien und Ordnern auf Elementebene ist nur für Windows verfügbar.<br /> VMware vApp wird nicht unterstützt|
+|Linux|Linux, ausgeführt als Hyper-V- oder VMware-Gast|Physischer Server <br/>Lokale Hyper-V-VM <br/> Windows-VM in VMware|J|J|Hyper-V muss unter Windows Server 2012 R2 oder Windows Server 2016 ausgeführt werden. Schutz: gesamter virtueller Computer<br /><br />Wiederherstellung: gesamter virtueller Computer <br/><br/> Eine vollständige Liste der unterstützten Linux-Distributionen und -Versionen finden Sie im Artikel [Linux auf von Azure unterstützten Distributionen](../virtual-machines/linux/endorsed-distros.md).|
 
 ## <a name="cluster-support"></a>Unterstützung für Cluster
 Azure Backup Server kann Daten in den folgenden gruppierten Anwendungen schützen:

@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 0d09338f71d71d07ab0e037d4736cfaa1f3cff85
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 176b04b9bb16b5f183298c75f16bceb5e885e293
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763953"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492239"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Ruft den Zeitplan des Chaostests ab und legt diesen fest.
@@ -35,6 +35,12 @@ Ruft den Zeitplan des Chaostests ab und legt diesen fest.
 Ruft den Chaostestzeitplan ab, der definiert, wann und wie der Chaostest ausgeführt werden soll.
 
 Ruft die Version des verwendeten Chaostestzeitplans und den Chaostestzeitplan ab, der definiert, wann und wie der Chaostest ausgeführt werden soll.
+
+### <a name="arguments"></a>Argumente
+
+|Argument|BESCHREIBUNG|
+| --- | --- |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -59,6 +65,7 @@ Legt den Chaostestzeitplan fest, der zurzeit beim Chaostest verwendet wird. Der 
 | --expiry-date-utc | Datum und Uhrzeit, wann die Verwendung des Chaostestzeitplans für die Planung des Chaostests beendet werden soll.  Standardwert\: „9999-12-31T23\:59\:59.999Z“. |
 | --jobs | JSON-codierte Liste von ChaosScheduleJobs, die angibt, wann der Chaostest ausgeführt werden soll und welche Parameter beim Chaostest ausgeführt werden sollen. |
 | --start-date-utc | Datum und Uhrzeit, wann der Zeitplan für die Planung des Chaostests gestartet werden soll.  Standardwert\: „1601-01-01T00\:00\:00.000Z“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 | --version | Die Versionsnummer des Zeitplans. |
 
 ### <a name="global-arguments"></a>Globale Argumente

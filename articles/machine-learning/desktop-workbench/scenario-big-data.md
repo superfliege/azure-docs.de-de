@@ -9,19 +9,19 @@ editor: daden
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 450c033fbce3544cdc17ddc6d47ff726b01a4d3e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832661"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450670"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Vorhersagen der Serverworkload in Terabyte
 
@@ -49,7 +49,7 @@ In diesem Szenario liegt der Schwerpunkt auf der Prognose der Workload für die 
 Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
-* Eine installierte Kopie von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Informationen zum Installieren des Programms und Erstellen eines Arbeitsbereichs finden Sie in der [Schnellstartanleitung für die Installation](../service/quickstart-installation.md). Wenn Sie mehrere Abonnements haben, können Sie [festlegen, dass das aktuell aktive Abonnement das gewünschte Abonnement ist](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
+* Eine installierte Kopie von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Informationen zum Installieren des Programms und Erstellen eines Arbeitsbereichs finden Sie in der [Schnellstartanleitung für die Installation](../service/quickstart-installation.md). Wenn Sie mehrere Abonnements haben, können Sie [festlegen, dass das aktuell aktive Abonnement das gewünschte Abonnement ist](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
 * Windows 10 (Anleitungen in diesem Beispiel sind für macOS-Systeme im Allgemeinen identisch).
 * Ein virtueller Data Science-Computer (Data Science Virtual Machine, DSVM) für Linux (Ubuntu), vorzugsweise in der Region „USA, Osten“, wo sich die Daten befinden. Sie können einen Ubuntu-DSVM bereitstellen, indem Sie [diese Anleitung](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) befolgen. Sie können auch [diese Schnellstartanleitung](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu) verwenden. Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 32 GB Arbeitsspeicher zu verwenden. 
 

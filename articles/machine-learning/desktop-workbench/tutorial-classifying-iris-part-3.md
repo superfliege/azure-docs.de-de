@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 5b751546320ca6728573954290bd2258e837775f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723220"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445535"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutorial 3: Klassifizieren von Iris: Bereitstellen eines Modells
 Bei Azure Machine Learning (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -47,11 +47,11 @@ Im vorherigen Teil des Tutorials wurde das Skript **iris_sklearn.py** lokal in M
 
 1. Öffnen Sie die Machine Learning Workbench-Anwendung. Öffnen Sie anschließend das Projekt **myIris**, das Sie in den vorherigen Teilen der Tutorialreihe erstellt haben.
 
-2. Wählen Sie nach dem Öffnen des Projekts im linken Bereich die Schaltfläche **Dateien** (Ordnersymbol), um die Dateiliste in Ihrem Projektordner zu öffnen.
+1. Wählen Sie nach dem Öffnen des Projekts im linken Bereich die Schaltfläche **Dateien** (Ordnersymbol), um die Dateiliste in Ihrem Projektordner zu öffnen.
 
-3. Wählen Sie die Datei **iris_sklearn.py** aus. Der Python-Code wird in Workbench in einer neuen Registerkarte des Text-Editors geöffnet.
+1. Wählen Sie die Datei **iris_sklearn.py** aus. Der Python-Code wird in Workbench in einer neuen Registerkarte des Text-Editors geöffnet.
 
-4. Sehen Sie in der Datei **iris_sklearn.py** nach, um zu ermitteln, wo die pickle-Datei generiert wurde. Drücken Sie STRG+F, um das Dialogfeld **Suchen** zu öffnen, und suchen Sie im Python-Code nach dem Wort **pickle**.
+1. Sehen Sie in der Datei **iris_sklearn.py** nach, um zu ermitteln, wo die pickle-Datei generiert wurde. Drücken Sie STRG+F, um das Dialogfeld **Suchen** zu öffnen, und suchen Sie im Python-Code nach dem Wort **pickle**.
 
    In diesem Codeausschnitt ist dargestellt, wie die pickle-Ausgabedatei generiert wurde. Die pickle-Ausgabedatei hat auf dem Datenträger den Namen **model.pkl**. 
 
@@ -62,7 +62,7 @@ Im vorherigen Teil des Tutorials wurde das Skript **iris_sklearn.py** lokal in M
    f.close()
    ```
 
-5. Suchen Sie in den Ausgabedateien eines vorherigen Ausführungslaufs nach der pickle-Modelldatei.
+1. Suchen Sie in den Ausgabedateien eines vorherigen Ausführungslaufs nach der pickle-Modelldatei.
    
    Beim Ausführen des Skripts **iris_sklearn.py** wurde die Modelldatei unter dem Namen **model.pkl** in den Ordner **outputs** geschrieben. Dieser Ordner befindet sich in der Ausführungsumgebung, die Sie für die Ausführung des Skripts auswählen, und nicht in Ihrem lokalen Projektordner. 
    
@@ -83,29 +83,29 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
 
 1. Öffnen Sie die Machine Learning Workbench-Anwendung. Öffnen Sie anschließend das Projekt **myIris**, das Sie im vorherigen Teil der Tutorialreihe erstellt haben.
 
-2. Wählen Sie nach dem Öffnen des Projekts im linken Bereich die Schaltfläche **Dateien** (Ordnersymbol), um die Dateiliste in Ihrem Projektordner zu öffnen.
+1. Wählen Sie nach dem Öffnen des Projekts im linken Bereich die Schaltfläche **Dateien** (Ordnersymbol), um die Dateiliste in Ihrem Projektordner zu öffnen.
 
-3. Wählen Sie die Datei **score_iris.py** aus. Das Python-Skript wird geöffnet. Diese Datei wird als Bewertungsdatei verwendet.
+1. Wählen Sie die Datei **score_iris.py** aus. Das Python-Skript wird geöffnet. Diese Datei wird als Bewertungsdatei verwendet.
 
    ![Bewertungsdatei](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. Führen Sie das Skript aus, um die Schemadatei abzurufen. Wählen Sie in der Befehlsleiste die Umgebung **local** und das Skript **score_iris.py** und anschließend **Ausführen**. 
+1. Führen Sie das Skript aus, um die Schemadatei abzurufen. Wählen Sie in der Befehlsleiste die Umgebung **local** und das Skript **score_iris.py** und anschließend **Ausführen**. 
 
    Mit diesem Skript wird im Abschnitt **outputs** eine JSON-Datei erstellt, mit der das für das Modell benötigte Eingabedatenschema erfasst wird.
 
-6. Beachten Sie den Bereich **Aufträge** rechts im Bereich **Projektdashboard**. Warten Sie, bis für den aktuellen Auftrag **score_iris.py** in Grün der Status **Abgeschlossen** angezeigt wird. Wählen Sie anschließend den Hyperlink **score_iris.py** für die letzte Auftragsausführung aus, um die Ausführungsdetails anzuzeigen. 
+1. Beachten Sie den Bereich **Aufträge** rechts im Bereich **Projektdashboard**. Warten Sie, bis für den aktuellen Auftrag **score_iris.py** in Grün der Status **Abgeschlossen** angezeigt wird. Wählen Sie anschließend den Hyperlink **score_iris.py** für die letzte Auftragsausführung aus, um die Ausführungsdetails anzuzeigen. 
 
-7. Wählen Sie im Bereich **Run Properties** (Ausführungseigenschaften) im Abschnitt **Ausgaben** die neu erstellte Datei **service_schema.json** aus. Aktivieren Sie das Kontrollkästchen neben dem Dateinamen, und wählen Sie anschließend **Herunterladen**. Speichern Sie die Datei im Stammverzeichnis Ihres Projekts.
+1. Wählen Sie im Bereich **Run Properties** (Ausführungseigenschaften) im Abschnitt **Ausgaben** die neu erstellte Datei **service_schema.json** aus. Aktivieren Sie das Kontrollkästchen neben dem Dateinamen, und wählen Sie anschließend **Herunterladen**. Speichern Sie die Datei im Stammverzeichnis Ihres Projekts.
 
-8. Wechseln Sie zurück zur vorherigen Registerkarte, auf der Sie das Skript **score_iris.py** geöffnet haben. Mit der Datensammlung können Sie Modelleingaben und Vorhersagen für den Webdienst erfassen. Die folgenden Schritte sind für die Datensammlung von besonderem Interesse.
+1. Wechseln Sie zurück zur vorherigen Registerkarte, auf der Sie das Skript **score_iris.py** geöffnet haben. Mit der Datensammlung können Sie Modelleingaben und Vorhersagen für den Webdienst erfassen. Die folgenden Schritte sind für die Datensammlung von besonderem Interesse.
 
-9. Sehen Sie sich den Code oben in der Datei an, mit dem die **ModelDataCollector**-Klasse importiert wird, da darin die Funktionalität für die Modelldatensammlung enthalten ist:
+1. Sehen Sie sich den Code oben in der Datei an, mit dem die **ModelDataCollector**-Klasse importiert wird, da darin die Funktionalität für die Modelldatensammlung enthalten ist:
 
    ```python
    from azureml.datacollector import ModelDataCollector
    ```
 
-10. Die folgenden Codezeilen in der Funktion **init()** dienen zum Instanziieren von **ModelDataCollector**:
+1. Die folgenden Codezeilen in der Funktion **init()** dienen zum Instanziieren von **ModelDataCollector**:
 
     ```python
     global inputs_dc, prediction_dc
@@ -113,7 +113,7 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
     prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
     ```
 
-11. Die folgenden Codezeilen in der Funktion **run(input_df)** dienen zum Sammeln der Eingabe- und Vorhersagedaten:
+1. Die folgenden Codezeilen in der Funktion **run(input_df)** dienen zum Sammeln der Eingabe- und Vorhersagedaten:
 
     ```python
     inputs_dc.collect(input_df)
@@ -139,7 +139,7 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
    Die Eingabeaufforderung wird geöffnet und zeigt den aktuellen Speicherort Ihres Projektordners an: **c:\temp\myIris>**.
 
 
-2. Stellen Sie sicher, dass der Azure-Ressourcenanbieter **Microsoft.ContainerRegistry** unter Ihrem Abonnement registriert ist. Sie müssen diesen Ressourcenanbieter registrieren, um in Schritt 3 eine Umgebung erstellen zu können. Sie können überprüfen, ob die Registrierung bereits durchgeführt wurde, indem Sie den folgenden Befehl verwenden:
+1. Stellen Sie sicher, dass der Azure-Ressourcenanbieter **Microsoft.ContainerRegistry** unter Ihrem Abonnement registriert ist. Sie müssen diesen Ressourcenanbieter registrieren, um in Schritt 3 eine Umgebung erstellen zu können. Sie können überprüfen, ob die Registrierung bereits durchgeführt wurde, indem Sie den folgenden Befehl verwenden:
    ``` 
    az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
    ``` 
@@ -169,7 +169,7 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
    >[!NOTE] 
    Beim Bereitstellen in einem ACS-Cluster folgen Sie genau demselben Ansatz, um den Ressourcenanbieter **Microsoft.ContainerService** zu registrieren.
 
-3. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
+1. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
 
    Für den folgenden Setupbefehl ist der Zugriffstyp „Mitwirkender“ für das Abonnement erforderlich. Wenn Sie nicht über die erforderlichen Berechtigungen verfügen, benötigen Sie zumindest Zugriff als Mitwirkender auf die Ressourcengruppe, in der die Bereitstellung erfolgt. Im letzteren Fall müssen Sie den Ressourcengruppennamen mithilfe des Flags `-g` als Teil des Setupbefehls angeben. 
 
@@ -191,17 +191,17 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
 
    ![Bereitstellungsstatus](media/tutorial-classifying-iris/provisioning_state.png)
  
-3. Erstellen Sie jetzt ein Konto für die Modellverwaltung, falls Sie dies nicht bereits in den vorherigen Teilen dieses Tutorials durchgeführt haben. Dies ist eine einmalige Aufgabe.
+1. Erstellen Sie jetzt ein Konto für die Modellverwaltung, falls Sie dies nicht bereits in den vorherigen Teilen dieses Tutorials durchgeführt haben. Dies ist eine einmalige Aufgabe.
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-4. Legen Sie das Modellverwaltungskonto fest.
+1. Legen Sie das Modellverwaltungskonto fest.
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
 
-5. Richten Sie die Umgebung ein.
+1. Richten Sie die Umgebung ein.
 
    Verwenden Sie nach Abschluss der Einrichtung den folgenden Befehl, um die Umgebungsvariablen festzulegen, die zum Operationalisieren der Umgebung erforderlich sind. Verwenden Sie den gleichen Umgebungsnamen, den Sie zuvor in Schritt 3 verwendet haben. Verwenden Sie den gleichen Ressourcengruppennamen, der im Befehlsfenster ausgegeben wurde, nachdem der Setupprozess abgeschlossen war.
 
@@ -209,7 +209,7 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-6. Geben Sie den folgenden Befehl ein, um zu überprüfen, ob Sie Ihre operationalisierte Umgebung für die lokale Webdienstbereitstellung richtig konfiguriert haben:
+1. Geben Sie den folgenden Befehl ein, um zu überprüfen, ob Sie Ihre operationalisierte Umgebung für die lokale Webdienstbereitstellung richtig konfiguriert haben:
 
    ```azurecli
    az ml env show
@@ -247,13 +247,13 @@ Sie können nun den Echtzeit-Webdienst erstellen.
    >[!IMPORTANT]
    >Der Dienstname, bei dem es sich auch um den neuen Docker-Imagenamen handelt, darf nur Kleinbuchstaben enthalten. Andernfalls erhalten Sie eine Fehlermeldung. 
 
-2. Wenn Sie den Befehl ausführen, werden das Modell und die Bewertungsdateien in das Speicherkonto hochgeladen, das Sie bei der Umgebungseinrichtung erstellt haben. Während des Bereitstellungsprozesses wird ein Docker-Image mit Ihrem Modell, dem Schema und der Bewertungsdatei erstellt und per Pushvorgang in die Azure Container Registry übertragen: **\<ACR-Name\>.azureacr.io/\<Imagename\>:\<Version\>**. 
+1. Wenn Sie den Befehl ausführen, werden das Modell und die Bewertungsdateien in das Speicherkonto hochgeladen, das Sie bei der Umgebungseinrichtung erstellt haben. Während des Bereitstellungsprozesses wird ein Docker-Image mit Ihrem Modell, dem Schema und der Bewertungsdatei erstellt und per Pushvorgang in die Azure Container Registry übertragen: **\<ACR-Name\>.azureacr.io/\<Imagename\>:\<Version\>**. 
 
    Der Befehl überträgt dieses Image lokal auf Ihren Computer und startet basierend auf diesem Image dann einen Docker-Container. Wenn Ihre Umgebung im Clustermodus konfiguriert ist, wird der Docker-Container stattdessen im Azure Cloud Services-Kubernetes-Cluster bereitgestellt.
 
    Im Rahmen der Bereitstellung wird auf Ihrem lokalen Computer ein HTTP-REST-Endpunkt für den Webdienst erstellt. Der Befehl sollte nach einigen Minuten mit einer Erfolgsmeldung abgeschlossen werden. Ihr Webdienst ist nun bereit für die Verwendung!
 
-3. Verwenden Sie den Befehl **docker ps**, um den ausgeführten Docker-Container anzuzeigen:
+1. Verwenden Sie den Befehl **docker ps**, um den ausgeführten Docker-Container anzuzeigen:
 
    ```azurecli
    docker ps
@@ -271,7 +271,7 @@ Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, e
    ```
    Mit diesem Befehl wird eine Modell-ID generiert.
 
-2. Erstellen Sie ein Manifest.
+1. Erstellen Sie ein Manifest.
 
    Verwenden Sie zum Erstellen eines Manifests den folgenden Befehl, und geben Sie die Modell-ID aus dem vorherigen Schritt an:
 
@@ -280,7 +280,7 @@ Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, e
    ```
    Mit diesem Befehl wird eine Manifest-ID generiert.
 
-3. Erstellen Sie ein Docker-Image.
+1. Erstellen Sie ein Docker-Image.
 
    Verwenden Sie zum Erstellen eines Docker-Images den folgenden Befehl, und geben Sie den Manifest-ID-Wert aus dem vorherigen Schritt an. Sie können die Conda-Abhängigkeiten optional auch mit dem Switch `-c` einbinden.
 
@@ -289,7 +289,7 @@ Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, e
    ```
    Mit diesem Befehl wird eine Docker-Image-ID generiert.
    
-4. Erstellen Sie den Dienst.
+1. Erstellen Sie den Dienst.
 
    Verwenden Sie zum Erstellen eines Diensts den folgenden Befehl, und geben Sie die Image-ID aus dem vorherigen Schritt an:
 
@@ -310,7 +310,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
    az ml service usage realtime -i <web service ID>
    ```
 
-2. Führen Sie den zurückgegebenen Befehl zum Ausführen des Diensts aus, um den Dienst zu testen:
+1. Führen Sie den zurückgegebenen Befehl zum Ausführen des Diensts aus, um den Dienst zu testen:
     
    ```azurecli
    az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
@@ -322,20 +322,20 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Suchen Sie nach Ihren Speicherkonten. Wählen Sie hierzu **Alle Dienste**.
+1. Suchen Sie nach Ihren Speicherkonten. Wählen Sie hierzu **Alle Dienste**.
 
-3. Geben Sie im Suchfeld **Speicherkonten** ein, und drücken Sie anschließend die EINGABETASTE.
+1. Geben Sie im Suchfeld **Speicherkonten** ein, und drücken Sie anschließend die EINGABETASTE.
 
-4. Wählen Sie im Suchfeld **Speicherkonten** die Ressource **Speicherkonto** für Ihre Umgebung aus. 
+1. Wählen Sie im Suchfeld **Speicherkonten** die Ressource **Speicherkonto** für Ihre Umgebung aus. 
 
    > [!TIP]
    > Ermitteln Sie wie folgt, welches Speicherkonto verwendet wird:
    > 1. Öffnen Sie Machine Learning Workbench.
-   > 2. Wählen Sie das Projekt aus, an dem Sie arbeiten.
-   > 3. Öffnen Sie im Menü **Datei** eine Eingabeaufforderung.
-   > 4. Geben Sie an der Eingabeaufforderung `az ml env show -v` ein, und überprüfen Sie den Wert von *storage_account*. Dies ist der Name Ihres Speicherkontos.
+   > 1. Wählen Sie das Projekt aus, an dem Sie arbeiten.
+   > 1. Öffnen Sie im Menü **Datei** eine Eingabeaufforderung.
+   > 1. Geben Sie an der Eingabeaufforderung `az ml env show -v` ein, und überprüfen Sie den Wert von *storage_account*. Dies ist der Name Ihres Speicherkontos.
 
-5. Wählen Sie nach dem Öffnen des Bereichs **Speicherkonto** im Abschnitt **Dienste** die Option **Blobs**. Suchen Sie nach dem Container mit dem Namen **modeldata**. 
+1. Wählen Sie nach dem Öffnen des Bereichs **Speicherkonto** im Abschnitt **Dienste** die Option **Blobs**. Suchen Sie nach dem Container mit dem Namen **modeldata**. 
  
    Falls keine Daten angezeigt werden, müssen Sie nach der ersten Webdienstanforderung unter Umständen bis zu zehn Minuten warten, bis die Daten in das Speicherkonto übertragen wurden und angezeigt werden.
 
@@ -345,7 +345,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
    /modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv
    ```
 
-6. Sie können diese Daten über Azure Blob Storage nutzen. Hierfür gibt es viele verschiedene Tools (Microsoft-Software und Open-Source-Tools). Beispiele:
+1. Sie können diese Daten über Azure Blob Storage nutzen. Hierfür gibt es viele verschiedene Tools (Microsoft-Software und Open-Source-Tools). Beispiele:
 
    * Machine Learning: Öffnen Sie die CSV-Datei, indem Sie die CSV-Datei als Datenquelle hinzufügen.
 

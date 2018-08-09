@@ -2,23 +2,18 @@
 title: 'Azure Data Lake Storage Gen2 Preview: Einführung'
 description: Übersicht über Azure Data Lake Storage Gen2 Preview
 services: storage
-documentationcenter: ''
 author: jamesbak
-manager: jahogg
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 0631b1d0c8da925858f0b7fb1d778cb1161eb737
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 51f38cf7ade01b58ad5ce7925af5546d1a4f1a0c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061523"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525381"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Einführung in Azure Data Lake Storage Gen2 Preview
 
@@ -73,6 +68,6 @@ Zusätzlich verbessern Features wie der [hierarchische Namespace](./namespace.md
 In den folgenden Artikeln werden einige der wichtigsten Konzepte von Data Lake Storage Gen2 beschrieben. Zudem wird erläutert, wie Sie Ihre Daten speichern, darauf zugreifen, sie verwalten und Einsichten daraus gewinnen können:
 
 * [Hierarchischer Namespace](./namespace.md)
-* [Erstellen eines Speicherkontos](./quickstart-create-account.md)
+* [Erstellen Sie ein Speicherkonto](./quickstart-create-account.md)
 * [Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen2](./quickstart-create-connect-hdi-cluster.md)
 * [Verwenden eines Azure Data Lake Storage Gen2-Kontos in Azure Databricks](./quickstart-create-databricks-account.md) 

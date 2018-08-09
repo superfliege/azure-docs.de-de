@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 04/30/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: afdee938145dacf50538ceb186957933fe7ec3bd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 379878e261007eca13a4e455ef2b97237c81eeba
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768191"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450027"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -26,13 +26,13 @@ Dieses Tutorial ist der erste Teil einer dreiteiligen Serie:
 > * Erstellen einer georeplizierten Azure-Containerregistrierung
 > * Klonen des Anwendungsquellcodes von GitHub
 > * Erstellen eines Docker-Containerimage aus der Anwendungsquelle
-> * Übertragen des Containerimages per Push an Ihre Registrierung
+> * Übertragen des Containerimage per Push an Ihre Registrierung
 
 In nachfolgenden Tutorials stellen Sie den Container aus Ihrer privaten Registrierung für eine Web-App bereit, die in zwei Azure-Regionen ausgeführt wird. Anschließend aktualisieren Sie den Code in der Anwendung und aktualisieren beide Web-App-Instanzen mit einem einzelnen `docker push`-Element für Ihre Registrierung.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial wird eine lokale Installation der Azure CLI (ab Version 2.0.31) benötigt. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Für dieses Tutorial wird eine lokale Installation der Azure CLI (ab Version 2.0.31) benötigt. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 Sie sollten mit zentralen Docker-Konzepten wie Containern und Containerimages sowie mit grundlegenden Docker CLI-Befehlen vertraut sein. Eine Einführung in Container finden Sie bei Bedarf unter [Get started with Docker]( https://docs.docker.com/get-started/) (Erste Schritte mit Docker).
 
@@ -90,7 +90,7 @@ Wenn die Replikation abgeschlossen ist, wird im Portal für beide Regionen *Bere
 
 Nachdem Sie nun die Georeplikation konfiguriert haben, erstellen Sie ein Containerimage und übertragen es per Pushvorgang in Ihre Registrierung. Sie müssen sich zuerst bei der ACR-Instanz anmelden, damit Sie Images per Push übertragen können.
 
-Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/cli/azure/acr#az_acr_login), um sich zu authentifizieren und die Anmeldeinformationen für Ihre Registrierung zwischenzuspeichern. Ersetzen Sie `<acrName>` durch den Namen der Registrierung, die Sie zuvor erstellt haben.
+Verwenden Sie den Befehl [az acr login](https://docs.microsoft.com/cli/azure/acr#az-acr-login), um sich zu authentifizieren und die Anmeldeinformationen für Ihre Registrierung zwischenzuspeichern. Ersetzen Sie `<acrName>` durch den Namen der Registrierung, die Sie zuvor erstellt haben.
 
 ```azurecli
 az acr login --name <acrName>
@@ -167,7 +167,7 @@ Aktualisieren Sie als Nächstes die Zeile `ENV DOCKER_REGISTRY` mit dem FQDN des
 ENV DOCKER_REGISTRY uniqueregistryname.azurecr.io
 ```
 
-## <a name="build-container-image"></a>Erstellen des Containerimages
+## <a name="build-container-image"></a>Erstellen des Containerimage
 
 Nachdem Sie die Dockerfile mit dem FQDN des Anmeldeservers Ihrer Registrierung aktualisiert haben, können Sie `docker build` verwenden, um das Containerimage zu erstellen. Führen Sie den folgenden Befehl aus, um das Image zu erstellen und mit der URL Ihrer privaten Registrierung zu kennzeichnen. Ersetzen Sie `<acrName>` wieder durch den Namen Ihrer Registrierung:
 

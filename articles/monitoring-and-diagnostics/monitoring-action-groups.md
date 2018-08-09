@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 63216d56fb3acbb954086fbf026441e69073621e
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 091a097fc9fafd5bdc6a2521f4fa2a1b6b77ba4c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263064"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422552"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -33,21 +33,21 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Überwachen**. Das Blatt **Überwachen** konsolidiert alle Ihre Überwachungseinstellungen und Daten in einer Ansicht.
 
     ![Der Dienst „Überwachen“](./media/monitoring-action-groups/home-monitor.png)
-2. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
+1. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
 
     ![Registerkarte „Aktionsgruppen“](./media/monitoring-action-groups/action-groups-blade.png)
-3. Wählen Sie **Aktionsgruppe hinzufügen**, und füllen Sie die Felder aus.
+1. Wählen Sie **Aktionsgruppe hinzufügen**, und füllen Sie die Felder aus.
 
     ![Der Befehl „Aktionsgruppe hinzufügen“](./media/monitoring-action-groups/add-action-group.png)
-4. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
+1. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 
       ![Das Dialogfeld „Aktionsgruppe hinzufügen“](./media/monitoring-action-groups/action-group-define.png)
 
-5. In das Feld **Abonnement** wird automatisch Ihr aktuelles Abonnement eingetragen. In diesem Abonnement wird die Aktionsgruppe gespeichert.
+1. In das Feld **Abonnement** wird automatisch Ihr aktuelles Abonnement eingetragen. In diesem Abonnement wird die Aktionsgruppe gespeichert.
 
-6. Wählen Sie die **Ressourcengruppe**, in der die Aktionsgruppe gespeichert wird.
+1. Wählen Sie die **Ressourcengruppe**, in der die Aktionsgruppe gespeichert wird.
 
-7. Definieren Sie eine Liste von Aktionen, indem Sie für jede Aktion Folgendes angeben:
+1. Definieren Sie eine Liste von Aktionen, indem Sie für jede Aktion Folgendes angeben:
 
     a. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion an.
 
@@ -55,7 +55,7 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt.
 
-8. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
+1. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
 
 ## <a name="action-specific-information"></a>Aktionsspezifische Informationen
 <dl>

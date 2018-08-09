@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 71991347ffaf036065aae9e1a93b7eb83a14b15c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 0b2bb17c85f76498e11ea3f007d55d7488f249cf
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917330"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426886"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Hinzufügen eines VMM-Skripts zu einem Wiederherstellungsplan
 
@@ -52,9 +52,9 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
   
   1. Öffnen Sie den Registrierungs-Editor, und navigieren Sie zu **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**.
 
-  2. Ändern Sie den Wert von **ScriptLibraryPath** in **\\\libserver2.contoso.com\share\\**. Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an. Dies ist der Stammknoten der Freigabe. Wechseln Sie in VMM in der Bibliothek zum Stammknoten, um diesen zu überprüfen. Der Pfad, der geöffnet wird, ist der Stamm des Pfads. Dies ist der Pfad, den Sie in der Variable verwenden müssen.
+  1. Ändern Sie den Wert von **ScriptLibraryPath** in **\\\libserver2.contoso.com\share\\**. Geben Sie den vollqualifizierten Domänennamen vollständig ein. Geben Sie die Berechtigungen für den Speicherort der Freigabe an. Dies ist der Stammknoten der Freigabe. Wechseln Sie in VMM in der Bibliothek zum Stammknoten, um diesen zu überprüfen. Der Pfad, der geöffnet wird, ist der Stamm des Pfads. Dies ist der Pfad, den Sie in der Variable verwenden müssen.
 
-  3. Testen Sie das Skript mit einem Benutzerkonto mit der gleichen Stufe von Benutzerrechten wie das VMM-Dienstkonto. Durch die Verwendung dieser Benutzerrechte vergewissern Sie sich, dass eigenständige, getestete Skripts auf die gleiche Weise wie in Wiederherstellungsplänen ausgeführt werden. Legen Sie für die Ausführungsrichtlinie auf dem VMM-Server wie folgt eine Umleitung fest:
+  1. Testen Sie das Skript mit einem Benutzerkonto mit der gleichen Stufe von Benutzerrechten wie das VMM-Dienstkonto. Durch die Verwendung dieser Benutzerrechte vergewissern Sie sich, dass eigenständige, getestete Skripts auf die gleiche Weise wie in Wiederherstellungsplänen ausgeführt werden. Legen Sie für die Ausführungsrichtlinie auf dem VMM-Server wie folgt eine Umleitung fest:
 
      a. Öffnen Sie die **Windows PowerShell-Konsole (64 Bit)** als Administrator.
      
@@ -68,19 +68,19 @@ Sie können PowerShell-Skripts in Ihren Wiederherstellungsplänen verwenden. Sie
 Falls Sie über eine VMM-Quellwebsite verfügen, können Sie ein Skript auf dem VMM-Server erstellen. Fügen Sie das Skript dann in Ihren Wiederherstellungsplan ein.
 
 1. Erstellen Sie einen neuen Ordner in der Bibliothekfreigabe. Beispiel: „\<VMM-Servername >\MSSCVMMLibrary\RPScripts“. Platzieren Sie den Ordner auf dem VMM-Quell- und -Zielserver.
-2. Erstellen Sie das Skript. Geben Sie dem Skript beispielsweise den Namen „RPScript“. Überprüfen Sie, ob das Skript erwartungsgemäß funktioniert.
-3. Platzieren Sie das Skript im Ordner „\<VMM-Servername>\MSSCVMMLibrary“ auf den VMM-Quell- und -Zielservern.
+1. Erstellen Sie das Skript. Geben Sie dem Skript beispielsweise den Namen „RPScript“. Überprüfen Sie, ob das Skript erwartungsgemäß funktioniert.
+1. Platzieren Sie das Skript im Ordner „\<VMM-Servername>\MSSCVMMLibrary“ auf den VMM-Quell- und -Zielservern.
 
 ## <a name="add-the-script-to-a-recovery-plan"></a>Hinzufügen des Skripts zu einem Wiederherstellungsplan
 
 Nachdem Sie die virtuellen Computer oder Replikationsgruppen einem Wiederherstellungsplan hinzugefügt und den Plan erstellt haben, können Sie das Skript der Gruppe hinzufügen.
 
 1. Öffnen Sie den Wiederherstellungsplan.
-2. Wählen Sie in der Liste **Schritte** ein Element aus. Wählen Sie dann **Skript** oder **Manuelle Aktion** aus.
-3. Geben Sie an, ob Sie das Skript oder die Aktion vor oder nach dem ausgewählten Eintrag hinzufügen möchten. Verwenden Sie die Schaltflächen **Nach oben** und **Nach unten**, um die Position des Skripts nach oben oder unten zu verschieben.
-4. Wenn Sie ein VMM-Skript hinzufügen, wählen Sie **Failover to VMM script** (Failover zu VMM-Skript) aus. Geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie z.B. „**\RPScripts\RPScript.PS1**“ ein.
-5. Wenn Sie ein Azure Automation-Runbook hinzufügen, geben Sie das Automation-Konto an, in dem sich das Runbook befindet. Wählen Sie dann das gewünschte Azure-Runbookskript aus.
-6. Führen Sie ein Failover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
+1. Wählen Sie in der Liste **Schritte** ein Element aus. Wählen Sie dann **Skript** oder **Manuelle Aktion** aus.
+1. Geben Sie an, ob Sie das Skript oder die Aktion vor oder nach dem ausgewählten Eintrag hinzufügen möchten. Verwenden Sie die Schaltflächen **Nach oben** und **Nach unten**, um die Position des Skripts nach oben oder unten zu verschieben.
+1. Wenn Sie ein VMM-Skript hinzufügen, wählen Sie **Failover to VMM script** (Failover zu VMM-Skript) aus. Geben Sie unter **Skriptpfad** den relativen Pfad zur Freigabe ein. Geben Sie z.B. „**\RPScripts\RPScript.PS1**“ ein.
+1. Wenn Sie ein Azure Automation-Runbook hinzufügen, geben Sie das Automation-Konto an, in dem sich das Runbook befindet. Wählen Sie dann das gewünschte Azure-Runbookskript aus.
+1. Führen Sie ein Failover für den Wiederherstellungsplan aus, um sicherzustellen, dass das Skript wie erwartet funktioniert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

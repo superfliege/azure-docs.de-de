@@ -3,18 +3,18 @@ title: 'Azure-Schnellstartanleitung: Erstellen eines Speicherkontos | Microsoft-
 description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von Azure PowerShell oder über die Azure-Befehlszeilenschnittstelle ein neues Speicherkonto erstellen.
 services: storage
 author: tamram
-manager: twooley
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: tamram
-ms.openlocfilehash: 92215c759cd51ce429708ec54b17722c486b7ca6
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.component: common
+ms.openlocfilehash: 91e98f74fd6cd88533a5090a383897eaa0e60648
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856527"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524019"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -58,7 +58,7 @@ Sie können die Azure-Befehlszeilenschnittstelle auch lokal installieren und ver
 
 ---
 
-## <a name="log-in-to-azure"></a>Anmelden bei Azure
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 

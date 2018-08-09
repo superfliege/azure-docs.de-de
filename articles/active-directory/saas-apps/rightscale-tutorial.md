@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: a78f3eb0de9fd874f8f90d3773355e59896a6bcd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6d251400baed6b15d96eb7a2ef64d4217631613b
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217526"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Tutorial: Azure Active Directory-Integration in RightScale
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von RightScale aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-rightscale-from-the-gallery"></a>Hinzufügen von RightScale aus dem Katalog
 Zum Konfigurieren der Integration von RightScale in Azure AD müssen Sie RightScale aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von RightScale in Azure AD müssen Sie RightSc
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld den Suchbegriff **RightScale**ein.
+1. Geben Sie im Suchfeld den Suchbegriff **RightScale**ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/rightscale-tutorial/tutorial_rightscale_search.png)
 
-5. Wählen Sie im Ergebnisbereich **RightScale** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **RightScale** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/rightscale-tutorial/tutorial_rightscale_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in RightScale den Wert für **Benutzername** in Azure AD als Wert fü
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei RightScale müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines RightScale-Testbenutzers](#creating-a-rightscale-test-user)**, um ein Pendant von Britta Simon in RightScale zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines RightScale-Testbenutzers](#creating-a-rightscale-test-user)**, um ein Pendant von Britta Simon in RightScale zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,65 +102,65 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **RightScale** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_samlbase.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_samlbase.png)
 
-3. Wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten, müssen Sie im Abschnitt **Domäne und URLs für RightScale** keine Schritte ausführen, da die App bereits vorab in Azure integriert wurde.
+1. Wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten, müssen Sie im Abschnitt **Domäne und URLs für RightScale** keine Schritte ausführen, da die App bereits vorab in Azure integriert wurde.
 
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_url.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_url.png)
 
-4. Führen Sie im Abschnitt **Domäne und URLs für RightScale** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für RightScale** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
     
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_url1.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_url1.png)
 
     a. Klicken Sie auf die Option **Erweiterte URL-Einstellungen anzeigen**.
 
     b. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://login.rightscale.com/`.
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_certificate.png) 
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_general_400.png)
 
-7. Klicken Sie im Abschnitt **RightScale-Konfiguration** auf **RightScale konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **RightScale-Konfiguration** auf **RightScale konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
     ![Konfigurieren des einmaligen Anmeldens](./media/rightscale-tutorial/tutorial_rightscale_configure.png) 
 <CS>
-8. Zum Konfigurieren des einmaligen Anmeldens für Ihre Anwendung müssen Sie sich als Administrator bei Ihrem RightScale-Mandanten anmelden.
+1. Zum Konfigurieren des einmaligen Anmeldens für Ihre Anwendung müssen Sie sich als Administrator bei Ihrem RightScale-Mandanten anmelden.
 
     a. Klicken Sie im Menü oben auf die Registerkarte **Settings**, und wählen Sie **Single Sign-On**.
    
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_001.png) 
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_001.png) 
 
     b. Klicken Sie auf die Schaltfläche **new**, um **Your SAML Identity Providers** hinzuzufügen.
    
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_002.png) 
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_002.png) 
  
     c. Geben Sie im Textfeld **Display Name**den Namen Ihres Unternehmens ein.
    
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_003.png)
  
     d. Wählen Sie in unten stehendem Textfeld **Allow RightScale-initiated SSO using a discovery hint** aus, und geben Sie Ihren **Domänennamen** in das unten stehende Textfeld ein.
    
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
     e. Fügen Sie den Wert von **AML-Dienst-URL für einmaliges Anmelden**, den Sie im Azure-Portal kopiert haben, in RightScale in das Feld **SAML SSO Endpoint** (SAML-SSO-Endpunkt) ein.
    
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
     f. Fügen Sie den Wert von **SAML-Entitäts-ID**, den Sie im Azure-Portal kopiert haben, in RightScale in das Feld für die **SAML-Entitäts-ID** ein.
    
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
     g. Klicken Sie auf die Schaltfläche **Browse** (Durchsuchen), um das aus dem Azure-Portal heruntergeladene Zertifikat hochzuladen.
    
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
     h. Klicken Sie auf **Speichern**.
 <CE>
@@ -179,15 +179,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/rightscale-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/rightscale-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/rightscale-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/rightscale-tutorial/create_aaduser_04.png) 
 
@@ -215,23 +215,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **RightScale**aus.
+1. Wählen Sie in der Anwendungsliste den Eintrag **RightScale**aus.
 
-    ![Configure Single Sign-On](./media/rightscale-tutorial/tutorial_rightscale_app.png) 
+    ![Configure single sign-on](./media/rightscale-tutorial/tutorial_rightscale_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

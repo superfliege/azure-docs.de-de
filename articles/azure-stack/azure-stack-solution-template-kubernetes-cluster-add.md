@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 0ba0e1f3d9e0f1cbb6ba4109a21fc29dc41df5fc
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603452"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39442716"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Hinzufügen eines Kubernetes-Clusters zum Azure Stack-Marketplace
 
@@ -38,17 +38,17 @@ Erstellen Sie einen Plan, ein Angebot und ein Abonnement für das Marketplace-El
 
 1. Melden Sie sich beim [Verwaltungsportal](https://adminportal.local.azurestack.external) an.
 
-2. Erstellen Sie einen Plan als Basisplan. Anweisungen hierzu finden Sie unter [Erstellen von Plänen in Azure Stack](azure-stack-create-plan.md).
+1. Erstellen Sie einen Plan als Basisplan. Anweisungen hierzu finden Sie unter [Erstellen von Plänen in Azure Stack](azure-stack-create-plan.md).
 
-3. Erstellen Sie ein Angebot. Anweisungen hierzu finden Sie unter [Erstellen von Angeboten in Azure Stack](azure-stack-create-offer.md).
+1. Erstellen Sie ein Angebot. Anweisungen hierzu finden Sie unter [Erstellen von Angeboten in Azure Stack](azure-stack-create-offer.md).
 
-4. Wählen Sie **Angebote** aus, und suchen Sie das Angebot, das Sie erstellt haben.
+1. Wählen Sie **Angebote** aus, und suchen Sie das Angebot, das Sie erstellt haben.
 
-5. Wählen Sie auf dem Blatt „Angebot“ die Option **Übersicht** aus.
+1. Wählen Sie auf dem Blatt „Angebot“ die Option **Übersicht** aus.
 
-6. Wählen Sie **Status ändern** aus. Wählen Sie **Öffentlich** aus.
+1. Wählen Sie **Status ändern** aus. Wählen Sie **Öffentlich** aus.
 
-7. Wählen Sie **+ Neu** > **Offers and Plans (Angebote und Pläne)** > **Abonnement** aus, um ein neues Abonnement zu erstellen.
+1. Wählen Sie **+ Neu** > **Offers and Plans (Angebote und Pläne)** > **Abonnement** aus, um ein neues Abonnement zu erstellen.
 
     a. Geben Sie einen **Anzeigenamen** ein.
 
@@ -66,13 +66,13 @@ Fügen Sie dem Marketplace das folgende Ubuntu-Serverimage hinzu:
 
 1. Melden Sie sich beim [Verwaltungsportal](https://adminportal.local.azurestack.external) an.
 
-2. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung).
+1. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung).
 
-3. Wählen Sie **+ Add from Azure** (+ Aus Azure hinzufügen) aus.
+1. Wählen Sie **+ Add from Azure** (+ Aus Azure hinzufügen) aus.
 
-4. Geben Sie `UbuntuServer` ein.
+1. Geben Sie `UbuntuServer` ein.
 
-5. Wählen Sie den Server mit dem folgenden Profil aus:
+1. Wählen Sie den Server mit dem folgenden Profil aus:
     - **Herausgeber:** Canonical
     - **Angebot:** UbuntuServer
     - **SKU:** 16.04-LTS
@@ -81,7 +81,7 @@ Fügen Sie dem Marketplace das folgende Ubuntu-Serverimage hinzu:
     > [!Note]  
     > Möglicherweise werden mehrere Versionen von Ubuntu Server 16.04 LTS aufgeführt. Sie müssen die übereinstimmende Version hinzufügen. Für den Kubernetes-Cluster ist die exakte Version des Elements erforderlich.
 
-6. Wählen Sie **Herunterladen** aus.
+1. Wählen Sie **Herunterladen** aus.
 
 ## <a name="add-a-custom-script-for-linux"></a>Hinzufügen eines benutzerdefinierten Skripts für Linux
 
@@ -89,13 +89,13 @@ Fügen Sie den Kubernetes-Cluster aus dem Marketplace hinzu:
 
 1. Öffnen Sie das [Verwaltungsportal](https://adminportal.local.azurestack.external).
 
-2. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung).
+1. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung).
 
-3. Wählen Sie **+ Add from Azure** (+ Aus Azure hinzufügen) aus.
+1. Wählen Sie **+ Add from Azure** (+ Aus Azure hinzufügen) aus.
 
-4. Geben Sie `Custom Script for Linux` ein.
+1. Geben Sie `Custom Script for Linux` ein.
 
-5. Wählen Sie das Skript mit dem folgenden Profil aus:
+1. Wählen Sie das Skript mit dem folgenden Profil aus:
     - **Angebot:** benutzerdefiniertes Skript für Linux 2.0
     - **Version:** 2.0.3
     - **Herausgeber:** Microsoft Corp
@@ -103,22 +103,22 @@ Fügen Sie den Kubernetes-Cluster aus dem Marketplace hinzu:
     > [!Note]  
     > Möglicherweise werden mehrere Versionen des benutzerdefinierten Skripts für Linux aufgeführt. Sie müssen die übereinstimmende Version hinzufügen. Für den Kubernetes-Cluster ist die exakte Version des Elements erforderlich.
 
-6. Wählen Sie **Herunterladen** aus.
+1. Wählen Sie **Herunterladen** aus.
 
 
 ## <a name="add-the-kubernetes-cluster-to-the-marketplace"></a>Hinzufügen des Kubernetes-Clusters zum Marketplace
 
 1. Öffnen Sie das [Verwaltungsportal](https://adminportal.local.azurestack.external).
 
-2. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung).
+1. Klicken Sie auf **Weitere Dienste** > **Marketplace Management** (Marketplace-Verwaltung).
 
-3. Wählen Sie **+ Add from Azure** (+ Aus Azure hinzufügen) aus.
+1. Wählen Sie **+ Add from Azure** (+ Aus Azure hinzufügen) aus.
 
-4. Geben Sie `Kubernetes Cluster` ein.
+1. Geben Sie `Kubernetes Cluster` ein.
 
-5. Wählen Sie `Kubernetes Cluster` aus.
+1. Wählen Sie `Kubernetes Cluster` aus.
 
-6. Wählen Sie **Herunterladen** aus.
+1. Wählen Sie **Herunterladen** aus.
 
     > [!note]  
     > Es kann fünf Minuten dauern, bis das Marketplace-Element im Marketplace angezeigt wird.
@@ -133,9 +133,9 @@ So entfernen Sie das Element für den Kubernetes-Cluster
 
 1. Notieren Sie sich den Namen des aktuellen Elements, z.B. `Microsoft.AzureStackKubernetesCluster.0.1.0`.
 
-2. Stellen Sie eine Verbindung mit Azure Stack über PowerShell her.
+1. Stellen Sie eine Verbindung mit Azure Stack über PowerShell her.
 
-3. Verwenden Sie das folgende PowerShell-Cmdlet, um das Element zu entfernen:
+1. Verwenden Sie das folgende PowerShell-Cmdlet, um das Element zu entfernen:
 
     ```PowerShell  
     $Itemname="Microsoft.AzureStackKubernetesCluster.0.1.0"

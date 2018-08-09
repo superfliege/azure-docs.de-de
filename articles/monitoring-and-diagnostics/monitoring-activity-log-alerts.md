@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/18/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 84bd82f479ce516152f50d5753e8d91940724c93
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 120fd3552ad36b3d19179f39ca95ce2b3ee2c2e6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263523"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426617"
 ---
 # <a name="create-activity-log-alerts-classic"></a>Erstellen von Aktivitätsprotokollwarnungen (klassisch)
 
@@ -58,31 +58,31 @@ Weitere Informationen zu Dienstintegritätsbenachrichtigungen finden Sie unter [
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Überwachen**.
 
     ![Der Dienst „Überwachen“](./media/monitoring-activity-log-alerts/home-monitor.png)
-2. Wählen Sie im Abschnitt **Aktivitätsprotokoll** die Option **Warnungen (klassisch)** aus.
+1. Wählen Sie im Abschnitt **Aktivitätsprotokoll** die Option **Warnungen (klassisch)** aus.
 
     ![Die Registerkarte „Warnungen“](./media/monitoring-activity-log-alerts/alerts-blades.png)
-3. Wählen Sie **Aktivitätsprotokollwarnung hinzufügen**, und füllen Sie die Felder aus.
+1. Wählen Sie **Aktivitätsprotokollwarnung hinzufügen**, und füllen Sie die Felder aus.
 
-4. Geben Sie einen Namen in das Feld **Name der Aktivitätsprotokollwarnung** ein, und wählen Sie eine **Beschreibung**.
+1. Geben Sie einen Namen in das Feld **Name der Aktivitätsprotokollwarnung** ein, und wählen Sie eine **Beschreibung**.
 
     ![Der Befehl „Aktivitätsprotokollwarnung hinzufügen“](./media/monitoring-activity-log-alerts/add-activity-log-alert.png)
 
-5. In das Feld **Abonnement** wird automatisch Ihr aktuelles Abonnement eingetragen. In diesem Abonnement wird die Aktionsgruppe gespeichert. Dies ist das Abonnement, unter dem die Warnungsressource bereitgestellt wurde und die Aktivitätsprotokollereignisse überwacht werden.
+1. In das Feld **Abonnement** wird automatisch Ihr aktuelles Abonnement eingetragen. In diesem Abonnement wird die Aktionsgruppe gespeichert. Dies ist das Abonnement, unter dem die Warnungsressource bereitgestellt wurde und die Aktivitätsprotokollereignisse überwacht werden.
 
     ![Das Dialogfeld „Aktivitätsprotokollwarnung hinzufügen“](./media/monitoring-activity-log-alerts/activity-log-alert-new-action-group.png)
 
-6. Wählen Sie die **Ressourcengruppe** aus, in der die Warnungsressource erstellt wird. Dies ist nicht die Ressourcengruppe, die von der Warnung überwacht wird. Stattdessen ist es die Ressourcengruppe, in der sich die Warnungsressource befindet.
+1. Wählen Sie die **Ressourcengruppe** aus, in der die Warnungsressource erstellt wird. Dies ist nicht die Ressourcengruppe, die von der Warnung überwacht wird. Stattdessen ist es die Ressourcengruppe, in der sich die Warnungsressource befindet.
 
-7. Wählen Sie optional eine **Ereigniskategorie** aus, mit der die angezeigten zusätzlichen Filter geändert werden. Für administrative Ereignisse gehören zu den Filtern **Ressourcengruppe**, **Ressource**, **Ressourcentyp**, **Vorgangsname**, **Ebene**, **Status** und **Ereignis initiiert von**. Diese Werte geben an, welche Ereignisse diese Warnung überwachen soll.
+1. Wählen Sie optional eine **Ereigniskategorie** aus, mit der die angezeigten zusätzlichen Filter geändert werden. Für administrative Ereignisse gehören zu den Filtern **Ressourcengruppe**, **Ressource**, **Ressourcentyp**, **Vorgangsname**, **Ebene**, **Status** und **Ereignis initiiert von**. Diese Werte geben an, welche Ereignisse diese Warnung überwachen soll.
 
     >[!NOTE]
     >Sie müssen mindestens eine der oben genannten Kriterien in der Warnung angeben. Eine Warnung, die jedes Mal aktiviert wird, wenn ein Ereignis in den Aktivitätsprotokollen erstellt wird, kann nicht erstellt werden.
     >
     >
 
-8. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
+1. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
 
-9.  Definieren Sie eine Liste von Aktionen, indem Sie folgende Daten der Aktion angeben:
+1.  Definieren Sie eine Liste von Aktionen, indem Sie folgende Daten der Aktion angeben:
 
     a. **Name:** Geben Sie Name, Alias oder Bezeichner der Aktion ein.
 
@@ -90,7 +90,7 @@ Weitere Informationen zu Dienstintegritätsbenachrichtigungen finden Sie unter [
 
     c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse oder einen Webhook-URI an.
 
-10. Wählen Sie **OK** , um die Warnung zu erstellen.
+1.  Wählen Sie **OK** , um die Warnung zu erstellen.
 
 Es dauert einige Minuten, bis die Warnung vollständig weitergegeben ist und aktiv wird. Sie wird ausgelöst, wenn neue Ereignisse die Kriterien der Warnung erfüllen.
 
@@ -104,9 +104,9 @@ Weitere Informationen finden Sie unter [Erläuterungen zu dem in Aktivitätsprot
 ## <a name="create-an-alert-on-an-activity-log-event-for-an-existing-action-group-by-using-the-azure-portal"></a>Erstellen einer Warnung zu einem Aktivitätsprotokollereignis für eine vorhandene Aktionsgruppe mit dem Azure-Portal
 1. Führen Sie die Schritte 1 bis 7 im vorherigen Abschnitt aus, um Ihre Aktivitätsprotokollwarnung zu erstellen.
 
-2. Wählen Sie unter **Benachrichtigen über** die Aktionsgruppenschaltfläche **Vorhandene**. Wählen Sie in der Liste eine vorhandene Aktionsgruppe aus.
+1. Wählen Sie unter **Benachrichtigen über** die Aktionsgruppenschaltfläche **Vorhandene**. Wählen Sie in der Liste eine vorhandene Aktionsgruppe aus.
 
-3. Wählen Sie **OK** , um die Warnung zu erstellen.
+1. Wählen Sie **OK** , um die Warnung zu erstellen.
 
 Es dauert einige Minuten, bis die Warnung vollständig weitergegeben ist und aktiv wird. Sie wird ausgelöst, wenn neue Ereignisse die Kriterien der Warnung erfüllen.
 

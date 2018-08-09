@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8974bb30e77b0e1c725531410db873f258f4c20a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ce72fb75729574c9645025459b67fd3eab597bb1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228576"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Tutorial: Azure Active Directory-Integration mit Voyance
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Voyance über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-voyance-from-the-gallery"></a>Hinzufügen von Voyance über den Katalog
 Zum Konfigurieren der Integration von Voyance in Azure AD müssen Sie Voyance aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Voyance in Azure AD müssen Sie Voyance au
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Voyance** ein, wählen Sie im Ergebnisbereich **Voyance** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Voyance** ein, wählen Sie im Ergebnisbereich **Voyance** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Voyance in der Ergebnisliste](./media/voyance-tutorial/tutorial_voyance_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Weisen Sie den Wert für **Benutzername** aus Azure AD in Voyance als Wert für 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Voyance müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Voyance-Testbenutzers](#create-a-voyance-test-user)**, um ein Pendant von Britta Simon in Voyance zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Voyance-Testbenutzers](#create-a-voyance-test-user)**, um ein Pendant von Britta Simon in Voyance zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -102,11 +102,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/voyance-tutorial/tutorial_voyance_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Voyance** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für Voyance** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zu Voyance-Domäne und -URLs für IdP](./media/voyance-tutorial/tutorial_voyance_url1.png)
 
@@ -114,7 +114,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<companyname>.nyansa.com/saml/create/`
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zu Voyance-Domäne und -URLs für SP](./media/voyance-tutorial/tutorial_voyance_url2.png)
 
@@ -123,37 +123,37 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Supportteam für den Voyance-Client](mailto:support@nyansa.com), um diese Werte zu erhalten. 
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/voyance-tutorial/tutorial_voyance_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/voyance-tutorial/tutorial_general_400.png)
     
-7. Klicken Sie im Abschnitt **Voyance-Konfiguration** auf **Voyance konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Voyance-Konfiguration** auf **Voyance konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Voyance-Konfiguration](./media/voyance-tutorial/tutorial_voyance_configure.png) 
 
-8. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrem Voyance-Mandanten als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrem Voyance-Mandanten als Administrator an.
 
-9. Klicken Sie in der rechten oberen Ecke der Navigationsleiste auf die Dropdownlistenoption **Acme University**.
+1. Klicken Sie in der rechten oberen Ecke der Navigationsleiste auf die Dropdownlistenoption **Acme University**.
     
     ![Einmaliges Anmelden auf App-Seite konfigurieren – Acme University](./media/voyance-tutorial/tutorial_voyance_001.png) 
 
-10. Klicken Sie auf **Administratoreinstellungen**.
+1. Klicken Sie auf **Administratoreinstellungen**.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren – Administratoreinstellungen](./media/voyance-tutorial/tutorial_voyance_002.png)
 
-11. Klicken Sie auf die Registerkarte **Benutzerzugriff**.
+1. Klicken Sie auf die Registerkarte **Benutzerzugriff**.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren – Benutzerzugriff](./media/voyance-tutorial/tutorial_voyance_003.png)
 
-12. Klicken Sie auf die Schaltfläche **SSO is disabled** (SSO ist deaktiviert), um Azure AD als IdP mit SAML 2.0 zu konfigurieren.
+1. Klicken Sie auf die Schaltfläche **SSO is disabled** (SSO ist deaktiviert), um Azure AD als IdP mit SAML 2.0 zu konfigurieren.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren – Schaltfläche „SSO ist deaktiviert“](./media/voyance-tutorial/tutorial_voyance_004.png)
 
-13. Navigieren Sie zum Abschnitt **SAML v2**, und führen Sie folgende Schritte aus:
+1. Navigieren Sie zum Abschnitt **SAML v2**, und führen Sie folgende Schritte aus:
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren – SAML v2](./media/voyance-tutorial/tutorial_voyance_005.png)
     
@@ -181,15 +181,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/voyance-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/voyance-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Schaltfläche „Hinzufügen“](./media/voyance-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Dialogfeld „Benutzer“](./media/voyance-tutorial/create_aaduser_04.png) 
 
@@ -220,23 +220,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste die Option **Voyance** aus.
+1. Wählen Sie in der Anwendungsliste die Option **Voyance** aus.
 
     ![Voyance-Link in der Anwendungsliste](./media/voyance-tutorial/tutorial_voyance_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

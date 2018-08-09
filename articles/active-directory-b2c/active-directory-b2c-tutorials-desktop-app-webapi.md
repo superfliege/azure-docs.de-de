@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 01c13b214d40fba278ce788047e2b158adc20287
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 98c86f5613116dce5423aa9ca6a2ff43e5414592
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711595"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594779"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C
 
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="register-web-api"></a>Registrieren der Web-API
 
-Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie [geschützte Ressourcenanforderungen](../active-directory/develop/active-directory-dev-glossary.md#resource-server) von [Clientanwendungen](../active-directory/develop/active-directory-dev-glossary.md#client-application), die über ein [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) von Azure Active Directory verfügen, akzeptieren und darauf reagieren können. Durch die Registrierung werden in Ihrem Mandanten das [Anwendungs- und Dienstprinzipalobjekt](../active-directory/develop/active-directory-dev-glossary.md#application-object) eingerichtet. 
+Web-API-Ressourcen müssen bei Ihrem Mandanten registriert werden, damit sie [geschützte Ressourcenanforderungen](../active-directory/develop/developer-glossary.md#resource-server) von [Clientanwendungen](../active-directory/develop/developer-glossary.md#client-application), die über ein [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) von Azure Active Directory verfügen, akzeptieren und darauf reagieren können. Durch die Registrierung werden in Ihrem Mandanten das [Anwendungs- und Dienstprinzipalobjekt](../active-directory/develop/developer-glossary.md#application-object) eingerichtet. 
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
 
@@ -56,10 +56,10 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Admi
     | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ | ------- | -------------------------------------------------- |
     | **Name** | My sample Node.js web API | Geben Sie einen aussagekräftigen**Namen** für Ihre Web-API ein. |
-    | **Web-App/Web-API einschließen** | Ja | Wählen Sie für eine Web-API die Option **Ja** aus. |
-    | **Impliziten Fluss zulassen** | Ja | Diese API verwendet die [OpenID Connect-Anmeldung](active-directory-b2c-reference-oidc.md). Wählen Sie daher **Ja** aus. |
+    | **Web-App/Web-API einschließen** | JA | Wählen Sie für eine Web-API die Option **Ja** aus. |
+    | **Impliziten Fluss zulassen** | JA | Diese API verwendet die [OpenID Connect-Anmeldung](active-directory-b2c-reference-oidc.md). Wählen Sie daher **Ja** aus. |
     | **Antwort-URL** | `http://localhost:5000` | Antwort-URLs sind Endpunkte, an denen Azure AD B2C von Ihrer API angeforderte Token zurückgibt. Die Beispiel-Web-API in diesem Tutorial wird lokal (localhost) ausgeführt und lauscht am Port 5000. |
-    | **App-ID-URI** | demoapi | Durch den URI wird die API eindeutig im Mandanten identifiziert. Dadurch können pro Mandant mehrere APIs registriert werden. [Bereiche](../active-directory/develop/active-directory-dev-glossary.md#scopes) steuern den Zugriff auf die geschützte API-Ressource und werden auf der Grundlage des APP-ID-URI definiert. |
+    | **App-ID-URI** | demoapi | Durch den URI wird die API eindeutig im Mandanten identifiziert. Dadurch können pro Mandant mehrere APIs registriert werden. [Bereiche](../active-directory/develop/developer-glossary.md#scopes) steuern den Zugriff auf die geschützte API-Ressource und werden auf der Grundlage des APP-ID-URI definiert. |
     | **Nativer Client** | Nein  | Da es sich hierbei um eine Web-API und nicht um einen nativen Client handelt, wählen Sie „Nein“ aus. |
     
 3. Klicken Sie auf **Erstellen**, um Ihre API zu registrieren.
@@ -74,7 +74,7 @@ Durch die Registrierung der Web-API bei Azure AD B2C wird eine Vertrauensstellun
 
 ## <a name="define-and-configure-scopes"></a>Definieren und Konfigurieren von Bereichen
 
-[Bereiche](../active-directory/develop/active-directory-dev-glossary.md#scopes) ermöglichen die Steuerung des Zugriffs auf geschützte Ressourcen. Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. So können beispielsweise einige Benutzer Lese- und Schreibzugriff haben, während andere Benutzer nur über Leseberechtigungen verfügen. In diesem Tutorial definieren Sie Lese- und Schreibberechtigungen für die Web-API.
+[Bereiche](../active-directory/develop/developer-glossary.md#scopes) ermöglichen die Steuerung des Zugriffs auf geschützte Ressourcen. Bereiche werden von der Web-API verwendet, um eine bereichsbasierte Zugriffssteuerung zu implementieren. So können beispielsweise einige Benutzer Lese- und Schreibzugriff haben, während andere Benutzer nur über Leseberechtigungen verfügen. In diesem Tutorial definieren Sie Lese- und Schreibberechtigungen für die Web-API.
 
 ### <a name="define-scopes-for-the-web-api"></a>Definieren von Bereichen für die Web-API
 
@@ -110,7 +110,7 @@ Wenn Sie über eine App eine geschützte Web-API aufrufen möchten, müssen Sie 
 
 5. Klicken Sie auf **OK**.
 
-**My Sample WPF App** wird zum Aufrufen der geschützten API **My sample Node.js web API** registriert. Ein Benutzer [authentifiziert](../active-directory/develop/active-directory-dev-glossary.md#authentication) sich mit Azure AD B2C, um die WPF-Desktop-App zu verwenden. Die Desktop-App bezieht eine [Autorisierungsgewährung](../active-directory/develop/active-directory-dev-glossary.md#authorization-grant) von Azure AD B2C, um auf die geschützte Web-API zuzugreifen.
+**My Sample WPF App** wird zum Aufrufen der geschützten API **My sample Node.js web API** registriert. Ein Benutzer [authentifiziert](../active-directory/develop/developer-glossary.md#authentication) sich mit Azure AD B2C, um die WPF-Desktop-App zu verwenden. Die Desktop-App bezieht eine [Autorisierungsgewährung](../active-directory/develop/developer-glossary.md#authorization-grant) von Azure AD B2C, um auf die geschützte Web-API zuzugreifen.
 
 ## <a name="update-web-api-code"></a>Aktualisieren des Web-API-Codes
 

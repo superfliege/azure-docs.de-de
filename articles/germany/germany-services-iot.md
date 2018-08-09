@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2017
+ms.date: 08/01/2018
 ms.author: ralfwi
-ms.openlocfilehash: c62c8941b2358d79e3c1b34659c5f9459f904b06
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 89fbcdaad6e5e7379209854781423161ca2740b0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627213"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39443486"
 ---
 # <a name="azure-germany-iot-services"></a>IoT-Dienste von Azure Deutschland
 
@@ -27,7 +27,7 @@ ms.locfileid: "34627213"
 Alle Dienste der Azure IoT Suite sowie IoT Hub, Stream Analysis und Event Hub sind in Azure Deutschland verfügbar. 
 
 ### <a name="variations"></a>Abweichungen
-Die Homepage für die Azure IoT Suite in Azure Deutschland unterscheidet sich von der Seite in der globalen Azure-Umgebung. Verwenden Sie [http://www.azureiotsuite.de](http://www.azureiotsuite.de), und befolgen Sie die Anweisungen. 
+Die Homepage für die Azure IoT Suite in Azure Deutschland unterscheidet sich von der Seite in der globalen Azure-Umgebung.
 
 ## <a name="solution-accelerators"></a>Solution Accelerators
 Es empfiehlt sich, mit einem der folgenden Solution Accelerators zu beginnen. 

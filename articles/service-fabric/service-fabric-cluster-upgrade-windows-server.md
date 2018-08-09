@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 20526c1ddd55671f815dc39b3e03c4f9b2f91788
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9c2534644a0627bac9765621691cbba6ffccfe35
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208650"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391310"
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Upgraden des eigenständigen Azure Service Fabric-Clusters unter Windows Server 
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Wenn die Clusterintegritätswarnung angezeigt wird, führen Sie folgende Schritt
     Die Ausgabe sollte in etwa wie folgt aussehen:
 
     ![Abrufen von Service Fabric-Versionen][getfabversions]
-3. Starten Sie mithilfe des Windows PowerShell-Befehls [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx) ein Clusterupgrade auf eine verfügbare Version.
+3. Starten Sie mithilfe des Windows PowerShell-Befehls [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) ein Clusterupgrade auf eine verfügbare Version.
 
     ```Powershell
 
@@ -101,9 +101,9 @@ Wenn die Clusterintegritätswarnung angezeigt wird, führen Sie folgende Schritt
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird für das Upgrade ein Rollback ausgeführt. Wie Sie benutzerdefinierte Integritätsrichtlinien für den Befehl „Start-ServiceFabricClusterUpgrade“ angeben, erfahren Sie in der Dokumentation zu [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx).
+    Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird für das Upgrade ein Rollback ausgeführt. Wie Sie benutzerdefinierte Integritätsrichtlinien für den Befehl „Start-ServiceFabricClusterUpgrade“ angeben, erfahren Sie in der Dokumentation zu [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
 
-Nachdem Sie die Probleme behoben haben, die zu dem Rollback geführt haben, initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte wie zuvor beschrieben ausführen.
+    Nachdem Sie die Probleme behoben haben, die zu dem Rollback geführt haben, initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte wie zuvor beschrieben ausführen.
 
 ### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Aktualisieren der Cluster *ohne Konnektivität* zum Herunterladen des aktuellen Codes und der Konfiguration
 Führen Sie diese Schritte aus, um Ihren Cluster auf eine unterstützte Version upzugraden, wenn zwischen Ihrem Clusterknoten und dem [Microsoft Download Center](http://download.microsoft.com) keine Internetverbindung besteht.
@@ -121,7 +121,7 @@ Befolgen Sie für die manuelle Vorgehensweise die Anweisungen unten.
 
         "fabricClusterAutoupgradeEnabled": false,
 
-Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befehl [Start-ServiceFabricClusterConfigurationUpgrade](https://msdn.microsoft.com/library/mt788302.aspx). Achten Sie darauf, den Wert für „clusterConfigurationVersion“ in der JSON-Datei zu aktualisieren, bevor Sie das Konfigurationsupgrade starten.
+Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befehl [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade). Achten Sie darauf, den Wert für „clusterConfigurationVersion“ in der JSON-Datei zu aktualisieren, bevor Sie das Konfigurationsupgrade starten.
 
 ```powershell
 
@@ -131,7 +131,7 @@ Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befehl [Start-Ser
 
 #### <a name="cluster-upgrade-workflow"></a>Workflow für das Upgrade des Clusters
 
-1. Führen Sie „Get-ServiceFabricClusterUpgrade“ auf einem der Knoten im Cluster aus, und notieren Sie den TargetCodeVersion-Wert.
+1. Führen Sie [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) auf einem der Knoten im Cluster aus, und notieren Sie sich den Wert von *TargetCodeVersion*.
 
 2. Führen Sie Folgendes auf einem mit dem Internet verbundenen Computer aus, um alle mit dem Upgrade kompatiblen Versionen mit der aktuellen Version aufzulisten und das entsprechende Paket über die zugehörigen Downloadlinks herunterzuladen:
 
@@ -182,9 +182,9 @@ Nutzungsdetails finden Sie in den Informationen zum PowerShell-Befehl [Start-Ser
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird für das Upgrade ein Rollback ausgeführt. Wie Sie benutzerdefinierte Integritätsrichtlinien für den Befehl „Start-ServiceFabricClusterUpgrade“ angeben, erfahren Sie in der Dokumentation zu [Start-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt125872.aspx).
+    Wenn die Integritätsrichtlinien des Clusters nicht erfüllt sind, wird für das Upgrade ein Rollback ausgeführt. Wie Sie benutzerdefinierte Integritätsrichtlinien für den Befehl „Start-ServiceFabricClusterUpgrade“ angeben, erfahren Sie in der Dokumentation zu [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
 
-Nachdem Sie die Probleme behoben haben, die zu dem Rollback geführt haben, initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte wie zuvor beschrieben ausführen.
+    Nachdem Sie die Probleme behoben haben, die zu dem Rollback geführt haben, initiieren Sie das Upgrade erneut, indem Sie die gleichen Schritte wie zuvor beschrieben ausführen.
 
 
 ## <a name="upgrade-the-cluster-configuration"></a>Upgraden der Clusterkonfiguration
@@ -205,7 +205,7 @@ Oder verwenden Sie dieses Skript:
 
 Einige Konfigurationen können nicht aktualisiert werden, z.B. Endpunkte, Clusternamen, Knoten-IP-Adressen usw. Die neue JSON-Datei für die Clusterkonfiguration wird anhand der alten getestet, und es werden Fehler im PowerShell-Fenster ausgegeben, wenn es Probleme gibt.
 
-Um die Clusterkonfiguration upzugraden, führen Sie den Befehl „Start-ServiceFabricClusterConfigurationUpgrade“ aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
+Um die Clusterkonfiguration upzugraden, führen Sie den Befehl [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus. Das Konfigurationsupgrade wird Upgradedomäne für Upgradedomäne verarbeitet.
 
 ```powershell
 

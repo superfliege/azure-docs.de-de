@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: 516760031918c667b39cc8b3dd94d91c42623efc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8953be2be77c14a82294e56ac60b8bc993ec6c2f
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186877"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527068"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Anordnen von Suchergebnissen auf Seiten in Azure Search
 Dieser Artikel enthält Anleitungen dazu, wie die REST-API für den Azure-Suchdienst zum Implementieren von Standardelementen einer Seite mit Suchergebnissen, z. B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation, verwendet wird.
@@ -102,7 +102,6 @@ Weitere Informationen zu `$filter`-Ausdrücken finden Sie unter [Dokumente durch
 * [REST-API für Azure Suchdienst](https://docs.microsoft.com/rest/api/searchservice)
 * [Indexvorgänge](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
 * [Dokumentvorgänge](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-* [Videos und Lernprogramme zu Azure Search](search-video-demo-tutorial-list.md)
 * [Facettennavigation in Azure Search](search-faceted-navigation.md)
 
 <!--Image references-->

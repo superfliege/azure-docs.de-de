@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 554991c7c0f11a095a11ae24dbb693a1a3ba50fd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062240"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430119"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) 
 
@@ -169,12 +169,12 @@ Um zu gewährleisten, dass das Momentaufnahmeskript ausgeführt werden kann, ste
 
 Führen Sie diese Schritte aus, um Speichermomentaufnahmen mit HANA (große Instanzen) einzurichten:
 1. Stellen Sie sicher, dass Perl im Linux-Betriebssystem auf dem Server mit HANA (große Instanzen) installiert ist.
-2. Fügen Sie „/etc/ssh/ssh\_config“ die Zeile _MACs hmac-sha1_ hinzu.
-3. Erstellen Sie ein SAP HANA-Sicherungsbenutzerkonto auf dem Masterknoten für jede SAP HANA-Instanz, die Sie ausführen (falls zutreffend).
-4. Installieren Sie den SAP HANA HDB-Client auf allen Servern mit SAP HANA (große Instanzen).
-5. Erstellen Sie auf dem ersten Server mit SAP HANA (große Instanzen) in jeder Region einen öffentlichen Schlüssel, um auf die zugrunde liegende Speicherinfrastruktur zuzugreifen, die die Erstellung von Momentaufnahmen steuert.
-6. Kopieren Sie die Skripts und die Konfigurationsdatei von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) im Speicherort **hdbsql** der SAP HANA-Installation.
-7. Ändern Sie bei Bedarf die Datei *HANABackupDetails.txt* gemäß den jeweiligen Kundenvorgaben.
+1. Fügen Sie „/etc/ssh/ssh\_config“ die Zeile _MACs hmac-sha1_ hinzu.
+1. Erstellen Sie ein SAP HANA-Sicherungsbenutzerkonto auf dem Masterknoten für jede SAP HANA-Instanz, die Sie ausführen (falls zutreffend).
+1. Installieren Sie den SAP HANA HDB-Client auf allen Servern mit SAP HANA (große Instanzen).
+1. Erstellen Sie auf dem ersten Server mit SAP HANA (große Instanzen) in jeder Region einen öffentlichen Schlüssel, um auf die zugrunde liegende Speicherinfrastruktur zuzugreifen, die die Erstellung von Momentaufnahmen steuert.
+1. Kopieren Sie die Skripts und die Konfigurationsdatei von [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) im Speicherort **hdbsql** der SAP HANA-Installation.
+1. Ändern Sie bei Bedarf die Datei *HANABackupDetails.txt* gemäß den jeweiligen Kundenvorgaben.
 
 Rufen Sie die neuesten Momentaufnahmeskripts und -dokumente bei [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) ab. 
 
@@ -384,7 +384,7 @@ Aus diesem Grund ist die HANA-Instanz als ein Argument enthalten. Sollte die Aus
 
    Bei der Übergabe der HANA-Einheit für große Instanzen wurden Ihnen sowohl der Speicherbenutzername als auch die Speicher-IP-Adresse bekannt gegeben.
 
-2. Führen Sie das Testskript aus:
+1. Führen Sie das Testskript aus:
    ```
     ./testStorageSnapshotConnection.pl
    ```
@@ -488,8 +488,8 @@ Beim horizontalen Hochskalieren führt das Skript zusätzliche Überprüfungen d
 Bei Ausführung des Skripts `azure_hana_backup.pl` wird die Speichermomentaufnahme in den folgenden drei Phasen erstellt:
 
 1. Ausführen einer SAP HANA-Momentaufnahme
-2. Ausführen einer Speichermomentaufnahme
-3. Entfernen der SAP HANA-Momentaufnahme, die vor der Ausführung der Speichermomentaufnahme erstellt wurde
+1. Ausführen einer Speichermomentaufnahme
+1. Entfernen der SAP HANA-Momentaufnahme, die vor der Ausführung der Speichermomentaufnahme erstellt wurde
 
 Um das Skript auszuführen, rufen Sie es im ausführbaren HDB-Ordner auf, in den es kopiert wurde. 
 
@@ -701,44 +701,44 @@ Hier ist angegeben, wie Sie sich auf die Anforderung vorbereiten:
 
 1. Entscheiden Sie, welche Momentaufnahme wiederhergestellt werden soll. Falls nicht anders angegeben, wird nur das Volume „hana/data“ wiederhergestellt. 
 
-2. Fahren Sie die HANA-Instanz herunter.
+1. Fahren Sie die HANA-Instanz herunter.
 
  ![Herunterfahren der HANA-Instanz](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
-3. Heben Sie die Bereitstellung der Datenvolumes auf jedem Knoten der HANA-Datenbank auf. Wenn die Datenvolumes noch in das Betriebssystem eingebunden sind, tritt bei der Wiederherstellung der Momentaufnahme ein Fehler auf.
+1. Heben Sie die Bereitstellung der Datenvolumes auf jedem Knoten der HANA-Datenbank auf. Wenn die Datenvolumes noch in das Betriebssystem eingebunden sind, tritt bei der Wiederherstellung der Momentaufnahme ein Fehler auf.
  ![Heben Sie die Bereitstellung der Datenvolumes auf jedem Knoten der HANA-Datenbank auf](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
-4. Erstellen Sie eine Azure-Supportanfrage, und fügen Sie Anweisungen zur Wiederherstellung einer bestimmten Momentaufnahme ein.
+1. Erstellen Sie eine Azure-Supportanfrage, und fügen Sie Anweisungen zur Wiederherstellung einer bestimmten Momentaufnahme ein.
 
  - Während der Wiederherstellung: Unter Umständen werden Sie vom Dienstverwaltungsteam für SAP HANA in Azure zu Koordinierungs-, Überprüfungs- und Bestätigungszwecken gebeten, an einer Telefonkonferenz teilzunehmen, um die Wiederherstellung der korrekten Speichermomentaufnahme sicherzustellen. 
 
  - Nach der Wiederherstellung: Sie werden von SAP HANA unter der Azure-Dienstverwaltung benachrichtigt, wenn die Speichermomentaufnahme wiederhergestellt wurde.
 
-5. Stellen Sie nach Abschluss des Wiederherstellungsvorgangs alle Datenvolumes wieder bereit.
+1. Stellen Sie nach Abschluss des Wiederherstellungsvorgangs alle Datenvolumes wieder bereit.
 
  ![Erneutes Bereitstellen aller Datenvolumes](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
 
-6. Wählen Sie die Wiederherstellungsoptionen in SAP HANA Studio aus, sofern diese nicht automatisch beim Wiederherstellen der Verbindung mit der HANA-Datenbank über SAP HANA Studio angezeigt werden. Das folgende Beispiel zeigt eine Wiederherstellung der letzten HANA-Momentaufnahme. In einer Speichermomentaufnahme ist eine HANA-Momentaufnahme eingebettet. Wenn Sie die letzte Speichermomentaufnahme wiederherstellen, sollte es sich dabei um die neueste HANA-Momentaufnahme handeln. (Wenn Sie eine ältere Speichermomentaufnahme wiederherstellen, müssen Sie die HANA-Momentaufnahme basierend auf dem Zeitpunkt der Erstellung der Speichermomentaufnahme bestimmen.)
+1. Wählen Sie die Wiederherstellungsoptionen in SAP HANA Studio aus, sofern diese nicht automatisch beim Wiederherstellen der Verbindung mit der HANA-Datenbank über SAP HANA Studio angezeigt werden. Das folgende Beispiel zeigt eine Wiederherstellung der letzten HANA-Momentaufnahme. In einer Speichermomentaufnahme ist eine HANA-Momentaufnahme eingebettet. Wenn Sie die letzte Speichermomentaufnahme wiederherstellen, sollte es sich dabei um die neueste HANA-Momentaufnahme handeln. (Wenn Sie eine ältere Speichermomentaufnahme wiederherstellen, müssen Sie die HANA-Momentaufnahme basierend auf dem Zeitpunkt der Erstellung der Speichermomentaufnahme bestimmen.)
 
  ![Auswählen von Wiederherstellungsoptionen in SAP HANA Studio](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
 
-7. Wählen Sie **Recover the database to a specific data backup or storage snapshot** (Datenbank in eine bestimmte Datensicherung oder Speichermomentaufnahme wiederherstellen) aus.
+1. Wählen Sie **Recover the database to a specific data backup or storage snapshot** (Datenbank in eine bestimmte Datensicherung oder Speichermomentaufnahme wiederherstellen) aus.
 
  ![Fenster „Wiederherstellungstyp angeben“](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
 
-8. Wählen Sie **Specify backup without catalog** (Sicherung ohne Katalog angeben).
+1. Wählen Sie **Specify backup without catalog** (Sicherung ohne Katalog angeben).
 
  ![Fenster „Sicherungsspeicherort angeben“](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
 
-9. Wählen Sie in der Liste **Destination Type** (Zieltyp) die Option **Snapshot** (Momentaufnahme).
+1. Wählen Sie in der Liste **Destination Type** (Zieltyp) die Option **Snapshot** (Momentaufnahme).
 
  ![Fenster „Wiederherzustellende Sicherung angeben“](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
 
-10. Wählen Sie **Fertig stellen**, um den Wiederherstellungsprozess zu starten.
+1. Wählen Sie **Fertig stellen**, um den Wiederherstellungsprozess zu starten.
 
  ![Wählen Sie „Fertig stellen“, um den Wiederherstellungsprozess zu starten.](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
 
-11. Die HANA-Datenbank wird mithilfe der HANA-Momentaufnahme wiederhergestellt, die in der Speichermomentaufnahme enthalten ist.
+1. Die HANA-Datenbank wird mithilfe der HANA-Momentaufnahme wiederhergestellt, die in der Speichermomentaufnahme enthalten ist.
 
  ![HANA-Datenbank wird über die HANA-Momentaufnahme wiederhergestellt](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
 
@@ -751,23 +751,23 @@ Mit dem folgenden Prozess wird die HANA-Momentaufnahme wiederhergestellt, die in
 
 1. Führen Sie unter [Wiederherstellen der letzten HANA-Momentaufnahme](#recovering-to-the-most-recent-hana-snapshot) die Schritte 1 bis 6 aus.
 
-2. Wählen Sie die Option **Recover the database to its most recent state** (Letzten Zustand der Datenbank wiederherstellen).
+1. Wählen Sie die Option **Recover the database to its most recent state** (Letzten Zustand der Datenbank wiederherstellen).
 
  ![Auswählen von „Recover the database to its most recent state“ (Letzten Zustand der Datenbank wiederherstellen)](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
 
-3. Geben Sie den Speicherort der letzten HANA-Protokollsicherungen an. Der Speicherort muss alle HANA-Transaktionsprotokollsicherungen aus der HANA-Momentaufnahme bis zum neuesten Zustand enthalten.
+1. Geben Sie den Speicherort der letzten HANA-Protokollsicherungen an. Der Speicherort muss alle HANA-Transaktionsprotokollsicherungen aus der HANA-Momentaufnahme bis zum neuesten Zustand enthalten.
 
  ![Angeben des Speicherorts der letzten HANA-Protokollsicherungen](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
 
-4. Wählen Sie eine Sicherung als Grundlage für die Wiederherstellung der Datenbank aus. In diesem Beispiel zeigt der Screenshot die HANA-Momentaufnahme, die in der Speichermomentaufnahme enthalten war. 
+1. Wählen Sie eine Sicherung als Grundlage für die Wiederherstellung der Datenbank aus. In diesem Beispiel zeigt der Screenshot die HANA-Momentaufnahme, die in der Speichermomentaufnahme enthalten war. 
 
  ![Auswählen einer Sicherung als Grundlage zum Wiederherstellen der Datenbank](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
 
-5. Deaktivieren Sie das Kontrollkästchen **Use Delta Backups** (Deltasicherungen verwenden), sofern diese nicht zwischen dem Zeitpunkt der HANA-Momentaufnahme und dem letzten Zustand vorhanden waren.
+1. Deaktivieren Sie das Kontrollkästchen **Use Delta Backups** (Deltasicherungen verwenden), sofern diese nicht zwischen dem Zeitpunkt der HANA-Momentaufnahme und dem letzten Zustand vorhanden waren.
 
  ![Deaktivieren des Kontrollkästchens „Use Delta Backups“ (Deltasicherungen verwenden), falls keine Deltas vorhanden sind](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
 
-6. Wählen Sie auf dem Bildschirm mit der Zusammenfassung **Fertig stellen**, um den Wiederherstellungsvorgang zu starten.
+1. Wählen Sie auf dem Bildschirm mit der Zusammenfassung **Fertig stellen**, um den Wiederherstellungsvorgang zu starten.
 
  ![Klicken auf „Finish“ (Fertig stellen) auf dem Bildschirm mit der Zusammenfassung](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
 
@@ -775,21 +775,21 @@ Mit dem folgenden Prozess wird die HANA-Momentaufnahme wiederhergestellt, die in
 Gehen Sie zum Durchführen einer Zeitpunktwiederherstellung zwischen der HANA-Momentaufnahme (die in der Speichermomentaufnahme enthalten ist) und einer späteren Zeitpunktwiederherstellung der HANA-Momentaufnahme wie folgt vor:
 
 1. Stellen Sie sicher, dass Sie über alle Transaktionsprotokollsicherungen in der HANA-Momentaufnahme für den Zeitpunkt verfügen, den Sie wiederherstellen möchten.
-2. Beginnen Sie mit dem Verfahren unter [Wiederherstellen des letzten Zustands](#recovering-to-the-most-recent-state).
-3. Wählen Sie in Schritt 2 des Verfahrens im Fenster **Wiederherstellungstyp angeben** die Option **Datenbank für den folgenden Zeitpunkt wiederherstellen**, und geben Sie anschließend den Zeitpunkt an. 
-4. Führen Sie die Schritte 3 bis 6 aus.
+1. Beginnen Sie mit dem Verfahren unter [Wiederherstellen des letzten Zustands](#recovering-to-the-most-recent-state).
+1. Wählen Sie in Schritt 2 des Verfahrens im Fenster **Wiederherstellungstyp angeben** die Option **Datenbank für den folgenden Zeitpunkt wiederherstellen**, und geben Sie anschließend den Zeitpunkt an. 
+1. Führen Sie die Schritte 3 bis 6 aus.
 
 ### <a name="monitor-the-execution-of-snapshots"></a>Überwachen der Ausführung von Momentaufnahmen
 
 Bei Verwendung von Speichermomentaufnahmen von HANA (große Instanzen) müssen Sie auch die Erstellung dieser Momentaufnahmen überwachen. Das Skript, das eine Speichermomentaufnahme ausführt, schreibt die Ausgabe in eine Datei und speichert sie an demselben Speicherort wie die Perl-Skripts. Für jede Speichermomentaufnahme wird eine separate Datei geschrieben. Die Ausgabe jeder Datei zeigt die verschiedenen Phasen, die vom Momentaufnahmeskript ausgeführt werden:
 
 1. Suchen nach den Volumes, für die eine Momentaufnahme erstellt werden muss
-2. Suchen nach den Momentaufnahmen, die basierend auf diesen Volumes erstellt wurden
-3. Löschen von eventuell vorhandenen Momentaufnahmen entsprechend der von Ihnen angegebenen Anzahl von Momentaufnahmen
-4. Erstellen einer SAP HANA-Momentaufnahme
-5. Volumeübergreifendes Erstellen der Speichermomentaufnahme
-6. Löschen der SAP HANA-Momentaufnahme
-7. Umbenennen der neuesten Momentaufnahme in **.0**
+1. Suchen nach den Momentaufnahmen, die basierend auf diesen Volumes erstellt wurden
+1. Löschen von eventuell vorhandenen Momentaufnahmen entsprechend der von Ihnen angegebenen Anzahl von Momentaufnahmen
+1. Erstellen einer SAP HANA-Momentaufnahme
+1. Volumeübergreifendes Erstellen der Speichermomentaufnahme
+1. Löschen der SAP HANA-Momentaufnahme
+1. Umbenennen der neuesten Momentaufnahme in **.0**
 
 Der wichtigste Teil der Skript-CAB-Datei ist folgender:
 ```
@@ -884,10 +884,10 @@ Die folgende Grafik zeigt eine mögliche Sequenz der Transaktionsprotokollsicher
 Um bei der Notfallwiederherstellung einen noch besseren RPO-Wert zu erzielen, können Sie die HANA-Transaktionsprotokollsicherungen aus SAP HANA in Azure (große Instanzen) in die andere Azure-Region kopieren. Führen Sie für diese weitere Reduzierung des RPO-Werts die folgenden Schritte aus:
 
 1. Sichern Sie das HANA-Transaktionsprotokoll so häufig wie möglich unter „/hana/logbackups“.
-2. Kopieren Sie mithilfe von rsync die Transaktionsprotokollsicherungen auf die virtuellen Azure-Computer, die auf der NFS-Freigabe gehostet werden. Die VMs befinden sich in virtuellen Azure-Netzwerken in der Azure-Produktionsregion und den Regionen für die Notfallwiederherstellung. Sie müssen beide virtuelle Azure-Netzwerke mit den großen HANA-Produktionsinstanzen in Azure verbinden. Weitere Informationen finden Sie in der Grafik im Abschnitt [Überlegungen zu Netzwerken für die Notfallwiederherstellung mit HANA (große Instanzen)](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances). 
-3. Belassen Sie die Transaktionsprotokollsicherungen in der Region auf der VM, die an den exportierten NFS-Speicher angefügt ist.
-4. Ergänzen Sie bei einer Notfallwiederherstellung die Transaktionsprotokollsicherungen aus dem Volume „/hana/logbackups“ mit neueren Transaktionsprotokollsicherungen auf der NFS-Freigabe am Standort für die Notfallwiederherstellung. 
-5. Starten Sie eine Wiederherstellung der Transaktionsprotokollsicherung auf die neueste Sicherung, die in der Region für die Notfallwiederherstellung gespeichert werden konnte.
+1. Kopieren Sie mithilfe von rsync die Transaktionsprotokollsicherungen auf die virtuellen Azure-Computer, die auf der NFS-Freigabe gehostet werden. Die VMs befinden sich in virtuellen Azure-Netzwerken in der Azure-Produktionsregion und den Regionen für die Notfallwiederherstellung. Sie müssen beide virtuelle Azure-Netzwerke mit den großen HANA-Produktionsinstanzen in Azure verbinden. Weitere Informationen finden Sie in der Grafik im Abschnitt [Überlegungen zu Netzwerken für die Notfallwiederherstellung mit HANA (große Instanzen)](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances). 
+1. Belassen Sie die Transaktionsprotokollsicherungen in der Region auf der VM, die an den exportierten NFS-Speicher angefügt ist.
+1. Ergänzen Sie bei einer Notfallwiederherstellung die Transaktionsprotokollsicherungen aus dem Volume „/hana/logbackups“ mit neueren Transaktionsprotokollsicherungen auf der NFS-Freigabe am Standort für die Notfallwiederherstellung. 
+1. Starten Sie eine Wiederherstellung der Transaktionsprotokollsicherung auf die neueste Sicherung, die in der Region für die Notfallwiederherstellung gespeichert werden konnte.
 
 Wenn das Betriebsteam für HANA (große Instanzen) bestätigt, dass die Replikationsbeziehung eingerichtet ist, und Sie die Speichermomentaufnahme-Sicherungen für die Ausführung starten, beginnt die Replikation der Daten.
 
@@ -909,15 +909,15 @@ Beim Failover auf den Standort für die Notfallwiederherstellung müssen zwei F�
 Führen Sie die folgenden Schritte aus, um die letzten replizierten Speichermomentaufnahmen wiederherzustellen: 
 
 1. Fahren Sie die nicht für die Produktion bestimmte Instanz von HANA auf der ausgeführten Einheit für die Notfallwiederherstellung von HANA (große Instanzen) herunter. Der Grund hierfür ist, dass eine ruhende HANA-Produktionsinstanz vorinstalliert ist.
-2. Stellen Sie sicher, dass keine SAP HANA-Prozesse ausgeführt werden. Verwenden Sie für diese Überprüfung den folgenden Befehl: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. In der Ausgabe muss der Prozess **hdbdaemon** den Zustand „Beendet“ aufweisen, und es dürfen keine anderen HANA-Prozesse mit dem Zustand „Gestartet“ vorhanden sein.
-3. Führen Sie auf der HANA-Einheit (große Instanzen), die sich auf der Notfallwiederherstellungsseite befindet, das Skript *azure_hana_dr_failover.pl* aus. Das Skript fragt, welche SAP HANA-SID wiederhergestellt werden soll. Geben Sie bei entsprechender Aufforderung eine (bzw. die einzige) SAP HANA-SID ein, die repliziert wurde und in der Datei *HANABackupCustomerDetails.txt* auf der HANA-Einheit (große Instanzen) am Standort der Notfallwiederherstellung verwaltet wird. 
+1. Stellen Sie sicher, dass keine SAP HANA-Prozesse ausgeführt werden. Verwenden Sie für diese Überprüfung den folgenden Befehl: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. In der Ausgabe muss der Prozess **hdbdaemon** den Zustand „Beendet“ aufweisen, und es dürfen keine anderen HANA-Prozesse mit dem Zustand „Gestartet“ vorhanden sein.
+1. Führen Sie auf der HANA-Einheit (große Instanzen), die sich auf der Notfallwiederherstellungsseite befindet, das Skript *azure_hana_dr_failover.pl* aus. Das Skript fragt, welche SAP HANA-SID wiederhergestellt werden soll. Geben Sie bei entsprechender Aufforderung eine (bzw. die einzige) SAP HANA-SID ein, die repliziert wurde und in der Datei *HANABackupCustomerDetails.txt* auf der HANA-Einheit (große Instanzen) am Standort der Notfallwiederherstellung verwaltet wird. 
 
       Wenn Sie für mehrere SAP HANA-Instanzen ein Failover durchführen möchten, müssen Sie das Skript mehrfach ausführen. Geben Sie bei entsprechender Aufforderung die SAP HANA-SID ein, für die Sie das Failover und die Wiederherstellung durchführen möchten. Nach Abschluss des Vorgangs zeigt das Skript eine Liste mit Bereitstellungspunkten der Volumes an, die der HANA-Einheit (große Instanzen) hinzugefügt werden. Diese Liste enthält auch die wiederhergestellten Notfallwiederherstellungsvolumes.
 
-4. Binden Sie die wiederhergestellten Notfallwiederherstellungsvolumes mithilfe von Linux-Betriebssystembefehlen in die HANA-Einheit (große Instanzen) am Standort für die Notfallwiederherstellung ein. 
-6. Starten Sie die ruhende SAP HANA-Produktionsinstanz.
-7. Wenn Sie zur Verringerung der RPO-Zeit Protokolle der Transaktionsprotokollsicherung kopiert haben, müssen Sie diese Transaktionsprotokollsicherungen mit dem neu eingebundenen Notfallwiederherstellungsverzeichnis „hana/logbackups“ zusammenführen. Überschreiben Sie keine vorhandenen Sicherungen. Kopieren Sie neuere Sicherungen, die nicht mit der neuesten Replikation einer Speichermomentaufnahme repliziert wurden.
-8. Sie können auch einzelne Dateien über die Momentaufnahme wiederherstellen, die auf dem Volume „/hana/shared/PRD“ in der Azure-Region für die Notfallwiederherstellung repliziert wurden. 
+1. Binden Sie die wiederhergestellten Notfallwiederherstellungsvolumes mithilfe von Linux-Betriebssystembefehlen in die HANA-Einheit (große Instanzen) am Standort für die Notfallwiederherstellung ein. 
+1. Starten Sie die ruhende SAP HANA-Produktionsinstanz.
+1. Wenn Sie zur Verringerung der RPO-Zeit Protokolle der Transaktionsprotokollsicherung kopiert haben, müssen Sie diese Transaktionsprotokollsicherungen mit dem neu eingebundenen Notfallwiederherstellungsverzeichnis „hana/logbackups“ zusammenführen. Überschreiben Sie keine vorhandenen Sicherungen. Kopieren Sie neuere Sicherungen, die nicht mit der neuesten Replikation einer Speichermomentaufnahme repliziert wurden.
+1. Sie können auch einzelne Dateien über die Momentaufnahme wiederherstellen, die auf dem Volume „/hana/shared/PRD“ in der Azure-Region für die Notfallwiederherstellung repliziert wurden. 
 
 Sie können das Notfallwiederherstellungs-Failover auch ohne Auswirkungen auf die tatsächliche Replikationsbeziehung testen. Führen Sie zum Durchführen eines Testfailovers die obigen Schritte 1 und 2 aus, und fahren Sie anschließend mit dem unten angegebenen Schritt 3 fort.
 
@@ -935,10 +935,10 @@ Fahren Sie mit Schritt 4 fort.
    >[!NOTE]
    >Wenn Sie ein Failover am Standort der Notfallwiederherstellung ausführen müssen, um einige vor mehreren Stunden gelöschte Daten zu retten, und die Notfallwiederherstellungsvolumes auf eine frühere Momentaufnahme festgelegt werden müssen, wenden Sie dieses Verfahren an. 
 
-4. Fahren Sie die nicht für die Produktion bestimmte Instanz von HANA auf der ausgeführten Einheit für die Notfallwiederherstellung von HANA (große Instanzen) herunter. Der Grund hierfür ist, dass eine ruhende HANA-Produktionsinstanz vorinstalliert ist.
-5. Stellen Sie sicher, dass keine SAP HANA-Prozesse ausgeführt werden. Verwenden Sie für diese Überprüfung den folgenden Befehl: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. In der Ausgabe muss der Prozess **hdbdaemon** den Zustand „Beendet“ aufweisen, und es dürfen keine anderen HANA-Prozesse mit dem Zustand „Gestartet“ vorhanden sein.
-6. Überprüfen Sie, unter welchen Momentaufnahmenamen bzw. welcher SAP HANA-Sicherungs-ID der Standort für die Notfallwiederherstellung wiederhergestellt werden soll. In der Praxis handelt es sich dabei in der Regel um die neueste Momentaufnahme. Wenn Sie verlorene Daten wiederherstellen müssen, wählen Sie eine ältere Momentaufnahme.
-7. Wenden Sie sich mit einer Supportanfrage mit hoher Priorität an den Azure-Support. Bitten Sie um die Wiederherstellung dieser Momentaufnahme (mit dem entsprechenden Namen und Datum) oder der HANA-Sicherungs-ID am Standort der Notfallwiederherstellung. In der Standardeinstellung wird auf der Betriebsseite nur das Volume „/hana/data“ wiederhergestellt. Wenn auch die Volumes „/hana/logbackups“ wiederhergestellt werden sollen, müssen Sie dies gesondert angeben. *Stellen Sie das Volume „/hana/shared“ nicht wieder her.* Stattdessen sollten Sie bestimmte Dateien wie etwa „global.ini“ aus dem Verzeichnis **.snapshot** und den zugehörigen Unterverzeichnissen auswählen, nachdem Sie das Volume „/hana/shared“ für das PRD-Volume erneut bereitgestellt haben. 
+1. Fahren Sie die nicht für die Produktion bestimmte Instanz von HANA auf der ausgeführten Einheit für die Notfallwiederherstellung von HANA (große Instanzen) herunter. Der Grund hierfür ist, dass eine ruhende HANA-Produktionsinstanz vorinstalliert ist.
+1. Stellen Sie sicher, dass keine SAP HANA-Prozesse ausgeführt werden. Verwenden Sie für diese Überprüfung den folgenden Befehl: `/usr/sap/hostctrl/exe/sapcontrol –nr <HANA instance number> - function GetProcessList`. In der Ausgabe muss der Prozess **hdbdaemon** den Zustand „Beendet“ aufweisen, und es dürfen keine anderen HANA-Prozesse mit dem Zustand „Gestartet“ vorhanden sein.
+1. Überprüfen Sie, unter welchen Momentaufnahmenamen bzw. welcher SAP HANA-Sicherungs-ID der Standort für die Notfallwiederherstellung wiederhergestellt werden soll. In der Praxis handelt es sich dabei in der Regel um die neueste Momentaufnahme. Wenn Sie verlorene Daten wiederherstellen müssen, wählen Sie eine ältere Momentaufnahme.
+1. Wenden Sie sich mit einer Supportanfrage mit hoher Priorität an den Azure-Support. Bitten Sie um die Wiederherstellung dieser Momentaufnahme (mit dem entsprechenden Namen und Datum) oder der HANA-Sicherungs-ID am Standort der Notfallwiederherstellung. In der Standardeinstellung wird auf der Betriebsseite nur das Volume „/hana/data“ wiederhergestellt. Wenn auch die Volumes „/hana/logbackups“ wiederhergestellt werden sollen, müssen Sie dies gesondert angeben. *Stellen Sie das Volume „/hana/shared“ nicht wieder her.* Stattdessen sollten Sie bestimmte Dateien wie etwa „global.ini“ aus dem Verzeichnis **.snapshot** und den zugehörigen Unterverzeichnissen auswählen, nachdem Sie das Volume „/hana/shared“ für das PRD-Volume erneut bereitgestellt haben. 
 
    Auf der Betriebsseite werden die folgenden Schritte ausgeführt:
 
@@ -948,26 +948,26 @@ Fahren Sie mit Schritt 4 fort.
    
    c. Nach der Wiederherstellung können die Notfallwiederherstellungsvolumes in die Einheiten von HANA (große Instanzen) in der Notfallwiederherstellungsregion eingebunden werden.
       
-8. Binden Sie die Notfallwiederherstellungsvolumes in die Einheit von HANA (große Instanzen) am Standort für die Notfallwiederherstellung ein. 
-9. Starten Sie die ruhende SAP HANA-Produktionsinstanz.
-10. Wenn Sie zur Verringerung der RPO-Zeit Protokolle der Transaktionsprotokollsicherung kopiert haben, müssen Sie diese Transaktionsprotokollsicherungen mit dem neu eingebundenen Notfallwiederherstellungsverzeichnis „hana/logbackups“ zusammenführen. Überschreiben Sie keine vorhandenen Sicherungen. Kopieren Sie neuere Sicherungen, die nicht mit der neuesten Replikation einer Speichermomentaufnahme repliziert wurden.
-11. Sie können auch einzelne Dateien über die Momentaufnahme wiederherstellen, die auf dem Volume „/hana/shared/PRD“ in der Azure-Region für die Notfallwiederherstellung repliziert wurden.
+1. Binden Sie die Notfallwiederherstellungsvolumes in die Einheit von HANA (große Instanzen) am Standort für die Notfallwiederherstellung ein. 
+1. Starten Sie die ruhende SAP HANA-Produktionsinstanz.
+1. Wenn Sie zur Verringerung der RPO-Zeit Protokolle der Transaktionsprotokollsicherung kopiert haben, müssen Sie diese Transaktionsprotokollsicherungen mit dem neu eingebundenen Notfallwiederherstellungsverzeichnis „hana/logbackups“ zusammenführen. Überschreiben Sie keine vorhandenen Sicherungen. Kopieren Sie neuere Sicherungen, die nicht mit der neuesten Replikation einer Speichermomentaufnahme repliziert wurden.
+1. Sie können auch einzelne Dateien über die Momentaufnahme wiederherstellen, die auf dem Volume „/hana/shared/PRD“ in der Azure-Region für die Notfallwiederherstellung repliziert wurden.
 
 Die nächsten Schritte dienen zur Wiederherstellung der SAP HANA-Produktionsinstanz auf der Grundlage der wiederhergestellten Speichermomentaufnahme und der verfügbaren Transaktionsprotokollsicherungen:
 
 1. Ändern Sie mithilfe von SAP HANA Studio das Sicherungsverzeichnis in **/hana/logbackups**.
    ![Ändern des Sicherungsspeicherorts für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-2. SAP HANA überprüft alle Sicherungsdateispeicherorte und schlägt für die Wiederherstellung die neueste Transaktionsprotokollsicherung vor. Die Überprüfung kann einige Minuten dauern. Danach wird ein Bildschirm wie der folgende angezeigt: ![Liste mit Transaktionsprotokollsicherungen für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG).
+1. SAP HANA überprüft alle Sicherungsdateispeicherorte und schlägt für die Wiederherstellung die neueste Transaktionsprotokollsicherung vor. Die Überprüfung kann einige Minuten dauern. Danach wird ein Bildschirm wie der folgende angezeigt: ![Liste mit Transaktionsprotokollsicherungen für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG).
 
-3. Passen Sie einige Standardeinstellungen an:
+1. Passen Sie einige Standardeinstellungen an:
 
       - Deaktivieren Sie **Deltasicherungen verwenden**.
       - Wählen Sie **Protokollbereich initialisieren**.
 
    ![Aktivieren der Option „Protokollbereich initialisieren“](./media/hana-overview-high-availability-disaster-recovery/initialize_log_dr3.PNG)
 
-4. Wählen Sie **Fertig stellen** aus.
+1. Wählen Sie **Fertig stellen** aus.
 
    ![Fertigstellen der Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/finish_dr4.PNG)
 
@@ -984,11 +984,11 @@ Sie können ein Failback von einem Notfallwiederherstellungsstandort auf einen P
 Dies ist die erforderliche Schrittsequenz:
 
 1. Das Betriebsteam für SAP HANA in Azure ruft den Trigger zum Synchronisieren der Produktionsspeichervolumes aus den Speichervolumes für die Notfallwiederherstellung ab, die jetzt den Produktionszustand darstellen. In diesem Zustand wird die Einheit von HANA (große Instanzen) am Produktionsstandort heruntergefahren.
-2. Das Betriebsteam für SAP HANA in Azure überwacht die Replikation und stellt sicher, dass die Daten auf dem neuesten Stand sind, bevor Sie informiert werden.
-3. Sie fahren die Anwendungen herunter, die die HANA-Produktionsinstanz am Standort für die Notfallwiederherstellung verwenden. Anschließend führen Sie eine HANA-Transaktionsprotokollsicherung durch. Beenden Sie als Nächstes die HANA-Instanz, die am Standort für die Notfallwiederherstellung in Einheiten von HANA (große Instanzen) ausgeführt wird.
-4. Nach dem Herunterfahren der HANA-Instanz, die am Standort für die Notfallwiederherstellung in der Einheit von HANA (große Instanzen) ausgeführt wurde, synchronisiert das Betriebsteam erneut manuell die Datenträgervolumes.
-5. Das Betriebsteam für SAP HANA in Azure startet die Einheit von HANA (große Instanzen) am Produktionsstandort wieder und übergibt sie an Sie. Sie vergewissern sich, dass sich die SAP HANA-Instanz beim Start der Einheit von HANA (große Instanzen) im Zustand „Heruntergefahren“ befindet.
-6. Führen Sie die gleichen Datenbankwiederherstellungsschritte durch wie zuvor beim Failover auf den Standort für die Notfallwiederherstellung.
+1. Das Betriebsteam für SAP HANA in Azure überwacht die Replikation und stellt sicher, dass die Daten auf dem neuesten Stand sind, bevor Sie informiert werden.
+1. Sie fahren die Anwendungen herunter, die die HANA-Produktionsinstanz am Standort für die Notfallwiederherstellung verwenden. Anschließend führen Sie eine HANA-Transaktionsprotokollsicherung durch. Beenden Sie als Nächstes die HANA-Instanz, die am Standort für die Notfallwiederherstellung in Einheiten von HANA (große Instanzen) ausgeführt wird.
+1. Nach dem Herunterfahren der HANA-Instanz, die am Standort für die Notfallwiederherstellung in der Einheit von HANA (große Instanzen) ausgeführt wurde, synchronisiert das Betriebsteam erneut manuell die Datenträgervolumes.
+1. Das Betriebsteam für SAP HANA in Azure startet die Einheit von HANA (große Instanzen) am Produktionsstandort wieder und übergibt sie an Sie. Sie vergewissern sich, dass sich die SAP HANA-Instanz beim Start der Einheit von HANA (große Instanzen) im Zustand „Heruntergefahren“ befindet.
+1. Führen Sie die gleichen Datenbankwiederherstellungsschritte durch wie zuvor beim Failover auf den Standort für die Notfallwiederherstellung.
 
 ### <a name="monitor-disaster-recovery-replication"></a>Überwachen der Replikation für die Notfallwiederherstellung
 

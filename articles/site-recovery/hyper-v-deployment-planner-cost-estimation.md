@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 01d4f3873c854776078986918e6ece55017c9193
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d5b3bf62999c197c437e55a66ee6ba935bdc6ea8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917471"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428529"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
@@ -105,7 +105,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 1. Wählen Sie die Option **Insert row** (Zeile einfügen), um zwischen der Zeile **Start** und der Zeile **End** eine neue Zeile einzufügen.
 
-2. Fügen Sie in die folgenden Spalten Werte zur ungefähren VM-Größe und die Anzahl von VMs für diese Konfiguration ein: 
+1. Fügen Sie in die folgenden Spalten Werte zur ungefähren VM-Größe und die Anzahl von VMs für diese Konfiguration ein: 
 
     a. **Number of VMs** (Anzahl von VMs)
 
@@ -125,9 +125,9 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
     i. **Azure-Hybridnutzungsvorteil**
 
-3. Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für **Number of DR drills in a year**, **Each DR drill duration (Days)**, **Data redundancy** und **Azure Hybrid Use Benefit** die Option **Apply to all** (Auf alle anwenden) wählen.
+1. Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für **Number of DR drills in a year**, **Each DR drill duration (Days)**, **Data redundancy** und **Azure Hybrid Use Benefit** die Option **Apply to all** (Auf alle anwenden) wählen.
 
-4. Wählen Sie **Re-calculate cost** (Kosten erneut berechnen), um die Kosten zu aktualisieren.
+1. Wählen Sie **Re-calculate cost** (Kosten erneut berechnen), um die Kosten zu aktualisieren.
 
 **VM Name** (Name des virtuellen Computers): Der Name der VM.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: a63ef3b089ec80da6a75aaaf8a4bb2454fec6cf7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 984e2e9999a2aba7a595034f1fec8bafb976f310
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36224180"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Tutorial: Azure Active Directory-Integration mit HR2day by Merces
 
@@ -52,7 +52,7 @@ Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlun
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das hier beschriebene Szenario besteht aus zwei Hauptelementen:
 
 1. Hinzufügen von HR2day by Merces aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="add-hr2day-by-merces-from-the-gallery"></a>Hinzufügen von HR2day by Merces aus dem Katalog
 Zum Konfigurieren der Integration von HR2day by Merces in Azure AD fügen Sie HR2day by Merces aus dem Katalog der Liste der verwalteten SaaS-Apps hinzu.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von HR2day by Merces in Azure AD fügen Sie HR
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen ausführen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen ausführen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
+1. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **HR2day by Merces**ein.
+1. Geben Sie im Suchfeld als Suchbegriff **HR2day by Merces**ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/hr2day-tutorial/tutorial_hr2daybymerces_search.png)
 
-5. Wählen Sie im Ergebnispanel die Option **HR2day by Merces** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnispanel die Option **HR2day by Merces** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in HR2day by Merces **Benutzername** aus Azure AD **Benutzername** zu
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit HR2day by Merces müssen Sie die folgenden Bausteine ausführen:
 
 1. [Konfigurieren des einmaligen Anmeldens von Azure AD:](#configuring-azure-ad-single-sign-on) Ermöglichen Sie Benutzern die Verwendung dieser Funktion.
-2. [Erstellen eines Azure AD-Testbenutzers:](#creating-an-azure-ad-test-user) Testen Sie das einmalige Anmelden mit dem Benutzer Britta Simon.
-3. [Erstellen eines HR2day by Merces-Testbenutzers:](#creating-an-hr2day-by-merces-test-user) Erstellen Sie eine Entsprechung für Britta Simon in HR2day by Merces, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-4. [Zuweisen des Azure AD-Testbenutzers:](#assigning-the-azure-ad-test-user) Aktivieren Sie Britta Simon für das einmalige Anmelden von Azure AD.
-5. [Testen der einmaligen Anmeldung:](#testing-single-sign-on) Vergewissern Sie sich, dass die Konfiguration funktioniert.
+1. [Erstellen eines Azure AD-Testbenutzers:](#creating-an-azure-ad-test-user) Testen Sie das einmalige Anmelden mit dem Benutzer Britta Simon.
+1. [Erstellen eines HR2day by Merces-Testbenutzers:](#creating-an-hr2day-by-merces-test-user) Erstellen Sie eine Entsprechung für Britta Simon in HR2day by Merces, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+1. [Zuweisen des Azure AD-Testbenutzers:](#assigning-the-azure-ad-test-user) Aktivieren Sie Britta Simon für das einmalige Anmelden von Azure AD.
+1. [Testen der einmaligen Anmeldung:](#testing-single-sign-on) Vergewissern Sie sich, dass die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -104,11 +104,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren][4]
 
-2. Zum Aktivieren des einmaligen Anmeldens wählen Sie im Dialogfeld **Einmaliges Anmelden** für **Modus** die Option **SAML-basierte Anmeldung** aus.
+1. Zum Aktivieren des einmaligen Anmeldens wählen Sie im Dialogfeld **Einmaliges Anmelden** für **Modus** die Option **SAML-basierte Anmeldung** aus.
  
     ![Einmaliges Anmelden konfigurieren](./media/hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
 
-3. Führen Sie im Bereich **Domäne und URLs für HR2day by Merces** die folgenden Schritte aus:
+1. Führen Sie im Bereich **Domäne und URLs für HR2day by Merces** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/hr2day-tutorial/tutorial_hr2daybymerces_url.png)
 
@@ -121,11 +121,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 
 
-4. Wählen Sie im Bereich **SAML-Signaturzertifikat** die Option **Zertifikat (Base64)** aus, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Wählen Sie im Bereich **SAML-Signaturzertifikat** die Option **Zertifikat (Base64)** aus, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
 
-5. In diesem Abschnitt wird erläutert, wie Sie Benutzern ermöglichen, sich mit ihrem Azure AD-Konto bei HR2day by Merces zu authentifizieren. Hierbei wird ein Verbund verwendet, der auf dem SAML-Protokoll basiert.
+1. In diesem Abschnitt wird erläutert, wie Sie Benutzern ermöglichen, sich mit ihrem Azure AD-Konto bei HR2day by Merces zu authentifizieren. Hierbei wird ein Verbund verwendet, der auf dem SAML-Protokoll basiert.
 
     Die HR2day by Merces-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihren SAML-Token benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen. 
 
@@ -134,7 +134,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     Damit Sie die SAML-Assertion konfigurieren können, müssen Sie für Ihren Mandanten zunächst beim [Supportteam für den HR2day by Merces-Client](mailto:servicedesk@merces.nl) den Attributwert für den eindeutigen Bezeichner anfordern. Sie benötigen diesen Wert, um die Schritte im nächsten Abschnitt abzuschließen. 
 
-6. Konfigurieren Sie das SAML-Tokenattribut im Bereich **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung dargestellt. Führen Sie dann die folgenden Schritte aus:
+1. Konfigurieren Sie das SAML-Tokenattribut im Bereich **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung dargestellt. Führen Sie dann die folgenden Schritte aus:
     
       | Attributname    |   Attributwert |  
     | ------------------- | -------------------- |    
@@ -158,15 +158,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     g. Klicken Sie auf **OK**.
 
-7. Wählen Sie die Schaltfläche **Speichern** aus.
+1. Wählen Sie die Schaltfläche **Speichern** aus.
 
     ![Einmaliges Anmelden konfigurieren](./media/hr2day-tutorial/tutorial_general_400.png)
 
-8. Wählen Sie im Bereich **Konfiguration für HR2day by Merces** die Option **HR2day by Merces konfigurieren** aus, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL**, die **SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Bereich **Kurzübersicht**.
+1. Wählen Sie im Bereich **Konfiguration für HR2day by Merces** die Option **HR2day by Merces konfigurieren** aus, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL**, die **SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Bereich **Kurzübersicht**.
 
     ![Einmaliges Anmelden konfigurieren](./media/hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
 
-9. Um SSO für Ihre Anwendung zu konfigurieren, wenden Sie sich an das [Supportteam für den HR2day by Merces-Client](mailTo:servicedesk@merces.nl). Fügen Sie die heruntergeladene Datei mit dem **Zertifikat (Base64)** an Ihre E-Mail an. Geben Sie außerdem die **Abmelde-URL**, die **SAML-Entitäts-ID** und die **SAML-SSO-Dienst-URL** an, damit diese für die SSO-Integration konfiguriert werden können.
+1. Um SSO für Ihre Anwendung zu konfigurieren, wenden Sie sich an das [Supportteam für den HR2day by Merces-Client](mailTo:servicedesk@merces.nl). Fügen Sie die heruntergeladene Datei mit dem **Zertifikat (Base64)** an Ihre E-Mail an. Geben Sie außerdem die **Abmelde-URL**, die **SAML-Entitäts-ID** und die **SAML-SSO-Dienst-URL** an, damit diese für die SSO-Integration konfiguriert werden können.
 
     > [!NOTE]
     >Informieren Sie das Merces-Team darüber, dass für diese Integration das Festlegen der Entitäts-ID im folgenden Format erforderlich ist: **https://hr2day.force.com/INSTANCENAME**.
@@ -186,15 +186,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/hr2day-tutorial/create_aaduser_01.png) 
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/hr2day-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/hr2day-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/hr2day-tutorial/create_aaduser_04.png) 
 
@@ -225,23 +225,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **HR2day by Merces**aus.
+1. Wählen Sie in der Anwendungsliste **HR2day by Merces**aus.
 
     ![Einmaliges Anmelden konfigurieren](./media/hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][202] 
 
-4. Wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
 
-6. Klicken Sie auf die Schaltfläche **Auswählen**.
+1. Klicken Sie auf die Schaltfläche **Auswählen**.
 
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

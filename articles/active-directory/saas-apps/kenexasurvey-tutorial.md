@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: bca5d5111f5cfc3bcf2720af855f44d1928bcfd6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6828617e0ae61a3784e4db3d1c2ecf4ce9862ce2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221015"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39449490"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Tutorial: Azure Active Directory-Integration mit IBM Kenexa Survey Enterprise
 
@@ -63,19 +63,19 @@ Um IBM Kenexa Survey Enterprise aus dem Katalog hinzuzufügen, führen Sie die f
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
+1. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie zum Hinzufügen einer Anwendung auf die Schaltfläche **Neue Anwendung**.
+1. Klicken Sie zum Hinzufügen einer Anwendung auf die Schaltfläche **Neue Anwendung**.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **IBM Kenexa Survey Enterprise**ein.
+1. Geben Sie im Suchfeld als Suchbegriff **IBM Kenexa Survey Enterprise**ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_search.png)
 
-5. Wählen Sie in der Ergebnisliste den Eintrag **IBM Kenexa Survey Enterprise** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie in der Ergebnisliste den Eintrag **IBM Kenexa Survey Enterprise** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![IBM Kenexa Survey Enterprise in der Ergebnisliste](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_addfromgallery.png)
 
@@ -96,11 +96,11 @@ In diesem Abschnitt aktivieren Sie wie folgt das einmalige Anmelden von Azure AD
 
     ![IBM Kenexa Survey Enterprise – Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** im Feld **Modus** die Option **SAML-basierte Anmeldung** aus, um das einmalige Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** im Feld **Modus** die Option **SAML-basierte Anmeldung** aus, um das einmalige Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für IBM Kenexa Survey Enterprise** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für IBM Kenexa Survey Enterprise** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für IBM Kenexa Survey Enterprise](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
@@ -111,7 +111,7 @@ In diesem Abschnitt aktivieren Sie wie folgt das einmalige Anmelden von Azure AD
     > [!NOTE] 
     > Die vorangehenden Werte sind keine echten Werte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [IBM Kenexa Survey Enterprise-Supportteam](https://www.ibm.com/support/home/?lnk=fcw), um die richtigen Werte zu erhalten.
 
-4. Klicken Sie unter **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie unter **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Link zum Herunterladen des Zertifikats (Base64)](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_certificate.png) 
 
@@ -121,19 +121,19 @@ In diesem Abschnitt aktivieren Sie wie folgt das einmalige Anmelden von Azure AD
     
     ![Dialogfeld „Benutzerattribute“](./media/kenexasurvey-tutorial/tutorial_attribute.png) 
 
-5. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
     ![Einmaliges Anmelden konfigurieren – Schaltfläche „Speichern“](./media/kenexasurvey-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie zum Öffnen des Fensters **Anmeldung konfigurieren** unter **IBM Kenexa Survey Enterprise-Konfiguration** auf **IBM Kenexa Survey Enterprise konfigurieren**. 
+1. Klicken Sie zum Öffnen des Fensters **Anmeldung konfigurieren** unter **IBM Kenexa Survey Enterprise-Konfiguration** auf **IBM Kenexa Survey Enterprise konfigurieren**. 
  
     ![Link „IBM Kenexa Survey Enterprise konfigurieren“](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
 
-7. Kopieren Sie die Werte für die **Abmelde-URL**, **SAML-Entitäts-ID** und **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Kopieren Sie die Werte für die **Abmelde-URL**, **SAML-Entitäts-ID** und **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-8. Kopieren Sie im Fenster **Anmeldung konfigurieren** unter **Kurzübersicht** die Werte für **Abmelde-URL**, **SAML-Entitäts-ID** und **URL für den SAML-SSO-Dienst**.
+1. Kopieren Sie im Fenster **Anmeldung konfigurieren** unter **Kurzübersicht** die Werte für **Abmelde-URL**, **SAML-Entitäts-ID** und **URL für den SAML-SSO-Dienst**.
 
-9. Senden Sie zum Konfigurieren des einmaligen Anmeldens aufseiten von **IBM Kenexa Survey Enterprise** das heruntergeladene **Zertifikat (Base64)** und die Werte für die **Abmelde-URL**, **SAML-Entitäts-ID** und **URL für den SAML-SSO-Dienst** an das [IBM Kenexa Survey Enterprise-Supportteam](https://www.ibm.com/support/home/?lnk=fcw).
+1. Senden Sie zum Konfigurieren des einmaligen Anmeldens aufseiten von **IBM Kenexa Survey Enterprise** das heruntergeladene **Zertifikat (Base64)** und die Werte für die **Abmelde-URL**, **SAML-Entitäts-ID** und **URL für den SAML-SSO-Dienst** an das [IBM Kenexa Survey Enterprise-Supportteam](https://www.ibm.com/support/home/?lnk=fcw).
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen anzeigen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden** und rufen anschließend die eingebettete Dokumentation über den Abschnitt **Konfiguration** am unteren Rand auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie unter [Eingebettete Azure AD-Dokumentation](https://go.microsoft.com/fwlink/?linkid=845985).
@@ -148,15 +148,15 @@ In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer m
 
     ![Schaltfläche „Azure Active Directory“](./media/kenexasurvey-tutorial/create_aaduser_01.png) 
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
     
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/kenexasurvey-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Schaltfläche „Hinzufügen“](./media/kenexasurvey-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
  
     ![Dialogfeld „Benutzer“](./media/kenexasurvey-tutorial/create_aaduser_04.png) 
 
@@ -186,23 +186,23 @@ Führen Sie die folgenden Schritte aus, um IBM Kenexa Survey Enterprise den Benu
 
     ![Links „Unternehmensanwendungen“ und „Alle Anwendungen“][201] 
 
-2. Wählen Sie in der Liste **Anwendungen** die Option **IBM Kenexa Survey Enterprise** aus.
+1. Wählen Sie in der Liste **Anwendungen** die Option **IBM Kenexa Survey Enterprise** aus.
 
     ![Link „IBM Kenexa Survey Enterprise“ in der Liste „Anwendungen“](./media/kenexasurvey-tutorial/tutorial_kenexasurvey_app.png) 
 
-3. Klicken Sie auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**, und wählen Sie dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**, und wählen Sie dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** die Option **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

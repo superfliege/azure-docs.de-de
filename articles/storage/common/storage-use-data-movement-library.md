@@ -2,24 +2,19 @@
 title: Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek | Microsoft-Dokumentation
 description: Verwenden Sie die Data Movement-Bibliothek zum Verschieben oder Kopieren von Daten in oder aus Blob- und Dateiinhalten. Kopieren Sie Daten aus lokalen Dateien nach Azure Storage oder innerhalb von bzw. zwischen Speicherkonten. Migrieren Sie Ihre Daten ganz einfach nach Azure Storage.
 services: storage
-documentationcenter: ''
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
-ms.openlocfilehash: eb96f3697d5369ba96a1b0c491e3eacf09e7aac4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.component: common
+ms.openlocfilehash: ee24a055c6a3c53b9753728e13a7687e722c1c91
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
-ms.locfileid: "27564738"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526214"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek
 
@@ -198,7 +193,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 Dieser Code fragt uns nach dem Pfad zu einer lokalen Datei, dem Namen eines neuen oder vorhandenen Containers und dem Namen eines neuen Blobs. Die `TransferManager.UploadAsync`-Methode führt das Hochladen mithilfe dieser Informationen aus. 
 
-Klicken Sie auf `F5`, um die Anwendung auszuführen. Sie können überprüfen, ob der Upload erfolgt ist, indem Sie Ihr Storage-Konto mit dem [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com/) anzeigen.
+Klicken Sie auf `F5`, um die Anwendung auszuführen. Sie können überprüfen, ob der Upload erfolgt ist, indem Sie Ihr Storage-Konto mit dem [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) anzeigen.
 
 ## <a name="set-number-of-parallel-operations"></a>Festlegen der Anzahl paralleler Vorgänge
 Eine großartige Funktion der Data Movement-Bibliothek ist die Möglichkeit, die Anzahl der parallelen Vorgänge festzulegen, um den Durchsatz bei der Datenübertragung zu erhöhen. Standardmäßig ist die Anzahl der parallelen Vorgänge in der Data Movement-Bibliothek auf das Achtfache der Anzahl von Kernen im Computer festgelegt. 

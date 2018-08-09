@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: ece3509743bc3712d144a3547c5ff91f9ea101e7
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: e2dc9b7e7cf5964c36b21418a0162c1c2ef92dc8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050741"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>Tutorial: Azure Active Directory-Integration mit Sprinklr
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Sprinklr über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-sprinklr-from-the-gallery"></a>Hinzufügen von Sprinklr über den Katalog
 Zum Konfigurieren der Integration von Sprinklr in Azure AD müssen Sie Sprinklr über den Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Sprinklr in Azure AD müssen Sie Sprinklr 
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld **Sprinklr** ein.
+1. Geben Sie im Suchfeld **Sprinklr** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/sprinklr-tutorial/tutorial_sprinklr_search.png)
 
-5. Wählen Sie im Ergebnisbereich **Sprinklr** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **Sprinklr** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/sprinklr-tutorial/tutorial_sprinklr_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in Sprinklr den Wert für **Benutzername** in Azure AD als Wert für 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Sprinklr zu konfigurieren und zu testen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Sprinklr-Testbenutzers](#creating-a-sprinklr-test-user)**, um eine Entsprechung von Britta Simon in Sprinklr zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Sprinklr-Testbenutzers](#creating-a-sprinklr-test-user)**, um eine Entsprechung von Britta Simon in Sprinklr zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -104,11 +104,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_samlbase.png)
 
-3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Sprinklr** aus:
+1. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Sprinklr** aus:
 
     ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_url.png)
 
@@ -119,31 +119,31 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an den [Sprinklr-Support](https://www.sprinklr.com/contact-us/), um diese Werte zu erhalten. 
  
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Sprinklr-Konfiguration** auf **Sprinklr konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Sprinklr-Konfiguration** auf **Sprinklr konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der Sprinklr-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Sprinklr-Unternehmenswebsite als Administrator an.
 
-8. Wechseln Sie zu **Verwaltung \> Einstellungen**.
+1. Wechseln Sie zu **Verwaltung \> Einstellungen**.
    
     ![Verwaltung](./media/sprinklr-tutorial/ic782907.png "Verwaltung")
 
-9. Wechseln Sie im linken Fensterbereich zu **Partner verwalten \> Einmaliges Anmelden**.
+1. Wechseln Sie im linken Fensterbereich zu **Partner verwalten \> Einmaliges Anmelden**.
    
     ![Partner verwalten](./media/sprinklr-tutorial/ic782908.png "Partner verwalten")
 
-10. Klicken Sie auf **+Einmalige Anmeldungen hinzufügen**.
+1. Klicken Sie auf **+Einmalige Anmeldungen hinzufügen**.
    
     ![Einmaliges Anmelden](./media/sprinklr-tutorial/ic782909.png "einmaliges Anmelden")
 
-11. Führen Sie im Dialogfeld **Einmaliges Anmelden** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Einmaliges Anmelden** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden](./media/sprinklr-tutorial/ic782910.png "einmaliges Anmelden")
 
@@ -183,15 +183,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/sprinklr-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/sprinklr-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/sprinklr-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/sprinklr-tutorial/create_aaduser_04.png) 
 
@@ -207,19 +207,19 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 1. Melden Sie sich bei der Sprinklr-Unternehmenswebsite als Administrator an.
 
-2. Wechseln Sie zu **Verwaltung \> Einstellungen**.
+1. Wechseln Sie zu **Verwaltung \> Einstellungen**.
    
     ![Verwaltung](./media/sprinklr-tutorial/ic782907.png "Verwaltung")
 
-3. Wechseln Sie im linken Fensterbereich zu **Client verwalten \> Benutzer**.
+1. Wechseln Sie im linken Fensterbereich zu **Client verwalten \> Benutzer**.
    
     ![Einstellungen](./media/sprinklr-tutorial/ic782914.png "Einstellungen")
 
-4. Klicken Sie auf **Benutzer hinzufügen**.
+1. Klicken Sie auf **Benutzer hinzufügen**.
    
     ![Einstellungen](./media/sprinklr-tutorial/ic782915.png "Einstellungen")
 
-5. Führen Sie im Dialogfeld **Benutzer bearbeiten** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Benutzer bearbeiten** die folgenden Schritte aus:
    
     ![Benutzer bearbeiten](./media/sprinklr-tutorial/ic782916.png "Benutzer bearbeiten") 
 
@@ -236,7 +236,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
      >[!IMPORTANT]
      >**Kennwort deaktiviert** muss ausgewählt sein, um einem Benutzer die Anmeldung über einen Identitätsanbieter zu ermöglichen. 
      
-6. Wechseln Sie zu **Rolle**, und führen Sie dann die folgenden Schritte aus:
+1. Wechseln Sie zu **Rolle**, und führen Sie dann die folgenden Schritte aus:
    
     ![Partnerrollen](./media/sprinklr-tutorial/ic782917.png "Partnerrollen")
 
@@ -259,23 +259,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Sprinklr** aus.
+1. Wählen Sie in der Anwendungsliste **Sprinklr** aus.
 
     ![Configure single sign-on](./media/sprinklr-tutorial/tutorial_sprinklr_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

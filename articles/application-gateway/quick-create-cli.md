@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 99c3975c6ab2c7a20dfbab519dae575a2a61465f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 282f6d965ea85b25f1eada1a63897734c6c7b298
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160357"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435263"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-cli"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure CLI
 
@@ -34,7 +34,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Sie müssen Ressourcen immer innerhalb einer Ressourcengruppe erstellen. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. 
+Sie müssen Ressourcen immer innerhalb einer Ressourcengruppe erstellen. Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. 
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupAG* am Standort *eastus* erstellt.
 
@@ -46,7 +46,7 @@ az group create --name myResourceGroupAG --location eastus
 
 Sie müssen ein virtuelles Netzwerk für das Anwendungsgateway erstellen, um mit anderen Ressourcen kommunizieren zu können. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway. In diesem Beispiel werden zwei Subnetze erstellt: eins für das Anwendungsgateway und das andere für die virtuellen Computer. 
 
-Erstellen Sie das virtuelle Netzwerk und das Subnetz mit [az network vnet create](/cli/azure/vnet#az_vnet_create). Erstellen Sie mit [az network public-ip create](/cli/azure/public-ip#az_public_ip_create) die öffentliche IP-Adresse.
+Erstellen Sie das virtuelle Netzwerk und das Subnetz mit [az network vnet create](/cli/azure/vnet#az-vnet-create). Erstellen Sie mit [az network public-ip create](/cli/azure/public-ip#az-public-ip-create) die öffentliche IP-Adresse.
 
 ```azurecli-interactive
 az network vnet create \
@@ -118,7 +118,7 @@ runcmd:
   - nodejs index.js
 ```
 
-Erstellen Sie die Netzwerkschnittstellen mit [az network nic create](/cli/azure/network/nic#az_network_nic_create). Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create).
+Erstellen Sie die Netzwerkschnittstellen mit [az network nic create](/cli/azure/network/nic#az-network-nic-create). Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create).
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -140,7 +140,7 @@ done
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Erstellen Sie mit [az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) ein Anwendungsgateway. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Die privaten IP-Adressen der Netzwerkschnittstellen werden als Server im Back-End-Pool des Anwendungsgateways hinzugefügt.
+Erstellen Sie mit [az network application-gateway create](/cli/azure/application-gateway#az-application-gateway-create) ein Anwendungsgateway. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Die privaten IP-Adressen der Netzwerkschnittstellen werden als Server im Back-End-Pool des Anwendungsgateways hinzugefügt.
 
 ```azurecli-interactive
 address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
@@ -168,7 +168,7 @@ Es kann bis zu 30 Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachd
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-Die Installation von NGINX ist für die Erstellung des Anwendungsgateways nicht erforderlich. Sie haben die Installation in dieser Schnellstartanleitung aber durchgeführt, um zu überprüfen, ob das Anwendungsgateway erfolgreich erstellt wurde. Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
+Die Installation von NGINX ist für die Erstellung des Anwendungsgateways nicht erforderlich. Sie haben die Installation in dieser Schnellstartanleitung aber durchgeführt, um zu überprüfen, ob das Anwendungsgateway erfolgreich erstellt wurde. Um die öffentliche IP-Adresse des Anwendungsgateways abzurufen, verwenden Sie [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -184,7 +184,7 @@ Wenn Sie den Browser aktualisieren, sollte der Name des anderen virtuellen Compu
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Untersuchen Sie zuerst die Ressourcen, die mit dem Anwendungsgateway erstellt wurden. Sie können dann den Befehl [az group delete](/cli/azure/group#az_group_delete) verwenden, um die Ressourcengruppe, das Anwendungsgateway und alle dazugehörigen Ressourcen zu entfernen, wenn diese nicht mehr benötigt werden.
+Untersuchen Sie zuerst die Ressourcen, die mit dem Anwendungsgateway erstellt wurden. Sie können dann den Befehl [az group delete](/cli/azure/group#az-group-delete) verwenden, um die Ressourcengruppe, das Anwendungsgateway und alle dazugehörigen Ressourcen zu entfernen, wenn diese nicht mehr benötigt werden.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroupAG
@@ -193,5 +193,5 @@ az group delete --name myResourceGroupAG
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Manage web traffic with an application gateway using the Azure CLI](./tutorial-manage-web-traffic-cli.md) (Verwalten von Webdatenverkehr mit einem Anwendungsgateway per Azure CLI)
+> [Verwalten von Webdatenverkehr mit einem Anwendungsgateway per Azure CLI](./tutorial-manage-web-traffic-cli.md)
 

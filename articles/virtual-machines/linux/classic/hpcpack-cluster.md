@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
-ms.openlocfilehash: 57ad5d5d2e7e068f47d51408527f1f7553917279
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2d4091d8ad6a778405ee6bb916c399e0b144f21d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841692"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441526"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Erste Schritte mit Linux-Computeknoten in einem HPC Pack-Cluster in Azure
 Richten Sie einen [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx)-Cluster in Azure ein, der einen Hauptknoten unter Windows Server sowie mehrere Serverknoten unter einer unterstützten Linux-Distribution enthält. Informieren Sie sich über die Optionen zum Verschieben von Daten zwischen den Linux-Knoten und dem Windows-Hauptknoten des Clusters. Finden Sie heraus, wie Sie Linux-HPC-Aufträge an den Cluster senden.
@@ -64,24 +64,24 @@ Weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-
 
 ### <a name="deployment-option-1-use-a-resource-manager-template"></a>Bereitstellungsoption 1: Verwenden einer Resource Manager-Vorlage
 1. Wechseln Sie im Azure Marketplace zur Vorlage [HPC Pack cluster for Linux workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/) , und klicken Sie auf **Bereitstellen**.
-2. Überprüfen Sie die Informationen im Azure-Portal, und klicken Sie auf **Erstellen**.
+1. Überprüfen Sie die Informationen im Azure-Portal, und klicken Sie auf **Erstellen**.
    
     ![Erstellung über das Portal][portal]
-3. Geben Sie auf dem Blatt **Grundeinstellungen** einen Clusternamen ein. Dieser wird auch für den virtuellen Hauptknotencomputer verwendet. Sie können eine vorhandene Ressourcengruppe auswählen oder eine Gruppe für die Bereitstellung an einem für Sie verfügbaren Standort erstellen. Der Standort wirkt sich auf die Verfügbarkeit bestimmter VM-Größen und anderer Azure-Dienste aus (siehe [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/)).
-4. Für eine erste Bereitstellung können Sie auf dem Blatt mit den **Einstellungen des Hauptknotens** im Allgemeinen die Standardeinstellungen übernehmen. 
+1. Geben Sie auf dem Blatt **Grundeinstellungen** einen Clusternamen ein. Dieser wird auch für den virtuellen Hauptknotencomputer verwendet. Sie können eine vorhandene Ressourcengruppe auswählen oder eine Gruppe für die Bereitstellung an einem für Sie verfügbaren Standort erstellen. Der Standort wirkt sich auf die Verfügbarkeit bestimmter VM-Größen und anderer Azure-Dienste aus (siehe [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/)).
+1. Für eine erste Bereitstellung können Sie auf dem Blatt mit den **Einstellungen des Hauptknotens** im Allgemeinen die Standardeinstellungen übernehmen. 
    
    > [!NOTE]
    > Über die optionale Einstellung **URL für Skript nach der Konfiguration** können Sie ein öffentlich verfügbares Windows PowerShell-Skript angeben, das auf der Hauptknoten-VM ausgeführt werden soll, sobald diese in Betrieb genommen wurde. 
    > 
    > 
-5. Auf dem Blatt mit den **Einstellungen für Computeknoten** wählen Sie ein Benennungsmuster für die Knoten, die Anzahl und die Größe der Knoten sowie die Linux-Distribution, die bereitgestellt werden soll.
-6. Geben Sie auf dem Blatt **Infrastruktureinstellungen** den Namen für das virtuelle Netzwerk und die Active Directory-Domäne, die Anmeldeinformationen für Domänen- und VM-Administratoren sowie ein Benennungsmuster für die Speicherkonten ein.
+1. Auf dem Blatt mit den **Einstellungen für Computeknoten** wählen Sie ein Benennungsmuster für die Knoten, die Anzahl und die Größe der Knoten sowie die Linux-Distribution, die bereitgestellt werden soll.
+1. Geben Sie auf dem Blatt **Infrastruktureinstellungen** den Namen für das virtuelle Netzwerk und die Active Directory-Domäne, die Anmeldeinformationen für Domänen- und VM-Administratoren sowie ein Benennungsmuster für die Speicherkonten ein.
    
    > [!NOTE]
    > HPC Pack verwendet die Active Directory-Domäne zur Authentifizierung von Clusterbenutzern. 
    > 
    > 
-7. Klicken Sie nach der Ausführung der Tests zur Überprüfung und der Prüfung der Vereinbarung auf **Kaufen**.
+1. Klicken Sie nach der Ausführung der Tests zur Überprüfung und der Prüfung der Vereinbarung auf **Kaufen**.
 
 ### <a name="deployment-option-2-use-the-iaas-deployment-script"></a>Bereitstellungsoption 2: Verwenden des IaaS-Bereitstellungsskripts
 Im Folgenden finden Sie weitere Voraussetzungen für die Bereitstellung des Clusters über das HPC Pack-IaaS-Bereitstellungsskript:
@@ -135,12 +135,12 @@ Das HPC Pack-IaaS-Bereitstellungsskript verwendet als Eingabe eine XML-Konfigura
 **So führen Sie das HPC Pack-IaaS-Bereitstellungsskript aus**
 
 1. Öffnen Sie Windows PowerShell als Administrator auf dem Clientcomputer.
-2. Navigieren Sie zu dem Ordner, in dem das Skript installiert wurde (in diesem Beispiel „E:\IaaSClusterScript“).
+1. Navigieren Sie zu dem Ordner, in dem das Skript installiert wurde (in diesem Beispiel „E:\IaaSClusterScript“).
    
     ```powershell
     cd E:\IaaSClusterScript
     ```
-3. Führen Sie den folgenden Befehl aus, um den HPC Pack-Cluster bereitzustellen. In diesem Beispiel wird davon ausgegangen, dass sich die Konfigurationsdatei unter „E:\HPCDemoConfig.xml“ befindet.
+1. Führen Sie den folgenden Befehl aus, um den HPC Pack-Cluster bereitzustellen. In diesem Beispiel wird davon ausgegangen, dass sich die Konfigurationsdatei unter „E:\HPCDemoConfig.xml“ befindet.
    
     ```powershell
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
@@ -223,7 +223,7 @@ Alternativ können Sie einen freigegebenen Ordner des Hauptknotens auf Linux-Kno
     ![Berechtigungen für die Dateifreigabe][fileshareperms]
    
     ![Dateifreigabe][filesharing]
-2. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
+1. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /openfoam
@@ -252,7 +252,7 @@ Der NFS-Dienst ermöglicht Ihnen die Freigabe und das Migrieren von Dateien zwis
     ![Berechtigungen für die NFS NTFS-Freigabe][nfsperm]
    
     ![NFS-Verwaltungseigenschaften][nfsmanage]
-2. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
+1. Öffnen Sie ein Windows PowerShell-Fenster, und führen Sie die folgenden Befehle aus:
    
     ```powershell
     clusrun /nodegroup:LinuxNodes mkdir -p /nfsshare

@@ -17,21 +17,21 @@ ms.date: 07/12/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4fbde5306efb2de5cfe3ffd0a49b9e24a7b67e8c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003957"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590748"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Sollte ich den v2.0-Endpunkt verwenden?
 
-Beim Erstellen von Anwendungen, die in Azure Active Directory (Azure AD) integriert werden, müssen Sie entscheiden, ob der v2.0-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Der ursprüngliche Endpunkt von Azure AD wird weiterhin vollständig unterstützt und umfasst in gewisser Hinsicht mehr Funktionen als v2.0. Allerdings werden mit dem v2.0-Endpunkt [bedeutende Vorteile](active-directory-v2-compare.md) für Entwickler eingeführt.
+Beim Erstellen von Anwendungen, die in Azure Active Directory (Azure AD) integriert werden, müssen Sie entscheiden, ob der v2.0-Endpunkt und die Authentifizierungsprotokolle Ihren Anforderungen entsprechen. Der ursprüngliche Endpunkt von Azure AD wird weiterhin vollständig unterstützt und umfasst in gewisser Hinsicht mehr Funktionen als v2.0. Allerdings werden mit dem v2.0-Endpunkt [bedeutende Vorteile](azure-ad-endpoint-comparison.md) für Entwickler eingeführt.
 
 Folgendes wird Entwicklern derzeit empfohlen (vereinfacht dargestellt):
 
 * Wenn Sie in Ihrer Anwendung persönliche Microsoft-Konten unterstützen müssen, verwenden Sie den v2.0-Endpunkt. Zuvor sollten Sie sich jedoch mit den in diesem Artikel behandelten Einschränkungen vertraut machen.
-* Wenn Ihre Anwendung nur Microsoft-Geschäfts-, Schul- und Unikonten unterstützen muss, verwenden Sie den v2. 0-Endpunkt nicht. Konsultieren Sie stattdessen den Leitfaden [Azure Active Directory für Entwickler](active-directory-developers-guide.md).
+* Wenn Ihre Anwendung nur Microsoft-Geschäfts-, Schul- und Unikonten unterstützen muss, verwenden Sie den v2. 0-Endpunkt nicht. Konsultieren Sie stattdessen den Leitfaden [Azure Active Directory für Entwickler](azure-ad-developers-guide.md).
 
 Der v2.0-Endpunkt wird weiterentwickelt, sodass die hier aufgeführten Einschränkungen beseitigt werden. Daher können Sie in Zukunft nur noch den v2.0-Endpunkt verwenden. Bis dahin können Sie mithilfe dieses Artikels feststellen, ob der v2.0-Endpunkt für Sie geeignet ist. Wir werden diesen Artikel immer wieder aktualisieren, damit er den aktuellen Status des v2.0-Endpunkts widerspiegelt. Vergleichen Sie nochmals Ihre Anforderungen mit den v2.0-Funktionen.
 
@@ -39,11 +39,11 @@ Wenn Sie eine vorhandene Azure AD-App einsetzen, die keinen v2.0-Endpunkt verwen
 
 ## <a name="restrictions-on-app-types"></a>Einschränkungen bei App-Typen
 
-Die folgenden App-Typen werden derzeit nicht vom v2.0-Endpunkt unterstützt. Eine Beschreibung der unterstützten App-Typen finden Sie unter [App-Typen für den v2.0-Endpunkt](active-directory-v2-flows.md).
+Die folgenden App-Typen werden derzeit nicht vom v2.0-Endpunkt unterstützt. Eine Beschreibung der unterstützten App-Typen finden Sie unter [App-Typen für den v2.0-Endpunkt](v2-app-types.md).
 
 ### <a name="standalone-web-apis"></a>Eigenständige Web-APIs
 
-Sie können den v2.0-Endpunkt verwenden, um [eine Web-API zu erstellen, die mit OAuth 2.0 gesichert wird](active-directory-v2-flows.md#web-apis). Allerdings kann die Web-API nur Token von einer Anwendung empfangen, die dieselbe Anwendungs-ID aufweist. Sie können nicht von einem Client, der über eine andere Anwendungs-ID verfügt, auf eine Web-API zugreifen. Diesem Client ist es nicht möglich, Berechtigungen für Ihre Web-API anzufordern oder zu erhalten.
+Sie können den v2.0-Endpunkt verwenden, um [eine Web-API zu erstellen, die mit OAuth 2.0 gesichert wird](v2-app-types.md#web-apis). Allerdings kann die Web-API nur Token von einer Anwendung empfangen, die dieselbe Anwendungs-ID aufweist. Sie können nicht von einem Client, der über eine andere Anwendungs-ID verfügt, auf eine Web-API zugreifen. Diesem Client ist es nicht möglich, Berechtigungen für Ihre Web-API anzufordern oder zu erhalten.
 
 Wenn Sie wissen möchten, wie eine Web-API erstellt wird, die Token von einem Client mit derselben Anwendungs-ID akzeptiert, beachten Sie die Web-API-Beispiele zum v2.0-Endpunkt unter [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started).
 
@@ -91,16 +91,16 @@ Die beiden letztgenannten URIs können hinzugefügt werden, da es sich hierbei u
 
 Beachten Sie zudem, dass Sie nur 20 Antwort-URLs für eine bestimmte Anwendung verwenden können.
 
-Informationen zum Registrieren einer App im Anwendungsregistrierungsportal finden Sie unter [Registrieren einer App mit dem v2.0-Endpunkt](active-directory-v2-app-registration.md).
+Informationen zum Registrieren einer App im Anwendungsregistrierungsportal finden Sie unter [Registrieren einer App mit dem v2.0-Endpunkt](quickstart-v2-register-an-app.md).
 
 ## <a name="restrictions-on-libraries-and-sdks"></a>Einschränkungen für Bibliotheken und SDKs
 
 Die Bibliotheksunterstützung für den v2.0-Endpunkt ist gegenwärtig eingeschränkt. Wenn Sie den v2.0-Endpunkt in einer Produktionsanwendung verwenden möchten, stehen Ihnen folgende Möglichkeiten offen:
 
 * Wenn Sie eine Webanwendung erstellen, können Sie die allgemein verfügbare serverseitige Middleware von Microsoft bedenkenlos für die Anmeldung und Tokenüberprüfung einsetzen. Dazu gehören die OWIN Open ID Connect-Middleware für ASP.NET und das NodeJS Passport-Plug-In. Codebeispiele, die Microsoft-Middleware verwenden, finden Sie unter [Erste Schritte](active-directory-appmodel-v2-overview.md#getting-started).
-* Wenn Sie eine Anwendung für Desktop- oder Mobilgeräte entwickeln, können Sie eine der Microsoft Authentication Libraries verwenden (MSAL, derzeit in der Vorschauphase). Diese Bibliotheken gibt es in der für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In der [Referenz zu Authentifizierungsbibliotheken](active-directory-v2-libraries.md) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
+* Wenn Sie eine Anwendung für Desktop- oder Mobilgeräte entwickeln, können Sie eine der Microsoft Authentication Libraries verwenden (MSAL, derzeit in der Vorschauphase). Diese Bibliotheken gibt es in der für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In der [Referenz zu Authentifizierungsbibliotheken](reference-v2-libraries.md) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
 * Für Plattformen, die nicht von den Microsoft-Bibliotheken abgedeckt sind, können Sie die Integration mit dem v2.0-Endpunkt auch erreichen, indem Sie Protokollnachrichten direkt in Ihrem Anwendungscode senden und empfangen. Die v2.0-Protokolle OpenID Connect und OAuth [wurden explizit dokumentiert](active-directory-v2-protocols.md), um Sie bei einer solchen Integration zu unterstützen.
-* Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den v2.0-Endpunkt verwenden. Das v2.0-Protokoll sollte ohne wesentliche Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit dieser Bibliotheksarten variiert je nach Sprache und Plattform. Die [Open ID Connect](http://openid.net/connect/)- und die [OAuth 2.0](http://oauth.net/2/)-Websites enthalten eine Liste gängiger Implementierungen. Weitere Informationen und die Liste der Open Source-Clientbibliotheken und -Beispiele, die mit dem v2.0-Endpunkt getestet wurden, finden Sie unter [Azure Active Directory (AD) v2.0 und Authentifizierungsbibliotheken](active-directory-v2-libraries.md).
+* Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den v2.0-Endpunkt verwenden. Das v2.0-Protokoll sollte ohne wesentliche Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit dieser Bibliotheksarten variiert je nach Sprache und Plattform. Die [Open ID Connect](http://openid.net/connect/)- und die [OAuth 2.0](http://oauth.net/2/)-Websites enthalten eine Liste gängiger Implementierungen. Weitere Informationen und die Liste der Open Source-Clientbibliotheken und -Beispiele, die mit dem v2.0-Endpunkt getestet wurden, finden Sie unter [Azure Active Directory (AD) v2.0 und Authentifizierungsbibliotheken](reference-v2-libraries.md).
 
 ## <a name="restrictions-on-protocols"></a>Einschränkungen für Protokolle
 

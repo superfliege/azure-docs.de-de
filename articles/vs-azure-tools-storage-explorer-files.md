@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: c8bcc2bf11ef4adbe9139635d3c24c240a46783c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 536092c1ee50045e6df4e2933c7d6eb0ee7a8b42
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525756"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429786"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Verwenden des Storage-Explorers mit Azure File Storage
 
@@ -41,17 +41,17 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
 
 1. Öffnen Sie den Storage-Explorer.
 
-2. Erweitern Sie im linken Bereich das Speicherkonto, in dem Sie die Dateifreigabe erstellen möchten.
+1. Erweitern Sie im linken Bereich das Speicherkonto, in dem Sie die Dateifreigabe erstellen möchten.
 
-3. Klicken Sie mit der rechten Maustaste auf **Dateifreigaben**, und wählen Sie im Kontextmenü die Option **Dateifreigabe erstellen**.
+1. Klicken Sie mit der rechten Maustaste auf **Dateifreigaben**, und wählen Sie im Kontextmenü die Option **Dateifreigabe erstellen**.
 
     ![Erstellen einer Dateifreigabe](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-4. Unter dem Ordner **Dateifreigaben** wird ein Textfeld angezeigt. Geben Sie den Namen für Ihre Dateifreigabe ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Dateifreigaben finden Sie unter [Erstellen eines Containers](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container).
+1. Unter dem Ordner **Dateifreigaben** wird ein Textfeld angezeigt. Geben Sie den Namen für Ihre Dateifreigabe ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Dateifreigaben finden Sie unter [Erstellen eines Containers](https://docs.microsoft.com//azure/storage/storage-dotnet-how-to-use-blobs#create-a-container).
 
     ![Benennen der Freigabe](media/vs-azure-tools-storage-explorer-files/image2.png)
 
-5. Drücken Sie die **EINGABETASTE**, wenn Sie mit dem Erstellen der Dateifreigabe fertig sind, oder drücken Sie **ESC**, um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung der Dateifreigabe wird sie im Ordner **Dateifreigaben** für das ausgewählte Speicherkonto angezeigt.
+1. Drücken Sie die **EINGABETASTE**, wenn Sie mit dem Erstellen der Dateifreigabe fertig sind, oder drücken Sie **ESC**, um den Vorgang abzubrechen. Nach der erfolgreichen Erstellung der Dateifreigabe wird sie im Ordner **Dateifreigaben** für das ausgewählte Speicherkonto angezeigt.
 
     ![Neue Freigabe](media/vs-azure-tools-storage-explorer-files/image3.png)
 
@@ -63,15 +63,15 @@ Die folgenden Schritte veranschaulichen, wie Sie den Inhalt einer Dateifreigabe 
 
 1. Öffnen Sie den Storage-Explorer.
 
-2. Erweitern Sie im linken Bereich das Speicherkonto, das die gewünschte Dateifreigabe enthält.
+1. Erweitern Sie im linken Bereich das Speicherkonto, das die gewünschte Dateifreigabe enthält.
 
-3. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
+1. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-4. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie anzeigen möchten, und wählen Sie im Kontextmenü die Option **Öffnen**. Sie können auch auf die Dateifreigabe doppelklicken, die Sie anzeigen möchten.
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie anzeigen möchten, und wählen Sie im Kontextmenü die Option **Öffnen**. Sie können auch auf die Dateifreigabe doppelklicken, die Sie anzeigen möchten.
 
     ![Öffnen der Freigabe](media/vs-azure-tools-storage-explorer-files/image4.png)
 
-5. Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
+1. Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
     
     ![Inhalt der Freigabe](media/vs-azure-tools-storage-explorer-files/image5.png)
 
@@ -83,15 +83,15 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
 
 1. Öffnen Sie den Storage-Explorer.
 
-2. Erweitern Sie im linken Bereich das Speicherkonto, das die gewünschte Dateifreigabe enthält.
+1. Erweitern Sie im linken Bereich das Speicherkonto, das die gewünschte Dateifreigabe enthält.
 
-3. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
+1. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-4. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen**. Sie können auch die **ENTF-TASTE** drücken, um die derzeit ausgewählte Dateifreigabe zu löschen.
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie löschen möchten, und wählen Sie im Kontextmenü die Option **Löschen**. Sie können auch die **ENTF-TASTE** drücken, um die derzeit ausgewählte Dateifreigabe zu löschen.
 
     ![Löschen](media/vs-azure-tools-storage-explorer-files/image6.png)
 
-5. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
+1. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
     
     ![Bestätigungsdialogfeld](media/vs-azure-tools-storage-explorer-files/image7.png)
 
@@ -103,15 +103,15 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe aus einem Sp
 
 1. Öffnen Sie den Storage-Explorer.
 
-2. Erweitern Sie im linken Bereich das Speicherkonto, das die zu kopierende Dateifreigabe enthält.
+1. Erweitern Sie im linken Bereich das Speicherkonto, das die zu kopierende Dateifreigabe enthält.
 
-3. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
+1. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-4. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie kopieren möchten, und wählen Sie im Kontextmenü die Option **Copy File Share** (Dateifreigabe kopieren).
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, die Sie kopieren möchten, und wählen Sie im Kontextmenü die Option **Copy File Share** (Dateifreigabe kopieren).
 
     ![Kopieren der Dateifreigabe](media/vs-azure-tools-storage-explorer-files/image8.png)
 
-5. Klicken Sie mit der rechten Maustaste auf das gewünschte Zielspeicherkonto, in das Sie die Dateifreigabe einfügen möchten, und wählen Sie im Kontextmenü die Option **Paste File Share** (Dateifreigabe einfügen).
+1. Klicken Sie mit der rechten Maustaste auf das gewünschte Zielspeicherkonto, in das Sie die Dateifreigabe einfügen möchten, und wählen Sie im Kontextmenü die Option **Paste File Share** (Dateifreigabe einfügen).
 
     ![Einfügen einer Dateifreigabe](media/vs-azure-tools-storage-explorer-files/image9.png)
 
@@ -123,25 +123,25 @@ Die folgenden Schritte veranschaulichen, wie Sie eine SAS für eine Dateifreigab
 
 1. Öffnen Sie den Storage-Explorer.
 
-2. Erweitern Sie im linken Bereich das Speicherkonto mit der Dateifreigabe, für die Sie die SAS abrufen möchten.
+1. Erweitern Sie im linken Bereich das Speicherkonto mit der Dateifreigabe, für die Sie die SAS abrufen möchten.
 
-3. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
+1. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-4. Klicken Sie mit der rechten Maustaste auf die gewünschte Dateifreigabe, und wählen Sie im Kontextmenü die Option **Get Shared Access Signature** (SAS abrufen).
+1. Klicken Sie mit der rechten Maustaste auf die gewünschte Dateifreigabe, und wählen Sie im Kontextmenü die Option **Get Shared Access Signature** (SAS abrufen).
 
     ![Abrufen der Shared Access Signature](media/vs-azure-tools-storage-explorer-files/image10.png)
 
-5. Geben Sie im Dialogfeld **Shared Access Signature** die Richtlinie, das Start- und Ablaufdatum, die Zeitzone und die Zugriffsebenen für die Ressource an.
+1. Geben Sie im Dialogfeld **Shared Access Signature** die Richtlinie, das Start- und Ablaufdatum, die Zeitzone und die Zugriffsebenen für die Ressource an.
 
     ![Dialogfeld „SAS“](media/vs-azure-tools-storage-explorer-files/image11.png)
 
-6. Wählen Sie **Erstellen**, wenn Sie das Angeben der SAS-Optionen abgeschlossen haben.
+1. Wählen Sie **Erstellen**, wenn Sie das Angeben der SAS-Optionen abgeschlossen haben.
 
-7. In einem zweiten Dialogfeld **Shared Access Signature** wird dann die Dateifreigabe zusammen mit der URL und den Abfragezeichenfolgen angezeigt, die Sie zum Zugreifen auf die Speicherressource verwenden können. Wählen Sie neben der URL, die Sie in die Zwischenablage kopieren möchten, die Option **Kopieren** .
+1. In einem zweiten Dialogfeld **Shared Access Signature** wird dann die Dateifreigabe zusammen mit der URL und den Abfragezeichenfolgen angezeigt, die Sie zum Zugreifen auf die Speicherressource verwenden können. Wählen Sie neben der URL, die Sie in die Zwischenablage kopieren möchten, die Option **Kopieren** .
     
     ![Zweites Dialogfeld „SAS“](media/vs-azure-tools-storage-explorer-files/image12.png)
 
-8. Wählen Sie abschließend die Option **Schließen**.
+1. Wählen Sie abschließend die Option **Schließen**.
 
 ## <a name="manage-access-policies-for-a-file-share"></a>Verwalten von Zugriffsrichtlinien für eine Dateifreigabe
 
@@ -149,19 +149,19 @@ Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine D
 
 1. Öffnen Sie den Storage-Explorer.
 
-2. Erweitern Sie im linken Bereich das Speicherkonto mit der Dateifreigabe, deren Zugriffsrichtlinien Sie verwalten möchten.
+1. Erweitern Sie im linken Bereich das Speicherkonto mit der Dateifreigabe, deren Zugriffsrichtlinien Sie verwalten möchten.
 
-3. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
+1. Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-4. Wählen Sie die gewünschte Dateifreigabe, und wählen Sie im Kontextmenü die Option **Manage Access Policies** (Zugriffsrichtlinien verwalten).
+1. Wählen Sie die gewünschte Dateifreigabe, und wählen Sie im Kontextmenü die Option **Manage Access Policies** (Zugriffsrichtlinien verwalten).
 
     ![Kontextmenü „Manage Access Policies“ (Zugriffsrichtlinien verwalten)](media/vs-azure-tools-storage-explorer-files/image13.png)
 
-5. Im Dialogfeld **Zugriffsrichtlinien** werden alle Zugriffsrichtlinien aufgeführt, die für die ausgewählte Dateifreigabe bereits erstellt wurden.
+1. Im Dialogfeld **Zugriffsrichtlinien** werden alle Zugriffsrichtlinien aufgeführt, die für die ausgewählte Dateifreigabe bereits erstellt wurden.
     
     ![Zugriffsrichtlinien](media/vs-azure-tools-storage-explorer-files/image14.png)
 
-6. Führen Sie diese Schritte je nach der Verwaltungsaufgabe der Zugriffsrichtlinie aus:
+1. Führen Sie diese Schritte je nach der Verwaltungsaufgabe der Zugriffsrichtlinie aus:
     
     - **Hinzufügen einer neuen Zugriffsrichtlinie:** Wählen Sie die Option **Hinzufügen** aus. Nach der Erstellung wird die neu hinzugefügte Zugriffsrichtlinie (mit Standardeinstellungen) im Dialogfeld **Zugriffsrichtlinien** angezeigt.
 
@@ -169,7 +169,7 @@ Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine D
 
     - **Entfernen einer Zugriffsrichtlinie:** Wählen Sie neben der Zugriffsrichtlinie, die Sie entfernen möchten, die Option **Entfernen** aus.
 
-7. Erstellen Sie eine neue SAS-URL, indem Sie zuvor erstellte Zugriffsrichtlinie verwenden:
+1. Erstellen Sie eine neue SAS-URL, indem Sie zuvor erstellte Zugriffsrichtlinie verwenden:
     
     ![Abrufen der SAS](media/vs-azure-tools-storage-explorer-files/image15.png)
     
@@ -183,19 +183,19 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
 
 1.  Öffnen Sie den Storage-Explorer.
 
-2.  Erweitern Sie im linken Bereich das Speicherkonto, das die zu verwaltende Dateifreigabe enthält.
+1.  Erweitern Sie im linken Bereich das Speicherkonto, das die zu verwaltende Dateifreigabe enthält.
 
-3.  Erweitern Sie die **Dateifreigaben** des Speicherkontos.
+1.  Erweitern Sie die **Dateifreigaben** des Speicherkontos.
 
-4.  Doppelklicken Sie auf die Dateifreigabe, die Sie anzeigen möchten.
+1.  Doppelklicken Sie auf die Dateifreigabe, die Sie anzeigen möchten.
 
-5.  Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
+1.  Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
 
     ![Inhalt der Freigabe](media/vs-azure-tools-storage-explorer-files/image17.png)
 
-6.  Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
+1.  Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
 
-7.  Führen Sie die folgenden Schritte für die gewünschte Aufgabe aus:
+1.  Führen Sie die folgenden Schritte für die gewünschte Aufgabe aus:
 
     - **Hochladen von Dateien auf eine Dateifreigabe**
 

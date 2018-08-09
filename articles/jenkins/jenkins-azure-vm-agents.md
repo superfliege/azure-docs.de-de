@@ -8,12 +8,12 @@ manager: jpconnock
 ms.service: devops
 ms.custom: jenkins
 ms.date: 07/31/2018
-ms.openlocfilehash: 7f3facbc1bca51061d49ca99778c60d58c525144
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 069c6df38f9caa73a30fbc25baafdf7efbd2f402
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391273"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429395"
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>Skalieren Ihrer Jenkins-Bereitstellungen für verschiedene Anforderungen mit Azure-VM-Agents
 
@@ -44,13 +44,13 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > Wenn Sie Jenkins mithilfe der [Lösungsvorlage](install-jenkins-solution-template.md) in Azure bereitgestellt haben, ist das Plug-In für Azure-VM-Agents bereits installiert.
 
 1. Wählen Sie im Jenkins-Dashboard die Optionen **Manage Jenkins** und dann **Manage Plugins** aus.
-2. Wählen Sie die Registerkarte **Available**, und suchen Sie nach **Azure VM Agents**. Aktivieren Sie das Kontrollkästchen neben dem Eintrag für das Plug-In, und wählen Sie **Install without restart** im unteren Bereich des Dashboards.
+1. Wählen Sie die Registerkarte **Available**, und suchen Sie nach **Azure VM Agents**. Aktivieren Sie das Kontrollkästchen neben dem Eintrag für das Plug-In, und wählen Sie **Install without restart** im unteren Bereich des Dashboards.
 
 ## <a name="configure-the-azure-vm-agents-plugin"></a>Konfigurieren des Plug-Ins für Azure-VM-Agents
 
 1. Wählen Sie im Jenkins-Dashboard die Optionen **Manage Jenkins** und dann **Configure System** aus.
-2. Scrollen Sie zum Ende der Seite. Suchen Sie den Abschnitt **Cloud** die Dropdownliste **Add new cloud**, und wählen Sie **Microsoft Azure-VM-Agents**.
-3. Wählen Sie aus der Dropdownliste **Add** im Abschnitt **Azure Credentials** einen vorhandenen Dienstprinzipal aus. Wenn kein Dienstprinzipal aufgelistet ist, führen Sie folgende Schritte aus, um für Ihr Azure-Konto [einen Dienstprinzipal zu erstellen](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) und zu Ihrer Jenkins-Konfiguration hinzuzufügen:   
+1. Scrollen Sie zum Ende der Seite. Suchen Sie den Abschnitt **Cloud** die Dropdownliste **Add new cloud**, und wählen Sie **Microsoft Azure-VM-Agents**.
+1. Wählen Sie aus der Dropdownliste **Add** im Abschnitt **Azure Credentials** einen vorhandenen Dienstprinzipal aus. Wenn kein Dienstprinzipal aufgelistet ist, führen Sie folgende Schritte aus, um für Ihr Azure-Konto [einen Dienstprinzipal zu erstellen](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager) und zu Ihrer Jenkins-Konfiguration hinzuzufügen:   
 
     a. Wählen Sie die Option **Add** neben **Azure Credentials**, und wählen Sie **Jenkins** aus.   
     b. Wählen Sie im Dialogfeld **Add Credentials** aus der Dropdownliste **Kind** die Option **Microsoft Azure Service Principal** aus.   
@@ -95,20 +95,20 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
     
 
-4. Behalten Sie unter **Ressourcengruppenname** die Option **Neu erstellen** bei, und geben Sie `myJenkinsAgentGroup` ein.
-5. Wählen Sie **Verify configuration**, um eine Verbindung mit Azure herzustellen und die Profileinstellungen zu testen.
-6. Wählen Sie **Apply**, um die Plug-In-Konfiguration zu aktualisieren.
+1. Behalten Sie unter **Ressourcengruppenname** die Option **Neu erstellen** bei, und geben Sie `myJenkinsAgentGroup` ein.
+1. Wählen Sie **Verify configuration**, um eine Verbindung mit Azure herzustellen und die Profileinstellungen zu testen.
+1. Wählen Sie **Apply**, um die Plug-In-Konfiguration zu aktualisieren.
 
 ## <a name="configure-agent-resources"></a>Konfigurieren von Agent-Ressourcen
 
 Konfigurieren Sie eine Vorlage zum Definieren eines Azure-VM-Agents. Diese Vorlage definiert die Computeressourcen, über die jeder Agent nach der Erstellung verfügt.
 
 1. Wählen Sie die Option **Add** neben **Add Azure Virtual Machine Template** aus.
-2. Geben Sie `defaulttemplate` als **Name** ein.
-3. Geben Sie `ubuntu` als **Label** ein.
-4. Wählen Sie im Kombinationsfeld die gewünschte [Azure-Region](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aus.
-5. Wählen Sie aus der Dropdownliste unter **Virtual Machine Size** eine [VM-Größe](/azure/virtual-machines/linux/sizes) aus. Für dieses Tutorial ist eine `Standard_DS1_v2`-Größe für allgemeine Zwecke ausreichend.   
-6. Behalten Sie den Wert `60` unter **Retention time** bei. Diese Einstellung legt die Anzahl der Minuten fest, die Jenkins warten kann, bevor die Zuordnung von Agents im Leerlauf aufgehoben wird. Geben Sie 0 an, wenn Sie nicht möchten, dass Agents im Leerlauf automatisch entfernt werden.
+1. Geben Sie `defaulttemplate` als **Name** ein.
+1. Geben Sie `ubuntu` als **Label** ein.
+1. Wählen Sie im Kombinationsfeld die gewünschte [Azure-Region](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) aus.
+1. Wählen Sie aus der Dropdownliste unter **Virtual Machine Size** eine [VM-Größe](/azure/virtual-machines/linux/sizes) aus. Für dieses Tutorial ist eine `Standard_DS1_v2`-Größe für allgemeine Zwecke ausreichend.   
+1. Behalten Sie den Wert `60` unter **Retention time** bei. Diese Einstellung legt die Anzahl der Minuten fest, die Jenkins warten kann, bevor die Zuordnung von Agents im Leerlauf aufgehoben wird. Geben Sie 0 an, wenn Sie nicht möchten, dass Agents im Leerlauf automatisch entfernt werden.
 
    ![Allgemeine VM-Konfiguration](./media/jenkins-azure-vm-agents/general-config.png)
 
@@ -125,18 +125,18 @@ Wählen Sie **Verify Template**, um die Konfiguration zu überprüfen, und klick
 ## <a name="create-a-job-in-jenkins"></a>Erstellen eines Auftrags in Jenkins
 
 1. Klicken Sie im Jenkins-Dashboard auf **New Item**. 
-2. Geben Sie `demoproject1` als Namen ein, wählen Sie **Freestyle project**, und klicken Sie auf **OK**.
-3. Wählen Sie auf der Registerkarte **General** die Option **Restrict where this project can be run** aus, und geben Sie `ubuntu` in **Label Expression** ein. In einer Meldung wird bestätigt, dass die Bezeichnung von der im vorherigen Schritt erstellten Cloudkonfiguration unterstützt wird. 
+1. Geben Sie `demoproject1` als Namen ein, wählen Sie **Freestyle project**, und klicken Sie auf **OK**.
+1. Wählen Sie auf der Registerkarte **General** die Option **Restrict where this project can be run** aus, und geben Sie `ubuntu` in **Label Expression** ein. In einer Meldung wird bestätigt, dass die Bezeichnung von der im vorherigen Schritt erstellten Cloudkonfiguration unterstützt wird. 
    ![Einrichten eines Auftrags](./media/jenkins-azure-vm-agents/job-config.png)
-4. Wählen Sie auf der Registerkarte **Source Code Management** die Option **Git** aus, und geben Sie im Feld **Repository URL** die folgende URL ein: `https://github.com/spring-projects/spring-petclinic.git`
-5. Wählen Sie auf der Registerkarte **Build** die Option **Add build step** und dann **Invoke top-level Maven targets** aus. Geben Sie `package` in das Feld **Goals** ein.
-6. Klicken Sie zum Speichern der Auftragsdefinition auf **Save**.
+1. Wählen Sie auf der Registerkarte **Source Code Management** die Option **Git** aus, und geben Sie im Feld **Repository URL** die folgende URL ein: `https://github.com/spring-projects/spring-petclinic.git`
+1. Wählen Sie auf der Registerkarte **Build** die Option **Add build step** und dann **Invoke top-level Maven targets** aus. Geben Sie `package` in das Feld **Goals** ein.
+1. Klicken Sie zum Speichern der Auftragsdefinition auf **Save**.
 
 ## <a name="build-the-new-job-on-an-azure-vm-agent"></a>Erstellen des neuen Auftrags in einem Azure-VM-Agent
 
 1. Wechseln Sie zurück zum Jenkins-Dashboard.
-2. Wählen Sie den im vorherigen Schritt erstellten Auftrag aus, und klicken Sie auf **Build now**. Ein neuer Build wird in die Warteschlange eingereiht, jedoch erst gestartet, wenn in Ihrem Azure-Abonnement eine Agent-VM erstellt wurde.
-3. Nachdem der Build abgeschlossen ist, wechseln Sie zu **Console output** (Konsolenausgabe). Sie sehen, dass der Build remote in einem Azure-Agent ausgeführt wurde.
+1. Wählen Sie den im vorherigen Schritt erstellten Auftrag aus, und klicken Sie auf **Build now**. Ein neuer Build wird in die Warteschlange eingereiht, jedoch erst gestartet, wenn in Ihrem Azure-Abonnement eine Agent-VM erstellt wurde.
+1. Nachdem der Build abgeschlossen ist, wechseln Sie zu **Console output** (Konsolenausgabe). Sie sehen, dass der Build remote in einem Azure-Agent ausgeführt wurde.
 
 ![Konsolenausgabe](./media/jenkins-azure-vm-agents/console-output.png)
 

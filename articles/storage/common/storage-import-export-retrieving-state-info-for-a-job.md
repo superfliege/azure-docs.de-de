@@ -2,24 +2,18 @@
 title: Abrufen von Statusinformationen für einen Azure Import/Export-Auftrag | Microsoft-Dokumentation
 description: Informationen zum Abrufen von Statusinformationen für Aufträge des Microsoft Azure Import/Export-Diensts.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
-ms.openlocfilehash: 13169716c47cf9389c8f2651393ac744441bdd6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 76b2f73442261da4c791aaae8532d7a0dbbb6d95
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23059905"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39520605"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Abrufen von Statusinformationen für einen Import/Export-Auftrag
 Sie können den Vorgang [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) zum Abrufen von Informationen zu Import- und Exportaufträgen aufrufen. Die zurückgegebenen Informationen enthalten:
@@ -41,7 +35,7 @@ Die Tabelle und das Statusdiagramm unten beschreiben die Status, die ein Auftrag
 
 Die folgende Tabelle beschreibt die einzelnen Status, die ein Auftrag durchlaufen kann.
 
-|Auftragsstatus|Beschreibung|
+|Auftragsstatus|BESCHREIBUNG|
 |---------------|-----------------|
 |`Creating`|Nachdem Sie den „Put Job“-Vorgang aufgerufen haben, wird ein Auftrag erstellt und sein Status auf `Creating` festgelegt. Während der Auftrag sich im `Creating`-Status befindet, geht der Import/Export-Dienst davon aus, dass die Laufwerke noch nicht an das Rechenzentrum versendet wurden. Ein Auftrag verbleibt bis zu zwei Wochen im `Creating`-Status. Anschließend wird er automatisch vom Dienst gelöscht.<br /><br /> Wenn Sie den „Update Job Properties“-Vorgang aufrufen, während der Auftrag sich im `Creating`-Status befindet, verbleibt der Auftrag im `Creating`-Status, und das Timeoutintervall wird auf zwei Wochen zurückgesetzt.|
 |`Shipping`|Nachdem Sie Ihr Paket gesendet haben, sollten Sie den Update Job Properties-Vorgang aufrufen, um den Status des Auftrags auf `Shipping` zu aktualisieren. Der Versandstatus kann nur dann festgelegt werden, wenn die Eigenschaften `DeliveryPackage` (Transportfirma und Nachverfolgungsnummer) und `ReturnAddress` für den Auftrag festgelegt wurden.<br /><br /> Der Auftrag verbleibt bis zu zwei Wochen im Status „Wird versendet“. Wenn die Laufwerke nach zwei Wochen noch nicht eingetroffen sind, werden die Import/Export-Dienstanbieter benachrichtigt.|
@@ -70,7 +64,7 @@ Die Tabelle und das Diagramm im Folgenden beschreiben den Lebenszyklus eines ein
 
 Die folgende Tabelle beschreibt die einzelnen Status, die ein Laufwerk durchlaufen kann.
 
-|Laufwerkstatus|Beschreibung|
+|Laufwerkstatus|BESCHREIBUNG|
 |-----------------|-----------------|
 |`Specified`|Für einen Importauftrag, der mit dem „Put Job“-Vorgang erstellt wurde, befindet sich ein Laufwerk anfänglich im `Specified`-Status. Für einen Exportauftrag befindet sich ein Laufwerk anfänglich im `Received`-Status, da beim Erstellen des Auftrags kein Laufwerk angegeben wird.|
 |`Received`|Das Laufwerk wechselt in den `Received`-Status, wenn der Import/Export-Dienstanbieter die Laufwerke verarbeitet hat, die vom Transportunternehmen für einen Importauftrag empfangen wurden. Für einen Exportauftrag ist der anfängliche Laufwerkstatus der `Received`-Status.|

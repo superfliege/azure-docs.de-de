@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 10c5116afa46817a42834e0350937fde7ae0b927
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a99fb959ae1ac1434bedffd782a7c4e0a302d361
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657341"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431409"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure
 In diesem Artikel wird beschrieben, wie Sie S/4HANA über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. Zum Bereitstellen anderer SAP HANA-basierter Lösungen, z.B. BW/4HANA, befolgen Sie dieselben Schritte.
@@ -52,7 +52,7 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
     > [!NOTE]
     Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Ressourcen-Manager-Modell bereitgestellt werden.
 
-2. Erstellen Sie ein neues SAP CAL-Konto. Die Seite **Konten** zeigt drei Optionen für Azure: 
+1. Erstellen Sie ein neues SAP CAL-Konto. Die Seite **Konten** zeigt drei Optionen für Azure: 
 
     a. **Microsoft Azure (klassisch)** ist das klassische Bereitstellungsmodell, das nicht mehr empfohlen wird.
 
@@ -64,27 +64,27 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
 
     ![SAP CAL-Kontodetails](./media/cal-s4h/s4h-pic-2a.png)
 
-3. Geben Sie die Azure-**Abonnement-ID** ein, die Sie im Azure-Portal finden.
+1. Geben Sie die Azure-**Abonnement-ID** ein, die Sie im Azure-Portal finden.
 
    ![SAP CAL-Konten](./media/cal-s4h/s4h-pic3c.png)
 
-4. Um die SAP CAL für die Bereitstellung im eingerichteten Azure-Abonnement zu autorisieren, klicken Sie auf **Autorisieren**. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
+1. Um die SAP CAL für die Bereitstellung im eingerichteten Azure-Abonnement zu autorisieren, klicken Sie auf **Autorisieren**. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
 
    ![Anmeldung beim Clouddienst in Internet Explorer](./media/cal-s4h/s4h-pic4c.png)
 
-5. Wenn mehrere Benutzer aufgeführt sind, wählen Sie das Microsoft-Konto, das als Co-Administrator mit dem ausgewählten Azure-Abonnement verknüpft ist. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
+1. Wenn mehrere Benutzer aufgeführt sind, wählen Sie das Microsoft-Konto, das als Co-Administrator mit dem ausgewählten Azure-Abonnement verknüpft ist. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
 
    ![Bestätigung für Clouddienste in Internet Explorer](./media/cal-s4h/s4h-pic5a.png)
 
-6. Klicken Sie auf **Annehmen**. Wenn die Autorisierung erfolgreich ist, wird die Definition des SAP CAL-Kontos erneut angezeigt. Nach kurzer Zeit bestätigt eine Meldung, dass die Autorisierung erfolgreich war.
+1. Klicken Sie auf **Annehmen**. Wenn die Autorisierung erfolgreich ist, wird die Definition des SAP CAL-Kontos erneut angezeigt. Nach kurzer Zeit bestätigt eine Meldung, dass die Autorisierung erfolgreich war.
 
-7. Um Ihrem Benutzer das neu erstellte SAP CAL-Konto zuzuweisen, geben Sie Ihre **Benutzer-ID** in das Textfeld rechts ein, und klicken dann auf **Add** (Hinzufügen).
+1. Um Ihrem Benutzer das neu erstellte SAP CAL-Konto zuzuweisen, geben Sie Ihre **Benutzer-ID** in das Textfeld rechts ein, und klicken dann auf **Add** (Hinzufügen).
 
    ![Zuordnen des Kontos zum Benutzer](./media/cal-s4h/s4h-pic8a.png)
 
-8. Um Ihr Konto dem Benutzer zuzuordnen, der sich bei der SAP CAL anmeldet, klicken Sie auf **Review** (Überprüfen). 
+1. Um Ihr Konto dem Benutzer zuzuordnen, der sich bei der SAP CAL anmeldet, klicken Sie auf **Review** (Überprüfen). 
  
-9. Um die Zuordnung zwischen dem Benutzer und dem neu erstellten SAP CAL-Konto zu erstellen, klicken Sie auf **Erstellen**.
+1. Um die Zuordnung zwischen dem Benutzer und dem neu erstellten SAP CAL-Konto zu erstellen, klicken Sie auf **Erstellen**.
 
    ![Zuordnung des SAP CAL-Kontos zum Benutzer](./media/cal-s4h/s4h-pic9b.png)
 
@@ -122,29 +122,29 @@ Wir veranschaulichen nun die grundlegende Vorgehensweise zur Bereitstellung.
 
    ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-s4h/s4h-pic10a.png)
 
-2. Klicken Sie auf **Erstellen** und im angezeigten Meldungsfeld auf **OK**.
+1. Klicken Sie auf **Erstellen** und im angezeigten Meldungsfeld auf **OK**.
 
    ![SAP CAL: Unterstützte VM-Größen](./media/cal-s4h/s4h-pic10b.png)
 
-3. Klicken Sie im Dialogfeld **Privater Schlüssel** auf **Speichern**, um den privaten Schlüssel in der SAP CAL zu speichern. Klicken Sie zur Verwendung des Kennwortschutzes für den privaten Schlüssel auf **Herunterladen**. 
+1. Klicken Sie im Dialogfeld **Privater Schlüssel** auf **Speichern**, um den privaten Schlüssel in der SAP CAL zu speichern. Klicken Sie zur Verwendung des Kennwortschutzes für den privaten Schlüssel auf **Herunterladen**. 
 
    ![SAP CAL: Privater Schlüssel](./media/cal-s4h/s4h-pic10c.png)
 
-4. Lesen die SAP CAL-**Warnmeldung**, und klicken Sie auf **OK**.
+1. Lesen die SAP CAL-**Warnmeldung**, und klicken Sie auf **OK**.
 
    ![SAP CAL-Warnung](./media/cal-s4h/s4h-pic10d.png)
 
     Nun kann die Bereitstellung erfolgen. Nach einiger Zeit wird je nach Größe und Komplexität der Lösung (die SAP CAL zeigt eine Schätzung an) der Status als aktiv und betriebsbereit angezeigt.
 
-5. Um die virtuellen Computer zu finden, die mit den anderen zugehörigen Ressourcen in einer Ressourcengruppe gesammelt wurden, wechseln Sie zum Azure-Portal: 
+1. Um die virtuellen Computer zu finden, die mit den anderen zugehörigen Ressourcen in einer Ressourcengruppe gesammelt wurden, wechseln Sie zum Azure-Portal: 
 
    ![Im neuen Portal angezeigte SAP CAL-Objekte](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-6. Im SAP CAL-Portal wird der Status als **Aktiv** angezeigt. Klicken Sie zum Verbinden mit der Lösung auf **Verbinden**. Diese Lösung bietet verschiedene Optionen zum Herstellen von Verbindungen mit verschiedenen Komponenten.
+1. Im SAP CAL-Portal wird der Status als **Aktiv** angezeigt. Klicken Sie zum Verbinden mit der Lösung auf **Verbinden**. Diese Lösung bietet verschiedene Optionen zum Herstellen von Verbindungen mit verschiedenen Komponenten.
 
    ![SAP CAL-Instanzen](./media/cal-s4h/active_solution.png)
 
-7. Ehe Sie eine der Optionen zum Herstellen von Verbindungen mit den bereitgestellten Systemen nutzen können, klicken Sie auf **Leitfaden für erste Schritte**. 
+1. Ehe Sie eine der Optionen zum Herstellen von Verbindungen mit den bereitgestellten Systemen nutzen können, klicken Sie auf **Leitfaden für erste Schritte**. 
 
    ![Herstellen einer Verbindung mit der Instanz](./media/cal-s4h/connect_to_solution.png)
 

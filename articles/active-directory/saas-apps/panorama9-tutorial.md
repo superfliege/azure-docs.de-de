@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 7285ef4bea1dccb651360520bfe8bc4289d54f8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 77e370e80e423446d17a074b9458e7002f8627dd
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39046038"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448345"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Tutorial: Azure Active Directory-Integration mit Panorama9
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Panorama9 aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-panorama9-from-the-gallery"></a>Hinzufügen von Panorama9 aus dem Katalog
 Zum Konfigurieren der Integration von Panorama9 in Azure AD müssen Sie Panorama9 aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Panorama9 in Azure AD müssen Sie Panorama
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld den Namen **Panorama9** ein.
+1. Geben Sie im Suchfeld den Namen **Panorama9** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/panorama9-tutorial/tutorial_panorama9_search.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **Panorama9** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **Panorama9** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/panorama9-tutorial/tutorial_panorama9_addfromgallery.png)
 
@@ -90,10 +90,10 @@ Weisen Sie in Panorama9 den Wert für **Benutzername** in Azure AD als Wert für
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Panorama9 müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Panorama9-Testbenutzers](#creating-a-panorama9-test-user)**, um ein Pendant von Britta Simon in Panorama9 zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Panorama9-Testbenutzers](#creating-a-panorama9-test-user)**, um ein Pendant von Britta Simon in Panorama9 zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -105,11 +105,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für Panorama9** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Domäne und URLs für Panorama9** die folgenden Schritte aus:
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_url.png)
 
@@ -120,27 +120,27 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Panorama9-Client](https://support.panorama9.com), um diese Werte zu erhalten. 
  
-4. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK** des Zertifikats.
+1. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK** des Zertifikats.
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Panorama9-Konfiguration** auf **Panorama9 konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Panorama9-Konfiguration** auf **Panorama9 konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_configure.png) 
 
-5. Melden Sie sich in einem anderen Webbrowserfenster bei der Panorama9-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Panorama9-Unternehmenswebsite als Administrator an.
 
-6. Klicken Sie in der Symbolleiste oben auf **Verwalten** und dann auf **Erweiterungen**.
+1. Klicken Sie in der Symbolleiste oben auf **Verwalten** und dann auf **Erweiterungen**.
    
    ![Erweiterungen](./media/panorama9-tutorial/ic790023.png "Erweiterungen")
-7. Klicken Sie im Dialogfeld **Erweiterungen** auf **Einmaliges Anmelden**.
+1. Klicken Sie im Dialogfeld **Erweiterungen** auf **Einmaliges Anmelden**.
    
    ![Einmaliges Anmelden](./media/panorama9-tutorial/ic790024.png "des einmaligen Anmeldens")
-8. Führen Sie im Abschnitt **Einstellungen** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Einstellungen** die folgenden Schritte aus:
    
    ![Einstellungen](./media/panorama9-tutorial/ic790025.png "Einstellungen")
    
@@ -148,7 +148,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
    
     b. Fügen Sie in das Textfeld **Certificate Fingerprint** (Zertifikatsfingerabdruck) den Wert **Fingerabdruck** des Zertifikats ein, den Sie aus dem Azure-Portal kopiert haben.    
          
-9. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -165,15 +165,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/panorama9-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/panorama9-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/panorama9-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/panorama9-tutorial/create_aaduser_04.png) 
 
@@ -195,17 +195,17 @@ Im Fall von Panorama9 ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Melden Sie sich bei der **Panorama9** -Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie im oberen Menü auf **Verwalten** und dann auf **Benutzer**.
+1. Klicken Sie im oberen Menü auf **Verwalten** und dann auf **Benutzer**.
    
   ![Benutzer](./media/panorama9-tutorial/ic790027.png "Benutzer")
 
-3. Klicken Sie im Abschnitt „Benutzer“ auf **+**, um einen neuen Benutzer hinzuzufügen.
+1. Klicken Sie im Abschnitt „Benutzer“ auf **+**, um einen neuen Benutzer hinzuzufügen.
 
  ![Benutzer](./media/panorama9-tutorial/ic790028.png "Benutzer")
 
-4. Navigieren Sie zum Abschnitt mit den Benutzerdaten, und geben Sie die E-Mail-Adresse eines gültigen Azure Active Directory-Benutzers, den Sie bereitstellen möchten, in das Textfeld **E-Mail** ein.
+1. Navigieren Sie zum Abschnitt mit den Benutzerdaten, und geben Sie die E-Mail-Adresse eines gültigen Azure Active Directory-Benutzers, den Sie bereitstellen möchten, in das Textfeld **E-Mail** ein.
 
-5. Klicken Sie im Abschnitt „Benutzer“ auf **Speichern**.
+1. Klicken Sie im Abschnitt „Benutzer“ auf **Speichern**.
    
 > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
@@ -222,23 +222,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Panorama9** aus.
+1. Wählen Sie in der Anwendungsliste **Panorama9** aus.
 
     ![Configure single sign-on](./media/panorama9-tutorial/tutorial_panorama9_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

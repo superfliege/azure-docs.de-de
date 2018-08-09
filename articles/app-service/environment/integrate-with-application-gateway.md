@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
-ms.openlocfilehash: 31aea1d19ed6da856bb5fc634a919819513cb6b2
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 749b554b8cf99ce849e0e3ab7b3a9478d8705e54
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833583"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422993"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>Integrieren Ihrer ILB-App Service-Umgebung in ein Azure Application Gateway #
 
@@ -64,7 +64,7 @@ Außerdem können Sie das Gateway nicht dem Subnetz hinzufügen, das Ihre ILB-Ap
 
 1. Wechseln Sie im Azure-Portal zu **Neu** > **Netzwerk** > **Application Gateway**.
 
-2. Gehen Sie im Bereich **Grundeinstellungen** folgendermaßen vor:
+1. Gehen Sie im Bereich **Grundeinstellungen** folgendermaßen vor:
 
    a. Geben Sie unter **Name** den Namen des Subnetzes für das Application Gateway ein.
 
@@ -78,7 +78,7 @@ Außerdem können Sie das Gateway nicht dem Subnetz hinzufügen, das Ihre ILB-Ap
 
    ![Grundlagen zur Erstellung eines neuen Application Gateways][2]
 
-3. Gehen Sie im Bereich **Einstellungen** folgendermaßen vor:
+1. Gehen Sie im Bereich **Einstellungen** folgendermaßen vor:
 
    a. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk der App Service-Umgebung aus.
 
@@ -94,25 +94,25 @@ Außerdem können Sie das Gateway nicht dem Subnetz hinzufügen, das Ihre ILB-Ap
 
    ![Einstellungen zur Erstellung eines neuen Application Gateways][3]
     
-4. Überprüfen Sie die Einstellungen im Bereich **Zusammenfassung**, und wählen Sie **OK** aus. Es kann etwas mehr als 30 Minuten dauern, bis die Einrichtung Ihres Application Gateways abgeschlossen ist.  
+1. Überprüfen Sie die Einstellungen im Bereich **Zusammenfassung**, und wählen Sie **OK** aus. Es kann etwas mehr als 30 Minuten dauern, bis die Einrichtung Ihres Application Gateways abgeschlossen ist.  
 
-5. Nachdem das Application Gateway eingerichtet wurde, wechseln Sie zum Application Gateway-Portal. Wählen Sie **Back-End-Pool** aus. Fügen Sie die ILB-Adresse für Ihre ILB-App Service-Umgebung hinzu.
+1. Nachdem das Application Gateway eingerichtet wurde, wechseln Sie zum Application Gateway-Portal. Wählen Sie **Back-End-Pool** aus. Fügen Sie die ILB-Adresse für Ihre ILB-App Service-Umgebung hinzu.
 
    ![Konfigurieren des Back-End-Pools][4]
 
-6. Wählen Sie nach Abschluss der Konfiguration Ihres Back-End-Pools die Option **Integritätstests** aus. Erstellen Sie einen Integritätstest für den Domänennamen, den Sie für Ihre App verwenden möchten. 
+1. Wählen Sie nach Abschluss der Konfiguration Ihres Back-End-Pools die Option **Integritätstests** aus. Erstellen Sie einen Integritätstest für den Domänennamen, den Sie für Ihre App verwenden möchten. 
 
    ![Konfigurieren von Integritätstests][5]
     
-7. Wählen Sie nach Abschluss der Konfiguration Ihrer Integritätstests die Option **HTTP-Einstellungen** aus. Bearbeiten Sie die vorhandenen Einstellungen, und wählen Sie die Option **Benutzerdefinierten Test verwenden** und dann den von Ihnen konfigurierten Test aus.
+1. Wählen Sie nach Abschluss der Konfiguration Ihrer Integritätstests die Option **HTTP-Einstellungen** aus. Bearbeiten Sie die vorhandenen Einstellungen, und wählen Sie die Option **Benutzerdefinierten Test verwenden** und dann den von Ihnen konfigurierten Test aus.
 
    ![Konfigurieren von HTTP-Einstellungen][6]
     
-8. Wechseln Sie zum Abschnitt **Übersicht** des Application Gateways, und kopieren Sie die öffentliche IP-Adresse, die von Ihrem Application Gateway verwendet wird. Legen Sie diese IP-Adresse als A-Datensatz für Ihren App-Domänennamen fest, oder verwenden Sie den DNS-Namen für diese Adresse im CNAME-Datensatz. Es ist einfacher, die öffentliche IP-Adresse auszuwählen und sie von der Benutzeroberfläche der öffentlichen IP-Adresse zu kopieren als über den Link im Abschnitt **Übersicht** des Application Gateways. 
+1. Wechseln Sie zum Abschnitt **Übersicht** des Application Gateways, und kopieren Sie die öffentliche IP-Adresse, die von Ihrem Application Gateway verwendet wird. Legen Sie diese IP-Adresse als A-Datensatz für Ihren App-Domänennamen fest, oder verwenden Sie den DNS-Namen für diese Adresse im CNAME-Datensatz. Es ist einfacher, die öffentliche IP-Adresse auszuwählen und sie von der Benutzeroberfläche der öffentlichen IP-Adresse zu kopieren als über den Link im Abschnitt **Übersicht** des Application Gateways. 
 
    ![Application Gateway-Portal][7]
 
-9. Legen Sie den benutzerdefinierten Domänennamen für Ihre App in Ihrer ILB-App Service-Umgebung fest. Wechseln Sie im Portal zu Ihrer App, und wählen Sie unter **Einstellungen** die Option **Benutzerdefinierte Domänen** aus.
+1. Legen Sie den benutzerdefinierten Domänennamen für Ihre App in Ihrer ILB-App Service-Umgebung fest. Wechseln Sie im Portal zu Ihrer App, und wählen Sie unter **Einstellungen** die Option **Benutzerdefinierte Domänen** aus.
 
    ![Festlegen des benutzerdefinierten Domänennamens für die App][8]
 

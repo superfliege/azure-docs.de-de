@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: 992b469803b26a11e7ca26142beba7d238e25452
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: eef71aabaab71f908f950a4467da918dca1787fa
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952210"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492543"
 ---
 # <a name="overview-of-azure-devops-project"></a>Übersicht über das Azure DevOps-Projekt
 
@@ -69,7 +69,7 @@ Nach der Erstellung des DevOps-Projekts haben Sie folgende Möglichkeiten:
 
 ## <a name="how-do-i-start-using-the-azure-devops-project"></a>Informationen zum Einstieg in die Verwendung des Azure DevOps-Projekts
 
-* [Create a CI/CD pipeline for your existing code with the Azure DevOps Project](https://docs.microsoft.com/azure/azure-devops-project-github) (Erstellen einer CI/CD-Pipeline für Ihren vorhandenen Code mit dem Azure DevOps-Projekt)
+* [Create a CI/CD pipeline for your existing code with the Azure DevOps Project](https://docs.microsoft.com/azure/devops-project/azure-devops-project-github) (Erstellen einer CI/CD-Pipeline für Ihren vorhandenen Code mit dem Azure DevOps-Projekt)
 
 ## <a name="azure-devops-project-videos"></a>Videos zum Azure DevOps-Projekt
 

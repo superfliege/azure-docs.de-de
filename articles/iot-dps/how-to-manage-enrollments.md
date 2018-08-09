@@ -1,19 +1,19 @@
 ---
 title: Verwalten von Geräteregistrierungen mit dem Azure-Portal | Microsoft-Dokumentation
 description: 'Gewusst wie: Verwalten der Geräteregistrierungen für Ihren DPS-Dienst im Azure-Portal'
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/05/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: b13f74e0c3df5090d1b1b2e0c48e3dc612821250
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5282ee0858c1226b2b743f42203e7b4af9eac6e6
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628435"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524124"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Verwalten von Geräteregistrierungen mit dem Azure-Portal
 
@@ -29,8 +29,8 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
     Sie können mit den folgenden Schritten im Portal eine Registrierungsgruppe für eine Gruppe von Geräten erstellen:
 
     1. Melden Sie sich beim Azure-Portal an, und klicken Sie im linken Menü auf **Alle Ressourcen**.  
-    2. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.  
-    3. Gehen Sie in Ihrem Bereitstellungsdienst so vor:  
+    1. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.  
+    1. Gehen Sie in Ihrem Bereitstellungsdienst so vor:  
        a. Klicken Sie auf **Registrierungen verwalten**, und wählen Sie dann die Registerkarte **Registrierungsgruppen** aus.  
        b. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**.  
        c. Wenn der Bereich „Registrierungsgruppe hinzufügen“ angezeigt wird, geben Sie die Informationen für den Registrierungslisteneintrag ein.  Der **Gruppenname** ist erforderlich. Wählen Sie außerdem für **Zertifikattyp** entweder „Zertifizierungsstelle“ oder „Zwischenzertifizierungsstelle“ aus, und laden Sie das **primäre Stammzertifikat** für die Gerätegruppe hoch.  
@@ -44,8 +44,8 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
     Sie können mit den folgenden Schritten eine individuelle Registrierung im Portal erstellen:
 
     1. Melden Sie sich beim Azure-Portal an, und klicken Sie im linken Menü auf **Alle Ressourcen**.
-    2. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.
-    3. Gehen Sie in Ihrem Bereitstellungsdienst so vor:  
+    1. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.
+    1. Gehen Sie in Ihrem Bereitstellungsdienst so vor:  
        a. Klicken Sie auf **Registrierungen verwalten**, und wählen Sie die Registerkarte **Individuelle Registrierungen** aus.  
        b. Klicken Sie ganz oben auf die Schaltfläche **Hinzufügen**.   
        c. Wenn der Bereich „Registrierung hinzufügen“ angezeigt wird, geben Sie die Informationen für den Registrierungslisteneintrag ein. Wählen Sie zuerst den **Mechanismus** für den Nachweis des Geräts (X.509 oder TPM) aus. Der X.509-Nachweis erfordert, dass Sie **primäre Zertifikat** für das Gerät hochladen. TPM erfordert die Eingabe des **Nachweisschlüssels** und der **Registrierungs-ID** für das Gerät.  
@@ -57,9 +57,9 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
 Sie können mit den folgenden Schritten einen vorhandenen Registrierungseintrag im Portal aktualisieren:
 
 1. Öffnen Sie Ihren Gerätebereitstellungsdienst im Azure-Portal, und klicken Sie auf **Registrierungen verwalten**. 
-2. Navigieren Sie zu dem Registrierungseintrag, den Sie ändern möchten. Klicken Sie auf den Eintrag, worauf zusammenfassende Informationen zu Ihrer Geräteregistrierung geöffnet werden. 
-3. Auf dieser Seite können Sie Elemente außer Sicherheitstyp und Anmeldeinformationen ändern, z.B. den IoT Hub, mit dem das Gerät verknüpft werden soll, sowie die Geräte-ID. Sie können auch den anfänglichen Gerätezwillingsstatus ändern. 
-4. Klicken Sie bei Abschluss auf **Speichern**, um die Geräteregistrierung zu aktualisieren. 
+1. Navigieren Sie zu dem Registrierungseintrag, den Sie ändern möchten. Klicken Sie auf den Eintrag, worauf zusammenfassende Informationen zu Ihrer Geräteregistrierung geöffnet werden. 
+1. Auf dieser Seite können Sie Elemente außer Sicherheitstyp und Anmeldeinformationen ändern, z.B. den IoT Hub, mit dem das Gerät verknüpft werden soll, sowie die Geräte-ID. Sie können auch den anfänglichen Gerätezwillingsstatus ändern. 
+1. Klicken Sie bei Abschluss auf **Speichern**, um die Geräteregistrierung zu aktualisieren. 
 
     ![Aktualisieren der Registrierung im Portal](./media/how-to-manage-enrollments/update-enrollment.png)
 
@@ -67,9 +67,9 @@ Sie können mit den folgenden Schritten einen vorhandenen Registrierungseintrag 
 In Fällen, in denen Ihre Geräte nicht in einem IoT Hub bereitgestellt werden müssen, können Sie mit den folgenden Schritten den zugehörigen Registrierungseintrag im Portal entfernen:
 
 1. Öffnen Sie Ihren Gerätebereitstellungsdienst im Azure-Portal, und klicken Sie auf **Registrierungen verwalten**. 
-2. Navigieren Sie zu dem Registrierungseintrag, den Sie entfernen möchten, und wählen Sie ihn aus. 
-3. Klicken Sie ganz oben auf die Schaltfläche **Löschen**, und bestätigen Sie nach Aufforderung mit **Ja**. 
-5. Sobald die Aktion abgeschlossen ist, sehen Sie, dass Ihr Eintrag aus der Geräteregistrierungsliste entfernt wurde. 
+1. Navigieren Sie zu dem Registrierungseintrag, den Sie entfernen möchten, und wählen Sie ihn aus. 
+1. Klicken Sie ganz oben auf die Schaltfläche **Löschen**, und bestätigen Sie nach Aufforderung mit **Ja**. 
+1. Sobald die Aktion abgeschlossen ist, sehen Sie, dass Ihr Eintrag aus der Geräteregistrierungsliste entfernt wurde. 
  
     ![Entfernen der Registrierung im Portal](./media/how-to-manage-enrollments/remove-enrollment.png)
 

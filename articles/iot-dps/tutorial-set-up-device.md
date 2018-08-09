@@ -1,20 +1,20 @@
 ---
 title: Einrichten eines Geräts für den Azure IoT Hub Device Provisioning-Dienst
 description: Einrichten eines bereitzustellenden Geräts über den IoT Hub Device Provisioning-Dienst während des Geräteherstellungsprozesses
-author: dsk-2015
-ms.author: dkshir
+author: wesmc7777
+ms.author: wesmc
 ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d589c0ece2b36970a31884aa72ee7ab87941a656
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39146434"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523358"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
@@ -55,7 +55,7 @@ Das Client-SDK für den Device Provisioning-Dienst unterstützt Sie beim Impleme
 
     Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
-2. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
+1. Öffnen Sie eine Eingabeaufforderung oder die Git Bash-Shell. Führen Sie den folgenden Befehl zum Klonen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c)-GitHub-Repositorys aus:
     
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
@@ -63,7 +63,7 @@ Das Client-SDK für den Device Provisioning-Dienst unterstützt Sie beim Impleme
     Die Größe dieses Repositorys beträgt derzeit ca. 220 MB. Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
 
-3. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
+1. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
 
     ```cmd/sh
     cd azure-iot-sdk-c
@@ -71,7 +71,7 @@ Das Client-SDK für den Device Provisioning-Dienst unterstützt Sie beim Impleme
     cd cmake
     ```
 
-4. Erstellen Sie das SDK für Ihre Entwicklungsplattform basierend auf den Nachweismechanismen, die Sie verwenden möchten. Verwenden Sie einen der folgenden Befehle (achten Sie jeweils auf die beiden nachgestellten Punkte). CMake erstellt anschließend das Unterverzeichnis `/cmake` mit für Ihr Gerät spezifischem Inhalt:
+1. Erstellen Sie das SDK für Ihre Entwicklungsplattform basierend auf den Nachweismechanismen, die Sie verwenden möchten. Verwenden Sie einen der folgenden Befehle (achten Sie jeweils auf die beiden nachgestellten Punkte). CMake erstellt anschließend das Unterverzeichnis `/cmake` mit für Ihr Gerät spezifischem Inhalt:
  
     - Bei Geräten, die den TPM-Simulator für den Nachweis verwenden:
 
@@ -103,7 +103,7 @@ Je nachdem, ob Sie das SDK für die Verwendung eines Nachweismechanismus für ei
 - Für ein X.509-Gerät müssen Sie die Zertifikate abrufen, die für Ihre Geräte ausgestellt wurden. Der Bereitstellungsdienst macht zwei Arten von Registrierungseinträgen verfügbar, mit denen der Zugriff auf Geräte gesteuert wird, indem der X.509-Nachweismechanismus verwendet wird. Die benötigten Zertifikate richten sich nach den Registrierungstypen, die Sie verwenden.
 
     1. Individuelle Registrierungen: Registrierung für ein bestimmtes einzelnes Gerät. Für diese Art von Registrierungseinträgen sind [Zertifikate für die endgültige Entität](concepts-security.md#end-entity-leaf-certificate) erforderlich.
-    2. Registrierungsgruppen: Für diese Art von Registrierungseinträgen sind Zwischen- oder Stammzertifikate erforderlich. Weitere Informationen finden Sie unter [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
+    1. Registrierungsgruppen: Für diese Art von Registrierungseinträgen sind Zwischen- oder Stammzertifikate erforderlich. Weitere Informationen finden Sie unter [Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten](concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates).
 
 ### <a name="simulated-devices"></a>Simulierte Geräte
 
@@ -122,21 +122,21 @@ Je nachdem, ob Sie das SDK für die Verwendung eines Nachweismechanismus für ei
       > [!NOTE]
       > Wenn Sie für diesen Schritt die Git Bash-Eingabeaufforderung verwenden, müssen Sie die umgekehrten Schrägstriche in normale Schrägstriche ändern, z.B. `./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe`.
 
-   2. Öffnen Sie mithilfe von Visual Studio die im Ordner *cmake* generierte Projektmappe namens `azure_iot_sdks.sln`, und erstellen Sie sie mithilfe des Befehls „Projektmappe erstellen“ im Menü „Build“.
+   1. Öffnen Sie mithilfe von Visual Studio die im Ordner *cmake* generierte Projektmappe namens `azure_iot_sdks.sln`, und erstellen Sie sie mithilfe des Befehls „Projektmappe erstellen“ im Menü „Build“.
 
-   3. Navigieren Sie in Visual Studio im *Projektmappen-Explorer* zum Ordner **Provision\_Tools**. Klicken Sie mit der rechten Maustaste auf das Projekt **tpm_device_provision**, und wählen Sie **Als Startprojekt festlegen** aus. 
+   1. Navigieren Sie in Visual Studio im *Projektmappen-Explorer* zum Ordner **Provision\_Tools**. Klicken Sie mit der rechten Maustaste auf das Projekt **tpm_device_provision**, und wählen Sie **Als Startprojekt festlegen** aus. 
 
-   4. Führen Sie die Projektmappe über einen der Startbefehle im Menü „Debuggen“ aus. Im Ausgabefenster werden die **_Registrierungs-ID_** und der **_Endorsement Key_** des TPM-Simulators für die Geräteregistrierung angezeigt. Kopieren Sie diese Werte für die spätere Verwendung. Sie können dieses Fenster (mit Registrierungs-ID und Endorsement Key) schließen. Lassen Sie aber das TPM-Simulatorfenster geöffnet, das Sie in Schritt 1 geöffnet haben.
+   1. Führen Sie die Projektmappe über einen der Startbefehle im Menü „Debuggen“ aus. Im Ausgabefenster werden die **_Registrierungs-ID_** und der **_Endorsement Key_** des TPM-Simulators für die Geräteregistrierung angezeigt. Kopieren Sie diese Werte für die spätere Verwendung. Sie können dieses Fenster (mit Registrierungs-ID und Endorsement Key) schließen. Lassen Sie aber das TPM-Simulatorfenster geöffnet, das Sie in Schritt 1 geöffnet haben.
 
 - Bei einem simulierten X.509-Gerät:
 
   1. Öffnen Sie mithilfe von Visual Studio die im Ordner *cmake* generierte Projektmappe namens `azure_iot_sdks.sln`, und erstellen Sie sie mithilfe des Befehls „Projektmappe erstellen“ im Menü „Build“.
 
-  2. Navigieren Sie in Visual Studio im *Projektmappen-Explorer* zum Ordner **Provision\_Tools**. Klicken Sie mit der rechten Maustaste auf das Projekt **dice\_device\_enrollment**, und wählen Sie **Als Startprojekt festlegen** aus. 
+  1. Navigieren Sie in Visual Studio im *Projektmappen-Explorer* zum Ordner **Provision\_Tools**. Klicken Sie mit der rechten Maustaste auf das Projekt **dice\_device\_enrollment**, und wählen Sie **Als Startprojekt festlegen** aus. 
   
-  3. Führen Sie die Projektmappe über einen der Startbefehle im Menü „Debuggen“ aus. Geben Sie im Ausgabefenster **i** für die individuelle Registrierung ein, wenn die entsprechende Aufforderung angezeigt wird. Im Ausgabefenster wird ein lokal generiertes X.509-Zertifikat für Ihr simuliertes Gerät angezeigt. Kopieren Sie die Ausgabe zwischen *-----BEGIN CERTIFICATE-----* und dem ersten Vorkommen von *-----END CERTIFICATE-----* in die Zwischenablage, und schließen Sie dabei auch diese beiden Zeile mit ein. Sie benötigen nur das erste Zertifikat aus dem Ausgabefenster.
+  1. Führen Sie die Projektmappe über einen der Startbefehle im Menü „Debuggen“ aus. Geben Sie im Ausgabefenster **i** für die individuelle Registrierung ein, wenn die entsprechende Aufforderung angezeigt wird. Im Ausgabefenster wird ein lokal generiertes X.509-Zertifikat für Ihr simuliertes Gerät angezeigt. Kopieren Sie die Ausgabe zwischen *-----BEGIN CERTIFICATE-----* und dem ersten Vorkommen von *-----END CERTIFICATE-----* in die Zwischenablage, und schließen Sie dabei auch diese beiden Zeile mit ein. Sie benötigen nur das erste Zertifikat aus dem Ausgabefenster.
  
-  4. Erstellen Sie eine Datei mit dem Namen **_X509testcert.pem_**, öffnen Sie sie in einem Text-Editor Ihrer Wahl, und kopieren Sie den Inhalt aus der Zwischenablage in diese Datei. Speichern Sie die Datei, da Sie sie später für die Geräteregistrierung verwenden. Bei der Ausführung der Registrierungssoftware wird während der automatischen Bereitstellung dasselbe Zertifikat verwendet.    
+  1. Erstellen Sie eine Datei mit dem Namen **_X509testcert.pem_**, öffnen Sie sie in einem Text-Editor Ihrer Wahl, und kopieren Sie den Inhalt aus der Zwischenablage in diese Datei. Speichern Sie die Datei, da Sie sie später für die Geräteregistrierung verwenden. Bei der Ausführung der Registrierungssoftware wird während der automatischen Bereitstellung dasselbe Zertifikat verwendet.    
 
 Diese Sicherheitsartefakte sind bei der Registrierung Ihrer Geräte beim Device Provisioning-Dienst erforderlich. Der Bereitstellungsdienst wartet, bis das Gerät gestartet und zu einem beliebigen Zeitpunkt eine Verbindung mit diesem hergestellt wird. Wenn Ihr Gerät zum ersten Mal gestartet wird, interagiert die Client-SDK-Logik zur Extraktion der Sicherheitsartefakte vom Gerät mit Ihrem Chip (oder dem Simulator) und überprüft die Registrierung bei Ihrem Device Provisioning-Dienst. 
 
@@ -151,9 +151,9 @@ Der letzte Schritt besteht darin, eine Registrierungsanwendung zu schreiben, die
 
     ![Extrahieren der Endpunktinformationen des DP-Diensts aus dem Portalblatt](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
-2. Navigieren Sie auf Ihrem Computer im *Projektmappen-Explorer* von Visual Studio zum Ordner **Provision\_Samples**. Wählen Sie das Beispielprojekt **prov\_dev\_client\_sample** aus, und öffnen Sie die Quelldatei **prov\_dev\_client\_sample.c**.
+1. Navigieren Sie auf Ihrem Computer im *Projektmappen-Explorer* von Visual Studio zum Ordner **Provision\_Samples**. Wählen Sie das Beispielprojekt **prov\_dev\_client\_sample** aus, und öffnen Sie die Quelldatei **prov\_dev\_client\_sample.c**.
 
-3. Weisen Sie den in Schritt 1 kopierten Wert für _ID-Bereich_ der Variablen `id_scope` zu (entfernen Sie jeweils die Klammern `[` und `]`): 
+1. Weisen Sie den in Schritt 1 kopierten Wert für _ID-Bereich_ der Variablen `id_scope` zu (entfernen Sie jeweils die Klammern `[` und `]`): 
 
     ```c
     static const char* global_prov_uri = "global.azure-devices-provisioning.net";
@@ -162,16 +162,16 @@ Der letzte Schritt besteht darin, eine Registrierungsanwendung zu schreiben, die
 
     Zur Referenz ist die Variable `global_prov_uri` angegeben, die der IoT Hub-Clientregistrierungs-API `IoTHubClient_LL_CreateFromDeviceAuth` das Herstellen einer Verbindung mit der designierten Instanz des Device Provisioning-Diensts ermöglicht.
 
-4. Kommentieren Sie in der gleichen Datei in der **main()**-Funktion die Variable `hsm_type`, die dem Nachweismechanismus entspricht, der von der Registrierungssoftware Ihres Geräts verwendet wird (TPM oder X.509), bzw. heben Sie die Auskommentierung auf: 
+1. Kommentieren Sie in der gleichen Datei in der **main()**-Funktion die Variable `hsm_type`, die dem Nachweismechanismus entspricht, der von der Registrierungssoftware Ihres Geräts verwendet wird (TPM oder X.509), bzw. heben Sie die Auskommentierung auf: 
 
     ```c
     hsm_type = SECURE_DEVICE_TYPE_TPM;
     //hsm_type = SECURE_DEVICE_TYPE_X509;
     ```
 
-5. Speichern Sie Ihre Änderungen, und erstellen Sie das Beispiel **prov\_dev\_client\_sample** neu, indem Sie im Menü „Build“ auf „Projektmappe erstellen“ klicken. 
+1. Speichern Sie Ihre Änderungen, und erstellen Sie das Beispiel **prov\_dev\_client\_sample** neu, indem Sie im Menü „Build“ auf „Projektmappe erstellen“ klicken. 
 
-6. Klicken Sie mit der rechten Maustaste auf das Projekt **prov\_dev\_client\_sample** im Ordner **Provision\_Samples**, und wählen Sie die Option **Als Startprojekt festlegen**. Führen Sie die Beispielanwendung noch NICHT aus.
+1. Klicken Sie mit der rechten Maustaste auf das Projekt **prov\_dev\_client\_sample** im Ordner **Provision\_Samples**, und wählen Sie die Option **Als Startprojekt festlegen**. Führen Sie die Beispielanwendung noch NICHT aus.
 
 > [!IMPORTANT]
 > Starten Sie das Gerät noch nicht! Bevor Sie das Gerät starten, müssen Sie den Prozess abschließen, indem Sie zuerst das Gerät beim Device Provisioning-Dienst registrieren. Der Abschnitt „Nächste Schritte“ weiter unten enthält einen Link zum nächsten Artikel.
@@ -204,7 +204,7 @@ Sie müssen die Registrierungsanwendung Ihres Device Provisioning-Dienstclients 
 An dieser Stelle werden der Device Provisioning- und der IoT Hub-Dienst wahrscheinlich im Portal ausgeführt. Wenn Sie die Einrichtung des Device Provisioning-Diensts abbrechen und/oder diese Tutorialreihe zu einem späteren Zeitpunkt abschließen möchten, sollten Sie sie deaktivieren, damit keine unnötigen Kosten entstehen.
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihren Device Provisioning-Dienst aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
-2. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Alle Ressourcen**, und wählen Sie Ihre IoT Hub-Instanz aus. Klicken Sie im oberen Bereich des Blatts **Alle Ressourcen** auf **Löschen**.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Tutorial haben Sie Folgendes gelernt:

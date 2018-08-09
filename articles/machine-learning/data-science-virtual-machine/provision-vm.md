@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.openlocfilehash: 445b18dee9efa9561ba1274ef59a9a426332d745
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: b749d8a904bc40eba3346cc03d9274236380c80d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31594048"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39450290"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen der Data Science Virtual Machine für Windows in Azure
 Der virtuelle Microsoft Data Science-Computer ist das Image eines virtuellen Windows Azure-Computers (VM), das vorinstalliert und mit einigen gängigen Tools konfiguriert ist, die häufig für Datenanalysen und Machine Learning verwendet werden. Die enthaltenen Tools sind:
@@ -45,8 +45,8 @@ Der virtuelle Microsoft Data Science-Computer ist das Image eines virtuellen Win
 Die Durchführung des Data Science-Vorgangs umfasst eine Aufgabensequenz:
 
 1. Suchen, Laden und Vorverarbeiten von Daten
-2. Erstellen und Testen von Modellen
-3. Bereitstellen der Modelle für die Nutzung in intelligenten Anwendungen
+1. Erstellen und Testen von Modellen
+1. Bereitstellen der Modelle für die Nutzung in intelligenten Anwendungen
 
 Datenanalysten verwenden verschiedene Tools zum Ausführen dieser Aufgaben. Es kann sehr zeitaufwändig sein, die richtigen Versionen der Software zu finden und dann herunterzuladen und zu installieren. Die Microsoft Data Science Virtual Machine kann hier für Erleichterung sorgen, indem sie ein einsatzbereites Image bietet, das mit allen vorinstallierten und konfigurierten gängigen Tools auf Azure bereitgestellt werden kann. 
 
@@ -67,23 +67,23 @@ Bevor Sie eine Microsoft Data Science Virtual Machine erstellen können, benöti
 Führen Sie die folgenden Schritte aus, um eine Instanz der Microsoft Data Science Virtual Machine zu erstellen:
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016)zur Auflistung der virtuellen Computer.
-2. Wählen Sie am unteren Seitenrand die Schaltfläche **Erstellen**, um einen Assistenten aufzurufen.![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png)
-3. Der Assistent zum Erstellen der Microsoft Data Science Virtual Machine erfordert **Eingaben** für jeden der **vier Schritte**, die in der Abbildung rechts aufgelistet sind. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
+1. Wählen Sie am unteren Seitenrand die Schaltfläche **Erstellen**, um einen Assistenten aufzurufen.![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png)
+1. Der Assistent zum Erstellen der Microsoft Data Science Virtual Machine erfordert **Eingaben** für jeden der **vier Schritte**, die in der Abbildung rechts aufgelistet sind. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
    
    1. **Grundlagen**
       
       1. **Name**: Name des Data Science-Servers, den Sie erstellen.
-      2. **VM-Datenträgertyp**: Wählen Sie zwischen SSD und HDD. Wählen Sie für die GPU-Instanz „NC_v1“ (basiert auf NVidia Tesla K80) **HDD** als Datenträgertyp aus. 
-      3. **Benutzername**: ID des Administratoranmeldekontos.
-      4. **Kennwort**: Kennwort des Administratorkontos.
-      5. **Abonnement:** Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird.
-      6. **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
-      7. **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise ist es das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
-   2. **Größe**: Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Eine größere Auswahl an VM-Größen erhalten Sie durch die Auswahl von „Alle anzeigen“.
-   3. **Einstellungen**:
+      1. **VM-Datenträgertyp**: Wählen Sie zwischen SSD und HDD. Wählen Sie für die GPU-Instanz „NC_v1“ (basiert auf NVidia Tesla K80) **HDD** als Datenträgertyp aus. 
+      1. **Benutzername**: ID des Administratoranmeldekontos.
+      1. **Kennwort**: Kennwort des Administratorkontos.
+      1. **Abonnement:** Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird.
+      1. **Ressourcengruppe**: Sie können eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
+      1. **Standort**: Wählen Sie das Rechenzentrum aus, das am besten geeignet ist. Normalerweise ist es das Rechenzentrum, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem Standort am nächsten ist, um den schnellsten Netzwerkzugriff zu erreichen.
+   1. **Größe**: Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Eine größere Auswahl an VM-Größen erhalten Sie durch die Auswahl von „Alle anzeigen“.
+   1. **Einstellungen**:
       
       1. **Verwaltete Datenträger verwenden**: Wählen Sie „Verwaltet“, wenn Sie möchten, dass Azure die Datenträger für die VM verwaltet.  Andernfalls müssen Sie ein neues oder vorhandenes Speicherkonto angeben. 
-      2. **Andere Parameter**: In der Regel verwenden Sie einfach die Standardeinstellungen. Zeigen Sie mit der Maus auf den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch andere als die Standardwerte verwenden möchten.
+      1. **Andere Parameter**: In der Regel verwenden Sie einfach die Standardeinstellungen. Zeigen Sie mit der Maus auf den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch andere als die Standardwerte verwenden möchten.
     a. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind, und klicken Sie auf **Erstellen**. **HINWEIS**: Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
 
 > [!NOTE]
@@ -112,7 +112,7 @@ Für die Entwicklung mithilfe von Python wurden Anaconda Python Distribution 2.7
 > 
 > 
 
-Anaconda Python 3.6 wird unter C:\Anaconda installiert, Anaconda Python 2.7 unter C:\Anaconda\envs\python2. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) . 
+Anaconda Python 3.6 wird unter C:\Anaconda installiert, Anaconda Python 2.7 unter C:\Anaconda\envs\python2. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](/visualstudio/python/installing-python-interpreters.md) . 
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 Zur Anaconda-Distribution gehört außerdem Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Es wurde bereits ein Jupyter-Notebook-Server mit Python 2.7, Python 3.x, PySpark, Julia und R-Kernels konfiguriert. Es ist ein Desktopsymbol mit dem Namen „Jupyter-Notebook“ vorhanden, um den Jupyter-Server und den Browser für den Zugriff auf den Notebook-Server zu starten. 

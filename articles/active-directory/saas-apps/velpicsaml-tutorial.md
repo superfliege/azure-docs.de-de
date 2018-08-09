@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: e7863d693a6c11e705990f9cfa2d1f54c75c7a91
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2ca95f6fd94036e86aae2059c05a3fbb0380005e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221307"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39446295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-velpic-saml"></a>Tutorial: Azure Active Directory-Integration mit Velpic SAML
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Velpic SAML aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-velpic-saml-from-the-gallery"></a>Hinzufügen von Velpic SAML aus dem Katalog
 Zum Konfigurieren der Integration von Velpic SAML in Azure AD müssen Sie Velpic SAML aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Velpic SAML in Azure AD müssen Sie Velpic
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **Velpic SAML** ein.
+1. Geben Sie im Suchfeld als Suchbegriff **Velpic SAML** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/velpicsaml-tutorial/tutorial_velpicsaml_search.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **Velpic SAML** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **Velpic SAML** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/velpicsaml-tutorial/tutorial_velpicsaml_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Velpic SAML müssen Sie die folgenden Schritte durchführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Velpic SAML-Testbenutzers](#creating-a-velpic-saml-test-user)**, um eine Entsprechung von Britta Simon in Velpic SAML zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Velpic SAML-Testbenutzers](#creating-a-velpic-saml-test-user)**, um eine Entsprechung von Britta Simon in Velpic SAML zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **Velpic SAML** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/velpicsaml-tutorial/tutorial_velpicsaml_samlbase.png)
+    ![Configure single sign-on](./media/velpicsaml-tutorial/tutorial_velpicsaml_samlbase.png)
 
-3. Geben Sie die Details im Abschnitt **Domäne und URLs für Velpic SAML** ein.
+1. Geben Sie die Details im Abschnitt **Domäne und URLs für Velpic SAML** ein.
 
-    ![Configure Single Sign-On](./media/velpicsaml-tutorial/tutorial_velpicsaml_url.png)
+    ![Configure single sign-on](./media/velpicsaml-tutorial/tutorial_velpicsaml_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** den Wert wie folgt ein: `https://<sub-domain>.velpicsaml.net`
 
@@ -119,35 +119,35 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     > [!NOTE]
     > Beachten Sie, dass die Anmelde-URL vom Velpic SAML-Team bereitgestellt wird und dass der Bezeichnerwert zur Verfügung steht, wenn Sie das SSO-Plug-In auf der Velpic SAML-Seite konfigurieren. Sie müssen diesen Wert von der Velpic SAML-Anwendungsseite kopieren und hier einfügen.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/velpicsaml-tutorial/tutorial_velpicsaml_certificate.png) 
+    ![Configure single sign-on](./media/velpicsaml-tutorial/tutorial_velpicsaml_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/velpicsaml-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/velpicsaml-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt „Velpic SAML-Konfiguration“ auf „Velpic SAML konfigurieren“, um das Fenster „Anmeldung konfigurieren“ zu öffnen. Kopieren Sie die SAML-Entitäts-ID aus dem Abschnitt mit der Kurzübersicht.
+1. Klicken Sie im Abschnitt „Velpic SAML-Konfiguration“ auf „Velpic SAML konfigurieren“, um das Fenster „Anmeldung konfigurieren“ zu öffnen. Kopieren Sie die SAML-Entitäts-ID aus dem Abschnitt mit der Kurzübersicht.
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der Velpic SAML-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Velpic SAML-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie auf die Registerkarte **Verwalten**, und wechseln Sie zum Abschnitt **Integration**. Hier müssen Sie auf die Schaltfläche **Plug-Ins** klicken, um ein neues Plug-In für die Anmeldung zu erstellen.
+1. Klicken Sie auf die Registerkarte **Verwalten**, und wechseln Sie zum Abschnitt **Integration**. Hier müssen Sie auf die Schaltfläche **Plug-Ins** klicken, um ein neues Plug-In für die Anmeldung zu erstellen.
 
     ![Plug-In](./media/velpicsaml-tutorial/velpic_1.png)
 
-9. Klicken Sie auf die Schaltfläche **Plug-In hinzufügen**.
+1. Klicken Sie auf die Schaltfläche **Plug-In hinzufügen**.
     
     ![Plug-In](./media/velpicsaml-tutorial/velpic_2.png)
 
-10. Klicken Sie auf der Seite „Plug-In hinzufügen“ auf die Kachel **SAML**.
+1. Klicken Sie auf der Seite „Plug-In hinzufügen“ auf die Kachel **SAML**.
     
     ![Plug-In](./media/velpicsaml-tutorial/velpic_3.png)
 
-11. Geben Sie den Namen des neuen SAML-Plug-Ins ein, und klicken Sie auf die Schaltfläche **Hinzufügen**.
+1. Geben Sie den Namen des neuen SAML-Plug-Ins ein, und klicken Sie auf die Schaltfläche **Hinzufügen**.
 
     ![Plug-In](./media/velpicsaml-tutorial/velpic_4.png)
 
-12. Geben Sie die Details wie folgt ein:
+1. Geben Sie die Details wie folgt ein:
 
     ![Plug-In](./media/velpicsaml-tutorial/velpic_5.png)
 
@@ -174,15 +174,15 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/velpicsaml-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/velpicsaml-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/velpicsaml-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/velpicsaml-tutorial/create_aaduser_04.png) 
 
@@ -204,7 +204,7 @@ Melden Sie sich als Administrator bei Ihrer Velpic SAML-Unternehmenswebsite an, 
 
     ![Benutzer hinzufügen](./media/velpicsaml-tutorial/velpic_7.png)
 
-2. Führen Sie im Dialogfeld **Neuen Benutzer erstellen** die folgenden Schritte aus.
+1. Führen Sie im Dialogfeld **Neuen Benutzer erstellen** die folgenden Schritte aus.
 
     ![user](./media/velpicsaml-tutorial/velpic_8.png)
     
@@ -232,23 +232,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Velpic SAML** aus.
+1. Wählen Sie in der Anwendungsliste **Velpic SAML** aus.
 
-    ![Configure Single Sign-On](./media/velpicsaml-tutorial/tutorial_velpicsaml_app.png) 
+    ![Configure single sign-on](./media/velpicsaml-tutorial/tutorial_velpicsaml_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
@@ -258,7 +258,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
     ![Plug-In](./media/velpicsaml-tutorial/velpic_6.png)
 
-2. Klicken Sie auf die Schaltfläche **Mit Azure AD anmelden**, um sich über das Azure AD-Konto bei Velpic anzumelden.
+1. Klicken Sie auf die Schaltfläche **Mit Azure AD anmelden**, um sich über das Azure AD-Konto bei Velpic anzumelden.
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

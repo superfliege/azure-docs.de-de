@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2f88b9c3d25b1a4771772e32bac8a4f7893831cf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4c8ac7aa3ccafaf14c0399860f3576430dd6ba1a
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300078"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429997"
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>Übersicht über die Unternehmensintegration mit Flatfiles
 
@@ -29,9 +29,9 @@ Sie möchten XML-Inhalt ggf. codieren, bevor Sie ihn in einem B2B-Szenario (Busi
 Führen Sie diese Schritte aus, um der Logik-App einen Flatfile-Codierungsconnector hinzuzufügen.
 
 1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](logic-apps-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"). Dieses Konto enthält das Schema, das Sie zum Codieren der XML-Daten verwenden.  
-2. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu.  
+1. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu.  
    ![Screenshot des auszuwählenden Triggers](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-3. Fügen Sie die Flatfile-Codierungsaktion wie folgt hinzu:
+1. Fügen Sie die Flatfile-Codierungsaktion wie folgt hinzu:
    
     a. Wählen Sie das **Pluszeichen** aus.
    
@@ -41,13 +41,13 @@ Führen Sie diese Schritte aus, um der Logik-App einen Flatfile-Codierungsconnec
    
     d. Wählen Sie in der Liste die Option **Flatfilecodierung** aus.   
    ![Screenshot der Option „Flatfilecodierung“](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-4. Wählen Sie im Dialogfeld **Flatfilecodierung** das Textfeld **Inhalt** aus.  
+1. Wählen Sie im Dialogfeld **Flatfilecodierung** das Textfeld **Inhalt** aus.  
    ![Screenshot des Textfelds „Inhalt“](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
-5. Wählen Sie das „Body“-Tag als den Inhalt aus, den Sie codieren möchten. Das Inhaltsfeld wird mit dem „Body“-Tag aufgefüllt.     
+1. Wählen Sie das „Body“-Tag als den Inhalt aus, den Sie codieren möchten. Das Inhaltsfeld wird mit dem „Body“-Tag aufgefüllt.     
    ![Screenshot des Body-Tags](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-6. Wählen Sie das Listenfeld **Schemaname** und dann das Schema aus, das Sie verwenden möchten, um den eingegebenen Inhalt zu codieren.    
+1. Wählen Sie das Listenfeld **Schemaname** und dann das Schema aus, das Sie verwenden möchten, um den eingegebenen Inhalt zu codieren.    
    ![Screenshot des Listenfelds „Schemaname“](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
-7. Speichern Sie Ihre Arbeit.   
+1. Speichern Sie Ihre Arbeit.   
    ![Screenshot des Symbols „Speichern“](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
 An diesem Punkt ist das Einrichten des Flatfile-Codierungsconnectors abgeschlossen. In einer realen Anwendung werden die codierten Daten meist in einer branchenspezifischen Anwendung gespeichert, z.B. Salesforce. Sie können diese codierten Daten auch an einen Handelspartner senden. Mithilfe eines der anderen bereitgestellten Connectors können Sie mühelos eine Aktion zum Senden der Ausgabe der Codierungsaktion an Salesforce oder Ihren Handelspartner hinzufügen.
@@ -61,7 +61,7 @@ Sie können nun Ihren Connector testen, indem Sie eine Anforderung an den HTTP-E
 
 1. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu.  
    ![Screenshot des auszuwählenden Triggers](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-2. Fügen Sie die Flatfile-Decodierungsaktion wie folgt hinzu:
+1. Fügen Sie die Flatfile-Decodierungsaktion wie folgt hinzu:
    
     a. Wählen Sie das **Pluszeichen** aus.
    
@@ -71,12 +71,12 @@ Sie können nun Ihren Connector testen, indem Sie eine Anforderung an den HTTP-E
    
     d. Wählen Sie in der Liste die Aktion **Flatfiledecodierung** aus.   
    ![Screenshot der Option „Flatfiledecodierung“](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-3. Wählen Sie das Steuerelement **Inhalt** aus. Eine Liste mit Inhalten aus vorherigen Schritten wird erstellt, die Sie als zu decodierende Inhalte verwenden können. Sie sehen, dass der *Text* aus der eingehenden HTTP-Anforderung als Inhalt verfügbar ist, der decodiert werden kann. Sie können den zu decodierenden Inhalt auch direkt in das Steuerelement **Inhalt** eingeben.     
-4. Wählen Sie das *Body* -Tag aus. Wie Sie sehen, befindet sich das „Body“-Tag nun im Steuerelement **Inhalt** .
-5. Wählen Sie den Namen des Schemas aus, das Sie zum Decodieren des Inhalts verwenden möchten. Im folgenden Screenshot ist dargestellt, dass *OrderFile* der ausgewählte Schemaname ist. Dieser Schemaname wurde zuvor in das Integrationskonto hochgeladen.
+1. Wählen Sie das Steuerelement **Inhalt** aus. Eine Liste mit Inhalten aus vorherigen Schritten wird erstellt, die Sie als zu decodierende Inhalte verwenden können. Sie sehen, dass der *Text* aus der eingehenden HTTP-Anforderung als Inhalt verfügbar ist, der decodiert werden kann. Sie können den zu decodierenden Inhalt auch direkt in das Steuerelement **Inhalt** eingeben.     
+1. Wählen Sie das *Body* -Tag aus. Wie Sie sehen, befindet sich das „Body“-Tag nun im Steuerelement **Inhalt** .
+1. Wählen Sie den Namen des Schemas aus, das Sie zum Decodieren des Inhalts verwenden möchten. Im folgenden Screenshot ist dargestellt, dass *OrderFile* der ausgewählte Schemaname ist. Dieser Schemaname wurde zuvor in das Integrationskonto hochgeladen.
    
    ![Screenshot des Dialogfelds „Flatfiledecodierung“](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
-6. Speichern Sie Ihre Arbeit.  
+1. Speichern Sie Ihre Arbeit.  
    ![Screenshot des Symbols „Speichern“](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
 An diesem Punkt ist das Einrichten des Flatfile-Decodierungsconnectors abgeschlossen. In einer realen Anwendung werden die decodierten Daten meist in einer branchenspezifischen Anwendung gespeichert, z.B. Salesforce. Sie können problemlos eine Aktion zum Senden der Ausgabe der Decodierungsaktion an Salesforce hinzufügen.

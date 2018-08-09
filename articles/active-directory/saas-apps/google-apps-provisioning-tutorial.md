@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c685e03e5b7532f50d1eee1590eebedfba2b7c2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 26715c6abb9c2c940090c84b64a30f7fb701d059
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212903"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39445688"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -71,18 +71,18 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
    
     ![Wählen Sie „Sicherheit“ aus.][10]
 
-2. Wählen Sie auf der Seite **Sicherheit** die Option **API-Referenz** aus.
+1. Wählen Sie auf der Seite **Sicherheit** die Option **API-Referenz** aus.
    
     ![Wählen Sie „API-Referenz“ aus.][15]
 
-3. Wählen Sie **API-Zugriff aktivieren**aus.
+1. Wählen Sie **API-Zugriff aktivieren**aus.
    
     ![Wählen Sie „API-Referenz“ aus.][16]
 
     > [!IMPORTANT]
     > Für jeden Benutzer, den Sie für G Suite bereitstellen möchten, *muss* der Benutzername in Azure Active Directory an eine benutzerdefinierte Domäne gebunden werden. Beispielsweise werden Benutzernamen wie bob@contoso.onmicrosoft.com von G Suite nicht akzeptiert. bob@contoso.com ist hingegen zulässig. Sie können die Domäne eines vorhandenen Benutzers ändern, indem Sie seine Eigenschaften in Azure AD bearbeiten. Die folgende Anleitung beschreibt, wie Sie eine benutzerdefinierte Domäne für Azure Active Directory und G Suite einrichten.
       
-4. Führen Sie die folgenden Schritte aus, wenn Sie Ihrem Azure Active Directory noch keinen benutzerdefinierten Domänennamen hinzugefügt haben:
+1. Führen Sie die folgenden Schritte aus, wenn Sie Ihrem Azure Active Directory noch keinen benutzerdefinierten Domänennamen hinzugefügt haben:
   
     a. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Active Directory** aus. Wählen Sie in der Verzeichnisliste Ihr Verzeichnis aus. 
 
@@ -108,7 +108,7 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
     Für die Benutzerbereitstellung muss die benutzerdefinierte Domäne dem Domänennamen der Azure AD-Quelle entsprechen. Andernfalls lässt sich das Problem unter Umständen durch eine Anpassung der Attributzuordnung beheben.
 
 
-5. Nachdem Sie alle Ihre Domänen mit Azure AD überprüft haben, müssen Sie sie mit Google Apps erneut überprüfen. Führen Sie für jede Domäne, die noch nicht für Google registriert ist, die folgenden Schritte aus:
+1. Nachdem Sie alle Ihre Domänen mit Azure AD überprüft haben, müssen Sie sie mit Google Apps erneut überprüfen. Führen Sie für jede Domäne, die noch nicht für Google registriert ist, die folgenden Schritte aus:
    
     a. Wählen Sie in der [Google Apps-Verwaltungskonsole](http://admin.google.com/) die Option **Domänen** aus.
      
@@ -129,46 +129,46 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
      > [!WARNING]
      > Wenn Sie die primäre Domäne für Ihren G Suite-Mandanten ändern und das einmalige Anmelden mit Azure AD bereits konfiguriert haben, müssen Sie Schritt 3 unter [Schritt 2: Aktivieren der einmaligen Anmeldung](#step-two-enable-single-sign-on) wiederholen.
        
-6. Wählen Sie in der [Google Apps-Verwaltungskonsole](http://admin.google.com/) die Option **Administratorrollen** aus.
+1. Wählen Sie in der [Google Apps-Verwaltungskonsole](http://admin.google.com/) die Option **Administratorrollen** aus.
    
      ![Auswählen von „Google Apps“][26]
 
-7. Bestimmen Sie, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung verwenden möchten. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen**, damit dieses Konto für die Bereitstellung verwendet werden kann.
+1. Bestimmen Sie, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung verwenden möchten. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen**, damit dieses Konto für die Bereitstellung verwendet werden kann.
    
      ![Auswählen von „Google Apps“][27]
    
     > [!NOTE]
     > Wenn Sie eine Produktionsumgebung konfigurieren, sollten Sie speziell für diesen Schritt ein Administratorkonto in G Suite erstellen. Diesen Konten muss eine Administratorrolle zugeordnet sein, die über die erforderlichen API-Berechtigungen verfügt.
      
-8. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory** > **Unternehmens-Apps** > **Alle Anwendungen**.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory** > **Unternehmens-Apps** > **Alle Anwendungen**.
 
-9. Suchen Sie über das Suchfeld nach Ihrer G Suite-Instanz, wenn Sie G Suite bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **G Suite** oder **Google Apps**. Wählen Sie in den Suchergebnissen Ihre App aus, und fügen Sie die Anwendung Ihrer Anwendungsliste hinzu.
+1. Suchen Sie über das Suchfeld nach Ihrer G Suite-Instanz, wenn Sie G Suite bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **G Suite** oder **Google Apps**. Wählen Sie in den Suchergebnissen Ihre App aus, und fügen Sie die Anwendung Ihrer Anwendungsliste hinzu.
 
-10. Wählen Sie Ihre G Suite-Instanz und dann die Registerkarte **Bereitstellung** aus.
+1. Wählen Sie Ihre G Suite-Instanz und dann die Registerkarte **Bereitstellung** aus.
 
-11. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
+1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
      ![Bereitstellung](./media/google-apps-provisioning-tutorial/provisioning.png)
 
-12. Wählen Sie im Abschnitt **Administratoranmeldeinformationen** die Option **Autorisieren** aus. In einem neuen Browserfenster wird ein Dialogfeld für die Google-Autorisierung geöffnet.
+1. Wählen Sie im Abschnitt **Administratoranmeldeinformationen** die Option **Autorisieren** aus. In einem neuen Browserfenster wird ein Dialogfeld für die Google-Autorisierung geöffnet.
 
-13. Bestätigen Sie, dass Sie Azure Active Directory die Berechtigung erteilen möchten, Änderungen an Ihrem G Suite-Mandanten vorzunehmen. Wählen Sie **Akzeptieren** aus.
+1. Bestätigen Sie, dass Sie Azure Active Directory die Berechtigung erteilen möchten, Änderungen an Ihrem G Suite-Mandanten vorzunehmen. Wählen Sie **Akzeptieren** aus.
     
      ![Überprüfen Sie die Berechtigungen.][28]
 
-14. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um zu überprüfen, ob Azure AD eine Verbindung mit Ihrer App herstellen kann. Falls die Verbindung nicht hergestellt werden kann, überprüfen Sie, ob Ihr G Suite-Konto über Teamadministratorberechtigungen verfügt. Führen Sie dann erneut den Schritt **Autorisieren** aus.
+1. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um zu überprüfen, ob Azure AD eine Verbindung mit Ihrer App herstellen kann. Falls die Verbindung nicht hergestellt werden kann, überprüfen Sie, ob Ihr G Suite-Konto über Teamadministratorberechtigungen verfügt. Führen Sie dann erneut den Schritt **Autorisieren** aus.
 
-15. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das Kontrollkästchen.
+1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das Kontrollkästchen.
 
-16. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
-17. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Google Apps synchronisieren** aus.
+1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Google Apps synchronisieren** aus.
 
-18. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit G Suite synchronisiert werden. Die Attribute, bei denen es sich um **übereinstimmende** Eigenschaften handelt, werden zum Abgleich der G Suite-Benutzerkonten für Aktualisierungsvorgänge verwendet. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
+1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit G Suite synchronisiert werden. Die Attribute, bei denen es sich um **übereinstimmende** Eigenschaften handelt, werden zum Abgleich der G Suite-Benutzerkonten für Aktualisierungsvorgänge verwendet. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen.
 
-19. Ändern Sie in den **Einstellungen** den **Bereitstellungsstatus** in **Ein**, um den Azure AD-Bereitstellungsdienst für G Suite zu aktivieren.
+1. Ändern Sie in den **Einstellungen** den **Bereitstellungsstatus** in **Ein**, um den Azure AD-Bereitstellungsdienst für G Suite zu aktivieren.
 
-20. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
 Daraufhin wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die G Suite im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die während der Dienstausführung etwa alle 40 Minuten erfolgen. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zu Protokollen zur Bereitstellungsaktivität navigieren. In diesen Protokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre App ausgeführt werden.
 

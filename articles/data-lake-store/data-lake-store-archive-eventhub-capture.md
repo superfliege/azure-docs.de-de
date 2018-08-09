@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 57c4d9ccc64c9644c3d333fad1262c997aeff5d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bda52acc12aad3cad20143c319f557f11d760c42
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624660"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39435151"
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs
 
@@ -39,11 +39,11 @@ In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Date
 
     ![Data Lake Store-Daten-Explorer](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake Store-Daten-Explorer")
 
-2.  Klicken Sie auf **Neuer Ordner**, und geben Sie dann einen Namen für den Ordner ein, in dem Sie die Daten erfassen möchten.
+1.  Klicken Sie auf **Neuer Ordner**, und geben Sie dann einen Namen für den Ordner ein, in dem Sie die Daten erfassen möchten.
 
     ![Erstellen eines neuen Ordners in Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Erstellen eines neuen Ordners in Data Lake Store")
 
-3. Weisen Sie auf der Data Lake Store-Stammebene Berechtigungen zu. 
+1. Weisen Sie auf der Data Lake Store-Stammebene Berechtigungen zu. 
 
     a. Klicken Sie auf **Daten-Explorer**, wählen Sie den Stamm des Data Lake Store-Kontos aus, und klicken Sie dann auf **Zugriff**.
 
@@ -64,7 +64,7 @@ In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Date
 
     Klicken Sie auf **OK**.
 
-4. Weisen Sie Berechtigungen für den Ordner im Data Lake Store-Konto zu, in dem Sie Daten erfassen möchten.
+1. Weisen Sie Berechtigungen für den Ordner im Data Lake Store-Konto zu, in dem Sie Daten erfassen möchten.
 
     a. Klicken Sie auf **Daten-Explorer**, wählen Sie den Ordner im Data Lake Store-Konto aus, und klicken Sie dann auf **Zugriff**.
 
@@ -86,11 +86,11 @@ In diesem Abschnitt erstellen Sie einen Ordner in dem Konto, in dem Sie die Date
 
 In diesem Abschnitt erstellen Sie einen Event Hub innerhalb eines Event Hubs-Namespaces. Außerdem konfigurieren Sie den Event Hub zum Erfassen von Daten in einem Azure Data Lake Store-Konto. In diesem Abschnitt wird davon ausgegangen, dass Sie bereits einen Event Hubs-Namespace erstellt haben.
 
-2. Klicken Sie im Bereich **Übersicht** des Event Hubs-Namespaces auf **+ Event Hub**.
+1. Klicken Sie im Bereich **Übersicht** des Event Hubs-Namespaces auf **+ Event Hub**.
 
     ![Erstellen eines Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Erstellen eines Event Hubs")
 
-3. Geben Sie die folgenden Werte an, um Event Hubs zum Erfassen von Daten in Data Lake Store zu konfigurieren.
+1. Geben Sie die folgenden Werte an, um Event Hubs zum Erfassen von Daten in Data Lake Store zu konfigurieren.
 
     ![Erstellen eines Event Hubs](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Erstellen eines Event Hubs")
 

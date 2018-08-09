@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
-ms.openlocfilehash: d6e831692da37645e264c6674f1ba54bb16d25d4
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 2376ade49b990ff22683a14ecd4ae6b4dda356c3
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911756"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434542"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurieren von Software-RAID unter Linux
 Ein häufiges Szenario ist die Verwendung von Software-RAID auf virtuellen Linux-Computern in Azure, um mehrere angefügte Datenträger als einzelnes RAID-Gerät darzustellen. Dies kann normalerweise angewendet werden, um die Leistung zu verbessern und optimierten Durchsatz im Vergleich zur Verwendung eines einzelnen Datenträgers zu ermöglichen.
@@ -62,13 +62,13 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
                     sectors (command 'u').
     ```
 
-2. Drücken Sie an der Eingabeaufforderung 'n', um eine **n**eue Partition zu erstellen:
+1. Drücken Sie an der Eingabeaufforderung 'n', um eine **n**eue Partition zu erstellen:
 
     ```bash
     Command (m for help): n
     ```
 
-3. Drücken Sie anschließend 'p', um ein **p**rimäre Partition zu erstellen:
+1. Drücken Sie anschließend 'p', um ein **p**rimäre Partition zu erstellen:
 
     ```bash 
     Command action
@@ -76,27 +76,27 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
             p   primary partition (1-4)
     ```
 
-4. Drücken Sie '1', um Partitionsnummer 1 auszuwählen:
+1. Drücken Sie '1', um Partitionsnummer 1 auszuwählen:
 
     ```bash
     Partition number (1-4): 1
     ```
 
-5. Wählen Sie den Ausgangspunkt der neuen Partition, oder drücken Sie `<enter>`, um die Standardeinstellung zu akzeptieren und die Partition am Anfang des freien Speicherplatzes auf dem Laufwerk zu platzieren:
+1. Wählen Sie den Ausgangspunkt der neuen Partition, oder drücken Sie `<enter>`, um die Standardeinstellung zu akzeptieren und die Partition am Anfang des freien Speicherplatzes auf dem Laufwerk zu platzieren:
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-6. Legen Sie die Größe der Partition fest, z. B. '+10G', um eine 10-Gigabyte-Partition zu erstellen. Oder drücken Sie einfach `<enter>`, um eine einzelne Partition zu erstellen, die das gesamte Laufwerk umfasst:
+1. Legen Sie die Größe der Partition fest, z. B. '+10G', um eine 10-Gigabyte-Partition zu erstellen. Oder drücken Sie einfach `<enter>`, um eine einzelne Partition zu erstellen, die das gesamte Laufwerk umfasst:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
     Using default value 1305
     ```
 
-7. Ändern Sie anschließend die ID und den Partitions **t**yp von der Standard-ID '83' (Linux) in ID 'fd' (Linux-RAID automatisch):
+1. Ändern Sie anschließend die ID und den Partitions **t**yp von der Standard-ID '83' (Linux) in ID 'fd' (Linux-RAID automatisch):
 
     ```bash  
     Command (m for help): t
@@ -104,7 +104,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
     Hex code (type L to list codes): fd
     ```
 
-8. Zum Abschluss schreiben Sie die Partitionstabelle in das Laufwerk und beenden "fdisk":
+1. Zum Abschluss schreiben Sie die Partitionstabelle in das Laufwerk und beenden "fdisk":
 
     ```bash   
     Command (m for help): w
@@ -119,7 +119,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
         /dev/sdc1 /dev/sdd1 /dev/sde1
     ```
 
-2. Erstellen des Dateisystems auf dem neuen RAID-Gerät
+1. Erstellen des Dateisystems auf dem neuen RAID-Gerät
    
     a. **CentOS, Oracle Linux, SLES 12, openSUSE und Ubuntu**
 
@@ -154,7 +154,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
     ```bash
     sudo mkdir /data
     ```
-2. Beim Bearbeiten von /etc/fstab sollte die **UUID** verwendet werden, um auf das Dateisystem zu verweisen statt auf den Gerätenamen.  Verwenden Sie das Hilfsprogramm `blkid` , um die UUID für das neue Dateisystem zu bestimmen:
+1. Beim Bearbeiten von /etc/fstab sollte die **UUID** verwendet werden, um auf das Dateisystem zu verweisen statt auf den Gerätenamen.  Verwenden Sie das Hilfsprogramm `blkid` , um die UUID für das neue Dateisystem zu bestimmen:
 
     ```bash   
     sudo /sbin/blkid
@@ -162,7 +162,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
     /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
     ```
 
-3. Öffnen Sie "/etc/fstab" in einem Texteditor, und fügen Sie einen Eintrag für das neue Dateisystem hinzu, z. B.:
+1. Öffnen Sie "/etc/fstab" in einem Texteditor, und fügen Sie einen Eintrag für das neue Dateisystem hinzu, z. B.:
 
     ```bash   
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
@@ -176,7 +176,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
    
     Speichern und schließen Sie anschließend /etc/fstab.
 
-4. Testen Sie, ob der Eintrag für /etc/fstab korrekt ist:
+1. Testen Sie, ob der Eintrag für /etc/fstab korrekt ist:
 
     ```bash  
     sudo mount -a
@@ -192,7 +192,7 @@ In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/d
     /dev/md127 on /data type ext4 (rw)
     ```
 
-5. (Optional) Failsafe-Startparameter
+1. (Optional) Failsafe-Startparameter
    
     **fstab-Konfiguration**
    

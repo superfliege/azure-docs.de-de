@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: c92b50ee78c100a531a2973181251444b3810967
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 28228755f76f38ef2ed5e50c776a99427118e090
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293770"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39424550"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatisieren von Azure Application Insights-Prozessen mit dem Connector für Microsoft Flow
 
@@ -35,19 +35,19 @@ In diesem Tutorial erfahren Sie, wie Sie einen Flow erstellen, der zum Gruppiere
 
 ### <a name="step-1-create-a-flow"></a>Schritt 1: Erstellen eines Flow
 1. Melden Sie sich bei [Microsoft Flow](http://flow.microsoft.com) an, und wählen Sie **Meine Flows** aus.
-2. Klicken Sie auf **Flow ohne Vorlage erstellen**.
+1. Klicken Sie auf **Flow ohne Vorlage erstellen**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Schritt 2: Erstellen eines Triggers für Ihren Flow
 1. Wählen Sie **Zeitplan** und anschließend **Zeitplan – Wiederholung** aus.
-2. Wählen Sie im Feld **Häufigkeit** die Option **Tag** aus, und geben Sie im Feld **Intervall** den Wert **1** ein.
+1. Wählen Sie im Feld **Häufigkeit** die Option **Tag** aus, und geben Sie im Feld **Intervall** den Wert **1** ein.
 
     ![Trigger-Dialogfeld für Microsoft Flow](./media/app-insights-automate-with-flow/flow1.png)
 
 
 ### <a name="step-3-add-an-application-insights-action"></a>Schritt 3: Hinzufügen einer Application Insights-Aktion
 1. Klicken Sie auf **Neuer Schritt** und anschließend auf **Aktion hinzufügen**.
-2. Suchen Sie nach **Azure Application Insights**.
-3. Klicken Sie auf **Azure Application Insights – Visualize Analytics query Preview** (Azure Application Insights – Analytics-Abfrage visualisieren (Vorschau)).
+1. Suchen Sie nach **Azure Application Insights**.
+1. Klicken Sie auf **Azure Application Insights – Visualize Analytics query Preview** (Azure Application Insights – Analytics-Abfrage visualisieren (Vorschau)).
 
     ![Fenster „Analytics-Abfrage ausführen“](./media/app-insights-automate-with-flow/flow2.png)
 
@@ -84,12 +84,12 @@ Vergewissern Sie sich beim Erstellen eigener Abfragen, dass sie ordnungsgemäß 
 ### <a name="step-6-configure-the-flow-to-send-email"></a>Schritt 6: Konfigurieren des Flow zum Senden von E-Mails
 
 1. Klicken Sie auf **Neuer Schritt** und anschließend auf **Aktion hinzufügen**.
-2. Suchen Sie nach **Office 365 Outlook**.
-3. Klicken Sie auf **Office 365 Outlook – E-Mail senden**.
+1. Suchen Sie nach **Office 365 Outlook**.
+1. Klicken Sie auf **Office 365 Outlook – E-Mail senden**.
 
     ![Fenster zum Auswählen von Office 365 Outlook](./media/app-insights-automate-with-flow/flow2b.png)
 
-4. Gehen Sie im Fenster **E-Mail senden** wie folgt vor:
+1. Gehen Sie im Fenster **E-Mail senden** wie folgt vor:
 
    a. Geben Sie die E-Mail-Adresse des Empfängers ein.
 
@@ -101,7 +101,7 @@ Vergewissern Sie sich beim Erstellen eigener Abfragen, dass sie ordnungsgemäß 
 
     ![Konfiguration von Office 365 Outlook](./media/app-insights-automate-with-flow/flow5.png)
 
-5. Gehen Sie im dynamischen Inhaltsmenü wie folgt vor:
+1. Gehen Sie im dynamischen Inhaltsmenü wie folgt vor:
 
     a. Wählen Sie **Anlagenname** aus.
 

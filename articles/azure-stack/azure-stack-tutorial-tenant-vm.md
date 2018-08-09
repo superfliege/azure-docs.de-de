@@ -16,12 +16,12 @@ ms.date: 06/07/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 9329cb0dbfa24cf239b820573ef7f642cdca9103
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 6bd722801202f5cdff2882c29895ae06fecbbcb8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248158"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39425362"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Tutorial: Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
 
@@ -50,23 +50,23 @@ Angebote sind Gruppen mit einem oder mehreren Plänen, die Anbieter Benutzern zu
 
    ![Neues Angebot](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-2. Geben Sie unter **Neues Angebot** einen Wert für **Anzeigename** und **Ressourcenname** an, und wählen Sie anschließend eine neue oder vorhandene **Ressourcengruppe** aus. Der Anzeigename ist der verständliche Anzeigename des Angebots. Nur der Cloudbetreiber kann den Ressourcennamen sehen. Es handelt sich um den Namen, mit dem Administratoren das Angebot als Azure-Ressourcen-Manager-Ressource bearbeiten.
+1. Geben Sie unter **Neues Angebot** einen Wert für **Anzeigename** und **Ressourcenname** an, und wählen Sie anschließend eine neue oder vorhandene **Ressourcengruppe** aus. Der Anzeigename ist der verständliche Anzeigename des Angebots. Nur der Cloudbetreiber kann den Ressourcennamen sehen. Es handelt sich um den Namen, mit dem Administratoren das Angebot als Azure-Ressourcen-Manager-Ressource bearbeiten.
 
    ![Anzeigename](media/azure-stack-tutorial-tenant-vm/image02.png)
 
-3. Klicken Sie auf **Basispläne** und im Abschnitt **Plan** auf **Hinzufügen**, um dem Angebot einen neuen Plan hinzuzufügen.
+1. Klicken Sie auf **Basispläne** und im Abschnitt **Plan** auf **Hinzufügen**, um dem Angebot einen neuen Plan hinzuzufügen.
 
    ![Hinzufügen eines Plans](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-4. Geben Sie im Abschnitt **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Anzeigename des Plans, der für Benutzer angezeigt wird. Nur der Cloudbetreiber kann den Ressourcennamen sehen. Dieser Name wird von Cloudbetreibern verwendet, um mit dem Plan als Azure Resource Manager-Ressource zu arbeiten.
+1. Geben Sie im Abschnitt **Neuer Plan** Werte für die Optionen **Anzeigename** und **Ressourcenname** ein. Der Anzeigename ist der verständliche Anzeigename des Plans, der für Benutzer angezeigt wird. Nur der Cloudbetreiber kann den Ressourcennamen sehen. Dieser Name wird von Cloudbetreibern verwendet, um mit dem Plan als Azure Resource Manager-Ressource zu arbeiten.
 
    ![Anzeigename des Plans](media/azure-stack-tutorial-tenant-vm/image04.png)
 
-5. Klicken Sie auf **Dienste**. Wählen Sie in der Liste der Dienste **Microsoft.Compute**, **Microsoft.Network** und **Microsoft.Storage** aus. Klicken Sie auf **Auswählen**, um diese Dienste zum Plan hinzuzufügen.
+1. Klicken Sie auf **Dienste**. Wählen Sie in der Liste der Dienste **Microsoft.Compute**, **Microsoft.Network** und **Microsoft.Storage** aus. Klicken Sie auf **Auswählen**, um diese Dienste zum Plan hinzuzufügen.
 
    ![Dienste des Plans](media/azure-stack-tutorial-tenant-vm/image05.png)
 
-6. Klicken Sie auf **Kontingente**, und wählen Sie dann den ersten Dienst aus, für den Sie ein Kontingent erstellen möchten. Verwenden Sie für ein IaaS-Kontingent das folgende Beispiel als Leitfaden für das Konfigurieren von Kontingenten für den Compute-, den Netzwerk- und den Storage-Dienst.
+1. Klicken Sie auf **Kontingente**, und wählen Sie dann den ersten Dienst aus, für den Sie ein Kontingent erstellen möchten. Verwenden Sie für ein IaaS-Kontingent das folgende Beispiel als Leitfaden für das Konfigurieren von Kontingenten für den Compute-, den Netzwerk- und den Storage-Dienst.
 
    - Erstellen Sie zunächst ein Kontingent für den Computedienst. Wählen Sie in der Liste mit den Namespaces **Microsoft.Compute** aus, und klicken Sie anschließend auf **Neues Kontingent erstellen**.
 
@@ -82,15 +82,15 @@ Angebote sind Gruppen mit einem oder mehreren Plänen, die Anbieter Benutzern zu
 
       Wiederholen Sie diese Schritte für den Netzwerk- und den Storage-Dienst. Wenn Sie fertig sind, klicken Sie unter **Kontingente** auf **OK**, um alle Kontingente zu speichern.
 
-7. Klicken Sie unter **Neuer Plan** auf **OK**.
+1. Klicken Sie unter **Neuer Plan** auf **OK**.
 
-8. Wählen Sie unter **Plan** den neuen Plan aus, und klicken Sie auf **Auswählen**.
+1. Wählen Sie unter **Plan** den neuen Plan aus, und klicken Sie auf **Auswählen**.
 
-9. Klicken Sie unter **Neues Angebot** auf **Erstellen**. Sie erhalten eine Benachrichtigung, wenn das Angebot erstellt wird.
+1. Klicken Sie unter **Neues Angebot** auf **Erstellen**. Sie erhalten eine Benachrichtigung, wenn das Angebot erstellt wird.
 
-10. Klicken Sie im Dashboardmenü auf **Angebote** und dann auf das von Ihnen erstellte Angebot.
+1. Klicken Sie im Dashboardmenü auf **Angebote** und dann auf das von Ihnen erstellte Angebot.
 
-11. Klicken Sie auf **Status ändern** und dann auf **Öffentlich**.
+1. Klicken Sie auf **Status ändern** und dann auf **Öffentlich**.
 
     ![Status „Öffentlich“](media/azure-stack-tutorial-tenant-vm/image09.png)
 
@@ -123,7 +123,7 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
    >[!NOTE]
    >Nach dem Abonnieren eines Angebots müssen Sie das Portal unter Umständen aktualisieren, um anzuzeigen, welche Dienste zum neuen Abonnement gehören.
 
-2. **Bereitstellen von virtuellen Computern**
+1. **Bereitstellen von virtuellen Computern**
 
    Über das Benutzerportal können Sie einen virtuellen Computer mithilfe des neuen Abonnements bereitstellen.
 

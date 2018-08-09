@@ -16,12 +16,12 @@ ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 911e65719bff0a86e3280482296bbb320fd30377
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: fb52949bf5616c8639caa1f3fab860597648ec89
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801829"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504589"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Ermitteln der Strategie für die Übernahme des Hybrididentitätslebenszyklus
 In dieser Aufgabe definieren Sie die Identitätsverwaltungsstrategie für Ihre Hybrididentitätslösung, um die geschäftlichen Anforderungen zu erfüllen, die Sie in [Ermitteln von Aufgaben der Hybrididentitätsverwaltung](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)definiert haben.
@@ -73,7 +73,7 @@ Lizenzbasierte (berechtigungsbasierte) Azure AD-Dienste funktionieren durch die 
 
 ## <a name="integration-with-other-3rd-party-providers"></a>Integration mit anderen Drittanbietern
 
-Azure Active Directory bietet einmaliges Anmelden und erweiterte Anwendungszugriffssicherheit bei Tausenden von SaaS-Anwendungen und lokalen Webanwendungen. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+Azure Active Directory bietet einmaliges Anmelden und erweiterte Anwendungszugriffssicherheit bei Tausenden von SaaS-Anwendungen und lokalen Webanwendungen. Weitere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
 ## <a name="define-synchronization-management"></a>Definieren der Synchronisierungsverwaltung
 Die Integration Ihrer lokalen Verzeichnisse in Azure AD steigert die Produktivität Ihrer Benutzer, da für den Zugriff auf die Cloud und lokale Ressourcen nur eine Identität benötigt wird. Mit dieser Integration können Benutzer und Organisationen die folgenden Vorteile nutzen:

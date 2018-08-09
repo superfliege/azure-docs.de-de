@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: d6235f3a425481a13e627d683bb4c3943b473b40
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 25d40b6a72ab6da61feb1458f5930eb48ef1d900
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311074"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436300"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Einrichten einer gemeinsamen Identität für Data Science Virtual Machine
 
@@ -60,12 +60,12 @@ Azure AD DS vereinfacht die Verwaltung Ihrer Identitäten, indem Ihnen ein volls
     
    h. Sorgen Sie für eine sichere Übermittlung des generierten Kennworts an den neuen Benutzer, damit sich dieser anmelden kann.
 
-2. Erstellen Sie eine Azure AD DS-Instanz. Befolgen Sie hierfür die Anweisungen im Artikel [Aktivieren der Azure Active Directory Domain Services mithilfe des Azure-Portals](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (Aufgabe 1 bis 5). Es ist wichtig, die vorhandenen Benutzerkennwörter in Active Directory zu aktualisierten, damit das Kennwort in den Azure AD DS synchronisiert wird. Es ist auch wichtig, das DNS zu den Azure AD DS hinzuzufügen, wie in Aufgabe 4 des Artikels beschrieben wird. 
+1. Erstellen Sie eine Azure AD DS-Instanz. Befolgen Sie hierfür die Anweisungen im Artikel [Aktivieren der Azure Active Directory Domain Services mithilfe des Azure-Portals](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (Aufgabe 1 bis 5). Es ist wichtig, die vorhandenen Benutzerkennwörter in Active Directory zu aktualisierten, damit das Kennwort in den Azure AD DS synchronisiert wird. Es ist auch wichtig, das DNS zu den Azure AD DS hinzuzufügen, wie in Aufgabe 4 des Artikels beschrieben wird. 
 
-3. Erstellen Sie ein separates DSVM-Subnetz im virtuellen Netzwerk, das in Aufgabe 2 des vorherigen Schritts erstellt wurde.
-4. Erstellen Sie eine oder mehrere Data Science VM-Instanzen im DSVM-Subnetz. 
-5. Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) zum Hinzufügen von DSVM zu Active Directory. 
-6. Binden Sie als Nächstes eine Azure Files-Freigabe zum Hosten Ihres Stamm- oder Notebookverzeichnisses ein, damit Ihr Arbeitsbereich auf jedem Computer eingebunden werden kann. (Wenn Sie strenge Berechtigungen auf Dateiebene benötigen, muss das NFS auf einer oder mehreren VMs ausgeführt werden.)
+1. Erstellen Sie ein separates DSVM-Subnetz im virtuellen Netzwerk, das in Aufgabe 2 des vorherigen Schritts erstellt wurde.
+1. Erstellen Sie eine oder mehrere Data Science VM-Instanzen im DSVM-Subnetz. 
+1. Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) zum Hinzufügen von DSVM zu Active Directory. 
+1. Binden Sie als Nächstes eine Azure Files-Freigabe zum Hosten Ihres Stamm- oder Notebookverzeichnisses ein, damit Ihr Arbeitsbereich auf jedem Computer eingebunden werden kann. (Wenn Sie strenge Berechtigungen auf Dateiebene benötigen, muss das NFS auf einer oder mehreren VMs ausgeführt werden.)
 
    a. [Erstellen Sie eine Azure Files-Freigabe](../../storage/files/storage-how-to-create-file-share.md).
     
@@ -74,8 +74,8 @@ Azure AD DS vereinfacht die Verwaltung Ihrer Identitäten, indem Ihnen ein volls
    ```
    sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
    ```
-7. Es wird davon ausgegangen, dass Sie Ihre Azure Files-Freigabe z.B. in „/data/workspace“ eingebunden haben. Erstellen Sie nun Verzeichnisse für jeden Benutzer in der Freigabe, wie „/data/workspace/user1“, „/data/workspace/user2“ etc. Erstellen Sie ein `notebooks`-Verzeichnis im Arbeitsbereich der einzelnen Benutzer. 
-8. Erstellen Sie symbolische Verknüpfungen für `notebooks` in `$HOME/userx/notebooks/remote`.   
+1. Es wird davon ausgegangen, dass Sie Ihre Azure Files-Freigabe z.B. in „/data/workspace“ eingebunden haben. Erstellen Sie nun Verzeichnisse für jeden Benutzer in der Freigabe, wie „/data/workspace/user1“, „/data/workspace/user2“ etc. Erstellen Sie ein `notebooks`-Verzeichnis im Arbeitsbereich der einzelnen Benutzer. 
+1. Erstellen Sie symbolische Verknüpfungen für `notebooks` in `$HOME/userx/notebooks/remote`.   
 
 Jetzt sind die Benutzer in Ihrer Active Directory-Instanz enthalten, die in Azure gehostet wird. Mithilfe der Active Directory-Anmeldeinformationen können sich Benutzer bei einer beliebigen DSVM-Instanz (SSH oder JupyterHub) anmelden, die in die Azure AD DS eingebunden ist. Da sich der Benutzerarbeitsbereich in einer Azure Files-Freigabe befindet, haben Benutzer über jede DSVM-Instanz mithilfe von JupyterHub Zugriff auf ihre Notebooks und auf sonstige Arbeiten. 
 

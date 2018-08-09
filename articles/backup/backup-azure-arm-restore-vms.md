@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: markgal
-ms.openlocfilehash: 52ca7cf4a04ace2a43f15433c05a2db26bde3602
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 872bfc0027fd5b69bb42f391c036f7116789f529
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605592"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39431146"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:
@@ -39,34 +39,34 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
 ## <a name="select-a-restore-point-for-restore"></a>Auswählen eines Wiederherstellungspunkts für die Wiederherstellung
 1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com/) an.
 
-2. Klicken Sie im Azure-Menü auf **Durchsuchen**. Geben Sie in der Liste mit den Diensten **Recovery Services** ein. Die Liste der Dienste wird während der Eingabe angepasst. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
+1. Klicken Sie im Azure-Menü auf **Durchsuchen**. Geben Sie in der Liste mit den Diensten **Recovery Services** ein. Die Liste der Dienste wird während der Eingabe angepasst. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
     ![Recovery Services-Tresor](./media/backup-azure-arm-restore-vms/open-recovery-services-vault.png)
 
     Die Liste der Tresore im Abonnement wird angezeigt.
 
     ![Liste der Recovery Services-Tresore](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
-3. Wählen Sie aus der Liste den Tresor aus, der dem virtuellen Computer zugeordnet ist, den Sie wiederherstellen möchten. Wenn Sie den Tresor auswählen, wird das zugehörige Dashboard geöffnet.
+1. Wählen Sie aus der Liste den Tresor aus, der dem virtuellen Computer zugeordnet ist, den Sie wiederherstellen möchten. Wenn Sie den Tresor auswählen, wird das zugehörige Dashboard geöffnet.
 
     ![Ausgewählter Recovery Services-Tresor](./media/backup-azure-arm-restore-vms/select-vault-open-vault-blade.png)
-4. Klicken Sie im Tresordashboard auf der Kachel **Sicherungselemente** auf **Virtuelle Azure-Computer**.
+1. Klicken Sie im Tresordashboard auf der Kachel **Sicherungselemente** auf **Virtuelle Azure-Computer**.
 
     ![Tresordashboard](./media/backup-azure-arm-restore-vms/vault-dashboard.png)
 
     Das Blatt **Sicherungselemente** wird geöffnet und zeigt die Liste der virtuellen Azure-Computer an.
 
     ![Liste der virtuellen Computer im Tresor](./media/backup-azure-arm-restore-vms/list-of-vms-in-vault.png)
-5. Wählen Sie in der Liste einen virtuellen Computer aus, um auf das Dashboard zu öffnen. Das VM-Dashboard wird geöffnet und zeigt den Überwachungsbereich an, der die Kachel **Wiederherstellungspunkte** enthält.
+1. Wählen Sie in der Liste einen virtuellen Computer aus, um auf das Dashboard zu öffnen. Das VM-Dashboard wird geöffnet und zeigt den Überwachungsbereich an, der die Kachel **Wiederherstellungspunkte** enthält.
 
     ![Wiederherstellungspunkte](./media/backup-azure-arm-restore-vms/vm-blade.png)
-6. Klicken Sie im Dashboardmenü des virtuellen Computers auf **Wiederherstellen**.
+1. Klicken Sie im Dashboardmenü des virtuellen Computers auf **Wiederherstellen**.
 
     ![Schaltfläche „Wiederherstellen“](./media/backup-azure-arm-restore-vms/vm-blade-menu-restore.png)
 
     Das Blatt **Wiederherstellen** wird geöffnet.
 
     ![Blatt „Wiederherstellen“](./media/backup-azure-arm-restore-vms/restore-blade.png)
-7. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellungspunkt**. Das Blatt **Wiederherstellungspunkt auswählen** wird geöffnet.
+1. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellungspunkt**. Das Blatt **Wiederherstellungspunkt auswählen** wird geöffnet.
 
     ![Auswählen eines Wiederherstellungspunkts](./media/backup-azure-arm-restore-vms/recovery-point-selector.png)
 
@@ -79,13 +79,13 @@ Das Wiederherstellen eines virtuellen Computers oder aller Datenträger aus eine
      * Dateisystemkonsistente Wiederherstellungspunkte
      * Alle Wiederherstellungspunkte
 
-8. Wählen Sie einen Wiederherstellungspunkt aus, und klicken Sie auf **OK**.
+1. Wählen Sie einen Wiederherstellungspunkt aus, und klicken Sie auf **OK**.
 
     ![Optionen für Wiederherstellungspunkte](./media/backup-azure-arm-restore-vms/select-recovery-point.png)
 
     Auf dem Blatt **Wiederherstellen** wird angezeigt, dass der Wiederherstellungspunkt festgelegt ist.
 
-9. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-a-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
+1. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-a-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
 
 ## <a name="choose-a-vm-restore-configuration"></a>Auswählen einer Konfiguration für die VM-Wiederherstellung
 Wählen Sie nach der Auswahl des Wiederherstellungspunkts eine Konfiguration für die VM-Wiederherstellung aus. Zum Konfigurieren des wiederhergestellten virtuellen Computers können Sie das Azure-Portal oder PowerShell verwenden.
@@ -93,7 +93,7 @@ Wählen Sie nach der Auswahl des Wiederherstellungspunkts eine Konfiguration fü
 1. Wechseln Sie zum Blatt **Wiederherstellen**, sofern Sie sich nicht bereits dort befinden. Stellen Sie sicher, dass [ein Wiederherstellungspunkt ausgewählt ist](#select-a-restore-point-for-restore), und klicken Sie auf **Wiederherstellungskonfiguration**. Das Blatt **Wiederherstellungskonfiguration** wird geöffnet.
 
     ![Assistent für die Wiederherstellungskonfiguration](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard-recovery-type.png)
-2. Auf dem Blatt **Wiederherstellungskonfiguration** haben Sie zwei Möglichkeiten:
+1. Auf dem Blatt **Wiederherstellungskonfiguration** haben Sie zwei Möglichkeiten:
 
    * **Virtuellen Computer erstellen**
 
@@ -127,7 +127,7 @@ Das Portal bietet für einen wiederhergestellten virtuellen Computer die Option 
     >
     >
 
-2. Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die Wiederherstellungskonfiguration abzuschließen. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
+1. Klicken Sie auf dem Blatt **Wiederherstellungskonfiguration** auf **OK**, um die Wiederherstellungskonfiguration abzuschließen. Klicken Sie auf dem Blatt **Wiederherstellen** auf **Wiederherstellen**, um den Wiederherstellungsvorgang auszulösen.
 
 ## <a name="restore-backed-up-disks"></a>Wiederherstellen von gesicherten Datenträgern
 Wenn Sie den virtuellen Computer, der auf der Grundlage von gesicherten Datenträgern wiederhergestellt werden soll, abweichend von den aktuellen Informationen auf dem Blatt **Wiederherstellungskonfiguration** anpassen möchten, wählen Sie für **Wiederherstellungstyp** die Option **Datenträger wiederherstellen** aus. Bei dieser Option muss ein Speicherkonto angegeben werden, in das die Datenträger aus den Sicherungen kopiert werden. Wählen Sie bei der Auswahl eines Speicherkontos ein Konto aus, das sich am gleichen Standort wie der Recovery Services-Tresor befindet. Zonenredundante Speicherkonten werden nicht unterstützt. Wenn keine Speicherkonten mit dem gleichen Standort wie der Recovery Services-Tresor vorhanden sind, müssen Sie vor dem Starten des Wiederherstellungsvorgangs eins erstellen. Der Replikationstyp des Speicherkontos wird in Klammern angezeigt.
@@ -156,9 +156,9 @@ Um den Vorgang während seiner Verarbeitung oder nach seinem Abschluss anzuzeige
     Die Liste der Tresore im Abonnement wird angezeigt.
 
     ![Liste der Recovery Services-Tresore](./media/backup-azure-arm-restore-vms/list-of-rs-vaults.png)
-2. Wählen Sie aus der Liste den Tresor aus, der dem wiederhergestellten virtuellen Computer zugeordnet ist. Wenn Sie den Tresor auswählen, wird das zugehörige Dashboard geöffnet.
+1. Wählen Sie aus der Liste den Tresor aus, der dem wiederhergestellten virtuellen Computer zugeordnet ist. Wenn Sie den Tresor auswählen, wird das zugehörige Dashboard geöffnet.
 
-3. Klicken Sie auf dem Tresordashboard in der Kachel **Sicherungsaufträge** auf **Virtuelle Azure-Computer**, um die dem Tresor zugeordneten Aufträge anzuzeigen.
+1. Klicken Sie auf dem Tresordashboard in der Kachel **Sicherungsaufträge** auf **Virtuelle Azure-Computer**, um die dem Tresor zugeordneten Aufträge anzuzeigen.
 
     ![Tresordashboard](./media/backup-azure-arm-restore-vms/vault-dashboard-jobs.png)
 
@@ -178,15 +178,15 @@ Gehen Sie wie folgt vor, um die im Rahmen der Datenträgerwiederherstellung gene
 
 1. Wechseln Sie zu den Details des Wiederherstellungsauftrags für den Auftrag.
 
-2. Klicken Sie auf dem Bildschirm **Restore Job Details** (Details zum Wiederherstellungsauftrag) auf **Vorlage bereitstellen**, um die Vorlagenbereitstellung zu initiieren. 
+1. Klicken Sie auf dem Bildschirm **Restore Job Details** (Details zum Wiederherstellungsauftrag) auf **Vorlage bereitstellen**, um die Vorlagenbereitstellung zu initiieren. 
 
      ![Drilldown des Wiederherstellungsauftrags](./media/backup-azure-arm-restore-vms/restore-job-drill-down.png)
    
-3. Verwenden Sie auf dem Blatt **Vorlage bereitstellen** für die benutzerdefinierte Bereitstellung die Vorlagenbereitstellung, um [die Vorlage zu bearbeiten und bereitzustellen](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), oder fügen Sie durch [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) vor der Bereitstellung weitere Anpassungen hinzu. 
+1. Verwenden Sie auf dem Blatt **Vorlage bereitstellen** für die benutzerdefinierte Bereitstellung die Vorlagenbereitstellung, um [die Vorlage zu bearbeiten und bereitzustellen](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), oder fügen Sie durch [Erstellen einer Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) vor der Bereitstellung weitere Anpassungen hinzu. 
 
    ![Laden der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/loading-template.png)
    
-4. Akzeptieren Sie nach der Eingabe der erforderlichen Werte die **Geschäftsbedingungen**, und klicken Sie auf **Kaufen**.
+1. Akzeptieren Sie nach der Eingabe der erforderlichen Werte die **Geschäftsbedingungen**, und klicken Sie auf **Kaufen**.
 
    ![Übermitteln der Vorlagenbereitstellung](./media/backup-azure-arm-restore-vms/submitting-template.png)
 
@@ -233,7 +233,7 @@ Zum vollständigen Neuerstellen der virtuellen Computer nach der Wiederherstellu
 
 1. Stellen Sie die Datenträger mit [PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm) aus einem Recovery Services-Tresor wieder her.
 
-2. Erstellen Sie die für den Lastenausgleich/mehrere NICs/mehrere reservierte IP-Adressen erforderliche VM-Konfiguration mithilfe der PowerShell-Cmdlets. Verwenden Sie sie zum Erstellen des virtuellen Computers mit der gewünschten Konfiguration:
+1. Erstellen Sie die für den Lastenausgleich/mehrere NICs/mehrere reservierte IP-Adressen erforderliche VM-Konfiguration mithilfe der PowerShell-Cmdlets. Verwenden Sie sie zum Erstellen des virtuellen Computers mit der gewünschten Konfiguration:
 
    a. Erstellen Sie den virtuellen Computer im Clouddienst mit einem [internem Lastenausgleich](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/).
 

@@ -10,12 +10,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: cc1c9c9385d34f317ff911d131058b9210065edf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: eca5e308399b9fb694a8e5060d72c12790a8f78d
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237042"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434957"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatisieren der Replikation von Schemaänderungen in der Azure SQL-Datensynchronisierung
 
@@ -23,9 +23,9 @@ Mit der SQL-Datensynchronisierung können Benutzer Daten zwischen Azure SQL-Date
 
 Dieser Artikel stellt eine Lösung zur automatisierten Replikation von Schemaänderungen auf alle Endpunkte der SQL-Datensynchronisierung vor.
 1. Diese Lösung nutzt einen DDL-Trigger, um Schemaänderungen nachzuverfolgen.
-2. Durch den Trigger werden die Befehle für die Schemaänderung in eine Nachverfolgungstabelle eingefügt.
-3. Diese Nachverfolgungstabelle wird über den Datensynchronisierungsdienst mit allen Endpunkten synchronisiert.
-4. DML-Trigger nach dem Einfügen werden verwendet, um die Schemaänderungen auf die anderen Endpunkte anzuwenden.
+1. Durch den Trigger werden die Befehle für die Schemaänderung in eine Nachverfolgungstabelle eingefügt.
+1. Diese Nachverfolgungstabelle wird über den Datensynchronisierungsdienst mit allen Endpunkten synchronisiert.
+1. DML-Trigger nach dem Einfügen werden verwendet, um die Schemaänderungen auf die anderen Endpunkte anzuwenden.
 
 In diesem Artikel wird ALTER TABLE als Beispiel für eine Schemaänderung verwendet, aber diese Lösung funktioniert auch für andere Arten von Schemaänderungen.
 
@@ -136,31 +136,31 @@ Nachdem die Schemaänderungen an allen Endpunkten repliziert wurden, müssen Sie
 
 1.  Nehmen Sie die Schemaänderung vor.
 
-2.  Vermeiden Sie jede Datenänderung an den neuen Spalten, bis Sie den Schritt zum Erstellen des Triggers abgeschlossen haben.
+1.  Vermeiden Sie jede Datenänderung an den neuen Spalten, bis Sie den Schritt zum Erstellen des Triggers abgeschlossen haben.
 
-3.  Warten Sie, bis die Schemaänderungen für alle Endpunkte übernommen wurden.
+1.  Warten Sie, bis die Schemaänderungen für alle Endpunkte übernommen wurden.
 
-4.  Aktualisieren Sie das Datenbankschema, und fügen Sie die neue Spalte dem Synchronisierungsschema hinzu.
+1.  Aktualisieren Sie das Datenbankschema, und fügen Sie die neue Spalte dem Synchronisierungsschema hinzu.
 
-5.  Die Daten in der neuen Spalte werden beim nächsten Synchronisierungsvorgang synchronisiert.
+1.  Die Daten in der neuen Spalte werden beim nächsten Synchronisierungsvorgang synchronisiert.
 
 #### <a name="remove-columns"></a>Entfernen von Spalten
 
 1.  Entfernen Sie die Spalten aus dem Synchronisierungsschema. Die Datensynchronisierung hält die Synchronisierung der Daten in diesen Spalten an.
 
-2.  Nehmen Sie die Schemaänderung vor.
+1.  Nehmen Sie die Schemaänderung vor.
 
-3.  Aktualisieren Sie das Datenbankschema.
+1.  Aktualisieren Sie das Datenbankschema.
 
 #### <a name="update-data-types"></a>Aktualisieren von Datentypen
 
 1.  Nehmen Sie die Schemaänderung vor.
 
-2.  Warten Sie, bis die Schemaänderungen für alle Endpunkte übernommen wurden.
+1.  Warten Sie, bis die Schemaänderungen für alle Endpunkte übernommen wurden.
 
-3.  Aktualisieren Sie das Datenbankschema.
+1.  Aktualisieren Sie das Datenbankschema.
 
-4.  Wenn der neue und der alte Datentyp nicht vollständig kompatibel sind, z.B. wenn Sie von `int` zu `bigint` wechseln, tritt möglicherweise ein Synchronisierungsfehler auf, bevor die Schritte zum Erstellen des Triggers abgeschlossen sind. Die Synchronisierung ist bei einem erneuten Versuch erfolgreich.
+1.  Wenn der neue und der alte Datentyp nicht vollständig kompatibel sind, z.B. wenn Sie von `int` zu `bigint` wechseln, tritt möglicherweise ein Synchronisierungsfehler auf, bevor die Schritte zum Erstellen des Triggers abgeschlossen sind. Die Synchronisierung ist bei einem erneuten Versuch erfolgreich.
 
 #### <a name="rename-columns-or-tables"></a>Umbenennen von Spalten oder Tabellen
 
@@ -176,25 +176,25 @@ Die in diesem Artikel beschriebene Replikationslogik funktioniert in einigen Sit
 
 1.  Deaktivieren Sie den DDL-Trigger, und vermeiden Sie weitere Schemaänderungen, bis das Problem behoben ist.
 
-2.  Deaktivieren Sie in der Endpunktdatenbank, in der das Problem auftritt, den AFTER INSERT-Trigger an dem Endpunkt, an dem die Schemaänderung nicht vorgenommen werden kann. Durch diese Aktion kann der Schemaänderungsbefehl synchronisiert werden.
+1.  Deaktivieren Sie in der Endpunktdatenbank, in der das Problem auftritt, den AFTER INSERT-Trigger an dem Endpunkt, an dem die Schemaänderung nicht vorgenommen werden kann. Durch diese Aktion kann der Schemaänderungsbefehl synchronisiert werden.
 
-3.  Lösen Sie den Synchronisierungsvorgang aus, um die Tabelle der Schemaänderungsnachverfolgung zu synchronisieren.
+1.  Lösen Sie den Synchronisierungsvorgang aus, um die Tabelle der Schemaänderungsnachverfolgung zu synchronisieren.
 
-4.  In der Endpunktdatenbank, in der das Problem auftritt, fragen Sie die Verlaufstabelle für die Schemaänderungen ab, um die ID des zuletzt angewandten Schemaänderungsbefehls zu erhalten.
+1.  In der Endpunktdatenbank, in der das Problem auftritt, fragen Sie die Verlaufstabelle für die Schemaänderungen ab, um die ID des zuletzt angewandten Schemaänderungsbefehls zu erhalten.
 
-5.  Fragen Sie die Tabelle der Schemaänderungsnachverfolgung ab, um alle Befehle aufzulisten, deren ID größer ist als der ID-Wert, den Sie im vorherigen Schritt abgerufen haben.
+1.  Fragen Sie die Tabelle der Schemaänderungsnachverfolgung ab, um alle Befehle aufzulisten, deren ID größer ist als der ID-Wert, den Sie im vorherigen Schritt abgerufen haben.
 
     a.  Ignorieren Sie die Befehle, die in der Endpunktdatenbank nicht ausgeführt werden können. Es ist erforderlich, dass Sie sich mit der Schemainkonsistenz befassen. Nehmen Sie die Änderungen am ursprünglichen Schema zurück, wenn sich die Inkonsistenz auf Ihre Anwendung auswirkt.
 
     b.  Wenden Sie die Befehle, die angewendet werden sollen, manuell an.
 
-6.  Aktualisieren Sie die Verlaufstabelle für die Schemaänderungen, und setzen Sie die zuletzt verwendete ID auf den richtigen Wert.
+1.  Aktualisieren Sie die Verlaufstabelle für die Schemaänderungen, und setzen Sie die zuletzt verwendete ID auf den richtigen Wert.
 
-7.  Überprüfen Sie nochmals, ob das Schema aktuell ist.
+1.  Überprüfen Sie nochmals, ob das Schema aktuell ist.
 
-8.  Aktivieren Sie erneut den im zweiten Schritt deaktivierten AFTER INSERT-Trigger.
+1.  Aktivieren Sie erneut den im zweiten Schritt deaktivierten AFTER INSERT-Trigger.
 
-9.  Aktivieren Sie erneut den im ersten Schritt deaktivierten DDL-Trigger.
+1.  Aktivieren Sie erneut den im ersten Schritt deaktivierten DDL-Trigger.
 
 Wenn Sie die Datensätze in der Tabelle der Schemaänderungsnachverfolgung bereinigen möchten, verwenden Sie DELETE anstelle von TRUNCATE. Führen Sie niemals ein erneutes Seeding für die Identitätsspalte in der Tabelle der Schemaänderungsnachverfolgung mithilfe von DBCC CHECKIDENT aus. Sie können neue Tabellen der Schemaänderungsnachverfolgung erstellen und den Tabellennamen im DDL-Trigger aktualisieren, wenn ein erneutes Seeding erforderlich ist.
 

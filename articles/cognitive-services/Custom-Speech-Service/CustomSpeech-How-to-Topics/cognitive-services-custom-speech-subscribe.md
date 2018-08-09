@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: fcef86a19a77581ff82b64173e2ac68b26ae708a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d3969114323f5675c5e14ab36990b124e84ead37
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373099"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427566"
 ---
 # <a name="obtain-subscription-keys"></a>Erhalten von Abonnementschlüsseln
 Zunächst müssen Sie mit Azure Custom Speech Service Ihr Benutzerkonto mit einem Azure-Abonnement verknüpfen. Es stehen Abonnements im Free-Tarif und in zahlungspflichtigen Tarifen zur Verfügung. Informationen zu den Tarifen finden Sie auf der [Seite mit den Preisangaben](https://www.microsoft.com/cognitive-services/en-us/pricing).
@@ -31,7 +31,7 @@ Zunächst müssen Sie mit Azure Custom Speech Service Ihr Benutzerkonto mit eine
         ![Cognitive Services-APIs](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-subscription2.png)
 
     
-2. Füllen Sie die erforderlichen Felder wie folgt aus:
+1. Füllen Sie die erforderlichen Felder wie folgt aus:
 
       a. **Kontoname**. Wählen Sie den gewünschten Namen aus. Notieren Sie sich diesen Namen, um Ihr Cognitive Services-Abonnement in der Ressourcenliste finden zu können.
 
@@ -45,7 +45,7 @@ Zunächst müssen Sie mit Azure Custom Speech Service Ihr Benutzerkonto mit eine
 
       ![Erstellung eines Cognitive Services-Kontos](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-blade.png)
 
-3. Sie sollten entweder eine Ansicht auf Ihrem Dashboard oder einen Dienst mit dem angegebenen Kontonamen in Ihrer Ressourcenliste vorfinden. Wenn Sie diese Option auswählen, erhalten Sie eine Übersicht über Ihren Dienst. Wählen Sie in der Liste auf der linken Seite unter **Ressourcenverwaltung** die Option **Schlüssel** aus. Kopieren Sie **SCHLÜSSEL 1**.
+1. Sie sollten entweder eine Ansicht auf Ihrem Dashboard oder einen Dienst mit dem angegebenen Kontonamen in Ihrer Ressourcenliste vorfinden. Wenn Sie diese Option auswählen, erhalten Sie eine Übersicht über Ihren Dienst. Wählen Sie in der Liste auf der linken Seite unter **Ressourcenverwaltung** die Option **Schlüssel** aus. Kopieren Sie **SCHLÜSSEL 1**.
 
       Dieser Abonnementschlüssel ist in den nächsten Schritten erforderlich.
 
@@ -57,7 +57,7 @@ Zunächst müssen Sie mit Azure Custom Speech Service Ihr Benutzerkonto mit eine
 
       ![Übersicht über die Abonnement-ID](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-keys.png)
 
-4. Wählen Sie zum Eingeben Ihres Abonnementschlüssels auf dem Menüband in der oberen rechten Ecke Ihr Benutzerkonto aus. Wählen Sie im Dropdownmenü die Option **Abonnements** aus.
+1. Wählen Sie zum Eingeben Ihres Abonnementschlüssels auf dem Menüband in der oberen rechten Ecke Ihr Benutzerkonto aus. Wählen Sie im Dropdownmenü die Option **Abonnements** aus.
 
       ![Menüelement „Abonnements“](../../../media/cognitive-services/custom-speech-service/custom-speech-subscription-selection.png)
 
@@ -65,7 +65,7 @@ Zunächst müssen Sie mit Azure Custom Speech Service Ihr Benutzerkonto mit eine
 
     ![Abonnementtabelle](../../../media/cognitive-services/custom-speech-service/custom-speech-subscription-list.png)
 
-5. Wählen Sie **Neue hinzufügen** aus. Geben Sie einen Namen für das Abonnement und den Abonnementschlüssel ein. Dieser kann entweder **SCHLÜSSEL 1** (Primärschlüssel) oder **SCHLÜSSEL 2** (Sekundärschlüssel) aus Ihrem Abonnement lauten.
+1. Wählen Sie **Neue hinzufügen** aus. Geben Sie einen Namen für das Abonnement und den Abonnementschlüssel ein. Dieser kann entweder **SCHLÜSSEL 1** (Primärschlüssel) oder **SCHLÜSSEL 2** (Sekundärschlüssel) aus Ihrem Abonnement lauten.
 
       ![Name des Abonnementschlüssels](../../../media/cognitive-services/custom-speech-service/custom-speech-enter-subsciption.png)
 

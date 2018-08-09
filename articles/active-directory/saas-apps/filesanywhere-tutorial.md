@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 8d80e537bc031a777ae037f5147b2c84b7e76281
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8a08155dd67c6fcf2fb080325840bc163dc6da60
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215969"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39447355"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Tutorial: Azure Active Directory-Integration mit FilesAnywhere
 
@@ -55,7 +55,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von FilesAnywhere aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 
 ## <a name="adding-filesanywhere-from-the-gallery"></a>Hinzufügen von FilesAnywhere aus dem Katalog
@@ -67,19 +67,19 @@ Zum Konfigurieren der Integration von FilesAnywhere in Azure AD müssen Sie File
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **FilesAnywhere** ein.
+1. Geben Sie im Suchfeld als Suchbegriff **FilesAnywhere** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_search.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **FilesAnywhere** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **FilesAnywhere** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_addfromgallery.png)
 
@@ -94,10 +94,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei FilesAnywhere müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines FilesAnywhere-Testbenutzers](#creating-a-filesanywhere-test-user)**, um in FilesAnywhere einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-3. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-4. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines FilesAnywhere-Testbenutzers](#creating-a-filesanywhere-test-user)**, um in FilesAnywhere einen Gegenpart von Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -107,23 +107,23 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Verwaltungsportal auf der Anwendungsintegrationsseite für **FilesAnywhere** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_samlbase.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für FilesAnywhere** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für FilesAnywhere** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_filesanywhere_url.png)
     
     a. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<company name>.filesanywhere.com/saml20.aspx?c=215`
 > [!NOTE]
 > Beachten Sie, dass der Wert **215** für **clientid** nur ein Beispiel ist. Sie müssen es durch den tatsächlichen clientid-Wert ersetzen.
 
-4. Führen Sie im Abschnitt **Domäne und URLs für FilesAnywhere** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für FilesAnywhere** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
     
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_filesanywhere_url1.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_filesanywhere_url1.png)
 
     a. Klicken Sie auf die Option **Erweiterte URL-Einstellungen anzeigen**.
 
@@ -132,16 +132,16 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     > [!NOTE] 
     > Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und die tatsächliche Antwort-URL ersetzt werden. Wenden Sie sich an das [Supportteam von FilesAnywhere](mailto:support@FilesAnywhere.com), um diese Werte zu erhalten. 
 
-5. Ihre FilesAnywhere-Softwareanwendung erwartet die SAML-Assertions in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+1. Ihre FilesAnywhere-Softwareanwendung erwartet die SAML-Assertions in einem bestimmten Format. Konfigurieren Sie für diese Anwendung die folgenden Ansprüche. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
     
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_filesanywhere_attribute.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_filesanywhere_attribute.png)
     
     Wenn Benutzer sich bei FilesAnywhere registrieren, erhalten sie den Wert des **clientid**-Attributs vom [FilesAnywhere-Team](mailto:support@FilesAnywhere.com). Sie müssen das clientid-Attribut mit dem eindeutigen Wert hinzufügen, der von FilesAnywhere bereitgestellt wurde. Alle oben gezeigten Attribute sind erforderlich.
     > [!NOTE] 
     > Beachten Sie, dass der Wert **2331** von **clientid** nur ein Beispiel ist. Sie müssen den tatsächlichen Wert angeben.
 
 
-6. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
+1. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
     | Attributname | Attributwert |
     | ---------------| --------------- |    
@@ -149,9 +149,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_04.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_04.png)
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_05.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
     
@@ -159,21 +159,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     
     d. Klicken Sie auf **OK**.
 
-7. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_general_400.png)
 
-8. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_certificate.png) 
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_certificate.png) 
 
-9. Klicken Sie im Abschnitt **FilesAnywhere-Konfiguration** auf **FilesAnywhere konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
+1. Klicken Sie im Abschnitt **FilesAnywhere-Konfiguration** auf **FilesAnywhere konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configure.png) 
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configure.png) 
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_configuresignon.png)
 
-10. Um die SSO-Konfiguration für Ihre Anwendung aufseiten von FilesAnywhere abzuschließen, wenden Sie sich an das [FilesAnywhere-Supportteam](mailto:support@FilesAnywhere.com), und geben Sie das heruntergeladene SAML-Tokensignaturzertifikat und die URL für einmaliges Anmelden (SSO) an.
+1.  Um die SSO-Konfiguration für Ihre Anwendung aufseiten von FilesAnywhere abzuschließen, wenden Sie sich an das [FilesAnywhere-Supportteam](mailto:support@FilesAnywhere.com), und geben Sie das heruntergeladene SAML-Tokensignaturzertifikat und die URL für einmaliges Anmelden (SSO) an.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens Britta Simon erstellt.
@@ -186,15 +186,15 @@ In diesem Abschnitt wird im Azure-Verwaltungsportal eine Testbenutzerin namens B
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/filesanywhere-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/filesanywhere-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/filesanywhere-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/filesanywhere-tutorial/create_aaduser_04.png) 
 
@@ -225,23 +225,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **FilesAnywhere** aus.
+1. Wählen Sie in der Anwendungsliste **FilesAnywhere** aus.
 
-    ![Configure Single Sign-On](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_app.png) 
+    ![Configure single sign-on](./media/filesanywhere-tutorial/tutorial_FilesAnywhere_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 
 

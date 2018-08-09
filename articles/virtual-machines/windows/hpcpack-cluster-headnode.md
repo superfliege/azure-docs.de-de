@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 12/29/2016
 ms.author: danlep
-ms.openlocfilehash: acd4cd44dd35a5b1755d9456f683076567d62165
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 70c1d95f704315ee6a481367188e2bb620916702
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30915258"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39428955"
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Erstellen des Hauptknotens eines HPC Pack-Clusters auf einem virtuellen Azure-Computer mit einem Marketplace-Image
 Verwenden Sie ein [Microsoft HPC Pack 2012 R2-Image für einen virtuellen Computer](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) aus Azure Marketplace und das Azure-Portal, um den Hauptknoten eines HPC-Clusters zu erstellen. Das HPC Pack-VM-Image basiert auf Windows Server 2012 R2 Datacenter mit vorinstalliertem HPC Pack 2012 R2 Update 3. Verwenden Sie diesen Hauptknoten für eine Proof of Concept-Bereitstellung von HPC Pack in Azure. Sie können dem Cluster dann Computeknoten zum Ausführen von HPC-Workloads hinzufügen.
@@ -45,22 +45,22 @@ Wie in der folgenden Abbildung gezeigt, stellen Sie den HPC Pack-Hauptknoten in 
 Es folgen allgemeine Schritte zur Verwendung des Azure-Portals zum Erstellen einer Azure-VM für den HPC Pack-Hauptknoten mit dem Ressourcen-Manager-Bereitstellungsmodell. 
 
 1. Wenn Sie eine neue Active Directory-Gesamtstruktur in Azure mit separaten Domänencontroller-VMs erstellen möchten, ist die Verwendung einer [Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc)eine Möglichkeit. Für eine einfache Proof of Concept-Bereitstellung können Sie diesen Schritt auslassen und die Hauptknoten-VM selbst als Domänencontroller konfigurieren. Diese Option wird weiter unten in diesem Artikel beschrieben.
-2. Klicken Sie im Azure Marketplace auf der Seite [HPC Pack 2012 R2 unter Windows Server 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) auf **Virtuellen Computer erstellen**. 
-3. Wählen Sie im Portal auf der Seite **HPC Pack 2012 R2 unter Windows Server 2012 R2** das Bereitstellungsmodell **Resource Manage**, und klicken Sie dann auf **Erstellen**.
+1. Klicken Sie im Azure Marketplace auf der Seite [HPC Pack 2012 R2 unter Windows Server 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) auf **Virtuellen Computer erstellen**. 
+1. Wählen Sie im Portal auf der Seite **HPC Pack 2012 R2 unter Windows Server 2012 R2** das Bereitstellungsmodell **Resource Manage**, und klicken Sie dann auf **Erstellen**.
    
     ![HPC Pack-Image][marketplace]
-4. Verwenden Sie das Portal, um die Einstellungen zu konfigurieren und die VM zu erstellen. Wenn Sie mit Azure noch nicht vertraut sind, folgen Sie den Schritten im Tutorial [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Für eine Proof of Concept-Bereitstellung können Sie in der Regel die Standardeinstellungen oder empfohlenen Einstellungen übernehmen.
+1. Verwenden Sie das Portal, um die Einstellungen zu konfigurieren und die VM zu erstellen. Wenn Sie mit Azure noch nicht vertraut sind, folgen Sie den Schritten im Tutorial [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Für eine Proof of Concept-Bereitstellung können Sie in der Regel die Standardeinstellungen oder empfohlenen Einstellungen übernehmen.
    
    > [!NOTE]
    > Wenn Sie den Beitritt des Hauptknotens in Azure zu einer vorhandenen Active Directory-Domäne ausführen möchten, stellen Sie sicher, dass Sie beim Erstellen der VM das virtuelle Netzwerk dieser Domäne angeben.
    > 
    > 
-5. Wenn der virtuelle Computer, den Sie erstellt haben, ausgeführt wird, [stellen Sie über Remotedesktop die Verbindung mit dem virtuellen Computer her](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
-6. Verbinden Sie den virtuellen Computer mit einer Active Directory-Domänengesamtstruktur durch Auswählen einer der folgenden Optionen:
+1. Wenn der virtuelle Computer, den Sie erstellt haben, ausgeführt wird, [stellen Sie über Remotedesktop die Verbindung mit dem virtuellen Computer her](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+1. Verbinden Sie den virtuellen Computer mit einer Active Directory-Domänengesamtstruktur durch Auswählen einer der folgenden Optionen:
    
    * Wenn Sie den virtuellen Computer in einem virtuellen Azure-Netzwerk mit einer vorhandenen Domänengesamtstruktur erstellt haben, verwenden Sie den standardmäßigen Server-Manager oder Windows PowerShell-Tools, um seinen Beitritt zur Gesamtstruktur auszuführen. Führen Sie anschließend einen Neustart durch.
    * Wenn Sie die VM in einem neuen virtuellen Netzwerk (ohne vorhandene Domänengesamtstruktur) erstellt haben, stufen Sie die VM zum Domänencontroller hoch. Installieren und konfigurieren Sie die Active Directory-Domänendienste-Rolle in standardmäßigen Schritten auf dem Hauptknoten. Ausführliche Schritte finden Sie unter [Installieren einer neuen Windows Server 2012 Active Directory-Gesamtstruktur](https://technet.microsoft.com/library/jj574166.aspx).
-7. Wenn der virtuelle Computer ausgeführt wird und Mitglied einer Active Directory-Gesamtstruktur ist, starten Sie die HPC Pack-Dienste wie folgt:
+1. Wenn der virtuelle Computer ausgeführt wird und Mitglied einer Active Directory-Gesamtstruktur ist, starten Sie die HPC Pack-Dienste wie folgt:
    
     a. Stellen Sie eine Verbindung mit dem virtuellen Hauptknotencomputer her, indem Sie ein Domänenkonto verwenden, das Mitglied der lokalen Administratorgruppe ist. Nutzen Sie beispielsweise das Administratorkonto, das Sie beim Erstellen des virtuellen Hauptknotencomputers eingerichtet haben.
    

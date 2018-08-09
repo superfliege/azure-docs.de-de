@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 478c6dcaa6afd67742df91366021c6186fc1427e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 792d9b1409b9571474f47da4940724df7a764d82
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098531"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39429881"
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Skalieren von Kubernetes-Pods und der Kubernetes-Infrastruktur
 
@@ -115,7 +115,7 @@ Nach einigen Minuten mit minimaler Last in der Azure Voting-App sinkt die Anzahl
 
 ## <a name="scale-the-agents"></a>Skalieren der Agents
 
-Wenn Sie Ihren Kubernetes-Cluster mithilfe der Standardbefehle im vorherigen Tutorial erstellt haben, verfügt er über drei Agent-Knoten. Sie können die Anzahl von Agents manuell anpassen, wenn Sie größere oder kleinere Containerworkloads in Ihrem Cluster planen. Verwenden Sie den Befehl [az acs scale](/cli/azure/acs#az_acs_scale), und geben Sie die Anzahl von Agents mit dem `--new-agent-count`-Parameter an.
+Wenn Sie Ihren Kubernetes-Cluster mithilfe der Standardbefehle im vorherigen Tutorial erstellt haben, verfügt er über drei Agent-Knoten. Sie können die Anzahl von Agents manuell anpassen, wenn Sie größere oder kleinere Containerworkloads in Ihrem Cluster planen. Verwenden Sie den Befehl [az acs scale](/cli/azure/acs#az-acs-scale), und geben Sie die Anzahl von Agents mit dem `--new-agent-count`-Parameter an.
 
 Das folgende Beispiel erhöht die Anzahl von Agent-Knoten im Kubernetes-Cluster namens *myK8sCluster* auf vier. Diese Ausführung dieses Befehls dauert einige Minuten.
 

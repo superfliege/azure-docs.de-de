@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: 8603716d30e1061ca9d600f2c053e90ff50c2433
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785879"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39423543"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurieren von Content Protection-Richtlinien über das Azure-Portal
  Mit Azure Media Services können Sie Ihre Medien ab dem Zeitpunkt sichern, an dem sie Ihren Computer durch Speicherung, Verarbeitung und Übermittlung verlassen. Mit Media Services können Sie Inhalte dynamisch mit AES (Advanced Encryption Standard) unter Verwendung von 128-Bit-Verschlüsselungsschlüsseln verschlüsselt übermitteln. Sie können es auch mit herkömmlicher Verschlüsselung (CENC) verwenden, indem Sie PlayReady und/oder Widevine Digital Rights Management (DRM) und Apple FairPlay verwenden. 
@@ -33,7 +33,7 @@ Führen Sie die folgenden Schritte aus, um Content Protection global über das P
 
 1. Wählen Sie im [Portal](https://portal.azure.com/) Ihr Media Services-Konto aus.
 
-2. Wählen Sie **Einstellungen** > **Inhaltsschutz** aus.
+1. Wählen Sie **Einstellungen** > **Inhaltsschutz** aus.
 
     ![Content Protection](./media/media-services-portal-content-protection/media-services-content-protection001.png)
 
@@ -110,11 +110,11 @@ Die AES-Verschlüsselung mit unverschlüsseltem Schlüssel ist für alle Streami
     
     e. **FairPlay only with HLS** (Nur FairPlay mit HLS): Verschlüsselt Ihren HLS-Datenstrom dynamisch mit FairPlay.
 
-2. Wählen Sie zum Aktivieren der FairPlay-Verschlüsselung auf dem Blatt **Content Protection Global Settings** (Globale Content Protection-Einstellungen) die Option **FairPlay configuration** (FairPlay-Konfiguration) aus. Wählen Sie dann das **App-Zertifikat** aus, und geben Sie den **geheimen Anwendungsschlüssel** ein.
+1. Wählen Sie zum Aktivieren der FairPlay-Verschlüsselung auf dem Blatt **Content Protection Global Settings** (Globale Content Protection-Einstellungen) die Option **FairPlay configuration** (FairPlay-Konfiguration) aus. Wählen Sie dann das **App-Zertifikat** aus, und geben Sie den **geheimen Anwendungsschlüssel** ein.
 
     ![Verschlüsselungstyp](./media/media-services-portal-content-protection/media-services-content-protection009.png)
 
-3. Wählen Sie nach dem Auswählen der Verschlüsselung die Option **Übernehmen** aus.
+1. Wählen Sie nach dem Auswählen der Verschlüsselung die Option **Übernehmen** aus.
 
 >[!NOTE] 
 >Wenn Sie beabsichtigen, HLS mit AES-Verschlüsselung in Safari abzuspielen, lesen Sie den Blogbeitrag zu [Verschlüsseltes HLS in Safari](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 4/17/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 47f0b43ae074314ffb1727508bb534fdd79c1f7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4a122aebd149131e97be5c593a51871b1a943577
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607115"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39427412"
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Wiederherstellen eines Datenträgers und Erstellen einer wiederhergestellten VM in Azure
 Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder einzelne Dateien wiederherstellen. In diesem Artikel wird das Wiederherstellen eines vollständigen virtuellen Computers mithilfe der Befehlszeilenschnittstelle erläutert. In diesem Tutorial lernen Sie Folgendes:
@@ -47,7 +47,7 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 ## <a name="list-available-recovery-points"></a>Auflisten der verfügbaren Wiederherstellungspunkte
 Um einen Datenträger wiederherzustellen, wählen Sie einen Wiederherstellungspunkt als Quelle für die Wiederherstellungsdaten aus. Da die Standardrichtlinie jeden Tag einen Wiederherstellungspunkt erstellt und für 30 Tage aufbewahrt, können Sie einen Satz von Wiederherstellungspunkten beibehalten. So haben Sie die Möglichkeit, einen bestimmten Zeitpunkt für die Wiederherstellung auszuwählen. 
 
-Um eine Liste der verfügbaren Wiederherstellungspunkte anzuzeigen, verwenden Sie [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list). Der **Name** des Wiederherstellungspunkts wird verwendet, um den Datenträger wiederherzustellen. In diesem Tutorial verwenden wir den aktuellsten verfügbaren Wiederherstellungspunkt. Der Parameter `--query [0].name` wählt den letzten Wiederherstellungspunkt wie folgt aus:
+Um eine Liste der verfügbaren Wiederherstellungspunkte anzuzeigen, verwenden Sie [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). Der **Name** des Wiederherstellungspunkts wird verwendet, um den Datenträger wiederherzustellen. In diesem Tutorial verwenden wir den aktuellsten verfügbaren Wiederherstellungspunkt. Der Parameter `--query [0].name` wählt den letzten Wiederherstellungspunkt wie folgt aus:
 
 ```azurecli-interactive
 az backup recoverypoint list \
@@ -63,7 +63,7 @@ az backup recoverypoint list \
 ## <a name="restore-a-vm-disk"></a>Wiederherstellen von VM-Datenträgern
 Um den Datenträger aus dem Wiederherstellungspunkt wiederherzustellen, erstellen Sie zunächst ein Azure Storage-Konto. Dieses Speicherkonto wird zum Speichern des wiederhergestellten Datenträgers verwendet. Der wiederhergestellte Datenträger wird in nachfolgenden Schritten zum Erstellen eines virtuellen Computers verwendet.
 
-1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
+1. Verwenden Sie zum Erstellen eines Speicherkontos [az storage account create](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create). Der Name des Speicherkontos darf nur Kleinbuchstaben enthalten und muss global eindeutig sein. Ersetzen Sie *mystorageaccount* durch Ihren eigenen eindeutigen Namen:
 
     ```azurecli-interactive
     az storage account create \
@@ -72,7 +72,7 @@ Um den Datenträger aus dem Wiederherstellungspunkt wiederherzustellen, erstelle
         --sku Standard_LRS
     ```
 
-2. Stellen Sie den Datenträger mit [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az_backup_restore_restore_disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list) erhalten haben:
+2. Stellen Sie den Datenträger mit [az backup restore restore-disks](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-disks) aus dem Wiederherstellungspunkt wieder her. Ersetzen Sie *mystorageaccount* durch den Namen des Speicherkontos, das Sie mit dem vorherigen Befehl erstellt haben. Ersetzen Sie *myRecoveryPointName* durch den Namen des Wiederherstellungspunkts, den Sie über die Ausgabe aus dem vorherigen Befehl [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list) erhalten haben:
 
     ```azurecli-interactive
     az backup restore restore-disks \
@@ -86,7 +86,7 @@ Um den Datenträger aus dem Wiederherstellungspunkt wiederherzustellen, erstelle
 
 
 ## <a name="monitor-the-restore-job"></a>Überwachen des Wiederherstellungsauftrags
-Verwenden Sie [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az_backup_job_list), um den Status von Wiederherstellungsaufträgen zu überwachen:
+Verwenden Sie [az backup job list](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list), um den Status von Wiederherstellungsaufträgen zu überwachen:
 
 ```azurecli-interactive 
 az backup job list \
@@ -111,7 +111,7 @@ Wenn der *Status* des Wiederherstellungsauftrags *Abgeschlossen* lautet, wurde d
 ## <a name="convert-the-restored-disk-to-a-managed-disk"></a>Konvertieren von wiederhergestellten Datenträgern in einem verwalteten Datenträger
 Der Wiederherstellungsauftrag erstellt einen nicht verwalteten Datenträger. Um einen virtuellen Computer aus dem Datenträger zu erstellen, muss dieser zunächst in einen verwalteten Datenträger konvertiert werden.
 
-1. Rufen Sie mit [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_show_connection_string) die Verbindungsinformationen für Ihr Speicherkonto ab. Ersetzen Sie *mystorageaccount* durch den Namen Ihres Speicherkontos:
+1. Rufen Sie mit [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string) die Verbindungsinformationen für Ihr Speicherkonto ab. Ersetzen Sie *mystorageaccount* durch den Namen Ihres Speicherkontos:
     
     ```azurecli-interactive
     export AZURE_STORAGE_CONNECTION_STRING=$( az storage account show-connection-string \
@@ -128,7 +128,7 @@ Der Wiederherstellungsauftrag erstellt einen nicht verwalteten Datenträger. Um 
     uri=$(az storage blob url --container-name $container --name $blob -o tsv)
     ```
 
-3. Nun können Sie mit [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az_disk_create) einen verwalteten Datenträger aus dem wiederhergestellten Datenträger erstellen. Die *uri*-Variable aus dem vorhergehenden Schritt dient als Quelle für den verwalteten Datenträger.
+3. Nun können Sie mit [az disk create](https://docs.microsoft.com/cli/azure/disk?view=azure-cli-latest#az-disk-create) einen verwalteten Datenträger aus dem wiederhergestellten Datenträger erstellen. Die *uri*-Variable aus dem vorhergehenden Schritt dient als Quelle für den verwalteten Datenträger.
 
     ```azurecli-interactive
     az disk create \
@@ -137,7 +137,7 @@ Der Wiederherstellungsauftrag erstellt einen nicht verwalteten Datenträger. Um 
         --source $uri
     ```
 
-4. Nachdem Sie den wiederhergestellten Datenträger in einen verwalteten Datenträger konvertiert haben, bereinigen Sie den nicht verwalteten Datenträger und das Speicherkonto mit [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_delete). Ersetzen Sie *mystorageaccount* durch den Namen Ihres Speicherkontos:
+4. Nachdem Sie den wiederhergestellten Datenträger in einen verwalteten Datenträger konvertiert haben, bereinigen Sie den nicht verwalteten Datenträger und das Speicherkonto mit [az storage account delete](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-delete). Ersetzen Sie *mystorageaccount* durch den Namen Ihres Speicherkontos:
 
     ```azurecli-interactive
     az storage account delete \
@@ -149,7 +149,7 @@ Der Wiederherstellungsauftrag erstellt einen nicht verwalteten Datenträger. Um 
 ## <a name="create-a-vm-from-the-restored-disk"></a>Erstellen virtueller Computer von wiederhergestellten Datenträgern
 Im letzten Schritt erstellen Sie einen virtuellen Computer aus dem verwalteten Datenträger.
 
-1. Gehen Sie folgendermaßen vor, um mit [az vm create](/cli/azure/vm?view=azure-cli-latest#az_vm_create) einen virtuellen Computer von dem verwalteten Datenträger zu erstellen:
+1. Gehen Sie folgendermaßen vor, um mit [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) einen virtuellen Computer von dem verwalteten Datenträger zu erstellen:
 
     ```azurecli-interactive
     az vm create \
@@ -159,7 +159,7 @@ Im letzten Schritt erstellen Sie einen virtuellen Computer aus dem verwalteten D
         --os-type linux
     ```
 
-2. Um zu überprüfen, ob Ihr virtueller Computer von dem wiederhergestellten Datenträger erstellt wurde, listen Sie mit [az vm list](/cli/azure/vm?view=azure-cli-latest#az_vm_list) die VMs in Ihrer Ressourcengruppe auf:
+2. Um zu überprüfen, ob Ihr virtueller Computer von dem wiederhergestellten Datenträger erstellt wurde, listen Sie mit [az vm list](/cli/azure/vm?view=azure-cli-latest#az-vm-list) die VMs in Ihrer Ressourcengruppe auf:
 
     ```azurecli-interactive
     az vm list --resource-group myResourceGroup --output table

@@ -2,24 +2,18 @@
 title: Vorbereiten von Festplatten für einen Importauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Festplatten mit dem WAImportExport V1-Tool zum Erstellen eines Importauftrags für den Azure Import/Export-Dienst vorbereiten.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 361e16262e528c7dea1bab4b9d945a28af8be399
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: 861b3302e065689a4ea9c0df0879f9c0df12e619
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23107848"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526945"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen Sie in folgenden Schritten vor:
@@ -108,10 +102,10 @@ Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen S
 
  Der Befehl, der für die erste Kopiersitzung für jedes Laufwerk verwendet wird, erfordert andere Parameter als die Befehle für nachfolgende Kopiersitzungen. Die folgende Tabelle enthält die zusätzlichen Parameter, die für die erste Kopiersitzung verfügbar sind:
 
-|Befehlszeilenparameter|Beschreibung|
+|Befehlszeilenparameter|BESCHREIBUNG|
 |-----------------------------|-----------------|
 |**/sk:**&lt;Speicherkontoschlüssel\>|`Optional.` Der Speicherkontoschlüssel für das Speicherkonto, in das die Daten importiert werden. Sie müssen entweder **/sk:**<Speicherkontoschlüssel\> oder **/csas:**<Container-SAS\> in den Befehl einschließen.|
-|**/csas:**&lt;Container-SAS\>|`Optional`. Die Container-SAS zum Importieren von Daten in das Speicherkonto. Sie müssen entweder **/sk:**<Speicherkontoschlüssel\> oder **/csas:**<Container-SAS\> in den Befehl einschließen.<br /><br /> Der Wert für diesen Parameter muss mit dem Containernamen gefolgt von einem Fragezeichen (?) und dem SAS-Token beginnen. Beispiel:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Die Berechtigungen, ob in der URL oder in einer gespeicherten Zugriffsrichtlinie angegeben, umfassen Lesen, Schreiben und Löschen für Importaufträge und Lesen, Schreiben und Auflisten für Exportaufträge.<br /><br /> Wenn dieser Parameter angegeben wird, müssen alle Blobs, die importiert oder exportiert werden sollen, sich innerhalb des Containers befinden, der in der SAS angegeben wird.|
+|**/csas:**&lt;Container-SAS\>|`Optional`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Die Container-SAS zum Importieren von Daten in das Speicherkonto. Sie müssen entweder **/sk:**<Speicherkontoschlüssel\> oder **/csas:**<Container-SAS\> in den Befehl einschließen.<br /><br /> Der Wert für diesen Parameter muss mit dem Containernamen gefolgt von einem Fragezeichen (?) und dem SAS-Token beginnen. Beispiel: <br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Die Berechtigungen, ob in der URL oder in einer gespeicherten Zugriffsrichtlinie angegeben, umfassen Lesen, Schreiben und Löschen für Importaufträge und Lesen, Schreiben und Auflisten für Exportaufträge.<br /><br /> Wenn dieser Parameter angegeben wird, müssen alle Blobs, die importiert oder exportiert werden sollen, sich innerhalb des Containers befinden, der in der SAS angegeben wird.|
 |/t:<**Ziellaufwerkbuchstabe**\>|`Required.` Der Laufwerkbuchstabe der Zielfestplatte für die aktuelle Kopiersitzung ohne nachgestellten Doppelpunkt.|
 |**/format**|`Optional.` Geben Sie diesen Parameter an, wenn das Laufwerk formatiert werden muss. Andernfalls können Sie ihn auslassen. Bevor das Tool das Laufwerk formatiert, werden Sie von der Konsole aus zur Bestätigung aufgefordert. Um die Bestätigung zu unterdrücken, geben Sie den /silentmode-Parameter an.|
 |**/silentmode**|`Optional.` Geben Sie diesen Parameter an, um die Bestätigung für die Formatierung des Ziellaufwerks zu unterdrücken.|
@@ -124,31 +118,31 @@ Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen S
 
 |||
 |-|-|
-|Befehlszeilenparameter|Beschreibung|
+|Befehlszeilenparameter|BESCHREIBUNG|
 |**/j:**&lt;Journaldatei\>|`Required.` Der Pfad zur Journaldatei. Jedes Laufwerk muss über genau eine Journaldatei verfügen. Beachten Sie, dass die Journaldatei sich nicht auf dem Ziellaufwerk befinden darf. Die Journaldatei hat die Erweiterung `.jrn`.|
 |**/id:**&lt;Sitzungs-ID\>|`Required.` Die Sitzungs-ID identifiziert eine Kopiersitzung. Sie wird verwendet, um eine exakte Wiederherstellung einer unterbrochenen Kopiersitzung sicherzustellen. Die in einer Kopiersitzung kopierten Dateien werden in einem Verzeichnis gespeichert, das nach der Sitzungs-ID auf dem Ziellaufwerk benannt wird.|
 
 ### <a name="parameters-for-copying-a-single-directory"></a>Parameter zum Kopieren eines einzelnen Verzeichnisses
  Beim Kopieren eines einzelnen Verzeichnisses gelten die folgenden erforderlichen und optionalen Parameter:
 
-|Befehlszeilenparameter|Beschreibung|
+|Befehlszeilenparameter|BESCHREIBUNG|
 |----------------------------|-----------------|
 |**/srcdir:**&lt;Quellverzeichnis\>|`Required.` Das Quellverzeichnis, das Dateien enthält, die auf das Ziellaufwerk kopiert werden. Der Verzeichnispfad muss ein absoluter Pfad sein (kein relativer Pfad).|
 |**/dstdir:**&lt;virtuelles Zielblobverzeichnis\>|`Required.` Der Pfad zum virtuellen Zielverzeichnis in Ihrem Microsoft Azure-Speicherkonto. Das virtuelle Verzeichnis kann, muss jedoch noch nicht vorhanden sein.<br /><br /> Sie können einen Container oder ein Blobpräfix wie `music/70s/` angeben. Das Zielverzeichnis muss mit dem Containernamen beginnen, gefolgt von einem Schrägstrich „/“, und kann optional ein virtuelles Blobverzeichnis enthalten, das mit „/“ endet.<br /><br /> Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit den Stammcontainer angeben – einschließlich des Schrägstrichs, wie `$root/`. Da die Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten können, werden Unterverzeichnisse des Quellverzeichnisses nicht kopiert, wenn das Zielverzeichnis der Stammcontainer ist.<br /><br /> Achten Sie darauf, gültige Containernamen zu verwenden, wenn Sie virtuelle Zielverzeichnisse oder Blobs angeben. Containernamen müssen kleingeschrieben werden. Informationen zu den Benennungsregeln für Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).|
-|**/Disposition:**<rename&#124;no-overwrite&#124;overwrite> (umbenennen, nicht überschreiben, überschreiben)|`Optional.` Gibt das Verhalten an, wenn ein Blob mit der angegebenen Adresse bereits vorhanden ist. Gültige Werte für diesen Parameter sind: `rename`, `no-overwrite` und `overwrite`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `rename` verwendet.<br /><br /> Der angegebene Wert für diesen Parameter wirkt sich auf alle Dateien im Verzeichnis aus, die vom `/srcdir`-Parameter angegeben werden.|
-|**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` Gibt den Blobtyp für die Zielblobs an. Gültige Werte sind `BlockBlob` und `PageBlob`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `BlockBlob` verwendet.<br /><br /> In den meisten Fällen wird `BlockBlob` empfohlen. Bei Angabe von `PageBlob` muss die Länge der einzelnen Dateien im Verzeichnis ein Vielfaches von 512 betragen, der Größe einer Seite für Seitenblobs.|
+|**/Disposition:**&lt;rename&amp;#124;no-overwrite&amp;#124;overwrite&gt; (umbenennen, nicht überschreiben, überschreiben)|`Optional.` Gibt das Verhalten an, wenn ein Blob mit der angegebenen Adresse bereits vorhanden ist. Gültige Werte für diesen Parameter sind: `rename`, `no-overwrite` und `overwrite`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `rename` verwendet.<br /><br /> Der angegebene Wert für diesen Parameter wirkt sich auf alle Dateien im Verzeichnis aus, die vom `/srcdir`-Parameter angegeben werden.|
+|**/BlobType:**&lt;BlockBlob&amp;#124;PageBlob&gt;|`Optional.` Gibt den Blobtyp für die Zielblobs an. Gültige Werte sind `BlockBlob` und `PageBlob`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `BlockBlob` verwendet.<br /><br /> In den meisten Fällen wird `BlockBlob` empfohlen. Bei Angabe von `PageBlob` muss die Länge der einzelnen Dateien im Verzeichnis ein Vielfaches von 512 betragen, der Größe einer Seite für Seitenblobs.|
 |**/PropertyFile:**&lt;Eigenschaftendatei\>|`Optional.` Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|
 |**/MetadataFile:**&lt;Metadatendatei\>|`Optional.` Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|
 
 ### <a name="parameters-for-copying-a-single-file"></a>Parameter zum Kopieren einer einzelnen Datei
  Beim Kopieren einer einzelnen Datei gelten die folgenden erforderlichen und optionalen Parameter:
 
-|Befehlszeilenparameter|Beschreibung|
+|Befehlszeilenparameter|BESCHREIBUNG|
 |----------------------------|-----------------|
 |**/srcfile:**&lt;Quelldatei\>|`Required.` Der vollständige Pfad zu der Datei, die kopiert werden soll. Der Verzeichnispfad muss ein absoluter Pfad sein (kein relativer Pfad).|
 |**/dstblob:**&lt;Zielblobpfad&gt;\>|`Required.` Der Pfad zum Zielblob in Ihrem Microsoft Azure-Speicherkonto. Das Blob kann, muss aber noch nicht vorhanden sein.<br /><br /> Geben Sie den Blobnamen beginnend mit dem Containernamen an. Der Blobname darf nicht mit „/“ oder dem Namen des Speicherkontos beginnen. Informationen zu den Benennungsregeln für Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).<br /><br /> Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit `$root` als Container angeben, wie `$root/sample.txt`. Beachten Sie, dass Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten dürfen.|
-|**/Disposition:**<rename&#124;no-overwrite&#124;overwrite> (umbenennen, nicht überschreiben, überschreiben)|`Optional.` Gibt das Verhalten an, wenn ein Blob mit der angegebenen Adresse bereits vorhanden ist. Gültige Werte für diesen Parameter sind: `rename`, `no-overwrite` und `overwrite`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `rename` verwendet.|
-|**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` Gibt den Blobtyp für die Zielblobs an. Gültige Werte sind `BlockBlob` und `PageBlob`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `BlockBlob` verwendet.<br /><br /> In den meisten Fällen wird `BlockBlob` empfohlen. Bei Angabe von `PageBlob` muss die Länge der einzelnen Dateien im Verzeichnis ein Vielfaches von 512 betragen, der Größe einer Seite für Seitenblobs.|
+|**/Disposition:**&lt;rename&amp;#124;no-overwrite&amp;#124;overwrite&gt; (umbenennen, nicht überschreiben, überschreiben)|`Optional.` Gibt das Verhalten an, wenn ein Blob mit der angegebenen Adresse bereits vorhanden ist. Gültige Werte für diesen Parameter sind: `rename`, `no-overwrite` und `overwrite`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `rename` verwendet.|
+|**/BlobType:**&lt;BlockBlob&amp;#124;PageBlob&gt;|`Optional.` Gibt den Blobtyp für die Zielblobs an. Gültige Werte sind `BlockBlob` und `PageBlob`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `BlockBlob` verwendet.<br /><br /> In den meisten Fällen wird `BlockBlob` empfohlen. Bei Angabe von `PageBlob` muss die Länge der einzelnen Dateien im Verzeichnis ein Vielfaches von 512 betragen, der Größe einer Seite für Seitenblobs.|
 |**/PropertyFile:**&lt;Eigenschaftendatei\>|`Optional.` Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|
 |**/MetadataFile:**&lt;Metadatendatei\>|`Optional.` Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|
 
