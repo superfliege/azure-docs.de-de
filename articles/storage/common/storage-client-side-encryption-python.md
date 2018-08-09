@@ -2,24 +2,19 @@
 title: Clientseitige Verschlüsselung mit Python für Microsoft Azure Storage | Microsoft Docs
 description: Die Azure Storage-Clientbibliothek für Python unterstützt die clientseitige Verschlüsselung. Dies bietet maximale Sicherheit für Ihre Azure Storage-Anwendungen.
 services: storage
-documentationcenter: python
 author: lakasa
-manager: jahogg
-editor: tysonn
-ms.assetid: f9bf7981-9948-4f83-8931-b15679a09b8a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.openlocfilehash: c925b41d1654bd5c9b40438c4b6b9f402ec4bac2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.component: common
+ms.openlocfilehash: 6a6508393fe935b456cde815d35f2fd4447cd2d4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29742641"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528121"
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Clientseitige Verschlüsselung mit Python für Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -56,7 +51,7 @@ Die Entschlüsselung über das Umschlagverfahren funktioniert wie folgt:
 Die Speicherclientbibliothek verwendet [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) , um Benutzerdaten zu verschlüsseln. Insbesondere wird der [CBC-Modus (Blockchiffreverkettung, Cipher Block Chaining)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) mit AES verwendet. Da jeder Dienst eine andere Funktionsweise aufweist, werden die Dienste hier erörtert.
 
 ### <a name="blobs"></a>Blobs (in englischer Sprache)
-Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Die Verschlüsselung wird unterstützt, wenn Benutzer die **create**\*-Methoden verwenden. Es werden sowohl vollständige als auch Bereichsdownloads unterstützt, und Uploads und Downloads können parallelisiert werden.
+Die Clientbibliothek unterstützt momentan nur die Verschlüsselung vollständiger Blobs. Die Verschlüsselung wird unterstützt, wenn Benutzer die **create***-Methoden verwenden. Es werden sowohl vollständige als auch Bereichsdownloads unterstützt, und Uploads und Downloads können parallelisiert werden.
 
 Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initialisierungsvektor (IV) mit einer Größe von 16 Byte zusammen mit einem zufälligen Inhaltsverschlüsselungsschlüssel (CEK) mit einer Größe von 32 Byte. Mithilfe dieser Informationen wird die Umschlagverschlüsselung der Blobdaten ausgeführt. Der umschlossene CEK und einige zusätzliche Verschlüsselungsmetadaten werden dann als Blobmetadaten zusammen mit dem verschlüsselten Blob für den Dienst gespeichert.
 
@@ -65,9 +60,9 @@ Bei der Verschlüsselung generiert die Clientbibliothek einen zufälligen Initia
 > 
 > 
 
-Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **get**\*-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
+Beim Herunterladen eines verschlüsselten Blobs wird der Inhalt des gesamten Blobs mit den **get***-Hilfsmethoden abgerufen. Der umschlossene CEK wird entpackt und zusammen mit dem IV (in diesem Fall als Blobmetadaten gespeichert) verwendet, um die entschlüsselten Daten an die Benutzer zurückzugeben.
 
-Beim Herunterladen eines beliebigen Bereichs (**get**\*-Methoden mit übergebenen Bereichsparametern) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die zum erfolgreichen Entschlüsseln des angeforderten Bereichs verwendet werden können.
+Beim Herunterladen eines beliebigen Bereichs (**get***-Methoden mit übergebenen Bereichsparametern) im verschlüsselten Blob wird der von den Benutzern angegebene Bereich angepasst, um eine kleine Menge zusätzlicher Daten abzurufen, die zum erfolgreichen Entschlüsseln des angeforderten Bereichs verwendet werden können.
 
 Es können nur Blockblobs und Seitenblobs mit diesem Schema verschlüsselt/entschlüsselt werden. Das Verschlüsseln von Anfügeblobs wird zurzeit nicht unterstützt.
 

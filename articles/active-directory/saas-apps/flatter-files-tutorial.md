@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 4ae5c9834352bd2413075e87c79e27a9a3c354b9
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b0660e14b858cc77026ea008fcf122c79e656c13
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047642"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Tutorial: Azure Active Directory-Integration mit Flatter Files
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Flatter Files aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-flatter-files-from-the-gallery"></a>Hinzufügen von Flatter Files aus dem Katalog
 Zum Konfigurieren der Integration von Flatter Files in Azure AD müssen Sie Flatter Files aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Flatter Files in Azure AD müssen Sie Flat
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **Flatter Files**ein.
+1. Geben Sie im Suchfeld als Suchbegriff **Flatter Files**ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/flatter-files-tutorial/tutorial_flatterfiles_search.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **Flatter Files**  aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **Flatter Files**  aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/flatter-files-tutorial/tutorial_flatterfiles_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in Flatter Files den Wert des **Benutzernamens** in Azure AD als Wert
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit Flatter Files müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Flatter Files-Testbenutzers](#creating-a-flatter-files-test-user)**, um ein Pendant von Britta Simon in Flatter Files zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Flatter Files-Testbenutzers](#creating-a-flatter-files-test-user)**, um ein Pendant von Britta Simon in Flatter Files zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -104,33 +104,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_samlbase.png)
 
-3. Im Abschnitt **Domäne und URLs für Flatter Files** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
+1. Im Abschnitt **Domäne und URLs für Flatter Files** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
 
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_url.png)
  
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Flatter Files-Konfiguration** auf **Flatter Files konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Flatter Files-Konfiguration** auf **Flatter Files konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_configure.png) 
 
-7. Melden Sie sich bei Ihrer Flatter Files-Anwendung als Administrator an.
+1. Melden Sie sich bei Ihrer Flatter Files-Anwendung als Administrator an.
 
-8. Klicken Sie auf **DASHBOARD**. 
+1. Klicken Sie auf **DASHBOARD**. 
    
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
-9. Klicken Sie auf **Settings** (Einstellungen), und führen Sie auf der Registerkarte **Company** (Unternehmen) die folgenden Schritte aus: 
+1. Klicken Sie auf **Settings** (Einstellungen), und führen Sie auf der Registerkarte **Company** (Unternehmen) die folgenden Schritte aus: 
    
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
@@ -138,7 +138,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     b. Klicken Sie auf **Configure SAML**.
 
-8. Führen Sie im Dialogfeld **SAML Configuration** die folgenden Schritte aus: 
+1. Führen Sie im Dialogfeld **SAML Configuration** die folgenden Schritte aus: 
    
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatter_files_08.png)  
    
@@ -168,15 +168,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/flatter-files-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/flatter-files-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/flatter-files-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/flatter-files-tutorial/create_aaduser_04.png) 
 
@@ -196,13 +196,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 1. Melden Sie sich bei Ihrer **Flatter Files** -Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie im Navigationsbereich links auf **Settings** (Einstellungen) und anschließend auf die Registerkarte **Users** (Benutzer).
+1. Klicken Sie im Navigationsbereich links auf **Settings** (Einstellungen) und anschließend auf die Registerkarte **Users** (Benutzer).
    
     ![Erstellen eines Flatter Files-Benutzers](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
-3. Klicken Sie auf **Benutzer hinzufügen**. 
+1. Klicken Sie auf **Benutzer hinzufügen**. 
 
-4. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
    
     ![Erstellen eines Flatter Files-Benutzers](./media/flatter-files-tutorial/tutorial_flatter_files_10.png)
 
@@ -227,23 +227,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Flatter Files**aus.
+1. Wählen Sie in der Anwendungsliste **Flatter Files**aus.
 
     ![Configure single sign-on](./media/flatter-files-tutorial/tutorial_flatterfiles_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

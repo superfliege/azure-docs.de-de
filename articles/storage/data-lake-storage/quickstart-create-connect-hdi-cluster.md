@@ -3,23 +3,20 @@ title: Einrichten von Clustern für Hadoop, Spark, Kafka, HBase oder R Server �
 description: Richten Sie Hadoop-, Kafka-, Spark-, HBase-, R Server- oder Storm-Cluster für HDInsight über einen Browser, die Azure-Befehlszeilenschnittstelle, Azure PowerShell, REST oder ein SDK ein.
 keywords: Hadoop-Cluster einrichten, Kafka-Cluster einrichten, Spark-Cluster einrichten, was ist ein Hadoop-Cluster?
 services: storage
-documentationcenter: ''
 author: jamesbak
-manager: jahogg
 tags: azure-portal
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 725e79596a919cba4214dba8b3cc86e9bb48cc79
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: e0816e8609ba1ab0ef1b4f685731339378fee844
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136637"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525585"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Schnellstart: Einrichten von Hadoop-Clustern in HDInsight
 

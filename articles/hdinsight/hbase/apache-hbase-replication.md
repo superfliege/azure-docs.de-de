@@ -1,23 +1,20 @@
 ---
-title: Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken | Microsoft-Dokumentation
+title: Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 description: Erfahren Sie, wie Sie die HBase-Replikation zwischen HDInsight-Versionen für Lastenausgleich, Hochverfügbarkeit, Migration und Updates ohne Ausfallzeit und Notfallwiederherstellung einrichten.
 services: hdinsight,virtual-network
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: jgao
-ms.openlocfilehash: f0367b67f141ca65ce2374722016d0fbea6c97d1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.author: jasonh
+ms.openlocfilehash: 535b5dcc62020119cda3db36bfdbd707badfe549
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951120"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600304"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -72,7 +69,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Speicherort | USA (Westen) |
+| Standort | USA (Westen) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet1 |
 | Adressraumpräfix | 10.1.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -89,7 +86,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Speicherort | USA (Ost) |
+| Standort | USA (Ost) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
 | Adressraumpräfix | 10.2.0.0/16 |
 | Subnetzname | Subnetz 1 |

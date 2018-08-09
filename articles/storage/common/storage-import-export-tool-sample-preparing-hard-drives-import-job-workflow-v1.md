@@ -2,31 +2,25 @@
 title: Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag in Azure Import/Export (V1) | Microsoft-Dokumentation
 description: Lernen Sie eine exemplarische Vorgehensweise für den vollständigen Prozess der Laufwerkvorbereitung für einen Importauftrag im Azure Import/Export-Dienst kennen.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: 6eb1b1b7-c69f-4365-b5ef-3cd5e05eb72a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 66e85bd3e9e43ae360d0507f5bdf3596abbeb7d1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.component: common
+ms.openlocfilehash: ae792df428d897277e15df9db3ff6f99a5b8859e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
-ms.locfileid: "26692023"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527287"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag
 Dieses Thema führt Sie durch den vollständigen Prozess zur Vorbereitung von Laufwerken für einen Importauftrag.  
   
 In diesem Beispiel werden die folgenden Daten in ein Microsoft Azure-Speicherkonto namens `mystorageaccount` importiert:  
   
-|Location|Beschreibung|  
+|Location|BESCHREIBUNG|  
 |--------------|-----------------|  
 |H:\Video|Eine Sammlung von Videos, insgesamt 5TB.|  
 |H:\Photo|Eine Sammlung von Fotos, insgesamt 30GB.|  
@@ -50,7 +44,7 @@ Berechnen Sie nun die Größe der Daten, um zu bestimmen, wie viele Festplatten 
   
 In diesem Beispiel sollten zwei 3-TB-Festplatten ausreichen. Da das Quellverzeichnis `H:\Video` jedoch 5 TB an Daten enthält und die Kapazität der einzelnen Festplatte nur 3 TB beträgt, muss `H:\Video` vor dem Ausführen des Microsoft Azure Import/Export-Tools in zwei kleinere Verzeichnisse aufgeteilt werden: `H:\Video1` und `H:\Video2`. Aus diesem Schritt resultieren die folgenden Quellverzeichnisse:  
   
-|Location|Größe|Virtuelles Zielverzeichnis oder Blob|  
+|Standort|Größe|Virtuelles Zielverzeichnis oder Blob|  
 |--------------|----------|-------------------------------------------|  
 |H:\Video1|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  
 |H:\Video2|2,5 TB|https://mystorageaccount.blob.core.windows.net/video|  

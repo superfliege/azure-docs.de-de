@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/31/2018
 ms.author: rithorn
-ms.openlocfilehash: 146ded37dbf517528af23574cd5b9325f4b5f9d0
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: edc57d146ccb034ac3fd627386000a1953b0e558
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358768"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480321"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -82,7 +82,7 @@ Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktione
 
 | Name der RBAC-Rolle             | Erstellen | Umbenennen | Move | Löschen | Zuweisen des Zugriffs | Zuweisen der Richtlinie | Lesen  |
 |:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
-|Owner (Besitzer)                       | X      | X      | X    | X      | X             |               | X     |
+|Owner (Besitzer)                       | X      | X      | X    | X      | X             | X             | X     |
 |Mitwirkender                 | X      | X      | X    | X      |               |               | X     |
 |MG-Mitwirkender*             | X      | X      | X    | X      |               |               | X     |
 |Leser                      |        |        |      |        |               |               | X     |
@@ -104,4 +104,4 @@ Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 - [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](management-groups-manage.md)
 - [Installieren des Azure PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview)
 - [Spezifikationen zur REST-API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview)
-- [Installieren der Erweiterung für die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available)
+- [Installieren der Erweiterung für die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az-extension-list-available)

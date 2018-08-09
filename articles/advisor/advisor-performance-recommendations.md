@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 3331c795cbb1c45820d4c86d287ef57b54f0ae6b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: aca1c9125af6b4162c0a6647910c2877758cd42c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247641"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599189"
 ---
 # <a name="advisor-performance-recommendations"></a>Advisor-Empfehlungen zur Leistung
 
@@ -52,6 +52,14 @@ Azure Advisor befolgt empfohlene bewährte Methoden zum Verbessern der App Servi
 * Erkennen von Instanzen, bei denen durch Zusammenstellen von Ressourcen wie Web-Apps und Datenbanken die Leistung verbessert und Kosten gesenkt werden können 
 
 Weitere Informationen zu App Services-Empfehlungen finden Sie unter [Bewährte Methoden für Azure App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/).
+
+## <a name="remove-data-skew-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Entfernen von Datenschiefe in Ihrer SQL Data Warehouse-Tabelle zum Erhöhen der Abfrageleistung
+
+Datenschiefe kann unnötige Datenverschiebungen oder Ressourcenengpässe beim Ausführen Ihrer Workload verursachen. Advisor erkennt eine Datenschiefe mit einer Verteilung von über 15 % und empfiehlt, Ihre Daten neu zu verteilen und die Hauptauswahl für Ihre Tabellenverteilung erneut zu überprüfen. Weitere Informationen zum Identifizieren und Entfernen von Datenschiefe finden Sie unter [Problembehandlung bei Datenschiefe](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute#how-to-tell-if-your-distribution-column-is-a-good-choice).
+
+## <a name="create-or-update-outdated-table-statistics-on-your-sql-data-warehouse-table-to-increase-query-performance"></a>Erstellen von Datenstatistiken oder Aktualisieren von veralteten Datenstatistiken für Ihre SQL Data Warehouse-Tabelle zum Erhöhen der Abfrageleistung
+
+Advisor identifiziert die Tabellen, die keine aktuellen [Tabellenstatistiken](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics) aufweisen, und empfiehlt das Erstellen oder Aktualisieren der Tabellenstatistiken. Der SQL Data Warehouse-Abfrageoptimierer verwendet aktuelle Statistiken zur Schätzung der Kardinalität oder Zeilenanzahl im Abfrageergebnis und ermöglicht somit dem Optimierer, einen Abfrageplan für die schnellste Leistung zu erstellen.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung
 

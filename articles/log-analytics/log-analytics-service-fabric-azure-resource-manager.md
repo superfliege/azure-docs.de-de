@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
 ms.component: na
-ms.openlocfilehash: 8296f0756aef7180efa777795cb361e653c0e4e3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9bc1f7d9eab73a086e664dcc520ecf26befbbf0e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128012"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432890"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Bewerten von Service Fabric-Anwendungen und -Microservices über das Azure-Portal
 
@@ -39,15 +39,15 @@ Die Service Fabric-Lösung verwendet Azure-Diagnosedaten aus den Service Fabric-
 Um mit der Verwendung der Lösung zu beginnen, müssen Sie das Service Fabric-Cluster mit einem Log Analytics-Arbeitsbereich verbinden. Dabei sind drei Szenarien möglich:
 
 1. Wenn Sie den Service Fabric-Cluster nicht bereitgestellt haben, führen Sie die Schritte in ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich verbunden ist*** aus, um einen neuen Cluster bereitzustellen und für das Erstellen von Berichten an Log Analytics zu konfigurieren.
-2. Wenn Sie Leistungsindikatoren von den Hosts erfassen müssen, um im Service Fabric-Cluster andere Verwaltungslösungen, z.B. Sicherheit, zu verwenden, führen Sie die unter ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist*** erklärten Schritte aus.
-3. Wenn Sie den Service Fabric-Cluster bereits bereitgestellt haben und ihn mit Log Analytics verbinden möchten, führen Sie die Schritte in ***Hinzufügen eines vorhandenen Speicherkontos zu Log Analytics*** aus.
+1. Wenn Sie Leistungsindikatoren von den Hosts erfassen müssen, um im Service Fabric-Cluster andere Verwaltungslösungen, z.B. Sicherheit, zu verwenden, führen Sie die unter ***Bereitstellen eines Service Fabric-Clusters, der mit einem Log Analytics-Arbeitsbereich mit installierter VM-Erweiterung verbunden ist*** erklärten Schritte aus.
+1. Wenn Sie den Service Fabric-Cluster bereits bereitgestellt haben und ihn mit Log Analytics verbinden möchten, führen Sie die Schritte in ***Hinzufügen eines vorhandenen Speicherkontos zu Log Analytics*** aus.
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Bereitstellen eines Service Fabric-Clusters und Erstellen eines Log Analytics-Arbeitsbereichs für dessen Überwachung
 Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
 
 1. Ein bereits mit einem Log Analytics-Arbeitsbereich verbundener Azure Service Fabric-Cluster wird bereitgestellt. Sie können während des Bereitstellens der Vorlage einen neuen Arbeitsbereich erstellen oder den Namen eines bereits vorhandenen Log Analytics-Arbeitsbereichs eingeben.
-2. Dem Log Analytics-Arbeitsbereich wird das Diagnosespeicherkonto hinzugefügt.
-3. Die Service Fabric-Lösung wird im Log Analytics-Arbeitsbereich aktiviert.
+1. Dem Log Analytics-Arbeitsbereich wird das Diagnosespeicherkonto hinzugefügt.
+1. Die Service Fabric-Lösung wird im Log Analytics-Arbeitsbereich aktiviert.
 
 [![Bereitstellen in Azure](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-oms%2F%2Fazuredeploy.json)
 
@@ -66,9 +66,9 @@ Akzeptieren Sie die rechtlichen Bedingungen, und klicken Sie auf **Erstellen**, 
 Mit dieser Vorlage werden die folgenden Aktionen ausgeführt:
 
 1. Ein bereits mit einem Log Analytics-Arbeitsbereich verbundener Azure Service Fabric-Cluster wird bereitgestellt. Sie können einen neuen Arbeitsbereich erstellen oder einen vorhandenen Arbeitsbereich verwenden.
-2. Dem Log Analytics-Arbeitsbereich werden die Diagnosespeicherkonten hinzugefügt.
-3. Die Service Fabric-Lösung wird im Log Analytics-Arbeitsbereich aktiviert.
-4. In jeder VM-Skalierungsgruppe des Service Fabric-Clusters wird die Microsoft Monitoring Agent-Erweiterung installiert. Wenn Microsoft Monitoring Agent installiert ist, können Sie die Leistungsmetriken der Knoten anzeigen.
+1. Dem Log Analytics-Arbeitsbereich werden die Diagnosespeicherkonten hinzugefügt.
+1. Die Service Fabric-Lösung wird im Log Analytics-Arbeitsbereich aktiviert.
+1. In jeder VM-Skalierungsgruppe des Service Fabric-Clusters wird die Microsoft Monitoring Agent-Erweiterung installiert. Wenn Microsoft Monitoring Agent installiert ist, können Sie die Leistungsmetriken der Knoten anzeigen.
 
 [![In Azure bereitstellen](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-vmss-oms%2F%2Fazuredeploy.json)
 

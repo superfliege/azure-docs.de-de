@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 094958911435b899773ef4ee11176f538a4c8fe0
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c2f20f74ce90f2876ff4040d34a2ede94c92fb1
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399123"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577327"
 ---
 # <a name="grow-your-business-in-the-marketplace"></a>Fördern Ihres Unternehmenswachstums im Marketplace 
 Nachdem Sie Ihr Angebot in AppSource oder im Azure Marketplace veröffentlicht haben, können Sie Ihren Eintrag als Ausgangspunkt für gemeinsame Markteinführungsaktivitäten (GTM) mit Microsoft verwenden. Das Erzeugen von Datenverkehr zu Ihrem Marketplace-Angebot und das Fördern von Marketplace-Leads sind beispielsweise hervorragende Möglichkeiten, um Ihr Unternehmenswachstum zu beschleunigen. 
@@ -33,7 +33,7 @@ Die Tabellen in den nächsten Abschnitten enthalten Vorschläge zum Erstellen an
 ### <a name="storefront-offer-details"></a>Storefront-Angebotsdetails
 | Storefronteinstellungen | Bewährte Methode |
 |:--- |:--- |  
-| Angebotsname | Geben Sie einen aussagekräftigen Titel an:<br>Der Name Ihrer App muss den Mehrwert vermitteln, den Ihre Kunden erhalten. Das Einbinden von Suchbegriffen in den Titel Ihrer App kann dazu beitragen, dass Ihre App in Suchmaschinenergebnissen höher eingestuft wird.<br><br>Halten Sie ein festes Titelformat für Dienstangebote ein:<br>[Angebotsname]: [Dauer] [Angebotstyp] (z.B. *Contoso: 2 Wochen Implementierung*)<br><br>Befolgen Sie Markenvorgaben:<br>Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die [Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx). |
+| Angebotsname | Geben Sie einen aussagekräftigen Titel an:<br>Der Name Ihrer App muss den Mehrwert vermitteln, den Ihre Kunden erhalten. Das Einbinden von Suchbegriffen in den Titel Ihrer App kann dazu beitragen, dass Ihre App in Suchmaschinenergebnissen höher eingestuft wird.<br><br>Halten Sie ein festes Titelformat für Dienstangebote ein:<br>[Angebotsname]: [Dauer] [Angebotstyp] (z.B. *Contoso: 2 Wochen Implementierung*)<br><br>Befolgen Sie Markenvorgaben:<br>Befolgen Sie beim Verweisen auf Microsoft-Marken sowie auf Namen von Microsoft-Software, -Produkten und -Diensten die [Microsoft-Markenrichtlinien sowie die entsprechenden produktspezifischen Richtlinien](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx). |
 | Beschreibung des Angebots | Geben Sie eine klare Angebotsbeschreibung an:<br>Schildern Sie in den ersten Sätzen Ihrer Beschreibung deutlich das Nutzenversprechen Ihres Angebots. Beachten Sie, dass die ersten Sätze in Suchmaschinenergebnissen angezeigt werden können. Setzen Sie sich nicht nur auf Features und Funktionen, um Ihr Produkt zu verkaufen. Konzentrieren Sie stattdessen auf den Nutzen, den Sie bieten. Verwenden Sie möglichst viel branchenspezifisches Vokabular oder eine nutzenorientierte Formulierung.<br><br>Die Kernbestandteile Ihres Nutzenversprechens sollten folgende Informationen umfassen:<ul><li>Beschreibung des Produkts</li><li>Typ von Benutzern, die von dem Produkt profitieren</li><li>Ansprüche oder Probleme der Kunden, die das Produkt erfüllt bzw. behebt</li></ul> |
 
 ### <a name="storefront-listing-details"></a>Storefront-Listungsdetails

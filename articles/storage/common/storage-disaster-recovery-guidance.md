@@ -2,24 +2,19 @@
 title: Vorgehensweise bei einem Ausfall von Azure Storage | Microsoft-Dokumentation
 description: Vorgehensweise bei einem Ausfall von Azure Storage
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: tamram
-ms.openlocfilehash: 160fe756458e067125b9d696fd0cdb929774446e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.component: common
+ms.openlocfilehash: bca4b13ea2a003ea428351bcff44944630387e1b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072033"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528009"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Vorgehensweise beim Ausfall von Azure Storage
 Bei Microsoft arbeiten wir hart, um sicherzustellen, dass unsere Dienste immer verfügbar sind. Aufgrund höherer Gewalt können ungeplante Dienstausfälle in einer Region oder auch mehreren Regionen auftreten. Damit Sie mit diesen seltenen Vorkommen umgehen können, stellen wir Ihnen den folgenden allgemeinen Leitfaden für Azure Storage-Dienste zur Verfügung.

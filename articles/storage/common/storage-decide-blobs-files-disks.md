@@ -3,16 +3,17 @@ title: Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 description: In diesem Artikel erfahren Sie, wie Sie Daten auf unterschiedliche Weise in Azure speichern und darauf zugreifen können. So wird Ihnen die Entscheidung erleichtert, welche Technologie Sie verwenden sollten.
 services: storage
 author: tamram
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: common
+ms.openlocfilehash: 3f2609ea57ea5a5a0cce2544a1031c55199d137b
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529502"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 
@@ -56,8 +57,8 @@ In der folgenden Tabelle wird Azure Files mit Azure-Datenträger verglichen.
 ||||  
 |-|-|-|  
 |**Attribut**|**Azure-Datenträger**|**Azure Files**|  
-|Umfang|Nur für einen einzelnen virtuellen Computer|Freigegebener Zugriff für mehrere virtuelle Computer|  
-|Momentaufnahmen und Kopieren|Ja|Nein |  
+|Bereich|Nur für einen einzelnen virtuellen Computer|Freigegebener Zugriff für mehrere virtuelle Computer|  
+|Momentaufnahmen und Kopieren|JA|JA|  
 |Konfiguration|Verbindung beim Start des virtuellen Computers|Verbindung nach dem Start des virtuellen Computers|  
 |Authentifizierung|Integriert|Wird mit „net use“ eingerichtet|  
 |Cleanup|Automatisch|Manuell|  

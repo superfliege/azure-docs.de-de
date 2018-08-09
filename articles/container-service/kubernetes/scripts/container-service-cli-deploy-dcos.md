@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 18ee5eb7f097d8d8738d72a29bcb73b8265b5416
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: db136fb1c68c243086d3e83424ed2c9864638c8f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32161955"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433384"
 ---
 # <a name="create-an-azure-container-service-dcos-cluster"></a>Erstellen eines Azure Container Service-DC/OS-Clusters
 
@@ -57,8 +57,8 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Erstellt einen ACS-Cluster. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Erstellt einen ACS-Cluster. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

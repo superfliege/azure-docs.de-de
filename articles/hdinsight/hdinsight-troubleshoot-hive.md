@@ -1,24 +1,19 @@
 ---
-title: Problembehandlung bei Hive mit Azure HDInsight | Microsoft-Dokumentation
+title: Problembehandlung bei Hive mit Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Hive und Azure HDInsight.
 keywords: Azure HDInsight, HIVE, FAQ, Problembehandlungshandbuch, häufig gestellte Fragen
-services: Azure HDInsight
-documentationcenter: na
-author: dharmeshkakadia
-manager: ''
-editor: ''
-ms.assetid: 15B8D0F3-F2D3-4746-BDCB-C72944AA9252
+services: hdinsight
 ms.service: hdinsight
-ms.devlang: na
-ms.topic: article
-ms.date: 11/2/2017
+author: dharmeshkakadia
 ms.author: dharmeshkakadia
-ms.openlocfilehash: d397552285466dc038fe580a084e2d1d0d69bfe2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.topic: conceptual
+ms.date: 11/2/2017
+ms.openlocfilehash: 832fab6c4f183ddad512c5e6e4309d70938a316b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31407696"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600022"
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Problembehandlung bei Hive mit Azure HDInsight
 

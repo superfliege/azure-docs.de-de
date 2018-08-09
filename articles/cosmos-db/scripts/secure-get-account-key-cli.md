@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: sngun
-ms.openlocfilehash: accd4209276425dc7c7f24e921d14d903fc03f2d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: abed8ed9b1a587f6a9a086c4774230e1109b2254
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34794903"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433340"
 ---
 # <a name="get-account-keys-for-azure-cosmos-db-using-the-azure-cli"></a>Abrufen von Kontoschlüsseln für Azure Cosmos DB mithilfe der Azure CLI
 
@@ -47,10 +47,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_update) | Aktualisiert ein Azure Cosmos DB-Konto. |
-| [az cosmosdb list-keys](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_list_keys) | Erstellt einen logischen Server, der die SQL-Datenbank hostet. |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az cosmosdb update](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-update) | Aktualisiert ein Azure Cosmos DB-Konto. |
+| [az cosmosdb list-keys](https://docs.microsoft.com/cli/azure/cosmosdb#az-cosmosdb-list-keys) | Erstellt einen logischen Server, der die SQL-Datenbank hostet. |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az-group-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

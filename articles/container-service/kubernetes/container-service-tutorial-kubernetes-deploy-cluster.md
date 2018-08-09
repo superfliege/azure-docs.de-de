@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 29a5cc67ab4d515809d00e5f0b4277f95bfb08e6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8403e5d8dd3bad07e412b08709dcb8c28201bcdf
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100170"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39434423"
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Bereitstellen eines Kubernetes-Clusters in Azure Container Service
 
@@ -35,7 +35,7 @@ In vorherigen Tutorials wurde ein Containerimage erstellt und in eine Azure Cont
 
 ## <a name="create-kubernetes-cluster"></a>Erstellen eines Kubernetes-Clusters
 
-Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#az_acs_create) einen Kubernetes-Cluster in Azure Container Service. 
+Erstellen Sie mit dem Befehl [az acs create](/cli/azure/acs#az-acs-create) einen Kubernetes-Cluster in Azure Container Service. 
 
 Das folgende Beispiel erstellt einen Cluster mit dem Namen `myK8sCluster` in einer Ressourcengruppe namens `myResourceGroup`. Diese Ressourcengruppe wurde im [vorherigen Tutorial](./container-service-tutorial-kubernetes-prepare-acr.md) erstellt.
 
@@ -43,7 +43,7 @@ Das folgende Beispiel erstellt einen Cluster mit dem Namen `myK8sCluster` in ein
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
-Manchmal hat ein Azure-Abonnement eingeschränkten Zugriff auf Azure-Ressourcen. Dies ist beispielsweise bei einem eingeschränkten Testabonnement der Fall. Tritt bei der Bereitstellung ein Fehler aufgrund von begrenzt verfügbaren Kernen auf, verringern Sie die Anzahl der Standard-Agents, indem Sie `--agent-count 1` zum Befehl [az acs create](/cli/azure/acs#az_acs_create) hinzufügen. 
+Manchmal hat ein Azure-Abonnement eingeschränkten Zugriff auf Azure-Ressourcen. Dies ist beispielsweise bei einem eingeschränkten Testabonnement der Fall. Tritt bei der Bereitstellung ein Fehler aufgrund von begrenzt verfügbaren Kernen auf, verringern Sie die Anzahl der Standard-Agents, indem Sie `--agent-count 1` zum Befehl [az acs create](/cli/azure/acs#az-acs-create) hinzufügen. 
 
 Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informationen zur ACS-Bereitstellung im JSON-Format zurückgegeben.
 

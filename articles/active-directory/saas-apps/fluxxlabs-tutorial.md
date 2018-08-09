@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 7bb15323a1f4ead02a24c4ee451de8890a635032
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 367310527619d4bdb5f84a80c567a9d83698846e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39053041"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433771"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Tutorial: Azure Active Directory-Integration mit Fluxx Labs
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Fluxx Labs aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-fluxx-labs-from-the-gallery"></a>Hinzufügen von Fluxx Labs aus dem Katalog
 Zum Konfigurieren der Integration von Fluxx Labs in Azure AD müssen Sie Fluxx Labs aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -63,15 +63,15 @@ Zum Konfigurieren der Integration von Fluxx Labs in Azure AD müssen Sie Fluxx L
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Fluxx Labs** ein, wählen Sie im Ergebnisbereich **Fluxx Labs** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Fluxx Labs** ein, wählen Sie im Ergebnisbereich **Fluxx Labs** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Fluxx-Labs in der Ergebnisliste](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Weisen Sie in Fluxx Labs den Wert für **Benutzername** in Azure AD als Wert fü
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Fluxx Labs müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Fluxx Labs-Testbenutzers](#create-a-fluxx-labs-test-user)**, um eine Entsprechung von Britta Simon in Fluxx Labs zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Fluxx Labs-Testbenutzers](#create-a-fluxx-labs-test-user)**, um eine Entsprechung von Britta Simon in Fluxx Labs zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -101,11 +101,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
     ![Dialogfeld „Einmaliges Anmelden“](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Fluxx Labs** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für Fluxx Labs** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Fluxx Labs](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_url.png)
 
@@ -126,29 +126,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Fluxx Labs](mailto:travis@fluxxlabs.com), um diese Werte zu erhalten.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/fluxxlabs-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Fluxx Labs-Konfiguration** auf **Fluxx Labs konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Fluxx Labs-Konfiguration** auf **Fluxx Labs konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_configure.png)
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der Fluxx Labs-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Fluxx Labs-Unternehmenswebsite als Administrator an.
 
-8. Wählen Sie unten im Abschnitt **Settings** (Einstellungen) die Option **Admin** (Administrator).
+1. Wählen Sie unten im Abschnitt **Settings** (Einstellungen) die Option **Admin** (Administrator).
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config1.png)
 
-9. Klicken Sie im Verwaltungsbereich auf **Plug-Ins** > **Integrations** (Integrationen) und anschließend auf **SAML SSO-(Disabled)** (SAML-SSO (Deaktiviert)).
+1. Klicken Sie im Verwaltungsbereich auf **Plug-Ins** > **Integrations** (Integrationen) und anschließend auf **SAML SSO-(Disabled)** (SAML-SSO (Deaktiviert)).
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config2.png)
 
-10. Führen Sie im Abschnitt mit den Attributen die folgenden Schritte aus:
+1. Führen Sie im Abschnitt mit den Attributen die folgenden Schritte aus:
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config3.png)
 
@@ -185,15 +185,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/fluxxlabs-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/fluxxlabs-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/fluxxlabs-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/fluxxlabs-tutorial/create_aaduser_04.png)
 
@@ -213,15 +213,15 @@ Damit sich Azure AD-Benutzer bei Fluxx Labs anmelden können, müssen sie in Flu
 
 1. Melden Sie sich bei der Fluxx Labs-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie auf das unten angezeigte **Symbol**.
+1. Klicken Sie auf das unten angezeigte **Symbol**.
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config6.png)
 
-3. Klicken Sie auf dem Dashboard auf das unten dargestellte Symbol, um die Karte **New PEOPLE** (Neue PERSONEN) zu öffnen.
+1. Klicken Sie auf dem Dashboard auf das unten dargestellte Symbol, um die Karte **New PEOPLE** (Neue PERSONEN) zu öffnen.
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config4.png)
 
-4. Führen Sie im Abschnitt **NEW PEOPLE** (NEUE PERSONEN) die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **NEW PEOPLE** (NEUE PERSONEN) die folgenden Schritte aus:
 
     ![Fluxx Labs-Konfiguration](./media/fluxxlabs-tutorial/config5.png)
 
@@ -241,23 +241,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Fluxx Labs** aus.
+1. Wählen Sie in der Anwendungsliste **Fluxx Labs** aus.
 
     ![Fluxx Labs-Link in der Anwendungsliste](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

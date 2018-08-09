@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
-ms.openlocfilehash: aeff3be89121bb93432d03f108ab5d2e5fa6f007
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 713e5304ca54039413f68ebc189dd049e77cdaa0
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099536"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527574"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Erste Schritte mit Azure Search in Node.js
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ Dies ist das erste auf Node.js und dem USGS-Dataset basierende Azure Search-Tuto
 
 Wenn Sie bereits Erfahrungen mit Azure Search haben, können Sie dieses Beispiel als Ausgangspunkt für das Testen von Vorschlägen (Typ-ahead- oder AutoVervollständigen-Abfragen), Filtern und Facettennavigation verwenden. Sie können auch die Suchergebnisseite verbessern, indem Sie Statistiken hinzufügen und Dokumente mit Batchvorgängen verarbeiten, damit die Benutzer die Ergebnisse seitenweise anzeigen können.
 
-Neu bei Azure Search? Es wird empfohlen, auch andere Lernprogramme zu bearbeiten, damit Sie ein Verständnis dafür entwickeln, was Sie erstellen können. Besuchen Sie unsere [Dokumentationsseite](https://azure.microsoft.com/documentation/services/search/) , um weitere Ressourcen zu finden. Sie können auch die Links in unserer [Video- und Lernprogrammliste](search-video-demo-tutorial-list.md) besuchen, um auf weitere Informationen zuzugreifen.
+Neu bei Azure Search? Es wird empfohlen, auch andere Lernprogramme zu bearbeiten, damit Sie ein Verständnis dafür entwickeln, was Sie erstellen können. Besuchen Sie unsere [Dokumentationsseite](https://azure.microsoft.com/documentation/services/search/) , um weitere Ressourcen zu finden. 
 
 <!--Image references-->
 [1]: ./media/search-get-started-Nodejs/create-search-portal-1.PNG

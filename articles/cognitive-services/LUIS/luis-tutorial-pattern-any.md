@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: ca4ed4444cd753c0fe22c6596dfd34d033b7b0cf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237001"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527363"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Tutorial: Verbessern der App mit der pattern.any-Entität
 
@@ -26,7 +26,7 @@ In diesem Tutorial verwenden Sie die pattern.any-Entität, um die Vorhersagen zu
 * Erstellen eines Muster, das pattern.any verwendet
 * Überprüfen der Verbesserungen bei Vorhersagen
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md)-Konto für die Erstellung Ihrer LUIS-Anwendung.
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personalabteilungs-App aus dem [Musterrollen](luis-tutorial-pattern-roles.md)-Tutorial verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json).
@@ -106,8 +106,9 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 
 4. Wenn Sie die keyPhrase-Entität entfernt haben, fügen Sie sie wieder der App hinzu. 
 
-5. Trainieren Sie die App.
+## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testen des neuen Musters für das Extrahieren von Freiformdaten
 1. Wählen Sie auf der oberen Leiste **Test** aus, um den Testbereich zu öffnen. 
@@ -123,7 +124,8 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 4. Schließen Sie den Testbereich durch Auswählen der Schaltfläche **Test** auf der oberen Navigationsleiste.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Klicken Sie dazu in der Liste rechts vom App-Namen auf die Auslassungspunkte (***...***) und dann auf **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/13/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5686266774603413fc255c53a0d1ad30f9baa8eb
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6d328d8a3556f565e7eac8ee079bd191b7dcadef
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173859"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433441"
 ---
 # <a name="deploy-a-python-web-app-in-web-app-for-containers"></a>Bereitstellen einer Python-Web-App über die Web-App für Container
 
@@ -31,7 +31,7 @@ ms.locfileid: "39173859"
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
-* <a href="https://www.docker.com/community-edition" target="_blank">Installation der Docker Community Edition</a>
+* <a href="https://www.docker.com/community-edition" target="_blank">Installieren Sie Docker Community Edition.</a>
 * <a href="https://hub.docker.com/" target="_blank">Registrierung für ein Docker-Hub-Konto</a>
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
@@ -96,7 +96,7 @@ Nachdem der Pushvorgang für das Image abgeschlossen wurde, können Sie es in Ih
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie eine [Web-App](../app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create). Ersetzen Sie *\<app name>* durch einen global eindeutigen App-Namen und *\<dockerhub_id>* durch Ihre Docker-Hub-ID.
+Erstellen Sie eine [Web-App](../app-service-web-overview.md) im App Service-Plan `myAppServicePlan` mit dem Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). Ersetzen Sie *\<app name>* durch einen global eindeutigen App-Namen und *\<dockerhub_id>* durch Ihre Docker-Hub-ID.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --deployment-container-image-name <dockerhub_id>/flask-quickstart
@@ -125,7 +125,7 @@ Wenn Sie zuvor den Upload in ein privates Repository durchgeführt haben, müsse
 
 Wie in der _Dockerfile_ angegeben, lauscht Ihr Container über Port 8000. Damit App Service Ihre Anforderung an den richtigen Port sendet, müssen Sie die App-Einstellung *WEBSITES_PORT* festlegen.
 
-Führen Sie in Cloud Shell den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) aus.
+Führen Sie in Cloud Shell den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) aus.
 
 
 ```azurecli-interactive

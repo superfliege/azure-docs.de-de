@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 2/14/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: eff5a292138bca8f443b77ec8e3ce8e3ee15464e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2fd993960d8ae5d1f26939d333e546da760d8f43
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607576"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432581"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder einzelne Dateien wiederherstellen. In diesem Artikel wird erläutert, wie Sie einzelne Dateien wiederherstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -45,7 +45,7 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 ## <a name="delete-a-file-from-a-vm"></a>Löschen einer Datei von einem virtuellen Computer
 Wenn Sie versehentlich eine Datei löschen oder Änderungen an ihr vornehmen, können Sie einzelne Dateien von einem Wiederherstellungspunkt aus wiederherstellen. Dieser Prozess ermöglicht Ihnen, die in einem Wiederherstellungspunkt gesicherten Dateien zu durchsuchen, um nur die benötigten Dateien wiederherzustellen. In diesem Beispiel wird eine Datei von einem Webserver gelöscht, um den Prozess der Wiederherstellung auf Dateiebene zu veranschaulichen.
 
-1. Um die Verbindung mit Ihrer VM herzustellen, rufen Sie die IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm?view=azure-cli-latest#az_vm_show) ab:
+1. Um die Verbindung mit Ihrer VM herzustellen, rufen Sie die IP-Adresse Ihres virtuellen Computers mit dem Befehl [az vm show](/cli/azure/vm?view=azure-cli-latest#az-vm-show) ab:
 
      ```azurecli-interactive
      az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
@@ -81,7 +81,7 @@ Wenn Sie versehentlich eine Datei löschen oder Änderungen an ihr vornehmen, k�
 ## <a name="generate-file-recovery-script"></a>Generieren des Skripts zur Dateiwiederherstellung
 Um Ihre Dateien wiederherzustellen, bietet Azure Backup ein Skript zur Ausführung auf Ihrem virtuellen Computer, das die Verbindung zu Ihrem Wiederherstellungspunkt als lokales Laufwerk herstellt. Sie können dieses lokale Laufwerk durchsuchen, Dateien auf der VM selbst wiederherstellen und dann die Verbindung zum Wiederherstellungspunkt trennen. Azure Backup setzt die Sicherung Ihrer Daten auf Basis der zugewiesenen Zeitplan- und Aufbewahrungsrichtlinie fort.
 
-1. Verwenden Sie zum Auflisten der Wiederherstellungspunkte für Ihren virtuellen Computer [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list). In diesem Beispiel wird der letzte Wiederherstellungspunkt für den virtuellen Computer mit dem Namen *myVM* ausgewählt, der in *myRecoveryServicesVault* geschützt wird:
+1. Verwenden Sie zum Auflisten der Wiederherstellungspunkte für Ihren virtuellen Computer [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-list). In diesem Beispiel wird der letzte Wiederherstellungspunkt für den virtuellen Computer mit dem Namen *myVM* ausgewählt, der in *myRecoveryServicesVault* geschützt wird:
 
     ```azurecli-interactive
     az backup recoverypoint list \
@@ -93,7 +93,7 @@ Um Ihre Dateien wiederherzustellen, bietet Azure Backup ein Skript zur Ausführu
         --output tsv
     ```
 
-2. Um das Skript abzurufen, das eine Verbindung des Wiederherstellungspunkts mit Ihrer VM herstellt bzw. ihn dort einbindet, verwenden Sie [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp). Im folgenden Beispiel wird das Skript für den virtuellen Computer mit dem Namen *myVM* abgerufen, der in *myRecoveryServicesVault* geschützt wird.
+2. Um das Skript abzurufen, das eine Verbindung des Wiederherstellungspunkts mit Ihrer VM herstellt bzw. ihn dort einbindet, verwenden Sie [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-mount-rp). Im folgenden Beispiel wird das Skript für den virtuellen Computer mit dem Namen *myVM* abgerufen, der in *myRecoveryServicesVault* geschützt wird.
 
     Ersetzen Sie *myRecoveryPointName* mit dem Namen des Wiederherstellungspunkts, den Sie im vorherigen Befehl abgerufen haben:
 
@@ -140,7 +140,7 @@ Wenn das Wiederherstellungsskript auf Ihren virtuellen Computer kopiert worden i
     ./myVM_we_1571974050985163527.sh
     ```
 
-    Während das Skript ausgeführt wird, werden Sie aufgefordert, ein Kennwort für den Zugriff auf den Wiederherstellungspunkt einzugeben. Geben Sie das Kennwort ein, das in der Ausgabe des vorherigen [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp)-Befehls angezeigt wurde, der das Wiederherstellungsskript generiert hat.
+    Während das Skript ausgeführt wird, werden Sie aufgefordert, ein Kennwort für den Zugriff auf den Wiederherstellungspunkt einzugeben. Geben Sie das Kennwort ein, das in der Ausgabe des vorherigen [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-mount-rp)-Befehls angezeigt wurde, der das Wiederherstellungsskript generiert hat.
 
     Die Ausgabe des Skripts enthält den Pfad zum Wiederherstellungspunkt. Die folgende Beispielausgabe zeigt, dass der Wiederherstellungspunkt unter */home/azureuser/myVM-20170919213536/Volume1* eingebunden wird:
 
@@ -180,7 +180,7 @@ Wenn das Wiederherstellungsskript auf Ihren virtuellen Computer kopiert worden i
     exit
     ```
 
-8. Heben Sie die Einbindung des Wiederherstellungspunkts auf Ihrem virtuellen Computer mit [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_unmount_rp) auf. Im folgenden Beispiel wird die Einbindung des Wiederherstellungspunkt auf dem virtuellen Computer mit dem Namen *myVM* in *myRecoveryServicesVault* aufgehoben.
+8. Heben Sie die Einbindung des Wiederherstellungspunkts auf Ihrem virtuellen Computer mit [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az-backup-restore-files-unmount-rp) auf. Im folgenden Beispiel wird die Einbindung des Wiederherstellungspunkt auf dem virtuellen Computer mit dem Namen *myVM* in *myRecoveryServicesVault* aufgehoben.
 
     Ersetzen Sie *myRecoveryPointName* mit dem Namen Ihres Wiederherstellungspunkts, den Sie in den vorherigen Befehlen abgerufen haben:
     

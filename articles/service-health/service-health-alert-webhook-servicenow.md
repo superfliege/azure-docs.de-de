@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 867a8c0b478df9d2b7690b8b914ded7c42558583
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1f5984f8f28832c33d3a5a844fde72e7286ad251
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30178867"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433788"
 ---
 # <a name="configure-service-health-alerts-with-servicenow"></a>Konfigurieren von Service Health-Warnungen mit ServiceNow
 
@@ -26,27 +26,27 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 ## <a name="creating-a-scripted-rest-api-in-servicenow"></a>Erstellen einer skriptgesteuerte REST-API in ServiceNow
 1.  Stellen Sie sicher, dass Sie Ihr [ServiceNow](https://www.servicenow.com/)-Konto registriert wurde und dass Sie angemeldet sind.
 
-2.  Navigieren Sie zum Abschnitt **System Web Services** (Systemwebdienste) in ServiceNow, und wählen Sie im Abschnitt **Scripted REST APIs** (skriptgesteuerte REST-APIs) aus.
+1.  Navigieren Sie zum Abschnitt **System Web Services** (Systemwebdienste) in ServiceNow, und wählen Sie im Abschnitt **Scripted REST APIs** (skriptgesteuerte REST-APIs) aus.
 
     ![Abschnitt „Scripted Web Service“ in ServiceNow](./media/webhook-alerts/servicenow-sws-section.png)
 
-3.  Wählen Sie **New** (Neu) aus, um einen neuen skriptgesteuerten REST-Dienst zu erstellen.
+1.  Wählen Sie **New** (Neu) aus, um einen neuen skriptgesteuerten REST-Dienst zu erstellen.
  
     ![Schaltfläche „New Scripted REST API“ in ServiceNow](./media/webhook-alerts/servicenow-new-button.png)
 
-4.  Fügen Sie einen **Namen** für Ihre REST-API hinzu und legen Sie die **API-ID** auf `azureservicehealth` fest.
+1.  Fügen Sie einen **Namen** für Ihre REST-API hinzu und legen Sie die **API-ID** auf `azureservicehealth` fest.
 
-5.  Klicken Sie auf **Submit** (Senden).
+1.  Klicken Sie auf **Submit** (Senden).
 
     ![„REST API Settings“ in ServiceNow](./media/webhook-alerts/servicenow-restapi-settings.png)
 
-6.  Wählen Sie die REST-API, die Sie erstellt haben, und dann auf der Registerkarte **Resources** (Ressourcen) die Option **New** (Neu) aus.
+1.  Wählen Sie die REST-API, die Sie erstellt haben, und dann auf der Registerkarte **Resources** (Ressourcen) die Option **New** (Neu) aus.
 
     ![Registerkarte „Resources“ in ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-7.  Geben Sie der neuen Ressource den **Namen** `event`, und ändern Sie die **HTTP-Methode** in `POST`.
+1.  Geben Sie der neuen Ressource den **Namen** `event`, und ändern Sie die **HTTP-Methode** in `POST`.
 
-8.  Fügen Sie im Abschnitt **Script** (Skript) den folgenden JavaScript-Code hinzu:
+1.  Fügen Sie im Abschnitt **Script** (Skript) den folgenden JavaScript-Code hinzu:
 
     >[!NOTE]
     >Sie müssen die Werte `<secret>`,`<group>` und `<email>` im unten aufgeführten Skript aktualisieren.
@@ -139,15 +139,15 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
     })(request, response);
     ```
 
-9.  Deaktivieren Sie auf der Registerkarte „Security“ (Sicherheit) die Option **Requires authentication** (Authentifizierung erforderlich), und wählen Sie **Submit** (Absenden) aus. Die API wird stattdessen durch den von Ihnen festgelegten `<secret>` geschützt.
+1.  Deaktivieren Sie auf der Registerkarte „Security“ (Sicherheit) die Option **Requires authentication** (Authentifizierung erforderlich), und wählen Sie **Submit** (Absenden) aus. Die API wird stattdessen durch den von Ihnen festgelegten `<secret>` geschützt.
 
     ![Kontrollkästchen „Requires Authentication“ in ServiceNow](./media/webhook-alerts/servicenow-resource-settings.png)
 
-10.  Zurück im Abschnitt „Scripted REST APIs“ (Skriptgesteuerte REST-APIs) finden Sie den **Base API Path** (API-Basispfad) für Ihre neue REST-API:
+1.  Zurück im Abschnitt „Scripted REST APIs“ (Skriptgesteuerte REST-APIs) finden Sie den **Base API Path** (API-Basispfad) für Ihre neue REST-API:
 
      ![„Base API Path“ in ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
 
-11.  Die vollständige Integrations-URL sieht wie folgt aus:
+1.  Die vollständige Integrations-URL sieht wie folgt aus:
         
          https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
@@ -156,7 +156,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 ### <a name="for-a-new-action-group"></a>Für eine neue Aktionsgruppe:
 1. Führen Sie die Schritte 1 bis 8 in [diesem Artikel](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) aus, um eine Warnung mit einer neuen Aktionsgruppe zu erstellen.
 
-2. Definieren Sie in der Liste der **Aktionen** Folgendes:
+1. Definieren Sie in der Liste der **Aktionen** Folgendes:
 
     a. **Action Type:** *Webhook*
 
@@ -164,16 +164,16 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     c. **Name:** Name, Alias oder Bezeichner des Webhook.
 
-3. Wählen Sie **Save** (Speichern) aus, wenn das Erstellen der Warnung abgeschlossen ist.
+1. Wählen Sie **Save** (Speichern) aus, wenn das Erstellen der Warnung abgeschlossen ist.
 
 ### <a name="for-an-existing-action-group"></a>Für eine vorhandene Aktionsgruppe:
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) die Option **Überwachen** aus.
 
-2. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
+1. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
 
-3. Suchen und markieren Sie die Aktionsgruppe, die Sie bearbeiten möchten.
+1. Suchen und markieren Sie die Aktionsgruppe, die Sie bearbeiten möchten.
 
-4. Fügen Sie Folgendes zur Liste der **Aktionen** hinzu:
+1. Fügen Sie Folgendes zur Liste der **Aktionen** hinzu:
 
     a. **Action Type:** *Webhook*
 
@@ -181,12 +181,12 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     c. **Name:** Name, Alias oder Bezeichner des Webhook.
 
-5. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
+1. Wählen Sie **Save** (Speichern) aus, wenn Sie mit dem Aktualisieren der Aktionsgruppe fertig sind.
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>Testen der Webhookintegration über eine HTTP POST-Anforderung
 1. Erstellen Sie die Service Health-Nutzlast, die Sie senden möchten. Eine Service Health-Beispielwebhook-Nutzlast finden Sie unter [Webhooks für Azure-Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md).
 
-2. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
+1. Erstellen Sie eine HTTP POST-Anforderung, indem Sie wie folgt vorgehen:
 
     ```
     POST        https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
@@ -195,9 +195,9 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     BODY        <service health payload>
     ```
-3. Sie sollten eine `200 OK`-Antwort mit der Meldung „Incident created“ (Vorfall erstellt) erhalten.
+1. Sie sollten eine `200 OK`-Antwort mit der Meldung „Incident created“ (Vorfall erstellt) erhalten.
 
-4. Wechseln Sie zu [ServiceNow](https://www.servicenow.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
+1. Wechseln Sie zu [ServiceNow](https://www.servicenow.com/), um zu überprüfen, ob Ihre Integration erfolgreich eingerichtet wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).

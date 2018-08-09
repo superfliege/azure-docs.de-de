@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6362bcb701b444c8cd71b270222ce4f87b4cc2e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7e444692dfeab5ca14fbd896043cc28e2cbd8717
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055857"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433993"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Tutorial: Azure Active Directory-Integration mit vxMaintain
 
@@ -65,19 +65,19 @@ Um vxMaintain aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte 
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
+1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
 
     ![Bereich „Unternehmensanwendungen“][2]
     
-3. Um eine Anwendung hinzuzufügen, wählen Sie im Dialogfeld **Alle Anwendungen** die Schaltfläche **Neue Anwendung** aus.
+1. Um eine Anwendung hinzuzufügen, wählen Sie im Dialogfeld **Alle Anwendungen** die Schaltfläche **Neue Anwendung** aus.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **vxMaintain**ein.
+1. Geben Sie im Suchfeld als Suchbegriff **vxMaintain**ein.
 
     ![Die Dropdownliste „SSO-Modus“](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. Wählen Sie in der Ergebnisliste **vxMaintain** und dann **Hinzufügen**.
+1. Wählen Sie in der Ergebnisliste **vxMaintain** und dann **Hinzufügen**.
 
     ![Der vxMaintain-Link](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
@@ -98,11 +98,11 @@ In diesem Abschnitt können Sie folgendermaßen das einmalige Anmelden von Azure
 
     ![Der Befehl „Einmaliges Anmelden“][4]
 
-2. Um das einmalige Anmelden zu aktivieren, wählen Sie in der Dropdwonliste **SSO-Modus** die Option **SAML-basierte Anmeldung** aus.
+1. Um das einmalige Anmelden zu aktivieren, wählen Sie in der Dropdwonliste **SSO-Modus** die Option **SAML-basierte Anmeldung** aus.
  
     ![Der Befehl „SAML-basierte Anmeldung“](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. Gehen Sie unter **Domäne und URLs für vxMaintain** folgendermaßen vor:
+1. Gehen Sie unter **Domäne und URLs für vxMaintain** folgendermaßen vor:
 
     ![Abschnitt „Domäne und URLs für vxMaintain“](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
@@ -113,15 +113,15 @@ In diesem Abschnitt können Sie folgendermaßen das einmalige Anmelden von Azure
     > [!NOTE] 
     > Die vorangehenden Werte sind keine echten Werte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von vxMaintain](https://www.hubspot.com/company/contact), um diese Werte zu erhalten.
  
-4. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Der Abschnitt „SAML-Signaturzertifikat“](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
-5. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
     ![Die Schaltfläche „Speichern“](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Um **vxMaintain**-SSO zu konfigurieren, senden Sie die heruntergeladene **Metadaten-XML**-Datei an das [vxMaintain Support-Team](https://www.hubspot.com/company/contact).
+1. Um **vxMaintain**-SSO zu konfigurieren, senden Sie die heruntergeladene **Metadaten-XML**-Datei an das [vxMaintain Support-Team](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Wie Sie die App einrichten, können Sie eine kürzere Version der vorherigen Anweisungen im [Azure-Portal](https://portal.azure.com) lesen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, wählen Sie die Registerkarte **Einmaliges Anmelden** und rufen anschließend die eingebettete Dokumentation über den Abschnitt **Konfiguration** auf. 
@@ -138,16 +138,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer m
 
     ![Schaltfläche „Azure Active Directory“](./media/vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. Um die Liste der Benutzer anzuzeigen, gehen Sie zu **Benutzer und Gruppen** > **Alle Benutzer**.
+1. Um die Liste der Benutzer anzuzeigen, gehen Sie zu **Benutzer und Gruppen** > **Alle Benutzer**.
     
     ![Der Link „Alle Benutzer“](./media/vxmaintain-tutorial/create_aaduser_02.png)  
     Das Dialogfeld **Alle Benutzer** wird geöffnet. 
 
-3. Zum Öffnen des Dialogfelds **Benutzer** wählen Sie **Hinzufügen**.
+1. Zum Öffnen des Dialogfelds **Benutzer** wählen Sie **Hinzufügen**.
  
     ![Schaltfläche „Hinzufügen“](./media/vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie im Dialogfeld **Benutzer** folgende Schritte aus:
+1. Führen Sie im Dialogfeld **Benutzer** folgende Schritte aus:
  
     ![Dialogfeld „Benutzer“](./media/vxmaintain-tutorial/create_aaduser_04.png) 
 
@@ -173,21 +173,21 @@ In diesem Abschnitt ermöglichen Sie der Testbenutzerin Britta Simon die Verwend
 
     ![Der Link „Alle Anwendungen“][201] 
 
-2. Wählen Sie in der Liste **Anwendungen** die Option **vxMaintain**.
+1. Wählen Sie in der Liste **Anwendungen** die Option **vxMaintain**.
 
     ![Der vxMaintain-Link](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. Wählen Sie auf der linken Seite **Benutzer und Gruppen**.
+1. Wählen Sie auf der linken Seite **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202] 
 
-4. Wählen Sie **Hinzufügen** und dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
+1. Wählen Sie **Hinzufügen** und dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und dann die Schaltfläche **Auswählen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und dann die Schaltfläche **Auswählen** aus.
 
-7. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Testen des einmaligen Anmeldens mit Azure AD
 

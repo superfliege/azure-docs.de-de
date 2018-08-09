@@ -2,23 +2,19 @@
 title: 'Abfragen von Daten aus HDFS-kompatiblem Azure-Speicher: Azure HDInsight'
 description: Es wird beschrieben, wie Sie Daten in Azure-Speicher und Azure Data Lake Store abfragen, um die Ergebnisse Ihrer Analyse zu speichern.
 services: hdinsight,storage
-tags: azure-portal
-author: mumian
-ms.author: jgao
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 1d2e65f2-16de-449e-915f-3ffbc230f815
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.workload: big-data
 ms.topic: get-started-article
 ms.date: 05/14/2018
-ms.openlocfilehash: 13787620ca889beea74c96b8fa922287b88442f4
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: bccaf00537dd1455e1364ceb2b5ca152b12f218c
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237722"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598230"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 

@@ -15,32 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 0932195bb95ab9610f723245bfed7fedb01001f9
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b4bb0cdb9be59ae35b640ef67b12c382bb621a19
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30323633"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433580"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zonal-frontend-using-azure-cli"></a>Erstellen eines öffentlichen Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI
 
 In diesem Artikel wird die Erstellung eines öffentlichen [Standard-Lastenausgleichs](https://aka.ms/azureloadbalancerstandard) mit einem Zonen-Front-End mithilfe einer öffentlichen Standard-IP-Adresse erläutert. In diesem Szenario können Sie auch eine bestimmte Zone für Ihre Front-End- und Back-End-Instanzen angeben, um Ihren Datenpfad und Ihre Ressourcen mit einer bestimmten Zone zu verbinden.
 
-Informationen zur Verwendung von Verfügbarkeitszonen mit einem Standard-Lastenausgleich finden Sie unter [Standard-Lastenausgleich und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
+Informationen zur Verwendung von Verfügbarkeitszonen mit Load Balancer Standard finden Sie unter [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
  
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI installieren und lokal verwenden, achten Sie darauf, dass Sie die aktuelle Version von [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installiert haben und mit [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az_login) bei einem Azure-Konto angemeldet sind.
+Wenn Sie die CLI installieren und lokal verwenden, achten Sie darauf, dass Sie die aktuelle Version von [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) installiert haben und mit [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) bei einem Azure-Konto angemeldet sind.
 
 > [!NOTE]
  Unterstützung für Verfügbarkeitszonen ist für ausgewählte Azure-Ressourcen und -Regionen sowie VM-Größenkategorien verfügbar. Weitere Informationen zu den ersten Schritten sowie zu den Azure-Ressourcen, -Regionen und VM-Größenkategorien, die mit Verfügbarkeitszonen verwendet werden können, finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](https://docs.microsoft.com/azure/availability-zones/az-overview). Wenn Sie Unterstützung benötigen, können Sie über [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) Kontakt aufnehmen oder [ein Azure-Supportticket erstellen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupLB* am Standort *Europa, Westen* erstellt:
 
@@ -71,7 +71,7 @@ In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenau
 - Lastenausgleichsregel, mit der definiert wird, wie Datenverkehr auf die virtuellen Computer verteilt werden soll
 
 ### <a name="create-the-load-balancer"></a>Erstellen des Lastenausgleichs
-Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az_network_lb_create) einen Standard-Lastenausgleich. Im folgenden Beispiel wird der Lastenausgleich *myLoadBalancer* erstellt und die Adresse *myPublicIP* der Front-End-IP-Konfiguration zugewiesen.
+Erstellen Sie mit [az network lb create](/cli/azure/network/lb#az-network-lb-create) einen Standard-Lastenausgleich. Im folgenden Beispiel wird der Lastenausgleich *myLoadBalancer* erstellt und die Adresse *myPublicIP* der Front-End-IP-Konfiguration zugewiesen.
 
 ```azurecli-interactive
 az network lb create \
@@ -85,7 +85,7 @@ az network lb create \
 
 ## <a name="create-health-probe-on-port-80"></a>Erstellen eines Integritätstests für Port 80
 
-Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit „az network lb probe create“ einen Integritätstest zur Überwachung der Integrität der virtuellen Computer. Zum Erstellen eines TCP-Integritätstests verwenden Sie [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create). Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt:
+Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass sie Netzwerkdatenverkehr senden können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit „az network lb probe create“ einen Integritätstest zur Überwachung der Integrität der virtuellen Computer. Zum Erstellen eines TCP-Integritätstests verwenden Sie [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create). Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt:
 
 ```azurecli-interactive
 az network lb probe create \
@@ -97,7 +97,7 @@ az network lb probe create \
 ```
 
 ## <a name="create-load-balancer-rule-for-port-80"></a>Erstellen einer Lastenausgleichsregel für Port 80
-Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) eine Lastenausgleichsregel mit dem Namen *myLoadBalancerRuleWeb*, die an Port 80 des Front-End-Pools *myFrontEndPool* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird.
+Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) eine Lastenausgleichsregel mit dem Namen *myLoadBalancerRuleWeb*, die an Port 80 des Front-End-Pools *myFrontEndPool* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -117,7 +117,7 @@ Vor der Bereitstellung mehrerer virtueller Computer und dem Testen des Lastenaus
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie ein virtuelles Netzwerk mit dem Namen *myVnet* und dem Subnetz *mySubnet* in myResourceGroup, indem Sie den Befehl [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) verwenden.
+Erstellen Sie ein virtuelles Netzwerk mit dem Namen *myVnet* und dem Subnetz *mySubnet* in myResourceGroup, indem Sie den Befehl [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) verwenden.
 
 
 ```azurecli-interactive
@@ -130,7 +130,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) eine Netzwerksicherheitsgruppe mit dem Namen *myNetworkSecurityGroup*, um eingehende Verbindungen für Ihr virtuelles Netzwerk zu definieren.
+Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) eine Netzwerksicherheitsgruppe mit dem Namen *myNetworkSecurityGroup*, um eingehende Verbindungen für Ihr virtuelles Netzwerk zu definieren.
 
 ```azurecli-interactive
 az network nsg create \
@@ -138,7 +138,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) eine Netzwerksicherheitsgruppenregel namens *myNetworkSecurityGroupRule* für Port 80.
+Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) eine Netzwerksicherheitsgruppenregel namens *myNetworkSecurityGroupRule* für Port 80.
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -155,7 +155,7 @@ az network nsg rule create \
 --priority 200
 ```
 ### <a name="create-nics"></a>Erstellen von NICs
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) drei virtuelle Netzwerkkarten, und ordnen Sie sie der öffentlichen IP-Adresse und der Netzwerksicherheitsgruppe zu. Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-create) drei virtuelle Netzwerkkarten, und ordnen Sie sie der öffentlichen IP-Adresse und der Netzwerksicherheitsgruppe zu. Im folgenden Beispiel werden drei virtuelle NICs erstellt (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -219,7 +219,7 @@ runcmd:
 ```
 
 ### <a name="create-the-zonal-virtual-machines"></a>Erstellen von virtuellen Computern in einer Zone
-Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) die virtuellen Computer. Im folgenden Beispiel werden drei VMs in Zone 1 erstellt und SSH-Schlüssel generiert, sofern sie noch nicht vorhanden sind:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az-vm-create) die virtuellen Computer. Im folgenden Beispiel werden drei VMs in Zone 1 erstellt und SSH-Schlüssel generiert, sofern sie noch nicht vorhanden sind:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -235,7 +235,7 @@ done
 ```
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
-Rufen Sie mithilfe von [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) die öffentliche IP-Adresse des Lastenausgleichs ab. 
+Rufen Sie mithilfe von [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) die öffentliche IP-Adresse des Lastenausgleichs ab. 
 
 ```azurecli-interactive
   az network public-ip show \
@@ -252,7 +252,7 @@ Geben Sie die öffentliche IP-Adresse in einem Webbrowser ein. Nicht vergessen: 
 Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Lastenausgleich den Datenverkehr auf die VMs in Zone 1 verteilt, auf denen Ihre App ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](./load-balancer-standard-overview.md).
+- Weitere Informationen zu [Standard Load Balancer](./load-balancer-standard-overview.md).
 
 
 

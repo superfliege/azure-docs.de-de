@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 7699eb4074d85768fa18f4739137ea8ad2b80ced
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a7be918118d86da7e1134f5ce46e5f163ba62601
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215425"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Tutorial: Azure Active Directory-Integration mit Halogen Software
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Halogen Software aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-halogen-software-from-the-gallery"></a>Hinzufügen von Halogen Software aus dem Katalog
 
@@ -65,19 +65,19 @@ Zum Konfigurieren der Integration von Halogen Software in Azure AD müssen Sie H
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie in das Suchfeld den Begriff **Halogen Software** ein.
+1. Geben Sie in das Suchfeld den Begriff **Halogen Software** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/halogen-software-tutorial/tutorial_halogensoftware_search.png)
 
-5. Wählen Sie im Ergebnisbereich **Halogen Software** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **Halogen Software** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/halogen-software-tutorial/tutorial_halogensoftware_addfromgallery.png)
 
@@ -91,10 +91,10 @@ Weisen Sie in Halogen Software den Wert des **Benutzernamens** in Azure AD als W
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Halogen Software müssen Sie die folgenden Bausteinen ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Halogen Software-Testbenutzers](#creating-a-halogen-software-test-user)**, um ein Pendant von Britta Simon in Halogen Software zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Halogen Software-Testbenutzers](#creating-a-halogen-software-test-user)**, um ein Pendant von Britta Simon in Halogen Software zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -104,15 +104,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Halogen Software** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/halogen-software-tutorial/tutorial_halogensoftware_samlbase.png)
+    ![Configure single sign-on](./media/halogen-software-tutorial/tutorial_halogensoftware_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Halogen Software** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für Halogen Software** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/halogen-software-tutorial/tutorial_halogensoftware_url.png)
+    ![Configure single sign-on](./media/halogen-software-tutorial/tutorial_halogensoftware_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://global.hgncloud.com/<companyname>`.
 
@@ -123,25 +123,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/halogen-software-tutorial/tutorial_halogensoftware_certificate.png) 
+    ![Configure single sign-on](./media/halogen-software-tutorial/tutorial_halogensoftware_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/halogen-software-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/halogen-software-tutorial/tutorial_general_400.png)
 
-6. Melden Sie sich in einem anderen Browserfenster in Ihrer **Halogen Software** -Anwendung als Administrator an.
+1. Melden Sie sich in einem anderen Browserfenster in Ihrer **Halogen Software** -Anwendung als Administrator an.
 
-7. Klicken Sie auf die Registerkarte **Options** . 
+1. Klicken Sie auf die Registerkarte **Options** . 
    
     ![Was ist Azure AD Connect?][12]
 
-8. Klicken Sie im linken Navigationsbereich auf **SAML-Konfiguration**. 
+1. Klicken Sie im linken Navigationsbereich auf **SAML-Konfiguration**. 
    
     ![Was ist Azure AD Connect?][13]
 
-9. Führen Sie auf der Seite **SAML-Konfiguration** die folgenden Schritte aus: 
+1. Führen Sie auf der Seite **SAML-Konfiguration** die folgenden Schritte aus: 
 
     ![Was ist Azure AD Connect?][14]
 
@@ -176,15 +176,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/halogen-software-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/halogen-software-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/halogen-software-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/halogen-software-tutorial/create_aaduser_04.png) 
 
@@ -204,11 +204,11 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
 1. Melden Sie sich in Ihrer **Halogen Software** -Anwendung als Administrator an.
 
-2. Klicken Sie auf die Registerkarte **Benutzercenter** und dann auf **Benutzer erstellen**.
+1. Klicken Sie auf die Registerkarte **Benutzercenter** und dann auf **Benutzer erstellen**.
    
     ![Was ist Azure AD Connect?][300]  
 
-3. Führen Sie auf der Dialogfeldseite **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Neuer Benutzer** die folgenden Schritte aus:
    
     ![Was ist Azure AD Connect?][301]
 
@@ -234,23 +234,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Halogen Software**aus.
+1. Wählen Sie in der Anwendungsliste **Halogen Software**aus.
 
-    ![Configure Single Sign-On](./media/halogen-software-tutorial/tutorial_halogensoftware_app.png) 
+    ![Configure single sign-on](./media/halogen-software-tutorial/tutorial_halogensoftware_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

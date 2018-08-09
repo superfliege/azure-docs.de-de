@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: bbf4e2a35667484fea66a1888cdfc0184a806583
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 9ece2e0f56522582e53e827ac6db7f33b1c8cb7e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308315"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39432547"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung
 
@@ -65,51 +65,51 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
-2. Wenn Sie Salesforce bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Salesforce-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **Salesforce**. Wählen Sie „Salesforce“ in den Suchergebnissen aus, und fügen Sie die Anwendung Ihrer Anwendungsliste hinzu.
+1. Wenn Sie Salesforce bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Salesforce-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **Salesforce**. Wählen Sie „Salesforce“ in den Suchergebnissen aus, und fügen Sie die Anwendung Ihrer Anwendungsliste hinzu.
 
-3. Wählen Sie Ihre Salesforce-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** aus.
+1. Wählen Sie Ihre Salesforce-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** aus.
 
-4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
     ![Bereitstellung](./media/salesforce-provisioning-tutorial/provisioning.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die folgenden Konfigurationseinstellungen an:
+1. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die folgenden Konfigurationseinstellungen an:
    
     a. Geben Sie im Textfeld **Administratorbenutzername** den Namen eines Salesforce-Kontos ein, dem das Profil **Systemadministrator** in „Salesforce.com“ zugewiesen ist.
    
     b. Geben Sie im Feld **Administratorkennwort** das Kennwort für das Konto ein.
 
-6. Um Ihr Salesforce-Sicherheitstoken abzurufen, öffnen Sie eine neue Registerkarte, und melden Sie sich mit dem gleichen Salesforce-Administratorkonto an. Klicken Sie in der rechten oberen Ecke der Seite auf Ihren Namen und dann auf **Meine Einstellungen**.
+1. Um Ihr Salesforce-Sicherheitstoken abzurufen, öffnen Sie eine neue Registerkarte, und melden Sie sich mit dem gleichen Salesforce-Administratorkonto an. Klicken Sie in der rechten oberen Ecke der Seite auf Ihren Namen und dann auf **Meine Einstellungen**.
 
      ![Automatische Benutzerbereitstellung aktivieren](./media/salesforce-provisioning-tutorial/sf-my-settings.png "Automatische Benutzerbereitstellung aktivieren")
 
-7. Klicken Sie im linken Navigationsbereich auf **Meine persönlichen Informationen**, um den entsprechenden Abschnitt zu erweitern, und dann auf **Mein Sicherheitstoken zurücksetzen**.
+1. Klicken Sie im linken Navigationsbereich auf **Meine persönlichen Informationen**, um den entsprechenden Abschnitt zu erweitern, und dann auf **Mein Sicherheitstoken zurücksetzen**.
   
     ![Automatische Benutzerbereitstellung aktivieren](./media/salesforce-provisioning-tutorial/sf-personal-reset.png "Automatische Benutzerbereitstellung aktivieren")
 
-8. Klicken Sie auf der Seite **Sicherheitstoken zurücksetzen** auf die Schaltfläche **Sicherheitstoken zurücksetzen**.
+1. Klicken Sie auf der Seite **Sicherheitstoken zurücksetzen** auf die Schaltfläche **Sicherheitstoken zurücksetzen**.
 
     ![Automatische Benutzerbereitstellung aktivieren](./media/salesforce-provisioning-tutorial/sf-reset-token.png "Automatische Benutzerbereitstellung aktivieren")
 
-9. Überprüfen Sie den E-Mail-Posteingang dieses Administratorkontos. Achten Sie auf eine E-Mail von Salesforce.com, die das neue Sicherheitstoken enthält.
+1. Überprüfen Sie den E-Mail-Posteingang dieses Administratorkontos. Achten Sie auf eine E-Mail von Salesforce.com, die das neue Sicherheitstoken enthält.
 
-10. Kopieren Sie das Token, wechseln Sie zu Ihrem Azure AD-Fenster, und fügen Sie es in das Feld **Geheimes Token** ein.
+1. Kopieren Sie das Token, wechseln Sie zu Ihrem Azure AD-Fenster, und fügen Sie es in das Feld **Geheimes Token** ein.
 
-11. Die **Mandanten-URL** muss eingegeben werden, wenn sich die Instanz von Salesforce in der Salesforce Government Cloud befindet. Andernfalls ist die Angabe optional. Geben Sie die Mandanten-URL im Format „https://\<Ihre-Instanz\>.my.salesforce.com“ ein. Ersetzen Sie dabei \<Ihre-Instanz\> durch den Namen Ihrer Salesforce-Instanz.
+1. Die **Mandanten-URL** muss eingegeben werden, wenn sich die Instanz von Salesforce in der Salesforce Government Cloud befindet. Andernfalls ist die Angabe optional. Geben Sie die Mandanten-URL im Format „https://\<Ihre-Instanz\>.my.salesforce.com“ ein. Ersetzen Sie dabei \<Ihre-Instanz\> durch den Namen Ihrer Salesforce-Instanz.
 
-12. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Salesforce-App herstellen kann.
+1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Salesforce-App herstellen kann.
 
-13. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
+1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
-14. Klicken Sie auf **Speichern**.  
+1. Klicken Sie auf **Speichern**.  
     
-15.  Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Salesforce synchronisieren** aus.
+1.  Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Salesforce synchronisieren** aus.
 
-16. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Salesforce synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Salesforce für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
+1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Salesforce synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Salesforce für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-17. Um den Azure AD-Bereitstellungsdienst für Salesforce zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**.
+1. Um den Azure AD-Bereitstellungsdienst für Salesforce zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**.
 
-18. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Salesforce im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Salesforce-App ausgeführt werden.
 

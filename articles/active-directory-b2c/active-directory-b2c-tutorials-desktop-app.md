@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: ff9cfd0f1f3d8ee62b7f93d88023b3dedce3e7be
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 18db911782e03d17f0b2e2ace3f8b00ddfdebf70
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711731"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599931"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung von Desktop-Apps mit Konten unter Verwendung von Azure Active Directory B2C
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="register-desktop-app"></a>Registrieren der Desktop-App
 
-Anwendungen müssen bei Ihrem Mandanten [registriert](../active-directory/develop/active-directory-dev-glossary.md#application-registration) werden, um [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) aus Azure Active Directory erhalten zu können. Bei der App-Registrierung wird für die App eine [Anwendungs-ID](../active-directory/develop/active-directory-dev-glossary.md#application-id-client-id) in Ihrem Mandanten erstellt. 
+Anwendungen müssen bei Ihrem Mandanten [registriert](../active-directory/develop/developer-glossary.md#application-registration) werden, um [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) aus Azure Active Directory erhalten zu können. Bei der App-Registrierung wird für die App eine [Anwendungs-ID](../active-directory/develop/developer-glossary.md#application-id-client-id) in Ihrem Mandanten erstellt. 
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
 
@@ -55,7 +55,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Admi
     | ------------ | ------- | -------------------------------------------------- |
     | **Name** | My Sample WPF App | Geben Sie einen aussagekräftigen **App-Namen**ein. | 
     | **Web-App/Web-API einschließen** | Nein  | Wählen Sie bei einer Desktop-App **Nein** aus. |
-    | **Nativen Client einschließen** | Ja | Dies ist eine Desktop-App, die als nativer Client betrachtet wird. |
+    | **Nativen Client einschließen** | JA | Dies ist eine Desktop-App, die als nativer Client betrachtet wird. |
     | **Umleitungs-URI** | Standardwerte | Eindeutiger Bezeichner, an den Azure AD B2C den Benutzer-Agent in einer OAuth 2.0-Antwort umleitet |
     | **Benutzerdefinierter Umleitungs-URI** | `com.onmicrosoft.contoso.appname://redirect/path` | Geben Sie `com.onmicrosoft.<your tenant name>.<any app name>://redirect/path` ein. Richtlinien senden Token an diesen URI. |
     
@@ -86,7 +86,7 @@ Erstellen Sie eine **Registrierungs- oder Anmelderichtlinie**, um Benutzer für 
     | **Name** | SiUpIn | Geben Sie einen **Namen** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **B2C_1_SiUpIn** verwendet. | 
     | **Identitätsanbieter** | E-Mail-Registrierung | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
     | **Registrierungsattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die im Rahmen der Benutzerregistrierung erfasst werden sollen. |
-    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User is new“ (Benutzer ist neu), „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
+    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User is new“ (Benutzer ist neu), „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
 2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
 
@@ -103,7 +103,7 @@ Erstellen Sie eine **Richtlinie zur Profilbearbeitung**, um Benutzern das eigens
     | **Name** | SiPe | Geben Sie einen **Namen** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **B2C_1_SiPe** verwendet. | 
     | **Identitätsanbieter** | Anmeldung mit lokalem Konto | Der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
     | **Profilattribute** | „Anzeigename“ und „Postleitzahl“ | Wählen Sie Attribute aus, die Benutzer bei der Profilbearbeitung ändern können. |
-    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die nach erfolgreicher Profilbearbeitung im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
+    | **Anwendungsansprüche** | „Anzeigename“, „Postleitzahl“, „User's Object ID“ (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die nach erfolgreicher Profilbearbeitung im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
 2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
 
@@ -119,7 +119,7 @@ Wenn Sie in Ihrer Anwendung das Zurücksetzen des Kennworts ermöglichen möchte
     | ------------ | ------- | -------------------------------------------------- |
     | **Name** | SSPR | Geben Sie einen **Namen** für die Richtlinie ein. Der Richtlinienname wird mit dem Präfix **B2C_1_** versehen. Im Beispielcode wird der vollständige Richtlinienname **B2C_1_SSPR** verwendet. | 
     | **Identitätsanbieter** | Kennwort mittels E-Mail-Adresse zurücksetzen | Dies ist der Identitätsanbieter zur eindeutigen Identifizierung des Benutzers. |
-    | **Anwendungsansprüche** | User's Object ID (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/active-directory-dev-glossary.md#claim) aus, die nach erfolgreicher Kennwortzurücksetzung im [Zugriffstoken](../active-directory/develop/active-directory-dev-glossary.md#access-token) enthalten sein sollen. |
+    | **Anwendungsansprüche** | User's Object ID (Objekt-ID des Benutzers) | Wählen Sie [Ansprüche](../active-directory/develop/developer-glossary.md#claim) aus, die nach erfolgreicher Kennwortzurücksetzung im [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) enthalten sein sollen. |
 
 2. Klicken Sie auf **Erstellen**, um die Richtlinie zu erstellen. 
 

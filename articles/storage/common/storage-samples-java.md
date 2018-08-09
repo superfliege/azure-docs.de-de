@@ -2,24 +2,19 @@
 title: Azure Storage-Beispiele mit Java | Microsoft Docs
 description: Sie können Beispielcode und -anwendungen für Azure Storage anzeigen, herunterladen und ausführen. Entdecken Sie Beispiele für erste Schritte mit Blobs, Warteschlangen, Tabellen und Dateien, indem Sie die Speicherclientbibliotheken für Java verwenden.
 services: storage
-documentationcenter: na
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: ''
 ms.service: storage
 ms.devlang: java
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage
 ms.date: 01/12/2017
 ms.author: seguler
-ms.openlocfilehash: fd27e1ac9a773e7b0f5245aa74acdb0521cd098c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: bdc25a7aeff88d058eaf3fddf6cec023edff3b9e
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23107808"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529628"
 ---
 # <a name="azure-storage-samples-using-java"></a>Azure Storage-Beispiele mit Java
 
@@ -206,14 +201,14 @@ Wechseln Sie zum Anzeigen der vollständigen Beispielbibliothek zur [Bibliothek 
 
 Lesen Sie den folgenden Leitfäden, um Anleitungen zum Installieren und zu den ersten Schritten mit den Azure Storage-Clientbibliotheken zu erhalten.
 
-* [Erste Schritte mit dem Azure Blob-Dienst in Java](../blobs/storage-java-how-to-use-blob-storage.md)
-* [Erste Schritte mit dem Azure-Warteschlangendienst in Java](../storage-java-how-to-use-queue-storage.md)
+* [Erste Schritte mit dem Azure Blob-Dienst in Java](../blobs/storage-quickstart-blobs-java.md)
+* [Erste Schritte mit dem Azure-Warteschlangendienst in Java](../queues/storage-java-how-to-use-queue-storage.md)
 * [Erste Schritte mit dem Azure-Tabellenspeicherdienst in Java](../../cosmos-db/table-storage-how-to-use-java.md)
-* [Erste Schritte mit dem Azure-Dateidienst in Java](../storage-java-how-to-use-file-storage.md)
+* [Erste Schritte mit dem Azure-Dateidienst in Java](../files/storage-java-how-to-use-file-storage.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Beispielen für andere Sprachen:
 
-* .NET: [Azure Storage-Beispiele mit .NET](../storage-samples-dotnet.md)
-* Alle anderen Sprachen: [Azure Storage-Beispiele](../storage-samples.md)
+* .NET: [Azure Storage-Beispiele mit .NET](storage-samples-dotnet.md)
+* Alle anderen Sprachen: [Azure Storage-Beispiele](storage-samples.md)
