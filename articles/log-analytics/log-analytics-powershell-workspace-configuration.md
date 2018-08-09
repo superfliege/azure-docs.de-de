@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
 ms.component: na
-ms.openlocfilehash: 375ae9a82af4a1f8a86b529b597ed479388e66dc
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 6dcf3a5b26dc3c7e69721b2abb8a7d58767866d6
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129335"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579050"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Verwalten von Log Analytics mit PowerShell
-Mit den [PowerShell-Cmdlets für Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) können Sie verschiedene Funktionen in Log Analytics von der Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
+Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) können Sie verschiedene Funktionen in Log Analytics von der Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
 
 * Erstellen eines Arbeitsbereichs
 * Hinzufügen oder Entfernen einer Lösung
@@ -37,7 +37,7 @@ Mit den [PowerShell-Cmdlets für Log Analytics](https://msdn.microsoft.com/libra
 * Hinzufügen des Log Analytics-Agents auf virtuellen Azure-Computern
 * Konfiguration von Log Analytics zum Indizieren der Daten, die mit der Azure-Diagnose gesammelt werden
 
-Dieser Artikel enthält zwei Codebeispiele, die einige der Funktionen veranschaulicht, die Sie mit PowerShell ausführen können.  In der [Referenz zu den PowerShell-Cmdlets für Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) finden Sie noch weitere Funktionen.
+Dieser Artikel enthält zwei Codebeispiele, die einige der Funktionen veranschaulicht, die Sie mit PowerShell ausführen können.  In der [Referenz zu den PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) finden Sie noch weitere Funktionen.
 
 > [!NOTE]
 > Log Analytics wurde früher als Operational Insights bezeichnet, daher wird dieser Name in den Cmdlets verwendet.
@@ -193,24 +193,24 @@ Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Az
 
 | Ressourcentyp | Protokolle | Metriken |
 | --- | --- | --- |
-| Anwendungsgateways    | Ja | Ja |
-| Automation-Konten     | Ja | |
-| Batch-Konten          | Ja | Ja |
-| Data Lake Analytics     | Ja | | 
-| Data Lake Store         | Ja | |
-| Elastischer SQL-Pool        |     | Ja |
-| Event Hub-Namespace     |     | Ja |
-| IoT Hubs                |     | Ja |
-| Key Vault               | Ja | |
-| Load Balancer          | Ja | |
-| Logic Apps              | Ja | Ja |
-| Netzwerksicherheitsgruppen | Ja | |
-| Redis Cache             |     | Ja |
-| Suchdienste         | Ja | Ja |
-| Service Bus-Namespace   |     | Ja |
-| SQL (v12)               |     | Ja |
-| Websites               |     | Ja |
-| Webserverfarmen        |     | Ja |
+| Anwendungsgateways    | JA | JA |
+| Automation-Konten     | JA | |
+| Batch-Konten          | JA | JA |
+| Data Lake Analytics     | JA | | 
+| Data Lake Store         | JA | |
+| Elastischer SQL-Pool        |     | JA |
+| Event Hub-Namespace     |     | JA |
+| IoT Hubs                |     | JA |
+| Key Vault               | JA | |
+| Load Balancer          | JA | |
+| Logic Apps              | JA | JA |
+| Netzwerksicherheitsgruppen | JA | |
+| Redis Cache             |     | JA |
+| Suchdienste         | JA | JA |
+| Service Bus-Namespace   |     | JA |
+| SQL (v12)               |     | JA |
+| Websites               |     | JA |
+| Webserverfarmen        |     | JA |
 
 Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md) (Von Azure Monitor unterstützte Metriken).
 
@@ -266,5 +266,5 @@ Sie können mit dem vorherigen Skript auch Protokolle aus Speicherkonten in vers
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [PowerShell-Cmdlets für Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) .
+* [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) .
 

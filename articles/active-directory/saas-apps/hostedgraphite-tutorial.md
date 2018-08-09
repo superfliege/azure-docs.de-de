@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: dc9d5964a71d1cb33e6d5ddd974160f59c8d8c06
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c64e54b80b6295358036d054af14ebe85432d3f6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226390"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Tutorial: Azure Active Directory-Integration mit Hosted Graphite
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Hosted Graphite aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-hosted-graphite-from-the-gallery"></a>Hinzufügen von Hosted Graphite aus dem Katalog
 Zum Konfigurieren der Integration von Hosted Graphite in Azure AD müssen Sie Hosted Graphite aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Hosted Graphite in Azure AD müssen Sie Ho
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **Hosted Graphite**ein.
+1. Geben Sie im Suchfeld als Suchbegriff **Hosted Graphite**ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_search.png)
 
-5. Wählen Sie im Ergebnisbereich **Hosted Graphite** aus, und klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **Hosted Graphite** aus, und klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in Hosted Graphite den Wert des **Benutzernamens** in Azure AD als We
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Hosted Graphite müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Hosted Graphite-Testbenutzers](#creating-a-hosted-graphite-test-user)**, um ein Pendant von Britta Simon in Hosted Graphite zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Hosted Graphite-Testbenutzers](#creating-a-hosted-graphite-test-user)**, um ein Pendant von Britta Simon in Hosted Graphite zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,23 +102,23 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Hosted Graphite** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_samlbase.png)
+    ![Configure single sign-on](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Hosted Graphite** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für Hosted Graphite** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure Single Sign-On](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_url.png)
+    ![Configure single sign-on](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.hostedgraphite.com/metadata/<user id>`
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://www.hostedgraphite.com/complete/saml/<user id>`
 
-4. Führen Sie im Abschnitt **Domäne und URLs für Hosted Graphite** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für Hosted Graphite** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
    
-    ![Configure Single Sign-On](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_10.png)
+    ![Configure single sign-on](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_10.png)
   
     a. Klicken Sie auf die Option **Erweiterte URL-Einstellungen anzeigen**.
 
@@ -128,42 +128,42 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > Hinweis: Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Antwort- und Abmelde-URL ersetzen. Um diese Werte abzurufen, können Sie auf der Seite Ihrer Anwendung zu „Access -> SAML Setup“ wechseln oder sich an das [Hosted Graphite-Supportteam](mailto:help@hostedgraphite.com) wenden.
     >
  
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_certificate.png) 
+    ![Configure single sign-on](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/hostedgraphite-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/hostedgraphite-tutorial/tutorial_general_400.png)
 
-7. Klicken Sie im Abschnitt **Hosted Graphite-Konfiguration** auf **Hosted Graphite konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmalige Anmeldung** aus dem **Abschnitt Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Hosted Graphite-Konfiguration** auf **Hosted Graphite konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmalige Anmeldung** aus dem **Abschnitt Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_configure.png) 
+    ![Configure single sign-on](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_configure.png) 
 
-8. Melden Sie sich bei Ihrem Hosted Graphite-Mandanten als Administrator an.
+1. Melden Sie sich bei Ihrem Hosted Graphite-Mandanten als Administrator an.
 
-9. Wechseln Sie über die Randleiste zur Seite **SAML Setup** (**Access -> SAML Setup**).
+1. Wechseln Sie über die Randleiste zur Seite **SAML Setup** (**Access -> SAML Setup**).
    
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
-10. Vergewissern Sie sich, dass diese URls der Konfiguration entsprechen, die Sie im Abschnitt **Domäne und URLs für Hosted Graphite** des Azure-Portals durchgeführt haben.
+1. Vergewissern Sie sich, dass diese URls der Konfiguration entsprechen, die Sie im Abschnitt **Domäne und URLs für Hosted Graphite** des Azure-Portals durchgeführt haben.
    
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
-11. Fügen Sie in die Textfelder **Entity or Issuer ID** und **SSO Login URL** den Wert der **SAML-Entitäts-ID** und der **SAML-Dienst-URL für einmalige Anmeldung** ein, den Sie aus dem Azure-Portal kopiert haben. 
+1. Fügen Sie in die Textfelder **Entity or Issuer ID** und **SSO Login URL** den Wert der **SAML-Entitäts-ID** und der **SAML-Dienst-URL für einmalige Anmeldung** ein, den Sie aus dem Azure-Portal kopiert haben. 
    
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
    
 
-12. Wählen Sie für **Default User Role** (Standardbenutzerrolle) die Option **Schreibgeschützt** aus.
+1. Wählen Sie für **Default User Role** (Standardbenutzerrolle) die Option **Schreibgeschützt** aus.
     
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
-13. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509-Zertifikat** ein.
+1. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **X.509-Zertifikat** ein.
     
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
-14. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -180,15 +180,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/hostedgraphite-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/hostedgraphite-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/hostedgraphite-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/hostedgraphite-tutorial/create_aaduser_04.png) 
 
@@ -221,23 +221,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Hosted Graphite**aus.
+1. Wählen Sie in der Anwendungsliste **Hosted Graphite**aus.
 
-    ![Configure Single Sign-On](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_app.png) 
+    ![Configure single sign-on](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: alleonar
-ms.openlocfilehash: a9b80cae69c4e5852341385b98fcccc86d7959e9
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: b25d3d7bd5348d4e4ae5dc33362a9d0a2504236e
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927973"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578601"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -104,7 +104,7 @@ Die *Ressourcen-ID* in der Ausgabe bezieht sich auf die ursprüngliche Ressource
 Um einen Schlüsseltresor wiederherzustellen, müssen Sie den Schlüsseltresornamen, die Ressourcengruppe und den Speicherort angeben. Notieren Sie sich den Speicherort und die Ressourcengruppe des gelöschten Schlüsseltresors, da Sie diese Angaben für die Wiederherstellung eines Schlüsseltresors benötigen.
 
 ```azurecli
-az keyvault recover --location westus --name ContosoVault
+az keyvault recover --location westus --resource-group ContosoRG --name ContosoVault
 ```
 
 Wenn ein Schlüsseltresor wiederhergestellt wird, ist das Ergebnis eine neue Ressource mit der ursprünglichen Ressourcen-ID des Schlüsseltresors. Wenn die Ressourcengruppe, in der sich der Schlüsseltresor befand, entfernt wurde, muss eine neue Ressourcengruppe mit dem gleichen Namen erstellt werden, bevor der Schlüsseltresor wiederhergestellt werden kann.

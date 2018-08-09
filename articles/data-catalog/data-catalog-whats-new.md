@@ -13,12 +13,12 @@ ms.devlang: NA
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 18673186e80b4d1784fa5b42e622d90dd4c889d4
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 3d2c0d21d0cf4cc0654c8f7ee2debee4f0320461
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860002"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577061"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Neuerungen in Azure Data Catalog
 Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffentlicht. Nicht jede Version umfasst neue Funktionen für Benutzer, da sich einige Versionen auf Back-End-Dienstfunktionen konzentrieren. Auf dieser Seite werden neue Funktionen für Benutzer aufgezeigt, die dem Dienst Azure Data Catalog hinzugefügt wurden.
@@ -27,7 +27,7 @@ Updates für **Azure Data Catalog** werden in regelmäßigen Abständen veröffe
 Im November 2017 wurden Azure Data Catalog die folgenden Funktionen hinzugefügt:
 
 * Unterstützung für die direkte Verknüpfung mit speziellen Benennungen aus dem Unternehmensglossar im Data Catalog-Portal. Benutzer können Links aus dem Unternehmensglossar kopieren und in Dokumente, E-Mails, Berichte oder andere Speicherorte einbetten, um eine direkte Verknüpfung mit der Definition der Glossarbenennung zu erstellen.
-* Unterstützung für Azure Active Directory-Dienstprinzipale. Data Catalog-Administratoren können mithilfe von Dienstprinzipalen Clientanwendungen für den Zugriff auf den Katalog autorisieren und diesen Anwendungen ebenso spezielle Berechtigungen erteilen, wie sie Benutzern und Sicherheitsgruppen Berechtigungen erteilen können. Weitere Informationen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)](../active-directory/develop/active-directory-application-objects.md).
+* Unterstützung für Azure Active Directory-Dienstprinzipale. Data Catalog-Administratoren können mithilfe von Dienstprinzipalen Clientanwendungen für den Zugriff auf den Katalog autorisieren und diesen Anwendungen ebenso spezielle Berechtigungen erteilen, wie sie Benutzern und Sicherheitsgruppen Berechtigungen erteilen können. Weitere Informationen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)](../active-directory/develop/app-objects-and-service-principals.md).
 * Unterstützung für die Azure Active Directory-Authentifizierung, wenn über das Registrierungstool für die Azure Data Catalog-Datenquelle eine Verbindung mit Azure SQL-Datenbank- und Azure SQL Data Warehouse-Datenquellen hergestellt wird. Weitere Informationen finden Sie unter [Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](../sql-database/sql-database-aad-authentication.md).
 
 

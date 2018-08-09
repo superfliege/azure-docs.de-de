@@ -17,12 +17,12 @@ ms.date: 01/07/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: f406c63ddd326b819219e72ad304d6052c65106d
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 1a909e1deb40c61f4f11ca041e1749499fd815bc
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264608"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504497"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow
 Die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](http://tools.ietf.org/html/rfc6749#section-4.4), die in RFC 6749 angegeben ist und gelegentlich als *zweibeinige OAuth-Autorisierung* bezeichnet wird, kann für den Zugriff auf webgehostete Ressourcen über die Identität einer Anwendung verwendet werden. Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Diese Anwendungstypen werden oft als *Daemons* oder *Dienstkonten* bezeichnet.
@@ -62,7 +62,7 @@ Weitere Informationen zu Anwendungsberechtigungen finden Sie unter [Microsoft Gr
 Wenn Sie Berechtigungen in Ihrer App verwenden möchten, führen Sie die Schritte aus, die wir in den nächsten Abschnitten erläutern.
 
 #### <a name="request-the-permissions-in-the-app-registration-portal"></a>Anfordern der Berechtigungen im App-Registrierungsportal
-1. Wechseln Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) zu Ihrer Anwendung oder zu [Erstellen einer App](active-directory-v2-app-registration.md), sofern noch nicht geschehen. Sie müssen mindestens einen geheimen Anwendungsschlüssel verwenden, wenn Sie Ihre App erstellen.
+1. Wechseln Sie im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) zu Ihrer Anwendung oder zu [Erstellen einer App](quickstart-v2-register-an-app.md), sofern noch nicht geschehen. Sie müssen mindestens einen geheimen Anwendungsschlüssel verwenden, wenn Sie Ihre App erstellen.
 2. Suchen Sie nach dem Abschnitt **Microsoft Graph-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
 3. **Speichern** Sie die App-Registrierung.
 

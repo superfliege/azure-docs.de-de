@@ -11,12 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fab67b503d060c8c01b5a3692c8a07b24c425c78
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488698"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39437405"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Erstellen einer Funktion in Linux mit einem benutzerdefinierten Image (Vorschau)
 
@@ -161,7 +161,7 @@ Linux-Hosting für Funktionen wird bei Verbrauchstarifen derzeit nicht unterstü
 
 ## <a name="create-and-deploy-the-custom-image"></a>Erstellen und Bereitstellen des benutzerdefinierten Images
 
-Die Funktions-App hostet die Ausführung Ihrer Funktionen. Erstellen Sie mit dem Befehl [az functionapp create](/cli/azure/functionapp#az_functionapp_create) eine Funktions-App aus einem Docker Hub-Image. 
+Die Funktions-App hostet die Ausführung Ihrer Funktionen. Erstellen Sie mit dem Befehl [az functionapp create](/cli/azure/functionapp#az-functionapp-create) eine Funktions-App aus einem Docker Hub-Image. 
 
 Ersetzen Sie im folgenden Befehl den Platzhalter `<app_name>` durch einen eindeutigen Namen der Funktionen-App und den Platzhalter `<storage_name>` durch den Speicherkontonamen. Da `<app_name>` als DNS-Standarddomäne für die Funktionen-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. Wie zuvor steht `<docker-id>` für den Namen Ihres Docker-Kontos.
 
@@ -196,7 +196,7 @@ Der Parameter _deployment-container-image-name_ gibt das in Docker Hub gehostete
 
 Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Standardspeicherkonto. Beim Veröffentlichen des benutzerdefinierten Images in einem privaten Containerkonto sollten Sie diese Anwendungseinstellungen als Umgebungsvariablen in der Dockerfile festlegen, indem Sie die [ENV-Anweisung](https://docs.docker.com/engine/reference/builder/#env) o.ä. verwenden. 
 
-In diesem Fall ist `<storage_account>` der Name des Speicherkontos, das Sie erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) ab. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) hinzu.
+In diesem Fall ist `<storage_account>` der Name des Speicherkontos, das Sie erstellt haben. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) ab. Fügen Sie diese Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) hinzu.
 
 ```azurecli-interactive
 storageConnectionString=$(az storage account show-connection-string \

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: barbkess
-ms.openlocfilehash: b8d0a8026c140545a5029d2772fdcbc5090e7b00
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: f24be44b00f9c4e789e8d4797f6a0516dcfe940f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363584"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494056"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -261,6 +261,6 @@ Remove-AzureADApplicationPolicy -ObjectId <ObjectId of the Service Principal>  -
 Get-AzureADPolicyAppliedObject -ObjectId <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](../develop/active-directory-authentication-scenarios.md).
+- Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md).
 - Weitere Informationen zum einmaligen Anmelden von Benutzern finden Sie unter [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](configure-single-sign-on-portal.md).
-- Im [Active Directory-Entwicklerhandbuch](../develop/active-directory-developers-guide.md) finden Sie eine Übersicht über alle für Entwickler relevanten Inhalte.
+- Im [Active Directory-Entwicklerhandbuch](../develop/azure-ad-developers-guide.md) finden Sie eine Übersicht über alle für Entwickler relevanten Inhalte.

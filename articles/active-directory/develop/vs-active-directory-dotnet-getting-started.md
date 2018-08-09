@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev
-ms.openlocfilehash: d521b8c85fb66b6c50d1b9f07e5f4d653e9e57b9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 21354507af475a1b75ce2002d28f6795c4e3e540
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31784070"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494859"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Erste Schritte mit Azure Active Directory (ASP.NET MVC-Projekte)
 
@@ -84,5 +84,5 @@ Wenn Sie Ihrer Ansicht SignIn-/SignOut-Steuerelemente hinzufügen möchten, kön
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Authentifizierungsszenarien für Azure Active Directory](active-directory-authentication-scenarios.md)
-- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Authentifizierungsszenarien für Azure Active Directory](authentication-scenarios.md)
+- [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](quickstart-v1-aspnet-webapp.md)

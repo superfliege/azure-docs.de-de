@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 9f1db693ac75d7ab4b9776d60f63a0ca7524f760
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 81e86df270a7286426363c26a0e8a87b99082428
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050183"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438272"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoho-one"></a>Tutorial: Azure Active Directory-Integration in Zoho One
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Zoho One aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-zoho-one-from-the-gallery"></a>Hinzufügen von Zoho One aus dem Katalog
 Zum Konfigurieren der Integration von Zoho One in Azure AD müssen Sie Zoho One aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Zoho One in Azure AD müssen Sie Zoho One 
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Zoho One** ein, wählen Sie im Ergebnisbereich **Zoho One** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Zoho One** ein, wählen Sie im Ergebnisbereich **Zoho One** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Zoho One in der Ergebnisliste](./media/zohoone-tutorial/tutorial_zohoone_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutze
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Zoho One zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Zoho One-Testbenutzers](#create-a-zoho-one-test-user)**, um eine Entsprechung für Britta Simon in Zoho One zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Zoho One-Testbenutzers](#create-a-zoho-one-test-user)**, um eine Entsprechung für Britta Simon in Zoho One zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -100,11 +100,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/zohoone-tutorial/tutorial_zohoone_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Zoho One** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für Zoho One** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Zoho One](./media/zohoone-tutorial/tutorial_zohoone_url.png)
 
@@ -116,32 +116,32 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Geben Sie im Textfeld **Relayzustand** eine URL ein: `https://one.zoho.com`
 
-4. Sie können die Anwendung folgendermaßen im **SP-initiierten Modus** konfigurieren:
+1. Sie können die Anwendung folgendermaßen im **SP-initiierten Modus** konfigurieren:
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://accounts.zoho.com/samlauthrequest/<domain_name>?serviceurl=https://one.zoho.com`.
      
     > [!NOTE] 
     > Der Wert der **Antwort-URL** und der **Anmelde-URL** entspricht nicht dem tatsächlichen Wert. Sie müssen diese Werte durch die tatsächlichen Werte für die Antwort-URL und die Anmelde-URL ersetzen. Darauf wird später im Tutorial eingegangen. 
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/zohoone-tutorial/tutorial_zohoone_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/zohoone-tutorial/tutorial_general_400.png)
     
-7. Klicken Sie im Abschnitt **Zoho One-Konfiguration** auf **Zoho One konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Zoho One-Konfiguration** auf **Zoho One konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Zoho One-Konfiguration](./media/zohoone-tutorial/tutorial_zohoone_configure.png) 
 
-8. Melden Sie sich in einem anderen Webbrowserfenster auf der Zoho One-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster auf der Zoho One-Unternehmenswebsite als Administrator an.
 
-9. Klicken Sie auf der Registerkarte **Organisation** (Organisation) unter **SAML Authentication** (SAML-Authentifizierung) auf **Setup** (Einrichten).
+1. Klicken Sie auf der Registerkarte **Organisation** (Organisation) unter **SAML Authentication** (SAML-Authentifizierung) auf **Setup** (Einrichten).
 
     ![Organisation in Zoho One](./media/zohoone-tutorial/tutorial_zohoone_setup.png)
 
-10. Führen Sie auf der Popupseite die folgenden Schritte aus:
+1. Führen Sie auf der Popupseite die folgenden Schritte aus:
 
     ![Anmelden und Abmelden in Zoho One](./media/zohoone-tutorial/tutorial_zohoone_save.png)
 
@@ -153,15 +153,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Klicken Sie auf **Speichern**.
 
-11. Wenn Sie die Einrichtung der SAML-Authentifizierung gespeichert haben, kopieren Sie den Wert von **SAML-Identifier** (SAML-Bezeichner), und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für Zoho One** unter **Antwort-URL** ein.
+1. Wenn Sie die Einrichtung der SAML-Authentifizierung gespeichert haben, kopieren Sie den Wert von **SAML-Identifier** (SAML-Bezeichner), und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für Zoho One** unter **Antwort-URL** ein.
 
     ![SAML in Zoho One](./media/zohoone-tutorial/tutorial_zohoone_samlidenti.png)
 
-12. Öffnen Sie die Registerkarte **Domains** (Domänen), und klicken Sie auf **Add Domain** (Domäne hinzufügen).
+1. Öffnen Sie die Registerkarte **Domains** (Domänen), und klicken Sie auf **Add Domain** (Domäne hinzufügen).
 
     ![Domäne in Zoho One](./media/zohoone-tutorial/tutorial_zohoone_domain.png)
 
-13. Führen Sie auf der Seite **Add Domain** (Domäne hinzufügen) die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Add Domain** (Domäne hinzufügen) die folgenden Schritte aus:
 
     ![Hinzufügen einer Domäne in Zoho One](./media/zohoone-tutorial/tutorial_zohoone_adddomain.png)
 
@@ -184,15 +184,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/zohoone-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/zohoone-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/zohoone-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/zohoone-tutorial/create_aaduser_04.png)
 
@@ -212,11 +212,11 @@ Damit sich Azure AD-Benutzer bei Zoho One anmelden können, müssen sie in Zoho 
 
 1. Melden Sie sich bei Zoho One als Sicherheitsadministrator an.
 
-2. Klicken Sie auf der Registerkarte **Users** (Benutzer) auf das **Benutzerlogo**.
+1. Klicken Sie auf der Registerkarte **Users** (Benutzer) auf das **Benutzerlogo**.
 
     ![Benutzer in Zoho One](./media/zohoone-tutorial/tutorial_zohoone_users.png)
 
-3. Führen Sie auf der Seite **Benutzer hinzufügen** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Benutzer hinzufügen** die folgenden Schritte aus:
 
     ![Hinzufügen eines Benutzers in Zoho One](./media/zohoone-tutorial/tutorial_zohoone_adduser.png)
     
@@ -241,23 +241,23 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Zoho One, damit sie d
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Zoho One** aus.
+1. Wählen Sie in der Anwendungsliste **Zoho One** aus.
 
     ![Zoho One-Link in der Anwendungsliste](./media/zohoone-tutorial/tutorial_zohoone_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: 92e464aa4e0dcb7199b6db44d2c28db5b6d1673c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: bd4dda835279a21509f77814f4d5f9e30e8a42c1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38676085"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439197"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit Azure CLI 2.0
 
@@ -110,7 +110,7 @@ Vor der Bereitstellung mehrerer virtueller Computer und dem Testen des Lastenaus
 
 ### <a name="create-nics"></a>Erstellen von NICs
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) zwei Netzwerkschnittstellen, und ordnen Sie sie der privaten IP-Adresse zu. 
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-create) zwei Netzwerkschnittstellen, und ordnen Sie sie der privaten IP-Adresse zu. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -130,7 +130,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 
 ### <a name="create-an-availability-set"></a>Erstellen einer Verfügbarkeitsgruppe
 
-Erstellen Sie mit [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create) eine Verfügbarkeitsgruppe.
+Erstellen Sie mit [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) eine Verfügbarkeitsgruppe.
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -184,7 +184,7 @@ runcmd:
   - nodejs index.js
 ``` 
  
-Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create).
+Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create).
 
  ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -228,7 +228,7 @@ Verwenden Sie zum Abrufen der privaten IP-Adresse des Lastenausgleichs den Befeh
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen entfernen, wenn Sie sie nicht mehr benötigen.
+Mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) können Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen entfernen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupILB

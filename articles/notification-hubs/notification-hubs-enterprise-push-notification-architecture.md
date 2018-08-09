@@ -1,5 +1,5 @@
 ---
-title: Notification Hubs – Pusharchitektur für Unternehmen
+title: Benachrichtigungshubs - Pusharchitektur für Unternehmen
 description: Anleitung zur Verwendung von Azure Notification Hubs (Benachrichtigungshubs) in einer Unternehmensumgebung
 services: notification-hubs
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: d7066b58330d35e5dba66cfe6ed5cfaddff4b68a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 962bc996a86340bb10a28b90ef6340a98c5d9275
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778061"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39430605"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Anleitung für eine unternehmensbezogene Pusharchitektur
 Unternehmen gehen mehr und mehr dazu über, mobile Anwendungen entweder für ihre Endbenutzer (extern) oder für ihre Mitarbeiter (intern) zu erstellen. Sie verfügen über Back-End-Systeme – beispielsweise Mainframecomputer oder Branchenanwendungen –, die in die Architektur der mobilen Anwendungen integriert werden müssen. Dieser Leitfaden zeigt, wie sich diese Integration am besten umsetzen lässt, und empfiehlt mögliche Lösungen für allgemeine Szenarien.
@@ -35,35 +35,35 @@ Die allgemeine Architektur der Lösung (verallgemeinert mit mehreren mobilen App
 ## <a name="architecture"></a>Architecture
 ![][1]
 
-Kernstück dieses Architekturdiagramms ist der Dienst Azure Service Bus, der ein auf Themen und Abonnements basierendes Programmiermodell bereitstellt (mehr dazu erfahren Sie unter [Erste Schritte mit Service Bus-Themen]). Der Empfänger, bei dem es sich in diesem Fall um das mobile Back-End handelt (üblicherweise [ein Azure Mobile Service], der eine Pushbenachrichtigung an die mobilen Apps auslöst), erhält Nachrichten nicht direkt von den Back-End-Systemen, sondern von einer dazwischen liegenden Abstraktionsschicht. Diese wird von Azure Service Bus bereitgestellt und ermöglicht es den mobilen Back-End-Systemen, Nachrichten von einem oder mehreren Back-End-Systemen zu empfangen. Für jedes der Back-End-Systeme, z.B. für Abrechnung, Personalwesen oder Finanzen, muss ein Service Bus-Thema erstellt werden. Bei diesen Systemen handelt es sich im Grunde um „Themen von Interesse“, die bewirken, dass Nachrichten als Pushbenachrichtigungen gesendet werden. Die Back-End-Systeme senden Nachrichten an diese Themen. Ein mobiles Back-End kann eines oder mehrere solcher Themen abonnieren, indem ein Service Bus-Abonnement erstellt wird. Dadurch erhält das mobile Back-End die Berechtigung, eine Benachrichtigung vom entsprechenden Back-End-System zu empfangen. Das mobile Back-End lauscht weiterhin auf Nachrichten in seinen Abonnements, und sobald eine Nachricht eingetroffen ist, sendet es diese als Benachrichtigung an seinen Benachrichtigungshub. Notification Hubs senden die Nachricht dann schließlich an die mobile App. Hier finden Sie die Liste der wichtigsten Komponenten:
+Kernstück dieses Architekturdiagramms ist der Dienst Azure Service Bus, der ein auf Themen und Abonnements basierendes Programmiermodell bereitstellt (mehr dazu erfahren Sie unter [WindowsAzure.ServiceBus]). Der Empfänger, bei dem es sich in diesem Fall um das mobile Back-End handelt (üblicherweise [Azure Mobile Service], der eine Pushbenachrichtigung an die mobilen Apps auslöst), erhält Nachrichten nicht direkt von den Back-End-Systemen, sondern von einer dazwischen liegenden Abstraktionsschicht. Diese wird von Azure Service Bus bereitgestellt und ermöglicht es den mobilen Back-End-Systemen, Nachrichten von einem oder mehreren Back-End-Systemen zu empfangen. Für jedes der Back-End-Systeme, z.B. für Abrechnung, Personalwesen oder Finanzen, muss ein Service Bus-Thema erstellt werden. Bei diesen Systemen handelt es sich im Grunde um „Themen von Interesse“, die bewirken, dass Nachrichten als Pushbenachrichtigungen gesendet werden. Die Back-End-Systeme senden Nachrichten an diese Themen. Ein Mobil-Back-End kann eines oder mehrere solcher Themen durch Erstellen eines Service Bus-Abonnements abonnieren. Dadurch erhält das mobile Back-End die Berechtigung, eine Benachrichtigung vom entsprechenden Back-End-System zu empfangen. Das Mobil-Back-End lauscht weiterhin auf Nachrichten in seinen Abonnements, und sobald eine Nachricht eingetroffen ist, sendet es diese als Benachrichtigung an seinen Benachrichtigungshub. Notification Hubs senden die Nachricht dann schließlich an die mobile App. Hier finden Sie die Liste der wichtigsten Komponenten:
 
 1. Back-End-System (Branchen- oder Legacysystem)
    * Erstellt Service Bus-Themen
    * Sendet Nachrichten
-2. Mobiles Back-End
+1. Mobil-Back-End
    * Erstellt dienstbezogene Abonnements
    * Empfängt Nachrichten (von Back-End-System)
-   * Sendet Benachrichtigungen an Clients (über Azure Notification Hubs)
-3. Mobile Anwendung
+   * Sendet Benachrichtigungen an Clients (über Azure-Benachrichtigungshub)
+1. Mobile Anwendung
    * Empfängt Benachrichtigungen und zeigt diese an
 
 ### <a name="benefits"></a>Vorteile:
-1. Die Entkopplung von Empfänger (mobile App/mobiler Dienst über Notification Hub) und Sender (Back-End-Systeme) ermöglicht es, zusätzliche Back-End-Systeme bei minimalen Änderungen zu integrieren.
-2. Hiermit lassen sich auch Szenarios umsetzen, in denen mehrere mobile Apps in der Lage sind, Ereignisse von mehreren Back-End-Systemen zu empfangen.  
+1. Die Entkopplung von Empfänger (mobile App/mobiler Dienst über Benachrichtigunghub) und Sender (Back-End-Systeme) ermöglicht es, zusätzliche Back-End-Systeme bei minimalen Änderungen zu integrieren.
+1. Hiermit lassen sich auch Szenarios umsetzen, in denen mehrere mobile Apps in der Lage sind, Ereignisse von mehreren Back-End-Systemen zu empfangen.  
 
 ## <a name="sample"></a>Beispiel:
 ### <a name="prerequisites"></a>Voraussetzungen
 Arbeiten Sie die folgenden Tutorials durch, um sich mit den Konzepten sowie den allgemeinen Erstellungs- und Konfigurationsschritten vertraut zu machen:
 
-1. [Erste Schritte mit Service Bus-Themen]: Dieses Tutorial bietet Informationen zum Verwenden von Service Bus-Themen und -Abonnements, zum Erstellen eines Namespace, der Themen und Abonnements enthält, und zum Senden und Empfangen von Nachrichten an und von Themen und Abonnements.
-2. [Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform]: Dieses Tutorial erläutert, wie Sie eine Windows Store-App einrichten und wie Sie Notification Hubs verwenden, um sich für Benachrichtigungen zu registrieren und diese zu empfangen.
+1. [WindowsAzure.ServiceBus]: Dieses Tutorial bietet Informationen zum Verwenden von Service Bus-Themen und -Abonnements, zum Erstellen eines Namespace, der Themen und Abonnements enthält, und zum Senden und Empfangen von Nachrichten an und von Themen und Abonnements.
+1. [Erste Schritte mit Notification Hubs]: Dieses Tutorial erläutert, wie Sie eine Windows Store-App einrichten und wie Sie Notification Hubs verwenden, um sich für Benachrichtigungen zu registrieren und diese zu empfangen.
 
 ### <a name="sample-code"></a>Beispielcode
 Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar. Der Code ist in drei Komponenten aufgeteilt:
 
 1. **EnterprisePushBackendSystem**
    
-    a. Dieses Projekt verwendet das NuGet-Paket *WindowsAzure.ServiceBus* und basiert auf [Erste Schritte mit Service Bus-Themen].
+    a. Dieses Projekt verwendet das NuGet-Paket *WindowsAzure.ServiceBus* und basiert auf [WindowsAzure.ServiceBus].
    
     b. Bei der Anwendung handelt es sich um eine einfache C#-Konsolen-App zum Simulieren eines Branchensystems, mit dem das Senden einer Nachricht an eine mobile App veranlasst wird.
    
@@ -124,9 +124,9 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
                 System.Threading.Thread.Sleep(new TimeSpan(0, 0, 10));
             }
         }
-2. **ReceiveAndSendNotification**
+1. **ReceiveAndSendNotification**
    
-    a. Dieses Projekt verwendet die NuGet-Pakete *WindowsAzure.ServiceBus* und *Microsoft.Web.WebJobs.Publish* und basiert auf [Erste Schritte mit Service Bus-Themen].
+    a. Dieses Projekt verwendet die NuGet-Pakete *WindowsAzure.ServiceBus* und *Microsoft.Web.WebJobs.Publish* und basiert auf [WindowsAzure.ServiceBus].
    
     b. Die folgende Konsolen-App ist als [Azure WebJob] implementiert, weil sie kontinuierlich ausgeführt werden muss, um auf Nachrichten aus den Branchen- bzw. Back-End-Systemen zu lauschen. Diese Anwendung ist Teil Ihres mobilen Back-Ends.
    
@@ -217,9 +217,9 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
     g. Konfigurieren Sie den WebJob mit „Dauerhaft ausführen“, sodass in etwa Folgendes angezeigt wird, wenn Sie sich beim [Azure-Portal] angemeldet haben:
    
     ![][4]
-3. **EnterprisePushMobileApp**
+1. **EnterprisePushMobileApp**
    
-    a. Dies ist eine Windows Store-Anwendung, die Popupbenachrichtigungen von dem WebJob empfängt, der als Teil Ihres mobilen Back-Ends ausgeführt wird, und diese Benachrichtigungen anzeigt. Dieser Code basiert auf [Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform].  
+    a. Dies ist eine Windows Store-Anwendung, die Popupbenachrichtigungen von dem WebJob empfängt, der als Teil Ihres mobilen Back-Ends ausgeführt wird, und diese Benachrichtigungen anzeigt. Dieser Code basiert auf [Erste Schritte mit Notification Hubs].  
    
     b. Stellen Sie sicher, dass Ihre Anwendung so konfiguriert ist, dass sie Popupbenachrichtigungen empfangen kann.
    
@@ -243,11 +243,11 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
 
 ### <a name="running-sample"></a>Ausführen des Beispiels:
 1. Stellen Sie sicher, dass Ihr WebJob erfolgreich ausgeführt wird und für die kontinuierliche Ausführung geplant ist.
-2. Führen Sie die EnterprisePushMobileApp aus, mit der die Windows Store-App gestartet wird.
-3. Führen Sie die Konsolenanwendung **EnterprisePushBackendSystem** aus, die das Branchen-Back-End simuliert und damit beginnt, Nachrichten zu senden. Es sollten Popupbenachrichtigungen ähnlich der folgenden angezeigt werden:
+1. Führen Sie die EnterprisePushMobileApp aus, mit der die Windows Store-App gestartet wird.
+1. Führen Sie die Konsolenanwendung **EnterprisePushBackendSystem** aus, die das Branchen-Back-End simuliert und damit beginnt, Nachrichten zu senden. Es sollten Popupbenachrichtigungen ähnlich der folgenden angezeigt werden:
    
     ![][5]
-4. Die Nachrichten wurden ursprünglich an Service Bus-Themen gesendet, die von Service Bus-Abonnements in Ihrem WebJob überwacht wurden. Sobald eine Nachricht empfangen wurde, wurde eine Benachrichtigung erstellt und an die mobile App gesendet. Sie können die WebJob-Protokolle durchsuchen, um die Verarbeitung zu bestätigen. Navigieren Sie dazu im [Azure-Portal] für Ihren WebJob zum Link „Protokolle“:
+1. Die Nachrichten wurden ursprünglich an Service Bus-Themen gesendet, die von Service Bus-Abonnements in Ihrem WebJob überwacht wurden. Sobald eine Nachricht empfangen wurde, wurde eine Benachrichtigung erstellt und an die mobile App gesendet. Sie können die WebJob-Protokolle durchsuchen, um die Verarbeitung zu bestätigen. Navigieren Sie dazu im [Azure-Portal] für Ihren WebJob zum Link „Protokolle“:
    
     ![][6]
 
@@ -261,9 +261,9 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
 
 <!-- Links -->
 [Notification Hubs Samples]: https://github.com/Azure/azure-notificationhubs-samples
-[ein Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
+[Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Erste Schritte mit Service Bus-Themen]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[WindowsAzure.ServiceBus]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
-[Erste Schritte mit Notification Hubs für Apps für die universelle Windows-Plattform]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Erste Schritte mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure-Portal]: https://portal.azure.com/

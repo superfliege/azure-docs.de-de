@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: a3493c9e9ef6a5bafd832510f42f33cc3f07f088
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070378"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576966"
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
 Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre Cloudanwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, empfiehlt es sich, den Zugriff auf Key Vault-Instanzen so zu konfigurieren, dass nur autorisierte Anwendungen und Benutzer auf Key Vault zugreifen können. Dieser Artikel enthält eine Übersicht über das Key Vault-Zugriffsmodell sowie Informationen zur Authentifizierung und Autorisierung. Außerdem erfahren Sie anhand eines Beispiels, wie Sie den Zugriff auf Key Vault für Ihre Cloudanwendungen schützen.
@@ -47,7 +47,7 @@ Wenn Sie unter einem Azure-Abonnement eine Key Vault-Instanz erstellen, wird sie
 * **Benutzer- und App-Zugriff**: Diese Methode wird üblicherweise für Anwendungen verwendet, die im Auftrag eines angemeldeten Benutzers auf Key Vault zugreifen. Beispiele hierfür wären etwa Azure PowerShell und das Azure-Portal. Benutzern kann auf zwei Arten Zugriff gewährt werden: Bei der ersten Option wird Benutzern Zugriff gewährt, damit sie von einer beliebigen Anwendung aus auf Key Vault zugreifen können. Bei der zweiten Option wird einem Benutzer nur bei Verwendung einer bestimmten Anwendung Zugriff auf Key Vault gewährt. (Letzteres wird auch als Verbundidentität bezeichnet.) 
 * **Nur App-Zugriff**: Diese Methode ist für Anwendungen vorgesehen, die Daemon-Dienste, Hintergrundaufträge und Ähnliches ausführen. Die Identität der Anwendung erhält Zugriff auf die Key Vault-Instanz.
 
-Bei beiden Anwendungstypen authentifiziert sich die Anwendung über Azure Active Directory mit einer der [unterstützten Authentifizierungsmethoden](../active-directory/active-directory-authentication-scenarios.md) und bezieht ein Token. Welche Authentifizierungsmethode verwendet wird, hängt von der Art der Anwendung ab. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an Key Vault. Im Falle eines Zugriffs auf die Verwaltungsebene werden die Anforderungen über einen Azure Resource Manager-Endpunkt weitergeleitet. Beim Zugriff auf die Datenebene kommunizieren die Anwendungen hingegen direkt mit einem Key Vault-Endpunkt. Ausführlichere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../active-directory/active-directory-protocols-oauth-code.md). 
+Bei beiden Anwendungstypen authentifiziert sich die Anwendung über Azure Active Directory mit einer der [unterstützten Authentifizierungsmethoden](../active-directory/develop/authentication-scenarios.md) und bezieht ein Token. Welche Authentifizierungsmethode verwendet wird, hängt von der Art der Anwendung ab. Anschließend sendet die Anwendung unter Verwendung des Tokens eine REST-API-Anforderung an Key Vault. Im Falle eines Zugriffs auf die Verwaltungsebene werden die Anforderungen über einen Azure Resource Manager-Endpunkt weitergeleitet. Beim Zugriff auf die Datenebene kommunizieren die Anwendungen hingegen direkt mit einem Key Vault-Endpunkt. Ausführlichere Informationen finden Sie in der [Gesamtdarstellung des Authentifizierungsablaufs](../active-directory/develop/v1-protocols-oauth-code.md). 
 
 Der Ressourcenname, für den die Anwendung ein Token anfordert, hängt davon ab, ob die Anwendung auf die Verwaltungs- oder auf die Datenebene zugreift. Folglich ist der Ressourcenname je nach Azure-Umgebung entweder ein Verwaltungsebenen- oder ein Datenebenen-Endpunkt, wie in der Tabelle in einem späteren Abschnitt beschrieben.
 
@@ -223,7 +223,7 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis kö
 * [Role-Based Access Control for Microsoft Azure from Ignite (Rollenbasierte Zugriffssteuerung für Microsoft Azure über Ignite)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
   
   Dies ist ein Link zu einem Video auf Channel 9 von der MS Ignite-Konferenz 2015. Thema dieser Sitzung sind die Zugriffsverwaltungs- und Berichtsfunktionen in Azure und die Untersuchung bewährter Verfahren für das Sichern des Zugriffs auf Azure-Abonnements mit Azure Active Directory.
-* [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](../active-directory/active-directory-protocols-oauth-code.md)
+* [Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory](../active-directory/develop/v1-protocols-oauth-code.md)
   
   Dieser Artikel beschreibt den vollständige OAuth 2.0-Ablauf für die Authentifizierung über Azure Active Directory.
 * [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx)
@@ -238,7 +238,7 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis kö
 * [Geheimniszugriffssteuerung](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
   
   Link zur Referenzdokumentation für die Geheimniszugriffssteuerung.
-* [Festlegen](https://msdn.microsoft.com/library/mt603625.aspx) und [Entfernen](https://msdn.microsoft.com/library/mt619427.aspx) von Key Vault-Zugriffsrichtlinien mithilfe von PowerShell
+* [Festlegen](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) und [Entfernen](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Remove-AzureRmKeyVaultAccessPolicy) von Key Vault-Zugriffsrichtlinien mithilfe von PowerShell
   
   Links zur Referenzdokumentation für PowerShell-Cmdlets zum Verwalten von Key Vault-Zugriffsrichtlinien.
 

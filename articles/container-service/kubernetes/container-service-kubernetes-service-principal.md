@@ -9,21 +9,21 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 84215daac950f602c815e1ffc5ae6dd5269d9bdf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efedb7cde06ed03ec330027a18b00bcc897919cf
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167111"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576918"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Einrichten eines Azure AD-Dienstprinzipals für einen Kubernetes-Cluster in Container Service
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
-Für die Interaktion mit Azure-APIs benötigt Kubernetes in Azure Container Service einen [Azure Active Directory-Dienstprinzipal](../../active-directory/develop/active-directory-application-objects.md). Der Dienstprinzipal wird für die dynamische Verwaltung von Ressourcen wie etwa [benutzerdefinierte Routen](../../virtual-network/virtual-networks-udr-overview.md) und [Azure Load Balancer (Layer 4)](../../load-balancer/load-balancer-overview.md) benötigt.
+Für die Interaktion mit Azure-APIs benötigt Kubernetes in Azure Container Service einen [Azure Active Directory-Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md). Der Dienstprinzipal wird für die dynamische Verwaltung von Ressourcen wie etwa [benutzerdefinierte Routen](../../virtual-network/virtual-networks-udr-overview.md) und [Azure Load Balancer (Layer 4)](../../load-balancer/load-balancer-overview.md) benötigt.
 
 
-In diesem Artikel werden verschiedene Optionen zum Einrichten eines Dienstprinzipals für Ihren Kubernetes-Cluster gezeigt. Wenn Sie beispielsweise [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert und eingerichtet haben, können Sie durch Ausführen des Befehls [`az acs create`](/cli/azure/acs#az_acs_create) sowohl den Kubernetes-Cluster als auch den Dienstprinzipal erstellen.
+In diesem Artikel werden verschiedene Optionen zum Einrichten eines Dienstprinzipals für Ihren Kubernetes-Cluster gezeigt. Wenn Sie beispielsweise [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert und eingerichtet haben, können Sie durch Ausführen des Befehls [`az acs create`](/cli/azure/acs#az-acs-create) sowohl den Kubernetes-Cluster als auch den Dienstprinzipal erstellen.
 
 
 ## <a name="requirements-for-the-service-principal"></a>Anforderungen für den Dienstprinzipal
@@ -96,7 +96,7 @@ Das folgende Beispiel zeigt eine Möglichkeit, die Parameter über die Azure CLI
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>Option 2: Generieren eines Dienstprinzipals beim Erstellen des Clusters per `az acs create`
 
-Wenn Sie den Befehl [`az acs create`](/cli/azure/acs#az_acs_create) ausführen, um den Kubernetes-Cluster zu erstellen, haben Sie die Option, automatisch einen Dienstprinzipal zu generieren.
+Wenn Sie den Befehl [`az acs create`](/cli/azure/acs#az-acs-create) ausführen, um den Kubernetes-Cluster zu erstellen, haben Sie die Option, automatisch einen Dienstprinzipal zu generieren.
 
 Analog zu anderen Erstellungsoptionen für Kubernetes-Cluster können Sie beim Ausführen von `az acs create` Parameter für einen vorhandenen Dienstprinzipal angeben. Ohne Angabe dieser Parameter erstellt die Azure CLI automatisch einen Dienstprinzipal zur Verwendung mit Container Service. Hierbei handelt es sich um einen transparenten Vorgang während der Bereitstellung.
 
@@ -132,7 +132,7 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 Sofern bei der Dienstprinzipalerstellung kein benutzerdefiniertes Gültigkeitszeitfenster (mithilfe des Parameters `--years`) angegeben wird, sind die Anmeldeinformationen des Dienstprinzipals ab dessen Erstellung ein Jahr lang gültig. Nach Ablauf der Anmeldeinformationen wechseln die Clusterknoten unter Umständen in den Zustand **NotReady**.
 
-Führen Sie zum Überprüfen des Ablaufdatums eines Dienstprinzipals den Befehl [az ad app show](/cli/azure/ad/app#az_ad_app_show) mit dem Parameter `--debug` aus, und suchen Sie im unteren Bereich der Ausgabe nach dem `endDate`-Wert von `passwordCredentials`:
+Führen Sie zum Überprüfen des Ablaufdatums eines Dienstprinzipals den Befehl [az ad app show](/cli/azure/ad/app#az-ad-app-show) mit dem Parameter `--debug` aus, und suchen Sie im unteren Bereich der Ausgabe nach dem `endDate`-Wert von `passwordCredentials`:
 
 ```azurecli
 az ad app show --id <appId> --debug
@@ -146,7 +146,7 @@ Ausgabe (Ausschnitt):
 ...
 ```
 
-Sind die Dienstprinzipal-Anmeldeinformationen abgelaufen, aktualisieren Sie sie mithilfe des Befehls [az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials):
+Sind die Dienstprinzipal-Anmeldeinformationen abgelaufen, aktualisieren Sie sie mithilfe des Befehls [az ad sp reset-credentials](/cli/azure/ad/sp#az-ad-sp-reset-credentials):
 
 ```azurecli
 az ad sp reset-credentials --name <appId>

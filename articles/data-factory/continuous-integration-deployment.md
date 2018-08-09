@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: douglasl
-ms.openlocfilehash: 26ab8c0547bb533a032dec59183f8152be9180cf
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364544"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39448440"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Continuous Integration und Continuous Deployment in Azure Data Factory
 
@@ -53,15 +53,15 @@ Hier ist der gesamte Lebenszyklus für Continuous Integration und Continuous Dep
 
 1.  Richten Sie mit VSTS eine Data Factory für die Entwicklung ein, bei der alle Entwickler Data Factory-Ressourcen erstellen können, z.B. Pipelines, Datasets usw.
 
-2.  Anschließend können die Entwickler Ressourcen ändern, z.B. Pipelines. Beim Vornehmen der Änderungen können diese die Option zum **Debuggen** wählen, um zu verfolgen, wie die Pipeline mit den aktuellen Änderungen ausgeführt wird.
+1.  Anschließend können die Entwickler Ressourcen ändern, z.B. Pipelines. Beim Vornehmen der Änderungen können diese die Option zum **Debuggen** wählen, um zu verfolgen, wie die Pipeline mit den aktuellen Änderungen ausgeführt wird.
 
-3.  Wenn die Entwickler mit ihren Änderungen zufrieden sind, können sie einen Pull Request von ihrem Branch zum Masterbranch (oder Kollaborationsbranch) erstellen, um die Änderungen von Kollegen prüfen zu lassen.
+1.  Wenn die Entwickler mit ihren Änderungen zufrieden sind, können sie einen Pull Request von ihrem Branch zum Masterbranch (oder Kollaborationsbranch) erstellen, um die Änderungen von Kollegen prüfen zu lassen.
 
-4.  Nachdem die Änderungen im Masterbranch vorhanden sind, kann das Veröffentlichen in der Factory für die Entwicklung erfolgen, indem die Option **Veröffentlichen** gewählt wird.
+1.  Nachdem die Änderungen im Masterbranch vorhanden sind, kann das Veröffentlichen in der Factory für die Entwicklung erfolgen, indem die Option **Veröffentlichen** gewählt wird.
 
-5.  Wenn das Team zum Heraufstufen der Änderungen in die Factory für Tests und die Factory für die Entwicklung bereit ist, kann es die Resource Manager-Vorlage aus dem Masterbranch exportieren – oder aus einem beliebigen anderen Branch, falls der Masterbranch als Grundlage für die aktive Data Factory für die Entwicklung dient.
+1.  Wenn das Team zum Heraufstufen der Änderungen in die Factory für Tests und die Factory für die Entwicklung bereit ist, kann es die Resource Manager-Vorlage aus dem Masterbranch exportieren – oder aus einem beliebigen anderen Branch, falls der Masterbranch als Grundlage für die aktive Data Factory für die Entwicklung dient.
 
-6.  Die exportierte Resource Manager-Vorlage kann mit unterschiedlichen Parameterdateien für die Factory für Tests und die Factory für die Produktion bereitgestellt werden.
+1.  Die exportierte Resource Manager-Vorlage kann mit unterschiedlichen Parameterdateien für die Factory für Tests und die Factory für die Produktion bereitgestellt werden.
 
 ## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatisieren von Continuous Integration in VSTS-Releases
 
@@ -81,19 +81,19 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
 
 1.  Navigieren Sie zu Ihrer VSTS-Seite in demselben Projekt, für das die Data Factory konfiguriert wurde.
 
-2.  Klicken Sie im Menü am oberen Rand auf **Build und Release** &gt; **Releases** &gt; **Releasedefinition erstellen**.
+1.  Klicken Sie im Menü am oberen Rand auf **Build und Release** &gt; **Releases** &gt; **Releasedefinition erstellen**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-3.  Wählen Sie die Vorlage **Leerer Prozess**.
+1.  Wählen Sie die Vorlage **Leerer Prozess**.
 
-4.  Geben Sie den Namen Ihrer Umgebung ein.
+1.  Geben Sie den Namen Ihrer Umgebung ein.
 
-5.  Fügen Sie ein Git-Artefakt hinzu, und wählen Sie dasselbe Repository aus, das für die Data Factory konfiguriert wurde. Wählen Sie `adf_publish` als Standardbranch mit der aktuellen Standardversion aus.
+1.  Fügen Sie ein Git-Artefakt hinzu, und wählen Sie dasselbe Repository aus, das für die Data Factory konfiguriert wurde. Wählen Sie `adf_publish` als Standardbranch mit der aktuellen Standardversion aus.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-7.  Fügen Sie eine Azure Resource Manager-Bereitstellungsaufgabe hinzu:
+1.  Fügen Sie eine Azure Resource Manager-Bereitstellungsaufgabe hinzu:
 
     a.  Erstellen Sie eine neue Aufgabe, suchen Sie nach **Bereitstellung einer Azure-Ressourcengruppe**, und fügen Sie sie hinzu.
 
@@ -109,9 +109,9 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-8.  Speichern Sie die Releasedefinition.
+1.  Speichern Sie die Releasedefinition.
 
-9.  Erstellen Sie aus dieser Releasedefinition ein neues Release.
+1.  Erstellen Sie aus dieser Releasedefinition ein neues Release.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -144,7 +144,7 @@ Es gibt zwei Möglichkeiten, um die Geheimnisse zu verarbeiten:
 
     -   Die Parameterdatei muss sich auch im Branch für die Veröffentlichung befinden.
 
-2.  Fügen Sie vor der im vorherigen Abschnitt beschriebenen Azure Resource Manager-Bereitstellung eine [Azure Key Vault-Aufgabe](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) hinzu:
+1.  Fügen Sie vor der im vorherigen Abschnitt beschriebenen Azure Resource Manager-Bereitstellung eine [Azure Key Vault-Aufgabe](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) hinzu:
 
     -   Wählen Sie die Registerkarte **Aufgaben**, erstellen Sie eine neue Aufgabe, suchen Sie nach **Azure Key Vault**, und fügen Sie sie hinzu.
 
@@ -160,9 +160,9 @@ Für die Bereitstellung kann ein Fehler auftreten, wenn Sie versuchen, aktive Tr
 
 1.  Suchen Sie auf der Registerkarte „Aufgaben“ des VSTS-Release nach **Azure PowerShell**, und fügen Sie dieses Element hinzu.
 
-2.  Wählen Sie als Verbindungstyp die Option **Azure Resource Manager**, und wählen Sie anschließend Ihr Abonnement aus.
+1.  Wählen Sie als Verbindungstyp die Option **Azure Resource Manager**, und wählen Sie anschließend Ihr Abonnement aus.
 
-3.  Wählen Sie als Skripttyp die Option **Inlineskript**, und geben Sie dann Ihren Code an. Im folgenden Beispiel werden die Trigger beendet:
+1.  Wählen Sie als Skripttyp die Option **Inlineskript**, und geben Sie dann Ihren Code an. Im folgenden Beispiel werden die Trigger beendet:
 
     ```powershell
     $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName

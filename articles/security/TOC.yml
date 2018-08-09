@@ -9,7 +9,7 @@
     - name: Azure-Protokollierung und -Überwachung
       href: azure-log-audit.md
     - name: Azure-Netzwerksicherheit
-      href: azure-network-security.md
+      href: abstract-azure-network-security.md
     - name: Serverlose Azure-Plattformsicherheit
       href: abstract-serverless-platform-security.md
     - name: Gewährleisten von Betriebssicherheit

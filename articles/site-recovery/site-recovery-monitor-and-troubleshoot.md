@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 07/19/2018
 ms.author: bsiva
-ms.openlocfilehash: 747189c7cab2c76c6695bdb8e13f77532adc46d4
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 96f4ecb433277c747ddb1d1dc977bd609f93d5ff
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216072"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578584"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Überwachung und Problembehandlung für Site Recovery
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie die integrierten Überwachungsfunktionen
 
 2.  Im Dashboard werden alle Überwachungsinformationen für den Tresor an einem zentralen Ort zusammengefasst. Über das Dashboard können Sie Detailinformationen für verschiedene Bereiche anzeigen. 
 
-    ![Site Recovery-Dashboard](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)zu erstellen und zu verwalten.
+    ![Site Recovery-Dashboard](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png).
 
 3. Klicken Sie unter **Replizierte Elemente** auf **Alle anzeigen**, um alle Server im Tresor anzuzeigen.
 4. Zeigen Sie Detailinformationen an, indem Sie in jedem Abschnitt auf die Statusdetails klicken. Unter **Infrastrukturansicht** können Sie die Überwachungsinformationen nach dem Typ der replizierten Computer sortieren.
@@ -88,7 +88,7 @@ Die **Infrastrukturansicht** enthält die an der Replikation beteiligten Infrast
 - Eine rote Linie mit dem überlagerten Fehlersymbol weist auf mindestens ein Fehlersymptom hin, das Auswirkungen auf die Konnektivität hat.
 -  Wenn Sie den Mauszeiger auf das Fehlersymbol bewegen, werden der Fehler und die Anzahl der betroffenen Entitäten angezeigt. Klicken Sie auf das Symbol, um eine gefilterte Liste der betroffenen Entitäten anzuzeigen.
 
-    ![Site Recovery-Infrastrukturansicht (Tresor)]Re(./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
+    ![Site Recovery-Infrastrukturansicht (Tresor)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)
 
 ## <a name="tips-for-monitoring-the-infrastructure"></a>Tipps zum Überwachen der Infrastruktur
 

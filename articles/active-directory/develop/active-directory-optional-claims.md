@@ -16,12 +16,12 @@ ms.date: 07/12/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e0b00117c35cd5222c69e72819afb37f9ec14dd
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d924c1fc9697bff77f12f7f0bf33a1654d1e7d6e
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265063"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597972"
 ---
 # <a name="optional-claims-in-azure-ad-preview"></a>Optionale Ansprüche in Azure AD (Preview)
 
@@ -33,7 +33,7 @@ Dieses Feature wird von Anwendungsentwicklern verwendet, um anzugeben, welche An
 > [!Note]
 > Diese Funktion befindet sich derzeit in der Public Preview. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Die Funktion ist während der Public Preview-Phase in allen Azure AD-Abonnements verfügbar. Sobald die Funktion aber allgemein verfügbar wird, ist für einige Aspekte des Features unter Umständen ein Azure AD Premium-Abonnement erforderlich.
 
-Die Liste der Standardansprüche und Informationen zu deren Verwendung in Token finden Sie in den [Grundlagen zu den von Azure AD ausgestellten Token](active-directory-token-and-claims.md). 
+Die Liste der Standardansprüche und Informationen zu deren Verwendung in Token finden Sie in den [Grundlagen zu den von Azure AD ausgestellten Token](v1-id-and-access-tokens.md). 
 
 Eines der Ziele des [v2.0 Azure AD-Endpunkts](active-directory-appmodel-v2-overview.md) ist eine geringere Tokengröße, um optimale Leistung von Clients zu gewährleisten.  Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.  
 
@@ -126,7 +126,7 @@ Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-
 
 ## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
-Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie das Anwendungsmanifest ändern (siehe Beispiel unten). Weitere Informationen finden Sie in dem Artikel [Grundlegendes zum Azure AD-Anwendungsmanifest](active-directory-application-manifest.md).
+Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie das Anwendungsmanifest ändern (siehe Beispiel unten). Weitere Informationen finden Sie in dem Artikel [Grundlegendes zum Azure AD-Anwendungsmanifest](reference-app-manifest.md).
 
 **Beispielschema:**
 
@@ -247,4 +247,4 @@ Es sind mehrere Optionen für das Aktualisieren der Eigenschaften in der Identit
 
 
 ## <a name="related-content"></a>Verwandte Inhalte
-* Erfahren Sie mehr über die [Standardansprüche](active-directory-token-and-claims.md), die von Azure AD bereitgestellt werden. 
+* Erfahren Sie mehr über die [Standardansprüche](v1-id-and-access-tokens.md), die von Azure AD bereitgestellt werden. 

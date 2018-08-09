@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Clarizen | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Clarizen | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Clarizen konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f1ce8d961666b6abf4d9abe4fd881023afae7a3d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218103"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39438085"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Lernprogramm: Azure Active Directory-Integration mit Clarizen
 
@@ -32,7 +32,7 @@ In diesem Tutorial erfahren Sie, wie Sie Clarizen in Azure Active Directory (Azu
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptaufgaben:
 
 1. Hinzufügen von Clarizen aus dem Katalog
-2. Konfigurieren und testen Sie das einmalige Anmelden in Azure AD.
+1. Konfigurieren und testen Sie das einmalige Anmelden in Azure AD.
 
 Weitere Informationen zur Integration von SaaS-Apps (Software as a Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
@@ -54,19 +54,19 @@ Zum Konfigurieren der Integration von Clarizen in Azure AD fügen Sie Clarizen �
 
     ![Azure Active Directory-Symbol][1]
 
-2. Klicken Sie auf **Unternehmensanwendungen**. Klicken Sie dann auf **Alle Anwendungen**.
+1. Klicken Sie auf **Unternehmensanwendungen**. Klicken Sie dann auf **Alle Anwendungen**.
 
     ![Klicken auf „Unternehmensanwendungen“ und „Alle Anwendungen“][2]
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**.
 
     ![Schaltfläche „Hinzufügen“][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **Clarizen** ein.
+1. Geben Sie im Suchfeld als Suchbegriff **Clarizen** ein.
 
     ![Eingeben von „Clarizen“ in das Suchfeld](./media/clarizen-tutorial/tutorial_clarizen_000.png)
 
-5. Wählen Sie im Ergebnisbereich **Clarizen** aus, und klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **Clarizen** aus, und klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Wählen von Clarizen im Ergebnisbereich](./media/clarizen-tutorial/tutorial_clarizen_0001.png)
 
@@ -78,10 +78,10 @@ Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer i
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Clarizen müssen Sie die folgenden Aufgaben ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Clarizen-Testbenutzers](#create-a-clarizen-test-user)**, um eine Entsprechung von Britta Simon in Clarizen zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Clarizen-Testbenutzers](#create-a-clarizen-test-user)**, um eine Entsprechung von Britta Simon in Clarizen zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 Aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal, und konfigurieren Sie das einmalige Anmelden in Ihrer Clarizen-Anwendung.
@@ -90,11 +90,11 @@ Aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal, u
 
     ![Klicken auf „Einmaliges Anmelden“][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
     ![Auswählen von „SAML-basierte Anmeldung“](./media/clarizen-tutorial/tutorial_clarizen_01.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Clarizen** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für Clarizen** die folgenden Schritte aus:
 
     ![Felder für Bezeichner und Antwort-URL](./media/clarizen-tutorial/tutorial_clarizen_02.png)
 
@@ -105,43 +105,43 @@ Aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Verwaltungsportal, u
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen die tatsächlichen Werte für Bezeichner und Antwort-URL verwenden. Hier empfehlen wir Ihnen, den eindeutigen Wert einer Zeichenfolge als Bezeichner zu verwenden. Um die tatsächlichen Werte zu erhalten, wenden Sie sich an das [Clarizen-Supportteam](https://success.clarizen.com/hc/en-us/requests/new).
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Neues Zertifikat erstellen**.
 
     ![Klicken auf „Neues Zertifikat erstellen“](./media/clarizen-tutorial/tutorial_clarizen_03.png)    
 
-5. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein Ablaufdatum aus. Klicken Sie anschließend auf **Speichern**.
+1. Klicken Sie im Dialogfeld **Neues Zertifikat erstellen** auf das Kalendersymbol, und wählen Sie ein Ablaufdatum aus. Klicken Sie anschließend auf **Speichern**.
 
     ![Auswählen und Speichern eines Ablaufdatums](./media/clarizen-tutorial/tutorial_general_300.png)
 
-6. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat aktivieren**, und klicken Sie dann auf **Speichern**.
+1. Wählen Sie im Abschnitt **SAML-Signaturzertifikat** die Option **Neues Zertifikat aktivieren**, und klicken Sie dann auf **Speichern**.
 
     ![Aktivieren des Kontrollkästchens zum Aktivieren des neuen Zertifikats](./media/clarizen-tutorial/tutorial_clarizen_04.png)
 
-7. Klicken Sie im Dialogfeld **Rolloverzertifikat** auf **OK**.
+1. Klicken Sie im Dialogfeld **Rolloverzertifikat** auf **OK**.
 
     ![Klicken auf „OK“, um sicherzustellen, dass das Zertifikat aktivieren möchten](./media/clarizen-tutorial/tutorial_general_400.png)
 
-8. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Klicken auf „Zertifikat (Base64)“, um den Download zu starten](./media/clarizen-tutorial/tutorial_clarizen_05.png)
 
-9. Klicken Sie im Abschnitt **Clarizen-Konfiguration** auf **Clarizen konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
+1. Klicken Sie im Abschnitt **Clarizen-Konfiguration** auf **Clarizen konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
 
     ![Klicken auf „Clarizen konfigurieren“](./media/clarizen-tutorial/tutorial_clarizen_06.png)
 
     ![Fenster „Anmelden konfigurieren“ einschließlich Dateien und URLs](./media/clarizen-tutorial/tutorial_clarizen_07.png)
 
-10. Melden Sie sich in einem anderen Webbrowserfenster bei der Clarizen-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Clarizen-Unternehmenswebsite als Administrator an.
 
-11. Klicken Sie auf Ihren Benutzernamen und dann auf **Settings**.
+1. Klicken Sie auf Ihren Benutzernamen und dann auf **Settings**.
 
     ![Klicken auf „Settings“ unter Ihrem Benutzernamen](./media/clarizen-tutorial/tutorial_clarizen_001.png "Settings")
 
-12. Klicken Sie auf die Registerkarte **Global Settings**. Klicken Sie anschließend neben **Federated Authentication** auf **edit**.
+1. Klicken Sie auf die Registerkarte **Global Settings**. Klicken Sie anschließend neben **Federated Authentication** auf **edit**.
 
     ![Registerkarte „Global Settings“](./media/clarizen-tutorial/tutorial_clarizen_002.png "Global Settings")
 
-13. Führen Sie im Dialogfeld **Federated Authentication** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Federated Authentication** die folgenden Schritte aus:
 
     ![Dialogfeld „Federated Authentication“](./media/clarizen-tutorial/tutorial_clarizen_003.png "Federated Authentication")
 
@@ -166,15 +166,15 @@ Erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen Britta Simon.
 
     ![Azure Active Directory-Symbol](./media/clarizen-tutorial/create_aaduser_01.png)
 
-2. Klicken Sie auf **Benutzer und Gruppen** und dann auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Klicken Sie auf **Benutzer und Gruppen** und dann auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
 
     ![Klicken auf „Benutzer und Gruppen“ und „Alle Benutzer“](./media/clarizen-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/clarizen-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“, ausgefüllt mit Name, E-Mail-Adresse und Kennwort](./media/clarizen-tutorial/create_aaduser_04.png)
 
@@ -196,15 +196,15 @@ Um für Azure AD-Benutzer das Anmelden bei Clarizen zu aktivieren, müssen Sie B
 
 1. Melden Sie sich bei der Clarizen-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie auf **People**.
+1. Klicken Sie auf **People**.
 
     ![Klicken Sie auf „People“](./media/clarizen-tutorial/create_aaduser_001.png "Personen")
 
-3. Klicken Sie auf **Invite User**.
+1. Klicken Sie auf **Invite User**.
 
     ![Schaltfläche „Invite User“](./media/clarizen-tutorial/create_aaduser_002.png "Benutzer einladen")
 
-4. Führen Sie auf der Dialogfeldseite **Invite People** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Invite People** die folgenden Schritte aus:
 
     ![Dialogfeld „Invite People“](./media/clarizen-tutorial/create_aaduser_003.png "Personen einladen")
 
@@ -224,23 +224,23 @@ Ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure,
 
     ![Klicken auf „Unternehmensanwendungen“ und „Alle Anwendungen“][201]
 
-2. Wählen Sie in der Anwendungsliste **Clarizen** aus.
+1. Wählen Sie in der Anwendungsliste **Clarizen** aus.
 
     ![Wählen von Clarizen in der Liste](./media/clarizen-tutorial/tutorial_clarizen_50.png)
 
-3. Klicken Sie auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Klicken auf „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Die Schaltfläche „Hinzufügen“ und das Dialogfeld „Zuordnung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 Testen Sie Ihre Azure AD-Konfiguration für das einmalige Anmelden über den Zugriffsbereich.
