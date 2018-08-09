@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 36f5a5aff63bf9de57c8475733861edd5e368a9a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 79826da8f3159c8b032a695b6bc732ca5adbb0c6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055539"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421160"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Tutorial: Azure Active Directory-Integration mit Workstars
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Workstars aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-workstars-from-the-gallery"></a>Hinzufügen von Workstars aus dem Katalog
 Zum Konfigurieren der Integration von Workstars in Azure AD müssen Sie Workstars aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Workstars in Azure AD müssen Sie Workstar
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Workstars** ein, wählen Sie im Ergebnisbereich **Workstars** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Workstars** ein, wählen Sie im Ergebnisbereich **Workstars** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Workstars in der Ergebnisliste](./media/workstars-tutorial/tutorial_workstars_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Weisen Sie in Workstars den Wert für **Benutzername** in Azure AD als Wert für
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Workstars müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Workstars-Testbenutzers](#create-a-workstars-test-user)**, um eine Entsprechung von Britta Simon in Workstars zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Workstars-Testbenutzers](#create-a-workstars-test-user)**, um eine Entsprechung von Britta Simon in Workstars zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -102,11 +102,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/workstars-tutorial/tutorial_workstars_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für Workstars** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Domäne und URLs für Workstars** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Workstars](./media/workstars-tutorial/tutorial_workstars_url.png)
 
@@ -117,31 +117,31 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Workstars](https://support.workstars.com), um diese Werte zu erhalten.
  
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/workstars-tutorial/tutorial_workstars_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/workstars-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Workstars-Konfiguration** auf **Workstars konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Workstars-Konfiguration** auf **Workstars konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Workstars-Konfiguration](./media/workstars-tutorial/tutorial_workstars_configure.png) 
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der Workstars-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Workstars-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie auf der Hauptsymbolleiste auf **Settings** (Einstellungen).
+1. Klicken Sie auf der Hauptsymbolleiste auf **Settings** (Einstellungen).
 
     ![Workstars-Einstellungen](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-9. Wechseln Sie zu **Sign On** > **Settings** (Anmeldung > Einstellungen).
+1. Wechseln Sie zu **Sign On** > **Settings** (Anmeldung > Einstellungen).
 
     ![Workstars-Anmeldung](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
     ![Workstars-Einstellungen](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
-10. Führen Sie auf der Seite **Single Sign On (SAML) - Settings** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Single Sign On (SAML) - Settings** die folgenden Schritte aus:
     
     ![Workstars – SAML](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
@@ -174,15 +174,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/workstars-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/workstars-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/workstars-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/workstars-tutorial/create_aaduser_04.png)
 
@@ -210,23 +210,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Workstars** aus.
+1. Wählen Sie in der Anwendungsliste **Workstars** aus.
 
     ![Workstars-Link in der Anwendungsliste](./media/workstars-tutorial/tutorial_workstars_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/28/2017
 ms.author: jeedes
-ms.openlocfilehash: ed0018277502d2689d28009e58cdffd39a02cee7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 57ae31245a356a4cd5769fe71ef471922bf6faf9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231177"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Tutorial: Azure Active Directory-Integration mit Zoom
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Zoom aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-zoom-from-the-gallery"></a>Hinzufügen von Zoom aus dem Katalog
 Zum Konfigurieren der Integration von Zoom in Azure AD müssen Sie Zoom aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Zoom in Azure AD müssen Sie Zoom aus dem 
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Zoom** ein, wählen Sie im Ergebnisbereich **Zoom** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Zoom** ein, wählen Sie im Ergebnisbereich **Zoom** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Zoom in der Ergebnisliste](./media/zoom-tutorial/tutorial_zoom_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Weisen Sie in Zoom den Wert für **Benutzername** in Azure AD als Wert für **Be
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Zoom müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Zoom-Testbenutzers](#create-a-zoom-test-user)**, um eine Entsprechung von Britta Simon in Zoom zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Zoom-Testbenutzers](#create-a-zoom-test-user)**, um eine Entsprechung von Britta Simon in Zoom zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -102,11 +102,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/zoom-tutorial/tutorial_zoom_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für Zoom** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Domäne und URLs für Zoom** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Zoom](./media/zoom-tutorial/tutorial_zoom_url.png)
 
@@ -117,11 +117,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Zoom](https://support.zoom.us/hc), um diese Werte zu erhalten.
 
-4. Die Zoom-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. 
+1. Die Zoom-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute über den Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. 
 
-    ![Configure Single Sign-On](./media/zoom-tutorial/tutorial_attribute.png)
+    ![Configure single sign-on](./media/zoom-tutorial/tutorial_attribute.png)
 
-5. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
+1. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
     
     | Attributname | Attributwert | Namespacewert |
     | ------------------- | -----------|--------- |    
@@ -133,9 +133,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/zoom-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/zoom-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/zoom-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/zoom-tutorial/tutorial_attribute_05.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -145,27 +145,27 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     e. Klicken Sie auf **OK**. 
  
-6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/zoom-tutorial/tutorial_zoom_certificate.png)
 
-7. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/zoom-tutorial/tutorial_general_400.png)
 
-8. Klicken Sie im Abschnitt **Zoom-Konfiguration** auf **Zoom konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Zoom-Konfiguration** auf **Zoom konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Zoom-Konfiguration](./media/zoom-tutorial/tutorial_zoom_configure.png)
 
-9. Melden Sie sich in einem anderen Webbrowserfenster bei der Zoom-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Zoom-Unternehmenswebsite als Administrator an.
 
-10. Klicken Sie auf die Registerkarte **Einmaliges Anmelden** .
+1. Klicken Sie auf die Registerkarte **Einmaliges Anmelden** .
    
     ![Registerkarte für einmaliges Anmelden](./media/zoom-tutorial/IC784700.png "Einmaliges Anmelden")
 
-11. Klicken Sie auf die Registerkarte **Sicherheitskontrollen**, und navigieren Sie dann zu den Einstellungen für **Einmaliges Anmelden**.
+1. Klicken Sie auf die Registerkarte **Sicherheitskontrollen**, und navigieren Sie dann zu den Einstellungen für **Einmaliges Anmelden**.
 
-12. Führen Sie im Abschnitt „Einmaliges Anmelden“ die folgenden Schritte aus:
+1. Führen Sie im Abschnitt „Einmaliges Anmelden“ die folgenden Schritte aus:
    
     ![Abschnitt für einmaliges Anmelden](./media/zoom-tutorial/IC784701.png "Einmaliges Anmelden")
    
@@ -198,15 +198,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/zoom-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/zoom-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/zoom-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/zoom-tutorial/create_aaduser_04.png)
 
@@ -226,13 +226,13 @@ Damit sich Azure AD-Benutzer bei Zoom anmelden können, müssen sie in Zoom bere
 
 1. Melden Sie sich bei der **Zoom** -Unternehmenswebsite als Administrator an.
  
-2. Klicken Sie auf die Registerkarte **Kontenverwaltung** und anschließend auf **Benutzerverwaltung**.
+1. Klicken Sie auf die Registerkarte **Kontenverwaltung** und anschließend auf **Benutzerverwaltung**.
 
-3. Klicken Sie im Abschnitt „Benutzerverwaltung“ auf **Benutzer hinzufügen**.
+1. Klicken Sie im Abschnitt „Benutzerverwaltung“ auf **Benutzer hinzufügen**.
    
     ![Benutzerverwaltung](./media/zoom-tutorial/IC784703.png "Benutzerverwaltung")
 
-4. Führen Sie auf der Seite **Benutzer hinzufügen** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Benutzer hinzufügen** die folgenden Schritte aus:
    
     ![Benutzer hinzufügen](./media/zoom-tutorial/IC784704.png "Benutzer hinzufügen")
    
@@ -257,23 +257,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Zoom** aus.
+1. Wählen Sie in der Anwendungsliste **Zoom** aus.
 
     ![Zoom-Link in der Anwendungsliste](./media/zoom-tutorial/tutorial_zoom_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

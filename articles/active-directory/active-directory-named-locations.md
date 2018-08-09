@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f739917b201d5255716d22930d7c4bd9e6602f37
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 62a55672a4326df585fc84699dfd72424be362dc
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224516"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627490"
 ---
 # <a name="configure-named-locations-in-azure-active-directory"></a>Konfigurieren benannter Orte in Azure Active Directory
 
 Mit benannten Orten können Sie in Ihrer Organisation vertrauenswürdige IP-Adressbereiche bezeichnen. Azure Active Directory verwendet benannte Orte im folgenden Kontext:
 
-- Die Erkennung von [Risikoereignissen](active-directory-reporting-risk-events.md), um die Anzahl der gemeldeten falsch positiven Ergebnisse zu reduzieren.  
+- Die Erkennung von [Risikoereignissen](reports-monitoring/concept-risk-events.md), um die Anzahl der gemeldeten falsch positiven Ergebnisse zu reduzieren.  
 
-- [Standortbasierter bedingter Zugriff](active-directory-conditional-access-locations.md).
+- [Standortbasierter bedingter Zugriff](conditional-access/location-condition.md).
 
 
 In diesem Artikel wird erklärt, wie Sie benannte Orte in Ihrer Umgebung konfigurieren können.
@@ -97,8 +97,8 @@ Weitere Informationen finden Sie unter
 
 - [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal.md)
 
-- [Standortbedingungen beim bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-locations.md)
+- [Standortbedingungen beim bedingten Zugriff in Azure Active Directory](conditional-access/location-condition.md)
 
-- [Azure Active Directory-Risikoereignisse](active-directory-reporting-risk-events.md)
+- [Azure Active Directory-Risikoereignisse](reports-monitoring/concept-risk-events.md)
 
-- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md)  
+- [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](reports-monitoring/concept-risky-sign-ins.md)  

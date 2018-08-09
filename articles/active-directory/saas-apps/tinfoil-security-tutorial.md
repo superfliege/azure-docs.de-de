@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ad18bd1aea36c5f185f7a8e3062b1c2103017c5
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 4f25768cc7e4f5865c6cfa96ebfe3b0df97deeb6
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049788"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421371"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Tutorial: Azure Active Directory-Integration in TINFOIL SECURITY
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von TINFOIL SECURITY aus dem Katalog
-2. Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+1. Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 ## <a name="add-tinfoil-security-from-the-gallery"></a>Hinzufügen von TINFOIL SECURITY aus dem Katalog
 Zum Konfigurieren der Integration von TINFOIL SECURITY in Azure AD müssen Sie TINFOIL SECURITY aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von TINFOIL SECURITY in Azure AD müssen Sie T
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld **TINFOIL SECURITY** ein, wählen Sie im Ergebnisbereich **TINFOIL SECURITY** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **TINFOIL SECURITY** ein, wählen Sie im Ergebnisbereich **TINFOIL SECURITY** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![TINFOIL SECURITY aus dem Katalog](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_addfromgallery.png)
 
@@ -86,10 +86,10 @@ Weisen Sie in TINFOIL SECURITY den Wert für **Benutzername** in Azure AD als We
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei TINFOIL SECURITY müssen Sie folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines TINFOIL SECURITY-Testbenutzers](#create-a-tinfoil-security-test-user)**, um ein Pendant von Britta Simon in TINFOIL SECURITY zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines TINFOIL SECURITY-Testbenutzers](#create-a-tinfoil-security-test-user)**, um ein Pendant von Britta Simon in TINFOIL SECURITY zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -101,20 +101,20 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![SAML 2.0-basiertes Anmelden](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_samlbase.png)
 
-3. Im Abschnitt **Domäne und URLs für TINFOIL SECURITY** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
+1. Im Abschnitt **Domäne und URLs für TINFOIL SECURITY** muss der Benutzer keine Schritte ausführen, da die App bereits in Azure integriert ist.
 
     ![Configure single sign-on](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_url.png)
 
 
-4. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK**.
+1. Kopieren Sie im Abschnitt **SAML-Signaturzertifikat** den Wert **FINGERABDRUCK**.
 
     ![Abschnitt für SAML-Signaturzertifikat](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_certificate.png) 
 
-5. Führen Sie zum Hinzufügen der erforderlichen Attributzuordnungen die folgenden Schritte aus:
+1. Führen Sie zum Hinzufügen der erforderlichen Attributzuordnungen die folgenden Schritte aus:
     
     ![Attribute](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_attribute1.png "Attribute")
     
@@ -134,25 +134,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     d. Klicken Sie auf **OK**.    
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“](./media/tinfoil-security-tutorial/tutorial_general_400.png)
 
-7. Klicken Sie im Abschnitt **TINFOIL SECURITY-Konfiguration** auf **TINFOIL SECURITY konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **TINFOIL SECURITY-Konfiguration** auf **TINFOIL SECURITY konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![TINFOIL SECURITY-Konfiguration](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_configure.png) 
 
-8. Melden Sie sich in einem anderen Webbrowserfenster bei der TINFOIL SECURITY-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der TINFOIL SECURITY-Unternehmenswebsite als Administrator an.
 
-9. Klicken Sie oben auf der Symbolleiste auf **Einstellungen**.
+1. Klicken Sie oben auf der Symbolleiste auf **Einstellungen**.
    
     ![Dashboard](./media/tinfoil-security-tutorial/ic798971.png "Dashboard")
 
-10. Klicken Sie auf **Sicherheit**.
+1. Klicken Sie auf **Sicherheit**.
    
     ![Sicherheit](./media/tinfoil-security-tutorial/ic798972.png "Sicherheit")
 
-11. Führen Sie auf der Konfigurationsseite **Single Sign-On** die folgenden Schritte aus:
+1. Führen Sie auf der Konfigurationsseite **Single Sign-On** die folgenden Schritte aus:
    
     ![Einmaliges Anmelden](./media/tinfoil-security-tutorial/ic798973.png "des einmaligen Anmeldens")
    
@@ -183,15 +183,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/tinfoil-security-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Benutzer und Gruppen -> Alle Benutzer ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Benutzer](./media/tinfoil-security-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/tinfoil-security-tutorial/create_aaduser_04.png) 
 
@@ -211,7 +211,7 @@ Damit sich Azure AD-Benutzer bei TINFOIL SECURITY anmelden können, müssen sie 
 
 1. Wenn der Benutzer einen Teil eines Enterprise-Kontos ist, müssen Sie sich [an das TINFOIL SECURITY-Supportteam wenden](https://www.tinfoilsecurity.com/contact), um das Benutzerkonto anlegen zu lassen.
 
-2. Wenn der Benutzer ein normaler TINFOIL SECURITY-SaaS-Benutzer ist, kann der Benutzer zu allen Websites des Benutzers einen Mitarbeiter hinzufügen. Dies löst einen Prozess aus, bei dem eine Einladung an die angegebene E-Mail-Adresse gesendet wird, um ein neues TINFOIL SECURITY-Benutzerkonto zu erstellen.
+1. Wenn der Benutzer ein normaler TINFOIL SECURITY-SaaS-Benutzer ist, kann der Benutzer zu allen Websites des Benutzers einen Mitarbeiter hinzufügen. Dies löst einen Prozess aus, bei dem eine Einladung an die angegebene E-Mail-Adresse gesendet wird, um ein neues TINFOIL SECURITY-Benutzerkonto zu erstellen.
 
 > [!NOTE]
 > Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von TINFOIL SECURITY-Benutzerkonten oder mithilfe der von TINFOIL SECURITY bereitgestellten APIs erstellen.
@@ -230,23 +230,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **TINFOIL SECURITY** aus.
+1. Wählen Sie in der Anwendungsliste **TINFOIL SECURITY** aus.
 
     ![TINFOIL SECURITY auswählen](./media/tinfoil-security-tutorial/tutorial_tinfoil-security_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

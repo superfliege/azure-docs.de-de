@@ -1,26 +1,19 @@
 ---
-title: Bereitstellen in Azure App Service mit dem Jenkins-Plug-In | Microsoft-Dokumentation
+title: Bereitstellen in Azure App Service mit dem Jenkins-Plug-In
 description: Erfahren Sie, wie Sie das Jenkins-Plug-In für Azure App Service zum Bereitstellen einer Java-Web-App für Azure in Jenkins verwenden.
-services: app-service\web
-documentationcenter: ''
-author: mlearned
-manager: douge
-editor: ''
-ms.assetid: ''
-ms.service: multiple
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 7/24/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 0128ad37e3ba66710279de42cf4eae0ce5431b5b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: tarcher
+author: tomarcher
+manager: jpconnock
+ms.service: devops
+ms.custom: jenkins
+ms.date: 07/31/2018
+ms.openlocfilehash: 1b01eb760fa36c9f0fb6180c12dc3e5c1bf9de6f
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418419"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39391485"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
@@ -228,6 +221,10 @@ Geben Sie als **Docker registry URL** (URL für die Docker-Registrierung) die UR
 
 3. Wechseln Sie zu „http://&lt;Ihr_App_Name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y>“. Ersetzen Sie „&lt;x>“ und „&lt;y>“ durch beliebige Zahlen, um die Summe aus x + y zu erhalten.
     
+## <a name="troubleshooting-the-jenkins-plugin"></a>Problembehandlung beim Jenkins-Plug-In
+
+Wenn bei den Jenkins-Plug-Ins Fehler auftreten, melden Sie das Problem auf der [Jenkins-JIRA-Seite](https://issues.jenkins-ci.org/) für die jeweilige Komponente.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie das Jenkins-Plug-In für Azure App Service für die Bereitstellung in Azure verwendet.

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 7/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: c1189e1b120f0bd1b3169618bebdb929d1cee18e
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: a075b60c525fc3883f4464f19a8964fb64ce15a0
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248790"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627711"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -47,7 +47,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 
 | Dienst | Schema und Dokumente |
 | --- | --- |
-| Azure Active Directory | [Übersicht](../active-directory/reporting-azure-monitor-diagnostics-overview.md), [Überwachungsprotokollschema](../active-directory/reporting-azure-monitor-diagnostics-audit-log-schema.md) und [Anmeldeschema](../active-directory/reporting-azure-monitor-diagnostics-sign-in-log-schema.md) |
+| Azure Active Directory | [Übersicht](../active-directory/reports-monitoring/overview-activity-logs-in-azure-monitor.md), [Überwachungsprotokollschema](../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) und [Anmeldeschema](../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management-Diagnoseprotokolle](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |

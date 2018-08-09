@@ -1,23 +1,24 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache in Java unter Android mit dem Cognitive Services Speech SDK | Microsoft-Dokumentation'
+title: 'Schnellstart: Erkennen von Sprache in Java unter Android mit dem Cognitive Services Speech SDK'
 titleSuffix: Microsoft Cognitive Services
 description: Erfahren Sie, wie Sie Sprache in Java unter Android mit dem Cognitive Services Speech SDK erkennen können.
 services: cognitive-services
 author: fmegen
-manager: wolfma
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: fb52bc3fa398cbe5ba4cbea7c1908ee1fece876e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ad1bf15f198529487dbed92d8f8639704b0c5fc7
+ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114701"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39325124"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Java unter Android mit dem Speech SDK
+
+[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Erstellung einer Java-Anwendung für Android mithilfe des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
 Die Anwendung basiert auf dem Maven-Paket für das Microsoft Cognitive Services Speech SDK, Version 0.5.0, und Android Studio 3.1.
@@ -158,4 +159,4 @@ Suchen Sie nach diesem Beispiel im Ordner `quickstart/java-android`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Beispiele finden Sie auf [dieser Seite](samples.md).
+* [Abrufen der Beispiele](speech-sdk.md#get-the-samples)

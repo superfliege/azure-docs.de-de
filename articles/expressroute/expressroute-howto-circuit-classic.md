@@ -1,26 +1,18 @@
 ---
 title: 'Ändern einer ExpressRoute-Verbindung: PowerShell: Azure (klassisch) | Microsoft-Dokumentation'
 description: In diesem Artikel werden die Schritte beschrieben, die zum Überprüfen des Status, Aktualisieren oder Löschen und erneuten Bereitstellen Ihrer ExpressRoute-Verbindung mit klassischem Bereitstellungsmodell ausgeführt werden müssen.
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: timlt
-editor: ''
-tags: azure-service-management
-ms.assetid: 0134d242-6459-4dec-a2f1-4657c3bc8b23
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.topic: conceptual
+ms.date: 07/26/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 457bb74fa15d31fecbf668038ac880cafb8a897d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 407782ff59147f227f5f34bc3318333093b4f57e
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "24102833"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283570"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Ändern einer ExpressRoute-Verbindung mit PowerShell (klassisch)
 
@@ -42,7 +34,38 @@ In diesem Artikel wird auch veranschaulicht, wie Sie den Status prüfen, ein Upd
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung. Befolgen Sie die Anleitung unter [Übersicht über Azure PowerShell](/powershell/azure/overview), um Ihren Computer Schritt für Schritt für die Nutzung der Azure PowerShell-Module zu konfigurieren.
+Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung (Service Management, SM) und des ExpressRoute-Moduls.  Beachten Sie bei Verwendung des folgenden Beispiels, dass sich die Versionsnummer (hier: 5.1.1) ändert, wenn neuere Versionen der Cmdlets veröffentlicht werden.
+
+```powershell
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
+Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
+```
+
+Weitere Informationen zu PowerShell und eine ausführliche Anleitung zum Konfigurieren des Computers für die Verwendung der Azure PowerShell-Module finden Sie unter [Erste Schritte mit Azure PowerShell-Cmdlets](/powershell/azure/overview).
+
+Verwenden Sie das folgende Beispiel, um sich bei Ihrem Azure-Konto anzumelden:
+
+1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
+
+  ```powershel
+  Connect-AzureRmAccount
+  ```
+2. Überprüfen Sie die Abonnements für das Konto.
+
+  ```powershell
+  Get-AzureRmSubscription
+  ```
+3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
+
+  ```powershell
+  Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+  ```
+
+4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
+
+  ```powershell
+  Add-AzureAccount
+  ```
 
 ## <a name="get-the-status-of-a-circuit"></a>Abrufen des Status einer Verbindung
 

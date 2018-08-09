@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 40aa948547587b224a81ac97a3554345d8ca783d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 105ec895635a882d562de48203222702a2c6bfed
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051365"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Tutorial: Azure Active Directory-Integration mit ScreenSteps
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von ScreenSteps aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-screensteps-from-the-gallery"></a>Hinzufügen von ScreenSteps aus dem Katalog
 Zum Konfigurieren der Integration von ScreenSteps in Azure AD müssen Sie ScreenSteps über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von ScreenSteps in Azure AD müssen Sie Screen
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **ScreenSteps** ein, wählen Sie im Ergebnisbereich **ScreenSteps** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **ScreenSteps** ein, wählen Sie im Ergebnisbereich **ScreenSteps** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![ScreenSteps in der Ergebnisliste](./media/screensteps-tutorial/tutorial_screensteps_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Weisen Sie in ScreenSteps den Wert für **Benutzername** in Azure AD als Wert f�
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei ScreenSteps müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines ScreenSteps-Testbenutzers](#create-a-screensteps-test-user)**, um eine Entsprechung von Britta Simon in ScreenSteps zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines ScreenSteps-Testbenutzers](#create-a-screensteps-test-user)**, um eine Entsprechung von Britta Simon in ScreenSteps zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -102,11 +102,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/screensteps-tutorial/tutorial_screensteps_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für ScreenSteps** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für ScreenSteps** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für ScreenSteps](./media/screensteps-tutorial/tutorial_screensteps_url.png)
 
@@ -115,33 +115,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie den Wert durch die tatsächliche Anmelde-URL. Dies wird später in diesem Tutorial beschrieben. 
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/screensteps-tutorial/tutorial_screensteps_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/screensteps-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **ScreenSteps-Konfiguration** auf **ScreenSteps konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **ScreenSteps-Konfiguration** auf **ScreenSteps konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![ScreenSteps-Konfiguration](./media/screensteps-tutorial/tutorial_screensteps_configure.png) 
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der ScreenSteps-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der ScreenSteps-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie auf **Kontoeinstellungen**.
+1. Klicken Sie auf **Kontoeinstellungen**.
 
     ![Kontoverwaltung](./media/screensteps-tutorial/ic778523.png "Kontoverwaltung")
 
-9. Klicken Sie auf **Einmaliges Anmelden**.
+1. Klicken Sie auf **Einmaliges Anmelden**.
 
     ![Remoteauthentifizierung](./media/screensteps-tutorial/ic778524.png "Remoteauthentifizierung")
 
-10. Klicken Sie auf **Create Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden erstellen).
+1. Klicken Sie auf **Create Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden erstellen).
 
     ![Remoteauthentifizierung](./media/screensteps-tutorial/ic778525.png "Remoteauthentifizierung")
 
-11. Führen Sie im Abschnitt **Create Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden erstellen) die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Create Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden erstellen) die folgenden Schritte aus:
 
     ![Erstellen eines Authentifizierungsendpunkts](./media/screensteps-tutorial/ic778526.png "Erstellen eines Authentifizierungsendpunkts")
     
@@ -151,11 +151,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     c. Klicken Sie auf **Create**.
 
-12. **Bearbeiten** Sie den neuen Endpunkt.
+1. **Bearbeiten** Sie den neuen Endpunkt.
 
     ![Endpunkt bearbeiten](./media/screensteps-tutorial/ic778528.png "Endpunkt bearbeiten")
 
-13. Führen Sie im Abschnitt **Edit Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden bearbeiten) die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Edit Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden bearbeiten) die folgenden Schritte aus:
 
     ![Remote Authentication Endpoint](./media/screensteps-tutorial/ic778527.png "Remote Authentication Endpoint")
 
@@ -191,15 +191,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/screensteps-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/screensteps-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/screensteps-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/screensteps-tutorial/create_aaduser_04.png)
 
@@ -227,23 +227,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **ScreenSteps** aus.
+1. Wählen Sie in der Anwendungsliste **ScreenSteps** aus.
 
     ![ScreenSteps-Link in der Anwendungsliste](./media/screensteps-tutorial/tutorial_screensteps_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

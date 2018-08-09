@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 94080fb124478a4b8e196e341c335ca32321ecdf
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: caa2d74ecafe0b0e2508bd97eb4dc21a18e58f51
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011872"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626419"
 ---
 # <a name="authentication-requests-and-responses"></a>Authentifizierung, Anforderungen und Antworten
 
 Azure Key Vault unterstützt Anforderungen und Antworten im JSON-Format. Anforderungen an Azure Key Vault werden mithilfe von HTTPS mit einigen URL-Parametern und JSON-codierten Anforderungs- und Antworttexten an eine gültige Azure Key Vault-URL geleitet.
 
-Dieses Thema behandelt Besonderheiten für den Azure Key Vault-Dienst. Allgemeine Informationen zur Verwendung von Azure-REST-Schnittstellen, einschließlich Authentifizierung/Autorisierung und zum Abrufen eines Zugriffstokens finden Sie unter [Azure-REST-API-Referenz](https://docs.microsoft.com/rest/api/).
+Dieses Thema behandelt Besonderheiten für den Azure Key Vault-Dienst. Allgemeine Informationen zur Verwendung von Azure-REST-Schnittstellen, einschließlich Authentifizierung/Autorisierung und zum Abrufen eines Zugriffstokens finden Sie unter [Azure-REST-API-Referenz](https://docs.microsoft.com/rest/api/azure).
 
 ## <a name="request-url"></a>Anfrage-URL  
  Schlüsselverwaltungsvorgänge verwenden „HTTP DELETE“, „GET“, „PATCH“, „PUT“ und „HTTP POST“, und kryptographische Vorgänge für vorhandene Schlüsselobjekte verwenden „HTTP POST“. Clients, die bestimmte HTTP-Verben nicht unterstützen, können auch „HTTP POST“ mit dem Header „X-HTTP-REQUEST verwenden, um das gewünschte Verb anzugeben. Anforderungen, die normalerweise keinen Text erfordern, müssen bei Verwendung von „HTTP POST“ einen leeren Text enthalten, z.B. bei Verwendung von „POST“ anstelle von „DELETE“.  
@@ -95,7 +95,7 @@ Dieses Thema behandelt Besonderheiten für den Azure Key Vault-Dienst. Allgemein
 ## <a name="authentication"></a>Authentifizierung  
  Alle Anforderungen an Azure Key Vault MÜSSEN authentifiziert werden. Azure Key Vault unterstützt Azure Active Directory-Zugriffstoken, die mithilfe von OAuth2 [[RFC6749](http://tools.ietf.org/html/rfc6749)] abgerufen werden können. 
  
- Weitere Informationen zur Registrierung Ihrer Anwendung und zur Authentifizierung für die Verwendung von Azure Key Vault finden Sie unter [Registrieren Ihrer Clientanwendung bei Azure AD](https://docs.microsoft.com/rest/api/index#register-your-client-application-with-azure-ad).
+ Weitere Informationen zur Registrierung Ihrer Anwendung und zur Authentifizierung für die Verwendung von Azure Key Vault finden Sie unter [Registrieren Ihrer Clientanwendung bei Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).
  
  Zugriffstoken müssen mithilfe des HTTP-Autorisierungsheaders an den Dienst gesendet werden:  
 

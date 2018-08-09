@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 4c157ed905b7dc48c886b26987c164ef9a47f3c3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 04996e772c2989be89ce551bfa45c57154de7b2d
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714560"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307788"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurieren des PremiumV2-Tarifs für Azure App Service
 
@@ -28,21 +28,19 @@ Der neue Tarif **PremiumV2** bietet Ihnen schnellere Prozessoren und SSD-Speiche
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum zentralen Hochskalieren einer Web-App auf **PremiumV2** benötigen Sie eine Web-App in Azure App Service, die in einem niedrigeren Tarif als **PremiumV2** ausgeführt wird.
+Zum zentralen Hochskalieren einer Web-App auf **PremiumV2** benötigen Sie eine Web-App in Azure App Service, die in einem niedrigeren Tarif als **PremiumV2** ausgeführt wird. Die App muss in einer App Service-Bereitstellung ausgeführt werden, die PremiumV2 unterstützt.
 
 <a name="availability"></a>
 
 ## <a name="premiumv2-availability"></a>Verfügbarkeit von PremiumV2
 
-Der PremiumV2-Tarif ist aktuell nur für App Service unter _Windows_ verfügbar. Linux-Container werden momentan noch nicht unterstützt.
+Der **PremiumV2**-Tarif ist für App Service unter _Windows_ und _Linux_ verfügbar.
 
-PremiumV2 ist bereits in den meisten Azure-Regionen verfügbar und wird zukünftig in weiteren Azure-Regionen zur Verfügung stehen. Um festzustellen, ob der Tarif in Ihrer Region verfügbar ist, führen Sie den folgenden Azure CLI-Befehl in [Azure Cloud Shell](../cloud-shell/overview.md) aus:
+**PremiumV2** ist in den meisten Azure-Regionen verfügbar. Um festzustellen, ob der Tarif in Ihrer Region verfügbar ist, führen Sie den folgenden Azure CLI-Befehl in [Azure Cloud Shell](../cloud-shell/overview.md) aus:
 
 ```azurecli-interactive
 az appservice list-locations --sku P1V2
 ```
-
-Wenn Sie während der Erstellung der App oder des App Service-Plans eine Fehlermeldung erhalten, ist **PremiumV2** wahrscheinlich für die ausgewählte Azure-Region nicht verfügbar.
 
 <a name="create"></a>
 
@@ -57,11 +55,11 @@ Wählen Sie **Produktion** aus und dann **P1V2**, **P2V2** oder **P3V2**, und kl
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Wenn Ihnen die Optionen **P1V2**, **P2V2** und **P3V2** nicht angezeigt werden, ist **PremiumV2** entweder nicht in der ausgewählten Region verfügbar, oder Sie konfigurieren einen App Service-Plan für Linux, der **PremiumV2** nicht unterstützt.
+> Wenn Sie die Optionen **P1V2**, **P2V2** und **P3V2** nicht sehen oder die Optionen ausgegraut sind, ist **PremiumV2** wahrscheinlich in der vorliegenden App Service-Bereitstellung, die App Service-Plan enthält, nicht verfügbar. Weitere Details finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported).
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Zentrales Hochskalieren einer vorhandenen App auf PremiumV2-Tarif
 
-Stellen Sie vor dem zentralen Hochskalieren einer vorhandenen App auf den **PremiumV2**-Tarif sicher, dass **PremiumV2** in Ihrer Azure-Region verfügbar ist. Informationen hierzu finden Sie unter [PremiumV2 availability (Verfügbarkeit von PremiumV2)](#availability). Wenn der Tarif in Ihrer Region nicht verfügbar ist, finden Sie unter [Scale up from an unsupported region](#unsupported) (Zentrales Hochskalieren aus einer nicht unterstützten Azure-Region) weitere Informationen.
+Stellen Sie vor dem Hochskalieren einer vorhandenen App auf den **PremiumV2**-Tarif sicher, dass **PremiumV2** verfügbar ist. Informationen hierzu finden Sie unter [PremiumV2 availability (Verfügbarkeit von PremiumV2)](#availability). Wenn der Tarif nicht verfügbar ist, finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported) weitere Informationen.
 
 Je nach Hostingumgebung können für das zentrale Hochskalieren zusätzliche Schritte erforderlich sein. 
 
@@ -81,32 +79,20 @@ Wenn der Vorgang erfolgreich abgeschlossen wurde, wird auf der Übersichtsseite 
 
 ### <a name="if-you-get-an-error"></a>Hinweis zu möglicher Fehlermeldung
 
-Einige App Service-Pläne können nicht auf den PremiumV2-Tarif zentral hochskaliert werden. Wenn Ihnen beim zentralen Hochskalieren ein Fehler angezeigt wird, benötigen Sie einen neuen App Service-Plan für Ihre App.
-
-Erstellen Sie in der gleichen Azure-Region und Ressourcengruppe wie Ihrer vorhandenen App Service-App einen App Service-Plan für _Windows_. Führen Sie hierzu die Schritte im Abschnitt [Erstellen einer Anwendung im Tarif PremiumV2](#create) aus, um den **PremiumV2**-Tarif für die App festzulegen. Sie können dieselbe Konfiguration für horizontale Skalierung nutzen (Anzahl der Instanzen, automatische Skalierung etc.), die in Ihrem vorhandenen App Service-Plan verwendet wird.
-
-Öffnen Sie erneut die Seite Ihrer App Service-App. Wählen Sie in App Service im linken Navigationsbereich **App Service-Plan ändern** aus.
-
-![](media/app-service-configure-premium-tier/change-plan.png)
-
-Wählen Sie den erstellten App Service-Plan aus.
-
-![](media/app-service-configure-premium-tier/select-plan.png)
-
-Nachdem der Vorgang abgeschlossen wurde, wird Ihre App im **PremiumV2**-Tarif ausgeführt.
+Einige App Service-Pläne können nicht auf den PremiumV2-Tarif hochskaliert werden, wenn die vorliegende App Service-Bereitstellung PremiumV2 nicht unterstützt.  Weitere Details finden Sie unter [Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region](#unsupported).
 
 <a name="unsupported"></a>
 
-## <a name="scale-up-from-an-unsupported-region"></a>Zentrales Hochskalieren aus einer nicht unterstützten Azure-Region
+## <a name="scale-up-from-an-unsupported-resource-group-and-region-combination"></a>Hochskalieren aus einer nicht unterstützten Ressourcengruppe und Region
 
-Wenn Ihre App in einer Region ausgeführt wird, in der **PremiumV2** noch nicht verfügbar ist, können Sie Ihre App in eine andere Region verschieben, um **PremiumV2** zu nutzen. Sie haben zwei Möglichkeiten:
+Wenn Ihre App in einer App Service-Bereitstellung ausgeführt wird, in der **PremiumV2** nicht verfügbar ist, oder Ihre App in einer Region ausgeführt wird, die **PremiumV2** nicht unterstützt wird, müssen Sie Ihre App erneut bereitstellen, um von **PremiumV2** profitieren zu können.  Sie haben zwei Möglichkeiten:
 
-- Erstellen Sie eine App im neuen **PremiumV2**-Plan, und stellen Sie anschließend Ihren Anwendungscode erneut bereit. Führen Sie hierzu die Schritte im Abschnitt [Erstellen einer Anwendung im Tarif PremiumV2](#create) aus, um den **PremiumV2**-Tarif für die App festzulegen. Sie können bei Bedarf dieselbe Konfiguration für horizontales Hochskalieren nutzen (Anzahl der Instanzen, automatische Skalierung etc.), die in Ihrem vorhandenen App Service-Plan verwendet wird.
-- Wenn Ihre App bereits in einem vorhandenen **Premium**-Tarif ausgeführt wird, können Sie Ihre App mit allen App-Einstellungen, Verbindungszeichenfolgen und der Bereitstellungskonfiguration klonen.
+- Erstellen Sie eine **neue** Ressourcengruppe, und erstellen Sie dann eine **neue** Web-App und einen neuen App Service-Plan in der **neuen** Ressourcengruppe. Wählen Sie während der Erstellung die gewünschte Azure-Region aus.  Sie **müssen** bei der Erstellung des neuen App Service-Plans den **PremiumV2**-Plan wählen.  Dadurch stellen Sie sicher, dass die Kombination aus Ressourcengruppe, App Service-Plan und Azure-Region dazu führt, dass der App Service-Plan in einer App Service-Bereitstellung erstellt wird, die **PremiumV2** unterstützt.  Stellen Sie Ihren Anwendungscode dann in der neu erstellten App und im App Service-Plan erneut bereit. Bei Bedarf können Sie den App Service-Plan von **PremiumV2** wieder herunterskalieren, um Kosten zu sparen, und später mit **PremiumV2** wieder hochskalieren.
+- Wenn Ihre App bereits in einem vorhandenen **Premium**-Tarif ausgeführt wird, können Sie Ihre App mit allen App-Einstellungen, Verbindungszeichenfolgen und der Bereitstellungskonfiguration in einen neuen App Service-Plan klonen, der **PremiumV2** verwendet.
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    Auf der Seite **App klonen** können Sie einen neuen App Service-Plan in der gewünschten Region erstellen. Außerdem können Sie die Einstellungen festlegen, die geklont werden sollen.
+    Auf der Seite **App klonen** können Sie einen neuen App Service-Plan mit **PremiumV2** in der gewünschten Region erstellen. Außerdem können Sie die App-Einstellungen und die Konfiguration festlegen, die geklont werden sollen.
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

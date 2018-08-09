@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2018
+ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 3b4e0f978cc7d23d0157b78fd2dff27096d2768b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: cb927c0bad69bb3b5b3001e4ba19b11acd1eb316
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133340"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39389968"
 ---
 # <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
 
-Zum Verwalten des Zugriffs auf Log Analytics führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Dieser Artikel enthält Informationen zu den bewährten Methoden und Verfahren für die Arbeitsbereichsverwaltung. Ein Arbeitsbereich ist im Wesentlichen ein Container, der Kontoinformationen und einfache Konfigurationsinformationen für das Konto enthält. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
+Zum Verwalten des Zugriffs auf Log Analytics führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Dieser Artikel enthält Tipps und Verfahren für die Arbeitsbereichsverwaltung. Ein Arbeitsbereich ist im Wesentlichen ein Container, der Kontoinformationen und einfache Konfigurationsinformationen für das Konto enthält. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
 
 Sie benötigen Folgendes, um einen Arbeitsbereich zu erstellen:
 
@@ -48,7 +48,7 @@ Im Hinblick auf die Nutzung wird empfohlen, möglichst wenige Arbeitsbereiche zu
 
 * Sie sind ein globales Unternehmen und müssen Daten aus Gründen der Datensouveränität bzw. aus Compliancegründen in bestimmten Regionen speichern.
 * Sie nutzen Azure und möchten Gebühren für ausgehende Datenübertragungen vermeiden, indem Sie einen Arbeitsbereich in derselben Region wie die verwalteten Azure-Ressourcen nutzen.
-* Sie möchten Gebühren basierend auf der Nutzung unterschiedlichen Abteilungen bzw. Geschäftseinheiten zuordnen. Sie können einen Arbeitsbereich für jede Abteilung oder Geschäftseinheit in einem eigenen Azure-Abonnement erstellen.
+* Sie möchten Gebühren basierend auf der Nutzung unterschiedlichen Abteilungen bzw. Geschäftseinheiten zuordnen, indem Sie einen Arbeitsbereich für jede Abteilung oder Geschäftseinheit im eigenen Azure-Abonnement erstellen.
 * Sie sind ein Dienstanbieter mit Verwaltung und müssen die Log Analytics-Daten für jeden Kunden, den Sie verwalten, von den Daten der anderen Kunden isolieren.
 * Sie verwalten mehrere Kunden und möchten, dass den einzelnen Kunden/Abteilungen/Geschäftseinheiten jeweils nur die eigenen Daten angezeigt werden.
 
@@ -56,19 +56,21 @@ Wenn Sie Windows-Agents zum Sammeln von Daten verwenden, können Sie [jeden Agen
 
 Bei Verwendung von System Center Operations Manager kann jede Operations Manager-Verwaltungsgruppe mit nur einem Arbeitsbereich verbunden werden. Sie können den Microsoft Monitoring Agent auf Computern installieren, die mit Operations Manager verwaltet werden, und den Agent so einrichten, dass er sowohl Daten an Operations Manager als auch an einen anderen Log Analytics-Arbeitsbereich liefert.
 
-### <a name="workspace-information"></a>Informationen zum Arbeitsbereich
+## <a name="workspace-information"></a>Informationen zum Arbeitsbereich
 
 Sie können im Azure-Portal die Details zu Ihrem Arbeitsbereich anzeigen. 
 
-#### <a name="view-workspace-information-in-the-azure-portal"></a>Anzeigen von Arbeitsbereichsinformationen im Azure-Portal
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com)an, falls Sie dies noch nicht getan haben.
 
-1. Melden Sie sich mit Ihrem Azure-Abonnement beim [Azure-Portal](https://portal.azure.com) an, sofern Sie noch nicht angemeldet sind.
-2. Klicken Sie im Menü **Hub** auf **Weitere Dienste**, und geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Log Analytics**.  
-    ![Azure-Hub](./media/log-analytics-manage-access/hub.png)  
-3. Wählen Sie auf dem Blatt mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
-4. Auf dem Blatt zum Arbeitsbereich werden Details zum Arbeitsbereich und Links zu weiteren Informationen angezeigt.  
-    ![Informationen zum Arbeitsbereich](./media/log-analytics-manage-access/workspace-details.png)  
+2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.  
 
+    ![Azure-Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)  
+
+3. Wählen Sie im Bereich mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
+
+4. Auf der Seite für den Arbeitsbereich werden Details zu den ersten Schritten und zur Konfiguration sowie Links zu weiteren Informationen angezeigt.  
+
+    ![Informationen zum Arbeitsbereich](./media/log-analytics-manage-access/workspace-overview-page.png)  
 
 ## <a name="manage-accounts-and-users"></a>Verwalten von Konten und Benutzern
 Jedem Arbeitsbereich können mehrere Konten zugeordnet werden, und jedes Konto kann Zugriff auf mehrere Arbeitsbereiche haben. Der Zugriff wird über die [rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md) verwaltet. Diese Zugriffsrechte gelten für das Azure-Portal sowie für den API-Zugriff.
@@ -150,23 +152,25 @@ Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzuneh
 Ab dem 26. September 2016 müssen alle Arbeitsbereiche bei der Erstellung mit einem Azure-Abonnement verknüpft werden. Vor diesem Datum erstellte Arbeitsbereiche müssen bei der Anmeldung mit einem Abonnement verknüpft werden. Wenn Sie den Arbeitsbereich über das Azure-Portal erstellen oder den Arbeitsbereich mit einem Azure-Abonnement verknüpfen, wird Azure Active Directory als Organisationskonto verknüpft.
 
 ### <a name="to-link-a-workspace-to-an-azure-subscription-in-the-azure-portal"></a>So verknüpfen Sie einen Arbeitsbereich mit einem Azure-Abonnement im Azure-Portal
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
-2. Suchen Sie nach **Log Analytics**, und wählen Sie diese Option aus.
-3. Ihre Liste mit den vorhandenen Arbeitsbereichen wird angezeigt. Klicken Sie auf **Hinzufügen**.  
-   ![Liste der Arbeitsbereiche](./media/log-analytics-manage-access/manage-access-link-azure01.png)
-4. Klicken Sie unter **OMS Workspace** (OMS-Arbeitsbereich) auf **Or link existing** (Oder vorhandenen einfügen).  
-   ![Vorhandene verknüpfen](./media/log-analytics-manage-access/manage-access-link-azure02.png)
-5. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**.  
-   ![configure required settings](./media/log-analytics-manage-access/manage-access-link-azure03.png)
-6. Daraufhin wird eine Liste mit Arbeitsbereichen angezeigt, die noch nicht mit Ihrem Azure-Konto verknüpft sind. Wählen Sie einen Arbeitsbereich aus.  
-   ![Auswählen von Arbeitsbereichen](./media/log-analytics-manage-access/manage-access-link-azure04.png)
-7. Bei Bedarf können Sie die Werte für die folgenden Elemente ändern:
+1. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.  
+
+2. Klicken Sie im Bereich mit den Log Analytics-Abonnements auf **Hinzufügen**.  
+
+    ![Liste der Arbeitsbereiche](./media/log-analytics-manage-access/workspace-link-existing-01.png)
+
+3. Klicken Sie im Bereich **Log Analytics-Arbeitsbereich** auf **Vorhandene verknüpfen**.  
+
+4. Klicken Sie auf **Erforderliche Einstellungen konfigurieren**.  
+
+5. Daraufhin wird eine Liste mit Arbeitsbereichen angezeigt, die noch nicht mit Ihrem Azure-Konto verknüpft sind. Wählen Sie den Arbeitsbereich aus.  
+   
+6. Bei Bedarf können Sie die Werte für die folgenden Elemente ändern:
    * Abonnement
    * Ressourcengruppe
-   * Speicherort
+   * Standort
    * Tarif  
-     ![Ändern von Werten](./media/log-analytics-manage-access/manage-access-link-azure05.png)
-8. Klicken Sie auf **OK**. Der Arbeitsbereich ist jetzt mit Ihrem Azure-Konto verknüpft.
+
+7. Klicken Sie auf **OK**. Der Arbeitsbereich ist jetzt mit Ihrem Azure-Konto verknüpft.
 
 > [!NOTE]
 > Wenn der Arbeitsbereich, den Sie verknüpfen möchten, hier nicht angezeigt wird, hat Ihr Azure-Abonnement keinen Zugriff auf den Arbeitsbereich, den Sie mit dem OMS-Portal erstellt haben.  Unter [Hinzufügen eines Benutzers zu einem vorhandenen Arbeitsbereich](#add-a-user-to-an-existing-workspace) erfahren Sie, wie Sie über das OMS-Portal Zugriff auf dieses Konto gewähren.
@@ -184,6 +188,7 @@ Beim Kauf eines OMS-Abonnements werden die Berechtigungen Ihrem Enterprise Agree
 Gehen Sie wie folgt vor, um sicherzustellen, dass die Verwendung eines Arbeitsbereichs auf Ihre Berechtigungen des OMS-Abonnements angewendet wird:
 
 1. Erstellen Sie Ihren Arbeitsbereich unter einem Azure-Abonnement, das zum Enterprise Agreement mit dem OMS-Abonnement gehört.
+
 2. Wählen Sie für den Arbeitsbereich die Planoption *OMS* aus.
 
 > [!NOTE]
@@ -191,7 +196,7 @@ Gehen Sie wie folgt vor, um sicherzustellen, dass die Verwendung eines Arbeitsbe
 >
 >
 
-Die OMS-Abonnementberechtigungen werden im Azure- oder im OMS-Portal nicht angezeigt. Die Berechtigungen und die Nutzung können im Enterprise Portal angezeigt werden.  
+Die OMS-Abonnementberechtigungen werden im Azure-Portal nicht angezeigt. Die Berechtigungen und die Nutzung können im Enterprise Portal angezeigt werden.  
 
 Wenn Sie das Azure-Abonnement ändern möchten, mit dem Ihr Arbeitsbereich verknüpft ist, können Sie das Azure PowerShell-Cmdlet [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) verwenden.
 
@@ -203,14 +208,12 @@ Wenn Sie über einen monetären Azure-Verpflichtungsbetrag für die Unternehmens
 Zum Ändern des Azure-Abonnements, mit dem der Arbeitsbereich verknüpft ist, können Sie das Azure PowerShell-Cmdlet [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx) verwenden.  
 
 ### <a name="change-a-workspace-to-a-paid-pricing-tier-in-the-azure-portal"></a>Umstellen eines Arbeitsbereichs auf einen kostenpflichtigen Tarif über das Azure-Portal
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
-2. Suchen Sie nach **Log Analytics**, und wählen Sie diese Option aus.
-3. Ihre Liste mit den vorhandenen Arbeitsbereichen wird angezeigt. Wählen Sie einen Arbeitsbereich aus.  
-4. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Tarif**.  
-5. Klicken Sie unter **Tarif** auf einen Tarif und anschließend auf **Auswählen**.  
-    ![Plan auswählen](./media/log-analytics-manage-access/manage-access-change-plan03.png)
-6. Wenn Sie die Ansicht im Azure-Portal aktualisieren, sehen Sie, dass der **Tarif** mit dem ausgewählten Plan aktualisiert wurde.  
-    ![Aktualisierter Tarif](./media/log-analytics-manage-access/manage-access-change-plan04.png)
+1. Wählen Sie im Azure-Portal im Bereich mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
+
+2. Klicken Sie im Bereich des Arbeitsbereichs unter **Allgemein** auf **Tarif**.  
+
+3. Wählen Sie unter **Tarif** einen Tarif aus, und klicken Sie anschließend auf **Auswählen**.  
+    ![Ausgewählter Tarif](./media/log-analytics-manage-access/workspace-pricing-tier-info.png)
 
 > [!NOTE]
 > Falls Ihr Arbeitsbereich mit einem Automation-Konto verknüpft ist und Sie den Tarif *Standalone (Per GB)* (Eigenständig (pro GB)) auswählen möchten, müssen Sie zuvor alle Lösungen vom Typ **Automation & Control** löschen und die Verknüpfung mit dem Automation-Konto aufheben. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Lösungen**, um die Lösungen anzuzeigen und zu löschen. Klicken Sie zum Aufheben der Verknüpfung mit dem Automation-Konto auf dem Blatt **Tarif** auf den Namen des Automatisierungskontos.
@@ -222,32 +225,18 @@ Zum Ändern des Azure-Abonnements, mit dem der Arbeitsbereich verknüpft ist, k�
 Sie müssen über ein Azure-Abonnement verfügen, um den Tarif mithilfe des OMS-Portals zu ändern.
 
 1. Klicken Sie im OMS-Portal auf die Kachel **Einstellungen**.
+
 2. Klicken Sie auf die Registerkarte **Konten****Azure Subscription & Data Plan** (Azure-Abonnement und -Datentarif).
+
 3. Klicken Sie auf den Tarif, den Sie verwenden möchten.
+
 4. Klicken Sie auf **Speichern**.  
-   ![Abonnement und Datentarife](./media/log-analytics-manage-access/subscription-tab.png)
+
+    ![Abonnement und Datentarife](./media/log-analytics-manage-access/subscription-tab.png)
 
 Der neue Datentarif wird oben auf der Webseite im Menüband des OMS-Portals angezeigt.
 
 ![OMS-Menüband](./media/log-analytics-manage-access/data-plan-changed.png)
-
-
-## <a name="change-how-long-log-analytics-stores-data"></a>Ändern des Speicherzeitraums für Daten in Log Analytics
-
-Im Tarif „Free“ werden in Log Analytics die Daten der letzten sieben Tage verfügbar gemacht.
-Im Tarif „Standard“ werden in Log Analytics die Daten der letzten 30 Tage verfügbar gemacht.
-Im Tarif „Premium“ werden in Log Analytics die Daten der letzten 365 Tage verfügbar gemacht.
-In den Tarifen „Standalone“ und „OMS“ werden in Log Analytics standardmäßig die Daten der letzten 31 Tage verfügbar gemacht.
-
-Bei Verwendung der Tarife „Standalone“ und „OMS“ können Sie die Daten von bis zu zwei Jahren (730 Tage) aufbewahren. Wenn Daten länger als die standardmäßig verfügbaren 31 Tage gespeichert werden, wird eine Gebühr für die Aufbewahrung der Daten berechnet. Weitere Informationen zu Preisen finden Sie unter [Überschreitungsgebühren](https://azure.microsoft.com/pricing/details/log-analytics/).
-
-Informationen zum Ändern der Dauer der Datenaufbewahrung finden Sie unter [Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics](log-analytics-manage-cost-storage.md).
-
-
-## <a name="delete-a-log-analytics-workspace"></a>Löschen eines Log Analytics-Arbeitsbereichs
-Wenn Sie einen Log Analytics-Arbeitsbereich löschen, werden alle damit zusammenhängenden Daten innerhalb von 30 Tagen aus dem Log Analytics-Dienst gelöscht.
-
-Wenn Sie Administrator sind und mehrere Benutzer mit dem Arbeitsbereich verknüpft sind, wird die Zuordnung zwischen den Benutzern und dem Arbeitsbereich aufgehoben. Wenn die Benutzer anderen Arbeitsbereichen zugeordnet sind, können sie Log Analytics mit diesen Arbeitsbereichen weiter nutzen. Wenn sie jedoch keinen anderen Arbeitsbereichen zugeordnet sind, müssen sie einen Arbeitsbereich erstellen, um den Dienst verwenden zu können. Informationen zum Löschen eines Arbeitsbereichs finden Sie unter [Löschen eines Log Analytics-Arbeitsbereichs mit dem Azure-Portal](log-analytics-manage-del-workspace.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Sammeln von Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Sammeln von Daten von Computern in Ihrer Umgebung mit Log Analytics](log-analytics-concept-hybrid.md).

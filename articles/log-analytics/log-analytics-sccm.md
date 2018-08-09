@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 6bb59e4b63933500bc8571dca2422eec6c3456ee
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 611f3e70425cd6c80f8a976606dc6cd592571c6e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129756"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503467"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics
 Sie können Ihre System Center Configuration Manager-Umgebung mit Azure Log Analytics verbinden, um die Daten der Gerätesammlung zu synchronisieren und auf diese Sammlungen in Log Analytics und Azure Automation zu verweisen.  
@@ -65,7 +65,7 @@ Zum Hinzufügen einer OMS-Verbindung muss die Configuration Manager-Umgebung ein
 1. Wählen Sie im Arbeitsbereich **Verwaltung** des Configuration Manager **OMS-Connector**. Daraufhin wird der **Assistent zum Hinzufügen einer OMS-Verbindung** geöffnet. Klicken Sie auf **Weiter**.
 2. Auf dem Bildschirm **Allgemein** vergewissern Sie sich, dass Sie die folgenden Aktionen durchgeführt haben und dass Sie für jedes Element Detailinformationen haben, und wählen Sie anschließend **Weiter** aus.
 
-   1. Im Azure-Portal haben Sie Configuration Manager als Webanwendung und/oder Web API-App registriert, und Sie haben die [Client-ID von der Registrierung](../active-directory/active-directory-integrating-applications.md) vorliegen.
+   1. Im Azure-Portal haben Sie Configuration Manager als Webanwendung und/oder Web API-App registriert, und Sie haben die [Client-ID von der Registrierung](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) vorliegen.
    2. Im Azure-Portal haben Sie einen geheimen App-Schlüssel für die registrierte Anwendung in Azure Active Directory erstellt.  
    3. Im Azure-Portal haben Sie der registrierten Web-App eine Zugriffsberechtigung für OMS erteilt.  
       ![Verbindung mit der Seite „Allgemein“ des OMS-Assistenten](./media/log-analytics-sccm/sccm-console-general01.png)

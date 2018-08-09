@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130369"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440150"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Weiterverteilen von Azure App Service in Azure Stack in Fehlerdomänen
 
@@ -48,12 +48,12 @@ Für die Neuverteilung der für den App Service-Ressourcenanbieter bereitgestell
 Führen Sie die folgenden Schritte aus, um die Skalierungsgruppen horizontal hochzuskalieren:
 
 1. Melden Sie sich beim Azure Stack-Administratorportal an.
-2. Wählen Sie **Weitere Dienste**.
-3. Wählen Sie unter „COMPUTE“ die Option **Skalierungsgruppen für virtuelle Computer** aus. Vorhandene Skalierungsgruppen, die im Rahmen der App Service-Bereitstellung bereitgestellt wurden, werden unter Angabe der Anzahl der Instanzen aufgeführt. Die folgende Bildschirmaufnahme zeigt ein Beispiel für Skalierungsgruppen.
+1. Wählen Sie **Weitere Dienste**.
+1. Wählen Sie unter „COMPUTE“ die Option **Skalierungsgruppen für virtuelle Computer** aus. Vorhandene Skalierungsgruppen, die im Rahmen der App Service-Bereitstellung bereitgestellt wurden, werden unter Angabe der Anzahl der Instanzen aufgeführt. Die folgende Bildschirmaufnahme zeigt ein Beispiel für Skalierungsgruppen.
 
       ![Auf der Benutzeroberfläche „VM-Skalierungsgruppen“ aufgeführte Azure App Service-Skalierungsgruppen][1]
 
-4. Skalieren Sie die einzelnen Gruppen horizontal hoch. Wenn Sie beispielsweise über drei Instanzen in der Skalierungsgruppe verfügen, müssen Sie diese auf 6 horizontal hochskalieren, damit die drei neuen Instanzen für die Fehlerdomänen bereitgestellt werden. Im folgenden PowerShell-Beispiel wird veranschaulicht, wie die Skalierungsgruppe horizontal hochskaliert wird.
+1. Skalieren Sie die einzelnen Gruppen horizontal hoch. Wenn Sie beispielsweise über drei Instanzen in der Skalierungsgruppe verfügen, müssen Sie diese auf 6 horizontal hochskalieren, damit die drei neuen Instanzen für die Fehlerdomänen bereitgestellt werden. Im folgenden PowerShell-Beispiel wird veranschaulicht, wie die Skalierungsgruppe horizontal hochskaliert wird.
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
@@ -69,13 +69,13 @@ Führen Sie die folgenden Schritte aus, um die Skalierungsgruppen horizontal hoc
    >[!NOTE]
    >Es kann je nach Typ der Rolle und der Anzahl von Instanzen mehrere Stunden dauern, bis dieser Schritt abgeschlossen ist.
 
-5. Überwachen Sie unter **App Service-Verwaltungsrollen** den Status der neuen Rolleninstanzen. Wählen Sie zur Überprüfung des Status einer Rolleninstanz den Rollentyp in der Liste aus
+1. Überwachen Sie unter **App Service-Verwaltungsrollen** den Status der neuen Rolleninstanzen. Wählen Sie zur Überprüfung des Status einer Rolleninstanz den Rollentyp in der Liste aus
 
     ![Azure App Service in Azure Stack-Rollen][2]
 
-6. Wenn der Status der neuen Rolleninstanzen **Bereit** lautet, wechseln Sie wieder zur **VM-Skalierungsgruppe** und **löschen** Sie die alten Rolleninstanzen.
+1. Wenn der Status der neuen Rolleninstanzen **Bereit** lautet, wechseln Sie wieder zur **VM-Skalierungsgruppe** und **löschen** Sie die alten Rolleninstanzen.
 
-7. Wiederholen Sie diese Schritte für **jede** VM-Skalierungsgruppe.
+1. Wiederholen Sie diese Schritte für **jede** VM-Skalierungsgruppe.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

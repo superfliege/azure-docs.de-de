@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 08/01/2018
 ms.author: sethm
-ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 30df312e349bd6f6ebd1f38141075382be2522a2
+ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29874651"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39397983"
 ---
 # <a name="managed-service-identity-preview"></a>Verwaltete Dienstidentität (Vorschau)
 
@@ -63,7 +63,7 @@ Die verwaltete Dienstidentität der Webanwendung verfügt jetzt über Zugriff au
 
 ### <a name="run-the-app"></a>Ausführen der App
 
-Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können auch den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity) verwenden.
+Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet) verwenden.  
 
 Die Seite „Default.aspx“ ist Ihre Zielseite. Sie finden den Code in der Datei „Default.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Service Bus hergestellt wird, um Nachrichten zu senden oder zu empfangen.
 
@@ -74,8 +74,12 @@ Nachdem Sie diese Änderungen vorgenommen haben, veröffentlichen Sie die Anwend
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
 Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace und der von Ihnen erstellten Entität ein, und klicken Sie entweder auf **Senden** oder **Empfangen**.
- 
-Beachten Sie, dass die verwaltete Dienstidentität nur innerhalb der Azure-Umgebung und nur in der App Service-Bereitstellung funktioniert, in der Sie sie konfiguriert haben. Beachten Sie auch, dass verwaltete Dienstidentitäten derzeit noch nicht mit App Service-Bereitstellungsslots funktionieren.
+
+
+> [!NOTE]
+> - Die verwaltete Dienstidentität kann nur in der Azure-Umgebung, in App Services, auf virtuellen Azure-Computern und in Skalierungsgruppen verwendet werden. Für .NET-Anwendungen bietet die vom Service Bus-NuGet-Paket verwendete Bibliothek „Microsoft.Azure.Services.AppAuthentication“ eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der Azure CLI 2.0 oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie unter [Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET](../key-vault/service-to-service-authentication.md).  
+> 
+> - Verwaltete Dienstidentitäten funktionieren derzeit nicht mit App Service-Bereitstellungsslots.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

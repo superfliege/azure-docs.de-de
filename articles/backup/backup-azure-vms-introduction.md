@@ -7,17 +7,21 @@ manager: carmonm
 keywords: Sichern virtueller Computer, Sichern von VMs
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/23/2018
+ms.date: 7/31/2018
 ms.author: markgal
-ms.openlocfilehash: 92122e7dc62e0f402bcddff099984e6e2c605fae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 438c1130486fe1ba2ee484ae01655a2fb115de27
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606085"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390754"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
-Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-arm-vms-prepare.md) haben, ist die Planung der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-arm-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
+Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-arm-vms-prepare.md) haben, ist die Planung der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-arm-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). 
+
+> [!NOTE]
+> Dieser Artikel ist auf die Verwendung mit verwalteten und nicht verwalteten Datenträgern ausgelegt. Wenn Sie nicht verwaltete Datenträger verwenden, stehen Ihnen Empfehlungen für Speicherkonten zur Verfügung. Wenn Sie [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) verwenden, müssen Sie keine Probleme bei der Leistung oder der Ressourcenauslastung befürchten. Azure optimiert die Speicherauslastung für Sie.
+>
 
 ## <a name="how-does-azure-back-up-virtual-machines"></a>Wie werden virtuelle Computer in Azure gesichert?
 Wenn der Azure Backup-Dienst einen Sicherungsauftrag zur geplanten Zeit initiiert, löst er die Sicherungserweiterung zum Erstellen einer Momentaufnahme aus. Der Azure Backup-Dienst verwendet unter Windows die Erweiterung _VMSnapshot_ und unter Linux die Erweiterung _VMSnapshotLinux_. Die Erweiterung wird während der ersten VM-Sicherung installiert. Um die Erweiterung zu installieren, muss die VM ausgeführt werden. Wenn die VM nicht ausgeführt wird, erstellt der Backup-Dienst eine Momentaufnahme des zugrunde liegenden Speichers (da keine Schreibvorgänge der Anwendung erfolgen, während die VM beendet ist).
@@ -32,8 +36,7 @@ Wenn die Datenübertragung abgeschlossen ist, wird die Momentaufnahme entfernt u
 
 > [!NOTE]
 > 1. Während des Sicherungsvorgangs berücksichtigt Azure Backup nicht den temporären Datenträger, der an den virtuellen Computer angefügt ist. Weitere Informationen finden Sie im Blogbeitrag zur [temporären Speicherung](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/).
-> 2. Azure Backup erstellt eine Momentaufnahme auf Speicherebene und überträgt diese Momentaufnahme in den Tresor – ändern Sie die Speicherkontoschlüssel erst nach Abschluss des Sicherungsauftrags.
-> 3. Für Premium-VMs kopiert Azure Backup die Momentaufnahme in das Speicherkonto. Dadurch wird sichergestellt, dass der Backup-Dienst ausreichend IOPS für die Übertragung von Daten in den Tresor nutzt. Diese zusätzliche Kopie des Speichers wird gemäß der zugeteilten VM-Größe in Rechnung gestellt. 
+> 2. Azure Backup erstellt eine Momentaufnahme auf Speicherebene und überträgt diese Momentaufnahme in den Tresor. Ändern Sie die Speicherkontoschlüssel erst nach Abschluss des Sicherungsauftrags.
 >
 
 ### <a name="data-consistency"></a>Datenkonsistenz
@@ -64,22 +67,14 @@ In dieser Tabelle werden die Konsistenztypen aufgeführt und die Umstände erlä
 ## <a name="performance-and-resource-utilization"></a>Leistung und Ressourcenverwendung
 Genau wie bei lokal bereitgestellter Sicherungssoftware muss auch bei der Planung der Sicherung von virtuellen Computern in Azure der Kapazitäts- und Ressourcenbedarf berücksichtigt werden. Die [Azure Storage-Begrenzungen](../azure-subscription-service-limits.md#storage-limits) definieren, wie die VM-Bereitstellungen strukturiert werden, um maximale Leistung bei minimaler Beeinträchtigung der ausgeführten Workloads zu erzielen.
 
-Achten Sie bei der Planung der Sicherungsleistung insbesondere auf die folgenden Grenzwerte von Azure Storage:
-
-* Max. Ausgang pro Speicherkonto
-* Gesamtanforderungsrate pro Speicherkonto
-
-### <a name="storage-account-limits"></a>Speicherkontobegrenzungen
-Beim Kopieren von Sicherungsdaten aus einem Speicherkonto werden diese auf die Metriken des Speicherkontos für IOPS (Input/Output Operations Per Second, Eingabe-/Ausgabevorgänge pro Sekunde) und Ausgang (oder Durchsatz) angerechnet. Zur gleichen Zeit benötigen die virtuellen Computer ebenfalls IOPS und Durchsatz. Ziel ist, dafür zu sorgen, dass der Datenverkehr der Sicherung und virtuellen Computer die Speicherkontogrenzwerte nicht überschreitet.
-
 ### <a name="number-of-disks"></a>Anzahl der Datenträger
 Bei der Sicherung wird versucht, einen Sicherungsauftrag so schnell wie möglich abzuschließen. Dabei werden so viele Ressourcen wie möglich genutzt. Sämtliche E/A-Vorgänge sind jedoch begrenzt durch den *Zieldurchsatz pro Einzelblob*, der auf 60 MB pro Sekunde beschränkt ist. Zur Maximierung der Geschwindigkeit wird versucht, die einzelnen VM-Datenträger *parallel*zu sichern. Bei einem virtuellen Computer mit vier Datenträgern versucht der Dienst, alle vier Datenträger parallel zu sichern. Die **Anzahl von Datenträgern**, die gesichert werden, ist der entscheidende Faktor beim Bestimmen des Sicherungsdatenverkehr eines Speicherkontos.
 
 ### <a name="backup-schedule"></a>Sicherungszeitplan
-Ein weiterer Faktor, der sich auf die Leistung auswirkt, ist der **Sicherungszeitplan**. Wenn Sie die Richtlinien so konfigurieren, dass alle virtuellen Computer gleichzeitig gesichert werden, haben Sie einen Datenverkehrsstau geplant. Bei der Sicherung wird versucht, alle Datenträger parallel zu sichern. Um den Sicherungsdatenverkehr eines Speicherkontos zu reduzieren, sichern Sie verschiedene VM zu unterschiedlichen Tageszeiten ohne Überschneidungen.
+Ein weiterer Faktor, der sich auf die Leistung auswirkt, ist der **Sicherungszeitplan**. Wenn Sie die Richtlinien so konfigurieren, dass alle virtuellen Computer gleichzeitig gesichert werden, haben Sie einen Datenverkehrsstau geplant. Bei der Sicherung wird versucht, alle Datenträger parallel zu sichern. Sichern Sie verschiedene virtuelle Computer zu unterschiedlichen Tageszeiten ohne Überschneidungen, um den Sicherungsdatenverkehr zu reduzieren.
 
 ## <a name="capacity-planning"></a>Kapazitätsplanung
-Zusammenfassend folgt aus diesen Faktoren, dass die Speicherkontoverwendung der Planung bedarf. Laden Sie das [Excel-Arbeitsblatt zur Kapazitätsplanung für VM-Sicherungen](https://gallery.technet.microsoft.com/Azure-Backup-Storage-a46d7e33) herunter, um die Auswirkungen Ihrer Datenträger- und Sicherungszeitplanauswahl zu überprüfen.
+Laden Sie das [Excel-Arbeitsblatt zur Kapazitätsplanung für VM-Sicherungen](https://gallery.technet.microsoft.com/Azure-Backup-Storage-a46d7e33) herunter, um die Auswirkungen Ihrer Datenträger- und Sicherungszeitplanauswahl zu überprüfen.
 
 ### <a name="backup-throughput"></a>Sicherungsdurchsatz
 Für jeden zu sichernden Datenträger liest Azure Backup die Blöcke auf dem Datenträger und speichert nur die geänderten Daten (inkrementelle Sicherung). Die folgende Tabelle zeigt die durchschnittlichen Durchsatzwerte eines Backup-Diensts. Anhand der folgenden Daten können Sie die Zeit einschätzen, die zur Sicherung eines Datenträgers mit einer bestimmten Größe benötigt wird.
@@ -94,28 +89,34 @@ Obgleich die Mehrheit der Sicherungszeit für das Lesen und Kopieren von Daten a
 
 * Die Zeit, die zum [Installieren oder Aktualisieren der Sicherungserweiterung](backup-azure-arm-vms.md)benötigt wird.
 * Zeit für Momentaufnahme: Die zum Auslösen einer Momentaufnahme erforderliche Zeit. Momentaufnahmen werden kurz vor der geplanten Sicherungszeit ausgelöst.
-* Wartezeit in der Warteschlange. Da der Backup-Dienst Sicherungen von mehreren Kunden verarbeitet, werden die Sicherungsdaten der Momentaufnahme möglicherweise nicht sofort in die Sicherung oder in den Recovery Services-Tresor kopiert. Zu Spitzenzeiten kann die Wartezeit aufgrund der Anzahl zu verarbeitender Sicherungen bis zu acht Stunden betragen. Die Gesamtdauer der VM-Sicherung wird jedoch bei täglichen Sicherungsrichtlinien weniger als 24 Stunden betragen. <br>
-**Dies gilt nur für inkrementelle Sicherungen und nicht für die erste Sicherung. Die erste Sicherung nimmt proportional mehr Zeit in Anspruch und kann mehr als 24 Stunden dauern. Das hängt von der Größe der Daten und dem Sicherungszeitpunkt ab.**
+* Wartezeit in der Warteschlange. Da der Sicherungsdienst Aufträge von mehreren Kunden gleichzeitig ausführt, können Momentaufnahmedaten möglicherweise nicht sofort in den Recovery Services-Tresor kopiert werden. Zu Spitzenladezeiten kann es bis zu acht Stunden dauern, bis die Sicherungen verarbeitet werden. Die Gesamtdauer der VM-Sicherung wird jedoch bei täglichen Sicherungsrichtlinien weniger als 24 Stunden betragen.
+Die Gesamtdauer der Sicherung von weniger als 24 Stunden gilt für inkrementelle Sicherungen, aber möglicherweise nicht für die erste Sicherung. Die erste Sicherung nimmt proportional mehr Zeit in Anspruch und kann mehr als 24 Stunden dauern. Das hängt von der Größe der Daten und vom Sicherungszeitpunkt ab.
 * Die Datenübertragungszeit ist die Zeit, die der Sicherungsdienst zum Berechnen von inkrementellen Änderungen aus der vorherigen Sicherung und der Übertragung dieser Änderungen in den Tresorspeicher benötigt.
 
-### <a name="why-am-i-observing-longer12-hours-backup-time"></a>Warum stelle ich eine längere Sicherungsdauer fest (> 12 Stunden)?
-Die Sicherung besteht aus zwei Phasen: Erstellen von Momentaufnahmen und Übertragen der Momentaufnahmen in den Tresor. Der Backup-Dienst ist für Speicher optimiert. Wenn die Daten einer Momentaufnahme in den Tresor übertragen werden, überträgt der Dienst nur inkrementelle Änderungen aus den vorherigen Momentaufnahmen.  Um inkrementelle Änderungen zu bestimmen, berechnet der Dienst die Prüfsumme der Blöcke. Wenn ein Block geändert wird, wird der Block als Block identifiziert, der in den Tresor gesendet werden soll. Der Dienst untersucht jeden identifizierten Block noch näher und sucht nach Möglichkeiten, die Menge der zu übertragenden Daten zu verringern. Nach dem Evaluieren aller geänderten Blöcke fügt der Dienst die Änderungen wieder zusammen und sendet sie an den Tresor. Bei einigen Legacyanwendungen sind kleine, fragmentierte Schreibvorgänge nicht optimal für die Speicherung. Wenn die Momentaufnahme viele kleine, fragmentierte Schreibvorgänge enthält, verbringt der Dienst zusätzliche Zeit mit dem Verarbeiten der Daten, die von den Anwendungen geschrieben wurden. Der von Azure empfohlene Anwendungsschreibblock für Anwendungen, die innerhalb des virtuellen Computers ausgeführt werden, ist mindestens 8 KB groß. Wenn Ihre Anwendung einen Block von weniger als 8 KB verwendet, wird die Sicherungsleistung beeinflusst. Hilfe bei der Optimierung Ihrer Anwendung zur Verbesserung der Sicherungsleistung finden Sie unter [Anwendungen für die optimale Leistung mit Azure Storage optimieren](../virtual-machines/windows/premium-storage-performance.md). Obwohl der Artikel über die Sicherungsleistung Storage Premium-Beispiele verwendet, kann dieser Leitfaden auch für Standard-Datenträger angewendet werden.
+### <a name="why-are-backup-times-longer-than-12-hours"></a>Warum beträgt die Sicherungszeit mehr als 12 Stunden?
+
+Die Sicherung besteht aus zwei Phasen: Erstellen von Momentaufnahmen und Übertragen der Momentaufnahmen in den Tresor. Der Backup-Dienst ist für Speicher optimiert. Wenn die Daten einer Momentaufnahme in den Tresor übertragen werden, überträgt der Dienst nur inkrementelle Änderungen aus den vorherigen Momentaufnahmen.  Um inkrementelle Änderungen zu bestimmen, berechnet der Dienst die Prüfsumme der Blöcke. Wenn ein Block geändert wird, wird der Block als Block identifiziert, der in den Tresor gesendet werden soll. Der Dienst untersucht jeden identifizierten Block noch näher und sucht nach Möglichkeiten, die Menge der zu übertragenden Daten zu verringern. Nach dem Evaluieren aller geänderten Blöcke fügt der Dienst die Änderungen wieder zusammen und sendet sie an den Tresor. Bei einigen Legacyanwendungen sind kleine, fragmentierte Schreibvorgänge nicht optimal für die Speicherung. Wenn die Momentaufnahme viele kleine, fragmentierte Schreibvorgänge enthält, verbringt der Dienst zusätzliche Zeit mit dem Verarbeiten der Daten, die von den Anwendungen geschrieben wurden. Bei Anwendungen, die im virtuellen Computer ausgeführt werden, beträgt der von Azure empfohlene Anwendungsschreibblock mindestens 8 KB. Wenn Ihre Anwendung einen Block von weniger als 8 KB verwendet, wird die Sicherungsleistung beeinflusst. Hilfe bei der Optimierung Ihrer Anwendung zur Verbesserung der Sicherungsleistung finden Sie unter [Anwendungen für die optimale Leistung mit Azure Storage optimieren](../virtual-machines/windows/premium-storage-performance.md). Obwohl der Artikel über die Sicherungsleistung Storage Premium-Beispiele verwendet, kann dieser Leitfaden auch für Standard-Datenträger angewendet werden.
 
 ## <a name="total-restore-time"></a>Gesamtzeit der Wiederherstellung
-Ein Wiederherstellungsvorgang umfasst zwei zentrale Teilvorgänge: das Kopieren von Daten aus dem Tresor in das ausgewählte Kundenspeicherkonto und das Erstellen des virtuellen Computers. Das Kopieren von Daten aus dem Tresor hängt vom internen Speicherort von Sicherungen in Azure sowie vom Speicherort des Kundenspeicherkontos ab. Die Dauer des Datenkopiervorgangs hängt von folgenden Faktoren ab:
+
+Ein Wiederherstellungsvorgang umfasst zwei zentrale Vorgänge: das Kopieren von Daten aus dem Tresor in das ausgewählte Kundenspeicherkonto und das Erstellen des virtuellen Computers. Die erforderliche Zeit zum Kopieren von Daten aus dem Tresor hängt vom internen Speicherort der Sicherungen in Azure sowie vom Speicherort des Kundenspeicherkontos ab. Die Dauer des Datenkopiervorgangs hängt von folgenden Faktoren ab:
 * Wartezeit in der Warteschlange: Da der Dienst Wiederherstellungsaufträge von mehreren Kunden gleichzeitig verarbeitet, werden Wiederherstellungsanforderungen in eine Warteschlange eingereiht.
 * Zeit für das Kopieren von Daten: Daten werden zuerst aus dem Tresor in das Speicherkonto des Kunden kopiert. Die Wiederherstellungsdauer hängt vom IOPS-Wert und Durchsatz ab, den der Azure Backup-Dienst für das Speicherkonto des ausgewählten Kunden erhält. Wählen Sie ein Speicherkonto aus, das nicht mit anderen Schreib- und Lesevorgängen anderer Anwendungen geladen ist, um die Zeit für das Kopieren zu verringern.
 
 ## <a name="best-practices"></a>Bewährte Methoden
-Berücksichtigen Sie beim Konfigurieren von Sicherungen für virtuelle Computer die folgenden bewährten Methoden:
+Berücksichtigen Sie beim Konfigurieren von Sicherungen für virtuelle Computer die folgenden bewährten Methoden für nicht verwaltete Datenträger:
+
+> [!Note]
+> Die folgenden Methoden, die das Ändern oder Verwalten von Speicherkonten empfehlen, gelten nur für VMs mit nicht verwalteten Datenträgern. Wenn Sie verwaltete Datenträger verwenden, übernimmt Azure alle Verwaltungsaktivitäten für den Speicher.
+> 
 
 * Planen Sie niemals die gleichzeitige Sicherung von mehr als 10 klassischen virtuellen Computern aus dem gleichen Clouddienst. Staffeln Sie die Sicherungszeitpläne mit einem Versatz von jeweils einer Stunde, wenn Sie mehrere VMs des gleichen Clouddiensts sichern möchten.
-* Planen Sie keine gleichzeitige Sicherung von mehr als 40 virtuellen Computern.
+* Planen Sie keine gleichzeitige Sicherung von mehr als 100 virtuellen Computern in einem einzigen Tresor. 
 * Planen Sie VM-Sicherungen für Nebenzeiten ein. Auf diese Weise nutzt der Backup-Dienst den IOPS-Wert zum Übertragen von Daten aus dem Speicherkonto des Kunden in den Tresor.
 * Sorgen Sie dafür, dass eine Richtlinie für virtuelle Computer angewendet wird, die auf verschiedene Speicherkonten verteilt sind. Mit einem Sicherungszeitplan sollten insgesamt maximal 20 Datenträger eines einzelnen Speicherkontos geschützt werden. Wenn ein Speicherkonto mehr als 20 Datenträger enthält, verteilen Sie die entsprechenden virtuellen Computer auf mehrere Richtlinien, damit in der Übertragungsphase der Sicherung die erforderlichen IOPS zur Verfügung stehen.
 * Stellen Sie einen virtuellen Computer unter Storage Premium nicht unter dem gleichen Speicherkonto wieder her. Wenn der Wiederherstellungsvorgang zur gleichen Zeit stattfindet wie der Sicherungsvorgang, verringern sich dadurch die für die Sicherung verfügbaren IOPS.
 * Für die Sicherung von Premium-VMs im VM-Sicherungsstapel V1 sollten nur 50 % des gesamten Speicherplatzes des Speicherkontos zugeordnet werden, sodass der Azure Backup-Dienst die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort im Speicherkonto in den Tresor übertragen kann.
-* Stellen Sie sicher, dass die für die Sicherung aktivierten virtuellen Linux-Computer die Python-Version 2.7 enthalten.
+* Stellen Sie sicher, dass auf allen für die Sicherung aktivierten virtuellen Linux-Computern die Python-Version 2.7 oder höher installiert ist.
 
 ## <a name="data-encryption"></a>Datenverschlüsselung
 Azure Backup verschlüsselt die Daten während des Sicherungsvorgangs nicht. Sie können jedoch die Daten auf dem virtuellen Computer verschlüsseln und dann die geschützten Daten nahtlos sichern (erfahren Sie mehr über das [Sichern verschlüsselter Daten](backup-azure-vms-encryption.md)).
@@ -125,14 +126,14 @@ Für virtuelle Azure-Computer, die über Azure Backup gesichert werden, gelten d
 
 Die Kosten der Sicherung virtueller Computer basieren nicht auf der maximal unterstützten Größe für jeden an den virtuellen Computer angefügten Datenträger. Die Kosten basieren auf der tatsächlichen Menge der Daten, die auf dem Datenträger gespeichert sind. Gleichermaßen basiert die Abrechnung der Sicherungsspeicherung auf der Menge der in Azure Backup gespeicherten Daten, d.h. auf der Summe der tatsächlichen Daten an jedem Wiederherstellungspunkt.
 
-Beispiel: virtueller Computer mit A2-Standardgröße und zwei zusätzlichen Datenträgern mit einer maximalen Größe von jeweils 1 TB. In der folgenden Tabelle sind die auf jedem Datenträger tatsächlich gespeicherten Daten aufgeführt:
+Beispiel: virtueller Computer mit A2-Standardgröße und zwei zusätzlichen Datenträgern mit einer maximalen Größe von jeweils 4 TB. In der folgenden Tabelle sind die auf jedem Datenträger tatsächlich gespeicherten Daten aufgeführt:
 
 | Datenträgertyp | Max. Größe | Tatsächliche Daten |
 | --------- | -------- | ----------- |
-| Betriebssystem-Datenträger |1023 GB |17 GB |
+| Betriebssystem-Datenträger |4095 GB |17 GB |
 | Lokaler Datenträger / temporärer Datenträger |135 GB |5 GB (bei der Sicherung nicht enthalten) |
-| Datenträger 1 |1023 GB |30 GB |
-| Datenträger 2 |1023 GB |0 GB |
+| Datenträger 1 |4095 GB |30 GB |
+| Datenträger 2 |4095 GB |0 GB |
 
 Die tatsächliche Größe des virtuellen Computers in diesem Fall ist 17GB + 30GB + 0GB = 47GB. Diese Größe der geschützten Instanz (47 GB) wird zur Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
 

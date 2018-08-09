@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: d9f4dc0883ced599dd13d0c5d52ff865e03b73ed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 645e1eaedf3832b384a174d9f9ede5ea835047cd
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332910"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502966"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Einbinden eines virtuellen Ubuntu-Computers in Azure in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Ubuntu Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.

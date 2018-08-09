@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 11edcfe1075d2afc6c62db5e125d2d150e8c7bfc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b0aaa27164c84a06c6fad92d5036a00ca5a319f8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227855"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Tutorial: Azure Active Directory-Integration mit Tableau Online
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Tableau Online aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>Hinzufügen von Tableau Online aus dem Katalog
 Zum Konfigurieren der Integration von Tableau Online in Azure AD müssen Sie Tableau Online aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Tableau Online in Azure AD müssen Sie Tab
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld den Suchbegriff **Tableau Online**ein.
+1. Geben Sie im Suchfeld den Suchbegriff **Tableau Online**ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/tutorial_tableauonline_search.png)
 
-5. Wählen Sie im Ergebnisbereich **Tableau Online** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **Tableau Online** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/tutorial_tableauonline_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in Tableau Online den Wert für **Benutzername** in Azure AD als Wert
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Tableau Online müssen Sie die folgenden Schritte ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Tableau Online-Testbenutzers](#creating-a-tableau-online-test-user)** , um eine Entsprechung von Britta Simon in Tableau Online zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Tableau Online-Testbenutzers](#creating-a-tableau-online-test-user)** , um eine Entsprechung von Britta Simon in Tableau Online zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,47 +102,47 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Tableau Online** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Tableau Online** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für Tableau Online** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
     
     a. Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://sso.online.tableau.com`
 
     b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_general_400.png)
 
-6. Melden Sie sich in einem anderen Browserfenster in Ihrer Tableau Online-Anwendung als Administrator an. Wechseln Sie zu **Einstellungen** und dann zu **Authentifizierung**.
+1. Melden Sie sich in einem anderen Browserfenster in Ihrer Tableau Online-Anwendung als Administrator an. Wechseln Sie zu **Einstellungen** und dann zu **Authentifizierung**.
    
-    ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
     
-7. Gehen Sie im Abschnitt **Authentifizierungstypen** zum Aktivieren von SAML wie folgt vor. Aktivieren Sie das Kontrollkästchen **Single sign-on with SAML** (Einmaliges Anmelden mit SAML).
+1. Gehen Sie im Abschnitt **Authentifizierungstypen** zum Aktivieren von SAML wie folgt vor. Aktivieren Sie das Kontrollkästchen **Single sign-on with SAML** (Einmaliges Anmelden mit SAML).
    
-    ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_12.png)
 
-8. Scrollen Sie nach unten bis zum Abschnitt **Import metadata file into Tableau Online** (Metadatendatei in Tableau Online importieren).  Klicken Sie auf „Durchsuchen“, und importieren Sie die Metadatendatei, die Sie aus Azure AD heruntergeladen haben. Klicken Sie anschließend auf **Übernehmen**.
+1. Scrollen Sie nach unten bis zum Abschnitt **Import metadata file into Tableau Online** (Metadatendatei in Tableau Online importieren).  Klicken Sie auf „Durchsuchen“, und importieren Sie die Metadatendatei, die Sie aus Azure AD heruntergeladen haben. Klicken Sie anschließend auf **Übernehmen**.
    
-   ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-9. Fügen Sie im Abschnitt **Match assertions** (Assertionen abgleichen) den entsprechenden Identitätsanbieter-Assertionsnamen für **E-Mail-Adresse**, **Vorname** und **Nachname** ein. Gehen Sie wie folgt vor, um diese Informationen aus Azure AD abzurufen: 
+1. Fügen Sie im Abschnitt **Match assertions** (Assertionen abgleichen) den entsprechenden Identitätsanbieter-Assertionsnamen für **E-Mail-Adresse**, **Vorname** und **Nachname** ein. Gehen Sie wie folgt vor, um diese Informationen aus Azure AD abzurufen: 
   
     a. Wechseln Sie im Azure-Portal zur Anwendungsintegrationsseite von **Tableau Online**.
     
     b. Aktivieren Sie im Abschnitt „Attribute“ das Kontrollkästchen **Alle weiteren Benutzerattribute anzeigen und bearbeiten**. 
     
-   ![Configure Single Sign-On](./media/tableauonline-tutorial/attributesection.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/attributesection.png)
       
     c. Kopieren Sie den Namespacewert für die Attribute „givenname“, „email“ und „surname“ mithilfe der folgenden Schritte:
 
@@ -152,7 +152,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     
     e. Kopieren Sie den Wert aus dem Textfeld **Namespace**.
 
-   ![Configure Single Sign-On](./media/tableauonline-tutorial/attributesection2.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/attributesection2.png)
 
     f. Befolgen Sie vorherigen Anweisungen, um die Namespacewerte für „email“ und „surname“ zu kopieren.
 
@@ -161,7 +161,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
      * Vorname: **givenname**
      * Nachname: **surname**
    
-   ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
+   ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_14.png)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -174,15 +174,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/create_aaduser_04.png) 
 
@@ -201,10 +201,10 @@ In diesem Abschnitt erstellen Sie in Tableau Online einen Benutzer namens Britta
 1. Klicken Sie in **Tableau Online** auf **Settings** (Einstellungen) und dann auf den Abschnitt **Authentication** (Authentifizierung). Scrollen Sie nach unten zum Abschnitt **Select Users** (Benutzer auswählen). Klicken Sie auf **Add Users** (Benutzer hinzufügen) und dann auf **Enter Email Addresses** (E-Mail-Adressen eingeben).
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
-2. Wählen Sie **Add users for single sign-on (SSO) authentication**(Benutzer für SSO-Authentifizierung (einmaliges Anmelden) hinzufügen). Fügen Sie im Textfeld **Enter Email Addresses** (E-Mail-Adressen eingeben) den Eintrag britta.simon@contoso.com hinzu.
+1. Wählen Sie **Add users for single sign-on (SSO) authentication**(Benutzer für SSO-Authentifizierung (einmaliges Anmelden) hinzufügen). Fügen Sie im Textfeld **Enter Email Addresses** (E-Mail-Adressen eingeben) den Eintrag britta.simon@contoso.com hinzu.
    
     ![Erstellen eines Azure AD-Testbenutzers](./media/tableauonline-tutorial/tutorial_tableauonline_11.png)
-3. Klicken Sie auf **Create**.
+1. Klicken Sie auf **Create**.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -218,23 +218,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Tableau Online**aus.
+1. Wählen Sie in der Anwendungsliste **Tableau Online**aus.
 
-    ![Configure Single Sign-On](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
+    ![Configure single sign-on](./media/tableauonline-tutorial/tutorial_tableauonline_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

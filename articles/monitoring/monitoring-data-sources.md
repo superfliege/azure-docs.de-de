@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: bwren
-ms.openlocfilehash: 262099bbe45e483efd269445aa8042b30668ebe3
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 48cbfac78b41b47419799584837e094d45757628
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036522"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627456"
 ---
 # <a name="sources-of-monitoring-data-in-azure"></a>Quellen für Überwachungsdaten in Azure
 In diesem Artikel werden die verfügbaren Daten zum Überwachen von Integrität und Leistung Ihrer Azure-Ressourcen und der darauf ausgeführten Anwendungen beschrieben.  Sammeln und Analysieren dieser Daten mit den in [Sammeln von Überwachungsdaten in Azure](monitoring-data-collection.md) beschriebenen Tools
@@ -42,7 +42,7 @@ Sie können das Aktivitätsprotokoll für eine bestimmte Ressource auf deren Sei
 
 
 ### <a name="azure-active-directory-audit-logs"></a>Azure Active Directory-Überwachungsprotokolle
-[Azure Active Directory-Berichterstellung](../active-directory/active-directory-reporting-azure-portal.md) beinhaltet den Verlauf der Anmeldeaktivität und den Überwachungspfad von Änderungen, die innerhalb eines bestimmten Mandanten vorgenommen wurden. Sie können Azure Active Directory-Überwachungsdaten derzeit nicht mit anderen Überwachungsdaten kombinieren, da nur über Azure Active Directory und die [Azure Active Directory-Berichterstellungs-API](../active-directory/active-directory-reporting-api-getting-started-azure-portal.md) darauf zugegriffen werden kann.
+[Azure Active Directory-Berichterstellung](../active-directory/reports-monitoring/overview-reports.md) beinhaltet den Verlauf der Anmeldeaktivität und den Überwachungspfad von Änderungen, die innerhalb eines bestimmten Mandanten vorgenommen wurden. Sie können Azure Active Directory-Überwachungsdaten derzeit nicht mit anderen Überwachungsdaten kombinieren, da nur über Azure Active Directory und die [Azure Active Directory-Berichterstellungs-API](../active-directory/reports-monitoring/concept-reporting-api.md) darauf zugegriffen werden kann.
 
 
 ## <a name="azure-services"></a>Azure-Dienste

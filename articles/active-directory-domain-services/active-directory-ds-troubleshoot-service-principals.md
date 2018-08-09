@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 716be5b7f35ad1d163e99e92ec65dc906743803c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5bc1212cc6e894cd82a60abb42f92893c0bb2d43
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36219195"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579543"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Konfiguration des Dienstprinzipals für verwaltete Domänen
 
@@ -30,7 +30,7 @@ Dieser Artikel hilft Ihnen bei der Problembehandlung und Lösung von Konfigurati
 
 **Warnung:** *Ein für den ordnungsgemäßen Betrieb von Azure AD Domain Services erforderlicher Dienstprinzipal wurde aus Ihrem Azure AD-Verzeichnis gelöscht. Diese Konfiguration wirkt sich darauf aus, wie Microsoft Ihre verwaltete Domäne überwachen, verwalten, patchen und synchronisieren kann.*
 
-[Dienstprinzipale](../active-directory/develop/active-directory-application-objects.md) sind Anwendungen, die Microsoft zum Verwalten und Aktualisieren Ihrer verwalteten Domäne verwendet. Wenn diese gelöscht werden, kann Microsoft Ihre Domäne nicht mehr im Betrieb halten.
+[Dienstprinzipale](../active-directory/develop/app-objects-and-service-principals.md) sind Anwendungen, die Microsoft zum Verwalten und Aktualisieren Ihrer verwalteten Domäne verwendet. Wenn diese gelöscht werden, kann Microsoft Ihre Domäne nicht mehr im Betrieb halten.
 
 
 ## <a name="check-for-missing-service-principals"></a>Überprüfen fehlender Dienstprinzipale

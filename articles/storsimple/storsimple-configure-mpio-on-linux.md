@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: ccd24e1498282cd2b627226df79af22e9647b64d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d1188b40021fbb221bc19af6d4a5397f7ba8f800
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681572"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439871"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung von Hochverfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
@@ -106,21 +106,21 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server 
           TX packets:12 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0
           RX bytes:720 (720.0 b)  TX bytes:720 (720.0 b)
-2. Installieren Sie *iSCSI-initiator-utils* auf Ihrem CentOS-Server. Führen Sie die folgenden Schritte aus, um *iSCSI-initiator-utils*zu installieren.
+1. Installieren Sie *iSCSI-initiator-utils* auf Ihrem CentOS-Server. Führen Sie die folgenden Schritte aus, um *iSCSI-initiator-utils*zu installieren.
    
    1. Melden Sie sich als `root` bei Ihrem CentOS-Host an.
-   2. Installieren Sie *iSCSI-initiator-utils*. Geben Sie Folgendes ein: 
+   1. Installieren Sie *iSCSI-initiator-utils*. Geben Sie Folgendes ein: 
       
        `yum install iscsi-initiator-utils`
-   3. Nachdem *iSCSI-initiator-utils* erfolgreich installiert wurde, starten Sie den iSCSI-Dienst. Geben Sie Folgendes ein: 
+   1. Nachdem *iSCSI-initiator-utils* erfolgreich installiert wurde, starten Sie den iSCSI-Dienst. Geben Sie Folgendes ein: 
       
        `service iscsid start`
       
        Gelegentlich wird `iscsid` nicht gestartet, dann ist die Option `--force` erforderlich.
-   4. Um sicherzustellen, dass Ihr iSCSI-Initiator beim Start aktiviert wird, verwenden Sie den `chkconfig` -Befehl, um den Dienst zu starten.
+   1. Um sicherzustellen, dass Ihr iSCSI-Initiator beim Start aktiviert wird, verwenden Sie den `chkconfig` -Befehl, um den Dienst zu starten.
       
        `chkconfig iscsi on`
-   5. Führen Sie den folgenden Befehl aus, um die ordnungsgemäße Einrichtung zu überprüfen:
+   1. Führen Sie den folgenden Befehl aus, um die ordnungsgemäße Einrichtung zu überprüfen:
       
        `chkconfig --list | grep iscsi`
       
@@ -130,7 +130,7 @@ In diesem Abschnitt werden die Konfigurationsvoraussetzungen für CentOS-Server 
            iscsid  0:off   1:off   2:on3:on4:on5:on6:off
       
        Im obigen Beispiel können Sie sehen, dass Ihre iSCSI-Umgebung zur Startzeit auf den Ausführungsebenen 2, 3, 4 und 5 ausgeführt wird.
-3. Installieren Sie *device-mapper-multipath*. Geben Sie Folgendes ein: 
+1. Installieren Sie *device-mapper-multipath*. Geben Sie Folgendes ein: 
    
     `yum install device-mapper-multipath`
    
@@ -142,7 +142,7 @@ Ihr StorSimple-Gerät muss folgende Anforderungen erfüllen:
 * Es sind mindestens zwei Schnittstellen für iSCSI aktiviert. Um sicherzustellen, dass auf Ihrem StorSimple-Gerät zwei Schnittstellen für iSCSI aktiviert sind, führen Sie die folgenden Schritte im klassischen Azure-Portal für Ihr StorSimple-Gerät aus:
   
   1. Melden Sie sich beim klassischen Portal für Ihr StorSimple-Gerät an.
-  2. Wählen Sie Ihren StorSimple-Manager-Dienst aus, klicken Sie auf **Geräte** , und wählen Sie das gewünschte StorSimple-Gerät aus. Klicken Sie auf **Konfigurieren** , und überprüfen Sie die Einstellungen für die Netzwerkschnittstellen. Nachfolgend sehen Sie einen Screenshot, der zwei für iSCSI aktivierte Netzwerkschnittstellen zeigt. In diesem Beispiel sind DATA 2 und DATA 3 – beides 10-GbE-Schnittstellen – für iSCSI aktiviert.
+  1. Wählen Sie Ihren StorSimple-Manager-Dienst aus, klicken Sie auf **Geräte** , und wählen Sie das gewünschte StorSimple-Gerät aus. Klicken Sie auf **Konfigurieren** , und überprüfen Sie die Einstellungen für die Netzwerkschnittstellen. Nachfolgend sehen Sie einen Screenshot, der zwei für iSCSI aktivierte Netzwerkschnittstellen zeigt. In diesem Beispiel sind DATA 2 und DATA 3 – beides 10-GbE-Schnittstellen – für iSCSI aktiviert.
      
       ![MPIO-Konfiguration für StorSimple-Gerät DATA 2](./media/storsimple-configure-mpio-on-linux/IC761347.png)
      
@@ -151,8 +151,8 @@ Ihr StorSimple-Gerät muss folgende Anforderungen erfüllen:
       Auf der Seite **Konfigurieren**
      
      1. Stellen Sie sicher, dass beide Netzwerkschnittstellen für iSCSI aktiviert sind. Das Feld **iSCSI-aktiviert** sollte auf **Ja** festgelegt sein.
-     2. Stellen Sie sicher, dass die Netzwerkschnittstellen über dieselbe Geschwindigkeit verfügen, für beide entweder 1 GbE oder 10 GbE.
-     3. Notieren Sie sich die IPv4-Adressen der iSCSI-aktivierten Schnittstellen, und bewahren Sie sie für eine spätere Verwendung auf dem Host auf.
+     1. Stellen Sie sicher, dass die Netzwerkschnittstellen über dieselbe Geschwindigkeit verfügen, für beide entweder 1 GbE oder 10 GbE.
+     1. Notieren Sie sich die IPv4-Adressen der iSCSI-aktivierten Schnittstellen, und bewahren Sie sie für eine spätere Verwendung auf dem Host auf.
 * Die iSCSI-Schnittstellen auf Ihrem StorSimple-Gerät sollten vom CentOS-Server aus erreichbar sein.
       Um dies zu überprüfen, müssen Sie die IP-Adressen der iSCSI-aktivierten Netzwerkschnittstellen Ihres StorSimple-Geräts auf dem Hostserver bereitstellen. Die verwendeten Befehle und die entsprechende Ausgabe für DATA2 (10.126.162.25) und DATA3 (10.126.162.26) wird nachfolgend gezeigt:
   
@@ -191,14 +191,14 @@ Geräte mit Unterstützung für Multipfad können automatisch erkannt und konfig
      `mpathconf --enable`
    
     Mit dem obigen Befehl wird die Datei `sample/etc/multipath.conf` erstellt.
-2. Starten Sie den Multipfaddienst. Geben Sie Folgendes ein: 
+1. Starten Sie den Multipfaddienst. Geben Sie Folgendes ein: 
    
     `service multipathd start`
    
     Die folgende Ausgabe wird angezeigt:
    
     `Starting multipathd daemon:`
-3. Aktivieren Sie die automatische Erkennung von Multipfaden. Geben Sie Folgendes ein: 
+1. Aktivieren Sie die automatische Erkennung von Multipfaden. Geben Sie Folgendes ein: 
    
     `mpathconf --find_multipaths y`
    
@@ -216,7 +216,7 @@ Standardmäßig werden in der Datei "multipath.conf" alle Geräte auf die schwar
 1. Bearbeiten Sie die Datei `/etc/mulitpath.conf` . Geben Sie Folgendes ein: 
    
     `vi /etc/multipath.conf`
-2. Suchen Sie in der Datei "multipath.con" nach dem Abschnitt "blacklist_exceptions". Ihr StorSimple-Gerät muss in diesem Abschnitt als Ausnahme für die schwarze Liste aufgeführt sein.  Sie können die Auskommentierung der relevanten Zeilen in dieser Datei aufheben, um die Datei wie nachfolgend gezeigt zu ändern (verwenden Sie nur das für Sie spezifische Gerätemodell):
+1. Suchen Sie in der Datei "multipath.con" nach dem Abschnitt "blacklist_exceptions". Ihr StorSimple-Gerät muss in diesem Abschnitt als Ausnahme für die schwarze Liste aufgeführt sein.  Sie können die Auskommentierung der relevanten Zeilen in dieser Datei aufheben, um die Datei wie nachfolgend gezeigt zu ändern (verwenden Sie nur das für Sie spezifische Gerätemodell):
    
         blacklist_exceptions {
             device {
@@ -235,7 +235,7 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
 1. Bearbeiten Sie die Datei `/etc/multipath.conf` . Geben Sie Folgendes ein: 
    
     `vi /etc/multipath.conf`
-2. Legen Sie im Abschnitt `defaults` den Wert für `path_grouping_policy` auf `multibus` fest. `path_grouping_policy` gibt die Standardrichtlinie für die Pfadgruppierung an, die auf nicht festgelegte Pfade angewendet wird. Der Abschnitt "defaults" sieht aus wie nachstehend gezeigt.
+1. Legen Sie im Abschnitt `defaults` den Wert für `path_grouping_policy` auf `multibus` fest. `path_grouping_policy` gibt die Standardrichtlinie für die Pfadgruppierung an, die auf nicht festgelegte Pfade angewendet wird. Der Abschnitt "defaults" sieht aus wie nachstehend gezeigt.
    
         defaults {
                 user_friendly_names yes
@@ -254,7 +254,7 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
 1. Starten Sie den `multipathd` -Daemon neu. Geben Sie Folgendes ein: 
    
     `service multipathd restart`
-2. Die Ausgabe sieht folgendermaßen aus:
+1. Die Ausgabe sieht folgendermaßen aus:
    
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
@@ -298,9 +298,9 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
 
     Wenn Sie hier nur eine Hostschnittstelle und zwei Pfade sehen, müssen Sie beide Schnittstellen auf dem Host für iSCSI aktivieren. Folgen Sie den [detaillierten Anweisungen in der Linux-Dokumentation](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html).
 
-2. Das StorSimple-Gerät macht ein Volume für den CentOS-Server verfügbar. Weitere Informationen finden Sie unter [Schritt 6: Erstellen eines Volumes](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) über das Azure-Portal auf Ihrem StorSimple-Gerät.
+1. Das StorSimple-Gerät macht ein Volume für den CentOS-Server verfügbar. Weitere Informationen finden Sie unter [Schritt 6: Erstellen eines Volumes](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) über das Azure-Portal auf Ihrem StorSimple-Gerät.
 
-3. Überprüfen Sie die verfügbaren Pfade. Geben Sie Folgendes ein: 
+1. Überprüfen Sie die verfügbaren Pfade. Geben Sie Folgendes ein: 
 
       ```
       multipath –l

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5c6a4ac68694c74f9a7ed99a2d7b4939b84dc33f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39054878"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621530"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -41,7 +41,7 @@ Dieser Abschnitt bietet schnellen Zugriff auf relevante Anweisungen zur Problemb
 
 | Featurebereich |  |
 |:---:| --- |
-| Einmalige Verbundanmeldung |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md) |
+| Einmalige Verbundanmeldung |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](develop/howto-v1-debug-saml-sso-issues.md) |
 | Kennwortbasiertes einmaliges Anmelden |[Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
 | Anwendungsproxy |[Handbuch zur Problembehandlung beim App-Proxy](manage-apps/application-proxy-troubleshoot.md) |
 | Einmaliges Anmelden zwischen lokalem AD und Azure AD |[Problembehandlung bei der Kennworthashsynchronisierung](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Problembehandlung beim Kennwortrückschreiben](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
@@ -54,10 +54,10 @@ Durch einmaliges Anmelden können Benutzer mit nur einem Satz von Anmeldeinforma
 | Artikelleitfaden |  |
 |:---:| --- |
 | Eine Einführung in den Verbund und andere Arten von Anmeldungen |[Einmaliges Anmelden mit Azure AD](manage-apps/what-is-single-sign-on.md) |
-| Tausende von SaaS-Apps, die bereits in Azure AD integriert sind, mit vereinfachten Schritten zur Konfiguration der einmaligen Anmeldung |[Erste Schritte mit dem Azure AD-Anwendungskatalog](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Vollständige Liste der vorab integrierten Apps, die den Verbund unterstützen (in englischer Sprache)](saas-apps/tutorial-list.md)<br /><br />[Hinzufügen Ihrer App zum Azure AD-App-Katalog](active-directory-app-gallery-listing.md) |
+| Tausende von SaaS-Apps, die bereits in Azure AD integriert sind, mit vereinfachten Schritten zur Konfiguration der einmaligen Anmeldung |[Erste Schritte mit dem Azure AD-Anwendungskatalog](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Vollständige Liste der vorab integrierten Apps, die den Verbund unterstützen (in englischer Sprache)](saas-apps/tutorial-list.md)<br /><br />[Hinzufügen Ihrer App zum Azure AD-App-Katalog](develop/howto-app-gallery-listing.md) |
 | Mehr als 150 App-Tutorials zur Konfiguration des einmaligen Anmeldens für Apps wie [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md) und viele mehr |[Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](saas-apps/tutorial-list.md) |
 | Vorgehensweise zum manuellen Einrichten und Anpassen Ihrer Konfiguration für einmaliges Anmelden |[Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Anpassen ausgestellter Ansprüche im SAML-Token für vorintegrierte Apps](active-directory-saml-claims-customization.md) |
-| Handbuch zur Problembehandlung für Verbund-Apps, die das SAML-Protokoll verwenden |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md) |
+| Handbuch zur Problembehandlung für Verbund-Apps, die das SAML-Protokoll verwenden |[Problembehandlung bei SAML-basiertem einmaligem Anmelden](develop/howto-v1-debug-saml-sso-issues.md) |
 | Konfigurieren des Ablaufdatums für das Zertifikat Ihrer App und Erneuern von Zertifikaten |[Verwalten von Zertifikaten für die einmalige Verbundanmeldung in Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
 Einmaliges Anmelden im Verbund steht für alle Editionen von Azure AD für bis zu zehn Apps pro Benutzer zur Verfügung. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) unterstützt eine unbegrenzte Anzahl von Anwendungen. Wenn Ihre Organisation [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) oder [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) verwendet, können Sie [den Zugriff auf Verbundanwendungen mithilfe von Gruppen zuweisen](#managing-access-to-applications).
@@ -109,7 +109,7 @@ Sobald Sie das einmalige Anmelden für Ihre Apps und Ressourcen eingerichtet hab
 | Artikelleitfaden |  |
 |:---:| --- |
 | Eine Einführung in die Funktionen für bedingten Zugriff, die über Azure AD, Office 365 und Intune hinweg bereitgestellt werden |[Verwalten von Risiken mit bedingtem Zugriff](active-directory-conditional-access-azure-portal.md) |
-| Aktivieren des bedingten Zugriffs für die folgenden Ressourcentypen |[Bedingter Zugriff für SaaS-Apps](active-directory-conditional-access-azure-portal-get-started.md)<br /><br />[Bedingter Zugriff für Office 365-Dienste](active-directory-conditional-access-device-policies.md)<br /><br />[Bedingter Zugriff für lokale Anwendungen](active-directory-conditional-access-azure-portal.md)<br /><br />[Bedingter Zugriff für lokale, über den Azure AD-Anwendungsproxy veröffentlichte Anwendungen](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
+| Aktivieren des bedingten Zugriffs für die folgenden Ressourcentypen |[Bedingter Zugriff für SaaS-Apps](conditional-access/app-based-conditional-access.md)<br /><br />[Bedingter Zugriff für Office 365-Dienste](active-directory-conditional-access-device-policies.md)<br /><br />[Bedingter Zugriff für lokale Anwendungen](active-directory-conditional-access-azure-portal.md)<br /><br />[Bedingter Zugriff für lokale, über den Azure AD-Anwendungsproxy veröffentlichte Anwendungen](manage-apps/application-proxy-integrate-with-sharepoint-server.md) |
 | Registrieren von Geräten bei Azure Active Directory zum Aktivieren gerätebasierter Richtlinien für den bedingten Zugriff |[Erste Schritte bei der Azure Active Directory-Geräteregistrierung](active-directory-conditional-access-device-registration-overview.md)<br /><br />[Automatische Geräteregistrierung bei Azure Active Directory für in Domänen eingebundene Windows-Geräte](active-directory-conditional-access-automatic-device-registration.md)<br />– [Schritte für Windows 8.1-Geräte](active-directory-conditional-access-automatic-device-registration-setup.md)<br />– [Schritte für Windows 7-Geräte](active-directory-conditional-access-automatic-device-registration-setup.md) |
 
 | Vorgehensweise: Verwenden der Microsoft Authenticator-App für die zweistufige Überprüfung | [Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
@@ -143,8 +143,8 @@ Wenn Ihre Organisation Line-of-Business-Anwendungen (LoB) entwickelt oder verwal
 
 | Artikelleitfaden |  |
 |:---:| --- |
-| Anleitung für IT-Experten und Anwendungsentwickler zur Integration von Apps in Azure AD |[Azure AD und Anwendungen: Entwickeln von Branchen-Apps](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Entwicklerhandbuch zu Azure Active Directory](active-directory-developers-guide.md) |
-| Vorgehensweise für Anwendungshersteller zum Hinzufügen von Apps zum Azure AD-App-Katalog |[Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](active-directory-app-gallery-listing.md) |
+| Anleitung für IT-Experten und Anwendungsentwickler zur Integration von Apps in Azure AD |[Azure AD und Anwendungen: Entwickeln von Branchen-Apps](active-directory-applications-guiding-developers-for-lob-applications.md)<br /><br />[Entwicklerhandbuch zu Azure Active Directory](develop/azure-ad-developers-guide.md) |
+| Vorgehensweise für Anwendungshersteller zum Hinzufügen von Apps zum Azure AD-App-Katalog |[Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](develop/howto-app-gallery-listing.md) |
 | Verwalten des Zugriffs auf entwickelte Anwendungen mithilfe von Azure Active Directory |[Azure AD und Clientanwendungen: Erfordern der Benutzerzuweisung](active-directory-applications-guiding-developers-requiring-user-assignment.md)<br /><br />[Azure AD und Anwendungen: Zuweisen von Benutzern zu einer Anwendung](active-directory-applications-guiding-developers-assigning-users.md)<br /><br />[Zuweisen von Gruppen zu Ihrer App](active-directory-applications-guiding-developers-assigning-groups.md) |
 
 Wenn Sie kundenorientierte Anwendungen entwickeln, interessieren Sie sich möglicherweise für die Verwendung von [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) , damit Sie für die Verwaltung Ihrer Benutzer nicht Ihr eigenes Identitätssystem entwickeln müssen. [Weitere Informationen](../active-directory-b2c/active-directory-b2c-overview.md).

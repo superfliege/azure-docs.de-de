@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 2b0f2b864c5c29e9804239d06afdf23708e52828
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436973"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579611"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualisieren der Automation-Kontoauthentifizierung mit ausführenden Konten 
 Sie können Ihr vorhandenes Automation-Konto über das Azure-Portal oder mit PowerShell aktualisieren, wenn folgende Voraussetzungen erfüllt sind:
@@ -289,5 +289,5 @@ Wählen Sie im Azure-Portal **Abonnements**, und wählen Sie das Abonnement Ihre
 Um den Dienstprinzipal zu einer Ressourcengruppe hinzuzufügen, wählen Sie die Ressourcengruppe im Azure-Portal und wählen dann **Zugriffssteuerung (IAM)**. Wählen Sie **Hinzufügen**, um die Seite **Berechtigungen hinzufügen** zu öffnen. Wählen Sie als **Rolle** die Option **Mitwirkender**. Geben Sie in das Textfeld **Auswählen** den Namen des Dienstprinzipals für Ihr ausführendes Konto ein, und wählen Sie es aus der Liste aus. Klicken Sie zum Speichern der Änderungen auf **Speichern**. Wiederholen Sie diesen Vorgang für die Ressourcengruppen, auf die der ausführende Azure Automation-Dienstprinzipal Zugriff haben soll.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
+* Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/develop/app-objects-and-service-principals.md).
 * Weitere Informationen zu Zertifikaten und Azure-Diensten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

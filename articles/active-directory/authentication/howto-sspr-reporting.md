@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2560296c088491b7ae0cd414f88ae337c1383c9a
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258795"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627524"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -40,7 +40,7 @@ Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure
 
 ## <a name="power-bi-content-pack"></a>Power BI-Inhaltspaket
 
-Wenn Sie Power BI-Benutzer sind, können Sie ein Inhaltspaket für Azure AD verwenden, das eine benutzerfreundliche Berichterstellung für SSPR beinhaltet. Weitere Informationen zum Verwenden und Bereitstellen des Inhaltspakets finden Sie unter [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](../active-directory-reporting-power-bi-content-pack-how-to.md). Mit dem Inhaltspaket können Sie Ihre eigenen Dashboards erstellen und diese mit anderen Personen in Ihrer Organisation gemeinsam nutzen.
+Wenn Sie Power BI-Benutzer sind, können Sie ein Inhaltspaket für Azure AD verwenden, das eine benutzerfreundliche Berichterstellung für SSPR beinhaltet. Weitere Informationen zum Verwenden und Bereitstellen des Inhaltspakets finden Sie unter [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](../reports-monitoring/howto-power-bi-content-pack.md). Mit dem Inhaltspaket können Sie Ihre eigenen Dashboards erstellen und diese mit anderen Personen in Ihrer Organisation gemeinsam nutzen.
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Anzeigen von Kennwortverwaltungsberichten im Azure-Portal
 

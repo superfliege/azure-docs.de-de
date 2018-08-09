@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.component: compliance-reports
+ms.component: compliance
 ms.date: 07/31/2018
 ms.author: rolyon
-ms.openlocfilehash: 970e748d7174a9b443fc96f52ac94e082a6c9d44
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398953"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622074"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -73,7 +73,7 @@ Gehen Sie nach Fertigstellung Ihres Dokuments mit Nutzungsbedingungen wie folgt 
 
 5. Aktivieren oder deaktivieren Sie die Option **Benutzer müssen die Nutzungsbedingungen erweitern**.  Wenn diese Einstellung aktiviert ist, müssen Endbenutzer die Nutzungsbedingungen anzeigen, bevor sie sie akzeptieren.
 
-6. Unter **Bedingter Zugriff** können Sie die hochgeladenen Nutzungsbedingungen durch Auswahl einer Vorlage in der Dropdownliste oder mithilfe einer benutzerdefinierten Richtlinie für den bedingten Zugriff **erzwingen**.  Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis auf die Ebene einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md).
+6. Unter **Bedingter Zugriff** können Sie die hochgeladenen Nutzungsbedingungen durch Auswahl einer Vorlage in der Dropdownliste oder mithilfe einer benutzerdefinierten Richtlinie für den bedingten Zugriff **erzwingen**.  Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis auf die Ebene einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](conditional-access/best-practices.md).
 
     >[!IMPORTANT]
     >Die Richtliniensteuerungen für den bedingten Zugriff (einschließlich Nutzungsbedingungen) unterstützen die Erzwingung für Dienstkonten nicht.  Es wird empfohlen, alle Dienstkonten von der Richtlinie für den bedingten Zugriff auszuschließen.
@@ -240,4 +240,4 @@ A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-c
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md)
+- [Best Practices für den bedingten Zugriff in Azure Active Directory](conditional-access/best-practices.md)

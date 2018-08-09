@@ -2,19 +2,19 @@
 title: Grundlegendes zum Vorhersageergebnis von LUIS – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, was das Vorhersageergebnis in LUIS bedeutet.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-geberr
-ms.openlocfilehash: 31c101a23892df8599b8cdc0f67647fefb969490
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.date: 07/26/2018
+ms.author: diberry
+ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
+ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265987"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39358102"
 ---
 # <a name="prediction-score"></a>Vorhersageergebnis
 Ein Vorhersageergebnis gibt den Grad der Zuverlässigkeit an, den LUIS in die Ergebnisse von Vorhersagen hat. 
@@ -28,7 +28,7 @@ Ein Vorhersageergebnis liegt in der Regel zwischen 0 (null) und 1 (eins). Ein Be
 |0.01|niedrige Zuverlässigkeit|
 |0|definitiv keine Übereinstimmung|
 
-Wenn eine Äußerung eine niedrige Zuverlässigkeitsbewertung liefert, hebt LUIS es auf der [LUIS][LUIS]-Website auf der Seite **Absicht** hervor und kennzeichnet die identifizierte **bezeichnete Absicht** rot. 
+Wenn eine Äußerung eine niedrige Zuverlässigkeitsbewertung liefert, hebt LUIS es auf der [LUIS](luis-reference-regions.md)-Website auf der Seite **Absicht** hervor und kennzeichnet die identifizierte **bezeichnete Absicht** rot. 
 
 ![Abweichungen bei der Bewertung](./media/luis-concept-score/score-discrepancy.png)
 
@@ -36,6 +36,8 @@ Wenn eine Äußerung eine niedrige Zuverlässigkeitsbewertung liefert, hebt LUIS
 Zu jeder Vorhersage einer Äußerung wird die am höchsten bewertete Absicht zurückgegeben. Dies ist ein numerischer Vergleich der Vorhersageergebnisse. Zwischen den beiden höchsten Bewertungen kann nur ein sehr kleiner Unterschied bestehen. LUIS zeigt diesen geringen Unterschied nicht an, sondern gibt lediglich die Ergebnisse zurück.  
 
 Wenn die Nähe der höchsten Bewertungen ein Problem darstellen könnte, sollten Sie das Ergebnis für alle Absichten zurückgeben. Sie können entweder Äußerungen für die beiden Absichten hinzufügen, um deren Unterschiede bei der Wortwahl und -anordnung hervorzuheben, oder Sie können in der App, die LUIS aufruft, also z.B. einem Chatbot, programmgesteuert angeben, wie die beiden am höchsten bewerteten Absichten zu behandeln sind. 
+
+Zwei Absichten, deren Bewertungen zu dicht beieinander liegen, können aufgrund von nicht deterministischem Training umgekehrt werden. Die höchste Bewertung könnte zur zweithöchsten werden und die zweithöchste zur höchsten. Um dies zu verhindern, fügen Sie jeder der beiden oberen Absichten Beispieläußerungen für diese Äußerung mit Wortauswahl und Kontext, der die beiden Absichten unterscheidet, hinzu. Die beiden Absichten sollten etwa über die gleiche Anzahl von Beispieläußerungen verfügen. Eine Faustregel für die Trennung zum Verhindern der trainingsbedingten Umkehrung ist ein Unterschied von 15% in den Bewertungen.
 
 ## <a name="return-prediction-score-for-all-intents"></a>Zurückgeben der Vorhersageergebnisse für alle Absichten
 Ein Test- oder Endpunktergebnis kann alle Absichten enthalten. Diese Konfiguration wird am [Endpunkt](https://aka.ms/v1-endpoint-api-docs) mit dem Name-Wert-Paar `verbose=true` in der Abfragezeichenfolge festgelegt. 
@@ -58,8 +60,9 @@ Wenn Sie dasselbe Modell in einer anderen App trainieren und die Ergebnisse abwe
 
 Wenn Ihr Chatbot eine bestimmte LUIS-Bewertung erfordert, um die Zuverlässigkeit einer Absicht anzuzeigen, sollten Sie stattdessen den Unterschied zwischen den Ergebnissen der beiden am höchsten bewerteten Absichten verwenden. Dies bietet Flexibilität für Varianten im Training. 
 
+## <a name="punctuation"></a>Interpunktion
+Interpunktion ist ein separates Token in LUIS. Eine Äußerung mit einem Punkt am Ende und eine Äußerung, wo dies nicht der Fall ist, sind zwei separate Äußerungen und erhalten möglicherweise zwei unterschiedliche Vorhersagen. Stellen Sie sicher, dass das Modell Interpunktion entweder in den [Beispieläußerungen](luis-concept-utterance.md) (mit und ohne Interpunktion) oder in den [Mustern](luis-concept-patterns.md) behandelt, wo es mit der speziellen Syntax einfacher ist, Interpunktion zu ignorieren: `I am applying for the {Job} position[.]`
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Hinzufügen von Entitäten zu LUIS-Apps finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

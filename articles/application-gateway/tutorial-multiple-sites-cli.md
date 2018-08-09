@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 336d40c3929012192013e57b391d74950b606338
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: f84b9555343d0f902e887160845099cbc49e8ef2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070282"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441390"
 ---
 # <a name="tutorial-create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet#az_net). Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) das Subnetz hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit *az network vnet create* ein virtuelles Netzwerk und ein Subnetz namens [myAGSubnet](/cli/azure/network/vnet#az-net). Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) das Subnetz hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -106,7 +106,7 @@ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem d
 
 ### <a name="add-the-backend-pools"></a>Hinzufügen der Back-End-Pools
 
-Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/application-gateway#az_network_application_gateway_address_pool_create) die Back-End-Pools hinzu, die für die Back-End-Server benötigt werden.
+Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/application-gateway#az-network_application_gateway_address_pool_create) die Back-End-Pools hinzu, die für die Back-End-Server benötigt werden.
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -122,7 +122,7 @@ az network application-gateway address-pool create \
 
 ### <a name="add-backend-listeners"></a>Hinzufügen von Back-End-Listenern
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) die Back-End-Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) die Back-End-Listener hinzu, die zum Weiterleiten von Datenverkehr erforderlich sind.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Genauigkeit weitergeleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
 
-In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die während der Erstellung des Anwendungsgateways erstellt wurde. Sie können die Regel mit [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create) hinzufügen.
+In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die während der Erstellung des Anwendungsgateways erstellt wurde. Sie können die Regel mit [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -223,7 +223,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
 
 ```azurecli-interactive
 az network public-ip show \

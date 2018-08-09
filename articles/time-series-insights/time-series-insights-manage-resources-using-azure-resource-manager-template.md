@@ -4,19 +4,18 @@ description: In diesem Artikel wird beschrieben, wie Sie Ihre Azure Time Series 
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
-ms.reviewer: anshan
+ms.author: anshan
+manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 561483b801773b39ed2ff61efa1496eba472530d
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 3ca9af8c2c504f75322e00fdaaeac9a3e727a820
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293352"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627126"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -196,7 +195,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <p
 
 ### <a name="create-the-deployment"></a>Erstellen der Bereitstellung
 
-Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzureRmResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments).
+Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzureRmResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/deployment-modes.md).
 
 Mit dem folgenden Befehl werden Sie aufgefordert, die fünf erforderlichen Parameter im PowerShell-Fenster einzugeben:
 
@@ -216,7 +215,7 @@ Sie können beim Ausführen des Bereitstellungs-Cmdlets auch Inlineparameter ver
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments) Bereitstellung den Parameter **Mode** auf **Complete** fest:
+Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

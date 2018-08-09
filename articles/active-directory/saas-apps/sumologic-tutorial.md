@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3cbbd5bf18dd29a98a19a0fa643d58c02233a617
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dbebf2605fb214a167a276ec8dc344ff450ae5c0
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214932"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420069"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Tutorial: Azure Active Directory-Integration mit SumoLogic
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von SumoLogic aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-sumologic-from-the-gallery"></a>Hinzufügen von SumoLogic aus dem Katalog
 Zum Konfigurieren der Integration von SumoLogic in Azure AD müssen Sie SumoLogic aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von SumoLogic in Azure AD müssen Sie SumoLogi
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **SumoLogic** ein.
+1. Geben Sie im Suchfeld als Suchbegriff **SumoLogic** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/sumologic-tutorial/tutorial_sumologic_search.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **SumoLogic** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **SumoLogic** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/sumologic-tutorial/tutorial_sumologic_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in SumoLogic den Wert für **Benutzername** in Azure AD als Wert für
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei SumoLogic müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines SumoLogic-Testbenutzers](#creating-a-sumologic-test-user)**, um eine Entsprechung von Britta Simon in SumoLogic zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines SumoLogic-Testbenutzers](#creating-a-sumologic-test-user)**, um eine Entsprechung von Britta Simon in SumoLogic zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -102,15 +102,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SumoLogic** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure Single Sign-On](./media/sumologic-tutorial/tutorial_sumologic_samlbase.png)
+    ![Configure single sign-on](./media/sumologic-tutorial/tutorial_sumologic_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für SumoLogic** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Domäne und URLs für SumoLogic** die folgenden Schritte aus:
 
-    ![Configure Single Sign-On](./media/sumologic-tutorial/tutorial_sumologic_url.png)
+    ![Configure single sign-on](./media/sumologic-tutorial/tutorial_sumologic_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<tenantname>.SumoLogic.com`.
 
@@ -126,33 +126,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von SumoLogic](https://www.sumologic.com/contact-us/), um diese Werte zu erhalten. 
  
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/sumologic-tutorial/tutorial_sumologic_certificate.png) 
+    ![Configure single sign-on](./media/sumologic-tutorial/tutorial_sumologic_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/sumologic-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/sumologic-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **SumoLogic-Konfiguration** auf **SumoLogic konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **SumoLogic-Konfiguration** auf **SumoLogic konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/sumologic-tutorial/tutorial_sumologic_configure.png) 
+    ![Configure single sign-on](./media/sumologic-tutorial/tutorial_sumologic_configure.png) 
 
-7. Melden Sie sich in einem anderen Webbrowserfenster auf der SumoLogic-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster auf der SumoLogic-Unternehmenswebsite als Administrator an.
 
-8. Navigieren Sie zu **Verwalten \> Sicherheit**.
+1. Navigieren Sie zu **Verwalten \> Sicherheit**.
    
     ![Verwalten](./media/sumologic-tutorial/ic778556.png "Verwalten")
 
-9. Klicken Sie auf **SAML**.
+1. Klicken Sie auf **SAML**.
    
     ![Globale Sicherheitseinstellungen](./media/sumologic-tutorial/ic778557.png "Globale Sicherheitseinstellungen")
 
-10. Wählen Sie aus der Liste **Eine Konfiguration auswählen oder eine neue erstellen** die Option **Azure AD** aus, und klicken Sie dann auf **Konfigurieren**.
+1. Wählen Sie aus der Liste **Eine Konfiguration auswählen oder eine neue erstellen** die Option **Azure AD** aus, und klicken Sie dann auf **Konfigurieren**.
    
     ![SAML 2.0 konfigurieren](./media/sumologic-tutorial/ic778558.png "SAML 2.0 konfigurieren")
 
-11. Führen Sie auf der Seite **SAML 2.0 konfigurieren** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **SAML 2.0 konfigurieren** die folgenden Schritte aus:
    
     ![SAML 2.0 konfigurieren](./media/sumologic-tutorial/ic778559.png "SAML 2.0 konfigurieren")
    
@@ -187,15 +187,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/sumologic-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/sumologic-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/sumologic-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/sumologic-tutorial/create_aaduser_04.png) 
 
@@ -217,15 +217,15 @@ Damit sich Azure AD-Benutzer bei SumoLogic anmelden können, müssen sie in Sumo
 
 1. Melden Sie sich bei Ihrem **SumoLogic** -Mandanten an.
 
-2. Navigieren Sie zu **Benutzer \> verwalten**.
+1. Navigieren Sie zu **Benutzer \> verwalten**.
    
     ![Benutzer](./media/sumologic-tutorial/ic778561.png "Benutzer")
 
-3. Klicken Sie auf **Hinzufügen**.
+1. Klicken Sie auf **Hinzufügen**.
    
     ![Benutzer](./media/sumologic-tutorial/ic778562.png "Benutzer")
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
    
     ![Neuer Benutzer](./media/sumologic-tutorial/ic778563.png "Neuer Benutzer") 
  
@@ -253,23 +253,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **SumoLogic** aus.
+1. Wählen Sie in der Anwendungsliste **SumoLogic** aus.
 
-    ![Configure Single Sign-On](./media/sumologic-tutorial/tutorial_sumologic_app.png) 
+    ![Configure single sign-on](./media/sumologic-tutorial/tutorial_sumologic_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: rogarana
-ms.openlocfilehash: 8b3a4d7feccc3af55415f54473ae1a2588ad5672
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 96d50260663f00f5ae2e9b2e0495c91ecb5da4b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936886"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421187"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 Die Standardgröße der virtuellen Festplatte für das Betriebssystem (operating system; OS) beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer (VM) in Azure. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, aber möglicherweise möchten Sie auch einen vorhandenen Datenträger für Daten erweitern. Dieser Artikel erläutert, wie verwaltete Datenträger für eine Linux-VM mithilfe von Azure CLI 2.0 erweitert werden können. 
@@ -43,7 +43,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
     > [!NOTE]
     > Die VM muss aufgehoben werden, um die virtuelle Festplatte zu erweitern. `az vm stop` gibt die Computerressourcen nicht frei. Verwenden Sie `az vm deallocate`, um Computerressourcen freizugeben.
 
-2. Sie überprüfen die Liste der verwalteten Datenträger in einer Ressourcengruppe mit [az disk list](/cli/azure/disk#az_disk_list). Im folgenden Beispiel wird eine Liste mit verwalteten Datenträgern in der Ressourcengruppe *myResourceGroup* aufgelistet:
+1. Sie überprüfen die Liste der verwalteten Datenträger in einer Ressourcengruppe mit [az disk list](/cli/azure/disk#az_disk_list). Im folgenden Beispiel wird eine Liste mit verwalteten Datenträgern in der Ressourcengruppe *myResourceGroup* aufgelistet:
 
     ```azurecli
     az disk list \
@@ -64,7 +64,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
     > [!NOTE]
     > Wenn Sie einen verwalteten Datenträger erweitern, wird die aktualisierte Größe der nächsten verwalteten Datenträgergröße zugeordnet. Eine Tabelle der verfügbaren verwalteten Datenträgergrößen und -ebenen finden Sie unter [Übersicht über Azure Managed Disks – Preise und Abrechnung](../windows/managed-disks-overview.md#pricing-and-billing).
 
-3. Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az_vm_start). Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* gestartet:
+1. Starten Sie den virtuellen Computer mit [az vm start](/cli/azure/vm#az_vm_start). Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* gestartet:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -80,7 +80,7 @@ Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende 
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-2. Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende Partition und das Dateisystem erweitern.
+1. Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende Partition und das Dateisystem erweitern.
 
     a. Wenn der Datenträger bereits eingebunden ist, heben Sie die Einbindung auf:
 
@@ -121,25 +121,25 @@ Um den erweiterten Datenträger zu verwenden, müssen Sie die zugrunde liegende 
 
     d. Geben Sie zum Beenden den Befehl `quit` ein.
 
-3. Überprüfen Sie nach der Änderung der Partitionsgröße die Partitionskonsistenz mit `e2fsck`:
+1. Überprüfen Sie nach der Änderung der Partitionsgröße die Partitionskonsistenz mit `e2fsck`:
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-4. Ändern Sie nun die Größe des Dateisystems mit `resize2fs`:
+1. Ändern Sie nun die Größe des Dateisystems mit `resize2fs`:
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-5. Binden Sie die Partition am gewünschten Speicherort ein, z.B. `/datadrive`:
+1. Binden Sie die Partition am gewünschten Speicherort ein, z.B. `/datadrive`:
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-6. Verwenden Sie `df -h`, um zu überprüfen, ob die Größe des Betriebssystemdatenträgers geändert wurde. In der folgenden Beispielausgabe ist zu sehen, dass der Datenträger für Daten */dev/sdc1* jetzt eine Größe von 200 GB hat:
+1. Verwenden Sie `df -h`, um zu überprüfen, ob die Größe des Betriebssystemdatenträgers geändert wurde. In der folgenden Beispielausgabe ist zu sehen, dass der Datenträger für Daten */dev/sdc1* jetzt eine Größe von 200 GB hat:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: d7b832659272f01b6e939150fa89626620d5eab7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153557"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503450"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurieren von PHP in Azure App Service-Web-Apps
 
@@ -102,7 +102,7 @@ Alternativ zur Verwendung einer`.user.ini`-Datei können Sie auch die Funktion [
 
 1. Hinzufügen einer App-Einstellung zu Ihrer Web-App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
 1. Erstellen einer `settings.ini`-Datei über die Kudu-Konsole (http://&lt;site-name&gt;.scm.azurewebsite.net) im Verzeichnis `d:\home\site\ini`.
-1. Fügen Sie der `settings.ini` -Datei Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine php.ini-Datei. Wenn Sie beispielsweise auf die Einstellung `curl.cainfo` für eine `*.crt`-Datei verweisen und, und die Einstellung 'wincache.maxfilesize' auf 512 KB festlegen, enthält die Datei `settings.ini` diesen Text:
+1. Fügen Sie der Datei `settings.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie beispielsweise auf die Einstellung `curl.cainfo` für eine `*.crt`-Datei verweisen und, und die Einstellung 'wincache.maxfilesize' auf 512 KB festlegen, enthält die Datei `settings.ini` diesen Text:
 
         ; Example Settings
         curl.cainfo="%ProgramFiles(x86)%\Git\bin\curl-ca-bundle.crt"
@@ -119,7 +119,7 @@ Wie im vorherigen Anschnitt angegeben ist die Standardkonfiguration die beste M�
 1. Legen Sie Dateien mit der Erweiterung `.dll` im Verzeichnis `ext` ab (zum Beispiel `php_xdebug.dll`). Stellen Sie sicher, dass die Erweiterungen mit der Standardversion von PHP und mit VC9 kompatibel sowie nicht threadsicher (non-thread-safe, nts) sind.
 1. Hinzufügen einer App-Einstellung zu Ihrer Web-App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
 1. Erstellen Sie in `d:\home\site\ini` eine `ini`-Datei namens `extensions.ini`.
-1. Fügen Sie der `extensions.ini` -Datei Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine php.ini-Datei. Wenn Sie beispielsweise die MongoDB- und XDebug-Erweiterungen aktivieren möchten, würde Ihre `extensions.ini` -Datei diesen Text enthalten:
+1. Fügen Sie der Datei `extensions.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie beispielsweise die MongoDB- und XDebug-Erweiterungen aktivieren möchten, würde Ihre `extensions.ini` -Datei diesen Text enthalten:
 
         ; Enable Extensions
         extension=d:\home\site\ext\php_mongo.dll

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 20292c06cf336a0245b5f5db6b1cb4894df0f1ae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7bb4782fa390ad2cc324a79a1f544c3db062c921
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051580"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421548"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks - Aperture
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Palo Alto Networks - Aperture aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-palo-alto-networks---aperture-from-the-gallery"></a>Hinzufügen von Palo Alto Networks - Aperture aus dem Katalog
 Zum Konfigurieren der Integration von Palo Alto Networks - Aperture in Azure AD müssen Sie Palo Alto Networks - Aperture aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Palo Alto Networks - Aperture in Azure AD 
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Palo Alto Networks - Aperture** ein, wählen Sie im Ergebnisbereich **Palo Alto Networks - Aperture** aus, und klicken Sie auf **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Palo Alto Networks - Aperture** ein, wählen Sie im Ergebnisbereich **Palo Alto Networks - Aperture** aus, und klicken Sie auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Palo Alto Networks - Aperture in der Ergebnisliste](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutze
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Palo Alto Networks - Aperture müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Palo Alto Networks - Aperture-Testbenutzers](#create-a-palo-alto-networks---aperture-test-user)**, um ein Pendant von Britta Simon in Palo Alto Networks - Aperture zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Palo Alto Networks - Aperture-Testbenutzers](#create-a-palo-alto-networks---aperture-test-user)**, um ein Pendant von Britta Simon in Palo Alto Networks - Aperture zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -100,11 +100,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Palo Alto Networks - Aperture** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+1. Führen Sie im Abschnitt **Domäne und URLs für Palo Alto Networks - Aperture** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Palo Alto Networks - Aperture](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url.png)
 
@@ -112,7 +112,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<subdomain>.aperture.paloaltonetworks.com/d/users/saml/auth`
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+1. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Palo Alto Networks - Aperture](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_url1.png)
 
@@ -121,30 +121,30 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Supportteam für den Palo Alto Networks - Aperture-Client](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support), um diese Werte zu erhalten. 
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/paloaltonetworks-aperture-tutorial/tutorial_general_400.png)
 
 
-7. Klicken Sie im Abschnitt **Palo Alto Networks - Aperture-Konfiguration** auf **Palo Alto Networks - Aperture konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Palo Alto Networks - Aperture-Konfiguration** auf **Palo Alto Networks - Aperture konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
 
     ![Der Link „Konfigurieren“](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_configure.png)
 
-8. Melden Sie sich in einem anderen Webbrowserfenster bei Palo Alto Networks - Aperture als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei Palo Alto Networks - Aperture als Administrator an.
 
-9. Klicken Sie auf der oberen Menüleiste auf **SETTINGS** (EINSTELLUNGEN).
+1. Klicken Sie auf der oberen Menüleiste auf **SETTINGS** (EINSTELLUNGEN).
 
     ![Registerkarte „Settings“ (Einstellungen)](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_settings.png)
 
-10. Navigieren Sie zum Abschnitt **APPLICATION** (ANWENDUNG), und klicken Sie links im Menü auf **Authentication** (Authentifizierung).
+1. Navigieren Sie zum Abschnitt **APPLICATION** (ANWENDUNG), und klicken Sie links im Menü auf **Authentication** (Authentifizierung).
 
     ![Registerkarte „Authentication“ (Authentifizierung)](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_auth.png)
     
-11. Führen Sie auf der Seite **Authentication** (Authentifizierung) die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Authentication** (Authentifizierung) die folgenden Schritte aus:
     
     ![Registerkarte „Authentication“ (Authentifizierung)](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_singlesignon.png)
 
@@ -175,15 +175,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/paloaltonetworks-aperture-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/paloaltonetworks-aperture-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/paloaltonetworks-aperture-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/paloaltonetworks-aperture-tutorial/create_aaduser_04.png)
 
@@ -211,23 +211,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Palo Alto Networks - Aperture** aus.
+1. Wählen Sie in der Anwendungsliste **Palo Alto Networks - Aperture** aus.
 
     ![Der Link für Palo Alto Networks - Aperture in der Anwendungsliste](./media/paloaltonetworks-aperture-tutorial/tutorial_paloaltonetwork_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

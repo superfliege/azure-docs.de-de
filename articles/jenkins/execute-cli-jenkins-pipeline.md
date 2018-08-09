@@ -15,12 +15,12 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28926929"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421303"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Bereitstellen an Azure App Service mit Jenkins und der Azure CLI
 Für das Bereitstellen einer Java-Web-App in Azure können Sie die Azure CLI in der [Jenkins-Pipeline](https://jenkins.io/doc/book/pipeline/) nutzen. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline auf einer Azure-VM und erfahren, wie Sie:
@@ -63,7 +63,7 @@ Eine Azure-Anmeldeinformation ist erforderlich, um die Azure CLI auszuführen.
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Erstellen eines Azure App Service für die Bereitstellung der Java-Web-App
 
-Erstellen Sie mit dem CLI-Befehl [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) einen Azure App Service-Plan mit dem Tarif **FREE**. Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten. 
+Erstellen Sie mit dem CLI-Befehl [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) einen Azure App Service-Plan mit dem Tarif **FREE**. Der App Service-Plan definiert die physischen Ressourcen, die zum Hosten Ihrer Apps verwendet werden. Alle einem App Service-Plan zugewiesenen Anwendungen teilen sich diese Ressourcen. Das spart Kosten, wenn Sie mehrere Apps hosten. 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -92,7 +92,7 @@ Wenn der Plan fertig ist, zeigt die Azure CLI eine ähnliche Ausgabe wie im folg
 
 ### <a name="create-an-azure-web-app"></a>Erstellen einer Azure-Web-App
 
- Erstellen Sie mit dem CLI-Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) eine Web-App-Definition im App Service-Plan `myAppServicePlan`. Die Web-App-Definition enthält eine URL für den Zugriff auf Ihre Anwendung und konfiguriert verschiedene Optionen zum Bereitstellen Ihres Codes in Azure. 
+ Erstellen Sie mit dem CLI-Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) eine Web-App-Definition im App Service-Plan `myAppServicePlan`. Die Web-App-Definition enthält eine URL für den Zugriff auf Ihre Anwendung und konfiguriert verschiedene Optionen zum Bereitstellen Ihres Codes in Azure. 
 
 ```azurecli-interactive
 az webapp create \
@@ -122,7 +122,7 @@ Wenn die Web-App-Definition fertig ist, zeigt die Azure CLI Informationen wie im
 
 ### <a name="configure-java"></a>Konfigurieren von Java 
 
-Richten Sie mit dem Befehl [az appservice web config update](/cli/azure/appservice/web/config#az_appservice_web_config_update) die für Ihre App erforderliche Java-Laufzeitkonfiguration ein.
+Richten Sie mit dem Befehl [az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) die für Ihre App erforderliche Java-Laufzeitkonfiguration ein.
 
 Der folgende Befehl konfiguriert die Web-App für die Ausführung mit einer aktuellen Java 8 JDK-Version und [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 

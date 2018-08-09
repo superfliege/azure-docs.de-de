@@ -17,12 +17,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: db529bf1e8ea4363c84cb365444ca367d428b162
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 4d7c9246b694fc1b5623ecd198e4ced330e78dde
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318419"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579417"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory
 Derzeit unterstützt Azure Active Directory einmaliges Anmelden für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierte Anwendungen sowie benutzerdefinierte Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als „Ansprüche“ bezeichnet werden.
@@ -131,7 +131,7 @@ In SAML gibt es einige eingeschränkte Ansprüche. Wenn Sie diese Ansprüche hin
 ## <a name="next-steps"></a>Nächste Schritte
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 * [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Problembehandlung bei SAML-basiertem einmaligem Anmelden](active-directory-saml-debugging.md)
+* [Problembehandlung bei SAML-basiertem einmaligem Anmelden](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saml-claims-customization/user-attribute-section.png

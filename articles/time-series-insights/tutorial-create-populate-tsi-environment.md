@@ -6,17 +6,18 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/04/2018
-ms.author: bryanla
-ms.openlocfilehash: b57e688b5f830c8c7d34315a68be94e4e4c99466
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.author: anshan
+manager: cshankar
+ms.openlocfilehash: 7faec1608845d218a738c70f147f79248a549dde
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295846"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626771"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
 
-In diesem Tutorial wird der Prozess zum Erstellen einer Time Series Insights-Umgebung (TSI) beschrieben, die mit Daten von simulierten Geräten aufgefüllt wird In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird der Prozess zum Erstellen einer Time Series Insights-Umgebung (TSI) beschrieben, die mit Daten von simulierten Geräten aufgefüllt wird. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer TSI-Umgebung 
@@ -182,7 +183,7 @@ Im [Abschnitt „Erstellen einer Gerätesimulation“](#create-a-device-simulati
 
    ![Setup der Gerätesimulation](media/tutorial-create-populate-tsi-environment/sawa-simulation-setup.png)
 
-4. Während der Ausführung der Simulation sehen Sie, dass die Felder **Total messages** (Nachrichten gesamt) und **Messages per second** (Nachrichten pro Sekunde) ca. alle zehn Sekunden aktualisiert werden. Die Simulation wird nach ca. fünf Minuten beendet, und das **Simulationssetup** wird wieder angezeigt.
+4. Während der Ausführung der Simulation sehen Sie, dass die Felder **Total messages** (Gesamte Nachrichten) und **Messages per second** (Nachrichten pro Sekunde) ca. alle zehn Sekunden aktualisiert werden. Die Simulation wird nach ca. fünf Minuten beendet, und das **Simulationssetup** wird wieder angezeigt.
 
    ![Aktive Gerätesimulation](media/tutorial-create-populate-tsi-environment/sawa-simulation-running.png)
 

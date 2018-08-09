@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8fcebae21d73db75e19bd1091faa8f389f0ba40
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165511"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579519"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Authentifizieren mit einer privaten Docker-Containerregistrierung
 
@@ -26,7 +26,7 @@ Azure Container Registry unterstützt keine nicht authentifizierten Docker-Vorg�
 
 ## <a name="individual-login-with-azure-ad"></a>Individuelle Anmeldung bei Azure AD
 
-Authentifizieren Sie sich bei der direkten Arbeit mit der Registrierung wie der Pullübertragung von Images auf Ihre und der Pushübertragung von Images von Ihrer Entwicklungsarbeitsstation mithilfe des [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login) -Befehls in der [Azure CLI](/cli/azure/install-azure-cli):
+Authentifizieren Sie sich bei der direkten Arbeit mit der Registrierung wie der Pullübertragung von Images auf Ihre und der Pushübertragung von Images von Ihrer Entwicklungsarbeitsstation mithilfe des [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) -Befehls in der [Azure CLI](/cli/azure/install-azure-cli):
 
 ```azurecli
 az acr login --name <acrName>
@@ -36,7 +36,7 @@ Bei der Anmeldung mit `az acr login` verwendet die CLI das Token, das erstellt w
 
 ## <a name="service-principal"></a>Dienstprinzipal
 
-Sie können Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/active-directory-application-objects.md) zuweisen, und Ihre Anwendung oder Ihr Dienst kann ihn für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md) auf eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
+Sie können Ihrer Registrierung einen [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) zuweisen, und Ihre Anwendung oder Ihr Dienst kann ihn für die monitorlose Authentifizierung verwenden. Dienstprinzipale ermöglichen [rollenbasierten Zugriff](../role-based-access-control/role-assignments-portal.md) auf eine Registrierung, und Sie können einer Registrierung mehrere Dienstprinzipale zuweisen. Mit mehreren Dienstprinzipalen können Sie unterschiedliche Zugriffsberechtigungen für verschiedene Anwendungen definieren.
 
 Folgende Rollen sind verfügbar:
 
@@ -51,7 +51,7 @@ Dienstprinzipale ermöglichen auch monitorlose Verbindungen mit einer Registrier
   * *Mitwirkender*: Lösungen für Continuous Integration und Continuous Deployment wie Visual Studio Team Services (VSTS) oder Jenkins, mit denen Containerimages erstellt und per Pushvorgang in eine Registrierung übertragen werden.
 
 > [!TIP]
-> Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_reset_credentials) ausführen.
+> Sie können das Kennwort eines Dienstprinzipals neu generieren, indem Sie den Befehl [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) ausführen.
 >
 
 Sie können sich auch direkt mit einem Dienstprinzipal anmelden. Geben Sie die App-ID und das Kennwort des Dienstprinzipals für den Befehl `docker login` ein:
@@ -82,7 +82,7 @@ docker login myregistry.azurecr.io -u myAdminName -p myPassword1
 
 Auch hier empfiehlt Docker die Verwendung des `--password-stdin`-Parameters, anstatt es in der Befehlszeile für die erhöhte Sicherheit bereitzustellen. Sie können auch nur Ihren Benutzernamen ohne `-p` angeben und nach Aufforderung Ihr Kennwort eingeben.
 
-Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr?view=azure-cli-latest#az_acr_update)-Befehls in der Azure CLI verwenden:
+Um den Administratorbenutzer für eine vorhandene Registrierung zu aktivieren, können Sie den `--admin-enabled`-Parameter des [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update)-Befehls in der Azure CLI verwenden:
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

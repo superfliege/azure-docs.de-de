@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 65757abe13c45ce1a929c4648637f98360659030
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: def1bbd52e05666f380ab9d5a9295366798d5ae0
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284869"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626922"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
@@ -50,7 +50,7 @@ Klicken Sie, um alle AD-Gesamtstrukturen anzuzeigen, die für nahtloses SSO akti
 
 ## <a name="sign-in-failure-reasons-in-the-azure-active-directory-admin-center-needs-a-premium-license"></a>Gründe für Anmeldefehler im Azure Active Directory Admin Center (Premium-Lizenz erforderlich)
 
-Wenn Ihrem Mandanten eine Azure AD Premium-Lizenz zugeordnet ist, können Sie sich im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) auch den [Bericht zu den Anmeldeaktivitäten](../active-directory-reporting-activity-sign-ins.md) ansehen.
+Wenn Ihrem Mandanten eine Azure AD Premium-Lizenz zugeordnet ist, können Sie sich im [Azure Active Directory Admin Center](https://aad.portal.azure.com/) auch den [Bericht zu den Anmeldeaktivitäten](../reports-monitoring/concept-sign-ins.md) ansehen.
 
 ![Azure Active Directory Admin Center: Bericht zu Anmeldeaktivitäten](./media/active-directory-aadconnect-sso/sso9.png)
 

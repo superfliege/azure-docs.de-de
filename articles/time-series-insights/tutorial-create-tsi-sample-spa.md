@@ -5,13 +5,14 @@ author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 06/14/2018
-ms.author: bryanla
-ms.openlocfilehash: 4442a724cf3e37d5e7271d9c29f99138ab1faa5f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.author: anshan
+manager: cshankar
+ms.openlocfilehash: 312e15f976a6782e3f39cfcc5ce0721ac6357a16
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295829"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626754"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Tutorial: Erstellen einer einseitigen Azure Time Series Insights-Web-App
 
@@ -42,11 +43,11 @@ In diesem Tutorial werden darüber hinaus die Daten aus der TSI-Umgebung der Bei
 Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch die Registrierung wird die Identitätskonfiguration für eine Anwendung bereitgestellt und die Verwendung der OAuth-Unterstützung für einmaliges Anmelden ermöglicht. OAuth setzt voraus, dass SPAs die „implizite“ Autorisierungsgewährung verwenden. Diese wird im Anwendungsmanifest aktualisiert. Ein Anwendungsmanifest ist eine JSON-Darstellung der Identitätskonfiguration einer Anwendung. 
 
 1. Melden Sie sich unter Verwendung Ihres Azure-Abonnementkontos am [Azure-Portal](https://portal.azure.com) an.  
-2. Klicken Sie im linken Bereich auf die Ressource **Azure Active Directory** und dann auf **App-Registrierungen** und **+ Registrierung einer neuen Anwendung**:  
+1. Klicken Sie im linken Bereich auf die Ressource **Azure Active Directory** und dann auf **App-Registrierungen** und **+ Registrierung einer neuen Anwendung**:  
    
    ![Azure-Portal: Registrierung einer Anwendung bei Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration.png)
 
-3. Füllen Sie auf der Seite **Erstellen** die erforderlichen Parameter aus:
+1. Füllen Sie auf der Seite **Erstellen** die erforderlichen Parameter aus:
    
    Parameter|BESCHREIBUNG
    ---|---
@@ -58,27 +59,27 @@ Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch
 
    ![Azure-Portal: Registrierung einer Anwendung bei Azure AD – Erstellung](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-create.png)
 
-4. Ressourcenanwendungen stellen REST-APIs zur Verwendung durch andere Anwendungen bereit und werden ebenfalls bei Azure AD registriert. APIs bieten durch die Bereitstellung von „Bereichen“ differenzierten/sicheren Zugriff auf Clientanwendungen. Da Ihre Anwendung die API „Azure Time Series Insights“ aufruft, müssen Sie die API und den Bereich angeben. Zur Laufzeit wird die Berechtigung dafür angefordert/gewährt. Klicken Sie auf **Einstellungen** und anschließend auf **Erforderliche Berechtigungen** und **+ Hinzufügen**:
+1. Ressourcenanwendungen stellen REST-APIs zur Verwendung durch andere Anwendungen bereit und werden ebenfalls bei Azure AD registriert. APIs bieten durch die Bereitstellung von „Bereichen“ differenzierten/sicheren Zugriff auf Clientanwendungen. Da Ihre Anwendung die API „Azure Time Series Insights“ aufruft, müssen Sie die API und den Bereich angeben. Zur Laufzeit wird die Berechtigung dafür angefordert/gewährt. Klicken Sie auf **Einstellungen** und anschließend auf **Erforderliche Berechtigungen** und **+ Hinzufügen**:
 
    ![Azure-Portal: Hinzufügen von Berechtigungen für Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms.png)
 
-5. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **1 API auswählen**, um die TSI-API anzugeben. Geben Sie auf der Seite **API auswählen** im Suchfeld „azure time“ ein. Wählen Sie anschließend in der Ergebnisliste die API „Azure Time Series Insights“ aus, und klicken Sie auf **Auswählen**: 
+1. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **1 API auswählen**, um die TSI-API anzugeben. Geben Sie auf der Seite **API auswählen** im Suchfeld „azure time“ ein. Wählen Sie anschließend in der Ergebnisliste die API „Azure Time Series Insights“ aus, und klicken Sie auf **Auswählen**: 
 
    ![Azure-Portal: Hinzufügen von Berechtigungen für Azure AD – API](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api.png)
 
-6. Nun geben Sie einen Bereich für die API an. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **2 Berechtigungen auswählen**. Wählen Sie auf der Seite **Zugriff aktivieren** den Bereich „Access Azure Time Series Insights service“ (Auf Azure Time Series Insights-Dienst zugreifen) aus. Klicken Sie auf **Auswählen**. Dadurch gelangen Sie zurück auf die Seite **API-Zugriff hinzufügen**. Klicken Sie dort auf **Fertig**:
+1. Nun geben Sie einen Bereich für die API an. Klicken Sie auf der Seite **API-Zugriff hinzufügen** auf **2 Berechtigungen auswählen**. Wählen Sie auf der Seite **Zugriff aktivieren** den Bereich „Access Azure Time Series Insights service“ (Auf Azure Time Series Insights-Dienst zugreifen) aus. Klicken Sie auf **Auswählen**. Dadurch gelangen Sie zurück auf die Seite **API-Zugriff hinzufügen**. Klicken Sie dort auf **Fertig**:
 
    ![Azure-Portal: Hinzufügen von Berechtigungen für Azure AD – Bereich](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-add-perms-api-scopes.png)
 
-7. Beachten Sie, dass auf der Seite **Erforderliche Berechtigungen** nun die API „Azure Time Series Insights“ aufgeführt ist. Sie müssen außerdem vorab für alle Benutzer die entsprechende Berechtigung erteilen, damit die Anwendung auf die API und den Bereich zugreifen kann. Klicken Sie oben auf die Schaltfläche **Berechtigungen erteilen** und anschließend auf **Ja**:
+1. Beachten Sie, dass auf der Seite **Erforderliche Berechtigungen** nun die API „Azure Time Series Insights“ aufgeführt ist. Sie müssen außerdem vorab für alle Benutzer die entsprechende Berechtigung erteilen, damit die Anwendung auf die API und den Bereich zugreifen kann. Klicken Sie oben auf die Schaltfläche **Berechtigungen erteilen** und anschließend auf **Ja**:
 
    ![Azure-Portal: Erforderliche Berechtigungen für Azure AD – Zustimmung](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-required-permissions-consent.png)
 
-8. Wie bereits erwähnt müssen Sie darüber hinaus das Anwendungsmanifest aktualisieren. Klicken Sie auf der Breadcrumb-Leiste auf den Namen der Anwendung, um zurück zur Seite **Registrierte App** zu gelangen. Klicken Sie auf **Manifest**, ändern Sie die Eigenschaft `oauth2AllowImplicitFlow` in `true`, und klicken Sie auf **Speichern**:
+1. Wie bereits erwähnt müssen Sie darüber hinaus das Anwendungsmanifest aktualisieren. Klicken Sie auf der Breadcrumb-Leiste auf den Namen der Anwendung, um zurück zur Seite **Registrierte App** zu gelangen. Klicken Sie auf **Manifest**, ändern Sie die Eigenschaft `oauth2AllowImplicitFlow` in `true`, und klicken Sie auf **Speichern**:
 
    ![Azure-Portal: Aktualisieren des Manifests – Azure AD](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-update-manifest.png)
 
-9. Klicken Sie abschließend auf die Breadcrumb-Leiste, um erneut die Seite **Registrierte App** aufzurufen, und kopieren Sie die Eigenschaften der **URL der Startseite** und der **Anwendungs-ID** für Ihre Anwendung. Sie verwenden diese Eigenschaften in einem späteren Schritt:
+1. Klicken Sie abschließend auf die Breadcrumb-Leiste, um erneut die Seite **Registrierte App** aufzurufen, und kopieren Sie die Eigenschaften der **URL der Startseite** und der **Anwendungs-ID** für Ihre Anwendung. Sie verwenden diese Eigenschaften in einem späteren Schritt:
 
    ![Azure-Portal: Azure AD-Eigenschaften](media/tutorial-create-tsi-sample-spa/ap-aad-app-registration-application.png)
 
@@ -92,15 +93,15 @@ Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch
    - **index.html**: HTML und JavaScript für die Seite https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html
    - **sampleStyles.css:** CSS-Stylesheet: https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/sampleStyles.css
     
-2. Starten Sie Visual Studio, und melden Sie Sich an, um ein Projekt für die Webanwendung zu erstellen. Klicken Sie im Menü **Datei** auf **Öffnen** > **Website**. Wählen Sie im Dialogfeld **Website öffnen** das Arbeitsverzeichnis aus, in dem Sie die HTML- und CSS-Dateien gespeichert haben, und klicken Sie dann auf **Öffnen**:
+1. Starten Sie Visual Studio, und melden Sie Sich an, um ein Projekt für die Webanwendung zu erstellen. Klicken Sie im Menü **Datei** auf **Öffnen** > **Website**. Wählen Sie im Dialogfeld **Website öffnen** das Arbeitsverzeichnis aus, in dem Sie die HTML- und CSS-Dateien gespeichert haben, und klicken Sie dann auf **Öffnen**:
 
    ![VS: Datei > Website öffnen](media/tutorial-create-tsi-sample-spa/vs-file-open-web-site.png)
 
-3. Öffnen Sie in Visual Studio den **Projektmappen-Explorer** über das Menü **Ansicht**. Daraufhin sollte die neue Projektmappe mit einem Websiteprojekt (Globussymbol) angezeigt werden, das die HTML- und CSS-Dateien enthält:
+1. Öffnen Sie in Visual Studio den **Projektmappen-Explorer** über das Menü **Ansicht**. Daraufhin sollte die neue Projektmappe mit einem Websiteprojekt (Globussymbol) angezeigt werden, das die HTML- und CSS-Dateien enthält:
 
    ![VS: Neue Projektmappe im Projektmappen-Explorer](media/tutorial-create-tsi-sample-spa/vs-solution-explorer.png)
 
-4. Bevor Sie die Anwendung veröffentlichen können, müssen Sie Teile des JavaScript-Codes in **index.html** aktualisieren: 
+1. Bevor Sie die Anwendung veröffentlichen können, müssen Sie Teile des JavaScript-Codes in **index.html** aktualisieren: 
 
    a. Ändern Sie zunächst die Pfade für den Verweis auf die JavaScript- und Stylesheet-Dateien im Element `<head>`. Öffnen Sie die Datei **index.html** in Ihrer Visual Studio-Projektmappe, und suchen Sie die folgenden Zeilen JavaScript-Code. Heben Sie die Auskommentierung der drei Zeilen unter „PROD RESOURCE LINKS“ auf, und kommentieren Sie die drei Zeilen unter „DEV RESOURCE LINKS“ aus:
    
@@ -133,7 +134,7 @@ Vor dem Erstellen der Anwendung müssen Sie sie bei Azure AD registrieren. Durch
 
    c. Speichern Sie die Datei **index.html**, wenn Sie mit dem Bearbeiten fertig sind.
 
-5. Veröffentlichen Sie nun die Webanwendung als Azure App Service-Instanz in Ihrem Azure-Abonnement:  
+1. Veröffentlichen Sie nun die Webanwendung als Azure App Service-Instanz in Ihrem Azure-Abonnement:  
 
    > [!NOTE]
    > Einige Felder in den folgenden Dialogfeldern werden mit Daten aus Ihrem Azure-Abonnement aufgefüllt. Daher kann es einige Sekunden dauern, bis die einzelnen Dialogfelder vollständig geladen werden und Sie den Vorgang fortsetzen können.  
@@ -187,7 +188,7 @@ In diesem Tutorial werden mehrere ausgeführte Azure-Dienste erstellt. Falls Sie
 Gehen Sie im Azure-Portal im Menü auf der linken Seite wie folgt vor:
 
 1. Klicken Sie auf das Symbol **Ressourcengruppen**, und wählen Sie dann die Ressourcengruppe aus, die Sie für die TSI-Umgebung erstellt haben. Klicken Sie oben auf der Seite auf **Ressourcengruppe löschen**, geben Sie den Namen der Ressourcengruppe ein, und klicken Sie dann auf **Löschen**. 
-2. Klicken Sie auf das Symbol **Ressourcengruppen**, und wählen Sie dann die Ressourcengruppe aus, die mit dem Solution Accelerator für die Gerätesimulation erstellt wurde. Klicken Sie oben auf der Seite auf **Ressourcengruppe löschen**, geben Sie den Namen der Ressourcengruppe ein, und klicken Sie dann auf **Löschen**. 
+1. Klicken Sie auf das Symbol **Ressourcengruppen**, und wählen Sie dann die Ressourcengruppe aus, die mit dem Solution Accelerator für die Gerätesimulation erstellt wurde. Klicken Sie oben auf der Seite auf **Ressourcengruppe löschen**, geben Sie den Namen der Ressourcengruppe ein, und klicken Sie dann auf **Löschen**. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

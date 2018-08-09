@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 4a6e0924492c26c9bad4ed0af207ad9764c3cc5c
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3659572f46ae82d39a6c53246db2b6a536be32c8
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831896"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39282939"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnose und Behebung von Synchronisierungsfehlern aufgrund doppelter Attribute
 
@@ -127,6 +127,12 @@ Basierend auf den Antworten auf die oben genannten Fragen wird die Schaltfläche
 
 Nach den oben beschriebenen Schritten kann der Benutzer auf die ursprüngliche Ressource zugreifen, die mit einem vorhandenen Objekt verknüpft ist. Der Wert zum **Diagnosestatus** in der Listenansicht wird in **Synchronisierung ausstehend** aktualisiert. Der Synchronisierungsfehler wird nach der nächsten Synchronisierung behoben. In Connect Health wird der behobene Synchronisierungsfehler nicht mehr in der Listenansicht angezeigt.
 
+## <a name="failures-and-error-messages"></a>Fehler und Fehlermeldungen
+**Der Benutzer mit dem konfliktverursachenden Attribut wird in Azure Active Directory vorläufig gelöscht. Stellen Sie sicher, dass der Benutzer dauerhaft gelöscht wird, bevor Sie den Vorgang wiederholen.**  
+Der Benutzer mit dem konfliktverursachenden Attribut in Azure AD muss bereinigt werden, bevor Sie den Fix anwenden können. Lesen Sie die Informationen zum [endgültigen Löschen des Benutzers in Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore), bevor Sie die Anwendung des Fixes wiederholen. Darüber hinaus wird der Benutzer 30 Tage nach seiner vorläufigen Löschung automatisch endgültig gelöscht. 
+
+**Die Aktualisierung des Quellankers für cloudbasierte Benutzer in Ihrem Mandanten wird nicht unterstützt.**  
+Cloudbasierte Benutzer in Azure AD dürfen keinen Quellanker besitzen. Die Aktualisierung des Quellankers wird in diesem Fall nicht unterstützt. Ein manueller Fix aus der lokalen Umgebung ist erforderlich. 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **F.** Was passiert, wenn beim Anwenden der Änderung über **Fix anwenden** ein Fehler auftritt?  

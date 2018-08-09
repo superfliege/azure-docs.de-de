@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: ea6008092f8fbfde8963da50d5273d36a4a30fe3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a23d68e0b48a01cf98a5d1cc136a6af46895b0ee
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050009"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Tutorial: Azure Active Directory-Integration mit Zscaler ZSCloud
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Zscaler ZSCloud über den Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-zscaler-zscloud-from-the-gallery"></a>Hinzufügen von Zscaler ZSCloud über den Katalog
 Zum Konfigurieren der Integration von Zscaler ZSCloud in Azure AD müssen Sie Zscaler ZSCloud über den Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von Zscaler ZSCloud in Azure AD müssen Sie Zs
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld **Zscaler ZSCloud** ein.
+1. Geben Sie im Suchfeld **Zscaler ZSCloud** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_search.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **Zscaler ZSCloud** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **Zscaler ZSCloud** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_addfromgallery.png)
 
@@ -89,11 +89,11 @@ Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure A
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Zscaler ZSCloud müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Konfigurieren von Proxyeinstellungen](#configuring-proxy-settings)** zum Konfigurieren der Proxyeinstellungen in Internet Explorer.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Zscaler ZSCloud-Testbenutzers](#creating-a-zscaler-zscloud-test-user)**, um eine Pendant von Britta Simon in Zscaler ZSCloud zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren von Proxyeinstellungen](#configuring-proxy-settings)** zum Konfigurieren der Proxyeinstellungen in Internet Explorer.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Zscaler ZSCloud-Testbenutzers](#creating-a-zscaler-zscloud-test-user)**, um eine Pendant von Britta Simon in Zscaler ZSCloud zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -105,11 +105,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_samlbase.png)
 
-3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Zscaler ZSCloud** aus:
+1. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für Zscaler ZSCloud** aus:
 
     ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_url.png)
 
@@ -118,29 +118,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an den [Zscaler ZSCloud-Support](https://help.zscaler.com/zia), um diesen Wert zu erhalten. 
  
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Zscaler ZSCloud-Konfiguration** auf **Zscaler ZSCloud konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Zscaler ZSCloud-Konfiguration** auf **Zscaler ZSCloud konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_configure.png) 
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler ZSCloud-Unternehmenswebsite als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei der Zscaler ZSCloud-Unternehmenswebsite als Administrator an.
 
-8. Klicken Sie oben im Menü auf **Verwaltung**.
+1. Klicken Sie oben im Menü auf **Verwaltung**.
    
     ![Verwaltung](./media/zscaler-zscloud-tutorial/ic800206.png "Verwaltung")
 
-9. Klicken Sie unter **Administratoren & Rollen verwalten** auf **Benutzer & Authentifizierung verwalten**.   
+1. Klicken Sie unter **Administratoren & Rollen verwalten** auf **Benutzer & Authentifizierung verwalten**.   
             
     ![Benutzer &amp; Authentifizierung verwalten](./media/zscaler-zscloud-tutorial/ic800207.png "Benutzer &amp; Authentifizierung verwalten")
 
-10. Führen Sie im Abschnitt **Auswählen von Authentifizierungsoptionen für Ihre Organisation** die folgenden Schritte aus:   
+1. Führen Sie im Abschnitt **Auswählen von Authentifizierungsoptionen für Ihre Organisation** die folgenden Schritte aus:   
                 
     ![Authentifizierung](./media/zscaler-zscloud-tutorial/ic800208.png "Authentifizierung")
    
@@ -148,7 +148,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Klicken Sie auf **Einzelne Parameter der einmaligen Anmeldung für SAML konfigurieren**.
 
-11. Führen Sie auf der Dialogfeldseite **Parameter der einmaligen Anmeldung für SAML konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Fertig**.
+1. Führen Sie auf der Dialogfeldseite **Parameter der einmaligen Anmeldung für SAML konfigurieren** die folgenden Schritte aus, und klicken Sie dann auf **Fertig**.
 
     ![Einmaliges Anmelden](./media/zscaler-zscloud-tutorial/ic800209.png "des einmaligen Anmeldens")
     
@@ -160,7 +160,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     d. Wählen Sie **Automatische SAML-Bereitstellung aktivieren**.
 
-12. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogseite **Benutzerauthentifizierung konfigurieren** die folgenden Schritte aus:
 
     ![Verwaltung](./media/zscaler-zscloud-tutorial/ic800210.png "Verwaltung")
     
@@ -173,17 +173,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Starten Sie **Internet Explorer**.
 
-2. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.   
+1. Wählen Sie im Menü **Extras** die Option **Internetoptionen**, um das Dialogfeld **Internetoptionen** zu öffnen.   
     
      ![Internetoptionen](./media/zscaler-zscloud-tutorial/ic769492.png "Internetoptionen")
 
-3. Klicken Sie auf die Registerkarte **Verbindungen** .   
+1. Klicken Sie auf die Registerkarte **Verbindungen** .   
   
      ![Verbindungen](./media/zscaler-zscloud-tutorial/ic769493.png "Verbindungen")
 
-4. Klicken Sie zum Öffnen des Dialogfelds **LAN-Einstellungen** auf **LAN-Einstellungen**.
+1. Klicken Sie zum Öffnen des Dialogfelds **LAN-Einstellungen** auf **LAN-Einstellungen**.
 
-5. Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:   
+1. Führen Sie im Abschnitt "Proxyserver" die folgenden Schritte aus:   
    
     ![Proxyserver](./media/zscaler-zscloud-tutorial/ic769494.png "Proxyserver")
 
@@ -197,7 +197,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Klicken Sie zum Schließen des Dialogfelds **Einstellungen für lokales Netzwerk** auf **OK**.
 
-6. Klicken Sie zum Schließen des Dialogfelds **Internetoptionen** auf **OK**.
+1. Klicken Sie zum Schließen des Dialogfelds **Internetoptionen** auf **OK**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -210,15 +210,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-zscloud-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-zscloud-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-zscloud-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/zscaler-zscloud-tutorial/create_aaduser_04.png) 
 
@@ -239,19 +239,19 @@ Im Fall von ZScaler ZSCloud ist die Bereitstellung eine manuelle Aufgabe.
 
 1. Melden Sie sich bei Ihrem **Zscaler** -Mandanten an.
 
-2. Klicken Sie auf **Verwaltung**.   
+1. Klicken Sie auf **Verwaltung**.   
    
     ![Verwaltung](./media/zscaler-zscloud-tutorial/ic781035.png "Verwaltung")
 
-3. Klicken Sie auf **Benutzerverwaltung**.   
+1. Klicken Sie auf **Benutzerverwaltung**.   
         
      ![Hinzufügen](./media/zscaler-zscloud-tutorial/ic781037.png "Hinzufügen")
 
-4. Klicken Sie auf der Registerkarte **Benutzer** auf **Hinzufügen**.
+1. Klicken Sie auf der Registerkarte **Benutzer** auf **Hinzufügen**.
       
     ![Hinzufügen](./media/zscaler-zscloud-tutorial/ic781037.png "Hinzufügen")
 
-5. Führen Sie im Abschnitt "Benutzer hinzufügen" die folgenden Schritte aus:
+1. Führen Sie im Abschnitt "Benutzer hinzufügen" die folgenden Schritte aus:
         
     ![Benutzer hinzufügen](./media/zscaler-zscloud-tutorial/ic781038.png "Benutzer hinzufügen")
    
@@ -274,23 +274,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Liste der Anwendungen **Zscaler ZSCloud** aus.
+1. Wählen Sie in der Liste der Anwendungen **Zscaler ZSCloud** aus.
 
     ![Configure single sign-on](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

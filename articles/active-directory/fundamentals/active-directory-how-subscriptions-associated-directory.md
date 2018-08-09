@@ -14,12 +14,12 @@ ms.date: 12/12/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: bcae3f51e2245928c8110d06f3514177d57ac883
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6b0933e9aa732cb9a01a454764fb0425465ec078
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448961"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39503310"
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory
 
@@ -59,7 +59,7 @@ Die Änderung des Abonnementverzeichnisses erfolgt auf Dienstebene. Sie wirkt si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum kostenlosen Erstellen eines neuen Azure AD-Verzeichnisses finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../develop/active-directory-howto-tenant.md).
+* Weitere Informationen zum kostenlosen Erstellen eines neuen Azure AD-Verzeichnisses finden Sie unter [Einrichten eines Azure Active Directory-Mandanten](../develop/quickstart-create-new-tenant.md).
 * Weitere Informationen zum Übertragen der Abrechnung für ein Azure-Abonnement finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../../billing/billing-subscription-transfer.md).
 * Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Informationen zum Zuweisen von Rollen in Azure AD finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)

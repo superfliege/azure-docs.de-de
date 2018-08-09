@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 794945caeea113dc6f1cc2ab5e11a76c3e88c83e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 554930b18a271a677aeb5e82c3e62a94965a8e7f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041907"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439608"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamphoria"></a>Lernprogramm: Azure Active Directory-Integration mit Teamphoria
 
@@ -53,7 +53,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Teamphoria aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-teamphoria-from-the-gallery"></a>Hinzufügen von Teamphoria aus dem Katalog
 Zum Konfigurieren der Integration von Teamphoria in Azure AD müssen Sie Teamphoria aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,19 +64,19 @@ Zum Konfigurieren der Integration von Teamphoria in Azure AD müssen Sie Teampho
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld den Suchbegriff **Teamphoria** ein.
+1. Geben Sie im Suchfeld den Suchbegriff **Teamphoria** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/teamphoria-tutorial/tutorial_teamphoria_search.png)
 
-5. Wählen Sie im Ergebnisbereich **Teamphoria** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **Teamphoria** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/teamphoria-tutorial/tutorial_teamphoria_addfromgallery.png)
 
@@ -88,10 +88,10 @@ Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer i
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Teamphoria müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines Teamphoria-Testbenutzers](#creating-a-teamphoria-test-user)**, um in Teamphoria einen Gegenpart für Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines Teamphoria-Testbenutzers](#creating-a-teamphoria-test-user)**, um in Teamphoria einen Gegenpart für Britta Simon zu erhalten, der mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -103,11 +103,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
     ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_samlbase.png)
 
-3. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Teamphoria** aus:
+1. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Teamphoria** aus:
 
     ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_url.png)
 
@@ -116,29 +116,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Sie müssen den Wert mit der richtigen Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für Teamphoria-Clients](https://www.teamphoria.com/), um die Anmelde-URL abzurufen.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie das Zertifikat auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie das Zertifikat auf Ihrem Computer.
 
     ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_certificate.png)
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Teamphoria-Konfiguration** auf **Teamphoria konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Teamphoria-Konfiguration** auf **Teamphoria konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_configure.png)
 
-7. Um einmaliges Anmelden auf **Teamphoria**-Seite zu konfigurieren, melden Sie sich als Administrator bei Ihrer Teamphoria-Anwendung an.
+1. Um einmaliges Anmelden auf **Teamphoria**-Seite zu konfigurieren, melden Sie sich als Administrator bei Ihrer Teamphoria-Anwendung an.
 
-8. Wechseln Sie auf der linken Symbolleiste zu **ADMIN SETTINGS** (Administratoreinstellungen), und klicken Sie auf der Registerkarte „Configure“ (Konfigurieren) auf **SINGLE SIGN-ON** (Einmaliges Anmelden), um das SSO-Konfigurationsfenster zu öffnen.
+1. Wechseln Sie auf der linken Symbolleiste zu **ADMIN SETTINGS** (Administratoreinstellungen), und klicken Sie auf der Registerkarte „Configure“ (Konfigurieren) auf **SINGLE SIGN-ON** (Einmaliges Anmelden), um das SSO-Konfigurationsfenster zu öffnen.
 
     ![Configure single sign-on](./media/teamphoria-tutorial/admin_sso_configure.png)
 
-9. Klicken Sie in der oberen rechten Ecke auf die Option **ADD NEW IDENTITY PROVIDER** (Neue Identitätsanbieter hinzufügen), um das Formular zum Hinzufügen der Einstellungen für SSO zu öffnen.
+1. Klicken Sie in der oberen rechten Ecke auf die Option **ADD NEW IDENTITY PROVIDER** (Neue Identitätsanbieter hinzufügen), um das Formular zum Hinzufügen der Einstellungen für SSO zu öffnen.
 
     ![Configure single sign-on](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
-10. Geben Sie die Details wie unten beschrieben in den Feldern ein.
+1. Geben Sie die Details wie unten beschrieben in den Feldern ein.
 
     ![Configure single sign-on](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
@@ -163,15 +163,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/teamphoria-tutorial/create_aaduser_01.png) 
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/teamphoria-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/teamphoria-tutorial/create_aaduser_03.png)
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/teamphoria-tutorial/create_aaduser_04.png) 
 
@@ -191,15 +191,15 @@ Damit sich Azure AD-Benutzer bei Teamphoria anmelden können, müssen sie in Tea
 
 1. Melden Sie sich bei der Teamphoria-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie in der linken Symbolleiste auf **ADMIN**-Einstellungen, und klicken Sie auf der Registerkarte **MANAGE** (Verwalten) auf **USERS** (Benutzer), um die Administratorseite für Benutzer zu öffnen.
+1. Klicken Sie in der linken Symbolleiste auf **ADMIN**-Einstellungen, und klicken Sie auf der Registerkarte **MANAGE** (Verwalten) auf **USERS** (Benutzer), um die Administratorseite für Benutzer zu öffnen.
 
     ![Mitarbeiter hinzufügen](./media/teamphoria-tutorial/admin_manage_users.png)
 
-3. Klicken Sie auf die Option **MANUAL INVITE** (Manuell einladen).
+1. Klicken Sie auf die Option **MANUAL INVITE** (Manuell einladen).
 
     ![Invite People](./media/teamphoria-tutorial/admin_manage_add_users.png)
 
-4. Führen Sie auf dieser Seite die folgende Aktion aus.
+1. Führen Sie auf dieser Seite die folgende Aktion aus.
     
     ![Invite People](./media/teamphoria-tutorial/manual_user_invite.png)
 
@@ -223,23 +223,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201]
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **Teamphoria** aus.
+1. Wählen Sie in der Anwendungsliste den Eintrag **Teamphoria** aus.
 
     ![Configure single sign-on](./media/teamphoria-tutorial/tutorial_teamphoria_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
 
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 0050613f4a92380f48a93cdf1f82ed91dc34f6a4
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343517"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Tutorial: Azure Active Directory-Integration mit LinkedIn Learning
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von LinkedIn Learning aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-linkedin-learning-from-the-gallery"></a>Hinzufügen von LinkedIn Learning aus dem Katalog
 Zum Konfigurieren der Integration von LinkedIn Learning in Azure AD müssen Sie LinkedIn Learning aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,15 +63,15 @@ Zum Konfigurieren der Integration von LinkedIn Learning in Azure AD müssen Sie 
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie **LinkedIn Learning** im Suchfeld ein. Wählen Sie im Ergebnisbereich die Option **LinkedIn Learning** aus, um die Anwendung hinzuzufügen.
+1. Geben Sie **LinkedIn Learning** im Suchfeld ein. Wählen Sie im Ergebnisbereich die Option **LinkedIn Learning** aus, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_000.png)
 
@@ -85,10 +85,10 @@ Diese Linkbeziehung wird hergestellt, indem Sie den Wert des **Benutzernamens** 
 Zum Konfigurieren und Testen des einmaligen Anmeldens bei LinkedIn Learning über Azure AD müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines LinkedIn Learning-Testbenutzers](#creating-a-linkedin-learning-test-user)** – um das einmalige Anmelden über Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines LinkedIn Learning-Testbenutzers](#creating-a-linkedin-learning-test-user)** – um das einmalige Anmelden über Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -100,21 +100,21 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial-linkedin_01.png)
 
-3. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrem LinkedIn Learning-Mandanten als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei Ihrem LinkedIn Learning-Mandanten als Administrator an.
 
-4. Klicken Sie im **Account Center** unter **Settings** auf **Global Settings**. Wählen Sie außerdem aus der Dropdownliste die Option **Learning - Default** aus.
+1. Klicken Sie im **Account Center** unter **Settings** auf **Global Settings**. Wählen Sie außerdem aus der Dropdownliste die Option **Learning - Default** aus.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-5. Klicken Sie auf **ODER klicken Sie hier, um einzelne Felder aus dem Formular zu laden und zu kopieren**, und kopieren Sie die **Entitäts-ID** und **Assertion Consumer Access(ACS)-URL**.
+1. Klicken Sie auf **ODER klicken Sie hier, um einzelne Felder aus dem Formular zu laden und zu kopieren**, und kopieren Sie die **Entitäts-ID** und **Assertion Consumer Access(ACS)-URL**.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
-6. Führen Sie im Azure-Portal unter **Domäne und URLs für LinkedIn Learning** die folgenden Schritte aus, wenn Sie das einmalige Anmelden im Modus **IdP-initiiert** konfigurieren möchten.
+1. Führen Sie im Azure-Portal unter **Domäne und URLs für LinkedIn Learning** die folgenden Schritte aus, wenn Sie das einmalige Anmelden im Modus **IdP-initiiert** konfigurieren möchten.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_01.png)
 
@@ -122,17 +122,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
 
     b. Geben Sie im Feld **Antwort-URL** den Wert für **Assertion Consumer Access (ACS) Url** ein, den Sie aus dem LinkedIn-Portal kopiert haben.
 
-7. Wenn Sie das einmalige Anmelden im Modus **SP-initiiert** konfigurieren möchten, klicken Sie im Konfigurationsabschnitt auf die Option „Erweiterte URL-Einstellungen anzeigen“, und konfigurieren Sie die Anmelde-URL nach folgendem Muster:
+1. Wenn Sie das einmalige Anmelden im Modus **SP-initiiert** konfigurieren möchten, klicken Sie im Konfigurationsabschnitt auf die Option „Erweiterte URL-Einstellungen anzeigen“, und konfigurieren Sie die Anmelde-URL nach folgendem Muster:
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_signon_02.png)   
     
-8. Die LinkedIn Learning-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, LinkedIn Learning erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben. 
+1. Die LinkedIn Learning-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Der Standardwert von **Benutzer-ID** lautet **user.userprincipalname**, LinkedIn Learning erwartet jedoch, dass dieser Wert der E-Mail-Adresse des Benutzers zugeordnet ist. Hierfür können Sie das **user.mail**-Attribut aus der Liste verwenden oder den entsprechenden Attributwert gemäß der Konfiguration in Ihrer Organisation angeben. 
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/updateusermail.png)
     
-9. Klicken Sie im Abschnitt **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, und legen Sie die Attribute fest. Der Benutzer muss vier Ansprüche mit den Namen **email**, **department**, **firstname** und **lastname** hinzufügen, und der Wert muss mit **user.mail**, **user.department**, **user.givenname** bzw. **user.surname** zugeordnet werden.
+1. Klicken Sie im Abschnitt **Benutzerattribute** auf **Alle weiteren Benutzerattribute anzeigen und bearbeiten**, und legen Sie die Attribute fest. Der Benutzer muss vier Ansprüche mit den Namen **email**, **department**, **firstname** und **lastname** hinzufügen, und der Wert muss mit **user.mail**, **user.department**, **user.givenname** bzw. **user.surname** zugeordnet werden.
 
     | Attributname | Attributwert |
     | --- | --- |
@@ -155,7 +155,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
     
     d. Klicken Sie auf **OK**.
 
-10. Führen Sie für das Attribut **Name** die folgenden Schritte aus:
+1. Führen Sie für das Attribut **Name** die folgenden Schritte aus:
 
     a. Klicken Sie auf das Attribut, um das Fenster **Attribut bearbeiten** zu öffnen.
 
@@ -165,19 +165,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden über Azure AD im Azur
     
     c. Klicken Sie auf **OK**, um die Einstellung zu speichern.
 
-11. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_certificate.png)
 
-12. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_general_400.png)
 
-13. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Laden Sie die XML-Datei hoch, die Sie gerade aus dem Azure-Portal heruntergeladen haben, indem Sie auf die Option „XML-Datei hochladen“ klicken.
+1. Wechseln Sie zum Abschnitt **LinkedIn-Administratoreinstellungen**. Laden Sie die XML-Datei hoch, die Sie gerade aus dem Azure-Portal heruntergeladen haben, indem Sie auf die Option „XML-Datei hochladen“ klicken.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_metadata_03.png)
 
-14. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
+1. Klicken Sie auf **Ein**, um das einmalige Anmelden zu aktivieren. Der Status des einmaligen Anmeldens wechselt von **Nicht verbunden** zu **Verbunden**.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_05.png)
 
@@ -192,15 +192,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/linkedinlearning-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/linkedinlearning-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/linkedinlearning-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/linkedinlearning-tutorial/create_aaduser_04.png) 
 
@@ -230,23 +230,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201]
 
-2. Wählen Sie in der Anwendungsliste **LinkedIn Learning** aus.
+1. Wählen Sie in der Anwendungsliste **LinkedIn Learning** aus.
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial-linkedinlearning_0001.png)
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
 
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 

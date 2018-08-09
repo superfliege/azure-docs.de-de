@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 18b34af8dc383cfa86017162ec48782f156156bc
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: efd1c1eafbff8bf56b16131e44cff6b03ce7338a
+ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092694"
+ms.lasthandoff: 07/26/2018
+ms.locfileid: "39264809"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Verwalten der Mandantenregistrierung in Azure Stack
 
@@ -35,6 +35,13 @@ Sie können diesen Vorgang auch verwenden, wenn Sie das einem Mandanten zugeordn
 
 Beachten Sie, dass nur ein einziges Azure-Abonnement einem Mandanten zugeordnet werden kann. Wenn Sie versuchen, einem vorhandenen Mandanten ein zweites Abonnement hinzuzufügen, wird das erste Abonnement überschrieben. 
 
+### <a name="use-api-profiles"></a>Verwenden von API-Profilen
+
+Für die Cmdlets in diesem Artikel muss beim Ausführen von PowerShell ein API-Profil angegeben werden. API-Profile stellen mehrere Azure-Ressourcenanbieter und ihre API-Versionen dar. Sie unterstützen Sie dabei, bei der Interaktion mit mehreren Clouds die richtige Version der API zu verwenden beispielsweise bei der Nutzung einer globalen Azure-Umgebung und von Azure Stack. Profile werden durch einen Namen angegeben, der dem Veröffentlichungsdatum entspricht. Für diesen Artikel muss das Profil **2017-09-03** verwendet werden.
+
+Weitere Informationen zu Azure Stack und API-Profilen finden Sie unter [Verwalten von API-Versionsprofilen in Azure Stack](user/azure-stack-version-profiles.md). Anweisungen für die ersten Schritte mit API-Profilen und PowerShell finden Sie unter [Verwenden von API-Versionsprofilen für PowerShell in Azure Stack](user/azure-stack-version-profiles-powershell.md).
+
+### <a name="parameters"></a>Parameter
 
 | Parameter                  | BESCHREIBUNG |
 |---                         | --- |

@@ -1,25 +1,20 @@
 ---
-title: Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight | Microsoft-Dokumentation
+title: Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight
 description: Hier erfahren Sie, wie Sie Ressourcen für Spark-Cluster unter Azure HDInsight verwalten, um die Leistung zu optimieren.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 9da7d4e3-458e-4296-a628-77b14643f7e4
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
-ms.author: jgao
-ms.openlocfilehash: afefec77d9d79ad97fa351bc8b0710894c242d76
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 3f85ed1f2e0ce8345a71a725b363d718fc980a07
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31520507"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622958"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight 
 

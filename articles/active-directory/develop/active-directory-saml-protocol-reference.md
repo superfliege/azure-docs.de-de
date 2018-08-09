@@ -17,15 +17,15 @@ ms.date: 07/21/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 26984244c0ffa5e665394e903ba95b0487f214a8
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 067924294838459c866a0603ab092d139f1e6331
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316908"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579230"
 ---
 # <a name="how-azure-active-directory-uses-the-saml-protocol"></a>Verwendung des SAML-Protokolls durch Azure Active Directory
-Azure Active Directory (Azure AD) verwendet das SAML 2.0-Protokoll, um es Anwendungen zu ermöglichen, für Benutzer das einmalige Anmelden bereitzustellen. In den SAML-Profilen zum [einmaligen Anmelden](active-directory-single-sign-on-protocol-reference.md) und [einmaligen Abmelden](active-directory-single-sign-out-protocol-reference.md) von Azure AD wird beschrieben, wie SAML-Assertionen, -Protokolle und -Bindungen im Identitätsanbieterdienst verwendet werden.
+Azure Active Directory (Azure AD) verwendet das SAML 2.0-Protokoll, um es Anwendungen zu ermöglichen, für Benutzer das einmalige Anmelden bereitzustellen. In den SAML-Profilen zum [einmaligen Anmelden](single-sign-on-saml-protocol.md) und [einmaligen Abmelden](single-sign-out-saml-protocol.md) von Azure AD wird beschrieben, wie SAML-Assertionen, -Protokolle und -Bindungen im Identitätsanbieterdienst verwendet werden.
 
 Für das SAML-Protokoll ist es erforderlich, dass der Identitätsanbieter (Azure AD) und der Dienstanbieter (die Anwendung) Informationen übereinander austauschen.
 
@@ -39,4 +39,4 @@ Azure Active Directory macht mandantenspezifische und allgemeine (mandantenunabh
 
 * Der mandantenunabhängige Endpunkt befindet sich unter `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`. Bei dieser Endpunktadresse wird anstelle eines Mandantendomänennamens oder einer ID das Wort **common** verwendet.
 
-Informationen zu den Verbundmetadatendokumenten, die von Azure AD veröffentlicht werden, finden Sie unter [Verbundmetadaten](active-directory-federation-metadata.md).
+Informationen zu den Verbundmetadatendokumenten, die von Azure AD veröffentlicht werden, finden Sie unter [Verbundmetadaten](azure-ad-federation-metadata.md).

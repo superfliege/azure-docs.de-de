@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 38adf3dd2be0770dd815644ece452a82bc98baf9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3ca2f811ff0ac81ea70ec0b22d7429cdc5604171
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645316"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420181"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics mit einer mehrinstanzenfähigen SaaS-App für SQL-Datenbank
 
@@ -46,13 +46,13 @@ Sowohl Log Analytics-Arbeitsbereiche als auch Analyselösungen können im Azure-
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>Erstellen von Leistungsdiagnosedaten durch Simulieren einer Arbeitsauslastung für Ihre Mandanten 
 
 1. Öffnen Sie in der PowerShell ISE „*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1*“. Lassen Sie dieses Skript geöffnet, da Sie während dieses Szenarios u.U. mehrere Lastgenerierungsszenarien ausführen.
-2. Falls noch nicht geschehen, stellen Sie einen Batch von Mandanten bereit, um einen interessanteren Überwachungskontext herzustellen. Dieser Vorgang dauert einige Minuten.
+1. Falls noch nicht geschehen, stellen Sie einen Batch von Mandanten bereit, um einen interessanteren Überwachungskontext herzustellen. Dieser Vorgang dauert einige Minuten.
 
    a. Legen Sie **$DemoScenario = 1** fest – _Bereitstellen eines Batchs von Mandanten_
 
    b. Um das Skript ausführen und weitere 17 Mandanten bereitzustellen, drücken Sie F5.
 
-3. Starten Sie jetzt den Lastgenerator, um eine simulierte Auslastung für alle Mandanten auszuführen.
+1. Starten Sie jetzt den Lastgenerator, um eine simulierte Auslastung für alle Mandanten auszuführen.
 
     a. Legen Sie **$DemoScenario = 2** fest, _Generieren einer Last mit normaler Intensität (ca. 30 DTUs)_.
 
@@ -67,7 +67,7 @@ Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Ticket
 Log Analytics ist ein separater Dienst, der konfiguriert werden muss. Log Analytics erfasst Protokoll- und Telemetriedaten sowie Metriken in einem Log Analytics-Arbeitsbereich. Ein Log Analytics-Arbeitsbereich muss wie andere Ressourcen in Azure erstellt werden. Der Arbeitsbereich muss nicht in derselben Ressourcengruppe erstellt werden, in der sich auch die überwachten Anwendungen befinden. In den meisten Fällen ist das jedoch am sinnvollsten. Bei der Wingtip Tickets-App wird durch das Verwenden einer einzigen Ressourcengruppe sichergestellt, dass der Arbeitsbereich mit der Anwendung gelöscht wird.
 
 1. Öffnen Sie in der PowerShell ISE *..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1*.
-2. Drücken Sie F5, um das Skript auszuführen.
+1. Drücken Sie F5, um das Skript auszuführen.
 
 Jetzt können Sie Log Analytics im Azure-Portal oder im Portal der Operations Management Suite öffnen. Es dauert einige Minuten, bis Telemetriedaten im Log Analytics-Arbeitsbereich erfasst und angezeigt werden. Je länger Sie dem System Zeit zum Sammeln von Diagnosedaten lassen, desto interessanter wird das Ergebnis. 
 
@@ -80,38 +80,38 @@ Jetzt können Sie Log Analytics im Azure-Portal oder im Portal der Operations Ma
 
    ![Öffnen von Log Analytics](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-2. Wählen Sie den Arbeitsbereich namens _wtploganalytics-&lt;Benutzer&gt;_ aus.
+1. Wählen Sie den Arbeitsbereich namens _wtploganalytics-&lt;Benutzer&gt;_ aus.
 
-3. Wählen Sie **Übersicht** aus, um die Log Analytics-Lösung im Azure-Portal zu öffnen.
+1. Wählen Sie **Übersicht** aus, um die Log Analytics-Lösung im Azure-Portal zu öffnen.
 
    ![Übersicht](media/saas-dbpertenant-log-analytics/click-overview.png)
 
     > [!IMPORTANT]
     > Es kann einige Minuten dauern, bis die Lösung aktiv ist. 
 
-4. Klicken Sie auf die Kachel **Azure SQL-Analyse**, um sie zu öffnen.
+1. Klicken Sie auf die Kachel **Azure SQL-Analyse**, um sie zu öffnen.
 
     ![Übersichtskachel](media/saas-dbpertenant-log-analytics/overview.png)
 
-5. Die Ansichten in der Lösung werden mithilfe einer eigenen Bildlaufleiste am unteren Rand seitwärts gescrollt. Aktualisieren Sie die Seite bei Bedarf.
+1. Die Ansichten in der Lösung werden mithilfe einer eigenen Bildlaufleiste am unteren Rand seitwärts gescrollt. Aktualisieren Sie die Seite bei Bedarf.
 
-6. Zum Erkunden der Übersichtsseite wählen Sie die Kacheln oder die einzelnen Datenbanken aus, um einen Drilldown-Explorer zu öffnen.
+1. Zum Erkunden der Übersichtsseite wählen Sie die Kacheln oder die einzelnen Datenbanken aus, um einen Drilldown-Explorer zu öffnen.
 
     ![Log Analytics-Dashboard](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-7. Ändern Sie die Filtereinstellung, um den Zeitbereich zu ändern. In diesem Tutorial wählen Sie **Letzte Stunde** aus.
+1. Ändern Sie die Filtereinstellung, um den Zeitbereich zu ändern. In diesem Tutorial wählen Sie **Letzte Stunde** aus.
 
     ![Zeitfilter](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-8. Wählen Sie eine einzelne Datenbank aus, um die Verwendung von Abfragen und die Metriken für diese Datenbank zu erkunden.
+1. Wählen Sie eine einzelne Datenbank aus, um die Verwendung von Abfragen und die Metriken für diese Datenbank zu erkunden.
 
     ![Datenbankanalyse](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
-9. Scrollen Sie zur Anzeige der Nutzungsmetriken auf der Analyseseite nach rechts.
+1. Scrollen Sie zur Anzeige der Nutzungsmetriken auf der Analyseseite nach rechts.
  
      ![Datenbankmetriken](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-10. Scrollen Sie auf der Analyseseite nach links, und wählen Sie in der Liste **Ressourceninfo** die Kachel „Server“ aus.  
+1. Scrollen Sie auf der Analyseseite nach links, und wählen Sie in der Liste **Ressourceninfo** die Kachel „Server“ aus.  
 
     ![Liste „Ressourceninfo“](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
@@ -119,12 +119,12 @@ Jetzt können Sie Log Analytics im Azure-Portal oder im Portal der Operations Ma
 
     ![Server mit Pools und Datenbanken](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
 
-11. Wählen Sie einen Pool aus. Scrollen Sie auf der daraufhin geöffneten Poolseite nach rechts, um die Metriken des Pools anzuzeigen. 
+1. Wählen Sie einen Pool aus. Scrollen Sie auf der daraufhin geöffneten Poolseite nach rechts, um die Metriken des Pools anzuzeigen. 
 
     ![Metriken des Pools](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
-12. Wechseln Sie zurück zum Log Analytics-Arbeitsbereich, und wählen Sie **OMS-Portal** aus, um den Arbeitsbereich dort zu öffnen.
+1. Wechseln Sie zurück zum Log Analytics-Arbeitsbereich, und wählen Sie **OMS-Portal** aus, um den Arbeitsbereich dort zu öffnen.
 
     ![Kachel des Operations Management Suite-Portals](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 

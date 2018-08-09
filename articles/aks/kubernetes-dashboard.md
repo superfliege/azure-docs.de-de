@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/09/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 65525114f46002c5b9300f6bbabcee06cc27ef3a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: af48af596e86e0eb09fe45deabe13beedef57cd2
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091137"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39307924"
 ---
 # <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Zugriff auf das Kubernetes-Dashboard mit Azure Kubernetes Service (AKS)
 
@@ -38,12 +38,14 @@ Der Befehl erstellt einen Proxy zwischen Ihrem Entwicklungssystem und der Kubern
 
 ### <a name="for-rbac-enabled-clusters"></a>Für RBAC-fähige Cluster
 
-Wenn Ihr AKS-Cluster RBAC verwendet, muss ein *ClusterRoleBinding*-Element erstellt werden, bevor Sie ordnungsgemäß auf das Dashboard zugreifen können. Verwenden Sie wie im folgenden Beispiel dargestellt den Befehl [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding], um eine Bindung zu erstellen. 
+Wenn Ihr AKS-Cluster RBAC verwendet, muss ein *ClusterRoleBinding*-Element erstellt werden, bevor Sie ordnungsgemäß auf das Dashboard zugreifen können. Das Kubernetes-Dashboard wird standardmäßig mit minimalem Lesezugriff bereitgestellt und zeigt RBAC-Zugriffsfehler an. Das Kubernetes-Dashboard unterstützt derzeit keine vom Benutzer bereitgestellten Anmeldeinformationen für die Ermittlung der Zugriffsebene, sondern verwendet die dem Dienstkonto zugewiesenen Rollen. Ein Clusteradministrator kann zusätzlichen Zugriff auf das Dienstkonto *kubernetes-dashboard* gewähren, dies kann jedoch ein Vektor für Berechtigungsausweitung sein. Sie können auch Azure Active Directory-Authentifizierung integrieren, um differenziertere Zugriffsmöglichkeiten zu bieten.
+
+Verwenden Sie wie im folgenden Beispiel dargestellt den Befehl [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding], um eine Bindung zu erstellen. 
 
 > [!WARNING]
 > Diese Beispielbindung wendet keine zusätzlichen Authentifizierungskomponenten an und kann daher zu unsicherer Verwendung führen. Das Kubernetes-Dashboard steht allen Personen zur Verfügung, die Zugriff auf die URL haben. Machen Sie das Kubernetes-Dashboard nicht öffentlich verfügbar.
 >
-> Sie können Mechanismen wie Bearer-Tokens oder einen Benutzernamen und ein Kennwort verwenden, um zu steuern, wer auf das Dashboard zugreifen kann und welche Berechtigungen die Benutzer haben. Dadurch wird die Verwendung des Dashboards sicherer. Weitere Informationen zur Verwendung der unterschiedlichen Authentifizierungsmethoden finden Sie in der Wiki des Kubernetes-Dashboards unter [Zugriffssteuerung][dashboard-authentication].
+> Weitere Informationen zur Verwendung der unterschiedlichen Authentifizierungsmethoden finden Sie in der Wiki des Kubernetes-Dashboards unter [Zugriffssteuerung][dashboard-authentication].
 
 ```console
 kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 80f525f3c7b71c2d5d1fdbd415c298452ab75423
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 3821e13fd968e458e463e90ef338da6637d8d8f2
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004828"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622013"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
@@ -109,7 +109,7 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
    set "log=install.cmd started %timestamp%."
    
    REM ***** Exit script if running in Emulator *****
-   if %ComputeEmulatorRunning%=="true" goto exit
+   if "%ComputeEmulatorRunning%"=="true" goto exit
    
    REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
    set TMP=%PathToNETFXInstall%

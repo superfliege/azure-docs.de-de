@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 28c217430dcbc8ee17998742c31888e06dddf96f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 5b7f2f1bd1872f78377a0d16567ca4df8f8d0968
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902145"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440676"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Tutorial für Azure Containerdienst – DC/OS verwalten
 
@@ -34,7 +34,7 @@ Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. F�
 
 ## <a name="create-dcos-cluster"></a>Erstellen eines DC/OS-Clusters
 
-Erstellen Sie zunächst mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
+Erstellen Sie zunächst mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. 
 
 Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *westeurope*.
 
@@ -42,7 +42,7 @@ Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGr
 az group create --name myResourceGroup --location westeurope
 ```
 
-Erstellen Sie als Nächstes einen DC/OS-Cluster mit dem Befehl [az acs create](/cli/azure/acs#az_acs_create).
+Erstellen Sie als Nächstes einen DC/OS-Cluster mit dem Befehl [az acs create](/cli/azure/acs#az-acs-create).
 
 Das folgende Beispiel erstellt einen DC/OS-Cluster mit dem Namen *MyDCOSCluster* und SSH-Schlüssel, falls diese nicht bereits vorhanden sind. Um einen bestimmten Satz von Schlüsseln zu verwenden, nutzen Sie die Option `--ssh-key-value`.  
 
@@ -240,13 +240,13 @@ Wenn Sie zu dieser Adresse navigieren, wird die Standard-NGINX-Website zurückge
 
 In den vorherigen Beispielen wurde eine Anwendung auf mehreren Instanzen skaliert. Die DC/OS-Infrastruktur kann auch für die Bereitstellung von mehr oder weniger Rechenkapazität skaliert werden. Dies erfolgt mit dem Befehl [az acs scale](). 
 
-Um die aktuelle Anzahl von DC/OS-Agents anzuzeigen, verwenden Sie den Befehl [az acs show](/cli/azure/acs#az_acs_show).
+Um die aktuelle Anzahl von DC/OS-Agents anzuzeigen, verwenden Sie den Befehl [az acs show](/cli/azure/acs#az-acs-show).
 
 ```azurecli
 az acs show --resource-group myResourceGroup --name myDCOSCluster --query "agentPoolProfiles[0].count"
 ```
 
-Um die Anzahl auf 5 zu erhöhen, verwenden Sie den Befehl [az acs scale](/cli/azure/acs#az_acs_scale). 
+Um die Anzahl auf 5 zu erhöhen, verwenden Sie den Befehl [az acs scale](/cli/azure/acs#az-acs-scale). 
 
 ```azurecli
 az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-count 5
@@ -254,7 +254,7 @@ az acs scale --resource-group myResourceGroup --name myDCOSCluster --new-agent-c
 
 ## <a name="delete-dcos-cluster"></a>Löschen eines DC/OS-Clusters
 
-Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, das DC/OS-Cluster und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
+Mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) können Sie die Ressourcengruppe, das DC/OS-Cluster und alle dazugehörigen Ressourcen entfernen, wenn sie nicht mehr benötigt werden.
 
 ```azurecli 
 az group delete --name myResourceGroup --no-wait

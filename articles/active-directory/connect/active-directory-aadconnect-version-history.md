@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/31/2018
+ms.date: 07/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e808d4bf116dcab344308c3dd2aa06c72e0318ba
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6ca32d51a52cf636b1c41667e20872cfe49fa7e2
+ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049516"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39390152"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -36,6 +36,45 @@ Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisi
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Download | [Azure AD Connect herunterladen](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+## <a name="118800"></a>1.1.880.0
+
+### <a name="release-status"></a>Releasestatus
+
+20.07.2018: Veröffentlichung für automatisches Upgrade. Veröffentlichung zum Download folgt in Kürze.
+
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+
+- Die Ping-Federate-Integration in Azure AD Connect ist jetzt allgemein verfügbar. [Erfahren Sie mehr über den Verbund von Azure AD mit Ping Federate](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
+- Azure AD Connect erstellt jetzt bei jedem Update die Sicherung der Azure AD-Vertrauensstellung in AD FS und speichert diese zum einfachen Wiederherstellen in einer separaten Datei. [Erfahren Sie mehr über die neuen Funktionen und die Verwaltung der Azure AD-Vertrauensstellung im Azure AD Connect ](https://aka.ms/fedtrustinaadconnect).
+- Neues Tool für Problembehandlung vereinfacht die Problembehandlung durch das Ändern der primären E-Mail-Adresse und das Ausblenden des Kontos von der globalen Adressliste.
+- Azure AD Connect wurde aktualisiert und enthält nun die neueste Version von SQL Server 2012 Native Client
+- Wenn Sie in der Aufgabe „Benutzeranmeldung ändern“ die Benutzeranmeldung auf die Kennworthashsynchronisierung oder Passthrough-Authentifizierung umstellen, ist das Kontrollkästchen für nahtloses einmaliges Anmelden standardmäßig aktiviert.
+- Unterstützung für Windows Server Essentials 2019 hinzugefügt
+- Der Azure AD Connect Health Agent wurde auf die neueste Version 3.1.7.0 aktualisiert.
+- Wenn das Installationsprogramm während eines Upgrades Änderungen an den Standardregeln für die Synchronisierung erkennt, erhält der Administrator vor dem Überschreiben der geänderten Regeln eine Warnung. Dadurch kann der Benutzer Korrekturmaßnahmen ergreifen und den Vorgang später fortsetzen. Altes Verhalten: Wenn eine Standardregel geändert wurde, wurden diese Regeln durch das manuelle Upgrade ohne Warnung des Benutzers überschrieben, und der Synchronisierungsplaner wurde ohne vorherige Information des Benutzers deaktiviert. Neues Verhalten: Der Benutzer erhält vor dem Überschreiben von standardmäßigen Synchronisierungsregeln eine Warnung. Benutzer können den Upgradevorgang beenden und nach dem Ergreifen von Korrekturmaßnahmen fortsetzen.
+- Bessere Verarbeitung von FIPS-Kompatibilitätsproblemen mit Bereitstellen einer Fehlermeldung für die MD5-Hash-Generierung in einer FIPS-kompatiblen Umgebung und eines Links zur Dokumentation, in der Sie erfahren, wie Sie das Problem umgehen.
+- Update der Benutzeroberfläche zur Verbesserung der Verbundaufgaben im Assistenten, die jetzt eine separate Untergruppe für den Verbund bilden. 
+- Alle zusätzlichen Verbundaufgaben werden jetzt zur einfachen Verwendung in einem einzelnen Untermenü gruppiert.
+- Ein neues, umgestaltetes ADSyncConfig Posh-Modul (AdSyncConfig.psm1) mit neuen AD-Berechtigungsfunktionen, die aus dem alten ADSyncPrep.psm1 verschoben wurden (in Kürze möglicherweise veraltet)
+
+### <a name="fixed-issues"></a>Behobene Probleme 
+
+- Fehler behoben, aufgrund dessen der AAD Connect-Server nach dem Upgrade auf .Net 4.7.2 eine hohe CPU-Auslastung angezeigt hat
+- Fehler behoben, aufgrund dessen gelegentlich eine Fehlermeldung für ein automatisch gelöstes SQL-Deadlock-Problem ausgegeben wurde
+- Barrierefreiheitsprobleme im Synchronisierungsregel-Editor und im Synchronization Service Manager behoben  
+- Fehler behoben, aufgrund dessen Azure AD Connect keine Einstellungsinformationen in der Registrierung abrufen konnte
+- Fehler beim Vor-/Zurückspringen im Assistenten behoben
+- Fehler behoben, der aufgrund einer falschen Multi-Thread Behandlung im Assistenten aufgetreten ist
+- Wenn auf der Seite zum Filtern der Gruppensynchronisierung beim Auflösen von Sicherheitsgruppen ein LDAP-Fehler auftritt, gibt Azure AD Connect die Ausnahme nun zuverlässig zurück.  Die Grundursache für die Verweisausnahme ist noch unbekannt und wird in einem anderen Fehler behoben.
+-  Fehler behoben, aufgrund dessen Berechtigungen für STK- und NGC-Schlüssel (MsDS-KeyCredentialLink-Attribut für Benutzer/Gerätobjekte für WHfB) nicht ordnungsgemäß festgelegt wurden.     
+- Fehler behoben, aufgrund dessen 'Set-ADSyncRestrictedPermissions' nicht ordnungsgemäß aufgerufen wurde
+-  Berechtigungen für das Gruppenrückschreiben im AADConnect-Installationsassistenten werden jetzt unterstützt.
+- Beim Ändern der Anmeldemethode von der Kennworthashsynchronisierung zu AD FS wurde die Kennworthashsynchronisierung nicht deaktiviert.
+- Überprüfung von IPv6-Adressen in AD FS-Konfiguration hinzugefügt
+- Die Benachrichtigungsmeldung wurde aktualisiert und informiert nun, dass eine vorhandene Konfiguration vorhanden ist.
+- Das Geräterückschreiben erkennt in nicht vertrauenswürdigen Gesamtstrukturen keine Container. Dies wurde aktualisiert, um eine bessere Fehlermeldung sowie einen Link zur entsprechenden Dokumentation bereitzustellen.
+- Beim Deaktivieren einer Organisationseinheit und anschließendem Synchronisieren/Rückschreiben in Verbindung mit dieser Organisationseinheit tritt ein generischer Synchronisierungsfehler auf. Dies wurde geändert, um eine besser verständliche Fehlermeldung auszugeben.
 
 ## <a name="118190"></a>1.1.819.0
 

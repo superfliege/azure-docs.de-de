@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: areddish
 ms.openlocfilehash: e3def864267a590c86a2dd6663561d8488081ad6
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
+ms.lasthandoff: 08/06/2018
 ms.locfileid: "36301079"
 ---
 # <a name="use-custom-vision-api-to-build-an-object-detection-project-in-c35"></a>Verwenden der Custom Vision-API zum Erstellen eines Objekterkennungsprojekts in C&#35; 
@@ -31,7 +31,7 @@ Sie können die Bilder zusammen mit den [C#-Beispielen](https://github.com/Azure
 
 ## <a name="get-the-training-and-prediction-keys"></a>Abrufen der Trainings- und Vorhersageschlüssel
 
-Besuchen Sie die [Custom Vision-Website](https://customvision.ai), und klicken Sie in der oberen rechten Ecke auf das __Zahnradsymbol__, um die in diesem Beispiel verwendeten Schlüssel zu erhalten. Kopieren Sie aus dem Abschnitt __Accounts__ (Konten) die Werte der Felder __Training Key__ (Trainingsschlüssel) und __Prediction Key__ (Vorhersageschlüssel).
+Besuchen Sie die [Custom Vision-Webseite](https://customvision.ai), und klicken Sie in der oberen rechten Ecke auf das __Zahnradsymbol__, um die in diesem Beispiel verwendeten Schlüssel abzurufen. Kopieren Sie aus dem Abschnitt __Accounts__ (Konten) die Werte der Felder __Training Key__ (Trainingsschlüssel) und __Prediction Key__ (Vorhersageschlüssel).
 
 ![Abbildung der Schlüsselbenutzeroberfläche](./media/csharp-tutorial/training-prediction-keys.png)
 

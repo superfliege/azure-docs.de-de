@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1d73142931a5cfa84cb24df7a85c799a0f508385
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d4a1a687700badc550d37bf74f6a7e1680388897
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358828"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440314"
 ---
 # <a name="export-azure-resource-manager-templates-with-azure-cli"></a>Exportieren von Azure Resource Manager-Vorlagen mit der Azure-CLI
 
@@ -45,7 +45,7 @@ az group deployment create \
 
 ## <a name="save-template-from-deployment-history"></a>Speichern einer Vorlage aus dem Bereitstellungsverlauf
 
-Mit dem Befehl [az group deployment export](/cli/azure/group/deployment#az_group_deployment_export) können Sie eine Vorlage aus dem Bereitstellungsverlauf abrufen. Im folgenden Beispiel wird die zuvor bereitgestellte Vorlage gespeichert:
+Mit dem Befehl [az group deployment export](/cli/azure/group/deployment#az-group-deployment-export) können Sie eine Vorlage aus dem Bereitstellungsverlauf abrufen. Im folgenden Beispiel wird die zuvor bereitgestellte Vorlage gespeichert:
 
 ```azurecli
 az group deployment export --name NewStorage --resource-group ExampleGroup
@@ -56,7 +56,7 @@ Damit wird die Vorlage zurückgegeben. Kopieren Sie die JSON, und speichern Sie 
 
 ## <a name="export-resource-group-as-template"></a>Exportieren einer Ressourcengruppe als Vorlage
 
-Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [az group export](/cli/azure/group#az_group_export) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
+Statt eine Vorlage aus dem Bereitstellungsverlauf abzurufen, können Sie mithilfe des Befehls [az group export](/cli/azure/group#az-group-export) eine Vorlage abrufen, die den aktuellen Status einer Ressourcengruppe darstellt. Diesen Befehl können Sie verwenden, wenn Sie viele Änderungen an Ihrer Ressourcengruppe vorgenommen haben und keine vorhandene Vorlage alle Änderungen darstellt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
 
 ```azurecli
 az group export --name ExampleGroup

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: f1415a1ddc49f10539915ccf0ce8f95ce7daf321
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 71ecffebe095fd325837aeb1d6e741a2f3321aea
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39051869"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Tutorial: Azure Active Directory-Integration mit Mimecast Personal Portal
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Mimecast Personal Portal aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-mimecast-personal-portal-from-the-gallery"></a>Hinzufügen von Mimecast Personal Portal aus dem Katalog
 Zum Konfigurieren der Integration von Mimecast Personal Portal in Azure AD müssen Sie Mimecast Personal Portal aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Mimecast Personal Portal in Azure AD müss
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **Mimecast Personal Portal** ein, wählen Sie im Ergebnisbereich **Mimecast Personal Portal** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **Mimecast Personal Portal** ein, wählen Sie im Ergebnisbereich **Mimecast Personal Portal** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Mimecast Personal Portal in der Ergebnisliste](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_addfromgallery.png)
 
@@ -85,10 +85,10 @@ Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer i
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Mimecast Personal Portal müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Mimecast Personal Portal-Testbenutzers](#create-a-mimecast-personal-portal-test-user)**, um eine Entsprechung von Britta Simon in Mimecast Personal Portal zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines Mimecast Personal Portal-Testbenutzers](#create-a-mimecast-personal-portal-test-user)**, um eine Entsprechung von Britta Simon in Mimecast Personal Portal zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -100,11 +100,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für Mimecast Personal Portal** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Domäne und URLs für Mimecast Personal Portal** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Mimecast Personal Portal](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_url.png)
 
@@ -141,33 +141,33 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Mimecast Personal Portal-Client](http://www.mimecast.com/customer-success/technical-support/), um den Wert zu erhalten. 
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/mimecast-personal-portal-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt **Mimecast Personal Portal-Konfiguration** auf **Mimecast Personal Portal konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Mimecast Personal Portal-Konfiguration** auf **Mimecast Personal Portal konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Mimecast Personal Portal-Konfiguration](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_configure.png) 
 
-7. Melden Sie sich in einem anderen Webbrowserfenster bei Mimecast Personal Portal als Administrator an.
+1. Melden Sie sich in einem anderen Webbrowserfenster bei Mimecast Personal Portal als Administrator an.
 
-8. Wechseln Sie zu **Dienste \> Anwendungen**.
+1. Wechseln Sie zu **Dienste \> Anwendungen**.
    
     ![Anwendungen](./media/mimecast-personal-portal-tutorial/ic794998.png "Anwendungen")
 
-9. Klicken Sie auf **Authentifizierungsprofile**.
+1. Klicken Sie auf **Authentifizierungsprofile**.
    
     ![Authentifizierungsprofile](./media/mimecast-personal-portal-tutorial/ic794999.png "Authentifizierungsprofile")
 
-10. Klicken Sie auf **Neues Authentifizierungsprofil**.
+1. Klicken Sie auf **Neues Authentifizierungsprofil**.
    
     ![Neues Authentifizierungsprofil](./media/mimecast-personal-portal-tutorial/ic795000.png "Neues Authentifizierungsprofil")
 
-11. Führen Sie im Abschnitt **Authentifizierungsprofil** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Authentifizierungsprofil** die folgenden Schritte aus:
    
     ![Authentifizierungsprofil](./media/mimecast-personal-portal-tutorial/ic795001.png "Authentifizierungsprofil")
    
@@ -201,15 +201,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/mimecast-personal-portal-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/mimecast-personal-portal-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/mimecast-personal-portal-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/mimecast-personal-portal-tutorial/create_aaduser_04.png)
 
@@ -231,19 +231,19 @@ Sie müssen eine Domäne registrieren, bevor Sie Benutzer erstellen können.
 
 1. Melden Sie sich bei **Mimecast Personal Portal** als Administrator an.
 
-2. Wechseln Sie zu **Verzeichnisse \> Intern**.
+1. Wechseln Sie zu **Verzeichnisse \> Intern**.
    
     ![Verzeichnisse](./media/mimecast-personal-portal-tutorial/ic795003.png "Verzeichnisse")
 
-3. Klicken Sie auf **Neue Domäne registrieren**.
+1. Klicken Sie auf **Neue Domäne registrieren**.
    
     ![Neue Domäne registrieren](./media/mimecast-personal-portal-tutorial/ic795004.png "Neue Domäne registrieren")
 
-4. Nachdem die neue Domäne erstellt wurde, klicken Sie auf **Neue Adresse**.
+1. Nachdem die neue Domäne erstellt wurde, klicken Sie auf **Neue Adresse**.
    
     ![Neue Adresse](./media/mimecast-personal-portal-tutorial/ic795005.png "Neue Adresse")
 
-5. Führen Sie im Dialogfeld „Neue Adresse“ die folgenden Schritte für ein gültiges Azure AD-Konto aus, das Sie bereitstellen möchten:
+1. Führen Sie im Dialogfeld „Neue Adresse“ die folgenden Schritte für ein gültiges Azure AD-Konto aus, das Sie bereitstellen möchten:
    
     ![Speichern](./media/mimecast-personal-portal-tutorial/ic795006.png "Speichern")
    
@@ -270,23 +270,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Mimecast Personal Portal** aus.
+1. Wählen Sie in der Anwendungsliste **Mimecast Personal Portal** aus.
 
     ![Link für Mimecast Personal Portal in der Anwendungsliste](./media/mimecast-personal-portal-tutorial/tutorial_mimecastpersonalportal_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: sethm
-ms.openlocfilehash: 9c38f74cd4499fad1feaadb6c1bbc99da791ebd6
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 76c929f482659bb81e0cabb7fb6bffa5331082bf
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888366"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502135"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Rollenbasierte Zugriffssteuerung in Active Directory (Vorschau)
 
@@ -57,7 +57,7 @@ Bevor Sie die Beispielanwendung ausführen können, registrieren Sie sie in Azur
 
 Da es sich bei der Beispielanwendung um eine Konsolenanwendung handelt, müssen Sie eine native Anwendung registrieren und den „erforderlichen Berechtigungen“ API-Berechtigungen für **Microsoft.EventHub** hinzufügen. Native Anwendungen benötigen auch einen **redirect-URI** in Azure AD, der als Bezeichner fungiert. Bei dem URI muss es sich nicht um ein Netzwerkziel handeln. Verwenden Sie in diesem Beispiel `http://eventhubs.microsoft.com`, da der Beispielcode diesen URI bereits verwendet.
 
-Die detaillierten Schritte für die Registrierung werden in [diesem Tutorial](../active-directory/develop/active-directory-integrating-applications.md) erläutert. Führen Sie die Schritte zum Registrieren einer **nativen** App aus, und befolgen Sie dann die Aktualisierungsanweisungen, um die **Microsoft.EventHub**-API zu den erforderlichen Berechtigungen hinzuzufügen. Notieren Sie sich die Werte für **TenantId** und **ApplicationId** – diese werden Sie zum Ausführen der Anwendung benötigen.
+Die detaillierten Schritte für die Registrierung werden in [diesem Tutorial](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) erläutert. Führen Sie die Schritte zum Registrieren einer **nativen** App aus, und befolgen Sie dann die Aktualisierungsanweisungen, um die **Microsoft.EventHub**-API zu den erforderlichen Berechtigungen hinzuzufügen. Notieren Sie sich die Werte für **TenantId** und **ApplicationId** – diese werden Sie zum Ausführen der Anwendung benötigen.
 
 ### <a name="run-the-app"></a>Ausführen der App
 

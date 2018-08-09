@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 02/05/2018
+ms.date: 07/26/2018
 ms.author: danlep
-ms.openlocfilehash: 5a06ad5086a42bb00147e085227f3c71c357544e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 08531a6deb3932dcca720b8d19f34a5344967460
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29846807"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420463"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 

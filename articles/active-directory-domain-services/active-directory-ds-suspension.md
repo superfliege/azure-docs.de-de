@@ -12,15 +12,15 @@ ms.component: domains
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: ergreenl
-ms.openlocfilehash: 8ae99534916ce258dcab01ce2e37db1ffd809381
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 72e22fbe61b4e30191bbac553709241e1b13f1f5
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358751"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502248"
 ---
 # <a name="suspended-domains"></a>Angehaltene Domänen
 Wenn Azure Active Directory Domain Services (Azure AD DS) Anforderungen für eine verwaltete Domäne für einen längeren Zeitraum-nicht verarbeiten kann, wird die verwaltete Domäne in den Zustand „Angehalten“ versetzt. In diesem Artikel wird erläutert, weshalb verwaltete Domänen angehalten werden und wie Sie eine angehaltene Domäne bereinigen.

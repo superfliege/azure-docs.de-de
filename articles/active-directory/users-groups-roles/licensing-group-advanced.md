@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecb0919b68516fdb886ea745d963349ff29f83b4
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 15b52920774a878cd386ced5966d507768a8af70
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867323"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627388"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 
@@ -146,13 +146,13 @@ Sie können ein PowerShell-Skript verwenden, um zu prüfen, ob Benutzern eine Li
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Verwenden von Überwachungsprotokollen zum Überwachen von gruppenbasierten Lizenzierungsaktivitäten
 
-Sie können [Azure AD-Überwachungsprotokolle](./../active-directory-reporting-activity-audit-logs.md#audit-logs) verwenden, um alle Aktivitäten für die gruppenbasierte Lizenzierung anzuzeigen, z.B.:
+Sie können [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md#audit-logs) verwenden, um alle Aktivitäten für die gruppenbasierte Lizenzierung anzuzeigen, z.B.:
 - Welche Benutzer Lizenzen für Gruppen geändert haben
 - Wann das System mit dem Verarbeiten einer Gruppenlizenzänderung begonnen hat und wann der Prozess abgeschlossen wurde
 - Welche Lizenzänderungen für einen Benutzer aufgrund der Gruppenlizenzzuweisung vorgenommen wurden
 
 >[!NOTE]
-> Überwachungsprotokolle sind auf den meisten Blättern im Azure Active Directory-Abschnitt des Portals verfügbar. Je nachdem, wo Sie darauf zugreifen, werden Filter ggf. vorab angewendet, um nur Aktivitäten anzuzeigen, die für den Kontext des Blatts relevant sind. Gehen Sie wie folgt vor, falls Sie nicht die erwarteten Ergebnisse sehen: Überprüfen Sie die [Filteroptionen](./../active-directory-reporting-activity-audit-logs.md#filtering-audit-logs), oder greifen Sie unter [**Azure Active Directory > Aktivität > Überwachungsprotokolle**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit) auf die ungefilterten Überwachungsprotokolle zu.
+> Überwachungsprotokolle sind auf den meisten Blättern im Azure Active Directory-Abschnitt des Portals verfügbar. Je nachdem, wo Sie darauf zugreifen, werden Filter ggf. vorab angewendet, um nur Aktivitäten anzuzeigen, die für den Kontext des Blatts relevant sind. Gehen Sie wie folgt vor, falls Sie nicht die erwarteten Ergebnisse sehen: Überprüfen Sie die [Filteroptionen](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs), oder greifen Sie unter [**Azure Active Directory > Aktivität > Überwachungsprotokolle**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit) auf die ungefilterten Überwachungsprotokolle zu.
 
 ### <a name="find-out-who-modified-a-group-license"></a>Ermitteln, wer eine Gruppenlizenz geändert hat
 

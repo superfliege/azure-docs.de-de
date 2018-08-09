@@ -4,18 +4,18 @@ description: In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzuge
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce4bf1ab74e4203f0deb7b2984ffa6a66d5efd4a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330861"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627109"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Gewusst wie: Hinzufügen einer Event Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 

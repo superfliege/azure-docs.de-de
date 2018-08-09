@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 9b37c6d1c1c2e7ec002ac1b4ea5768c8972dd9e8
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: ddf22491d7531daecf4448e62e8594c3326d7b77
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39039986"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420273"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Tutorial: Azure Active Directory-Integration mit QPrism
 
@@ -50,7 +50,7 @@ Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlun
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von QPrism aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="add-qprism-from-the-gallery"></a>Hinzufügen von QPrism aus dem Katalog
 Zum Konfigurieren der Integration von QPrism in Azure AD müssen Sie QPrism aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -61,15 +61,15 @@ Zum Konfigurieren der Integration von QPrism in Azure AD müssen Sie QPrism aus 
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Um eine neue Anwendung hinzuzufügen, wählen Sie oben im Dialogfeld **Neue Anwendung** aus.
+1. Um eine neue Anwendung hinzuzufügen, wählen Sie oben im Dialogfeld **Neue Anwendung** aus.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie **QPrism** in das Suchfeld ein, und wählen Sie **QPrism** im Ergebnisbereich aus. Klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie **QPrism** in das Suchfeld ein, und wählen Sie **QPrism** im Ergebnisbereich aus. Klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![QPrism in der Ergebnisliste](./media/qprism-tutorial/tutorial_qprism_addfromgallery.png)
 
@@ -84,10 +84,10 @@ Weisen Sie in QPrism den Wert für **Benutzername** in Azure AD als Wert für **
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei QPrism müssen Sie die folgenden Aufgaben ausführen:
 
 1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on), um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. [Erstellen eines QPrism-Testbenutzers](#create-a-qprism-test-user), um eine Entsprechung von Britta Simon in QPrism zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. [Testen der einmaligen Anmeldung](#test-single-sign-on), um zu überprüfen, ob die Konfiguration funktioniert.
+1. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. [Erstellen eines QPrism-Testbenutzers](#create-a-qprism-test-user), um eine Entsprechung von Britta Simon in QPrism zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. [Testen der einmaligen Anmeldung](#test-single-sign-on), um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -97,11 +97,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** für **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** für **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/qprism-tutorial/tutorial_qprism_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für QPrism** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für QPrism** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für QPrism](./media/qprism-tutorial/tutorial_qprism_url.png)
 
@@ -112,15 +112,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von QPrism](mailto:qsupport-ce@quatrro.com), um diese Werte zu erhalten. 
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
 
      ![Downloadlink für das Zertifikat](./media/qprism-tutorial/tutorial_qprism_certificate.png)
 
-5. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
     ![Einmaliges Anmelden konfigurieren: Schaltfläche „Speichern“](./media/qprism-tutorial/tutorial_general_400.png)
     
-6. Zum Konfigurieren des einmaligen Anmeldens bei **QPrism** müssen Sie die **App-Verbundmetadaten-URL** an das [QPrism-Supportteam](mailto:qsupport-ce@quatrro.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **QPrism** müssen Sie die **App-Verbundmetadaten-URL** an das [QPrism-Supportteam](mailto:qsupport-ce@quatrro.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -134,15 +134,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/qprism-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/qprism-tutorial/create_aaduser_02.png)
 
-3. Wählen Sie im oberen Bereich des Dialogfelds **Alle Benutzer** die Option **Hinzufügen** aus, um das Dialogfeld **Benutzer** zu öffnen.
+1. Wählen Sie im oberen Bereich des Dialogfelds **Alle Benutzer** die Option **Hinzufügen** aus, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/qprism-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Benutzer** folgende Schritte aus:
+1. Führen Sie im Dialogfeld **Benutzer** folgende Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/qprism-tutorial/create_aaduser_04.png)
 
@@ -170,23 +170,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **QPrism** aus.
+1. Wählen Sie in der Anwendungsliste **QPrism** aus.
 
     ![QPrism-Link in der Anwendungsliste](./media/qprism-tutorial/tutorial_qprism_app.png)  
 
-3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+1. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Wählen Sie **Hinzufügen**. Wählen Sie dann unter **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie **Hinzufügen**. Wählen Sie dann unter **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** aus.
 
-6. Wählen Sie im Dialogfeld **Benutzer und Gruppen** die Option **Auswählen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** die Option **Auswählen** aus.
 
-7. Wählen Sie unter **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+1. Wählen Sie unter **Zuweisung hinzufügen** die Option **Zuweisen** aus.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

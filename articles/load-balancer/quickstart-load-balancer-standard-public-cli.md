@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 48ed4270838a32c8060bf96a63fcfdd8c65f9689
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2b6623b614a254635cb758f615271dac826f08b2
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696122"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39439743"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Schnellstart: Erstellen eines Lastenausgleichs im Standard-Tarif für den Lastenausgleich virtueller Computer mit Azure CLI 2.0
 
@@ -149,7 +149,7 @@ Erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eingehende Verbindungen 
 ```
 ### <a name="create-nics"></a>Erstellen von NICs
 
-Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az_network_nic_create) drei Netzwerkschnittstellen, und ordnen Sie sie der öffentlichen IP-Adresse und der Netzwerksicherheitsgruppe zu. 
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic#az-network-nic-create) drei Netzwerkschnittstellen, und ordnen Sie sie der öffentlichen IP-Adresse und der Netzwerksicherheitsgruppe zu. 
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -171,7 +171,7 @@ In diesem Beispiel erstellen Sie drei virtuelle Computer, die als Back-End-Serve
 
 ### <a name="create-an-availability-set"></a>Erstellen einer Verfügbarkeitsgruppe
 
-Erstellen Sie mit [az vm availabilityset create](/cli/azure/network/nic#az_network_availabilityset_create) eine Verfügbarkeitsgruppe.
+Erstellen Sie mit [az vm availabilityset create](/cli/azure/network/nic#az-network-availabilityset-create) eine Verfügbarkeitsgruppe.
 
  ```azurecli-interactive
   az vm availability-set create \
@@ -225,7 +225,7 @@ runcmd:
   - nodejs index.js
 ``` 
  
-Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az_vm_create).
+Erstellen Sie die virtuellen Computer mit [az vm create](/cli/azure/vm#az-vm-create).
 
  ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -244,7 +244,7 @@ Es kann einige Minuten dauern, bis die virtuellen Computer bereitgestellt wurden
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
-Rufen Sie mithilfe von [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) die öffentliche IP-Adresse des Lastenausgleichs ab. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
+Rufen Sie mithilfe von [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) die öffentliche IP-Adresse des Lastenausgleichs ab. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
 
 ```azurecli-interactive
   az network public-ip show \
@@ -257,7 +257,7 @@ Rufen Sie mithilfe von [az network public-ip show](/cli/azure/network/public-ip#
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Mit dem Befehl [az group delete](/cli/azure/group#az_group_delete) können Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen entfernen, wenn Sie sie nicht mehr benötigen.
+Mit dem Befehl [az group delete](/cli/azure/group#az-group-delete) können Sie die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen entfernen, wenn Sie sie nicht mehr benötigen.
 
 ```azurecli-interactive 
   az group delete --name myResourceGroupSLB

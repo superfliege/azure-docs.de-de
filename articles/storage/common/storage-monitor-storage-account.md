@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 07/31/2018
 ms.author: tamram
-ms.openlocfilehash: ffc7d46bbfa4db47a47e416c395efdfc451cadc1
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 931b711d67db2b20c653fe6515735fdedc358b48
+ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30322912"
+ms.lasthandoff: 07/31/2018
+ms.locfileid: "39364358"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -38,16 +38,11 @@ ms.locfileid: "30322912"
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Speicher** und dann den Speicherkontonamen, um das Kontodashboard zu öffnen.
 1. Wählen Sie im Abschnitt **ÜBERWACHUNG** des Menüblatts die Option **Diagnose** aus.
 
-    ![Überwachungsoptionen](./media/storage-monitor-storage-account/stg-enable-metrics-00.png)
+    ![Überwachungsoptionen](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. Wählen Sie den **Typ** der Metrikdaten für jeden **Dienst**, den Sie überwachen möchten, und die **Aufbewahrungsrichtlinie** für die Daten. Sie können die Überwachung auch deaktivieren, indem Sie für **Status** **Aus** festlegen.
 
-    ![Überwachungsoptionen](./media/storage-monitor-storage-account/stg-enable-metrics-01.png)
-
-   Es gibt zwei Arten von standardmäßig für neue Speicherkonten aktivierten Metriken, die Sie für jeden Dienst aktivieren können:
-
-   * **Aggregieren**: Erfasst Metriken wie Eingang/Ausgang, Verfügbarkeit, Latenz sowie Erfolgsprozentwerte. Diese Metriken werden für die Blob-, Warteschlangen-, Tabellen- und Dateidienste aggregiert.
-   * **Pro API**: Sammelt zusätzlich zu den Aggregatmetriken den gleichen Satz Metriken für jeden Speichervorgang in der Azure Storage-Dienst-API.
+    ![Überwachungsoptionen](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
    Zum Festlegen der Datenaufbewahrungsrichtlinie verschieben Sie den Schieberegler **Aufbewahrung (Tage)**, oder geben Sie die Anzahl der Tage ein, für die Daten aufbewahrt werden sollen (zwischen 1 und 365). Die Standardeinstellung für neue Speicherkonten beträgt sieben Tage. Wenn Sie keine Aufbewahrungsrichtlinie festlegen möchten, geben Sie null (0) ein. Ist keine Aufbewahrungsrichtlinie festgelegt, müssen Sie die Überwachungsdaten selbst löschen.
 
@@ -71,23 +66,21 @@ Verwenden Sie das folgende Verfahren, um auszuwählen, welche Speichermetriken i
 
 1. Beginnen Sie mit der Anzeige eines Speichermetrikdiagramms im Azure-Portal. Diagramme finden Sie auf dem **Speicherkontoblatt** und dem Blatt **Metriken** eines individuellen Diensts (Blob, Warteschlange, Tabelle, Datei).
 
-   In diesem Beispiel arbeiten wir mit dem folgenden, auf dem **Speicherkontoblatt** angezeigten Diagramm:
+   In diesem Beispiel wird das folgende auf dem **Speicherkontoblatt** angezeigte Diagramm verwendet:
 
    ![Diagrammauswahl im Azure-Portal](./media/storage-monitor-storage-account/stg-customize-chart-00.png)
 
-1. Als Nächstes klicken Sie auf eine beliebige Stelle im Diagramm, um das Blatt **Metrik** zu öffnen. Wählen Sie **Diagramm bearbeiten**, um das Blatt **Diagramm bearbeiten** zu öffnen.
+1. Klicken Sie auf eine beliebige Stelle innerhalb des Diagramms, um es zu bearbeiten.
 
-   ![Schaltfläche „Diagramm bearbeiten“ auf dem Diagrammblatt](./media/storage-monitor-storage-account/stg-customize-chart-01.png)
+1. Wählen Sie als Nächstes den **Zeitraum** der Metriken, die im Diagramm angezeigt werden sollen, und den **Dienst** (Blob, Warteschlange, Tabelle, Datei) aus, dessen Metriken angezeigt werden sollen. Hier sind die Metriken für den Blobdienst der vergangenen Woche zur Anzeige ausgewählt:
 
-1. Wählen Sie auf dem Blatt **Diagramm bearbeiten** den **Zeitraum** der Metriken aus, die im Diagramm angezeigt werden sollen, und den **Dienst** (Blob, Warteschlange, Tabelle, Datei), dessen Metriken angezeigt werden sollen. Hier haben wir die Metriken für den Blobdienst der vergangenen Woche zur Anzeige ausgewählt:
+   ![Auswahl von Zeitraum und Dienst auf dem Blatt „Diagramm bearbeiten“](./media/storage-monitor-storage-account/storage-edit-metric-time-range.png)
 
-   ![Auswahl von Zeitraum und Dienst auf dem Blatt „Diagramm bearbeiten“](./media/storage-monitor-storage-account/stg-customize-chart-02.png)
+1. Wählen Sie die einzelnen **Metriken** aus, die im Diagramm angezeigt werden sollen, und klicken Sie dann auf **OK**.
 
-1. Wählen Sie die einzelnen **Metriken** aus, die im Diagramm angezeigt werden sollen, und klicken Sie dann auf **OK**. Beispielsweise haben wir hier die Metriken *ContainerCount* und *ObjectCount* zur Anzeige ausgewählt:
+   ![Individuelle Auswahl von Metriken auf dem Blatt „Diagramm bearbeiten“](./media/storage-monitor-storage-account/storage-edit-metric-selections.png)
 
-   ![Individuelle Auswahl von Metriken auf dem Blatt „Diagramm bearbeiten“](./media/storage-monitor-storage-account/stg-customize-chart-03.png)
-
-Ihre Diagrammeinstellungen haben keine Auswirkung auf Sammlung, Aggregierung oder Speicherung von Überwachungsdaten im Speicherkonto, nur auf die Anzeige der Metrikdaten.
+Ihre Diagrammeinstellungen haben keine Auswirkung auf Sammlung, Aggregierung oder Speicherung von Überwachungsdaten im Speicherkonto.
 
 ### <a name="metrics-availability-in-charts"></a>Verfügbarkeit von Metriken in Diagrammen
 
@@ -97,7 +90,7 @@ Die Liste der verfügbaren Metriken ändert sich je nach dem Dienst, den Sie in 
 
 ### <a name="metrics-resolution"></a>Auflösung von Metriken
 
-Die Metriken, die Sie in „Diagnose“ ausgewählt haben, bestimmen die Auflösung der Metriken, die für Ihr Konto verfügbar sind:
+Die Metriken, die Sie in **Diagnose** ausgewählt haben, bestimmen die Auflösung der Metriken, die für Ihr Konto verfügbar sind:
 
 * **Aggregieren**-Überwachung erfasst Metriken wie Eingang/Ausgang, Verfügbarkeit, Latenz sowie Erfolgsprozentwerte. Diese Metriken werden aus Blob-, Tabellen-, Datei- und Warteschlangendienst aggregiert.
 * **Pro API** bietet eine feinere Auflösung mit Metriken, die für einzelne Speicheroperationen verfügbar sind, in Ergänzung der Aggregate auf Dienstebene.
@@ -106,14 +99,14 @@ Die Metriken, die Sie in „Diagnose“ ausgewählt haben, bestimmen die Auflös
 
 Sie können Warnungen erstellen, damit Sie benachrichtigt werden, wenn Speicherressourcenmetriken Schwellenwerte erreichen.
 
-1. Um das **Warnungsregelnblatt** zu öffnen, scrollen Sie zum Abschnitt **ÜBERWACHUNG** des **Menüblatts** nach unten, und wählen Sie **Warnungsregeln**.
-1. Wählen Sie **Warnung hinzufügen**, um das Blatt **Warnungsregel hinzufügen** zu öffnen.
-1. Wählen Sie eine **Ressource** (Blob, Datei, Warteschlange, Tabelle) in der Dropdownliste aus, und geben Sie **Namen** und **Beschreibung** für Ihre neue Warnungsregel ein.
-1. Wählen Sie die **Metrik**, für die Sie eine Warnung hinzufügen möchten, eine **Bedingung** für die Warnung und einen **Schwellenwert**. Der Schwellenwerteinheiten-Typ ändert sich je nach der Metrik, die Sie ausgewählt haben. Beispielsweise ist „count“ der Einheitentyp für *ContainerCount*, die Einheit für die Metrik *PercentNetworkError* ist dagegen ein Prozentsatz.
-1. Wählen Sie den **Zeitraum** aus. Metriken, die den Schwellenwert innerhalb des Zeitraums erreichen oder überschreiten, lösen eine Warnung aus.
-1. (Optional) Konfigurieren Sie **E-Mail**- und **Webhook**-Benachrichtigungen. Weitere Informationen über Webhooks finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../../monitoring-and-diagnostics/insights-webhooks-alerts.md). Wenn Sie keine E-Mail- oder Webhook-Benachrichtigungen konfigurieren, werden Warnungen nur im Azure-Portal angezeigt.
+1. Um das ‚Blatt **Warnungsregeln** zu öffnen, scrollen Sie zum Abschnitt **ÜBERWACHUNG** des **Menüblatts** nach unten, und wählen Sie **Warnungen (klassisch)**.
+2. Wählen Sie **Metrikwarnung hinzufügen (klassisch)**, um das Blatt **Warnungsregel hinzufügen** zu öffnen.
+3. Geben Sie einen **Namen** und eine **Beschreibung** für Ihre neue Warnungsregel ein.
+4. Wählen Sie die **Metrik**, für die Sie eine Warnung hinzufügen möchten, eine **Bedingung** für die Warnung und einen **Schwellenwert**. Der Schwellenwerteinheiten-Typ ändert sich je nach der Metrik, die Sie ausgewählt haben. Beispielsweise ist „count“ der Einheitentyp für *ContainerCount*, die Einheit für die Metrik *PercentNetworkError* ist dagegen ein Prozentsatz.
+5. Wählen Sie den **Zeitraum** aus. Metriken, die den Schwellenwert innerhalb des Zeitraums erreichen oder überschreiten, lösen eine Warnung aus.
+6. (Optional) Konfigurieren Sie **E-Mail**- und **Webhook**-Benachrichtigungen. Weitere Informationen über Webhooks finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../../monitoring-and-diagnostics/insights-webhooks-alerts.md). Wenn Sie keine E-Mail- oder Webhook-Benachrichtigungen konfigurieren, werden Warnungen nur im Azure-Portal angezeigt.
 
-![Blatt „Warnungsregel hinzufügen“ im Azure-Portal](./media/storage-monitor-storage-account/stg-alert-rules-01.png)
+![Blatt „Warnungsregel hinzufügen“ im Azure-Portal](./media/storage-monitor-storage-account/add-alert-rule.png)
 
 ## <a name="add-metrics-charts-to-the-portal-dashboard"></a>Hinzufügen von Metrikdiagrammen zum Portaldashboard
 
@@ -126,7 +119,7 @@ Sie können Ihrem Portaldashboard Azure Storage-Metrikdiagramme für beliebige I
 1. Wählen Sie **Kategorien** > **Überwachung**.
 1. Ziehen Sie die Diagrammkachel für die Metrik, die Sie anzeigen möchten, auf Ihr Dashboard, und legen Sie sie ab. Wiederholen Sie dies für alle Metriken, die Sie auf dem Dashboard anzeigen möchten. In der folgenden Abbildung ist das Diagramm „Blobs – Anforderungen insgesamt“ als Beispiel hervorgehoben, aber alle Diagramme sind für die Platzierung auf Ihrem Dashboard verfügbar.
 
-   ![Kachelkatalog im Azure-Portal](./media/storage-monitor-storage-account/stg-customize-dashboard-01.png)
+   ![Kachelkatalog im Azure-Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
 1. Wählen Sie **Anpassung abgeschlossen** am oberen Rand des Dashboards aus, wenn Sie keine weiteren Diagramme hinzufügen möchten.
 
 Nachdem Sie Ihrem Dashboard Diagramme hinzugefügt haben, können Sie sie weiter anpassen, wie in [Anpassen von Metrikdiagrammen](#how-to-customize-metrics-charts) beschrieben.
@@ -142,14 +135,14 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) **Speicherkonten** und dann den Speicherkontonamen, um das Speicherkontoblatt zu öffnen.
 1. Wählen Sie im Abschnitt **ÜBERWACHUNG** des Menüblatts die Option **Diagnose** aus.
 
-    ![Element des Menüs „Diagnose“ unter ÜBERWACHUNG im Azure-Portal.](./media/storage-monitor-storage-account/stg-enable-metrics-00.png)
+    ![Element des Menüs „Diagnose“ unter ÜBERWACHUNG im Azure-Portal.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
     
 1. Stellen Sie sicher, dass **Status** auf **Ein** festgelegt ist, und wählen Sie die **Dienste**, für die Sie die Protokollierung aktivieren möchten.
 
-    ![Konfigurieren Sie die Protokollierung im Azure-Portal.](./media/storage-monitor-storage-account/stg-enable-logging-01.png)
+    ![Konfigurieren Sie die Protokollierung im Azure-Portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. Klicken Sie auf **Speichern**.
 
-Die Diagnoseprotokolle werden in einem Blob-Container namens $logs in Ihren Speicherkonto gespeichert. Sie können die Protokolldaten über einen Storage-Explorer wie den [Microsoft Storage-Explorer](http://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
+Die Diagnoseprotokolle werden in einem Blobcontainer namens *$logs* in Ihrem Speicherkonto gespeichert. Sie können die Protokolldaten über einen Storage-Explorer wie den [Microsoft Storage-Explorer](http://storageexplorer.com) oder programmgesteuert mit der Speicherclientbibliothek oder PowerShell anzeigen.
 
 Informationen zum Zugreifen auf den Container $logs finden Sie unter [Enabling Storage Logging and Accessing Log Data](/rest/api/storageservices/enabling-storage-logging-and-accessing-log-data) (Aktivieren der Speicherprotokolierung und Zugreifen auf Protokolldaten).
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 1963c2f45bc37741a6d00c8dae985bfa5237ce7f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 5d5c4d5e26fa21488dd637805a4c22bd3ed18a7f
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259227"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39421082"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Tutorial: Azure Active Directory-Integration mit ServiceNow
 
@@ -56,7 +56,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von ServiceNow aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-servicenow-from-the-gallery"></a>Hinzufügen von ServiceNow aus dem Katalog
 Zum Konfigurieren der Integration von ServiceNow in Azure AD müssen Sie ServiceNow aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -67,15 +67,15 @@ Zum Konfigurieren der Integration von ServiceNow in Azure AD müssen Sie Service
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld **ServiceNow** ein, wählen Sie im Ergebnisbereich **ServiceNow** aus, und klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Geben Sie im Suchfeld **ServiceNow** ein, wählen Sie im Ergebnisbereich **ServiceNow** aus, und klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![ServiceNow in der Ergebnisliste](./media/servicenow-tutorial/tutorial_servicenow_addfromgallery.png)
 
@@ -90,11 +90,11 @@ Weisen Sie in ServiceNow den Wert für **Benutzername** in Azure AD als Wert fü
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit ServiceNow zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens in Azure AD für ServiceNow](#configure-azure-ad-single-sign-on-for-servicenow)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens in Azure AD für ServiceNow Express](#configure-azure-ad-single-sign-on-for-servicenow-express)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines ServiceNow-Testbenutzers](#create-a-servicenow-test-user)**, um eine Entsprechung von Britta Simon in ServiceNow zu haben, die mit der Azure AD-Darstellung von Britta Simon verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens in Azure AD für ServiceNow Express](#configure-azure-ad-single-sign-on-for-servicenow-express)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Erstellen eines ServiceNow-Testbenutzers](#create-a-servicenow-test-user)**, um eine Entsprechung von Britta Simon in ServiceNow zu haben, die mit der Azure AD-Darstellung von Britta Simon verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on-for-servicenow"></a>Konfigurieren des einmaligen Anmeldens von Azure AD für ServiceNow
 
@@ -106,11 +106,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/servicenow-tutorial/tutorial_servicenow_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für ServiceNow** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für ServiceNow** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für ServiceNow](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
@@ -121,7 +121,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzen. Dies wird an späterer Stelle im Tutorial erläutert.
 
-4. Führen Sie im Abschnitt **SAML-Signaturzertifikat** die folgenden Schritte aus: 
+1. Führen Sie im Abschnitt **SAML-Signaturzertifikat** die folgenden Schritte aus: 
 
     ![Downloadlink für das Zertifikat](./media/servicenow-tutorial/tutorial_servicenow_certificate.png)
 
@@ -129,13 +129,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Klicken Sie auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/servicenow-tutorial/tutorial_general_400.png)
 
-6. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
+1. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
-7. Aktivieren Sie das Plug-In **Integration – Multiple Provider Single Sign-On Installer** (Integration – SSO-Installationsprogramm für mehrere Anbieter), indem Sie die nächsten Schritte ausführen:
+1. Aktivieren Sie das Plug-In **Integration – Multiple Provider Single Sign-On Installer** (Integration – SSO-Installationsprogramm für mehrere Anbieter), indem Sie die nächsten Schritte ausführen:
 
     a. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Systemdefinition** auf der Suchleiste, und klicken Sie auf **Plug-Ins**.
 
@@ -149,9 +149,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Klicken Sie auf die Schaltfläche **Aktivieren**.
 
-8. Es gibt zwei Möglichkeiten für die Konfiguration von **ServiceNow**: automatisch und manuell.
+1. Es gibt zwei Möglichkeiten für die Konfiguration von **ServiceNow**: automatisch und manuell.
 
-9. Führen Sie für die automatische Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
+1. Führen Sie für die automatische Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
 
     a. Wechseln Sie zurück zur **ServiceNow**-SSO-Seite im Azure-Portal.
 
@@ -187,15 +187,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     * Klicken Sie oben rechts auf der Seite auf **Aktivieren**.
 
-10. Führen Sie für die manuelle Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
+1. Führen Sie für die manuelle Konfiguration von **ServiceNow** die unten angegebenen Schritte aus.
 
-11. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
+1. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
-12. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Multi-Provider SSO** auf der Suchleiste, und klicken Sie auf **Eigenschaften**.
+1. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Multi-Provider SSO** auf der Suchleiste, und klicken Sie auf **Eigenschaften**.
 
     ![App-URL konfigurieren](./media/servicenow-tutorial/tutorial_servicenow_06.png "App-URL konfigurieren")
 
-13. Führen Sie im Dialogfeld **Multiple Provider SSO Properties** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Multiple Provider SSO Properties** die folgenden Schritte aus:
 
     ![App-URL konfigurieren](./media/servicenow-tutorial/ic7694981.png "App-URL konfigurieren")
 
@@ -209,15 +209,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Klicken Sie auf **Speichern**.
 
-14. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Multi-Provider SSO** auf der Suchleiste, und klicken Sie auf **x509 Certificates** (x509-Zertifikate).
+1. Suchen Sie im Navigationsbereich auf der linken Seite den Abschnitt **Multi-Provider SSO** auf der Suchleiste, und klicken Sie auf **x509 Certificates** (x509-Zertifikate).
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/tutorial_servicenow_05.png "Einmaliges Anmelden konfigurieren")
 
-15. Klicken Sie im Dialogfeld **X.509 Certificates** auf **New**.
+1. Klicken Sie im Dialogfeld **X.509 Certificates** auf **New**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694974.png "Einmaliges Anmelden konfigurieren")
 
-16. Führen Sie im Dialogfeld **X.509 Certificates** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **X.509 Certificates** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694975.png "Einmaliges Anmelden konfigurieren")
 
@@ -233,19 +233,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
      f. Klicken Sie auf **Submit**.
 
-17. Klicken Sie im Navigationsbereich auf der linken Seite auf **Identity Providers**.
+1. Klicken Sie im Navigationsbereich auf der linken Seite auf **Identity Providers**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/tutorial_servicenow_07.png "Einmaliges Anmelden konfigurieren")
 
-18. Klicken Sie im Dialogfeld **Identitätsanbieter** auf **Neu**.
+1. Klicken Sie im Dialogfeld **Identitätsanbieter** auf **Neu**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694977.png "Einmaliges Anmelden konfigurieren")
 
-19. Klicken Sie im Dialogfeld **Identitätsanbieter** auf **SAML2 Update1?**.
+1. Klicken Sie im Dialogfeld **Identitätsanbieter** auf **SAML2 Update1?**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694978.png "Einmaliges Anmelden konfigurieren")
 
-20. Führen Sie im Dialogfeld „SAML2 Update1 Properties“ folgende Schritte aus:
+1. Führen Sie im Dialogfeld „SAML2 Update1 Properties“ folgende Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/idp.png "Einmaliges Anmelden konfigurieren")
 
@@ -255,7 +255,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Klicken Sie auf **Importieren**.
 
-21. Die IdP-Metadaten-URL wird gelesen, und alle Felder werden aufgefüllt.
+1. Die IdP-Metadaten-URL wird gelesen, und alle Felder werden aufgefüllt.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694982.png "Einmaliges Anmelden konfigurieren")
 
@@ -278,19 +278,19 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE]
     > In ServiceNow ist die IdP-Aktivierung nicht zulässig, ohne dass auf die Schaltfläche zum Testen der Verbindung geklickt wird. Führen Sie die hier angegebenen Schritte aus, um diesen Vorgang außer Kraft zu setzen.
 
-22. Klicken Sie auf das Menüsymbol Ihres neuen Identitätsanbieters, den Sie im Rahmen der Konfiguration erstellt haben, und wählen Sie in der Liste den Eintrag **copy sys_id**.
+1. Klicken Sie auf das Menüsymbol Ihres neuen Identitätsanbieters, den Sie im Rahmen der Konfiguration erstellt haben, und wählen Sie in der Liste den Eintrag **copy sys_id**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694992.png "Einmaliges Anmelden konfigurieren")
 
-23. Suchen Sie im Suchfeld oben links nach **sys_properties.list**, und drücken Sie die EINGABETASTE.
+1. Suchen Sie im Suchfeld oben links nach **sys_properties.list**, und drücken Sie die EINGABETASTE.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694993.png "Einmaliges Anmelden konfigurieren")
 
-24. Klicken Sie auf **New**.
+1. Klicken Sie auf **New**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694994.png "Einmaliges Anmelden konfigurieren")
 
-25. Führen Sie im Abschnitt **Systemeigenschaft** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Systemeigenschaft** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694995.png "Einmaliges Anmelden konfigurieren")
 
@@ -302,11 +302,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Klicken Sie auf **Submit**.
 
-26. Klicken Sie auf **New**.
+1. Klicken Sie auf **New**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694994.png "Einmaliges Anmelden konfigurieren")
 
-27. Führen Sie im Abschnitt **Systemeigenschaft** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Systemeigenschaft** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694996.png "Einmaliges Anmelden konfigurieren")
 
@@ -316,7 +316,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Klicken Sie auf **Submit**.
 
-28. Nach Ausführung des obigen Schritts können Sie jetzt Ihren neuen Identitätsanbieter aktivieren, und SSO sollte bei Ihnen funktionieren.
+1. Nach Ausführung des obigen Schritts können Sie jetzt Ihren neuen Identitätsanbieter aktivieren, und SSO sollte bei Ihnen funktionieren.
 
 > [!NOTE]
 > Beachten Sie außerdem, dass Sie Ihre neue IdP-Konfiguration in einem neuen Inkognitofenster testen müssen.
@@ -327,11 +327,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_servicenow_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für ServiceNow** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für ServiceNow** die folgenden Schritte aus:
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_servicenow_url.png)
 
@@ -342,29 +342,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [ServiceNow-Clientsupportteam](https://www.servicenow.com/support/contact-support.html), um diese Werte zu erhalten.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_servicenow_certificates.png)
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_general_400.png)
 
-6. Für ServiceNow gibt es einen Ein-Klick-Konfigurationsdienst, d. h., Azure AD konfiguriert ServiceNow für die SAML-Authentifizierung automatisch. Um diesen Dienst zu aktivieren, wechseln Sie in den Abschnitt **ServiceNow-Konfiguration**, und klicken Sie auf **ServiceNow konfigurieren**, um das Fenster „Anmeldung konfigurieren“ zu öffnen.
+1. Für ServiceNow gibt es einen Ein-Klick-Konfigurationsdienst, d. h., Azure AD konfiguriert ServiceNow für die SAML-Authentifizierung automatisch. Um diesen Dienst zu aktivieren, wechseln Sie in den Abschnitt **ServiceNow-Konfiguration**, und klicken Sie auf **ServiceNow konfigurieren**, um das Fenster „Anmeldung konfigurieren“ zu öffnen.
 
     ![Configure single sign-on](./media/servicenow-tutorial/tutorial_servicenow_configure.png)
 
-7. Geben Sie im Formular **Anmeldung konfigurieren** Ihren ServiceNow-Instanznamen, Administratorbenutzernamen und das Administratorkennwort ein, und klicken Sie auf **Jetzt konfigurieren**. Beachten Sie, dass dem angegebenen Administratorbenutzernamen in ServiceNow die Rolle **security_admin** zugewiesen sein muss, damit dies funktioniert. Wenn Sie hingegen ServiceNow für die Verwendung von Azure AD als SAML-Identitätsanbieter manuell konfigurieren möchten, klicken Sie auf **Einmaliges Anmelden manuell konfigurieren**, und kopieren Sie aus dem Abschnitt „Kurzübersicht“ **die Abmelde-URL, die SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden**.
+1. Geben Sie im Formular **Anmeldung konfigurieren** Ihren ServiceNow-Instanznamen, Administratorbenutzernamen und das Administratorkennwort ein, und klicken Sie auf **Jetzt konfigurieren**. Beachten Sie, dass dem angegebenen Administratorbenutzernamen in ServiceNow die Rolle **security_admin** zugewiesen sein muss, damit dies funktioniert. Wenn Sie hingegen ServiceNow für die Verwendung von Azure AD als SAML-Identitätsanbieter manuell konfigurieren möchten, klicken Sie auf **Einmaliges Anmelden manuell konfigurieren**, und kopieren Sie aus dem Abschnitt „Kurzübersicht“ **die Abmelde-URL, die SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden**.
 
     ![App-URL konfigurieren](./media/servicenow-tutorial/configure.png "App-URL konfigurieren")
 
-8. Melden Sie sich bei Ihrer ServiceNow Express-Anwendung als Administrator an.
+1. Melden Sie sich bei Ihrer ServiceNow Express-Anwendung als Administrator an.
 
-9. Klicken Sie links im Navigationsbereich auf **Einmaliges Anmelden**.
+1. Klicken Sie links im Navigationsbereich auf **Einmaliges Anmelden**.
 
     ![App-URL konfigurieren](./media/servicenow-tutorial/ic7694980ex.png "App-URL konfigurieren")
 
-10. Klicken Sie im Dialogfeld **Einmaliges Anmelden** oben rechts auf das Konfigurationssymbol, und legen Sie die folgenden Eigenschaften fest:
+1. Klicken Sie im Dialogfeld **Einmaliges Anmelden** oben rechts auf das Konfigurationssymbol, und legen Sie die folgenden Eigenschaften fest:
 
     ![App-URL konfigurieren](./media/servicenow-tutorial/ic7694981ex.png "App-URL konfigurieren")
 
@@ -374,11 +374,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     c. Im Textfeld **The field on the user table that...** geben Sie **user_name** ein.
 
-11. Klicken Sie im Dialogfeld **Einmaliges Anmelden** auf **Neues Zertifikat hinzufügen**.
+1. Klicken Sie im Dialogfeld **Einmaliges Anmelden** auf **Neues Zertifikat hinzufügen**.
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694973ex.png "Einmaliges Anmelden konfigurieren")
 
-12. Führen Sie im Dialogfeld **X.509 Certificates** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **X.509 Certificates** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694975.png "Einmaliges Anmelden konfigurieren")
 
@@ -394,11 +394,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     f. Klicken Sie auf **Aktualisieren**.
 
-13. Klicken Sie im Dialogfeld **Einmaliges Anmelden** auf **Add New IdP** (Neuen IdP hinzufügen).
+1. Klicken Sie im Dialogfeld **Einmaliges Anmelden** auf **Add New IdP** (Neuen IdP hinzufügen).
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694976ex.png "Einmaliges Anmelden konfigurieren")
 
-14. Führen Sie im Dialogfeld **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen) unter **Configure Identity Provider** (Identitätsanbieter konfigurieren) die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen) unter **Configure Identity Provider** (Identitätsanbieter konfigurieren) die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694982ex.png "Einmaliges Anmelden konfigurieren")
 
@@ -412,7 +412,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     e. Wählen Sie als **Identity Provider Certificate** (Identitätsanbieterzertifikat) das Zertifikat aus, das Sie im vorherigen Schritt erstellt haben.
 
-15. Klicken Sie auf **Advanced Settings** (Erweiterte Einstellungen), und führen Sie unter **Additional Identity Provider Properties** (Weitere Identitätsanbietereigenschaften) die folgenden Schritte aus:
+1. Klicken Sie auf **Advanced Settings** (Erweiterte Einstellungen), und führen Sie unter **Additional Identity Provider Properties** (Weitere Identitätsanbietereigenschaften) die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694983ex.png "Einmaliges Anmelden konfigurieren")
 
@@ -424,7 +424,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Deaktivieren Sie **Create an AuthnContextClass**.
 
-16. Führen Sie unter **Additional Service Provider Properties** (Weitere Service Provider-Eigenschaften) die folgenden Schritte aus:
+1. Führen Sie unter **Additional Service Provider Properties** (Weitere Service Provider-Eigenschaften) die folgenden Schritte aus:
 
     ![Einmaliges Anmelden konfigurieren](./media/servicenow-tutorial/ic7694984ex.png "Einmaliges Anmelden konfigurieren")
 
@@ -458,15 +458,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/servicenow-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/servicenow-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/servicenow-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/servicenow-tutorial/create_aaduser_04.png)
 
@@ -497,23 +497,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **ServiceNow** aus.
+1. Wählen Sie in der Anwendungsliste den Eintrag **ServiceNow** aus.
 
     ![ServiceNow-Link in der Anwendungsliste](./media/servicenow-tutorial/tutorial_servicenow_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

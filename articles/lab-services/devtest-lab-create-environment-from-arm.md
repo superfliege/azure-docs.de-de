@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: f73b6f594403ce51fcff4d757990afb3ce4a82bc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 5ae7a0d3aa0606fd02bfbaa0dcebdfaed5d11eb7
+ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004845"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39283092"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
-Über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) können Sie ganz einfach [einen virtuellen Computer erstellen und einem Lab hinzufügen](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Für einzelne virtuelle Computer funktioniert das sehr gut. Wenn die Umgebung allerdings mehrere virtuelle Computer enthält, muss jeder virtuelle Computer einzeln erstellt werden. Für Szenarien wie etwa eine Web-App mit mehreren Ebenen oder eine SharePoint-Farm ist ein Mechanismus erforderlich, der die gleichzeitige Erstellung mehrerer virtueller Computer ermöglicht. Mit Azure Resource Manager-Vorlagen können Sie jetzt die Infrastruktur und Konfiguration Ihrer Azure-Lösung definieren und wiederholt mehrere virtuelle Computer in einem konsistenten Zustand bereitstellen. Dieses Feature hat folgende Vorteile:
+Über das [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) können Sie ganz einfach [einzelne virtuelle Computer einem Lab hinzufügen](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Wenn die Umgebung allerdings mehrere virtuelle Computer enthält, muss jeder virtuelle Computer einzeln erstellt werden. Für Szenarien wie etwa eine Web-App mit mehreren Ebenen oder eine SharePoint-Farm ist ein Mechanismus erforderlich, der die gleichzeitige Erstellung mehrerer virtueller Computer ermöglicht. Mit Azure Resource Manager-Vorlagen können Sie jetzt die Infrastruktur und Konfiguration Ihrer Azure-Lösung definieren und wiederholt mehrere virtuelle Computer in einem konsistenten Zustand bereitstellen. Dieses Feature hat folgende Vorteile:
 
 - Azure Resource Manager-Vorlagen werden direkt über Ihr Quellcodeverwaltungs-Repository (GitHub oder Team Services Git) geladen.
 - Nach der Konfiguration können Ihre Benutzer eine Umgebung erstellen, indem sie genau wie bei anderen Arten von [VM-Grundlagen](./devtest-lab-comparing-vm-base-image-types.md) eine Azure Resource Manager-Vorlage über das Azure-Portal auswählen.
@@ -43,6 +43,8 @@ Erfahren Sie mehr über die zahlreichen [Vorteile der Verwendung von Resource Ma
 
 Bei Infrastruktur als Code und Konfiguration als Code empfiehlt es sich, Umgebungsvorlagen in der Quellcodeverwaltung zu verwalten. Azure DevTest Labs wendet diese Vorgehensweise an und lädt alle Azure Resource Manager-Vorlagen direkt aus Ihrem GitHub- oder VSTS Git-Repository. Folglich können Resource Manager-Vorlagen im gesamten Freigabezyklus (von der Test- bis zur Produktionsumgebung) verwendet werden.
 
+Sehen Sie sich die Vorlagen in unserem [öffentlichen GitHub-Repository](https://github.com/Azure/azure-devtestlab/tree/master/Environments) an, die vom DevTest Labs-Team erstellt wurden. In diesem öffentlichen Repository können Sie Vorlagen anzeigen, die von anderen Benutzern freigegeben werden und die Sie direkt verwenden oder entsprechend Ihren Anforderungen anpassen können. Speichern Sie Ihre Vorlage nach der Erstellung in diesem Repository, um sie für andere Benutzer freizugeben. Sie können auch ein eigenes Git-Repository mit Vorlagen einrichten, die zum Einrichten von Umgebungen in der Cloud verwendet werden können. 
+
 Zum Organisieren von Azure Resource Manager-Vorlagen in einem Repository sind folgende Regeln zu beachten:
 
 - Der Name der Mastervorlagendatei muss `azuredeploy.json` lauten. 
@@ -53,15 +55,15 @@ Zum Organisieren von Azure Resource Manager-Vorlagen in einem Repository sind fo
 - Sie können mithilfe der Parameter `_artifactsLocation` und `_artifactsLocationSasToken` den URI-Wert „parametersLink“ erstellen, der DevTest Labs das automatische Verwalten geschachtelter Vorlagen ermöglicht. Weitere Informationen finden Sie im Blogbeitrag [How Azure DevTest Labs makes nested Resource Manager template deployments easier for testing environments](https://blogs.msdn.microsoft.com/devtestlab/2017/05/23/how-azure-devtest-labs-makes-nested-arm-template-deployments-easier-for-testing-environments/) (Wie Azure DevTest Labs Bereitstellungen geschachtelter Resource Manager-Vorlagen für Testumgebungen vereinfacht).
 - Sie können Metadaten definieren, um den Anzeigenamen und die Beschreibung der Vorlage anzugeben. Diese Metadaten müssen sich in einer Datei namens `metadata.json` befinden. Die folgende Metadaten-Beispieldatei veranschaulicht das Angeben von Anzeigename und Beschreibung: 
 
-```json
-{
+    ```json
+    {
  
-"itemDisplayName": "<your template name>",
+        "itemDisplayName": "<your template name>",
  
-"description": "<description of the template>"
+        "description": "<description of the template>"
  
-}
-```
+    }
+    ```
 
 Mit den folgenden Schritten können Sie Ihrem Lab über das Azure-Portal ein Repository hinzufügen: 
 
@@ -150,7 +152,7 @@ Berücksichtigen Sie diese Einschränkungen bei der Verwendung einer Resource Ma
 
 - Die meisten Richtlinien werden nicht beachtet, wenn Sie Resource Manager-Vorlagen bereitstellen.
 
-   Beispielsweise kann eine Labrichtlinie festgelegt sein, laut der ein Benutzer nur fünf VMs erstellen kann. Wenn der Benutzer jedoch eine Resource Manager-Vorlage bereitstellt, die Dutzende von VMs erstellt, wird dies zugelassen. Es folgen Richtlinien, die nicht beachtet werden:
+   Beispielsweise kann eine Labrichtlinie festgelegt sein, laut der ein Benutzer nur fünf VMs erstellen kann. Allerdings kann ein Benutzer eine Resource Manager-Vorlage bereitstellen, die Dutzende von virtuellen Computern erstellt. Es folgen Richtlinien, die nicht beachtet werden:
 
    - Anzahl der VMs pro Benutzer
    - Anzahl der Premium-VMs pro Lab-Benutzer

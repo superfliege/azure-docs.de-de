@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 237a72fd282b29d3032675ccf3fb350f8db59ef7
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0558a5647267dda26890ba3a6dc1af326fae94f6
+ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209170"
+ms.lasthandoff: 07/27/2018
+ms.locfileid: "39308162"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy
 
@@ -33,128 +33,128 @@ Informationen zum Konfigurieren des Reverseproxys in Service Fabric finden Sie u
 Der Reverseproxy identifiziert sich bei Diensten mithilfe des zugehörigen Zertifikats durch Angabe der Eigenschaft ***reverseProxyCertificate*** im **Cluster**-[Ressourcentypenabschnitt](../azure-resource-manager/resource-group-authoring-templates.md). Die Dienste können die Logik implementieren, um das vom Reverseproxy bereitgestellte Zertifikat zu überprüfen. Die Dienste können die Details des akzeptierten Clientzertifikats als Konfigurationseinstellungen im Konfigurationspaket angeben. Dieses kann zur Laufzeit gelesen und zum Überprüfen des vom Reverseproxy bereitgestellten Zertifikats verwendet werden. Informationen zum Hinzufügen der Konfigurationseinstellungen finden Sie unter [Verwalten von Anwendungsparametern](service-fabric-manage-multiple-environment-app-configuration.md). 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Reverseproxy überprüft die Identität des Diensts über das vom Dienst bereitgestellte Zertifikat:
-Für die Serverzertifikatüberprüfung der von den Diensten bereitgestellten Zertifikate unterstützt der Reverseproxy eine der folgenden Optionen: None, ServiceCommonNameAndIssuer und ServiceCertificateThumbprints.
-Um eine dieser drei Optionen auszuwählen, geben Sie **ApplicationCertificateValidationPolicy** im Parameterabschnitt des ApplicationGateway/Http-Elements unter [fabricSettings](service-fabric-cluster-fabric-settings.md) ein.
+Der Reverseproxy unterstützt für die Ausführung der Serverzertifikatüberprüfung der von den Diensten bereitgestellten Zertifikate die folgenden Richtlinien: None, ServiceCommonNameAndIssuer und ServiceCertificateThumbprints.
+Um die vom Reverseproxy zu verwendende Richtlinie auszuwählen, geben Sie **ApplicationCertificateValidationPolicy** im Abschnitt **ApplicationGateway/Http** unter [fabricSettings](service-fabric-cluster-fabric-settings.md) an.
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-              {
-                "name": "ApplicationCertificateValidationPolicy",
-                "value": "None"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
-
-Ausführliche Informationen zur weiteren Konfiguration für jede dieser Optionen finden Sie im nächsten Abschnitt.
+Der nächste Abschnitt enthält die Konfigurationsdetails für die einzelnen Optionen.
 
 ### <a name="service-certificate-validation-options"></a>Optionen für die Dienstzertifikatüberprüfung 
 
 - **None:** Der Reverseproxy überspringt die Überprüfung des an den Proxy übermittelten Dienstzertifikats und stellt die sichere Verbindung her. Dies ist das Standardverhalten.
-Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **None** im Parameterabschnitt des ApplicationGateway/Http-Elements ein.
+Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **None** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) ein.
 
-- **ServiceCommonNameAndIssuer:** Der Reverseproxy überprüft das vom Dienst bereitgestellte Zertifikat basierend auf dem allgemeinen Namen des Zertifikats und dem Fingerabdruck des unmittelbaren Ausstellers. Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **ServiceCommonNameAndIssuer** im Parameterabschnitt des ApplicationGateway/Http-Elements ein.
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                 {
+                   "name": "ApplicationCertificateValidationPolicy",
+                   "value": "None"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-              {
-                "name": "ApplicationCertificateValidationPolicy",
-                "value": "ServiceCommonNameAndIssuer"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+- **ServiceCommonNameAndIssuer:** Der Reverseproxy überprüft das vom Dienst bereitgestellte Zertifikat basierend auf dem allgemeinen Namen des Zertifikats und dem Fingerabdruck des unmittelbaren Ausstellers. Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **ServiceCommonNameAndIssuer** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) ein.
 
-Um die Liste der allgemeinen Namen des Diensts und der Fingerabdrücke des Ausstellers anzugeben, fügen Sie wie weiter unten dargestellt ein **ApplicationGateway/Http/ServiceCommonNameAndIssuer**-Element unter fabricSettings ein. Im Parameterarrayelement können mehrere Paare von allgemeinen Namen des Zertifikats und Fingerabdrücken des Ausstellers hinzugefügt werden. 
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                 {
+                   "name": "ApplicationCertificateValidationPolicy",
+                   "value": "ServiceCommonNameAndIssuer"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-Wenn der Endpunkt, mit dem der Reverseproxy eine Verbindung herstellt, ein Zertifikat bereitstellt, dessen allgemeiner Name und Fingerabdruck des Ausstellers mit einem der hier angegebenen Werte übereinstimmt, wird der SSL-Kanal eingerichtet. Bei Nichtübereinstimmung der Zertifikatdetails gibt der Reverseproxy für die Anforderung des Clients eine Fehlermeldung mit dem Statuscode 502 (Ungültiges Gateway) aus. Zudem enthält die HTTP-Statuszeile den Ausdruck „Invalid SSL Certificate“. 
+   Um die Liste der allgemeinen Namen des Diensts und der Fingerabdrücke des Ausstellers anzugeben, fügen Sie wie weiter unten dargestellt einen [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer)-Abschnitt unter **fabricSettings** ein. Im Array **parameters** können mehrere Paare von allgemeinen Namen des Zertifikats und Fingerabdrücken des Ausstellers hinzugefügt werden. 
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-             "name": "ApplicationGateway/Http/ServiceCommonNameAndIssuer",
-            "parameters": [
-              {
-                "name": "WinFabric-Test-Certificate-CN1",
-                "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 b4 22 11"
-              },
-              {
-                "name": "WinFabric-Test-Certificate-CN2",
-                "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 11 33 44"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+   Wenn der Endpunkt, mit dem der Reverseproxy eine Verbindung herstellt, ein Zertifikat bereitstellt, dessen allgemeiner Name und Fingerabdruck des Ausstellers mit einem der hier angegebenen Werte übereinstimmt, wird der SSL-Kanal eingerichtet. 
+   Bei Nichtübereinstimmung der Zertifikatdetails gibt der Reverseproxy für die Anforderung des Clients eine Fehlermeldung mit dem Statuscode 502 (Ungültiges Gateway) aus. Zudem enthält die HTTP-Statuszeile den Ausdruck „Invalid SSL Certificate“. 
 
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http/ServiceCommonNameAndIssuer",
+               "parameters": [
+                 {
+                   "name": "WinFabric-Test-Certificate-CN1",
+                   "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 b4 22 11"
+                 },
+                 {
+                   "name": "WinFabric-Test-Certificate-CN2",
+                   "value": "b3 44 9b 01 8d 0f 68 39 a2 c5 d6 2b 5b 6c 6a c8 22 11 33 44"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-- **ServiceCertificateThumbprints:** Der Reverseproxy überprüft das an den Proxy übermittelte Dienstzertifikat basierend auf dem zugehörigen Fingerabdruck. Diese Option können Sie auswählen, wenn die Dienste mit selbstsignierten Zertifikaten konfiguriert sind. Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **ServiceCertificateThumbprints** im Parameterabschnitt des ApplicationGateway/Http-Elements ein.
+- **ServiceCertificateThumbprints:** Der Reverseproxy überprüft das an den Proxy übermittelte Dienstzertifikat basierend auf dem zugehörigen Fingerabdruck. Diese Option können Sie auswählen, wenn die Dienste mit selbstsignierten Zertifikaten konfiguriert sind. Geben Sie **ApplicationCertificateValidationPolicy** mit dem Wert **ServiceCertificateThumbprints** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) ein.
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-              {
-                "name": "ApplicationCertificateValidationPolicy",
-                "value": "ServiceCertificateThumbprints"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                 {
+                   "name": "ApplicationCertificateValidationPolicy",
+                   "value": "ServiceCertificateThumbprints"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-Geben Sie zudem die Fingerabdrücke mit einem **ServiceCertificateThumbprints**-Eintrag im Parameterabschnitt des ApplicationGateway/Http-Elements an. Mehrere Fingerabdrücke können, wie im Folgenden dargestellt, als eine durch Trennzeichen getrennte Liste im Wertfeld angegeben werden:
+   Geben Sie zudem die Fingerabdrücke mit einem **ServiceCertificateThumbprints**-Eintrag im Abschnitt **ApplicationGateway/Http** an. Mehrere Fingerabdrücke können, wie im Folgenden dargestellt, als eine durch Trennzeichen getrennte Liste im Wertfeld angegeben werden:
 
-```json
-{
-"fabricSettings": [
-          ...
-          {
-            "name": "ApplicationGateway/Http",
-            "parameters": [
-                ...
-              {
-                "name": "ServiceCertificateThumbprints",
-                "value": "78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 bf,78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 b9"
-              }
-            ]
-          }
-        ],
-        ...
-}
-```
+   ```json
+   {
+   "fabricSettings": [
+             ...
+             {
+               "name": "ApplicationGateway/Http",
+               "parameters": [
+                   ...
+                 {
+                   "name": "ServiceCertificateThumbprints",
+                   "value": "78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 bf,78 12 20 5a 39 d2 23 76 da a0 37 f0 5a ed e3 60 1a 7e 64 b9"
+                 }
+               ]
+             }
+           ],
+           ...
+   }
+   ```
 
-Wenn der Fingerabdruck des Serverzertifikats in diesem Konfigurationseintrag aufgeführt ist, stellt der Reverseproxy die SSL-Verbindung her. Andernfalls beendet er die Verbindung und gibt für die Anforderung des Clients eine Fehlermeldung mit dem Statuscode 502 (Ungültiges Gateway) aus. Zudem enthält die HTTP-Statuszeile den Ausdruck „Invalid SSL Certificate“.
+   Wenn der Fingerabdruck des Serverzertifikats in diesem Konfigurationseintrag aufgeführt ist, stellt der Reverseproxy die SSL-Verbindung her. Andernfalls beendet er die Verbindung und gibt für die Anforderung des Clients eine Fehlermeldung mit dem Statuscode 502 (Ungültiges Gateway) aus. Zudem enthält die HTTP-Statuszeile den Ausdruck „Invalid SSL Certificate“.
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Logik der Endpunktauswahl, wenn Dienste sichere und nicht sichere Endpunkte bereitstellen
-Service Fabric unterstützt die Konfiguration mehrerer Endpunkte für einen Dienst. Informationen finden Sie unter [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md).
+Service Fabric unterstützt die Konfiguration mehrerer Endpunkte für einen Dienst. Weitere Informationen finden Sie unter [Angeben von Ressourcen in einem Dienstmanifest](service-fabric-service-manifest-resources.md).
 
-Der Reverseproxy wählt einen der Endpunkte zum Weiterleiten der Anforderung basierend auf dem Abfrageparameter **ListenerName** aus. Wenn dieser nicht angegeben ist, kann er einen beliebigen Endpunkt aus der Liste der Endpunkte auswählen. Dabei kann es sich dann um einen HTTP- oder HTTPS-Endpunkt handeln. Möglicherweise möchten Sie festlegen, dass der Reverseproxy bei bestimmten Szenarien oder Anforderungen nur im „ausschließlich sicheren Modus“ ausgeführt wird, d.h., der sichere Reverseproxy soll keine Anforderungen an nicht sichere Endpunkte weiterleiten. Dies kann durch Angabe des Konfigurationseintrags **SecureOnlyMode** mit dem Wert **true** im Parameterabschnitt des ApplicationGateway/Http-Elements erreicht werden.   
+Der Reverseproxy wählt einen der Endpunkte zum Weiterleiten der Anforderung basierend auf dem Abfrageparameter **ListenerName** im [Dienst-URI](./service-fabric-reverseproxy.md#uri-format-for-addressing-services-by-using-the-reverse-proxy) aus. Wird der Parameter **ListenerName** nicht angegeben, kann der Reverseproxy einen beliebigen Endpunkt in der Liste der Endpunkte auswählen. Abhängig von den für den Dienst konfigurierten Endpunkten kann der ausgewählte Endpunkt ein HTTP- oder ein HTTPS-Endpunkt sein. Unter Umständen gibt es Szenarien oder Anforderungen, bei denen der Reverseproxy im „ausschließlich sicheren Modus“ ausgeführt werden soll. Das bedeutet, dass der sichere Reverseproxy keine Anforderungen an nicht sichere Endpunkte weiterleiten soll. Um für den Reverseproxy den ausschließlich sicheren Modus festzulegen, geben Sie den Konfigurationseintrag **SecureOnlyMode** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) mit dem Wert **true** an.   
 
 ```json
 {
@@ -175,11 +175,11 @@ Der Reverseproxy wählt einen der Endpunkte zum Weiterleiten der Anforderung bas
 }
 ```
 
-> 
-> Wenn im **SecureOnlyMode** der Client einen **ListenerName** angegeben hat, der einem HTTP-Endpunkt (ungesichert) entspricht, gibt der Reverseproxy für die Anforderung eine Fehlermeldung mit dem HTTP-Statuscode 404 (Nicht gefunden) aus.
+> [!NOTE]
+> Wenn im **SecureOnlyMode** der Client ein **ListenerName**-Element angegeben hat, das einem HTTP-Endpunkt (ungesichert) entspricht, gibt der Reverseproxy für die Anforderung eine Fehlermeldung mit dem HTTP-Statuscode 404 (Nicht gefunden) aus.
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Einrichten der Clientzertifikatauthentifizierung über den Reverseproxy
-Die SSL-Beendigung erfolgt auf dem Reverseproxy, und alle Daten des Clientzertifikats gehen verloren. Damit die Dienste die Clientzertifikatauthentifizierung durchführen, legen Sie die Einstellung **ForwardClientCertificate** im Parameterabschnitt des ApplicationGateway/Http-Elements fest.
+Die SSL-Beendigung erfolgt auf dem Reverseproxy, und alle Daten des Clientzertifikats gehen verloren. Damit die Dienste die Clientzertifikatauthentifizierung durchführen, legen Sie die Einstellung **ForwardClientCertificate** im Abschnitt [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) fest.
 
 1. Wenn **ForwardClientCertificate** auf **false** festgelegt ist, fordert der Reverseproxy das Clientzertifikat während des SSL-Handshakes mit dem Client nicht an.
 Dies ist das Standardverhalten.
@@ -188,6 +188,7 @@ Dies ist das Standardverhalten.
 Dann leitet er die Daten des Clientzertifikats in einem benutzerdefinierten HTTP-Header mit dem Namen **X-Client-Certificate** weiter. Der Headerwert ist die Base64-codierte Zeichenfolge im PEM-Format des Clientzertifikats. Der Dienst kann die Anforderung nach dem Überprüfen der Zertifikatdaten mit dem entsprechenden Statuscode annehmen oder ablehnen.
 Wenn der Client kein Zertifikat bereitstellt, leitet der Reverseproxy einen leeren Header weiter. Die weitere Verarbeitung erfolgt durch den Dienst.
 
+> [!NOTE]
 > Der Reverseproxy führt lediglich die Weiterleitung durch. Er führt keine Überprüfung des Clientzertifikats durch.
 
 

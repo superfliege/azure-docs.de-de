@@ -4,18 +4,18 @@ description: In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzuge
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
-ms.author: edett
-manager: jhubbard
+ms.author: anshan
+manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b6beecbf64cee925f62ac4c82919926fcb79940a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330593"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627371"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 In diesem Artikel wird beschrieben, wie im Azure-Portal eine Ereignisquelle hinzugefügt wird, die Daten aus einem IoT Hub in Ihre Time Series Insights-Umgebung einliest.
