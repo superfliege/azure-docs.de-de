@@ -36,7 +36,7 @@ Die folgende Tabelle enthält die Zuordnung der Skalierungseinheiten zu den verf
 | 1 | 5 |
 | 2 | 10 |
 | 3 | 15 |
-| n | 5 x n |
+| n | 5 * n |
 
 Außerdem können Sie auswählen, ob die Inhaltsprotokollierung ein- oder ausgeschaltet sein soll. Sie wählen also aus, ob der Endpunktdatenverkehr für die interne Nutzung durch Microsoft gespeichert wird. Wenn es nicht aktiviert wird, wird die Speicherung des Datenverkehrs unterdrückt. Für die Unterdrückung von Inhaltsprotokollierungsergebnissen fallen zusätzliche Kosten an. Details finden Sie auf der Seite mit [Informationen zu Preisen](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/).
 
