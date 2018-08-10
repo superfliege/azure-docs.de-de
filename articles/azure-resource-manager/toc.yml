@@ -32,6 +32,8 @@
       maintainContext: true
     - name: Vorlagen für Cloudkonsistenz
       href: templates-cloud-consistency.md
+    - name: Bereitstellungsmodi
+      href: deployment-modes.md
 - name: Anleitung
   items:
     - name: Erstellen von Vorlagen

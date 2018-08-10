@@ -228,9 +228,9 @@
           href: metrics-vm-usage-rest.md
     - name: Verwalten von Kosten
       items:
-        - name: Vorauszahlung für virtuelle Computer – reservierte Instanzen
+        - name: 'Vorauszahlen für virtuelle Computer: Azure-Reservierungen'
           href: prepay-reserved-vm-instances.md
-        - name: Was sind reservierte Instanzen?
+        - name: Was sind Azure-Reservierungen?
           href: ../../billing/billing-save-compute-costs-reservations.md
         - name: Flexibilität bei der VM-Instanzgröße
           href: reserved-vm-instance-size-flexibility.md

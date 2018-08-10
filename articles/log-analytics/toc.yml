@@ -110,9 +110,17 @@
     - name: Abfragen von Daten
       items:
         - name: Dokumentation zur Sprache
-          href: 'https://docs.loganalytics.io'
-        - name: Wechsel von der Legacysprache
-          href: log-analytics-log-search-transition.md
+          items:
+            - name: Wechsel von der Legacysprache
+              href: log-analytics-log-search-transition.md
+            - name: Erste Schritte mit dem Analytics-Portal
+              href: query-language/get-started-analytics-portal.md
+            - name: Erste Schritte mit Abfragen
+              href: query-language/get-started-queries.md
+            - name: Suchabfragen
+              href: query-language/search-queries.md
+            - name: Sprachreferenz
+              href: 'https://docs.loganalytics.io'
         - name: Ressourcenübergreifende Suchvorgänge
           href: log-analytics-cross-workspace-search.md
         - name: Ausführen von Aktionen aus Suchergebnissen

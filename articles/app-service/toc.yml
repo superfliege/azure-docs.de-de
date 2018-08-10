@@ -25,6 +25,8 @@
       href: app-service-web-get-started-java.md
     - name: Erstellen einer statischen HTML-Website
       href: app-service-web-get-started-html.md
+    - name: Ausführen eines benutzerdefinierten Windows-Containers
+      href: app-service-web-get-started-windows-container.md
 - name: Tutorials
   items:
     - name: App mit Datenbank

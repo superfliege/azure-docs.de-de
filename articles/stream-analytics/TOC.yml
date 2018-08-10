@@ -96,6 +96,8 @@
           href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
         - name: Überwachen von Aufträgen – Azure .NET SDK
           href: stream-analytics-monitor-jobs.md
+        - name: 'Überwachen von Aufträgen: Visual Studio'
+          href: stream-analytics-monitor-jobs-use-vs.md
     - name: Skalieren
       items:
         - name: Skalieren mit Streamingeinheiten
@@ -117,8 +119,10 @@
       items:
         - name: Installieren von Tools
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Entwickeln eines Cloudauftrags
-          href: stream-analytics-tools-for-visual-studio.md
+        - name: Lokales Testen eines Auftrags
+          href: stream-analytics-vs-tools-local-run.md
+        - name: Anzeigen von Aufträgen in Visual Studio
+          href: stream-analytics-vs-tools.md
         - name: Entwickeln eines Edge-Auftrags
           href: stream-analytics-tools-for-visual-studio-edge-jobs.md
         - name: Einrichten von CI-/CD-Pipelines

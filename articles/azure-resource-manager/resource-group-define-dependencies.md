@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 475e1f0d481678f53c191a887c7cc56c28c4b361
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 5b4d8317d565528f896bf6823ddaefd010d0a845
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887428"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528628"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen
 Vor dem Bereitstellen einer bestimmten Ressource kann es erforderlich sein, dass bereits andere Ressourcen vorhanden sind. Zum Beispiel muss SQL Server vorhanden sein, bevor versucht wird, eine SQL-Datenbank bereitzustellen. Diese Beziehung definieren Sie, indem Sie eine Ressource als von einer anderen Ressource abhängig kennzeichnen. Sie definieren eine Abhängigkeit mit dem **dependsOn**-Element oder mit der **reference**-Funktion. 
@@ -108,7 +108,7 @@ Das folgende Beispiel zeigt einen SQL Server und eine SQL-Datenbank. Beachten Si
 ```
 
 ## <a name="reference-and-list-functions"></a>Funktionen „reference“ und „list“
-Mit der [reference](resource-group-template-functions-resource.md#reference) -Funktion kann ein Ausdruck seinen Wert von anderen Paaren aus JSON-Name und -Wert oder Laufzeitressourcen ableiten. Die [list*](resource-group-template-functions-resource.md#listkeys-listsecrets-and-list)-Funktionen geben Werte für eine Ressource aus einem list-Vorgang zurück.  reference- und list-Ausdrücke deklarieren implizit, dass eine Ressource von der anderen abhängig ist, wenn die referenzierte Ressource in der gleichen Vorlage bereitgestellt wird und anhand ihres Namens (nicht ihrer Ressourcen-ID) auf sie verwiesen wird. Wenn Sie die Ressourcen-ID an die reference- oder list-Funktionen übergeben, wird kein impliziter Verweis erstellt.
+Mit der [reference](resource-group-template-functions-resource.md#reference) -Funktion kann ein Ausdruck seinen Wert von anderen Paaren aus JSON-Name und -Wert oder Laufzeitressourcen ableiten. Die [list*](resource-group-template-functions-resource.md#list)-Funktionen geben Werte für eine Ressource aus einem list-Vorgang zurück.  reference- und list-Ausdrücke deklarieren implizit, dass eine Ressource von der anderen abhängig ist, wenn die referenzierte Ressource in der gleichen Vorlage bereitgestellt wird und anhand ihres Namens (nicht ihrer Ressourcen-ID) auf sie verwiesen wird. Wenn Sie die Ressourcen-ID an die reference- oder list-Funktionen übergeben, wird kein impliziter Verweis erstellt.
 
 Das allgemeine Format der reference-Funktion sieht folgendermaßen aus:
 

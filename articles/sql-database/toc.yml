@@ -84,6 +84,8 @@
           href: sql-database-service-tiers-dtu.md
         - name: Ressourceneinschränkungen
           href: sql-database-resource-limits.md
+        - name: Vorauszahlen für eine reservierte Kapazität
+          href: sql-database-reserved-capacity.md
     - name: Logische Server
       items:
         - name: Erstellen und Verwalten
