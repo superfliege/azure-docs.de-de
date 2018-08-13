@@ -402,7 +402,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
 11. Ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **StoredProceduretoUpdateChangeTrackingActivity** fest. Mit dieser Aktivität wird die Version der Änderungsnachverfolgung in der Tabelle **table_store_ChangeTracking_version** geändert.
 
     ![Stored Procedure-Aktivität – Name](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. Wechseln Sie zur Registerkarte *SQL-Konto*, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**. 
+12. Wechseln Sie zur Registerkarte *SQL-Konto*\*, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**. 
 
     ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus: 
