@@ -54,7 +54,7 @@ Wenn Sie an einem bestimmten Speicherkonto interessiert sind, können Sie nur **
 **So filtern Sie Konten:**
 
 1. Klicken Sie oben im Bereich auf **Filter**.
-2. Im Bereich „Filter“ können Sie einen **Kontonamen**, eine „Abonnement-ID“ oder einen **Status** angeben, um eine Feinabstimmung der angezeigten Liste mit Speicherkonten vorzunehmen. Nutzen Sie die Optionen je nach Bedarf.
+2. Im Bereich „Filter“ können Sie einen **Kontonamen**, eine \*\*„Abonnement-ID“ oder einen **Status** angeben, um eine Feinabstimmung der angezeigten Liste mit Speicherkonten vorzunehmen. Nutzen Sie die Optionen je nach Bedarf.
 3. Wählen Sie **Update** aus. Die Liste sollte entsprechend aktualisiert werden.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)
