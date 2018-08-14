@@ -4,17 +4,17 @@ description: Ausprobieren von Azure IoT Edge durch Ausführen von Analysen für 
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/24/2018
+ms.date: 08/02/2018
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1437c3552a7af5d5474cf3bdaabe95d5415af603
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b54a326fc648a443897a6e39c823d9c097cf1d3
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414210"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626381"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>Schnellstartanleitung: Bereitstellen des ersten IoT Edge-Moduls aus dem Azure-Portal auf einem Windows-Gerät – Vorschau
 
@@ -56,18 +56,17 @@ Cloudressourcen:
    az group create --name IoTEdgeResources --location westus
    ```
 
-Ein Windows-Computer oder virtueller Computer als IoT Edge-Gerät: 
+IoT Edge-Gerät: 
 
-* Verwenden Sie eine unterstützte Windows-Version:
+* Ein Windows-Computer oder virtueller Computer als IoT Edge-Gerät. Verwenden Sie eine unterstützte Windows-Version:
    * Windows 10 oder höher
    * Windows Server 2016 oder höher
 * Wenn es sich um einen virtuellen Computer handelt, aktivieren Sie die [geschachtelte Virtualisierung][lnk-nested], und weisen Sie mindestens 2 GB Speicher zu. 
 * Installieren Sie [Docker für Windows][lnk-docker], und stellen Sie sicher, dass dieses Programm ausgeführt wird.
-* Konfigurieren Sie Docker für die Verwendung von [Linux-Containern](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz mit Azure CLI erstellen. 
+Beginnen Sie mit der Schnellstartanleitung, indem Sie Ihre IoT Hub-Instanz mit der Azure CLI erstellen. 
 
 ![IoT Hub erstellen][3]
 
@@ -86,7 +85,9 @@ Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe *
 Registrieren Sie ein IoT Edge-Gerät bei Ihrem neu erstellten IoT Hub.
 ![Registrieren eines Geräts][4]
 
-Erstellen Sie eine Geräteidentität für das simulierte Gerät, sodass es mit dem IoT Hub kommunizieren kann. Da IoT Edge-Geräte sich von typischen IoT-Geräten unterscheiden und auf unterschiedliche Weise verwaltet werden können, deklarieren Sie dieses Gerät von Anfang an als IoT Edge-Gerät. 
+Erstellen Sie eine Geräteidentität für das simulierte Gerät, sodass es mit dem IoT Hub kommunizieren kann. Die Geräteidentität befindet sich in der Cloud, und Sie verwenden eine eindeutige Geräte-Verbindungszeichenfolge, um einem physischen Gerät eine Geräteidentität zuzuordnen. 
+
+Da IoT Edge-Geräte sich von typischen IoT-Geräten unterscheiden und auf unterschiedliche Weise verwaltet werden können, deklarieren Sie dieses Gerät von Anfang an als IoT Edge-Gerät. 
 
 1. Geben Sie in Azure Cloud Shell den folgenden Befehl ein, um in Ihrem Hub ein Gerät mit dem Namen **myEdgeDevice** zu erstellen.
 
@@ -104,129 +105,31 @@ Erstellen Sie eine Geräteidentität für das simulierte Gerät, sodass es mit d
 
 ## <a name="install-and-start-the-iot-edge-runtime"></a>Installieren und Starten der IoT Edge-Runtime
 
-Installieren und starten Sie die Azure IoT Edge-Runtime auf Ihrem IoT Edge-Gerät. 
+Installieren Sie die Azure IoT Edge-Runtime auf Ihrem IoT Edge-Gerät, und konfigurieren Sie es mit einer Geräte-Verbindungszeichenfolge. 
 ![Registrieren eines Geräts][5]
 
 Die IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für die IoT Edge-Sicherheit** wird jedes Mal gestartet, wenn ein Edge-Gerät gestartet wird, und startet den IoT Edge-Agent, um einen Bootstrapvorgang durchzuführen. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem IoT Edge-Gerät, einschließlich des IoT Edge-Hubs. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub. 
 
->[!NOTE]
->Die Installationsschritte in diesem Abschnitt müssen derzeit manuell ausgeführt werden, während ein Installationsskript entwickelt wird. 
+Bei der Installation der Runtime werden Sie zur Eingabe der Geräte-Verbindungszeichenfolge aufgefordert. Verwenden Sie die Zeichenfolge, die Sie über die Azure CLI abgerufen haben. Diese Zeichenfolge ordnet Ihr physisches Gerät der IoT Edge-Geräteidentität in Azure zu. 
 
 In den Anleitungen in diesem Abschnitt wird die IoT Edge-Runtime mit Linux-Containern konfiguriert. Informationen zur Verwendung von Windows-Containern finden Sie unter [Install Azure IoT Edge runtime on Windows to use with Windows containers (Installieren der Azure IoT Edge-Runtime unter Windows zur Verwendung von Windows-Containern)](how-to-install-iot-edge-windows-with-windows.md).
 
+Führen Sie die folgenden Schritte auf dem Windows-Computer oder dem virtuellen Computer aus, den Sie als IoT Edge-Gerät vorbereitet haben. 
+
 ### <a name="download-and-install-the-iot-edge-service"></a>Herunterladen und Installieren des IoT Edge-Diensts
+
+Verwenden Sie PowerShell zum Herunterladen und Installieren der IoT Edge-Runtime. Verwenden Sie die aus IoT Hub abgerufene Geräte-Verbindungszeichenfolge zum Konfigurieren Ihres Geräts. 
 
 1. Führen Sie PowerShell auf Ihrem IoT Edge-Gerät als Administrator aus.
 
-2. Laden Sie das IoT Edge-Dienstpaket herunter.
+2. Laden Sie den IoT Edge-Dienst herunter, und installieren Sie ihn auf Ihrem Gerät. 
 
    ```powershell
-   Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
-   Expand-Archive .\iotedged-windows.zip C:\ProgramData\iotedge -f
-   Move-Item c:\ProgramData\iotedge\iotedged-windows\* C:\ProgramData\iotedge\ -Force
-   rmdir C:\ProgramData\iotedge\iotedged-windows
-   $sysenv = "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
-   $path = (Get-ItemProperty -Path $sysenv -Name Path).Path + ";C:\ProgramData\iotedge"
-   Set-ItemProperty -Path $sysenv -Name Path -Value $path
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   Install-SecurityDaemon -Manual -ContainerOs Linux
    ```
 
-3. Installieren Sie die vcruntime.
-
-  ```powershell
-  Invoke-WebRequest -useb https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe -o vc_redist.exe
-  .\vc_redist.exe /quiet /norestart
-  ```
-
-4. Erstellen und starten Sie den IoT Edge-Dienst.
-
-   ```powershell
-   New-Service -Name "iotedge" -BinaryPathName "C:\ProgramData\iotedge\iotedged.exe -c C:\ProgramData\iotedge\config.yaml"
-   Start-Service iotedge
-   ```
-
-5. Fügen Sie Firewallausnahmen für die Ports hinzu, die vom IoT Edge-Dienst verwendet werden.
-
-   ```powershell
-   New-NetFirewallRule -DisplayName "iotedged allow inbound 15580,15581" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 15580-15581 -Program "C:\programdata\iotedge\iotedged.exe" -InterfaceType Any
-   ```
-
-6. Erstellen Sie die neue Datei **iotedge.reg**, und öffnen Sie sie mit einem Text-Editor. 
-
-7. Fügen Sie den folgenden Inhalt hinzu, und speichern Sie die Datei: 
-
-   ```input
-   Windows Registry Editor Version 5.00
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
-   "CustomSource"=dword:00000001
-   "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
-   "TypesSupported"=dword:00000007
-   ```
-
-8. Navigieren Sie im Datei-Explorer zu Ihrer Datei, und doppelklicken Sie darauf, um die Änderungen in die Windows-Registrierung zu importieren. 
-
-### <a name="configure-the-iot-edge-runtime"></a>Konfigurieren der IoT Edge-Laufzeit 
-
-Konfigurieren Sie die Runtime mit der Verbindungszeichenfolge Ihres IoT Edge-Geräts, die Sie beim Registrieren eines neuen Geräts kopiert haben. Konfigurieren Sie anschließend das Netzwerk für die Runtime. 
-
-1. Öffnen Sie die IoT Edge-Konfigurationsdatei, die sich unter `C:\ProgramData\iotedge\config.yaml` befindet. Diese Datei ist geschützt. Führen Sie einen Text-Editor (z.B. den Editor von Windows) als Administrator aus, und öffnen Sie die Datei in diesem Editor. 
-
-2. Suchen Sie nach dem Abschnitt **provisioning**, und aktualisieren Sie den Wert von **device_connection_string** mit der Zeichenfolge, die Sie aus Ihren IoT Edge-Gerätedetails kopiert haben. 
-
-3. Rufen Sie in Ihrem PowerShell-Administratorfenster den Hostnamen für Ihr IoT Edge-Gerät ab, und kopieren Sie die Ausgabe. 
-
-   ```powershell
-   hostname
-   ```
-
-4. Suchen Sie in der Konfigurationsdatei nach dem Abschnitt **Edge device hostname**. Aktualisieren Sie den Wert von **hostname** mit dem Hostnamen, den Sie aus PowerShell kopiert haben.
-
-3. Rufen Sie in Ihrem PowerShell-Administratorfenster die IP-Adresse für Ihr IoT Edge-Gerät ab. 
-
-   ```powershell
-   ipconfig
-   ```
-
-4. Kopieren Sie den Wert für die **IPv4-Adresse** im Abschnitt **vEthernet (DockerNAT)** der Ausgabe. 
-
-5. Erstellen Sie eine Umgebungsvariable mit dem Namen **IOTEDGE_HOST**, und ersetzen Sie *\<ip_address\>* durch die IP-Adresse für Ihr IoT Edge-Gerät. 
-
-   ```powershell
-   [Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<ip_address>:15580")
-   ```
-
-6. Suchen Sie in der Datei `config.yaml` nach dem Abschnitt **Connect settings**. Aktualisieren Sie die Werte **management_uri** und **workload_uri** mit Ihrer IP-Adresse und den Ports, die Sie im vorherigen Abschnitt geöffnet haben. Ersetzen Sie **\<GATEWAY_ADDRESS\>** durch die von Ihnen kopierte DockerNAT-IP-Adresse. 
-
-   ```yaml
-   connect: 
-     management_uri: "http://<GATEWAY_ADDRESS>:15580"
-     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
-   ```
-
-7. Suchen Sie nach dem Abschnitt **Listen settings**, und fügen Sie für **management_uri** und **workload_uri** jeweils die gleichen Werte hinzu. 
-
-   ```yaml
-   listen:
-     management_uri: "http://<GATEWAY_ADDRESS>:15580"
-     workload_uri: "http://<GATEWAY_ADDRESS>:15581"
-   ```
-
-8. Suchen Sie nach dem Abschnitt **Moby Container Runtime settings**, und überprüfen Sie, ob der Wert für **network** auskommentiert und auf **azure-iot-edge** festgelegt ist.
-
-   ```yaml
-   moby_runtime:
-     docker_uri: "npipe://./pipe/docker_engine"
-     network: "azure-iot-edge"
-   ```
-
-9. Speichern Sie die Konfigurationsdatei. 
-
-10. Starten Sie den IoT Edge-Dienst in PowerShell neu.
-
-   ```powershell
-   Stop-Service iotedge -NoWait
-   sleep 5
-   Start-Service iotedge
-   ```
+3. Wenn Sie zur Eingabe von **DeviceConnectionString** aufgefordert werden, geben Sie die Zeichenfolge ein, die Sie im vorherigen Abschnitt kopiert haben. Nehmen Sie die Anführungszeichen um die Verbindungszeichenfolge nicht mit auf. 
 
 ### <a name="view-the-iot-edge-runtime-status"></a>Anzeigen des Status der IoT Edge-Runtime
 
@@ -259,6 +162,8 @@ Vergewissern Sie sich, dass die Runtime erfolgreich installiert und konfiguriert
 
    ![Anzeigen eines Moduls auf Ihrem Gerät](./media/quickstart/iotedge-list-1.png)
 
+Ihr IoT Edge-Gerät ist jetzt konfiguriert. Es kann nun zum Ausführen von in der Cloud bereitgestellten Modulen verwendet werden. 
+
 ## <a name="deploy-a-module"></a>Bereitstellen eines Moduls
 
 Verwalten Sie Ihr Azure IoT Edge-Gerät über die Cloud, um ein Modul bereitzustellen, das Telemetriedaten an die IoT Hub-Instanz sendet.
@@ -286,7 +191,7 @@ iotedge logs tempSensor -f
 
   ![Anzeigen der Daten von Ihrem Modul](./media/quickstart/iotedge-logs.png)
 
-Sie können die Nachrichten, die von Ihrer IoT Hub-Instanz empfangen werden, auch anzeigen, indem Sie das [Tool „IoT Hub-Explorer“][lnk-iothub-explorer] oder die [Azure IoT-Toolkit-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) verwenden. 
+Sie können die Nachrichten, die von Ihrer IoT Hub-Instanz empfangen werden, auch anzeigen, indem Sie die [Azure IoT-Toolkit-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) verwenden. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -321,8 +226,8 @@ Verwenden Sie die folgenden Befehle, wenn Sie die Installationen von Ihrem Gerä
 Entfernen Sie die IoT Edge-Runtime.
 
    ```powershell
-   cmd /c sc delete iotedge
-   rm -r c:\programdata\iotedge
+   . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
+   Uninstall-SecurityDaemon
    ```
 
 Sobald die IoT Edge-Runtime entfernt wird, werden die Container, die sie erstellt hat, angehalten. Sie sind jedoch weiterhin auf dem Gerät vorhanden. Zeigen Sie alle Container an.
@@ -360,11 +265,8 @@ Fahren Sie mit einem der anderen Tutorials fort, um zu erfahren, wie Azure IoT E
 
 <!-- Links -->
 [lnk-docker]: https://docs.docker.com/docker-for-windows/install/ 
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-account]: https://azure.microsoft.com/free
 [lnk-portal]: https://portal.azure.com
 [lnk-nested]: https://docs.microsoft.com/virtualization/hyper-v-on-windows/user-guide/nested-virtualization
-[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az_iot_hub_delete
+[lnk-delete]: https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-delete
 
-<!-- Anchor links -->
-[anchor-register]: #register-an-iot-edge-device

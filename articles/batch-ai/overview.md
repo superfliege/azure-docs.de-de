@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 10/13/2017
 ms.author: asutton
 ms.custom: ''
-ms.openlocfilehash: 9834dbbc2232fc286451bcdcd19dfc639f49d3bf
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30903474"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627201"
 ---
 # <a name="what-is-batch-ai-in-azure"></a>Was ist Batch AI in Azure?
 Batch AI ist ein verwalteter Dienst, mit dem Data Scientists und KI-Forscher KI-Modelle und andere Machine Learning-Modelle in Clustern mit virtuellen Azure-Computern, z.B. VMs mit GPU-Unterstützung, trainieren können. Sie beschreiben die Anforderungen Ihres Auftrags und geben an, wo sich die Eingabedaten befinden und die Ausgabedaten gespeichert werden sollen, und Batch AI kümmert sich um den Rest.  
@@ -40,7 +40,7 @@ Batch AI ermöglicht die Ressourcenverwaltung und Auftragsplanung speziell für 
 * Automatisches oder manuelles Skalieren von VM-Clustern mit GPUs oder CPUs 
 * Konfigurieren der SSH-Kommunikation zwischen VMs und für den Remotezugriff 
 * Unterstützung von Deep Learning- oder Machine Learning-Frameworks mit optimierter Konfiguration für beliebte Toolkits, z.B. [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), [TensorFlow](https://www.tensorflow.org/) und [Chainer](https://chainer.org/) 
-* Prioritätsbasierte Auftragswarteschlange zum gemeinsamen Nutzen von Clustern und Verwenden von virtuellen Computern mit niedriger Priorität und reservierten Instanzen  
+* Prioritätsbasierte Auftragswarteschlange zum gemeinsamen Nutzen von Clustern und Verwenden von virtuellen Computern mit niedriger Priorität und Azure-Reservierungen  
 * Flexible Speicheroptionen, z.B. Azure Files und ein verwalteter NFS-Server 
 * Bereitstellen von Remotedateifreigaben auf der VM und im optionalen Container 
 * Bereitstellen des Auftragsstatus und Durchführen eines Neustarts bei VM-Ausfällen 

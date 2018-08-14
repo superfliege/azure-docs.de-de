@@ -1,24 +1,20 @@
 ---
-title: 'Tutorial: Verwenden der Apache Kafka Streams-API – Azure HDInsight | Microsoft-Dokumentation'
+title: 'Tutorial: Verwenden der Apache Kafka Streams-API – Azure HDInsight '
 description: Erfahren Sie, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Mit dieser API können Sie eine Streamverarbeitung zwischen Themen in Kafka ausführen.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/17/2018
-ms.author: larryfr
-ms.openlocfilehash: 5391d6ae101a97e9b62215621267e591b2a995f5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d285575802dd830247533420154f6f5e868272a2
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626393"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621044"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Tutorial: Apache Kafka Streams-API
 
@@ -225,7 +221,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
 2. Um Datensätze an das `test`-Thema zu senden, starten Sie die Producer-Anwendung mit folgendem Befehl:
 
     ```bash
-    java -jar kafka-producer-consumer.jar producer $KAFKABROKERS
+    java -jar kafka-producer-consumer.jar producer test $KAFKABROKERS
     ```
 
 3. Nachdem der Producer abgeschlossen ist, zeigen Sie die im `wordcounts`-Thema gespeicherten Informationen mit folgendem Befehl an:

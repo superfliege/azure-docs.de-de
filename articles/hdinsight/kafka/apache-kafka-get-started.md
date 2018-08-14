@@ -1,25 +1,19 @@
 ---
-title: 'Schnellstart: Erste Schritte mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation'
+title: 'Schnellstart: Erste Schritte mit Apache Kafka – Azure HDInsight'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal einen Apache Kafka-Cluster in Azure HDInsight erstellen. Darüber hinaus erfahren Sie mehr über Kafka-Themen, -Abonnenten und -Consumer.
 services: hdinsight
-documentationcenter: ''
-author: dhgoelmsft
-manager: jhubbard
-ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
 ms.custom: mvc,hdinsightactive
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 776705281a1909cbeee657f7915d4c83ec8bbabe
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: c8ec39c6962c4044810d0ae65d2736043bdd4d72
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342152"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620211"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Schnellstart: Erstellen eines Kafka-Clusters in HDInsight
 
@@ -89,7 +83,7 @@ Gehen Sie wie folgt vor, um einen Cluster vom Typ „Kafka in HDInsight“ zu er
     | Kennwort für Clusteranmeldung | Das Anmeldekennwort für den Zugriff auf Webdienste oder REST-APIs, die im Cluster gehostet werden. |
     | SSH-Benutzername (Secure Shell) | Die für den Clusterzugriff über SSH verwendete Anmeldung. Das Kennwort ist standardmäßig mit dem Kennwort für die Clusteranmeldung identisch. |
     | Ressourcengruppe | Die Ressourcengruppe, in der der Cluster erstellt wird. |
-    | Speicherort | Die Azure-Region, in der der Cluster erstellt werden soll. |
+    | Standort | Die Azure-Region, in der der Cluster erstellt werden soll. |
 
     > [!TIP]
     > Jede Azure-Region (Standort) verfügt über _Fehlerdomänen_. Eine Fehlerdomäne ist eine logische Gruppierung von zugrundeliegender Hardware in einem Azure-Rechenzentrum. Jede Fehlerdomäne verwendet eine Stromquelle und einen Netzwerkswitch gemeinsam. Die virtuellen Computer und verwalteten Datenträger, die die Knoten innerhalb eines HDInsight-Clusters implementieren, werden auf diese Fehlerdomänen verteilt. Diese Architektur schränkt die potenziellen Auswirkungen physischer Hardwarefehler ein.

@@ -1,25 +1,20 @@
 ---
-title: 'Schnellstart: Erste Schritte mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation'
+title: 'Schnellstart: Erste Schritte mit Apache Kafka – Azure HDInsight'
 description: In dieser Schnellstartanleitung lernen Sie, wie Sie mithilfe von Azure PowerShell einen Apache Kafka-Cluster in Azure HDInsight erstellen. Darüber hinaus erfahren Sie mehr über Kafka-Themen, -Abonnenten und -Consumer.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: mvc,hdinsightactive
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/16/2018
-ms.author: larryfr
-ms.openlocfilehash: a9853bb8a298daab265b70b99db68de276c77048
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 25064873b830a8f323a8ee2287a3d69cf9c4013f
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018071"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621513"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Schnellstart: Erstellen eines Kafka-Clusters in HDInsight
 
