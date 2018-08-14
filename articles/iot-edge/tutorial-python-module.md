@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 49fa81d89fb195e1caedc2348a8b0990022b0d0d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5766f9708d2439f42f9ad77169fd1fe7f7dc451e
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414265"
+ms.locfileid: "39439111"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Tutorial: Entwickeln und Bereitstellen eines Python-IoT Edge-Moduls für Ihr simuliertes Gerät
 
@@ -34,15 +34,21 @@ Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Das Azure IoT Edge-Gerät, das Sie mit der Schnellstartanleitung für [Linux](quickstart-linux.md) erstellt haben.
+Ein Azure IoT Edge-Gerät:
 
-   >[!Note]
-   >Python-Module für Azure IoT Edge unterstützen keine Windows- oder ARM-Geräte. 
+* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte in der Schnellstartanleitung für [Linux](quickstart-linux.md) ausführen.
+* Python-Module für IoT Edge unterstützen keine ARM-Prozessoren oder Windows-Geräte.
+
+Cloudressourcen:
+
+* Ein [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) mit Standardtarif in Azure. 
+
+Entwicklungsressourcen:
 
 * [Visual Studio Code](https://code.visualstudio.com/). 
-* [Azure IoT Edge-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)
-* [Python-Erweiterung für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python). 
-* [Docker](https://docs.docker.com/engine/installation/) auf dem gleichen Computer, auf dem Visual Studio Code installiert ist. Die Community Edition (CE) ist für dieses Tutorial ausreichend. 
+* [Azure IoT Edge-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) für Visual Studio Code
+* [Python-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-python.python) für Visual Studio Code 
+* [Docker CE](https://docs.docker.com/engine/installation/). 
 * [Python](https://www.python.org/downloads/).
 * [Pip](https://pip.pypa.io/en/stable/installing/#installation) zum Installieren von Python-Paketen (normalerweise in der Python-Installation enthalten).
 
@@ -243,7 +249,7 @@ Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen
 Wenn Sie nur die IoT Hub-Instanz löschen möchten, führen Sie den folgenden Befehl mit dem Namen des Hubs und dem Namen der Ressourcengruppe aus:
 
 ```azurecli-interactive
-az iot hub delete --name MyIoTHub --resource-group TestResources
+az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
 ```
 
 

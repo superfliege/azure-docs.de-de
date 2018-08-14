@@ -1,28 +1,21 @@
 ---
-title: Verwenden von SSH mit Hadoop – Azure HDInsight | Microsoft-Dokumentation
+title: Verwenden von SSH mit Hadoop – Azure HDInsight
 description: Sie können auf HDInsight über Secure Shell (SSH) zugreifen. Dieses Dokument enthält Informationen zum Herstellen einer Verbindung mit HDInsight mithilfe der Befehle „ssh“ und „scp“ über Windows-, Linux-, Unix- oder macOS-Clients.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 keywords: Hadoop-Befehle in Linux, Hadoop-Linux-Befehle, Hadoop macOS, SSH-Hadoop, SSH-Hadoop-Cluster
-ms.assetid: a6a16405-a4a7-4151-9bbf-ab26972216c5
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/26/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 2750ddaba4b3fe25e18b6d3b7e9a65656165818f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 589e6d56fca1e987cb9fd086d76dc6fb8a686333
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446604"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39594349"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH
 

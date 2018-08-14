@@ -1,6 +1,6 @@
 ---
-title: Sammeln von Daten von lokalen Linux-Computern mit Azure Log Analytics | Microsoft-Dokumentation
-description: Erfahren Sie, wie der Log Analytics-Agent für Linux bereitgestellt wird, und aktivieren Sie die Sammlung von Daten von diesem Betriebssystem mit Log Analytics.
+title: Konfigurieren des Azure Log Analytics-Agents für Linux-Hybridcomputer | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie der Log Analytics-Agent für Linux bereitgestellt wird, der auf Computern außerhalb von Azure ausgeführt wird, und wie Sie die Sammlung von Daten mit Log Analytics aktivieren.
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/02/2018
+ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: aca8ee7305f919068733dfa3cb636a0f9bad7b05
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: f1e363351cb214a80652aaef599a1306ad270e3f
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127168"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480808"
 ---
-# <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>Sammeln von Daten von einem Linux-Computer, der in Ihrer Umgebung gehostet wird
-[Azure Log Analytics](log-analytics-overview.md) kann Daten direkt von Ihrem physischen oder virtuellen Linux-Computer und anderen Ressourcen in Ihrer Umgebung in einem einzelnen Repository sammeln, um eine detaillierte Analyse und Korrelation durchzuführen.  Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Linux-Computer konfigurieren und sammeln.  Informationen zu virtuellen Azure Linux-Computern finden Sie im folgenden Thema [Sammeln von Daten zu Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
+# <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>Konfigurieren des Log Analytics-Agents für Linux-Computer in einer Hybridumgebung
+[Azure Log Analytics](log-analytics-overview.md) kann Daten direkt von Ihren physischen oder virtuellen Linux-Computern in Ihrem Datencenter oder einer anderen Cloudumgebung zur detaillierten Analyse und Korrelation in einem einzelnen Repository sammeln.  Dieser Schnellstart zeigt Ihnen, wie Sie in wenigen einfachen Schritten Daten von Ihrem Linux-Computer konfigurieren und sammeln.  Informationen zu virtuellen Azure Linux-Computern finden Sie im folgenden Thema [Sammeln von Daten zu Azure Virtual Machines](log-analytics-quick-collect-azurevm.md).  
 
 Informationen zur unterstützten Konfiguration finden Sie in den Abschnitten zu [unterstützten Linux-Betriebssystemen](log-analytics-concept-hybrid.md#supported-linux-operating-systems) und zur [Netzwerkfirewallkonfiguration](log-analytics-concept-hybrid.md#network-firewall-requirements).
 

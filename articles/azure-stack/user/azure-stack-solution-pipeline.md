@@ -11,434 +11,444 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 483122f5d2e39c8595d0f28a6b937772c4ea2e50
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258347"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579843"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Tutorial: Bereitstellen von Apps in Azure und Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Eine hybride Pipeline für Continuous Integration/Continuous Delivery (CI/CD) ermöglicht das Erstellen, Testen und Bereitstellen Ihrer App in mehreren Clouds.  In diesem Tutorial erstellen Sie eine Beispielumgebung, die Folgendes ermöglicht:
- 
+Hier erfahren Sie, wie Sie mithilfe einer hybriden Pipeline für Continuous Integration/Continuous Delivery (CI/CD) eine Anwendung in Azure und Azure Stack bereitstellen.
+
+In diesem Tutorial erstellen Sie eine Beispielumgebung, die Folgendes ermöglicht:
+
 > [!div class="checklist"]
 > * Initiieren Sie einen neuen Build, der auf den Codecommits Ihres VSTS-Repositorys (Visual Studio Team Services) basiert.
-> * Automatisches Bereitstellen Ihres neu erstellten Codes in der globalen Azure-Instanz für Benutzerakzeptanztests
-> * Sobald Ihr Code den Test bestanden hat, stellen Sie diesen automatisch in Azure Stack bereit.
+> * Automatisches Bereitstellen Ihrer App in der globalen Azure-Instanz für Benutzerakzeptanztests
+> * Sobald Ihr Code den Test bestanden hat, stellen Sie die App automatisch in Azure Stack bereit.
 
-### <a name="about-the-hybrid-delivery-build-pipe"></a>Informationen zur Hybrid Delivery-Buildpipeline
+## <a name="benefits-of-the-hybrid-delivery-build-pipe"></a>Vorteile der Hybrid Delivery-Buildpipeline
 
-Bei der Anwendungsbereitstellung sind Kontinuität, Sicherheit und Zuverlässigkeit für Ihre Organisation und Ihr Entwicklungsteam unverzichtbar. Mit einer hybriden CI/CD-Pipeline können Sie Ihre Pipelines für Ihre lokale Umgebung und für die öffentliche Cloud konsolidieren. Sie können den Ort wechseln, ohne die Anwendung zu wechseln.
+Anwendungsbereitstellung erfordert Kontinuität, Sicherheit und Zuverlässigkeit. Diese Punkte sind für Ihre Organisation und Ihr Entwicklungsteam unverzichtbar. Mit einer hybriden CI/CD-Pipeline können Sie Ihre Buildpipelines für Ihre lokale Umgebung und für die öffentliche Cloud konsolidieren. Mit einem Hybrid Delivery-Modell können Sie auch die Entwicklungsorte wechseln, ohne dabei die Anwendung wechseln zu müssen.
 
-Dies ermöglicht die Verwendung einheitlicher Entwicklungstools. Die Verwendung einheitlicher Tools für die öffentliche Azure-Cloud und Ihre lokale Azure Stack-Umgebung macht die Implementierung der CI/CD-Entwicklungspraxis deutlich einfacher. In Azure oder Azure Stack bereitgestellte Apps und Dienste sind austauschbar, und an beiden Orten kann der gleiche Code ausgeführt werden, wobei Features und Funktionen der lokalen Umgebung und der öffentlichen Cloud genutzt werden können.
+Weitere Vorteile bei der Verwendung des Hybridansatzes:
 
-Weitere Informationen:
- - [What is Continuous Integration?](https://www.visualstudio.com/learn/what-is-continuous-integration/) (Was ist Continuous Integration?)
- - [What is Continuous Delivery?](https://www.visualstudio.com/learn/what-is-continuous-delivery/) (Was ist Continuous Delivery?)
+* Sie können einen konsistenten Satz von Entwicklungstools für Ihre lokale Azure Stack-Umgebung und die öffentliche Azure-Cloud nutzen.  Ein gängiges Toolset erleichtert die Implementierung von CI/CD-Mustern und -Methoden.
+* Apps und Dienste, die in Azure und Azure Stack bereitgestellt werden, sind austauschbar, und der gleiche Code kann an jedem Standort ausgeführt werden. Sie können die Features und Funktionen der lokalen Umgebung und der öffentlichen Cloud nutzen.
 
+Weitere Informationen zu CI und CD:
+
+* [What is Continuous Integration?](https://www.visualstudio.com/learn/what-is-continuous-integration/) (Was ist Continuous Integration?)
+* [What is Continuous Delivery?](https://www.visualstudio.com/learn/what-is-continuous-delivery/) (Was ist Continuous Delivery?)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Erstellung einer hybriden CI/CD-Pipeline müssen einige Komponenten vorbereitet werden. Dies kann etwas dauern.
- 
- - Ein Azure-OEM/-Hardwarepartner kann eine Azure Stack-Produktionsumgebung bereitstellen. Ein Azure Stack Development Kit (ASDK) kann von allen Benutzern bereitgestellt werden. 
- - Ein Azure Stack-Bediener muss auch App Service bereitstellen, Pläne und Angebote sowie ein Mandantenabonnement erstellen und das Windows Server 2016-Image hinzufügen.
+Für die Erstellung einer hybriden CI/CD-Pipeline sind einige Komponenten erforderlich. Folgende Komponenten benötigen eine gewisse Vorbereitungszeit:
 
-Wenn Sie bereits über einige dieser Komponenten verfügen, stellen Sie vor Beginn sicher, dass diese die Anforderungen erfüllen.
+* Ein Azure-OEM/-Hardwarepartner kann eine Azure Stack-Produktionsumgebung bereitstellen. Das ASDK (Azure Stack Development Kit) kann von allen Benutzern bereitgestellt werden.
+* Ein Azure Stack-Bediener muss auch App Service bereitstellen, Pläne und Angebote sowie ein Mandantenabonnement erstellen und das Windows Server 2016-Image hinzufügen.
 
-In diesem Thema wird davon ausgegangen, dass Sie bereits über Kenntnisse zu Azure und Azure Stack verfügen. Wenn Sie mehr darüber erfahren möchten, bevor Sie fortfahren, schauen Sie sich diese Themen an:
+>[!NOTE]
+>Wenn Sie bereits einige dieser Komponenten bereitgestellt haben, sollten Sie vor dem Beginn dieses Tutorials sicherstellen, dass diese alle Anforderungen erfüllen.
 
+In diesem Tutorial wird davon ausgegangen, dass Sie bereits über Grundkenntnisse in Bezug auf Azure und Azure Stack verfügen. Lesen Sie die folgenden Artikel, um vor dem Starten des Tutorials weitere Informationen zu erhalten:
 
-In diesem Tutorial wird außerdem davon ausgegangen, dass Sie bereits grob mit Azure und Azure Stack vertraut sind. 
+* [Einführung in Azure](https://azure.microsoft.com/overview/what-is-azure/)
+* [Azure Stack Key Concepts (Wichtige Begriffe für Azure Stack)](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
-Weitere Informationen finden Sie bei Bedarf in den folgenden Themen:
- - [Einführung in Azure](https://azure.microsoft.com/overview/what-is-azure/)
- - [Azure Stack Key Concepts (Wichtige Begriffe für Azure Stack)](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
+### <a name="azure-requirements"></a>Anforderungen für Azure
 
-### <a name="azure"></a>Azure
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* Erstellen Sie eine [Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-overview) in Azure. Notieren Sie sich die Web-App-URL, die Sie im Tutorial benötigen.
 
- - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+### <a name="azure-stack-requirements"></a>Anforderungen für Azure Stack
 
- - Erstellen Sie eine [Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-overview) in Azure. Notieren Sie sich die neue URL der Web-App, da Sie diese später benötigen.
+* Verwenden Sie ein integriertes Azure Stack-System, oder stellen Sie das Azure Stack Development Kit (ASDK) bereit. So stellen Sie das ASDK bereit
+    * Das Tutorial [Installieren des Azure Stack Development Kits (ASDK)](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy) enthält ausführliche Informationen zur Bereitstellung.
+    * Mit dem PowerShell-Skript [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) lassen sich die Schritte nach der ASDK-Bereitstellung automatisieren.
 
-Azure Stack
- - Verwenden Sie ein integriertes Azure Stack-System, oder stellen Sie das hier verlinkte Azure Stack Development Kit (ASDK) bereit:
-    - Eine ausführliche Anleitung zum Bereitstellen des ASDKs finden Sie im Tutorial [Bereitstellen des ASDKs mithilfe des Installationsprogramms](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy).
-    - Mit dem PowerShell-Skript [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) lassen sich zahlreiche Schritte nach der ASDK-Bereitstellung automatisieren.
+    > [!Note]
+    > Der ASDK-Installationsvorgang dauert etwa sieben Stunden. Berücksichtigen Sie dies bei Ihrer Planung.
 
-    > [!Note]  
-    > Der Installationsvorgang dauert sieben Stunden. Berücksichtigen Sie dies bei Ihrer Planung.
+ * Stellen Sie PaaS-Dienste als [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) für Azure Stack bereit.
+ * Erstellen Sie [Pläne/Angebote](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) in Azure Stack.
+ * Erstellen Sie ein [Mandantenabonnement](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) in Azure Stack.
+ * Erstellen Sie eine Web-App im Mandantenabonnement. Notieren Sie sich die URL der neuen Web-App zur späteren Verwendung.
+ * Stellen Sie einen virtuellen VSTS-Computer im Mandantenabonnement bereit.
+* Stellen Sie ein Windows Server 2016-Image mit .NET 3.5 für einen virtuellen Computer bereit. Dieser virtuelle Computer wird in Ihrer Azure Stack-Instanz als privater Build-Agent erstellt.
 
- - Stellen Sie PaaS-Dienste als [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) für Azure Stack bereit. 
- - Erstellen Sie [Pläne/Angebote](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) in Ihrer Azure Stack-Umgebung. 
- - Erstellen Sie ein [Mandantenabonnement](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) in Ihrer Azure Stack-Umgebung. 
- - Erstellen Sie eine Web-App in Ihrem Mandantenabonnement. Notieren Sie sich die URL der neuen Web-App zur späteren Verwendung.
- - Stellen Sie einen virtuellen VSTS-Computer bereit (ebenfalls in Ihrem Mandantenabonnement).
- - Es wird ein virtueller Windows Server 2016-Computer mit .NET 3.5 benötigt. Dieser virtuelle Computer wird in Ihrer Azure Stack-Instanz als privater Build-Agent erstellt. 
+### <a name="developer-tool-requirements"></a>Anforderung an Entwicklertools
 
-### <a name="developer-tools"></a>Entwicklertools
+* Erstellen Sie einen [VSTS-Arbeitsbereich](https://docs.microsoft.com/vsts/repos/tfvc/create-work-workspaces). Bei der Anmeldung wird ein Projekt namens **MyFirstProject** erstellt.
+* [Installieren Sie Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio), und [melden Sie sich bei VSTS an](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* Stellen Sie eine Verbindung mit Ihrem Projekt her, und [klonen Sie es lokal](https://www.visualstudio.com/docs/git/gitquickstart).
 
- - Erstellen Sie einen [VSTS-Arbeitsbereich](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services). Bei der Anmeldung wird ein Projekt namens **MyFirstProject** erstellt.
- - [Installieren Sie Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio), und [melden Sie sich bei VSTS an](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
- - Stellen Sie eine Verbindung zum Projekt her, und [klonen Sie dieses lokal](https://www.visualstudio.com/docs/git/gitquickstart).
- 
- > [!Note]  
- > Für die Ausführung benötigen Sie Azure Stack mit den passenden syndizierten Images (Windows Server und SQL), und App Service muss bereitgestellt werden.
- 
+ > [!Note]
+ > Für die Ausführung von Windows Server und SQL Server benötigen Sie eine Azure Stack-Umgebung mit den passenden syndizierten Images. Darüber hinaus muss App Service bereitgestellt sein.
+
 ## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Vorbereiten des privaten Build- und Release-Agents für die Visual Studio Team Services-Integration
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-Visual Studio Team Services (VSTS) führt die Authentifizierung bei Azure Resource Manager unter Verwendung eines Dienstprinzipals durch. VSTS muss den Status „Mitwirkender“ besitzen, um Ressourcen in einem Azure Stack-Abonnement bereitstellen zu können.
+Visual Studio Team Services (VSTS) führt die Authentifizierung bei Azure Resource Manager unter Verwendung eines Dienstprinzipals durch. VSTS muss die Rolle **Mitwirkender** besitzen, um Ressourcen in einem Azure Stack-Abonnement bereitstellen zu können.
 
-Im Anschluss finden Sie die allgemeinen Konfigurationsschritte, die ausgeführt werden müssen, um diese Authentifizierung zu ermöglichen:
+Zum Konfigurieren der Authentifizierung müssen die folgenden Schritte ausgeführt werden:
 
-1. Es muss ein Dienstprinzipal erstellt oder ein bereits vorhandener Dienstprinzipal verwendet werden.
-2. Für den Dienstprinzipal müssen Authentifizierungsschlüssel erstellt werden.
-3. Das Azure Stack-Abonnement muss über die rollenbasierte Zugriffssteuerung überprüft werden, damit der SPN Teil der Rolle „Mitwirkender“ werden kann.
-4. In VSTS muss unter Verwendung der Azure Stack-Endpunkte und der SPN-Informationen eine neue Dienstdefinition erstellt werden.
+1. Erstellen Sie einen Dienstprinzipal, oder verwenden Sie einen vorhandenen.
+2. Erstellen Sie Authentifizierungsschlüssel für den Dienstprinzipal.
+3. Überprüfen Sie das Azure Stack-Abonnement über die rollenbasierte Zugriffssteuerung, damit der Dienstprinzipalname (Service Principal Name, SPN) Teil der Rolle „Mitwirkender“ werden kann.
+4. Erstellen Sie unter Verwendung der Azure Stack-Endpunkte und der SPN-Informationen eine neue Dienstdefinition in VSTS.
 
-### <a name="service-principal-creation"></a>Dienstprinzipalerstellung
+### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Gehen Sie gemäß der [Anleitung zum Erstellen eines Dienstprinzipals](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) vor, und wählen Sie als Anwendungstyp die Option „Web-App/API“ aus.
+Gehen Sie gemäß der [Anleitung zum Erstellen eines Dienstprinzipals](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) vor, und wählen Sie als Anwendungstyp die Option **Web-App/API** aus.
 
-### <a name="access-key-creation"></a>Zugriffsschlüsselerstellung
+### <a name="create-an-access-key"></a>Erstellen eines Zugriffsschlüssels
 
-Ein Dienstprinzipal benötigt einen Schlüssel für die Authentifizierung. Führen Sie die Schritte in diesem Abschnitt aus, um einen Schlüssel zu generieren.
-
+Ein Dienstprinzipal erfordert einen Schlüssel für die Authentifizierung. Führen Sie zum Generieren eines Schlüssels die folgenden Schritte aus.
 
 1. Wählen Sie in Azure Active Directory unter **App-Registrierungen** Ihre Anwendung aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_01.png)
+    ![Auswählen der Anwendung](media\azure-stack-solution-hybrid-pipeline\000_01.png)
 
-2.  Notieren Sie den Wert von **Anwendungs-ID**. Dieser Wert wird beim Konfigurieren des Dienstendpunkts in VSTS benötigt.
+2. Notieren Sie den Wert von **Anwendungs-ID**. Dieser Wert wird beim Konfigurieren des Dienstendpunkts in VSTS benötigt.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_02.png)
+    ![Anwendungs-ID](media\azure-stack-solution-hybrid-pipeline\000_02.png)
 
 3. Klicken Sie zum Generieren eines Authentifizierungsschlüssels auf **Einstellungen**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_03.png)
+    ![Bearbeiten der App-Einstellungen](media\azure-stack-solution-hybrid-pipeline\000_03.png)
 
 4. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.
- 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_04.png)
 
-5. Geben Sie eine Beschreibung des Schlüssels und eine Dauer für den Schlüssel ein. Wählen Sie dann die Option **Schließen**.
- 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_05.png)
+    ![Konfigurieren von Schlüsseleinstellungen](media\azure-stack-solution-hybrid-pipeline\000_04.png)
 
-    Nach dem Speichern des Schlüssels wird der Wert des Schlüssels angezeigt. Kopieren Sie diesen Wert jetzt, da Sie ihn später nicht mehr abrufen können. Sie geben den **Schlüsselwert** zusammen mit der Anwendungs-ID ein, um die Anmeldung als Anwendung durchzuführen. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
+5. Geben Sie eine Beschreibung für den Schlüssel ein, und legen Sie eine Dauer für ihn fest. Wählen Sie dann die Option **Schließen**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_06.png)
+    ![Schlüsselbeschreibung und -dauer](media\azure-stack-solution-hybrid-pipeline\000_05.png)
 
-### <a name="get-tenant-id"></a>Abrufen der Mandanten-ID
+    Wenn Sie den Schlüssel gespeichert haben, wird unter **WERT** der Schlüssel angezeigt. Kopieren Sie diesen Wert, da Sie ihn später nicht abrufen können. Sie geben den **Schlüsselwert** zusammen mit der Anwendungs-ID ein, um die Anmeldung als Anwendung durchzuführen. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
 
-Im Rahmen der Dienstendpunkt-Konfiguration muss in VSTS die **Mandanten-ID** angegeben werden, die dem AAD-Verzeichnis entspricht, in dem Ihr Azure Stack-Stempel bereitgestellt wurde. Führen Sie die Schritte in diesem Abschnitt aus, um die Mandanten-ID zu ermitteln.
+    ![WERT des Schlüssels](media\azure-stack-solution-hybrid-pipeline\000_06.png)
+
+### <a name="get-the-tenant-id"></a>Abrufen der Mandanten-ID
+
+Im Rahmen der Dienstendpunkt-Konfiguration muss in VSTS die **Mandanten-ID** angegeben werden, die dem AAD-Verzeichnis entspricht, in dem Ihr Azure Stack-Stempel bereitgestellt wird. Mit den folgenden Schritten wird die Mandanten-ID abgerufen.
 
 1. Wählen Sie **Azure Active Directory**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_07.png)
+    ![Azure Active Directory für den Mandanten](media\azure-stack-solution-hybrid-pipeline\000_07.png)
 
 2. Wählen Sie zum Abrufen der Mandanten-ID die Option **Eigenschaften** für Ihren Azure AD-Mandanten aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_08.png)
- 
+    ![Anzeigen der Mandanteneigenschaften](media\azure-stack-solution-hybrid-pipeline\000_08.png)
+
 3. Kopieren Sie die **-Verzeichnis-ID**. Dieser Wert ist Ihre Mandanten-ID.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_09.png)
+    ![Verzeichnis-ID](media\azure-stack-solution-hybrid-pipeline\000_09.png)
 
-### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Gewähren von Rechten für den Dienstprinzipal zum Bereitstellen von Ressourcen im Azure Stack-Abonnement 
+### <a name="grant-the-service-principal-rights-to-deploy-resources-in-the-azure-stack-subscription"></a>Gewähren von Rechten für den Dienstprinzipal zum Bereitstellen von Ressourcen im Azure Stack-Abonnement
 
-Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die besten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn z.B. der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle darin enthaltenen Ressourcen lesen.
+Sie können den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Wenn beispielsweise der Leserolle für eine Ressourcengruppe eine Anwendung hinzugefügt wird, kann diese Rolle die Ressourcengruppe und alle ihre Ressourcen lesen.
 
-1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um z.B. einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Abonnements** aus. Sie können stattdessen auch eine Ressourcengruppe oder Ressource auswählen.
+1. Navigieren Sie zur Bereichsebene, der Sie die Anwendung zuweisen möchten. Um z.B. einer Gruppe im Abonnementkontext eine Rolle zuzuweisen, wählen Sie **Abonnements** aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_10.png)
+    ![Auswählen von Abonnements](media\azure-stack-solution-hybrid-pipeline\000_10.png)
 
-2. Wählen Sie das **Abonnement** (Ressourcengruppe oder Ressource) aus, dem die Anwendung zugewiesen werden soll.
+2. Wählen Sie unter **Abonnements** die Option „Visual Studio Enterprise“.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_11.png)
+    ![Visual Studio Enterprise](media\azure-stack-solution-hybrid-pipeline\000_11.png)
 
-3. Wählen Sie **Access Control (IAM)** aus.
+3. Wählen Sie in Visual Studio Enterprise die Option **Zugriffssteuerung (IAM)**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_12.png)
+    ![Zugriffssteuerung (IAM)](media\azure-stack-solution-hybrid-pipeline\000_12.png)
 
 4. Wählen Sie **Hinzufügen**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_13.png)
+    ![Hinzufügen](media\azure-stack-solution-hybrid-pipeline\000_13.png)
 
-5. Wählen Sie die Rolle aus, die Sie der Anwendung zuweisen möchten. In der folgenden Abbildung ist die Rolle **Besitzer** dargestellt.
+5. Wählen Sie unter **Berechtigungen hinzufügen** die Rolle aus, die Sie der Anwendung zuweisen möchten. In diesem Beispiel ist dies die Rolle **Besitzer**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_14.png)
+    ![Rolle „Besitzer“](media\azure-stack-solution-hybrid-pipeline\000_14.png)
 
-6. Azure Active Directory-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Für die Suche nach Ihrer Anwendung müssen Sie **den Namen in das Suchfeld eingeben**. Wählen Sie dies aus.
+6. Azure Active Directory-Anwendungen werden standardmäßig nicht in den verfügbaren Optionen angezeigt. Für die Suche nach Ihrer Anwendung müssen Sie den Namen in das Feld **Auswählen** eingeben. Wählen Sie die App aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_16.png)
+    ![App-Suchergebnis](media\azure-stack-solution-hybrid-pipeline\000_16.png)
 
 7. Wählen Sie **Speichern** aus, um das Zuweisen der Rolle abzuschließen. Ihre Anwendung wird in der Liste der Benutzer angezeigt, die einer Rolle für diesen Kontext zugewiesen sind.
 
 ### <a name="role-based-access-control"></a>Rollenbasierte Access Control
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mit RBAC können Sie den Benutzern nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
+Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe der RBAC können Sie die Zugriffsebene steuern, die Benutzer für ihre Arbeit benötigen. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
 ### <a name="vsts-agent-pools"></a>VSTS-Agent-Pools
 
-Agents werden in Agent-Pools zusammengefasst, um sie nicht alle einzeln verwalten zu müssen. Ein Agent-Pool definiert die Freigabegrenze für alle Agents in diesem Pool. In VSTS gelten Agent-Pools für das VSTS-Konto. Ein Agent-Pool kann also teamprojektübergreifend gemeinsam genutzt werden. Weitere Informationen sowie ein Tutorial zum Erstellen von VSTS-Agent-Pools finden Sie unter [Agent pools and queues](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts) (Agent-Pools und -Warteschlangen).
+Agents können in Agentpools zusammengefasst werden, um sie nicht alle separat verwalten zu müssen. Ein Agent-Pool definiert die Freigabegrenze für alle Agents in diesem Pool. In VSTS gelten Agentpools für das VSTS-Konto. Das bedeutet, dass ein Agentpool teamprojektübergreifend gemeinsam genutzt werden kann. Weitere Informationen zu Agentpool finden Sie unter [Agent pools and queues](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts) (Agentpools und Warteschlangen).
 
 ### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Hinzufügen eines persönlichen Zugriffstokens (Personal Access Token, PAT) für Azure Stack
+
+Erstellen Sie ein persönliches Zugriffstoken für den Zugriff auf VSTS.
 
 1. Melden Sie sich bei Ihrem VSTS-Konto an, und wählen Sie den Namen Ihres Kontoprofils aus.
 2. Klicken Sie auf **Sicherheit verwalten**, um die Seite für die Tokenerstellung zu öffnen.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_17.png)
+    ![Benutzeranmeldung](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![Auswählen des Teamprojekts](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
+    ![Hinzufügen eines persönlichen Zugriffstokens](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_18b.png)
+    ![Erstellen eines Tokens](media\azure-stack-solution-hybrid-pipeline\000_18b.png)
 
 3. Kopieren Sie das Token.
-    
-    > [!Note]  
-    > Rufen Sie die Tokeninformationen ab. Sie werden nach Verlassen dieses Bildschirms nicht erneut angezeigt. 
-    
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_19.png)
-    
+
+    > [!Note]
+    > Speichern Sie die Tokeninformationen. Diese Informationen werden nicht gespeichert und werden nach Verlassen der Seite nicht erneut angezeigt.
+
+    ![Persönliches Zugriffstoken](media\azure-stack-solution-hybrid-pipeline\000_19.png)
 
 ### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Installieren des VSTS-Build-Agents auf dem von Azure Stack gehosteten Buildserver
 
-1.  Stellen Sie eine Verbindung mit dem Buildserver her, den Sie auf dem Azure Stack-Host bereitgestellt haben.
+1. Stellen Sie eine Verbindung mit dem Buildserver her, den Sie auf dem Azure Stack-Host bereitgestellt haben.
+2. Laden Sie den Build-Agent herunter, stellen Sie ihn als Dienst unter Verwendung Ihres persönlichen Zugriffstokens (Personal Access Token, PAT) bereit, und führen Sie ihn als VM-Administratorkonto aus.
 
-2.  Laden Sie den Build-Agent herunter, stellen Sie ihn als Dienst unter Verwendung Ihres persönlichen Zugriffstokens (Personal Access Token, PAT) bereit, und führen Sie ihn als VM-Administratorkonto aus.
+    ![Herunterladen des Build-Agents](media\azure-stack-solution-hybrid-pipeline\010_downloadagent.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\010_downloadagent.png)
+3. Navigieren Sie zum Ordner des extrahierten Build-Agents. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten die Datei **config.cmd** aus.
 
-3. Wechseln Sie zum Ordner mit dem extrahierten Build-Agent. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten die Datei **run.cmd** aus. 
+    ![Extrahierter Build-Agent](media\azure-stack-solution-hybrid-pipeline\000_20.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_20.png)
+    ![Registrieren des Build-Agents](media\azure-stack-solution-hybrid-pipeline\000_21.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\000_21.png)
+4. Wenn die Ausführung von „config.cmd“ abgeschlossen ist, wird der Ordner des Build-Agents mit zusätzlichen Dateien aktualisiert. Der Ordner mit den extrahierten Inhalten sollte wie folgt aussehen:
 
-4.  Nach Abschluss der Ausführung von „run.cmd“ sollte der Ordner mit den extrahierten Inhalten wie folgt aussehen:
+    ![Aktualisieren des Ordners für den Build-Agent](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
-
-    Der Agent wird nun im Ordner „VSTS“ angezeigt.
+    Der Agent wird im Ordner „VSTS“ angezeigt.
 
 ## <a name="endpoint-creation-permissions"></a>Berechtigungen für die Endpunkterstellung
 
-Benutzer können Endpunkte erstellen und so VSTO-Builds die Bereitstellung von Azure Service-Apps im Stapel ermöglichen. VSTS stellt eine Verbindung mit dem Build-Agent her, der wiederum eine Verbindung mit Azure Stack herstellt. 
+Durch die Erstellung von Endpunkten kann ein Visual Studio Online-Build Azure Service-Apps in Azure Stack bereitstellen. VSTS stellt eine Verbindung mit dem Build-Agent her, der wiederum eine Verbindung mit Azure Stack herstellt.
 
-![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
+![Beispiel-App „NorthwindCloud“ in VSTO](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
-1. Klicken Sie im Menü **Einstellungen** auf **Sicherheit**.
-2. Wählen Sie links in der Liste **VSTS-Gruppen** die Option **Endpunktersteller** aus. 
+1. Melden Sie sich bei VSTO an, und navigieren Sie zur Seite mit den App-Einstellungen.
+2. Wählen Sie unter **Einstellungen** die Option **Sicherheit**.
+3. Klicken Sie unter **VSTS-Gruppen** auf **Endpunktersteller**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
+    ![NorthwindCloud-Endpunktersteller](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
 
-3. Klicken Sie auf der Registerkarte **Mitglieder** auf **+Hinzufügen**. 
+4. Klicken Sie auf der Registerkarte **Mitglieder** auf **Hinzufügen**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\014_members_tab.png)
+    ![Hinzufügen eines Mitglieds](media\azure-stack-solution-hybrid-pipeline\014_members_tab.png)
 
-4. Geben Sie einen Benutzernamen ein, und wählen Sie in der Liste den entsprechenden Benutzer aus.
-5. Klicken Sie auf **Änderungen speichern**.
+5. Geben Sie unter **Benutzer und Gruppen hinzufügen** einen Benutzernamen ein, und wählen Sie den Benutzer aus der Liste der Benutzer aus.
+6. Klicken Sie auf **Save changes** (Änderungen speichern).
+7. Wählen Sie in der Liste **VSTS-Gruppen** die Option **Endpunktadministratoren** aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
+    ![NorthwindCloud-Endpunktadministratoren](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
 
-6. Wählen Sie links in der Liste **VSTS-Gruppen** die Option **Endpunktadministratoren** aus.
-7. Klicken Sie auf der Registerkarte **Mitglieder** auf **+Hinzufügen**.
-8. Geben Sie einen Benutzernamen ein, und wählen Sie in der Liste den entsprechenden Benutzer aus.
-9. Klicken Sie auf **Änderungen speichern**.
+8. Klicken Sie auf der Registerkarte **Mitglieder** auf **Hinzufügen**.
+9. Geben Sie unter **Benutzer und Gruppen hinzufügen** einen Benutzernamen ein, und wählen Sie den Benutzer aus der Liste der Benutzer aus.
+10. Klicken Sie auf **Save changes** (Änderungen speichern).
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+Die Endpunktinformationen sind vorhanden, und die Verbindung zwischen VSTS und Azure Stack kann nun verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von VSTS. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit der Azure Stack-Instanz.
 
-    Der Build-Agent in Azure Stack erhält Anweisungen von VSTS. Daraufhin werden Endpunktinformationen für die Kommunikation mit der Azure Stack-Instanz übermittelt. 
-    
-    Die Verbindung zwischen VSTS und Azure Stack ist nun bereit.
+![Build-Agent](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 
-## <a name="develop-your-application"></a>Entwickeln Ihrer Anwendung
+## <a name="develop-your-application-build"></a>Entwickeln Ihres Anwendungsbuilds
 
-Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure Stack bereitzustellen und Änderungen automatisch an beide Clouds zu pushen.
+In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
 
-> [!Note]  
-> Für die Ausführung benötigen Sie Azure Stack mit den passenden syndizierten Images (Windows Server und SQL), und App Service muss bereitgestellt werden. Anforderungen für Azure Stack-Bediener finden Sie im Abschnitt „Voraussetzungen“ der App Service-Dokumentation.
+* Hinzufügen von Code zu einem VSTS-Projekt
+* Erstellen einer eigenständigen Web-App-Bereitstellung
+* Konfigurieren des CD-Prozesses (Continuous Deployment)
 
-### <a name="add-code-to-vsts-project"></a>Hinzufügen von Code zum VSTS-Projekt
+> [!Note]
+ > Für die Ausführung von Windows Server und SQL Server benötigen Sie eine Azure Stack-Umgebung mit den passenden syndizierten Images. Darüber hinaus muss App Service bereitgestellt sein. Anforderungen für Azure Stack-Bediener finden Sie im Abschnitt „Voraussetzungen“ der App Service-Dokumentation.
 
-1. Melden Sie sich bei Visual Studio mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in Azure Stack verfügt.
+Der hybride CI/CD-Ansatz kann für Anwendungscode und Infrastrukturcode verwendet werden. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) wie etwa Web-App-Code aus VSTS für die Bereitstellung in beiden Clouds.
 
-    Der hybride CI/CD-Ansatz kann für Anwendungscode und Infrastrukturcode verwendet werden. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/) wie etwa Web-App-Code aus VSTS für beide Clouds.
+### <a name="add-code-to-a-vsts-project"></a>Hinzufügen von Code zu einem VSTS-Projekt
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
+1. Melden Sie sich bei VSTS mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in Azure Stack verfügt. Der nächste Screenshot zeigt, wie Sie eine Verbindung mit dem HybridCICD-Projekt herstellen.
+
+    ![Herstellen einer Verbindung mit einem Projekt](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
 
 2. **Klonen Sie das Repository**, indem Sie die Standard-Web-App erstellen und öffnen.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\018_link_arm.png)
+    ![Klonen des Repositorys](media\azure-stack-solution-hybrid-pipeline\018_link_arm.png)
 
 ### <a name="create-self-contained-web-app-deployment-for-app-services-in-both-clouds"></a>Erstellen einer eigenständigen Web-App-Bereitstellung für App Services in beiden Clouds
 
-1. Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier** aus, und fügen Sie Folgendes hinzu: `win10-x64.`. Weitere Informationen finden Sie in der Dokumentation [Eigenständige Bereitstellungen (Self-contained deployments, SCD)](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).
+1. Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier** aus, und fügen Sie dann Folgendes hinzu: `win10-x64.`. Weitere Informationen finden Sie in der Dokumentation [Eigenständige Bereitstellungen (Self-contained deployments, SCD)](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
+    ![Konfigurieren von „Runtimeidentifier“](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
 
 2. Checken Sie den Code über den Team Explorer in VSTS ein.
 
-3. Vergewissern Sie sich, dass der Anwendungscode in Visual Studio Team Services eingecheckt wurde. 
+3. Vergewissern Sie sich, dass der Anwendungscode in Visual Studio Team Services eingecheckt wurde.
 
 ### <a name="create-the-build-definition"></a>Erstellen der Builddefinition
 
-1. Melden Sie sich bei VSTS an, um sich zu vergewissern, dass Builddefinitionen erstellt werden können.
+1. Melden Sie sich mit einem Konto bei VSTS an, mit dem eine Builddefinition erstellt werden kann.
+2. Navigieren Sie zur Seite **Build Web Application** (Webanwendung erstellen) für das Projekt.
 
-2. Fügen Sie den Code **-r win10-x64** hinzu. Dies ist erforderlich, um eine eigenständige Bereitstellung mit .NET Core auszulösen. 
+3. Fügen Sie unter **Argumente** den Code **-r win10-x64** hinzu. Dies ist erforderlich, um eine eigenständige Bereitstellung mit .NET Core auszulösen.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
+    ![Hinzufügen einer Argumentbuilddefinition](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
-3. Führen Sie den Buildvorgang aus. Der Buildvorgang für die [eigenständige Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) veröffentlicht Artefakte, die in Azure und Azure Stack ausgeführt werden können.
+4. Führen Sie den Buildvorgang aus. Der Buildvorgang für die [eigenständige Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) veröffentlicht Artefakte, die in Azure und Azure Stack ausgeführt werden können.
 
-### <a name="using-an-azure-hosted-agent"></a>Verwenden eines gehosteten Azure-Agents
+### <a name="use-an-azure-hosted-build-agent"></a>Verwenden eines in Azure gehosteten Build-Agents
 
-Mit einem gehosteten Agent lassen sich in VSTS komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades werden automatisch von Microsoft Azure durchgeführt, was kontinuierliche und ungestörte Entwicklungs-, Test- und Bereitstellungsaktivitäten ermöglicht.
+Mit einem gehosteten Build-Agent lassen sich in VSTS komfortabel Web-Apps erstellen und bereitstellen. Wartungsarbeiten und Upgrades für den Agent werden automatisch von Microsoft Azure durchgeführt, was einen kontinuierlichen und ungestörten Entwicklungszyklus ermöglicht.
 
-### <a name="manage-and-configure-the-continuous-deployment-cd-process"></a>Verwalten und Konfigurieren des CD-Prozesses (Continuous Deployment)
+### <a name="configure-the-continuous-deployment-cd-process"></a>Konfigurieren des CD-Prozesses (Continuous Deployment)
 
-Visual Studio Team Services (VSTS) und Team Foundation Server (TFS) bieten eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (etwa in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen) – einschließlich erforderlicher Genehmigungen in bestimmten Phasen.
+Visual Studio Team Services (VSTS) und Team Foundation Server (TFS) bieten eine äußerst flexibel konfigurier- und verwaltbare Pipeline für Releases in mehreren Umgebungen (etwa in Entwicklungs-, Staging-, Qualitätssicherungs- und Produktionsumgebungen). Dabei sind ggf. Genehmigungen in bestimmten Phasen des Anwendungslebenszyklus erforderlich.
 
 ### <a name="create-release-definition"></a>Erstellen einer Releasedefinition
 
-![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+Die Erstellung einer Releasedefinition ist der letzte Schritt im Anwendungsbuildprozess. Diese Releasedefinition wird zum Erstellen eines Release und zum Bereitstellen eines Builds verwendet.
 
-1. Klicken Sie auf der Registerkarte **Releases** der VSO-Seite „Build und Release“ auf **\[+]**, um ein neues Release hinzuzufügen.
+1. Melden Sie sich bei VSTS an, und navigieren Sie für Ihr Projekt zu **Build und Release**.
+2. Klicken Sie auf der Registerkarte **Releases** auf **\[ + ]** und wählen Sie dann **Releasedefinition erstellen**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\102.png)
+   ![Erstellen einer Releasedefinition](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
 
-2. Wenden Sie die Vorlage **Azure App Service-Bereitstellung** an.
+3. Klicken Sie unter **Vorlage auswählen** auf **Azure App Service-Bereitstellung** und dann auf **Anwenden**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\103.png)
+    ![Anwenden einer Vorlage](media\azure-stack-solution-hybrid-pipeline\102.png)
 
-3. Fügen Sie im Pulldownmenü **Artefakt hinzufügen** das Artefakt für die Azure Cloud-Build-App hinzu.
+4. Wählen Sie unter **Artefakt hinzufügen** im Pulldownmenü **Quelle (Builddefinition)** die Azure Cloud-Build-App aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\104.png)
+    ![Hinzufügen des Artefakts](media\azure-stack-solution-hybrid-pipeline\103.png)
 
-4. Klicken Sie auf der Registerkarte „Pipeline“ auf den Link **Phase,** **Aufgabe** der Umgebung, und legen Sie die Azure Cloud-Umgebungswerte fest.
+5. Klicken Sie auf der Registerkarte **Pipeline** auf den Link **1 Phase**, **1 Task** (1 Phase, 1 Aufgabe), um **Umgebungsaufgaben anzuzeigen**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\105.png)
+    ![Pipeline: Anzeigen von Aufgaben](media\azure-stack-solution-hybrid-pipeline\104.png)
 
-5. Legen Sie unter **Umgebungsname** den Umgebungsnamen fest, und wählen Sie das **Azure-Abonnement** für den Azure Cloud-Endpunkt aus.
+6. Geben Sie auf der Registerkarte **Aufgaben** unter **Umgebungsname** den Namen „Azure“ ein, und wählen Sie in der Dropdownliste **Azure-Abonnement** den Eintrag „AzureCloud Traders-Web EP“ aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\106.png)
+    ![Festlegen von Umgebungsvariablen](media\azure-stack-solution-hybrid-pipeline\105.png)
 
-6. Legen Sie unter **Umgebungsname** den erforderlichen Namen des Azure-App-Diensts fest.
+7. Geben Sie den **Azure App Service-Namen** ein. Im nächsten Screenshot ist das „northwindtraders“.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\107.png)
+    ![App Service-Name](media\azure-stack-solution-hybrid-pipeline\106.png)
 
-7. Geben Sie unter „Agent-Warteschlange“ für die gehostete Azure Cloud-Umgebung die Zeichenfolge **Hosted VS2017** ein.
+8. Wählen Sie unter „Agent-Phase“ in der Dropdownliste **Agent-Warteschlange** den Eintrag **Hosted VS2017** aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\108.png)
+    ![Gehosteter Agent](media\azure-stack-solution-hybrid-pipeline\107.png)
 
-8. Wählen Sie im Menü „Deploy Azure App Service“ (Azure App Service bereitstellen) **das gültige Paket oder den gültigen Ordner** für die Umgebung aus. Klicken Sie für den **Ordnerspeicherort** auf **OK**.
+9. Wählen Sie im Menü **Deploy Azure App Service** (Azure App Service bereitstellen) unter **Paket oder Ordner** den gültigen Eintrag für die Umgebung aus.
+
+    ![Auswählen des Pakets oder Ordners](media\azure-stack-solution-hybrid-pipeline\108.png)
+
+10. Klicken Sie unter **Datei oder Ordner auswählen** auf **OK**, um den **Speicherort** anzugeben.
 
     ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\109.png)
 
+11. Speichern Sie alle Änderungen, und kehren Sie zur **Pipeline** zurück.
+
     ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\110.png)
 
-9. Speichern Sie alle Änderungen, und kehren Sie zur **Releasepipeline** zurück.
+12. Klicken Sie auf der Registerkarte **Pipeline** auf **Artefakt hinzufügen**, und wählen Sie in der Dropdownliste **Quelle (Builddefinition)** den Eintrag **NorthwindCloud Traders-Vessel** aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\111.png)
+    ![Hinzufügen eines neuen Artefakts](media\azure-stack-solution-hybrid-pipeline\111.png)
 
-10. Fügen Sie ein **neues Artefakt** hinzu, und wählen Sie dabei den Build für die Azure Stack-App aus.
+13. Fügen Sie unter **Vorlage auswählen** eine andere Umgebung aus. Wählen Sie **Azure App Service-Bereitstellung** und dann **Anwenden** aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\112.png)
+    ![Auswählen der Vorlage](media\azure-stack-solution-hybrid-pipeline\112.png)
 
-11. Fügen Sie mindestens eine Umgebung hinzu, und wenden Sie dabei die **Azure App Service-Bereitstellung** an.
+14. Geben Sie unter **Umgebungsname** den Namen „Azure Stack“ ein.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\113.png)
+    ![Umgebungsname](media\azure-stack-solution-hybrid-pipeline\113.png)
 
-12. Nennen Sie die neue Umgebung **Azure Stack**.
+15. Suchen Sie auf der Registerkarte **Aufgaben** nach „Azure Stack“.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\114.png)
+    ![Azure Stack-Umgebung](media\azure-stack-solution-hybrid-pipeline\114.png)
 
-13. Suchen Sie auf der Registerkarte **Aufgabe** nach der Umgebung „Azure Stack“.
+16. Wählen Sie in der Dropdownliste **Azure-Abonnement** als Azure Stack-Endpunkt „AzureStack Traders-Vessel EP“ aus.
 
     ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\115.png)
 
-14. Wählen Sie das **Abonnement** für den Azure Stack-Endpunkt aus.
+17. Geben Sie unter **App Service-Name** den Namen der Azure Stack-Web-App ein.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\116.png)
+    ![App Service-Name](media\azure-stack-solution-hybrid-pipeline\116.png)
 
-15. Legen Sie den Namen der Azure Stack-Web-App als **Name des App-Diensts** fest.
+18. Wählen Sie unter **Agent-Auswahl** in der Dropdownliste **Agent-Warteschlange** den Eintrag „AzureStack -bDouglas Fir“ aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\117.png)
+    ![Auswählen des Agents](media\azure-stack-solution-hybrid-pipeline\117.png)
 
-16. Wählen Sie den **Azure Stack-Agent** aus.
+19. Wählen Sie für **Deploy Azure App Service** (Azure App Service bereitstellen) unter **Paket oder Ordner** den gültigen Eintrag für die Umgebung aus. Klicken Sie unter **Datei oder Ordner auswählen** für den **Speicherort** des Ordners auf **OK**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\118.png)
+    ![Auswählen des Pakets oder Ordners](media\azure-stack-solution-hybrid-pipeline\118.png)
 
-17. Wählen Sie im Abschnitt „Deploy Azure App Service“ (Azure App Service bereitstellen) **das gültige Paket oder den gültigen Ordner** für die Umgebung aus. Klicken Sie für den **Ordnerspeicherort** auf „OK“.
+    ![Bestätigen des Speicherorts](media\azure-stack-solution-hybrid-pipeline\119.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\119.png)
+20. Suchen Sie auf der Registerkarte **Variable** die Variable **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Legen Sie den Wert der Variablen auf **true** und ihren Bereich auf **Azure Stack** fest.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\120.png)
+    ![Konfigurieren von Variablen](media\azure-stack-solution-hybrid-pipeline\120.png)
 
-18. Fügen Sie auf der Registerkarte „Variable“ eine Variable namens **VSTS_ARM_REST_IGNORE_SSL_ERRORS** hinzu, und legen Sie ihren Wert auf **true** und ihren Gültigkeitsbereich auf **Azure Stack** fest.
+21. Klicken Sie auf der Registerkarte **Pipeline** für das Artefakt „NorthwindCloud Traders-Web“ auf **Continuous Deployment-Trigger**, und legen Sie **Continuous Deployment-Trigger** auf **Aktiviert** fest.  Führen Sie dieselben Schritte für das Artefakt „NorthwindCloud Traders-Vessel“ aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\121.png)
+    ![Festlegen des Continuous Deployment-Triggers](media\azure-stack-solution-hybrid-pipeline\121.png)
 
-19. Klicken Sie bei beiden Artefakten auf das Symbol **Continuous Deployment-Trigger**, und aktivieren Sie den Trigger.
+22. Klicken Sie für die Azure Stack-Umgebung auf das Symbol **Bedingungen vor der Bereitstellung**, und legen Sie den Trigger auf **Nach einem Release** fest.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\122.png)
+    ![Festlegen des Triggers für Bedingungen vor der Bereitstellung](media\azure-stack-solution-hybrid-pipeline\122.png)
 
-20. Klicken Sie für die Azure Stack-Umgebung auf das Symbol **Bedingungen vor der Bereitstellung**, und legen Sie den Trigger auf **Nach einem Release** fest.
+23. Speichern Sie alle Änderungen.
 
-21. Speichern Sie alle Änderungen.
-
-> [!Note]  
-> Bei der vorlagenbasierten Erstellung einer Releasedefinition wurden einige Einstellungen für die Aufgaben möglicherweise automatisch als [Umgebungsvariablen](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) definiert. Diese Einstellungen können in den Aufgabeneinstellungen nicht geändert werden. Zum Bearbeiten dieser Einstellungen müssen Sie das übergeordnete Umgebungselement auswählen.
+> [!Note]
+> Bei der vorlagenbasierten Erstellung einer Releasedefinition wurden einige Einstellungen für die Aufgaben möglicherweise automatisch als [Umgebungsvariablen](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) definiert. Diese Einstellungen können in den Taskeinstellungen nicht geändert werden. Allerdings können Sie diese Einstellungen in den übergeordneten Umgebungselementen bearbeiten.
 
 ## <a name="create-a-release"></a>Erstellen eines Release
 
 Nachdem Sie die Releasedefinition geändert haben, können Sie die Bereitstellung starten. Zu diesem Zweck erstellen Sie ein auf der Releasedefinition basierendes Release. Ein Release kann automatisch erstellt werden – beispielsweise, wenn in der Releasedefinition der Continuous Deployment-Trigger festgelegt ist. Das bedeutet, dass nach Änderungen am Quellcode ein neuer Buildvorgang gestartet und auf dessen Grundlage ein neues Release erstellt wird. In diesem Abschnitt wird allerdings manuell ein neues Release erstellt.
 
-1. Öffnen Sie die Dropdownliste **Release**, und wählen Sie **Release erstellen** aus.
+1. Öffnen Sie auf der Registerkarte **Pipeline** die Dropdownliste **Release**, und wählen Sie **Release erstellen** aus.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\200.png)
- 
-2. Geben Sie eine Beschreibung für das Release ein, vergewissern Sie sich, dass die korrekten Artefakte ausgewählt sind, und klicken Sie anschließend auf **Erstellen**. Kurz darauf erscheint ein Banner mit dem Hinweis, dass das neue Release erstellt wurde. Klicken Sie auf den Link (Name des Release).
+    ![Erstellen eines Release](media\azure-stack-solution-hybrid-pipeline\200.png)
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\201.png)
- 
-3. Die Zusammenfassungsseite des Release mit den Details zum Release wird geöffnet. Im Abschnitt **Umgebungen** ändert sich der Bereitstellungsstatus für die QA-Umgebung von „IN BEARBEITUNG“ in „ERFOLGREICH“. Daraufhin erscheint ein Banner mit dem Hinweis, dass das Release auf Genehmigung wartet. Wenn eine Bereitstellung in einer Umgebung noch aussteht oder nicht erfolgreich war, wird ein blaues Informationssymbol (i) angezeigt. Zeigen Sie auf dieses Symbol, um ein Popupelement mit dem Grund anzuzeigen.
+2. Geben Sie eine Beschreibung für das Release ein, vergewissern Sie sich, dass die korrekten Artefakte ausgewählt sind, und klicken Sie anschließend auf **Erstellen**. Kurz darauf erscheint ein Banner mit dem Hinweis, dass das neue Release erstellt wurde, und der Releasename wird als Link angezeigt. Klicken Sie auf den Link, um die Zusammenfassungsseite des Release anzuzeigen.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\202.png)
+    ![Banner zur Releaseerstellung](media\azure-stack-solution-hybrid-pipeline\201.png)
 
-In anderen Ansichten (etwa in der Liste mit den Releases) wird auch ein Symbol angezeigt, das darauf hinweist, dass die Genehmigung aussteht. Wenn Sie auf das Symbol zeigen, wird ein Popupelement mit dem Umgebungsnamen und weiteren Details angezeigt. So kann ein Administrator ganz einfach erkennen, bei welchen Releases eine Genehmigung aussteht, und sich über den Gesamtstatus aller Releases informieren.
+3. Die Zusammenfassungsseite enthält Details zum Release. Im folgenden Screenshot für „Release-2“ wird im Abschnitt **Umgebungen** als **Bereitstellungsstatus** für Azure „IN BEARBEITUNG“ und als Status für Azure Stack „SUCCEEDED“ (ERFOLGREICH) angezeigt. Wenn sich der Bereitstellungsstatus für die Azure-Umgebung in „SUCCEEDED“ (ERFOLGREICH) ändert, wird ein Banner mit dem Hinweis angezeigt, dass das Release nun genehmigt werden kann. Wenn eine Bereitstellung noch aussteht oder nicht erfolgreich war, wird ein blaues Informationssymbol **(i)** angezeigt. Zeigen Sie mit der Maus auf das Symbol, um ein Popupfenster mit dem Grund für die Verzögerung oder den Fehler anzuzeigen.
+
+    ![Seite „Releasezusammenfassung“](media\azure-stack-solution-hybrid-pipeline\202.png)
+
+In anderen Ansichten (etwa in der Liste mit den Releases) wird ebenfalls ein Symbol angezeigt, das darauf hinweist, dass die Genehmigung aussteht. Das Popupfenster für dieses Symbol enthält den Umgebungsnamen und weitere Details zur Bereitstellung. So kann sich ein Administrator ganz einfach über den Gesamtstatus aller Releases informieren und erkennen, bei welchen Releases eine Genehmigung aussteht.
 
 ### <a name="monitor-and-track-deployments"></a>Überwachen und Nachverfolgen von Bereitstellungen
 
-In diesem Abschnitt erfahren Sie, wie Sie über das Release, das Sie im vorherigen Abschnitt erstellt haben, Bereitstellungen (im vorliegenden Beispiel: für zwei Azure App Services-Websites) überwachen und nachverfolgen.
+In diesem Abschnitt wird gezeigt, wie Sie alle Ihre Bereitstellungen überwachen und nachverfolgen. Das Release für die Bereitstellung der beiden Azure App Service-Websites ist ein gutes Beispiel.
 
-1. Klicken Sie auf der Zusammenfassungsseite des Release auf den Link **Protokolle**. Während des Bereitstellungsvorgangs werden auf dieser Seite das Liveprotokoll des Agents und im linken Bereich der Status der einzelnen Vorgänge des Bereitstellungsprozesses für die jeweilige Umgebung angezeigt.
+1. Klicken Sie auf der Zusammenfassungsseite „Release-2“ auf **Protokolle**. Während einer Bereitstellung wird auf dieser Seite das Liveprotokoll des Agents angezeigt. Im linken Bereich wird der Status der einzelnen Vorgänge in der Bereitstellung für die jeweilige Umgebung angezeigt.
 
-    Klicken Sie für eine Genehmigung vor oder nach der Bereitstellung auf das Symbol in der Spalte **Aktion**, um Informationen zu dem Benutzer, der die Bereitstellung genehmigt (oder abgelehnt) hat, sowie die vom Benutzer angegebene Nachricht anzuzeigen.
+    Sie können für eine Genehmigung vor oder nach der Bereitstellung auf das Personensymbol in der Spalte **Aktion** klicken, um zu sehen, wer die Bereitstellung genehmigt (oder abgelehnt) hat, und die angegebene Nachricht anzuzeigen.
 
-2. Nach Abschluss der Bereitstellung wird im rechten Bereich die gesamte Protokolldatei angezeigt. Klicken Sie im linken Bereich auf einen der **Prozessschritte**, um nur den Protokolldateiinhalt für diesen Schritt anzuzeigen. So lassen sich einzelne Teile der Gesamtbereitstellung leichter nachverfolgen und debuggen. Mithilfe der Symbole und Links auf der Seite können Sie alternativ die einzelnen Protokolldateien (oder eine ZIP-Datei mit allen Protokolldateien) herunterladen.
+2. Nach Abschluss der Bereitstellung wird im rechten Bereich die gesamte Protokolldatei angezeigt. Sie können einen beliebigen **Schritt** im linken Bereich auswählen, um die Protokolldatei für einen einzelnen Schritt (etwa „Auftrag initialisieren“) anzuzeigen. Dank der Möglichkeit zum Anzeigen einzelner Protokolle lassen sich Teile der Gesamtbereitstellung leichter nachverfolgen und debuggen. Sie können die Protokolldatei für einen Schritt auch **speichern** oder **alle Protokolle als ZIP-Datei herunterladen**.
 
-    ![Alternativer Text](media\azure-stack-solution-hybrid-pipeline\203.png)
- 
-3. Öffnen Sie die Registerkarte **Zusammenfassung**, um die gesamten Releasedetails anzuzeigen. Hier werden die Details des Builds sowie die Umgebungen angezeigt, in denen er bereitgestellt wurde. Außerdem finden Sie hier den Bereitstellungsstatus und andere Informationen zum Release.
+    ![Release-Protokolle](media\azure-stack-solution-hybrid-pipeline\203.png)
 
-4. Klicken Sie auf die einzelnen **Umgebungslinks**, um weitere Details zu vorhandenen und noch ausstehenden Bereitstellungen für diese spezifische Umgebung anzuzeigen. Mithilfe dieser Seiten können Sie sich vergewissern, dass der gleiche Build in beiden Umgebungen bereitgestellt wurde.
+3. Öffnen Sie die Registerkarte **Zusammenfassung**, um allgemeine Informationen zum Release anzuzeigen. In dieser Ansicht werden die Details zum Build, die Umgebungen, in denen er bereitgestellt wurde, Bereitstellungsstatus und andere Informationen zum Release angezeigt.
 
-5. Öffnen Sie die **bereitgestellte Produktions-App** in Ihrem Browser. Verwenden Sie für eine Azure App Services-Website beispielsweise die URL `http://[your-app-name].azurewebsites.net`.
+4. Klicken Sie auf den Link für eine Umgebung (**Azure** oder **Azure Stack**), um Informationen zu vorhandenen und ausstehenden Bereitstellungen für eine bestimmte Umgebung anzuzeigen. Mithilfe dieser Ansichten können Sie sich schnell vergewissern, dass der gleiche Build in beiden Umgebungen bereitgestellt wurde.
+
+5. Öffnen Sie die **bereitgestellte Produktions-App** in Ihrem Browser. Öffnen Sie für die Azure App Service-Website beispielsweise die URL `http://[your-app-name].azurewebsites.net`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure-Cloudmustern finden Sie unter [Cloudentwurfsmuster](https://docs.microsoft.com/azure/architecture/patterns).
+* Weitere Informationen zu Azure-Cloudmustern finden Sie unter [Cloudentwurfsmuster](https://docs.microsoft.com/azure/architecture/patterns).

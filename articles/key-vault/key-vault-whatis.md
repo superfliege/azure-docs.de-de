@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: barclayn
-ms.openlocfilehash: cd9dd4d400177e511f23c2677b77198a50420a35
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 08331a399044eba17060d15f24af1863df38caf5
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282995"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480252"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
@@ -33,6 +33,8 @@ Azure Key Vault ist ein Tool zum sicheren Speichern und Zugreifen auf Geheimniss
 Hier sind einige wichtige Begriffe aufgeführt:
 - **Mandant**: Ein Mandant ist die Organisation, die eine bestimmte Instanz von Microsoft-Clouddiensten besitzt und verwaltet. Wird am häufigsten verwendet, um speziell auf die Azure- und Office 365-Dienste einer Organisation zu verweisen.
 - **Tresorbesitzer**: Kann eine Key Vault-Instanz erstellen und über Vollzugriff und die Kontrolle verfügen. Außerdem kann der Tresorbesitzer auch eine Überprüfung einrichten, um zu protokollieren, wer auf Geheimnisse und Schlüssel zugreift. Administratoren können den Lebenszyklus des Schlüssels steuern. Sie können zu einer neuen Version des Schlüssels wechseln, diesen sichern usw.
+- **Ressource**: Ein verwaltbares Element, das über Azure verfügbar ist. Beispiele für häufig verwendete Ressourcen sind virtueller Computer, Speicherkonto, Web-App, Datenbank und virtuelles Netzwerk, aber es sind noch viele weitere Ressourcen vorhanden.
+- **Ressourcengruppe**: Ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Die Ressourcengruppe kann alle Ressourcen für die Lösung oder nur die Ressourcen enthalten, die Sie als Gruppe verwalten möchten. Sie entscheiden in Abhängigkeit davon, was für Ihre Organisation am sinnvollsten ist, wie Sie die Ressourcen den Ressourcengruppen zuordnen möchten. Weitere Informationen finden Sie unter „Ressourcengruppen“.
 - **Tresorconsumer**: Kann Aktionen für die Objekte in der Key Vault-Instanz durchführen, wenn der Tresorbesitzer Zugriff gewährt. Dies hängt von den erteilten Berechtigungen ab.
 - **[Azure Active Directory](../active-directory/active-directory-whatis.md)** ist der Azure AD-Dienst für einen bestimmten Mandanten. Jedes Verzeichnis verfügt über mindestens eine Domäne. Einem Verzeichnis können viele Abonnements zugeordnet sein, aber nur ein Mandant. 
 - **Azure-Mandanten-ID**: Dies ist eine eindeutige Möglichkeit zum Identifizieren einer Azure Active Directory-Instanz in einem Azure-Abonnement. 

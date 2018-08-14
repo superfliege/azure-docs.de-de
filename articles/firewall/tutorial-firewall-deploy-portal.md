@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be11ea2195705b344638b93ea2657481897d6ef7
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358945"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480882"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -166,7 +166,7 @@ Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work
    |Ressourcengruppe     |**Vorhandene verwenden**: Test-FW-RG |
    |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandenes verwenden**: Test-FW-VN|
-   |Öffentliche IP-Adresse     |Neu erstellen|
+   |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 
 2. Klicken Sie auf **Überprüfen + erstellen**.
 3. Überprüfen Sie die Zusammenfassung, und klicken Sie dann auf **Erstellen**, um die Firewall zu erstellen.
@@ -175,10 +175,6 @@ Konfigurieren Sie die **Einstellungen** für den virtuellen Computer „Srv-Work
 4. Navigieren Sie nach Abschluss der Bereitstellung zur Ressourcengruppe **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
 6. Notieren Sie sich die private IP-Adresse. Diese wird später für die Erstellung der Standardroute benötigt.
 
-> [!NOTE]
-> Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.
-
-[//]: # (Vergessen Sie nicht, sich die private IP-Adresse für die Firewall zu notieren.)
 
 ## <a name="create-a-default-route"></a>Erstellen einer Standardroute
 
@@ -279,7 +275,7 @@ Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe **Test-FW-RG**, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
+Sie können die Firewallressourcen für das nächste Tutorial behalten oder die Ressourcengruppe **Test-FW-RG** löschen, wenn Sie sie nicht mehr benötigen. Dadurch werden alle firewallbezogenen Ressourcen gelöscht.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,15 +7,15 @@ manager: carmonm
 keywords: Sichern und Wiederherstellen; Wiederherstellungsdienste; Sicherungslösungen
 ms.service: backup
 ms.topic: overview
-ms.date: 3/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: bbcb05fcc17b958711b704c75a53cf4af4d41bd0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0a5b9e6cdb5329705cb3c6d4676dfc8d987119e4
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607098"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480972"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -116,11 +116,11 @@ Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. di
 ### <a name="storage"></a>Speicher
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Recovery Services-Tresor |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
-| Datenträgerspeicher | |![Ja][green] |![Ja][green] | |
-| Bandspeicher | |![Ja][green] | | |
-| Komprimierung <br/>(im Recovery Services-Tresor) |![Ja][green] |![Ja][green] |![Ja][green] | |
-| Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
+| Recovery Services-Tresor |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
+| Datenträgerspeicher | |![JA][green] |![JA][green] | |
+| Bandspeicher | |![JA][green] | | |
+| Komprimierung <br/>(im Recovery Services-Tresor) |![JA][green] |![Ja][green] |![JA][green] | |
+| Inkrementelle Sicherung |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
 | Datenträgerdeduplizierung | |![Teilweise][yellow] |![Teilweise][yellow] | | |
 
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key.png)
@@ -157,8 +157,8 @@ Die **inkrementelle Sicherung** bietet eine hohe Speicher- und Netzwerkeffizienz
 ### <a name="security"></a>Sicherheit
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Netzwerksicherheit<br/> (in Azure) |![Ja][green] |![Ja][green] |![Ja][green] |![Teilweise][yellow] |
-| Datensicherheit<br/> (in Azure) |![Ja][green] |![Ja][green] |![Ja][green] |![Teilweise][yellow] |
+| Netzwerksicherheit<br/> (in Azure) |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
+| Datensicherheit<br/> (in Azure) |![JA][green] |![Ja][green] |![Ja][green] |![JA][green] |
 
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -171,13 +171,13 @@ Sämtlicher Sicherungsdatenverkehr von Ihren Servern in den Recovery Services-Tr
 >
 
 #### <a name="data-security"></a>Datensicherheit
-Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselung *im* virtuellen Computer erforderlich. Verwenden Sie BitLocker auf virtuellen Windows-Computern und **dm-crypt** auf virtuellen Linux-Computern. Daten, die auf diesem Weg eingehen, werden von Azure Backup nicht automatisch verschlüsselt.
+Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselung *im* virtuellen Computer erforderlich. Azure Backup unterstützt den Azure Disk Encryption-Dienst, der auf virtuellen Windows-Computern BitLocker und auf virtuellen Linux-Computern **dm-crypt** verwendet. Auf dem Back-End nutzt Azure Backup die [Speicherdienstverschlüsselung von Azure](../storage/common/storage-service-encryption.md), mit der ruhende Daten geschützt werden.
 
 ### <a name="network"></a>Netzwerk
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
-| Netzwerkkomprimierung <br/>(auf **Sicherungsserver**) | |![Ja][green] |![Ja][green] | |
-| Netzwerkkomprimierung <br/>(zum **Recovery Services-Tresor**) |![Ja][green] |![Ja][green] |![Ja][green] | |
+| Netzwerkkomprimierung <br/>(auf **Sicherungsserver**) | |![JA][green] |![JA][green] | |
+| Netzwerkkomprimierung <br/>(zum **Recovery Services-Tresor**) |![JA][green] |![Ja][green] |![JA][green] | |
 | Netzwerkprotokoll <br/>(auf **Sicherungsserver**) | |TCP |TCP | |
 | Netzwerkprotokoll <br/>(zum **Recovery Services-Tresor**) |HTTPS |HTTPS |HTTPS |HTTPS |
 

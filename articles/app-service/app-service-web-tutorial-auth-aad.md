@@ -12,14 +12,14 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/03/2018
+ms.date: 08/07/2018
 ms.author: cephalin
-ms.openlocfilehash: 4bdb182d93b842bf94e75672b1d7b4cf4f6da253
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: e597ba5236fb2d7fea8649f423c4a952b01f87ee
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589151"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599620"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -241,7 +241,7 @@ Kopieren Sie die **Anwendungs-ID** von der Verwaltungsseite der AD-Anwendung in 
 
 Führen Sie die gleichen Schritte für die Front-End-App aus, aber lassen Sie den letzten Schritt weg. Für die Front-End-App ist die **Anwendungs-ID** nicht erforderlich. Lassen Sie die Seite **Azure Active Directory-Einstellungen** geöffnet.
 
-Wenn Sie möchten, können Sie zu `http://<front_end_app_name>.azurewebsites.net` navigieren. Sie sollten auf eine Anmeldeseite geleitet werden. Nachdem Sie sich angemeldet haben, können Sie trotzdem noch nicht auf die Daten der Back-End-App zugreifen, da Sie noch drei weitere Schritte ausführen müssen:
+Wenn Sie möchten, können Sie zu `http://<front_end_app_name>.azurewebsites.net` navigieren. Sie sollten auf eine sichere Anmeldeseite geleitet werden. Nachdem Sie sich angemeldet haben, können Sie trotzdem noch nicht auf die Daten der Back-End-App zugreifen, da Sie noch drei weitere Schritte ausführen müssen:
 
 - Gewähren des Zugriffs auf das Back-End für das Front-End
 - Konfigurieren von App Service für die Rückgabe eines verwendbaren Tokens
@@ -322,7 +322,7 @@ git commit -m "add authorization header for server code"
 git push frontend master
 ```
 
-Führen Sie die Anmeldung an `http://<front_end_app_name>.azurewebsites.net` erneut durch. Klicken Sie auf der Seite mit der Vereinbarung zur Nutzung der Benutzerdaten auf **Akzeptieren**.
+Führen Sie die Anmeldung an `https://<front_end_app_name>.azurewebsites.net` erneut durch. Klicken Sie auf der Seite mit der Vereinbarung zur Nutzung der Benutzerdaten auf **Akzeptieren**.
 
 Es sollte nun möglich sein, dass Sie wie zuvor Daten für die Back-End-App erstellen, lesen, aktualisieren und löschen. Der einzige Unterschied ist, dass beide Apps jetzt per App Service-Authentifizierung und -Autorisierung geschützt sind (einschließlich Dienst-zu-Dienst-Aufrufe).
 
@@ -340,7 +340,7 @@ Der Servercode hat Zugriff auf die Anforderungsheader, aber der Clientcode kann 
 
 ### <a name="configure-cors"></a>Konfigurieren von CORS
 
-Aktivieren Sie CORS in Cloud Shell mithilfe des Befehls [`az resource update`](/cli/azure/resource#az_resource_update) für die URL Ihres Clients. Ersetzen Sie die Platzhalter _\<back\_end\_app\_name>_ und _\<front\_end\_app\_name>_.
+Aktivieren Sie CORS in Cloud Shell mithilfe des Befehls [`az resource update`](/cli/azure/resource#az-resource-update) für die URL Ihres Clients. Ersetzen Sie die Platzhalter _\<back\_end\_app\_name>_ und _\<front\_end\_app\_name>_.
 
 ```azurecli-interactive
 az resource update --name web --resource-group myAuthResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<back_end_app_name> --set properties.cors.allowedOrigins="['https://<front_end_app_name>.azurewebsites.net']" --api-version 2015-06-01
@@ -352,7 +352,7 @@ Dieser Schritt bezieht sich nicht auf die Authentifizierung und Autorisierung. E
 
 Öffnen Sie _wwwroot/index.html_ im lokalen Repository.
 
-Legen Sie die Variable `apiEndpoint` in Zeile 51 auf die URL Ihrer Back-End-App (`http://<back_end_app_name>.azurewebsites.net`) fest. Ersetzen Sie _\<back\_end\_app\_name>_ durch Ihren App-Namen in App Service.
+Legen Sie die Variable `apiEndpoint` in Zeile 51 auf die URL Ihrer Back-End-App (`https://<back_end_app_name>.azurewebsites.net`) fest. Ersetzen Sie _\<back\_end\_app\_name>_ durch Ihren App-Namen in App Service.
 
 Öffnen Sie _wwwroot/app/scripts/todoListSvc.js_ im lokalen Repository, und stellen Sie sicher, dass `apiEndpoint` allen API-Aufrufen vorangestellt wird. Ihre Angular.js-App ruft jetzt die Back-End-APIs auf. 
 
@@ -406,9 +406,13 @@ git commit -m "add authorization header for Angular"
 git push frontend master
 ```
 
-Navigieren Sie erneut zu `http://<front_end_app_name>.azurewebsites.net`. Es sollte nun möglich sein, dass Sie Daten für die Back-End-App direkt in der Angular.js-App erstellen, lesen, aktualisieren und löschen.
+Navigieren Sie erneut zu `https://<front_end_app_name>.azurewebsites.net`. Es sollte nun möglich sein, dass Sie Daten für die Back-End-App direkt in der Angular.js-App erstellen, lesen, aktualisieren und löschen.
 
 Glückwunsch! Ihr Clientcode greift jetzt im Namen des authentifizierten Benutzers auf die Back-End-Daten zu.
+
+## <a name="when-access-tokens-expire"></a>Ablauf von Zugriffstoken
+
+Das Zugriffstoken läuft nach einiger Zeit ab. Informationen dazu, wie Sie Zugriffstoken aktualisieren, ohne dass sich Benutzer erneut bei Ihrer App authentifizieren müssen, finden Sie unter [Anpassen der Authentifizierung und Autorisierung in Azure App Service](app-service-authentication-how-to.md#refresh-access-tokens).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

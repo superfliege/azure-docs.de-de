@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 4da5b42ddd235fa26834e582a911140116692d34
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 93a63c39b2ba30d0b70607671262428d93392ad4
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299558"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522151"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Erste Schritte in Azure Dev Spaces mit .NET Core
 
@@ -29,7 +29,9 @@ Sie können nun einen Kubernetes-basierten Entwicklungsbereich in Azure erstelle
 [!INCLUDE[](includes/portal-aks-cluster.md)]
 
 ## <a name="install-the-azure-cli"></a>Installieren der Azure CLI
-Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minimal. Der Großteil der Konfiguration Ihres Entwicklungsbereichs wird in der Cloud gespeichert und kann gemeinsam mit anderen Benutzern genutzt werden. Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Command-Line Interface, CLI) herunter, und führen Sie sie aus. 
+Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minimal. Der Großteil der Konfiguration Ihres Entwicklungsbereichs wird in der Cloud gespeichert und kann gemeinsam mit anderen Benutzern genutzt werden. Auf dem lokalen Computer kann Windows, Mac oder Linux ausgeführt werden. Für Linux werden die folgenden Distributionen unterstützt: Ubuntu (18.04, 16.04 und 14.04), Debian 8 und 9, RHEL 7, Fedora 26 und höhere Versionen, CentOS 7, openSUSE 42.2 und SLES 12.
+
+Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Command-Line Interface, CLI) herunter, und führen Sie sie aus. 
 
 > [!IMPORTANT]
 > Falls die Azure-Befehlszeilenschnittstelle bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.38 handelt.

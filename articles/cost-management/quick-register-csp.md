@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2018
+ms.date: 08/06/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: b71d737f99a82508f9769f89d8172aa02bec817b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e97ac06d5740a793d5f811e1a7ac01fef1a32806
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542031"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578057"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrieren beim CSP-Partnerprogramm und Anzeigen von Kostendaten
 
@@ -43,13 +43,13 @@ Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Part
 3. Klicken Sie auf der Seite **Kostenverwaltung** auf **Zur Kostenverwaltung wechseln**, um die Cloudyn-Registrierungsseite in einem neuen Fenster zu öffnen.
 4. Geben Sie im Cloudyn-Portal auf der Registrierungsseite für die Testversion den Namen Ihres Unternehmens ein, wählen Sie **Microsoft CSP Partner Program Administrator** (Administrator des Microsoft CSP-Partnerprogramms) aus, und klicken Sie dann auf **Weiter**.  
 5. Geben Sie eine **Anwendungs-ID**, **Commerce-ID** und den **geheimen Anwendungsschlüssel** ein, und wählen Sie den **Default Pricing Plan** (Standardpreisplan) aus. Wenn Ihnen diese Informationen nicht vorliegen, melden Sie sich beim Partner Center-Portal unter [https://partnercenter.microsoft.com](https://partnercenter.microsoft.com) mit Ihrem primären Administratorkonto an, und führen Sie folgende Schritte aus:
-  1. Navigieren Sie zu **Dashboard** > **Kontoeinstellungen** > **App-Verwaltung**.
+  1. Wechseln Sie zum **Dashboard**, und klicken Sie auf das Symbol **Einstellungen**, auf **Partner settings** (Partnereinstellungen) und dann auf **App-Verwaltung**.
   2. Wenn Sie zuvor eine Web-App erstellt haben, überspringen Sie diesen Schritt. Klicken Sie andernfalls auf **Add new web app** (Neue Web-App hinzufügen) im Abschnitt **Web-App**.
   3. Kopieren Sie die GUID Ihrer **App-ID** aus Ihrer Webanwendung.
   4. Kopieren Sie die GUID Ihrer **Commerce-ID** aus Ihrer Webanwendung.
   5. Legen Sie die Gültigkeitsdauer des Schlüssels bei Bedarf auf ein oder zwei Jahre fest. Klicken Sie auf **Schlüssel hinzufügen**, und kopieren und speichern Sie den geheimen Schlüsselwert anschließend.  
     ![CSP Partner Center](./media/quick-register-csp/csp-partner-center.png)
-  6. Navigieren Sie zurück zur Registrierungsseite, und fügen Sie die Informationen ein.  
+  6. Navigieren Sie zurück zur Cloudyn-Registrierungsseite, und fügen Sie die Informationen ein.  
       ![Anmeldeinformationen des CSP-Kontos](./media/quick-register-csp/csp-reg.png)
 6. Stimmen Sie den Nutzungsbedingungen zu, und überprüfen Sie dann Ihre Informationen. Klicken Sie auf **Weiter**, um Cloudyn für das Erfassen von Azure-Ressourcendaten zu autorisieren. Die erfassten Daten beziehen sich auf Nutzungs-, Leistungs- und Abrechnungs- sowie Tagdaten aus Ihren Abonnements.  
 7. Unter **Invite other stakeholders** (Andere Beteiligte einladen) können Sie Benutzer hinzufügen, indem Sie ihre E-Mail-Adressen eingeben. Klicken Sie auf **Weiter**, wenn Sie fertig sind. Es dauert ungefähr zwei Stunden, bis alle Ihre Abrechnungsdaten Cloudyn hinzugefügt wurden.

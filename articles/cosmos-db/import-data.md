@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 52d5977b2a454dec803ad1233fcb12cc9573521c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cf14393dddcea44d40ae1fbab831a3fc4c0036f5
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100350"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592719"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Datenmigrationstool
 
@@ -89,19 +89,19 @@ Mit der Importprogrammoption für JSON-Dateiquellen können Sie ein oder mehrere
 Hier finden Sie einige Befehlszeilenbeispiele zum Importieren von JSON-Dateien:
 
     #Import a single JSON file
-    dt.exe /s:JsonFile /s.Files:.\Sessions.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Sessions /t.CollectionThroughput:2500
+    dt.exe /s:JsonFile /s.Files:.\Sessions.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Sessions /t.CollectionThroughput:2500
 
     #Import a directory of JSON files
-    dt.exe /s:JsonFile /s.Files:C:\TESessions\*.json /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Sessions /t.CollectionThroughput:2500
+    dt.exe /s:JsonFile /s.Files:C:\TESessions\*.json /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Sessions /t.CollectionThroughput:2500
 
     #Import a directory (including sub-directories) of JSON files
-    dt.exe /s:JsonFile /s.Files:C:\LastFMMusic\**\*.json /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Music /t.CollectionThroughput:2500
+    dt.exe /s:JsonFile /s.Files:C:\LastFMMusic\**\*.json /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Music /t.CollectionThroughput:2500
 
     #Import a directory (single), directory (recursive), and individual JSON files
-    dt.exe /s:JsonFile /s.Files:C:\Tweets\*.*;C:\LargeDocs\**\*.*;C:\TESessions\Session48172.json;C:\TESessions\Session48173.json;C:\TESessions\Session48174.json;C:\TESessions\Session48175.json;C:\TESessions\Session48177.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:subs /t.CollectionThroughput:2500
+    dt.exe /s:JsonFile /s.Files:C:\Tweets\*.*;C:\LargeDocs\**\*.*;C:\TESessions\Session48172.json;C:\TESessions\Session48173.json;C:\TESessions\Session48174.json;C:\TESessions\Session48175.json;C:\TESessions\Session48177.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:subs /t.CollectionThroughput:2500
 
     #Import a single JSON file and partition the data across 4 collections
-    dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
+    dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
 ## <a id="MongoDB"></a>Importieren aus MongoDB
 
@@ -128,10 +128,10 @@ Geben Sie den Namen der Sammlung ein, aus der Daten importiert werden sollen. Op
 Hier finden Sie einige Befehlszeilenbeispiele zum Importieren aus MongoDB:
 
     #Import all documents from a MongoDB collection
-    dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZips /t.IdField:_id /t.CollectionThroughput:2500
+    dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZips /t.IdField:_id /t.CollectionThroughput:2500
 
     #Import documents from a MongoDB collection which match the query and exclude the loc field
-    dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
+    dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
 ## <a id="MongoDBExport"></a>Importieren von MongoDB-Exportdateien
 
@@ -148,7 +148,7 @@ Wenn Sie Ordner hinzufügen, die zu importierende JSON-Dateien aus einem MongoDB
 
 Hier finden Sie ein Befehlszeilenbeispiel zum Importieren von JSON-Dateien aus einem MongoDB-Export:
 
-    dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
+    dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
 
 ## <a id="SQL"></a>Importieren von SQL Server
 Mit der Importprogrammoption für SQL-Quellen können Sie Datensätze aus einer einzelnen SQL Server-Datenbank importieren und mithilfe einer Abfrage filtern. Darüber hinaus können Sie die Dokumentstruktur ändern, indem Sie ein Schachtelungstrennzeichen angeben (mehr dazu weiter unten).  
@@ -177,10 +177,10 @@ Beachten Sie die Aliase, wie z. B. Address.AddressType und Address.Location.Stat
 Hier finden Sie einige Befehlszeilenbeispiele zum Importieren aus SQL Server:
 
     #Import records from SQL which match a query
-    dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, * from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Stores /t.IdField:Id /t.CollectionThroughput:2500
+    dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, * from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Stores /t.IdField:Id /t.CollectionThroughput:2500
 
     #Import records from sql which match a query and create hierarchical relationships
-    dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
+    dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
 
 ## <a id="CSV"></a>Importieren von CSV-Dateien und Konvertieren von CSV in JSON
 Mit der Importprogrammoption für CSV-Dateiquellen können Sie eine oder mehrere CSV-Dateien importieren. Wenn Sie Ordner hinzufügen, die zu importierende CSV-Dateien enthalten, können Sie in den Unterordnern rekursiv nach Dateien suchen.
@@ -204,7 +204,7 @@ In Bezug auf CSV-Importe gibt es zwei weitere Dinge zu beachten:
 
 Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von CSV-Dateien:
 
-    dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
+    dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 
 ## <a id="AzureTableSource"></a>Importieren aus dem Azure-Tabellenspeicher
 Mit der Importprogrammoption für Azure Table Storage-Quellen können Sie Daten aus einer einzelnen Azure Table Storage-Tabelle importieren. Optional können Sie die zu importierenden Tabellenentitäten filtern. 
@@ -235,7 +235,7 @@ Die Importprogrammoption für Azure-Tabellenspeicherquellen weist die folgenden 
 
 Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren aus Azure Table Storage:
 
-    dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
+    dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
 
 ## <a id="DynamoDBSource"></a>Importieren von Amazon DynamoDB
 Mit der Importprogrammoption für Amazon DynamoDB-Quellen können Sie aus einer einzelnen Amazon DynamoDB-Tabelle importieren und auf Wunsch die zu importierenden Entitäten filtern. Mehrere Vorlagen werden für einen einfachen Import bereitgestellt.
@@ -264,7 +264,7 @@ Mit den Importprogrammoptionen für JSON-Dateien, MongoDB-Exportdateien und die 
 
 Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von JSON-Dateien aus Azure Blob Storage:
 
-    dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
+    dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 
 ## <a id="SQLSource"></a>Importieren aus einer SQL-API-Sammlung
 Mit der Importprogrammoption für Azure Cosmos DB-Quellen können Sie Daten aus einer oder mehreren Azure Cosmos DB-Sammlungen importieren und optional Dokumente mithilfe einer Abfrage filtern.  
@@ -308,13 +308,13 @@ Die Importprogrammoption für Azure Cosmos DB-Quellen weist die folgenden erweit
 Hier finden Sie einige Beispiele für Befehlszeilen zum Importieren aus Azure Cosmos DB:
 
     #Migrate data from one Azure Cosmos DB collection to another Azure Cosmos DB collections
-    dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:TEColl /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:TESessions /t.CollectionThroughput:2500
+    dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:TEColl /t:DocumentDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:TESessions /t.CollectionThroughput:2500
 
     #Migrate data from multiple Azure Cosmos DB collections to a single Azure Cosmos DB collection
-    dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:comp1|comp2|comp3|comp4 /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:singleCollection /t.CollectionThroughput:2500
+    dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:comp1|comp2|comp3|comp4 /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:singleCollection /t.CollectionThroughput:2500
 
     #Export an Azure Cosmos DB collection to a JSON file
-    dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionThroughput:2500
+    dt.exe /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionThroughput:2500
 
 > [!TIP]
 > Das Azure Cosmos DB-Tool zum Importieren von Daten unterstützt auch das Importieren von Daten aus dem [Azure Cosmos DB Emulator](local-emulator.md). Legen Sie beim Importieren von Daten aus einem lokalen Emulator den Endpunkt auf `https://localhost:<port>` fest. 
@@ -339,7 +339,7 @@ Das Format der Verbindungszeichenfolge „HBase Stargate“ lautet:
 
 Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren ausHBase:
 
-    dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
+    dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
 
 ## <a id="SQLBulkTarget"></a>Importieren in die SQL-API (Massenimport)
 Mit dem Azure Cosmos DB-Massenimportprogramm können Sie Daten aus allen verfügbaren Quelloptionen importieren und dabei zur Erhöhung der Effizienz eine gespeicherte Azure Cosmos DB-Prozedur verwenden. Das Tool unterstützt den Import in eine Azure Cosmos DB-Sammlung mit einzelner Partition sowie den Shardimport, bei dem die Daten über mehrere Azure Cosmos DB-Sammlungen mit einzelner Partition hinweg partitioniert werden. Weitere Informationen zur Partitionierung von Daten finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](partition-data.md). Mit dem Tool wird die gespeicherte Prozedur erstellt, ausgeführt und anschließend aus den Zielsammlungen gelöscht.  
@@ -528,10 +528,9 @@ Geben Sie auf dem Bildschirm "Erweiterte Konfiguration" den Speicherort der Prot
 1. Wenn kein Dateiname angegeben ist, werden alle Fehler auf der Ergebnisseite zurückgegeben.
 2. Bei Angabe eines Dateinamens ohne Verzeichnis wird die Datei im aktuellen Umgebungsverzeichnis erstellt (oder überschrieben).
 3. Wenn Sie eine vorhandene Datei auswählen, wird die Datei überschrieben. Eine Anfügeoption steht nicht zur Verfügung.
+4. Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen protokolliert werden sollen. Entscheiden Sie zum Schluss, wie häufig der Fortschritt in der Bildschirmmeldung zur Übertragung aktualisiert werden soll.
 
-Wählen Sie dann, ob alle, nur die kritischen oder gar keine Fehlermeldungen protokolliert werden sollen. Entscheiden Sie zum Schluss, wie häufig der Fortschritt in der Bildschirmmeldung zur Übertragung aktualisiert werden soll.
-
-    ![Screenshot of Advanced configuration screen](./media/import-data/AdvancedConfiguration.png)
+   ![Screenshot des Bildschirms für die erweiterte Konfiguration](./media/import-data/AdvancedConfiguration.png)
 
 ## <a name="confirm-import-settings-and-view-command-line"></a>Überprüfen der Importeinstellungen und Anzeigen der Befehlszeile
 1. Nachdem Sie die Quell- und Zielinformationen und die erweiterte Konfiguration angegeben haben, überprüfen Sie die Migrationszusammenfassung, und zeigen Sie optional den resultierenden Migrationsbefehl an bzw. kopieren Sie ihn (das Kopieren des Befehls ist hilfreich, um Importvorgänge zu automatisieren):

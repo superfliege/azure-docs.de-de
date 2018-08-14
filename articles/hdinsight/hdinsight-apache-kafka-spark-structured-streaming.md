@@ -1,23 +1,20 @@
 ---
-title: 'Tutorial: strukturiertes Apache Spark-Streaming mit Kafka – Azure HDInsight | Microsoft-Dokumentation'
+title: 'Tutorial: strukturiertes Apache Spark-Streaming mit Kafka – Azure HDInsight '
 description: Erfahren Sie, wie Sie Apache Spark-Streaming verwenden, um Daten in oder aus Apache Kafka zu streamen. In diesem Tutorial streamen Sie Daten mithilfe eines Jupyter Notebooks aus Spark in HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: larryfr
-ms.openlocfilehash: 8c7c1b37102e94f00ac6077958952eb52b342668
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: jasonh
+ms.openlocfilehash: 47879350c56b9e8b943e1bff61359727746b697d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33939250"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598302"
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Spark-Streaming mit Kafka in HDInsight
 
@@ -147,7 +144,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     | --- | --- |
     | Abonnement | Ihr Azure-Abonnement |
     | Ressourcengruppe | Die Ressourcengruppe mit den Ressourcen. |
-    | Speicherort | Die Azure-Region, in der die Ressourcen erstellt werden. |
+    | Standort | Die Azure-Region, in der die Ressourcen erstellt werden. |
     | Spark Cluster Name (Spark-Clustername) | Der Name des Spark-Clusters. Die ersten sechs Zeichen müssen sich vom Kafka-Clusternamen unterscheiden. |
     | Kafka Cluster Name (Kafka-Clustername) | Der Name des Kafka-Clusters. Die ersten sechs Zeichen müssen sich vom Spark-Clusternamen unterscheiden. |
     | Benutzername für Clusteranmeldung | Der Administratorbenutzername für die Cluster. |

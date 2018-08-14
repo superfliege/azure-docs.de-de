@@ -7,14 +7,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 07/26/2018
+ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: f4e03271f45c29ed2556256346e29c297be563cc
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 41f74ff00e4fad751d4a2b7ae96ebb048bbcdfcd
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345357"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492697"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Tutorial: 5. Hinzufügen einer Entität vom Typ „Hierarchisch“
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie anhand des Kontexts nach zusammengehörenden Datenelementen suchen. 
@@ -70,7 +70,7 @@ Entfernen Sie die vordefinierte Zahlenentität vorübergehend, um die gesamte Ä
 
 2. Wählen Sie in der Liste mit den Absichten die Option **MoveEmployee**.
 
-    [![Screenshot: LUIS-App mit Hervorhebung der MoveEmployee-Absicht im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
+    [ ![Screenshot: LUIS-App mit Hervorhebung der MoveEmployee-Absicht im linken Menü](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
 3. Fügen Sie die folgenden Beispieläußerungen hinzu:
 
@@ -119,15 +119,8 @@ Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
     ![Screenshot: Auswahl von „number“ im Dialogfeld mit den vordefinierten Entitäten](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
-LUIS ist erst dann über die Änderungen an den Absichten und Entitäten (Modell) informiert, nachdem der Dienst trainiert wurde. 
 
-1. Klicken Sie oben rechts auf der LUIS-Website auf die Schaltfläche **Train** (Trainieren).
-
-    ![Trainieren der App](./media/luis-quickstart-intent-and-hier-entity/train-button.png)
-
-2. Das Training ist abgeschlossen, wenn oben auf der Website die grüne Statusleiste angezeigt wird.
-
-    ![Training erfolgreich](./media/luis-quickstart-intent-and-hier-entity/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
 
@@ -242,6 +235,10 @@ Ja. Erstellen Sie den regulären Ausdruck mit Ursprungs- und Zielrolle, und verw
 
 Für die Orte in diesem Beispiel, z.B. `a-1234`, wird ein bestimmtes Format mit einem oder mehreren Buchstaben, einem Bindestrich und dann vier oder fünf Zahlen verwendet. Diese Daten können als Entität vom Typ „Regulärer Ausdruck“ mit einer Rolle für jeden Ort beschrieben werden. Rollen sind für Muster verfügbar. Sie können basierend auf diesen Äußerungen Muster erstellen und dann einen regulären Ausdruck für das Ortsformat erstellen und ihn den Mustern hinzufügen. <!-- Go to this tutorial to see how that is done -->
 
+## <a name="patterns-with-roles"></a>Muster mit Rollen
+
+[!include[LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
+
 ## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
 Diese App mit einigen Absichten und einer hierarchischen Entität hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten zurückgegeben. 
 
@@ -251,7 +248,8 @@ Ihr Chatbot verfügt jetzt über genügend Informationen, um die Hauptaktion `Mo
 LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Chatbot) kann das Ergebnis für „topScoringIntent“ und die Daten aus der Entität verwenden, um den nächsten Schritt auszuführen. LUIS führt diese programmgesteuerte Aufgabe nicht für den Bot oder die aufrufende Anwendung aus. LUIS bestimmt lediglich die Absicht des Benutzers. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die LUIS-App, falls Sie sie nicht mehr benötigen. Wählen Sie hierzu in der App-Liste rechts vom App-Namen die Auslassungspunkte (***...***) und anschließend die Option **Löschen**. Wählen Sie im Popupdialogfenster **Delete App?** (App löschen?) **OK** aus.
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 

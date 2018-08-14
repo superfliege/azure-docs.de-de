@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Schnellstart: Erstellen einer Key Vault-Instanz – PowerShell | Microsoft-Dokumentation'
+title: 'Azure-Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Key Vault mithilfe von PowerShell | Microsoft-Dokumentation'
 description: ''
 services: key-vault
 author: barclayn
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 4acd8286cb8635f9a76815c936328a7c441e3115
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d4f512a9450422d819d0134f9f5d291db4ef9b20
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187147"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480062"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-powershell"></a>Schnellstart: Erstellen einer Azure Key Vault-Instanz mit PowerShell
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Schnellstartanleitung: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe von PowerShell
 
 Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert. Dadurch können Schlüssel, Kennwörter, Zertifikate und andere Geheimnisse sicher gespeichert werden. Weitere Informationen zu Key Vault finden Sie in der [Übersicht](key-vault-overview.md). In dieser Schnellstartanleitung erstellen Sie einen Schlüsseltresor mithilfe von PowerShell. Anschließend speichern Sie ein Geheimnis in dem neu erstellten Tresor.
 

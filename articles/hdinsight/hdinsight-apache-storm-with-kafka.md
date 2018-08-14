@@ -1,25 +1,20 @@
 ---
-title: 'Tutorial: Apache Kafka mit Storm in HDInsight – Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Apache Kafka mit Storm in HDInsight – Azure '
 description: Erfahren Sie, wie Sie eine Streamingpipeline mit Apache Storm und Apache Kafka in HDInsight erstellen. In diesem Tutorial verwenden Sie die KafkaBolt- und KafkaSpout-Komponenten zum Streamen von Daten aus Kafka.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: java
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/21/2018
-ms.author: larryfr
-ms.openlocfilehash: b973890caddf598d5ba4e96a04a18df46cdb5cf8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: jasonh
+ms.openlocfilehash: a20cf616b119d208c9b2baa0f2cf608aa44c21ad
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626289"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595160"
 ---
 # <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>Tutorial: Verwenden von Apache Storm mit Kafka in HDInsight
 
@@ -416,7 +411,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     | --- | --- |
     | Abonnement | Ihr Azure-Abonnement |
     | Ressourcengruppe | Die Ressourcengruppe mit den Ressourcen. |
-    | Speicherort | Die Azure-Region, in der die Ressourcen erstellt werden. |
+    | Standort | Die Azure-Region, in der die Ressourcen erstellt werden. |
     | Kafka Cluster Name (Kafka-Clustername) | Der Name des Kafka-Clusters. |
     | Storm Cluster Name (Storm-Clustername) | Der Name des Storm-Clusters. |
     | Benutzername für Clusteranmeldung | Der Administratorbenutzername für die Cluster. |

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 22f7f9aee791d315300ffdc4dc9f708a80a5baf7
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 61654ae972965800909544554cc93dae511e1ff1
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127405"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480271"
 ---
 # <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>Tutorial: Skalieren einer Anwendung in Azure Kubernetes Service (AKS)
 
@@ -34,34 +34,6 @@ In den nachfolgenden Tutorials wird die Anwendung Azure Vote auf eine neue Versi
 In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, dieses Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt.
 
 Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
-
-## <a name="scale-aks-nodes"></a>Skalieren der AKS-Knoten
-
-Wenn Sie Ihren Kubernetes-Cluster mithilfe der Befehle im vorherigen Tutorial erstellt haben, verfügt er über einen Knoten. Sie können die Anzahl der Knoten manuell anpassen, wenn Sie größere oder kleinere Containerworkloads in Ihrem Cluster planen.
-
-Im folgenden Beispiel wird die Anzahl von Knoten im Kubernetes-Cluster *myAKSCluster* auf drei erhöht. Diese Ausführung dieses Befehls dauert einige Minuten.
-
-```azurecli
-az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
-```
-
-Die Ausgabe sieht in etwa wie folgt aus:
-
-```
-"agentPoolProfiles": [
-  {
-    "count": 3,
-    "dnsPrefix": null,
-    "fqdn": null,
-    "name": "myAKSCluster",
-    "osDiskSizeGb": null,
-    "osType": "Linux",
-    "ports": null,
-    "storageProfile": "ManagedDisks",
-    "vmSize": "Standard_D2_v2",
-    "vnetSubnetId": null
-  }
-```
 
 ## <a name="manually-scale-pods"></a>Manuelles Skalieren von Pods
 
@@ -142,6 +114,34 @@ azure-vote-front   Deployment/azure-vote-front   0% / 50%   3         10        
 ```
 
 Nach einigen Minuten mit minimaler Last in der Azure Voting-App sinkt die Anzahl von Podreplikaten automatisch auf 3.
+
+## <a name="manually-scale-aks-nodes"></a>Manuelles Skalieren von AKS-Knoten
+
+Wenn Sie Ihren Kubernetes-Cluster mithilfe der Befehle im vorherigen Tutorial erstellt haben, verfügt er über einen Knoten. Sie können die Anzahl der Knoten manuell anpassen, wenn Sie größere oder kleinere Containerworkloads in Ihrem Cluster planen.
+
+Im folgenden Beispiel wird die Anzahl von Knoten im Kubernetes-Cluster *myAKSCluster* auf drei erhöht. Diese Ausführung dieses Befehls dauert einige Minuten.
+
+```azurecli
+az aks scale --resource-group=myResourceGroup --name=myAKSCluster --node-count 3
+```
+
+Die Ausgabe sieht in etwa wie folgt aus:
+
+```
+"agentPoolProfiles": [
+  {
+    "count": 3,
+    "dnsPrefix": null,
+    "fqdn": null,
+    "name": "myAKSCluster",
+    "osDiskSizeGb": null,
+    "osType": "Linux",
+    "ports": null,
+    "storageProfile": "ManagedDisks",
+    "vmSize": "Standard_D2_v2",
+    "vnetSubnetId": null
+  }
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

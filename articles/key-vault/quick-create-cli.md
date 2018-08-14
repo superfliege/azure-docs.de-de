@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Schnellstart: Erstellen einer Key Vault-Instanz – Befehlszeilenschnittstelle | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Azure Key Vault-Instanz mithilfe der Befehlszeilenschnittstelle erstellen.
+title: 'Azure-Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Key Vault mithilfe der Azure CLI | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure CLI ein Geheimnis in Azure Key Vault festlegen und das Geheimnis daraus abrufen.
 services: key-vault
 author: barclayn
 manager: mbaldwin
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: ae8957e5bf87fc190076db87d4eaca0e7a757c5e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: dc69d472e38bcc39de35204c26068a98e0549601
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067655"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480917"
 ---
-# <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>Schnellstart: Erstellen einer Azure Key Vault-Instanz mithilfe der Befehlszeilenschnittstelle
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Schnellstartanleitung: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI
 
 Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert. Dadurch können Schlüssel, Kennwörter, Zertifikate und andere Geheimnisse sicher gespeichert werden. Weitere Informationen zu Key Vault finden Sie in der [Übersicht](key-vault-overview.md). Über die Azure-Befehlszeilenschnittstelle können Azure-Ressourcen mithilfe von Befehlen oder Skripts erstellt und verwaltet werden. In dieser Schnellstartanleitung erstellen Sie einen Schlüsseltresor. Danach speichern Sie ein Geheimnis.
 

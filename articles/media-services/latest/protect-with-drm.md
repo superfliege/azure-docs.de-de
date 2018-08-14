@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2ceae5b530d1967ccca2b33c05c183302684be41
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8bfe2fb7274fb8c6dcf977e8bd72af525d8ce8a5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116766"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528169"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts
 
@@ -62,15 +62,16 @@ Das in diesem Artikel beschriebene Beispiel führt zu folgendem Ergebnis:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Abschließen dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
+Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
 * Lesen Sie den Artikel [Übersicht über den Inhaltsschutz](content-protection-overview.md).
-* Installieren Sie Visual Studio Code oder Visual Studio.
+* Lesen Sie die Informationen unter [Design of a multi-DRM content protection system with access control](design-multi-drm-system-with-access-control.md) (Entwerfen eines Systems für Inhaltsschutz mit Multi-DRM und Zugriffssteuerung).
+* Installation von Visual Studio Code oder Visual Studio
 * Erstellen Sie ein Azure Media Services-Konto, wie in [dieser Schnellstartanleitung](create-account-cli-quickstart.md) beschrieben.
 * Rufen Sie die zur Verwendung von Media Services-APIs erforderlichen Anmeldeinformationen ab (siehe [Zugreifen auf APIs](access-api-cli-how-to.md)).
 * Legen Sie die entsprechenden Werte in der Anwendungskonfigurationsdatei (appsettings.json) fest.
 
-## <a name="download-code"></a>Herunterladen des Codes
+## <a name="download-code"></a>Code herunterladen
 
 Klonen Sie ein GitHub-Repository, das das vollständige in diesem Artikel beschriebene .NET-Beispiel enthält, mit dem folgenden Befehl auf Ihrem Computer:
 
@@ -103,7 +104,7 @@ Vor dem Erstellen einer neuen [Transformation](https://docs.microsoft.com/rest/a
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#EnsureTransformExists)]
 
-## <a name="submit-job"></a>Übermitteln eines Auftrags
+## <a name="submit-job"></a>Auftrag übermitteln
 
 Wie bereits erwähnt, ist das [Transformations](https://docs.microsoft.com/rest/api/media/transforms)objekt die Anleitung und ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) die tatsächliche Anforderung an Media Services, diese **Transformation** auf ein bestimmtes Eingabevideo oder einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an.
 
@@ -137,7 +138,7 @@ Wenn ein Stream von einem Player angefordert wird, verwendet Media Services den 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 
-## <a name="create-a-streaminglocator"></a>Erstellen eines StreamingLocator
+## <a name="create-a-streaminglocator"></a>Erstellen eines Streaminglocators
 
 Nachdem die Codierung abgeschlossen ist und die Richtlinie für den Inhaltsschlüssel festgelegt wurde, besteht der nächste Schritt darin, das Video im Ausgabeobjekt Clients für die Wiedergabe zur Verfügung zu stellen. Sie erreichen dies in zwei Schritten: 
 

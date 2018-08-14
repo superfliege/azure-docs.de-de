@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Schnellstart: Erstellen einer Key Vault-Instanz – Portal | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Azure Key Vault-Instanz über das Portal erstellen.
+title: 'Azure-Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Key Vault mithilfe des Azure-Portals | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals ein Geheimnis in Azure Key Vault festlegen und das Geheimnis daraus abrufen.
 services: key-vault
 author: barclayn
 manager: mbaldwin
@@ -14,14 +14,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 251cd7eaba439708e7ef4e1ee8ccbd7efe7d66bb
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 5a203f8c92a1dc03a50415e78e509eafa62ebf4c
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068879"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480097"
 ---
-# <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Schnellstart: Erstellen einer Key Vault-Instanz über das Azure-Portal
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
 Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert. Dadurch können Schlüssel, Kennwörter, Zertifikate und andere Geheimnisse sicher gespeichert werden. Weitere Informationen zu Key Vault finden Sie in der [Übersicht](key-vault-overview.md). Azure Key Vault-Instanzen können über das Azure-Portal erstellt und verwaltet werden. In dieser Schnellstartanleitung erstellen Sie einen Schlüsseltresor. Danach speichern Sie ein Geheimnis.
 

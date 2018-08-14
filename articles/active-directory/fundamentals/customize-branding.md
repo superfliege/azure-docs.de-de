@@ -14,12 +14,12 @@ ms.date: 07/20/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 7804d6b0d4a100997fb545e678458424dac6ceed
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 45637122af3df1906a8c3b4b16233f6361eecca3
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227269"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528325"
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD
 Um Verwirrung zu vermeiden, möchten viele Unternehmen über alle verwalteten Websites und Dienste hinweg für ein einheitliches Erscheinungsbild sorgen. Dies ist in Azure Active Directory (Azure AD) möglich, da Sie die Darstellung der Anmeldeseite mit Ihrem Firmenlogo und Ihren benutzerdefinierten Farbschemas anpassen können. Die Anmeldeseite wird angezeigt, wenn Sie sich bei einer webbasierten Anwendung wie Office 365 anmelden, die Azure AD als Identitätsanbieter verwendet. Sie interagieren mit dieser Seite, um Ihre Anmeldeinformationen einzugeben.
@@ -71,7 +71,7 @@ Bei Verbindungen mit geringer Bandbreite wird diese Farbe anstelle des Hintergru
 ### <a name="square-logo-image"></a>Bild für quadratisches Logo
 BESCHREIBUNG | Einschränkungen | Empfehlungen
 ------- | ------- | ----------
-Dieses Bild wird während der Einrichtung für neue PCs unter Windows 10 Enterprise angezeigt. Es bietet Kontext für Mitarbeiter, die ihren neuen Arbeits-PC einrichten. Das Bild wird für Mandanten angezeigt, die ihre Arbeitsgeräte mithilfe von [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) einrichten, sowie auf Kennworteingabeseiten in anderen Windows 10-Umgebungen. | Transparentes PNG-Format (bevorzugt) oder JPG<br>Bildmaße: 240 x 240 px<br>Dateigröße: &lt; 10 KB | Verwenden Sie hier das Logo Ihres Unternehmens.<br> Verwenden Sie ein transparentes Bild.<br>Setzen Sie nicht voraus, dass der Hintergrund weiß ist.<br>Fügen Sie Ihrem Logo im Bild keinen Abstand hinzu. Andernfalls sieht Ihr Logo unverhältnismäßig klein aus.
+Dieses Bild wird während der Einrichtung für neue PCs unter Windows 10 Enterprise angezeigt. Es bietet Kontext für Mitarbeiter, die ihren neuen Arbeits-PC einrichten. Das Bild wird für Mandanten angezeigt, die ihre Arbeitsgeräte mithilfe von [Windows AutoPilot](https://blogs.windows.com/business/2017/06/29/delivering-modern-promise-windows-10/?utm_source=dlvr.it&utm_medium=twitter#gDTp1u6q35bvDWIS.97) einrichten, sowie auf Kennworteingabeseiten in anderen Windows 10-Umgebungen.<br>Das quadratische Logo wird ausschließlich in der Windows-Authentifizierung verwendet. Das dunkle Design ist veraltet und wird nicht mehr verwendet. | Transparentes PNG-Format (bevorzugt) oder JPG<br>Bildmaße: 240 x 240 px<br>Dateigröße: &lt; 10 KB | Verwenden Sie hier das Logo Ihres Unternehmens.<br> Verwenden Sie ein transparentes Bild.<br>Setzen Sie nicht voraus, dass der Hintergrund weiß ist.<br>Fügen Sie Ihrem Logo im Bild keinen Abstand hinzu. Andernfalls sieht Ihr Logo unverhältnismäßig klein aus.
 
 ### <a name="show-option-to-remain-signed-in"></a>Anzeigen der Option, angemeldet zu bleiben
 BESCHREIBUNG | Einschränkungen | Empfehlungen
