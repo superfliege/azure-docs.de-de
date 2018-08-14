@@ -1,24 +1,19 @@
 ---
-title: 'Schnellstart: Erste Schritte mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation'
+title: 'Schnellstart: Erste Schritte mit Apache Kafka – Azure HDInsight'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie über das Azure-Portal einen Apache Kafka-Cluster in Azure HDInsight erstellen. Darüber hinaus erfahren Sie mehr über Kafka-Themen, -Abonnenten und -Consumer.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
 ms.custom: mvc,hdinsightactive
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 04/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 10d4d4b3c0236cf8a1edd6976fe5af573703b237
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e8f8ad9b7cc14d6a3d28832e4d14ef55e8c530c6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33779224"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618108"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Schnellstart: Erstellen eines Kafka-Clusters in HDInsight
 
@@ -62,7 +57,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe einer Azure Resou
     | --- | --- |
     | Abonnement | Ihr Azure-Abonnement. |
     | Ressourcengruppe | Die Ressourcengruppe, in der der Cluster erstellt wird. |
-    | Speicherort | Die Azure-Region, in der der Cluster erstellt wird. |
+    | Standort | Die Azure-Region, in der der Cluster erstellt wird. |
     | Clustername | Der Name des Kafka-Clusters. |
     | Benutzername für Clusteranmeldung | Der Kontoname, der zum Anmelden bei im Cluster gehosteten HTTPs-basierten Diensten verwendet wird. |
     | Kennwort für Clusteranmeldung | Das Kennwort für den Anmeldebenutzernamen. |

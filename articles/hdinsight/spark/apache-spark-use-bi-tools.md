@@ -1,25 +1,20 @@
 ---
-title: 'Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in Azure HDInsight | Microsoft-Dokumentation'
+title: 'Tutorial: Analysieren von Apache Spark-Daten mithilfe von Power BI in Azure HDInsight '
 description: Verwenden von Microsoft Power BI zum Anzeigen von Spark-Daten, die in HDInsight-Clustern gespeichert sind
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 1448b536-9bc8-46bc-bbc6-d7001623642a
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: ece0132573f25f4d288309d2e7bb6710f8fd9519
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0b8024d8e5f239ff1bae2fe09f8cbe0a1b03a416
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771166"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618725"
 ---
 # <a name="tutorial-analyze-spark-data-using-power-bi-in-hdinsight"></a>Tutorial: Analysieren von Spark-Daten mithilfe von Power BI in HDInsight 
 
@@ -33,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Schließen Sie den Artikel [Tutorial: Laden von Daten und Ausführen von Abfragen auf einem Apache Spark-Cluster in Azure HDInsight](./apache-spark-load-data-run-query.md)** ab.
+* **Schließen Sie den Artikel [Tutorial: Laden von Daten und Ausführen von Abfragen in einem Apache Spark-Cluster in Azure HDInsight](./apache-spark-load-data-run-query.md)** ab.
 * **Power BI:** [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) und [Power BI-Testabonnement](https://app.powerbi.com/signupredirect?pbi_source=web) (optional)
 
 
