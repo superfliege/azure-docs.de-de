@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/23/2018
 ms.author: spelluru
-ms.openlocfilehash: d1315753baf08cc80fda5811bd43bf59609781b7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: fe41728b6f08ba767dbcb40d0595b9f7cdc79615
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216022"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39420198"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -32,13 +32,13 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 > * Senden eines Registrierungslinks an Teilnehmer
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Das zum Erstellen eines Lab-Kontos verwendete Konto wird dieser Rolle automatisch hinzugefügt. Ein Besitzer des Labs kann der Rolle „Ersteller des Labs“ weitere Benutzer hinzufügen, indem er die Schritte im folgenden Artikel ausführt: [Hinzufügen eines Benutzers zur Rolle „Lab-Ersteller“](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der Rolle **Ersteller des Labs** für das Labkonto sein. Das zum Erstellen eines Lab-Kontos verwendete Konto wird dieser Rolle automatisch hinzugefügt. Ein Besitzer des Labs kann der Rolle „Ersteller des Labs“ weitere Benutzer hinzufügen, indem er die Schritte im folgenden Artikel ausführt: [Hinzufügen eines Benutzers zur Rolle „Ersteller des Labs“](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs
 
 1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). 
-2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Azure Lab Services unterstützt Organisations- und Microsoft-Konten. 
+2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
 3. Führen Sie im Fenster **Neues Lab** die folgenden Aktionen aus: 
     1. Geben Sie einen **Namen** für das Classroom-Lab an. 
     2. Wählen Sie die **Größe** des virtuellen Computers, den Sie im Classroom verwenden möchten.
@@ -47,6 +47,9 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
     7. Wählen Sie **Speichern**aus.
 
         ![Erstellen eines Classroom-Labs](../media/tutorial-setup-classroom-lab/new-lab-window.png)
+1. Klicken Sie nach der Erstellung des Labs auf **Go to my lab** (Zum Lab wechseln). 
+
+    ![Go to my lab (Zum Lab wechseln)](../media/tutorial-setup-classroom-lab/go-to-my-lab.png)
 1. Das **Dashboard** für das Lab wird angezeigt. 
     
     ![Dashboard für Classroom-Lab](../media/tutorial-setup-classroom-lab/classroom-lab-home-page.png)
