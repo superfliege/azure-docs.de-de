@@ -9,19 +9,19 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: fa4005d1f09a2e0abca1e0083603d4335fb023c9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 37edf60ed0b63b4ff97094a496a08a592cb46fc0
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902920"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715419"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen. 
 
 Verweisen Sie beim Entwerfen Ihrer Stream Analytics-Abfrage auf den Namen der Ausgabe, indem Sie die [INTO-Klausel](https://msdn.microsoft.com/azure/stream-analytics/reference/into-azure-stream-analytics) verwenden. Sie können eine einzelne Ausgabe pro Auftrag oder bei Bedarf auch mehrere Ausgaben pro Streamingauftrag verwenden, indem Sie in der Abfrage mehrere INTO-Klauseln angeben.
 
-Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragsausgaben können Sie das [Azure-Portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), die [.NET-API](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), die [REST-API](https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output) und [Visual Studio](stream-analytics-tools-for-visual-studio.md) verwenden.
+Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragsausgaben können Sie das [Azure-Portal](stream-analytics-quick-create-portal.md#configure-output-to-the-job), [Azure PowerShell](stream-analytics-quick-create-powershell.md#configure-output-to-the-job), die [.NET-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.ioutputsoperations?view=azure-dotnet), die [REST-API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-output) und [Visual Studio](stream-analytics-quick-create-vs.md) verwenden.
 
 Für einige Ausgabetypen wird die [Partitionierung](#partitioning) unterstützt, und die [Ausgabebatchgrößen](#output-batch-size) variieren, um den Durchsatz zu optimieren.
 
@@ -296,15 +296,15 @@ In der folgenden Tabelle werden die Partitionsunterstützung und die Anzahl der 
 
 | Ausgabetyp | Unterstützung der Partitionierung | Partitionsschlüssel  | Anzahl der Ausgabeschreiber | 
 | --- | --- | --- | --- |
-| Azure Data Lake Store | Ja | Verwenden Sie die {date}- und {time}-Tokens im Pfadpräfixmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
+| Azure Data Lake Store | JA | Verwenden Sie die {date}- und {time}-Tokens im Pfadpräfixmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
 | Azure SQL-Datenbank | Nein  | Keine | Nicht zutreffend | 
-| Azure Blob Storage | Ja | Verwenden Sie die Token {date} und {time} aus Ihren Ereignisfeldern im Pfadmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. Im Rahmen der [Vorschauversion](https://aka.ms/ASAPreview) kann die Blobausgabe durch ein einzelnes benutzerdefiniertes Ereignisattribut {fieldname} oder {datetime:\<Spezifizierer>} partitioniert werden. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
-| Azure Event Hub | Ja | Ja | Variiert je nach Partitionsausrichtung.</br> Wenn der Event Hub-Ausgabepartitionsschlüssel entsprechend am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Event Hub-Ausgabepartitionen identisch. Jeder Schreiber verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) des EventHub-Elements, um Ereignisse an die jeweilige Partition zu senden. </br> Wenn der Event Hub-Ausgabepartitionsschlüssel nicht am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Partitionen in diesem vorherigen Schritt identisch. Für jeden Schreiber wird die [SendBatchAsync-Klasse](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) des EventHubClient-Elements verwendet, um Ereignisse an alle Ausgabepartitionen zu senden. |
+| Azure Blob Storage | JA | Verwenden Sie die Token {date} und {time} aus Ihren Ereignisfeldern im Pfadmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. Im Rahmen der [Vorschauversion](https://aka.ms/ASAPreview) kann die Blobausgabe durch ein einzelnes benutzerdefiniertes Ereignisattribut {fieldname} oder {datetime:\<Spezifizierer>} partitioniert werden. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
+| Azure Event Hub | JA | JA | Variiert je nach Partitionsausrichtung.</br> Wenn der Event Hub-Ausgabepartitionsschlüssel entsprechend am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Event Hub-Ausgabepartitionen identisch. Jeder Schreiber verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) des EventHub-Elements, um Ereignisse an die jeweilige Partition zu senden. </br> Wenn der Event Hub-Ausgabepartitionsschlüssel nicht am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Partitionen in diesem vorherigen Schritt identisch. Für jeden Schreiber wird die [SendBatchAsync-Klasse](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) des EventHubClient-Elements verwendet, um Ereignisse an alle Ausgabepartitionen zu senden. |
 | Power BI | Nein  | Keine | Nicht zutreffend | 
-| Azure-Tabellenspeicher | Ja | Eine beliebige Ausgabespalte.  | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
-| Azure Service Bus-Thema | Ja | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen im Ausgabethema.  |
-| Azure Service Bus-Warteschlange | Ja | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen in der Ausgabewarteschlange. |
-| Azure Cosmos DB | Ja | Verwenden Sie das {partition}-Token im Sammlungsnamensmuster. Der {partition}-Wert basiert auf der PARTITION BY-Klausel in der Abfrage. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
+| Azure-Tabellenspeicher | JA | Eine beliebige Ausgabespalte.  | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
+| Azure Service Bus-Thema | JA | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen im Ausgabethema.  |
+| Azure Service Bus-Warteschlange | JA | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen in der Ausgabewarteschlange. |
+| Azure Cosmos DB | JA | Verwenden Sie das {partition}-Token im Sammlungsnamensmuster. Der {partition}-Wert basiert auf der PARTITION BY-Klausel in der Abfrage. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
 | Azure-Funktionen | Nein  | Keine | Nicht zutreffend | 
 
 ## <a name="output-batch-size"></a>Ausgabebatchgröße

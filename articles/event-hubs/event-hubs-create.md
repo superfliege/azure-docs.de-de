@@ -2,19 +2,19 @@
 title: Erstellen eines Azure Event Hubs | Microsoft-Dokumentation
 description: Erstellen eines Azure Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
-ms.author: sethm
-ms.openlocfilehash: 9b466d4e727c1511ca2318c0da3ec2807a965a5d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: shvija
+ms.openlocfilehash: fb2020f7bfc8521e141adb4eefbc227e8123a269
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625541"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002619"
 ---
 # <a name="create-an-event-hubs-namespace-and-an-event-hub-using-the-azure-portal"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals
 

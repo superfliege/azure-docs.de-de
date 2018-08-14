@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: cfbf4dc08ccea95f99216f6cc82c1ee56d65768a
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f70e0bcb68f059618f9b398a00e23498a10df23e
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943350"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39582956"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Aufrufen der Microsoft Graph-API aus einer JavaScript-Einzelseitenanwendung
 
@@ -47,6 +47,6 @@ In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library für JavaScript-Vorschau|
 
 > [!NOTE]
-> *msal.js* hat als Ziel den *Azure Active Directory-v2-Endpunkt*, der privaten und Geschäfts-, Schul- oder Unikonten das Anmelden sowie das Abrufen von Token ermöglicht. Der *Azure Active Directory-v2-Endpunkt* hat [einige Einschränkungen](..\articles\active-directory\develop\active-directory-v2-limitations.md). Wenn Sie lediglich an Geschäfts-, Schul- oder Unikonten interessiert sind, verwenden Sie *adal.js* und den *v1-Endpunkt*. Um die Unterschiede zwischen v1- und v2-Endpunkten zu verstehen, lesen den [v1-v2-Vergleich](..\articles\active-directory\develop\active-directory-v2-compare.md).
+> *msal.js* hat als Ziel den *Azure Active Directory-v2-Endpunkt*, der privaten und Geschäfts-, Schul- oder Unikonten das Anmelden sowie das Abrufen von Token ermöglicht. Der *Azure Active Directory-v2-Endpunkt* hat [einige Einschränkungen](..\articles\active-directory\develop\active-directory-v2-limitations.md). Wenn Sie lediglich an Geschäfts-, Schul- oder Unikonten interessiert sind, verwenden Sie *adal.js* und den *v1-Endpunkt*. Um die Unterschiede zwischen v1- und v2-Endpunkten zu verstehen, lesen den [v1-v2-Vergleich](../articles/active-directory/develop/azure-ad-endpoint-comparison.md).
 
 <!--end-collapse-->

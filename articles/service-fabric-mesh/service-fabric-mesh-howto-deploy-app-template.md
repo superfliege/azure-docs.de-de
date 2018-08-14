@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
 ms.devlang: azure-cli
-ms.topic: conceputal
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8d813669f2f44fd64db669e9750e3bc064c7f916
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 356e8019f9a4a64cb1c1c113d0f44990aa4e0f95
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090327"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038250"
 ---
 # <a name="deploy-a-service-fabric-mesh-application-to-service-fabric-mesh-using-a-template"></a>Bereitstellen einer Service Fabric Mesh-Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 In diesem Artikel wird beschrieben, wie Sie eine .NET Core-Anwendung über eine Vorlage in Service Fabric Mesh bereitstellen. Am Ende verfügen Sie über eine Abstimmungsanwendung mit einem ASP.NET Core-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem Back-End-Dienst gespeichert werden. Das Front-End verwendet DNS zum Auflösen der Adresse des Back-End-Dienstes.
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie eine .NET Core-Anwendung über eine 
 Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diese Aufgabe verwenden. Installieren Sie das CLI-Erweiterungsmodul von Azure Service Fabric Mesh, indem Sie die folgenden [Anweisungen](service-fabric-mesh-howto-setup-cli.md) befolgen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
-Melden Sie sich bei Azure an, und legen Sie Ihr Abonnement fest.
+Melden Sie sich in Azure an, und legen Sie Ihr Abonnement fest.
 
 ```azurecli-interactive
 az login
@@ -59,7 +59,7 @@ In wenigen Minuten sollte der Befehl zurückgeben werden mit:
 ## <a name="open-the-application"></a>Öffnen der Anwendung
 Nachdem die Anwendung erfolgreich bereitgestellt wurde, rufen Sie die öffentliche IP-Adresse für den Dienstendpunkt ab, und öffnen Sie sie in einem Browser. Die folgende Webseite wird angezeigt. 
 
-![Abstimmungsanwendung](./media/service-fabric-mesh-howto-deploy-app-template/VotingApplication.png)
+![Voting-Anwendung](./media/service-fabric-mesh-howto-deploy-app-template/VotingApplication.png)
 
 Sie können jetzt Abstimmungsoptionen zur Anwendung hinzufügen und dafür abstimmen, oder Sie können die Abstimmungsoptionen löschen.
 

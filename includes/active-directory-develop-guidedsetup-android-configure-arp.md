@@ -1,4 +1,3 @@
-
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Hinzufügen der Registrierungsinformationen der Anwendung zu Ihrer App
 
 In diesem Schritt müssen Sie die Client-ID Ihrem Projekt hinzufügen.

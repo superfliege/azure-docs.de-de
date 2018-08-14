@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: edfae3a56bc13e4c41a1676bfc0f4e8cf4cd9d30
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c688de79c985eda9b0898d0f7d989de58f7dbc71
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425077"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038229"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -40,7 +40,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
   * Wenn Sie das Kernekontingent erhöhen möchten, wenden Sie sich an [Azure Support](https://azure.microsoft.com/support/options/). Informationen zur Größe eines virtuellen Computers finden Sie unter [Größen für Virtual Machines für Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * **Windows PowerShell-Skrips**: Für das Thema wird davon ausgegangen, dass Sie grundlegende Kenntnisse zu Windows PowerShell haben. Weitere Informationen zur Verwendung von Windows PowerShell finden Sie hier:
   
-  * [Starting Windows PowerShell on Windows Server](https://technet.microsoft.com/library/hh847814.aspx)
+  * [Starting Windows PowerShell on Windows Server](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Getting Started with Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>Schritt 1: Bereitstellen eines virtuellen Azure-Computers
@@ -586,7 +586,7 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
   
   * [Microsoft SQL Server Data Tools - Business Intelligence für Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence für Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
-  * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](http://curah.microsoft.com/30004/sql-server-data-tools-ssdt-and-sql-server-business-intelligence)
+  * [SQL Server Data Tools and SQL Server Business Intelligence (SSDT-BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
 * **SQL Server Data Tools: Remote:** Erstellen Sie auf Ihrem lokalen Computer in SQL Server Data Tools ein Reporting Services-Projekt, das Reporting Services-Berichte enthält. Konfigurieren Sie das Projekt so, dass es eine Verbindung mit dem Webdienst-URL herstellt.
   
     ![SSDT-Projekteigenschaften für SSRS-Projekt](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
@@ -598,7 +598,7 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 
 ## <a name="more-information"></a>Weitere Informationen
 ### <a name="resources"></a>angeben
-* Ähnliche Inhalte hinsichtlich einer Einzelserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Verwenden von PowerShell zum Erstellen eines virtuellen Azure-Computers mit SQL Server BI und SharePoint 2013](https://msdn.microsoft.com/library/azure/dn385843.aspx).
+* Ähnliche Inhalte hinsichtlich einer Einzelserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Verwenden von PowerShell zum Erstellen eines virtuellen Azure-Computers mit SQL Server BI und SharePoint 2013](https://blogs.technet.microsoft.com/ptsblog/2013/10/24/use-powershell-to-create-a-windows-azure-vm-with-sql-server-bi-and-sharepoint-2013/).
 * Ähnliche Inhalte hinsichtlich einer Multiserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Bereitstellen von SQL Server Business Intelligence auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/dn321998.aspx).
 * Allgemeine Informationen hinsichtlich Bereitstellungen von SQL Server Business Intelligence auf virtuellen Azure-Computern finden Sie unter [SQL Server Business Intelligence auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-bi.md).
 * Weitere Informationen zu den Kosten von Azure-Features finden Sie auf der Registerkarte „Virtuelle Computer“ von [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines).

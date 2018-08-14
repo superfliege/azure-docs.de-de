@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 81a07fdfe1c862bc30fb9d567db9a393c0610990
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ac3133ac093d578c89d24bddd1cc0a7c9588c2fd
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179553"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714997"
 ---
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-visual-studio-team-services"></a>Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit Docker Swarm mithilfe von Visual Studio Team Services
 
@@ -31,13 +31,13 @@ Ziel ist die fortlaufende Bereitstellung dieser Anwendung in einem Docker Swarm-
 Es folgt eine kurze Erläuterung der Schritte:
 
 1. Für Änderungen am Code erfolgt im Quellcoderepository (in diesem Fall GitHub) ein Commit. 
-2. GitHub löst einen Build in Visual Studio Team Services aus. 
-3. Visual Studio Team Services ruft die neueste Version des Quellcodes ab und erstellt alle Images, aus denen sich die Anwendung zusammensetzt. 
-4. Visual Studio Team Services überträgt jedes Image per Push in eine Docker-Registrierung, die mithilfe des Azure-Containerregistrierungsdiensts erstellt wurde. 
-5. Visual Studio Team Services löst ein neues Release aus. 
-6. Das Release wendet einige Befehle über SSH auf den Masterknoten des Azure Container Service-Clusters an. 
-7. Docker Swarm für den Cluster ruft die neueste Version der Images per Pull ab. 
-8. Die neue Version der Anwendung wird mithilfe von Docker Compose bereitgestellt. 
+1. GitHub löst einen Build in Visual Studio Team Services aus. 
+1. Visual Studio Team Services ruft die neueste Version des Quellcodes ab und erstellt alle Images, aus denen sich die Anwendung zusammensetzt. 
+1. Visual Studio Team Services überträgt jedes Image per Push in eine Docker-Registrierung, die mithilfe des Azure-Containerregistrierungsdiensts erstellt wurde. 
+1. Visual Studio Team Services löst ein neues Release aus. 
+1. Das Release wendet einige Befehle über SSH auf den Masterknoten des Azure Container Service-Clusters an. 
+1. Docker Swarm für den Cluster ruft die neueste Version der Images per Pull ab. 
+1. Die neue Version der Anwendung wird mithilfe von Docker Compose bereitgestellt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,7 @@ Bevor Sie mit diesem Tutorial beginnen, müssen Sie die folgenden Aufgaben ausf�
 - [Erstellen eines Swarm-Clusters in Azure Container Service](container-service-deployment.md)
 - [Herstellen einer Verbindung mit dem Swarm-Cluster in Azure Container Service](../container-service-connect.md)
 - [Erstellen einer Azure-Containerregistrierung](../../container-registry/container-registry-get-started-portal.md)
-- [Erstellen eines Visual Studio Team Services-Kontos (sofern noch nicht vorhanden) und des Teamprojekts](https://www.visualstudio.com/en-us/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
+- [Erstellen eines Visual Studio Team Services-Kontos (sofern noch nicht vorhanden) und des Teamprojekts](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student)
 - [Verzweigen des GitHub-Repositorys zu Ihrem GitHub-Konto](https://github.com/jcorioland/MyShop/)
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
@@ -81,11 +81,11 @@ Richten Sie eine Verbindung zwischen Ihrem VSTS-Projekt und Ihrem GitHub-Konto e
 
     ![Visual Studio Team Services: Externe Verbindung](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-2. Klicken Sie auf der linken Seite auf **Neuer Dienstendpunkt** > **GitHub**.
+1. Klicken Sie auf der linken Seite auf **Neuer Dienstendpunkt** > **GitHub**.
 
     ![Visual Studio Team Services: GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
-3. Um VSTS für das Arbeiten mit Ihrem GitHub-Konto zu autorisieren, klicken Sie auf **Autorisieren** und befolgen die Anweisungen im eingeblendeten Fenster.
+1. Um VSTS für das Arbeiten mit Ihrem GitHub-Konto zu autorisieren, klicken Sie auf **Autorisieren** und befolgen die Anweisungen im eingeblendeten Fenster.
 
     ![Visual Studio Team Services: Autorisieren von GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-authorize.png)
 
@@ -95,11 +95,11 @@ Die letzten Schritte vor dem Starten mit der CI/CD-Pipeline bestehen aus dem Kon
 
 1. Fügen Sie in den Einstellungen für **Dienste** Ihres Visual Studio Team Services-Projekts einen Dienstendpunkt des Typs **Docker-Registrierung** hinzu. 
 
-2. Geben Sie im sich öffnenden Popupfenster die URL und Anmeldeinformationen Ihrer Azure-Containerregistrierung ein.
+1. Geben Sie im sich öffnenden Popupfenster die URL und Anmeldeinformationen Ihrer Azure-Containerregistrierung ein.
 
     ![Visual Studio Team Services: Docker-Registrierung](./media/container-service-docker-swarm-setup-ci-cd/vsts-registry.png)
 
-3. Fügen Sie für den Docker Swarm-Cluster einen Endpunkt des Typs **SSH** hinzu. Geben Sie dann die SSH-Verbindungsinformationen Ihres Swarm-Clusters ein.
+1. Fügen Sie für den Docker Swarm-Cluster einen Endpunkt des Typs **SSH** hinzu. Geben Sie dann die SSH-Verbindungsinformationen Ihres Swarm-Clusters ein.
 
     ![Visual Studio Team Services: SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-ssh.png)
 
@@ -113,19 +113,19 @@ In diesem Schritt richten Sie eine Builddefinition für Ihr VSTS-Projekt ein und
 
 1. Stellen Sie zum Erstellen einer Builddefinition eine Verbindung mit Ihrem Visual Studio Team Services-Projekt her, und klicken Sie auf **Build und Release**. 
 
-2. Klicken Sie im Abschnitt **Builddefinitionen** auf **+ Neu**. Wählen Sie die Vorlage **Leer** aus.
+1. Klicken Sie im Abschnitt **Builddefinitionen** auf **+ Neu**. Wählen Sie die Vorlage **Leer** aus.
 
     ![Visual Studio Team Services: Neue Builddefinition](./media/container-service-docker-swarm-setup-ci-cd/create-build-vsts.png)
 
-3. Konfigurieren Sie den neuen Build mit einer GitHub-Repositoryquelle, kreuzen Sie **Continuous Integration** an, und wählen Sie die Agent-Warteschlange aus, in der Sie Ihren Linux-Agent registriert haben. Klicken Sie zum Erstellen der Builddefinition auf **Erstellen**.
+1. Konfigurieren Sie den neuen Build mit einer GitHub-Repositoryquelle, kreuzen Sie **Continuous Integration** an, und wählen Sie die Agent-Warteschlange aus, in der Sie Ihren Linux-Agent registriert haben. Klicken Sie zum Erstellen der Builddefinition auf **Erstellen**.
 
     ![Visual Studio Team Services: Erstellen der Builddefinition](./media/container-service-docker-swarm-setup-ci-cd/vsts-create-build-github.png)
 
-4. Öffnen Sie auf der Seite **Builddefinitionen** zuerst die Registerkarte **Repository**, und konfigurieren Sie dann den Build für die Verwendung der Verzweigung des „MyShop“-Projekts, die Sie zuvor zum Erfüllen der Voraussetzungen erstellt haben. Wählen Sie *acs-docs* als **Standardbranch** aus.
+1. Öffnen Sie auf der Seite **Builddefinitionen** zuerst die Registerkarte **Repository**, und konfigurieren Sie dann den Build für die Verwendung der Verzweigung des „MyShop“-Projekts, die Sie zuvor zum Erfüllen der Voraussetzungen erstellt haben. Wählen Sie *acs-docs* als **Standardbranch** aus.
 
     ![Visual Studio Team Services: Konfiguration des Buildrepositorys](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-repo-conf.png)
 
-5. Konfigurieren Sie auf der Registerkarte **Trigger** den Build, der nach jedem Commit ausgelöst werden soll. Wählen Sie **Continuous Integration** und **Batchänderungen** aus.
+1. Konfigurieren Sie auf der Registerkarte **Trigger** den Build, der nach jedem Commit ausgelöst werden soll. Wählen Sie **Continuous Integration** und **Batchänderungen** aus.
 
     ![Visual Studio Team Services: Konfiguration des Buildtriggers](./media/container-service-docker-swarm-setup-ci-cd/vsts-github-trigger-conf.png)
 
@@ -144,7 +144,7 @@ Sie müssen für jedes Image zwei Docker-Schritte hinzufügen: einen zum Erstell
 
     ![Visual Studio Team Services: Hinzufügen von Buildschritten](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-add-task.png)
 
-2. Konfigurieren Sie für jedes Image einen Schritt, der den Befehl `docker build` verwendet.
+1. Konfigurieren Sie für jedes Image einen Schritt, der den Befehl `docker build` verwendet.
 
     ![Visual Studio Team Services: Docker-Build](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
@@ -152,13 +152,13 @@ Sie müssen für jedes Image zwei Docker-Schritte hinzufügen: einen zum Erstell
     
     Wie auf dem vorherigen Bildschirm gezeigt, setzen Sie den URI Ihrer Azure-Containerregistrierung an den Anfang des Imagenamens. (Sie können auch eine Buildvariable verwenden, um das Tag des Images zu parametrisieren, wie z.B. die Build-ID in diesem Beispiel.)
 
-3. Konfigurieren Sie für jedes Image einen zweiten Schritt, der den Befehl `docker push` verwendet.
+1. Konfigurieren Sie für jedes Image einen zweiten Schritt, der den Befehl `docker push` verwendet.
 
     ![Visual Studio Team Services: Docker-Pushvorgang](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-push.png)
 
     Wählen Sie für den Pushvorgang die Azure-Containerregistrierung und die Aktion zum **Übertragen eines Image per Push** aus. Geben Sie dann den **Imagenamen** ein, der im vorherigen Schritt erstellt wurde.
 
-4. Nachdem Sie die Build- und Pushschritte für jedes der fünf Images erstellt haben, fügen Sie dem Buildworkflow zwei weitere Schritte hinzu.
+1. Nachdem Sie die Build- und Pushschritte für jedes der fünf Images erstellt haben, fügen Sie dem Buildworkflow zwei weitere Schritte hinzu.
 
     a. Eine Befehlszeilenaufgabe, die ein Bash-Skript verwendet, um *BuildNumber* in der Datei „docker-compose.yml“ durch die aktuelle Build-ID zu ersetzen. Die folgenden Abbildungen zeigen Details.
 
@@ -168,7 +168,7 @@ Sie müssen für jedes Image zwei Docker-Schritte hinzufügen: einen zum Erstell
 
     ![Visual Studio Team Services: Veröffentlichen der Compose-Datei](./media/container-service-docker-swarm-setup-ci-cd/vsts-publish-compose.png) 
 
-5. Klicken Sie auf **Speichern**, und benennen Sie die Builddefinition.
+1. Klicken Sie auf **Speichern**, und benennen Sie die Builddefinition.
 
 ## <a name="step-3-create-the-release-definition"></a>Schritt 3: Speichern der Releasedefinition
 
@@ -180,11 +180,11 @@ Mit Visual Studio Team Services können Sie [Releases umgebungsübergreifend ver
 
 1. Um eine Releasedefinition zu erstellen, klicken Sie auf **Releases** > **+ Freigeben**
 
-2. Um die Quelle des Artefakts zu konfigurieren, klicken Sie auf **Artefakte** > **Artefaktquelle verknüpfen**. Verknüpfen Sie diese neue Releasedefinition mit dem Build, den Sie im vorherigen Schritt definiert haben. Dadurch steht die Datei „docker-compose.yml“ im Releaseprozess zur Verfügung.
+1. Um die Quelle des Artefakts zu konfigurieren, klicken Sie auf **Artefakte** > **Artefaktquelle verknüpfen**. Verknüpfen Sie diese neue Releasedefinition mit dem Build, den Sie im vorherigen Schritt definiert haben. Dadurch steht die Datei „docker-compose.yml“ im Releaseprozess zur Verfügung.
 
     ![Visual Studio Team Services: Releaseartefakte](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
-3. Um den Releasetrigger zu konfigurieren, klicken Sie auf **Trigger**, und wählen Sie **Continuous Deployment**. Legen Sie den Trigger für dieselbe Artefaktquelle fest. Diese Einstellung stellt sicher, dass ein neues Release gestartet wird, sobald der Build erfolgreich abgeschlossen wurde.
+1. Um den Releasetrigger zu konfigurieren, klicken Sie auf **Trigger**, und wählen Sie **Continuous Deployment**. Legen Sie den Trigger für dieselbe Artefaktquelle fest. Diese Einstellung stellt sicher, dass ein neues Release gestartet wird, sobald der Build erfolgreich abgeschlossen wurde.
 
     ![Visual Studio Team Services: Releasetrigger](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-trigger.png) 
 
@@ -196,7 +196,7 @@ Der Releaseworkflow besteht aus zwei Aufgaben, die Sie hinzufügen.
 
     ![Visual Studio Team Services: Release mit SSH](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-scp.png)
 
-2. Konfigurieren Sie eine zweite Aufgabe zum Ausführen eines Bash-Befehls zum Anwenden der Befehle `docker` und `docker-compose` auf den Masterknoten. Die folgenden Abbildungen zeigen Details.
+1. Konfigurieren Sie eine zweite Aufgabe zum Ausführen eines Bash-Befehls zum Anwenden der Befehle `docker` und `docker-compose` auf den Masterknoten. Die folgenden Abbildungen zeigen Details.
 
     ![Visual Studio Team Services: Release mit Bash](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-bash.png)
 
@@ -210,7 +210,7 @@ Der Releaseworkflow besteht aus zwei Aufgaben, die Sie hinzufügen.
     >[!IMPORTANT]
     > Lassen Sie, wie auf dem vorherigen Bildschirm gezeigt, **Fehler für STDERR** deaktiviert. Dies ist eine wichtige Einstellung, da `docker-compose` in der Standardfehlerausgabe mehrere Diagnosemeldungen ausgibt, z.B. zu beendeten und gelöschten Containern. Wenn Sie das Kontrollkästchen aktivieren, meldet Visual Studio Team Services, dass im Verlauf des Release Fehler aufgetreten sind, obwohl alles wie gewünscht verlaufen ist.
     >
-3. Speichern Sie diese neue Releasedefinition.
+1. Speichern Sie diese neue Releasedefinition.
 
 
 >[!NOTE]

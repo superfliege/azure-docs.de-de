@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5b4a15204a934bf55810fcdccd48a7a15a48c5ed
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258183"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627915"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Streamen von Azure-Diagnoseprotokollen an Event Hubs
 **[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Portaloption „In Event Hubs exportieren“ oder durch die Aktivierung der Event Hub-Autorisierungsregel-ID in einer Diagnoseeinstellung (über die Azure PowerShell-Cmdlets oder Azure CLI 2.0).
@@ -195,6 +195,6 @@ Mithilfe des Azure-Diagnose-Agents können Sie auch Diagnoseprotokolle von Compu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Streamen von Azure Active Directory-Protokollen mit Azure Monitor](../active-directory/reporting-azure-monitor-diagnostics-azure-event-hub.md)
+* [Streamen von Azure Active Directory-Protokollen mit Azure Monitor](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 * [Informieren Sie sich ausführlicher über Azure-Diagnoseprotokolle.](monitoring-overview-of-diagnostic-logs.md)
 * [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

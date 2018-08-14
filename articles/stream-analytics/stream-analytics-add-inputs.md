@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 926821e2ba9912ae0140f11c9fe9a2d504609a1e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 62e928525c8bd63258ea079830585db0f0ffc358
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186061"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716490"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Grundlegendes zu Eingaben für Azure Stream Analytics
 
@@ -27,7 +27,7 @@ Stream Analytics bietet eine erstklassige Integration von drei Arten von Ressour
 
 Diese Eingabequellen können aus demselben Azure-Abonnement wie dem Ihres Stream Analytics-Auftrags oder aus einem anderen Abonnement stammen.
 
-Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragseingaben können Sie das [Azure-Portal](stream-analytics-quick-create-portal.md#configure-input-to-the-job), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST-API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) und [Visual Studio](stream-analytics-tools-for-visual-studio.md) verwenden.
+Zum Erstellen, Bearbeiten und Testen von Stream Analytics-Auftragseingaben können Sie das [Azure-Portal](stream-analytics-quick-create-portal.md#configure-input-to-the-job), [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/New-AzureRmStreamAnalyticsInput), [.Net-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.inputsoperationsextensions), [REST-API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-input) und [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) verwenden.
 
 ## <a name="stream-and-reference-inputs"></a>Stream- und Verweiseingaben
 Werden Daten mithilfe von Push an eine Datenquelle übertragen, werden sie vom Stream Analytics-Auftrag genutzt und in Echtzeit verarbeitet. Eingaben werden in zwei Typen unterteilt: Datenstromeingaben und Verweisdateneingaben.

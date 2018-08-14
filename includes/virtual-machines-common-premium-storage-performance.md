@@ -253,7 +253,7 @@ Es folgen die empfohlenen Cacheeinstellungen für Datenträger:
 Durch Konfigurieren des „ReadOnly“-Caches für Storage Premium-Datenträger können Sie für Ihre Anwendung eine niedrige Leselatenz und einen sehr hohe Leserate hinsichtlich IOPS und Durchsatz erzielen. Hierfür gibt es zwei Gründe:
 
 1. Aus dem Cache erfüllte Leseanforderungen, der sich im Arbeitsspeicher der VM und auf dem lokalen SSD-Laufwerk befindet, sind wesentlich schneller als Lesevorgänge vom Datenträger, der sich in Azure Blob Storage befindet.  
-2. Storage Premium rechnet die aus dem Cache erfüllten Leseanforderungen nicht zur IOPS- und Durchsatzrate des Datenträgers. Aus diesem Grund kann Ihre Anwendung eine höhere Gesamtrate bei IOPS und Durchsatz erzielen.
+1. Storage Premium rechnet die aus dem Cache erfüllten Leseanforderungen nicht zur IOPS- und Durchsatzrate des Datenträgers. Aus diesem Grund kann Ihre Anwendung eine höhere Gesamtrate bei IOPS und Durchsatz erzielen.
 
 *ReadWrite*  
 Für die Betriebssystem-Datenträger ist der „ReadWrite“-Cache standardmäßig aktiviert. Wir haben vor Kurzem Unterstützung des „ReadWrite“-Caches auf Datenträgern hinzugefügt. Wenn Sie den „ReadWrite“-Cache nutzen, benötigen Sie eine ordnungsgemäße Möglichkeit zum Schreiben der Daten aus dem Cache auf beständige Datenträger. SQL Server übernimmt beispielsweise selbst das Schreiben von Daten im Cache auf beständige Speicherdatenträger. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
@@ -263,7 +263,7 @@ Als Beispiel können Sie diese Leitlinien auf SQL Server in Storage Premium anwe
 1. Aktivieren Sie den „ReadOnly“-Cache auf Storage Premium-Datenträgern, die Datendateien hosten.  
    a.  Die schnellen aus dem Cache erfolgenden Lesevorgänge verkürzen die Abfragezeit von SQL Server, da Daten wesentlich schneller aus dem Cache als von den Datenträgern direkt abgerufen werden.  
    b.  Das Erfüllen von Leseanforderungen aus dem Cache bedeutet, dass auf den Premium-Datenträgern zusätzlicher Durchsatz verfügbar ist. SQL Server kann diesen zusätzlichen Durchsatz für das Abrufen von mehr Datenseiten und andere Vorgänge wie Sichern/Wiederherstellen, Batchladevorgänge und Indexneuerstellungen nutzen.  
-2. Konfigurieren Sie die Cacheeinstellung „None“ für Storage Premium-Datenträger, die Protokolldateien hosten.  
+1. Konfigurieren Sie die Cacheeinstellung „None“ für Storage Premium-Datenträger, die Protokolldateien hosten.  
    a.  Protokolldateien zeichnen sich hauptsächlich durch schreibintensive Vorgänge aus. Aus diesem Grund profitieren sie nicht vom „ReadOnly“-Cache.
 
 ## <a name="disk-striping"></a>Datenträgerstriping
@@ -381,12 +381,12 @@ Führen Sie die folgenden Schritte aus, um den Cache aufzufüllen.
    | --- | --- | --- | --- |
    | RandomWrites\_1MB |1 MB |100 |0 |
    | RandomReads\_1MB |1 MB |100 |100 |
-2. Führen Sie den Iometer-Test zum Initialisieren des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
+1. Führen Sie den Iometer-Test zum Initialisieren des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
 
    | Szenario | Zielvolume | NAME | Duration |
    | --- | --- | --- | --- |
    | Cachedatenträger initialisieren |CacheReads |RandomWrites\_1MB |2 Stunden |
-3. Führen Sie den Iometer-Test zum Auffüllen des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
+1. Führen Sie den Iometer-Test zum Auffüllen des Cachedatenträgers mit folgenden Parametern aus. Verwenden Sie drei Arbeitsthreads für das Zielvolume und die Warteschlangenlänge 128. Legen Sie auf der Registerkarte „Test Setup“ unter „Run time“ die Laufzeit des Tests auf 2 Stunden fest.
 
    | Szenario | Zielvolume | NAME | Dauer |
    | --- | --- | --- | --- |

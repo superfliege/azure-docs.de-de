@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 31a0177ecfd87fa7ea78989b36141070c2ac193b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865725"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038133"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -59,7 +59,7 @@ Erstellen Sie dann ein zweites Verzeichnis namens „C:\chef\cookbooks“.
 
 Sie müssen jetzt die Azure-Einstellungsdatei herunterladen, damit Chef mit dem Azure-Abonnement kommunizieren kann.
 
-Laden Sie Ihre Veröffentlichungseinstellungen mit dem PowerShell Azure-Befehl [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) herunter. 
+Laden Sie Ihre Veröffentlichungseinstellungen mit dem PowerShell Azure-Befehl [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) herunter. 
 
 Speichern Sie die Datei mit den Veröffentlichungseinstellungen unter „C:\chef“.
 

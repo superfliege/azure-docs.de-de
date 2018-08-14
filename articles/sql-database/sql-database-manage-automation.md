@@ -9,12 +9,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a45a3e7e8c4381aa7df15628bfc57f5ad4f94100
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c68a493f439b5bc54cb04162de88ef31058d25f3
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647600"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038196"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Verwalten von Azure SQL-Datenbanken mit Azure Automation
 Dieser Leitfaden bietet eine Einführung in den Azure Automation-Dienst und zeigt, wie Azure Automation zur Vereinfachung der Verwaltung Ihrer Azure SQL-Datenbanken genutzt werden kann.
@@ -27,7 +27,7 @@ Azure Automation bietet eine äußerst zuverlässige und hoch verfügbare Workfl
 Indem Sie die Aufgaben in Zusammenhang mit der Cloudverwaltung mit Azure Automation automatisieren, verringern Sie den Verwaltungsaufwand und ermöglichen es Ihren IT- und DevOps-Mitarbeitern, sich Aufgaben zu widmen, die einen Mehrwert für Ihr Unternehmen liefern.
 
 ## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Inwiefern unterstützt Azure Automation die Verwaltung von Azure SQL-Datenbanken?
-Eine Azure SQL-Datenbank kann in Azure Automation mit den [Azure SQL Database PowerShell-Cmdlets](https://docs.microsoft.com/powershell/servicemanagement/azure.sqldatabase/v1.6.1/azure.sqldatabase/) verwaltet werden, die in den [Azure PowerShell-Tools](/powershell/azure/overview) zur Verfügung stehen. In Azure Automation sind diese PowerShell-Cmdlets für Azure SQL-Datenbanken sofort einsatzfähig, sodass Sie alle Aufgaben in Zusammenhang mit der Verwaltung Ihrer SQL-Datenbanken innerhalb des Diensts ausführen können. Sie können diese Cmdlets in Azure Automation auch an die Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben über Azure-Dienste und Drittanbietersysteme hinweg zu automatisieren.
+Eine Azure SQL-Datenbank kann in Azure Automation mit den [Azure SQL Database PowerShell-Cmdlets](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) verwaltet werden, die in den [Azure PowerShell-Tools](/powershell/azure/overview) zur Verfügung stehen. In Azure Automation sind diese PowerShell-Cmdlets für Azure SQL-Datenbanken sofort einsatzfähig, sodass Sie alle Aufgaben in Zusammenhang mit der Verwaltung Ihrer SQL-Datenbanken innerhalb des Diensts ausführen können. Sie können diese Cmdlets in Azure Automation auch an die Cmdlets für andere Azure-Dienste koppeln, um komplexe Aufgaben über Azure-Dienste und Drittanbietersysteme hinweg zu automatisieren.
 
 Azure Automation bietet außerdem die Möglichkeit, über die Ausgabe von SQL-Befehlen in PowerShell direkt mit SQL-Servern zu kommunizieren.
 

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: a1333680225923a4e27f96e61a5b6530f32a9329
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4d1170bd2fe4acb135c88191b447f734e312723
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647883"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715956"
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Überwachen der Azure SQL-Datenbank mit dynamischen Verwaltungssichten
 Die Microsoft Azure SQL-Datenbank unterstützt eine Teilmenge dynamischer Verwaltungssichten für die Diagnose von Leistungsproblemen, die auf blockierte Abfragen oder Abfragen mit langen Laufzeiten, fehlerhafte Abfragepläne usw. zurückzuführen sind. Dieses Thema enthält Informationen zum Erkennen häufiger Leistungsprobleme mithilfe von dynamischen Verwaltungssichten.
@@ -40,8 +40,9 @@ Die folgende Abfrage gibt die Größe Ihrer Datenbank (in Megabyte) zurück:
 
 ```
 -- Calculates the size of the database.
-SELECT SUM(reserved_page_count)*8.0/1024
-FROM sys.dm_db_partition_stats;
+SELECT SUM(CAST(FILEPROPERTY(name, 'SpaceUsed') AS bigint) * 8192.) / 1024 / 1024 AS DatabaseSizeInMB
+FROM sys.database_files
+WHERE type_desc = 'ROWS';
 GO
 ```
 

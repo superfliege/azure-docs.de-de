@@ -3,7 +3,7 @@ title: Verfügbarkeit und Konsistenz in Azure Event Hubs | Microsoft-Dokumentati
 description: Hier erfahren Sie, wie Sie maximale Verfügbarkeit und Konsistenz in Azure Event Hubs mit Partitionen erzielen.
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: 8f3637a1-bbd7-481e-be49-b3adf9510ba1
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
-ms.author: sethm
-ms.openlocfilehash: e119406292ca1d805f831bc65e3ae6e583147c6d
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.author: shvija
+ms.openlocfilehash: 67a7a701eb7700fab9aa9d0ec22354cc1618f856
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700688"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004693"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Verfügbarkeit und Konsistenz in Event Hubs
 

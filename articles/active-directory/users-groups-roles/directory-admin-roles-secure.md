@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 1d08518a23dfe4a9cc63bf3f35ee69ea1815595f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38239950"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627932"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -380,7 +380,7 @@ Bestimmen Sie, ob Sie [den Besitz eines Azure-Abonnements auf ein anderes Konto 
 
 4. Bitten Sie Microsoft um Hilfe, indem Sie [eine Azure-Supportanfrage öffnen](../../azure-supportability/how-to-create-azure-support-request.md).
 
-5. Werten Sie die [Azure AD-Anmeldeberichte aus](../active-directory-reporting-azure-portal.md). Es gibt möglicherweise eine Verzögerung zwischen dem Auftreten eines Ereignisses und seiner Einbeziehung in den Bericht.
+5. Werten Sie die [Azure AD-Anmeldeberichte aus](../reports-monitoring/overview-reports.md). Es gibt möglicherweise eine Verzögerung zwischen dem Auftreten eines Ereignisses und seiner Einbeziehung in den Bericht.
 
 6. Wenn in Hybridumgebungen der Verbundserver und Ihr AD FS-Server nicht verfügbar sind, müssen Sie möglicherweise vorübergehend von der Verbundauthentifizierung zur Kennworthashsynchronisierung wechseln. Dadurch wird der Domänenverbund auf die verwaltete Authentifizierung zurückgeworfen, bis der AD FS-Server verfügbar ist.
 

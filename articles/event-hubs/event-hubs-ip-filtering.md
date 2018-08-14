@@ -3,19 +3,19 @@ title: Azure Event Hubs – IP-Verbindungsfilter | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe der IP-Filterung Verbindungen von bestimmten IP-Adressen mit Azure Event Hubs blockieren.
 services: event-hubs
 documentationcenter: ''
-author: clemensv
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: clemensv
-ms.openlocfilehash: 425a5b641fbfd2e52e1294c6317b51ff2a584aa3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: shvija
+ms.openlocfilehash: 0ecce667584f522b5bd6aac28291bda427f37608
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034824"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005351"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 

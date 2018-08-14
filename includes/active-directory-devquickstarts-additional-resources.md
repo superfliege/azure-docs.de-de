@@ -1,5 +1,5 @@
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
-* [Azure AD Entwicklerhandbuch](../articles/active-directory/develop/active-directory-developers-guide.md)
+* [Azure AD Entwicklerhandbuch](../articles/active-directory/develop/azure-ad-developers-guide.md)
 * [Azure AD-Beispiele auf GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
 * [CloudIdentity.com &amp;gt;&amp;gt; (in englischer Sprache)](http://cloudidentity.com)
 

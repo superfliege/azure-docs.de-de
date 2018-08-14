@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 03db1bf84e200d8b66f0395cbd96813e2248eefe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 7f093a1878bc3cf7e91cc14ec7a68b1a84764a49
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806365"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39485625"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger
 
@@ -148,15 +148,15 @@ Verwenden Sie die folgenden Schritte, um das Erstellen von Sicherungen Ihrer VMs
 
     b. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**, und führen Sie die Schritte zum Erstellen eines neuen Tresors in derselben Region wie die VM aus. Wenn sich Ihre VM beispielsweise in der Region „USA, Westen“ befindet, wählen Sie für den Tresor „USA, Westen“ aus.
 
-2.  Überprüfen Sie die Speicherreplikation für den neu erstellten Tresor. Greifen Sie unter **Recovery Services-Tresore** auf den Tresor zu, und wechseln Sie zu **Einstellungen** > **Sicherungskonfiguration**. Stellen Sie sicher, dass die Option für **georedundanten Speicher** standardmäßig aktiviert ist. Mit dieser Option wird gewährleistet, dass Ihr Tresor automatisch in einem sekundären Rechenzentrum repliziert wird. Der Tresor in „USA, Westen“ wird beispielsweise automatisch in „USA, Osten“ repliziert.
+1.  Überprüfen Sie die Speicherreplikation für den neu erstellten Tresor. Greifen Sie unter **Recovery Services-Tresore** auf den Tresor zu, und wechseln Sie zu **Einstellungen** > **Sicherungskonfiguration**. Stellen Sie sicher, dass die Option für **georedundanten Speicher** standardmäßig aktiviert ist. Mit dieser Option wird gewährleistet, dass Ihr Tresor automatisch in einem sekundären Rechenzentrum repliziert wird. Der Tresor in „USA, Westen“ wird beispielsweise automatisch in „USA, Osten“ repliziert.
 
-3.  Konfigurieren Sie die Sicherungsrichtlinie, und wählen Sie die VM über dieselbe Benutzeroberfläche aus.
+1.  Konfigurieren Sie die Sicherungsrichtlinie, und wählen Sie die VM über dieselbe Benutzeroberfläche aus.
 
-4.  Stellen Sie sicher, dass der Backup-Agent auf der VM installiert ist. Wenn Ihre VM mit einem Azure-Katalogimage erstellt wurde, ist der Backup-Agent bereits installiert. Verwenden Sie andernfalls (also bei Verwendung eines benutzerdefinierten Image) die Anleitung unter [Installieren des VM-Agents auf dem virtuellen Computer](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine).
+1.  Stellen Sie sicher, dass der Backup-Agent auf der VM installiert ist. Wenn Ihre VM mit einem Azure-Katalogimage erstellt wurde, ist der Backup-Agent bereits installiert. Verwenden Sie andernfalls (also bei Verwendung eines benutzerdefinierten Image) die Anleitung unter [Installieren des VM-Agents auf dem virtuellen Computer](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine).
 
-5.  Stellen Sie sicher, dass die VM die Netzwerkkonnektivität zulässt, damit der Sicherungsdienst funktioniert. Befolgen Sie die Anweisungen für die [Netzwerkkonnektivität](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+1.  Stellen Sie sicher, dass die VM die Netzwerkkonnektivität zulässt, damit der Sicherungsdienst funktioniert. Befolgen Sie die Anweisungen für die [Netzwerkkonnektivität](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
-6.  Nachdem die obigen Schritte ausgeführt wurden, wird die Sicherung gemäß Angabe in der Sicherungsrichtlinie in regelmäßigen Abständen durchgeführt. Bei Bedarf können Sie die erste Sicherung manuell über das Tresordashboard im Azure-Portal auslösen.
+1.  Nachdem die obigen Schritte ausgeführt wurden, wird die Sicherung gemäß Angabe in der Sicherungsrichtlinie in regelmäßigen Abständen durchgeführt. Bei Bedarf können Sie die erste Sicherung manuell über das Tresordashboard im Azure-Portal auslösen.
 
 Informationen zur Automatisierung von Azure Backup mithilfe von Skripts finden Sie unter [PowerShell-Cmdlets für VM-Sicherung](../articles/backup/backup-azure-vms-automation.md).
 
@@ -188,9 +188,9 @@ Für den Sicherungsvorgang müssen die folgenden Schritte implementiert werden, 
 
 1.  Einfrieren aller Datenträger.
 
-2.  Leeren aller ausstehenden Schreibvorgänge.
+1.  Leeren aller ausstehenden Schreibvorgänge.
 
-3.  [Erstellen Sie eine Momentaufnahme eines Blobs](../articles/storage/blobs/storage-blob-snapshots.md) für alle Datenträger.
+1.  [Erstellen Sie eine Momentaufnahme eines Blobs](../articles/storage/blobs/storage-blob-snapshots.md) für alle Datenträger.
 
 Einige Windows-Anwendungen, z.B. SQL Server, stellen einen Mechanismus für koordinierte Sicherungen per Volumeschattenkopie-Dienst bereit, um anwendungskonsistente Sicherungen zu erstellen. Unter Linux können Sie ein Tool wie *fsfreeze* zur Koordinierung der Datenträger verwenden. Dieses Tool bietet dateikonsistente Sicherungen, aber nicht anwendungskonsistente Momentaufnahmen. Dieser Prozess ist komplex, und es ist ratsam, [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) oder eine Sicherungslösung eines Drittanbieters zu verwenden, bei der dieses Verfahren bereits implementiert ist.
 
@@ -202,11 +202,11 @@ Eine andere Option zum Erstellen von konsistenten Sicherungen ist das Herunterfa
 
 1. Fahren Sie die VM herunter.
 
-2. Erstellen Sie eine Momentaufnahme von jedem Blob einer virtuellen Festplatte. Dies dauert nur wenige Sekunden.
+1. Erstellen Sie eine Momentaufnahme von jedem Blob einer virtuellen Festplatte. Dies dauert nur wenige Sekunden.
 
     Zum Erstellen einer Momentaufnahme können Sie [PowerShell](../articles/storage/common/storage-powershell-guide-full.md), die [Azure Storage-REST-API](https://msdn.microsoft.com/library/azure/ee691971.aspx), [Azure CLI](/cli/azure/) oder eine der Azure Storage-Clientbibliotheken, z.B. [die Storage-Clientbibliothek für .NET](https://msdn.microsoft.com/library/azure/hh488361.aspx), verwenden.
 
-3. Starten Sie die VM, um die Ausfallzeit zu beenden. Normalerweise wird der gesamte Prozess innerhalb weniger Minuten abgeschlossen.
+1. Starten Sie die VM, um die Ausfallzeit zu beenden. Normalerweise wird der gesamte Prozess innerhalb weniger Minuten abgeschlossen.
 
 Bei diesem Prozess wird eine Sammlung mit den konsistenten Momentaufnahmen für alle Datenträger erstellt, um einen Sicherungswiederherstellungspunkt für die VM zu erhalten.
 

@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 1aa5c0f259fdb5fce449bc86f9cf293801b4770a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: cc6d08de74097ba7566037664fd33d9be85ac390
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368668"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628987"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
-Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden möchten. Dieses Ziel können Sie erreichen, indem Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
+Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden möchten. Dafür können Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
 
 - Azure AD-Einbindung
 - Azure AD-Hybrideinbindung
@@ -50,6 +50,7 @@ In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 
 -  [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)
 
+-  [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
 
 
 Für die Konfiguration des Szenarios in diesem Tutorials benötigen Sie Folgendes:
@@ -79,10 +80,10 @@ für die Azure AD-Hybrideinbindung ist erforderlich, dass die Geräte innerhalb 
 
 Wenn Ihre Organisation Internetzugriff über einen ausgehenden Proxy erfordert, können Sie ab Windows 10 1709 Proxyeinstellungen auf dem Computer mithilfe eines Gruppenrichtlinienobjekts (GPO) konfigurieren. Wenn Ihr Computer unter einem älteren Betriebssystem als Windows 10 1709 ausgeführt wird, müssen Sie den Web Proxy Auto-Discovery-Dienst (WPAD) implementieren, um Windows 10-Computer für die Geräteregistrierung bei Azure AD zu aktivieren. 
 
-Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden Proxy erfordert, müssen Sie sicherstellen, dass Ihre Windows 10-Computer erfolgreich beim ausgehenden Proxy authentifiziert werden können. Da Windows 10-Computer die Geräteregistrierung mithilfe von Computerkontext ausführen, muss die Authentifizierung bei ausgehenden Proxys mithilfe von Computerkontext konfiguriert werden. Erkunden Sie sich beim Anbieter Ihres ausgehenden Proxys nach den Konfigurationsanforderungen. 
+Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden Proxy erfordert, müssen Sie sicherstellen, dass Ihre Windows 10-Computer erfolgreich beim ausgehenden Proxy authentifiziert werden können. Da Windows 10-Computer die Geräteregistrierung mithilfe von Computerkontext ausführen, muss die Authentifizierung bei ausgehenden Proxys mithilfe von Computerkontext konfiguriert werden. Erkundigen Sie sich beim Anbieter Ihres ausgehenden Proxys nach den Konfigurationsanforderungen. 
 
 
-## <a name="configure-hybrid-azure-ad-join"></a>Konfigurieren einer Azure AD-Hybrideinbindung
+## <a name="configure-hybrid-azure-ad-join"></a>Konfigurieren der Hybrid-Azure AD-Einbindung
 
 Zum Konfigurieren einer Azure AD-Hybrideinbindung mithilfe von Azure AD Connect benötigen Sie Folgendes:
 
@@ -212,8 +213,8 @@ Bei Verwendung des Cmdlets **Get-MSolDevice** zur Überprüfung der Dienstdetail
 
 Wenn bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
 
-- [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
+- [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-current.md)
+- [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 
@@ -221,7 +222,7 @@ Wenn bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Ger
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](hybrid-azuread-join-managed-domains.md)
-> [Manuelles Konfigurieren der Azure Active Directory-Hybrideinbindung](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [Manuelles Konfigurieren der Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-manual-steps.md)
 
 
 

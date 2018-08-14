@@ -3,20 +3,20 @@ title: Konsistenzebenen in Azure Cosmos DB | Microsoft-Dokumentation
 description: Azure Cosmos DB bietet fünf Konsistenzebenen, um für vorhersehbare Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz sorgen zu können.
 keywords: Letztliche Konsistenz, Azure Cosmos DB, Azure, Microsoft Azure
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.author: sngun
+ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20edcd5e8e3ec3a9d3d294f7a81a2e97b4958f50
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e9503759b776bb045c4dc0357b1ab88be1294013
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857183"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038253"
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Einstellbare Datenkonsistenzebenen in Azure Cosmos DB
 Azure Cosmos DB ist für jedes Datenmodell von Grund auf im Hinblick auf eine globale Verteilung konzipiert. Es bietet planbare Garantien für geringe Wartezeiten sowie mehrere klar definierte gelockerte Konsistenzmodelle. Azure Cosmos DB bietet derzeit fünf Konsistenzebenen: Stark, Begrenzte Veraltung, Sitzung, Konsistentes Präfix und Letztlich. „Begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „Letztlich“ werden als gelockerte Konsistenzmodelle bezeichnet, da sie weniger Konsistenz bieten als „Stark“ (das Modell mit der höchstmöglichen Konsistenz). 

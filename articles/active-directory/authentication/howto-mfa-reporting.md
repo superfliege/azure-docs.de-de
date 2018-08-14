@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: bb5a005ba553d6392bf1427a4c2bba9ac5aad191
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: dc4cd28fe61c422f65f47c74c7cbc4686d73ab77
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358665"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628833"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
@@ -50,7 +50,7 @@ Der Anmeldungenbericht kann Informationen zur Nutzung von verwalteten Anwendunge
 - Wie viele Benutzer können den MFA-Vorgang nicht durchführen?
 - Welche MFA-Probleme treten für Benutzer häufig auf?
 
-Diese Daten sind über das [Azure-Portal](https://portal.azure.com) und die [Berichterstellungs-API](../active-directory-reporting-api-getting-started-azure-portal.md) verfügbar.
+Diese Daten sind über das [Azure-Portal](https://portal.azure.com) und die [Berichterstellungs-API](../reports-monitoring/concept-reporting-api.md) verfügbar.
 
 ![Cloud](./media/howto-mfa-reporting/sign-in-report.png)
 

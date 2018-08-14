@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: bsiva
-ms.openlocfilehash: 13456dc53f85f6f26aab222ab0cb499aabb7d1cc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 721bb725538b0b1f6eb0e7132b99e75491b6f969
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916230"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038160"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -205,4 +205,4 @@ Bevor Sie beginnen, muss sich das angegebene Speicherkonto in der gleichen Azure
         $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erfahren Sie mehr](https://msdn.microsoft.com/library/azure/mt637930.aspx) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.
+[Erfahren Sie mehr](https://docs.microsoft.com/powershell/module/azurerm.siterecovery) über Azure Site Recovery mit PowerShell-Cmdlets für Azure Resource Manager.

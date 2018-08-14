@@ -2,19 +2,19 @@
 title: Informationen zum sicheren Zugriff auf Daten in Azure Cosmos DB | Microsoft-Dokumentation
 description: Informationen zu Zugriffssteuerungskonzepten in Azure Cosmos DB, darunter Hauptschlüssel, Schlüssel mit Leseberechtigung, Benutzer und Berechtigungen.
 services: cosmos-db
-author: SnehaGunda
+author: rafats
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2017
-ms.author: sngun
-ms.openlocfilehash: c51d399b646e7914ba85048c0928837caac7c15b
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.author: rafats
+ms.openlocfilehash: a8ea53b8f9b705078ac4ab56faeb60b8ba51e72e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901118"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038340"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Sichern des Zugriffs auf Azure Cosmos DB-Daten
 Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gespeicherte Daten.

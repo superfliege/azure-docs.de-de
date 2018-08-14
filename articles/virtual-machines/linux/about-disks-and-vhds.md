@@ -1,21 +1,20 @@
 ---
 title: Informationen zu nicht verwalteten (Seitenblobs) und verwalteten Datenträgern für virtuelle Microsoft Azure-Linux-Computer | Microsoft-Dokumentation
 description: Machen Sie sich mit den Grundlagen zu nicht verwalteten (Seitenblobs) und verwalteten Datenträgern für virtuelle Linux-Computer in Azure vertraut.
-services: virtual-machines
+services: virtual-machines-linux,storage
 author: roygara
-manager: twooley
-ms.service: virtual-machines
-ms.workload: storage
+ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
-ms.openlocfilehash: a1c867e97879b1830a8596683b8314fd6535aa7c
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.component: disks
+ms.openlocfilehash: feb3e60ee1b43ec85c81912fbce086858bb33742
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035998"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715929"
 ---
 # <a name="about-disks-storage-for-azure-linux-vms"></a>Informationen zu Datenträgern für virtuelle Azure-Linux-Computer
 Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Datenträger, auf dem das Betriebssystem, Anwendungen und Daten gespeichert sind. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger: einen Datenträger mit dem Linux-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden.

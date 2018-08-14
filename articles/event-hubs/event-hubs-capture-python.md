@@ -3,7 +3,7 @@ title: Exemplarische Vorgehensweise für die Azure Event Hubs-Erfassung | Micros
 description: Ein Beispiel zur Veranschaulichung der Verwendung des Erfassungsfeatures von Event Hubs unter Verwendung des Azure Python SDKs.
 services: event-hubs
 documentationcenter: ''
-author: djrosanova
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: bdff820c-5b38-4054-a06a-d1de207f01f6
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
-ms.author: sethm
-ms.openlocfilehash: 97cadbde2ddedade1a8688f1380b9ff9194613e7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: shvija
+ms.openlocfilehash: b38e64891ce1065290d46f0fae2d22e151e03e4d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28016456"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005613"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Exemplarische Vorgehensweise für die Event Hubs-Erfassung: Python
 
@@ -29,7 +29,7 @@ In diesem Beispiel wird das [Azure Python SDK](https://azure.microsoft.com/devel
 
 ## <a name="what-youll-accomplish"></a>Umfang
 
-1. Erstellen eines Azure Blob-Speicherkontos und eines darin enthaltenen Blobcontainers über das Azure-Portal
+1. Erstellen eines Azure Blob Storage-Kontos und eines darin enthaltenen Blobcontainers über das Azure-Portal
 2. Erstellen eines Event Hubs-Namespace über das Azure-Portal
 3. Erstellen eines Event Hubs mit aktiviertem Capture-Feature über das Azure-Portal
 4. Senden von Daten an den Event Hub mithilfe eines Python-Skripts

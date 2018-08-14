@@ -2,19 +2,19 @@
 title: Bereitstellen von Durchsatz für Azure Cosmos DB | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie bereitgestellten Durchsatz für Ihre Azure Cosmos DB-Container, -Sammlungen, -Grafiken und -Tabellen festlegen.
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
-ms.author: sngun
-ms.openlocfilehash: a454bfc06cf119d43e545a5a911a2f6686fb755b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.author: andrl
+ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600158"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038172"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Festlegen und Abrufen des Durchsatzes für Azure Cosmos DB-Container und -Datenbank
 
@@ -262,20 +262,6 @@ Eine Methode zum Abschätzen des von der Anwendung benötigten Durchsatzes beste
 > Wenn sich die Elementtypen im Hinblick auf Größe und Anzahl indizierter Eigenschaften erheblich voneinander unterscheiden, erfassen Sie für jeden typischen *Elementtyp* jeweils die berechneten Anforderungseinheiten des jeweiligen Vorgangs.
 > 
 > 
-
-## <a id="RequestchargeGraphAPI"></a>Abrufen der Anforderungsgebühr für Gremlin-API-Konten 
-
-Hier ist ein Beispiel zum Abrufen der Anforderungsgebühr für Gremlin-API-Konten mithilfe der Gremlin.Net-Bibliothek. 
-
-```csharp
-
-var response = await gremlinClient.SubmitAsync<int>(requestMsg, bindings);
-                var resultSet = response.AsResultSet();
-                var statusAttributes= resultSet.StatusAttributes;
-```
-
-Zusätzlich zu der obigen Methode können Sie auch den Header „x-ms-total-request-charge“ für die Berechnung von Anforderungseinheiten verwenden.
-
 
 ## <a name="throughput-faq"></a>Häufig gestellte Fragen zum Durchsatz
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: faf7fd137d5c1efcd425cf28fd4860c62a719a67
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 79120371ca2a62e5ef9f2bf38476635db12e9fcc
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211649"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038103"
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Konfigurieren von Upgrades für eine Service Fabric-Anwendung in Visual Studio
 Die Service Fabric-Tools für Azure Visual Studio bieten Upgradeunterstützung für die Veröffentlichung auf lokalen Clustern oder Remoteclustern. Es gibt drei Szenarios, bei denen Sie die Anwendung auf eine neuere Version aktualisieren sollten, anstatt die Anwendung beim Testen und Debuggen zu ersetzen:
@@ -66,7 +66,7 @@ Wenn Sie die Service Fabric-Tools von Visual Studio zum Aktualisieren einer Serv
 3. Wenn Sie den Upgrademodus UnmonitoredManual verwenden, müssen Sie manuell eine PowerShell-Konsole öffnen, um den Upgradevorgang fortzusetzen und zu beenden. Weitere Informationen zur Funktionsweise manueller Upgrades finden Sie unter [Service Fabric-Anwendungsupgrade: Weiterführende Themen](service-fabric-application-upgrade-advanced.md) .
 
 ## <a name="upgrade-an-application-by-using-powershell"></a>Upgrade einer Anwendung mithilfe von PowerShell
-Sie können PowerShell-Cmdlets zum Upgrade einer Service Fabric-Anwendung verwenden. Ausführliche Informationen dazu finden Sie unter [Tutorial für Service Fabric-Anwendungsupgrades](service-fabric-application-upgrade-tutorial.md) und [Start-ServiceFabricApplicationUpgrade](https://msdn.microsoft.com/library/mt125975.aspx).
+Sie können PowerShell-Cmdlets zum Upgrade einer Service Fabric-Anwendung verwenden. Ausführliche Informationen dazu finden Sie unter [Tutorial für Service Fabric-Anwendungsupgrades](service-fabric-application-upgrade-tutorial.md) und [Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade).
 
 ## <a name="specify-a-health-check-policy-in-the-application-manifest-file"></a>Festlegen einer Integritätsprüfungsrichtlinie in der Anwendungsmanifestdatei
 Jeder Dienst in einer Service Fabric-Anwendung kann über eigene Richtlinienparameter für die Integritätsprüfung verfügen, die die Standardwerte überschreiben. Sie können diese Parameterwerte in der Anwendungsmanifestdatei angeben.

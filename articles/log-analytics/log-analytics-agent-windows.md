@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdbcfca64c2e680dfdf8feefe1bafdefb84981f4
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 975b3d30f242b877512312f8a5a030bde9349287
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125819"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003646"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure
 
@@ -154,7 +154,7 @@ Den Produktcode können Sie mithilfe von „Orca.exe“ aus [Windows SDK Compone
     ```
 
 4. [Importieren Sie das Konfigurationsskript „MMAgent.ps1“](../automation/automation-dsc-getting-started.md#importing-a-configuration-into-azure-automation) in Ihr Automation-Konto. 
-5. [Weisen Sie einen Windows-Computer oder -Knoten](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-dsc) der Konfiguration hinzu. Innerhalb von 15 Minuten prüft der Knoten die Konfiguration, und der Agent wird auf den Knoten gepusht.
+5. [Weisen Sie einen Windows-Computer oder -Knoten](../automation/automation-dsc-getting-started.md#onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration) der Konfiguration hinzu. Innerhalb von 15 Minuten prüft der Knoten die Konfiguration, und der Agent wird auf den Knoten gepusht.
 
 ## <a name="verify-agent-connectivity-to-log-analytics"></a>Überprüfen der Agent-Konnektivität mit Log Analytics
 

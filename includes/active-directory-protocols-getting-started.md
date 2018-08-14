@@ -13,22 +13,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
-ms.openlocfilehash: cb31bb91c80e4d5dd032b009b40d8e3fc435e0c8
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 5a4f08718175dd7ef369d801807e6c8e1ff28fd9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359458"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39486042"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>Registrieren der Anwendung beim AD-Mandanten
 Zuerst müssen Sie Ihre Anwendung beim Azure Active Directory-Mandanten (Azure AD) registrieren. Hierbei erhalten Sie eine Anwendungs-ID für die Anwendung, und die Aktivierung für den Empfang von Token wird durchgeführt.
 
 * Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-* Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite auf Ihr Konto klicken. Klicken Sie anschließend auf die Navigation **Verzeichnis wechseln**, und wählen Sie dann den entsprechenden Mandanten aus. 
+* Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie auf der Seite oben rechts auf Ihr Konto klicken. Klicken Sie anschließend auf das Navigationselement **Verzeichnis wechseln**, und wählen Sie dann den entsprechenden Mandanten aus. 
   * Überspringen Sie diesen Schritt, wenn Ihr Konto nur einen Azure AD-Mandanten enthält oder wenn Sie bereits den entsprechenden Azure AD-Mandanten ausgewählt haben.
 * Klicken Sie im linken Navigationsbereich auf **Azure Active Directory**.
 * Klicken Sie auf **App-Registrierungen** und dann auf **Neue Awendungsregistrierung**.
-* Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. Es spielt bei diesem Tutorial keine Rolle, ob es sich um eine Webanwendung oder eine native Anwendung handelt. Falls Sie spezielle Beispiele für Webanwendungen oder native Anwendungen wünschen, können Sie sich unsere [Schnellstarts](../articles/active-directory/develop/active-directory-developers-guide.md) ansehen.
+* Folgen Sie der Anleitung, und erstellen Sie eine neue Anwendung. Es spielt bei diesem Tutorial keine Rolle, ob es sich um eine Webanwendung oder eine native Anwendung handelt. Falls Sie spezielle Beispiele für Webanwendungen oder native Anwendungen wünschen, können Sie sich unsere [Schnellstarts](../articles/active-directory/develop/azure-ad-developers-guide.md) ansehen.
   * Geben Sie für Webanwendungen die **Anmelde-URL** an. Dies ist die Basis-URL Ihrer App, unter der sich Benutzer anmelden können, z.B. `http://localhost:12345`.
 <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->
   * Geben Sie für native Anwendungen einen **Umleitungs-URI** an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `http://MyFirstAADApp`.

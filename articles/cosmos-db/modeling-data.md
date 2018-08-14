@@ -3,19 +3,19 @@ title: Modellieren von Dokumentdaten für NoSQL-Datenbanken | Microsoft-Dokument
 description: Erfahren Sie etwas über die Modellierung von Daten für NoSQL-Datenbanken.
 keywords: Modellieren von Daten
 services: cosmos-db
-author: SnehaGunda
+author: aliuy
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2016
-ms.author: sngun
-ms.openlocfilehash: acd3fa3367f68d5cc98a4ace82508f028d5fdbf8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.author: andrl
+ms.openlocfilehash: c577c9734490e3aacc148153f550162371ae482e
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214744"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038184"
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modellieren von Dokumentdaten für NoSQL-Datenbanken
 Schemafreie Datenbanken wie Azure Cosmos DB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie die Verwendung und Verarbeitung Ihrer Daten sorgfältig bedenken. 

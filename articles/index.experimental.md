@@ -3,12 +3,12 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: c7f46f9b22bd3696b7d281815687cca2b90b22b3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 103d09b1a71239948c730f8dba47253741bbaa9c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070056"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038271"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -3150,10 +3150,10 @@ ms.locfileid: "34070056"
                                                     <a href="https://pypi.python.org/pypi/azure"> Abrufen des Python SDK</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">Erste Schritte</a>
+                                                    <a href="https://docs.microsoft.com/python/azure/?view=azure-python">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API-Referenz</a>
+                                                    <a href="https://docs.microsoft.com/python/azure/?view=azure-python">API-Referenz</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/resources/samples/?platform=python">Beispiele abrufen</a>
@@ -3427,7 +3427,7 @@ ms.locfileid: "34070056"
                                                     <a href="/dotnet/articles/core/docker/visual-studio-tools-for-docker">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780680">Herunterladen für Visual Studio</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=Click2CloudInc.Click2CloudDockerExtensionForVisualStudio2017">Herunterladen für Visual Studio</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">Herunterladen für Visual Studio Code</a>
@@ -3502,13 +3502,13 @@ ms.locfileid: "34070056"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.visualstudio.com/vs/python">Python-Tools</a>
+                                                    <a href="http://aka.ms/ptvs">Python-Tools</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://github.com/Microsoft/PTVS/wiki/PTVS-Installation">Erste Schritte mit Visual Studio</a>
+                                                    <a href="http://aka.ms/ptvsdocs">Erste Schritte mit Visual Studio</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.python">Erste Schritte mit Visual Studio Code</a>
+                                                    <a href="https://code.visualstudio.com/docs/python/python-tutorial">Erste Schritte mit Visual Studio Code</a>
                                                 </p>
                                             </div>
                                         </div>

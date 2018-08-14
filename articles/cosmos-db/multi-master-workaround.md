@@ -2,20 +2,20 @@
 title: Ausführen von Schreib- und Lesevorgängen in mehreren Regionen durch Auswahl des richtigen Partitionsschlüssel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Anwendungsarchitekturen mit lokalen Lese- und Schreibvorgängen über mehrere geografische Regionen hinweg mit Azure Cosmos DB entwerfen, indem Sie einen Partitionsschlüssel auswählen.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 06/6/2018
-ms.author: sngun
+ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18f036a259bbec98382927ad1d9e8f654b56850b
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3d38b7cd7d1f28f706e94782602926abc8fc11e3
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850360"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038157"
 ---
 # <a name="perform-multi-region-writes-and-reads-by-choosing-the-right-partitioning-key"></a>Ausführen von Schreib- und Lesevorgängen in mehreren Regionen durch Auswahl des richtigen Partitionsschlüssel
 

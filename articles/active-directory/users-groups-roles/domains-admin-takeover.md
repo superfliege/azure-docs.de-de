@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 625894738b6cbf680baef0a1eeeea518586e4506
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 52ae7da666acaf234920a7f03afe3766f29a1e85
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37870790"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629122"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-self-service-signup).
@@ -104,7 +104,7 @@ Die externe Administratorübernahme wird für keinen Dienst mit Tarifen unterst�
 
 #### <a name="more-information-about-rms-for-individuals"></a>Weitere Informationen zu RMS for Individuals
 
-Für [RMS for Individuals](/information-protection/understand-explore/rms-for-individuals) werden, wenn sich der nicht verwaltete Mandant in derselben Region befindet wie der Mandant, den Sie besitzen, der automatisch erstellte [Mandantenschlüssel für Azure Information Protection](/information-protection/plan-design/plan-implement-tenant-key) und [Standardschutzvorlagen](/information-protection/deploy-use/configure-usage-rights#rights-included-in-the-default-templates) zusätzlich mit dem Domänennamen verschoben. 
+Für [RMS for Individuals](/azure/information-protection/rms-for-individuals) werden, wenn sich der nicht verwaltete Mandant in derselben Region befindet wie der Mandant, den Sie besitzen, der automatisch erstellte [Mandantenschlüssel für Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) und [Standardschutzvorlagen](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates) zusätzlich mit dem Domänennamen verschoben. 
 
 Die Schlüssel und die Vorlagen werden nicht verschoben, wenn sich der nicht verwaltete Mandant in einer anderen Region befindet. Angenommen, der nicht verwaltete Mandant befindet sich in Europa, und der Mandant, den Sie besitzen, befindet sich in Nordamerika. 
 

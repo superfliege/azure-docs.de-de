@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: e773435d89a511e6f1f369cc3fd5dc6f06507e45
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 7aa5b00d1497e384377ba4423431eac57c1aa4c9
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808756"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630402"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -106,7 +106,7 @@ Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu App Service-
 
 ## <a name="why-do-i-see-the-message-partially-succeeded-when-i-try-to-back-up-my-web-app"></a>Warum wird die Meldung „Teilweise erfolgreich“ angezeigt, wenn ich versuche, meine Web-App zu sichern?
 
-Eine häufige Ursache für Sicherungsfehler ist, dass einige Dateien von der Anwendung verwendet werden. Dateien, die verwendet werden, sind gesperrt, während die Sicherung erfolgt. Dies verhindert, dass diese Dateien gesichert werden, und führt ggf. zum Status „Teilweise erfolgreich“. Sie können dies möglicherweise dadurch verhindern, dass Sie Dateien vom Sicherungsprozess ausschließen. Sie können nach Wunsch nur das sichern, was sie benötigen. Weitere Informationen finden Sie unter [Backup just the Important Parts of your Site with Azure Web Apps](http://www.zainrizvi.io/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/) (Ausschließliches Sichern der wichtigen Teile Ihrer Azure-Web-Apps-Website).
+Eine häufige Ursache für Sicherungsfehler ist, dass einige Dateien von der Anwendung verwendet werden. Dateien, die verwendet werden, sind gesperrt, während die Sicherung erfolgt. Dies verhindert, dass diese Dateien gesichert werden, und führt ggf. zum Status „Teilweise erfolgreich“. Sie können dies möglicherweise dadurch verhindern, dass Sie Dateien vom Sicherungsprozess ausschließen. Sie können nach Wunsch nur das sichern, was sie benötigen. Weitere Informationen finden Sie unter [Backup just the Important Parts of your Site with Azure Web Apps](http://zainrizvi.io/blog/creating-partial-backups-of-your-site-with-azure-web-apps/) (Ausschließliches Sichern der wichtigen Teile Ihrer Azure-Web-Apps-Website).
 
 ## <a name="how-do-i-remove-a-header-from-the-http-response"></a>Wie entferne ich einen Header aus der HTTP-Antwort?
 
@@ -288,7 +288,7 @@ Eine ausführliche Dokumentation der Authentifizierung und Autorisierung in App 
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Wie leite ich die Standarddomäne „*.azurewebsites.net“ zur benutzerdefinierten Domäne meiner Azure-Web-App um?
 
-Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Website standardmäßig die Domäne „*Websitename*.azurewebsites.net“ zugewiesen. Wenn Sie Ihrer Website einen benutzerdefinierten Hostnamen hinzufügen und nicht möchten, dass Benutzer auf Ihre Standarddomäne „*.azurewebsites.net“ zugreifen, können Sie die Standard-URL umleiten. Informationen zum Umleiten des gesamten Datenverkehrs von der Standarddomäne Ihrer Website zu Ihrer benutzerdefinierten Domäne finden Sie unter [Redirect the default domain to your custom domain in Azure web apps](http://www.zainrizvi.io/2016/04/07/block-default-azure-websites-domain/) (Umleiten der Standarddomäne zu Ihrer benutzerdefinierten Domäne in Azure-Web-Apps).
+Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Website standardmäßig die Domäne „*Websitename*.azurewebsites.net“ zugewiesen. Wenn Sie Ihrer Website einen benutzerdefinierten Hostnamen hinzufügen und nicht möchten, dass Benutzer auf Ihre Standarddomäne „*.azurewebsites.net“ zugreifen, können Sie die Standard-URL umleiten. Informationen zum Umleiten des gesamten Datenverkehrs von der Standarddomäne Ihrer Website zu Ihrer benutzerdefinierten Domäne finden Sie unter [Redirect the default domain to your custom domain in Azure web apps](http://zainrizvi.io/blog/block-default-azure-websites-domain/) (Umleiten der Standarddomäne zu Ihrer benutzerdefinierten Domäne in Azure-Web-Apps).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Wie erkenne ich, welche .NET-Version in App Service installiert ist?
 

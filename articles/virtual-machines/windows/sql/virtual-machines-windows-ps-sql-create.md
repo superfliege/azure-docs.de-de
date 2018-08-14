@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 2f0d9c42e32f2dd1181eac8d74c324b5ff2b0c53
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: bb7a0b8c2d0511088282e180a108f8d925f0e4e8
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944517"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038301"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Bereitstellen von SQL Server-VMs mit Azure PowerShell
 
@@ -130,7 +130,7 @@ New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
 ```
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
-Der virtuelle Computer benötigt Speicherressourcen für den Betriebssystemdatenträger sowie für die SQL Server-Daten und -Protokolldateien. Der Einfachheit halber erstellen Sie für beides einen einzelnen Datenträger. Zusätzliche Datenträger können später mithilfe des Cmdlets [Add-Azure Disk](/powershell/module/azure/add-azuredisk) angefügt werden, um Ihre SQL Server-Daten und -Protokolldateien auf dedizierten Datenträgern zu platzieren. Erstellen Sie mithilfe des Cmdlets [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) ein Standardspeicherkonto in Ihrer neuen Ressourcengruppe mit dem Speicherkontonamen, Speichernamen und Speicherort, die durch die zuvor initialisierten Variablen definiert werden.
+Der virtuelle Computer benötigt Speicherressourcen für den Betriebssystemdatenträger sowie für die SQL Server-Daten und -Protokolldateien. Der Einfachheit halber erstellen Sie für beides einen einzelnen Datenträger. Zusätzliche Datenträger können später mithilfe des Cmdlets [Add-Azure Disk](/powershell/module/servicemanagement/azure/add-azuredisk) angefügt werden, um Ihre SQL Server-Daten und -Protokolldateien auf dedizierten Datenträgern zu platzieren. Erstellen Sie mithilfe des Cmdlets [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) ein Standardspeicherkonto in Ihrer neuen Ressourcengruppe mit dem Speicherkontonamen, Speichernamen und Speicherort, die durch die zuvor initialisierten Variablen definiert werden.
 
 Führen Sie das folgende Cmdlet aus, um Ihr neues Speicherkonto zu erstellen:
 

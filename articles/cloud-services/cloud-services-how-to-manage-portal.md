@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 3e4520df5c1ca8477abf5a9c4b4e7e124bb38282
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9f4153c68f0a2a4ce83f900ff63152311163ff6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005756"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038265"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Verwalten von Clouddiensten im Azure-Portal
 Im Bereich **Clouddienste** des Azure-Portals haben Sie folgende Möglichkeiten:
@@ -83,7 +83,7 @@ Es gibt zwei wichtige Voraussetzungen für einen erfolgreichen Austausch von Ber
 
 - Wenn Sie eine statische IP-Adresse für Ihren Produktionsslot verwenden möchten, müssen Sie auch eine IP für den Stagingslot reservieren. Andernfalls tritt bei dem Austausch ein Fehler auf.
 
-- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt **Übersicht** überprüfen. Alternativ können Sie den Befehl [Get-AzureRole](/powershell/module/azure/get-azurerole?view=azuresmps-3.7.0) in Windows PowerShell verwenden.
+- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt **Übersicht** überprüfen. Alternativ können Sie den Befehl [Get-AzureRole](/powershell/module/servicemanagement/azure/get-azurerole?view=azuresmps-3.7.0) in Windows PowerShell verwenden.
 
 Beachten Sie, dass Updates von Gastbetriebssystemen und Dienstreparaturvorgänge auch dazu führen können, dass beim Austausch von Bereitstellungen ein Fehler auftritt. Weitere Informationen finden Sie unter [Behandeln von Problemen mit der Clouddienstbereitstellung](cloud-services-troubleshoot-deployment-problems.md).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 78796b5dc62cb573f149c24d90205d26fb139cf7
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24103428"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628646"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Name und Schlüssel des Ausstellers
 
@@ -27,7 +27,7 @@ ms.locfileid: "24103428"
 
 Azure BizTalk Services verwendet Ausstellername und -schlüssel von Service Bus und Access Control. Dies gilt insbesondere in folgenden Fällen:
 
-| Task | Welcher Ausstellername und -schlüssel? |
+| Aufgabe | Welcher Ausstellername und -schlüssel? |
 | --- | --- |
 | Bereitstellen einer Anwendung in Visual Studio |Access Control-Ausstellername und -schlüssel |
 | Konfigurieren des Azure BizTalk Services-Portals |Access Control-Ausstellername und -schlüssel |
@@ -71,13 +71,13 @@ Zusammenfassung:
 Ausstellername = SharedSecretIssuer  
 Ausstellerschlüssel = SharedSecretKey
 
-Weitere Informationen zum [New-AzureSBNamespace](https://msdn.microsoft.com/library/dn495165.aspx)-Cmdlet. 
+Weitere Informationen zum [New-AzureSBNamespace](https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace)-Cmdlet. 
 
 ## <a name="service-bus-issuer-name-and-issuer-key"></a>Service Bus-Ausstellername und -schlüssel
 Service Bus-Ausstellername und -schlüssel werden von BizTalk-Adapterdiensten verwendet. In Ihrem BizTalk Services-Projekt in Visual Studio können Sie die BizTalk-Adapterdienste verwenden, um sich mit einem lokalen LOB-System (Line of Business) zu verbinden. Erstellen Sie dazu das LOB-Relay und geben Sie Ihre LOB-Systemdetails ein. Bei diesem Prozess geben Sie ebenfalls Ihren Service Bus-Ausstellernamen und -schlüssel ein.
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Abrufen von Service Bus-Ausstellername und -schlüssel
-1. Melden Sie sich auf dem [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
 2. Suchen Sie nach **Service Bus**, und wählen Sie Ihren Namespace aus. 
 3. Öffnen Sie die Eigenschaften für **Freigegebene Zugriffsrichtlinien**, wählen Sie Ihre Richtlinie aus, und zeigen Sie die **Verbindungszeichenfolge** für die Werte des Namens und des Schlüssels an.  
 
@@ -89,7 +89,7 @@ Zusätzliche Azure BizTalk Services-Themen:
 * [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [BizTalk Services-Dokumentation](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 * [Verwenden des ACS-Verwaltungsdiensts zum Konfigurieren von Dienstidentitäten](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
 * [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
 * [Konfigurieren von BizTalk Services im Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>

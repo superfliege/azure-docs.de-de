@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 47ed72667b46edb06a7d07cbc971810cb97e6f90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6577955b275adfda3f0cfafe99a8f95efd16403c
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211610"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Tutorial: Azure Active Directory-Integration mit Ceridian Dayforce HCM
 
@@ -53,7 +53,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Ceridian Dayforce HCM aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-ceridian-dayforce-hcm-from-the-gallery"></a>Hinzufügen von Ceridian Dayforce HCM aus dem Katalog
 Zum Konfigurieren der Integration von Ceridian Dayforce HCM in Azure AD müssen Sie Ceridian Dayforce HCM aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
@@ -64,15 +64,15 @@ Zum Konfigurieren der Integration von Ceridian Dayforce HCM in Azure AD müssen 
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie in das Suchfeld **Ceridian Dayforce HCM** ein, und klicken Sie auf **Ceridian Dayforce HCM** in der Ergebnisliste. Klicken Sie dann auf die Schaltfläche **Add** (Hinzufügen), um die Anwendung hinzuzufügen.
+1. Geben Sie in das Suchfeld **Ceridian Dayforce HCM** ein, und klicken Sie auf **Ceridian Dayforce HCM** in der Ergebnisliste. Klicken Sie dann auf die Schaltfläche **Add** (Hinzufügen), um die Anwendung hinzuzufügen.
 
     ![Ceridian Dayforce HCM in der Ergebnisliste](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_addfromgallery.png)
 
@@ -87,10 +87,10 @@ Weisen Sie in Ceridian Dayforce HCM den Wert des **user name** (Benutzernamens) 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Ceridian Dayforce HCM müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Create a Ceridian Dayforce HCM test user (Erstellen Sie einen Ceridian Dayforce HCM-Testbenutzer)](#create-a-ceridian-dayforce-hcm-test-user)**, um eine Entsprechung von Britta Simon in Ceridian Dayforce HCM zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **[Create a Ceridian Dayforce HCM test user (Erstellen Sie einen Ceridian Dayforce HCM-Testbenutzer)](#create-a-ceridian-dayforce-hcm-test-user)**, um eine Entsprechung von Britta Simon in Ceridian Dayforce HCM zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -102,13 +102,13 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_samlbase.png)
 
-3. Führen Sie die folgenden Schritte auf der Seite **Ceridian Dayforce HCM Domain and URLs (Domänen und URLs für Ceridian Dayforce HCM)** aus:
+1. Führen Sie die folgenden Schritte auf der Seite **Ceridian Dayforce HCM Domain and URLs (Domänen und URLs für Ceridian Dayforce HCM)** aus:
 
-    ![Configure Single Sign-On](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
     
     a. Geben Sie im Textfeld **Anmelde-URL** die URL ein, die Benutzer zum Anmelden bei Ihrer Ceridian Dayforce HCM-Anwendung verwenden.
     
@@ -132,17 +132,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     | Zu Testzwecken | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
     
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Ceridian Dayforce HCM Client support team (Ceridian Dayforce HCM Client-Supportteam)](https://www.ceridian.com/contact-us/index.html), um diese Werte abzurufen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Ceridian Dayforce HCM Client support team (Ceridian Dayforce HCM Client-Supportteam)](https://www.ceridian.com/support), um diese Werte abzurufen.
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_certificate.png) 
 
-5. Die Ceridian Dayforce HCM-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wenden Sie sich zunächst an das [Ceridian Dayforce HCM support team (Ceridian Dayforce HCM Client-Supportteam)](https://www.ceridian.com/contact-us/index.html), um die korrekte Benutzer-ID zu identifizieren. Microsoft empfiehlt die Verwendung des Attributs **name** als Benutzer-ID. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:  
+1. Die Ceridian Dayforce HCM-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wenden Sie sich zunächst an das [Ceridian Dayforce HCM support team (Ceridian Dayforce HCM Client-Supportteam)](https://www.ceridian.com/support), um die korrekte Benutzer-ID zu identifizieren. Microsoft empfiehlt die Verwendung des Attributs **name** als Benutzer-ID. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:  
 
-    ![Configure Single Sign-On](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_07.png)
 
-6. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
+1. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
     
     | Attributname  | Attributwert |
     | --------------- | -------------------- |    
@@ -150,9 +150,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
 
-    ![Configure Single Sign-On](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_04.png)
 
-    ![Configure Single Sign-On](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_05.png)
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_attribute_05.png)
     
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
@@ -161,15 +161,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
     
     d. Klicken Sie auf **OK**.
 
-7. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/ceridiandayforcehcm-tutorial/tutorial_general_400.png)
     
-8. Klicken Sie im Abschnitt **Ceridian Dayforce HCM Configuration** (Konfiguration von Ceridian Dayforce HCM) auf **Configure Ceridian Dayforce HCM** (Ceridian Dayforce HCM konfigurieren), um das Fenster **Configure sign-in** (Anmeldung konfigurieren) zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Ceridian Dayforce HCM Configuration** (Konfiguration von Ceridian Dayforce HCM) auf **Configure Ceridian Dayforce HCM** (Ceridian Dayforce HCM konfigurieren), um das Fenster **Configure sign-in** (Anmeldung konfigurieren) zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Konfiguration von Ceridian Dayforce HCM](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_configure.png) 
 
-9. Um einmaliges Anmelden auf der Seite **Ceridian Dayforce HCM** zu konfigurieren, müssen sie die heruntergeladene **Metadaten-XML** und die **Abmelde-URL, SAML-Entitäts-ID und SAML-SSO-Dienst-URL** an das [Supportteam von Ceridian Dayforce HCM](https://www.ceridian.com/contact-us/index.html) senden.
+1. Um einmaliges Anmelden auf der Seite **Ceridian Dayforce HCM** zu konfigurieren, müssen sie die heruntergeladene **Metadaten-XML** und die **Abmelde-URL, SAML-Entitäts-ID und SAML-SSO-Dienst-URL** an das [Supportteam von Ceridian Dayforce HCM](https://www.ceridian.com/support) senden.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -186,15 +186,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/ceridiandayforcehcm-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/ceridiandayforcehcm-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/ceridiandayforcehcm-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/ceridiandayforcehcm-tutorial/create_aaduser_04.png)
 
@@ -208,7 +208,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-ceridian-dayforce-hcm-test-user"></a>Erstellen einen Ceridian Dayforce HCM-Testbenutzers
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Ceridian Dayforce HCM. Wenden Sie sich an das [Ceridian Dayforce HCM support team (Ceridian Dayforce HCM Client-Supportteam)](https://www.ceridian.com/contact-us/index.html), um Benutzer zur Ceridian Dayforce HCM-Anwendung hinzuzufügen. 
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Ceridian Dayforce HCM. Wenden Sie sich an das [Ceridian Dayforce HCM support team (Ceridian Dayforce HCM Client-Supportteam)](https://www.ceridian.com/support), um Benutzer zur Ceridian Dayforce HCM-Anwendung hinzuzufügen. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -222,23 +222,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Ceridian Dayforce HCM**aus.
+1. Wählen Sie in der Anwendungsliste **Ceridian Dayforce HCM**aus.
 
-    ![Configure Single Sign-On](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png) 
+    ![Configure single sign-on](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -252,23 +252,23 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **Ceridian Dayforce HCM**aus.
+1. Wählen Sie in der Anwendungsliste **Ceridian Dayforce HCM**aus.
 
     ![Der Link „Ceridian Dayforce HCM“ in der Anwendungsliste](./media/ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

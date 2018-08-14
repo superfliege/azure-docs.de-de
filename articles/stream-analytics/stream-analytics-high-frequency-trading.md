@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/05/2017
-ms.openlocfilehash: a58b5c315b9f1baa3a0c3fe55917e94a47006f62
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 85f80ef1ea776d48d9c2f8091568d40dbf46db46
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258530"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716473"
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Hochfrequenzhandel-Simulation mit Stream Analytics
 Die Kombination aus SQL-Sprache und benutzerdefinierten JavaScript-Funktionen (User-Defined Functions, UDFs) bzw. benutzerdefinierten Aggregaten (User-Defined Aggregates, UDAs) in Azure Stream Analytics ermöglicht Benutzern die Nutzung von Advanced Analytics. Beispiele für Analysen mit Advanced Analytics sind das Online-Trainieren und -Bewerten für Machine Learning und die Simulation zustandsbehafteter Prozesse. In diesem Artikel wird beschrieben, wie Sie die lineare Regression in einem Azure Stream Analytics-Auftrag durchführen, mit dem ständig Trainings- und Bewertungsschritte für ein Hochfrequenzhandel-Szenario ausgeführt werden.
@@ -444,7 +444,7 @@ Abschließend geben wir die Daten zur Visualisierung im Power BI-Dashboard aus.
 ## <a name="summary"></a>Zusammenfassung
 Wir können mit einer nicht übermäßig aufwändigen Abfrage in Azure Stream Analytics ein realistisches Modell für den Hochfrequenzhandel implementieren. Hierfür müssen wir das Modell von fünf auf zwei Eingabevariablen vereinfachen, da keine integrierte Funktion für die lineare Regression vorhanden ist. Es ist für interessierte Benutzer aber durchaus möglich, auch anspruchsvollere Algorithmen mit höheren Dimensionen als JavaScript-UDA zu implementieren. 
 
-Beachten Sie hierbei Folgendes: Im Gegensatz zum JavaScript-UDA kann der Großteil der Abfrage in Visual Studio mit dem [Azure Stream Analytics-Tool für Visual Studio](stream-analytics-tools-for-visual-studio.md) getestet und debuggt werden. Nachdem die erste Abfrage geschrieben wurde, hat der Verfasser für das Testen und Debuggen der Abfrage in Visual Studio weniger als 30 Minuten benötigt. 
+Beachten Sie hierbei Folgendes: Im Gegensatz zum JavaScript-UDA kann der Großteil der Abfrage in Visual Studio mit dem [Azure Stream Analytics-Tool für Visual Studio](stream-analytics-tools-for-visual-studio-install.md) getestet und debuggt werden. Nachdem die erste Abfrage geschrieben wurde, hat der Verfasser für das Testen und Debuggen der Abfrage in Visual Studio weniger als 30 Minuten benötigt. 
 
 Derzeit ist das Debuggen des UDA in Visual Studio nicht möglich. Wir arbeiten daran, dies und den Schritt-für-Schritt-Durchlauf des JavaScript-Codes zu ermöglichen. Beachten Sie auch, dass die Namen der Felder für die Erreichung des UDA nur Kleinbuchstaben enthalten. Dies war beim Testen der Abfrage kein offensichtliches Verhalten. Für Azure Stream Analytics-Kompatibilitätsebene 1.1 wird die Groß-/Kleinschreibung von Feldnamen aber beibehalten, damit das Verhalten natürlicher ist.
 

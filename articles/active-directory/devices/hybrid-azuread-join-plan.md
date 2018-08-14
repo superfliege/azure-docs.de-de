@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 27068c1154a4cc5776bbcc74922ca31c4f28ced6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4e6600d81fedd884cf415d055aedd29d163b3365
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399916"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629649"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -96,6 +96,13 @@ Wenn Sie das Systemvorbereitungstool Sysprep verwenden, stellen Sie sicher, dass
 Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erstellen, stellen Sie sicher, dass Sie eine Momentaufnahme verwenden, die nicht für die Azure AD-Hybrideinbindung konfiguriert wurde.
 
 Für Geräte, die für das Roaming von Benutzerprofilen oder das Roaming von Anmeldeinformationen konfiguriert wurden, wird die Registrierung kompatibler Windows-Geräte nicht unterstützt. Verwenden Sie Windows 10, wenn Sie das Roaming von Profilen oder Einstellungen nutzen.
+
+- Die Registrierung kompatibler Windows-Geräte **wird** in nicht zu einem Verbund gehörenden Umgebungen durch die [nahtlose einmalige Anmeldung mit Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) unterstützt. 
+ 
+- Bei Verwendung der Azure AD-Passthrough-Authentifizierung wird die Registrierung kompatibler Windows-Geräte ohne nahtloses einmaliges Anmelden **nicht** unterstützt.
+
+- Für Geräte, die Roamingprofile verwenden, wird die Registrierung kompatibler Windows-Geräte **nicht** unterstützt. Verwenden Sie Windows 10, wenn Sie das Roaming von Profilen oder Einstellungen nutzen.
+
 
 Die Registrierung von Windows Server mit der Domänencontrollerrolle wird nicht unterstützt.
 

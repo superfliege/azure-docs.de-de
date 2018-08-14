@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: fb4ac675462cf9946a0667e2956c4c0c75b591bf
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390346"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39629071"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung
 Wenn Sie von Benutzern verlangen, ihre persönlichen Geräte mithilfe des Geräteregistrierungsdiensts mit Azure Active Directory (Azure AD) über den Arbeitsplatz einzubinden, können deren Geräte als Ihrer Organisation bekannt markiert werden. Im Folgenden wird eine Schritt-für-Schritt-Anleitung aufgeführt, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.
@@ -165,7 +165,7 @@ Diese URL kann auf unterschiedlichste Weise an die Benutzer kommuniziert werden.
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Verknüpfen eines Windows 7-Geräts mithilfe der Azure Active Directory-Geräteregistrierung
 Zum Registrieren von in eine Domäne eingebundenen Windows 7-Geräten müssen Sie das [Softwarepaket für die Geräteregistrierung](https://www.microsoft.com/download/details.aspx?id=53554) bereitstellen.
 
-Anweisungen zur Verwendung des Pakets finden Sie unter [Windows Installer-Pakete für Computer ohne Windows 10](devices/hybrid-azuread-join-manual-steps.md#windows-installer-packages-for-non-windows-10-computers).
+Anweisungen zur Verwendung des Pakets finden Sie unter [Windows Installer-Pakete für Computer ohne Windows 10](devices/hybrid-azuread-join-control.md#control-windows-down-level-devices).
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>Überprüfen, ob registrierte Geräte nach Active Directory zurückgeschrieben werden
 Sie können mithilfe von „LDP.exe“ oder des ADSI-Editors Geräteobjekte anzeigen und sicherstellen, dass diese zurück in Ihr Active Directory-Verzeichnis geschrieben wurden. Beide Tools sind in den Administratortools von Active Directory verfügbar.

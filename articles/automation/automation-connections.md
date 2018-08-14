@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5b31529c9ccfdc5d7871ec860a97d964ece69f8
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 5c865ff5c83626f13bb4fb9df7c1533371733540
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435690"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038175"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
@@ -42,7 +42,7 @@ Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Verbindung
 
 |Aktivitäten|BESCHREIBUNG|
 |---|---|
-|[Get-AutomationConnection](/powershell/module/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Ruft eine zu verwendende Verbindung ab. Gibt eine Hashtabelle mit den Eigenschaften der Verbindung zurück.|
+|[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Ruft eine zu verwendende Verbindung ab. Gibt eine Hashtabelle mit den Eigenschaften der Verbindung zurück.|
 
 >[!NOTE] 
 >Vermeiden Sie die Verwendung von Variablen mit dem Parameter „-Name“ von **Get-AutomationConnection**, da dies die Ermittlung von Abhängigkeiten zwischen Runbooks oder DSC-Konfigurationen und Verbindungsobjekten zur Entwurfszeit erschweren kann.

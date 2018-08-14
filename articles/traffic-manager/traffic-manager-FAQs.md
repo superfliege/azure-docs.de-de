@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: kumud
-ms.openlocfilehash: bac3747f3f410e63454f543c035d7e04c20fac2a
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399176"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038217"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -286,7 +286,7 @@ Für Azure Resource Manager ist es erforderlich, dass für alle Ressourcengruppe
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Wie kann ich den aktuellen Integritätsstatus jedes Endpunkts bestimmen?
 
-Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](https://msdn.microsoft.com/library/azure/mt163667.aspx) von Traffic Manager, [PowerShell-Cmdlets](https://msdn.microsoft.com/library/mt125941.aspx) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) verfügbar.
+Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](https://msdn.microsoft.com/library/azure/mt163667.aspx) von Traffic Manager, [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) verfügbar.
 
 Sie können auch mit Azure Monitor die Integrität Ihrer Endpunkte nachverfolgen und eine visuelle Darstellung anzeigen. Weitere Informationen zum Verwenden von Azure Monitor finden Sie in der [Dokumentation zur Azure-Überwachung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
