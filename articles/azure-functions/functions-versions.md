@@ -10,14 +10,14 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 07/29/2018
 ms.author: glenga
-ms.openlocfilehash: 8ba12f21d76d8deded047f40489c46657c9380b8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6bf6621d650ad590cd1134bc79fcdecdc3fd0963
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38602116"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622635"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -26,7 +26,9 @@ ms.locfileid: "38602116"
 | Laufzeit | Status |
 |---------|---------|
 |1.x|Allgemein verfügbar (Generally Available, GA)|
-|2.x|Vorschau|
+|2.x|Vorschauversion<sup>*</sup>|
+
+<sup>*</sup>Wichtige Updates zu Version 2.x, z.B. Ankündigungen zu wichtigen Änderungen, erhalten Sie im Repository mit den [Azure App Service-Ankündigungen](https://github.com/Azure/app-service-announcements/issues).
 
 > [!NOTE] 
 > Dieser Artikel bezieht sich auf den Clouddienst Azure Functions. Informationen über das Produkt, das die lokale Ausführung von Azure Functions ermöglicht, finden Sie in der [Übersicht zu Azure Functions-Runtime](functions-runtime-overview.md).

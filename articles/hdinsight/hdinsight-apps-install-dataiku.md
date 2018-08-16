@@ -1,25 +1,20 @@
 ---
-title: Installieren einer veröffentlichten Anwendung – Dataiku DSS – Azure HDInsight | Microsoft-Dokumentation
+title: Installieren einer veröffentlichten Anwendung – Dataiku DSS – Azure HDInsight
 description: Installieren und verwenden Sie die Hadoop-Drittanbieteranwendung Dataiku DSS.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: facee9187528fa0c6a74f71ee73636dc23ca35ba
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8d01b94ce4af6e3f5bcdc05ce84ef6deb1d3cae6
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31394617"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598770"
 ---
 # <a name="install-published-application---dataiku-dds"></a>Installieren einer veröffentlichten Anwendung – Dataiku DSS
 

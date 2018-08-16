@@ -1,25 +1,20 @@
 ---
-title: Programmgesteuerte Zugreifen auf Hadoop YARN-Anwendungsprotokolle – Azure | Microsoft-Dokumentation
+title: Programmgesteuertes Zugreifen auf Hadoop YARN-Anwendungsprotokolle – Azure
 description: Greifen Sie programmgesteuert auf Anwendungsprotokolle auf einem Hadoop-Cluster in HDInsight zu.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 0198d6c9-7767-4682-bd34-42838cf48fc5
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: aab7865548c034cb550874c31977b05936dc45b9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 42484f2a93ab5effdcafca0f0769c3fb4cdbb926
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403933"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600182"
 ---
 # <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Zugriff auf YARN-Anwendungsprotokolle unter Windows-basiertem HDInsight
 Dieses Dokument erläutert den Zugriff auf Protokolle für YARN-Anwendungen, die auf einem Windows-basierten Hadoop-Cluster in Azure HDInsight abgeschlossen wurden.

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9eca3c3aeaa8d9d0d3d7728f8aebd63543cb604
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751703"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617114"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Sichern von Dateien in Azure Stack
 Sie können Azure Backup verwenden, um Dateien und Anwendungen in Azure Stack zu schützen (oder zu sichern). Installieren Sie Microsoft Azure Backup Server als virtuellen Computer, der unter Azure Stack ausgeführt wird, um Dateien und Anwendungen zu sichern. Sie können die Dateien schützen, die auf einem beliebigen Azure Stack-Server in demselben virtuellen Netzwerk ausgeführt werden. Nachdem Sie Azure Backup Server installiert haben, fügen Sie Azure-Datenträger hinzu, um den lokalen Speicher zu vergrößern, der für die kurzfristige Sicherung von Daten verfügbar ist. Azure Backup Server nutzt Azure-Speicher für die langfristige Aufbewahrung.
@@ -27,7 +27,7 @@ In diesem Artikel wird nicht die Installation von Azure Backup Server in der Azu
 
 ## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Sichern von Dateien und Ordnern in Azure Stack-VMs in Azure
 
-Um Azure Backup Server zum Schutz von Dateien in Azure Stack-VMs zu konfigurieren, öffnen Sie die Azure Backup Server-Konsole. Sie verwenden die Konsole, um Schutzgruppen zu konfigurieren und die Daten auf Ihren virtuellen Computern zu schützen.
+Um Azure Backup Server zum Schutz von Dateien auf virtuellen Azure Stack-Computern zu konfigurieren, öffnen Sie die Azure Backup Server-Konsole. Sie verwenden die Konsole, um Schutzgruppen zu konfigurieren und die Daten auf Ihren virtuellen Computern zu schützen.
 
 1. Klicken Sie in der Azure Backup Server-Konsole auf **Schutz** und dann auf der Symbolleiste auf **Neu**, um den**Assistenten zum Erstellen einer neuen Schutzgruppe zu** öffnen.
 
@@ -90,15 +90,13 @@ Um Azure Backup Server zum Schutz von Dateien in Azure Stack-VMs zu konfiguriere
 
 13. Überprüfen Sie unter **Zusammenfassung** Ihre Einstellungen. Wenn Sie auf **Gruppe erstellen** klicken, erfolgt die erstmalige Datenreplikation. Nach Abschluss der Datenreplikation wird der Status der Schutzgruppe auf der Seite **Status** als **OK** angezeigt. Der erstmalige Sicherungsauftrag erfolgt entsprechend den Einstellungen der Schutzgruppe.
 
-Fragen, die beantwortet werden müssen: Wie lässt sich der Datenträgerspeicher für die kurzfristige Speicherung für Azure Stack erweitern? Welche Richtlinien gelten für die kurzfristige Datenträgerspeicherung?
-
 ## <a name="recover-file-data"></a>Wiederherstellen von Dateidaten
 
 Verwenden Sie die Azure Backup Server-Konsole, um Daten auf dem virtuellen Computer wiederherzustellen.
 
 1. Klicken Sie in der Azure Backup Server-Konsole auf der Navigationsleiste auf **Wiederherstellung**, und suchen Sie die Daten, die Sie wiederherstellen möchten. Wählen Sie die Daten im Ergebnisbereich aus.
 
-2. Im Kalender im Abschnitt „Wiederherstellungspunkte“ bedeuten fett gedruckte Datumsangaben, dass Wiederherstellungspunkte verfügbar sind. Wählen Sie das Datum eines Wiederherstellungspunkts aus, der für eine Wiederherstellung genutzt werden soll.
+2. Im Kalender im Abschnitt „Wiederherstellungspunkte“ bedeuten fett gedruckte Datumsangaben, dass Wiederherstellungspunkte verfügbar sind. Wählen Sie das Datum aus, für das die Wiederherstellung durchgeführt werden soll.
 
 3. Wählen Sie im Bereich **Wiederherstellbares Element** das Element aus, das Sie wiederherstellen möchten.
 

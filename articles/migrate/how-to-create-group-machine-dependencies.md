@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: raynew
-ms.openlocfilehash: fc74af2e7f19d05ff53925b2765c1f78fd0b30c1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4b83380558c10bc4f96d56f89a5cc2b7b53edc2e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919708"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621078"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gruppieren von Computern per Mapping von Computerabhängigkeiten
 
@@ -24,7 +24,7 @@ Um Computerabhängigkeiten anzuzeigen, müssen Sie Agents auf allen lokalen Comp
 ### <a name="download-and-install-the-vm-agents"></a>Herunterladen und Installieren der VM-Agents
 1. Klicken Sie unter **Übersicht** auf **Verwalten** > **Computer**, und wählen Sie den gewünschten Computer aus.
 2. Klicken Sie in der Spalte **Abhängigkeiten** auf **Agents installieren**.
-3. Laden Sie auf der Seite **Abhängigkeiten** den Microsoft Monitoring Agent (MMA) herunter, und installieren Sie ihn – sowie den Abhängigkeits-Agent auf allen VMs, die Sie auswerten möchten.
+3. Laden Sie auf der Seite **Abhängigkeiten** den Microsoft Monitoring Agent (MMA) herunter, und installieren Sie ihn – sowie den Dependency-Agent auf allen VMs, die Sie auswerten möchten.
 4. Kopieren Sie die Arbeitsbereichs-ID und den dazugehörigen Schlüssel. Sie benötigen diese Angaben beim Installieren des MMA auf dem lokalen Computer.
 
 > [!NOTE]
@@ -49,13 +49,13 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
 
-### <a name="install-the-dependency-agent"></a>Installieren des Abhängigkeits-Agents
-1. Doppelklicken Sie zum Installieren des Abhängigkeits-Agents auf einem Windows-Computer auf die Setupdatei, und befolgen Sie die Schritte im Assistenten.
-2. Installieren Sie den Abhängigkeits-Agent auf einem Linux-Computer als „root“, indem Sie den folgenden Befehl verwenden:
+### <a name="install-the-dependency-agent"></a>Installieren des Dependency-Agents
+1. Doppelklicken Sie zum Installieren des Dependency-Agents auf einem Windows-Computer auf die Setupdatei, und befolgen Sie die Schritte im Assistenten.
+2. Installieren Sie den Dependency-Agent auf einem Linux-Computer als „root“, indem Sie den folgenden Befehl verwenden:
 
     ```sh InstallDependencyAgent-Linux64.bin```
 
-[Erfahren Sie mehr](../monitoring/monitoring-service-map-configure.md#supported-operating-systems) zu den Betriebssystemen, die vom Abhängigkeits-Agent unterstützt werden.
+Erfahren Sie mehr zur Unterstützung des Dependency-Agents für die Betriebssysteme [Windows](../monitoring/monitoring-service-map-configure.md#supported-windows-operating-systems) und [Linux](../monitoring/monitoring-service-map-configure.md#supported-linux-operating-systems).
 
 [Erfahren Sie mehr](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) darüber, wie Sie den Dependency-Agent mithilfe von Skripts installieren können.
 
@@ -66,8 +66,8 @@ Gehen Sie wie folgt vor, um einen Agent auf einem Linux-Computer zu installieren
 3. Die Spalte **Abhängigkeiten** für den Computer sollte jetzt als **Abhängigkeiten anzeigen** erscheinen. Klicken Sie auf die Spalte, um die Abhängigkeiten des Computers anzuzeigen.
 4. In der Abhängigkeitszuordnung für den Computer werden die folgenden Informationen angezeigt:
     - Eingehende (Clients) und ausgehende (Server) TCP-Verbindungen vom/zum Computer.
-        - Die abhängigen Computer, auf denen keine MMA- und Abhängigkeits-Agents installiert sind, gruppiert nach Portnummern
-        - Die abhängigen Computer, auf denen MMA- und Abhängigkeits-Agents installiert sind, als separate Felder
+        - Die abhängigen Computer, auf denen keine MMA- und Dependency-Agents installiert sind, gruppiert nach Portnummern
+        - Die abhängigen Computer, auf denen MMA- und Dependency-Agents installiert sind, als separate Felder
     - Innerhalb des Computers ausgeführte Prozesse können Sie einblenden, indem Sie das Feld für den jeweiligen Computer erweitern.
     - Eigenschaften wie vollqualifizierter Domänenname, Betriebssystem, MAC-Adresse usw. für jeden Computer können Sie anzeigen, indem Sie auf das Feld für den jeweiligen Computer klicken.
 

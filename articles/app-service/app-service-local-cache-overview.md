@@ -3,8 +3,8 @@ title: Übersicht über den lokalen Cache von Azure App Service | Microsoft-Doku
 description: In diesem Artikel wird beschrieben, wie Sie den lokalen Cache von Azure App Service aktivieren, dessen Größe ändern und seinen Status abrufen.
 services: app-service
 documentationcenter: app-service
-author: SyntaxC4
-manager: yochayk
+author: cephalin
+manager: jpconnock
 editor: ''
 tags: optional
 keywords: ''
@@ -15,15 +15,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
-ms.author: cfowler
-ms.openlocfilehash: 75f2dcb80514105ed663ba1fe5f7adccc05af1fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cephalin
+ms.openlocfilehash: 59fe70e4d2a710160751ab8e7a83c9f86310dc24
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22985945"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597729"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
+
+> [!NOTE]
+> Lokaler Cache wird in App Service-Apps in Containern nicht unterstützt, z.B. [App Service unter Linux](containers/app-service-linux-intro.md).
+
 Der Inhalt von Azure-Web-Apps wird in Azure Storage gespeichert und dauerhaft als Inhaltsfreigabe bereitgestellt. Dieses Design ist auf den Einsatz mit einer Vielzahl von Apps ausgelegt und weist die folgenden Merkmale auf:  
 
 * Der Inhalt wird über mehrere VM-Instanzen der Web-App hinweg freigegeben.
@@ -31,7 +35,7 @@ Der Inhalt von Azure-Web-Apps wird in Azure Storage gespeichert und dauerhaft al
 * Protokolldateien und Diagnosedatendateien stehen unterhalb desselben freigegebenen Inhaltsordners zur Verfügung.
 * Beim Veröffentlichen neuer Inhalte wird der Inhaltsordner direkt aktualisiert. Der Inhalt kann umgehend über die SCM-Website und die ausgeführte Web-App angezeigt werden (einige Technologien wie z. B. ASP.NET initiieren bei einigen Dateiänderungen üblicherweise einen Web-App-Neustart, um die aktuellen Inhalte abzurufen).
 
-Während viele Web-Apps einzelne oder alle dieser Features nutzen, benötigen einige Web-Apps lediglich einen hoch leistungsfähigen schreibgeschützten Inhaltsspeicher, aus dem sie mit hoher Verfügbarkeit ausgeführt werden können. Diese Apps können von einer VM-Instanz eines bestimmten lokalen Caches profitieren.
+Während viele Web-Apps einzelne oder alle dieser Features nutzen, benötigen einige Web-Apps lediglich einen hoch leistungsfähigen schreibgeschützten Inhaltsspeicher, aus dem sie mit Hochverfügbarkeit ausgeführt werden können. Diese Apps können von einer VM-Instanz eines bestimmten lokalen Caches profitieren.
 
 Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalte. Dabei handelt es sich um einen Cache Ihres Speicherinhalts mit „write but discard“-Prinzip, der beim lokalen Start asynchron erstellt wird. Wenn der Cache bereit ist, wird die Site zur Ausführung mit dem zwischengespeicherten Inhalt umgeschaltet. Web-Apps, die mit lokalem Cache ausgeführt werden, bieten die folgenden Vorteile:
 
@@ -41,10 +45,10 @@ Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalt
 
 ## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>Auswirkung des lokalen Caches auf das Verhalten von App Service
 * Der lokale Cache ist eine Kopie der Ordner „/site“ und „/siteextensions“ der Web-App. Er wird beim Start der Web-App auf der lokalen VM-Instanz erstellt. Die Größe des lokalen Caches ist pro Web-App standardmäßig auf 300 MB beschränkt, kann aber auf bis zu 2 GB erhöht werden.
-* Der lokale Cache bietet Lese- und Schreibzugriff. Änderungen werden jedoch verworfen, wenn die Web-App zwischen virtuellen Computern verschoben oder neu gestartet wird. Verwenden Sie den lokalen Cache nicht für Apps, die unternehmenskritische Daten im Inhaltsspeicher speichern.
+* Der lokale Cache bietet Lese- und Schreibzugriff. Änderungen werden aber verworfen, wenn die Web-App zwischen virtuellen Computern verschoben oder neu gestartet wird. Verwenden Sie den lokalen Cache nicht für Apps, die unternehmenskritische Daten im Inhaltsspeicher speichern.
 * Web-Apps können wie bisher Protokolldateien und Diagnosedaten schreiben. Protokolldateien und Daten werden jedoch lokal auf der VM gespeichert. Diese Daten werden dann in regelmäßigen Abständen in den freigegebenen Inhaltsspeicher kopiert. Der Kopiervorgang in den freigegebenen Inhaltsspeicher erfolgt nach dem „Best Case“-Prinzip, und zurückgeschriebene Daten können bei einem plötzlichen Absturz einer VM-Instanz verloren gehen.
 * Für Web-Apps, die den lokalen Cache verwenden, ergibt sich eine Änderung in Bezug auf die Ordnerstruktur für die LogFiles- und Data-Ordner. Es sind jetzt Unterordner in den Speicherordnern „LogFiles“ und „Data“ vorhanden, die das folgende Benennungsmuster verwenden: „eindeutiger Bezeichner“ + Zeitstempel Jeder dieser Unterordner entspricht einer VM-Instanz, auf der die Web-App ausgeführt wird oder wurde.  
-* Das Veröffentlichen von Änderungen an der Web-App über einen der Veröffentlichungsmechanismen führt zu einer Veröffentlichung im freigegebenen Inhaltsspeicher. Dieses Verhalten wurde umgesetzt, weil der veröffentlichte Inhalt dauerhaft bereitgestellt werden soll. Zum Aktualisieren des lokalen Caches der Web-App ist ein Neustart erforderlich. Dies erscheint überzogen? Informationen zu einem nahtlosen Lebenszyklus finden Sie weiter unten in diesem Artikel.
+* Das Veröffentlichen von Änderungen an der Web-App über einen der Veröffentlichungsmechanismen führt zu einer Veröffentlichung im langlebigen freigegebenen Inhaltsspeicher. Zum Aktualisieren des lokalen Caches der Web-App ist ein Neustart erforderlich. Informationen zu einem nahtlosen Lebenszyklus finden Sie weiter unten in diesem Artikel.
 * „D:\Home“ verweist auf den lokalen Cache. „D:\local“ zeigt weiterhin auf den temporären VM-spezifischen Speicher.
 * Die standardmäßige Inhaltsansicht der SCM-Site ist weiterhin die des freigegebenen Inhaltsspeichers.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4082189d451f670c1ae3f76b8ec785d8bd0518b3
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 83f199c49209210ec577017534f93e36d05bd70a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034919"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620364"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal
 
@@ -44,17 +44,17 @@ Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen d
 
 1. Geben Sie im Abschnitt **Registrierungseinstellungen** der Seite die Anmeldeinformationen für den Zugriff auf private Containerregistrierungen mit Ihren Modulimages an. 
 2. Wählen Sie im Abschnitt **Bereitstellungsmodule** der Seite die Option **Hinzufügen** aus. 
-3. Wählen Sie den Modultyp in der Dropdownliste aus: 
+3. Sehen Sie sich die Modultypen in der Dropdownliste an: 
    * **IoT Edge-Modul:** Standardoption.
    * **Azure Stream Analytics-Modul:** nur Module, die aus einer Azure Stream Analytics-Workload generiert wurden. 
-
-4. Geben Sie einen Namen für das Modul und dann das Containerimage an. Beispiel:  
+4. Wählen Sie das **IoT Edge-Modul** aus.
+5. Geben Sie einen Namen für das Modul und dann das Containerimage an. Beispiel:  
    * **Name:** tempSensor
    * **Bild-URI:** mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
-5. Füllen Sie bei Bedarf die optionalen Felder aus. Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](module-edgeagent-edgehub.md#edgeagent-desired-properties). Weitere Informationen zum Modulzwilling finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
-6. Wählen Sie **Speichern**aus.
-7. Wiederholen Sie die Schritte 2 bis 6, um Ihrer Bereitstellung weitere Module hinzuzufügen. 
-8. Klicken Sie auf **Weiter**, um mit dem Abschnitt über Routen fortzufahren.
+6. Füllen Sie bei Bedarf die optionalen Felder aus. Weitere Informationen zu Containererstellungsoptionen, Neustartrichtlinien und gewünschtem Status finden Sie unter [Gewünschte EdgeAgent-Eigenschaften](module-edgeagent-edgehub.md#edgeagent-desired-properties). Weitere Informationen zum Modulzwilling finden Sie unter [Definieren oder Aktualisieren gewünschter Eigenschaften](module-composition.md#define-or-update-desired-properties).
+7. Wählen Sie **Speichern**aus.
+8. Wiederholen Sie die Schritte 2 bis 6, um Ihrer Bereitstellung weitere Module hinzuzufügen. 
+9. Klicken Sie auf **Weiter**, um mit dem Abschnitt über Routen fortzufahren.
 
 ### <a name="specify-routes"></a>Angeben von Routen
 

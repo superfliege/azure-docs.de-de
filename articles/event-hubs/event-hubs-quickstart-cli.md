@@ -2,26 +2,26 @@
 title: Azure-Schnellstart – Verarbeiten von Ereignisdatenströmen per Azure CLI | Microsoft-Dokumentation
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ereignisdatenströme per Azure CLI verarbeiten.
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 3e4689aa4ef5cdbd52aa2c70b8ba754013cab3db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: shvija
+ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425951"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004563"
 ---
 # <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>Schnellstart: Verarbeiten von Ereignisdatenströmen per Azure CLI und Java
 
 Azure Event Hubs ist eine hochgradig skalierbare Datenstreamingplattform und ein Dienst zur Datenerfassung, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Event Hubs-Ressourcen per Azure CLI erstellen und dann Ereignisdatenströme über einen Event Hub mit Java-Code senden und empfangen.
 
-Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [Erstellen eines kostenlosen Kontos][] erstellen, bevor Sie beginnen.
+Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -292,7 +292,7 @@ In diesem Artikel haben Sie den Event Hubs-Namespace und andere Ressourcen erste
 > [!div class="nextstepaction"]
 > [Visualisieren von Datenanomalien in Event Hubs-Datenströmen](event-hubs-tutorial-visualize-anomalies.md)
 
-[Erstellen eines kostenlosen Kontos]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install Azure CLI 2.0]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az-group-create
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 19be449528481b4e35cad4418f82f2250917966b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 0a5d0f87b31652b1e1ab32c6b1594021937751b6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32787415"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "40047025"
 ---
 ## <a name="prepare-for-akv-integration"></a>Vorbereiten auf die Integration des Azure-Schlüsseltresors
 Es müssen mehrere Voraussetzungen erfüllt sein, damit Sie die Azure-Schlüsseltresor-Integration zum Konfigurieren Ihres virtuellen SQL Server-Computers verwenden können: 
@@ -49,7 +49,7 @@ Registrieren Sie als Nächstes eine Anwendung für AAD. So erhalten Sie ein Dien
 
 * Die Anwendungs-ID und das Geheimnis werden auch zum Erstellen von Anmeldeinformationen in SQL Server verwendet.
 
-* Sie müssen diese neue Client-ID autorisieren, sodass sie über die folgenden Zugriffsberechtigungen verfügt: **encrypt**, **decrypt**, **wrapKey**, **unwrapKey**, **sign** und **verify**. Hierfür wird das [Set-AzureRmKeyVaultAccessPolicy](https://msdn.microsoft.com/library/azure/mt603625.aspx) -Cmdlet verwendet. Weitere Informationen finden Sie unter [Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels](../articles/key-vault/key-vault-get-started.md#authorize).
+* Sie müssen diese neue Client-ID autorisieren, sodass sie über die folgenden Zugriffsberechtigungen verfügt: **get**, **wrapKey**, **unwrapKey**. Hierfür wird das [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy) -Cmdlet verwendet. Weitere Informationen finden Sie unter [Autorisieren der Anwendung zum Verwenden des Schlüssels oder geheimen Schlüssels](../articles/key-vault/key-vault-get-started.md#authorize).
 
 ### <a id="createkeyvault"></a> Erstellen einer Key Vault-Instanz
 Um den Azure-Schlüsseltresor zum Speichern der Schlüssel zu verwenden, die Sie für die Verschlüsselung auf Ihrem virtuellen Computer nutzen, benötigen Sie Zugriff auf den Schlüsseltresor. Wenn Sie den Schlüsseltresor noch nicht eingerichtet haben, können Sie die Schritte im Artikel [Erste Schritte mit Azure Key Vault](../articles/key-vault/key-vault-get-started.md) ausführen. Vor dem Ausführen der Schritte müssen Sie während dieses Setups einige Informationen ermitteln, da sie diese später beim Aktivieren der Azure Key Vault-Integration auf Ihrem virtuellen SQL-Computer benötigen.

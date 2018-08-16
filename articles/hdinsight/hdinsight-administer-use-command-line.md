@@ -1,25 +1,20 @@
 ---
-title: Verwalten von Hadoop-Clustern mit der Azure-CLI - Azure HDInsight| Microsoft-Dokumentation
+title: Verwalten von Hadoop-Clustern mit der Azure CLI – Azure HDInsight
 description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Hadoop-Cluster in Azure HDInsight verwalten. Die Azure-Befehlszeilenschnittstelle funktioniert unter Windows, Mac und Linux.
 services: hdinsight
-editor: cgronlun
-manager: jhubbard
-author: mumian
-tags: azure-portal
-documentationcenter: ''
-ms.assetid: 4f26c79f-8540-44bd-a470-84722a9e4eca
+editor: jasonwhowell
+author: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 18901c3e99b1c67d01c091918a6abdd2f298defa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: dea0f004c4283bf594e46097092a52dedabb9f4b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200978"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599019"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]

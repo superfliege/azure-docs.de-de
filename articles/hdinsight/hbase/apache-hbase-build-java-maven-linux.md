@@ -1,24 +1,20 @@
 ---
-title: Java-HBase-Client – Azure HDInsight | Microsoft-Dokumentation
+title: Java-HBase-Client – Azure HDInsight
 description: Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HBase-Anwendung erstellen und anschließend in HBase unter Azure HDInsight bereitstellen können.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: ''
-ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.author: larryfr
-ms.openlocfilehash: 564bfb9c80fe835bd5defb4321607e0970c9f0aa
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: jasonh
+ms.openlocfilehash: 4700a25cdeb9bf9800d01f09691b0f16df3f6637
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311487"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597751"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Erstellen von Java-Anwendungen für die Apache-HBase
 
@@ -32,7 +28,7 @@ Die Schritte in diesem Dokument verwenden [Maven](http://maven.apache.org/) zum 
 > [!IMPORTANT]
 > Die Schritte in diesem Dokument erfordern einen HDInsight-Cluster mit Linux. Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 * [Java Platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 8 oder höher
 

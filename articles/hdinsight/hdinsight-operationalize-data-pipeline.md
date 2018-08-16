@@ -1,24 +1,20 @@
 ---
-title: Operationalisieren einer Datenanalysepipeline – Azure | Microsoft-Dokumentation
+title: Operationalisieren einer Datenanalysepipeline – Azure
 description: Einrichten und Ausführen einer Beispieldatenpipeline, die durch neue Daten ausgelöst wird und präzise Ergebnisse liefert.
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/11/2018
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: 7ac1ed0db15d91ef8af009c879c3634148826286
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/11/2018
+ms.openlocfilehash: 68329ec01548a986ff4e41c23ab2298bda522eef
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392186"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038211"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisieren einer Datenanalysepipeline
 
@@ -34,7 +30,7 @@ Im folgenden Szenario handelt es sich bei den Eingabedaten um ein Flatfile mit e
 | 2017 | 1 | 3 | AS | 9,435449 | 5,482143 | 572289 |
 | 2017 | 1 | 3 | DL | 6,935409 | –2,1893024 | 1909696 |
 
-In der Beispielpipeline wird gewartet, bis Flugdaten für einen neuen Zeitraum eingehen. Diese detaillierten Fluginformationen werden dann für langfristige Analysen im Hive-Data Warehouse gespeichert. In der Pipeline wird zudem ein wesentlich kleineres Dataset erstellt, das lediglich die täglichen Flugdaten zusammenfasst. Diese täglichen Flugzusammenfassungsdaten werden an eine SQL-­Datenbank gesendet, um Berichte bereitzustellen, z.B. für eine Website.
+In der Beispielpipeline wird gewartet, bis Flugdaten für einen neuen Zeitraum eingehen. Diese detaillierten Fluginformationen werden dann für langfristige Analysen im Hive-Data Warehouse gespeichert. In der Pipeline wird zudem ein wesentlich kleineres Dataset erstellt, das lediglich die täglichen Flugdaten zusammenfasst. Diese tägliche Zusammenfassung von Flugdaten wird zur Bereitstellung von Berichten (z.B. für eine Website) an eine SQL-­Datenbank gesendet.
 
 Die Beispielpipeline ist in der folgenden Abbildung dargestellt.
 

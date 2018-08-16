@@ -1,26 +1,21 @@
 ---
-title: Ausführen der Hadoop MapReduce-Beispiele in HDInsight – Azure | Microsoft-Dokumentation
+title: Ausführen der Hadoop MapReduce-Beispiele in HDInsight – Azure
 description: Lernen Sie die ersten Schritte mit MapReduce-Beispielen in JAR-Dateien in HDInsight kennen. Verwenden Sie SSH, um eine Verbindung mit dem Cluster herzustellen, und verwenden Sie dann den Hadoop-Befehl, um Beispielaufträge auszuführen.
 keywords: Hadoop-Beispiel-JAR, Hadoop Beispiele JAR, Hadoop MapReduce-Beispiele, MapReduce-Beispiele
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: e1d2a0b9-1659-4fab-921e-4a8990cbb30a
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: larryfr
-ms.openlocfilehash: 14f860d64c482ac7ef74512aea4850821d30132c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: b29fb56f6ce244811aef924bb947a8b8ee8e4da4
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202304"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597302"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Ausführen von MapReduce-Beispielen in HDInsight
 
@@ -156,7 +151,7 @@ Die Ergebnisse sollten in etwa folgendem Text entsprechen:
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## <a name="pi--example"></a>Das Pi-Beispiel (π)
+## <a name="pi--example"></a>Beispiel für Pi (π)
 
 Das Beispiel verwendet eine statistische (Quasi-Monte-Carlo-) Methode, um den Wert von Pi zu schätzen. Punkte werden nach dem Zufallsprinzip in einem Einheitenquadrat platziert. Das Quadrat enthält auch einen Kreis. Die Wahrscheinlichkeit, dass die Punkte innerhalb des Kreises liegen, entspricht der Fläche des Kreises, Pi/4. Der Wert von Pi kann aus dem Wert 4R geschätzt werden. Dabei ist R das Verhältnis zwischen der Anzahl der Punkte innerhalb des Kreises zur Gesamtanzahl der Punkte innerhalb des Quadrats. Je größer die Anzahl der Punkte, desto genauer die Schätzung.
 

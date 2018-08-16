@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: fdde8cbec7fc249eecfcc0c1682bb5eed94c1585
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 460a52f240f6b3723f93e81a11a8cd1ccc6c30c9
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39050488"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Tutorial: Azure Active Directory-Integration mit Ziflow
 
@@ -101,20 +101,20 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/ziflow-tutorial/tutorial_ziflow_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für Ziflow** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Ziflow](./media/ziflow-tutorial/tutorial_ziflow_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.ziflow.io/#/login-sso/<Unique ID>`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://ziflow-production.auth0.com/login/callback?connection=<UniqueID>`
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `urn:auth0:ziflow-production:<Unique ID>`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `urn:auth0:ziflow-production:<UniqueID>`
 
-    > [!NOTE] 
-    > Die vorangehenden Werte sind keine echten Werte. Sie aktualisieren den eindeutigen ID-Wert des Bezeichners und der Anmelde-URL mit dem tatsächlichen Wert. Dies wird später in diesem Tutorial beschrieben. Den Wert der Unterdomäne in der Anmelde-URL erhalten Sie vom [Ziflow-Supportteam](mailto:support@ziflow.com).
-    
+    > [!NOTE]
+    > Die vorangehenden Werte sind keine echten Werte. Sie aktualisieren den eindeutigen ID-Wert des Bezeichners und der Anmelde-URL mit dem tatsächlichen Wert. Dies wird später in diesem Tutorial beschrieben.
+
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/ziflow-tutorial/tutorial_ziflow_certificate.png) 
@@ -128,7 +128,6 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Ziflow-Konfiguration](./media/ziflow-tutorial/tutorial_ziflow_configure.png) 
 
 7. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Ziflow an.
-
 
 8. Klicken Sie in der Ecke oben rechts auf den Avatar und anschließend auf **Manage account** (Konto verwalten).
 

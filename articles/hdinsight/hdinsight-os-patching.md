@@ -1,24 +1,19 @@
 ---
-title: Konfigurieren des Zeitplans für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster –Azure | Microsoft-Dokumentation
+title: Konfigurieren des Zeitplans für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster – Azure
 description: Erfahren Sie, wie der Zeitplan für das Patchen des Betriebssystems für Linux-basierte HDInsight-Cluster konfiguriert wird.
 services: hdinsight
-documentationcenter: ''
-author: bprakash
-manager: asadk
-editor: bprakash
-ms.assetid: ''
+author: omidm1
+ms.author: omidm
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2017
-ms.author: bhanupr
-ms.openlocfilehash: 42771b9ff0f177b6b31f626d1dd2d07046a53965
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5d8fae7412bece631e6961fb92b7d87e308cc857
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409754"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599213"
 ---
 # <a name="os-patching-for-hdinsight"></a>Patchen des Betriebssystems für HDInsight 
 Als verwalteter Hadoop-Dienst erledigt HDInsight das Patchen des Betriebssystems für die zugrundeliegenden virtuellen Computer, die von HDInsight-Clustern verwendet werden. Mit Wirkung ab dem 1. August 2016 haben wir die Richtlinie für das Patchen von Gastbetriebssystemen für Linux-basierte HDInsight-Cluster (Version 3.4 oder höher) geändert. Ziel der neuen Richtlinie ist es, die aufgrund von Patching erforderlichen Neustarts erheblich zu reduzieren. Im Rahmen der neuen Richtlinie werden Patches für virtuelle Computer in Linux-Clustern weiterhin jeden Montag oder Donnerstag ab 0:00 Uhr UTC schrittweise auf allen Knoten in jedem Cluster aufgespielt. Die einzelnen virtuellen Computer werden jedoch nur noch maximal alle 30 Tage aufgrund von Patchingvorgängen für das Gastbetriebssystem neu gestartet. Auch der erste Neustart eines neu erstellten Clusters erfolgt nicht früher als 30 Tage nach Erstellungsdatum des Clusters. Patches werden wirksam, sobald die virtuellen Computer neu gestartet werden.

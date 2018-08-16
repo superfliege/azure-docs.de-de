@@ -1,26 +1,20 @@
 ---
-title: Herstellen einer Verbindung mit Kafka mithilfe von virtuellen Netzwerken – Azure HDInsight | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Kafka mithilfe von virtuellen Netzwerken – Azure HDInsight
 description: Erfahren Sie, wie Sie eine direkte Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk herstellen. Erfahren Sie, wie Sie über Entwicklungsclients mit einem VPN-Gateway oder über Clients in Ihrem lokalen Netzwerk mithilfe eines VPN-Gateway-Geräts eine Verbindung mit Kafka herstellen.
 services: hdinsight
-documentationCenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
-ms.devlang: ''
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/02/2018
-ms.author: larryfr
-ms.openlocfilehash: 2740b5cf483fe3fbc2644510461863b939ffaae3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 61732a7ac4daa9f3425d3f7f3b689be57d46b8cd
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779310"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39620262"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 

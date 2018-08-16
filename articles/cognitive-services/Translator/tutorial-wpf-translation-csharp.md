@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: nolachar
-ms.openlocfilehash: 5dc9478516f4e9850543a6ee129fef0f1d3ee4f7
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 353c1d91b7925a84667ef1bb7c38ab87c6a89cc1
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214916"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716371"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>Tutorial: Schreiben einer WPF-Anwendung für die Textübersetzung per C&#35;
 
@@ -666,9 +666,9 @@ Der Code zum Durchführen der Übersetzungsanforderung sollte Ihnen vertraut vor
 Die HTTP-Header `X-ClientTraceId` ist optional. Der Wert muss eine GUID sein. Anhand der vom Client angegebenen Ablaufverfolgungs-ID können Sie Anforderungen nachverfolgen, falls etwas nicht wie erwartet funktioniert. Sie ist allerdings nur hilfreich, wenn der Client den Wert von „X-ClientTraceID“ erfasst. Auf der Grundlage der Clientablaufverfolgungs-ID und des Datums der Anforderungen kann Microsoft mögliche Probleme diagnostizieren.
 
 > [!NOTE]
-> Da in diesem Tutorial der Microsoft Translator-Dienst im Mittelpunkt steht, gehen wir hier nicht näher auf die Methoden `DetectLanguage()` und `CorrectSpelling()` ein. Die Dienste „Textanalyse“ und „Bing-Rechtschreibprüfung“ geben Antworten nicht im XML-Format, sondern im JSON-Format zurück, und für die Textanalyse muss die Anforderung ebenfalls im JSON-Format vorliegen. Die meisten Codeunterschiede zwischen den hier beschriebenen Methoden sind auf diese Aspekte zurückzuführen.
+> Da in diesem Tutorial der Microsoft Translator-Dienst im Mittelpunkt steht, gehen wir hier nicht näher auf die Methoden `DetectLanguage()` und `CorrectSpelling()` ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Referenz für die Textübersetzungs-API von Microsoft](http://docs.microsofttranslator.com/text-translate.html)
+> [Referenz für die Textübersetzungs-API von Microsoft](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)

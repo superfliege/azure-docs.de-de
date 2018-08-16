@@ -3,25 +3,25 @@ title: Azure-Schnellstart – Verarbeiten von Ereignisdatenströmen mit dem Azur
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ereignisdatenströme mit dem Azure-Portal verarbeiten.
 services: event-hubs
 documentationcenter: ''
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: da48294962dc5af5f9d623c84f9bbff1d49be03e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: 1938f7a8400587f8f0405cb576bfbdfe8bf1dddd
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132291"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004309"
 ---
 # <a name="quickstart-process-event-streams-using-the-azure-portal-and-net"></a>Schnellstart: Verarbeiten von Ereignisdatenströmen mit dem Azure-Portal und .NET
 
 Azure Event Hubs ist eine hochgradig skalierbare Datenstreamingplattform und ein Dienst zur Datenerfassung, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie einen Event Hub mit dem [Azure-Portal](https://portal.azure.com) erstellen und das Senden an bzw. Empfangen von einem Event Hub mit dem .NET Standard SDK durchführen.
 
-Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [Erstellen eines kostenlosen Kontos][] erstellen, bevor Sie beginnen.
+Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -173,7 +173,7 @@ In diesem Artikel haben Sie den Event Hubs-Namespace und andere Ressourcen erste
 > [!div class="nextstepaction"]
 > [Visualisieren von Datenanomalien in Event Hubs-Datenströmen](event-hubs-tutorial-visualize-anomalies.md)
 
-[Erstellen eines kostenlosen Kontos]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Azure-Portal]: https://portal.azure.com/
 [1]: ./media/event-hubs-quickstart-portal/resource-groups1.png
 [2]: ./media/event-hubs-quickstart-portal/resource-groups2.png

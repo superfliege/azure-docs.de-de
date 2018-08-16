@@ -2,7 +2,7 @@
 title: Azure-Schnellstart – Verarbeiten von Ereignisdatenströmen mit PowerShell | Microsoft-Dokumentation
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Azure Event Hubs-Ereignisse mit PowerShell und einer .NET-Beispielanwendung senden und empfangen.
 services: event-hubs
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.service: event-hubs
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 9216372038db7a6f97cfc8034f715b34de08d83c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: shvija
+ms.openlocfilehash: fd2b8b2e8bd075e029a07519ced186424798fd9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132300"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003609"
 ---
 # <a name="quickstart-process-event-streams-using-powershell-and-net-standard"></a>Schnellstart: Verarbeiten von Ereignisdatenströmen mit PowerShell und .NET Standard
 
 Azure Event Hubs ist eine hochgradig skalierbare Datenstreamingplattform und ein Dienst zur Datenerfassung, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie einen Event Hub mit Azure PowerShell erstellen und das Senden an bzw. Empfangen von einem Event Hub mit dem .NET Standard SDK durchführen.
 
-Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [Erstellen eines kostenlosen Kontos][] erstellen, bevor Sie beginnen.
+Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -55,7 +55,7 @@ Nachdem die Ressourcengruppe vorhanden ist, können Sie darin einen Event Hubs-N
 New-AzureRmEventHubNamespace -ResourceGroupName myResourceGroup -NamespaceName namespace_name -Location eastus
 ```
 
-### <a name="create-an-event-hub"></a>Erstellen einer Event Hub-Instanz
+### <a name="create-an-event-hub"></a>Erstellen eines Ereignis-Hubs
 
 Nachdem Sie nun über einen Event Hubs-Namespace verfügen, können Sie darin einen Event Hub erstellen:
 
@@ -156,7 +156,7 @@ In diesem Artikel haben Sie den Event Hubs-Namespace und andere Ressourcen erste
 > [!div class="nextstepaction"]
 > [Visualisieren von Datenanomalien in Event Hubs-Datenströmen](event-hubs-tutorial-visualize-anomalies.md)
 
-[Erstellen eines kostenlosen Kontos]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install and Configure Azure PowerShell]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [New-AzureRmResourceGroup]: https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

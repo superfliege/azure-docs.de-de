@@ -2,61 +2,60 @@
 title: Dateispeicherplatzverwaltung mit Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Diese Seite beschreibt, wie Sie mit Azure SQL-Datenbank Dateispeicherplatz verwalten, und bietet Codebeispiele, mit denen Sie feststellen können, ob eine Datenbank verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
 services: sql-database
-author: CarlRabeler
+author: oslake
 manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 1ecc0ce08ef42f5f5935bca29e8269be2ea142f0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.date: 08/08/2018
+ms.author: moslake
+ms.openlocfilehash: 5dce07996191af3df3a4bdf16b211c29d59a994f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39416003"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003857"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz in Azure SQL-Datenbank
-
-Dieser Artikel beschreibt verschiedene Arten von Speicherplatz in der Azure SQL-Datenbank und Schritte, die durchgeführt werden können, wenn der für Datenbanken und Pools für elastische Datenbanken zugewiesene Speicherplatz vom Kunden verwaltet werden muss.
+Dieser Artikel beschreibt verschiedene Arten von Speicherplatz in der Azure SQL-Datenbank und Schritte, die ausgeführt werden können, wenn der für Datenbanken und Pools für elastische Datenbanken zugewiesene Speicherplatz explizit verwaltet werden muss.
 
 ## <a name="overview"></a>Übersicht
 
-In Azure SQL Database messen die im Azure-Portal angezeigten Speichergrößenmetriken und die folgenden APIs die Anzahl der verwendeten Datenseiten für Datenbanken und Pool für elastische Datenbanken:
+In Azure SQL-Datenbank messen die meisten im Azure-Portal angezeigten Speicherplatzmetriken und die folgenden APIs die Anzahl von verwendeten Datenseiten für Datenbanken und Pool für elastische Datenbanken:
 - Azure Resource Manager-basierte Metrik-APIs einschließlich PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 - T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Es gibt Workloadmuster, bei denen die Zuweisung von Speicherplatz in den zugrunde liegenden Datendateien für Datenbanken größer wird als die Anzahl der verwendeten Datenseiten in den Datendateien. Dieses Szenario kann auftreten, wenn der Platzbedarf zunimmt und die Daten anschließend gelöscht werden. Wenn die Daten gelöscht werden, wird der zugewiesene Speicherplatz nicht automatisch freigegeben, wenn die Daten gelöscht werden. In solchen Szenarien kann der zugewiesene Speicherplatz für eine Datenbank oder einen Pool die für die Datenbank festgelegten (oder unterstützten) Höchstgrenzen überschreiten und somit ein Datenwachstum oder eine Änderung der Leistungsstufe verhindern, auch wenn der tatsächlich genutzte Speicherplatz unter der Höchstgrenze liegt. Um dies zu verhindern, müssen Sie die Datenbank möglicherweise verkleinern, um den zugewiesenen, aber ungenutzten Speicherplatz in der Datenbank zu reduzieren.
+Es gibt Workloadmuster, bei denen die Zuteilung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann.  Dies kann auftreten, wenn der Platzbedarf zunimmt und die Daten anschließend gelöscht werden.  Der Grund ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.  In diesen Szenarien kann der zugeordnete Speicherplatz für eine Datenbank oder einen Pool die unterstützten Grenzwerte übersteigen und die Datenzunahme oder Änderungen der Leistungsstufe verhindern. Außerdem kann die Verkleinerung von Datendateien erzwungen werden, um dieses Problem zu lösen.
 
-Der SQL-Datenbankdienst verkleinert Datenbankdateien aufgrund der möglichen Auswirkungen auf die Datenbankleistung nicht automatisch, um ungenutzten zugewiesenen Speicherplatz freizugeben. Sie können die Datei in einer Datenbank jedoch jederzeit anhand der unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) aufgeführten Schritte verkleinern. 
+Der SQL-Datenbankdienst verkleinert Datendateien aufgrund der möglichen Auswirkungen auf die Datenbankleistung nicht automatisch, um ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen. 
 
 > [!NOTE]
-> Im Gegensatz zu Datendateien verkleinert der SQL-Datenbankdienst die Protokolldateien automatisch, da dieser Vorgang die Datenbankleistung nicht beeinträchtigt.
+> Im Gegensatz zu Datendateien verkleinert der SQL-Datenbankdienst die Protokolldateien automatisch, da dieser Vorgang die Datenbankleistung nicht beeinträchtigt. 
 
-## <a name="understanding-the-types-of-storage-space-for-a-database"></a>Grundlegendes zu den Arten von Speicherplatz für eine Datenbank
+## <a name="understanding-types-of-storage-space-for-a-database"></a>Grundlegendes zu den Arten von Speicherplatz für eine Datenbank
 
-Um Dateispeicher zu verwalten, müssen Sie die folgenden Begriffe verstehen, die sich auf die Datenbankspeicherung sowohl für eine einzelne Datenbank als auch für einen Pool für elastische Datenbanken beziehen.
+Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit Sie den Dateispeicherplatz einer Datenbank verwalten können.
 
-|Speicherplatzbegriff|Definition|Kommentare|
+|Datenbankmenge|Definition|Kommentare|
 |---|---|---|
-|**Genutzter Speicherplatz**|Die Menge des Speicherplatzes, der zum Speichern von Daten in 8-KB-Seiten verwendet wird.|In der Regel erhöht (verringert) sich dieser Platzbedarf bei eingefügten (gelöschten) Daten. In manchen Fällen ändert sich der genutzte Speicherplatz beim Einfügen oder Löschen von Daten nicht, je nach Menge und Muster der an dem Vorgang beteiligten Daten und einer eventuellen Fragmentierung. Beispielsweise wird der genutzte Speicherplatz durch Löschen einer Zeile auf jeder Datenseite nicht zwangsläufig gesenkt.|
-|**Zugewiesener Speicherplatz**|Die Menge an formatiertem Dateispeicherplatz zum Speichern von Daten|Der zugewiesene Speicherplatz wächst automatisch an, wird jedoch nach dem Löschen nicht kleiner. Dieses Verhalten stellt sicher, dass Daten später schneller eingefügt werden, da der Platz nicht neu formatiert werden muss.|
-|**Zugewiesener aber ungenutzter Speicherplatz**|Die Menge an ungenutztem Speicherplatz für die Datendatei, der für die Datenbank zugewiesen ist.|Diese Menge ist die Differenz zwischen dem zugewiesenen und dem belegten Speicherplatz und stellt die maximale Menge an Speicherplatz dar, die durch das Verkleinern von Datenbankdateien freigegeben werden kann.|
-|**Max. Größe**|Die Höchstmenge an Datenspeicherplatz, die von der Datenbank verwendet werden kann.|Der zugewiesene Datenspeicherplatz kann die maximale Datengröße nicht überschreiten.|
+|**Genutzter Speicherplatz**|Die Menge des Speicherplatzes, der zum Speichern von Daten in 8-KB-Seiten verwendet wird.|In der Regel erhöht (verringert) sich der Platzbedarf bei eingefügten (gelöschten) Daten. In manchen Fällen ändert sich der genutzte Speicherplatz beim Einfügen oder Löschen von Daten nicht, je nach Menge und Muster der an dem Vorgang beteiligten Daten und einer eventuellen Fragmentierung. Beispielsweise wird der genutzte Speicherplatz durch Löschen einer Zeile auf jeder Datenseite nicht zwangsläufig gesenkt.|
+|**Zugeordneter Datenspeicherplatz**|Die Menge an formatiertem Dateispeicherplatz zum Speichern von Daten.|Die Menge des zugeordneten Speicherplatzes wächst automatisch an, wird aber nach dem Löschen nicht kleiner. Dieses Verhalten stellt sicher, dass Daten später schneller eingefügt werden, da der Platz nicht neu formatiert werden muss.|
+|**Zugeordneter Datenspeicherplatz (ungenutzt)**|Die Differenz zwischen der Menge des zugeordneten Datenspeicherplatzes und des genutzten Datenspeicherplatzes.|Diese Menge ist die maximale Menge des freien Speicherplatzes, die freigegeben werden kann, indem Datendateien von Datenbanken verkleinert werden.|
+|**Maximale Datengröße**|Die maximale Speicherplatzmenge, die zum Speichern von Datenbankdaten verwendet werden kann.|Die Menge des zugeordneten Datenspeicherplatzes kann die maximale Datengröße nicht überschreiten.|
 ||||
 
-Das folgende Diagramm veranschaulicht die Beziehung zwischen den verschiedenen Arten von Speicherplatz.
+Das folgende Diagramm veranschaulicht die Beziehung zwischen den verschiedenen Arten von Speicherplatz für eine Datenbank.
 
-![Arten von Speicherplatz und Beziehungen](./media/sql-database-file-space-management/storage-types.png)
+![Arten von Speicherplatz und Beziehungen](./media/sql-database-file-space-management/storage-types.png) 
 
 ## <a name="query-a-database-for-storage-space-information"></a>Abfragen einer Datenbank nach Speicherplatzinformationen
 
-Um festzustellen, ob eine einzelne Datenbank zugewiesenen aber ungenutzten Datenspeicherplatz enthält, den Sie ggf. freigeben können, verwenden Sie die folgenden Abfragen:
+Die folgenden Abfragen können verwendet werden, um die Speicherplatzmengen für eine Datenbank zu ermitteln.  
 
 ### <a name="database-data-space-used"></a>Genutzter Speicherplatz in Datenbank
-Ändern Sie die folgende Abfrage, um den belegten Speicherplatz der Datenbank in MB zurückzugeben.
+Ändern Sie die folgende Abfrage, um den belegten Speicherplatz der Datenbank zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
 
 ```sql
 -- Connect to master
@@ -67,8 +66,8 @@ WHERE database_name = 'db1'
 ORDER BY end_time DESC
 ```
 
-### <a name="database-data-allocated-and-allocated-space-unused"></a>Datenbankdaten – zugewiesener und ungenutzter zugewiesener Speicherplatz
-Ändern Sie die folgende Abfrage, um den zugewiesenen und ungenutzten zugewiesenen Speicherplatz der Datenbank zurückzugeben.
+### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Zugeordneter Datenbank-Datenspeicherplatz und ungenutzter zugeordneter Speicherplatz
+Verwenden Sie die folgende Abfrage, um die Menge des Datenbank-Datenspeicherplatzes und die Menge des zugeordneten ungenutzten Speicherplatzes zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
 
 ```sql
 -- Connect to database
@@ -80,8 +79,8 @@ GROUP BY type_desc
 HAVING type_desc = 'ROWS'
 ```
  
-### <a name="database-max-size"></a>Maximale Datenbankgröße
-Ändern Sie die folgende Abfrage, um die maximale Datenbankgröße in Bytes zurückgegeben.
+### <a name="database-data-max-size"></a>Max. Größe für Datenbankdaten
+Ändern Sie die folgende Abfrage, um die maximale Größe für Datenbankdaten zurückgegeben.  Als Einheit für das Abfrageergebnis wird Byte verwendet.
 
 ```sql
 -- Connect to database
@@ -89,12 +88,24 @@ HAVING type_desc = 'ROWS'
 SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 ```
 
+## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Grundlegendes zu den Arten von Speicherplatz für einen Pool für elastische Datenbanken
+
+Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit Sie den Dateispeicherplatz eines Pools für elastische Datenbanken verwalten können.
+
+|Menge des Pools für elastische Datenbanken|Definition|Kommentare|
+|---|---|---|
+|**Genutzter Speicherplatz**|Die Summierung des Datenspeicherplatzes, der von allen Datenbanken im Pool für elastische Datenbanken verwendet wird.||
+|**Zugeordneter Datenspeicherplatz**|Die Summierung des Datenspeicherplatzes, der von allen Datenbanken im Pool für elastische Datenbanken zugeordnet wird.||
+|**Zugeordneter Datenspeicherplatz (ungenutzt)**|Die Differenz zwischen der Menge an zugeordnetem Datenspeicherplatz und dem Datenspeicherplatz, der von allen Datenbanken im Pool für elastische Datenbanken verwendet wird.|Diese Menge gibt die maximale Menge von Speicherplatz an, der für den Pool für elastische Datenbanken zugeordnet wird und freigegeben werden kann, indem die Datenbank-Datendateien verkleinert werden.|
+|**Maximale Datengröße**|Die maximale Menge an Datenspeicherplatz, der vom Pool für elastische Datenbanken für alle seine Datenbanken verwendet werden kann.|Der zugeordnete Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  Wenn dies der Fall ist, kann zugeordneter Speicherplatz, der nicht genutzt wird, freigegeben werden, indem Datenbank-Datendateien verkleinert werden.|
+||||
+
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Abfragen von Speicherplatzinformationen für einen Pools für elastische Datenbanken
 
-Um festzustellen, ob ein Pool für elastische Datenbanken zugewiesenen aber ungenutzten Datenspeicherplatz enthält, den Sie ggf. freigeben können, verwenden Sie die folgenden Abfragen:
+Die folgenden Abfragen können verwendet werden, um die Speicherplatzmengen für einen Pool für elastische Datenbanken zu ermitteln.  
 
 ### <a name="elastic-pool-data-space-used"></a>Pool für elastische Datenbanken – ungenutzter Speicherplatz
-Ändern Sie die folgende Abfrage, um den belegten Speicherplatz eines Pools für elastische Datenbanken in MB zurückzugeben.
+Ändern Sie die folgende Abfrage, um den belegten Speicherplatz eines Pools für elastische Datenbanken zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
 
 ```sql
 -- Connect to master
@@ -105,11 +116,11 @@ WHERE elastic_pool_name = 'ep1'
 ORDER BY end_time DESC
 ```
 
-### <a name="elastic-pool-data-allocated-and-allocated-space-unused"></a>Pool für elastische Datenbanken – zugewiesener und ungenutzter zugewiesener Speicherplatz
+### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Zugeordneter Datenspeicherplatz für Pool für elastische Datenbanken und ungenutzter zugeordneter Speicherplatz
 
-Ändern Sie das folgende PowerShell-Skript, um eine Tabelle zurückzugeben, in der der gesamte zugewiesene Speicherplatz und der ungenutzte zugewiesene Speicherplatz für jede Datenbank und jeden Pool für elastische Datenbanken aufgeführt ist. Die Tabelle ordnet Datenbanken absteigend von der größten Menge an ungenutztem zugewiesenem Speicherplatz zur geringsten Menge an ungenutztem zugewiesenem Speicherplatz.  
+Ändern Sie das folgende PowerShell-Skript, um eine Tabelle zurückzugeben, in der der zugeordnete Speicherplatz und der ungenutzte zugeordnete Speicherplatz für jede Datenbank eines Pools für elastische Datenbanken aufgeführt ist. Die Tabelle ordnet Datenbanken absteigend von der größten Menge an ungenutztem zugeordnetem Speicherplatz zur geringsten Menge an ungenutztem zugeordnetem Speicherplatz.  Als Einheit für das Abfrageergebnis wird MB verwendet.  
 
-Die Abfrageergebnisse zum Bestimmen des für jede Datenbank im Pool zugewiesenen Speicherplatzes können addiert werden, um den für den Pool für elastische Datenbanken zugewiesenen Speicherplatz zu ermitteln. Der zugewiesene Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  
+Die Abfrageergebnisse zum Bestimmen des für jede Datenbank im Pool zugeordneten Speicherplatzes können addiert werden, um den gesamten Speicherplatz zu ermitteln, der für den Pool für elastische Datenbanken zugeordnet ist. Der zugewiesene Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  
 
 ```powershell
 # Resource group name
@@ -160,9 +171,9 @@ Der folgende Screenshot zeigt ein Beispiel für die Ausgabe des Skripts:
 
 ![Pool für elastische Datenbanken – zugeordneter Speicherplatz und ungenutzter zugewiesener Speicherplatz – Beispiel](./media/sql-database-file-space-management/elastic-pool-allocated-unused.png)
 
-### <a name="elastic-pool-max-size"></a>Pool für elastische Datenbanken – maximale Größe
+### <a name="elastic-pool-data-max-size"></a>Maximale Größe der Daten des Pools für elastische Datenbanken
 
-Verwenden Sie die folgende T-SQL-Abfrage, um die maximale Größe des Pools in MB zurückgegeben.
+Ändern Sie die folgende T-SQL-Abfrage, um die maximale Größe der Daten des Pools für elastische Datenbanken zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
 
 ```sql
 -- Connect to master
@@ -175,19 +186,14 @@ ORDER BY end_time DESC
 
 ## <a name="reclaim-unused-allocated-space"></a>Freigeben von ungenutztem zugewiesenem Speicherplatz
 
-Wenn Sie festgestellt haben, dass ungenutzter zugewiesener Speicherplatz vorhanden ist, den Sie freigeben können, verwenden Sie den folgenden Befehl, um den zugewiesenen Datenbankspeicherplatz zu verkleinern. 
-
-> [!IMPORTANT]
-> Für Datenbanken in einem Pool sollten Datenbanken mit dem größten ungenutzten Speicherplatz zuerst verkleinert werden, um den Speicherplatz möglichst schnell freizugeben.  
-
-Verwenden Sie den folgenden Befehl zum Verkleinern aller Datendateien in der angegebenen Datenbank:
+Nachdem die Datenbanken für das Freigeben von ungenutztem zugeordnetem Speicherplatz ermittelt wurden, können Sie den folgenden Befehl ändern, um die Datendateien für jede Datenbank zu verkleinern.
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'<database_name>')
+DBCC SHRINKDATABASE (N'db1')
 ```
 
-Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
 
 > [!IMPORTANT] 
 > Ziehen Sie auch in Betracht, Datenbankindizes neu zu erstellen. Nach dem Verkleinern von Datenbankdateien können Indizes fragmentiert werden und bei der Leistungsoptimierung nicht mehr effektiv eingesetzt werden. In diesem Fall sollten die Indizes neu erstellt werden. Weitere Informationen zum Fragmentieren und Neuerstellen von Indizes finden Sie unter [Neuorganisieren und Neuerstellen von Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

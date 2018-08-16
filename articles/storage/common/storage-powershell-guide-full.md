@@ -2,23 +2,18 @@
 title: Verwenden von Azure PowerShell mit Azure Storage | Microsoft Docs
 description: Erfahren Sie, wie Sie Azure PowerShell-Cmdlets für Azure Storage verwenden.
 services: storage
-documentationcenter: na
 author: roygara
-manager: jeconnoc
-ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 06/13/2018
 ms.author: rogarana
-ms.openlocfilehash: 951b69877718c5da3c165c24c297906a1ad9a976
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: common
+ms.openlocfilehash: 6cf7f35e60502d0e21ffa2b777f1700a57add965
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652500"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038136"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Verwenden von Azure PowerShell mit Azure Storage
 
@@ -55,7 +50,7 @@ Connect-AzureRmAccount
 
 ## <a name="list-the-storage-accounts-in-the-subscription"></a>Auflisten der Speicherkonten im Abonnement
 
-Führen Sie das Cmdlet [Get-AzureRMStorageAccount](/powershell/module/azurerm.resources/get-azurermstorageaccount) aus, um die Liste der Speicherkonten im aktuellen Abonnement abzurufen. 
+Führen Sie das Cmdlet [Get-AzureRMStorageAccount](/powershell/module/azurerm.storage/Get-AzureRmStorageAccount) aus, um die Liste der Speicherkonten im aktuellen Abonnement abzurufen. 
 
 ```powershell
 Get-AzureRMStorageAccount | Select StorageAccountName, Location
@@ -108,11 +103,11 @@ $ctx = $storageAccount.Context
 
 Das Skript verwendet die folgenden PowerShell-Cmdlets: 
 
-*   [Get-AzureRmLocation](/powershell/module/azurerm.storage/Get-AzureRmLocation): Ruft eine Liste der gültigen Speicherorte ab. Im Beispiel wird `eastus` für den Speicherort verwendet.
+*   [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation): Ruft eine Liste der gültigen Speicherorte ab. Im Beispiel wird `eastus` für den Speicherort verwendet.
 
-*   [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/New-AzureRmResourceGroup): Erstellt eine neue Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Ihre Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel erhält sie die Bezeichnung `teststoragerg`. 
+*   [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup): Erstellt eine neue Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Ihre Azure-Ressourcen bereitgestellt und verwaltet werden. In diesem Beispiel erhält sie die Bezeichnung `teststoragerg`. 
 
-*   [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/New-AzureRmStorageAcccount): Erstellt das eigentliche Speicherkonto. Im Beispiel wird `testpshstorage` verwendet.
+*   [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount): Erstellt das Speicherkonto. Im Beispiel wird `testpshstorage` verwendet.
 
 Der SKU-Name gibt den Typ der Replikation für das Speicherkonto an, z. B. LRS (lokal redundanter Speicher). Weitere Informationen zur Replikation finden Sie unter [Azure Storage-Replikation](storage-redundancy.md).
 
@@ -128,7 +123,7 @@ Nachdem Sie über einen Verweis auf ein neues oder ein vorhandenes Speicherkonto
 
 ### <a name="storage-account-properties"></a>Eigenschaften von Speicherkonten
 
-Verwenden Sie [Set-AzureRmStorageAccount](/powershell/module/azurerm.resources/Set-AzureRmStorageAccount), um die Einstellungen für ein Speicherkonto zu ändern. Während Sie den Speicherort eines Speicherkontos oder die Ressourcengruppe ändern, in der sich das Speicherkonto befindet, können Sie auch viele andere Eigenschaften ändern. Nachfolgend sind einige der Eigenschaften aufgeführt, die Sie mithilfe von PowerShell ändern können.
+Verwenden Sie [Set-AzureRmStorageAccount](/powershell/module/azurerm.storage/set-azurermstorageaccount), um die Einstellungen für ein Speicherkonto zu ändern. Während Sie den Speicherort eines Speicherkontos oder die Ressourcengruppe ändern, in der sich das Speicherkonto befindet, können Sie auch viele andere Eigenschaften ändern. Nachfolgend sind einige der Eigenschaften aufgeführt, die Sie mithilfe von PowerShell ändern können.
 
 * Die **benutzerdefinierte Domäne**, die dem Speicherkonto zugeordnet ist.
 
@@ -220,7 +215,6 @@ Nachdem Sie nun erfahren haben, wie Sie Ihr Speicherkonto mit PowerShell verwalt
 Die Azure Cosmos DB-Tabellen-API bietet Premiumfeatures für den Tabellenspeicher wie sofort einsatzbereite globale Verteilung, Lese- und Schreibvorgänge mit geringer Wartezeit, automatische sekundäre Indizierung und dedizierten Durchsatz. 
 
 * Weitere Informationen finden Sie unter [Einführung in die Table-API von Azure Cosmos DB](../../cosmos-db/table-introduction.md). 
-* Informationen zum Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mithilfe von PowerShell finden Sie unter [Perform Azure Cosmos DB Table API operations with Azure PowerShell](../../cosmos-db/table-powershell.md) (Ausführen von Azure Cosmos DB-Tabellen-API-Vorgängen mit Azure PowerShell).
 
 ## <a name="independent-cloud-deployments-of-azure"></a>Unabhängige Cloudbereitstellungen von Azure
 

@@ -1,25 +1,20 @@
 ---
-title: Verwenden einer interaktiven Spark-Shell in Azure HDInsight | Microsoft-Dokumentation
+title: Verwenden einer interaktiven Spark-Shell in Azure HDInsight
 description: Eine interaktive Spark-Shell bietet einen „Lesen-Ausführen-Anzeigen“-Prozesses, um Spark-Befehle nacheinander auszuführen und die Ergebnisse anzuzeigen.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: maxluk
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/09/2018
+author: maxluk
 ms.author: maxluk
-ms.openlocfilehash: d2b65980516a7ae1857711f2e58d9cd0a8e8ec9a
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 01/09/2018
+ms.openlocfilehash: 454f05f6ec17a42d0f0d3795d490352e5e74783a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164141"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617505"
 ---
 # <a name="run-spark-from-the-spark-shell"></a>Ausführen von Spark aus der Spark-Shell
 

@@ -10,14 +10,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 804906e1c1b361b9274dbc8fa3ab1cb204e27dfc
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 842ec8f641fca80e469864dd4d81e14c863fd464
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857275"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600056"
 ---
-# <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
+# <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
 Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek von Azure Cosmos DB zum Importieren und Aktualisieren von Dokumenten in Azure Cosmos DB-Containern. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial werden Sie durch eine .NET-Beispielanwendung geführt, die zufällig generierte Dokumente per Massenvorgang in einen Azure Cosmos DB-Container importiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen.
 

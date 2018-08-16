@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 0aac3eab8a60dc1e1e15b4656fad9ffea062c08e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968618"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627439"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Integrieren von Cloud Foundry in Azure
 
@@ -81,8 +81,8 @@ Während die F- und D-Serien für VMs allgemein für Pivotal Cloud Foundry-Produ
 #### <a name="managed-standard-disk"></a>Verwalteter Standarddatenträger: 
 Premium-Datenträger wurden für die zuverlässige Leistung in der Produktion empfohlen.  Mithilfe [verwalteter Datenträger](https://azure.microsoft.com/services/managed-disks/) bietet der Standardspeicher ebenfalls ähnliche Zuverlässigkeit bei unterschiedlicher Leistung. Standarddatenträger bieten für eine nicht leistungsabhängige Workload wie DevTest oder eine weniger wichtige Umgebung eine Alternative mit niedrigerem Kostenfaktor.  
 ### <a name="cost-saving-in-general"></a>Allgemeines zu Kosteneinsparungen 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Hohe Kosteneinsparungen für VMs durch reservierte Instanzen: 
-Heute werden alle CF-VMs über die Preisgestaltung „bei Bedarf“ abgerechnet, obwohl die Umgebungen in der Regel unbegrenzt aktiv sind. Sie können VM-Kapazität für einen Zeitraum von 1–3 Jahren reservieren und so von Rabatten von 45–65 % profitieren. Rabatte werden im Abrechnungssystem angewendet, Ihre Umgebung ändert sich dadurch nicht. Weitere Informationen erhalten Sie zum Thema [wie reservierte Instanzen funktionieren](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
+#### <a name="significant-vm-cost-saving-with-azure-reservations"></a>Hohe Kosteneinsparungen für VMs durch Azure-Reservierungen: 
+Heute werden alle CF-VMs über die Preisgestaltung „bei Bedarf“ abgerechnet, obwohl die Umgebungen in der Regel unbegrenzt aktiv sind. Sie können VM-Kapazität für einen Zeitraum von 1–3 Jahren reservieren und so von Rabatten von 45–65 % profitieren. Rabatte werden im Abrechnungssystem angewendet, Ihre Umgebung ändert sich dadurch nicht. Weitere Informationen finden Sie unter [Reservierte Azure-VM-Instanzen (RIs)](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>Verwalteter Premium-Datenträger mit verringerten Größen: 
 Verwaltete Datenträger unterstützen kleinere Datenträgergrößen, z.B. P4 (32 GB) und P6 (64 GB) für Premium- und Standard-Datenträger. Wenn Sie über kleine Workloads verfügen, können Sie Kosten sparen, wenn Sie von standardmäßigen Premium-Datenträgern zu verwalteten Premium-Datenträgern migrieren.
 #### <a name="utilizing-azure-first-party-services"></a>Nutzung des Azure-Erstanbieterdiensts: 

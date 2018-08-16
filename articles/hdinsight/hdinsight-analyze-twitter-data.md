@@ -1,24 +1,20 @@
 ---
-title: Analysieren von Twitter-Daten mit Hadoop in HDInsight – Azure | Microsoft-Dokumentation
+title: Analysieren von Twitter-Daten mit Hadoop in HDInsight – Azure
 description: Erfahren Sie, wie Sie Twitterdaten mit Hive in Hadoop und HDInsight analysieren können, um die Häufigkeit bestimmter Wörter zu ermitteln.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 78e4ea33-9714-424d-ac07-3d60ecaebf2e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6b47e54e56b12a2975c44ab3b87b023d20a769c3
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 8ac97c14b4abaa1c07e8f982edb53e0acac3692f
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436163"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39597619"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analysieren von Twitter-Daten mit Hive in HDInsight
 Soziale Netzwerke sind einer der Hauptfaktoren für die Akzeptanz von Big Data. Öffentliche APIs von Websites wie Twitter sind eine nützliche Datenquelle für Analyse und Verständnis beliebter Trends.
@@ -491,7 +487,7 @@ Use-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $
 $response = Invoke-AzureRmHDInsightHiveJob -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -DefaultContainer $defaultBlobContainerName -file $hqlScriptFile -StatusFolder $statusFolder #-OutVariable $outVariable
 
 Write-Host "Display the standard error log ... " -ForegroundColor Green
-$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace ‘\s*$’ -replace ‘.*\s’
+$jobID = ($response | Select-String job_ | Select-Object -First 1) -replace �\s*$� -replace �.*\s�
 Get-AzureRmHDInsightJobOutput -ClusterName $clusterName -JobId $jobID -DefaultContainer $defaultBlobContainerName -DefaultStorageAccountName $defaultStorageAccountName -DefaultStorageAccountKey $defaultStorageAccountKey -HttpCredential $httpCredential
 #endregion
 ```

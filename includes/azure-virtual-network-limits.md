@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/20/2018
+ms.date: 08/03/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 9ba9bc993832350f6b6ce1c642e2dc852731b6f0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 60f1b133bdd6acdb25717c2b98f81b57b751d505
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39029963"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39720802"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -37,31 +37,37 @@ ms.locfileid: "39029963"
 #### <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
+> [!NOTE]
+> Vor Kurzem wurden die Standardgrenzwerte auf die maximalen Grenzwerte erhöht. Falls die Spalte **Maximales Limit** nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Einschränkungen. Wenn diese Grenzwerte für Sie in der Vergangenheit durch den Support erhöht wurden und die aktualisierten Grenzwerte nicht wie unten angegeben angezeigt werden, [öffnen Sie eine kostenlose Online-Kundensupportanfrage](../articles/azure-resource-manager/resource-manager-quota-errors.md).
+
+| Ressource | Standardlimit | 
+| --- | --- |
+| Virtuelle Netzwerke |1000 |
+| Subnetze pro virtuellem Netzwerk |3000 |
+| VNET-Peerings pro virtuellem Netzwerk |100 |
+| DNS-Server pro virtuellem Netzwerk |25 |
+| Private IP-Adressen pro virtuellem Netzwerk |65536 |
+| Private IP-Adressen pro Netzwerkschnittstelle |256 |
+| Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |
+| Netzwerkschnittstellen |24.000 |
+| Netzwerksicherheitsgruppen |5.000 |
+| NSG-Regeln pro NSG |1000 |
+| Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsgruppe |4000 |
+| Anwendungssicherheitsgruppen |3000 |
+| Anwendungssicherheitsgruppen pro IP-Konfiguration pro NIC |20 |
+| IP-Konfigurationen pro Anwendungssicherheitsgruppe |4000 |
+| Anwendungssicherheitsgruppen, die in allen Sicherheitsregeln einer Netzwerksicherheitsgruppe angegeben werden können |100 |
+| Benutzerdefinierte Routentabellen |200 |
+| Benutzerdefinierte Routen pro Routentabelle |400 |
+| Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |
+
+#### <a name="publicip-address"></a>Grenzwerte für öffentliche IP-Adressen
+
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
-| Virtuelle Netzwerke |50 |1000 |
-| Subnetze pro virtuellem Netzwerk |1000 |10000 |
-| VNET-Peerings pro virtuellem Netzwerk |50** |100 |
-| DNS-Server pro virtuellem Netzwerk |9 |25 |
-| Private IP-Adressen pro virtuellem Netzwerk |16.384** |16384 |
-| Private IP-Adressen pro Netzwerkschnittstelle |256 |256 |
-| Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |500K |
-| Netzwerkschnittstellen |24.000** |24.000 |
-| Netzwerksicherheitsgruppen |100 |5.000 |
-| NSG-Regeln pro NSG |1.000** |1000 |
-| Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsgruppe |2000 |4000 |
-| Anwendungssicherheitsgruppen |500 |3000 |
-| Anwendungssicherheitsgruppen pro IP-Konfiguration pro NIC |10 |20 |
-| IP-Konfigurationen pro Anwendungssicherheitsgruppe |1000 |4000 |
-| Anwendungssicherheitsgruppen, die in allen Sicherheitsregeln einer Netzwerksicherheitsgruppe angegeben werden können |50 |100 |
-| Benutzerdefinierte Routentabellen |100 |200 |
-| Benutzerdefinierte Routen pro Routentabelle |400** |400 |
-| Öffentliche IP-Adressen – dynamisch |(Basic) 60 |an den Support wenden |
-| Öffentliche IP-Adressen – statisch |(Basic) 20 |an den Support wenden |
-| Öffentliche IP-Adressen – statisch |(Standard) 20 |an den Support wenden |
-| Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
-
-**Diese aktualisierten Standardlimits gelten für Abonnements, für die diese Limits nicht zuvor durch den Support erhöht wurden. Wenn diese Grenzwerte für Sie in der Vergangenheit durch den Support erhöht wurden, und Sie eine Aktualisierung auf neue Standardwerte wünschen, [öffnen Sie bitte eine kostenlose Online-Kundensupportanfrage](../articles/azure-resource-manager/resource-manager-quota-errors.md).
+| Öffentliche IP-Adressen – dynamisch |(Basic) 200 |an den Support wenden |
+| Öffentliche IP-Adressen – statisch |(Basic) 200 |an den Support wenden |
+| Öffentliche IP-Adressen – statisch |(Standard) 200 |an den Support wenden |
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung im Vergleich zu den Grenzwerten Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).

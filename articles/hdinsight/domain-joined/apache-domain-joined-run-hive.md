@@ -1,23 +1,20 @@
 ---
 title: Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung – Azure
-description: 'Inhalt:'
+description: Es wird beschrieben, wie Sie Apache Ranger-Richtlinien für Hive in einem in die Domäne eingebundenen Azure HDInsight-Dienst konfigurieren.
 services: hdinsight
-author: omidm1
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 3fade1e5-c2e1-4ad5-b371-f95caea23f6d
 ms.service: hdinsight
+author: omidm1
+ms.author: omidm
+editor: jasonwhowell
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2018
-ms.author: omidm
-ms.openlocfilehash: bd99e5fda80663b37c60d972742b16c27b92cf55
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 8579c3c13ace1f97d2400a4fc6e2e9a63c2c4d26
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592674"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599689"
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.
@@ -60,7 +57,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
    * Benutzer auswählen: hiveuser1
    * Berechtigungen: Auswählen
 
-     ![HDInsight mit Domänenverknüpfung – Ranger – Konfigurieren der Hive-Richtlinie](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)zu erstellen und zu verwalten.
+     ![HDInsight mit Domänenverknüpfung – Ranger – Konfigurieren der Hive-Richtlinie](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
      > [!NOTE]
      > Wenn unter „Benutzer auswählen“ kein Domänenbenutzer eingetragen wird, warten Sie kurz, bis Ranger mit AAD synchronisiert wurde.

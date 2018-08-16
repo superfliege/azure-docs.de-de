@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2332923946e414325b9723a59cf493d9d1060cc6
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368678"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622169"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Steuern der Azure AD-Hybrideinbindung für Ihre Geräte
 
@@ -110,6 +110,9 @@ Sie können das Verhalten der Geräteregistrierung Ihrer aktuellen-Geräten steu
     
 
 Sie müssen diese Clienteinstellung mit einem Speicherort Ihrer Wahl verknüpfen. Beispiel: Zum Konfigurieren dieser Clienteinstellung für alle aktuellen Windows-Geräte in Ihrer Organisation verknüpfen Sie die Clienteinstellung mit der Domäne. Für eine gesteuerte Bereitstellung können Sie die Clienteinstellung für aktuell in die Domäne eingebundene Windows-Geräte konfigurieren, die zu einer Organisationseinheit oder Sicherheitsgruppe gehören.
+
+> [!Important]
+> Die oben genannte Konfiguration schließt zwar die in vorhandenen in die Domäne eingebundenen Windows 10-Geräte ein, allerdings besteht weiterhin die Möglichkeit, dass neue Geräte, die in die Domäne eingebunden werden, eine Hybrid-Azure AD-Einbindung aufgrund der etwaigen Verzögerung bei der tatsächlichen Anwendung der Gruppenrichtlinie oder Configuration Manager-Einstellungen für das neue Windows 10-Gerät durchführen, das in die Domäne eingebunden wird. Um dies zu verhindern, wird empfohlen, ein neues sysprep-Image (als Beispiel für eine Bereitstellungsmethode verwendet) über ein Gerät zu erstellen, das bislang noch nie in Hybrid-Azure AD eingebunden war und auf dem bereits die oben genannte Gruppenrichtlinieneinstellung oder Configuration Manager-Clienteinstellung angewendet wurde. Darüber hinaus müssen Sie das neue Image für die Bereitstellung neuer Computer verwenden, die in die Domäne Ihrer Organisation eingebunden werden. 
 
 ## <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte
 

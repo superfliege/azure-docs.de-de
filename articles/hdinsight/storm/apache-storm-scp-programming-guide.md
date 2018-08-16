@@ -1,24 +1,20 @@
 ---
-title: SCP.NET-Programmierleitfaden | Microsoft Docs
-description: Erfahren Sie, wie Sie mit SCP.NET .NET-basierte Storm-Topologien für die Verwendung mit Storm unter HDInsight erstellen.
+title: SCP.NET-Programmierleitfaden für Storm in Azure HDInsight
+description: Erfahren Sie, wie Sie mit SCP.NET .NET-basierte Storm-Topologien für die Verwendung mit Storm zur Ausführung in Azure HDInsight erstellen.
 services: hdinsight
-documentationcenter: ''
-author: raviperi
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 34192ed0-b1d1-4cf7-a3d4-5466301cf307
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonwhowell
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: dotnet
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2016
-ms.author: raviperi
-ms.openlocfilehash: 0f4c021bc209c99e1b3f34b34bf5ba0549eb48f9
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8ac0703fa0ec5f9a9e3f994ccaac61c3748bb8f0
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421554"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038202"
 ---
 # <a name="scp-programming-guide"></a>SCP-Programmierleitfaden
 SCP ist eine Plattform zur Erstellung zuverlässiger, konsistenter und leistungsfähiger Anwendungen für die Datenverarbeitung in Echtzeit. Sie basiert auf [Apache Storm](http://storm.incubator.apache.org/) , einem von den OSS-Communitys entwickelten Datenstrom-Verarbeitungssystem. Storm wurde von Nathan Marz entwickelt, und der Quellcode wurde von Twitter freigegeben. Für Storm wird [Apache ZooKeeper](http://zookeeper.apache.org/)verwendet, ein weiteres Apache-Projekt für hochzuverlässige verteilte Koordinierung und Zustandsverwaltung. 

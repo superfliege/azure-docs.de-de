@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 2371ad00728a47af9e96e8e711aa07cc5170266c
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: f786a20f61c8851c1d50a89edd392b9b974db076
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158861"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622319"
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -75,12 +75,13 @@ Sie sollten erwägen, [einige Authentifizierungsdaten für Ihre Benutzer vorab a
 
 ## <a name="disable-self-service-password-reset"></a>Deaktivieren der Self-Service-Kennwortzurücksetzung
 
-Wenn Ihre Organisation entscheidet, die Self-Service-Kennwortzurücksetzung zu deaktivieren, dann ist dies ganz einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung** > **Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Keine**. Benutzer behalten weiterhin ihre
+Wenn Ihre Organisation entscheidet, die Self-Service-Kennwortzurücksetzung zu deaktivieren, dann ist dies ganz einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung** > **Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Keine**. Benutzer behalten weiterhin ihre registrierten Authentifizierungsmethoden für die zukünftige Verwendung bei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Zurücksetzen oder Ändern des Kennworts](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](../user-help/active-directory-passwords-reset-register.md)
+* [Aktivieren der zusammengeführten Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD](concept-registration-mfa-sspr-converged.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](concept-sspr-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)

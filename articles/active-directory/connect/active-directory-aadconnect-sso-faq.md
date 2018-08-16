@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9c59db56ad78818d9b6165d27fd2e64f0bfd902c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283222"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627473"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)
 
@@ -40,19 +40,20 @@ Nein. Das nahtlose einmalige Anmelden ist nur in der weltweiten Instanz von Azur
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>Welche Anwendungen nutzen die `domain_hint`- oder `login_hint`-Parameterfunktion der nahtlosen SSO?
 
-Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese Parameter an Azure AD senden und Benutzern so eine unbeaufsichtigte Anmeldung über das nahtlose einmalige Anmelden ermöglichen (d.h. Ihre Benutzer müssen ihre Benutzernamen nicht eingeben):
+Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese Parameter an Azure AD senden und Benutzern so eine unbeaufsichtigte Anmeldung über das nahtlose einmalige Anmelden ermöglichen können (d.h. Ihre Benutzer müssen ihre Benutzernamen oder Kennwörter nicht eingeben):
 
 | Anwendungsname | Zu verwendende Anwendungs-URL |
 | -- | -- |
-| Zugriffsbereich | myapps.microsoft.com/contoso.com |
-| Outlook im Web | outlook.office365.com/contoso.com |
+| Zugriffsbereich | https://myapps.microsoft.com/contoso.com |
+| Outlook im Web | https://outlook.office365.com/contoso.com |
+| Office 365-Portal | https://portal.office.com?domain_hint=contoso.com |
 
 Benutzer werden außerdem automatisch angemeldet, wenn eine Anwendung Anmeldeanforderungen an Azure AD-Mandantenendpunkte – d.h. https://login.microsoftonline.com/contoso.com/<..> oder https://login.microsoftonline.com/<tenant_ID>/<..> – anstatt den gemeinsamen Endpunkt von Azure AD – d.h. https://login.microsoftonline.com/common/<...> – sendet. Nachfolgend finden Sie eine nicht erschöpfende Liste von Anwendungen, die diese Arten von Anmeldeanforderungen vornehmen.
 
 | Anwendungsname | Zu verwendende Anwendungs-URL |
 | -- | -- |
-| SharePoint Online | contoso.sharepoint.com |
-| Azure-Portal | portal.azure.com/contoso.com |
+| SharePoint Online | https://contoso.sharepoint.com |
+| Azure-Portal | https://portal.azure.com/contoso.com |
 
 Ersetzen Sie „contoso.com“ in den Tabellen oben durch Ihren Domänennamen, um die richtigen Anwendungs-URLs für Ihren Mandanten zu erhalten.
 

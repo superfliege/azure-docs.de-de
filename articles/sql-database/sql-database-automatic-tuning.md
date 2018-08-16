@@ -2,19 +2,20 @@
 title: Azure SQL-Datenbank – Automatische Optimierung | Microsoft-Dokumentation
 description: Azure SQL-Datenbank analysiert SQL-Abfragen und führt eine automatische Anpassung an die Benutzerworkload durch.
 services: sql-database
-author: jovanpop-msft
+author: danimir
 manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: jovanpop
-ms.openlocfilehash: bef8d01bd4c220fac595177089088ff64ee3bc3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: dd6e8f5f46e9fdf6887cc2a0b0c7b15bbd00fabd
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646642"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39626198"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 

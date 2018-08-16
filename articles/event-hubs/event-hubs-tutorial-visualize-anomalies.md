@@ -2,19 +2,19 @@
 title: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden | Microsoft-Dokumentation
 description: Tutorial – Visualisieren von Datenanomalien in Echtzeitereignissen, die an Microsoft Azure Event Hubs gesendet werden
 services: event-hubs
-author: robinsh
+author: ShubhaVijayasarathy
 manager: timlt
-ms.author: robinsh
-ms.date: 06/26/2018
+ms.author: shvija
+ms.date: 08/08/2018
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: mvc
-ms.openlocfilehash: 28c03d12954b172388a92dd0c3f6aed2266ffaf7
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 04a9a3b3df44814d680f01595d70ced08a946591
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132707"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004112"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -30,7 +30,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Konfigurieren eines Stream Analytics-Auftrags zum Verarbeiten dieser Transaktionen
 > * Konfigurieren einer Power BI-Visualisierung zum Anzeigen der Ergebnisse
 
-Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Falls Sie kein Abonnement besitzen, können Sie ein [Erstellen eines kostenlosen Kontos][] erstellen, bevor Sie beginnen.
+Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen][], bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ Für dieses Tutorial benötigen Sie einen Event Hubs-Namespace und einen Event H
 
 In den folgenden Abschnitten wird beschrieben, wie Sie diese erforderlichen Schritte ausführen. Befolgen Sie die Anleitung für die CLI *oder* für PowerShell, um die folgenden Schritte auszuführen:
 
-1. Erstellen einer [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) 
+1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). 
 
 2. Erstellen eines Event Hubs-Namespace 
 
@@ -382,4 +382,4 @@ Fahren Sie mit dem nächsten Artikel fort, um mehr über Azure Event Hubs zu erf
 > [!div class="nextstepaction"]
 > [Erste Schritte beim Senden von Nachrichten an Azure Event Hubs in .NET Standard](event-hubs-dotnet-standard-getstarted-send.md)
 
-[Erstellen eines kostenlosen Kontos]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostenloses Konto erstellen]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

@@ -1,23 +1,20 @@
 ---
-title: Operationalisieren von ML Services in HDInsight – Azure | Microsoft-Dokumentation
+title: Operationalisieren von ML Services in HDInsight – Azure
 description: Informationen zum Operationalisieren von ML Services in Azure HDInsight.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: R
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aef34fea2252cdc875fa1ea1c73a8df14fdf1b9c
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046138"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622302"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -40,7 +37,7 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
     Anweisungen zum Verwenden von SSH mit Azure HDInsight finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Ändern Sie das Verzeichnis für die relevante Version, und rufen Sie die Dotnet-DLL per „sudo“ auf: 
+1. Ändern Sie das Verzeichnis für die relevante Version, und rufen Sie die Dotnet-DLL per „sudo“ auf: 
 
     - Für Microsoft ML Server 9.1:
 
@@ -52,21 +49,21 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren**.
+1. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren**.
 
     ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. Sie können jetzt eine Option für die Operationalisierung von ML Server auswählen. Wählen Sie die erste der angebotenen Optionen durch Eingabe von **A** aus.
+1. Sie können jetzt eine Option für die Operationalisierung von ML Server auswählen. Wählen Sie die erste der angebotenen Optionen durch Eingabe von **A** aus.
 
     ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/admin-util-one-box-2.png)
 
-5. Geben Sie bei Aufforderung das Kennwort für einen lokalen Administratorbenutzer ein bzw. erneut ein.
+1. Geben Sie bei Aufforderung das Kennwort für einen lokalen Administratorbenutzer ein bzw. erneut ein.
 
-6. Daraufhin sollte ausgegeben werden, dass der Vorgang erfolgreich war. Sie werden außerdem aufgefordert, eine andere Option aus dem Menü auszuwählen. Wählen Sie „E“ aus, um zum Hauptmenü zurückzukehren.
+1. Daraufhin sollte ausgegeben werden, dass der Vorgang erfolgreich war. Sie werden außerdem aufgefordert, eine andere Option aus dem Menü auszuwählen. Wählen Sie „E“ aus, um zum Hauptmenü zurückzukehren.
 
     ![Operationalisierung mit einem einzelnen Computer](./media/r-server-operationalize/admin-util-one-box-3.png)
 
-7. Optional können Sie die Diagnoseprüfungen ausführen, indem Sie wie folgt einen Diagnosetest ausführen:
+1. Optional können Sie die Diagnoseprüfungen ausführen, indem Sie wie folgt einen Diagnosetest ausführen:
 
     a. Wählen Sie im Hauptmenü **6** aus, um Diagnosetests auszuführen.
 
@@ -124,7 +121,7 @@ Wenn Ihr Cluster nicht im VNET eingerichtet wurde oder Sie Probleme mit der Konn
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-Sobald Ihre SSH-Sitzung aktiv ist, wird der Datenverkehr in der SSH-Sitzung vom Port 12800 des Computers zum Port 12800 des Edgeknotens weitergeleitet. Stellen Sie sicher, dass Sie `127.0.0.1:12800` in der `remoteLogin()`-Methode verwenden. Hierdurch erfolgt eine Anmeldung bei der Operationalisierung des Edgeknotens über Portweiterleitung.
+Sobald Ihre SSH-Sitzung aktiv ist, wird der Datenverkehr in der SSH-Sitzung vom Port 12800 des lokalen Computers zum Port 12800 des Edgeknotens weitergeleitet. Stellen Sie sicher, dass Sie `127.0.0.1:12800` in der `remoteLogin()`-Methode verwenden. Hierdurch erfolgt eine Anmeldung bei der Operationalisierung des Edgeknotens über die Portweiterleitung.
 
 
     library(mrsdeploy)
@@ -148,9 +145,9 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
 1. Melden Sie sich bei der Ambari-Konsole des Clusters an, und klicken Sie auf die Registerkarte **Hosts**.
 
-2. Wählen Sie (außer Betrieb zu setzende) Workerknoten aus.
+1. Wählen Sie (außer Betrieb zu setzende) Workerknoten aus.
 
-3. Klicken Sie auf **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Wartungsmodus EINSCHALTEN**. In der folgenden Abbildung haben wir z.B. „wn3“ und „wn4“ für die Außerbetriebnahme ausgewählt.  
+1. Klicken Sie auf **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Wartungsmodus EINSCHALTEN**. In der folgenden Abbildung haben wir z.B. „wn3“ und „wn4“ für die Außerbetriebnahme ausgewählt.  
 
    ![Außerbetriebnahme von Workerknoten](./media/r-server-operationalize/get-started-operationalization.png)  
 
@@ -166,15 +163,15 @@ Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
 1. Stellen Sie per SSH eine Verbindung mit jedem außer Betrieb gesetzten Workerknoten her.
 
-2. Führen Sie das Verwaltungshilfsprogramm mit der entsprechenden DLL für Ihren ML Services-Cluster aus. Führen Sie für ML Server 9.1 die folgenden Schritte aus:
+1. Führen Sie das Verwaltungshilfsprogramm mit der entsprechenden DLL für Ihren ML Services-Cluster aus. Führen Sie für ML Server 9.1 die folgenden Schritte aus:
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Geben Sie **1** ein, um die Option **Configure ML Server for Operationalization** (ML Services für Operationalisierung konfigurieren) auszuwählen.
+1. Geben Sie **1** ein, um die Option **Configure ML Server for Operationalization** (ML Services für Operationalisierung konfigurieren) auszuwählen.
 
-4. Geben Sie **C** zum Auswählen von Option `C. Compute node` ein. Hiermit wird der Serverknoten für den Workerknoten konfiguriert.
+1. Geben Sie **C** zum Auswählen von Option `C. Compute node` ein. Hiermit wird der Serverknoten für den Workerknoten konfiguriert.
 
-5. Beenden Sie das Verwaltungshilfsprogramm.
+1. Beenden Sie das Verwaltungshilfsprogramm.
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Schritt 3: Hinzufügen von Details zu Serverknoten auf Webknoten
 
@@ -182,9 +179,9 @@ Nachdem alle außer Betrieb gesetzten Workerknoten für die Ausführung als Serv
 
 1. Stellen Sie per SSH eine Verbindung mit dem Edgeknoten her.
 
-2. Führen Sie `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`aus.
+1. Führen Sie `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`aus.
 
-3. Fügen Sie im Abschnitt „URIs“ die IP-Adress- und Portdetails des Workerknotens hinzu.
+1. Fügen Sie im Abschnitt „URIs“ die IP-Adress- und Portdetails des Workerknotens hinzu.
 
        "Uris": {
          "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",

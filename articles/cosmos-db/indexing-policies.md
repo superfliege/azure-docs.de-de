@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: ae2c6b6a53c6a195bbc79a5776161aab07e42f3d
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215263"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618766"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
@@ -323,9 +323,9 @@ In Azure Cosmos DB können Sie die Indizierungsrichtlinie einer Sammlung bei Bed
 
 ![Funktionsweise der Indizierung – Azure Cosmos DB-Onlineindextransformationen](./media/indexing-policies/index-transformations.png)
 
-Indextransformationen erfolgen online. Das bedeutet, dass die gemäß der alten Richtlinien indizierten Dokumente effizient gemäß der neuen Richtlinie transformiert werden, *ohne dass Auswirkungen auf die Schreibverfügbarkeit oder den bereitgestellten Durchsatz* der Sammlung entstehen. Die Indextransformation hat keine Auswirkungen auf die Konsistenz der Lese- und Schreibvorgänge, die mithilfe der REST-API, SDKs oder innerhalb von gespeicherten Prozeduren und Triggern erfolgen. Wenn Sie eine Indizierungsrichtlinie ändern, führt dies nicht zu Leistungseinbußen oder Ausfallzeiten für Ihre Apps.
+Indextransformationen erfolgen online. Das bedeutet, dass die gemäß der alten Richtlinien indizierten Dokumente effizient gemäß der neuen Richtlinie transformiert werden, *ohne dass Auswirkungen auf die Schreibverfügbarkeit oder den bereitgestellten Durchsatz* der Sammlung entstehen. Die Indextransformation hat keine Auswirkungen auf die Konsistenz der Lese- und Schreibvorgänge, die mithilfe der REST-API, SDKs oder innerhalb von gespeicherten Prozeduren und Triggern erfolgen. 
 
-Abfragen sind jedoch unabhängig von der Indizierungsmoduskonfiguration („Konsistent“ oder „Verzögert“) während der Ausführung der Indextransformation letztendlich konsistent. Dies gilt auch für Abfragen über beliebige Schnittstellen (REST-API, SDKs) und innerhalb von gespeicherten Prozeduren und Triggern. Wie die verzögerte Indizierung wird auch die Indextransformation asynchron im Hintergrund auf den Replikaten mithilfe der freien Ressourcen ausgeführt, die für ein bestimmtes Replikat verfügbar sind. 
+Das Ändern der Indizierungsrichtlinie ist ein asynchroner Prozess, und die Zeit, die für die Durchführung des Vorgangs benötigt wird, hängt von der Anzahl von Dokumenten, den bereitgestellten RUs und der Größe der Dokumente ab. Während die Neuindizierung durchgeführt wird, gibt Ihre Abfrage ggf. nicht alle übereinstimmenden Ergebnisse zurück, wenn die Abfrage den Index verwendet, der geändert wird. Bei Abfragen werden dann keine Fehler bzw. Ausfälle zurückgegeben. Während der Neuindizierung werden Abfragen unabhängig von der Indizierungsmoduskonfiguration („Consistent“ oder „Lazy“) letztendlich konsistent durchgeführt. Nachdem die Indextransformation abgeschlossen ist, werden weiterhin konsistente Ergebnisse angezeigt. Dies gilt auch für Abfragen über beliebige Schnittstellen (REST-API, SDKs) und innerhalb von gespeicherten Prozeduren und Triggern. Wie die verzögerte Indizierung wird auch die Indextransformation asynchron im Hintergrund auf den Replikaten mithilfe der freien Ressourcen ausgeführt, die für ein bestimmtes Replikat verfügbar sind. 
 
 Indextransformationen werden auch direkt vorgenommen. Azure Cosmos DB behält nicht zwei Kopien des Index bei, sondern tauscht den alten Index durch den neuen aus. Dies bedeutet, dass beim Ausführen von Indextransformationen in Ihren Sammlungen kein zusätzlicher Speicherplatz erforderlich ist oder belegt wird.
 

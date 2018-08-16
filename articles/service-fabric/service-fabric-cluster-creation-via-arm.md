@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/07/2017
+ms.date: 07/31/2018
 ms.author: aljo
-ms.openlocfilehash: e963b0f816d30411aa7d1e8c172ca0c2e5ddf0f1
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ccdea2833a24aa9e2bdf4fadd12b19d78b40f999
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444360"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038220"
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -341,6 +341,9 @@ Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um einige Schritte
 .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
 ```
 
+> [!NOTE]
+> Für nationale Clouds (Azure Government, Azure China, Azure Deutschland) sollten Sie auch den `-Location`-Parameter angeben.
+
 Die Mandanten-ID (TenantId) können Sie mithilfe des PowerShell-Befehls `Get-AzureSubscription` ermitteln. Wenn Sie diesen Befehl ausführen, wird die Mandanten-ID für jedes Abonnement angezeigt.
 
 „ClusterName“ wird als Präfix für durch das Skript erstellte Azure AD-Anwendungen verwendet. Der Wert muss nicht exakt dem tatsächlichen Clusternamen entsprechen. Er dient lediglich zur Vereinfachung der Zuordnung von Azure AD-Artefakten zu dem Service Fabric-Cluster, mit dem sie verwendet werden.
@@ -370,6 +373,9 @@ Das Skript gibt den für die Azure Resource Manager-Vorlage erforderlichen JSON-
 Dieser Abschnitt ist für Benutzer bestimmt, die eine Resource Manager-Vorlage für Service Fabric-Cluster benutzerdefiniert erstellen möchten. Wenn Sie eine Vorlage erstellt haben, können Sie wieder zurück navigieren und zum Bereitstellen die PowerShell- oder CLI-Module verwenden. 
 
 Resource Manager-Beispielvorlagen stehen in den [Azure-Beispielen auf GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) zur Verfügung. Diese Vorlagen können als Ausgangspunkt für Ihre Clustervorlage verwendet werden.
+
+> [!NOTE]
+> Für nationale Clouds (Azure Government, Azure China, Azure Deutschland) sollten Sie auch die folgenden `fabricSettings` Ihrer ARM-Vorlage hinzufügen: `AADLoginEndpoint`, `AADTokenEndpointFormat` und `AADCertEndpointFormat`.
 
 ### <a name="create-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
 In diesem Leitfaden werden die Beispielvorlage für einen [Sicherheitscluster mit 5 Knoten][service-fabric-secure-cluster-5-node-1-nodetype] und die zugehörigen Vorlagenparameter verwendet. Laden Sie `azuredeploy.json` und `azuredeploy.parameters.json` auf Ihren Computer herunter, und öffnen Sie beide Dateien in einem Texteditor.
@@ -675,7 +681,7 @@ Verwenden Sie das folgende PowerShell-Befehlsbeispiel, um eine Service Fabric-Cl
 Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalInSec 10 -AzureActiveDirectory -ServerCertThumbprint <thumbprint>
 ```
 
-Informationen zum Connect-ServiceFabricCluster-Cmdlet finden Sie unter [Connect-ServiceFabricCluster](https://msdn.microsoft.com/library/mt125938.aspx).
+Informationen zum Connect-ServiceFabricCluster-Cmdlet finden Sie unter [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster).
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>Kann ich den gleichen Azure AD-Mandanten in mehreren Clustern verwenden?
 Ja. Denken Sie jedoch daran, die URL von Service Fabric Explorer Ihrer Cluster(web)anwendung hinzuzufügen. Andernfalls funktioniert Service Fabric Explorer nicht.
@@ -694,7 +700,7 @@ Sie verfügen jetzt über einen sicheren Cluster, für den Azure Active Director
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
-[active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
+[active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
 [sf-aad-ps-script-download]:http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
@@ -714,4 +720,3 @@ Sie verfügen jetzt über einen sicheren Cluster, für den Azure Active Director
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png
-

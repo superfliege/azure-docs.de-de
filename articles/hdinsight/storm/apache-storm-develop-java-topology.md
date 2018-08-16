@@ -1,26 +1,21 @@
 ---
-title: Apache Storm-Beispiel, Java-Topologie – Azure HDInsight | Microsoft-Dokumentation
+title: Apache Storm-Beispiel, Java-Topologie – Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Storm-Topologien in Java erstellen, indem Sie eine Beispieltopologie zur Wortzählung erstellen.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
+author: jasonwhowell
+editor: jasonwhowell
 keywords: Apache Storm, Apache Storm-Beispiel, Storm-Java, Storm-Topologiebeispiel
-ms.assetid: a8838f29-9c08-4fd9-99ef-26655d1bf6d7
 ms.service: hdinsight
-ms.devlang: java
 ms.topic: conceptual
 ms.date: 02/20/2018
-ms.author: larryfr
+ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 02277d8398fe5e3f3cfd1244e53cc80c4b627fa3
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9376d80e3c856df570f3709ca52c353b81579100
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857421"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619004"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
@@ -81,7 +76,7 @@ Löschen Sie den generierten Test und die Anwendungsdateien:
 
 ## <a name="add-maven-repositories"></a>Hinzufügen von Maven-Repositorys
 
-HDInsight basiert auf der Hortonworks Data Platform (HDP), daher empfehlen wir, das Hortonworks-Repository zum Herunterladen von Abhängigkeiten für Ihre Apache Storm-Projekte zu verwenden. Fügen Sie in der Datei __pom.xml__ nach der Zeile `<url>http://maven.apache.org</url>` folgenden XML-Code hinzu:
+HDInsight basiert auf der Hortonworks Data Platform (HDP), daher empfehlen wir, das Hortonworks-Repository zum Herunterladen von Abhängigkeiten für Ihre Apache Storm-Projekte zu verwenden. Fügen Sie in der Datei __pom.xml__ nach der Zeile  `<url>http://maven.apache.org</url>` folgenden XML-Code hinzu:
 
 ```xml
 <repositories>

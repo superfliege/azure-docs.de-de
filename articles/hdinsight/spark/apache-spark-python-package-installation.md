@@ -1,25 +1,20 @@
 ---
-title: 'Skriptaktion: Installieren von Python-Paketen mit Jupyter in Azure HDInsight | Microsoft-Dokumentation'
+title: 'Skriptaktion: Installieren von Python-Paketen mit Jupyter in Azure HDInsight'
 description: Eine Schritt-für-Schritt-Anleitung zum Verwenden einer Skriptaktion für die Konfiguration von Jupyter Notebooks die mit Spark-Clustern in HDInsight verfügbar sind, sodass sie externe Python-Pakete verwenden.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 21978b71-eb53-480b-a3d1-c5d428a7eb5b
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.author: nitinme
-ms.openlocfilehash: 4d9d1e0aaf6a1c0155f9ab74a5e63302635a0c11
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 36e727a59b91303c8c62c5525f72c328e2792ad6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517408"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619174"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Installieren externer Python-Pakete für Jupyter Notebooks in Apache Spark-Clustern unter HDInsight mithilfe von Skriptaktionen
 > [!div class="op_single_selector"]

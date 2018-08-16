@@ -1,5 +1,5 @@
 ---
-title: Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters | Microsoft Docs
+title: Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters | Microsoft-Dokumentation
 description: Skalieren Sie ein Service Fabric-Cluster bedarfsgesteuert herunter oder hoch, indem Sie die automatischen Skalierungsregeln für jeden Knotentyp bzw. jede VM-Skalierungsgruppe festlegen. Hinzufügen oder Entfernen von Knoten für einen Service Fabric-Cluster
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: c2479dad013bfcb738e61e67cc8cf9584b4d11cc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1869b25756693a4a3626d713b6bd2adab035cea6
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204813"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39717647"
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung oder eines manuellen Verfahrens
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate Skalierungsgruppe eines virtuellen Computers eingerichtet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Weitere Informationen finden Sie im Dokument über die [Service Fabric-Knotentypen](service-fabric-cluster-nodetypes.md). Da die Service Fabric-Knotentypen in Ihrem Cluster am Back-End aus VM-Skalierungsgruppen bestehen, müssen Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe Regeln für die automatische Skalierung einrichten.
@@ -53,7 +53,7 @@ Die automatische Skalierungsfunktion wird derzeit nicht durch die Lasten gesteue
 Befolgen Sie diese Anweisungen, um eine [automatische Skalierung für jede VM-Skalierungsgruppe einzurichten](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
 
 > [!NOTE]
-> In einem Szenario, in dem zentral herunterskaliert wird, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) mit dem Namen des entsprechenden Knotens aufrufen, es sei denn, Ihr Knotentyp besitzt die Dauerhaftigkeitsstufe „Gold“ oder „Silber“.
+> In einem Szenario, in dem zentral herunterskaliert wird, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) mit dem entsprechenden Knotennamen aufrufen, es sei denn, Ihr Knotentyp hat die Dauerhaftigkeitsstufe „Gold“ oder „Silber“. Für die Dauerhaftigkeitsstufe „Bronze“ ist es nicht empfehlenswert, mehr als einen Knoten auf einmal zentral herunterzuskalieren.
 > 
 > 
 
@@ -92,7 +92,7 @@ Sie müssen für eine VM-Instanz die folgenden Schritte nacheinander ausführen.
 4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md).
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Verhaltensweisen von Service Fabric Explorer, die Sie möglicherweise beobachten
-Wenn Sie einen Cluster zentral hochskalieren, zeigt Service Fabric Explorer die Anzahl von Knoten (Instanzen der VM-Skalierungsgruppen) an, die zum Cluster gehören.  Wenn Sie einen Cluster jedoch zentral herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz in einem fehlerhaften Zustand angezeigt, es sei denn, Sie rufen das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) mit dem entsprechenden Knotennamen auf.   
+Wenn Sie einen Cluster zentral hochskalieren, zeigt Service Fabric Explorer die Anzahl von Knoten (Instanzen der VM-Skalierungsgruppen) an, die zum Cluster gehören.  Wenn Sie einen Cluster jedoch zentral herunterskalieren, wird der entfernte Knoten bzw. die entfernte VM-Instanz in einem fehlerhaften Zustand angezeigt, es sei denn, Sie rufen das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) mit dem entsprechenden Knotennamen auf.   
 
 Dieses Verhalten erklärt sich wie folgt:
 
@@ -103,7 +103,7 @@ Sie verfügen über zwei Optionen, um sicherzustellen, dass ein Knoten beim Entf
 1) Wählen Sie die Dauerhaftigkeitsstufe „Gold“ oder „Silber“ für die Knotentypen in Ihrem Cluster aus, die die Infrastrukturintegration für Sie bereitstellt. Wenn Sie zentral herunterskalieren, werden so automatisch die Knoten aus den Systemdiensten (FM) entfernt.
 [hier mit den Details der Dauerhaftigkeitsstufen](service-fabric-cluster-capacity.md)
 
-2) Sobald die VM-Instanz zentral herunterskaliert wurde, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://msdn.microsoft.com/library/mt125993.aspx) aufrufen.
+2) Sobald die VM-Instanz zentral herunterskaliert wurde, müssen Sie das Cmdlet [Remove-ServiceFabricNodeState](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate) aufrufen.
 
 > [!NOTE]
 > Um Verfügbarkeit sicherzustellen und den Zustand beizubehalten, muss eine bestimmte Anzahl von Knoten in einem Service Fabric-Cluster stets in Betrieb sein. Dies wird auch als „Aufrechterhalten eines Quorums“ bezeichnet. Daher ist es für gewöhnlich nicht sicher, alle Computer innerhalb des Clusters herunterzufahren, sofern Sie nicht zuvor eine [vollständige Sicherung des Zustands](service-fabric-reliable-services-backup-restore.md) durchgeführt haben.

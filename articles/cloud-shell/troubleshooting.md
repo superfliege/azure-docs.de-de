@@ -4,7 +4,7 @@ description: Problembehandlung für Azure Cloud Shell
 services: azure
 documentationcenter: ''
 author: maertendMSFT
-manager: angelc
+manager: hemantm
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: azure
@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2018
+ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 21bc0633a9cc607325b48998791cb12631ecd0d7
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856486"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619405"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -28,20 +28,27 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 ## <a name="general-troubleshooting"></a>Allgemeine Problembehandlung
 
 ### <a name="early-timeouts-in-firefox"></a>Frühe Timeouts in Firefox
+
 - **Details:** Cloud Shell nutzt einen offenen Websocket für die Weitergabe der Ein- und Ausgaben an den Browser. Firefox verfügt über vordefinierte Richtlinien, die den Websocket vorzeitig schließen und damit frühe Timeouts in Cloud Shell verursachen können.
 - **Lösung:** Öffnen Sie Firefox, und navigieren Sie im Feld „URL“ zu „about:config“. Suchen Sie nach „network.websocket.timeout.ping.request“, und ändern Sie den Wert von 0 in 10.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Speicherdialogfeld – Fehler: 403 RequestDisallowedByPolicy
+
 - **Details**: Das Erstellen eines Speicherkontos über Cloud Shell ist aufgrund einer von Ihrem Administrator platzierten Azure-Richtlinie nicht erfolgreich. Zu den Fehlermeldung zählt: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **Auflösung**: Wenden Sie sich an Ihren Azure-Administrator, um die Azure-Richtlinie, die die Speichererstellung verweigert, zu entfernen oder zu aktualisieren.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Speicherdialogfeld – Fehler: 400 DisallowedOperation
- - **Details**: Mit einem Azure Active Directory-Abonnement können Sie keinen Speicher erstellen.
- - **Lösung**: Verwenden Sie ein Azure-Abonnement, das Speicherressourcen erstellen kann. Azure AD-Abonnements sind nicht in der Lage, Azure-Ressourcen zu erstellen.
+
+- **Details**: Mit einem Azure Active Directory-Abonnement können Sie keinen Speicher erstellen.
+- **Lösung**: Verwenden Sie ein Azure-Abonnement, das Speicherressourcen erstellen kann. Azure AD-Abonnements sind nicht in der Lage, Azure-Ressourcen zu erstellen.
 
 ### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminalausgabe – Fehler: Fehler beim Herstellen der Verbindung mit Terminal: Websocket kann nicht eingerichtet werden. Drücken Sie `Enter`, um erneut eine Verbindung herzustellen.
- - **Details**: Cloud Shell erfordert, dass eine Websocketverbindung mit der Cloud Shell-Infrastruktur hergestellt werden kann.
- - **Auflösung**: Überprüfen Sie, ob Sie Ihre Netzwerkeinstellungen so konfiguriert haben, dass HTTPS- und Websocketanforderungen an Domänen unter *.console.azure.com gesendet werden können.
+- **Details**: Cloud Shell erfordert, dass eine Websocketverbindung mit der Cloud Shell-Infrastruktur hergestellt werden kann.
+- **Auflösung**: Überprüfen Sie, ob Sie Ihre Netzwerkeinstellungen so konfiguriert haben, dass HTTPS- und Websocketanforderungen an Domänen unter *.console.azure.com gesendet werden können.
+
+### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>Festlegen Ihrer Cloud Shell-Verbindung für die Unterstützung von TLS 1.2
+ - **Details**: Um die Version von TLS für Ihre Verbindung mit Cloud Shell zu definieren, müssen Sie browserspezifische Einstellungen festlegen.
+ - **Lösung**: Navigieren Sie zu den Sicherheitseinstellungen Ihres Browsers, und aktivieren Sie das Kontrollkästchen neben „TLS 1.2 verwenden“.
 
 ## <a name="bash-troubleshooting"></a>Problembehandlung bei Bash
 
@@ -54,40 +61,42 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-Anwendungen werden nicht unterstützt.
 
-- **Details**: Wenn ein Benutzer eine GUI-App startet, kehrt die Eingabeaufforderung nicht zurück. Wenn ein Benutzer z.B. ein privates GitHub-Repository klont, für das die zweistufige Authentifizierung aktiviert ist, wird ein Dialogfeld zur Ausführung der zweistufigen Authentifizierung angezeigt.  
+- **Details**: Wenn ein Benutzer eine GUI-Anwendung startet, wird die Eingabeaufforderung nicht wieder angezeigt. Wenn ein Benutzer beispielsweise ein privates GitHub-Repository klont, für das die zweistufige Authentifizierung aktiviert ist, wird ein Dialogfeld zur Durchführung der zweistufigen Authentifizierung angezeigt.
 - **Lösung**: Schließen Sie die Shell, und öffnen Sie sie wieder.
-
-### <a name="get-help--online-does-not-open-the-help-page"></a>„Get-Help -online“ öffnet nicht die Hilfeseite.
-
-- **Details**: Wenn ein Benutzer `Get-Help Find-Module -online` eingibt, wird eine Fehlermeldung wie die Folgende angezeigt: `Starting a browser to display online Help failed. No program or browser is associated to open the URI http://go.microsoft.com/fwlink/?LinkID=398574.`
-- **Lösung**: Kopieren Sie die URL, und öffnen Sie sie manuell in Ihrem Browser.
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Problembehandlung bei der Remoteverwaltung von virtuellen Azure-Computern
 
 - **Details**: Aufgrund der Standardeinstellungen der Windows-Firewall für WinRM wird dem Benutzer möglicherweise der folgende Fehler angezeigt: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
 - **Auflösung:** Führen Sie `Enable-AzureRmVMPSRemoting` aus, um alle Aspekte des PowerShell-Remoting auf dem Zielcomputer zu aktivieren.
- 
 
-### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` speichert das Ergebnis auf dem Azure-Laufwerk zwischen.
+### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` führt nicht zur Aktualisierung des Ergebnisses im Azure-Laufwerk
 
-- **Details**: Das Ergebnis von `dir` wird auf dem Azure-Laufwerk zwischengespeichert.
-- **Lösung**: Führen Sie nach dem Erstellen oder Entfernen einer Ressourcen in der Azure-Laufwerkansicht zum Aktualisieren `dir -force` aus.
+- **Details**: Standardmäßig werden die Ergebnisse von `dir` auf dem Azure-Laufwerk zwischengespeichert, um die Benutzeroberfläche zu optimieren.
+- **Lösung**: Nachdem Sie eine Azure-Ressource erstellt, aktualisiert oder entfernt haben, können Sie `dir -force` ausführen, um die Ergebnisse auf dem Azure-Laufwerk zu aktualisieren.
 
 ## <a name="general-limitations"></a>Allgemeine Einschränkungen
+
 Für Azure Cloud Shell gelten die folgenden bekannten Einschränkungen:
 
 ### <a name="system-state-and-persistence"></a>Systemstatus und Persistenz
 
 Der Computer mit Ihrer Cloud Shell-Sitzung besteht nur vorübergehend und wird recycelt, wenn die Sitzung 20 Minuten lang inaktiv ist. Für Cloud Shell muss eine Azure-Dateifreigabe bereitgestellt werden. Daher muss Ihr Abonnement Speicherressourcen für den Zugriff auf Cloud Shell einrichten können. Weitere Überlegungen:
 
-* Mit eingebundenem Speicher werden nur Änderungen im `clouddrive`-Verzeichnis gespeichert. In Bash bleibt Ihr `$Home`-Verzeichnis ebenfalls erhalten.
-* Azure-Dateifreigaben können nur innerhalb Ihrer [zugewiesenen Region](persisting-shell-storage.md#mount-a-new-clouddrive) eingebunden werden.
-  * Führen Sie in Bash `env` aus, um für Ihre Region die Einstellung `ACC_LOCATION` zu ermitteln.
-* Azure Files unterstützt nur Konten mit lokal redundantem Speicher und georedundantem Speicher.
+- Mit eingebundenem Speicher werden nur Änderungen im `clouddrive`-Verzeichnis gespeichert. In Bash bleibt Ihr `$HOME`-Verzeichnis ebenfalls erhalten.
+- Azure-Dateifreigaben können nur innerhalb Ihrer [zugewiesenen Region](persisting-shell-storage.md#mount-a-new-clouddrive) eingebunden werden.
+  - Führen Sie in Bash `env` aus, um für Ihre Region die Einstellung `ACC_LOCATION` zu ermitteln.
+- Azure Files unterstützt nur Konten mit lokal redundantem Speicher und georedundantem Speicher.
 
 ### <a name="browser-support"></a>Browserunterstützung
 
-Cloud Shell unterstützt die aktuellen Versionen von Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox und Apple Safari. Safari im privaten Modus wird nicht unterstützt.
+Cloud Shell unterstützt die aktuellen Versionen der folgenden Browser:
+
+- Microsoft Edge
+- Microsoft Internet Explorer
+- Google Chrome
+- Mozilla Firefox
+- Apple Safari
+  - Safari im privaten Modus wird nicht unterstützt.
 
 ### <a name="copy-and-paste"></a>Kopieren und Einfügen
 
@@ -101,11 +110,11 @@ Benutzer können jeweils nur eine Art von Shell zu einem bestimmten Zeitpunkt st
 
 Cloud Shell ist für interaktive Anwendungsfälle konzipiert. Daher werden lange Sitzungen ohne Interaktion ohne Vorwarnung beendet.
 
-## <a name="bash-limitations"></a>Bash-Einschränkungen
-
 ### <a name="user-permissions"></a>Benutzerberechtigungen
 
 Berechtigungen werden als reguläre Benutzer ohne sudo-Zugriff festgelegt. Installationen außerhalb des Verzeichnisses `$Home` werden nicht gespeichert.
+
+## <a name="bash-limitations"></a>Bash-Einschränkungen
 
 ### <a name="editing-bashrc"></a>Bearbeiten von „.bashrc“
 
@@ -113,58 +122,79 @@ Gehen Sie bei der Bearbeitung von „.bashrc“ vorsichtig vor, da sonst unerwar
 
 ## <a name="powershell-limitations"></a>PowerShell-Einschränkungen
 
-### <a name="azuread-module-name"></a>`AzureAD`-Modulname
+### <a name="preview-version-of-azuread-module"></a>Vorschauversion des Azure AD-Moduls
 
-Der `AzureAD`-Modulname lautet derzeit `AzureAD.Standard.Preview`, das Modul bietet die gleiche Funktionalität.
+Derzeit ist `AzureAD.Standard.Preview` verfügbar, wobei es sich um eine Vorschauversion eines auf .NET Standard basierenden Moduls handelt. Dieses Modul verfügt über die gleiche Funktionalität wie `AzureAD`.
 
 ### <a name="sqlserver-module-functionality"></a>`SqlServer`-Modulfunktionalität
 
 Das in Cloud Shell enthaltene `SqlServer`-Modul bietet nur Unterstützung für die Vorabversion von PowerShell Core. Insbesondere ist `Invoke-SqlCmd` noch nicht verfügbar.
 
-### <a name="default-file-location-when-created-from-azure-drive"></a>Standard-Dateispeicherort beim Erstellen vom Azure-Laufwerk:
+### <a name="default-file-location-when-created-from-azure-drive"></a>Standard-Dateispeicherort beim Erstellen vom Azure-Laufwerk
 
-Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-Laufwerk erstellen. Wenn Benutzer neue Dateien mit anderen Tools wie Vim oder nano erstellen, werden die Dateien standardmäßig in `$HOME` gespeichert. 
+Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-Laufwerk erstellen. Wenn Benutzer neue Dateien mit anderen Tools wie Vim oder nano erstellen, werden die Dateien standardmäßig in `$HOME` gespeichert.
 
-### <a name="gui-applications-are-not-supported"></a>GUI-Anwendungen werden nicht unterstützt.
+### <a name="commands-that-create-gui-pop-ups-are-not-supported"></a>Befehle, mit denen GUI-Popupelemente erstellt werden, werden nicht unterstützt
 
 Wenn der Benutzer einen Befehl (etwa `Connect-AzureAD` oder `Connect-AzureRmAccount`) ausführt, mit dem ein Windows-Dialogfeld erstellt wird, wird etwa folgende Fehlermeldung angezeigt: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-### <a name="tab-completion-crashes-psreadline"></a>Bei TAB-Vervollständigung stürzt PSReadline ab.
+### <a name="tab-completion-can-throw-psreadline-exception"></a>Vervollständigung mit der TAB-Taste kann PSReadline-Ausnahme auslösen
 
-Wenn der EditMode des Benutzers in PSReadline auf Emacs festgelegt ist, der Benutzer versucht, alle Möglichkeiten über die TAB-Vervollständigung anzuzeigen und die Größe des Fensters zu klein zum Darstellen aller Möglichkeiten ist, stürzt PSReadline ab.
+Wenn PSReadline EditMode für den Benutzer auf Emacs festgelegt ist, der Benutzer versucht, alle Möglichkeiten über die TAB-Vervollständigung anzuzeigen, und die Größe des Fensters zu klein zum Darstellen aller Möglichkeiten ist, wird für PSReadline ein Ausnahmefehler ausgelöst.
 
-### <a name="large-gap-after-displaying-progress-bar"></a>Große Lücke nach dem Darstellen der Statusanzeige
+### <a name="large-gap-after-displaying-progress-bar"></a>Große Lücke nach dem Anzeigen der Statusanzeige
 
-Wenn der Benutzer eine Aktion ausführt, mit der eine Statusanzeige dargestellt wird, etwa eine TAB-Vervollständigung für das Laufwerk `Azure:`, ist es möglich, dass der Cursor nicht ordnungsgemäß festgelegt wird und an der vorherigen Stelle der Statusanzeige eine Lücke angezeigt wird.
+Wenn aufgrund eines Befehls oder einer Benutzeraktion eine Statusanzeige angezeigt wird, z.B. eine TAB-Vervollständigung für das Laufwerk `Azure:`, wird der Cursor ggf. nicht richtig angeordnet, und an der vorherigen Position der Statusanzeige ist eine Lücke zu sehen.
 
 ### <a name="random-characters-appear-inline"></a>In der Eingabe angezeigte zufällige Zeichen
 
-Die Sequenzcodes für die Cursorposition, z.B. `5;13R`, können in der Benutzereingabe angezeigt werden.  Die Zeichen können manuell entfernt werden.
+Die Sequenzcodes für die Cursorposition, z.B. `5;13R`, können in der Benutzereingabe angezeigt werden. Die Zeichen können manuell entfernt werden.
 
 ## <a name="personal-data-in-cloud-shell"></a>Personenbezogene Daten in Cloud Shell
 
-Azure Cloud Shell nimmt Ihre personenbezogenen Daten ernst. Die vom Azure Cloud Shell-Dienst erfassten und gespeicherten Daten werden verwendet, um Standardwerte für Ihr Benutzererlebnis bereitzustellen, wie Ihre zuletzt verwendete Shell, Ihr bevorzugter Schriftgrad, Ihre bevorzugte Schriftart und Dateifreigabedetails, die das Cloudlaufwerk unterstützen. Für den Fall, dass Sie diese Daten exportieren oder löschen möchten, lesen Sie die folgenden Anweisungen.
+Azure Cloud Shell nimmt Ihre personenbezogenen Daten ernst. Die vom Azure Cloud Shell-Dienst erfassten und gespeicherten Daten werden verwendet, um Standardwerte für Ihr Benutzererlebnis bereitzustellen, wie Ihre zuletzt verwendete Shell, Ihr bevorzugter Schriftgrad, Ihre bevorzugte Schriftart und Dateifreigabedetails, die das Cloudlaufwerk unterstützen. Wenn Sie diese Daten exportieren oder löschen möchten, hilft Ihnen die folgende Anleitung weiter.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>Export
 Um die Benutzereinstellungen zu **exportieren**, die Cloud Shell für Sie speichert (wie bevorzugte Shell, Schriftgrad und Schriftart), führen Sie die folgenden Befehle aus.
 
-1. Starten von Bash in Cloud Shell
-2. Führen Sie die folgenden Befehle aus:
-```
-user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
-user@Azure:~$ curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
+
+Bash:
+
+  ```
+  token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+  curl https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token" -s | jq
+  ```
+
+PowerShell:
+
+  ```powershell
+  $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
+  ((Invoke-WebRequest -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}).Content | ConvertFrom-Json).properties | Format-List
 ```
 
 ### <a name="delete"></a>Löschen
 Um die Benutzereinstellungen zu **löschen**, die Cloud Shell für Sie speichert (wie bevorzugte Shell, Schriftgrad und Schriftart), führen Sie die folgenden Befehle aus. Wenn Sie Cloud Shell das nächste Mal starten, werden Sie aufgefordert, erneut eine Dateifreigabe einzubinden. 
 
-Die eigentliche Azure Files-Freigabe wird nicht gelöscht, wenn Sie Ihre Benutzereinstellungen löschen, wechseln Sie zu Azure Files, um diese Aktion abzuschließen.
+>[!Note]
+> Wenn Sie Ihre Benutzereinstellungen löschen, wird die eigentliche Azure Files-Freigabe nicht gelöscht. Navigieren Sie zu Ihrer Azure Files-Instanz, um diese Aktion durchzuführen.
 
-1. Starten von Bash in Cloud Shell
-2. Führen Sie die folgenden Befehle aus:
-```
-user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
-user@Azure:~$ curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
-```
+1. [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell starten")](https://shell.azure.com)
+2. Führen Sie die folgenden Befehle in Bash oder PowerShell aus:
+
+Bash:
+
+  ```
+  token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
+  curl -X DELETE https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -H Authorization:"$token"
+  ```
+
+PowerShell:
+
+  ```powershell
+  $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
+  Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
+  ```

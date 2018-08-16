@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 065f7ef822cdabad8fe25651e3cda9735c655d5f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414523"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622251"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -132,7 +132,7 @@ Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwli
 Die Microsoft Authenticator-App kann dazu beitragen, nicht autorisierten Zugriff auf Konten zu verhindern und betrügerische Transaktionen zu stoppen, indem sie eine Benachrichtigung an Ihr Smartphone oder Tablett sendet. Überprüfen Sie die Benachrichtigung, und wählen Sie „Bestätigen“ aus, um den Zugriff zuzulassen. Wählen Sie andernfalls „Verweigern“ aus.
 
 > [!WARNING]
-> Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung.
+> Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung, **um ein Höchstmaß an Sicherheit zu gewährleisten**.
 >
 > Wenn zwei Methoden erforderlich sind, können Benutzer zum Zurücksetzen **ENTWEDER** die Option „Benachrichtigung“ **ODER** die Option „Prüfcode“ verwenden – zusätzlich zu anderen aktivierten Methoden.
 >
@@ -142,7 +142,7 @@ Die Microsoft Authenticator-App kann dazu beitragen, nicht autorisierten Zugriff
 Die Microsoft Authenticator-App und andere Drittanbieter-Apps können als Softwaretoken zum Generieren eines OATH-Prüfcodes verwendet werden. Nachdem Sie Benutzernamen und Kennwort eingegeben haben, geben Sie auf dem Anmeldebildschirm den in der App generierten Code ein. Der Überprüfungscode kann als zweite Authentifizierungsmethode eingegeben werden.
 
 > [!WARNING]
-> Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung.
+> Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung, **um ein Höchstmaß an Sicherheit zu gewährleisten**.
 >
 
 ## <a name="mobile-phone"></a>Mobiltelefon
@@ -198,5 +198,7 @@ Wenn für Ihr Unternehmen ein SSO-Verbund mit Azure AD konfiguriert ist und Sie 
 [Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Organisation](quickstart-sspr.md)
 
 [Aktivieren von Azure Multi-Factor Authentication für Ihre Organisation](howto-mfa-getstarted.md)
+
+[Aktivieren der zusammengeführten Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD](concept-registration-mfa-sspr-converged.md)
 
 [Dokumentation zur Konfiguration der Methode für die Authentifizierung von Endbenutzern](https://aka.ms/securityinfoguide)

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fc3f334771c11d6917e15628557adfb59051f0f6
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445380"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621020"
 ---
 # <a name="azure-virtual-datacenter-a-network-perspective"></a>Virtuelles Rechenzentrum in Microsoft Azure: Eine Netzwerkperspektive
 **Microsoft Azure**: Schneller agieren, Geld sparen, lokale Apps und Daten integrieren
@@ -262,7 +262,7 @@ In einem virtuellen Rechenzentrum ist es äußerst wichtig, die Netzwerksicherhe
 
 Alle Protokolle können zur Überwachung, statischen Analyse oder aus Sicherungszwecken in Azure Storage-Konten gespeichert werden. Wenn die Protokolle in einem Azure Storage-Konto gespeichert werden, können Kunden verschiedene Typen von Frameworks verwenden, um diese Daten abzurufen, vorzubereiten, zu analysieren und zu visualisieren, um den Status und die Integrität von Cloudressourcen zu melden.
 
-Große Unternehmen sollten bereits ein Standard-Framework für die Überwachung lokaler Systeme erworben haben und können dieses Framework so erweitern, dass Protokolle integriert werden, die von Cloudbereitstellungen generiert wurden. Für Organisationen, die die gesamte Protokollierung in der Cloud durchführen möchten, ist [Log Analytics][LogAnalytics] eine gute Wahl. Da Log Analytics als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Log Analytics kann auch in System Center-Komponenten wie System Center Operations Manager integriert werden, um Ihre bestehenden Investitionen in die Cloud zu erweitern.
+Große Unternehmen sollten bereits ein Standard-Framework für die Überwachung lokaler Systeme erworben haben und können dieses Framework so erweitern, dass Protokolle integriert werden, die von Cloudbereitstellungen generiert wurden. Für Organisationen, die die gesamte Protokollierung in der Cloud durchführen möchten, ist [Log Analytics][../log-analytics/log-analytics-overview .md] eine gute Wahl. Da Log Analytics als cloudbasierter Dienst implementiert wird, ist die Lösung mit minimalen Investitionen in Infrastrukturdienste schnell betriebsbereit. Log Analytics kann auch in System Center-Komponenten wie System Center Operations Manager integriert werden, um Ihre bestehenden Investitionen in die Cloud zu erweitern.
 
 Log Analytics ist ein Dienst in Azure, mit dem von Betriebssystemen, Anwendungen und Komponenten der Cloud-Infrastruktur generierte Protokoll- und Leistungsdaten erfasst, korreliert, durchsucht und bearbeitet werden können. Mit dieser Komponente erhalten Kunden betriebliche Einblicke in Echtzeit, wenn mithilfe der integrierten Suche und den benutzerdefinierten Dashboards alle Datensätze in allen Workloads in einem virtuellen Rechenzentrum analysiert werden.
 

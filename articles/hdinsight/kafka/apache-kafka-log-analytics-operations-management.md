@@ -1,25 +1,20 @@
 ---
-title: Log Analytics mit Apache Kafka – Azure HDInsight | Microsoft-Dokumentation
+title: Log Analytics für Apache Kafka – Azure HDInsight
 description: Erfahren Sie, wie Sie mithilfe von Log Analytics Protokolle aus Apache Kafka-Clustern in Azure HDInsight analysieren.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: ''
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 9f366631ced4392831ad9ed97898a88b3290cd22
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 06/15/2018
+ms.openlocfilehash: 9421217383f390630687d8416512401487ad3f7e
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32772261"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39621387"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
@@ -40,7 +35,7 @@ Die Schritte zum Aktivieren von Log Analytics für HDInsight sind für alle HDIn
     >
     > * Den HDInsight-Clusternamen
     > * Die Arbeitsbereichs-ID für Log Analytics. Die Arbeitsbereichs-ID finden Sie in Ihrem Log Analytics-Arbeitsbereich.
-    > * Den Primärschlüssel für die Log Analytics-Verbindung. Um den primären Schlüssel zu suchen, wählen Sie Ihre Log Analytics-Instanz und dann das __OMS-Portal__ aus. Wählen Sie im OMS-Portal die Option __Einstellungen__, __Verbundene Quellen__ und dann __Linux-Server__.
+    > * Den Primärschlüssel für die Log Analytics-Verbindung. Um den Primärschlüssel zu suchen, öffnen Sie den Arbeitsbereich im Azure-Portal, und wählen Sie im Menü auf der linken Seite __Erweiterte Einstellungen__ aus. Wählen Sie aus den erweiterten Einstellungen __Verbundene Quellen__>__Linux-Server__ aus.
 
 
 > [!IMPORTANT]

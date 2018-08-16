@@ -1,24 +1,20 @@
 ---
-title: Ports für Hadoop-Dienste in HDInsight –Azure | Microsoft-Dokumentation
+title: Ports für Hadoop-Dienste in HDInsight – Azure
 description: Enthält eine Liste mit Ports, die von in HDInsight ausgeführten Hadoop-Diensten verwendet werden.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: dd14aed9-ec25-4bb3-a20c-e29562735a7d
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
-ms.author: larryfr
-ms.openlocfilehash: 4490ac9bccb406bd2e882fc8afcbaf05aa8ddfab
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.author: jasonh
+ms.openlocfilehash: 78aed9d74325dfae0a02a4b95082baf60f6af603
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797313"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599247"
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Ports für Hadoop-Dienste in HDInsight
 

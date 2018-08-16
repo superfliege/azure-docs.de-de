@@ -1,28 +1,23 @@
 ---
-title: Veröffentlichen von Azure HDInsight-Anwendungen | Microsoft-Dokumentation
+title: Veröffentlichen von Azure HDInsight-Anwendungen
 description: Informationen zum Erstellen einer HDInsight-Anwendung und deren anschließender Veröffentlichung im Azure Marketplace.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 14aef891-7a37-4cf1-8f7d-ca923565c783
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.author: jgao
-ms.openlocfilehash: 9c538be4948a8e67ee9b94fcd6ff6bcea04438ef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: jasonh
+ms.openlocfilehash: 9b25452565a66fbd2edec51626bc636bed3d2e53
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201705"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39599784"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
-Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md).
+Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
 
 HDInsight-Anwendungen verwenden das *Bring-Your-Own-Lizenz*-Modell (BYOL). In einem BYOL-Szenario ist ein Anwendungsanbieter für die Lizenzierung der Anwendung für App-Benutzer verantwortlich. App-Benutzern werden nur die Azure-Ressourcen in Rechnung gestellt, die sie erstellen, z.B. der HDInsight-Cluster sowie die VMs und Knoten des Clusters. Die Abrechnung für die eigentliche Anwendung wird nicht über Azure abgewickelt.
 
@@ -34,7 +29,7 @@ Weitere Informationen finden Sie in diesen auf HDInsight-Anwendungen bezogenen A
 ## <a name="prerequisites"></a>Voraussetzungen
 Für die Übermittlung einer benutzerdefinierten Anwendung an den Marketplace [erstellen und testen Sie zuerst Ihre benutzerdefinierte Anwendung](hdinsight-apps-install-custom-applications.md).
 
-Darüber hinaus müssen Sie auch Ihr Entwicklerkonto registrieren. Weitere Informationen hierzu finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md) sowie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
+Darüber hinaus müssen Sie auch Ihr Entwicklerkonto registrieren. Weitere Informationen hierzu finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/marketplace-publishers-guide.md) sowie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace/marketplace-publishers-guide.md).
 
 ## <a name="define-the-application"></a>Definieren der Anwendung
 Die Veröffentlichung von Anwendungen im Marketplace erfolgt in zwei Schritten. Definieren Sie zuerst eine *createUiDef.json*-Datei. Die createUiDef.json-Datei gibt an, mit welchen Cluster Ihre Anwendung kompatibel ist. Veröffentlichen Sie dann die Vorlage aus dem Azure-Portal. Hier sehen Sie ein Beispiel für eine createUiDef.json-Datei:
@@ -96,7 +91,7 @@ So veröffentlichen Sie eine HDInsight-Anwendung:
 1. Melden Sie sich für die [Azure-Veröffentlichung](https://publish.windowsazure.com/) an.
 2. Wählen Sie im linken Menü **Lösungsvorlagen**.
 3. Geben Sie einen Titel ein, und wählen Sie dann **Neue Lösungsvorlage erstellen**.
-4. Wenn Sie Ihr Unternehmen noch nicht registriert haben, wählen Sie **Create Dev Center account and join the Azure program** (Dev Center-Konto erstellen und am Azure-Programm teilnehmen).  Weitere Informationen hierzu finden Sie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
+4. Wenn Sie Ihr Unternehmen noch nicht registriert haben, wählen Sie **Create Dev Center account and join the Azure program** (Dev Center-Konto erstellen und am Azure-Programm teilnehmen).  Weitere Informationen hierzu finden Sie unter [Erstellen eines Microsoft-Entwicklerkontos](../marketplace/marketplace-publishers-guide.md).
 5. Wählen Sie **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen. 
 6. Geben Sie einen Topologienamen ein, und wählen Sie dann **+**.
 7. Geben Sie eine neue Version ein, und wählen Sie dann **+**.

@@ -1,25 +1,20 @@
 ---
-title: Lokale Installation von Jupyter & Herstellen einer Verbindung mit einem Azure HDInsight Spark-Cluster | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Jupyter Notebook auf Ihrem Computer installieren und eine Verbindung zum Apache Spark-Cluster in Azure HDInsight herstellen.
+title: Lokales Installieren von Jupyter und Herstellen einer Verbindung mit Spark in Azure HDInsight
+description: Erfahren Sie, wie Sie Jupyter Notebook auf Ihrem Computer installieren und eine Verbindung mit einem Apache Spark-Cluster herstellen.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 48593bdf-4122-4f2e-a8ec-fdc009e47c16
 ms.service: hdinsight
+author: jasonwhowell
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: nitinme
-ms.openlocfilehash: eea61586054f34142d77f16333fe70a66d95d529
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 5e1a089f24a3223220b703bd4225e2750c7cae72
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528357"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619242"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung mit Apache Spark in HDInsight
 
@@ -44,7 +39,7 @@ Die hier aufgeführten Voraussetzungen gelten nicht für die Installation von Ju
 Sie müssen Python installieren, bevor Sie Jupyter Notebooks installieren können. Python und Jupyter stehen als Bestandteile der [Anaconda-Verteilung](https://www.continuum.io/downloads)zur Verfügung. Bei der Installation von Anaconda installieren Sie eine Python-Verteilung. Nachdem Sie Anaconda installiert haben, können Sie die Jupyter-Installation durch Ausführen der entsprechenden Befehle hinzufügen.
 
 1. Laden Sie das [Anaconda-Installationsprogramm](https://www.continuum.io/downloads) für Ihre Plattform herunter, und führen Sie das Setup aus. Stellen Sie sicher, dass während der Ausführung des Setup-Assistenten die Option für das Hinzufügen von Anaconda zu Ihrer PATH-Variablen aktiviert ist.
-2. Führen Sie den folgenden Befehl aus, um Jupyter zu installieren.
+1. Führen Sie den folgenden Befehl aus, um Jupyter zu installieren.
 
         conda install jupyter
 
@@ -73,8 +68,8 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
         import os
         print(os.path.expanduser('~'))
 
-2. Navigieren Sie zum Stammverzeichnis, und erstellen Sie einen Ordner namens **.sparkmagic** , sofern er nicht bereits vorhanden ist.
-3. Erstellen Sie im Ordner eine Datei namens **config.json** , und fügen Sie den folgenden JSON-Codeausschnitt in den Ordner ein.
+1. Navigieren Sie zum Stammverzeichnis, und erstellen Sie einen Ordner namens **.sparkmagic** , sofern er nicht bereits vorhanden ist.
+1. Erstellen Sie im Ordner eine Datei namens **config.json** , und fügen Sie den folgenden JSON-Codeausschnitt in den Ordner ein.
 
         {
           "kernel_python_credentials" : {
@@ -89,9 +84,9 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
           }
         }
 
-4. Ersetzen Sie **{USERNAME}**, **{CLUSTERDNSNAME}** und **{BASE64ENCODEDPASSWORD}** durch die entsprechenden Werte. Sie können eine Reihe von Hilfsprogrammen in Ihrer bevorzugten Programmiersprache oder online verwenden, um ein base64-codiertes Kennwort für Ihr eigentliches Kennwort zu generieren.
+1. Ersetzen Sie **{USERNAME}**, **{CLUSTERDNSNAME}** und **{BASE64ENCODEDPASSWORD}** durch die entsprechenden Werte. Sie können eine Reihe von Hilfsprogrammen in Ihrer bevorzugten Programmiersprache oder online verwenden, um ein base64-codiertes Kennwort für Ihr eigentliches Kennwort zu generieren.
 
-5. Konfigurieren Sie in `config.json` die korrekten Takteinstellungen: Diese Einstellungen müssen auf der gleichen Ebene wie die zuvor hinzugefügten Codeausschnitte `kernel_python_credentials` und `kernel_scala_credentials` hinzugefügt werden. Ein Beispiel dazu, wie und wo die Takteinstellungen hinzugefügt werden, finden Sie in [dieser Beispieldatei (config.json)](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
+1. Konfigurieren Sie in `config.json` die korrekten Takteinstellungen: Diese Einstellungen müssen auf der gleichen Ebene wie die zuvor hinzugefügten Codeausschnitte `kernel_python_credentials` und `kernel_scala_credentials` hinzugefügt werden. Ein Beispiel dazu, wie und wo die Takteinstellungen hinzugefügt werden, finden Sie in [dieser Beispieldatei (config.json)](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
 
     * Geben Sie für `sparkmagic 0.2.3` (Cluster der Version 3.4) Folgendes an:
 
@@ -108,11 +103,11 @@ In diesem Abschnitt lernen Sie, Spark Magic zu konfigurieren, nachdem Sie es ins
     >[!TIP]
     >Takte werden gesendet, um sicherzustellen, dass bei Sitzungen keine Verluste auftreten. Wenn ein Computer in den Ruhezustand versetzt oder heruntergefahren wird, wird der Takt nicht gesendet, und die Sitzung wird bereinigt. Für Cluster der Version 3.4 gilt: Wenn Sie dieses Verhalten deaktivieren möchten, können Sie die Livy-Konfiguration `livy.server.interactive.heartbeat.timeout` über die Ambari-Benutzeroberfläche auf `0` festlegen. Für Cluster der Version 3.5 gilt: Wenn Sie die obige 3.5-Konfiguration nicht festlegen, wird die Sitzung nicht gelöscht.
 
-6. Starten Sie Jupyter. Geben Sie in der Eingabeaufforderung folgenden Befehl ein:
+1. Starten Sie Jupyter. Geben Sie in der Eingabeaufforderung folgenden Befehl ein:
 
         jupyter notebook
 
-7. Stellen Sie sicher, dass Sie mit dem Jupyter Notebook eine Verbindung zu dem Cluster herstellen können und dass Sie die verfügbare Spark Magic mit den Kerneln verwenden können. Führen Sie die folgenden Schritte aus:
+1. Stellen Sie sicher, dass Sie mit dem Jupyter Notebook eine Verbindung zu dem Cluster herstellen können und dass Sie die verfügbare Spark Magic mit den Kerneln verwenden können. Führen Sie die folgenden Schritte aus:
 
     a. Erstellen Sie ein neues Notebook. Klicken Sie in der rechten Ecke auf **Neu**. Daraufhin sollten der Standardkernel **Python2** und die zwei neu installierten Kernel **PySpark** und **Spark** angezeigt werden. Klicken Sie auf **PySpark**.
 

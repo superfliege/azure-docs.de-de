@@ -1,25 +1,20 @@
 ---
-title: Anpassen von HDInsight-Clustern mit Skriptaktionen – Azure | Microsoft-Dokumentation
+title: Anpassen von HDInsight-Clustern mit Skriptaktionen – Azure
 description: Erfahren Sie, wie Sie mit Skriptaktionen Linux-basierten HDInsight-Clustern benutzerdefinierte Komponenten hinzufügen. Bei Skriptaktionen handelt es sich um Bash-Skripts. Sie können zum Anpassen der Clusterkonfiguration oder zum Hinzufügen zusätzlicher Dienste und Hilfsprogramme wie Hue, Solr oder R verwendet werden.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 48e85f53-87c1-474f-b767-ca772238cc13
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.author: larryfr
-ms.openlocfilehash: 500b6ef33bb70cd5138067d88303b7db9121e867
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: jasonh
+ms.openlocfilehash: 0837029cbe22ba7f659efefb113ed47ae1cf2dfe
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37101676"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038337"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
@@ -229,7 +224,7 @@ Weitere Informationen zum Bereitstellen einer Vorlage finden Sie in den folgende
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Verwenden einer Skriptaktion während der Clustererstellung mit Azure PowerShell
 
-In diesem Abschnitt verwenden Sie das Cmdlet [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx), um Skripts zum Anpassen eines Clusters aufzurufen. Stellen Sie vor dem Fortfahren sicher, dass Azure PowerShell installiert und konfiguriert ist. Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+In diesem Abschnitt verwenden Sie das Cmdlet [Add-AzureRmHDInsightScriptAction](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/add-azurermhdinsightscriptaction), um Skripts zum Anpassen eines Clusters aufzurufen. Stellen Sie vor dem Fortfahren sicher, dass Azure PowerShell installiert und konfiguriert ist. Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 Das folgende Skript zeigt, wie Sie eine Skriptaktion anwenden, wenn Sie einen Cluster mithilfe von PowerShell erstellen:
 

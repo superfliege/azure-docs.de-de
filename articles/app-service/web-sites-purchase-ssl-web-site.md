@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 85d0c91a0b1cdf5703b394d6d232ab9cee72ee0c
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807457"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627143"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
 In diesem Tutorial wird gezeigt, wie Sie Ihre Web-App schützen, indem Sie ein SSL-Zertifikat für Ihre Instanz von **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** erwerben, sicher in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) speichern und einer benutzerdefinierten Domäne zuordnen.
 
-## <a name="step-1---log-in-to-azure"></a>Schritt 1: Anmelden bei Azure
+## <a name="step-1---sign-in-to-azure"></a>Schritt 1: Anmelden bei Azure
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
@@ -38,7 +38,7 @@ Ein SSL-Zertifikat können Sie bestellen, indem Sie im **Azure-Portal** ein neue
 Geben Sie einen aussagekräftigen **Namen** für Ihr SSL-Zertifikat sowie den **Domänennamen** ein.
 
 > [!NOTE]
-> Dieser Schritt ist einer der wichtigsten Teile des Einkaufsvorgangs. Achten Sie darauf, dass Sie den richtigen Hostnamen (benutzerdefinierte Domäne) eingeben, den Sie mit diesem Zertifikat schützen möchten. Fügen Sie dem Hostnamen **NICHT** WWW an. 
+> Dieser Schritt ist einer der wichtigsten Teile des Einkaufsvorgangs. Achten Sie darauf, dass Sie den richtigen Hostnamen (benutzerdefinierte Domäne) eingeben, den Sie mit diesem Zertifikat schützen möchten. Stellen Sie dem Hostnamen **NICHT** WWW voran. 
 >
 
 Wählen Sie Ihr **Abonnement**, Ihre **Ressourcengruppe** und Ihre **Zertifikat-SKU** aus.
@@ -78,7 +78,7 @@ Klicken Sie auf der Seite **Zertifikatkonfiguration**, die Sie in Schritt 3 verw
 
 Wählen Sie die bevorzugte Überprüfungsmethode für die Domäne aus. 
 
-App Service-Zertifikate unterstützen vier Arten der Domänenüberprüfung: App Service-, Domänen-, Mail- und manuelle Überpüfung. Diese Überprüfungstypen werden im Abschnitt [Erweitert](#advanced) ausführlicher erläutert.
+App Service-Zertifikate unterstützen vier Arten der Domänenüberprüfung: App Service-, Domänen-, Mail- und manuelle Überprüfung. Diese Überprüfungstypen werden im Abschnitt [Erweitert](#advanced) ausführlicher erläutert.
 
 > [!NOTE]
 > Die **App Service-Überprüfung** ist die einfachste Option, wenn die Domäne, die Sie überprüfen möchten, bereits einer App Service-App im gleichen Abonnement zugeordnet ist. Sie nutzt die Tatsache aus, dass die App Service-App den Domänenbesitz bereits überprüft hat.
@@ -135,16 +135,7 @@ Ihre App sollte nun über `HTTPS://` (anstelle von `HTTP://`) erreichbar sein. S
 
 ### <a name="verifying-domain-ownership"></a>Überprüfen des Domänenbesitzes
 
-Von App Service-Zertifikaten werden noch zwei andere Arten der Domänenüberprüfung unterstützt: Überprüfung per E-Mail und manuelle Überprüfung.
-
-#### <a name="mail-verification"></a>Überprüfung per E-Mail
-
-Die Überprüfungs-E-Mail wurde bereits an die E-Mail-Adresse(n) gesendet, die dieser benutzerdefinierten Domäne zugeordnet ist/sind.
-Öffnen Sie die E-Mail, und klicken Sie auf den Link für die Überprüfung, um den Schritt für die Überprüfung per E-Mail abzuschließen.
-
-![Bild von der Überprüfung per E-Mail einfügen](./media/app-service-web-purchase-ssl-web-site/KVVerifyEmailSuccess.png)
-
-Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **E-Mail erneut senden**.
+App Service-Zertifikate unterstützen zwei weitere Arten der Domänenüberprüfung: Domänen- und manuelle Überprüfung.
 
 #### <a name="domain-verification"></a>Domänenüberprüfung
 
@@ -199,11 +190,11 @@ Bei erneuter Schlüsselerstellung für Ihr Zertifikat wird von der Zertifizierun
 
 ## <a name="renew-the-certificate"></a>Erneuern von Zertifikaten
 
-Um die automatische Verlängerung zu aktivieren, klicken Sie auf der Zertifikatverwaltungsseite auf **Einstellungen für die automatische Verlängerung**. Klicken Sie nacheinander auf **Ein** und **Speichern**.
+Um die automatische Verlängerung zu aktivieren, klicken Sie auf der Zertifikatverwaltungsseite auf **Einstellungen für die automatische Verlängerung**. Klicken Sie nacheinander auf **Ein** und **Speichern**. Zertifikate können vor Ablauf automatisch um 90 Tage verlängert werden, wenn Sie die automatische Verlängerung aktiviert haben.
 
 ![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
-Um das Zertifikat manuell zu verlängern, klicken Sie stattdessen auf **Manuelle Verlängerung**.
+Um das Zertifikat manuell zu verlängern, klicken Sie stattdessen auf **Manuelle Verlängerung**. Sie können anfordern, dass Ihr Zertifikat vor Ablauf manuell um 60 Tage verlängert wird.
 
 > [!NOTE]
 > Das verlängerte Zertifikat ist nicht automatisch an Ihre App gebunden, unabhängig davon, ob es manuell oder automatisch verlängert wurde. Informationen dazu, wie Sie es an Ihre App binden, finden Sie unter [Erneuern von Zertifikaten](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 

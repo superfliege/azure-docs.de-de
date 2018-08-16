@@ -1,24 +1,20 @@
 ---
-title: 'Tutorial: Verarbeiten von Daten aus Azure Event Hubs mit Apache Spark in Azure HDInsight | Microsoft-Dokumentation'
+title: 'Tutorial: Verarbeiten von Daten aus Azure Event Hubs mit Apache Spark in Azure HDInsight '
 description: Stellen Sie eine Verbindung zwischen Apache Spark in Azure HDInsight und Azure Event Hubs her, um Streamingdaten zu verarbeiten.
 services: hdinsight
-documentationcenter: ''
-author: mumian
-manager: cgronlun
-editor: cgronlun
-tags: azure-portal
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive,mvc
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
-ms.author: jgao
-ms.openlocfilehash: 9b59f5d58234aaf8f8385f722d6659548e066933
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 06/14/2018
+ms.openlocfilehash: 27c8a51ee3f0274489041f4dafbbf73d906e2fa4
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781409"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39617638"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-spark-in-hdinsight"></a>Tutorial: Verarbeiten von Tweets mit Azure Event Hubs und Spark in HDInsight
 
@@ -208,7 +204,7 @@ Sie müssen ein weiteres Jupyter-Notebook mit dem Namen **ReadTweetsFromEventHub
     val eventHubNSConnStr = "<Event hub namespace connection string>"
     val connStr = ConnectionStringBuilder(eventHubNSConnStr).setEventHubName(eventHubName).build 
     
-    val customEventhubParameters = EventHubsConf(connectionString).setMaxEventsPerTrigger(5)
+    val customEventhubParameters = EventHubsConf(connStr).setMaxEventsPerTrigger(5)
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
     //incomingStream.printSchema    
     

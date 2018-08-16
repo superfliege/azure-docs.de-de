@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a760e66d40d7af7178ec9a2d5fc14afec2a55b10
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 25f7cf6de4f217219e510ae00ce21762e755d2e8
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115396"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39627405"
 ---
 # <a name="durable-functions-overview"></a>Übersicht zu Durable Functions
 
@@ -44,7 +44,7 @@ Bei der *Funktionsverkettung* geht es um das Muster für die Ausführung einer F
 
 Mit Durable Functions können Sie dieses Muster präzise im Code implementieren.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-Skript
 
 ```cs
 public static async Task<object> Run(DurableOrchestrationContext ctx)
@@ -62,6 +62,8 @@ public static async Task<object> Run(DurableOrchestrationContext ctx)
     }
 }
 ```
+> [!NOTE]
+> Beim Schreiben einer vorkompilierten permanenten Funktion in C# gibt es im Vergleich zu dem zuvor vorgestellten C#-Skriptbeispiel geringfügige Unterschiede. Eine vorkompilierte C#-Funktion würde permanente Parameter erfordern, damit sie mit den jeweiligen Attributen versehen werden kann. Ein Beispiel hierfür ist das Attribut `[OrchestrationTrigger]` für den Parameter `DurableOrchestrationContext`. Wenn die Parameter nicht ordnungsgemäß ergänzt werden, wäre die Laufzeit nicht in der Lage, die Variablen in die Funktion einzufügen und würde Fehler ausgeben. Weitere Beispiele finden Sie unter [Beispiel](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
 
 #### <a name="javascript-functions-v2-only"></a>JavaScript (nur Functions v2)
 
@@ -88,7 +90,7 @@ Der `ctx`-Parameter ([DurableOrchestrationContext](https://azure.github.io/azure
 
 Bei normalen Funktionen kann die Funktion zum Auffächern nach außen mehrere Nachrichten an eine Warteschlange senden. Das Auffächern zurück nach innen ist jedoch wesentlich schwieriger. Sie müssen Code schreiben, um nachzuverfolgen, wann die von der Warteschlange ausgelösten Funktionen enden und Funktionsausgaben speichern. Die Erweiterung Durable Functions verarbeitet dieses Muster mit relativ einfachem Code.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-Skript
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -203,7 +205,7 @@ Ein Beispiel wäre das Umkehren des früheren asynchronen HTTP-API-Szenarios. An
 
 Mithilfe von Durable Functions können mehrere Monitore, die beliebige Endpunkte beobachten, in ein paar Codezeilen erstellt werden. Die Monitore können die Ausführung beenden, wenn eine Bedingung erfüllt ist, oder durch den [DurableOrchestrationClient](durable-functions-instance-management.md) beendet werden. Zudem kann ihr Warteintervall basierend auf einer Bedingung (z.B. exponentielles Backoff) geändert werden. Der folgende Code implementiert einen grundlegenden Monitor.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-Skript
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
@@ -271,7 +273,7 @@ Ein Beispiel eines Geschäftsprozesses, der Benutzerinteraktion umfasst, ist ein
 
 Dieses Muster kann mithilfe einer Orchestratorfunktion implementiert werden. Der Orchestrator würde einen [permanenten Timer](durable-functions-timers.md) verwenden, um die Genehmigung anzufordern und im Falle eines Timeouts zu eskalieren. Er würde auf ein [externes Ereignis](durable-functions-external-events.md) warten – die durch Benutzerinteraktion generierte Benachrichtigung.
 
-#### <a name="c"></a>C#
+#### <a name="c-script"></a>C#-Skript
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)

@@ -1,25 +1,20 @@
 ---
-title: Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight | Microsoft Docs
-description: Erfahren Sie, wie Sie Apache Storm-Topologien mithilfe des Storm-Dashboardsin HDInsight bereitstellen, überwachen und verwalten. Hadoop-Tools für Visual Studio verwenden
+title: Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight
+description: In diesem Artikel erfahren Sie, wie Sie Apache Storm-Topologien mithilfe des Storm-Dashboards in Windows-basiertem HDInsight bereitstellen, überwachen und verwalten. Hadoop-Tools für Visual Studio verwenden
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 5e542072-f014-42aa-82d6-2694a76df520
 ms.service: hdinsight
-ms.devlang: java
+author: jasonwhowell
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.author: larryfr
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 55c92e6408522b8a96a37dbedd99d929af1e49fb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1ad1d6662d276039ae1e01e49c60fc06682cb54a
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31414982"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622815"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Windows
 

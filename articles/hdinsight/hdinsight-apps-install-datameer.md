@@ -1,25 +1,20 @@
 ---
-title: Installieren einer veröffentlichten Anwendung – Datameer – Azure HDInsight | Microsoft-Dokumentation
+title: Installieren einer veröffentlichten Anwendung – Datameer – Azure HDInsight
 description: Installieren und verwenden Sie die Hadoop-Drittanbieteranwendung Datameer.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 5008056ae2274d058706649f286b91b71feadc27
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7b75170349f41b0fa611d5e748353484c7fea2e0
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401308"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39598587"
 ---
 # <a name="install-published-application---datameer"></a>Installieren einer veröffentlichten Anwendung – Datameer
 

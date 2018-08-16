@@ -1,25 +1,20 @@
 ---
-title: Verwenden benutzerdefinierter Maven-Pakete mit Jupyter in Spark unter Azure HDInsight | Microsoft-Dokumentation
+title: Verwenden benutzerdefinierter Maven-Pakete mit Jupyter in Spark in Azure HDInsight
 description: Eine Schritt-für-Schritt-Anleitung zum Konfigurieren von Jupyter-Notebooks, die mit Spark-Clustern in HDInsight verfügbar sind, sodass sie benutzerdefinierte Maven-Pakete verwenden.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 2a8bc545-064e-436f-8b5f-e67c26cfbf98
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2018
-ms.author: nitinme
-ms.openlocfilehash: dfecdd5c9399c1bd6eb021f097481e3c73f699ad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: jasonh
+ms.openlocfilehash: 51099f64546acc6f18269b2e7ec05106bb3baa2d
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31520822"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39622030"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Verwenden externer Pakete mit Jupyter Notebooks in Apache Spark-Clustern unter HDInsight
 > [!div class="op_single_selector"]
@@ -42,7 +37,7 @@ Sie benötigen Folgendes:
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>Verwenden von externen Paketen mit Jupyter Notebooks
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.   
 
-2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Quicklinks** und anschließend auf dem Blatt **Cluster-Dashboard** auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
+1. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Quicklinks** und anschließend auf dem Blatt **Cluster-Dashboard** auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
     > [!NOTE]
     > Sie können auch das Jupyter Notebook für Ihren Cluster aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
@@ -50,15 +45,15 @@ Sie benötigen Folgendes:
     > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
     > 
 
-3. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und anschließend auf **Spark**.
+1. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und anschließend auf **Spark**.
    
     ![Erstellen eines neuen Jupyter Notebooks](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Erstellen eines neuen Jupyter Notebooks")
 
-4. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Klicken Sie oben auf den Namen des Notebooks, und geben Sie einen Anzeigenamen ein.
+1. Ein neues Notebook mit dem Namen „Untitled.pynb“ wird erstellt und geöffnet. Klicken Sie oben auf den Namen des Notebooks, und geben Sie einen Anzeigenamen ein.
    
     ![Angeben eines neuen Namens für das Notebook](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "Angeben eines neuen Namens für das Notebook")
 
-5. Verwenden Sie die `%%configure` -Magic, um das Notebook so zu konfigurieren, dass es ein externes Paket verwendet. Stellen Sie sicher, dass Notebooks, die externe Pakete verwenden, die `%%configure` -Magic in der ersten Codezelle aufrufen. Dadurch wird sichergestellt, dass der Kernel für die Verwendung des Pakets konfiguriert ist, bevor die Sitzung gestartet wird.
+1. Verwenden Sie die `%%configure` -Magic, um das Notebook so zu konfigurieren, dass es ein externes Paket verwendet. Stellen Sie sicher, dass Notebooks, die externe Pakete verwenden, die `%%configure` -Magic in der ersten Codezelle aufrufen. Dadurch wird sichergestellt, dass der Kernel für die Verwendung des Pakets konfiguriert ist, bevor die Sitzung gestartet wird.
 
     >[!IMPORTANT] 
     >Wenn Sie vergessen, den Kernel in der ersten Zelle zu konfigurieren, können Sie `%%configure` mit dem Parameter `-f` verwenden. Allerdings wird die Sitzung dadurch neu gestartet, und der bisherige Fortschritt geht verloren.
@@ -68,7 +63,7 @@ Sie benötigen Folgendes:
     |Für HDInsight 3.3 und HDInsight 3.4 | `%%configure` <br>`{ "packages":["com.databricks:spark-csv_2.10:1.4.0"] }`|
     | Für HDInsight 3.5 und HDInsight 3.6 | `%%configure`<br>`{ "conf": {"spark.jars.packages": "com.databricks:spark-csv_2.10:1.4.0" }}`|
 
-6. Im obigen Codeausschnitt werden die Maven-Koordinaten für das externe Paket im zentralen Maven-Repository erwartet. In diesem Codeausschnitt ist `com.databricks:spark-csv_2.10:1.4.0` die Maven-Koordinate für das Paket **spark-csv** . Nachstehend finden Sie eine Anleitung zur Erstellung von Koordinaten für ein Paket.
+1. Im obigen Codeausschnitt werden die Maven-Koordinaten für das externe Paket im zentralen Maven-Repository erwartet. In diesem Codeausschnitt ist `com.databricks:spark-csv_2.10:1.4.0` die Maven-Koordinate für das Paket **spark-csv** . Nachstehend finden Sie eine Anleitung zur Erstellung von Koordinaten für ein Paket.
    
     a. Suchen Sie das Paket im Maven-Repository. In diesem Tutorial verwenden wir [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar).
    
@@ -80,7 +75,7 @@ Sie benötigen Folgendes:
    
         com.databricks:spark-csv_2.10:1.4.0
 
-7. Führen Sie die Codezelle mit der `%%configure` -Magic aus. Dadurch wird die zugrunde liegende Livy-Sitzung für die Verwendung des von Ihnen bereitgestellten Pakets konfiguriert. Sie können das Paket nun in den folgenden Codezellen in Ihrem Notebook verwenden, wie unten dargestellt.
+1. Führen Sie die Codezelle mit der `%%configure` -Magic aus. Dadurch wird die zugrunde liegende Livy-Sitzung für die Verwendung des von Ihnen bereitgestellten Pakets konfiguriert. Sie können das Paket nun in den folgenden Codezellen in Ihrem Notebook verwenden, wie unten dargestellt.
    
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").
@@ -94,7 +89,7 @@ Sie benötigen Folgendes:
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-8. Anschließend können Sie die Codeausschnitte wie unten dargestellt ausführen, um die Daten aus dem im vorherigen Schritt erstellten Datenrahmen anzuzeigen.
+1. Anschließend können Sie die Codeausschnitte wie unten dargestellt ausführen, um die Daten aus dem im vorherigen Schritt erstellten Datenrahmen anzuzeigen.
    
         df.show()
    

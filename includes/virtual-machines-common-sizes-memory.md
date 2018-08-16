@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: d7cae11314876bf07b9fcf3d3632a9f42b378626
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c2ef24692f9166fdca7eb19f648aee9ed3b0514f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38944765"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40026406"
 ---
 Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Verhältnis und eignen sich hervorragend für relationale Datenbankserver, mittelgroße bis große Caches und In-Memory-Analysen. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
@@ -78,11 +78,13 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 | Standard_E16_v3 | 16        | 128         | 400            | 32             | 24000/375/187                                            | 8 / 8.000                     |
 | Standard_E32_v3 | 32        | 256         | 800            | 32             | 48000/750/375                                            | 8 / 16.000                 |
 | Standard_E64_v3 | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30.000           |
-| Standard_E64i_v3&nbsp;<sup>2</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30.000           |
+| Standard_E64i_v3&nbsp;<sup>2,&nbsp;3</sup> | 64        | 432         | 1600           | 32             | 96000/1000/500                                           | 8 / 30.000           |
 
 <sup>1</sup> Virtuelle Computer der Ev3-Serie verfügen über Hyper-Threading-Technologie von Intel®.
 
-<sup>2</sup> Eingeschränkte Kerngrößen verfügbar. 
+<sup>2</sup> Eingeschränkte Kerngrößen verfügbar.
+
+<sup>3</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
 
 ## <a name="m-series"></a>M-Serie 
@@ -173,7 +175,7 @@ ACU: 210 - 250 <sup>1</sup>
 
 Storage Premium: unterstützt
 
-Storage Premium-Zwischenspeicherung: nicht unterstützt
+Storage Premium-Zwischenspeicherung: unterstützt
 
 | Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |

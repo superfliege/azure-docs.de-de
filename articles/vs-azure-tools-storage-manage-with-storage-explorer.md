@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: b41b1fcb437dac381a17bef4f1e5a7cebe213b98
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 329653e7494d2f993acb462d7d989db07a18f790
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435914"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600862"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -125,7 +125,7 @@ Der lokale Speicheremulator wird ab Version 1.1.0 auf allen Plattformen unterst�
 > [!NOTE]
 > Die Unterstützung für Speicherdienste und -funktionen kann abhängig von Ihrer Auswahl eines Emulators stark variieren. Stellen Sie sicher, dass Ihr Emulator die Dienste und Funktionen unterstützt, mit denen Sie arbeiten möchten.
 
-1. Konfigurieren Sie Ihren Wunschemulator so, dass er auf die Standardendpunkte lauscht.
+1. Konfigurieren Sie die Dienste des Emulators Ihrer Wahl, um über einen nicht genutzten Port zu lauschen.
 
    Emulierter Dienst | Standardendpunkt
    -----------------|-------------------------
@@ -134,16 +134,19 @@ Der lokale Speicheremulator wird ab Version 1.1.0 auf allen Plattformen unterst�
    Tabellen           | `http://127.0.0.1:10002`
 
 2. Starten Sie den Emulator.
+   > [!IMPORTANT]
+   > Storage-Explorer startet Ihren Emulator nicht automatisch. Sie müssen ihn selbst starten.
 
-3. Erweitern Sie im linken Bereich des Storage-Explorers den Knoten **(Lokal und angefügt)** > **Speicherkonten** > **(Entwicklung)**.
+3. Klicken Sie im Storage-Explorer auf die Schaltfläche **Konto hinzufügen**. Wählen Sie **Attach to a local emulator** (An einen lokalen Emulator anfügen), und klicken Sie dann auf **Weiter**.
+
+4. Geben Sie die Portnummern für die Dienste, die Sie oben konfiguriert haben (lassen Sie dies leer, wenn Sie nicht beabsichtigen, diesen Dienst zu nutzen). Klicken Sie auf **Weiter** und dann auf **Verbinden**, um die Verbindung zu erstellen.
+
+5. Erweitern Sie **Local & Attached (Lokal und angefügt)** > **Speicherkonten** > „Knoten“ und dann die Dienstknoten unter dem Knoten, der Ihrer Emulatorverbindung entspricht.
 
    Sie können mithilfe dieses Knotens lokale Blobs, Warteschlangen und Tabellen erstellen und mit diesen arbeiten. Weitere Informationen zur Verwendung der einzelnen Speicherkontotypen finden Sie in den folgenden Anleitungen:
 
    * [Verwalten von Azure Blob Storage-Ressourcen](vs-azure-tools-storage-explorer-blobs.md)
    * [Verwalten von Azure File-Speicherressourcen](vs-azure-tools-storage-explorer-files.md)
-
-> [!NOTE]
-> Der Storage-Explorer unterstützt nur das Herstellen einer Verbindung mit lokalen Emulatoren über die Standardendpunkte. Stellen Sie beim Starten des Emulators sicher, dass nur die Standardendpunkte konfiguriert wurden.
 
 ## <a name="attach-or-detach-an-external-storage-account"></a>Anfügen oder Trennen eines externen Speicherkontos
 

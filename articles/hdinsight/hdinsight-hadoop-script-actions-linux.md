@@ -1,26 +1,20 @@
 ---
-title: Entwickeln von Skriptaktionen mit Linux-basiertem HDInsight – Azure | Microsoft-Dokumentation
+title: Entwickeln von Skriptaktionen mit Linux-basiertem HDInsight – Azure
 description: Erfahren Sie, wie Sie Bash-Skripts verwenden, um Linux-basierte HDInsight-Cluster anzupassen. Das HDInsight-Feature „Skriptaktionen“ ermöglicht es Ihnen, Skripts während oder nach der Clustererstellung auszuführen. Skripts können verwendet werden, um die Konfigurationseinstellungen von Clustern zu ändern oder um zusätzliche Software zu installieren.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlun
-editor: cgronlun
-ms.assetid: cf4c89cd-f7da-4a10-857f-838004965d3e
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: larryfr
-ms.openlocfilehash: 5f6609018f2582ebfc6e2ecbe48bde6a6f2d0f5d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.author: jasonh
+ms.openlocfilehash: 35d54970e41a7e1533f3d5adc09fc60dc1bbd68d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098259"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39600488"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 

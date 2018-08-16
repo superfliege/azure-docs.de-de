@@ -1,26 +1,22 @@
 ---
-title: Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Linux | Microsoft Docs
+title: Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Storm-Topologien mithilfe des Storm-Dashboards in Linux-basiertem HDInsight bereitstellen, überwachen und verwalten. Hadoop-Tools für Visual Studio verwenden
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 35086e62-d6d8-4ccf-8cae-00073464a1e1
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.author: larryfr
-ms.openlocfilehash: 53433e6a677a2576a11209075f397bb5f246b875
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: cf3de9899cdefd5761bb31f64bcb537b12eb4df3
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129284"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39619463"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in Azure HDInsight 
 
 Dieses Dokument enthält die Grundlagen zur Verwaltung und Überwachung von Storm-Topologien, die unter Storm in HDInsight-Clustern ausgeführt werden.
 

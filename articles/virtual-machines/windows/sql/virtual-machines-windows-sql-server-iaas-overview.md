@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/12/2018
 ms.author: jroth
-ms.openlocfilehash: 2d38e5d7902e0db2342bce19ae2022a9433bfcfe
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 905caa7d0de514ae9fd13cb058b2b7826b8b6abf
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617733"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003670"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf virtuellen Azure-Computern? (Windows)
 
@@ -68,7 +68,7 @@ Die folgende Tabelle enthält eine Matrix für SQL Server-Images mit nutzungsbas
 Informationen zu den verfügbaren Images für virtuelle Linux-Computer mit SQL Server finden Sie unter [Overview of SQL Server on Azure Virtual Machines (Linux)](../../linux/sql/sql-server-linux-virtual-machines-overview.md) (Übersicht über SQL Server auf virtuellen Azure-Computern (Linux)).
 
 ### <a id="BYOL"></a> BYOL (Bring Your Own License)
-Sie können auch Ihre eigene Lizenz nutzen (BYOL). In diesem Fall zahlen Sie nur für die VM, ohne dass zusätzliche Gebühren für die SQL Server-Lizenzierung anfallen.  Durch die Nutzung einer eigenen Lizenz können Sie im Laufe der Zeit Geld für kontinuierliche Produktionsworkloads sparen. Weitere Anforderungen für diese Option finden Sie unter [Preisinformationen für virtuelle Azure-Computer mit SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md).
+Sie können auch Ihre eigene Lizenz nutzen (BYOL). In diesem Fall zahlen Sie nur für die VM, ohne dass zusätzliche Gebühren für die SQL Server-Lizenzierung anfallen.  Durch die Nutzung einer eigenen Lizenz können Sie im Laufe der Zeit Geld für kontinuierliche Produktionsworkloads sparen. Weitere Anforderungen für diese Option finden Sie unter [Preisinformationen für virtuelle Azure-Computer mit SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md#byol).
 
 | Version | Betriebssystem | Edition |
 | --- | --- | --- |
