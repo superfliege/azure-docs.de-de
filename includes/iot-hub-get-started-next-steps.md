@@ -6,5 +6,6 @@ Informationen zu den weiteren ersten Schritten mit Azure IoT Hub und zum Kennenl
 - [Verwenden von Power BI zum Visualisieren von Sensordaten in IoT Hub in Echtzeit](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 - [Use the Web Apps feature of Azure App Service to visualize real-time sensor data from your IoT hub](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md) (Verwenden des Web-Apps-Features von Azure App Service zum Visualisieren von Echtzeit-Sensordaten über IoT Hub)
 - [Wettervorhersage mithilfe von Sensordaten Ihres IoT Hub in Azure Machine Learning](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
+- [Use Azure IoT Toolkit extension for Visual Studio Code for Azure IoT Hub device management](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md) (Verwenden der Azure IoT Toolkit-Erweiterung für Visual Studio Code für die Azure IoT Hub-Geräteverwaltung)
 - [Verwenden von iothub-explorer für die Geräteverwaltung](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 - [Remoteüberwachung und Benachrichtigungen mit Logic Apps](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)

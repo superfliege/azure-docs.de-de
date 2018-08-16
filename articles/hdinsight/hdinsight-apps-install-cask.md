@@ -1,25 +1,20 @@
 ---
-title: Installieren einer veröffentlichten Anwendung – Datameer – Azure HDInsight | Microsoft-Dokumentation
+title: Installieren einer veröffentlichten Anwendung – Datameer – Azure HDInsight
 description: Installieren und verwenden Sie die Hadoop-Drittanbieteranwendung Datameer.
 services: hdinsight
-documentationcenter: ''
 author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 9eef1760b7cee3bbdf33122514669b38b0b4d9db
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a8961da0a62815ce60a6ee694d57f3172b81718b
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400842"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592175"
 ---
 # <a name="install-published-application---cask-data-application-platform-cdap"></a>Installieren einer veröffentlichten Anwendung – Cask Data Application Platform (CDAP)
 
@@ -35,7 +30,7 @@ Cask Data Application Platform (CDAP) ist eine Integrationsplattform für Big Da
 
 CDAP verwendet allgemeine Konzepte und Abstraktionen, mit denen Entwickler vertraut sind. Diese Abstraktionen blenden die Komplexität interner Systeme aus und tragen zur Wiederverwendbarkeit von Lösungen bei.
 
-Eine CDAP-Erweiterung namens [Cask Hydrator](http://cask.co/products/hydrator/) bietet eine Benutzeroberfläche für die Entwicklung und Verwaltung von Datenpipelines. Eine Datenpipeline besteht aus verschiedenen \*Plug-Ins, die Aufgaben wie Datenerfassung, -transformation und -analyse sowie Vorgänge nach der Ausführung durchführen.
+Eine CDAP-Erweiterung namens [Cask Hydrator](http://cask.co/products/hydrator/) bietet eine Benutzeroberfläche für die Entwicklung und Verwaltung von Datenpipelines. Eine Datenpipeline besteht aus verschiedenen Plug-Ins, die Aufgaben wie Datenerfassung, -transformation und -analyse sowie Vorgänge nach der Ausführung durchführen.
 
 Jedes CDAP-Plug-In besitzt eine klar definierte Schnittstelle, sodass zur Evaluierung verschiedener Technologien lediglich ein Plug-In durch ein anderes ersetzt werden muss und keinerlei Änderungen am Rest der Anwendung erforderlich sind.
 

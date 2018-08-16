@@ -2,24 +2,18 @@
 title: Checkliste zu Leistung und Skalierbarkeit von Azure Storage | Microsoft Docs
 description: Eine Checkliste mit bewährten Methoden für die Verwendung mit Azure Storage beim Entwickeln leistungsfähiger Anwendungen.
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 959d831b-a4fd-4634-a646-0d2c0c462ef8
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
-ms.openlocfilehash: 945289a172270eea56625287baf437fd4b70c7f3
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: 32881f815a714e355adf05c07a3cf114933f3fe9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30246218"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529699"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -146,7 +140,7 @@ Manchmal muss eine Anwendung denselben Inhalt für mehrere Benutzer bereitstelle
 Weitere Informationen zum Azure CDN finden Sie unter [Azure CDN](https://azure.microsoft.com/services/cdn/).  
 
 ### <a name="subheading6"></a>Verwenden von SAS und CORS
-Wenn Sie Code wie z.B. JavaScript im Webbrowser eines Benutzers oder eine mobile App zum Zugriff auf Daten im Azure Storage autorisieren müssen, besteht die Möglichkeit, eine Anwendung in der Webrolle als Proxy zu verwenden: Das Gerät des Benutzers wird mit der Webrolle authentifiziert, die sich im Gegenzug mit dem Speicherdienst authentifiziert. Auf diese Weise müssen Sie den Speicherkontoschlüssel nicht gegenüber unsicheren Geräten offenbaren. Dies sorgt jedoch für eine deutliche Belastung der Webrolle, da alle zwischen dem Benutzergerät und dem Speicherdienst übertragenen Daten über die Webrolle weitergeleitet werden. Sie können die Verwendung einer Webrolle als Proxy für den Speicherdienst durch die Verwendung von Shared Access Signatures (SAS) vermeiden, manchmal im Zusammenhang mit Cross-Origin Resource Sharing-Headers (CORS). Durch SAS kann das Benutzergerät Anfragen mithilfe eines beschränkten Zugriffstokens direkt an den Speicherdienst stellen. Wenn beispielsweise ein Benutzer ein Foto in die Anwendung hochladen möchte, kann Ihre Webrolle ein SAS-Token generieren und an das Benutzergerät senden, um für 30 Minuten Schreibzugriff auf einen bestimmten Blob oder Container zu gewähren (danach läuft das SAS-Token ab).
+Wenn Sie Code, z.B. JavaScript, im Webbrowser eines Benutzers oder eine mobile App zum Zugriff auf Daten im Azure Storage autorisieren müssen, besteht die Möglichkeit, eine Anwendung in der Webrolle als Proxy zu verwenden: Das Gerät des Benutzers wird mit der Webrolle authentifiziert, die wiederum den Zugriff auf die Speicherressourcen autorisiert. Auf diese Weise müssen Sie den Speicherkontoschlüssel nicht gegenüber unsicheren Geräten offenbaren. Dies sorgt jedoch für eine deutliche Belastung der Webrolle, da alle zwischen dem Benutzergerät und dem Speicherdienst übertragenen Daten über die Webrolle weitergeleitet werden. Sie können die Verwendung einer Webrolle als Proxy für den Speicherdienst durch die Verwendung von Shared Access Signatures (SAS) vermeiden, manchmal im Zusammenhang mit Cross-Origin Resource Sharing-Headers (CORS). Durch SAS kann das Benutzergerät Anfragen mithilfe eines beschränkten Zugriffstokens direkt an den Speicherdienst stellen. Wenn beispielsweise ein Benutzer ein Foto in die Anwendung hochladen möchte, kann Ihre Webrolle ein SAS-Token generieren und an das Benutzergerät senden, um für 30 Minuten Schreibzugriff auf einen bestimmten Blob oder Container zu gewähren (danach läuft das SAS-Token ab).
 
 Normalerweise lässt der Browser kein JavaScript auf einer Seite zu, die von einer Website auf einer Domäne gehostet wird, um bestimmte Vorgänge wie „PUT“ auf einer anderen Domäne auszuführen. Wenn Sie beispielsweise eine Webrolle unter „contosomarketing.cloudapp.net“ hosten und clientseitiges JavaScript verwenden möchten, um einen Blob in das Speicherkonto unter „contosoproducts.blob.core.windows.net“ hochzuladen, verhindert die Ursprungsrichtlinie des Browsers diesen Vorgang. CORS ist eine Browserfunktion, mit deren Hilfe die Zieldomäne (in diesem Fall das Speicherkonto) dem Browser mitteilen kann, dass sie Anfragen aus der Quelldomäne (in diesem Fall von der Webrolle) vertraut.  
 

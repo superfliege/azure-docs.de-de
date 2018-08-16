@@ -1,25 +1,20 @@
 ---
 title: Verwenden von Hudson mit Blobspeicher | Microsoft Docs
-description: Beschreibt die Verwendung von Hudson mit dem Azure Blob-Speicher als Repository für Buildartefakte.
+description: Beschreibt die Verwendung von Hudson mit Azure Blob Storage als Repository für Buildartefakte.
 services: storage
-documentationcenter: java
 author: seguler
-manager: jahogg
-editor: tysonn
-ms.assetid: 119becdd-72c4-4ade-a439-070233c1e1ac
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
-ms.openlocfilehash: e54bedff5f744004288e132efbed8c3e7981f8a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: common
+ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23060125"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528390"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Verwenden von Azure-Speicher mit einer Hudson-Lösung für die fortlaufende Integration
 ## <a name="overview"></a>Übersicht
@@ -28,14 +23,14 @@ Die folgenden Informationen zeigen die Verwendung von Blob Storage als Repositor
 In diesem Lernprogramm verwenden Sie das Azure-Speicher-Plug-In für Hudson CI, das von Microsoft zur Verfügung gestellt wird.
 
 ## <a name="introduction-to-hudson"></a>Einführung in Hudson
-Hudson ermöglicht die fortlaufende Integration (Continuous Integration, CI) eines Softwareprojekts, da Entwickler ihre Codeänderungen auf einfache Weise einbinden und Builds automatisch und häufig erstellen lassen können. Dadurch wird die Produktivität der Entwickler gesteigert. Builds werden mit Versionsangaben versehen, und Buildartefakte können in verschiedene Repositorys hochgeladen werden. In diesem Artikel wird gezeigt, wie Sie Azure-Blob-Speicher als Repository für die Buildartefakte verwenden. Außerdem wird gezeigt, wie Abhängigkeiten aus dem Azure-Blobspeicher heruntergeladen werden.
+Hudson ermöglicht die fortlaufende Integration (Continuous Integration, CI) eines Softwareprojekts, da Entwickler ihre Codeänderungen auf einfache Weise einbinden und Builds automatisch und häufig erstellen lassen können. Dadurch wird die Produktivität der Entwickler gesteigert. Builds werden mit Versionsangaben versehen, und Buildartefakte können in verschiedene Repositorys hochgeladen werden. In diesem Artikel wird gezeigt, wie Sie Azure Blob Storage als Repository für die Buildartefakte verwenden. Außerdem wird gezeigt, wie Abhängigkeiten aus Azure Blob Storage heruntergeladen werden.
 
 Weitere Informationen zu Hudson finden Sie unter [Meet Hudson](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson).
 
 ## <a name="benefits-of-using-the-blob-service"></a>Vorteile der Verwendung des Blob-Diensts
 Die Verwendung des Blob-Dienstes zum Hosten Ihrer Buildartefakte aus der agilen Entwicklung hat folgende Vorteile:
 
-* Hohe Verfügbarkeit Ihrer Buildartefakte und/oder herunterladbare Abhängigkeiten.
+* Hochverfügbarkeit Ihrer Buildartefakte und/oder herunterladbaren Abhängigkeiten.
 * Schnelles Hochladen Ihrer Buildartefakte durch Hudson CI.
 * Schnelles Herunterladen Ihrer Buildartefakte durch Kunden und Partner
 * Kontrolle über Benutzerzugriffsrichtlinien, mit Wahlmöglichkeiten zwischen anonymer Zugriff, Zugriff per Shared Access Signature mit Ablaufdatum, privater Zugriff usw.
@@ -88,7 +83,7 @@ Um den Blob-Dienst mit Hudson verwenden zu können, müssen Sie das Azure-Speich
    
     e. [Optional] Wenn Sie über weitere Speicherkonten verfügen, die Sie für Hudson CI verfügbar machen möchten, klicken Sie auf **Weitere Speicherkonten hinzufügen**.
    
-    f. Klicken Sie auf **Save** , um Ihre Einstellungen zu speichern.
+    f. Klicken Sie auf **Save**, um Ihre Einstellungen zu speichern.
 
 ## <a name="how-to-create-a-post-build-action-that-uploads-your-build-artifacts-to-your-storage-account"></a>Erstellen einer Postbuildaktion, die Ihre Buildartefakte in Ihr Speicherkonto hochlädt
 Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere Dateien erstellen wird, und ihn dann zur Postbuildaktion hinzufügen, um die Dateien in Ihr Speicherkonto hochzuladen.
@@ -131,18 +126,18 @@ Für das Lernprogramm müssen wir zunächst einen Auftrag erstellen, der mehrere
     
     e. Klicken Sie auf den Container **myjob**. Dies ist die Version des Auftragsnamens, den Sie beim Erstellen des Hudson-Auftrags zugewiesen haben, in Kleinbuchstaben. Containernamen und Blobnamen bestehen in Azure Storage aus Kleinbuchstaben (es wird zwischen Groß- und Kleinschreibung unterschieden). In der Liste der Blobs für den Container **myjob** sollte **hello.txt** und **date.txt** angezeigt werden. Kopieren Sie die URL für beide Elemente, und öffnen Sie sie in Ihrem Browser. Sie sehen die Textdatei, die als Buildartefakt hochgeladen wurde.
 
-Es kann nur eine Postbuild-Aktion pro Auftrag erstellt werden, die Artefakte in den Azure-Blobspeicher hochlädt. Beachten Sie, dass die einzelne Postbuild-Aktion zum Hochladen von Artefakten in den Azure-Blobspeicher mithilfe eines Semikolons als Trennzeichen verschiedene Dateien (einschließlich Platzhalter) und Pfade zu Dateien in **Liste der hochzuladenden Artefakte** angeben kann. Wenn Ihr Hudson-Build beispielsweise JAR- und TXT-Dateien im Ordner **build** Ihres Arbeitsbereichs erstellt und Sie beide in den Azure-Blobspeicher hochladen möchten, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar;build/\*.txt**. Sie können auch eine Doppel-Doppelpunktsyntax verwenden, um einen im Blobnamen zu verwendenden Pfad anzugeben. Wenn beispielsweise die JAR-Dateien mithilfe von **binaries** im Blobpfad und die TXT-Dateien mithilfe von **notices** im Blobpfad hochgeladen werden sollen, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar::binaries;build/\*.txt::notices**.
+Es kann nur eine Postbuildaktion pro Auftrag erstellt werden, die Artefakte in Azure Blob Storage hochlädt. Beachten Sie, dass die einzelne Postbuild-Aktion zum Hochladen von Artefakten in Azure Blob Storage mithilfe eines Semikolons als Trennzeichen verschiedene Dateien (einschließlich Platzhalter) und Pfade zu Dateien in **Liste der hochzuladenden Artefakte** angeben kann. Wenn Ihr Hudson-Build beispielsweise JAR- und TXT-Dateien im Ordner **build** Ihres Arbeitsbereichs erstellt und Sie beide in Azure Blob Storage hochladen möchten, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar;build/\*.txt**. Sie können auch eine Doppel-Doppelpunktsyntax verwenden, um einen im Blobnamen zu verwendenden Pfad anzugeben. Wenn beispielsweise die JAR-Dateien mithilfe von **binaries** im Blobpfad und die TXT-Dateien mithilfe von **notices** im Blobpfad hochgeladen werden sollen, verwenden Sie Folgendes für den Wert **List of Artifacts to upload** (Liste der hochzuladenden Artefakte): **build/\*.jar::binaries;build/\*.txt::notices**.
 
-## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Erstellen eines Buildschritts für das Herunterladen des Azure-Blobspeichers
-Die folgenden Schritte zeigen, wie Sie einen Buildschritt konfigurieren, damit Elemente aus dem Azure-Blobspeicher heruntergeladen werden. Dies ist hilfreich, wenn Sie Elemente in Ihren Build einbeziehen möchten, beispielsweise JAR-Dateien, die im Azure-Blobspeicher gespeichert sind.
+## <a name="how-to-create-a-build-step-that-downloads-from-azure-blob-storage"></a>Erstellen eines Buildschritts für das Herunterladen aus Azure Blob Storage
+Die folgenden Schritte zeigen, wie Sie einen Buildschritt konfigurieren, damit Elemente aus Azure Blob Storage heruntergeladen werden. Dies ist hilfreich, wenn Sie Elemente in Ihren Build einbeziehen möchten, beispielsweise JAR-Dateien, die in Azure Blob Storage gespeichert sind.
 
-1. Klicken Sie in der Auftragskonfiguration im Abschnitt **Build** auf **Add build step** (Buildschritt hinzufügen), und wählen Sie dann **Download from Azure Blob storage** (Aus Azure-Blobspeicher herunterladen) aus.
+1. Klicken Sie in der Auftragskonfiguration im Abschnitt **Build** auf **Add build step** (Buildschritt hinzufügen), und wählen Sie dann **Download from Azure Blob storage** (Aus Azure Blob Storage herunterladen) aus.
 2. Wählen Sie unter **Storage account name**das zu verwendende Speicherkonto aus.
 3. Geben Sie für **Container name**den Namen des Containers an, der die herunterzuladenden Blobs enthält. Sie können Umgebungsvariablen verwenden.
 4. Geben Sie unter **Blob name** (Blobname) den Blobnamen ein. Sie können Umgebungsvariablen verwenden. Sie können auch ein Sternchen als einen Platzhalter verwenden, nachdem Sie den bzw. die Anfangsbuchstaben des Blobnamens angeben. Beispielsweise würde **project\*** alle Blobs angeben, deren Namen mit **project** beginnen.
-5. [Optional] Geben Sie für **Downloadpfad**den Pfad auf dem Hudson-Computer an, in den die Dateien aus dem Azure-Blobspeicher heruntergeladen werden sollen. Es können auch Umgebungsvariablen verwendet werden. (Wenn Sie keinen Wert für **Downloadpfad**angeben, werden die Dateien aus dem Azure-Blobspeicher in den Arbeitsbereich des Auftrags heruntergeladen.)
+5. [Optional] Geben Sie für **Downloadpfad** den Pfad auf dem Hudson-Computer an, in den die Dateien aus Azure Blob Storage heruntergeladen werden sollen. Es können auch Umgebungsvariablen verwendet werden. (Wenn Sie keinen Wert für **Downloadpfad** angeben, werden die Dateien aus Azure Blob Storage in den Arbeitsbereich des Auftrags heruntergeladen.)
 
-Wenn Sie zusätzliche Elemente aus dem Azure-Blobspeicher herunterladen möchten, können Sie zusätzliche Buildschritte erstellen.
+Wenn Sie zusätzliche Elemente aus Azure Blob Storage herunterladen möchten, können Sie zusätzliche Buildschritte erstellen.
 
 Nach der Ausführung eines Builds können Sie die Build-Verlaufskonsolenausgabe prüfen oder den Downloadspeicherort aufrufen, um zu prüfen, ob die von Ihnen erwarteten Blobs erfolgreich heruntergeladen wurden.
 

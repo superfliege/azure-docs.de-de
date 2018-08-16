@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/30/2018
+ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 430490859e6d8a58a54eea267e0c3f16991f74c8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364375"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39433564"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Sichern von SQL Server-Datenbanken in Azure
 
@@ -47,6 +47,8 @@ Die Public Preview unterliegt den folgenden Einschränkungen:
 - [Für die Sicherung verteilter Verfügbarkeitsgruppen gelten Einschränkungen.](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/distributed-availability-groups?view=sql-server-2017)
 - SQL Server Always On-Failoverclusterinstanzen werden nicht unterstützt.
 - Verwenden Sie das Azure-Portal, um Azure Backup zum Schutz von SQL Server-Datenbanken zu konfigurieren. Azure PowerShell, Azure CLI und REST-APIs werden derzeit nicht unterstützt.
+
+Weitere Informationen zu unterstützten bzw. nicht unterstützten Szenarien finden Sie im [Abschnitt mit den häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq).
 
 ## <a name="support-for-azure-geos"></a>Unterstützte Azure-Regionen
 
@@ -432,7 +434,7 @@ Außerdem können Sie eine bestimmte vollständige oder differenzielle Sicherung
 
 2. Wählen Sie im Dashboard **Recovery Services-Tresor** unter **Verwendung** **Sicherungselemente** aus, um das Menü **Sicherungselemente** zu öffnen.
 
-    ![Öffnen des Menüs „Sicherungselemente“](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)zu erstellen und zu verwalten.
+    ![Öffnen des Menüs „Sicherungselemente“](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
 3. Wählen Sie im Menü **Sicherungselemente** unter **Sicherungsverwaltungstyp** **SQL Server in Azure-VM** aus. 
 
@@ -709,7 +711,7 @@ Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
 2. Wählen Sie im Dashboard **Recovery Services-Tresor** unter **Verwendung** **Sicherungselemente** aus, um das Menü **Sicherungselemente** zu öffnen.
 
-    ![Öffnen des Menüs „Sicherungselemente“](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png)zu erstellen und zu verwalten.
+    ![Öffnen des Menüs „Sicherungselemente“](./media/backup-azure-sql-database/restore-sql-vault-dashboard.png).
 
 3. Wählen Sie im Menü **Sicherungselemente** unter **Sicherungsverwaltungstyp** **SQL Server in Azure-VM** aus. 
 

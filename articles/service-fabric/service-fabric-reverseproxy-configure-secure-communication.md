@@ -13,24 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 0558a5647267dda26890ba3a6dc1af326fae94f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d8a11a3289037602535d1b5727d041e376012bd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308162"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502439"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Herstellen einer Verbindung mit einem sicheren Dienst mit dem Reverseproxy
 
-In diesem Artikel wird erläutert, wie eine sichere Verbindung zwischen dem Reverseproxy und Diensten hergestellt und so ein sicherer End-to-End-Kanal ermöglicht wird.
+In diesem Artikel wird erläutert, wie eine sichere Verbindung zwischen dem Reverseproxy und Diensten hergestellt und so ein sicherer End-to-End-Kanal ermöglicht wird. Weitere Informationen zum Reverseproxy finden Sie unter [Reverseproxy in Azure Service Fabric](service-fabric-reverseproxy.md).
 
-Die Herstellung einer Verbindung mit sicheren Diensten wird nur unterstützt, wenn der Reverseproxy für das Lauschen von HTTPS konfiguriert ist. Dies wird in diesem Dokument vorausgesetzt.
-Informationen zum Konfigurieren des Reverseproxys in Service Fabric finden Sie unter [Reverseproxy in Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy).
+Die Herstellung einer Verbindung mit sicheren Diensten wird nur unterstützt, wenn der Reverseproxy für das Lauschen von HTTPS konfiguriert ist. In diesem Artikel wird davon ausgegangen, dass dies der Fall ist.
+Informationen zum Konfigurieren des Reverseproxys in Service Fabric finden Sie unter [Setup reverse proxy in Azure Service Fabric](service-fabric-reverseproxy-setup.md) (Reverseproxy-Setup in Azure Service Fabric).
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Herstellung einer sicheren Verbindung zwischen dem Reverseproxy und Diensten 
 
 ### <a name="reverse-proxy-authenticating-to-services"></a>Reverseproxy authentifiziert sich bei Diensten:
-Der Reverseproxy identifiziert sich bei Diensten mithilfe des zugehörigen Zertifikats durch Angabe der Eigenschaft ***reverseProxyCertificate*** im **Cluster**-[Ressourcentypenabschnitt](../azure-resource-manager/resource-group-authoring-templates.md). Die Dienste können die Logik implementieren, um das vom Reverseproxy bereitgestellte Zertifikat zu überprüfen. Die Dienste können die Details des akzeptierten Clientzertifikats als Konfigurationseinstellungen im Konfigurationspaket angeben. Dieses kann zur Laufzeit gelesen und zum Überprüfen des vom Reverseproxy bereitgestellten Zertifikats verwendet werden. Informationen zum Hinzufügen der Konfigurationseinstellungen finden Sie unter [Verwalten von Anwendungsparametern](service-fabric-manage-multiple-environment-app-configuration.md). 
+Der Reverseproxy identifiziert sich bei Diensten selbst über sein Zertifikat. Für Azure-Cluster wird das Zertifikat mit der ***reverseProxyCertificate***-Eigenschaft im [Ressourcentypenabschnitt](../azure-resource-manager/resource-group-authoring-templates.md) [**Microsoft.ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) der Resource Manager-Vorlage angegeben. Für eigenständige Cluster wird der Cluster entweder mit der ***ReverseProxyCertificate***- oder der ***ReverseProxyCertificateCommonNames***-Eigenschaft im Abschnitt **Security** der Datei „ClusterConfig.json“ angegeben. Weitere Informationen finden Sie unter [Aktivieren des Reverseproxys auf eigenständigen Clustern](service-fabric-reverseproxy-setup.md#enable-reverse-proxy-on-standalone-clusters). 
+
+Die Dienste können die Logik implementieren, um das vom Reverseproxy bereitgestellte Zertifikat zu überprüfen. Die Dienste können die Details des akzeptierten Clientzertifikats als Konfigurationseinstellungen im Konfigurationspaket angeben. Dieses kann zur Laufzeit gelesen und zum Überprüfen des vom Reverseproxy bereitgestellten Zertifikats verwendet werden. Informationen zum Hinzufügen der Konfigurationseinstellungen finden Sie unter [Verwalten von Anwendungsparametern](service-fabric-manage-multiple-environment-app-configuration.md). 
 
 ### <a name="reverse-proxy-verifying-the-services-identity-via-the-certificate-presented-by-the-service"></a>Reverseproxy überprüft die Identität des Diensts über das vom Dienst bereitgestellte Zertifikat:
 Der Reverseproxy unterstützt für die Ausführung der Serverzertifikatüberprüfung der von den Diensten bereitgestellten Zertifikate die folgenden Richtlinien: None, ServiceCommonNameAndIssuer und ServiceCertificateThumbprints.
@@ -193,6 +195,7 @@ Wenn der Client kein Zertifikat bereitstellt, leitet der Reverseproxy einen leer
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Einrichten und Konfigurieren eines Reverseproxys in einem Cluster](service-fabric-reverseproxy-setup.md)
 * Beispiele für Azure Resource Manager-Vorlagen zum Konfigurieren eines sicheren Reverseproxys mit den unterschiedlichen Optionen für die Dienstzertifikatüberprüfung finden Sie unter [Configure reverse proxy to connect to secure services](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services) (Konfigurieren des Reverseproxys für die Verbindung mit sicheren Diensten).
 * Ein Beispiel für die HTTP-Kommunikation zwischen Diensten finden Sie im [Beispielprojekt auf GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started).
 * [Remoteprozeduraufrufe mit Reliable Services-Remoting](service-fabric-reliable-services-communication-remoting.md)

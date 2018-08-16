@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 304476e2d6862fbb6a859ae6fefe96d177b1111b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264254"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426692"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Warnung in Azure erstellt](monitor-alerts-unified-usage.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -53,6 +53,8 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | Anwendungs-ID |#applicationid |ID Ihrer Application Insight-App |
 | Abonnement-ID |#subscriptionid |ID Ihres Azure-Abonnements, das für Application Insights verwendet wird 
 
+> [!NOTE]
+> „LinkToSearchResults“ übergibt Parameter wie „SearchQuery“, „Startzeit für das Suchintervall“ und „Endzeit für das Suchintervall“ in der URL an das Azure-Portal, damit sie im Analytics-Abschnitt angezeigt werden können. Für das Azure-Portal gilt eine URI-Größenbeschränkung von etwa 2000 Zeichen. Es wird geöffnet, wenn Parameterwerte diese Beschränkung überschreiten. Benutzer können Details manuell eingeben, um die Ergebnisse im Analytics-Portal anzuzeigen. Sie können auch die [Application Insights Analytics-REST-API](https://dev.applicationinsights.io/documentation/Using-the-API) oder die [Log Analytics-REST-API](https://dev.loganalytics.io/reference) zum programmgesteuerten Abrufen der Ergebnisse verwenden. 
 
 Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält.  Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter.
 

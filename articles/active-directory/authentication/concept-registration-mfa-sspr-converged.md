@@ -1,6 +1,6 @@
 ---
-title: Zusammengeführte Registrierung für Azure AD SSPR und MFA
-description: Registrierung für Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung
+title: Zusammengeführte Registrierung für Azure AD SSPR und MFA (öffentliche Vorschauversion)
+description: Registrierung für Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung (öffentliche Vorschauversion)
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: cdd100d113c3fbeda8ac840d479b065d648ac3ff
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415653"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492891"
 ---
-# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication"></a>Zusammengeführte Registrierung für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication
+# <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Zusammengeführte Registrierung für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication (öffentliche Vorschauversion)
 
 Bisher mussten Benutzer Authentifizierungsmethoden für Azure Multi-Factor Authentication (MFA) und Self-Service-Kennwortzurücksetzung (SSPR) in zwei verschiedenen Portalen registrieren. Viele Anwender waren verwirrt, dass ähnliche Methoden sowohl für Azure MFA als auch für SSPR verwendet wurden und diese nicht in beiden Portalen registriert werden konnten. Diese Diskrepanz führte dazu, dass einige Benutzer bei Bedarf weder Azure MFA noch SSPR verwenden konnten, was zu einem Helpdesk-Anruf und möglicherweise zu einem verärgerten Benutzer führte. Jetzt können sich Benutzer einmalig registrieren und die Vorteile von Azure MFA und SSPR nutzen, ohne dass sie ihre Authentifizierungsmethoden für diese Funktionen zweimal registrieren müssen.  
 
@@ -71,10 +71,12 @@ Auf dieser Seite sehen Benutzer bereits registrierte Authentifizierungsmethoden 
 ## <a name="known-issues"></a>Bekannte Probleme
 
 **Standardmäßige MFA-Methode wird auf Telefonanruf“ festgelegt, wenn der Benutzer „Telefon“ per SMS registriert**
-   * Einige Benutzer werden feststellen, dass ihre standardmäßige MFA-Methode auf „Telefonanruf“ festgelegt ist, nachdem sie ihre Telefonnummer per SMS registriert haben. Benutzer können dieses Problem lösen, indem sie ihre Standardmethode anhand der folgenden Anweisungen ändern. 
+
+   * Einige Benutzer werden feststellen, dass ihre standardmäßige MFA-Methode auf „Telefonanruf“ festgelegt ist, nachdem sie ihre Telefonnummer per SMS registriert haben. Benutzer können dieses Problem beheben, indem sie ihre Standardmethode ändern. Die entsprechende Anleitung ist im Artikel [Verwalten der Sicherheitsinformation (Vorschauversion)](../user-help/security-info-manage-settings.md#change-your-info) enthalten.
 
 **Benutzer können nicht auf die neue Registrierungsoberfläche zugreifen, nachdem der Administrator ihre Standardmethode deaktiviert**
-   * Einige Benutzer können möglicherweise nicht auf die neue Registrierungsoberfläche zugreifen, wenn ihre zuvor registrierten standardmäßige MFA-Methode vom Administrator deaktiviert wurde. Hier ist ein Beispielszenario: 
+
+   * Einige Benutzer können möglicherweise nicht auf die neue Registrierungsoberfläche zugreifen, wenn ihre zuvor registrierten standardmäßige MFA-Methode vom Administrator deaktiviert wurde. Hier ist ein Beispielszenario:
       1. Der Benutzer hat zuvor seine Telefonnummer registriert und seine Standardmethode auf „Telefonanruf“ festgelegt.
       2. Der Administrator deaktiviert „Telefonanruf“ als MFA-Methode für den Mandanten.
       3. Der Benutzer wird während der Anmeldung aufgefordert, sich zu registrieren, da er eine zusätzliche Methode registrieren muss, um die SSPR-Richtlinie des Mandanten zu erfüllen.

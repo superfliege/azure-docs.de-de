@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 08/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 10bf78e4ea09b521138d62b29ffd0e4908ffb34d
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a6bc220d15e720662eaa9605421e21ccb99892ab
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040991"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39502344"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-logicmonitor"></a>Tutorial: Azure Active Directory-Integration mit LogicMonitor
 
@@ -52,7 +52,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von LogicMonitor aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-logicmonitor-from-the-gallery"></a>Hinzufügen von LogicMonitor aus dem Katalog
 Zum Konfigurieren der Integration von LogicMonitor in Azure AD müssen Sie LogicMonitor aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -63,19 +63,19 @@ Zum Konfigurieren der Integration von LogicMonitor in Azure AD müssen Sie Logic
 
     ![Active Directory][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![ANWENDUNGEN][2]
     
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![ANWENDUNGEN][3]
 
-4. Geben Sie im Suchfeld **LogicMonitor** ein.
+1. Geben Sie im Suchfeld **LogicMonitor** ein.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/logicmonitor-tutorial/tutorial_logicmonitor_search.png)
 
-5. Wählen Sie im Ergebnisbereich **LogicMonitor** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich **LogicMonitor** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/logicmonitor-tutorial/tutorial_logicmonitor_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in LogicMonitor den Wert für **Benutzername** in Azure AD als Wert f
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei LogicMonitor müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines LogicMonitor-Testbenutzers](#creating-a-logicmonitor-test-user)**, um eine Entsprechung von Britta Simon in LogicMonitor zu erhalten, die mit ihrer Repräsentation in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
+1. **[Erstellen eines LogicMonitor-Testbenutzers](#creating-a-logicmonitor-test-user)**, um eine Entsprechung von Britta Simon in LogicMonitor zu erhalten, die mit ihrer Repräsentation in Azure AD verknüpft ist.
+1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
@@ -104,11 +104,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Configure single sign-on](./media/logicmonitor-tutorial/tutorial_logicmonitor_samlbase.png)
 
-3. Führen Sie auf der Seite **Domäne und URLs für LogicMonitor** die folgenden Schritte aus:
+1. Führen Sie auf der Seite **Domäne und URLs für LogicMonitor** die folgenden Schritte aus:
 
     ![Configure single sign-on](./media/logicmonitor-tutorial/tutorial_logicmonitor_url.png)
 
@@ -121,39 +121,35 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
 
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Configure single sign-on](./media/logicmonitor-tutorial/tutorial_logicmonitor_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
+1. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Configure single sign-on](./media/logicmonitor-tutorial/tutorial_general_400.png)
 
-6. Melden Sie sich bei der **LogicMonitor** -Unternehmenswebsite als Administrator an.
+1. Melden Sie sich bei der **LogicMonitor** -Unternehmenswebsite als Administrator an.
 
-7. Klicken Sie im oberen Menü auf das Symbol **Einstellungen**.
+1. Klicken Sie im oberen Menü auf das Symbol **Einstellungen**.
    
-   ![Einstellungen](./media/logicmonitor-tutorial/ic790052.png "Einstellungen")
+    ![Einstellungen](./media/logicmonitor-tutorial/ic790052.png "Einstellungen")
 
-8. Klicken Sie auf der Navigationsleiste links auf **Einmaliges Anmelden**
+1. Klicken Sie auf der Navigationsleiste links auf **Einmaliges Anmelden**
    
-   ![Einmaliges Anmelden](./media/logicmonitor-tutorial/ic790053.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/logicmonitor-tutorial/ic790053.png "des einmaligen Anmeldens")
 
-9. Führen Sie im Abschnitt **Einstellungen für einmaliges Anmelden (SSO)** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Einstellungen für einmaliges Anmelden (SSO)** die folgenden Schritte aus:
    
-   ![Einstellungen für einmaliges Anmelden](./media/logicmonitor-tutorial/ic790054.png "Einstellungen für einmaliges Anmelden")
+    ![Einstellungen für einmaliges Anmelden](./media/logicmonitor-tutorial/ic790054.png "Einstellungen für einmaliges Anmelden")
    
-   a. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
+    a. Wählen Sie **Einmaliges Anmelden aktivieren**aus.
 
-   b. Wählen Sie für **Standardmäßige Rollenzuweisung** die Option **Schreibgeschützt** aus.
+    b. Wählen Sie für **Standardmäßige Rollenzuweisung** die Option **Schreibgeschützt** aus.
    
-   c. Öffnen Sie die heruntergeladene Metadatendatei im Editor, und fügen Sie den Inhalt der Datei ins Textfeld **Identitätsanbietermetadaten** ein.
+    c. Öffnen Sie die heruntergeladene Metadatendatei im Editor, und fügen Sie den Inhalt der Datei ins Textfeld **Identitätsanbietermetadaten** ein.
    
-   d. Klicken Sie auf **Änderungen speichern**.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+    d. Klicken Sie auf **Änderungen speichern**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
@@ -166,15 +162,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Erstellen eines Azure AD-Testbenutzers](./media/logicmonitor-tutorial/create_aaduser_01.png) 
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
+1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
     
     ![Erstellen eines Azure AD-Testbenutzers](./media/logicmonitor-tutorial/create_aaduser_02.png) 
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/logicmonitor-tutorial/create_aaduser_03.png) 
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
+1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
  
     ![Erstellen eines Azure AD-Testbenutzers](./media/logicmonitor-tutorial/create_aaduser_04.png) 
 
@@ -188,27 +184,27 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-logicmonitor-test-user"></a>Erstellen eines LogicMonitor-Testbenutzers
 
-Damit sich AAD-Benutzer anmelden können, müssen sie in der LogicMonitor-Anwendung unter Verwendung ihrer Azure Active Directory-Benutzernamen bereitgestellt werden.
+Damit sich Azure AAD-Benutzer anmelden können, müssen sie in der LogicMonitor-Anwendung unter Verwendung ihrer Azure Active Directory-Benutzernamen bereitgestellt werden.
 
 **Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
 
 1. Melden Sie sich bei der LogicMonitor-Unternehmenswebsite als Administrator an.
 
-2. Klicken Sie im oberen Menü auf **Einstellungen** und dann auf **Rollen und Benutzer**.
+1. Klicken Sie im oberen Menü auf **Einstellungen** und dann auf **Rollen und Benutzer**.
    
-   ![Rollen und Benutzer](./media/logicmonitor-tutorial/ic790056.png "Rollen und Benutzer")
+    ![Rollen und Benutzer](./media/logicmonitor-tutorial/ic790056.png "Rollen und Benutzer")
 
-3. Klicken Sie auf **Hinzufügen**.
+1. Klicken Sie auf **Hinzufügen**.
 
-4. Führen Sie im Abschnitt **Konto hinzufügen** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Konto hinzufügen** die folgenden Schritte aus:
    
-   ![Konto hinzufügen](./media/logicmonitor-tutorial/ic790057.png "Konto hinzufügen")
+    ![Konto hinzufügen](./media/logicmonitor-tutorial/ic790057.png "Konto hinzufügen")
    
-   a. Geben Sie für den Azure Active Directory-Benutzer, den Sie bereitstellen möchten, Werte für **Benutzername**, **E-Mail**, **Kennwort** und **Kennwort erneut eingeben** in die entsprechenden Textfelder ein.
+    a. Geben Sie für den Azure Active Directory-Benutzer, den Sie bereitstellen möchten, Werte für **Benutzername**, **E-Mail**, **Kennwort** und **Kennwort erneut eingeben** in die entsprechenden Textfelder ein.
    
-   b. Wählen Sie **Rollen**, **Berechtigungen anzeigen** und **Status** aus.
+    b. Wählen Sie **Rollen**, **Berechtigungen anzeigen** und **Status** aus.
    
-   c. Klicken Sie auf **Submit**.
+    c. Klicken Sie auf **Submit**.
 
 >[!NOTE]
 >Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von LogicMonitor-Benutzerkonten oder mithilfe der von LogicMonitor bereitgestellten APIs erstellen. 
@@ -225,30 +221,30 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Liste der Anwendungen **LogicMonitor** aus.
+1. Wählen Sie in der Liste der Anwendungen **LogicMonitor** aus.
 
     ![Configure single sign-on](./media/logicmonitor-tutorial/tutorial_logicmonitor_app.png) 
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Benutzer zuweisen][202] 
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Benutzer zuweisen][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
 ### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
  
 Wenn Sie im Zugriffsbereich auf die Kachel „LogicMonitor“ klicken, sollten Sie automatisch bei Ihrer LogicMonitor-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

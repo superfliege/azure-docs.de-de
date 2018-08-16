@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 889762ae0b401438f25546738268c584ddd58389
-ms.sourcegitcommit: 15bfce02b334b67aedd634fa864efb4849fc5ee2
+ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "35378496"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39504966"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Python)
 
@@ -34,13 +34,18 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgendermaßen vor:
 
 1. Erstellen Sie einen Ordner für Ihren Code.
+
 2. Navigieren Sie an einer Administrator-Eingabeaufforderung oder einem Administrator-Terminal zu dem Ordner, den Sie gerade erstellt haben.
+
 3. Installieren Sie das Python-Modul für **Anforderungen**:
+
     <pre>
     pip install pipenv
     pipenv install requests
     </pre>
-7. Erstellen Sie die Datei „BingCustomSearch.py“, und kopieren Sie den folgenden Code in diese:
+    
+7. Erstellen Sie die Datei „BingCustomSearch.py“, und kopieren Sie den folgenden Code in die Datei.
+
 8. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Schlüssel bzw. Ihre Konfigurations-ID (siehe Schritt 1).
 
     ``` Python

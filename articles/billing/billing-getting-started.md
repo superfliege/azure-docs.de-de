@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: e4db9911697a4d79032b7a6358db642112a5a54e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dc516aa64399447973cefa47e913193adce2f8f5
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062168"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528264"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -121,7 +121,7 @@ Informationen zu weiteren Kostensenkungsfeatures für Ihre Entwicklungs- und Tes
 
 ### <a name="turn-on-and-check-out-azure-advisor-recommendations"></a>Aktivieren und Überprüfen von Azure Advisor-Empfehlungen
 
-[Azure Advisor](../advisor/advisor-overview.md) ist ein Vorschaufeature, das wenig genutzte Ressourcen identifiziert und Sie so bei der Senkung Ihrer Kosten unterstützt. Aktivieren Sie das Feature im Azure-Portal:
+[Azure Advisor](../advisor/advisor-overview.md) ist ein Feature, mit dem Sie die Kosten reduzieren können, indem wenig genutzte Ressourcen identifiziert werden. Navigieren Sie im Azure-Portal zum Advisor:
 
 ![Screenshot der Schaltfläche für Azure Advisor im Azure-Portal](./media/billing-getting-started/advisor-button.PNG)
 

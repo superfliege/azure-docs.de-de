@@ -2,24 +2,19 @@
 title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Azure Storage mit Lesezugriff (RA-GRS) | Microsoft Docs
 description: Verwenden Sie Azure-RA-GRS-Speicher, um eine hochverfügbare Anwendung so flexibel zu gestalten, dass sie Ausfälle verarbeiten kann.
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 8f040b0f-8926-4831-ac07-79f646f31926
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: common
+ms.openlocfilehash: afcda23faf4e9f0999442fa91d3c016e446c04db
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30322929"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524541"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
@@ -27,7 +22,9 @@ Ein Feature von cloudbasierten Infrastrukturen wie Azure Storage ist, dass sie e
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Der Schwerpunkt dieses Artikels liegt auf GRS und RA-GRS. Bei GRS werden drei Kopien Ihrer Daten in der primären Region gespeichert, die Sie beim Einrichten des Speicherkontos ausgewählt haben. Drei weitere Kopien werden asynchron in einer sekundären Region verwaltet, die von Azure festgelegt wird. RA-GRS ist abgesehen davon, dass Sie über Lesezugriff auf die sekundäre Kopie verfügen, identisch mit GRS. Weitere Informationen zu den verschiedenen Azure Storage-Redundanzoptionen finden Sie unter [Azure Storage-Replikation](https://docs.microsoft.com/azure/storage/storage-redundancy). Im Artikel über Replikation sind auch Kombinationen der primären und sekundären Regionen aufgeführt.
+Der Schwerpunkt dieses Artikels liegt auf GRS und RA-GRS. Bei GRS werden drei Kopien Ihrer Daten in der primären Region gespeichert, die Sie beim Einrichten des Speicherkontos ausgewählt haben. Drei weitere Kopien werden asynchron in einer sekundären Region verwaltet, die von Azure festgelegt wird. RA-GRS bietet georedundanten Speicher mit Lesezugriff auf die sekundäre Kopie.
+
+Welche primären Regionen welchen sekundären Regionen zugeordnet werden, erfahren Sie unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
 Der Artikel enthält Codeausschnitte sowie am Ende einen Link zu einem vollständigen Beispiel, das Sie herunterladen und ausführen können.
 

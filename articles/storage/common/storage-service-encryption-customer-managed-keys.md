@@ -1,19 +1,19 @@
 ---
 title: Azure Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault | Microsoft-Dokumentation
-description: Mit Azure-Speicherdienstverschlüsselung können Sie Azure Blob Storage, Azure Files, Azure Queue Storage und Azure-Tabellenspeicher auf Dienstseite beim Speichern von Daten verschlüsseln und wieder entschlüsseln, wenn Daten mit von Kunden verwalteten Schlüsseln abgerufen werden.
+description: Mit Azure Storage Service Encryption (Speicherdienstverschlüsselung) können Sie Azure-Blobspeicher und Azure Files auf Dienstseite beim Speichern von Daten verschlüsseln und wieder entschlüsseln, wenn Daten mit von Kunden verwalteten Schlüsseln abgerufen werden.
 services: storage
 author: lakasa
-manager: jeconnoc
 ms.service: storage
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
-ms.openlocfilehash: b92a486ea8dfc148cd10b905f90a0e871602cc61
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.component: common
+ms.openlocfilehash: 0e1ebd8868cfe5ef69a09219ffc82092fb85a4c8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415703"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39527085"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 Es ist uns ein Anliegen, dass Microsoft Azure Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Konformitätsanforderungen Ihrer Organisation unterstützt. Die Azure Storage-Plattform schützt Ihre Daten mittels Speicherdienstverschlüsselung (SSE). Damit werden die Daten beim Schreiben in den Speicher automatisch verschlüsselt und beim Abrufen auch wieder entschlüsselt. Die Ver- und Entschlüsselung erfolgt automatisch und transparent. Dabei wird mit der 256-Bit-[AES-Verschlüsselung](https://wikipedia.org/wiki/Advanced_Encryption_Standard) eine der stärksten verfügbaren Blockchiffren verwendet.
@@ -23,7 +23,7 @@ Mit SSE können von Microsoft verwaltete oder eigene Verschlüsselungsschlüssel
 SSE für Azure Blob Storage und Azure Files ist in Azure Key Vault integriert, sodass Sie Ihre Verschlüsselungsschlüssel in einem Schlüsseltresor verwalten können. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch Ihre Schlüssel und deren Verwendung verwalten und überwachen.
 
 > [!Note]  
-> Die Speicherdienstverschlüsselung ist für [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) nicht verfügbar. Die Verschlüsselung auf Betriebssystemebene wird empfohlen, z. B. [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), die den Industriestandard [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) unter Windows und [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) unter Linux verwendet, um eine in Key Vault integrierte Verschlüsselung bereitzustellen.
+> Die Speicherdienstverschlüsselung mit vom Kunden verwalteten Schlüsseln ist für [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) nicht verfügbar. Für [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md) wird die branchenübliche [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)-Technologie unter Windows und [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) unter Linux verwendet, um eine in Key Vault integrierte Verschlüsselungslösung bereitzustellen.
 
 Warum sollten Sie eigene Schlüssel erstellen? Benutzerdefinierte Schlüssel bieten Ihnen mehr Flexibilität, sodass Sie Zugriffssteuerelemente erstellen, drehen, deaktivieren und definieren können. Außerdem können Sie die Verschlüsselungsschlüssel prüfen, die Ihre Daten schützen.
 
@@ -121,7 +121,7 @@ Ja.
 Die Verwendung von Azure Key Vault ist nicht kostenlos. Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). Es entstehen keine zusätzlichen Kosten für SSE, das für alle Speicherkonten aktiviert ist.
 
 **Ist die Speicherdienstverschlüsselung für Azure Managed Disks verfügbar?**  
-Nein. Die Speicherdienstverschlüsselung ist für [Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) nicht verfügbar. Die Verschlüsselung auf Betriebssystemebene wird empfohlen, z. B. [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md), die den Industriestandard [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) unter Windows und [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) unter Linux verwendet, um eine in Key Vault integrierte Verschlüsselung bereitzustellen.
+Die Speicherdienstverschlüsselung ist für Azure Managed Disks mit von Microsoft verwalteten Schlüsseln verfügbar, aber nicht mit vom Kunden verwalteten Schlüsseln. Anstatt Managed Disks mit Unterstützung von SSE und vom Kunden verwalteten Schlüsseln zu verwenden, empfehlen wir die Nutzung von [Azure Disk Encryption](../../security/azure-security-disk-encryption-overview.md). Hierbei wird die branchenübliche [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)-Technologie unter Windows und [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) unter Linux verwendet, um eine in Key Vault integrierte Verschlüsselung bereitzustellen.
 
 **Wie unterscheidet sich die Speicherdienstverschlüsselung von Azure Disk Encryption?**  
 Azure Disk Encryption bietet eine Integration zwischen betriebssystembasierten Lösungen, z. B. BitLocker und DM-Crypt, und Azure Key Vault. Die Speicherdienstverschlüsselung ermöglicht die systemeigene Verschlüsselung auf der Azure-Speicherplattform, unter der VM.

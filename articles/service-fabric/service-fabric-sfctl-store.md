@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 39ecf568c5c41c0007b358670af755be1dd5d99e
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2f2da5b38ab39e3636ff0ac09ac2c5515e02b0c1
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763237"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39492334"
 ---
 # <a name="sfctl-store"></a>sfctl store
 Ermöglicht es, grundlegende Vorgänge auf Dateiebene für den Clusterimagespeicher auszuführen.
@@ -35,14 +35,14 @@ Ermöglicht es, grundlegende Vorgänge auf Dateiebene für den Clusterimagespeic
 ## <a name="sfctl-store-delete"></a>sfctl store delete
 Löscht den vorhandenen Imagespeicherinhalt.
 
-Löscht den Imagespeicherinhalt, der im angegebenen relativen Pfad des Imagespeichers gefunden wird. Mit diesem Befehl können hochgeladene Anwendungspakete gelöscht werden, nachdem sie bereitgestellt wurden.
+Löscht den Imagespeicherinhalt, der im angegebenen relativen Pfad des Imagespeichers gefunden wird. Hiermit können hochgeladene Anwendungspakete gelöscht werden, nachdem sie bereitgestellt wurden.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --content-path [erforderlich] | Relativer Pfad zu einer Datei oder einem Ordner im Imagespeicher ab dessen Stammverzeichnis. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -63,7 +63,7 @@ Gibt die Informationen über den Imagespeicherinhalt zurück, der sich im Stammv
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -85,7 +85,7 @@ Gibt die Informationen über den Imagespeicherinhalt zurück, der sich im angege
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --content-path [erforderlich] | Relativer Pfad zu einer Datei oder einem Ordner im Imagespeicher ab dessen Stammverzeichnis. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -96,6 +96,7 @@ Gibt die Informationen über den Imagespeicherinhalt zurück, der sich im angege
 | --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
 | --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle

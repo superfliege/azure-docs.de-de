@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: b15fff6e868bfac973f9d2a7277f0fac1e29d845
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 2a6c94d902c639a2529e501347876d63a3f56d7e
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939836"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505608"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -78,7 +78,7 @@ Informieren Sie sich, wie die [Kennworthashsynchronisierung](https://docs.micros
 
 ### <a name="implement-ad-fs-extranet-lockout"></a>Implementieren der AD FS-Extranetsperre
 
-Organisationen, die Anwendungen für die direkte Authentifizierung in Azure AD konfigurieren, profitieren von der [intelligenten Kennwortsperrung von Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords). Wenn Sie AD FS verwenden, implementieren Sie die AD FS-[Extranetsperre](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-lockout-protection). Die Extranetsperre schützt vor Brute-Force-Angriffen auf AD FS und verhindert gleichzeitig, dass Benutzer aus Active Directory ausgesperrt werden.
+Organisationen, die Anwendungen für die direkte Authentifizierung in Azure AD konfigurieren, profitieren von der [intelligenten Kennwortsperrung von Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords). Wenn Sie AD FS in Windows Server 2012 R2 verwenden, implementieren Sie den [Extranetsperrschutz](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection) von AD FS. Wenn Sie AD FS in Windows Server 2016 verwenden, implementieren Sie die [intelligente Extranetsperre](https://support.microsoft.com/en-us/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Die intelligente Extranetsperre von AD FS schützt vor Brute-Force-Angriffen auf AD FS und verhindert gleichzeitig, dass Benutzer aus Active Directory ausgesperrt werden.
 
 ### <a name="take-advantage-of-intrinsically-secure-easier-to-use-credentials"></a>Die Vorteile von in sich sicheren, einfacher verwendbaren Anmeldeinformationen
 

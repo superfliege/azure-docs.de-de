@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: ee8ff1acbaf5d97d62d6811e8e8abc86017b32fe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fc74613e00adc459f7a7b0a16c6f773fe4bf601d
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632610"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593654"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Senden von Nachrichten an einen MQTT-Server
 
@@ -37,7 +37,7 @@ Befolgen Sie die Anweisungen im [Leitfaden zu den ersten Schritten](https://docs
 
 ## <a name="open-the-project-folder"></a>Öffnen des Projektordners
 
-1. Trennen Sie das DevKit von Ihrem Computer, falls eine Verbindung besteht.
+1. Falls das DevKit bereits mit Ihrem Computer verbunden ist, trennen Sie die Verbindung.
 
 2. Starten Sie Visual Studio Code.
 
@@ -57,7 +57,7 @@ Drücken Sie `Ctrl+P` (macOS: `Cmd+P`), um `task device-upload` auszuführen. So
 ![device-upload](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/device-upload.jpg)
 
 > [!NOTE]
-> Möglicherweise erhalten Sie eine Fehlermeldung der Art „Fehler: AZ3166: Unbekanntes Paket“. Dieser Fehler tritt auf, wenn der Boardpaketindex nicht richtig aktualisiert wurde. Informationen zur Behebung dieses Fehlers finden Sie in den [häufig gestellten Fragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Möglicherweise erhalten Sie eine Fehlermeldung der Art „Fehler: AZ3166: Unbekanntes Paket“. Dieser Fehler tritt auf, wenn der Boardpaketindex nicht richtig aktualisiert wurde. Informationen zum Beheben dieses Fehlers finden Sie im [Abschnitt „Development“ (Entwicklung) in den häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Testen des Projekts
 
@@ -75,15 +75,15 @@ Der serielle Monitor zeigt alle Nachrichten an, die vom Beispielsketch gesendet 
 
 ## <a name="problems-and-feedback"></a>Probleme und Feedback
 
-Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellten Fragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) weiter, oder wenden Sie sich über folgende Kanäle an uns:
+Wenn Probleme auftreten, helfen Ihnen die Informationen in den [häufig gestellten Fragen zum IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) weiter, oder wenden Sie sich über folgende Kanäle an uns:
 
 * [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stackoverflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub in der Cloud]({{"/docs/getting-started/" | absolute_url }})
-* [Shake, Shake for a Tweet]({{"/docs/projects/shake-shake/" | absolute_url }})
+* [Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub in der Cloud](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+* [Shake, Shake for a Tweet](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

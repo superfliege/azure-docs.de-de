@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: pullabhk
-ms.openlocfilehash: 4be1ffcabed6667ab76ec790326a687d75c8b125
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: fecdb54af58faaf601ab74f89039a47e0d32e650
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958619"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493380"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -27,9 +27,9 @@ Azure Backup bietet die Möglichkeit zum Wiederherstellen von [virtuellen Azure-
 
 ## <a name="mount-the-volume-and-copy-files"></a>Bereitstellen des Volumes und Kopien von Dateien
 
-Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt wechseln Sie zum virtuellen Computer und wählen den gewünschten Wiederherstellungspunkt aus. 
+Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt wechseln Sie zum virtuellen Computer und wählen den gewünschten Wiederherstellungspunkt aus.
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.Azure.com) an, und klicken Sie im linken Menü auf **Virtuelle Computer**. Wählen Sie in der Liste der virtuellen Computer den gewünschten virtuellen Computer aus, um sein Dashboard zu öffnen. 
+1. Melden Sie sich am [Azure-Portal](http://portal.Azure.com) an, und klicken Sie im linken Bereich auf **Virtuelle Computer**. Wählen Sie in der Liste der virtuellen Computer den gewünschten virtuellen Computer aus, um sein Dashboard zu öffnen.
 
 2. Klicken Sie im Menü des virtuellen Computers auf **Sicherung**, um das Sicherungsdashboard zu öffnen.
 
@@ -41,7 +41,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
 4. Wählen Sie im Dropdownmenü **Wiederherstellungspunkt auswählen** den Wiederherstellungspunkt mit den gewünschten Dateien aus. Standardmäßig ist der letzte Wiederherstellungspunkt bereits ausgewählt.
 
-5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei einem virtuellen Microsoft Azure-Computer) oder **Skript herunterladen** (bei einem virtuellen Linux-Azure-computer), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen. 
+5. Klicken Sie auf **Ausführbare Datei herunterladen** (bei einem virtuellen Microsoft Azure-Computer) oder **Skript herunterladen** (bei einem virtuellen Linux-Azure-computer), um die Software zum Kopieren von Dateien aus dem Wiederherstellungspunkt herunterzuladen.
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -51,7 +51,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
     Für die Ausführung der ausführbaren Datei oder des Skripts als Administrator wird empfohlen, die heruntergeladene Datei auf Ihrem Computer zu speichern.
 
-6. Die ausführbare Datei bzw. das Skript ist kennwortgeschützt ist und erfordert ein Kennwort. Klicken Sie im Menü **Dateiwiederherstellung** auf die Schaltfläche „Kopieren“, um das Kennwort in der Zwischenablage zu speichern.
+6. Die ausführbare Datei bzw. das Skript ist kennwortgeschützt und erfordert ein Kennwort. Klicken Sie im Menü **Dateiwiederherstellung** auf die Schaltfläche „Kopieren“, um das Kennwort in der Zwischenablage zu speichern.
 
     ![Generiertes Kennwort](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
@@ -62,31 +62,33 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
     Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
 
     - download.microsoft.com
-    - [Azure-Endpunkte für Azure-VM-Sicherungen](backup-azure-arm-vms-prepare.md#establish-network-connectivity)
+    - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
+        - <https://pod01-rec2.geo-name.backup.windowsazure.com> (für öffentliche Azure-Gebiete)
+        - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (für Azure China)
+        - <https://pod01-rec2.geo-name.backup.windowsazure.us> (für Azure US Government)
+        - <https://pod01-rec2.geo-name.backup.windowsazure.de> (für Azure Deutschland)
     - Ausgehender Port 3260
 
     Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
-    
-    Der Zugriff auf download.microsoft.com ist erforderlich, um die Komponenten für das Herstellen eines sicheren Kanals zwischen dem Computer, auf dem das Skript ausgeführt wird, und den Daten am Wiederherstellungspunkt herunterzuladen.         
+
+    Der Zugriff auf download.microsoft.com ist erforderlich, um die Komponenten für das Herstellen eines sicheren Kanals zwischen dem Computer, auf dem das Skript ausgeführt wird, und den Daten am Wiederherstellungspunkt herunterzuladen.
 
     Sie können das Skript auf allen Computern ausführen, die dasselbe (oder ein kompatibles) Betriebssystem wie die gesicherte VM haben. Siehe hierzu die Tabelle [Kompatible Betriebssysteme](backup-azure-restore-files-from-vm.md#system-requirements) mit den kompatiblen Betriebssystemen. Wenn der geschützte virtuelle Azure-Computer das Feature „Windows-Speicherplätze“ (für virtuelle Windows-Computer) oder LVM/RAID-Arrays (für virtuelle Linux-Computer) verwendet, können Sie die ausführbare Datei bzw. das Skript nicht auf diesem virtuellen Computer ausführen. Führen Sie die ausführbare Datei bzw. das Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
- 
 
 ### <a name="identifying-volumes"></a>Bestimmen von Volumes
 
 #### <a name="for-windows"></a>Für Windows
 
 Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volumes bereit, denen Laufwerkbuchstaben zugewiesen werden. Über den Windows-Explorer oder Datei-Explorer können Sie zu diesen Laufwerken navigieren. Die den Volumes zugewiesenen Laufwerkbuchstaben entsprechen ggf. nicht den Buchstaben des ursprünglichen virtuellen Computers, doch der Volumename wird beibehalten. Beispiel: Wenn das Volume auf dem ursprünglichen virtuellen Computer „Data Disk (E:`\`“ hieß, kann dieses Volume auf dem lokalen Computer als „Data Disk (‚Beliebiger Buchstabe‘:`\`“ angefügt werden. Durchsuchen Sie alle in der Skriptausgabe erwähnten Volumes, bis Sie Ihre Dateien/Ordner gefunden haben.  
-       
+
    ![Menü „Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
-           
+
 #### <a name="for-linux"></a>Für Linux
 
 Unter Linux werden die Volumes des Wiederherstellungspunkts im Ordner bereitgestellt, in dem das Skript ausgeführt wird. Die angefügten Datenträger, Volumes und entsprechenden Bereitstellungspfade werden entsprechend angezeigt. Diese Bereitstellungspfade werden Benutzern mit der Berechtigung „root“ angezeigt. Durchsuchen Sie die Volumes in der Ausgabe des Skripts.
 
   ![Menü „Linux-Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
   
-
 ## <a name="closing-the-connection"></a>Schließen der Verbindung
 
 Nachdem die Dateien bestimmt und an den lokalen Speicherort kopiert wurden, können Sie die zusätzlichen Laufwerke entfernen (oder ihre Bereitstellung aufheben). Zum Aufheben der Bereitstellung der Laufwerke klicken Sie im Azure-Portal im Menü **Dateiwiederherstellung** auf **Bereitstellung der Datenträger aufheben**.
@@ -101,10 +103,10 @@ Nachdem unter Linux die Verbindung mit dem Wiederherstellungspunkt getrennt wurd
 
 ### <a name="dynamic-disks"></a>Dynamische Datenträger
 
-Wenn auf dem geschützten virtuellen Azure-Computer Volumes mit einem oder beiden der folgenden Merkmale vorhanden sind, können Sie das ausführbare Skript nicht auf demselben virtuellen Computer ausführen. 
+Wenn auf dem geschützten virtuellen Azure-Computer Volumes mit einem oder beiden der folgenden Merkmale vorhanden sind, können Sie das ausführbare Skript nicht auf demselben virtuellen Computer ausführen.
 
-  - Volumes, die mehrere Datenträger umfassen (übergreifende und Stripesetvolumes)
-  - Fehlertolerante Volumes (gespiegelte und RAID-5-Volumes) auf dynamischen Datenträgern 
+    - Volumes, die mehrere Datenträger umfassen (übergreifende und Stripesetvolumes)
+    - Fehlertolerante Volumes (gespiegelte und RAID-5-Volumes) auf dynamischen Datenträgern
 
 Führen Sie das ausführbare Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
 
@@ -121,40 +123,47 @@ Unter Linux werden LVM- (Logical Volume Manager) bzw. softwaregestützte RAID-Ar
 Die folgende Ausgabe des Skripts zeigt die Datenträger und Volumes des LVM- bzw. RAID-Arrays samt Partitionstyp.
 
    ![Menü mit der LVM-Ausgabe unter Linux](./media/backup-azure-restore-files-from-vm/linux-LVMOutput.png)
-   
-Führen Sie die Befehle in den folgenden Abschnitten aus, um diese Partitionen online zu schalten. 
 
-**Für LVM-Partitionen**
+Führen Sie die Befehle in den folgenden Abschnitten aus, um diese Partitionen online zu schalten.
+
+#### <a name="for-lvm-partitions"></a>Für LVM-Partitionen
 
 Hiermit werden die Volumegruppennamen unter einem physischen Volume aufgeführt.
+
+```bash
+#!/bin/bash
+$ pvs <volume name as shown above in the script output>
 ```
-$ pvs <volume name as shown above in the script output> 
-```
+
 Hiermit werden alle logischen Volumes mit Name und Pfad in einer Volumegruppe aufgeführt.
 
-```
-$ lvdisplay <volume-group-name from the pvs command’s results> 
+```bash
+#!/bin/bash
+$ lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt.
 
-```
+```bash
+#!/bin/bash
 $ mount <LV path> </mountpath>
 ```
 
-
-
-**Für RAID-Arrays**
+#### <a name="for-raid-arrays"></a>Für RAID-Arrays
 
 Mit dem folgenden Befehl werden Details zu allen RAID-Datenträgern angezeigt.
 
-```
+```bash
+#!/bin/bash
 $ mdadm –detail –scan
 ```
+
  Der entsprechende RAID-Datenträger wird als `/dev/mdm/<RAID array name in the protected VM>` angezeigt.
 
 Verwenden Sie den Befehl „mount“, wenn der RAID-Datenträger physische Volumes hat.
-```
+
+```bash
+#!/bin/bash
 $ mount [RAID Disk Path] [/mountpath]
 ```
 
@@ -162,9 +171,9 @@ Wenn auf dem RAID-Laufwerk eine andere LVM konfiguriert ist, führen Sie das vor
 
 ## <a name="system-requirements"></a>Systemanforderungen
 
-### <a name="for-windows"></a>Für Windows
+### <a name="for-windows-os"></a>Für Windows-Betriebssystem
 
-Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetriebssystemen. Dateien können nicht in einem vorhergehenden oder künftigen Betriebssystem wiederhergestellt werden. Beispielsweise kann eine Datei von einem virtuellen Windows Server 2016-Computer nicht auf einem Windows Server 2012- oder Windows 8-Computer wiederhergestellt werden. Sie können Dateien von einem virtuellen Computer im gleichen Serverbetriebssystem oder im kompatiblen Clientbetriebssystem wiederherstellen.   
+Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetriebssystemen. Dateien können nicht in einem vorhergehenden oder künftigen Betriebssystem wiederhergestellt werden. Beispielsweise kann eine Datei von einem virtuellen Windows Server 2016-Computer nicht auf einem Windows Server 2012- oder Windows 8-Computer wiederhergestellt werden. Sie können Dateien von einem virtuellen Computer im gleichen Serverbetriebssystem oder im kompatiblen Clientbetriebssystem wiederherstellen.
 
 |Serverbetriebssystem | Kompatibles Clientbetriebssystem  |
 | --------------- | ---- |
@@ -201,10 +210,10 @@ Wenn Sie Probleme beim Wiederherstellen von Dateien von den virtuellen Computern
 
 | Fehlermeldung/Szenario | Mögliche Ursache | Empfohlene Maßnahme |
 | ------------------------ | -------------- | ------------------ |
-| EXE-Ausgabe: *Ausnahme beim Herstellen einer Verbindung mit dem Ziel* |Skript kann nicht auf den Wiederherstellungspunkt zugreifen. | Prüfen Sie, ob der Computer die zuvor genannten Zugriffsanforderungen erfüllt. |  
-|   EXE-Ausgabe: *Das Ziel wurde bereits in einer iSCSI-Sitzung angemeldet.* | Das Skript wurde bereits auf dem gleichen Computer ausgeführt, und die Laufwerke wurden angefügt. | Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie wurden ggf. NICHT mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers bereitgestellt. Suchen Sie im Datei-Explorer auf allen verfügbaren Volumes nach Ihrer Datei. |
-| EXE-Ausgabe: *Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Laden Sie ein neues Skript aus dem Portal herunter.* | Die Bereitstellung der Datenträger über das Portal wurde aufgehoben oder das 12-Stunden-Limit überschritten. |    Diese bestimmte EXE-Datei ist jetzt ungültig und kann nicht ausgeführt werden. Wenn Sie auf die Dateien dieser zeitpunktbezogenen Wiederherstellung zugreifen möchten, fordern Sie im Portal eine neue EXE-Datei an.|
-| Auf dem Computer, auf dem die EXE-Datei ausgeführt wird: Die Bereitstellung der neuen Volumes wird erst aufgehoben, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. |    Der iSCSI-Initiator auf dem Computer reagiert nicht bzw. aktualisiert nicht seine Verbindung mit dem Ziel und verwaltet nicht den Cache. |    Warten Sie einige Minuten, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. Wenn die Bereitstellung der neuen Volumes noch nicht aufgehoben wurde, navigieren Sie durch alle Volumes. Dies zwingt den Initiator zum Aktualisieren der Verbindung, und das Volume wird mit der Fehlermeldung aufgehoben, dass der Datenträger nicht verfügbar ist.|
-| EXE-Ausgabe: Das Skript wird erfolgreich ausgeführt, aber „Neue Volumes angefügt“ wird nicht in der Ausgabe des Skripts angezeigt. | Dies ist ein vorübergehender Fehler.   | Die Volumes wurden bereits angefügt. Öffnen Sie Explorer, um zu ihnen zu navigieren. Wenn Sie zum Ausführen von Skripts jedes Mal den gleichen Computer verwenden, sollten Sie den Computer neu starten, und die Liste sollte in den nachfolgenden Ausführungen der EXE-Datei angezeigt werden. |
+| EXE-Ausgabe: *Ausnahme beim Herstellen einer Verbindung mit dem Ziel* |Skript kann nicht auf den Wiederherstellungspunkt zugreifen.    | Prüfen Sie, ob der Computer die zuvor genannten Zugriffsanforderungen erfüllt. |  
+| EXE-Ausgabe: *Das Ziel wurde bereits in einer iSCSI-Sitzung angemeldet.* | Das Skript wurde bereits auf dem gleichen Computer ausgeführt, und die Laufwerke wurden angefügt. | Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie wurden ggf. NICHT mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers bereitgestellt. Suchen Sie im Datei-Explorer auf allen verfügbaren Volumes nach Ihrer Datei. |
+| EXE-Ausgabe: *Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Laden Sie ein neues Skript aus dem Portal herunter.* |    Die Bereitstellung der Datenträger über das Portal wurde aufgehoben oder das 12-Stunden-Limit überschritten. | Diese bestimmte EXE-Datei ist jetzt ungültig und kann nicht ausgeführt werden. Wenn Sie auf die Dateien dieser zeitpunktbezogenen Wiederherstellung zugreifen möchten, fordern Sie im Portal eine neue EXE-Datei an.|
+| Auf dem Computer, auf dem die EXE-Datei ausgeführt wird: Die Bereitstellung der neuen Volumes wird erst aufgehoben, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. | Der iSCSI-Initiator auf dem Computer reagiert nicht bzw. aktualisiert seine Verbindung mit dem Ziel nicht und verwaltet auch den Cache nicht. |    Warten Sie einige Minuten, nachdem auf die Schaltfläche „Bereitstellung aufheben“ geklickt wurde. Wenn die Bereitstellung der neuen Volumes noch nicht aufgehoben wurde, navigieren Sie durch alle Volumes. Dies zwingt den Initiator zum Aktualisieren der Verbindung, und das Volume wird mit der Fehlermeldung aufgehoben, dass der Datenträger nicht verfügbar ist.|
+| EXE-Ausgabe: Das Skript wird erfolgreich ausgeführt, aber „Neue Volumes angefügt“ wird nicht in der Ausgabe des Skripts angezeigt. |    Dies ist ein vorübergehender Fehler.    | Die Volumes wurden bereits angefügt. Öffnen Sie Explorer, um zu ihnen zu navigieren. Wenn Sie zum Ausführen von Skripts jedes Mal den gleichen Computer verwenden, sollten Sie den Computer neu starten, und die Liste sollte in den nachfolgenden Ausführungen der EXE-Datei angezeigt werden. |
 | Linux-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Das Betriebssystem des Computers, auf dem das Skript ausgeführt wird, erkennt möglicherweise das zugrunde liegende Dateisystem des geschützten virtuellen Computers nicht. | Prüfen Sie, ob der Wiederherstellungspunkt absturz- oder dateikonsistent ist. Falls dateikonsistent, führen Sie das Skript auf einem anderen Computer aus, dessen Betriebssystem das Dateisystem des geschützten virtuellen Computers erkennt. |
 | Windows-spezifische Probleme: Die gewünschten Volumes können nicht angezeigt werden. | Möglicherweise wurden die Datenträger angefügt, aber die Volumes wurden nicht konfiguriert. | Suchen Sie auf dem Bildschirm „Datenträgerverwaltung“ die zusätzlichen Datenträger im Zusammenhang mit dem Wiederherstellungspunkt. Wenn sich einer dieser Datenträger im Offlinestatus befindet, versuchen Sie, diesen online zu schalten, indem Sie mit der rechten Maustaste auf den Datenträger und dann auf „Online“ klicken.|

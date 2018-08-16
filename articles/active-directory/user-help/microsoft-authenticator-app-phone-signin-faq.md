@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 3303a0fb1ca4c4a8f6695c2e4338c1b0a0fc9f40
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: a6df90a1ae1dddbf7f76a7ef6c7e13d9e645dd9c
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358631"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528424"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Anmelden per Smartphone anstelle Ihres Kennworts
 
@@ -70,7 +70,7 @@ Neue Konten werden automatisch aktiviert, sodass Sie die Anmeldung per Telefon s
 
 ### <a name="to-use-phone-sign-in-to-sign-in-to-your-personal-account"></a>So nutzen Sie die Anmeldung per Telefon zur Anmeldung bei Ihrem persönlichen Konto
 
-1.  Wechseln Sie zur Anmeldeseite Ihres persönlichen Microsoft-Kontos, und anstatt Ihr Kennwort einzugeben, wählen Sie dann den Link **Stattdessen eine App verwenden** aus.
+1.  Wechseln Sie zur Anmeldeseite Ihres persönlichen Microsoft-Kontos, und wählen Sie den Link **Use the Microsoft Authenticator app instead** (Stattdessen die Microsoft Authenticator-App verwenden) aus, anstatt Ihr Kennwort einzugeben.
 
     Microsoft sendet daraufhin eine Benachrichtigung an Ihr Smartphone. 
 
@@ -95,4 +95,4 @@ Neue Konten werden automatisch aktiviert, sodass Sie die Anmeldung per Telefon s
 
 -   Weitere Informationen zur zweistufigen Überprüfung finden Sie unter [Einrichten meines Kontos für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-first-time.md).
 
--   Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Verwalten Ihrer Sicherheitsinformationen (Vorschau)](security-info-manage-settings.md).
+-   Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Verwalten Ihrer Sicherheitsinformationen](security-info-manage-settings.md).

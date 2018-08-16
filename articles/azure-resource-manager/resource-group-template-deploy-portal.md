@@ -4,25 +4,23 @@ description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Berei
 services: azure-resource-manager,azure-portal
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/08/2017
+ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 79bc42394513efc2ac03ea9d7170f035d71edb4f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c16d584f17aa2c209c9c0ec94d35f6fe78ba1907
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603724"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494080"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal
 
-In diesem Thema wird veranschaulicht, wie Sie das [Azure-Portal](https://portal.azure.com) mit [Azure Resource Manager](resource-group-overview.md) verwenden, um Ihre Azure-Ressourcen bereitzustellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](resource-group-portal.md).
+In diesem Artikel wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](resource-group-overview.md) Ihre Azure-Ressourcen bereitstellen. Informationen zum Verwalten von Ressourcen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](resource-group-portal.md).
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
@@ -79,6 +77,9 @@ Nachdem Sie eine Ressourcengruppe erstellt haben, können Sie Ressourcen dafür 
 ## <a name="deploy-resources-from-custom-template"></a>Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage
 
 Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Marketplace zu nutzen, können Sie eine angepasste Vorlage erstellen, mit der die Infrastruktur für Ihre Lösung definiert wird. Informationen zum Erstellen von Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
+
+> [!NOTE]
+> Für die Portalschnittstelle wird das Verweisen auf ein [Geheimnis aus einem Key Vault](resource-manager-keyvault-parameter.md) nicht unterstützt. Verwenden Sie stattdessen [PowerShell](resource-group-template-deploy.md) oder [Azure CLI](resource-group-template-deploy-cli.md), um Ihre Vorlage lokal oder über einen externen URI bereitzustellen.
 
 1. Klicken Sie zum Bereitstellen einer benutzerdefinierten Vorlage über das Portal auf **Ressource erstellen**, suchen Sie nach **Vorlagenbereitstellung**, und wählen Sie diese Option aus.
 

@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/26/2018
+ms.date: 8/06/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 977413b700dace3e38874d7a41cbc1e16ae0bec4
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 1d8e2d3e6a303009f5718a86772cdc3db8ed332a
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018810"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523851"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Verwenden von AzureRM.RecoveryServices.Backup-Cmdlets zum Sichern virtueller Computer
 
@@ -365,7 +365,7 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
   PS C:\> $properties = $details.properties
   PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
   PS C:\> $containerName = $properties["Config Blob Container Name"]
-  PS C:\> $blobName = $properties["Config Blob Name"]
+  PS C:\> $configBlobName = $properties["Config Blob Name"]
   ```
 
 2. Legen Sie den Azure-Speicherkontext fest, und stellen Sie die JSON-Konfigurationsdatei wieder her.
@@ -373,7 +373,7 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
     ```
     PS C:\> Set-AzureRmCurrentStorageAccount -Name $storageaccountname -ResourceGroupName "testvault"
     PS C:\> $destination_path = "C:\vmconfig.json"
-    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $blobName -Destination $destination_path
+    PS C:\> Get-AzureStorageBlobContent -Container $containerName -Blob $configBlobName -Destination $destination_path
     PS C:\> $obj = ((Get-Content -Path $destination_path -Raw -Encoding Unicode)).TrimEnd([char]0x00) | ConvertFrom-Json
     ```
 
@@ -404,18 +404,28 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-    PS C:\> $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
+    PS C:\> $dekUrl = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
+    ```
+    
+ Achten Sie beim Festlegen des Betriebssystem-Datenträgers darauf, dass der relevante Betriebssystemtyp angegeben wird.   
+    ```
+    PS C:\> Set-AzureRmVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.storageProfile'.osDisk.vhd.uri -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows/Linux
     PS C:\> $vm.StorageProfile.OsDisk.OsType = $obj.'properties.storageProfile'.osDisk.osType
     PS C:\> foreach($dd in $obj.'properties.storageProfile'.dataDisks)
      {
      $vm = Add-AzureRmVMDataDisk -VM $vm -Name "datadisk1" -VhdUri $dd.vhd.Uri -DiskSizeInGB 127 -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+    
+Die Datenverschlüsselung für den Datenträger sollte manuell mit dem folgenden Befehl aktiviert werden.
 
-    #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>Nicht verwaltete, verschlüsselte VMs (BEK und KEK)
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -VolumeType Data
+    ```
+    
+   #### <a name="non-managed-encrypted-vms-bek-and-kek"></a>Nicht verwaltete, verschlüsselte VMs (BEK und KEK)
 
-    Für nicht verwaltete, verschlüsselte VMs (mit BEK und KEK verschlüsselt) müssen Sie den Schlüssel und das Geheimnis für den Schlüsseltresor wiederherstellen, bevor Sie Datenträger anfügen können. Weitere Informationen finden Sie im Artikel [Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Azure Backup-Wiederherstellungspunkts](backup-azure-restore-key-secret.md). Im folgenden Beispiel wird gezeigt, wie man das Betriebssystem und die Datenträger für verschlüsselte VMs anfügt.
+   Für nicht verwaltete, verschlüsselte VMs (mit BEK und KEK verschlüsselt) müssen Sie den Schlüssel und das Geheimnis für den Schlüsseltresor wiederherstellen, bevor Sie Datenträger anfügen können. Weitere Informationen finden Sie im Artikel [Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Azure Backup-Wiederherstellungspunkts](backup-azure-restore-key-secret.md). Im folgenden Beispiel wird gezeigt, wie man das Betriebssystem und die Datenträger für verschlüsselte VMs anfügt.
 
     ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -429,9 +439,15 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
      }
     ```
 
-    #### <a name="managed-non-encrypted-vms"></a>Verwaltete unverschlüsselte VMs
+Die Datenverschlüsselung für den Datenträger sollte manuell mit dem folgenden Befehl aktiviert werden.
 
-    Für verwaltete unverschlüsselte VMs müssen Sie verwaltete Datenträger aus Blobspeicher erstellen und die Datenträger anschließend anfügen. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md). Der folgende Beispielcode zeigt, wie die Datenträger für verwaltete unverschlüsselte VMs anfügt werden.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-non-encrypted-vms"></a>Verwaltete unverschlüsselte VMs
+
+   Für verwaltete unverschlüsselte VMs müssen Sie verwaltete Datenträger aus Blobspeicher erstellen und die Datenträger anschließend anfügen. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md). Der folgende Beispielcode zeigt, wie die Datenträger für verwaltete unverschlüsselte VMs anfügt werden.
 
     ```
     PS C:\> $storageType = "StandardLRS"
@@ -450,9 +466,9 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
     }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-only"></a>Verwaltete, verschlüsselte VMs (nur BEK)
+   #### <a name="managed-encrypted-vms-bek-only"></a>Verwaltete, verschlüsselte VMs (nur BEK)
 
-    Für verwaltete, verschlüsselte VMs (nur mit BEK verschlüsselt) müssen Sie verwaltete Datenträger aus dem Blobspeicher erstellen und anschließend die Datenträger anfügen. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md). Der folgende Beispielcode zeigt, wie man die Datenträger für verwaltete verschlüsselte VMs anfügt.
+   Für verwaltete, verschlüsselte VMs (nur mit BEK verschlüsselt) müssen Sie verwaltete Datenträger aus dem Blobspeicher erstellen und anschließend die Datenträger anfügen. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md). Der folgende Beispielcode zeigt, wie man die Datenträger für verwaltete verschlüsselte VMs anfügt.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -473,9 +489,15 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
      }
     ```
 
-    #### <a name="managed-encrypted-vms-bek-and-kek"></a>Verwaltete, verschlüsselte VMs (BEK und KEK)
+Die Datenverschlüsselung für den Datenträger sollte manuell mit dem folgenden Befehl aktiviert werden.
 
-    Für verwaltete, verschlüsselte VMs (mit BEK und KEK verschlüsselt) müssen Sie verwaltete Datenträger aus dem Blobspeicher erstellen und anschließend die Datenträger anfügen. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md). Der folgende Beispielcode zeigt, wie man die Datenträger für verwaltete verschlüsselte VMs anfügt.
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
+   #### <a name="managed-encrypted-vms-bek-and-kek"></a>Verwaltete, verschlüsselte VMs (BEK und KEK)
+
+   Für verwaltete, verschlüsselte VMs (mit BEK und KEK verschlüsselt) müssen Sie verwaltete Datenträger aus dem Blobspeicher erstellen und anschließend die Datenträger anfügen. Ausführliche Informationen finden Sie im Artikel [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md). Der folgende Beispielcode zeigt, wie man die Datenträger für verwaltete verschlüsselte VMs anfügt.
 
      ```
     PS C:\> $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -496,12 +518,19 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
      Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
      }
     ```
+Die Datenverschlüsselung für den Datenträger sollte manuell mit dem folgenden Befehl aktiviert werden.
 
+    ```
+    Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
+    ```
+    
 5. Legen Sie die Netzwerkeinstellungen fest.
 
     ```
     PS C:\> $nicName="p1234"
     PS C:\> $pip = New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName "test" -Location "WestUS" -AllocationMethod Dynamic
+    PS C:\> $virtualNetwork = New-AzureRmVirtualNetwork -ResourceGroupName "test" -Location "WestUS" -Name "testvNET" -AddressPrefix 10.0.0.0/16
+    PS C:\> $virtualNetwork | Set-AzureRmVirtualNetwork
     PS C:\> $vnet = Get-AzureRmVirtualNetwork -Name "testvNET" -ResourceGroupName "test"
     PS C:\> $subnetindex=0
     PS C:\> $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName "test" -Location "WestUS" -SubnetId $vnet.Subnets[$subnetindex].Id -PublicIpAddressId $pip.Id

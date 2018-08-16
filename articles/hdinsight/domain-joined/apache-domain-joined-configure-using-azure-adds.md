@@ -2,19 +2,18 @@
 title: Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters mit Azure AD DS
 description: Erfahren Sie mehr über das Einrichten und Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters mit Azure Active Directory Domain Services.
 services: hdinsight
+ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-manager: jhubbard
-editor: cgronlun
-ms.service: hdinsight
+editor: jasonwhowell
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.openlocfilehash: 45cb9590e6dd0d8260f6e63b80caeca894f0fd44
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0d44812c92fd14bf87aac9a942241f8de55f2eec
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126033"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39590583"
 ---
 # <a name="configure-a-domain-joined-hdinsight-cluster-by-using-azure-active-directory-domain-services"></a>Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters mit Azure Active Directory Domain Services
 
@@ -31,7 +30,7 @@ Das Aktivieren von Azure AD DS ist eine Voraussetzung zum Erstellen eines in ein
 
 Nachdem Sie die Azure AD DS-Instanz bereitgestellt haben, erstellen Sie in Azure Active Directory (Azure AD) ein Dienstkonto mit den erforderlichen Berechtigungen. Wenn dieses Dienstkonto bereits vorhanden ist, setzen Sie sein Kennwort zurück, und warten Sie, bis es mit Azure AD DS synchronisiert wurde. Dieses Zurücksetzen führt zur Erstellung des Kerberos-Kennworthashes. Die Synchronisierung mit Azure AD DS kann bis zu 30 Minuten dauern. 
 
-Das Dienstkonto muss über die folgenden Berechtigungen verfügen:
+Das Dienstkonto muss die folgenden Berechtigungen aufweisen:
 
 - Einbinden von Computern in die Domäne und Platzieren von Computerprinzipalen in der Organisationseinheit, die Sie während der Clustererstellung angeben.
 - Erstellen von Dienstprinzipalen in der Organisationseinheit, die Sie während der Clustererstellung angeben.
@@ -52,9 +51,12 @@ Es ist einfacher, die Azure AD DS-Instanz und den HDInsight-Cluster im gleichen 
 Zum Erstellen eines in die Domäne eingebundenen HDInsight-Clusters müssen Sie die folgende Parameter angeben:
 
 - **Domänenname**: Der Domänenname, der Azure AD DS zugeordnet ist. Beispiel: contoso.onmicrosoft.com.
+
 - **Domänenbenutzername**: Das Dienstkonto in der vom Azure AD DS-Domänencontroller verwalteten Domäne, die im vorherigen Abschnitt erstellt wurde. Ein Beispiel ist hdiadmin@contoso.onmicrosoft.com. Dieser Domänenbenutzer wird der Administrator dieses HDInsight-Clusters.
-- **Domänenkennwort**: Das Kennwort des Dienstkontos.
-- **Organisationseinheit**: Der Distinguished Name der Organisationseinheit, die Sie mit dem HDInsight-Cluster verwenden möchten. Beispiel: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com. Wenn diese Organisationseinheit nicht vorhanden ist, versucht der HDInsight-Cluster, sie mithilfe der Berechtigungen zu erstellen, über die das Dienstkonto verfügt. Wenn sich das Dienstkonto beispielsweise in der Gruppe „Azure AD DS-Administratoren“ befindet, hat es die Berechtigung zum Erstellen einer Organisationseinheit. Andernfalls müssen Sie möglicherweise zuerst die Organisationseinheit anlegen und dem Dienstkonto Vollzugriff auf diese Organisationseinheit gewähren. Weitere Informationen finden Sie unter [Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
+
+- **Domain password** (Domänenkennwort): das Kennwort des Dienstkontos.
+
+- **Organisationseinheit**: Der Distinguished Name der Organisationseinheit, die Sie mit dem HDInsight-Cluster verwenden möchten. Beispiel: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com. Wenn diese Organisationseinheit nicht vorhanden ist, versucht der HDInsight-Cluster, sie mithilfe der Berechtigungen zu erstellen, über die das Dienstkonto verfügt. Wenn sich das Dienstkonto beispielsweise in der Gruppe „Azure AD DS-Administratoren“ befindet, hat es die Berechtigung zum Erstellen einer Organisationseinheit. Andernfalls müssen Sie möglicherweise zuerst die Organisationseinheit erstellen und dem Dienstkonto vollständige Kontrolle auf diese Organisationseinheit gewähren. Weitere Informationen finden Sie unter [Erstellen einer Organisationseinheit (OE) in einer durch Azure AD Domain Services verwalteten Domäne](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md).
 
     > [!IMPORTANT]
     > Geben Sie alle Domänencontroller durch ein Komma getrennt hinter der Organisationseinheit an (z.B. OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com).
@@ -64,11 +66,11 @@ Zum Erstellen eines in die Domäne eingebundenen HDInsight-Clusters müssen Sie 
     > [!IMPORTANT]
     > Geben Sie die vollständige URL einschließlich ldaps:// und Portnummer (:636) ein.
 
-- **Access user group** (Zugriff auf die Benutzergruppe): Die Sicherheitsgruppe, deren Benutzer Sie mit dem Cluster synchronisieren möchten. Beispiel: HiveUsers. Wenn Sie mehrere Benutzergruppen angeben möchten, trennen Sie diese durch Semikolons (,).
- 
+- **Access user group** (Zugriff auf die Benutzergruppe): die Sicherheitsgruppe, deren Benutzer Sie mit dem Cluster synchronisieren möchten. Beispiel: HiveUsers. Wenn Sie mehrere Benutzergruppen angeben möchten, trennen Sie diese durch Semikolons (,). Die Gruppen müssen vor der Bereitstellung im Verzeichnis vorhanden sein. Weitere Informationen dazu finden Sie in [Erstellen einer Gruppe in Azure Active Directory und Hinzufügen von Mitgliedern](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Wenn eine Gruppe nicht vorhanden ist, wird ein Fehler angezeigt: „Gruppe "HiveUsers" nicht in Active Directory gefunden“.
+
 Der folgende Screenshot zeigt die Konfigurationen im Azure-Portal:
 
-![Konfiguration der in die Domäne eingebundenen Azure HDInsight Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png)zu erstellen und zu verwalten.
+   ![Konfiguration der in die Domäne eingebundenen Azure HDInsight Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

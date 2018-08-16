@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/02/2018
 ms.author: raynew
-ms.openlocfilehash: e2fbe766391759f2bbe4a95e75897b2bc9523c0c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 50d1b8fca8e5377c35810e08258a0ecc3770ae75
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399072"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39422323"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso-Migration: Bewerten von lokalen Workloads für die Migration zu Azure
 
@@ -99,7 +99,7 @@ In diesem Szenario lädt Contoso den Datenmigrations-Assistenten herunter und f�
 - Contoso ist ein fiktiver Name für ein typisches Unternehmen.
 - Contoso verfügt über ein lokales Rechenzentrum (**contoso-datacenter**) und lokale Domänencontroller (**CONTOSODC1**, **CONTOSODC2**).
 - VMware-VMs befinden sich auf VMware ESXi-Hosts mit Version 6.5 (**contosohost1**, **contosohost2**).
-- Die VMware-Umgebung wird per vCenter Server 6.5 verwaltet (Ausführung von **vcenter** auf einer VM).
+- Die VMware-Umgebung wird per vCenter Server 6.5 verwaltet (**vcenter.contoso.com** auf einer VM).
 - Die Reise-App SmartHotel weist die folgenden Merkmale auf:
     - Die App ist auf zwei VMware-VMs angeordnet (**WEBVM** und **SQLVM**).
     - Die VMs befinden sich auf dem VMware ESXi-Host **contosohost1.contoso.com**.
@@ -123,10 +123,8 @@ Contoso und andere Benutzer müssen für diese Bewertung die folgenden Vorausset
 - Mindestens zwei lokale VMware-VMs (mit Ausführung einer SQL Server-Datenbank auf einer VM).
 - Berechtigungen zum Installieren von Azure Migrate-Agents auf jeder VM.
 - Die VMs sollten über eine direkte Internetverbindung verfügen.  
-        
-- Sie können den Internetzugriff auf die [erforderlichen URLs](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) beschränken.  
-
-- Wenn Ihre VMs nicht über Internetkonnektivität verfügen, muss das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) von Azure Log Analytics darauf installiert sein.
+        - Sie können den Internetzugriff auf die [erforderlichen URLs](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites) beschränken.  
+        - Wenn Ihre VMs nicht über Internetkonnektivität verfügen, muss das [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) von Azure Log Analytics darauf installiert sein, und Agent-Datenverkehr muss damit weitergeleitet werden.
 - FQDN der VM, auf der die SQL Server-Instanz ausgeführt wird, für die Datenbankbewertung.
 - Für die Windows Firewall auf der SQL Server-VM sollten externe Verbindungen über TCP-Port 1433 (Standard) zugelassen sein. Dieses Setup ermöglicht die Verbindungsherstellung für den Datenmigrations-Assistenten.
 
@@ -297,7 +295,7 @@ Vor der Bereitstellung der VM überprüft Contoso, ob die OVA-Datei sicher ist:
 
 ### <a name="create-the-collector-appliance"></a>Erstellen der Collectorappliance
 
-Jetzt kann Contoso die heruntergeladene Datei auf die vCenter Server-Instanz importieren und die Konfigurationsserver-VM bereitstellen:
+Jetzt kann Contoso die heruntergeladene Datei auf die vCenter Server-Instanz importieren und die Collectorappliance-VM bereitstellen:
 
 1. In der Konsole des vSphere-Clients wählt Contoso **Datei** > **Deploy OVF Template** (OVF-Vorlage bereitstellen).
 
@@ -353,7 +351,7 @@ Nachdem der Collectorvorgang abgeschlossen wurde, überprüft Contoso, ob die VM
 
 ## <a name="step-5-prepare-for-dependency-analysis"></a>Schritt 5: Vorbereiten der Abhängigkeitsanalyse
 
-Zum Anzeigen von Abhängigkeiten zwischen VMs, auf die zugegriffen werden soll, lädt Contoso die Agents herunter und installiert sie auf den App-VMs. Contoso installiert für seine Apps Agents auf allen VMs – sowohl für Windows als auch für Linux.
+Zum Anzeigen von Abhängigkeiten zwischen VMs, die bewertet werden sollen, lädt Contoso die Agents herunter und installiert sie auf den App-VMs. Contoso installiert für seine Apps Agents auf allen VMs – sowohl für Windows als auch für Linux.
 
 ### <a name="take-a-snapshot"></a>Erstellen einer Momentaufnahme
 

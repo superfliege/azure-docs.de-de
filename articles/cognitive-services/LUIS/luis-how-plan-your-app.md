@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: diberry
-ms.openlocfilehash: 8cafe2be190988cbcbe8da616fe17c9a35c722f3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cba156d784bfcdd2586073ab5562faf604569cd8
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226022"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505527"
 ---
 # <a name="plan-your-luis-app"></a>Planen Ihrer LUIS-App
 
@@ -65,7 +65,7 @@ LUIS bietet [vordefinierte Entitäten](luis-prebuilt-entities.md) für allgemein
 
 ![Vordefinierte Entität „number“](./media/luis-plan-your-app/number-entity.png)
 
-Weitere Informationen zum Extrahieren von Entitäten für reguläre Ausdrücke aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#prebuilt-entity-data). 
+Weitere Informationen zum Extrahieren der vordefinierten Entität aus der Antwort der JSON-Endpunktabfrage finden Sie unter [Datenextraktion](luis-concept-data-extraction.md#prebuilt-entity-data). 
 
 ### <a name="list-entity"></a>Entität vom Typ „List“ 
 Eine Listenentität ist eine explizit angegebene Liste von Werten. Jeder Wert besteht aus mindestens einem Synonym. In einer Reise-App können Sie eine Listenentität zum Darstellen von Flughafennamen erstellen.

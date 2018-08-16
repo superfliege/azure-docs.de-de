@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 470779f80e998c3908cf28328cfb415d98c5e06c
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335280"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39579254"
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
@@ -226,7 +226,7 @@ Wenn Sie nur neue Spalten den vorhandenen hinzufügen möchten, verwenden Sie [`
 
 ### <a name="convert-to-local-time"></a>Konvertieren in die Ortszeit
 
-Zeitstempel werden stets in UTC angegeben. Für die Pazifikküste der USA gilt im Winter beispielsweise Folgendes:
+Zeitstempel werden stets in UTC angegeben. Für die Pazifikküste der USA gilt im Winter, wenn die Ortszeit 8 Stunden hinter der UTC zurück liegt, beispielsweise Folgendes:
 
 ```AIQL
 
@@ -461,7 +461,7 @@ Um eine separate Aufstellung für jedes Land zu erhalten, müssen Sie die Spalte
 ## <a name="join"></a>Join
 Wir haben Zugriff auf mehrere Tabellen, einschließlich der Anforderungen und Ausnahmen.
 
-Um Ausnahmen im Zusammenhang mit einer Anforderung zu suchen, die eine Fehlerantwort zurückgegeben hat, können wir die Tabellen anhand von `session_Id`verknüpfen:
+Um Ausnahmen im Zusammenhang mit einer Anforderung zu suchen, die eine Fehlerantwort zurückgegeben hat, können wir die Tabellen anhand von `operation_Id`verknüpfen:
 
 ```AIQL
 

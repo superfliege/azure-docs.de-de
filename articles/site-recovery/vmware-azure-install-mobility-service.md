@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
-ms.openlocfilehash: bc0ec09e28c5540eb919ac4e5f970f877ae27e44
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 094c1776c0760c04d85aff6ad3d812a2ad7afa56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37919086"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39526996"
 ---
 # <a name="install-the-mobility-service"></a>Installieren des Mobilitätsdiensts 
 
@@ -26,7 +26,8 @@ Azure Site Recovery Mobility Service wird auf VMware-VMs und physischen Servern 
 
 
 >[!IMPORTANT]
-> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm auf Windows-VMs auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) installiert. Wenn ein Computer ein Failover zu Azure ausführt, erfüllt der Computer die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen.
+> Ab Version 9.7.0.0 wird mit dem Mobility Service-Installationsprogramm **auf Windows-VMs** auch der jeweils neueste verfügbare [Azure-VM-Agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) installiert. Wenn ein Computer ein Failover zu Azure ausführt, erfüllt der Computer die Agent-Installationsvoraussetzungen für die Verwendung beliebiger VM-Erweiterungen.
+> </br>Auf **Linux-VMs** muss WALinuxAgent manuell installiert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie diese erforderlichen Schritte aus, bevor Sie Mobility Service manuell auf Ihrem Server installieren:
@@ -42,11 +43,14 @@ Führen Sie diese erforderlichen Schritte aus, bevor Sie Mobility Service manuel
 
 ### <a name="mobility-service-installer-to-operating-system-mapping"></a>Zuordnung von Mobility Service-Installationsprogrammen zu Betriebssystemen
 
+Eine Liste mit den Betriebssystemversionen und den zugehörigen kompatiblen Mobility Service-Paketen finden Sie auf der Seite mit den [unterstützten Betriebssystemen für virtuelle VMware-Computer und physische Server](vmware-physical-azure-support-matrix.md#replicated-machines).
+
 | Vorlagenname des Installationsprogramms| Betriebssystem |
 |---|--|
 |Microsoft-ASR\_UA\*Windows\*release.exe | Windows Server 2008 R2 SP1 (64 Bit) </br> Windows Server 2012 (64 Bit) </br> Windows Server 2012 R2 (64 Bit) </br> Windows Server 2016 (64 Bit) |
-|Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz| Red Hat Enterprise Linux (RHEL) 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (nur 64 Bit) </br> CentOS 6.4, 6.5, 6.6, 6.7, 6.8, 6.9 (nur 64 Bit) |
-|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.1, 7.2, 7.3 (nur 64 Bit) </br> CentOS 7.0, 7.1, 7.2, 7.3 (nur 64 Bit) |
+|Microsoft-ASR\_UA\*RHEL6-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 6.* (nur 64 Bit) </br> CentOS 6.* (nur 64 Bit) |
+|Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz | Red Hat Enterprise Linux (RHEL) 7.* (nur 64 Bit) </br> CentOS 7.* (nur 64 Bit) |
+|Microsoft-ASR\_UA\*SLES12-64\*release.tar.gz | SUSE Linux Enterprise Server 12 SP1, SP2, SP3 (nur 64 Bit)|
 |Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP3 (nur 64 Bit)|
 |Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz| SUSE Linux Enterprise Server 11 SP4 (nur 64 Bit)|
 |Microsoft-ASR\_UA\*OL6-64\*release.tar.gz | Oracle Enterprise Linux 6.4, 6.5 (nur 64 Bit)|
@@ -54,7 +58,6 @@ Führen Sie diese erforderlichen Schritte aus, bevor Sie Mobility Service manuel
 |Microsoft-ASR\_UA\*UBUNTU-16.04-64\*release.tar.gz | Ubuntu Linux 16.04 LTS Server (nur 64 Bit)|
 |Microsoft-ASR_UA\*DEBIAN7-64\*release.tar.gz | Debian 7 (nur 64-Bit)|
 |Microsoft-ASR_UA\*DEBIAN8-64\*release.tar.gz | Debian 8 (nur 64 Bit)|
-
 
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>Manuelles Installieren von Mobility Service über die grafische Benutzeroberfläche (GUI)
 

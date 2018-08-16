@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: a6800b18d1bb588c747d4e9ef7049ac4cbb82f60
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5a0f0594a9ccb27a0f76a679e454e9a3ffe19a43
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213469"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505384"
 ---
 # <a name="azure-network-architecture"></a>Azure-Netzwerkarchitektur
 Die Netzwerkarchitektur von Azure beruht auf einer geänderten Version des als Branchenstandard geltenden Kern-, Verteilungs- und Zugriffsmodells und verfügt über unterschiedliche Hardwareschichten (Layer). Zu diesen Layern zählen:
@@ -38,7 +38,7 @@ Die Netzwerkarchitektur eines Azure-Clusters in einem Rechenzentrum besteht aus 
 - Digi-CMs
 - Stromverteilereinheiten
 
-Azure verfügt über zwei getrennte Architekturen. Einige Azure-Bestandskunden und gemeinsame Dienste befinden sich in der Standard-LAN-Architektur (Default LAN Architecture, DLA), während sich neue Regionen und virtuelle Kunden in der Quantum 10-Architektur (Q10) befinden. Die DLA ist ein konventioneller Strukturentwurf mit Aktiv/Passiv-Accessroutern und Sicherheits-Zugriffssteuerungslisten (ACLs), die auf die Accessrouter angewendet werden. Bei der Quantum 10-Architektur handelt es sich um einen Routernetzentwurf nach Clos bzw. mit vermaschter Topologie, bei dem ACLs nicht auf die Router angewendet werden. Stattdessen werden ACLs unter dem Routing über Lastenausgleichsfunktionen für Software (Software Load Balancing, SLB) oder softwaredefinierte VLANs angewendet.
+Azure verfügt über zwei getrennte Architekturen. Einige Azure-Bestandskunden und gemeinsame Dienste befinden sich in der Standard-LAN-Architektur (Default LAN Architecture, DLA), während sich neue Regionen und virtuelle Kunden in der Quantum 10-Architektur (Q10) befinden. Die DLA ist ein konventioneller Strukturentwurf mit Aktiv/Passiv-Accessroutern und Sicherheits-Zugriffssteuerungslisten (ACLs), die auf die Accessrouter angewendet werden. Bei der Quantum 10-Architektur handelt es sich um einen Routernetzentwurf mit geschlossener bzw. vermaschter Topologie, bei dem ACLs nicht auf die Router angewendet werden. Stattdessen werden ACLs unter dem Routing über Lastenausgleichsfunktionen für Software (Software Load Balancing, SLB) oder softwaredefinierte VLANs angewendet.
 
 Die folgende Abbildung bietet einen allgemeinen Überblick über die Netzwerkarchitektur in einem Azure-Cluster:
 

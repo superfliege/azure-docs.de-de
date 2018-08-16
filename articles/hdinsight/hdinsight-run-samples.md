@@ -1,25 +1,20 @@
 ---
-title: Ausführen der Hadoop-Beispiele in HDInsight – Azure| Microsoft-Dokumentation
+title: Ausführen der Hadoop-Beispiele in HDInsight – Azure
 description: Erste Schritte mit dem Azure HDInsight-Dienst mit den mitgelieferten Beispielen. Verwenden von PowerShell-Skripts, die MapReduce-Programme auf Datenclustern ausführen.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: bf76d452-abb4-4210-87bd-a2067778c6ed
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1262e0eda5cf490eb6c3ef81bc05de3954059f4c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ef88e1d3e165e3ae21b235a33b295b51b574ff67
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418708"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39593283"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von Hadoop MapReduce-Beispielen in Windows-basiertem HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -40,7 +35,7 @@ Im Internet finden Sie umfangreiche Dokumentationen zu Hadoop-verwandten Technol
 * [Übermitteln von Hadoop-Aufträgen in HDInsight](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Einführung in Azure HDInsight][hdinsight-introduction]
 
-Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für MapReduce.  Weitere Informationen finden Sie unter 
+Mittlerweile entscheiden sich viele Benutzer lieber für Hive und Pig als für MapReduce.  Weitere Informationen finden Sie unter
 
 * [Verwenden von Hive in HDInsight](hadoop/hdinsight-use-hive.md)
 * [Verwenden von Pig in HDInsight](hadoop/hdinsight-use-pig.md)

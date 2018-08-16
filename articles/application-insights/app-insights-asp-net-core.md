@@ -13,69 +13,69 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6635906b6aae418fa3754f1152fae3e0d8903ffc
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: a0e0d2c3604ea2357f52c3d464933c622ba1810d
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989764"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39523239"
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights für ASP.NET Core
 
 Azure Application Insights ermöglicht eine eingehende Überwachung Ihrer Webanwendung bis hin zur Codeebene. Mit dieser Lösung können Sie ganz einfach die Verfügbarkeit, Leistung und Nutzung Ihrer Webanwendung überwachen. Sie können auch Fehler in Ihrer Anwendung schnell erkennen und diagnostizieren, ohne darauf warten zu müssen, dass diese Fehler von Benutzern gemeldet werden.
 
-In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie in Visual Studio eine ASP.NET Core-Beispielanwendung für [Razor-Seiten](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio) erstellen und mit der Überwachung unter Verwendung von Azure Application Insights beginnen.
+Dieser Artikel führt Sie durch die Schritte zum Erstellen einer ASP.NET Core-Beispielanwendung für [Razor Pages](https://docs.microsoft.com/aspnet/core/mvc/razor-pages/?tabs=visual-studio) in Visual Studio. Sie erfahren auch, wie Sie mit der Überwachung mit Application Insights beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- .NET Core 2.0.0 SDK oder eine höhere Version
-- [Visual Studio 2017](https://www.visualstudio.com/downloads/) (Version 15.7.3 oder höher) mit der Workload für ASP.NET und Webentwicklung 
+- .NET Core 2.0.0 SDK oder höher
+- [Visual Studio 2017](https://www.visualstudio.com/downloads/) (Version 15.7.3 oder höher) mit der Workload für ASP.NET und Webentwicklung
 
 ## <a name="create-an-aspnet-core-project-in-visual-studio"></a>Erstellen eines ASP.NET Core-Projekts in Visual Studio
 
-1. Klicken Sie mit der rechten Maustaste auf **Visual Studio 2017**, und starten Sie das Programm als Administrator.
-2. Klicken Sie auf **Datei** > **Neu** > **Projekt** (STRG+UMSCHALT+N).
+1. Klicken Sie mit der rechten Maustaste auf **Visual Studio 2017**, und wählen Sie dann **Als Administrator ausführen**.
+2. Wählen Sie **Datei** > **Neu** > **Projekt** aus (STRG+UMSCHALT+N).
 
-   ![Screenshot: „Datei“ > „Neu“ > „Projekt“ in Visual Studio – Menü](./media/app-insights-asp-net-core/001-new-project.png)
+   ![Screenshot des Visual Studio-Menüs für ein neues Projekt](./media/app-insights-asp-net-core/001-new-project.png)
 
-3. Erweitern Sie **Visual C#**, und klicken Sie auf **.NET Core** > **ASP.NET Core-Webanwendung**. Geben Sie unter **Name** > einen Namen und unter **Projektmappenname** einen Projektmappennamen ein, und aktivieren Sie das Kontrollkästchen **Neues Git-Repository erstellen**.
+3. Erweitern Sie **Visual C#**. Wählen Sie **.NET Core** > **ASP.NET Core-Webanwendung** aus. Geben Sie einen Projektnamen und einen Projektmappennamen ein, und wählen Sie dann **Neues Git-Repository erstellen**.
 
-   ![Screenshot: „Datei“ > „Neu“ > „Projekt“ in Visual Studio – Assistent](./media/app-insights-asp-net-core/002-asp-net-core-web-application.png)
+   ![Screenshot des Visual Studio-Assistenten für ein neues Projekt](./media/app-insights-asp-net-core/002-asp-net-core-web-application.png)
 
-4. Klicken Sie auf **.NET Core** > **ASP.NET Core 2.0** > **Webanwendung** > **OK**.
+4. Wählen Sie **.NET Core** > **ASP.NET Core 2.0**-**Webanwendung** > **OK** aus.
 
-    ![Screenshot: „Datei“ > „Neu“ > „Projekt“ in Visual Studio – Auswahlmenü](./media/app-insights-asp-net-core/003-web-application.png)
+    ![Screenshot der Auswahl einer Vorlage für ein neues Projekt in Visual Studio](./media/app-insights-asp-net-core/003-web-application.png)
 
 ## <a name="application-insights-search"></a>Application Insights-Suche
 
-Standardmäßig können Sie in Visual Studio 2015 Update 2 oder höher bei einem auf ASP.NET Core 2+ basierenden Projekt die [Application Insights-Suche](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio) nutzen, noch bevor Sie Application Insights explizit zu Ihrem Projekt hinzugefügt haben.
+In Visual Studio 2015 Update 2 oder höher können Sie bei einem auf ASP.NET Core 2+ basierenden Projekt die [Application Insights-Suche](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio) nutzen, noch bevor Sie Application Insights explizit Ihrem Projekt hinzugefügt haben.
 
 So testen Sie diese Funktionalität:
 
-1. Führen Sie Ihre App aus, indem Sie auf IIS Express klicken: ![Screenshot: IIS Express-Symbol in Visual Studio](./media/app-insights-asp-net-core/004-iis-express.png)
+1. Führen Sie Ihre App aus. Wählen Sie zum Ausführen Ihrer App das Symbol **IIS Express** aus (![Screenshot des Visual Studio IIS Express-Symbols](./media/app-insights-asp-net-core/004-iis-express.png)).
 
 2. Wählen Sie **Ansicht** > **Weitere Fenster** > **Application Insights-Suche** aus.
 
-   ![Screenshot: Visual Studio-Diagnosetools](./media/app-insights-asp-net-core/005-view-other-windows-search.png)
+   ![Screenshot der Visual Studio-Diagnosetoolsauswahl](./media/app-insights-asp-net-core/005-view-other-windows-search.png)
 
-3. Die Telemetriedaten der Debugsitzung stehen derzeit nur für lokale Analysen zur Verfügung. Zum vollständigen Aktivieren von Application Insights wählen Sie oben rechts die Option **Telemetriebereitschaft** aus, oder führen Sie die Schritte im folgenden Abschnitt aus.
+3. Derzeit stehen die Telemetriedaten der Debugsitzung nur für lokale Analysen zur Verfügung. Zum vollständigen Aktivieren von Application Insights wählen Sie oben rechts die Option **Telemetriebereitschaft** aus, oder führen Sie die Schritte im folgenden Abschnitt aus.
 
    ![Screenshot: Visual Studio-Fenster „Application Insights-Suche“](./media/app-insights-asp-net-core/006-search.png)
 
 > [!NOTE]
-> Weitere Informationen dazu, wie in Visual Studio Funktionen wie [Application Insights-Suche](app-insights-visual-studio.md) und [CodeLens](app-insights-visual-studio-codelens.md) lokal eingeblendet werden, bevor Sie Application Insights zu Ihrem ASP.NET Core-Projekt hinzugefügt haben, finden Sie in der Erläuterung am [Ende dieses Artikels](#Application-Insights-search-continued).
+> Weitere Informationen zum lokalen Einblenden von Funktionen wie [Application Insights-Suche](app-insights-visual-studio.md) und [CodeLens](app-insights-visual-studio-codelens.md) in Visual Studio, bevor Sie Application Insights zu Ihrem ASP.NET Core-Projekt hinzufügen, finden Sie unter [Application Insights-Suche (Fortsetzung)](#application-insights-search-continued).
 
 ## <a name="add-application-insights-telemetry"></a>Hinzufügen von Application Insights-Telemetrie
 
-1. Klicken Sie auf **Projekt** > **Application Insights-Telemetrie hinzufügen...**. (Sie können auch mit der rechten Maustaste auf **Verbundene Dienste** klicken und „Verbundenen Dienst hinzufügen“ auswählen.)
+1. Wählen Sie **Projekt** > **Application Insights-Telemetrie hinzufügen** aus. (Sie können auch mit der rechten Maustaste auf **Verbundene Dienste** klicken und **Verbundenen Dienst hinzufügen** auswählen.)
 
-    ![Screenshot: „Datei“ > „Neu“ > „Projekt“ in Visual Studio – Auswahlmenü](./media/app-insights-asp-net-core/007-project-add-telemetry.png)
+    ![Screenshot des Auswahlmenüs für ein neues Projekt in Visual Studio](./media/app-insights-asp-net-core/007-project-add-telemetry.png)
 
-2. Wählen Sie **Erste Schritte** aus. (Je nach verwendeter Version von Visual Studio kann der Text geringfügig abweichen. Bei einigen älteren Versionen wird die Schaltfläche **Kostenlos starten** angezeigt.)
+2. Wählen Sie **Erste Schritte** aus. (Je nach verwendeter Version von Visual Studio kann der Text geringfügig abweichen. Bei einigen älteren Versionen wird stattdessen die Schaltfläche **Kostenlos starten** angezeigt.)
 
-    ![Screenshot: „Datei“ > „Neu“ > „Projekt“ in Visual Studio – Auswahlmenü](./media/app-insights-asp-net-core/008-get-started.png)
+    ![Screenshot der Schaltfläche „Erste Schritte“ in Application Insights](./media/app-insights-asp-net-core/008-get-started.png)
 
-3. Wählen Sie ein entsprechendes **Abonnement** > **Ressource** > **Registrieren** aus.
+3. Wählen Sie Ihr Abonnement und dann **Ressource** > **Registrieren** aus.
 
 ## <a name="changes-made-to-your-project"></a>Änderungen an Ihrem Projekt
 
@@ -83,116 +83,116 @@ Der durch Application Insights entstehende Mehraufwand ist überschaubar. Die Ä
 
 Klicken Sie auf **Ansicht** > **Team Explorer** (STRG+\, STRG+M) > **Projekt** > **Änderungen**.
 
-- Insgesamt wurden vier Änderungen vorgenommen:
+- Vier Änderungen werden insgesamt angezeigt:
 
   ![Screenshot: Dateien, die durch Hinzufügen von Application Insights geändert wurden](./media/app-insights-asp-net-core/009-changes.png)
 
 - Eine neue Datei wird erstellt:
 
-   _ConnectedService.json_
+  -  _ConnectedService.json_
 
-```json
-{
-  "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
-  "Version": "8.12.10405.1",
-  "GettingStartedDocument": {
-    "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
-  }
-}
-```
-
-- Drei Dateien werden geändert: (zusätzliche Kommentare werden zum Hervorheben von Änderungen hinzugefügt)
-
-  _appsettings.json_
-
-```json
-{
-  "Logging": {
-    "IncludeScopes": false,
-    "LogLevel": {
-      "Default": "Warning"
-    }
-  },
-// Changes to file post adding Application Insights Telemetry:
-  "ApplicationInsights": {
-    "InstrumentationKey": "10101010-1010-1010-1010-101010101010"
-  }
-}
-//
-```
-
-  _ContosoDotNetCore.csproj_
-
-```xml
-<Project Sdk="Microsoft.NET.Sdk.Web">
-  <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
- <!--Changes to file post adding Application Insights Telemetry:-->
-    <ApplicationInsightsResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsResourceId>
-    <ApplicationInsightsAnnotationResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsAnnotationResourceId>
-<!---->
-  </PropertyGroup>
-  <ItemGroup>
- <!--Changes to file post adding Application Insights Telemetry:-->
-    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
-<!---->
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
-  </ItemGroup>
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
-  </ItemGroup>
-<!--Changes to file post adding Application Insights Telemetry:-->
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services" />
-  </ItemGroup>
-<!---->
-</Project>
-```
-
-   _Program.cs_
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-
-namespace DotNetCore
-{
-    public class Program
+    ```json
     {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
-        }
-
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-// Change to file post adding Application Insights Telemetry:
-                .UseApplicationInsights()
-//
-                .UseStartup<Startup>()
-                .Build();
+      "ProviderId": "Microsoft.ApplicationInsights.ConnectedService.ConnectedServiceProvider",
+      "Version": "8.12.10405.1",
+      "GettingStartedDocument": {
+        "Uri": "https://go.microsoft.com/fwlink/?LinkID=798432"
+      }
     }
-}
-```
+    ```
+
+- Drei Dateien werden geändert (zusätzliche Kommentare werden zum Hervorheben von Änderungen hinzugefügt):
+
+  - _appsettings.json_:
+
+    ```json
+    {
+      "Logging": {
+        "IncludeScopes": false,
+        "LogLevel": {
+          "Default": "Warning"
+        }
+      },
+    // Changes to file post adding Application Insights Telemetry:
+      "ApplicationInsights": {
+        "InstrumentationKey": "10101010-1010-1010-1010-101010101010"
+      }
+    }
+    //
+    ```
+
+  - _ContosoDotNetCore.csproj_:
+
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+      <PropertyGroup>
+        <TargetFramework>netcoreapp2.0</TargetFramework>
+    <!--Changes to file post adding Application Insights Telemetry:-->
+        <ApplicationInsightsResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsResourceId>
+        <ApplicationInsightsAnnotationResourceId>/subscriptions/2546c5a9-fa20-4de1-9f4a-62818b14b8aa/resourcegroups/Default-ApplicationInsights-EastUS/providers/microsoft.insights/components/DotNetCore</ApplicationInsightsAnnotationResourceId>
+    <!---->
+      </PropertyGroup>
+      <ItemGroup>
+    <!--Changes to file post adding Application Insights Telemetry:-->
+        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
+    <!---->
+        <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.8" />
+      </ItemGroup>
+      <ItemGroup>
+        <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
+      </ItemGroup>
+    <!--Changes to file post adding Application Insights Telemetry:-->
+      <ItemGroup>
+        <WCFMetadata Include="Connected Services" />
+      </ItemGroup>
+    <!---->
+    </Project>
+    ```
+
+  -  _Program.cs_:
+
+      ```csharp
+      using System;
+      using System.Collections.Generic;
+      using System.IO;
+      using System.Linq;
+      using System.Threading.Tasks;
+      using Microsoft.AspNetCore;
+      using Microsoft.AspNetCore.Hosting;
+      using Microsoft.Extensions.Configuration;
+      using Microsoft.Extensions.Logging;
+
+      namespace DotNetCore
+      {
+          public class Program
+          {
+              public static void Main(string[] args)
+              {
+                  BuildWebHost(args).Run();
+              }
+
+              public static IWebHost BuildWebHost(string[] args) =>
+                  WebHost.CreateDefaultBuilder(args)
+      // Change to file post adding Application Insights Telemetry:
+                      .UseApplicationInsights()
+      //
+                      .UseStartup<Startup>()
+                      .Build();
+          }
+      }
+      ```
 
 ## <a name="synthetic-transactions-with-powershell"></a>Synthetische Transaktionen mit PowerShell
 
-So automatisieren Sie Anforderungen für Ihre App mit synthetischen Transaktionen:
+So automatisieren Sie Anforderungen an Ihre App mit synthetischen Transaktionen:
 
-1. Führen Sie Ihre App aus, indem Sie auf IIS Express klicken: ![Screenshot: IIS Express-Symbol in Visual Studio](./media/app-insights-asp-net-core/004-iis-express.png)
+1. Wählen Sie zum Ausführen Ihrer App das ![Screenshot: IIS Express-Symbol in Visual Studio](./media/app-insights-asp-net-core/004-iis-express.png) Symbol aus.
 
-2. Kopieren Sie die URL aus der Adressleiste des Browsers. Das Format ist `http://localhost:{random port number}`.
+2. Kopieren Sie die URL aus der Adressleiste des Browsers. Das Format der URL ist `http://localhost:<port number>`.
 
-   ![Screenshot: URL in der Browseradressleiste](./media/app-insights-asp-net-core/0013-copy-url.png)
+   ![Screenshot der URL in der Browseradressleiste](./media/app-insights-asp-net-core/0013-copy-url.png)
 
-3. Führen Sie die folgende PowerShell-Schleife aus, um 100 synthetische Transaktionen für Ihre Test-App zu erstellen. Ändern Sie die Portnummer nach **localhost:** gemäß der URL, die Sie im vorherigen Schritt kopiert haben.
+3. Führen Sie die folgende PowerShell-Schleife aus, um 100 synthetische Transaktionen mit Ihrer Test-App zu erstellen. Ändern Sie die Portnummer nach `localhost:` gemäß der URL, die Sie im vorherigen Schritt kopiert haben. Beispiel: 
 
    ```PowerShell
    for ($i = 0 ; $i -lt 100; $i++)
@@ -201,24 +201,24 @@ So automatisieren Sie Anforderungen für Ihre App mit synthetischen Transaktione
    }
    ```
 
-## <a name="open-application-insights-portal"></a>Öffnen des Application Insights-Portals
+## <a name="open-the-application-insights-portal"></a>Öffnen des Application Insights-Portals
 
-Starten Sie nach dem Ausführen der PowerShell-Schleife aus dem vorherigen Abschnitt Application Insights, um die Transaktionen anzuzeigen und sich zu vergewissern, dass Daten gesammelt werden. 
+Starten Sie nach dem Ausführen der PowerShell-Befehle aus dem vorherigen Abschnitt Application Insights, um die Transaktionen anzuzeigen und sich zu vergewissern, dass Daten gesammelt werden. 
 
-Klicken Sie im Visual Studio-Menü auf **Projekt** > **Application Insights** > **Application Insights-Portal öffnen**
+Wählen Sie im Visual Studio-Menü **Projekt** > **Application Insights** > **Application Insights-Portal öffnen** aus.
 
    ![Screenshot: Application Insights-Übersicht](./media/app-insights-asp-net-core/010-portal.png)
 
 > [!NOTE]
-> Im obigen Beispielscreenshot ist zu sehen, dass für **Live Stream**, **Ladezeit der Seitenansicht** und **Fehlerhafte Anforderungen** derzeit keine Daten gesammelt werden. Im nächsten Abschnitt wird das Hinzufügen dieser Elemente Schritt für Schritt erläutert. Wenn Sie bereits Daten für **Live Stream** und **Ladezeit der Seitenansicht** sammeln, führen Sie nur die Schritte für **Fehlerhafte Anforderungen** aus.
+> Im obigen Beispielscreenshot ist zu sehen, dass für **Live Stream**, **Ladezeit der Seitenansicht** und **Fehlerhafte Anforderungen** keine Daten gesammelt werden. Der nächste Abschnitt führt Sie durch die Schritte, mit denen Sie diese hinzufügen können. Wenn Sie bereits Daten für **Live Stream** und **Ladezeit der Seitenansicht** sammeln, führen Sie nur die Schritte für **Fehlerhafte Anforderungen** aus.
 
-## <a name="collect-failed-requests-live-stream--page-view-load-time"></a>Sammeln von Daten für „Fehlerhafte Anforderungen“, „Live Stream“ und „Ladezeit der Seitenansicht“
+## <a name="collect-failed-requests-live-stream-and-page-view-load-time"></a>Sammeln von Daten für „Fehlerhafte Anforderungen“, „Live Stream“ und „Ladezeit der Seitenansicht“
 
 ### <a name="failed-requests"></a>Anforderungsfehler
 
-Genau genommen werden Daten für **Fehlerhafte Anforderungen** gesammelt, es sind jedoch noch keine aufgetreten. Zur Beschleunigung des Prozesses kann dem vorhandenen Projekt eine benutzerdefinierte Ausnahme hinzugefügt werden, um eine echte Ausnahme zu simulieren. Falls Ihre App noch in Visual Studio ausgeführt wird, **beenden Sie das Debuggen** (UMSCHALT+F5), bevor Sie den Vorgang fortsetzen.
+Genau genommen werden Daten für fehlerhafte Anforderungen gesammelt, es sind jedoch noch keine fehlerhaften Anforderungen aufgetreten. Zur Beschleunigung des Prozesses können Sie dem vorhandenen Projekt eine benutzerdefinierte Ausnahme hinzufügen, um eine echte Ausnahme zu simulieren. Falls Ihre App noch in Visual Studio ausgeführt wird, wählen Sie **Debuggen beenden** aus (UMSCHALT+F5), bevor Sie den Vorgang fortsetzen.
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Seiten** > **About.cshtml**, und öffnen Sie **About.cshtml.cs**.
+1. Erweitern Sie im **Projektmappen-Explorer** den Knoten **Seiten** > **About.cshtml**, und öffnen Sie *About.cshtml.cs*.
 
    ![Screenshot: Projektmappen-Explorer in Visual Studio](./media/app-insights-asp-net-core/011-about.png)
 
@@ -248,9 +248,9 @@ Genau genommen werden Daten für **Fehlerhafte Anforderungen** gesammelt, es sin
 
 ### <a name="live-stream"></a>Live Stream
 
-Führen Sie ein Update auf die NuGet-Pakete **Microsoft.ApplicationInsights.AspNetCore 2.2.0** durch, um mit ASP.NET Core auf die Live Stream-Funktionen von Application Insights zugreifen zu können.
+Führen Sie ein Update der Microsoft.ApplicationInsights.AspNetCore 2.2.0-NuGet-Pakete durch, um mit ASP.NET Core auf die Live Stream-Funktionen von Application Insights zugreifen zu können.
 
-Klicken Sie in Visual Studio auf **Projekt** > **NuGet-Pakete verwalten** > **Microsoft.ApplicationInsights.AspNetCore** > Version **2.2.0** > **Aktualisieren**.
+Wählen Sie in Visual Studio **Projekt** > **NuGet-Pakete verwalten** > **Microsoft.ApplicationInsights.AspNetCore** > Version **2.2.0** > **Aktualisieren** aus.
 
   ![Screenshot: NuGet-Paket-Manager](./media/app-insights-asp-net-core/012-nuget-update.png)
 
@@ -258,51 +258,51 @@ Es werden mehrere Bestätigungsaufforderungen angezeigt. Lesen und akzeptieren S
 
 ### <a name="page-view-load-time"></a>Ladezeit der Seitenansicht
 
-1. Navigieren Sie in Visual Studio zu **Projektmappen-Explorer** > **Seiten**. Zwei Dateien müssen geändert werden: _Layout.cshtml_ und _ViewImports.cshtml_.
+1. Wechseln Sie in Visual Studio zu **Projektmappen-Explorer** > **Seiten**. Sie müssen zwei Dateien ändern: *Layout.cshtml* und *ViewImports.cshtml*.
 
-2. Fügen Sie in __ViewImports.cshtml_ Folgendes hinzu:
+2. Fügen Sie in *ViewImports.cshtml* diesen Code hinzu:
 
    ```csharp
    @using Microsoft.ApplicationInsights.AspNetCore
    @inject JavaScriptSnippet snippet
    ```
 
-3. Fügen Sie in **_Layout.cshtml** die folgende Zeile vor dem Tag ``</head>`` (und auch vor jedem anderen Skript) hinzu.
+3. Fügen Sie in *Layout.cshtml* den folgenden Code vor dem ``</head>``-Tag und jedem anderen Skript hinzu:
 
     ```csharp
     @Html.Raw(snippet.FullScript)
     ```
 
-### <a name="test-failed-requests-page-view-load-time-live-stream"></a>Testen von „Fehlerhafte Anforderungen“, „Ladezeit der Seitenansicht“ und „Live Stream“
+### <a name="test-failed-requests-page-view-load-time-and-live-stream"></a>Testen von „Fehlerhafte Anforderungen“, „Ladezeit der Seitenansicht“ und „Live Stream“
 
-So testen und vergewissern Sie sich, dass alles funktioniert:
+So testen Sie und vergewissern sich, dass alles funktioniert:
 
-1. Führen Sie Ihre App aus, indem Sie auf IIS Express klicken: ![Screenshot: IIS Express-Symbol in Visual Studio](./media/app-insights-asp-net-core/0012-iis-express.png)
+1. Führen Sie Ihre App aus. Wählen Sie zum Ausführen Ihrer App das ![Screenshot: IIS Express-Symbol in Visual Studio](./media/app-insights-asp-net-core/004-iis-express.png) Symbol aus.
 
-2. Navigieren Sie zur Seite **Info**, um die Testausnahme auszulösen. (Bei Verwendung des Debugmodus müssen Sie in Visual Studio auf **Weiter** klicken, damit die Ausnahme in Application Insights angezeigt wird.)
+2. Gehen Sie zur Seite **Info**, um die Testausnahme auszulösen. (Wählen Sie im Debugmodus in Visual Studio **Weiter** aus, damit die Ausnahme in Application Insights angezeigt wird.)
 
-3. Führen Sie das simulierte PowerShell-Transaktionsskript von weiter oben erneut aus. (Gegebenenfalls muss die Portnummer im Skript angepasst werden.)
+3. Führen Sie das simulierte PowerShell-Transaktionsskript, das Sie zuvor verwendet haben, erneut aus. (Möglicherweise müssen Sie die Portnummer im Skript anpassen.)
 
-4. Falls die Application Insights-Übersicht nicht mehr geöffnet ist, klicken Sie im Menü von Visual Studio auf **Projekt** > **Application Insights** > **Application Insights-Portal öffnen**. 
+4. Falls die **Übersicht**-Seite in Application Insights noch nicht geöffnet ist, wählen Sie im Menü von Visual Studio **Projekt** > **Application Insights** > **Application Insights-Portal öffnen** aus. 
 
    > [!TIP]
-   > Sollte Ihr neuer Datenverkehr noch nicht angezeigt werden, überprüfen Sie den **Zeitbereich**, und klicken Sie auf **Aktualisieren**.
+   > Wenn Ihr neuer Datenverkehr nicht angezeigt wird, überprüfen Sie den Wert für **Zeitbereich**, und wählen Sie dann **Aktualisieren** aus.
 
-   ![Screenshot: Übersichtsfenster](./media/app-insights-asp-net-core/0019-overview-updated.png)
+   ![Screenshot des Übersichtsfensters](./media/app-insights-asp-net-core/0019-overview-updated.png)
 
-5. Klicken Sie auf „Live Stream“.
+5. Wählen Sie **Live Stream** aus.
 
    ![Screenshot: Live Metrics Stream](./media/app-insights-asp-net-core/0020-live-metrics-stream.png)
 
-   (Wenn Ihr PowerShell-Skript noch ausgeführt wird, sollten Livemetriken angezeigt werden. Wurde das Skript bereits beendet, starten Sie es erneut, während Live Stream geöffnet ist.)
+   (Wenn das PowerShell-Skript noch ausgeführt wird, sollten Livemetriken angezeigt werden. Wenn Ihr PowerShell-Skript nicht mehr ausgeführt wird, starten Sie es erneut, während Live Stream geöffnet ist.)
 
-## <a name="app-insights-sdk-comparison"></a>Vergleich für das App Insights SDK
+## <a name="application-insights-sdk-comparison"></a>Application Insights SDK im Vergleich
 
-Die Application Insights-Produktgruppe hat sich sehr darum bemüht, Featureübereinstimmung zwischen dem [vollständigen .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) und dem .NET Core SDK zu erreichen. Mit der Version 2.2.0 des [ASP.NET Core SDKs](https://github.com/Microsoft/ApplicationInsights-aspnetcore) für Application Insights wurde die Featurelücke größtenteils geschlossen.
+Die Application Insights-Produktgruppe hat intensiv daran gearbeitet, Featureübereinstimmung zwischen dem [vollständigen .NET Framework SDK](https://github.com/Microsoft/ApplicationInsights-dotnet) und dem .NET Core SDK zu erreichen. Das Release 2.2.0 des [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore) für Application Insights schließt die Featurelücke größtenteils.
 
-Weitere Informationen zu den Unterschieden und Kompromissen zwischen .NET und .NET Core finden Sie [hier](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server).
+In der folgenden Tabelle werden mehrere Unterschiede und Kompromisse zwischen [.NET und .NET Core](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server) beschrieben:
 
-   | ASK-Vergleich | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
+   | SDK-Vergleich | ASP.NET        | ASP.NET Core 2.1.0    | ASP.NET Core 2.2.0 |
   |:-- | :-------------: |:------------------------:|:----------------------:|
    | **Livemetriken**      | **+** |**-** | **+** |
    | **Servertelemetriekanal** | **+** |**-** | **+**|
@@ -310,14 +310,14 @@ Weitere Informationen zu den Unterschieden und Kompromissen zwischen .NET und .N
    | **SQL-Abhängigkeitsaufrufe**     | **+** |**-** | **+**|
    | **Leistungsindikatoren*** | **+** | **-**| **-**|
 
-_Leistungsindikatoren_ bezieht sich in diesem Kontext auf [serverseitige Leistungsindikatoren](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) wie Prozessor, Arbeitsspeicher und Datenträgernutzung.
+„Leistungsindikatoren“ bezieht sich in diesem Kontext auf [serverseitige Leistungsindikatoren](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) wie Prozessor, Arbeitsspeicher und Datenträgernutzung.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
-[Lesen und Hinzufügen von Code](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
+[Lesen und Hinzufügen von Code](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
 
 ## <a name="application-insights-search-continued"></a>Application Insights-Suche (Fortsetzung)
 
-Zum besseren Verständnis der Funktionsweise der Application Insights-Suche in Visual Studio für ein ASP.NET Core 2-Projekt, selbst wenn noch keine explizite Installation der Application Insights NuGet-Pakete stattgefunden hat, kann es hilfreich sein, die Debugausgabe zu überprüfen.
+In diesem Abschnitt wird erläutert, wie die Application Insights-Suche in Visual Studio für ein ASP.NET Core 2-Projekt funktioniert. Es funktioniert auch dann auf diese Weise, wenn Sie die Application Insights-NuGet-Pakete nicht explizit installiert haben. Es kann auch hilfreich sein, die Debugausgabe zu untersuchen.
 
 Wenn Sie die Ausgabe nach dem Wort _insight_ durchsuchen, werden Ergebnisse hervorgehoben, die Folgendem ähneln:
 
@@ -328,28 +328,28 @@ Wenn Sie die Ausgabe nach dem Wort _insight_ durchsuchen, werden Ergebnisse herv
 Application Insights Telemetry (unconfigured): {"name":"Microsoft.ApplicationInsights.Dev.Message","time":"2018-06-03T17:32:38.2796801Z","tags":{"ai.location.ip":"127.0.0.1","ai.operation.name":"DEBUG /","ai.internal.sdkVersion":"aspnet5c:2.1.1","ai.application.ver":"1.0.0.0","ai.cloud.roleInstance":"CONTOSO-SERVER","ai.operation.id":"de85878e-4618b05bad11b5a6","ai.internal.nodeName":"CONTOSO-SERVER","ai.operation.parentId":"|de85878e-4618b05bad11b5a6."},"data":{"baseType":"MessageData","baseData":{"ver":2,"message":"Request starting HTTP/1.1 DEBUG http://localhost:53022/  0","severityLevel":"Information","properties":{"AspNetCoreEnvironment":"Development","Protocol":"HTTP/1.1","CategoryName":"Microsoft.AspNetCore.Hosting.Internal.WebHost","Host":"localhost:53022","Path":"/","Scheme":"http","ContentLength":"0","DeveloperMode":"true","Method":"DEBUG"}}}}
 ```
 
-Zwei Assemblys werden von CoreCLR geladen: 
+In der Ausgabe lädt CoreCLR zwei Assemblys: 
 
 - _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_
 - _Microsoft.ApplicationInsights.AspNetCore.dll_.
 
-Das _unconfigured_ in jeder Instanz der Application Insights-Telemetrie gibt an, dass diese Anwendung nicht mit einem ikey verknüpft ist, sodass die während der Ausführung Ihrer App generierten Daten nicht an Azure gesendet werden und nur für die lokale Suche und Analyse verfügbar sind.
+Der _unconfigured_ Verweis in jeder Instanz von Application Insights-Telemetrie gibt an, dass dieser Anwendung kein „iKey“ (Instrumentierungsschlüssel) zugeordnet ist. Die Daten, die während der Ausführung Ihrer App generiert werden, werden nicht an Azure gesendet. Die Daten sind nur für die lokale Suche und Analyse verfügbar.
 
-Dies ist teilweise dadurch möglich, dass das NuGet-Paket _Microsoft.AspNetCore.All_ als eine Abhängigkeit [_Microsoft.ASPNetCoreApplicationInsights.HostingStartup_](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.applicationinsights.hostingstartup.applicationinsightshostingstartup?view=aspnetcore-2.1) verwendet.
+Die Funktionalität ist in diesem Teil möglich, weil das NuGet-Paket _Microsoft.AspNetCore.All_ als Abhängigkeit [_Microsoft.ASPNetCoreApplicationInsights.HostingStartup_](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.applicationinsights.hostingstartup.applicationinsightshostingstartup?view=aspnetcore-2.1) verwendet.
 
-![Screenshot: NuGet-Abhängigkeitsdiagramm für „Microsoft.AspNETCore.all“](./media/app-insights-asp-net-core/013-dependency.png)
+![Screenshot des NuGet-Abhängigkeitsdiagramms für „Microsoft.AspNETCore.all“](./media/app-insights-asp-net-core/013-dependency.png)
 
-Wenn Sie außerhalb von Visual Studio ein ASP.NET Core-Projekt in VSCode oder einem anderen Editor bearbeiten, werden diese Assemblys nicht automatisch während des Debugvorgangs geladen, sofern Sie Application Insights nicht explizit zu Ihrem Projekt hinzugefügt haben.
+Wenn Sie außerhalb von Visual Studio ein ASP.NET Core-Projekt in VSCode oder einem anderen Editor bearbeiten, werden diese Assemblys nicht automatisch während des Debugvorgangs geladen, sofern Sie Application Insights nicht explizit Ihrem Projekt hinzugefügt haben.
 
-In Visual Studio jedoch erfolgt dieses Einblenden lokaler Application Insights-Features aus externen Assemblys durch Verwendung der [IHostingStartup-Schnittstelle](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1), über die Application Insights während des Debugvorgangs dynamisch hinzufügt wird.
+In Visual Studio jedoch erfolgt dieses Einblenden lokaler Application Insights-Features aus externen Assemblys durch Verwendung der [IHostingStartup-Schnittstelle](https://docs.microsoft.com/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1). Die Schnittstelle fügt Application Insights während des Debugvorgangs dynamisch hinzu.
 
 Erfahren Sie mehr über das Erweitern einer App über eine [externe Assembly in ASP.NET Core mit IHostingStartup](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/platform-specific-configuration?view=aspnetcore-2.1). 
 
-### <a name="how-to-disable-application-insights-in-visual-studio-net-core-projects"></a>Deaktivieren von Application Insights in Visual Studio .NET Core-Projekten
+### <a name="disable-application-insights-in-visual-studio-net-core-projects"></a>Deaktivieren von Application Insights in Visual Studio .NET Core-Projekten
 
-Zwar kann das automatische Einblenden der Suchfunktion von Application Insights für einige hilfreich sein, doch ist die Anzeige der generierten Debugtelemetrie, wenn dies nicht erwartet wurde, möglicherweise verwirrend.
+Zwar kann das automatische Einblenden der Suchfunktion von Application Insights hilfreich sein, doch ist die Anzeige der generierten Debugtelemetrie, sofern unerwartet, möglicherweise verwirrend.
 
-Wenn es für Sie ausreicht, einfach die Telemetriegenerierung zu deaktivieren, können Sie den folgenden Codeblock zur „Configure“-Methode Ihrer Datei _Startup.cs_ hinzufügen:
+Wenn es für Sie ausreicht, einfach die Telemetriegenerierung zu deaktivieren, können Sie den folgenden Codeblock der **configure**-Methode Ihrer Datei _Startup.cs_ hinzufügen:
 
 ```csharp
   var configuration = app.ApplicationServices.GetService<Microsoft.ApplicationInsights.Extensibility.TelemetryConfiguration>();
@@ -359,48 +359,46 @@ Wenn es für Sie ausreicht, einfach die Telemetriegenerierung zu deaktivieren, k
 
 _Microsoft.AspNetCore.ApplicationInsights.HostingStartup.dll_ und _Microsoft.ApplicationInsights.AspNetCore.dll_ werden weiterhin von CoreCLR geladen, haben jedoch keine Auswirkung.
 
-Wenn Sie Application Insights in Ihrem Visual Studio .NET Core-Projekt vollständig deaktivieren möchten, ist die bevorzugte Methode das Auswählen von **Extras** > **Optionen** > **Projekte und Projektmappen** > **Webprojekte**. Aktivieren Sie dann das entsprechende Kontrollkästchen, um Application Insights lokal für ASP.NET Core-Webprojekte zu deaktivieren. Diese Funktionalität wurde in Visual Studio 15.6 hinzugefügt.
+Wenn Sie Application Insights in Ihrem Visual Studio .NET Core-Projekt vollständig deaktivieren möchten, ist die bevorzugte Methode das Auswählen von **Extras** > **Optionen** > **Projekte und Projektmappen** > **Webprojekte**. Aktivieren Sie das Kontrollkästchen **Lokales Application Insights für ASP.NET Core-Webprojekte deaktivieren**. Diese Funktionalität wurde in Visual Studio 15.6 hinzugefügt.
 
 ![Screenshot: Bildschirm „Websprojekte“ im Fenster „Optionen“ von Visual Studio](./media/app-insights-asp-net-core/014-disable.png)
 
-Wenn Sie eine frühere Version von Visual Studio verwenden und alle Assemblys, die über IHostingStartup geladen werden, vollständig entfernen möchten, können Sie
+Wenn Sie eine frühere Version von Visual Studio verwenden und alle Assemblys, die über *IHostingStartup* geladen werden, vollständig entfernen möchten, können Sie zwischen zwei Optionen wählen:
 
-`.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")`
+* Fügen Sie `.UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")` zu _Program.cs_ hinzu:
 
-zu _Program.cs_ hinzufügen:
+  ```csharp
+  using System;
+  using System.Collections.Generic;
+  using System.IO;
+  using System.Linq;
+  using System.Threading.Tasks;
+  using Microsoft.AspNetCore;
+  using Microsoft.AspNetCore.Hosting;
+  using Microsoft.Extensions.Configuration;
+  using Microsoft.Extensions.Logging;
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+  namespace DotNetCore
+  {
+      public class Program
+      {
+          public static void Main(string[] args)
+          {
+              BuildWebHost(args).Run();
+          }
 
-namespace DotNetCore
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
-        }
+          public static IWebHost BuildWebHost(string[] args) =>
+              WebHost.CreateDefaultBuilder(args)
+                  .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
+                  .UseStartup<Startup>()
+                  .Build();
+      }
+  }
+  ```
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseSetting(WebHostDefaults.PreventHostingStartupKey, "true")
-                .UseStartup<Startup>()
-                .Build();
-    }
-}
-```
+* Fügen Sie ``"ASPNETCORE_preventHostingStartup": "True"`` den _launchSettings.json_-Umgebungsvariablen  hinzu.
 
-Sie können aber auch ``"ASPNETCORE_preventHostingStartup": "True"`` zu Umgebungsvariablen in _launchSettings.json_ hinzufügen.
-
-Das Problem bei der Verwendung dieser Methoden ist, dass nicht nur Application Insights deaktiviert wird, sondern alles in Visual Studio, das die IHostingStartup-Einblendungsfunktionalität nutzt.
+Bei der Verwendung dieser Methoden besteht das Problem, dass sie nicht nur Application Insights deaktivieren. Die Methoden deaktivieren auch alles in Visual Studio, was die Einblendungsfunktionalität von *IHostingStartup* verwendet hat.
 
 ## <a name="video"></a>Video
 
@@ -410,4 +408,4 @@ Das Problem bei der Verwendung dieser Methoden ist, dass nicht nur Application I
 * [Untersuchen Sie Benutzerabläufe](app-insights-usage-flows.md), um die Benutzernavigation in Ihrer App nachzuvollziehen.
 * [Konfigurieren Sie die Momentaufnahmensammlung](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications), um den Status des Quellcodes und der Variablen zu dem Zeitpunkt anzuzeigen, zu dem eine Ausnahme ausgelöst wurde.
 * [Verwenden Sie die API](app-insights-api-custom-events-metrics.md) , um Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App zu senden.
-* [Availability tests](app-insights-monitor-web-app-availability.md) wird Ihre App fortwährend an Standorten auf der ganzen Welt überprüft.
+* Überprüfen Sie Ihre App mit [Verfügbarkeitstests](app-insights-monitor-web-app-availability.md) fortwährend von jedem Ort der Welt aus.

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 89c1daf1d5d257e02a8253a82d543605ff4cacb0
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: c300782432350c1997e25313b4301d94c29e2ed6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126349"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480991"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -132,9 +132,10 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     Wenn Sie auf einem hohen Durchsatzniveau testen (> 50.000 RU/s), kann sich die Clientanwendung als Engpass erweisen, da der Computer die CPU- oder Netzwerknutzung deckelt. Wenn dieser Punkt erreicht wird, können Sie das Azure Cosmos DB-Konto weiter auslasten, indem Sie Ihre Clientanwendungen auf mehrere Server horizontal hochskalieren.
 8. **Zwischenspeichern von Dokument-URIs zur Verringerung der Latenz bei Lesevorgängen**
 
-    Zur Erzielung einer optimalen Leseleistung sollten Dokument-URIs möglichst immer zwischengespeichert werden.
+    Zur Erzielung einer optimalen Leseleistung sollten Dokument-URIs möglichst immer zwischengespeichert werden. Sie müssen die Logik definieren, um resourceid beim Erstellen der Ressource zwischenzuspeichern. Resourceid-basierte Suchen sind schneller als namensbasierte Suchen, sodass durch die Zwischenspeicherung dieser Werte die Leistung verbessert wird. 
+
    <a id="tune-page-size"></a>
-9. **Optimieren der Seitengröße für Abfragen/Lesefeeds, um die Leistung zu verbessern**
+1. **Optimieren der Seitengröße für Abfragen/Lesefeeds, um die Leistung zu verbessern**
 
     Wenn mehrere Dokumente mithilfe der Lesefeedfunktion (z. B. „ReadDocumentFeedAsync“) gleichzeitig gelesen werden oder eine SQL-Abfrage ausgegeben wird, werden die Ergebnisse bei der Rückgabe segmentiert, falls das Resultset zu groß ist. Ergebnisse werden standardmäßig in Blöcken mit je 100 Elementen oder 1 MB zurückgegeben (je nachdem, welcher Grenzwert zuerst erreicht wird).
 

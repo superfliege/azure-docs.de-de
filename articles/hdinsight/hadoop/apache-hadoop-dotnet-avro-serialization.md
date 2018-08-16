@@ -1,26 +1,21 @@
 ---
-title: 'Serialisieren von Daten in Hadoop: Microsoft Avro Bibliothek – Azure | Microsoft Dokumentation'
+title: 'Serialisieren von Daten in Hadoop: Microsoft Avro-Bibliothek – Azure'
 description: Erfahren Sie, wie Sie Daten in Hadoop auf HDInsight mithilfe der Microsoft Avro-Bibliothek serialisieren und deserialisieren, um sie dauerhaft im Arbeitsspeicher, in einer Datenbank oder in einer Datei zu speichern.
 keywords: avro, hadoop avro
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: c78dc20d-5d8d-4366-94ac-abbe89aaac58
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.author: jgao
+ms.author: jasonh
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: 0d195ab3b84a522eae4010f3b08a829f7056a35f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 59e6116d1c325e32b4bead0ab44e00fb8682a205
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202344"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39595595"
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Serialisieren von Daten in Hadoop mit der Microsoft Avro-Bibliothek
 

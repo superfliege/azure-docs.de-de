@@ -5,23 +5,27 @@ services: container-registry
 author: mmacy
 ms.service: container-registry
 ms.topic: include
-ms.date: 04/23/2018
+ms.date: 08/03/2018
 ms.author: marsma
 ms.custom: include file
-ms.openlocfilehash: 6ed114ea6162c9d4888b6f86998cfb422a3944e8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2174ae44f8e78763c1939aee5e6b86c95a0924ce
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198225"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39514044"
 ---
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Zum Erstellen eines Dienstprinzipals mit Zugriff auf Ihre Containerregistrierung können Sie das folgende Skript verwenden. Aktualisieren Sie die Variable `ACR_NAME` mit dem Namen Ihrer Containerregistrierung und optional den Wert `--role` im Befehl [az ad sp create-for-rbac][az-ad-sp-create-for-rbac], um verschiedene Berechtigungen zu gewähren. [Azure CLI](/cli/azure/install-azure-cli) muss installiert sein, damit Sie dieses Skript verwenden können.
+Führen Sie zum Erstellen eines Dienstprinzipals mit Zugriff auf die Containerregistrierung das folgende Skript in [Azure Cloud Shell](../articles/cloud-shell/overview.md) oder in einer lokalen Installation der [Azure CLI](/cli/azure/install-azure-cli) aus. Das Skript ist für die Bash-Shell formatiert.
+
+Aktualisieren Sie vor dem Ausführen des Skripts die Variable `ACR_NAME` mit dem Namen Ihrer Containerregistrierung. Der Wert `SERVICE_PRINCIPAL_NAME` muss in Ihrem Azure Active Directory-Mandanten eindeutig sein. Wird der Fehler `'http://acr-service-principal' already exists.` angezeigt, geben Sie einen anderen Namen für den Dienstprinzipal an.
+
+Optional können Sie den Wert `--role` im Befehl [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] ändern, falls Sie andere Berechtigungen gewähren möchten.
 
 Nachdem Sie das Skript ausgeführt haben, notieren Sie die **ID** und das **Kennwort** des Dienstprinzipals. Sobald Sie über dessen Anmeldeinformationen verfügen, können Sie Ihre Anwendungen und Dienste so konfigurieren, dass diese bei Ihrer Containerregistrierung als Dienstprinzipal authentifiziert werden.
 
-[!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-create/service-principal-create.sh --> [!code-azurecli-interactive[acr-sp-create](~/cli_scripts/container-registry/service-principal-create/service-principal-create.sh)]
 
 ## <a name="use-an-existing-service-principal"></a>Verwenden eines vorhandenen Dienstprinzipals
 
@@ -29,7 +33,7 @@ Damit Sie einem vorhandenen Dienstprinzipal den Zugriff auf die Registrierung ge
 
 Das folgende Skript verwendet den Befehl [az role assignment create][az-role-assignment-create], um einem Dienstprinzipal *Pull*-Berechtigungen zuzuweisen, den Sie in der Variablen `SERVICE_PRINCIPAL_ID` festlegen. Passen Sie den Wert `--role` an, wenn Sie eine andere Zugriffsebene zuweisen möchten.
 
-[!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
+<!-- https://github.com/Azure-Samples/azure-cli-samples/blob/master/container-registry/service-principal-assign-role/service-principal-assign-role.sh --> [!code-azurecli-interactive[acr-sp-role-assign](~/cli_scripts/container-registry/service-principal-assign-role/service-principal-assign-role.sh)]
 
 <!-- LINKS - Internal -->
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac

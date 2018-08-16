@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be1b35d2e7dc3d3e2efab825f318983e2943b0d2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5fbdccf4e14ce1201b21f0490e9c890c77c3e2f0
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194358"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39577754"
 ---
 # <a name="manage-azure-automation-account"></a>Verwalten eines Azure Automation-Kontos
 Das Zertifikat muss vor Ablauf Ihres Automation-Kontos erneuert werden. Wenn Sie der Meinung sind, dass das ausführende Konto kompromittiert wurde, können Sie es löschen und neu erstellen. In diesem Abschnitt wird beschrieben, wie Sie dabei vorgehen.
 
-## <a name="self-signed-certificate-renewal"></a>Erneuerung eines selbstsignierten Zertifikats
+## <a name="cert-renewal"></a>Erneuerung eines selbstsignierten Zertifikats
 Das selbstsignierte Zertifikat, das Sie für das ausführende Konto erstellt haben, läuft ein Jahr nach dem Erstellungsdatum ab. Sie können es vor dem Ablaufdatum jederzeit erneuern. Beim Erneuern wird das aktuelle gültige Zertifikat beibehalten, um sicherzustellen, dass sich keine negativen Auswirkungen auf Runbooks ergeben, die sich in der Warteschlange befinden oder aktiv ausgeführt werden und die mit dem ausführenden Konto authentifiziert werden. Das Zertifikat bleibt bis zum Ablaufdatum gültig.
 
 > [!NOTE]
@@ -72,11 +72,11 @@ In den obigen und anderen Fällen einer Fehlkonfiguration erkennt das Automation
 
 Wenn Sie das ausführende Konto auswählen, wird im Bereich **Eigenschaften** die folgende Fehlermeldung angezeigt:
 
-![Warnmeldung mit Hinweis auf eine unvollständige Konfiguration des ausführenden Kontos](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png)zu erstellen und zu verwalten.
+![Warnmeldung mit Hinweis auf eine unvollständige Konfiguration des ausführenden Kontos](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png).
 
 Sie können diese Probleme mit ausführenden Konten schnell beheben, indem Sie das Konto löschen und neu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/active-directory-application-objects.md).
+* Weitere Informationen zu Dienstprinzipalen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](../active-directory/develop/app-objects-and-service-principals.md).
 * Weitere Informationen zur rollenbasierten Zugriffssteuerung in Azure Automation finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
 * Weitere Informationen zu Zertifikaten und Azure-Diensten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

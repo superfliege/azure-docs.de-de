@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2018
+ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f51103045f6a0cac1b1ed4f32200eaf7bef9cf24
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1328ce8c306188c32bce5385f58f118a63c08deb
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193875"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39426532"
 ---
 # <a name="how-to-unlink-your-automation-account-from-a-log-analytics-workspace"></a>Aufheben der Verknüpfung eines Automation-Kontos mit einem Log Analytics-Arbeitsbereich
 
@@ -24,7 +24,7 @@ Azure Automation ist in Log Analytics nicht nur zum Unterstützen der Überwachu
 * [Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md)
 * [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 
-Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie das Thema für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
+Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben.  Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
 
 Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
 
@@ -33,13 +33,11 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 ## <a name="unlink-workspace"></a>Aufheben der Verknüpfung mit dem Arbeitsbereich
 
-1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und klicken Sie auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** auf **Verknüpfung des Arbeitsbereichs aufheben**.
-
-   ![Option „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-unlink-from-log-analytics/automation-unlink-workspace-option.png)
+1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
 1. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
 
-   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png)zu erstellen und zu verwalten.
+   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-unlink-from-log-analytics/automation-unlink-workspace-blade.png).
 
    Sie werden gefragt, ob Sie fortfahren möchten.
 
@@ -47,9 +45,9 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 
-* Aktualisieren Sie Zeitpläne.  Diese verfügen über Namen, die den Updatebereitstellungen entsprechen, die Sie erstellt haben.
+* Zeitpläne für Updates: Diese verfügen über Namen, die den Updatebereitstellungen entsprechen, die Sie erstellt haben.
 
-* Für die Lösung erstellte Hybrid Worker-Gruppen.  Jede wird ähnlich wie „machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8“ benannt.
+* Für die Lösung erstellte Hybrid Worker-Gruppen: Jede wird ähnlich wie „machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8“ benannt.
 
 Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 

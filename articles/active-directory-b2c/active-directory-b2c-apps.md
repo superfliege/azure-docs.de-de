@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f4b45c743c0efa1c9df665018b28a8b4ffb76f73
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: e42bc63b0c2b6edf4dc0de204bbac5fe90071a67
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238402"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480511"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>In Azure Active Directory B2C verwendbare Anwendungstypen
 
@@ -60,7 +60,13 @@ Informationen zu allen Arten von Token und zu den für eine Anwendung verfügbar
 
 In einer Webanwendung sind für jede Ausführung einer [Richtlinie](active-directory-b2c-reference-policies.md) im Allgemeinen folgende Schritte erforderlich:
 
-![Abbildung der Web-App-Verantwortlichkeitsbereiche](./media/active-directory-b2c-apps/webapp.png)
+1. Der Benutzer durchsucht die Webanwendung.
+2. Die Webanwendung leitet den Benutzer an Azure AD B2C um und gibt die auszuführende Richtlinie an.
+3. Der Benutzer schließt die Richtlinie ab.
+4. Azure AD B2C gibt ein `id_token` an den Browser zurück.
+5. Das `id_token` wird für den Umleitungs-URI bereitgestellt.
+6. Das `id_token` wird überprüft, und ein Sitzungscookie wird festgelegt.
+7. Für den Benutzer wird eine sichere Seite zurückgegeben.
 
 Die Überprüfung von `id_token` mithilfe eines von Azure AD erhaltenen öffentlichen Signaturschlüssels ist ausreichend, um die Identität des Benutzers zu bestätigen. Dadurch wird außerdem ein Sitzungscookie festgelegt, das zur Identifizierung des Benutzers in nachfolgenden Seitenanforderungen verwendet werden kann.
 
@@ -89,7 +95,15 @@ Die Web-API kann dann mit dem Token die Identität des API-Aufrufers überprüfe
 
 Eine Web-API kann Token von vielen Clienttypen empfangen, einschließlich Webanwendungen, Desktop- und mobilen Anwendungen, Single-Page-Anwendungen, serverseitigen Daemons und anderen Web-APIs. Hier sehen Sie ein Beispiel für den vollständigen Ablauf für eine Webanwendung, die eine Web-API aufruft:
 
-![Abbildung der Web-App-Web-API-Verantwortlichkeitsbereiche](./media/active-directory-b2c-apps/webapi.png)
+1. Die Webanwendung führt eine Richtlinie aus, und der Benutzer schließt die Benutzeroberfläche ab.
+2. Azure AD B2C gibt ein `access_token` und einen Autorisierungscode an den Browser zurück.
+3. Der Browser stellt das `access_token` und den Autorisierungscode für den Umleitungs-URI bereit.
+4. Der Webserver überprüft das `access token` und legt ein Sitzungscookie fest.
+5. Das `access_token` wird für Azure AD B2C mit dem Autorisierungscode, der Anwendungsclient-ID und den Anmeldeinformationen bereitgestellt.
+6. Das `access_token` und das `refresh_token` werden an den Webserver zurückgegeben.
+7. Die Web-API wird mit dem `access_token` in einem Autorisierungsheader aufgerufen.
+8. Die Web-API überprüft das Token.
+9. Sichere Daten werden an den Webserver zurückgegeben.
 
 Weitere Informationen zu Autorisierungscodes, Aktualisierungstoken und den Schritten zum Abrufen von Token finden Sie im [OAuth 2.0-Protokoll](active-directory-b2c-reference-oauth-code.md).
 
@@ -105,8 +119,6 @@ Bei diesem Ablauf führt die Anwendung [Richtlinien](active-directory-b2c-refere
 > Azure AD B2C unterstützt derzeit nur Token, die für den Zugriff auf den eigenen Back-End-Webdienst einer Anwendung verwendet werden. Ihre vollständige Anwendung kann beispielsweise eine iOS-Anwendung, eine Android-Anwendung und eine Back-End-Web-API umfassen. Diese Architektur wird vollständig unterstützt. Das Gewähren des Zugriffs auf eine Partner-Web-API über OAuth 2.0-Zugriffstoken wird für Ihre iOS-Anwendung derzeit nicht unterstützt. Alle Komponenten Ihrer vollständigen Anwendung müssen eine Anwendungs-ID gemeinsam verwenden.
 >
 >
-
-![Abbildung der Verantwortlichkeitsbereiche systemeigener Apps](./media/active-directory-b2c-apps/native.png)
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 

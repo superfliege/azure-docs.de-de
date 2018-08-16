@@ -8,19 +8,23 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f36f05789424cfd3213525dd501333f852a0d9c2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971719"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39440428"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Protokollwarnungen in Azure Monitor – Warnungen 
-Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden. Details zu Metrikwarnungen, die Protokolle verwenden, finden Sie unter [Metrikwarnungen nahezu in Echtzeit](monitoring-near-real-time-metric-alerts.md).
+Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
 
 
-Protokollwarnungen umfassen Regeln für die Protokollsuche, die für [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) erstellt werden.
+Protokollwarnungen umfassen Regeln für die Protokollsuche, die für [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) erstellt werden. Preise für Protokollwarnungen sind auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/en-us/pricing/details/monitor/) aufgeführt. In Azure-Rechnungen sind Protokollwarnungen als Typ `microsoft.insights/scheduledqueryrules` wie folgt angegeben:
+- Protokollwarnungen für Application Insights werden mit dem genauen Namen der Warnung zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
+- Protokollwarnungen für Log Analytics werden mit dem Namen der Warnung als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
 
+    > [!NOTE]
+    > Die Namen aller gespeicherten Suchvorgänge, Zeitpläne und Aktionen, die mit der Log Analytics-API erstellt werden, müssen in Kleinbuchstaben geschrieben werden. Wenn ungültige Zeichen wie `<, >, %, &, \, ?, /` verwendet werden, werden sie in der Rechnung durch `_` ersetzt.
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Warnungsregel für Protokollsuche – Definition und Typen
 
@@ -60,7 +64,7 @@ Angenommen, Sie möchten wissen, wann Ihre webbasierte App einem Benutzer eine A
 - **Abfrage:** requests | where resultCode == "500"<br>
 - **Zeitraum:** 30 Minuten<br>
 - **Warnungshäufigkeit**: Fünf Minuten<br>
-- **Schwellenwert**: Größer Null<br>
+- **Schwellenwert**: Größer als 0<br>
 
 In diesem Fall wird die Abfrage alle fünf Minuten mit Daten für 30 Minuten ausgeführt, um nach Datensätzen mit dem Ergebniscode 500 zu suchen. Sobald ein solcher Datensatz gefunden wird, werden die Warnung und die konfigurierte Aktion ausgelöst.
 
@@ -86,7 +90,7 @@ Angenommen, Sie wünschen sich eine Warnung, wenn ein beliebiger Computer binnen
 - **Abfrage:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5 m), Computer<br>
 - **Zeitraum:** 30 Minuten<br>
 - **Warnungshäufigkeit**: Fünf Minuten<br>
-- **Aggregatwert**: Größer als 90<br>
+- **Aggregatwert:** Größer als 90<br>
 - **Warnung auslösen basierend auf**: Gesamtanzahl von Verstößen größer als 2<br>
 
 Die Abfrage ermittelt einen Durchschnittswert für jeden Computer in 5-Minuten-Intervallen.  Diese Abfrage wird alle 5 Minuten für die in den letzten 30 Minuten gesammelten Daten ausgeführt.  Nachstehend sehen Sie Beispieldaten für drei Computer.
@@ -104,7 +108,7 @@ Sie können die Protokollwarnung und die dazugehörige Warnungsregel für die Pr
 - Azure Resource Manager-Vorlagen
 
 ### <a name="azure-portal"></a>Azure-Portal
-Seit Einführung der [neuen Azure-Warnungen](monitoring-overview-unified-alerts.md) können Benutzer jetzt alle Arten von Warnungen zentral im Azure-Portal und mit ähnlichen Schritten verwalten. Informieren Sie sich über die [Verwendung der neuen Azure-Warnungen](monitor-alerts-unified-usage.md).
+Seit Einführung der [neuen Azure-Warnungen](monitoring-overview-unified-alerts.md) können Benutzer jetzt alle Arten von Warnungen zentral im Azure-Portal und mit ähnlichen Schritten für die Nutzung verwalten. Informieren Sie sich über die [Verwendung der neuen Azure-Warnungen](monitor-alerts-unified-usage.md).
 
 Benutzer können ihre Abfragen zudem in der Analytics-Plattform ihrer Wahl in Azure optimieren und anschließend *die Abfrage speichern, um sie in Warnungen zu importieren*. Vorgehensweise:
 - *Für Application Insights*: Überprüfen Sie die Abfrage und die dazugehörigen Ergebnisse im Analytics-Portal. Speichern Sie sie dann unter einem eindeutigen Namen in *Freigegebene Abfragen*.
@@ -131,7 +135,7 @@ Ausführliche Informationen und Beispiele zur Verwendung von Resource Manager-Vo
  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Machen Sie sich mit [Protokollwarnungen in Azure](monitor-alerts-unified-log-webhook.md) vertraut.
+* Machen Sie sich mit [Webhooks in Protokollwarnungen in Azure](monitor-alerts-unified-log-webhook.md) vertraut.
 * Informieren Sie sich über die neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md).
 * Erfahren Sie mehr über [Application Insights](../application-insights/app-insights-analytics.md).
 * Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md).    

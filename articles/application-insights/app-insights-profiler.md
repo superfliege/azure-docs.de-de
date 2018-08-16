@@ -11,14 +11,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.reviewer: cawa
-ms.date: 07/13/2018
+ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: e4712b94be94eb6d4cf363fc120b72c74f29f0a2
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057922"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521882"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
@@ -33,15 +33,15 @@ Profiler kann derzeit für ASP.NET- und ASP.NET Core-Web-Apps verwendet werden, 
 Nachdem Sie eine Web-App unabhängig davon bereitgestellt haben, ob Sie das App-Insights-SDK im Quellcode berücksichtigt haben, führen Sie folgende Schritte aus:
 
 1. Wechseln Sie zum Bereich **App Services** im Azure-Portal.
-2. Navigieren Sie zum Bereich **Einstellungen > Überwachung**.
+1. Navigieren Sie zum Bereich **Einstellungen > Überwachung**.
 
    ![Aktivieren von App Insights im App Services-Portal](./media/app-insights-profiler/AppInsights-AppServices.png)
 
-3. Befolgen Sie entweder die Anweisungen im Bereich zum Erstellen einer neuen Ressource, oder wählen Sie eine vorhandene App Insights-Ressource zum Überwachen Ihrer Webs-App aus. Übernehmen Sie alle Standardoptionen. **Diagnose auf Codeebene** ist standardmäßig eingeschaltet und aktiviert Profiler.
+1. Befolgen Sie entweder die Anweisungen im Bereich zum Erstellen einer neuen Ressource, oder wählen Sie eine vorhandene App Insights-Ressource zum Überwachen Ihrer Webs-App aus. Übernehmen Sie alle Standardoptionen. **Diagnose auf Codeebene** ist standardmäßig eingeschaltet und aktiviert Profiler.
 
    ![Hinzufügen der App Insights-Websiteerweiterung][Enablement UI]
 
-4. Profiler ist jetzt mit der App Insights-Websiteerweiterung installiert und wurde mit einer App Services-App-Einstellung aktiviert.
+1. Profiler ist jetzt mit der App Insights-Websiteerweiterung installiert und wurde mit einer App Services-App-Einstellung aktiviert.
 
     ![App-Einstellung für Profiler][profiler-app-setting]
 
@@ -167,9 +167,12 @@ Profiler wird als fortlaufender Webauftrag in der Web-App ausgeführt. Sie könn
 * Vergewissern Sie sich, dass für Ihre Web-App mindestens Application Insights SDK 2.2 Beta aktiviert ist.
 * Vergewissern Sie sich, dass für die **APPINSIGHTS_INSTRUMENTATIONKEY**-Einstellung Ihrer Web-App der gleiche Instrumentierungsschlüssel konfiguriert ist, der auch vom Application Insights SDK verwendet wird.
 * Vergewissern Sie sich, dass Ihre Web-App unter .NET Framework 4.6 ausgeführt wird.
-* Falls Ihre Web-App eine ASP.NET Core-Anwendung ist, prüfen Sie die [erforderlichen Abhängigkeiten](#aspnetcore).
+* Wenn Ihre Web-App eine ASP.NET Core-Anwendung ist, muss sie mindestens ASP.NET Core 2.0 ausführen.
 
 Nach dem Start von Profiler folgt eine kurze Vorbereitungsphase, in der Profiler aktiv mehrere Leistungsnachverfolgungen erfasst. Danach werden Leistungsnachverfolgungen jeweils stündlich für zwei Minuten erfasst.
+
+> [!NOTE]
+> Ein Fehler im Profiler-Agent verhindert das Hochladen von Ablaufverfolgungen von Anwendungen, die unter ASP.NET Core 2.1 ausgeführt werden. Wir arbeiten an einer Lösung und werden sie bald vorstellen.
 
 ### <a name="i-was-using-azure-service-profiler-what-happened-to-it"></a>Ich habe Azure Service Profiler verwendet. Was ist damit passiert?
 
@@ -214,14 +217,14 @@ Diese Parameter löschen den Ordner, der von Application Insights Profiler verwe
 Wenn Sie Profiler konfigurieren, werden an den Einstellungen der Web-App Aktualisierungen vorgenommen. Sie können die Updates manuell anwenden, wenn dies für Ihre Umgebung erforderlich ist. Beispiel: Ihre Anwendung wird in einer Web-Apps-Umgebung für PowerApps ausgeführt.
 
 1. Öffnen Sie im **Steuerungsbereich der Web-App** die Option **Einstellungen**.
-2. Legen Sie die **.NET Framework-Version** auf **v4.6** fest.
-3. Legen Sie **Immer bereit** auf **Ein** fest.
-4. Fügen Sie die App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** hinzu, und legen Sie den Wert auf den Instrumentierungsschlüssel des SDK fest.
-5. Öffnen Sie **Erweiterte Tools**.
-6. Wählen Sie **Los** aus, um die Kudu-Website zu öffnen.
-7. Wählen Sie auf der Kudu-Website **Site extensions** (Websiteerweiterungen) aus.
-8. Installieren Sie **Application Insights** aus dem Katalog der Azure-Web-Apps.
-9. Starten Sie die Web-App neu.
+1. Legen Sie die **.NET Framework-Version** auf **v4.6** fest.
+1. Legen Sie **Immer bereit** auf **Ein** fest.
+1. Fügen Sie die App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** hinzu, und legen Sie den Wert auf den Instrumentierungsschlüssel des SDK fest.
+1. Öffnen Sie **Erweiterte Tools**.
+1. Wählen Sie **Los** aus, um die Kudu-Website zu öffnen.
+1. Wählen Sie auf der Kudu-Website **Site extensions** (Websiteerweiterungen) aus.
+1. Installieren Sie **Application Insights** aus dem Katalog der Azure-Web-Apps.
+1. Starten Sie die Web-App neu.
 
 ## <a id="profileondemand"></a> Manuelles Auslösen von Profiler
 
@@ -272,7 +275,7 @@ Möglicherweise gibt es zwei Gründe dafür, dass der Fehler angezeigt wird:
 
 1. Die bedarfsgesteuerte Profiler-Sitzung war erfolgreich, aber Application Insights hat mehr Zeit zum Verarbeiten der gesammelten Daten benötigt. Wenn die Datenverarbeitung nicht innerhalb von 15 Minuten beendet wurde, zeigt das Portal eine Timeoutmeldung an. Kurze Zeit später werden jedoch Profiler-Ablaufverfolgungen angezeigt. Wenn dies geschieht, ignorieren Sie die Fehlermeldung zunächst einmal. Wir arbeiten mit Hochdruck an der Lösung dieses Problems
 
-2. Ihre Web-App verfügt über eine ältere Version des Profiler-Agent, der nicht über das On-Demand-Feature verfügt. Wenn Sie das Application Insights-Profil bereits aktiviert haben, ist es wahrscheinlich, dass Sie Ihren Profiler-Agent aktualisieren müssen, um das On-Demand-Feature zu verwenden.
+1. Ihre Web-App verfügt über eine ältere Version des Profiler-Agent, der nicht über das On-Demand-Feature verfügt. Wenn Sie das Application Insights-Profil bereits aktiviert haben, ist es wahrscheinlich, dass Sie Ihren Profiler-Agent aktualisieren müssen, um das On-Demand-Feature zu verwenden.
   
 So überprüfen und installieren Sie den neuesten Profiler:
 
@@ -281,25 +284,25 @@ So überprüfen und installieren Sie den neuesten Profiler:
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0 Wenn nicht alle Einstellungen festgelegt werden, wechseln Sie zum Application Insights-Aktivierungsbereich, um die neueste Websiteerweiterung zu installieren.
 
-2. Wechseln Sie zum Application Insights-Bereich im App Services-Portal.
+1. Wechseln Sie zum Application Insights-Bereich im App Services-Portal.
 
     ![Aktivieren von Application Insights im App Services-Portal][enable-app-insights]
 
-3. Wenn auf der folgenden Seite eine Schaltfläche „Aktualisieren“ angezeigt wird, klicken Sie darauf, um die Application Insights-Websiteerweiterung zu aktualisieren. Anschließend wird der neueste Profiler-Agent installiert.
+1. Wenn auf der folgenden Seite eine Schaltfläche „Aktualisieren“ angezeigt wird, klicken Sie darauf, um die Application Insights-Websiteerweiterung zu aktualisieren. Anschließend wird der neueste Profiler-Agent installiert.
 ![Websiteerweiterung aktualisieren][update-site-extension]
 
-4. Klicken Sie auf **Ändern**, um sicherzustellen, dass Profiler aktiviert ist, und anschließend auf **OK**, um die Änderungen zu speichern.
+1. Klicken Sie auf **Ändern**, um sicherzustellen, dass Profiler aktiviert ist, und anschließend auf **OK**, um die Änderungen zu speichern.
 
     ![Ändern und Speichern von App Insights][change-and-save-appinsights]
 
-5. Kehren Sie zurück zur Registerkarte **App-Einstellungen** Registerkarte für den App Service, um zu überprüfen, ob die folgenden Elemente der App-Einstellungen festgelegt sind:
+1. Kehren Sie zurück zur Registerkarte **App-Einstellungen** Registerkarte für den App Service, um zu überprüfen, ob die folgenden Elemente der App-Einstellungen festgelegt sind:
     * **APPINSIGHTS_INSTRUMENTATIONKEY**: Ersetzen Sie den Wert durch den ordnungsgemäßen Instrumentierungsschlüssel für Application Insights.
     * **APPINSIGHTS_PORTALINFO**: ASP.NET
     * **APPINSIGHTS_PROFILERFEATURE_VERSION**: 1.0.0
 
     ![App-Einstellungen für Profiler][app-settings-for-profiler]
 
-6. Aktivieren Sie optional die Erweiterungsversion, und stellen Sie sicher, dass kein Update verfügbar ist.
+1. Aktivieren Sie optional die Erweiterungsversion, und stellen Sie sicher, dass kein Update verfügbar ist.
 
     ![Auf Erweiterungsupdate prüfen][check-for-extension-update]
 

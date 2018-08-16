@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 05/21/2018
+ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 524a587c4547808162b36ff9aa6c08b362465b0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651204"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480953"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Einführung in das StorSimple Virtual Array
 
@@ -76,8 +76,8 @@ In der folgenden Tabelle finden Sie eine Übersicht über unterstützte StorSimp
 
 |Szenario     |Workload     |Unterstützt      |Einschränkungen               |
 |-------------|-------------|---------------|---------------------------|
-|ROBO  |Dateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
-|Cloudarchivierung  |Archivdateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
+|Remotebüro/Zweigniederlassung (ROBO)  |Dateifreigabe     |JA      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
+|Cloudarchivierung  |Archivdateifreigabe     |JA      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
 
 Das StorSimple Virtual Array eignet sich am besten für selten genutzte Daten. Zur Verbesserung der Leistung verfügt das virtuelle Array zwar über einen lokalen Cache, Benutzer sollten jedoch davon ausgehen, dass das Gerät Dateien auf der niedrigsten Speicherstufe (der Cloud) bereitstellt. Jedes virtuelle Array kann mit einer Geschwindigkeit von etwa 100 Mbit/s in Azure-Speicher schreiben bzw. daraus lesen. Diese Verbindung wird für alle an das Gerät gerichteten Anforderungen genutzt und kann sich als Engpass erweisen, wie im folgenden Diagramm zu sehen:
 

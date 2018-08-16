@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2018
+ms.date: 08/01/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 24bda501f88d4f96fb558eeb6b21e437edd6d862
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325386"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522180"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -57,9 +57,12 @@ Aktivieren Sie nahtloses SSO über [Azure AD Connect](active-directory-aadconnec
 
 Wenn Sie Azure AD Connect neu installieren, wählen Sie den [benutzerdefinierten Installationspfad](active-directory-aadconnect-get-started-custom.md) aus. Aktivieren Sie auf der Seite **Benutzeranmeldung** die Option **Einmaliges Anmelden aktivieren**.
 
+>[!NOTE]
+> Die Option steht nur bei den Anmeldemethoden **Kennworthash-Synchronisierung** oder **Passthrough-Authentifizierung** zur Auswahl.
+
 ![Azure AD Connect: Benutzeranmeldung](./media/active-directory-aadconnect-sso/sso8.png)
 
-Wenn Sie bereits eine Installation von Azure AD Connect haben, wählen Sie in Azure AD Connect die Seite **Benutzeranmeldung ändern**, und klicken Sie auf **Weiter**.
+Wenn Sie bereits eine Installation von Azure AD Connect haben, wählen Sie in Azure AD Connect die Seite **Benutzeranmeldung ändern**, und klicken Sie auf **Weiter**. Bei Verwendung von Azure AD Connect-Versionen ab 1.1.880.0 wird die Option **Einmaliges Anmelden aktivieren** standardmäßig ausgewählt. Wenn Sie ältere Versionen von Azure AD Connect verwenden, wählen Sie die Option **Einmaliges Anmelden aktivieren** aus.
 
 ![Azure AD Connect: Benutzeranmeldung ändern](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 

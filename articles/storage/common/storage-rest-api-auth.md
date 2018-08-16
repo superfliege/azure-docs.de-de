@@ -3,17 +3,17 @@ title: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließli
 description: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschließlich Authentifizierung)
 services: storage
 author: tamram
-manager: twooley
 ms.service: storage
 ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: tamram
-ms.openlocfilehash: 6009ebd18eb089b21c98d6f7d9f49044a8d96098
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: common
+ms.openlocfilehash: 78e2620ba6e5e29a1f1ac9719b709d5a2f468122
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650450"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529310"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
@@ -50,23 +50,23 @@ REST steht für *Representational State Transfer*. Eine ausführliche Definition
 
 REST ist im Wesentlichen eine Architektur, die Sie nutzen können, wenn Sie APIs aufrufen oder APIs für das Aufrufen zur Verfügung stellen. Dies ist unabhängig davon, was auf beiden Seiten passiert und welche andere Software verwendet wird, wenn die REST-Aufrufe gesendet oder empfangen werden. Sie können eine Anwendung schreiben, die auf einem Mac-, Windows- oder Linux-Computer, Android-Smartphone oder -Tablet, iPhone, iPod oder einer Website ausgeführt wird, und für alle Plattformen die gleiche REST-API verwenden. Daten können in ein- oder ausgehender Richtung übergeben werden, wenn die REST-API aufgerufen wird. Für die REST-API spielt es keine Rolle, von welcher Plattform aus sie aufgerufen wird. Wichtig sind die in der Anforderung übergebenen Informationen und die in der Antwort bereitgestellten Daten.
 
-Es ist nützlich, wenn Sie sich mit REST auskennen. Das Azure-Produktteam veröffentlicht ständig neue Features. Häufig kann auf die neuen Features über die REST-Schnittstelle zugegriffen werden, aber sie sind noch nicht in **allen** Speicherclientbibliotheken oder auf der Benutzeroberfläche (z.B. im Azure-Portal) verfügbar. Wenn Sie immer die aktuellsten und besten Funktionen nutzen möchten, ist das Erlernen von REST eine Voraussetzung dafür. Falls Sie Ihre eigene Bibliothek schreiben möchten, um mit Azure Storage zu interagieren, oder wenn Sie per Programmiersprache ohne SDK oder Speicherclientbibliothek auf Azure Storage zugreifen möchten, können Sie die REST-API verwenden.
+Es ist nützlich, wenn Sie sich mit REST auskennen. Das Azure-Produktteam veröffentlicht ständig neue Features. Häufig kann auf die neuen Features über die REST-Schnittstelle zugegriffen werden, aber diese sind noch nicht in **allen** Speicherclientbibliotheken oder auf der Benutzeroberfläche (z.B. im Azure-Portal) verfügbar. Wenn Sie immer die aktuellsten und besten Funktionen nutzen möchten, ist das Erlernen von REST eine Voraussetzung dafür. Falls Sie Ihre eigene Bibliothek schreiben möchten, um mit Azure Storage zu interagieren, oder wenn Sie per Programmiersprache ohne SDK oder Speicherclientbibliothek auf Azure Storage zugreifen möchten, können Sie die REST-API verwenden.
 
 ## <a name="about-the-sample-application"></a>Infos zur Beispielanwendung
 
 Die Beispielanwendung listet die Container in einem Speicherkonto auf. Wenn Sie verstanden haben, wie die Informationen in der REST-API-Dokumentation mit Ihrem tatsächlichen Code korrelieren, sind andere REST-Aufrufe einfacher nachzuvollziehen. 
 
-Wenn Sie sich die [Blob-Dienst-REST-API](/rest/api/storageservices/fileservices/Blob-Service-REST-API) ansehen, werden alle Vorgänge angezeigt, die Sie für Blobspeicher durchführen können. Die Speicherclientbibliotheken dienen als Wrapper für die REST-APIs. Sie erleichtern Ihnen das Zugreifen auf den Speicher, ohne dass die REST-APIs direkt verwendet werden müssen. Wie oben erwähnt, kann es vorkommen, dass Sie anstelle einer Speicherclientbibliothek die REST-API nutzen möchten.
+Wenn Sie sich die [Blob-Dienst-REST-API](/rest/api/storageservices/Blob-Service-REST-API) ansehen, werden alle Vorgänge angezeigt, die Sie für Blobspeicher durchführen können. Die Speicherclientbibliotheken dienen als Wrapper für die REST-APIs. Sie erleichtern Ihnen das Zugreifen auf den Speicher, ohne dass die REST-APIs direkt verwendet werden müssen. Wie oben erwähnt, kann es vorkommen, dass Sie anstelle einer Speicherclientbibliothek die REST-API nutzen möchten.
 
 ## <a name="rest-api-reference-list-containers-api"></a>REST-API-Referenz: API zum Auflisten von Containern
 
-Sehen Sie sich in der REST-API-Referenz die Seite zum [ListContainers](/rest/api/storageservices/fileservices/List-Containers2)-Vorgang an, damit Sie verstehen, wo einige Felder der Anforderung und Antwort im nächsten Abschnitt mit dem Code herkommen.
+Sehen Sie sich in der REST-API-Referenz die Seite zum [ListContainers](/rest/api/storageservices/List-Containers2)-Vorgang an, damit Sie verstehen, wo einige Felder der Anforderung und Antwort im nächsten Abschnitt mit dem Code herkommen.
 
 **Anforderungsmethode**: GET. Dieses Verb ist die HTTP-Methode, die Sie als Eigenschaft des Anforderungsobjekts angeben. Andere Werte für dieses Verb sind HEAD, PUT und DELETE – je nach aufgerufener API.
 
 **Anforderungs-URI:** https://myaccount.blob.core.windows.net/?comp=list Dieser URI wird aus dem Blob Storage-Kontoendpunkt `http://myaccount.blob.core.windows.net` und der Ressourcenzeichenfolge `/?comp=list` erstellt.
 
-[URI-Parameter](/rest/api/storageservices/fileservices/List-Containers2#uri-parameters): Es sind zusätzliche Abfrageparameter vorhanden, die Sie beim Aufrufen von ListContainers verwenden können. Zwei dieser Parameter sind *timeout* für den Aufruf (in Sekunden) und *prefix* für die Filterung.
+[URI-Parameter](/rest/api/storageservices/List-Containers2#uri-parameters): Es sind zusätzliche Abfrageparameter vorhanden, die Sie beim Aufrufen von ListContainers verwenden können. Zwei dieser Parameter sind *timeout* für den Aufruf (in Sekunden) und *prefix* für die Filterung.
 
 Ein weiterer hilfreicher Parameter ist *maxresults:*. Wenn mehr Container als unter diesem Wert angegeben verfügbar sind, enthält der Antworttext ein *NextMarker*-Element, mit dem der nächste Container angegeben wird, der bei der nächsten Anforderung zurückgegeben wird. Zur Verwendung dieses Features geben Sie den Wert von *NextMarker* als Parameter *marker* im URI an, wenn Sie die nächste Anforderung senden. Bei Verwendung dieses Features ist dies analog zum Blättern durch die Ergebnisse. 
 
@@ -76,15 +76,15 @@ Falls Sie zusätzliche Parameter verwenden möchten, können Sie sie an die Ress
 /?comp=list&timeout=60&maxresults=100
 ```
 
-[Anforderungsheader](/rest/api/storageservices/fileservices/List-Containers2#request-headers)**:** In diesem Abschnitt sind die erforderlichen und optionalen Anforderungsheader aufgeführt. Drei Header sind erforderlich: ein *Authorization*-Header, *x-ms-date* (enthält die UTC-Zeit für die Anforderung) und *x-ms-version* (gibt die Version der zu verwendenden REST-API an). Das Einfügen von *x-ms-client-request-id* in die Header ist optional. Sie können den Wert für dieses Feld beliebig festlegen. Er wird in die Speicheranalyseprotokolle geschrieben, wenn die Protokollierung aktiviert ist.
+[Anforderungsheader](/rest/api/storageservices/List-Containers2#request-headers)**:** In diesem Abschnitt sind die erforderlichen und optionalen Anforderungsheader aufgeführt. Drei Header sind erforderlich: ein *Authorization*-Header, *x-ms-date* (enthält die UTC-Zeit für die Anforderung) und *x-ms-version* (gibt die Version der zu verwendenden REST-API an). Das Einfügen von *x-ms-client-request-id* in die Header ist optional. Sie können den Wert für dieses Feld beliebig festlegen. Er wird in die Speicheranalyseprotokolle geschrieben, wenn die Protokollierung aktiviert ist.
 
-[Anforderungstext](/rest/api/storageservices/fileservices/List-Containers2#request-body)**:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) beschrieben.
+[Anforderungstext](/rest/api/storageservices/List-Containers2#request-body)**:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) beschrieben.
 
-[Antwortstatuscode](/rest/api/storageservices/fileservices/List-Containers2#status-code)**:** Enthält Informationen zu allen Statuscodes, die Sie kennen müssen. In diesem Beispiel bedeutet der HTTP-Statuscode 200, dass alles in Ordnung ist. Eine vollständige Liste mit HTTP-Statuscodes finden Sie unter [Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (Statuscodedefinitionen). Informationen zu spezifischen Fehlercodes der Storage-REST-APIs finden Sie unter [Bekannte REST API-Fehlercodes](/rest/api/storageservices/common-rest-api-error-codes).
+[Antwortstatuscode](/rest/api/storageservices/List-Containers2#status-code)**:** Enthält Informationen zu allen Statuscodes, die Sie kennen müssen. In diesem Beispiel bedeutet der HTTP-Statuscode 200, dass alles in Ordnung ist. Eine vollständige Liste mit HTTP-Statuscodes finden Sie unter [Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (Statuscodedefinitionen). Informationen zu spezifischen Fehlercodes der Storage-REST-APIs finden Sie unter [Bekannte REST API-Fehlercodes](/rest/api/storageservices/common-rest-api-error-codes).
 
-[Antwortheader](/rest/api/storageservices/fileservices/List-Containers2#response-headers)**:** Hierzu gehören *Content Type*, *x-ms-request-id* (übergebene Anforderungs-ID, falls zutreffend), *x-ms-version* (gibt die Version des verwendeten Blob-Diensts an) und *Date* (UTC-Zeitpunkt der Anforderung).
+[Antwortheader](/rest/api/storageservices/List-Containers2#response-headers)**:** Hierzu gehören *Content Type*, *x-ms-request-id* (übergebene Anforderungs-ID, falls zutreffend), *x-ms-version* (gibt die Version des verwendeten Blob-Diensts an) und *Date* (UTC-Zeitpunkt der Anforderung).
 
-[Antworttext](/rest/api/storageservices/fileservices/List-Containers2#response-body): Dieses Feld ist eine XML-Struktur, über die die angeforderten Daten bereitgestellt werden. In diesem Beispiel umfasst die Antwort eine Liste mit Containern und ihren Eigenschaften.
+[Antworttext](/rest/api/storageservices/List-Containers2#response-body): Dieses Feld ist eine XML-Struktur, über die die angeforderten Daten bereitgestellt werden. In diesem Beispiel umfasst die Antwort eine Liste mit Containern und ihren Eigenschaften.
 
 ## <a name="creating-the-rest-request"></a>Erstellen der REST-Anforderung
 
@@ -102,7 +102,7 @@ Navigieren Sie zum Erstellen der Anforderung, bei der es sich um ein HttpRequest
 Sie benötigen diese grundlegenden Informationen: 
 
 *  Für ListContainers wird `GET` als **method** (Methode) verwendet. Dieser Wert wird beim Instanziieren der Anforderung festgelegt. 
-*  Die **resource** (Ressource) ist der Abfrageteil des URI, mit dem angegeben wird, welche API aufgerufen wird. Der Wert lautet `/?comp=list`. Wie bereits erwähnt, befindet sich die Ressource auf der Seite der Referenzdokumentation, die die Informationen zur [ListContainers-API](/rest/api/storageservices/fileservices/List-Containers2) enthält.
+*  Die **resource** (Ressource) ist der Abfrageteil des URI, mit dem angegeben wird, welche API aufgerufen wird. Der Wert lautet `/?comp=list`. Wie bereits erwähnt, befindet sich die Ressource auf der Seite der Referenzdokumentation, die die Informationen zur [ListContainers-API](/rest/api/storageservices/List-Containers2) enthält.
 *  Der URI wird erstellt, indem der Blob-Dienst-Endpunkt für dieses Speicherkonto erstellt und die Ressource verkettet wird. Der Wert für **request URI** (Anforderungs-URI) ist dann `http://contosorest.blob.core.windows.net/?comp=list`.
 *  Für ListContainers ist **requestBody** null, und es sind keine zusätzlichen **Header** vorhanden.
 
@@ -152,7 +152,7 @@ An diesem Punkt enthält `httpRequestMessage` die vollständige REST-Anforderung
 
 ## <a name="call-the-rest-api-with-the-request"></a>Aufrufen der REST-API mit der Anforderung
 
-Da Sie jetzt über die Anforderung verfügen, können Sie SendAsync zum Senden der REST-Anforderung aufrufen. SendAsync ruft die API auf und erhält die Antwort zurück. Sehen Sie sich den StatusCode (200 ist „OK“) der Antwort an, und analysieren Sie anschließend die Antwort. In diesem Fall erhalten Sie eine XML-Liste mit Containern. Wir sehen uns nun den Code zum Aufrufen der GetRESTRequest-Methode für das Erstellen der Anforderung, Ausführen der Anforderung und anschließenden Prüfen der Antwort auf die Liste mit den Containern an.
+Da Sie jetzt über die Anforderung verfügen, können Sie SendAsync zum Senden der REST-Anforderung aufrufen. SendAsync ruft die API auf und erhält die Antwort zurück. Sehen Sie sich den StatusCode (200 ist „OK“) der Antwort an, und analysieren Sie anschließend die Antwort. In diesem Fall erhalten Sie eine XML-Liste mit Containern. Wir sehen uns nun den Code zum Aufrufen der GetRESTRequest-Methode für das Erstellen der Anforderung, Ausführen der Anforderung und anschließende Prüfen der Antwort auf die Liste mit den Containern an.
 
 ```csharp 
     // Send the request.
@@ -174,7 +174,7 @@ Da Sie jetzt über die Anforderung verfügen, können Sie SendAsync zum Senden d
 }
 ```
 
-Wenn Sie beim Aufrufen von SendAsync beispielsweise einen Network Sniffer wie [Fiddler](https://www.telerik.com/fiddler) ausführen, können Sie die Informationen zur Anforderung und zur Antwort anzeigen. Sehen wir uns das genauer an. Der Name des Speicherkontos lautet *contosorest*.
+Wenn Sie beim Aufrufen von SendAsync beispielsweise einen Network Sniffer wie [Fiddler](https://www.telerik.com/fiddler) ausführen, können Sie die Informationen zur Anforderung und zur Antwort anzeigen. Wir sehen uns dies nun genauer an. Der Name des Speicherkontos lautet *contosorest*.
 
 **Anforderung:**
 
@@ -268,7 +268,7 @@ Nachdem Sie nun mit dem Erstellen der Anforderung, dem Aufrufen des Diensts und 
 > [!TIP]
 > Azure Storage unterstützt jetzt die Integration von Azure Active Directory (Azure AD) für die Blob- und Warteschlangendienste (Vorschau). Azure AD bietet eine erheblich einfachere Benutzeroberfläche für das Autorisieren einer Anforderung an Azure Storage. Weitere Informationen zur Verwendung von Azure AD zum Autorisieren von REST-Vorgängen finden Sie unter [Authenticate with Azure Active Directory (Preview)](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory) (Authentifizieren mit Azure Active Directory (Vorschau)). Eine Übersicht über die Azure AD-Integration in Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mithilfe von Azure Active Directory (Vorschau)](storage-auth-aad.md).
 
-Es gibt einen Artikel, in dem konzeptuell (ohne Code) beschrieben wird, wie Sie die [Authentifizierung für Azure Storage-Dienste](/rest/api/storageservices/fileservices/Authentication-for-the-Azure-Storage-Services) durchführen.
+Es gibt einen Artikel, in dem konzeptuell (ohne Code) beschrieben wird, wie Sie die [Authentifizierung für Azure Storage-Dienste](/rest/api/storageservices/Authorization-for-the-Azure-Storage-Services) durchführen.
 Wir fassen hier die wesentlichen Punkte des Artikels zusammen und zeigen den Code.
 
 Verwenden Sie zuerst eine Authentifizierung mit gemeinsam verwendetem Schlüssel. Der Autorisierungsheader hat das folgende Format:
@@ -431,7 +431,7 @@ Dies sind alle Informationen, die Sie – zusätzlich zum Code – benötigen, u
 
 Wir sehen uns nun an, wie Sie den Code zum Aufrufen von ListBlobs für den Container *container-1* ändern. Er ist nahezu identisch mit dem Code zum Auflisten von Containern. Die einzigen Unterschiede sind der URI und die Vorgehensweise beim Analysieren der Antwort. 
 
-Wenn Sie sich die Referenzdokumentation für [ListBlobs](/rest/api/storageservices/fileservices/List-Blobs) ansehen, sehen Sie, dass die Methode *GET* ist und der RequestURI wie folgt lautet:
+Wenn Sie sich die Referenzdokumentation für [ListBlobs](/rest/api/storageservices/List-Blobs) ansehen, sehen Sie, dass die Methode *GET* ist und der RequestURI wie folgt lautet:
 
 ```
 https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list

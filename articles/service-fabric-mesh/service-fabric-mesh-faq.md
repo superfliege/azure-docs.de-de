@@ -9,12 +9,12 @@ ms.date: 06/25/2018
 ms.topic: troubleshooting
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 07c0347793f6541a3e047f3f357d0d1b05dc3bca
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: d0ae7fbb22f6d98662f83968158182d447a75394
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136180"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39501966"
 ---
 # <a name="commonly-asked-service-fabric-mesh-questions"></a>Häufig gestellte Fragen zu Service Fabric Mesh
 Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der es Entwicklern ermöglicht, Microservicesanwendungen zu implementieren, ohne virtuelle Computer, Speicher oder Netzwerke verwalten zu müssen. Dieser Artikel bietet Antworten auf häufig gestellte Fragen.
@@ -83,7 +83,7 @@ Es gibt ein bekanntes Problem, aufgrund dessen Sie auf Dienste in Ihrem lokalen 
 
 Informationen zu anderen bekannten DNS-Problemen bei der Ausführung eines Service Fabric-Entwicklungsclusters unter Windows 10 finden Sie hier: [Debuggen von Windows-Containern](/azure/service-fabric/service-fabric-how-to-debug-windows-containers).
 
-**Bei Verwenden des CLI-Moduls erhalte ich diese Fehlermeldung: _ImportError: cannot import name 'sdk_no_wait'**
+**Beim Verwenden des CLI-Moduls erhalte ich diese Fehlermeldung: _ImportError: cannot import name 'sdk_no_wait'**
 
 Wenn Sie eine ältere CLI-Version als 2.0.30 verwenden, können Sie diese Fehlermeldung erhalten.
 

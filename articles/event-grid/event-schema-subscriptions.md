@@ -6,20 +6,28 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/19/2018
+ms.date: 08/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 3303050311a30473bb973ac4f49bbeb707c16a33
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 6eb5cd9a086522bfe5125189f87a2498dda0ef7e
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173808"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493573"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid-Ereignisschema für Abonnements
 
 In diesem Artikel werden die Eigenschaften und das Schema für Azure-Abonnementereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
 Azure-Abonnements und Ressourcengruppen geben die gleichen Ereignistypen aus. Die Ereignistypen beziehen sich auf Änderungen in den Ressourcen. Der Hauptunterschied besteht darin, dass Ressourcengruppen Ereignisse für Ressourcen innerhalb der Ressourcengruppe und Azure-Abonnements Ereignisse für Ressourcen im gesamten Abonnement ausgeben.
+
+Ressourcenereignisse werden für PUT-, PATCH- und DELETE-Vorgänge erstellt, die an `management.azure.com` gesendet werden. Bei POST- und GET-Vorgängen werden keine Ereignisse erstellt. Bei Vorgängen, die an die Datenebene gesendet werden (z.B. `myaccount.blob.core.windows.net`), werden keine Ereignisse erstellt.
+
+Wenn Sie Ereignisse für ein Azure-Abonnement abonnieren, erhält Ihr Endpunkt alle Ereignisse für dieses Abonnement. Hierzu können Ereignisse gehören, die für Ihre Zwecke angezeigt werden sollen, z.B. zur Aktualisierung eines virtuellen Computers. Es können aber auch Ereignisse vorhanden sein, die für Sie ggf. weniger wichtig sind, z.B. das Schreiben eines neuen Eintrags im Bereitstellungsverlauf. Sie können alle Ereignisse an Ihrem Endpunkt empfangen und Code schreiben, mit dem die gewünschten Ereignisse verarbeitet werden. Beim Erstellen des Ereignisabonnements können Sie aber auch einen Filter festlegen.
+
+Zur programmgesteuerten Verarbeitung von Ereignissen können Sie Ereignisse sortieren, indem Sie sich den Wert für `operationName` ansehen. Beispielsweise werden für Ihren Endpunkt ggf. nur Ereignisse für Vorgänge verarbeitet, die `Microsoft.Compute/virtualMachines/write` oder `Microsoft.Storage/storageAccounts/write` entsprechen.
+
+Der Betreff des Ereignisses ist die Ressourcen-ID der Ressource, die das Ziel des Vorgangs ist. Geben Sie zum Filtern von Ereignissen für eine Ressource beim Erstellen des Ereignisabonnements die Ressourcen-ID an. Informationen zu Beispielskripts finden Sie unter [Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit PowerShell](scripts/event-grid-powershell-resource-group-filter.md) oder [Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit der Azure CLI](scripts/event-grid-cli-resource-group-filter.md). Verwenden Sie zum Filtern nach einem Ressourcentyp einen Wert im folgenden Format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
 ## <a name="available-event-types"></a>Verfügbare Ereignistypen
 
@@ -36,7 +44,7 @@ Azure-Abonnements geben Verwaltungsereignisse von Azure Resource Manager aus, be
 
 ## <a name="example-event"></a>Beispielereignis
 
-Das folgende Beispiel zeigt das Schema eines Ressourcenerstellungsereignisses: 
+Im folgenden Beispiel wird das Schema für das Ereignis **ResourceWriteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceWriteFailure** und **ResourceWriteCancel** verwendet, nur mit anderen Werten für `eventType`.
 
 ```json
 [{
@@ -96,7 +104,7 @@ Das folgende Beispiel zeigt das Schema eines Ressourcenerstellungsereignisses:
 }]
 ```
 
-Das Schema für ein Ressourcenlöschungsereignis sieht ähnlich aus:
+Im folgenden Beispiel wird das Schema für das Ereignis **ResourceDeleteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceDeleteFailure** und **ResourceDeleteCancel** verwendet, nur mit anderen Werten für `eventType`.
 
 ```json
 [{
@@ -184,7 +192,7 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | authorization | object | Die angeforderte Autorisierung für den Vorgang. |
 | claims | object | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
-| httpRequest | object | Die Details des Vorgangs. |
+| httpRequest | object | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
 | resourceProvider | Zeichenfolge | Der Ressourcenanbieter, der den Vorgang ausführt. |
 | resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
 | operationName | Zeichenfolge | Der Vorgang, der ausgeführt wurde. |

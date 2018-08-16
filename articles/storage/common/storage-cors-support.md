@@ -2,29 +2,24 @@
 title: Unterstützung von Cross-Origin Resource Sharing (CORS) | Microsoft Docs
 description: Erfahren Sie, wie die CORS-Unterstützung für die Microsoft Azure Storage-Dienste aktiviert werden.
 services: storage
-documentationcenter: .net
 author: cbrooksmsft
-manager: carmonm
-editor: tysonn
-ms.assetid: a0229595-5b64-4898-b8d6-fa2625ea6887
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
-ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.component: common
+ms.openlocfilehash: fd5df50128885f6a96e68c8ad46204bc21d80264
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23059845"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529708"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
 Ab Version 2013-08-15 unterstützen die Azure Storage-Dienste Cross-Origin Resource Sharing (CORS) für die Blob-, Tabellen-, Warteschlangen- und Dateidienste. CORS ist eine HTTP-Funktion, die einer Webanwendung in einer Domäne den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Webbrowser implementieren eine Sicherheitseinschränkung, die als [Same-Origin-Richtlinie](http://www.w3.org/Security/wiki/Same_Origin_Policy) (Richtlinie desselben Ursprungs) bezeichnet wird und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet eine sichere Methode, einer Domäne (der Ursprungsdomäne) das Aufrufen von APIs in einer anderen Domäne zu ermöglichen. Informationen zu CORS finden Sie in der [CORS-Spezifikation](http://www.w3.org/TR/cors/).
 
-Sie können CORS-Regeln einzeln für jeden der Speicherdienste festlegen, indem Sie [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx), [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx) und [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) aufrufen. Nachdem Sie die CORS-Regeln für den Dienst festgelegt haben, wird durch Auswertung einer ordnungsgemäß authentifizierten Anforderung, die von einer anderen Domäne an den Dienst gesendet wurde, ermittelt, ob die Anforderung gemäß den von Ihnen festgelegten Regeln zulässig ist.
+Sie können CORS-Regeln einzeln für jeden der Speicherdienste festlegen, indem Sie [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx), [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx) und [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) aufrufen. Nachdem Sie die CORS-Regeln für den Dienst festgelegt haben, wird durch Auswertung einer korrekt autorisierten Anforderung, die von einer anderen Domäne an den Dienst gesendet wurde, ermittelt, ob die Anforderung gemäß den von Ihnen festgelegten Regeln zulässig ist.
 
 > [!NOTE]
 > Beachten Sie, dass CORS kein Authentifizierungsmechanismus ist. Jede Anforderung, die bei Aktivierung von CORS für eine Speicherressource ausgeführt wird, muss entweder über eine geeignete Authentifizierungssignatur verfügen oder für eine öffentliche Ressource ausgeführt werden.
@@ -171,11 +166,11 @@ Der folgenden Tabelle können Sie entnehmen, wie Azure Storage in den oben besch
 | **Origin-Header für Anforderung vorhanden** |**CORS-Regel(n) für den Dienst angegeben** |**Abgleichsregel vorhanden, die alle Ursprungsdomänen zulässt (*)** |**Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** |**Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** |**Antwort enthält „Access-Control-Allowed-Origin“: "*"** |**Antwort enthält Access-Control-Exposed-Header** |
 | Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
 | Nein  |Ja |Nein  |Nein  |Ja |Nein  |Nein  |
-| Nein  |Ja |Ja |Nein  |Nein  |Ja |Ja |
-| Ja |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
-| Ja |Ja |Nein |Ja |Ja |Nein |Ja |
-| Ja |Ja |Nein  |Nein  |Ja |Nein  |Nein  |
-| Ja |Ja |Ja |Nein  |Nein  |Ja |Ja |
+| Nein  |Ja |JA |Nein  |Nein  |Ja |Ja |
+| JA |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
+| Ja |JA |Nein |Ja |JA |Nein |Ja |
+| Ja |JA |Nein  |Nein  |Ja |Nein  |Nein  |
+| Ja |Ja |JA |Nein  |Nein  |Ja |JA |
 
 ## <a name="billing-for-cors-requests"></a>Abrechnung von CORS-Anforderungen
 Erfolgreiche Preflightanforderungen werden in Rechnung gestellt, wenn Sie CORS für einen der Speicherdienste in Ihrem Konto aktiviert haben (durch Aufrufen von [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx), [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx) oder [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)). Um die Gebühren zu minimieren, sollten Sie das **MaxAgeInSeconds** -Element in den CORS-Regeln auf einen hohen Wert festlegen, sodass die Anforderung vom Benutzer-Agent zwischengespeichert wird.

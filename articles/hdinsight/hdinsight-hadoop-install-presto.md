@@ -1,23 +1,20 @@
 ---
-title: Installieren von Presto in Azure HDInsight-Linux-Clustern | Microsoft-Dokumentation
+title: Installieren von Presto in Azure HDInsight-Linux-Clustern
 description: Erfahren Sie, wie Sie Presto und Airpal auf Linux-basierten HDInsight Hadoop-Clustern mit Skriptaktionen installieren.
 services: hdinsight
-documentationcenter: ''
-author: nitinme
-manager: jhubbard
-editor: cgronlun
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 32b7925b7414f00dfdd7d5c8a45b3601bf58942e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.author: jasonh
+ms.openlocfilehash: ea777b13348b84aaeb7cb7628a4d0aac9f5705bd
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401813"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39591420"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Installieren und Verwenden von Presto in HDInsight Hadoop-Clustern
 
@@ -43,7 +40,7 @@ Dieser Abschnitt enthält Anweisungen zur Verwendung des Beispielskripts währen
 
 1. Beginnen Sie die Bereitstellung eines Clusters anhand der Schritte in [Bereitstellen Linux-basierter HDInsight-Cluster](hdinsight-hadoop-create-linux-clusters-portal.md). Erstellen Sie den Cluster unbedingt mit dem **benutzerdefinierten** Clustererstellungsablauf. Der Cluster muss die folgenden Anforderungen erfüllen.
 
-    * Er muss ein Hadoop-Cluster mit der HDInsight-Version 3.5 sein.
+    * Er muss ein Hadoop-Cluster mit der HDInsight-Version 3.6 sein.
 
     * Er muss Azure Storage als Datenspeicher verwenden. Die Verwendung von Presto in einem Cluster, der Azure Data Lake Store als Speicheroption verwendet, wird noch nicht unterstützt. 
 

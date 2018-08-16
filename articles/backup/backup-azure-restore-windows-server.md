@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 8/6/2018
 ms.author: saurse
-ms.openlocfilehash: a1c9df57ddebbb1cf471f705acfbd6651c151d7b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247277"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576184"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Wiederherstellen von Dateien auf einem Windows-Server- oder Windows-Clientcomputer mit dem Resource Manager-Bereitstellungsmodell
 
@@ -51,6 +51,8 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
 4. Wählen Sie im Bereich **Wiederherstellungsmodus auswählen** die Option **Einzelne Dateien und Ordner**, und klicken Sie auf **Weiter**.
 
     ![Dateien durchsuchen](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
+> [!IMPORTANT]
+> Für die Option zum Wiederherstellen von *einzelnen Dateien und Ordnern* wird .NET Framework 4.5.2 oder höher benötigt. Falls die Option *Individual Files and Folders* (Einzelne Dateien und Ordner) nicht angezeigt wird, müssen Sie .NET Framework auf Version 4.5.2 oder höher aktualisieren und es erneut versuchen.
 
 5. Wählen Sie im Bereich **Volume und Datum auswählen** das Volume aus, dass die wiederherzustellenden Dateien bzw. Ordner enthält.
 
@@ -67,7 +69,7 @@ Wenn Sie versehentlich eine Datei gelöscht haben und sie auf demselben Computer
     ![Wiederherstellungsoptionen](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. Kopieren Sie in Windows-Explorer die wiederherzustellenden Dateien bzw. Ordner, und fügen Sie sie an einem lokalen Speicherort auf dem Server oder Computer ein. Sie können die Dateien direkt vom Wiederherstellungsvolume öffnen oder streamen und überprüfen, ob die richtigen Versionen wiederhergestellt werden.
+8. Kopieren Sie in Windows-Explorer die wiederherzustellenden Dateien bzw. Ordner, und fügen Sie sie an einem lokalen Speicherort auf dem Server oder Computer ein. Sie können die Dateien direkt vom Wiederherstellungsvolume öffnen oder streamen und überprüfen, ob Sie die richtigen Versionen wiederherstellen.
 
     ![Kopieren und Einfügen von Dateien und Ordnern vom bereitgestellten Volume am lokalen Speicherort](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 

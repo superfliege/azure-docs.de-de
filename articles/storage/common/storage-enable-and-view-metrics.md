@@ -2,23 +2,19 @@
 title: Aktivieren von Speichermetriken im Azure-Portal | Microsoft Docs
 description: Aktivieren von Speichermetriken für die Blob-, Warteschlangen-, Tabellen- und Dateidienste
 services: storage
-documentationcenter: ''
 author: roygara
-manager: jeconnoc
-editor: tysonn
-ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 0caa4eff80877ad4bf8d501a276e82922b1a84c7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: common
+ms.openlocfilehash: a12f2f3775808edb2045be5a1d955280f515ff7d
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39529678"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -115,8 +111,8 @@ Eine Liste der verfügbaren Tools finden Sie unter [Azure Storage-Clienttools](s
 
 > [!NOTE]
 > Ab Version 0.8.0 des [Microsoft Azure Storage-Explorers](http://storageexplorer.com/) können Sie die Tabellen mit Analysemetriken anzeigen und herunterladen.
-> 
-> 
+>
+>
 
 Beachten Sie beim programmgesteuerten Zugriff auf die Analysetabellen, dass diese nicht angezeigt werden, wenn Sie alle Tabellen im Speicherkonto auflisten. Sie können entweder direkt nach Name darauf zugreifen oder die [CloudAnalyticsClient-API](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.analytics.cloudanalyticsclient.aspx) in der .NET-Clientbibliothek verwenden, um die Tabellennamen abzufragen.
 
@@ -148,6 +144,8 @@ In diesen minütlichen Metrikbeispieldaten verwendet der Partitionsschlüssel di
 * Der Anforderungstyp ist entweder "all", in diesem Fall handelt es sich um eine Zusammenfassungszeile, oder er identifiziert die jeweilige API, z. B. "QueryEntity" oder "UpdateEntity".
 
 Die Beispieldaten oben zeigen alle Datensätze für eine einzelne Minute (Beginn um 11:00 Uhr). Die Anzahl der QueryEntities-Anforderungen zuzüglich der Anzahl der QueryEntity-Anforderungen zuzüglich der Anzahl der UpdateEntity-Anforderungen ergibt daher den Wert 7. Dies ist die Gesamtsumme, die in der Zeile "user:All" angezeigt wird. Analog können Sie die durchschnittliche End-to-End-Latenz 104,4286 für die Zeile "user:All" ableiten, indem Sie die Berechnung ((143,8 * 5) + 3 + 9)/7 ausführen.
+
+Beachten Sie, dass **Einstellungen für Blobstundenmetriken** sowohl auf die **Blobkapazitätsmetrik** ($MetricsCapacityBlob) als auch auf **Stundenmetriken für Blobtransaktionen** ($MetricsHourPrimaryTransactionsBlob) angewendet werden. Beide werden zusammen aktiviert und deaktiviert und nutzen die gleiche Aufbewahrungsrichtlinie.
 
 ## <a name="metrics-alerts"></a>Metrikwarnungen
 Sie sollten die Einrichtung von Warnungen im [Azure-Portal](https://portal.azure.com) in Betracht ziehen, damit Sie mithilfe der Speichermetriken automatisch über wichtige Änderungen im Verhalten der Speicherdienste informiert werden. Wenn Sie ein Storage-Explorer-Tool zum Herunterladen dieser Metrikdaten in einem Trennzeichen-getrennten Format verwenden, können Sie die Daten mithilfe von Microsoft Excel analysieren. Eine Liste der verfügbaren Tools für Storage-Explorer finden Sie unter [Microsoft Azure Storage-Explorer](storage-explorers.md). Sie können Warnungen im Bereich **Warnungsregeln** konfigurieren, auf den Sie unter **Überwachung** im Speicherkontomenü zugreifen können.

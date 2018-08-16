@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 7790920b6553ba0e2738d693710bfc3a1d3b4f89
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 74fb62ffa707188779bcf827d427c61a0b9a4347
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325100"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39576337"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-core-on-windows-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C# unter .NET Core für Windows mit dem Speech SDK
 
@@ -49,13 +49,13 @@ Die Anwendung umfasst das [NuGet-Paket für das Microsoft Cognitive Services Spe
 
     ![Installieren Sie das Microsoft.CognitiveServices.Speech-NuGet-Paket](media/sdk/qs-csharp-dotnetcore-windows-03-nuget-install-0.5.0.png "Nuget-Paket installieren")
 
-1. Akzeptieren Sie die Lizenzbedingungen im angezeigten Dialogfeld.
+1. Akzeptieren Sie die angezeigte Lizenz.
 
     ![Akzeptieren der Lizenzbedingungen](media/sdk/qs-csharp-dotnetcore-windows-04-nuget-license.png "Akzeptieren der Lizenzbedingungen")
 
 ## <a name="add-the-sample-code"></a>Hinzufügen des Beispielcodes
 
-1. Öffnen Sie `Program.cs` in Ihrem Visual Studio-Projekt und ersetzen Sie den gesamten Code in der Datei durch den folgenden.
+1. Öffnen Sie `Program.cs`, und ersetzen Sie den gesamten darin enthaltenen Code wie folgt.
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnetcore-windows/helloworld/Program.cs#code)]
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4a37ac6cdf5d13556c6a3e293c19c00ad36e4495
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 7f171fa1eb8c91b55119d0308b57fe3d3e70261b
+ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364164"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39578890"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster
 
@@ -27,8 +27,7 @@ Dieser Artikel zeigt anhand von Praxisbeispielen Lösungen für mehrere weit ver
 
 ## <a name="work-with-complex-data-types-in-json-and-avro"></a>Arbeiten mit komplexen Datentypen in JSON und AVRO 
 Azure Stream Analytics unterstützt die Verarbeitung von Ereignissen in den Datenformaten CSV, JSON und Avro.
-Sowohl JSON als auch Avro können komplexe Typen enthalten, z.B. geschachtelte Objekte (Datensätze) oder Arrays. Informationen zur Verwendung dieser komplexen Datentypen finden Sie auf der [MSDN-Seite zum Arbeiten mit komplexen Datentypen unter JSON und AVRO](
-https://msdn.microsoft.com/azure/stream-analytics/reference/complex-data-types-stream-analytics).
+Sowohl JSON als auch Avro können komplexe Typen enthalten, z.B. geschachtelte Objekte (Datensätze) oder Arrays. Informationen zum Umgang mit diesen komplexen Datentypen finden Sie im Artikel zum Thema [Parsing JSON and AVRO data](stream-analytics-parsing-json.md) (Analysieren von JSON- und AVRO-Daten).
 
 
 ## <a name="query-example-convert-data-types"></a>Abfragebeispiel: Konvertieren von Datentypen

@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: cd3725ac547a1ed1fd9207dc48ba3b6227e85ef1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 27108d27ee27346e4cba44e6778faff56df70a36
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763954"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39495127"
 ---
 # <a name="sfctl-container"></a>sfctl container
 Führt containerbezogene Befehle auf einem Clusterknoten aus.
@@ -41,7 +41,7 @@ Ruft die Container-REST-API auf.
 | --application-id           [erforderlich] | Anwendungsidentität. |
 | --code-package-instance-id [erforderlich] | Instanz-ID des Codepakets, die mit „service code-package-list“ abgerufen werden kann. |
 | --code-package-name        [erforderlich] | Name des Codepakets. |
-| --container-api-uri-path   [erforderlich] | Pfad zum URI der Container-REST-API, verwenden Sie „{ID}“ statt des Namens bzw. der ID des Containers. |
+| --container-api-uri-path   [erforderlich] | Pfad zum URI der Container-REST-API: Verwenden Sie „{id}“ anstatt des Namens bzw. der ID des Containers. |
 | --node-name [erforderlich] | Der Name des Knotens. |
 | --service-manifest-name [erforderlich] | Name des Dienstmanifests. |
 | --container-api-body | HTTP-Anforderungstext für die Container-REST-API. |
@@ -55,7 +55,7 @@ Ruft die Container-REST-API auf.
 | --- | --- |
 | --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
 | --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: json, jsonc, table, tsv.  Standardwert\: json. |
+| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
 | --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
 
@@ -80,9 +80,10 @@ Ruft Containerprotokolle ab.
 | --- | --- |
 | --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
 | --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: json, jsonc, table, tsv.  Standardwert\: json. |
+| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
 | --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle

@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 0ae05456d957c6ebabe0faec7da4175618b191ef
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036767"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493671"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank 
 
@@ -51,7 +51,7 @@ Wenn Sie von außerhalb von Azure eine Verbindung herstellen, verfügen Ihre Ver
 ![Architekturübersicht](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Bei der Verwendung von Dienstendpunkten mit Azure SQL-Datenbank lautet die standardmäßige Richtlinie **Umleiten**. Darum müssen Sie zum Aktivieren der Konnektivität in Ihrem VNET ausgehenden Verkehr zu allen Azure SQL-Datenbank-IP-Adressen zulassen, nicht nur zu den Gateway-IP-Adressen. Dies kann mithilfe von NSG-Diensttags (Network Security Group, Netzwerksicherheitsgruppe) erfolgen. Wenn Sie ausgehenden Verkehr nur zu Gateway-IP-Adressen zulassen möchten, ändern Sie die Einstellung in **Proxy**.
+> Bei der Verwendung von Dienstendpunkten mit Azure SQL-Datenbank lautet die standardmäßige Richtlinie **Proxy**. Lassen Sie in der Liste unten ausgehende Verbindungen mit den IP-Adressen für das Azure SQL-Datenbank-Gateway zu, um die Konnektivität aus Ihrem VNET zu aktivieren. Beim Verwenden von Dienstendpunkten empfehlen wir Ihnen dringend, Ihre Verbindungsrichtlinie in **Umleiten** zu ändern, um die Leistung zu verbessern. Wenn Sie Ihre Verbindungsrichtlinie in **Umleiten** ändern, reicht dies nicht aus, um ausgehende Verbindungen für Ihre NSG mit den unten aufgeführten Azure SQL-Datenbank-Gateway-IPs zuzulassen. Sie müssen ausgehende Verbindungen für alle Azure SQL-Datenbank-IPs zulassen. Dies ist mithilfe von Dienst-Tags für Netzwerksicherheitsgruppen (NSGs) möglich. Weitere Informationen finden Sie unter [Dienst-Tags](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-Adressen vom Gateway von Azure SQL-Datenbank
 

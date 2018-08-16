@@ -4,7 +4,7 @@ description: Erfahren Sie, welche Sprachen für allgemeine Verfügbarkeit und we
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 ms.service: functions
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 08/02/2018
 ms.author: glenga
-ms.openlocfilehash: 00f291e903948bf43bc997816b6072186cf1f889
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 2de2ebdea41ca35e853b37ab804e516eb7f4df9f
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343082"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494447"
 ---
 # <a name="supported-languages-in-azure-functions"></a>In Azure Functions unterstützte Sprachen
 
@@ -41,13 +41,13 @@ Es sind [zwei Versionen der Azure Functions-Runtime](functions-versions.md) verf
 
 ### <a name="experimental-languages"></a>Experimentelle Sprachen
 
-Die experimentellen Sprachen in 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen. Beispielsweise ist Python langsam, da die Functions-Runtime bei jedem Funktionsaufruf *python.exe* ausführt. Und obwohl Python HTTP-Bindungen unterstützt, kann es nicht auf das Anforderungsobjekt zugreifen.
+Die experimentellen Sprachen in Version 1.x sind nicht gut skalierbar und unterstützen nicht alle Bindungen. Beispielsweise ist Python langsam, da die Functions-Runtime bei jedem Funktionsaufruf *python.exe* ausführt. Und obwohl Python HTTP-Bindungen unterstützt, kann es nicht auf das Anforderungsobjekt zugreifen.
 
-Die experimentelle Unterstützung für PowerShell ist auf Version 4.0 eingeschränkt, weil diese Version auf den virtuellen Computern installiert ist, auf denen Function-Apps ausgeführt werden. Wenn Sie PowerShell-Skripts ausführen möchten, ziehen Sie [Azure Automation](https://azure.microsoft.com/services/automation/) in Erwägung.
-
-Die 2.x-Runtime unterstützt keine experimentellen Sprachen. In 2.x fügen wir Unterstützung für eine Sprache nur hinzu, wenn sie gut skaliert und erweiterte Trigger unterstützt.
+Die experimentelle Unterstützung für PowerShell ist auf Version 5.1 eingeschränkt, weil diese Version standardmäßig auf den virtuellen Computern installiert ist, auf denen Funktions-Apps ausgeführt werden. Wenn Sie PowerShell-Skripts ausführen möchten, ziehen Sie [Azure Automation](https://azure.microsoft.com/services/automation/) in Erwägung.
 
 Wenn Sie eine der Sprachen verwenden möchten, die nur in 1.x zur Verfügung stehen, bleiben Sie bei der 1.x-Runtime. Verwenden Sie jedoch keine experimentellen Sprachen für irgendetwas, worauf Sie aufbauen, da es für sie keine offizielle Unterstützung gibt. Sie können Hilfe durch [Erstellen von GitHub-Problemen](https://github.com/Azure/azure-webjobs-sdk-script/issues) anfordern, jedoch sollten für Probleme mit experimentellen Sprachen keine Supportfälle geöffnet werden. 
+
+Für Version 2.x der Runtime werden keine experimentellen Sprachen unterstützt. Die Unterstützung für neue Sprachen wird nur hinzugefügt, wenn die Sprache in der Produktion unterstützt werden kann. 
 
 ### <a name="language-extensibility"></a>Spracherweiterbarkeit
 

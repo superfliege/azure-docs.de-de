@@ -7,14 +7,14 @@ manager: carmonm
 keywords: Sicherung und Notfallwiederherstellung; Backup-Dienst
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 33a3a1c0fd375f6ed88e13f910c46e71f216b892
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412950"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39493867"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
 In diesem Artikel werden allgemeine Fragen zu den Azure Backup-Komponenten beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Fragen zu Azure Backup können Sie durch Klicken auf **Kommentare** (rechts) stellen. Kommentare erscheinen am Ende dieses Artikels. Zum Kommentieren wird ein Livefyre-Konto benötigt. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -29,6 +29,9 @@ Ja. Pro Abonnement können für jede unterstützte Region von Azure Backup bis z
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können? <br/>
 Sie können bis zu 1000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung von MAB-Agents können Sie bis zu 50 MAB-Agents pro Tresor verwenden. Sie können 50 MAB-Server/DPM-Server bei einem Tresor registrieren.
+
+### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>Kann ich eine REST-API verwenden, um die Größe der geschützten Elemente in einem Tresor abzufragen? <br/>
+Ja. Im Artikel [Usages – List by Vaults](https://t.co/2lgIrIaF0J) (Verwendungen – Liste nach Tresoren) sind die Informationen angegeben, die aus dem Recovery Services-Tresor abgerufen werden können.
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>Wie kann ich bei der Wiederherstellung von Daten die Daten eines Servers von einem anderen Server isolieren, wenn meine Organisation über einen Tresor verfügt?<br/>
 Alle für denselben Tresor registrierten Server können die Daten wiederherstellen, die von anderen Servern *mit derselben Passphrase*gesichert wurden. Wenn Sie Server verwenden, deren Sicherungsdaten Sie von anderen Servern Ihrer Organisation isolieren möchten, sollten Sie für diese Server eine speziell dafür vorgesehene Passphrase nutzen. So können Sie beispielsweise für die Server der Personalabteilung, für die Server der Buchhaltung und für die Speicherserver jeweils eine eigene Verschlüsselungspassphrase verwenden.
@@ -57,6 +60,8 @@ Eine ausführliche Liste mit Fragen finden Sie in den [häufig gestellten Fragen
 
 Ja. Mit Azure Backup Server können Sie VMware vCenter und ESXi in Azure sichern. Informationen zur unterstützten VMware-Version finden Sie im Artikel [Azure Backup Server-Schutzmatrix](backup-mabs-protection-matrix.md). Eine ausführliche Anleitung finden Sie unter [Sichern eines VMware-Servers mit Azure Backup Server](backup-azure-backup-server-vmware.md).
 
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>Benötige ich eine separate Lizenz, um einen vollständigen lokalen VMware-/Hyper-V-Cluster für DPM oder Azure Backup Server wiederherzustellen?<br/>
+Sie benötigen für den VMware-/Hyper-V-Schutz keine separate Lizenzierung. Verwenden Sie DPM, um VMware-VMs zu schützen, wenn Sie System Center-Kunde sind. Falls Sie kein System Center-Kunde sind, können Sie Azure Backup Server (nutzungsbasierte Bezahlung) verwenden, um VMware-VMs zu schützen.
 
 ## <a name="azure-backup-server-and-system-center-data-protection-manager"></a>Azure Backup Server und System Center Data Protection Manager
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen? <br/>
@@ -90,6 +95,9 @@ Ja. Sie können Sicherungsaufträge unter Windows Server oder auf Windows-Arbeit
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Warum ist die Datenmenge, die an den Recovery Services-Tresor übertragen wird, kleiner als die von mir gesicherte Datenmenge?<br/>
  Alle Daten, die vom Azure Backup-Agent, von SCDPM oder Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Recovery Services-Tresor 30 bis 40 Prozent kleiner.
+
+### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vaultbr"></a>Kann ich einzelne Dateien für einen Wiederherstellungspunkt im Tresor löschen?<br/>
+Nein. Für Azure Backup wird das Löschen oder Bereinigen von einzelnen Dateien aus gespeicherten Sicherungen nicht unterstützt.
 
 ## <a name="what-can-i-back-up"></a>Für die Sicherung geeignete Daten
 ### <a name="which-operating-systems-does-azure-backup-support-br"></a>Welche Betriebssysteme werden von Azure Backup unterstützt? <br/>

@@ -8,245 +8,266 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 9d71efa35713500911c67d1df15612b64c8e97da
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 637f837ec2421f0bef5131a33c709087b891aa0f
+ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990828"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39505110"
 ---
-# <a name="trusted-internet-connection-guidance"></a>Leitfaden für eine vertrauenswürdige Internetverbindung (Trusted Internet Connection, TIC)
+# <a name="trusted-internet-connections-guidance"></a>Leitfaden für eine vertrauenswürdige Internetverbindung
 
-## <a name="background"></a>Hintergrund
+Dieser Artikel beschreibt, wie Regierungsbehörden Microsoft Azure Government nutzen können, um die Konformität mit der Initiative für vertrauenswürdige Internetverbindungen (Trusted Internet Connection, TIC) zu erreichen. Der Artikel beschreibt, wie Azure Government mit den Angeboten Azure-IaaS (Infrastructure-as-a-Service) und Azure-PaaS (Platform-as-a-Service) verwendet wird.
 
-Ziel der Initiative für vertrauenswürdige Internetverbindungen (Trusted Internet Connection, TIC) ist die Optimierung und Standardisierung der Sicherheit einzelner externer Netzwerkverbindungen, die derzeit von Bundesbehörden genutzt werden. Die Richtlinie wird im [Memorandum M-08-05](https://georgewbush-whitehouse.archives.gov/omb/memoranda/fy2008/m08-05.pdf) der US-Behörde OMB (Office of Management and Budget) beschrieben.
+## <a name="trusted-internet-connections-overview"></a>Übersicht über vertrauenswürdige Internetverbindungen
 
-Das Programm für vertrauenswürdige Internetverbindungen (TIC-Programm) wurde im November 2007 vom OMB zur Verbesserung der Sicherheit in der Netzwerkumgebung von Behörden und der Funktionen zur Reaktion auf Incidents eingeführt. TIC wurde entwickelt, um Netzwerkanalysen des gesamten eingehenden und ausgehenden Datenverkehrs von „.gov“-Websites durchzuführen. So lassen sich spezifische Signaturen und musterbasierte Daten identifizieren und Verhaltensanomalien, wie z.B. Botnetaktivitäten, aufdecken. Die Behörden wurden beauftragt, ihre externen Netzwerkverbindungen zu konsolidieren und den gesamten Datenverkehr über die Angriffserkennungs- und Präventionsgeräte (bekannt als EINSTEIN) zu leiten, die an einer begrenzten Anzahl von Netzwerkendpunkten gehostet wurden (die als vertrauenswürdige Internetverbindungen bezeichnet werden).
+Ziel der TIC-Initiative ist die Optimierung und Standardisierung der Sicherheit einzelner externer Netzwerkverbindungen, die von Bundesbehörden genutzt werden. Die Richtlinie wird im [Memorandum M-08-05 der US-Behörde OMB (Office of Management and Budget)](https://georgewbush-whitehouse.archives.gov/omb/memoranda/fy2008/m08-05.pdf) beschrieben.
 
-Einfach ausgedrückt, die Behörden möchten mithilfe des TIC-Programms Folgendes erfahren:
+Das Programm für vertrauenswürdige Internetverbindungen (TIC-Programm) wurde im November 2007 vom OMB zur Verbesserung der Sicherheit in der Netzwerkumgebung von Behörden und der Funktionen zur Reaktion auf Incidents eingeführt. TIC ist dafür konzipiert, Netzwerkanalysen des gesamten eingehenden und ausgehenden Datenverkehrs von „.gov“-Websites durchzuführen, um spezifische Signaturen und musterbasierte Daten zu identifizieren. TIC deckt Verhaltensanomalien wie Botnetaktivitäten auf. Behörden müssen ihre Verbindungen mit externen Netzwerken konsolidieren und sämtlichen Datenverkehr über die Angriffserkennungs- und Eindringschutzgeräte (bekannt als EINSTEIN) leiten. Die Geräte werden an einer begrenzten Anzahl von Netzwerkendpunkten gehostet, die als _vertrauenswürdige Internetverbindungen_ bezeichnet werden.
+
+Die Behörden möchten mithilfe des TIC-Programms Folgendes erfahren:
 - Wer ist in meinem Netzwerk (autorisiert oder nicht autorisiert)?
 - Wann wird auf mein Netzwerk zugegriffen und warum?
 - Auf welche Ressourcen wird zugegriffen?
 
-Heute müssen alle externen Verbindungen von Behörden über eine vom OMB genehmigte vertrauenswürdige Internetverbindung geleitet werden. Bundesbehörden müssen am TIC-Programm teilnehmen, entweder als TIC Access Provider (TICAP) oder durch Beauftragung eines der größten Tier-1-Internetdienstanbieter, die als Managed Trusted Internet Protocol Service (MTIPS), d.h. als verwalteter vertrauenswürdiger Internetprotokolldienst, bezeichnet werden.  TIC umfasst obligatorische kritische Funktionen, die heute von der Behörde und dem MTIPS-Anbieter ausgeführt werden. In der aktuellen Version von TIC werden für jeden TICAP und MTIPS die EINSTEIN-Angriffserkennung der Version 2 und die EINSTEIN-Angriffspräventionsgeräte der Version 3 Accelerated (3A) eingesetzt. Zudem besteht eine Absichtserklärung zwischen der Behörde und dem Heimatschutzministerium (Department of Homeland Security, DHS), dass EINSTEIN-Funktionen in US-Bundessystemen eingesetzt werden.
+Alle externen Verbindungen von Behörden müssen gegenwärtig über eine vom OMB genehmigte vertrauenswürdige Internetverbindung geleitet werden. Bundesbehörden müssen am TIC-Programm teilnehmen, entweder als TIC Access Provider (TICAP) oder durch Beauftragung eines der größten Tier-1-Internetdienstanbieter. Diese Anbieter werden als MTIPS-Anbieter (Managed Trusted Internet Protocol Service, verwalteter vertrauenswürdiger Internetprotokolldienst) bezeichnet. TIC umfasst obligatorische kritische Funktionen, die von der Behörde und dem MTIPS-Anbieter ausgeführt werden. In der aktuellen Version von TIC werden für jeden TICAP und MTIPS die EINSTEIN-Angriffserkennungsgeräte der Version 2 und die EINSTEIN-Eindringschutzgeräte der Version 3 Accelerated (3A) bereitgestellt. Die Behörde geht eine „Vereinbarung zur Zusammenarbeit“ mit dem US-Heimatschutzministerium (Department of Homeland Security, DHS) ein, um EINSTEIN-Funktionen in US-Bundessystemen einzusetzen.
 
-Damit das Heimatschutzministerium das „.gov“-Netzwerk schützen kann, benötigt es Rohdatenfeeds des Netzwerkdatenflusses, um Incidents im gesamten Bundesunternehmen zu korrelieren und Analysen mit speziellen Tools durchzuführen. Router des Heimatschutzministeriums bieten die Möglichkeit, IP-Netzwerkdatenverkehr beim Passieren einer Schnittstelle in beide Richtungen zu sammeln. Durch die Analyse des Netzwerkdatenflusses kann ein Netzwerkadministrator z.B. die Quelle und das Ziel des Datenverkehrs oder die Klasse des Diensts bestimmen. Die Daten des Netzwerkverkehrs werden als „Daten ohne Inhalt“ (z.B. Header, Quell-IP-Adresse, Ziel-IP-Adresse, usw.) betrachtet und ermöglichen es dem Heimatschutzministerium, Informationen rund um den Inhalt zu erfahren, d.h. wer was und wie lange gemacht hat.
+Damit das Heimatschutzministerium das „.gov“-Netzwerk schützen kann, benötigt es Rohdatenfeeds des Netzwerkdatenflusses, um Incidents im gesamten Bundesunternehmen zu korrelieren und Analysen mit speziellen Tools durchzuführen. Router des Heimatschutzministeriums bieten die Möglichkeit, IP-Netzwerkdatenverkehr beim Passieren einer Schnittstelle in beide Richtungen zu sammeln. Netzwerkadministratoren können den Netzwerkdatenfluss analysieren, um die Quelle und das Ziel des Datenverkehrs, die Klasse des Diensts usw. zu bestimmen. Die Daten des Netzwerkverkehrs werden als „Daten ohne Inhalt“ betrachtet, ähnlich einem Header, einer Quell-IP-Adresse, einer Ziel-IP-Adresse usw. Daten ohne Inhalt ermöglichen es dem Heimatschutzministerium, Informationen rund um den Inhalt zu erhalten: Wer hat was und wie lange gemacht.
 
-Die Initiative umfasst auch Sicherheitsrichtlinien, Leitfäden und Rahmenbedingungen, die eine lokale Infrastruktur voraussetzen. Da Regierungsbehörden in die Cloud wechseln, um Kosteneinsparungen, Betriebseffizienz und Innovationen zu erreichen, verlangsamen die Implementierungsanforderungen von TIC in einigen Fällen den Netzwerkdatenverkehr und begrenzen die Geschwindigkeit und Agilität, mit der Benutzer im Regierungsnetzwerk auf ihre cloudbasierten Daten zugreifen können.
+Die Initiative umfasst auch Sicherheitsrichtlinien, Leitfäden und Rahmenbedingungen, die eine lokale Infrastruktur voraussetzen. Wenn Behörden zur Cloud wechseln, um Kosteneinsparungen, betriebliche Effizienz und Innovationen zu erreichen, können die Implementierungsanforderungen von TIC den Netzwerkdatenverkehr verlangsamen. Das Ergebnis sind Beschränkungen von Geschwindigkeit und Flexibilität der Behördenbenutzer beim Zugriff auf ihre cloudbasierten Daten.
 
-Dieser Artikel beschreibt, wie Regierungsbehörden Microsoft Azure Government nutzen können, um die Konformität mit der TIC-Richtlinie für IaaS- und PaaS-Dienste zu erreichen.
-
-## <a name="summary-of-azure-networking-options"></a>Zusammenfassung der Azure-Netzwerkoptionen
+## <a name="azure-networking-options"></a>Azure-Netzwerkoptionen
 
 Es gibt drei Hauptoptionen für die Verbindung mit Azure-Diensten:
 
-1. Direkte Internetverbindung: Verbinden Sie sich direkt über eine offene Internetverbindung mit den Azure-Diensten. Das Medium ist öffentlich, ebenso wie die Verbindung. Der Datenschutz erfolgt durch eine Verschlüsselung auf Anwendungs- und Transportebene. Die Bandbreite wird durch die Verbindung einer Website mit dem Internet begrenzt, und es können mehrere aktive Anbieter verwendet werden, um die Ausfallsicherheit zu gewährleisten.
-1. Virtuelles privates Netzwerk: Verbinden Sie sich privat über ein VPN-Gateway mit Azure Virtual Network.
-Das Medium ist öffentlich, da es die Standardinternetverbindung einer Website durchläuft, aber die Verbindung wird in einem Tunnel verschlüsselt, um den Datenschutz zu gewährleisten. Die Bandbreite ist abhängig von den VPN-Geräten und wird durch die gewählte Konfiguration begrenzt. Azure-Point-to-Site-Verbindungen sind in der Regel auf 100 MBit/s beschränkt, während Site-to-Site-Verbindungen auf 1,25 GBit/s beschränkt sind.
-1. Microsoft ExpressRoute: ExpressRoute ist eine direkte Verbindung zu Microsoft-Diensten. Da die Verbindung über einen isolierten Fiber-Channel erfolgt, kann sie je nach Konfiguration öffentlich oder privat sein. Die Bandbreite ist typischerweise auf höchstens 10 GBit/s beschränkt.
+- Direkte Internetverbindung: Verbinden Sie sich direkt über eine offene Internetverbindung mit den Azure-Diensten. Das Medium und die Verbindung sind öffentlich. Der Datenschutz erfolgt durch eine Verschlüsselung auf Anwendungs- und Transportebene. Die Bandbreite wird von der Internetkonnektivität des Standorts beschränkt. Verwenden Sie mehrere aktive Anbieter, um Resilienz sicherzustellen.
+- Virtuelles privates Netzwerk (VPN): Verbinden Sie sich privat über ein VPN-Gateway mit Ihrem virtuellen Azure-Netzwerk.
+Das Medium ist öffentlich, da es die Standardinternetverbindung eines Standorts durchläuft, aber die Verbindung wird in einem Tunnel verschlüsselt, um den Datenschutz zu gewährleisten. Die Bandbreite ist abhängig von den VPN-Geräten und wird durch die gewählte Konfiguration begrenzt. Azure-Point-to-Site-Verbindungen sind in der Regel auf 100 MBit/s beschränkt, und Site-to-Site-Verbindungen sind auf 1,25 GBit/s beschränkt.
+- Azure ExpressRoute: ExpressRoute ist eine direkte Verbindung mit Microsoft-Diensten. Da die Verbindung über einen isolierten Fiber-Channel erfolgt, kann sie je nach Konfiguration öffentlich oder privat sein. Die Bandbreite ist typischerweise auf höchstens 10 GBit/s beschränkt.
 
-Es gibt mehrere Möglichkeiten, die Anforderungen des Anhang H für vertrauenswürdige Internetverbindungen (Überlegungen zur Cloud) zu erfüllen, die im Dokument „Trusted Internet Connections (TIC) Reference Architecture Document, Version 2.0“ (Dokument zur TIC-Referenzarchitektur, Version 2.0) des US-Heimatschutzministeriums enthalten sind. Im gesamten Dokument wird der Leitfaden zum TIC-Programm des Heimatschutzministeriums als „TIC 2.0“ bezeichnet.
+Es gibt mehrere Möglichkeiten, die TIC-Anforderungen aus Anhang H (Überlegungen zur Cloud) zu erfüllen, die im Dokument „Trusted Internet Connections (TIC) Reference Architecture Document, Version 2.0“ (Dokument zur TIC-Referenzarchitektur, Version 2.0) des US-Heimatschutzministeriums angegeben sind. In diesem Artikel wird der DHS TIC-Leitfaden als **TIC 2.0** bezeichnet.
 
-Um die Verbindung von einem Ministerium oder einer Behörde (Department/Agency, D/A) zu Azure oder Office 365 zu ermöglichen, ohne den Datenverkehr über deren vertrauenswürdige Internetverbindung zu leiten, muss der D/A-Benutzer einen verschlüsselten Tunnel und/oder eine dedizierte Verbindung zum Cloud-Dienstanbieter (Cloud Service Provider, CSP) verwenden. Die CSP-Dienste können sicherstellen, dass die Konnektivität zu den D/A-Cloudressourcen nicht dem öffentlichen Internet für den direkten Zugriff durch Regierungsangestellte zur Verfügung gestellt wird.
+Um die Verbindung von einem **Ministerium oder einer Behörde (Department/Agency, D/A)** mit Azure oder Office 365 zu ermöglichen, ohne den Datenverkehr über deren vertrauenswürdige Internetverbindung zu leiten, muss der D/A-Benutzer einen verschlüsselten Tunnel oder eine dedizierte Verbindung mit dem Cloud-Dienstanbieter (Cloud Service Provider, CSP) verwenden. Die CSP-Dienste können sicherstellen, dass die Konnektivität mit den D/A-Cloudressourcen nicht dem öffentlichen Internet für den direkten Zugriff durch Regierungsangestellte zur Verfügung gestellt wird.
 
-O365 ist mit TIC 2.0 Anhang H konform und verwendet entweder ExpressRoute mit aktiviertem [Microsoft-Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) oder eine Internetverbindung, die den gesamten Datenverkehr mit TLS 1.2 verschlüsselt.  D/A-Endbenutzer im D/A-Netzwerk können sich über ihr Behördennetzwerk und die TIC-Infrastruktur mit dem Internet verbinden. Der gesamte Remoteinternetzugriff auf O365 wird blockiert und über die Behörde geleitet. Der D/A-Benutzer kann sich auch über eine ExpressRoute-Verbindung mit Microsoft-Peering, einer Art öffentlichem Peering, mit O365 verbinden.  
+Office 365 ist mit TIC 2.0, Anhang H, konform und verwendet entweder ExpressRoute mit aktiviertem [Microsoft-Peering](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) oder eine Internetverbindung, die den gesamten Datenverkehr mit TLS 1.2 verschlüsselt. D/A-Endbenutzer im D/A-Netzwerk können sich über ihr Behördennetzwerk und die TIC-Infrastruktur mit dem Internet verbinden. Der gesamte Remoteinternetzugriff auf Office 365 wird blockiert und über die Behörde geleitet. Der D/A-Benutzer kann sich auch über eine ExpressRoute-Verbindung mit Microsoft-Peering, einer Art öffentlichem Peering, mit Office 365 verbinden.  
 
-Nur für Azure können die Optionen 2 (VPN) und 3 (ExpressRoute) diese Anforderungen erfüllen, wenn sie in Verbindung mit Diensten verwendet werden, die den Zugang zum Internet einschränken.
+Nur für Azure können die zweite Option (VPN) und die dritte Option (ExpressRoute) diese Anforderungen erfüllen, wenn sie in Verbindung mit Diensten verwendet werden, die den Zugang zum Internet einschränken.
 
-![Diagramm zu vertrauenswürdiger Internetverbindung und Microsoft](media/tic-diagram-a.png)
+![Vertrauenswürdige Internetverbindung (TIC) und Microsoft](media/tic-diagram-a.png)
 
-## <a name="how-azure-infrastructure-as-a-service-offerings-can-help-with-tic-compliance"></a>Unterstützung der TIC-Konformität durch Azure-Infrastructure-as-a-Service-Angebote
+## <a name="azure-infrastructure-as-a-service-offerings"></a>Azure-IaaS-Angebot
 
-Die Einhaltung der TIC-Richtlinie mit IaaS ist relativ einfach, da Azure-Kunden das Routing in ihrem eigenen virtuellen Netzwerk verwalten.
+Die Einhaltung der TIC-Richtlinie mit Azure-IaaS ist relativ einfach, da Azure-Kunden das Routing in ihrem eigenen virtuellen Netzwerk verwalten.
 
-Die wichtigste Voraussetzung für die Einhaltung der TIC-Referenzarchitektur ist, dass Ihr virtuelles Netzwerk (VNET) zu einer privaten Erweiterung des Netzwerks des Ministeriums bzw. der Behörde wird. Bei einer _privaten_ Erweiterung setzt die Richtlinie voraus, dass kein Datenverkehr das Netzwerk verlässt, außer über die lokale TIC-Netzwerkverbindung. Dieser Prozess wird als „Erzwingen von Tunneln“ bezeichnet, bei dem der gesamte Datenverkehr von jedem System in der CSP-Umgebung über ein lokales Gateway in einem Organisationsnetzwerk über die vertrauenswürdige Internetverbindung ins Internet geleitet wird.
+Die wichtigste Voraussetzung für die Konformität mit der TIC-Referenzarchitektur ist, dass Ihr virtuelles Netzwerk eine private Erweiterung des D/A-Netzwerks wird. Bei einer _privaten_ Erweiterung setzt die Richtlinie voraus, dass kein Datenverkehr das Netzwerk verlässt, außer über die lokale TIC-Netzwerkverbindung. Dieser Prozess wird als _Erzwingen von Tunneln_ bezeichnet. Für TIC-Konformität wird dabei der gesamte Datenverkehr von jedem System in der CSP-Umgebung über ein lokales Gateway in einem Organisationsnetzwerk über die vertrauenswürdige Internetverbindung ins Internet geleitet.
 
-Die TIC-Konformität von Azure-IaaS kann in zwei große Schritte unterteilt werden:
+Die TIC-Konformität von Azure-IaaS ist in zwei Hauptschritte unterteilt:
 
-1. Konfiguration
-1. Überwachung
+- Schritt 1: Konfiguration.
+- Schritt 2: Überwachung.
 
-### <a name="azure-iaas-tic-compliance-configuration"></a>Konfiguration der TIC-Konformität von Azure-IaaS
+### <a name="azure-iaas-tic-compliance-configuration"></a>TIC-Konformität von Azure-IaaS: Konfiguration
 
-Um eine TIC-konforme Architektur mit Azure zu konfigurieren, müssen Sie zunächst den direkten Internetzugang zu Ihrem virtuellen Netzwerk verhindern und dann den Internetdatenverkehr über das lokale Netzwerk erzwingen.
+Um eine TIC-konforme Architektur mit Azure zu konfigurieren, müssen Sie zunächst den direkten Internetzugriff auf Ihr virtuelles Netzwerk verhindern und dann den Internetdatenverkehr über das lokale Netzwerk erzwingen.
 
-#### <a name="prevent-direct-internet-access"></a>Verhindern eines direkten Zugriffs auf das Internet
+#### <a name="prevent-direct-internet-access"></a>Verhindern eines direkten Internetzugriffs
 
 Der Azure-IaaS-Netzwerkzugriff erfolgt über virtuelle Netzwerke, die aus Subnetzen bestehen, denen die Netzwerkschnittstellencontroller (Network Interface Controller, NIC) virtueller Computer zugeordnet sind.
 
-Das einfachste Szenario zur Unterstützung der TIC-Konformität besteht darin, sicherzustellen, dass ein virtueller Computer oder eine Sammlung davon keine Verbindung zu externen Ressourcen herstellen kann. Die Trennung von externen Netzwerken kann mithilfe von Netzwerksicherheitsgruppen (NSGs) gewährleistet werden, mit denen der Datenverkehr zu einem oder mehreren NICs oder Subnetzen in Ihrem virtuellen Netzwerk gesteuert werden kann. Eine NSG enthält Regeln zur Zugriffssteuerung, die den Datenverkehr auf Grundlage der Richtung des Datenverkehrs, des Protokolls, der Quelladresse und des Quellports, und der Zieladresse und des Zielports zulässt oder verweigert. Die Regeln für eine NSG können jederzeit geändert werden, und die Änderungen werden auf alle zugeordneten Instanzen angewendet.  Weitere Informationen zum Erstellen einer NSG finden Sie in diesem Artikel unter [Erstellen einer Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
+Das einfachste Szenario zur Unterstützung der TIC-Konformität besteht darin sicherzustellen, dass ein virtueller Computer oder eine Sammlung davon keine Verbindung mit externen Ressourcen herstellen kann. Stellen Sie die Trennung von externen Netzwerken mithilfe von Netzwerksicherheitsgruppen (NSGs) sicher. Verwenden Sie NSGs zum Steuern des Datenverkehrs an NICs oder Subnetze in Ihrem virtuellen Netzwerk. Eine NSG enthält Regeln zur Zugriffssteuerung, die den Datenverkehr auf Grundlage der Richtung des Datenverkehrs, des Protokolls, der Quelladresse und des Quellports, und der Zieladresse und des Zielports zulässt oder verweigert. Sie können die Regeln für eine NSG jederzeit ändern, und die Änderungen werden auf alle zugeordneten Instanzen angewendet. Weitere Informationen zum Erstellen einer NSG finden Sie unter [Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
 
-#### <a name="force-internet-traffic-through-on-premises-network"></a>Erzwingen des Internetdatenverkehrs über das lokale Netzwerk
+#### <a name="force-internet-traffic-through-an-on-premises-network"></a>Erzwingen des Internetdatenverkehrs über ein lokales Netzwerk
 
-Azure erstellt automatisch Systemrouten und weist die Routen allen Subnetzen eines virtuellen Netzwerks zu. Sie können zwar keine Systemrouten erstellen oder entfernen, aber einige Systemrouten mit benutzerdefinierten Routen überschreiben. Azure erstellt Standardsystemrouten für jedes Subnetz und fügt zusätzliche optionale Standardrouten für spezifische Subnetze hinzu (bzw. jedes Subnetz, wenn Sie bestimmte Azure-Funktionen nutzen). Dieses Routing stellt sicher, dass der für das virtuelle Netzwerk bestimmt Datenverkehr auch innerhalb dieses virtuellen Netzwerks bleibt, die von der IANA festgelegten privaten Adressräume wie 10.0.0.0.0/8 entfallen (sofern nicht im Adressraum des virtuellen Netzwerks enthalten) und das „Notfall“-Routing von 0.0.0.0/0 zum Internetendpunkt des virtuellen Netzwerks erfolgt.
+Azure erstellt automatisch Systemrouten und weist die Routen allen Subnetzen eines virtuellen Netzwerks zu. Sie können zwar keine Systemrouten erstellen oder entfernen, aber einige Systemrouten mit benutzerdefinierten Routen überschreiben. Azure erstellt Standardsystemrouten für jedes Subnetz. Azure fügt bestimmten Subnetzen oder jedem Subnetz optionale Standardrouten hinzu, wenn Sie bestimmte Azure-Funktionen verwenden. Mit dieser Art von Routing wird Folgendes sichergestellt:
+- Datenverkehr mit einem Ziel im virtuellen Netzwerk bleibt innerhalb des virtuellen Netzwerks.
+- Von IANA festgelegte private Adressräume wie 10.0.0.0/8 werden gelöscht, es sei denn, sie sind im Adressraum des virtuellen Netzwerks enthalten.
+- Das „Notfall“-Routing von 0.0.0.0/0 zum Internetendpunkt des virtuellen Netzwerks erfolgt.
 
 ![Erzwingen von Tunneln für TIC](media/tic-diagram-c.png)
 
-Damit der gesamte Datenverkehr tatsächlich die vertrauenswürdige D/A-Internetverbindung durchläuft, muss der gesamte Datenverkehr, der das virtuelle Netzwerk verlässt, über die lokale Verbindung geleitet werden.  Zum Anpassen von Routen können Sie entweder benutzerdefinierte Routen erstellen oder BGP-Routen (Border Gateway Protocol) zwischen Ihrem lokalen Netzwerkgateway und einem virtuellen Azure-Netzwerkgateway austauschen. Weitere Informationen zu benutzerdefinierten Routen finden Sie unter https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined. Weitere Informationen zum Border Gateway Protocol finden Sie ebenfalls unter https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol.
+Der gesamte Datenverkehr, der das virtuelle Netzwerk verlässt, muss über die lokale Verbindung geleitet werden, um sicherzustellen, dass der gesamte Datenverkehr die vertrauenswürdige D/A-Internetverbindung durchläuft. Zum Anpassen von Routen können Sie benutzerdefinierte Routen erstellen oder BGP-Routen (Border Gateway Protocol) zwischen Ihrem lokalen Netzwerkgateway und einem Azure-VPN-Gateway austauschen. Weitere Informationen zu benutzerdefiniertem Routing finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke: Benutzerdefinierte Routen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Weitere Informationen zum BGP finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
 
-#### <a name="user-defined-routes"></a>Benutzerdefinierte Routen
+#### <a name="add-user-defined-routes"></a>Hinzufügen von benutzerdefinierten Routen
 
-Wenn Sie ein routenbasiertes virtuelles Netzwerkgateway verwenden, kann das Tunneln innerhalb von Azure durchgeführt werden, indem Sie eine benutzerdefinierte Route mit der Einstellung 0.0.0.0.0/0 für den Datenverkehr zum Weiterleiten an einen „nächsten Hop“ Ihres virtuellen Netzwerkgateways hinzufügen. Azure priorisiert benutzerdefinierte Routen gegenüber systemdefinierten Routen, was dazu führen würde, dass der gesamte Nicht-VNET-Datenverkehr an Ihr virtuelles Netzwerkgateway gesendet werden würde, das ihn dann an lokale Standorte weiterleiten kann. Einmal definiert, muss diese benutzerdefinierte Route mit allen vorhandenen oder neu erstellten Subnetzen in allen virtuellen Netzwerken in Ihrer Azure-Umgebung verknüpft werden.
+Wenn Sie ein routenbasiertes Gateway des virtuellen Netzwerks verwenden, können Sie Tunneln in Azure erzwingen. Fügen Sie eine benutzerdefinierte Route (User-Defined Route, UDR) hinzu, die für 0.0.0.0/0-Datenverkehr festlegt, dass er an einen **nächsten Hop** Ihres Gateways des virtuellen Netzwerks weitergeleitet wird. Azure priorisiert benutzerdefinierte Routen über systemdefinierte Routen. Sämtlicher nicht virtueller Netzwerkdatenverkehr wird an Ihr Gateway des virtuellen Netzwerks gesendet, das dann den Datenverkehr lokal weiterleiten kann. Nachdem Sie die UDR definiert haben, ordnen Sie die Route vorhandenen oder neuen Subnetzen in allen virtuellen Netzwerken in Ihrer Azure-Umgebung zu.
 
 ![Benutzerdefinierte Routen und TIC](media/tic-diagram-d.png)
 
-#### <a name="border-gateway-protocol"></a>Border Gateway Protocol
+#### <a name="use-the-border-gateway-protocol"></a>Verwenden von Border Gateway Protocol
 
-Wenn Sie ExpressRoute oder ein Border Gateway Protocol-fähiges (BGP) virtuelles Netzwerkgateway verwenden, ist BGP der bevorzugte Mechanismus zum Ankündigen von Routen. Mit einer von BGP angekündigten Route von 0.0.0.0.0/0 stellen ExpressRoute und BGP-fähige virtuelle Netzwerkgateways sicher, dass diese Standardroute auf alle Subnetze innerhalb Ihrer virtuellen Netzwerke angewendet wird.
+Wenn Sie ExpressRoute oder ein BGP-fähiges Gateway des virtuellen Netzwerks verwenden, ist BGP der bevorzugte Mechanismus zum Ankündigen von Routen. Für eine von BGP angekündigte Route von 0.0.0.0.0/0 stellen ExpressRoute und BGP-fähige Gateways virtueller Netzwerke sicher, dass diese Standardroute auf alle Subnetze innerhalb Ihrer virtuellen Netzwerke angewendet wird.
 
-### <a name="azure-iaas-tic-compliance-auditing"></a>TIC-Konformitätsprüfung mit Azure-IaaS
+### <a name="azure-iaas-tic-compliance-auditing"></a>TIC-Konformität von Azure-IaaS: Überwachung
 
-Azure bietet mehrere Möglichkeiten, die TIC-Konformität zu überprüfen.
+Azure bietet mehrere Möglichkeiten, die TIC-Konformität zu überwachen.
 
-#### <a name="effective-routes"></a>Effektive Routen
+#### <a name="view-effective-routes"></a>Anzeigen effektiver Routen
 
-Zur Bestätigung, dass Ihre Standardroute weitergegeben wurde, können Sie die „effektiven Routen“ einer bestimmten VM, einem bestimmten NIC oder in einer Tabelle für benutzerdefinierte Routen überprüfen. Hierzu können Sie das Azure-Portal, wie unter https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-portal beschrieben, oder PowerShell, wie unter https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-powershell beschrieben, verwenden. Das Blatt „Effektive Routen“ ermöglicht es Ihnen, die relevanten benutzerdefinierten Routen, die von BGP angekündigten Routen und die Systemrouten anzuzeigen, die für die jeweilige Entität gelten, wie unten dargestellt.
+Vergewissern Sie sich, dass die Standardroute weitergegeben wird, indem Sie die _effektiven Routen_ für einen bestimmten virtuellen Computer, einen bestimmten NIC oder eine benutzerdefinierte Routentabelle im [Azure-Portal](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-portal#diagnose-using-azure-portal) oder in [Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/virtual-network-routes-troubleshoot-powershell#diagnose-using-powershell) überwachen. **Effektive Routen** zeigt die relevanten benutzerdefinierten Routen, die von BGP angekündigten Routen und die Systemrouten an, die für die jeweilige Entität gelten, wie in der folgenden Abbildung dargestellt:
 
-![Routen – Screenshot](media/tic-screen-1.png)
+![Effektive Routen](media/tic-screen-1.png)
 
-**Hinweis**: Sie können die effektiven Routen für einen NIC nur anzeigen, wenn diese mit einer laufenden VM verknüpft ist.
+> [!NOTE]
+> Sie können die effektiven Routen für einen NIC nur anzeigen, wenn der NIC mit einem aktiven virtuellen Computer verknüpft ist.
 
-#### <a name="network-watcher"></a>Network Watcher
+#### <a name="use-azure-network-watcher"></a>Verwenden von Azure Network Watcher
 
-Azure Network Watcher bietet mehrere Tools, die zur Überprüfung der TIC-Konformität verwendet werden können.  Weitere Informationen zu Network Watcher finden Sie unter https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview.
+Azure Network Watcher bietet verschiedene Tools zur Überwachung der TIC-Konformität. Weitere Informationen finden Sie in [dieser Übersicht über Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
 
-##### <a name="network-security-groups-flow-logs"></a>Datenflussprotokolle für Netzwerksicherheitsgruppen 
+##### <a name="capture-network-security-group-flow-logs"></a>Erfassen von Datenflussprotokollen für Netzwerksicherheitsgruppen 
 
-Mit Azure Network Watcher können Sie Netzwerk-Datenflussprotokolle erfassen, die die Metadaten des umgebenden IP-Datenverkehrs anzeigen. Die Netzwerk-Datenflussprotokolle enthalten neben anderen Daten auch die Quell- und Zieladressen der Ziele. In Kombination mit Protokollen des virtuellen Netzwerkgateways, der lokalen Edgegeräte und/oder der vertrauenswürdigen Internetverbindung kann so überwacht werden, dass der gesamte Datenverkehr tatsächlich lokal weitergeleitet wird. 
+Verwenden Sie Network Watcher, um Netzwerk-Datenflussprotokolle zu erfassen, die die Metadaten zum IP-Datenverkehr angeben. Die Netzwerk-Datenflussprotokolle enthalten neben anderen Daten auch die Quell- und Zieladressen der Ziele. Sie können diese Daten mit Protokollen des Gateways des virtuellen Netzwerks, der lokalen Edgegeräte oder der vertrauenswürdigen Internetverbindung verwenden, um zu überwachen, ob der gesamte Datenverkehr lokal weiterleitet wird. 
 
-## <a name="how-azure-platform-as-a-service-offerings-can-help-with-tic-compliance"></a>Unterstützung der TIC-Konformität durch Azure-Platform-as-a-Service-Angebote
+## <a name="azure-platform-as-a-service-offerings"></a>Azure-PaaS-Angebote
 
-Azure-PaaS-Dienste wie Azure Storage sind über eine im Internet erreichbare URL zugänglich. Jeder, der über genehmigte Anmeldeinformationen verfügt, kann von jedem Ort aus auf die Ressource zugreifen, ohne eine vertrauenswürdige Internetverbindung hierfür zu verwenden. Aus diesem Grund gehen viele Regierungskunden fälschlicherweise davon aus, dass Azure-PaaS-Dienste nicht der TIC-Richtlinie entsprechen. Tatsächlich ist die Einhaltung der TIC-Richtlinie bei vielen Azure-PaaS-Diensten durchaus möglich, indem die gleiche Architektur wie die der oben beschriebenen TIC-konformen IaaS-Umgebung verwendet wird, sofern sie mit einem virtuellen Netzwerk (VNET) verbunden werden können. Die Integration von Azure-PaaS-Diensten in ein Azure-VNET ermöglicht den privaten Zugriff auf den Dienst von diesem VNET. Zudem lässt sich ein benutzerdefiniertes Routing für 0.0.0.0/0 über benutzerdefinierte Routen oder BGP anwenden, wodurch sichergestellt wird, dass der gesamte internetgebundene Datenverkehr lokal über die TIC weitergeleitet wird.  Einige Azure-Dienste können mit den folgenden Mustern in VNETs integriert werden:
+Azure-PaaS-Dienste wie Azure Storage sind über eine im Internet erreichbare URL zugänglich. Jeder, der über genehmigte Anmeldeinformationen verfügt, kann von jedem Ort aus auf die Ressource zugreifen, ohne eine vertrauenswürdige Internetverbindung hierfür zu verwenden. Aus diesem Grund gehen viele Regierungskunden fälschlicherweise davon aus, dass Azure-PaaS-Dienste nicht den TIC-Richtlinien entsprechen. Viele Azure-PaaS-Dienste können mit TIC-Richtlinien konform sein. Ein Dienst ist konform, wenn die Architektur mit der TIC-konformen IaaS-Umgebung identisch ist ([wie zuvor beschrieben](https://docs.microsoft.com/azure/security/compliance/compliance-tic#azure-infrastructure-as-a-service-offerings)) und der Dienst einem virtuellen Azure-Netzwerk angefügt ist.
 
-- **Bereitstellen einer dedizierten Instanz für den Dienst**: Immer mehr PaaS-Diensten können als dedizierte Instanzen bereitgestellt werden, deren Endpunkten mit VNETs verbunden sind. Beispielsweise kann eine App Service-Umgebung (ASE) im Modus „Isoliert“ bereitgestellt werden, sodass ihr Netzwerkendpunkt auf ein VNET beschränkt werden kann. Diese ASE kann dann viele Azure-PaaS-Dienste wie Web-Apps, APIs und Funktionen hosten.
-- **VNET-Dienstendpunkte**: Immer mehr PaaS-Dienste bieten die Möglichkeit, ihren Endpunkt auf eine private VNET-IP-Adresse anstatt auf eine öffentliche Adresse zu verschieben.
+Wenn Azure-PaaS-Dienste in ein virtuelles Netzwerk integriert sind, kann von diesem virtuellen Netzwerk privat auf den Dienst zugegriffen werden. Sie können das benutzerdefinierte Routing für 0.0.0.0/0 über benutzerdefinierte Routen oder BGP anwenden. Durch benutzerdefiniertes Routing wird sichergestellt, dass der gesamte Datenverkehr für das Internet lokal weiterleitet wird, um die vertrauenswürdige Internetverbindung zu durchlaufen. Integrieren Sie Azure-Dienste mit den folgenden Mustern in virtuelle Netzwerke:
 
-Dienste, die die Bereitstellung von dedizierten Instanzen in einem VNET oder auf Dienstendpunkten ab Mai 2018 unterstützen, sind unten aufgeführt: *(Verfügbarkeit bezieht sich auf Azure Commercial; Verfügbarkeitsinformationen zu Azure Government stehen noch aus).
+- **Bereitstellen einer dedizierten Instanz eines Diensts**: Immer mehr PaaS-Dienste können als dedizierte Instanzen bereitgestellt werden, deren Endpunkte mit virtuellen Netzwerken verbunden sind. Sie können eine App Service-Umgebung für PowerApps im Modus „Isoliert“ bereitstellen, damit der Netzwerkendpunkt auf ein virtuelles Netzwerk beschränkt wird. Die App Service-Umgebung kann dann viele Azure-PaaS-Dienste hosten, z.B. Azure-Web-Apps, Azure API Management und Azure Functions.
+- **Verwenden von Dienstendpunkten im virtuellen Netzwerk**: Immer mehr PaaS-Dienste bieten die Möglichkeit, ihren Endpunkt auf eine private IP-Adresse des virtuellen Netzwerks statt auf eine öffentliche Adresse zu verschieben.
 
-### <a name="service-endpoints"></a>Dienstendpunkte
+Dienste, die seit Mai 2018 die Bereitstellung dedizierter Instanzen in einem virtuellen Netzwerk oder die Verwendung von Dienstendpunkten unterstützen, sind in den folgenden Tabellen aufgeführt.
 
-|Dienst                   |Status            |
-|--------------------------|------------------|
-|Azure Key Vault            | Private Vorschau  |
-|Cosmos DB                 | Private Vorschau  |
-|Identity                  | Private Vorschau  |
-|Azure Data Lake           | Private Vorschau  |
-|SQL Postgres/MySQL       | Private Vorschau  |
-|Azure SQL Data Warehouse  | Öffentliche Vorschau   |
-|Azure SQL                 | Allgemein verfügbar               |
-|Speicher                   | Allgemein verfügbar               |
+> [!Note]
+> Der Verfügbarkeitsstatus entspricht den Azure-Diensten, die im Handel erhältlich sind. Der Verfügbarkeitsstatus für Azure-Dienste in Azure Government steht aus.
 
-### <a name="vnet-injection"></a>Einschleusung von VNET
+### <a name="support-for-service-endpoints"></a>Unterstützung für Dienstendpunkte
 
-|Dienst                            |Status            |
-|-----------------------------------|------------------|
-|Verwaltete SQL-Instanz               | Öffentliche Vorschau   |
-|Azure Container Service (AKS)       | Öffentliche Vorschau   |
-|Service Fabric                     | Allgemein verfügbar               |
-|API Management                     | Allgemein verfügbar               |
-|Azure Active Directory             | Allgemein verfügbar               |
-|Azure Batch                        | Allgemein verfügbar               |
-|ASE                                | Allgemein verfügbar               |
-|Redis                              | Allgemein verfügbar               |
-|HDI                                | Allgemein verfügbar               |
-|Compute-VM-Skalierungsgruppe  | Allgemein verfügbar               |
-|Compute-Clouddienst              | Allgemein verfügbar               |
+|Dienst                        |Verfügbarkeit      |
+|-------------------------------|------------------|
+|Azure Key Vault                | Private Vorschau  |
+|Azure Cosmos DB                | Private Vorschau  |
+|Identitätsdienste              | Private Vorschau  |
+|Azure Data Lake                | Private Vorschau  |
+|Azure Database for PostgreSQL  | Private Vorschau  |
+|Azure Database for MySQL       | Private Vorschau  |
+|Azure SQL Data Warehouse       | Öffentliche Vorschau   |
+|Azure SQL-Datenbank             | Allgemeine Verfügbarkeit (General Availability, GA) |
+|Azure Storage                  | Allgemein verfügbar               |
 
-### <a name="vnet-integration-details"></a>Details zur VNET-Integration
+### <a name="support-for-virtual-network-injection"></a>Unterstützung für das Einfügen in virtuelle Netzwerke
 
-Das folgende Diagramm zeigt den allgemeinen Netzwerkdatenfluss für den Zugriff auf PaaS-Dienste unter Verwendung von VNET-Einschleusung und VNET-Diensttunneln.  Weitere Informationen zu Netzwerkdienstgateways, VNETs und Diensttags finden Sie unter https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags.
+|Dienst                               |Verfügbarkeit      |
+|--------------------------------------|------------------|
+|Verwaltete Azure SQL-Datenbank-Instanz   | Öffentliche Vorschau   |
+|Azure Kubernetes Service (AKS)        | Öffentliche Vorschau   |
+|Azure Service Fabric                  | Allgemein verfügbar               |
+|Azure API Management                  | Allgemein verfügbar               |
+|Azure Active Directory                | Allgemein verfügbar               |
+|Azure Batch                           | Allgemein verfügbar               |
+|App Service-Umgebung               | Allgemein verfügbar               |
+|Azure Redis Cache                     | Allgemein verfügbar               |
+|Azure HDInsight                       | Allgemein verfügbar               |
+|VM-Skalierungsgruppe             | Allgemein verfügbar               |
+|Azure Cloud Services                  | Allgemein verfügbar               |
+
+
+### <a name="virtual-network-integration-details"></a>Details der Integration in ein virtuelles Netzwerk
+
+Das folgende Diagramm zeigt den allgemeinen Netzwerkdatenfluss für den Zugriff auf PaaS-Dienste. Der Zugriff wird für das Einfügen in virtuelle Netzwerke und das Diensttunneling von virtuellen Netzwerken dargestellt. Weitere Informationen zu Netzwerkdienstgateways, virtuellen Netzwerken und Diensttags finden Sie unter [Sicherheitsgruppen: Diensttags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ![PaaS-Konnektivitätsoptionen für TIC](media/tic-diagram-e.png)
 
-1. Private Verbindung mit Azure über ExpressRoute. Das private Peering von ExpressRoute mit erzwungenen Tunneln wird verwendet, um ein Routing des gesamten VNET-Datenverkehrs des Kunden über ExpressRoute zurück an den lokalen Standort zu erzwingen. Microsoft-Peering ist nicht erforderlich.
-2. Durch die Kombination aus Azure VPN Gateway und dem Microsoft-Peering von ExpressRoute kann die End-to-End-IPSec-Verschlüsselung zwischen Kunden-VNET und lokalem Edge überlagert werden. 
-3. Die Netzwerkverbindung mit dem Kunden-VNET wird über Netzwerksicherheitsgruppen gesteuert, die es dem Kunden ermöglichen, den Zugriff basierend auf IP-Adressen, Ports und Protokollen zu gewähren bzw. zu verweigern.
-4. Durch die Einrichtung eines Dienstendpunkts für den Dienst des Kunden wird das Kunden-VNET auf den PaaS-Dienst erweitert.
-5. Der PaaS-Dienstendpunkt ist standardmäßig so gesichert, dass er den Zugriff innerhalb des Kunden-VNET verweigert und nur von bestimmten Subnetzen zulässt.  Die Standardeinstellung verweigert auch Verbindungen aus dem Internet.
-6. Für alle anderen Azure-Dienste, die auf Ressourcen im Kunden-VNET zugreifen müssen, sollte einer der folgenden Punkte zutreffen:  
-  a. Direkt im VNET bereitgestellt  
-  b. Selektiv zugelassen, basierend auf der Richtlinie des jeweiligen Azure-Diensts
+1. Eine private Verbindung mit Azure wird über ExpressRoute hergestellt. Das private Peering von ExpressRoute mit erzwungenem Tunneln wird verwendet, um ein Routing des gesamten Datenverkehrs des virtuellen Netzwerks des Kunden über ExpressRoute und zurück an den lokalen Standort zu erzwingen. Microsoft-Peering ist nicht erforderlich.
+2. Azure VPN Gateway kann in Kombination mit ExpressRoute und Microsoft-Peering die End-to-End-IPSec-Verschlüsselung zwischen dem virtuellen Netzwerk des Kunden und dem lokalen Edge überlagern. 
+3. Die Netzwerkverbindung mit dem virtuellen Netzwerk des Kunden wird über NSGs gesteuert, die es dem Kunden ermöglichen, den Zugriff basierend auf IP-Adressen, Ports und Protokollen zu gewähren bzw. zu verweigern.
+4. Durch die Einrichtung eines Dienstendpunkts für den Dienst des Kunden wird das virtuelle Netzwerk des Kunden auf den PaaS-Dienst erweitert.
+5. Der PaaS-Dienstendpunkt ist standardmäßig so gesichert, dass er den Zugriff innerhalb des virtuellen Netzwerks des Kunden **verweigert** und nur von bestimmten Subnetzen zulässt. Die Standardeinstellung verweigert auch Verbindungen aus dem Internet.
+6. Für andere Azure-Dienste, die auf Ressourcen im virtuellen Netzwerk des Kunden zugreifen müssen, sollte einer der folgenden Punkte zutreffen:  
+   - Direkt im virtuellen Netzwerk bereitgestellt
+   - Selektiv zugelassen, basierend auf der Richtlinie des jeweiligen Azure-Diensts
 
-#### <a name="option-1-dedicated-instance-vnet-injection"></a>Option 1: Dedizierte Instanz – „VNET-Einschleusung“
+#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>Option A: Bereitstellen einer dedizierten Instanz eines Diensts (Einfügen in ein virtuelles Netzwerk)
 
-Mithilfe der VNET-Einschleusung können Kunden dedizierte Instanzen eines bestimmten Azure-Diensts, wie z.B. HDInsight, selektiv in ihrem eigenen VNET bereitstellen. Dienstinstanzen werden in einem dedizierten Subnetz im VNet des Kunden bereitgestellt. Die VNET-Einschleusung ermöglicht den Zugriff auf die Dienstressourcen über Adressen, die nicht über das Internet geroutet werden.  Lokale Instanzen können über den VNET-Adressraum direkt über ExpressRoute oder Site-to-Site-VPN auf diese Dienstinstanzen zugreifen, anstatt Firewalls für den öffentlichen Internetadressraum zu öffnen. Mit einer dedizierten Instanz, die an einen Endpunkt angeschlossen ist, können die gleichen Strategien wie bei der IaaS-TIC-Konformität Anwendung finden, wobei das Standardrouting sicherstellt, dass der internetgebundene Datenverkehr auf ein lokales virtuelles Netzwerkgateway umgeleitet wird. Der eingehende und ausgehende Zugriff lässt sich zudem durch Netzwerksicherheitsgruppen für das jeweilige Subnetz weiter steuern.
+Durch das Einfügen in ein virtuelles Netzwerk können Kunden dedizierte Instanzen eines bestimmten Azure-Diensts, wie z.B. HDInsight, selektiv in ihrem eigenen virtuellen Netzwerk bereitstellen. Dienstinstanzen werden in einem dedizierten Subnetz im virtuellen Netzwerk des Kunden bereitgestellt. Das Einfügen in ein virtuelles Netzwerk ermöglicht den Zugriff auf die Dienstressourcen über Adressen, die nicht über das Internet geroutet werden können. Lokale Instanzen können über ExpressRoute oder ein Site-to-Site-VPN über den Adressraum des virtuellen Netzwerks direkt auf diese Dienstinstanzen zugreifen, statt Firewalls für den öffentlichen Internetadressraum zu öffnen. Wenn eine dedizierte Instanz einem Endpunkt angefügt ist, können Sie die gleichen Strategien wie für IaaS-TIC-Konformität verwenden. Mit Standardrouting wird sichergestellt, dass der Datenverkehr für das Internet an ein Gateway des virtuellen Netzwerks umgeleitet wird, das lokal gebunden ist. Sie können eingehenden und ausgehenden Zugriff über NSGs für das jeweilige Subnetz weiter steuern.
 
-![VNET-Einschleusung – Übersichtsdiagramm](media/tic-diagram-f.png)
+![Übersicht über das Einfügen in virtuelle Netzwerke](media/tic-diagram-f.png)
 
-#### <a name="option-2-vnet-service-endpoints"></a>Option 2: VNET-Dienstendpunkte 
+#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Option B: Verwenden von Dienstendpunkten des virtuellen Netzwerks (Diensttunnel)
 
-Immer mehr mandantenfähige Azure-Dienste bieten die Möglichkeit zur Verwendung von Dienstendpunkten, eine alternative Methode zur Integration in Azure-VNETs. VNET-Dienstendpunkte erweitern Ihren VNET-IP-Adressraum und die Identität Ihres VNET auf den Dienst über eine direkte Verbindung.  Der Datenverkehr vom VNET zum Azure-Dienst bleibt dabei immer innerhalb des Azure-Backbonenetzwerks. Sobald ein Dienstendpunkt für einen Dienst aktiviert ist, können die Verbindungen zum Dienst über vom Dienst bereitgestellte Richtlinien auf dieses VNET beschränkt werden. Zugriffsüberprüfungen werden in der Plattform durch den Azure-Dienst erzwungen. Der Zugriff auf gesperrte Ressourcen wird nur gewährt, wenn die Anforderung aus dem zulässigen VNET bzw. Subnetz stammt und/oder die beiden IP-Adressen zulässig sind, die bei Nutzung von ExpressRoute zur Identifizierung Ihres lokalen Datenverkehrs verwendet werden. Auf diese Weise kann effektiv verhindert werden, dass eingehender bzw. ausgehender Datenverkehr den PaaS-Dienst direkt verlässt.
+Eine zunehmende Anzahl von mehrinstanzfähigen Azure-Diensten bietet „Dienstendpunkte“. Dienstendpunkte sind eine alternative Methode für die Integration in virtuelle Azure-Netzwerke. Mit Dienstendpunkten von virtuellen Netzwerken wird der IP-Adressraum Ihres virtuellen Netzwerks und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf den Dienst erweitert. Der Datenverkehr vom virtuellen Netzwerk zum Azure-Dienst bleibt dabei immer innerhalb des Azure-Backbonenetzwerks. 
 
-![Dienstendpunkte – Übersichtsdiagramm](media/tic-diagram-g.png)
+Nachdem Sie einen Dienstendpunkt für einen Dienst aktiviert haben, verwenden Sie Richtlinien, die vom Dienst verfügbar gemacht werden, um Verbindungen für den Dienst auf dieses virtuelle Netzwerk zu beschränken. Zugriffsüberprüfungen werden vom Azure-Dienst auf der Plattform erzwungen. Zugriff auf eine gesperrte Ressource wird nur gewährt, wenn die Anforderung aus dem zulässigen virtuellen Netzwerk oder Subnetz oder von den beiden IP-Adressen stammt, die verwendet werden, um den lokalen Datenverkehr zu identifizieren, falls Sie ExpressRoute verwenden. Nutzen Sie diese Methode, um effektiv zu verhindern, dass eingehender/ausgehender Datenverkehr den PaaS-Dienst direkt verlässt.
 
-## <a name="using-cloud-native-tools-for-network-situational-awareness"></a>Verwendung von nativen Cloudtools zur Erkennung von Netzwerksituationen
+![Übersicht über Dienstendpunkte](media/tic-diagram-g.png)
 
-Azure bietet native Cloudtools, die Ihnen dabei helfen, Situationen bezüglich der Datenverkehrsflüsse Ihres Netzwerks richtig einzuschätzen. Sie sind nicht verpflichtet, die TIC-Richtlinie einzuhalten, aber sie können Ihre Sicherheitsfunktionen erheblich verbessern.
+## <a name="cloud-native-tools-for-network-situational-awareness"></a>Native Cloudtools zur Erkennung von Netzwerksituationen
+
+Azure bietet native Cloudtools, die Ihnen dabei helfen, Situationen bezüglich der Datenverkehrsflüsse Ihres Netzwerks richtig einzuschätzen. Die Tools sind für die Konformität mit der TIC-Richtlinie nicht erforderlich. Die Tools können Ihre Sicherheitsfunktionen erheblich verbessern.
 
 ### <a name="azure-policy"></a>Azure Policy
 
-Azure Policy (https://azure.microsoft.com/services/azure-policy/) ist ein Azure-Dienst, der Ihrer Organisation eine bessere Möglichkeit bietet, Konformitätsinitiativen zu überprüfen und durchzusetzen.  Derzeit ist der Dienst in der Public Preview in Azure Commercial Clouds verfügbar, aber noch nicht in Microsoft Azure Government. So können Kunden, die sich mit der vertrauenswürdigen Internetverbindung (TIC) auseinandersetzen, mit der Planung und Prüfung ihrer Policy-Regeln beginnen, um eine künftige Konformität sicherzustellen. Azure Policy ist auf die Abonnementebene ausgerichtet und bietet eine zentrale Schnittstelle für die Verwaltung von Initiativen, Richtliniendefinitionen, Überprüfungs- und Durchsetzungsergebnissen sowie Ausnahmen. Zusätzlich zu den vielen integrierten Azure Policy-Definitionen können Administratoren ihre eigenen benutzerdefinierten Definitionen über einfache JSON-Vorlagen definieren. Für viele Kunden empfiehlt Microsoft, Überprüfungen gegenüber Durchsetzungen möglichst vorzuziehen.
+[Azure Policy](https://azure.microsoft.com/services/azure-policy/) ist ein Azure-Dienst, der Ihrer Organisation eine bessere Möglichkeit bietet, Konformitätsinitiativen zu überwachen und durchzusetzen. Azure Policy ist derzeit als öffentliche Vorschauversion in den Azure-Diensten verfügbar, die im Handel erhältlich sind. Azure Policy ist noch nicht in Azure Government verfügbar. Kunden können jetzt ihre Azure Policy-Regeln planen und testen, um eine zukünftige TIC-Konformität zu gewährleisten. 
 
-Die folgenden Beispielrichtlinien können für TIC-Konformitätsszenarien nützlich sein:
+Azure Policy wird auf Abonnementebene angewendet. Der Dienst bietet eine zentralisierte Oberfläche, auf der Sie Konformitätsaufgaben ausführen können. Beispiele:
+- Verwalten von Initiativen
+- Konfigurieren von Richtliniendefinitionen
+- Überwachen der Konformität
+- Erzwingen der Konformität
+- Verwalten von Ausnahmen
 
-|Richtlinie  |Beispielszenario  |Startvorlage  |
+Zusätzlich zu vielen integrierten Definitionen können Administratoren ihre eigenen benutzerdefinierten Definitionen mithilfe von einfachen JSON-Vorlagen festlegen. Microsoft empfiehlt die Priorisierung der Überwachung über die Erzwingung, sofern möglich.
+
+Die folgenden Beispielrichtlinien können in TIC-Konformitätsszenarien verwendet werden:
+
+|Richtlinie  |Beispielszenario  |Vorlage  |
 |---------|---------|---------|
-|Tabelle mit benutzerdefinierten Routen erzwingen |     Stellen Sie sicher, dass die Standardroute in allen virtuellen Netzwerken auf ein zulässiges virtuelles Netzwerkgateway für das Routing auf „Lokal“ zeigt. | https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table |
-|Überprüfung, wenn Network Watcher nicht für Region aktiviert ist  | Stellen Sie sicher, dass Network Watcher für alle verwendeten Regionen aktiviert ist.  | https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled |
-|NSG X in jedem Subnetz  | Stellen Sie sicher, dass eine NSG (oder ein Satz von zulässigen NSGs) mit blockiertem Internetdatenverkehr auf alle Subnetze in jedem VNET angewendet wird. | https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet |
-|NSG X auf jedem Netzwerkadapter | Stellen Sie sicher, dass eine NSG mit blockiertem Internetdatenverkehr auf alle NICs auf allen VMs angewendet wird. | https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic |
-|Zulässiges VNET für VM-Netzwerkschnittstellen verwenden  | Stellen Sie sicher, dass sich alle NICs in einem zulässigen VNET befinden. | https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics |
-|Allowed locations (Zulässige Speicherorte) | Stellen Sie sicher, dass alle Ressourcen in Regionen mit konformen VNETs und Network Watcher-Konfiguration bereitgestellt werden.  | https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs |
-|Nicht zulässige Ressourcentypen, z.B. öffentliche IP-Adressen  | Unterbinden Sie die Bereitstellung von Ressourcentypen, die über keinen Konformitätsplan verfügen. Beispielsweise könnte diese Richtlinie verwendet werden, um die Bereitstellung von Ressourcen für öffentliche IP-Adressen zu unterbinden. NSG-Regeln können zwar dazu verwendet werden, den eingehenden Internetdatenverkehr effektiv zu blockieren, aber indem Sie verhindern, dass öffentliche IP-Adressen verwendet werden, bieten Sie noch weniger Angriffsfläche.    | https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type  |
+|Tabelle mit benutzerdefinierten Routen erzwingen | Stellen Sie sicher, dass die Standardroute in allen virtuellen Netzwerken auf ein zulässiges Gateway eines virtuellen Netzwerks für das Routing auf „Lokal“ verweist.    | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table). |
+|Überprüfung, wenn Network Watcher nicht für eine Region aktiviert ist  | Stellen Sie sicher, dass Network Watcher für alle verwendeten Regionen aktiviert ist.  | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled). |
+|NSG x in jedem Subnetz  | Stellen Sie sicher, dass eine NSG (oder ein Satz von zulässigen NSGs) mit blockiertem Internetdatenverkehr auf alle Subnetze in jedem virtuellen Netzwerk angewendet wird. | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet). |
+|NSG x auf jedem NIC | Stellen Sie sicher, dass eine NSG mit blockiertem Internetdatenverkehr auf alle NICs auf allen virtuellen Computern angewendet wird. | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic). |
+|Ein zulässiges virtuelles Netzwerk für Netzwerkschnittstellen von virtuellen Computern verwenden  | Stellen Sie sicher, dass sich alle NICs in einem zulässigen virtuellen Netzwerk befinden. | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics). |
+|Zulässige Standorte | Stellen Sie sicher, dass alle Ressourcen in Regionen mit konformen virtuellen Netzwerken und Network Watcher-Konfiguration bereitgestellt werden.  | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs). |
+|Nicht zulässige Ressourcentypen, z.B. **öffentliche IP-Adressen** | Unterbinden Sie die Bereitstellung von Ressourcentypen, die über keinen Konformitätsplan verfügen. Verwenden Sie diese Richtlinie, um die Bereitstellung von Ressourcen mit öffentlichen IP-Adressen zu unterbinden. NSG-Regeln können zwar dazu verwendet werden, den eingehenden Internetdatenverkehr effektiv zu blockieren, aber indem Sie verhindern, dass öffentliche IP-Adressen verwendet werden, bieten Sie noch weniger Angriffsfläche.   | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type).  |
 
-### <a name="azure-traffic-analyticshttpsazuremicrosoftcomen-inblogtraffic-analytics-in-preview"></a>Azure [Traffic Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)
+### <a name="network-watcher-traffic-analytics"></a>Traffic Analytics von Network Watcher
 
-Traffic Analytics von Azure Network Watcher nutzt Datenflussprotokolle und andere Protokolle, um einen Überblick über den Netzwerkdatenverkehr zu erhalten. Diese Daten können nützlich sein, um die TIC-Konformität zu überprüfen und mögliche Problemstellen zu identifizieren. Mithilfe eines Übersichtsdashboards lässt sich schnell überprüfen, welche VMs mit dem Internet kommunizieren, sodass dann eine entsprechende Liste für das TIC-Routing bereitgestellt werden kann.
+[Traffic Analytics](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) von Network Watcher nutzt Datenflussprotokolle und andere Protokolle, um einen allgemeinen Überblick über den Netzwerkdatenverkehr zu erhalten. Diese Daten sind nützlich, um die TIC-Konformität zu überwachen und mögliche Problemstellen zu identifizieren. Sie können mit dem Übersichtsdashboard schnell die virtuellen Computer überprüfen, die mit dem Internet kommunizieren, und erhalten eine entsprechende Liste für das TIC-Routing.
 
-![Traffic Analytics – Screenshot](media/tic-traffic-analytics-1.png)
+![Datenverkehrsanalyse](media/tic-traffic-analytics-1.png)
 
-Sie können eine „Landkarte“ verwenden, um schnell die wahrscheinlichen physischen Ziele des Internetdatenverkehrs für Ihre VMs zu identifizieren und verdächtige Orte oder Musteränderungen zu ermitteln.
+Verwenden Sie die **geografische Karte**, um wahrscheinliche physische Ziele des Internetdatenverkehrs für Ihre virtuellen Computer schnell zu identifizieren. Sie können verdächtige Standorte oder Musteränderungen identifizieren und selektieren:
 
-![Traffic Analytics – Screenshot](media/tic-traffic-analytics-2.png)
+![Geografische Karte](media/tic-traffic-analytics-2.png)
 
-Über eine Netzwerktopologiekarte lassen sich bestehende virtuelle Netzwerke schnell erfassen:
+Verwenden Sie die **Topologie der virtuellen Netzwerke**, um bestehende virtuelle Netzwerke schnell zu erfassen:
 
-![Traffic Analytics – Screenshot](media/tic-traffic-analytics-3.png)
+![Karte der Netzwerktopologie](media/tic-traffic-analytics-3.png)
 
-### <a name="azure-network-watcher-next-hop"></a>Azure Network Watcher – nächster Hop
+### <a name="network-watcher-next-hop-tests"></a>Network Watcher – Test des nächsten Hops
 
-Netzwerke in Regionen, die von Network Watcher überwacht werden, können „Nächster Hop“-Tests durchführen. Diese ermöglichen einen einfachen portalbasierten Zugriff auf eine Quelle und ein Ziel für einen Beispiel-Netzwerkdatenfluss, für den Network Watcher das „Nächster Hop“-Ziel auflöst. Dies kann auf VMs und Beispiel-Internetadressen angewendet werden, um sicherzustellen, dass der „nächste Hop“ tatsächlich das virtuelle Netzwerkgateway ist.
+Netzwerke in Regionen, die von Network Watcher überwacht werden, können Tests der nächsten Hops durchführen. Im Azure-Portal können Sie eine Quelle und ein Ziel für einen Beispiel-Netzwerkdatenstrom für Network Watcher eingeben, um das Ziel des nächsten Hops aufzulösen. Führen Sie diesen Test für virtuelle Computer und Beispielinternetadressen durch, um sicherzustellen, dass das Ziel des nächsten Hops das erwartete Gateway eines virtuellen Netzwerks ist.
 
-![Network Watcher – nächster Hop](media/tic-network-watcher.png)
+![Tests der nächsten Hops](media/tic-network-watcher.png)
 
 ## <a name="conclusions"></a>Zusammenfassung
 
-Der Zugriff auf Microsoft Azure, Office 365 und Dynamics 365 kann problemlos so konfiguriert werden, dass er die im Mai 2018 formulierten und definierten Richtlinien im TIC 2.0 Anhang H erfüllt.  Microsoft ist sich bewusst, dass sich diese Richtlinien ändern können, und wird Kunden bestmöglich dabei unterstützen, neue Richtlinien rechtzeitig einzuhalten, sobald diese veröffentlicht werden.
+Sie können den Zugriff für Microsoft Azure, Office 365 und Dynamics 365 problemlos so konfigurieren, dass er die im Mai 2018 formulierten und definierten Richtlinien im TIC 2.0-Anhang H erfüllt. Microsoft weiß, dass der TIC-Leitfaden geändert werden kann. Microsoft versucht, Kunden dabei zu helfen, dem Leitfaden rechtzeitig zu entsprechen, wenn ein neuer Leitfaden veröffentlicht wird.
 
-## <a name="appendix-tic-patterns-for-common-workloads"></a>Anhang: TIC-Muster für gängige Workloads
+## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>Anhang: Muster von vertrauenswürdigen Internetverbindungen für gängige Workloads
 
-| Category (Kategorie) | Workload | IaaS | Dedizierter PaaS / VNET-Einschleusung  | Dienstendpunkte  |
+| Category (Kategorie) | Workload | IaaS | Dedizierte PaaS/Einfügen in virtuelle Netzwerke  | Dienstendpunkte  |
 |---------|---------|---------|---------|--------|
-| Compute | Virtuelle Linux-Computer | JA | | |
-| Compute | Virtuelle Windows-Computer | JA | | |
-| Compute | Virtual Machine Scale Sets | JA | | |
-| Compute | Azure-Funktionen | | über App Service-Umgebung (ASE) | |
-| Web- und mobile Anwendungen | Interne Webanwendung | | über App Service-Umgebung (ASE) | |
-| Web- und mobile Anwendungen | Interne mobile Anwendung | | über App Service-Umgebung (ASE) | |
-| Web- und mobile Anwendungen | API-Apps | | über App Service-Umgebung (ASE) | |
-| Container | Azure Container Service (ACS) | | | JA |
-| Container | Azure Container Service (AKS)* | | | JA |
-| Datenbank | SQL-Datenbank | | Verwaltete Azure SQL-Datenbank-Instanz* | Azure SQL |
+| Compute | Virtuelle Azure Linux-Computer | JA | | |
+| Compute | Virtuelle Azure Windows-Computer | JA | | |
+| Compute | VM-Skalierungsgruppen | JA | | |
+| Compute | Azure-Funktionen | | App Service-Umgebung | |
+| Web und mobil | Interne Webanwendung | | App Service-Umgebung| |
+| Web und mobil | Interne mobile Anwendung | | App Service-Umgebung | |
+| Web und mobil | API-Anwendungen | | App Service-Umgebung | |
+| Container | Azure Container Service | | | JA |
+| Container | Azure Kubernetes Service (AKS) \* | | | JA |
+| Datenbank | Azure SQL-Datenbank | | Verwaltete Azure SQL-Datenbank-Instanz \* | Azure SQL |
 | Datenbank | Azure Database for MySQL | | | JA |
 | Datenbank | Azure Database for PostgreSQL | | | JA |
-| Datenbank | SQL Data Warehouse | | | JA |
+| Datenbank | Azure SQL Data Warehouse | | | JA |
 | Datenbank | Azure Cosmos DB | | | JA |
-| Datenbank | Redis Cache | | JA | |
-| Speicher | Blobs (in englischer Sprache) | JA | | |
-| Speicher | Dateien | JA | | |
-| Speicher | Warteschlangen | JA | | |
-| Speicher | Tabellen | JA | | |
-| Speicher | Datenträger | JA | | |
+| Datenbank | Azure Redis Cache | | JA | |
+| Speicher | Azure Blob Storage | JA | | |
+| Speicher | Azure Files | JA | | |
+| Speicher | Azure Queue Storage | JA | | |
+| Speicher | Azure-Tabellenspeicher | JA | | |
+| Speicher | Azure Disk Storage | JA | | |
 
-*: Public Preview in Azure Government, Stand: Mai 2018  
-**: Private Preview in Azure Government, Stand: Mai 2018
+\* Öffentliche Vorschauversion in Azure Government, Mai 2018

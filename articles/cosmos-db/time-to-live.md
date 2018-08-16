@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: e1b11d637eec54d43c9f1212936d94b2d7396c97
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
+ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615120"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39480555"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
@@ -48,7 +48,17 @@ Die obige Logik wird in der folgenden Matrix veranschaulicht:
 | TTL = n für das Dokument |Auf der Dokumentebene kann nichts überschrieben werden. Der TTL-Wert für ein Dokument wird vom System nicht interpretiert. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall -1 und laufen nie ab. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall n von der Sammlung. |
 
 ## <a name="configuring-ttl"></a>Konfigurieren von TTL
-Die Gültigkeitsdauer ist in Cosmos DB-Sammlungen und für alle Dokumente standardmäßig deaktiviert. Die TTL kann programmgesteuert oder im Azure-Portal im Abschnitt **Einstellungen** für die Sammlung festgelegt werden. 
+Die Gültigkeitsdauer ist in Cosmos DB-Sammlungen und für alle Dokumente standardmäßig deaktiviert. TTL kann programmgesteuert oder über das Azure-Portal festgelegt werden. Führen Sie die folgenden Schritte aus, um TTL über das Azure-Portal zu konfigurieren:
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) an, und navigieren Sie zu Ihrem Azure Cosmos DB-Konto.  
+
+2. Navigieren Sie zur Sammlung, für die Sie den TTL-Wert festlegen möchten. Öffnen Sie den Bereich **Scale & Settings** (Skalierung und Einstellungen). Sie sehen, dass die Gültigkeitsdauer (TTL) standardmäßig auf **Aus** festgelegt ist. Sie können dies in **on (no default)** (Ein (kein Standard)) oder **Ein** ändern.
+
+   **Aus**: Dokumente werden nicht automatisch gelöscht.  
+   **on (no default)** (Ein (kein Standard)): Mit dieser Option wird der TTL-Wert auf „-1“ (unendlich) festgelegt. Dies bedeutet, dass Dokumente standardmäßig nicht ablaufen.  
+   **Ein**: Dokumente laufen „n“ Sekunden nach der letzten Änderung ab.  
+
+   ![Festlegen der Gültigkeitsdauer](./media/time-to-live/set-ttl-in-portal.png)
 
 ## <a name="enabling-ttl"></a>Aktivieren von TTL
 Um TTL für eine Sammlung (oder für die Dokumente in einer Sammlung) zu aktivieren, müssen Sie die DefaultTTL-Eigenschaft einer Auflistung entweder auf „-1“ oder auf eine positive Zahl ungleich Null festlegen. Wenn DefaultTTL auf „-1“ festgelegt wird, laufen die Dokumente in der Sammlung standardmäßig nicht ab, der Cosmos DB-Dienst überwacht die Sammlung aber auf Dokumente, bei denen diese Standardeinstellung überschrieben wurde.

@@ -3,7 +3,7 @@ title: Verwalten von Sicherheitsempfehlungen in Azure Security Center | Microsof
 description: In diesem Dokument erfahren Sie, wie Sicherheitsempfehlungen in Azure Security Center Ihnen helfen, Ihre Azure-Ressourcen zu schützen und Ihre Sicherheitsrichtlinien einzuhalten.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2018
-ms.author: terrylan
-ms.openlocfilehash: caeef52ed8eb456bbec015f1766a95aa5ceb49f8
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 0581ddc4289f604533bae3650618fada15e02bef
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367105"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39522236"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Verwalten von Sicherheitsempfehlungen in Azure Security Center
 In diesem Dokument erfahren Sie, wie Sie Sicherheitsempfehlungen in Azure Security Center verwenden, um Ihre Azure-Ressourcen zu schützen.
@@ -50,6 +50,8 @@ Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sich
 Um die Details zu jeder Empfehlung anzuzeigen, wählen Sie unter **Übersicht** die Kachel **Empfehlungen**. Das Blatt **Empfehlungen** wird geöffnet.
 
 ![Empfehlungen filtern][2]
+
+Sie können Empfehlungen filtern. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Filter**, um die Empfehlungen zu filtern. Das Blatt **Filter** wird geöffnet. Sie können Werte für Schweregrad und Status auswählen, die Sie anzeigen möchten.
 
 Die Empfehlungen werden in einem Tabellenformat angezeigt, wobei jede Zeile eine bestimmte Empfehlung darstellt. Die Spalten dieser Tabelle sind:
 
@@ -124,13 +126,6 @@ Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen verfügbar sind
 | Externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement entfernen | Empfiehlt, externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement zu entfernen, um nicht überwachten Zugriff zu verhindern. |
 | Veraltete Konten aus dem Abonnement entfernen | Empfiehlt, veraltete Konten aus Ihren Abonnements zu entfernen. |
 | Veraltete Konten mit Besitzerberechtigungen aus dem Abonnement entfernen | Empfiehlt, veraltete Konten mit Besitzerberechtigungen aus Ihren Abonnements entfernen. |
-Sie können Empfehlungen filtern und verwerfen.
-
-1. Wählen Sie auf dem Blatt **Empfehlungen** die Option **Filter** aus. Das Blatt **Filter** wird geöffnet. Sie können Werte für Schweregrad und Status auswählen, die Sie anzeigen möchten.
-
-2. Wenn Sie feststellen, dass eine Empfehlung nicht anwendbar ist, können Sie die Empfehlung verwerfen und dann aus der Ansicht filtern. Es gibt zwei Möglichkeiten, eine Empfehlung zu verwerfen. Klicken Sie mit der rechten Maustaste auf ein Element, und wählen Sie die **Verwerfen**. Oder bewegen Sie den Mauszeiger auf ein Element, klicken Sie auf die drei rechts angezeigten Punkte, und wählen Sie **Verwerfen**. Sie können verworfene Empfehlungen anzeigen, indem Sie auf **Filter** klicken und dann **Verworfen** auswählen.
-
-    ![Empfehlung verwerfen][3]
 
 ### <a name="apply-recommendations"></a>Anwenden von Empfehlungen
 Nach Auswertung aller Empfehlungen entscheiden Sie, welche zuerst angewendet werden soll. Es ist ratsam, den Schweregrad als wichtigsten Parameter bei der Entscheidung heranzuziehen, welche Empfehlungen zuerst angewendet werden sollen.
@@ -150,4 +145,3 @@ In diesem Dokument wurden Ihnen die Sicherheitsempfehlungen in Security Center v
 <!--Image references-->
 [1]: ./media/security-center-recommendations/recommendations-tile.png
 [2]: ./media/security-center-recommendations/filter-recommendations.png
-[3]: ./media/security-center-recommendations/dismiss-recommendations.png

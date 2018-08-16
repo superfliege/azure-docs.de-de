@@ -12,14 +12,14 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 05/23/2018
+ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: fb8a310a131938e95f3d21b3962dbbd1944a57ed
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e68a258c8e323b62f85219648c011ce1e661ee0d
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763424"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39494537"
 ---
 # <a name="sfctl-node"></a>sfctl node
 Ermöglicht es, Knoten zu verwalten, die einen Cluster bilden.
@@ -51,7 +51,7 @@ Deaktivieren Sie einen Service Fabric-Clusterknoten mit der angegebenen Deaktivi
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
 | --deactivation-intent | Beschreibt die Absicht oder den Grund für die Deaktivierung des Knotens. Die folgenden Werte sind möglich. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -73,7 +73,7 @@ Aktiviert einen Service Fabric-Clusterknoten, der momentan deaktiviert ist. Soba
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -95,8 +95,8 @@ Ruft die Integrität eines Service Fabric-Knotens ab. Verwenden Sie „EventsHea
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
-| --events-health-state-filter | Ermöglicht das Filtern der Collection zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warnung (4) hat.  <br> – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null.  <br> – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“.  <br> – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“.  <br> – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“.  <br> – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“.  <br> – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --events-health-state-filter | Ermöglicht das Filtern der Collection zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine flagbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen OR-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warnung (4) hat.  <br> – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null.  <br> – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“.  <br> – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“.  <br> – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist gleich „4“.  <br> – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“.  <br> – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -111,14 +111,14 @@ Ruft die Integrität eines Service Fabric-Knotens ab. Verwenden Sie „EventsHea
 ## <a name="sfctl-node-info"></a>sfctl node info
 Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab.
 
-Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab. Die Antwort enthält den Namen, den Status, die ID, die Integrität, die Betriebszeit und weitere Details über den Knoten.
+Die Antwort enthält den Namen, den Status, die ID, die Integrität, die Betriebszeit und weitere Details über den Knoten.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -133,15 +133,16 @@ Ruft die Informationen zu einem bestimmten Knoten im Service Fabric-Cluster ab. 
 ## <a name="sfctl-node-list"></a>sfctl node list
 Ruft die Liste der Knoten im Service Fabric-Cluster ab.
 
-Ruft die Liste der Knoten im Service Fabric-Cluster ab. Die Antwort enthält den Namen, den Status, die ID, die Integrität, die Betriebszeit und weitere Details über den Knoten.
+Die Antwort enthält den Namen, den Status, die ID, die Integrität, die Betriebszeit und weitere Details über die Knoten.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
+| --max-results | Die maximale Anzahl von Ergebnissen, die als Teil der seitenweisen Abfragen zurückgegeben werden sollen. Dieser Parameter definiert die obere Grenze für die Anzahl von zurückgegebenen Ergebnissen. Es können weniger Ergebnisse zurückgegeben werden, als dieser maximalen Anzahl entspricht. Dies ist der Fall, wenn die Ergebnisse wegen der Größenbeschränkungen, die für Meldungen in der Konfiguration definiert sind, nicht in die jeweilige Meldung passen. Ist dieser Parameter gleich null oder nicht angegeben, enthält die seitenweise Abfrage so viele Ergebnisse, wie in die Rückgabemeldung passen. |
 | --node-status-filter | Ermöglicht ein Filtern des Knotens anhand des Knotenstatus (NodeStatus). Es werden nur die Knoten zurückgegeben, die dem angegebenen Filterwert entsprechen. Der Filterwert kann einer der folgenden Werte sein.  Standard\: default. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -163,7 +164,7 @@ Ruft die Informationen zum Laden eines Service Fabric-Knotens für alle Metriken
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -178,14 +179,14 @@ Ruft die Informationen zum Laden eines Service Fabric-Knotens für alle Metriken
 ## <a name="sfctl-node-remove-state"></a>sfctl node remove-state
 Benachrichtigt Service Fabric, dass der persistente Zustand auf einem Knoten dauerhaft entfernt wurde oder verloren gegangen ist.
 
-Benachrichtigt Service Fabric, dass der persistente Zustand auf einem Knoten dauerhaft entfernt wurde oder verloren gegangen ist.  Dies bedeutet, dass es nicht möglich, den persistenten Zustand dieses Knotens wiederherzustellen. Dies geschieht in der Regel, wenn eine Festplatte zurückgesetzt wurde oder eine Festplatte abstürzt. Der Knoten muss ausgeschaltet sein, damit dieser Vorgang erfolgreich durchgeführt wird. Durch diesen Vorgang wird Service Fabric darauf hingewiesen, dass die Replikate auf diesem Knoten nicht mehr vorhanden sind, und dass Service Fabric nicht auf die Wiederherstellung dieser Replikate warten soll. Führen Sie dieses Cmdlet nicht aus, wenn der Zustand auf dem Knoten nicht entfernt wurde und der Knoten nicht wieder mit korrektem Zustand wiederhergestellt werden kann.
+Dies bedeutet, dass es nicht möglich, den persistenten Zustand dieses Knotens wiederherzustellen. Dies geschieht in der Regel, wenn eine Festplatte zurückgesetzt wurde oder eine Festplatte abstürzt. Der Knoten muss ausgeschaltet sein, damit dieser Vorgang erfolgreich durchgeführt wird. Durch diesen Vorgang wird Service Fabric darauf hingewiesen, dass die Replikate auf diesem Knoten nicht mehr vorhanden sind, und dass Service Fabric nicht auf die Wiederherstellung dieser Replikate warten soll. Führen Sie dieses Cmdlet nicht aus, wenn der Zustand auf dem Knoten nicht entfernt wurde und der Knoten nicht wieder mit korrektem Zustand wiederhergestellt werden kann.
 
 ### <a name="arguments"></a>Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -214,7 +215,7 @@ Meldet den Integritätszustand des angegebenen Service Fabric-Knotens. Der Beric
 | --immediate | Ein Flag, das angibt, ob der Bericht sofort gesendet werden soll. <br><br> Ein Integritätsbericht wird an eine Service Fabric-Gatewayanwendung gesendet, die diesen an den Integritätsspeicher weiterleitet. Wenn „Immediate“ auf „true“ festgelegt ist, wird der Bericht sofort vom HTTP-Gateway an den Integritätsspeicher gesendet, unabhängig von den Fabric-Clienteinstellungen, die die HTTP-Gatewayanwendung verwendet. Dies ist für kritische Berichte hilfreich, die schnellstmöglich gesendet werden sollen. Abhängig von der zeitlichen Steuerung und anderen Bedingungen können beim Senden des Berichts trotzdem möglicherweise Fehler auftreten, z.B., wenn das HTTP-Gateway geschlossen ist oder die Meldung das Gateway nicht erreicht. Wenn „Immediate“ auf „false“ festgelegt ist, wird der Bericht basierend auf den Integritätsclienteinstellungen vom HTTP-Gateway gesendet. Aus diesem Grund wird der Bericht entsprechend der HealthReportSendInterval-Konfiguration batchweise verarbeitet. Dies ist die empfohlene Einstellung, da der Integritätsclient die Optimierung von Meldungen des Integritätsberichts für den Integritätsspeicher sowie die Verarbeitung von Integritätsberichten ermöglicht. Standardmäßig werden Berichte nicht sofort gesendet. |
 | --remove-when-expired | Ein Wert, der angibt, ob der Bericht aus dem Integritätsspeicher entfernt wird, wenn er abläuft. <br><br> Wenn dieser Wert auf „true“ festgelegt ist, wird der Bericht aus dem Integritätsspeicher entfernt, nachdem er abgelaufen ist. Wenn dieser Wert auf „false“ festgelegt ist, wird der Bericht als Fehler behandelt, wenn er abgelaufen ist. Der Wert dieser Eigenschaft ist standardmäßig auf „false“ festgelegt. Wenn Clients in regelmäßigen Abständen Berichte erstellen, sollte RemoveWhenExpired auf „false“ (Standardwert) festgelegt sein. Denn falls der Reporter Probleme (z.B. Deadlocks) haben und keine Berichte erstellen können sollte, wird die Entität entsprechend auf Fehler ausgewertet, wenn der Integritätsbericht abläuft. Hierdurch wird die Entität nicht als in einem fehlerhaften Integritätszustand befindlich gekennzeichnet. |
 | --sequence-number | Die Sequenznummer für diesen Integritätsbericht als numerische Zeichenfolge. <br><br> Die Sequenznummer des Berichts wird vom Integritätsspeicher zur Erkennung veralteter Berichte verwendet. Wenn diese nicht angegeben ist, wird beim Hinzufügen eines Berichts automatisch eine Sequenznummer vom Integritätsclient generiert. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 | --ttl | Die Dauer, für die dieser Integritätsbericht gültig ist. Bei diesem Feld wird das ISO8601-Format zur Angabe der Dauer verwendet. <br><br> Wenn Clients in regelmäßigen Abständen Berichte erstellen, sollten sie Berichte in einem höherer Intervall als die Gültigkeitsdauer senden. Wenn Clients Berichte zur Übertragung erstellen, können sie die Gültigkeitsdauer auf einen unbegrenzten Wert festlegen. Wenn die Gültigkeitsdauer abläuft, wird das Integritätsereignis, das die Integritätsinformationen enthält, entweder aus dem Integritätsspeicher entfernt, sofern RemoveWhenExpired auf „true“ festgelegt ist, oder auf Fehler ausgewertet, sofern RemoveWhenExpired auf „false“ festgelegt ist. Wenn kein Wert angegeben ist, wird die Gültigkeitsdauer standardmäßig auf einen unbegrenzten Wert festgelegt. |
 
 ### <a name="global-arguments"></a>Globale Argumente
@@ -239,7 +240,7 @@ Startet einen Service Fabric-Clusterknoten neu, der bereits gestartet ist.
 | --node-name [erforderlich] | Der Name des Knotens. |
 | --create-fabric-dump | Geben Sie „True“ an, um ein Speicherabbild des Fabric-Knotenprozesses zu erstellen. Hierbei muss die Groß-/Kleinschreibung beachtet werden.  Standardwert\: „false“. |
 | --node-instance-id | Die Instanz-ID des Zielknotens. Ist die Instanz-ID angegeben, wird der Knoten nur dann neu gestartet, wenn die ID mit der aktuellen Instanz des Knotens übereinstimmt. Der Standardwert „0“ stimmt mit jeder Instanz-ID überein. Die Instanz-ID kann mithilfe einer Abfrage zum Abrufen des Knotens (getNode) abgerufen werden.  Standardwert\: „0“. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -265,7 +266,7 @@ Startet oder beendet einen Clusterknoten.  Ein Clusterknoten ist ein Prozess, ni
 | --node-transition-type [erforderlich] | Gibt den Typ des auszuführenden Übergangs an.  „NodeTransitionType.Start“ startet einen angehaltenen Knoten. „NodeTransitionType.Stop“ beendet einen Knoten, der betriebsbereit ist. |
 | --operation-id [erforderlich] | Eine GUID, die einen Aufruf dieser API kennzeichnet.  Diese GUID wird in die entsprechende GetProgress-API übergeben. |
 | --stop-duration-in-seconds [erforderlich] | Die Dauer in Sekunden, die der Knoten angehalten bleiben soll.  Der Mindestwert ist 600, der Höchstwert 14400.  Nach Ablauf dieser Zeit ist der Knoten automatisch wieder betriebsbereit. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -288,7 +289,7 @@ Ruft den Status eines Vorgangs ab, der mit StartNodeTransition mithilfe der bere
 | --- | --- |
 | --node-name [erforderlich] | Der Name des Knotens. |
 | --operation-id [erforderlich] | Eine GUID, die einen Aufruf dieser API kennzeichnet.  Diese GUID wird in die entsprechende GetProgress-API übergeben. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: „60“. |
+| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -299,6 +300,7 @@ Ruft den Status eines Vorgangs ab, der mit StartNodeTransition mithilfe der bere
 | --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
 | --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle

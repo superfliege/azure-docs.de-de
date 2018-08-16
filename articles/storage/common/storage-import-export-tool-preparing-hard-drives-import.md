@@ -2,24 +2,18 @@
 title: Vorbereiten von Festplatten für einen Azure Import/Export-Auftrag | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Festplatten mit dem WAImportExport-Tool zum Erstellen eines Importauftrags für den Azure Import/Export-Dienst vorbereiten.
 author: muralikk
-manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: ''
-ms.assetid: ''
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.openlocfilehash: 2854822907e818297c8d2f74cab48b0afa0d646c
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.component: common
+ms.openlocfilehash: 9d8509e97ad83dd636f0a1b1892a2fa67c69e0b7
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
-ms.locfileid: "23469239"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39521794"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 
@@ -82,12 +76,12 @@ BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
 
 ### <a name="dataset-csv-file-fields"></a>Felder der Dataset-CSV-Datei
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | BasePath | **[Erforderlich]**<br/>Der Wert dieses Parameters stellt die Quelle dar, in der sich die zu importierenden Daten befinden. Das Tool kopiert rekursiv alle Daten, die sich unter diesem Pfad befinden.<br><br/>**Zulässige Werte**: Dies muss ein gültiger Pfad auf dem lokalen Computer oder ein gültiger Freigabepfad sein, und der Benutzer sollte darauf zugreifen können. Der Verzeichnispfad muss ein absoluter Pfad sein (kein relativer Pfad). Wenn der Pfad mit „\\“ endet, stellt er ein Verzeichnis woanders in einem Pfad dar, der ohne „\\“ endet und eine Datei darstellt.<br/>In diesem Feld sind keine regulären Ausdrücke zulässig. Wenn der Pfad Leerzeichen enthält, setzen Sie sie in "".<br><br/>**Beispiel**: „c:\Directory\c\Directory\File.txt“<br>"\\\\FBaseFilesharePath.domain.net\sharename\directory\"  |
-| DstBlobPathOrPrefix | **[Erforderlich]**<br/> Der Pfad zum virtuellen Zielverzeichnis in Ihrem Microsoft Azure-Speicherkonto. Das virtuelle Verzeichnis kann, muss jedoch noch nicht vorhanden sein. Wenn es nicht vorhanden ist, wird es vom Import/Export-Dienst erstellt.<br/><br/>Achten Sie darauf, gültige Containernamen zu verwenden, wenn Sie virtuelle Zielverzeichnisse oder Blobs angeben. Containernamen müssen kleingeschrieben werden. Informationen zu den Benennungsregeln für Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese). Wenn nur der Stamm angegeben wird, wird die Verzeichnisstruktur der Quelle im Zielblobcontainer repliziert. Für den Fall, das eine andere Verzeichnisstruktur als diejenige in der Quelle gewünscht ist, stehen in der CSV-Datei mehrere Zeilen zur Zuordnung zur Verfügung.<br/><br/>Sie können einen Container oder ein Blobpräfix angeben, wie etwa „music/70s/“. Das Zielverzeichnis muss mit dem Containernamen beginnen, gefolgt von einem Schrägstrich „/“, und kann optional ein virtuelles Blobverzeichnis enthalten, das mit „/“ endet.<br/><br/>Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit den Stammcontainer angeben – einschließlich des Schrägstrichs, wie „$root/“. Da die Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten können, werden Unterverzeichnisse des Quellverzeichnisses nicht kopiert, wenn das Zielverzeichnis der Stammcontainer ist.<br/><br/>**Beispiel**<br/>Wenn der Blobzielpfad „https://mystorageaccount.blob.core.windows.net/video“ ist, kann der Wert dieses Felds „video/“ sein.  |
-| BlobType | **[Optional]** block &#124; page<br/>Gegenwärtig unterstützt der Import/Export-Dienst 2 Arten von Blobs. Seitenblobs und Blockblobs – standardmäßig werden alle Dateien als Blockblobs importiert. \*.vhd und \*.vhdx werden als Seitenblobs importiert. Die zulässige Größe von Blockblobs und Seitenblobs ist begrenzt. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Blobs, Warteschlangen, Tabellen und Dateien](storage-scalability-targets.md).  |
-| Disposition | **[Optional]** rename &#124; no-overwrite &#124; overwrite (umbenennen, nicht überschreiben, überschreiben) <br/> Dieses Feld gibt das Kopierverhalten beim Import an, Das bedeutet, wenn Daten vom Datenträger in das Speicherkonto geladen werden. Verfügbare Optionen sind: rename&#124;overwite&#124;no-overwrite. Der Standardwert ist „rename“, wenn nichts angegeben ist. <br/><br/>**Rename**: Wenn ein Objekt mit dem gleichen Namen vorhanden ist, wird eine Kopie im Ziel erstellt.<br/>Overwrite: Die Datei wird mit der neueren Dateiversion überschrieben. Die Version mit der letzten Änderung überschreibt die ältere.<br/>**No-overwrite**: Wenn die Datei bereits vorhanden ist, wird sie nicht überschrieben.|
+| DstBlobPathOrPrefix | **[Erforderlich]**<br/> Der Pfad zum virtuellen Zielverzeichnis in Ihrem Microsoft Azure-Speicherkonto. Das virtuelle Verzeichnis kann, muss jedoch noch nicht vorhanden sein. Wenn es nicht vorhanden ist, wird es vom Import/Export-Dienst erstellt.<br/><br/>Achten Sie darauf, gültige Containernamen zu verwenden, wenn Sie virtuelle Zielverzeichnisse oder Blobs angeben. Containernamen müssen kleingeschrieben werden. Informationen zu den Benennungsregeln für Container finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese). Wenn nur der Stamm angegeben wird, wird die Verzeichnisstruktur der Quelle im Zielblobcontainer repliziert. Für den Fall, das eine andere Verzeichnisstruktur als diejenige in der Quelle gewünscht ist, stehen in der CSV-Datei mehrere Zeilen zur Zuordnung zur Verfügung.<br/><br/>Sie können einen Container oder ein Blobpräfix angeben, wie etwa „music/70s/“. Das Zielverzeichnis muss mit dem Containernamen beginnen, gefolgt von einem Schrägstrich „/“, und kann optional ein virtuelles Blobverzeichnis enthalten, das mit „/“ endet.<br/><br/>Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit den Stammcontainer angeben – einschließlich des Schrägstrichs, wie „$root/“. Da die Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten können, werden Unterverzeichnisse des Quellverzeichnisses nicht kopiert, wenn das Zielverzeichnis der Stammcontainer ist.<br/><br/>**Beispiel**<br/>Wenn der Zielblobpfad https://mystorageaccount.blob.core.windows.net/video ist, kann der Wert dieses Felds „video/“ sein.  |
+| BlobType | **[Optional]** block &amp;#124; page<br/>Gegenwärtig unterstützt der Import/Export-Dienst 2 Arten von Blobs. Seitenblobs und Blockblobs – standardmäßig werden alle Dateien als Blockblobs importiert. \*.vhd und \*.vhdx werden als Seitenblobs importiert. Die zulässige Größe von Blockblobs und Seitenblobs ist begrenzt. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Blobs, Warteschlangen, Tabellen und Dateien](storage-scalability-targets.md).  |
+| Disposition | **[Optional]** rename &amp;#124; no-overwrite &amp;#124; overwrite (umbenennen, nicht überschreiben, überschreiben) <br/> Dieses Feld gibt das Kopierverhalten beim Import an, Das bedeutet, wenn Daten vom Datenträger in das Speicherkonto geladen werden. Verfügbare Optionen sind: rename&#124;overwite&#124;no-overwrite. Der Standardwert ist „rename“, wenn nichts angegeben ist. <br/><br/>**Rename**: Wenn ein Objekt mit dem gleichen Namen vorhanden ist, wird eine Kopie im Ziel erstellt.<br/>Overwrite: Die Datei wird mit der neueren Dateiversion überschrieben. Die Version mit der letzten Änderung überschreibt die ältere.<br/>**No-overwrite**: Wenn die Datei bereits vorhanden ist, wird sie nicht überschrieben.|
 | MetadataFile | **[Optional]** <br/>Der Wert dieses Felds ist die Metadatendatei, die bereitgestellt werden kann, wenn die Metadaten der Objekte beibehalten werden müssen, oder um benutzerdefinierte Metadaten bereitzustellen. Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md). |
 | PropertiesFile | **[Optional]** <br/>Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md). |
 
@@ -116,9 +110,9 @@ H,Format,SilentMode,Encrypt,
 | Felder | Wert |
 | --- | --- |
 | DriveLetter | **[Erforderlich]**<br/> Auf jedem Laufwerk, das dem Tool als Ziel bereitgestellt wird, muss ein einfaches NTFS-Volume vorhanden sein, und ihm muss ein Laufwerkbuchstabe zugewiesen sein.<br/> <br/>**Beispiel**: R oder r |
-| FormatOption | **[Required]** Format &#124; AlreadyFormatted<br/><br/> **Format**: Bei dieser Angabe werden alle Daten auf dem Datenträger formatiert. <br/>**AlreadyFormatted**: Bei dieser Angabe überspringt das Tool die Formatierung. |
-| SilentOrPromptOnFormat | **[Erforderlich]** SilentMode &#124; PromptOnFormat<br/><br/>**SilentMode**: Bei dieser Angabe kann der Benutzer das Tool im unbeaufsichtigten Modus ausführen. <br/>**PromptOnFormat**: Das Tool fordert den Benutzer bei jeder Formatierung auf, zu bestätigen, ob die Aktion wirklich vorgesehen ist.<br/><br/>Wenn kein Wert festgelegt wird, wird der Befehl mit folgender Meldung abgebrochen: „Incorrect value for SilentOrPromptOnFormat: none“ (Falscher Wert für SilentOrPromptOnFormat: keiner). |
-| Verschlüsselung | **[Erforderlich]** Encrypt &#124; AlreadyEncrypted<br/> Der Wert dieses Felds entscheidet, welcher Datenträger verschlüsselt wird und welcher nicht. <br/><br/>**Encrypt**: Das Tool formatiert das Laufwerk. Wenn der Wert des Felds „FormatOption“ „Format“ ist, muss dieser Wert „Encrypt“ sein. Wenn in diesem Fall „AlreadyEncrypted“ angegeben wird, führt dies zu der Fehlermeldung: „When Format is specified, Encrypt must also be specified“ (Bei Angabe von ‚Format‘ muss auch ‚Encrypt‘ angegeben werden).<br/>**AlreadyEncrypted**: Das Tool entschlüsselt das Laufwerk mit dem im Feld „ExistingBitLockerKey“ angegebenen BitLocker-Schlüssel. Wenn der Wert des Felds „FormatOption“ „AlreadyFormatted“ ist, kann dieser Wert entweder „Encrypt“ oder „AlreadyEncrypted“ sein. |
+| FormatOption | **[Required]** Format &amp;#124; AlreadyFormatted<br/><br/> **Format**: Bei dieser Angabe werden alle Daten auf dem Datenträger formatiert. <br/>**AlreadyFormatted**: Bei dieser Angabe überspringt das Tool die Formatierung. |
+| SilentOrPromptOnFormat | **[Erforderlich]** SilentMode &amp;#124; PromptOnFormat<br/><br/>**SilentMode**: Bei dieser Angabe kann der Benutzer das Tool im unbeaufsichtigten Modus ausführen. <br/>**PromptOnFormat**: Das Tool fordert den Benutzer bei jeder Formatierung auf, zu bestätigen, ob die Aktion wirklich vorgesehen ist.<br/><br/>Wenn kein Wert festgelegt wird, wird der Befehl mit folgender Meldung abgebrochen: „Incorrect value for SilentOrPromptOnFormat: none“ (Falscher Wert für SilentOrPromptOnFormat: keiner). |
+| Verschlüsselung | **[Erforderlich]** Encrypt &amp;#124; AlreadyEncrypted<br/> Der Wert dieses Felds entscheidet, welcher Datenträger verschlüsselt wird und welcher nicht. <br/><br/>**Encrypt**: Das Tool formatiert das Laufwerk. Wenn der Wert des Felds „FormatOption“ „Format“ ist, muss dieser Wert „Encrypt“ sein. Wenn in diesem Fall „AlreadyEncrypted“ angegeben wird, führt dies zu der Fehlermeldung: „When Format is specified, Encrypt must also be specified“ (Bei Angabe von ‚Format‘ muss auch ‚Encrypt‘ angegeben werden).<br/>**AlreadyEncrypted**: Das Tool entschlüsselt das Laufwerk mit dem im Feld „ExistingBitLockerKey“ angegebenen BitLocker-Schlüssel. Wenn der Wert des Felds „FormatOption“ „AlreadyFormatted“ ist, kann dieser Wert entweder „Encrypt“ oder „AlreadyEncrypted“ sein. |
 | ExistingBitLockerKey | **[Erforderlich]** Wenn das Feld „Encryption“ den Wert „AlreadyEncrypted“ hat.<br/> Der Wert dieses Felds ist der BitLocker-Schlüssel, der dem bestimmten Datenträger zugeordnet ist. <br/><br/>Dieses Feld sollte leer gelassen werden, wenn das Feld „Encryption“ den Wert „Encrypt“ hat.  Wenn der BitLocker-Schlüssel in diesem Fall angegeben wird, führt dies zu der Fehlermeldung „Bitlocker Key should not be specified“ (BitLocker-Schlüssel sollte nicht angegeben werden).<br/>  **Beispiel**: 060456-014509-132033-080300-252615-584177-672089-411631|
 
 ##  <a name="preparing-disk-for-import-job"></a>Vorbereiten des Datenträgers für den Importauftrag
@@ -205,7 +199,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /ResumeSession
 
 ## <a name="waimportexport-parameters"></a>WAImportExport-Parameter
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 |     /j:&lt;Journaldatei&gt;  | **Erforderlich**<br/> Der Pfad zur Journaldatei. Eine Journaldatei verfolgt einen Satz von Laufwerken und zeichnet den Status der Vorbereitung dieser Laufwerke auf. Die Journaldatei muss immer angegeben werden.  |
 |     /LogDir:&lt;Protokollverzeichnis&gt;  | **Optional**. Das Protokollverzeichnis.<br/> In dieses Verzeichnis werden sowohl ausführliche Protokolldateien als auch Temporärdateien geschrieben. Ohne spezielle Angabe wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet. Das Protokollverzeichnis kann nur einmal für die gleiche Journaldatei angegeben werden.  |
@@ -315,7 +309,7 @@ Wenn die Größe der Daten die Größe des Datenträgers überschreitet, verteil
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>Wo finde ich die Vorgängerversion des WAImportExport-Tools?
 
-Das WAImportExport-Tool verfügt über alle Funktionen, die das WAImportExport V1-Tool hatte. Das WAImportExport-Tool ermöglicht Benutzern, mehrere Quellen anzugeben und auf mehrere Laufwerke zu schreiben. Darüber hinaus lassen sich problemlos mehrere Quellspeicherorte, aus denen die Daten kopiert werden müssen, in einer einzigen CSV-Datei verwalten. Falls Sie jedoch SAS-Unterstützung benötigen oder eine einzelne Datenquelle auf einen einzelnen Datenträger kopieren möchten, können Sie das [WAImportExport V1-Tool herunterladen] (http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) und unter [Using the Azure Import/Export Tool (v1)](storage-import-export-tool-how-to-v1.md) (Verwendung des Azure Import/Export-Tools [v1]) Hilfe zur Verwendung von WAImportExport V1 finden.
+Das WAImportExport-Tool verfügt über alle Funktionen, die das WAImportExport V1-Tool hatte. Das WAImportExport-Tool ermöglicht Benutzern, mehrere Quellen anzugeben und auf mehrere Laufwerke zu schreiben. Darüber hinaus lassen sich problemlos mehrere Quellspeicherorte, aus denen die Daten kopiert werden müssen, in einer einzigen CSV-Datei verwalten. Falls Sie jedoch SAS-Unterstützung benötigen oder eine einzelne Datenquelle auf einen einzelnen Datenträger kopieren möchten, können Sie das [WAImportExport V1-Tool herunterladen] (http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409) und unter [Verwenden des Azure Import/Export-Tools (klassisches Bereitstellungsmodell)](storage-import-export-tool-how-to-v1.md) Hilfe zur Verwendung von WAImportExport V1 finden.
 
 #### <a name="what-is-a-session-id"></a>Was ist eine Sitzungs-ID?
 
@@ -372,7 +366,7 @@ Alle Microsoft .NET Framework-Versionen werden im folgenden Verzeichnis installi
 
 Navigieren Sie zu dem oben erwähnten Verzeichnis Ihres Zielcomputers, auf dem das Tool ausgeführt werden soll. Suchen Sie nach einem Ordnernamen, der mit „v4“ beginnt. Wenn ein solches Verzeichnis nicht vorhanden ist, ist .NET 4 nicht auf dem Computer installiert. Sie können .Net 4 mit [Microsoft .NET Framework 4 (Webinstaller)](https://www.microsoft.com/download/details.aspx?id=17851) auf Ihren Computer herunterladen.
 
-### <a name="limits"></a>Grenzen
+### <a name="limits"></a>Einschränkungen
 
 #### <a name="how-many-drives-can-i-preparesend-at-the-same-time"></a>Wie viele Laufwerke kann ich zur gleichen Zeit vorbereiten/senden?
 

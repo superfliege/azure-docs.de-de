@@ -3,7 +3,7 @@ title: Just-In-Time-VM-Zugriff in Azure Security Center | Microsoft-Dokumentatio
 description: In diesem Dokument wird beschrieben, wie Sie mit Just-In-Time-VM-Zugriff in Azure Security Center den Zugriff auf die virtuellen Azure-Computer steuern können.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 288524e58efd64670df098f249f3ad0b1cca464c
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.date: 08/05/2018
+ms.author: rkarlin
+ms.openlocfilehash: 18c05444c151a87048db71b039845e26796126b8
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990577"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525942"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -168,10 +168,9 @@ Sie können die Protokollinformationen herunterladen, indem Sie **Klicken Sie hi
 
 Ändern Sie die Filter, und wählen Sie **Anwenden** aus, um eine Suche und ein Protokoll zu erstellen.
 
-## <a name="using-just-in-time-vm-access-via-powershell"></a>Verwenden von Just-In-Time-VM-Zugriff mit PowerShell
+## <a name="using-just-in-time-vm-access-via-rest-apis"></a>Verwenden von Just-In-Time-VM-Zugriff mit REST-APIs
 
-Um die Just-In-Time-Lösung mit PowerShell zu verwenden, stellen Sie sicher, dass Sie über die [aktuelle](/powershell/azure/install-azurerm-ps) Version von Azure PowerShell verfügen.
-Sobald Sie über diese verfügen, müssen Sie das [aktuelle](https://aka.ms/asc-psgallery) Azure Security Center aus dem PowerShell-Katalog installieren.
+Das Feature Just-In-Time-VM-Zugriff kann über die Azure Security Center-API verwendet werden. Sie können über diese API u.a. Informationen über konfigurierte virtuelle Computer erhalten, neue hinzufügen und Zugriff auf einen virtuellen Computer anfordern. Unter [Richtlinien für den Jit-Netzwerkzugriff](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies) finden Sie weitere Informationen zur Just-In-Time-REST-API.
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurieren einer Just-In-Time-Richtlinie für einen virtuellen Computer
 

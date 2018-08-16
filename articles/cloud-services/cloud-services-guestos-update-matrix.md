@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/3/2018
+ms.date: 8/3/2018
 ms.author: raiye
-ms.openlocfilehash: 518e55de440daa93dc0a9a9eebc207ebcde07d57
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 2ee31e0a2d563ddf2aa63498b4ca280e4da26754
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970161"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39524857"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen. 
@@ -43,6 +43,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="august-3-2018"></a>**3. August 2018**
+Das Gastbetriebssystem für Juli wurde veröffentlicht.
 
 ###### <a name="july-3-2018"></a>**3. Juli 2018**
 Das Gastbetriebssystem für Juni wurde veröffentlicht.
@@ -90,8 +93,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.21_201807-02 |3. August 2018 |Post 5.23 |TBD |
 | WA-GUEST-OS-5.20_201806-01 |3. Juli 2018 |Post 5.22 |TBD |
-| WA-GUEST-OS-5.19_201805-01 |1. Juni 2018 |Post 5.21 |TBD |
+|~~WA-GUEST-OS-5.19_201805-01~~ |1. Juni 2018 |3. August 2018 |TBD |
 |~~WA-GUEST-OS-5.18_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-5.17_201803-01~~ |6. April 2018 |1. Juni 2018|TBD |
 |~~WA-GUEST-OS-5.16_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
@@ -99,7 +103,6 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 |~~WA-GUEST-OS-5.14_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
 |~~WA-GUEST-OS-5.13_201711-01~~ |14. Dezember 2017 |4. Januar 2018|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
-|~~WA-GUEST-OS-5.11_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
 
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
@@ -114,8 +117,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.56_201807-02 |3. August 2018 |Post 4.58 |TBD |
 | WA-GUEST-OS-4.55_201806-01 |3. Juli 2018 |Post 4.57 |TBD |
-| WA-GUEST-OS-4.54_201805-01 |1. Juni 2018 |Post 4.56 |TBD |
+|~~WA-GUEST-OS-4.54_201805-01~~ |1. Juni 2018 |3. August 2018 |TBD |
 |~~WA-GUEST-OS-4.53_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-4.52_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
 |~~WA-GUEST-OS-4.51_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |
@@ -123,8 +127,6 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-4.49_201712-01~~ |4. Januar 2018 |12. März 2018 |TBD |
 |~~WA-GUEST-OS-4.48_201711-01~~ |14. Dezember 2017 |4. Januar 2018 |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
-|~~WA-GUEST-OS-4.46_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
-
 
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
@@ -139,8 +141,9 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.63_201807-02 |3. August 2018 |Post 3.65 |TBD |
 | WA-GUEST-OS-3.62_201806-01 |3. Juli 2018 |Post 3.64 |TBD |
-| WA-GUEST-OS-3.61_201805-01 |1. Juni 2018 |Post 3.63 |TBD |
+|~~WA-GUEST-OS-3.61_201805-01~~ |1. Juni 2018 |3. August 2018 |TBD |
 |~~WA-GUEST-OS-3.60_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-3.59_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
 |~~WA-GUEST-OS-3.58_201802-01~~ |19. März 2018 |4. Mai 2018 |TBD |
@@ -148,8 +151,6 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-3.56_201712-01~~ |4. Januar 2018 |19. März 2018 |TBD |
 |~~WA-GUEST-OS-3.55_201711-01~~ |14. Dezember 2017 |29. Januar 2018 |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |8. November 2017 |4. Januar 2018 |TBD |
-|~~WA-GUEST-OS-3.53_201709-01~~ |6. Oktober 2017 |14. Dezember 2017 |TBD |
-|~~WA-GUEST-OS-3.52_201708-01~~ |24. August 2017 |14. Dezember 2017 |TBD |
 
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
@@ -164,8 +165,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.76_201807-02 |3. August 2018 |Post 2.78 |TBD |
 | WA-GUEST-OS-2.75_201806-01 |3. Juli 2018 |Post 2.77 |TBD |
-| WA-GUEST-OS-2.74_201805-01 |1. Juni 2018 |Post 2.76 |TBD |
+|~~WA-GUEST-OS-2.74_201805-01~~ |1. Juni 2018 |3. August 2018|TBD |
 |~~WA-GUEST-OS-2.73_201804-01~~ |4. Mai 2018 |3. Juli 2018 |TBD |
 |~~WA-GUEST-OS-2.72_201803-01~~ |6. April 2018 |1. Juni 2018 |TBD |
 |~~WA-GUEST-OS-2.71_201802-01~~ |12. März 2018 |4. Mai 2018 |TBD |

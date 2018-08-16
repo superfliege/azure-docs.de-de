@@ -2,24 +2,18 @@
 title: Überwachung, Diagnose und Problembehandlung in Azure Storage | Microsoft Docs
 description: Verwenden Sie Features wie Speicheranalyse, clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Storage zu erkennen, zu diagnostizieren und zu beheben.
 services: storage
-documentationcenter: ''
 author: fhryo-msft
-manager: jahogg
-editor: tysonn
-ms.assetid: d1e87d98-c763-4caa-ba20-2cf85f853303
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.openlocfilehash: b89071048594e1e11efb321da3d0b48005824b46
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: common
+ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29740662"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39528713"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -42,17 +36,17 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
   * [Kapazitätsüberwachung]
   * [Verfügbarkeitsüberwachung]
   * [Leistungsüberwachung]
-* [Diagnose von Speicherfehlern]
+* [Diagnose von Speicherproblemen]
   * [Probleme mit der Dienstintegrität]
   * [Leistungsprobleme]
   * [Fehlerdiagnose]
   * [Probleme mit dem Speicheremulator]
   * [Speicher-Protokollierungstools]
   * [Verwendung von Netzwerk-Protokollierungstools]
-* [Durchgehende Verfolgung]
+* [Durchgängige Verfolgung]
   * [Korrelation von Protokollierungsdaten]
   * [Clientanfrage-ID]
-  * [Serveranforderungs-ID]
+  * [Serveranfrage-ID]
   * [Zeitstempel]
 * [Anleitungen zur Problembehandlung]
   * [Metriken zeigen hohe AverageE2ELatency und niedrige AverageServerLatency an]
@@ -65,7 +59,7 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
   * [Der Client empfängt HTTP 403 (Verboten)-Meldungen]
   * [Der Client empfängt HTTP 404 (Nicht gefunden)-Meldungen]
   * [Der Client empfängt HTTP 409 (Konflikt)-Meldungen]
-  * [Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“]
+  * [Metriken zeigen niedrigen PercentSuccess an, oder Analyse-Protokollierungseinträge enthalten Operationen mit Transaktionsstatus "ClientOtherErrors"]
   * [Kapazitätsmetriken zeigen einen unerwarteten Anstieg der Speicherkapazitätsauslastung an]
   * [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]
   * [Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme]
@@ -74,10 +68,10 @@ Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speiche
   * [Troubleshoot attached VHDs on Azure Linux virtual machines](../../virtual-machines/linux/troubleshoot-vhds.md) (Problembehandlung für angefügte VHDs auf virtuellen Linux-Computern)
   * [Behandlung von Problemen in Azure Files in Windows](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [Beheben von Problemen mit Azure Files unter Linux](../files/storage-troubleshoot-linux-file-connection-problems.md)
-* [Anhängen]
+* [Anhänge]
   * [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr]
   * [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]
-  * [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]
+  * [Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]
   * [Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten]
   * [Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services]
 
@@ -95,13 +89,13 @@ Dieser Leitfaden richtet sich in erster Linie an Entwickler von Online-Diensten,
 ### <a name="how-this-guide-is-organized"></a>Wie diese Anleitung aufgebaut ist
 Der Abschnitt "[Überwachung Ihres Speicherdiensts]" beschreibt, wie Sie die Integrität und Leistungsfähigkeit Ihres Azure-Speicherdiensts mit Azure-Speicher-Analytikmetriken (Speichermetriken) überwachen können.
 
-Der Abschnitt "[Diagnose von Speicherfehlern]" beschreibt, wie Probleme unter Verwendung von Azure-Speicheranalytik-Protokollierung (Speicherprotokollierung) diagnostiziert werden. Er beschreibt auch, wie Sie die clientseitige Protokollierung unter Verwendung einer der Clientbibliotheken wie der Speicher-Clientbibliothek für .NET oder des Azure SDK für Java aktivieren.
+Der Abschnitt "[Diagnose von Speicherproblemen]" beschreibt, wie Probleme unter Verwendung von Azure-Speicheranalytik-Protokollierung (Speicherprotokollierung) diagnostiziert werden. Er beschreibt auch, wie Sie die clientseitige Protokollierung unter Verwendung einer der Clientbibliotheken wie der Speicher-Clientbibliothek für .NET oder des Azure SDK für Java aktivieren.
 
-Der Abschnitt "[Durchgehende Verfolgung]" beschreibt, wie Sie die in Protokollierungsdateien und Metrikdaten enthaltenen Informationen zuordnen.
+Der Abschnitt "[Durchgängige Verfolgung]" beschreibt, wie Sie die in Protokollierungsdateien und Metrikdaten enthaltenen Informationen zuordnen.
 
 Der Abschnitt "[Anleitungen zur Problembehandlung]" stellt Anleitungen für die Behandlung einiger der allgemeinen speicherbezogenen Probleme bereit, auf die Sie stoßen könnten.
 
-Die "[Anhängen]" enthalten Informationen zur Verwendung anderer Tools wie Wireshark und Netmon für die Analyse von Netzwerkpaketdaten, Fiddler für die Analyse von HTTP-/HTTPS-Nachrichten und Microsoft Message Analyzer für die Korrelation von Protokollierungsdaten.
+Die "[Anhänge]" enthalten Informationen zur Verwendung anderer Tools wie Wireshark und Netmon für die Analyse von Netzwerkpaketdaten, Fiddler für die Analyse von HTTP-/HTTPS-Nachrichten und Microsoft Message Analyzer für die Korrelation von Protokollierungsdaten.
 
 ## <a name="monitoring-your-storage-service"></a>Überwachung Ihres Speicherdiensts
 Wenn Sie mit der Windows-Leistungsüberwachung vertraut sind, können Sie von Speichermetriken als einem Azure-Speicher-Pendant zu Windows-Leistungsüberwachungsindikatoren ausgehen. In Speichermetriken finden Sie einen umfassenden Metriksatz (Indikatoren in der Windows Performance Monitor-Terminologie) wie Dienstverfügbarkeit, Gesamtzahl der Dienstanfragen oder Prozentsatz der erfolgreichen Dienstanfragen. Eine vollständige Liste der verfügbaren Kennzahlen finden Sie im Thema zu den [Kennzahlen zur Speicheranalyse – Tabellenschema](http://msdn.microsoft.com/library/azure/hh343264.aspx). Sie können spezifizieren, ob der Speicherdienst die Metriken jede Stunde oder jede Minute sammeln und aggregieren soll. Weitere Informationen zur Metrik-Aktivierung und Überwachung Ihrer Speicherkonten finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](http://go.microsoft.com/fwlink/?LinkId=510865).
@@ -110,14 +104,14 @@ Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://por
 
 Der Speicherdienst sammelt Metriken nach dem Best-Effort-Prinzip, kann aber nicht jeden Speichervorgang aufzeichnen.
 
-Im Azure-Portal können Sie Metriken wie Verfügbarkeit, Gesamtanforderungen und durchschnittliche Latenzzahlen für ein Speicherkonto anzeigen. Zudem wurde eine Benachrichtigungsregel eingerichtet, um einen Administrator zu benachrichtigen, wenn die Verfügbarkeit unter ein bestimmtes Niveau sinkt. Aus der Anzeige dieser Daten ergibt sich als möglicher Untersuchungsbereich der unter 100 Prozent liegende Erfolgsprozentsatz des Tabellenspeicherdiensts. (Weitere Informationen finden Sie im Abschnitt [Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“].)
+Im Azure-Portal können Sie Metriken wie Verfügbarkeit, Gesamtanforderungen und durchschnittliche Latenzzahlen für ein Speicherkonto anzeigen. Zudem wurde eine Benachrichtigungsregel eingerichtet, um einen Administrator zu benachrichtigen, wenn die Verfügbarkeit unter ein bestimmtes Niveau sinkt. Aus der Anzeige dieser Daten ergibt sich als möglicher Untersuchungsbereich der unter 100 Prozent liegende Erfolgsprozentsatz des Tabellenspeicherdiensts. (Weitere Informationen finden Sie im Abschnitt [Metriken zeigen niedrigen PercentSuccess an, oder Analyse-Protokollierungseinträge enthalten Operationen mit Transaktionsstatus "ClientOtherErrors"].)
 
 Sie sollten Ihre Azure-Anwendungen kontinuierlich überwachen, um sicherzustellen, dass sie wie erwartet integer und leistungsfähig sind, durch:
 
 * Festlegung einiger Baseline-Metriken für die Anwendung, mit denen Sie die aktuellen Daten vergleichen und alle wesentlichen Änderungen im Verhalten des Azure-Speichers und Ihrer Anwendung identifizieren können. Die Werte Ihrer Baseline-Metriken werden in vielen Fällen anwendungsspezifisch sein und sollten von Ihnen bei der Durchführung der Leistungstest für Ihre Anwendung festgelegt werden.
 * Aufzeichnung von Minutenmetriken und ihre Verwendung zur aktiven Überwachung unerwarteter Fehler und Anomalien wie Spitzen in Fehlerzahlen oder Anfrageraten.
 * Aufzeichnung von Stundenmetriken und ihre Verwendung zur Überwachung von Durchschnittswerten wie durchschnittliche Fehlerzahlen und Anfrageraten.
-* Untersuchung potentieller Probleme unter Verwendung von Diagnosetools, entsprechend der Darstellung weiter unten im Abschnitt "[Diagnose von Speicherfehlern]."
+* Untersuchung potentieller Probleme unter Verwendung von Diagnosetools, entsprechend der Darstellung weiter unten im Abschnitt "[Diagnose von Speicherproblemen]."
 
 Die Diagramme in der folgenden Abbildung illustrieren, wie die Durchschnittsberechnung für die Stundenmetrik Aktivitätsspitzen verstecken kann. Die Stundenmetriken scheinen eine konstante Anfragerate anzuzeigen, während die Minutenmetriken die wirklichen Schwankungen offenbaren.
 
@@ -146,7 +140,7 @@ Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blob
 ### <a name="monitoring-availability"></a>Verfügbarkeitsüberwachung
 Sie sollten die Verfügbarkeit des Speicherdiensts in Ihrem Speicherkonto überwachen, indem Sie in den Tabellen für Stunden- oder Minutenmetriken den Wert in der Spalte **Availability** überwachen: **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob**. Die Spalte **Availability** enthält einen Prozentwert, der die Verfügbarkeit des Diensts oder API-Vorgangs in der jeweiligen Zeile darstellt. (Der Wert von **RowKey** gibt Aufschluss darüber, ob die Zeile allgemeine Metriken für den Dienst oder Metriken für einen bestimmten API-Vorgang enthält.)
 
-Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der **Verfügbarkeit**auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
+Jeder unter 100 % liegende Wert zeigt an, dass einige Speicheranfragen fehlschlagen. Zur Ermittlung der Fehlerursache können Sie die anderen Spalten in den Metrikdaten untersuchen, in denen die Anzahl von Anfragen mit verschiedenen Fehlerarten (beispielsweise **ServerTimeoutError**) angezeigt wird. Aufgrund von vorübergehenden Servertimeouts, die beispielsweise auftreten können, wenn der Server Partitionen verschiebt, um eine bessere Lastverteilung der Anforderungen zu erreichen, ist mit dem vorübergehenden Absinken der Verfügbarkeit**** auf unter 100 Prozent zu rechnen. Solche zeitweiligen Bedingungen sollten von der Wiederholungslogik in Ihrer Clientanwendung behandelt werden. Im Artikel [Protokollierte Speicheranalysevorgänge und Statusmeldungen](http://msdn.microsoft.com/library/azure/hh343260.aspx) sind die Transaktionsarten aufgeführt, die die Speichermetriken in ihrer Berechnung der **Verfügbarkeit** enthalten.
 
 Im [Azure-Portal](https://portal.azure.com) können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die **Verfügbarkeit** den von Ihnen festgelegten Grenzwert unterschreitet.
 
@@ -330,7 +324,7 @@ Bezieht sich Ihr Problem auf die Verfügbarkeit eines Speicherdiensts?
 * [Der Client empfängt HTTP 409 (Konflikt)-Meldungen]
 
 ---
-[Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“]
+[Metriken zeigen niedrigen PercentSuccess an, oder Analyse-Protokollierungseinträge enthalten Operationen mit Transaktionsstatus "ClientOtherErrors"]
 
 ---
 [Kapazitätsmetriken zeigen einen unerwarteten Anstieg der Speicherkapazitätsauslastung an]
@@ -380,7 +374,7 @@ In der Regel wird eine hohe durchgängige Latenz durch die Übermittlungsbedingu
 
 Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
 
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ### <a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>Metriken zeigen niedrige AverageE2ELatency und niedrige AverageServerLatency an, aber der Client erfährt hohe Latenz
 In diesem Szenario ist ein verzögertes Erreichen des Speicherdiensts durch die Speicheranfragen die wahrscheinlichste Ursache. Sie sollten untersuchen, warum Clientanfragen den Blob-Dienst nicht erreichen.
@@ -391,13 +385,13 @@ Prüfen Sie auch, ob der Client mehrere Wiederholungen ausführt, und untersuche
 
 * Überprüfen Sie die Speicheranalyseprotokolle. Wenn mehrere Wiederholungen auftreten, sehen Sie mehrere Vorgänge mit der gleichen Client-ID, aber unterschiedliche Serveranfrage-IDs.
 * Überprüfen Sie die Clientprotokolle. Bei einer ausführlichen Protokollierung wird auch angezeigt, dass ein erneuter Versuch erfolgt ist.
-* Debuggen Sie den Code, und überprüfen Sie die Eigenschaften des **OperationContext** -Objekts, das mit der Anfrage verknüpft ist. Wenn der Vorgang wiederholt wurde, enthält die **RequestResults** -Eigenschaft mehrere eindeutige Serveranforderungs-IDs. Sie können auch die Start- und Endzeiten der einzelnen Anforderungen überprüfen. Weitere Information finden Sie im Codebeispiel im Abschnitt [Serveranforderungs-ID].
+* Debuggen Sie den Code, und überprüfen Sie die Eigenschaften des **OperationContext** -Objekts, das mit der Anfrage verknüpft ist. Wenn der Vorgang wiederholt wurde, enthält die **RequestResults** -Eigenschaft mehrere eindeutige Serveranforderungs-IDs. Sie können auch die Start- und Endzeiten der einzelnen Anforderungen überprüfen. Weitere Information finden Sie im Codebeispiel im Abschnitt [Serveranfrage-ID].
 
 Wenn das Problem nicht beim Client liegt, sollten Sie potenzielle Netzwerkprobleme wie Paketverlust untersuchen. Sie können Tools wie Wireshark oder Microsoft Message Analyzer verwenden, um Netzwerkprobleme zu untersuchen.
 
 Weitere Informationen zu Wireshark zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
 
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zur Verwendung von Microsoft Message Analyzer zur Behandlung von Netzwerkproblemen finden Sie unter[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ### <a name="metrics-show-high-AverageServerLatency"></a>Metriken zeigen hohe AverageServerLatency an
 Im Fall von hoher **AverageServerLatency** bei Blob-Download-Anfragen sollten Sie die Speicherprotokollierungen verwenden, um herauszufinden, ob wiederholte Anfragen für den gleichen Blob (oder die gleiche Blob-Gruppe) vorliegen. In Bezug auf Blobuploadanfragen sollten Sie untersuchen, welche Blockgröße der Client verwendet (zum Beispiel können Blöcke mit weniger als 64 K zu Overheads führen, wenn Lesevorgänge auch in Blöcken von weniger als 64 K erfolgen) und ob mehrere Clients parallel Blöcke in den gleichen Blob hochladen. Sie sollten auch die Pro-Minute-Metriken für Anfrageanzahlspitzen überprüfen, die zu einer Überschreitung der Pro-Sekunde-Skalierbarkeitsziele führen "[Metriken zeigen Anstieg bei PercentTimeoutError an]".
@@ -467,7 +461,7 @@ Server-Timeouts zeigen ein Problem mit dem Speicherdienst an, das weitere Unters
 ### <a name="metrics-show-an-increase-in-PercentNetworkError"></a>Metriken zeigen Anstieg bei PercentNetworkError an
 Ihre Metriken zeigen einen Anstieg bei **PercentNetworkError** für einen Ihrer Speicherdienste an. Die Metrik **PercentNetworkError** ist eine Aggregation der folgenden Metriken: **NetworkError**, **AnonymousNetworkError** und **SASNetworkError**. Diese treten auf, wenn der Speicherdienst bei einer Speicheranfrage des Client einen Netzwerkfehler entdeckt.
 
-Die häufigste Ursache für diesen Fehler ist eine Trennung der Client-Verbindung vor Ablauf eines Timeouts im Speicherdienst. Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht. Sie können auch Wireshark, Microsoft Message Analyzer oder TCPing verwenden, um Netzwerkverbindungsprobleme des Client zu untersuchen. Die Beschreibung dieser Tools finden Sie in den [Anhängen].
+Die häufigste Ursache für diesen Fehler ist eine Trennung der Client-Verbindung vor Ablauf eines Timeouts im Speicherdienst. Untersuchen Sie den Code in Ihrem Client, um herauszufinden, warum und wann der Client die Verbindung zum Speicherdienst abbricht. Sie können auch Wireshark, Microsoft Message Analyzer oder TCPing verwenden, um Netzwerkverbindungsprobleme des Client zu untersuchen. Die Beschreibung dieser Tools finden Sie in den [Anhänge].
 
 ### <a name="the-client-is-receiving-403-messages"></a>Der Client empfängt HTTP 403 (Verboten)-Meldungen
 Wenn Ihre Clientanwendung einen HTTP 403 (Verboten)-Fehler ausgibt, ist eine wahrscheinliche Ursache, dass der Client eine abgelaufene Shared Access Signature (SAS) verwendet, wenn er eine Speicheranfrage versendet. (Weitere mögliche Ursachen sind Zeitverzögerung, ungültige Schlüssel und leere Header). Wenn ein abgelaufener Schlüssel die Ursache ist, werden Sie keine Einträge in den serverseitigen Speicherprotokollierungsdaten finden. Die folgende Tabelle zeigt ein Beispiel für eine von der Speicher-Clientbibliothek generierte Clientprotokollierung, die folgende Problemstellung veranschaulicht:
@@ -708,7 +702,7 @@ Weitere Informationen finden Sie in[Anhang 1: Verwendung von Fiddler zur Erfassu
 
 Weitere Informationen zu Wireshark finden Sie in[Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr].
 
-Weitere Informationen zur Verwendung von Microsoft Message Analyzer finden Sie in[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
+Weitere Informationen zur Verwendung von Microsoft Message Analyzer finden Sie in[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr].
 
 ## <a name="appendices"></a>Anhänge
 Die Anhänge beschreiben verschiedene Tools, die bei der Diagnose und Fehlerbehandlung von Problemen mit Azure-Speicher (und anderen Diensten) nützlich sein könnten. Diese Werkzeuge sind nicht Teil von Azure-Speicher, und einige sind Produkte von Drittanbietern. Als solche sind die in diesen Anhängen diskutierten Tools nicht durch Support-Vereinbarungen abgedeckt, die Sie ggf. mit Microsoft Azure oder Azure-Speicher getroffenen haben. Als Bestandteil Ihrer Evaluierung sollten Sie daher die Lizenz- und Supportoptionen prüfen, die die Anbieter dieser Tools zur Verfügung stellen.
@@ -823,7 +817,7 @@ Weitere Informationen finden Sie unter [Was ist Application Insights](../../appl
 [Verfügbarkeitsüberwachung]: #monitoring-availability
 [Leistungsüberwachung]: #monitoring-performance
 
-[Diagnose von Speicherfehlern]: #diagnosing-storage-issues
+[Diagnose von Speicherproblemen]: #diagnosing-storage-issues
 [Probleme mit der Dienstintegrität]: #service-health-issues
 [Leistungsprobleme]: #performance-issues
 [Fehlerdiagnose]: #diagnosing-errors
@@ -831,10 +825,10 @@ Weitere Informationen finden Sie unter [Was ist Application Insights](../../appl
 [Speicher-Protokollierungstools]: #storage-logging-tools
 [Verwendung von Netzwerk-Protokollierungstools]: #using-network-logging-tools
 
-[Durchgehende Verfolgung]: #end-to-end-tracing
+[Durchgängige Verfolgung]: #end-to-end-tracing
 [Korrelation von Protokollierungsdaten]: #correlating-log-data
 [Clientanfrage-ID]: #client-request-id
-[Serveranforderungs-ID]: #server-request-id
+[Serveranfrage-ID]: #server-request-id
 [Zeitstempel]: #timestamps
 
 [Anleitungen zur Problembehandlung]: #troubleshooting-guidance
@@ -857,7 +851,7 @@ Weitere Informationen finden Sie unter [Was ist Application Insights](../../appl
 [Netzwerkausfall]: #network-failure
 [Der Client empfängt HTTP 409 (Konflikt)-Meldungen]: #the-client-is-receiving-409-messages
 
-[Metriken zeigen niedrigen PercentSuccess an, oder Vorgänge in Analyse-Protokolleinträgen haben den Transaktionsstatus „ClientOtherErrors“]: #metrics-show-low-percent-success
+[Metriken zeigen niedrigen PercentSuccess an, oder Analyse-Protokollierungseinträge enthalten Operationen mit Transaktionsstatus "ClientOtherErrors"]: #metrics-show-low-percent-success
 [Kapazitätsmetriken zeigen einen unerwarteten Anstieg der Speicherkapazitätsauslastung an]: #capacity-metrics-show-an-unexpected-increase
 [Ihre Probleme entstehen aus der Verwendung des Speicheremulators für Entwicklung oder Test]: #your-issue-arises-from-using-the-storage-emulator
 [Funktion "X" funktioniert im Speicheremulator nicht]: #feature-X-is-not-working
@@ -866,10 +860,10 @@ Weitere Informationen finden Sie unter [Was ist Application Insights](../../appl
 [Sie stoßen bei der Installation von Azure SDK für .NET auf Probleme]: #you-are-encountering-problems-installing-the-Windows-Azure-SDK
 [Sie haben ein anderes Problem mit einem Speicherdienst]: #you-have-a-different-issue-with-a-storage-service
 
-[Anhängen]: #appendices
+[Anhänge]: #appendices
 [Anhang 1: Verwendung von Fiddler zur Erfassung von HTTP- und HTTPS-Verkehr]: #appendix-1
 [Anhang 2: Verwendung von Wireshark zur Erfassung von Netzwerkverkehr]: #appendix-2
-[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]: #appendix-3
+[Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr]: #appendix-3
 [Anhang 4: Verwendung von Excel zur Anzeige von Metrik- und Protokollierungsdaten]: #appendix-4
 [Anhang 5: Überwachung mit Application Insights für Visual Studio Team Services]: #appendix-5
 

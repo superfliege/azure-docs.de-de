@@ -1,25 +1,20 @@
 ---
-title: Verwalten von Windows-basierten Hadoop-Clustern in HDInsight mit dem Azure-Portal | Microsoft-Dokumentation
+title: Verwalten von Windows-basierten Hadoop-Clustern in HDInsight mit dem Azure-Portal
 description: Hier erfahren Sie, wie Sie den HDInsight-Dienst verwalten. Erstellen Sie ein HDInsight-Cluster, öffnen Sie die interaktive JavaScript-Konsole, und öffnen Sie die Hadoop-Befehlszeile.
 services: hdinsight
-documentationcenter: ''
-tags: azure-portal
-author: mumian
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 9295a988-bd88-453a-8c8b-55fa103bf39c
+author: jasonwhowell
+editor: jasonwhowell
 ms.service: hdinsight
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jgao
+ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78541feda8c82be143f91fdde88eac179cf0b1a5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a4cbc0c14d0f6c505b391becf33c56dd95bfc251
+ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405363"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39592219"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Windows-basierten Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -83,11 +78,12 @@ Die Installation von benutzerdefinierter Software auf dem Cluster über eine Rem
 
    * Klicken Sie zum Anpassen des Menüs mit der rechten Maustaste auf eine beliebige Stelle im Menü, und klicken Sie dann auf **Anpassen**.
    * **Einstellungen** und **Alle Einstellungen**: Zeigt das Blatt **Einstellungen** für den Cluster an, über das Sie auf detaillierte Konfigurationsinformationen für den Cluster zugreifen können.
-   * **Dashboard**, **Cluster-Dashboard** und **URL: Über diese Optionen können Sie auf das Cluster-Dashboard zugreifen (Ambari Web für Linux-basierte Cluster). -** Secure Shell\*\*: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
+   * **Dashboard**, **Clusterdashboard** und **URL**: Über diese Optionen können Sie auf das Clusterdashboard zugreifen (Ambari Web für Linux-basierte Cluster).
+   * **Secure Shell**: Zeigt die Anweisungen für die Verbindung mit dem Cluster über eine Secure Shell-Verbindung (SSH) an.
    * **Cluster skalieren**: Dient zum Ändern der Anzahl von Workerknoten für den Cluster.
    * **Löschen**: Löscht den Cluster.
    * **Schnellstart**: Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.
-   * **Benutzer: Dient zum Festlegen der Berechtigungen für die *Portalverwaltung* dieses Clusters für andere Benutzer in Ihrem Azure-Abonnement.
+   * **Benutzer**: Dient zum Festlegen der Berechtigungen für die *Portalverwaltung* dieses Clusters für andere Benutzer in Ihrem Azure-Abonnement.
 
      > [!IMPORTANT]
      > Die hier vorgenommenen Einstellungen betreffen *nur* den Zugriff und die Berechtigungen für diesen Cluster im Azure-Portal und haben keine Auswirkung darauf, wer eine Verbindung mit dem HDInsight-Cluster herstellen oder Aufträge übermitteln kann.
@@ -277,7 +273,7 @@ Die HDInsight-Abfragekonsole umfasst die folgenden Features:
 
     ![HDInsight-Portal – Auftragsverlauf](./media/hdinsight-administer-use-management-portal/hdinsight-job-history.png)
 
-    Klicken Sie auf **Abfragename**, um die Details einschließlich Auftragseigenschaften, **Auftragsabfrage**, und \*\*Auftragsausgabe anzuzeigen. Sie können auch die Abfrage und die Ausgabe auf Ihre Arbeitsstation herunterladen.
+    Klicken Sie auf **Abfragename**, um die Details einschließlich Auftragseigenschaften, **Auftragsabfrage**, und **Auftragsausgabe anzuzeigen. Sie können auch die Abfrage und die Ausgabe auf Ihre Arbeitsstation herunterladen.
 * **Dateibrowser**: Durchsuchen Sie das Standardspeicherkonto und die verknüpften Speicherkonten.
 
     ![HDInsight Portal – Dateibrowser durchsuchen](./media/hdinsight-administer-use-management-portal/hdinsight-file-browser.png)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 5afa34a5eadf5367b3ab28749735197ca6ed82bd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263200"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39441441"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel wird beschrieben, wie Sie [Protokollwarnungen](monitor-alerts-unified-log.md) programmgesteuert und skaliert in Azure verwalten können, indem Sie eine [Azure Resource Manager-Vorlage](..//azure-resource-manager/resource-group-authoring-templates.md) über [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) und [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) verwenden. Derzeit unterstützen Azure-Warnungen Protokollwarnungen zu Abfragen von [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) und [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
@@ -27,7 +27,7 @@ Protokollwarnungen für [Azure Log Analytics](../log-analytics/log-analytics-tut
 ### <a name="using-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
 Protokollwarnungen für Log Analytics werden anhand von Warnungsregeln erstellt, die in regelmäßigen Abständen eine gespeicherte Suche ausführen. Wenn die Ergebnisse der Abfrage mit den angegebenen Kriterien übereinstimmen, wird eine Warnung erstellt und mindestens eine Aktion ausgeführt. 
 
-Die Ressourcenvorlagen für die [gespeicherte Suche von Log Analytics](../log-analytics/log-analytics-log-searches.md) und [Log Analytics-Warnungen](../log-analytics/log-analytics-alerts.md) stehen im Log Analytics-Abschnitt der Dokumentation zur Verfügung. Erfahren Sie mehr über, [Hinzufügen gespeicherter Suchen und Warnungen von Log Analytics](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md). Hier finden Sie anschauliche Beispiele sowie die Schemadetails.
+Die Ressourcenvorlagen für die gespeicherte Suche von Log Analytics und Log Analytics-Warnungen stehen im Log Analytics-Abschnitt der Dokumentation zur Verfügung. Erfahren Sie mehr unter [Hinzufügen gespeicherter Suchen und Warnungen von Log Analytics](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md). Hier finden Sie anschauliche Beispiele sowie die Schemadetails.
 
 ### <a name="using-resource-template-via-apipowershell"></a>Verwenden der Ressourcenvorlage über API/Powershell
 Die REST-API für Log Analytics-Warnungen ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. Auf die API kann daher über die PowerShell-Befehlszeile zugegriffen werden. Die Suchergebnisse werden Ihnen im JSON-Format ausgegeben, und Sie können die Ergebnisse programmgesteuert auf viele verschiedene Arten verwenden.

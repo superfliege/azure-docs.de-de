@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: brjohnst
-ms.openlocfilehash: e8a492a0786281bdc1d7c2123a7188c32a124e13
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 19913f9c30992e833e5435af7066611d4662ba56
+ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194123"
+ms.lasthandoff: 08/06/2018
+ms.locfileid: "39525636"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>Verwenden von Azure Search aus einer .NET-Anwendung
 In diesem Artikel erfahren Sie, wie Sie Ihr [Azure Search-.NET-SDK](https://aka.ms/search-sdk)schnell betriebsbereit machen. Dank .NET-SDK erhalten Sie in Ihrer Anwendung die vielfältigen Suchfunktionen von Azure Search.
@@ -311,7 +311,7 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 }
 ```
 
-Diese Methode besteht aus vier Teilen. Im ersten Teil wird ein `Hotel` -Objektarray erstellt, das die Eingabedaten für den Upload in den Index bereitstellt. Diese Daten sind der Einfachheit halber fest codiert. In Ihrer eigenen Anwendung stammen die Daten vermutlich aus einer externen Datenquelle, beispielsweise aus einer SQL-­Datenbank.
+Diese Methode besteht aus vier Teilen. Im ersten Teil wird ein `Hotel` -Objektarray erstellt, das die Eingabedaten für den Upload in den Index bereitstellt. Diese Daten sind der Einfachheit halber fest codiert. In Ihrer eigenen Anwendung stammen Ihre Daten wahrscheinlich aus einer externen Datenquelle, z.B. einer SQL-­Datenbank.
 
 Im zweiten Teil wird ein `IndexBatch` mit den Dokumenten erstellt. Sie geben den Vorgang an, den Sie auf den Batch zum Zeitpunkt seiner Erstellung anwenden möchten, in diesem Fall durch Aufruf von `IndexBatch.Upload`. Der Batch wird dann durch die Methode `Documents.Index` in den Azure Search-Index hochgeladen.
 
@@ -588,6 +588,5 @@ Mit diesem Schritt ist das Lernprogramm abgeschlossen. Gerne können Sie sich ab
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Nutzen Sie die Referenzen für das [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search) und die [REST-API](https://docs.microsoft.com/rest/api/searchservice/).
-* Vertiefen Sie Ihre Kenntnisse mithilfe von [Videos und anderen Beispielen und Lernprogrammen](search-video-demo-tutorial-list.md).
 * Lesen Sie den Abschnitt [Namenskonventionen](https://docs.microsoft.com/rest/api/searchservice/Naming-rules) , um sich mit den Namensregeln für Objekte vertraut zu machen.
 * Lesen Sie den Abschnitt zu den in Azure Search [unterstützten Datentypen](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types) .
