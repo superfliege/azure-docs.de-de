@@ -26,13 +26,13 @@ ms.locfileid: "34823621"
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!Note]  
-> Azure Container Services (ACS) Kubernetes in Azure Stack befindet sich in der privaten Vorschau. Ihr Azure Stack-Bediener muss Zugriff auf das Marketplace-Element für Kubernetes anfordern, um die Anweisungen in diesem Artikel auszuführen.
+> Azure Kubernetes Services (AKS) in Azure Stack befindet sich in der privaten Vorschau. Ihr Azure Stack-Bediener muss Zugriff auf das Marketplace-Element für Kubernetes anfordern, um die Anweisungen in diesem Artikel auszuführen.
 
 Im folgenden Artikel wird die Verwendung einer Azure Resource Manager-Lösungsvorlage zum Bereitstellen der Ressourcen für Kubernetes in einem einzelnen, koordinierten Vorgang erläutert. Sie müssen die erforderlichen Informationen zu Ihrer Azure Stack-Installation sammeln, die Vorlage generieren und dann die Bereitstellung in der Cloud ausführen.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes und Container
 
-Sie können Kubernetes mithilfe von Azure Resource Manager-Vorlagen, die mit der Azure Container Services-Engine (ACS) generiert wurden, in Azure Stack installieren. [Kubernetes](https://kubernetes.io) ist ein Open Source-System für die Automatisierung der Bereitstellung, Skalierung und Verwaltung von Anwendungen in Containern. Ein [Container](https://www.docker.com/what-container) ist ähnlich wie ein virtueller Computer in einem Image enthalten. Im Gegensatz zu einem virtuellen Computer enthält das Containerimage jedoch nur die Ressourcen, die zum Ausführen einer Anwendung benötigt werden, etwa den Code, die Runtime zum Ausführen des Codes, bestimmte Bibliotheken und Einstellungen.
+Sie können Kubernetes mithilfe von Azure Resource Manager-Vorlagen, die mit der Azure Kubernetes Services-Engine (AKS) generiert wurden, in Azure Stack installieren. [Kubernetes](https://kubernetes.io) ist ein Open Source-System für die Automatisierung der Bereitstellung, Skalierung und Verwaltung von Anwendungen in Containern. Ein [Container](https://www.docker.com/what-container) ist ähnlich wie ein virtueller Computer in einem Image enthalten. Im Gegensatz zu einem virtuellen Computer enthält das Containerimage jedoch nur die Ressourcen, die zum Ausführen einer Anwendung benötigt werden, etwa den Code, die Runtime zum Ausführen des Codes, bestimmte Bibliotheken und Einstellungen.
 
 Sie können Kubernetes für Folgendes verwenden:
 

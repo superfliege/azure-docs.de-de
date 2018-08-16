@@ -73,7 +73,7 @@ Bei der lokalen Ausführung des U-SQL-Skripts wird während der Kompilierung ein
 | | |\_ScopeCodeGenEngine\_.*|Compilerausgabe|Generierter nativer Code|
 | | |referenced assemblies|Assemblyverweis|Dateien für Verweisassemblys|
 | | |deployed_resources|Bereitstellung von Ressourcen|Dateien für die Bereitstellung von Ressourcen|
-| | |xxxxxxxx.xxx[1..n]\_\*.*|Ausführungsprotokoll|Protokoll der Ausführungsschritte|
+| | |xxxxxxxx.xxx[1..n]\_\*.\*|Ausführungsprotokoll|Protokoll der Ausführungsschritte|
 
 
 ## <a name="use-the-sdk-from-the-command-line"></a>Verwenden des SDK über die Befehlszeile
