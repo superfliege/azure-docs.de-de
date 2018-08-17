@@ -82,10 +82,10 @@ Es gelten die in der folgenden Tabelle beschriebenen Werte. Der **Parameterwert*
 
 |**Name**|**Parameterwert**|**Beschreibung**|
 |---|---|---|
-|Trial (Testversion)|trial|Wird für Testkonten verwendet.|
-|West US (USA (Westen))|westus2|Wird für die Azure-Region „West US 2“ (USA, Westen 2) verwendet.|
-|North Europe (Nordeuropa) |northeurope|Wird für die Azure-Region „North Europe“ (Europa, Norden) verwendet.|
-|East Asia (Asien, Osten)|eastasia|Wird für die Azure-Region „East Asia“ (Asien, Osten) verwendet.|
+|Testversion|Testversion|Wird für Testkonten verwendet.|
+|USA (Westen)|westus2|Wird für die Azure-Region „West US 2“ (USA, Westen 2) verwendet.|
+|Nordeuropa |northeurope|Wird für die Azure-Region „North Europe“ (Europa, Norden) verwendet.|
+|Asien, Osten|eastasia|Wird für die Azure-Region „East Asia“ (Asien, Osten) verwendet.|
 
 ## <a name="account-id"></a>Konto-ID 
 
