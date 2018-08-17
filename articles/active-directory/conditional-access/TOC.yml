@@ -1,0 +1,71 @@
+items:
+- name: Dokumentation zum bedingten Zugriff
+  href: index.yml
+- name: Übersicht
+  items:
+  - name: Was ist bedingter Zugriff?
+    href: overview.md
+- name: Schnellstarts
+  items:
+  - name: Vorschreiben der Verwendung der MFA für bestimmte Apps
+    href: app-based-mfa.md
+  - name: Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen
+    href: require-tou.md
+  - name: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
+    href: app-sign-in-risk.md
+- name: Tutorials
+  items:
+  - name: Migrieren der klassischen MFA-Richtlinien
+    href: policy-migration-mfa.md
+- name: Konzepte
+  items:
+  - name: Baselineschutz
+    href: baseline-protection.md
+  - name: Bedingungen
+    href: conditions.md
+  - name: Standortbedingungen
+    href: location-condition.md
+  - name: Kontrollen
+    href: controls.md
+  - name: Was-wäre-wenn-Tool
+    href: what-if-tool.md
+  expanded: false
+- name: Anleitungen
+  items:
+  - name: Bewährte Methoden
+    href: best-practices.md
+  - name: Vorschreiben der Verwendung der MFA für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken
+    href: untrusted-networks.md
+  - name: Vorschreiben der Verwendung verwalteter Geräte
+    href: require-managed-devices.md
+  - name: Vorschreiben der Verwendung genehmigter Client-Apps
+    href: app-based-conditional-access.md
+  - name: Steuern des Zugriffs auf Exchange Online und SharePoint Online
+    href: conditional-access-for-exo-and-spo.md
+  - name: Migrieren von klassischen Richtlinien
+    href: policy-migration.md
+  expanded: true
+- name: Verweis
+  items:
+  - name: Technische Referenz
+    href: technical-reference.md
+- name: angeben
+  items:
+  - name: Azure-Feedbackforum
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: MSDN-Forum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Dienstupdates
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Videos
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 04d8d41dcd87af15d0d3b7e2eb919e71e22b1bf8
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177327"

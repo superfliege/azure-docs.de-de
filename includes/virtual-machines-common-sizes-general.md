@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0cd31a6acaa248b53fbe90684894b3bb3e7ebf86
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1606b5e38b79cb535108ca747783a05de1fbc982
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37907042"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40026846"
 ---
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz für die Größen in dieser Gruppe. 
 
@@ -21,7 +21,7 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 
 - Die Dv2-Serie, eine Nachfolgerin der ursprünglichen D-Serie, hat eine leistungsfähigere CPU. Die CPU der Dv2-Serie ist ca. 35 % schneller als die CPU der D-Serie. Sie basiert auf der neuesten Generation des 2,4-GHz-Intel Xeon® E5-2673-v3-Prozessors (Haswell) oder 2,3-GHz-E5 2673-v4-Prozessors (Broadwell) und kann mit der Intel Turbo Boost Technology 2.0 bis auf 3,1 GHz erhöht werden. Der Dv2-Serie hat die gleichen Arbeitsspeicher- und Datenträgerkonfigurationen wie die D-Serie.
 
-- Die Dv3-Serie bietet die gleichen Prozessoren wie die Dv2-Serie, aber in einer Hyperthreadkonfiguration, die ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads bietet und den Dv3 mit den allgemeinen VMs der meisten anderen Clouds in Einklang bringt.  Der Speicher wurde erweitert (von etwa 3.5 GiB/vCPU auf 4 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Dv3-Serie hat nicht mehr die hohen Arbeitsspeichergrößen der D/Dv2-Familien, diese sind nun in der neuen Ev3-Familie verfügbar.
+- Die Dv3-Serie bietet den 2,4-GHz-Intel Xeon® E5-2673-v3-Prozessor (Haswell) oder den aktuellen 2,3-GHz Intel XEON® E5-2673-v4-Prozessor (Broadwell) in einer Hyperthreadkonfiguration und somit ein besseres Preis-Leistungs-Verhältnis für die meisten universellen Workloads.  Der Speicher wurde erweitert (von etwa 3.5 GiB/vCPU auf 4 GiB/vCPU), während die Datenträger- und Netzwerkgrenzwerte pro Kern angepasst wurden, um sich für den Übergang zum Hyperthreading anzupassen.  Die Dv3-Serie hat nicht mehr die hohen Arbeitsspeichergrößen der D/Dv2-Familien, diese sind nun in der neuen Ev3-Familie verfügbar.
 
 
 ## <a name="b-series"></a>B-Serie

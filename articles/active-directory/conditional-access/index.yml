@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 9e78d534579a89f0fc97830616d7b5cd550253f7
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40177319"
+documentType: LandingData
+title: Dokumentation zum bedingten Zugriff mit Azure AD
+metadata:
+  document_id: 
+  title: 'Dokumentation zum bedingten Zugriff mit Azure Active Directory: Tutorials, Schnellstartanleitungen, Konzepte, Referenzen | Microsoft-Dokumentation'
+  description: Hier erfahren Sie, wie Sie den bedingten Zugriff für Azure Active Directory konfigurieren und testen.
+  services: active-directory
+  ms.component: authentication
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: markvi
+abstract:
+  description: Lesen Sie, wie Sie das Gleichgewicht zwischen Sicherheit und Produktivität bewahren, indem Sie den bedingten Zugriff mit Azure AD konfigurieren. Mit Richtlinien für bedingten Zugriff können Sie bei der Wahl des Zugriffs berücksichtigen, auf welche Weise auf Ihre Cloud-Apps zugegriffen wird. Mit Zugriffsentscheidungen können Sie unter anderem folgende Aspekte steuern:<ul><li>Wie lautet die Netzwerkadresse des Benutzers?</li><li>Wurde der Zugriffsversuch von einem verwalteten Gerät initiiert?</li><li>Über welche Client-App wurde ein Verbindungsversuch initiiert?</li><li>Wurde der Zugriff über eine riskante Anmeldung versucht?</li></ul>Die folgenden Ressourcen helfen Ihnen beim schnellen Einstieg.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: Erläuterung zum bedingten Zugriff
+    href: https://www.youtube.com/watch?v=A7IrxAH87wc
+    width: 246
+sections:
+- title: Fünfminütige Schnellstarts
+  items:
+  - type: paragraph
+    text: Hier erfahren Sie, wie Sie Richtlinien für bedingten Zugriff für allgemeine Zugriffsszenarien konfigurieren.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Vorschreiben der Verwendung der MFA für bestimmte Apps
+      href: app-based-mfa.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
+      href: app-sign-in-risk.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Festlegen, dass die Nutzungsbedingungen akzeptiert werden müssen
+      href: require-tou.md
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: Hier wird veranschaulicht, wie Sie Ihre klassischen Richtlinien für bedingten Zug migrieren.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/conditional-access/policy-migration-mfa">Migrieren einer klassischen Richtlinie, die mehrstufige Authentifizierung erfordert, in das Azure-Portal</a>

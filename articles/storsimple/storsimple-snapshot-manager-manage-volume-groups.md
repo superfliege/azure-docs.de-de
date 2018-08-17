@@ -107,7 +107,7 @@ Gehen Sie folgendermaßen vor, um eine Vorlumegruppe zu bearbeiten.
 #### <a name="to-edit-a-volume-group"></a>So bearbeiten Sie eine Volumegruppe
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Bearbeiten**.
-3. Das Dialogfeld **Volumegruppe erstellen** wird angezeigt. Sie können die Einträge für **Name**, **Anwendungen** und **Volumes** ändern.
+3. Das Dialogfeld Volumegruppe erstellen wird angezeigt. Sie können die Einträge für **Name**, **Anwendungen** und **Volumes** ändern.
 4. Klicken Sie zum Speichern der Änderungen auf **OK** .
 
 ## <a name="delete-a-volume-group"></a>Löschen einer Volumegruppe

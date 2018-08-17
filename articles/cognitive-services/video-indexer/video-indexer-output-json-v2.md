@@ -1,0 +1,676 @@
+---
+title: Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe | Microsoft-Dokumentation
+description: In diesem Thema wird die Video Indexer-Ausgabe untersucht, die von der v2-API erstellt wird.
+services: cognitive services
+documentationcenter: ''
+author: juliako
+manager: cfowler
+ms.service: cognitive-services
+ms.topic: article
+ms.date: 07/25/2018
+ms.author: juliako
+ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
+ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39618331"
+---
+# <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
+
+> [!Note]
+> Die v1-API von Video Indexer gilt ab dem 1. August 2018 als veraltet. Es ist ratsam, jetzt die v2-API von Video Indexer zu verwenden. <br/>Eine Anleitung zur Entwicklung mit den v2-APIs für Video Indexer finden Sie [hier](https://api-portal.videoindexer.ai/). 
+
+Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort. Die JSON-Daten enthalten Details zu den angegebenen Erkenntnissen aus Videos. Zu diesen Erkenntnissen gehören beispielsweise folgende Dimensionen: Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Die Dimensionen verfügen über Instanzen von Zeitbereichen, die angezeigt werden, wenn die einzelnen Dimensionen im Video angezeigt werden.  
+
+Sie können die zusammengefassten Erkenntnisse des Videos auch visuell untersuchen, indem Sie im Video Indexer-Portal die Schaltfläche für die **Wiedergabe** drücken. Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
+
+![Erkenntnisse](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+
+In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen des Videoindex (**Get Video Index**) zurückgegeben wird. 
+
+> [!NOTE]
+> Der Zeitraum bis zum Ablauf aller Zugriffstoken in Video Indexer beträgt eine Stunde.
+
+
+## <a name="root-elements"></a>Stammelemente
+
+|Name|Beschreibung|
+|---|---|
+|accountId|Die VI-Konto-ID der Wiedergabeliste.|
+|id|Die ID der Wiedergabeliste.|
+|name|Der Name der Wiedergabeliste.|
+|description|Die Beschreibung der Wiedergabeliste.|
+|userName|Der Name des Benutzers, der die Wiedergabeliste erstellt hat.|
+|created|Die Erstellungszeit der Wiedergabeliste.|
+|privacyMode|Der Datenschutzmodus der Wiedergabeliste (privat/öffentlich).|
+|state|Der Status der Wiedergabeliste (uploaded (Hochgeladen), processing (Wird verarbeitet), processed (Verarbeitet), failed (Fehler), quarantined (Quarantäne)).|
+|isOwned|Gibt an, ob die Wiedergabeliste vom aktuellen Benutzer erstellt wurde.|
+|isEditable|Gibt an, ob der aktuelle Benutzer zum Bearbeiten der Wiedergabeliste berechtigt ist.|
+|isBase|Gibt an, ob die Wiedergabeliste eine Basiswiedergabeliste (ein Video) oder eine Wiedergabeliste ist, die aus anderen Videos zusammengestellt (abgeleitet) wurde.|
+|durationInSeconds|Die Gesamtdauer der Wiedergabeliste.|
+|summarizedInsights|Enthält ein [summarizedInsights](#summarizedinsights)-Element.
+|videos|Eine Liste mit [Videos](#videos), aus denen die Wiedergabeliste besteht.<br/>Wenn diese Wiedergabeliste aus den Zeitbereichen anderer Videos zusammengestellt (abgeleitet) ist, enthalten die Videos in dieser Liste nur Daten aus den einbezogenen Zeitbereichen.|
+
+```json
+{
+  "accountId": "bca61527-1221-bca6-1527-a90000002000",
+  "id": "abc3454321",
+  "name": "My first video",
+  "description": "I am trying VI",
+  "userName": "Some name",
+  "created": "2018/2/2 18:00:00.000",
+  "privacyMode": "Private",
+  "state": "Processed",
+  "isOwned": true,
+  "isEditable": false,
+  "isBase": false,
+  "durationInSeconds": 120, 
+  "summarizedInsights" : { . . . }
+  "videos": [{ . . . }]
+}
+```
+
+## <a name="summarizedinsights"></a>summarizedInsights
+
+In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
+
+|Attribut | Beschreibung|
+|---|---|
+|name|Der Name des Videos. Beispiel: Azure Monitor.|
+|shortId|Die ID des Videos. Beispiel: 63c6d532ff.|
+|privacyMode|Für Ihre Aufschlüsselung kann einer der folgenden Modi verwendet werden: **Private** (Privat) oder **Public** (Öffentlich). **Public**: Das Video ist für alle Benutzer Ihres Kontos und alle Personen sichtbar, die über einen Link zum Video verfügen. **Private**: Das Video ist für alle Benutzer Ihres Kontos sichtbar.|
+|duration|Enthält eine Dauer, mit der der Zeitbereich beschrieben wird, in dem eine Erkenntnis gewonnen wurde. Die Dauer wird in Sekunden angegeben.|
+|thumbnailVideoId|Die ID des Videos, aus dem die Miniaturansicht entnommen wurde.
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie „Get-Thumbnail“ (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId.To“, um die eigentliche Miniaturansicht zu erhalten.|
+|faces|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces](#faces).|
+|keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
+|sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
+|audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioeffects).|
+|labels| Kann null oder mehr Bezeichnungen enthalten. Weitere Informationen finden Sie unter [labels](#labels).|
+|brands| Kann null oder mehr Marken enthalten. Ausführlichere Informationen finden Sie unter [brands](#brands).|
+|statistics | Ausführlichere Informationen finden Sie unter [statistics](#statistics).|
+
+## <a name="videos"></a>videos
+
+|Name|Beschreibung|
+|---|---|
+|accountId|Die VI-Konto-ID des Videos.|
+|id|Die ID des Videos.|
+|name|Der Name des Videos.
+|state|Der Status des Videos (uploaded (Hochgeladen), processing (Wird verarbeitet), processed (Verarbeitet), failed (Fehler), quarantined (Quarantäne)).|
+|processingProgress|Der Status der Verarbeitung während des Verarbeitungsprozesses (z.B. 20%).|
+|failureCode|Der Fehlercode, wenn bei der Verarbeitung ein Fehler aufgetreten ist (z.B. „UnsupportedFileType“).|
+|failureMessage|Die Fehlermeldung, wenn bei der Verarbeitung ein Fehler aufgetreten ist.|
+|externalId|Die externe ID des Videos (falls vom Benutzer angegeben).|
+|externalUrl|Die externe URL des Videos (falls vom Benutzer angegeben).|
+|metadata|Die externen Metadaten des Videos (falls vom Benutzer angegeben).|
+|isAdult|Gibt an, ob das Video manuell geprüft und als nur für Erwachsene geeignetes Video eingestuft wurde.|
+|insights|Das insights-Objekt. Weitere Informationen finden Sie unter [insights](#insights).|
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie „Get-Thumbnail“ (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)) auf, und übergeben Sie die Video-ID und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
+|publishedUrl|Eine URL zum Streamen des Videos.|
+|publishedUrlProxy|Eine URL, über die das Video gestreamt werden kann (für Apple-Geräte).|
+|viewToken|Ein kurzlebiges Anzeigetoken für das Streamen des Videos.|
+|sourceLanguage|Die Quellsprache des Videos.|
+|language|Die tatsächliche Sprache des Videos (Übersetzung).|
+|indexingPreset|Die Voreinstellung, die zum Indizieren des Videos verwendet wird.|
+|streamingPreset|Die Voreinstellung, die zum Veröffentlichen des Videos verwendet wird.|
+|linguisticModelId|Das CRIS-Modell, das zum Transkribieren des Videos verwendet wird.|
+|statistics | Weitere Informationen finden Sie unter [statistics](#statistics).|
+
+```json
+{
+    "videos": [{
+        "accountId": "2cbbed36-1972-4506-9bc7-55367912df2d",
+        "id": "142a356aa6",
+        "state": "Processed",
+        "privacyMode": "Private",
+        "processingProgress": "100%",
+        "failureCode": "General",
+        "failureMessage": "",
+        "externalId": null,
+        "externalUrl": null,
+        "metadata": null,
+        "insights": {. . . },
+        "thumbnailId": "89d7192c-1dab-4377-9872-473eac723845",
+        "publishedUrl": "https://videvmediaservices.streaming.mediaservices.windows.net:443/d88a652d-334b-4a66-a294-3826402100cd/Xamarine.ism/manifest",
+        "publishedProxyUrl": null,
+        "viewToken": "Bearer=<token>",
+        "sourceLanguage": "En-US",
+        "language": "En-US",
+        "indexingPreset": "Default",
+        "linguisticModelId": "00000000-0000-0000-0000-000000000000"
+    }],
+}
+```
+### <a name="insights"></a>insights
+
+Bei „insights“ (Erkenntnissen) handelt es sich um eine Reihe von Dimensionen (z.B. Transkriptzeilen, Gesichter, Marken usw.), wobei jede Dimension eine Liste mit eindeutigen Elementen umfasst (z.B. face1, face2, face3). Außerdem verfügt jedes Element über eigene Metadaten und eine Liste mit den zugehörigen Instanzen (Zeitbereiche mit zusätzlichen optionalen Metadaten).
+
+Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten und eine Liste mit seinen temporalen Instanzen (z.B. 00:00:05 - 00:00:10, 00:01:00 - 00:02:30 und 00:41:21 - 00:41:49) aufweisen. Jede temporale Instanz kann über zusätzliche Metadaten verfügen. Ein Beispiel hierfür sind die Rechteckkoordinaten des Gesichts (20,230,60,60).
+
+|Version|Codeversion|
+|---|---|
+|sourceLanguage|Die Quellsprache des Videos (Annahme: eine Hauptsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
+|language|Die Sprache der Erkenntnisse (Übersetzung aus der Quellsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
+|transcript|Die Dimension [transcript](#transcript).|
+|ocr|Die Dimension [ocr](#ocr).|
+|keywords|Die Dimension [keywords](#keywords).|
+|blocks|Kann einen oder mehrere Blöcke ([blocks](#blocks)) enthalten.|
+|faces|Die Dimension [faces](#faces).|
+|labels|Die Dimension [labels](#labels).|
+|shots|Die Dimension [shots](#shots).|
+|brands|Die Dimension [brands](#brands).|
+|audioEffects|Die Dimension [audioEffects](#audioEffects).|
+|sentiments|Die Dimension [sentiments](#sentiments).|
+|visualContentModeration|Die Dimension [visualContentModeration](#visualcontentmoderation).|
+|textualConentModeration|Die Dimension [textualConentModeration](#textualconentmoderation).|
+
+Beispiel:
+
+```json
+{
+  "version": "0.9.0.0",
+  "sourceLanguage": "en-US",
+  "language": "es-ES",
+  "transcript": ...,
+  "ocr": ...,
+  "keywords": ...,
+  "faces": ...,
+  "labels": ...,
+  "shots": ...,
+  "brands": ...,
+  "audioEffects": ...,
+  "sentiments": ...,
+  "visualContentModeration": ...,
+  "textualConentModeration": ...
+}
+```
+
+#### <a name="blocks"></a>blocks
+
+Attribut | Beschreibung
+---|---
+id|Die ID des Blocks.|
+instances|Eine Liste mit Zeitbereichen dieses Blocks.|
+
+#### <a name="transcript"></a>transcript
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die Zeilen-ID.|
+|text|Das Transkript selbst.|
+|Language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
+|instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz „transcript“ lautet, ist nur eine Instanz vorhanden.|
+
+Beispiel:
+
+```json
+"transcript": [
+{
+    "id": 0,
+    "text": "Hi I'm Doug from office.",
+    "language": "en-US",
+    "instances": [
+    {
+        "start": "00:00:00.5100000",
+        "end": "00:00:02.7200000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "text": "I have a guest. It's Michelle.",
+    "language": "en-US",
+    "instances": [
+    {
+        "start": "00:00:02.7200000",
+        "end": "00:00:03.9600000"
+    }
+    ]
+}
+] 
+```
+
+#### <a name="ocr"></a>ocr
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die OCR-Zeilen-ID.|
+|text|Der OCR-Text.|
+|confidence|Die Zuverlässigkeit der Erkennung.|
+|Language|Die OCR-Sprache.|
+|instances|Eine Liste der Zeitbereiche, in denen diese OCR angezeigt wurde (die gleiche OCR kann mehrfach vorkommen).|
+
+```json
+"ocr": [
+    {
+      "id": 0,
+      "text": "LIVE FROM NEW YORK",
+      "confidence": 0.91,
+      "language": "en-US",
+      "instances": [
+        {
+          "start": "00:00:26",
+          "end": "00:00:52"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "text": "NOTICIAS EN VIVO",
+      "confidence": 0.9,
+      "language": "es-ES",
+      "instances": [
+        {
+          "start": "00:00:26",
+          "end": "00:00:28"
+        },
+        {
+          "start": "00:00:32",
+          "end": "00:00:38"
+        }
+      ]
+    }
+  ],
+```
+
+#### <a name="keywords"></a>keywords
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die Stichwort-ID.|
+|text|Der Stichworttext.|
+|confidence|Die Zuverlässigkeit der Erkennung des Stichworts.|
+|Language|Die Sprache des Stichworts (sofern übersetzt).|
+|instances|Eine Liste der Zeitbereiche, in denen dieses Stichwort angezeigt wurde (ein Stichwort kann mehrfach vorkommen).|
+
+```json
+"keywords": [
+{
+    "id": 0,
+    "text": "office",
+    "confidence": 1.6666666666666667,
+    "language": "en-US",
+    "instances": [
+    {
+        "start": "00:00:00.5100000",
+        "end": "00:00:02.7200000"
+    },
+    {
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "text": "icons",
+    "confidence": 1.4,
+    "language": "en-US",
+    "instances": [
+    {
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
+    },
+    {
+        "start": "00:00:13.9900000",
+        "end": "00:00:15.6100000"
+    }
+    ]
+}
+] 
+
+```
+
+#### <a name="faces"></a>faces
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die Gesichts-ID.|
+|name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
+|confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
+|description|Eine Beschreibung des Prominenten. |
+|thumbnalId|Die ID der Miniaturansicht dieses Gesichts.|
+|knownPersonId|Bei einer bekannten Person die interne ID.|
+|referenceId|Bei einem Bing-Prominenten die Bing-ID.|
+|referenceType|Zurzeit nur Bing.|
+|title|Bei einem Prominenten der Titel (z.B. „CEO von Microsoft“).|
+|imageUrl|Bei einem Prominenten die Bild-URL.|
+|instances|Dies sind Vorkommen des Gesichts in einem bestimmten Zeitbereich. Jedes Vorkommen hat auch eine Miniaturbild-ID. |
+
+```json
+"faces": [{
+    "id": 2002,
+    "name": "Xam 007",
+    "confidence": 0.93844,
+    "description": null,
+    "thumbnailId": "00000000-aee4-4be2-a4d5-d01817c07955",
+    "knownPersonId": "8340004b-5cf5-4611-9cc4-3b13cca10634",
+    "referenceId": null,
+    "title": null,
+    "imageUrl": null,
+    "instances": [{
+        "thumbnailsIds": ["00000000-9f68-4bb2-ab27-3b4d9f2d998e",
+        "cef03f24-b0c7-4145-94d4-a84f81bb588c"],
+        "adjustedStart": "00:00:07.2400000",
+        "adjustedEnd": "00:00:45.6780000",
+        "start": "00:00:07.2400000",
+        "end": "00:00:45.6780000"
+    },
+    {
+        "thumbnailsIds": ["00000000-51e5-4260-91a5-890fa05c68b0"],
+        "adjustedStart": "00:10:23.9570000",
+        "adjustedEnd": "00:10:39.2390000",
+        "start": "00:10:23.9570000",
+        "end": "00:10:39.2390000"
+    }]
+}]
+```
+
+#### <a name="labels"></a>Bezeichnungen
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die Bezeichnungs-ID.|
+|name|Der Bezeichnungsname (z. B. „Computer“, „TV“).|
+|Language|Die Sprache des Bezeichnungsnamens (sofern übersetzt). BCP-47|
+|instances|Eine Liste der Zeitbereiche, in denen diese Bezeichnung angezeigt wurde (eine Bezeichnung kann mehrfach vorkommen). Jedes Vorkommen weist ein Zuverlässigkeitsfeld auf. |
+
+
+```json
+"labels": [
+    {
+      "id": 0,
+      "name": "person",
+      "language": "en-US",
+      "instances": [
+        {
+          "confidence": 1.0,
+          "start": "00: 00: 00.0000000",
+          "end": "00: 00: 25.6000000"
+        },
+        {
+          "confidence": 1.0,
+          "start": "00: 01: 33.8670000",
+          "end": "00: 01: 39.2000000"
+        }
+      ]
+    },
+    {
+      "name": "indoor",
+      "language": "en-US",
+      "id": 1,
+      "instances": [
+        {
+          "confidence": 1.0,
+          "start": "00: 00: 06.4000000",
+          "end": "00: 00: 07.4670000"
+        },
+        {
+          "confidence": 1.0,
+          "start": "00: 00: 09.6000000",
+          "end": "00: 00: 10.6670000"
+        },
+        {
+          "confidence": 1.0,
+          "start": "00: 00: 11.7330000",
+          "end": "00: 00: 20.2670000"
+        },
+        {
+          "confidence": 1.0,
+          "start": "00: 00: 21.3330000",
+          "end": "00: 00: 25.6000000"
+        }
+      ]
+    }
+  ] 
+```
+
+#### <a name="shots"></a>shots
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID der Aufnahme.|
+|keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen). Keyframeinstanzen weisen ein Feld „thumbnailId“ mit der keyFrame-Miniaturansicht-ID auf.|
+|instances|Eine Liste der Zeitbereiche dieser Aufnahme (Aufnahmen kommen nur einmal vor).|
+
+```json
+"Shots": [
+    {
+      "id": 0,
+      "keyFrames": [
+        {
+          "id": 0,
+          "instances": [
+            {
+          "thumbnailId": "00000000-0000-0000-0000-000000000000",
+              "start": "00: 00: 00.1670000",
+              "end": "00: 00: 00.2000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+       "thumbnailId": "00000000-0000-0000-0000-000000000000",   
+          "start": "00: 00: 00.2000000",
+          "end": "00: 00: 05.0330000"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "keyFrames": [
+        {
+          "id": 1,
+          "instances": [
+            {
+          "thumbnailId": "00000000-0000-0000-0000-000000000000",        
+              "start": "00: 00: 05.2670000",
+              "end": "00: 00: 05.3000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "start": "00: 00: 05.2670000",
+          "end": "00: 00: 10.3000000"
+        }
+      ]
+    }
+  ]
+```
+
+#### <a name="brands"></a>brands
+
+Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennung bzw. in den Video-OCR-Daten erkannt werden. Die visuelle Erkennung von Marken oder die Logoerkennung sind hierin nicht enthalten.
+
+|Name|Beschreibung|
+|---|---|
+|id|Die Marken-ID.|
+|name|Der Name der Marke.|
+|referenceId | Das Suffix der Wikipedia-URL für die Marke. Beispielsweise ist „Target_Corporation“ das Suffix von [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
+|referenceUrl | Die Wikipedia-URL der Marke, falls vorhanden. Beispiel: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)
+|description|Die Beschreibung der Marke.|
+|tags|Eine Liste mit vordefinierten Tags, die dieser Marke zugeordnet wurden.|
+|confidence|Der Zuverlässigkeitswert der Video Indexer-Markenerkennung (0 - 1).|
+|instances|Eine Liste mit Zeitbereichen dieser Marke. Jede Instanz verfügt über ein brandType-Element, mit dem angegeben wird, ob diese Marke im Transkript oder in den OCR-Daten angezeigt wird.|
+
+```json
+"brands": [
+{
+    "id": 0,
+    "name": "MicrosoftExcel",
+    "referenceId": "Microsoft_Excel",
+    "referenceUrl": "http: //en.wikipedia.org/wiki/Microsoft_Excel",
+    "referenceType": "Wiki",
+    "description": "Microsoft Excel is a sprea..",
+    "tags": [],
+    "confidence": 0.975,
+    "instances": [
+    {
+        "brandType": "Transcript",
+        "start": "00: 00: 31.3000000",
+        "end": "00: 00: 39.0600000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "name": "Microsoft",
+    "referenceId": "Microsoft",
+    "referenceUrl": "http: //en.wikipedia.org/wiki/Microsoft",
+    "description": "Microsoft Corporation is...",
+    "tags": [
+    "competitors",
+    "technology"
+    ],
+    "confidence": 1.0,
+    "instances": [
+    {
+        "brandType": "Transcript",
+        "start": "00: 01: 44",
+        "end": "00: 01: 45.3670000"
+    },
+    {
+        "brandType": "Ocr",
+        "start": "00: 01: 54",
+        "end": "00: 02: 45.3670000"
+    }
+    ]
+}
+]
+```
+
+#### <a name="statistics"></a>statistics
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|CorrespondenceCount|Anzahl von Korrespondenzen im Video.|
+|WordCount|Die Anzahl von Wörtern pro Sprecher.|
+|SpeakerNumberOfFragments|Die Anzahl von Fragmenten, über die ein Sprecher im Video verfügt.|
+|SpeakerLongestMonolog|Der längste Monolog des Sprechers. Falls der Sprecher bei seinem Monolog Sprechpausen einlegt, ist diese Zeit mit enthalten. Die Ruhephasen am Anfang und Ende des Monologs werden entfernt.| 
+|SpeakerTalkToListenRatio|Die Berechnung basiert auf der Zeit für den Monolog des Sprechers (ohne Sprechpausen) geteilt durch die Gesamtzeit des Videos. Der Zeitwert wird auf die dritte Dezimalstelle gerundet.|
+
+#### <a name="audioeffects"></a>audioEffects
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID des Audioeffekts.|
+|type|Der Typ des Audioeffekts (z. B. Geklatsche, Sprache, Stille).|
+|instances|Eine Liste der Zeitbereiche, in denen dieser Audioeffekt vorkam.|
+
+```json
+"audioEffects": [
+{
+    "id": 0,
+    "type": "Clapping",
+    "instances": [
+    {
+        "start": "00:00:00",
+        "end": "00:00:03"
+    },
+    {
+        "start": "00:01:13",
+        "end": "00:01:21"
+    }
+    ]
+}
+]
+```
+
+#### <a name="sentiments"></a>sentiments
+
+Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die Stimmungs-ID.|
+|averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|
+|instances|Eine Liste der Zeitbereiche, in denen diese Stimmung vorkam.|
+|sentimentType |Der Typ kann „Positive“ (Positiv), „Neutral“ (Neutral) oder „Negative“ (Negativ) lauten.|
+
+```json
+"sentiments": [
+{
+    "id": 0,
+    "averageScore": 0.87,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:23",
+        "end": "00:00:41"
+    }
+    ]
+}, {
+    "id": 1,
+    "averageScore": 0.11,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:13",
+        "end": "00:00:21"
+    }
+    ]
+}
+]
+```
+
+#### <a name="visualcontentmoderation"></a>visualContentModeration
+
+Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Indexer Inhalt ermittelt wurde, der unter Umständen nur für Erwachsene geeignet ist. Wenn „visualContentModeration“ leer ist, wurde kein Inhalt identifiziert, der ggf. nur für Erwachsene geeignet ist.
+
+Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sind unter Umständen nur für die private Wiedergabe verfügbar. Benutzer haben die Möglichkeit, für den Inhalt eine Überprüfung durch einen Menschen anzufordern. In diesem Fall enthält das IsAdult-Attribut das Ergebnis der Überprüfung durch den Menschen.
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID für die Moderation des visuellen Inhalts.|
+|adultScore|Die Bewertung für nicht jugendfreien Inhalt (von Content Moderator).|
+|racyScore|Die Bewertung für Freizügigkeit (von Content Moderator).|
+|instances|Eine Liste mit Zeitbereichen, in denen diese visuelle Inhaltsmoderation durchgeführt wurde.|
+
+```json
+"VisualContentModeration": [
+{
+    "id": 0,
+    "adultScore": 0.00069,
+    "racyScore": 0.91129,
+    "instances": [
+    {
+        "start": "00:00:25.4840000",
+        "end": "00:00:25.5260000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "adultScore": 0.99231,
+    "racyScore": 0.99912,
+    "instances": [
+    {
+        "start": "00:00:35.5360000",
+        "end": "00:00:35.5780000"
+    }
+    ]
+}
+] 
+```
+
+#### <a name="textualconentmoderation"></a>textualConentModeration 
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID für die Textinhaltsmoderation.|
+|bannedWordsCount |Die Anzahl von gesperrten Wörtern.|
+|bannedWordsRatio |Das Verhältnis der gesperrten Wörter zu den Gesamtwörtern.|
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Video Indexer-API](https://videobreakdown.portal.azure-api.net/docs/services/582074fb0dc56116504aed75/operations/5857caeb0dc5610f9ce979e4)
+
+Informationen dazu, wie Sie Widgets in Ihre Anwendung einbetten, finden Sie unter [Embed Video Indexer widgets into your applications](video-indexer-embed-widgets.md) (Einbetten von Video Indexer-Widgets in Ihre Anwendungen). 
+

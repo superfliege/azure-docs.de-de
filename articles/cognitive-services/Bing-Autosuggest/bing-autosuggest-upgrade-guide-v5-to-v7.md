@@ -25,7 +25,7 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 
 ### <a name="endpoints"></a>Endpunkte
 
-- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: https://api.cognitive.microsoft.com/bing/\*\*v7.0**/Suggestions.
+- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: https://api.cognitive.microsoft.com/bing/\*\*v7.0\*\*/Suggestions.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fehlerantwortobjekte und Fehlercodes
 

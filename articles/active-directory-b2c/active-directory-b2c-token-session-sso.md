@@ -29,7 +29,7 @@ Diese Funktion ermöglicht Ihnen eine präzisere Steuerung der folgenden Einstel
 Für integrierte Richtlinien können Sie dieses Feature in Ihrem Azure AD B2C-Verzeichnis wie folgt verwenden:
 
 1. Führen Sie die folgenden Schritte aus, um im Azure-Portal [zum Menü „B2C-Funktionen“ zu navigieren](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**. *Hinweis: Sie können dieses Feature für jeden Richtlinientyp verwenden, nicht nur für **Registrierungs- oder Anmelderichtlinien***.
+2. Klicken Sie auf **Registrierungs- oder Anmelderichtlinien**. *Hinweis: Sie können dieses Feature für jeden Richtlinientyp verwenden, nicht nur für **Registrierungs- oder Anmelderichtlinien*\*\*.
 3. Öffnen Sie eine Richtlinie, indem Sie darauf klicken. Klicken Sie z.B. auf **B2C_1_SiUpIn**.
 4. Klicken Sie oben im Menü auf **Bearbeiten**.
 5. Klicken Sie auf **Token, Sitzung und einmaliges Anmelden**.

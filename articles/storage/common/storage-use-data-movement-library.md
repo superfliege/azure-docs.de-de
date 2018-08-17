@@ -196,7 +196,7 @@ Dieser Code fragt uns nach dem Pfad zu einer lokalen Datei, dem Namen eines neue
 Klicken Sie auf `F5`, um die Anwendung auszuführen. Sie können überprüfen, ob der Upload erfolgt ist, indem Sie Ihr Storage-Konto mit dem [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) anzeigen.
 
 ## <a name="set-number-of-parallel-operations"></a>Festlegen der Anzahl paralleler Vorgänge
-Eine großartige Funktion der Data Movement-Bibliothek ist die Möglichkeit, die Anzahl der parallelen Vorgänge festzulegen, um den Durchsatz bei der Datenübertragung zu erhöhen. Standardmäßig ist die Anzahl der parallelen Vorgänge in der Data Movement-Bibliothek auf das Achtfache der Anzahl von Kernen im Computer festgelegt. 
+Eine großartige Funktion der Data Movement-Bibliothek ist die Möglichkeit, die Anzahl der parallelen Vorgänge festzulegen, um den Durchsatz bei der Datenübertragung zu erhöhen. Standardmäßig ist die Anzahl der parallelen Vorgänge in der Data Movement-Bibliothek auf 8 * das Anzahl von Kernen im Computer festgelegt. 
 
 Beachten Sie, dass viele parallele Vorgänge in einer Umgebung mit geringer Bandbreite die Netzwerkverbindung überlasten können, wodurch verhindert wird, dass die Vorgänge vollständig abgeschlossen werden. Sie müssen mit dieser Einstellung experimentieren, um zu ermitteln, was auf Grundlage der verfügbaren Netzwerkbandbreite am besten funktioniert. 
 
