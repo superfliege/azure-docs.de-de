@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 05/25/2018
 ms.author: crdun
 ms.custom: include file
-ms.openlocfilehash: 4da469ac31c3ee50d601c87b4d7487ae5bb7bc3a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d3bfb7bc8a5432392dba3b0c5019902b3e59773
+ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664003"
+ms.lasthandoff: 08/03/2018
+ms.locfileid: "39513778"
 ---
 1. Klicken Sie auf die Schaltfläche **App Services**, wählen Sie Ihr Mobile Apps-Back-End aus, wählen Sie **Schnellstart** aus, und wählen Sie anschließend Ihre Clientplattform (iOS, Android, Xamarin oder Cordova) aus.
 
     ![Azure-Portal mit hervorgehobenem Mobile Apps-Schnellstart][quickstart]
 
-2. Ist keine Datenbankverbindung konfiguriert, gehen Sie wie folgt vor, um eine zu erstellen:
+1. Ist keine Datenbankverbindung konfiguriert, gehen Sie wie folgt vor, um eine zu erstellen:
 
     ![Azure-Portal mit Mobile Apps – Herstellen der Datenbankverbindung][connect]
 
-    a. Erstellen Sie eine neue SQL-Datenbank und einen Server.
+    a. Erstellen Sie eine neue SQL-Datenbank und einen Server. Sie müssen für das Feld mit dem Namen der Verbindungszeichenfolge unter Umständen den Standardwert „MS_TableConnectionString“ übernehmen, um Schritt 3 weiter unten ausführen zu können.
 
     ![Azure-Portal mit Mobile Apps – Erstellen einer neuen Datenbank und eines Servers][server]
 
@@ -35,9 +35,9 @@ ms.locfileid: "34664003"
 
     ![Azure Portal-Benachrichtigung: „Sie verfügen bereits über eine Datenverbindung.“][already-connection]
 
-3. Wählen Sie unter **2. Tabellen-API erstellen** als **Back-End-Sprache** die Option „Node.js“ aus.
+1. Wählen Sie unter **2. Tabellen-API erstellen** als **Back-End-Sprache** die Option „Node.js“ aus.
 
-4. Akzeptieren Sie die Bestätigung, und wählen Sie dann **TodoItem-Tabelle erstellen** aus.
+1. Akzeptieren Sie die Bestätigung, und wählen Sie dann **TodoItem-Tabelle erstellen** aus.
     Dadurch wird in Ihrer Datenbank eine neue Aufgabenlistentabelle erstellt.
 
     >[!IMPORTANT]

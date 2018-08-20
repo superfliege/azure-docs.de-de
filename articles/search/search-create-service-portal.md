@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: heidist
-ms.openlocfilehash: 0c7f9807605236a8250d75623d0885730c9945a0
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 83e34f926ec3133f89ccb90979fc3e6708613a80
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950678"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39713926"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
 
@@ -60,7 +60,7 @@ Als Azure-Dienst kann Azure Search in Rechenzentren auf der ganzen Welt gehostet
 ## <a name="select-a-pricing-tier-sku"></a>Auswählen eines Tarifs (SKU)
 [Azure Search wird derzeit in mehreren Tarifen angeboten](https://azure.microsoft.com/pricing/details/search/): Free, Basic oder Standard. Jeder Tarif verfügt über eigene [Kapazitäten und Grenzwerte](search-limits-quotas-capacity.md). Anleitungen finden Sie unter [Auswählen einer SKU oder eines Tarifs für Azure Search](search-sku-tier.md) .
 
-In dieser exemplarischen Vorgehensweise haben wir den Standard-Tarif für unseren Dienst gewählt.
+Für Produktionsworkloads wird in der Regel „Standard“ ausgewählt. Die meisten Kunden beginnen jedoch mit dem kostenlosen Dienst.
 
 Ein Tarif kann nicht geändert werden, nachdem der Dienst erstellt wurde. Wenn Sie später einen höheren oder niedrigeren Tarif benötigen, müssen Sie den Dienst neu erstellen.
 

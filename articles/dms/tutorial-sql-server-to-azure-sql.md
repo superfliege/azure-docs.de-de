@@ -1,24 +1,24 @@
 ---
-title: Verwenden von Azure Database Migration Service zur Migration von SQL Server zu Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit Azure Database Migration Service eine Migration von einer lokalen SQL Server-Instanz zu Azure SQL-Datenbank durchführen.
+title: Verwenden von Azure Database Migration Service zur Offlinemigration von SQL Server zu Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Offlinemigration von einer lokalen SQL Server-Instanz zu Azure SQL-Datenbank durchführen.
 services: dms
 author: edmacauley
-ms.author: edmaca
+ms.author: jtoland
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: f64b2922818eddcab02f7d1c7b8f97671d92589e
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 08/13/2018
+ms.openlocfilehash: 9f4ff8684576d90f1958a307d6ab876f0e2515fb
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850252"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40099373"
 ---
-# <a name="migrate-sql-server-to-azure-sql-database-using-dms"></a>Migrieren von SQL Server zu Azure SQL-Datenbank mit DMS
+# <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Offlinemigration von SQL Server zu Azure SQL-Datenbank mit DMS
 Mit Azure Database Migration Service können Sie die Datenbanken von einer lokalen SQL Server-Instanz zu [Azure SQL-Datenbank](https://docs.microsoft.com/en-us/azure/sql-database/) migrieren. In diesem Tutorial migrieren Sie die Datenbank **Adventureworks2012**, die in einer lokalen Instanz von SQL Server 2016 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu einer Azure SQL-Datenbank.
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -137,21 +137,23 @@ Führen Sie zur Migration des **AdventureWorks2012**-Schemas zu Azure SQL-Datenb
   
 3.  Geben Sie auf dem Bildschirm **Migrationsdienst erstellen** einen Namen für den Dienst, das Abonnement und eine neue oder vorhandene Ressourcengruppe an.
 
-4. Wählen Sie ein vorhandenes virtuelles Netzwerk (VNET) aus, oder erstellen Sie ein neues.
+4. Wählen Sie den Standort aus, an dem Sie die Azure Database Migration Service-Instanz erstellen möchten. 
+
+5. Wählen Sie ein vorhandenes virtuelles Netzwerk (VNET) aus, oder erstellen Sie ein neues.
 
     Das VNET erteilt Azure Database Migration Service Zugriff auf die SQL Server-Quellinstanz und die Azure SQL-Datenbank-Zielinstanz.
 
     Weitere Informationen zum Erstellen des VNET im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
 
-5. Wählen Sie einen Tarif.
+6. Wählen Sie einen Tarif.
 
     Weitere Informationen zu Kosten und Tarifen finden Sie in der [Preisübersicht](https://aka.ms/dms-pricing).
 
     Wenn Sie Hilfe bei der Wahl des richtigen Azure Database Migration Service-Tarifs benötigen, beachten Sie die Empfehlungen in [diesem Blogbeitrag](https://go.microsoft.com/fwlink/?linkid=861067).  
 
-     ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media\tutorial-sql-server-to-azure-sql\dms-settings1.png)
+     ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media\tutorial-sql-server-to-azure-sql\dms-settings2.png)
 
-6.  Wählen Sie **Erstellen**, um den Dienst zu erstellen.
+7.  Wählen Sie **Erstellen**, um den Dienst zu erstellen.
 
 ## <a name="create-a-migration-project"></a>Erstellen eines Migrationsprojekts
 Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Sie ihn, und erstellen Sie anschließend ein neues Migrationsprojekt.
@@ -165,14 +167,14 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
      ![Suchen Ihrer Instanz von Azure Database Migration Service](media\tutorial-sql-server-to-azure-sql\dms-instance-search.png)
  
 3. Wählen Sie **+ Neues Migrationsprojekt** aus.
-4. Geben Sie im Bildschirm **New migration project** (Neues Migrationsprojekt) einen Projektnamen im Textfeld **Source server type** (Quellservertyp) an, wählen Sie **SQL Server**, und wählen Sie dann im Textfeld **Target server type** (Zielservertyp) die Option **Azure SQL Database** (Azure SQL-Datenbank).
+4. Geben Sie im Bildschirm **Neues Migrationsprojekt** einen Projektnamen ein, und wählen Sie im Textfeld **Quellservertyp** die Option **SQL Server** und im Textfeld **Zielservertyp** die Option **Azure SQL-Datenbank-Instanz** aus. Wählen Sie außerdem für **Aktivitätstyp auswählen** die Option **Offlinedatenmigration** aus. 
 
-    ![Erstellen eines Database Migration Service-Projekts](media\tutorial-sql-server-to-azure-sql\dms-create-project1.png)
+    ![Erstellen eines Database Migration Service-Projekts](media\tutorial-sql-server-to-azure-sql\dms-create-project2.png)
 
-5.  Wählen Sie **Create** (Erstellen), um das Projekt zu erstellen.
+5.  Klicken Sie auf **Aktivität erstellen und ausführen**, um das Projekt zu erstellen und die Migrationsaktivität auszuführen.
 
 ## <a name="specify-source-details"></a>Angeben von Quelldetails
-1. Geben Sie im Bildschirm **Quelldetails** die Verbindungsdetails für die SQL Server-Quellinstanz an.
+1. Geben Sie im Bildschirm **Migrationsquelldetail** die Verbindungsdetails für die SQL Server-Quellinstanz an.
  
     Stellen Sie sicher, dass Sie einen vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) für den SQL Server-Quellinstanznamen verwenden. Sie können auch die IP-Adresse für Situationen verwenden, in denen DNS-Namensauflösung nicht möglich ist.
 
@@ -181,57 +183,39 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     Wenn ein vertrauenswürdiges Zertifikat nicht installiert ist, erzeugt SQL Server beim Starten der Instanz ein selbstsigniertes Zertifikat. Dieses Zertifikat wird zum Verschlüsseln der Anmeldeinformationen für Clientverbindungen verwendet.
 
     > [!CAUTION]
-    > SSL-Verbindungen, die mit einem selbstsignierten Zertifikat verschlüsselt sind, bieten keine hohe Sicherheit. Sie sind anfällig für Man-in-the-Middle-Angriffe. Sie sollten sich in einer Produktionsumgebung oder auf Servern, die mit dem Internet verbunden sind, nicht auf SSL-Verbindungen verlassen, die selbstsignierte Zertifikate verwenden.
+    > SSL-Verbindungen, die mit einem selbstsignierten Zertifikat verschlüsselt sind, bieten keine hohe Sicherheit. Sie sind anfällig für Man-in-the-Middle-Angriffe. Verlassen Sie sich in einer Produktionsumgebung oder auf Servern, die mit dem Internet verbunden sind, nicht auf SSL-Verbindungen, die selbstsignierte Zertifikate verwenden.
 
-   ![Quellendetails](media\tutorial-sql-server-to-azure-sql\dms-source-details1.png)
-  
-2. Wählen Sie **Save** (Speichern), und wählen Sie dann die Datenbank **AdventureWorks2012** für die Migration aus.
-
-    ![Auswählen der Quell-DB](media\tutorial-sql-server-to-azure-sql\dms-select-source-db1.png)
+   ![Quellendetails](media\tutorial-sql-server-to-azure-sql\dms-source-details2.png)
 
 ## <a name="specify-target-details"></a>Angeben von Zieldetails
-1. Wählen Sie **Save** (Speichern), und geben Sie dann im Bildschirm **Target details** (Zieldetails) die Verbindungsdetails für den gewünschten Azure SQL-Datenbankserver an, das heißt, für die zuvor bereitgestellte Azure SQL-Datenbank, für die das **AdventureWorks2012**-Schema über den Datenmigrations-Assistenten bereitgestellt wurde.
+1. Klicken Sie auf **Speichern**, und geben Sie dann auf dem Bildschirm **Zieldetails für die Migration** die Verbindungsdetails für den gewünschten Azure SQL-Datenbankserver an. Dabei handelt es sich um die zuvor bereitgestellte Azure SQL-Datenbank, für die das **AdventureWorks2012**-Schema über den Datenmigrations-Assistenten bereitgestellt wurde.
 
-    ![Auswählen des Ziels](media\tutorial-sql-server-to-azure-sql\dms-select-target1.png)
+    ![Auswählen des Ziels](media\tutorial-sql-server-to-azure-sql\dms-select-target2.png)
 
-2. Klicken Sie zum Speichern des Projekts auf **Save** (Speichern).
+2. Klicken Sie auf **Speichern**, und ordnen Sie dann auf dem Bildschirm **Den Zieldatenbanken zuordnen** die Quell- und die Zieldatenbank für die Migration zu.
 
-3. Überprüfen Sie auf dem Bildschirm **Projektzusammenfassung** die dem Migrationsprojekt zugeordneten Details.
+    Wenn die Zieldatenbank denselben Datenbanknamen wie die Quelldatenbank enthält, wählt Azure Database Migration Service die Zieldatenbank standardmäßig aus.
 
-    ![DMS-Zusammenfassung](media\tutorial-sql-server-to-azure-sql\dms-summary1.png)
+    ![Zuordnen zu Zieldatenbanken](media\tutorial-sql-server-to-azure-sql\dms-map-targets-activity2.png)
 
-4. Wählen Sie **Speichern**aus.
-
-## <a name="run-the-migration"></a>Ausführen der Migration
-1.  Wählen Sie das kürzlich gespeicherte Projekt, **+ Neue Aktivität** und dann **Migration ausführen** aus.
-
-    ![Neue Aktivität](media\tutorial-sql-server-to-azure-sql\dms-new-activity1.png)
-
-2.  Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen für die Quell- und Zielserver ein, und wählen Sie dann **Save** (Speichern).
-
-3.  Ordnen Sie im Bildschirm **Map to target databases** (Zu Zieldatenbanken zuordnen) die Quell- und die Zieldatenbank für die Migration einander zu.
-
-    Wenn die Zieldatenbank denselben Datenbanknamen wie die Quelldatenbank enthält, wählt Azure DMS die Zieldatenbank standardmäßig aus.
-
-    ![Zuordnen zu Zieldatenbanken](media\tutorial-sql-server-to-azure-sql\dms-map-targets-activity1.png)
-
-4. Wählen Sie **Save** (Speichern) im Bildschirm **Select tables** (Tabellen auswählen) aus, erweitern Sie die Tabellenauflistung, und prüfen Sie die Liste betroffener Felder.
+3. Wählen Sie **Save** (Speichern) im Bildschirm **Select tables** (Tabellen auswählen) aus, erweitern Sie die Tabellenauflistung, und prüfen Sie die Liste betroffener Felder.
 
     Beachten Sie, dass Azure Database Migration Service automatisch alle leeren Quelltabellen auswählt, die auf der gewünschten Azure SQL-Datenbankinstanz vorhanden sind. Wenn Sie Tabellen, die bereits Daten enthalten, erneut migrieren möchten, müssen Sie die Tabellen auf diesem Blatt explizit auswählen.
 
-    ![Auswählen von Tabellen](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity1.png)
+    ![Auswählen von Tabellen](media\tutorial-sql-server-to-azure-sql\dms-configure-setting-activity2.png)
 
-5.  Wählen Sie **Save** (Speichern) im Bildschirm **Migration summary** (Migrationszusammenfassung) aus, und geben Sie im Textfeld **Activity name** (Aktivitätsname) einen Namen für die Migrationsaktivität an.
+4.  Wählen Sie **Save** (Speichern) im Bildschirm **Migration summary** (Migrationszusammenfassung) aus, und geben Sie im Textfeld **Activity name** (Aktivitätsname) einen Namen für die Migrationsaktivität an.
 
-6. Erweitern Sie den Abschnitt **Überprüfungsoption**, um den Bildschirm **Überprüfungsoption auswählen** anzuzeigen. Geben Sie an, ob für die migrierte Datenbank ein **Schemavergleich** sowie eine Überprüfung auf **Datenkonsistenz** und **Abfragerichtigkeit** durchgeführt werden soll.
+5. Erweitern Sie den Abschnitt **Überprüfungsoption**, um den Bildschirm **Überprüfungsoption auswählen** anzuzeigen. Geben Sie an, ob für die migrierten Datenbanken ein **Schemavergleich** sowie eine Überprüfung auf **Datenkonsistenz** und **Abfragerichtigkeit** durchgeführt werden sollen.
     
-    ![Auswählen der Validierungsoption](media\tutorial-sql-server-to-azure-sql\dms-configuration1.png)
+    ![Auswählen der Validierungsoption](media\tutorial-sql-server-to-azure-sql\dms-configuration2.png)
 
 6.  Wählen Sie **Save** (Speichern), und prüfen Sie die Zusammenfassung, um sicherzustellen, dass die Quell- und die Zieldetails Ihren vorherigen Angaben entsprechen.
 
-    ![Migrationszusammenfassung](media\tutorial-sql-server-to-azure-sql\dms-run-migration1.png)
+    ![Migrationszusammenfassung](media\tutorial-sql-server-to-azure-sql\dms-run-migration2.png)
 
-7.  Wählen Sie **Migration ausführen** aus.
+## <a name="run-the-migration"></a>Ausführen der Migration
+1.  Wählen Sie **Migration ausführen** aus.
 
     Das Fenster „Migrationsaktivität“ wird angezeigt, und der **Status** der Aktivität lautet **Ausstehend**.
 

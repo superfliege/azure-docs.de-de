@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a2e0bf35f73a355197f821f7cce12294f7b35576
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344748"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714450"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)?
 
@@ -79,16 +79,15 @@ Azure hat Datenvorgänge eingeführt (derzeit in der Vorschauversion), durch die
 
 Ein *Bereich* ist die für den Zugriff geltende Grenze. Wenn Sie eine Rolle zuweisen, können Sie die zulässigen Aktionen durch das Definieren eines Bereichs weiter einschränken. Dies ist hilfreich, wenn Sie einem Benutzer die Rolle [Mitwirkender von Websites](built-in-roles.md#website-contributor) zuweisen möchten, jedoch nur für eine Ressourcengruppe.
 
-In Azure können Sie auf mehreren Ebenen einen Bereich angeben: Abonnement, Ressourcengruppe oder Ressource. Bereiche sind in einer Beziehung zwischen übergeordnetem und untergeordnetem Element strukturiert, in der jedem untergeordneten Element nur ein übergeordnetes Element zugewiesen ist.
+In Azure können Sie auf mehreren Ebenen einen Bereich angeben: [Verwaltungsgruppe](../azure-resource-manager/management-groups-overview.md), Abonnement, Ressourcengruppe oder Ressource. Bereiche sind in einer Beziehung zwischen über- und untergeordneten Elementen strukturiert.
 
 ![Bereich für eine Rollenzuweisung](./media/overview/rbac-scope.png)
 
-Der Zugriff, den Sie auf übergeordneter Ebene zuweisen, wird auf untergeordneter Ebene geerbt. Beispiel:
+Wenn Sie den Zugriff in einem übergeordneten Bereich gewähren, werden diese Berechtigungen an den untergeordneten Bereich vererbt. Beispiel: 
 
+- Wenn Sie die Rolle [Besitzer](built-in-roles.md#owner) einem Benutzer im Bereich der Verwaltungsgruppe zuweisen, kann dieser Benutzer alles in allen Abonnements in der Verwaltungsgruppe verwalten.
 - Wenn Sie einer Rolle im Abonnementkontext die Rolle [Leser](built-in-roles.md#reader) zuweisen, können die Mitglieder dieser Gruppe alle Ressourcengruppen und Ressourcen im Abonnement anzeigen.
 - Wenn Sie einer Anwendung im Ressourcengruppenkontext die Rolle [Mitwirkender](built-in-roles.md#contributor) zuweisen, kann diese Ressourcen aller Typen in dieser Ressourcengruppe verwalten, jedoch keine anderen Ressourcengruppen des Abonnements.
-
-Azure enthält auch einen Bereich oberhalb der Abonnements namens [Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md), der sich in der Vorschauversion befindet. Mithilfe von Verwaltungsgruppen können mehrere Abonnements verwaltet werden. Wenn Sie einen Bereich für RBAC angeben, können Sie eine Verwaltungsgruppe oder ein Abonnement, eine Ressourcengruppe oder eine Ressourcenhierarchie angeben.
 
 ### <a name="role-assignment"></a>Rollenzuweisung
 
