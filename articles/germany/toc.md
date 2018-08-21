@@ -16,7 +16,19 @@
 # Anleitung
 ## Verwalten
 ### [Abonnement](germany-manage-subscriptions.md)
-
+## [Migrieren](germany-migration-main.md)
+### [Compute](germany-migration-compute.md)             
+### [Netzwerk](germany-migration-networking.md)
+### [Storage](germany-migration-storage.md)
+### [Web](germany-migration-web.md)
+### [Datenbanken](germany-migration-databases.md)        
+### [Analyse](germany-migration-analytics.md)  
+### [Internet der Dinge (IoT)](germany-migration-iot.md)        
+### [Integration](germany-migration-integration.md)
+### [Identität](germany-migration-identity.md)  
+### [Sicherheit](germany-migration-security.md)
+### [Verwaltungstools](germany-migration-management-tools.md)
+### [Medien](germany-migration-media.md)
 
 # Verweis
 ## [Images](germany-image-gallery.md)
@@ -30,7 +42,7 @@
 ### [Web und Mobil](germany-services-webandmobile.md)
 ### [Internet der Dinge (IoT)](germany-services-iot.md)
 
-# Ressourcen
+# Angeben
 ## [Azure Deutschland-Website](https://azure.microsoft.com/overview/clouds/germany/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://blogs.msdn.microsoft.com/azuregermany/)
