@@ -1,25 +1,20 @@
 ---
-title: Synchronisieren von Azure Active Directory-Benutzern in einen Cluster – Azure HDInsight | Microsoft-Dokumentation
+title: Synchronisieren von Azure Active Directory-Benutzern in einen Cluster – Azure HDInsight
 description: Synchronisieren Sie authentifizierte Benutzer von Azure Active Directory in einen Cluster.
 services: hdinsight
-documentationcenter: ''
-author: ashishthaps
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: ''
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.devlang: na
-ms.topic: article
-ms.date: 01/19/2018
+author: ashishthaps
 ms.author: ashishth
-ms.openlocfilehash: f2deaaa31a4d0e8a91d048b538e9251a8eb9e1b7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+editor: jasonwhowell
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 08/19/2018
+ms.openlocfilehash: 05ac13fe849f90e3f0dbc60d5c232f469e1f290d
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409280"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714841"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster
 
@@ -80,10 +75,10 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
     }
     ```
 
-4. Um den Synchronisierungsstatus anzuzeigen, führen Sie einen neuen `curl`-Befehl aus, und verwenden Sie dabei den vom vorherigen Befehl zurückgegebenen `href`-Wert:
+4. Führen Sie einen neuen `curl`-Befehl aus, um den Synchronisierungsstatus anzuzeigen:
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> http://hn0-hadoop.<YOUR DOMAIN>.com:8080/api/v1/ldap_sync_events/1
+    curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
     
     Das Ergebnis sieht in etwa wie folgt aus:

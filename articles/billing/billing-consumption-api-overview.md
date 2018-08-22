@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/07/2018
 ms.author: erikre
-ms.openlocfilehash: 69e148089f48ebe04faceff87b08eb3f7127f8a3
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c37ff7e2f81b3dbca42193777287dae873768e24
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248366"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630499"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure-Nutzungs-API: Übersicht 
 
@@ -109,7 +109,7 @@ Die API umfasst:
 
 -   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten. 
 -   **Filterung**: Passen Sie Ihre Empfehlungsergebnisse mit den folgenden Filtern an:
-    - Umfang
+    - Bereich
     - Rückblickperiode
 -   **Reservierungsinformationen für verschiedene Angebotstypen**: Reservierungsinformationen sind zurzeit für Enterprise Agreement- und Web Direct-Kunden verfügbar.
 
@@ -136,7 +136,7 @@ Die API umfasst:
 
 -   **Rollenbasierte Zugriffssteuerung für Azure**: Sie können Zugriffsrichtlinien im [Azure-Portal](https://portal.azure.com), mithilfe der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder von [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview) konfigurieren, um festzulegen, welche Benutzer oder Anwendungen Zugriff auf die Nutzungsdaten eines Abonnements erhalten. Aufrufer müssen zur Authentifizierung standardmäßige Azure Active Directory-Token verwenden. Ordnen Sie dem Aufrufer die Rolle „Abrechnungsleser“, „Leser“, „Besitzer“ oder „Mitwirkender“ zu, um Zugriff auf die Nutzungsdaten für ein bestimmtes Azure-Abonnement zu erhalten. 
 -   **Filterung**: Passen Sie Ihre Ergebnisse an, wenn Sie das Tagesintervall mit dem folgenden Filter verwenden:
-    - Nutzungsdatum
+    - Usage Date
 -   **Reservierungsinformationen für verschiedene Angebotstypen**: Reservierungsinformationen sind zurzeit für Enterprise Agreement- und Web Direct-Kunden verfügbar.
 -   **Täglich oder monatliche Aggregationen**: Aufrufer können angeben, ob sie ihre Reservierungszusammenfassungsdaten im Tages- oder Monatsintervall wünschen.
 

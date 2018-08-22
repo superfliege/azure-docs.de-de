@@ -9,16 +9,18 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 4f8df8e7004ca3cee832b6230dc153b21e2a6c18
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d121f2744292ba64436f0722ae60cc3bc2b8dfa7
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186712"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714127"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Cluster Autoscaler in Azure Kubernetes Service (AKS) – Vorschauversion
 
-Azure Kubernetes Service (AKS) ist eine flexible Lösung, mit der Sie einen verwalteten Kubernetes-Cluster in Azure bereitstellen können. Bei steigenden Ressourcenanforderungen kann Ihr Cluster mit Cluster Autoscaler zur Erfüllung dieses Bedarfs automatisch skaliert werden – basierend auf Einschränkungen, die Sie festlegen. Cluster Autoscaler (CA) ermöglicht dies durch die Skalierung Ihrer Agent-Knoten basierend auf ausstehenden Pods. Die Lösung prüft den Cluster in regelmäßigen Abständen auf ausstehende Pods oder leere Knoten und erhöht wenn möglich deren Größe. Standardmäßig prüft die Zertifizierungsstelle alle 10 Sekunden auf ausstehende Pods und entfernt einen Knoten, wenn dieser seit mehr als 10 Minuten nicht benötigt wurde. Wird die Lösung mit Horizontal Pod Autoscaler (HPA) verwendet, aktualisiert HPA bei Bedarf Podreplikate und -ressourcen. Wenn nach dieser Podskalierung nicht genügend Knoten oder nicht benötigte Knoten vorhanden sind, reagiert die Zertifizierungsstelle und plant die Pods in der neuen Knotengruppe.
+Azure Kubernetes Service (AKS) ist eine flexible Lösung, mit der Sie einen verwalteten Kubernetes-Cluster in Azure bereitstellen können. Bei steigenden Ressourcenanforderungen kann Ihr Cluster mit Cluster Autoscaler zur Erfüllung dieses Bedarfs automatisch skaliert werden – basierend auf Einschränkungen, die Sie festlegen. Cluster Autoscaler (CA) ermöglicht dies durch die Skalierung Ihrer Agent-Knoten basierend auf ausstehenden Pods. Die Lösung prüft den Cluster in regelmäßigen Abständen auf ausstehende Pods oder leere Knoten und erhöht wenn möglich deren Größe. Standardmäßig prüft die Zertifizierungsstelle alle 10 Sekunden auf ausstehende Pods und entfernt einen Knoten, wenn dieser seit mehr als 10 Minuten nicht benötigt wurde. Wird die Lösung mit [Horizontal Pod Autoscaler](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) (HPA) verwendet, aktualisiert HPA bei Bedarf Podreplikate und -ressourcen. Wenn nach dieser Podskalierung nicht genügend Knoten oder nicht benötigte Knoten vorhanden sind, reagiert die Zertifizierungsstelle und plant die Pods in der neuen Knotengruppe.
+
+In diesem Artikel wird beschrieben, wie Sie Cluster Autoscaler auf den Agent-Knoten bereitstellen. Da Cluster Autoscaler im kube-system-Namespace bereitgestellt wird, skaliert Cluster Autoscaler den Knoten, der diesen Pod ausführt, nicht zentral herunter.
 
 > [!IMPORTANT]
 > Die Cluster Autoscaler-Integration in Azure Kubernetes Service (AKS) befindet sich derzeit in der **Vorschauversion**. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
@@ -32,41 +34,70 @@ In diesem Dokument wird davon ausgegangen, dass Sie über einen RBAC-fähigen AK
 
 ## <a name="gather-information"></a>Sammeln von Informationen
 
-Die folgende Liste enthält alle Informationen, die Sie in der Definition für die automatische Skalierung angeben müssen.
+Um die Berechtigungen für Cluster Autoscaler zum Ausführen in Ihrem Cluster zu generieren, führen Sie das folgende Bash-Skript aus:
 
-- *Abonnement-ID*: Die ID, die dem für diesen Cluster verwendeten Abonnement entspricht.
-- *Ressourcengruppenname*: Der Name der Ressourcengruppe, der der Cluster angehört. 
-- *Clustername*: Der Name des Clusters.
-- *Client-ID*: Die App-ID, die beim Schritt zum Generieren von Berechtigungen gewährt wird.
-- *Clientgeheimnis*: Das App-Geheimnis, das beim Schritt zur Generieren von Berechtigungen gewährt wird.
-- *Mandanten-ID*: Die ID des Mandanten (Kontobesitzer).
-- *Knotenressourcengruppe*: Der Name der Ressourcengruppe im Cluster, in der die Agent-Knoten enthalten sind.
-- *Name des Knotenpools*: Der Name des Knotenpools, der skaliert werden soll.
-- *Minimale Anzahl von Knoten*: Die minimale Anzahl von Knoten, die im Cluster vorhanden sein sollten.
-- *Maximale Anzahl von Knoten*: Die maximale Anzahl von Knoten, die im Cluster vorhanden sein sollten.
-- *VM-Typ*: Der Dienst, der zum Generieren des Kubernetes-Clusters verwendet wird.
+```sh
+#! /bin/bash
+ID=`az account show --query id -o json`
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' `
 
-Rufen Sie mit folgendem Befehl Ihre Abonnement-ID ab: 
+TENANT=`az account show --query tenantId -o json`
+TENANT_ID=`echo $TENANT | tr -d '"' | base64`
 
-``` azurecli
-az account show --query id
+read -p "What's your cluster name? " cluster_name
+read -p "Resource group name? " resource_group
+
+CLUSTER_NAME=`echo $cluster_name | base64`
+RESOURCE_GROUP=`echo $resource_group | base64`
+
+PERMISSIONS=`az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/$SUBSCRIPTION_ID" -o json`
+CLIENT_ID=`echo $PERMISSIONS | sed -e 's/^.*"appId"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+CLIENT_SECRET=`echo $PERMISSIONS | sed -e 's/^.*"password"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+SUBSCRIPTION_ID=`echo $ID | tr -d '"' | base64 `
+
+CLUSTER_INFO=`az aks show --name $cluster_name  --resource-group $resource_group -o json`
+NODE_RESOURCE_GROUP=`echo $CLUSTER_INFO | sed -e 's/^.*"nodeResourceGroup"[ ]*:[ ]*"//' -e 's/".*//' | base64`
+
+echo "---
+apiVersion: v1
+kind: Secret
+metadata:
+    name: cluster-autoscaler-azure
+    namespace: kube-system
+data:
+    ClientID: $CLIENT_ID
+    ClientSecret: $CLIENT_SECRET
+    ResourceGroup: $RESOURCE_GROUP
+    SubscriptionID: $SUBSCRIPTION_ID
+    TenantID: $TENANT_ID
+    VMType: QUtTCg==
+    ClusterName: $CLUSTER_NAME
+    NodeResourceGroup: $NODE_RESOURCE_GROUP
+---"
 ```
 
-Generieren Sie eine Gruppe von Azure-Anmeldeinformationen, indem Sie den folgenden Befehl ausführen:
+Nach der Durchführung der Schritte im Skript gibt das Skript Ihre Details in Form eines Geheimnisses aus. Dies wird im Folgenden veranschaulicht:
 
-```console
-$ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscription-id>" --output json
-
-"appId": <app-id>,
-"displayName": <display-name>,
-"name": <name>,
-"password": <app-password>,
-"tenant": <tenant-id>
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cluster-autoscaler-azure
+  namespace: kube-system
+data:
+  ClientID: <base64-encoded-client-id>
+  ClientSecret: <base64-encoded-client-secret>$
+  ResourceGroup: <base64-encoded-resource-group>  SubscriptionID: <base64-encode-subscription-id>
+  TenantID: <base64-encoded-tenant-id>
+  VMType: QUtTCg==
+  ClusterName: <base64-encoded-clustername>
+  NodeResourceGroup: <base64-encoded-node-resource-group>
+---
 ```
 
-In den folgenden Schritten stehen clientID, clientSecret und tenantID für die App-ID, das Kennwort bzw. die Mandanten-ID.
-
-Rufen Sie den Namen Ihres Knotenpools ab, indem Sie den folgenden Befehl ausführen: 
+Rufen Sie anschließend den Namen Ihres Knotenpools ab, indem Sie den folgenden Befehl ausführen. 
 
 ```console
 $ kubectl get nodes --show-labels
@@ -81,49 +112,7 @@ aks-nodepool1-37756013-0   Ready     agent     1h        v1.10.3   agentpool=nod
 
 Extrahieren Sie dann den Wert der Bezeichnung **agentpool**. Der Standardname für den Knotenpool eines Clusters lautet „nodepool1“.
 
-Um den Namen Ihrer Knotenressourcengruppe abzurufen, extrahieren Sie den Wert der Bezeichnung **kubernetes.azure.com<span></span>/cluster**. Der Name der Knotenressourcengruppe weist allgemein das folgende Format auf: „MC_[Ressourcengruppe]\_[Clustername]_[Standort]“.
-
-Der vmType-Parameter bezieht sich auf den verwendeten Dienst, in diesem Fall auf AKS.
-
-Nun sollten Sie die folgenden Informationen bereithalten:
-
-- SubscriptionID
-- ResourceGroup
-- ClusterName
-- ClientID
-- ClientSecret
-- Mandanten-ID
-- NodeResourceGroup
-- VMType
-
-Codieren Sie als Nächstes all diese Werte mit „base64“. Codieren Sie beispielsweise wie folgt den VMType-Wert mit „base64“:
-
-```console
-$ echo AKS | base64
-QUtTCg==
-```
-
-## <a name="create-secret"></a>Erstellen eines Geheimnisses
-Anhand dieser Daten erstellen Sie ein Geheimnis für die Bereitstellung, indem Sie die in den vorherigen Schritten ermittelten Werte im folgenden Format verwenden:
-
-```yaml
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cluster-autoscaler-azure
-  namespace: kube-system
-data:
-  ClientID: <base64-encoded-client-id>
-  ClientSecret: <base64-encoded-client-secret>
-  ResourceGroup: <base64-encoded-resource-group>
-  SubscriptionID: <base64-encode-subscription-id>
-  TenantID: <base64-encoded-tenant-id>
-  VMType: QUtTCg==
-  ClusterName: <base64-encoded-clustername>
-  NodeResourceGroup: <base64-encoded-node-resource-group>
----
-```
+Nun können Sie anhand Ihres Geheimnisses und Knotenpools einen Ressourcenplan erstellen.
 
 ## <a name="create-a-deployment-chart"></a>Erstellen eines Ressourcenplans
 
@@ -324,10 +313,10 @@ Füllen Sie anschließend das image-Feld unter **containers** mit der Cluster Au
 Stellen Sie Cluster Autoscaler bereit, indem Sie Folgendes ausführen:
 
 ```console
-kubectl create -f cluster-autoscaler-containerservice.yaml
+kubectl create -f aks-cluster-autoscaler.yaml
 ```
 
-Um festzustellen, ob Cluster Autoscaler ausgeführt wird, verwenden Sie den folgenden Befehl, und überprüfen Sie die Liste von Pods. Ist einem Pod das Präfix „cluster-autoscaler“ vorangestellt, wurde Ihre Cluster Autoscaler-Instanz bereitgestellt.
+Um festzustellen, ob Cluster Autoscaler ausgeführt wird, verwenden Sie den folgenden Befehl, und überprüfen Sie die Liste von Pods. Es sollte ein Pod ausgeführt werden, bei dem „cluster-autoscaler“ vorangestellt ist. Wenn dies der Fall ist, wurde Cluster Autoscaler bereitgestellt.
 
 ```console
 kubectl -n kube-system get pods
@@ -338,6 +327,68 @@ Führen Sie zum Anzeigen des Status von Cluster Autoscaler Folgendes aus:
 ```console
 kubectl -n kube-system describe configmap cluster-autoscaler-status
 ```
+
+## <a name="interpreting-the-cluster-autoscaler-status"></a>Interpretieren des Status von Cluster Autoscaler
+
+```console
+$ kubectl -n kube-system describe configmap cluster-autoscaler-status
+Name:         cluster-autoscaler-status
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  cluster-autoscaler.kubernetes.io/last-updated=2018-07-25 22:59:22.661669494 +0000 UTC
+
+Data
+====
+status:
+----
+Cluster-autoscaler status at 2018-07-25 22:59:22.661669494 +0000 UTC:
+Cluster-wide:
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 registered=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+NodeGroups:
+  Name:        nodepool1
+  Health:      Healthy (ready=1 unready=0 notStarted=0 longNotStarted=0 registered=1 longUnregistered=0 cloudProviderTarget=1 (minSize=1, maxSize=5))
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleUp:     NoActivity (ready=1 cloudProviderTarget=1)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+  ScaleDown:   NoCandidates (candidates=0)
+               LastProbeTime:      2018-07-25 22:59:22.067828801 +0000 UTC
+               LastTransitionTime: 2018-07-25 00:38:36.41372897 +0000 UTC
+
+
+Events:  <none>
+```
+
+Den Status von Cluster Autoscaler können Sie auf zwei verschiedenen Ebenen einsehen: innerhalb des gesamten Clusters und innerhalb der einzelnen Knotengruppen. Da AKS derzeit nur einen Knotenpool unterstützt, sind diese Metriken identisch.
+
+* „Health“ gibt die Gesamtintegrität der Knoten an. Wenn beim Erstellen oder Entfernen von Knoten im Cluster Fehler in Cluster Autoscaler auftreten, wechselt dieser Status zu „Unhealthy“. Auch der Status der verschiedenen Knoten wird aufgeschlüsselt:
+    * „Ready“ bedeutet, dass für einen Knoten Pods geplant werden können.
+    * „Unready“ bedeutet, dass ein Knoten ausgefallen ist, nachdem er gestartet wurde.
+    * „NotStarted“ bedeutet, dass ein Knoten noch nicht vollständig gestartet ist.
+    * „LongNotStarted“ bedeutet, dass ein Knoten nicht innerhalb eines angemessenen Grenzwerts gestartet werden konnte.
+    * „Registered“ bedeutet, dass ein Knoten in der Gruppe registriert ist.
+    * „Unregistered“ bedeutet, dass ein Knoten zwar aufseiten des Clusteranbieters vorhanden ist, jedoch nicht in Kubernetes registriert werden konnte.
+  
+* Mit ScaleUp können Sie eine Überprüfung durchführen, wann der Cluster ermittelt hat, dass ein Vorgang zum zentralen Hochskalieren in Ihrem Cluster erfolgen soll.
+    * Ein Übergang liegt vor, wenn sich die Anzahl der Knoten im Cluster oder der Status eines Knotens ändert.
+    * Die Anzahl der Knoten mit dem Status „Ready“ entspricht der Anzahl der Knoten, die im Cluster verfügbar und bereit sind. 
+    * Das cloudProviderTarget enthält die Anzahl der Knoten, die der Cluster laut Cluster Autoscaler zur Verarbeitung seiner Workload benötigt.
+
+* Mit ScaleDown können Sie überprüfen, ob Kandidaten zum zentralen Herunterskalieren vorhanden sind. 
+    * Ein Kandidat zum zentralen Herunterskalieren ist ein Knoten, der laut Cluster Autoscaler entfernt werden kann, ohne dass die Möglichkeit des Clusters zur Verarbeitung seiner Workload beeinträchtigt wird. 
+    * Die angegebenen Zeiten geben den Zeitpunkt, an dem der Cluster zuletzt auf Kandidaten zum zentralen Herunterskalieren überprüft wurde, sowie den Zeitpunkt des letzten Übergangs an.
+
+Unter Events finden Sie zu guter Letzt fehlerhafte oder erfolgreiche Skalierungsereignisse jeglicher Art oder Ereignisse zum zentralen Herunterskalieren sowie den jeweiligen Zeitpunkt, an dem Cluster Autoscaler diese ausgeführt hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,17 +8,20 @@ ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: vvasic
-ms.openlocfilehash: d4d3b7f54c7393b57339ea149e8a79f97891dc20
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: v-daljep
+ms.reviewer: carlrab
+ms.openlocfilehash: 9ebc3a8cb01d93fc6cec5d208c5a10020413cec2
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646030"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39631094"
 ---
 # <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
 
-Azure SQL-Datenbank ist ein automatisch verwalteter Datendienst, der kontinuierlich Ihre Abfragen überwacht und Ihnen mitteilt, wie Sie die Leistung Ihrer Workload verbessern können. Sie können Empfehlungen prüfen und manuell anwenden oder Azure SQL-Datenbank die Maßnahmen automatisch anwenden lassen. Letzteres wird als **automatischer Optimierungsmodus** bezeichnet. Die automatische Optimierung kann auf der Server- oder auf der Datenbankebene aktiviert werden.
+Azure SQL-Datenbank ist ein automatisch verwalteter Datendienst, der kontinuierlich Ihre Abfragen überwacht und Ihnen mitteilt, wie Sie die Leistung Ihrer Workload verbessern können. Sie können Empfehlungen prüfen und manuell anwenden oder Azure SQL-Datenbank die Maßnahmen automatisch anwenden lassen. Letzteres wird als **automatischer Optimierungsmodus** bezeichnet.
+
+Die automatische Optimierung kann über das [Azure-Portal](sql-database-automatic-tuning-enable.md#azure-portal), [REST-API](sql-database-automatic-tuning-enable.md#rest-api)-Aufrufe und [T-SQL](sql-database-automatic-tuning-enable.md#t-sql)-Befehle auf Server- oder Datenbankebene aktiviert werden.
 
 ## <a name="enable-automatic-tuning-on-server"></a>Aktivieren der automatischen Optimierung für den Server
 Auf Serverebene kann auf Wunsch die Konfiguration der automatischen Optimierung von „Azure-Standardwerte“ geerbt werden. In den Azure-Standardwerten sind FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
@@ -37,7 +40,9 @@ Wählen Sie die gewünschten Optionen für die automatische Optimierung und ansc
 Die Optionen für die automatische Optimierung auf einem Server werden auf alle Datenbanken auf diesem Server angewendet. Standardmäßig erben alle Datenbanken die Konfiguration von ihrem übergeordneten Server. Dies kann jedoch außer Kraft gesetzt und einzeln für jede Datenbank angegeben werden.
 
 ### <a name="rest-api"></a>REST-API
-Weitere Informationen zum Aktivieren der automatischen Optimierung auf Serverebene mithilfe der REST-API finden Sie [hier](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
+
+Weitere Informationen darüber, wie die automatische Optimierung mithilfe der REST-API auf einem Server aktiviert werden kann, finden Sie unter [Automatische Serveroptimierung](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
+
 
 ## <a name="enable-automatic-tuning-on-an-individual-database"></a>Aktivieren der automatischen Optimierung für eine einzelne Datenbank
 
@@ -60,7 +65,8 @@ Beachten Sie, dass die Option DROP_INDEX zurzeit nicht kompatibel mit Anwendunge
 Klicken Sie nach der Auswahl der gewünschten Konfiguration auf **Übernehmen**.
 
 ### <a name="rest-api"></a>REST-API
-Weitere Informationen zum Aktivieren der automatischen Optimierung für eine einzelne Datenbank mithilfe der REST-API finden Sie [hier](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
+
+Weitere Informationen darüber, wie die automatische Optimierung mithilfe der REST-API in einer Einzeldatenbank aktiviert werden kann, finden Sie unter [Automatische Serveroptimierung](https://docs.microsoft.com/rest/api/sql/databaseautomatictuning).
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -80,12 +86,14 @@ Wenn Sie über T-SQL einzelne Optionen der automatischen Optimierung konfigurier
    
 Wenn Sie eine Optimierungsoption auf „ON“ festlegen, werden ggf. geerbte Einstellungen der Datenbank überschrieben, und die entsprechende Optimierungsoption wird aktiviert. Gleiches gilt für „OFF“: Auch hier werden ggf. geerbte Einstellungen der Datenbank überschrieben, und die entsprechende Optimierungsoption wird deaktiviert. Bei Verwendung der automatischen Optimierungsoption „DEFAULT“ wird die Konfiguration aus der Einstellung für die automatische Optimierung auf Datenbankebene geerbt.  
 
+Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL)](https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017&tabs=sqldbls#arguments-1).
+
 ## <a name="disabled-by-the-system"></a>Vom System deaktiviert
 Die automatische Optimierung überwacht alle Aktionen, die sie für die Datenbank ausführt, und stellt manchmal unter Umständen fest, dass die automatische Optimierung für die Datenbank nicht ordnungsgemäß funktioniert. In diesem Fall wird die Optimierungsoption vom System deaktiviert. Das liegt meistens daran, dass der Abfragespeicher nicht aktiviert oder für eine bestimmte Datenbank schreibgeschützt ist.
 
 ## <a name="configure-automatic-tuning-e-mail-notifications"></a>Konfigurieren der automatischen Optimierung von E-Mail-Benachrichtigungen
 
-Siehe [Automatische Optimierung von E-Mail-Benachrichtigungen](sql-database-automatic-tuning-email-notifications.md)
+Weitere Informationen hierzu finden Sie im Leitfaden [E-Mail-Benachrichtigungen zur automatischen Optimierung](sql-database-automatic-tuning-email-notifications.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zur automatischen Optimierung sowie zu ihrer Rolle bei der Verbesserung der Leistung finden Sie in [diesem Artikel](sql-database-automatic-tuning.md).

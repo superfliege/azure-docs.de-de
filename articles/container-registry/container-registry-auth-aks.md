@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: b56f2a8b2ae8cf04b8c27ab657be3f4d77ee7402
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205390"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715828"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 
@@ -72,7 +72,7 @@ echo "Service principal password: $SP_PASSWD"
 
 Nun können Sie die Anmeldeinformationen des Dienstprinzipals in einem [Kubernetes-Geheimnis für einen Image-Pullvorgang][image-pull-secret] speichern, auf das der AKS-Cluster beim Ausführen von Containern verweist.
 
-Verwenden Sie den folgenden **kubectl**-Befehl, um das Kubernetes-Geheimnis zu erstellen. Ersetzen Sie `<acr-login-server>` durch den vollqualifizierten Namen Ihrer Azure-Containerregistrierung (im Format „acrname.azurecr.io“). Ersetzen Sie `<service-principal-ID>` und `<service-principal-password>` durch die Werte, die Sie durch Ausführen des vorhergehenden Skripts erhalten haben.
+Verwenden Sie den folgenden **kubectl**-Befehl, um das Kubernetes-Geheimnis zu erstellen. Ersetzen Sie `<acr-login-server>` durch den vollqualifizierten Namen Ihrer Azure-Containerregistrierung (im Format „acrname.azurecr.io“). Ersetzen Sie `<service-principal-ID>` und `<service-principal-password>` durch die Werte, die Sie durch Ausführen des vorhergehenden Skripts erhalten haben. Ersetzen Sie `<email-address>` mit einer gültigen E-Mail-Adresse.
 
 ```bash
 kubectl create secret docker-registry acr-auth --docker-server <acr-login-server> --docker-username <service-principal-ID> --docker-password <service-principal-password> --docker-email <email-address>

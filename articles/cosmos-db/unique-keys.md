@@ -9,14 +9,14 @@ editor: monicar
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/21/2018
+ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: d12109efbb157b1e0c15b1a4c0d005fa98c44858
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 796971ff541b62a22a70df4022ab78817e7158e9
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261099"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003316"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Eindeutige Schlüssel in Azure Cosmos DB
 
@@ -129,6 +129,9 @@ JSON-Beispieldokument.
 
 Im folgenden Befehlsbeispiel wird die Erstellung eines eindeutigen Index für die Felder „firstName“, „lastName“ und „email“ der Auflistung des Benutzers für die MongoDB-API veranschaulicht. Dadurch wird die Eindeutigkeit für eine Kombination aus allen drei Feldern für alle Dokumente in der Auflistung sichergestellt. Für MongoDB-API-Auflistungen wird der eindeutige Index nach dem Erstellen, aber vor dem Auffüllen der Auflistung erstellt.
 
+> [!NOTE]
+> Das eindeutige Schlüsselformat für MongoDB-API-Konten unterscheidet sich von dem der SQL-API-Konten, für die der umgekehrte Schrägstrich (/) vor dem Feldnamen nicht angegeben werden muss. 
+
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )
 ```
@@ -137,7 +140,7 @@ db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } 
 In den obigen Abschnitten finden Sie Codebeispiele, die zeigen, wie Sie Einschränkung auf eindeutige Schlüssel definieren können, wenn eine Sammlung mit der SQL-API oder MongoDB-API erstellt wird. Es ist jedoch auch möglich, eindeutige Schlüssel zu definieren, wenn Sie eine Sammlung auf der Webbenutzeroberfläche im Azure-Portal erstellen. 
 
 - Navigieren Sie in Ihrem Cosmos DB-Konto zum **Daten-Explorer**.
-- Klicken Sie auf **Neue Sammlung**.
+- Klicken Sie im Katalogheader auf **Neue Sammlung**
 - Im Abschnitt „Eindeutige Schlüssel“ können Sie die gewünschten Einschränkungen auf eindeutige Schlüssel hinzufügen, indem Sie auf **Eindeutigen Schlüssel hinzufügen** klicken.
 
 ![Definieren eindeutiger Schlüssel im Daten-Explorer](./media/unique-keys/unique-keys-azure-portal.png)

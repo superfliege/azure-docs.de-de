@@ -3,7 +3,7 @@ title: Azure Event Hubs-Features im Überblick | Microsoft-Dokumentation
 description: 'Event Hubs-Features: Übersicht und Details'
 services: event-hubs
 documentationcenter: .net
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
@@ -11,19 +11,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/08/2018
-ms.author: sethm
-ms.openlocfilehash: f16f8aa73ecfa3e0a47ce2373a2e28a7a9968ff5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.author: shvija
+ms.openlocfilehash: abc85c322f7b8ee63c06639ae8845a5f07266b50
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248740"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007295"
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs-Features im Überblick
 
 Azure Event Hubs ist ein skalierbarer Ereignisverarbeitungsdienst, der große Mengen von Ereignissen und Daten mit kurzer Wartezeit und hoher Zuverlässigkeit erfasst und verarbeitet. Unter [Was ist Event Hubs?](event-hubs-what-is-event-hubs.md) finden Sie einen allgemeinen Überblick.
 
 Dieser Artikel setzt auf den Informationen in der [Übersichtsartikel](event-hubs-what-is-event-hubs.md) auf und bietet technische und Implementierungsdetails zu Event Hubs-Komponenten und -Features.
+
+## <a name="namespace"></a>Namespace
+Ein Event Hubs-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über den [vollqualifizierten Domänennamen](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) verwiesen wird, und in dem Sie mindestens einen Event Hub bzw. mindestens ein Kafka-Thema erstellen. 
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
 
@@ -69,7 +72,7 @@ Die Anzahl der Partitionen wird bei der Erstellung angegeben und muss zwischen z
 
 Auch wenn Partitionen identifizierbar sind und Daten direkt an sie gesendet werden können, wird dies nicht empfohlen. Stattdessen können Sie Konstrukte höherer Ebene verwenden, die in den Abschnitten [Ereignisherausgeber](#event-publishers) und [Kapazität](#capacity) erläutert werden. 
 
-Partitionen werden mit einer Sequenz von Ereignisdaten gefüllt, die den Hauptteil des Ereignisses, einen benutzerdefinierten Eigenschaftenbehälter und Metadaten (etwa den Offset in der Partition und die Nummer in der Streamsequenz) enthalten.
+Partitionen werden mit einer Sequenz von Ereignisdaten gefüllt, die den Hauptteil des Ereignisses, einen benutzerdefinierten Eigenschaftenbehälter und Metadaten (z.B. Offset in der Partition und Nummer in der Streamsequenz) enthalten.
 
 Weitere Informationen zu Partitionen sowie zur Abwägung von Verfügbarkeit gegen Zuverlässigkeit finden Sie im [Programmierleitfaden für Event Hubs](event-hubs-programming-guide.md#partition-key) sowie im Artikel [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md).
 
@@ -145,14 +148,14 @@ Event Hubs verfügt über eine hochgradig skalierbare parallele Architektur. Zud
 
 Die Durchsatzkapazität von Event Hubs wird durch *Durchsatzeinheiten* gesteuert. Durchsatzeinheiten werden vorab als Kapazitätseinheiten erworben. Eine einzelne Durchsatzeinheit beinhaltet folgende Kapazität:
 
-* Eingang: bis zu 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde, je nachdem, was zuerst eintritt
-* Ausgang: bis zu 2 MB pro Sekunde
+* Eingehende Daten: bis zu 1 MB pro Sekunde oder 1.000 Ereignisse pro Sekunde, je nachdem, was zuerst eintritt
+* Ausgehende Daten: bis zu 2 MB pro Sekunde oder 4.096 Ereignisse pro Sekunde
 
 Bei Überschreitung der Kapazität der erworbenen Durchsatzeinheiten wird der Eingang eingeschränkt und [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) zurückgegeben. Der Ausgang erstellt zwar keine Drosselungsausnahmen, die Kapazität der erworbenen Durchsatzeinheiten ist allerdings dennoch beschränkt. Wenn Sie Ausnahmen für die Veröffentlichungsrate erhalten oder einen größeren Ausgang erwarten, überprüfen Sie, wie viele Durchsatzeinheiten Sie für den Namespace erworben haben. Sie können Durchsatzeinheiten auf dem Blatt **Skalierung** der Namespaces im [Azure-Portal](https://portal.azure.com) verwalten. Mithilfe der [Event Hubs-APIs](event-hubs-api-overview.md) können Durchsatzeinheiten auch programmgesteuert verwaltet werden.
 
 Durchsatzeinheiten werden im Voraus erworben und auf Stundenbasis abgerechnet. Nach dem Erwerb werden Durchsatzeinheiten für mit einem Minimum von einer Stunde in Rechnung gestellt. Bis zu 20 Durchsatzeinheiten können für einen Event Hubs-Namespace erworben und in allen Event Hubs dieses Namespace gemeinsam verwendet werden.
 
-Weitere Durchsatzeinheiten können in Blöcken von 20 über den Azure-Support erworben werden (bis zu 100 Durchsatzeinheiten insgesamt). Darüber hinaus können Sie Blöcke von je 100 Durchsatzeinheiten erwerben.
+Sie haben die Möglichkeit, weitere Durchsatzeinheiten in Blöcken von 20 über den Azure-Support zu erwerben (bis zu 100 Durchsatzeinheiten insgesamt). Darüber hinaus können Sie Blöcke von je 100 Durchsatzeinheiten erwerben.
 
 Es wird empfohlen, Durchsatzeinheiten und Partitionen sorgfältig aufeinander abzustimmen, um eine optimale Skalierung zu erreichen. Eine einzelne Partition weist über eine maximale Skalierung von einer Durchsatzeinheit auf. Die Anzahl von Durchsatzeinheiten sollte kleiner oder gleich der Anzahl von Partitionen in einem Event Hub sein.
 

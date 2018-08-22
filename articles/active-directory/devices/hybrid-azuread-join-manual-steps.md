@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b8fec9a263eee6bf1e8bf347a9b6dd256840738f
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: ba47223f86005809189214f26a63b75b21449e3a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392607"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630618"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten 
 
-Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. Weitere Informationen finden Sie unter [../Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md).
+Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](overview.md).
 
 Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. Die entsprechenden Schritte werden in diesem Artikel beschrieben. 
 
@@ -35,40 +35,18 @@ Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebun
 > Wenn die Verwendung von Azure AD Connect für Sie eine Option ist, helfen Ihnen die Informationen unter [Select your scenario](hybrid-azuread-join-plan.md#select-your-scenario) (Auswählen Ihres Szenarios) weiter. Durch die Verwendung von Azure AD Connect können Sie die Konfiguration einer Azure AD-Hybrideinbindung erheblich vereinfachen.
 
 
-## <a name="before-you-begin"></a>Voraussetzungen
-
-Bevor Sie beginnen, in Azure AD eingebundene Hybridgeräte in Ihrer Umgebung zu konfigurieren, sollten Sie sich mit den unterstützten Szenarien und den Einschränkungen vertraut machen.  
-
-Wenn Sie das [Systemvorbereitungstool (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) verwenden, vergewissern Sie sich, dass Sie Images von einer Installation von Windows erstellen, die noch nicht bei Azure AD registriert wurde.
-
-Für alle in die Domäne eingebundenen Geräte, auf denen Windows 10 Anniversary Update und Windows Server 2016 ausgeführt wird, wird bei einem Neustart des Geräts oder der Anmeldung eines Benutzers eine automatische Registrierung bei Azure AD durchgeführt, sobald die unten beschriebenen Konfigurationsschritte durchgeführt wurden. **Wenn dieses Verhalten zur automatischen Registrierung nicht erwünscht ist oder wenn ein kontrollierter Rollout gewünscht wird**, aktivieren oder deaktivieren Sie zuerst selektiv den automatischen Rollout (siehe Anweisungen im Abschnitt „Schritt 4: Steuern der Bereitstellung und des Rollouts“), bevor Sie mit den anderen Konfigurationsschritten fortfahren.  
-
-In diesem Artikel werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit der Beschreibungen zu erleichtern: 
-
-- **Aktuelle Windows-Geräte**: Diese Bezeichnung bezieht sich auf in die Domäne eingebundene Geräte, auf denen Windows 10 oder Windows Server 2016 ausgeführt wird.
-- **Kompatible Windows-Geräte**: Diese Bezeichnung bezieht sich auf alle **unterstützten** in die Domäne eingebundenen Windows-Geräte, auf denen weder Windows 10 noch Windows Server 2016 ausgeführt wird.  
-
-### <a name="windows-current-devices"></a>Aktuelle Windows-Geräte
-
-- Für Geräte, auf denen das Windows-Desktopbetriebssystem ausgeführt wird, wird die Version Windows 10 Anniversary Update (Version 1607) oder höher unterstützt. 
-- Die Registrierung von aktuellen Windows-Geräten **wird** in nicht zu einem Verbund gehörenden Umgebungen unterstützt, z.B. Konfigurationen mit Kennworthashsynchronisierung.  
-
-
-### <a name="windows-down-level-devices"></a>Kompatible Windows-Geräte
-
-- Die folgenden kompatiblen Windows-Geräte werden unterstützt:
-    - Windows 8.1
-    - Windows 7
-    - Windows Server 2012 R2
-    - Windows Server 2012
-    - Windows Server 2008 R2
-- Die Registrierung kompatibler Windows-Geräte **wird** in nicht zu einem Verbund gehörenden Umgebungen durch die [nahtlose einmalige Anmeldung mit Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) unterstützt. 
-- Bei Verwendung der Azure AD-Passthrough-Authentifizierung wird die Registrierung kompatibler Windows-Geräte ohne nahtloses einmaliges Anmelden **nicht** unterstützt.
-- Für Geräte, die Roamingprofile verwenden, wird die Registrierung kompatibler Windows-Geräte **nicht** unterstützt. Verwenden Sie Windows 10, wenn Sie das Roaming von Profilen oder Einstellungen nutzen.
-
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
+    
+-  [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
+    
+-  [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)
+
+-  [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
+
 
 Bevor Sie beginnen, in Hybrid-Azure AD eingebundene Geräte in Ihrem Unternehmen zu aktivieren, müssen Sie Folgendes sicherstellen:
 
@@ -114,15 +92,14 @@ Verwenden Sie die folgende Tabelle, um eine Übersicht über die Schritte zu erh
 
 | Schritte                                      | Aktuelle Windows-Geräte und Kennworthashsynchronisierung | Aktuelle Windows-Geräte und Verbund | Kompatible Windows-Geräte |
 | :--                                        | :-:                                    | :-:                            | :-:                |
-| Schritt 1: Konfigurieren des Dienstverbindungspunkts | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
-| Schritt 2: Einrichten der Ausstellung von Ansprüchen           |                                        | ![Prüfen][1]                    | ![Prüfen][1]        |
-| Schritt 3: Aktivieren von Geräten, auf denen nicht Windows 10 ausgeführt wird      |                                        |                                | ![Prüfen][1]        |
-| Schritt 4: Steuern der Bereitstellung und des Rollouts     | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
-| Schritt 5: Überprüfen der eingebundenen Geräte          | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
+| Konfigurieren des Dienstverbindungspunkts | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
+| Einrichten der Ausstellung von Ansprüchen           |                                        | ![Prüfen][1]                    | ![Prüfen][1]        |
+| Aktivieren von Geräten, auf denen nicht Windows 10 ausgeführt wird      |                                        |                                | ![Prüfen][1]        |
+| Überprüfen der eingebundenen Geräte          | ![Prüfen][1]                            | ![Prüfen][1]                    | ![Prüfen][1]        |
 
 
 
-## <a name="step-1-configure-service-connection-point"></a>Schritt 1: Konfigurieren des Dienstverbindungspunkts
+## <a name="configure-service-connection-point"></a>Konfigurieren des Dienstverbindungspunkts
 
 Das SCP-Objekt (Service Connection Point, Dienstverbindungspunkt) wird von Ihren Geräten während der Registrierung verwendet, um Informationen zum Azure AD-Mandanten zu ermitteln. In Ihrer lokalen Active Directory-Instanz (AD) muss das SCP-Objekt für die in Azure AD eingebundenen Hybridgeräte in der Partition für den Konfigurationsnamenskontext der Computergesamtstruktur vorhanden sein. Es gibt nur einen Konfigurationsnamenskontext pro Gesamtstruktur. In einer Active Directory-Konfiguration mit mehreren Gesamtstrukturen muss der Dienstverbindungspunkt in allen Gesamtstrukturen vorhanden sein, die in die Domäne eingebundene Computer enthalten.
 
@@ -200,7 +177,7 @@ Zum Abrufen einer Liste mit Ihren überprüften Unternehmensdomänen können Sie
 
 ![Get-AzureADDomain](./media/hybrid-azuread-join-manual-steps/01.png)
 
-## <a name="step-2-setup-issuance-of-claims"></a>Schritt 2: Einrichten der Ausstellung von Ansprüchen
+## <a name="setup-issuance-of-claims"></a>Einrichten der Ausstellung von Ansprüchen
 
 Bei einer Azure AD-Verbundkonfiguration wird für Geräte AD FS (Active Directory-Verbunddienste) oder ein lokaler Drittanbieter-Verbunddienst genutzt, um die Authentifizierung bei Azure AD durchzuführen. Die Geräte führen die Authentifizierung durch, um ein Zugriffstoken für die Registrierung beim Geräteregistrierungsdienst von Azure Active Directory (Azure DRS) zu erhalten.
 
@@ -504,7 +481,7 @@ Das folgende Skript dient Ihnen als Hilfe beim Erstellen der oben beschriebenen 
 
 - Wenn Sie bereits einen **ImmutableID**-Anspruch für Benutzerkonten ausgestellt haben, legen Sie den Wert von **$immutableIDAlreadyIssuedforUsers** im Skript auf **$true** fest.
 
-## <a name="step-3-enable-windows-down-level-devices"></a>Schritt 3: Aktivieren von kompatiblen Windows-Geräten
+## <a name="enable-windows-down-level-devices"></a>Aktivieren von kompatiblen Windows-Geräten
 
 Wenn es sich bei einigen Ihrer in die Domäne eingebundenen Geräte um kompatible Windows-Geräte handelt, gehen Sie wie folgt vor:
 
@@ -562,64 +539,25 @@ Um die Anzeige von Zertifikataufforderungen zu vermeiden, wenn Benutzer beim Reg
 
 `https://device.login.microsoftonline.com`
 
-## <a name="step-4-control-deployment-and-rollout"></a>Schritt 4: Steuern der Bereitstellung und des Rollouts
 
-Nachdem Sie die erforderlichen Schritte ausgeführt haben, können in die Domäne eingebundene Geräte automatisch in Azure AD eingebunden werden:
-
-- Für alle in die Domäne eingebundenen Geräte, auf denen Windows 10 Anniversary Update und Windows Server 2016 ausgeführt wird, wird bei einem Neustart des Geräts oder der Anmeldung eines Benutzers eine automatische Registrierung bei Azure AD durchgeführt. 
-
-- Neue Geräte werden bei Azure AD registriert, wenn das Gerät nach Abschluss des Domänenbeitritts neu gestartet wird.
-
-- Geräte, die zuvor bei Azure AD registriert wurden (etwa für Intune), werden zu Geräten mit *Domäneneinbindung und AAD-Registrierung*. Aufgrund des normalen Ablaufs von Domänen- und Benutzeraktivitäten dauert es jedoch etwas, bis dieser Prozess für alle Geräte abgeschlossen ist.
-
-### <a name="remarks"></a>Anmerkungen
-
-- Sie können ein Gruppenrichtlinienobjekt oder eine System Center Configuration Manager-Clienteinstellung verwenden, um den Rollout der automatischen Registrierung von in die Domäne eingebundenen Computern unter Windows 10 und Windows Server 2016 zu steuern. **Wenn Sie nicht möchten, dass sich diese Geräte automatisch bei Azure AD registrieren oder Sie die Registrierung steuern möchten**, müssen Sie zuerst eine Gruppenrichtlinie umsetzen, die die automatische Registrierung für alle diese Geräte deaktiviert. Wenn Sie Configuration Manager verwenden, müssen Sie die Clienteinstellung unter „Clouddienste -> Neue, in die Domäne eingebundene Windows 10-Geräte automatisch bei Azure Active Directory registrieren“ auf „Nein“ festlegen, bevor Sie mit einem der Konfigurationsschritte beginnen. Wenn Sie mit dem Konfigurieren fertig und zum Testen bereit sind, müssen Sie den Rollout der Gruppenrichtlinie durchführen und die automatische Registrierung nur für die Testgeräte aktivieren – und anschließend wie gewünscht für alle anderen Geräte.
-
-- Für den Rollout von kompatiblen Windows-Computern ist ein [Windows Installer-Paket](#windows-installer-packages-for-non-windows-10-computers) verfügbar, das auf den von Ihnen ausgewählten Computern bereitgestellt werden kann.
-
-- Wenn Sie das Gruppenrichtlinienobjekt auf in die Domäne eingebundene Computer mit Windows 8.1 übertragen, wird versucht, eine Einbindung durchzuführen. Es wird aber empfohlen, das [Windows Installer-Paket](#windows-installer-packages-for-non-windows-10-computers) zu verwenden, um alle kompatiblen Windows-Geräte einzubinden. 
-
-### <a name="create-a-group-policy-object"></a>Erstellen eines Gruppenrichtlinienobjekts 
-
-Um den Rollout von aktuellen Windows-Computern zu steuern, können Sie die Gruppenrichtlinie **In die Domäne eingebundene Computer als Geräte registrieren** für die zu registrierenden Geräte bereitstellen. Beispielsweise können Sie die Richtlinie für eine Organisationseinheit oder eine Sicherheitsgruppe bereitstellen.
-
-**Legen Sie die Richtlinie fest:**
-
-1. Öffnen Sie den **Server-Manager**, und navigieren Sie zu `Tools > Group Policy Management`.
-2. Wechseln Sie zu dem Domänenknoten, der der Domäne entspricht, in der Sie die automatische Registrierung von aktuellen Windows-Computern aktivieren möchten.
-3. Klicken Sie mit der rechten Maustaste auf **Gruppenrichtlinienobjekte**, und wählen Sie dann **Neu** aus.
-4. Geben Sie einen Namen für das Gruppenrichtlinienobjekt ein. Beispiel: „*Hybrid Azure AD Join“. 
-5. Klicken Sie auf **OK**.
-6. Klicken Sie mit der rechten Maustaste auf Ihr neues Gruppenrichtlinienobjekt, und wählen Sie dann **Bearbeiten** aus.
-7. Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Geräteregistrierung**. 
-8. Klicken Sie mit der rechten Maustaste auf **In die Domäne eingebundene Computer als Geräte registrieren**, und wählen Sie dann die Option **Bearbeiten**.
-   
-   > [!NOTE]
-   > In früheren Versionen der Gruppenrichtlinien-Verwaltungskonsole hatte diese Gruppenrichtlinienvorlage einen anderen Namen. Navigieren Sie zu `Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers`, falls Sie eine frühere Version der Konsole verwenden. 
-
-7. Wählen Sie **Aktiviert** aus, und klicken Sie dann auf **Übernehmen**. Sie müssen **Deaktiviert** auswählen, wenn Sie anhand der Richtlinie die durch diese Gruppenrichtlinie gesteuerten Geräte an der automatischen Registrierung bei Azure AD hindern möchten.
-
-8. Klicken Sie auf **OK**.
-9. Verknüpfen Sie das Gruppenrichtlinienobjekt jetzt mit einem Speicherort Ihrer Wahl. Sie können es beispielsweise mit einer bestimmten Organisationseinheit verknüpfen. Sie können es aber auch mit einer bestimmten Sicherheitsgruppe von Computern verbinden, die automatisch in Azure AD eingebunden werden. Um diese Richtlinie für alle in die Domäne eingebundenen Windows 10- und Windows Server 2016-Computer in Ihrer Organisation festzulegen, verknüpfen Sie das Gruppenrichtlinienobjekt mit der Domäne.
-
-### <a name="windows-installer-packages-for-non-windows-10-computers"></a>Windows Installer-Pakete für Computer ohne Windows 10
-
-Zum Einbinden von in die Domäne eingebundenen kompatiblen Windows-Computern in einer Verbundumgebung können Sie dieses Windows Installer-Paket (.msi) über die Seite [Microsoft Workplace Join for non-Windows 10 computers](https://www.microsoft.com/en-us/download/details.aspx?id=53554) (Microsoft Workplace Join für Computer mit einem anderen Betriebssystem als Windows 10) aus dem Download Center herunterladen und installieren.
-
-Sie können das Paket mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des Parameters *quiet*. System Center Configuration Manager Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen. Weitere Informationen finden Sie unter [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager).
-
-Das Installationsprogramm erstellt einen geplanten Task auf dem System, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung per integrierter Windows-Authentifizierung bindet der Task das Gerät unter Verwendung der Anmeldeinformationen des Benutzers automatisch in Azure AD ein. Um den geplanten Task anzuzeigen, wechseln Sie auf dem Gerät zu **Microsoft** > **Arbeitsbereichverknüpfung** und navigieren dann zur Aufgabenplanungsbibliothek.
-
-## <a name="step-5-verify-joined-devices"></a>Schritt 5: Überprüfen der eingebundenen Geräte
+## <a name="verify-joined-devices"></a>Überprüfen der eingebundenen Geräte
 
 Sie können die erfolgreiche Einbindung für die Geräte Ihrer Organisation überprüfen, indem Sie das Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/msonline/v1/get-msoldevice) im [Azure Active Directory PowerShell-Modul](/powershell/azure/install-msonlinev1?view=azureadps-2.0) verwenden.
 
 In der Ausgabe dieses Cmdlets werden Geräte angezeigt, die in Azure AD registriert und eingebunden sind. Verwenden Sie zum Abrufen aller Geräte den Parameter **-All**, und filtern Sie sie anschließend mit der **deviceTrustType**-Eigenschaft. In die Domäne eingebundene Geräte weisen den Wert **In die Domäne eingebunden** auf.
 
+
+
+## <a name="troubleshoot-your-implementation"></a>Problembehandlung bei der Implementierung
+
+Wenn bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
+
+- [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-current.md)
+- [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-legacy.md)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
+* [Einführung in die Geräteverwaltung in Azure Active Directory](overview.md)
 
 
 

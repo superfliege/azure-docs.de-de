@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Cisco Webex | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory-Integration mit Cisco Webex | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Cisco Webex konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 4dcf487afdad899853c97d3d2a1493a6123b3bab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 73e20afdcacec76482f8ebf01bf2cef2105912a6
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440712"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005517"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Tutorial: Azure Active Directory-Integration mit Cisco Webex
 
@@ -53,7 +53,7 @@ Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlun
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Cisco Webex aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="add-cisco-webex-from-the-gallery"></a>Hinzufügen von Cisco Webex aus dem Katalog
 Zum Konfigurieren der Integration von Cisco Webex in Azure AD müssen Sie Cisco Webex aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
@@ -64,17 +64,17 @@ Zum Konfigurieren der Integration von Cisco Webex in Azure AD müssen Sie Cisco 
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-1. Navigieren Sie zu **Unternehmensanwendungen ausführen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen ausführen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
     
-1. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
+3. Wählen Sie oben im Dialogfeld die Schaltfläche **Neue Anwendung** aus, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-1. Geben Sie im Suchfeld den Begriff **Cisco Webex** ein. 
+4. Geben Sie im Suchfeld den Begriff **Cisco Webex** ein. 
 
-1. Wählen Sie im Ergebnisbereich **Cisco Webex** aus. Wählen Sie dann die Schaltfläche **Hinzufügen** aus, um die Anwendung hinzuzufügen.
+5. Wählen Sie im Ergebnisbereich **Cisco Webex** aus. Wählen Sie dann die Schaltfläche **Hinzufügen** aus, um die Anwendung hinzuzufügen.
 
     ![Cisco Webex in der Ergebnisliste](./media/cisco-webex-tutorial/tutorial_ciscowebex_addfromgallery.png)
 
@@ -89,10 +89,10 @@ Weisen Sie in Cisco Webex dem Wert **Username** denselben Wert wie dem **Benutze
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Cisco Webex müssen Sie die folgenden Aufgaben ausführen:
 
 1. [Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on), um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. [Erstellen eines Cisco Webex-Testbenutzers](#create-a-cisco-webex-test-user), um ein Pendant zu Britta Simon in Cisco Webex zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-1. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. [Testen des einmaligen Anmeldens](#test-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
+2. [Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user), um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
+3. [Erstellen eines Cisco Webex-Testbenutzers](#create-a-cisco-webex-test-user), um ein Pendant zu Britta Simon in Cisco Webex zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+4. [Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user), um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. [Testen des einmaligen Anmeldens](#test-single-sign-on), um sicherzustellen, dass die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -104,71 +104,86 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-1. Wählen Sie zum Aktivieren des einmaligen Anmeldens im Dialogfeld **Einmaliges Anmelden** in der Dropdownliste **Modus** die Option **SAML-basierte Anmeldung** aus.
+2. Wählen Sie zum Aktivieren des einmaligen Anmeldens im Dialogfeld **Einmaliges Anmelden** in der Dropdownliste **Modus** die Option **SAML-basierte Anmeldung** aus.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/cisco-webex-tutorial/tutorial_ciscowebex_samlbase.png)
 
-1. Führen Sie im Abschnitt **Domäne und URLs für Cisco Webex** die folgenden Schritte aus:
+3. Melden Sie sich in einem anderen Webbrowserfenster bei der Cisco Webex-Unternehmenswebsite als Administrator an.
+
+4. Klicken Sie links im Menü auf **Settings** (Einstellungen).
+
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_10.png)
+
+5. Klicken Sie auf der Einstellungsseite im Bereich **Authentication** (Authentifizierung) auf **Modify** (Ändern).
+
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_14.png)
+
+6. Wählen Sie **Integrate a 3rd-party identity provider. (Advanced)** (Identitätsanbieter von Drittanbieter integrieren (Erweitert)) aus, und wechseln Sie zum nächsten Bildschirm.
+
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_15.png)
+
+7. Klicken Sie auf der Seite **Export Directory Metadata** (Verzeichnismetadaten exportieren) auf **Download Metadata File** (Metadatendatei herunterladen), um die Metadatendatei herunterzuladen.
+
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_16.png)
+
+8. Laden Sie im Azure-Portal im Abschnitt **Domäne und URLs für Cisco Webex** die heruntergeladene **Metadatendatei des Dienstanbieters** herunter, und konfigurieren Sie die Anwendung folgendermaßen:
+
+    a. Klicken Sie auf **Metadatendatei hochladen**.
+
+    ![SSO-Informationen zur Domäne und zu den URLs für Cisco Webex](./media/cisco-webex-tutorial/tutorial_ciscowebex_upload.png)
+
+    b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
+
+    ![SSO-Informationen zur Domäne und zu den URLs für Cisco Webex](./media/cisco-webex-tutorial/tutorial_ciscowebex_uploadconfig.png)
+
+    c. Nachdem Sie die **Metadatendatei des Dienstanbieters** hochgeladen haben, werden im Abschnitt **Domäne und URLs für Cisco Webex** die Werte für **Bezeichner** und **Antwort-URL** automatisch ausgefüllt, wie unten dargestellt:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Cisco Webex](./media/cisco-webex-tutorial/tutorial_ciscowebex_url.png)
 
-    a. Geben Sie im Feld **URL für Anmeldung** eine URL im folgenden Format ein: `https://<subdomain>.webex.com`.
-
-    b. Geben Sie im Feld **Bezeichner** die URL ein`http://www.webex.com`.
-
-    c. Geben Sie im Feld **Antwort-URL** eine URL im folgenden Format ein: `https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company`
+    d. Geben Sie im Feld **URL für Anmeldung** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.webex.com/`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Wenden Sie sich an das [Clientsupportteam von Cisco Webex](https://www.webex.co.in/support/support-overview.html), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie die Werte mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Cisco Webex](https://www.webex.co.in/support/support-overview.html), um diese Werte zu erhalten.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+9. Die Cisco Webex-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute enthalten. Konfigurieren Sie die folgenden Attribute für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+    
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_ciscowebex_07.png) 
+
+10. Konfigurieren Sie das SAML-Tokenattribut im Dialogfeld **Einmaliges Anmelden** im Abschnitt **Benutzerattribute**, wie im obigen Bild gezeigt, und führen Sie die folgenden Schritte aus:
+    
+    |  Attributname  | Attributwert |
+    | --------------- | -------------------- |    
+    |   firstname    | user.givenname |
+    |   lastname    | user.surname |
+    |   uid    | user.mail |
+
+    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_attribute_04.png)
+
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_attribute_05.png)
+    
+    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+    
+    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    
+    d. Klicken Sie auf **OK**.
+
+11. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/cisco-webex-tutorial/tutorial_ciscowebex_certificate.png) 
 
-1. Wählen Sie **Speichern**aus.
+12. Wählen Sie **Speichern**aus.
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/cisco-webex-tutorial/tutorial_general_400.png)
     
-1. Wählen Sie im Abschnitt **Cisco Webex-Konfiguration** die Option **Cisco Webex konfigurieren** aus, um das Fenster **Anmeldung konfigurieren**  zu öffnen. Kopieren Sie die **Abmelde-URL**, die **SAML-Entitäts-ID** und die **URL für den SAML-SSO-Dienst** aus dem Bereich **Kurzübersicht**.
+13. Verwenden Sie auf der Cisco Webex-Unternehmenswebsite für Administratoren die Dateisuchoption, um die Azure AD-Metadatendatei zu suchen und hochzuladen. Wählen Sie anschließend **Require certificate signed by a certificate authority in Metadata (more secure)** (Signatur einer Zertifizierungsstelle in den Metadaten erzwingen (sicherer)) aus, und wechseln Sie zum nächsten Bildschirm. 
 
-    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_ciscowebex_configure.png) 
+    ![Configure single sign-on](./media/cisco-webex-tutorial/tutorial_cisco_webex_11.png)
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Cisco Webex-Unternehmenswebsite als Administrator an.
+14. Wählen Sie **Test SSO Connection** (SSO-Verbindung testen) aus, und authentifizieren Sie sich, wenn eine neue Browserregisterkarte geöffnet wird, durch Ihre Anmeldung bei Azure AD.
 
-1. Wählen Sie im oberen Menü **Site Administration** aus.
-
-    ![Websiteverwaltung](./media/cisco-webex-tutorial/ic777621.png "Websiteverwaltung")
-
-1. Klicken Sie im Abschnitt **Manage Site** auf **SSO Configuration**.
-   
-    ![SSO-Konfiguration](./media/cisco-webex-tutorial/ic777622.png "SSO-Konfiguration")
-
-1. Führen Sie im Abschnitt **Federated Web SSO Configuration** die folgenden Schritte aus:
-   
-    ![Verbund-SSO-Konfiguration](./media/cisco-webex-tutorial/ic777623.png "Verbund-SSO-Konfiguration")  
-
-    a. Wählen Sie in der Liste **Federation Protocol** die Option **SAML 2.0** aus.
-
-    b. Aktivieren Sie für **SSO profile** die Option **SP Initiated**.
-
-    c. Öffnen Sie das heruntergeladene Zertifikat in Editor, und kopieren Sie den Inhalt.
-
-    d. Wählen Sie **Import SAML Metadata** aus, und fügen Sie den kopierten Inhalt des Zertifikats ein.
-
-    e. Fügen Sie in das Feld **Issuer for SAML (IdP ID)** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
-
-    f. Fügen Sie in das Feld **Customer SSO Service Login URL** die **URL für den SAML-SSO-Dienst** ein, die Sie aus dem Azure-Portal kopiert haben.
-
-    g. Wählen Sie in der Liste **NameID-Format** die Option **E-Mail-Adresse** aus.
-
-    h. Geben Sie in das Feld **AuthnContextClassRef** die Zeichenfolge **urn:oasis:names:tc:SAML:2.0:ac:classes:Password** ein.
-
-    i. Fügen Sie in das Feld **Customer SSO Service Logout URL** die **Abmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
-   
-    j. Wählen Sie **Update** aus.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, navigieren Sie zur Registerkarte **Einmaliges Anmelden**, und rufen Sie am unteren Rand im Abschnitt **Konfiguration** die eingebettete Dokumentation auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation](https://go.microsoft.com/fwlink/?linkid=845985).
+15. Wechseln Sie zurück zur Browserregisterkarte **Cisco Cloud Collaboration Management**. Wenn der Test erfolgreich war, wählen Sie **This test was successful. Enable Single Sign-On option** (Der Test war erfolgreich. Einmaliges Anmelden aktivieren), und klicken Sie auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -182,15 +197,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/cisco-webex-tutorial/create_aaduser_01.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
+2. Navigieren Sie zu **Benutzer und Gruppen**, und wählen Sie dann **Alle Benutzer** aus.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/cisco-webex-tutorial/create_aaduser_02.png)
 
-1. Klicken Sie im oberen Bereich des Dialogfelds **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+3. Klicken Sie im oberen Bereich des Dialogfelds **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/cisco-webex-tutorial/create_aaduser_03.png)
 
-1. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
+4. Führen Sie im Dialogfeld **Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/cisco-webex-tutorial/create_aaduser_04.png)
 
@@ -204,38 +219,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-cisco-webex-test-user"></a>Erstellen eines Cisco Webex-Testbenutzers
 
-Damit sich Azure AD-Benutzer bei Cisco Webex anmelden können, müssen sie in Cisco Webex bereitgestellt werden. Im Fall von Cisco Webex ist die Bereitstellung eine manuelle Aufgabe.
-
-**Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:**
-
-1. Melden Sie sich bei Ihrem **Cisco Webex**-Mandanten an.
-
-1. Wählen Sie **Manage Users** > **Add User** aus.
-   
-    ![Benutzer hinzufügen](./media/cisco-webex-tutorial/ic777625.png "Benutzer hinzufügen")
-
-1. Führen Sie im Abschnitt **Add User** die folgenden Schritte aus:
-   
-    ![Benutzer hinzufügen](./media/cisco-webex-tutorial/ic777626.png "Benutzer hinzufügen")   
-
-    a. Wählen Sie unter **Account Type** den Kontotyp **Host** aus.
-
-    b. Geben Sie im Feld **First Name** den Vornamen des Benutzers ein (in diesem Fall **Britta**).
-
-    c. Geben Sie im Feld **Last Name** den Nachnamen des Benutzers ein (in diesem Fall **Simon**).
-
-    d. Geben Sie im Feld **Username** die E-Mail-Adresse des Benutzers ein (in diesem Fall **Brittasimon@contoso.com**).
-
-    e. Geben Sie im Feld **Email** die E-Mail-Adresse des Benutzers ein (in diesem Fall **Brittasimon@contoso.com**).
-
-    f. Geben Sie im Feld **Password** das Kennwort des Benutzers ein.
-
-    g. Geben Sie das Kennwort im Feld **Confirm Password** das Kennwort des Benutzers noch einmal ein.
-
-    h. Wählen Sie **Hinzufügen**.
-
->[!NOTE]
->Sie können Azure AD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von Cisco Webex-Benutzerkonten oder mithilfe der von Cisco Webex bereitgestellten APIs bereitstellen. 
+Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Cisco Webex. Cisco Webex unterstützt die Just-in-Time-Bereitstellung und die automatische Benutzerbereitstellung, die standardmäßig aktiviert ist. Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -247,27 +231,27 @@ In diesem Abschnitt ermöglichen Sie der Benutzerin Britta Simon das einmalige A
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht. Wechseln Sie als Nächstes zur Verzeichnisansicht und dann zu **Unternehmensanwendungen**.  
 
-1. Wählen Sie **Alle Anwendungen** aus.
+2. Wählen Sie **Alle Anwendungen** aus.
 
     ![Benutzer zuweisen][201] 
 
-1. Wählen Sie in der Anwendungsliste **Cisco Webex**aus.
+3. Wählen Sie in der Anwendungsliste **Cisco Webex**aus.
 
     ![Cisco Webex-Link in der Anwendungsliste](./media/cisco-webex-tutorial/tutorial_ciscowebex_app.png)  
 
-1. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
     ![Link „Benutzer und Gruppen“][202]
 
-1. Wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Wählen Sie die Schaltfläche **Hinzufügen** aus. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** unter **Benutzer** die Option **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** unter **Benutzer** die Option **Britta Simon** aus.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

@@ -4,38 +4,36 @@ description: Verwenden Sie Azure Resource Manager und Azure-CLI, um Ressourcen i
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 493b7932-8d1e-4499-912c-26098282ec95
 ms.service: azure-resource-manager
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2017
+ms.date: 08/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a6b227cee3765593adbda430d8c47312f996c18
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c9595b0e6313dc4620b48296fdca6dc2c6ae6413
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723462"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628136"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
 
-In diesem Artikel wird erläutert, wie Ihre Ressourcen mithilfe der Azure CLI und Azure Resource Manager-Vorlagen in Azure bereitgestellt werden. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich unter [Übersicht über Azure Resource Manager](resource-group-overview.md).  
+In diesem Artikel wird erläutert, wie Ihre Ressourcen mithilfe der Azure CLI und Azure Resource Manager-Vorlagen in Azure bereitgestellt werden. Wenn Sie nicht mit den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen vertraut sind, informieren Sie sich unter [Übersicht über den Azure Resource Manager](resource-group-overview.md).  
 
 Die Resource Manager-Vorlage, die Sie bereitstellen, kann entweder eine lokale Datei auf Ihrem Computer oder eine externe Datei sein, die sich in einem Repository wie GitHub befindet. Die Vorlage, die Sie in diesem Artikel bereitstellen, finden Sie im Abschnitt [Beispielvorlage](#sample-template) oder als [Speicherkontovorlage in GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json).
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
-Wenn die Azure CLI nicht installiert ist, können Sie die [Cloud Shell](#deploy-template-from-cloud-shell) verwenden.
+Wenn die Azure CLI nicht installiert ist, können Sie [Cloud Shell](#deploy-template-from-cloud-shell) verwenden.
 
 ## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
 
 Beim Bereitstellen von Ressourcen in Azure gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich bei Ihrem Azure-Konto an.
+1. Anmelden bei Ihrem Azure-Konto
 2. Erstellen Sie eine Ressourcengruppe, die als Container für die bereitgestellten Ressourcen fungiert. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
 3. Stellen Sie für die Ressourcengruppe die Vorlage bereit, die die zu erstellenden Ressourcen definiert.
 
@@ -43,15 +41,13 @@ Eine Vorlage kann Parameter enthalten, mit denen Sie die Bereitstellung anpassen
 
 Im folgenden Beispiel wird eine Ressourcengruppe erstellt und eine Vorlage von Ihrem lokalen Computer aus bereitgestellt:
 
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 Die Bereitstellung kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Nachricht mit dem Ergebnis angezeigt:
@@ -66,15 +62,13 @@ Anstatt Resource Manager-Vorlagen auf dem lokalen Computer zu speichern, könnte
 
 Verwenden Sie zum Bereitstellen einer externen Vorlage den **template-uri**-Parameter. Verwenden Sie den URI im Beispiel, um die Beispielvorlage aus GitHub bereitzustellen.
    
-```azurecli
-az login
-
+```azurecli-interactive
 az group create --name ExampleGroup --location "Central US"
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
-    --parameters storageAccountType=Standard_GRS
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json" \
+  --parameters storageAccountType=Standard_GRS
 ```
 
 Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlage, was in den meisten Szenarien funktioniert, da die Vorlage keine vertraulichen Daten enthalten sollte. Wenn Sie vertrauliche Daten (z.B. ein Administratorkennwort) angeben müssen, übergeben Sie diesen Wert als sicheren Parameter. Wenn Sie jedoch keinen öffentlichen Zugriff auf Ihre Vorlage wünschen, können Sie sie schützen, indem Sie sie in einem privaten Speichercontainer speichern. Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token (Shared Access Signature) erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md).
@@ -93,6 +87,34 @@ az group deployment create --resource-group examplegroup \
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>Bereitstellung für mehrere Ressourcengruppen oder Abonnements
 
 In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourcengruppe bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Sie können nur fünf Ressourcengruppen in einer Bereitstellung bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](resource-manager-cross-resource-group-deployment.md).
+
+## <a name="redeploy-when-deployment-fails"></a>Erneute Bereitstellung bei Bereitstellungsfehlern
+
+Für Bereitstellungen, bei denen Fehler auftreten, können Sie festlegen, dass eine frühere Bereitstellung aus dem Bereitstellungsverlauf automatisch erneut bereitgestellt wird. Zur Verwendung dieser Option müssen die Bereitstellungen eindeutige Namen aufweisen, damit sie im Verlauf identifiziert werden können. Wenn die Bereitstellungen keine eindeutigen Namen aufweisen, wird die vorherige erfolgreich ausgeführte Bereitstellung im Verlauf möglicherweise durch die aktuelle fehlerhafte Bereitstellung überschrieben. Diese Option kann nur für Bereitstellungen auf Stammebene verwendet werden. Bereitstellungen aus einer geschachtelten Vorlage können nicht erneut bereitgestellt werden.
+
+Um die letzte erfolgreiche Bereitstellung erneut bereitzustellen, fügen Sie den Parameter `--rollback-on-error` als Flag hinzu.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error
+```
+
+Um eine bestimmte Bereitstellung erneut bereitzustellen, verwenden den Parameter `--rollback-on-error` und geben den Namen der Bereitstellung an.
+
+```azurecli-interactive
+az group deployment create \
+  --name ExampleDeployment02 \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters storageAccountType=Standard_GRS \
+  --rollback-on-error ExampleDeployment01
+```
+
+Die angegebene Bereitstellung muss erfolgreich ausgeführt worden sein.
 
 ## <a name="parameter-files"></a>Parameterdateien
 
@@ -116,23 +138,23 @@ Kopieren Sie das obige Beispiel, und speichern Sie es unter dem Dateinamen `stor
 
 Um eine lokale Parameterdatei zu übergeben, verwenden Sie `@` zur Angabe einer lokalen Datei mit dem Namen „storage.parameters.json“ anzugeben.
 
-```azurecli
+```azurecli-interactive
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --name ExampleDeployment \
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Testen einer Vorlagenbereitstellung
 
-Verwenden Sie [az group deployment validate](/cli/azure/group/deployment#az_group_deployment_validate), um die Vorlage und Parameterwerte zu testen, ohne dabei Ressourcen bereitzustellen. 
+Verwenden Sie [az group deployment validate](/cli/azure/group/deployment#az-group-deployment-validate), um die Vorlage und Parameterwerte zu testen, ohne dabei Ressourcen bereitzustellen. 
 
-```azurecli
+```azurecli-interactive
 az group deployment validate \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters @storage.parameters.json
+  --resource-group ExampleGroup \
+  --template-file storage.json \
+  --parameters @storage.parameters.json
 ```
 
 Wenn keine Fehler erkannt werden, gibt der Befehl Informationen über die Testbereitstellung zurück. Beachten Sie insbesondere, dass der **error**-Wert NULL ist.
@@ -173,19 +195,6 @@ Wenn Ihre Vorlage einen Syntaxfehler aufweist, gibt der Befehl einen Fehler zur�
   },
   "properties": null
 }
-```
-
-[!INCLUDE [resource-manager-deployments](../../includes/resource-manager-deployments.md)]
-
-Nutzen Sie zur Verwendung des vollständigen Modus den `mode`-Parameter:
-
-```azurecli
-az group deployment create \
-    --name ExampleDeployment \
-    --mode Complete \
-    --resource-group ExampleGroup \
-    --template-file storage.json \
-    --parameters storageAccountType=Standard_GRS
 ```
 
 ## <a name="sample-template"></a>Vorlagenbeispiel
@@ -239,7 +248,7 @@ Bei den Beispielen in diesem Artikel wird die folgende Vorlage verwendet. Kopier
 
 ## <a name="next-steps"></a>Nächste Schritte
 * In den Beispielen dieses Artikels werden Ressourcen für eine Ressourcengruppe in Ihrem Standardabonnement bereitgestellt. Wenn Sie ein anderes Abonnement verwenden möchten, lesen Sie [Manage multiple Azure subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli) (Verwalten mehrerer Azure-Abonnements).
-* Ein vollständiges Beispielskript, mit dem eine Vorlage bereitgestellt wird, finden Sie unter [Resource Manager-Vorlage – Bereitstellungsskript](resource-manager-samples-cli-deploy.md).
+* Um anzugeben, wie eine in der Ressourcengruppe enthaltene Ressource behandelt werden soll, die nicht in der Vorlage definiert wurde, lesen Sie [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
 * Um zu verstehen, wie Parameter in der Vorlage definiert werden, lesen Sie [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Tipps zum Beheben gängiger Azure-Bereitstellungsfehler finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Informationen zum Bereitstellen einer Vorlage, die ein SAS-Token erfordert, finden Sie unter [Bereitstellen einer privaten Vorlage mit SAS-Token](resource-manager-cli-sas-token.md).

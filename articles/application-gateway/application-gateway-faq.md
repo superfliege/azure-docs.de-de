@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 6/20/2018
+ms.date: 8/10/2018
 ms.author: victorh
-ms.openlocfilehash: b8b5b1da902a854dacea7e3019e3fa1116f04212
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399142"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038343"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -122,6 +122,12 @@ Netzwerksicherheitsgruppen werden im Application Gateway-Subnetz mit folgenden E
 * Die ausgehende Internetverbindung kann nicht blockiert sein.
 
 * Datenverkehr vom AzureLoadBalancer-Tag muss zulässig sein.
+
+**F: Werden benutzerdefinierte Routen im Application Gateway-Subnetz unterstützt?**
+
+Benutzerdefinierte Routen (User-Defined Routes, UDRs) werden im Application Gateway-Subnetz unterstützt, solange sie die End-to-End-Anforderung/Antwort-Kommunikation nicht ändern.
+
+Beispielsweise können Sie eine UDR im Application Gateway-Subnetz einrichten, um für die Paketüberprüfung auf eine Firewallappliance zu verweisen, aber Sie müssen sicherstellen, dass das Paket die vorgesehene Zielnachprüfung erreichen kann. Ein Unterlassen kann zu einem falschen Integritätstest oder Datenverkehrsrouting-Verhalten führen. Dies schließt gelernte Routen oder standardmäßige 0.0.0.0/0-Routen ein, die durch ExpressRoute oder VPN-Gateways im virtuellen Netzwerk verteilt werden.
 
 **F: Was sind die Grenzwerte für Application Gateway? Kann ich diese Grenzwerte erhöhen?**
 

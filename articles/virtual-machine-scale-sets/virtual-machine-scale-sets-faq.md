@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34656440"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715062"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -65,7 +65,7 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppe
 
 **F.** Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitsgruppen?
 
-**A.** Eine regionale (nicht auf eine Zone beschränkte) Skalierungsgruppe verwendet *Platzierungsgruppen*, von denen jede für den Einsatz als implizite Verfügbarkeitsgruppe mit fünf Fehlerdomänen und fünf Updatedomänen konfiguriert werden kann. Skalierungsgruppen mit mehr als 100 VMs erstrecken sich auf mehrere Platzierungsgruppen. Weitere Informationen zu Platzierungsgruppen finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md). Eine Verfügbarkeitsgruppe mit virtuellen Computern kann sich im gleichen virtuellen Netzwerk befinden wie eine Skalierungsgruppe mit virtuellen Computern. Oftmals werden virtuelle Steuerknotencomputer (für die häufig eine eindeutige Konfiguration erforderlich ist) in einer Verfügbarkeitsgruppe und Datenknoten in der Skalierungsgruppe platziert.
+**A.** Eine regionale (nicht auf eine Zone beschränkte) Skalierungsgruppe verwendet *Platzierungsgruppen*, die als implizite Verfügbarkeitsgruppe mit fünf Fehlerdomänen und fünf Updatedomänen konfiguriert werden können. Skalierungsgruppen mit mehr als 100 VMs erstrecken sich auf mehrere Platzierungsgruppen. Weitere Informationen zu Platzierungsgruppen finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md). Eine Verfügbarkeitsgruppe mit virtuellen Computern kann sich im gleichen virtuellen Netzwerk befinden wie eine Skalierungsgruppe mit virtuellen Computern. Oftmals werden virtuelle Steuerknotencomputer (für die häufig eine eindeutige Konfiguration erforderlich ist) in einer Verfügbarkeitsgruppe und Datenknoten in der Skalierungsgruppe platziert.
 
 **F.** Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitszonen?
 
@@ -269,8 +269,8 @@ Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linu
 linuxConfiguration-Elementname | Erforderlich | Typ | BESCHREIBUNG
 --- | --- | --- | --- |  ---
 ssh | Nein  | Sammlung | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
-path | Ja | Zeichenfolge | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
-keyData | Ja | Zeichenfolge | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
+path | JA | Zeichenfolge | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
+keyData | JA | Zeichenfolge | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
 
 Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 

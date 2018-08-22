@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: b0e078e3e7f18e3370ff1bcd90935e7fece265f0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391179"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005474"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -94,7 +94,9 @@ context.bindings.myOutput = {
 context.done([err],[propertyBag])
 ```
 
-Teilt der Laufzeit mit, dass Ihr Code beendet ist. Sie müssen `context.done` aufrufen, da die Laufzeit sonst nie erfährt, dass Ihre Funktion abgeschlossen ist, und die Ausführung durch einen Timeout beendet wird. 
+Teilt der Laufzeit mit, dass Ihr Code beendet ist. Wenn die Funktion die `async function`-Deklaration verwendet (verfügbar ab Node 8 in Functions-Version 2.x), müssen Sie `context.done()` nicht verwenden. Der Rückruf `context.done` wird implizit aufgerufen.
+
+Wenn Ihre Funktion keine Async-Funktion ist, **rufen Sie**  auf`context.done`, um der Laufzeit mitzuteilen, dass Ihre Funktion vollständig ist. Wenn die Methode fehlt, tritt ein Timeout für die Ausführung auf.
 
 Mit der `context.done`-Methode können Sie einen benutzerdefinierten Fehler sowie einen Eigenschaftenbehälter mit Eigenschaften, die die Eigenschaften des `context.bindings`-Objekts überschreiben, an die Laufzeit zurückgeben.
 

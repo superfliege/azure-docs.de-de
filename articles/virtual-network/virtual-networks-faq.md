@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 08/09/2018
 ms.author: jdial
-ms.openlocfilehash: a5b4bac9e0d8bc10defaff251557129a70d8a022
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8dfe313cb82fd0ace7221ea320bb2228be75196c
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29854188"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038307"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -41,7 +41,6 @@ Auf der Webseite [Dokumentation zu virtuellen Netzwerken](https://docs.microsoft
 Ja. Sie können ein VNET verwenden, ohne es mit Ihrer lokalen Umgebung verbinden zu müssen. Sie können beispielsweise Microsoft Windows Server-Active Directory-Domänencontroller und SharePoint-Farmen nur in einem Azure-VNET ausführen.
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Kann ich eine WAN-Optimierung zwischen VNets oder einem VNet und meinem lokalen Rechenzentrum durchführen?
-
 Ja. Sie können ein [virtuelles Netzwerkgerät für die WAN-Optimierung](https://azure.microsoft.com/marketplace/?term=wan+optimization) von mehreren Anbietern über den Azure Marketplace bereitstellen.
 
 ## <a name="configuration"></a>Konfiguration
@@ -188,7 +187,6 @@ Ja. Sie können Cloud Services-Rolleninstanzen (optional) in VNets bereitstellen
 Ja. Sie müssen für eine VM-Skalierungsgruppe eine Verbindung mit einem VNet herstellen.
 
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>Gibt es eine vollständige Liste der Azure-Dienste, über die ich Ressourcen in einem VNET bereitstellen kann?
-
 Ja. Ausführliche Informationen finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md).
 
 ### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Für welche Azure-PaaS-Ressourcen kann ich den Zugriff über ein VNET beschränken?
@@ -220,5 +218,38 @@ Ja. Sie können REST-APIs für VNETs im Rahmen des [Azure Resource Manager-Berei
 ### <a name="is-there-tooling-support-for-vnets"></a>Sind Tools zur Unterstützung von VNets verfügbar?
 Ja. Weitere Informationen zur Verwendung von folgenden Tools:
 - Azure-Portal: Bereitstellen von VNets über das [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network)- und [klassische](virtual-networks-create-vnet-classic-pportal.md) Bereitstellungsmodell.
-- PowerShell: Verwalten von VNets, die über das [Resource Manager](/powershell/module/azurerm.network)- und [klassische](/powershell/module/azure/?view=azuresmps-3.7.0) Bereitstellungsmodell bereitgestellt werden.
+- PowerShell: Verwalten von VNets, die über das [Resource Manager](/powershell/module/azurerm.network)- und [klassische](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) Bereitstellungsmodell bereitgestellt werden.
 - Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) zum Bereitstellen und Verwalten von VNETs, die über das [Resource Manager-Modell](/cli/azure/network/vnet) und das [klassische](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) Bereitstellungsmodell bereitgestellt werden  
+
+## <a name="vnet-peering"></a>VNet-Peering
+
+### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Kann ich eine Peeringverbindung mit einem VNET in einer anderen Region herstellen?
+Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNET-Peering ist in allen öffentlichen Azure-Regionen verfügbar. Globales Peering von öffentlichen Azure-Regionen mit nationalen Clouds ist nicht möglich. Globales Peering ist in nationalen Clouds zurzeit nicht verfügbar.
+
+### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Kann ich VNET-Peering aktivieren, wenn meine virtuellen Netzwerke zu Abonnements in verschiedenen Azure Active Directory-Mandanten gehören?
+Derzeit ist es nicht möglich, VNET-Peering (ob lokal oder global) einzurichten, wenn Ihre Abonnements zu verschiedenen Azure Active Directory-Mandanten gehören.
+
+### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Meine VNET-Peeringverbindung befindet sich im Status *Initiiert* – warum kann ich keine Verbindung herstellen?
+Wenn Ihre Peeringverbindung sich im Status „Initiiert“ befindet, bedeutet dies, dass Sie nur einen Link erstellt haben. Damit eine Verbindung erfolgreich hergestellt werden kann, muss ein bidirektionaler Link erstellt werden. Um beispielsweise eine Peeringverbindung zwischen VNET A und VNET B herzustellen, muss ein Link von VNetA zu VNetB und von VNetB zu VNetA erstellt werden. Nach dem Erstellen beider Links ändert sich der Status in *Verbunden*.
+
+### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Kann ich eine Peeringverbindung meines VNETs mit einem VNET in einem anderen Abonnement herstellen?
+Ja. Sie können Peeringverbindungen zwischen VNETs Abonnements und Regionen übergreifend herstellen.
+
+### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Kann ich eine Peeringverbindung zwischen zwei VNETs mit übereinstimmenden oder sich überlappenden Adressbereichen herstellen?
+Nein. Bei sich überlappenden Adressbereichen ist kein VNET-Peering möglich.
+
+### <a name="how-much-do-vnet-peering-links-cost"></a>Was kosten Links für das VNET-Peering?
+Für das Erstellen einer VNET-Peeringverbindung fallen keine Gebühren an. Die Datenübertragung über Peeringverbindungen wird in Rechnung gestellt. [Siehe hier](https://azure.microsoft.com/pricing/details/virtual-network/).
+
+### <a name="is-vnet-peering-traffic-encrypted"></a>Wird VNET-Peeringdatenverkehr verschlüsselt?
+Nein. Datenverkehr zwischen Ressourcen in per Peering verknüpften VNETs ist privat und isoliert. Er bleibt vollständig im Microsoft-Backbone.
+
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Warum ist meine Peeringverbindung in einem getrennten Status?
+VNET-Peeringverbindungen wechseln in den Status *Getrennt*, wenn ein VNET-Peeringlink gelöscht wird. Sie müssen beide Links löschen, um erfolgreich eine Peeringverbindung wiederherzustellen.
+
+### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Wenn ich eine Peeringverbindung zwischen VNetA und VNetB sowie VNetB und VNetC herstelle, bedeutet dies, dass eine Peeringverbindung zwischen VNetA und VNetC besteht?
+Nein. Transitives Peering wird nicht unterstützt. Sie müssen hierzu eine Peeringverbindung zwischen VNetA und VNetC herstellen.
+
+### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Gibt es Bandbreiteneinschränkungen für Peeringverbindungen?
+Nein. Für VNET-Peering, ob lokal oder global, bestehen keine Bandbreiteneinschränkungen. Die Bandbreite wird nur durch die VM oder Computeressource beschränkt.
+

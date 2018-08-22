@@ -4,71 +4,86 @@ description: Erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Compu
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
 ms.assetid: e9546bcc-f300-428f-b94a-056c5bd29035
 ms.service: virtual-network
-ms.devlang: na
+ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/04/2016
+ms.date: 08/08/2018
 ms.author: jdial
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 524293f9a1ded73ee7cb6ba4f53208a9f9c54ffa
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9b6db45e38267c70adef3f5a341b8b918b9e78fb
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38670983"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714426"
 ---
-# <a name="create-a-vm-with-a-static-public-ip-address-using-the-azure-portal"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse über das Azure-Portal
+# <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals
 
-> [!div class="op_single_selector"]
-> * [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
-> * [PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-> * [Azure-CLI](virtual-network-deploy-static-pip-arm-cli.md)
-> * [PowerShell (klassisch)](virtual-networks-reserved-public-ip.md)
+Sie können einen virtuellen Computer mit einer statischen öffentlichen IP-Adresse erstellen. Mit einer öffentlichen IP-Adresse können Sie über das Internet mit einem virtuellen Computer kommunizieren. Um sicherzustellen, dass sich die Adresse niemals ändert, weisen Sie anstelle einer dynamischen Adresse eine statische öffentliche IP-Adresse zu. Erfahren Sie mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine öffentliche dynamische IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit privaten IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen](virtual-network-network-interface-addresses.md). Für öffentliche IP-Adressen fällt eine [Schutzgebühr](https://azure.microsoft.com/pricing/details/ip-addresses) an, und für die Anzahl der öffentlichen IP-Adressen, die Sie pro Abonnement verwenden können, ist ein [Grenzwert](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) festgelegt.
 
-[!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-> [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellung und klassische Bereitstellung](../resource-manager-deployment-model.md). Dieser Artikel befasst sich mit dem Resource Manager-Bereitstellungsmodell, das von Microsoft für die meisten neuen Bereitstellungen anstatt des klassischen Bereitstellungsmodells empfohlen wird.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
-[!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-## <a name="create-a-vm-with-a-static-public-ip"></a>Erstellen einer VM mit einer statischen öffentlichen IP-Adresse
+1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
+2. Wählen Sie **Compute** und dann **Windows Server 2016-VM** oder ein anderes Betriebssystem Ihrer Wahl aus.
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
-Führen Sie die folgenden Schritte aus, um eine VM mit einer statischen öffentlichen IP-Adresse im Azure-Portal zu erstellen:
+    |Einstellung|Wert|
+    |---|---|
+    |NAME|myVM|
+    |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
+    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Abonnement| Wählen Sie Ihr Abonnement aus.|
+    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 
-1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2. Klicken Sie links oben im Portal auf **Ressource erstellen**>>**Compute**>**Windows Server 2012 R2 Datacenter**.
-3. Wählen Sie in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager**, und klicken Sie auf **Erstellen**.
-4. Geben Sie im Bereich **Grundlagen** die VM-Informationen wie folgt ein, und klicken Sie dann auf **OK**.
-   
-    ![Azure-Portal – Grundlagen](./media/virtual-network-deploy-static-pip-arm-portal/figure1.png)
-5. Klicken Sie im Bereich **Größe auswählen** wie folgt auf **A1 Standard**, und klicken Sie dann auf **Auswählen**.
-   
-    ![Azure-Portal – Größe auswählen](./media/virtual-network-deploy-static-pip-arm-portal/figure2.png)
-6. Klicken Sie im Bereich **Einstellungen** auf **Öffentliche IP-Adresse** und dann im Bereich **Öffentliche IP-Adresse erstellen** unter **Zuweisung** wie folgt auf **Statisch**. Klicken Sie anschließend auf **OK**.
-   
-    ![Azure-Portal – Öffentliche IP-Adresse erstellen](./media/virtual-network-deploy-static-pip-arm-portal/figure3.png)
-7. Klicken Sie im Bereich **Einstellungen** auf **OK**.
-8. Überprüfen Sie den Bereich**Zusammenfassung** wie folgt, und klicken Sie dann auf **OK**.
-   
-    ![Azure-Portal – Öffentliche IP-Adresse erstellen](./media/virtual-network-deploy-static-pip-arm-portal/figure4.png)
-9. Beachten Sie die neue Kachel in Ihrem Dashboard.
-   
-    ![Azure-Portal – Öffentliche IP-Adresse erstellen](./media/virtual-network-deploy-static-pip-arm-portal/figure5.png)
-10. Nachdem der virtuelle Computer erstellt wurde, wird der Bereich **Einstellungen** folgendermaßen angezeigt:
-    
-    ![Azure-Portal – Öffentliche IP-Adresse erstellen](./media/virtual-network-deploy-static-pip-arm-portal/figure6.png)
+4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
+5. Wählen Sie unter **Einstellungen** die Option **Öffentliche IP-Adresse** aus.
+6. Geben Sie *myPublicIpAddress* ein, wählen Sie **Statisch** aus, und klicken Sie dann auf **OK**, wie in der folgenden Abbildung gezeigt wird:
 
-## <a name="set-ip-addresses-within-the-operating-system"></a>Festlegen von IP-Adressen innerhalb des Betriebssystems
+   ![Auswählen der Option „Statisch“](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer innerhalb des Betriebssystems des virtuellen Computers zugewiesen werden. Es wird davon abgeraten, die private IP-Adresse, die dem virtuellen Azure-Computer innerhalb des Betriebssystems einer VM zugewiesen ist, statisch zuzuweisen, sofern dies nicht erforderlich ist (z.B. beim [Zuweisen mehrerer IP-Adressen zu einer Windows-VM](virtual-network-multiple-ip-addresses-portal.md)). Wenn Sie die private IP-Adresse innerhalb des Betriebssystems manuell festlegen, sollten Sie sicherstellen, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Konnektivität mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](virtual-network-network-interface-addresses.md#private).
+   Wenn die öffentliche IP-Adresse die SKU „Standard“ aufweisen muss, wählen Sie unter **SKU** die Option **Standard** aus. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie [hier](virtual-network-ip-addresses-overview-arm.md#sku). Wenn der virtuelle Computer dem Back-End-Pool eines öffentlichen Azure Load Balancer hinzugefügt wird, muss die SKU der öffentlichen IP-Adresse des virtuellen Computers der SKU der öffentlichen IP-Adresse des Lastenausgleichsmoduls entsprechen. Weitere Informationen finden Sie im Artikel zu [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+
+6. Wählen Sie unter **Öffentliche eingehende Ports hinzufügen** einen Port oder keine Ports aus. Port 3389 ist ausgewählt, um den Remotezugriff auf den virtuellen Windows Server-Computer über das Internet zu aktivieren. Bei Produktionsworkloads wird vom Öffnen von Port 3389 über das Internet abgeraten.
+
+   ![Auswählen eines Ports](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
+
+7. Übernehmen Sie die restlichen Standardeinstellungen, und wählen Sie **OK** aus.
+8. Klicken Sie auf der Seite **Zusammenfassung** auf **Erstellen**. Das Bereitstellen des virtuellen Computers dauert einige Minuten.
+9. Nachdem der virtuelle Computer bereitgestellt wurde, geben Sie in das Suchfeld am oberen Rand des Portals *myPublicIpAddress* ein. Wenn **myPublicIpAddress** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
+10. Die zugewiesene öffentliche IP-Adresse und die Adresse, die dem virtuellen Computer **myVM** zugewiesen ist, werden angezeigt, wie in der folgenden Abbildung gezeigt wird:
+
+    ![Anzeigen einer öffentlichen IP-Adresse](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-overview.png)
+
+    Azure hat eine öffentliche IP-Adresse über Adressen in zugewiesen, die in der Region, in der der virtuelle Computer erstellt wurde, verwendet werden. Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen.
+
+11. Wählen Sie **Konfiguration** aus, um zu bestätigen, dass die Zuweisung **Statisch** erfolgen soll.
+
+    ![Anzeigen einer öffentlichen IP-Adresse](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
+
+> [!WARNING]
+Ändern Sie die IP-Adresseinstellungen nicht innerhalb des Betriebssystems des virtuellen Computers. Öffentliche Azure-IP-Adressen sind dem Betriebssystem nicht bekannt. Auch wenn Sie Einstellungen für private IP-Adressen zum Betriebssystem hinzufügen können, wird empfohlen, dies nur durchzuführen, wenn dies erforderlich ist, und nur dann, wenn Sie den Artikel zum [Hinzufügen einer privaten IP-Adresse zu einem Betriebssystem](virtual-network-network-interface-addresses.md#private) gelesen haben.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe mit allen ihren Ressourcen, wenn Sie sie nicht mehr benötigen:
+
+1. Geben Sie im oben im Portal im Feld *Suche* die Zeichenfolge **myResourceGroup** ein. Wenn **myResourceGroup** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
+2. Wählen Sie die Option **Ressourcengruppe löschen**.
+3. Geben Sie für **Geben Sie den Ressourcengruppennamen ein:** den Namen *myResourceGroup* ein, und klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Netzwerkdatenverkehr kann bei der in diesem Artikel erstellten VM ein- oder ausgehen. Sie können innerhalb einer Netzwerksicherheitsgruppe Sicherheitsregeln für den eingehenden und ausgehenden Datenverkehr definieren, der von und zur Netzwerkschnittstelle, dem Subnetz oder beiden Komponenten fließt. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksicherheitsgruppen – Übersicht](security-overview.md).
+- Erfahren Sie mehr über [öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in Azure.
+- Erfahren Sie mehr über sämtliche [Einstellungen zu öffentlichen IP-Adressen](virtual-network-public-ip-address.md#create-a-public-ip-address).
+- Erfahren Sie mehr über [private IP-Adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) und die Zuweisung einer [statischen privaten IP-Adresse](virtual-network-network-interface-addresses.md#add-ip-addresses) zu einem virtuellen Azure-Computer.
+- Erfahren Sie mehr über die Erstellung von virtuellen Computer unter [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

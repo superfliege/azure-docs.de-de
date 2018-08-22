@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 018ca5d0510ef37c58a6d841ac17d2920817e216
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7fe4fdbf6c6b3cbbd6d01ef5309699c3d3991d53
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895355"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003813"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -51,9 +51,9 @@ Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öff
 
     |Einstellung|Erforderlich?|Details|
     |---|---|---|
-    |NAME|Ja|Muss für die Netzwerkschnittstelle eindeutig sein|
-    |Typ|Ja|Da Sie die IP-Konfiguration einer vorhandenen Netzwerkschnittstelle hinzufügen und jede Netzwerkschnittstelle über eine [primäre](#primary) IP-Konfiguration verfügen muss, steht nur die Option **Sekundär** zur Verfügung.|
-    |Zuweisungsmethode für private IP-Adressen|Ja|[**Dynamisch**](#dynamic): Azure weist die nächste verfügbare Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird. [**Statisch**](#static): Sie weisen eine nicht verwendete Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird.|
+    |NAME|JA|Muss für die Netzwerkschnittstelle eindeutig sein|
+    |Typ|JA|Da Sie die IP-Konfiguration einer vorhandenen Netzwerkschnittstelle hinzufügen und jede Netzwerkschnittstelle über eine [primäre](#primary) IP-Konfiguration verfügen muss, steht nur die Option **Sekundär** zur Verfügung.|
+    |Zuweisungsmethode für private IP-Adressen|JA|[**Dynamisch**](#dynamic): Azure weist die nächste verfügbare Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird. [**Statisch**](#static): Sie weisen eine nicht verwendete Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird.|
     |Öffentliche IP-Adresse|Nein |**Deaktiviert:** Der IP-Konfiguration ist derzeit keine öffentliche IP-Adressressource zugeordnet. **Aktiviert:** Wählen Sie eine vorhandene öffentliche IPv4-Adresse aus, oder erstellen Sie eine neue. Eine Anleitung zur Erstellung einer öffentlichen IP-Adresse finden Sie im Artikel [Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address) (Öffentliche IP-Adressen).|
 6. Fügen Sie dem Betriebssystem des virtuellen Computers manuell sekundäre private IP-Adressen hinzu. Gehen Sie dabei wie im Artikel [Zuweisen von mehreren IP-Adressen zu Betriebssystemen virtueller Computer](virtual-network-multiple-ip-addresses-portal.md#os-config) beschrieben vor. Spezielle Überlegungen vor dem manuellen Hinzufügen von IP-Adressen zum Betriebssystem virtueller Computer finden Sie unter [private](#private) IP-Adressen. Fügen Sie dem Betriebssystem des virtuellen Computers keine öffentlichen IP-Adressen hinzu.
 
@@ -72,7 +72,7 @@ Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Ad
 2. Wählen Sie in der Liste die Netzwerkschnittstelle aus, die Sie anzeigen oder deren IP-Adresseinstellungen Sie ändern möchten.
 3. Wählen Sie unter **EINSTELLUNGEN** die Option **IP-Konfigurationen**.
 4. Wählen Sie in der Liste die IP-Konfiguration aus, die Sie ändern möchten.
-5. Ändern Sie die Einstellungen wie gewünscht, indem Sie die Informationen zu den Einstellungen in Schritt 5 unter [Hinzufügen einer IP-Konfiguration](#create-ip-config) verwenden.
+5. Ändern Sie die Einstellungen wie gewünscht, indem Sie die Informationen zu den Einstellungen in Schritt 5 unter [Hinzufügen einer IP-Konfiguration](#add-ip-addresses) verwenden.
 6. Wählen Sie **Speichern**aus.
 
 >[!NOTE]
@@ -170,9 +170,9 @@ Standardmäßig werden dynamische private IPv4- und (optionale) IPv6-Adressen zu
 
 ### <a name="static"></a>statischen
 
-Sie können einer IP-Konfiguration (optional) eine öffentliche oder private statische IPv4-Adresse zuweisen. Sie können einer IP-Konfiguration jedoch keine öffentliche oder private statische IPv6-Adresse zuweisen. Weitere Informationen dazu, wie Azure öffentliche statische IPv4-Adressen zuweist, finden Sie im Artikel [Öffentliche IP-Adressen](virtual-network-public-ip-address.md).
+Sie können einer IP-Konfiguration (optional) eine öffentliche oder private statische IPv4-Adresse zuweisen. Sie können einer IP-Konfiguration jedoch keine öffentliche oder private statische IPv6-Adresse zuweisen. Weitere Informationen dazu, wie Azure öffentliche statische IPv4-Adressen zuweist, finden Sie unter [Öffentliche IP-Adressen](virtual-network-public-ip-address.md).
 
-- **Nur öffentlich**: Azure weist die Adresse aus einem für jede Azure-Region eindeutigen Bereich zu. Informationen dazu, welche Bereiche den jeweiligen Regionen zugewiesen sind, finden Sie unter [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653). Die Adresse ändern sich erst dann, wenn die öffentliche IP-Adressressource, der sie zugewiesen ist, gelöscht wird oder die Zuweisungsmethode in „Dynamisch“ geändert wird. Wenn die öffentliche IP-Adressressource einer IP-Konfiguration zugeordnet ist, muss vor dem Ändern der Zuordnungsmethode die Zuordnung zur IP-Konfiguration aufgehoben werden.
+- **Nur öffentlich**: Azure weist die Adresse aus einem für jede Azure-Region eindeutigen Bereich zu. Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen. Die Adresse ändern sich erst dann, wenn die öffentliche IP-Adressressource, der sie zugewiesen ist, gelöscht wird oder die Zuweisungsmethode in „Dynamisch“ geändert wird. Wenn die öffentliche IP-Adressressource einer IP-Konfiguration zugeordnet ist, muss vor dem Ändern der Zuordnungsmethode die Zuordnung zur IP-Konfiguration aufgehoben werden.
 - **Nur privat**: Sie wählen eine Adresse aus dem Adressbereich des Subnetzes aus und weisen sie zu. Die von Ihnen zugewiesene Adresse kann eine beliebige Adresse innerhalb des Subnetzadressbereichs sein, bei der es sich nicht um eine der ersten vier Adressen im Subnetzadressbereich handelt und die derzeit keiner anderen Ressource im Subnetz zugewiesen ist. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuteilungsmethode in „Statisch“ ändern, wird in Azure dynamisch die zuvor zugewiesene statische IP-Adresse als dynamische Adresse zugewiesen. Dies gilt auch dann, wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
 
 ## <a name="ip-address-versions"></a>IP-Adressversionen

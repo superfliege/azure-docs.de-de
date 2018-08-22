@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 123ae27310d70812918f3c81ac3b9a71959a6c2c
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917226"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003830"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./monitoring-diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.
@@ -120,7 +120,7 @@ Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, L
 | Beschreibung |Statische Beschreibung eines Ereignisses in Textform. |
 | eventDataId |Eindeutiger Bezeichner eines Ereignisses. |
 | httpRequest |Blob, das die HTTP-Anforderung beschreibt. Umfasst üblicherweise „clientRequestId“, „clientIpAddress“ und „method“ (HTTP-Methode, z.B. PUT). |
-| level |Ebene des Ereignisses. Einer der folgenden Werte: Critical, Error, Warning, Informational, Verbose |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“ oder „Information“. |
 | resourceGroupName |Name der Ressourcengruppe für die betroffene Ressource. |
 | resourceProviderName |Name des Ressourcenanbieters für die betroffene Ressource. |
 | Ressourcen-ID |Ressourcen-ID der betroffenen Ressource. |
@@ -266,7 +266,7 @@ Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnun
 | correlationId | Eine GUID im Zeichenfolgenformat. |
 | Beschreibung |Statische Beschreibung des Warnungsereignisses. |
 | eventDataId |Eindeutiger Bezeichner des Warnungsereignisses. |
-| level |Ebene des Ereignisses. Einer der folgenden Werte: Critical, Error, Warning, Informational, Verbose |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“ oder „Information“. |
 | resourceGroupName |Bei einer Metrikwarnung der Name der Ressourcengruppe für die betroffene Ressource. Bei anderen Warnungstypen ist dies der Name der Ressourcengruppe, die die Warnung selbst enthält. |
 | resourceProviderName |Bei einer Metrikwarnung der Name des Ressourcenanbieters für die betroffene Ressource. Bei anderen Warnungstypen ist dies der Name des Ressourcenanbieters für die Warnung selbst. |
 | Ressourcen-ID | Bei einer Metrikwarnung der Name der Ressourcen-ID für die betroffene Ressource. Bei anderen Warnungstypen ist dies die Ressourcen-ID der Warnungsressource selbst. |
@@ -375,7 +375,7 @@ Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engi
 | correlationId | Eine GUID im Zeichenfolgenformat. |
 | Beschreibung |Statische Beschreibung des Ereignisses der automatischen Skalierung. |
 | eventDataId |Eindeutiger Bezeichner des Ereignisses der automatischen Skalierung. |
-| level |Ebene des Ereignisses. Einer der folgenden Werte: Critical, Error, Warning, Informational, Verbose |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“ oder „Information“. |
 | resourceGroupName |Name der Ressourcengruppe der Einstellung für die automatische Skalierung. |
 | resourceProviderName |Name des Ressourcenanbieters der Einstellung für die automatische Skalierung. |
 | Ressourcen-ID |Ressourcen-ID der Einstellung für die automatische Skalierung. |
@@ -465,7 +465,7 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 | eventDataId |Eindeutiger Bezeichner des Sicherheitsereignisses. |
 | eventName |Anzeigename des Sicherheitsereignisses. |
 | id |Eindeutiger Ressourcenbezeichner des Sicherheitsereignisses. |
-| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“, „Information“ oder „Ausführlich“. |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“ oder „Information“. |
 | resourceGroupName |Name der Ressourcengruppe für die Ressource. |
 | resourceProviderName |Name des Ressourcenanbieters für die Azure Security Center. Immer „Microsoft.Security“. |
 | resourceType |Der Typ der Ressource, die das Sicherheitsereignis generiert hat, z. B. „Microsoft.Security/locations/alerts“. |
@@ -545,7 +545,7 @@ Diese Kategorie enthält den Datensatz mit den neuen Empfehlungen, die für Ihre
 | eventDataId | Eindeutiger Bezeichner des Empfehlungsereignisses. |
 | category | Immer „Empfehlung“ |
 | id |Eindeutiger Ressourcenbezeichner des Empfehlungsereignisses. |
-| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“, „Information“ oder „Ausführlich“. |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“ oder „Information“. |
 | operationName |Name des Vorgangs.  Immer „Microsoft.Advisor/generateRecommendations/action“|
 | resourceGroupName |Name der Ressourcengruppe für die Ressource. |
 | resourceProviderName |Name des Ressourcenanbieters für die Ressource, für die diese Empfehlung gilt, z.B. „MICROSOFT.COMPUTE“. |

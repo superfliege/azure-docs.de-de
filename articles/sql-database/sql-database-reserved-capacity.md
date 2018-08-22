@@ -1,0 +1,79 @@
+---
+title: Vorauszahlen von virtuellen Kernen für Azure SQL-Datenbank zum Einsparen von Kosten | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie reservierte Kapazitäten für Azure SQL-Datenbank kaufen, um Computekosten einzusparen.
+services: sql-database
+documentationcenter: ''
+author: CarlRabeler
+manager: craigg
+ms.service: sql-database
+ms.devlang: na
+ms.topic: conceptual
+ms.date: 08/08/2018
+ms.author: carlrab
+ms.openlocfilehash: 1d1cad4b614eb35be9235a721368db8048be050a
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39632218"
+---
+# <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
+
+Sparen Sie mit Azure SQL-Datenbank Geld im Vergleich zur nutzungsbasierten Bezahlung, indem Sie im Voraus Azure SQL-Datenbank-Computeressourcen bezahlen. Mit reservierten Azure SQL-Datenbank-Kapazitäten leisten Sie eine Vorauszahlung für SQL-Datenbank für einen Zeitraum von einem oder drei Jahren und profitieren dafür von einem immensen Rabatt auf Computekosten. Um eine reservierte SQL-Datenbank-Kapazität zu erwerben, müssen Sie die Azure-Region, den Bereitstellungstyp, den Dienst und die Laufzeit angeben. 
+
+Eine Zuweisung der Reservierung zu SQL-Datenbank-Instanzen ist nicht erforderlich. Betreffende SQL-Datenbank-Instanzen, die bereits ausgeführt oder neu bereitgestellt werden, profitieren automatisch von dem Vorteil. Beim Kauf einer Reservierung bezahlen Sie im Voraus die Computekosten für SQL-Datenbank-Instanzen für einen Zeitraum von einem oder drei Jahren. Sobald Sie eine Reservierung gekauft haben, werden die SQL-Datenbank-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für die SQL-Datenbank-Instanz ab. Nach Ablauf der Reservierungslaufzeit erlischt der Abrechnungsvorteil, und die SQL-Datenbank-Instanzen werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/managed/).
+
+Sie können die reservierte Azure SQL-Datenbank-Kapazität über das [Azure-Portal](https://portal.azure.com) erwerben. So erwerben Sie eine reservierte SQL-Datenbank-Kapazität
+- Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement oder ein Abonnement mit nutzungsbasierter Bezahlung zugeordnet sein.
+- In Enterprise-Abonnements müssen Azure-Reservierungskäufe im [EA-Portal](https://ea.azure.com) aktiviert werden.
+-  Für das Cloud Solution Provider-Programm (CSP) können nur die Administrator- oder Vertriebs-Agents reservierte SQL-Datenbank-Kapazitäten kaufen.
+
+In den [häufig gestellten Fragen](#frequently-asked-questions) finden Sie Einzelheiten darüber, wie Reservierungskäufe bei Kunden mit dem Enterprise-Abonnement und Kunden mit dem Abonnement mit nutzungsbasierter Bezahlung in Rechnung gestellt werden.
+
+## <a name="determine-the-right-sql-size-before-purchase"></a>Bestimmen der passenden SQL-Datenbank-Instanzgröße vor dem Kauf
+
+Die Größe der Reservierung sollte auf der Gesamtmenge der Computeressourcen basieren, die von den Einzeldatenbanken und/oder Pools für elastische Datenbanken in SQL-Datenbank, die bereits vorhanden sind oder in Kürze bereitgestellt werden, innerhalb einer bestimmten Region und unter Verwendung der gleichen Leistungsstufe und der gleichen Hardwaregeneration verwendet werden. 
+
+Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenbanken mit der SKU „Universell“ und 16 virtuellen Kernen sowie zwei Gen5-Einzeldatenbanken mit der SKU „Unternehmenskritisch“ und 4 virtuellen Kernen aus. Sie möchten innerhalb des nächsten Monats einen weiteren Pool für elastische Gen5-Datenbanken mit der SKU „Universell“ und 16 virtuellen Kernen sowie einen Pool für elastische Gen5-Datenbanken mit der SKU „Unternehmenskritisch“ und 32 virtuellen Kernen bereitstellen. Darüber hinaus wissen Sie, dass Sie diese Ressourcen mindestens 1 Jahr benötigen. In diesem Fall sollten Sie Folgendes erwerben: eine 1-Jahres-Reservierung für Einzeldatenbanken oder Pools für elastische Datenbanken in SQL-Datenbank mit der SKU „Universell“ (Compute Gen5) und 32 virtuellen Kernen (2 x 16) sowie eine 1-Jahres-Reservierung für Einzeldatenbanken bzw. Pools für elastische Datenbanken in SQL-Datenbank (Compute Gen5) mit der SKU „Unternehmenskritisch“ und 40 virtuellen Kernen (2 x 4 + 32).
+
+## <a name="buy-sql-database-reserved-capacity"></a>Kaufen einer reservierten SQL-Datenbank-Kapazität
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
+3. Wählen Sie **Hinzufügen** und dann im Bereich zur Auswahl des Produkttyps **SQL-Datenbank** aus, um eine neue Reservierung für SQL-Datenbank zu erwerben.
+4. Füllen Sie die erforderlichen Felder aus. Bei vorhandenen oder neuen Einzeldatenbanken oder Pools für elastische Datenbanken, die den von Ihnen ausgewählten Attributen entsprechen, wird der Rabatt auf reservierte Kapazitäten angewendet. Die tatsächliche Anzahl Ihrer SQL-Datenbank-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und der ausgewählten Menge ab.
+
+   ![Screenshot vor der Übermittlung des Kaufs der reservierten SQL-Datenbank-Kapazität](./media/sql-database-reserved-vcores/sql-reserved-vcores-purchase.png)
+
+    | Feld      | BESCHREIBUNG|
+    |:------------|:--------------|
+    |NAME        |Der Name dieser Reservierung| 
+    |Abonnement|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Als Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummer: MS-AZR-0017P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummer: MS-AZR-0003P) festgelegt werden. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|    
+    |Bereich       |Der Umfang der Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>Einzelabonnement: Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen in diesem Abonnement angewendet. </li><li>Gemeinsam: Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Reservierung dar und umfasst alle Abonnements (mit Ausnahme von Dev/Test-Abonnements) innerhalb der Reservierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.</li></ul>|
+    |Region      |Die Azure-Region, die durch die Reservierung von SQL-Datenbank-Kapazitäten abgedeckt wird.|    
+    |Bereitstellungstyp|Der SQL-Bereitstellungstyp, für den Sie die Reservierung erwerben möchten.|
+    |Diensttarif|Der Diensttarif für die SQL-Datenbank-Instanzen.
+    |Begriff        |Ein Jahr oder drei Jahre|
+    |Menge    |Die Anzahl von Instanzen, die innerhalb der Reservierung von SQL-Datenbank-Kapazitäten erworben werden. Die Menge ist die Anzahl der ausgeführten SQL-Datenbank-Instanzen, auf die der Abrechnungsrabatt angewendet werden kann. Beispiel: Wenn Sie zehn SQL-Datenbank-Instanzen in der Region „USA, Osten“ ausführen, geben Sie als Menge 10 an, um den Vorteil für alle ausgeführten Computer zu maximieren. |
+
+5. Überprüfen Sie die Kosten für die Reservierung von SQL-Datenbank-Kapazitäten im Abschnitt **Kosten**.
+6. Wählen Sie die Option **Kaufen**.
+7. Klicken Sie auf **Diese Reservierung anzeigen**, um den Status des Einkaufs anzuzeigen.
+
+## <a name="next-steps"></a>Nächste Schritte 
+Der Rabatt auf die Reservierung virtueller Kerne wird automatisch auf die Anzahl der SQL-Datenbank-Instanzen angewendet, die dem Reservierungsumfang und den -attributen reservierter SQL-Datenbank-Instanzen entsprechen. Sie können den Reservierungsumfang von SQL-Datenbank-Kapazitäten über das [Azure-Portal](https://portal.azure.com), PowerShell, die CLI oder die API aktualisieren. 
+
+Informationen zum Verwalten der Reservierung von SQL-Datenbank-Kapazitäten finden Sie unter [Verwalten von reservierten Instanzen in Azure](../billing/billing-manage-reserved-vm-instance.md).
+
+Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
+
+- [Was sind Azure-Reservierungen?](../billing/billing-save-compute-costs-reservations.md)
+- [Verwalten von Azure-Reservierungen](../billing/billing-manage-reserved-vm-instance.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../billing/billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md)
+- [Verkaufen von Microsoft Azure Reserved VM Instances](https://docs.microsoft.com/partner-center/azure-reservations)
+
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
+
+Bei weiteren Fragen [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), um das Problem schnell zu lösen.
+

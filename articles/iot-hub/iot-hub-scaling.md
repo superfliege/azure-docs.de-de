@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 446fe139e3d1abe79b877d663842f7c7c6168f19
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126693"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003531"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -31,7 +31,7 @@ Jeder IoT Hub-Tarif ist in drei Größen verfügbar. Die Größe richtet sich da
 
 Im Standard-Tarif von IoT Hub können alle Features genutzt werden. Er ist für alle IoT-Lösungen erforderlich, für die die Funktionen für die bidirektionale Kommunikation verwendet werden sollen. Im Basic-Tarif ist ein Teil der Features aktiviert. Dieser Tarif ist für IoT-Lösungen bestimmt, für die nur die unidirektionale Kommunikation von Geräten in die Cloud erforderlich ist. Beide Tarife verfügen über die gleichen Sicherheits- und Authentifizierungsfeatures.
 
-Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Basic-Tarif in den Standard-Tarif durchführen, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub). Beachten Sie, dass die Partitionsgrenze für IoT Hub im Basic-Tarif bei 8 liegt. Dieser Grenzwert ändert sich nicht, wenn Sie vom Basic-Tarif zum Standard-Tarif migrieren.
+Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Basic-Tarif in den Standard-Tarif durchführen, ohne Ihre vorhandenen Vorgänge zu unterbrechen. Weitere Informationen finden Sie unter [How to upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub). Beachten Sie, dass die Partitionsobergrenze für den IoT Hub-Basictarif 8 und für den Standardtarif 32 beträgt. Die meisten IoT Hub-Instanzen benötigen nur vier Partitionen. Die Partitionsgrenze wird beim Erstellen von IoT Hub ausgewählt und setzt die Gerät-zu-Cloud-Nachrichten in Relation zur Anzahl von gleichzeitigen Lesern der Nachrichten. Dieser Wert ändert sich nicht, wenn Sie vom Basictarif zum Standardtarif migrieren. Beachten Sie außerdem, dass pro IoT Hub-Instanz nur ein [Editionstyp](https://azure.microsoft.com/pricing/details/iot-hub/) in einem Tarif ausgewählt werden kann. Beispielsweise können Sie eine IoT Hub-Instanz mit mehreren S1-Einheiten erstellen- Allerdings ist keine Kombination aus Einheiten verschiedener Editionen möglich, z.B. S1 und B3 oder S1 und S2.
 
 | Funktion | Basic-Tarif | Standard-Tarif |
 | ---------- | ---------- | ------------- |
@@ -106,6 +106,9 @@ Sehen Sie sich zusätzlich zu diesen Durchsatzinformationen auch [IoT Hub-Kontin
 IoT Hub-Identitätsregistrierungsvorgänge sollten keine Laufzeitvorgänge sein, da sie sich größtenteils auf die Gerätebereitstellung beziehen.
 
 Genaue Zahlen zur Burstleistung finden Sie unter [IoT Hub-Kontingente und -Drosselungen][IoT Hub quotas and throttles].
+
+## <a name="auto-scale"></a>Automatische Skalierung
+Wenn Sie sich dem zulässigen Nachrichtenlimit der IoT Hub-Instanz nähern, können Sie eine IoT Hub-Einheit in demselben IoT Hub-Tarif mithilfe [dieser Anweisungen automatisch zentral hochskalieren](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/).
 
 ## <a name="sharding"></a>Sharding (Horizontales Partitionieren)
 Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werden, aber es kann sein, dass Ihre Lösung bestimmte Leistungsmerkmale benötigt, die von einer einzelnen IoT Hub-Einheit nicht gewährleistet werden können. In diesem Fall können Sie Ihre Geräte auf mehreren IoT Hubs partitionieren. Mehrere IoT Hubs glätten Datenverkehrsbursts und erzielen den erforderlichen Durchsatz oder die erforderlichen Vorgangsraten.

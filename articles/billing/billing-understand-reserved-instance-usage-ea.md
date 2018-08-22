@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zur Nutzung reservierter Azure-Instanzen für Enterprise | Microsoft Docs
-description: In diesem Artikel erfahren Sie, wie die reservierte Azure-VM-Instanz für den Konzernbeitritt angewendet wird.
+title: Grundlegendes zur Nutzung von Azure-Reservierungen für Enterprise | Microsoft-Dokumentation
+description: In diesem Artikel erfahren Sie, wie die Azure-Reservierung für den Konzernbeitritt angewendet wird.
 services: billing
 documentationcenter: ''
 author: manish-shukla01
@@ -12,22 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/09/2018
+ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: d6e8b2544f919abeb7fde0e37fc12bd29f0171ef
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 5ce0103315f297996ed3f3bd88b5e53558e22e14
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064649"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39628231"
 ---
-# <a name="understand-azure-reserved-instance-usage-for-your-enterprise-enrollment"></a>Grundlegendes zur Nutzung reservierter Azure-Instanzen für die Enterprise-Registrierung
-Verschaffen Sie sich einen Überblick über die Nutzung einer reservierten Instanz, indem Sie die **Reservierungs-ID** von der [Reservierungsseite](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) und die Verwendungsdatei aus dem [EA-Portal](https://ea.azure.com) verwenden. Darüber hinaus können Sie die Nutzung reservierter Instanzen im [EA-Portal](https://ea.azure.com) im Abschnitt mit der Nutzungsübersicht anzeigen.
+# <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt
 
->[!NOTE]
->Wenn Sie die reservierte Instanz in einem Abrechnungskontext mit nutzungsbasierter Bezahlung erworben haben, lesen Sie [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md).
+Werten Sie Ihre Nutzung von Reservierungen aus, indem Sie die **ReservationId** von der [Reservierungsseite](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) und die Nutzungsdatei aus dem [EA-Portal](https://ea.azure.com) verwenden. Darüber hinaus können Sie die Reservierungsnutzung im [EA-Portal](https://ea.azure.com) im Abschnitt mit der Nutzungsübersicht anzeigen.
 
-Im folgenden Abschnitt wird davon ausgegangen, dass Sie einen virtuellen Windows-Computer des Typs „Standard_D1_v2“ in der Region „USA, Osten“ ausführen und die Informationen Ihrer reservierten Instanz mit den Angaben in der folgenden Tabelle übereinstimmen:
+Wenn Sie die Reservierung in einem Abrechnungskontext mit nutzungsbasierter Bezahlung erworben haben, lesen Sie die Informationen unter [Grundlegendes zur Nutzung von Azure-Reservierungen für Ihr Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md).
+
+## <a name="usage-for-reserved-virtual-machines-instances"></a>Nutzung von reservierten VM-Instanzen
+
+In den folgenden Abschnitten wird davon ausgegangen, dass Sie eine Windows-VM des Typs „Standard_D1_v2“ in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
 
 | Feld | Wert |
 |---| --- |
@@ -36,37 +38,58 @@ Im folgenden Abschnitt wird davon ausgegangen, dass Sie einen virtuellen Windows
 |SKU | Standard_D1|
 |Region | eastus |
 
-## <a name="reserved-instance-application"></a>Anwendung der reservierten Instanz
+Der Hardwarebestandteil des virtuellen Computers ist abgedeckt, da der bereitgestellte virtuelle Computer den Reservierungsattributen entspricht. Wenn Sie ermitteln möchten, welche Windows-Software nicht von der Reservierung abgedeckt wird, lesen Sie [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md).
 
-Der Hardwarebestandteil des virtuellen Computers ist abgedeckt, weil der bereitgestellte VM den Attributen der reservierten Instanz entspricht. Wenn Sie ermitteln möchten, welche Windows-Software nicht von der reservierten Instanz abgedeckt wird, wechseln Sie zu den Softwarekosten für Azure Reserved VM Instances, und navigieren Sie zu [Nicht in reservierten Azure-Instanzen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md).
+### <a name="usage-in-csv-file-for-reserved-vm-instances"></a>Nutzung in der CSV-Datei für reservierte VM-Instanzen
 
+Sie können die CSV-Enterprise-Nutzungsdatei aus dem Enterprise Portal herunterladen. Filtern Sie in der CSV-Datei nach **Zusätzliche Informationen**, und geben Sie Ihre **ReservationID** ein. Der folgende Screenshot zeigt die Felder, die im Zusammenhang mit der Reservierung stehen.
 
-### <a name="reserved-instance-usage-in-csv"></a>Nutzung reservierter Instanzen in der CSV-Datei
-Sie können die CSV-Datei zur EA-Nutzung über das EA-Portal herunterladen. Filtern Sie in der heruntergeladenen CSV-Datei nach weiteren Informationen, und geben Sie Ihre **Reservierungs-ID** ein. Im folgenden Screenshot sehen Sie die Felder, die im Zusammenhang mit der reservierten Instanz stehen:
+![Enterprise Agreement (EA) als CSV-Datei für Azure-Reservierungen](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-csv.png)
 
-![Enterprise Agreement (EA) als CSV-Datei für reservierte Azure-Instanzen](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-csv.png)
+1. Die **ReservationId** im Feld **Zusätzliche Informationen** stellt die Reservierung dar, die auf die VM angewendet wurde.
+2. **ConsumptionMeter** ist die Verbrauchseinheit-ID für die VM.
+3. Die **Verbrauchseinheit-ID** ist die Reservierungsverbrauchseinheit, deren Kosten sich auf 0,00 USD belaufen. Die Kosten für die ausgeführte VM werden mit der reservierten VM-Instanz bezahlt.
+4. „Standard_D1“ ist eine VM mit einer vCPU, und die VM wird ohne Azure-Hybridvorteil bereitgestellt. Diese Verbrauchseinheit deckt somit die zusätzlichen Kosten der Windows-Software ab. Die Verbrauchseinheit, die einer VM der D-Serie mit einem Kern entspricht, finden Sie unter [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md).  Wenn Sie Anspruch auf den Azure-Hybridvorteil haben, werden diese zusätzlichen Kosten nicht angewendet.
 
-1. **ReservationId** im Feld „Zusätzliche Informationen“ stellt die reservierte Instanz dar, die verwendet wurde, um den Vorteil auf den VM anzuwenden.
-2. „ConsumptionMeter“ ist die Verbrauchseinheit-ID für den virtuellen Computer.
-3. Für die Reservierungsverbrauchseinheit werden als Kosten „$0“ angezeigt, weil die Kosten für den ausgeführten virtuellen Computer bereits durch die reservierte Instanz bezahlt sind. 
-4. „Standard_D1“ ist ein virtueller Computer mit einer vCPU, und der virtuelle Computer wird ohne Azure-Hybridvorteil bereitgestellt. Aus diesem Grund deckt diese Verbrauchseinheit die zusätzlichen Kosten der Windows-Software ab. Weitere Informationen finden Sie unter [Windows software costs not included with Reserved Instances](billing-reserved-instance-windows-software-costs.md) (Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten), wenn Sie die Verbrauchseinheit ermitteln möchten, die dem virtuellen Computer der D-Serie mit einem Kern entspricht. Wenn der Azure-Hybridvorteil verwendet wird, werden diese zusätzlichen Kosten nicht angewendet.
+## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>Nutzung von Reservierungen von SQL-Datenbank-Kapazitäten
 
-### <a name="reserved-instance-usage-in-usage-summary-page-in-ea-portal"></a>Nutzung reservierter Instanzen auf der Seite mit der Nutzungsübersicht im EA-Portal
+In den folgenden Abschnitten wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
 
-Die Nutzung reservierter Instanzen wird darüber hinaus im EA-Portal im Abschnitt zur Nutzungsübersicht angezeigt: ![EA-Nutzungsübersicht (Enterprise Agreement)](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+| Feld | Wert |
+|---| --- |
+|ReservationId |8244e673-83e9-45ad-b54b-3f5295d37cae|
+|Menge |2|
+|Produkt| SQL-Datenbank Gen 4 (2 Kerne)|
+|Region | eastus |
 
-1. Hardwarekomponenten des virtuellen Computers werden nicht in Rechnung gestellt, da sie von der reservierten Instanz abgedeckt sind. 
-2. Windows-Software wird in Rechnung gestellt, da der Azure-Hybridvorteil nicht verwendet wird. 
+### <a name="usage-in-csv-file-for-sql-database-reserved-capacity"></a>Nutzung in der CSV-Datei zu reservierten SQL-Datenbank-Kapazitäten
+
+Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservierungs-ID** ein. Der folgende Screenshot zeigt die Felder, die im Zusammenhang mit der Reservierung stehen.
+
+![Enterprise Agreement (EA) als CSV-Datei für reservierte SQL-Datenbank-Kapazitäten](./media/billing-understand-reserved-instance-usage-ea/billing-ea-sql-db-reserved-capacity-csv.png)
+
+1. Die **ReservationId** im Feld **Zusätzliche Informationen** ist die Reservierung, die auf die SQL-Datenbank-Ressource angewendet wurde.
+2. **ConsumptionMeter** ist die Verbrauchseinheit-ID für die SQL-Datenbank-Ressource.
+3. Die **Verbrauchseinheit-ID** ist die Reservierungsverbrauchseinheit, für die keine Kosten anfallen. Bei SQL-Datenbank-Ressourcen, die für die Reservierung qualifiziert sind, wird diese Verbrauchseinheit-ID in der CSV-Datei angezeigt.
+
+## <a name="usage-summary-page-in-enterprise-portal"></a>Seite mit Übersicht über die Nutzung im Enterprise Portal
+
+Ihre Nutzung von Azure-Reservierungen wird darüber hinaus im Enterprise Portal im Abschnitt zur Nutzungsübersicht angezeigt: ![EA-Nutzungsübersicht (Enterprise Agreement)](./media/billing-understand-reserved-instance-usage-ea/billing-ea-reserved-instance-usagesummary.png)
+
+1. Die Hardwarekomponenten der VM werden nicht in Rechnung gestellt, da sie von der Reservierung abgedeckt sind. Bei einer SQL-Datenbank-Reservierung wird eine Zeile mit **Dienstnamen** als Nutzung von reservierten Azure SQL-Datenbank-Kapazitäten angezeigt.
+2. In diesem Beispiel verfügen Sie nicht über den Azure-Hybridvorteil, weshalb Ihnen die Kosten für die Windows-Software, die mit der VM verwendet wurde, in Rechnung gestellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu reservierten Azure-Instanzen finden Sie in den folgenden Artikeln:
 
-- [Was ist Azure Reserved VM Instances?](billing-save-compute-costs-reservations.md)
+Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
+
+- [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Verwalten von reservierten Instanzen in Azure](billing-manage-reserved-vm-instance.md)
-- [Grundlegendes zur Anwendung des Rabatts für reservierte Instanzen](billing-understand-vm-reservation-charges.md)
-- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
-- [Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
+- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md) 
+- [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
+- [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
+- [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

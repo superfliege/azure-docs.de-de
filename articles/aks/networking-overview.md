@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: cfe034d6dcac48d7c9e4b2ce17e4926a81a27886
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 1d7855ff840fc1dd68effb19c43c3a691bd15d62
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216103"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714671"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Netzwerkkonfiguration in Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Beim Erstellen eines AKS-Clusters (Azure Kubernetes Service) können Sie zwische
 
 ## <a name="basic-networking"></a>Grundlegende Netzwerke
 
-Die Netzwerkoption **Basic** (Grundlegend) ist die Standardkonfiguration für die AKS-Clustererstellung. Die Netzwerkkonfiguration des Clusters und der dazugehörigen Pods wird vollständig über Azure verwaltet und eignet sich für Bereitstellungen, für die keine benutzerdefinierte VNET-Konfiguration erforderlich ist. Bei Auswahl von „Basic“ (Grundlegend) haben Sie keine Kontrolle über die Netzwerkkonfiguration, z.B. Subnetze oder die dem Cluster zugewiesenen IP-Adressbereiche.
+Die Netzwerkoption **Basic** (Grundlegend) ist die Standardkonfiguration für die AKS-Clustererstellung. Die Netzwerkkonfiguration des Clusters und der dazugehörigen Pods wird vollständig über Azure verwaltet und eignet sich für Bereitstellungen, die keine benutzerdefinierte VNET-Konfiguration erfordern. Bei Auswahl von „Basic“ (Grundlegend) haben Sie keine Kontrolle über die Netzwerkkonfiguration, z.B. Subnetze oder die dem Cluster zugewiesenen IP-Adressbereiche.
 
 Für Knoten in einem AKS-Cluster, für den die Netzwerkoption „Basic“ (Grundlegend) konfiguriert ist, wird das Kubernetes-Plug-In [kubenet][kubenet] verwendet.
 
@@ -97,15 +97,14 @@ Beim Erstellen eines AKS-Clusters können folgende Parameter für erweiterte Net
 
 **Subnetz**: Das Subnetz im VNET, in dem Sie den Cluster bereitstellen möchten. Wenn Sie ein neues Subnetz im VNET für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines Subnetzes* ausführen.
 
-**Kubernetes-Dienstadressbereich**: Der *Kubernetes-Dienstadressbereich* ist der IP-Bereich, aus dem die Adressen den Kubernetes-Diensten in Ihrem Cluster zugewiesen werden (weitere Informationen zu den Kubernetes-Diensten finden Sie in der Kubernetes-Dokumentation unter [Dienste][services]).
-
-Für den Kubernetes-Dienst-IP-Adressbereich gilt Folgendes:
+**Kubernetes-Dienstadressbereich**: Dies ist der Satz von virtuellen IP-Adressen, die Kubernetes [Diensten][services] in Ihrem Cluster zuweist. Sie können jeden privaten Adressbereich verwenden, der die folgenden Anforderungen erfüllen:
 
 * Er darf nicht innerhalb des VNET-IP-Adressbereichs Ihres Clusters liegen.
 * Er darf sich nicht mit anderen VNETs überlappen, die Peers des Cluster-VNETs sind.
 * Er darf sich nicht mit lokalen IP-Adressen überlappen.
+* Er darf sich nicht in den Bereichen `169.254.0.0/16`, `172.30.0.0/16` oder `172.31.0.0/16` befinden.
 
-Bei Verwendung sich überlappender IP-Adressbereiche kann es zu unvorhersehbarem Verhalten kommen. Wenn beispielsweise ein Pod versucht, auf eine IP-Adresse außerhalb des Clusters zuzugreifen, und diese IP-Adresse auch eine Dienst-IP-Adresse ist, können unvorhersehbares Verhalten und Fehler auftreten.
+Obwohl es technisch möglich ist, einen Dienstadressbereich im gleichen VNET wie Ihr Cluster anzugeben, wird dies nicht empfohlen. Bei Verwendung sich überlappender IP-Adressbereiche kann es zu unvorhersehbarem Verhalten kommen. Weitere Informationen finden Sie im Abschnitt [Häufig gestellte Fragen](#frequently-asked-questions) in diesem Artikel. Weitere Informationen zu Kubernetes-Diensten finden Sie in der Kubernetes-Dokumentation unter [Dienste][services].
 
 **Kubernetes DNS service IP address** (Kubernetes-DNS-Dienst – IP-Adresse): Die IP-Adresse für den DNS-Dienst des Clusters. Diese Adresse muss innerhalb des *Kubernetes-Dienstadressbereichs* liegen.
 
@@ -154,6 +153,10 @@ Die folgenden Fragen und Antworten gelten für die Netzwerkkonfiguration vom Typ
 * *Wie kann ich zusätzliche Eigenschaften für das Subnetz konfigurieren, das ich während der Erstellung des AKS-Clusters erstellt habe? Beispiel: Dienstendpunkte.*
 
   Die vollständige Liste mit Eigenschaften für das VNET und Subnetze, die Sie während der Erstellung des AKS-Clusters erstellen, kann im Azure-Portal auf der Standardseite für die VNET-Konfiguration konfiguriert werden.
+
+* *Kann ich in meinem Cluster-VNET ein anderes Subnetz für den* **Kubernetes-Dienstadressbereich** verwenden?
+
+  Es wird zwar nicht empfohlen, diese Konfiguration ist jedoch möglich. Der Dienstadressbereich ist ein Satz von virtuellen IP-Adressen (VIPs), die Kubernetes Diensten in Ihrem Cluster zuweist. Das Azure-Netzwerk hat keinen Einblick in den Dienst-IP-Adressbereich des Kubernetes-Clusters. Aufgrund fehlender Einblicke in den Dienstadressbereich des Clusters ist es möglich, später ein neues Subnetz im Cluster-VNET zu erstellen, das mit dem Dienstadressbereich überlappt. Im Falle einer solchen Überlappung weist Kubernetes einem Dienst ggf. eine IP zu, die bereits von einer anderen Ressource im Subnetz verwendet wird. Dies führt zu unvorhersehbarem Verhalten oder Fehlern. Wenn Sie einen Adressbereich außerhalb des Cluster-VNETs verwenden, können Sie dieses Überlappungsrisiko umgehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

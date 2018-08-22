@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: 241d24746d82a359b4bbf4febbbaaf91180dd23e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f7cf471a69395cef0aef7d5dd2e3c77218bf97a3
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210923"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715279"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -36,14 +36,14 @@ Zu den Konzepten, die Sie für die Tarifauswahl kennen müssen, zählen Kapazit�
 
 ### <a name="capacity"></a>Capacity
 
-Kapazität wird in *Replikate* und *Partitionen* strukturiert. Replikate sind Instanzen des Suchdiensts, in denen jedes Replikat eine Lastenausgleichskopie eines Indexes hostet. Beispielsweise verfügt ein Dienst mit 6 Replikaten über 6 Kopien jedes in den Dienst geladenen Indexes. Partitionen speichern Indizes und teilen durchsuchbare Daten automatisch auf: zwei Partitionen teilen den Index in Hälften, drei Partitionen in Drittel usw. Im Hinblick auf die Kapazität ist die *Partitionsgröße* das primäre unterscheidende Feature der Tarife.
+Kapazität wird in *Replikate* und *Partitionen* strukturiert. 
+
++ Replikate sind Instanzen des Suchdiensts, in denen jedes Replikat eine Lastenausgleichskopie eines Indexes hostet. Beispielsweise verfügt ein Dienst mit 6 Replikaten über 6 Kopien jedes in den Dienst geladenen Indexes. 
+
++ Partitionen speichern Indizes und teilen durchsuchbare Daten automatisch auf: zwei Partitionen teilen den Index in Hälften, drei Partitionen in Drittel usw. Im Hinblick auf die Kapazität ist die *Partitionsgröße* das primäre unterscheidende Feature der Tarife.
 
 > [!NOTE]
 > Alle **Standard**-Tarife unterstützen [flexible Kombinationen von Replikaten und Partitionen](search-capacity-planning.md#chart), damit Sie durch Ändern des Ausgleichs [Ihr System nach Geschwindigkeit oder Speicher gewichten](search-performance-optimization.md) können. **Basic** bietet bis zu drei Replikate für Hochverfügbarkeit, enthält jedoch nur eine Partition. **Kostenlos**-Tarife bieten keine dedizierten Ressourcen: Computingressourcen werden von mehreren kostenlosen Diensten geteilt.
-
-### <a name="limits"></a>Einschränkungen
-
-Bedient Hostressourcen, z.B. Indizes, Indexer usw. Jeder Tarif erzwingt [Dienstgrenzwerte](search-limits-quotas-capacity.md) bezüglich der Menge an Ressourcen, die Sie erstellen können. Daher ist eine Obergrenze für die Anzahl der Indizes (und anderer Objekte) das zweite Unterscheidungsmerkmal zwischen Tarifen. Wenn Sie die einzelnen Optionen im Portal durchgehen, beachten Sie die Grenzwerte für die Anzahl der Indizes. Andere Ressourcen, z.B. Indexer, Datenquellen und Skillsets, sind an Indexgrenzwerte gebunden.
 
 ### <a name="search-units"></a>Sucheinheiten
 
@@ -52,6 +52,10 @@ Das wichtigste Abrechnungskonzept, das Sie kennen sollten, ist eine *Sucheinheit
 Obwohl jeder Tarif zunehmend höhere Kapazität bietet, können Sie einen Teil der Gesamtkapazität online bringen und den Rest als Reserve zurückhalten. Im Hinblick auf die Abrechnung bestimmt die Anzahl der Partitionen und Replikate, die Sie online bringen, mithilfe der SU-Formel berechnet, was Sie tatsächlich bezahlen.
 
 Es wird stündlich pro SU abgerechnet, wobei jeder Tarif eine andere Rate hat. Die Preise für die einzelnen Tarife finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/search/).
+
+### <a name="limits"></a>Einschränkungen
+
+Bedient Hostressourcen, z.B. Indizes, Indexer usw. Jeder Tarif erzwingt [Dienstgrenzwerte](search-limits-quotas-capacity.md) bezüglich der Menge an Ressourcen, die Sie erstellen können. Daher ist eine Obergrenze für die Anzahl der Indizes (und anderer Objekte) das zweite Unterscheidungsmerkmal zwischen Tarifen. Wenn Sie die einzelnen Optionen im Portal durchgehen, beachten Sie die Grenzwerte für die Anzahl der Indizes. Andere Ressourcen, z.B. Indexer, Datenquellen und Skillsets, sind an Indexgrenzwerte gebunden.
 
 ## <a name="consumption-patterns"></a>Verbrauchsmuster
 
@@ -86,7 +90,7 @@ In der Regel diktieren geschäftliche Anforderungen die Anzahl der Indizes, die 
 
 Um die Größe eines Indexes zu bestimmen, müssen Sie [einen erstellen](search-create-index-portal.md). Die Struktur der Daten in Azure Search ist in erster Linie ein [invertierter Index](https://en.wikipedia.org/wiki/Inverted_index), der über andere Eigenschaften als Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie einspeisen. Aus einer großen Datenquelle mit massiver Redundanz könnte ein kleinerer Index resultieren als aus einem kleineren Dataset mit stark variierendem Inhalt.  Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
 
-### <a name="preliminary-estimates-using-the-free-tier"></a>Vorläufige Schätzungen mit dem Kostenlos-Tarif
+### <a name="step-1-develop-rough-estimates-using-the-free-tier"></a>Schritt 1: Entwickeln grober Schätzungen mit dem Free-Tarif
 
 Eine Möglichkeit zum Schätzen der Kapazität ist, mit dem **Kostenlos**-Tarif zu beginnen. Bedenken Sie, dass der **Kostenlos**-Dienst bis zu 3 Indizes, 50 MB Speicherplatz und 2 Minuten Indizierungszeit bietet. Es kann schwierig sein, mit diesen Einschränkungen eine veranschlagte Indexgröße zu schätzen, aber das folgende Beispiel veranschaulicht eine Methode:
 
@@ -96,7 +100,7 @@ Eine Möglichkeit zum Schätzen der Kapazität ist, mit dem **Kostenlos**-Tarif 
 
 Angenommen, dass das Beispiel repräsentativ ist und zehn Prozent der gesamten Datenquelle umfasst, dann werden aus einem Index von 30 MB ca. 300 MB, wenn alle Dokumente indiziert werden. Aufgrund dieses vorläufigen Werts könnten Sie die Menge auf ein Budget für zwei Indizes (Entwicklung und Produktion) auf Speicheranforderungen von insgesamt 600 MB verdoppeln. Da diese Anforderung mühelos vom **Basic**-Tarif erfüllt wird, würden Sie dort beginnen.
 
-### <a name="advanced-estimates-using-a-billable-tier"></a>Erweiterte Schätzungen mithilfe eines abzurechnenden Tarifs
+### <a name="step-2-develop-refined-estimates-using-a-billable-tier"></a>Schritt 2: Entwickeln präziser Schätzungen mit einem kostenpflichtigen Tarif
 
 Einige Kunden bevorzugen, mit dedizierten Ressourcen zu beginnen, die für größere Sampling- und Verarbeitungszeiten geeignet sind, und entwickeln dann während der Entwicklung realistische Schätzungen von Indexmenge, Größe und Abfragevolumen. Zu Beginn wird ein Dienst basierend auf einer Schätzung bereitgestellt, und wenn das Entwicklungsprojekt fortgeschritten ist, wissen Teams in der Regel, ob der derzeitige Dienst für die voraussichtlichen Produktionsworkloads über- oder unterdimensioniert ist. 
 

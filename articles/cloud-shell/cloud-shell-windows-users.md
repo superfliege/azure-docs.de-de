@@ -12,43 +12,60 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2018
+ms.date: 08/03/2018
 ms.author: damaerte
-ms.openlocfilehash: 5e318a0f64033aa0c4b306e547c11e1994afa229
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: aad474195060c01a3f9d85e6f9037b568b0c16ad
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861223"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630385"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>PowerShell in Azure Cloud Shell für Windows-Benutzer
 
-Im Mai 2018 wurden Änderungen für PowerShell in Azure Cloud Shell [angekündigt](https://azure.microsoft.com/blog/pscloudshellrefresh/).  Als PowerShell-Oberfläche in Azure Cloud Shell wird jetzt PowerShell Core 6 unter Linux verwendet.
-Mit dieser Änderung können sich einige Aspekte von PowerShell in Cloud Shell unter Umständen von dem unterscheiden, was in Windows PowerShell 5.1 erwartet wird.
+Im Mai 2018 wurden Änderungen für PowerShell in Azure Cloud Shell [angekündigt](https://azure.microsoft.com/blog/pscloudshellrefresh/).
+Als PowerShell-Oberfläche in Azure Cloud Shell wird jetzt [PowerShell Core 6](https://github.com/powershell/powershell) in einer Linux-Umgebung ausgeführt.
+Die PowerShell-Umgebung in Cloud Shell weist im Zuge dieser Änderung möglicherweise einige Unterschiede im Vergleich zu einer Windows PowerShell-Oberfläche auf.
 
-## <a name="case-sensitivity"></a>Groß- und Kleinschreibung
+## <a name="file-system-case-sensitivity"></a>Groß-/Kleinschreibung bei Dateisystemen
 
-Unter Windows wird im Dateisystem die Groß- und Kleinschreibung nicht beachtet.  Unter Linux wird im Dateisystem dagegen die Groß- und Kleinschreibung beachtet.
-Das bedeutet, dass `file.txt` und `FILE.txt` zuvor als dieselbe Datei galten, jetzt jedoch als unterschiedliche Dateien gelten.
-Bei einer `tab`-Vervollständigung im Dateisystem muss die Groß- und Kleinschreibung richtig verwendet werden.  Bei PowerShell-spezifischen Elementen, z.B. `tab`-Cmdlets, wird die Groß- und Kleinschreibung nicht beachtet. 
+Beim Dateisystem unter Windows wird die Groß-/Kleinschreibung nicht berücksichtigt, wohingegen unter Linux Gegenteiliges der Fall ist.
+Zuvor galten `file.txt` und `FILE.txt` als selbe Datei, jetzt jedoch gelten diese als unterschiedliche Dateien.
+Bei `tab-completing` im Dateisystem muss die richtige Groß- und Kleinschreibung verwendet werden.
+Bei PowerShell-spezifischen Elementen (z.B. Cmdlet `tab-completing`, Namen, Parameter und Werte) wird die Groß- und Kleinschreibung nicht berücksichtigt.
 
-## <a name="windows-powershell-alias-vs-linux-utilities"></a>Windows PowerShell-Alias im Vergleich zu Linux-Hilfsprogrammen
+## <a name="windows-powershell-aliases-vs-linux-utilities"></a>Windows PowerShell-Aliase im Vergleich zu Linux-Hilfsprogrammen
 
-Vorhandene Befehle unter Linux, z.B. `ls`, `sort` oder `sleep`, haben Vorrang vor ihren PowerShell-Aliasen.  Im Folgenden sind gängige entfernte Aliase und die entsprechenden Befehle aufgeführt:  
+Einige vorhandene PowerShell-Aliase weisen die gleichen Namen auf wie integrierte Linux-Befehle (z.B. `cat`,`ls`, `sort`, `sleep`). In PowerShell Core 6 wurden Aliase, die mit integrierten Linux-Befehlen in Konflikt stehen, entfernt.
+Im Folgenden werden die allgemeine Aliase, die entfernt wurden, und die entsprechenden Befehle aufgeführt:  
 
 |Entfernter Alias   |Entsprechender Befehl   |
 |---|---|
+|`cat`    | `Get-Content` |
+|`curl`   | `Invoke-WebRequest` |
+|`diff`   | `Compare-Object` |
 |`ls`     | `dir` <br> `Get-ChildItem` |
-|`sort`   | `Sort-Object` |
+|`mv`     | `Move-Item`   |
+|`rm`     | `Remove-Item` |
 |`sleep`  | `Start-Sleep` |
+|`sort`   | `Sort-Object` |
+|`wget`   | `Invoke-WebRequest` |
 
-## <a name="persisting-home-vs-homeclouddrive"></a>Beibehalten von $home und $home\clouddrive
+## <a name="persisting-home"></a>Beibehalten von $HOME
 
-Für Benutzer, die Skripts und andere Dateien in ihrem Verzeichnis „clouddrive“ beibehalten haben, wird das $HOME-Verzeichnis jetzt sitzungsübergreifend beibehalten.
+Vorher konnten Benutzer lediglich Skripts und andere Dateien im Cloudlaufwerk beibehalten.
+Nun wird das $HOME-Verzeichnis des Benutzers auch sitzungsübergreifend beibehalten.
 
 ## <a name="powershell-profile"></a>PowerShell-Profil
 
-Standardmäßig wird kein PowerShell-Profil erstellt.  Zum Erstellen Ihres Profils erstellen Sie unter `$HOME/.config` ein `PowerShell`-Verzeichnis.  Unter `$HOME/.config/PowerShell` können Sie Ihr Profil unter dem Namen `Microsoft.PowerShell_profile.ps1` erstellen.
+Standardmäßig wird kein PowerShell-Profil für einen Benutzer erstellt.
+Zum Erstellen Ihres Profils erstellen Sie unter `$HOME/.config` ein `PowerShell`-Verzeichnis.
+
+```azurepowershell-interactive
+mkdir (Split-Path $profile.CurrentUserAllHosts)
+```
+
+Unter `$HOME/.config/PowerShell` können Sie Ihre Profildateien `profile.ps1` und/oder `Microsoft.PowerShell_profile.ps1` erstellen.
 
 ## <a name="whats-new-in-powershell-core-6"></a>Neuerungen in PowerShell Core 6
 

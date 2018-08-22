@@ -1,5 +1,5 @@
 ---
-title: Windows-Softwarekosten für reservierte Azure-Instanzen | Microsoft Docs
+title: Windows-Softwarekosten für Azure-Reservierungen | Microsoft-Dokumentation
 description: Erfahren Sie, welche Verbrauchseinheiten für Windows-Software nicht in den Kosten für reservierte Azure-VM-Instanzen enthalten sind.
 services: billing
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 6602424e2b2e4a4c2c3c51b5cb4bb1024a39d2e0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 8ff2d126fd491ddc40f6223b6d4ec1fc4505b8fb
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064319"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630110"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reserved-instances"></a>Nicht in reservierten Azure-Instanzen enthaltene Windows-Softwarekosten
+# <a name="windows-software-costs-not-included-with-azure-reservations"></a>Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten
 
-Wenn Sie für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil besitzen, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Windows-Software berechnet.
+Wenn Sie für Ihre reservierten VM-Instanzen keinen Anspruch auf Azure-Hybridvorteil haben, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Windows-Software berechnet.
 
-## <a name="windows-software-meters-not-included-in-reserved-instance-cost"></a>Kosten für nicht in reservierten Instanzen enthaltene Verbrauchseinheiten für Windows-Software
+## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Nicht in den Reservierungskosten enthaltene Verbrauchseinheiten für Windows-Software
 
 | MeterId | MeterName in Verwendungsdatei | Von virtuellem Computer verwendet |
 | ------- | ------------------------| --- |
@@ -53,14 +53,14 @@ Wenn Sie für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil besitzen
 Sie können die Kosten jeder dieser Verbrauchseinheiten über die Azure RateCard-API abrufen. Informationen zum Abrufen der Tarife für eine Azure-Verbrauchseinheit finden Sie unter [Abrufen von Preis- und Metadateninformationen für in einem Azure-Abonnement verwendete Ressourcen](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu reservierten Azure-Instanzen finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
-- [Was ist Azure Reserved VM Instances?](billing-save-compute-costs-reservations.md)
+- [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Verwalten von reservierten Instanzen in Azure](billing-manage-reserved-vm-instance.md)
-- [Grundlegendes zur Anwendung des Rabatts für reservierte Instanzen](billing-understand-vm-reservation-charges.md)
-- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](billing-understand-reserved-instance-usage.md)
-- [Grundlegendes zur Nutzung reservierter Instanzen für die Enterprise-Registrierung](billing-understand-reserved-instance-usage-ea.md)
+- [Verwalten von Reservierungen für Ressourcen in Azure](billing-manage-reserved-vm-instance.md)
+- [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

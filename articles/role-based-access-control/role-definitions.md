@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 416565a248fc9ef0861b5309d71fdac3b8fccc22
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3d88ac7adc950e2c216824f74586ff6ef4f70712
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116060"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715769"
 ---
 # <a name="understand-role-definitions"></a>Grundlegendes zu Rollendefinitionen
 
@@ -173,7 +173,7 @@ Um Datenvorgänge anzuzeigen und mit diesen zu arbeiten, müssen Sie über die r
 | [Azure für Python](/python/azure) | 0.40.0 oder höher |
 | [Azure SDK für Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 oder höher |
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>Aktionen
 
 Die Berechtigung `Actions` gibt die Verwaltungsvorgänge an, deren Ausführung die Rolle zulässt. Es handelt sich um eine Sammlung von Vorgangszeichenfolgen, mit denen sicherungsfähige Vorgänge von Azure-Ressourcenanbietern identifiziert werden. Im Anschluss finden Sie einige Beispiele für Verwaltungsvorgänge, die in `Actions` verwendet werden können.
 
@@ -214,7 +214,7 @@ Die Berechtigung `NotDataActions` gibt die Datenvorgänge an, die von den zuläs
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-Die Eigenschaft `AssignableScopes` gibt die Bereiche (Verwaltungsgruppen (derzeit in der Vorschauphase), Abonnements, Ressourcengruppen und Ressourcen) an, für die die Rolle zugewiesen werden kann. Sie können die Verfügbarkeit der Rolle für die Zuweisung auf die Abonnements oder Ressourcengruppen beschränken, für die dies erforderlich ist, um eine bessere Übersichtlichkeit der restlichen Abonnements oder Ressourcengruppen zu erzielen. Sie müssen mindestens eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressourcen-ID verwenden.
+Die Eigenschaft `AssignableScopes` gibt die Bereiche (Abonnements, Ressourcengruppen oder Ressourcen) an, für die die Rolle zugewiesen werden kann. Sie können die Verfügbarkeit der Rolle für die Zuweisung auf die Abonnements oder Ressourcengruppen beschränken, für die dies erforderlich ist, um eine bessere Übersichtlichkeit der restlichen Abonnements oder Ressourcengruppen zu erzielen. Sie müssen mindestens ein Abonnement, eine Ressourcengruppe oder eine Ressourcen-ID verwenden.
 
 Bei integrierten Rollen ist `AssignableScopes` auf den Stammbereich (`"/"`) festgelegt. Der Stammbereich gibt an, dass die Rolle für die Zuweisung in allen Bereichen verfügbar ist. Beispiele für gültige zuweisbare Bereiche:
 

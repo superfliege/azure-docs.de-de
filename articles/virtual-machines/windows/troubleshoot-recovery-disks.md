@@ -11,30 +11,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/03/2017
+ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 1e87704e7d8cf3c7cc21e537d36f95a97265061b
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 9845476e23396eecc4149f3e856c40b0f80f13cb
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903515"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004765"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM per Azure PowerShell
-Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie Sie Azure PowerShell zum Herstellen der Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM verwenden, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen.
+Wenn für Ihre Windows-VM in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie die Problembehandlung ggf. auf dem Datenträger selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. Dieser Artikel beschreibt, wie Sie mit Azure PowerShell eine Verbindung zwischen dem Datenträger und einer anderen Windows-VM herstellen, um Fehler zu beheben und dann Ihre ursprüngliche VM zu reparieren. 
+
+> [!Important]
+> Die Skripts in diesem Artikel gelten nur für VMs, die [verwaltete Datenträger](managed-disks-overview.md) verwenden. 
 
 
 ## <a name="recovery-process-overview"></a>Übersicht über den Wiederherstellungsprozess
+Mit Azure PowerShell können Sie nun den Betriebssystemdatenträger für eine VM ändern. Sie müssen die VM nicht löschen und neu erstellen.
+
 Der Problembehebungsprozess sieht wie folgt aus:
 
-1. Löschen Sie die VM, auf der Probleme auftreten, und behalten Sie die virtuellen Festplatten bei.
-2. Fügen Sie einer anderen Windows-Problembehebungs-VM die virtuelle Festplatte hinzu, und stellen Sie sie bereit.
-3. Stellen Sie eine Verbindung mit der Problembehebungs-VM her. Bearbeiten Sie Dateien, oder führen Sie ein beliebiges Tool zum Beheben von Problemen auf der ursprünglichen virtuellen Festplatte aus.
-4. Heben Sie die Bereitstellung auf, und trennen Sie die virtuelle Festplatte von der Problembehebungs-VM.
-5. Erstellen Sie eine VM mithilfe der ursprünglichen virtuellen Festplatte.
-
-Für virtuelle Computer mit verwalteten Datenträgern finden Sie weitere Informationen unter [Problembehandlung bei einem virtuellen Computer mit verwalteten Datenträgern durch Anfügen eines neuen Betriebssystemdatenträgers](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
-
+1. Beenden Sie die betroffene VM.
+2. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers der VM.
+3. Erstellen Sie einen Datenträger aus der Momentaufnahme vom Betriebssystemdatenträger.
+4. Fügen Sie den Datenträger der Wiederherstellungs-VM als Datenträger an.
+5. Stellen Sie eine Verbindung zur Wiederherstellungs-VM her. Bearbeiten Sie Dateien, oder führen Sie ein beliebiges Tool zum Beheben von Problemen auf dem kopierten Betriebssystemdatenträger aus.
+6. Heben Sie die Bereitstellung des Datenträgers auf, und trennen Sie ihn von der Wiederherstellungs-VM.
+7. Ändern Sie den Betriebssystemdatenträger für die betroffene VM.
 
 Stellen Sie sicher, dass Sie die [aktuelle Version von Azure PowerShell](/powershell/azure/overview) installiert haben und an Ihrem Abonnement angemeldet sind:
 
@@ -42,8 +46,7 @@ Stellen Sie sicher, dass Sie die [aktuelle Version von Azure PowerShell](/powers
 Connect-AzureRmAccount
 ```
 
-Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Als Beispielparameternamen werden `myResourceGroup`, `mystorageaccount` und `myVM` verwendet.
-
+Ersetzen Sie in den folgenden Beispielen die Parameternamen durch Ihre eigenen Werte. 
 
 ## <a name="determine-boot-issues"></a>Bestimmen von Problemen beim Start
 Sie können einen Screenshot Ihrer VM in Azure anzeigen, die Ihnen als Hilfe beim Behandeln von Startproblemen dient. Anhand dieses Screenshots können Sie ermitteln, warum eine VM nicht erfolgreich gestartet werden kann. Im folgenden Beispiel stammt der Screenshot von der Windows-VM mit dem Namen `myVM` in der Ressourcengruppe mit dem Namen `myResourceGroup`:
@@ -55,78 +58,115 @@ Get-AzureRmVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
 
 Überprüfen Sie den Screenshot, um zu bestimmen, warum die VM nicht startet. Beachten Sie alle angegebenen spezifischen Fehlermeldungen oder Fehlercodes.
 
+## <a name="stop-the-vm"></a>Beenden des virtuellen Computers
 
-## <a name="view-existing-virtual-hard-disk-details"></a>Anzeigen von Details vorhandener virtueller Festplatten
-Bevor Sie Ihre virtuelle Festplatte zu einer anderen VM hinzufügen können, müssen Sie den Namen der virtuellen Festplatte (VHD) identifizieren.
-
-Im folgenden Beispiel werden Informationen der VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` abgerufen:
+Im folgenden Beispiel wird die VM `myVM` in der Ressourcengruppe `myResourceGroup` angehalten:
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+Stop-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Suchen Sie in der Ausgabe des vorherigen Befehls im Abschnitt `StorageProfile` nach `Vhd URI`. In der folgenden gekürzten Beispielausgabe befindet sich die `Vhd URI` am Ende des Codeblocks:
+Warten Sie, bis die VM gelöscht wurde, bevor Sie fortfahren.
+
+
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Erstellen einer Momentaufnahme des Betriebssystemdatenträgers der VM
+
+Das folgende Beispiel erstellt eine Momentaufnahme namens `mySnapshot` vom Betriebssystemdatenträger der VM mit dem Namen „myVM“. 
 
 ```powershell
-RequestId                     : 8a134642-2f01-4e08-bb12-d89b5b81a0a0
-StatusCode                    : OK
-ResourceGroupName             : myResourceGroup
-Id                            : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM
-Name                          : myVM
-Type                          : Microsoft.Compute/virtualMachines
-...
-StorageProfile                :
-  ImageReference              :
-    Publisher                 : MicrosoftWindowsServer
-    Offer                     : WindowsServer
-    Sku                       : 2016-Datacenter
-    Version                   : latest
-  OsDisk                      :
-    OsType                    : Windows
-    Name                      : myVM
-    Vhd                       :
-      Uri                     : https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd
-    Caching                   : ReadWrite
-    CreateOption              : FromImage
+$resourceGroupName = 'myResourceGroup' 
+$location = 'eastus' 
+$vmName = 'myVM'
+$snapshotName = 'mySnapshot'  
+
+#Get the VM
+$vm = get-azurermvm `
+-ResourceGroupName $resourceGroupName `
+-Name $vmName
+
+#Create the snapshot configuration for the OS disk
+$snapshot =  New-AzureRmSnapshotConfig `
+-SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id `
+-Location $location `
+-CreateOption copy
+
+#Take the snapshot
+New-AzureRmSnapshot `
+   -Snapshot $snapshot `
+   -SnapshotName $snapshotName `
+   -ResourceGroupName $resourceGroupName 
 ```
 
+Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. Sie kann nicht an eine VM angefügt werden. Im nächsten Schritt erstellen Sie aus dieser Momentaufnahme einen Datenträger.
 
-## <a name="delete-existing-vm"></a>Löschen einer vorhandener VM
-Virtuelle Festplatten und VMs sind zwei unterschiedliche Ressourcen in Azure. Eine virtuelle Festplatte ist der Ort, an dem das Betriebssystem selbst, Anwendungen und Konfigurationen gespeichert werden. Die VM selbst besteht nur aus Metadaten, die die Größe oder Position definieren und auf Ressourcen verweisen, z.B. eine virtuelle Festplatte oder virtuelle Netzwerkschnittstellenkarte (NIC). Jede virtuelle Festplatte verfügt über eine zugewiesene Lease, wenn sie mit einer VM verknüpft ist. Obwohl Datenträger auch bei laufendem Betrieb der VM hinzugefügt und getrennt werden können, kann der Betriebssystemdatenträger nicht getrennt werden, es sei denn, die VM-Ressource wird gelöscht. Die Lease ordnet den Betriebssystemdatenträger weiterhin einer VM zu, selbst wenn diese VM beendet und die Zuordnung aufgehoben ist.
+## <a name="create-a-disk-from-the-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
 
-Der erste Schritt beim Wiederherstellen Ihrer VM ist das Löschen der VM-Ressource selbst. Das Löschen der VM belässt die virtuellen Festplatten in Ihrem Speicherkonto. Nachdem die VM gelöscht wird, fügen Sie die virtuelle Festplatte zu einer anderen VM hinzu, um die Fehler zu beheben.
-
-Im folgenden Beispiel wird die VM namens `myVM` in der Ressourcengruppe namens `myResourceGroup` gelöscht:
+Dieses Skript erstellt einen verwalteten Datenträger mit dem Namen `newOSDisk` aus der Momentaufnahme namens `mysnapshot`.  
 
 ```powershell
-Remove-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
+#Set the context to the subscription Id where Managed Disk will be created
+#You can skip this step if the subscription is already selected
+
+$subscriptionId = 'yourSubscriptionId'
+
+Select-AzureRmSubscription -SubscriptionId $SubscriptionId
+
+#Provide the name of your resource group
+$resourceGroupName ='myResourceGroup'
+
+#Provide the name of the snapshot that will be used to create Managed Disks
+$snapshotName = 'mySnapshot' 
+
+#Provide the name of the Managed Disk
+$diskName = 'newOSDisk'
+
+#Provide the size of the disks in GB. It should be greater than the VHD file size.
+$diskSize = '128'
+
+#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
+$storageType = 'StandardLRS'
+
+#Provide the Azure region (e.g. westus) where Managed Disks will be located.
+#This location should be same as the snapshot location
+#Get all the Azure location using command below:
+#Get-AzureRmLocation
+$location = 'eastus'
+
+$snapshot = Get-AzureRmSnapshot -ResourceGroupName $resourceGroupName -SnapshotName $snapshotName 
+ 
+$diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+ 
+New-AzureRmDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
 ```
+Nun haben Sie eine Kopie des ursprünglichen Betriebssystemdatenträgers. Sie können diesen Datenträger für eine andere Windows-VM zur Problembehandlung bereitstellen.
 
-Warten Sie, bis die VM gelöscht wurde, bevor Sie die virtuelle Festplatte einer anderen VM hinzufügen. Die Lease auf der virtuellen Festplatte, die sie zur VM zuordnet, muss freigegeben werden, bevor Sie die virtuelle Festplatte einer anderen VM hinzufügen können.
+## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Anfügen eines Datenträgers an eine andere Windows-VM zur Problembehandlung
 
-
-## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Hinzufügen einer vorhandenen virtuellen Festplatte zu einer anderen VM
-Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Fügen Sie die vorhandene virtuelle Festplatte zu dieser Problembehebungs-VM hinzu, um den Inhalt des Datenträgers zu durchsuchen und zu bearbeiten. Durch diesen Prozess können Sie z.B. alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen. Wählen Sie eine andere Problembehebungs-VM aus, oder erstellen Sie eine.
-
-Wenn Sie die vorhandene virtuelle Festplatte hinzufügen, geben Sie die URL des Datenträgers an, die im vorherigen Befehl `Get-AzureRmVM` abgerufen wurde. Das folgende Beispiel fügt eine vorhandene virtuelle Festplatte zur Problembehebungs-VM namens `myVMRecovery` in der Ressourcengruppe mit dem Namen `myResourceGroup` hinzu:
-
-```powershell
-$myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMRecovery"
-Add-AzureRmVMDataDisk -VM $myVM -CreateOption "Attach" -Name "DataDisk" -DiskSizeInGB $null `
-    -VhdUri "https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd"
-Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
-```
+Nun fügen Sie die Kopie des ursprünglichen Betriebssystemdatenträgers einer VM als Datenträger an. Dadurch können Sie Konfigurationsfehler beheben oder zusätzliche Anwendungs- bzw. Systemprotokolldateien überprüfen. Im folgenden Beispiel wird der Datenträger `newOSDisk` der VM mit dem Namen `RecoveryVM` angefügt.
 
 > [!NOTE]
-> Für das Hinzufügen eines Datenträgers müssen Sie seine Größe angeben. Da hier ein vorhandener Datenträger angefügt wird, wird `-DiskSizeInGB` als `$null` angegeben. Mit diesem Wert wird sichergestellt, dass der Datenträger richtig angefügt ist, und die wirkliche Größe des Datenträgers muss nicht ermittelt werden.
+> Um den Datenträger anzufügen, müssen sich die Kopie des ursprünglichen Betriebssystemdatenträgers und der Wiederherstellungs-VM am gleichen Speicherort befinden.
 
+```powershell
+$rgName = "myResourceGroup"
+$vmName = "RecoveryVM"
+$location = "eastus" 
+$dataDiskName = "newOSDisk"
+$disk = Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $dataDiskName 
 
-## <a name="mount-the-attached-data-disk"></a>Bereitstellen des hinzugefügten Datenträgers
+$vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
 
-1. Stellen Sie per RDP und den entsprechenden Anmeldeinformationen eine Verbindung mit Ihrer Problembehebungs-VM her. Im folgenden Beispiel wird die RDP-Verbindungsdatei für die VM mit dem Namen `myVMRecovery` in der Ressourcengruppe mit dem Namen `myResourceGroup` heruntergeladen und in `C:\Users\ops\Documents` abgelegt.
+$vm = Add-AzureRmVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.Id
+
+Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
+```
+
+## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Verbinden mit der Wiederherstellungs-VM und Behandeln von Problemen auf dem angefügten Datenträger
+
+1. Stellen Sie per RDP und den entsprechenden Anmeldeinformationen eine Verbindung mit Ihrer Wiederherstellungs-VM her. Im folgenden Beispiel wird die RDP-Verbindungsdatei für die VM mit dem Namen `RecoveryVM` in der Ressourcengruppe mit dem Namen `myResourceGroup` heruntergeladen und in `C:\Users\ops\Documents` abgelegt.
 
     ```powershell
-    Get-AzureRMRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "myVMRecovery" `
+    Get-AzureRMRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
@@ -136,7 +176,7 @@ Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
     Get-Disk
     ```
 
-    In der folgenden Beispielausgabe ist die virtuelle Festplatte mit dem Datenträger **2** verbunden. (Sie können auch `Get-Volume` verwenden, um den Laufwerkbuchstaben anzuzeigen.):
+    In der folgenden Beispielausgabe ist der Datenträger mit dem Datenträger **2** verbunden. (Sie können auch `Get-Volume` verwenden, um den Laufwerkbuchstaben anzuzeigen.):
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -144,15 +184,13 @@ Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
     ------   -------------   -------------   ------------   -----------------   ----------   ----------
     0        Virtual HD                                     Healthy             Online       127 GB MBR
     1        Virtual HD                                     Healthy             Online       50 GB MBR
-    2        Msft Virtu...                                  Healthy             Online       127 GB MBR
+    2        newOSDisk                                  Healthy             Online       127 GB MBR
     ```
 
-## <a name="fix-issues-on-original-virtual-hard-disk"></a>Beheben von Problemen auf der ursprünglichen virtuellen Festplatte
-Nun, da die vorhandene virtuelle Festplatte bereitgestellt ist, können Sie jetzt alle Schritte zur Wartung und Problembehebung ausführen. Fahren Sie mit den folgenden Schritte fort, nachdem Sie die Probleme behoben haben.
+Wenn die Kopie des ursprünglichen Betriebssystemdatenträgers bereitgestellt wurde, können Sie die erforderlichen Wartungs- und Problembehandlungsvorgänge ausführen. Fahren Sie mit den folgenden Schritten fort, nachdem Sie die Probleme behoben haben.
 
-
-## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Aufheben der Bereitstellung und Trennen der ursprünglichen virtuellen Festplatte
-Sobald Ihre Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen Sie die vorhandene virtuelle Festplatte von Ihrer Problembehebungs-VM. Sie können Ihre virtuelle Festplatte nicht mit einer anderen VM nutzen, bis die Lease freigegeben wird, die die virtuelle Festplatte zur Problembehebungs-VM hinzufügt.
+## <a name="unmount-and-detach-original-os-disk"></a>Aufheben der Bereitstellung und Trennen des ursprünglichen Betriebssystemdatenträgers
+Sobald die Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen Sie den vorhandenen Datenträger von Ihrer Wiederherstellungs-VM. Sie können Ihren Datenträger nicht mit einer anderen VM nutzen, bis die Lease freigegeben wird, die die VM der Wiederherstellungs-VM anfügt.
 
 1. Heben Sie in der RDP-Sitzung die Bereitstellung des Datenträgers auf der Wiederherstellungs-VM auf. Sie benötigen die Datenträgernummer aus dem vorherigen `Get-Disk`-Cmdlet. Verwenden Sie anschließend `Set-Disk`, um für den Datenträger den Offlinezustand festzulegen:
 
@@ -171,46 +209,49 @@ Sobald Ihre Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen S
     2        Msft Virtu...                                  Healthy             Offline      127 GB MBR
     ```
 
-2. Beenden Sie die RDP-Sitzung. Entfernen Sie die virtuelle Festplatte in der Azure PowerShell-Sitzung von der Problembehebungs-VM.
+2. Beenden Sie die RDP-Sitzung. Entfernen Sie aus der Azure PowerShell-Sitzung den Datenträger `newOSDisk` von der VM „RecoveryVM“.
 
     ```powershell
-    $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMRecovery"
-    Remove-AzureRmVMDataDisk -VM $myVM -Name "DataDisk"
+    $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
+    Remove-AzureRmVMDataDisk -VM $myVM -Name "newOSDisk"
     Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
     ```
 
+## <a name="change-the-os-disk-for-the-affected-vm"></a>Ändern des Betriebssystemdatenträgers für die betroffene VM
 
-## <a name="create-vm-from-original-hard-disk"></a>Erstellen einer VM von der ursprünglichen Festplatte
-Verwenden Sie zum Erstellen einer VM von Ihrer ursprünglichen virtuellen Festplatte [diese Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-existing-vnet). Die tatsächliche JSON-Vorlage ist unter dem folgenden Link verfügbar:
+Sie können mit Azure PowerShell die Betriebssystemdatenträger austauschen. Sie müssen den virtuellen Computer nicht löschen und neu erstellen.
 
-- https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
-
-Die Vorlage stellt eine VM in einem vorhandenen virtuellen Netzwerk bereit und nutzt die VHD-URL aus dem früheren Befehl. Im folgenden Beispiel wird die Vorlage in der Ressourcengruppe namens `myResourceGroup` bereitgestellt:
+Dieses Beispiel beendet die VM `myVM` und weist den Datenträger `newOSDisk` als neuen Betriebssystemdatenträger zu. 
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name myDeployment -ResourceGroupName myResourceGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd-existing-vnet/azuredeploy.json
+# Get the VM 
+$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM 
+
+# Make sure the VM is stopped\deallocated
+Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+
+# Get the new disk that you want to swap in
+$disk = Get-AzureRmDisk -ResourceGroupName myResourceGroup -Name newDisk
+
+# Set the VM configuration to point to the new disk  
+Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name 
+
+# Update the VM with the new OS disk
+Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm 
+
+# Start the VM
+Start-AzureRmVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
 
-Befolgen Sie die Eingabeaufforderungen der Vorlage, z.B. VM-Name, Betriebssystemtyp und VM-Größe. `osDiskVhdUri` wurde bereits zuvor verwendet, als die vorhandene virtuelle Festplatte zur Problembehebungs-VM hinzugefügt wurde.
+## <a name="verify-and-enable-boot-diagnostics"></a>Überprüfen und Aktivieren der Startdiagnose
 
-
-## <a name="re-enable-boot-diagnostics"></a>Erneutes Aktivieren der Startdiagnose
-
-Wenn Sie Ihre VM aus der vorhandenen virtuellen Festplatte erstellen, werden Startdiagnoseeinstellungen möglicherweise nicht automatisch aktiviert. Im folgenden Beispiel wird die Diagnoseerweiterung in der VM namens `myVMDeployed` in der Ressourcengruppe namens `myResourceGroup` aktiviert:
+Im folgenden Beispiel wird die Diagnoseerweiterung in der VM namens `myVMDeployed` in der Ressourcengruppe namens `myResourceGroup` aktiviert:
 
 ```powershell
 $myVM = Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
 Set-AzureRmVMBootDiagnostics -ResourceGroupName myResourceGroup -VM $myVM -enable
 Update-AzureRmVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Problembehandlung bei einem virtuellen Computer mit verwalteten Datenträgern durch Anfügen eines neuen Betriebssystemdatenträgers
-1. Beenden Sie den betroffenen virtuellen Windows-Computer mit verwalteten Datenträgern.
-2. [Erstellen Sie eine Momentaufnahme](snapshot-copy-managed-disk.md) des Betriebssystemdatenträgers des virtuellen Computers mit verwalteten Datenträgern.
-3. [Erstellen Sie einen verwalteten Datenträger aus der Momentaufnahme](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [Fügen Sie den verwalteten Datenträger als Datenträger des virtuellen Computers an](attach-disk-ps.md).
-5. [Ändern Sie den Datenträger aus Schritt 4 in den Betriebssystemdatenträger](os-disk-swap.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) weiter. Konsultieren Sie [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.

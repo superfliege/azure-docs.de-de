@@ -13,19 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b9acc829439578f2f86dfbd51164cb3eaf923c2a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 55818bf3c6997925fbac32f913d573d630bc20f4
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39368868"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004377"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen
 
-Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden möchten. Dieses Ziel können Sie erreichen, indem Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
+Ähnlich wie ein Benutzer wird ein Gerät zu einer weiteren Identität, die Sie schützen sowie zum Schutz Ihrer Ressourcen jederzeit und überall verwenden möchten. Dafür können Sie die Identitäten Ihrer Geräte mit einer der folgenden Methoden in Azure AD bereitstellen:
 
 - Azure AD-Einbindung
 - Azure AD-Hybrideinbindung
@@ -49,6 +49,9 @@ In diesem Tutorial wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 -  [Einführung in die Geräteverwaltung in Azure Active Directory](../device-management-introduction.md)
     
 -  [Planen der Implementierung einer Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-plan.md)
+
+-  [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md)
+  
 
 Zum Konfigurieren des Szenarios in diesem Artikel muss die [aktuelle Version von Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 oder höher) installiert sein. 
  
@@ -101,7 +104,7 @@ Zum Konfigurieren einer Azure AD-Hybrideinbindung mithilfe von Azure AD Connect 
 
     ![Geräteoptionen](./media/hybrid-azuread-join-managed-domains/15.png)
 
-6. Führen Sie auf der Seite **SCP** für jede Gesamtstruktur, in der Sie Azure AD mit dem SCP verbinden möchten, die folgenden Schritte aus, und klicken Sie dann auf **Weiter**: 
+6. Führen Sie auf der Seite **SCP** für jede Gesamtstruktur, in der Azure AD Connect das SCP konfigurieren soll, die folgenden Schritte aus, und klicken Sie dann auf **Weiter**: 
 
     ![SCP](./media/hybrid-azuread-join-managed-domains/16.png)
 
@@ -156,8 +159,6 @@ Um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte erfolgreich a
 
 - `https://device.login.microsoftonline.com`
 
-- `https://device.login.microsoftonline.com`
-
 - `https://autologon.microsoftazuread-sso.com`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
 
 Außerdem müssen Sie in der lokalen Intranetzone des Benutzers die Option **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren.
@@ -191,14 +192,13 @@ Bei Verwendung des Cmdlets **Get-MSolDevice** zur Überprüfung der Dienstdetail
 
 Wenn bei der Azure AD-Hybrideinbindung für in Domänen eingebundene Windows-Geräte Probleme auftreten, finden Sie weitere Informationen unter:
 
-- [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](../device-management-troubleshoot-hybrid-join-windows-current.md)
-- [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](../device-management-troubleshoot-hybrid-join-windows-legacy.md)
-
+- [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-current.md)
+- [Problembehandlung für in Azure AD eingebundene kompatible Windows-Hybridgeräte](troubleshoot-hybrid-join-windows-legacy.md)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 > [Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen](hybrid-azuread-join-federated-domains.md)
-> [Manuelles Konfigurieren der Azure Active Directory-Hybrideinbindung](../device-management-hybrid-azuread-joined-devices-setup.md)
+> [Manuelles Konfigurieren der Azure Active Directory-Hybrideinbindung](hybrid-azuread-join-manual-steps.md)
 

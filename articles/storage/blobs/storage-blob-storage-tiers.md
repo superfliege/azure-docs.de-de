@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 5d12b9f04dc1cc5017ab4c9ff1bde9b84ac24cfe
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b3279006d1ff947b76dd8fbba1438972e5f3ad8b
+ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400103"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39630961"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“
 
@@ -71,6 +71,9 @@ Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine
 
 > [!NOTE]
 > Für die Archivspeicherebene und das Blobebenentiering werden nur Blockblobs unterstützt. Außerdem ist es nicht möglich, die Ebene eines Blockblobs zu ändern, das über Momentaufnahmen verfügt.
+
+### <a name="blob-lifecycle-management"></a>Lebenszyklusverwaltung für Blobs
+Die Blob Storage-Lebenszyklusverwaltung (Vorschauversion) bietet eine umfassende, regelbasierte Richtlinie, mit deren Hilfe Sie den Übergang Ihrer Daten in die optimale Zugriffsebene und den Ablauf der Daten am Ende ihres Lebenszyklus umsetzen können. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts).  
 
 ### <a name="blob-level-tiering-billing"></a>Abrechnung für das Blobebenentiering
 
@@ -187,6 +190,8 @@ Die Datenspeicherung wird zusammen mit anderen Beschränkungen auf Kontoebene un
 ### <a name="evaluate-hot-cool-and-archive-in-gpv2-blob-storage-accounts"></a>Evaluieren von „Heiß“, „Kalt“ und „Archiv“ in GPv2- und Blobspeicherkonten
 
 Prüfen der Verfügbarkeit von „Hot“, „Cool“ und „Archiv“ nach Region unter [Azure-Regionen](https://azure.microsoft.com/regions/#services)
+
+[Verwalten des Azure Blob Storage-Lebenszyklus](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)
 
 [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

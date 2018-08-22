@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5f629ea791a839e1eca25e7487ea395638d136ab
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344629"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715385"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -279,7 +279,7 @@ Weitere Informationen zum Erstellen von Abonnements über das Azure-Portal finde
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie den Befehl [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create), um ein Abonnement über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) zu erstellen.
+Verwenden Sie den Befehl [az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create), um ein Abonnement über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) zu erstellen.
 
 Für den Befehl ist die Endpunkt-URL erforderlich, über die die Funktion aufgerufen wird. Das folgende Beispiel zeigt das URL-Muster:
 
@@ -340,7 +340,7 @@ Zum lokalen Testen eines Event Grid-Triggers müssen Event Grid-HTTP-Anforderung
 4. [Generieren Sie eine Anforderung](#generate-a-request), und kopieren Sie den Anforderungstext von der Viewer-App.
 5. [Stellen Sie die Anforderung manuell](#manually-post-the-request) für die localhost-URL der Event Grid-Triggerfunktion bereit.
 
-Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion verwenden, indem Sie den Endpunkt aktualisieren. Verwenden Sie dazu den Azure CLI-Befehl [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update).
+Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion verwenden, indem Sie den Endpunkt aktualisieren. Verwenden Sie dazu den Azure CLI-Befehl [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update).
 
 ### <a name="create-a-viewer-web-app"></a>Erstellen einer Viewer-Web-App
 
@@ -406,7 +406,7 @@ Eine weitere Möglichkeit zum lokalen Testen eines Event Grid-Triggers ist die A
 5. [Erstellen Sie ein Event Grid-Abonnement](#create-a-subscription), mit dem Ereignisse an den ngrok-Endpunkt gesendet werden.
 6. [Lösen Sie ein Ereignis aus](#trigger-an-event).
 
-Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion verwenden, indem Sie den Endpunkt aktualisieren. Verwenden Sie dazu den Azure CLI-Befehl [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update).
+Nach Abschluss der Tests können Sie dasselbe Abonnement für die Produktion verwenden, indem Sie den Endpunkt aktualisieren. Verwenden Sie dazu den Azure CLI-Befehl [az eventgrid event-subscription update](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update).
 
 ### <a name="create-an-ngrok-endpoint"></a>Erstellen eines ngrok-Endpunkts
 
@@ -432,7 +432,7 @@ Connections                   ttl     opn     rt1     rt5     p50     p90
                               0       0       0.00    0.00    0.00    0.00
 ```
 
-Sie verwenden die URL https://{Unterdomäne}.ngrok.io für Ihr Event Grid-Abonnement.
+Verwenden Sie die URL `https://{subdomain}.ngrok.io` für Ihr Event Grid-Abonnement.
 
 ### <a name="run-the-event-grid-trigger-function"></a>Ausführen der Event Grid-Triggerfunktion
 
@@ -440,12 +440,16 @@ Die ngrok-URL erhält in Event Grid keine spezielle Behandlung, daher muss die F
 
 ### <a name="create-a-subscription"></a>Erstellen eines Abonnements
 
-Erstellen Sie entsprechend dem folgenden Muster ein Event Grid-Abonnement des Abonnementtyps, der getestet werden soll, und legen Sie für das Abonnement Ihren ngrok-Endpunkt fest:
+Erstellen Sie ein Event Grid-Abonnement des Abonnementtyps, der getestet werden soll, und legen Sie für das Abonnement Ihren ngrok-Endpunkt fest.
 
+Verwenden Sie dieses Endpunktmuster für Functions 1.x:
 ```
 https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
-
+Verwenden Sie dieses Endpunktmuster für Functions 2.x:
+```
+https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+``` 
 Der `functionName`-Parameter muss der im `FunctionName`-Attribut angegebene Name sein.
 
 Beispiel für die Verwendung der Azure-Befehlszeilenschnittstelle:

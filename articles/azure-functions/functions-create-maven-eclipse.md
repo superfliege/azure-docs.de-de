@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 373a35ea7b93c7717cd251e276be60b14df0920f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4da8ec3bb20f2af2b8172731bbf9f43c302ffa94
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400163"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004748"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Erstellen der ersten Funktion mit Java und Eclipse (Vorschau)
 
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie ein [serverloses](https://azure.microsof
 
 Wenn Sie eine Funktions-App mit Java und Eclipse entwickeln möchten, muss Folgendes installiert sein:
 
--  [Java Developer Kit](https://www.azul.com/downloads/zulu/), Version 8
+-  [Java Developer Kit](https://www.azul.com/downloads/zulu/), Version 8.
 -  [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
 -  [Eclipse](https://www.eclipse.org/downloads/packages/) mit Java- und Maven- Unterstützung
 -  [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure)
@@ -73,7 +73,7 @@ Beenden Sie die Laufzeit im Konsolenfenster, wenn Sie Ihre Funktion getestet hab
 
 ### <a name="debug-the-function-in-eclipse"></a>Debuggen der Funktion in Eclipse
 
-Ändern Sie in Ihrer im vorherigen Schritt eingerichteten „Run As“-Konfiguration (Ausführen als) `azure-functions:run` auf `mvn azure-functions:run -DenableDebug`, und führen Sie die aktualisierte Konfiguration aus, um die Funktions-App im Debugmodus zu starten.
+Ändern Sie in Ihrer im vorherigen Schritt eingerichteten **Run As**-Konfiguration (Ausführen als) `azure-functions:run` zu `mvn azure-functions:run -DenableDebug`, und führen Sie die aktualisierte Konfiguration aus, um die Funktions-App im Debugmodus zu starten.
 
 Wählen Sie das Menü **Run** (Ausführen) aus, und öffnen Sie **Debug Configurations** (Konfigurationen debuggen). Wählen Sie **Remote Java Application** (Remote-Java-Anwendung) aus, und erstellen Sie eine neue. Benennen Sie Ihre Konfiguration, und geben Sie die Einstellungen ein. Der Port sollte mit dem Debugport konsistent sein, der vom Funktionshost geöffnet wird (standardmäßig `5005`). Klicken Sie nach dem Setup auf `Debug`, um das Debuggen zu starten.
 

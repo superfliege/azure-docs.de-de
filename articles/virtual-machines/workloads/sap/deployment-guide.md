@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: cb402f51ca20551bf34140322f3f259470a637ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656396"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715402"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -72,6 +72,7 @@ ms.locfileid: "34656396"
 [2367194]:https://launchpad.support.sap.com/#/notes/2367194
 
 [azure-cli]:../../../cli-install-nodejs.md
+[azure-cli-2]:https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
@@ -176,7 +177,7 @@ ms.locfileid: "34656396"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://msdn.microsoft.com/library/azure/mt670598.aspx
+[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
 
 [planning-guide]:planning-guide.md (Azure Virtual Machines – Planung und Implementierung für SAP)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (Ressourcen)
@@ -399,10 +400,10 @@ Im folgenden Flussdiagramm ist die SAP-spezifische Schrittfolge zum Bereitstelle
 Die einfachste Möglichkeit zum Erstellen eines neuen virtuellen Computers mit einem Image aus dem Azure Marketplace ist die Verwendung des Azure-Portals.
 
 1.  Wechseln Sie zur Adresse <https://portal.azure.com/#create/hub>.  Oder wählen Sie im Azure-Portal die Option **+ Neu**.
-2.  Wählen Sie **Compute** und anschließend den Betriebssystemtyp aus, den Sie bereitstellen möchten. Beispiel: Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7.2 (RHEL 7.2) oder Oracle Linux 7.2. In der Standardlistenansicht werden nicht alle unterstützten Betriebssysteme angezeigt. Wählen Sie die Option **Alle anzeigen**, um eine vollständige Liste anzuzeigen. Weitere Informationen zu unterstützten Betriebssystemen für die Bereitstellung von SAP-Software finden Sie im SAP-Hinweis [1928533].
-3.  Lesen Sie sich auf der nächsten Seite die Geschäftsbedingungen durch.
-4.  Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Resource Manager**.
-5.  Klicken Sie auf **Erstellen**.
+1.  Wählen Sie **Compute** und anschließend den Betriebssystemtyp aus, den Sie bereitstellen möchten. Beispiel: Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12), Red Hat Enterprise Linux 7.2 (RHEL 7.2) oder Oracle Linux 7.2. In der Standardlistenansicht werden nicht alle unterstützten Betriebssysteme angezeigt. Wählen Sie die Option **Alle anzeigen**, um eine vollständige Liste anzuzeigen. Weitere Informationen zu unterstützten Betriebssystemen für die Bereitstellung von SAP-Software finden Sie im SAP-Hinweis [1928533].
+1.  Lesen Sie sich auf der nächsten Seite die Geschäftsbedingungen durch.
+1.  Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Resource Manager**.
+1.  Klicken Sie auf **Erstellen**.
 
 Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Parameter für die Erstellung des virtuellen Computers mit allen erforderlichen Ressourcen wie Netzwerkschnittstellen oder Speicherkonten geführt. Diese Parameter sind beispielsweise:
 
@@ -413,11 +414,11 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
  * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten, um den neuen virtuellen Computer bereitzustellen.
  * **Ressourcengruppe**: Name der Ressourcengruppe für die VM. Sie können entweder den Namen einer neuen oder einer bereits vorhanden Ressourcengruppe eingeben.
  * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
-2. **Größe**:
+1. **Größe**:
 
      Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure Storage Premium][planning-guide-azure-premium-storage] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
 
-3. **Einstellungen**:
+1. **Einstellungen**:
   * **Speicher**
     * **Datenträgertyp**: Wählen Sie den Datenträgertyp des Betriebssystem-Datenträgers aus. Wenn Sie Storage Premium für Ihre Datenträger für Daten verwenden möchten, empfiehlt es sich, auch für den Betriebssystem-Datenträger Storage Premium zu nutzen.
     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu verwalteten Datenträgern finden Sie im Kapitel [Verwaltete Datenträger][planning-guide-managed-disks] des Planungshandbuchs.
@@ -432,7 +433,7 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
     * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
     * **Diagnose des Gastbetriebssystems**: Sie können für die Überwachungsdiagnose die Option **Deaktivieren** auswählen.
 
-4. **Zusammenfassung**:
+1. **Zusammenfassung**:
 
   Überprüfen Sie Ihre Auswahl, und wählen Sie dann **OK**.
 
@@ -461,7 +462,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
   * **Ressourcengruppe**: Die Ressourcengruppe, die zum Bereitstellen der Vorlage verwendet wird. Sie können eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe des Abonnements auswählen.
   * **Standort**: Gibt an, wo die Vorlage bereitgestellt wird. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
 
-2. **Einstellungen**:
+1. **Einstellungen**:
   * **SAP-System-ID**: Die ID des SAP-Systems (SID).
   * **Betriebssystemtyp**: Das Betriebssystem, das Sie bereitstellen möchten, z.B. Windows Server 2012 R2, SUSE Linux Enterprise Server 12 (SLES 12) oder Red Hat Enterprise Linux 7.2 (RHEL 7.2) oder Oracle Linux 7.2.
 
@@ -484,10 +485,10 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
   * **Neues oder vorhandenes Subnetz**: Legt fest, ob ein neues virtuelles Netzwerk und Subnetz erstellt werden oder ein bestehendes Subnetz verwendet wird. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier **Vorhanden** aus.
   * **Subnetz-ID**: Die ID des Subnetzes, mit dem die virtuellen Computer die Verbindung herstellen. Wählen Sie das Subnetz des VPN oder des virtuellen Azure ExpressRoute-Netzwerks aus, das zum Herstellen der Verbindung für den virtuellen Computer mit Ihrem lokalen Netzwerk verwendet wird. Die ID hat normalerweise das folgende Format: /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
-3. **Geschäftsbedingungen**:  
+1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
 
-4.  Wählen Sie die Option **Kaufen**.
+1.  Wählen Sie die Option **Kaufen**.
 
 Der Azure-VM-Agent wird bei Verwendung eines Images vom Azure Marketplace standardmäßig bereitgestellt.
 
@@ -534,7 +535,7 @@ Im folgenden Flussdiagramm ist die SAP-spezifische Schrittfolge zum Bereitstelle
 Die einfachste Möglichkeit zum Erstellen eines neuen virtuellen Computers mit einem Image auf einem verwalteten Datenträger ist die Verwendung des Azure-Portals. Weitere Informationen zum Erstellen eines Images auf einem verwalteten Datenträger finden Sie unter [Erfassen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource).
 
 1.  Wechseln Sie zur Adresse <https://ms.portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Compute%2Fimages>. Oder wählen Sie im Azure-Portal die Option **Images**.
-2.  Wählen Sie das Image auf einem verwalteten Datenträger, das Sie bereitstellen möchten, und klicken Sie auf **VM erstellen**
+1.  Wählen Sie das Image auf einem verwalteten Datenträger, das Sie bereitstellen möchten, und klicken Sie auf **VM erstellen**
 
 Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Parameter für die Erstellung des virtuellen Computers mit allen erforderlichen Ressourcen wie Netzwerkschnittstellen oder Speicherkonten geführt. Diese Parameter sind beispielsweise:
 
@@ -545,11 +546,11 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
  * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten, um den neuen virtuellen Computer bereitzustellen.
  * **Ressourcengruppe**: Name der Ressourcengruppe für die VM. Sie können entweder den Namen einer neuen oder einer bereits vorhanden Ressourcengruppe eingeben.
  * **Standort**: Gibt an, wo der neue virtuelle Computer bereitgestellt wird. Wenn Sie den virtuellen Computer mit dem lokalen Netzwerk verbinden möchten, sollten Sie darauf achten, den Speicherort des virtuellen Netzwerks auszuwählen, das Azure mit dem lokalen Netzwerk verbindet. Weitere Informationen finden Sie im Abschnitt [Microsoft Azure-Netzwerk][planning-guide-microsoft-azure-networking] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
-2. **Größe**:
+1. **Größe**:
 
      Eine Liste mit den unterstützten VM-Typen finden Sie im SAP-Hinweis [1928533]. Achten Sie darauf, dass Sie den richtigen VM-Typ wählen, wenn Sie Azure Storage Premium nutzen möchten. Nicht alle Typen von virtuellen Computern unterstützten Storage Premium. Weitere Informationen finden Sie unter [Speicher: Microsoft Azure Storage und Datenträger][planning-guide-storage-microsoft-azure-storage-and-data-disks] und [Azure Storage Premium][planning-guide-azure-premium-storage] im [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide].
 
-3. **Einstellungen**:
+1. **Einstellungen**:
   * **Speicher**
     * **Datenträgertyp**: Wählen Sie den Datenträgertyp des Betriebssystem-Datenträgers aus. Wenn Sie Storage Premium für Ihre Datenträger für Daten verwenden möchten, empfiehlt es sich, auch für den Betriebssystem-Datenträger Storage Premium zu nutzen.
     * **Verwaltete Datenträger verwenden**: Wenn Sie verwaltete Datenträger verwenden möchten, klicken Sie auf „Ja“. Weitere Informationen zu verwalteten Datenträgern finden Sie im Kapitel [Verwaltete Datenträger][planning-guide-managed-disks] des Planungshandbuchs.
@@ -563,7 +564,7 @@ Im Assistenten werden Sie durch die Schritte zum Festlegen der erforderlichen Pa
     * **Startdiagnose**: Sie können für die Startdiagnose die Option **Deaktivieren** auswählen.
     * **Diagnose des Gastbetriebssystems**: Sie können für die Überwachungsdiagnose die Option **Deaktivieren** auswählen.
 
-4. **Zusammenfassung**:
+1. **Zusammenfassung**:
 
   Überprüfen Sie Ihre Auswahl, und wählen Sie dann **OK**.
 
@@ -590,7 +591,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
   * **Abonnement**: Das Abonnement, das zum Bereitstellen der Vorlage verwendet wird.
   * **Ressourcengruppe**: Die Ressourcengruppe, die zum Bereitstellen der Vorlage verwendet wird. Sie können eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe im Abonnement auswählen.
   * **Standort**: Gibt an, wo die Vorlage bereitgestellt wird. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
-2. **Einstellungen**:
+1. **Einstellungen**:
   * **SAP-System-ID**: Die ID des SAP-Systems.
   * **Betriebssystemtyp**: Betriebssystem für die Bereitstellung (Windows oder Linux).
   * **SAP-Systemgröße**: Die Größe des SAP-Systems.
@@ -617,10 +618,10 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
 
     /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
-3. **Geschäftsbedingungen**:  
+1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
 
-4.  Wählen Sie die Option **Kaufen**.
+1.  Wählen Sie die Option **Kaufen**.
 
 #### <a name="install-the-vm-agent-linux-only"></a>Installieren des VM-Agent (nur Linux)
 Zum Verwenden der im vorherigen Abschnitt beschriebenen Vorlagen muss der Linux-Agent bereits im Benutzerimage installiert sein, da die Bereitstellung ansonsten nicht erfolgreich ist. Laden Sie den VM-Agent aus dem Benutzerimage herunter, und installieren Sie ihn. Eine Beschreibung finden Sie unter [Herunterladen, Installieren und Aktivieren des Azure-VM-Agent][deployment-guide-4.4]. Wenn Sie die Vorlagen nicht verwenden, können Sie den VM-Agent auch später installieren.
@@ -680,7 +681,7 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
   * **Abonnement**: Das Abonnement, das zum Bereitstellen der Vorlage verwendet wird.
   * **Ressourcengruppe**: Die Ressourcengruppe, die zum Bereitstellen der Vorlage verwendet wird. Sie können eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe im Abonnement auswählen.
   * **Standort**: Gibt an, wo die Vorlage bereitgestellt wird. Wenn Sie eine vorhandene Ressourcengruppe ausgewählt haben, wird der Standort dieser Ressourcengruppe verwendet.
-2. **Einstellungen**:
+1. **Einstellungen**:
   * **SAP-System-ID**: Die ID des SAP-Systems.
   * **Betriebssystemtyp**: Betriebssystem für die Bereitstellung (Windows oder Linux).
   * **SAP-Systemgröße**: Die Größe des SAP-Systems.
@@ -700,10 +701,10 @@ Geben Sie im Azure-Portal die folgenden Parameter für die Vorlage ein:
 
     /subscriptions/&lt;Abonnement-ID>/resourceGroups/&lt;Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/&lt;Name des virtuellen Netzwerks>/subnets/&lt;Name des Subnetzes>
 
-3. **Geschäftsbedingungen**:  
+1. **Geschäftsbedingungen**:  
     Lesen Sie sich die Bedingungen durch, und bestätigen Sie diese.
 
-4.  Wählen Sie die Option **Kaufen**.
+1.  Wählen Sie die Option **Kaufen**.
 
 #### <a name="install-the-vm-agent"></a>Installieren des VM-Agents
 Zum Verwenden der Vorlagen, die im vorherigen Abschnitt beschrieben sind, muss der VM-Agent auf dem Betriebssystemdatenträger installiert sein, da die Bereitstellung ansonsten nicht erfolgreich ist. Laden Sie den VM-Agent herunter, und installieren Sie ihn auf der VM. Eine Beschreibung finden Sie unter [Herunterladen, Installieren und Aktivieren des Azure-VM-Agent][deployment-guide-4.4].
@@ -737,15 +738,15 @@ Dieser Abschnitt enthält ausführliche Schritte zum Ausführen von bestimmten A
 
 ### <a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Bereitstellen von Azure PowerShell-Cmdlets
 1.  Navigieren Sie zu [Microsoft Azure-Downloads](https://azure.microsoft.com/downloads/).
-2.  Wählen Sie in den **Befehlszeilentools** unter **PowerShell** die Option **Windows install** (Windows-Installation).
-3.  Wählen Sie im Microsoft Download Manager-Dialogfeld für die heruntergeladene Datei (z.B. WindowsAzurePowershellGet.3f.3f.3fnew.exe) die Option **Ausführen**.
-4.  Wählen Sie zum Ausführen des Microsoft-Webplattform-Installer (Microsoft Web PI) die Option **Ja**.
-5.  Es wird eine Seite angezeigt, die in etwa wie folgt aussieht:
+1.  Wählen Sie in den **Befehlszeilentools** unter **PowerShell** die Option **Windows install** (Windows-Installation).
+1.  Wählen Sie im Microsoft Download Manager-Dialogfeld für die heruntergeladene Datei (z.B. WindowsAzurePowershellGet.3f.3f.3fnew.exe) die Option **Ausführen**.
+1.  Wählen Sie zum Ausführen des Microsoft-Webplattform-Installer (Microsoft Web PI) die Option **Ja**.
+1.  Es wird eine Seite angezeigt, die in etwa wie folgt aussieht:
 
   ![Installationsseite für Azure PowerShell-Cmdlets][deployment-guide-figure-500]<a name="figure-5"></a>
 
-6.  Wählen Sie **Installieren**, und akzeptieren Sie anschließend die Microsoft-Software-Lizenzbedingungen.
-7.  PowerShell ist nun installiert. Wählen Sie **Fertig stellen**, um den Installations-Assistenten zu schließen.
+1.  Wählen Sie **Installieren**, und akzeptieren Sie anschließend die Microsoft-Software-Lizenzbedingungen.
+1.  PowerShell ist nun installiert. Wählen Sie **Fertig stellen**, um den Installations-Assistenten zu schließen.
 
 Prüfen Sie regelmäßig, ob Updates für die PowerShell-Cmdlets vorhanden sind. Normalerweise wird einmal im Monat eine Aktualisierung durchgeführt. Die einfachste Möglichkeit, um nach Updates zu suchen, ist die Ausführung der obigen Installationsschritte (bis zur Installationsseite in Schritt 5). Das Veröffentlichungsdatum und die Versionsnummer der Cmdlets sind auf der Seite in Schritt 5 enthalten. Sofern in SAP-Hinweis [1928533] oder SAP-Hinweis [2015553] nicht anders angegeben, empfehlen wir Ihnen die Verwendung der jeweils aktuellen Version der Azure PowerShell-Cmdlets.
 
@@ -765,15 +766,15 @@ Wenn die auf Ihrem Computer installierte Version der Azure-Cmdlets die aktuelle 
 
 ### <a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Bereitstellen der Azure-Befehlszeilenschnittstelle
 1.  Navigieren Sie zu [Microsoft Azure-Downloads](https://azure.microsoft.com/downloads/).
-2.  Wählen Sie in den **Befehlszeilentools** unter **Azure-Befehlszeilenschnittstelle** den Link **Installieren** für Ihr Betriebssystem.
-3.  Wählen Sie im Microsoft Download Manager-Dialogfeld für die heruntergeladene Datei (z.B. „WindowsAzureXPlatCLI.3f.3f.3fnew.exe“) die Option **Ausführen**.
-4.  Wählen Sie zum Ausführen des Microsoft-Webplattform-Installer (Microsoft Web PI) die Option **Ja**.
-5.  Es wird eine Seite angezeigt, die in etwa wie folgt aussieht:
+1.  Wählen Sie in den **Befehlszeilentools** unter **Azure-Befehlszeilenschnittstelle** den Link **Installieren** für Ihr Betriebssystem.
+1.  Wählen Sie im Microsoft Download Manager-Dialogfeld für die heruntergeladene Datei (z.B. „WindowsAzureXPlatCLI.3f.3f.3fnew.exe“) die Option **Ausführen**.
+1.  Wählen Sie zum Ausführen des Microsoft-Webplattform-Installer (Microsoft Web PI) die Option **Ja**.
+1.  Es wird eine Seite angezeigt, die in etwa wie folgt aussieht:
 
   ![Installationsseite für Azure PowerShell-Cmdlets][deployment-guide-figure-500]<a name="figure-5"></a>
 
-6.  Wählen Sie **Installieren**, und akzeptieren Sie anschließend die Microsoft-Software-Lizenzbedingungen.
-7.  Die Azure-Befehlszeilenschnittstelle ist nun installiert. Wählen Sie **Fertig stellen**, um den Installations-Assistenten zu schließen.
+1.  Wählen Sie **Installieren**, und akzeptieren Sie anschließend die Microsoft-Software-Lizenzbedingungen.
+1.  Die Azure-Befehlszeilenschnittstelle ist nun installiert. Wählen Sie **Fertig stellen**, um den Installations-Assistenten zu schließen.
 
 Prüfen Sie regelmäßig, ob Updates für die Azure-Befehlszeilenschnittstelle vorhanden sind. Normalerweise wird einmal im Monat eine Aktualisierung durchgeführt. Die einfachste Möglichkeit, um nach Updates zu suchen, ist die Ausführung der obigen Installationsschritte (bis zur Installationsseite in Schritt 5).
 
@@ -800,13 +801,13 @@ Dieser Schritt ist nicht erforderlich, wenn Sie eine VM über den Azure Marketpl
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
 1.  Laden Sie den Azure-VM-Agent herunter:
   1.  Laden Sie das [Installationspaket für den Azure-VM-Agent](https://go.microsoft.com/fwlink/?LinkId=394789) herunter.
-  2.  Speichern Sie das MSI-Paket für den VM-Agent lokal auf einem PC oder Server.
-2.  Installieren Sie den Azure-VM-Agent:
+  1.  Speichern Sie das MSI-Paket für den VM-Agent lokal auf einem PC oder Server.
+1.  Installieren Sie den Azure-VM-Agent:
   1.  Stellen Sie per Remotedesktopprotokoll (RDP) eine Verbindung mit der bereitgestellten Azure-VM her.
-  2.  Öffnen Sie ein Windows-Explorer-Fenster auf dem virtuellen Computer, und wählen Sie das Zielverzeichnis für die MSI-Datei des VM-Agent aus.
-  3.  Ziehen Sie die MSI-Datei für die Installation des Azure-VM-Agent vom lokalen Computer/Server in das Zielverzeichnis des VM-Agent auf dem virtuellen Computer.
-  4.  Doppelklicken Sie auf dem virtuellen Computer auf die MSI-Datei.
-3.  Beachten Sie bei virtuellen Computern, die in eine lokale Domäne eingebunden sind, dass die Internetproxyeinstellungen auch für das lokale Windows-Systemkonto (S-1-5-18) des virtuellen Computers gelten. Dies ist unter [Konfigurieren von Proxys][deployment-guide-configure-proxy] beschrieben. Der VM-Agent wird in diesem Kontext ausgeführt und muss eine Verbindung mit Azure herstellen können.
+  1.  Öffnen Sie ein Windows-Explorer-Fenster auf dem virtuellen Computer, und wählen Sie das Zielverzeichnis für die MSI-Datei des VM-Agent aus.
+  1.  Ziehen Sie die MSI-Datei für die Installation des Azure-VM-Agent vom lokalen Computer/Server in das Zielverzeichnis des VM-Agent auf dem virtuellen Computer.
+  1.  Doppelklicken Sie auf dem virtuellen Computer auf die MSI-Datei.
+1.  Beachten Sie bei virtuellen Computern, die in eine lokale Domäne eingebunden sind, dass die Internetproxyeinstellungen auch für das lokale Windows-Systemkonto (S-1-5-18) des virtuellen Computers gelten. Dies ist unter [Konfigurieren von Proxys][deployment-guide-configure-proxy] beschrieben. Der VM-Agent wird in diesem Kontext ausgeführt und muss eine Verbindung mit Azure herstellen können.
 
 Für die Aktualisierung des Azure-VM-Agent ist keine Benutzerinteraktion erforderlich. Der VM-Agent wird automatisch aktualisiert, und es ist kein Neustart der VM erforderlich.
 
@@ -834,13 +835,13 @@ Die Schritte, die Sie zum Konfigurieren des Proxys in Windows ausführen, unters
 Die Proxyeinstellungen müssen richtig eingerichtet werden, damit mit dem lokalen Systemkonto auf das Internet zugegriffen werden kann. Wenn die Proxyeinstellungen nicht durch eine Gruppenrichtlinie festgelegt werden, können Sie die Einstellungen für das lokale Systemkonto konfigurieren.
 
 1. Navigieren Sie zu **Start**, geben Sie **gpedit.msc** ein, und drücken Sie die **EINGABETASTE**.
-2. Wählen Sie **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Internet Explorer**. Stellen Sie sicher, dass die Einstellung **Proxyeinstellungen pro Computer vornehmen (anstelle von pro Benutzer)** deaktiviert bzw. nicht konfiguriert ist.
-3. Navigieren Sie in der **Systemsteuerung** zu **Netzwerk- und Freigabecenter** > **Internetoptionen**.
-4. Wählen Sie auf der Registerkarte die Option **Verbindungen**, und klicken Sie dann auf die Schaltfläche **LAN-Einstellungen**.
-5. Deaktivieren Sie das Kontrollkästchen **Einstellungen automatisch erkennen**.
-6. Aktivieren Sie das Kontrollkästchen **Proxyserver für das LAN verwenden**, und geben Sie dann die Proxyadresse und den Port ein.
-7. Wählen Sie die Schaltfläche **Advanced** (Erweitert).
-8. Geben Sie im Feld **Ausnahmen** die IP-Adresse **168.63.129.16** ein. Klicken Sie auf **OK**.
+1. Wählen Sie **Computerkonfiguration** > **Administrative Vorlagen** > **Windows-Komponenten** > **Internet Explorer**. Stellen Sie sicher, dass die Einstellung **Proxyeinstellungen pro Computer vornehmen (anstelle von pro Benutzer)** deaktiviert bzw. nicht konfiguriert ist.
+1. Navigieren Sie in der **Systemsteuerung** zu **Netzwerk- und Freigabecenter** > **Internetoptionen**.
+1. Wählen Sie auf der Registerkarte die Option **Verbindungen**, und klicken Sie dann auf die Schaltfläche **LAN-Einstellungen**.
+1. Deaktivieren Sie das Kontrollkästchen **Einstellungen automatisch erkennen**.
+1. Aktivieren Sie das Kontrollkästchen **Proxyserver für das LAN verwenden**, und geben Sie dann die Proxyadresse und den Port ein.
+1. Wählen Sie die Schaltfläche **Advanced** (Erweitert).
+1. Geben Sie im Feld **Ausnahmen** die IP-Adresse **168.63.129.16** ein. Klicken Sie auf **OK**.
 
 #### <a name="linux"></a>Linux
 Konfigurieren Sie zunächst den richtigen Proxy in der Konfigurationsdatei des Microsoft Azure Gast-Agents „\\etc\\waagent.conf“.
@@ -852,12 +853,12 @@ Legen Sie die folgenden Parameter fest:
   HttpProxy.Host=<proxy host>
 
   ```
-2.  **HTTP-Proxyport**: Geben Sie beispielsweise **80** an.
+1.  **HTTP-Proxyport**: Geben Sie beispielsweise **80** an.
   ```
   HttpProxy.Port=<port of the proxy host>
 
   ```
-3.  Starten Sie den Agent neu.
+1.  Starten Sie den Agent neu.
 
   ```
   sudo service waagent restart
@@ -891,7 +892,7 @@ Zum Installieren und Konfigurieren der Azure-Erweiterung zur verbesserten Überw
 Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung für SAP mit PowerShell zu installieren:
 
 1. Achten Sie darauf, dass Sie die aktuelle Version der Azure PowerShell-Cmdlets verwenden. Weitere Informationen finden Sie unter [Bereitstellen von Azure PowerShell-Cmdlets][deployment-guide-4.1].  
-2. Führen Sie das folgende PowerShell-Cmdlet aus.
+1. Führen Sie das folgende PowerShell-Cmdlet aus.
     Führen Sie `commandlet Get-AzureRmEnvironment` aus, um eine Liste mit den verfügbaren Umgebungen zu erhalten. Falls Sie öffentliches Azure verwenden möchten, lautet die zugehörige Umgebung **AzureCloud**. Wählen Sie für Azure in China die Option **AzureChinaCloud**.
 
     ```powershell
@@ -922,37 +923,61 @@ Die Skriptausgabe enthält die folgenden Informationen:
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Azure-CLI für virtuelle Linux-Computer
 Gehen Sie wie folgt vor, um die Azure-Erweiterung zur verbesserten Überwachung für SAP mit der Azure-Befehlszeilenschnittstelle zu installieren:
 
-1. Installieren Sie die Azure CLI 1.0 wie unter [Installieren der Azure CLI 1.0][azure-cli] beschrieben.
-2. Melden Sie sich mit Ihrem Azure-Konto an:
+1. So führen Sie eine Installation mit der Azure CLI 1.0 aus
 
-  ```
-  azure login
-  ```
+   1. Installieren Sie die Azure CLI 1.0 wie unter [Installieren der Azure CLI 1.0][azure-cli] beschrieben.
+   1. Melden Sie sich mit Ihrem Azure-Konto an:
 
-3. Wechseln Sie in den Azure Resource Manager-Modus:
+      ```
+      azure login
+      ```
 
-  ```
-  azure config mode arm
-  ```
+   1. Wechseln Sie in den Azure Resource Manager-Modus:
 
-4. Aktivieren Sie die erweiterte Azure-Überwachung:
+      ```
+      azure config mode arm
+      ```
 
-  ```
-  azure vm enable-aem <resource-group-name> <vm-name>
-  ```
+   1. Aktivieren Sie die erweiterte Azure-Überwachung:
 
-5. Stellen Sie sicher, dass die Azure-Erweiterung für die verbesserte Überwachung auf dem virtuellen Azure Linux-Computer aktiv ist. Vergewissern Sie sich, dass die Datei „\\var\\lib\\AzureEnhancedMonitor\\PerfCounters“ vorhanden ist. Wenn ja, können Sie an einer Befehlseingabeaufforderung den folgenden Befehl ausführen, um die mit der Azure-Erweiterung für die verbesserte Überwachung gesammelten Informationen anzuzeigen:
-```
-cat /var/lib/AzureEnhancedMonitor/PerfCounters
-```
+      ```
+      azure vm enable-aem <resource-group-name> <vm-name>
+      ```
 
-Die Ausgabe sieht wie folgt aus:
-```
-2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
-2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
-???
-???
-```
+1. So führen Sie eine Installation mit der Azure CLI 2.0 aus
+
+   1. Installieren Sie die Azure CLI 2.0 wie [in diesem Artikel][azure-cli-2] beschrieben.
+   1. Melden Sie sich mit Ihrem Azure-Konto an:
+
+      ```
+      az login
+      ```
+
+   1. Installieren Sie Azure CLI-AEM-Erweiterung.
+  
+      ```
+      az extension add --name aem
+      ```
+  
+   1. Installieren Sie die Erweiterung mit diesem Befehl:
+  
+      ```
+      az vm aem set -g <resource-group-name> -n <vm name>
+      ```
+
+1. Stellen Sie sicher, dass die Azure-Erweiterung für die verbesserte Überwachung auf dem virtuellen Azure Linux-Computer aktiv ist. Vergewissern Sie sich, dass die Datei „\\var\\lib\\AzureEnhancedMonitor\\PerfCounters“ vorhanden ist. Wenn ja, können Sie an einer Befehlseingabeaufforderung den folgenden Befehl ausführen, um die mit der Azure-Erweiterung für die verbesserte Überwachung gesammelten Informationen anzuzeigen:
+
+   ```
+   cat /var/lib/AzureEnhancedMonitor/PerfCounters
+   ```
+
+   Die Ausgabe sieht wie folgt aus:
+   ```
+   ...
+   2;cpu;Current Hw Frequency;;0;2194.659;MHz;60;1444036656;saplnxmon;
+   2;cpu;Max Hw Frequency;;0;2194.659;MHz;0;1444036656;saplnxmon;
+   ...
+   ```
 
 ## <a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Überprüfungen und Problembehandlung für die End-to-End-Überwachung
 Nachdem Sie den virtuellen Azure-Computer bereitgestellt und die entsprechende Azure-Überwachungsinfrastruktur eingerichtet haben, sollten Sie überprüfen, ob alle Komponenten der Azure-Erweiterung für die verbesserte Überwachung wie erwartet funktionieren.
@@ -965,14 +990,14 @@ Mit dieser Prüfung wird sichergestellt, dass alle Leistungsmetriken, die in Ihr
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>Ausführen der Bereitschaftsprüfung auf einem virtuellen Windows-Computer
 
 1.  Melden Sie sich am virtuellen Azure-Computer an (die Verwendung eines Administratorkontos ist nicht erforderlich).
-2.  Öffnen Sie ein Eingabeaufforderungsfenster.
-3.  Wechseln Sie an der Eingabeaufforderung in das Installationsverzeichnis der Azure-Erweiterung zur verbesserten Überwachung für SAP: „C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;Version>\\drop“.
+1.  Öffnen Sie ein Eingabeaufforderungsfenster.
+1.  Wechseln Sie an der Eingabeaufforderung in das Installationsverzeichnis der Azure-Erweiterung zur verbesserten Überwachung für SAP: „C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;Version>\\drop“.
 
   Die *Version* im Pfad zur Überwachungserweiterung kann variieren. Sollten Ordner für mehrere Versionen der Überwachungserweiterung im Installationsordner vorhanden sein, sollten Sie die Konfiguration des Windows-Diensts „AzureEnhancedMonitoring“ überprüfen und dann in den Ordner wechseln, der als *Pfad zur ausführbaren Datei* angegeben ist.
 
   ![Eigenschaften des Diensts, der die Azure-Erweiterung zur verbesserten Überwachung für SAP ausführt][deployment-guide-figure-1000]
 
-4.  Führen Sie an der Befehlseingabeaufforderung die Datei **azperflib.exe** ohne Parameter aus.
+1.  Führen Sie an der Befehlseingabeaufforderung die Datei **azperflib.exe** ohne Parameter aus.
 
   > [!NOTE]
   > Das Programm „azperflib.exe“ wird in einer Schleife ausgeführt und aktualisiert die erfassten Leistungsindikatoren alle 60 Sekunden. Schließen Sie das Eingabeaufforderungsfenster, um die Schleife zu beenden.
@@ -1004,7 +1029,7 @@ Wenn für den Wert **Integritätsstatus** nicht **OK** angezeigt wird, hilft Ihn
 
 1.  Stellen Sie per SSH eine Verbindung mit der Azure-VM her.
 
-2.  Überprüfen Sie die Ausgabe der Azure-Erweiterung zur verbesserten Überwachung.
+1.  Überprüfen Sie die Ausgabe der Azure-Erweiterung zur verbesserten Überwachung.
 
   a.  Führen Sie `more /var/lib/AzureEnhancedMonitor/PerfCounters` aus.
 
@@ -1030,7 +1055,7 @@ Führen Sie diese zusätzliche Überprüfungen durch, wenn die vorherige Überpr
 
    **Erwartetes Ergebnis**: Zeigt einen Eintrag an, der dem folgenden Text ähnelt: `python /usr/sbin/waagent -daemon`
 
-3.   Achten Sie darauf, dass die Azure-Erweiterung zur verbesserten Überwachung installiert ist und ausgeführt wird.
+1.   Achten Sie darauf, dass die Azure-Erweiterung zur verbesserten Überwachung installiert ist und ausgeführt wird.
 
   a.  Führen Sie `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` aus.
 
@@ -1040,7 +1065,7 @@ Führen Sie diese zusätzliche Überprüfungen durch, wenn die vorherige Überpr
 
      **Erwartetes Ergebnis**: Zeigt einen Eintrag an, der dem folgenden Text ähnelt: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
-3. Installieren Sie den SAP Host Agent gemäß SAP-Hinweis [1031096], und überprüfen Sie die Ausgabe von `saposcol`.
+1. Installieren Sie den SAP Host Agent gemäß SAP-Hinweis [1031096], und überprüfen Sie die Ausgabe von `saposcol`.
 
   a.  Führen Sie `/usr/sap/hostctrl/exe/saposcol -d` aus.
 
@@ -1056,7 +1081,7 @@ Falls eine dieser Überprüfungen einen Fehler ergibt und Sie ausführliche Info
 Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereitschaftsprüfung für die Azure-Erweiterung zur verbesserten Überwachung für SAP][deployment-guide-5.1] nicht richtig bereitgestellt werden, können Sie das `Test-AzureRmVMAEMExtension`-Cmdlet ausführen. Mit diesem Cmdlet können Sie überprüfen, ob die Azure-Überwachungsinfrastruktur und die Überwachungserweiterung für SAP richtig konfiguriert sind.
 
 1.  Achten Sie darauf, dass die neueste Version des Azure PowerShell-Cmdlets gemäß [Bereitstellen von Azure PowerShell-Cmdlets][deployment-guide-4.1] installiert ist.
-2.  Führen Sie das folgende PowerShell-Cmdlet aus. Führen Sie zum Anzeigen der Liste mit den verfügbaren Umgebungen das `Get-AzureRmEnvironment`-Cmdlet aus. Wählen Sie die Umgebung **AzureCloud** aus, um globales Azure zu verwenden. Wählen Sie für Azure in China die Option **AzureChinaCloud**.
+1.  Führen Sie das folgende PowerShell-Cmdlet aus. Führen Sie zum Anzeigen der Liste mit den verfügbaren Umgebungen das `Get-AzureRmEnvironment`-Cmdlet aus. Wählen Sie die Umgebung **AzureCloud** aus, um globales Azure zu verwenden. Wählen Sie für Azure in China die Option **AzureChinaCloud**.
   ```powershell
   $env = Get-AzureRmEnvironment -Name <name of the environment>
   Connect-AzureRmAccount -Environment $env
@@ -1064,11 +1089,11 @@ Wenn einige Überwachungsdaten gemäß der Beschreibung des Tests unter [Bereits
   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
   ```
 
-3.  Geben Sie Ihre Kontodaten ein, und identifizieren Sie den virtuellen Azure-Computer.
+1.  Geben Sie Ihre Kontodaten ein, und identifizieren Sie den virtuellen Azure-Computer.
 
   ![Eingabeseite des SAP-spezifischen Azure-Cmdlets „Test-VMConfigForSAP_GUI“][deployment-guide-figure-1200]
 
-4. Mit dem Skript wird die Konfiguration des von Ihnen ausgewählten virtuellen Computers getestet.
+1. Mit dem Skript wird die Konfiguration des von Ihnen ausgewählten virtuellen Computers getestet.
 
   ![Ausgabe eines erfolgreichen Tests der Azure-Überwachungsinfrastruktur für SAP][deployment-guide-figure-1300]
 

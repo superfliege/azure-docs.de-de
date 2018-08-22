@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: e926bfb023fe3edfd564aa6389e21f6594bec169
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117060"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40002677"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Erstellen der ersten Funktion mit Java und IntelliJ (Vorschauversion)
 
@@ -74,8 +74,15 @@ Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactI
 Schließen Sie das Dialogfeld „Ausführen“, wenn Sie den Funktionstest beendet haben. Es kann nicht mehr als ein Funktionshost gleichzeitig aktiv sein und lokal ausgeführt werden.
 
 ### <a name="debug-the-function-in-intellij"></a>Debuggen der Funktion in IntelliJ
+Um den Funktionshost im Debugmodus zu starten, fügen Sie **-DenableDebug** als Argument hinzu, wenn Sie Ihre Funktion ausführen. Sie können die Funktion mit der Befehlszeile im Terminal ausführen oder in den [Maven-Zielen](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) konfigurieren. Dann öffnet der Funktionshost einen Debugport bei 5005. 
 
-Sie können Funktionen in IntelliJ debuggen, indem Sie sie nach dem Start an den Funktionshost anfügen.  Führen Sie die oben aufgeführten Schritte aus, um die Azure-Funktion lokal auszuführen. Klicken Sie anschließend im Menü **Ausführen** auf **Attach to local process** (An lokalen Prozess anfügen).  Anschließend sollte auf Port 5005 ein Prozess verfügbar sein.  Wenn Sie den Anfügungsvorgang abgeschlossen haben, können Sie Breakpoints in Ihrer Funktionen-App erreichen und debuggen.
+```
+mvn azure-functions:run -DenableDebug
+```
+
+Wählen Sie zum Debuggen in IntelliJ im Menü **Run** (Ausführen) **Edit Configurations** (Konfigurationen bearbeiten) aus. Klicken Sie auf **+**, um ein **Remote**-Element hinzuzufügen. Geben Sie **Name** (Name) und **Settings** (Einstellungen) ein, und klicken Sie dann auf **OK** (OK), um die Konfiguration zu speichern. Klicken Sie nach dem Setup auf **Debug** (Debuggen) „Name der Remotekonfiguration“ oder drücken Sie **UMSCHALT+F9**, um das Debuggen zu starten.
+
+![Debuggen von Funktionen in IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
 Beenden Sie anschließend den Debugger, und führen Sie den Prozess lokal aus. Es kann nicht mehr als ein Funktionshost gleichzeitig aktiv sein und lokal ausgeführt werden.
 

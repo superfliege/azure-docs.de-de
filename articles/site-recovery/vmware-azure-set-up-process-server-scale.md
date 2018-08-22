@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 6d3fe519729bd56dafd11720a3662eb00b916a98
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 478b678f514959b8ae9f6492d4920faf894c321d
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056608"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004180"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>Einrichten zusätzlicher Prozessserver für Skalierbarkeit
 
@@ -34,6 +34,8 @@ Prüfen Sie die in der Tabelle zusammengefassten Größenanforderungen. Allgemei
 |4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher |300 GB |250 GB oder weniger |Bis zu 85 Computer replizieren. |
 |8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 12 GB Arbeitsspeicher |600 GB |250 GB bis 1 TB |Zwischen 85 und 150 Computer replizieren. |
 |12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher |1 TB |1 TB bis 2 TB |Zwischen 150 und 225 Computer replizieren. |
+
+Jeder geschützte Quellcomputer ist mit drei Datenträgern von jeweils 100 GB konfiguriert.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 

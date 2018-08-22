@@ -7,15 +7,15 @@ author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/10/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 644d382b87b0cc7c60cc8917edbaeff34b222718
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b60b25e1692e065276d731d6cad8700373f1c456
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390737"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038334"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -69,6 +69,14 @@ Gehen Sie folgendermaßen vor, um den Standardgrenzwert auf einen Wert zwischen 
 2. Wählen Sie unter **Laufzeitoptionen** in der Liste **Aufbewahrung des Ausführungsverlaufs in Tagen** die Option **Benutzerdefiniert** aus. 
 
 3. Geben Sie die gewünschte Anzahl von Tagen ein, oder ziehen Sie den Schieberegler bis zur gewünschten Anzahl.
+
+<a name="disable-delete"></a>
+
+## <a name="disabling-or-deleting-logic-apps"></a>Deaktivieren oder Löschen von Logik-Apps
+
+Wenn Sie eine Logik-App deaktivieren, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden bis zum Ende fortgesetzt, was einige Zeit in Anspruch nehmen kann.
+
+Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden abgebrochen. Bei Tausenden von Ausführungen kann der Abbruch möglicherweise erhebliche Zeit in Anspruch nehmen.
 
 <a name="looping-debatching-limits"></a>
 

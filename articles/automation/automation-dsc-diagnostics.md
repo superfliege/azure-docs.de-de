@@ -1,40 +1,39 @@
 ---
 title: Weiterleiten von Azure Automation DSC-Berichtsdaten an Log Analytics
-description: In diesem Artikel wird erläutert, wie Berichtsdaten zum gewünschten Zustand (Desired State Configuration, DSC) an Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten.
+description: Dieser Artikel beschreibt, wie DSC-Berichtsdaten (Desired State Configuration) von Azure Automation DSC an Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten.
 services: automation
 ms.service: automation
 ms.component: dsc
-author: georgewallace
-ms.author: gwallace
-ms.date: 06/12/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1b3c0cd71508aef9a608e0c41e32cd079e40d4e5
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218954"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40003465"
 ---
-# <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Weiterleiten von Azure Automation DSC-Berichtsdaten an Log Analytics
+# <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Weiterleiten von Azure Automation DSC-Berichtsdaten an Log Analytics
 
-Automation kann Statusdaten für DSC-Knoten an Ihren Log Analytics-Arbeitsbereich senden.  
-Der Konformitätsstatus kann im Azure-Portal oder mit PowerShell angezeigt werden, und zwar für Knoten und einzelne DSC-Ressourcen in Knotenkonfigurationen. Log Analytics bietet folgende Vorteile:
+Azure Automation DSC (Desired Status Configuration) kann DSC-Daten zum Knotenstatus an Ihren Log Analytics-Arbeitsbereich senden. Der Konformitätsstatus kann im Azure-Portal oder mit PowerShell angezeigt werden, und zwar für Knoten und einzelne DSC-Ressourcen in Knotenkonfigurationen. Log Analytics bietet folgende Vorteile:
 
-* Abrufen von Konformitätsinformationen für verwaltete Knoten und einzelne Ressourcen
-* Auslösen einer E-Mail oder Warnung basierend auf dem Konformitätsstatus
-* Schreiben erweiterter Abfragen für Ihre verwalteten Knoten
-* Korrelieren des Konformitätsstatus über Automation-Konten
-* Visualisieren des Konformitätsverlaufs von Knoten über einen Zeitraum
+- Abrufen von Konformitätsinformationen für verwaltete Knoten und einzelne Ressourcen
+- Auslösen einer E-Mail oder Warnung basierend auf dem Konformitätsstatus
+- Schreiben erweiterter Abfragen für Ihre verwalteten Knoten
+- Korrelieren des Konformitätsstatus über Automation-Konten
+- Visualisieren des Konformitätsverlaufs von Knoten über einen Zeitraum
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Senden Ihrer Automation DSC-Berichte an Log Analytics benötigen Sie Folgendes:
+Zum Senden von Automation DSC-Berichten an Log Analytics benötigen Sie Folgendes:
 
-* Die [Azure PowerShell](/powershell/azure/overview)-Version von November 2016 (v2.3.0) oder höher.
-* Ein Azure Automation-Konto. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Automation](automation-offering-get-started.md).
-* Einen Log Analytics-Arbeitsbereich mit dem Dienstangebot **Automation & Control**. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md).
-* Mindestens einen Azure Automation DSC-Knoten. Weitere Informationen finden Sie unter [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
+- Die [Azure PowerShell](/powershell/azure/overview)-Version von November 2016 (v2.3.0) oder höher.
+- Ein Azure Automation-Konto. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Automation](automation-offering-get-started.md).
+- Einen Log Analytics-Arbeitsbereich mit dem Dienstangebot **Automation & Control**. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md).
+- Mindestens einen Azure Automation DSC-Knoten. Weitere Informationen finden Sie unter [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
 
 ## <a name="set-up-integration-with-log-analytics"></a>Einrichten der Integration in Log Analytics
 
@@ -45,54 +44,56 @@ Zum Importieren von Daten aus Azure Automation DSC in Log Analytics müssen Sie 
 
   ```powershell
   # Find the ResourceId for the Automation Account
-  Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+  Find-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
   ```
+
 1. Rufen Sie die _ResourceId_ Ihres Log Analytics-Arbeitsbereichs ab, indem Sie den folgenden PowerShell-Befehl ausführen: (Wenn Sie über mehrere Arbeitsbereiche verfügen, wählen Sie die _ResourceID_ für den Arbeitsbereich aus, den Sie konfigurieren möchten.)
 
   ```powershell
   # Find the ResourceId for the Log Analytics workspace
-  Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
+  Find-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
   ```
+
 1. Führen Sie den folgenden PowerShell-Befehl aus, und ersetzen Sie `<AutomationResourceId>` und `<WorkspaceResourceId>` durch die _ResourceId_-Werte aus den vorherigen Schritten:
 
   ```powershell
-  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories "DscNodeStatus"
+  Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
   ```
 
-Wenn Sie das Importieren von Daten aus Azure Automation DSC in Log Analytics beenden möchten, führen Sie den folgenden PowerShell-Befehl aus.
+Wenn Sie das Importieren von Daten aus Azure Automation DSC in Log Analytics beenden möchten, führen Sie den folgenden PowerShell-Befehl aus:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories "DscNodeStatus"
+Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
 ```
 
-## <a name="view-the-dsc-logs"></a>Anzeigen der DSC-Protokolle
+## <a name="view-the-state-configuration-logs"></a>Anzeigen der DSC-Protokolle
 
-Nachdem Sie die Integration in Log Analytics für Ihre Automation DSC-Daten eingerichtet haben, wird die Schaltfläche **Protokollsuche** auf dem Blatt **DSC-Knoten** Ihres Automation-Kontos angezeigt. Klicken Sie auf die Schaltfläche **Protokollsuche**, um die Protokolle für DSC-Knotendaten anzuzeigen.
+Nachdem Sie die Integration in Log Analytics für Ihre Automation DSC-Daten eingerichtet haben, wird in Ihrem Automation-Konto auf dem Blatt **DSC-Knoten** die Schaltfläche **Protokollsuche** angezeigt. Klicken Sie auf die Schaltfläche **Protokollsuche**, um die Protokolle für DSC-Knotendaten anzuzeigen.
 
 ![Schaltfläche „Protokollsuche“](media/automation-dsc-diagnostics/log-search-button.png)
 
-Das Blatt **Protokollsuche** wird geöffnet. Dort wird ein Vorgang **DscNodeStatusData** für jeden DSC-Knoten und ein Vorgang **DscResourceStatusData** für jede [DSC-Ressource](https://msdn.microsoft.com/powershell/dsc/resources), die in der Konfiguration des Knotens aufgerufen wird, angezeigt.
+Das Blatt **Protokollsuche** wird geöffnet. Dort wird ein Vorgang **DscNodeStatusData** für jeden DSC-Knoten und ein Vorgang **DscResourceStatusData** für jede [DSC-Ressource](/powershell/dsc/resources) angezeigt, die in der Knotenkonfiguration aufgerufen wird.
 
 Der Vorgang **DscResourceStatusData** enthält Fehlerinformationen für fehlerhafte DSC-Ressourcen.
 
 Klicken Sie auf jeden Vorgang in der Liste, um die Daten für diesen Vorgang anzuzeigen.
 
 Sie können die Protokolle auch anzeigen, indem Sie in Log Analytics eine Suche durchführen. Weitere Informationen finden Sie unter [Suchen von Daten mithilfe der Protokollsuche](../log-analytics/log-analytics-log-searches.md).
-Geben Sie die folgende Abfrage ein, um die DSC-Protokolle zu suchen: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus"`
+Geben Sie die folgende Abfrage ein, um die DSC-Protokolle zu suchen: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
-Sie können die Abfrage auch anhand des Vorgangsnamens eingrenzen. Beispiel: Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category = "DscNodeStatus" OperationName = "DscNodeStatusData"
+Sie können die Abfrage auch anhand des Vorgangsnamens eingrenzen. Beispiel: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
 
-### <a name="send-an-email-when-a-dsc-compliance-check-fails"></a>Senden einer E-Mail bei einem Fehler während der DSC-Konformitätsüberprüfung
+### <a name="send-an-email-when-a-state-configuration-compliance-check-fails"></a>Senden einer E-Mail bei einer fehlgeschlagenen DSC-Konformitätsprüfung
 
-Eine der häufigsten Anfragen unserer Kunden betrifft die Möglichkeit, eine E-Mail oder Textnachricht zu senden, wenn bei einer DSC-Konfiguration ein Problem auftritt.   
+Eine der häufigsten Anfragen unserer Kunden betrifft die Möglichkeit, eine E-Mail oder Textnachricht zu senden, wenn bei einer DSC-Konfiguration ein Problem auftritt.
 
-Beim Erstellen einer Warnungsregel beginnen Sie mit dem Erstellen einer Protokollsuche für die DSC-Berichtsdatensätze, von denen die Warnung aufgerufen werden soll.  Klicken Sie auf die Schaltfläche **+ Neue Warnungsregel**, um die Warnungsregel zu erstellen und zu konfigurieren.
+Um eine Warnungsregel zu erstellen, erstellen Sie zuerst eine Protokollsuche für die DSC-Berichtsdatensätze, die die Warnung aufrufen sollen. Klicken Sie auf die Schaltfläche **+ Neue Warnungsregel**, um die Warnungsregel zu erstellen und zu konfigurieren.
 
 1. Klicken Sie auf der Seite mit der Log Analytics-Übersicht auf **Protokollsuche**.
-1. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`.
+1. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`.
 
-  Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement oder Automation-Konto gruppieren.  
-  Der Name des Automation-Kontos kann vom Ressourcenfeld in der DscNodeStatusData-Suche abgeleitet werden.  
+   Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement oder Automation-Konto gruppieren.  
+   Der Name des Automation-Kontos kann vom Ressourcenfeld in der DscNodeStatusData-Suche abgeleitet werden.  
 1. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Suchen von Fehlern bei DSC-Ressourcen in allen Knoten
@@ -101,7 +102,7 @@ Ein Vorteil der Verwendung von Log Analytics ist, dass Sie nach Fehlern bei der 
 So finden Sie alle Instanzen von DSC-Ressourcen mit Fehlern
 
 1. Klicken Sie auf der Seite mit der Log Analytics-Übersicht auf **Protokollsuche**.
-1. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `Type=AzureDiagnostics Category=DscNodeStatus OperationName=DscResourceStatusData ResultType=Failed`.
+1. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`.
 
 ### <a name="view-historical-dsc-node-status"></a>Anzeigen von Verlaufsdaten zum DSC-Knotenstatus
 
@@ -180,16 +181,20 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in L
 
 ## <a name="summary"></a>Zusammenfassung
 
-Sie erhalten einen besseren Einblick in Ihre Automation DSC-Knoten, wenn Sie die Automation DSC-Daten an Log Analytics senden und:
+Wenn Sie Ihre Automation DSC-Daten an Log Analytics senden, erhalten Sie einen besseren Einblick in den Automation DSC-Knotenstatus:
 
-* Warnungen einrichten, um bei Problemen benachrichtigt zu werden
-* Benutzerdefinierte Ansichten und Suchabfragen zum Anzeigen von Runbook-Ergebnissen, Runbook-Auftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden.  
+- Warnungen einrichten, um bei Problemen benachrichtigt zu werden
+- Benutzerdefinierte Ansichten und Suchabfragen zum Anzeigen von Runbook-Ergebnissen, Runbook-Auftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden.  
 
-Log Analytics bietet eine höhere operative Transparenz für Ihre Automation DSC-Daten, sodass schneller auf Vorfälle reagiert werden kann.  
+Log Analytics bietet eine höhere operative Transparenz für Ihre Automation DSC-Daten, sodass schneller auf Vorfälle reagiert werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation DSC-Protokolle mit Log Analytics finden Sie unter [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md).
-* Weitere Informationen zur Verwendung von Azure Automation DSC finden Sie unter [Erste Schritte mit Azure Automation DSC](automation-dsc-getting-started.md).
-* Weitere Informationen zu Log Analytics und Datenerfassungsquellen finden Sie unter [Sammeln von Azure-Speicherdaten in Log Analytics – Übersicht](../log-analytics/log-analytics-azure-storage.md)
-
+- Einen Überblick finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md).
+- Eine Einführung in Azure Automation DSC finden Sie unter [Erste Schritte mit Azure Automation DSC](automation-dsc-getting-started.md).
+- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
+- Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation)verfügbar.
+- Eine Preisübersicht finden Sie unter [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/).
+- Ein Verwendungsbeispiel für Azure Automation DSC in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md).
+- Wie Sie verschiedene Suchabfragen erstellen und Automation DSC-Protokolle mit Log Analytics überprüfen, erfahren Sie unter [Protokollsuchvorgänge in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+- Weitere Informationen zu Log Analytics und Datenerfassungsquellen finden Sie unter [Sammeln von Azure-Speicherdaten in Log Analytics – Übersicht](../log-analytics/log-analytics-azure-storage.md)

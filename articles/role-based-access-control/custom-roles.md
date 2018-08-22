@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7554ef46289600cd15e4675a91f42a2cd735f18
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 002eb9b70c2f3f9d0f6633b2d81425c688495d19
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112660"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39714052"
 ---
 # <a name="custom-roles-in-azure"></a>Benutzerdefinierte Rollen in Azure
 
@@ -28,7 +28,7 @@ Wenn die [integrierten Rollen](built-in-roles.md) den Anforderungen Ihrer Organi
 
 ## <a name="custom-role-example"></a>Beispiel einer benutzerdefinierten Rolle
 
-Im Folgenden wird die Azure PowerShell-Darstellung einer benutzerdefinierten Rolle zum Überwachen und Neustarten virtueller Computer gezeigt:
+Das folgende Beispiel zeigt, wie eine benutzerdefinierte Rolle im JSON-Format angezeigt aussieht. Diese benutzerdefinierte Rolle kann zum Überwachen und Neustarten virtueller Computer verwendet werden.
 
 ```json
 {
@@ -65,7 +65,7 @@ Im Folgenden wird die Azure PowerShell-Darstellung einer benutzerdefinierten Rol
 }
 ```
 
-Nachdem Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal mit einem orangefarbenen Ressourcensymbol angezeigt.
+Wenn Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Portal mit einem orangefarbenen Ressourcensymbol angezeigt.
 
 ![Symbol der benutzerdefinierten Rolle](./media/custom-roles/roles-custom-role-icon.png)
 
@@ -82,7 +82,9 @@ Nachdem Sie eine benutzerdefinierte Rolle erstellt haben, wird sie im Azure-Port
 
 3. Testen der benutzerdefinierten Rolle
 
-    Sobald Sie über Ihre benutzerdefinierte Rolle verfügen, müssen Sie sie testen, um sicherzustellen, dass sie wie erwartet funktioniert. Wenn Anpassungen vorgenommen werden müssen, können Sie die benutzerdefinierte Rolle aktualisieren.
+    Sobald Sie über Ihre benutzerdefinierte Rolle verfügen, müssen Sie sie testen, um sicherzustellen, dass sie wie erwartet funktioniert. Wenn Sie später Anpassungen vornehmen müssen, können Sie die benutzerdefinierte Rolle aktualisieren.
+
+Ein ausführliches Tutorial zum Erstellen einer benutzerdefinierten Rolle finden Sie unter [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md) oder [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe der Azure-Befehlszeilenschnittstelle](tutorial-custom-role-cli.md).
 
 ## <a name="custom-role-properties"></a>Eigenschaften der benutzerdefinierten Rolle
 
@@ -98,16 +100,16 @@ Eine benutzerdefinierte Rolle hat die folgenden Eigenschaften.
 | `NotActions` | Nein  | String[] | Ein Array von Zeichenfolgen, das die Verwaltungsvorgänge angibt, die von den zulässigen `Actions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotActions](role-definitions.md#notactions). |
 | `DataActions` | Nein  | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, deren Ausführung für Ihre Daten innerhalb des Objekts die Rolle zulässt. Weitere Informationen finden Sie unter [DataActions (Vorschau)](role-definitions.md#dataactions-preview). |
 | `NotDataActions` | Nein  | String[] | Ein Array von Zeichenfolgen, das die Datenvorgänge angibt, die von den zulässigen `DataActions` ausgeschlossen sind. Weitere Informationen finden Sie unter [NotDataActions (Vorschau)](role-definitions.md#notdataactions-preview). |
-| `AssignableScopes` | JA | String[] | Ein Array von Zeichenfolgen, das die Bereiche angibt, in denen die benutzerdefinierte Rolle zur Zuweisung verfügbar ist. Kann nicht auf den Stammbereich festgelegt werden (`"/"`). Weitere Informationen finden Sie unter [AssignableScopes](role-definitions.md#assignablescopes). |
+| `AssignableScopes` | JA | String[] | Ein Array von Zeichenfolgen, das die Bereiche angibt, in denen die benutzerdefinierte Rolle zur Zuweisung verfügbar ist. Derzeit kann es nicht auf den Stammbereich (`"/"`) oder eine Verwaltungsgruppenbereich festgelegt werden. Weitere Informationen finden Sie unter [AssignableScopes](role-definitions.md#assignablescopes) und [Organisieren von Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md#custom-rbac-role-definition-and-assignment). |
 
-## <a name="assignablescopes-for-custom-roles"></a>AssignableScopes für benutzerdefinierte Rollen
+## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Rollen zum Erstellen, Löschen, Aktualisieren oder Anzeigen einer benutzerdefinierten Rolle
 
-Wie integrierte Rollen legt die `AssignableScopes`-Eigenschaft die Bereiche fest, in denen die Rolle zur Zuweisung verfügbar ist. Den Stammbereich (`"/"`) können Sie jedoch nicht in Ihren eigenen benutzerdefinierten Rollen verwenden. Wenn Sie es trotzdem versuchen, tritt ein Autorisierungsfehler auf. Die `AssignableScopes`-Eigenschaft für eine benutzerdefinierte Rolle steuert auch, wer zum Erstellen, Löschen, Ändern oder Anzeigen der benutzerdefinierten Rolle berechtigt ist.
+Wie integrierte Rollen legt die `AssignableScopes`-Eigenschaft die Bereiche fest, in denen die Rolle zur Zuweisung verfügbar ist. Die `AssignableScopes`-Eigenschaft für eine benutzerdefinierte Rolle steuert auch, wer zum Erstellen, Löschen, Aktualisieren oder Anzeigen der benutzerdefinierten Rolle berechtigt ist.
 
 | Aufgabe | Vorgang | BESCHREIBUNG |
 | --- | --- | --- |
 | Erstellen/Löschen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinition/write` | Benutzer, die für alle `AssignableScopes` der benutzerdefinierten Rolle zu diesem Vorgang berechtigt sind, können benutzerdefinierte Rollen für die Verwendung in diesen Bereichen erstellen (oder löschen). Hierzu zählen etwa [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Abonnements, Ressourcengruppen und Ressourcen. |
-| Ändern einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinition/write` | Benutzer, die für alle `AssignableScopes` der benutzerdefinierten Rolle zu diesem Vorgang berechtigt sind, können benutzerdefinierte Rollen in diesen Bereichen ändern. Hierzu zählen etwa [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Abonnements, Ressourcengruppen und Ressourcen. |
+| Aktualisieren einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinition/write` | Benutzer, die für alle `AssignableScopes` der benutzerdefinierten Rolle zu diesem Vorgang berechtigt sind, können benutzerdefinierte Rollen in diesen Bereichen aktualisieren. Hierzu zählen etwa [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministratoren](built-in-roles.md#user-access-administrator) von Abonnements, Ressourcengruppen und Ressourcen. |
 | Anzeigen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinition/read` | Benutzer, die in einem Bereich zu diesem Vorgang berechtigt sind, können die benutzerdefinierten Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind. Benutzerdefinierte Rollen können bei allen integrierten Rollen für die Zuweisung verfügbar sein. |
 
 ## <a name="next-steps"></a>Nächste Schritte

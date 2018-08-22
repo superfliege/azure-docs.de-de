@@ -5,27 +5,28 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/15/2018
+ms.date: 8/08/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 5d5b2e78755d6800f61e3e4adb1769799d01dad2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b21afecc27f1550cf557305ef069278ed66acaf0
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111522"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005316"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 | Partner |  |  |
 | --- | --- | --- |
-| [![Partnerlogo][alertlogic-logo]<br/>**AlertLogic**][alertlogic-anchor] | [![Partnerlogo][appdynamics-logo]<br/>**AppDynamics**][appdynamics-anchor] | [![Partnerlogo][atlassian-logo]<br/>**Atlassian**][atlassian-anchor] |
-| [**Botmetric**][botmetric-anchor] | [![Partnerlogo][circonus-logo]<br/>**Circonus**][circonus-anchor] | [![Partnerlogo][cloudhealth-logo]<br/>**CloudHealth**][cloudhealth-anchor] |
-| [![Partnerlogo][cloudmonix-logo]<br/>**CloudMonix**][cloudmonix-anchor] | [![Partnerlogo][cloudyn-logo]<br/>**Cloudyn**][cloudyn-anchor] | [![Partnerlogo][datadog-logo]<br/>**Datadog**][datadog-anchor] |
-| [![Partnerlogo][dynatrace-logo]<br/>**Dynatrace**][dynatrace-anchor] | [![Partnerlogo][grafana-logo]<br/>**Grafana**][grafana-anchor] | [![Partnerlogo][logicmonitor-logo]<br/>**LogicMonitor**][logicmonitor-anchor] |
-| [![Partner Logo][moogsoft-logo]<br/>**Moogsoft**][moogsoft-anchor] | [![Partnerlogo][opsgenie-logo]<br/>**OpsGenie**][opsgenie-anchor] | [![Partnerlogo][pagerduty-logo]<br/>**PagerDuty**][pagerduty-anchor] |
-| [![Partnerlogo][qradar-logo]<br/>**QRadar**][qradar-anchor] | [![Partnerlogo][sciencelogic-logo]<br/>**ScienceLogic**][sciencelogic-anchor] | [![Partnerlogo][signalfx-logo]<br/>**SignalFx**][signalfx-anchor] |
-| [![Partnerlogo][signl4-logo]<br/>**SIGNL4**][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] | [![Partnerlogo][splunk-logo]<br/>**Splunk**][splunk-anchor] |
-| [![Partnerlogo][sumologic-logo]<br/>**Sumo Logic**][sumologic-anchor] | [![Partnerlogo][turbonomic-logo]<br/>**Turbonomic**][turbonomic-anchor] | |
+| [**AlertLogic**<br/>![Partnerlogo][alertlogic-logo]][alertlogic-anchor] | [**AppDynamics**<br/>![Partnerlogo][appdynamics-logo]][appdynamics-anchor]  | [**Atlassian**<br/>![Partnerlogo][atlassian-logo]][atlassian-anchor] 
+| [**Botmetric**][botmetric-anchor] | [**Circonus**<br/>![Partnerlogo][circonus-logo]][circonus-anchor]  | [**CloudHealth**<br/>![Partnerlogo][cloudhealth-logo]][cloudhealth-anchor] 
+| [**CloudMonix** <br/> ![Partnerlogo][cloudmonix-logo]][cloudmonix-anchor] | [**Cloudyn**<br/>![Partnerlogo][cloudyn-logo]][cloudyn-anchor] | [**Datadog**<br/>![Partnerlogo][datadog-logo]][datadog-anchor] 
+| [**Dynatrace** <br/> ![Partnerlogo][dynatrace-logo]][dynatrace-anchor] | [**Grafana**<br/>![Partnerlogo][grafana-logo]][grafana-anchor] | [**Logic Monitor**<br/>![Partnerlogo][logicmonitor-logo]][logicmonitor-anchor] 
+| [**Moogsoft**<br/>![Partnerlogo][moogsoft-logo]][moogsoft-anchor] | [**NewRelic**<br/>![Partnerlogo][newrelic-logo]][newrelic-anchor] | [**OpsGenie**<br/>![Partnerlogo][opsgenie-logo]][opsgenie-anchor] 
+| [**PagerDuty**<br/>![Partnerlogo][pagerduty-logo]][pagerduty-anchor] | [**QRadar**<br/>![Partnerlogo][qradar-logo]][qradar-anchor] | [**ScienceLogic**<br/>![Partnerlogo][sciencelogic-logo]][sciencelogic-anchor] 
+| [**SignalFx**<br/>![Partnerlogo][signalfx-logo]<br/>][signalfx-anchor] | [**SIGNL4**<br/>![Partnerlogo][signl4-logo]][signl4-anchor] | [**SolarWinds**][solarwinds-anchor] 
+| [**Splunk** <br/> ![Partnerlogo][splunk-logo]][splunk-anchor] | [**Sumo Logic**<br/>![Partnerlogo][sumologic-logo]][sumologic-anchor] | [**Turbonomic**<br/>![Partnerlogo][turbonomic-logo]][turbonomic-anchor] 
+
 
 ## <a name="alertlogic-log-manager"></a>Alert Logic Log Manager
 Alert Logic Log Manager erfasst Protokolldateien von virtuellen Computern, Anwendungen und der Azure-Plattform für Sicherheitsanalysen und zur Datenaufbewahrung. Außerdem wird das Azure-Aktivitätsprotokoll über die Azure Monitor-API erfasst. Diese Informationen werden dazu verwendet, Complianceanforderungen zu erfüllen und Verstöße zu erkennen.
@@ -77,26 +78,28 @@ OneAgent von Dynatrace lässt sich über Azure-Erweiterungsmechanismen in virtue
 [Zur Dokumentation][dynatrace-doc]
 
 ## <a name="grafana"></a>Grafana
-Grafana ist eine Open-Source-Anwendung, mit der Sie Metrikdaten von Zeitreihen visualisieren können.
+Grafana ist eine Open Source-Anwendung, mit der Sie Metrikdaten von Zeitreihen visualisieren können.
 
 [Zur Dokumentation][grafana-doc]
 
 ## <a name="logic-monitor"></a>LogicMonitor
-LogicMonitor® ist die führende SaaS-basierte Plattform zur Leistungsüberwachung für komplexe IT-Infrastrukturen. Mit einer Abdeckung für Tausende von Technologien bietet LogicMonitor einen detaillierten Einblick in die Infrastruktur und Anwendungsleistung. Die umfassende Azure-Überwachung von LM Cloud ermöglicht es Benutzern, die Leistung von Azure-Cloud sowie lokalen und hybride Cloudressourcen von einer einzigen Plattform aus zu korrelieren. Automatisierte Ressourcenerkennung, integrierte Überwachungsvorlagen, vorkonfigurierte Schwellenwerte für Warnungen und anpassbare Dashboards bieten IT-Mitarbeitern die für den Erfolg erforderliche Geschwindigkeit, Flexibilität und Transparenz.
+LogicMonitor® ist die führende SaaS-basierte Plattform zur Leistungsüberwachung für komplexe IT-Infrastrukturen. Mit einer Abdeckung für Tausende von Technologien bietet LogicMonitor einen detaillierten Einblick in die Infrastruktur und Anwendungsleistung. Die umfassende Azure-Überwachung von LM Cloud ermöglicht Benutzern, die Leistung der Azure-Cloud sowie lokaler und hybrider Cloudressourcen über eine einzige Plattform aus zu korrelieren. Automatisierte Ressourcenerkennung, integrierte Überwachungsvorlagen, vorkonfigurierte Schwellenwerte für Warnungen und anpassbare Dashboards bieten IT-Mitarbeitern die für den Erfolg erforderliche Geschwindigkeit, Flexibilität und Transparenz.
 
 [Zur Dokumentation][logicmonitor-doc]
 
 ## <a name="moogsoft"></a>Moogsoft
 Moogsoft AIOps beschleunigt die agile Unternehmenstransformation.
 
-Die Tools von Microsoft Azure Automation and Control bieten ein Echtzeitfenster mit dem Status der in Azure implementierten Anwendungen und Microservices und helfen bei der Orchestrierung von Diagnosen und Runbooks für eine schnellere Problembehandlung.
-Andere Tools von Drittanbietern bieten einen Einblick in den Status lokaler Anwendungen und Infrastrukturen.
+Die Microsoft Azure Automation & Control-Tools bieten ein Echtzeitfenster mit dem Status der in Azure bereitgestellten Anwendungen und Microservices. Außerdem helfen Sie beim Orchestrieren von Diagnosen und Runbooks für eine schnellere Wartung. Andere Drittanbietertools bieten einen Einblick in den Status lokaler Anwendungen und Infrastrukturen.
 
 Moogsoft AIOps automatisiert den Workflow vom Ereignis bis zur Problembehebung, ohne vorhandene Prozesse und Organisationsstrukturen zu verändern. 
 
-Moogsoft AIOps wird in Ihrer Azure-Umgebung ausgeführt und ist dabei in Überwachungs- und Automatisierungstools in der gesamten hybriden Fabric integriert. Zudem erkennt Moogsoft AIOps früher aktiv Anwendungen, die sich auf Vorfälle auswirken, orchestriert dynamisch die entsprechenden Ressourcen, um sie auf die Situation vorzubereiten, und reduziert so die durchschnittlich benötigte Zeit, um das Problem zu beheben und mögliche Auswirkungen auf die Kundenzufriedenheit abzuwenden. 
+Moogsoft wird in Ihrer Azure-Umgebung ausgeführt und ist dabei in Überwachungs- und Automatisierungstools im gesamten hybriden Fabric integriert. Zudem erkennt Moogsoft aktiv früher Incidents, die sich auf Anwendungen auswirken und orchestriert dynamisch die entsprechenden Ressourcen, um sie der Situation anzupassen. Dadurch werden die durchschnittlich benötigte Wartungszeit und mögliche Beeinträchtigungen der Benutzerfreundlichkeit minimiert. 
 
 [Zur Dokumentation][moogsoft-doc]
+
+## <a name="newrelic"></a>NewRelic
+[Weitere Informationen][newrelic-doc]
 
 ## <a name="opsgenie"></a>OpsGenie
 OpsGenie agiert als Verteiler für die von Azure generierten Warnungen. OpsGenie ermittelt anhand von Bereitschaftsplänen und Eskalationstypen, welche Personen benachrichtigt werden müssen. Diese können per E-Mail, Textnachricht (SMS), Telefonanruf oder Pushbenachrichtigung informiert werden. Azure generiert Warnungen für erkannte Probleme. OpsGenie stellt sicher, dass sie von den richtigen Personen bearbeitet werden.
@@ -117,12 +120,12 @@ ScienceLogic stellt die IT-Dienstüberprüfungsplattform der nächsten Generatio
 [Weitere Informationen][sciencelogic-doc]
 
 ## <a name="signalfx"></a>SignalFx
-SignalFX ist führender Anbieter im Bereich Operational Intelligence in Echtzeit für datengesteuerte DevOps. Der Dienst erkennt und sammelt Metriken aus allen Komponenten in der Cloud, ersetzt traditionelle Punkttools und bietet Echtzeittransparenz für dynamische Umgebungen von heute. Die SaaS-Plattform nutzt die äußerst skalierbare SignalFx-Plattform und ist für container- und microservicebasierte Architekturen optimiert. Sie bietet Funktionen für leistungsstarke Visualisierung, proaktive Benachrichtigungen und kollaborative Selektierung für Unternehmen jeder Größe. SignalFx kann direkt in Azure Monitor sowie über Open-Source-Connectors wie Telegraf, statsD und collectd integriert werden, um erstklassige Dashboards, Analysen und Warnungen für Azure bereitzustellen.
+SignalFX ist führender Anbieter im Bereich Operational Intelligence in Echtzeit für datengesteuerte DevOps. Der Dienst ermittelt und sammelt Metriken zu allen Komponenten in der Cloud. Er ersetzt herkömmliche Punkttools und bietet Echtzeiteinblicke in die heutigen dynamischen Umgebungen. Die SaaS-Plattform nutzt die äußerst skalierbare SignalFx-Plattform und ist für container- und microservicebasierte Architekturen optimiert. Sie bietet Funktionen für leistungsstarke Visualisierung, proaktive Benachrichtigungen und kollaborative Selektierung für Unternehmen jeder Größe. SignalFx kann direkt in Azure Monitor sowie über Open Source-Connectors wie Telegraf, statsD und collectd integriert werden, um erstklassige Dashboards, Analysen und Warnungen für Azure bereitzustellen.
 
 [Zur Dokumentation][signalfx-doc]
 
 ## <a name="signl4"></a>SIGNL4
-SIGNL4, die mobile Alarmierungs-App für Einsatzteams, ist der schnellste Weg, kritische Warnungen von Azure Monitor zur richtigen Zeit an die richtigen Personen weiterzuleiten – überall mittels Pushnachrichten, Textnachrichten und Sprachanrufen. SIGNL4 verwaltet Bereitschaftsdienste und Schichten Ihres Teams, verfolgt die Zustellung sowie den Besitz von Warnmeldungen und eskaliert diese bei Bedarf. Die App bietet volle Transparenz für das gesamte Team. Mit dem einfachen REST-Webhook von SIGNL4 kann jeder Azure-Dienst mühelos verbunden werden. Mit SIGNL4 erhalten Sie eine bis zu zehnmal schnellere Antwort auf E-Mail-Benachrichtigungen und manuelle Warnmeldungen.
+SIGNL4, die mobile App für Benachrichtigungen für Einsatzteams, ist der schnellste Weg, kritische Warnungen von Azure Monitor zur richtigen Zeit an die richtigen Personen weiterzuleiten – jederzeit auf dem Laufenden mit Pushnachrichten, Textnachrichten und Sprachanrufen. SIGNL4 verwaltet Bereitschaftsdienste und Schichten Ihres Teams, verfolgt die Zustellung sowie den Besitz von Warnmeldungen und eskaliert diese bei Bedarf. Die App bietet volle Transparenz für das gesamte Team. Mit dem einfachen REST-Webhook von SIGNL4 kann jeder Azure-Dienst mühelos verbunden werden. Mit SIGNL4 erhalten Sie eine bis zu zehnmal schnellere Antwort auf E-Mail-Benachrichtigungen und manuelle Warnmeldungen.
 
 [Zur Dokumentation][signl4-doc]
 
@@ -141,7 +144,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 [Weitere Informationen][sumologic-doc]
 
 ## <a name="turbonomic"></a>Turbonomic
-Turbonomic optimiert Leistung, Kosten und Compliance simultan in Echtzeit und automatisiert Workloads für Hybrid Clouds. Turbonomic unterstützt Unternehmen dabei, in ihrer Azure-Umgebung flexibel zu bleiben, indem der Bestand kontinuierlich optimiert wird. So wird sichergestellt, dass Anwendungen stets nur die Ressourcen für Computing, Speicher und Netzwerk auf IaaS- und PaaS-Ebene erhalten, die sie für die Erfüllung ihrer SLAs benötigen. Organisationen können Migrationen simulieren, Workloads richtig skalieren und lokale Rechenzentren außer Betrieb nehmen, um im Rahmen des Zeitplans und des Budgets verlässlich zu Azure zu migrieren – und gleichzeitig können sie sicher sein, dass die Leistung stimmt und alle Standards und gesetzlichen Vorgaben eingehalten werden. Turbonomic ist API-gesteuert und wird als virtueller Computer ohne Agents in Azure und im lokalen System ausgeführt.
+Turbonomic automatisiert Workloads für Hybrid Clouds durch gleichzeitige Optimierung von Leistung, Kosten und Compliance in Echtzeit. Turbonomic unterstützt Unternehmen dabei, in ihrer Azure-Umgebung flexibel zu bleiben, indem der Bestand kontinuierlich optimiert wird. So wird sichergestellt, dass Anwendungen stets nur die Ressourcen für Computing, Speicher und Netzwerk auf IaaS- und PaaS-Ebene erhalten, die sie für die Erfüllung ihrer SLAs benötigen. Organisationen können Migrationen simulieren, Workloads richtig skalieren und lokale Rechenzentren außer Betrieb nehmen, um im Rahmen des Zeitplans und des Budgets verlässlich zu Azure zu migrieren – und gleichzeitig können sie sicher sein, dass die Leistung stimmt und alle Standards und gesetzlichen Vorgaben eingehalten werden. Turbonomic ist API-gesteuert und wird als virtueller Computer ohne Agents in Azure und im lokalen System ausgeführt.
 
 [Weitere Informationen][turbonomic-doc]
 
@@ -149,8 +152,8 @@ Turbonomic optimiert Leistung, Kosten und Compliance simultan in Echtzeit und au
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu Azure Monitor](monitoring-overview.md)
 * [Zugreifen auf Metriken über die REST-API](monitoring-rest-api-walkthrough.md)
-* [Streamen des Aktivitätsprotokolls an einen Drittanbieterdienst](monitoring-stream-activity-logs-event-hubs.md)
-* [Streamen von Diagnoseprotokollen an einen Drittanbieterdienst](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Streamen des Aktivitätsprotokolls an einen Nicht-Microsoft-Dienst](monitoring-stream-activity-logs-event-hubs.md)
+* [Streamen von Diagnoseprotokollen an einen Nicht-Microsoft-Dienst](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 
 <!--Partner Anchors-->
 [alertlogic-anchor]: #alertlogic-log-manager "AlertLogic"
@@ -163,6 +166,7 @@ Turbonomic optimiert Leistung, Kosten und Compliance simultan in Echtzeit und au
 [cloudyn-anchor]: #cloudyn "Cloudyn"
 [datadog-anchor]: #datadog "Datadog"
 [dynatrace-anchor]: #dynatrace "Dynatrace"
+[newrelic-anchor]: #newrelic "NewRelic"
 [grafana-anchor]: #grafana "Grafana"
 [logicmonitor-anchor]: #logic-monitor "LogicMonitor"
 [moogsoft-anchor]: #moogsoft "Moogsoft"
@@ -187,6 +191,7 @@ Turbonomic optimiert Leistung, Kosten und Compliance simultan in Echtzeit und au
 [cloudyn-logo]: ./media/partner-logos/cloudyn.png
 [datadog-logo]: ./media/partner-logos/datadog.png
 [dynatrace-logo]: ./media/partner-logos/dynatrace.png
+[newrelic-logo]: ./media/partner-logos/newrelic.png
 [grafana-logo]: ./media/partner-logos/grafana.png
 [logicmonitor-logo]: ./media/partner-logos/logicmonitor.png
 [moogsoft-logo]: ./media/partner-logos/moogsoft.png
@@ -214,6 +219,7 @@ Turbonomic optimiert Leistung, Kosten und Compliance simultan in Echtzeit und au
 [grafana-doc]: ./monitor-send-to-grafana.md "Einführung in Azure Monitor Grafana"
 [logicmonitor-doc]: https://www.logicmonitor.com/lmcloud-azure/ "LogicMonitor-Dokumentation"
 [moogsoft-doc]: https://www.moogsoft.com/partners/microsoft-azure "Moogsoft-Dokumentation"
+[newrelic-doc]: https://newrelic.com/azure "NewRelic-Dokumentation"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie-Dokumentation"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty-Dokumentation"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar-Dokumentation"

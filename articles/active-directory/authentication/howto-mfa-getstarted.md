@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: d248f8bc5708dfe8554f513d4f96a6c1bee7605e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412411"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39716262"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Bereitstellen von cloudbasierter Azure Multi-Factor Authentication
 
@@ -30,7 +30,7 @@ Stellen zu zuerst sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 **Aktiviert mit der Richtlinie für bedingten Zugriff** – Diese Methode wird in diesem Artikel erläutert. Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung mit der Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure MFA in der Cloud und ist eine Premium-Funktion von Azure AD.
 
-Aktiviert durch Azure AD Identity Protection – Diese Methode nutzt die Risikorichtlinie von Azure AD Identity Protection, um die zweistufige Überprüfung ausschließlich auf Basis des Anmelderisikos für alle Cloudanwendungen zu erzwingen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Azure Active Directory Identity Protection](../active-directory-identityprotection.md#risky-sign-ins).
+Aktiviert durch Azure AD Identity Protection – Diese Methode nutzt die Risikorichtlinie von Azure AD Identity Protection, um die zweistufige Überprüfung ausschließlich auf Basis des Anmelderisikos für alle Cloudanwendungen zu erzwingen. Diese Methode erfordert die Azure Active Directory P2-Lizenzierung. Weitere Informationen zu dieser Methode finden Sie unter [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins).
 
 Aktiviert durch Ändern des Benutzerstatus – Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu erfordern. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Diese Methode erfordert, dass Benutzer **jedes Mal**, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff. Weitere Informationen zu dieser Methode finden Sie in [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](howto-mfa-userstates.md).
 
@@ -109,3 +109,5 @@ Herzlichen Glückwunsch, Sie haben Azure Multi-Factor Authentication in der Clou
 Wie Sie zusätzliche Einstellungen wie vertrauenswürdige IP-Adressen, benutzerdefinierte Sprachnachrichten und Betrugswarnungen konfigurieren, erfahren Sie im Artikel [Konfigurieren von Azure Multi-Factor Authentication-Einstellungen](howto-mfa-mfasettings.md).
 
 Informationen zum Verwalten von Benutzereinstellungen für die Microsoft Azure Multi-Factor Authentication finden Sie im Artikel [Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud](howto-mfa-userdevicesettings.md).
+
+Lesen Sie außerdem, wie Sie die [zusammengeführte Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD aktivieren](concept-registration-mfa-sspr-converged.md).
