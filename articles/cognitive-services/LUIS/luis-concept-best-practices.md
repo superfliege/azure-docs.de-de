@@ -54,7 +54,7 @@ Book a flight
 Book a hotel
 ```
 
-„Buche einen Flug“ und „Buche ein Hotelzimmer“ verwenden das gleiche Vokabular „Buche“. Dies stellt eine Überlappung dar. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
+„Book a flight“ und „Book a hotel“ verwenden das gleiche Vokabular „Book a “. Dies stellt eine Überlappung dar. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
 
 ## <a name="do-find-sweet-spot-for-intents"></a>Streben Sie eine Balance zwischen Absichten an
 Verwenden Sie die Vorhersagedaten von LUIS, um zu bestimmen, ob die Absichten überlappen. Überlappende Absichten verwirren LUIS. Im Ergebnis ist die Absicht mit der höchsten Bewertung zu nah an einer anderen Absicht. Da LUIS nicht bei jedem Training genau denselben Pfad durch die Daten anwendet, kann eine überlappende Absicht beim Training den ersten oder zweiten Platz erreichen. Damit dieser Fall nicht eintritt, sollten Sie das Ergebnis der Äußerung für jede Absicht weiter voneinander trennen. Bei einer guten Unterscheidung der Absichten sollte das Ergebnis jedes Mal die erwartete bestbewertete Absicht sein. 
@@ -93,9 +93,9 @@ LUIS erwartet Variationen in den Äußerungen zu einer Absicht. Die Äußerungen
 
 |Verwenden Sie nicht dasselbe Format.|Verwenden Sie unterschiedliche Formate.|
 |--|--|
-|Buy a ticket to Seattle<br>Buy a ticket to Paris<br>Buy a ticket to Orlando|Buy 1 ticket to Seattle<br>Reserve two seats on the red eye to Paris next Monday<br>I would like to book 3 tickets to Orlando for spring break|
+|Kaufe ein Ticket nach Seattle<br>Kaufe ein Ticket nach Paris<br>Kaufe ein Ticket nach Orlando|Kaufe 1 Ticket nach Seattle<br>Reserviere zwei Plätze im Nachtflug nach Paris nächsten Montag<br>Ich möchte 3 Tickets nach Orlando in den Frühjahrsferien buchen|
 
-In der zweiten Spalte werden verschiedene Verben (buy, reserve, book), verschiedene Mengenangaben (1, two, 3) und unterschiedliche Wortanordnungen verwendet, alle enthalten jedoch dieselbe Absicht: Flugtickets für eine Reise zu erwerben. 
+In der zweiten Spalte werden verschiedene Verben (kaufen, reservieren, buchen), verschiedene Mengenangaben (1, zwei, 3) und unterschiedliche Wortanordnungen verwendet, alle enthalten jedoch dieselbe Absicht: Flugtickets für eine Reise zu erwerben. 
 
 ## <a name="dont-mix-the-definition-of-intents-and-entities"></a>Trennen Sie die Definitionen von Absichten und Entitäten
 Erstellen Sie eine Absicht für jede Aktion, die Ihr Bot akzeptieren soll. Verwenden Sie Entitäten als Parameter, die diese Aktionen möglich machen. 
