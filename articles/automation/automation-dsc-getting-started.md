@@ -1,39 +1,39 @@
 ---
-title: Erste Schritte mit Azure Automation DSC
-description: Erläuterung und Beispiele für die gängigsten Aufgaben in Azure Automation DSC (Desired State Configuration, Konfiguration des gewünschten Zustands)
+title: Erste Schritte mit der Azure Automation-Zustandskonfiguration
+description: Erläuterung und Beispiele für die gängigsten Aufgaben der Azure Automation-Zustandskonfiguration (DSC, Desired State Configuration)
 services: automation
 ms.service: automation
 ms.component: dsc
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/16/2018
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd26c4b070ed7b92a73e43c1568805a9ac679d12
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9a18855d11c0b367b7d58ffb0f4c62e752c05b89
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196065"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004231"
 ---
-# <a name="getting-started-with-azure-automation-dsc"></a>Erste Schritte mit Azure Automation DSC
+# <a name="getting-started-with-azure-automation-state-configuration"></a>Erste Schritte mit der Azure Automation-Zustandskonfiguration
 
-In diesem Artikel wird erläutert, wie die gängigsten Aufgaben mit Azure Automation Desired State Configuration (DSC) ausgeführt werden, z. B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md). Die DSC-Dokumentation finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview).
+In diesem Artikel wird erläutert, wie die gängigsten Aufgaben mit der Azure Automation-Zustandskonfiguration ausgeführt werden, z.B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über die Azure Automation-Zustandskonfiguration finden Sie unter [Übersicht über die Azure Automation-Zustandskonfiguration](automation-dsc-overview.md). Die DSC-Dokumentation (Desired State Configuration, Konfiguration des gewünschten Zustands) finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview).
 
-Dieser Artikel bietet eine detaillierte Anleitung zur Verwendung von Azure Automation DSC. Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die Schritte in diesem Artikel auszuführen, können Sie die folgende Resource Manager-Vorlage verwenden: Mit dieser Vorlage wird eine vollständige Azure Automation DSC-Umgebung eingerichtet, einschließlich einer Azure-VM, die von Azure Automation DSC verwaltet wird.
+Dieser Artikel enthält eine detaillierte Anleitung zur Verwendung der Azure Automation-Zustandskonfiguration. Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die in diesem Artikel beschriebenen Schritte auszuführen, können Sie die folgende Resource Manager-Vorlage verwenden: [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Mit dieser Vorlage wird eine vollständige Umgebung für die Azure Automation-Zustandskonfiguration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von der Azure Automation-Zustandskonfiguration verwaltet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Beispiele in diesem Artikel ausführen zu können, ist Folgendes erforderlich:
 
-* Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
-* Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
+- Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>Erstellen einer DSC-Konfiguration
 
 Sie erstellen eine einfache [DSC-Konfiguration](/powershell/dsc/configurations), die abhängig von der Knotenzuweisung entweder das Vorhandensein oder Nichtvorhandensein des Windows- bzw. IIS-Features **Web-Server** sicherstellt.
 
-1. Öffnen Sie die Windows PowerShell ISE (oder einen beliebigen Texteditor).
+1. Starten Sie [VSCode](https://code.visualstudio.com/docs) (oder einen beliebigen Text-Editor).
 1. Geben Sie den folgenden Text ein:
 
     ```powershell
@@ -46,7 +46,6 @@ Sie erstellen eine einfache [DSC-Konfiguration](/powershell/dsc/configurations),
                 Ensure               = 'Present'
                 Name                 = 'Web-Server'
                 IncludeAllSubFeature = $true
-
             }
         }
 
@@ -56,14 +55,13 @@ Sie erstellen eine einfache [DSC-Konfiguration](/powershell/dsc/configurations),
             {
                 Ensure               = 'Absent'
                 Name                 = 'Web-Server'
-
             }
         }
     }
     ```
 1. Speichern Sie die Datei als `TestConfig.ps1`.
 
-Diese Konfiguration ruft in jedem Knotenblock die Ressource [WindowsFeature](https://msdn.microsoft.com/powershell/dsc/windowsfeatureresource)auf, die das Vorhandensein oder Nichtvorhandensein des Features **Web-Server** sicherstellt.
+Diese Konfiguration ruft in jedem Knotenblock die Ressource [WindowsFeature](/powershell/dsc/windowsfeatureresource)auf, die das Vorhandensein oder Nichtvorhandensein des Features **Web-Server** sicherstellt.
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Importieren einer Konfiguration in Azure Automation
 
@@ -71,11 +69,12 @@ Als Nächstes importieren Sie die Konfiguration in das Automation-Konto.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **DSC-Knotenkonfigurationen**.
-1. Klicken Sie auf der Seite **DSC-Konfigurationen** auf **+ Konfiguration hinzufügen**.
+1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Konfigurationen** und dann auf **+ Hinzufügen**.
 1. Wechseln Sie auf der Seite **Konfiguration importieren** zur Datei `TestConfig.ps1` auf Ihrem Computer.
 
-    ![Screenshot des Blatts „Konfiguration importieren“](./media/automation-dsc-getting-started/AddConfig.png)
+   ![Screenshot des Blatts „Konfiguration importieren“](./media/automation-dsc-getting-started/AddConfig.png)
+
 1. Klicken Sie auf **OK**.
 
 ## <a name="viewing-a-configuration-in-azure-automation"></a>Anzeigen einer Konfiguration in Azure Automation
@@ -84,111 +83,120 @@ Nachdem Sie eine Konfiguration importiert haben, können Sie sie im Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **DSC-Knotenkonfigurationen**.
-1. Klicken Sie auf der Seite **DSC-Konfigurationen** auf **TestConfig** (Name der Konfiguration, die Sie zuvor importiert haben).
+1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Konfigurationen** und anschließend auf **TestConfig** (Name der Konfiguration, die Sie zuvor importiert haben).
 1. Klicken Sie auf der Seite **TestConfig-Konfiguration** auf **Konfigurationsquelle anzeigen**.
 
-    ![Screenshot des Blatts „TestConfig-Konfiguration“](./media/automation-dsc-getting-started/ViewConfigSource.png)
+   ![Screenshot des Blatts „TestConfig-Konfiguration“](./media/automation-dsc-getting-started/ViewConfigSource.png)
 
-    Das Blatt **TestConfig-Konfigurationsquelle** wird geöffnet, und der PowerShell-Code der Konfiguration wird angezeigt.
+   Die Seite **TestConfig-Konfigurationsquelle** wird geöffnet, und der PowerShell-Code der Konfiguration wird angezeigt.
 
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Kompilieren einer Konfiguration in Azure Automation
 
-Bevor Sie einen gewünschten Status auf einen Knoten anwenden können, muss eine DSC-Konfiguration, die diesen Status definiert, in eine oder mehrere Knotenkonfigurationen (MOF-Dokumente) kompiliert und auf dem Pullserver von Automation DSC abgelegt werden. Eine ausführlichere Beschreibung der Kompilierung von Konfigurationen in Azure Automation DSC finden Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](automation-dsc-compile.md). Weitere Informationen zum Kompilieren von Konfigurationen finden Sie unter [DSC-Konfigurationen](/powershell/dsc/configurations).
+Bevor Sie einen gewünschten Status auf einen Knoten anwenden können, muss eine DSC-Konfiguration, die diesen Status definiert, in eine oder mehrere Knotenkonfigurationen (MOF-Dokumente) kompiliert und auf dem Pullserver von Automation DSC abgelegt werden. Eine ausführlichere Beschreibung der Kompilierung von Konfigurationen in der Azure Automation-Zustandskonfiguration finden Sie unter [Kompilieren von DSC-Konfigurationen in der Azure Automation-Zustandskonfiguration](automation-dsc-compile.md).
+Weitere Informationen zum Kompilieren von Konfigurationen finden Sie unter [DSC-Konfigurationen](/powershell/dsc/configurations).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **DSC-Knotenkonfigurationen**.
-1. Klicken Sie auf der Seite **DSC-Konfigurationen** auf **TestConfig** (Name der Konfiguration, die Sie zuvor importiert haben).
+1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Konfigurationen** und anschließend auf **TestConfig** (Name der zuvor importierten Konfiguration).
 1. Klicken Sie auf der Seite **TestConfig-Konfiguration** auf **Kompilieren** und dann auf **Ja**. Ein Kompilierungsauftrag wird gestartet.
 
-    ![Screenshot der Seite „TestConfig-Konfiguration“ mit hervorgehobener Schaltfläche „Kompilieren“](./media/automation-dsc-getting-started/CompileConfig.png)
+   ![Screenshot der Seite „TestConfig-Konfiguration“ mit hervorgehobener Schaltfläche „Kompilieren“](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
 > Wenn Sie eine Konfiguration in Azure Automation kompilieren, werden alle erstellten MOF-Dateien mit der Knotenkonfiguration automatisch auf dem Pullserver bereitgestellt.
 
 ## <a name="viewing-a-compilation-job"></a>Anzeigen eines Kompilierungsauftrags
 
-Nachdem Sie eine Kompilierung gestartet haben, können Sie sie auf dem Blatt **Konfiguration** auf der Kachel **Kompilierungsaufträge** anzeigen. Die Kachel **Kompilierungsaufträge** zeigt derzeit ausgeführte, abgeschlossene und fehlerhafte Aufträge. Wenn Sie das Blatt eines Kompilierungsauftrags öffnen, werden Informationen zum Auftrag angezeigt, so z. B. aufgetretene Fehler und Warnungen, in der Konfiguration verwendete Eingabeparameter und Kompilierungsaufträge.
+Nachdem Sie eine Kompilierung gestartet haben, können Sie sie auf der Seite **Konfiguration** auf der Kachel **Kompilierungsaufträge** anzeigen. Die Kachel **Kompilierungsaufträge** zeigt derzeit ausgeführte, abgeschlossene und fehlerhafte Aufträge. Wenn Sie die Seite eines Kompilierungsauftrags öffnen, werden Informationen zum Auftrag angezeigt, so z.B. aufgetretene Fehler und Warnungen, in der Konfiguration verwendete Eingabeparameter und Kompilierungsaufträge.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **DSC-Knotenkonfigurationen**.
-1. Klicken Sie auf der Seite **DSC-Konfigurationen** auf **TestConfig** (Name der Konfiguration, die Sie zuvor importiert haben).
+1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Konfigurationen** und anschließend auf **TestConfig** (Name der zuvor importierten Konfiguration).
 1. Wählen Sie unter **Kompilierungsaufträge** den Kompilierungsauftrag aus, den Sie anzeigen möchten. Eine Seite vom Typ **Kompilierungsauftrag** wird geöffnet, dessen Bezeichnung mit dem Startdatum des Kompilierungsauftrags versehen ist.
 
-    ![Screenshot der Seite „Kompilierungsauftrag“](./media/automation-dsc-getting-started/CompilationJob.png)
+   ![Screenshot der Seite „Kompilierungsauftrag“](./media/automation-dsc-getting-started/CompilationJob.png)
+
 1. Klicken Sie auf der Seite **Kompilierungsauftrag** auf eine Kachel, um weitere Details zum Auftrag zu erhalten.
 
 ## <a name="viewing-node-configurations"></a>Anzeigen von Knotenkonfigurationen
 
-Bei erfolgreicher Erstellung eines Kompilierungsauftrags werden eine oder mehrere neue Knotenkonfigurationen erzeugt. Eine Knotenkonfiguration ist ein MOF-Dokument, das auf dem Pullserver bereitgestellt wird und per Pull abgerufen und auf Knoten angewendet werden kann. Die Knotenkonfigurationen finden Sie in Ihrem Automation-Konto auf dem Blatt **DSC-Knotenkonfigurationen** . Knotenkonfigurationen werden im Format *Konfigurationsname*.*Knotenname* benannt.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie im Menü „Hub“ auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf dem Blatt **Automation-Konto** auf **DSC-Knotenkonfigurationen**.
-
-    ![Screenshot des Blatts „DSC-Knotenkonfigurationen“](./media/automation-dsc-getting-started/NodeConfigs.png)
-
-## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-dsc"></a>Integrieren einer Azure-VM in die Verwaltung mit Azure Automation DSC
-
-Mit Azure Automation DSC können Sie Azure-VMs (mit dem klassischen oder Resource Manager-Modell), lokale VMs, Linux-Computer, AWS-VMs und lokale physische Computer verwalten. In diesem Artikel erfahren Sie, wie ausschließlich Azure Resource Manager-VMs integriert werden. Informationen zum Integrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
-
-### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>So integrieren Sie eine Azure Resource Manager-VM in die Verwaltung mit Azure Automation DSC
+Bei erfolgreicher Erstellung eines Kompilierungsauftrags werden eine oder mehrere neue Knotenkonfigurationen erzeugt. Eine Knotenkonfiguration ist ein MOF-Dokument, das auf dem Pullserver bereitgestellt wird und per Pull abgerufen und auf Knoten angewendet werden kann. Die Knotenkonfigurationen finden Sie in Ihrem Automation-Konto auf der Seite **Zustandskonfiguration (DSC)**. Knotenkonfigurationen werden im Format *Konfigurationsname*.*Knotenname* benannt.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-1. Klicken Sie auf der Seite **Automation-Konto** unter **Konfigurationsverwaltung** auf **DSC-Knoten**.
-1. Klicken Sie auf der Seite **DSC-Knoten** auf **Azure-VM hinzufügen**.
+1. Klicken Sie auf dem Blatt **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte  **Kompilierte Konfigurationen**.
 
-    ![Screenshot der Seite „DSC-Knoten“ mit hervorgehobener Schaltfläche „Azure-VM hinzufügen“](./media/automation-dsc-getting-started/OnboardVM.png)
-1. Wählen Sie auf der Seite „Virtuelle Computer“ Ihren virtuellen Computer aus. Klicken Sie auf der Seite **Azure-VMs hinzufügen** auf **Wählen Sie die zu integrierenden virtuellen Computer aus**.
-1. Klicken Sie auf **Verbinden**.
+   ![Screenshot der Registerkarte „Kompilierte Konfigurationen“](./media/automation-dsc-getting-started/NodeConfigs.png)
+
+## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Integrieren eines virtuellen Azure-Computers zur Verwaltung mit der Azure Automation-Zustandskonfiguration
+
+Mit der Azure Automation-Zustandskonfiguration können Sie virtuelle Azure-Computer (mit dem klassischen Modell oder dem Resource Manager-Modell), lokale virtuelle Computer, Linux-Computer, virtuelle AWS-Computer und lokale physische Computer verwalten. In diesem Artikel erfahren Sie, wie ausschließlich Azure Resource Manager-VMs integriert werden. Informationen zum Integrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md).
+
+### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>So integrieren Sie einen virtuellen Azure Resource Manager-Computer für die Verwaltung mit der Azure Automation-Zustandskonfiguration
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
+1. Klicken Sie auf dem Blatt **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf der Registerkarte **Knoten** auf **+ Hinzufügen**.
+
+   ![Screenshot der Seite „DSC-Knoten“ mit hervorgehobener Schaltfläche „Azure-VM hinzufügen“](./media/automation-dsc-getting-started/OnboardVM.png)
+
+1. Wählen Sie auf der Seite **Virtuelle Computer** Ihren virtuellen Computer aus.
+1. Klicken Sie auf der Detailseite **Virtueller Computer** auf **+ Verbinden**.
 
    > [!IMPORTANT]
    > Dies muss eine Azure Resource Manager-VM unter Windows Server 2008 R2 oder höher sein.
 
-1. Geben Sie auf der Seite **Registrierung** in das Feld **Name der Knotenkonfiguration** den Namen der Knotenkonfiguration ein, die Sie dem virtuellen Computer zuweisen möchten. Dieser muss dem Namen einer Knotenkonfiguration im Automation-Konto genau entsprechen. Das Angeben eines Namens an dieser Stelle ist optional. Sie können die zugewiesene Knotenkonfiguration nach dem Integrieren des Knotens ändern.
+1. Wählen Sie auf der Seite **Registrierung** im Feld **Name der Knotenkonfiguration** den Namen der Knotenkonfiguration aus, die Sie dem virtuellen Computer zuweisen möchten. Das Angeben eines Namens an dieser Stelle ist optional. Sie können die zugewiesene Knotenkonfiguration nach dem Integrieren des Knotens ändern.
    Aktivieren Sie **Starten Sie den Knoten ggf. neu**, und klicken Sie dann auf **OK**.
 
-    ![Screenshot des Blatts „Registrierung“](./media/automation-dsc-getting-started/RegisterVM.png)
+   ![Screenshot des Blatts „Registrierung“](./media/automation-dsc-getting-started/RegisterVM.png)
 
-    Die angegebene Knotenkonfiguration wird in unter **Konfigurationsmodushäufigkeit** angegebenen Intervallen auf den virtuellen Computer angewendet, und der virtuelle Computer sucht in unter **Aktualisierungshäufigkeit** angegebenen Intervallen nach Updates für die Knotenkonfiguration. Weitere Informationen zur Verwendung dieser Werte finden Sie unter [Konfigurieren des lokalen Konfigurations-Managers](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
+   Die angegebene Knotenkonfiguration wird in unter **Konfigurationsmodushäufigkeit** angegebenen Intervallen auf den virtuellen Computer angewendet, und der virtuelle Computer sucht in unter **Aktualisierungshäufigkeit** angegebenen Intervallen nach Updates für die Knotenkonfiguration. Weitere Informationen zur Verwendung dieser Werte finden Sie unter [Konfigurieren des lokalen Konfigurations-Managers](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
 1. Klicken Sie auf dem Blatt **Azure-VMs hinzufügen** auf **Erstellen**.
 
-Azure startet den Prozess der Integration des virtuellen Computers. Sobald dieser abgeschlossen ist, wird der virtuelle Computer im Automation-Konto auf dem Blatt **DSC-Knoten** angezeigt.
+Azure startet den Prozess der Integration des virtuellen Computers. Wenn dies abgeschlossen ist, wird der virtuelle Computer auf der Registerkarte **Knoten** der Seite **Zustandskonfiguration (DSC)** im Automation-Konto angezeigt.
 
-## <a name="viewing-the-list-of-dsc-nodes"></a>Anzeigen der Liste mit DSC-Knoten
+## <a name="viewing-the-list-of-managed-nodes"></a>Anzeigen der Liste mit verwalteten Knoten
 
-Auf dem Blatt **DSC-Knoten** in Ihrem Automation-Konto können Sie die Liste aller Computer anzeigen, die in die Verwaltung integriert wurden.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-3. Klicken Sie auf der Seite **Automation-Konto** auf **DSC-Knoten**.
-
-## <a name="viewing-reports-for-dsc-nodes"></a>Anzeigen von Berichten für DSC-Knoten
-
-Immer wenn Azure Automation DSC eine Konsistenzprüfung auf einem verwalteten Knoten ausführt, sendet der Knoten einen Statusbericht zurück zum Server. Sie können diese Berichte auf der Seite dieses Knotens anzeigen.
+Auf der Registerkarte **Knoten** der Seite **Zustandskonfiguration (DSC)** können Sie die Liste aller Computer anzeigen, die zur Verwaltung in Ihr Automation-Konto integriert wurden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-3. Klicken Sie auf der Seite **Automation-Konto** auf **DSC-Knoten**.
-4. Wählen Sie in der Liste **DSC-Knoten** den Knoten aus, den Sie anzeigen möchten.
-5. Klicken Sie auf der Seite **Knoten** auf den Bericht, den Sie unter **Berichte** anzeigen möchten.
+1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
+1. Klicken Sie auf dem Blatt **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Knoten**.
 
-    ![Screenshot des Blatts „Bericht“](./media/automation-dsc-getting-started/NodeReport.png)
+## <a name="viewing-reports-for-managed-nodes"></a>Anzeigen von Berichten für verwaltete Knoten
+
+Immer wenn die Azure Automation-Zustandskonfiguration eine Konsistenzprüfung auf einem verwalteten Knoten ausführt, sendet der Knoten einen Statusbericht zurück an den Pullserver. Sie können diese Berichte auf der Seite dieses Knotens anzeigen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
+1. Klicken Sie auf dem Blatt **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Knoten**. Hier ist eine Übersicht über den Konfigurationszustand und die Details für jeden Knoten:
+
+   ![Screenshot der Seite mit den Knoten](./media/automation-dsc-getting-started/NodesTab.png)
+
+1. Klicken Sie auf der Registerkarte **Knoten** auf den Knotendatensatz, um die Berichte zu öffnen. Klicken Sie auf den gewünschten Bericht, um zusätzliche Berichtsdetails anzuzeigen.
+
+   ![Screenshot des Blatts „Bericht“](./media/automation-dsc-getting-started/NodeReport.png)
 
 Auf dem Blatt einen einzelnen Berichts können Sie die folgenden Statusinformationen für die zugehörige Konsistenzprüfung finden:
 
-* Berichtstatus: Gibt an, ob der Knoten kompatibel, die Konfiguration fehlerhaft oder der Knoten nicht kompatibel (Knoten befindet sich im Modus **applyandmonitor** und Computer nicht im gewünschten Zustand) ist.
-* Startzeit der Konsistenzprüfung.
-* Gesamtdauer der Konsistenzprüfung.
-* Typ der Konsistenzprüfung.
-* Fehler, einschließlich Fehlercode und -meldung.
-* Alle in der Konfiguration verwendeten DSC-Ressourcen und der Status jeder Ressource (ob der Knoten den gewünschten Status für diese Ressource hat): Sie können auf die einzelnen Ressourcen klicken, um detailliertere Informationen zu erhalten.
-* Name, IP-Adresse und Konfigurationsmodus des Knotens.
+- Berichtstatus: Gibt an, ob der Knoten kompatibel, die Konfiguration fehlerhaft oder der Knoten nicht kompatibel ist (Knoten befindet sich im Modus **ApplyandMonitor** und Computer nicht im gewünschten Zustand).
+- Startzeit der Konsistenzprüfung.
+- Gesamtdauer der Konsistenzprüfung.
+- Typ der Konsistenzprüfung.
+- Fehler, einschließlich Fehlercode und -meldung.
+- Alle in der Konfiguration verwendeten DSC-Ressourcen und der Status jeder Ressource (ob der Knoten den gewünschten Status für diese Ressource hat): Sie können auf die einzelnen Ressourcen klicken, um detailliertere Informationen zu erhalten.
+- Name, IP-Adresse und Konfigurationsmodus des Knotens.
 
-Sie können auch auf **Unformatierten Bericht anzeigen** klicken, um die tatsächlichen Daten anzuzeigen, die der Knoten an den Server sendet. Weitere Informationen zur Verwendung dieser Daten finden Sie unter [Verwenden eines DSC-Berichtsservers](https://msdn.microsoft.com/powershell/dsc/reportserver).
+Sie können auch auf **Unformatierten Bericht anzeigen** klicken, um die tatsächlichen Daten anzuzeigen, die der Knoten an den Server sendet.
+Weitere Informationen zur Verwendung dieser Daten finden Sie unter [Verwenden eines DSC-Berichtsservers](/powershell/dsc/reportserver).
 
 Nachdem ein Knoten in die Verwaltung integriert wurde, kann es einige Zeit dauern, bis der erste Bericht verfügbar ist. Sie müssen möglicherweise bis zu 30 Minuten auf den ersten Bericht warten, nachdem Sie einen Knoten integriert haben.
 
@@ -197,32 +205,35 @@ Nachdem ein Knoten in die Verwaltung integriert wurde, kann es einige Zeit dauer
 Sie können einen Knoten einer anderen Knotenkonfiguration als der ursprünglich zugewiesenen zuweisen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-3. Klicken Sie auf der Seite **Automation-Konto** auf **DSC-Knoten**.
-4. Klicken Sie auf der Seite **DSC-Knoten** auf den Namen des Knotens, den Sie neu zuweisen möchten.
-5. Klicken Sie auf der Seite dieses Knotens auf **Knoten zuweisen**.
+1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
+1. Klicken Sie auf dem Blatt **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Knoten**.
+1. Klicken Sie auf der Registerkarte **Knoten** auf den Namen des Knotens, den Sie neu zuweisen möchten.
+1. Klicken Sie auf der Seite dieses Knotens auf **Knotenkonfiguration zuweisen**.
 
-    ![Screenshot des Blatts „Knoten“ mit hervorgehobener Schaltfläche „Knoten zuweisen“](./media/automation-dsc-getting-started/AssignNode.png)
-6. Wählen Sie auf der Seite **Knotenkonfiguration zuweisen** die Knotenkonfiguration aus, der Sie den Knoten zuweisen möchten, und klicken Sie dann auf **OK**.
+    ![Screenshot der Seite „Knotendetails“ mit hervorgehobener Schaltfläche „Knotenkonfiguration zuweisen“](./media/automation-dsc-getting-started/AssignNode.png)
 
-    ![Screenshot des Blatts „Knotenkonfiguration zuweisen“](./media/automation-dsc-getting-started/AssignNodeConfig.png)
+1. Wählen Sie auf der Seite **Knotenkonfiguration zuweisen** die Knotenkonfiguration aus, der Sie den Knoten zuweisen möchten, und klicken Sie dann auf **OK**.
+
+    ![Screenshot der Seite „Knotenkonfiguration zuweisen“](./media/automation-dsc-getting-started/AssignNodeConfig.png)
 
 ## <a name="unregistering-a-node"></a>Aufheben der Registrierung eines Knotens
 
 Wenn ein Knoten nicht mehr von Azure Automation DSC verwaltet werden soll, können Sie seine Registrierung aufheben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
-3. Klicken Sie auf der Seite **Automation-Konto** auf **DSC-Knoten**.
-4. Klicken Sie auf der Seite **DSC-Knoten** auf den Namen des Knotens, dessen Registrierung Sie aufheben möchten.
-5. Klicken Sie auf der Seite dieses Knotens auf **Registrierung aufheben**.
+1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
+1. Klicken Sie auf dem Blatt **Automation-Konto** unter **Konfigurationsverwaltung** auf **Zustandskonfiguration (DSC)**.
+1. Klicken Sie auf der Seite **Zustandskonfiguration (DSC)** auf die Registerkarte **Knoten**.
+1. Klicken Sie auf der Registerkarte **DSC-Knoten** auf den Namen des Knotens, dessen Registrierung Sie aufheben möchten.
+1. Klicken Sie auf der Seite dieses Knotens auf **Registrierung aufheben**.
 
-    ![Screenshot des Blatts „Knoten“ mit hervorgehobener Schaltfläche „Registrierung aufheben“](./media/automation-dsc-getting-started/UnregisterNode.png)
+    ![Screenshot der Seite „Knotendetails“ mit hervorgehobener Schaltfläche „Registrierung aufheben“](./media/automation-dsc-getting-started/UnregisterNode.png)
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-* [Azure Automation DSC – Übersicht](automation-dsc-overview.md)
-* [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md)
-* [Windows PowerShell DSC – Übersicht](https://msdn.microsoft.com/powershell/dsc/overview)
-* [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation)
-* [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/)
+- [Übersicht über die Azure Automation-Zustandskonfiguration](automation-dsc-overview.md)
+- [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md)
+- [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview)
+- [Cmdlets der Azure Automation-Zustandskonfiguration](/powershell/module/azurerm.automation/#automation)
+- [Azure Automation-Zustandskonfiguration: Preise](https://azure.microsoft.com/pricing/details/automation/)

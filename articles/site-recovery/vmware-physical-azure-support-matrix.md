@@ -6,18 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 08/09/2018
 ms.author: raynew
-ms.openlocfilehash: 96fc44ad7f69b4de0ec5ea3967fe5495086ba53a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d19aa4c3765beecc853a1b800a7ba1d3ebd74e9c
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413602"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40004326"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>Unterstützungsmatrix für die Replikation von VMware-VMs und physischen Servern in Azure
 
 Dieser Artikel enthält eine Übersicht über die unterstützten Komponenten und Einstellungen für die Notfallwiederherstellung von VMware-VMs in Azure mit [Azure Site Recovery](site-recovery-overview.md).
+
+Sehen Sie sich unsere [Tutorials](tutorial-prepare-azure.md) an, um mit dem einfachsten Bereitstellungsszenario in Azure Site Recovery einzusteigen. [Hier](vmware-azure-architecture.md) finden Sie weitere Informationen zur Azure Site Recovery-Architektur.
 
 ## <a name="replication-scenario"></a>Replikationsszenario
 
@@ -112,7 +114,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.18 | SP1 3.12.49-11-default 
 **Komponente** | **Unterstützt**
 --- | ---
 Dateisysteme | ext3, ext4, XFS.
-Volume-Manager | LVM2.
+Volume-Manager | LVM2. LVM wird nur für Datenträger unterstützt. Azure-VMs haben nur einen einzelnen Betriebssystemdatenträger.
 Paravirtualisierte Speichergeräte | Von paravirtualisierten Treibern exportierte Geräte werden nicht unterstützt.
 E/A-Geräte mit Blöcken mit mehreren Warteschlangen | Nicht unterstützt.
 Physische Server mit HP CCISS-Speichercontroller | Nicht unterstützt.
@@ -241,12 +243,15 @@ Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und ü
 Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein 
 
 
-## <a name="mobility-service"></a>Mobility Service
+## <a name="download-latest-azure-site-recovery-components"></a>Herunterladen der aktuellen Azure Site Recovery-Komponenten
 
-**Name** | **Beschreibung** | **Aktuelle Version** | **Details**
+**Name** | **Beschreibung** | **Anweisungen zum Herunterladen der aktuellen Version** 
 --- | --- | --- | --- | ---
-Einheitliches Setup von Azure Site Recovery | Koordiniert die Kommunikation zwischen lokalen VMware-Servern und Azure  <br/><br/> Installiert auf lokalen VMware-Servern | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
-Mobility Service | Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und Azure/sekundärem Standort<br/><br/> Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten | 9.12.4653.1 (über das Portal verfügbar) | [Neueste Features und Fixes](https://aka.ms/latest_asr_updates)
+Konfigurationsserver | Koordiniert die Kommunikation zwischen lokalen VMware-Servern und Azure  <br/><br/> Installiert auf lokalen VMware-Servern | Klicken Sie [hier](vmware-azure-deploy-configuration-server.md), um eine Neuinstallation durchzuführen. Wenn Sie vorhandene Komponenten auf die aktuelle Version aktualisieren möchten, klicken Sie [hier](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
+Prozessserver|Wird standardmäßig auf dem Konfigurationsserver installiert. Er empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure Storage. Bei zunehmender Größe der Bereitstellung können Sie zusätzlich separate Prozessserver hinzufügen, um größere Mengen von Replikationsdatenverkehr zu bewältigen.| Klicken Sie [hier](vmware-azure-set-up-process-server-scale.md), um eine Neuinstallation durchzuführen. Wenn Sie vorhandene Komponenten auf die aktuelle Version aktualisieren möchten, klicken Sie [hier](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+Mobility Service | Koordiniert die Replikation zwischen lokalen VMware-Servern/physischen Servern und Azure/sekundärem Standort<br/><br/> Installiert auf einem virtuellen VMware-Computer oder auf physischen Servern, die Sie replizieren möchten | Klicken Sie [hier](vmware-azure-install-mobility-service.md), um eine Neuinstallation durchzuführen. Wenn Sie vorhandene Komponenten auf die aktuelle Version aktualisieren möchten, klicken Sie [hier](vmware-azure-install-mobility-service.md#update-mobility-service).
+
+Weitere Informationen zu den neuesten Features und Fixes finden Sie [hier](https://aka.ms/latest_asr_updates).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

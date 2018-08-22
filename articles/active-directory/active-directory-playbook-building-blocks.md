@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: fa399e3644e1050a4f264890583a388f7abd84ed
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049468"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038346"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -41,7 +41,7 @@ Diese Voraussetzungen gelten für Azure AD Premium-PoC in jedem Fall.
 
 | Voraussetzung | angeben |
 | --- | --- |
-| Definierter Azure AD-Mandant mit gültigem Azure-Abonnement | [Einrichten eines Azure Active Directory-Mandanten](active-directory-howto-tenant.md)<br/>**Hinweis:** Wenn Sie bereits über eine Umgebung mit Azure AD Premium-Lizenzen verfügen, können Sie unter https://aka.ms/accessaad ein Abonnement ohne Obergrenze abschließen. <br/>Weitere Informationen finden Sie unter https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ sowie unter https://technet.microsoft.com/library/dn832618.aspx. |
+| Definierter Azure AD-Mandant mit gültigem Azure-Abonnement | [Einrichten eines Azure Active Directory-Mandanten](develop/quickstart-create-new-tenant.md)<br/>**Hinweis:** Wenn Sie bereits über eine Umgebung mit Azure AD Premium-Lizenzen verfügen, können Sie unter https://aka.ms/accessaad ein Abonnement ohne Obergrenze abschließen. <br/>Weitere Informationen finden Sie unter https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ sowie unter https://technet.microsoft.com/library/dn832618.aspx. |
 | Definierte und überprüfte Domäne | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Hinweis:** Einige Workloads wie Power BI können einen Azure AD-Mandanten unbemerkt bereitgestellt haben. Navigieren Sie zu https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration, um zu prüfen, ob eine bestimmte Domäne einem Mandanten zugeordnet ist. Bei Erfolg ist die Domäne bereits einem Mandanten zugeordnet. Dann ist möglicherweise eine Übernahme nötig. Wenn dies der Fall ist, hilft Microsoft Ihnen gerne weiter. Weitere Informationen zu den Übernahmeoptionen finden Sie unter: [Was ist die Self-Service-Registrierung für Azure?](users-groups-roles/directory-self-service-signup.md) |
 | Aktivierte Testversion von Azure AD Premium oder EMS | [Azure Active Directory Premium einen Monat lang gratis](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC-Benutzern zugewiesene Azure AD Premium- oder EMS-Lizenzen | [Lizenzieren von sich selbst und Ihrer Benutzer in Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
@@ -159,7 +159,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 | Warten Sie einige Minuten, während die Bereitstellung abgeschlossen wird.  In der Zwischenzeit können Sie die Bereitstellungsberichte überprüfen. |  |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. | [Was ist der Zugriffsbereich?](user-help/active-directory-saas-access-panel-introduction.md) |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. Bestätigen Sie den Zugriff. |  |
-| Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
+| Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -185,13 +185,13 @@ Geschätzter Zeitaufwand: 15 Minuten
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)|
 | Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Melden Sie sich unter https://myapps.microsoft.com/ als Testbenutzer mit Zugriff an. |  |
 | Klicken Sie auf die Kachel für die Anwendung, die gerade erstellt wurde. | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Eingeben der Anwendungsanmeldeinformationen | [Was ist der Zugriffsbereich?: Kennwortbasiertes SSO ohne Identitätsbereitstellung](user-help/active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
 | Schließen Sie den Browser, und wiederholen Sie den Anmeldevorgang. Zu diesem Zeitpunkt sollte der Benutzer die Anwendung direkt öffnen können. |  |
-| Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
+| Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reports-monitoring/reference-reports-data-retention.md) |
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -220,10 +220,10 @@ Geschätzter Zeitaufwand: 30 Minuten
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Konfigurieren von Kennwort-SSO | [Verwalten des Features für einmaliges Anmelden für Unternehmens-Apps im neuen Azure-Portal: Kennwortbasierte Anmeldung](manage-apps/what-is-single-sign-on.md#how-does-single-sign-on-with-azure-active-directory-work)|
 | Weisen Sie die App der in den Voraussetzungen identifizierten Gruppe zu, während Sie ihnen Anmeldeinformationen zuweisen. | [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App in Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 | Melden Sie sich als verschiedene Benutzer an, die auf die App als **das gleiche freigegebene Konto** zugreifen.  |  |
-| Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](active-directory-reporting-retention.md) |
+| Optional: Überprüfen Sie die Nutzungsberichte der Anwendung. Hinweis: Die Zugriffe werden in den Berichten erst nach einer gewissen Wartezeit angezeigt. | [Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal: Nutzung von verwalteten Anwendungen](reports-monitoring/concept-sign-ins.md#usage-of-managed-applications)<br/>[Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reports-monitoring/reference-reports-data-retention.md) |
 
 
 ### <a name="considerations"></a>Überlegungen
@@ -452,9 +452,9 @@ Geschätzter Zeitaufwand: 10 Minuten
 | Schritt | angeben |
 | --- | --- |
 | Wechseln Sie zum Blatt „Azure AD-Verwaltungsportal: Bedingter Zugriff“. | [Azure AD-Verwaltungsportal: Bedingter Zugriff](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
-| Erstellen Sie die Richtlinie für den bedingten Zugriff:<br/>- Ausrichtung auf PoC-Benutzer unter „Benutzer und Gruppen“<br/>- Ausrichtung auf PoC-Anwendung unter „Cloud-Apps“<br/>- Ausrichtung auf alle Standorte außer vertrauenswürdigen unter „Bedingungen“ > „Standorte“. **Hinweis:** Vertrauenswürdige IPs werden im [MFA-Portal](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx) konfiguriert.<br/>- Erfordern von Multi-Factor Authentication unter „Gewährung“ | [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory: Schritte für die Richtlinienkonfiguration](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
-| Greifen Sie auf die Anwendung über das Unternehmensnetzwerk zu. | [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory: Testen der Richtlinie](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
-| Greifen Sie auf die Anwendung über das öffentliche Netzwerk zu. | [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory: Testen der Richtlinie](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
+| Erstellen Sie die Richtlinie für den bedingten Zugriff:<br/>- Ausrichtung auf PoC-Benutzer unter „Benutzer und Gruppen“<br/>- Ausrichtung auf PoC-Anwendung unter „Cloud-Apps“<br/>- Ausrichtung auf alle Standorte außer vertrauenswürdigen unter „Bedingungen“ > „Standorte“. **Hinweis:** Vertrauenswürdige IPs werden im [MFA-Portal](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx) konfiguriert.<br/>- Erfordern von Multi-Factor Authentication unter „Gewährung“ | [Erstellen Sie Ihre Richtlinie für bedingten Zugriff.](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#create-your-conditional-access-policy) |
+| Greifen Sie auf die Anwendung über das Unternehmensnetzwerk zu. | [Testen der Richtlinie für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
+| Greifen Sie auf die Anwendung über das öffentliche Netzwerk zu. | [Testen der Richtlinie für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#test-your-conditional-access-policy) |
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -500,17 +500,17 @@ Geschätzter Zeitaufwand: 20 Minuten
 | Voraussetzung | angeben |
 | --- | --- |
 | Gerät mit heruntergeladenem und installiertem Tor-Browser | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Zugriff auf PoC-Benutzer für die Anmeldung | [Azure Active Directory Identity Protection-Playbook](active-directory-identityprotection-playbook.md) |
+| Zugriff auf PoC-Benutzer für die Anmeldung | [Azure Active Directory Identity Protection-Playbook](identity-protection/playbook.md) |
 
 ### <a name="steps"></a>Schritte
 
 | Schritt | angeben |
 | --- | --- |
 | Öffnen Sie den Tor-Browser. | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Melden Sie sich unter https://myapps.microsoft.com mit dem PoC-Benutzerkonto an. | [Azure Active Directory Identity Protection-Playbook: Simulieren von Risikoereignissen](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Melden Sie sich unter https://myapps.microsoft.com mit dem PoC-Benutzerkonto an. | [Azure Active Directory Identity Protection-Playbook: Simulieren von Risikoereignissen](identity-protection/playbook.md#simulating-risk-events) |
 | Warten Sie 5 bis 7 Minuten. |  |
 | Melden Sie sich unter https://portal.azure.com als globaler Administrator an, und öffnen Sie das Blatt „Identity Protection“. | https://aka.ms/aadipgetstarted |
-| Öffnen Sie das Blatt „Risikoereignisse“. Unter „Anmeldungen von anonymen IP-Adressen“ sollten Sie einen Eintrag sehen.  | [Azure Active Directory Identity Protection-Playbook: Simulieren von Risikoereignissen](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Öffnen Sie das Blatt „Risikoereignisse“. Unter „Anmeldungen von anonymen IP-Adressen“ sollten Sie einen Eintrag sehen.  | [Azure Active Directory Identity Protection-Playbook: Simulieren von Risikoereignissen](identity-protection/playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>Überlegungen
 
@@ -534,14 +534,14 @@ Geschätzter Zeitaufwand: 10 Minuten
 | Schritt | angeben |
 | --- | --- |
 | Melden Sie sich unter https://portal.azure.com als globaler Administrator an, und öffnen Sie das Blatt „Identity Protection“. | https://aka.ms/aadipgetstarted |
-| Aktivieren Sie eine Richtlinie zum Anmelderisiko:<br/>- Zugewiesen zu: PoC-Benutzer<br/>- Bedingungen: Anmelderisiko mittel oder höher (die Anmeldung von einem anonymen Standort aus wird als mittleres Risiko aufgefasst)<br/>- Steuerelemente: Anfordern von MFA | [Azure Active Directory Identity Protection-Playbook: Anmelderisiko](active-directory-identityprotection-playbook.md) |
+| Aktivieren Sie eine Richtlinie zum Anmelderisiko:<br/>- Zugewiesen zu: PoC-Benutzer<br/>- Bedingungen: Anmelderisiko mittel oder höher (die Anmeldung von einem anonymen Standort aus wird als mittleres Risiko aufgefasst)<br/>- Steuerelemente: Anfordern von MFA | [Azure Active Directory Identity Protection-Playbook: Anmelderisiko](identity-protection/playbook.md) |
 | Öffnen Sie den Tor-Browser. | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Melden Sie sich unter https://myapps.microsoft.com mit dem PoC-Benutzerkonto an. |  |
-| Beachten Sie die MFA-Überprüfung. | [Anmeldeverfahren von Azure AD Identity Protection: Wiederherstellung riskanter Anmeldungen](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+| Beachten Sie die MFA-Überprüfung. | [Anmeldeverfahren von Azure AD Identity Protection: Wiederherstellung riskanter Anmeldungen](identity-protection/flows.md#risky-sign-in-recovery)
 
 ### <a name="considerations"></a>Überlegungen
 
-Diese Funktion ist Teil von Azure AD Premium P2 und/oder EMS E5. Weitere Informationen zu Risikoereignissen finden Sie unter: [Azure Active Directory-Risikoereignisse](active-directory-reporting-risk-events.md)
+Diese Funktion ist Teil von Azure AD Premium P2 und/oder EMS E5. Weitere Informationen zu Risikoereignissen finden Sie unter: [Azure Active Directory-Risikoereignisse](reports-monitoring/concept-risk-events.md)
 
 ## <a name="configuring-certificate-based-authentication"></a>Konfigurieren der zertifikatbasierten Authentifizierung
 

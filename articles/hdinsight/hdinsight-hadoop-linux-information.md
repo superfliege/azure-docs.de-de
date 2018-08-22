@@ -1,25 +1,20 @@
 ---
-title: Tipps zur Verwendung von Hadoop unter Linux-basiertem HDInsight in Azure | Microsoft-Dokumentation
+title: Tipps zur Verwendung von Hadoop unter Linux-basiertem HDInsight – Azure
 description: Hier erhalten Sie Implementierungstipps für die Verwendung von Linux-basierten HDInsight (Hadoop)-Clustern in einer vertrauten Linux-Umgebung, die in der Azure-Cloud ausgeführt wird.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-tags: azure-portal
-ms.assetid: c41c611c-5798-4c14-81cc-bed1e26b5609
 ms.service: hdinsight
+author: jasonwhowell
+ms.author: jasonh
+editor: jasonwhowell
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/27/2018
-ms.author: larryfr
-ms.openlocfilehash: 3ad7aa01200bf2bf4a63a380b2b883983c8622d6
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.date: 08/09/2018
+ms.openlocfilehash: 85741e91ab074ca45fef79e7e946a74824a1734f
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31405390"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038247"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -103,18 +98,21 @@ Beispieldaten und JAR-Dateien finden Sie im Hadoop Distributed File System unter
 
 ## <a name="hdfs-azure-storage-and-data-lake-store"></a>HDFS, Azure Storage und Data Lake Store
 
-In den meisten Hadoop-Distributionen wird HDFS auf den Computern im Cluster durch lokalen Speicher gesichert. Die Nutzung von lokalem Speicher kann für eine cloudbasierte Lösung mit zeitabhängiger Abrechnung (pro Stunde oder pro Minute) für Computeressourcen kostenintensiv sein.
+In den meisten Hadoop-Distributionen werden die Daten in HDFS gespeichert, und HDFS wird auf den Computern im Cluster durch lokalen Speicher gesichert. Die Nutzung von lokalem Speicher kann für eine cloudbasierte Lösung mit zeitabhängiger Abrechnung (pro Stunde oder pro Minute) für Computeressourcen kostenintensiv sein.
 
-HDInsight verwendet als Standardspeicher entweder Blobs in Azure Storage oder Azure Data Lake Store. Diese Dienste bieten die folgenden Vorteile:
+Bei Verwendung von HDInsight werden die Datendateien skalierbar und zuverlässig in der Cloud gespeichert. Dazu wird Azure Blob Storage (und optional Azure Data Lake Store) verwendet. Diese Dienste bieten die folgenden Vorteile:
 
 * Kostengünstige langfristige Speicherung
 * Zugriff über externe Dienste wie Websites, Hilfsprogramme zum Hochladen/Herunterladen von Dateien, SDKs für verschiedene Sprachen und Webbrowser
+* Große Dateikapazität und großer skalierbarer Speicher
 
-Ein Azure Storage-Konto kann bis zu 4,75 TB an Daten aufnehmen, obwohl einzelne Blobs (oder Dateien aus HDInsight-Sicht) nur bis zu 195 GB enthalten können. Azure Data Lake Store kann dynamisch wachsen, und Billionen von Dateien aufnehmen, wobei einzelne Dateien größer als ein Petabyte sein können. Weitere Informationen finden Sie unter [Grundlegendes zu Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) und [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
+Weitere Informationen finden Sie unter [Grundlegendes zu Blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) und [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/).
 
 Wenn Sie entweder Azure Storage oder Data Lake Store nutzen, müssen Sie in HDInsight für den Datenzugriff keine besonderen Schritte ausführen. Mit dem folgenden Befehl werden Dateien im Ordner `/example/data` beispielsweise unabhängig davon aufgelistet, ob dieser in Azure Storage oder Data Lake Store gespeichert ist:
 
     hdfs dfs -ls /example/data
+
+In HDInsight werden die Speicherressourcen (Azure Blob Storage und Azure Data Lake Store) von den Computeressourcen entkoppelt. Aus diesem Grund können Sie nach Bedarf HDInsight-Cluster für Berechnungen erstellen und die Cluster später nach Abschluss der Aufgaben löschen. Ihre Datendateien werden währenddessen so lange wie nötig sicher im Cloudspeicher aufbewahrt.
 
 ### <a name="uri-and-scheme"></a>URI und Schema
 
@@ -272,7 +270,7 @@ Um eine andere Version einer Komponente zu verwenden, laden Sie die benötigte V
 > [!WARNING]
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
-> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z.B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
+> Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z.B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites unter [http://apache.org](http://apache.org), z.B. [Hadoop](http://hadoop.apache.org/), [Spark](http://spark.apache.org/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

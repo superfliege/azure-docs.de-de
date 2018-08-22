@@ -2,30 +2,25 @@
 title: Übersicht über die .NET Framework-APIs in Azure Event Hubs | Microsoft-Dokumentation
 description: Hier finden Sie eine Zusammenfassung der wichtigsten .NET Framework-Client-APIs in Event Hubs.
 services: event-hubs
-documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
-editor: ''
-ms.assetid: 7f3b6cc0-9600-417f-9e80-2345411bd036
 ms.service: event-hubs
 ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 12/19/2017
-ms.author: sethm
-ms.openlocfilehash: a51d4552df2643a25ce492b8525b9aa7fa36e21c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.date: 06/13/2018
+ms.author: shvija
+ms.openlocfilehash: dd915671c8b7d51595fea520187b917005f5dc53
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781893"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40007280"
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Übersicht über die .NET Framework-API in Event Hubs
 
-In diesem Artikel werden einige der wichtigsten .NET Framework-Client-APIs von Event Hubs zusammengefasst. Es gibt zwei Kategorien: Verwaltungs- und Laufzeit-APIs. Laufzeit-APIs umfassen alle Vorgänge, die zum Senden und Empfangen einer Nachricht erforderlich sind. Verwaltungsvorgänge ermöglichen das Verwalten des Entitätszustands von Event Hubs durch das Erstellen, Aktualisieren und Löschen von Entitäten.
+In diesem Artikel werden einige der wichtigsten [.NET Framework-Client-APIs](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) von Azure Event Hubs zusammengefasst. Es gibt zwei Kategorien: Verwaltungs- und Laufzeit-APIs. Laufzeit-APIs umfassen alle Vorgänge, die zum Senden und Empfangen einer Nachricht erforderlich sind. Verwaltungsvorgänge ermöglichen das Verwalten des Entitätszustands von Event Hubs durch das Erstellen, Aktualisieren und Löschen von Entitäten.
 
-[Überwachungsszenarien](event-hubs-metrics-azure-monitor.md) umfassen sowohl Verwaltung als auch Laufzeit. Eine ausführliche Referenzdokumentation zu den .NET-APIs finden Sie in den Referenzen zu [Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) und zur [EventProcessorHost-API](/dotnet/api/microsoft.azure.eventhubs.processor).
+[Überwachungsszenarien](event-hubs-metrics-azure-monitor.md) umfassen sowohl Verwaltung als auch Laufzeit. Eine ausführliche Referenzdokumentation zu den .NET-APIs finden Sie in den Referenzen zu [.NET Framework](/dotnet/api/microsoft.servicebus.messaging.eventhubclient), [.NET Standard](/dotnet/api/microsoft.azure.eventhubs) und zur [EventProcessorHost-API](/dotnet/api/microsoft.azure.eventhubs.processor).
 
 ## <a name="management-apis"></a>Verwaltungs-APIs
 
@@ -180,6 +175,7 @@ public class SimpleEventProcessor : IEventProcessor
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Event Hubs-Szenarien finden Sie unter diesen Links:
 
 * [Was ist Azure Event Hubs?](event-hubs-what-is-event-hubs.md)

@@ -3,17 +3,16 @@ title: Azure Event Grid – Übermittlung und Wiederholung
 description: Beschreibt, wie Azure Event Grid Ereignisse übermittelt und wie nicht übermittelte Nachrichten verarbeitet werden.
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 83852917909d13555e7a0a339d2ecc805eeead42
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625796"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005394"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten 
 
@@ -43,11 +42,12 @@ Die folgenden HTTP-Antwortcodes geben an, dass bei der Übermittlung eines Ereig
 - 404 – Nicht gefunden
 - 408 – Anforderungstimeout
 - 414 – URI zu lang
+- 429 – Zu viele Anforderungen
 - 500 Interner Serverfehler
 - 503 Dienst nicht verfügbar
 - 504 Gateway-Timeout
 
-Wenn Event Grid einen Fehler empfängt, der angibt, dass der Endpunkt nicht verfügbar ist, wird versucht, das Ereignis erneut zu senden. 
+Wenn Event Grid eine Fehlermeldung empfängt, die angibt, dass der Endpunkt vorübergehend nicht verfügbar oder eine künftige Anforderung unter Umständen erfolgreich ist, wird versucht, das Ereignis erneut zu senden. Wenn Event Grid eine Fehlermeldung empfängt, die angibt, dass die Bereitstellung nie erfolgreich sein wird und ein [Endpunkt für unzustellbare Nachrichten konfiguriert wurde](manage-event-delivery.md), sendet Event Grid das Ereignis an den Endpunkt für unzustellbare Nachrichten. 
 
 ## <a name="retry-intervals-and-duration"></a>Wiederholungsintervalle und Dauer
 
@@ -63,10 +63,15 @@ Event Grid verwendet exponentiell ansteigende Wartezeiten für Wiederholungsvers
 
 Event Grid fügt allen Wiederholungsintervallen eine geringfügige zufällige Anordnung hinzu. Nach einer Stunde wird die Ereignisübermittlung erneut versucht. Der Versuch wird jede Stunde wiederholt.
 
-Ereignisse, die nicht innerhalb von 24 Stunden übermittelt werden konnten, werden von Event Grid nicht mehr übermittelt.
+Event Grid markiert alle Ereignisse standardmäßig als abgelaufen, die nicht innerhalb von 24 Stunden übermittelt werden. Bei der Erstellung von Ereignisabonnements können Sie die [Wiederholungsrichtlinie anpassen](manage-event-delivery.md). Sie geben die maximale Anzahl von Zustellversuchen (Standardwert 30) und die Gültigkeitsdauer des Ereignisses (Standardwert 1.440 Minuten) ein.
+
+## <a name="dead-letter-events"></a>„Unzustellbare Nachrichten“-Ereignisse
+
+Wenn ein Ereignis nicht übermittelt werden kann, kann Event Grid das nicht übermittelte Ereignis an ein Speicherkonto senden. Dieser Prozess wird als Speicherung unzustellbarer Nachrichten bezeichnet. Um Unzustellbarkeitsereignisse anzuzeigen, können Sie sie aus dem Speicherort für unzustellbare Nachrichten abrufen. Weitere Informationen finden Sie unter [Richtlinien für unzustellbare Nachrichten und Wiederholungen](manage-event-delivery.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Anzeigen des Status von Ereignisübermittlungen finden Sie unter [Überwachen der Event Grid-Nachrichtenübermittlung](monitor-event-delivery.md).
+* Wie Sie Optionen für die Ereignisübermittlung anpassen, erfahren Sie unter [Verwalten von Event Grid-Übermittlungseinstellungen](manage-event-delivery.md).
 * Eine Einführung in Event Grid finden Sie unter [Informationen zu Event Grid](overview.md).
 * Um sich schnell mit der Verwendung von Event Grid vertraut zu machen, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md).

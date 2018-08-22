@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: e4144ca0d87abda3d9f8de47e56af59d0e4af312
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: a499f609e517d880b3a942ac6dc3eb0dc10b69e7
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938365"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038232"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 
@@ -60,7 +60,7 @@ In diesem Artikel beziehen sich PUT, POST und DELETE auf alle Schreibvorgänge, 
 
 ![Aktivitätsprotokolldiagramm](./media/azure-log-audit/azure-log-audit-fig1.png)
 
-Sie können Ereignisse per Azure-Portal, [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli), PowerShell-Cmdlets und [Azure Monitor-REST-API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) aus dem Aktivitätsprotokoll abrufen. Aktivitätsprotokolle weisen eine Datenaufbewahrungsdauer von 19 Tagen auf.
+Sie können Ereignisse per Azure-Portal, [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli), PowerShell-Cmdlets und [Azure Monitor-REST-API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) aus dem Aktivitätsprotokoll abrufen. Für Aktivitätsprotokolle gilt eine Datenaufbewahrungsdauer von 90 Tagen.
 
 Integrationsszenarien für ein Aktivitätsprotokollereignis:
 
@@ -72,7 +72,7 @@ Integrationsszenarien für ein Aktivitätsprotokollereignis:
 
 * [Speichern unter einem Speicherkonto zur Archivierung oder manuellen Untersuchung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-archive-activity-log). Sie können die Aufbewahrungsdauer (in Tagen) mithilfe von Protokollprofilen angeben.
 
-* Abfragen und Anzeigen des Protokolls im Azure-Portal.
+* Abfragen und Anzeigen des Protokolls im Azure-Portal
 
 * Abfragen per PowerShell-Cmdlet, Azure CLI oder REST-API.
 
@@ -361,10 +361,10 @@ Log Integration unterstützt derzeit die Integration von Azure-Aktivitätsprotok
 
 | Protokolltyp | Log Analytics unterstützt JSON (Splunk, ArcSight und IBM Qradar) |
 | :------- | :-------------------------------------------------------- |
-|Azure AD-Überwachungsprotokolle|   Ja|
-|Aktivitätsprotokolle| Ja|
-|Security Center-Warnungen |Ja|
-|Diagnoseprotokolle (Ressourcenprotokolle)|  Ja|
+|Azure AD-Überwachungsprotokolle|   JA|
+|Aktivitätsprotokolle| JA|
+|Security Center-Warnungen |JA|
+|Diagnoseprotokolle (Ressourcenprotokolle)|  JA|
 |VM-Protokolle|   Ja, über weitergeleitete Ereignisse und nicht über JSON|
 
 [Erste Schritte mit der Azure Log Integration:](https://docs.microsoft.com/azure/security/security-azure-log-integration-get-started) In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Azure-Protokollintegration installieren und Protokolle aus Azure-Speicher sowie Azure-Aktivitätsprotokolle, Azure Security Center-Warnungen und Azure AD-Überwachungsprotokolle integrieren.

@@ -1,26 +1,22 @@
 ---
 title: Verwalten von Logik-Apps mit Visual Studio – Azure Logic Apps | Microsoft-Dokumentation
 description: Verwalten von Logik-Apps und anderen Azure-Ressourcen mit dem Cloud-Explorer von Visual Studio
-author: ecfan
-manager: jeconnoc
-editor: ''
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
 ms.topic: article
 ms.custom: mvc
 ms.date: 03/15/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: b4d7f557923a67ae0c9fc513cd2b4fe7555241be
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: d4de75238e48b8eb955095b5a3823f2fed799fae
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301115"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038256"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
@@ -161,6 +157,9 @@ Ohne Ihre Logik-App zu löschen, können Sie verhindern, dass der Trigger ausgel
 
 ![Ihre Logik-App deaktivieren](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
+> [!NOTE]
+> Wenn Sie eine Logik-App deaktivieren, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden bis zum Ende fortgesetzt, was einige Zeit in Anspruch nehmen kann. 
+
 Wenn Sie wünschen, dass Ihre Logik-App den Betrieb fortsetzt, können Sie Ihre Logik-App erneut aktivieren. Öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Aktivieren** aus.
 
 ![Ihre Logik-App aktivieren](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
@@ -170,6 +169,9 @@ Wenn Sie wünschen, dass Ihre Logik-App den Betrieb fortsetzt, können Sie Ihre 
 Um Ihre Logik-App aus dem Azure-Portal zu löschen, öffnen Sie im Cloud-Explorer das Kontextmenü Ihrer Logik-App, und wählen Sie **Löschen** aus.
 
 ![Löschen Ihrer Logik-App](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
+
+> [!NOTE]
+> Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert. Alle in Bearbeitung befindlichen und ausstehenden Ausführungen werden abgebrochen. Bei Tausenden von Ausführungen kann der Abbruch möglicherweise erhebliche Zeit in Anspruch nehmen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: f8779af725346a456efe8e718cfc8ff3a91c72fc
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325250"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005874"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Übersicht: Azure Standard Load Balancer
 
@@ -64,7 +64,15 @@ Der Back-End-Pool kann eigenständige virtuelle Computer, Verfügbarkeitsgruppen
 
 Wenn Sie überlegen, wie Sie Ihren Back-End-Pool gestalten, können Sie die Anzahl der einzelnen Back-End-Pool-Ressourcen so gering wie möglich halten, um die Dauer von Verwaltungsvorgängen weiter zu optimieren.  Es gibt keinen Unterschied in der Datenebenenleistung oder -skalierung.
 
-## <a name="az"></a>Verfügbarkeitszonen
+### <a name="probes"></a>Integritätstests
+  
+Load Balancer Standard fügt Unterstützung für [HTTPS-Integritätstests](load-balancer-custom-probe-overview.md#httpprobe) (HTTP-Test mit TLS-Wrapper (Transport Layer Security)) hinzu, um eine genaue Überwachung der HTTPS-Anwendungen zu ermöglichen.  
+
+Wenn [alle Tests des gesamten Back-End-Pools zu Fehlern führen](load-balancer-custom-probe-overview.md#probedown), sorgt Load Balancer Standard darüber hinaus dafür, dass alle bestehenden TCP-Verbindungen erhalten bleiben. (Load Balancer im Tarif „Basic“ hingegen beendet alle TCP-Verbindungen für alle Instanzen.)
+
+Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](load-balancer-custom-probe-overview.md).
+
+### <a name="az"></a>Verfügbarkeitszonen
 
 Standard Load Balancer unterstützt zusätzliche Funktionen in Regionen, in denen Verfügbarkeitszonen verfügbar sind.  Diese Funktionen ergänzen alle Funktionen, die Standard Load Balancer bereitstellt.  Verfügbarkeitszonenkonfigurationen sind für einen öffentlichen und internen Standard Load Balancer verfügbar.
 
@@ -167,7 +175,7 @@ SKUs sind nicht änderbar. Führen Sie die Schritte in diesem Abschnitt aus, um 
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>Migrieren von der SKU „Basic“ zu „Standard“
 
-1. Erstellen Sie eine neue Standard-Ressource (Load Balancer bzw. Public IP nach Bedarf). Erstellen Sie Ihre Regeln und Prüfdefinitionen erneut.
+1. Erstellen Sie eine neue Standard-Ressource (Load Balancer bzw. Public IP nach Bedarf). Erstellen Sie Ihre Regeln und Prüfdefinitionen erneut.  Falls Sie zuvor einen TCP-Test für 443/TCP verwendet haben, ändern Sie dieses Testprotokoll ggf. in einen HTTPS-Test, und fügen Sie einen Pfad hinzu.
 
 2. Erstellen Sie eine neue Netzwerksicherheitsgruppe (NSG) für die Netzwerkschnittstelle (NIC) (bzw. aktualisieren Sie eine vorhandene NSG) oder ein Subnetz für die Whitelist mit dem vom Lastenausgleich verteilten Datenverkehr, eine Prüfung sowie beliebigen anderen Datenverkehr, den Sie zulassen möchten.
 
@@ -177,7 +185,7 @@ SKUs sind nicht änderbar. Führen Sie die Schritte in diesem Abschnitt aus, um 
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>Migrieren von der SKU „Standard“ zu „Basic“
 
-1. Erstellen Sie eine neue Basic-Ressource (Load Balancer bzw. Public IP nach Bedarf). Erstellen Sie Ihre Regeln und Prüfdefinitionen erneut. 
+1. Erstellen Sie eine neue Basic-Ressource (Load Balancer bzw. Public IP nach Bedarf). Erstellen Sie Ihre Regeln und Prüfdefinitionen erneut.  Ändern Sie einen HTTPS-Test in einen TCP-Test für 443/TCP. 
 
 2. Entfernen Sie die Standard-SKU-Ressourcen (Load Balancer und Public IPs nach Bedarf) aus allen VM-Instanzen. Stellen Sie sicher, dass auch alle VM-Instanzen einer Verfügbarkeitsgruppe entfernt werden.
 
@@ -218,15 +226,16 @@ Standard Load Balancer ist ein Produkt, das auf Basis einer Reihe von konfigurie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md)
+- Informationen zu [Standard Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md)
+- Informationen zu [Integritätstests](load-balancer-custom-probe-overview.md)
 - Weitere Informationen zu [Verfügbarkeitszonen](../availability-zones/az-overview.md).
 - Weitere Informationen zu [Diagnosen für Standard Load Balancer](load-balancer-standard-diagnostics.md).
 - Weitere Informationen zu [unterstützten mehrdimensionalen Metriken](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers) für Diagnosen in [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md).
-- Informationen zur Verwendung von [Load Balancer für ausgehende Verbindungen](load-balancer-outbound-connections.md).
-- Weitere Informationen zu [Standard Load Balancer mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md).
-- Informationen zur Verwendung von [Load Balancer mit mehreren Front-Ends](load-balancer-multivip-overview.md).
+- Informationen zur Verwendung von [Load Balancer für ausgehende Verbindungen](load-balancer-outbound-connections.md)
+- Informationen zu [Load Balancer Standard mit Lastenausgleichsregeln für HA-Ports](load-balancer-ha-ports-overview.md)
+- Informationen zur Verwendung von [Load Balancer mit mehreren Front-Ends](load-balancer-multivip-overview.md)
 - Weitere Informationen zu [virtuellen Netzwerken](../virtual-network/virtual-networks-overview.md).
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
-- Weitere Informationen zu [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md)
+- Informationen zu [VNET-Dienstendpunkten](../virtual-network/virtual-network-service-endpoints-overview.md)
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) in Azure.
 - Weitere Informationen zu [Load Balancer](load-balancer-overview.md).

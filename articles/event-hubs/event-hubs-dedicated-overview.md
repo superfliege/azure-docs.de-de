@@ -3,7 +3,7 @@ title: Übersicht über die Azure Event Hubs Dedicated-Kapazität | Microsoft-Do
 description: Übersicht über die Microsoft Azure Event Hubs Dedicated-Kapazität
 services: event-hubs
 documentationcenter: na
-author: sethmanheim
+author: ShubhaVijayasarathy
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: sethm
-ms.openlocfilehash: 7009710328c96660accdcf9c88313ad92d25d41c
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.author: shvija
+ms.openlocfilehash: 1a7a7593e80f08296e3163e528e880f343366b8a
+ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32311415"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "40005703"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -32,12 +32,12 @@ Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von 
 | Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
 | Durchsatzeinheit (1 MB/s eingehend, 2 MB/s ausgehend) | Bezahlung pro Stunde | Enthalten |
 | Nachrichtengröße | 256 KB | 1 MB |
-| Herausgeberrichtlinien | Ja | Ja |   
+| Herausgeberrichtlinien | JA | JA |   
 | Verbrauchergruppen | 20 | 20 |
-| Nachrichtenwiederholung | Ja | Ja |
+| Nachrichtenwiederholung | JA | JA |
 | Maximale Durchsatzeinheiten | 20 (flexibel bis 100)   | 1 Kapazitätseinheit (Capacity Unit, CU) ≈ 50 |
 | Brokerverbindungen | 1.000 enthalten | 100.000 enthalten |
-| Zusätzliche Brokerverbindungen | Ja | Ja |
+| Zusätzliche Brokerverbindungen | JA | JA |
 | Nachrichtenaufbewahrung | 1 Tag enthalten | Bis zu 7 Tage enthalten |
 | Erfassen | Bezahlung pro Stunde | Enthalten |
 

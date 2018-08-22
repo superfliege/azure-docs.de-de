@@ -11,12 +11,12 @@ ms.topic: article
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: b2ef450a429b26843cf770a6243c6f4de932de43
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 61bc081ca3221c0d588b7b7a2d9482d2fc70c0d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247320"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038298"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -63,6 +63,26 @@ In Visual Studio:
 2. Ändern Sie die Einstellungen für **Ausführlichkeit der MSBuild-Projektbuildausgabe:** zu **Detailliert** oder **Diagnose**.
 
     ![Screenshot des Dialogfelds „Tools > Optionen“](media/common/VerbositySetting.PNG)
+    
+## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Bei der DNS-Namensauflösung tritt für eine öffentliche URL, die einem Dev Spaces-Dienst zugeordnet ist, ein Fehler auf.
+
+In diesem Fall wird unter Umständen der Fehler „Page cannot be displayed“ (Die Seite kann nicht angezeigt werden.) oder „This site cannot be reached“ (Diese Website ist nicht erreichbar.) im Webbrowser angezeigt, wenn Sie versuchen, eine Verbindung mit einer URL herzustellen, die einem Dev Spaces-Dienst zugeordnet ist.
+
+### <a name="try"></a>Versuchen Sie Folgendes:
+
+Mit dem folgenden Befehl können Sie alle Ihren Dev Spaces-Diensten zugeordneten URLs auflisten:
+
+```cmd
+azds list-uris
+```
+
+Der Status *Ausstehend* für eine URL bedeutet, dass Dev Spaces auf den Abschluss der DNS-Registrierung wartet. Manchmal dauert dieser Vorgang einige Minuten. Dev Spaces öffnet zudem für die einzelnen Dienste einen localhost-Tunnel, den Sie beim Warten auf die DNS-Registrierung verwenden können.
+
+Wird für eine URL länger als fünf Minuten der Status *Ausstehend* angezeigt, weist dies unter Umständen auf ein Problem mit dem nginx-Eingangscontroller hin, der für das Abrufen des öffentlichen Endpunkts zuständig ist. Mit dem folgenden Befehl können Sie den Pod löschen, in dem der nginx-Controller ausgeführt wird. Er wird automatisch neu erstellt.
+
+```cmd
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
+```
 
 ## <a name="error-required-tools-and-configurations-are-missing"></a>Fehler „Erforderliche Tools und Konfigurationen fehlen“
 

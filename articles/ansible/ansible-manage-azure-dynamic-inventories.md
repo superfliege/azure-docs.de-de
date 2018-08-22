@@ -6,14 +6,14 @@ keywords: Ansible, Azure, DevOps, Bash, CloudShell, dynamischer Bestand
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
-ms.date: 01/14/2018
+ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 35033f7a6a0340be4dff5fa0051fd3c5ddb3c0eb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449416"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038223"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Verwalten dynamischer Azure-Bestände mithilfe von Ansible
 Mit Ansible können Bestandsinformationen aus verschiedenen Quellen (einschließlich Cloudquellen wie Azure) in einen *dynamischen Bestand* abgerufen werden. In diesem Artikel verwenden Sie [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md), um einen dynamischen Azure-Bestand von Ansible zu konfigurieren, in dem Sie zwei virtuelle Computer erstellen, einen der beiden virtuellen Computer markieren und NGINX auf dem markierten virtuellen Computer installieren.
@@ -31,6 +31,9 @@ Mit Ansible können Bestandsinformationen aus verschiedenen Quellen (einschließ
 1. Öffnen Sie [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Erstellen Sie für die virtuellen Computer dieses Tutorials eine Azure-Ressourcengruppe.
+
+    > [!IMPORTANT]  
+    > Für die in diesem Schritt erstellte Azure-Ressourcengruppe muss ein Name angegeben werden, der ausschließlich aus Kleinbuchstaben besteht. Andernfalls tritt bei der Erstellung des dynamischen Bestands ein Fehler auf.
 
     ```azurecli-interactive
     az group create --resource-group ansible-inventory-test-rg --location eastus
@@ -183,7 +186,7 @@ Dieser Abschnitt beschreibt ein Verfahren, mit dem Sie sich vergewissern können
     --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
     ```
 
-1. Der Befehl [nginx -v](https://nginx.org/en/docs/switches.html) wird üblicherweise verwendet, um die Nginx-Version auszugeben. Er kann jedoch auch verwendet werden, um zu ermitteln, ob Nginx installiert ist. Geben Sie ihn ein, während eine Verbindung mit dem virtuellen Computer `ansible-inventory-test-vm1` besteht.
+1. Während eine Verbindung mit dem virtuellen Computer `ansible-inventory-test-vm1` besteht, führen Sie den Befehl [nginx -v](https://nginx.org/en/docs/switches.html) aus, um zu ermitteln, ob Nginx installiert ist.
 
     ```azurecli-interactive
     nginx -v

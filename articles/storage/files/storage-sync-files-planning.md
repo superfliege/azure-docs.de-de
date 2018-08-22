@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d00a6d3c476e10b13d00ff1738cb54c2eeea104c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c230b08089f22dbd0ea46cdff331f1c8b354ef62
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521821"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "40038178"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit Azure File Sync können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -151,7 +151,7 @@ Da für den Virenschutz Dateien auf bekannte Schadsoftware überprüft werden m�
 Die folgenden Lösungen unterstützen das Überspringen von Offlinedateien:
 
 - [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
-    - Windows Defender überspringt automatisch das Lesen solcher Dateien. Wir haben Defender getestet und ein kleineres Problem identifiziert: Wenn Sie einer bestehenden Synchronisierungsgruppe einen Server hinzufügen, werden Dateien, die kleiner als 800 Byte sind, auf dem neuen Server zurückgerufen (heruntergeladen). Diese Dateien verbleiben auf dem neuen Server und werden nicht in Speicherebenen aufgeteilt, da sie nicht die Größenanforderungen für das Tiering (> 64 KB) erfüllen.
+    - Windows Defender überspringt automatisch Dateien, für die das Offlineattribut festgelegt ist. Wir haben Defender getestet und ein kleineres Problem identifiziert: Wenn Sie einer bestehenden Synchronisierungsgruppe einen Server hinzufügen, werden Dateien, die kleiner als 800 Byte sind, auf dem neuen Server zurückgerufen (heruntergeladen). Diese Dateien verbleiben auf dem neuen Server und werden nicht in Speicherebenen aufgeteilt, da sie nicht die Größenanforderungen für das Tiering (> 64 KB) erfüllen.
 - [System Center Endpoint Protection (SCEP)](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/configure-extension-file-exclusions-windows-defender-antivirus)
     - SCEP funktioniert genauso wie Defender (siehe oben).
 - [Symantec Endpoint Protection](https://support.symantec.com/en_US/article.tech173752.html)
@@ -192,11 +192,13 @@ Azure File Sync ist nur in den folgenden Regionen verfügbar:
 | Australien, Südosten | Victoria |
 | Kanada, Mitte | Toronto |
 | Kanada, Osten | Quebec City |
+| Indien, Mitte | Pune |
 | USA (Mitte) | Iowa |
 | Asien, Osten | Hongkong |
 | USA (Ost) | Virginia |
 | USA (Ost 2) | Virginia |
 | Nordeuropa | Irland |
+| Indien (Süden) | Chennai |
 | Asien, Südosten | Singapur |
 | UK, Süden | London |
 | UK, Westen | Cardiff |
@@ -216,11 +218,13 @@ Um die Failoverintegration zwischen georedundantem Speicher und Azure File Sync 
 | Australien, Südosten | Australien (Osten)     |
 | Kanada, Mitte      | Kanada, Osten        |
 | Kanada, Osten         | Kanada, Mitte     |
+| Indien, Mitte       | Indien (Süden)        |
 | USA (Mitte)          | USA (Ost) 2          |
 | Asien, Osten           | Asien, Südosten     |
 | USA (Ost)             | USA (Westen)            |
 | USA (Ost) 2           | USA (Mitte)         |
 | Nordeuropa        | Europa, Westen        |
+| Indien (Süden)         | Indien, Mitte      |
 | Asien, Südosten      | Asien, Osten          |
 | UK, Süden            | UK, Westen            |
 | UK, Westen             | UK, Süden           |
