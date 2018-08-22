@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/03/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 60f1b133bdd6acdb25717c2b98f81b57b751d505
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9dbd230e431b2bc3041cfc854c0161ce8d453870
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39720802"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "40133319"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -38,7 +38,7 @@ ms.locfileid: "39720802"
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
-> Vor Kurzem wurden die Standardgrenzwerte auf die maximalen Grenzwerte erhöht. Falls die Spalte **Maximales Limit** nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Einschränkungen. Wenn diese Grenzwerte für Sie in der Vergangenheit durch den Support erhöht wurden und die aktualisierten Grenzwerte nicht wie unten angegeben angezeigt werden, [öffnen Sie eine kostenlose Online-Kundensupportanfrage](../articles/azure-resource-manager/resource-manager-quota-errors.md).
+> Vor Kurzem wurden die Standardgrenzwerte auf die maximalen Grenzwerte erhöht. Falls die Spalte **Maximales Limit** nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Einschränkungen. Wenn diese Grenzwerte für Sie in der Vergangenheit durch den Support erhöht wurden und die aktualisierten Grenzwerte nicht wie unten angegeben angezeigt werden, können Sie [eine kostenlose Online-Kundensupportanfrage erstellen](../articles/azure-resource-manager/resource-manager-quota-errors.md).
 
 | Ressource | Standardlimit | 
 | --- | --- |

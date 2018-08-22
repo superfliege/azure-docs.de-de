@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 7/30/2018
+ms.date: 8/13/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e23579479c61810d651bebae7b486b53aaaf0d42
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 5601f8d90f107636d2899a024772dccc8f75b69d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39361384"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "40131170"
 ---
 ### <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -79,6 +79,29 @@ Der Azure Firewall-Dienst ergänzt die Funktionalität von Netzwerksicherheitsgr
 ### <a name="how-do-i-set-up-azure-firewall-with-my-service-endpoints"></a>Wie richte ich Azure Firewall für meine Dienstendpunkte ein?
 
 Für den sicheren Zugriff auf PaaS-Dienste empfehlen wir die Dienstendpunkte. Kunden von Azure Firewall können die Dienstendpunkte im Azure Firewall-Subnetz aktivieren und auf den verbundenen Spoke-VNETs deaktivieren, um von beiden Features zu profitieren – der Sicherheit der Dienstendpunkte und der zentralen Protokollierung des gesamten Datenverkehrs.
+
+### <a name="how-can-i-stop-and-start-azure-firewall"></a>Wie kann ich Azure Firewall beenden und starten?
+
+Sie können Azure PowerShell verwenden, um Methoden zuzuordnen und die Zuordnung dafür aufzuheben (*Zuordnen* und *Zuordnung aufheben*).
+
+Beispiel: 
+
+```azurepowershell
+# Stop an exisitng firewall
+
+$azfw = Get-AzureRmFirewall -Name "FW Name” -ResourceGroupName "RG Name"
+$azfw.Deallocate()
+Set-AzureRmFirewall -AzureFirewall $azfw
+```
+
+```azurepowershell
+#Start a firewall
+
+$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
+$publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName " RG Name"
+$azfw.Allocate($vnet,$publicip)
+Set-AzureRmFirewall -AzureFirewall $azfw
+```
 
 ### <a name="what-are-the-known-service-limits"></a>Welche Dienstgrenzwerte sind bekannt?
 

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 80b65b8bc2e2947575004269f45922e2306dd32e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ebd9943ad7f54a329dee16d57ab980b882d508f3
+ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284165"
+ms.lasthandoff: 08/08/2018
+ms.locfileid: "39715106"
 ---
 # <a name="how-to-record-voice-samples-for-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen für eine benutzerdefinierte Stimme
 
@@ -68,13 +68,13 @@ Der Ausgangspunkt einer Sitzung für die Aufzeichnung einer benutzerdefinierten 
 
 Die Äußerungen in Ihrem Skript können beliebigen Ursprungs sein: Fiktion, Fakten, Redemanuskripte, Nachrichten und alles, was sonst noch in gedruckter Form zur Verfügung steht. Wenn Sie sicherstellen möchten, dass Ihre Stimme mit bestimmten Arten von Wörtern (z.B. medizinische Terminologie oder Fachausdrücke von Programmierern) gut umgehen kann, empfiehlt es sich, Sätze aus wissenschaftlichen oder technischen Dokumenten aufzunehmen. (Lesen Sie dazu jedoch den Abschnitt [Rechtliches](#legalities) unten.) Sie können auch einen eigenen Text schreiben.
 
-Ihre Äußerungen müssen nicht aus der gleichen Quelle oder der gleichen Art von Quelle stammen. Sie können sogar vollständig unabhängig voneinander sein. Wenn Sie allerdings feste Ausdrücke (z.B. „Sie haben sich erfolgreich angemeldet“) in Ihrer Sprachanwendung verwenden, sollten Sie sie in Ihr Skript aufnehmen. Dadurch erhöht sich die Wahrscheinlichkeit, dass diese Ausdrücke von Ihrer benutzerdefinierten Stimme gut ausgesprochen werden. Und wenn Sie eine Aufzeichnung statt eines synthetisierten Texts verwenden möchten, liegt sie bereits mit der gleichen Stimme wie der synthetisierte Text vor.
+Ihre Äußerungen müssen nicht aus der gleichen Quelle oder der gleichen Art von Quelle stammen. Sie können sogar vollständig unabhängig voneinander sein. Wenn Sie allerdings feste Ausdrücke (z.B. „Sie haben sich erfolgreich angemeldet“) in Ihrer Sprachanwendung verwenden, sollten Sie sie in Ihr Skript aufnehmen. Dadurch erhöht sich die Wahrscheinlichkeit, dass diese Ausdrücke von Ihrer benutzerdefinierten Stimme gut ausgesprochen werden. Und wenn Sie anstelle eines synthetisierten Texts eine Aufzeichnung verwenden möchten, liegt sie bereits mit der gleichen Stimme vor.
 
 Während Konsistenz der Schlüssel bei der Auswahl des Sprechers ist, ist Vielfalt das Kennzeichen eines guten Skripts. Das Skript sollte viele unterschiedliche Wörter und Sätze mit einer Vielzahl von Satzlängen, Strukturen und Stimmungen enthalten. Jeder Klang in der Sprache muss mehrere Male und in zahlreichen Kontexten vorhanden sein (dies wird als *phonetische Abdeckung* bezeichnet). 
 
 Darüber hinaus sollte der Text alle Möglichkeiten enthalten, mit denen ein bestimmter Klang schriftlich dargestellt werden kann, und jeder Klang sollte an unterschiedlichen Stellen in den Sätzen vorkommen. Aussagesätze und Fragen sollten enthalten sein und mit der entsprechenden Intonation vorgelesen werden.
 
-Es ist schwierig, ein Skript zu schreiben, das *gerade genug* Daten bietet, um dem Custom Speech-Portal das Erstellen einer guten Stimme zu ermöglichen. In der Praxis ist die einfachste Möglichkeit, ein Skript zu erstellen, mit dem eine zuverlässige phonetische Abdeckung erreicht wird, eine große Anzahl von Beispielen aufzunehmen. Die Standardstimmen von Microsoft wurden aus Zehntausenden von Äußerungen erstellt. Sie sollten darauf vorbereitet sein, einige bis mehrere Tausend Äußerungen aufzuzeichnen, um eine benutzerdefinierte Stimme mit Produktionsqualität zu erstellen.
+Es ist schwierig, ein Skript zu schreiben, das *gerade genug* Daten bietet, um dem Custom Speech-Portal das Erstellen einer guten Stimme zu ermöglichen. In der Praxis ist die einfachste Möglichkeit, ein Skript zu erstellen, mit dem eine zuverlässige phonetische Abdeckung erreicht wird, eine große Anzahl von Beispielen aufzunehmen. Die Standardstimmen von Microsoft wurden aus Zehntausenden von Äußerungen erstellt. Sie sollten darauf vorbereitet sein, mindestens einige bis mehrere Tausend Äußerungen aufzuzeichnen, um eine benutzerdefinierte Stimme mit Produktionsqualität zu erstellen.
 
 Überprüfen Sie das Skript sorgfältig auf Fehler. Wenn möglich, bitten Sie eine andere Person, es ebenfalls zu überprüfen. Wenn Sie mit Ihrem Sprecher das Skript durchgehen, werden Ihnen wahrscheinlich einige weitere Fehler auffallen.
 
@@ -85,7 +85,7 @@ Sie können das Skript in Microsoft Word schreiben. Das Skript ist für die Aufz
 Ein einfaches Skriptformat enthält drei Spalten:
 
 * Die Nummer der Äußerung, beginnend mit 1. Eine Nummerierung erleichtert allen im Studio die Bezugnahme auf eine bestimmte Äußerung („Wiederholen wir Nummer 356“). Sie können die Word-Funktion für die Absatznummerierung verwenden, um die Zeilen der Tabelle automatisch zu nummerieren.
-* Eine leere Spalte, in die Sie die Takenummer oder den Zeitcode für jede Äußerung eintragen können, um die fertige Aufzeichnung schneller zu finden.)
+* Eine leere Spalte, in die Sie die Takenummer oder den Zeitcode für jede Äußerung eintragen können, um die fertige Aufzeichnung schneller zu finden.
 * Der Text der Äußerung selbst.
 
 ![Beispielskript](media/custom-voice/script.png)
@@ -113,7 +113,7 @@ Glücklicherweise ist es möglich, diese Probleme vollständig zu vermeiden. Es 
 
 ## <a name="recording-your-script"></a>Aufzeichnen des Skripts
 
-Vorzugsweise sollten Sie Ihr Skript in einem professionellen Tonstudio aufzeichnen, das auf Sprecharbeiten spezialisiert ist. Dort gibt es eine Aufnahmekabine, die richtigen Geräte und die richtigen Personen für deren Betrieb. Es lohnt sich nicht, bei der Aufzeichnung zu sparen.
+Zeichnen Sie Ihr Skript in einem professionellen Tonstudio auf, das auf Sprecharbeiten spezialisiert ist. Dort gibt es eine Aufnahmekabine, die richtigen Geräte und die richtigen Personen für deren Betrieb. Es lohnt sich nicht, bei der Aufzeichnung zu sparen.
 
 Besprechen Sie das Projekt mit dem Tontechniker des Studios, und hören Sie sich dessen Ratschläge an. Die Aufzeichnung sollte mit wenig oder ohne dynamische Komprimierung (maximal 4:1) durchgeführt werden. Es ist wichtig, dass das Audio eine einheitliche Lautstärke und ein hohes Signal-Rausch-Verhältnis aufweist.
 
@@ -142,7 +142,7 @@ Hören Sie sich eine Aufzeichnung der Stille Ihrer „Kabine“ genau an, um zu 
 > [!TIP]
 > In einigen Fällen können Sie möglicherweise mit einem Equalizer- oder Rauschunterdrückungssoftware-Plug-In das Rauschen aus Ihren Aufzeichnungen entfernen. Es ist allerdings immer am besten, es an der Quelle zu beenden.
 
-Die Pegel sollten so eingestellt sein, dass der größte Teil des verfügbaren dynamischen Bereichs der digitalen Aufzeichnung ohne Übersteuern genutzt wird. Also laut, aber nicht so laut, dass der Ton verzerrt wird. Im Folgenden sehen Sie ein Beispiel für die Wellenform einer guten Aufzeichnung.
+Legen Sie die Pegel so fest, dass der größte Teil des verfügbaren dynamischen Bereichs der digitalen Aufzeichnung ohne Übersteuern genutzt wird. Also laut, aber nicht so laut, dass der Ton verzerrt wird. Im Folgenden sehen Sie ein Beispiel für die Wellenform einer guten Aufzeichnung.
 
 ![Wellenform einer guten Aufzeichnung](media/custom-voice/good-recording.png)
 
@@ -159,9 +159,9 @@ Im Idealfall werden die Rollen des Regisseurs, Technikers und Sprechers von vers
 Um keine Studiozeit zu verschwenden, gehen Sie das Skript mit Ihrem Sprecher vor der Aufzeichnungssitzung durch. Während sich der Sprecher mit dem Text vertraut macht, kann er die Aussprache und unbekannte Wörter klären.
 
 > [!NOTE]
-> Die meisten Aufnahmestudios bieten eine elektronische Anzeige der Skripts in der Aufnahmekabine. Geben Sie in diesem Fall Ihre Notizen der Vorbesprechung direkt in das Skriptdokument ein. In einer Kopie auf Papier können Sie trotzdem während der Sitzung Notizen machen. Die meisten Techniker benötigen auch eine Kopie auf Papier. Und Sie benötigen weiterhin die dritte Kopie als Absicherung für den Sprecher, falls der Computer ausfällt.
+> Die meisten Aufnahmestudios bieten eine elektronische Anzeige der Skripts in der Aufnahmekabine. Geben Sie in diesem Fall Ihre Notizen der Vorbesprechung direkt in das Skriptdokument ein. In einer Kopie auf Papier können Sie trotzdem während der Sitzung Notizen machen. Die meisten Techniker benötigen auch eine Kopie auf Papier. Und Sie benötigen weiterhin eine dritte Kopie als Absicherung für den Sprecher, falls der Computer ausfällt.
 
-Ihr Sprecher könnte fragen, welches Wort in einer Äußerung betont werden soll. Schauspieler nennen dies „Schlüsselwort“. Antworten Sie, dass Sie einen natürlichen Vortrag ohne besondere Betonungen wünschen. Betonungen können hinzugefügt werden, wenn die Sprache synthetisiert wird. Sie sollten kein Teil der Originalaufzeichnung sein.
+Ihr Sprecher könnte fragen, welches Wort in einer Äußerung betont werden soll (das „Schlüsselwort“). Antworten Sie, dass Sie einen natürlichen Vortrag ohne besondere Betonungen wünschen. Betonungen können hinzugefügt werden, wenn die Sprache synthetisiert wird. Sie sollten kein Teil der Originalaufzeichnung sein.
 
 Bitten Sie den Sprecher, Wörter deutlich auszusprechen. Jedes Wort des Skripts sollte so gesprochen werden, wie es geschrieben ist. Silben sollten nicht weggelassen oder undeutlich gesprochen werden, wie es häufig in der Alltagssprache der Fall ist, es sein denn, *sie wurden im Skript auf diese Weise geschrieben.*
 
@@ -176,7 +176,7 @@ Der Sprecher sollte *keine* vernehmlichen Pausen zwischen Wörtern einfügen. De
 
 ### <a name="the-recording-session"></a>Die Aufzeichnungssitzung
 
-Erstellen Sie am Beginn der Sitzung eine Referenzaufzeichnung oder *Vergleichsdatei* einer typischen Äußerung. Bitten Sie den Sprecher, diese Zeile nach jeder Seite oder alle anderthalb Seiten zu wiederholen. Vergleichen Sie jedes Mal die neue Aufzeichnung mit der Referenz. Diese Verfahrensweise hilft dem Sprecher, bei Lautstärke, Geschwindigkeit, Tonhöhe und Intonation einheitlich zu bleiben. Der Techniker kann die Vergleichsdatei zudem als Referenz für Pegel und einen insgesamt konstanten Klang verwenden.
+Erstellen Sie am Beginn der Sitzung eine Referenzaufzeichnung oder *Vergleichsdatei* einer typischen Äußerung. Bitten Sie den Sprecher, diese Zeile beispielsweise nach jeder Seite zu wiederholen. Vergleichen Sie jedes Mal die neue Aufzeichnung mit der Referenz. Diese Verfahrensweise hilft dem Sprecher, bei Lautstärke, Geschwindigkeit, Tonhöhe und Intonation einheitlich zu bleiben. Der Techniker kann die Vergleichsdatei zudem als Referenz für Pegel und einen insgesamt konstanten Klang verwenden.
 
 Die Vergleichsdatei ist besonders wichtig, wenn die Aufzeichnung nach einer Pause oder an einem anderen Tag fortgesetzt wird. Sie sollten sie dem Sprecher mehrmals vorspielen und ihn auffordern, sie jedes Mal zu wiederholen, bis eine Übereinstimmung erreicht ist.
 
@@ -185,16 +185,16 @@ Fordern Sie den Sprecher auf, vor jeder Äußerung einmal tief durchzuatmen und 
 Zeichnen Sie vor der ersten Aufnahme gute 5 Sekunden Stille auf, um den „Raumklang“ zu erfassen. Dadurch kann das Portal für benutzerdefinierte Stimmen die verbleibenden Störungen in den Aufzeichnungen besser kompensieren.
 
 > [!TIP]
-> Sie benötigen eigentlich nur die Texte des Sprechers, damit Sie davon eine Monoaufzeichnung (ein Kanal) erstellen können. Wenn Sie jedoch in Stereo aufzeichnen, können Sie den zweiten Kanal zum Aufzeichnen der Gespräche im Kontrollraum verwenden, um Diskussionen zu bestimmten Texten oder Takes zu erfassen. Entfernen Sie diese Spur aus der Version, die in das Portal für benutzerdefinierte Stimmen hochgeladen wird.
+> Sie benötigen eigentlich nur den Sprecher, damit Sie von seinen Texten eine Monoaufzeichnung (ein Kanal) erstellen können. Wenn Sie jedoch in Stereo aufzeichnen, können Sie den zweiten Kanal zum Aufzeichnen der Gespräche im Kontrollraum verwenden, um Diskussionen zu bestimmten Texten oder Takes zu erfassen. Entfernen Sie diese Spur aus der Version, die in das Portal für benutzerdefinierte Stimmen hochgeladen wird.
 
 Hören Sie sich über Kopfhörer den Vortrag des Sprechers genau an. Achten Sie auf eine gute, aber natürliche Ausdrucksweise, die richtige Aussprache und darauf, dass wenige unerwünschte Töne vorhanden sind. Zögern Sie nicht, Ihren Sprecher zu bitten, eine Äußerung erneut aufzuzeichnen, die diese Standards nicht erfüllt. 
 
 > [!TIP] 
-> Wenn Sie eine große Anzahl von Äußerungen aufzeichnen, hat eine einzelne Äußerung möglicherweise keine spürbaren Auswirkungen auf die resultierende benutzerdefinierte Stimme. Daher ist es möglicherweise zweckdienlicher, einfach alle Äußerungen mit Problemen zu notieren, sie aus Ihrem Dataset auszuschließen und herauszufinden, wie Ihre benutzerdefinierte Stimme klingt. Sie können immer wieder ins Studio gehen und die fehlenden Beispiele später aufzeichnen.
+> Wenn Sie eine große Zahl von Äußerungen verwenden, hat eine einzelne Äußerung unter Umständen keine spürbaren Auswirkungen auf die resultierende benutzerdefinierte Stimme. Daher ist es möglicherweise zweckdienlicher, einfach alle Äußerungen mit Problemen zu notieren, sie aus Ihrem Dataset auszuschließen und herauszufinden, wie Ihre benutzerdefinierte Stimme klingt. Sie können immer wieder ins Studio gehen und die fehlenden Beispiele später aufzeichnen.
 
 Notieren Sie sich für jede Äußerung die Takenummer oder den Zeitcode im Skript. Fragen Sie den Techniker, ob er jede Äußerung auch in den Metadaten der Aufzeichnung oder im Cuesheet markieren kann.
 
-Machen Sie regelmäßige Pausen, und bieten Sie dem Sprecher Getränke an, damit die Stimme in Form bleibt.
+Machen Sie regelmäßige Pausen, und bieten Sie dem Sprecher ein Getränk an, damit die Stimme in Form bleibt.
 
 ### <a name="after-the-session"></a>Nach der Sitzung
 
