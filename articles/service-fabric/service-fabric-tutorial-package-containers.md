@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: be4ac20f578dc670a3d9c83124504c37e57ee9bf
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 952550225f2bdd8559d72a9d283993451ae7f60b
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37108772"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616342"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application-using-yeoman"></a>Tutorial: Packen und Bereitstellen von Containern als Service Fabric-Anwendung mithilfe von Yeoman
 
@@ -47,18 +47,18 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Anwe
 1. Installieren Sie Node.js und npm auf dem Computer. Beachten Sie, dass Mac OSX-Benutzer den Paket-Manager Homebrew verwenden müssen.
 
     ```bash
-    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-    sudo apt-get install -y nodejs 
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+    nvm install node 
     ```
 2. Installieren des Yeoman-Vorlagengenerators auf dem Computer über npm
 
     ```bash
-    sudo npm install -g yo
+    npm install -g yo
     ```
 3. Installieren des Service Fabric-Yeoman-Containergenerators
 
-    ```bash
-    sudo npm install -g generator-azuresfcontainer
+    ```bash 
+    npm install -g generator-azuresfcontainer
     ```
 
 ## <a name="package-a-docker-image-container-with-yeoman"></a>Packen eines Docker-Imagecontainers mit Yeoman

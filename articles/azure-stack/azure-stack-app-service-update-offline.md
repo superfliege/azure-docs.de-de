@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 8671cba484a779e8d7cd0172df141497bb396a97
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: f48872d1853dfd4c40022f42c8e237973ac70fe6
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359032"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41946460"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Offlineaktualisieren von Azure App Service in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Wenden Sie Update 1802 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack-Development Kit vor der Bereitstellung von Azure App Service bereit.
+> Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.3 bereit.
 >
 >
 
@@ -44,7 +44,7 @@ Mithilfe der Anweisungen in diesem Artikel können Sie den [App Service-Ressourc
 
 Um den App Service-Ressourcenanbieter in einer Azure Stack-Umgebung zu aktualisieren, müssen Sie diese Aufgaben ausführen:
 
-1. Laden Sie das [App Service-Installationsprogramm](https://aka.ms/appsvcupdate2installer) herunter.
+1. Laden Sie das [App Service-Installationsprogramm](https://aka.ms/appsvcupdate3installer) herunter.
 2. Erstellen Sie ein Paket für das Offlineupgrade.
 3. Führen Sie das App Service-Installationsprogramm („appservice.exe“) aus, und schließen Sie das Upgrade ab.
 

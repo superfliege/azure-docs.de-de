@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: ce8ba5b192b857b10b5c1e6327fc330744e8fa83
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40187366"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41936192"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -46,9 +46,9 @@ In diesem Artikel wird veranschaulicht, wie Sie ein Video Indexer-Konto erstelle
 
 * Registrieren Sie den EventGrid-Ressourcenanbieter mit dem Azure-Portal.
 
-        In the Azure portal, go to **Subscriptions** > [subscription] > **ResourceProviders** > **Microsoft.EventGrid**. If not in the "Registered" state, click **Register**. It takes a couple of minutes to register. 
+    Navigieren Sie im Azure-Portal zu **Abonnements** > [Abonnement] > **ResourceProviders** > **Microsoft.EventGrid**. Klicken Sie auf **Registrieren**, falls der Status nicht „Registriert“ lautet. Die Registrierung nimmt einige Minuten in Anspruch. 
 
-        ![EventGrid](./media/create-account/event-grid.png)
+    ![EventGrid](./media/create-account/event-grid.png)
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
 

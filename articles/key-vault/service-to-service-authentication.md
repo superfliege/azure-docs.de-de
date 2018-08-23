@@ -2,22 +2,22 @@
 title: Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 description: Verwenden Sie Bibliothek „Microsoft.Azure.Services.AppAuthentication“ zur Authentifizierung beim Azure Key Vault mithilfe von .NET.
 keywords: Lokale Anmeldeinformationen für die Authentifizierung bei Azure Key Vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 services: key-vault
-ms.author: alleonar
+ms.author: bryanla
 ms.date: 11/15/2017
 ms.topic: article
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 78baef69d0d411b7611575300580c1c719c28bf8
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: b158414e7a2954981534fe6fb26c987eb2f4ce67
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988811"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42144276"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 

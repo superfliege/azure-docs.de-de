@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 7074ae21c1816b5266cbcf69d0126751ded19439
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 907175ac341632d2ba0048ab486392b949f83626
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522603"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144079"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Verwenden des Warteschlangenspeichers mit Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -156,4 +156,4 @@ Nachdem Sie sich nun mit den Grundlagen des Warteschlangenspeichers vertraut gem
 * Besuchen Sie den [Blog des Azure-Speicherteams](http://blogs.msdn.com/b/windowsazurestorage/)
 * Besuchen Sie das [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) -Repository auf GitHub
 
-Einen Vergleich zwischen dem in diesem Artikel erläuterten Azure-Warteschlangendienst und den im Artikel [Verwenden von Service Bus-Warteschlangen](/develop/ruby/how-to-guides/service-bus-queues/) erörterten Azure Service Bus-Warteschlangen finden Sie unter [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).
+Einen Vergleich zwischen dem in diesem Artikel erläuterten Azure-Warteschlangendienst und den im Artikel [Verwenden von Service Bus-Warteschlangen](https://azure.microsoft.com/develop/ruby/how-to-guides/service-bus-queues/) erörterten Azure Service Bus-Warteschlangen finden Sie unter [Azure-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung](../../service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted.md).

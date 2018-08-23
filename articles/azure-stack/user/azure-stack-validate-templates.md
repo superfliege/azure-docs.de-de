@@ -3,7 +3,7 @@ title: Verwenden eines Validierungstools für Vorlagen zum Überprüfen von Vorl
 description: Überprüfen der Vorlagen für die Bereitstellung in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 61c893848176a89b4b6ed8d7a46f27bdeff5cec1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 73a0766baee8da782f0192fbc17fb2898a8360ac
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294486"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41946556"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>Überprüfen Ihrer Vorlagen für Azure Stack mit dem Validierungstool für Vorlagen
 
@@ -85,9 +85,9 @@ Das Validierungssteuerelement für Vorlagen unterstützt die folgenden Parameter
 
 | Parameter | BESCHREIBUNG | Erforderlich |
 | ----- | -----| ----- |
-| TemplatePath | Gibt den Pfad an, um Azure Resource Manager-Vorlagen rekursiv zu suchen | Ja | 
+| TemplatePath | Gibt den Pfad an, um Azure Resource Manager-Vorlagen rekursiv zu suchen | JA | 
 | TemplatePattern | Gibt den Namen der abzugleichenden Vorlagendateien an | Nein  |
-| CapabilitiesPath | Gibt den Pfad zu der JSON-Datei mit Cloudfunktionen an | Ja | 
+| CapabilitiesPath | Gibt den Pfad zu der JSON-Datei mit Cloudfunktionen an | JA | 
 | IncludeComputeCapabilities | Enthält die Auswertung von IaaS-Ressourcen wie VM-Größen und VM-Erweiterungen | Nein  |
 | IncludeStorageCapabilities | Enthält die Auswertung von Speicherressourcen wie SKU-Typen | Nein  |
 | Bericht | Gibt den Namen des generierten HTML-Berichts an | Nein  |

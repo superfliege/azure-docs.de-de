@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 725a705f746bbf5e32fcc410ba4153ac29e3fc3d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e9fbe59c40fe55218429a3b479ddbbec7220c66a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003852"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143488"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Einführung in die Überwachung von Clouddiensten
 
@@ -58,7 +58,7 @@ Während der Erstellung einer Rolle wird ihr von Visual Studio die Azure-Diagnos
 
 ## <a name="setup-diagnostics-extension"></a>Einrichten der Diagnoseerweiterung
 
-Wenn Sie noch nicht über ein **klassisches** Speicherkonto verfügen, [erstellen Sie zunächst ein Konto](../storage/common/storage-create-storage-account.md#create-a-storage-account). Stellen Sie sicher, dass das Speicherkonto mit dem **klassischen Bereitstellungsmodell** erstellt wird.
+Wenn Sie noch nicht über ein **klassisches** Speicherkonto verfügen, [erstellen Sie zunächst ein Konto](../storage/common/storage-quickstart-create-account.md). Stellen Sie sicher, dass das Speicherkonto mit dem **klassischen Bereitstellungsmodell** erstellt wird.
 
 Navigieren Sie als Nächstes zur Ressource **Speicherkonto (klassisch)**. Wählen Sie **Einstellungen** > **Zugriffsschlüssel** aus, und kopieren Sie den Wert unter **Primäre Verbindungszeichenfolge**. Sie benötigen diesen Wert für den Clouddienst. 
 

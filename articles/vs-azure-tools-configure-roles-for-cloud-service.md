@@ -7,16 +7,17 @@ manager: douge
 assetId: d397ef87-64e5-401a-aad5-7f83f1022e16
 ms.prod: visual-studio-dev15
 ms.technology: vs-azure
-ms.workload: azure
+ms.custom: vs-azure
+ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.author: ghogen
-ms.openlocfilehash: 09e6c3a9c27342ef27d49674d62ccf74d70d2e0f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 010a345d0bc756855b9a85660afcd647d111db75
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798725"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143339"
 ---
 # <a name="configure-azure-cloud-service-roles-with-visual-studio"></a>Konfigurieren von Rollen für Azure-Clouddienste mit Visual Studio
 Ein Azure-Clouddienst kann einen oder mehrere Worker- oder Webrollen aufweisen. Für jede Rolle müssen Sie definieren, wie die Rolle eingerichtet ist, und konfigurieren, wie die Rolle ausgeführt wird. Weitere Informationen zu Rollen in Clouddiensten erhalten Sie im Video [Introduction to Azure Cloud Services](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services)(in englischer Sprache). 

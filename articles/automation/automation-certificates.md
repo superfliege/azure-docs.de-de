@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70d5c777f98a1e09125c7ef42ba597009bde084b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c13da6ff7c864ffa365dbad33d6eb0cf2e35fa42
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194334"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145834"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Zertifikatobjekte in Azure Automation
 
@@ -83,7 +83,7 @@ New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -N
 
 ## <a name="using-a-certificate"></a>Verwenden eines Zertifikats
 
-Nutzen Sie die Aktivität **Get-AutomationCertificate**, um ein Zertifikat zu verwenden. Eine Verwendung des Cmdlets [Get-AzureRmAutomationCertificate](https://msdn.microsoft.com/library/mt603765.aspx) ist nicht möglich, da dieses Cmdlet Informationen zum Zertifikatobjekt, aber nicht zum Zertifikat selbst zurückgibt.
+Nutzen Sie die Aktivität **Get-AutomationCertificate**, um ein Zertifikat zu verwenden. Eine Verwendung des Cmdlets [Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate?view=azurermps-6.6.0) ist nicht möglich, da dieses Cmdlet Informationen zum Zertifikatobjekt, aber nicht zum Zertifikat selbst zurückgibt.
 
 ### <a name="textual-runbook-sample"></a>Beispiel für ein Textrunbook
 

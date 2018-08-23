@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: 432f7b9bb27c1dee396677c54edf48d9fdb027a0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: eb81d6726b083d864a58b6c11eed67f95aeda350
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836333"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146787"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python
 Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Für diese Aufgabe können Sie SQL oder eine Programmiersprache wie Python verwenden. Beide Herangehensweisen werden hier vorgestellt.
@@ -37,7 +37,7 @@ Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben w
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
-* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-quickstart-create-account.md).
 * Ihre Daten sind in SQL Server gespeichert. Falls nicht, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](move-sql-azure.md) Anweisungen zum Verschieben von Daten.
 
 ## <a name="sql-featuregen"></a>Generieren von Funktionen mit SQL

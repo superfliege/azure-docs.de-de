@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 9ffc84009adfca60e9ae6b188b65b15e874e7d9c
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d49b5404f1a2b4ac7fa4cc170ccc010a28bf98a2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622169"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143470"
 ---
 # <a name="how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Steuern der Azure AD-Hybrideinbindung für Ihre Geräte
 
@@ -116,7 +116,7 @@ Sie müssen diese Clienteinstellung mit einem Speicherort Ihrer Wahl verknüpfen
 
 ## <a name="control-windows-down-level-devices"></a>Steuern kompatibler Windows-Geräte
 
-Zum Registrieren von kompatiblen Windows-Geräten müssen Sie dieses Windows Installer-Paket (.msi) über die Seite [Microsoft Workplace Join for non-Windows 10 computers](https://www.microsoft.com/en-us/download/details.aspx?id=53554) (Microsoft Workplace Join für Computer mit einem anderen Betriebssystem als Windows 10) aus dem Download Center herunterladen und installieren.
+Zum Registrieren von kompatiblen Windows-Geräten müssen Sie dieses Windows Installer-Paket (.msi) über die Seite [Microsoft Workplace Join for non-Windows 10 computers](https://www.microsoft.com/download/details.aspx?id=53554) (Microsoft Workplace Join für Computer mit einem anderen Betriebssystem als Windows 10) aus dem Download Center herunterladen und installieren.
 
 Sie können das Paket mithilfe eines Softwareverteilungssystems wie System Center Configuration Manager bereitstellen. Das Paket unterstützt die Standardoptionen für die Installation im Hintergrund unter Verwendung des quiet-Parameters. [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager) Current Branch bietet zusätzliche Vorteile gegenüber früheren Versionen, z.B. die Möglichkeit zur Nachverfolgung abgeschlossener Registrierungen.
 

@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4f12d74aedbcadc311cd9c5ccd12dc1ad3501dbf
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 0a6d3775238512cacc21fb3e47f395e37c3fd29b
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205101"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41929895"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Schnellstart für die Microsoft-Sprachübersetzungs-API mit C# 
 <a name="HOLTop"></a>
@@ -156,4 +156,4 @@ Bei erfolgreicher Ausführung wird eine Datei namens „speak2.wav“ erstellt. 
 ## <a name="see-also"></a>Weitere Informationen 
 
 [Übersicht über die Sprachübersetzungs-API](../overview.md)
-[API-Referenz](http://docs.microsofttranslator.com/speech-translate.html)
+[API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

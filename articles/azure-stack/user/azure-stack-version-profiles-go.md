@@ -3,22 +3,22 @@ title: Verwenden von API-Versionsprofilen mit GO in Azure Stack | Microsoft-Doku
 description: Hier erfahren Sie mehr zur Verwendung von API-Versionsprofilen mit GO in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: dd2d0c46c0829a73d32c96b506b9f2111eda3c84
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 9ad4402098e938f72cf4b8c61cce8d0d46b5a147
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010063"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41946508"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Go in Azure Stack
 

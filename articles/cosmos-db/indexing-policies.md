@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 79585195cf95e2074a1c455c82faa500af20218a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d7cbeebff42bddd93cac35a0205d031a90bb4715
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618766"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144636"
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
@@ -36,6 +36,22 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wie kann ich die Indizierung für die Ausführung von ORDER BY- oder Bereichsabfragen konfigurieren?
 * Wie nehme ich Änderungen an der Indizierungsrichtlinie einer Sammlung vor?
 * Wie vergleiche ich die Speicherung und Leistung verschiedener Indizierungsrichtlinien?
+
+## <a id="Indexing"></a>Cosmos DB-Indizierung
+
+Datenbankindizes dienen zur Ausführung von Abfragen verschiedenster Arten und Formen mit minimaler Ressourcennutzung (CPU, E/A) sowie mit gutem Durchsatz und niedriger Latenz. Die Auswahl der richtigen Indizes für Datenbankabfragen erfordert oft viel Planungs- und Testaufwand. Dieser Ansatz ist eine Herausforderung für schemalose Datenbanken, in denen die Daten nicht einem strikten Schema folgen und sich laufend verändern. 
+
+Daher haben wir uns für die Entwicklung des Indizierungs-Untersystems von Cosmos DB die folgenden Ziele gesetzt:
+
+* Indizierung von Dokumenten ohne Schema: Das Indizierungsuntersystem benötigt keine Schemainformationen und stellt keinerlei Annahmen über das Schema der Dokumente an.  
+
+* Unterstützung für effiziente, umfassende hierarchische und relationale Abfragen: Der Index unterstützt die Cosmos DB-Abfragesprache auf effiziente Weise und bietet Unterstützung für hierarchische und relationale Projektionen.  
+
+* Unterstützung für konsistente Abfragen auch bei steigendem Volumen an Schreibvorgängen: Bei Workloads mit hohem Schreibaufwand und konsistenten Abfragen wird der Index inkrementell, effizient und online aktualisiert, um mit dem hohen Aufkommen an Schreibvorgängen Schritt zu halten. Die konsistente Indexaktualisierung ist entscheidend, um Abfragen auf der Konsistenzebene zu bieten, mit der die Benutzer den Dokumentdienst konfiguriert haben.  
+
+* Unterstützung für Mehrinstanzenfähigkeit: Beim reservierungsbasierten Modell für mandantenübergreifende Ressourcenverwaltung werden Indexupdates innerhalb des Budgets der pro Replikat verfügbaren Systemressourcen (CPU, Speicher und E/A-Vorgänge pro Sekunde) durchgeführt.  
+
+* Speichereffizienz: Aus Kostengründen ist der zusätzlich benötigte Speicherplatz für den Index beschränkt und vorhersagbar. Dies ist entscheidend, da Entwickler mit Cosmos DB kostenbasierte Kompromisse zwischen Indexmehraufwand und Abfrageleistung treffen können.  
 
 ## Anpassen der Indizierungsrichtlinie einer Sammlung <a id="CustomizingIndexingPolicy"></a>  
 Sie können die Kompromisse zwischen Speicherleistung, Schreib- und Abfrageleistung und Abfragekonsistenz durch Überschreiben der Standardindizierungsrichtlinie in einer Azure Cosmos DB-Sammlung anpassen. Sie können die folgenden Aspekte konfigurieren:

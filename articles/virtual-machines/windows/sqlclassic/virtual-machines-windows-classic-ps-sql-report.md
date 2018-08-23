@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c688de79c985eda9b0898d0f7d989de58f7dbc71
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 32be46fb0c41909ce8a8014b13843970555d366f
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038229"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146513"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -599,7 +599,6 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 ## <a name="more-information"></a>Weitere Informationen
 ### <a name="resources"></a>angeben
 * Ähnliche Inhalte hinsichtlich einer Einzelserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Verwenden von PowerShell zum Erstellen eines virtuellen Azure-Computers mit SQL Server BI und SharePoint 2013](https://blogs.technet.microsoft.com/ptsblog/2013/10/24/use-powershell-to-create-a-windows-azure-vm-with-sql-server-bi-and-sharepoint-2013/).
-* Ähnliche Inhalte hinsichtlich einer Multiserver-Bereitstellung von SQL Server Business Intelligence und SharePoint 2013 finden Sie unter [Bereitstellen von SQL Server Business Intelligence auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/dn321998.aspx).
 * Allgemeine Informationen hinsichtlich Bereitstellungen von SQL Server Business Intelligence auf virtuellen Azure-Computern finden Sie unter [SQL Server Business Intelligence auf virtuellen Azure-Computern](virtual-machines-windows-classic-ps-sql-bi.md).
 * Weitere Informationen zu den Kosten von Azure-Features finden Sie auf der Registerkarte „Virtuelle Computer“ von [Azure-Preisrechner](https://azure.microsoft.com/pricing/calculator/?scenario=virtual-machines).
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: f0a6e164ed6b2269ec223a18f37d3475316d3e77
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629071"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143213"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung
 Wenn Sie von Benutzern verlangen, ihre persönlichen Geräte mithilfe des Geräteregistrierungsdiensts mit Azure Active Directory (Azure AD) über den Arbeitsplatz einzubinden, können deren Geräte als Ihrer Organisation bekannt markiert werden. Im Folgenden wird eine Schritt-für-Schritt-Anleitung aufgeführt, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.
@@ -48,7 +48,7 @@ Diese Funktionen sind für Kunden verfügbar, die eine Azure Active Directory Pr
 * Lizenz für Azure Active Directory Premium
 * Windows Server 2012 R2-Verbunddienste, konfiguriert für SSO in Azure AD
 * Webanwendungsproxy für Windows Server 2012 R2 
-* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect herunterladen)](http://www.microsoft.com/en-us/download/details.aspx?id=47594)
+* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect herunterladen)](http://www.microsoft.com/download/details.aspx?id=47594)
 * Überprüfte Domäne
 
 ## <a name="known-issues-in-this-release"></a>Bekannte Probleme in dieser Version

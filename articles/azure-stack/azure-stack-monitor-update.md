@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2017
+ms.date: 08/17/2018
 ms.author: mabrigg
-ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 8f384a79811c9a9b104acb98c8f6b6e162946ab8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2018
-ms.locfileid: "27621860"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41946557"
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Überwachen von Änderungen in Azure Stack mithilfe des privilegierten Endpunkts
 
@@ -32,7 +32,6 @@ Die folgenden neuen PowerShell-Cmdlets für die Updateverwaltung sind im Update 
 | Cmdlet  | BESCHREIBUNG  |
 |---------|---------|
 | `Get-AzureStackUpdateStatus` | Gibt den Status des derzeit ausgeführten, abgeschlossenen oder fehlerhaften Updates zurück Stellt den allgemeinen Status des Updatevorgangs sowie ein XML-Dokument, das den aktuellen Schritt und den zugehörigen Status beschreibt, bereit |
-| `Get-AzureStackUpdateVerboseLog` | Gibt die ausführlichen Protokolle zurück, die vom Update generiert werden |
 | `Resume-AzureStackUpdate` | Nimmt ein fehlerhaftes Update an der Stelle wieder auf, an der der Fehler aufgetreten ist. In bestimmten Szenarien müssen Sie möglicherweise Schritte Risikominderung durchführen, bevor Sie das Update fortsetzen.         |
 | | |
 
@@ -78,7 +77,6 @@ Sie können auch programmgesteuert ermitteln, ob die Cmdlets verfügbar sind, in
    CommandType     Name                                               Version    Source                                                  PSComputerName
     -----------     ----                                               -------    ------                                                  --------------
    Function        Get-AzureStackUpdateStatus                         0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
-   Function        Get-AzureStackUpdateVerboseLog                     0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    Function        Resume-AzureStackUpdate                            0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    ``` 
 
@@ -159,29 +157,6 @@ $updateStatus.SelectNodes("//Step[@Status='InProgress']")
     Status        : InProgress
     Task          : Task
 ```
-
-### <a name="get-the-verbose-progress-log"></a>Abrufen des ausführlichen Statusprotokolls
-
-Sie können das Protokoll zur Überprüfung in eine Datei schreiben. Dies vereinfacht das Diagnostizieren von Updatefehlern.
-
-```powershell
-$log = Invoke-Command -Session $pepSession -ScriptBlock { Get-AzureStackUpdateVerboseLog }
-
-$log > ".\UpdateVerboseLog.txt" 
-```
-
-### <a name="actively-view-the-verbose-logging"></a>Aktives Anzeigen der ausführlichen Protokollierung
-
-Um das ausführliche Protokoll während eines Updatevorgangs aktiv anzuzeigen und zu den letzten Einträgen zu springen, führen Sie die folgenden Befehle aus, um im interaktiven Modus in die Sitzung zu wechseln und das Protokoll anzuzeigen:
-
-```powershell
-Enter-PSSession -Session $pepSession 
-
-Get-AzureStackUpdateVerboseLog -Wait 
-```
-Das Protokoll wird alle 60 Sekunden aktualisiert, und neue Inhalte (sofern vorhanden) werden an die Konsole geschrieben. 
-
-Bei lang andauernden Hintergrundprozessen wird die Konsolenausgabe möglicherweise für einige Zeit nicht in die Konsole geschrieben. Um die interaktive Ausgabe abzubrechen, drücken Sie STRG+C. 
 
 ### <a name="resume-a-failed-update-operation"></a>Fortsetzen eines fehlerhaften Updatevorgangs
 

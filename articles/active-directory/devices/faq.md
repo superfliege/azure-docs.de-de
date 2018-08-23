@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fd2505d6262948e193531d91222cdec319f33100
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 72035c2f13f5a2a749feabbb26db5500f6c3fc0a
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597152"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143107"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -99,12 +99,12 @@ Für früherer Windows-Versionen, die in die lokale AD-Domäne eingebunden sind:
 
 **F: Meine Benutzer können von in Azure AD eingebundenen Geräten aus keine Drucker durchsuchen. Wie kann ich das Drucken von in Azure AD eingebundenen Geräten aktivieren?**
 
-**A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Drucken in Hybrid Clouds](https://docs.microsoft.com/en-us/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
+**A:** Informationen zum Bereitstellen von Druckern für in Azure AD eingebundene Geräte finden Sie unter [Drucken in Hybrid Clouds](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy). Sie benötigen einen lokalen Windows-Server, um das Drucken in Hybrid Clouds bereitzustellen. Aktuell ist kein cloudbasierter Druckdienst verfügbar. 
 
 ---
 
 **F: Wie kann ich eine Verbindung zu einem in einen Azure AD-Remoteserver eingebundenen Gerät herstellen?**
-**A:** Weitere Informationen finden Sie im Artikel https://docs.microsoft.com/en-us/windows/client-management/connect-to-remote-aadj-pc.
+**A:** Weitere Informationen finden Sie im Artikel https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc.
 
 ---
 

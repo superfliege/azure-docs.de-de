@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 9d398d810a2d43b3754fd8950376c605d4654f38
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621530"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146754"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Artikelindex für die Anwendungsverwaltung in Azure Active Directory
 Diese Seite enthält eine umfassende Liste aller Dokumente, die über die verschiedenen anwendungsbezogenen Funktionen in Azure Active Directory (Azure AD) geschrieben wurden.
@@ -96,7 +96,7 @@ Wenn Ihr Unternehmen eine lokale Version von Windows Server Active Directory par
 |:---:| --- |
 | Eine Übersicht über die Optionen für das einmalige Anmelden in Azure AD Connect sowie Informationen zur Verwaltung von Hybridumgebungen |[Azure AD Connect-Optionen für die Benutzeranmeldung](active-directory-aadconnect-user-signin.md) |
 | Allgemeine Richtlinien für die Verwaltung von Umgebungen mit lokalem Active Directory und Azure Active Directory |[Überlegungen zum Entwurf der Azure AD-Hybrididentität](active-directory-hybrid-identity-design-considerations-overview.md)<br /><br />[Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md) |
-| Anleitung zur Verwendung der Kennwortsynchronisierung zum Aktivieren von SSO |[Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Troubleshoot Password Synchronization (Problembehandlung bei der Kennwortsynchronisierung)](https://support.microsoft.com/en-us/kb/2855271) |
+| Anleitung zur Verwendung der Kennwortsynchronisierung zum Aktivieren von SSO |[Implementieren der Kennwortsynchronisierung mit der Azure AD Connect-Synchronisierung](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)<br /><br />[Troubleshoot Password Synchronization (Problembehandlung bei der Kennwortsynchronisierung)](https://support.microsoft.com/kb/2855271) |
 | Anleitung zur Verwendung des Kennwortrückschreibens zum Aktivieren von SSO |[Erste Schritte mit der Kennwortverwaltung](authentication/quickstart-sspr.md)<br /><br />[Problembehandlung beim Kennwortrückschreiben](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Anleitung zur Verwendung externer Identitätsanbieter zum Aktivieren von SSO |[Liste der kompatiblen externen Identitätsanbieter zum Aktivieren der einmaligen Anmeldung](https://aka.ms/ssoproviders) |
 | Genießen der Vorteile des einmaligen Anmeldens über Azure AD Join für Windows 10-Benutzer |[Erweitern von Cloudfunktionen auf Windows 10-Geräte über Azure Active Directory Join](active-directory-azureadjoin-overview.md) |

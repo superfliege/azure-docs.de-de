@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8b7d2119e1eef8532c30b0a45ae2684493462277
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: fe3bb3a778a42696cd15f9e4265448479bf043a1
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990012"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42146216"
 ---
 # <a name="how-to-find-an-address-using-the-azure-maps-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Maps
 
@@ -164,19 +164,11 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
 
     | Schlüssel | Wert |
     |-----|------------|
-    | spatialKeys | true |
-
-    Wenn der Abfrageparameter [spatialKeys](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, enthält die Antwort proprietäre geografische Schlüsselinformationen für einen angegebenen Standort.
-
-6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
-
-    | Schlüssel | Wert |
-    |-----|------------|
     | returnSpeedLimit | true |
     
     Wenn der Abfrageparameter [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, wird in der Antwort die angegebene Geschwindigkeitsbegrenzung zurückgegeben.
 
-7. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
     | Schlüssel | Wert |
     |-----|------------|
@@ -184,7 +176,7 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
 
     Wenn der Abfrageparameter [returnRoadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, wird in der Antwort die Straßennutzung für die inverse Geocodierung von Straßen zurückgegeben.
 
-8. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+7. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
 
     | Schlüssel | Wert |
     |-----|------------|

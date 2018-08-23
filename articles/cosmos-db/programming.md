@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6374fcf1477d56b9803b63476f3fef38fc12def1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618895"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142903"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
 
@@ -98,7 +98,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-Das Kontextobjekt bietet Zugriff auf alle Vorgänge, die für den Cosmos DB-Speicher ausgeführt werden können, sowie Zugriff auf die Anforderungs- und Antwortobjekte. In diesem Fall verwenden Sie das Antwortobjekt dazu, den Text der Antwort festzulegen, der an den Client zurückgesendet wurde. Weitere Informationen finden Sie in der [Dokumentation zum Azure Cosmos DB JavaScript-Server-SDK](http://azure.github.io/azure-documentdb-js-server/).  
+Das Kontextobjekt bietet Zugriff auf alle Vorgänge, die für den Cosmos DB-Speicher ausgeführt werden können, sowie Zugriff auf die Anforderungs- und Antwortobjekte. In diesem Fall verwenden Sie das Antwortobjekt dazu, den Text der Antwort festzulegen, der an den Client zurückgesendet wurde. Weitere Informationen finden Sie in der [Dokumentation zum Azure Cosmos DB JavaScript-Server-SDK](https://azure.github.io/azure-cosmosdb-js-server/).  
 
 Dieses Beispiel möchten wir jetzt erweitern und datenbankbezogenere Funktionen zur gespeicherten Prozedur hinzufügen. Gespeicherte Prozeduren können Dokumente und Anhänge innerhalb der Sammlung erstellen, aktualisieren, lesen, abfragen und löschen.    
 
@@ -591,7 +591,7 @@ Die folgenden JavaScript-Konstrukte werden nicht für Azure Cosmos DB-Indizes op
 * Ablaufsteuerung (z.B. wenn, für, während)
 * Funktionsaufrufe
 
-Weitere Informationen finden Sie in unseren [serverseitigen JSDocs](http://azure.github.io/azure-documentdb-js-server/).
+Weitere Informationen finden Sie in unseren [serverseitigen JSDocs](https://azure.github.io/azure-cosmosdb-js-server/).
 
 ### <a name="example-write-a-stored-procedure-using-the-javascript-query-api"></a>Beispiel: Schreiben einer gespeicherten Prozedur mit der JavaScript-Abfrage-API
 Das folgende Codebeispiel zeigt, wie die JavaScript-Abfrage-API im Kontext einer gespeicherten Prozedur verwendet werden kann. Die gespeicherte Prozedur fügt ein Dokument ein (angegeben durch einen Eingabeparameter) und aktualisiert mit der `__.filter()` -Methode ein Metadatendokument basierend auf der Size-Eigenschaft des Eingabedokuments mit „minSize“, „maxSize“ und „totalSize“.
@@ -674,7 +674,7 @@ Im Folgenden werden die Abfragen in der Tabelle oben erläutert.
 
 
 ## <a name="runtime-support"></a>Laufzeitunterstützung
-Die [serverseitige JavaScript-API](http://azure.github.io/azure-documentdb-js-server/) von Azure Cosmos DB unterstützt die meisten gängigen Features der JavaScript-Sprache gemäß dem [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)-Standard.
+Die [serverseitige JavaScript-API](https://azure.github.io/azure-cosmosdb-js-server/) von Azure Cosmos DB unterstützt die meisten gängigen Features der JavaScript-Sprache gemäß dem [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)-Standard.
 
 ### <a name="security"></a>Sicherheit
 Gespeicherte Prozeduren und Trigger werden bei JavaScript in einer Sandkastenlösung verwaltet, damit die Auswirkungen eines Skripts nicht zu den anderen Skripts gelangen, ohne die Momentaufnahmetransaktionsisolation der Datenbankschicht zu durchlaufen. Die Laufzeitumgebungen werden in einem Pool zusammengefasst, aber nach jeder Ausführung vom Kontext bereinigt. Daher sind sie untereinander garantiert vor unbeabsichtigten Nebeneffekten geschützt.
@@ -683,7 +683,7 @@ Gespeicherte Prozeduren und Trigger werden bei JavaScript in einer Sandkastenlö
 Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) werden implizit in das Bytecodeformat vorkompiliert, um den Kompilierungsaufwand zum Zeitpunkt des jeweiligen Skriptaufrufs zu vermeiden. Durch die Vorkompilierung wird sichergestellt, dass gespeicherte Prozeduren schnell aufgerufen werden können und kompakt sind.
 
 ## <a name="client-sdk-support"></a>Client-SDK-Unterstützung
-Zusätzlich zur Azure Cosmos DB-API für [Node.js](sql-api-sdk-node.md) verfügt Azure Cosmos DB über SDKs zu [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](http://azure.github.io/azure-documentdb-js/) und [Python](sql-api-sdk-python.md) für die SQL-API. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können mit jedem dieser SDKs erstellt und ausgeführt werden. Das folgende Beispiel zeigt, wie eine gespeicherte Prozedur mithilfe des .NET-Clients erstellt und ausgeführt wird. Beachten Sie, wie die .NET-Typen als JSON an die gespeicherte Prozedur übergeben und eingelesen werden.
+Zusätzlich zur Azure Cosmos DB-API für [Node.js](sql-api-sdk-node.md) verfügt Azure Cosmos DB über SDKs zu [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md) und [Python](sql-api-sdk-python.md) für die SQL-API. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können mit jedem dieser SDKs erstellt und ausgeführt werden. Das folgende Beispiel zeigt, wie eine gespeicherte Prozedur mithilfe des .NET-Clients erstellt und ausgeführt wird. Beachten Sie, wie die .NET-Typen als JSON an die gespeicherte Prozedur übergeben und eingelesen werden.
 
 ```javascript
 var markAntiquesSproc = new StoredProcedure
@@ -828,7 +828,7 @@ Trigger können im Gegensatz zu gespeicherten Prozeduren nicht direkt ausgeführ
 Hier wird der mit der Anforderung auszuführende vorangestellte Trigger im Header "x-ms-documentdb-pre-trigger-include" angegeben. Entsprechend werden alle nachgestellten Trigger im Header "x-ms-documentdb-post-trigger-include" angegeben. Es können sowohl vorangestellte als auch nachgestellte Trigger für eine bestimmte Anforderung angegeben werden.
 
 ## <a name="sample-code"></a>Beispielcode
-Weitere Beispiele für serverseitigen Code (einschließlich [Massenlöschung](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/bulkDelete.js) und [Aktualisierung](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples/stored-procedures/update.js)) finden Sie im [GitHub-Repository](https://github.com/Azure/azure-documentdb-js-server/tree/master/samples).
+Weitere Beispiele für serverseitigen Code (einschließlich [Massenlöschung](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/bulkDelete.js) und [Aktualisierung](https://github.com/Azure/azure-cosmosdb-js-server/blob/master/samples/stored-procedures/update.js)) finden Sie im [GitHub-Repository](https://github.com/Azure/azure-cosmosdb-js-server/tree/master/samples).
 
 Möchten Sie Ihre eigene gespeicherte Prozedur freigeben? Helfen Sie uns, das Repository zu erweitern, und erstellen Sie eine Pull-Anforderung! 
 

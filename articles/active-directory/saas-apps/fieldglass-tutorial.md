@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 446eac2bf6eed10f919d6c64de1d7b9dbba1f35d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a14aeb55d9e5756660708e9e63a867a66a54a7b6
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39420351"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Tutorial: Azure Active Directory-Integration mit Fieldglass
 
@@ -121,7 +121,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | `https://<company name>.fgvms.com/<company name>`|
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Fieldglass](http://www.fieldglass.com/solutions/support), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Fieldglass](https://www.fieldglass.com/customer-support), um diese Werte zu erhalten.
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -135,7 +135,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/fieldglass-tutorial/tutorial_fieldglass_configure.png) 
 
-1. Für die Konfiguration des einmaligen Anmeldens auf der **Fieldglass**-Seite müssen Sie das heruntergeladene **Zertifikat (Base64)** und **Abmelde-URL sowie SAML-Entitäts-ID** an das [Fieldglass-Supportteam](http://www.fieldglass.com/solutions/support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Für die Konfiguration des einmaligen Anmeldens auf der **Fieldglass**-Seite müssen Sie das heruntergeladene **Zertifikat (Base64)** und **Abmelde-URL sowie SAML-Entitäts-ID** an das [Fieldglass-Supportteam](https://www.fieldglass.com/customer-support) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -173,7 +173,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="creating-a-fieldglass-test-user"></a>Erstellen eines Fieldglass-Testbenutzers
 
-In diesem Abschnitt wird in Fieldglass eine Benutzerin namens Britta Simon erstellt. Wenden Sie sich an das [Supportteam von Fieldglass](http://www.fieldglass.com/solutions/support), um die Benutzer dem Fieldglass-Konto hinzuzufügen.
+In diesem Abschnitt wird in Fieldglass eine Benutzerin namens Britta Simon erstellt. Wenden Sie sich an das [Supportteam von Fieldglass](https://www.fieldglass.com/customer-support), um die Benutzer dem Fieldglass-Konto hinzuzufügen.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

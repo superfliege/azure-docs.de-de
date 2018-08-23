@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: e3be74fbb571a806fc03a92d0b1b373e35d196be
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363613"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144130"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Meldung zur automatischen Benutzerkontobereitstellung
 
 
-Azure Active Directory beinhaltet einen [Dienst zur Benutzerkontobereitstellung](active-directory-saas-app-provisioning.md), mit dem die Bereitstellung bzw. die Aufhebung der Bereitstellung von Benutzerkonten in SaaS-Apps und anderen Systemen zur nahtlosen Verwaltung des Identitätslebenszyklus automatisiert werden kann. Azure AD unterstützt vorab integrierte Benutzerbereitstellungsconnectors für alle Anwendungen und Systeme im Abschnitt „Ausgewählt“ des [Azure AD-Anwendungskatalogs](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Azure Active Directory beinhaltet einen [Dienst zur Benutzerkontobereitstellung](active-directory-saas-app-provisioning.md), mit dem die Bereitstellung bzw. die Aufhebung der Bereitstellung von Benutzerkonten in SaaS-Apps und anderen Systemen zur nahtlosen Verwaltung des Identitätslebenszyklus automatisiert werden kann. Azure AD unterstützt vorab integrierte Benutzerbereitstellungsconnectors für alle Anwendungen und Systeme im Abschnitt „Ausgewählt“ des [Azure AD-Anwendungskatalogs](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
 In diesem Artikel wird beschrieben, wie der Status von Bereitstellungsaufträgen nach ihrer Einrichtung überprüft wird, und Probleme bei der Bereitstellung einzelner Benutzer und Gruppen behandelt werden.
 

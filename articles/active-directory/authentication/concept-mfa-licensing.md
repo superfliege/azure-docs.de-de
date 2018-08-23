@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 92be187a1c593742feb90409f2b8cc305bf9a6c8
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 8ecb2008b85bb6a7ac35b5f95deaf0fb321ce155
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161650"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143627"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
 
@@ -63,7 +63,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in den verschieden
 
 ## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Aktivieren von Azure Multi-Factor Authentication für Azure AD-Administratoren
 
-Benutzer, denen die Rolle „Globaler Administrator“ für Azure AD-Mandanten zugewiesen ist, können die zweistufige Überprüfung für ihre globalen Azure AD-Administratorkonten ohne zusätzliche Kosten aktivieren. Wenn Sie ein Microsoft-Konto verwenden, können Sie sich für die Multi-Factor Authentication registrieren, indem Sie die Anleitung im Microsoft-Konto-Support-Artikel [Informationen zur Überprüfung in zwei Schritten](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification) verwenden. Wenn Sie kein Microsoft-Konto verwenden, aktivieren Sie die Multi-Factor Authentication für globale Administratoren mithilfe der Anleitung im Artikel [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](howto-mfa-userstates.md).
+Benutzer, denen die Rolle „Globaler Administrator“ für Azure AD-Mandanten zugewiesen ist, können die zweistufige Überprüfung für ihre globalen Azure AD-Administratorkonten ohne zusätzliche Kosten aktivieren. Wenn Sie ein Microsoft-Konto verwenden, können Sie sich für die Multi-Factor Authentication registrieren, indem Sie die Anleitung im Microsoft-Konto-Support-Artikel [Informationen zur Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) verwenden. Wenn Sie kein Microsoft-Konto verwenden, aktivieren Sie die Multi-Factor Authentication für globale Administratoren mithilfe der Anleitung im Artikel [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](howto-mfa-userstates.md).
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
 

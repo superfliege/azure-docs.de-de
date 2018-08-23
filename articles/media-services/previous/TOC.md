@@ -230,7 +230,7 @@
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
-## [Azure PowerShell (Dienstverwaltung)](/powershell/module/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell (Dienstverwaltung)](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
 ## [REST](/rest/api/media/mediaservice)
 ## Spezifikationen

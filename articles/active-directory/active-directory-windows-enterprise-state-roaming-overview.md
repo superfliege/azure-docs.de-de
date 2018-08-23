@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: markvi
-ms.openlocfilehash: c2c94f488da6399965c59f761ff9f0539cf4de2f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c1332679af57a4994f4337e241845a87bf16b341
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227777"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145435"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Übersicht über Enterprise State Roaming
-Unter Windows 10 haben [Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) -Benutzer die Möglichkeit, die Daten ihrer Benutzer- und Anwendungseinstellungen sicher in der Cloud zu synchronisieren. Beim Enterprise State Roaming profitieren Benutzer von einer einheitlichen Benutzererfahrung auf allen Windows-Geräten. Zudem wird für das Konfigurieren eines neuen Geräts weniger Zeit benötigt. Enterprise State Roaming funktioniert ähnlich wie die standardmäßige [Synchronisierung von Verbrauchereinstellungen](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) die unter Windows 8 eingeführt wurde. Enterprise State Roaming bietet außerdem:
+Unter Windows 10 haben [Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) -Benutzer die Möglichkeit, die Daten ihrer Benutzer- und Anwendungseinstellungen sicher in der Cloud zu synchronisieren. Beim Enterprise State Roaming profitieren Benutzer von einer einheitlichen Benutzererfahrung auf allen Windows-Geräten. Zudem wird für das Konfigurieren eines neuen Geräts weniger Zeit benötigt. Enterprise State Roaming funktioniert ähnlich wie die standardmäßige [Synchronisierung von Verbrauchereinstellungen](http://windows.microsoft.com/windows-8/sync-settings-pcs) die unter Windows 8 eingeführt wurde. Enterprise State Roaming bietet außerdem:
 
 * **Trennung von Unternehmens- und Verbraucherdaten** – Unternehmen haben die Kontrolle über ihre Daten, und es erfolgt kein Vermischen von Unternehmensdaten in einem Verbraucher-Cloudkonto oder Verbraucherdaten in einem Unternehmens-Cloudkonto.
 * **Erweiterte Sicherheit.** Bevor Daten das Windows 10-Gerät des Benutzers verlassen, werden sie mithilfe von Azure Rights Management (Azure RMS) automatisch verschlüsselt. Mit Ausnahme der Namespaces – wie die Namen von Einstellungen und Windows-Apps – bleiben alle Inhalte, die sich im Ruhezustand in der Cloud befinden, auch verschlüsselt.  

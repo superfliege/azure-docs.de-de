@@ -17,12 +17,12 @@ ms.date: 07/26/2018
 ms.author: celested
 ms.reviewer: jmprieur, andret, nacanuma, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: dda0d8e9496eb310f6d2a2791977e9de0eea6503
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: fc6c97906525b2f575a18ce5357eb3e10bfb4887
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578523"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143341"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Authentifizierungsszenarien für Azure AD
 
@@ -52,7 +52,7 @@ Im Anschluss folgen einige wichtige Informationen zu den Komponenten des obigen 
 * Als Identitätsanbieter ist Azure AD zuständig für die Überprüfung der Identität von Benutzern und Anwendungen, die im Verzeichnis einer Organisation vorhanden sind, und bei erfolgreicher Authentifizierung dieser Benutzer und Anwendungen auch für die Ausgabe von Sicherheitstokens.
 * Eine Anwendung, deren Authentifizierung an Azure AD ausgelagert werden soll, muss in Azure AD registriert werden. Dadurch wird die App im Verzeichnis registriert und eindeutig identifiziert.
 * Mit den Open-Source-Authentifizierungsbibliotheken von Azure AD können sich die Entwickler um die Protokolldetails kümmern und die Authentifizierung für Sie vereinfachen. Weitere Informationen finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md).
-* Nach der Authentifizierung eines Benutzers muss die Anwendung das Sicherheitstoken des Benutzers überprüfen, um sicherzustellen, dass die Authentifizierung erfolgreich war. Beispiele dafür, was die Anwendung tun muss, stehen auf [GitHub](https://github.com/Azure-Samples?q=active-directory) für eine Vielzahl von Sprachen und Frameworks zur Verfügung. Informationen zum Erstellen einer Web-App in ASP.NET finden Sie unter [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](https://docs.microsoft.com/en-us/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Informationen zum Erstellen einer Web-API-Ressource in ASP.NET finden Sie unter [Erste Schritte mit .NET-Web-APIs in Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
+* Nach der Authentifizierung eines Benutzers muss die Anwendung das Sicherheitstoken des Benutzers überprüfen, um sicherzustellen, dass die Authentifizierung erfolgreich war. Beispiele dafür, was die Anwendung tun muss, stehen auf [GitHub](https://github.com/Azure-Samples?q=active-directory) für eine Vielzahl von Sprachen und Frameworks zur Verfügung. Informationen zum Erstellen einer Web-App in ASP.NET finden Sie unter [Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-aspnetwebapp). Informationen zum Erstellen einer Web-API-Ressource in ASP.NET finden Sie unter [Erste Schritte mit .NET-Web-APIs in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devquickstarts-webapi-dotnet).
 * Der Fluss von Anforderungen und Antworten für den Authentifizierungsprozess ergibt sich aus dem verwendeten Authentifizierungsprotokoll (etwa OAuth 2.0, OpenID Connect, WS-Federation oder SAML 2.0). Diese Protokolle werden im Artikel [Azure Active Directory-Authentifizierungsprotokolle](active-directory-authentication-protocols.md) sowie in den folgenden Abschnitten ausführlicher behandelt.
 
 > [!NOTE]

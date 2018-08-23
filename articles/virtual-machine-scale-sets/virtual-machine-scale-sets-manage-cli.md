@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a9e01039f1fbf46739ff8dbafea411aad2c3f4f2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 512dd7c3318022106b721d8f215bff17de51e51d
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308052"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145587"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI 2.0
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI 2.0-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
@@ -92,7 +92,7 @@ Die Aktualisierung der Skalierungsgruppenkapazität dauert ein paar Minuten. Wen
 
 
 ## <a name="stop-and-start-vms-in-a-scale-set"></a>Beenden und Starten von virtuellen Computern in einer Skalierungsgruppe
-Verwenden Sie [az vmss stop](/cli/azure/vmss/stop), um virtuelle Computer in einer Skalierungsgruppe zu beenden. Mit dem Parameter `--instance-ids` können Sie die zu beendenden virtuellen Computer angeben. Wenn Sie keine Instanz-ID angeben, werden alle virtuellen Computer in der Skalierungsgruppe beendet. Wenn Sie mehrere virtuelle Computer beenden möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
+Verwenden Sie [az vmss stop](/cli/azure/vmss#az-vmss-stop), um virtuelle Computer in einer Skalierungsgruppe zu beenden. Mit dem Parameter `--instance-ids` können Sie die zu beendenden virtuellen Computer angeben. Wenn Sie keine Instanz-ID angeben, werden alle virtuellen Computer in der Skalierungsgruppe beendet. Wenn Sie mehrere virtuelle Computer beenden möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
 
 Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* beendet. Geben Sie Ihre eigenen Werte wie folgt an:
 

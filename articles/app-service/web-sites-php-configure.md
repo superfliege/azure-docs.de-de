@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 6e7de0a7b580c0028982895487117ab98d0cd612
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503450"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145817"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurieren von PHP in Azure App Service-Web-Apps
 
@@ -189,7 +189,7 @@ Standardmäßig wird „composer.json“ (sofern in Ihrem PHP-Projekt vorhanden)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie im [PHP Developer Center](/develop/php/).
+Weitere Informationen finden Sie im [PHP Developer Center](https://azure.microsoft.com/develop/php/).
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.

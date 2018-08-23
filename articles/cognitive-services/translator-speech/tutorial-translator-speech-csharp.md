@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e82c5c5ccfa6b7de8a9ec111140dad1a40ad44f6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373946"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41937522"
 ---
 # <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>Tutorial: Microsoft Translator-WPF-Anwendung in C#
 
@@ -357,7 +357,7 @@ private void Connect()
 }
 ```
 
-Ein erheblicher Teil von `Connect()` dreht sich um die Erstellung einer `SpeechClientOptions`-Instanz (siehe `SpeechClientOptions.cs`), um die Optionen für die Übersetzung zu speichern. Die Optionen umfassen die benötigten Informationen für die Verbindungsherstellung mit dem Dienst (etwa den Authentifizierungsschlüssel und den Hostnamen) sowie die Features, die für die Übersetzung verwendet werden. Die Felder hier sind den Headerfeldern und HTTP-Parametern zugeordnet, die von der [Sprachübersetzungs-API](http://docs.microsofttranslator.com/speech-translate.html) verfügbar gemacht werden.
+Ein erheblicher Teil von `Connect()` dreht sich um die Erstellung einer `SpeechClientOptions`-Instanz (siehe `SpeechClientOptions.cs`), um die Optionen für die Übersetzung zu speichern. Die Optionen umfassen die benötigten Informationen für die Verbindungsherstellung mit dem Dienst (etwa den Authentifizierungsschlüssel und den Hostnamen) sowie die Features, die für die Übersetzung verwendet werden. Die Felder hier sind den Headerfeldern und HTTP-Parametern zugeordnet, die von der [Sprachübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference) verfügbar gemacht werden.
 
 `Connect()` erstellt und initialisiert auch das Audioeingabegerät (Variable `sampleProvider`), das als Quelle für das Gesprochene dient, das übersetzt werden soll. Bei diesem Gerät handelt es sich entweder um ein Hardwareeingabegerät (etwa ein Mikrofon) oder um eine Datei, die WAVE-Audiodaten enthält.
 
@@ -431,4 +431,4 @@ Bei den Binärdaten handelt es sich um Audiodaten (Ausgabe der Sprachsynthese), 
 Dieses Codebeispiel ist eine Anwendung mit umfangreichen Features zur Veranschaulichung der Verwendung der Sprachübersetzungs-API. Es ist daher etwas komplex. Sie sind nun mit den wichtigsten Aspekten vertraut. Für den Rest empfiehlt es sich ggf., verschiedene Breakpoints in Visual Studio festzulegen und den Übersetzungsprozess Schritt für Schritt nachzuvollziehen. Wenn Sie die Beispielanwendung verstanden haben, können Sie den Sprachübersetzungsdienst in Ihren eigenen Anwendungen nutzen.
 
 > [!div class="nextstepaction"]
-> [Referenz für die Sprachübersetzungs-API von Microsoft](http://docs.microsofttranslator.com/speech-translate.html)
+> [Referenz für die Sprachübersetzungs-API von Microsoft](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

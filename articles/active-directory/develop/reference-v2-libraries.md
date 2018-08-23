@@ -17,12 +17,12 @@ ms.date: 04/13/2018
 ms.author: celested
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1450cffca7a4cfa57856c75cdcc9e106958ea043
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f3ac6050ca73f96facd621823dc4bad413b139c7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600924"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143804"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0-Authentifizierungsbibliotheken
 
@@ -44,7 +44,7 @@ Für den Azure AD v2.0-Endpunkt können zwei Arten von Bibliotheken verwendet we
 
 ## <a name="library-support"></a>Bibliotheksunterstützung
 
-Da Sie sich bei Verwendung des v2.0-Endpunkts für eine beliebige standardkonforme Bibliothek entscheiden können, ist es wichtig zu wissen, wo Sie Hilfe erhalten. Wenden Sie sich bei Problemen und Featureanfragen in Bezug auf den Bibliothekscode an den Bibliotheksbesitzer. Wenden Sie sich bei Problemen und Featureanfragen in Bezug auf die dienstseitige Protokollimplementierung an Microsoft. [Erstellen Sie eine Featureanfrage](https://feedback.azure.com/forums/169401-azure-active-directory) zu zusätzlichen Features, die Sie sich für das Protokoll wünschen. [Erstellen Sie eine Supportanfrage](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request), wenn Sie ein Problem finden, bei dem der Azure AD v2.0-Endpunkt nicht mit OAuth 2.0 oder OpenID Connect 1.0 konform ist.
+Da Sie sich bei Verwendung des v2.0-Endpunkts für eine beliebige standardkonforme Bibliothek entscheiden können, ist es wichtig zu wissen, wo Sie Hilfe erhalten. Wenden Sie sich bei Problemen und Featureanfragen in Bezug auf den Bibliothekscode an den Bibliotheksbesitzer. Wenden Sie sich bei Problemen und Featureanfragen in Bezug auf die dienstseitige Protokollimplementierung an Microsoft. [Erstellen Sie eine Featureanfrage](https://feedback.azure.com/forums/169401-azure-active-directory) zu zusätzlichen Features, die Sie sich für das Protokoll wünschen. [Erstellen Sie eine Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request), wenn Sie ein Problem finden, bei dem der Azure AD v2.0-Endpunkt nicht mit OAuth 2.0 oder OpenID Connect 1.0 konform ist.
 
 Bibliotheken werden in zwei Kategorien unterteilt:
 

@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 6f3afa22a50728070c42cd6e2eff0cc148815fbc
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262683"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144492"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
@@ -21,7 +21,7 @@ Azure Storage-Ereignisse bieten Anwendungen die Möglichkeit, auf das Erstellen 
 
 Gängige Blob Storage-Ereignisszenarien enthalten Bild- oder Videobearbeitung, Suchindizierung oder dateiorientierte Workflows.  Asynchrone Dateiuploads eignen sich hervorragend für Ereignisse.  Wenn Änderungen selten sind, aber Ihr Szenario die sofortige Reaktion erfordert, kann die ereignisbasierte Architektur besonders effizient sein.
 
-Die Verfügbarkeit von Storage-Ereignissen ist an die [Verfügbarkeit](../../event-grid/overview.md) von Event Grid gebunden und wird in anderen Regionen verfügbar, wenn dort Event Grid verfügbar ist. Ein kurzes Beispiel finden Sie unter [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit CLI](storage-blob-event-quickstart.md) oder [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit PowerShell](storage-blob-event-quickstart-powershell.md). 
+Ein kurzes Beispiel finden Sie unter [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit CLI](storage-blob-event-quickstart.md) oder [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit PowerShell](storage-blob-event-quickstart-powershell.md). 
 
 ![Event Grid-Modell](./media/storage-blob-event-overview/event-grid-functional-model.png)
 

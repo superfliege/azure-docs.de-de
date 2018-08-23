@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: fa6048800aad04b45b72c4da61ad9e8b94541502
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308475"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144920"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vorschau: Erzwingen des Azure AD-Kennwortschutzes für Windows Server Active Directory
 
@@ -34,10 +34,10 @@ Es gibt drei Softwarekomponenten, die den Azure AD-Kennwortschutz bilden:
 
 ![Zusammenspiel der Komponenten des Azure AD-Kennwortschutzes](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 * Alle Computer, auf denen Azure AD-Kennwortschutzkomponenten einschließlich Domänencontrollern installiert sind, müssen Windows Server 2012 oder höher ausführen.
-* Alle Computer, auf denen Azure AD-Kennwortschutzkomponenten, einschließlich Domänencontrollern, installiert sind, müssen über eine Installation der Universal C Runtime verfügen. Dies wird vorzugsweise erreicht, indem der Computer über Windows Update mit allen Patches versehen wird. Andernfalls kann ein geeignetes betriebssystemspezifisches Updatepaket installiert werden. Weitere Informationen finden Sie unter [Update for Universal C Runtime in Windows](https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows) (Update für Universal C Runtime in Windows).
+* Alle Computer, auf denen Azure AD-Kennwortschutzkomponenten, einschließlich Domänencontrollern, installiert sind, müssen über eine Installation der Universal C Runtime verfügen. Dies wird vorzugsweise erreicht, indem der Computer über Windows Update mit allen Patches versehen wird. Andernfalls kann ein geeignetes betriebssystemspezifisches Updatepaket installiert werden. Weitere Informationen finden Sie unter [Update for Universal C Runtime in Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows) (Update für Universal C Runtime in Windows).
 * Netzwerkkonnektivität muss zwischen mindestens einem Domänencontroller in jeder Domäne und mindestens einem Server bestehen, der den Azure AD-Kennwortschutz-Proxydienst hostet.
 * Alle Active Directory-Domänen, die die DC-Agent-Dienst-Software ausführen, müssen DFSR für die SYSVOL-Replikation verwenden.
 * Ein globales Administratorkonto zum Registrieren des Azure AD-Kennwortschutz-Proxydienstes bei Azure AD.

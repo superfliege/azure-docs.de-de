@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8bf904b2029790d64a806fcf4a7e4860579a5a2f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: a24ccd456df533542e7cbd2315fc1050cd82afbf
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204849"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41929938"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Schnellstart für die Microsoft-Sprachübersetzungs-API mit Python 
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ Zum Ausführen dieses Codes benötigen Sie [Python 3.x](https://www.python.org/d
 
 Sie müssen das [Websocket-Clientpaket](https://pypi.python.org/pypi/websocket-client) für Python installieren.
 
-Sie benötigen eine WAV-Datei namens „speak.wav“, die im gleichen Ordner gespeichert ist wie die ausführbare Datei, die Sie aus dem unten angegebenen Code kompilieren. Diese WAV-Datei muss im PCM-Standardformat mit 16 Bit, 16 kHz und in mono vorliegen. Eine solche WAV-Datei können Sie über die [Text-to-Speech-API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech) abrufen.
+Sie benötigen eine WAV-Datei namens „speak.wav“, die im gleichen Ordner gespeichert ist wie die ausführbare Datei, die Sie aus dem unten angegebenen Code kompilieren. Diese WAV-Datei muss im PCM-Standardformat mit 16 Bit, 16 kHz und in mono vorliegen. 
 
 Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Microsoft-Sprachübersetzungs-API** verfügen. Sie benötigen einen kostenpflichtigen Abonnementschlüssel aus Ihrem [Azure-Dashboard](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -132,4 +132,4 @@ Bei erfolgreicher Ausführung wird eine Datei namens „speak2.wav“ erstellt. 
 ## <a name="see-also"></a>Weitere Informationen 
 
 [Übersicht über die Sprachübersetzungs-API](../overview.md)
-[API-Referenz](http://docs.microsofttranslator.com/speech-translate.html)
+[API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator-speech/reference)

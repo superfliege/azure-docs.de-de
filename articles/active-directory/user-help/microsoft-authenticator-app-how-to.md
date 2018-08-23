@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 8afd743f6010822709bf3d49f7a3bbcd51b19edf
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: c8e14091d7a3fb5b925735824b1dd3ce26f034e8
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346486"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143822"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Erste Schritte mit der Microsoft Authenticator-App
 
-Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe für Ihr Geschäfts-, Schul- oder Unikonto (z.B. alain@contoso.com) oder Ihr persönliches Microsoft-Konto (z.B. alain@outlook.com) und unterstützt Sie dabei, nicht autorisierte Zugriffe auf Konten sowie betrügerische Transaktionen zu unterbinden. Sie können die App als zweite Überprüfungsmethode oder bei Telefonanmeldung als Ersatz für Ihr Kennwort verwenden. Weitere Informationen zum Einrichten und Verwenden der kennwortlosen Anmeldung per Telefon finden Sie unter [Anmelden per Smartphone anstelle Ihres Kennworts](microsoft-authenticator-app-phone-signin-faq.md).
+Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe für Ihr Geschäfts-, Schul- oder Unikonto (z.B. alain@contoso.com) oder Ihr persönliches Microsoft-Konto (z.B. alain@outlook.com) und unterstützt Sie dabei, nicht autorisierte Zugriffe auf Konten sowie betrügerische Transaktionen zu unterbinden.
 
 Wenn Sie die App für die zweistufige Überprüfung verwenden, gibt es zwei Möglichkeiten:
 
@@ -110,8 +110,6 @@ Wenn Sie die Verwendung von Prüfcodes in der App aktiviert haben, werden diese 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Antworten auf allgemeinere Fragen zur App finden Sie unter [Microsoft Authenticator-App – häufig gestellte Fragen](microsoft-authenticator-app-faq.md).
-
-- Wenn Sie weitere Fragen zur Anmeldung per Telefon haben, lesen Sie [Anmelden per Smartphone anstelle Ihres Kennworts](microsoft-authenticator-app-phone-signin-faq.md).
 
 - Weitere Informationen zur zweistufigen Überprüfung finden Sie unter [Einrichten meines Kontos für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-first-time.md).
 

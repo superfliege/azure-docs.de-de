@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: 63c767483fa56f1b716ef61a18fa93c6947a1d3b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 20ffba69d9f0f5b6648b19967c086e23e1dcb923
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373795"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929860"
 ---
 # <a name="microsoft-speech-client-samples"></a>Beispiele für den Speech-Client
 
@@ -32,4 +32,4 @@ Der Microsoft Speech-Dienst bietet End-to-End-Beispiele, die die Verwendung der 
 
 - [ObjectiveC on iOS samples](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS) (Beispiele für ObjectiveC unter iOS)
 
-Alle Microsoft Cognitive Services-SDKs und -Beispiele sind mit der MIT-Lizenz lizenziert. Weitere Informationen finden Sie unter [LICENSE](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md) (LIZENZ).
+Alle Microsoft Cognitive Services-SDKs und -Beispiele sind mit der MIT-Lizenz lizenziert. Weitere Informationen finden Sie unter [LICENSE](https://github.com/Azure-Samples/SpeechToText-REST/blob/master/LICENSE) (LIZENZ).

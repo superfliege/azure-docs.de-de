@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 15bc320bd82ea21ff608fcc834ba51b9bc7b6dea
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 6709fb8ae328f749b367c58f95b8a9ef8da9bc65
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716143"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146485"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Je nach Regulierung der Anwendung muss unter Umständen die Zustimmung durch ein
 
 Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zustimmung angegeben:
 
-1. Bei einem Vorgang der [Azure Active Directory-Graph-API](https://msdn.microsoft.com/en-us/library/azure/ad/graph/api/api-catalog) wird der Benutzer als minderjährig identifiziert, und die Benutzerdaten werden in Form eines nicht signierten JSON-Tokens an die Anwendung zurückgegeben.
+1. Bei einem Vorgang der [Azure Active Directory-Graph-API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) wird der Benutzer als minderjährig identifiziert, und die Benutzerdaten werden in Form eines nicht signierten JSON-Tokens an die Anwendung zurückgegeben.
 
 2. Die Anwendung verarbeitet das JSON-Token und zeigt einen Hinweis für die minderjährige Person an, dass die Zustimmung der Eltern erforderlich ist. Diese Zustimmung wird dann online angefordert. 
 
@@ -56,7 +56,7 @@ Hier ist ein Beispiel für einen Benutzerflow zum Einholen der elterlichen Zusti
 
 5. Wenn entweder die minderjährige oder die erwachsene Person die Zustimmung widerruft, kann die Azure AD-Graph-API verwendet werden, um **consentProvidedForMinor** in **denied** zu ändern. Alternativ hierzu kann für die Anwendung auch die Entscheidung getroffen werden, eine minderjährige Person zu löschen, für die die Zustimmung widerrufen wurde. Optional ist es möglich, den Benutzerflow so anzupassen, dass die authentifizierte minderjährige Person (oder ein Elternteil, der das Konto der minderjährigen Person verwendet) die Zustimmung widerrufen kann. Azure AD B2C zeichnet **consentProvidedForMinor** als **denied** auf.
 
-Weitere Informationen zu **legalAgeGroupClassification**, **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](active-directory-b2c-reference-custom-attr.md). Bei der Adressierung von erweiterten Attributen per Azure AD-Graph-API müssen Sie die lange Version des Attributs verwenden, z.B.*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+Weitere Informationen zu **legalAgeGroupClassification**, **consentProvidedForMinor** und **ageGroup** finden Sie unter [User resource type](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user) (Benutzerressourcentyp). Weitere Informationen zu benutzerdefinierten Attributen finden Sie unter [Verwenden benutzerdefinierter Attribute zum Erfassen von Informationen über Ihre Kunden](active-directory-b2c-reference-custom-attr.md). Bei der Adressierung von erweiterten Attributen per Azure AD-Graph-API müssen Sie die lange Version des Attributs verwenden, z.B.*extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-country-data"></a>Erfassen des Geburtsdatums und des Lands
 

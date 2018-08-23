@@ -3,20 +3,21 @@ title: Erstellen von Logik-Apps zur Automatisierung von Workflows mit Visual Stu
 description: Schnellstartanleitung zur Automatisierung von Aufgaben, Prozessen und Workflows mit Azure Logic Apps in Visual Studio
 services: logic-apps
 ms.service: logic-apps
+ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 07/31/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 92f4fb57e3bd1f3ee61625256d661980d6a11275
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.date: 07/31/2018
+ms.openlocfilehash: b8961edebd80d5f36d844734e3c93a4bd3b1f0cf
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367129"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42162132"
 ---
 # <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen und Automatisieren von Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 

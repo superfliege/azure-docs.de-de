@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: b560022f1f727949021a599e1ab342551f64c084
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: ac81525c107fcc291a8c3ef0163bf0ef2bbfdc3b
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129131"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144960"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Visualisierungsteilen in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen aus Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungsteilen.
@@ -324,7 +324,7 @@ Die Trennlinie für Name und Wert ist ein einstelliges Trennzeichen, um die Text
 Beispiel: Eine Eigenschaft namens *Standort* weist Werte wie *Redmond-Gebäude 41* und *Bellevue-Gebäude 12* auf. Sie können eine Bindestrich (-) als Trennlinie für Name und Wert festlegen und *Ort-Gebäude* als Namen angeben. Durch diesen Ansatz wird jeder Wert in die beiden Eigenschaften *Ort* und *Gebäude* gliedert.
 
 ### <a name="click-through-navigation"></a>Click-through navigation (Navigation per Klick)
-Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage im [Portal für die Protokollsuche](log-analytics-log-search-portals.md#log-search) geöffnet oder eine andere Ansicht gestartet.
+Mit der Navigation per Klick wird definiert, welche Aktion durchgeführt wird, wenn Sie in einer Ansicht auf einen Header oder einen Listeneintrag klicken.  Hierdurch wird entweder eine Abfrage im [Portal für die Protokollsuche](log-analytics-log-search-portals.md) geöffnet oder eine andere Ansicht gestartet.
 
 In der folgenden Tabelle sind die Einstellungen für die Navigation per Klick beschrieben.
 

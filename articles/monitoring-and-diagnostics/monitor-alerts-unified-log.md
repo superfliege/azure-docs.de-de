@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd278ad6865c871ed0a5ed9272c9fadfca0f38db
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: fd1fb978fb47c69b2eb672bc27baee73dfdd0a29
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440428"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143357"
 ---
 # <a name="log-alerts-in-azure-monitor---alerts"></a>Protokollwarnungen in Azure Monitor – Warnungen 
 Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
@@ -87,7 +87,7 @@ In diesem Fall wird die Abfrage alle fünf Minuten mit Daten für 30 Minuten aus
 #### <a name="example"></a>Beispiel
 Angenommen, Sie wünschen sich eine Warnung, wenn ein beliebiger Computer binnen 30 Minuten dreimal die Prozessornutzung von 90 % überschreitet.  Dazu erstellen Sie eine Warnungsregel mit den folgenden Details:  
 
-- **Abfrage:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5 m), Computer<br>
+- **Abfrage:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
 - **Zeitraum:** 30 Minuten<br>
 - **Warnungshäufigkeit**: Fünf Minuten<br>
 - **Aggregatwert:** Größer als 90<br>

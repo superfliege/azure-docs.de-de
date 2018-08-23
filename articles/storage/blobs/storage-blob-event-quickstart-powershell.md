@@ -8,12 +8,12 @@ ms.date: 07/05/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: 26e80f166e1add5cebb837c1c05e45f25ff2d086
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 502f378bd1eddc0a104438037dce50bafd508ad9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262751"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146616"
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Web-Endpunkt mit PowerShell
 
@@ -36,9 +36,6 @@ Melden Sie sich mit dem Befehl `Connect-AzureRmAccount` bei Ihrem Azure-Abonneme
 ```powershell
 Connect-AzureRmAccount
 ```
-
-> [!NOTE]
-> Die Verfügbarkeit von Storage-Ereignissen ist an die [Verfügbarkeit](../../event-grid/overview.md) von Event Grid gebunden und wird in anderen Regionen verfügbar, wenn dort Event Grid verfügbar ist.
 
 In diesem Beispiel wird **westus2** verwendet und die Auswahl zur Verwendung im gesamten Artikel in einer Variable gespeichert.
 

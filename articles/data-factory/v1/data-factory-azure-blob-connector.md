@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ec3c87c39cd8b8d1dafa8ad062776171c602135b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2efc20d5a2248fed69f38880a9e75a6ccb2403dd
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047059"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146645"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -83,7 +83,7 @@ Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset un
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| folderPath |Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer\myblobfolder\ |Ja |
+| folderPath |Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer\myblobfolder\ |JA |
 | fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn **fileName** für ein Ausgabedataset nicht angegeben ist und **preserveHierarchy** in der Aktivitätssenke nicht angegeben ist, hat der Name der generierten Datei folgendes Format: „Data.<Guid>.txt“ (z.B. „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt“). |Nein  |
 | partitionedBy |"partitionedBy" ist eine optionale Eigenschaft. "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "fileName" für Zeitreihendaten anzugeben. Beispiel: "folderPath" kann für jedes stündliche Datenaufkommen parametrisiert werden. Im Abschnitt [Nutzen der Eigenschaft „partitionedBy“](#using-partitionedBy-property) finden Sie Details und Beispiele. |Nein  |
 | format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein  |
@@ -174,7 +174,7 @@ Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für 
 Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kopiert werden können. In dieser exemplarischen Vorgehensweise haben sowohl der Quell- als auch der Zieldatenspeicher den Typ „Azure Blob Storage“. In der Pipeline in dieser exemplarischen Vorgehensweise werden Daten aus einem Ordner in einen anderen Ordner im selben BLOB-Container kopiert. Diese exemplarische Vorgehensweise ist bewusst einfach gehalten, um Einstellungen oder Eigenschaften für den Fall zu veranschaulichen, dass Blob Storage als Quelle oder Senke verwendet wird. 
 
 ### <a name="prerequisites"></a>Voraussetzungen
-1. Erstellen Sie ein allgemein verwendbares **Azure Storage-Konto** (Azure-Speicherkonto), wenn Sie noch keines haben. In dieser exemplarischen Vorgehensweise verwenden Sie den Blob Storage sowohl als **Quell**- als auch als **Ziel**datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines Azure Storage-Kontos.
+1. Erstellen Sie ein allgemein verwendbares **Azure Storage-Konto** (Azure-Speicherkonto), wenn Sie noch keines haben. In dieser exemplarischen Vorgehensweise verwenden Sie den Blob Storage sowohl als **Quell**- als auch als **Ziel**datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines Azure Storage-Kontos.
 2. Erstellen Sie einen BLOB-Container namens **adfblobconnector** im Speicherkonto. 
 4. Erstellen Sie einen Ordner namens **input** im **adfblobconnector**-Container.
 5. Erstellen Sie eine Datei namens **emp.txt** mit dem folgenden Inhalt, und laden Sie diese Datei in den Ordner **input** hoch, indem Sie ein Tool wie [Azure Storage-Explorer](https://azurestorageexplorer.codeplex.com/) verwenden.

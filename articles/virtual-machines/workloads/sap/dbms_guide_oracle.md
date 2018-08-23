@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bda1c4074db123294ffde39e5c4cd5494474ca38
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 2daa624dd7912d09f01e5bab5dc6de9cc14a771c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075384"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145819"
 ---
 # <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – Oracle-DBMS-Bereitstellung für SAP-Workload
 
@@ -311,7 +311,7 @@ ms.locfileid: "39075384"
 
 
 ## <a name="specifics-to-oracle-database"></a>Besonderheiten von Oracle Database
-Die Oracle-Software wird von Oracle für die Ausführung in Microsoft Azure unterstützt. Ausführliche Informationen zur allgemeinen Unterstützung von Windows Hyper-V und Azure finden Sie hier: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Die Oracle-Software wird von Oracle für die Ausführung in Microsoft Azure unterstützt. Ausführliche Informationen zur allgemeinen Unterstützung von Windows Hyper-V und Azure finden Sie hier: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Neben der allgemeinen Unterstützung wird auch das spezielle Szenario der gemeinsamen Verwendung von SAP-Anwendungen und Oracle Database unterstützt. Details finden Sie im Dokument. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) zu lesen. 
 
@@ -384,7 +384,7 @@ Für Oracle-Bereitstellungen unter Windows wird dringend empfohlen, die Azure-Fu
 Alle anderen allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)) gelten ebenfalls für die Bereitstellung von VMs mit Oracle Database.
 
 ## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Besonderheiten bei Oracle Database unter Oracle Linux
-Die Oracle-Software wird von Oracle für die Ausführung in Microsoft Azure mit Oracle Linux als Gastbetriebssystem unterstützt. Ausführliche Informationen zur allgemeinen Unterstützung von Windows Hyper-V und Azure finden Sie hier: <https://blogs.oracle.com/cloud/entry/oracle_and_microsoft_join_forces> 
+Die Oracle-Software wird von Oracle für die Ausführung in Microsoft Azure mit Oracle Linux als Gastbetriebssystem unterstützt. Ausführliche Informationen zur allgemeinen Unterstützung von Windows Hyper-V und Azure finden Sie hier: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
 
 Neben der allgemeinen Unterstützung wird auch das spezielle Szenario der gemeinsamen Verwendung von SAP-Anwendungen und Oracle Database unterstützt. Details finden Sie in diesem Teil des Dokumentes.
 

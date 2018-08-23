@@ -10,12 +10,12 @@ ms.component: bing-video-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 62646d026e141d0549c68e18f9318fa32d3e00df
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: db1bc07c06f3d073b6cc0f206620e50a5f048e2a
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373082"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41929840"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Leitfaden zur Durchführung eines Upgrades für die Videosuche-API
 
@@ -25,7 +25,7 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 
 ### <a name="endpoints"></a>Endpunkte
 
-- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: „https://api.cognitive.microsoft.com/bing/\*\*v7.0**/videos/search“.
+- Die Versionsnummer des Endpunkts hat sich von v5 in v7 geändert. Beispiel: `https://api.cognitive.microsoft.com/bing/v7.0/videos/search`.
 
 ### <a name="error-response-objects-and-error-codes"></a>Fehlerantwortobjekte und Fehlercodes
 
@@ -40,7 +40,7 @@ In diesem Upgradeleitfaden sind die Änderungen zwischen Version 5 und Version 7
 
 |Code|SubCode|BESCHREIBUNG
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing gibt ServerError zurück, sobald eine der Bedingungen für untergeordnete Codes auftritt. Die Antwort enthält diese Fehler, wenn der HTTP-Statuscode 500 lautet.
+|ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|Bing gibt ServerError zurück, sobald eine der Untercodebedingungen auftritt. Die Antwort enthält diese Fehler, wenn der HTTP-Statuscode 500 lautet.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blockiert|Bing gibt InvalidRequest zurück, wenn ein beliebiger Teil der Anforderung ungültig ist. Beispielsweise, wenn ein erforderlicher Parameter fehlt oder ein Parameterwert ungültig ist.<br/><br/>Wenn der Fehler ParameterMissing oder ParameterInvalidValue ist, lautet der HTTP-Statuscode 400.<br/><br/>Wenn der Fehler HttpNotAllowed ist, lautet der HTTP-Statuscode 410.
 |RateLimitExceeded||Bing gibt RateLimitExceeded zurück, wenn Sie Ihr Kontingent für Abfragen pro Sekunde (Queries Per Second, QPS) oder Abfragen pro Monat (Queries Per Month, QPM) überschreiten.<br/><br/>Bing gibt den HTTP-Statuscode 429 zurück, wenn Sie das QPS-Kontingent überschritten haben, und 403, wenn Sie das QPM-Kontingent überschritten haben.
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing gibt InvalidAuthorization zurück, wenn Bing den Aufrufer nicht authentifizieren kann. Beispielsweise, wenn der `Ocp-Apim-Subscription-Key`-Header fehlt oder der Abonnementschlüssel ungültig ist.<br/><br/>Redundanz tritt auf, wenn Sie mehrere Authentifizierungsmethoden angeben.<br/><br/>Wenn der Fehler InvalidAuthorization ist, lautet der HTTP-Statuscode 401.

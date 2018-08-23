@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c38187221e7cd4e3244199e713f41be0005eb024
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 5b6eefbeb279b76717c775cc220f088612908add
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801880"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145864"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -105,7 +105,7 @@ Synchronisierungsfehlerberichte in Azure AD Connect Health für die Synchronisie
 >
 
 #### <a name="related-articles"></a>Verwandte Artikel
-* [Duplicate or invalid attributes prevent directory synchronization in Office 365 (Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisation in Office 365)](https://support.microsoft.com/en-us/kb/2647098)
+* [Duplicate or invalid attributes prevent directory synchronization in Office 365 (Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisation in Office 365)](https://support.microsoft.com/kb/2647098)
 
 ### <a name="objecttypemismatch"></a>ObjectTypeMismatch (Konflikt mit Objekttyp)
 #### <a name="description"></a>BESCHREIBUNG
@@ -157,13 +157,13 @@ Wenn Azure AD Connect versucht, ein neues Objekt hinzuzufügen oder ein vorhande
 #### <a name="how-to-fix-attributevaluemustbeunique-error"></a>Beheben des Fehlers AttributeValueMustBeUnique
 Die häufigste Ursache für den Fehler „AttributeValueMustBeUnique“ ist, dass zwei Objekte mit einem anderen Source Anchor \(immutableId\) den gleichen Wert für die Attribute „ProxyAddresses“ und/oder „UserPrincipalName“ haben. Um den Fehler „AttributeValueMustBeUnique“ zu beheben, müssen Sie folgendes tun:
 
-1. Identifizieren Sie den duplizierten Wert für „proxyAddresses“, „userPrincipalName“ oder ein anderes Attribut, das den Fehler verursacht hat. Finden Sie auch heraus, welche zwei \(oder mehr\) Objekte am Konflikt beteiligt sind. Der Bericht, der von [Azure AD Connect Health für die Synchronisierung](https://aka.ms/aadchsyncerrors) erstellt wurde, kann Ihnen dabei helfen, diese beiden Objekte zu identifizieren.
+1. Identifizieren Sie den duplizierten Wert für das Attribut „userPrincipalName“, das Atribut „proxyAddresses“ oder ein anderes Attribut, das den Fehler verursacht hat. Finden Sie auch heraus, welche zwei \(oder mehr\) Objekte am Konflikt beteiligt sind. Der Bericht, der von [Azure AD Connect Health für die Synchronisierung](https://aka.ms/aadchsyncerrors) erstellt wurde, kann Ihnen dabei helfen, diese beiden Objekte zu identifizieren.
 2. Bestimmen Sie, welches Objekt weiterhin den duplizierten Wert haben soll, und welches nicht.
 3. Entfernen Sie den duplizierten Wert aus dem Objekt, das diesen Wert NICHT haben soll. Beachten Sie, dass Sie diese Änderung in dem Verzeichnis durchführen sollten, aus dem das Objekt erstellt wurde. In einigen Fällen müssen Sie eines der in Konflikt stehenden Objekte löschen.
 4. Wenn Sie die Änderungen im lokalen AD durchgeführt haben, synchronisieren Sie die Änderung mit Azure AD Connect, um den Fehler zu beheben.
 
 #### <a name="related-articles"></a>Verwandte Artikel
--[Duplicate or invalid attributes prevent directory synchronization in Office 365 (Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisation in Office 365)](https://support.microsoft.com/en-us/kb/2647098)
+-[Duplicate or invalid attributes prevent directory synchronization in Office 365 (Doppelte oder ungültige Attribute verhindern Verzeichnissynchronisation in Office 365)](https://support.microsoft.com/kb/2647098)
 
 ## <a name="data-validation-failures"></a>Fehler bei der Datenüberprüfung
 ### <a name="identitydatavalidationfailed"></a>IdentityDataValidationFailed (Überprüfung von Identitätsdaten schlägt fehl)
@@ -200,7 +200,7 @@ Wenn das UserPrincipalName-Suffix eines Benutzers von bob@**contoso.com** in bob
 2. Lassen Sie im nächsten Synchronisierungszyklus die Synchronisierung zu. Diesmal ist die Synchronisierung erfolgreich, und aktualisiert wie erwartet Bobs „UserPrincipalName“ in bob@fabrikam.com.
 
 #### <a name="related-articles"></a>Verwandte Artikel
-* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird.](https://support.microsoft.com/en-us/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
+* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird.](https://support.microsoft.com/help/2669550/changes-aren-t-synced-by-the-azure-active-directory-sync-tool-after-you-change-the-upn-of-a-user-account-to-use-a-different-federated-domain)
 
 ## <a name="largeobject"></a>LargeObject (Großes Objekt)
 ### <a name="description"></a>BESCHREIBUNG

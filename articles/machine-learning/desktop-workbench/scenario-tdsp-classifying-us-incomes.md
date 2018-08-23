@@ -3,25 +3,25 @@ title: Einkommensklassifizierung – Team Data Science-Prozess – Azure Machine
 description: Verwenden der Team Data Science-Prozessvorlage zum Erstellen eines Projekts in Azure Machine Learning, das US-Einkommen klassifiziert.
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: deguhath
+ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.author: bradsev
-ms.openlocfilehash: 3b1d2be46b2f142adff966991997891e44e850ec
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832678"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144512"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Einkommensklassifizierung mit dem Team Data Science-Prozessprojekt (TDSP)
 
@@ -37,7 +37,7 @@ Eine zusammenfassende Dokumentation zum Beispiel finden Sie [hier](https://githu
 ### <a name="purpose"></a>Zweck
 Der Hauptzweck dieses Beispiels ist zu zeigen, wie ein Machine Learning-Projekt mit [Team Data Science-Prozess (TDSP)](https://github.com/Azure/Microsoft-TDSP)-Struktur und -Vorlagen in Azure Machine Learning instanziiert und ausgeführt wird. Zu diesem Zweck verwenden wir die bekannten [Volkszählungsdaten der USA von 1994 aus dem UCI Machine Learning-Repository](https://archive.ics.uci.edu/ml/datasets/adult). Die Modellierungsaufgabe besteht darin, Vorhersagen für die jährlichen Einkommensklassen der USA aus den Volkszählungsdaten zu treffen (z.B. Alter, ethnische Gruppe, Bildungsstand, Herkunftsland, usw.)
 
-### <a name="scope"></a>Umfang
+### <a name="scope"></a>Bereich
  * Durchsuchen von Daten, Schulungen und Bereitstellung von Machine Learning-Modellen, die das Problem der Vorhersage in der Übersicht der Anwendungsfälle berücksichtigt. 
  * Die Projektausführung in Azure Machine Learning verwendet die Vorlage des Team Data Science-Prozesses (TDSP) aus Azure Machine Learning für dieses Projekt. Für die Ausführung und Berichterstattung des Projekts werden wir den TDSP-Lebenszyklus verwenden.
  * Operationalisierung der Projektmappe direkt aus Azure Machine Learning in Azure Container Service.

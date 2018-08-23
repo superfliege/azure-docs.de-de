@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: fd290420c2c755e07f6949750e3a88bcb64682f3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656906"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144877"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -77,7 +77,7 @@ Sie können den Netzwerkdatenverkehr zu und von Ressourcen in einem virtuellen N
 - Wenn auf unterschiedliche virtuelle Computer innerhalb eines Subnetzes unterschiedliche Sicherheitsregeln angewandt werden sollen, können Sie die Netzwerkschnittstelle im virtuellen Computer Anwendungssicherheitsgruppen zuordnen. In einer Sicherheitsregel kann eine Anwendungssicherheitsgruppe als Quelle und Ziel angegeben werden. Diese Regel gilt dann nur für die Netzwerkschnittstellen, die Mitglieder der Anwendungssicherheitsgruppe sind. Weitere Informationen zu [Netzwerksicherheitsgruppen](security-overview.md) und [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
 - In Azure werden in jeder Netzwerksicherheitsgruppe mehrere Standardsicherheitsregeln erstellt. Eine Standardregel lässt die Weiterleitung des gesamten Datenverkehrs zwischen allen Ressourcen in einem virtuellen Netzwerk zu. Dieses Verhalten können Sie mithilfe von Netzwerksicherheitsgruppen oder benutzerdefiniertem Routing zum Weiterleiten von Datenverkehr an ein virtuelles Netzwerkgerät außer Kraft setzen. Es wird empfohlen, sich mit allen [Standardsicherheitsregeln](security-overview.md#default-security-rules) von Azure sowie mit der Anwendung von Netzwerksicherheitsgruppen-Regeln auf eine Ressource vertraut zu machen.
 
-Sie können sich Beispielentwürfe für die Implementierung einer DMZ zwischen Azure und dem Internet mithilfe eines [virtuellen Netzwerkgeräts](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) oder mit [Netzwerksicherheitsgruppen](virtual-networks-dmz-nsg.md) ansehen.
+Sie können sich Beispielentwürfe für die Implementierung einer DMZ zwischen Azure und dem Internet mithilfe eines [virtuellen Netzwerkgeräts](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2Fazure%2Fvirtual-network%2Ftoc.json) oder mit [Netzwerksicherheitsgruppen](virtual-networks-dmz-nsg.md) ansehen.
 
 ### <a name="traffic-routing"></a>Routing von Datenverkehr
 
@@ -99,7 +99,7 @@ Bei Verwendung des [Peerings virtueller Netzwerke](virtual-network-peering-overv
 
 Mit einem Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json) können Sie ein virtuelles Netzwerk über eine [Site-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder über eine dedizierte Verbindung mit Azure [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mit dem lokalen Netzwerk verbinden.
 
-Sie können das Peering und ein VPN-Gateway kombinieren und [Hub-Spoke-Netzwerke](/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json) erstellen, bei denen beispielsweise virtuelle Spoke-Netzwerke mit einem virtuellen Hub-Netzwerk verbunden werden und das virtuelle Hub-Netzwerk mit einem lokalen Netzwerk verbunden wird.
+Sie können das Peering und ein VPN-Gateway kombinieren und [Hub-Spoke-Netzwerke](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json) erstellen, bei denen beispielsweise virtuelle Spoke-Netzwerke mit einem virtuellen Hub-Netzwerk verbunden werden und das virtuelle Hub-Netzwerk mit einem lokalen Netzwerk verbunden wird.
 
 ### <a name="name-resolution"></a>Namensauflösung
 

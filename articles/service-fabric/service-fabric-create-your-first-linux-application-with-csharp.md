@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 59dc090053c78dbddc1854f21db39f66df7bc91c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7427af3e814752801c4738675f7cd2263843f9b8
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020544"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617085"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Erstellen Ihrer ersten Azure Service Fabric-Anwendung
 > [!div class="op_single_selector"]
@@ -41,27 +41,19 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Serv
 
 1. Installieren von Node.js und npm auf dem Computer
 
-   Ubuntu
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-   sudo apt-get install -y nodejs 
+   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
+   nvm install node 
    ```
-
-   Red Hat Enterprise Linux 7.4 (Unterstützung der Service Fabric-Vorschauversion)
-   ```bash
-   sudo yum install nodejs
-   sudo yum install npm
-   ```
-
 2. Installieren Sie den [Yeoman](http://yeoman.io/)-Vorlagengenerator auf dem Computer über npm.
 
   ```bash
-  sudo npm install -g yo
+  npm install -g yo
   ```
 3. Installieren des Service Fabric-Yeoman-C#-Anwendungsgenerators über npm
 
   ```bash
-  sudo npm install -g generator-azuresfcsharp
+  npm install -g generator-azuresfcsharp
   ```
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung

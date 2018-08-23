@@ -2,18 +2,18 @@
 title: FPGA-Paket für die Hardwarebeschleunigung für Azure Machine Learning
 description: Hier finden Sie Informationen zu den Python-Paketen, die Benutzern von Azure Machine Learning zur Verfügung stehen.
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
-ms.author: routlaw
-author: rloutlaw
+ms.author: tedway
+author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: e680ef34be1d5dae2942c432de5e81fe620bbdc4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832977"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146785"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Hardwarebeschleunigungspaket für Azure Machine Learning
 
@@ -40,18 +40,18 @@ Das Hardwarebeschleunigungspaket für Azure Machine Learning ist eine über pip 
 
 2. Installieren Sie [Anaconda (Python 3.6)](https://conda.io/miniconda.html).
 
-3. Verwenden Sie zum Herunterladen einer vorkonfigurierten Anaconda-Umgebung den folgenden Befehl an der Git-Eingabeaufforderung:
+   Verwenden Sie zum Herunterladen einer vorkonfigurierten Anaconda-Umgebung den folgenden Befehl an der Git-Eingabeaufforderung:
 
     ```
     git clone https://aka.ms/aml-real-time-ai
     ```
-5. Öffnen Sie zum Erstellen der Umgebung eine **Anaconda-Eingabeaufforderung**, und verwenden Sie den folgenden Befehl:
+1. Öffnen Sie zum Erstellen der Umgebung eine **Anaconda-Eingabeaufforderung**, und verwenden Sie den folgenden Befehl:
 
     ```
     conda env create -f aml-real-time-ai/environment.yml
     ```
 
-6. Aktivieren Sie die Umgebung mithilfe des folgenden Befehls:
+1. Aktivieren Sie die Umgebung mithilfe des folgenden Befehls:
 
     ```
     conda activate amlrealtimeai

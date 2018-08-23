@@ -3,7 +3,7 @@ title: Erstellen eines Dienstprinzipals für Azure Stack | Microsoft-Dokumentati
 description: Beschreibt das Erstellen eines neuen Dienstprinzipals, der mit der rollenbasierten Zugriffssteuerung in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
 services: azure-resource-manager
 documentationcenter: na
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
-ms.author: mabrigg
-ms.openlocfilehash: 0db3f19c99b786d7f32f126ad7bd70efc999a751
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.date: 08/22/2018
+ms.author: sethm
+ms.openlocfilehash: f7233d6a27b9ec3d58f33f7032bbec7a646d24f7
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444268"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42366118"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Bereitstellen des Anwendungszugriffs auf Azure Stack
 
@@ -136,6 +136,10 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
     -CertificateThumbprint $ServicePrincipal.Thumbprint `
     -ApplicationId $ServicePrincipal.ClientId `
     -TenantId $TenantID
+
+    # Output the SPN details
+    $ServicePrincipal
+
    ```
 
 2. Nach Abschluss der Automatisierung zeigt es die für die Verwendung des SPN erforderlichen Details an. 

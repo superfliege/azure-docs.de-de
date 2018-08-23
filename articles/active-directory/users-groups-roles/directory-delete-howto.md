@@ -13,12 +13,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 44781c976afa94ebe3c8df8c7fd70c3e16956916
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: b1d3439412e324c71687c43aa9e47c520cb72262
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37870685"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143630"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Löschen eines Azure Active Directory-Mandanten
 Beim Löschen eines Mandanten werden auch alle darin enthaltenen Ressourcen gelöscht. Sie müssen den Mandanten vorbereiten, indem Sie die mit ihm verbundenen Ressourcen minimieren, ehe Sie ihn löschen. Nur ein globaler Administrator von Azure Active Directory (Azure AD) kann einen Azure AD-Mandanten im Portal löschen.
@@ -63,7 +63,7 @@ Bereitstellung aufgehoben (30 Tage nach Deaktivierung) | Daten gelöscht (werden
 
 Sie können ein Abonnement in den Zustand **Bereitstellung aufgehoben** versetzen, um es innerhalb von 3 Tagen im Admin Center von Microsoft Store für Unternehmen zu löschen. Diese Funktion wird in Kürze im Office 365 Admin Center verfügbar sein.
 
-1. Melden Sie sich beim [Admin Center von Microsoft Store für Unternehmen](https://businessstore.microsoft.com/en-us/manage/) mit einem Konto mit Rechten eines globalen Administrators im Mandanten an. Wenn Sie versuchen, den Mandanten „Contoso“ zu löschen, der die anfängliche Domäne contoso.onmicrosoft.com hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
+1. Melden Sie sich beim [Admin Center von Microsoft Store für Unternehmen](https://businessstore.microsoft.com/manage/) mit einem Konto mit Rechten eines globalen Administrators im Mandanten an. Wenn Sie versuchen, den Mandanten „Contoso“ zu löschen, der die anfängliche Domäne contoso.onmicrosoft.com hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
 
 2. Wechseln Sie zur Registerkarte **Verwalten**, wählen Sie **Produkte und Dienste** und dann das Abonnement aus, das Sie kündigen möchten. Nachdem Sie auf **Kündigen** geklickt haben, aktualisieren Sie die Seite.
   

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 29226f0645a772ffe02e378c9b4df0a87909731a
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358119"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144942"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 
@@ -101,8 +101,6 @@ Sie haben Ihre Kontoinformationen gesichert und auf dem neuen Gerät wiederherge
 
 ## <a name="related-topics"></a>Verwandte Themen
 - [Erste Schritte mit der Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md)  
-
-- [Mit dem Telefon anmelden](microsoft-authenticator-app-phone-signin-faq.md)
 
 - [Microsoft Authenticator-App – häufig gestellte Fragen](microsoft-authenticator-app-faq.md)
 

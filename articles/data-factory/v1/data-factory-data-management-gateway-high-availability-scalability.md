@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b9ec9867e9abd188142067e593c925e3c8acdd0b
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 58f612906af55575e9d42307af924ea0a8501ca1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37113339"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145832"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]
@@ -169,7 +169,7 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
 - Platzhalterzertifikate werden unterstützt. Wenn der FQDN **node1.domain.contoso.com** lautet, können Sie ***.domain.contoso.com** als Antragstellernamen des Zertifikats verwenden.
 - SAN-Zertifikate sind nicht empfehlenswert, da nur das letzte Element des alternativen Antragstellernamens verwendet wird und alle anderen aufgrund von aktuellen Einschränkungen ignoriert werden. Beispiel: Wenn Sie ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** haben, können Sie dieses Zertifikat nur auf dem Computer mit dem FQDN **node2.domain.contoso.com** verwenden.
 - Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
-- Zertifikate mit CNG-Schlüsseln werden nicht unterstützt. Unterstützt keine Zertifikate, die CNG-Schlüssel verwenden.
+- Zertifikate mit CNG-Schlüsseln werden nicht unterstützt.
 
 #### <a name="faq-when-would-i-not-enable-this-encryption"></a>Häufig gestellte Frage: Wann sollte ich diese Verschlüsselung nicht aktivieren?
 Das Aktivieren der Verschlüsselung kann einen gewissen Aufwand für Ihre Infrastruktur (die das öffentliche Zertifikat besitzt) bedeuten, daher sollten Sie in den folgenden Fällen auf das Aktivieren der Verschlüsselung verzichten:

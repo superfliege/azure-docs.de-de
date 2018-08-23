@@ -14,15 +14,15 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 52ae7da666acaf234920a7f03afe3766f29a1e85
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 210526e105793820a2e8a80a11b356b1d7d764da
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629122"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143622"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
-In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-self-service-signup).
+In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup).
 
 ## <a name="decide-how-you-want-to-take-over-an-unmanaged-directory"></a>Entscheiden, wie ein nicht verwaltetes Verzeichnis übernommen werden soll
 Während der Administratorübernahme können Sie die Inhaberschaft wie in [Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](../fundamentals/add-custom-domain.md) beschrieben nachweisen. In den nächsten Abschnitten wird die Administratorerfahrung im Detail erläutert. Hier zunächst eine Zusammenfassung:

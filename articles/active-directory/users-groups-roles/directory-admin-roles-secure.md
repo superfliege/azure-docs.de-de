@@ -13,19 +13,19 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: c8c0f4c3f99aa413531f54c1807883fcd73f039a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627932"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144335"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
 Die Sicherheit der meisten, wenn nicht aller Geschäftsressourcen in modernen Organisationen hängt von der Integrität der privilegierten Konten ab, die IT-Systeme verwalten. Böswillige Akteure einschließlich Cyberangreifern haben häufig Administratorkonten und andere Elemente des privilegierten Zugriffs im Visier, um zu versuchen, mit Angriffen, deren Ziel der Diebstahl von Anmeldeinformationen ist, schnell Zugriff auf sensible Daten und Systeme zu erhalten. Bei Clouddiensten sind Cloud-Dienstanbieter und Kunde gemeinsam verantwortlich für Prävention und Reaktion. Weitere Informationen zu den neuesten Bedrohungen von Endpunkten und Cloud finden Sie unter [Informieren Sie sich über die aktuellen Angriffe auf Endpunkte und auf die Cloud ](https://www.microsoft.com/security/sir/default.aspx). Dieser Artikel kann Ihnen helfen, eine Roadmap zum Schließen der Lücken zwischen Ihren aktuellen Plänen und dem hier beschriebenen Leitfaden zu entwickeln.
 
 > [!NOTE] 
-> Microsoft sieht sich in der Pflicht, den Ansprüchen von Vertrauen, Transparenz, Einhaltung von Standards und Einhaltung behördlicher Bestimmungen in höchstem Maße gerecht zu werden. Mehr darüber, wie das globale Incidentreaktionsteam von Microsoft die Auswirkungen von Angriffen auf Clouddienste abschwächt, und wie die Sicherheit in Businessprodukte und Clouddienste von Microsoft integriert ist, erfahren Sie unter [Sicherheit](https://www.microsoft.com/en-us/trustcenter/security), und mehr über Complianceziele von Microsoft unter [Compliance](https://www.microsoft.com/en-us/trustcenter/compliance).
+> Microsoft sieht sich in der Pflicht, den Ansprüchen von Vertrauen, Transparenz, Einhaltung von Standards und Einhaltung behördlicher Bestimmungen in höchstem Maße gerecht zu werden. Mehr darüber, wie das globale Incidentreaktionsteam von Microsoft die Auswirkungen von Angriffen auf Clouddienste abschwächt, und wie die Sicherheit in Businessprodukte und Clouddienste von Microsoft integriert ist, erfahren Sie unter [Sicherheit](https://www.microsoft.com/trustcenter/security), und mehr über Complianceziele von Microsoft unter [Compliance](https://www.microsoft.com/trustcenter/compliance).
 
 <!--## Risk management, incident response, and recovery preparation
 
@@ -337,7 +337,7 @@ Zusätzlich zur Verwaltung Ihrer Konten für privilegierten Zugriff sollten Sie 
 * Gewähren Sie privilegierten Zugriff nur bei Bedarf, und entziehen sie ihn danach (Just-in-Time).
 * Sorgen Sie für eine kontinuierliche Überprüfungsaktivität im Zusammenhang mit privilegierten Konten.
 
-Weitere Informationen zum Erstellen einer vollständigen Sicherheitsroadmap finden Sie unter [Ressourcen zur Cloud-IT-Architektur von Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zum [Erstellen von wichtigen Schutzmaßnahmen vor Cyberangriffen zum Schutz Ihres Unternehmens](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx).
+Weitere Informationen zum Erstellen einer vollständigen Sicherheitsroadmap finden Sie unter [Ressourcen zur Cloud-IT-Architektur von Microsoft](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources). Um weitere Informationen zum Einsatz von Microsoft-Diensten zur Unterstützung bei einem dieser Themen zu erhalten, wenden Sie sich an Ihren Microsoft-Vertriebsbeauftragten, oder besuchen Sie unsere Seite zum [Erstellen von wichtigen Schutzmaßnahmen vor Cyberangriffen zum Schutz Ihres Unternehmens](https://www.microsoft.com/microsoftservices/campaigns/cybersecurity-protection.aspx).
 
 Diese letzte laufende Phase der Roadmap für geschützten privilegierten Zugriff umfasst die folgenden Komponenten.
 
@@ -440,16 +440,16 @@ Weitere Informationen zur Behandlung von Sicherheitsvorfällen durch Microsoft O
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Microsoft Trust Center für Produktsicherheit](https://www.microsoft.com/en-us/trustcenter/security) – Sicherheitsfeatures von Cloudprodukten und -diensten von Microsoft
+* [Microsoft Trust Center für Produktsicherheit](https://www.microsoft.com/trustcenter/security) – Sicherheitsfeatures von Cloudprodukten und -diensten von Microsoft
 
-* [Microsoft Trust Center – Complianceangebote](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) – Microsofts umfassende Reihe von Complianceangeboten für Clouddienste
+* [Microsoft Trust Center – Complianceangebote](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – Microsofts umfassende Reihe von Complianceangeboten für Clouddienste
 
-* [Ausführen einer Risikobeurteilung und Compliancebewertung für Microsoft Cloud Services](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) – Verwalten von Sicherheits- und Complianceanforderungen für Clouddienste von Microsoft
+* [Ausführen einer Risikobeurteilung und Compliancebewertung für Microsoft Cloud Services](https://www.microsoft.com/trustcenter/guidance/risk-assessment) – Verwalten von Sicherheits- und Complianceanforderungen für Clouddienste von Microsoft
 
 ### <a name="other-ms-online-services"></a>Andere MS-Onlinedienste 
 
-* [Microsoft Intune-Sicherheit](https://www.microsoft.com/en-us/trustcenter/security/intune-security) – Intune bietet cloudbasierte Verwaltungsfunktionen für mobile Geräte, mobile Anwendungen und PCs.
+* [Microsoft Intune-Sicherheit](https://www.microsoft.com/trustcenter/security/intune-security) – Intune bietet cloudbasierte Verwaltungsfunktionen für mobile Geräte, mobile Anwendungen und PCs.
 
-* [Microsoft Dynamics 365](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) – Dynamics 365 ist die cloudbasierte Lösung von Microsoft, die Funktionen für Kundenbeziehungsmanagement (Customer Relationship Management, CRM) und Enterprise Resource Planning (ERP) vereinheitlicht.
+* [Microsoft Dynamics 365](https://www.microsoft.com/trustcenter/security/dynamics365-security) – Dynamics 365 ist die cloudbasierte Lösung von Microsoft, die Funktionen für Kundenbeziehungsmanagement (Customer Relationship Management, CRM) und Enterprise Resource Planning (ERP) vereinheitlicht.
 
  

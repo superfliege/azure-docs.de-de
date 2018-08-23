@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: f6096238deb2186edfac2eb9d1c9a9e76db07553
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 6db7862a115179552a2dd57c07af66b3b5aa10e3
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308518"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145396"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte iOS-Geräte mit Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -361,5 +361,5 @@ In diesem Tutorial haben Sie Broadcastbenachrichtigungen an bestimmte iOS-Gerät
 [Notify users with Notification Hubs]: notification-hubs-aspnet-backend-ios-notify-users.md
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
-[get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
+[get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Azure-Portal]: https://portal.azure.com

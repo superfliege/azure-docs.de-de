@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 317c94abdf14d3d88e07e32ab16769bd1f641438
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 55100d14ab7acbff87a726615ad9fa8b1fe9a3c8
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591295"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143621"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Erforderliche Ports und Protokolle für die Hybrid-Identität
 Das folgende Dokument ist eine technische Referenz zu den erforderlichen Ports und Protokollen für die Implementierung einer Hybrid-Identitätslösung. Sehen Sie sich die folgende Abbildung und die entsprechende Tabelle an.
@@ -83,7 +83,7 @@ In dieser folgenden Tabelle werden die Ports und Protokolle beschrieben, die fü
 |HTTP|80|Ermöglicht ausgehenden HTTP-Verkehr für die Sicherheitsüberprüfung, z.B. SSL. Wird auch für die ordnungsgemäße Funktion automatischer Updates für den Connector benötigt.
 |HTTPS|443| Ermöglicht ausgehenden HTTPS-Datenverkehr für Vorgänge wie das Aktivieren und Deaktivieren des Features, das Registrieren von Connectors, das Herunterladen von Connectorupdates und das Verarbeiten aller Benutzeranmeldeanforderungen.
 
-Darüber hinaus muss Azure AD Connect in der Lage sein, direkte IP-Verbindungen mit den [IP-Adressbereichen des Azure-Rechenzentrums](https://www.microsoft.com/en-us/download/details.aspx?id=41653) herzustellen.
+Darüber hinaus muss Azure AD Connect in der Lage sein, direkte IP-Verbindungen mit den [IP-Adressbereichen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herzustellen.
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>Tabelle 6b: Kennworthashsynchronisierung mit SSO
 
@@ -91,7 +91,7 @@ Darüber hinaus muss Azure AD Connect in der Lage sein, direkte IP-Verbindungen 
 | --- | --- | ---
 |HTTPS|443| Ermöglicht die SSO-Registrierung (nur für den SSO-Registrierungsprozess erforderlich)
 
-Darüber hinaus muss Azure AD Connect in der Lage sein, direkte IP-Verbindungen mit den [IP-Adressbereichen des Azure-Rechenzentrums](https://www.microsoft.com/en-us/download/details.aspx?id=41653) herzustellen. Auch in diesem Fall ist dies nur für den SSO-Registrierungsprozess erforderlich.
+Darüber hinaus muss Azure AD Connect in der Lage sein, direkte IP-Verbindungen mit den [IP-Adressbereichen des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herzustellen. Auch in diesem Fall ist dies nur für den SSO-Registrierungsprozess erforderlich.
 
 ## <a name="table-7a--7b---azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>Tabelle 7a und 7b: Azure AD Connect Health-Agent für (AD FS/Sync) und Azure AD
 In den folgenden Tabellen werden die Endpunkte, Ports und Protokolle beschrieben, die für die Kommunikation zwischen Azure AD Connect Health-Agents und Azure AD erforderlich sind.

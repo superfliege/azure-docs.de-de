@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 07f739243b80230fbf4914535ea65183c3590937
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 61b804b876c91b5fcd12ce15bd7e2438f5d897a0
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020440"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617416"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric Reliable Actors-Java-Anwendung unter Linux
 > [!div class="op_single_selector"]
@@ -40,7 +40,7 @@ Installieren Sie auch die [Service Fabric CLI](service-fabric-cli.md).
 Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen einer Service Fabric-Java-Anwendung über das Terminal unter Verwendung des Yeoman-Vorlagengenerators.  Falls Yeoman noch nicht installiert ist, hilft Ihnen die Anleitung zur Einrichtung von Yeoman unter [Einrichten von Yeoman-Generatoren für Container und ausführbare Gastdateien](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables) weiter. Führen Sie den folgenden Befehl aus, um den Service Fabric-Yeoman-Vorlagengenerator für Java zu installieren.
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
 
 ## <a name="basic-concepts"></a>Grundlegende Konzepte
@@ -220,7 +220,7 @@ Parameter für diesen Befehl finden Sie in den erstellten Manifesten im Anwendun
 Erweitern Sie dann den Knoten **Anwendungen**. Hier finden Sie nun einen Eintrag für Ihren Anwendungstyp und einen weiteren für die erste Instanz dieses Typs.
 
 > [!IMPORTANT]
-> Um die Anwendung in einem sicheren Linux-Cluster in Azure bereitzustellen, müssen Sie ein Zertifikat konfigurieren, um Ihre Anwendung mit der Service Fabric-Runtime zu überprüfen. Dadurch wird Ihren Reliable Actors-Diensten die Kommunikation mit den zugrunde liegenden Service Fabric-Runtime-APIs ermöglicht. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+> Wenn Sie die Anwendung in einem sicheren Linux-Cluster in Azure bereitstellen möchten, müssen Sie ein Zertifikat konfigurieren, um Ihre Anwendung mit der Service Fabric-Runtime zu überprüfen. Dadurch wird Ihren Reliable Actors-Diensten die Kommunikation mit den zugrunde liegenden Service Fabric-Runtime-APIs ermöglicht. Weitere Informationen finden Sie unter [Konfigurieren einer Reliable Services-App zur Ausführung in Linux-Clustern](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
 >
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Starten des Testclients und Ausführen eines Failovers

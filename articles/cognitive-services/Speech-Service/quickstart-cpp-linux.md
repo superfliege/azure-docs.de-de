@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 8f794f1d29b5fde9acd43fa4a018ccb39a8ccd25
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: b8bc24123fe75e876f607b07e37423ae68d92ee4
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324777"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929960"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Linux mit dem Speech SDK
 
@@ -37,7 +37,7 @@ Dieser Artikel enthält Informationen zur Erstellung einer C++-Konsolenanwendung
 
 [!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `0.5.0`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `0.6.0`.
 
 Das Cognitive Services Speech SDK für Linux ist zum Erstellen von 64-Bit- und 32-Bit-Anwendungen verfügbar.
 Die erforderlichen Dateien können als TAR-Datei von https://aka.ms/csspeech/linuxbinary heruntergeladen werden.
@@ -81,7 +81,7 @@ Laden Sie das SDK wie folgt herunter, und installieren Sie es:
 
 1. Ersetzen Sie die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel.
 
-1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist (z.B. `westus` für das kostenlose Testabonnement).
+1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
 ## <a name="building"></a>Erstellen
 

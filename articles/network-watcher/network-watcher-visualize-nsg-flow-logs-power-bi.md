@@ -3,8 +3,8 @@ title: Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit
 description: Auf dieser Seite wird beschrieben, wie Sie NSG-Datenflussprotokolle mit Power BI visualisieren.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: mattreatMSFT
+manager: vitinnan
 editor: ''
 ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 19bd7ed4bab915d7918a192a046653666cfaa498
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: mareat
+ms.openlocfilehash: 8f5bb54e12348fd915b2c4413bbacdc083a2a879
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
-ms.locfileid: "24878580"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144958"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI
 
@@ -108,7 +108,7 @@ In diesem Szenario wurde veranschaulicht, dass es durch die Verwendung von Daten
 
 Sie können diese Vorlage an Ihre Anforderungen anpassen. Es gibt viele verschiedene Möglichkeiten, wie Sie Power BI mit Datenflussprotokollen für Netzwerksicherheitsgruppen verwenden können. 
 
-## <a name="notes"></a>Hinweise
+## <a name="notes"></a>Notizen
 
 * Protokolle werden standardmäßig unter `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/` gespeichert.
 

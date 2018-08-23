@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: be4cc79d16b9a22124f16878b11ca04a916f98ae
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87970e1c5e8487f9afca2acc680bdfeb610dc89f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374706"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41929980"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>Aufrufen eines Endpunkts für die benutzerdefinierte Bing-Suche (C#)
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung wird das Anfordern von Suchergebnissen aus Ihrer
 
 -  Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 -  Installation von [.NET Core](https://www.microsoft.com/net/download/core).
-- Ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements aus Ihrem Azure-Dashboard verwenden.  
+- Ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.  
 
   >[!NOTE]  
   >Bestehende Kunden der benutzerdefinierten Bing-Suche, die am oder vor dem 15. Oktober 2017 einen Schlüssel für eine Vorschauversion bereitgestellt haben, können ihre Schlüssel bis zum 30. November 2017 nutzen (bzw. bis sie die maximal zulässige Anzahl von Abfragen ausgeschöpft haben). Danach müssen sie zur allgemein verfügbaren Version in Azure migrieren. 
@@ -119,10 +119,12 @@ Führen Sie diese Schritte aus, um das Beispiel auszuführen:
     }
     ```
 6. Führen Sie den Buildvorgang für die Anwendung mit dem folgenden Befehl durch. Notieren Sie sich den DLL-Pfad, der in der Befehlsausgabe angegeben ist.
+
     <pre>
     dotnet build 
     </pre>
 7. Führen Sie die Anwendung aus, indem Sie den folgenden Befehl verwenden und **PATH TO OUTPUT** durch den Pfad aus dem Buildschritt ersetzen.
+
     <pre>    
     dotnet **PATH TO OUTPUT**
     </pre>

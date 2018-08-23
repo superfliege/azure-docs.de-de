@@ -9,18 +9,18 @@ ms.component: bing-visual-search
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 578fa90f504920030b488d2b8fa3a2d0232cccce
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8f6e7f7e88ae78fe7e8a9be4adefd689dd26d0f9
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753597"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41929896"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>Tutorial: SDK für die visuelle Bing-Suche: ImageInsightsToken und Ergebnisse
 Das SDK für die visuelle Suche enthält eine Option, Bilder aus einer vorherigen Suche online zu finden, die ein `ImageInsightsToken` zurückgibt.  In diesem Beispiel wird ein `ImageInsightsToken` abgerufen und das Token in einer nachfolgenden Suche verwendet.  Der Code sendet das `ImageInsightsToken` an Bing und gibt Ergebnisse zurück, die URLs der Bing-Suche und URLs von ähnlichen online ermittelten Bildern enthalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Visual Studio 2017 Laden Sie bei Bedarf die kostenlose Communityversion herunter: https://www.visualstudio.com/vs/community/.
+Visual Studio 2017. Laden Sie bei Bedarf die kostenlose Communityversion herunter: https://www.visualstudio.com/vs/community/.
 Für die Authentifizierung von SDK-Aufrufen ist ein Cognitive Services-API-Schlüssel erforderlich. Registrieren Sie sich für einen kostenlosen Testschlüssel. Der Testschlüssel ist sieben Tage lang gültig und auf einen Aufruf pro Sekunde beschränkt. Für Produktionsszenarien erwerben Sie einen Zugriffsschlüssel. Weitere Details finden Sie in den Preisinformationen.
 Möglichkeit zum Ausführen des .NET Core SDK sowie von .NET Core 1.1-Apps. CORE, Framework und Runtime finden Sie hier: https://www.microsoft.com/net/download/.
 
@@ -283,4 +283,4 @@ namespace VisualSearchFeatures
 
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-[Antwort der thematischen Suche](https://review.docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/overview?branch=pr-en-us-44614#the-response)
+[Antwort der thematischen Suche](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

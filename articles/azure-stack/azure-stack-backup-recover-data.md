@@ -3,7 +3,7 @@ title: Wiederherstellen nach schwerwiegendem Datenverlust in Azure Stack mit dem
 description: Wenn Azure Stack aufgrund eines schwerwiegenden Fehlers nicht ausgeführt wird, können Sie die Infrastrukturdaten bei der Wiederherstellung Ihrer Azure Stack-Bereitstellung wiederherstellen.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 2ECE8580-0BDE-4D4A-9120-1F6771F2E815
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
-ms.author: mabrigg
+ms.date: 07/17/2018
+ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: f1582efa7d357f6f535c562a656ec17024357320
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: ed89468d65f35d0a8cda90da365e8625f46e3f92
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242868"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41946610"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Wiederherstellen nach schwerwiegendem Datenverlust
 

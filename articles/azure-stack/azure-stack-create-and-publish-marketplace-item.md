@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 101686149c0e3faaf442c58f4002cbbfe0e72eaa
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: da1619c5dc536ee143a8cc5ed17e995bc2d1eab7
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "35630025"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41947941"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Erstellen und Veröffentlichen eines Marketplace-Elements
 
@@ -102,7 +102,7 @@ ms.locfileid: "35630025"
 
 6. Sie können ein Marketplace-Element mit dem Cmdlet **Remove-AzureRMGalleryItem** entfernen. Beispiel:
    
-        Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+        Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
    
    > [!NOTE]
    > Auf der Marketplace-Benutzeroberfläche wird unter Umständen ein Fehler angezeigt, nachdem Sie ein Element entfernt haben. Um das Problem zu beheben, klicken Sie im Portal auf **Einstellungen**. Wählen Sie anschließend unter **Portalanpassung** die Option **Änderungen verwerfen** aus.

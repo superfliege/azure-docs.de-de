@@ -8,22 +8,22 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4b37a073f41295bf800d4e6c34681e0a06799c7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450320"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617248"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Vorlage für Azure Security and Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
-## <a name="azure-security-and-compliance-blueprints"></a>Vorlagen für Azure Security and Compliance
+## <a name="azure-security-and-compliance-blueprints"></a>Azure-Blaupausen zu Sicherheit und Compliance
 
 Azure-Vorlagen (Blueprints) umfassen Leitfäden und Automatisierungsvorlagen, mit denen cloudbasierte Architekturen bereitgestellt werden, um Lösungen für Szenarien zu ermöglichen, für die Akkreditierungs- oder Konformitätsanforderungen gelten. Bei Azure-Vorlagen handelt es sich um Sammlungen mit Leitfäden und Automatisierungsvorlagen, mit denen Microsoft Azure-Kunden die Erreichung ihrer geschäftlichen Ziele beschleunigen können. Hierzu wird eine Architektur als Fundament bereitgestellt, die erweitert werden kann, um weitere Anforderungen zu erfüllen.
 
 ## <a name="overview"></a>Übersicht
 
-Diese Vorlage für Azure Security and Compliance enthält Anleitungen und Automatisierungsskripts, um eine gehostete Microsoft Azure-PaaS-Webanwendungsarchitektur ([Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)) bereitzustellen, die zur Verarbeitung von Workloads mit der Klassifizierung [UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/251480/Government-Security-Classifications-April-2014.pdf) geeignet ist. Diese Sicherheitsklassifizierung gilt für die meisten Informationen, die von Einrichtungen des öffentlichen Sektors erstellt oder verarbeitet werden. Hierzu gehören auch routinemäßige Geschäftsvorgänge und Dienstleistungen, von denen einige schädliche Konsequenzen nach sich ziehen können, wenn sie verloren gehen, gestohlen werden oder in den Medien veröffentlicht werden. Das typische Bedrohungsprofil für die Klassifizierung „OFFICIAL“ ähnelt hierbei dem Fall eines privaten Unternehmens, das wertvolle Informationen und Dienstleistungen bereitstellt. Bei UK OFFICIAL wird davon ausgegangen, dass Daten oder Dienste der Regierung des Vereinigten Königreichs gegen Bedrohungen oder Kompromittierungen durch Angreifer mit begrenzten Fähigkeiten verteidigt werden müssen, z.B. Hactivists, Interessenparteien, investigative Journalisten, kompetente einzelne Hacker und die Mehrheit von kriminellen Einzelpersonen und Gruppen (keine erschöpfende Liste).
+Diese Vorlage für Azure Security and Compliance enthält Anleitungen und Automatisierungsskripts, um eine gehostete Microsoft Azure-PaaS-Webanwendungsarchitektur ([Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)) bereitzustellen, die zur Verarbeitung von Workloads mit der Klassifizierung [UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf) geeignet ist. Diese Sicherheitsklassifizierung gilt für die meisten Informationen, die von Einrichtungen des öffentlichen Sektors erstellt oder verarbeitet werden. Hierzu gehören auch routinemäßige Geschäftsvorgänge und Dienstleistungen, von denen einige schädliche Konsequenzen nach sich ziehen können, wenn sie verloren gehen, gestohlen werden oder in den Medien veröffentlicht werden. Das typische Bedrohungsprofil für die Klassifizierung „OFFICIAL“ ähnelt hierbei dem Fall eines privaten Unternehmens, das wertvolle Informationen und Dienstleistungen bereitstellt. Bei UK OFFICIAL wird davon ausgegangen, dass Daten oder Dienste der Regierung des Vereinigten Königreichs gegen Bedrohungen oder Kompromittierungen durch Angreifer mit begrenzten Fähigkeiten verteidigt werden müssen, z.B. Hactivists, Interessenparteien, investigative Journalisten, kompetente einzelne Hacker und die Mehrheit von kriminellen Einzelpersonen und Gruppen (keine erschöpfende Liste).
 
 Diese Vorlage wurde vom UK National Cyber Security Centre (NCSC) überprüft und erfüllt die NCSC 14-Cloudsicherheitsprinzipien.
 

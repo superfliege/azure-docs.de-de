@@ -3,22 +3,22 @@ title: Von Profilen in Azure Stack unterstützte API-Versionen von Ressourcenanb
 description: Hier erfahren Sie mehr zur Azure Resource Manager-Version, die von den Profilen in Azure Stack unterstützt werden.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
-ms.author: mabrigg
+ms.date: 08/17/2018
+ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054380"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41954626"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Von Profilen in Azure Stack unterstützte API-Versionen von Ressourcenanbietern
 
@@ -193,27 +193,27 @@ Mit Azure Resource Manager können Sie die Infrastruktur für Ihre Azure-Lösung
 | Ressourcentypen | API-Versionen |
 |-----------------------------------------|-------------------|
 | Anwendungsregistrierungen | 2015-01-01 |
-| Ressourcennamen prüfen | 2015-012016-09-01 |
+| Ressourcennamen prüfen | 2016-09-01 |
 | Delegierte Anbieter | 2015-01-01 |
 | Delegierte Anbieter/Angebote | 2015-01-01 |
 | Delegierte Anbieter/Angebote/geschätzter Preis | 2015-01-01 |
 | Bereitstellungen | 2016-0209-01 |
 | Bereitstellungen/Vorgänge | 2016-0209-01 |
 | Metadaten zu Erweiterungen | 2015-01-01 |
-| Links | 2015-012016-09-01 |
+| Links | 2016-09-01 |
 | Standorte | 2015-01-01 |
 | Angebote | 2015-01-01 |
 | Vorgänge | 2015-01-01 |
 | Anbieter | 2015-012017-08-01 |
-| Ressourcengruppen | 2015-012016-09-01 |
-| angeben | 2015-012016-09-01 |
-| Abonnements | 2015-012016-09-01 |
-| Abonnements/Speicherort | 2015-012016-09-01 |
-| Abonnements/Vorgangsergebnisse | 2015-012016-09-01 |
+| Ressourcengruppen | 2016-09-01 |
+| angeben | 2016-09-01 |
+| Abonnements | 2016-09-01 |
+| Abonnements/Speicherort | 2016-09-01 |
+| Abonnements/Vorgangsergebnisse | 2016-09-01 |
 | Abonnements/Anbieter | 2015-012017-08-01 |
-| Abonnements/Ressourcengruppen | 2015-012016-09-01 |
-| Abonnements/Ressourcengruppen/Ressourcen | 2015-012016-09-01 |
-| Abonnements/Ressourcen | 2015-012016-09-01 |
+| Abonnements/Ressourcengruppen | 2016-09-01 |
+| Abonnements/Ressourcengruppen/Ressourcen | 2016-09-01 |
+| Abonnements/Ressourcen | 2016-09-01 |
 | Abonnements/Tagnamen | 2016-0609-01 |
 | Abonnements/Tagnamen/Tagwerte | 2016-0609-01 |
 | Mandanten | 2015-012017-08-01 |

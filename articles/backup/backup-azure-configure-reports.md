@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd6228b6cb7409144a0cd16d6c9617b7127c3624
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4839b1aaa56be1ad93fa1dd685ca3176d1cc8a27
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264960"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146791"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für Azure Backup mithilfe des Recovery Services-Tresors beschrieben, und es wird gezeigt, wie Sie auf diese Berichte mithilfe von PowerBI zugreifen können. Nachdem Sie diese Schritte ausgeführt haben, können Sie direkt in Power BI alle Berichte anzeigen, Berichte anpassen und erstellen. 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für 
 4. Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. In Power BI können Sie die Berichte auch ad hoc aktualisieren. In diesem Fall werden die aktuellsten Daten im Kundenspeicherkonto zum Rendern der Berichte verwendet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-1. Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
+1. Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
 2. [Erstellen Sie ein Power BI-Konto](https://powerbi.microsoft.com/landing/signin/), um mit dem Power BI-Portal Ihre eigenen Berichte anzuzeigen, anzupassen und zu erstellen.
 3. Wenn noch keine Registrierung vorhanden ist, registrieren Sie als Ressourcenanbieter **Microsoft.insights** mit einem Abonnement für ein Speicherkonto und für Recovery Services-Tresor, um die Übertragung von Berichtsdaten an das Speicherkonto zu aktivieren. Um dies zu tun, wechseln Sie zu Azure-Portal > Abonnement > Ressourcenanbieter, und markieren Sie den Anbieter, für den die Registrierung durchgeführt werden soll. 
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: cc5de000f4a76498654ef85efd818eece70090fc
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 321edd134fd2ac6b03ad6d3117944f0f59c24669
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834174"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42146348"
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning-Webdienste: Bereitstellung und Nutzung
 Mit Azure Machine Learning können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Da die Webdienste RESTful sind, können Sie sie über verschiedene Programmiersprachen und Plattformen wie etwa .NET und Java sowie über Anwendungen wie Excel aufrufen.
@@ -80,7 +80,7 @@ Hier sehen Sie ein Beispiel:
 
 Ausführlichere Informationen finden Sie in den folgenden Artikeln sowie im Beispielcode:
 
-* [Azure Machine Learning-Cmdlets](https://msdn.microsoft.com/library/azure/mt767952.aspx) auf MSDN
+* [Azure Machine Learning-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) auf MSDN
 * [Exemplarische Vorgehensweise](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) auf GitHub
 
 ## <a name="consume-the-web-services"></a>Nutzen von Webdiensten

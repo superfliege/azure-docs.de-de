@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 7c93f9f450cc2d244a0d716401171cde02abf70b
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 59c70d33d537742a5918dc1ba55ab8ac1f84e12c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324570"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929798"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Windows Desktop mit dem Speech SDK
 
@@ -55,7 +55,7 @@ Wählen Sie rechts oben im Feld **Paketquelle** die Option „Nuget.org“ aus.
 Suchen Sie auf der Registerkarte **Durchsuchen** nach dem Paket „Microsoft.CognitiveServices.Speech“, und wählen Sie es aus. Aktivieren Sie die Kontrollkästchen **Projekt** und **helloworld** im rechten Bereich, und wählen Sie **Installieren** aus, um das Paket im Projekt „helloworld“ zu installieren.
 
 > [!NOTE]
-> Die aktuelle Version des Cognitive Services Speech SDK ist `0.5.0`.
+> Die aktuelle Version des Cognitive Services Speech SDK ist `0.6.0`.
 
 ![Installieren des NuGet-Pakets Microsoft.CognitiveServices.Speech](media/sdk/qs-cpp-windows-04-nuget-install-0.5.0.png)
 
@@ -71,7 +71,7 @@ Stimmen Sie im dann angezeigten Lizenzbildschirm den Lizenzbedingungen zu:
 
 1. Ersetzen Sie die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel.
 
-1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist (z.B. `westus` für das kostenlose Testabonnement).
+1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
 1. Speichern Sie die Änderungen am Projekt.
 

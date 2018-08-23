@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1ad1d6662d276039ae1e01e49c60fc06682cb54a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b71dd51547365503ac4ce76f07d6c783d26acd50
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622815"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143229"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Bereitstellen und Verwalten von Apache Storm-Topologien in HDInsight unter Windows
 
@@ -88,7 +88,7 @@ Wenn Sie einen Link aus dem Abschnitt **Topologiezusammenfassung** auswählen, w
 
   * **Ausgleichen:** passt die Parallelität der Topologie an. Sie sollten aktive Topologien ausgleichen, nachdem Sie die Anzahl der Knoten im Cluster geändert haben. Dadurch kann die Topologie die Parallelität anpassen, um die höhere oder geringere Anzahl der Knoten im Cluster zu kompensieren.
 
-      Weitere Informationen finden Sie unter [Grundlegendes zur Parallelität einer Storm-Topologie(http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+      Weitere Informationen finden Sie unter [Understanding the Parallelism of a Storm Topology](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) (Grundlegendes zur Parallelität einer Storm-Topologie, in englischer Sprache).
 
   * **Beenden:** beendet eine Storm-Topologie nach dem angegebenen Timeout.
 

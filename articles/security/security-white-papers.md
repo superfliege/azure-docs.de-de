@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/19/2018
+ms.date: 8/17/2018
 ms.author: tomsh
-ms.openlocfilehash: 63f892dfdade3c61c2adf84f86cdcaff1fb1cb5c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 933d0f60b902ae2cb0abcde2ca39a58e59457c6b
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37126991"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145143"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security-Whitepaper
 | | |
@@ -28,8 +28,8 @@ ms.locfileid: "37126991"
 |[Erweiterte Bedrohungserkennung](azure-threat-detection.md)|Führt Sie durch die Azure-Ansätze zur Bewertung, Diagnose und Analyse von Bedrohungen und Sicherheitsrisiken. Erklärt, wie Microsoft erweiterte Mechanismen zur Erkennung von Bedrohungen verwendet, um die Plattform zu sichern. Erklärt auch, wie Microsoft diese Mechanismen in öffentlich zugängliche Funktionen und Dienste einbindet.|
 |[Azure-Datenverschlüsselung ruhender Daten](azure-security-encryption-atrest.md)|Legt den Schwerpunkt darauf, wie ruhende Daten in Azure und den verschiedenen Komponenten geschützt werden, die an der Implementierung des Datenschutzes beteiligt sind. Stellt Vor- und Nachteile der verschiedenen Ansätze für den Schutz der Schlüsselverwaltung heraus.|
 |[Azure-Protokollierung und -Überwachung](azure-log-audit.md)|Bietet eine Einführung in das Generieren, Sammeln und Analysieren von Sicherheitsprotokollen aus Diensten, die in Azure gehostet werden. Mithilfe dieser Protokolle erhalten Sie sicherheitsbezogene Einblicke in Ihre Azure-Bereitstellungen. |
-|[Azure-Netzwerksicherheit](azure-network-security.md)|Stellt die Vielzahl von Netzwerkkontrollen vor, die Sie konfigurieren können, um die Sicherheit der von Ihnen in Azure bereitgestellten Lösungen zu erhöhen. Der Fokus liegt auf kundenseitigen Netzwerksicherheitskontrollen.|
-|[Azure Functions und serverlose Plattformsicherheit](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Dieses Whitepaper, das Sie herunterladen können, deckt die Vorteile des serverlosen Computings ab, während gleichzeitig Sicherheitsüberlegungen und Migrationen im Azure-Kontext bereitgestellt werden. | 
+|[Azure-Netzwerksicherheit](abstract-azure-network-security.md)|Stellt die Vielzahl von Netzwerkkontrollen vor, die Sie konfigurieren können, um die Sicherheit der von Ihnen in Azure bereitgestellten Lösungen zu erhöhen. Der Fokus liegt auf kundenseitigen Netzwerksicherheitskontrollen.|
+|[Azure Functions und serverlose Plattformsicherheit](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Dieses Whitepaper, das Sie herunterladen können, deckt die Vorteile des serverlosen Computings ab, während gleichzeitig Sicherheitsüberlegungen und Migrationen im Azure-Kontext bereitgestellt werden. |
 |[Azure-Betriebssicherheit](azure-operational-security.md)|Bietet eine umfassende Sicht auf die kundenseitigen Technologien und Dienste für Betriebssicherheit, die mit Azure zur Verfügung stehen.|
 |[Technische Funktionen von Azure Security](azure-security-technical-capabilities.md)|Konzentriert sich auf die unterstützenden Sicherheitsfeatures und -funktionen für Azure Storage, Azure SQL-Datenbanken, das virtuelle Azure-Computermodell sowie die Tools und die Infrastruktur, die alles verwalten.|
 |[Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Umfasst die Sicherheit auf Verwaltungsebene, die Sicherheit auf Datenebene, die Verschlüsselung ruhender Daten, die Verschlüsselung in Aktion und die Speicheranalyse.|
@@ -38,6 +38,3 @@ ms.locfileid: "37126991"
 |[Isolation in der öffentlichen Azure-Cloud](azure-isolation.md)|Beschreibt, wie Azure die Isolation sowohl gegen schädliche als auch gegen nicht schädliche Benutzer ermöglicht. Dient als Leitfaden für die Architektur von Cloudlösungen, der Architekten verschiedene Isolationsmöglichkeiten bietet. Der Schwerpunkt liegt auf kundenseitigen Sicherheitskontrollen. SLAs, Preismodelle und Aspekte von DevOps-Methoden werden nicht behandelt.|
 |[Übersicht über Azure-Compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|Dieses herunterladbare Whitepaper behandelt Azure-Konformitätsangebote, einschließlich formaler Zertifizierungen, Bescheinigungen, Validierungen, Autorisierungen und Bewertungen, die von unabhängigen externen Prüfungsgesellschaften erstellt wurden, sowie Vertragsänderungen, Selbstbewertungen und Kundenleitfäden, die von Microsoft erstellt wurden. <br/> Jede Angebotsbeschreibung gibt an, welche Azure-Kundendienste für die Bewertung in Frage kommen, und enthält Links zu herunterladbaren Ressourcen, um Kunden bei ihren eigenen Konformitätsverpflichtungen zu unterstützen.|
 |[Sicherheitsverwaltung in Azure](azure-security-management.md)|Erörtert Probleme beim Remotezugriff auf Azure-Ressourcen. Die Art der Cloud erfordert eine Remotezugriffsverwaltung, und daher ist Sicherheit von größter Bedeutung. Umfasst allgemeine Sicherheitsrichtlinien, Clientkonfiguration, bewährte Methoden sowie Betriebsprinzipien und -verfahren. |
-
-
-

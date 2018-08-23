@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b4fc67acae83573db772923a94cdbb6b1c4a301f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b6f1185a94f865578d9a6514fb6841f8811b2230
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159840"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42143217"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -218,7 +218,7 @@ Um diesen Fehler zu umgehen, können Sie separate Benutzerkonten für Administra
 
 Wenn Ihre Frage hier nicht beantwortet wurde, schreiben Sie sie bitte in die Kommentare unten auf der Seite. Alternativ finden Sie hier weitere Optionen zur Hilfesuche:
 
-* Durchsuchen Sie die [Microsoft Support Wissensdatenbank](https://www.microsoft.com/en-us/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) nach Lösungen für häufige technische Probleme.
+* Durchsuchen Sie die [Microsoft Support Wissensdatenbank](https://www.microsoft.com/Search/result.aspx?form=mssupport&q=phonefactor&form=mssupport) nach Lösungen für häufige technische Probleme.
 * In den [Azure Active Directory-Foren](https://social.msdn.microsoft.com/Forums/azure/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)können Sie nach technischen Fragen und Antworten aus der Community suchen oder eine eigene Frage stellen.
 * Wenn Sie ein älterer PhoneFactor-Kunde sind und Fragen haben oder Hilfe beim Zurücksetzen eines Kennworts benötigen, verwenden Sie den Link zur [Kennwortzurücksetzung](mailto:phonefactorsupport@microsoft.com) , um eine Supportanfrage zu öffnen.
 * Wenden Sie sich über[Azure Multi-Factor Authentication-Server (PhoneFactor) – Support](https://support.microsoft.com/oas/default.aspx?prid=14947) an einen Support-Experten. Es ist hilfreich, wenn Sie uns so viele Informationen wie möglich über Ihr Problem geben, wenn Sie sich mit uns in Verbindung setzen. Diese Informationen können die Website umfassen, auf der der Fehler aufgetreten ist, den spezifischen Fehlercode, die spezifische Sitzungs-ID, und die ID des Benutzers, der den Fehler beobachtet hat.

@@ -1,98 +1,102 @@
+items:
 - name: Dokumentation zur Bing-Websuche
   href: index.yml
 - name: Übersicht
   items:
-    - name: Worum handelt es sich bei der Bing-Websuche?
-      href: overview.md
+  - name: Worum handelt es sich bei der Bing-Websuche?
+    href: overview.md
 - name: REST-API-Schnellstartanleitungen
-  expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Go
-      href: quickstarts/go.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+  - name: C#
+    href: quickstarts/csharp.md
+  - name: Go
+    href: quickstarts/go.md
+  - name: Java
+    href: quickstarts/java.md
+  - name: Node.js
+    href: quickstarts/nodejs.md
+  - name: PHP
+    href: quickstarts/php.md
+  - name: Python
+    href: quickstarts/python.md
+  - name: Ruby
+    href: quickstarts/ruby.md
+  expanded: true
 - name: SDK-Schnellstartanleitungen
   items:
-    - name: Übersicht über SDK-Beispiele
-      href: sdk.md
-    - name: 'SDK-Schnellstartanleitung für die Websuche: C#'
-      href: web-search-sdk-quickstart.md
-    - name: 'SDK-Schnellstartanleitung für die Websuche: Node.js'
-      href: web-search-sdk-node-quickstart.md
-    - name: 'SDK-Schnellstartanleitung für die Websuche: Python'
-      href: web-sdk-python-quickstart.md
-    - name: 'SDK-Schnellstartanleitung für die Websuche: Java'
-      href: web-sdk-java-quickstart.md
+  - name: Übersicht über SDK-Beispiele
+    href: sdk.md
+  - name: 'SDK-Schnellstartanleitung für die Websuche: C#'
+    href: web-search-sdk-quickstart.md
+  - name: 'SDK-Schnellstartanleitung für die Websuche: Node.js'
+    href: web-search-sdk-node-quickstart.md
+  - name: 'SDK-Schnellstartanleitung für die Websuche: Python'
+    href: web-sdk-python-quickstart.md
+  - name: Java-Schnellstart für das Websuche-SDK
+    href: web-sdk-java-quickstart.md
 - name: Tutorials
   items:
-    - name: Einzelseiten-Web-App
-      href: tutorial-bing-web-search-single-page-app.md
-    - name: Einzelseiten-Web-App (Quellcode)
-      href: tutorial-bing-web-search-single-page-app-source.md
-    - name: Mobile App für die visuelle Suche
-      href: computer-vision-web-search-tutorial.md
-    - name: Mobile App für die visuelle Suche (Visual Studio-Projektmappe)
-      href: 'https://azure.microsoft.com/resources/samples/cognitive-services-xamarin-forms-computer-vision-search/'
-      maintainContext: true
+  - name: Einzelseiten-Web-App
+    href: tutorial-bing-web-search-single-page-app.md
+  - name: Einzelseiten-Web-App (Quellcode)
+    href: tutorial-bing-web-search-single-page-app-source.md
+  - name: Mobile App für die visuelle Suche
+    href: computer-vision-web-search-tutorial.md
 - name: Beispiele
   items:
-    - name: Codebeispiele
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Web+Search'
+  - name: Codebeispiele
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Web+Search
 - name: Anleitungen
   items:
-    - name: Verwenden und Anzeigen von Ergebnissen
-      href: UseAndDisplayRequirements.md
-    - name: Filtern von Antworten
-      href: filter-answers.md
-    - name: Sortieren von Ergebnissen nach Rang
-      href: rank-results.md
-    - name: Behandeln von Trefferhervorhebungen
-      href: hit-highlighting.md
-    - name: Durchblättern von Ergebnissen
-      href: paging-webpages.md
-    - name: Ändern der Größe und Zuschneiden von Miniaturansichten
-      href: resize-and-crop-thumbnails.md
-    - name: Upgrade von v5 auf v7
-      href: bing-web-upgrade-guide-v5-to-v7.md
+  - name: Verwenden und Anzeigen von Ergebnissen
+    href: UseAndDisplayRequirements.md
+  - name: Filtern von Antworten
+    href: filter-answers.md
+  - name: Sortieren von Ergebnissen nach Rang
+    href: rank-results.md
+  - name: Behandeln von Trefferhervorhebungen
+    href: hit-highlighting.md
+  - name: Durchblättern von Ergebnissen
+    href: paging-webpages.md
+  - name: Ändern der Größe und Zuschneiden von Miniaturansichten
+    href: resize-and-crop-thumbnails.md
+  - name: Upgrade von v5 auf v7
+    href: bing-web-upgrade-guide-v5-to-v7.md
 - name: Verweis
   items:
-    - name: Bing-Websuche-API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference'
-    - name: Bing-Websuche-API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference'
+  - name: Bing-Websuche-API v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference
+  - name: Bing-Websuche-API v5
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference
 - name: angeben
   items:
-    - name: Häufig gestellte Fragen
-      href: bing-web-search-resource-faq.md
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/555907-bing-web-search-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=bing+web+search'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Knowledge Base
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: Abrufen des API-Schlüssels
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
-    - name: Testen
-      href: 'https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/'
-    - name: Bing-Websuche-Endpunkt
-      href: web-search-endpoints.md
-    - name: Unterstützte Länder und Märkte
-      href: supported-countries-markets.md
-    - name: Analyse für die Bing-Websuche-API
-      href: bing-web-stats.md
+  - name: Häufig gestellte Fragen
+    href: bing-web-search-resource-faq.md
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/web/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/555907-bing-web-search-api
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=bing+web+search
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Wissensdatenbank
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: Abrufen des API-Schlüssels
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api
+  - name: Testen
+    href: https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/
+  - name: Bing-Websuche-Endpunkt
+    href: web-search-endpoints.md
+  - name: Unterstützte Länder und Märkte
+    href: supported-countries-markets.md
+  - name: Analyse für die Bing-Websuche-API
+    href: bing-web-stats.md
+ms.openlocfilehash: e4cc75a8d0b55141b864b9295dd832676e62b4cd
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42440152"

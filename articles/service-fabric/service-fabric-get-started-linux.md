@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5d4fa878197732daf188fcc318569b178e608684
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 00164789d7f37277127878911c3f368a56ec7710
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345959"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616971"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -208,27 +208,20 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Serv
 
 1. Installieren Sie Node.js und npm auf dem Computer.
 
-    * Ubuntu
-        ```bash
-        curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash –
-        sudo apt-get install -y nodejs 
-        ```
-
-    * Red Hat Enterprise Linux 7.4 (Unterstützung der Service Fabric-Vorschauversion)
-        ```bash
-        sudo yum install nodejs
-        sudo yum install npm
-        ```
+    ```bash
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+    nvm install node
+    ```
 2. Installieren Sie den [Yeoman](http://yeoman.io/)-Vorlagengenerator über npm auf dem Computer:
 
     ```bash
-    sudo npm install -g yo
+    npm install -g yo
     ```
 3. Installieren Sie den Service Fabric-Yeo-Containergenerator und den Generator für die ausführbare Gastdatei über npm:
 
     ```bash
-    sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
-    sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+    npm install -g generator-azuresfcontainer  # for Service Fabric container application
+    npm install -g generator-azuresfguest      # for Service Fabric guest executable application
     ```
 
 Erstellen Sie nach der Installation der Generatoren ausführbare Gastdateien oder Containerdienste, indem Sie `yo azuresfguest` bzw. `yo azuresfcontainer` ausführen.
@@ -260,7 +253,7 @@ Installieren Sie JDK 1.8 und Gradle zum Ausführen von Erstellungsaufgaben, um S
 Sie müssen auch den Service Fabric-Yeo-Generator für ausführbare Java-Dateien installieren. Stellen Sie sicher, dass [Yeoman installiert ist](#set-up-yeoman-generators-for-containers-and-guest-executables), und führen Sie dann den folgenden Befehl aus:
 
   ```bash
-  sudo npm install -g generator-azuresfjava
+  npm install -g generator-azuresfjava
   ```
  
 ## <a name="install-the-eclipse-plug-in-optional"></a>Installieren des Eclipse-Plug-Ins (optional)
@@ -310,8 +303,8 @@ Führen Sie die folgenden Befehle aus, um die Service Fabric SDKs zu entfernen:
 
     ```bash
     sudo apt-get remove servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     sudo apt-get install -f
     ```
 
@@ -319,9 +312,9 @@ Führen Sie die folgenden Befehle aus, um die Service Fabric SDKs zu entfernen:
 * Red Hat Enterprise Linux 7.4 (Unterstützung der Service Fabric-Vorschauversion)
 
     ```bash
-    sudo yum remote servicefabric servicefabicsdkcommon
-    sudo npm uninstall generator-azuresfcontainer
-    sudo npm uninstall generator-azuresfguest
+    sudo yum remove servicefabric servicefabicsdkcommon
+    npm uninstall -g generator-azuresfcontainer
+    npm uninstall -g generator-azuresfguest
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

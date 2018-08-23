@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 5/4/18
 ms.author: barbkess
 ms.reviewer: japere,asteen
-ms.openlocfilehash: 00dade0926f9f2601757ac637e21737027f24c45
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 642f07be0eb58e4d10630bc4482d26bd00e08a94
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332608"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42145434"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
@@ -87,8 +87,8 @@ Sie können die Erweiterung für Chrome und Microsoft Edge auch direkt von den f
        In der Verknüpfungsliste **Zuletzt verwendet** werden die drei zuletzt verwendeten Apps angezeigt.
        
 * Um interne Unternehmens-URLs per Remotezugriff zu verwenden, gehen Sie wie folgt vor:
-    1. [Konfigurieren Sie den Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) für Ihren Mandanten.
-    2. [Veröffentlichen Sie die Anwendung](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) und die URL über den Anwendungsproxy.
+    1. [Konfigurieren Sie den Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) für Ihren Mandanten.
+    2. [Veröffentlichen Sie die Anwendung](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) und die URL über den Anwendungsproxy.
     3. Installieren Sie die Erweiterung, und melden Sie sich bei ihr an, indem Sie „Melden Sie sich an, um loszulegen“ auswählen.
     4. Nun können Sie selbst per Remotezugriff zu der internen Unternehmens-URL browsen.
 

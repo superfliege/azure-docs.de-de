@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 05/09/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: bbc6a5083aebba40885700cab6c67128c9d9f916
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 778da6d244561d87e7070ab244fd92dba043488e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643429"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144895"
 ---
 # <a name="creating-updating-statistics-on-tables-in-azure-sql-data-warehouse"></a>Erstellen, Aktualisieren von Statistiken von Tabellen in Azure SQL Data Warehouse
 Empfehlungen und Beispiele zum Erstellen und Aktualisieren von Abfrageoptimierungsstatistiken für Tabellen in Azure SQL Data Warehouse.
@@ -65,7 +65,10 @@ Eine bewährte Methode ist es, die Statistiken für Datenspalten im Zuge des Hin
 
 Im Folgenden finden Sie Empfehlungen für Updates für Statistiken:
 
-| **Häufigkeit von Updates für Statistiken** | Konservativ: täglich <br></br> Nach dem Laden oder der Umwandlung Ihrer Daten || **Sampling** |  Bei weniger als 1 Milliarde Zeilen Sampling verwenden (20 Prozent) <br></br> Bei mehr als 1 Milliarde Zeilen sind Statistiken für einen Bereich von 2 Prozent gut geeignet |
+|||
+|-|-|
+| **Aktualisierungshäufigkeit für Statistiken**  | Konservativ: Täglich <br></br> Nach dem Laden oder Transformieren von Daten |
+| **Stichproben** |  Weniger als 1 Milliarde Zeilen, Standard-Stichprobenentnahme verwenden (20 Prozent) <br></br> Bei mehr als 1 Milliarde Zeilen sind Statistiken für einen Bereich von 2 Prozent gut geeignet |
 
 Eine der ersten Fragen bei der Problembehandlung für eine Abfrage sollte lauten: **„Sind die Statistiken auf dem aktuellen Stand?“**
 

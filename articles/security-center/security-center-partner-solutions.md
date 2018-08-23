@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: 181e1e00716987732ee809df6171c2f71087f3e1
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 3d4c9c79ff90ee816719f0179fbb5096b0035854
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
-ms.locfileid: "23454977"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143835"
 ---
 # <a name="managing-connected-partner-solutions-with-azure-security-center"></a>Verwalten von verbundenen Partnerlösungen in Azure Security Center
 Dieser Artikel führt Sie durch die Schritte zum Verwalten und Überwachen von verbundenen Sicherheitslösungen in Azure Security Center.

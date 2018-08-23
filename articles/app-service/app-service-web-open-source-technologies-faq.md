@@ -15,32 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 747ee61d2620e7f79353207c0e44bcea36df30ee
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d65a33dc13d0b91a9ace04dab0be6c37bcd2188f
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069859"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617670"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Problemen mit Open-Source-Technologien bei [Azure App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
-
-## <a name="my-cleardb-database-is-down-how-do-i-resolve-this"></a>Meine ClearDB-Datenbank ist ausgefallen. Wie löse ich dieses Problem?
-
-Wenden Sie sich bei Datenbankproblemen an den [ClearDB-Support](https://www.cleardb.com/developers/help/support). 
-
-Antworten auf häufig gestellte Fragen zu ClearDB finden Sie unter [Häufig gestellte Fragen zu ClearDB](https://docs.microsoft.com/azure/store-cleardb-faq/).
-
-## <a name="why-wasnt-my-cleardb-database-migrated-during-my-subscription-migration"></a>Warum wurde meine ClearDB-Datenbank nicht während der Migration meines Abonnements migriert?
-
-Bei der Migration von Ressourcen zwischen Abonnements gelten einige Einschränkungen. Eine ClearDB MySQL-Datenbank ist ein Drittanbieterdienst und wird bei der Migration eines Azure-Abonnements nicht migriert.
-
-Ihre ClearDB MySQL-Datenbank ist möglicherweise nicht verfügbar, wenn Sie die Migration Ihrer MySQL-Datenbank nicht vor der Migration der Azure-Ressourcen planen und durchführen. Um dies zu vermeiden, migrieren Sie zunächst die ClearDB-Datenbank manuell und migrieren anschließend das Azure-Abonnement für Ihre Web-App.
-
-Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Verwendung von ClearDB MySql-Datenbanken mit Azure App Service](https://docs.microsoft.com/azure/store-cleardb-faq/).
 
 ## <a name="how-do-i-turn-on-php-logging-to-troubleshoot-php-issues"></a>Wie aktiviere ich die PHP-Protokollierung, um PHP-Probleme zu beheben?
 
@@ -66,16 +52,7 @@ So aktivieren Sie die PHP-Protokollierung
 Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokollen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
 
 ## <a name="how-do-i-log-python-application-errors-in-apps-that-are-hosted-in-app-service"></a>Wie protokolliere ich Python-Anwendungsfehler in Apps, die in App Service gehostet werden?
-
-So erfassen Sie Python-Anwendungsfehler
-
-1. Wählen Sie im Azure-Portal in Ihrer Web-App **Einstellungen** aus.
-2. Klicken Sie auf der Registerkarte **Einstellungen** auf **Anwendungseinstellungen**.
-3. Geben Sie unter **App-Einstellungen** das folgende Schlüssel/Wert-Paar ein:
-    * Schlüssel: WSGI_LOG
-    * Wert: D:\home\site\wwwroot\logs.txt (geben Sie den Dateinamen Ihrer Wahl ein)
-
-Fehler sollten jetzt im Ordner „wwwroot“ in der Datei „logs.txt“ angezeigt werden.
+[!INCLUDE [web-sites-python-troubleshooting-wsgi-error-log](../../includes/web-sites-python-troubleshooting-wsgi-error-log.md)]
 
 ## <a name="how-do-i-change-the-version-of-the-nodejs-application-that-is-hosted-in-app-service"></a>Wie ändere ich die Version der Node.js-Anwendung, die in App Service gehostet wird?
 
@@ -167,7 +144,7 @@ So beheben Sie den Fehler
 
 1. Entfernen Sie die Datei „sqljdbc*.jar-“ aus Ihrem Ordner „app/lib“.
 2. Bei Verwendung des benutzerdefinierten Tomcat- oder Azure Marketplace Tomcat-Webservers kopieren Sie diese JAR-Datei in den Tomcat-Ordner „lib“.
-3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc\*“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
+3. Wenn Sie Java im Azure-Portal aktivieren (wählen Sie **Java 1.8** > **Tomcat-Server** aus), kopieren Sie die JAR-Datei „sqljdbc“ in den Ordner, der parallel zu Ihrer App vorhanden ist. Fügen Sie dann die folgende Klassenpfadeinstellung der Datei „web.config“ hinzu:
 
     ```
     <httpPlatform>

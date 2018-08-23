@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 2a63b9b6d256a84edc25bf257d175455717c43c2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ff84c755cf9c871a27bf70e4c1a05aa63bc4f128
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434736"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145797"
 ---
 # <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways zum Hosten mehrerer Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -52,7 +52,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Erstellen von Netzwerkressourcen 
 
-Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet#az-net) ein virtuelles Netzwerk namens *myVNet* und ein Subnetz namens *myAGSubnet*. Dann können Sie mit [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) das Subnetz namens *myBackendSubnet* hinzufügen, das von den Back-End-Servern benötigt wird. Erstellen Sie mit [az network public-ip create](/cli/azure/network/public-ip#az-network_public_ip_create) eine öffentliche IP-Adresse namens *myAGPublicIPAddress*.
 
 ```azurecli-interactive
 az network vnet create \
@@ -74,7 +74,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways
 
-Sie können [az network application-gateway create](/cli/azure/application-gateway#create) verwenden, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben. 
+Sie können [az network application-gateway create](/cli/azure/network/application-gateway#create) verwenden, um ein Anwendungsgateway namens *myAppGateway* zu erstellen. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myAGPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -102,7 +102,7 @@ Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt ist. Nachdem d
 
 ### <a name="add-the-backend-pools"></a>Hinzufügen der Back-End-Pools
 
-Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/application-gateway#az-network_application_gateway_address_pool_create) die Back-End-Pools namens *contosoPool* und *fabrikamPool* hinzu, die für die Back-End-Server benötigt werden.
+Fügen Sie mit [az network application-gateway address-pool create](/cli/azure/network/application-gateway#az-network_application_gateway_address_pool_create) die Back-End-Pools namens *contosoPool* und *fabrikamPool* hinzu, die für die Back-End-Server benötigt werden.
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -119,7 +119,7 @@ az network application-gateway address-pool create \
 
 Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Tutorial erstellen Sie zwei Listener für Ihre beiden Domänen. In diesem Beispiel werden Listener für die Domänen *www.contoso.com* und *www.fabrikam.com* erstellt. 
 
-Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/application-gateway#az-network_application_gateway_http_listener_create) die Listener namens *contosoListener* und *fabrikamListener* hinzu, die zum Weiterleiten des Datenverkehrs erforderlich sind.
+Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/network/application-gateway#az-network_application_gateway_http_listener_create) die Listener namens *contosoListener* und *fabrikamListener* hinzu, die zum Weiterleiten des Datenverkehrs erforderlich sind.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -142,7 +142,7 @@ az network application-gateway http-listener create \
 
 Regeln werden in der Reihenfolge verarbeitet, in der sie erstellt werden, und Datenverkehr wird anhand der ersten Regel weitergeleitet, die mit der an das Anwendungsgateway gesendeten URL übereinstimmt. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
 
-In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die während der Erstellung des Anwendungsgateways erstellt wurde. Sie können die Regel mit [az network application-gateway rule create](/cli/azure/application-gateway#az-network_application_gateway_rule_create) hinzufügen.
+In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die während der Erstellung des Anwendungsgateways erstellt wurde. Sie können die Regel mit [az network application-gateway rule create](/cli/azure/network/application-gateway#az-network_application_gateway_rule_create) hinzufügen.
 
 ```azurecli-interactive
 az network application-gateway rule create \

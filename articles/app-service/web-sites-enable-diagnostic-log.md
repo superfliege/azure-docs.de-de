@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 0eefb8ecb7c9641b3e025054f54e2b7cf97b94bd
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 37b11eea5c37103c0bc296a5f466658fbc77ed24
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206002"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145404"
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -171,7 +171,7 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
 Eine Liste der verfügbaren Pfade wird mit dem Parameter "-ListPath" angezeigt.
 
 > [!NOTE]
-> Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Verwenden von Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
+> Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Verwenden von Azure PowerShell](http://azure.microsoft.com/develop/nodejs/how-to-guides/powershell-cmdlets/).
 >
 >
 
