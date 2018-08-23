@@ -6,14 +6,14 @@ author: vhorne
 ms.service: firewall
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 7/11/2018
+ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: daf847ea9a6b6310afbc8eca7f662065fe75ade6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b65a5dec63bdc625dda64e101620f56cd6dd7308
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397181"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41917682"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Erstellen einer Azure Firewall-Testumgebung
 
@@ -80,10 +80,10 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Erstellt eine VM-Konfiguration. Diese Konfiguration umfasst Informationen wie VM-Name, Betriebssystem und Administratoranmeldeinformationen. Die Konfiguration wird während der VM-Erstellung verwendet. |
 | [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Erstellen Sie eine VM. |
 |[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Entfernt eine Ressourcengruppe und alle darin enthaltenen Ressourcen. |
-|New-AzureRmFirewall| Erstellt eine neue Azure Firewall.|
-|Get-AzureRmFirewall|Ruft ein Azure Firewall-Objekt ab.|
-|New-AzureRmFirewallApplicationRule|Erstellt eine neue Azure Firewall-Anwendungsregel.|
-|Set-AzureRmFirewall|Führt ein Commit für die Änderungen am Azure Firewall-Objekt aus.|
+|[New-AzureRmFirewall](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/New-AzureRmFirewall.md)| Erstellt eine neue Azure Firewall.|
+|[Get-AzureRmFirewall](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/Get-AzureRmFirewall.md)|Ruft ein Azure Firewall-Objekt ab.|
+|[New-AzureRmFirewallApplicationRule](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/New-AzureRmFirewallApplicationRule.md)|Erstellt eine neue Azure Firewall-Anwendungsregel.|
+|[Set-AzureRmFirewall](https://github.com/Azure/azure-powershell/blob/Networking-AzureFirewall/src/ResourceManager/Network/Commands.Network/help/Set-AzureRmFirewall.md)|Führt ein Commit für die Änderungen am Azure Firewall-Objekt aus.|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: jingwang
-ms.openlocfilehash: e007fd5e616b24b3a802b7ded0cd879bb0d7f34b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 994df42557ebd99d159e531f11ffa892be2e9870
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436007"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919532"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 In diesem Tutorial verwenden Sie die Benutzeroberfläche (User Interface, UI) von Azure Data Factory, um eine Data Factory-Pipeline zu erstellen, mit der Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage kopiert werden. Sie erstellen und verwenden eine selbstgehostete Integration Runtime, die Daten zwischen lokalen Speichern und Clouddatenspeichern verschiebt.
@@ -75,7 +75,7 @@ In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als *Quelldate
 1. Klicken Sie in der Strukturansicht mit der rechten Maustaste auf die von Ihnen erstellte Datenbank, und wählen Sie anschließend **Neue Abfrage**.
 
 ### <a name="azure-storage-account"></a>Azure-Speicherkonto
-Sie verwenden in diesem Tutorial ein Azure Storage-Allzweckkonto (Blob Storage) als Ziel-/Senkendatenspeicher. Falls Sie noch nicht über ein allgemeines Azure-Speicherkonto verfügen, helfen Ihnen die Informationen unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) weiter. Die Pipeline in der in diesem Tutorial erstellten Data Factory kopiert Daten aus der lokalen SQL Server-Datenbank (Quelle) in die Blob Storage-Instanz (Senke). 
+Sie verwenden in diesem Tutorial ein Azure Storage-Allzweckkonto (Blob Storage) als Ziel-/Senkendatenspeicher. Falls Sie noch nicht über ein allgemeines Azure-Speicherkonto verfügen, helfen Ihnen die Informationen unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-quickstart-create-account.md) weiter. Die Pipeline in der in diesem Tutorial erstellten Data Factory kopiert Daten aus der lokalen SQL Server-Datenbank (Quelle) in die Blob Storage-Instanz (Senke). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Abrufen des Speicherkontonamens und des Kontoschlüssels
 In diesem Tutorial verwenden Sie Name und Schlüssel Ihres Speicherkontos. Den Namen und den Schlüssel Ihres Speicherkontos ermitteln Sie anhand der folgenden Schritte: 
@@ -269,15 +269,15 @@ Der Name der Data Factory muss *global eindeutig* sein. Sollte für das Feld „
 
 1. Sie sollten sich wieder im Fenster mit dem geöffneten Senkendataset befinden. Führen Sie auf der Registerkarte **Verbindung** folgende Schritte aus: 
 
-       a. In **Linked service**, confirm that **AzureStorageLinkedService** is selected.
+    a. Vergewissern Sie sich, dass unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService** ausgewählt ist.
 
-       b. For the **folder**/ **Directory** part of **File path**, enter **adftutorial/fromonprem**. If the output folder doesn't exist in the adftutorial container, Data Factory automatically creates the output folder.
+    b. Geben Sie für den Teil **folder**/ **Directory** von **Dateipfad** die Zeichenfolge **adftutorial/fromonprem** ein. Sollte der Ausgabeordner im Container „adftutorial“ nicht vorhanden sein, wird der Ausgabeordner von Data Factory automatisch erstellt.
 
-       c. For the **file name** part of **File path**, select **Add dynamic content**.   
+    c. Wählen Sie für den Teil **Dateiname** von **Dateipfad** die Option **Dynamischen Inhalt hinzufügen**.   
 
     ![Wert für dynamischen Dateinamen](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-       d. Add `@CONCAT(pipeline().RunId, '.txt')`, select **Finish**. This will rename the file with PipelineRunID.txt. 
+    d. Fügen Sie `@CONCAT(pipeline().RunId, '.txt')` hinzu, und wählen Sie **Fertig stellen**. Die Datei wird in „PipelineRunID.txt“ umbenannt. 
 
     ![Dynamischer Ausdruck zum Auflösen des Dateinamens](./media/tutorial-hybrid-copy-portal/add-dynamic-file-name.png)
 

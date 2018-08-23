@@ -13,12 +13,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro;
-ms.openlocfilehash: c15cbb632410eb0b6867677d7802960033dfdd44
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: a5ede142b7f3dd314d1a6b3eb8f100ec55a4ea4e
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268381"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023952"
 ---
 # <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>Schnellstartanleitung: Registrieren für Azure Active Directory Premium
 Um Azure Active Directory (Azure AD) Premium zu verwenden, können Sie Lizenzen erwerben und Ihrem Azure-Abonnement zuordnen. Wenn Sie ein neues Azure-Abonnement erstellen, müssen Sie außerdem Ihren Lizenzplan und den Azure AD-Dienstzugriff aktivieren. Dies wird in den folgenden Abschnitten beschrieben. 
@@ -46,7 +46,7 @@ Für Ihre ersten Schritte mit Azure AD unter EMS-Lizenzen können Sie eine der f
 ### <a name="microsoft-volume-licensing"></a>Microsoft-Volumenlizenzierung
 Azure Active Directory Premium ist per [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (ab 250 Lizenzen) oder über das [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)-Programm (fünf bis 250 Lizenzen) erhältlich.
 
-Weitere Informationen zu Kaufoptionen im Rahmen der Volumenlizenzierung finden Sie [hier](https://www.microsoft.com/en-us/Licensing/how-to-buy/how-to-buy.aspx).
+Weitere Informationen zu Kaufoptionen im Rahmen der Volumenlizenzierung finden Sie [hier](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx).
 
 > [!NOTE]
 > Die Azure Active Directory Premium und Basic Editions stehen für Kunden in China zur Verfügung, die mit der weltweit verfügbaren Instanz von Azure Active Directory arbeiten. Allerdings werden die Azure Active Directory-Editionen Premium und Basic derzeit durch den in China von 21Vianet betriebenen Microsoft Azure-Dienst nicht unterstützt. Wenn Sie weitere Informationen benötigen, kontaktieren Sie uns im [Azure Active Directory-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).

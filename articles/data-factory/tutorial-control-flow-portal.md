@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 1b7ce6078fcaedee3d9ed4151063816df937ac0f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 1bb7a73213589b09d591e1c8297d9deaec7e075a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055156"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41917761"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -42,7 +42,7 @@ In diesem Tutorial wird das Azure-Portal verwendet. Andere Mechanismen zur Inter
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account) Schritte zum Erstellen eines solchen Kontos.
+* **Azure Storage-Konto**. Sie verwenden den Blob Storage als **Quelldatenspeicher**. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos.
 * **Azure SQL-Datenbank**. Sie verwenden die Datenbank als **Senkendatenspeicher**. Wenn Sie noch nicht über eine Azure SQL-Datenbank verfügen, finden Sie im Artikel [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) die Schritte zum Erstellen einer solchen Datenbank.
 
 ### <a name="create-blob-table"></a>Erstellen Sie eine Blob-Tabelle
@@ -303,7 +303,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 
 ## <a name="trigger-a-pipeline-run-that-fails"></a>Auslösen einer nicht erfolgreichen Pipelineausführung
 1. Wechseln Sie im linken Bereich zur Registerkarte **Bearbeiten**. 
-2. Klicken Sie auf der Symbolleiste auf **Trigger** und anschließend auf **Trigger Now** (Jetzt auslösen), um eine Pipelineausführung **auszulösen**. 
+2. Um **Trigger** eine Pipeline ausgeführt wird, klicken Sie auf **Trigger** auf der Symbolleiste, und klicken Sie auf **Trigger jetzt**. 
 3. Führen Sie im Fenster **Pipeline Run** (Pipelineausführung) die folgenden Schritte aus: 
 
     1. Geben Sie für den Parameter **sourceBlobContainer** die Zeichenfolge **adftutorial/dummy/input** ein. Stellen Sie sicher, dass der Ordner „dummy“ im Container „adftutorial“ nicht vorhanden ist. 
@@ -319,7 +319,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
 2. Klicken Sie für die Pipelineausführung auf den Link **Fehler**, um Fehlerdetails anzuzeigen. 
 
     ![Pipelinefehler](./media/tutorial-control-flow-portal/pipeline-error-message.png)
-2. Klicken Sie zum **Anzeigen von** Aktivitätsausführungen, die mit dieser Pipelineausführung verknüpft sind, in der Spalte **Aktionen** auf den ersten Link. Aktualisieren Sie die Liste mithilfe der Schaltfläche **Aktualisieren**. Beachten Sie, dass die Kopieraktivität in der Pipeline nicht erfolgreich war. Die Webaktivität hat erfolgreich eine Fehler-E-Mail an den angegebenen Empfänger gesendet. 
+2. Klicken **Sie zum Anzeigen von**Aktivitätsausführungen, die mit dieser Pipelineausführung verknüpft sind, in der Spalte **Aktionen** auf den ersten Link. Aktualisieren Sie die Liste mithilfe der Schaltfläche **Aktualisieren**. Beachten Sie, dass die Kopieraktivität in der Pipeline nicht erfolgreich war. Die Webaktivität hat erfolgreich eine Fehler-E-Mail an den angegebenen Empfänger gesendet. 
 
     ![Aktivitätsausführungen](./media/tutorial-control-flow-portal/activity-runs-failure.png)
 4. Klicken Sie in der Spalte **Aktionen** auf den Link **Fehler**, um Fehlerdetails anzuzeigen. 

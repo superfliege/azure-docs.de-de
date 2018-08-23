@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e00af59c39219cf6efd14a1c6b2d831fc8addf5a
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 405f69ae1c37e478758d984ddf7dc0e267910fef
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364427"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023058"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -120,19 +120,7 @@ Sie können z.B. eine Liste der Wertoptionen in einer Initiativdefinition erstel
 
 ## <a name="maximum-count-of-policy-objects"></a>Maximale Anzahl von Richtlinienobjekten
 
-Für jeden Objekttyp für Azure Policy gibt es eine maximale Anzahl. Ein _Scope_-Eintrag (Bereich) gilt entweder für das Abonnement oder die Verwaltungsgruppe.
-
-| Hierbei gilt: | Was | Maximale Anzahl |
-|---|---|---|
-| Bereich | Richtliniendefinitionen | 250 |
-| Bereich | Initiativdefinitionen | 100 |
-| Tenant | Initiativdefinitionen | 1000 |
-| Bereich | Richtlinie/Initiativenzuweisungen | 100 |
-| Richtliniendefinition | Parameter | 20 |
-| Initiativdefinition | Richtlinien | 100 |
-| Initiativdefinition | Parameter | 100 |
-| Richtlinie/Initiativenzuweisungen | Ausschlüsse (notScopes) | 100 |
-| Richtlinienregel | Konditionelle Abschnitte | 512 |
+[!INCLUDE [policy-limits](../../includes/azure-policy-limits.md)]
 
 ## <a name="recommendations-for-managing-policies"></a>Empfehlungen für die Verwaltung von Richtlinien
 

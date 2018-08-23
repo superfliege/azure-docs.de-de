@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 7/10/2018
-ms.openlocfilehash: 303c1cfaf2b91712f706c5b78e027bb02739c770
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d4f1e188a1a145ba3be5fb45d2b0ea4d0bfd57a7
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39074213"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41919136"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-vsts"></a>Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von VSTS
 In diesem Tutorial wird beschrieben, wie Continuous Integration und Continuous Deployment für einen Azure Stream Analytics-Auftrag mithilfe von Visual Studio Team Services eingerichtet werden. 
@@ -32,8 +32,8 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 * Installieren Sie [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) und die Workload **Azure-Entwicklung** oder **Datenspeicherung und -verarbeitung**.
-* Erstellen Sie ein [Stream Analytics-Projekt in Visual Studio](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-vs).
-* Erstellen Sie ein [Visual Studio Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)-Konto.
+* Erstellen Sie ein [Stream Analytics-Projekt in Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
+* Erstellen Sie ein [Visual Studio Team Services](https://visualstudio.microsoft.com/team-services/)-Konto.
 
 ## <a name="configure-nuget-package-dependency"></a>Konfigurieren der NuGet-Paketabhängigkeit
 Um auf einem beliebigen Computer eine automatische Erstellung und Bereitstellung auszuführen, müssen Sie das NuGet-Paket `Microsoft.Azure.StreamAnalytics.CICD` verwenden. Es bietet Tools für MSBuild, lokales Ausführen und Bereitstellung zur Unterstützung von Continuous Integration und Continuous Deployment für Stream Analytics Visual Studio-Projekte. Weitere Informationen finden Sie unter [Kontinuierliche Integration und Entwicklung mit Stream Analytics-Tools](stream-analytics-tools-for-visual-studio-cicd.md).
@@ -76,7 +76,7 @@ Eine Team Services-Releasedefinition beschreibt einen Workflow, der ein Anwendun
 
 2. Klicken Sie unter **Vorlage auswählen** auf **Leerer Prozess**, um mit einer leeren Definition zu beginnen.
     
-    ![Buildvorlage auswählen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
+    ![Auswählen der Buildvorlage](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
 
 3. Aktivieren Sie unter **Trigger** Continuous Integration, indem Sie den Triggerstatus **Continuous Integration aktivieren** auswählen.  Klicken Sie auf **Speichern und in Warteschlange einreihen**, um manuell einen Buildvorgang zu starten. 
     

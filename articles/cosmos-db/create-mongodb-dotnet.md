@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Erstellen einer Web-App mit .NET und der MongoDB-API | Microsoft-Dokumentation'
 description: Hier finden Sie ein .NET-Codebeispiel, das Sie zum Verbinden mit und zum Abfragen von Azure Cosmos DB MongoDB-API verwenden können.
 services: cosmos-db
-author: SnehaGunda
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -10,13 +10,13 @@ ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2018
-ms.author: sngun
-ms.openlocfilehash: 2e0de0f15612b21345bd8df6f9808222ec328c3d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: sclyon
+ms.openlocfilehash: a87b4c50beea21f9d7721b60ae691eeafaedfc05
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542620"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023571"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Web-App mit einer MongoDB-API mit .NET und dem Azure-Portal
 
@@ -49,7 +49,7 @@ Laden Sie zunächst die MongoDB-API-Beispiel-App von GitHub herunter. Die App im
     md "C:\git-samples"
     ```
 
-2. Öffnen Sie ein Git-Terminalfenster (z. B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
+2. Öffnen Sie ein Git-Terminalfenster (z.B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
 
     ```bash
     cd "C:\git-samples"
@@ -69,7 +69,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
 
 Die folgenden Codeausschnitte stammen alle aus der Datei „Dal.cs“ im Verzeichnis „DAL“.
 
-* Initialisieren Sie den Mongo-Client.
+* Initialisiert den Mongo-Client:
 
     ```cs
         MongoClientSettings settings = new MongoClientSettings();

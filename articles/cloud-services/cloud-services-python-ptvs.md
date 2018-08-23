@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 10ade991b77b90f31309dbe6a105744dbc02df40
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d9871b399ff06fb08d817c0d892b667b4ef0242d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003641"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920287"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
 
@@ -42,7 +42,7 @@ Weitere Informationen finden Sie unter [Was ist ein Clouddienst?].
 
 > [!NOTE]
 > *Möchten Sie eine einfache Website erstellen?*
-> Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die Verwendung des einfachen Web-Apps-Features von Azure App Service in Betracht ziehen. Sie können einen Cloud-Dienst leicht upgraden, wenn die Website größer wird und sich Ihre Anforderungen ändern. Im <a href="/develop/python/">Python Developer Center</a> finden Sie Artikel zur Entwicklung des Web-Apps-Features von Azure App Service.
+> Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die Verwendung des einfachen Web-Apps-Features von Azure App Service in Betracht ziehen. Sie können einen Cloud-Dienst leicht upgraden, wenn die Website größer wird und sich Ihre Anforderungen ändern. Im [Python Developer Center](https://azure.microsoft.com/develop/python/) finden Sie Artikel zur Entwicklung des Web-Apps-Features von Azure App Service.
 > <br />
 > 
 > 

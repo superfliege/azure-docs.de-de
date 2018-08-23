@@ -1,0 +1,1 @@
+*Gilt für: Integrierte Azure Stack-Systeme*

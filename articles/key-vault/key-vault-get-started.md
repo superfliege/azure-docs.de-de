@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 2d959eb9c4f55624d0d0915dd5dea4c62ba1f8e5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fcf3c7d47e43adc94d2de933430f16d64ec987a2
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505712"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41918748"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Erste Schritte mit dem Azure-Schlüsseltresor
 Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Key Vault mit PowerShell und führt Sie durch die folgenden Aktivitäten:
@@ -29,12 +29,9 @@ Dieser Artikel hilft Ihnen bei den ersten Schritten mit Azure Key Vault mit Powe
 
 Azure-Tresorschlüssel ist in den meisten Regionen verfügbar. Weitere Informationen finden Sie auf der Seite [Preisübersicht für Schlüsseltresor](https://azure.microsoft.com/pricing/details/key-vault/).
 
-> [!NOTE]
-> Dieser Artikel enthält keine Anweisungen zum Erstellen einer Azure-Anwendung. Sie können die [Azure Key Vault-Beispielanwendung](https://www.microsoft.com/download/details.aspx?id=45343) für diese Schritte verwenden.
-
 Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie in [diesem entsprechenden Tutorial](key-vault-manage-with-cli2.md).
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 Vergewissern Sie sich vor der weiteren Lektüre des Artikels, dass Sie über Folgendes verfügen:
 
 - **Ein Azure-Abonnement**. Falls Sie über kein Abonnement verfügen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/)registrieren.
@@ -269,7 +266,7 @@ So ändern Sie die Autorisierung einer Anwendung für die Verwendung von Schlüs
 ## <a id="HSM"></a>Verwenden eines Hardwaresicherheitsmoduls (HSM)
 Zur Steigerung der Sicherheit können Sie Schlüssel in HSMs importieren oder in diesen generieren. Diese Schlüssel verbleiben immer innerhalb der HSM-Grenzen. Die HSMs sind FIPS 140-2 Ebene 2 überprüft. Wenn diese Anforderung auf Sie nicht zutrifft, überspringen Sie diesen Abschnitt, und wechseln Sie zu [Löschen des Schlüsseltresors und zugeordneter Schlüssel und geheimer Schlüssel](#delete).
 
-Zum Erstellen dieser HSM-geschützten Schlüssel müssen Sie die [Azure Key Vault Premium-Dienstebene verwenden, um HSM-geschützte Schlüssel zu unterstützen](https://azure.microsoft.com/pricing/free-trial/). Darüber hinaus steht diese Funktion nicht für Azure China zur Verfügung.
+Zum Erstellen dieser HSM-geschützten Schlüssel müssen Sie die [Azure Key Vault Premium-Dienstebene verwenden, um HSM-geschützte Schlüssel zu unterstützen](https://azure.microsoft.com/pricing/details/key-vault/). Darüber hinaus steht diese Funktion nicht für Azure China zur Verfügung.
 
 Wenn Sie den Schlüsseltresor erstellen, fügen Sie den Parameter **-SKU** hinzu:
 

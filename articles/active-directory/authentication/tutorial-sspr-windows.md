@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: eefb07136215d79b7c351dd4498bfeb79b6833de
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413743"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920984"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -86,8 +86,6 @@ Weitere Informationen zum Erstellen von Gruppen finden Sie im Artikel [Verwalten
 Sie haben jetzt eine Richtlinie für die Gerätekonfiguration erstellt und zugewiesen, um den Link „Kennwort zurücksetzen“ auf dem Anmeldebildschirm mit Intune zu aktivieren.
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>Konfigurieren des Links „Kennwort zurücksetzen“ über die Registrierung
-
-Es wird empfohlen, diese Methode nur zum Testen der Einstellungsänderung zu verwenden.
 
 1. Melden Sie sich mit Administratoranmeldeinformationen am Windows-PC an.
 2. Führen Sie den Befehl **regedit** als Administrator aus.

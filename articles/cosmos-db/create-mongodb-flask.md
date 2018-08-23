@@ -2,7 +2,7 @@
 title: 'Azure Cosmos DB: Erstellen einer Flask-Web-App mit Python und der MongoDB-API von Azure Cosmos DB | Microsoft-Dokumentation'
 description: Hier finden Sie ein Python Flask-Codebeispiel, das Sie zum Herstellen einer Verbindung mit der MongoDB-API von Azure Cosmos DB sowie zum Abfragen der API verwenden können.
 services: cosmos-db
-author: heatherbshapiro
+author: slyons
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
@@ -10,13 +10,13 @@ ms.custom: quick start connect, mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/2/2017
-ms.author: hshapiro
-ms.openlocfilehash: 024ca836e4d2c58c4c942d6f7376608e40248316
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: sclyon
+ms.openlocfilehash: f9ef92f5f0bb1a0b15302a7dc578c47cfc6ee970
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38485426"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42024046"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: Erstellen einer Flask-App mit der MongoDB-API
 
@@ -46,7 +46,7 @@ Klonen Sie als Nächstes eine Flask-MongoDB-API-App aus GitHub, legen Sie die Ve
     md "C:\git-samples"
     ```
 
-2. Öffnen Sie ein Git-Terminalfenster (z. B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
+2. Öffnen Sie ein Git-Terminalfenster (z.B. git bash), und verwenden Sie den Befehl `cd`, um in den neuen Ordner zu gelangen und dort die Beispiel-App zu installieren.
 
     ```bash
     cd "C:\git-samples"

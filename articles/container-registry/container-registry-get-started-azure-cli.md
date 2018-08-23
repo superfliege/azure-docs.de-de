@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 78dc9eceba11ce07deb7fe0d10df1fea9cd74a75
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b17df81dd1d972f3e559140e9f43963e9c8cab2a
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426121"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42022384"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>Schnellstart: Erstellen einer Containerregistrierung mit der Azure-Befehlszeilenschnittstelle
 
@@ -40,9 +40,7 @@ In dieser Schnellstartanleitung erstellen Sie eine *Basic*-Registrierung. Azure 
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
-Erstellen Sie mithilfe des Befehls [az acr create][az-acr-create] eine ACR-Instanz.
-
-Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im folgenden Beispiel wird der Name *myContainerRegistry007* verwendet. Ersetzen Sie diesen Namen durch einen eindeutigen Wert.
+Erstellen Sie mithilfe des Befehls [az acr create][az-acr-create] eine ACR-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im folgenden Beispiel wird der Name *myContainerRegistry007* verwendet. Ersetzen Sie diesen Namen durch einen eindeutigen Wert.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic

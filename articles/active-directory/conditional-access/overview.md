@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2018
+ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: b191e041d219ad629c2f3ac6a0ac689551187eca
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3e96e251e655c7c7ad862fbf875111e08c0dfbdf
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630207"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022749"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Was ist der bedingte Zugriff in Azure Active Directory?
 
@@ -47,7 +47,7 @@ Im Folgenden finden Sie einige allgemeine Überlegungen zum Zugriff, bei denen d
 
 
 
-- **[Anmelderisiko:](conditions.md#sign-in-risk)** Azure AD Identity Protection erkennt Anmelderisiken. Wie schränken Sie den Zugriff ein, wenn ein erkanntes Anmelderisiko auf einen böswilligen Benutzer hindeutet? Was geschieht, wenn Sie einen fundierteren Beweis dafür benötigen, dass eine Anmeldung durch einen berechtigten Benutzer durchgeführt wurde? Was geschieht, wenn Ihre Zweifel so stark sind, dass Sie für bestimmte Benutzer den Zugriff auf eine App blockieren möchten? Durch Konfiguration 
+- **[Anmelderisiko:](conditions.md#sign-in-risk)** Azure AD Identity Protection erkennt Anmelderisiken. Wie schränken Sie den Zugriff ein, wenn ein erkanntes Anmelderisiko auf einen böswilligen Benutzer hindeutet? Was geschieht, wenn Sie einen fundierteren Beweis dafür benötigen, dass eine Anmeldung durch einen berechtigten Benutzer durchgeführt wurde? Was geschieht, wenn Ihre Zweifel so stark sind, dass Sie für bestimmte Benutzer den Zugriff auf eine App blockieren möchten?  
 
 - **[Netzwerkadresse:](location-condition.md)** Der Zugriff auf Azure AD ist von überall aus möglich. Was geschieht, wenn ein Zugriffsversuch von einer Netzwerkadresse ausgeführt wird, die nicht durch Ihre IT-Abteilung kontrolliert wird? Die Kombination aus Benutzername und Kennwort ist vermutlich ausreichend als Nachweis der Identität für den Zugriff auf Ihre Ressourcen aus Ihrem Unternehmensnetzwerk. Was geschieht aber, wenn Sie einen stärkeren Nachweis der Identität für den Zugriff aus anderen, unerwarteten Ländern oder Regionen der Welt benötigen? Was geschieht, wenn Sie sogar alle Zugriffsversuche von bestimmten Standorten blockieren möchten?  
 

@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 9d4be08e732127d6da12a9e0367383347f53c796
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 30afc1c577ab6dd18374d5ef5199c7e7d9e89fe4
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34608898"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42144261"
 ---
 # <a name="create-php-web-and-worker-roles"></a>Erstellen von PHP-Web- und Workerrollen
 
@@ -36,7 +36,7 @@ Das [Azure SDK für PHP](php-download-sdk.md) besteht aus verschiedenen Komponen
 
 ## <a name="create-a-cloud-services-project"></a>Erstellen eines Cloud-Dienst-Projekts
 
-Der erste Schritt bei der Erstellung einer PHP-Web- oder -Workerrolle ist die Erstellung eines Azure-Dienstprojekts. Ein Azure-Dienstprojekt dient als logischer Container für Web- und Workerrollen und enthält das [Dienstdefinitionsdatei (.csdef)] und das [Azure-Dienstkonfigurationsschema (.cscfg-Datei)] des Projekts.
+Der erste Schritt bei der Erstellung einer PHP-Web- oder -Workerrolle ist die Erstellung eines Azure-Dienstprojekts. Ein Azure-Dienstprojekt dient als logischer Container für Web- und Workerrollen und enthält das [Azure-Dienstdefinitionsschema (CSDEF-Datei)] und das [Azure-Dienstkonfigurationsschema (CSCFG-Datei)] des Projekts.
 
 Führen Sie Azure PowerShell als Administrator sowie folgenden Befehl aus, um ein neues Azure-Dienstprojekt zu erstellen:
 
@@ -211,16 +211,16 @@ Führen Sie folgenden Befehl aus, um die Emulatoren zu stoppen:
 
 ## <a name="publish-your-application"></a>Veröffentlichen der Anwendung
 
-Um die Anwendung zu veröffentlichen, müssen Sie zunächst die Veröffentlichungseinstellungen mithilfe des Cmdlets [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) importieren. Anschließend können Sie die Anwendung mithilfe des Cmdlets [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) veröffentlichen. Informationen zum Anmelden finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Um die Anwendung zu veröffentlichen, müssen Sie zunächst die Veröffentlichungseinstellungen mithilfe des Cmdlets [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) importieren. Anschließend können Sie die Anwendung mithilfe des Cmdlets [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) veröffentlichen. Informationen zum Anmelden finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie im [PHP Developer Center](https://azure.microsoft.com/develop/php/).
 
 [install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[Dienstdefinitionsdatei (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[Azure-Dienstkonfigurationsschema (.cscfg-Datei)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[Azure-Dienstdefinitionsschema (CSDEF-Datei)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[Azure-Dienstkonfigurationsschema (CSCFG-Datei)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
-[sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
+[sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: http://php.net/sqlsrv
 [sqlncli.msi x64-Installer]: http://go.microsoft.com/fwlink/?LinkID=239648

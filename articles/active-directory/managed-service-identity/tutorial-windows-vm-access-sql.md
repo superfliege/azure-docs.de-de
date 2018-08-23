@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: ace7f11eeea081077855a409824272b4b55f3c33
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ca920a93d754254390a5c5c5a066be3144b47fc7
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247226"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919403"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-sql"></a>Tutorial: Verwenden einer verwalteten Dienstidentität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 
@@ -44,7 +44,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Windows-Computers in einer neuen Ressourcengruppe
 
-In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können die verwaltete Dienstidentität auch auf einem vorhandenen virtuellen Computer aktivieren.
+In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können die verwaltete Dienstidentität auch auf einer vorhandenen VM aktivieren.
 
 1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
 2.  Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
@@ -55,13 +55,13 @@ In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie kö
 
     ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
 
-## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrem virtuellen Computer 
+## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrer VM 
 
 Eine verwaltete Dienstidentität eines virtuellen Computers ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität weisen Sie Azure an, eine verwaltete Identität für den virtuellen Computer zu erstellen. Durch das Aktivieren der verwalteten Dienstidentität werden zwei Vorgänge im Hintergrund ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
 
-1.  Wählen Sie den virtuellen Computer aus, auf dem Sie die verwaltete Dienstidentität aktivieren möchten.  
+1.  Wählen Sie den **virtuellen Computer** aus, auf dem Sie die verwaltete Dienstidentität aktivieren möchten.  
 2.  Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**. 
-3.  Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren der verwalteten Dienstidentität die Option **Ja** oder zum Deaktivieren „Nein“. 
+3.  Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren der verwalteten Dienstidentität die Option **Ja** und zum Deaktivieren „Nein“ aus. 
 4.  Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.  
     ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
@@ -147,8 +147,8 @@ Nachdem Sie die Gruppe erstellt und ihr die verwaltete Dienstidentität des virt
 
 Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). Bevor Sie beginnen, sollten Sie die folgenden Artikel mit Hintergrundinformationen zur Azure AD-Integration lesen:
 
-- [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication.md)
-- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure.md)
+- [Universelle Authentifizierung bei SQL-Datenbank und SQL Data Warehouse (SSMS-Unterstützung für MFA)](/azure/sql-database/sql-database-ssms-mfa-authentication)
+- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse](/azure/sql-database/sql-database-aad-authentication-configure)
 
 1.  Starten Sie SQL Server Management Studio.
 2.  Geben Sie im Dialogfeld **Mit Server verbinden** den Namen Ihres SQL-Servers im Feld **Servername** ein.

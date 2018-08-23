@@ -11,18 +11,18 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.author: sngun
-ms.openlocfilehash: 9f7744c7743107b3587bd63a6e7681a6f1e42c00
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 43c5b8beef523684a405f1396ad0a9d862c123e8
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39608969"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41917578"
 ---
 # <a name="_Toc395783175"></a>Erstellen einer Node.js-Webanwendung mithilfe von Azure Cosmos DB und des Node.js SDK (Vorschauversion)
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js: v2.0-Vorschau](sql-api-nodejs-application-preview.md)
+> * [Node.js: v2.0 (Vorschau)](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
 > * [Python](sql-api-python-application.md)
 > 
@@ -413,13 +413,13 @@ Jetzt konzentrieren wir uns auf die Erstellung der Benutzeroberfläche, um den B
                     input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
           button.btn.btn-primary(type="submit") Update tasks
         hr
-       form.well(action="/addtask", method="post")
-        label Item Name:
-        input(name="name", type="textbox")
-        label Item Category:
-        input(name="category", type="textbox")
-        br
-        button.btn(type="submit") Add item
+        form.well(action="/addtask", method="post")
+          label Item Name:
+          input(name="name", type="textbox")
+          label Item Category:
+          input(name="category", type="textbox")
+          br
+          button.btn(type="submit") Add item
    ```
 
 Dadurch wird das Layout erweitert und Inhalt für den Platzhalter **content** bereitgestellt, den wir zuvor in der Datei **layout.jade** gesehen haben.

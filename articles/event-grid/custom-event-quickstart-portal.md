@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 07/05/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 4fef565dbd78cf3559cd47ed6c59800c8e6f9c9d
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869142"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023580"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit dem Azure Portal und Event Grid
 
@@ -41,7 +41,7 @@ Ein Event Grid-Thema verfügt über einen benutzerdefinierten Endpunkt für die 
 
    ![Starten von Schritten](./media/custom-event-quickstart-portal/select-create.png)
 
-1. Geben Sie einen eindeutigen Namen für das benutzerdefinierte Thema an. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird. Verwenden Sie nicht den Namen, der in der Abbildung zu sehen ist. Erstellen Sie stattdessen einen eigenen Namen. Wählen Sie eine der [unterstützten Regionen](overview.md) aus. Geben Sie einen Namen für die Ressourcengruppe an. Klicken Sie auf **Erstellen**.
+1. Geben Sie einen eindeutigen Namen für das benutzerdefinierte Thema an. Der Name des Themas muss eindeutig sein, da er durch einen DNS-Eintrag dargestellt wird. Verwenden Sie nicht den Namen, der in der Abbildung zu sehen ist. Erstellen Sie stattdessen einen eigenen Namen. Geben Sie einen Namen für die Ressourcengruppe an. Klicken Sie auf **Erstellen**.
 
    ![Angeben von Werten für das Event Grid-Thema](./media/custom-event-quickstart-portal/create-custom-topic.png)
 
@@ -179,7 +179,7 @@ Wählen Sie die Ressourcengruppe aus, und klicken Sie auf **Ressourcengruppe lö
 
 Sie haben gelernt, wie Sie benutzerdefinierte Themen und Ereignisabonnements erstellen. Nun können Sie sich ausführlicher darüber informieren, welche Möglichkeiten Event Grid bietet:
 
-- [An introduction to Azure Event Grid](overview.md) (Einführung in Azure Event Grid)
+- [Einführung in Azure Event Grid](overview.md)
 - [Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
-- [Monitor virtual machine changes with Azure Event Grid and Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) (Überwachen von Änderungen an virtuellen Computer mit Azure Event Grid und Logic Apps)
+- [Überwachen von Änderungen an virtuellen Computern mit Azure Event Grid und Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [Streamen von Big Data in ein Data Warehouse](event-grid-event-hubs-integration.md)

@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: f60c23e34962396d4ea6e030912d1ca3f3e4571b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40259500"
+---
 Zwei Typen von Speicherkonten stehen zur Verfügung:
 
 ### <a name="general-purpose-storage-accounts"></a>Allgemeine Speicherkonten
@@ -21,9 +38,9 @@ BLOB-Speicherkonten verfügen über das Attribut **Zugriffsstufe** , das bei der
 
 Bei einer Änderung des Nutzungsmusters der Daten können Sie jederzeit zwischen den beiden Zugriffstarifen wechseln. Die Änderung des Zugriffstarifs kann mit zusätzlichen Kosten verbunden sein. Weitere Informationen dazu finden Sie unter [Preise und Abrechnung für BLOB-Speicherkonten](../articles/storage/common/storage-account-options.md#pricing-and-billing) .
 
-Weitere Informationen zu BLOB-Speicherkonten finden Sie unter [Azure-Blobspeicher: Tarife für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data)](../articles/storage/blobs/storage-blob-storage-tiers.md).
+Weitere Informationen zu Blob Storage-Konten finden Sie unter [Azure Blob Storage: Tarife für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data)](../articles/storage/blobs/storage-blob-storage-tiers.md).
 
 Um ein Speicherkonto erstellen zu können, müssen Sie über ein Azure-Abonnement verfügen. Dies ist ein Plan, der Ihnen Zugriff auf eine Vielzahl von Azure-Diensten verschafft. Sie können die Verwendung von Azure mit einem [kostenlosen Konto](https://azure.microsoft.com/pricing/free-trial/) beginnen. Wenn Sie sich entscheiden, einen Plan zu kaufen, können Sie aus einer Vielzahl von [Kaufoptionen](https://azure.microsoft.com/pricing/purchase-options/) auswählen. [MSDN-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) erhalten ein monatliches Gratisguthaben für Azure-Dienste, einschließlich Azure Storage. Informationen zu Volumenpreisen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-Informationen zum Erstellen eines Standardspeicherkontos finden Sie unter [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) . Sie können bis zu 200 eindeutig benannte Speicherkonten unter einem einzigen Abonnement erstellen. Weitere Informationen zu den Begrenzungen von Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/common/storage-scalability-targets.md) .
+Informationen zum Erstellen eines Standardspeicherkontos finden Sie unter [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-quickstart-create-account.md) . Sie können bis zu 200 eindeutig benannte Speicherkonten unter einem einzigen Abonnement erstellen. Weitere Informationen zu den Begrenzungen von Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/common/storage-scalability-targets.md) .
 

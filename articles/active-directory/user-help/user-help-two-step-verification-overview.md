@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: e61c96d754c240df89607db0cf84dca0e0ccd17e
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: de5c9810b234a93643321d1ba299a66a3ae965a3
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347312"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023949"
 ---
 # <a name="two-step-verification-overview"></a>Übersicht über die zweistufige Überprüfung
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/en-us/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+>Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
 
 Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen mitgeteilt, dass Ihr Unternehmen Ihrem Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt hat. Was bedeutet das? Das bedeutet, dass Ihre Organisation zusätzliche Maßnahmen ergreifen, um Ihre Identität bei der Anmeldung sicherzustellen. Diese zusätzlichen Überprüfung, die auch als zweistufige Überprüfung bekannt ist, erfolgt über eine Kombination aus Ihrem Benutzernamen, Ihrem Kennwort und einem Mobilgerät oder Telefon.
 

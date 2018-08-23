@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 77cd4c1d5333f7f10e6caccee5011200bdb4ccca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5e1d7a88e5a1a8ab60a01aea6ca42e850ac6e0e3
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424387"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918754"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>Tutorial: Erstellen einer Java- und MySQL-Web-App in Azure
 
@@ -243,7 +243,7 @@ Wenn der Plan fertig ist, zeigt die Azure CLI eine ähnliche Ausgabe wie im folg
 
 ### <a name="create-an-azure-web-app"></a>Erstellen einer Azure-Web-App
 
-Erstellen Sie in Cloud Shell mit dem CLI-Befehl [`az webapp create`](/cli/azure/appservice/web#az-appservice-web-create) eine Web-App-Definition im App Service-Plan `myAppServicePlan`. Die Web-App-Definition enthält eine URL für den Zugriff auf Ihre Anwendung und konfiguriert verschiedene Optionen zum Bereitstellen Ihres Codes in Azure. 
+Erstellen Sie in Cloud Shell mit dem CLI-Befehl [`az webapp create`](/cli/azure/webapp#az-webapp-create) eine Web-App-Definition im App Service-Plan `myAppServicePlan`. Die Web-App-Definition enthält eine URL für den Zugriff auf Ihre Anwendung und konfiguriert verschiedene Optionen zum Bereitstellen Ihres Codes in Azure. 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 Legen Sie vor dem Ausführen der Beispiel-App Anwendungseinstellungen für die Web-App fest, um die in Azure erstellte Azure MySQL-Datenbank zu verwenden. Diese Eigenschaften werden für die Webanwendung als Umgebungsvariablen verfügbar gemacht und setzen die in der verpackten Web-App in „application.properties“ festgelegten Werte außer Kraft. 
 
-Legen Sie in Cloud Shell mithilfe des CLI-Befehls [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) Anwendungseinstellungen fest:
+Legen Sie in Cloud Shell mithilfe des CLI-Befehls [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) Anwendungseinstellungen fest:
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>Abrufen von FTP-Anmeldeinformationen für die Bereitstellung 
 Bei der Bereitstellung Ihrer Anwendung in Azure App Service haben Sie verschiedene Optionen. Hierzu zählen beispielsweise FTP, lokales Git sowie GitHub, Visual Studio Team Services und Bitbucket. Verwenden Sie in diesem Beispiel FTP, um die zuvor auf dem lokalen Computer erstellte WAR-Datei in Azure App Service bereitzustellen.
 
-Um zu bestimmen, welche Anmeldeinformationen in einem FTP-Befehle an die Web-App übergeben werden müssen, verwenden Sie den Befehl [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az-appservice-web-deployment-list-publishing-profiles) in Cloud Shell: 
+Um zu bestimmen, welche Anmeldeinformationen in einem FTP-Befehle an die Web-App übergeben werden müssen, verwenden Sie den Befehl [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) in Cloud Shell: 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json

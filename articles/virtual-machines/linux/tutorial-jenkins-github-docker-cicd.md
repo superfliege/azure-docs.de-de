@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b19d02e7d2bcbd696a7256c06b067f976fd36161
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 05ec147e705da4951735616881ad19ad265b403d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931727"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920701"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Tutorial: Erstellen einer Entwicklungsinfrastruktur auf einem virtuellen Linux-Computer in Azure mit Jenkins, GitHub und Docker
 
@@ -151,7 +151,7 @@ Klicken Sie auf Ihrer Jenkins-Website auf der Startseite auf **Create new jobs**
 - Wählen Sie im Abschnitt **Allgemein** die Option für **GitHub-Projekt** aus, und geben Sie die URL Ihres verzweigten Repositorys ein (beispielsweise *https://github.com/cynthn/nodejs-docs-hello-world*).
 - Wählen Sie im Bereich **Quellcodeverwaltung** die Option **Git** aus, und geben Sie die URL vom Typ *.git* Ihres verzweigten Repositorys ein. Beispiel: *https://github.com/cynthn/nodejs-docs-hello-world.git*
 - Wählen Sie im Bereich **Build Triggers** (Trigger erstellen) die Option **GitHub hook trigger for GITScm polling** (GitHub-Hooktrigger für GITScm-Abruf) aus.
-- Wählen Sie im Abschnitt **Build** die Option **Buildschritt hinzufügen** aus. Wählen Sie **Execute shell** (Shell ausführen) aus, und geben Sie dann `echo "Testing"` im Befehlsfenster ein.
+- Wählen Sie im Abschnitt **Build** die Option **Buildschritt hinzufügen** aus. Wählen Sie **Execute shell** (Shell ausführen) aus, und geben Sie dann `echo "Test"` im Befehlsfenster ein.
 - Wählen Sie unten auf der Auftragsseite **Speichern** aus.
 
 

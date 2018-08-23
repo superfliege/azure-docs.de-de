@@ -11,17 +11,17 @@ ms.component: user-help
 ms.topic: overview
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: dc3a34698daf9e74c73522895faa174f3fec0bad
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b3c5a81fe6572498ab2d4502225af24702a60cba
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347278"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023010"
 ---
 # <a name="my-apps-portal-overview"></a>Übersicht über das Portal „Meine Apps“
 
 >[!Important]
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/en-us/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+>Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
 
 Wenn Sie über ein Geschäfts-, Schul- oder Unikonto verfügen und Ihr Administrator Ihnen Zugriff erteilt hat, können Sie das Portal „Meine Apps“ verwenden und cloudbasierte Apps starten.
 

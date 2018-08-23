@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 03/23/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 8c1d4dd01d489413d1e0a0121b25e9506e5d6139
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 573d8f6927cbd17c0f095bccf5132674faf94928
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30233675"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42022337"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mithilfe der Azure Resource Manager-Vorlage
 
@@ -43,7 +43,7 @@ In diesem Abschnitt erstellen Sie mithilfe der Azure Resource Manager-Vorlage ei
 
     Geben Sie außerdem die folgenden Werte an: 
      
-    |Eigenschaft  |Beschreibung  |
+    |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
     |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). |
@@ -83,7 +83,7 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
 
 Bevor Sie mit diesem Abschnitt beginnen, müssen folgende Schritte ausgeführt werden:
 
-* [Erstellen Sie ein Azure Blob Storage-Konto.](../storage/common/storage-create-storage-account.md#create-a-storage-account) 
+* [Erstellen Sie ein Azure Blob Storage-Konto.](../storage/common/storage-quickstart-create-account.md) 
 * Laden Sie eine JSON-Beispieldatei von [GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) herunter. 
 * Laden Sie die JSON-Beispieldatei in das Azure Blob Storage-Konto hoch, das Sie erstellt haben. Dateien können mit dem [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) hochgeladen werden.
 

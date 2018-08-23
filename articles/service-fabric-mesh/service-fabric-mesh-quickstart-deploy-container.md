@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 5359920ab32fab65df0466474aec2d305bcf633c
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a740672ea948bd86efce92c534e0f95f65563438
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091049"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42023940"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Schnellstart: Bereitstellen von „Hello World“ in Service Fabric Mesh
 
@@ -30,7 +30,7 @@ Wenn Sie noch kein Azure-Konto haben, [erstellen Sie ein kostenloses Konto](http
 Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diesen Schnellstart verwenden. Installieren Sie das CLI-Erweiterungsmodul von Azure Service Fabric Mesh, indem Sie die folgenden [Anweisungen](service-fabric-mesh-howto-setup-cli.md) befolgen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
-Melden Sie sich bei Azure an, und legen Sie Ihr Abonnement fest.
+Melden Sie sich in Azure an, und legen Sie Ihr Abonnement fest.
 
 ```azurecli-interactive
 az login
@@ -57,7 +57,7 @@ Innerhalb weniger Minuten gibt der Befehl Folgendes zurück:
 `helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>Öffnen der Anwendung
-Nachdem die Anwendung erfolgreich bereitgestellt wurde, kopieren Sie die öffentliche IP-Adresse für den Dienstendpunkt aus der CLI-Ausgabe.  Öffnen Sie die IP-Adresse in einem Webbrowser. Eine Webseite mit dem Azure Service Fabric Mesh-Logo wird angezeigt.
+Nachdem die Anwendung erfolgreich bereitgestellt wurde, kopieren Sie die öffentliche IP-Adresse für den Dienstendpunkt aus der CLI-Ausgabe. Öffnen Sie die IP-Adresse in einem Webbrowser. Eine Webseite mit dem Azure Service Fabric Mesh-Logo wird angezeigt.
 
 ## <a name="check-the-application-details"></a>Überprüfen der Anwendungsdetails
 Sie können den Status der Anwendung mit dem Befehl `az mesh app show` überprüfen. Dieser Befehl stellt hilfreiche Informationen bereit, die Sie nachverfolgen können.

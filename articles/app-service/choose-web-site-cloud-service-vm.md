@@ -3,9 +3,8 @@ title: Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud
 description: Erfahren Sie, wann Sie Azure App Service, Virtual Machines, Service Fabric und Cloud Services für das Hosten von Webanwendungen wählen sollten.
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: ''
-author: ggailey777
-manager: erikre
-editor: jimbe
+author: cephalin
+manager: jeconnoc
 ms.assetid: 7d346a23-532a-42a9-98a8-23b7286d32a8
 ms.service: app-service-web
 ms.workload: web
@@ -13,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 07/07/2016
-ms.author: glenga
+ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 016427e6cfbb8bbb4910e5deffb3ab68d423fb90
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3b1fb14fbb21876d0b3f7d98327353d54bb1cfb2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224954"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42023768"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
-## <a name="overview"></a>Übersicht
+
 Azure bietet verschiedene Möglichkeiten zum Hosten von Websites: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] und [Cloud Services][Cloud Services]. Dieser Artikel unterstützt Sie dabei, die verfügbaren Optionen zu verstehen und die richtige Wahl für Ihre Webanwendung zu treffen.
 
 Azure App Service stellt für die meisten Web-Apps die beste Wahl dar. Die Bereitstellungs- und die Verwaltungsfunktionen sind in die Plattform integriert. Websites können rasch skaliert werden, um hohe Datenaufkommen zu bewältigen. Außerdem bieten der integrierte Lastenausgleich und Traffic Manager Hochverfügbarkeit. Sie können vorhandene Websites mit einem [Online-Migrationstool][migrate-tool] problemlos in Azure App Service verschieben, eine Open Source-App aus dem Web-App-Katalog verwenden oder eine neue Website mithilfe des Frameworks und der Tools Ihrer Wahl erstellen. Das Feature [WebJobs][WebJobs] erleichtert das Hinzufügen der Hintergrundauftragsverarbeitung zu Ihrer App Service-Web-App.
