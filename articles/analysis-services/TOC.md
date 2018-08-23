@@ -34,6 +34,7 @@
 ### [Konfigurieren eines Alias für den Servernamen](analysis-services-server-alias.md)
 ### [Konfigurieren des horizontalen Hochskalierens](analysis-services-scale-out.md)
 ### [Installieren und Konfigurieren eines lokalen Datengateways](analysis-services-gateway-install.md)
+### [Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz](analysis-services-vnet-gateway.md)
 ### [Verwalten eines Servers](analysis-services-manage.md)
 ### [Überwachen von Servermetriken](analysis-services-monitor.md)
 ### [Einrichten der Diagnoseprotokollierung](analysis-services-logging.md)

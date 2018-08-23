@@ -5,14 +5,12 @@
 ## [Häufig gestellte Fragen](relay-faq.md)
 
 # Schnellstarts
-## [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 ## [Erstellen einer hybriden lokalen/Cloudanwendung](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
 ## Hybridverbindungen
 ### [.NET Websockets](relay-hybrid-connections-dotnet-get-started.md)
 ### [.NET HTTP](relay-hybrid-connections-http-requests-dotnet-get-started.md)
 ### [Node Websockets](relay-hybrid-connections-node-get-started.md)
 ### [Node HTTP](relay-hybrid-connections-http-requests-node-get-started.md)
-## [WCF-Relay](relay-wcf-dotnet-get-started.md)
 ## [Tutorial zu WCF Relay](service-bus-relay-tutorial.md)
 ## [Tutorial zu WCF-Relay/REST](service-bus-relay-rest-tutorial.md)
 
@@ -22,6 +20,8 @@
 #### [Migrieren von ACS zu SAS](relay-migrate-acs-sas.md)
 ### [Hybridverbindungsprotokoll](relay-hybrid-connections-protocol.md)
 ## Entwickeln
+### [Erstellen eines Namespaces](relay-create-namespace-portal.md)
+### [Verwenden von WCF Relay, um WCF-Dienste für externe Clients verfügbar zu machen](relay-wcf-dotnet-get-started.md)
 ### [Verfügbare APIs](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
 #### [Node](relay-hybrid-connections-node-ws-api-overview.md)

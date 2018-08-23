@@ -74,9 +74,9 @@
 #### [Client- und Serverversionsverwaltung](app-service-mobile-client-and-server-versioning.md)
 
 ### App Service-Umgebung
-#### [Erstellen einer Web-App in einer App Service-Umgebung](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen](../app-service/environment/app-service-app-service-environment-create-ilb-ase-resourcemanager.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-#### [Verwenden eines internen Load Balancers](../app-service/environment/app-service-environment-with-internal-load-balancer.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Erstellen einer Web-App in einer App Service-Umgebung](../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Erstellen und Verwenden eines internen Lastenausgleichs](../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+#### [Erstellen einer ASE mithilfe einer Vorlage](../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## Bereitstellen
 ### [Cloudsynchronisierungsbereitstellung](../app-service/app-service-deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)

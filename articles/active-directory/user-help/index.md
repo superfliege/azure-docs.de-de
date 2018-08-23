@@ -10,12 +10,12 @@ ms.component: user-help
 ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 00232a24310b13658fbfa04d2d410e7039c42bfe
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 3ee8834a2ff8b9126fea38b19df115474c36a9e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358399"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929611"
 ---
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung
 
@@ -87,7 +87,6 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                         <h3>Hilfe zur Microsoft Authenticator-App</h3>
                         <p>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-how-to">Erste Schritte</a><br/>
-                        <a href="/azure/active-directory/user-help/microsoft-authenticator-app-phone-signin-faq">Häufig gestellte Fragen zur Anmeldung per Telefon</a><br/>
                         <a href="/azure/active-directory/user-help/microsoft-authenticator-app-backup-and-recovery">Sichern und Wiederherstellen von Kontoanmeldeinformationen</a>
                         </p>
                     </div>
@@ -117,8 +116,8 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                     <div class="cardText">
                         <h3>Hilfe zur Geräteverwaltung</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">Einbinden von Geräten</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Registrieren meiner Windows 10-Geräte</a>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Verknüpfen Ihres Arbeitsgeräts</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Registrieren Ihres persönlichen Geräts für die Arbeit</a>
                         </p>
                     </div>
                 </div>
