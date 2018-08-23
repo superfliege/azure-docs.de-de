@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2018
 ms.author: genli
-ms.openlocfilehash: 5f11129e562ec47f4c81790cf21c9a390cc697b8
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d16f106fa1776b0d11a97f71ffe16cf89fb9584a
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621404"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142896"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
@@ -132,5 +132,5 @@ Erfassen Sie während der Ausführung von **[PsPing](https://docs.microsoft.com/
 
 Falls die bei der Ablaufverfolgung der Back-End-VM eingehenden Pakete nicht zu sehen sind, liegt wahrscheinlich ein Konflikt mit einer fehlerhaften NSG oder UDR oder fehlerhaften NVA-Routingtabellen vor.
 
-Wenn Sie den Eingang der Pakete beobachten, aber keine Antwort erfolgt, müssen Sie möglicherweise ein Problem mit der VM-Anwendung oder der Firewall beheben. [Wenden Sie sich an den NVA-Anbieter](Let's link customer to 3rd party vendor again here: https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), wenn Sie Unterstützung zu einem dieser Probleme benötigen sollten.
+Wenn Sie den Eingang der Pakete beobachten, aber keine Antwort erfolgt, müssen Sie möglicherweise ein Problem mit der VM-Anwendung oder der Firewall beheben. [Wenden Sie sich an den NVA-Anbieter](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), wenn Sie Unterstützung zu einem dieser Probleme benötigen sollten.
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 5c34219d01c8670102df40d9157cb0deff74b8e4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: fbd728ec8cd2c8c4cd7ca74ecd84fd4d0d41cbd0
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724284"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42139961"
 ---
 # <a name="azure-authenticator-for-android"></a>Azure Authenticator für Android
 Ihr IT-Administrator hat Ihnen eventuell empfohlen, sich über den Microsoft Azure Authenticator für den Zugriff auf Ihre Arbeitsressourcen anzumelden. Diese Anwendung stellt die beiden folgenden Anmeldeoptionen zur Verfügung:
@@ -89,7 +89,7 @@ Nach der Installation der Azure Authenticator-App können Sie auch über den And
 ### <a name="sending-log-files-to-report-issues"></a>Senden von Protokolldateien zum Melden von Problemen
 1. Befolgen Sie die Anleitung des Microsoft Support, um einen Vorfall mit der Azure Authenticator-App zu melden und eine Vorfallnummer zu erhalten. Senden Sie dann folgendermaßen die Protokolldateien zur zugewiesenen Vorfallnummer:
 2. Klicken Sie im Popupmenü auf **Protokollierung**.
-3. Wenn Sie einen offenen Vorfall beim Microsoft Support haben, notieren Sie sich die Vorfallnummer (Sie benötigen sie in einem späteren Schritt). Wenn Sie noch keinen Supportfall erstellt haben und Hilfe benötigen, befolgen Sie dem Leitfaden unter [Microsoft Support](https://support.microsoft.com/en-us/contactus), um einen neuen Vorfall zu öffnen.
+3. Wenn Sie einen offenen Vorfall beim Microsoft Support haben, notieren Sie sich die Vorfallnummer (Sie benötigen sie in einem späteren Schritt). Wenn Sie noch keinen Supportfall erstellt haben und Hilfe benötigen, befolgen Sie dem Leitfaden unter [Microsoft Support](https://support.microsoft.com/contactus), um einen neuen Vorfall zu öffnen.
 4. Klicken Sie auf dem Protokollierungsbildschirm auf **Jetzt senden**.
 5. Wählen Sie den gewünschten E-Mail-Anbieter aus.
 6. Wenn Sie bereits einen offenen Vorfall beim Microsoft Support haben, wenden Sie sich an den Supportmitarbeiter, dem Ihr Problem zugewiesen wurde, um zu erfahren, wie Sie die Protokolldaten senden und dem Vorfall zuordnen lassen können. Der Supportmitarbeiter nennt Ihnen die E-Mail-Adresse und die Betreffzeile. Wenn Sie noch keinen Supportfall haben, befolgen Sie die Anleitung des Microsoft Support, um einen neuen Vorfall zu öffnen.

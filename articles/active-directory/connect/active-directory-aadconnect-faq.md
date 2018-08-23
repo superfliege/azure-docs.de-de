@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1897f2c5d532c030b2711a35eabeefd889f560c8
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264994"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142762"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -65,7 +65,7 @@ Aus Gründen der Einfachheit wird empfohlen, dass Benutzer, die Azure AD Connect
 Für Netzwerksoftware, physische Geräte und andere Komponenten, durch die die maximale Dauer von offenen Verbindungen eingeschränkt wird, sollte ein Schwellenwert von mindestens 5 Minuten (300 Sekunden) für die Konnektivität zwischen dem Server, auf dem der Azure AD Connect-Client installiert ist, und Azure Active Directory verwendet werden. Diese Empfehlung gilt auch für alle zuvor veröffentlichten Microsoft-Identitätssynchronisierungswerkzeuge.
 
 **F: Werden einteilige Domänen (SLDs) unterstützt?**  
-Von dieser Netzwerkkonfiguration wird zwar dringend abgeraten ([siehe Artikel](https://support.microsoft.com/en-us/help/2269810/microsoft-support-for-single-label-domains)), die Verwendung der Azure AD Connect-Synchronisierung mit einer einteiligen Domäne wird jedoch unterstützt, solange die Netzwerkkonfiguration für diese ordnungsgemäß funktioniert.
+Von dieser Netzwerkkonfiguration wird zwar dringend abgeraten ([siehe Artikel](https://support.microsoft.com/help/2269810/microsoft-support-for-single-label-domains)), die Verwendung der Azure AD Connect-Synchronisierung mit einer einteiligen Domäne wird jedoch unterstützt, solange die Netzwerkkonfiguration für diese ordnungsgemäß funktioniert.
 
 **F: Werden Gesamtstrukturen mit nicht zusammenhängenden AD-Domänen unterstützt?**  
 Nein. Azure AD Connect unterstützt keine lokalen Gesamtstrukturen mit nicht zusammenhängenden Namespaces.
@@ -91,8 +91,8 @@ Nein. Nach dem Ändern des Servernamens kann das Synchronisierungsmodul keine Ve
 **F: Warum entspricht das userPrincipalName-Attribut (UPN) in Azure AD nicht dem lokalen UPN?**  
 Informationen finden Sie in diesen Artikeln:
 
-* [Benutzernamen in Office 365, Azure oder Intune entsprechen nicht dem lokalen UPN oder der alternativen Anmelde-ID](https://support.microsoft.com/en-us/kb/2523192)
-* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird](https://support.microsoft.com/en-us/kb/2669550)
+* [Benutzernamen in Office 365, Azure oder Intune entsprechen nicht dem lokalen UPN oder der alternativen Anmelde-ID](https://support.microsoft.com/kb/2523192)
+* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird](https://support.microsoft.com/kb/2669550)
 
 Sie können Azure AD auch so konfigurieren, dass das Synchronisierungsmodul den UPN wie unter [Features des Azure AD Connect-Synchronisierungsdiensts](active-directory-aadconnectsyncservice-features.md)beschrieben aktualisiert.
 
@@ -134,11 +134,11 @@ Um das PowerShell-Skript ausführen, [laden Sie das Skript herunter](https://aka
 
 Für das manuelle Upgrade müssen Sie die neueste Version der Datei „AADConnect.msi“ herunterladen und ausführen.
  
--  Wenn Ihre aktuelle Version älter als 1.1.750.0 ist, [laden Sie es herunter, und führen Sie ein Upgrade auf die neueste Version durch](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+-  Wenn Ihre aktuelle Version älter als 1.1.750.0 ist, [laden Sie es herunter, und führen Sie ein Upgrade auf die neueste Version durch](https://www.microsoft.com/download/details.aspx?id=47594).
 - Wenn Ihre Azure AD Connect-Version 1.1.750.0 oder höher ist, sind keine weiteren Aktionen erforderlich. Sie verwenden bereits die Version, die die Korrektur des automatischen Upgrades enthält. 
 
 **F: In einer E-Mail wurde mir mitgeteilt, dass ein Upgrade auf die neueste Version erforderlich ist, um das automatische Upgrade erneut zu aktivieren. Ich verwende Version 1.1.654.0. Muss ich das Upgrade durchführen?**  
-Ja, Sie müssen ein Upgrade auf Version 1.1.750.0 oder eine neuere Version durchführen, um das automatische Upgrade erneut zu aktivieren. [Laden Sie das Upgrade auf die neueste Version herunter, und führen Sie es aus](https://www.microsoft.com/en-us/download/details.aspx?id=47594).
+Ja, Sie müssen ein Upgrade auf Version 1.1.750.0 oder eine neuere Version durchführen, um das automatische Upgrade erneut zu aktivieren. [Laden Sie das Upgrade auf die neueste Version herunter, und führen Sie es aus](https://www.microsoft.com/download/details.aspx?id=47594).
 
 **F: In einer E-Mail wurde mir mitgeteilt, dass ein Upgrade auf die neueste Version erforderlich ist, um das automatische Upgrade erneut zu aktivieren. Muss ich die neueste Version auch dann installieren, wenn ich das automatische Upgrade mithilfe von PowerShell aktiviert habe?**  
 Ja, Sie müssen ein Upgrade auf Version 1.1.750.0 oder eine neuere Version durchführen. Durch die Aktivierung des Diensts für das automatische Upgrade mithilfe von PowerShell wird das in Versionen vor 1.1.750.0 gefundene Problem des automatischen Upgrades nicht behoben.
@@ -190,7 +190,7 @@ Wenn Sie Hilfe bei der Durchführung eines Upgrades auf eine neuere Version von 
 ## <a name="troubleshooting"></a>Problembehandlung
 **F: Wie erhalte ich Hilfe zu Azure AD Connect?**
 
-[Durchsuchen der Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[Durchsuchen der Microsoft Knowledge Base (KB)](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
 
 * Suchen Sie in der Knowledge Base nach technischen Lösungen für häufige Probleme im Zusammenhang mit der Unterstützung von Azure AD Connect.
 

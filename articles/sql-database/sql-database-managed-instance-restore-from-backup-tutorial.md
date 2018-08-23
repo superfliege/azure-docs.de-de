@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 1d8db471a3f8ebf9dbcce77b101a2688f2570fd6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 5dd8b1f662f1ae6d6502743c6d976db4b58e962f
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949883"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920546"
 ---
 # <a name="restore-a-database-backup-to-an-azure-sql-database-managed-instance"></a>Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -29,7 +29,7 @@ In diesem Tutorial erfahren Sie anhand der Sicherungsdatei „Wide World Importe
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Dieses Tutorial basiert auf den Ressourcen, die im Tutorial [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal](sql-database-managed-instance-create-tutorial-portal.md) erstellt werden.
+Dieses Tutorial basiert auf den Ressourcen, die im Tutorial [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal](sql-database-managed-instance-get-started.md) erstellt werden.
 
 ## <a name="download-the-wide-world-importers---standard-backup-file"></a>Herunterladen der Sicherungsdatei „Wide World Importers – Standard“
 

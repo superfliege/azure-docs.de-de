@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f34bb9eaa04491dfbef8fac711690d1b19677d89
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9c9cde23f8f8dc557b99d2f1508c923aaa2dce91
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259596"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142751"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -79,7 +79,7 @@ Lesen Sie vor der Verwendung des Skripts unbedingt die Voraussetzungen und wicht
 
 ## <a name="license-considerations"></a>Hinweise zur Lizenz
 
-Stellen Sie sicher, dass Sie über die richtigen Clientzugriffslizenzen (Client Access License, CAL) für externe Gastbenutzer verfügen, die auf lokale Apps zugreifen. Weitere Informationen finden Sie im Abschnitt zu externen Connector-Lizenzen unter [Client Access-Lizenzen und Management-Lizenzen](https://www.microsoft.com/en-us/licensing/product-licensing/client-access-license.aspx). Wenden Sie sich bezüglich Ihrer spezifischen Lizenzierungsanforderungen an den für Sie zuständigen Microsoft-Kundendienstmitarbeiter oder Ihren Handelspartner vor Ort.
+Stellen Sie sicher, dass Sie über die richtigen Clientzugriffslizenzen (Client Access License, CAL) für externe Gastbenutzer verfügen, die auf lokale Apps zugreifen. Weitere Informationen finden Sie im Abschnitt zu externen Connector-Lizenzen unter [Client Access-Lizenzen und Management-Lizenzen](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx). Wenden Sie sich bezüglich Ihrer spezifischen Lizenzierungsanforderungen an den für Sie zuständigen Microsoft-Kundendienstmitarbeiter oder Ihren Handelspartner vor Ort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

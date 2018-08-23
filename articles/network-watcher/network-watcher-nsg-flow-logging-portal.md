@@ -18,11 +18,11 @@ ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
 ms.openlocfilehash: f010bebcf1130b3061c60987ffbd4e706a030773
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776549"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918478"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -37,7 +37,7 @@ Mithilfe einer Netzwerksicherheitsgruppe (NSG) können Sie eingehenden Datenverk
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-vm"></a>Erstellen eines virtuellen Computers
+## <a name="create-a-vm"></a>Erstellen einer VM
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
 2. Klicken Sie auf **Compute** und anschließend auf **Windows Server 2016 Datacenter** oder auf **Ubuntu Server 17.10 VM**.
@@ -45,9 +45,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     |Einstellung|Wert|
     |---|---|
-    |Name|myVm|
+    |NAME|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
     |Standort| Wählen Sie **USA, Osten** aus.|
@@ -69,7 +69,7 @@ Wenn Sie bereits über eine aktivierte Network Watcher-Instanz in der Region „
 
 3. Klicken Sie auf **Network Watcher aktivieren**.
 
-## <a name="register-insights-provider"></a>Registrieren des Insights-Anbieters
+## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 
 Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter erforderlich. Führen Sie zum Registrieren des Anbieters die folgenden Schritte aus:
 
@@ -88,7 +88,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 
     | Einstellung        | Wert                                                        |
     | ---            | ---   |
-    | Name           | Länge von 3 bis 24 Zeichen, darf nur Kleinbuchstaben und Ziffern enthalten und muss für alle Azure Storage-Konten eindeutig sein.                                                               |
+    | NAME           | Länge von 3 bis 24 Zeichen, darf nur Kleinbuchstaben und Ziffern enthalten und muss für alle Azure Storage-Konten eindeutig sein.                                                               |
     | Standort       | Wählen Sie **USA, Osten** aus.                                           |
     | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
 
@@ -108,12 +108,12 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 1. Wählen Sie in Network Watcher im Portal die Option **NSG-Flussprotokolle** unter **PROTOKOLLE** aus.
 2. Wählen Sie **Sie können Flowprotokolle aus konfigurierten Speicherkonten herunterladen** aus (siehe folgende Abbildung):
 
-  ![Herunterladen von Flussprotokollen](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+  ![Herunterladen von Flowprotokollen](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wählen Sie das in Schritt 2 unter [Aktivieren des NSG-Flussprotokolls](#enable-nsg-flow-log) konfigurierte Speicherkonto aus.
 4. Wählen Sie unter **BLOB-DIENST** die Option **Container** und dann den Container **insights-logs-networksecuritygroupflowevent** aus (siehe folgende Abbildung):
 
-    ![Auswählen des Containers](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
+    ![Container auswählen](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
 5. Navigieren Sie durch die Ordnerhierarchie, bis Sie zu einer Datei „PT1H.json“ gelangen (siehe folgende Abbildung):
 
     ![Protokolldatei](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
@@ -152,12 +152,12 @@ Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-A
 | ---          | ---                    | ---                                                                                      |
 | 1525186745   | Zeitstempel             | Der Zeitstempel für den Zeitpunkt, zu dem der Datenfluss auftrat, im UNIX EPOCHE-Format. Im vorherigen Beispiel wird das Datum in den 1. Mai 2018 um 14:59:05 Uhr GMT konvertiert.                                                                                    |
 | 192.168.1.4  | Quell-IP-Adresse      | Die Quell-IP-Adresse, von der der Datenfluss stammte.
-| 10.0.0.4     | Ziel-IP-Adresse | Die Ziel-IP-Adresse, für die der Datenfluss bestimmt war. 10.0.0.4 ist die private IP-Adresse des virtuellen Computers, den Sie unter [Erstellen eines virtuellen Computers](#create-a-vm) erstellt haben.                                                                                 |
+| 10.0.0.4     | IP-Zieladresse | Die Ziel-IP-Adresse, für die der Datenfluss bestimmt war. 10.0.0.4 ist die private IP-Adresse des virtuellen Computers, den Sie unter [Erstellen eines virtuellen Computers](#create-a-vm) erstellt haben.                                                                                 |
 | 55960        | Quellport            | Der Quellport, von dem der Datenfluss stammte.                                           |
 | 3389         | Zielport       | Der Zielport, für den der Datenfluss bestimmt war. Da der Datenverkehr für Port 3389 bestimmt war, wurde der Datenfluss anhand der Regel namens **UserRule_default-allow-rdp** in der Protokolldatei verarbeitet.                                                |
 | T            | Protokoll               | Gibt an, ob das Protokoll des Datenflusses TCP (T) oder UDP (U) war.                                  |
 | I            | Richtung              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
-| A            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.                                           |
+| Eine Datei            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.                                           |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

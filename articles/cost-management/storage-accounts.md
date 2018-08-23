@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: e37604e5cd36cfed016ef596060459011ec32d35
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297834"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142549"
 ---
 # <a name="configure-storage-accounts-for-cost-management"></a>Konfigurieren von Speicherkonten für Cost Management
 
@@ -27,7 +27,7 @@ Sie können Cost Management-Berichte im Cloudyn-Portal, in Azure-Speicher oder i
 
 Sie benötigen ein Azure-Speicherkonto oder ein Amazon-Speicherbucket.
 
-Wenn Sie kein Azure-Speicherkonto haben, müssen Sie eines erstellen. Weitere Informationen zum Erstellen eines Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+Wenn Sie kein Azure-Speicherkonto haben, müssen Sie eines erstellen. Weitere Informationen zum Erstellen eines Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md).
 
 Wenn Sie keinen AWS Simple Storage Service Bucket (S3-Bucket) haben, müssen Sie einen erstellen. Weitere Informationen zum Erstellen eines S3-Buckets finden Sie unter [Bucket erstellen](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 

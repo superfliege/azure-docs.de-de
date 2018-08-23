@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 91e435c60a342768093b3bc869a78fa61df8782f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5bd66e3cb3902665aab9245a524a2bec6f57dc8c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446563"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141353"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Erkennen und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -77,7 +77,7 @@ Wenn Diagnoseprotokolle und Warnungen für verbundene Geräte aktiviert sind, er
     | 404104 DeviceConnectionClosedRemotely | Die Verbindung wurde durch das Gerät geschlossen, aber IoT Hub kennt nicht die Ursache. Häufige Ursachen sind ein MQTT/AMQP-Timeout und eine Unterbrechung der Internetverbindung. | [Testen Sie die Verbindung](tutorial-connectivity.md), um zu überprüfen, ob das Gerät eine Verbindung mit IoT Hub herstellen kann. Wenn die Verbindung in Ordnung ist, die Geräteverbindung aber zeitweilig unterbrochen wird, stellen Sie sicher, dass Sie die Keep-Alive-Gerätelogik für das von Ihnen gewählte Protokoll (MQTT/AMPQ) korrekt implementieren. |
     | 401003 IoTHubUnauthorized | IoT Hub konnte die Verbindung nicht authentifizieren. | Stellen Sie sicher, dass die SAS oder andere verwendete Sicherheitstoken nicht abgelaufen sind. [Azure IoT SDKs](iot-hub-devguide-sdks.md) generieren Token automatisch, ohne dass eine spezielle Konfiguration erforderlich ist. |
     | 409002 LinkCreationConflict | Es gibt mehrere Verbindungen für ein einziges Gerät. Wenn eine neue Verbindungsanforderung für ein Gerät kommt, schließt IoT Hub die vorherige Verbindung mit dieser Fehlermeldung. | Im Allgemeinen erkennt ein Gerät das Trennen einer Verbindung und versucht, die Verbindung wiederherzustellen. IoT Hub hat die getrennte Verbindung jedoch noch nicht berücksichtigt, schließt daher die vorherige Verbindung und protokolliert diesen Fehler. Dieser Fehler tritt normalerweise als Nebenwirkung eines anderen vorübergehenden Problems auf. Suchen Sie also nach anderen Fehlern in den Protokollen, um eine Problembehandlung durchführen. Stellen Sie andernfalls nur dann eine neue Verbindungsanforderung, wenn die Verbindung unterbrochen wird. |
-    | 500001 ServerError | Bei IoT Hub ist ein serverseitiges Problem aufgetreten. In den meisten Fällen ist das Problem vorübergehend. Während das IoT Hub-Team daran arbeitet, [die SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/) zu verwalten, können kleine Teilmengen von IoT Hub-Knoten gelegentlich vorübergehende Fehler aufweisen. Wenn Ihr Gerät versucht, eine Verbindung zu einem Knoten herzustellen, der Probleme aufweist, erhalten Sie diese Fehlermeldung. | Um den vorübergehenden Fehler zu beheben, führen Sie einen erneuten Versuch vom Gerät aus. Um [Wiederholungsversuche automatisch zu verwalten](iot-hub-reliability-features-in-sdks.md#connection-and-retry), stellen Sie sicher, dass Sie die neueste Version des [Azure IoT SDKs](iot-hub-devguide-sdks.md) verwenden.<br><br>Die Best Practices für die Behandlung vorübergehender Fehler und Wiederholungsversuche finden Sie unter [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults.md).  <br><br>Wenn das Problem nach mehreren Versuchen weiterhin besteht, überprüfen Sie [Ressourcenintegrität](iot-hub-monitor-resource-health.md#use-azure-resource-health) und [Azure-Status](https://azure.microsoft.com/status/history/), um festzustellen, ob IoT Hub ein bekanntes Problem aufweist. Wenn keine bekannten Probleme vorliegen, und das Problem fortbesteht, [wenden Sie sich an den Support](https://azure.microsoft.com/support/options/), um weitere Unterstützung zu erhalten. |
+    | 500001 ServerError | Bei IoT Hub ist ein serverseitiges Problem aufgetreten. In den meisten Fällen ist das Problem vorübergehend. Während das IoT Hub-Team daran arbeitet, [die SLA](https://azure.microsoft.com/support/legal/sla/iot-hub/) zu verwalten, können kleine Teilmengen von IoT Hub-Knoten gelegentlich vorübergehende Fehler aufweisen. Wenn Ihr Gerät versucht, eine Verbindung zu einem Knoten herzustellen, der Probleme aufweist, erhalten Sie diese Fehlermeldung. | Um den vorübergehenden Fehler zu beheben, führen Sie einen erneuten Versuch vom Gerät aus. Um [Wiederholungsversuche automatisch zu verwalten](iot-hub-reliability-features-in-sdks.md#connection-and-retry), stellen Sie sicher, dass Sie die neueste Version des [Azure IoT SDKs](iot-hub-devguide-sdks.md) verwenden.<br><br>Die Best Practices für die Behandlung vorübergehender Fehler und Wiederholungsversuche finden Sie unter [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults).  <br><br>Wenn das Problem nach mehreren Versuchen weiterhin besteht, überprüfen Sie [Ressourcenintegrität](iot-hub-monitor-resource-health.md#use-azure-resource-health) und [Azure-Status](https://azure.microsoft.com/status/history/), um festzustellen, ob IoT Hub ein bekanntes Problem aufweist. Wenn keine bekannten Probleme vorliegen, und das Problem fortbesteht, [wenden Sie sich an den Support](https://azure.microsoft.com/support/options/), um weitere Unterstützung zu erhalten. |
     | 500008 GenericTimeout | IoT Hub konnte die Verbindungsanforderung nicht vor dem Timeout abschließen. Wie 500001 ServerError ist dieser Fehler wahrscheinlich vorübergehend. | Befolgen Sie die Schritte zur Fehlerbehandlung für 500001 ServerError, um die Grundursache zu ermitteln und diesen Fehler zu beheben.|
 
 ## <a name="other-steps-to-try"></a>Weitere Hilfestellungen
@@ -92,7 +92,7 @@ Um die Dokumentation allgemein zu verbessern, hinterlassen Sie unten einen Komme
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Beheben von vorübergehenden Problemen finden Sie unter [Behandlung vorübergehender Fehler](/azure/architecture/best-practices/transient-faults.md).
+* Weitere Informationen zum Beheben von vorübergehenden Problemen finden Sie unter [Behandlung vorübergehender Fehler](/azure/architecture/best-practices/transient-faults).
 * Mehr über das Azure IoT-SDK und den Umgang mit Wiederholungen erfahren Sie unter [Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs](iot-hub-reliability-features-in-sdks.md#connection-and-retry).
 
 <!-- Images -->

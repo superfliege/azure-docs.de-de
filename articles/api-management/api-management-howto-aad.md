@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 6c288e4492ac56436d40d1e3db98af8eb7b173c8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436317"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141368"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory in Azure API Management
 
@@ -63,7 +63,7 @@ Dieser Artikel zeigt, wie Sie den Zugriff auf das Entwicklerportal für Benutzer
     Auf der rechten Seite wird der Bereich **Erstellen** angezeigt. Dort geben Sie die relevanten Informationen zur Azure AD-App ein.
 1. Geben Sie einen Namen für die Anwendung ein.
 1. Wählen Sie **Web-App/API** als Anwendungstyp aus.
-1. Geben Sie als Anmelde-URL die Anmelde-URL Ihres Entwicklerportals ein. In diesem Beispiel ist die Anmelde-URL gleich https://apimwithaad.portal.azure-api.net/signin.
+1. Geben Sie als Anmelde-URL die Anmelde-URL Ihres Entwicklerportals ein. In diesem Beispiel ist die Anmelde-URL gleich `https://apimwithaad.portal.azure-api.net/signin`.
 1. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
 1. Um Ihre App zu finden, wählen Sie **App-Registrierungen** aus, und suchen Sie nach dem Namen.
 

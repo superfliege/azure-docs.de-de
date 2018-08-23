@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 599c016763fde6f1dc8221fffa554cf68e8c498f
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 43db9db3842d05fa13c3be92df14b905d2ddfc17
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790388"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141939"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Verwenden der Azure Resource Manager-Unterstützung mit Azure Load Balancer
 
@@ -61,7 +61,7 @@ Beispiele für Vorlagen:
 
 Erste Schritte mit Cmdlets, Befehlszeilentools und REST-APIs von Azure Resource Manager
 
-* [Azure Networking Cmdlets](https://msdn.microsoft.com/library/azure/mt163510.aspx) können verwendet werden, um einen Lastenausgleich zu erstellen.
+* [Azure Networking Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.network#networking) können verwendet werden, um einen Lastenausgleich zu erstellen.
 * [Erstellen eines Load Balancers mit dem Azure-Ressourcen-Manager](load-balancer-get-started-ilb-arm-ps.md)
 * [Verwenden der Azure-CLI mit der Azure-Ressourcenverwaltung](../xplat-cli-azure-resource-manager.md)
 * [Load Balancer REST APIs (in englischer Sprache)](https://msdn.microsoft.com/library/azure/mt163651.aspx)
