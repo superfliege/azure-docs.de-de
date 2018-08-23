@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: 63244a8f767f71d0f9be80aad09f06f14c4d3acf
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8d87312591f44bac5fd9a4ff63eccc19333a870c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503970"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140335"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Active Directory (AD) Domain Services für Azure Cloud Solution Provider (CSP)
 In diesem Artikel wird erläutert, wie Sie Azure AD Domain Services in einem Azure CSP-Abonnement verwenden können.
@@ -87,7 +87,7 @@ Die folgenden wichtigen Überlegungen gelten für die Verwaltung einer verwaltet
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Registrieren Sie sich für das Azure CSP-Programm](https://partnercenter.microsoft.com/partner/programs), und profitieren Sie von Azure CSP.
+* [Registrieren Sie sich für das Azure CSP-Programm](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program), und profitieren Sie von Azure CSP.
 * Prüfen Sie die Liste der [in Azure CSP verfügbaren Azure-Dienste](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
 * [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)

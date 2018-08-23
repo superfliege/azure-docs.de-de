@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: c6340133971a226002ce11ae1521bdc88e3e7975
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343287"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142873"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Verwalten von App-Kennwörtern für die zweistufige Überprüfung
 
@@ -38,7 +38,7 @@ Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 
 Während der anfänglichen Registrierung für die zweistufige Überprüfung wird Ihnen ein App-Kennwort zugewiesen. Wenn Sie mehr als ein Kennwort benötigen, können Sie weitere Kennwörter erstellen, je nachdem, wie Sie die zweistufige Überprüfung verwenden:
 
-- **Sie verwenden die zweistufige Überprüfung mit Ihrem Microsoft Azure-Konto.** Erstellen und löschen Sie Ihre App-Kennwörter über das [Azure-Portal](https://portal.azure.com). Weitere Informationen finden Sie im Artikel [App-Kennwörter und Überprüfung in zwei Schritten](https://support.microsoft.com/en-us/help/12409/microsoft-account-app-passwords-two-step-verification).
+- **Sie verwenden die zweistufige Überprüfung mit Ihrem Microsoft Azure-Konto.** Erstellen und löschen Sie Ihre App-Kennwörter über das [Azure-Portal](https://portal.azure.com). Weitere Informationen finden Sie im Artikel [App-Kennwörter und Überprüfung in zwei Schritten](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification).
 
 - **Sie verwenden die zweistufige Überprüfung für Ihr persönliches Microsoft-Konto.** Erstellen und löschen Sie Ihre App-Kennwörter über die Seite mit den [Sicherheitsgrundlagen](https://account.microsoft.com/account/) für Ihr Microsoft-Konto. Weitere Informationen finden Sie im Artikel [App-Kennwörter und Überprüfung in zwei Schritten](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification).
 

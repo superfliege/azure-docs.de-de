@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 252e4f9fe5ed6b4ff9997fc41c691636e6d002b3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: bb9e30489aa8870fe1c71c8c9a8bd557a2dcf2b1
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413537"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42142347"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
 ## <a name="overview"></a>Übersicht
@@ -645,7 +645,7 @@ Mit dem folgenden Code werden die VNN-Einstellungen ausgelesen und für Sie fest
 
 In einem späteren Migrationsschritt müssen Sie den AlwaysOn-Listener mit einer aktualisierten IP-Adresse aktualisieren, die auf einen Lastenausgleich verweist. Dabei müssen Sie eine IP-Adressressource entfernen und wieder hinzufügen. Nach der IP-Aktualisierung müssen Sie sicherstellen, dass die neue IP-Adresse in der DNS-Zone aktualisiert wurde und dass die Clients ihren lokalen DNS-Cache aktualisieren.
 
-Wenn sich die Clients in einem anderen Netzwerksegment befinden und auf einen anderen DNS-Server verweisen, müssen Sie bedenken, was mit der DNS-Zonenübertragung während der Migration geschieht, da die Zeit für die erneute Verbindung der Anwendung mindestens durch die Zonenübertragungszeit der neuen IP-Adressen des Listeners eingeschränkt wird. Wenn Sie bei diesem Schritt unter Zeitdruck stehen, sollten Sie in Erwägung ziehen, eine inkrementelle Zonenübertragung für Ihre Windows-Teams zu erzwingen. Weiterhin sollten Sie den DNS-Hosteintrag auf eine niedrigere TTL (Time To Live, Gültigkeitsdauer) einstellen, sodass die Clients eine Aktualisierung durchführen. Weitere Informationen finden Sie unter [Incremental Transfer](https://technet.microsoft.com/library/cc958973.aspx) (Inkrementelle Übertragung) und [Start-DnsServerZoneTransfer](https://technet.microsoft.com/library/jj649917.aspx).
+Wenn sich die Clients in einem anderen Netzwerksegment befinden und auf einen anderen DNS-Server verweisen, müssen Sie bedenken, was mit der DNS-Zonenübertragung während der Migration geschieht, da die Zeit für die erneute Verbindung der Anwendung mindestens durch die Zonenübertragungszeit der neuen IP-Adressen des Listeners eingeschränkt wird. Wenn Sie bei diesem Schritt unter Zeitdruck stehen, sollten Sie in Erwägung ziehen, eine inkrementelle Zonenübertragung für Ihre Windows-Teams zu erzwingen. Weiterhin sollten Sie den DNS-Hosteintrag auf eine niedrigere TTL (Time To Live, Gültigkeitsdauer) einstellen, sodass die Clients eine Aktualisierung durchführen. Weitere Informationen finden Sie unter [Incremental Transfer](https://technet.microsoft.com/library/cc958973.aspx) (Inkrementelle Übertragung) und [Start-DnsServerZoneTransfer](https://docs.microsoft.com/powershell/module/dnsserver/start-dnsserverzonetransfer).
 
 Standardmäßig ist die TTL für den DNS-Datensatz, der dem Listener in AlwaysOn in Azure zugeordnet ist, auf 1.200 Sekunden festgelegt. Diesen Wert sollten Sie möglicherweise reduzieren, wenn Sie sich bei der Migration unter Zeitdruck befinden, um sicherzustellen, dass die Clients ihr DNS mit der aktualisierten IP-Adresse für den Listener aktualisieren. Sie können die Konfiguration über eine Ausgabe der VNN-Konfiguration anzeigen und ändern:
 

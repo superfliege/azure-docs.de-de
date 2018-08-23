@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: a5b96279993c35aad4cc49c52950576f12dd15ce
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345942"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42139963"
 ---
 # <a name="what-is-the-access-panel"></a>Was ist der Zugriffsbereich?
 
@@ -79,7 +79,7 @@ Diese Erweiterung muss für kennwortbasiertes einmaliges Anmelden verwendet werd
 - Über die **Anmelde-URL** einer App können Sie sich direkt bei der App anmelden. Wenn Sie die URL der App verwenden, erkenn die Erweiterung die Aktion und ermöglicht die Anmeldung über die Erweiterung.
 - Mit der *Schnellsuche* der Erweiterung können Sie jede Ihrer Apps über den Zugriffsbereich starten. 
 - Im Bereich **Zuletzt verwendet** werden die drei zuletzt gestarteten Anwendungen angezeigt.
-- Beim Remotezugriff über den [Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-get-started) können Sie interne Unternehmens-URLs verwenden.
+- Beim Remotezugriff über den [Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started) können Sie interne Unternehmens-URLs verwenden.
 
 > [!NOTE]
 > Zusätzliche Features sind nur für Microsoft Edge, Chrome und Firefox verfügbar.
@@ -97,8 +97,8 @@ Falls sich Ihre Meine Apps-URL von `https://myapps.microsoft.com` unterscheidet,
 5. Klicken Sie auf **Melden Sie sich an, um loszulegen**.
 
 Um interne Unternehmens-URLs per Remotezugriff auf die Erweiterung zu verwenden, gehen Sie wie folgt vor:
-1. [Konfigurieren Sie den Anwendungsproxy](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-enable) für Ihren Mandanten.
-2. [Veröffentlichen Sie die Anwendung](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) und die URL über den Anwendungsproxy.
+1. [Konfigurieren Sie den Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable) für Ihren Mandanten.
+2. [Veröffentlichen Sie die Anwendung](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) und die URL über den Anwendungsproxy.
 3. Installieren Sie die Erweiterung, und melden Sie sich bei ihr an, indem Sie „Melden Sie sich an, um loszulegen“ auswählen.
 4. Nun können Sie selbst per Remotezugriff zu der internen Unternehmens-URL browsen.
 

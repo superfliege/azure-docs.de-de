@@ -1,24 +1,24 @@
 ---
 title: Zoomfaktoren und Kachelraster in Azure Maps | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Zoomfaktoren und Kachelraster in Azure Maps.
-author: jinzh-azureiot
+author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 55441cda7a6fc65ac8103d19510823a7c84a9cbf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c6d38dbb7ee292172fe081c2b77a49db61856d5c
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599924"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42142351"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomfaktoren und Linienraster
 Azure Maps verwendet das Koordinatensystem der sphärischen Mercator-Projektion (EPSG: 3857).
 
-Die ganzen Welt wird dabei in quadratische Kacheln unterteilt. Das Rendering (Raster) umfasst 19 Zoomfaktoren, die von 0 bis 18 nummeriert sind. Das Rendering (Vektor) umfasst 21 Zoomfaktoren, die von 0 bis 20 nummeriert sind. Die ganze Welt würde bei Zoomfaktor 0 auf einer einzigen Kachel passen:
+Die ganzen Welt wird dabei in quadratische Kacheln unterteilt. Rendering (Raster) umfasst 21 Zoomfaktoren, die von 0 bis 20 nummeriert sind. Rendering (Vektor) umfasst 23 Zoomfaktoren, die von 0 bis 22 nummeriert sind. Die ganze Welt würde bei Zoomfaktor 0 auf einer einzigen Kachel passen:
 
 ![Weltkachel](./media/zoom-levels-and-tile-grid/world0.png)
 
@@ -29,7 +29,7 @@ Der Zoomfaktor 1 verwendet vier Kacheln zum Rendering der Welt: ein Quadrat aus 
 ![Weltkachel unten links](./media/zoom-levels-and-tile-grid/world1b.png)     ![Weltkachel unten rechts](./media/zoom-levels-and-tile-grid/world1d.png) 
 
 
-Jedes nachfolgende Zoomfaktorquadrat unterteilt die Kacheln des vorherigen Zoomfaktors, wodurch ein Raster mit 2<sup>Zoom</sup> x 2<sup>Zoom</sup> entsteht. Zoomfaktor 20 ist ein Raster aus 2<sup>20</sup> x 2<sup>20</sup> oder 1.048.576 x 1.048.576 Kacheln (insgesamt 109.951.162.778 Kacheln).
+Jedes nachfolgende Zoomfaktorquadrat unterteilt die Kacheln des vorherigen Zoomfaktors, wodurch ein Raster mit 2<sup>Zoom</sup> x 2<sup>Zoom</sup> entsteht. Zoomfaktor 22 ist ein Raster aus 2<sup>22</sup> x 2<sup>22</sup> oder 4.194.304 x 4.194.304 Kacheln (insgesamt 17.592.186.044.416 Kacheln).
 
 Die folgende Tabelle enthält die vollständigen Listenwerte für die Zoomfaktoren:
 
@@ -56,6 +56,8 @@ Die folgende Tabelle enthält die vollständigen Listenwerte für die Zoomfaktor
 |18|0,6|152,8|
 |19|0,3|76,4|
 |20|0,15|38,2|
+|21|0,075|19,1|
+|22|0,0375|9,55|
 
 Kacheln werden durch den Zoomfaktor und die x- und y-Koordinaten entsprechend der Kachelposition im Raster für diesen Zoomfaktor angegeben.
 

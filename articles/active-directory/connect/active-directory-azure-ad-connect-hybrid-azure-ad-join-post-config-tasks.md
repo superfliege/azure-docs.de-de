@@ -4,7 +4,7 @@ description: Dieses Dokument enthält ausführliche Informationen zu den Aufgabe
 services: active-directory
 documentationcenter: ''
 author: billmath
-manager: samueld
+manager: mtillman
 editor: billmath
 ms.assetid: ''
 ms.service: active-directory
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 08/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9949275b18206ca66f38bab036337a00fdde6ee5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 05cb6d10a7e4269cbe5f9c97ef70cd9eb5a4d68e
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916546"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42141187"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Aufgaben nach der Konfiguration für die Hybrid-Azure AD-Einbindung
 
@@ -62,7 +62,7 @@ Wenn Ihre Organisation einen Verbunddienst verwendet, um sich an Azure AD anzume
 
 ## <a name="6-enable-azure-ad-seamless-sso-for-windows-down-level-devices"></a>6. Aktivieren des nahtlosen einmaligen Anmeldens mit Azure AD für kompatible Windows-Geräte
 
-Wenn Sie in Ihrer Organisation die Kennworthashsynchronisierung oder die Passthrough-Authentifizierung nutzen, um sich an Azure AD anzumelden, können Sie das nahtlose einmalige Anmelden mit Azure AD mit diesem Anmeldeverfahren aktivieren, um kompatible Windows-Geräte zu authentifizieren: https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-sso. 
+Wenn Sie in Ihrer Organisation die Kennworthashsynchronisierung oder die Passthrough-Authentifizierung nutzen, um sich an Azure AD anzumelden, können Sie das nahtlose einmalige Anmelden mit Azure AD mit diesem Anmeldeverfahren aktivieren, um kompatible Windows-Geräte zu authentifizieren: https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso. 
 
 ## <a name="7-set-azure-ad-policy-for-windows-down-level-devices"></a>7. Festlegen der Azure AD-Richtlinie für kompatible Windows-Geräte
 
@@ -81,7 +81,7 @@ Aktivieren Sie bei Verwendung des [nahtlosen einmaligen Anmeldens](https://aka.m
 
 ## <a name="9-install-microsoft-workplace-join-on-windows-down-level-devices"></a>9. Installieren von Microsoft Workplace Join auf kompatiblen Windows-Geräten
 
-Dieses Installationsprogramm erstellt einen geplanten Task auf dem Gerätesystem, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung per integrierter Windows-Authentifizierung bindet der Task das Gerät unter Verwendung der Anmeldeinformationen des Benutzers automatisch in Azure AD ein. Das Download Center befindet sich unter https://www.microsoft.com/en-us/download/details.aspx?id=53554. 
+Dieses Installationsprogramm erstellt einen geplanten Task auf dem Gerätesystem, der im Kontext des Benutzers ausgeführt wird. Der Task wird ausgelöst, wenn sich der Benutzer bei Windows anmeldet. Nach der Authentifizierung per integrierter Windows-Authentifizierung bindet der Task das Gerät unter Verwendung der Anmeldeinformationen des Benutzers automatisch in Azure AD ein. Das Download Center befindet sich unter https://www.microsoft.com/download/details.aspx?id=53554. 
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. Konfigurieren der Gruppenrichtlinie, um die Geräteregistrierung zuzulassen
 

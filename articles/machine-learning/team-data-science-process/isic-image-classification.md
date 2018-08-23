@@ -3,8 +3,8 @@ title: Bildklassifizierung mit dem Azure Machine Learning-Paket für maschinelle
 description: Erfahren Sie mehr über die Verwendung des Team Data Science-Prozesses (TDSP) und dem Azure Machine Learning-Paket für maschinelles Sehen zur Bildklassifizierung.
 services: machine-learning, team-data-science-process
 documentationcenter: ''
-author: xibingao
-manager: deguhath
+author: deguhath
+ms.author: deguhath
 editor: cgronlun
 ms.assetid: b8fbef77-3e80-4911-8e84-23dbf42c9bee
 ms.service: machine-learning
@@ -14,13 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2018
-ms.author: xibingao
-ms.openlocfilehash: f9e88cfb7185845e96f287b39bebaaa24320f537
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 427ea1f3f22855b2c54beacbfb89a8f7fd37cce0
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300795"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246485"
 ---
 # <a name="skin-cancer-image-classification-with-the-azure-machine-learning-package-for-computer-vision-and-team-data-science-process"></a>Bildklassifizierung bei Hautkrebs mit dem Azure Machine Learning-Paket für maschinelles Sehen und dem Team Data Science-Prozess
 
@@ -79,6 +78,6 @@ Dieser Schritt operationalisiert das Modell, das im Modellierungsschritt erzeugt
 ## <a name="references"></a>Referenzen
 
 * [Azure Machine Learning-Paket für maschinelles Sehen](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest)
-* [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation)
+* [Azure Machine Learning Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-installation):
 * [Data Science Virtual Machine](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)
 

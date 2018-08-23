@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 08/20/2018
 ms.author: juliako
-ms.openlocfilehash: 2d3219f6f2617fec941e308febb2e47efa184170
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9e8dc926fd796e82ea531aba6cb3a682649dff41
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943228"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246465"
 ---
 # <a name="overview-of-live-streaming-using-azure-media-services"></a>Übersicht über Livestreaming mit Azure Media Services
 
@@ -67,17 +67,16 @@ Die folgende Tabelle enthält eine Anleitung für den Vergleich der beiden von M
 
 | Feature | Pass-Through-Kanal | Standardkanal |
 | --- | --- | --- |
-| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |Ja |
+| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |JA |
 | Maximale Auflösung, Anzahl der Ebenen |1080p, 8 Ebenen, 60 fps oder mehr |720p, 6 Ebenen, 30 fps |
 | Eingabeprotokolle |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Preis |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximale Laufzeit |Rund um die Uhr |8 Stunden |
-| Unterstützung für das Einfügen von Slates |Nein  |Ja |
-| Unterstützung für Werbeeinblendungen |Nein  |Ja |
-| Pass-Through-CEA-608/708-Untertitel |Ja |Ja |
-| Möglichkeit zum Wiederherstellen nach kurzen Unterbrechungen im Beitrag |Ja |Nein (Kanal beginnt Slating nach 6 Sekunden ohne Dateneingabe) |
-| Unterstützung für nicht einheitliche Eingabe-GOPs |Ja |Nein, Eingabe muss aus festen 2-Sekunden-GOPs bestehen |
-| Unterstützung für Eingaben mit variable Bildwiederholrate |Ja |Nein, Eingabe muss eine feste Bildfrequenz aufweisen.<br/>Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen. |
+| Unterstützung für das Einfügen von Slates |Nein  |JA |
+| Unterstützung für Werbeeinblendungen |Nein  |JA |
+| Pass-Through-CEA-608/708-Untertitel |JA |JA |
+| Unterstützung für nicht einheitliche Eingabe-GOPs |JA |Nein, Eingabe muss aus festen 2-Sekunden-GOPs bestehen |
+| Unterstützung für Eingaben mit variable Bildwiederholrate |JA |Nein, Eingabe muss eine feste Bildfrequenz aufweisen.<br/>Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen. |
 | Automatische Abschaltung der Kanäle, wenn der Eingabefeed verloren geht |Nein  |Nach 12 Stunden, wenn kein Programm ausgeführt wird |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)

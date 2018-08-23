@@ -10,12 +10,12 @@ ms.component: design
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 5ceb8cfd8efea66dbf17b8c522316b9a010e437d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 33e4a405547fcdd797ddfdf6aba6c6c1c126b742
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799446"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42141064"
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse
 
@@ -101,7 +101,7 @@ So formatieren Sie die Textdateien
 ## <a name="load-to-a-staging-table"></a>Laden in eine Stagingtabelle
 Um Daten in das Data Warehouse zu übertragen, ist es hilfreich, die Daten zunächst in eine Stagingtabelle zu laden. Durch die Verwendung einer Stagingtabelle können Sie Fehler behandeln, ohne die Produktionstabellen zu stören. Zudem vermeiden Sie Rollbackvorgänge für die Produktionstabelle. Eine Stagingtabelle bietet Ihnen außerdem die Möglichkeit, Transformationen mit SQL Data Warehouse auszuführen, bevor Daten in Produktionstabellen eingefügt werden.
 
-Führen Sie die T-SQL-Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) aus, um mit T-SQL zu laden. Dieser Befehl fügt die Ergebnisse einer SELECT-Anweisung in eine neue Tabelle ein. Wenn die Auswahl über eine externe Tabelle erfolgt, werden die externen Daten importiert. 
+Führen Sie die T-SQL-Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) aus, um mit T-SQL zu laden. Dieser Befehl fügt die Ergebnisse einer SELECT-Anweisung in eine neue Tabelle ein. Wenn die Auswahl über eine externe Tabelle erfolgt, werden die externen Daten importiert. 
 
 Im folgenden Beispiel ist „ext.Date“ eine externe Tabelle. Alle Zeilen werden in eine neue Tabelle namens „dbo.Date“ importiert.
 

@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 07/20/2018
+ms.date: 08/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9ed918a7402abcbe79e302421f3b2ac725857464
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d18a6718e4c29f3d04639644dc752b0733f15ba8
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188650"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140329"
 ---
 # <a name="azure-event-grid-event-schema-for-container-registry"></a>Azure Event Grid-Ereignisschema für Container Registry
 
@@ -117,8 +117,6 @@ Das Datenobjekt weist die folgenden Eigenschaften auf:
 | action | Zeichenfolge | Die Aktion, die das angegebene Ereignis umfasst. |
 | Ziel | object | Das Ziel des Ereignisses. |
 | request | object | Die Anforderung, die das Ereignis generiert hat. |
-| actor | object | Der Agent, der das Ereignis initiiert hat. In den meisten Fällen kann dieser Wert aus dem Autorisierungskontext der Anforderung stammen. |
-| Quelle | object | Der Registrierungsknoten, der das Ereignis generiert hat. Anders ausgedrückt: Während der Actor das Ereignis initiiert, generiert die Quelle dieses. |
 
 Das Zielobjekt weist die folgenden Eigenschaften auf:
 
@@ -129,7 +127,6 @@ Das Zielobjekt weist die folgenden Eigenschaften auf:
 | digest | Zeichenfolge | Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2). |
 | length | integer | Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Size“ (Größe). |
 | repository | Zeichenfolge | Der Name des Repositorys. |
-| URL | Zeichenfolge | Die direkte URL zum Inhalt. |
 | tag | Zeichenfolge | Der Tagname. |
 
 Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
@@ -141,19 +138,6 @@ Das Anforderungsobjekt weist die folgenden Eigenschaften auf:
 | host | Zeichenfolge | Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist. |
 | method | Zeichenfolge | Die Anforderungsmethode, die das Ereignis generiert hat. |
 | useragent | Zeichenfolge | Der Benutzer-Agent-Header der Anforderung. |
-
-Das Actorobjekt weist die folgenden Eigenschaften auf:
-
-| Eigenschaft | Typ | BESCHREIBUNG |
-| -------- | ---- | ----------- |
-| name | Zeichenfolge | Der dem Anforderungskontext zugeordnete Antragsteller oder Benutzername, der das Ereignis generiert hat. |
-
-Das Quellobjekt weist die folgenden Eigenschaften auf:
-
-| Eigenschaft | Typ | BESCHREIBUNG |
-| -------- | ---- | ----------- |
-| addr | Zeichenfolge | Die IP-Adresse oder der Hostname und der Port des Registrierungsknotens, der das Ereignis generiert hat. Dieser Wert wird in der Regel von „os.Hostname()“ zusammen mit dem ausgeführten Port aufgelöst. |
-| instanceID | Zeichenfolge | Die ausgeführte Instanz einer Anwendung. Diese ändert sich nach jedem Neustart. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

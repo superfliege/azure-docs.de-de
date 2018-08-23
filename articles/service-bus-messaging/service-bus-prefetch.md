@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a61b7b08d883c1b5a7fde93c249fc8de1473d15d
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28928160"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140752"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Vorabruf von Azure Service Bus-Nachrichten
 
@@ -40,9 +40,9 @@ Der Vorabruf funktioniert auch auf gleiche Weise mit den APIs [OnMessage](/dotne
 
 Der Vorabruf beschleunigt den Nachrichtenfluss, indem eine Nachricht zum lokalen Abruf bereitgehalten wird, wenn (und bevor) die Anwendung sie anfragt. Diese Durchsatzbeschleunigung ist das Ergebnis eines Kompromisses, die der Anwendungsautor explizit treffen muss:
 
-Im Empfangsmodus [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) sind alle Nachrichten, die in den Vorabrufpuffer eingelesen werden, nicht mehr in der Warteschlange verfügbar. Sie befinden sich nur noch im speicherinternen Vorabrufpuffer, bis sie über die APIs **Receive**/**ReceiveAsync** or **OnMessage**/**OnMessageAsync** in der Anwendung empfangen werden. Wenn die Anwendung vor dem Eingang der Nachrichten in der Anwendung beendet wird, gehen diese Nachrichten unwiederbringlich verloren.
+Im Empfangsmodus [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) sind alle Nachrichten, die in den Vorabrufpuffer eingelesen werden, nicht mehr in der Warteschlange verfügbar. Sie befinden sich nur noch im speicherinternen Vorabrufpuffer, bis sie über die APIs **Receive**/**ReceiveAsync** or **OnMessage**/**OnMessageAsync** in der Anwendung empfangen werden. Wenn die Anwendung vor dem Eingang der Nachrichten in der Anwendung beendet wird, gehen diese Nachrichten unwiederbringlich verloren.
 
-Im Empfangsmodus [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode.peeklock) werden Nachrichten, die in den Vorabrufpuffer abgerufen wurden, im gesperrten Zustand im Puffer erfasst, und für sie wird das Zeitlimit für die Sperre aktiviert. Wenn der Vorabrufpuffer groß ist und die Verarbeitung so lange dauert, dass Sperren für Nachrichten ablaufen, während sie sich im Vorabrufpuffer befinden oder sogar während die Anwendung die Nachricht verarbeitet, kann es einige verwirrende Ereignisse geben, die von der Anwendung behandelt werden müssen.
+Im Empfangsmodus [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) werden Nachrichten, die in den Vorabrufpuffer abgerufen wurden, im gesperrten Zustand im Puffer erfasst, und für sie wird das Zeitlimit für die Sperre aktiviert. Wenn der Vorabrufpuffer groß ist und die Verarbeitung so lange dauert, dass Sperren für Nachrichten ablaufen, während sie sich im Vorabrufpuffer befinden oder sogar während die Anwendung die Nachricht verarbeitet, kann es einige verwirrende Ereignisse geben, die von der Anwendung behandelt werden müssen.
 
 Die Anwendung kann eine Nachricht mit einer abgelaufenen oder in Kürze ablaufenden Sperre empfangen. Wenn dies der Fall ist, kann die Anwendung die Nachricht möglicherweise verarbeiten, diesen Vorgang aber aufgrund des Ablaufs einer Sperre nicht abschließen kann. Das Programm kann die [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc)-Eigenschaft überprüfen (die der Taktverschiebung zwischen dem Broker und der Uhr des lokalen Computers unterliegt). Wenn die Nachrichtensperre abgelaufen ist, muss die Anwendung die Nachricht ignorieren. Es sollte kein API-Aufruf für oder mit der Nachricht erfolgen. Wenn die Nachricht noch nicht abgelaufen ist, der Ablauf aber bevorsteht, kann die Sperre erneuert und durch Aufruf von [message.RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) um eine weitere Standardsperrdauer verlängert werden.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 243f0b8206166e3e054dfc423259bd3444d8a2db
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31589831"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140957"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
@@ -78,7 +78,7 @@ Ja, Sie können API Management unter Verwendung der folgenden Komponenten progra
 
 * [API Management-REST-API](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 * [Microsoft Azure ApiManagement Service Management Library SDK](http://aka.ms/apimsdk)
-* PowerShell-Cmdlets für [Dienstbereitstellung](https://msdn.microsoft.com/library/mt619282.aspx) und [Dienstverwaltung](https://msdn.microsoft.com/library/mt613507.aspx)
+* PowerShell-Cmdlets für [Dienstbereitstellung](https://docs.microsoft.com/powershell/module/wds) und [Dienstverwaltung](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Wie füge ich Benutzer zur Gruppe „Administratoren“ hinzu?
 So fügen Sie Benutzer zur Gruppe „Administratoren“ hinzu:
@@ -87,7 +87,7 @@ So fügen Sie Benutzer zur Gruppe „Administratoren“ hinzu:
 2. Wechseln Sie zur Ressourcengruppe mit der API Management-Instanz, die Sie aktualisieren möchten.
 3. Weisen Sie in API Management dem Benutzer die Rolle **Api Management Contributor** (Mitwirkender für API Management) hinzu.
 
-Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](https://msdn.microsoft.com/library/mt613507.aspx) verwenden. So melden Sie sich als Administrator an:
+Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](https://docs.microsoft.com/powershell/azure/overview) verwenden. So melden Sie sich als Administrator an:
 
 1. Verwenden Sie das `Connect-AzureRmAccount`-Cmdlet, um sich anzumelden.
 2. Legen Sie den Kontext auf das Abonnement fest, das den Dienst enthält. Verwenden Sie hierfür `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.

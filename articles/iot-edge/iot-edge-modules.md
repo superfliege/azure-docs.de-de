@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 261c26290a4a7c4b8bb22ada7f97470a6efa7a91
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576320"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140718"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Grundlegendes zu Azure IoT Edge-Modulen
 
@@ -33,7 +33,11 @@ Jedes Mal, wenn ein Modulimage auf einem Gerät bereitgestellt und von der IoT E
 
 ![Modulimages in der Cloud – Modulinstanzen auf Geräten][1]
 
-Bei der Implementierung liegen Modulimages als Containerimages in einem Repository vor, und Modulinstanzen sind Container auf Geräten. Während die Anzahl der Anwendungsfälle für Azure IoT Edge wächst, werden neue Typen von Modulimages und -instanzen erstellt. Beispielsweise können auf Geräten mit eingeschränkten Ressourcen keine Container ausgeführt werden. Daher sind möglicherweise Modulimages erforderlich, die als Dynamic Link Librarys und Instanzen in Form von ausführbaren Dateien vorliegen. 
+Bei der Implementierung liegen Modulimages als Containerimages in einem Repository vor, und Modulinstanzen sind Container auf Geräten. 
+
+<!--
+As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
+-->
 
 ## <a name="module-identities"></a>Modulidentitäten
 

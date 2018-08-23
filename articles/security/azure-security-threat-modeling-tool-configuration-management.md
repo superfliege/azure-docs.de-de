@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5b9ef9691d3d9b9aaced3ad2aaa54e6cfc03fa14
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 254c68c45a06022588ade6ab6f005989205ff405
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857445"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140130"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -606,7 +606,7 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com) |
 | **Schritte** | <p>Wird die Verwendung der Systemressourcen nicht begrenzt, gehen die Ressourcen unter Umständen zur Neige, was letztendlich zu einem Denial-of-Service-Zustand führt.</p><ul><li>**ERLÄUTERUNG:** Windows Communication Foundation (WCF) ermöglicht die Drosselung von Dienstanforderungen. Wenn zu viele Clientanforderungen zugelassen werden, ist das System möglicherweise zu stark ausgelastet, und die Ressourcen gehen zur Neige. Wird dagegen nur eine geringe Anzahl von Dienstanforderungen zugelassen, können berechtigte Benutzer den Dienst unter Umständen nicht verwenden. Jeder Dienst muss einzeln optimiert und so konfiguriert werden, dass eine angemessene Ressourcenmenge zugelassen wird.</li><li>**EMPFEHLUNGEN:** Aktivieren Sie das Diensteinschränkungsfeature von WCF, und legen Sie geeignete Grenzwerte für Ihre Anwendung fest.</li></ul>|
 
 ### <a name="example"></a>Beispiel
@@ -629,7 +629,7 @@ Das folgende Beispiel zeigt eine Konfiguration mit aktivierter Drosselung:
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | .NET Framework 3 |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Referenzen**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Kingdom](https://vulncat.fortify.com) |
 | **Schritte** | Anhand von Metadaten kann ein Angreifer Informationen zum System erlangen und einen Angriff planen. WCF-Dienste können so konfiguriert werden, dass sie Metadaten verfügbar machen. Metadaten liefern eine ausführliche Dienstbeschreibung und dürfen in Produktionsumgebungen nicht weitergegeben werden. Die Eigenschaften `HttpGetEnabled` / `HttpsGetEnabled` der ServiceMetaData-Klasse definieren, ob ein Dienst Metadaten verfügbar macht. | 
 
 ### <a name="example"></a>Beispiel

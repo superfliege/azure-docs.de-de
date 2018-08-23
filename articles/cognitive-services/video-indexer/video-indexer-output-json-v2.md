@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: juliako
-ms.openlocfilehash: 9a926eb274e5e4cec721864d1d9c5faee8ec58ef
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618331"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40187372"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
 
@@ -25,7 +25,7 @@ Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und d
 
 Sie können die zusammengefassten Erkenntnisse des Videos auch visuell untersuchen, indem Sie im Video Indexer-Portal die Schaltfläche für die **Wiedergabe** drücken. Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
 
-![Erkenntnisse](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+![Einblicke](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
 In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen des Videoindex (**Get Video Index**) zurückgegeben wird. 
 
@@ -35,12 +35,12 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 
 ## <a name="root-elements"></a>Stammelemente
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID der Wiedergabeliste.|
 |id|Die ID der Wiedergabeliste.|
 |name|Der Name der Wiedergabeliste.|
-|description|Die Beschreibung der Wiedergabeliste.|
+|Beschreibung|Die Beschreibung der Wiedergabeliste.|
 |userName|Der Name des Benutzers, der die Wiedergabeliste erstellt hat.|
 |created|Die Erstellungszeit der Wiedergabeliste.|
 |privacyMode|Der Datenschutzmodus der Wiedergabeliste (privat/öffentlich).|
@@ -75,7 +75,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 
 In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 
-|Attribut | Beschreibung|
+|Attribut | BESCHREIBUNG|
 |---|---|
 |name|Der Name des Videos. Beispiel: Azure Monitor.|
 |shortId|Die ID des Videos. Beispiel: 63c6d532ff.|
@@ -87,13 +87,13 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
 |audioEffects| Kann null oder mehr Audioeffekte (audioEffects) enthalten. Ausführlichere Informationen finden Sie unter [audioEffects](#audioeffects).|
-|labels| Kann null oder mehr Bezeichnungen enthalten. Weitere Informationen finden Sie unter [labels](#labels).|
+|Bezeichnungen| Kann null oder mehr Bezeichnungen enthalten. Weitere Informationen finden Sie unter [labels](#labels).|
 |brands| Kann null oder mehr Marken enthalten. Ausführlichere Informationen finden Sie unter [brands](#brands).|
 |statistics | Ausführlichere Informationen finden Sie unter [statistics](#statistics).|
 
 ## <a name="videos"></a>videos
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |accountId|Die VI-Konto-ID des Videos.|
 |id|Die ID des Videos.|
@@ -112,7 +112,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |publishedUrlProxy|Eine URL, über die das Video gestreamt werden kann (für Apple-Geräte).|
 |viewToken|Ein kurzlebiges Anzeigetoken für das Streamen des Videos.|
 |sourceLanguage|Die Quellsprache des Videos.|
-|language|Die tatsächliche Sprache des Videos (Übersetzung).|
+|Language|Die tatsächliche Sprache des Videos (Übersetzung).|
 |indexingPreset|Die Voreinstellung, die zum Indizieren des Videos verwendet wird.|
 |streamingPreset|Die Voreinstellung, die zum Veröffentlichen des Videos verwendet wird.|
 |linguisticModelId|Das CRIS-Modell, das zum Transkribieren des Videos verwendet wird.|
@@ -152,13 +152,13 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |Version|Codeversion|
 |---|---|
 |sourceLanguage|Die Quellsprache des Videos (Annahme: eine Hauptsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
-|language|Die Sprache der Erkenntnisse (Übersetzung aus der Quellsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
-|transcript|Die Dimension [transcript](#transcript).|
+|Language|Die Sprache der Erkenntnisse (Übersetzung aus der Quellsprache). Diese Angabe hat die Form einer [BCP-47](https://tools.ietf.org/html/bcp47)-Zeichenfolge.|
+|Transkript|Die Dimension [transcript](#transcript).|
 |ocr|Die Dimension [ocr](#ocr).|
 |keywords|Die Dimension [keywords](#keywords).|
 |blocks|Kann einen oder mehrere Blöcke ([blocks](#blocks)) enthalten.|
 |faces|Die Dimension [faces](#faces).|
-|labels|Die Dimension [labels](#labels).|
+|Bezeichnungen|Die Dimension [labels](#labels).|
 |shots|Die Dimension [shots](#shots).|
 |brands|Die Dimension [brands](#brands).|
 |audioEffects|Die Dimension [audioEffects](#audioEffects).|
@@ -189,12 +189,12 @@ Beispiel:
 
 #### <a name="blocks"></a>blocks
 
-Attribut | Beschreibung
+Attribut | BESCHREIBUNG
 ---|---
 id|Die ID des Blocks.|
 instances|Eine Liste mit Zeitbereichen dieses Blocks.|
 
-#### <a name="transcript"></a>transcript
+#### <a name="transcript"></a>Transkript
 
 |NAME|BESCHREIBUNG|
 |---|---|
@@ -330,7 +330,7 @@ Beispiel:
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
 |confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
-|description|Eine Beschreibung des Prominenten. |
+|Beschreibung|Eine Beschreibung des Prominenten. |
 |thumbnalId|Die ID der Miniaturansicht dieses Gesichts.|
 |knownPersonId|Bei einer bekannten Person die interne ID.|
 |referenceId|Bei einem Bing-Prominenten die Bing-ID.|
@@ -488,13 +488,13 @@ Beispiel:
 
 Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennung bzw. in den Video-OCR-Daten erkannt werden. Die visuelle Erkennung von Marken oder die Logoerkennung sind hierin nicht enthalten.
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |---|---|
 |id|Die Marken-ID.|
 |name|Der Name der Marke.|
 |referenceId | Das Suffix der Wikipedia-URL für die Marke. Beispielsweise ist „Target_Corporation“ das Suffix von [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Die Wikipedia-URL der Marke, falls vorhanden. Beispiel: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)
-|description|Die Beschreibung der Marke.|
+|Beschreibung|Die Beschreibung der Marke.|
 |tags|Eine Liste mit vordefinierten Tags, die dieser Marke zugeordnet wurden.|
 |confidence|Der Zuverlässigkeitswert der Video Indexer-Markenerkennung (0 - 1).|
 |instances|Eine Liste mit Zeitbereichen dieser Marke. Jede Instanz verfügt über ein brandType-Element, mit dem angegeben wird, ob diese Marke im Transkript oder in den OCR-Daten angezeigt wird.|
@@ -670,7 +670,7 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Video Indexer-API](https://videobreakdown.portal.azure-api.net/docs/services/582074fb0dc56116504aed75/operations/5857caeb0dc5610f9ce979e4)
+[Video Indexer-API](https://api-portal.videoindexer.ai)
 
 Informationen dazu, wie Sie Widgets in Ihre Anwendung einbetten, finden Sie unter [Embed Video Indexer widgets into your applications](video-indexer-embed-widgets.md) (Einbetten von Video Indexer-Widgets in Ihre Anwendungen). 
 
