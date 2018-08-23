@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: c4a755d0c13516ce3cb0177cea2ea17e4a3abcbb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8a9409c46cac8397bc449c586374729a4d864036
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390968"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41929734"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -47,15 +47,15 @@ Eine POST-URL für die Benachrichtigung, wenn die Indizierung abgeschlossen ist.
 
 Sie können der URL auch weitere Parameter hinzufügen, bevor Sie den Aufruf per POST-Vorgang an Video Indexer senden. Diese Parameter werden in den Rückruf einbezogen. Später im Code können Sie die Abfragezeichenfolge analysieren und alle angegebenen Parameter in der Abfragezeichenfolge zurückerhalten (Daten, die Sie ursprünglich an die URL angefügt haben, sowie die von Video Indexer bereitgestellten Informationen). 
 
-### <a name="streamingpereset"></a>streamingPreset
+### <a name="streamingpreset"></a>streamingPreset
 
 Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden. Anschließend wird der Vorgang mit dem Indizieren und Analysieren des Videos fortgesetzt. Nachdem Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit der Video-ID.  
 
-Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)- oder [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie `streamingPreset` auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
+Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)- oder [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie  auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
 
 Zum Ausführen der Indizierung und Codierung von Aufträgen sind für das [Azure Media Services-Konto, das mit Ihrem Video Indexer-Konto verbunden ist](connect-to-azure.md), reservierte Einheiten (Reserved Units, RUs) erforderlich. Weitere Informationen finden Sie unter [Übersicht über das Skalieren der Medienverarbeitung](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Da es sich hierbei um rechenintensive Aufträge handelt, wird dringend die Verwendung des Einheitentyps S3 empfohlen. Die Anzahl von RUs definiert die maximale Anzahl von Aufträgen, die parallel ausgeführt werden können. Die Baseline-Empfehlung lautet: zehn RUs vom Typ S3. 
 
-Wenn Sie Ihr Video nicht codieren, sondern nur indizieren möchten, können Sie `streamingPreset` auf `NoStreaming` festlegen.
+Wenn Sie Ihr Video nicht codieren, sondern nur indizieren möchten, können Sie `streamingPreset`auf `NoStreaming` festlegen.
 
 ## <a name="code-sample"></a>Codebeispiel
 

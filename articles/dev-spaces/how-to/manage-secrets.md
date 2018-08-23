@@ -12,12 +12,12 @@ ms.technology: azds-kubernetes
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
 manager: douge
-ms.openlocfilehash: b77d862f578ddc374dbb58117b4ea58eb973e5fe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 352e43633ea1464eb7e28fa698d1ae77d5ac52bd
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198312"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140951"
 ---
 # <a name="how-to-manage-secrets-when-working-with-an-azure-dev-space"></a>Verwalten von Geheimnissen beim Arbeiten mit einem Azure Dev Space
 
@@ -84,7 +84,7 @@ Azure Dev Spaces bietet zwei empfohlene Optionen zum Speichern von Geheimnissen:
                 key: "$REDIS_KEY_DEV"
     ```
      
-2.  Erstellen Sie eine_ENV-Datei_ im gleichen Ordner wie _azds.yaml_. Geben Sie Geheimnisse in der Notation Standardschlüssel=Wert ein. Übergeben Sie die_ENV-Datei_ nicht an die Quellcodeverwaltung. (Um sie in git-basierten Versionskontrollsystemen auszulassen, fügen Sie die Datei zur__  GITIGNORE-Datei hinzu.) Im folgenden Beispiel ist eine_ENV-Datei_ dargestellt:
+2.  Erstellen Sie eine_ENV-Datei_ im gleichen Ordner wie _azds.yaml_. Geben Sie Geheimnisse in der Notation Standardschlüssel=Wert ein. Übergeben Sie die_ENV-Datei_ nicht an die Quellcodeverwaltung. (Um sie in git-basierten Versionskontrollsystemen auszulassen, fügen Sie die Datei zur _GITIGNORE-Datei_ hinzu.) Im folgenden Beispiel ist eine_ENV-Datei_ dargestellt:
 
     ```
     REDIS_PORT_DEV=3333
