@@ -1,30 +1,34 @@
-# Erste Schritte mit Azure
-## [Übersicht über Cloud Computing](azure-operations-guide.md#cloud-computing-overview)
-### [Azure-Regionen](https://azure.microsoft.com/regions/)
-## [Dienste](azure-operations-guide.md#azure-services)
-### [App Service-Dokumentation](https://docs.microsoft.com/azure)
-## [Wichtige Begriffe](azure-operations-guide.md#azure-key-concepts)
-### [Übersicht über das Microsoft Azure-Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) 
-### [Verwalten von Azure-Ressourcen über das Portal](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)
-### [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps)
-### [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure REST-SDK-Referenz](https://docs.microsoft.com/rest/api/index)
+# Azure für IT-Operatoren
+## [Erste Schritte mit Azure](azure-operations-guide.md) 
+## Schnellstarts
+### Virtual Machines
+#### [Virtuelle Windows-Computer](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Virtuelle Linux-Computer](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+### Virtuelle Netzwerke
+#### [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Storage](https://docs.microsoft.com/azure/storage/)
+### Sicherheit
+#### [Verwenden von Rollenzuweisungen zum Verwalten von Ressourcen](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [Abonnements](azure-operations-guide.md#azure-subscriptions)
+## Tutorials
+### Virtual Machines
+#### [Erstellen/Verwalten virtueller Windows-Computer](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Erstellen/Verwalten virtueller Linux-Computer](../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [CI-/CD-Pipeline in Jenkins](../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+#### [Lastenausgleich für virtuelle Computer](../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+## Anleitungen
 ### [Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten](../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Erhalten von Einblicken in Ihren Ressourcenverbrauch](../../billing/billing-usage-rate-card-overview.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Online-Preisrechner](http://azure.microsoft.com/pricing/calculator)
-### [Einrichten von Abrechnungswarnungen](../../billing/billing-set-up-alerts.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Azure Resource Manager](azure-operations-guide.md#azure-resource-manager)
 
 ### [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Bereitstellen von Vorlagen mit dem Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Bereitstellen von Vorlagen mit Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-###[Bereitstellen von Vorlagen mit der Azure-CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Bereitstellen von Vorlagen mit dem Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Bereitstellen von Vorlagen mit Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Bereitstellen von Vorlagen mit der Azure-CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Sicherheit (RBAC)](azure-operations-guide.md#security-of-azure-resource)
-###[Verwenden von Rollenzuweisungen zum Verwalten von Ressourcen](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Verwenden von Rollenzuweisungen zum Verwalten von Ressourcen](../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [Virtuelle Computer](azure-operations-guide.md#azure-virtual-machines)
 ### [VM-Größen für Windows](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
@@ -38,7 +42,7 @@
 ### Tutorials zu virtuellen Windows-Computern
 #### [Erstellen/Verwalten eines virtuellen Computers](../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Erstellen/Verwalten von Datenträgern](../../virtual-machines/windows/tutorial-manage-data-disk.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-#### [Automatisieren der Konfiguration](../../virtual-machines/windows/tutorial-automate-vm-deployment.md
+#### [Automatisieren der Konfiguration](../../virtual-machines/windows/tutorial-automate-vm-deployment.md)
 #### [Erstellen von VM-Images](../../virtual-machines/windows/tutorial-custom-images.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Hoch verfügbare virtuelle Computer](../../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 #### [Erstellen einer VM-Skalierungsgruppe](../../virtual-machines/windows/tutorial-create-vmss.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
