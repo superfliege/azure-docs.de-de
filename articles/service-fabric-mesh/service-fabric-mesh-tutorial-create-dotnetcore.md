@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d48d7625221dfb96e0119ef0d42b3b0a8d04baba
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185668"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918473"
 ---
 # <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh
 
@@ -72,7 +72,7 @@ Als Nächstes wird das Dialogfeld **Neuer Service Fabric-Dienst** angezeigt.
 
 ### <a name="create-the-web-front-end-service"></a>Erstellen des Web-Front-End-Diensts
 
-Wählen Sie im Dialogfeld **Neuer Service Fabric-Dienst** den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das **Containerbetriebssystem** auf **Windows** festgelegt ist.
+Wählen Sie im Dialogfeld **Neuer Service Fabric-Dienst** den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das Containerbetriebssystem**** auf **Windows** festgelegt ist.
 
 Legen Sie den Dienstnamen im Feld **Dienstname** auf **WebFrontEnd** fest. Klicken Sie auf **OK**, um den ASP.NET Core-Dienst zu erstellen.
 
@@ -184,17 +184,17 @@ Erstellen Sie als Nächstes den Service Fabric-Dienst, der die Aufgaben nachverf
 
 Klicken Sie in Visual Studio im Fenster **Projektmappen-Explorer** mit der rechten Maustaste auf **todolistapp**, und klicken Sie anschließend auf **Hinzufügen** > **Neuer Service Fabric-Dienst...**.
 
-Das Dialogfeld **Neuer Service Fabric-Dienst** wird angezeigt. Wählen Sie den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das **Containerbetriebssystem** auf **Windows** festgelegt ist.
+Das Dialogfeld **Neuer Service Fabric-Dienst** wird angezeigt. Wählen Sie den Projekttyp **ASP.NET Core** aus, und vergewissern Sie sich, dass das Containerbetriebssystem**** auf **Windows** festgelegt ist.
 
 Legen Sie den Dienstnamen im Feld **Dienstname** auf **ToDoService** fest. Klicken Sie auf **OK**, um den ASP.NET Core-Dienst zu erstellen. Als Nächstes wird das Dialogfeld **Neue ASP.NET Core-Webanwendung** angezeigt. Klicken Sie in diesem Dialogfeld auf **API** und anschließend auf **OK**. Daraufhin wird der Projektmappe ein Projekt für den Dienst hinzugefügt.
 
 ![Visual Studio-Dialogfeld: Neue ASP.NET Core-Webanwendung](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-webapi.png)
 
-Da für den Back-End-Dienst keinerlei Benutzeroberfläche zur Verfügung steht, deaktivieren Sie die Option, durch die beim Start des Diensts der Browser gestartet wird. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **ToDoService**, und klicken Sie auf **Eigenschaften**. Klicken Sie im daraufhin angezeigten Eigenschaftenfenster auf der linken Seite auf die Registerkarte **Debuggen**, und deaktivieren Sie das Kontrollkästchen **Browser starten**. Drücken Sie **STRG+S**, um die Änderung zu speichern.
+Da für den Back-End-Dienst keinerlei Benutzeroberfläche zur Verfügung steht, deaktivieren Sie die Option, durch die beim Start des Diensts der Browser gestartet wird. Klicken Sie im Projektmappen-Explorer**** mit der rechten Maustaste auf **ToDoService**, und klicken Sie auf **Eigenschaften**. Klicken Sie im daraufhin angezeigten Eigenschaftenfenster auf der linken Seite auf die Registerkarte **Debuggen**, und deaktivieren Sie das Kontrollkästchen **Browser starten**. Drücken Sie**** STRG+S, um die Änderung zu speichern.
 
 Da dieser Dienst die Aufgabeninformationen verwaltet, fügen Sie einen Verweis auf die Klassenbibliothek „Model“ hinzu. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **ToDoService**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
 
-Aktivieren Sie im **Verweis-Manager** das Kontrollkästchen für **Model**, und klicken Sie auf **OK**.
+Aktivieren Sie im**** Verweis-Manager das Kontrollkästchen für **Model**, und klicken Sie auf **OK**.
 
 ### <a name="add-a-data-context"></a>Hinzufügen eines Datenkontexts
 
@@ -278,11 +278,11 @@ Da in diesem Tutorial die Kommunikation mit einem anderen Dienst im Mittelpunkt 
 Nach der Implementierung des Back-End-Diensts können Sie als Nächstes die Website programmieren, auf der die bereitgestellten Aufgaben angezeigt werden. Die folgenden Schritte werden im Projekt **WebFrontEnd** ausgeführt.
 
 Die Webseite, auf der die Aufgaben angezeigt werden, benötigt Zugriff auf die Klasse **ToDoItem** und auf die entsprechende Liste.
-Fügen Sie im **Projektmappen-Explorer** einen Verweis auf das Projekt „Model“ hinzu. Klicken Sie hierzu mit der rechten Maustaste auf **WebFrontEnd**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
+Fügen Sie im Projektmappen-Explorer**** einen Verweis auf das Projekt „Model“ hinzu. Klicken Sie hierzu mit der rechten Maustaste auf **WebFrontEnd**, und klicken Sie anschließend auf **Hinzufügen** > **Verweis...**. Das Dialogfeld **Verweis-Manager** wird angezeigt.
 
-Klicken Sie im **Verweis-Manager** auf das Kontrollkästchen für **Model** und anschließend auf **OK**.
+Klicken Sie im**** Verweis-Manager auf das Kontrollkästchen für **Model** und anschließend auf **OK**.
 
-Navigieren Sie im **Projektmappen-Explorer** zu **WebFrontEnd** > **Seiten** > **Index.cshtml**, um die Seite „Index.cshtml“ zu öffnen. Öffnen Sie **Index.cshtml**.
+Navigieren Sie im Projektmappen-Explorer**** zu **WebFrontEnd** > **Seiten** > **Index.cshtml**, um die Seite „Index.cshtml“ zu öffnen. Öffnen Sie **Index.cshtml**.
 
 Ersetzen Sie den Inhalt der gesamten Datei durch den folgenden HTML-Code, um eine einfache Tabelle für die Aufgabenanzeige zu definieren:
 
@@ -314,7 +314,8 @@ Ersetzen Sie den Inhalt der gesamten Datei durch den folgenden HTML-Code, um ein
 </div>
 ```
 
-Öffnen Sie den Code für die Indexseite im **Projektmappen-Explorer**, indem Sie **Index.cshtml** und anschließend **Index.cshtml.cs** öffnen. Fügen Sie am Anfang von **Index.cshtml.cs** Folgendes hinzu: `using System.Net.Http;`.
+Öffnen Sie den Code für die Indexseite im**** Projektmappen-Explorer, indem Sie **Index.cshtml** und anschließend **Index.cshtml.cs** öffnen.
+Fügen Sie am Anfang von **Index.cshtml.cs** Folgendes hinzu: `using System.Net.Http;`.
 
 Ersetzen Sie den Inhalt von `public class IndexModel` durch Folgendes:
 
@@ -336,7 +337,7 @@ public class IndexModel : PageModel
         }
     }
 
-    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+    private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
     private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 }
 ```
@@ -346,13 +347,13 @@ public class IndexModel : PageModel
 Die URL für den Back-End-Dienst wird für die Kommunikation mit diesem Dienst benötigt. Im Rahmen dieses Tutorials liest der folgende Codeauszug (der weiter oben als Bestandteil des Indexmodells definiert ist) Umgebungsvariablen zur Erstellung der URL:
 
 ```csharp
-private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ServiceName")}";
+private static string backendDNSName = $"{Environment.GetEnvironmentVariable("ToDoServiceName")}";
 private static Uri backendUrl = new Uri($"http://{backendDNSName}:{Environment.GetEnvironmentVariable("ApiHostPort")}/api/todo");
 ```
 
 Die URL setzt sich aus dem Dienstnamen und dem Port zusammen. Diese Informationen befinden sich in der Datei „service.yaml“ des Projekts **ToDoService**.
 
-Navigieren Sie im **Projektmappen-Explorer** zum Projekt **ToDoService**, und öffnen Sie **Service Resources** (Dienstressourcen) > **service.yaml**.
+Navigieren Sie im Projektmappen-Explorer**** zum Projekt **ToDoService**, und öffnen Sie **Service Resources** (Dienstressourcen) > **service.yaml**.
 
 ![Abbildung 1: Die Datei „service.yaml“ des Projekts „ToDoService“](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-port.png)
 
@@ -361,12 +362,12 @@ Navigieren Sie im **Projektmappen-Explorer** zum Projekt **ToDoService**, und ö
 
 Im nächsten Schritt werden im Projekt „WebFrontEnd“ Umgebungsvariablen für den Dienstnamen und die Portnummer definiert, um den Back-End-Dienst aufrufen zu können.
 
-Navigieren Sie im **Projektmappen-Explorer** zu **WebFrontEnd** > **Service Resources** (Dienstressourcen) > **service.yaml**, um die Variablen zu definieren, die die Adresse des Back-End-Diensts angeben.
+Navigieren Sie im Projektmappen-Explorer**** zu **WebFrontEnd** > **Service Resources** (Dienstressourcen) > **service.yaml**, um die Variablen zu definieren, die die Adresse des Back-End-Diensts angeben.
 
 Fügen Sie in der Datei „service.yaml“ unter `environmentVariables` die folgenden Variablen hinzu. Die Leerzeichen sind wichtig. Richten Sie die hinzugefügten Variablen daher an den anderen Variablen unter `environmentVariables:` aus.
 
 > [!IMPORTANT]
-> Die Variablen müssen in der Datei „service.yaml“ mithilfe von Leerzeichen (nicht mithilfe von Tabulatoren) eingerückt werden, da sie sonst nicht kompiliert werden kann. Visual Studio fügt bei der Erstellung der Umgebungsvariablen möglicherweise Tabulatoren ein. Ersetzen Sie alle Tabulatoren durch Leerzeichen. In der Debugausgabe der **Erstellung** werden zwar Fehler angezeigt, die App kann aber trotzdem gestartet werden. Sie funktioniert allerdings erst, wenn die Tabulatoren durch Leerzeichen ersetzt wurden. Um sicherzustellen, dass die Datei „service.yaml“ keine Leerzeichen enthält, können Sie die Leerzeichen im Visual Studio-Editor über **Bearbeiten**  > **Erweitert**  > **Leerstelle anzeigen** einblenden.
+> Die Variablen müssen in der Datei „service.yaml“ mithilfe von Leerzeichen (nicht mithilfe von Tabulatoren) eingerückt werden, da sie sonst nicht kompiliert werden kann. Visual Studio fügt bei der Erstellung der Umgebungsvariablen möglicherweise Tabulatoren ein. Ersetzen Sie alle Tabulatoren durch Leerzeichen. In der Debugausgabe der Erstellung**** werden zwar Fehler angezeigt, die App kann aber trotzdem gestartet werden. Sie funktioniert allerdings erst, wenn die Tabulatoren durch Leerzeichen ersetzt wurden. Um sicherzustellen, dass die Datei „service.yaml“ keine Leerzeichen enthält, können Sie die Leerzeichen im Visual Studio-Editor über **Bearbeiten**  > **Erweitert**  > **Leerstelle anzeigen** einblenden.
 
 Die Datei **service.yaml** Ihres Projekts **WebFrontEnd** sollte in etwa wie folgt aussehen, wobei sich Ihr Wert für `ApiHostPort` jedoch wahrscheinlich unterscheidet:
 
