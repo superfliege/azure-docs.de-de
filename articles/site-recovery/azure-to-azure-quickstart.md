@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: de30085ae5ff95e7067684ff3af9ccb0d45357de
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: abba75e731d2550b4719eec70d475884bd7f3c8e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990862"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42022397"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replizieren eines virtuellen Azure-Computers in einer anderen Azure-Region
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
 
-Dieser Schnellstart beschreibt, wie eine Azure-VM in eine andere Azure-Region repliziert wird. 
+Dieser Schnellstart beschreibt, wie eine Azure-VM in eine andere Azure-Region repliziert wird.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -62,8 +62,7 @@ Die Replikation der VM in der primären Region wird beendet, wenn Sie die Replik
 Beenden Sie die Replikation wie folgt:
 
 1. Wählen Sie den virtuellen Computer aus.
-2. Klicken Sie unter **Notfallwiederherstellung** auf **Mehr**.
-3. Klicken Sie auf **Replikation deaktivieren**.
+2. Klicken Sie unter **Notfallwiederherstellung** auf **Replikation deaktivieren**.
 
    ![Deaktivieren der Replikation](media/azure-to-azure-quickstart/disable2-replication.png)
 

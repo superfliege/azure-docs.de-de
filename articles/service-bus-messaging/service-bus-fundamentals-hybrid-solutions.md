@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: get-started-article
 ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bef88f09f182b1bb450ee0e045985ed59d5b5648
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641321"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919524"
 ---
 # <a name="azure-service-bus"></a>Azure-Servicebus
 
@@ -36,7 +36,12 @@ Innerhalb eines Namespace können Sie eine oder mehr Instanzen von drei verschie
 * *Themen* für eine unidirektionale Kommunikation über *Abonnements*. Ein einzelnes Thema kann über mehrere Abonnements verfügen. Wie bei einer Warteschlange agiert ein Thema als Broker, aber jedes Abonnement kann optional Filter verwenden, um nur Nachrichten zu empfangen, die bestimmte Kriterien erfüllen.
 * *Relays*für eine bidirektionale Kommunikation. Im Gegensatz zu Warteschlangen und Themen speichert ein Relay keine gesendeten Nachrichten – es ist kein Broker. Stattdessen leitet es sie an eine Zielanwendung weiter.
 
-Wenn Sie eine Warteschlange, ein Thema oder ein Relais erstellen, geben Sie diesem Objekt einen Namen. In Kombination mit der Bezeichnung Ihres Namespace ist dieser Name ein eindeutiger Bezeichner für das Objekt. Anwendungen können diesen Namen an Service Bus übermitteln und dann mithilfe der Warteschlange, des Themas oder des Relays miteinander kommunizieren. 
+Wenn Sie eine Warteschlange, ein Thema oder ein Relais erstellen, geben Sie diesem Objekt einen Namen. In Kombination mit der Bezeichnung Ihres Namespace ist dieser Name ein eindeutiger Bezeichner für das Objekt. Anwendungen können diesen Namen an Service Bus übermitteln und dann mithilfe der Warteschlange, des Themas oder des Relays miteinander kommunizieren.
+
+ >**Beispiel:**   
+     *https://&lt;servicebus-namespace-name&gt;.servicebus.windows.net/&lt;queue-name&gt;*  
+     *https://&lt;servicebus-namespace-name&gt;.servicebus.windows.net/&lt;topic-name&gt;*  
+     *https://&lt;servicebus-namespace-name&gt;.servicebus.windows.net/&lt;relay-name&gt;*  
 
 Für die Verwendung eines dieser Objekte im Relayszenario können Windows-Anwendungen Windows Communication Foundation (WCF) nutzen. Dieser Dienst wird als [WCF Relay](../service-bus-relay/relay-what-is-it.md) bezeichnet. Für Warteschlangen und Themen können Windows-Anwendungen eine über Service Bus definierte Messaging-API verwenden. Damit diese Objekte von Nicht-Windows-Anwendungen einfacher verwendet werden können, stellt Microsoft SDKs für Java, Node.js und andere Sprachen bereit. Sie können auch mithilfe von [REST-APIs](/rest/api/servicebus/) über HTTP(s) auf Warteschlangen und Themen zugreifen. 
 

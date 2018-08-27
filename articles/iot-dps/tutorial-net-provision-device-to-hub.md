@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1d82ccdf85b34416dc630b9fcad969d87cc53ff1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520665"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920558"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrieren des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)
 
@@ -62,7 +62,7 @@ Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisionin
     
 1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **DeviceProvisioning**, und klicken Sie dann auf **NuGet-Pakete verwalten...**.
 
-1. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen**, und suchen Sie nach **microsoft.azure.devices.provisioning.service**. Wählen Sie den Eintrag aus, und klicken Sie auf **Installieren**, um das Paket **Microsoft.Azure.Devices.Provisioning.Service** zu installieren, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket mit dem [Azure IoT-Device Provisioning-Dienst-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
+1. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen**, und suchen Sie nach **microsoft.azure.devices.provisioning.service**. Wählen Sie den Eintrag aus, und klicken Sie auf **Installieren**, um das Paket **Microsoft.Azure.Devices.Provisioning.Service** zu installieren, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket mit dem [Azure IoT Device Provisioning Service-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
 
 1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
    
@@ -70,10 +70,10 @@ Es gibt zwei Möglichkeiten zum Registrieren des Geräts beim Device Provisionin
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die DPS-Verbindungszeichenfolge, die im vorherigen Abschnitt angegeben wurde.
+1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die Device Provisioning Service-Verbindungszeichenfolge aus dem vorherigen Abschnitt.
    
     ```csharp
-    static readonly string ServiceConnectionString = "{DPS connection string}";
+    static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
 
     private const string SampleRegistrationId = "sample-individual-csharp";
     private const string SampleTpmEndorsementKey =
@@ -222,10 +222,10 @@ Wenn das Gerät erfolgreich registriert ist, sollte es wie folgt im Portal angez
 
 An dieser Stelle ist Folgendes für die Geräteregistrierung eingerichtet:
 
-1. Ihr Gerät oder eine Gruppe von Geräten ist bei Ihrem Device Provisioning-Dienst registriert. 
+1. Ihr Gerät oder eine Gruppe von Geräten ist bei Ihrem Device Provisioning-Dienst registriert, und 
 2. Für Ihr Gerät wurde die Sicherheit konfiguriert, und über die Anwendung kann mithilfe des Client-SDK des Device Provisioning-Diensts darauf zugegriffen werden.
 
-Starten Sie das Gerät, damit Ihre Clientanwendung mit der Registrierung bei Ihrem Device Provisioning-Dienst beginnen kann.  
+Starten Sie das Gerät, damit Ihre Clientanwendung die Registrierung bei Ihrem Device Provisioning-Dienst starten kann.  
 
 
 ## <a name="verify-the-device-is-registered"></a>Sicherstellen, dass das Gerät registriert ist

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c2c80790fa3e7c20408346fbebf60c39879a94df
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145535"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41924756"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
 
@@ -48,7 +48,7 @@ Führen Sie zum Erstellen einer neuen Device Provisioning-Dienstinstanz folgende
    | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
    | **Location** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |   
 
-   ![Eingeben grundlegender Informationen zum DPS im Portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
+   ![Eingeben grundlegender Informationen zu Ihrem Device Provisioning-Dienst im Portal](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
 5. Klicken Sie auf **Create**. Nach einigen Augenblicken wird die Device Provisioning Service-Instanz erstellt und die Seite **Übersicht** angezeigt.
 6. Kopieren Sie auf der Seite **Übersicht** für die neue Dienstinstanz den Wert für **ID-Bereich** zur späteren Verwendung. Der Wert dient zum Identifizieren von Registrierungs-IDs und gewährleistet, dass die Registrierungs-ID eindeutig ist.
@@ -71,7 +71,7 @@ Der nächste Schritt besteht darin, den Device Provisioning-Dienst und IoT Hub z
     * **IoT Hub:** Wählen Sie den Namen der IoT Hub-Instanz aus, die Sie mit dieser Device Provisioning Service-Instanz verknüpfen möchten.
     * **Zugriffsrichtlinie:** Wählen Sie **iothubowner** als Anmeldeinformationen zum Erstellen der Verknüpfung mit der IoT Hub-Instanz aus.
 
-   ![Verknüpfen des Hubnamens mit dem DPS im Portal](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
+   ![Verknüpfen des Hubnamens mit der Device Provisioning Service-Instanz im Portal](./media/tutorial-set-up-cloud/link-iot-hub-to-dps-portal.png)
 
 ## <a name="set-the-allocation-policy-on-the-device-provisioning-service"></a>Festlegen der Zuordnungsrichtlinie im Device Provisioning-Dienst
 

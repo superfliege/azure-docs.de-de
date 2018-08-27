@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445535"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918007"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Tutorial 3: Klassifizieren von Iris: Bereitstellen eines Modells
 Bei Azure Machine Learning (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -247,7 +247,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
    >[!IMPORTANT]
    >Der Dienstname, bei dem es sich auch um den neuen Docker-Imagenamen handelt, darf nur Kleinbuchstaben enthalten. Andernfalls erhalten Sie eine Fehlermeldung. 
 
-1. Wenn Sie den Befehl ausführen, werden das Modell und die Bewertungsdateien in das Speicherkonto hochgeladen, das Sie bei der Umgebungseinrichtung erstellt haben. Während des Bereitstellungsprozesses wird ein Docker-Image mit Ihrem Modell, dem Schema und der Bewertungsdatei erstellt und per Pushvorgang in die Azure Container Registry übertragen: **\<ACR-Name\>.azureacr.io/\<Imagename\>:\<Version\>**. 
+1. Wenn Sie den Befehl ausführen, werden das Modell und die Bewertungsdateien in das Speicherkonto hochgeladen, das Sie bei der Umgebungseinrichtung erstellt haben. Während des Bereitstellungsprozesses wird ein Docker-Image mit Ihrem Modell, dem Schema und der Bewertungsdatei erstellt und per Pushvorgang in die Azure Container Registry übertragen: **\<ACR-Name\>.azurecr.io/\<Imagename\>:\<Version\>**. 
 
    Der Befehl überträgt dieses Image lokal auf Ihren Computer und startet basierend auf diesem Image dann einen Docker-Container. Wenn Ihre Umgebung im Clustermodus konfiguriert ist, wird der Docker-Container stattdessen im Azure Cloud Services-Kubernetes-Cluster bereitgestellt.
 
@@ -313,7 +313,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
 1. Führen Sie den zurückgegebenen Befehl zum Ausführen des Diensts aus, um den Dienst zu testen:
     
    ```azurecli
-   az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+   az ml service run realtime -i <web service ID> -d '{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}'
    ```
 
    Die Ausgabe lautet **"Iris-setosa"**. Dies ist die vorhergesagte Klasse. (Sie erhalten unter Umständen ein anderes Ergebnis.) 

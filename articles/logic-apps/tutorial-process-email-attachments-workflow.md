@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: 133cc9d8fa52bb655e9baaad53ee157fdc7524f7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d07342bac3f76472a4783c28cac0741906049bb2
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39429419"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41919155"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Verarbeiten von E-Mails und Anlagen mit Azure Logic Apps
 
@@ -56,7 +56,7 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
 Eingehende E-Mails und Anlagen können als Blobs in einem [Azure-Speichercontainer](../storage/common/storage-introduction.md) gespeichert werden. 
 
-1. [Erstellen Sie zunächst ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) mit den folgenden Einstellungen, um einen Speichercontainer erstellen zu können:
+1. [Erstellen Sie zunächst ein Speicherkonto](../storage/common/storage-quickstart-create-account.md) mit den folgenden Einstellungen, um einen Speichercontainer erstellen zu können:
 
    | Einstellung | Wert | BESCHREIBUNG | 
    |---------|-------|-------------| 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: c0d19c53a0bd217935a494dfb4affbaa85062247
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 7c1e56b7c94c51a00fabdac56dd2d8c3eb621ae0
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097477"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42139593"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für internen Datenverkehr an virtuelle Computer mit einem Load Balancer im Tarif „Basic“ über das Azure-Portal
 
@@ -49,15 +49,15 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 Erstellen Sie einen internen Load Balancers im Tarif „Basic“ über das Portal.
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
-    - *myLoadBalancer*: Name des Lastenausgleichs
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Load Balancer ein:
+    - *myLoadBalancer*: Name des Load Balancers
     - **Intern**: Lastenausgleichstyp
     - **Basic**: SKU-Version
     - **10.1.0.7**: Statische private IP-Adresse
     - *myVNet*: Virtuelles Netzwerk, das Sie aus der Liste der vorhandenen Netzwerke auswählen
     - *mySubnet*: Subnetz, das Sie aus der Liste der vorhandenen Subnetze auswählen
     - *myResourceGroupILB*: Name der neuen Ressourcengruppe, die Sie erstellen
-3. Klicken Sie auf **Erstellen**, um den Lastenausgleich zu erstellen.
+3. Klicken Sie auf **Erstellen**, um den Load Balancer zu erstellen.
    
     ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
