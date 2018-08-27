@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b085911f760693a774d443ca055944268b20f055
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869568"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918611"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -342,8 +342,8 @@ Verwenden Sie _Befehle_, damit ein Operator Befehle direkt auf dem Gerät ausfü
     | Anzeigename         | Echo-Befehl    |
     | Feldname           | Echo            |
     | Standardzeitlimit      | 30              |
-    | Anzeigename         | Text anzeigen    |
-    | Typ anzeigen         | text            |  
+    | Typ anzeigen         | text            |
+    | BESCHREIBUNG          | Gerätebefehl  |  
 
 Sie können zusätzliche Eingaben für den Befehl hinzufügen, indem Sie auf **+** klicken.
 

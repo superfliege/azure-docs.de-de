@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 93a63c39b2ba30d0b70607671262428d93392ad4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: fdaba2afecd453794dbee3b47ef5202700d005d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522151"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41920983"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Erste Schritte in Azure Dev Spaces mit .NET Core
 
@@ -34,7 +34,7 @@ Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minim
 Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Command-Line Interface, CLI) herunter, und führen Sie sie aus. 
 
 > [!IMPORTANT]
-> Falls die Azure-Befehlszeilenschnittstelle bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.38 handelt.
+> Falls die Azure CLI bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.43 handelt.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 

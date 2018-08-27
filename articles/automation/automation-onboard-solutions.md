@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 5d03ec7c5e0aaa68c1db34fedbd428f264e49e43
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5cf09753645d8238232e064af2ba1a301a2a7217
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830519"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920284"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Integrieren von Update- und Änderungsnachverfolgungslösungen in Azure Automation
 
@@ -37,7 +37,7 @@ Für dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
 ## <a name="onboard-an-azure-vm"></a>Integrieren einer Azure-VM
 
-Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung [über einen virtuellen Computer](automation-onboard-solutions-from-vm.md), [durch Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md), [über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md) oder per Runbook integrieren. In diesem Tutorial wird das Aktivieren der Updateverwaltung per Runbook Schritt für Schritt beschrieben. Um virtuelle Azure-Computer bedarfsgesteuert zu integrieren, muss eine vorhandene VM mit der Lösung für die Änderungsnachverfolgung oder Updateverwaltung integriert werden. In diesem Schritt integrieren Sie eine VM mithilfe der Updateverwaltung und Änderungsnachverfolgung.
+Es gibt mehrere Möglichkeiten, Computer zu integrieren. Sie können die Lösung [über einen virtuellen Computer](automation-onboard-solutions-from-vm.md), [durch Durchsuchen mehrerer Computer](automation-onboard-solutions-from-browse.md), [über Ihr Automation-Konto](automation-onboard-solutions-from-automation-account.md) oder per Runbook integrieren. In diesem Tutorial wird das Aktivieren der Updateverwaltung über ein Runbook Schritt für Schritt beschrieben. Um virtuelle Azure-Computer bedarfsgesteuert zu integrieren, muss eine vorhandene VM mit der Lösung für die Änderungsnachverfolgung oder Updateverwaltung integriert werden. In diesem Schritt integrieren Sie eine VM mithilfe der Updateverwaltung und Änderungsnachverfolgung.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576966"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918217"
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
 Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre Cloudanwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, empfiehlt es sich, den Zugriff auf Key Vault-Instanzen so zu konfigurieren, dass nur autorisierte Anwendungen und Benutzer auf Key Vault zugreifen können. Dieser Artikel enthält eine Übersicht über das Key Vault-Zugriffsmodell sowie Informationen zur Authentifizierung und Autorisierung. Außerdem erfahren Sie anhand eines Beispiels, wie Sie den Zugriff auf Key Vault für Ihre Cloudanwendungen schützen.
@@ -87,7 +87,7 @@ Durch Zuweisen geeigneter RBAC-Rollen können Sie Benutzern, Gruppen und Anwendu
 ## <a name="data-plane-access-control"></a>Zugriffssteuerung auf der Datenebene
 Auf der Key Vault-Datenebene werden Vorgänge ausgeführt, die sich auf die Objekte in einer Key Vault-Instanz auswirken (also etwa auf Schlüssel, Geheimnisse und Zertifikate).  Hierzu zählen Schlüsselvorgänge wie das Erstellen, Importieren, Aktualisieren, Auflisten, Sichern und Wiederstellen von Schlüsseln sowie kryptografische Vorgänge wie das Signieren, Überprüfen, Verschlüsseln, Entschlüsseln, Verpacken, Entpacken und Festlegen von Tags und anderen Attributen für Schlüssel. Beispiele für geheimnisspezifische Vorgänge wären etwa Abrufen, Festlegen, Auflisten und Löschen.
 
-Der Datenebenenzugriff wird durch Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz gewährt. Ein Benutzer, eine Gruppe oder eine Anwendung muss über Mitwirkungsberechtigungen (RBAC) für die Verwaltungsebene einer Key Vault-Instanz verfügen, um Zugriffsrichtlinien für diese Instanz festlegen zu können. Einem Benutzer, einer Gruppe oder einer Anwendung kann Zugriff zum Ausführen bestimmter Vorgänge für Schlüssel oder Geheimnisse in einer Key Vault-Instanz gewährt werden. Pro Key Vault-Instanz werden bis zu 16 Zugriffsrichtlinien unterstützt. Erstellen Sie eine Azure Active Directory-Sicherheitsgruppe, und fügen Sie ihr Benutzer hinzu, um mehreren Benutzern Datenebenenzugriff auf eine Key Vault-Instanz zu gewähren.
+Der Datenebenenzugriff wird durch Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz gewährt. Ein Benutzer, eine Gruppe oder eine Anwendung muss über Mitwirkungsberechtigungen (RBAC) für die Verwaltungsebene einer Key Vault-Instanz verfügen, um Zugriffsrichtlinien für diese Instanz festlegen zu können. Einem Benutzer, einer Gruppe oder einer Anwendung kann Zugriff zum Ausführen bestimmter Vorgänge für Schlüssel oder Geheimnisse in einer Key Vault-Instanz gewährt werden. Pro Schlüsseltresor werden bis zu 1024 Zugriffsrichtlinien unterstützt. Erstellen Sie eine Azure Active Directory-Sicherheitsgruppe, und fügen Sie ihr Benutzer hinzu, um mehreren Benutzern Datenebenenzugriff auf eine Key Vault-Instanz zu gewähren.
 
 ### <a name="key-vault-access-policies"></a>Key Vault-Zugriffsrichtlinien
 Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüssel, Geheimnisse und Zertifikate gewährt werden. Dadurch haben Sie beispielsweise die Möglichkeit, einem Benutzer nur Zugriff auf Schlüssel, aber keine Berechtigungen für Geheimnisse zu gewähren. Zugriffsberechtigungen für Schlüssel, Geheimnisse oder Zertifikate gelten jedoch auf Tresorebene. Mit anderen Worten: Key Vault-Zugriffsrichtlinien unterstützen keine Berechtigungen auf Objektebene. Zum Festlegen von Zugriffsrichtlinien für eine Key Vault-Instanz können Sie das [Azure-Portal](https://portal.azure.com/), die [Tools der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs für die Key Vault-Verwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.

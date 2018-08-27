@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dcde63c4bce17993ec9e1a9d83889a001d7880e1
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 2d019f9600177f0ad300146733dfcba1a3fbb4a8
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264435"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41918455"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](active-directory-aadconnect-get-started-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -136,7 +136,7 @@ Das sourceAnchor-Attribut ist während der Lebensdauer eines Benutzerobjekts unv
 
 | Einstellung | BESCHREIBUNG |
 | --- | --- |
-| Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent die Auswahllogik für das sourceAnchor-Attribut an, die im Abschnitt [Azure AD Connect: Designkonzepte – Verwenden von msDS-ConsistencyGuid als sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor) beschrieben wird. Nach Abschluss der benutzerdefinierten Installation informiert der Assistent Sie darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
+| Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent die Auswahllogik für das sourceAnchor-Attribut an, die im Abschnitt [Azure AD Connect: Designkonzepte – Verwenden von ms-DS-ConsistencyGuid als sourceAnchor](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) beschrieben wird. Nach Abschluss der benutzerdefinierten Installation informiert der Assistent Sie darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
 | Ein bestimmtes Attribut | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD-Attribut als sourceAnchor-Attribut angeben möchten. |
 
 Da das Attribut nicht geändert werden kann, müssen Sie sorgfältig planen, welches Attribut Sie verwenden möchten. Hier empfiehlt sich "objectGUID". Dieses Attribut wird nicht geändert, es sei denn, das Benutzerkonto wird zwischen Gesamtstrukturen/Domänen verschoben. In einer Umgebung mit mehreren Gesamtstrukturen, in der Sie Konten zwischen Gesamtstrukturen verschieben, muss ein anderes Attribut verwendet werden, z. B. ein Attribut mit der Mitarbeiter-ID. Vermeiden Sie die Verwendung von Attributen, die sich ändern, wenn eine Person heiratet oder den Aufgabenbereich wechselt. Sie können keine Attribute mit einem @-signZeichen verwenden, sodass E-Mail-Adressen und Benutzerprinzipalnamen ungeeignet sind. Bei dem Attribut wird die Groß-/Kleinschreibung beachtet. Beim Verschieben von Objekten zwischen Gesamtstrukturen muss daher die Groß-/Kleinschreibung beibehalten werden. Binäre Attribute werden base64-codiert, andere Attributtypen bleiben dagegen unverschlüsselt. In Verbundszenarien und bei einigen Azure AD-Schnittstellen wird dieses Attribut auch als immutableID-Attribut bezeichnet. Weitere Informationen zum Quellanker finden Sie unter [Entwurfskonzepte](active-directory-aadconnect-design-concepts.md#sourceanchor).

@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fa01d2d3f4ab3923129ab1690477d5a8af82d4df
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1bd6f048682b93e3dfa1e19f6b3c50bff2ed232e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448906"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41917554"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -36,8 +36,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Ein Azure IoT Edge-Gerät:
 
-* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte in der Schnellstartanleitung für [Linux](quickstart-linux.md) ausführen.
-* Python-Module für IoT Edge unterstützen keine ARM-Prozessoren oder Windows-Geräte.
+* Sie können Ihren Entwicklungscomputer oder einen virtuellen Computer als Edge-Gerät verwenden, indem Sie die Schritte ausführen, die in der Schnellstartanleitung für [Linux](quickstart-linux.md)- oder [Windows](quickstart.md)-Geräte beschrieben sind.
 
 Cloudressourcen:
 
@@ -341,45 +340,13 @@ Führen Sie im SQL-Befehlstool den folgenden Befehl aus, um die formatierten Tab
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)]
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden. Sie können auch dasselbe IoT Edge-Gerät als Testgerät weiter nutzen. 
 
-Entfernen Sie die IoT Edge-Runtime basierend auf der IoT-Geräteplattform (Linux oder Windows).
+Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden. 
 
-#### <a name="windows"></a>Windows
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Entfernen Sie die IoT Edge-Runtime.
-
-```Powershell
-stop-service iotedge -NoWait
-sleep 5
-sc.exe delete iotedge
-```
-
-Löschen Sie die Container, die auf Ihrem Gerät erstellt wurden. 
-
-```Powershell
-docker rm -f $(docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-#### <a name="linux"></a>Linux
-
-Entfernen Sie die IoT Edge-Runtime.
-
-```bash
-sudo apt-get remove --purge iotedge
-```
-
-Löschen Sie die Container, die auf Ihrem Gerät erstellt wurden. 
-
-```bash
-sudo docker rm -f $(sudo docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-Entfernen Sie die Containerruntime.
-
-```bash
-sudo apt-get remove --purge moby
-```
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 

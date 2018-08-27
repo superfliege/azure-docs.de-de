@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e90d20053a8ccfcafc7648d81c61e9313ec57ab
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 998bc7cb7e3289a85a9ffc315f7c1f5e568a75cb
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523358"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919521"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Einrichten eines bereitzustellenden Geräts mithilfe des Azure IoT Hub Device Provisioning-Diensts
 
@@ -149,7 +149,7 @@ Der letzte Schritt besteht darin, eine Registrierungsanwendung zu schreiben, die
 
 1. Navigieren Sie im Azure-Portal zum Blatt **Übersicht** für Ihren Device Provisioning-Dienst, und kopieren Sie den Wert unter **_ID-Bereich_**. Der *ID-Bereich* wird vom Dienst generiert und stellt Eindeutigkeit sicher. Er ist unveränderlich und wird zur eindeutigen Identifizierung der Registrierungs-IDs verwendet.
 
-    ![Extrahieren der Endpunktinformationen des DP-Diensts aus dem Portalblatt](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
+    ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/tutorial-set-up-device/extract-dps-endpoints.png) 
 
 1. Navigieren Sie auf Ihrem Computer im *Projektmappen-Explorer* von Visual Studio zum Ordner **Provision\_Samples**. Wählen Sie das Beispielprojekt **prov\_dev\_client\_sample** aus, und öffnen Sie die Quelldatei **prov\_dev\_client\_sample.c**.
 

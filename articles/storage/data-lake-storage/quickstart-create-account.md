@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9d60b85051ff6e24c64f074ccd4fad055ba47ae8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18f4d2656ec7f027557d73959531b781be1d8d44
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523579"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42022462"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Schnellstart: Erstellen eines Speicherkontos in Azure Data Lake Storage Gen2 (Vorschauversion)
 
@@ -114,15 +114,6 @@ So entfernen Sie eine Ressourcengruppe über das Azure-Portal:
 2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche **Mehr** (**...**).
 3. Klicken Sie auf **Ressourcengruppe löschen**, und bestätigen Sie den Vorgang.
 
-
-## <a name="upgrade-your-powershell-module"></a>Aktualisieren Ihres PowerShell-Moduls
-
-Um über PowerShell mit Data Lake Storage Gen2 interagieren zu können, müssen Sie für Ihr Modul das Upgrade auf die Vorschauversion durchführen.
-
-Öffnen Sie hierzu eine PowerShell-Konsole mit erhöhten Rechten, und geben Sie den folgenden Befehl ein: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `.
-
-Starten Sie anschließend Ihre Shell neu.
-
 ## <a name="create-an-account-using-powershell"></a>Erstellen eines Kontos mithilfe von PowerShell
 
 Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Authentifizierungsanweisungen auf dem Bildschirm.
@@ -130,6 +121,14 @@ Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement
 ```powershell
 Login-AzureRmAccount
 ```
+
+### <a name="upgrade-your-powershell-module"></a>Aktualisieren Ihres PowerShell-Moduls
+
+Um über PowerShell mit Data Lake Storage Gen2 interagieren zu können, müssen Sie für Ihr Modul das Upgrade auf die Vorschauversion durchführen.
+
+Öffnen Sie hierzu eine PowerShell-Konsole mit erhöhten Rechten, und geben Sie den folgenden Befehl ein: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `.
+
+Starten Sie anschließend Ihre Shell neu.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -170,13 +169,7 @@ Verwenden Sie den Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurer
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="upgrade-your-cli-module"></a>Aktualisieren Ihres CLI-Moduls
-
-Sie müssen Ihrer Shell die Erweiterung hinzufügen, um über die CLI mit Data Lake Storage Gen2 interagieren zu können.
-
-Geben Sie den folgenden Befehl ein, um hierfür die Cloud Shell oder eine lokale Shell zu verwenden: `az extension add --name storage-preview`
-
-## <a name="create-an-account-using-azure-cli"></a>Erstellen eines Kontos mithilfe der Azure-Befehlszeilenschnittstelle 
+## <a name="create-an-account-using-azure-cli"></a>Erstellen eines Kontos mithilfe der Azure-Befehlszeilenschnittstelle
 
 Melden Sie sich zum Starten von Azure Cloud Shell beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -186,9 +179,15 @@ Wenn Sie sich bei Ihrer lokalen Installation der Befehlszeilenschnittstelle anme
 az login
 ```
 
+### <a name="upgrade-your-cli-module"></a>Aktualisieren Ihres CLI-Moduls
+
+Sie müssen Ihrer Shell die Erweiterung hinzufügen, um über die CLI mit Data Lake Storage Gen2 interagieren zu können.
+
+Geben dazu Sie über die Cloud Shell oder eine lokale Shell den folgenden Befehl ein: `az extension add --name storage-preview`
+
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Wenn Sie eine neue Ressourcengruppe über die Azure-Befehlszeilenschnittstelle erstellen möchten, verwenden Sie den Befehl [az group create](/cli/azure/group#az_group_create). 
+Wenn Sie eine neue Ressourcengruppe über die Azure-Befehlszeilenschnittstelle erstellen möchten, verwenden Sie den Befehl [az group create](/cli/azure/group#az_group_create).
 
 ```azurecli-interactive
 az group create \
