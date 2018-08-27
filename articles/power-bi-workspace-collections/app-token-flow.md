@@ -16,12 +16,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 74d34e708fb74daa295642d50643b78af8f6cb7a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4bf92638e15767ea254b33e5804977f0d6ab5476
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412184"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145818"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen
 
@@ -44,10 +44,10 @@ App-Token sind JWT (JSON Web Token), die mit einem Ihrer Schlüssel signiert sin
 
 Ihr App-Token kann folgende Ansprüche enthalten:
 
-| Anspruch | BESCHREIBUNG |
+| Anspruch | BESCHREIBUNG |    
 | --- | --- |
 | **ver** |Die Version des App-Tokens. Die aktuelle Version ist 0.2.0. |
-| **aud** |Der vorgesehene Empfänger des Tokens. Verwenden Sie für Power BI-Arbeitsbereichssammlungen https://analysis.windows.net/powerbi/api. |
+| **aud** |Der vorgesehene Empfänger des Tokens. Verwenden Sie für Power BI-Arbeitsbereichssammlungen: *https:\//analysis.windows.net/powerbi/api*. |
 | **iss** |Eine Zeichenfolge, die die Anwendung angibt, die das Token ausgestellt hat. |
 | **type** |Die Art des App-Tokens, das erstellt wird. Aktuell wird nur der Typ **embed**unterstützt. |
 | **wcn** |Der Name der Arbeitsbereichssammlung, für die das Token ausgegeben wird. |
@@ -100,7 +100,7 @@ Bei der Verwendung von Einbettungstoken möchten Sie vielleicht die Nutzung der 
 
 Im Folgenden sehen Sie die verfügbaren Bereiche für Power BI-Arbeitsbereichssammlungen.
 
-|Umfang|BESCHREIBUNG|
+|Bereich|BESCHREIBUNG|
 |---|---|
 |Dataset.Read|Stellt die Berechtigung zum Lesen des angegebenen Datasets bereit.|
 |Dataset.Write|Stellt die Berechtigung zum Schreiben in das angegebene Dataset bereit.|

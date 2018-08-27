@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 25349d48d88b64568fef0f5a6bac5950da15196b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298636"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146466"
 ---
 # <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Übersicht: B2B-Szenarien und Kommunikation mit dem Enterprise-Integrationspaket
 
@@ -37,7 +37,7 @@ Was sie Architektur betrifft, basiert das Enterprise Integration Pack auf „Int
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Erste Schritte mit der Unternehmensintegration
 
-Mit dem Enterprise Integration Pack und dem Logik-App-Designer im **Azure-Portal** können Sie B2B-Apps erstellen und verwalten. Sie können auch [PowerShell](https://msdn.microsoft.com/library/azure/mt652195.aspx "PowerShell-Themen zu Logik-Apps") verwenden, um Ihre Logik-Apps zu verwalten.
+Mit dem Enterprise Integration Pack und dem Logik-App-Designer im **Azure-Portal** können Sie B2B-Apps erstellen und verwalten. Sie können Ihre Logik-Apps auch mit [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "Logik-Apps PowerShell") verwalten.
 
 Es folgen die allgemeinen Schritte, die Sie ausführen müssen, ehe Sie im Azure-Portal Apps erstellen können:
 

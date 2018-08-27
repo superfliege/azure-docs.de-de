@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 982a5eabf8c6c3012a9b3e8fdbe2ff32ba439972
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f73a9e59c0add664128b506172182afe566ca670
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113591"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444509"
 ---
 # <a name="reference-architecture-simple-enterprise-integration"></a>Referenzarchitektur: einfache Unternehmensintegration
 
@@ -38,7 +38,7 @@ Die Architektur besteht aus den folgenden Komponenten:
 - **Azure API Management-Entwicklerportal**. Jede Instanz von Azure API Management kann auf das [Entwicklerportal](https://docs.microsoft.com/azure/api-management/api-management-customize-styles) zugreifen. Über das API Management-Entwicklerportal erhalten Sie Zugriff auf Dokumentation und Codebeispiele. Im Entwicklerportal können Sie zudem APIs testen.
 - **Azur Logic Apps**. Bei [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview) handelt es sich um eine serverlose Plattform, die für den Unternehmensworkflow und die -integration verwendet wird.
 - **Connectors**. Logic Apps verwendet [Connectors](https://docs.microsoft.com/azure/connectors/apis-list), um eine Verbindung zu häufig verwendeten Diensten herzustellen. Logic Apps verfügt bereits über hunderte von verschiedenen Connectors, aber Sie können auch einen benutzerdefinierten Connector erstellen.
-- **IP-Adresse**. Der Azure API Management-Dienst weist eine feste öffentliche [IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) und einen Domänennamen auf. Der Domänenname ist eine Unterdomäne von azure-api.net, wie z.B. contoso. azure-api.net: Logic Apps und Service Bus haben auch eine öffentliche IP-Adresse. In dieser Architektur beschränken wir jedoch den Aufruf von Endpunkten von Logic Apps ausschließlich auf die IP-Adresse von API Management (aus Sicherheitsgründen). Aufrufe an Service Bus werden durch eine Shared Access Signature (SAS) gesichert.
+- **IP-Adresse**. Der Azure API Management-Dienst weist eine feste öffentliche [IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) und einen Domänennamen auf. Der Standardname für die Domäne ist eine Unterdomäne von azure-api.net, z. B.: „contoso.azure-api.net“, doch es können auch [benutzerdefinierte Domänen](https://docs.microsoft.com/azure/api-management/configure-custom-domain) konfiguriert werden. Logic Apps und Service Bus haben auch eine öffentliche IP-Adresse. In dieser Architektur beschränken wir jedoch den Aufruf von Endpunkten von Logic Apps ausschließlich auf die IP-Adresse von API Management (aus Sicherheitsgründen). Aufrufe an Service Bus werden durch eine Shared Access Signature (SAS) gesichert.
 - **Azure DNS:** [Azure DNS](https://docs.microsoft.com/azure/dns/) ist ein Hostingdienst für DNS-Domänen. Azure DNS bietet eine Namensauflösung mithilfe der Microsoft Azure-Infrastruktur. Durch das Hosten Ihrer Domänen in Azure können Sie Ihre DNS-Einträge mithilfe der gleichen Anmeldeinformationen, APIs, Tools und Abrechnung wie für die anderen Azure-Dienste verwalten. Erstellen Sie zur Verwendung eines benutzerdefinierten Domänennamens (etwa contoso.com) DNS-Einträge, die den benutzerdefinierten Domänennamen der IP-Adresse zuordnen. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens in API Management](https://docs.microsoft.com/en-us/azure/api-management/configure-custom-domain).
 - **Azure Active Directory (Azure AD):** Verwenden Sie [Azure AD](https://docs.microsoft.com/azure/active-directory/) oder einen anderen Identitätsanbieter für die Authentifizierung. Azure AD bietet die Authentifizierung für den Zugriff auf API-Endpunkte durch die Weitergabe eines [JSON Web Token für API Management](https://docs.microsoft.com/azure/api-management/policies/authorize-request-based-on-jwt-claims) zur Validierung. Azure AD ermöglicht einen sicheren Zugriff auf das API Management-Entwicklerportal (nur Standard und Premium-Tarife).
 

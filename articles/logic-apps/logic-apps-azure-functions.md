@@ -7,21 +7,21 @@ author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 20ad738541554279ff9fd6dd6babe90a38676c00
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: a63bd8e3b071ed996db8ad5aeaeb5e451b4d92e9
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263189"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146771"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Hinzufügen und Ausführen von benutzerdefinierten Codeausschnitten in Azure Logic Apps mit Azure Functions
 
-Wenn Sie nur so viel Code erstellen und ausführen möchten, wie für die Behebung eines bestimmten Problems in Ihren Logik-Apps benötigt wird, können Sie mit [Azure Functions](../azure-functions/functions-overview.md) Ihre eigenen Funktionen erstellen. Dieser Dienst verfügt über eine Funktion zum Erstellen und Ausführen von benutzerdefinierten Codeausschnitten, die in Ihren Logik-Apps mit Node.js oder C# geschrieben werden. So müssen Sie sich nicht um die Erstellung einer gesamten App oder um die Infrastruktur zur Ausführung Ihres Codes kümmern. Azure Functions ermöglicht serverloses Computing in der Cloud und ist nützlich, um Aufgaben durchzuführen, z.B. diese Beispiele:
+Wenn Sie nur so viel Code ausführen möchten, dass ein bestimmter Einzelvorgang in Ihren Logik-Apps erledigt wird, können Sie mit [Azure Functions](../azure-functions/functions-overview.md) Ihre eigenen Funktionen erstellen. Dieser Dienst hilft Ihnen beim Erstellen von Node.js-, C#- and F#-Codeausschnitten, sodass Sie keine gesamte App oder die Infrastruktur zur Ausführung Ihres Codes erstellen müssen. Azure Functions ermöglicht serverloses Computing in der Cloud und ist nützlich, um Aufgaben auszuführen, z.B. diese Beispiele:
 
-* Erweitern Sie das Verhalten Ihrer Logik-App um Funktionen, die von Node.js oder C# unterstützt werden.
+* Erweitern Sie das Verhalten Ihrer Logik-App um Funktionen in Node.js oder C#.
 * Führen Sie in Ihrem Logik-App-Workflow Berechnungen durch.
 * Wenden Sie in Ihren Logik-Apps die erweiterte Formatierung oder Computefelder an.
 
@@ -29,69 +29,57 @@ Sie können [Logik-Apps auch aus Azure-Funktionen aufrufen](#call-logic-app).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Damit Sie diesem Artikel folgen können, benötigen Sie die folgenden Komponenten:
+Um diesem Artikel folgen zu können, benötigen Sie Folgendes:
 
 * Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>. 
 
-* Logik-App, der Sie die Funktion hinzufügen möchten
+* Eine Azure-Funktionen-App, bei der es sich um einen Container für Azure-Funktionen handelt, und Ihre Azure-Funktion. Wenn noch keine Funktionen-App vorhanden ist, [erstellen Sie zuerst Ihre Funktionen-App](../azure-functions/functions-create-first-azure-function.md). Sie können Ihre Funktion dann entweder [separat außerhalb Ihrer Logik-App](#create-function-external) oder [aus Ihrer Logik-App](#create-function-designer) im Logik-App-Designer erstellen.
 
-  Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Sowohl für vorhandene als auch für neue Funktionen-Apps und Funktionen gelten die gleichen Anforderungen in Bezug auf die Arbeit mit Logik-Apps:
 
-* Ein [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts), der als erster Schritt in Ihrer Logik-App verwendet wird. 
+  * Ihre Funktionen-App muss dasselbe Azure-Abonnement wie Ihre Logik-App aufweisen.
+
+  * Ihre Funktion verwendet einen HTTP-Trigger, z.B. die Funktionsvorlage **HTTP-Trigger** für **JavaScript** oder **C#**. 
+
+    Die HTTP-Trigger-Vorlage kann Inhalte mit dem Typ `application/json` von Ihrer Logik-App akzeptieren. 
+    Wenn Sie Ihrer Logik-App eine Azure-Funktion hinzufügen, zeigt der Logik-App-Designer benutzerdefinierte Funktionen, die im Rahmen Ihres Azure-Abonnements aus dieser Vorlage erstellt wurden. 
+
+  * Ihre Funktion verwendet keine benutzerdefinierten Routen – es sei denn, dass Sie eine [OpenAPI-Definition](../azure-functions/functions-openapi-definition.md) festgelegt haben, die früher als [Swagger-Datei](http://swagger.io/) bezeichnet wurde. 
+  
+  * Wenn Sie für Ihre Funktion eine OpenAPI-Definition festgelegt haben, erhalten Sie im Logik-App-Designer eine umfangreichere Benutzeroberfläche für die Arbeit mit Funktionsparametern. Bevor Ihre Logik-App Funktionen mit OpenAPI-Definitionen finden und darauf zugreifen kann, [müssen Sie Ihre Funktionen-App mit diesen Schritten einrichten](#function-swagger).
+
+* Die Logik-App, in der Sie die Funktion hinzufügen möchten, einschließlich eines [Triggers](../logic-apps/logic-apps-overview.md#logic-app-concepts) als erstem Schritt in Ihrer Logik-App 
 
   Bevor Sie Aktionen zum Ausführen von Funktionen hinzufügen können, muss Ihre Logik-App über einen Trigger gestartet werden.
 
-* Eine Azure-Funktionen-App, bei der es sich um einen Container für Azure-Funktionen handelt, und Ihre Azure-Funktion. Wenn Sie nicht über eine Funktionen-App verfügen, müssen Sie [zuerst Ihre Funktionen-App erstellen](../azure-functions/functions-create-first-azure-function.md). Sie können Ihre Funktion dann entweder [separat außerhalb Ihrer Logik-App](#create-function-external) oder [aus Ihrer Logik-App](#create-function-designer) im Logik-App-Designer erstellen.
-
-  Sowohl für neue als auch für vorhandene Azure-Funktionen-Apps gelten die gleichen Anforderungen in Bezug auf die Arbeit mit Ihren Logik-Apps:
-
-  * Ihre Funktionen-App muss demselben Azure-Abonnement wie Ihre Logik-App angehören.
-
-  * Für Ihre Funktion muss die Funktionsvorlage **Generischer Webhook** verwendet werden – entweder für **JavaScript** oder für **C#**. Diese Vorlage kann Inhalte mit dem Typ `application/json` von Ihrer Logik-App akzeptieren. Diese Vorlagen unterstützen den Logik-App-Designer auch beim Suchen und Anzeigen der benutzerdefinierten Funktionen, die Sie mit diesen Vorlagen erstellen, wenn Sie diese Funktionen Ihren Logik-Apps hinzufügen.
-
-  * Stellen Sie sicher, dass die **Mode**-Eigenschaft Ihrer Funktionsvorlage auf **Webhook** und die **Webhook type**-Eigenschaft auf **Generic JSON** festgelegt ist.
-
-    1. Melden Sie sich beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an.
-    2. Wählen Sie im Hauptmenü von Azure die Option **Funktionen-Apps**. 
-    3. Wählen Sie in der Liste **Funktionen-Apps** Ihre Funktionen-App aus, erweitern Sie die Funktion, und wählen Sie **Integrieren**. 
-    4. Stellen Sie sicher, dass die **Mode**-Eigenschaft Ihrer Vorlage auf **Webhook** und die **Webhook type**-Eigenschaft auf **Generic JSON** festgelegt ist. 
-
-  * Falls Ihre Funktion über eine [API-Definition](../azure-functions/functions-openapi-definition.md) verfügt (früher als [Swagger-Datei](http://swagger.io/) bezeichnet), wird im Logik-App-Designer eine umfassendere Benutzeroberfläche für die Arbeit mit Funktionsparametern bereitgestellt. 
-  Bevor Ihre Logik-App nach Funktionen mit Swagger-Beschreibungen suchen und diese finden kann, [müssen Sie Ihre Funktionen-App mit diesen Schritten einrichten](#function-swagger).
+  Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="create-function-external"></a>
 
 ## <a name="create-functions-outside-logic-apps"></a>Erstellen von Funktionen außerhalb von Logik-Apps
 
-Erstellen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> Ihre Azure-Funktionen-App, die über dasselbe Azure-Abonnement wie Ihre Logik-App verfügen muss, und erstellen Sie dann Ihre Azure-Funktion. Falls Sie noch nicht mit Azure Functions vertraut sind, können Sie sich darüber informieren, wie Sie [Ihre erste Funktion im Azure-Portal erstellen](../azure-functions/functions-create-first-azure-function.md). Beachten Sie aber diese Anforderungen zum Erstellen von Azure-Funktionen, die Sie hinzufügen und aus Logik-Apps aufrufen können.
+Erstellen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> Ihre Azure-Funktionen-App, die über dasselbe Azure-Abonnement wie Ihre Logik-App verfügen muss, und erstellen Sie dann Ihre Azure-Funktion.
+Falls Sie mit dem Erstellen von Azure-Funktionen noch nicht vertraut sind, können Sie sich darüber informieren, wie Sie [Ihre erste Funktion im Azure-Portal erstellen](../azure-functions/functions-create-first-azure-function.md). Beachten Sie aber diese Anforderungen zum Erstellen von Funktionen, die Sie aus Logik-Apps aufrufen können:
 
-* Stellen Sie sicher, dass Sie die Funktionsvorlage **Generischer Webhook** für **JavaScript** oder **C#** auswählen.
+* Stellen Sie sicher, dass Sie die Funktionsvorlage **HTTP-Trigger** für **JavaScript** oder **C#** auswählen.
 
-  ![Generischer Webhook – JavaScript oder C#](./media/logic-apps-azure-functions/generic-webhook.png)
-
-* Nachdem Sie Ihre Azure-Funktion erstellt haben, sollten Sie überprüfen, dass die Eigenschaften **Mode** und **Webhook type** der Vorlage richtig festgelegt sind.
-
-  1. Erweitern Sie in der Liste mit den **Funktionen-Apps** Ihre Funktion, und wählen Sie **Integrieren**. 
-
-  2. Stellen Sie sicher, dass die **Mode**-Eigenschaft Ihrer Vorlage auf **Webhook** und die **Webhook type**-Eigenschaft auf **Generic JSON** festgelegt ist. 
-
-     ![„Integrieren“-Eigenschaften Ihrer Funktionsvorlage](./media/logic-apps-azure-functions/function-integrate-properties.png)
+  ![HTTP-Trigger – JavaScript oder C#](./media/logic-apps-azure-functions/http-trigger-function.png)
 
 <a name="function-swagger"></a>
 
-* (Optional) Wenn Sie [eine API-Definition generieren](../azure-functions/functions-openapi-definition.md) (früher als [Swagger-Datei](http://swagger.io/) bezeichnet), können Sie für Ihre Funktion eine umfassendere Benutzeroberfläche nutzen, wenn Sie im Logik-App-Designer mit Funktionsparametern arbeiten. Richten Sie Ihre Funktionen-App wie folgt ein, damit Ihre Logik-App Funktionen finden und darauf zugreifen kann, die über Swagger-Beschreibungen verfügen:
+* (Optional) Wenn Sie [eine API-Definition generieren](../azure-functions/functions-openapi-definition.md) (früher als [Swagger-Datei](http://swagger.io/) bezeichnet), können Sie für Ihre Funktion eine umfassendere Benutzeroberfläche nutzen, wenn Sie im Logik-App-Designer mit Funktionsparametern arbeiten. Wenn Sie Ihre Funktionen-App so einrichten möchten, dass Ihre Logik-App Funktionen, die über Swagger-Beschreibungen verfügen, finden und nutzen kann, führen Sie die folgenden Schritte aus:
 
-  * Stellen Sie sicher, dass Ihre Funktionen-App aktiv ausgeführt wird.
+  1. Stellen Sie sicher, dass Ihre Funktionen-App aktiv ausgeführt wird.
 
-  * Richten Sie in Ihrer Funktionen-App die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) ein, damit alle Ursprünge zulässig sind:
+  2. Richten Sie in Ihrer Funktionen-App die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) mit den folgenden Schritten ein, damit alle Ursprünge zulässig sind:
 
-    1. Wählen Sie über die Liste mit den **Funktionen-Apps** Ihre Funktionen-App und dann **Plattformfeatures** > **CORS** aus.
+     1. Wählen Sie über die Liste mit den **Funktionen-Apps** Ihre Funktionen-App und dann **Plattformfeatures** > **CORS** aus.
 
-       ![Auswählen von Funktionen-App > Plattformfeatures > CORS](./media/logic-apps-azure-functions/function-platform-features-cors.png)
+        ![Auswählen von Funktionen-App > Plattformfeatures > CORS](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-    2. Fügen Sie unter **CORS** das Platzhalterzeichen `*` hinzu, aber entfernen Sie alle anderen Ursprünge in der Liste, und wählen Sie **Speichern**.
+     2. Fügen Sie unter **CORS** das Platzhalterzeichen `*` hinzu, aber entfernen Sie alle anderen Ursprünge in der Liste, und wählen Sie **Speichern**.
 
-       ![Auswählen von Funktionen-App > Plattformfeatures > CORS](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
+        ![Legen Sie für "CORS* das Platzhalterzeichen "*" fest.](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
 ### <a name="access-property-values-inside-http-requests"></a>Zugreifen auf Eigenschaftswerte in HTTP-Anforderungen
 
@@ -130,7 +118,11 @@ Bevor Sie eine Azure-Funktion erstellen können, indem Sie in Ihrer Logik-App im
 
 1. Öffnen Sie Ihre Logik-App über das <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> im Logik-App-Designer. 
 
-2. Wählen Sie im Schritt zum Erstellen und Hinzufügen der Funktion **Neuer Schritt** > **Aktion hinzufügen**. 
+2. Führen Sie zum Erstellen und Hinzufügen Ihrer Funktion den Schritt aus, der für Ihr Szenario zutrifft:
+
+   * Wählen Sie unter dem letzten Schritt im Workflow Ihrer Logik-App **Neuer Schritt** aus.
+
+   * Bewegen Sie Ihren Mauszeiger zwischen vorhandenen Schritten im Workflow Ihrer Logik-App auf den Pfeil, wählen Sie das Pluszeichen (+) und dann **Aktion hinzufügen** aus.
 
 3. Geben Sie im Suchfeld „azure functions“ als Filter ein.
 Wählen Sie in der Liste mit den Aktionen die Aktion **Azure-Funktion wählen – Azure Functions** aus. 
@@ -145,36 +137,34 @@ Wählen Sie in der Liste mit den Aktionen die Aktion **Azure-Funktion wählen �
 
    1. Geben Sie im Feld **Funktionsname** einen Namen für Ihre Funktion an. 
 
-   2. Fügen Sie im Feld **Code** der Vorlage Ihren Funktionscode hinzu. Binden Sie auch die Antwort und Nutzlast ein, die für Ihre Logik-App zurückgegeben werden soll, nachdem die Ausführung Ihrer Funktion abgeschlossen ist. 
-   Mit dem Kontextobjekt im Vorlagencode werden die Nachricht und der Inhalt beschrieben, die bzw. der von Ihrer Logik-App an Ihre Funktion übergeben wird, z.B.:
+   2. Fügen Sie im Feld **Code** der Funktionsvorlage Ihren Code hinzu. Binden Sie auch die Antwort und Nutzlast ein, die für Ihre Logik-App zurückgegeben werden soll, nachdem die Ausführung Ihrer Funktion abgeschlossen ist. 
 
       ![Definieren Ihrer Funktion](./media/logic-apps-azure-functions/function-definition.png)
 
-      In Ihrer Funktion können Sie auf die Eigenschaften im Kontextobjekt mit dieser Syntax verweisen:
+      Im Code der Vorlage bezieht sich das *`context`-Objekt* auf die Nachricht, die Ihre Logik-App in einem späteren Schritt über das Feld **Anforderungstext** sendet. 
+      Verwenden Sie für den Zugriff auf die Eigenschaften des `context`-Objekts aus Ihrer Funktion heraus die folgende Syntax: 
 
-      ```text
-      context.<token-name>.<property-name>
-      ```
-      Für dieses Beispiel lautet die Syntax wie folgt:
+      `context.body.<property-name>`
 
-      ```text
-      context.body.content
-      ```
+      Um beispielsweise auf die `content`-Eigenschaft im `context`-Objekt zu verweisen, verwenden Sie diese Syntax: 
 
+      `context.body.content`
+
+      Der Vorlagencode enthält auch eine `input`-Variable, in der der Wert aus dem Parameter `data` gespeichert wird, damit Ihre Funktion Vorgänge an diesem Wert durchführen kann. 
+      Innerhalb der JavaScript-Funktionen ist die `data`-Variable außerdem eine Kurzform für `context.body`.
+
+      > [!NOTE]
+      > Die `body`-Eigenschaft gilt hier für das `context`-Objekt und ist mit dem **Body**-Token aus der Ausgabe einer Aktion nicht identisch, das Sie möglicherweise ebenfalls an Ihre Funktion übergeben. 
+ 
    3. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
 
-6. Geben Sie im Feld **Anforderungstext** das Kontextobjekt an, das als Eingabe für Ihre Funktion übergeben werden soll. Hierfür muss das JSON-Format (JavaScript Object Notation) verwendet werden. Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt geöffnet, und Sie können Token für Eigenschaften auswählen, die aus vorherigen Schritten verfügbar sind. 
+6. Geben Sie im Feld **Anforderungstext** die Eingabe für Ihre Funktion ein, die als JSON-Objekt (JavaScript Object Notation) formatiert werden muss. 
 
-   In diesem Beispiel wird das Objekt im **Body**-Token aus dem E-Mail-Trigger übergeben:  
+   Diese Eingabe ist das *Kontextobjekt* oder die Nachricht, das bzw. die von Ihrer Logik-App an Ihre Funktion gesendet wird. Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt angezeigt, und Sie können Token für Ausgaben aus vorherigen Schritten auswählen. In diesem Beispiel wird angegeben, dass die Kontextnutzlast die Eigenschaft `content` enthält, die den Wert des Tokens **Von** aus dem E-Mail-Trigger aufweist:
 
    ![Beispiel „Anforderungstext“ –Nutzlast des Kontextobjekts](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   Basierend auf dem Inhalt im Kontextobjekt generiert der Logik-App-Designer eine Funktionsvorlage, die Sie dann inline bearbeiten können. 
-   Logic Apps erstellt Variablen auch basierend auf dem Eingabekontextobjekt.
-
-   In diesem Beispiel wird das Kontextobjekt nicht in eine Zeichenfolge umgewandelt, sodass der Inhalt direkt der JSON-Nutzlast hinzugefügt wird. 
-   Falls das Objekt aber kein JSON-Token ist, wobei es sich um eine Zeichenfolge, ein JSON-Objekt oder ein JSON-Array handeln muss, erhalten Sie einen Fehler. 
-   Fügen Sie doppelte Anführungszeichen hinzu, um das Kontextobjekt in eine Zeichenfolge umzuwandeln, z.B.:
+   Hier wird das Kontextobjekt nicht in eine Zeichenfolge umgewandelt, sodass der Inhalt des Objekts der JSON-Nutzlast direkt hinzugefügt wird. Wenn das Kontextobjekt aber kein JSON-Token ist, das eine Zeichenfolge, ein JSON-Objekt oder ein JSON-Array übergibt, wird eine Fehlermeldung angezeigt. Wurde in diesem Beispiel stattdessen das Token **Empfangszeit** verwendet, können Sie das Kontextobjekt in eine Zeichenfolge umwandeln, indem Sie doppelte Anführungszeichen hinzufügen:  
 
    ![Umwandeln eines Objekts in eine Zeichenfolge](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -203,16 +193,13 @@ Wählen Sie in der Liste mit den Aktionen die Aktion **Azure-Funktion wählen �
 
    ![Auswählen von Funktionen-App, „Swagger-Aktionen“ und Azure-Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
-5. Geben Sie im Feld **Anforderungstext** das Kontextobjekt an, das als Eingabe für Ihre Funktion übergeben werden soll. Hierfür muss das JSON-Format (JavaScript Object Notation) verwendet werden. Mit diesem Kontextobjekt werden die Nachricht und der Inhalt beschrieben, die bzw. der von Ihrer Logik-App an Ihre Funktion gesendet wird. 
+5. Geben Sie im Feld **Anforderungstext** die Eingabe für Ihre Funktion ein, die als JSON-Objekt (JavaScript Object Notation) formatiert werden muss. 
 
-   Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt geöffnet, und Sie können Token für Eigenschaften auswählen, die aus vorherigen Schritten verfügbar sind. 
-   In diesem Beispiel wird das Objekt im **Body**-Token aus dem E-Mail-Trigger übergeben:
+   Diese Eingabe ist das *Kontextobjekt* oder die Nachricht, das bzw. die von Ihrer Logik-App an Ihre Funktion gesendet wird. Wenn Sie in das Feld **Anforderungstext** klicken, wird die Liste mit dem dynamischen Inhalt angezeigt, und Sie können Token für Ausgaben aus vorherigen Schritten auswählen. In diesem Beispiel wird angegeben, dass die Kontextnutzlast die Eigenschaft `content` enthält, die den Wert des Tokens **Von** aus dem E-Mail-Trigger aufweist:
 
    ![Beispiel „Anforderungstext“ –Nutzlast des Kontextobjekts](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   In diesem Beispiel wird das Kontextobjekt nicht in eine Zeichenfolge umgewandelt, sodass der Inhalt direkt der JSON-Nutzlast hinzugefügt wird. 
-   Falls das Objekt aber kein JSON-Token ist, wobei es sich um eine Zeichenfolge, ein JSON-Objekt oder ein JSON-Array handeln muss, erhalten Sie einen Fehler. 
-   Fügen Sie doppelte Anführungszeichen hinzu, um das Kontextobjekt in eine Zeichenfolge umzuwandeln, z.B.:
+   Hier wird das Kontextobjekt nicht in eine Zeichenfolge umgewandelt, sodass der Inhalt des Objekts der JSON-Nutzlast direkt hinzugefügt wird. Wenn das Kontextobjekt aber kein JSON-Token ist, das eine Zeichenfolge, ein JSON-Objekt oder ein JSON-Array übergibt, wird eine Fehlermeldung angezeigt. Wurde in diesem Beispiel stattdessen das Token **Empfangszeit** verwendet, können Sie das Kontextobjekt in eine Zeichenfolge umwandeln, indem Sie doppelte Anführungszeichen hinzufügen: 
 
    ![Umwandeln eines Objekts in eine Zeichenfolge](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
@@ -222,7 +209,7 @@ Wählen Sie in der Liste mit den Aktionen die Aktion **Azure-Funktion wählen �
 
 ## <a name="call-logic-apps-from-functions"></a>Aufrufen von Logik-Apps aus Funktionen
 
-Um eine Logik-App aus einer Azure-Funktion auszulösen, muss diese Logik-App über einen aufrufbaren Endpunkt verfügen – genauer gesagt über einen **Anforderungstrigger**. Senden Sie dann aus Ihrer Funktion eine HTTP POST-Anforderung an die URL für diesen **Anforderungstrigger**, und binden Sie die Nutzlast ein, die von dieser Logik-App verarbeitet werden soll. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). 
+Wenn Sie eine Logik-App aus einer Azure-Funktion auslösen möchten, muss diese App mit einem Trigger starten, der einen aufrufbaren Endpunkt bereitstellt. So können Sie beispielsweise die Logik-App mit dem Trigger **HTTP**, **Anforderung**, **Azure-Warteschlangen** oder **Event Grid** starten. Senden Sie in Ihrer Funktion eine HTTP POST-Anforderung an die URL des Triggers, und binden Sie die Nutzlast ein, die von dieser Logik-App verarbeitet werden soll. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). 
 
 ## <a name="get-support"></a>Support
 
