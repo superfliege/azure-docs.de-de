@@ -82,7 +82,7 @@ Für CORS-Regeln gelten die folgenden Einschränkungen:
 * Die Länge eines zulässigen Headers oder Ursprungs bzw. eines verfügbar gemachten Headers sollte maximal 256 Zeichen betragen.
 * Zulässige und verfügbar gemachte Header können in folgender Form vorkommen:
   * Literale Header, bei denen der genaue Headername angegeben ist, z.B. **x-ms-meta-processed**. In der Anforderung können maximal 64 literale Header angegeben werden.
-  * Header mit Präfix, bei denen ein Präfix des Headers angegeben ist, z.B. **x-ms-meta-data***. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
+  * Header mit Präfix, bei denen ein Präfix des Headers angegeben ist, z.B. **x-ms-meta-data**\*. Wird auf diese Weise ein Präfix angegeben, sind alle Header zulässig bzw. werden alle Header verfügbar gemacht, die mit dem angegebenen Präfix beginnen. In der Anforderung können maximal zwei Header mit Präfix angegeben werden.
 * Die Methoden (oder HTTP-Verben), die im **AllowedMethods** -Element angegeben sind, müssen den Methoden entsprechen, die von Azure Storage-Dienst-APIs unterstützt werden. Unterstützte Methoden sind DELETE, GET, HEAD, MERGE, POST, OPTIONS und PUT.
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>Grundlagen zur Auswertungslogik für CORS-Regeln

@@ -271,7 +271,7 @@ Wenn Sie Daten aus einem Datenspeicher in einem privaten Netzwerk (lokal) in ein
 1. Wählen Sie im Fenster **Integration Runtime Setup** (Integration Runtime-Setup) die Option **Perform data movement and dispatch activities to external computes** (Datenverschiebung und -verteilung an externe Computeressourcen ausführen), und klicken Sie auf **Weiter**. 
 
    ![Auswählen des Typs der Integrationslaufzeit](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-1. Wählen Sie ** Privates Netzwerk**, und klicken Sie auf **Weiter**. 
+1. Wählen Sie **Privates Netzwerk**, und klicken Sie auf **Weiter**. 
 
    ![Auswählen von „Privates Netzwerk“](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
 1. Geben Sie unter **Name** die Zeichenfolge **MySelfHostedIR** ein, und klicken Sie auf **Weiter**. 
@@ -433,7 +433,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Iteration & Conditionals** (Iteration und konditionelle Abschnitte), und ziehen Sie die **ForEach**-Aktivität auf die Oberfläche des Pipeline-Designers. Geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** den Text **IterateSQLTables** ein. 
 
     ![ForEach-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
-1. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
+1. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Einstellungen**, und geben Sie unter **Elemente** die Zeichenfolge `@pipeline().parameters.tableList` ein. Die ForEach-Aktivität durchläuft eine Liste mit Tabellen und führt den inkrementellen Kopiervorgang durch. 
 
     ![ForEach-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 1. Wählen Sie die **ForEach**-Aktivität in der Pipeline, falls sie nicht bereits ausgewählt wurde. Klicken Sie auf die Schaltfläche **Bearbeiten** (Stiftsymbol).
@@ -442,7 +442,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers, und geben Sie unter **Name** den Namen **LookupOldWaterMarkActivity** ein.
 
     ![Erste Lookup-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
-1. Wechseln Sie im Eigenschaftenfenster**** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
+1. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
 
     1. Wählen Sie **WatermarkDataset** für **Source Dataset**.
     1. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
