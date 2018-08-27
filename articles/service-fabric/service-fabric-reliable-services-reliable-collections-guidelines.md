@@ -24,7 +24,7 @@ ms.locfileid: "39389530"
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
 Dieser Abschnitt enthält Richtlinien für die Verwendung von Reliable State Manager und Reliable Collections. Er soll Benutzern helfen, häufige Fehlerquellen zu vermeiden.
 
-Die ** Richtlinien** werden als ** einfache Empfehlungen präsentiert**.
+Die Richtlinien werden als einfache Empfehlungen präsentiert.
 
 * Ändern Sie kein benutzerdefiniertes Objekt, das von Lesevorgängen (z.B. `TryPeekAsync` oder `TryGetValueAsync`) zurückgegeben wurde. Zuverlässige Auflistungen geben ebenso wie gleichzeitige Auflistungen anstelle einer Kopie einen Verweis auf die Objekte zurück.
 * Tiefenkopieren Sie zurückgegebene benutzerdefinierte Objekte, bevor Sie diese ändern. Da bei Strukturen und integrierten Typen eine Wertübergabe erfolgt, ist für sie nur dann eine Tiefenkopie erforderlich, wenn sie Verweistypfelder oder Eigenschaften enthalten, die Sie ändern möchten.
