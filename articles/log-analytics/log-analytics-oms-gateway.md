@@ -290,7 +290,7 @@ Die folgende Tabelle enthält die Ereignis-IDs und Beschreibungen für OMS Gatew
 | 103 |HTTP CONNECT-Befehl vom Client empfangen |
 | 104 |Kein HTTP CONNECT-Befehl |
 | 105 |Zielserver ist nicht in der Liste zulässiger Elemente enthalten, oder der Zielport ist kein sicherer Port (443) <br> <br> Stellen Sie sicher, dass der MMA-Agent auf dem Gatewayserver und die Agents, die mit dem Gateway kommunizieren, mit dem gleichen Log Analytics-Arbeitsbereich verbunden sind. |
-| 105 |FEHLER TcpConnection – Ungültiges Clientzertifikat: CN=Gateway <br><br> Stellen Sie Folgendes sicher: <br>    <br> & #149; Sie verwenden ein Gateway mit der Versionsnummer 1.0.395.0 oder höher. <br> &#149; Der MMA-Agent auf dem Gatewayserver und die Agents, die mit dem Gateway kommunizieren, sind mit dem gleichen Log Analytics-Arbeitsbereich verbunden. |
+| 105 |FEHLER TcpConnection – Ungültiges Clientzertifikat: CN=Gateway <br><br> Stellen Sie Folgendes sicher: <br>    <br> &#149; Sie verwenden ein Gateway mit der Versionsnummer 1.0.395.0 oder höher. <br> &#149; Der MMA-Agent auf dem Gatewayserver und die Agents, die mit dem Gateway kommunizieren, sind mit dem gleichen Log Analytics-Arbeitsbereich verbunden. |
 | 106 |Das OMS-Gateway unterstützt nur TLS 1.0, TLS 1.1 und 1.2.  SSL wird nicht unterstützt. Für alle nicht unterstützten Versionen des TLS/SSL-Protokolls generiert das OMS-Gateway Ereignis-ID 106.|
 | 107 |Die TLS-Sitzung wurde überprüft |
 
