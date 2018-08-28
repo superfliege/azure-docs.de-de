@@ -6,17 +6,22 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 07/09/2018
+ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 4874e42139e277400c866a7fc4c7094faeae136d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e4d01fdb4c11277af68127e4671a36ad7e2c74d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002203"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42023056"
 ---
 # <a name="what-is-azure-search"></a>Was ist Azure Search?
-Azure Search ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet.
+Azure Search ist eine Search-as-a-Service-Cloudlösung, die Entwicklern APIs und Tools zum Hinzufügen von umfangreichen Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. Die Abfrageausführung erfolgt über einen benutzerdefinierten Index.
+
++ Erstellen Sie einen Suchbestand, der nur Ihre Daten aus verschiedenen Inhaltstypen und Plattformen enthält. 
++ Nutzen Sie auf KI basierende Indizierung, um Text und Merkmale aus Bilddateien bzw. Entitäten und Schlüsselwörter aus unformatiertem Text zu extrahieren.
++ Erstellen Sie Suchoberflächen mit Facettennavigation und Filtern, Synonymen, automatischer Vervollständigung und Textanalyse für automatisch korrigierte Suchbegriffe („Meinten Sie...?“).
++ Fügen Sie eine geografische Umgebungssuche, Sprachanalysen für die Volltextsuche in nicht englischen Texten und Bewertungslogik für den Suchrang hinzu.
 
 Die Funktionalität wird über eine einfache [REST-API](/rest/api/searchservice/) oder ein [.NET SDK](search-howto-dotnet-sdk.md) bereitgestellt, sodass die inhärente Komplexität des Informationsabrufs verborgen bleibt. Zusätzlich zu den APIs bietet das Azure-Portal mit Tools für die Prototyperstellung und Indexabfrage Unterstützung für Administration und Inhaltsverwaltung. Da der Dienst in der Cloud ausgeführt wird, werden die Infrastruktur und Verfügbarkeit von Microsoft verwaltet.
 
@@ -51,7 +56,7 @@ Bevor Sie durchsuchbaren Inhalt hochladen können, müssen Sie einen Azure Searc
 
 Ein Schema kann im Azure-Portal oder programmgesteuert mithilfe des [.NET SDK](search-howto-dotnet-sdk.md) oder der [REST-API](/rest/api/searchservice/) erstellt werden.
 
-### <a name="step-3-index-data"></a>Schritt 3: Indizieren der Daten
+### <a name="step-3-load-data"></a>Schritt 3: Laden von Daten
 Nachdem Sie einen Index definiert haben, können Sie Inhalte hochladen. Sie können entweder ein Push- oder Pullmodell verwenden.
 
 Das Pullmodell ruft Daten aus externen Datenquellen ab. Es wird durch *Indexer* unterstützt, die Aspekte der Erfassung von Daten, z.B. Herstellen einer Verbindung mit Daten, Lesen und Serialisieren von Daten optimieren und automatisieren. [Indexer](/rest/api/searchservice/Indexer-operations) stehen für Azure Cosmos DB, Azure SQL-Datenbank, Azure Blob Storage und von SQL Server gehosteten Instanzen auf einem Azure-VM zur Verfügung. Sie können einen Indexer für bedarfsgesteuerte oder geplante Datenaktualisierung konfigurieren.
@@ -61,7 +66,7 @@ Das Pushmodell wird über das SDK oder die REST-APIs bereitgestellt, die zum Sen
 ### <a name="step-4-search"></a>Schritt 4: Suchen
 Nach dem Füllen eines Indexes können Sie über einfache HTTP-Anforderungen mit REST-API oder dem .NET-SDK [Suchabfragen](/rest/api/searchservice/Search-Documents) an Ihren Dienstendpunkt richten.
 
-## <a name="how-azure-search-compares"></a>Azure Search im Vergleich
+## <a name="how-it-compares"></a>Im Vergleich
 
 Kunden interessieren sich häufig für einen Vergleich von Azure Search mit anderen Suchlösungen. Die wesentlichen Unterschiede sind in der folgenden Tabelle zusammengefasst.
 
@@ -104,13 +109,16 @@ Alternativ können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](https://a
 
 ## <a name="how-to-get-started"></a>Erste Schritte
 
-1. Erstellen Sie einen Dienst im [Free-Tarif](search-create-service-portal.md).
+1. Erstellen Sie einen [kostenlosen Dienst](search-create-service-portal.md). Alle Schnellstartanleitungen und Tutorials können mit dem kostenlosen Dienst abgeschlossen werden.
 
-2. Arbeiten Sie eines oder mehrere der folgenden Tutorials durch. 
+2. Gehen Sie das [Tutorial zum Verwenden von integrierten Tools für Indizierung und Abfragen](search-get-started-portal.md) durch. Lernen Sie wichtige Konzepte kennen, und machen Sie sich mit den im Portal bereitgestellten Informationen vertraut.
 
-  + [Verwenden des .NET SDK](search-howto-dotnet-sdk.md) veranschaulicht die wichtigsten Schritte in verwaltetem Code.  
-  + [Erste Schritte mit der REST-API](https://github.com/Azure-Samples/search-rest-api-getting-started) zeigt die gleichen Schritte in der REST-API.  
-  + [Erstellen Ihres ersten Index im Portal](search-get-started-portal.md) mit integrierten Funktionen für Indizierung und Erstellung von Prototypen.   
+3. Verwenden Sie den Code entweder mit der .NET- oder der REST-API:
+
+  + [Verwenden von Azure Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md) veranschaulicht den Hauptworkflow in verwaltetem Code.  
+  + [Erste Schritte mit der REST-API](https://github.com/Azure-Samples/search-rest-api-getting-started) zeigt die gleichen Schritte in der REST-API. Sie können auch mit der folgenden Schnellstartanleitung REST-APIs aus Postman oder Fiddler aufrufen: [Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman](search-fiddler.md).
+
+## <a name="watch-this-video"></a>Video ansehen
 
 Suchmodule sind die wichtigsten Komponenten für den Informationsabruf in mobilen Apps, im Web und in Unternehmensdatenspeichern. Azure Search bietet Tools zum Erstellen einer Suchoberfläche, die denen großer kommerzieller Websites ähnelt.
 
@@ -122,5 +130,3 @@ In diesem 9-Minuten-Video von Programm-Manager Liam Cavanagh erfahren Sie, wie I
 + Minute 3–4: Erläuterung der Dienstbereitstellung. 
 + Minute 4–6: Vorstellung des Datenimport-Assistenten zum Erstellen eines Index mithilfe des integrierten Immobilien-Beispieldatasets.
 + Minute 6–9: Vorstellung des Search-Explorers und verschiedener Abfragen.
-
-

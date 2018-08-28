@@ -5,15 +5,15 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 423995aecc6e5f29464ad140349ba27f89c75b5d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 141e8f2a01c057f613b7668e64a0ec9503fcfb39
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068742"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023834"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Erstellen und Weiterleiten von Blob Storage-Ereignissen mit dem Azure-Portal und Event Grid
 
@@ -27,8 +27,6 @@ Am Ende sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Zur Verwendung von Blob Storage-Ereignissen benötigen Sie ein [Blob Storage-Konto](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) oder ein [Speicherkonto des Typs „General Purpose v2“](../storage/common/storage-account-options.md#general-purpose-v2-accounts). Bei **General Purpose v2 (GPv2)** handelt es sich um Speicherkonten, die alle Features für alle Speicherdienste unterstützen, z.B. Blobs, Files, Queues und Tables. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten. 
-
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 1. Wählen Sie zum Erstellen eines Blobspeichers die Option **Ressource erstellen**. 
@@ -39,7 +37,7 @@ Zur Verwendung von Blob Storage-Ereignissen benötigen Sie ein [Blob Storage-Kon
 
    ![Auswählen von „Speicher“](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Stellen Sie Werte für den Blobspeicher bereit, einschließlich eines eindeutigen Namens für das Konto. Wählen Sie als Kontotyp **BLOB-Speicher** aus. Wählen Sie als Standort einen der [Standorte](overview.md) aus, für die Event Grid unterstützt wird. Wenn Sie mit dem Angeben der Werte fertig sind, können Sie **Erstellen** wählen.
+1. Für Ereignisse müssen Sie entweder ein [Blob Storage-Konto](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) oder ein [Speicherkonto des Typs „Universell v2“](../storage/common/storage-account-options.md#general-purpose-v2-accounts) erstellen. Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von BLOB-Speicherkonten. Geben Sie Werte für das Blobkonto oder das V2-Speicherkonto an. Geben Sie einen eindeutigen Namen für das Konto an. Wenn Sie mit dem Angeben der Werte fertig sind, können Sie **Erstellen** wählen.
 
    ![Starten von Schritten](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

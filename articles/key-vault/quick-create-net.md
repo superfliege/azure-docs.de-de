@@ -1,6 +1,6 @@
 ---
-title: 'Azure-Schnellstart: Konfigurieren einer Azure-Webanwendung zum Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Key Vault | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine ASP.NET Core-Anwendung zum Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Key Vault konfigurieren.
+title: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App | Microsoft-Dokumentation'
+description: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App'
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 0188d06e5c58287e1040f6a15456d3ffe291b04a
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480201"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42022974"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App
 
@@ -28,7 +28,10 @@ In dieser Schnellstartanleitung wird ausführlich erläutert, mit welchen Schrit
 > * [Aktivieren von verwalteten Dienstidentitäten](../active-directory/managed-service-identity/overview.md)
 > * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus Key Vault für die Webanwendung
 
-Lesen Sie sich vor dem Fortfahren den Abschnitt [Grundlegende Konzepte](key-vault-whatis.md#basic-concepts) durch, vor allem zum Thema [Verwaltete Dienstidentität](../active-directory/managed-service-identity/overview.md).
+Lesen Sie die Informationen zu [grundlegenden Konzepten](key-vault-whatis.md#basic-concepts), bevor Sie fortfahren.
+
+>[!NOTE]
+Sie müssen mit ein paar Konzepten vertraut sein, um zu verstehen, warum das folgende Tutorial die empfohlene Vorgehensweise ist. Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen oder Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis außerdem regelmäßig rotiert werden. Dank der [verwalteten Dienstidentität](../active-directory/managed-service-identity/overview.md) erhalten in Azure ausgeführte Anwendungen jedoch eine Identität, die automatisch von Azure verwaltet wird. Das macht die **Einführung von Geheimnissen weniger problematisch**, da Benutzer/Anwendungen die empfohlene Vorgehensweise verwenden können und sich nicht um die Rotation des ersten Geheimnisses kümmern müssen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -165,6 +168,8 @@ Führen Sie anschließend diesen Befehl aus, indem Sie den Namen Ihrer Key Vault
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
 
 ```
+
+**Wenn Sie die Anwendung nun ausführen, sollte der Wert des Geheimnisses abgerufen werden.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 

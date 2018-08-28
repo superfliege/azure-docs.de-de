@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Gerätebereitstellung mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Einrichten eines Gerätebereitstellungsdiensts mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
 description: 'Azure-Schnellstartanleitung: Einrichten des Azure IoT Hub Device Provisioning-Diensts mithilfe der Azure-Befehlszeilenschnittstelle'
 author: wesmc7777
 ms.author: wesmc
@@ -9,16 +9,16 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cf2e108aa7cab6be2996cb535d27d597e462617c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c9e3bbbc4fbe8a9aade3364d6cbe9e93b5798595
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626538"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023006"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-azure-cli"></a>Einrichten des IoT Hub Device Provisioning-Diensts mithilfe der Azure-Befehlszeilenschnittstelle
 
-Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine IoT Hub-Instanz und einen IoT Hub Device Provisioning-Dienst erstellen und die beiden Dienste miteinander verknüpfen. 
+Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die Befehlszeile oder mit Skripts. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle eine IoT Hub-Instanz und eine IoT Hub Device Provisioning Service-Instanz erstellen und die beiden Dienste miteinander verknüpfen. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -72,7 +72,7 @@ az iot dps create --name my-sample-dps --resource-group my-sample-resource-group
 
 ## <a name="get-the-connection-string-for-the-iot-hub"></a>Abrufen der Verbindungszeichenfolge für die IoT Hub-Instanz
 
-Die Verbindungszeichenfolge Ihrer IoT Hub-Instanz wird benötigt, um sie mit dem Device Provisioning-Dienst zu verknüpfen. Rufen Sie mithilfe des Befehls [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) die Verbindungszeichenfolge ab, und verwenden Sie die Ausgabe des Befehls, um eine Variable festzulegen, die später beim Verknüpfen der beiden Ressourcen verwendet wird. 
+Die Verbindungszeichenfolge Ihrer IoT Hub-Instanz wird benötigt, um sie mit der Device Provisioning Service-Instanz zu verknüpfen. Rufen Sie mithilfe des Befehls [az iot hub show-connection-string](/cli/azure/iot/hub#az-iot-hub-show-connection-string) die Verbindungszeichenfolge ab, und verwenden Sie die Ausgabe des Befehls, um eine Variable festzulegen, die später beim Verknüpfen der beiden Ressourcen verwendet wird. 
 
 Im folgenden Beispiel wird die Variable *hubConnectionString* auf den Wert der Verbindungszeichenfolge für den primären Schlüssel für die Richtlinie *iothubowner* des Hubs festgelegt. Sie können eine andere Richtlinie mit dem Parameter `--policy-name` angeben. Der Befehl verwendet die Optionen [query](/cli/azure/query-azure-cli) und [output](/cli/azure/format-output-azure-cli#tsv-output-format) der Azure-Befehlszeilenschnittstelle, um die Verbindungszeichenfolge aus der Befehlsausgabe zu extrahieren.
 
