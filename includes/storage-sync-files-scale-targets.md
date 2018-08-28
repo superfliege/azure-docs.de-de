@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a9aa4680d91a4ab95933ae636c4467217fd162b2
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: e2e8da3d2dec2c74bbd1c0ca0f52b7eaba5c024e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39278026"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42358298"
 ---
 | Ressource | Ziel | Harte Grenze |
 |----------|--------------|------------|
@@ -27,5 +27,6 @@ ms.locfileid: "39278026"
 | Dateisystemobjekte (Verzeichnisse und Dateien) pro Synchronisierungsgruppe | 25 Millionen Objekte | Nein  |
 | Maximale Anzahl von Dateisystemobjekten (Verzeichnisse und Dateien) in einem Verzeichnis | 200.000 Objekte | JA |
 | Maximale Objektnamenlänge (Verzeichnisse und Dateien) | 255 Zeichen | JA |
+| Maximale Sicherheitsbeschreibung des Objekts (Verzeichnisse und Dateien) | 4 KiB | JA |
 | Dateigröße | 100 GB | Nein  |
 | Minimale Dateigröße für die Unterteilung einer Datei | 64 KiB | JA |

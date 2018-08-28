@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: c2892d51c6eb5e71c0b1af400b78e993742fede0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173049"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444825"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -34,11 +34,11 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten bei 
 
 ## <a name="resource-support"></a>Ressourcenunterstützung
 
-**Typ des Verschiebevorgangs für Ressourcen** | **Details** 
+**Typ des Verschiebevorgangs für Ressourcen** | **Details**
 --- | --- | ---
 **Tresor über Ressourcengruppen hinweg verschieben** | Nicht unterstützt<br/><br/> Sie können den Recovery Services-Tresor nicht über Ressourcengruppen hinweg verschieben.
 **Verschieben von Compute-, Speicher- und Netzwerkressourcen über Ressourcengruppen hinweg** | Nicht unterstützt.<br/><br/> Wenn Sie eine VM oder zugehörige Komponenten wie Speicher bzw. Netzwerke verschieben, nachdem diese repliziert wurden, müssen Sie die Replikation deaktivieren und die Replikation für die VM erneut aktivieren.
-**Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Nicht unterstützt.
+**Replizieren von Azure-VMs von einem Abonnement in ein anderes zur Notfallwiederherstellung** | Innerhalb des gleichen Azure Active Directory-Mandanten unterstützt.
 **Abonnementübergreifendes Migrieren von VMs** | Nicht unterstützt.
 **Migrieren von VMs in derselben Region** | Nicht unterstützt.
 

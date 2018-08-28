@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 7cf41a10f13e2edeb4ab1944c0d38cc7064c02bb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161510"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432288"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 3
 
@@ -70,6 +70,10 @@ Update 3 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
   - Wincache 2.0.0.8 hinzugefügt
   - Git für Windows auf v2.17.1.2 aktualisiert
   - Kudu auf 74.10611.3437 aktualisiert
+  
+- **Updates des zugrunde liegenden Betriebssystems aller Rollen**:
+  - [Wartungsstapelaktualisierung für Windows Server 2016 für x64-basierte Systeme (KB4132216)](https://support.microsoft.com/help/4132216/servicing-stack-update-for-windows-10-1607-may-17-2018)
+  - [Kumulatives Update für Windows Server 2016 für x64-basierte Systeme aus Juli 2018 (KB4338822)](https://support.microsoft.com/help/4338822/windows-10-update-kb4338822)
 
 ### <a name="post-update-steps-optional"></a>Schritte nach dem Updatevorgang (optional)
 
@@ -80,7 +84,7 @@ Führen Sie diese Schritte aus, nachdem das Update für Azure App Service in Azu
 >
 >
 
-1. Hinzufügen der [Datenbank zu einer Verfügbarkeitsgruppe](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. Hinzufügen von [App Service-Datenbanken (appservice_hosting und appservice_metering) zu einer Verfügbarkeitsgruppe](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
 
 1. Aktivieren der eigenständigen Datenbank
     ```sql

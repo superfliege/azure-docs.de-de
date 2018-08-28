@@ -1,6 +1,6 @@
-﻿---
-title: Erstellen einer ASP.NET Core-Web-App in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie die standardmäßige ASP.NET-Web-App bereitstellen.
+---
+title: Erstellen einer C#-ASP.NET Core-Web-App in Azure | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen, indem Sie die standardmäßige C#-ASP.NET-Web-App bereitstellen.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/14/2017
+ms.date: 06/11/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 91f6fd077146e94833a5527f03ac710352e4fd9c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.custom: mvc, devcenter, vs-azure
+ms.openlocfilehash: 811f4df807292b9d539084a049cc643dbee07a7e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30838365"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432054"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Erstellen von ASP.NET Core-Web-Apps in Azure
 
@@ -40,13 +40,9 @@ ms.locfileid: "30838365"
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Installieren Sie <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> mit den folgenden Workloads:
-    - **ASP.NET und Webentwicklung**
-    - **Azure-Entwicklung**
+Installieren Sie <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> mit der Workload **ASP.NET und Webentwicklung**.
 
-    ![ASP.NET und Webentwicklung und Azure-Entwicklung (unter „Web und Cloud“)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-Falls Sie Visual Studio bereits installiert haben, können Sie die Workloads in Visual Studio hinzufügen, indem Sie auf **Extras** > **Get Tools and Features** (Tools und Features abrufen) klicken.
+Falls Sie Visual Studio bereits installiert haben, können Sie die Workload in Visual Studio hinzufügen, indem Sie auf **Extras** > **Get Tools and Features** (Tools und Features abrufen) klicken.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Erstellen einer ASP.NET Core-Web-App
 
@@ -63,10 +59,6 @@ Sie können jede Art von ASP.NET Core-Web-App für Azure bereitstellen. Wählen 
 Klicken Sie auf **OK**.
 
 ![Dialogfeld "Neues ASP.NET-Projekt"](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
-
-Sobald das ASP.NET Core-Projekt erstellt wurde, wird die ASP.NET Core-Startseite mit zahlreichen Links zu Ressourcen für die ersten Schritte angezeigt. 
-
-![Startseite](./media/app-service-web-get-started-dotnet/aspnet-core-welcome-page.png)
 
 Wählen Sie im Menü **Debuggen > Starten ohne Debugging** aus, um die Web-App lokal auszuführen.
 
@@ -86,11 +78,10 @@ Daraufhin wird das Dialogfeld **App Service erstellen** geöffnet, in dem Sie al
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Wählen Sie im Dialogfeld **App Service erstellen** die Option **Konto hinzufügen**, und melden Sie sich bei Ihrem Azure-Abonnement an. Falls Sie bereits angemeldet sind, können Sie in der Dropdownliste das Konto mit dem gewünschten Abonnement auswählen.
+Klicken Sie im Dialogfeld **App Service erstellen** auf **Konto hinzufügen**, und melden Sie sich bei Ihrem Azure-Abonnement an. Falls Sie bereits angemeldet sind, können Sie in der Dropdownliste das Konto mit dem gewünschten Abonnement auswählen.
 
 > [!NOTE]
 > Wenn Sie bereits angemeldet sind, wählen Sie noch nicht **Erstellen** aus.
->
 >
    
 ![Anmelden bei Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
@@ -116,7 +107,7 @@ Verwenden Sie im Dialogfeld **App Service-Plan konfigurieren** die in der Tabell
 | Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |-|-|-|
 |App Service-Plan| myAppServicePlan | Name des App Service-Plans. |
-| Speicherort | Europa, Westen | Das Rechenzentrum, in dem die Web-App gehostet wird. |
+| Standort | Europa, Westen | Das Rechenzentrum, in dem die Web-App gehostet wird. |
 | Größe | Kostenlos | Der [Tarif](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) bestimmt die Hostingfeatures. |
 
 Klicken Sie auf **OK**.
@@ -152,7 +143,8 @@ Suchen Sie im oberen Bereich nach dem HTML-Tag `<div id="myCarousel" class="caro
 
 Klicken Sie zur erneuten Bereitstellung in Azure im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **myFirstAzureWebApp**, und wählen Sie **Veröffentlichen** aus.
 
-Wählen Sie auf der Veröffentlichungsseite die Option **Veröffentlichen** aus.
+Wählen Sie auf der Seite mit der Veröffentlichungszusammenfassung die Option **Veröffentlichen** aus.
+![Seite mit der Veröffentlichungszusammenfassung in Visual Studio](./media/app-service-web-get-started-dotnet/publish-summary-page.png)
 
 Nach Abschluss der Veröffentlichung wird in Visual Studio ein Browser mit der URL der Web-App gestartet.
 

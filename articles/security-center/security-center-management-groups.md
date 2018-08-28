@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/18/2018
+ms.date: 08/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 800ec83b3599dba716e7a4a015b9b8c1745a0975
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 91d1be062dbf05f4c7c9c5c4a1eb3dfcfdb001af
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144566"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42441693"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 Dieser Artikel erleichtert Ihnen den Einstieg, indem Sie mehrere Aktionen durchführen, mit denen die Vorteile von Azure Security Center maximiert werden. Mit diesen Aktionen können Sie Sichtbarkeit für alle Azure-Abonnements erzielen, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind, und den Sicherheitsstatus Ihrer Organisation bedarfsabhängig effektiv verwalten. Hierzu wenden Sie auf aggregierende Weise Sicherheitsrichtlinien übergreifend auf mehrere Abonnements an.
@@ -85,21 +85,26 @@ Ein Azure Active Directory-Mandantenadministrator hat keinen direkten Zugriff au
 
 5. Führen Sie die Aufgaben durch, für die Sie erhöhte Zugriffsrechte benötigen. Wenn Sie fertig sind, können Sie wieder **Nein** festlegen.
 
-### <a name="open-or-refresh-security-center"></a>Öffnen oder Aktualisieren von Security Center
-Wenn Sie erhöhte Zugriffsrechte besitzen, können Sie Azure Security Center öffnen bzw. aktualisieren, um sicherzustellen, dass die Sichtbarkeit für alle Abonnements Ihres Azure AD-Mandanten erzielt wurde. 
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
-2. Stellen Sie sicher, dass Sie alle Abonnements in der Abonnementauswahl auswählen, die in Security Center angezeigt werden sollen.
-    ![Screenshot der Abonnementauswahl](./media/security-center-management-groups/subscription-selector.png)
-1. Wählen Sie im Hauptmenü von Azure die Option **Alle Dienste** und dann **Security Center**.
-2. Unter **Übersicht** wird ein Diagramm zur Abonnementabdeckung angezeigt. 
-    ![Screenshot: Diagramm zur Abonnementabdeckung](./media/security-center-management-groups/security-center-subscription-coverage.png)
-3. Klicken Sie auf **Abdeckung**, um die Liste mit den abgedeckten Abonnements anzuzeigen. 
-    ![Screenshot: Liste zur Abonnementabdeckung](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="assign-rbac-roles-to-users"></a>Zuweisen von RBAC-Rollen für Benutzer
-Nachdem ein Mandantenadministrator die Erhöhung der Rechte durchgeführt hat, kann er auf Ebene der Stammverwaltungsgruppe eine RBAC-Rolle für relevante Benutzer zuweisen. Die empfohlene Rolle für die Zuweisung ist [**Leser**](../role-based-access-control/built-in-roles.md#reader). Diese Rolle ist erforderlich, um die Sichtbarkeit auf Mandantenebene zu ermöglichen. Die zugewiesene Rolle wird automatisch auf alle Verwaltungsgruppen und Abonnements verteilt, die unter der Stammverwaltungsgruppe angeordnet sind. Weitere Informationen zu RBAC-Rollen finden Sie unter [Verfügbare Rollen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles). 
+Um die Sichtbarkeit aller Abonnements zu erzielen, müssen Mandantenadministratoren jedem Benutzer, dem mandantenweite Sichtbarkeit gewährt werden soll, eine geeignete RBAC-Rolle auf der Stammebene der Verwaltungsgruppe zuweisen (auch sich selbst). Die empfohlenen Rollen, die zugewiesen werden sollten, sind **Sicherheitsadministrator** oder **Benutzer mit Leseberechtigung für Sicherheitsfunktionen**. Im Allgemeinen ist die Rolle „Sicherheitsadministrator“ erforderlich, um Richtlinien auf der Stammebene anzuwenden, während „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ ausreicht, um Sichtbarkeit für die Mandantenebene bereitzustellen. Weitere Informationen zu den Berechtigungen, die durch diese Rollen gewährt werden, finden Sie in der [Beschreibung der integrierten Rolle „Sicherheitsadministrator“](../role-based-access-control/built-in-roles.md#security-admin) bzw. in der [Beschreibung der integrierten Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“](../role-based-access-control/built-in-roles.md#security-reader).
 
+
+#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>Weisen Sie Benutzern RBAC-Rollen über das Azure-Portal zu: 
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an. 
+2. Wählen Sie zum Anzeigen von Verwaltungsgruppen **Alle Dienste** im Azure-Hauptmenü und dann **Verwaltungsgruppen** aus.
+3.  Wählen Sie eine Verwaltungsgruppe aus, und klicken Sie auf **Details**.
+
+    ![Screenshot der Verwaltungsgruppendetails](./media/security-center-management-groups/management-group-details.PNG)
+ 
+4. Klicken Sie auf **Zugriffssteuerung (IAM)** und dann auf **Hinzufügen**.
+5. Wählen Sie die zuzuweisende Rolle und den Benutzer aus, und klicken Sie dann auf **Speichern**.  
+   
+   ![Screenshot zum Hinzufügen der Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“](./media/security-center-management-groups/asc-security-reader.png)
+
+
+#### <a name="assign-rbac-roles-to-users-with-powershell"></a>Weisen Sie Benutzern RBAC-Rollen mit PowerShell zu: 
 1. Installieren Sie [Azure PowerShell](/powershell/azure/install-azurerm-ps).
 2. Führen Sie die folgenden Befehle aus: 
 
@@ -128,19 +133,17 @@ Nachdem ein Mandantenadministrator die Erhöhung der Rechte durchgeführt hat, k
     Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
-<!-- Currently, PowerShell method only 6/26/18
+### <a name="open-or-refresh-security-center"></a>Öffnen oder Aktualisieren von Security Center
+Wenn Sie erhöhte Zugriffsrechte besitzen, können Sie Azure Security Center öffnen bzw. aktualisieren, um sicherzustellen, dass die Sichtbarkeit für alle Abonnements Ihres Azure AD-Mandanten erzielt wurde. 
 
-1. Sign in to the [Azure portal](https://portal.azure.com). 
-2. To view management groups, select **All services** under the Azure main menu then select **Management Groups**.
-3.  Select a management group and click **details**.
-
-    ![Management Groups details screenshot](./media/security-center-management-groups/management-group-details.PNG)
- 
-4. Click **Access control (IAM)** then **Add**.
-5. Select the role to assign and the user, then click **Save**.  
-   
-   ![Add Security Reader role screenshot](./media/security-center-management-groups/asc-security-reader.png)
--->
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
+2. Stellen Sie sicher, dass Sie alle Abonnements in der Abonnementauswahl auswählen, die in Security Center angezeigt werden sollen.
+    ![Screenshot der Abonnementauswahl](./media/security-center-management-groups/subscription-selector.png)
+1. Wählen Sie im Hauptmenü von Azure die Option **Alle Dienste** und dann **Security Center**.
+2. Unter **Übersicht** wird ein Diagramm zur Abonnementabdeckung angezeigt. 
+    ![Screenshot: Diagramm zur Abonnementabdeckung](./media/security-center-management-groups/security-center-subscription-coverage.png)
+3. Klicken Sie auf **Abdeckung**, um die Liste mit den abgedeckten Abonnements anzuzeigen. 
+    ![Screenshot: Liste zur Abonnementabdeckung](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte 
 Nachdem den Benutzern die RBAC-Rollen zugewiesen wurden, sollte der Mandantenadministrator für sich selbst die Rolle „Benutzerzugriffsadministrator“ entfernen.

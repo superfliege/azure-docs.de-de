@@ -1,169 +1,180 @@
+items:
 - name: Dokumentation für maschinelles Sehen
   href: index.yml
 - name: Übersicht
-  expanded: true
   items:
-    - name: Worum handelt es sich bei maschinellem Sehen?
-      href: Home.md
+  - name: Worum handelt es sich bei maschinellem Sehen?
+    href: Home.md
+  expanded: true
 - name: API-Schnellstartanleitungen
   items:
-    - name: Zusammenfassung
-      href: QuickStarts/quickstart-summary.md
-    - name: 'C#'
-      items:
-        - name: Analysieren von Bildern
-          href: QuickStarts/CSharp-analyze.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/CSharp-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/CSharp-print-text.md
-        - name: Extrahieren von handschriftlichem Text
-          href: QuickStarts/CSharp-hand-text.md
-    - name: cURL
-      items:
-        - name: Analysieren von Remotebildern
-          href: QuickStarts/curl-analyze.md
-        - name: Analysieren von lokalen Bildern
-          href: QuickStarts/curl-disk.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/curl-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/curl-print-text.md
-    - name: Go
-      items:
-        - name: Analysieren von Bildern
-          href: QuickStarts/go-analyze.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/go-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/go-print-text.md
-    - name: Java
-      items:
-        - name: Analysieren von Bildern
-          href: QuickStarts/java-analyze.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/java-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/java-print-text.md
-        - name: Extrahieren von handschriftlichem Text
-          href: QuickStarts/java-hand-text.md
-    - name: JavaScript
-      items:
-        - name: Analysieren von Bildern
-          href: QuickStarts/javascript-analyze.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/javascript-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/javascript-print-text.md
-        - name: Extrahieren von handschriftlichem Text
-          href: QuickStarts/javascript-hand-text.md
-    - name: Node.js
-      items:
-        - name: Analysieren von Bildern
-          href: QuickStarts/node-analyze.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/node-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/node-print-text.md
-    - name: PHP
-      items:
-        - name: Analysieren von Bildern
-          href: QuickStarts/php-analyze.md
-        - name: Verwenden eines Domänenmodells
-          href: QuickStarts/php-domain.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/php-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/php-print-text.md
-    - name: Python
-      items:
-        - name: Analysieren von Remotebildern
-          href: QuickStarts/python-analyze.md
-        - name: Analysieren von lokalen Bildern
-          href: QuickStarts/python-disk.md
-        - name: Verwenden eines Domänenmodells
-          href: QuickStarts/python-domain.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/python-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/python-print-text.md
-        - name: Extrahieren von handschriftlichem Text
-          href: QuickStarts/python-hand-text.md
-    - name: Ruby
-      items:
-        - name: Analysieren von Bildern
-          href: QuickStarts/ruby-analyze.md
-        - name: Generieren von Miniaturansichten
-          href: QuickStarts/ruby-thumb.md
-        - name: Extrahieren von gedrucktem Text
-          href: QuickStarts/ruby-print-text.md
+  - name: Zusammenfassung
+    href: QuickStarts/quickstart-summary.md
+  - name: C#
+    items:
+    - name: Analysieren von Bildern
+      href: QuickStarts/CSharp-analyze.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/CSharp-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/CSharp-print-text.md
+    - name: Extrahieren von handschriftlichem Text
+      href: QuickStarts/CSharp-hand-text.md
+  - name: cURL
+    items:
+    - name: Analysieren von Remotebildern
+      href: QuickStarts/curl-analyze.md
+    - name: Analysieren von lokalen Bildern
+      href: QuickStarts/curl-disk.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/curl-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/curl-print-text.md
+  - name: Go
+    items:
+    - name: Analysieren von Bildern
+      href: QuickStarts/go-analyze.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/go-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/go-print-text.md
+  - name: Java
+    items:
+    - name: Analysieren von Bildern
+      href: QuickStarts/java-analyze.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/java-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/java-print-text.md
+    - name: Extrahieren von handschriftlichem Text
+      href: QuickStarts/java-hand-text.md
+  - name: JavaScript
+    items:
+    - name: Analysieren von Bildern
+      href: QuickStarts/javascript-analyze.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/javascript-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/javascript-print-text.md
+    - name: Extrahieren von handschriftlichem Text
+      href: QuickStarts/javascript-hand-text.md
+  - name: Node.js
+    items:
+    - name: Analysieren von Bildern
+      href: QuickStarts/node-analyze.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/node-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/node-print-text.md
+  - name: PHP
+    items:
+    - name: Analysieren von Bildern
+      href: QuickStarts/php-analyze.md
+    - name: Verwenden eines Domänenmodells
+      href: QuickStarts/php-domain.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/php-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/php-print-text.md
+  - name: Python
+    items:
+    - name: Analysieren von Remotebildern
+      href: QuickStarts/python-analyze.md
+    - name: Analysieren von lokalen Bildern
+      href: QuickStarts/python-disk.md
+    - name: Verwenden eines Domänenmodells
+      href: QuickStarts/python-domain.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/python-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/python-print-text.md
+    - name: Extrahieren von handschriftlichem Text
+      href: QuickStarts/python-hand-text.md
+  - name: Ruby
+    items:
+    - name: Analysieren von Bildern
+      href: QuickStarts/ruby-analyze.md
+    - name: Generieren von Miniaturansichten
+      href: QuickStarts/ruby-thumb.md
+    - name: Extrahieren von gedrucktem Text
+      href: QuickStarts/ruby-print-text.md
 - name: SDK-Schnellstartanleitungen
   items:
-    - name: 'C#'
-      items:
-        - name: Analysieren von Bildern
-          href: quickstarts-sdk/csharp-analyze-sdk.md
-        - name: Generieren von Miniaturansichten
-          href: quickstarts-sdk/csharp-thumb-sdk.md
-        - name: Extrahieren von handschriftlichem Text
-          href: quickstarts-sdk/csharp-hand-text-sdk.md
+  - name: C#
+    items:
+    - name: Analysieren von Bildern
+      href: quickstarts-sdk/csharp-analyze-sdk.md
+    - name: Generieren von Miniaturansichten
+      href: quickstarts-sdk/csharp-thumb-sdk.md
+    - name: Extrahieren von handschriftlichem Text
+      href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: Anleitungen
   items:
-    - name: Erste Apps für maschinelles Sehen
-      items:
-        - name: 'C#'
-          href: Tutorials/CSharpTutorial.md
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
-        - name: Python
-          href: Tutorials/PythonTutorial.md
-    - name: Erhalten von Abonnementschlüsseln
-      href: Vision-API-How-to-Topics/HowToSubscribe.md
-    - name: Aufrufen der Maschinelles Sehen-API
-      href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
-    - name: Videoanalyse in Echtzeit
-      href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
-    - name: Arbeiten mit Visual Studio
-      items:
-        - name: Verwenden des verbundenen Diensts für maschinelles Sehen
-          href: vs-computer-vision-connected-service.md
+  - name: Erste Apps für maschinelles Sehen
+    items:
+    - name: C#
+      href: Tutorials/CSharpTutorial.md
+    - name: Java
+      href: Tutorials/java-tutorial.md
+    - name: JavaScript
+      href: Tutorials/javascript-tutorial.md
+    - name: Python
+      href: Tutorials/PythonTutorial.md
+  - name: Erhalten von Abonnementschlüsseln
+    href: Vision-API-How-to-Topics/HowToSubscribe.md
+  - name: Aufrufen der Maschinelles Sehen-API
+    href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
+  - name: Videoanalyse in Echtzeit
+    href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
+  - name: Arbeiten mit Visual Studio
+    items:
+    - name: Verwenden des verbundenen Diensts für maschinelles Sehen
+      href: vs-computer-vision-connected-service.md
 - name: Verweis
   items:
-    - name: Maschinelles Sehen-API v2.0
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44'
-    - name: Maschinelles Sehen-API v1.0
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739'
-    - name: SDKs
-      items:
-        - name: Windows
-          href: 'https://github.com/Microsoft/Cognitive-vision-windows'
-        - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
-        - name: Go
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision'
-        - name: Android
-          href: 'https://github.com/Microsoft/Cognitive-vision-android'
-        - name: Swift
-          href: 'https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK'
+  - name: Azure-Befehlszeilenschnittstelle
+    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+  - name: Azure PowerShell
+    href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: Maschinelles Sehen-API v2.0
+    href: https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44
+  - name: Maschinelles Sehen-API v1.0
+    href: https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739
+  - name: SDKs
+    items:
+    - name: Windows
+      href: https://github.com/Microsoft/Cognitive-vision-windows
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
+    - name: Go
+      href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision
+    - name: Android
+      href: https://github.com/Microsoft/Cognitive-vision-android
+    - name: Swift
+      href: https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK
 - name: angeben
   items:
-    - name: Beispiele
-      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
-    - name: Häufig gestellte Fragen
-      href: FAQ.md
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/430309-computer-vision-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Kategorietaxonomie
-      href: Category-Taxonomy.md
+  - name: Beispiele
+    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+  - name: Häufig gestellte Fragen
+    href: FAQ.md
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/430309-computer-vision-api
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Kategorietaxonomie
+    href: Category-Taxonomy.md
+ms.openlocfilehash: 9fc95708365458dcebcf40a759db3f8267fa0c96
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086750"

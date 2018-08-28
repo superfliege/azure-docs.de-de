@@ -7,15 +7,15 @@ manager: shivamg
 keywords: Windows Server sichern; Sichern von Windows Server; Sicherung und Notfallwiederherstellung
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
+ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609017"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616188"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
 
@@ -29,7 +29,7 @@ Mit Azure Backup können Sie Ihre Windows Server-Instanzen vor Beschädigungen, 
 > * Durchführen einer Ad-hoc-Sicherung
 
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
@@ -41,11 +41,11 @@ Bevor Sie Windows Server sichern können, müssen Sie einen Speicherort für die
 
    ![Recovery Services-Tresor öffnen](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2.  Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
+2. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
 
    ![Informationen zum Tresor angeben](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
-3.  Führen Sie im Menü **Recovery Services-Tresor** folgende Aktionen durch:
+3. Führen Sie im Menü **Recovery Services-Tresor** folgende Aktionen durch:
 
     - Geben Sie *myRecoveryServicesVault* in **Name** ein.
     - Die aktuelle Abonnement-ID wird unter **Abonnement** angezeigt.
@@ -59,27 +59,28 @@ Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste mit den Reco
 
 Der Microsoft Azure Recovery Services-Agents (MARS) erstellt eine Zuordnung zwischen Windows Server und dem Recovery Services-Tresor. Das folgende Verfahren erläutert, wie der Agent auf Ihren Server heruntergeladen wird.
 
-1.  Wählen Sie in der Liste mit den Recovery Services-Tresoren **myRecoveryServicesVault** aus, um das zugehörige Dashboard zu öffnen.
+1. Wählen Sie in der Liste mit den Recovery Services-Tresoren **myRecoveryServicesVault** aus, um das zugehörige Dashboard zu öffnen.
 
    ![Informationen zum Tresor angeben](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2.  Klicken Sie im Menü des Tresordashboards auf **Sicherung**.
+2. Klicken Sie im Menü des Tresordashboards auf **Sicherung**.
 
-3.  Führen Sie im Menü **Sicherungsziel** folgende Aktionen durch:
+3. Führen Sie im Menü **Sicherungsziel** folgende Aktionen durch:
 
-    - Wählen Sie für **Wo wird Ihre Workload ausgeführt?** die Option **Lokal** aus. 
-    - Wählen Sie für **Was möchten Sie sichern?** die Option **Dateien und Ordner** und **Systemstatus** aus. 
+   * Wählen Sie für **Wo wird Ihre Workload ausgeführt?** die Option **Lokal** aus. 
+   * Wählen Sie für **Was möchten Sie sichern?** die Option **Dateien und Ordner** und **Systemstatus** aus.
 
-    ![Informationen zum Tresor angeben](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
-    
-4.  Klicken Sie auf **Infrastruktur vorbereiten**, um das Menü **Infrastruktur vorbereiten** zu öffnen.
-5.  Klicken Sie im Menü **Infrastruktur vorbereiten** auf **Agent für Windows Server oder Windows-Client herunterladen**, um die Datei *MARSAgentInstaller.exe* herunterzuladen. 
+   ![Informationen zum Tresor angeben](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
+
+4. Klicken Sie auf **Infrastruktur vorbereiten**, um das Menü **Infrastruktur vorbereiten** zu öffnen.
+
+5. Klicken Sie im Menü **Infrastruktur vorbereiten** auf **Agent für Windows Server oder Windows-Client herunterladen**, um die Datei *MARSAgentInstaller.exe* herunterzuladen. 
 
     ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
     Das Installationsprogramm öffnet ein separates Browserfenster und lädt die Datei **MARSAgentInstaller.exe** herunter.
  
-6.  Bevor Sie die heruntergeladene Datei ausführen, klicken Sie auf dem Blatt „Infrastruktur vorbereiten“ auf die Schaltfläche **Herunterladen**, um die Datei mit den **Tresoranmeldeinformationen** herunterzuladen. Diese Datei ist für das Herstellen einer Verbindung zwischen MARS-Agent und Recovery Services-Tresor erforderlich.
+6. Bevor Sie die heruntergeladene Datei ausführen, klicken Sie im Menü „Infrastruktur vorbereiten“ auf die Schaltfläche **Herunterladen**, und speichern Sie die Datei mit den **Tresoranmeldeinformationen**. Die Tresoranmeldeinformationen sind für das Herstellen einer Verbindung zwischen MARS-Agent und Recovery Services-Tresor erforderlich.
 
     ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
  
@@ -115,13 +116,17 @@ Verwenden Sie den Microsoft Azure Recovery Services-Agent, um die Zeitpunkte fü
 
 5. Klicken Sie auf **Weiter**.
 
-6. Geben Sie auf der Seite **Sicherungszeitplan angeben (Systemstatus)** an, zu welchen Tageszeiten oder wann in der Woche Sicherungen für den Systemstatus ausgelöst werden sollen. Klicken Sie anschließend auf **Weiter**. 
+6. Geben Sie auf der Seite **Sicherungszeitplan angeben (Systemstatus)** an, zu welchen Tageszeiten oder wann in der Woche Sicherungen für den Systemstatus ausgelöst werden sollen. Klicken Sie anschließend auf **Weiter**.
 
-7.  Wählen Sie auf der Seite **Aufbewahrungsrichtlinie auswählen (Systemstatus)** die Aufbewahrungsrichtlinie für die Sicherungskopien des Systemstatus aus, und klicken Sie auf **Weiter**.
+7. Wählen Sie auf der Seite **Aufbewahrungsrichtlinie auswählen (Systemstatus)** die Aufbewahrungsrichtlinie für die Sicherungskopien des Systemstatus aus, und klicken Sie auf **Weiter**.
+
 8. Wählen Sie analog den Sicherungszeitplan und die Aufbewahrungsrichtlinie für Dateien und Ordner aus. 
-8.  Lassen Sie auf der Seite **Erstsicherungstyp wählen** die Option **Automatisch über das Netzwerk** aktiviert, und klicken Sie auf **Weiter**.
-9.  Lesen Sie sich die Informationen auf der Seite **Bestätigung** durch, und klicken Sie dann auf **Fertig stellen**.
-10. Klicken Sie auf **Schließen**, nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat.
+
+9. Wählen Sie auf der Seite **Erstsicherungstyp wählen** die Option **Automatisch über das Netzwerk**, und klicken Sie auf **Weiter**.
+
+10. Lesen Sie sich die Informationen auf der Seite **Bestätigung** durch, und klicken Sie auf **Fertig stellen**.
+
+11. Klicken Sie auf **Schließen**, nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat.
 
 ## <a name="perform-an-ad-hoc-back-up"></a>Durchführen einer Ad-hoc-Sicherung
 

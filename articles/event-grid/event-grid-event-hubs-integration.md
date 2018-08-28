@@ -6,18 +6,18 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/04/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302938"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616514"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Streamen von Big Data in ein Data Warehouse
 
-Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen von Apps und Diensten zu reagieren. Das [Beispiel für Event Hubs Capture und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Azure Event Hubs Capture mit Azure Event Grid für die nahtlose Migration von Daten von einem Event Hub zu einem SQL Data Warehouse verwenden.
+Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Data Lake Store erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für Event Hubs Capture und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs Capture mit Event Grid für die nahtlose Migration von Event Hubs-Daten vom Blobspeicher zu einem SQL Data Warehouse verwenden.
 
 ![Anwendungsübersicht](media/event-grid-event-hubs-integration/overview.png)
 
@@ -75,7 +75,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="deploy-the-infrastructure"></a>Bereitstellen der Infrastruktur
 
-Zur Vereinfachung dieses Artikels stellen Sie die erforderliche Infrastruktur mit einer Resource Manager-Vorlage bereit. Sehen Sie sich die [Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json) an, um zu ermitteln, welche Ressourcen bereitgestellt werden. Verwenden Sie eine der [unterstützten Regionen](overview.md) als Standort für die Ressourcengruppe.
+Zur Vereinfachung dieses Artikels stellen Sie die erforderliche Infrastruktur mit einer Resource Manager-Vorlage bereit. Sehen Sie sich die [Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json) an, um zu ermitteln, welche Ressourcen bereitgestellt werden.
 
 Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
 

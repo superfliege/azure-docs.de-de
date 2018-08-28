@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: afd061b026e30378f5e645d11b84b44b7a516143
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341578"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443389"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
@@ -27,17 +27,20 @@ Mit einer selbstgehosteten Integrationslaufzeit können Kopieraktivitäten zwisc
 In diesem Dokument wird beschrieben, wie Sie die selbstgehostete Integrationslaufzeit erstellen und konfigurieren können.
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>Allgemeine Schritte zum Installieren der selbstgehosteten Integrationslaufzeit
-1.  Erstellen Sie eine selbstgehostete Integrationslaufzeit. Hier ist ein PowerShell-Beispiel angegeben:
+1. Erstellen Sie eine selbstgehostete Integrationslaufzeit. Sie können die ADF-Benutzeroberfläche zum Erstellen der selbstgehosteten Integration Runtime (IR) verwenden. Hier ist ein PowerShell-Beispiel angegeben:
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
-2.  Laden Sie die selbstgehostete Integrationslaufzeit herunter, und installieren Sie sie (auf dem lokalen Computer).
-3.  Rufen Sie den Authentifizierungsschlüssel ab, und registrieren Sie die selbstgehostete Integrationslaufzeit mit dem Schlüssel. Hier ist ein PowerShell-Beispiel angegeben:
+2. Laden Sie die selbstgehostete Integrationslaufzeit herunter, und installieren Sie sie (auf dem lokalen Computer).
+3. Rufen Sie den Authentifizierungsschlüssel ab, und registrieren Sie die selbstgehostete Integrationslaufzeit mit dem Schlüssel. Hier ist ein PowerShell-Beispiel angegeben:
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
+
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>Einrichten der selbstgehosteten Integration Runtime auf dem virtuellen Azure-Computer mithilfe einer Azure Resource Manager-Vorlage (Automatisierung)
+Sie können das selbstgehostete IR-Setup auf einem virtuellen Azure-Computer mit [dieser Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime) automatisieren. Dies bietet eine einfache Möglichkeit, eine voll funktionsfähige, selbstgehostete IR im Azure VNET mit Features für hohe Verfügbarkeit und Skalierbarkeit zu nutzen (solange Sie die Knotenanzahl auf 2 oder höher festlegen).
 
 ## <a name="command-flow-and-data-flow"></a>Befehls- und Datenfluss
 Wenn Sie die Daten zwischen der lokalen Umgebung und der Cloud verschieben, wird für die Aktivität eine selbstgehostete Integrationslaufzeit verwendet, um die Daten aus der lokalen Datenquelle in die Cloud zu übertragen (und umgekehrt).
@@ -48,9 +51,9 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 
 1. Der Datenentwickler erstellt eine selbstgehostete Integrationslaufzeit in einer Azure Data Factory per PowerShell-Cmdlet. Derzeit wird dieses Feature vom Azure-Portal nicht unterstützt.
 2. Der Datenentwickler erstellt einen verknüpften Dienst für einen lokalen Datenspeicher, indem er die Instanz der selbstgehosteten Integrationslaufzeit angibt, die zum Verbinden der Datenspeicher verwendet werden soll. Beim Einrichten des verknüpften Diensts verwendet der Datenentwickler die Anwendung „Anmeldeinformationsverwaltung“ (derzeit nicht unterstützt), um die Authentifizierungstypen und Anmeldeinformationen festzulegen. Das Dialogfeld der Anwendung „Anmeldeinformationsverwaltung“ kommuniziert mit dem Datenspeicher, um die Verbindung zu testen, und mit der selbstgehosteten Integrationslaufzeit, um Anmeldeinformationen zu speichern.
-4.  Über den Knoten der selbstgehosteten Integrationslaufzeit werden die Anmeldeinformationen per DPAPI (Windows Data Protection Application Programming Interface) verschlüsselt und lokal gespeichert. Falls mehrere Knoten festgelegt sind, um Hochverfügbarkeit zu erzielen, werden die Anmeldeinformationen für andere Knoten weiter synchronisiert. Jeder Knoten verwendet DPAPI für die Verschlüsselung und speichert die Daten lokal. Die Synchronisierung der Anmeldeinformationen ist für den Datenentwickler transparent und wird von der selbstgehosteten Integrationslaufzeit verarbeitet.    
-5.  Der Data Factory-Dienst kommuniziert für die Planung und Verwaltung von Aufträgen mit der selbstgehosteten Integrationslaufzeit. Hierfür wird ein **Steuerungskanal** genutzt, der eine freigegebene Azure Service Bus-Warteschlange verwendet. Wenn ein Aktivitätsauftrag ausgeführt werden muss, reiht Data Factory die Anforderung zusammen mit den Anmeldeinformationen in die Warteschlange ein (falls Anmeldeinformationen nicht bereits unter der selbstgehosteten Integrationslaufzeit gespeichert sind). Die selbstgehostete Integrationslaufzeit startet den Auftrag, nachdem die Warteschlange abgefragt wurde.
-6.  Die selbstgehostete Integrationslaufzeit kopiert Daten aus einem lokalen Speicher in einen Cloudspeicher oder in umgekehrter Richtung. Dies hängt davon ab, wie die Kopieraktivität in der Datenpipeline konfiguriert ist. Für diesen Schritt kommuniziert die selbstgehostete Integrationslaufzeit über einen sicheren Kanal (HTTPS) direkt mit einem cloudbasierten Speicherdienst, z.B. Azure Blob Storage.
+   - Über den Knoten der selbstgehosteten Integrationslaufzeit werden die Anmeldeinformationen per DPAPI (Windows Data Protection Application Programming Interface) verschlüsselt und lokal gespeichert. Falls mehrere Knoten festgelegt sind, um Hochverfügbarkeit zu erzielen, werden die Anmeldeinformationen für andere Knoten weiter synchronisiert. Jeder Knoten verwendet DPAPI für die Verschlüsselung und speichert die Daten lokal. Die Synchronisierung der Anmeldeinformationen ist für den Datenentwickler transparent und wird von der selbstgehosteten Integrationslaufzeit verarbeitet.    
+   - Der Data Factory-Dienst kommuniziert für die Planung und Verwaltung von Aufträgen mit der selbstgehosteten Integrationslaufzeit. Hierfür wird ein **Steuerungskanal** genutzt, der eine freigegebene Azure Service Bus-Warteschlange verwendet. Wenn ein Aktivitätsauftrag ausgeführt werden muss, reiht Data Factory die Anforderung zusammen mit den Anmeldeinformationen in die Warteschlange ein (falls Anmeldeinformationen nicht bereits unter der selbstgehosteten Integrationslaufzeit gespeichert sind). Die selbstgehostete Integrationslaufzeit startet den Auftrag, nachdem die Warteschlange abgefragt wurde.
+   - Die selbstgehostete Integrationslaufzeit kopiert Daten aus einem lokalen Speicher in einen Cloudspeicher oder in umgekehrter Richtung. Dies hängt davon ab, wie die Kopieraktivität in der Datenpipeline konfiguriert ist. Für diesen Schritt kommuniziert die selbstgehostete Integrationslaufzeit über einen sicheren Kanal (HTTPS) direkt mit einem cloudbasierten Speicherdienst, z.B. Azure Blob Storage.
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>Aspekte der Nutzung von selbstgehosteter Integrationslaufzeit
 
@@ -113,7 +116,20 @@ Sie können mehrere Knoten zuordnen, indem Sie einfach die Software für die sel
 > [!NOTE]
 > Vergewissern Sie sich vor dem Hinzufügen eines weiteren Knotens für **Hochverfügbarkeit und Skalierbarkeit**, dass die Option **Remote access to intranet** (Remotezugriff auf das Intranet) für den ersten Knoten **aktiviert** ist. Navigieren Sie hierzu zu „Konfigurations-Manager für Microsoft Integration Runtime“ > „Einstellungen“ > „Remote access to intranet“ (Remotezugriff auf das Intranet). 
 
+### <a name="scale-considerations"></a>Aspekte der Skalierung
+
+#### <a name="scale-out"></a>Horizontales Skalieren
+
+Wenn **für die selbstgehostete IR nur wenig Arbeitsspeicher verfügbar** und die **CPU-Auslastung hoch ist**, ist das Hinzufügen eines neuen Knotens hilfreich, um die Last durch horizontales Hochskalieren auf die Computer zu verteilen. Falls für Aktivitäten Fehler auftreten, weil es zu Zeitüberschreitungen kommt oder der selbstgehostete IR-Knoten offline ist, ist es ratsam, dem Gateway einen Knoten hinzuzufügen.
+
+#### <a name="scale-up"></a>Zentrales Hochskalieren
+
+Wenn der verfügbare Speicher und die CPU nicht gut ausgelastet sind, aber die gleichzeitige Ausführung von Aufträgen den Grenzwert erreicht, sollten Sie die Anzahl der gleichzeitigen Aufträge erhöhen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das zentrale Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil die selbstgehostete IR überlastet ist. Wie in der folgenden Abbildung gezeigt, können Sie die maximale Kapazität für einen Knoten erhöhen.  
+
+![](media\create-self-hosted-integration-runtime\scale-up-self-hosted-IR.png)
+
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL-Zertifikatanforderungen
+
 Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schützen der Kommunikation zwischen Integration Runtime-Knoten verwendet wird:
 
 - Das Zertifikat muss ein öffentlich vertrauenswürdiges Zertifikat vom Typ „X509 v3“ sein. Wir empfehlen Ihnen die Verwendung von Zertifikaten, die von einer öffentlichen Zertifizierungsstelle (Drittanbieter) ausgestellt werden.
@@ -121,9 +137,57 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
 - Platzhalterzertifikate werden unterstützt. Wenn der FQDN **node1.domain.contoso.com** lautet, können Sie ***.domain.contoso.com** als Antragstellernamen des Zertifikats verwenden.
 - SAN-Zertifikate sind nicht empfehlenswert, da nur das letzte Element des alternativen Antragstellernamens verwendet wird und alle anderen aufgrund von aktuellen Einschränkungen ignoriert werden. Beispiel: Wenn Sie ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** haben, können Sie dieses Zertifikat nur auf dem Computer mit dem FQDN **node2.domain.contoso.com** verwenden.
 - Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
-- Zertifikate mit CNG-Schlüsseln werden nicht unterstützt. Unterstützt keine Zertifikate, die CNG-Schlüssel verwenden.
+- Zertifikate mit CNG-Schlüsseln werden nicht unterstützt.  
+
+## <a name="sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories"></a>Freigeben der selbstgehosteten Integration Runtime (IR) für mehrere Data Factorys
+
+Sie können eine vorhandene selbstgehostete Integration Runtime-Infrastruktur wiederverwenden, die Sie möglicherweise bereits in einer Data Factory eingerichtet haben. Dies ermöglicht Ihnen das Erstellen einer **verknüpften selbstgehosteten Integration Runtime** in einer anderen Factory durch Verweisen auf eine bereits vorhandene selbstgehostete IR (freigegeben).
+
+#### <a name="terminologies"></a>**Terminologie**
+
+- **Freigegebene IR**: Die ursprüngliche selbstgehostete IR, die in einer physischen Infrastruktur ausgeführt wird.  
+- **Verknüpfte IR**: Die IR, die auf eine andere freigegebene IR verweist. Dies ist eine logische IR. Sie nutzt die Infrastruktur einer anderen selbstgehosteten IR (freigegeben).
+
+#### <a name="high-level-steps-for-creating-a-linked-self-hosted-ir"></a>Allgemeine Schritte zum Erstellen einer verknüpften selbstgehosteten IR
+
+Gehen Sie in der selbstgehosteten IR, die freigegeben werden soll, folgendermaßen vor:
+
+1. Erteilen Sie der Data Factory Berechtigungen, in der Sie die verknüpfte IR erstellen möchten. 
+
+   ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
+
+2. Notieren Sie sich die **Ressourcen-ID** der selbstgehosteten IR, die freigegeben werden soll.
+
+   ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
+
+Gehen Sie in der Data Factory, der die Berechtigungen erteilt wurden, folgendermaßen vor:
+
+3. Erstellen Sie eine neue selbstgehostete IR (verknüpft), und geben Sie die **Ressourcen-ID** ein, die Sie sich notiert haben.
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
+
+   ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Bekannte Einschränkungen der Freigabe selbstgehosteter IRs
+
+1. Die Standardanzahl von verknüpften IRs, die unter einer einzelnen selbstgehosteten IR erstellt werden können, beträgt **20**. Wenn Sie eine größere Anzahl benötigen, wenden Sie sich an den Support. 
+
+2. Die Data Factory, in der die verknüpfte IR erstellt werden soll, muss über MSI ([verwaltete Dienstidentität](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)) verfügen. Standardmäßig wird für die im Ibiza-Portal oder mit PowerShell-Cmdlets erstellten Data Factorys MSI implizit erstellt. In einigen Fällen, in denen die Data Factory mit einer Azure Resorce Manager-Vorlage oder dem SDK erstellt wird, muss die **Eigenschaft „**Identity**“ explizit festgelegt werden**, um sicherzustellen, dass Azure Resorce Manager eine Data Factory mit einer MSI erstellt. 
+
+3. Die Version der selbstgehosteten IR muss 3.8.xxxx.xx oder höher sein. [Laden Sie die neueste Version](https://www.microsoft.com/download/details.aspx?id=39717) der selbstgehosteten IR herunter.
+
+4. Die Data Factory, in der die verknüpfte IR erstellt werden soll, muss über MSI ([verwaltete Dienstidentität](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)) verfügen. Standardmäßig verfügen die im Ibiza-Portal oder mit PowerShell-Cmdlets erstellten Data Factorys über MSI ([verwaltete Dienstidentität](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
+Für implizit erstellte (z.B. mit einer Azure Resource Manager-Vorlage (ARM) oder dem SDK) Data Factorys muss jedoch die Eigenschaft „Identity“ festgelegt werden, um sicherzustellen, dass eine MSI erstellt wird.
+
+5. Das ADF .NET SDK, das dieses Feature unterstützt, muss die Version 1.1.0 oder höher aufweisen.
+
+6. Die Azure-PowerShell-Version muss für die Unterstützung dieses Features Version 6.6.0 oder höher sein (AzureRM.DataFactoryv2 0.5.7 oder höher).
+
+  > [!NOTE]
+  > Dieses Feature steht nur in Azure Data Factory Version 2 zur Verfügung. 
 
 ## <a name="system-tray-icons-notifications"></a>Symbole und Benachrichtigungen in der Taskleiste
+
 Wenn Sie den Cursor auf das Taskleistensymbol bzw. die Benachrichtigungsmeldung bewegen, können Sie auf Details zum Status der selbstgehosteten Integrationslaufzeit zugreifen.
 
 ![Benachrichtigungen in der Taskleiste](media\create-self-hosted-integration-runtime\system-tray-notifications.png)
@@ -180,10 +244,10 @@ Der Hostdienst der Integrationslaufzeit wird automatisch neu gestartet, nachdem 
 
 Wenn Sie nach der erfolgreichen Registrierung der selbstgehosteten Integrationslaufzeit die Proxyeinstellungen anzeigen oder aktualisieren möchten, können Sie den Konfigurations-Manager für die Integrationslaufzeit verwenden.
 
-1.  Starten Sie den **Konfigurations-Manager für die Azure Data Factory-Integrationslaufzeit**.
-2.  Wechseln Sie zur Registerkarte **Einstellungen**.
-3.  Klicken Sie im Abschnitt **HTTP-Proxy** auf den Link **Ändern**, um das Dialogfeld **HTTP-Proxy festlegen** zu öffnen.
-4.  Nachdem Sie auf die Schaltfläche **Weiter** geklickt haben, wird ein Dialogfeld mit einer Warnung angezeigt, in dem Sie bestätigen müssen, dass die Proxyeinstellung gespeichert und der Hostdienst der Integrationslaufzeit neu gestartet werden soll.
+1. Starten Sie den **Konfigurations-Manager für die Azure Data Factory-Integrationslaufzeit**.
+   - Wechseln Sie zur Registerkarte **Einstellungen**.
+   - Klicken Sie im Abschnitt **HTTP-Proxy** auf den Link **Ändern**, um das Dialogfeld **HTTP-Proxy festlegen** zu öffnen.
+   - Nachdem Sie auf die Schaltfläche **Weiter** geklickt haben, wird ein Dialogfeld mit einer Warnung angezeigt, in dem Sie bestätigen müssen, dass die Proxyeinstellung gespeichert und der Hostdienst der Integrationslaufzeit neu gestartet werden soll.
 
 Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 
@@ -229,8 +293,8 @@ Zusätzlich zu den obigen Punkten müssen Sie auch sicherstellen, dass Microsoft
 ### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
 Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers. Hierdurch wird verhindert, dass die selbstgehostete Integrationslaufzeit eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Überprüfen Sie den vorherigen Abschnitt, um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind.
 
-1.  Wenn Sie versuchen, die selbstgehostete Integrationslaufzeit zu registrieren, erhalten Sie den folgenden Fehler: „Fehler beim Registrieren dieses Knotens der Integrationslaufzeit. Stellen Sie sicher, dass der Authentifizierungsschlüssel gültig ist und dass der Hostdienst der Integrationslaufzeit auf diesem Computer ausgeführt wird. "
-2.  Wenn Sie den Konfigurations-Manager für die Integrationslaufzeit öffnen, wird der Status als **Getrennt** oder **Verbindung wird hergestellt** angezeigt. Beim Anzeigen der Windows-Ereignisprotokolle sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Microsoft-Integrationslaufzeit“ beispielsweise folgende Fehlermeldung:
+1. Wenn Sie versuchen, die selbstgehostete Integrationslaufzeit zu registrieren, erhalten Sie den folgenden Fehler: „Fehler beim Registrieren dieses Knotens der Integrationslaufzeit. Stellen Sie sicher, dass der Authentifizierungsschlüssel gültig ist und dass der Hostdienst der Integrationslaufzeit auf diesem Computer ausgeführt wird. "
+   - Wenn Sie den Konfigurations-Manager für die Integrationslaufzeit öffnen, wird der Status als **Getrennt** oder **Verbindung wird hergestellt** angezeigt. Beim Anzeigen der Windows-Ereignisprotokolle sehen Sie unter „Ereignisanzeige“ > „Anwendungs- und Dienstprotokolle“ > „Microsoft-Integrationslaufzeit“ beispielsweise folgende Fehlermeldung:
 
     ```
     Unable to connect to the remote server

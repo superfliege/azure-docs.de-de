@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: 0a5c73728f939fc239f4af79f5f084867856581a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494207"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617217"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -82,7 +82,8 @@ Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp. Die 
 
 > [!WARNING]
 > Knotentypen, die mit der Dauerhaftigkeitsstufe „Bronze“ ausgeführt werden, erhalten _keine Berechtigungen_. Das bedeutet, dass die Infrastrukturaufträge, die sich auf die zustandslosen Workloads auswirken, nicht angehalten oder verzögert werden. Dies kann sich auf Ihre Workloads auswirken. Verwenden Sie „Bronze“ nur für Knotentypen, die ausschließlich zustandslose Workloads ausführen. Für Produktionsworkloads wird die Ausführung unter „Silber“ oder höher empfohlen. 
->
+
+> Unabhängig von der Dauerhaftigkeitsstufe wird durch den Vorgang der [Aufhebung der Zuordnung](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/deallocate) für die VM-Skalierungsgruppe der Cluster gelöscht.
 
 **Vorteile der Verwendung der Dauerhaftigkeitsstufe „Silber“ oder „Gold“**
  
@@ -150,7 +151,7 @@ Dies ist die Empfehlung für die Auswahl der Zuverlässigkeitsstufe.
 
 Nutzen Sie diesen Leitfaden, um die Kapazität Ihres primären Knotentyps zu planen:
 
-- **Anzahl von VM-Instanzen, um eine Produktionsworkload in Azure auszuführen:** Sie müssen die Mindestgröße 5 für den primären Knotentyp angeben. 
+- **Anzahl von VM-Instanzen, um eine Produktionsworkload in Azure auszuführen:** Sie müssen die Mindestgröße 5 und die Zuverlässigkeitsstufe Silber für den primären Knotentyp angeben.  
 - **Anzahl von VM-Instanzen, um eine Testworkload in Azure auszuführen:** Sie können die Mindestgröße 1 oder 3 für den primären Knotentyp angeben. Knotencluster 1 setzt eine spezifische Konfiguration voraus, daher wird bei diesem Cluster horizontales Skalieren nicht unterstützt. Knotencluster 1 besitzt keine Zuverlässigkeit. Daher müssen Sie in Ihrer Resource Manager-Vorlage diese Konfiguration entfernen bzw. nicht angeben (es reicht nicht, den Konfigurationswert nicht einzustellen). Wenn Sie über das Portal den Knotencluster 1 eingerichtet haben, wird die Konfiguration automatisch bearbeitet. Bei den Knotenclustern der Größe 1 und 3 wird die Ausführung von Produktionsworkloads nicht unterstützt. 
 - **VM-SKU**: Der primäre Knotentyp dient zur Ausführung der Systemdienste, daher muss die ausgewählte VM-SKU die gesamte Spitzenlast verarbeiten können, die Sie für den Cluster planen. Eine Analogie zur Veranschaulichung: Stellen Sie sich den primären Knotentyp als Ihre Lunge vor, die Ihr Gehirn mit Sauerstoff versorgt. Wenn Ihr Gehirn nicht genügend Sauerstoff erhält, funktioniert Ihr Körper nicht richtig. 
 
@@ -166,8 +167,7 @@ Für Produktionsworkloads:
 - A1 Standard-SKUs werden aus Leistungsgründen für Produktionsworkloads nicht unterstützt.
 
 > [!WARNING]
-> Derzeit wird das Ändern der VM-SKU-Größe des Primärknotens in einem ausgeführten Cluster nicht unterstützt. Wählen Sie daher die VM-SKU des Primärknotentyps sorgfältig aus, und berücksichtigen Sie dabei Ihre zukünftigen Kapazitätsanforderungen. Zum aktuellen Zeitpunkt kann der Primärknotentyp nur in eine neue VM-SKU (kleiner oder größer) verschoben werden, indem ein neuer Cluster mit der richtigen Kapazität erstellt wird. Stellen Sie anschließend Ihre Anwendungen in diesem bereit, und stellen Sie danach den Anwendungsstatus (falls zutreffend) aus den [neuesten Dienstbackups](service-fabric-reliable-services-backup-restore.md) vom alten Cluster wieder her. Sie müssen keine Systemdienstzustände wiederherstellen, denn diese werden neu erstellt, wenn Sie Anwendungen im neuen Cluster bereitstellen. Wenn Sie in Ihrem Cluster ausschließlich zustandslose Anwendungen ausführen, stellen Sie lediglich Ihre Anwendungen im neuen Cluster bereit und müssen nichts wiederherstellen.
-> 
+> Das Ändern der VM-SKU-Größe des primären Knotens in einem aktuell ausgeführten Cluster ist ein Skalierungsvorgang, der in der Dokumentation [Horizontales Hochskalieren von VM-Skalierungsgruppen](virtual-machine-scale-set-scale-node-type-scale-out.md) dokumentiert wird.
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>Nicht primärer Knotentyp: Kapazitätsleitfaden für zustandsbehaftete Workloads
 
