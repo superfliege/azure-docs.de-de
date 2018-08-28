@@ -5,14 +5,19 @@
 ## [Create Service - Portal (Erstellen eines Diensts – Portal)](quickstart-create-data-migration-service-portal.md)
 
 # Tutorials
-## [Migrate SQL Server to Azure SQL (Migrieren von SQL Server zu Azure SQL-Datenbank)](tutorial-sql-server-to-azure-sql.md)
+## [Migrieren von SQL Server zu Azure SQL-Datenbank (offline)](tutorial-sql-server-to-azure-sql.md)
+## [Migrieren von SQL Server zu Azure SQL-Datenbank (online)](tutorial-sql-server-azure-sql-online.md)
 ## [Migrieren von SQL Server zu „Verwaltete Azure SQL-Datenbank-Instanz“](tutorial-sql-server-to-managed-instance.md)
+## [Migrieren von MySQL zu Azure Database for MySQL](tutorial-mysql-azure-mysql-online.md)
 
 # Anleitungen
 ## [Migrieren von SQL Server zu Azure SQL DB mithilfe von PowerShell](howto-sql-server-to-azure-sql-powershell.md)
 ## [Migrieren von SQL Server zu Azure SQL DB MI mithilfe von PowerShell](howto-sql-server-to-azure-sql-mi-powershell.md)
+## [Überwachen der Migrationsaktivität](how-to-monitor-migration-activity.md)
 
 # angeben
+## [Bekannte Probleme: Onlinemigration zu Azure SQL-Datenbank](known-issues-azure-sql-online.md)
+## [Bekannte Probleme: Onlinemigration zu Azure Database for MySQL](known-issues-azure-mysql-online.md)
 ## [User Voice-Feedback](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Leitfaden zur Datenbankmigration](https://aka.ms/datamigration)

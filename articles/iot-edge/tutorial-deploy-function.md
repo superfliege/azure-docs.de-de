@@ -4,17 +4,17 @@ description: In diesem Tutorial stellen Sie eine Azure-Funktion als Modul auf ei
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 08/10/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d37e08f58986a1318e6b379d2efeb71bc58d4583
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 426d9fd81a0cd856378be3bb4f430f310bee53eb
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413736"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41920848"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module (Vorschauversion)
 
@@ -26,8 +26,12 @@ Mithilfe von Azure Functions können Sie Code bereitstellen, mit dem Ihre Gesch�
 > * Bereitstellen des Moduls über die Containerregistrierung auf Ihrem IoT Edge-Gerät
 > * Anzeigen gefilterter Daten
 
+<center>
+![Tutorial: Architekturdiagramm](./media/tutorial-deploy-function/FunctionsTutDiagram.png)
+</center>
+
 >[!NOTE]
->Azure-Funktionsmodule in Azure IoT Edge sind als [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar. 
+>Azure Function-Module in Azure IoT Edge sind als [öffentliche Vorschauversion](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) verfügbar. 
 
 Die Azure-Funktion, die Sie in diesem Tutorial erstellen, filtert die von Ihrem Gerät generierten Temperaturdaten. Die Funktion sendet Nachrichten nur dann an Azure IoT Hub (Upstream), wenn die Temperatur einen angegebenen Schwellenwert überschreitet. 
 
@@ -52,6 +56,7 @@ Entwicklungsressourcen:
 * [Docker CE](https://docs.docker.com/install/). 
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
+
 In diesem Tutorial verwenden Sie die Azure IoT Edge-Erweiterung für VSCode zum Entwickeln eines Moduls und zum Erstellen eines **Containerimages** aus den Dateien. Danach pushen Sie dieses Image in ein **Repository**, in dem Ihre Images gespeichert und verwaltet werden. Abschließend stellen Sie Ihr Image aus der Registrierung zur Ausführung auf dem IoT Edge-Gerät bereit.  
 
 Sie können für dieses Tutorial jede beliebige Docker-kompatible Registrierung verwenden. Zwei beliebte, in der Cloud verfügbare Docker-Registrierungsdienste sind [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) und [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags). In diesem Tutorial wird Azure Container Registry verwendet. 
@@ -60,21 +65,34 @@ Sie können für dieses Tutorial jede beliebige Docker-kompatible Registrierung 
 
     ![Erstellen einer Containerregistrierung](./media/tutorial-deploy-function/create-container-registry.png)
 
-2. Geben Sie einen Namen für die Registrierung ein, und wählen Sie ein Abonnement aus.
-3. Es empfiehlt sich, für die Ressourcengruppe den gleichen Namen zu verwenden wie für die Ressourcengruppe mit Ihrer IoT Hub-Instanz. Wenn Sie alle Ressourcen in der gleichen Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie also beispielsweise die zum Testen verwendete Ressourcengruppe löschen, werden auch alle Testressourcen in der Gruppe gelöscht. 
-4. Legen Sie die SKU auf **Basic** fest, und schalten Sie **Administratorbenutzer** auf **Aktivieren** um. 
+2. Geben Sie die folgenden Werte an, um Ihre Containerregistrierung zu erstellen:
+
+   | Feld | Wert | 
+   | ----- | ----- |
+   | Registrierungsname | Geben Sie einen eindeutigen Namen an. |
+   | Abonnement | Wählen Sie ein Abonnement aus der Dropdownliste aus. |
+   | Ressourcengruppe | Es wird empfohlen, die gleiche Ressourcengruppe für alle Testressourcen zu verwenden, die Sie während der IoT Edge-Schnellstarts und -Tutorials erstellen. Beispielsweise **IoTEdgeResources**. |
+   | Standort | Wählen Sie einen Standort in Ihrer Nähe aus. |
+   | Administratorbenutzer | Legen Sie **Aktivieren** fest. |
+   | SKU | Wählen Sie **Basic** aus. | 
+
 5. Klicken Sie auf **Erstellen**.
+
 6. Navigieren Sie nach der Erstellung der Containerregistrierung zu dieser Registrierung, und klicken Sie anschließend auf **Zugriffsschlüssel**. 
+
 7. Kopieren Sie die Werte für **Anmeldeserver**, **Benutzername** und **Kennwort**. Diese Werte werden im weiteren Verlauf des Tutorials benötigt. 
 
 ## <a name="create-a-function-project"></a>Erstellen eines Funktionsprojekts
-Die folgenden Schritte dienen zum Erstellen einer IoT Edge-Funktion unter Verwendung von Visual Studio Code und der Azure IoT Edge-Erweiterung.
 
-1. Öffnen Sie Visual Studio Code.
-2. Öffnen Sie das in VS Code integrierte Terminal, indem Sie **Ansicht** > **Integriertes Terminal** auswählen. 
+Die Azure IoT Edge-Erweiterung für Visual Studio Code, die Sie in den Voraussetzungen installiert haben, bietet Verwaltungsfunktionen sowie einige Codevorlagen. In diesem Abschnitt verwenden Sie Visual Studio Code zum Erstellen einer IoT Edge-Projektmappe, die eine Azure-Funktion enthält. 
+
+1. Öffnen Sie Visual Studio Code auf Ihrem Entwicklungscomputer.
+
 2. Öffnen Sie die VS Code-Befehlspalette, indem Sie auf **Ansicht** > **Befehlspalette** klicken.
-3. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus. Befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto. Falls Sie bereits angemeldet sind, können Sie diesen Schritt überspringen.
-3. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Geben Sie in der Befehlspalette die folgenden Informationen an, um die Projektmappe zu erstellen: 
+
+3. Geben Sie in der Befehlspalette den Befehl **Azure: Sign in** ein, und führen Sie ihn aus. Befolgen Sie die Anweisungen zum Anmelden bei Ihrem Azure-Konto.
+
+4. Geben Sie in der Befehlspalette den Befehl **Azure IoT Edge: New IoT Edge solution** ein, und führen Sie ihn aus. Folgen Sie den Anweisungen in der Befehlspalette, um Ihre Projektmappe zu erstellen.
 
    1. Wählen Sie den Ordner aus, in dem die Projektmappe erstellt werden soll. 
    2. Geben Sie einen Namen für Ihre Projektmappe ein, oder übernehmen Sie den Standardnamen **EdgeSolution**.
@@ -82,9 +100,11 @@ Die folgenden Schritte dienen zum Erstellen einer IoT Edge-Funktion unter Verwen
    4. Nennen Sie das Modul **CSharpFunction**. 
    5. Geben Sie die Azure-Containerregistrierung an, die Sie im vorherigen Abschnitt als Imagerepository für das erste Modul erstellt haben. Ersetzen Sie **localhost:5000** durch den kopierten Wert für den Anmeldeserver. Die endgültige Zeichenfolge sieht wie folgt aus: \<Registrierungsname\>.azurecr.io/csharpfunction.
 
+   ![Bereitstellen eines Docker-Imagerepositorys](./media/tutorial-deploy-function/repository.png)
+
 4. Im VS Code-Fenster wird der Arbeitsbereich Ihrer IoT Edge-Projektmappe geladen: ein Ordner vom Typ „\.vscode“, ein Modulordner und eine Vorlagendatei für das Bereitstellungsmanifest und eine Datei vom Typ „\.env“. Öffnen Sie im VS Code-Explorer **Module** > **CSharpFunction** > **EdgeHubTrigger-Csharp** > **run.csx**.
 
-5. Ersetzen Sie den Inhalt der Datei durch den folgenden Code:
+5. Ersetzen Sie den Inhalt der Datei **run.csx** durch den folgenden Code:
 
    ```csharp
    #r "Microsoft.Azure.Devices.Client"
@@ -148,25 +168,31 @@ Die folgenden Schritte dienen zum Erstellen einer IoT Edge-Funktion unter Verwen
 
 Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und **CSharpFunction** Code hinzugefügt, um Nachrichten herauszufiltern, deren gemeldete Computertemperatur unter dem zulässigen Schwellenwert liegt. Nun müssen Sie die Projektmappe als Containerimage erstellen und per Push an die Containerregistrierung übertragen.
 
-1. Melden Sie sich bei Docker an. Geben Sie dazu im integrierten Terminal von Visual Studio Code den folgenden Befehl ein. Anschließend können Sie Ihr Modulimage an Ihre Azure-Containerregistrierung pushen: 
+In diesem Abschnitt geben Sie die Anmeldeinformationen für Ihre Containerregistrierung zweimal an. Das erste Mal, um sich lokal auf Ihrem Entwicklungscomputer anzumelden, damit Visual Studio Code per Push Images an Ihre Registrierung übertragen kann. Das zweite Mal in der **ENV**-Datei Ihrer IoT Edge-Projektmappe, damit Ihr IoT Edge Gerät Berechtigungen zum Abrufen von Images per Pull aus Ihrer Registrierung erhält. 
+
+1. Öffnen Sie das in VS Code integrierte Terminal, indem Sie **Ansicht** > **Integriertes Terminal** auswählen. 
+
+1. Melden Sie sich bei Ihrer Containerregistrierung an, indem Sie den folgenden Code im integrierten Terminal eingeben. Anschließend können Sie Ihr Modulimage an Ihre Azure-Containerregistrierung pushen: 
      
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
     ```
-    Verwenden Sie den Benutzernamen und den Anmeldeserver, die Sie zuvor aus Ihrer Azure-Containerregistrierung kopiert haben. Sie werden zur Eingabe des Kennworts aufgefordert. Fügen Sie Ihr Kennwort in die Eingabeaufforderung ein, und drücken Sie die **EINGABETASTE**.
+    Verwenden Sie den Benutzernamen und den Anmeldeserver, die Sie zuvor aus Ihrer Azure-Containerregistrierung kopiert haben. Wenn Sie zur Eingabe des Kennworts aufgefordert werden, fügen Sie das Kennwort für Ihre Containerregistrierung ein, und drücken Sie die **EINGABETASTE**.
 
     ```csh/sh
     Password: <paste in the ACR password and press enter>
     Login Succeeded
     ```
 
-2. Öffnen Sie im VS Code-Explorer die Datei „deployment.template.json“ im Arbeitsbereich für Ihre IoT Edge-Projektmappe. Diese Datei teilt der IoT Edge-Runtime mit, welche Module auf einem Gerät bereitgestellt werden sollen. Weitere Informationen zu Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau](module-composition.md).
+2. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe. Diese Datei teilt der IoT Edge-Runtime mit, welche Module auf einem Gerät bereitgestellt werden sollen. Beachten Sie, dass Ihr Function-Modul **CSharpFunction** zusammen mit dem Modul **tempSensor** aufgeführt wird, das Testdaten bereitstellt. Weitere Informationen zu Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau](module-composition.md).
 
-3. Suchen Sie im Bereitstellungsmanifest den Abschnitt **registryCredentials**. Aktualisieren Sie **Benutzername**, **Kennwort** und **Adresse** mit den Anmeldeinformationen der Containerregistrierung. In diesem Abschnitt wird der IoT Edge-Runtime auf Ihrem Gerät die Berechtigung erteilt, die in der privaten Registrierung gespeicherten Containerimages per Pull abzurufen. Die tatsächlichen Benutzername-/Kennwortpaare werden in der ENV-Datei gespeichert. Diese Datei wird von Git ignoriert.
+   ![Anzeigen Ihres Moduls im Bereitstellungsmanifest](./media/tutorial-deploy-function/deployment-template.png)
+
+3. Öffnen Sie die **ENV**-Datei im Arbeitsbereich Ihrer IoT Edge-Projektmappe. Diese von Git ignorierte Datei speichert die Anmeldeinformationen für Ihre Containerregistrierung, damit Sie sie nicht in die Vorlage für das Bereitstellungsmanifest aufnehmen müssen. Geben Sie den **Benutzernamen** und das **Kennwort** für Ihre Containerregistrierung an. 
 
 5. Speichern Sie diese Datei.
 
-6. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei „deployment.template.json“, und klicken Sie anschließend auf **Build IoT Edge solution** (IoT Edge-Projektmappe erstellen). 
+6. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei „deployment.template.json“, und wählen Sie anschließend **Build and Push IoT Edge solution** (IoT Edge-Projektmappe erstellen und übertragen) aus. 
 
 Wenn Sie Visual Studio Code anweisen, die Projektmappe zu erstellen, wird zunächst basierend auf den Informationen in der Bereitstellungsvorlage eine Datei vom Typ „deployment.json“ in einem neuen Ordner namens **config** erstellt. Anschließend werden zwei Befehle im integrierten Terminal ausgeführt: `docker build` und `docker push`. Diese beiden Befehle erstellen Ihren Code, packen die Funktionen in Container und pushen den Code anschließend an die Containerregistrierung, die Sie beim Initialisieren der Projektmappe angegeben haben. 
 
@@ -212,46 +238,13 @@ Wenn Sie die Nachrichtenüberwachung beenden möchten, führen Sie in der Befehl
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)]
+Falls Sie mit dem nächsten empfohlenen Artikel fortfahren möchten, können Sie die erstellten Ressourcen und Konfigurationen beibehalten und wiederverwenden. Sie können auch dasselbe IoT Edge-Gerät als Testgerät weiter nutzen. 
 
-Entfernen Sie die auf Ihrer IoT-Geräteplattform (Linux oder Windows) basierende IoT Edge-Runtime.
+Andernfalls können Sie die in diesem Artikel erstellten lokalen Konfigurationen und Azure-Ressourcen löschen, um Kosten zu vermeiden. 
 
-#### <a name="windows"></a>Windows
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Entfernen Sie die IoT Edge-Runtime.
-
-```Powershell
-stop-service iotedge -NoWait
-sleep 5
-sc.exe delete iotedge
-```
-
-Löschen Sie die Container, die auf Ihrem Gerät erstellt wurden. 
-
-```Powershell
-docker rm -f $(docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor" --filter "name=CSharpFunction")
-```
-
-#### <a name="linux"></a>Linux
-
-Entfernen Sie die IoT Edge-Runtime.
-
-```bash
-sudo apt-get remove --purge iotedge
-```
-
-Löschen Sie die Container, die auf Ihrem Gerät erstellt wurden. 
-
-```bash
-sudo docker rm -f $(sudo docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor" --filter "name=CSharpFunction")
-```
-
-Entfernen Sie die Containerruntime.
-
-```bash
-sudo apt-get remove --purge moby
-```
-
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 ## <a name="next-steps"></a>Nächste Schritte

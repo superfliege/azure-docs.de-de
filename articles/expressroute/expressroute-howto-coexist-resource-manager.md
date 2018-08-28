@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/05/2018
+ms.date: 08/17/2018
 ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262871"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41920056"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen
 > [!div class="op_single_selector"]
@@ -183,14 +183,7 @@ Dieses Verfahren führt Sie durch das Erstellen eines VNETs sowie durch das Erst
   ```
 
 ## <a name="add"></a>So konfigurieren Sie parallele Verbindungen für ein bereits vorhandenes VNET
-Wenn Sie über ein vorhandenes virtuelles Netzwerk verfügen, prüfen Sie die Größe des Gateway-Subnetzes. Wenn das Gatewaysubnetz die Größe /28 oder /29 hat, müssen Sie zunächst das Gateway des virtuellen Netzwerks löschen, um die Größe des Gatewaysubnetzes zu erhöhen. Führen Sie dazu die in diesem Abschnitt beschriebenen Schritte aus.
-
-Wenn das Gatewaysubnetz /27 oder größer ist und das virtuelle Netzwerk über ExpressRoute verbunden ist, können Sie die unten beschriebenen Schritte überspringen und direkt mit [„Schritt 4: Erstellen eines Site-to-Site-VPN-Gateways“](#vpngw) (siehe vorheriger Abschnitt) fortfahren. 
-
-> [!NOTE]
-> Wenn Sie das vorhandene Gateway löschen, geht Ihre lokale Verbindung mit Ihrem virtuellen Netzwerk verloren, während Sie an dieser Konfiguration arbeiten. 
-> 
-> 
+Wenn Sie über virtuelles Netzwerk mit nur einem zugehörigen Gateway (Standort-zu-Standort-VPN-Gateway) verfügen und ein weiteres Gateway eines anderen Typs (z.B. ExpressRoute-Gateway) hinzufügen möchten, überprüfen Sie die Größe des Gateway-Subnetzes. Bei einer Gateway-Subnetzgröße von mindestens /27 können Sie die folgenden Schritte überspringen und die Schritte im vorherigen Abschnitt ausführen, um entweder ein Standort-zu-Standort-VPN-Gateway oder ein ExpressRoute-Gateway hinzuzufügen. Wenn das Gatewaysubnetz die Größe /28 oder /29 hat, müssen Sie zunächst das Gateway des virtuellen Netzwerks löschen, um die Größe des Gatewaysubnetzes zu erhöhen. Führen Sie dazu die in diesem Abschnitt beschriebenen Schritte aus.
 
 1. Sie müssen die aktuelle Version der Azure PowerShell-Cmdlets installieren. Weitere Informationen zum Installieren von Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azure/overview) (Übersicht über Azure PowerShell). Für diese Konfiguration werden unter Umständen Cmdlets verwendet, mit denen Sie nicht so vertraut sind. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden. 
 2. Löschen Sie das vorhandene ExpressRoute- oder Standort-zu-Standort-VPN Gateway.
@@ -220,7 +213,7 @@ Wenn das Gatewaysubnetz /27 oder größer ist und das virtuelle Netzwerk über E
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. Sie verfügen nun über ein VNET ohne Gateways. Um neue Gateways zu erstellen und Ihre Verbindungen herzustellen, können Sie mit [Schritt 4: Erstellen eines Site-to-Site-VPN-Gateways](#vpngw) in den obigen Schritten fortfahren.
+5. Sie verfügen nun über ein virtuelles Netzwerk ohne Gateways. Zum Erstellen neuer Gateways und Einrichten der Verbindungen führen Sie die Schritte im vorherigen Abschnitt aus.
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>So fügen Sie dem VPN Gateway eine Punkt-zu-Standort-Konfiguration hinzu
 Sie können die unten angegebenen Schritte ausführen, um dem VPN Gateway bei einer parallelen Einrichtung eine Punkt-zu-Standort-Konfiguration hinzuzufügen.

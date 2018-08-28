@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7a9adc8e9b7bcf69cce6b8ecf00e44477c1b0da3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430738"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42442238"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -71,6 +71,9 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
 - [SQL-Authentifizierung](#sql-authentication)
 - Azure AD-Anwendungstokenauthentifizierung: [Dienstprinzipal](#service-principal-authentication)
 - Azure AD-Anwendungstokenauthentifizierung: [Verwaltete Dienstidentität](#managed-service-identity-authentication)
+
+>[!TIP]
+>Wenn ein Fehler mit dem Fehlercode „UserErrorFailedToConnectToSqlServer“ auftritt und eine Meldung wie „Das Sitzungslimit für die Datenbank ist XXX und wurde erreicht“ angezeigt wird, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
 
 ### <a name="sql-authentication"></a>SQL-Authentifizierung
 
@@ -397,7 +400,7 @@ Für SQL Data Warehouse unterstützt PolyBase Azure Blob Storage und Azure Data 
 
 Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory die Einstellungen und greift bei der Datenverschiebung automatisch auf den BULKINSERT-Mechanismus zurück.
 
-1. Der **mit der Quelle verknüpfte Dienst** ist vom Typ **AzureStorage** oder **AzureDataLakeStore** mit Dienstprinzipalauthentifizierung.
+1. Der Typ des **mit der verknüpften Diensts** ist Azure Blob-Speicher (**AzureBLobStorage**/**AzureStorage**) mit Kontoschlüsselauthentifizierung oder Azure Data Lake Storage Gen1 (**AzureDataLakeStore**) mit Dienstprinzipalauthentifizierung.
 1. Das **Eingabedataset** weist einen der Typen **AzureBlob** oder **AzureDataLakeStoreFile** auf. Der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
 
    1. `rowDelimiter` muss **\n** sein.

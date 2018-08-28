@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 08/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 0fea91fb067a6d78ef25cb0ff8014b65a8b6a916
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: f634167f24c221e702696174ea86a212c535695b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258099"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246529"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -29,16 +29,16 @@ In einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-
 Planen Sie die Bereitstellung einer verwalteten Instanz im virtuellen Netzwerk, indem Sie folgende Fragen beantworten: 
 - Planen Sie, einzelne oder mehrere verwaltete Instanzen bereitzustellen? 
 
-  Die Anzahl der verwalteten Instanzen bestimmt die Mindestgröße des Subnetzes, die Ihren verwalteten Instanzen zugeordnet wird. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](#create-a-new-virtual-network-for-managed-instances). 
+  Die Anzahl der verwalteten Instanzen bestimmt die Mindestgröße des Subnetzes, die Ihren verwalteten Instanzen zugeordnet wird. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](#determine-the-size-of-subnet-for-managed-instances). 
 - Müssen Sie Ihre verwaltete Instanz in einem bestehenden virtuellen Netzwerk bereitstellen, oder erstellen Sie ein neues Netzwerk? 
 
    Wenn Sie die Verwendung eines vorhandenen virtuellen Netzwerks beabsichtigen, müssen Sie diese Netzwerkkonfiguration ändern, um Ihre verwaltete Instanz einzubeziehen. Weitere Informationen finden Sie unter [Ändern eines vorhandenen virtuellen Netzwerks für die verwaltete Instanz](#modify-an-existing-virtual-network-for-managed-instances). 
 
    Wenn Sie vorhaben, ein neues virtuelles Netzwerk zu erstellen, lesen Sie [Erstellen eines neuen virtuellen Netzwerks für die verwaltete Instanz](#create-a-new-virtual-network-for-managed-instances).
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
-Für die Erstellung verwalteter Instanzen benötigen Sie ein dediziertes Subnetz innerhalb des virtuellen Netzwerks, das den folgenden Anforderungen entspricht:
+Für die Erstellung einer verwalteten Azure SQL-Datenbank-Instanz benötigen Sie ein dediziertes Subnetz innerhalb des virtuellen Netzwerks, das den folgenden Anforderungen entspricht:
 - **Leer**: Das Subnetz darf keinem anderen Clouddienst zugeordnet sein und kein Gatewaysubnetz sein. Sie können keine verwalteten Instanzen im Subnetz erstellen, die andere Ressourcen als verwaltete Instanzen enthält, oder zu einem späteren Zeitpunkt Ressourcen innerhalb des Subnetzes hinzufügen.
 - **Keine NSG**: Dem Subnetz darf keine Netzwerksicherheitsgruppe zugeordnet sein.
 - **Spezielle Routingtabelle**: Das Subnetz muss eine benutzerdefinierte Routentabelle (User Route Table, UDR) mit dem nächsten Hop 0.0.0.0/0 als einzige ihr zugewiesene Route aufweisen. Weitere Informationen finden Sie unter [Erstellen und Zuweisen der erforderlichen Routingtabelle](#create-the-required-route-table-and-associate-it).
@@ -63,7 +63,28 @@ Wenn Sie mehrere verwaltete Instanzen innerhalb des Subnetzes bereitstellen möc
 
 **Beispiel**: Sie planen, mit drei universelle und zwei unternehmenskritischen verwalteten Instanzen zu arbeiten. Dies bedeutet, dass Sie 5 + 3 * 2 + 2 * 4 = 19 IP-Adressen benötigen. Da IP-Adressbereiche in Zweierpotenzen definiert sind, benötigen Sie den IP-Adressbereich von 32 (2^5) IP-Adressen. Aus diesem Grund müssen Sie das Subnetz mit der Subnetzmaske /27 reservieren. 
 
-## <a name="create-a-new-virtual-network-for-managed-instances"></a>Erstellen eines neuen virtuellen Netzwerks für verwaltete Instanzen 
+## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>Erstellen eines neuen virtuellen Netzwerks für die verwaltete Instanz unter Verwendung der Azure Resource Manager-Bereitstellung
+
+Die einfachste Möglichkeit zum Erstellen und Konfigurieren eines virtuellen Netzwerks ist die Verwendung der Azure Resource Manager-Bereitstellungsvorlage.
+
+1. Melden Sie sich beim Azure-Portal an.
+
+2. Verwenden Sie die Schaltfläche **In Azure bereitstellen**, um das virtuelle Netzwerk in Azure-Cloud bereitzustellen:
+
+  <a target="_blank" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-sql-managed-instance-azure-environment%2Fazuredeploy.json" rel="noopener" data-linktype="external"> <img src="http://azuredeploy.net/deploybutton.png" data-linktype="external"> </a>
+
+  Diese Schaltfläche öffnet ein Formular zum Konfigurieren der Netzwerkumgebung, in der Sie die verwaltete Instanz bereitstellen können.
+
+  > [!Note]
+  > Diese Azure Resource Manager-Vorlage stellt das virtuelle Netzwerk mit zwei Subnetzen bereit. Ein Subnetz namens **ManagedInstances** ist für verwaltete Instanzen reserviert und verfügt über eine vorkonfigurierte Routingtabelle, während das andere Subnetz namens **Standard** für andere Ressourcen verwendet wird, die auf die verwaltete Instanz zugreifen sollen (z. B. Azure Virtual Machines). Sie können das Subnetz **Standard** entfernen, wenn Sie es nicht benötigen.
+
+3. Konfigurieren Sie die Netzwerkumgebung. Im folgenden Formular können Sie Parameter für Ihre Netzwerkumgebung konfigurieren:
+
+![Azure-Netzwerk konfigurieren](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+
+Sie können die Namen des VNETs und der Subnetze ändern und die Ihren Netzwerkressourcen zugeordneten IP-Adressbereiche anpassen. Sobald Sie auf die Schaltfläche „Kaufen“ klicken, erstellt und konfiguriert dieses Formular Ihre Umgebung. Wenn Sie keine zwei Subnetze benötigen, können Sie das Subnetz „Standard“ löschen. 
+
+## <a name="create-a-new-virtual-network-for-managed-instances-using-portal"></a>Erstellen eines neuen virtuellen Netzwerks für verwaltete Instanzen unter Verwendung des Portals
 
 Für die Erstellung einer verwalteten Instanz muss zunächst ein virtuelles Netzwerk in Azure erstellt werden. Hierfür können Sie das Azure-Portal, [PowerShell](../virtual-network/quick-create-powershell.md) oder die [Azure CLI](../virtual-network/quick-create-cli.md) verwenden. Im folgenden Abschnitt werden die Schritte zur Verwendung des Azure-Portals erläutert. Die hier erläuterten Details gelten für jede dieser Methoden.
 
@@ -92,7 +113,7 @@ Für die Erstellung einer verwalteten Instanz muss zunächst ein virtuelles Netz
 
    ![Formular für die Erstellung des virtuellen Netzwerks](./media/sql-database-managed-instance-tutorial/service-endpoint-disabled.png)
 
-## <a name="create-the-required-route-table-and-associate-it"></a>Erstellen und Zuweisen der erforderlichen Routentabelle
+### <a name="create-the-required-route-table-and-associate-it"></a>Erstellen und Zuweisen der erforderlichen Routentabelle
 
 1. Melden Sie sich auf dem Azure-Portal an.  
 2. Klicken Sie auf **Routingtabelle** und dann auf der Seite „Routingtabelle“ auf **Erstellen**.

@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 266315a731eec8a2c0ab0a880ce9e1db58331184
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 463a015b7c01dafc5b30de56b95fa0510ffb98e4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283135"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42424368"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Erste Schritte mit dem SDK für sprachaktivierte Geräte
 
@@ -44,11 +44,11 @@ Bevor Sie mit der Entwicklung mit dem SDK für sprachaktivierte Geräte beginnen
 
 ## <a name="set-up-the-development-kit"></a>Einrichten des Development Kits
 
-1. Schließen Sie das Netzteil des Development Kits an. Eine grüne Stromanzeige sollte unter dem oberen Board aufleuchten.
+1. Schalten Sie das Gerät über ein Mini-USB-Kabel ein, das an einen PC oder ein Netzteil angeschlossen ist. Eine grüne Stromanzeige sollte unter dem oberen Board aufleuchten.
 
-1. Schließen Sie das Development Kit mit einem Mini-USB-Kabel an einen Computer an.
+1. Schließen Sie das Development Kit mit einem zweiten Mini-USB-Kabel an einen Computer an.
 
-    ![Anschließen eines Development Kits](media/speech-devices-sdk/qsg-1.jpg)
+    ![Anschließen eines Development Kits](media/speech-devices-sdk/qsg-1.png)
 
 1. Richten Sie Ihr Development Kit ordnungsgemäß aus.
 
@@ -57,7 +57,7 @@ Bevor Sie mit der Entwicklung mit dem SDK für sprachaktivierte Geräte beginnen
     |Kreisförmig|Aufrecht, Mikrofone zur Decke gerichtet|
     |Linear|Auf der Seite, Mikrofone zu Ihnen gerichtet (siehe unten)|
 
-    ![lineare Ausrichtung des Developer Kits](media/speech-devices-sdk/qsg-2.jpg)
+    ![lineare Ausrichtung des Developer Kits](media/speech-devices-sdk/qsg-2.png)
 
 1. Installieren Sie die Zertifikate und die Weckwort-Tabellendatei (Schlüsselwort), und legen Sie die Berechtigungen für das Soundgerät fest. Geben Sie die folgenden Befehle in einem Befehlsfenster ein.
 
@@ -82,9 +82,22 @@ Bevor Sie mit der Entwicklung mit dem SDK für sprachaktivierte Geräte beginnen
 
 1.  Ihr Gerät sollte unter „Gerät auswählen“ aufgeführt sein. Klicken Sie auf die Schaltfläche **Anzeigen** neben dem Gerät. 
  
-1.  Stellen Sie die Verbindung mit Ihrem drahtlosen Netzwerk her, indem Sie auf **Einstellungen** und dann auf **WLAN** klicken.
+1.  Stellen Sie die Verbindung mit Ihrem drahtlosen Netzwerk her, indem Sie auf das Ordnersymbol, dann auf **Einstellungen** und schließlich auf **WLAN** klicken.
 
     ![Vysor WLAN](media/speech-devices-sdk/qsg-4.png)
+ 
+ > [!NOTE]
+ > Wenn Ihr Unternehmen Richtlinien verfügt in Bezug auf verbundenen Geräten für das WLAN-System, müssen Sie die MAC-Adresse zu erhalten, und wenden Sie sich an Ihre IT-Abteilung zur für die Verbindung mit Ihrem WLAN-System. Um die MAC-Adresse des Development Kits zu finden, klicken Sie auf das Dateiordnersymbol auf dem Desktop des Development Kits, dann auf **Einstellungen**, suchen Sie nach „MAC-Adresse“, klicken Sie auf **MAC-Adresse**, um in **Erweitertes WLAN** zu gelangen, und notieren Sie sich die unten stehende MAC-Adresse. Einige Unternehmen haben auch eine zeitliche Begrenzung, wie lange ein Gerät an ihre WLAN-Systeme angeschlossen sein darf. Möglicherweise müssen Sie die Registrierung des Development Kits mit Ihrem WLAN-System nach einer bestimmten Anzahl von Tagen verlängern.  
+ 
+ 
+   ![Vysor-Dateiordner](media/speech-devices-sdk/qsg-10.png)
+   
+   ![Vysor-MAC-Adresse](media/speech-devices-sdk/qsg-11.png)
+   
+   
+ > Wenn Sie einen Lautsprecher an das Development Kit anschließen möchten, verwenden Sie dazu den Audioausgang. Sie sollten außerdem einen guten 3,5-mm-Lautsprecher wählen.
+ 
+   ![Vysor Audio](media/speech-devices-sdk/qsg-14.png)
  
 ## <a name="run-a-sample-application"></a>Ausführen einer Beispielanwendung
 
@@ -126,7 +139,7 @@ Um die Roobo-Tests durchzuführen und das Setup Ihres Development Kits zu überp
         exit
         ```
 
-    * Kopieren Sie die Dateien `kws.table`, `kws_g.fst`, `kws_k.fst` und `words_kw.txt`) in den Ordner „\data\keyword\“ auf dem Gerät. Führen Sie die folgenden Befehle in einem Befehlsfenster aus.
+    * Kopieren Sie die Dateien `kws.table`, `kws_g.fst`, `kws_k.fst` und `words_kw.txt`) in den Ordner „\data\keyword\“ auf dem Gerät. Führen Sie die folgenden Befehle in einem Befehlsfenster aus. Wenn Sie ein [benutzerdefiniertes Aktivierungswort](speech-devices-sdk-create-kws.md) erstellt haben, befindet sich die aus dem Web erzeugte Datei „kws.table“ im gleichen Verzeichnis wie die Dateien `kws.table`, `kws_g.fst`, `kws_k.fst` und `words_kw.txt`. Verwenden Sie den Befehl „adb push C:\SDSDK\Android-Sample-Release\keyword\[Aktivierungswort]\kws.table/data/keyword“, um die Datei „kws.table“ mithilfe von Push stattdessen an das Development Kit zu übertragen.
 
         ```
         adb push C:\SDSDK\Android-Sample-Release\keyword\kws.table /data/keyword
@@ -179,7 +192,11 @@ Um die Roobo-Tests durchzuführen und das Setup Ihres Development Kits zu überp
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn bei der Verwendung des Spracherkennungsdiensts Zertifikatsfehler auftreten, stellen Sie sicher, dass Datum und Uhrzeit des Geräts korrekt sind.
+Wenn bei der Verwendung des Spracherkennungsdiensts Zertifikatsfehler auftreten, stellen Sie sicher, dass Datum und Uhrzeit des Geräts korrekt sind. Wechseln Sie zu **Einstellungen**, klicken Sie unter System auf **Datum und Uhrzeit** und **wählen Sie Ihre aktuelle Zeitzone als Zeitzone aus**. Lassen Sie **Automatisches Datum und Uhrzeit** aktiviert. Wenn Sie sehen, dass die Zeit des Development Kits mit der Zeit Ihres PCs übereinstimmt, wissen Sie, dass das Development Kit mit dem Internet verbunden ist. 
+
+ ![Vysor-Dateiordner](media/speech-devices-sdk/qsg-12.png)
+ 
+ ![Vysor-Dateiordner](media/speech-devices-sdk/qsg-13.png)
 
 Weitere Informationen zur Entwicklung finden Sie im Roobo-[Entwicklungshandbuch](http://dwn.roo.bo/server_upload/ddk/ROOBO%20Dev%20Kit-User%20Guide.pdf).
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186737"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918338"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Tutorial: Debuggen einer Service Fabric Mesh-Webanwendung
 
@@ -74,9 +74,17 @@ Wenn die lokale Bereitstellung fertig gestellt wurde und Ihre App von Visual Stu
 
 **Tipps zum Debuggen**
 
-* Sollte der Fehler **No Service Fabric local cluster is running** (Es wird kein lokaler Service Fabric-Cluster ausgeführt.) auftreten, vergewissern Sie sich, dass der SLCM (Service Local Cluster Manager) ausgeführt wird, klicken Sie auf der Taskleiste mit der rechten Maustaste auf das SLCM-Symbol, und klicken Sie anschließend auf **Start Local Cluster** (Lokalen Cluster starten). Kehren Sie nach dem Start des Clusters zu Visual Studio zurück, und drücken Sie**F5**.
-* Sollte beim Start der App ein Fehler vom Typ **404** auftreten, sind wahrscheinlich die Umgebungsvariablen in **service.yaml** nicht korrekt. Vergewissern Sie sich, dass `ApiHostPort` und `ServiceName` ordnungsgemäß festgelegt sind, wie unter [Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) beschrieben.
-* Vergewissern Sie sich im Falle von Buildfehlern in **service.yaml**, dass zum Einrücken der Zeilen keine Tabulatoren, sondern Leerzeichen verwendet wurden. Darüber hinaus müssen Sie die App vorerst mit dem englischen Gebietsschema erstellen.
+Derzeit besteht ein Problem, das bewirkt, dass mit dem Aufruf von `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` keine Verbindung mit dem Dienst hergestellt werden kann. Dies kann immer passieren, wenn sich Ihre Host-IP-Adresse ändert. Problembehebung:
+
+1. Entfernen Sie die App aus dem lokalen Cluster (in Visual Studio, **Build** > **Projektmappe bereinigen**).
+2. Wählen Sie im Service Fabric-Managers für lokale Cluster die Option **Lokalen Cluster beenden** und dann **Lokalen Cluster starten**.
+3. Stellen Sie die App erneut bereit (in Visual Studio, **F5**).
+
+Sollte der Fehler **No Service Fabric local cluster is running** (Es wird kein lokaler Service Fabric-Cluster ausgeführt.) auftreten, vergewissern Sie sich, dass der LCM (Service Fabric Local Cluster Manager) ausgeführt wird, klicken Sie auf der Taskleiste mit der rechten Maustaste auf das LCM-Symbol, und klicken Sie anschließend auf **Start Local Cluster** (Lokalen Cluster starten). Kehren Sie nach dem Start des Clusters zu Visual Studio zurück, und drücken Sie**F5**.
+
+Sollte beim Start der App ein Fehler vom Typ **404** auftreten, sind möglicherweise die Umgebungsvariablen in **service.yaml** nicht korrekt. Vergewissern Sie sich, dass `ApiHostPort` und `ToDoServiceName` ordnungsgemäß festgelegt sind, wie unter [Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) beschrieben.
+
+Vergewissern Sie sich im Falle von Buildfehlern in **service.yaml**, dass zum Einrücken der Zeilen keine Tabulatoren, sondern Leerzeichen verwendet wurden. Darüber hinaus müssen Sie die App vorerst mit dem englischen Gebietsschema erstellen.
 
 ### <a name="debug-in-visual-studio"></a>Debuggen in Visual Studio
 

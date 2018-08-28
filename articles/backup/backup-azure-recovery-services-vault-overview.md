@@ -6,14 +6,14 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 10/15/2017
+ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: b6195feb25a7206d7c453e31f0ac312e070b3113
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 04b755d7ca1ec72b075ecaa4b32a35f5009a938b
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606170"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42146428"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -38,11 +38,17 @@ Recovery Services-Tresore basieren auf dem Azure Resource Manager-Modell von Azu
 - **Sofortige Wiederherstellung für IaaS-VMs**: Durch Recovery Services-Tresore können Sie Dateien und Ordner von einer IaaS-VM wiederherstellen, ohne die gesamte VM wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt. Die sofortige Wiederherstellung für IaaS-VMs ist für Windows- und Linux-VMs verfügbar. [Weitere Informationen](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>Verwalten von Recovery Services-Tresoren im Portal
-Die Erstellung und Verwaltung von Recovery Services-Tresoren im Azure-Portal ist einfach, da der Sicherungsdienst in das Menü „Azure-Einstellungen“ integriert ist. Eine derartige Integration bedeutet, dass Sie einen Recovery Services-Tresor *im Kontext des Zieldiensts* erstellen oder verwalten können. Um beispielsweise die Wiederherstellungspunkte für eine VM anzuzeigen, wählen Sie sie aus, und klicken Sie im Menü „Einstellungen“ auf **Sicherung**. Die Sicherungsinformationen speziell zu dieser VM werden angezeigt. Im folgenden Beispiel ist **ContosoVM** der Name des virtuellen Computers. **ContosoVM-demovault** ist der Name des Recovery Services-Tresors. Sie müssen sich den Namen des Recovery Services-Tresors, in dem die Wiederherstellungspunkte gespeichert werden, nicht merken, sondern können über den virtuellen Computer auf diese Informationen zugreifen.  
+Die Erstellung und Verwaltung von Recovery Services-Tresoren im Azure-Portal ist einfach, da der Sicherungsdienst in andere Azure-Dienste integriert ist. Eine derartige Integration bedeutet, dass Sie einen Recovery Services-Tresor *im Kontext des Zieldiensts* erstellen oder verwalten können. Um beispielsweise die Wiederherstellungspunkte für eine VM anzuzeigen, wählen Sie Ihre VM aus, und klicken Sie im Menü „Vorgänge“ auf **Sicherung**. 
 
-![Details zum Recovery Services-Tresor über die VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context.png)
+![Details zum Recovery Services-Tresor über die VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
-Wenn mehrere Server mit demselben Recovery Services-Tresor geschützt sind, kann es sinnvoller sein, den Recovery Services-Tresor zu überprüfen. Sie können nach allen Recovery Services-Tresoren im Abonnement suchen und einen aus der Liste auswählen.
+Wenn für den virtuellen Computer keine Sicherung konfiguriert wurde, werden Sie zum Konfigurieren der Sicherung aufgefordert. Wurde eine Sicherung konfiguriert, werden die Sicherungsinformationen über den virtuellen Computer angezeigt, einschließlich einer Liste von Wiederherstellungspunkten.  
+
+![Details zum Recovery Services-Tresor über die VM](./media/backup-azure-recovery-services-vault-overview/vm-recovery-point-list.png)
+
+Im vorherigen Beispiel ist **ContosoVM** der Name des virtuellen Computers. **ContosoVM-demovault** ist der Name des Recovery Services-Tresors. Sie müssen sich den Namen des Recovery Services-Tresors, in dem die Wiederherstellungspunkte gespeichert werden, nicht merken, sondern können über den virtuellen Computer auf diese Informationen zugreifen.  
+
+Wenn ein Recovery Services-Tresor mehrere Server schützt, kann es sinnvoller sein, den Recovery Services-Tresor zu überprüfen. Sie können nach allen Recovery Services-Tresoren im Abonnement suchen und einen aus der Liste auswählen.
 
 Die folgenden Abschnitte enthalten Links zu Artikeln, in denen erläutert wird, wie Sie einen Recovery Services-Tresor in jedem Aktivitätstyp verwenden.
 

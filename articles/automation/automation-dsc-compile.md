@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f4f3939b1e8fc50c1a942498d7f90d6e0db0633
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 03b22e3a4c2c0b8eb87ee0b61edba3c6f0923170
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003093"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443814"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilieren von DSC-Konfigurationen in Azure Automation DSC
 
@@ -55,7 +55,9 @@ Sie können [`Start-AzureRmAutomationDscCompilationJob`](/powershell/module/azur
 Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzureRmAutomationDscCompilationJob` gibt ein Kompilierungsauftragsobjekt zurück, das zum Nachverfolgen des Auftragsstatus verwendet werden kann. Sie können dieses Kompilierungsauftragsobjekt mit [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) verwenden, um den Status des Kompilierungsauftrags zu ermitteln. Wenn Sie das Objekt mit [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput) verwenden, können Sie die Datenströme (Ausgabe) anzeigen. Der folgende Beispielcode startet die Kompilierung der **SampleConfig**-Konfiguration, wartet, bis die Kompilierung abgeschlossen ist, und zeigt dann die Datenströme an.
+`Start-AzureRmAutomationDscCompilationJob` gibt ein Kompilierungsauftragsobjekt zurück, das zum Nachverfolgen des Auftragsstatus verwendet werden kann. Sie können dieses Kompilierungsauftragsobjekt anschließend mit [`Get-AzureRmAutomationDscCompilationJob`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjob) verwenden,
+um den Status des Kompilierungsauftrags zu ermitteln, und [`Get-AzureRmAutomationDscCompilationJobOutput`](/powershell/module/azurerm.automation/get-azurermautomationdsccompilationjoboutput),
+um die Datenströme (Ausgabe) anzuzeigen. Der folgende Beispielcode startet die Kompilierung der **SampleConfig**-Konfiguration, wartet, bis die Kompilierung abgeschlossen ist, und zeigt dann die Datenströme an.
 
 ```powershell
 $CompilationJob = Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -233,8 +235,7 @@ Objektverweise in Azure Automation DSC und -Runbooks sind gleich. Weitere Inform
 
 ### <a name="credential-assets"></a>Anmeldeinformationen
 
-DSC-Konfigurationen in Azure Automation können mithilfe von `Get-AzureRmAutomationCredential` auf Automation-Anmeldeinformationsobjekte verweisen. Wenn eine Konfiguration einen Parameter aufweist, der den Typ **PSCredential** enthält, können Sie das Cmdlet `Get-AutomationRmAutomationCredential` verwenden, indem Sie den Zeichenfolgennamen eines Azure Automation-Anmeldeinformationsobjekts an das Cmdlet übergeben, um die Anmeldeinformationen abzurufen. Sie können dieses Objekt anschließend für den Parameter verwenden, der das **PSCredential**-Objekt erfordert. Im Hintergrund wird das Azure Automation-Anmeldeinformationsobjekt mit diesem Namen abgerufen und an die Konfiguration übergeben.
-Das folgende Beispiel stellt die praktische Anwendung dar.
+DSC-Konfigurationen in Azure Automation können mithilfe von `Get-AzureRmAutomationCredential` auf Automation-Anmeldeinformationsobjekte verweisen. Wenn eine Konfiguration einen Parameter aufweist, der den Typ **PSCredential** enthält, können Sie das Cmdlet `Get-AutomationRmAutomationCredential` verwenden, indem Sie den Zeichenfolgennamen eines Azure Automation-Anmeldeinformationsobjekts an das Cmdlet übergeben, um die Anmeldeinformationen abzurufen. Sie können dieses Objekt anschließend für den Parameter verwenden, der das **PSCredential**-Objekt erfordert. Im Hintergrund wird das Azure Automation-Anmeldeinformationsobjekt mit diesem Namen abgerufen und an die Konfiguration übergeben. Das folgende Beispiel stellt die praktische Anwendung dar.
 
 Um die Sicherheit von Anmeldeinformationen in Knotenkonfigurationen (MOF-Konfigurationsdokumente) zu gewährleisten, müssen diese Informationen in der MOF-Datei der Knotenkonfiguration verschlüsselt werden. Zurzeit müssen Sie PowerShell DSC jedoch noch darüber informieren, dass die Anmeldeinformationen während der Generierung der Knotenkonfiguration-MOF-Datei im Klartext übergeben werden. PowerShell DSC hat keinerlei Informationen darüber, dass Azure Automation die gesamte MOF-Datei nach dem Generieren über einen Kompilierungsauftrag verschlüsselt.
 
@@ -246,7 +247,7 @@ Das folgende Beispiel zeigt eine DSC-Konfiguration, die ein Automation-Anmeldein
 Configuration CredentialSample
 {
     Import-DscResource -ModuleName PSDesiredStateConfiguration
-    $Cred = Get-AutomationRmAutomationCredential -ResourceGroupName 'ResourceGroup01' -AutomationAccountName 'ContosoAutomationAccount' -Name 'SomeCredentialAsset'
+    $Cred = Get-AutomationPSCredential 'SomeCredentialAsset'
 
     Node $AllNodes.NodeName
     {
@@ -317,8 +318,8 @@ Import-AzureRmAutomationDscNodeConfiguration -AutomationAccountName 'MyAutomatio
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Einführung in Azure Automation DSC finden Sie unter [Erste Schritte mit Azure Automation DSC](automation-dsc-getting-started.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
-- Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation)verfügbar.
-- Eine Preisübersicht finden Sie unter [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Verwendungsbeispiel für Azure Automation DSC in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md).
+- Eine Einführung finden Sie unter [Erste Schritte mit der Azure Automation-Zustandskonfiguration](automation-dsc-getting-started.md).
+- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in der Azure Automation-Zustandskonfiguration](automation-dsc-compile.md).
+- Eine PowerShell-Cmdlet-Referenz ist unter [Cmdlets der Azure Automation-Zustandskonfiguration](/powershell/module/azurerm.automation/#automation) verfügbar.
+- Eine Preisübersicht finden Sie unter [Azure Automation-Zustandskonfiguration: Preise](https://azure.microsoft.com/pricing/details/automation/).
+- Ein Verwendungsbeispiel für die Azure Automation-Zustandskonfiguration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit der Azure Automation-Zustandskonfiguration und Chocolatey](automation-dsc-cd-chocolatey.md).

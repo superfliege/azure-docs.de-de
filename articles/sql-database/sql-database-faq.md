@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/21/2018
 ms.author: carlrab
-ms.openlocfilehash: 6c43a52309a6f41d73ead19fc5f5b7df2f06d6f6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308812"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246553"
 ---
 # <a name="sql-database-faq"></a>SQL-Datenbank – Häufig gestellte Fragen
 
@@ -46,7 +46,6 @@ Der [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hy
 
 ## <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Gibt es für den Azure-Hybridvorteil für SQL Server Dualnutzungsrechte?
 Sie verfügen für die Lizenz 180 Tage lang über Dualnutzungsrechte, um sicherzustellen, dass die Migrationen reibungslos durchgeführt werden können. Nach Ablauf der 180 Tage kann die SQL Server-Lizenz nur in der Cloud in SQL-Datenbank verwendet werden, und lokal und in der Cloud gelten keine Dualnutzungsrechte mehr.
-
 
 ## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Wie unterscheidet sich der Azure-Hybridvorteil für SQL Server von der License Mobility?
 Derzeit bieten wir License Mobility-Vorteile für SQL Server-Kunden mit Software Assurance an, in deren Rahmen die Neuzuweisung von Lizenzen zu freigegebenen Drittanbieterservern möglich ist. Dieser Vorteil kann für Azure IaaS und AWS EC2 verwendet werden.
@@ -168,7 +167,10 @@ Die Überwachung ist ohne weitere Kosten in den SQL-Datenbank-Dienst integriert 
 Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Computer mit SQL Server**, wählen Sie in der Liste den Server aus, und klicken Sie auf **Kennwort zurücksetzen**.
 
 ## <a name="how-do-i-manage-databases-and-logins"></a>Wie verwalte ich Datenbanken und Anmeldungen?
-Informationen hierzu finden Sie unter [Steuern und Gewähren von Datenbankzugriff](sql-database-manage-logins.md).
+Informationen hierzu finden Sie unter [Steuern und Gewähren von Datenbankzugriff](sql-database-manage-logins.md). 
+
+> [!NOTE]
+> Sie können den Namen des Serveradministratorkontos nach dem Erstellen nicht mehr ändern.
 
 ## <a name="how-do-i-make-sure-only-authorized-ip-addresses-are-allowed-to-access-a-server"></a>Wie stelle ich sicher, dass nur autorisierte IP-Adressen auf einen Server zugreifen dürfen?
 Siehe [Konfigurieren der Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md).

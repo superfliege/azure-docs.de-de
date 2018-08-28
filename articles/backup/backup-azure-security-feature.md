@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.author: trinadhk
-ms.openlocfilehash: 714c8fde28be63e5173f89f92d186445f0990214
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 32eba23202eca1c71c4f3b01dcb364281cb2eb60
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447379"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246502"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Eindringlingen werden immer größer. Diese Sicherheitsprobleme können erhebliche Daten- und finanzielle Verluste mit sich bringen. Zum Schutz gegen solche Angriffe bietet Azure Backup jetzt neue Sicherheitsfeatures für den Schutz von Hybridsicherungen. In diesem Artikel werden Aktivierung und Verwendung dieser Features mit einem Azure Recovery Services-Agent und Azure Backup Server beschrieben. Zu den Features zählen:
@@ -80,6 +80,10 @@ Es wurden Prüfungen hinzugefügt, um sicherzustellen, dass bestimmte Vorgänge 
 
 ### <a name="authentication-to-perform-critical-operations"></a>Authentifizierung für das Ausführen von kritischen Vorgängen
 Als Teil der zusätzlich hinzugefügten Authentifizierungsebene für kritische Vorgänge werden Sie beim Ausführen der Vorgänge **Stop Protection with Delete data** (Schutz mit Datenlöschung beenden) und **Passphrase ändern** dazu aufgefordert, die Sicherheits-PIN einzugeben.
+
+> [!NOTE]
+
+> Die Sicherheits-PIN wird derzeit für **Schutz beenden und Daten löschen** für DPM und MABS nicht unterstützt. 
 
 So erhalten Sie diese PIN:
 

@@ -6,33 +6,43 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/15/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 68343f3fcdd2275012207d7ac5a5f3bcdc71d1b8
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414373"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42443581"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen
 
-Diensttarife unterscheiden sich in Bezug auf Leistungsstufen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und E/A-Bereich. Der Kunde muss den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Mit dem V-Kern-Modell ermöglichen Einzeldatenbanken und Pools für elastische Datenbanken Einsparungen von bis zu 30 Prozent mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Es ermöglicht Ihnen auch die Wahl der Hardwaregeneration:
+- Gen 4: bis zu 24 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
+- Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,5. GB pro Kern, schnelle eNVM-SSD
+
+Beim virtuellen Kern-Modell können Sie außerdem den [Vorteil der Verwendung von Azure-Hybrid für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) nutzen, um Kosten zu sparen.
+
+## <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
+
+Das Modell mit virtuellem Kern bietet zwei Diensttarife: „Universell“und „Unternehmenskritisch“. Diensttarife unterscheiden sich in Bezug auf Leistungsstufen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und E/A-Bereich. Der Kunde muss den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren.
 
 Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle verdeutlicht:
 
 ||**Allgemeiner Zweck**|**Unternehmenskritisch**|
 |---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
-|Compute|1 bis 80 V-Kerne, Gen4 und Gen5 |1 bis 80 V-Kerne, Gen4 und Gen5|
+|Compute|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|
 |Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern |
-|Speicher|Premium-Remotespeicher, 5 GB - 4 TB|Lokaler SSD-Speicher, 5 GB–4 TB|
-|E/A-Durchsatz (ungefähr)|500 IOPS pro V-Kern mit maximal 7.000 IOPS|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
-|Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Leseskalierung](sql-database-read-scale-out.md), zonenredundante Hochverfügbarkeit|
-|Backups|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)|
+|Speicher|[Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md),<br/>Singleton-Datenbank: 5 GB bis 4 TB<br/>Verwaltete Instanz: 32 GB bis 8 TB |Lokaler SSD-Speicher,<br/>Einzeldatenbank: 5 GB bis 4 TB<br/>Verwaltete Instanz: 32 GB bis 4 TB |
+|E/A-Durchsatz (ungefähr)|Singleton-Datenbank: 500 IOPS pro virtuellem Kern mit maximal 7.000 IOPS</br>Verwaltete Instanz: abhängig von der [Dateigröße](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
+|Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>Zonenredundante HA|
+|Backups|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|
 |In-Memory|N/V|Unterstützt|
 |||
+
+Weitere Informationen finden Sie unter [V-Kern-Ressourcengrenzwerte in einer Singelton-Datenbank](sql-database-vcore-resource-limits-single-databases.md) und [V-Kern-Ressourceneinschränkungen in einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md#vcore-based-purchasing-model). 
 
 > [!IMPORTANT]
 > Verwenden Sie das DTU-basierte Kaufmodell, wenn Sie weniger als einen V-Kern mit Computekapazität benötigen.
@@ -43,9 +53,10 @@ Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häuf
 
 Beachten Sie Folgendes:
 - Der zugeordnete Speicher wird für Datendateien (MDF) und Protokolldateien (LDF) verwendet.
-- Jede Leistungsstufe unterstützt eine maximale Datenbankgröße, die standardmäßig bei 32 GB liegt.
-- Wenn Sie die erforderliche Datenbankgröße (MDF-Größe) konfigurieren, werden 30% des zusätzlichen Speichers automatisch hinzugefügt, um LDF zu unterstützen.
-- Sie können eine beliebige Datenbankgröße zwischen 10 GB und dem unterstützten Maximum auswählen.
+- Jede Singelton-Datenbank-Leistungsstufe unterstützt eine maximale Datenbankgröße, die standardmäßig bei 32 GB liegt.
+- Wenn Sie die erforderliche Singelton-Datenbankgröße (MDF-Größe) konfigurieren, werden 30% des zusätzlichen Speichers automatisch hinzugefügt, um LDF zu unterstützen.
+- Die Speichergröße in einer verwalteten Azure SQL-Datenbank-Instanz muss als Vielfaches von 32 GB angegeben werden.
+- Sie können eine beliebige Singelton-Datenbankgröße zwischen 10 GB und dem unterstützten Maximum auswählen.
  - Für Speicher vom Typ „Standard“ erhöhen bzw. verringern Sie die Größe in Schritten von 10 GB.
  - Für Speicher vom Typ „Premium“ erhöhen bzw. verringern Sie die Größe in Schritten von 250 GB.
 - Im Diensttarif „Universell“ wird für `tempdb` eine angefügte SSD verwendet, und diese Speicherkosten sind im V-Kern-Preis enthalten.
@@ -57,13 +68,13 @@ Beachten Sie Folgendes:
 Verwenden Sie [sp_spaceused](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-spaceused-transact-sql) zum Überwachen der aktuellen Gesamtgröße für MDF und LDF. Verwenden Sie [sys.database_files](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-files-transact-sql), um die aktuelle Größe der einzelnen MDF- und LDF-Dateien zu überwachen.
 
 > [!IMPORTANT]
-> Unter bestimmten Umständen müssen Sie möglicherweise eine Datenbank verkleinern, um Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
+> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
 ## <a name="backups-and-storage"></a>Sicherungen und Speicher
 
-Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen „Point-in-Time-Wiederherstellung“ (Point in Time Restore, PITR) und „Langfristige Aufbewahrung“ (Long Term Retention, LTR) von SQL-Datenbank zu unterstützen. Dieser Speicher wird für jede Datenbank separat zugeordnet und als zwei Arten von getrennten Datenbankgebühren berechnet. 
+Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen „Point-in-Time-Wiederherstellung“ (Point in Time Restore, PITR) und „[Langfristige Aufbewahrung](sql-database-long-term-retention.md)“ (Long Term Retention, LTR) von SQL-Datenbank zu unterstützen. Dieser Speicher wird für jede Datenbank separat zugeordnet und als zwei Arten von getrennten Datenbankgebühren berechnet. 
 
-- **PITR**: Einzelne Datenbanksicherungen werden automatisch in RA-GRS-Speicher kopiert. Die Speichergröße wird dynamisch erhöht, wenn die neuen Sicherungen erstellt werden.  Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Der Speicherverbrauch richtet sich nach der Änderungsrate der Datenbank und nach der Aufbewahrungsdauer. Sie können für jede Datenbank eine separate Aufbewahrungsdauer konfigurieren, die zwischen 7 und 35 Tagen liegt. Eine Mindestspeichermenge, die der Gesamtgröße der Daten entspricht, wird kostenlos zur Verfügung gestellt. Für die meisten Datenbanken reicht diese Menge aus, um Sicherungen für sieben Tage aufzubewahren.
+- **PITR**: Einzelne Datenbanksicherungen werden automatisch in [RA-GRS-Speicher](../storage/common/storage-designing-ha-apps-with-ragrs.md) kopiert. Die Speichergröße wird dynamisch erhöht, wenn die neuen Sicherungen erstellt werden.  Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Der Speicherverbrauch richtet sich nach der Änderungsrate der Datenbank und nach der Aufbewahrungsdauer. Sie können für jede Datenbank eine separate Aufbewahrungsdauer konfigurieren, die zwischen 7 und 35 Tagen liegt. Eine Mindestspeichermenge, die der Gesamtgröße der Daten entspricht, wird kostenlos zur Verfügung gestellt. Für die meisten Datenbanken reicht diese Menge aus, um Sicherungen für sieben Tage aufzubewahren.
 - **LTR**: SQL-Datenbank verfügt über eine Option zum Konfigurieren der langfristigen Aufbewahrung von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren. Wenn die LTR-Richtlinie aktiviert ist, werden diese Sicherungen automatisch in RA-GRS-Speicher gespeichert, aber Sie können steuern, wie häufig die Sicherungen kopiert werden. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Mit dieser Konfiguration wird definiert, wie viel Speicher für die LTR-Sicherungen verwendet wird. Sie können den LTR-Preisrechner verwenden, um die Kosten für den LTR-Speicher zu schätzen. Weitere Informationen finden Sie unter [Langfristige Aufbewahrung](sql-database-long-term-retention.md).
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure-Vorteil bei Hybridnutzung
@@ -72,7 +83,9 @@ Beim V-Kern-basierten Kaufmodell können Sie Ihre vorhandenen Lizenzen gegen Rab
 
 ![Preise](./media/sql-database-service-tiers/pricing.png)
 
-## <a name="migration-of-single-databases-with-geo-replication-links"></a>Migration von Einzeldatenbanken mit Georeplikationsverknüpfungen
+## <a name="migration-from-dtu-model-to-vcore-model"></a>Migration vom DTU-Modell zum Modell mit virtuellem Kern
+
+### <a name="migration-of-single-databases-with-geo-replication-links"></a>Migration von Einzeldatenbanken mit Georeplikationsverknüpfungen
 
 Die Migration vom DTU-basierten Modell zum V-Kern-basierten Modell ähnelt dem Upgrade bzw. Downgrade der Georeplikationsbeziehungen zwischen Standard- und Premium-Datenbanken. Die Georeplikation muss nicht beendet werden, aber der Benutzer muss die Sequenzierungsregeln beachten. Bei einem Upgrade müssen Sie zuerst das Upgrade für die sekundäre Datenbank und anschließend das Upgrade für die primäre Datenbank durchführen. Drehen Sie bei einem Downgrade die Reihenfolge um: Führen Sie zuerst das Downgrade für die primäre und anschließend das Downgrade für die sekundäre Datenbank durch. 
 
@@ -94,15 +107,15 @@ Die folgende Tabelle enthält eine Anleitung für die jeweiligen Migrationsszena
 
 \* Für 100 DTUs im Standard-Tarif ist jeweils mindestens ein V-Kern erforderlich, und für 125 DTUs im Premium-Tarif ist jeweils mindestens ein V-Kern erforderlich.
 
-## <a name="migration-of-failover-groups"></a>Migration von Failovergruppen 
+### <a name="migration-of-failover-groups"></a>Migration von Failovergruppen 
 
 Für die Migration von Failovergruppen mit mehreren Datenbanken ist eine individuelle Migration der primären und sekundären Datenbank erforderlich. Während dieses Prozesses gelten die gleichen Aspekte und Sequenzierungsregeln. Nachdem die Datenbanken auf das V-Kern-basierte Modell umgestellt wurden, bleibt die Failovergruppe mit denselben Richtlinieneinstellungen wirksam. 
 
-## <a name="creation-of-a-geo-replication-secondary"></a>Erstellung einer sekundären Einheit für die Georeplikation
+### <a name="creation-of-a-geo-replication-secondary"></a>Erstellung einer sekundären Einheit für die Georeplikation
 
 Sie können eine sekundäre Einheit für die Georeplikation nur mit demselben Diensttarif wie für die primäre Einheit erstellen. Für eine Datenbank mit einer hohen Protokollgenerierungsrate ist es ratsam, die sekundäre Einheit mit der gleichen Leistungsstufe wie für die primäre Einheit zu erstellen. Wenn Sie eine sekundäre Einheit für die Georeplikation im Pool für elastische Datenbanken für eine einzelne primäre Datenbank erstellen, wird empfohlen, dass die Einstellung `maxVCore` für den Pool mit der Leistungsstufe der primären Datenbank übereinstimmt. Bei der Erstellung einer sekundären Einheit für die Georeplikation im Pool für elastische Datenbanken einer primären Einheit in einem anderen Pool für elastische Datenbanken wird empfohlen, dass die Pools über die gleichen `maxVCore`-Einstellungen verfügen.
 
-## <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Verwenden einer Datenbankkopie zum Konvertieren einer DTU-basierten Datenbank in eine V-Kern-basierte Datenbank
+### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Verwenden einer Datenbankkopie zum Konvertieren einer DTU-basierten Datenbank in eine V-Kern-basierte Datenbank
 
 Sie können eine beliebige Datenbank mit einer DTU-basierten Leistungsstufe in eine Datenbank mit einer V-Kern-basierten Leistungsstufe kopieren, ohne dass hierfür Einschränkungen oder spezielle Sequenzierungen gelten, solange die Zielleistungsstufe die maximale Datenbankgröße der Quelldatenbank unterstützt. Der Grund ist, dass die Datenbankkopie eine Momentaufnahme der Daten zum Startzeitpunkt des Kopiervorgangs erstellt und keine Datensynchronisierung zwischen Quelle und Ziel durchführt. 
 

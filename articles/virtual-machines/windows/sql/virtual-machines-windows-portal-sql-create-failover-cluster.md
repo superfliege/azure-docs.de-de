@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a4b63c9d184f58fe13c1271f9a425919a42fd897
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 8e107c1721d5623239a694eba39b32e8a2a6089d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216719"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145894"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -481,7 +481,13 @@ Melden Sie sich zum Testen der Konnektivität an einem anderen virtuellen Comput
 >Bei Bedarf können Sie [SQL Server Management Studio herunterladen](http://msdn.microsoft.com/library/mt238290.aspx).
 
 ## <a name="limitations"></a>Einschränkungen
-Auf virtuellen Azure-Computern wird Microsoft Distributed Transaction Coordinator (DTC) für FCIs nicht unterstützt, da der Lastenausgleich keine Unterstützung für den RPC-Port bietet.
+
+Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und ein [Load Balancer im Tarif „Standard“](../../../load-balancer/load-balancer-standard-overview.md).
+
+Auf virtuellen Azure-Computern wird MSDTC unter Windows Server 2016 und früheren Versionen aus folgenden Gründen nicht unterstützt:
+
+- Die gruppierte MSDTC-Ressource kann nicht für die Verwendung von freigegebenem Speicher konfiguriert werden. Wenn Sie mit Windows Server 2016 eine MSDTC-Ressource erstellen, wird kein freigegebener Speicher für die Verwendung angezeigt, selbst wenn der Speicher vorhanden ist. Dieses Problem wurde in Windows Server 2019 behoben.
+- Der Load Balancer im Tarif „Basic“ verarbeitet keine RPC-Ports.
 
 ## <a name="see-also"></a>Siehe auch
 

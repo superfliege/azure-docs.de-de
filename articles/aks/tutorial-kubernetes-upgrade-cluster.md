@@ -1,26 +1,26 @@
 ---
-title: Tutorial zu Kubernetes in Azure – Aktualisieren eines Clusters
-description: Tutorial zu Kubernetes in Azure – Aktualisieren eines Clusters
+title: Tutorial zu Kubernetes in Azure – Upgrade eines Clusters
+description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie Sie ein Upgrade eines vorhandenen AKS-Clusters auf die neueste verfügbare Kubernetes-Version durchführen.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d66197b69a0804a49fabb72e9b97c77e000bdf88
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 11e082ae235706613b0a60b12bc2b27896953508
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131642"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918475"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Tutorial: Durchführen eines Upgrades für Kubernetes in Azure Kubernetes Service (AKS)
 
-Ein Upgrade für den Azure Kubernetes Service-Cluster (AKS) kann über die Azure CLI durchgeführt werden. Um Störungen für ausgeführte Anwendungen gering zu halten, werden Kubernetes-Knoten während des Upgradeprozesses sorgfältig [gesperrt und ausgeglichen][kubernetes-drain].
+Im Rahmen des Anwendungs- und Clusterlebenszyklus möchten Sie möglicherweise ein Upgrade auf die neueste verfügbare Version von Kubernetes durchführen und neue Funktionen nutzen. Ein Upgrade für den Azure Kubernetes Service-Cluster (AKS) kann über die Azure CLI durchgeführt werden. Um Störungen für ausgeführte Anwendungen gering zu halten, werden Kubernetes-Knoten während des Upgradeprozesses sorgfältig [gesperrt und ausgeglichen][kubernetes-drain].
 
-In diesem Tutorial (Teil 7 von 7) wird ein Upgrade für einen Kubernetes-Cluster durchgeführt. Sie führen folgende Aufgaben aus:
+In diesem Tutorial (Teil 7 von 7) wird ein Upgrade für einen Kubernetes-Cluster durchgeführt. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Identifizieren der aktuellen und verfügbaren Kubernetes-Versionen
@@ -29,35 +29,38 @@ In diesem Tutorial (Teil 7 von 7) wird ein Upgrade für einen Kubernetes-Cluster
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, dieses Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt.
+In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, dieses Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
-Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
+Für dieses Tutorial müssen Sie mindestens Version 2.0.44 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
-## <a name="get-cluster-versions"></a>Abrufen von Clusterversionen
+## <a name="get-available-cluster-versions"></a>Abrufen verfügbarer Clusterversionen
 
-Verwenden Sie vor dem Aktualisieren eines Clusters den Befehl [az aks get-upgrades][], um zu überprüfen, welche Kubernetes-Versionen als Upgrade verfügbar sind.
+Verwenden Sie vor dem Upgrade eines Clusters den Befehl [az aks get-upgrades][], um zu überprüfen, welche Kubernetes-Versionen als Upgrade verfügbar sind:
 
 ```azurecli
-az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Im folgenden Beispiel lautet die aktuelle Knotenversion *1.9.6*, und die verfügbaren Versionen werden in der Spalte *Upgrades* angezeigt.
+Im folgenden Beispiel lautet die aktuelle Version *1.9.6*, und die verfügbaren Versionen werden in der Spalte *Upgrades* angezeigt.
 
 ```
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  ----------
-default  myResourceGroup  1.9.6            1.9.6              1.10.3
+-------  ---------------  ---------------  -----------------  ----------------------
+default  myResourceGroup  1.9.9            1.9.9              1.10.3, 1.10.5, 1.10.6
 ```
 
-## <a name="upgrade-cluster"></a>Aktualisieren des Clusters
+## <a name="upgrade-a-cluster"></a>Aktualisieren eines Clusters
 
-Verwenden Sie den Befehl [az aks upgrade][], um die Clusterknoten zu aktualisieren. Im folgenden Beispiel wird der Cluster auf Version *1.10.3* aktualisiert.
+Verwenden Sie den Befehl [az aks upgrade][], um ein Upgrade des AKS-Clusters durchzuführen. Im folgenden Beispiel wird ein Upgrade des Clusters auf Kubernetes-Version *1.10.6* durchgeführt.
+
+> [!NOTE]
+> Upgrades sind jeweils nur auf die nächste Nebenversion möglich. Beispielsweise können Sie ein Upgrade von *1.9.6* auf *1.10.3* durchführen, aber nicht direkt von *1.9.6* auf *1.11.x*. Für ein Upgrade von *1.9.6* auf *1.11.x* müssen Sie zuerst ein Upgrade von *1.9.6* auf *1.10.3* und dann ein weiteres Upgrade von  *1.10.3* auf *1.11.x* durchführen.
 
 ```azurecli
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.10.3
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.10.6
 ```
 
-In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt die Versionsangabe *1.10.3* angezeigt:
+In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt die Versionsangabe *1.10.6* angezeigt:
 
 ```json
 {
@@ -75,32 +78,32 @@ In der folgenden verkürzten Beispielausgabe wird für *kubernetesVersion* jetzt
   "enableRbac": false,
   "fqdn": "myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io",
   "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "kubernetesVersion": "1.10.3",
+  "kubernetesVersion": "1.10.6",
   "location": "eastus",
   "name": "myAKSCluster",
   "type": "Microsoft.ContainerService/ManagedClusters"
 }
 ```
 
-## <a name="validate-upgrade"></a>Überprüfen des Upgrades
+## <a name="validate-an-upgrade"></a>Überprüfen eines Upgrades
 
-Überprüfen Sie nun mit dem Befehl [az aks show][], ob das Upgrade erfolgreich durchgeführt wurde.
+Überprüfen mit dem Befehl [az aks show][] folgendermaßen, ob das Upgrade erfolgreich durchgeführt wurde:
 
 ```azurecli
-az aks show --name myAKSCluster --resource-group myResourceGroup --output table
+az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Ausgabe:
+Die folgende Beispielausgabe zeigt, dass der AKS-Cluster *KubernetesVersion 1.10.6* ausführt:
 
-```json
+```
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.10.3               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.10.6               Succeeded            myaksclust-myresourcegroup-19da35-bd54a4be.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Kubernetes in einem AKS-Cluster aktualisiert. Die folgenden Aufgaben wurden ausgeführt:
+In diesem Tutorial haben Sie Kubernetes in einem AKS-Cluster aktualisiert. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
 > * Identifizieren der aktuellen und verfügbaren Kubernetes-Versionen
@@ -121,3 +124,4 @@ In diesem Tutorial haben Sie Kubernetes in einem AKS-Cluster aktualisiert. Die f
 [az aks show]: /cli/azure/aks#az-aks-show
 [az aks get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
 [az aks upgrade]: /cli/azure/aks#az-aks-upgrade
+[azure-cli-install]: /cli/azure/install-azure-cli

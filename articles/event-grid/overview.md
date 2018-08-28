@@ -6,47 +6,35 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 06/01/2018
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 90e8d6a3ef093046c5ee6324f6e6590e59124da7
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725240"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023496"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Einführung in Azure Event Grid
 
-Mit Azure Event Grid können Sie mühelos Anwendungen mit ereignisbasierten Architekturen erstellen. Sie wählen die Azure-Ressource aus, die Sie abonnieren möchten, und geben den Ereignishandler oder WebHook-Endpunkt an, an den das Ereignis gesendet werden soll. Event Grid verfügt über integrierte Unterstützung für Ereignisse, die aus Azure-Diensten stammen, wie Speicherblobs und Ressourcengruppen. Event Grid bietet auch mithilfe benutzerdefinierter Themen und Webhooks benutzerdefinierte Unterstützung für Anwendungs- und Drittanbieterereignisse. 
+Mit Azure Event Grid können Sie mühelos Anwendungen mit ereignisbasierten Architekturen erstellen. Wählen Sie zuerst die Azure-Ressource aus, die Sie abonnieren möchten, und geben Sie dann den Ereignishandler oder WebHook-Endpunkt an, an den das Ereignis gesendet werden soll. Event Grid verfügt über integrierte Unterstützung für Ereignisse, die aus Azure-Diensten stammen, wie Speicherblobs und Ressourcengruppen. Event Grid bietet auch Unterstützung für Ihre eigenen Ereignisse mit benutzerdefinierten Themen. 
 
-Sie können Filter zum Weiterleiten bestimmter Ereignisse an verschiedene Endpunkte verwenden, Multicasts zu mehreren Endpunkten ausführen und sicherstellen, dass Ihre Ereignisse zuverlässig übermittelt werden. Event Grid bietet auch integrierte Unterstützung für benutzerdefinierte und Drittanbieterereignisse.
+Sie können Filter zum Weiterleiten bestimmter Ereignisse an verschiedene Endpunkte verwenden, Multicasts zu mehreren Endpunkten ausführen und sicherstellen, dass Ihre Ereignisse zuverlässig übermittelt werden.
 
-Event Grid unterstützt derzeit die folgenden Regionen:
+Azure Event Grid ist derzeit in allen öffentlichen Regionen verfügbar. In den Clouds „Azure Deutschland“, „Azure China“ und „Azure Government“ ist es noch nicht verfügbar.
 
-* Asien, Südosten
-* Asien, Osten
-* Australien (Osten)
-* Australien, Südosten
-* USA (Mitte)
-*   USA (Ost)
-*   USA (Ost) 2
-* Europa, Westen
-* Europa, Norden
-* Japan, Osten
-* Japan, Westen
-*   USA, Westen-Mitte
-*   USA (Westen)
-*   USA, Westen 2
-
-Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md). Die folgende Abbildung zeigt, wie Event Grid Quellen und Handler verbindet, bietet jedoch keine umfassende Liste der unterstützten Optionen.
+Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md). 
 
 ![Event Grid – funktionales Modell](./media/overview/functional-model.png)
 
+Hinweis: Diese Abbildung zeigt, wie Event Grid Quellen und Handler verbindet, stellt jedoch keine vollständige Liste der unterstützten Integrationen dar.
+
 ## <a name="event-sources"></a>Ereignisquellen
 
-Derzeit unterstützen die folgenden Azure-Dienste das Senden von Ereignissen an Event Grid:
+Ausführliche Informationen zu den Funktionen der einzelnen Quellen sowie entsprechende Artikel finden Sie unter [Ereignisquellen](event-sources.md). Derzeit unterstützen die folgenden Azure-Dienste das Senden von Ereignissen an Event Grid:
 
 * Azure-Abonnements (Verwaltungsvorgänge)
+* Containerregistrierung
 * Benutzerdefinierte Themen
 * Event Hubs
 * IoT Hub
@@ -56,11 +44,9 @@ Derzeit unterstützen die folgenden Azure-Dienste das Senden von Ereignissen an 
 * Speicherblob
 * Konten vom Typ „Allgemein v2“
 
-Links zu Artikeln zur Verwendung der einzelnen Ereignisquellen finden Sie unter [Ereignisquellen in Azure Event Grid](event-sources.md).
-
 ## <a name="event-handlers"></a>Ereignishandler
 
-Derzeit unterstützen die folgenden Azure-Dienste das Verarbeiten von Ereignissen von Event Grid: 
+Ausführliche Informationen zu den Funktionen der einzelnen Handler sowie entsprechende Artikel finden Sie unter [Ereignishandler](event-handlers.md). Derzeit unterstützen die folgenden Azure-Dienste das Verarbeiten von Ereignissen von Event Grid: 
 
 * Azure-Automatisierung
 * Azure-Funktionen
@@ -70,8 +56,6 @@ Derzeit unterstützen die folgenden Azure-Dienste das Verarbeiten von Ereignisse
 * Microsoft Flow
 * Queue Storage
 * WebHooks
-
-Links zu Artikeln zur Verwendung der einzelnen Ereignishandler finden Sie unter [Ereignishandler in Azure Event Grid](event-handlers.md).
 
 ## <a name="concepts"></a>Konzepte
 

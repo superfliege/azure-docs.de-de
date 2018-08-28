@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 443cb2786c12bddd87535a7267d66c0332473b1b
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113716"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145378"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor-SDK: Download und Anmerkungen zur Version
 > [!div class="op_single_selector"]
@@ -42,6 +42,12 @@ ms.locfileid: "37113716"
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="v2-builds"></a>V2-Builds
+
+### <a name="a-name206206"></a><a name="2.0.6"/>2.0.6
+* Öffentliche Eigenschaft „ChangeFeedEventHost.HostName“ zur Kompatibilität mit v1 hinzugefügt.
+
+### <a name="a-name205205"></a><a name="2.0.5"/>2.0.5
+* Ein Problem mit einer Racebedingung, das während der Partitionsaufteilung auftritt, wurde behoben. Die Racebedingung kann dazu führen, dass das Lease angefordert, bei der Partitionsaufteilung sofort verloren geht und einen Konflikt verursacht. In diesem Release wurde das Problem mit der Racebedingung behoben.
 
 ### <a name="a-name204204"></a><a name="2.0.4"/>2.0.4
 * Allgemeine Verfügbarkeit (GA) des SDK

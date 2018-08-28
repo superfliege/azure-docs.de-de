@@ -1,165 +1,155 @@
 ---
-title: Tutorial zu Kubernetes in Azure – Vorbereiten eines ACR
-description: AKS-Tutorial – Vorbereiten eines ACR
+title: 'Tutorial zu Kubernetes in Azure: Erstellen einer Containerregistrierung'
+description: In diesem Azure Kubernetes Service-Tutorial (AKS) erstellen Sie eine Azure Container Registry-Instanz und laden das Containerimage einer Beispielanwendung hoch.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 02/22/2018
+ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4ad5dcb8dbb11f1d6e12e3c19eab5da68009df58
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4f240d346457717c66a6ed189cfd8610c7a764da
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430755"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41917689"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Tutorial: Bereitstellen und Verwenden von Azure Container Registry
 
-Azure Container Registry (ACR) ist eine Azure-basierte, private Registrierung für Docker-Containerimages. In diesem Tutorial – Teil 2 von 7 – werden die Schritte für die Bereitstellung einer Azure Container Registry-Instanz und die Übertragung von Containerimages in diese Instanz per Push erläutert. Folgende Schritte werden ausgeführt:
+Azure Container Registry (ACR) ist eine Azure-basierte, private Registrierung für Docker-Containerimages. Mit einer privaten Containerregistrierung können Sie Ihre Anwendungen und benutzerdefinierten Code auf sichere Weise erstellen und bereitstellen. In diesem Tutorial – Teil 2 von 7 – stellen Sie eine ACR-Instanz bereit und übertragen mithilfe von Push ein Containerimage an diese. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Bereitstellen einer Azure Container Registry-Instanz
+> * Erstellen einer Azure Container Registry-Instanz (ACR)
 > * Kennzeichnen eines Containerimages für ACR
 > * Hochladen des Images in die ACR-Instanz
+> * Anzeigen von Images in der Registrierung
 
-In den nachfolgenden Tutorials wird diese ACR-Instanz in einen Kubernetes-Cluster in AKS integriert.
+In den nachfolgenden Tutorials wird diese ACR-Instanz in einen Kubernetes-Cluster in AKS integriert, und eine Anwendung wird anhand des Images bereitgestellt.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Im [vorherigen Tutorial][aks-tutorial-prepare-app] wurde ein Containerimage für eine einfache Azure Voting-App erstellt. Wenn Sie das Image der Azure Voting-App noch nicht erstellt haben, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
-Für dieses Tutorial benötigen Sie mindestens Version 2.0.27 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
+Für dieses Tutorial müssen Sie mindestens Version 2.0.44 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0][azure-cli-install] Informationen dazu.
 
-## <a name="deploy-azure-container-registry"></a>Bereitstellen von Azure Container Registry
+## <a name="create-an-azure-container-registry"></a>Erstellen einer Azure-Containerregistrierung
 
-Für die Bereitstellung einer Azure Container Registry-Instanz benötigen Sie zunächst eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Zum Erstellen einer Azure Container Registry-Instanz benötigen Sie zunächst eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen `myResourceGroup` in der Region `eastus` erstellt.
+Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az acr create][az-acr-create] eine Azure Container Registry-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten.
+Erstellen Sie mit dem Befehl [az acr create][az-acr-create] eine Azure Container Registry-Instanz, und geben Sie einen eigenen Registrierungsnamen an. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im weiteren Verlauf dieses Tutorials wird `<acrName>` als Platzhalter für den Namen der Containerregistrierung verwendet. Die *Basic*-SKU ist ein kostenoptimierter Einstiegspunkt für Entwicklungszwecke, der ein ausgewogenes Verhältnis von Speicher und Durchsatz bietet.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-Für den Rest dieses Tutorials verwenden wir `<acrName>` als Platzhalter für den Namen der Containerregistrierung.
+## <a name="log-in-to-the-container-registry"></a>Anmelden bei der Containerregistrierung
 
-## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
-
-Verwenden Sie den Befehl [az acr login][az-acr-login], um sich bei der ACR-Instanz anzumelden. Sie müssen den eindeutigen Namen angeben, mit dem die Containerregistrierung bei ihrer Erstellung versehen wurde.
+Zur Verwendung der ACR-Instanz müssen Sie sich zunächst anmelden. Führen Sie den Befehl [az acr login][az-acr-login] aus, und geben Sie den eindeutigen Namen der Containerregistrierung aus dem vorherigen Schritt an.
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-Nach Abschluss des Vorgangs wird eine Erfolgsmeldung zurückgegeben.
+Nach Abschluss des Vorgangs wird eine *Erfolgsmeldung* zurückgegeben.
 
-## <a name="tag-container-images"></a>Kennzeichnen von Containerimages
+## <a name="tag-a-container-image"></a>Markieren eines Containerimages
 
-Verwenden Sie den Befehl [docker images][docker-images], um eine Liste der aktuellen Images anzuzeigen.
-
-```console
-docker images
-```
-
-Ausgabe:
+Verwenden Sie den Befehl [docker images][docker-images], um eine Liste Ihrer aktuellen lokalen Images anzuzeigen:
 
 ```
+$ docker images
+
 REPOSITORY                   TAG                 IMAGE ID            CREATED             SIZE
 azure-vote-front             latest              4675398c9172        13 minutes ago      694MB
 redis                        latest              a1b99da73d05        7 days ago          106MB
 tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
 ```
 
-Jedes Containerimage muss mit dem loginServer-Namen der Registrierung gekennzeichnet werden. Dieses Tag wird beim Übertragen von Containerimages per Push in eine Imageregistrierung für das Routing verwendet.
+Zur Verwendung des Containerimages *azure-vote-front* mit ACR muss das Image mit der Anmeldeserveradresse Ihrer Registrierung markiert werden. Dieses Tag wird beim Übertragen von Containerimages per Push in eine Imageregistrierung für das Routing verwendet.
 
-Führen Sie den Befehl [az acr list][az-acr-list] aus, um den loginServer-Namen abzurufen.
+Führen Sie den Befehl [az acr list][az-acr-list] aus, um die Anmeldeserveradresse abzurufen, und fragen Sie die *loginServer*-Adresse wie folgt ab:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Kennzeichnen Sie nun das Image `azure-vote-front` mit dem loginServer-Namen der Containerregistrierung. Fügen Sie zudem `:v1` am Ende des Imagenamens hinzu. Dieses Tag gibt die Imageversion an.
+Markieren Sie jetzt Ihr lokales Image *azure-vote-front* mit der *acrloginServer*-Adresse der Containerregistrierung. Fügen Sie am Ende des Imagenamens *:v1* hinzu, um die Imageversion anzugeben:
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
 ```
 
-Führen Sie nach der Kennzeichnung den Befehl [docker images][docker-images] aus, um den Vorgang zu überprüfen.
-
-```console
-docker images
-```
-
-Ausgabe:
+Führen Sie [docker images][docker-images] erneut aus, um sicherzustellen, dass die Tags angewendet wurden. Ein Image ist mit der Adresse der ACR-Instanz und einer Versionsnummer markiert.
 
 ```
-REPOSITORY                                           TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-front                                     latest              eaf2b9c57e5e        8 minutes ago       716 MB
-mycontainerregistry082.azurecr.io/azure-vote-front   v1            eaf2b9c57e5e        8 minutes ago       716 MB
-redis                                                latest              a1b99da73d05        7 days ago          106MB
-tiangolo/uwsgi-nginx-flask                           flask               788ca94b2313        8 months ago        694 MB
+$ docker images
+
+REPOSITORY                                           TAG           IMAGE ID            CREATED             SIZE
+azure-vote-front                                     latest        eaf2b9c57e5e        8 minutes ago       716 MB
+mycontainerregistry.azurecr.io/azure-vote-front      v1            eaf2b9c57e5e        8 minutes ago       716 MB
+redis                                                latest        a1b99da73d05        7 days ago          106MB
+tiangolo/uwsgi-nginx-flask                           flask         788ca94b2313        8 months ago        694 MB
 ```
 
 ## <a name="push-images-to-registry"></a>Übertragen von Images in die Registrierung per Push
 
-Übertragen Sie das `azure-vote-front`-Image per Push in Ihre Registrierung.
-
-Verwenden Sie das folgende Beispiel, und ersetzen Sie den ACR-loginServer-Namen durch den loginServer-Namen aus Ihrer Umgebung.
+Jetzt können Sie das Image *azure-vote-front* per Push an Ihre ACR-Instanz übertragen. Verwenden Sie [docker push][docker-push], und geben wie folgt Ihre eigene *acrLoginServer*-Adresse als Imagename an:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
 ```
 
-Dieser Vorgang nimmt einige Minuten in Anspruch.
+Die Pushübertragung des Images an ACR kann einige Minuten dauern.
 
 ## <a name="list-images-in-registry"></a>Auflisten von Images in der Registrierung
 
-Führen Sie den Befehl [az acr repository list][az-acr-repository-list] aus, um eine Liste mit den Images zurückzugeben, die mithilfe von Push an Ihre Azure Container Registry-Instanz übertragen wurden. Aktualisieren Sie den Befehl mit dem Namen der ACR-Instanz.
+Führen Sie den Befehl [az acr repository list][az-acr-repository-list] aus, um eine Liste der Images zurückzugeben, die per Push an Ihre ACR-Instanz übertragen wurden. Geben Sie Ihren eigenen `<acrName>`-Wert wie folgt an:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-Ausgabe:
+Die folgende Beispielausgabe listet das Image *azure-vote-front* in der Registrierung als verfügbar auf:
 
-```azurecli
+```
 Result
 ----------------
 azure-vote-front
 ```
 
-Verwenden Sie dann den Befehl [az acr repository show-tags][az-acr-repository-show-tags], um die Tags für ein bestimmtes Image anzuzeigen.
+Verwenden Sie den Befehl [az acr repository show-tags][az-acr-repository-show-tags] wie folgt, um die Tags für ein bestimmtes Image anzuzeigen:
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
 ```
 
-Ausgabe:
+Die folgende Beispielausgabe zeigt das in einem vorherigen Schritt markierte *v1*-Image:
 
-```azurecli
+```
 Result
 --------
 v1
 ```
 
-Nach Abschluss des Tutorials ist das Containerimage in einer privaten Azure Container Registry-Instanz gespeichert. Dieses Image wird in den nachfolgenden Tutorials aus ACR in einem Kubernetes-Cluster bereitgestellt.
+Sie verfügen jetzt über ein Containerimage, das in einer privaten Azure Container Registry-Instanz gespeichert ist. Dieses Image wird im nächsten Tutorial aus ACR in einem Kubernetes-Cluster bereitgestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde eine Azure Container Registry-Instanz für die Verwendung in einem AKS-Cluster vorbereitet. Die folgenden Schritte wurden durchgeführt:
+In diesem Tutorial haben Sie eine Azure Container Registry-Instanz erstellt und ein Image per Push für die Verwendung in einem AKS-Cluster übertragen. Es wurde Folgendes vermittelt:
 
 > [!div class="checklist"]
-> * Bereitstellen einer Azure Container Registry-Instanz
+> * Erstellen einer Azure Container Registry-Instanz (ACR)
 > * Kennzeichnen eines Containerimages für ACR
 > * Hochladen des Images in die ACR-Instanz
+> * Anzeigen von Images in der Registrierung
 
 Im nächsten Tutorial erfahren Sie, wie Sie einen Kubernetes-Cluster in Azure bereitstellen.
 
@@ -168,6 +158,7 @@ Im nächsten Tutorial erfahren Sie, wie Sie einen Kubernetes-Cluster in Azure be
 
 <!-- LINKS - external -->
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
 
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr#create
