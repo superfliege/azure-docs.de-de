@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 883683f6af7943fa4da49095c9a15aefd5cfa719
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 644a7414365ded53acb20bb2f9ae9d086f263765
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27911369"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145381"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Vorgehensweise zum Konfigurieren der Georeplikation für Azure Redis Cache
 
@@ -35,7 +35,9 @@ Um die Georeplikation zwischen zwei Caches zu konfigurieren, müssen die folgend
 - Wenn für den primären verknüpften Cache das Clustering aktiviert ist, muss das Clustering für den sekundären verknüpften Cache mit derselben Anzahl von Shards wie beim primären verknüpften Cache aktiviert werden.
 - Beide Caches müssen erstellt und ausgeführt werden.
 - Für keinen der Caches darf Persistenz aktiviert sein.
-- Es wird Unterstützung für die Georeplikation zwischen Caches im selben VNET geboten. Die Georeplikation zwischen Caches in verschiedenen VNETs wird ebenfalls unterstützt, solange beide VNETs so konfiguriert sind, dass Ressourcen in den VNETs über TCP-Verbindungen eine Verbindung herstellen können.
+- Es wird Unterstützung für die Georeplikation zwischen Caches im selben VNET geboten. 
+- Georeplikation zwischen Caches im mittels Peering verknüpften VNETs innerhalb derselben Region ist zurzeit ein Vorschaufeature. Die beiden VNETs müssen so konfiguriert sein, dass Ressourcen in den VNETs einander über TCP-Verbindungen erreichen können.
+- Georeplikation zwischen Caches im mittels Peering verknüpften VNETs in unterschiedlichen Regionen wird noch nicht unterstützt, wird aber bald als Vorschauversion verfügbar sein.
 
 Nach der Konfiguration der Georeplikation gelten folgende Einschränkungen für Ihr verknüpftes Cachepaar:
 

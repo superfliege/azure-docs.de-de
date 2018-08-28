@@ -12,36 +12,36 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/01/2016
+ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 508989e0e2daeac7922d61ff692ee4579139cfc8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 28a741393fd4b7b4076449c90575f8a4ab30e0fc
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307220"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41919149"
 ---
 # <a name="create-a-windows-app"></a>Erstellen einer Windows-App
+
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Übersicht
+
 In diesem Tutorial erfahren Sie, wie Sie einer App für die universelle Windows-Plattform (UWP) einen cloudbasierten Back-End-Dienst hinzufügen. Weitere Informationen finden Sie unter [Was sind Mobile Apps?](app-service-mobile-value-prop.md) Im Folgenden sehen Sie Screenshots aus der fertigen App:
 
-![Fertige Desktop-App](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)   
-Auf einem Desktopgerät
-
-![Fertige Smartphone-App](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)  
-Auf einem Smartphone
+![Fertige Desktop-App](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)
 
 Die Absolvierung dieses Tutorials wird für alle anderen Mobile App-Tutorials für UWP-Apps vorausgesetzt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto besitzen, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps, die Sie auch nach Ablauf der Testversion weiter nutzen können. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* [Visual Studio Community 2015] oder eine höhere Version.
+* [Visual Studio Community 2017].
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Erstellen eines neuen Azure Mobile App-Back-Ends
+
 Führen Sie die folgenden Schritte aus, um ein neues mobiles App-Back-End zu erstellen.
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
@@ -49,28 +49,29 @@ Führen Sie die folgenden Schritte aus, um ein neues mobiles App-Back-End zu ers
 Sie haben nun ein Azure-Back-End für mobile Apps bereitgestellt, das von Ihren mobilen Clientanwendungen verwendet werden kann. Als Nächstes laden Sie ein Serverprojekt für ein einfaches "Aufgabenlisten"-Back-End herunter und veröffentlichen es in Azure.
 
 ## <a name="configure-the-server-project"></a>Konfigurieren des Serverprojekts
+
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="download-and-run-the-client-project"></a>Herunterladen und Ausführen des Clientprojekts
-Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine neue Client-App erstellen oder eine vorhandene App so ändern, dass eine Verbindung mit Azure hergestellt wird. In diesem Abschnitt laden Sie ein Vorlagenprojekt für eine UWP-App herunter, das zum Herstellen einer Verbindung mit dem Mobile App-Back-End angepasst wird.
+
+Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine neue Client-App erstellen oder eine vorhandene App so ändern, dass eine Verbindung mit Azure hergestellt wird. In diesem Abschnitt laden Sie ein Projekt für eine UWP-Beispiel-App herunter, das zum Herstellen einer Verbindung mit dem Mobile App-Back-End angepasst wird.
 
 1. Klicken Sie im Blatt **Schnellstart** für Ihr Back-End für mobile Apps auf **Neue App erstellen** > **Herunterladen**, und entpacken Sie die komprimierten Projektdateien auf Ihrem lokalen Computer.
 
     ![Windows-Schnellstartprojekt herunterladen](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
-2. (Optional) Fügen Sie das UWP-App-Projekt der gleichen Projektmappe hinzu wie das Serverprojekt. Dies erleichtert es, bei Bedarf sowohl die App als auch das Back-End in der gleichen Visual Studio-Projektmappe zu debuggen. Wenn Sie der Projektmappe ein UWP-App-Projekt hinzufügen möchten, müssen Sie mindestens Visual Studio 2015 verwenden.
-3. Vergewissern Sie sich, dass die UWP-App als Startprojekt festgelegt ist, und drücken Sie anschließend F5, um die App bereitzustellen und auszuführen.
-4. Geben Sie in der App unter **TodoItem** einfügen einen beschreibenden Text ein, zum Beispiel *Abschließen des Tutorials*. Klicken Sie dann auf **Speichern**.
+
+2. Öffnen Sie das UWP-Projekt, und drücken Sie F5, um die App bereitzustellen und auszuführen.
+3. Geben Sie in der App unter **TodoItem** einfügen einen beschreibenden Text ein, zum Beispiel *Abschließen des Tutorials*. Klicken Sie dann auf **Speichern**.
 
     ![Windows-Schnellstart – Vollständig für Desktop](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
     Dadurch wird eine POST-Anforderung an das neue in Azure gehostete mobile App-Back-End gesendet.
-5. (Optional) Beenden Sie die App, und starten Sie sie auf einem anderen Gerät oder in einem Emulator für mobile Geräte.
 
-    ![Windows-Schnellstart – Vollständig für Smartphone](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
-
-    Beachten Sie, dass nach dem Starten der UWP-App Daten aus Azure geladen werden, die im vorhergehenden Schritt gespeichert wurden.
+> [!TIP]
+> Sie können das UWP-App-Projekt der gleichen Projektmappe hinzufügen wie das Serverprojekt, falls Sie das .NET-Back-End nutzen. Dies erleichtert das Debuggen und Testen der App und des Back-Ends in der gleichen Visual Studio-Projektmappe. Wenn Sie der Back-End-Projektmappe ein UWP-App-Projekt hinzufügen möchten, müssen Sie Visual Studio 2017 verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Hinzufügen von Authentifizierung zur App](app-service-mobile-windows-store-dotnet-get-started-users.md)  
   Enthält Informationen über die Authentifizierung von Benutzern der App mit einem Identitätsanbieter.
 * [Hinzufügen von Pushbenachrichtigungen zur App](app-service-mobile-windows-store-dotnet-get-started-push.md)  
@@ -83,4 +84,4 @@ Sobald Sie Ihr Back-End für mobile Apps konfiguriert haben, können Sie eine ne
 <!-- URLs. -->
 [Mobile App SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
+[Visual Studio Community 2017]: https://go.microsoft.com/fwLink/p/?LinkID=534203

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 87721428e1cd8a5360dcecc5f29225f813705a4f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2ea120ed1c43db5cf843bdd64c32a6c8d9c02bb1
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344755"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42145899"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
 > [!div class="op_single_selector"]
@@ -118,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um einen lokalen Docker-Container einzur
 
 
 
-6. Wenn Sie fertig sind, können Sie den Container mithilfe des folgenden Befehls beenden und bereinigen:
+6. Wenn Sie fertig sind, beenden und bereinigen Sie den Container mithilfe des folgenden Befehls:
 
     ```bash 
     docker rm -f sftestcluster

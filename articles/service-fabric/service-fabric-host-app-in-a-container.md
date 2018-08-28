@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6fe314125440096d21a1276defd082c4e1997b8e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642681"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41918204"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -223,6 +223,9 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 Im Fenster „Ausgabe“ können Sie den Fortschritt der Bereitstellung nachverfolgen.  Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse und den Anwendungsport ein. Beispiel: http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Fabrikam-Webbeispiel][fabrikam-web-page-deployed]
+
+## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Einrichten von Continuous Integration und Continuous Deployment (CI/CD) mit einem Service Fabric-Cluster
+Informationen zum Konfigurieren der CI/CD-Anwendungsbereitstellung für einen Service Fabric-Cluster mithilfe von VSTS finden Sie unter [Tutorial: Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Der in dem Tutorial beschriebene Vorgang gilt auch für dieses Projekt (FabrikamFiber). Überspringen Sie einfach den Download des Voting-Beispiels, und ersetzen Sie den Repositorynamen „Voting“ durch „FabrikamFiber“.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Entfernen Sie alle erstellten Ressourcen, wenn Sie fertig sind.  Am einfachsten ist es, die Ressourcengruppen zu entfernen, die den Service Fabric-Cluster, Azure SQL-Datenbank und Azure Container Registry enthalten.

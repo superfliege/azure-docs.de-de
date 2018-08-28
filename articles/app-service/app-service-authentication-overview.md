@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: 6b536ba7792e66fe09ba2cc8a631dc5e934faaea
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 0b682b369bf0e0238b3930d89087db535faa8c53
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937974"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140719"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 
@@ -95,7 +95,7 @@ Der Authentifizierungsablauf gilt für alle Anbieter, unterscheidet sich jedoch 
 - Mit Anbieter-SDK: Die Anwendung meldet den Benutzer manuell an und sendet dann das Authentifizierungstoken zur Überprüfung an App Service. Dies ist normalerweise bei Apps ohne Browser der Fall, die dem Benutzer die Anmeldeseite des Anbieters nicht anzeigen können. Der Anwendungscode verwaltet den Anmeldevorgang, daher wird er auch als _clientgesteuerter Datenfluss_ oder _Clientfluss_ bezeichnet. Dieser Fall gilt für REST-APIs [Azure Functions](../azure-functions/functions-overview.md) und JavaScript-Browserclients sowie Web-Apps, die eine höhere Flexibilität beim Anmeldevorgang erfordern. Er gilt auch für native mobile Apps, die Benutzer mithilfe des Anbieter-SDKs anmelden.
 
 > [!NOTE]
-> Bei Aufrufen aus einer vertrauenswürdigen Browser-App in App Service wird eine weitere REST-API in App Service aufgerufen, oder [Azure Functions](../azure-functions/functions-overview.md) kann über den servergesteuerten Datenfluss authentifiziert werden. Weitere Informationen finden Sie unter [Authentifizierung und Autorisierung in Azure App Service]().
+> Bei Aufrufen aus einer vertrauenswürdigen Browser-App in App Service wird eine weitere REST-API in App Service aufgerufen, oder [Azure Functions](../azure-functions/functions-overview.md) kann über den servergesteuerten Datenfluss authentifiziert werden. Weitere Informationen finden Sie unter [Anpassen der Authentifizierung und Autorisierung in App Service](app-service-authentication-how-to.md).
 >
 
 Die folgende Tabelle zeigt die Schritte des Authentifizierungsablaufs.

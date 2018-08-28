@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aaed3dd5a2a7b32d24aa8b19dab870c28e6f58ec
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216181"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42154780"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Einrichten einer Notfallwiederherstellung für virtuelle Azure-Computer in einer sekundären Azure-Region
 
@@ -114,8 +114,9 @@ Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access
 2. Wählen Sie unter **Quelle** die Option **Azure**.
 3. Wählen Sie unter **Quellstandort** die Azure-Quellregion aus, in der Ihre VMs derzeit ausgeführt werden.
 4. Wählen Sie das **Azure-VM-Bereitstellungsmodell** für Ihre VMs: **Resource Manager** oder **Klassisch**.
-5. Wählen Sie für Resource Manager-VMs die **Quellressourcengruppe** oder für klassische VMs den **Clouddienst**.
-6. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
+5. Wählen Sie das **Quellabonnement** aus, in dem die virtuellen Computer ausgeführt werden. Dies kann ein beliebiges Abonnement im gleichen Azure Active Directory-Mandanten sein, in dem sich auch Ihr Recovery Services-Tresor befindet.
+6. Wählen Sie für Resource Manager-VMs die **Quellressourcengruppe** bzw. für klassische VMs den **Clouddienst**.
+7. Klicken Sie auf **OK** , um die Einstellungen zu speichern.
 
 ### <a name="select-the-vms"></a>Auswählen der virtuellen Computer
 
@@ -134,9 +135,11 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
   ![Konfigurieren von Einstellungen](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
+- **Zielabonnement**: Das Zielabonnement für die Notfallwiederherstellung. Zielabonnement und Quellabonnement sind standardmäßig identisch. Klicken Sie auf „Anpassen“, um ein anderes Zielabonnement im gleichen Azure Active Directory-Mandanten auszuwählen.
+
 - **Zielspeicherort**: Die Zielregion, die zur Notfallwiederherstellung verwendet wird. Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
 
-- **Zielressourcengruppe**: Die Ressourcengruppe in der Zielregion, zu der Azure-VMs nach einem Failover gehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“. Als Ressourcengruppenstandort der Zielressourcengruppe kann eine beliebige Region ausgewählt werden, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden. 
+- **Zielressourcengruppe**: Die Ressourcengruppe in der Zielregion, zu der Azure-VMs nach einem Failover gehören. Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“. Als Ressourcengruppenstandort der Zielressourcengruppe kann eine beliebige Region ausgewählt werden, mit Ausnahme der Region, in der die virtuellen Quellcomputer gehostet werden.
 
 - **Virtuelles Zielnetzwerk**: Das Netzwerk in der Zielregion, in dem sich Azure-VMs nach einem Failover befinden.
   Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk (und Subnetze) mit dem Suffix „asr“.

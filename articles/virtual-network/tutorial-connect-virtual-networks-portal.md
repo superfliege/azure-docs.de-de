@@ -14,19 +14,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: d702253c7b58b0a29c03e6563238b56ae75fa0d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8b1290c2030835af1435e9a21602d3d2334a6737
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841787"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920295"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Tutorial: Herstellen einer Verbindung zwischen virtuellen Netzwerken mittels Peering über das Azure-Portal
 
-Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Tutorial lernen Sie Folgendes:
+Sie können durch Peering virtueller Netzwerke Verbindungen zwischen virtuellen Netzwerken herstellen. Diese virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen (auch als globales VNET-Peering bezeichnet) befinden. Sobald ein Peering zwischen virtuellen Netzwerken eingerichtet wurde, können Ressourcen in beiden virtuellen Netzwerken untereinander mit der gleichen Latenz und Bandbreite kommunizieren, als befänden sie sich im selben virtuellen Netzwerk. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen zweier virtueller Netzwerke
@@ -54,7 +54,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |Adressraum|10.0.0.0/16|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
-    |Speicherort| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
     |Subnetzname|Subnet1|
     |Subnetzadressbereich|10.0.0.0/24|
 
@@ -82,7 +82,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |---|---|
     |NAME|myVirtualNetwork1-myVirtualNetwork2|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Virtuelles Netzwerk|myVirtualNetwork2: Wählen Sie zum Auswählen des virtuellen Netzwerks *myVirtualNetwork2* die Option **Virtuelles Netzwerk** und dann **myVirtualNetwork2**.|
+    |Virtuelles Netzwerk|myVirtualNetwork2: Wählen Sie zum Auswählen des virtuellen Netzwerks *myVirtualNetwork2* die Option **Virtuelles Netzwerk** und dann **myVirtualNetwork2**. Sie können ein virtuelles Netzwerk in derselben Region oder in einer anderen Region auswählen.|
 
     ![Peeringeinstellungen](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
 
@@ -118,7 +118,7 @@ Erstellen Sie eine VM in jedem virtuellen Netzwerk, damit in einem späteren Sch
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup**.|
-    |Speicherort| Wählen Sie **USA, Osten** aus.|
+    |Standort| Wählen Sie **USA, Osten** aus.|
 4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
 5. Wählen Sie die folgenden Werte unter **Einstellungen** aus, und wählen Sie anschließend **OK**:
     |Einstellung|Wert|

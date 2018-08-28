@@ -1,6 +1,6 @@
 ---
-title: Leitfaden zu den ersten Schritten für Azure-IT-Bediener | Microsoft-Dokumentation
-description: Leitfaden zu den ersten Schritten für Azure-IT-Bediener
+title: Leitfaden zu den ersten Schritten für Azure-IT-Operatoren | Microsoft Docs
+description: Leitfaden zu den ersten Schritten für Azure-IT-Operatoren
 services: ''
 documentationcenter: ''
 author: themichaelbender-ms
@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 06/12/2017
+ms.date: 08/21/2018
 ms.author: mibender
-ms.openlocfilehash: 86f11e7c2d5503a0c474a6c15501a6b872c564e3
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072333"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142690"
 ---
-# <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Einführung in Cloud Computing und Microsoft Azure
+# <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
 Dieser Leitfaden enthält eine Einführung in die wichtigsten Konzepte im Zusammenhang mit der Bereitstellung und Verwaltung einer Microsoft Azure-Infrastruktur. Wenn Sie mit Cloud Computing oder Azure selbst noch nicht vertraut sind, ermöglicht dieser Leitfaden Ihnen den schnellen Einstieg in Konzeptdetails, Bereitstellungsvorgänge und die Verwaltung. In vielen Abschnitten wird ein Vorgang beschrieben, z.B. die Bereitstellung eines virtuellen Computers, und anschließend ein Link zu weiterführenden technischen Details angegeben.
 
@@ -53,27 +53,33 @@ Für kleine Unternehmen ist ein kostengünstiger Einstieg in Azure möglich, und
 
 Weitere Informationen zu den verfügbaren Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).
 
-### <a name="cloud-computing-is-classified-into-three-categories-saas-paas-and-iaas"></a>Cloud Computing ist in drei Kategorien klassifiziert: SaaS, PaaS und IaaS.
+### <a name="cloud-computing-model"></a>Cloud Computing-Modell
 
-#### <a name="saas-software-as-a-service"></a>SaaS: Software-as-a-Service
-
-Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. Normalerweise basiert sie auf einer mehrinstanzenfähigen Architektur, bei der nur eine Version der Anwendung für alle Kunden verwendet wird. Die Software kann horizontal auf mehrere Instanzen hochskaliert werden, um für alle Standorte die beste Leistung zu erzielen. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert.
-
-Microsoft Office 365 ist ein gutes Beispiel für ein SaaS-Angebot. Abonnenten zahlen eine monatliche oder jährliche Abonnementgebühr und können Microsoft Exchange, Microsoft OneDrive und die restlichen Anwendungen der Microsoft Office Suite als Dienst nutzen. Die Abonnenten erhalten immer die aktuelle Version, und die Verwaltung des Exchange-Servers ist inbegriffen. Verglichen mit der jährlichen Office-Installation und -Aktualisierung ist dies kostengünstiger und weniger aufwändig.
-
-#### <a name="paas-platform-as-a-service"></a>PaaS: Platform-as-a-Service
-
-Bei PaaS stellen Sie Ihre Anwendung in einer Umgebung des Clouddienstanbieters bereit. Der Anbieter übernimmt die gesamte Infrastrukturverwaltung, damit Sie sich auf die Anwendungsentwicklung konzentrieren können.
-
-Azure umfasst mehrere PaaS-Computeangebote, z.B. das Web-Apps-Feature von Azure App Service und Azure Cloud Services (Web- und Workerrollen). In beiden Fällen können Entwickler ihre Anwendung auf unterschiedliche Arten bereitstellen, ohne dass sie sich mit den zugrunde liegenden Details auskennen müssen. Entwickler müssen keine virtuellen Computer (VMs) erstellen, nicht jeweils Remotedesktopprotokoll (RDP) für die Anmeldung verwenden und auch die Anwendung nicht installieren. Sie klicken nur auf eine Schaltfläche (bzw. in die Nähe). Mit den Tools von Microsoft werden dann die VMs bereitgestellt, und anschließend wird die Anwendung darauf bereitgestellt und installiert.
+Azure verwendet ein Cloud Computing-Modell basierend auf Dienstkategorien, die für Kunden bereitgestellt werden. Die drei Dienstkategorien sind Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS) und Software-as-a-Service (SaaS). Die Anbieter teilen sich die Verantwortung für die Komponenten im Cloud Computing-Stapel in jeder dieser Kategorien ganz oder teilweise. Werfen wir einen Blick auf die einzelnen Kategorien für Cloud Computing.
+![Cloud Computing-Stapel im Vergleich](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastructure-as-a-Service
 
-Ein IaaS-Cloudanbieter führt alle physischen Computeressourcen und die erforderliche Software aus und verwaltet sie, um die Computervirtualisierung zu ermöglichen. Ein Kunde dieses Diensts stellt seine virtuellen Computer in diesen gehosteten Datencentern bereit. Die virtuellen Computer sind zwar in einem dezentralen Datencenter angeordnet, aber der IaaS-Kunde hat die Kontrolle über die Konfiguration und Verwaltung.
+Ein IaaS-Cloudanbieter führt alle physischen Computeressourcen und die erforderliche Software aus und verwaltet sie, um die Computervirtualisierung zu ermöglichen. Ein Kunde dieses Diensts stellt seine virtuellen Computer in diesen gehosteten Datencentern bereit. Die virtuellen Computer sind zwar in einem dezentralen Datencenter angeordnet, aber der IaaS-Kunde besitzt die Kontrolle über die Konfiguration und Verwaltung des Betriebssystems. Die zugrunde liegende Infrastruktur überlässt er dem Cloudanbieter.
 
 Azure umfasst mehrere IaaS-Lösungen, z.B. virtuelle Computer, VM-Skalierungsgruppen und die dazugehörige Netzwerkinfrastruktur. Virtuelle Computer sind eine beliebte Wahl für die anfängliche Migration von Diensten zu Azure, weil sie ein „Lift & Shift“-Migrationsmodell ermöglichen. Sie können eine VM wie die Infrastruktur konfigurieren, mit der Ihre Dienste derzeit in Ihrem Datencenter ausgeführt werden, und die Software anschließend zur neuen VM migrieren. Unter Umständen müssen Sie Konfigurationsupdates vornehmen, z.B. URLs zu anderen Diensten oder Speicher, aber mit diesem Ansatz können Sie viele Anwendungen migrieren.
 
 VM-Skalierungsgruppen werden basierend auf virtuellen Azure-Computern erstellt und stellen eine einfache Möglichkeit zum Bereitstellen von Clustern mit identischen VMs dar. VM-Skalierungsgruppen unterstützen auch die automatische Skalierung, damit neue VMs automatisch bereitgestellt werden können, wenn dies erforderlich ist. Aus diesem Grund sind VM-Skalierungsgruppen eine ideale Plattform zum Hosten von Microservice-Computeclustern der höheren Ebene, z.B. Azure Service Fabric und Azure Container Service.
+
+#### <a name="paas-platform-as-a-service"></a>PaaS: Platform-as-a-Service
+
+Bei PaaS stellen Sie Ihre Anwendung in einer Umgebung des Clouddienstanbieters bereit. Der Anbieter übernimmt die gesamte Infrastrukturverwaltung, damit Sie sich auf die Anwendungsentwicklung und Datenverwaltung konzentrieren können.
+
+Azure umfasst mehrere PaaS-Computeangebote, z.B. das Web-Apps-Feature von Azure App Service und Azure Cloud Services (Web- und Workerrollen). In beiden Fällen können Entwickler ihre Anwendung auf unterschiedliche Arten bereitstellen, ohne dass sie sich mit den zugrunde liegenden Details auskennen müssen. Entwickler müssen keine virtuellen Computer (VMs) erstellen, nicht jeweils Remotedesktopprotokoll (RDP) für die Anmeldung verwenden und auch die Anwendung nicht installieren. Sie klicken nur auf eine Schaltfläche (bzw. in die Nähe). Mit den Tools von Microsoft werden dann die VMs bereitgestellt, und anschließend wird die Anwendung darauf bereitgestellt und installiert.
+
+#### <a name="saas-software-as-a-service"></a>SaaS: Software-as-a-Service
+
+Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. Normalerweise basiert sie auf einer mehrinstanzenfähigen Architektur, bei der nur eine Version der Anwendung für alle Kunden verwendet wird. Die Software kann horizontal auf mehrere Instanzen hochskaliert werden, um für alle Standorte die beste Leistung zu erzielen. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. Software vom Typ „SaaS“ wird normalerweise per Monats- oder Jahresabonnement lizenziert. SaaS-Softwareanbieter sind für alle Komponenten des Softwarestapels verantwortlich. Sie verwalten also ausschließlich die bereitgestellten Dienste.
+
+Microsoft Office 365 ist ein gutes Beispiel für ein SaaS-Angebot. Abonnenten zahlen eine monatliche oder jährliche Abonnementgebühr und können Microsoft Exchange, Microsoft OneDrive und die restlichen Anwendungen der Microsoft Office Suite als Dienst nutzen. Die Abonnenten erhalten immer die aktuelle Version, und die Verwaltung des Exchange-Servers ist inbegriffen. Verglichen mit der jährlichen Office-Installation und -Aktualisierung ist dies kostengünstiger und weniger aufwändig.
+
+
+
 
 ## <a name="azure-services"></a>Azure-Dienste
 
@@ -175,6 +181,9 @@ Die Azure-Befehlszeilenschnittstelle ist ein Tool, das Sie zum Erstellen, Verwal
 
 **REST-APIs** Azure basiert auf einem Satz von REST-APIs, die die Benutzeroberfläche des Azure-Portals unterstützen. Die meisten dieser REST-APIs werden ebenfalls unterstützt, um es Ihnen zu ermöglichen, Ihre Azure-Ressourcen und -Apps über jedes internetfähige Gerät programmgesteuert bereitzustellen und zu verwalten. Weitere Informationen finden Sie unter [Azure REST API Reference](https://docs.microsoft.com/rest/api/index) (Azure-REST-API – Referenz).
 
+### <a name="azure-cloud-shell"></a>Azure Cloud Shell
+
+Administratoren können auf Azure PowerShell und die Azure CLI über eine browserbasierte Benutzeroberfläche namens Azure Cloud Shell zugreifen. Diese interaktive Schnittstelle bietet ein flexibles Tool für Linux- und Windows-Administratoren, um die Befehlszeilenschnittstelle ihrer Wahl (Bash oder PowerShell) zu verwenden. Auf Azure Cloud Shell kann über das Portal, als eigenständige Webschnittstelle unter [shell.azure.com](https://shell.azure.com) oder von mehreren anderen Zugangspunkten aus zugegriffen werden. Weitere Informationen finden Sie in der [Übersicht über Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
 ## <a name="azure-subscriptions"></a>Azure-Abonnements
 
 Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die volle Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Zusätzlich zu Administratoren kann einzelnen Konten über die rollenbasierte Zugriffssteuerung (RBAC) die detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
@@ -355,6 +364,7 @@ Für den Zugriff auf einen virtuellen Computer über das Internet muss für die 
 
 Sie verwalten den Zugriff auf den virtuellen Computer über die öffentliche IP-Adresse, indem Sie eine NSG-Ressource (Netzwerksicherheitsgruppe) verwenden. Eine NSG verhält sich wie eine Firewall und kann Datenverkehr über die Netzwerkschnittstelle oder ein Subnetz für eine Gruppe von definierten Ports zulassen oder verweigern. Zum Erstellen einer Remotedesktopsitzung mit einer Azure-VM müssen Sie die NSG beispielsweise so konfigurieren, dass eingehender Datenverkehr über Port 3389 zugelassen ist. Weitere Informationen finden Sie unter [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
+
 Schließlich sollten Sie die Sicherheit für einen virtuellen Azure-Computer wie bei der Verwaltung aller Computersysteme über das Betriebssystem gewährleisten, indem Sie Sicherheitsanmeldeinformationen und Softwarefirewalls verwenden.
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -415,7 +425,7 @@ Es gibt mehrere Optionen zum Bereitstellen eines Speicherkontos.
 
 **Portal**
 
-Für die Bereitstellung eines Speicherkontos mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues Speicherkonto in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Nachdem Sie das Speicherkonto erstellt haben, können Sie mit dem Portal einen Blobcontainer oder eine Dateifreigabe erstellen. Sie können Table Storage- und Queue Storage-Entitäten programmgesteuert erstellen. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
+Für die Bereitstellung eines Speicherkontos mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues Speicherkonto in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Nachdem Sie das Speicherkonto erstellt haben, können Sie mit dem Portal einen Blobcontainer oder eine Dateifreigabe erstellen. Sie können Table Storage- und Queue Storage-Entitäten programmgesteuert erstellen. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md).
 
 Zusätzlich zur Bereitstellung eines Speicherkontos mit dem Azure-Portal können Sie auch eine Azure Resource Manager-Vorlage über das Portal bereitstellen. Hierbei werden alle Ressourcen gemäß der Definition in der Vorlage, einschließlich aller Speicherkonten, bereitgestellt und konfiguriert. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 

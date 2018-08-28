@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: f4b57241085381f4b975c07038b41133b8a4319b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436190"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246559"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -228,7 +228,8 @@ Beachten Sie, dass Sie sich an amslived@microsoft.com wenden müssen, wenn Sie b
 | 200 |340 |192 |30 |Grundwert |Video_340x192_200kbps |
 
 #### <a name="output-audio-stream"></a>Ausgabe-Audiodatenstrom
-Audio wird mit einer Samplingrate von 44,1 kHz in Stereo-AAC-LC mit 64 KBit/s codiert.
+
+Audio wird mit einer Samplingrate von 48 kHz in Stereo-AAC-LC mit 128 KBit/s codiert.
 
 ## <a name="signaling-advertisements"></a>Signalisieren von Werbespots
 Wenn Livecodierung bei Ihrem Kanal aktiviert ist, verfügen Sie über eine videoverarbeitende Komponente in der Pipeline, die Sie bearbeiten können. Sie können durch den Kanal Slates und/oder Werbespots in den ausgehenden Datenstrom mit adaptiver Bitrate einfügen lassen. Bei Slates handelt es sich um Standbilder, mit denen Sie den Live-Eingabefeed in bestimmten Situationen (z. B. bei Werbepausen) verdecken können. Bei Werbesignalen handelt es sich um zeitlich synchronisierte Signale, die Sie in den ausgehenden Datenstrom einbinden, damit vom Videoplayer bestimmte Aktionen ausgeführt werden, z. B. Umschalten zu einem Werbespot um eine bestimmte Zeit. In diesem [Blog](https://codesequoia.wordpress.com/2014/02/24/understanding-scte-35/) finden Sie einen Überblick über den SCTE-35-Signalmechanismus, der zu diesem Zweck verwendet wird. Im Folgenden wird ein typisches Szenario beschrieben, das Sie in Ihr Liveereignis implementieren könnten.
@@ -244,7 +245,7 @@ Beim Signalisieren von Werbespots können Sie die folgenden Eigenschaften festle
 Dies ist die Dauer der Werbepause in Sekunden. Es muss sich um einen positiven Wert ungleich null handeln, damit die Werbepause gestartet werden kann. Wird eine Werbepause ausgeführt, und die Dauer für die CueId der aktuellen Werbepause lautet null, so wird die Werbepause abgebrochen.
 
 ### <a name="cueid"></a>CueId
-Dies ist der eindeutige Bezeichner einer Werbepause, der von nachgeschalteten Anwendungen verwendet wird, um entsprechende Aktionen auszuführen. Es muss sich um eine positive ganze Zahl handeln. Sie können für diesen Wert eine zufällige positive ganze Zahl festlegen oder zum Nachverfolgen der CueIds ein vorgeschaltetes System verwenden. Achten Sie darauf, alle IDs zu positiven ganzen Zahlen zu normalisieren, bevor Sie sie über die API senden.
+Dies ist der eindeutige Bezeichner einer Werbepause, der von nachgeschalteten Anwendungen verwendet wird, um entsprechende Aktionen auszuführen. Es muss sich um eine positive ganze Zahl handeln. Sie können für diesen Wert eine zufällige positive ganze Zahl festlegen oder zum Nachverfolgen der CueIds ein vorgeschaltetes System verwenden. Achten Sie darauf, alle IDs in positive ganze Zahlen zu normalisieren, bevor Sie diese über die API senden.
 
 ### <a name="show-slate"></a>Show slate (Slate anzeigen)
 Optional. Hierdurch wird dem Liveencoder signalisiert, bei Werbepausen zum [Standard-Slatebild](media-services-manage-live-encoder-enabled-channels.md#default_slate) zu wechseln und den eingehenden Videodatenstrom auszublenden. Im Slatezustand wird auch die Audioausgabe stummgeschaltet. Die Standardeinstellung lautet **false**. 
@@ -281,7 +282,7 @@ Wird keine **default slate Asset Id** (ID des Slate-Standardmedienobjekts) angeg
 ## <a name="channels-programs"></a>Kanalprogramme
 Einem Kanal sind Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livestream steuern können. Kanäle verwalten Programme. Die Beziehung zwischen Kanal und Programm ähnelt der bei herkömmlichen Medien: Ein Kanal weist einen konstanten Datenstrom von Inhalten auf, und ein Programm ist auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet.
 
-Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden. Von der Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, wie lange Clientmanifeste wachsen können.
+Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden. Durch die Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, wie lange Clientmanifeste wachsen können.
 
 Jedem Programm ist ein Medienobjekt zugeordnet, von welchem die gestreamten Inhalte gespeichert werden. Ein Medienobjekt ist einem Blockblobcontainer im Azure Storage-Konto zugeordnet, und die im Medienobjekt enthaltenen Dateien werden als Blobs in diesem Container gespeichert. Zum Veröffentlichen des Programms, damit Ihre Kunden den Datenstrom sehen können, müssen Sie einen OnDemand-Locator für das zugehörige Medienobjekt erstellen. Mithilfe dieses Locators können Sie eine Streaming-URL erstellen, die Sie Ihren Kunden bereitstellen können.
 
@@ -338,7 +339,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 
 ## <a name="known-issues"></a>Bekannte Probleme
 * Die durchschnittliche Dauer bis zum Start des Kanals wurde auf ca. 2 Minuten verkürzt, aber in Einzelfällen kann dies immer noch mehr als 20 Minuten dauern.
-* Die Slate-Bilder sollten den [hier](media-services-manage-live-encoder-enabled-channels.md#default_slate)beschriebenen Einschränkungen entsprechen. Wenn Sie versuchen, einen Kanal mit einem Standard-Slatebild zu erstellen, das größer ist als 1920 x 1080, tritt bei der Anforderung ein Fehler auf.
+* Die Slate-Bilder sollten den [hier](media-services-manage-live-encoder-enabled-channels.md#default_slate)beschriebenen Einschränkungen entsprechen. Wenn Sie versuchen, einen Kanal mit einem Slate-Standardbild zu erstellen, das größer als 1920 x 1080 ist, tritt bei der Anforderung ein Fehler auf.
 * Wir weisen noch einmal darauf hin: Vergessen Sie nicht, IHRE KANÄLE ZU BEENDEN, wenn Sie mit dem Streaming fertig sind. Wenn Sie dies nicht tun, werden weiter Gebühren berechnet.
 
 ## <a name="next-step"></a>Nächster Schritt

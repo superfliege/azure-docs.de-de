@@ -1,5 +1,5 @@
 ---
-title: Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters | Microsoft-Dokumentation
+title: Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters | Microsoft Docs
 description: Skalieren Sie ein Service Fabric-Cluster bedarfsgesteuert herunter oder hoch, indem Sie die automatischen Skalierungsregeln für jeden Knotentyp bzw. jede VM-Skalierungsgruppe festlegen. Hinzufügen oder Entfernen von Knoten für einen Service Fabric-Cluster
 services: service-fabric
 documentationcenter: .net
@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: aljo
-ms.openlocfilehash: 1869b25756693a4a3626d713b6bd2adab035cea6
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d820898b1a0cc26d6832be9d302c74306fa4882f
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39717647"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142878"
 ---
+# <a name="read-before-you-scale"></a>Vor der Skalierung unbedingt zu beachten
+Die Skalierung von Computeressourcen zum Ermitteln der Arbeitsauslastung Ihrer Anwendung erfordert eine absichtliche Planung, dauert fast immer länger als eine Stunde für eine Produktionsumgebung und setzt voraus, dass Sie Ihre Arbeitsauslastung und Ihren Geschäftskontext verstehen. Wenn Sie diese Aktivität noch nie zuvor ausgeführt haben, wird empfohlen, dass Sie zunächst die [Überlegungen zur Kapazitätsplanung von Service Fabric-Clustern](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity) lesen und verstehen, bevor Sie sich mit dem Rest dieses Dokuments beschäftigen. Diese Empfehlung dient dazu, unbeabsichtigte LiveSite-Probleme zu vermeiden. Es wird außerdem empfohlen, die Vorgänge, die Sie für eine Nichtproduktionsumgebung ausführen möchten, erfolgreich zu testen. Sie können jederzeit [Produktionsprobleme melden oder bezahlte Unterstützung für Azure anfordern](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support#report-production-issues-or-request-paid-support-for-azure). Für Engineers, die für die Ausführung dieser Vorgänge vorgesehen sind und den entsprechendem Kontext kennen, werden in diesem Artikel Skalierungsvorgänge beschrieben. Sie müssen aber entscheiden und verstehen, welche Vorgänge für Ihren Anwendungsfall geeignet sind, z.B. welche Ressourcen skaliert werden sollen (CPU, Speicher, Arbeitsspeicher), in welche Richtung skaliert werden soll (vertikal oder horizontal) und welche Vorgänge ausgeführt werden sollen (Bereitstellung von Ressourcenvorlagen, Portal, PowerShell/CLI).
+
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung oder eines manuellen Verfahrens
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate Skalierungsgruppe eines virtuellen Computers eingerichtet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Weitere Informationen finden Sie im Dokument über die [Service Fabric-Knotentypen](service-fabric-cluster-nodetypes.md). Da die Service Fabric-Knotentypen in Ihrem Cluster am Back-End aus VM-Skalierungsgruppen bestehen, müssen Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe Regeln für die automatische Skalierung einrichten.
 
 > [!NOTE]
-> Ihr Abonnement muss ausreichend Kerne zum Hinzufügen der neuen virtuellen Computer umfassen, aus denen dieser Cluster besteht. Gegenwärtig erfolgt keine Modellvalidierung. Daher wird für die Bereitstellungszeit ein Fehler ausgegeben, wenn eine der Kontingentgrenzen erreicht wird.
+> Ihr Abonnement muss ausreichend Kerne zum Hinzufügen der neuen virtuellen Computer umfassen, aus denen dieser Cluster besteht. Gegenwärtig erfolgt keine Modellvalidierung. Daher wird für die Bereitstellungszeit ein Fehler ausgegeben, wenn eine der Kontingentgrenzen erreicht wird. Ein einzelner Knotentyp kann außerdem nicht einfach 100 Knoten pro VM-Skalierungsgruppe überschreiten. Möglicherweise müssen Sie VM-Skalierungsgruppen hinzufügen, um die gewünschte Skalierung zu erreichen. Die automatische Skalierung kann nicht automatisch VM-Skalierungsgruppen hinzufügen. Das Hinzufügen von VM-Skalierungsgruppen zu einem aktiven Cluster ist eine anspruchsvolle Aufgabe, die in der Regel dazu führt, dass Benutzer neue Cluster mit den entsprechenden Knotentypen bereitstellen, die zum Zeitpunkt der Erstellung bereitgestellt werden. [Planen Sie die Clusterkapazität](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-capacity) entsprechend. 
 > 
 > 
 

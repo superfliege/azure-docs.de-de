@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen eines HTTPS-Endpunkts zu einer Service Fabric-App in Azure | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie einem ASP.NET Core-Front-End-Webdienst einen HTTPS-Endpunkt hinzufügen und die Anwendung in einem Cluster bereitstellen.
+title: Hinzufügen eines HTTPS-Endpunkts zu einer Service Fabric-App in Azure mithilfe von Kestrel | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie einem ASP.NET Core-Front-End-Webdienst mit Kestrel einen HTTPS-Endpunkt hinzufügen und die Anwendung in einem Cluster bereitstellen.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 309a43d3383658029f4fe7f90f869888bac67bb1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 70bbeabe2c2b14e8e0dcccac9ffa63f2e19230a2
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130049"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41920694"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Tutorial: Hinzufügen eines HTTPS-Endpunkts zu einem ASP.NET Core-Front-End-Dienst mit Web-API mithilfe von Kestrel
 
 Dieses Tutorial ist der dritte Teil einer Reihe.  Hier erfahren Sie, wie Sie HTTPS in einem ASP.NET Core-Dienst unter Service Fabric aktivieren. Am Ende des Tutorials verfügen Sie über eine Abstimmungsanwendung mit einem HTTPS-fähigen ASP.NET Core-Web-Front-End, das am Port 443 lauscht. Wenn Sie die Abstimmungsanwendung nicht manuell im Tutorial [Bereitstellen einer Anwendung in einem Service Fabric-Cluster in Azure](service-fabric-tutorial-deploy-app-to-party-cluster.md) erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/).
 

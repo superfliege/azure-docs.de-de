@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: 63e7fd5807f0cf6d05d81af138d649b75024d9bb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aedf2d0012f5af8ea2eb8e944f06b20c7f1a6bb8
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634021"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145380"
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
 
@@ -25,7 +25,7 @@ Import- und Exportvorgänge erfolgen im Kontext von *Aufträgen*, die Ihnen das 
 
 Die **RegistryManager**-Klasse enthält die Methoden **ExportDevicesAsync** und **ImportDevicesAsync**, die das **Job**-Framework verwenden. Diese Methoden ermöglichen das Exportieren, Importieren und Synchronisieren der gesamten IoT Hub-Identitätsregistrierung.
 
-In diesem Thema wird die Verwendung der Klasse **RegistryManager** und des **Job**-Systems zum Ausführen von Massenimport- und -exportvorgängen von Geräten in die bzw. aus der Identitätsregistrierung eines IoT-Hubs erörtert. Ferner können Sie den Azure IoT Hub Device Provisioning-Dienst auch dazu verwenden, eine Just-in-Time-Bereitstellung auf einem oder mehreren IoT-Hubs zu ermöglichen, die keinen menschlichen Eingriff erfordert. Weitere Informationen finden Sie in der [Dokumentation zum Bereitstellungsdienst][lnk-dps].
+In diesem Thema wird die Verwendung der Klasse **RegistryManager** und des **Job**-Systems zum Ausführen von Massenimport- und -exportvorgängen von Geräten in die bzw. aus der Identitätsregistrierung eines IoT-Hubs erörtert. Ferner können Sie den Azure IoT Hub Device Provisioning-Dienst auch dazu verwenden, eine Just-in-Time-Bereitstellung auf einem oder mehreren IoT-Hubs zu ermöglichen, die keinen menschlichen Eingriff erfordert. Weitere Informationen finden Sie in der [Dokumentation zum Bereitstellungsdienst](/azure/iot-dps).
 
 
 ## <a name="what-are-jobs"></a>Was sind Aufträge?
@@ -33,6 +33,7 @@ In diesem Thema wird die Verwendung der Klasse **RegistryManager** und des **Job
 Identitätsregistrierungsvorgänge verwenden das **Job**-System, wenn der Vorgang:
 
 * eine potenziell lange Ausführungsdauer im Vergleich mit standardmäßigen Laufzeitvorgängen hat.
+
 * eine große Menge von Daten an den Benutzer zurückgibt.
 
 Stattdessen erstellt der Vorgang asynchron einen **Auftrag** für diesen IoT Hub, anstatt eines einzelnen API-Aufrufs, mit dem auf das Ergebnis des Vorgangs gewartet bzw. mit dem der Vorgang blockiert wird. Für den Vorgang wird dann sofort ein **JobProperties**-Objekt zurückgegeben.
@@ -41,23 +42,28 @@ Der folgende C#-Codeausschnitt zeigt, wie ein Exportauftrag erstellt wird:
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = await 
+  registryManager.ExportDevicesAsync(containerSasUri, false);
 ```
 
 > [!NOTE]
 > Um die **RegistryManager**-Klasse in Ihrem C#-Code zu verwenden, fügen Sie das **Microsoft.Azure.Devices**-NuGet-Paket Ihrem Projekt hinzu. Die **RegistryManager**-Klasse befindet sich im **Microsoft.Azure.Devices**-Namespace.
 
-Sie können die **RegistryManager**-Klasse verwenden, um den Status des **Auftrags** unter Verwendung der zurückgegebenen **JobProperties**-Metadaten abzufragen. Verwenden Sie zum Erstellen einer Instanz der **RegistryManager**-Klasse die **CreateFromConnectionString**-Methode:
+Sie können die **RegistryManager**-Klasse verwenden, um den Status des **Auftrags** unter Verwendung der zurückgegebenen **JobProperties**-Metadaten abzufragen. Verwenden Sie zum Erstellen einer Instanz der **RegistryManager**-Klasse die **CreateFromConnectionString**-Methode.
 
 ```csharp
-RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
+RegistryManager registryManager =
+  RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
 ```
 
 So finden Sie die Verbindungszeichenfolge Ihres IoT-Hubs im Azure-Portal
 
 - Navigieren Sie zu Ihrem IoT Hub.
+
 - Klicken Sie auf **Freigegebene Zugriffsrichtlinien**.
+
 - Wählen Sie eine Richtlinie aus. Berücksichtigen Sie dabei die benötigten Berechtigungen.
+
 - Kopieren Sie die Verbindungszeichenfolge aus dem Bereich am rechten Bildschirmrand.
 
 Der folgende C#-Codeausschnitt zeigt, wie alle fünf Sekunden eine Abfrage erfolgt, um festzustellen, ob die Auftragsausführung beendet wurde:
@@ -90,7 +96,8 @@ Die **ExportDevicesAsync** -Methode erfordert zwei Parameter:
 * Eine *Zeichenfolge*, die einen URI eines Blobcontainers enthält. Dieser URI muss ein SAS-Token enthalten, das Schreibzugriff auf den Container gewährt. Der Auftrag erstellt zum Speichern der serialisierten Exportgerätedaten ein Blockblob in diesem Container. Das SAS-Token muss diese Berechtigungen enthalten:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
 * Einen *booleschen* Wert, der angibt, ob Sie Authentifizierungsschlüssel aus Ihren Exportdaten ausschließen möchten. Bei **FALSE** werden Authentifizierungsschlüssel in die Exportausgabe eingeschlossen. Andernfalls werden Schlüssel als **NULL** exportiert.
@@ -99,7 +106,8 @@ Der folgende C#-Codeausschnitt zeigt, wie Sie einen Exportauftrag initiieren, de
 
 ```csharp
 // Call an export job on the IoT Hub to retrieve all devices
-JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasUri, false);
+JobProperties exportJob = 
+  await registryManager.ExportDevicesAsync(containerSasUri, false);
 
 // Wait until job is finished
 while(true)
@@ -129,7 +137,7 @@ Das folgende Beispiel zeigt die Ausgabedaten:
 {"id":"Device5","eTag":"MA==","status":"enabled","authentication":{"symmetricKey":{"primaryKey":"abc=","secondaryKey":"def="}}}
 ```
 
-Wenn ein Gerät Zwillingsdaten aufweist, werden die Zwillingsdaten zusammen mit den Gerätedaten exportiert. Das folgende Beispiel zeigt dieses Format. Alle Daten aus der Zeile „twinETag“ bis zum Ende sind Zwillingsdaten.
+Wenn ein Gerät Zwillingsdaten aufweist, werden die Zwillingsdaten ebenfalls zusammen mit den Gerätedaten exportiert. Das folgende Beispiel zeigt dieses Format. Alle Daten ab der Zeile „twinETag“ bis zum Ende sind Zwillingsdaten.
 
 ```json
 {
@@ -208,10 +216,12 @@ Die **ImportDevicesAsync** -Methode erfordert zwei Parameter:
    ```csharp
    SharedAccessBlobPermissions.Read
    ```
+
 * Eine *Zeichenfolge*, die einen URI eines [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)-Blobcontainers als *Ausgabe* aus dem Auftrag enthält. Der Auftrag erstellt in diesem Container ein Blockblob zum Speichern von Fehlerinformationen aus dem abgeschlossenen **Importauftrag**. Das SAS-Token muss diese Berechtigungen enthalten:
 
    ```csharp
-   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read | SharedAccessBlobPermissions.Delete
+   SharedAccessBlobPermissions.Write | SharedAccessBlobPermissions.Read 
+     | SharedAccessBlobPermissions.Delete
    ```
 
 > [!NOTE]
@@ -220,7 +230,8 @@ Die **ImportDevicesAsync** -Methode erfordert zwei Parameter:
 Der folgende C#-Codeausschnitt zeigt, wie ein Importauftrag ausgelöst wird:
 
 ```csharp
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob = 
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 ```
 
 Diese Methode kann auch verwendet werden, um die Daten für den Gerätezwilling zu importieren. Das Format für die Dateneingabe entspricht dem Format wie im Abschnitt für **ExportDevicesAsync**. Auf diese Weise können Sie die exportierten Daten erneut importieren. **$metadata** ist optional.
@@ -308,7 +319,8 @@ using (CloudBlobStream stream = await blob.OpenWriteAsync())
 // Call import using the blob to add new devices
 // Log information related to the job is written to the same container
 // This normally takes 1 minute per 100 devices
-JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
+JobProperties importJob =
+   await registryManager.ImportDevicesAsync(containerSasUri, containerSasUri);
 
 // Wait until job is finished
 while(true)
@@ -407,22 +419,14 @@ static string GetContainerSasUri(CloudBlobContainer container)
 
 In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Identitätsregistrierung in einem IoT Hub angewendet werden. Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
-* [IoT Hub-Metriken][lnk-metrics]
-* [Vorgangsüberwachung][lnk-monitor]
+* [IoT Hub-Metriken](iot-hub-metrics.md)
+* [Vorgangsüberwachung](iot-hub-operations-monitoring.md)
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
-* [Deploy Azure IoT Edge on a simulated device in Linux - preview][lnk-iotedge] (Bereitstellen von Azure IoT Edge auf einem simulierten Gerät in Linux – Vorschauversion)
+* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
 Informationen, die Sie beim Erforschen der Verwendung des IoT Hub Device Provisioning-Diensts für die Just-in-Time-Bereitstellung ohne Benutzereingriff unterstützen, finden Sie in: 
 
-* [Azure IoT Hub Device Provisioning-Dienst][lnk-dps]
-
-
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+* [Azure IoT Hub Device Provisioning-Dienst](/azure/iot-dps)

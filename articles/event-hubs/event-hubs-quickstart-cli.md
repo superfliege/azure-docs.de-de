@@ -1,6 +1,6 @@
 ---
-title: Azure-Schnellstart – Verarbeiten von Ereignisdatenströmen per Azure CLI | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ereignisdatenströme per Azure CLI verarbeiten.
+title: 'Azure-Schnellstart: Erstellen eines Event Hubs mithilfe der Azure CLI | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe der Azure CLI einen Event Hub erstellen und anschließend Ereignisse über Java senden und empfangen.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0607c9a65febdb5890eb49808a0fcef582deb37e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004563"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42022938"
 ---
-# <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>Schnellstart: Verarbeiten von Ereignisdatenströmen per Azure CLI und Java
+# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Schnellstart: Erstellen eines Event Hubs mithilfe der Azure CLI
 
 Azure Event Hubs ist eine hochgradig skalierbare Datenstreamingplattform und ein Dienst zur Datenerfassung, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie Event Hubs-Ressourcen per Azure CLI erstellen und dann Ereignisdatenströme über einen Event Hub mit Java-Code senden und empfangen.
 

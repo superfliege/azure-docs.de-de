@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a019b21c130bebfe27925e90d7f7843d92654e01
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850609"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920046"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal
 
@@ -33,15 +33,17 @@ In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal eine verwaltete 
 > * Herstellen der Verbindung mit dem virtuellen Computer
 > * Installieren von SSMS und Herstellen einer Verbindung mit der verwalteten Instanz
 
+> [!Note]
+> In diesem Tutorial wird erläutert, wie Sie über das Azure-Portal ein Netzwerk, Subnetze, eine Instanz und einen virtuellen Computer konfigurieren. Dies ist unter Umständen ein etwas zeitaufwendigerer Prozess. Wenn Sie ein Schnellstarttutorial benötigen, in dessen Rahmen das Netzwerk und der virtuelle Computer für den Zugriff auf die Instanz mithilfe eines Klicks auf die Schaltfläche „In Azure bereitstellen“ erstellt werden, sehen Sie sich das [Tutorial mit den ersten Schritten an](sql-database-managed-instance-get-started.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 > [!IMPORTANT]
 > Eine Liste mit den Regionen, in denen die verwaltete Instanz derzeit verfügbar ist, finden Sie unter [Migrieren Ihrer Datenbanken zu einem vollständig verwalteten Dienst mit einer verwalteten Instanz von Azure SQL-Datenbank](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance) an.
 
 ## <a name="whitelist-your-subscription"></a>Whitelist Ihres Abonnements
 
@@ -160,7 +162,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Ihre verwaltete Instanz
 2. Suchen Sie nach **Verwaltete Instanz**, und wählen Sie dann die Option **Verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion)**.
 3. Klicken Sie auf **Create**.
 
-   ![Verwaltete Instanz – Erstellen](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![Erstellen einer verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
 4. Wählen Sie Ihr Abonnement aus, und stellen Sie sicher, dass für die Nutzungsbedingungen für die Vorschau **Akzeptiert** angezeigt wird.
 
@@ -302,7 +304,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie SSMS herunterladen und 
 8. Klicken Sie in der Aufforderung auf **Installieren**, um den Vorgang zu starten.
 9. Klicken Sie nach Abschluss der Installation auf **Schließen**.
 10. Öffnen Sie SSMS.
-11. Geben Sie im Dialogfeld **Mit Server verbinden** den *Hostnamen* für Ihre verwaltete Instanz im Feld **Servername** ein, wählen Sie **SQL Server-Authentifizierung**, geben Sie Benutzername und Kennwort ein, und klicken Sie dann auf **Verbinden**.
+11. Geben Sie im Dialogfeld **Mit Server verbinden** den **Hostnamen** für Ihre verwaltete Instanz im Feld **Servername** ein, wählen Sie **SQL Server-Authentifizierung**, geben Sie Benutzername und Kennwort ein, und klicken Sie dann auf **Verbinden**.
 
     ![SSMS-Verbindung](./media/sql-database-managed-instance-tutorial/ssms-connect.png)  
 

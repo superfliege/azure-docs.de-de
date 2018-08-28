@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/13/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 59dc2dad103de60cb7d4b6a44a6d6f7271368391
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444938"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146230"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analysis Services-Server in der gleichen Region mit lokalen Datenquellen verbindet. Weitere Informationen zum Gateway finden Sie unter [Lokales Datengateway](analysis-services-gateway.md).
@@ -38,6 +38,7 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 * Installieren Sie das Gateway auf einem Computer, der eingeschaltet bleibt und nicht in den Ruhezustand versetzt wird.
 * Installieren Sie das Gateway nicht auf einem Computer, der über eine Drahtlosverbindung mit dem Netzwerk verfügt. Die Leistung kann beeinträchtigt werden.
 * Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
+* Wenn sich die Datenquellen in einem Azure Virtual Network (VNET) befinden, müssen Sie die [AlwaysUseGateway](analysis-services-vnet-gateway.md)-Servereigenschaft konfigurieren.
 * Das hier beschriebene (einheitliche) Gateway wird in Azure Government, Azure Deutschland und den Hoheitsregionen von Azure China nicht unterstützt. Verwenden Sie **Dediziertes lokales Gateway für Azure Analysis Services**, das vom **Schnellstart** Ihres Servers installiert wurde, im Portal. 
 
 
@@ -114,4 +115,5 @@ Das ist alles. Wenn Sie Ports öffnen oder eine Problembehandlung durchführen m
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten von Analysis Services](analysis-services-manage.md)   
-* [Abrufen von Daten aus Azure Analysis Services](analysis-services-connect.md)
+* [Abrufen von Daten aus Azure Analysis Services](analysis-services-connect.md)   
+* [Verwenden eines Gateways für Datenquellen in einer Azure Virtual Network-Instanz](analysis-services-vnet-gateway.md)

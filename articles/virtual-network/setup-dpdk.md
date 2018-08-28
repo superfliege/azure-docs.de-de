@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: a03b72200f97c54bce188ec6a6ad8a06a43f26ae
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 205a1e399eadd268ffaa390a7ebb4397fda9feff
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002578"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42444652"
 ---
 # <a name="setup-dpdk-in-a-linux-virtual-machine"></a>Einrichten des DPDK auf einer Linux-VM
 
@@ -67,14 +67,14 @@ Auf der Linux-VM muss der beschleunigte Netzwerkbetrieb aktiviert sein. Die VM s
 ```bash
 sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
 sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev
+sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
 
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev
+sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
 
 ### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
@@ -82,7 +82,7 @@ sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev
 ```bash
 yum -y groupinstall "Infiniband Support"
 sudo dracut --add-drivers "mlx4_en mlx4_ib mlx5_ib" -f
-yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel
+yum install -y gcc kernel-devel-`uname -r` numactl-devel.x86_64 librdmacm-devel libmnl-devel
 ```
 
 ### <a name="sles-15"></a>SLES 15
@@ -131,7 +131,7 @@ Führen Sie die folgenden Befehle nach dem Neustart einmalig aus:
    *  Überprüfen Sie mit `grep Huge /proc/meminfo`, ob umfangreiche Seiten reserviert sind.
 
      > [!NOTE]
-     > Sie können die GRUB-Datei so modifizieren, dass umfangreiche Seiten beim Starten reserviert werden. Befolgen Sie dazu einfach [diese Anweisungen](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) für DPDK (unten auf der Seite). Wenn Sie in eine Linux-VM in Azure ausführen, ändern Sie Dateien stattdessen unter /etc/config/grub.d, um umfangreiche Seiten für Neustarts zu reservieren.
+     > Sie können die GRUB-Datei so ändern, dass umfangreiche Seiten beim Starten reserviert werden. Befolgen Sie dazu einfach die [Anweisungen](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) für DPDK. Die Anweisungen befinden sich unten auf der Seite. Wenn Sie in eine Linux-VM in Azure ausführen, ändern Sie Dateien stattdessen unter /etc/config/grub.d, um umfangreiche Seiten für Neustarts zu reservieren.
 
 2. MAC- und IP-Adressen: Verwenden Sie `ifconfig –a`, um die MAC- und IP-Adresse der Netzwerkschnittstellen anzuzeigen. Die *VF*-Netzwerkschnittstelle und die *NETVSC*-Netzwerkschnittstelle haben dieselbe MAC-Adresse, allerdings hat nur die *NETVSC*-Netzwerkschnittstelle eine IP-Adresse. VF-Schnittstellen werden als untergeordnete Schnittstellen von NETVSC-Schnittstellen ausgeführt.
 

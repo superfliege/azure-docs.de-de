@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/20/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 59a00f5605f7664148b65f2ec9a88fbaa9057ccf
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: e06db4e356de6a4572721d1652d6a2666e7cfefc
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36946056"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143129"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -36,7 +36,7 @@ Zum Verwenden der Updateverwaltung benötigen Sie Folgendes:
 
 Die Updateverwaltung wird für folgende Betriebssysteme unterstützt:
 
-|Betriebssystem  |Hinweise  |
+|Betriebssystem  |Notizen  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen.         |
 |Windows Server 2008 R2 SP1 und höher     |Windows PowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))</br> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen. ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))         |
@@ -106,9 +106,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von diese
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| Windows-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
-| Linux-Agents |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
-| Operations Manager-Verwaltungsgruppe |Ja |Die Updateverwaltung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe. |
+| Windows-Agents |JA |Die Updateverwaltung sammelt Informationen zu Systemupdates von Windows-Agents und initiiert dann die Installation von erforderlichen Updates. |
+| Linux-Agents |JA |Die Updateverwaltung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert dann die Installation von erforderlichen Updates für unterstützte Distributionen. |
+| Operations Manager-Verwaltungsgruppe |JA |Die Updateverwaltung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe. |
 | Azure-Speicherkonto |Nein  |Azure Storage enthält keine Informationen zu Systemupdates. |
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
@@ -127,7 +127,7 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 
 - **Name**: Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein.
 - **Betriebssystem**: Wählen Sie **Windows** oder **Linux** aus.
-- **Zu aktualisierende Computer**: Wählen Sie die virtuellen Computer aus, die Sie aktualisieren möchten. Die Bereitschaft des Computers wird in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen.
+- **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche, eine importierte Gruppe oder Computer aus, um die Computer auszuwählen, die Sie aktualisieren möchten. Wenn Sie **Computer** auswählen, wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
   ![Bereich „Neue Updatebereitstellung“](./media/manage-update-multi/update-select-computers.png)
 
@@ -150,10 +150,16 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
    ![Dialogfeld „Zeitplaneinstellungen“](./media/manage-update-multi/update-set-schedule.png)
 - **Wartungsfenster (Minuten)**: Geben Sie den Zeitraum an, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
 
-Nachdem Sie die Konfiguration des Zeitplans abgeschlossen haben, klicken Sie auf die Schaltfläche **Erstellen**, um zum Statusdashboard zurückzukehren. Die Tabelle **Geplant** zeigt den von Ihnen erstellten Bereitstellungszeitplan.
+- **Neustartsteuerung**: Diese Einstellung bestimmt, wie Neustarts für die Updatebereitstellung behandelt werden.
 
-> [!WARNING]
-> Für Updates, die einen Neustart erfordern, wird der virtuelle Computer automatisch neu gestartet.
+   |Option|BESCHREIBUNG|
+   |---|---|
+   |Neustart bei Bedarf| **(Standard)**: Bei Bedarf wird ein Neustart eingeleitet, wenn das Wartungsfenster dies zulässt.|
+   |Immer neu starten|Ein Neustart wird unabhängig davon eingeleitet, ob er erforderlich ist. |
+   |Nie neu starten|Unabhängig davon, ob ein Neustart erforderlich ist, werden Neustarts unterdrückt.|
+   |Nur neu starten – Updates werden nicht installiert|Diese Option ignoriert die Installation von Updates und leitet nur einen Neustart ein.|
+
+Nachdem Sie die Konfiguration des Zeitplans abgeschlossen haben, klicken Sie auf die Schaltfläche **Erstellen**, um zum Statusdashboard zurückzukehren. Die Tabelle **Geplant** zeigt den von Ihnen erstellten Bereitstellungszeitplan.
 
 ## <a name="view-results-of-an-update-deployment"></a>Anzeigen der Ergebnisse einer Updatebereitstellung
 

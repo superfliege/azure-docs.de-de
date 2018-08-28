@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 08/21/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 69cd7774c92cf1c213f8522dffeb02be6c024acb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3cd178333ee0d8d92db08fb08cbd02b05112f58b
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525136"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445021"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure File Sync-Agent
 Mit Azure File Sync können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -25,7 +25,8 @@ Für den Azure File Sync-Agent werden die folgenden Versionen unterstützt:
 
 | Meilenstein | Agent-Versionsnummer | Herausgabedatum | Status |
 |----|----------------------|--------------|------------------|
-| Allgemeine Verfügbarkeit | 3.1 | 19. Juli 2018 | Unterstützt (empfohlene Version) |
+| Updaterollup aus August | 3.2.0.0 | 15. August 2018 | Unterstützt (empfohlene Version) |
+| Allgemeine Verfügbarkeit | 3.1.0.0 | 19. Juli 2018 | Unterstützt |
 | Updaterollup für Juni | 3.0.13.0 | 29. Juni 2018 | Agent-Version läuft am 4. September 2018 ab. |
 | Aktualisieren 2 | 3.0.12.0 | 22. Mai 2018 | Agent-Version läuft am 4. September 2018 ab. |
 | Updaterollup von April | 2.3.0.0 | 8. Mai 2018 | Agent-Version läuft am 4. September 2018 ab. |
@@ -39,6 +40,12 @@ Für den Azure File Sync-Agent werden die folgenden Versionen unterstützt:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-3200"></a>Agent-Version 3.2.0.0
+Die folgenden Anmerkungen zu dieser Version gelten für Version 3.2.0.0 des Azure-Dateisynchronisierungs-Agents (Veröffentlichung: 15. August 2018). Diese Anmerkungen gelten zusätzlich zu den Anmerkungen zu dieser Version, die für Version 3.1.0.0 angegeben sind.
+
+Diese Version umfasst die folgende Fehlerbehebung:
+- Fehler bei der Synchronisierung mit Fehler durch ungenügenden Arbeitsspeicher (0x8007000e) aufgrund eines Speicherverlusts
 
 ## <a name="agent-version-3100"></a>Agent-Version 3.1.0.0
 Die folgenden Versionshinweise gelten für Version 3.1.0.0 des Azure File Sync-Agents (Veröffentlichung: 19. Juli 2018).
@@ -84,6 +91,7 @@ Folgende Elemente werden nicht synchronisiert, aber der restliche Systembetrieb 
 
 ### <a name="cloud-endpoint"></a>Cloudendpunkt
 - Azure File Sync unterstützt direkte Änderungen an der Azure-Dateifreigabe. Allerdings müssen alle Änderungen, die Sie an der Azure-Dateifreigabe vornehmen, zuerst von einem Azure File Sync-Auftrag zum Erkennen von Änderungen erkannt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird einmal alle 24 Stunden gestartet. Darüber hinaus bewirken Änderungen, die über das REST-Protokoll an einer Azure-Dateifreigabe vorgenommen wurden, keine Aktualisierung der letzten SMB-Änderungszeit, und die Änderungen sind für eine Synchronisierung nicht zu sehen.
+- Der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden. Wenn das Speicherkonto verschoben wird, müssen Sie dem Hybrid-Dateisynchronisierungsdienst Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung Zugriff auf das Speicherkonto besitzt](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
 
 ### <a name="cloud-tiering"></a>Cloudtiering
 - Wenn eine Tieringdatei mit Robocopy an einen anderen Speicherort kopiert wird, ist die sich ergebende Datei keine Tieringdatei. Das Offlineattribut kann festgelegt werden, da dieses Attribut fälschlicherweise von Robocopy in Kopiervorgänge eingefügt wird.

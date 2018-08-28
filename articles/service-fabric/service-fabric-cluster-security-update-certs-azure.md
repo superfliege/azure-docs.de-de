@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/23/2018
 ms.author: chackdan
-ms.openlocfilehash: 16758cc85b552e82d3daa63893558e1048bcefb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a1cfd68b526d8ce63fcfbc3b6e0eac84926fabaa
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207552"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146263"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
+
+Das standardmäßige Zertifikatladeverhalten des Azure Service Fabric SDK besteht in der Bereitstellung und Verwendung eines definierten Zertifikats mit einem Ablaufdatum, das am weitesten in der Zukunft liegt, und zwar unabhängig von der primären oder sekundären Konfigurationsdefinition. Das Zurückfallen auf das klassische Verhalten ist eine nicht empfohlene erweiterte Aktion und erfordert das Festlegen des Parameters „UseSecondaryIfNever“ in Ihrer Fabric.Code-Konfiguration auf FALSE.
 
 Service Fabric ermöglicht es Ihnen, zusätzlich zu den Clientzertifikaten zwei Clusterzertifikate anzugeben – ein primäres und ein sekundäres –, wenn Sie die Zertifikatsicherheit während der Erstellung des Clusters konfigurieren. Ausführliche Informationen zur Einrichtung während der Erstellung finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md) oder [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Wenn Sie während der Erstellung nur ein Clusterzertifikat angeben, wird es als primäres Zertifikat verwendet. Nach der Erstellung des Clusters können Sie ein neues Zertifikat als sekundäres hinzufügen.
 
@@ -34,17 +36,12 @@ Service Fabric ermöglicht es Ihnen, zusätzlich zu den Clientzertifikaten zwei 
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>Hinzufügen eines sekundären Clusterzertifikats mithilfe des Portals
 Das sekundäre Clusterzertifikat kann nicht über das Azure-Portal hinzugefügt werden, verwenden Sie stattdessen Azure-PowerShell. Der Prozess wird weiter unten in diesem Dokument beschrieben.
 
-## <a name="swap-the-cluster-certificates-using-the-portal"></a>Austauschen der Clusterzertifikate mit dem Portal
-Wenn Sie nach der erfolgreichen Bereitstellung eines sekundären Clusterzertifikats das primäre und das sekundäre Zertifikat austauschen möchten, können Sie zum Abschnitt „Sicherheit“ navigieren und im Kontextmenü die Option „Mit primärem Zertifikat tauschen“ wählen, um das sekundäre Zertifikat gegen das primäre Zertifikat zu tauschen.
-
-![Tauschen des Zertifikats][Delete_Swap_Cert]
-
 ## <a name="remove-a-cluster-certificate-using-the-portal"></a>Entfernen eines Clusterzertifikats mit dem Portal
-Für einen sicheren Cluster muss stets mindestens ein gültiges (nicht widerrufenes oder abgelaufenes) Zertifikat (primär oder sekundär) bereitgestellt sein. Andernfalls funktioniert der Cluster nicht mehr.
+Für einen sicheren Cluster benötigen Sie immer mindestens ein gültiges (nicht widerrufenes oder abgelaufenes) Zertifikat. Das bereitgestellte Zertifikat, das das am weitesten in der Zukunft liegende Ablaufdatum aufweist, wird verwendet, und wenn Sie es entfernen, funktioniert Ihr Cluster nicht mehr. Stellen Sie sicher, dass Sie nur das Zertifikat entfernen, das abgelaufen ist, oder ein nicht verwendetes Zertifikat, das am schnellsten abläuft.
 
-Zum Entfernen eines sekundären Zertifikats aus der Verwendung für die Clustersicherheit navigieren Sie zum Abschnitt „Sicherheit“ und wählen im Kontextmenü für das sekundäre Zertifikat die Option „Löschen“.
+Um ein nicht verwendetes Clustersicherheitszertifikat zu entfernen, navigieren Sie zum Abschnitt „Sicherheit“ und wählen die Option „Löschen“ aus dem Kontextmenü für das nicht verwendete Zertifikat aus.
 
-Wenn Sie das Zertifikat entfernen möchten, das als primär gekennzeichnet ist, müssen Sie es zuerst gegen das sekundäre Zertifikat tauschen und nach Abschluss des Upgradevorgangs dann das sekundäre Zertifikat löschen.
+Wenn Sie beabsichtigen, das als primär markierte Zertifikat zu entfernen, müssen Sie ein sekundäres Zertifikat mit einem Ablaufdatum weiter in der Zukunft als das primäre Zertifikat bereitstellen, um das automatische Rolloververhalten zu aktivieren. Löschen Sie das primäre Zertifikat, nachdem der automatische Rollover abgeschlossen wurde.
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Hinzufügen eines sekundären Zertifikats per Resource Manager PowerShell
 > [!TIP]
@@ -295,7 +292,6 @@ Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung 
 * [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->
-[Delete_Swap_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_09.PNG
 [Add_Client_Cert]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_13.PNG
 [Json_Pub_Setting1]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_14.PNG
 [Json_Pub_Setting2]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_15.PNG

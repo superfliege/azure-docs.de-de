@@ -10,12 +10,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 1436ad54eb13052aa87ccfd5adc371c8d7d5a100
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403789"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42023821"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Schnellstartanleitung: Ausführen eines Workflows über den Microsoft Genomics-Dienst
 
@@ -41,7 +41,7 @@ Konfigurieren Sie Ihr Genomics-Konto mit den folgenden Informationen, wie in der
  |Kontoname         | MyGenomicsAccount     |Wählen Sie einen eindeutigen Kontobezeichner. Informationen zu gültigen Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
  |Abonnement         | Ihr Abonnementname|Hierbei handelt es sich um die Abrechnungseinheit für Ihre Azure-Dienste. Ausführliche Informationen zu Ihrem Abonnement finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |      
  |Ressourcengruppe       | MyResourceGroup       |  Mit Ressourcengruppen können Sie mehrere Azure-Ressourcen (Speicherkonto, Genomics-Konto usw.) zur einfacheren Verwaltung in einer einzelnen Gruppe zusammenfassen. Weitere Informationen finden Sie unter [Ressourcengruppen] (https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Informationen zu gültigen Ressourcengruppennamen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Speicherort                   | USA, Westen 2                    |    Der Dienst steht an den Standorten „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ zur Verfügung. |
+ |Standort                   | USA, Westen 2                    |    Der Dienst steht an den Standorten „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ zur Verfügung. |
 
 
 
@@ -57,7 +57,9 @@ Benutzer müssen in ihrer lokalen Umgebung sowohl Python als auch den Microsoft 
 
 ### <a name="install-python"></a>Installieren von Python
 
-Der Microsoft Genomics-Python-Client ist mit Python 2.7 kompatibel. Wir empfehlen, mindestens die Version 2.7.12 zu verwenden (empfohlene Version: 2.7.14). Den Download finden Sie [hier](https://www.python.org/downloads/). 
+Der Microsoft Genomics-Python-Client ist mit Python 2.7 kompatibel. 12 oder eine höhere 2.7.xx-Version; 2.7.15 ist zum Zeitpunkt der Erstellung dieses Artikels die neueste Version. 2.7.14 ist die empfohlene Version. Den Download finden Sie [hier](https://www.python.org/downloads/). 
+
+HINWEIS: Python 3.x ist nicht mit Python 2.7.xx kompatibel.  MSGen ist eine Python 2.7-Anwendung. Stellen Sie bei der Ausführung von MSGen sicher, dass Ihre aktive Python-Umgebung eine 2.7.xx-Version von Python verwendet. Bei der Verwendung von MSGen mit einer 3.x-Version von Python treten Fehler auf.
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>Installieren des Microsoft Genomics-Clients
@@ -124,7 +126,7 @@ Konfigurieren Sie Ihr Speicherkonto mit den folgenden Informationen, wie in der 
  |Zugriffsebene                  | Heiß                   | Heißer Zugriff bedeutet, dass auf Objekte im Speicherkonto häufiger zugegriffen wird.    |
  |Abonnement         | Ihr Azure-Abonnement |Ausführliche Informationen zu Ihrem Abonnement finden Sie unter [Abonnements](https://account.azure.com/Subscriptions). |      
  |Ressourcengruppe       | MyResourceGroup       |  Sie können die gleiche Ressourcengruppe auswählen wie bei Ihrem Genomics-Konto. Informationen zu gültigen Ressourcengruppennamen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Speicherort                  | USA, Westen 2                  | Verwenden Sie den gleichen Standort wie bei Ihrem Genomics-Konto, um die Gebühren für ausgehenden Datenverkehr und die Wartezeit zu verringern. Der Genomics-Dienst steht an den Standorten „USA, Westen“, „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ zur Verfügung.    |
+ |Standort                  | USA, Westen 2                  | Verwenden Sie den gleichen Standort wie bei Ihrem Genomics-Konto, um die Gebühren für ausgehenden Datenverkehr und die Wartezeit zu verringern. Der Genomics-Dienst steht an den Standorten „USA, Westen“, „USA, Westen 2“, „Europa, Westen“ und „Asien, Südosten“ zur Verfügung.    |
  |Virtuelle Netzwerke                | Deaktiviert                   | Der Standardwert ist deaktiviert. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)](https://docs.microsoft.com/azure/storage/common/storage-network-security).    |
 
 

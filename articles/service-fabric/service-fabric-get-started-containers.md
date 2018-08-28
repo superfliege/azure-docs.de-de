@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: e76ffa3256da5acecf55ad37ea3d927510565ffe
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 41246e434f8adade65f39b3471417888f62d7528
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577287"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143472"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 > [!div class="op_single_selector"]
@@ -204,6 +204,8 @@ Der im Container ausgeführte Dienst erfordert einen Endpunkt für die Kommunika
   </Endpoints>
 </Resources>
 ```
+> [!NOTE]
+> Zusätzliche Endpunkte für einen Dienst können hinzugefügt werden, indem zusätzliche EndPoint-Elemente mit entsprechenden Eigenschaftswerten deklariert werden. Jeder Port kann nur einen Protokollwert deklarieren.
 
 Durch die Definition eines Endpunkts veröffentlicht Service Fabric den Endpunkt an den Naming Service. Dieser Container kann von anderen im Cluster ausgeführten Diensten aufgelöst werden. Mithilfe des [Reverseproxys](service-fabric-reverseproxy.md) können Sie auch Container-zu-Container-Kommunikation durchführen. Die Kommunikation erfolgt, indem der HTTP-Lauschport für den Reverseproxy und die Namen der Dienste, mit denen Sie kommunizieren möchten, als Umgebungsvariablen angegeben werden.
 
@@ -247,6 +249,8 @@ Konfigurieren Sie einen Hostport für die Kommunikation mit dem Container. Über
     ...
 </ServiceManifestImport>
 ```
+> [!NOTE]
+> Zusätzliche PortBindings für einen Dienst können hinzugefügt werden, indem zusätzliche PortBinding-Elemente mit entsprechenden Eigenschaftswerten deklariert werden.
 
 ## <a name="configure-container-registry-authentication"></a>Konfigurieren der Authentifizierung der Containerregistrierung
 Konfigurieren Sie die Authentifizierung der Containerregistrierung, indem Sie dem `ContainerHostPolicies`-Element der Datei „ApplicationManifest.xml“ ein `RepositoryCredentials`-Element hinzufügen. Fügen Sie das Konto und Kennwort für die Containerregistrierung „myregistry.azurecr.io“ hinzu, damit der Dienst das Containerimage aus dem Repository herunterladen kann.
@@ -598,13 +602,13 @@ Von der Service Fabric-Runtime werden 20 Minuten für das Herunterladen und Extr
 
 ```json
 {
-"name": "Hosting",
+        "name": "Hosting",
         "parameters": [
           {
               "name": "ContainerImageDownloadTimeout",
               "value": "1200"
           }
-]
+        ]
 }
 ```
 
@@ -626,7 +630,7 @@ Ab Version 6.2 der Service Fabric-Runtime können Sie den Docker-Daemon mit benu
 
 ```json
 { 
-   "name": "Hosting", 
+        "name": "Hosting", 
         "parameters": [ 
           { 
             "name": "ContainerServiceArguments", 

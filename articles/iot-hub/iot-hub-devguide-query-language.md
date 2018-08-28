@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444183"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146246"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
@@ -309,7 +309,7 @@ Derzeit wird für Abfragen von **devices.jobs** Folgendes nicht unterstützt:
 
 Mit [Gerät-zu-Cloud-Routen][lnk-devguide-messaging-routes] können Sie IoT Hub so konfigurieren, dass Gerät-zu-Cloud-Nachrichten an verschiedene Endpunkte verteilt werden. Die Verteilung basiert auf Ausdrücken, die für einzelne Nachrichten ausgewertet werden.
 
-Die [Routenbedingung][lnk-query-expressions] verwendet die gleiche IoT Hub-Abfragesprache wie Bedingungen in Zwillings- und Auftragsabfragen. Routenbedingungen werden anhand von Nachrichtenheadern und Nachrichtentext ausgewertet. Ihr Abfrageausdruck für das Routing kann nur Nachrichtenköpfe, nur den Nachrichtentext oder beides umfassen. IoT Hub geht von einem bestimmten Schema für Header und Nachrichtentext aus, um Nachrichten zu routen. In den folgenden Abschnitten wird beschrieben, was für IoT Hub für das ordnungsgemäße Routing erforderlich ist.
+Die Routen[bedingung][lnk-query-expressions] verwendet die Syntax der IoT Hub-Abfragesprache als Bedingungen in Zwillings- und Auftragsabfragen. Es steht aber nur eine Teilmenge der Funktionen zur Verfügung. Routenbedingungen werden anhand von Nachrichtenheadern und Nachrichtentext ausgewertet. Ihr Abfrageausdruck für das Routing kann nur Nachrichtenheader, nur den Nachrichtentext oder sowohl Nachrichtenheader als auch Nachrichtentext umfassen. IoT Hub geht von einem bestimmten Schema für die Header und Nachrichtentexte aus, um Nachrichten weiterzuleiten. In den folgenden Abschnitten wird beschrieben, was für das ordnungsgemäße Routing in IoT Hub erforderlich ist.
 
 ### <a name="routing-on-message-headers"></a>Routing nach Nachrichtenheader
 

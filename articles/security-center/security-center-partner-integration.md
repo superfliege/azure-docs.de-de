@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: b0e674eb161af41a848f0456a033d615293a9947
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 117fc5cb6583c4e3eed0c9506bda470400941f61
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622788"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41917763"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -38,7 +38,11 @@ Integrierte Sicherheitslösungen umfassen derzeit Folgendes:
 - Firewall der nächsten Generation ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) und [Palo Alto Networks](https://www.paloaltonetworks.com/products))
 - Sicherheitsrisikobewertung ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) und [Rapid7](https://www.rapid7.com/products/insightvm/))
 
-Die Endpoint Protection-Integrationsumgebung kann je nach Lösung variieren. Die folgende Tabelle enthält weitere Details zu den Umgebungen der einzelnen Lösungen:
+> [!NOTE]
+> Security Center installiert Microsoft Monitoring Agent nicht auf virtuellen Partnergeräten, da die meisten Sicherheitsanbieter die Ausführung externer Agents auf ihrem Gerät verbieten.
+>
+>
+
 
 | Endpoint Protection               | Plattformen                             | Security Center-Installation | Security Center-Ermittlung |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
@@ -68,9 +72,9 @@ Die Endpoint Protection-Integrationsumgebung kann je nach Lösung variieren. Die
 
 2. Wählen Sie im **Microsoft Azure-Menü** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet.
 
-  ![Übersicht über Security Center](./media/security-center-partner-integration/overview.png)
+3. Klicken Sie im Menü von Security Center auf **Sicherheitslösungen**.
 
-3. Wählen Sie unter **Übersicht** die Option **Sicherheitslösungen**.
+  ![Übersicht über Security Center](./media/security-center-partner-integration/overview.png)
 
 Unter **Sicherheitslösungen** können Sie Informationen zur Integrität integrierter Azure-Sicherheitslösungen anzeigen und grundlegende Verwaltungsaufgaben durchführen. Sie können auch eine Verbindung mit anderen Arten von Sicherheitsdatenquellen herstellen – beispielsweise mit Azure Active Directory Identity Protection-Warnungen und Firewallprotokollen im CEF-Format (Common Event Format).
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 92258ce7ea39a06f2af85efd9174b1b200710566
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216965"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918765"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Verwalten von Windows-Updates mithilfe von Azure Automation
 
@@ -104,7 +104,7 @@ Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **1** ein. Kli
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-update-management/signal-logic.png)
 
-Geben Sie unter **2. Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)** fest, da die Warnung für eine erfolgreiche Ausführung bestimmt ist.
+Wählen Sie unter **2. Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)** fest, da die Warnung für eine erfolgreiche Ausführung bestimmt ist.
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -126,9 +126,6 @@ Wenn Sie den Betreff der Warnungs-E-Mail anpassen möchten, klicken Sie unter **
 
 Planen Sie als Nächstes eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht, um Updates zu installieren. Sie können auswählen, welche Updatetypen in die Bereitstellung eingeschlossen werden sollen. Beispielsweise können Sie kritische oder Sicherheitsupdates einschließen und Updaterollups ausschließen.
 
-> [!WARNING]
-> Falls für Updates ein Neustart erforderlich ist, wird der virtuelle Computer automatisch neu gestartet.
-
 Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie auf **Updateverwaltung** und dann auf **Updatebereitstellung planen**.
 
 Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
@@ -136,6 +133,8 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 * **Name:** Geben Sie einen eindeutigen Namen für die Updatebereitstellung ein.
 
 * **Betriebssystem:** Wählen Sie das Betriebssystem aus, das als Ziel für die Updatebereitstellung dienen soll.
+
+* **Zu aktualisierende Computer:** Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Wenn Sie auf **Computer** klicken, wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics-Protokollsuchen](../log-analytics/log-analytics-computer-groups.md).
 
 * **Updateklassifizierung:** Wählen Sie die Softwareklassen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Lassen Sie für dieses Tutorial alle Typen ausgewählt.
 
@@ -154,9 +153,17 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
 * **Wartungsfenster (Minuten):** Übernehmen Sie hierfür den Standardwert. Sie können das Zeitfenster angeben, in dem die Updatebereitstellung stattfinden soll. Mit dieser Einstellung können Sie sicherstellen, dass Änderungen in den von Ihnen festgelegten Wartungsfenstern ausgeführt werden.
 
+* **Neustartoptionen:** Mit dieser Einstellung wird festgelegt, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:
+  * Neu starten bei Bedarf (Standard)
+  * Immer neu starten
+  * Nie neu starten
+  * Nur neu starten – Updates werden nicht installiert
+
+Klicken Sie auf **Erstellen**, wenn die Konfiguration des Zeitplans abgeschlossen ist.
+
 ![Bereich für Updatezeitplan-Einstellungen](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-Klicken Sie auf **Erstellen**, wenn die Konfiguration des Zeitplans abgeschlossen ist. Das Statusdashboard wird wieder angezeigt. Wählen Sie **Geplante Updatebereitstellungen**, um den Bereitstellungszeitplan anzuzeigen.
+Das Statusdashboard wird wieder angezeigt. Wählen Sie **Geplante Updatebereitstellungen**, um den Bereitstellungszeitplan anzuzeigen.
 
 ## <a name="view-results-of-an-update-deployment"></a>Anzeigen der Ergebnisse einer Updatebereitstellung
 

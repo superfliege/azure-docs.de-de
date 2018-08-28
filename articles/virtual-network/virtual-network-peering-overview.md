@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257870"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920294"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -77,7 +77,12 @@ Probleme mit der Konnektivität eines virtuellen Computers in einem mittels Peer
 
 ## <a name="requirements-and-constraints"></a>Anforderungen und Einschränkungen
 
-Informationen zu Anforderungen und Einschränkungen für das Peering virtueller Netzwerke finden Sie [hier](virtual-network-manage-peering.md#requirements-and-constraints). Informationen zu den Grenzwerten für die Anzahl von Peerings, die für ein virtuelles Netzwerk erstellt werden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
+Wenn virtuelle Netzwerke über globales Peering verbunden werden, gelten die folgenden Einschränkungen:
+- Die virtuellen Netzwerke können sich in einer beliebigen Region einer öffentlichen Azure-Cloud befinden, jedoch nicht in Regionen nationaler Azure-Clouds.
+- Ressourcen in einem virtuellen Netzwerk können nicht mit der Front-End-IP-Adresse eines internen Azure-Lastenausgleichs in einem per globalem Peering verbundenen virtuellen Netzwerk kommunizieren. Der Lastenausgleich und die Ressourcen, die mit diesem kommunizieren, müssen sich in derselben Region befinden.
+- Sie können keine Remotegateways verwenden oder einen Gatewaytransit zulassen. Dies ist nur möglich, wenn sich per Peering verbundene virtuelle Netzwerke in derselben Region befinden.
+
+Informationen zu Anforderungen und Einschränkungen finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints). Informationen zu den Grenzwerten für die Anzahl von Peerings, die für ein virtuelles Netzwerk erstellt werden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -102,3 +107,4 @@ Gatewaytransit ist eine Peeringeigenschaft, die es einem virtuellen Netzwerk erm
 
 * Informieren Sie sich über das Erstellen einer [Hub-Spoke-Netzwerktopologie](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Erfahren Sie mehr über alle [Einstellungen für das VNET-Peering und deren Änderung](virtual-network-manage-peering.md).
+* In den [häufig gestellten Fragen zu VNET-Peering](virtual-networks-faq.md#vnet-peering) finden Sie Antworten auf allgemeine Fragen zu VNET-Peering und globalem VNET-Peering.

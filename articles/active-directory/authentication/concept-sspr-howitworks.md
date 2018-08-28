@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8c0810c4a1b92f14e510d005eaf1b6945a058dd7
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413102"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145584"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Funktionsweise der Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -94,6 +94,9 @@ Wenn Sie eine mobile App wie die Microsoft Authenticator-App als Methode zur Ken
 | Verfügbare Funktionen der mobilen App | Code | Code oder Benachrichtigung |
 
 Benutzer können ihre mobile App nicht registrieren, wenn sie sich für die Self-Service-Kennwortzurücksetzung von [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) registrieren. Die Benutzer haben die Möglichkeit, ihre mobile App unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) oder in den neuen Sicherheitsinformationen in der Registrierungsvorschau unter [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) zu registrieren.
+
+> [!WARNING]
+> Sie müssen die [Zusammengeführte Registrierung für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication (öffentliche Vorschauversion)](concept-registration-mfa-sspr-converged.md) aktivieren, bevor Benutzer auf die neue Oberfläche unter [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) zugreifen können.
 
 ### <a name="change-authentication-methods"></a>Ändern der Authentifizierungsmethoden
 

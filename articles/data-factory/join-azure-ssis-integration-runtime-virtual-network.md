@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: aa723fb765d4432d9bcdd56e4b520bf00660f84c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d89abfd0ec2ae5de8366a12bb38d9358aa8ab76d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444848"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145614"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 Verknüpfen Sie in folgenden Szenarien Ihre Azure SSIS-Integration Runtime (IR) mit einem virtuellen Azure-Netzwerk: 
@@ -86,11 +86,11 @@ Die folgenden Schritte werden empfohlen:
 Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). 
 
 ### <a name="nsg"></a> Netzwerksicherheitsgruppe
-Wenn Sie eine Netzwerksicherheitsgruppe (NSG) in einem virtuellen Netzwerk implementieren müssen, mit dem Ihre Azure SSIS-Integration Runtime verknüpft ist, lassen Sie den eingehenden/ausgehenden Datenverkehr über die folgenden Ports zu: 
+Wenn Sie eine Netzwerksicherheitsgruppe (NSG) für das Subnetz implementieren müssen, das die Azure-SSIS Integration Runtime verwendet, lassen Sie eingehenden/ausgehenden Datenverkehr über die folgenden Ports zu: 
 
 | Richtung | Transportprotokoll | Quelle | Quellportbereich | Ziel | Zielportbereich | Kommentare |
 |---|---|---|---|---|---|---|
-| Eingehend | TCP | Internet | * | VirtualNetwork | 29876, 29877 (wenn Sie die IR mit einem virtuellen Azure Resource Manager-Netzwerk verknüpfen) <br/><br/>10100, 20100, 30100 (wenn Sie die IR mit einem klassischen virtuellen Netzwerk verknüpfen)| Der Data Factory-Dienst nutzt diese Ports für die Kommunikation mit den Knoten Ihrer Azure SSIS-Integration Runtime im virtuellen Netzwerk. <br/><br/> Ganz gleich, ob Sie eine NSG angeben oder nicht, konfiguriert Data Factory immer eine NSG auf der Ebene der Netzwerkschnittstellenkarten (NICs), die den virtuellen Computern angefügt sind, auf denen die Azure SSIS-IR gehostet wird. Es ist nur eingehender Datenverkehr von Data Factory-IP-Adressen zulässig. Auch wenn Sie diese Ports für den Internetdatenverkehr öffnen, wird Datenverkehr von anderen IP-Adressen als Data Factory-IP-Adressen auf NIC-Ebene blockiert. |
+| Eingehend | TCP | Internet | * | VirtualNetwork | 29876, 29877 (wenn Sie die IR mit einem virtuellen Azure Resource Manager-Netzwerk verknüpfen) <br/><br/>10100, 20100, 30100 (wenn Sie die IR mit einem klassischen virtuellen Netzwerk verknüpfen)| Der Data Factory-Dienst nutzt diese Ports für die Kommunikation mit den Knoten Ihrer Azure SSIS-Integration Runtime im virtuellen Netzwerk. <br/><br/> Unabhängig davon, ob Sie eine NSG auf Subnetzebene erstellen, konfiguriert Data Factory immer eine NSG auf der Ebene der Netzwerkschnittstellenkarten (NICs), die den virtuellen Computern angefügt sind, auf denen die Azure-SSIS IR gehostet wird. Nur eingehenden Datenverkehr von Data Factory-IP-Adressen für die angegebenen Ports wird durch diese NSG auf NIC-Ebene zugelassen. Auch wenn Sie diese Ports für den Internetdatenverkehr auf Subnetzebene öffnen, wird Datenverkehr von anderen IP-Adressen als Data Factory-IP-Adressen auf NIC-Ebene blockiert. |
 | Ausgehend | TCP | VirtualNetwork | * | Internet | 443 | Die Knoten Ihrer Azure SSIS-Integration Runtime im virtuellen Netzwerk verwenden diesen Port für den Zugriff auf Azure-Dienste wie Azure Storage oder Azure Event Hubs. |
 | Ausgehend | TCP | VirtualNetwork | * | Internet oder SQL | 1433, 11000 - 11999, 14000 - 14999 | Die Knoten für Ihre Azure SSIS-Integration Runtime im virtuellen Netzwerk verwenden diese Ports für den Zugriff auf die SSISDB, die von Ihrer Azure SQL-Datenbank-Serverinstanz gehostet wird. Dieser Zweck gilt nicht für die SSISDB, die von der verwalteten Instanz (Vorschau) gehostet wird. |
 ||||||||

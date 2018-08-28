@@ -9,18 +9,18 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 21f63ebcca4b766f8df8c7b2390c4f44ff4dc7b1
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: d2c4c890e1a1599e68fba1a0728061ec244f382f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099714"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145838"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
 Der Azure Cosmos DB-Änderungsfeed ist ein Mechanismus, um einen kontinuierlichen und inkrementellen Feed von Datensätzen aus einem Azure Cosmos DB-Container abzurufen, während diese Datensätze erstellt oder geändert werden. Der Änderungsfeed unterstützt Ihre Arbeit, indem er den Container bezüglich Änderungen überwacht. Anschließend wird die sortierte Liste von geänderten Dokumenten in der Reihenfolge ausgegeben, in der sie geändert wurden. Weitere Informationen zum Änderungsfeed finden Sie im Artikel [Arbeiten mit dem Änderungsfeed](change-feed.md). 
 
-Dieser Artikel beschreibt, wie der Änderungsfeed von einem Einzelhandelsunternehmen genutzt werden kann, um Nutzungsmuster zu verstehen und Daten in Echtzeit zu analysieren und zu visualisieren. Sie können Ereignisse wie das Betrachten eines Artikels durch einen Benutzer, das Hinzufügen eines Artikels zu seinem Warenkorb oder das Kaufen eines Artikels analysieren. Wenn eines dieser Ereignisse eintritt, wird ein neuer Datensatz erstellt und vom Änderungsfeed protokolliert. Der Änderungsfeed löst dann eine Reihe von Schritten aus, die zur Visualisierung von Metriken führen, mit der die Leistung und Aktivität des Unternehmens analysiert werden kann. Zu den Beispielmetriken, die Sie visualisieren können, gehören die Einnahmen, die einzelnen Besucher der Website, die beliebtesten Artikel und der Durchschnittspreis der angezeigten, zum Warenkorb hinzugefügten und der gekauften Artikel. Diese Beispielmetriken können einem E-Commerce-Unternehmen helfen, die Popularität seiner Website zu bewerten, seine Werbe- und Preisstrategien zu entwickeln und Entscheidungen darüber zu treffen, in welchen Bestand es investieren soll.
+Dieser Artikel beschreibt, wie der Änderungsfeed von einem E-Commerce-Unternehmen genutzt werden kann, um Benutzermuster zu verstehen und Daten in Echtzeit zu analysieren und zu visualisieren. Sie können Ereignisse wie das Betrachten eines Artikels durch einen Benutzer, das Hinzufügen eines Artikels zu seinem Warenkorb oder das Kaufen eines Artikels analysieren. Wenn eines dieser Ereignisse eintritt, wird ein neuer Datensatz erstellt und vom Änderungsfeed protokolliert. Der Änderungsfeed löst dann eine Reihe von Schritten aus, die zur Visualisierung von Metriken führen, mit der die Leistung und Aktivität des Unternehmens analysiert werden kann. Zu den Beispielmetriken, die Sie visualisieren können, gehören die Einnahmen, die einzelnen Besucher der Website, die beliebtesten Artikel und der Durchschnittspreis der angezeigten, zum Warenkorb hinzugefügten und der gekauften Artikel. Diese Beispielmetriken können einem E-Commerce-Unternehmen helfen, die Popularität seiner Website zu bewerten, seine Werbe- und Preisstrategien zu entwickeln und Entscheidungen darüber zu treffen, in welchen Bestand es investieren soll.
 
 Schauen Sie sich zu Beginn das folgende Video über die Lösung an:
 
@@ -207,7 +207,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
    * Behalten Sie für **Ereignisserialisierungsformat** **JSON** bei.  
    * Behalten Sie für **Verschlüsselungsfeld** **UTF-8** bei.  
    * Behalten Sie für **Typ der Ereigniskomprimierung** **None** bei.  
-   * Klicken Sie auf die Schaltfläche **Speichern** .
+   * Klicken Sie auf die Schaltfläche **Save** .
 
 5. Navigieren Sie zurück zur Stream Analytics-Auftragsseite, und wählen **Ausgaben**.  
 
@@ -220,7 +220,7 @@ Azure Stream Analytics ist ein vollständig verwalteter Clouddienst für die Ver
    * Geben Sie im Feld **Datasetname** **averagePrice** ein.  
    * Geben Sie im Feld **Tabellenname** **averagePrice** ein.  
    * Klicken Sie auf die Schaltfläche **Autorisieren**, und befolgen Sie die Anweisungen, um die Verbindung mit Power BI zu autorisieren.  
-   * Klicken Sie auf die Schaltfläche **Speichern** .  
+   * Klicken Sie auf die Schaltfläche **Save** .  
 
 8. Rufen Sie anschließend wieder **streamjob1** auf, und klicken Sie auf **Abfrage bearbeiten**.
 
@@ -315,7 +315,7 @@ Power BI ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten u
    * Für REVENUE wäre es sinnvoll, ein Liniendiagramm mit der Zeit als Achse und der Summe der Preise als Wert zu erstellen. Das anzuzeigende Zeitfenster sollte so groß wie möglich sein, um möglichst viele Informationen zu liefern.  
    * Für UNIQUE VISITORS wäre es sinnvoll, eine Kartenvisualisierung mit der Anzahl der einzelnen Besucher als Wert durchzuführen.
 
-   Sie sieht unser Dashboard mit diesen Diagrammen aus:
+   So sieht ein Beispieldashboard mit diesen Diagrammen aus:
 
    ![Visualisierungen](./media/changefeed-ecommerce-solution/visualizations.png)
 

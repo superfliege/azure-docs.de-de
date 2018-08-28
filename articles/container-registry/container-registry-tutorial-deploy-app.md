@@ -6,15 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 04/30/2018
+ms.date: 08/20/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25e3fdfe72fc2a6ffec1bcee23cd9f1edc783838
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582300"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41919783"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Tutorial: Bereitstellen einer Web-App über Azure Container Registry
 
@@ -42,11 +42,13 @@ In diesem Schritt erstellen Sie eine Instanz von „Web-App für Container“ in
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu der Registrierung, die Sie im vorherigen Tutorial erstellt haben.
 
-Wählen Sie **Repositorys** > **acr-helloworld** aus, klicken Sie unter **Tags** mit der rechten Maustaste auf das Tag **v1**, und klicken Sie anschließend auf **In Web-App bereitstellen**.
+Wählen Sie **Repositorys** > **acr-helloworld** aus, klicken Sie unter **Tags** mit der rechten Maustaste auf das Tag **v1**, und klicken Sie anschließend auf **In Web-App bereitstellen**:
 
 ![„In App Service bereitstellen“ im Azure-Portal][deploy-app-portal-01]
 
-Geben Sie unter **Web-App für Container** die folgenden Werte für die einzelnen Einstellungen an:
+Wenn „In Web-App bereitstellen“ deaktiviert ist, haben Sie unter Umständen den Registrierungsadministratorbenutzer nicht aktiviert, wie unter [Erstellen einer Containerregistrierung](container-registry-tutorial-prepare-registry.md#create-a-container-registry) im ersten Tutorial angegeben. Sie können den Administratorbenutzer im Azure-Portal über **Einstellungen** > **Zugriffsschlüssel** aktivieren.
+
+Nachdem Sie „In Web-App bereitstellen“ aktiviert haben, geben Sie unter **Web-App für Container** die folgenden Werte für die einzelnen Einstellungen an:
 
 | Einstellung | Wert |
 |---|---|

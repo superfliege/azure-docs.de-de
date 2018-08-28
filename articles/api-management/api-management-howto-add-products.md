@@ -3,7 +3,7 @@ title: Erstellen und Veröffentlichen eines Produkts in Azure API Management
 description: Erfahren Sie, wie Sie Produkte in Azure API Management erstellen und veröffentlichen.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: af1768a6555168b777e68f378d32a0b44e9b2c78
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4f5097f8555d0345add7de8a0f648190bd4e1e00
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934481"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41919766"
 ---
 # <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts  
 
@@ -31,7 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen und Veröffentlichen eines Produkts
 > * Hinzufügen einer API zum Produkt
 
-![Hinzugefügtes Produkt](media/api-management-howto-add-products/added-product.png)
+![Hinzufügen eines Produkts](media/api-management-howto-add-products/added-product.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,22 +41,23 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts
 
 1. Klicken Sie im Menü auf der linken Seite auf **Produkte**, um die Seite **Produkte** anzuzeigen.
-2. Klicken Sie auf **+ Produkt**.
+2. Klicken Sie auf **+ Hinzufügen**.
 
     ![Hinzugefügtes Produkt](media/api-management-howto-add-products/add-product.png)
 
     Beim Hinzufügen eines Produkts müssen Sie die folgenden Informationen angeben: 
 
-    |NAME|BESCHREIBUNG|
-    |---|---|
-    |Anzeigename|Der Name, wie er im **Entwicklerportal** angezeigt werden soll|
-    |NAME|Ein beschreibender Name des Produkts|
-    |BESCHREIBUNG|Das Feld **Beschreibung** enthält detaillierte Daten zum Produkt wie etwa dessen Zweck, die bereitgestellten APIs und sonstige nützliche Informationen.|
-    |State (Zustand)|Klicken Sie auf **Veröffentlicht**, wenn Sie das Produkt veröffentlichen möchten. Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Standardmäßig sind neue Produkte nicht veröffentlicht und nur für die Gruppe **Administratoren** sichtbar.|
-    |Genehmigung erforderlich|Wenn Sie möchten, dass ein Administrator Abonnements für dieses Produkt prüfen und ablehnen oder akzeptieren muss, markieren Sie die Option **Abonnementgenehmigung erforderlich** . Wenn das Kontrollkästchen nicht markiert ist, werden Abonnements automatisch genehmigt. |
-    |Grenzwert für Abonnementanzahl|Geben Sie einen Grenzwert für Abonnements ein, um die Anzahl mehrerer gleichzeitiger Abonnements zu beschränken. |
-    |Rechtliche Bedingungen|Sie können die Nutzungsbedingungen für das Produkt hinzufügen, denen Abonnenten zustimmen müssen, um das Produkt verwenden zu können.|
-    |APIs|Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs aufnehmen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/> Sie können während der Produkterstellung eine vorhandene API hinzufügen. Eine API kann dem Produkt auch später hinzugefügt werden – und zwar entweder über die Seite mit den **Einstellungen** des Produkts oder beim Erstellen einer API.|<br/>Entwickler müssen zuerst ein Produkt abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt.<br/> Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.|
+    | NAME                     | BESCHREIBUNG                                                                                                                                                                                                                                                                                                             |
+    |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Anzeigename             | Der Name, wie er im **Entwicklerportal** angezeigt werden soll                                                                                                                                                                                                                                                        |
+    | NAME                     | Ein beschreibender Name des Produkts                                                                                                                                                                                                                                                                                      |
+    | BESCHREIBUNG              | Das Feld **Beschreibung** enthält detaillierte Daten zum Produkt wie etwa dessen Zweck, die bereitgestellten APIs und sonstige nützliche Informationen.                                                                                                                                               |
+    | State (Zustand)                    | Klicken Sie auf **Veröffentlicht**, wenn Sie das Produkt veröffentlichen möchten. Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Standardmäßig sind neue Produkte nicht veröffentlicht und nur für die Gruppe **Administratoren** sichtbar.                                                                                      |
+    | Abonnement erforderlich    | Aktivieren Sie **Abonnement erforderlich**, wenn ein Benutzer zur Verwendung des Produkts ein Abonnement benötigt.                                                                                                                                                                                                                                   |
+    | Genehmigung erforderlich        | Aktivieren Sie die Option **Genehmigung anfordern**, wenn Sie möchten, dass ein Administrator Abonnements für dieses Produkt prüfen und ablehnen oder akzeptieren muss. Wenn das Kontrollkästchen nicht markiert ist, werden Abonnements automatisch genehmigt.                                                                                                                         |
+    | Grenzwert für Abonnementanzahl | Geben Sie einen Grenzwert für Abonnements ein, um die Anzahl mehrerer gleichzeitiger Abonnements zu beschränken.                                                                                                                                                                                                                                |
+    | Rechtliche Bedingungen              | Sie können die Nutzungsbedingungen für das Produkt hinzufügen, denen Abonnenten zustimmen müssen, um das Produkt verwenden zu können.                                                                                                                                                                                                             |
+    | APIs                     | Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs aufnehmen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/> Sie können während der Produkterstellung eine vorhandene API hinzufügen. Eine API kann dem Produkt auch später hinzugefügt werden – und zwar entweder über die Seite mit den **Einstellungen** des Produkts oder beim Erstellen einer API. |
 
 3. Klicken Sie auf **Erstellen**, um das neue Produkt zu erstellen.
 
@@ -76,10 +77,12 @@ Entwickler müssen zuerst ein Produkt abonnieren, um Zugriff auf die API zu erha
 
 ### <a name="add-an-api-to-an-existing-product"></a>Hinzufügen einer API zu einem vorhandenen Produkt
 
-1. Wählen Sie ein Produkt aus.
-2. Klicken Sie auf die Registerkarte „APIs“.
-3. Klicken Sie auf **+ API**.
-4. Wählen Sie eine API aus, und klicken Sie auf **Erstellen**.
+![Hinzufügen einer Produkt-API](media/api-management-howto-add-products/add-product-api.png)
+
+1. Wählen Sie auf der Registerkarte **Produkte** ein Produkt aus.
+2. Navigieren Sie zur Registerkarte **APIs**.
+3. Klicken Sie auf **+ Hinzufügen**.
+4. Wählen Sie eine API aus, und klicken Sie auf **Auswählen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

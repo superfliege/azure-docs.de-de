@@ -11,42 +11,26 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/18/2016
+ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: dee3313082fbe75d76bf27105979cf7e869fafad
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fc651b3bc28e59c5c5a195211d811e206eee3e42
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294121"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246473"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](http://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](app-insights-overview.md).
 
-Es gibt drei empfohlene Methoden zum Exportieren von Application Insights-Daten nach Power BI. Diese können Sie separat oder zusammen verwenden.
+Es gibt drei Methoden zum Exportieren von Application Insights-Daten nach Power BI:
 
-* [**Power BI-Adapter**](#power-pi-adapter). Richten Sie ein vollständiges Dashboard mit den Telemetriedaten Ihrer App ein. Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
-* [**Exportieren von Analytics-Abfragen**](#export-analytics-queries). Schreiben Sie eine beliebige Abfrage, und exportieren Sie sie in Power BI. Schreiben Sie mit Analytics oder über die Verwendungstrichter eine beliebige Abfrage. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
-* [**Fortlaufender Export und Azure Stream Analytics**](app-insights-export-stream-analytics.md). Diese Methode ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume aufbewahren möchten. Verwenden Sie andernfalls eine der anderen Methoden, da für diese Methode mehr Einrichtungsaufwand anfällt.
+* [**Exportieren von Analytics-Abfragen**](#export-analytics-queries). Dies ist die bevorzugte Methode. Schreiben Sie eine beliebige Abfrage, und exportieren Sie sie in Power BI. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
+* [**Fortlaufender Export und Azure Stream Analytics**](app-insights-export-stream-analytics.md). Diese Methode ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume speichern möchten. Wenn Sie keine erweiterte Datenaufbewahrungsanforderung erfüllen müssen, verwenden Sie die Methode zum Exportieren von Analytics-Abfragen. Für fortlaufenden Export und Stream Analytics fallen mehr Einrichtungsaufgaben und zusätzlicher Speichermehraufwand an.
+* [**Power BI-Adapter**](#power-pi-adapter). Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
 
-## <a name="power-bi-adapter"></a>Power BI-Adapter
-Mit dieser Methode wird für Sie ein vollständiges Dashboard mit Telemetriedaten erstellt. Das anfängliche Dataset ist vordefiniert, aber Sie können weitere Daten hinzufügen.
-
-### <a name="get-the-adapter"></a>Abrufen des Adapters
-1. Melden Sie sich bei [Power BI](https://app.powerbi.com/) an.
-2. Öffnen Sie **Daten abrufen**, **Dienste** und dann **Application Insights**.
-   
-    ![Screenshots für das Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/power-bi-adapter.png)
-3. Geben Sie die Details Ihrer Application Insights-Ressource an.
-   
-    ![Screenshot für das Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/azure-subscription-resource-group-name.png)
-4. Warten Sie ein oder zwei Minuten, bis die Daten importiert wurden.
-   
-    ![Screenshot des Power BI-Adapters](./media/app-insights-export-power-bi/010.png)
-
-Sie können das Dashboard bearbeiten und die Application Insights-Diagramme mit den Diagrammen anderer Quellen und mit Analytics-Abfragen kombinieren. Es gibt einen Katalog mit visuellen Elementen, in dem weitere Diagramme bereitgestellt werden. Jedes dieser Diagramme verfügt über Parameter, die Sie festlegen können.
-
-Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich aktualisiert. Sie können den Aktualisierungszeitplan im Dataset steuern.
+> [!NOTE]
+> Der Power BI-Adapter ist nun **veraltet**. Die vordefinierte Diagramme für diese Lösung werden durch statische nicht bearbeitbare Abfragen mit Daten aufgefüllt. Sie haben nicht die Möglichkeit, diese Abfragen zu bearbeiten, und abhängig von bestimmten Eigenschaften Ihrer Daten ist es möglich, dass die Verbindung mit Power BI erfolgreich ist, aber keine Daten aufgefüllt werden. Dies liegt an Ausschlusskriterien, die in der hartcodierten Abfrage festgelegt werden. Während diese Lösung für einige Kunden noch funktionieren kann, wird aufgrund der mangelnden Flexibilität des Adapters die Verwendung der Funktionalität [**Analytics-Abfrage exportieren**](#export-analytics-queries) empfohlen.
 
 ## <a name="export-analytics-queries"></a>Exportieren von Analytics-Abfragen
 Mit dieser Route können Sie eine beliebige Analytics-Abfrage schreiben oder aus Verwendungstrichtern exportieren und dann in ein Power BI-Dashboard exportieren. (Sie können dem mit dem Adapter erstellten Dashboard Elemente hinzufügen.)
@@ -83,10 +67,10 @@ Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/
 
 ### <a name="export-a-funnel"></a>Exportieren eines Trichters
 1. [Erstellen Sie Ihren Trichter.](usage-funnels.md)
-2. Wählen Sie **Power BI**aus. 
+2. Wählen Sie **Power BI**aus.
 
    ![Screenshot der Power BI-Schaltfläche](./media/app-insights-export-power-bi/button.png)
-   
+
 3. Klicken Sie in Power BI Desktop auf **Daten abrufen** > **Leere Abfrage**. Klicken Sie dann im Abfrage-Editor unter **Ansicht** auf **Erweiterter Editor**.
 
    ![Screenshot von Power BI Desktop mit hervorgehobener Schaltfläche „Leere Abfrage“](./media/app-insights-export-power-bi/blankquery.png)
@@ -139,6 +123,35 @@ Wenn das Verkleinern des von der Analytics-Abfrage stammenden Datasets Ihre Anfo
 ## <a name="about-sampling"></a>Informationen zur Stichprobenerstellung (Sampling)
 Wenn für Ihre Anwendung große Datenmengen gesendet werden, sollten Sie ggf. die Funktion für die adaptive Stichprobenerstellung verwenden, bei der nur ein prozentualer Anteil der Telemetriedaten gesendet. Dasselbe gilt, wenn Sie die Stichprobenerstellung entweder im SDK oder bei der Erfassung manuell festgelegt haben. [Erfahren Sie mehr über Sampling](app-insights-sampling.md).
 
+## <a name="power-bi-adapter-deprecated"></a>Power BI-Adapter (veraltet)
+Mit dieser Methode wird für Sie ein vollständiges Dashboard mit Telemetriedaten erstellt. Das anfängliche Dataset ist vordefiniert, aber Sie können weitere Daten hinzufügen.
+
+### <a name="get-the-adapter"></a>Abrufen des Adapters
+1. Melden Sie sich bei [Power BI](https://app.powerbi.com/) an.
+2. Öffnen Sie **Daten abrufen** ![Screenshot des GetData-Symbols in der unteren linken Ecke](./media/app-insights-export-power-bi/001.png), **Dienste**.
+
+    ![Screenshots für das Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/002.png)
+
+3. Wählen Sie **Jetzt abrufen** unter Application Insights aus.
+
+   ![Screenshots für das Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/003.png)
+4. Geben Sie die Details Ihrer Application Insights-Ressource an, und **melden Sie sich dann an**.
+
+    ![Screenshot für das Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/005.png)
+
+     Sie finden diese Informationen im Bereich „Application Insights-Übersicht“:
+
+     ![Screenshot für das Abrufen aus der Application Insights-Datenquelle](./media/app-insights-export-power-bi/004.png)
+
+5. Öffnen Sie die neu erstellte Application Insights Power BI-App.
+
+6. Warten Sie ein oder zwei Minuten, bis die Daten importiert wurden.
+
+    ![Screenshot des Power BI-Adapters](./media/app-insights-export-power-bi/010.png)
+
+Sie können das Dashboard bearbeiten und die Application Insights-Diagramme mit den Diagrammen anderer Quellen und mit Analytics-Abfragen kombinieren. Es gibt einen Katalog mit visuellen Elementen, in dem weitere Diagramme bereitgestellt werden. Jedes dieser Diagramme verfügt über Parameter, die Sie festlegen können.
+
+Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich aktualisiert. Sie können den Aktualisierungszeitplan im Dataset steuern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Power BI – Informationen](http://www.powerbi.com/learning/)

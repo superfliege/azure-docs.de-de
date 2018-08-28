@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: juliako
-ms.openlocfilehash: 4ce1eedac69b06f491510be93fcfbdfbc879ff7e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398131"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929800"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
@@ -37,7 +37,7 @@ Video Indexer unterstützt das Einbetten von zwei Widget-Typen in Ihre Anwendung
     |showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: showCaptions=true|
     |type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: type=audio|
     |autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: „true“).<br/>Beispiel: autoplay=false|
-    |language|Sprachcode|Dienst zum Steuern der Lokalisierung der Player-Steuerelemente (Standardeinstellung: „en-US“).<br/>Beispiel: language=de-DE|
+    |Language|Sprachcode|Dienst zum Steuern der Lokalisierung der Player-Steuerelemente (Standardeinstellung: „en-US“).<br/>Beispiel: language=de-DE|
 
 ## <a name="embedding-public-content"></a>Einbetten von öffentlichen Inhalten
 
@@ -169,7 +169,7 @@ Bei Verwendung Ihres eigenen Players müssen Sie diesen selbst so anpassen, dass
         </video>    
 
 2. Betten Sie das Widget „Kognitive Erkenntnisse“ ein.
-3. Implementieren Sie die Kommunikation für Ihren Player, indem Sie auf das Ereignis „message“ lauschen. Beispiel:
+3. Implementieren Sie die Kommunikation für Ihren Player, indem Sie auf das Ereignis „message“ lauschen. Beispiel: 
 
         <script>
     
@@ -241,6 +241,4 @@ Automatische Wiedergabe: Standardmäßig beginnt der Player mit der Wiedergabe d
 
 Weitere Informationen zum Anzeigen und Bearbeiten von Video Indexer-Erkenntnissen finden Sie in [diesem Artikel](video-indexer-view-edit.md).
 
-## <a name="see-also"></a>Weitere Informationen
-
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))
+Sehen Sie sich außerdem auch [Video Indexer Codepen](https://codepen.io/videoindexer/pen/eGxebZ) an.

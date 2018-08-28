@@ -13,37 +13,53 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2018
+ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 7366273e30132daf7dc5ea15072c574180d1bc8b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 91c7d16296653aea2381793f2e52f2b33b831185
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397282"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42145589"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
-Azure Load Balancer nutzt Integritätstests, um zu bestimmen, welche Back-End-Poolinstanz neue Datenflüsse erhält. Anhand von Integritätstests können Sie einen Fehler in einer Anwendung auf einer Back-End-Instanz erkennen. Sie können auch eine benutzerdefinierte Antwort auf einen Integritätstest generieren und für die Ablaufsteuerung verwenden sowie, um dem Lastenausgleich zu signalisieren, ob weiterhin neue Flows gesendet oder keine weiteren neuen Flows mehr an eine Back-End-Instanz gesendet werden sollen. Dies kann verwendet werden, um die Last oder geplante Downtime zu verwalten.
+Azure Load Balancer nutzt Integritätstests, um zu bestimmen, welche Back-End-Poolinstanz neue Datenflüsse erhält. Anhand von Integritätstests können Sie einen Fehler in einer Anwendung auf einer Back-End-Instanz erkennen. Sie können auch eine benutzerdefinierte Antwort auf einen Integritätstest generieren und für die Ablaufsteuerung verwenden sowie, um dem Lastenausgleich zu signalisieren, ob weiterhin neue Flows gesendet oder keine weiteren neuen Flows mehr an eine Back-End-Instanz gesendet werden sollen. Dies kann verwendet werden, um die Last oder geplante Downtime zu verwalten. Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz.
 
-Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz. Das Verhalten neuer und vorhandener Flows hängt davon ab, ob diese ein TCP- oder UDP-Flow ist und welche Load Balancer-SKU Sie verwenden.  Weitere Einzelheiten finden Sie unter [Verhalten bei Tests mit Fehlern](#probedown).
+Die verfügbaren Typen von Integritätstests und die Art und Weise, wie sich die Integritätstests verhalten, hängen von der SKU des Load Balancers ab, die Sie verwenden. Das Verhalten neuer und vorhandener Flows hängt z.B. davon ab, ob es sich um einen TCP- oder UDP-Flow handelt und welche Load Balancer-SKU Sie verwenden.
+
+| | Standard-SKU | Basic-SKU |
+| --- | --- | --- |
+| [Testtypen](#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Verhalten bei Tests mit Fehlern](#probedown) | Alle Tests mit Fehlern, alle TCP-Flows werden fortgesetzt. | Alle Tests mit Fehlern, alle TCP-Flows werden beendet. | 
 
 > [!IMPORTANT]
 > Lastenausgleichs-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource).
 
-## <a name="health-probe-types"></a>Integritätstesttypen
+## <a name="types"></a>Integritätstesttypen
 
-Bei Integritätstests kann ein beliebiger Port an einer Back-End-Instanz, einschließlich des Ports, an dem der eigentliche Dienst bereitgestellt wird, überwacht werden. Der Integritätstest unterstützt TCP-Listener oder HTTP-Endpunkte. 
+Bei Integritätstests kann ein beliebiger Port an einer Back-End-Instanz, einschließlich des Ports, an dem der eigentliche Dienst bereitgestellt wird, überwacht werden. Das Integritätstestprotokoll kann für drei verschiedene Typen von Integritätstests konfiguriert werden:
 
-Bei einem UDP-Lastenausgleich sollten Sie ein benutzerdefiniertes Integritätstestsignal für die Back-End-Instanz mithilfe eines TCP- oder HTTP-Integritätstests generieren.
+- [TCP-Listener](#tcpprobe)
+- [HTTP-Endpunkte](#httpprobe)
+- [HTTPS-Endpunkte](#httpsprobe)
 
-Bei Verwendung von [Lastenausgleichsregeln für Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md) mit dem [Load Balancer Standard](load-balancer-standard-overview.md) wird für alle Ports ein Lastenausgleich durchgeführt, sodass eine Antwort vom Integritätstest den Status der gesamten Instanz widerspiegeln sollte.  
+Die verfügbaren Typen von Integritätstests sind abhängig von der ausgewählten Load Balancer-SKU unterschiedlich:
+
+|| TCP | HTTP | HTTPS |
+| --- | --- | --- | --- |
+| Standard-SKU |    &#9989; |   &#9989; |   &#9989; |
+| Basic-SKU |   &#9989; |   &#9989; | &#10060; |
+
+Bei einem UDP-Lastenausgleich sollten Sie ein benutzerdefiniertes Integritätstestsignal für die Back-End-Instanz mithilfe eines TCP-, HTTP- oder HTTPS-Integritätstests generieren.
+
+Bei Verwendung von [Lastenausgleichsregeln für Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md) mit [Load Balancer Standard](load-balancer-standard-overview.md) wird für alle Ports ein Lastenausgleich ausgeführt, sodass eine Antwort vom Integritätstest den Status der gesamten Instanz widerspiegeln muss.  
 
 Sie sollten weder NAT noch einen Proxy für einen Integritätstest der Instanz, die den Integritätstest empfängt, zu einer anderen Instanz in Ihrem VNET verwenden, da dies zu kaskadierenden Fehlern in Ihrem Szenario führen kann.
 
 Wenn Sie einen Integritätstestfehler überprüfen oder eine einzelne Instanz als offline kennzeichnen möchten, können Sie eine Sicherheitsgruppe verwenden, um den Integritätstest (Ziel oder [Quelle](#probesource)) zu blockieren.
 
-### <a name="tcp-probe"></a>TCP-Test
+### <a name="tcpprobe"></a> TCP-Test
 
 TCP-Tests leiten eine Verbindung über einen offenen Drei-Wege-TCP-Handshake mit dem definierten Port ein.  Darauf folgt dann ein geschlossener 4-Wege-TCP-Handshake.
 
@@ -53,21 +69,62 @@ TCP-Tests führen in folgenden Fällen zu Fehlern:
 * Der TCP-Listener für die Instanz reagiert innerhalb des Zeitlimits gar nicht.  Wann der Test als nicht ausgeführt markiert wird, hängt von der konfigurierten Anzahl unbeantworteter fehlerhafter Testanforderungen vor dem Markieren des Tests als nicht ausgeführt ab.
 * Der Test empfängt ein TCP-Reset von der Instanz.
 
-### <a name="http-probe"></a>HTTP-Test
+#### <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
-HTTP-Tests stellen eine TCP-Verbindung her und geben eine HTTP GET-Anforderung mit dem angegebenen Pfad aus. HTTP-Tests unterstützen für HTTP GET relative Pfade. Der Integritätstest kennzeichnet die Instanz als online, wenn diese innerhalb des Zeitlimits mit dem HTTP-Statuscode 200 antwortet.  Bei HTTP-Integritätstests wird standardmäßig versucht, den konfigurierten Integritätstestport alle 15 Sekunden zu prüfen. Das minimale Testintervall beträgt 5 Sekunden. Die gesamte Dauer darf 120 Sekunden nicht überschreiten. 
+```json
+    {
+      "name": "tcp",
+      "properties": {
+        "protocol": "Tcp",
+        "port": 1234,
+        "intervalInSeconds": 5,
+        "numberOfProbes": 2
+      },
+```
 
+### <a name="httpprobe"></a> <a name="httpsprobe"></a> HTTP-/HTTPS-Test
 
-HTTP-Tests können auch für die Implementierung Ihrer eigenen Logik zum Entfernen von Instanzen aus der Lastenausgleichrotation nützlich sein. Sie können z.B. eine Instanz entfernen, wenn sie über 90 % CPU beansprucht und einen anderen HTTP-Status als 200 zurückgibt. 
+> [!NOTE]
+> Der HTTPS-Test ist nur für [Load Balancer Standard](load-balancer-standard-overview.md) verfügbar.
+
+HTTP- und HTTPS-Tests stellen eine TCP-Verbindung her und geben eine HTTP GET-Anforderung mit dem angegebenen Pfad aus. Diese beiden Tests unterstützen für HTTP GET relative Pfade. HTTPS-Tests sind mit HTTP-Tests identisch, weisen jedoch zusätzlich einen Transport Layer Security-Wrapper (TLS, früher als SSL bezeichnet) auf. Der Integritätstest kennzeichnet die Instanz als online, wenn diese innerhalb des Zeitlimits mit dem HTTP-Statuscode 200 antwortet.  Bei diesen Integritätstests wird standardmäßig versucht, den konfigurierten Integritätstestport alle 15 Sekunden zu prüfen. Das minimale Testintervall beträgt 5 Sekunden. Die gesamte Dauer darf 120 Sekunden nicht überschreiten. 
+
+HTTP-/HTTPS-Tests können auch für die Implementierung Ihrer eigenen Logik zum Entfernen von Instanzen aus der Lastenausgleichrotation nützlich sein. Sie können z.B. eine Instanz entfernen, wenn sie über 90 % CPU beansprucht und einen anderen HTTP-Status als 200 zurückgibt. 
 
 Wenn Sie Cloud Services verwenden und über Webrollen verfügen, die „w3wp.exe“ verwenden, erreichen Sie auch eine automatische Überwachung Ihrer Website. Fehler in Ihrem Websitecode geben einen anderen Status als 200 an den Lastenausgleichstest zurück.  Der HTTP-Test setzt den Gast-Agent-Standardtest außer Kraft. 
 
-HTTP-Tests führen in folgenden Fällen zu Fehlern:
-* Der HTTP-Testendpunkt gibt einen anderen HTTP-Antwortcode als 200 zurück (z.B. 403, 404 oder 500). Dadurch wird der Integritätstest sofort als offline gekennzeichnet. 
-* Der HTTP-Testendpunkt reagiert während eines Zeitlimits von 31 Sekunden gar nicht. Je nach dem festgelegten Timeoutwert können mehrere Testanforderungen unbeantwortet bleiben, bevor der Test als nicht ausgeführt markiert wird (d. h. bevor SuccessFailCount-Tests gesendet werden).
-* Der HTTP-Testendpunkt schließt die Verbindung über ein TCP-Reset.
+HTTP-/HTTPS-Tests führen in folgenden Fällen zu Fehlern:
+* Der Testendpunkt gibt einen anderen HTTP-Antwortcode als 200 zurück (z.B. 403, 404 oder 500). Dadurch wird der Integritätstest sofort als offline gekennzeichnet. 
+* Der Testendpunkt reagiert während eines Zeitlimits von 31 Sekunden gar nicht. Je nach dem festgelegten Timeoutwert können mehrere Testanforderungen unbeantwortet bleiben, bevor der Test als nicht ausgeführt markiert wird (d. h. bevor SuccessFailCount-Tests gesendet werden).
+* Der Testendpunkt schließt die Verbindung über ein TCP-Reset.
 
-### <a name="guest-agent-probe-classic-only"></a>Gast-Agent-Test (nur klassisch)
+#### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
+
+```json
+    {
+      "name": "http",
+      "properties": {
+        "protocol": "Http",
+        "port": 80,
+        "requestPath": "/",
+        "intervalInSeconds": 5,
+        "numberOfProbes": 2
+      },
+```
+
+```json
+    {
+      "name": "https",
+      "properties": {
+        "protocol": "Https",
+        "port": 443,
+        "requestPath": "/",
+        "intervalInSeconds": 5,
+        "numberOfProbes": 2
+      },
+```
+
+### <a name="guestagent"></a>Gast-Agent-Test (nur klassisch)
 
 Clouddienstrollen (Workerrollen und Webrollen) verwenden standardmäßig einen Gast-Agent für die Testüberwachung.   Sie sollten dies als eine letzte Option erwägen.  Sie sollten einen Integritätstest immer explizit mit einem TCP- oder HTTP-Test definieren. Ein Gast-Agent-Test ist bei den meisten Anwendungsszenarien nicht so effektiv wie explizit definierte Tests.  
 
@@ -81,9 +138,9 @@ Wenn der Gast-Agent mit dem HTTP-Code 200 antwortet, sendet das Lastenausgleichs
 
 Wenn Sie eine Webrolle verwenden, wird der Websitecode in der Regel in „w3wp.exe“ ausgeführt. Dieses Programm wird nicht von der Azure-Fabric oder vom Gast-Agent überwacht. Fehler in „w3wp.exe“ (z. B. HTTP 500-Antworten) werden dem Gast-Agent nicht gemeldet. Folglich nimmt der Lastenausgleich diese Instanz nicht aus der Rotation.
 
-## <a name="probe-health"></a>Testen der Integrität
+## <a name="probehealth"></a>Testen der Integrität
 
-TCP- und HTTP-Integritätstests werden in den folgenden Fällen als fehlerfrei eingestuft und markieren die Rolleninstanz als fehlerfrei:
+TCP-, HTTP- und HTTPS-Integritätstests werden in den folgenden Fällen als fehlerfrei eingestuft und markieren die Rolleninstanz als fehlerfrei:
 
 * Der Integritätstest ist beim ersten Mal, wenn der virtuelle Computer gestartet wird, erfolgreich.
 * Der Wert für „SuccessFailCount“ (oben beschrieben) definiert die Anzahl erfolgreicher Tests, die erforderlich sind, um die Rolleninstanz als fehlerfrei zu markieren. Wenn eine Rolleninstanz entfernt wurde, muss die Anzahl der erfolgreichen, aufeinanderfolgenden Tests gleich oder größer sein als der Wert von SuccessFailCount, damit die Rolleninstanz als aktiv markiert wird.
@@ -122,7 +179,6 @@ Das UDP ist verbindungslos und es werden kein Flusszustände für das UDP nachve
 
 Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, werden alle vorhandenen UDP-Flows für Load Balancer Basic und Standard beendet.
 
-
 ## <a name="probesource"></a>Quell-IP-Adresse von Tests
 
 Bei allen Lastenausgleichs-Integritätstests lautet die Quell-IP-Adresse 168.63.129.16.  Wenn Sie Ihre eigenen IP-Adressen in Azure Virtual Network verwenden, ist gewährleistet, dass diese Quell-IP-Adresse für Integritätstests eindeutig ist, da sie global für Microsoft reserviert ist.  Diese Adresse ist in allen Regionen identisch und wird nicht geändert. Dies dürfte kein Sicherheitsrisiko darstellen, da nur die interne Azure-Plattform ein Paket von dieser IP-Adresse senden kann. 
@@ -137,17 +193,18 @@ Wenn Sie über mehrere Schnittstellen auf dem virtuellen Computer verfügen, mü
 
 ## <a name="monitoring"></a>Überwachung
 
-Der [Load Balancer Standard](load-balancer-standard-overview.md) stellt Integritätsteststatus als mehrdimensionale Metriken pro Instanz über Azure Monitor zur Verfügung.
+Öffentliche und interne [Load Balancer Standard](load-balancer-standard-overview.md) stellen pro Endpunkt und Back-End-Instanz den Integritätsteststatus als mehrdimensionale Metriken über Azure Monitor bereit. Diese können dann von anderen Azure-Diensten oder Anwendungen von Drittanbietern genutzt werden. 
 
-Load Balancer Basic macht Integritätsteststatus pro Back-End-Pool mithilfe von Log Analytics verfügbar.  Dies ist nur für öffentliche Load Balancer Basic-Instanzen, aber nicht für interne Load Balancer Basic-Instanzen verfügbar.  Mit [Log Analytics](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
-
+Der öffentliche Load Balancer Basic stellt den Integritätsteststatus zusammengefasst pro Back-End-Pool über Log Analytics bereit.  Dies steht für interne Load Balancer Basic nicht zur Verfügung.  Mit [Log Analytics](load-balancer-monitor-log.md) können Sie den Testintegritätsstatus und die Testanzahl für den öffentlichen Lastenausgleich überprüfen. Die Protokollierung kann mit Power BI oder Azure Operational Insights verwendet werden, um Statistiken zum Integritätsstatus des Lastenausgleichs bereitzustellen.
 
 ## <a name="limitations"></a>Einschränkungen
 
--  HTTP-Integritätstests unterstützen nicht TLS (HTTPS).  Verwenden Sie stattdessen einen TCP-Test am Port 443.
+-  HTTPS-Tests bieten keine Unterstützung für die gegenseitige Authentifizierung mit einem Clientzertifikat.
+-  Das SDK und PowerShell unterstützen zurzeit keine HTTPS-Tests.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Weitere Informationen zum [Load Balancer Standard](load-balancer-standard-overview.md).
 - [Schnellstart: Erstellen eines öffentlichen Lastenausgleichs im Ressourcen-Manager mit PowerShell](load-balancer-get-started-internet-arm-ps.md)
-- [REST-API für Integritätstests](https://docs.microsoft.com/en-us/rest/api/load-balancer/loadbalancerprobes/get)
-
+- [REST-API für Integritätstests](https://docs.microsoft.com/rest/api/load-balancer/loadbalancerprobes/)
+- Anfordern neuer Integritätstestfunktionen mit [Uservoice von Load Balancer](https://aka.ms/lbuservoice)

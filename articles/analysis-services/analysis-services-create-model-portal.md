@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441674"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145849"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Erstellen eines Modells im Azure-Portal
 
@@ -23,9 +23,10 @@ Beachten Sie, dass der Web-Designer eine **Vorschauversion** ist. Die Funktional
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-- Ein Azure Analysis Services-Server auf der Ebene „Standard“ oder „Developer“. Neue, mit dem Web-Designer erstellte Modelle, sind DirectQuery, die nur von diesen Ebenen unterstützt werden.
+- Ihr Azure Analysis Services-Server muss auf der Ebene „Standard“ oder „Developer“ ausgeführt werden. Neue, mit dem Web-Designer erstellte Modelle, sind DirectQuery, die nur von diesen Ebenen unterstützt werden.
 - Eine Azure SQL-Datenbank, Azure SQL Data Warehouse oder eine Power BI Desktop-Datei (.pbix) als Datenquelle. Neue Modelle, die anhand von Power BI Desktop-Dateien erstellt wurden, unterstützen Azure SQL-Datenbank und Azure SQL Data Warehouse.
 - Ein SQL Server-Konto und -Kennwort für das Herstellen einer Verbindung mit Azure SQL-Datenbank oder Azure SQL Data Warehouse-Datenquellen.
+- Sie müssen über Serveradministratorberechtigungen verfügen, um ein neues Modell erstellen zu können. Datenbankadministratorrechte sind erforderlich, um ein Modell mithilfe des Designers bearbeiten und abfragen zu können.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 

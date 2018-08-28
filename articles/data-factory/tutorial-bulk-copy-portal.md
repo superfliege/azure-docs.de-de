@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 651f9ba71d08698c64f3e90de59b5f29a8afc77d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6d7b926a414c95d4e05834bafc91a2aa9c047fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433509"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41918622"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
 In diesem Tutorial wird das **Kopieren von mehreren Tabellen aus einer Azure SQL-Datenbank in Azure SQL Data Warehouse** veranschaulicht. Sie können dieses Muster auch in anderen Kopierszenarios anwenden. So können Sie z.B. Tabellen aus SQL Server/Oracle in Azure SQL-Datenbank/Data Warehouse/Azure Blob kopieren oder verschiedene Pfade aus Blob in Azure SQL-Datenbanktabellen.
@@ -239,7 +239,7 @@ Für **GetTableListAndTriggerCopyData** wird eine Liste mit Tabellen als Paramet
 
     ![Einstellungen für ForEach-Aktivitäten](./media/tutorial-bulk-copy-portal/for-each-activity-settings.png)
 
-    c. Reduzieren Sie auf der Seite **Dynamischen Inhalt hinzufügen** die Abschnitte „Systemvariablen“ und „Funktionen“, klicken Sie unter **Parameter** auf **tableList**. Das oberste Textfeld für Ausdrücke wird automatisch mit `@pipeline().parameter.tableList` gefüllt. Klicken Sie anschließend auf **Fertig stellen**. 
+    c. Reduzieren Sie auf der Seite **Dynamischen Inhalt hinzufügen** die Abschnitte „Systemvariablen“ und „Funktionen“, und klicken Sie unter **Parameter** auf **tableList**. Das oberste Textfeld für Ausdrücke wird automatisch mit `@pipeline().parameter.tableList` gefüllt. Klicken Sie anschließend auf **Fertig stellen**. 
 
     ![Foreach-Parameter-Generator](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -265,7 +265,7 @@ Für **GetTableListAndTriggerCopyData** wird eine Liste mit Tabellen als Paramet
     1. Klicken Sie auf das Eingabefeld für den Wert (VALUE) des Parameters „DWTableName“, wählen Sie unten die Option **Dynamischen Inhalt hinzufügen**, geben Sie den Ausdruck `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` als Skript ein, und wählen Sie **Fertig stellen**.
     1. Erweitern Sie die Option **Polybase Settings** (PolyBase-Einstellungen), und wählen Sie **Allow polybase** (PolyBase zulassen). 
     1. Deaktivieren Sie die Option **Use Type default** (Typstandard verwenden). 
-    1. Klicken Sie auf das Eingabefeld **Bereinigungsskript**, wählen Sie unten die Option **Dynamischen Inhalt hinzufügen**, geben Sie den folgenden Ausdruck als Skript ein, und wählen Sie **Fertig stellen**. 
+    1. Klicken Sie auf das Eingabefeld **Pre-copy Script** (Skript für Vorabkopieren), wählen Sie unten die Option **Dynamischen Inhalt hinzufügen**, geben Sie den folgenden Ausdruck als Skript ein, und wählen Sie **Fertig stellen**. 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]

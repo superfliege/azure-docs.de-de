@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.date: 05/02/2018
-ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 08/13/2018
+ms.openlocfilehash: 852840fc29589292e7a74390026b78b15f81e721
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735792"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920711"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -52,16 +52,20 @@ Für dieses Tutorial muss Data Lake Tools für Visual Studio installiert sein. B
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Herstellen einer Verbindung mit einem Azure Data Lake Analytics-Konto
 
 1. Öffnen Sie Visual Studio.
-2. Öffnen Sie Server-Explorer, indem Sie **Ansicht** > **Server-Explorer** auswählen.
-3. Klicken Sie mit der rechten Maustaste auf **Azure**. Wählen Sie dann **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und befolgen Sie die Anweisungen.
-4. Wählen Sie im Server-Explorer **Azure** > **Data Lake Analytics** aus. Es wird eine Liste Ihrer Data Lake Analytics-Konten angezeigt.
 
+2. Öffnen Sie Server-Explorer, indem Sie **Ansicht** > **Server-Explorer** auswählen.
+
+3. Klicken Sie mit der rechten Maustaste auf **Azure**. Wählen Sie dann **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und befolgen Sie die Anweisungen.
+
+4. Wählen Sie im Server-Explorer **Azure** > **Data Lake Analytics** aus. Es wird eine Liste Ihrer Data Lake Analytics-Konten angezeigt.
 
 ## <a name="write-your-first-u-sql-script"></a>Schreiben Ihres ersten U-SQL-Skripts
 
 Der folgende Text ist ein einfaches U-SQL-Skript. Es definiert ein kleines Dataset und schreibt dieses Dataset als Datei mit dem Namen `/data.csv` in die Standardinstanz von Data Lake Store.
 
 ```
+USE DATABASE master;
+USE SCHEMA dbo;
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -74,7 +78,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-### <a name="submit-a-data-lake-analytics-job"></a>Übermitteln eines Data Lake Analytics-Auftrags
+## <a name="submit-a-data-lake-analytics-job"></a>Übermitteln eines Data Lake Analytics-Auftrags
 
 1. Wählen Sie **Datei** > **Neu** > **Projekt**.
 
@@ -87,31 +91,35 @@ OUTPUT @a
     ![Visual Studio-U-SQL-Projekt senden](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
 
 5. Wählen Sie in der linken oberen Ecke des Fensters **Script.usql** die Option **Senden** aus.
-6. Überprüfen Sie das **Analytics-Konto**, und wählen Sie dann **Senden** aus. Die Sendeergebnisse sind nach Abschluss der Übermittlung im Ergebnisfenster der Data Lake-Tools für Visual Studio verfügbar.
 
-    ![Visual Studio-U-SQL-Projekt senden](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
-7. Um den aktuellen Auftragsstatus anzuzeigen und den Bildschirm zu aktualisieren, klicken Sie auf **Aktualisieren**. Wenn der Auftrag erfolgreich ist, werden **Auftragsdiagramm**, **Metadatenvorgänge**, **Zustandsverlauf** und **Diagnose** angezeigt:
+6. Nach der Auftragsübermittlung wird die Registerkarte **Auftragsansicht** mit dem Auftragsstatus geöffnet. Um den aktuellen Auftragsstatus anzuzeigen und den Bildschirm zu aktualisieren, klicken Sie auf **Aktualisieren**.
 
     ![U-SQL Visual Studio Data Lake Analytics-Diagramm zur Auftragsleistung](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
    * **Auftragszusammenfassung** enthält die Zusammenfassung des Auftrags.   
-   * **Auftragsdetails** zeigt ausführlichere Informationen zum Auftrag an, einschließlich Skript, Ressourcen und Scheitelpunkten.
    * **Auftragsdiagramm** visualisiert den Fortschritt des Auftrags.
    * **Metadatenvorgänge** zeigt alle Aktionen, die auf den U-SQL-Katalog ausgeführt wurden.
    * **Daten** zeigt alle Eingaben und Ausgaben.
+   * Unter **State History** (Statusverlauf) werden die Zeitachse und Statusdetails angezeigt.
+   * Unter **AU Analysis** (AU-Analyse) sehen Sie, wie viele AUs im Auftrag verwendet wurden, und Sie können Simulationen verschiedener AU-Zuordnungsstrategien erkunden.
    * **Diagnose** enthält eine erweiterte Analyse für die Optimierung der Ausführung und Leistung des Auftrags.
 
-### <a name="to-check-job-state"></a>So überprüfen Sie den Auftragsstatus
+## <a name="check-job-status"></a>Überprüfen des Auftragsstatus
 
-1. Wählen Sie im Server-Explorer **Azure** > **Data Lake Analytics** aus. 
+1. Wählen Sie im Server-Explorer **Azure** > **Data Lake Analytics** aus.
+
 2. Erweitern Sie den Namen des Azure Data Lake Analytics-Kontos.
+
 3. Doppelklicken Sie auf **Aufträge**.
+
 4. Wählen Sie den Auftrag aus, den Sie zuvor gesendet haben.
 
-### <a name="to-see-the-output-of-a-job"></a>So zeigen Sie die Ausgabe eines Auftrags an
+## <a name="see-the-job-output"></a>Anzeigen der Auftragsausgabe
 
 1. Navigieren Sie im Server-Explorer zu dem Auftrag, den Sie gesendet haben.
+
 2. Klicken Sie auf die Registerkarte **Daten** .
+
 3. Wählen Sie auf der Registerkarte **Auftragsausgaben** die Datei `"/data.csv"` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

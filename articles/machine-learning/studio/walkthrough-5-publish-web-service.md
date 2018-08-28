@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
-ms.openlocfilehash: 7a0dc7e92df342789d2c498479aa54b94070c9f4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 436656195e00311dd350a5526b01fffa56ac02ca
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835942"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246532"
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
 Dies ist der fünfte Schritt der exemplarischen Vorgehensweise zum [Predictive Analytics-Lösung in Azure Machine Learning](walkthrough-develop-predictive-solution.md)
@@ -106,6 +106,7 @@ Unser Experiment sollte nun wie folgt aussehen:
 > 
 > Es stimmt zwar, dass der Dienst die Originalkreditkartendaten nicht benötigt. Er benötigt aber das Schema für diese Daten, darunter Angaben zur Anzahl der vorhandenen Spalten, und welche Spalten numerisch sind. Diese Schemainformationen sind erforderlich, um die Benutzerdaten zu interpretieren. Wir lassen diese Komponenten verbunden, damit das Bewertungsmodul über das Datasetschema verfügt, wenn der Dienst ausgeführt wird. Es werden nicht die Daten verwendet, sondern nur das Schema.  
 > 
+>Es ist wichtig zu beachten, dass das erwartete Schema aus der Webeingabe auch eine Spalte mit der Bezeichnung erwartet, wenn Ihr ursprüngliches Dataset die Bezeichnung enthielt! Eine Umgehung dieses Problems besteht darin, die Bezeichnung und alle anderen Daten zu entfernen, die sich im Trainingsdataset befanden, jedoch nicht in den Webeingaben enthalten sein werden, bevor Sie die Webeingabe und das Trainingsdataset in einem allgemeinen Modul verbinden. 
 > 
 
 Führen Sie das Experiment ein letztes Mal aus (klicken Sie auf **Run**). Wenn Sie überprüfen möchten, ob das Modell noch funktioniert, klicken Sie mit der rechten Maustaste auf die Ausgabe des Moduls [Score Model][score-model] und wählen **View Results**. Sie sehen, dass die Originaldaten zusammen mit dem Wert für das Kreditrisiko („Bewertete Beschriftungen“)' und dem Bewertungswahrscheinlichkeitswert („Bewertete Wahrscheinlichkeiten“) angezeigt werden. 

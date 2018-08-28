@@ -1,26 +1,23 @@
 ---
 title: Azure Active Directory-Anwendungsproxy und Tableau | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie mithilfe des Azure Active Directory-Anwendungsproxys (Azure AD) Remotezugriff für Ihre Tableau-Bereitstellung zur Verfügung gestellt werden kann.  zu erstellen und zu verwalten.
+description: In diesem Artikel erfahren Sie, wie mithilfe des Azure Active Directory-Anwendungsproxys (Azure AD) Remotezugriff für Ihre Tableau-Bereitstellung zur Verfügung gestellt werden kann.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7cace1af527c1c7c80bf0e23f7a88aa9ac9f9d03
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a68b0465acdb416cd953e22d7f024eb399c94493
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365021"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246469"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-Anwendungsproxy und Tableau 
 
@@ -35,19 +32,10 @@ Bei dem Szenario in diesem Artikel wird davon ausgegangen, dass folgende Vorauss
 - Ein [Anwendungsproxyconnector](application-proxy-enable.md) wurde installiert. 
 
  
-
 ## <a name="enabling-application-proxy-for-tableau"></a>Aktivieren des Anwendungsproxys für Tableau 
 
-Wenn Sie den Anwendungsproxy für Tableau verwenden möchten, müssen Sie eine E-Mail an [aadapfeedback@microsoft.com](mailto:aadapfeedback@microsoft.com) senden, um die Aktivierung dieses Szenarios zu veranlassen.
-Geben Sie in Ihrer E-Mail Folgendes an:
+Der Anwendungsproxy unterstützt den OAuth 2.0 Grant Flow, der für das ordnungsgemäße Funktionieren von Tableau erforderlich ist. Dies bedeutet, dass keine besonderen Schritte mehr erforderlich sind, um diese Anwendung zu aktivieren, außer der Konfiguration durch die folgenden Veröffentlichungsschritte.
 
--   „Aktivierung des Anwendungsproxys für Tableau“ als Betreff
--   Ihre Mandanten-ID im Text    
-
-Sie erhalten eine Bestätigung, sobald Sie die Anwendung verwenden können. Während Sie auf die Bestätigung warten, können Sie die Konfigurationen fertigstellen.
-
-
- 
 
 ## <a name="publish-your-applications-in-azure"></a>Veröffentlichen Ihrer Anwendungen in Azure 
 

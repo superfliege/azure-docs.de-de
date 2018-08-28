@@ -2,18 +2,17 @@
 title: Erstellen eines IoT Hubs über das Azure-Portal | Microsoft Docs
 description: Erstellen, Verwalten und Löschen von Azure IoT Hubs über das Azure-Portal. Enthält Informationen zu Tarifen, Skalierung, Sicherheit und die Messagingkonfiguration.
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: dobett
-ms.openlocfilehash: ca0eff415c4ba0e887c3999e7a03e3c4fa1cc156
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b03ae434e93dbab45235fe67c499497e1257064
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635932"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145421"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>Erstellen eines IoT Hubs über das Portal
 
@@ -36,9 +35,10 @@ Sie können in den folgenden Bereichen im Portal nach dem IoT Hub-Dienst suchen:
 Sie können einen IoT Hub mit den folgenden Methoden erstellen:
 
 * Mit der Option **+ Neu** wird das Blatt geöffnet, das im folgenden Screenshot gezeigt wird. Beim Erstellen des IoT Hubs mit dieser Methode gehen Sie genauso vor wie beim Erstellen über den Marketplace.
+
 * Wählen Sie im Marketplace **Erstellen**, um das im folgenden Screenshot gezeigte Blatt zu öffnen.
 
-In den folgenden Abschnitten werden die verschiedenen Schritte zum Erstellen von IoT Hub beschrieben:
+In den folgenden Abschnitten werden die verschiedenen Schritte zum Erstellen eines IoT Hubs beschrieben.
 
 ### <a name="choose-the-name-of-the-iot-hub"></a>Auswählen des Namen des IoT Hubs
 
@@ -62,7 +62,7 @@ Sie können die Anzahl der Partitionen für einen IoT Hub ändern. Die Standarda
 
 Sie müssen nicht explizit eine leere Ressourcengruppe erstellen. Beim Erstellen einer Ressource können Sie entweder eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden.
 
-![][5]
+![Screenshot: Erstellen eines Hubs im Azure-Portal](./media/iot-hub-create-through-portal/location1.png)
 
 ### <a name="choose-subscription"></a>Auswählen eines Abonnements
 
@@ -79,10 +79,11 @@ Wenn alle vorherigen Schritte abgeschlossen sind, können Sie IoT Hub erstellen.
 Die Erstellung von IoT Hub kann einige Minuten in Anspruch nehmen, da es etwas dauert, bis die Back-End-Bereitstellung auf den jeweiligen Standortservern ausgeführt wird.
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>Ändern der Einstellungen des IoT Hubs
+<!--robinsh these screenshots are out of date -->
 
 Sie können die Einstellungen für einen IoT Hub nach dessen Erstellung im Blatt „IoT Hub“ ändern.
 
-![][8]
+![Screenshot: Einstellungen für den IoT Hub](./media/iot-hub-create-through-portal/portal-settings.png)
 
 **Richtlinien für gemeinsamen Zugriff**: Diese Richtlinien definieren die Berechtigungen für Geräte und Dienste zum Herstellen einer Verbindung mit dem IoT Hub. Sie finden diese Richtlinien, indem Sie unter **Allgemein** auf **Richtlinien für gemeinsamen** Zugriff klicken. Auf diesem Blatt können Sie vorhandene Richtlinien ändern oder eine neue Richtlinie hinzufügen.
 
@@ -96,19 +97,20 @@ Sie können die Einstellungen für einen IoT Hub nach dessen Erstellung im Blatt
 
 * Klicken Sie auf **Erstellen** , um der vorhandenen Liste diese neu erstellte Richtlinie hinzuzufügen.
 
-![][10]
+   ![Screenshot: Hinzufügen einer SAS-Richtlinie](./media/iot-hub-create-through-portal/shared-access-policies.png)
 
 ## <a name="endpoints"></a>Endpunkte
 
 Klicken Sie auf **Endpunkte**, um eine Liste der Endpunkte für den IoT-Hub anzuzeigen, den Sie ändern. Es gibt zwei Typen von Endpunkten: Endpunkte, die in den IoT-Hub integriert sind, und Endpunkte, die Sie dem IoT-Hub nach seiner Erstellung hinzufügen.
 
-![][11]
+![Screenshot: Hinzufügen eines Endpunkts](./media/iot-hub-create-through-portal/messaging-settings.png)
 
 ### <a name="built-in-endpoints"></a>Integrierte Endpunkte
 
 Es gibt zwei integrierte Endpunkte: **Cloud-zu-Gerät-Feedback** und **Ereignisse**.
 
 * Einstellungen für **Cloud-zu-Gerät-Feedback**: Diese Einstellung hat zwei untergeordnete Einstellungen: **Cloud-zu-Gerät-TTL** (Time to Live, Gültigkeitsdauer) und **Aufbewahrungszeit** (in Stunden) für die Nachrichten. Bei der ersten Erstellung eines IoT-Hubs ist für beide Einstellungen ein Standardwert von einer Stunde festgelegt. Zum Anpassen dieser Einstellungen bewegen Sie die Schieberegler oder geben die entsprechenden Werte ein.
+
 * Einstellungen für **Ereignisse**: Für diese Einstellung sind verschiedene Untereinstellungen verfügbar. Manche davon sind schreibgeschützt. Diese Einstellungen werden in der folgende Liste beschrieben:
 
   * **Partitionen**: Beim Erstellen des IoT-Hubs wird ein Standardwert festgelegt. Sie können die Anzahl von Partitionen über diese Einstellung ändern.
@@ -126,19 +128,19 @@ Es gibt zwei integrierte Endpunkte: **Cloud-zu-Gerät-Feedback** und **Ereigniss
 
 Sie können Ihrem IoT-Hub über das Portal benutzerdefinierte Endpunkte hinzufügen. Klicken Sie auf dem Blatt **Endpunkte** oben auf **Hinzufügen**, um das Blatt **Endpunkt hinzufügen** zu öffnen. Geben Sie die erforderlichen Informationen ein, und klicken Sie dann auf **OK**. Ihr benutzerdefinierter Endpunkt wird nun auf dem Hauptblatt für **Endpunkte** aufgeführt.
 
-![][13]
+![Screenshot: Erstellen eines benutzerdefinierten Endpunkts](./media/iot-hub-create-through-portal/endpoint-creation.png)
 
-In [Referenz: IoT Hub-Endpunkte][lnk-devguide-endpoints] erfahren Sie mehr über benutzerdefinierte Endpunkte.
+In [Referenz: IoT Hub-Endpunkte]( iot-hub-devguide-endpoints.md) erfahren Sie mehr über benutzerdefinierte Endpunkte.
 
 ## <a name="routes"></a>Routen
 
 Klicken Sie auf **Routen**, um zu verwalten, wie IoT Hub Ihre D2C-Nachrichten sendet.
 
-![][14]
+![Screenshot: Hinzufügen einer neuen Route](./media/iot-hub-create-through-portal/routes-list.png)
 
 Sie können Ihrem IoT-Hub Routen hinzufügen, indem Sie am oberen Rand des Blatts **Routen*** auf **Hinzufügen** klicken, die erforderlichen Informationen eingeben und auf **OK** klicken. Ihre Route wird dann auf dem Hauptblatt **Routen** aufgeführt. Sie können eine Route bearbeiten, indem Sie in der Liste der Routen darauf klicken. Um eine Route zu aktivieren, klicken sie in der Liste der Routen darauf, und legen Sie den Schalter **Aktiviert** auf **Aus** fest. Um die Änderung zu speichern, klicken Sie am unteren Rand des Blatts auf **OK**.
 
-![][15]
+![Screenshot: Bearbeiten einer neuen Routingregel](./media/iot-hub-create-through-portal/route-edit.png)
 
 ## <a name="delete-the-iot-hub"></a>Löschen des IoT Hubs
 
@@ -148,31 +150,12 @@ Klicken Sie zum Suchen des zu löschenden IoT Hubs auf **Durchsuchen**, und wäh
 
 Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
-* [Massenverwaltung von IoT-Geräten][lnk-bulk]
-* [IoT Hub-Metriken][lnk-metrics]
-* [Vorgangsüberwachung][lnk-monitor]
+* [Massenverwaltung von IoT-Geräten](iot-hub-bulk-identity-mgmt.md)
+* [IoT Hub-Metriken](iot-hub-metrics.md)
+* [Vorgangsüberwachung](iot-hub-operations-monitoring.md)
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
-* [Deploy Azure IoT Edge on a simulated device in Linux - preview][lnk-iotedge] (Bereitstellen von Azure IoT Edge auf einem simulierten Gerät in Linux – Vorschauversion)
-* [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
-
-[4]: ./media/iot-hub-create-through-portal/create-iothub.png
-[5]: ./media/iot-hub-create-through-portal/location1.png
-[8]: ./media/iot-hub-create-through-portal/portal-settings.png
-[10]: ./media/iot-hub-create-through-portal/shared-access-policies.png
-[11]: ./media/iot-hub-create-through-portal/messaging-settings.png
-[12]: ./media/iot-hub-create-through-portal/pricing-error.png
-[13]: ./media/iot-hub-create-through-portal/endpoint-creation.png
-[14]: ./media/iot-hub-create-through-portal/routes-list.png
-[15]: ./media/iot-hub-create-through-portal/route-edit.png
-
-[lnk-bulk]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-securing]: iot-hub-security-ground-up.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
+* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Schützen Ihrer IoT-Lösung von Grund auf](../iot-fundamentals/iot-security-ground-up.md)

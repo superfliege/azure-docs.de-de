@@ -15,21 +15,21 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 81cd4d247ba6153fd205ead36f29a52b420bb427
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: dc105c02354e0e83c4f9a1bad7c94a98643effd0
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502827"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41919389"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Tutorial: Bereitstellen einer Service Fabric-Anwendung in einem Cluster in Azure
 
-Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie eine Azure Service Fabric-Anwendung für einen neuen Cluster in Azure bereitstellen.
+Dieses Tutorial ist der zweite Teil einer Reihe. Sie lernen, wie Sie eine Azure Service Fabric-Anwendung in einem neuen Cluster in Azure bereitstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Partyclusters
-> * Bereitstellen einer Anwendung in einem Remotecluster mithilfe von Visual Studio
+> * Bereitstellen einer Anwendung in einem Remotecluster mit Visual Studio
 
 In dieser Tutorialreihe lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -49,10 +49,10 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 ## <a name="download-the-voting-sample-application"></a>Herunterladen der Beispielanwendung „Voting“
 
-Falls Sie die Beispielanwendung „Voting“ aus [Teil 1 dieser Tutorialreihe](service-fabric-tutorial-create-dotnet-app.md) nicht erstellt haben, können Sie sie herunterladen. Führen Sie in einem Befehlsfenster den folgenden Befehl aus, um das Beispiel-App-Repository auf Ihren lokalen Computer zu klonen.
+Falls Sie die Beispielanwendung „Voting“ aus [Teil 1 dieser Tutorialreihe](service-fabric-tutorial-create-dotnet-app.md) nicht erstellt haben, können Sie sie herunterladen. Führen Sie in einem Befehlsfenster den folgenden Code aus, um das Beispiel-App-Repository auf Ihrem lokalen Computer zu klonen.
 
 ```git
-git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
+git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart 
 ```
 
 ## <a name="publish-to-a-service-fabric-cluster"></a>Veröffentlichen in einem Service Fabric-Cluster
@@ -61,18 +61,18 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 In diesem Tutorial stehen Ihnen zwei Optionen zur Verfügung, um die Voting-Anwendung mithilfe von Visual Studio in einem Service Fabric-Cluster bereitzustellen:
 
-* Verwenden Sie einen Testpartycluster als Veröffentlichungsziel.
-* Verwenden Sie einen bereits vorhandenen Cluster aus Ihrem Abonnement als Veröffentlichungsziel.  Sie können Service Fabric-Cluster über das [Azure-Portal](https://portal.azure.com), über [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md), mithilfe von [Azure CLI](./scripts/cli-create-cluster.md)-Skripts oder mithilfe einer [Azure Resource Manager-Vorlage](service-fabric-tutorial-create-vnet-and-windows-cluster.md) bereitstellen.
+* Verwenden Sie einen Testpartycluster als Veröffentlichungsziel. 
+* Verwenden Sie einen bereits vorhandenen Cluster aus Ihrem Abonnement als Veröffentlichungsziel. Sie können Service Fabric-Cluster über das [Azure-Portal](https://portal.azure.com), über [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md), mithilfe von [Azure CLI](./scripts/cli-create-cluster.md)-Skripts oder mithilfe einer [Azure Resource Manager-Vorlage](service-fabric-tutorial-create-vnet-and-windows-cluster.md) bereitstellen.
 
 > [!NOTE]
-> Viele Dienste verwenden den Reverseproxy, um miteinander zu kommunizieren. Bei Clustern, die über Visual Studio erstellt werden, sowie bei Partyclustern ist der Reverseproxy standardmäßig aktiviert.  Bei Verwendung eines bereits vorhandenen Clusters müssen Sie den [Reverseproxy im Cluster aktivieren](service-fabric-reverseproxy-setup.md#).
+> Viele Dienste verwenden den Reverseproxy, um miteinander zu kommunizieren. Bei Clustern, die über Visual Studio erstellt werden, sowie bei Partyclustern ist der Reverseproxy standardmäßig aktiviert. Bei Verwendung eines bereits vorhandenen Clusters müssen Sie den [Reverseproxy im Cluster aktivieren](service-fabric-reverseproxy-setup.md#).
 
 
-### <a name="find-the-votingweb-service-endpoint-for-your-azure-subscription"></a>Suchen des VotingWeb-Dienstendpunkts für Ihr Azure-Abonnement
+### <a name="find-the-voting-web-service-endpoint-for-your-azure-subscription"></a>Suchen des Voting-Webdienstendpunkts für Ihr Azure-Abonnement
 
-Wenn Sie die Voting-Anwendung in Ihrem eigenen Azure-Abonnement veröffentlichen möchten, suchen Sie nach dem Endpunkt des Front-End-Webdiensts. Bei Verwendung eines Partyclusters ist der vom Voting-Beispiel verwendete Port 8080 automatisch geöffnet und muss nicht im Lastenausgleich des Partyclusters konfiguriert werden.
+Wenn Sie die Voting-Anwendung in Ihrem eigenen Azure-Abonnement veröffentlichen möchten, suchen Sie nach dem Endpunkt des Front-End-Webdiensts. Stellen Sie bei Verwendung eines Partyclusters eine Verbindung mit Port 8080 her. Verwenden Sie dazu das automatisch geöffnete Voting-Beispiel. Sie müssen es nicht im Lastenausgleich des Partyclusters konfigurieren.
 
-Der Front-End-Webdienst lauscht an einem bestimmten Port.  Bei der Bereitstellung eines Clusters in Azure durch die Anwendung werden sowohl der Cluster als auch die Anwendung hinter einem Azure-Lastenausgleichsmodul ausgeführt.  Der Anwendungsport muss mithilfe einer Regel im Azure Load Balancer für diesen Cluster geöffnet werden, damit eingehender Datenverkehr den Webdienst erreichen kann.  Den Port (z.B. 8080) finden Sie in der Datei *VotingWeb/PackageRoot/ServiceManifest.xml* im **Endpoint**-Element:
+Der Front-End-Webdienst lauscht an einem bestimmten Port. Bei der Bereitstellung eines Clusters in Azure durch die Anwendung werden sowohl der Cluster als auch die Anwendung hinter einem Azure-Lastenausgleichsmodul ausgeführt. Der Anwendungsport muss mithilfe eine Regel im Azure-Lastenausgleich für den Cluster geöffnet werden. Der offene Port sendet eingehenden Datenverkehr an den Webdienst. Den Port finden Sie in der Datei **VotingWeb/PackageRoot/ServiceManifest.xml** im **Endpoint**-Element. Ein Beispiel ist Port 8080.
 
 ```xml
 <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="8080" />
@@ -83,19 +83,19 @@ Der Front-End-Webdienst lauscht an einem bestimmten Port.  Bei der Bereitstellun
 ### <a name="join-a-party-cluster"></a>Beitreten zu einem Partycluster
 
 > [!NOTE]
-> Falls Sie die Anwendung in Ihrem eigenen Cluster innerhalb eines Azure-Abonnements veröffentlichen möchten, fahren Sie mit „Veröffentlichen der Anwendung mit Visual Studio“ im nächsten Abschnitt fort.
+>  Falls Sie die Anwendung in Ihrem eigenen Cluster innerhalb eines Azure-Abonnements veröffentlichen möchten, fahren Sie mit dem Abschnitt [Veröffentlichen der Anwendung mit Visual Studio](#publish-the-application-by-using-visual-studio) fort. 
 
-Partycluster sind kostenlose, zeitlich begrenzte Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team ausgeführt werden, in denen jeder Benutzer Anwendungen bereitstellen und mehr über die Plattform erfahren kann. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit.
+Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet und vom Service Fabric-Team betrieben werden. Jeder kann Anwendungen bereitstellen und sich mit der Plattform vertraut machen. Der Cluster verwendet ein einzelnes selbstsigniertes Zertifikat für Knoten-zu-Knoten- und Client-zu-Knoten-Sicherheit.
 
 Melden Sie sich an, und [treten Sie einem Windows-Cluster bei](http://aka.ms/tryservicefabric). Klicken Sie auf den Link **PFX**, um das PFX-Zertifikat auf Ihren Computer herunterzuladen. Klicken Sie auf den Link **How to connect to a secure Party cluster?** (Herstellen einer Verbindung mit einem sicheren Partycluster), und kopieren Sie das Zertifikatkennwort. Das Zertifikat, das Zertifikatkennwort und der Wert für **Verbindungsendpunkt** werden in den folgenden Schritten verwendet.
 
 ![PFX-Zertifikat und Verbindungsendpunkt](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
 
 > [!Note]
-> Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Sollte bei der Registrierung für einen Partycluster ein Fehler auftreten, können Sie eine Weile warten und es dann erneut versuchen. Alternativ können Sie die Schritte aus dem [Tutorial zum Bereitstellen einer .NET-App](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) ausführen, um in Ihrem Azure-Abonnement einen Service Fabric-Cluster zu erstellen und die Anwendung darin bereitzustellen. Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
+> Pro Stunde ist eine begrenzte Anzahl von Partyclustern verfügbar. Wenn Sie bei der Registrierung für einen Partycluster einen Fehler erhalten, warten Sie einen Moment, und versuchen Sie es erneut. Oder führen Sie die Schritte im Tutorial [Bereitstellen einer Service Fabric-Anwendung in einem Cluster in Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application) aus, um einen Service Fabric-Cluster in Ihrem Azure-Abonnement zu erstellen und die Anwendung darin bereitzustellen. Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 >
 
-Installieren Sie das PFX-Zertifikat auf Ihrem Windows-Computer im Zertifikatspeicher *CurrentUser\My*.
+Installieren Sie das PFX-Zertifikat auf Ihrem Windows-Computer im Zertifikatspeicher **CurrentUser\My**.
 
 ```powershell
 PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
@@ -108,38 +108,32 @@ Thumbprint                                Subject
 3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
 ```
 
-Notieren Sie sich den Fingerabdruck für einen späteren Schritt.
+Notieren Sie sich den Fingerabdruck für den nächsten Schritt.
 
 > [!Note]
-> Der Web-Front-End-Dienst ist standardmäßig für das Lauschen auf eingehenden Datenverkehr an Port 8080 konfiguriert. Port 8080 ist im Partycluster geöffnet.  Wenn Sie den Anwendungsport ändern müssen, verwenden Sie einen der im Partycluster geöffneten Ports.
+> Der Web-Front-End-Dienst ist standardmäßig für das Lauschen auf eingehenden Datenverkehr an Port 8080 konfiguriert. Port 8080 ist im Partycluster geöffnet. Wenn Sie den Anwendungsport ändern müssen, verwenden Sie einen der im Partycluster geöffneten Ports.
 >
 
-### <a name="publish-the-application-using-visual-studio"></a>Veröffentlichen der Anwendung mit Visual Studio
+### <a name="publish-the-application-by-using-visual-studio"></a>Veröffentlichen der Anwendung mit Visual Studio
 
 Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio in einem Cluster bereitstellen.
 
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**. Wählen Sie **Veröffentlichen**. Das Dialogfeld **Veröffentlichen** wird angezeigt.
 
-2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters oder aus Ihrem Azure-Abonnement in das Feld **Verbindungsendpunkt**. Beispiel: `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**, und vergewissern Sie sich, dass die Werte für *FindValue* und *ServerCertThumbprint* dem Fingerabdruck des Zertifikats, das in einem früheren Schritt für einen Partycluster installiert wurde, oder dem Fingerabdruck des Zertifikats für Ihr Azure-Abonnement entsprechen.
+2. Kopieren Sie den **Verbindungsendpunkt** von der Seite des Partyclusters oder aus Ihrem Azure-Abonnement in das Feld **Verbindungsendpunkt**. Ein Beispiel ist `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Klicken Sie auf **Erweiterte Verbindungsparameter**.  Vergewissern Sie sich, dass die Werte für **FindValue** und **ServerCertThumbprint** dem Fingerabdruck des Zertifikats, das in einem früheren Schritt für einen Partycluster installiert wurde, oder dem Fingerabdruck des Zertifikats für Ihr Azure-Abonnement entsprechen.
 
-    ![Dialogfeld „Veröffentlichen“](./media/service-fabric-quickstart-dotnet/publish-app.png)
+    ![Veröffentlichen einer Service Fabric-Anwendung](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-    Jede Anwendung im Cluster muss einen eindeutigen Namen besitzen.  Bei Partyclustern handelt es sich jedoch um eine öffentliche, freigegebene Umgebung, und unter Umständen tritt in einer vorhandenen Anwendung ein Konflikt auf.  Kommt es zu einem Namenskonflikt, benennen Sie das Visual Studio-Projekt um, und stellen Sie es erneut bereit.
+    Jede Anwendung im Cluster muss einen eindeutigen Namen besitzen. Bei Partyclustern handelt es sich um eine öffentliche, freigegebene Umgebung, daher tritt unter Umständen in einer vorhandenen Anwendung ein Konflikt auf. Kommt es zu einem Namenskonflikt, benennen Sie das Visual Studio-Projekt um, und stellen Sie es erneut bereit.
 
-3. Klicken Sie auf **Veröffentlichen**.
+3. Wählen Sie **Veröffentlichen**.
 
-4. Öffnen Sie einen Browser, und geben Sie die Clusteradresse gefolgt von „:8080“ (oder einem anderen Port, sofern konfiguriert) ein, um Ihre Voting-Anwendung im Cluster abzurufen (Beispiel: `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`). Sie sollten jetzt sehen, dass die Anwendung im Cluster in Azure ausgeführt wird. Fügen Sie auf der Voting-Webseite Abstimmungsoptionen hinzu, löschen Sie Abstimmungsoptionen, und stimmen Sie für einzelne oder mehrere dieser Optionen ab.
+4. Öffnen Sie einen Browser, und geben Sie die Clusteradresse gefolgt von **:8080** ein, um die Voting-Anwendung im Cluster abzurufen. Oder geben Sie einen anderen Port ein, sofern einer konfiguriert ist. Ein Beispiel ist `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`. Sie sehen jetzt, dass die Anwendung im Cluster in Azure ausgeführt wird. Fügen Sie auf der Voting-Webseite Abstimmungsoptionen hinzu, löschen Sie Abstimmungsoptionen, und stimmen Sie für einzelne oder mehrere dieser Optionen ab.
 
-    ![Anwendungs-Front-End](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
+    ![Service Fabric-Beispiel „Voting“](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines Partyclusters
-> * Bereitstellen einer Anwendung in einem Remotecluster mithilfe von Visual Studio
 
 Fahren Sie mit dem nächsten Tutorial fort:
 > [!div class="nextstepaction"]

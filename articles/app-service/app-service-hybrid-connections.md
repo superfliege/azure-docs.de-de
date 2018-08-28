@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 07/26/2018
 ms.author: ccompy
-ms.openlocfilehash: 677642e4e97523ed71ff5857ae27263743dca535
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 69897e288a90a731d95db82d0ff978d776c12580
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
-ms.locfileid: "25990818"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145594"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen #
 
@@ -33,16 +33,14 @@ Das Feature Hybrid Connections besteht aus zwei ausgehenden Aufrufen von Azure S
 
 Über die beiden verknüpften Verbindungen verfügt Ihre App über einen TCP-Tunnel zu einer festen Host:Port-Kombination auf der anderen Seite des HCM. Die Verbindung verwendet zum Schutz TLS 1.2 und zur Authentifizierung/Autorisierung SAS-Schlüssel.    
 
-![Diagramm zum allgemeinen Ablauf bei Hybridverbindungen][1]
+![Allgemeines Flussdiagramm zu Hybridverbindungen][1]
 
 Wenn Ihre App eine DNS-Anforderung stellt, die mit einem konfigurierten Hybridverbindungsendpunkt übereinstimmt, wird der ausgehende TCP-Datenverkehr über die Hybridverbindung weitergeleitet.  
 
 > [!NOTE]
 > Sie sollten folglich versuchen, stets einen DNS-Namen für Ihre Hybridverbindung zu verwenden. Einige Clientsoftware führen keine DNS-Suche durch, wenn der Endpunkt stattdessen eine IP-Adresse verwendet.
 >
->
 
-Das Feature Hybrid Connections bietet zwei Typen: die neuen Hybrid Connections, die als Dienst im Rahmen von Azure Relay angeboten werden, und die älteren Hybrid Connections von BizTalk. Letztere werden im Portal als klassische Hybridverbindungen bezeichnet. Weiter unten in diesem Artikel finden Sie weitere Informationen hierzu.
 
 ### <a name="app-service-hybrid-connection-benefits"></a>Vorteile der App Service-Hybridverbindungen ###
 
@@ -58,27 +56,27 @@ Die Funktion für Hybridverbindungen bietet eine Reihe von Vorteilen wie etwa Fo
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>Einschränkungen bei Hybridverbindungen ###
 
-Bei Hybridverbindungen sind bestimmte Vorgänge und Funktionen nicht möglich. Hierzu zählt beispielsweise Folgendes:
+Die folgenden Aktionen sind beispielsweise mit Hybridverbindungen nicht möglich:
 
-- Einbindung eines Laufwerks
-- Verwendung von UDP
-- Zugriff auf TCP-basierte Dienste, die dynamische Ports verwenden, wie der passive Modus für FTP oder der erweiterte passive Modus
-- Unterstützung von LDAP, da UDP manchmal erforderlich ist
-- Unterstützung von Active Directory
+- Bereitstellen eines Laufwerks.
+- Verwenden von UDP.
+- Zugreifen auf TCP-basierte Dienste, die dynamische Ports verwenden, wie der passive Modus für FTP oder der erweiterte passive Modus.
+- Unterstützung von LDAP, weil UDP erforderlich sein kann.
+- Unterstützung von Active Directory, da der Domänenbeitritt eines App Service-Workers nicht möglich ist.
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Hinzufügen und Erstellen von Hybridverbindungen in Ihrer App ##
 
-Hybridverbindungen können über Ihre App Service-App im Azure-Portal oder über Azure Relay im Azure-Portal erstellt werden. Es wird empfohlen, Hybridverbindungen über die App Service-App zu erstellen, die Sie mit der Hybridverbindung verwenden möchten. Navigieren Sie zum Erstellen einer Hybridverbindung zum [Azure-Portal][portal], und wählen Sie Ihre App aus. Wählen Sie **Netzwerk** > **Endpunkte der Hybridverbindung konfigurieren** aus. In dieser Ansicht können Sie die Hybridverbindungen sehen, die für Ihre App konfiguriert sind.  
+Navigieren Sie zum Erstellen einer Hybridverbindung zum [Azure-Portal][portal], und wählen Sie Ihre App aus. Wählen Sie **Netzwerk** > **Endpunkte der Hybridverbindung konfigurieren** aus. Hier können Sie die Hybridverbindungen anzeigen, die für Ihre App konfiguriert sind.  
 
 ![Screenshot der Liste der Hybridverbindungen][2]
 
-Um eine neue Hybridverbindung hinzuzufügen, wählen Sie **Hybridverbindung hinzufügen** aus.  Es wird eine Liste der Hybridverbindungen, die Sie bereits erstellt haben, angezeigt. Um Ihrer App eine oder mehrere dieser Hybridverbindungen hinzuzufügen, markieren Sie diese und wählen anschließend **Ausgewählte Hybridverbindung hinzufügen** aus.  
+Um eine neue Hybridverbindung hinzuzufügen, wählen Sie **[+] Hybridverbindung hinzufügen** aus.  Es wird eine Liste der Hybridverbindungen angezeigt, die Sie bereits erstellt haben. Um Ihrer App eine oder mehrere dieser Hybridverbindungen hinzuzufügen, markieren Sie diese und wählen anschließend **Ausgewählte Hybridverbindung hinzufügen** aus.  
 
 ![Screenshot des Portals für Hybridverbindungen][3]
 
 Wenn Sie eine neue Hybridverbindung erstellen möchten, wählen Sie **Neue Hybridverbindung erstellen** aus. Geben Sie Folgendes an: 
 
-- Endpunktname
+- Hybridverbindungsname
 - Endpunkt-Hostname
 - Endpunktport
 - Zu verwendender Service Bus-Namespace
@@ -102,11 +100,7 @@ Sie können Hybridverbindungen nicht nur über das Portal Ihrer App erstellen, s
 
 ## <a name="hybrid-connections-and-app-service-plans"></a>Hybrid Connections und App Service-Pläne ##
 
-Das Feature Hybrid Connections ist nur in den Preis-SKUs Basic, Standard, Premium und Isolated verfügbar. Es gelten Beschränkungen, die am Tarif geknüpft sind.  
-
-> [!NOTE] 
-> Sie können neue Hybridverbindungen nur basierend auf Azure-Relay erstellen. Sie können keine neuen BizTalk-Hybridverbindungen erstellen.
->
+App Service-Hybridverbindungen sind nur in den Preis-SKUs Basic, Standard, Premium und Isolated verfügbar. Es gelten Beschränkungen, die am Tarif geknüpft sind.  
 
 | Tarif | Anzahl der im Plan verwendbaren Hybridverbindungen |
 |----|----|
@@ -115,7 +109,7 @@ Das Feature Hybrid Connections ist nur in den Preis-SKUs Basic, Standard, Premiu
 | Premium | 200 |
 | Isolated | 200 |
 
-Beachten Sie, dass der App Service-Plan auch zeigt, wie viele Hybridverbindungen verwendet werden und von welchen Apps.  
+Die Benutzeroberfläche des App Service-Plans zeigt auch, wie viele Hybridverbindungen verwendet werden und von welchen Apps.  
 
 ![Screenshot der Eigenschaften eines App Service-Plans][6]
 
@@ -123,13 +117,15 @@ Wählen Sie die Hybridverbindung aus, um Details anzuzeigen. Sie können alle In
 
 Es gilt eine Einschränkung für die Anzahl der Hybridverbindungs-Endpunkte, die in einem App Service-Plan verwendet werden können. Jede verwendete Hybridverbindung kann jedoch von einer beliebigen Anzahl von Apps in diesem Plan verwendet werden. Eine einzelne Hybridverbindung, die in fünf separaten Apps in einem App Service-Plan verwendet wird, zählt z.B. als eine Hybridverbindung.
 
-Es fallen zusätzliche Kosten für die Verwendung von Hybridverbindungen. Weitere Informationen finden Sie unter [Service Bus – Preise][sbpricing].
+### <a name="pricing"></a>Preise ###
+
+Zusätzlich zur SKU-Anforderung eines App-Service-Plans fallen zusätzliche Kosten für die Nutzung von Hybridverbindungen an. Für jeden Listener, der von einer Hybridverbindung verwendet wird, fällt eine Gebühr an. Der Listener ist der Hybridverbindungs-Manager. Wenn Sie fünf Hybridverbindungen verwenden, die von zwei Hybridverbindungs-Managern unterstützt werden, würde dies 10 Listener bedeuten. Weitere Informationen finden Sie unter [Service Bus – Preise][sbpricing].
 
 ## <a name="hybrid-connection-manager"></a>Hybrid Connection Manager ##
 
 Damit das Feature Hybrid Connections funktioniert, ist ein Relay-Agent in dem Netzwerk erforderlich, das Ihren Hybridverbindungs-Endpunkt hostet. Dieser Relay-Agent wird als Hybrid Connection Manager (HCM) bezeichnet. Zum Herunterladen von HCM wählen Sie in Ihrer App im [Azure-Portal][portal] die Option **Netzwerk** > **Endpunkte der Hybridverbindung konfigurieren** aus.  
 
-Dieses Tool wird unter Windows Server 2012 und höher ausgeführt. Nach der Installation wird HCM als Dienst ausgeführt, der basierend auf den konfigurierten Endpunkten eine Verbindung mit Azure Service Bus Relay herstellt. Bei den Verbindungen vom HCM handelt es sich um ausgehende Verbindungen mit Azure über Port 443.    
+Dieses Tool wird unter Windows Server 2012 und höher ausgeführt. HCM wird als Dienst ausgeführt und verbindet ausgehenden Datenverkehr mit Azure Relay über Port 443.  
 
 Sie können nach der Installation von HCM die Datei „HybridConnectionManagerUi.exe“ ausführen, um die Benutzeroberfläche für das Tool zu verwenden. Diese Datei befindet sich im Installationsverzeichnis des Hybridverbindungs-Managers. Unter Windows 10 können Sie auch einfach im Suchfeld nach *Hybridverbindungs-Manager-Benutzeroberfläche* suchen.  
 
@@ -148,7 +144,7 @@ So fügen Sie Ihrem HCM eine oder mehrere Hybridverbindungen hinzu:
 1. Wählen Sie die Hybridverbindungen aus, die der HCM weiterleiten soll.
 ![Screenshot von Hybridverbindungen][9]
 
-1. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern**aus.
 
 Es werden nun die Hybridverbindungen angezeigt, die Sie hinzugefügt haben. Sie können die konfigurierte Hybridverbindung auch auswählen, um Details anzuzeigen.
 
@@ -156,11 +152,9 @@ Es werden nun die Hybridverbindungen angezeigt, die Sie hinzugefügt haben. Sie 
 
 Damit der HCM die bei ihm konfigurierten Hybridverbindungen unterstützen kann, ist Folgendes erforderlich:
 
-- TCP-Zugriff auf Azure über die Ports 80 und 443
+- TCP-Zugriff auf Azure über Port 443.
 - TCP-Zugriff auf den Hybridverbindungs-Endpunkt
 - Möglichkeit für DNS-Suchvorgänge auf dem Endpunkthost und im Service Bus-Namespace
-
-HCM unterstützt sowohl neue Hybridverbindungen als auch die älteren BizTalk-Hybridverbindungen.
 
 > [!NOTE]
 > Azure-Relay nutzt Websockets für die Konnektivität. Diese Funktion ist nur für Windows Server 2012 oder höher verfügbar. Aus diesem Grund wird der HCM von Versionen vor Windows Server 2012 nicht unterstützt.
@@ -168,12 +162,62 @@ HCM unterstützt sowohl neue Hybridverbindungen als auch die älteren BizTalk-Hy
 
 ### <a name="redundancy"></a>Redundanz ###
 
-Jeder HCM kann mehrere Hybridverbindungen unterstützen. Darüber hinaus kann eine bestimmte Hybridverbindung durch mehrere HCMs unterstützt werden. Das Standardverhalten ist ein Weiterleiten von Datenverkehr über die konfigurierten HCMs für einen bestimmten Endpunkt. Wenn Sie Hochverfügbarkeit für Hybridverbindungen über Ihr Netzwerk wünschen, führen Sie mehrere HCMs auf unterschiedlichen Computern aus. 
+Jeder HCM kann mehrere Hybridverbindungen unterstützen. Darüber hinaus kann eine bestimmte Hybridverbindung durch mehrere HCMs unterstützt werden. Das Standardverhalten ist ein Weiterleiten von Datenverkehr über die konfigurierten HCMs für einen bestimmten Endpunkt. Wenn Sie Hochverfügbarkeit für Hybridverbindungen über Ihr Netzwerk wünschen, führen Sie mehrere HCMs auf unterschiedlichen Computern aus. Der Lastverteilungsalgorithmus, der vom Relaydienst verwendet wird, um Datenverkehr an die HCMs zu verteilen, weist nach dem Zufallsprinzip zu. 
 
 ### <a name="manually-add-a-hybrid-connection"></a>Manuelles Hinzufügen einer Hybridverbindung ###
 
-Damit ein Benutzer außerhalb Ihres Abonnements eine HCM-Instanz für eine bestimmte Hybridverbindung hosten kann, geben Sie für diesen die Gateway-Verbindungszeichenfolge für die Hybridverbindung frei. Diese können Sie in den Eigenschaften einer Hybridverbindung im [Azure-Portal][portal] sehen. Um diese Zeichenfolge zu verwenden, wählen Sie im HCM **Manuell eingeben** aus, und fügen Sie die Gateway-Verbindungszeichenfolge ein.
+Damit ein Benutzer außerhalb Ihres Abonnements eine HCM-Instanz für eine bestimmte Hybridverbindung hosten kann, geben Sie für diesen die Gateway-Verbindungszeichenfolge für die Hybridverbindung frei. Sie können die Gatewayverbindungszeichenfolge in den Eigenschaften einer Hybridverbindung im [Azure-Portal][portal] anzeigen. Um diese Zeichenfolge zu verwenden, wählen Sie im HCM **Manuell eingeben** aus, und fügen Sie die Gateway-Verbindungszeichenfolge ein.
 
+![Manuelles Hinzufügen einer Hybridverbindung][11]
+
+### <a name="upgrade"></a>Upgrade ###
+
+Es sind regelmäßige Updates für den Hybridverbindungs-Manager zum Beheben von Problemen oder Bereitstellen von Verbesserungen verfügbar. Wenn Upgrades veröffentlicht werden, wird ein Popupfenster in der HCM-Benutzeroberfläche angezeigt. Durch Ausführen des Upgrades werden die Änderungen angewendet, und der HCM wird neu gestartet. 
+
+## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Programmgesteuertes Hinzufügen einer Hybridverbindung zu Ihrer App ##
+
+Die unten aufgeführten APIs können direkt zum Verwalten der Hybridverbindungen verwendet werden, die mit Ihren Web-Apps verbunden sind. 
+
+    /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
+
+Das JSON-Objekt, das einer Hybridverbindung zugeordnet ist, sieht folgendermaßen aus:
+
+    {
+      "name": "[hybrid connection name]",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "[location]",
+      "properties": {
+        "serviceBusNamespace": "[namespace name]",
+        "relayName": "[hybrid connection name]",
+        "relayArmUri": "/subscriptions/[subscription id]/resourceGroups/[resource group name]/providers/Microsoft.Relay/namespaces/[namespace name]/hybridconnections/[hybrid connection name]",
+        "hostName": "[endpoint host name]",
+        "port": [port],
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "[send key]"
+      }
+    }
+
+Eine Möglichkeit, diese Informationen zu verwenden, ist der ARM-Client, den Sie aus dem GitHub-Projekt [ARMClient][armclient] abrufen können. Das folgende Beispiel zeigt das Anfügen einer vorhandenen Hybridverbindung an Ihre Web-App. Erstellen Sie eine JSON-Datei über das oben angegebene Schema:
+
+    {
+      "name": "relay-demo-hc",
+      "type": "Microsoft.Relay/Namespaces/HybridConnections",
+      "location": "North Central US",
+      "properties": {
+        "serviceBusNamespace": "demo-relay",
+        "relayName": "relay-demo-hc",
+        "relayArmUri": "/subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myrelay-rg/providers/Microsoft.Relay/namespaces/demo-relay/hybridconnections/relay-demo-hc",
+        "hostName": "my-wkstn.home",
+        "port": 1433,
+        "sendKeyName": "defaultSender",
+        "sendKeyValue": "Th9is3is8a82lot93of3774stu887ff122235="
+      }
+    }
+
+Um diese API verwenden zu können, benötigen Sie den Sendeschlüssel und die Ressourcen-ID des Relays. Wenn Sie Ihre Informationen unter dem Dateinamen „hctest.json“ gespeichert haben, geben Sie diesen Befehl aus, um die Hybridverbindung an Ihre App anzufügen: 
+
+    armclient login
+    armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
 
 ## <a name="troubleshooting"></a>Problembehandlung ##
 
@@ -185,13 +229,9 @@ In App Service kann das Tool tcpping über die Konsole „Erweiterte Tools“ (K
 
 ## <a name="biztalk-hybrid-connections"></a>BizTalk-Hybridverbindungen ##
 
-Die ältere Funktion der BizTalk-Hybridverbindungen wurde für neue BizTalk-Hybridverbindungen gesperrt. Sie können weiterhin Ihre vorhandenen BizTalk-Hybridverbindungen mit Ihren Apps verwenden, sollten sie jedoch zu neuen Hybridverbindungen migrieren, die Azure Relay nutzen. Der neue Dienst bringt gegenüber der BizTalk-Version folgende Vorteile mit sich:
+Eine frühe Form dieses Features wurde als „BizTalk-Hybridverbindungen“ bezeichnet. Diese Funktion wurde am 31. Mai 2018 eingestellt und beendet. BizTalk-Hybridverbindungen wurden aus allen Web-Apps entfernt, und auf sie kann nicht über das Portal oder die API zugegriffen werden. Wenn Sie diese älteren Verbindungen noch im Hybridverbindungs-Manager konfiguriert haben, werden der Status „Nicht mehr unterstützt“ und unten ein Einstellungshinweis angezeigt.
 
-- Kein zusätzliches BizTalk-Konto ist erforderlich.
-- Bei TLS wird Version 1.2 anstelle von Version 1.0 verwendet.
-- Die Kommunikation erfolgt über die Ports 80 und 443, um Azure mithilfe eines DNS-Namens anstelle von IP-Adressen und einer Reihe von zusätzlichen Ports zu erreichen.  
-
-Um Ihrer App eine vorhandene BizTalk-Hybridverbindung hinzuzufügen, navigieren Sie im [Azure-Portal][portal] zu Ihrer App, und wählen Sie **Netzwerk** > **Endpunkte der Hybridverbindung konfigurieren** aus. Wählen Sie in der Tabelle „Klassische Hybridverbindungen“ die Option **Klassische Hybridverbindung hinzufügen** aus. Sie sehen eine Liste Ihrer BizTalk-Hybridverbindungen.  
+![BizTalk-Hybridverbindungen im HCM][12]
 
 
 <!--Image references-->
@@ -205,9 +245,12 @@ Um Ihrer App eine vorhandene BizTalk-Hybridverbindung hinzuzufügen, navigieren 
 [8]: ./media/app-service-hybrid-connections/hybridconn-hcmadd.png
 [9]: ./media/app-service-hybrid-connections/hybridconn-hcmadded.png
 [10]: ./media/app-service-hybrid-connections/hybridconn-hcmdetails.png
+[11]: ./media/app-service-hybrid-connections/hybridconn-manual.png
+[12]: ./media/app-service-hybrid-connections/hybridconn-bt.png
 
 <!--Links-->
 [HCService]: http://docs.microsoft.com/azure/service-bus-relay/relay-hybrid-connections-protocol/
 [portal]: http://portal.azure.com/
 [oldhc]: http://docs.microsoft.com/azure/biztalk-services/integration-hybrid-connection-overview/
 [sbpricing]: http://azure.microsoft.com/pricing/details/service-bus/
+[armclient]: https://github.com/projectkudu/ARMClient/

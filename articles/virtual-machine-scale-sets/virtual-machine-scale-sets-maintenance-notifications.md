@@ -1,6 +1,6 @@
 ---
-title: Behandeln von Wartungsbenachrichtigungen für Virtual Machine Scale Sets in Azure | Microsoft-Dokumentation
-description: Zeigen Sie Wartungsbenachrichtigungen für Virtual Machine Scale Sets in Azure an, und starten Sie eine Self-Service-Wartung.
+title: Wartungsbenachrichtigungen für VM-Skalierungsgruppen in Azure | Microsoft Docs
+description: Anzeigen von Wartungsbenachrichtigungen für VM-Skalierungsgruppen in Azure und Starten einer Self-Service-Wartung.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: shants123
@@ -14,160 +14,162 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 4ce984686c2bb320d5d32771d31b81cdec1153af
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 82a3ce9f899e94a1cc737f2ca2dc1dc79688a224
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38506257"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145813"
 ---
-# <a name="handling-planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für Virtual Machine Scale Sets
+# <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
 
-Azure führt regelmäßig Updates durch, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Zu Updates zählen Änderungen wie das Patchen der Hostumgebung oder das Upgraden und die Außerbetriebnahme von Hardware. Die meisten dieser Updates werden ohne Auswirkungen auf die gehosteten virtuellen Computer durchgeführt. Es gibt jedoch Ausnahmen:
+Azure führt regelmäßig Updates aus, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer (VMs) zu verbessern. Zu Updates zählen z.B. Änderungen wie das Patchen der Hostingumgebung oder das Upgraden und die Außerbetriebnahme von Hardware. Die meisten Updates wirken sich nicht auf die gehosteten virtuellen Computer aus. Updates wirken sich jedoch in den folgenden Szenarien auf virtuelle Computer aus:
 
-- Wenn die Wartung keinen Neustart erfordert, verwendet Azure eine direkte Migration, um den virtuellen Computer anzuhalten, während der Host aktualisiert wird. Diese Wartungsvorgänge ohne Neustart werden einzeln für jede Fehlerdomäne angewendet, und das Fortschreiten wird beendet, wenn Warnsignale zur Integrität empfangen werden.
+- Wenn die Wartung keinen Neustart erfordert, verwendet Azure eine direkte Migration, um den virtuellen Computer anzuhalten, während der Host aktualisiert wird. Wartungsvorgänge, die keinen Neustart erfordern, werden auf eine Fehlerdomäne nach der anderen angewendet. Die Vorgänge werden beendet, wenn ein Integritätswarnungssignal empfangen wird.
 
-- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. In diesen Fällen steht Ihnen ein Zeitfenster zur Verfügung, in dem Sie die Wartung zu einem für Sie günstigen Zeitpunkt selbst starten können.
+- Wenn die Wartung einen Neustart erfordert, erhalten Sie eine Benachrichtigung, die Sie über den geplanten Wartungstermin informiert. In diesen Fällen steht Ihnen ein Zeitfenster zur Verfügung, in dem Sie die Wartung zu einem für Sie günstigen Zeitpunkt selbst starten können.
 
 
-Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle hat einen anderen Umfang (Regionen).
+Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle bezieht sich auf einen anderen Umfang (Regionen):
 
-- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an Abonnementbesitzer und -mitbesitzer gesendet. Für die Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
-- Zum Zeitpunkt der Benachrichtigung wird ein *Self-Service-Zeitfenster* verfügbar gemacht. Während dieses Zeitfensters können Sie ermitteln, welche Ihrer virtuellen Computer von der Welle betroffen sind, und die Wartung gemäß eigener Planungsanforderungen starten.
+- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an den Abonnementbesitzer und die -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
+- Mit der Benachrichtigung wird ein *Self-Service-Zeitfenster* bereitgestellt. Während dieses Zeitfensters können Sie ermitteln, welche Ihrer virtuellen Computer in der Welle enthalten sind. Sie können die Wartung proaktiv gemäß ihren eigenen Zeitplanungsanforderurngen starten.
 - Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
 Mit den beiden Zeitfenstern möchten wir Ihnen einerseits genügend Zeit geben, um die Wartung zu initiieren und Ihren virtuellen Computer neu zu starten, und Sie andererseits darüber informieren, wann Azure die Wartung automatisch startet.
 
 
-Sie können das Azure-Portal, PowerShell, die REST-API und die Befehlszeilenschnittstelle verwenden, um die Wartungszeitfenster für Ihre Skalierungsgruppen-VMs abzufragen und eine Self-Service-Wartung zu starten.
+Sie können das Azure-Portal, PowerShell, die REST-API oder die Azure CLI verwenden, um Wartungszeitfenster für Ihre Skalierungsgruppen-VMs abzufragen und eine Self-Service-Wartung zu starten.
 
   
 ## <a name="should-you-start-maintenance-during-the-self-service-window"></a>Sollten Sie die Wartung während des Self-Service-Fensters starten?  
 
-Die folgenden Hinweise sollen Sie bei der Entscheidung unterstützen, ob Sie diese Funktion nutzen und die Wartung zu einem selbst gewählten Zeitpunkt starten sollten.
+Die folgenden Richtlinien können Sie bei der Entscheidung unterstützen, ob Sie die Wartung zu einem Zeitpunkt starten, den Sie auswählen.
 
 > [!NOTE] 
-> Die Self-Service-Wartung ist unter Umständen nicht für alle virtuellen Computer verfügbar. Um zu ermitteln, ob die proaktive erneute Bereitstellung für Ihren virtuellen Computer verfügbar ist, überprüfen Sie, ob als Wartungsstatus **Jetzt starten** angezeigt wird. Die Self-Service-Wartung ist derzeit nicht für Cloud Services (Web-/Workerrolle) und Service Fabric verfügbar.
+> Die Self-Service-Wartung ist unter Umständen nicht für alle virtuellen Computer verfügbar. Um zu ermitteln, ob die proaktive erneute Bereitstellung für Ihren virtuellen Computer verfügbar ist, überprüfen Sie, ob als Wartungsstatus **Jetzt starten** angezeigt wird. Die Self-Service-Wartung ist zurzeit nicht für Azure Cloud Services (Web-/Workerrolle) und Azure Service Fabric verfügbar.
 
 
-Self-Service-Wartung wird für Bereitstellungen mit **Verfügbarkeitsgruppen** nicht empfohlen, da es sich dabei um hoch verfügbare Setups handelt, bei denen jeweils nur immer eine Updatedomäne betroffen ist. 
+Self-Service-Wartung wird für Bereitstellungen, die *Verfügbarkeitsgruppen* verwenden, nicht empfohlen. Bei Verfügbarkeitsgruppen handelt es sich um hoch verfügbare Setups, in denen nur eine Updatedomäne zu einem beliebigen Zeitpunkt betroffen ist. Für Verfügbarkeitsgruppen gilt Folgendes:
 
-- Überlassen Sie Azure das Auslösen der Wartung. Beachten Sie bei einer Wartung, die einen Neustart erfordert, dass die Wartung für jede Updatedomäne einzeln erfolgt, die Updatedomänen die Wartung nicht unbedingt in sequenzieller Reihenfolge erhalten und zwischen den Updatedomänen eine Pause von 30 Minuten liegt.
+- Überlassen Sie Azure das Auslösen der Wartung. Für eine Wartung, die einen Neustart erfordert, wird die Wartung auf eine Updatedomäne nach der anderen angewendet. Für Updatedomänen erfolgt die Wartung nicht unbedingt sequenziell. Zwischen den einzelnen Updatedomänen liegt eine Pause von 30 Minuten.
 - Wenn ein vorübergehender Kapazitätsverlust (1/Updatedomänenanzahl) ein Problem darstellt, können Sie zum Ausgleich während der Wartung einfach zusätzliche Instanzen zuweisen.
 - Bei einer Wartung, die keinen Neustart erfordert, werden Updates auf der Fehlerdomänenebene angewendet. 
     
 Verwenden Sie Self-Service-Wartung **nicht** in den folgenden Szenarien: 
 
-- Wenn Sie Ihre virtuellen Computer häufig herunterfahren (entweder manuell, mithilfe von DevTest Labs, mit der Funktion zum automatischen Herunterfahren oder gemäß eines Zeitplans), wird dadurch unter Umständen der Wartungsstatus zurückgesetzt, was zusätzliche Ausfallzeiten zur Folge haben kann.
-- Bei virtuellen Computern mit kurzer Lebensdauer, die vor Ende der Wartungsaktion gelöscht werden 
-- Bei Workloads, für die umfangreiche Zustandsinformationen auf dem lokalen (flüchtigen) Datenträger gespeichert sind, der bei einem Update erhalten bleiben soll 
-- Bei häufiger Änderung der Größe Ihrer virtuellen Computer, da dadurch der Wartungsstatus wiederhergestellt werden kann 
-- Wenn Sie 15 Minuten vor dem Herunterfahren für die Wartung geplante Ereignisse übernommen haben, die ein proaktives Failover oder das ordnungsgemäße Herunterfahren Ihrer Workload ermöglichen
+- Wenn Sie Ihre virtuellen Computer häufig entweder manuell, mithilfe von DevTest Labs, mit der Funktion zum automatischen Herunterfahren oder gemäß einem Zeitplan herunterfahren. Die Self-Service-Wartung kann in diesen Szenarien den Wartungsstatus zurücksetzen und zusätzliche Ausfallzeiten verursachen.
+- Bei virtuellen Computern mit kurzer Lebensdauer, die vor Ende der Wartungsaktion gelöscht werden. 
+- Bei Workloads, für die umfangreiche Zustandsinformationen auf dem lokalen (flüchtigen) Datenträger gespeichert sind, die bei einem Update erhalten bleiben sollen. 
+- Wenn Sie die Größe Ihres virtuellen Computers häufig ändern. Dieses Szenario kann den Wartungsstatus zurücksetzen. 
+- Wenn Sie 15 Minuten vor dem Herunterfahren für die Wartung geplante Ereignisse übernommen haben, die ein proaktives Failover oder das ordnungsgemäße Herunterfahren Ihres Workloads ermöglichen.
 
 **Verwenden** Sie die Self-Service-Wartung, wenn Sie den virtuellen Computer während der geplanten Wartungsphase unterbrechungsfrei ausführen möchten und keiner der oben aufgeführten Punkte zutrifft. 
 
 Verwenden Sie Self-Service-Wartung am besten in den folgenden Fällen:
 
-- Sie müssen den Vorgesetzten oder Endkunden ein exaktes Wartungsfenster mitteilen. 
+- Sie müssen den Vorgesetzten oder Kunden ein genaues Wartungsfenster mitteilen. 
 - Sie müssen die Wartung bis zu einem bestimmten Termin abgeschlossen haben. 
 - Sie müssen die Reihenfolge der Wartung steuern (etwa bei einer Anwendung mit mehreren Ebenen), um die Wiederherstellung gewährleisten zu können.
-- Sie benötigen für den virtuellen Computer mehr als 30 Minuten Wiederherstellungszeit zwischen zwei Updatedomänen (UDs). Um die Zeit zwischen Updatedomänen zu steuern, müssen Sie auf Ihren virtuellen Computern die Wartung der Updatedomänen jeweils nacheinander auslösen.
+- Sie benötigen für den virtuellen Computer mehr als 30 Minuten Wiederherstellungszeit zwischen zwei Updatedomänen. Um die Zeit zwischen Updatedomänen zu steuern, müssen Sie auf Ihren virtuellen Computern die Wartung der Updatedomänen jeweils nacheinander auslösen.
 
  
-## <a name="view-virtual-machine-scale-sets-impacted-by-maintenance-in-the-portal"></a>Anzeigen von VM-Skalierungsgruppe, die von der Wartung im Portal betroffen sind
+## <a name="view-virtual-machine-scale-sets-that-are-affected-by-maintenance-in-the-portal"></a>Anzeigen von VM-Skalierungsgruppen im Portal, die von der Wartung betroffen sind
 
 Nachdem eine geplante Wartungsaktion geplant wurde, können Sie über das Azure-Portal die Liste mit den VM-Skalierungsgruppen anzeigen, die von der anstehenden Wartungsaktion betroffen sind. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im linken Navigationsbereich **Alle Dienste** aus, und wählen Sie dann **Virtual Machine Scale Sets** aus.
-3. Wählen Sie auf der Seite **Virtual Machine Scale Sets** ganz oben die Option **Spalten bearbeiten** aus, um die Liste der verfügbaren Spalten zu öffnen.
-4. Wählen Sie im Abschnitt **Verfügbare Spalten** das Element **Self-Service-Wartung** aus, und verschieben Sie es mit den Pfeilschaltflächen in die Liste **Ausgewählte Spalten**. Sie können die Dropdownliste im Abschnitt **Verfügbare Spalten** von **Alle** zu **Eigenschaften** umschalten, um das Element **Self-Service-Wartung** einfacher finden zu können. Nachdem Sie das Element **Self-Service-Wartung** im Abschnitt **Ausgewählte Spalten** markiert haben, wählen Sie unten auf der Seite **Übernehmen** aus. 
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie im linken Menü **Alle Dienste** aus, und wählen Sie dann **VM-Skalierungsgruppen** aus.
+3. Wählen Sie unter **VM-Skalierungsgruppen** die Option **Spalten bearbeiten** aus, um die Liste der verfügbaren Spalten zu öffnen.
+4. Wählen Sie im Abschnitt **Verfügbare Spalten** die Option **Self-Service-Wartung** aus, und verschieben Sie diese in die Liste **Ausgewählte Spalten**. Wählen Sie **Übernehmen** aus.  
 
-Nach dem Befolgen der oben angegebenen Schritte wird die Spalte **Self-Service-Wartung** in der Liste der VM-Skalierungsgruppen angezeigt. Jede VM-Skalierungsgruppe kann einen der folgenden Werte für die Spalte „Self-Service-Wartung“ aufweisen:
+    Um das Element **Self-Service-Wartung** leichter zu finden, können Sie die Dropdownoption im Abschnitt **Verfügbare Spalten** von **Alle** in **Eigenschaften** ändern.
+
+Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgruppen angezeigt. Jede VM-Skalierungsgruppe kann einen der folgenden Werte für die Spalte „Self-Service-Wartung“ aufweisen:
 
 | Wert | BESCHREIBUNG |
 |-------|-------------|
-| Ja | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Fenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
+| JA | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Wartungsfenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
 | Nein  | Es gibt keine virtuellen Computer in einem Self-Service-Fenster in der betroffenen VM-Skalierungsgruppe. | 
 | - | Ihre VM-Skalierungsgruppen sind nicht Teil einer geplanten Wartungsaktion.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Benachrichtigungen und Warnungen im Portal
 
-Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität mit dem Azure-Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im Menü auf der linken Seite auf **Überwachen**. 
-3. Klicken Sie im Bereich **Überwachen – Warnungen (klassisch)** auf **+ Aktivitätsprotokollwarnung hinzufügen**.
-4. Füllen Sie die Informationen auf der Seite **Aktivitätsprotokollwarnung hinzufügen** aus, und legen Sie die folgenden **Kriterien** fest:
-   - **Ereigniskategorie:** Dienstintegrität
-   - **Dienste:** Virtual Machine Scale Sets und Virtual Machines
-   - **Typ:** geplante Wartung 
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie die Option **Überwachen** im Menü auf der linken Seite aus. 
+3. Wählen Sie im Bereich **Überwachen – Warnungen (klassisch)** die Option **+ Aktivitätsprotokollwarnung hinzufügen** aus.
+4. Wählen Sie auf der Seite **Aktivitätsprotokollwarnung hinzufügen** die angeforderten Informationen aus, oder geben Sie sie ein. Stellen Sie unter **Kriterien** sicher, dass Sie die folgenden Werte festgelegt haben:
+   - **Ereigniskategorie**: Wählen Sie **Dienstintegrität** aus.
+   - **Dienste**: Wählen Sie **VM-Skalierungsgruppen und virtuelle Computer** aus.
+   - **Typ**: Wählen Sie **Geplante Wartung** aus. 
     
 Weitere Informationen zum Konfigurieren von Aktivitätsprotokollwarnungen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md).
     
     
 ## <a name="start-maintenance-on-your-virtual-machine-scale-set-from-the-portal"></a>Starten der Wartung für Ihre VM-Skalierungsgruppe über das Portal
 
-In der Übersicht über VM-Skalierungsgruppen können Sie auch weitere wartungsbezogene Details anzeigen. Wenn mindestens ein virtueller Computer in der VM-Skalierungsgruppe in der geplanten Wartungsaktion enthalten ist, wird im oberen Bereich der Seite ein neues Benachrichtigungsmenüband hinzugefügt. Sie können auf das Benachrichtigungsmenüband klicken, um die Seite **Wartung** zu erreichen, auf der angezeigt wird, welche Instanz eines virtuellen Computers von der geplanten Wartung betroffen ist. 
+In der Übersicht über VM-Skalierungsgruppen können Sie auch weitere wartungsbezogene Details anzeigen. Wenn mindestens ein virtueller Computer in der VM-Skalierungsgruppe in der geplanten Wartungsaktion enthalten ist, wird im oberen Bereich der Seite ein neues Benachrichtigungsmenüband hinzugefügt. Wählen Sie das Benachrichtigungsmenüband aus, um zur Seite **Wartung** zu navigieren. 
 
-Von dort können Sie die Wartung starten, indem Sie das Kontrollkästchen neben dem betroffenen virtuellen Computer aktivieren und dann auf die Option **Wartung starten** klicken.
+Auf der Seite **Wartung** können Sie erkennen, welche VM-Instanz von der geplanten Wartung betroffen ist. Aktivieren Sie zum Starten der Wartung das Kontrollkästchen, das dem betroffenen virtuellen Computer entspricht. Wählen Sie dann **Wartung starten** aus.
 
-Nach dem Starten werden die betroffenen virtuellen Computer in Ihrer VM-Skalierungsgruppe gewartet und stehen vorübergehend nicht zur Verfügung. Wenn Sie das Self-Service-Zeitfenster verpasst haben, wird das Zeitfenster, in dem Ihre VM-Skalierungsgruppe von Azure gewartet wird, weiterhin angezeigt.
+Nach dem Starten der Wartung werden die betroffenen virtuellen Computer in Ihrer VM-Skalierungsgruppe gewartet und stehen vorübergehend nicht zur Verfügung. Wenn Sie das Self-Service-Zeitfenster verpasst haben, wird das Zeitfenster, in dem Ihre VM-Skalierungsgruppe durch Azure gewartet wird, weiterhin angezeigt.
  
-## <a name="check-maintenance-status-using-powershell"></a>Überprüfen des Wartungsstatus mithilfe von PowerShell
+## <a name="check-maintenance-status-by-using-powershell"></a>Überprüfen des Wartungsstatus mithilfe von PowerShell
 
-Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von VMs in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
+Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
  
-Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz hat, gibt das Cmdlet keine Wartungsinformationen zurück. 
+Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
 ```powershell
 Get-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
-Unter „MaintenanceRedeployStatus“ werden folgende Eigenschaften zurückgegeben: 
+Unter **MaintenanceRedeployStatus** werden folgende Eigenschaften zurückgegeben: 
 | Wert | BESCHREIBUNG   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. ||
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
 | PreMaintenanceWindowEndTime           | Das Ende des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
-| MaintenanceWindowStartTime            | Der Anfang der geplanten Wartung, zu dem Azure die Wartung für Ihren virtuellen Computer initiiert ||
-| MaintenanceWindowEndTime              | Das Ende des geplanten Wartungszeitfensters, in dem Azure die Wartung für Ihren virtuellen Computer initiiert ||
+| MaintenanceWindowStartTime            | Der Anfang der geplanten Wartung, zu dem Azure die Wartung für Ihren virtuellen Computer initiiert. ||
+| MaintenanceWindowEndTime              | Das Ende des geplanten Wartungszeitfensters, in dem Azure die Wartung für Ihren virtuellen Computer initiiert. ||
 | LastOperationResultCode               | Das Ergebnis des letzten Wartungsinitiierungsversuchs für den virtuellen Computer. ||
 
 
 
-### <a name="start-maintenance-on-your-vm-instance-using-powershell"></a>Starten der Wartung für Ihre VM-Instanz mithilfe von PowerShell
+### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>Starten der Wartung für Ihre VM-Instanz mithilfe von PowerShell
 
-Sie können die Wartung eines virtuellen Computers starten, wenn **IsCustomerInitiatedMaintenanceAllowed** mithilfe des Cmdlets [Set-AzureRmVmss](/powershell/module/azurerm.compute/set-azurermvmss) mit dem Parameter `-PerformMaintenance` auf TRUE festgelegt wurde.
+Sie können die Wartung eines virtuellen Computers starten, wenn **IsCustomerInitiatedMaintenanceAllowed** auf **TRUE** festgelegt wurde. Verwenden Sie das Cmdlet [Set-AzureRmVmss](/powershell/module/azurerm.compute/set-azurermvmss) mit dem Parameter `-PerformMaintenance`.
 
 ```powershell
 Set-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
-## <a name="check-maintenance-status-using-cli"></a>Überprüfen des Wartungsstatus mithilfe der Befehlszeilenschnittstelle
+## <a name="check-maintenance-status-by-using-the-cli"></a>Überprüfen des Wartungsstatus mithilfe der CLI
 
 Informationen zu geplanten Wartungen können mithilfe von [az vmss list-instances](/cli/azure/vmss?view=azure-cli-latest#az-vmss-list-instances) angezeigt werden.
  
-Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz hat, gibt der Befehl keine Wartungsinformationen zurück. 
+Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
 ```azure-cli
 az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
-Unter MaintenanceRedeployStatus für die einzelnen VM-Instanzen werden folgende Eigenschaften zurückgegeben: 
+Unter **MaintenanceRedeployStatus** für die einzelnen VM-Instanzen werden die folgenden Eigenschaften zurückgegeben: 
 | Wert | BESCHREIBUNG   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. ||
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
 | PreMaintenanceWindowEndTime           | Das Ende des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
-| MaintenanceWindowStartTime            | Der Anfang der geplanten Wartung, zu dem Azure die Wartung für Ihren virtuellen Computer initiiert ||
-| MaintenanceWindowEndTime              | Das Ende des geplanten Wartungszeitfensters, in dem Azure die Wartung für Ihren virtuellen Computer initiiert ||
+| MaintenanceWindowStartTime            | Der Anfang der geplanten Wartung, zu dem Azure die Wartung für Ihren virtuellen Computer initiiert. ||
+| MaintenanceWindowEndTime              | Das Ende des geplanten Wartungszeitfensters, in dem Azure die Wartung für Ihren virtuellen Computer initiiert. ||
 | LastOperationResultCode               | Das Ergebnis des letzten Wartungsinitiierungsversuchs für den virtuellen Computer. ||
 
 
-### <a name="start-maintenance-on-your-vm-instance-using-cli"></a>Starten der Wartung für Ihre VM-Instanz mithilfe der Befehlszeilenschnittstelle
+### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Starten der Wartung für Ihre VM-Instanz mithilfe der CLI
 
-Der folgende Aufruf initiiert die Wartung für eine VM-Instanz, wenn `IsCustomerInitiatedMaintenanceAllowed` auf TRUE festgelegt ist:
+Der folgende Aufruf initiiert die Wartung für eine VM-Instanz, wenn `IsCustomerInitiatedMaintenanceAllowed` auf **TRUE** festgelegt ist:
 
 ```azure-cli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
@@ -175,44 +177,43 @@ az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
+**F: Warum müssen Sie meine virtuellen Computer jetzt neu starten?**
 
-**F: Wozu müssen Sie meine virtuellen Computer jetzt neu starten?**
+**A:** Obwohl die meisten Updates und Upgrades der Azure-Plattform die VM-Verfügbarkeit nicht beeinträchtigen, können wir in einigen Fällen einen Neustart der in Azure gehosteten virtuellen Computer nicht vermeiden. Bei uns haben sich mehrere Änderungen angesammelt, die den Neustart unserer Server erfordern und damit auch zum Neustart virtueller Computer führen.
 
-**A:** Während die Mehrzahl der Updates und Upgrades für die Azure-Plattform die Verfügbarkeit des virtuellen Computers nicht beeinflusst, gibt es Fälle, in denen wir den Neustart in Azure gehosteter virtueller Computer nicht vermeiden können. Bei uns sind mehrere Änderungen zusammengekommen, die den Neustart unserer Server erfordern und damit auch zum Neustart virtueller Computer führen.
+**F: Bin ich auf der sicheren Seite, wenn ich ihre Empfehlungen für Hochverfügbarkeit mit Verwendung einer Verfügbarkeitsgruppe befolge?**
 
-**F: Bin ich sicher, wenn ich ihre Empfehlungen für Hochverfügbarkeit mit Verwendung einer Verfügbarkeitsgruppe befolge?**
-
-**A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer werden wie Updatedomänen (UD) behandelt. Bei der Wartung berücksichtigt Azure die UD-Einschränkung und startet virtuelle Computer nicht von einer anderen UD (innerhalb derselben Verfügbarkeitsgruppe) aus neu.  Azure wartet auch mindestens 30 Minuten vor dem Wechsel zur nächsten Gruppe von virtuellen Computern. 
+**A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer verwenden Updatedomänen. Bei der Wartung berücksichtigt Azure die Updatedomäneneinschränkung und startet virtuelle Computer aus einer anderen Updatedomäne (innerhalb derselben Verfügbarkeitsgruppe) nicht neu. Azure wartet auch mindestens 30 Minuten bis zum Wechsel zur nächsten Gruppe von virtuellen Computern. 
 
 Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verfügbarkeit für virtuelle Computer in Azure](../virtual-machines/windows/regions-and-availability.md).
 
-**F: Wie werde ich über eine geplante Wartung benachrichtigt?**
+**F: Wie kann ich über eine geplante Wartung benachrichtigt werden?**
 
-**A:** Eine geplante Wartungsaktion beginnt mit dem Festlegen eines Zeitplans für eine oder mehrere Azure-Regionen. Bald danach wird eine E-Mail-Benachrichtigung an die Abonnementbesitzer gesendet (pro Abonnement eine E-Mail). Zusätzliche Kanäle und Empfänger für diese Benachrichtigung können mit Aktivitätsprotokollwarnungen konfiguriert werden. Falls Sie einen virtuellen Computer in einer Region bereitstellen, wo bereits Wartung geplant ist, erhalten Sie die Benachrichtigung nicht, sondern müssen vielmehr den Wartungsstatus des virtuellen Computers überprüfen.
+**A:** Eine geplante Wartungsaktion beginnt mit dem Festlegen eines Zeitplans für eine oder mehrere Azure-Regionen. Bald danach wird eine E-Mail-Benachrichtigung an die Abonnementbesitzer gesendet (pro Abonnement eine E-Mail). Sie können Kanäle und Empfänger für diese Benachrichtigung mit Aktivitätsprotokollwarnungen hinzufügen. Wenn Sie einen virtuellen Computer in einer Region bereitstellen, in der eine Wartung bereits geplant ist, erhalten Sie die Benachrichtigung nicht. Überprüfen Sie stattdessen den Wartungsstatus des virtuellen Computers.
 
-**F: Mir wird weder im Portal noch über PowerShell oder über die Befehlszeilenschnittstelle ein Hinweis auf eine geplante Wartung angezeigt. Was ist schiefgelaufen?**
+**F: Mir wird weder im Portal noch über PowerShell oder über die CLI ein Hinweis auf eine geplante Wartung angezeigt. Woran kann das liegen?**
 
-**A:** Informationen im Zusammenhang mit geplanter Wartung stehen während einer geplanten Wartungsaktion nur für die virtuellen Computer zur Verfügung, die davon betroffen sind. D.h., wenn Ihnen keine Daten angezeigt werden, ist es möglich, dass die Wartungsaktion bereits abgeschlossen (oder nicht gestartet) wurde, bzw. Ihr virtueller Computer bereits auf einem aktualisierten Server gehostet wird.
+**A:** Informationen im Zusammenhang mit geplanter Wartung stehen während einer geplanten Wartungsaktion nur für die virtuellen Computer zur Verfügung, die davon betroffen sind. Wenn keine Daten angezeigt werden, ist die Wartungswelle möglicherweise bereits beendet (oder wurde noch nicht gestartet), oder Ihr virtueller Computer wird bereits auf einem aktualisierten Server gehostet.
 
-**F: Gibt es eine Möglichkeit, dass ich genau feststellen kann, wann mein virtueller Computer betroffen ist?**
+**F: Gibt es eine Möglichkeit zum genauen Feststellen, wann mein virtueller Computer betroffen ist?**
 
-**A:** Bei Festlegung des Zeitplans definieren wir ein Zeitfenster von einigen Tagen. Allerdings ist die genaue Reihenfolge von Servern (und VMs) innerhalb dieses Zeitfensters unbekannt. Kunden, die die genaue Zeit für ihre virtuellen Computer wissen möchten, können [geplante Ereignisse](../virtual-machines/windows/scheduled-events.md) verwenden, aus dem virtuellen Computer heraus abfragen und erhalten 15 Minuten vor dem VM-Neustart eine Benachrichtigung.
+**A:** Bei der Festlegung des Zeitplans definieren wir ein Zeitfenster von einigen Tagen. Die genaue Reihenfolge von Servern (und virtuellen Computern) innerhalb dieses Zeitfensters ist nicht bekannt. Wenn Sie die genaue Zeit wissen möchten, zu der Ihre virtuellen Computer aktualisiert werden, können Sie [geplante Ereignisse](../virtual-machines/windows/scheduled-events.md) verwenden. Wenn Sie geplante Ereignisse verwenden, können Sie eine Abfrage aus dem virtuellen Computer ausführen und 15-Minuten vor dem Neustart eines virtuellen Computers eine Benachrichtigung erhalten.
 
 **F: Wie lange dauert es, meinen virtuellen Computer neu zu starten?**
 
-**A:** Je nach Größe Ihres virtuellen Computers kann der Neustart während des Self-Service-Wartungsfensters mehrere Minuten dauern. Die von Azure im geplanten Wartungsfenster initiierten Neustarts dauern in der Regel etwa 25 Minuten. Beachten Sie, dass Ihnen bei Verwendung von Cloud Services (Web-/Workerrolle), VM-Skalierungsgruppen oder Verfügbarkeitsgruppen während des geplanten Wartungsfensters zwischen den einzelnen Gruppen von virtuellen Computern (UD) 30 Minuten zur Verfügung stehen. 
+**A:** Je nach Größe Ihres virtuellen Computers kann der Neustart während des Self-Service-Wartungsfensters mehrere Minuten dauern. Die von Azure im geplanten Wartungsfenster initiierten Neustarts dauern in der Regel etwa 25 Minuten. Wenn Sie Cloud Services (Web-/Workerrolle), VM-Skalierungsgruppen oder Verfügbarkeitsgruppen verwenden, stehen Ihnen während des geplanten Wartungsfensters zwischen den einzelnen Gruppen von virtuellen Computern 30 Minuten zur Verfügung. 
 
 **F: Auf meinen virtuellen Computern werden keine Wartungsinformationen angezeigt. Welche Probleme sind aufgetreten?**
 
-**A:** Es gibt verschiedene Gründe, warum Sie keine Wartungsinformationen auf Ihren virtuellen Computern sehen:
-   - Sie verwenden ein Abonnement, das als Microsoft-intern markiert ist.
-   - Ihre virtuellen Computer sind nicht für die Wartung eingeplant. Es könnte sein, dass die Wartungsaktion beendet, abgebrochen oder so geändert wurde, dass Ihre virtuellen Computer nicht mehr davon betroffen sind.
-   - Sie haben Ihrer VM-Listenansicht nicht die Spalte **Wartung** hinzugefügt. Obwohl wir diese Spalte der Standardansicht hinzugefügt haben, müssen Kunden, die die Anzeige nicht standardmäßiger Spalten konfiguriert haben, die Spalte **Wartung** ihrer VM-Listenansicht manuell hinzufügen.
+**A:** Es gibt verschiedene Gründe, warum keine Wartungsinformationen zu Ihren virtuellen Computern angezeigt werden:
+   - Sie verwenden ein Abonnement, das als *Microsoft-intern* markiert ist.
+   - Für Ihre virtuellen Computer ist keine Wartung geplant. Es kann sein, dass die Wartungsaktion beendet, abgebrochen oder so geändert wurde, dass Ihre virtuellen Computer nicht mehr davon betroffen sind.
+   - Sie haben Ihrer VM-Listenansicht nicht die Spalte **Wartung** hinzugefügt. Obwohl wir diese Spalte der Standardansicht hinzugefügt haben, müssen Sie die Spalte **Wartung** manuell zur VM-Listenansicht hinzufügen, wenn Sie Ihre Ansicht so konfigurieren, dass sie Nichtstandardspalten anzeigt.
 
 **F: Meine VM ist zum zweiten Mal für die Wartung eingeplant. Warum?**
 
-**A:** In mehreren Anwendungsfällen wird Ihr virtueller Computer zur Wartung eingeplant, nachdem Sie die erneute Bereitstellung nach Wartung bereits abgeschlossen haben:
-   - Wir haben die Wartungsaktion abgebrochen und einen Neustart mit anderer Nutzlast vorgenommen. Es könnte sein, dass wir fehlerhafte Nutzlast erkannt haben und einfach eine zusätzliche Nutzlast bereitstellen müssen.
+**A:** In mehreren Anwendungsfällen wird Ihr virtueller Computer zur Wartung eingeplant, nachdem Sie die erneute Bereitstellung nach der Wartung bereits abgeschlossen haben:
+   - Wir haben die Wartungsaktion abgebrochen und einen Neustart mit anderer Nutzlast vorgenommen. Es kann sein, dass wir eine fehlerhafte Nutzlast erkannt haben und einfach eine zusätzliche Nutzlast bereitstellen müssen.
    - Die *Dienstreparatur* Ihres virtuellen Computers wurde aufgrund eines Hardwarefehlers auf einem anderen Knoten durchgeführt.
    - Sie haben ausgewählt, den virtuellen Computer zu beenden (freizugeben) und neu zu starten.
    - Sie haben **automatisches Herunterfahren** für den virtuellen Computer aktiviert.

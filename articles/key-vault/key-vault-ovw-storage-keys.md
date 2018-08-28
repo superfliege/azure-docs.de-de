@@ -5,16 +5,16 @@ description: Speicherkontoschlüssel bieten eine nahtlose Integration zwischen A
 ms.topic: article
 services: key-vault
 ms.service: key-vault
-author: lleonard-msft
-ms.author: alleonar
+author: bryanla
+ms.author: bryanla
 manager: mbaldwin
-ms.date: 10/12/2017
-ms.openlocfilehash: 4f42a47a6d934bf0538efccbcf7f057fd28e2c03
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 08/21/2017
+ms.openlocfilehash: 0112d48647c031845bc89ccebfcdd40954c59f14
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179587"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142577"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault-Speicherkontoschlüssel
 
@@ -38,8 +38,8 @@ Key Vault führt mehrere interne Verwaltungsfunktionen in Ihrem Auftrag aus, wen
     - Azure Key Vault generiert (rotiert) die Schlüssel in regelmäßigen Abständen.
     - Schlüsselwerte werden nie als Antwort an den Aufrufer zurückgegeben.
     - Azure Key Vault verwaltet Schlüssel von Speicherkonten und klassischen Speicherkonten.
-- Azure Key Vault ermöglicht Ihnen, dem Tresor-/Objektbesitzer, SAS-Definitionen (Konto oder SAS-Dienst) zu erstellen.
-    - Der mithilfe der SAS-Definition erstellte SAS-Wert wird über den REST-URI-Pfad als Geheimnis zurückgegeben. Weitere Informationen finden Sie unter [Azure Key Vault storage account operations](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations) (Azure Key Vault-Speicherkontobetrieb).
+- Azure Key Vault ermöglicht Ihnen, dem Tresor-/Objektbesitzer, SAS-Definitionen (Shared Access Signature, Konto oder Dienst-SAS) zu erstellen.
+    - Der mithilfe der SAS-Definition erstellte SAS-Wert wird über den REST-URI-Pfad als Geheimnis zurückgegeben. Weitere Informationen finden Sie unter den SAS-Definitionsvorgängen in der [Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault).
 
 ## <a name="naming-guidance"></a>Benennungsrichtlinien
 
@@ -97,16 +97,18 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 ## <a name="getting-started"></a>Erste Schritte
 
-### <a name="setup-for-role-based-access-control-rbac-permissions"></a>Setup für rollenbasierte Zugriffssteuerungsberechtigungen (RBAC)
+### <a name="give-key-vault-access-to-your-storage-account"></a>Gewähren von Zugriff auf Ihr Speicherkonto für Key Vault 
 
-Die Azure Key Vault-Anwendungsidentität benötigt die Berechtigungen zum *Auflisten* und *Regenerieren* von Schlüsseln für ein Speicherkonto. Richten Sie diese Berechtigungen mithilfe der folgenden Schritte ein:
+Wie viele andere Anwendungen ist Key Vault bei Azure AD registriert, um über OAuth auf andere Dienste zugreifen zu können. Bei der Registrierung wird [ein Dienstprinzipal](/azure/active-directory/develop/app-objects-and-service-principals)objekt erstellt, mit dem die Identität der Anwendung zur Laufzeit dargestellt wird. Der Dienstprinzipal wird auch verwendet, um die Identität der Anwendung für den Zugriff auf eine andere Ressource durch rollenbasierte Zugriffssteuerung (RBAC) zu autorisieren.
+
+Die Azure Key Vault-Anwendungsidentität benötigt die Berechtigungen zum *Auflisten* und *Regenerieren* von Schlüsseln für Ihr Speicherkonto. Richten Sie diese Berechtigungen mithilfe der folgenden Schritte ein:
 
 ```powershell
 # Get the resource ID of the Azure Storage Account you want to manage.
 # Below, we are fetching a storage account using Azure Resource Manager
 $storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
 
-# Get ObjectId of Azure Key Vault Identity
+# Get Application ID of Azure Key Vault's service principal
 $servicePrincipal = Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
 
 # Assign Storage Key Operator role to Azure Key Vault Identity
@@ -118,7 +120,7 @@ New-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'St
 
 ## <a name="working-example"></a>Beispiel
 
-Im folgenden Beispiel wird die Erstellung eines durch Key Vault verwalteten Azure-Speicherkontos und der zugehörigen SAS-Definitionen (Shared Access Signature) veranschaulicht.
+Im folgenden Beispiel wird die Erstellung eines durch Key Vault verwalteten Azure Storage-Kontos und der zugehörigen SAS-Definitionen veranschaulicht.
 
 ### <a name="prerequisite"></a>Voraussetzung
 
@@ -205,8 +207,9 @@ Beachten Sie, dass der Zugriff mit *$readSasToken* nicht erfolgreich ist, aber d
 $context1 = New-AzureStorageContext -SasToken $readSasToken -StorageAccountName $storage.StorageAccountName
 $context2 = New-AzureStorageContext -SasToken $writeSasToken -StorageAccountName $storage.StorageAccountName
 
-Set-AzureStorageBlobContent -Container containertest1 -File "abc.txt" -Context $context1
-Set-AzureStorageBlobContent -Container cont1-file "file.txt" -Context $context2
+# Ensure the txt file in command exists in local path mentioned
+Set-AzureStorageBlobContent -Container containertest1 -File "./abc.txt" -Context $context1
+Set-AzureStorageBlobContent -Container cont1-file "./file.txt" -Context $context2
 ```
 
 Sie können auf den Speicherblobinhalt mit dem SAS-Token mit Schreibzugriff zugreifen.
@@ -232,7 +235,7 @@ Key Vault muss sicherstellen, dass die Identität über *regenerate*-Berechtigun
 - Key Vault listet RBAC-Berechtigungen für die Speicherkontoressource auf.
 - Key Vault überprüft die Antwort über den Abgleich von Aktionen und Nichtaktionen mit regulären Ausdrücken.
 
-Einige unterstützende Beispiele finden Sie unter [Key Vault – Beispiele für verwaltete Speicherkontoschlüssel](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167).
+Einige unterstützende Beispiele finden Sie unter [Key Vault – Beispiele für verwaltete Speicherkontoschlüssel](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=).
 
 Wenn die Identität nicht über die *regenerate*-Berechtigung oder die Key Vault-Erstanbieteridentität nicht über die Berechtigung *list* oder *regenerate* verfügt, tritt bei der Onboardinganforderung ein Fehler auf, und ein entsprechender Fehlercode und eine Nachricht werden zurückgegeben.
 
