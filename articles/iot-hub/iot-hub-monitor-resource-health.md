@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/09/2017
+ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: 39171f7d7a7b27ec54f67b592e184e90134a1a52
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c7d8631a8e7b99cca8f84ea1011c361db01e399e
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611370"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141548"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Schnelle Überwachung der Integrität von Azure IoT Hub und Diagnose von Problemen
 
@@ -155,7 +155,7 @@ Diese Kategorie kann keine Fehler abfangen, die auftreten, während das Gerät e
 
 #### <a name="cloud-to-device-twin-operations"></a>Cloud-zu-Gerät-Zwillingsvorgänge
 
-Die Kategorie der Cloud-zu-Gerät-Zwillingsvorgänge verfolgt von einem Dienst initiierte Ereignisse auf Gerätezwillingen nach. Diese Vorgänge können das Abrufen des Zwillings, Aktualisieren gemeldeter Eigenschaften und Abonnieren gewünschter Eigenschaften einschließen.
+Die Kategorie der Cloud-zu-Gerät-Zwillingsvorgänge verfolgt von einem Dienst initiierte Ereignisse auf Gerätezwillingen nach. Diese Vorgänge können das Abrufen des Zwillings, Aktualisieren oder Ersetzen von Tags und Aktualisieren oder Ersetzen gewünschter Eigenschaften einschließen. 
 
 ```json
 {
@@ -172,7 +172,7 @@ Die Kategorie der Cloud-zu-Gerät-Zwillingsvorgänge verfolgt von einem Dienst i
 
 #### <a name="device-to-cloud-twin-operations"></a>Gerät-zu-Cloud-Zwillingsvorgänge
 
-Die Kategorie der Gerät-zu-Cloud-Zwillingsvorgänge verfolgt von einem Gerät initiierte Ereignisse auf Gerätezwillingen nach. Diese Vorgänge können das Abrufen des Zwillings, Aktualisieren oder Ersetzen von Tags und Aktualisieren oder Ersetzen gewünschter Eigenschaften einschließen. 
+Die Kategorie der Gerät-zu-Cloud-Zwillingsvorgänge verfolgt von einem Gerät initiierte Ereignisse auf Gerätezwillingen nach. Diese Vorgänge können das Abrufen des Zwillings, das Aktualisieren gemeldeter Eigenschaften und das Abonnieren gewünschter Eigenschaften einschließen.
 
 ```json
 {

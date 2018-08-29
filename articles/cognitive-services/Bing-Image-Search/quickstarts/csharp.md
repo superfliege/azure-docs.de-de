@@ -1,22 +1,22 @@
 ---
-title: Aufruf und Antwort – C#-Schnellstart für Azure Cognitive Services, Bing-Bildersuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell in die Bing-Bildersuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Senden von Suchabfragen mithilfe der REST-API für die Bing-Bildersuche-API und C#'
+description: In diesem Schnellstart senden Sie Suchabfragen an die Bing-Suche-API, um mithilfe von C# eine Liste relevanter Bilder abzurufen.
 services: cognitive-services
 documentationcenter: ''
-author: v-jerkin
+author: aahill
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
-ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e5a506b9a25e94c827815323d209bf7c175bac4e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 8/9/2018
+ms.author: aahi
+ms.openlocfilehash: 7a5ef36f02d82ee17698af9c647f043792280fbc
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377003"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929935"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-c"></a>Aufruf und Antwort: Ihre erste Bing-Bildersuche-Abfrage in C#
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-c"></a>Schnellstart: Senden von Suchabfragen mithilfe der REST-API und C#
 
 Die Bing-Bildersuche-API bietet eine ähnliche Erfahrung wie „Bing.com/Images“: Sie können eine Suchabfrage eines Benutzers an Bing senden und eine Liste mit relevanten Bildern erhalten.
 
@@ -28,16 +28,16 @@ Das Beispielprogramm verwendet nur .NET Core-Klassen und wird unter Windows mit 
 
 Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür geeignet.)
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Ausführen der Anwendung
 
 Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
 
 1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio.
-1. Ersetzen Sie `Program.cs` durch den bereitgestellten Code.
-2. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-3. Führen Sie das Programm aus.
+2. Ersetzen Sie `Program.cs` durch den bereitgestellten Code.
+3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+4. Führen Sie das Programm aus.
 
 ```csharp
 using System;

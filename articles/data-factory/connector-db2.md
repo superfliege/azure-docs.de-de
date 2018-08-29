@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 11647c231db3ff7beb2fed641dc72ff339b2b45a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f9d1d2181649cf24784dc7ad11638946c9ee4406
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046240"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141997"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopieren von Daten aus DB2 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,12 +62,12 @@ Folgende Eigenschaften werden für den mit DB2 verknüpften Dienst unterstützt:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf **Db2** festgelegt werden. | Ja |
-| server |Name des DB2-Servers. |Ja |
-| database |Name der DB2-Datenbank. |Ja |
-| authenticationType |Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank.<br/>Der zulässige Wert ist **Basic**. |Ja |
-| username |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der DB2-Datenbank an. |Ja |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
+| type | Die type-Eigenschaft muss auf **Db2** festgelegt werden. | JA |
+| server |Name des DB2-Servers. Sie können die Portnummer hinter dem Servernamen und einem Semikolon angeben, z.B.: `server:port`. |JA |
+| database |Name der DB2-Datenbank. |JA |
+| authenticationType |Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank.<br/>Der zulässige Wert ist **Basic**. |JA |
+| username |Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der DB2-Datenbank an. |JA |
+| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |JA |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
@@ -78,7 +78,7 @@ Folgende Eigenschaften werden für den mit DB2 verknüpften Dienst unterstützt:
     "properties": {
         "type": "Db2",
         "typeProperties": {
-            "server": "<servername>",
+            "server": "<servername:port>",
             "database": "<dbname>",
             "authenticationType": "Basic",
             "username": "<username>",
@@ -103,7 +103,7 @@ Legen Sie zum Kopieren von Daten aus DB2 die type-Eigenschaft des Datasets auf *
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft des Datasets muss auf **RelationalTable** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **RelationalTable** festgelegt werden. | JA |
 | tableName | Name der Tabelle in der DB2-Datenbank | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -133,7 +133,7 @@ Legen Sie zum Kopieren von Daten aus DB2 den Quelltyp in der Kopieraktivität au
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | JA |
 | query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**

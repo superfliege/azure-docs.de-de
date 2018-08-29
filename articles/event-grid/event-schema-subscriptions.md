@@ -3,17 +3,16 @@ title: Ereignisschema des Azure Event Grid-Abonnements
 description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Abonnementereignisse bereitgestellt werden
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/02/2018
+ms.date: 08/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6eb5cd9a086522bfe5125189f87a2498dda0ef7e
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 18f2a64a4354fbd99f1a471c21cc35cbf5df6619
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493573"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140985"
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid-Ereignisschema für Abonnements
 
@@ -27,7 +26,9 @@ Wenn Sie Ereignisse für ein Azure-Abonnement abonnieren, erhält Ihr Endpunkt a
 
 Zur programmgesteuerten Verarbeitung von Ereignissen können Sie Ereignisse sortieren, indem Sie sich den Wert für `operationName` ansehen. Beispielsweise werden für Ihren Endpunkt ggf. nur Ereignisse für Vorgänge verarbeitet, die `Microsoft.Compute/virtualMachines/write` oder `Microsoft.Storage/storageAccounts/write` entsprechen.
 
-Der Betreff des Ereignisses ist die Ressourcen-ID der Ressource, die das Ziel des Vorgangs ist. Geben Sie zum Filtern von Ereignissen für eine Ressource beim Erstellen des Ereignisabonnements die Ressourcen-ID an. Informationen zu Beispielskripts finden Sie unter [Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit PowerShell](scripts/event-grid-powershell-resource-group-filter.md) oder [Abonnieren von Ereignissen für eine Ressourcengruppe und Filtern nach einer Ressource mit der Azure CLI](scripts/event-grid-cli-resource-group-filter.md). Verwenden Sie zum Filtern nach einem Ressourcentyp einen Wert im folgenden Format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+Der Betreff des Ereignisses ist die Ressourcen-ID der Ressource, die das Ziel des Vorgangs ist. Geben Sie zum Filtern von Ereignissen für eine Ressource beim Erstellen des Ereignisabonnements die Ressourcen-ID an. Verwenden Sie zum Filtern nach einem Ressourcentyp einen Wert im folgenden Format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+
+Eine Liste von Beispielskripts und Tutorials finden Sie in den Informationen zur [Ereignisquelle für Azure-Abonnements](event-sources.md#azure-subscriptions).
 
 ## <a name="available-event-types"></a>Verfügbare Ereignistypen
 

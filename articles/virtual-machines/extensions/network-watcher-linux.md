@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: db508e2311602a66a2c252ffaa842f8bfb4f670b
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 22b18f77b3d997cdba7b60b53f1968b516701cc1
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076070"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144096"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>VM-Erweiterung für den Network Watcher-Agent für Linux
 
@@ -28,7 +28,7 @@ ms.locfileid: "34076070"
 
 [Azure Network Watcher](/azure/network-watcher/) ist ein Dienst zur Überwachung, Diagnose und Analyse der Netzwerkleistung, der die Überwachung von Azure-Netzwerken ermöglicht. Die VM-Erweiterung für den Network Watcher-Agent ist eine Voraussetzung für einige Network Watcher-Features auf Azure-VMs, wie etwa die bedarfsgesteuerte Erfassung von Netzwerkdatenverkehr und andere erweiterte Funktionalität.
 
-Dieser Artikel enthält ausführliche Informationen zu den unterstützten Plattformen und Bereitstellungsoptionen für die VM-Erweiterung für den Network Watcher-Agent für Linux. Die Installation des Agents führt nicht zu einer Unterbrechung, und die VM muss nicht neu gestartet werden.
+Dieser Artikel enthält ausführliche Informationen zu den unterstützten Plattformen und Bereitstellungsoptionen für die VM-Erweiterung für den Network Watcher-Agent für Linux. Die Installation des Agents führt nicht zu einer Unterbrechung, und die VM muss nicht neu gestartet werden. Sie können die Erweiterung auf den von Ihnen bereitgestellten virtuellen Computern bereitstellen. Wenn der virtuelle Computer von einem Azure-Dienst bereitgestellt wird, lesen Sie die Dokumentation für den Dienst, um zu bestimmen, ob dieser das Installieren von Erweiterungen auf dem virtuellen Computer erlaubt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,10 +40,10 @@ Die VM-Erweiterung für den Network Watcher-Agent kann für folgende Linux-Distr
 |---|---|
 | Ubuntu | 16.04 LTS, 14.04 LTS und 12.04 LTS |
 | Debian | 7 und 8 |
-| RedHat | 6 und 7 |
+| Red Hat | 6 und 7 |
 | Oracle Linux | 6.8 und höher und 7 |
 | SUSE Linux Enterprise Server | 11 und 12 |
-| openSUSE Leap | 42.3 und höher |
+| OpenSUSE Leap | 42.3 und höher |
 | CentOS | 6.5 und höher und 7 |
 | CoreOS | 899.17.0 und höher |
 

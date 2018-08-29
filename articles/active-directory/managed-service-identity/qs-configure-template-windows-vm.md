@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 79b499f8063e5c15f76d89182955cbd90fb1039f
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4b25c82de4d2d3f4300fbb688c75be74ce63fe40
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629309"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141990"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurieren einer verwalteten VM-Dienstidentität mithilfe einer Vorlage
 
@@ -57,23 +57,15 @@ In diesem Abschnitt aktivieren und deaktivieren Sie eine vom System zugewiesene 
 
 1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
 
-2. Nachdem die Vorlage in einen Editor geladen wurde, suchen Sie die gewünschte `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Dieser Screenshot weicht möglicherweise geringfügig von der Darstellung bei Ihnen ab. Dies hängt davon ab, welchen Editor Sie verwenden und ob Sie eine Vorlage für eine neue oder eine vorhandene Bereitstellung bearbeiten.
-
-   >[!NOTE] 
-   > Dieses Beispiel setzt voraus, dass Variablen wie z. B. `vmName`, `storageAccountName`, und `nicName` in der Vorlage definiert wurden.
-   >
-
-   ![Screenshot der Vorlage – VM suchen](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-before.png) 
-
-3. Um eine vom System zugewiesene Identität zu aktivieren, fügen Sie die Eigenschaft `"identity"` auf der gleichen Ebene wie die Eigenschaft `"type": "Microsoft.Compute/virtualMachines"` hinzu. Verwenden Sie die folgende Syntax:
+2. Um die vom System zugewiesene Identität zu aktivieren, laden Sie die Vorlage in einem Editor, suchen Sie die gewünschte Ressource `Microsoft.Compute/virtualMachines` im Abschnitt `resources`, und fügen Sie die `"identity"`-Eigenschaft in der gleichen Ebene wie die `"type": "Microsoft.Compute/virtualMachines"`-Eigenschaft hinzu. Verwenden Sie die folgende Syntax:
 
    ```JSON
    "identity": { 
-       "type": "systemAssigned"
+       "type": "SystemAssigned"
    },
    ```
 
-4. (Optional) Fügen Sie die VM-Erweiterung der verwalteten Dienstidentität als `resources`-Element hinzu. Dieser Schritt ist optional, da Sie für den Tokenabruf auch den Azure IMDS-Identitätsendpunkt (Instance Metadata Service) verwenden können.  Verwenden Sie die folgende Syntax:
+3. (Optional) Fügen Sie die VM-Erweiterung der verwalteten Dienstidentität als `resources`-Element hinzu. Dieser Schritt ist optional, da Sie für den Tokenabruf auch den Azure IMDS-Identitätsendpunkt (Instance Metadata Service) verwenden können.  Verwenden Sie die folgende Syntax:
 
    >[!NOTE] 
    > Im folgenden Beispiel wird angenommen, dass eine Windows-VM-Erweiterung (`ManagedIdentityExtensionForWindows`) bereitgestellt wird. Sie können die Konfiguration auch für Linux ausführen, indem Sie stattdessen `ManagedIdentityExtensionForLinux` für die Elemente `"name"` und `"type"` verwenden.
@@ -83,7 +75,7 @@ In diesem Abschnitt aktivieren und deaktivieren Sie eine vom System zugewiesene 
    { 
        "type": "Microsoft.Compute/virtualMachines/extensions",
        "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-       "apiVersion": "2016-03-30",
+       "apiVersion": "2018-06-01",
        "location": "[resourceGroup().location]",
        "dependsOn": [
            "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
@@ -101,9 +93,40 @@ In diesem Abschnitt aktivieren und deaktivieren Sie eine vom System zugewiesene 
    }
    ```
 
-5. Wenn Sie fertig sind, sollte Ihre Vorlage wie folgt aussehen:
+4. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein, und diese sollte wie folgt aussehen:
 
-   ![Screenshot der Vorlage nach dem Update](../managed-service-identity/media/msi-qs-configure-template-windows-vm/template-file-after.png)
+   ```JSON
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "SystemAssigned",
+                },
+            },
+            {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "apiVersion": "2018-06-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+                }
+            }
+        }
+    ]
+   ```
 
 ### <a name="assign-a-role-the-vms-system-assigned-identity"></a>Zuweisen einer Rolle zur vom VM-System zugewiesenen Identität
 
@@ -155,18 +178,28 @@ Wenn eine verwaltete Dienstidentität auf einer VM nicht mehr benötigt wird, ge
 
 1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
 
-2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Wenn Ihre VM nur über eine vom System zugewiesene Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.  Wenn Ihre VM sowohl vom System als auch vom Benutzer zugewiesene Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem Array `identityIds` der vom Benutzer zugewiesenen Identitäten bei.  Das folgende Beispiel zeigt Ihnen, wie Sie eine vom System zugewiesene Identität aus einer VM ohne vom Benutzer zugewiesene Identitäten entfernen:
+2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Wenn Ihre VM nur über eine vom System zugewiesene Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.  
    
-   ```JSON
-    {
-      "apiVersion": "2017-12-01",
-      "type": "Microsoft.Compute/virtualMachines",
-      "name": "[parameters('vmName')]",
-      "location": "[resourceGroup().location]",
-      "identity": { 
-          "type": "None"
-    }
-   ```
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
+
+   Wenn Ihre VM sowohl vom System als auch vom Benutzer zugewiesene Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit den `userAssignedIdentities`-Wörterbuchwerten bei.
+
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01 und früher**
+   
+   Wenn `2017-12-01` als `apiVersion` verwendet wird und Ihre VM sowohl vom System als auch vom Benutzer zugewiesene Identitäten enthält, entfernen Sie `SystemAssigned` aus dem Identitätstyp und behalten `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen Identitäten bei.  
+   
+Das folgende Beispiel zeigt Ihnen, wie Sie eine vom System zugewiesene Identität aus einer VM ohne vom Benutzer zugewiesene Identitäten entfernen:
+
+```JSON
+{
+    "apiVersion": "2018-06-01",
+    "type": "Microsoft.Compute/virtualMachines",
+    "name": "[parameters('vmName')]",
+    "location": "[resourceGroup().location]",
+    "identity": { 
+        "type": "None"
+}
+```
 
 ## <a name="user-assigned-identity"></a>Benutzerzugewiesene Identität
 
@@ -178,30 +211,52 @@ In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vor
  ### <a name="assign-a-user-assigned-identity-to-an-azure-vm"></a>Zuweisen einer vom Benutzer zugewiesenen Identität zu einer Azure-VM
 
 1. Fügen Sie unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM eine vom Benutzer zugewiesene Identität zuzuweisen.  Achten Sie darauf, dass Sie `<USERASSIGNEDIDENTITY>` durch den Namen der benutzerzugewiesenen Identität ersetzen, die Sie erstellt haben.
+
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**
+
+   Wenn `2018-06-01` als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen Identitäten im `userAssignedIdentities`-Wörterbuchformat gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
+
+   ```json
+   {
+       "apiVersion": "2018-06-01",
+       "type": "Microsoft.Compute/virtualMachines",
+       "name": "[variables('vmName')]",
+       "location": "[resourceGroup().location]",
+       "identity": {
+           "type": "userAssigned",
+           "userAssignedIdentities": {
+               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+           }
+        }
+   }
+   ```
    
-   > [!Important]
-   > Der Wert `<USERASSIGNEDIDENTITYNAME>`, der in folgendem Beispiel dargestellt wird, muss in einer Variable gespeichert werden.  Für die derzeit unterstützte Implementierung der Zuweisung von Identitäten zu virtuellen Computern durch Benutzer mithilfe von Resource Manager-Vorlagen muss die API-Version mit der im folgenden Beispiel übereinstimmen.
+   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01 und früher**
     
-    ```json
-    {
-        "apiVersion": "2017-12-01",
-        "type": "Microsoft.Compute/virtualMachines",
-        "name": "[variables('vmName')]",
-        "location": "[resourceGroup().location]",
-        "identity": {
-            "type": "userAssigned",
-            "identityIds": [
-                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
-            ]
-        },
-    ```
+   Wenn `2017-12-01` als `apiVersion` verwendet wird, werden die vom Benutzer zugewiesenen Identitäten im `identityIds`-Array gespeichert, und der Wert `<USERASSIGNEDIDENTITYNAME>` muss in einer im Abschnitt `variables` der Vorlage definierten Variable gespeichert werden.
     
+   ```json
+   {
+       "apiVersion": "2017-12-01",
+       "type": "Microsoft.Compute/virtualMachines",
+       "name": "[variables('vmName')]",
+       "location": "[resourceGroup().location]",
+       "identity": {
+           "type": "userAssigned",
+           "identityIds": [
+               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
+           ]
+       }
+   }
+   ```
+       
+
 2. (Optional) Fügen Sie als Nächstes unter dem `resources`-Element den folgenden Eintrag hinzu, um Ihrer VM die Erweiterung der verwalteten Identität zuzuweisen. Dieser Schritt ist optional, da Sie für den Tokenabruf auch den Azure IMDS-Identitätsendpunkt (Instance Metadata Service) verwenden können. Verwenden Sie die folgende Syntax:
     ```json
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",
         "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForWindows')]",
-        "apiVersion": "2015-05-01-preview",
+        "apiVersion": "2018-06-01",
         "location": "[resourceGroup().location]",
         "dependsOn": [
             "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
@@ -218,9 +273,83 @@ In diesem Abschnitt weisen Sie einer Azure-VM mit der Azure Resource Manager-Vor
     }
     ```
     
-3.  Wenn Sie fertig sind, sollte Ihre Vorlage wie folgt aussehen:
+3. Wenn Sie fertig sind, sollten die folgenden Abschnitte dem Abschnitt `resource` der Vorlage hinzugefügt worden sein, und diese sollte wie folgt aussehen:
+   
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01**    
 
-      ![Screenshot einer benutzerzugewiesenen Identität](./media/qs-configure-template-windows-vm/qs-configure-template-windows-vm-ua-final.PNG)
+   ```JSON
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2018-06-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "userAssigned",
+                "userAssignedIdentities": {
+                   "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "apiVersion": "2018-06-01-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+            }
+        }
+       }
+    ]
+   ```
+   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01 und früher**
+   
+   ```JSON
+   "resources": [
+        {
+            //other resource provider properties...
+            "apiVersion": "2017-12-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "location": "[resourceGroup().location]",
+            "identity": {
+                "type": "userAssigned",
+                "identityIds": [
+                   "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]"
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('vmName'),'/ManagedIdentityExtensionForLinux')]",
+            "apiVersion": "2015-05-01-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.ManagedIdentity",
+                "type": "ManagedIdentityExtensionForWindows",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "port": 50342
+            }
+        }
+       }
+    ]
+   ```
+    
 
 ### <a name="remove-user-assigned-identity-from-an-azure-vm"></a>Entfernen einer benutzerzugewiesenen Identität von einem virtuellen Azure-Computer
 
@@ -228,15 +357,13 @@ Wenn eine verwaltete Dienstidentität auf einer VM nicht mehr benötigt wird, ge
 
 1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
 
-2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Wenn Ihre VM nur über eine vom System zugewiesene Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.  Wenn Ihre VM sowohl vom System als auch vom Benutzer zugewiesene Identitäten enthält, und Sie die vom System zugewiesene Identität behalten möchten, entfernen Sie `UserAssigned` zusammen mit dem `identityIds`-Array der vom Benutzer zugewiesenen Identitäten aus dem Identitätstyp.
-    
-   Um eine einzelne vom Benutzer zugewiesene Identität von einem virtuellen Computer zu entfernen, entfernen Sie sie aus dem `identityIds`-Array.
-   
+2. Laden Sie die Vorlage in einen [Editor](#azure-resource-manager-templates), und suchen Sie nach der gewünschten `Microsoft.Compute/virtualMachines`-Ressource im Abschnitt `resources`. Wenn Ihre VM nur über eine vom System zugewiesene Identität verfügt, können Sie diese deaktivieren, indem Sie den Identitätstyp in `None` ändern.
+ 
    Das folgende Beispiel zeigt Ihnen, wie Sie alle vom Benutzer zugewiesenen Identitäten von einer VM ohne vom System zugewiesene Identitäten entfernen:
    
-   ```JSON
+   ```json
     {
-      "apiVersion": "2017-12-01",
+      "apiVersion": "2018-06-01",
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[parameters('vmName')]",
       "location": "[resourceGroup().location]",
@@ -244,7 +371,19 @@ Wenn eine verwaltete Dienstidentität auf einer VM nicht mehr benötigt wird, ge
           "type": "None"
     }
    ```
+   
+   **Microsoft.Compute/virtualMachines-API, Version 2018-06-01 und früher**
+    
+   Um eine einzelne vom Benutzer zugewiesene Identität von einem virtuellen Computer zu entfernen, entfernen Sie sie aus dem `useraAssignedIdentities`-Wörterbuch.
 
+   Wenn Sie eine vom System zugewiesene Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
+ 
+   **Microsoft.Compute/virtualMachines-API, Version 2017-12-01**
+
+   Um eine einzelne vom Benutzer zugewiesene Identität von einem virtuellen Computer zu entfernen, entfernen Sie sie aus dem `identityIds`-Array.
+
+   Wenn Sie eine vom System zugewiesene Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
+   
 ## <a name="related-content"></a>Verwandte Inhalte
 
 - Ausführliche Informationen zur verwalteten Dienstidentität finden Sie unter [Was ist die verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen?](overview.md).

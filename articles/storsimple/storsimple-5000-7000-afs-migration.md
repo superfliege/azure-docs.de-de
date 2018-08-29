@@ -11,16 +11,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/10/2018
+ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 4dc4ddb2d11cf792bfa6288eadce8eb03470ae1d
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099721"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145118"
 ---
-# <a name="migrate-data-from-storsimple-5000-7000-series"></a>Migrieren von Daten aus StorSimple Serie 5000/7000 
+# <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrieren von Daten aus der StorSimple-Serie 5000/7000 zur Azure-Dateisynchronisierung
 
 Die Datenmigration ist der Prozess des Verschiebens von Daten aus einem Speicherort in einen anderen. Dabei muss eine genaue Kopie der auf einem Gerät befindlichen aktuellen Daten einer Organisation auf einem anderen Gerät erstellt werden – vorzugsweise ohne Unterbrechung oder Deaktivierung aktiver Anwendungen – und dann die gesamte Eingabe/Ausgabe-Aktivität (E/A) auf das neue Gerät umgeleitet werden. 
 
@@ -67,17 +67,17 @@ Das Migrieren von Daten aus StorSimple 5000/7000 zu AFS ist ein zweistufiger Pro
 
 Führen Sie die folgenden Schritte aus, um die auf StorSimple-Volumes konfigurierte Windows-Dateifreigabe zu einer Freigabe der Azure-Dateisynchronisierung zu migrieren. 
 1.  Führen Sie diese Schritte auf dem gleichen Windows Server-Host aus, auf dem die StorSimple-Volumes eingebunden sind, oder verwenden Sie ein anderes System. 
-    - [Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [Installieren des Azure-Dateisynchronisierungs-Agents](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal).
-    - [Bereitstellen des Speichersynchronisierungsdiensts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [Registrieren eines Windows-Servers beim Speichersynchronisierungsdienst](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). 
-    - [Erstellen einer Synchronisierungsgruppe und eines Cloudendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal. Synchronisierungsgruppen müssen für jede Windows-Dateifreigabe erstellt werden, die vom Host migriert werden muss.
-    - [Erstellen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal). Geben Sie den Pfad als den Pfad des StorSimple-Volumes an, das Ihre Dateifreigabedaten enthält. Wenn das StorSimple-Volume z.B. Laufwerk `J` ist, und Ihre Daten befinden sich in `J:/<myafsshare>`, dann fügen Sie diesen Pfad als Serverendpunkt hinzu. Behalten Sie **Tiering** als **Deaktiviert** bei.
+    - [Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#prepare-windows-server-to-use-with-azure-file-sync).
+    - [Installieren des Azure-Dateisynchronisierungs-Agents](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#install-the-azure-file-sync-agent).
+    - [Bereitstellen des Speichersynchronisierungsdiensts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#deploy-the-storage-sync-service). 
+    - [Registrieren eines Windows-Servers beim Speichersynchronisierungsdienst](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#register-windows-server-with-storage-sync-service). 
+    - [Erstellen einer Synchronisierungsgruppe und eines Cloudendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide#create-a-sync-group-and-a-cloud-endpoint) Synchronisierungsgruppen müssen für jede Windows-Dateifreigabe erstellt werden, die vom Host migriert werden muss.
+    - [Erstellen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=portal#create-a-server-endpoint). Geben Sie den Pfad als den Pfad des StorSimple-Volumes an, das Ihre Dateifreigabedaten enthält. Wenn das StorSimple-Volume z.B. Laufwerk `J` ist, und Ihre Daten befinden sich in `J:/<myafsshare>`, dann fügen Sie diesen Pfad als Serverendpunkt hinzu. Behalten Sie **Tiering** als **Deaktiviert** bei.
 2.  Warten Sie, bis die Dateiserversynchronisierung abgeschlossen ist. Stellen Sie bei jedem Server in einer bestimmten Synchronisierungsgruppe Folgendes sicher:
     - Die Zeitstempel für „Letzter Synchronisierungsversuch“ für Uploads und Downloads sind aktuell.
     - Der Status ist sowohl für Uploads als auch für Downloads grün.
-    - „Synchronisierungsaktivität“ zeigt nur sehr wenige oder keine Dateien an, die synchronisiert werden müssen.
-    - „Dateien ohne Synchronisierung“ ist für Uploads und Downloads „0“.
+    - **Synchronisierungsaktivität** zeigt nur sehr wenige oder keine Dateien an, die synchronisiert werden müssen.
+    - **Dateien ohne Synchronisierung** ist für Uploads und Downloads „0“.
     Weitere Informationen dazu, wann die Serversynchronisierung abgeschlossen ist, finden Sie unter [Wie erkenne ich, ob meine Server miteinander synchronisiert sind?](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#how-do-i-know-if-my-servers-are-in-sync-with-each-other). Die Synchronisierung kann je nach Datenmenge und Bandbreite mehrere Stunden bis Tage dauern. Nachdem die Synchronisierung abgeschlossen ist, sind all Ihre Daten sicher in der Azure-Dateifreigabe gespeichert. 
 3.  Wechseln Sie zu den Freigaben auf den StorSimple-Volumes. Wählen Sie eine Freigabe aus, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Eigenschaften** aus. Beachten Sie die Freigabeberechtigungen unter **Sicherheit**. Diese Berechtigungen müssen in einem späteren Schritt manuell auf die neue Freigabe angewendet werden.
 4.  Die nächsten Schritte unterscheiden sich je nachdem, ob Sie den gleichen Windows Server-Host oder einen anderen verwenden.

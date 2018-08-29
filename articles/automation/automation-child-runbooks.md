@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/04/2018
+ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 582513e7e556859e70c1af9c4f6179e1d60e0139
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216716"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141352"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 
@@ -42,7 +42,7 @@ Bedeutung der Reihenfolge der Veröffentlichung:
 
 * Die Veröffentlichungsreihenfolge von Runbooks spielt nur für PowerShell-Workflow- und grafische PowerShell-Workflow-Runbooks eine Rolle.
 
-Wenn Sie ein untergeordnetes grafisches oder PowerShell-Workflow-Runbook mit Inlineausführung aufrufen, verwenden Sie einfach den Namen des Runbooks.  Wenn Sie ein untergeordnetes PowerShell-Runbook aufrufen, müssen Sie seinem Namen *.\\* voranstellen, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet. 
+Wenn Sie ein untergeordnetes grafisches oder PowerShell-Workflow-Runbook mit Inlineausführung aufrufen, verwenden Sie einfach den Namen des Runbooks.  Wenn Sie ein untergeordnetes PowerShell-Runbook aufrufen, müssen Sie den Namen mit *.\\* beginnen, um anzugeben, dass sich das Skript im lokalen Verzeichnis befindet.
 
 ### <a name="example"></a>Beispiel
 
@@ -72,25 +72,36 @@ Wenn Sie nicht möchten, dass das übergeordnete Runbook beim Warten blockiert w
 
 Parameter für ein mittels Cmdlet gestartetes untergeordnetes Runbook werden wie unter [Runbook-Parameter](automation-starting-a-runbook.md#runbook-parameters)beschrieben als Hashtabelle bereitgestellt. Es können nur einfache Datentypen verwendet werden. Enthält das Runbook einen Parameter mit einem komplexen Datentyp, muss es inline aufgerufen werden.
 
+Wenn Sie mit mehreren Abonnements arbeiten, geht beim Aufrufen untergeordneter Runbooks möglicherweise der Abonnementkontext verloren. Um sicherzustellen, dass der Abonnementkontext an die untergeordneten Runbooks übergeben wird, fügen Sie den Parameter `DefaultProfile` zum Cmdlet hinzu, und übergeben Sie darin den Kontext.
+
 ### <a name="example"></a>Beispiel
 
 Im folgenden Beispiel wird ein untergeordnetes Runbook mit Parametern gestartet und anschließend auf seinen Abschluss gewartet. Dabei wird „Start-AzureRmAutomationRunbook“ mit dem Parameter „-wait“ verwendet. Danach wird die Ausgabe aus dem untergeordneten Runbook abgerufen. Sie müssen sich bei Ihrem Azure-Abonnement authentifizieren, um `Start-AzureRmAutomationRunbook` verwenden zu können.
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
-$conn = Get-AutomationConnection -Name "AzureRunAsConnection"
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
-$null = Add-AzureRmAccount `
-  -ServicePrincipal `
-  -TenantId $conn.TenantId `
-  -ApplicationId $conn.ApplicationId `
-  -CertificateThumbprint $conn.CertificateThumbprint
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
 
 $params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
-$joboutput = Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-ChildRunbook" -ResourceGroupName "LabRG" –Parameters $params –wait
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
 ```
 
 ## <a name="comparison-of-methods-for-calling-a-child-runbook"></a>Vergleich der Methoden zum Aufrufen eines untergeordneten Runbooks
+
 Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen den beiden Methoden zum Aufrufen eines untergeordneten Runbooks.
 
 |  | Inline | Cmdlet |

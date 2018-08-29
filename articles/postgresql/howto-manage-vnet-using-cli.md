@@ -9,20 +9,20 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/01/2018
-ms.openlocfilehash: 7312000d1f22af3eb0091b46caac2c9607231513
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 08/15/2018
+ms.openlocfilehash: b25a1a1291433e3406c89383b0ca29a65a9583cb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531700"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142197"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-using-azure-cli"></a>Erstellen und Verwalten von VNet-Dienstendpunkten für Azure Database for PostgreSQL mithilfe der Azure CLI
-VNet-Dienstendpunkte und -regeln (Virtual Network) erweitern den privaten Adressraum eines virtuellen Netzwerks auf Ihren Azure Database for PostgreSQL-Server. Dank praktischer Azure Command Line Interface-Befehle (CLI) können Sie zum Verwalten Ihres Servers VNet-Dienstendpunkte und -regeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über die VNet-Dienstendpunkte für Azure Database for PostgreSQL, einschließlich Einschränkungen, finden Sie unter [Azure Database for PostgreSQL Server VNet service endpoints (VNet-Dienstendpunkte für Azure Database for PostgreSQL Server)](concepts-data-access-and-security-vnet.md). VNET-Dienstendpunkte sind in der öffentlichen Vorschau in allen unterstützten Regionen für Azure Database for PostgreSQL verfügbar.
+VNet-Dienstendpunkte und -regeln (Virtual Network) erweitern den privaten Adressraum eines virtuellen Netzwerks auf Ihren Azure Database for PostgreSQL-Server. Dank praktischer Azure Command Line Interface-Befehle (CLI) können Sie zum Verwalten Ihres Servers VNet-Dienstendpunkte und -regeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über die VNet-Dienstendpunkte für Azure Database for PostgreSQL, einschließlich Einschränkungen, finden Sie unter [Azure Database for PostgreSQL Server VNet service endpoints (VNet-Dienstendpunkte für Azure Database for PostgreSQL Server)](concepts-data-access-and-security-vnet.md). VNET-Dienstendpunkte sind in allen unterstützten Regionen für Azure Database for PostgreSQL verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
-- Installieren Sie das [Azure CLI 2.0](/cli/azure/install-azure-cli)-Befehlszeilenprogramm, oder verwenden Sie Azure Cloud Shell im Browser.
+- Installieren Sie das [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-Befehlszeilenprogramm, oder verwenden Sie Azure Cloud Shell im Browser.
 - Einen [Server und eine Datenbank für Azure Database for PostgreSQL](quickstart-create-server-database-azure-cli.md).
 
 > [!NOTE]
@@ -35,29 +35,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Informationen dazu. 
 
-Wenn Sie die CLI lokal ausführen, müssen Sie sich mit dem Befehl [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) an Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id** aus der Befehlsausgabe für den entsprechenden Abonnementnamen.
+Wenn Sie die CLI lokal ausführen, müssen Sie sich mit dem Befehl [az login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) an Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id** aus der Befehlsausgabe für den entsprechenden Abonnementnamen.
 ```azurecli-interactive
 az login
 ```
-Installieren Sie die CLI-Erweiterung für die VNet-Dienstendpunkte für Azure Database for PostgreSQL mithilfe des `az extension add --name rdbms-vnet`-Befehls. 
-```azurecli-interactive
-az extension add --name rdbms-vnet
-```
 
-Führen Sie den `az extension list`-Befehl aus, um die Installation der CLI-Erweiterung zu überprüfen.
-```azurecli-interactive
-az extension list
-```
-Die Ausgabe des Befehls listet alle installierte Erweiterungen auf. Die Azure Database for PostgreSQL-Erweiterung lautet:
-
- { "extensionType": "whl", "name": "rdbms-vnet", "version": "10.0.0" }
-
-> [!NOTE]
-> Führen Sie den Befehl `az extension remove -n rdbms-vnet` aus, um die CLI-Erweiterung zu deinstallieren. 
-
-Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account#az_account_set) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die Eigenschaft **id** aus der Ausgabe von **az login** für Ihr Abonnement.
+Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Wählen Sie mithilfe des Befehls [az account set](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set) die Abonnement-ID unter Ihrem Konto aus. Ersetzen Sie den Platzhalter für die Abonnement-ID durch die Eigenschaft **id** aus der Ausgabe von **az login** für Ihr Abonnement.
 
 - Das Konto muss über die erforderlichen Berechtigungen zum Erstellen eines virtuellen Netzwerks und eines Dienstendpunkts verfügen.
 
@@ -67,7 +52,7 @@ Zum Schützen der Ressourcen von Azure-Diensten in einem VNET muss der Benutzer 
 
 Erfahren Sie mehr über [integrierte Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) und das Zuweisen bestimmter Berechtigungen zu [benutzerdefinierten Rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
 
-VNETs und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Wenn das VNet und die Ressourcen von Azure-Diensten in unterschiedlichen Abonnements enthalten sind, sollten sich die Ressourcen im Rahmen dieser Vorschauversion unter demselben Active Directory-Mandanten befinden.
+VNETs und Ressourcen von Azure-Diensten können sich in demselben oder in unterschiedlichen Abonnements befinden. Wenn das VNET und die Ressourcen von Azure-Diensten in unterschiedlichen Abonnements enthalten sind, sollten sich die Ressourcen unter demselben Active Directory-Mandanten (AD) befinden.
 
 > [!IMPORTANT]
 > Es wird dringend empfohlen, diesen Artikel zu Dienstendpunktkonfigurationen und -überlegungen zu lesen, bevor Sie das unten aufgeführte Beispielskript ausführen oder Dienstendpunkte konfigurieren. **Dienstendpunkte im virtuellen Netzwerk:** Ein [Dienstendpunkt im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md) ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. VNET-Dienstendpunkte verwenden den Diensttypnamen **Microsoft.Sql**, der auf den Azure-Dienst „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Dienste Azure SQL-Datenbank, Azure Database for PostgreSQL und Azure Database for MySQL. Bitte beachten Sie bei der Anwendung des **Microsoft.Sql**-Diensttags auf einem VNet-Dienstendpunkt die Konfiguration des Dienstendpunktverkehrs für alle Azure-Datenbankdienste, einschließlich Azure SQL-Datenbank, Azure Database for PostgreSQL und Azure Database for MySQL-Server im Subnetz. 

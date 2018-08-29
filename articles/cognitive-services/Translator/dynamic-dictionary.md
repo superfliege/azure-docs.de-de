@@ -9,12 +9,12 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a18348c9786669ac41c4e149577d97cd631d5531
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dbc754093827730b8709d67f314e5b327518ef50
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378412"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41929836"
 ---
 # <a name="how-to-use-the-dynamic-dictionary-feature-of-the-microsoft-translator-text-api"></a>Verwenden der Funktion für das dynamische Wörterbuch der Textübersetzungs-API von Microsoft
 
@@ -32,5 +32,5 @@ Zielausgabe: Das Wort „wordomatic“ ist ein Wörterbucheintrag.
 
 Diese Funktion lässt sich gleichermaßen mit und ohne HTML-Modus ausführen. 
 
-Sie sollte in Maßen eingesetzt werden. Der Microsoft Translator Hub ist für die Anpassung einer Übersetzung deutlich besser geeignet. Er nutzt den Kontext und statistische Wahrscheinlichkeiten in vollem Umfang. Sie erhalten viel bessere Ergebnisse, wenn Sie über Trainingsdaten verfügen oder sich die Erstellung von Trainingsdaten leisten können, die den Kontext des Worts oder des Ausdrucks zeigen. Weitere Informationen zum Hub finden Sie unter [http://hub.microsofttranslator.com](http://hub.microsofttranslator.com).
+Sie sollte in Maßen eingesetzt werden. Für die Anpassung einer Übersetzung ist Custom Translator deutlich besser geeignet. Custom Translator nutzt den Kontext und statistische Wahrscheinlichkeiten in vollem Umfang. Sie erhalten viel bessere Ergebnisse, wenn Sie über Trainingsdaten verfügen oder Trainingsdaten erstellen können, die den Kontext des Worts oder des Ausdrucks zeigen. Weitere Informationen zu Custom Translator finden Sie unter [http://aka.ms/CustomTranslator](http://aka.ms/CustomTranslator).
 

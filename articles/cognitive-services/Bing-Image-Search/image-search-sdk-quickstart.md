@@ -1,6 +1,6 @@
 ---
-title: 'C#-Schnellstart: SDK für die Bildersuche | Microsoft-Dokumentation'
-description: Einrichten des Bildersuche-SDK für die Konsolenanwendung in C#
+title: 'Schnellstart: Anfordern und Filtern von Bildern mit dem SDK mit C#'
+description: In diesem Schnellstart fordern Sie Bilder an und filtern die von der Bing-Bildersuche zurückgegebenen Bilder mithilfe von C#.
 titleSuffix: Azure cognitive services setup Image search SDK C# console application
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: v-gedod
-ms.openlocfilehash: f58556f13bb25c3ea2ed9378c0669d649554a8c0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 81375019e53b49b531fde1f81fbcb9a061cc5562
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377906"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929867"
 ---
-# <a name="image-search-sdk-c-quickstart"></a>C#-Schnellstart für das SDK für die Bildersuche
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-c"></a>Schnellstart: Anfordern und Filtern von Bildern mit dem SDK und C#
 
 Das Bing-Bildersuche-SDK enthält die Funktionalität der REST-API für wiederholte Bildanforderungen und das Analysieren von Ergebnissen. 
 
@@ -406,4 +406,4 @@ Suchen Sie erst nach Bildern für „Degas“, und suchen Sie anschließend nach
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Cognitive services .NET SDK samples (Cognitive Services SDK-Beispiele für .NET)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive Services SDK-Beispiele für .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

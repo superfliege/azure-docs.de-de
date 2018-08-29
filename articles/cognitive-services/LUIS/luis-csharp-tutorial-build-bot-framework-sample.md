@@ -1,24 +1,24 @@
 ---
-title: Integrieren eines Bots in LUIS mit dem Bot Builder SDK für C# in Azure | Microsoft-Dokumentation
-description: Erstellen Sie mithilfe des Bot-Frameworks einen Bot, der in eine LUIS-Anwendung integriert ist.
+title: Integrieren eines Bots in LUIS mit dem Bot Builder SDK mithilfe von C# – Azure Cognitive Services | Microsoft-Dokumentation
+description: Erstellen Sie mithilfe von C# einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot. Dieser Chatbot verwendet die vordefinierte HomeAutomation-Domäne, um schnell eine Botlösung zu implementieren.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 08/13/2018
 ms.author: diberry
-ms.openlocfilehash: ca893dadfed04c90a4d89087299bf1cc2bf55eb9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225957"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41929937"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Web-App-Bot mit der LUIS-Vorlage für C#
 
-Erstellen Sie einen Chatbot mit Integration von Language Understanding.
+Erstellen Sie mithilfe von C# einen in LUIS (Language Understanding Intelligent Service) integrierten Chatbot. Dieser Chatbot verwendet die vordefinierte HomeAutomation-Domäne, um schnell eine Botlösung zu implementieren. 
 
 ## <a name="prerequisite"></a>Voraussetzung
 
@@ -148,7 +148,7 @@ Klicken Sie im Azure-Portal auf **Test in Web Chat** (Im Webchat testen), um den
 > Sie können Ihre LUIS-App erneut trainieren, ohne Änderungen am Code Ihres Bots vorzunehmen. Weitere Informationen finden Sie unter [Hinzufügen von Beispieläußerungen](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) und [Trainieren und Testen der LUIS-App](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Herunterladen des Bots zum Debuggen
-Wenn Ihr Bot nicht funktioniert, laden Sie das Projekt auf Ihren lokalen Computer herunter, und fahren Sie mit dem [Debuggen](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot) fort. 
+Wenn Ihr Bot nicht funktioniert, laden Sie das Projekt auf Ihren lokalen Computer herunter, und fahren Sie mit dem [Debuggen](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-a-c-bot) fort. 
 
 ## <a name="learn-more-about-bot-framework"></a>Weitere Informationen über das Bot-Framework
 Erfahren Sie mehr über das [Bot-Framework](https://dev.botframework.com/) und die SDKs der Versionen [3.x](https://github.com/Microsoft/BotBuilder) und [4.x](https://github.com/Microsoft/botbuilder-dotnet).

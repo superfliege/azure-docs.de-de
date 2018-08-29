@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure CLI 2.0 und der IoT-Erweiterung zum Verwalten von Device Provisioning-Diensten | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Azure CLI 2.0 und die IoT-Erweiterung zum Verwalten von Device Provisioning-Diensten verwenden.
+title: Verwenden von Azure CLI und der IoT-Erweiterung zum Verwalten des IoT Hub Device Provisioning Service | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle und die IoT-Erweiterung zum Verwalten des IoT Hub Device Provisioning Service verwenden.
 author: chrissie926
 ms.author: menchi
 ms.date: 01/17/2018
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 174f8447b17d1fa580472cbb45d0a72f41c793c3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 70ce30bdc5a12aec198a2bb1b78c9bdfa8a18882
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628316"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142406"
 ---
-# <a name="how-to-use-azure-cli-20-and-the-iot-extension-to-manage-device-provisioning-services"></a>Verwenden von Azure CLI 2.0 und der IoT-Erweiterung zum Verwalten von Device Provisioning-Diensten
+# <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Verwenden von Azure CLI und der IoT-Erweiterung zum Verwalten des IoT Hub Device Provisioning Service
 
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) ist ein plattformübergreifendes Open-Source-Befehlszeilentool zum Verwalten von Azure-Ressourcen, z.B. IoT Edge. Azure CLI 2.0 ist unter Windows, Linux und MacOS verfügbar. Mit Azure CLI 2.0 können Sie Azure IoT Hub-Ressourcen, Instanzen des Device Provisioning-Diensts und verknüpfte Hubs ohne weitere Tools verwalten.
+Die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) ist ein plattformübergreifendes Open-Source-Befehlszeilentool zum Verwalten von Azure-Ressourcen wie IoT Edge. Die Azure-Befehlszeilenschnittstelle ist unter Windows, Linux und macOS verfügbar. Mit der Azure-Befehlszeilenschnittstelle können Sie Azure IoT Hub-Ressourcen, Instanzen von Device Provisioning Service und verknüpfte Hubs ohne weitere Tools verwalten.
 
-Mit der IoT-Erweiterung wird Azure CLI 2.0 um Features wie beispielsweise die Geräteverwaltung und umfassende IoT Edge-Funktionen erweitert.
+Mit der IoT-Erweiterung wird die Azure-Befehlszeilenschnittstelle um Features wie die Geräteverwaltung und umfassende IoT Edge-Funktionen erweitert.
 
-In diesem Tutorial führen Sie zuerst die Schritte zum Einrichten von Azure CLI 2.0 und der IoT-Erweiterung aus. Anschließend wird beschrieben, wie Sie CLI-Befehle zum Durchführen von einfachen Vorgängen für Device Provisioning-Dienste durchführen. 
+In diesem Tutorial führen Sie zuerst die Schritte zum Einrichten der Azure-Befehlszeilenschnittstelle und der IoT-Erweiterung aus. Anschließend wird beschrieben, wie Sie CLI-Befehle zum Durchführen von einfachen Vorgängen von Device Provisioning Service durchführen. 
 
 ## <a name="installation"></a>Installation 
 
@@ -29,17 +29,17 @@ In diesem Tutorial führen Sie zuerst die Schritte zum Einrichten von Azure CLI 
 
 [Python 2.7x oder Python 3.x](https://www.python.org/downloads/) ist erforderlich.
 
-### <a name="step-2---install-azure-cli-20"></a>Schritt 2: Installieren von Azure CLI 2.0
+### <a name="step-2---install-azure-cli"></a>Schritt 2: Installieren der Azure-Befehlszeilenschnittstelle
 
-Befolgen Sie die [Installationsanleitung](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), um Azure CLI 2.0 in Ihrer Umgebung einzurichten. Ihre Azure CLI 2.0-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. Eine einfache Möglichkeit zur Installation unter Windows besteht darin, den [Microsoft Windows Installer (MSI)](https://aka.ms/InstallAzureCliWindows) herunterzuladen und zu installieren.
+Befolgen Sie die [Installationsanleitung](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), um die Azure-Befehlszeilenschnittstelle in Ihrer Umgebung einzurichten. Ihre Azure CLI-Version muss mindestens 2.0.24 lauten. Verwenden Sie `az –version`, um dies zu überprüfen. Diese Version unterstützt az-Erweiterungsbefehle, und das Framework für Knack-Befehle wird eingeführt. Eine einfache Möglichkeit zur Installation unter Windows besteht darin, den [Microsoft Windows Installer (MSI)](https://aka.ms/InstallAzureCliWindows) herunterzuladen und zu installieren.
 
 ### <a name="step-3---install-iot-extension"></a>Schritt 3: Installieren der IoT-Erweiterung
 
 In der [Infodatei zur IoT-Erweiterung](https://github.com/Azure/azure-iot-cli-extension) werden mehrere Wege zum Installieren der Erweiterung beschrieben. Die einfachste Möglichkeit ist die Ausführung von `az extension add --name azure-cli-iot-ext`. Nach der Installation können Sie `az extension list` verwenden, um die derzeit installierten Erweiterungen zu überprüfen, oder mit `az extension show --name azure-cli-iot-ext` Details zur IoT-Erweiterung anzeigen. Sie können `az extension remove --name azure-cli-iot-ext` verwenden, um die Erweiterung zu entfernen.
 
 
-## <a name="basic-device-provisioning-service-operations"></a>Einfache Vorgänge für Device Provisioning-Dienste
-Im Beispiel wird veranschaulicht, wie Sie sich an Ihrem Azure-Konto anmelden, eine Azure-Ressourcengruppe erstellen (einen Container, der die Ressourcen für eine Azure-Lösung enthält), einen IoT Hub und einen Device Provisioning-Dienst erstellen, die vorhandenen Device Provisioning-Dienste auflisten und einen verknüpften IoT Hub mit CLI-Befehlen erstellen. 
+## <a name="basic-device-provisioning-service-operations"></a>Grundlegende Vorgänge des Device Provisioning Service
+Im Beispiel wird veranschaulicht, wie Sie sich bei Ihrem Azure-Konto anmelden, eine Azure-Ressourcengruppe erstellen (einen Container, der die Ressourcen für eine Azure-Lösung enthält), einen IoT Hub und einen Device Provisioning-Dienst erstellen, die vorhandenen Device Provisioning-Dienste auflisten und einen verknüpften IoT Hub mit CLI-Befehlen erstellen. 
 
 Führen Sie vor dem Fortfahren die oben beschriebenen Installationsschritte aus. Falls Sie noch kein Azure-Konto besitzen, können Sie sofort ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?v=17.39a). 
 
@@ -61,7 +61,7 @@ Führen Sie vor dem Fortfahren die oben beschriebenen Installationsschritte aus.
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps
 
-![DPS erstellen][3]
+![Erstellen des Device Provisioning Service][3]
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps2
 
@@ -69,7 +69,7 @@ Führen Sie vor dem Fortfahren die oben beschriebenen Installationsschritte aus.
 
     az iot dps list --resource-group IoTHubBlogDemo
 
-![DPS auflisten][4]
+![Auflisten der Device Provisioning-Dienste][4]
 
 
 ### <a name="5-create-an-iot-hub-blogdemohub-under-the-newly-created-resource-group"></a>5. Erstellen des IoT Hub „blogDemoHub“ unter der neu erstellten Ressourcengruppe
@@ -78,7 +78,7 @@ Führen Sie vor dem Fortfahren die oben beschriebenen Installationsschritte aus.
 
 ![IoT Hub erstellen][5]
 
-### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Verknüpfen eines vorhandenen IoT Hub mit einem Device Provisioning-Dienst
+### <a name="6-link-one-existing-iot-hub-to-a-device-provisioning-service"></a>6. Verknüpfen eines vorhandenen IoT Hubs mit einem Device Provisioning-Dienst
 
     az iot dps linked-hub create --resource-group IoTHubBlogDemo --dps-name demodps --connection-string <connection string> -l westus
 

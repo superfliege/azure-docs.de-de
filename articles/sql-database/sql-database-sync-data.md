@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 8fe77522297dc6020cf98f4532aea9f580d8bdb9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: ba1fdcf64592bdfe23195e781a21d7a2db693325
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004810"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144094"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
@@ -178,7 +178,10 @@ Nicht direkt. Sie können Daten zwischen lokalen SQL Server-Datenbanken jedoch i
 Ja. Sie können Daten zwischen SQL-Datenbanken aus Ressourcengruppen synchronisieren, die zu unterschiedlichen Abonnements gehören.
 -   Wenn die Abonnements zum gleichen Mandanten gehören und Sie über Berechtigungen für alle Abonnements verfügen, können Sie die Synchronisierungsgruppe im Azure-Portal konfigurieren.
 -   Andernfalls müssen die Synchronisierungsmitglieder unterschiedlicher Abonnements mithilfe von PowerShell hinzugefügt werden.
-   
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china"></a>Kann ich die Datensynchronisierung zwischen SQL-Datenbanken verschiedener Clouds (etwa öffentliche Azure-Cloud und Azure China) verwenden?
+Ja. Die Synchronisierung zwischen SQL-Datenbanken, die zu verschiedenen Clouds gehören, ist möglich. Sie müssen PowerShell verwenden, um die Synchronisierungsmitglieder der verschiedenen Abonnements hinzuzufügen.
+
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Kann ich mithilfe der Datensynchronisierung ein Seeding für Daten aus meiner Produktionsdatenbank in eine leere Datenbank ausführen und die Daten dann synchronisieren?
 
 Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manuell, das sich am Original orientiert. Nachdem Sie das Schema erstellt haben, fügen Sie Tabellen einer Synchronisierungsgruppe hinzu, um die Daten zu kopieren und synchron zu halten.

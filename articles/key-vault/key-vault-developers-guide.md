@@ -2,19 +2,19 @@
 title: Entwicklerhandbuch zu Azure-Schlüsseltresor
 description: Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten.
 services: key-vault
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
 ms.date: 10/12/2017
-ms.author: alleonar
-ms.openlocfilehash: 3a2ab6bbe2470fa12113ca4367316cf7a21190b8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.author: bryanla
+ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626727"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42142366"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -23,7 +23,7 @@ Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertr
 - Schlüssel und geheime Schlüssel werden geschützt, ohne dass Sie den Code selbst schreiben müssen, und können auf einfache Weise in Ihren Anwendungen verwendet werden.
 - Ihre Kunden können die Verantwortung für ihre eigenen Schlüssel übernehmen und diese selbst verwalten, sodass Sie sich auf die Bereitstellung der Hauptfunktionen der Software konzentrieren können. Auf diese Weise müssen Ihre Anwendungen weder die Verantwortung noch die Haftung für die Mandantenschlüssel und geheimen Mandantenschlüssel Ihrer Kunden übernehmen.
 - Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden, damit die Lösung auch für eine geografisch verteilte App geeignet ist.
-- Mit der Key Vault-Version vom September 2016 können Ihre Anwendungen nun auch Key Vault-[Zertifikate](https://docs.microsoft.com/rest/api/keyvault/certificate-operations) nutzen. Weitere Informationen finden Sie im Artikel [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
+- Mit der Key Vault-Version vom September 2016 können Ihre Anwendungen nun auch Key Vault-Zertifikate verwalten. Weitere Informationen finden Sie im Artikel [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
 
 Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-whatis.md).
 

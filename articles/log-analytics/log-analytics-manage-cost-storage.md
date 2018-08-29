@@ -12,17 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/27/2018
+ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 1d797df3f03e9b92569d37495310a5c162f5f981
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 3586804a8384273e5c0589bef9c586cee162939e
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130927"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145121"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics
+
+> [!NOTE]
+> In diesem Artikel wird beschrieben, wie Sie Ihre Kosten in Log Analytics durch Festlegen des Datenaufbewahrungszeitraums steuern.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
+> - [Analysieren der Datennutzung in Log Analytics](log-analytics-manage-cost-storage.md) beschreibt, wie Sie Ihre Datennutzung analysieren und Warnungen dazu ausgeben.
+> - [Überwachen der Nutzung und der geschätzten Kosten](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
+
 Log Analytics ist für die Skalierung und Unterstützung der täglichen Sammlung, Indizierung und Speicherung enormer Datenmengen aus beliebigen Quellen in Ihrem Unternehmen oder aus in Azure bereitgestellten Quellen konzipiert.  Dies ist zwar ggf. die primäre Motivation für die Verwendung in Ihrem Unternehmen, letztendlich geht es jedoch um Kosteneffizienz. In diesem Zusammenhang ist es wichtig zu verstehen, dass die Kosten eines Log Analytics-Arbeitsbereichs nicht nur auf dem Umfang der gesammelten Daten basieren, sondern auch davon abhängen, welcher Tarif gewählt wurde und wie lange die von den verbundenen Quellen generierten Daten gespeichert werden sollen.  
 
 In diesem Artikel erfahren Sie, wie Sie Datenvolumen und Speicherwachstum proaktiv überwachen und Grenzwerte festlegen, um die damit verbundenen Kosten zu steuern. 

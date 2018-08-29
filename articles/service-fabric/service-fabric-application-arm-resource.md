@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: 8c8ee30a603d439c0fadd0c1569813762bdf4351
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7aa7fc2620fa02af4a720a97eece3c0734252245
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205296"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146261"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen
 
@@ -263,6 +263,8 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
 
 Angenommen, Ihr Cluster ist bereits eingerichtet und einige Anwendungen, die Sie als Resource Manager-Ressourcen verwalten möchten, sind bereits im Cluster bereitgestellt. Sie können, statt die Anwendungen zu entfernen und neu bereitzustellen, einen PUT-Aufruf mit denselben APIs verwenden, um die Anwendungen als Resource Manager-Ressourcen zu bestätigen. 
 
+> [!NOTE]
+> Damit ein Clusterupgrade fehlerhafte Apps ignorieren kann, kann der Kunde „maxpercentunhealthyapplications: 100“ im Abschnitt „upgradeDescription/healthPolicy“ festlegen. Ausführliche Beschreibungen für alle Einstellungen finden Sie in der [Dokumentation zur REST-API-Clusterupgraderichtlinie von Service Fabric](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

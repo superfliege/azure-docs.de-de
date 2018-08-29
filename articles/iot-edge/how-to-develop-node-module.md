@@ -9,16 +9,16 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a5ab49beed79a8ea3a7ded0848c09acad27a5fb1
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390536"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42145805"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Entwickeln und Debuggen von Node.js-Modulen mit Azure IoT Edge für Visual Studio Code
 
-Sie können Ihre Geschäftslogik für die Ausführung im Edge-Bereich senden, indem Sie sie in Module für Azure IoT Edge umwandeln. Dieser Artikel enthält detaillierte Anweisungen für die Verwendung von Visual Studio Code als Hauptentwicklungstool zum Entwickeln von C#-Modulen.
+Sie können Ihre Geschäftslogik für die Ausführung im Edge-Bereich senden, indem Sie sie in Module für Azure IoT Edge umwandeln. Dieser Artikel enthält detaillierte Anweisungen für die Verwendung von Visual Studio Code (VS Code) als Hauptentwicklungstool zum Entwickeln von Node.js-Modulen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie einen Computer oder virtuellen Computer unter Windows oder Linux als Entwicklungscomputer verwenden. Bei Ihrem IoT Edge-Gerät kann es sich um ein anderes physisches Gerät handeln, oder Sie können Ihr IoT Edge-Gerät auf dem Entwicklungscomputer simulieren.
@@ -43,7 +43,7 @@ Um das Modul auf einem Gerät zu testen, benötigen Sie einen aktiven IoT Hub mi
 
 ## <a name="create-a-new-solution-template"></a>Erstellen einer neuen Lösungsvorlage
 
-Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der Azure IoT Edge-Erweiterung ein IoT Edge-Modul auf Basis von .NET Core 2.0 erstellen. Als Erstes erstellen Sie eine Projektmappe, dann generieren Sie das erste Modul in dieser Projektmappe. Jede Projektmappe kann mehrere Module enthalten. 
+Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der Azure IoT Edge-Erweiterung ein IoT Edge-Modul auf Basis von Node.js erstellen. Als Erstes erstellen Sie eine Projektmappe, dann generieren Sie das erste Modul in dieser Projektmappe. Jede Projektmappe kann mehrere Module enthalten. 
 
 1. Klicken Sie in Visual Studio Code auf **Ansicht** > **Integriertes Terminal**.
 2. Geben Sie im integrierten Terminal den folgenden Befehl ein, um die aktuelle Version der Azure IoT Edge-Modulvorlage für Node.js zu installieren (bzw. zu aktualisieren):
@@ -67,22 +67,22 @@ Visual Studio Code verwendet die angegebenen Informationen, erstellt eine IoT Ed
 In der Projektmappe sind drei Elemente enthalten: 
 * Einen Ordner **.vscode**, der Debugkonfigurationen enthält.
 * Einen Ordner **modules**, der Unterordner für jedes Modul enthält. Im Moment gibt es nur einen Ordner, aber Sie können über die Befehlspalette mit dem Befehl **Azure IoT Edge: Add IoT Edge Module** weitere hinzufügen. 
-* Eine **.env**-Datei, in der Ihre Umgebungsvariablen aufgeführt werden. Wenn Sie ACR als Registrierung verwenden, befinden sich darin derzeit der ACR-Benutzername und das Kennwort. 
+* Eine **.env**-Datei, in der Ihre Umgebungsvariablen aufgeführt werden. Wenn Azure Container Registry Ihre Registrierung ist, enthält sie einen Azure Container Registry-Benutzernamen und ein Kennwort.
 
    >[!NOTE]
    >Die Umgebungsdatei wird nur erstellt, wenn Sie ein Imagerepository für das Modul angeben. Wenn Sie die „localhost“-Standardeinstellungen zum lokalen Testen und Debuggen akzeptiert haben, müssen Sie keine Umgebungsvariablen deklarieren. 
 
 * Eine Datei **deployment.template.json**, in der Ihr neues Modul zusammen mit dem Beispielmodul **tempSensor**, mit dem Daten zum Testen simuliert werden, aufgeführt ist. Weitere Informationen zur Funktionsweise von Bereitstellungsmanifesten finden Sie unter [Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können](module-composition.md).
 
-## <a name="devlop-your-module"></a>Entwickeln Ihres Moduls
+## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
-Der im Lieferumfang der Projektmappe enthaltene standardmäßige Azure-Funktionscode befindet sich unter **modules** > **\<Name Ihres Moduls\>** > **app.js**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
+Der im Lieferumfang der Projektmappe enthaltene Node.js-Standardcode befindet sich unter **modules** > **\<Name Ihres Moduls\>** > **app.js**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
 
 Wenn Sie bereit sind, die Node.js-Vorlage mit Ihrem eigenen Code anzupassen, erstellen Sie mit den [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) Module, die die wesentlichen Anforderungen für IoT-Lösungen wie Sicherheit, Geräteverwaltung und Zuverlässigkeit berücksichtigen. 
 
 ## <a name="build-and-deploy-your-module-for-debugging"></a>Erstellen und Bereitstellen Ihres Moduls zum Debuggen
 
-In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Containertypen. Sie können jede Datei mit der Erweiterung **.debug** verwenden, um Ihr Modul zum Testen zu erstellen. C#-Module unterstützen derzeit nur das Debuggen in Containern vom Typ „linux-amd64“.
+In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Containertypen. Sie können jede Datei mit der Erweiterung **.debug** verwenden, um Ihr Modul zum Testen zu erstellen. Derzeit unterstützen Node.js-Module nur das Debuggen in den Containern „linux-amd64“, „windows-amd64“ und „linux-arm32v7“.
 
 1. Wechseln Sie in Visual Studio Code zu der Datei `deployment.template.json`. Aktualisieren Sie Ihre Modulimage-URL, indem Sie am Ende **.debug** hinzufügen.
 2. Ersetzen Sie „createOptions“ für das Node.js-Modul in **deployment.template.json** durch den unten angegebenen Code, und speichern Sie die Datei: 

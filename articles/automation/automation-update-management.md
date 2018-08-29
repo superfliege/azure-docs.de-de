@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d12ce7b3416fac5de5cba9543f3bed5bcedf2012
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115672"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42145112"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -213,12 +213,14 @@ Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellun
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-|NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
-|Betriebssystem| Wählen Sie zwischen **Linux** und **Windows** aus.|
-|Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche aus, oder wählen Sie in der Dropdownliste **Computer** und dann einzelne Computer aus. |
-|Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus. CentOS unterstützt dies nicht standardmäßig.|
-|Auszuschließende Updates|Geben Sie die auszuschließenden Updates ein. Geben Sie für Windows den KB-Artikel ohne das Präfix **KB** ein. Geben Sie für Linux den Paketnamen ein, oder verwenden Sie ein Platzhalterzeichen.  |
-|Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und wählen Sie dann unter „Wiederholung“ **Einmal** oder **Serie** aus.|| Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht kleiner als 30 Minuten oder größer als 6 Stunden sein. |
+| NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
+|Betriebssystem| Linux oder Windows|
+| Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md). |
+|Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus|
+|Auszuschließende Updates|Geben Sie die auszuschließenden Updates ein. Geben Sie für Windows die KB ohne KB-Präfix ein. Geben Sie für Linux den Paketnamen ein, oder verwenden Sie einen Platzhalter.  |
+|Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und geben Sie unter „Wiederholung“ entweder „Einmal“ oder „Serie“ an|
+| Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht weniger als 30 Minuten und nicht mehr als 6 Stunden betragen |
+| Neustartsteuerung| Legt fest, wie Neustarts behandelt werden sollen.</br>Die verfügbaren Optionen lauten wie folgt:</br>Neu starten bei Bedarf (Standard)</br>Immer neu starten</br>Nie neu starten</br>Nur neu starten – Updates werden nicht installiert|
 
 ## <a name="update-classifications"></a>Updateklassifizierungen
 

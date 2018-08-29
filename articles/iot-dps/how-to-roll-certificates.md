@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9c73ce159ae7cf5778210e0fb587135f37c73f57
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024739"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145130"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Rollen von X.509-Gerätezertifikaten
 
@@ -46,7 +46,7 @@ Wenn Sie Ihre eigenen Gerätezertifikate verwalten, müssen Sie eine eigene Pipe
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>Rollen des Zertifikats im IoT Hub
 
-Das Gerätezertifikat kann einem IoT Hub manuell hinzugefügt werden. Das Zertifikat kann auch mithilfe einer Device Provisioning Service-Instanz automatisiert werden. In diesem Artikel gehen wir davon aus, dass zur Unterstützung der automatischen Bereitstellung eine Provisioning Service-Instanz verwendet wird.
+Das Gerätezertifikat kann einem IoT Hub manuell hinzugefügt werden. Das Zertifikat kann auch mithilfe einer Device Provisioning Service-Instanz automatisiert werden. In diesem Artikel gehen wir davon aus, dass zur Unterstützung der automatischen Bereitstellung eine Device Provisioning Service-Instanz verwendet wird.
 
 Wenn ein Gerät zunächst mittels automatischer Bereitstellung bereitgestellt wird, wird es gestartet und stellt eine Verbindung mit Provisioning Service her. Provisioning Service antwortet, indem er vor dem Erstellen einer Geräteidentität in einem IoT Hub eine Identitätsüberprüfung ausführt, bei der das untergeordnete Zertifikat des Geräts als Anmeldeinformation verwendet wird. Provisioning Service teilt dem Gerät anschließend mit, welchem IoT Hub es zugewiesen ist. Das Gerät verwendet dann sein untergeordnetes Zertifikat, um sich zu authentifizieren und eine Verbindung mit dem IoT Hub herzustellen. 
 
@@ -104,7 +104,7 @@ Um eine Gruppenregistrierung als Reaktion auf eine Sicherheitsverletzung zu aktu
 
 #### <a name="update-compromised-root-ca-certificates"></a>Aktualisieren kompromittierter Stammzertifizierungsstellenzertifikate
 
-1. Klicken Sie auf die Registerkarte **Zertifikate** für Ihre Provisioning Service-Instanz.
+1. Klicken Sie auf die Registerkarte **Zertifikate** für Ihre Device Provisioning Service-Instanz.
 
 2. Klicken Sie in der Liste auf das kompromittierte Zertifikat und anschließend auf die Schaltfläche **Löschen**. Bestätigen Sie den Löschvorgang, indem Sie den Namen des Zertifikats eingeben und auf **OK** klicken. Wiederholen Sie diesen Vorgang für alle kompromittierten Zertifikate.
 
@@ -112,7 +112,7 @@ Um eine Gruppenregistrierung als Reaktion auf eine Sicherheitsverletzung zu aktu
 
 3. Führen Sie die unter [Konfigurieren überprüfter Zertifizierungsstellenzertifikate](how-to-verify-certificates.md) beschriebenen Schritte aus, um neue Stammzertifizierungsstellenzertifikate hinzuzufügen und zu überprüfen.
 
-4. Klicken Sie auf die Registerkarte **Registrierungen verwalten** für Ihre Provisioning Service-Instanz, und klicken Sie dann auf die Liste **Registrierungsgruppen**. Klicken Sie in der Liste auf den Namen Ihrer Registrierungsgruppe.
+4. Klicken Sie auf die Registerkarte **Registrierungen verwalten** für Ihre Device Provisioning Service-Instanz, und klicken Sie dann auf die Liste **Registrierungsgruppen**. Klicken Sie in der Liste auf den Namen Ihrer Registrierungsgruppe.
 
 5. Klicken Sie auf **Zertifizierungsstellenzertifikat**, und wählen Sie das neue Stammzertifizierungsstellenzertifikat aus. Klicken Sie anschließend auf **Speichern**. 
 
@@ -149,13 +149,13 @@ Wenn später auch das sekundäre Zertifikat bald abläuft und gerollt werden mus
 
 1. Führen Sie die unter [Konfigurieren überprüfter Zertifizierungsstellenzertifikate](how-to-verify-certificates.md) beschriebenen Schritte aus, um neue Stammzertifizierungsstellenzertifikate hinzuzufügen und zu überprüfen.
 
-2. Klicken Sie auf die Registerkarte **Registrierungen verwalten** für Ihre Provisioning Service-Instanz, und klicken Sie dann auf die Liste **Registrierungsgruppen**. Klicken Sie in der Liste auf den Namen Ihrer Registrierungsgruppe.
+2. Klicken Sie auf die Registerkarte **Registrierungen verwalten** für Ihre Device Provisioning Service-Instanz, und klicken Sie dann auf die Liste **Registrierungsgruppen**. Klicken Sie in der Liste auf den Namen Ihrer Registrierungsgruppe.
 
 3. Klicken Sie auf **Zertifizierungsstellenzertifikat**, und wählen Sie das neue Stammzertifizierungsstellenzertifikat unter der Konfiguration **Sekundäres Zertifikat** aus. Klicken Sie anschließend auf **Speichern**. 
 
     ![Auswählen des neuen Stammzertifizierungsstellenzertifikats](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
-4. Später, wenn das primäre Zertifikat abgelaufen ist, klicken Sie auf die Registerkarte **Zertifikate** für Ihre Provisioning Service-Instanz. Klicken Sie in der Liste auf das abgelaufene Zertifikat und anschließend auf die Schaltfläche **Löschen**. Bestätigen Sie den Löschvorgang, indem Sie den Namen des Zertifikats eingeben und auf **OK** klicken.
+4. Später, wenn das primäre Zertifikat abgelaufen ist, klicken Sie auf die Registerkarte **Zertifikate** für Ihre Device Provisioning Service-Instanz. Klicken Sie in der Liste auf das abgelaufene Zertifikat und anschließend auf die Schaltfläche **Löschen**. Bestätigen Sie den Löschvorgang, indem Sie den Namen des Zertifikats eingeben und auf **OK** klicken.
 
     ![Löschen des Stammzertifizierungsstellenzertifikats](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -177,7 +177,7 @@ Wenn später auch das sekundäre Zertifikat bald abläuft und gerollt werden mus
 
 ## <a name="reprovision-the-device"></a>Erneutes Bereitstellen des Geräts
 
-Nachdem das Zertifikat auf dem Gerät und in Device Provisioning Service gerollt wurde, kann das Gerät sich selbst bereitstellen, indem es eine Verbindung mit Device Provisioning Service herstellt. 
+Nachdem das Zertifikat auf dem Gerät und in Device Provisioning Service gerollt wurde, kann das Gerät sich selbst erneut bereitstellen, indem es eine Verbindung mit Device Provisioning Service herstellt. 
 
 Eine einfache Möglichkeit zum Programmieren von Geräten zur erneuten Bereitstellung besteht darin, dass Gerät so zu programmieren, dass es zum Durchführen des Bereitstellungsablaufs eine Verbindung mit Provisioning Service herstellt, wenn es beim Verbindungsversuch mit dem IoT Hub einen Fehler vom Typ „nicht autorisiert“ empfängt.
 

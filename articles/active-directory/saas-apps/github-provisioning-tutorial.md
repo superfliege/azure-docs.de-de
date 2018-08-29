@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: d3b2f8860f5b8ddd2cc53d8805b7eace788e73a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ff22ad4f8abae019591150dd9a8ea2cd4ca4e5d9
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230538"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144903"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 
@@ -80,7 +80,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Gi
 
     ![Autorisierungsdialogfeld](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Geben Sie im Azure-Portal die **Mandanten-URL** ein, und klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer GitHub-App herstellen kann. Überprüfen Sie bei einem Verbindungsfehler, ob das GitHub-Konto über Administratorberechtigungen verfügt und die **Mandanten-URL** korrekt eingegeben wurde. Wiederholen Sie anschließend den Autorisierungsschritt. (Sie können die **Mandanten-URL** durch eine Regel ersetzen: https://api.github.com/scim/v2/organizations/ + <Organisationsname>. Die Organisationen finden Sie im GitHub-Konto unter **Einstellungen** > **Organisationen**).
+7. Geben Sie im Azure-Portal die **Mandanten-URL** ein, und klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer GitHub-App herstellen kann. Überprüfen Sie bei einem Verbindungsfehler, ob das GitHub-Konto über Administratorberechtigungen verfügt und die **Mandanten-URL** korrekt eingegeben wurde. Wiederholen Sie anschließend den Autorisierungsschritt. (Sie können die **Mandanten-URL** durch eine Regel ersetzen: `https://api.github.com/scim/v2/<Organizations_name>`. Die Organisationen finden Sie im GitHub-Konto unter **Einstellungen** > **Organisationen**).
 
     ![Autorisierungsdialogfeld](./media/github-provisioning-tutorial/GitHub3.png)
 

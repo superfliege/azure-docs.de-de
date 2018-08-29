@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f8ee8a2a4aae61e2edc275527d80a162c9bb4dc0
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 241fd1f9168ce6bfb8a4dfe97bbb1ef45ddf3f74
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345710"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42146449"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 
@@ -120,7 +120,7 @@ Wenn die Anforderung erfolgreich ist, enthält die Antwort des Webhooks wie im F
 {"JobIds":["<JobId>"]}
 ```
 
-Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wurde, noch den Abschlussstatus aus einem Webhook abrufen. Diese Informationen können mithilfe der Auftrags-ID unter Verwendung einer anderen Methode ermittelt werden, z.B. mit [Windows PowerShell](http://msdn.microsoft.com/library/azure/dn690263.aspx) oder der [Azure Automation-API](/rest/api/automation/job).
+Der Client kann weder die Bestätigung, dass ein Runbookauftrag abgeschlossen wurde, noch den Abschlussstatus aus einem Webhook abrufen. Diese Informationen können mithilfe der Auftrags-ID unter Verwendung einer anderen Methode ermittelt werden, z.B. mit [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) oder der [Azure Automation-API](/rest/api/automation/job).
 
 ## <a name="sample-runbook"></a>Beispiel-Runbook
 

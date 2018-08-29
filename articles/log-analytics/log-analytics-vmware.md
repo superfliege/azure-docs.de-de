@@ -1,5 +1,5 @@
 ---
-title: VMware-Überwachungslösung in Log Analytics | Microsoft Docs
+title: VMware-Überwachungslösung in Log Analytics | Microsoft-Dokumentation
 description: Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen.
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 6ba37a026a3c8f50fa47b0775a2ad49ee75f2769
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6078ac326fe51f4198137eec2de728b6036c271
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424646"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142188"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
 
@@ -36,7 +36,7 @@ Die Lösung verwendet die native Syslog-Funktionalität des ESXi-Hosts, um Daten
 ## <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
-* Fügen Sie Ihrem Abonnement anhand der unter [Hinzufügen einer Verwaltungslösung](log-analytics-add-solutions.md#add-a-management-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
+* Fügen Sie Ihrem Abonnement anhand der unter [Installieren einer Verwaltungslösung](../monitoring/monitoring-solutions.md#install-a-management-solution) beschriebenen Vorgehensweise die VMware-Überwachungslösung hinzu.
 
 #### <a name="supported-vmware-esxi-hosts"></a>Unterstützte VMware ESXi-Hosts
 vSphere ESXi-Host 5.5, 6.0 und 6.5

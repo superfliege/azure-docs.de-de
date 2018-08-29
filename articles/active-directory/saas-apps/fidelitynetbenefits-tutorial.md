@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2018
+ms.date: 08/07/2018
 ms.author: jeedes
-ms.openlocfilehash: d11164fafa3c05c8c61c352f4d6be6607fa52ebb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a1308035a8b758a9e2f824de3a78c03103c19931
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425254"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42142075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Tutorial: Azure Active Directory-Integration mit Fidelity NetBenefits
 
@@ -50,29 +50,32 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Fidelity NetBenefits aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-fidelity-netbenefits-from-the-gallery"></a>Hinzufügen von Fidelity NetBenefits aus dem Katalog
+
 Zum Konfigurieren der Integration von Fidelity NetBenefits in Azure AD müssen Sie Fidelity NetBenefits aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Fidelity NetBenefits aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-1. Geben Sie im Suchfeld **Fidelity NetBenefits** ein, wählen Sie im Ergebnisbereich **Fidelity NetBenefits** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Fidelity NetBenefits** ein, wählen Sie im Ergebnisbereich **Fidelity NetBenefits** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Fidelity NetBenefits in der Ergebnisliste](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_addfromgallery.png)
 
@@ -87,10 +90,10 @@ In Fidelity NetBenefits sollte die **Benutzerzuordnung** über **Azure AD-Benutz
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD in Fidelity NetBenefits müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Fidelity NetBenefits-Testbenutzers](#create-a-fidelity-netbenefits-test-user)**, um eine Entsprechung von Britta Simon in Fidelity NetBenefits zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Fidelity NetBenefits-Testbenutzers](#create-a-fidelity-netbenefits-test-user)**, um eine Entsprechung von Britta Simon in Fidelity NetBenefits zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -102,11 +105,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+
     ![Dialogfeld „Einmaliges Anmelden“](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_samlbase.png)
 
-1. Führen Sie auf der Seite **Domäne und URLs für Fidelity NetBenefits** die folgenden Schritte aus:
+3. Führen Sie auf der Seite **Domäne und URLs für Fidelity NetBenefits** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Fidelity NetBenefits](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_url.png)
 
@@ -116,35 +119,28 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     Für eine Produktionsumgebung: `urn:sp:fidelity:geninbndnbparts20`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL folgendermaßen ein:
+    b. Geben Sie im Textfeld **Antwort-URL** die URL ein, die bei der Implementierung von Fidelity bereitgestellt wird, oder wenden Sie sich an Ihren zuständigen Fidelity-Kundenservicemanager.
 
-    Für eine Testumgebung: `https://loginxq1.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
-
-    Für eine Produktionsumgebung: `https://login.fidelity.com/ftgw/Fas/NBExternal/NBPartSSO/InboundSSO/consumer/sp/ACS.saml2`
- 
-1. Die Fidelity NetBenefits-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wir haben den **Benutzerbezeichner** damit **user.userprincipalname** zugeordnet. Sie können dies mit **employeeid** oder einem anderen Anspruch zuordnen, der für Ihre Organisation als **Benutzerbezeichner** gilt. Der folgende Screenshot zeigt ein Beispiel.
+4. Die Fidelity NetBenefits-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wir haben den **Benutzerbezeichner** damit **user.userprincipalname** zugeordnet. Sie können dies mit **employeeid** oder einem anderen Anspruch zuordnen, der für Ihre Organisation als **Benutzerbezeichner** gilt. Der folgende Screenshot zeigt ein Beispiel.
 
     ![Fidelity NetBenefits-Attribut](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_attribute.png)
 
     >[!Note]
-    >Fidelity NetBenefits unterstützt den statischen und dynamischen Verbund. Statisch bedeutet, dass SAML nicht basierend auf der Just-In-Time-Benutzerbereitstellung verwendet wird, und dynamisch bedeutet, dass die Just-In-Time-Benutzerbereitstellung unterstützt wird. Für die Verwendung der JIT-basierten Bereitstellung müssen Kunden einige weitere Ansprüche in Azure AD hinzufügen, z.B. das Geburtsdatum des Benutzers usw. Diese Details werden vom [Fidelity NetBenefits-Supportteam](mailto:SSOMaintenance@fmr.com) bereitgestellt, das auch diesen dynamischen Verbund für Ihre Instanz aktivieren muss.
-    
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+    >Fidelity NetBenefits unterstützt den statischen und dynamischen Verbund. Statisch bedeutet, dass SAML nicht basierend auf der Just-In-Time-Benutzerbereitstellung verwendet wird, und dynamisch bedeutet, dass die Just-In-Time-Benutzerbereitstellung unterstützt wird. Für die Verwendung der JIT-basierten Bereitstellung müssen Kunden einige weitere Ansprüche in Azure AD hinzufügen, z.B. das Geburtsdatum des Benutzers usw. Diese Details werden von Ihrem zuständigen **Fidelity-Kundenservicemanager** bereitgestellt, der auch diesen dynamischen Verbund für Ihre Instanz aktivieren muss.
 
-    ![Downloadlink für das Zertifikat](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_certificate.png) 
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    ![Downloadlink für das Zertifikat](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_certificate.png)
+
+6. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/fidelitynetbenefits-tutorial/tutorial_general_400.png)
 
-1. Klicken Sie im Abschnitt **Fidelity NetBenefits-Konfiguration** auf **Fidelity NetBenefits konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+7. Klicken Sie im Abschnitt **Fidelity NetBenefits-Konfiguration** auf **Fidelity NetBenefits konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Fidelity NetBenefits-Konfiguration](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_configure.png) 
+    ![Fidelity NetBenefits-Konfiguration](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_configure.png)
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Fidelity NetBenefits** müssen Sie die heruntergeladene **XML-Metadaten**-Datei, **SAML-Dienst-URL für einmalige Anmeldung** und **SAML-Entitäts-ID** an das [Fidelity NetBenefits-Supportteam](mailto:SSOMaintenance@fmr.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+8. Zum Konfigurieren des einmaligen Anmeldens bei **Fidelity NetBenefits** müssen Sie die heruntergeladene Datei mit **XML-Metadaten**, **SAML-Dienst-URL für einmaliges Anmelden** und **SAML-Entitäts-ID** an Ihren zuständigen **Fidelity-Kundenservicemanager** senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -158,15 +154,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Schaltfläche „Azure Active Directory“](./media/fidelitynetbenefits-tutorial/create_aaduser_01.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
     ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/fidelitynetbenefits-tutorial/create_aaduser_02.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
     ![Schaltfläche „Hinzufügen“](./media/fidelitynetbenefits-tutorial/create_aaduser_03.png)
 
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
     ![Dialogfeld „Benutzer“](./media/fidelitynetbenefits-tutorial/create_aaduser_04.png)
 
@@ -180,53 +176,51 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
 ### <a name="create-a-fidelity-netbenefits-test-user"></a>Erstellen eines Fidelity NetBenefits-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Fidelity NetBenefits einen Benutzer namens Britta Simon. Wenn Sie einen statischen Verbund erstellen, arbeiten Sie mit dem [Fidelity NetBenefits-Supportteam](mailto:SSOMaintenance@fmr.com) zusammen, um Benutzer auf der Fidelity NetBenefits-Plattform zu erstellen. Diese Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in Fidelity NetBenefits einen Benutzer namens Britta Simon. Wenn Sie einen statischen Verbund erstellen, wenden Sie sich an Ihren zuständigen **Fidelity-Kundenservicemanager**, um Benutzer auf der Fidelity NetBenefits-Plattform zu erstellen. Diese Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-Beim dynamischen Verbund werden die Benutzer während der Just-In-Time-Benutzerbereitstellung erstellt. Für die Verwendung der JIT-basierten Bereitstellung müssen Kunden einige weitere Ansprüche in Azure AD hinzufügen, z.B. das Geburtsdatum des Benutzers usw. Diese Details werden vom [Fidelity NetBenefits-Supportteam](mailto:SSOMaintenance@fmr.com) bereitgestellt, das auch diesen dynamischen Verbund für Ihre Instanz aktivieren muss.
+Beim dynamischen Verbund werden die Benutzer während der Just-In-Time-Benutzerbereitstellung erstellt. Für die Verwendung der JIT-basierten Bereitstellung müssen Kunden einige weitere Ansprüche in Azure AD hinzufügen, z.B. das Geburtsdatum des Benutzers usw. Diese Details werden von Ihrem zuständigen **Fidelity-Kundenservicemanager** bereitgestellt, der auch diesen dynamischen Verbund für Ihre Instanz aktivieren muss.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Fidelity NetBenefits gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+![Zuweisen der Benutzerrolle][200]
 
 **Um Britta Simon Fidelity NetBenefits zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
-    ![Benutzer zuweisen][201] 
+    ![Benutzer zuweisen][201]
 
-1. Wählen Sie in der Anwendungsliste **Fidelity NetBenefits** aus.
+2. Wählen Sie in der Anwendungsliste **Fidelity NetBenefits** aus.
 
     ![Die Fidelity NetBenefits-Verknüpfung in der Anwendungsliste](./media/fidelitynetbenefits-tutorial/tutorial_fidelitynetbenefits_app.png)  
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
     ![Link „Benutzer und Gruppen“][202]
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
     ![Bereich „Zuweisung hinzufügen“][203]
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Fidelity NetBenefits“ klicken, sollten Sie automatisch bei Ihrer Fidelity NetBenefits-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -241,4 +235,3 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 [201]: ./media/fidelitynetbenefits-tutorial/tutorial_general_201.png
 [202]: ./media/fidelitynetbenefits-tutorial/tutorial_general_202.png
 [203]: ./media/fidelitynetbenefits-tutorial/tutorial_general_203.png
-

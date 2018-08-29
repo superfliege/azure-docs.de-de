@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: ca4754514ba5012f7e9e28981d0869d174561fb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6eb559f8971583afe9619fb41fe331bd3013bb69
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375330"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41929816"
 ---
 # <a name="use-the-anomaly-finder-api-with-ruby"></a>Verwenden der API für die Suche nach Anomalien mit Ruby
 
@@ -28,7 +28,9 @@ In diesem Artikel finden Sie Informationen und Codebeispiele, die Ihnen bei der 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
 ### <a name="example-of-time-series-data"></a>Beispiel für Zeitreihendaten
-So sieht das Beispiel für die Datenpunkte der Zeitreihen aus: [!INCLUDE [Request](../includes/request.md)]
+So sieht das Beispiel für die Datenpunkte der Zeitreihen aus:
+
+[!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-ruby-example"></a>Beispiel zum Analysieren von Daten und Abrufen von Anomaliepunkten mit Ruby
 

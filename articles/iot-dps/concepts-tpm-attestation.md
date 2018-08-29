@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 90f41e56f8e95584959576d3e5ad837f4774048a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629081"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142422"
 ---
 # <a name="tpm-attestation"></a>TPM-Nachweis
 
 Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, mit dem Sie Geräte ohne manuelles Eingreifen auf einem angegebenen IoT Hub konfigurieren können. Mit dem Device Provisioning-Dienst können Sie Millionen von Geräten auf sichere Weise bereitstellen.
 
-Dieser Artikel beschreibt den Prozess des Identitätsnachweises bei Verwendung eines [TPM](./concepts-device.md). TPM steht für Trusted Platform Module und ist ein Typ von Hardwaresicherheitsmodul (HSM). In diesem Artikel wird davon ausgegangen, dass Sie ein diskretes, integriertes oder Firmware-TPM verwenden. Durch Software emulierte TPMs eignen sich gut für die Prototyperstellung oder Tests, bieten aber nicht das gleiche Maß an Sicherheit wie diskrete, integrierte oder Firmware-TPMs. Die Verwendung von Software-TPMs in der Produktion wird nicht empfohlen. [Hier](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf) finden Sie weitere Informationen zu den Typen von TPMs.
+Dieser Artikel beschreibt den Prozess des Identitätsnachweises bei Verwendung eines [TPM](./concepts-device.md). TPM steht für Trusted Platform Module und ist ein Typ von Hardwaresicherheitsmodul (HSM). In diesem Artikel wird davon ausgegangen, dass Sie ein diskretes, integriertes oder Firmware-TPM verwenden. Durch Software emulierte TPMs eignen sich gut für die Prototyperstellung oder Tests, bieten aber nicht das gleiche Maß an Sicherheit wie diskrete, integrierte oder Firmware-TPMs. Die Verwendung von Software-TPMs in der Produktion wird nicht empfohlen. Weitere Informationen zu den Arten von TPMs finden Sie unter [A Brief Introduction to TPM](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf) (Eine kurze Einführung in TPM).
 
 Dieser Artikel bezieht sich nur auf Geräte mit TPM 2.0 und HMAC-Schlüsselunterstützung sowie den entsprechenden Endorsement Keys. Er ist nicht für Geräte gedacht, die X.509-Zertifikate für die Authentifizierung verwenden. TPM ist ein branchenweiter ISO-Standard von Trusted Computing Group. Weitere Informationen zu TPM finden Sie in der [vollständigen TPM 2.0-Spezifikation](https://trustedcomputinggroup.org/tpm-library-specification/) oder der [ISO/IEC 11889-Spezifikation](https://www.iso.org/standard/66510.html). In diesem Artikel wird außerdem davon ausgegangen, dass Sie mit öffentlichen und privaten Schlüsselpaaren sowie deren Verwendung für die Verschlüsselung vertraut sind.
 

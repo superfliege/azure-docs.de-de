@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 2a0758f5db381f721120cbc1c018a491c018aa8d
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 1e22c62c291909bb4079ebaf389cfbd15ae9d8d5
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30264233"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42145099"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – FAQ
 Erfahren Sie die Antworten auf häufig gestellte Fragen zu Azure Resource Health.
@@ -62,7 +62,7 @@ Resource Health ist ein Dienst, der Ihnen helfen soll, Azure-Dienstprobleme zu d
 ## <a name="where-do-i-find-resource-health"></a>Wo finde ich Resource Health?
 Nachdem Sie sich beim Azure-Portal angemeldet haben, stehen Ihnen mehrere Möglichkeiten zur Verfügung, auf Resource Health zuzugreifen:
 - Wechseln Sie zu Ihrer Ressource. Wählen Sie im linken Navigationsbereich **Resource Health** aus.
-- Gehen Sie zum Blatt „Azure Monitor“.  Wählen Sie im linken Navigationsbereich **Resource Health** aus.
+- Wechseln Sie zum Blatt „Azure Service Health“.  Wählen Sie im linken Navigationsbereich **Resource Health** aus.
 - Öffnen Sie das Blatt **Hilfe und Support**, indem Sie oben rechts im Portal das Fragezeichen und dann die Option **Hilfe und Support** auswählen. Nachdem das Blatt geöffnet wurde, wählen Sie **Resource Health** aus.
 
 Sie können auch mit der Resource Health-API Informationen über den Integritätsstatus Ihrer Ressourcen erhalten.
@@ -76,7 +76,7 @@ Bei der Überprüfung der Integrität einer Ressource können Sie rechts unter d
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>Steht Resource Health für alle Azure-Regionen zur Verfügung? 
 Resource Health ist in allen Azure-Regionen mit Ausnahme der folgenden verfügbar:
 - US Government, Virginia
-- US Government, Iowa
+- US Gov Iowa
 - US DoD, Osten
 - US DoD, Mitte
 - Deutschland, Mitte

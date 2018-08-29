@@ -2,31 +2,33 @@
 title: Konfigurieren des Hochladens von Dateien mit Azure PowerShell | Microsoft-Dokumentation
 description: Informationen zum Konfigurieren des IoT Hubs mit Azure PowerShell-Cmdlets zum Aktivieren des Hochladens von Dateien von verbundenen Geräten. Enthält Informationen zum Konfigurieren des Azure-Zielspeicherkontos.
 author: dominicbetts
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 1a4a52b6a028f4c656404e90fe05f201ac77204d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9cf13589fb83f100dd024e65dfe9178cb54802f2
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631852"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145122"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurieren des Hochladens von Dateien in IoT Hub mit PowerShell
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-Damit Sie die [Funktion zum Hochladen von Dateien in IoT Hub][lnk-upload] verwenden können, müssen Sie Ihrem Hub zunächst ein Azure-Speicherkonto zuordnen. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen.
+Zur Verwendung der [Funktion zum Hochladen von Dateien in IoT Hub](iot-hub-devguide-file-upload.md) müssen Sie Ihrer IoT Hub-Instanz zunächst ein Azure-Speicherkonto zuordnen. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Ein aktives Azure-Konto. Wenn Sie kein Konto besitzen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.
-* [Azure PowerShell-Cmdlets][lnk-powershell-install].
-* Einen Azure IoT Hub. Wenn Sie keinen IoT Hub haben, können Sie mit dem Cmdlet [New-AzureRmIoTHub][lnk-powershell-iothub] einen erstellen. Sie können auch im Portal [einen IoT Hub erstellen][lnk-portal-hub].
-* Ein Azure-Speicherkonto. Wenn Sie kein Azure-Speicherkonto haben, können Sie mithilfe der [PowerShell-Cmdlets für Azure Storage][lnk-powershell-storage] eines erstellen. Sie können auch im Portal [ein Speicherkonto erstellen][lnk-portal-storage].
+* Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial/) erstellen.
+
+* [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
+
+* Einen Azure IoT Hub. Wenn Sie keinen IoT Hub haben, können Sie mit dem Cmdlet [New-AzureRmIoTHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub) einen erstellen. Sie können auch im Portal einen [IoT Hub erstellen](iot-hub-create-through-portal.md).
+
+* Ein Azure-Speicherkonto. Wenn Sie kein Azure-Speicherkonto haben, können Sie mithilfe der [PowerShell-Cmdlets für Azure Storage](https://docs.microsoft.com/powershell/module/azurerm.storage/) eines erstellen. Sie können auch im Portal ein [Speicherkonto erstellen](../storage/common/storage-create-storage-account.md).
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Anmelden und Festlegen Ihres Azure-Kontos
 
@@ -38,7 +40,7 @@ Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus.
     Connect-AzureRmAccount
     ```
 
-1. Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch die Anmeldung bei Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Führen Sie den folgenden Befehl aus, um eine Liste der Azure-Abonnements anzuzeigen, die Sie verwenden können:
+2. Wenn Sie über mehrere Azure-Abonnements verfügen, erhalten Sie durch die Anmeldung bei Azure Zugriff auf alle Azure-Abonnements, die mit Ihren Anmeldeinformationen verknüpft sind. Führen Sie den folgenden Befehl aus, um eine Liste der Azure-Abonnements anzuzeigen, die Sie verwenden können:
 
     ```powershell
     Get-AzureRMSubscription
@@ -90,19 +92,19 @@ Sie können entweder einen vorhandenen Blobcontainer für das Hochladen von Date
 
 ## <a name="configure-your-iot-hub"></a>Konfigurieren Ihres IoT-Hubs
 
-Sie können jetzt Ihren IoT Hub unter Verwendung der Details Ihres Speicherkontos so konfigurieren, dass die [Funktionalität für das Hochladen von Dateien][lnk-upload] aktiviert wird.
+Sie können nun Ihren IoT Hub für das [Hochladen von Dateien auf den IoT Hub](iot-hub-devguide-file-upload.md) unter Verwendung Ihrer Speicherkontodetails konfigurieren.
 
 Die Konfiguration erfordert die folgenden Werte:
 
-**Speichercontainer**: Ein Blobcontainer in einem Azure-Speicherkonto Ihres aktuellen Azure-Abonnements, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Sie haben die erforderlichen Speicherkontoinformationen im vorherigen Abschnitt abgerufen. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
+* **Speichercontainer**: Ein Blobcontainer in einem Azure-Speicherkonto Ihres aktuellen Azure-Abonnements, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Sie haben die erforderlichen Speicherkontoinformationen im vorherigen Abschnitt abgerufen. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
 
-**Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Benachrichtigungen zum Hochladen von Dateien.
+* **Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Benachrichtigungen zum Hochladen von Dateien.
 
-**SAS-TTL**: Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt.
+* **SAS-TTL**: Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt.
 
-**Standard-TTL für Dateibenachrichtigungseinstellungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt.
+* **Standard-TTL für Dateibenachrichtigungseinstellungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt.
 
-**Anzahl maximaler Zustellungen für Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt.
+* **Anzahl maximaler Zustellungen für Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt.
 
 Verwenden Sie das folgende PowerShell-Cmdlet zum Konfigurieren der Einstellungen für das Hochladen von Dateien für Ihren IoT Hub:
 
@@ -120,32 +122,16 @@ Set-AzureRmIotHub `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Dateiuploadfunktionen von IoT Hub finden Sie unter [Hochladen von Dateien von einem Gerät][lnk-upload].
+Weitere Informationen zu den Dateiuploadfunktionen von IoT Hub finden Sie unter [Hochladen von Dateien von einem Gerät](iot-hub-devguide-file-upload.md).
 
 Folgen Sie diesen Links, um mehr über das Verwalten von Azure IoT Hub zu erfahren:
 
-* [Massenverwaltung von IoT-Geräten][lnk-bulk]
-* [IoT Hub-Metriken][lnk-metrics]
-* [Vorgangsüberwachung][lnk-monitor]
+* [Massenverwaltung von IoT-Geräten](iot-hub-bulk-identity-mgmt.md)
+* [IoT Hub-Metriken](iot-hub-metrics.md)
+* [Vorgangsüberwachung](iot-hub-operations-monitoring.md)
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
-* [Deploy Azure IoT Edge on a simulated device in Linux - preview][lnk-iotedge] (Bereitstellen von Azure IoT Edge auf einem simulierten Gerät in Linux – Vorschauversion)
-* [Schützen Ihrer IoT-Lösung von Grund auf][lnk-securing]
-
-[lnk-upload]: iot-hub-devguide-file-upload.md
-
-[lnk-bulk]: iot-hub-bulk-identity-mgmt.md
-[lnk-metrics]: iot-hub-metrics.md
-[lnk-monitor]: iot-hub-operations-monitoring.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-securing]: iot-hub-security-ground-up.md
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-azurerm-ps
-[lnk-powershell-storage]: https://docs.microsoft.com/powershell/module/azurerm.storage/
-[lnk-powershell-iothub]: https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub
-[lnk-portal-hub]: iot-hub-create-through-portal.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-portal-storage]:../storage/common/storage-create-storage-account.md
+* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Schützen Ihrer IoT-Lösung von Grund auf](/../iot-fundamentals/iot-security-ground-up.md)

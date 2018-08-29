@@ -11,22 +11,24 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 3b606fc78327035e135e0f037288a817171385dd
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0d47b89a468aade8cec51ec04709ed99bfd4684c
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857943"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145625"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
-Die geschachtelte Virtualisierung wird in den Azure-VM-Serien Dv3 und Ev3 unterstützt. Diese Funktion bietet viel Flexibilität bei der Unterstützung von Szenarien wie Entwicklungs-, Test-, Schulungs- und Demonstrationsumgebungen. 
+Die geschachtelte Virtualisierung wird in mehreren Azure-VM-Familien unterstützt. Diese Funktion bietet viel Flexibilität bei der Unterstützung von Szenarien wie Entwicklungs-, Test-, Schulungs- und Demonstrationsumgebungen.   
 
-Alle virtuellen Computer der Serien Dv3 und Ev3 unterstützen die geschachtelte Virtualisierung ohne weitere Konfiguration.  In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V auf einer Azure-VM und zum Konfigurieren der Internetkonnektivität für diese Gast-VM ausgeführt werden müssen.
+In diesem Artikel werden die Schritte erläutert, die zum Aktivieren von Hyper-V auf einer Azure-VM und zum Konfigurieren der Internetkonnektivität für diese Gast-VM ausgeführt werden müssen.
 
-## <a name="create-a-dv3-or-ev3-series-azure-vm"></a>Erstellen einer Azure-VM der Serie Dv3 oder Ev3
+## <a name="create-a-nesting-capable-azure-vm"></a>Erstellen eines schachtelungsfähigen virtuellen Azure-Computers
 
-Erstellen Sie eine neue Azure-VM unter Windows Server 2016, und wählen Sie aus den Serien Dv3 oder Ev3 eine Größe aus. Stellen Sie sicher, dass die Größe ausreicht, um die Anforderungen einer Gast-VM zu unterstützen. Bei diesem Beispiel wird eine Azure-VM der Größe D3_v3 verwendet. 
+Erstellen Sie einen neuen virtuellen Windows Server 2016-Azure-Computer.  Zur schnellen Information: Alle virtuellen v3-Computer unterstützen geschachtelte Virtualisierung. Eine vollständige Liste der VM-Größen, die Schachtelung unterstützen, finden Sie im [Artikel zur Azure-Compute-Einheit](acu.md).
+
+Denken Sie daran, eine ausreichende VM-Größe zu wählen, um die Anforderungen eines virtuellen Gastcomputers zu unterstützen. Bei diesem Beispiel wird eine Azure-VM der Größe D3_v3 verwendet. 
 
 Informationen zur regionalen Verfügbarkeit von VMs der Serien Dv3 oder Ev3 finden Sie [hier](https://azure.microsoft.com/regions/services/).
 

@@ -12,17 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: d02c3ad3e1ca2812049608cad2eacced3686dad3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 1bb96821b61647f5dfad54c8b0cb6248eb0db4af
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128563"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144899"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analysieren der Datennutzung in Log Analytics
+
+> [!NOTE]
+> Dieser Artikel beschreibt die Analyse der Datennutzung in Log Analytics.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
+> - In [Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics](log-analytics-manage-cost-storage.md) beschreibt, wie Sie Ihre Kosten durch Ändern der Datenaufbewahrungsdauer steuern.
+> - [Überwachen der Nutzung und der geschätzten Kosten](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
+
 Log Analytics enthält Informationen zur Menge der gesammelten Daten, zu den Quellen, die die Daten gesendet haben, und zu den unterschiedlichen Arten gesendeter Daten.  Die Datennutzung können Sie mithilfe des Dashboards **Protokollanalysenutzung** überprüfen und analysieren. Im Dashboard ist angegeben, wie viele Daten von jeder Lösung gesammelt werden und wie viele Daten von den Computern gesendet werden.
 
 ## <a name="understand-the-usage-dashboard"></a>Grundlagen des Dashboards „Nutzung“

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8c4ae9c7b8be8cf390ad4ad6d99cd1ec41cd3d08
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857530"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42144078"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Speichern und Konfigurieren der API Management-Dienstkonfiguration mit Git
 
@@ -107,7 +107,7 @@ Verwenden Sie das verschlüsselte Kennwort zusammen mit Ihrem Benutzernamen und 
 git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 ```
 
-Sobald das Repository geklont wurde, können Sie es anzeigen und in Ihrem lokalen Dateisystem verwenden. Weitere Informationen finden Sie unter [Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys](#file-and-folder-structure-reference-of-local-git-repository).
+Nachdem das Repository geklont wurde, können Sie es anzeigen und in Ihrem lokalen Dateisystem verwenden. Weitere Informationen finden Sie unter [Referenz der Datei- und Ordnerstruktur des lokalen Git-Repositorys](#file-and-folder-structure-reference-of-local-git-repository).
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>So aktualisieren Sie Ihr lokales Repository mit der aktuellen Dienstinstanzkonfiguration
 
@@ -166,7 +166,7 @@ Jeder Ordner kann eine oder mehrere Dateien enthalten, und in einigen Fällen ei
 | xml |Richtlinienanweisungen |
 | css |Stylesheets für die Anpassung des Entwicklerportals |
 
-Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verwaltet werden, und die Änderungen werden wieder Ihrer API Management-Dienstinstanz bereitgestellt.
+Diese Dateien können im lokalen System erstellt, gelöscht, bearbeitet und verwaltet werden, und die Änderungen werden wieder in Ihrer API Management-Dienstinstanz bereitgestellt.
 
 > [!NOTE]
 > Die folgenden Entitäten sind im Git-Repository nicht enthalten und können nicht mithilfe von Git konfiguriert werden.
@@ -221,7 +221,7 @@ Der Ordner `apis` enthält einen Ordner für jede API in der Dienstinstanz, der 
 
 * `apis\<api name>\configuration.json`: Dies ist die Konfiguration der API, und die Datei enthält Informationen zur Back-End-Dienst-URL und zu den Vorgängen. Dies sind die gleichen Informationen, die zurückgegeben werden, wenn Sie [Abrufen einer bestimmten API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) mit `export=true` im Format `application/json` aufrufen.
 * `apis\<api name>\api.description.html`: Dies ist die Beschreibung der API, und sie entspricht der Eigenschaft `description` der [Entität „API“](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\`: Dieser Ordner enthält `<operation name>.description.html`-Dateien, die den Vorgängen in der API entsprechen. Jede Datei enthält die Beschreibung eines einzelnen Vorgangs in der API, die der Eigenschaft `description` der [Entität „Operation“](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) in der REST-API entspricht.
+* `apis\<api name>\operations\`: Dieser Ordner enthält `<operation name>.description.html`-Dateien, die den Vorgängen in der API entsprechen. Jede Datei enthält die Beschreibung eines einzelnen Vorgangs in der API, die der `description`-Eigenschaft der [Entität „Operation“](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) in der REST-API entspricht.
 
 ### <a name="groups-folder"></a>Ordner „groups“
 Der Ordner `groups` enthält einen Ordner für jede in der Dienstinstanz definierte Gruppe.
@@ -259,8 +259,8 @@ Der Ordner `templates` enthält die Konfiguration für die [E-Mail-Vorlagen](api
 Informationen zu anderen Möglichkeiten für die Verwaltung Ihrer Dienstinstanz finden Sie unter:
 
 * Verwalten der Dienstinstanz mit den folgenden PowerShell-Cmdlets
-  * [Referenz zu PowerShell-Cmdlets für die Dienstbereitstellung](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [Referenz zu PowerShell-Cmdlets für die Dienstverwaltung](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+  * [Referenz zu PowerShell-Cmdlets für die Dienstbereitstellung](https://docs.microsoft.com/powershell/module/wds)
+  * [Referenz zu PowerShell-Cmdlets für die Dienstverwaltung](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)
 * Verwalten der Dienstinstanz mit der REST-API
   * [REST-API-Referenz zu API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 

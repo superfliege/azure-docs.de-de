@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/14/2018
 ms.author: raynew
-ms.openlocfilehash: 709afe03570ca4cf81718fb071778439444d6bf6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171982"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141141"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Unterstützungsmatrix für die Hyper-V-Replikation in Azure
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die unterstützten Komponenten und Einstellungen für d
 
 **Szenario** | **Details**
 --- | ---
-Hyper-V mit Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](tutorial-vmm-to-vmm.md).
+Hyper-V mit Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](hyper-v-vmm-disaster-recovery.md).
 Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts ausführen, die nicht von Virtual Machine Manager verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
 
 
@@ -44,8 +44,8 @@ In der folgenden Tabelle wird die VM-Unterstützung zusammengefasst. Site Recove
 
  **Komponente** | **Details**
 --- | ---
-Konfiguration des virtuellen Computers | Virtuelle Computer, die nach Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#failed-over-azure-vm-requirements) erfüllen.
-Gastbetriebssystem | Alle von Azure unterstützten Gastbetriebssysteme.<br/><br/> Windows Server 2016 Nano Server wird nicht unterstützt.
+Konfiguration des virtuellen Computers | Virtuelle Computer, die nach Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
+Gastbetriebssystem | Alle [für Azure unterstützten](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases) Gastbetriebssysteme.<br/><br/> Windows Server 2016 Nano Server wird nicht unterstützt.
 
 
 ## <a name="vmdisk-management"></a>VM-/Datenträgerverwaltung
@@ -113,7 +113,8 @@ RDM | Nicht verfügbar | Nicht verfügbar
 Datenträger > 1 TB | Ja, bis zu 4.095 GB | Ja, bis zu 4.095 GB
 Datenträger: 4K für logischen und physischen Sektor | Nicht unterstützt: 1./2. Generation | Nicht unterstützt: 1./2. Generation
 Datenträger: 4K für logischen, 512 Byte für physischen Sektor | JA |  JA
-Volume mit Stripesetdatenträger > 1 TB<br/><br/> Logische Volumeverwaltung (Logical Volume Management, LVM) | JA | JA
+Logische Volumeverwaltung (Logical Volume Management, LVM). LVM wird nur für Datenträger unterstützt. Azure stellt nur einen einzelnen Betriebssystemdatenträger bereit. | JA | JA
+Volume mit Stripesetdatenträger > 1 TB | JA | JA
 Speicherplätze | JA | JA
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein  | Nein 
 Ausschließen von Datenträgern | JA | JA

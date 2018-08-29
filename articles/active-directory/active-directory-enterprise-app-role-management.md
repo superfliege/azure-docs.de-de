@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/10/2018
 ms.author: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 8bf7f18f8051f1647a86bbe9c0be638045781a72
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: cb4c9f91c7a116e6171a8e94030b6bb40fdb38ea
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989910"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141341"
 ---
 # <a name="configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen in Azure Active Directory
 
@@ -67,6 +67,9 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
     c. Wählen Sie in der Liste die folgenden Berechtigungen aus (sofern Sie noch nicht darüber verfügen), und wählen Sie **Berechtigungen ändern**.
 
       ![Liste mit Berechtigungen und Schaltfläche „Berechtigungen ändern“](./media/active-directory-enterprise-app-role-management/graph-explorer-new10.png)
+
+    > [!Note]
+    > Die Rollen „Cloud-App-Administrator“ und „App-Administrator“ funktionieren in diesem Szenario nicht, da für das Lesen und Schreiben im Verzeichnis globale Administratorberechtigungen erforderlich sind.
 
     d. Erteilen Sie die Zustimmung. Sie werden wieder am System angemeldet.
 

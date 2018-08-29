@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/15/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 17abcc7dea2f695b4678b30fe7448b0bcbb11590
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b9d3e9df62ffd31a6a01ea427fec8d5a3d168bfa
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441492"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144112"
 ---
 # <a name="create-a-tabular-model-project"></a>Erstellen eines tabellarischen Modellprojekts
 
-In dieser Lektion verwenden Sie Visual Studio mit SQL Server Data Tools (SSDT), um ein neues tabellarisches Modellprojekt mit dem Kompatibilitätsgrad 1400 zu erstellen. Sobald das neue Projekt erstellt wurde, können Sie damit beginnen, Ihr Modell zu erstellen und Daten hinzuzufügen. In dieser Lektion erhalten Sie eine kurze Einführung in die tabellarische Modellerstellungsumgebung in Visual Studio.  
+In dieser Lektion verwenden Sie Visual Studio mit Analysis Services-Projekten oder SQL Server Data Tools (SSDT), um ein neues tabellarisches Modellprojekt mit dem Kompatibilitätsgrad 1400 zu erstellen. Sobald das neue Projekt erstellt wurde, können Sie damit beginnen, Ihr Modell zu erstellen und Daten hinzuzufügen. In dieser Lektion erhalten Sie eine kurze Einführung in die tabellarische Modellerstellungsumgebung in Visual Studio.  
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   
@@ -49,7 +49,7 @@ Dieses Thema ist die erste Lektion in einem Tutorial über tabellarische Modelle
     Wenn SQL Server 2017 / Azure Analysis Services (1400) nicht im Kompatibilitätsgrad-Listenfeld angezeigt wird, verwenden Sie nicht die neueste Version der SQL Server-Datentools. Um die neueste Version zu erhalten, siehe [Installieren der SQL Server-Datentools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
       
   
-## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Grundlagen der tabellarischen Modellerstellungsumgebung von SSDT  
+## <a name="understanding-the-visual-studio-tabular-model-authoring-environment"></a>Grundlagen der Umgebung für die tabellarische Modellerstellung von Visual Studio  
 Nachdem Sie nun ein neues tabellarisches Modellprojekt erstellt haben, möchten wir uns kurz die tabellarische Modellerstellungsumgebung in Visual Studio ansehen.  
   
 Nachdem das Projekt erstellt wurde, wird es in Visual Studio geöffnet. Auf der rechten Seite unter **Tabellarischer Modell-Explorer** sehen Sie eine Strukturansicht der Objekte in Ihrem Modell. Die Ordner sind leer, da Sie noch keine Daten importiert haben. Ähnlich wie bei der Menüleiste können Sie mit der rechten Maustaste auf einen Objektordner klicken. In den verschiedenen Schritten in diesem Tutorial verwenden Sie den tabellarischen Modell-Explorer, um durch die verschiedenen Objekte in Ihrem Modellprojekt zu navigieren.
@@ -68,7 +68,7 @@ Wenn Sie ein neues Modell erstellen, werden bestimmte Modelleigenschaften gemä�
 
 Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **AW-Internetverkäufe Sales** (Projekt), und klicken Sie dann auf **Eigenschaften**. Das Dialogfeld **Eigenschaftenseiten der AW-Internetverkäufe** wird angezeigt. Sie legen einige dieser Eigenschaften später fest, wenn Sie das Modell bereitstellen.  
   
-Wenn Sie SSDT installiert haben, wurden der Visual Studio-Umgebung mehrere neue Menüelemente hinzugefügt. Klicken Sie auf das Menü **Modell**. Hier können Sie Daten importieren, die Daten des Arbeitsbereichs aktualisieren, das Modell in Excel analysieren, Perspektiven und Rollen erstellen, die Modellansicht auswählen und Berechnungsoptionen festlegen. Klicken Sie auf das Menü **Tabelle**. Hier können Sie Beziehungen erstellen und verwalten, Einstellungen für Datentabellen festlegen, Partitionen erstellen und die Tabelleneigenschaften bearbeiten. Wenn Sie auf das Menü **Spalte** klicken, können Sie Spalten in einer Tabelle hinzufügen oder diese löschen oder fixieren und die Sortierreihenfolge festlegen. SSDT fügt der Leiste auch einige Schaltflächen hinzu. Besonders nützlich ist die Funktion „AutoSumme“, mit der Sie für eine ausgewählte Spalte ein Standardaggregationsmaß erstellen können. Einige andere Schaltflächen der Symbolleiste bieten schnellen Zugriff auf häufig verwendete Funktionen und Befehle.  
+Wenn Sie Analysis Services-Projekte oder SSDT installiert haben, wurden der Visual Studio-Umgebung mehrere neue Menüelemente hinzugefügt. Klicken Sie auf das Menü **Modell**. Hier können Sie Daten importieren, die Daten des Arbeitsbereichs aktualisieren, das Modell in Excel analysieren, Perspektiven und Rollen erstellen, die Modellansicht auswählen und Berechnungsoptionen festlegen. Klicken Sie auf das Menü **Tabelle**. Hier können Sie Beziehungen erstellen und verwalten, Einstellungen für Datentabellen festlegen, Partitionen erstellen und die Tabelleneigenschaften bearbeiten. Wenn Sie auf das Menü **Spalte** klicken, können Sie Spalten in einer Tabelle hinzufügen oder diese löschen oder fixieren und die Sortierreihenfolge festlegen. Visual Studio fügt der Leiste auch einige Schaltflächen hinzu. Besonders nützlich ist die Funktion „AutoSumme“, mit der Sie für eine ausgewählte Spalte ein Standardaggregationsmaß erstellen können. Einige andere Schaltflächen der Symbolleiste bieten schnellen Zugriff auf häufig verwendete Funktionen und Befehle.  
   
 Erkunden Sie einige der Dialoge und Speicherorte für verschiedene Funktionalitäten zur Erstellung von tabellarischen Modellen. Einige Elemente sind noch nicht aktiv, aber Sie können sich bereits eine gute Vorstellung von einer Erstellungsumgebung für tabellarische Modelle verschaffen.  
   

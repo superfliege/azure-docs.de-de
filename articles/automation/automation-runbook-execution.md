@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3dfe16cc09f0453aef8adf8bf87a00aebd2054bc
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: eb6516400d362fe60adc05590353ec003c70e059
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214634"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42142352"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -59,7 +59,7 @@ Im Azure-Portal können Sie eine Statuszusammenfassung aller Runbookaufträge od
 
 Rechts in Ihrem ausgewählten Automation-Konto sehen Sie auf der Kachel **Auftragsstatistik** die Zusammenfassung aller Runbookaufträge für das ausgewählte Automation-Konto.
 
-![Die Kachel „Auftragsstatistik“](./media/automation-runbook-execution/automation-account-job-status-summary.png)zu erstellen und zu verwalten.
+![Die Kachel „Auftragsstatistik“](./media/automation-runbook-execution/automation-account-job-status-summary.png).
 
 Auf dieser Kachel wird die Anzahl aller ausgeführten Jobs neben einer grafischen Darstellung des Auftragsstatus angezeigt.
 
@@ -88,7 +88,7 @@ Zeigen Sie die Aufträge für ein Runbook mithilfe der folgenden Schritte an.
 
 ## <a name="retrieving-job-status-using-windows-powershell"></a>Abrufen des Auftragsstatus mithilfe von Windows PowerShell
 
-Sie können [Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx) verwenden, um die für ein Runbook erstellten Aufträge und die Details zu einem bestimmten Auftrag anzuzeigen. Wenn Sie ein Runbook über Windows PowerShell mithilfe des Befehls [Start-AzureRmAutomationRunbook](https://msdn.microsoft.com/library/mt603661.aspx)starten, wird der resultierende Auftrag zurückgegeben. Verwenden Sie [Get-AzureRmAutomationJob](https://msdn.microsoft.com/library/mt619440.aspx), um die Ausgabe eines Auftrags abzurufen.
+Sie können [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) verwenden, um die für ein Runbook erstellten Aufträge und die Details zu einem bestimmten Auftrag anzuzeigen. Wenn Sie ein Runbook über Windows PowerShell mithilfe des Befehls [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)starten, wird der resultierende Auftrag zurückgegeben. Verwenden Sie [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput), um die Ausgabe eines Auftrags abzurufen.
 
 Die folgenden Beispielbefehle rufen den letzten Auftrag für ein Beispielrunbook ab und zeigen seinen Status, die für die Runbookparameter bereitgestellten Werte und die Ausgabe des Auftrags an.
 

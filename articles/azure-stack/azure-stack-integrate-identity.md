@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/07/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: c22831ae781239f2474720ee9cd1b58f6e14fe41
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412864"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41947751"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -151,7 +151,7 @@ Verwenden Sie für diesen Vorgang einen Computer, der mit dem privilegierten End
 
 ## <a name="setting-up-ad-fs-integration-by-providing-federation-metadata-file"></a>Einrichten der AD FS-Integration durch Bereitstellen einer Verbundmetadatendatei
 
-Verwenden Sie diese Methode, wenn eine der folgenden Bedingungen erfüllt ist:
+Verwenden Sie ab Version 1807 diese Methode, wenn eine der folgenden Bedingungen erfüllt ist:
 
 - Die Zertifikatskette ist für AD FS im Vergleich zu allen anderen Endpunkten in Azure Stack unterschiedlich.
 - Es gibt keine Netzwerkkonnektivität mit dem vorhandenen AD FS-Server aus der AD FS-Instanz von Azure Stack.
@@ -163,6 +163,8 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 |---------|---------|---------|
 |CustomAdfsName|Der Name der Anspruchsanbieter-Vertrauensstellung. Er wird wie hier angegeben auf der AD FS-Startseite angezeigt.|Contoso|
 |CustomADFSFederationMetadataFileContent|Metadateninhalte|$using:federationMetadataFileContent|
+
+
 
 ### <a name="create-federation-metadata-file"></a>Erstellen der Verbundmetadatendatei
 

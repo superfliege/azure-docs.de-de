@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 5/17/2018
 ms.author: ronitr
 ms.reviewer: carlrab
-ms.openlocfilehash: da21a0b66d86b4cc3e2dc59bdd972d4e24d7e5ec
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 8881f66a73a2368696ee16cc0f9bb0b16d2f6d7e
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305648"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42141528"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection für Azure SQL-Datenbank
 
-SQL Advanced Threat Protection ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen die Funktion zur Ermittlung und Klassifizierung sensibler Daten, die Verwaltung von Datenbankrisiken und die Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Es bietet einen einzelnen Anlaufpunkt zum Aktivieren und Verwalten dieser Funktionen. 
+SQL Advanced Threat Protection ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen die Funktionen zur Ermittlung und Klassifizierung sensibler Daten, Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Es bietet einen einzelnen Anlaufpunkt zum Aktivieren und Verwalten dieser Funktionen. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -65,7 +65,7 @@ Navigieren Sie zum Anzeigen und Verwalten von Advanced Threat Protection-Einstel
 
 ![Servereinstellungen](./media/sql-advanced-protection/server_settings.png) 
 
-## <a name="5-manage-atp-settings-for-a-sql-database"></a>5. Verwalten von ATP-Einstellungen für eine SQL-­Datenbank
+## <a name="5-manage-atp-settings-for-a-sql-database"></a>5. Verwalten von ATP-Einstellungen für eine SQL-Datenbank
 
 Um die ATP-Einstellungen für die Bedrohungserkennung für eine bestimmte Datenbank außer Kraft zu setzen, aktivieren Sie das Kontrollkästchen **Advanced Threat Protection auf Datenbankebene aktivieren**. Verwenden Sie diese Option nur, wenn eine besondere Anforderung zum Empfangen von separaten Bedrohungserkennungswarnungen für diese Datenbank vorliegt, die anstelle der Warnungen für alle Datenbanken auf dem Server oder zusätzlich zu diesen empfangen werden müssen. 
 

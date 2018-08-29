@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: fdaf77e3d8a1858372298fb0d67ca05c2717adf6
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 76a83ef4f647dcf7d79218cb281f1f976b292870
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36324165"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141960"
 ---
 # <a name="tutorial-configure-cisco-webex-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cisco Webex für die automatische Benutzerbereitstellung
 
@@ -171,6 +171,10 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Cisco Webex ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+
+## <a name="connector-limitations"></a>Connector-Einschränkungen
+
+* Cisco Webex befindet sich derzeit in der EFT-Phase (Early Field Testing) von Cisco. Weitere Informationen erhalten Sie vom [Cisco-Supportteam](https://www.webex.co.in/support/support-overview.html). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

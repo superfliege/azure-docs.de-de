@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.author: mabrigg
-ms.date: 05/21/2018
+ms.author: brenduns
+ms.date: 08/02/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: scottnap
-ms.openlocfilehash: faff52ba5b5e2f0d573a67633d3a8411b2d7de74
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 50fe3c0c7fda745047c71afb8eedf7fa8806c4ec
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606425"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41947957"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Überlegungen zu Azure Stack-Netzwerken
 
@@ -23,28 +23,58 @@ ms.locfileid: "34606425"
 
 Azure Stack-Netzwerke bieten viele Features von Azure-Netzwerken. Es gibt jedoch einige wichtige Unterschiede, die Sie kennen sollten, bevor Sie ein Azure Stack-Netzwerk bereitstellen.
 
-Dieser Artikel enthält eine Übersicht über die besonderen Überlegungen für Azure Stack-Netzwerke und die entsprechenden Features. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Thema [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
+Dieser Artikel enthält eine Übersicht über die besonderen Überlegungen für Azure Stack-Netzwerke und die entsprechenden Features. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Artikel [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
 
 ## <a name="cheat-sheet-networking-differences"></a>Spickzettel: Unterschiede bei Netzwerken
 
-|Dienst | Feature | Azure (global) | Azure Stack |
-| --- | --- | --- | --- |
-| DNS | Mehrinstanzenfähiges DNS | Unterstützt| Noch nicht unterstützt|
-| |DNS-AAAA-Datensätze|Unterstützt|Nicht unterstützt|
-| |DNS-Zonen pro Abonnement|100 (Standard)<br>Kann auf Anforderung erhöht werden|100|
-| |DNS-Datensätze pro Zone|5000 (Standard)<br>Kann auf Anforderung erhöht werden|5.000|
-||Namenserver für die Zonendelegierung|Azure bietet vier Namenserver für jede erstellte Benutzerzone (Mandantenzone).|Azure Stack bietet zwei Namenserver für jede erstellte Benutzerzone (Mandantenzone).|
-| Virtuelles Netzwerk|Peering in virtuellen Netzwerken|Verbinden von zwei virtuellen Netzwerken in derselben Region über das Azure-Backbonenetzwerk|Noch nicht unterstützt|
-| |IPv6-Adressen|Sie können eine IPv6-Adresse als Teil der [Netzwerkschnittstellenkonfiguration](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions) zuweisen.|Es wird nur IPv4 unterstützt.|
-|VPN-Gateways|Point-to-Site-VPN Gateway|Unterstützt|Noch nicht unterstützt|
-| |VNet-zu-VNet-Gateway|Unterstützt|Noch nicht unterstützt|
-| |VPN Gateway-SKUs|Unterstützung für Basic, GW1, GW2, GW3, Standard High Performance, Ultra-High Performance |Unterstützung für Basic-, Standard- und High Performance-SKUs|
-|Load Balancer|Öffentliche IPv6-Adresse|Unterstützung zum Zuweisen einer öffentlichen IPv6-Adresse zu einem Lastenausgleichsmodul|Es wird nur IPv4 unterstützt.|
-|Network Watcher|Überwachungsfunktionen für Network Watcher-Mandantennetzwerk|Unterstützt|Noch nicht unterstützt|
-|CDN|Content Delivery Network-Profile|Unterstützt|Noch nicht unterstützt|
-|Anwendungsgateway|Lastenausgleich auf Schicht 7|Unterstützt|Noch nicht unterstützt|
-|Traffic Manager|Weiterleiten von eingehendem Datenverkehr zur Optimierung der Anwendungsleistung und -zuverlässigkeit|Unterstützt|Noch nicht unterstützt|
-|ExpressRoute|Einrichten einer schnellen privaten Verbindung mit Microsoft Cloud Services in Ihrer lokalen Infrastruktur oder Kollokationsumgebung|Unterstützt|Unterstützung zum Verbinden von Azure Stack mit einer Express Route-Verbindung|
+| Dienst | Feature | Azure (global) | Azure Stack |
+|--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| DNS | Mehrinstanzenfähiges DNS | Unterstützt | Noch nicht unterstützt |
+|  | DNS-AAAA-Datensätze | Unterstützt | Nicht unterstützt |
+|  | DNS-Zonen pro Abonnement | 100 (Standard)<br>Kann auf Anforderung erhöht werden | 100 |
+|  | DNS-Datensätze pro Zone | 5000 (Standard)<br>Kann auf Anforderung erhöht werden | 5.000 |
+|  | Namenserver für die Zonendelegierung | Azure bietet vier Namenserver für jede erstellte Benutzerzone (Mandantenzone). | Azure Stack bietet zwei Namenserver für jede erstellte Benutzerzone (Mandantenzone). |
+| Virtual Network | Peering in virtuellen Netzwerken | Verbinden von zwei virtuellen Netzwerken in derselben Region über das Azure-Backbonenetzwerk | Noch nicht unterstützt |
+|  | IPv6-Adressen | Sie können eine IPv6-Adresse als Teil der [Netzwerkschnittstellenkonfiguration](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions) zuweisen. | Es wird nur IPv4 unterstützt. |
+|  | DDoS Protection-Plan | Unterstützt | Noch nicht unterstützt. |
+|  | IP-Konfigurationen für Skalierungsgruppe | Unterstützt | Noch nicht unterstützt. |
+|  | Dienste für privaten Zugriff (Subnetz) | Unterstützt | Noch nicht unterstützt. |
+|  | Dienstendpunkte | Unterstützt für interne (kein Internet) Verbindung mit Azure-Diensten | Noch nicht unterstützt. |
+| Es wird nur IPv4 unterstützt. | Dienstendpunkt-Richtlinien | Unterstützt | Noch nicht unterstützt. |
+|  | Diensttunnel | Unterstützt | Noch nicht unterstützt.  |
+| Netzwerksicherheitsgruppen | Ergänzte Sicherheitsregeln | Unterstützt | Noch nicht unterstützt. |
+|  | Effektive Sicherheitsregeln | Unterstützt | Noch nicht unterstützt. |
+|  | Anwendungssicherheitsgruppen | Unterstützt | Noch nicht unterstützt. |
+| Gateways für virtuelle Netzwerke | Point-to-Site-VPN Gateway | Unterstützt | Noch nicht unterstützt. |
+|  | VNet-zu-VNet-Gateway | Unterstützt | Noch nicht unterstützt. |
+|  | Typ des Gateways für das virtuelle Netzwerk | Azure unterstützt VPN<br> ExpressRoute <br> Hyper Net | Azure Stack unterstützt derzeit nur VPN als Typ. |
+|  | VPN Gateway-SKUs | Unterstützung für Basic, GW1, GW2, GW3, Standard High Performance, Ultra-High Performance | Unterstützung für Basic-, Standard- und High Performance-SKUs |
+|  | VPN-Typ | Azure unterstützt sowohl „Richtlinienbasiert“ als auch „Routenbasiert“. | Azure Stack unterstützt nur „Routenbasiert“. |
+|  | BGP-Einstellungen | Azure unterstützt die Konfiguration der BGP-Peering-Adresse und Peer-Gewichtung. | BGP-Peering-Adresse und Peer-Gewichtung werden in Azure Stack automatisch konfiguriert. Es gibt keine Möglichkeit für den Benutzer, diese Einstellungen mit eigenen Werten zu konfigurieren. |
+|  | Gateway-Standardwebsite | Azure unterstützt die Konfiguration einer Standardwebsite für Tunnelerzwingung. | Noch nicht unterstützt. |
+|  | Ändern der Gatewaygröße | Azure unterstützt das Ändern der Gatewaygröße nach der Bereitstellung. | Die Änderung der Größe wird nicht unterstützt. |
+|  | Aktiv/Aktiv-Konfiguration | Unterstützt | Noch nicht unterstützt. |
+|  | IKE/IPSec-Richtlinien | Azure unterstützt benutzerdefinierte Konfigurationen für IPSec-Richtlinien. | Noch nicht unterstützt. |
+|  | UsePolicyBasedTrafficSelectors | Azure unterstützt die Verwendung richtlinienbasierter Datenverkehrsselektoren mit routenbasierten Gatewayverbindungen. | Noch nicht unterstützt. |
+| Load Balancer | SKU | Load Balancer Basic und Standard werden unterstützt. | Nur Load Balancer Basic wird unterstützt.  Die SKU-Eigenschaft wird nicht unterstützt. |
+|  | Zones | Verfügbarkeitszonen werden unterstützt. | Noch nicht unterstützt |
+|  | Unterstützung eingehender NAT-Regeln für Dienstendpunkte | Azure unterstützt das Festlegen von Dienstendpunkten für eingehende NAT-Regeln. | Azure Stack unterstützt noch keine Dienstendpunkte, daher können keine festgelegt werden. |
+|  | Protokoll | Azure unterstützt das Festlegen von GRE oder ESP. | Protokollklassen werden in Azure Stack nicht unterstützt. |
+| Öffentliche IP-Adresse | Version der öffentlichen IP-Adresse | Azure unterstützt IPv6 und IPv4 | Es wird nur IPv4 unterstützt. |
+| Netzwerkschnittstelle | Abrufen der effektiven Routentabelle | Unterstützt | Noch nicht unterstützt. |
+|  | Abrufen der effektiven ACLs | Unterstützt | Noch nicht unterstützt. |
+|  | Aktivieren des beschleunigten Netzwerkbetriebs | Unterstützt | Noch nicht unterstützt. |
+|  | SSL-Weiterleitung | Standardmäßig deaktiviert.  Kann aktiviert werden. | Das Umschalten dieser Einstellung wird nicht unterstützt.  Standardmäßig aktiviert. |
+|  | Mehrere IP-Konfigurationen pro Schnittstelle | Unterstützt | Noch nicht unterstützt. |
+|  | Anwendungssicherheitsgruppen | Unterstützt | Noch nicht unterstützt. |
+|  | Interne DNS-Namensbezeichnung | Unterstützt | Noch nicht unterstützt. |
+|  | Version der privaten IP-Adresse | IPv6 und IPv4 werden unterstützt. | Es wird nur IPv4 unterstützt. |
+|  | Primäre IP-Konfiguration | Unterstützt. Identifiziert die primäre IP-Konfiguration auf der Schnittstelle. | Noch nicht unterstützt. |
+| Network Watcher | Überwachungsfunktionen für Network Watcher-Mandantennetzwerk | Unterstützt | Noch nicht unterstützt. |
+| CDN | Content Delivery Network-Profile | Unterstützt | Noch nicht unterstützt. |
+| Anwendungsgateway | Lastenausgleich auf Schicht 7 | Unterstützt | Noch nicht unterstützt. |
+| Traffic Manager | Weiterleiten von eingehendem Datenverkehr zur Optimierung der Anwendungsleistung und -zuverlässigkeit | Unterstützt | Noch nicht unterstützt. |
+| ExpressRoute | Einrichten einer schnellen privaten Verbindung mit Microsoft Cloud Services in Ihrer lokalen Infrastruktur oder Kollokationsumgebung | Unterstützt | Unterstützung zum Verbinden von Azure Stack mit einer Express Route-Verbindung |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

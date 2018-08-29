@@ -7,21 +7,21 @@ manager: shreeshd
 keywords: Azure VM Backup, Azure VM Restore, Sicherungsrichtlinie
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2017
+ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: d637a98029b33be890b31f32c3080650b251f7a8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 58b0622da2ef617e652c8bb9dacbf7daa2d79966
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606374"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42144905"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Fragen zum Azure VM Backup-Dienst
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten von Azure VM Backup vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
 
 ## <a name="configure-backup"></a>Konfigurieren der Sicherung
 ### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>Unterstützen Recovery Services-Tresore klassische virtuelle Computer oder Resource Manager-basierte virtuelle Computer? <br/>
-Recovery Services-Tresore unterstützen beide Modelle.  Sie können eine klassische VM (die im klassischen Portal erstellt wurde) oder eine Resource Manager-VM (die im Azure-Portal erstellt wurde) in einem Recovery Services-Tresor schützen.
+Recovery Services-Tresore unterstützen beide Modelle.  Sie können einen klassischen virtuellen Computer oder einen virtuellen Resource Manager-Computer in einem Recovery Services-Tresor sichern.
 
 ### <a name="what-configurations-are-not-supported-by-azure-vm-backup"></a>Welche Konfigurationen werden von der Azure-VM-Sicherung nicht unterstützt?
 Informationen zu unterstützten Betriebssystemen finden Sie [hier](backup-azure-arm-vms-prepare.md#supported-operating-systems-for-backup). Informationen zu Einschränkungen beim Sichern eines virtuellen Computers finden Sie [hier](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
@@ -53,7 +53,7 @@ Wenn der Benutzer die Ressourcengruppe sperrt, kann der Backup-Dienst die älter
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>Berücksichtigt die Sicherungsrichtlinie die Sommerzeit (Daylight Saving Time, DST)?
 Nein. Denken Sie daran, dass Datum und Uhrzeit auf dem lokalen Computer in Ihrer lokalen Uhrzeit und unter Berücksichtigung der Sommerzeit angezeigt werden. Daher kann die für geplante Sicherungen konfigurierte Zeit aufgrund der DST von Ihrer lokalen Uhrzeit abweichen.
 
-## <a name="restore"></a>Restore 
+## <a name="restore"></a>Restore
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>Wann sollte ich Datenträger wiederherstellen und wann den gesamten virtuellen Computer?
 Bei der vollständigen Wiederherstellung eines virtuellen Azure-Computers handelt es sich gewissermaßen um eine Schnellerstellungsoption. Die VM-Wiederherstellungsoption ändert die Namen von Datenträgern, von Containern, die von diesen Datenträgern verwendet werden, öffentlichen IP-Adressen und Namen von Netzwerkschnittstellen. Die Änderung ist erforderlich, um die Eindeutigkeit von Ressourcen beizubehalten, die während der Erstellung eines virtuellen Computers erstellt werden. Sie fügt jedoch nicht den virtuellen Computer der Verfügbarkeitsgruppe hinzu. 
 
@@ -73,6 +73,9 @@ In diesem Szenario erstellt standardmäßig ein Auftrag zum Wiederherstellen ein
 2. [Konvertieren der wiederhergestellten Datenträger in verwaltete Datenträger](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
 3. [Erstellen eines virtuellen Computers mit verwalteten Datenträgern](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
 Informationen zu PowerShell-Cmdlets finden Sie [hier](backup-azure-vms-automation.md#restore-an-azure-vm).
+
+### <a name="can-i-restore-the-vm-if-my-vm-is-deleted"></a>Kann ich den virtuellen Computer wiederherstellen, falls mein virtueller Computer gelöscht wird?
+Ja. Die Lebenszyklen eines virtuellen Computers und des entsprechenden Sicherungselements unterscheiden sich. Selbst wenn Sie den virtuellen Computer löschen, können Sie daher das entsprechende Sicherungselement im Recovery Services-Tresor aufrufen und mithilfe eines der Wiederherstellungspunkte eine Wiederherstellung auslösen. 
 
 ## <a name="manage-vm-backups"></a>Verwalten von VM-Sicherungen
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>Was passiert, wenn ich eine Sicherungsrichtlinie für VMs ändere?

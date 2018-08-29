@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 229ca187f98fd4c7e085c994b5896ae4a6a50748
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 75a3dcb5aeb3e30da570eb57d0d1495710624e54
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038118"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141161"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Verwalten von Speicher in den unabhängigen Azure-Clouds mithilfe von PowerShell
 
@@ -35,7 +35,7 @@ Für die Beispiele ist mindestens Version 4.4.0 des Azure PowerShell-Moduls erfo
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Führen Sie das Cmdlet [Get-AzureEnvironment](/powershell/module/servicemanagement/azure/Get-AzureRmEnvironment) aus, um die verfügbaren Azure-Umgebungen anzuzeigen:
+Führen Sie das Cmdlet [Get-AzureRmEnvironment](/powershell/module/servicemanagement/azurerm.profile/get-azurermenvironment) aus, um die verfügbaren Azure-Umgebungen anzuzeigen:
    
 ```powershell
 Get-AzureRmEnvironment

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: dfeacb266d6aa6a43e49a39bd19c9699ef65ce82
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162013"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42145787"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Beseitigen falscher Kennwörter in Ihrer Organisation
 
@@ -54,11 +54,10 @@ Jedes Mal, wenn ein Benutzer sein Azure AD-Kennwort zurücksetzt oder ändert, d
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
-Die Vorteile der Liste global gesperrter Kennwörter gelten für alle Benutzer von Azure Active Directory (Azure AD).
-
-Die Liste benutzerdefinierter gesperrter Kennwörter erfordert Azure AD Basic-Lizenzen.
-
-Azure AD-Kennwortschutz für Windows Server Active Directory erfordert Azure AD Premium-Lizenzen. 
+|   | Kennwortschutz für Azure AD mit globaler Liste gesperrter Kennwörter | Kennwortschutz für Azure AD mit benutzerdefinierter Liste gesperrter Kennwörter|
+| --- | --- | --- |
+| Reine Cloudbenutzer | Azure AD Free | Azure AD Basic |
+| Über die lokale Windows Server Active Directory-Instanz synchronisierte Benutzer | Azure AD Premium P1 oder P2 | Azure AD Premium P1 oder P2 |
 
 Weitere Informationen zur Lizenzierung einschließlich der Kosten finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 

@@ -12,21 +12,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 7084243c0fc84429b585c3e8fd9e5c64df469ec4
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604283"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41948129"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Hinzufügen eines App Service-Ressourcenanbieters zu einer getrennten, durch AD FS gesicherten Azure Stack-Umgebung
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Wenden Sie Update 1804 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.2 bereit.
+> Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.3 bereit.
 >
 >
 
@@ -138,11 +138,21 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
     > [!NOTE]
     > Das Installationsprogramm versucht, die Konnektivität mit SQL Server zu testen, bevor es fortgesetzt wird.  Wenn Sie sich jedoch für die Bereitstellung in einem vorhandenen virtuellen Netzwerk entschieden haben, kann das Installationsprogramm möglicherweise keine Verbindung mit SQL Server herstellen, und es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten.  Überprüfen Sie die SQL Server-Informationen, und fahren Sie fort, wenn diese richtig sind.
     >
-    >
+    > Ab Azure Stack 1.3 überprüft das Installationsprogramm für Azure App Service, ob die Datenbankeigenständigkeit für SQL Server auf SQL Server-Ebene aktiviert ist.  Wenn dies nicht der Fall ist, werden Sie mit der folgenden Ausnahme aufgefordert:
+    > ```sql
+    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
+    >    ***********************************************************
+    >    sp_configure 'contained database authentication', 1;  
+    >    GO  
+    >    RECONFIGURE;  
+    >    GO
+    >    ***********************************************************
+    > ```
+    > Weitere Informationen finden Sie in den [Versionshinweisen für Azure App Service in Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md).
    
    ![App Service-Installationsprogramm][12]
 
-13. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die vCPU- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
+13. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanzen und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die vCPU- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
 
      > [!NOTE]
      > Befolgen Sie bei Produktionsbereitstellungen die Anweisungen unter [Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack](azure-stack-app-service-capacity-planning.md).
@@ -151,7 +161,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
     | Rolle | Mindestanzahl der Instanzen | Mindest-SKU | Notizen |
     | --- | --- | --- | --- |
-    | Controller | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
+    | Controller | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
     | Verwaltung | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |
     | Herausgeber | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Veröffentlicht Inhalte per FTP oder Webbereitstellung |
     | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Leitet Anforderungen an App Service-Anwendungen weiter |
@@ -160,7 +170,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
     ![App Service-Installationsprogramm][14]
 
     > [!NOTE]
-    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service in Azure Stack.  Verwenden Sie Evaluierungsimages nicht für Produktionsbereitstellungen.**
+    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service in Azure Stack.  Verwenden Sie Evaluierungsimages nicht für Produktionsbereitstellungen.  Azure App Service in Azure Stack setzt voraus, dass auf dem für die Bereitstellung verwendeten Image Microsoft.Net 3.5.1 SP1 aktiviert ist.   Bei syndizierten Marketplace-Images von Windows Server 2016 ist dieses Feature nicht aktiviert.**
 
 14. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 

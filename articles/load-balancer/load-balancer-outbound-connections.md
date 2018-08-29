@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/08/2018
+ms.date: 08/15/2018
 ms.author: kumud
-ms.openlocfilehash: 2e6b8dd5e0ec0ae73fff4a25ad79045e3414e9cc
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e9249f3a5787da9ad54945195b47cf9af0f45fb1
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824998"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141374"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -220,7 +220,7 @@ Bei Verwendung des öffentlichen Standard Load Balancers vergeben Sie [mehrere F
 
 Beispielsweise sind für zwei virtuelle Computer im Back-End-Pool 1024 SNAT Ports pro IP-Konfiguration verfügbar, sodass insgesamt 2048 SNAT-Ports für die Bereitstellung zulässig sind.  Soll die Bereitstellung auf 50 virtuelle Computer vergrößert werden, können, obwohl die Anzahl der vorab zugeordneten Ports pro virtuellem Computer konstant bleibt, insgesamt 51.200 (50 x 1024) SNAT-Ports durch die Bereitstellung genutzt werden.  Wenn Sie Ihre Bereitstellung horizontal skalieren möchten, überprüfen Sie die Anzahl von [vorab zugeordneten Ports](#preallocatedports) pro Ebene, um sicherzustellen, dass Sie die horizontale Skalierung entsprechend dem Maximum der jeweiligen Ebene festlegen.  Hätten Sie sich im vorhergehenden Beispiel zu einer horizontalen Skalierung auf 51 statt auf 50 Instanzen entschieden, würden Sie zur nächsten Ebene gelangen und somit weniger SNAT-Ports pro virtuellem Computer sowie weniger SNAT-Ports insgesamt erhalten.
 
-Umgekehrt kann eine horizontales Skalieren auf die nächstgrößere Back-End-Pool-Größe ausgehende Verbindungen unterbrechen, wenn zugeordnete Ports neu zugeordnet werden müssen.  Soll dies nicht stattfinden, müssen Sie Ihre Bereitstellung an die Ebenengröße anpassen.  Oder Sie stellen sicher, dass Ihre Anwendung geeignet erkennen und wiederholen kann.  TCP-Keepalives können bei der Erkennung unterstützen, wenn SNAT-Ports nicht mehr funktionieren, weil sie neu zugeordnet werden.
+Wenn Sie horizontal auf die nächstgrößere Back-End-Poolgröße hochskalieren, erfolgt möglicherweise für einige Ihrer ausgehenden Verbindungen ein Timeout, wenn zugeordnete Ports neu zugeordnet werden müssen.  Wenn Sie nur einige Ihrer SNAT-Ports verwenden, hat das Hochskalieren über die nächstgrößere Back-End-Poolgröße hinaus keine Auswirkungen.  Die Hälfte der vorhandenen Ports wird bei jedem Wechsel zur nächsten Back-End-Poolebene neu zugeordnet.  Soll dies nicht stattfinden, müssen Sie Ihre Bereitstellung an die Ebenengröße anpassen.  Oder Sie stellen sicher, dass Ihre Anwendung geeignet erkennen und wiederholen kann.  TCP-Keepalives können bei der Erkennung unterstützen, wenn SNAT-Ports nicht mehr funktionieren, weil sie neu zugeordnet werden.
 
 ### <a name="idletimeout"></a>Verwenden von Keepalives zum Zurücksetzen des Leerlauftimeouts für ausgehende Verbindungen
 
@@ -249,6 +249,6 @@ Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Stan
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu [Load Balancer](load-balancer-overview.md).
-- Weitere Informationen zu [Standard Load Balancer](load-balancer-standard-overview.md).
+- Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).
 - Weitere Informationen zu [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md).
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) in Azure.

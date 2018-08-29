@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 08/14/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 3ecc8885a30a11472fe93bbda60c39131c6b3bd7
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801414"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41954846"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Knotenaktionen für Skalierungseinheiten in Azure Stack
 
@@ -70,7 +70,6 @@ Sie können von hier aus auch Knotenaktionen für eine Skalierungseinheit ausfü
 
 Beim Anzeigen von Informationen zu einem Knoten einer Skalierungseinheit können Sie Knotenaktionen wie die folgenden ausführen:
 
-- Ein- und Ausschalten
 - Entladen und Fortsetzen
 - Reparieren
 
@@ -154,4 +153,4 @@ So führen Sie die Reparaturaktion mithilfe von PowerShell aus
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Fabric-Administratormodul von Azure Stack finden Sie unter [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.3.0).
+Weitere Informationen zum Fabric-Administratormodul von Azure Stack finden Sie unter [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.4.0).

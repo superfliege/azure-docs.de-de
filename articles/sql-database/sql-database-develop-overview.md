@@ -10,12 +10,12 @@ ms.custom: develop apps
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: sstein
-ms.openlocfilehash: 2194293d23e5db277f2ff7aa207c298533f74571
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 4236372370858e940d7e3a1671c0e8a8278796fb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308865"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42141790"
 ---
 # <a name="sql-database-application-development-overview"></a>Übersicht zur SQL-Datenbankanwendungsentwicklung
 In diesem Artikel werden die grundlegenden Aspekte beschrieben, die ein Entwickler beim Schreiben von Code zum Herstellen einer Verbindung mit Azure SQL-Datenbanken berücksichtigen sollte.
@@ -33,12 +33,12 @@ Für eine Vielzahl von Programmiersprachen und Plattformen sind Codebeispiele ve
 Sie können Open-Source-Tools wie [Cheetah](https://github.com/wunderlist/cheetah), [Sql-Cli](https://www.npmjs.com/package/sql-cli) und [VS Code](https://code.visualstudio.com/) nutzen. Darüber hinaus funktioniert Azure SQL-Datenbank mit Microsoft-Tools wie [Visual Studio](https://www.visualstudio.com/downloads/) und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Sie können auch das Azure-Verwaltungsportal, PowerShell und REST-APIs nutzen, um produktiver zu arbeiten.
 
 ## <a name="resource-limitations"></a>Ressourcenbeschränkungen
-Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mithilfe zweier verschiedener Mechanismen: Ressourcenkontrolle und Durchsetzung von Grenzwerten. Weitere Informationen finden Sie unter 
+Azure SQL-Datenbank verwaltet die für eine Datenbank verfügbaren Ressourcen mithilfe zweier verschiedener Mechanismen: Ressourcenkontrolle und Durchsetzung von Grenzwerten. Weitere Informationen finden Sie unter
 
-- [Einschränkungen des DTU-basierten Ressourcenmodells – Einzeldatenbank](sql-database-dtu-resource-limits-elastic-pools.md)
-- [Einschränkungen des DTU-basierten Ressourcenmodells – Einzeldatenbank](sql-database-dtu-resource-limits-elastic-pools.md)
+- [Einschränkungen des DTU-basierten Ressourcenmodells – Einzeldatenbank](sql-database-dtu-resource-limits-single-databases.md)
+- [Einschränkungen des DTU-basierten Ressourcenmodells – Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md)
 - [V-Kern-basierte Ressourceneinschränkungen – Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md)
-- [V-Kern-basierte Ressourceneinschränkungen – Pool für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)
+- [V-Kern-basierte Ressourceneinschränkungen – Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md)
 
 ## <a name="security"></a>Sicherheit
 Azure SQL-Datenbank stellt Ressourcen zum Einschränken des Zugriffs, zum Schützen von Daten sowie zum Überwachen von Aktivitäten in einer SQL-Datenbank bereit.

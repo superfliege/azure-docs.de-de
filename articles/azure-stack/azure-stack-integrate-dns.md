@@ -10,12 +10,12 @@ ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b4935dc95ccf525c0a40b10dcc8c59ec8aba710e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29733858"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41946448"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integration des Azure Stack-Datencenters – DNS
 Für den Zugriff auf Azure Stack-Endpunkte (`portal`, `adminportal`, `management`, `adminmanagement` usw.) von außerhalb von Azure Stack müssen Sie die Azure Stack-DNS-Dienste mit den DNS-Servern integrieren, die die DNS-Zonen hosten, die Sie in Azure Stack verwenden möchten.
@@ -115,7 +115,7 @@ Wenn Sie die Beispielwerte verwenden, sind die vollqualifizierten Domänennamen 
 
 Diese Informationen werden auch am Ende aller Azure Stack-Bereitstellungen in einer Datei namens `AzureStackStampDeploymentInfo.json` erstellt. Diese Datei befindet sich im Ordner `C:\CloudDeployment\logs` des virtuellen Computers der Bereitstellung. Wenn Sie nicht sicher sind, welche Werte für Ihre Azure Stack-Bereitstellung verwendet werden, können Sie diese Werte hier abrufen.
 
-Wenn der virtuelle Computer für die Bereitstellung nicht mehr verfügbar ist oder nicht darauf zugegriffen werden kann, können Sie die Werte erhalten, indem Sie eine Verbindung mit dem privilegierten Endpunkt herstellen und das PowerShell-Cmdlet `Get-AzureStackInfo` ausführen. Weitere Informationen über privilegierte Endpunkte finden Sie unter (Link zum Artikel hier einfügen).
+Wenn der virtuelle Computer für die Bereitstellung nicht mehr verfügbar ist oder nicht darauf zugegriffen werden kann, können Sie die Werte erhalten, indem Sie eine Verbindung mit dem privilegierten Endpunkt herstellen und das PowerShell-Cmdlet `Get-AzureStackInfo` ausführen. Weitere Informationen finden Sie unter [Privilegierter Endpunkt](azure-stack-privileged-endpoint.md).
 
 ## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Einrichten der bedingten Weiterleitung an Azure Stack
 

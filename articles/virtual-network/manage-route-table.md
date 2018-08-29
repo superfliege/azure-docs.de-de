@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: cd97b00a522ff41a74f46195da5d8b1a0d92d344
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 04db7655f3f4b63edffcb731d0e92db25f1847b9
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960007"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141146"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Erstellen, Ändern oder Löschen einer Routingtabelle
 
@@ -43,7 +43,7 @@ Die Anzahl von Routingtabellen, die Sie pro Azure-Standort und -Abonnement erste
 
 1. Wählen Sie links oben im Portal **+ Ressource erstellen** aus.
 2. Wählen Sie die Option **Netzwerk** und dann **Routingtabelle**.
-3. Geben Sie unter **Name** einen Namen für die Routingtabelle ein, wählen Sie Ihr **Abonnement**, erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus, wählen Sie einen **Standort**, und wählen Sie dann die Option **Erstellen**. Mit der Option **BGP-Routenverteilung deaktivieren** wird verhindert, dass lokale Routen per BGP an die Netzwerkschnittstellen in einem Subnetz verteilt werden, mit dem die Routentabelle verknüpft ist. Wählen Sie *Deaktiviert*, wenn Ihr virtuelles Netzwerk nicht mit einem Azure-Netzwerkgateway (VPN oder ExpressRoute) verbunden ist.
+3. Geben Sie unter **Name** einen Namen für die Routingtabelle ein, wählen Sie Ihr **Abonnement**, erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus, wählen Sie einen **Standort**, und wählen Sie dann die Option **Erstellen**. Wenn Sie die Routingtabelle einem Subnetz eines virtuellen Netzwerks, das über ein VPN-Gateway mit Ihrem lokalen Netzwerk verbunden ist, zuordnen möchten und die **BGP-Routenverteilung** deaktivieren, werden Ihre lokalen Routen nicht an die Netzwerkschnittstellen in diesem Subnetz übergeben.
 
 **Befehle**
 

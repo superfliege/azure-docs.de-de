@@ -1,6 +1,6 @@
 ---
-title: Node-Schnellstart für das Bildersuche-SDK | Microsoft-Dokumentation
-description: Setup für die Konsolenanwendung des Bildersuche-SDK
+title: 'Schnellstart: Anfordern und Filtern von Bildern mit dem SDK in Node.js'
+description: In diesem Schnellstart fordern Sie Bilder an und filtern die von der Bing-Bildersuche zurückgegebenen Bilder mithilfe von Node.js.
 titleSuffix: Azure cognitive services
 services: cognitive-services
 author: mikedodaro
@@ -10,14 +10,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: e4c8303e39accbb7caec15c0ef47d701971ce632
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e88c045b220192a617e6b8caf5d8d53f70a25b5e
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377899"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929768"
 ---
-# <a name="image-search-sdk-node-quickstart"></a>Node-Schnellstart für das Bildersuche-SDK
+# <a name="quickstart-request-and-filter-images-using-the-sdk-and-nodejs"></a>Schnellstart: Anfordern und Filtern von Bildern mit dem SDK und Node.js
 
 Das Bing-Bildersuche-SDK enthält die Funktionalität der REST-API für Bilderabfragen und das Analysieren von Ergebnissen. 
 

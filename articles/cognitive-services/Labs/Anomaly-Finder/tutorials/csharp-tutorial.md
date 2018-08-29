@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2e4100fd7d8e85a6b103c31000176aaaeb3d7151
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38317678"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41929793"
 ---
 # <a name="anomaly-detection-c-application"></a>C#-Anwendung zur Anomalieerkennung
 
@@ -48,7 +48,7 @@ Drücken Sie STRG+UMSCHALT+B, oder klicken Sie auf dem Menüband auf „Erstelle
 
 1. Drücken Sie nach Abschluss des Buildvorgangs **F5**, oder klicken Sie auf dem Menüband auf **Starten**, um das Beispiel auszuführen.
 2. Finden Sie auf der Benutzeroberfläche der Anomalieerkennung das Fenster mit dem Texteditierfeld „{your_subscription_key}“ (Ihr Abonnementschlüssel).
-3. Ersetzen Sie die request.json-Datei, die die Beispieldaten enthält, durch Ihre eigenen Daten, und klicken Sie dann auf die Schaltfläche „Senden“. Microsoft empfängt die Daten, die Sie hochladen, und verwendet sie zum Erkennen eventueller enthaltener Anomaliepunkte. Die von Ihnen hochgeladenen Daten bleiben nicht dauerhaft auf Microsoft-Servern erhalten. Um Anomaliepunkte erneut zu erkennen, müssen Sie die Daten noch einmal hochladen.
+3. Ersetzen Sie die request.json-Datei, die die Beispieldaten enthält, durch Ihre eigenen Daten, und klicken Sie dann auf die Schaltfläche „Senden“. Microsoft empfängt die Daten, die Sie hochladen, und verwendet sie zum Erkennen eventueller enthaltener Anomaliepunkte. Die von Ihnen geladenen Daten bleiben nicht dauerhaft auf Microsoft-Servern erhalten. Um Anomaliepunkte erneut zu erkennen, müssen Sie die Daten noch einmal hochladen.
 4. Wenn die Daten geeignet sind, finden Sie das Ergebnis der Anomalieerkennung im Feld „Response“ (Antwort). Sollten Fehler auftreten, werden die Fehlerinformationen ebenfalls im Feld „Response“ (Antwort) angezeigt.
 
 <a name="Review"></a>
@@ -77,7 +77,8 @@ Sehen wir uns zur Überprüfung, wie die Restful-API in der Beispielanwendung ve
             // ----------------------------------------------------------------------
 
 ```
-**Request(…)** Der Codeausschnitt unten zeigt, wie der HttlClient zum Senden Ihres Abonnementschlüssels und der Datenpunkte an den Endpunkt der Anomalieerkennungs-API verwendet wird.
+### <a name="request"></a>**Anforderung**
+Der Codeausschnitt unten zeigt, wie der HttpClient zum Senden Ihres Abonnementschlüssels und der Datenpunkte an den Endpunkt der Anomalieerkennungs-API verwendet wird.
 
 ```csharp
     public async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData)

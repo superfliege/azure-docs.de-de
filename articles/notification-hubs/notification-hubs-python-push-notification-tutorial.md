@@ -14,17 +14,17 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 32953bacb8fdb135d5f3e0e9324218d2a71b0818
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777017"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42141143"
 ---
-# <a name="how-to-use-notification-hubs-from-python"></a>Verwenden von Notification Hubs mit Python
+# <a name="how-to-use-notification-hubs-from-python"></a>Verwenden von Notofication Hubs mit Python
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnittstelle für Notification Hubs, die im MSDN-Thema [REST-APIs für Benachrichtigungshubs](http://msdn.microsoft.com/library/dn223264.aspx)beschrieben ist, auf alle Notification Hubs-Funktionen zugreifen.
+Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnittstelle für Notification Hubs, die im MSDN-Artikel [REST-APIs für Benachrichtigungshubs](http://msdn.microsoft.com/library/dn223264.aspx) beschrieben ist, auf alle Notification Hub-Funktionen zugreifen.
 
 > [!NOTE]
 > Dies ist eine beispielhafte Referenzimplementierung für die Implementierung der Benachrichtigungsübermittlung in Python und nicht der offiziell unterstützte Notification Hub Python SDK.
@@ -33,7 +33,7 @@ Sie können von einem Java-/PHP-/Python-/Ruby-Back-End aus über die REST-Schnit
 > 
 > 
 
-Dieser Artikel veranschaulicht Folgendes:
+In diesem Artikel erfahren Sie Folgendes:
 
 * Erstellen eines REST-Clients für Notification Hubs-Features in Python.
 * Senden von Benachrichtigungen über die Python-Schnittstelle an die Notification Hub-REST-APIs. 
@@ -62,7 +62,7 @@ So senden Sie eine Windows-Popupbenachrichtigung
     hub.send_windows_notification(wns_payload)
 
 ## <a name="implementation"></a>Implementierung
-Führen Sie, sofern nicht bereits geschehen, das Tutorial [Erste Schritte] bis zum letzten Abschnitt aus, in dem Sie das Back-End implementieren müssen.
+Führen Sie, sofern nicht bereits geschehen, das Tutorial [Erste Schritte mit Notification Hubs] bis zum letzten Abschnitt aus, in dem Sie das Back-End implementieren müssen.
 
 Alle Details für das Implementieren eines vollständigen REST-Wrappers finden sich auf [MSDN](http://msdn.microsoft.com/library/dn530746.aspx). In diesem Abschnitt wird die Python-Implementierung mit den Hauptschritten beschrieben, die für den Zugriff auf REST-Endpunkte von Notification Hubs und für das Senden von Benachrichtigungen erforderlich sind.
 
@@ -261,7 +261,7 @@ Mit dieser Klasse können Sie jetzt die Methoden zum Senden von Benachrichtigung
 Diese Methoden senden eine HTTP-POST-Anforderung mit dem ordnungsgemäßen Text und Headern zum Senden der Benachrichtigung an den „/messages“-Endpunkt des Benachrichtigungs-Hubs.
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>Aktivieren der ausführlichen Protokollierung mithilfe der Debug-Eigenschaft
-Durch das Aktivieren der Debug-Eigenschaft während der Initialisierung des Notification Hubs werden detaillierte Protokollinformationen zu HTTP-Anforderung und -Antwort sowie ein detailliertes Sendeergebnis für die Benachrichtigungsnachricht geschrieben. Die [„TestSend“-Eigenschaft für Notification Hubs](http://msdn.microsoft.com/library/microsoft.servicebus.notifications.notificationhubclient.enabletestsend.aspx) gibt ausführliche Informationen zum Sendeergebnis der Benachrichtigung zurück. Wenn Sie diese Eigenschaft verwenden möchten, initialisieren Sie mit dem folgenden Code:
+Durch das Aktivieren der Debug-Eigenschaft während der Initialisierung des Notification Hubs werden detaillierte Protokollinformationen zu HTTP-Anforderung und -Antwort sowie ein detailliertes Sendeergebnis für die Benachrichtigungsnachricht geschrieben. Die [„TestSend“-Eigenschaft für Notification Hubs](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100)) gibt ausführliche Informationen zum Sendeergebnis der Benachrichtigung zurück. Wenn Sie diese Eigenschaft verwenden möchten, initialisieren Sie mit dem folgenden Code:
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 
@@ -270,7 +270,7 @@ Der HTTP-URL der Sendeanforderung des Notification Hubs wird einer "test"-Abfrag
 ## <a name="complete-tutorial"></a>Abschließen des Lernprogramms
 Sie können jetzt das Lernprogramm "Erste Schritte" abschließen, indem Sie die Benachrichtigung von einem Python-Back-End aus senden.
 
-Initialisieren Sie Ihren Notification Hubs-Client (ersetzen Sie die Verbindungszeichenfolge und den Hubnamen wie im [Erste Schritte]beschrieben):
+Initialisieren Sie Ihren Notification Hubs-Client (ersetzen Sie die Verbindungszeichenfolge und den Hubnamen wie im [Erste Schritte mit Notification Hubs]beschrieben):
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName")
 
@@ -380,7 +380,7 @@ In diesem Artikel haben wir gezeigt, wie Sie einen Python-REST-Client für Notif
 
 <!-- URLs -->
 [Beispiel für Python-REST-Wrapper]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/notificationhubs-rest-python
-[Erste Schritte]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Erste Schritte mit Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Lernprogramm zum Übermitteln aktueller Nachrichten]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-breaking-news/
 [Lernprogramm zum Lokalisieren von Nachrichten]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-send-localized-breaking-news/
 

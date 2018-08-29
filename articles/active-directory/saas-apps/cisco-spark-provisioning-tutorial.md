@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: 74907693270e6cd340d3b34585a80077aa87f0f7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: bb3b3061c15a661caff778ca5c0ec48b0434c718
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055662"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141961"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cisco Spark für die automatische Benutzerbereitstellung
 
@@ -171,6 +171,10 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Cisco Spark ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+
+## <a name="connector-limitations"></a>Connector-Einschränkungen
+
+* Cisco Spark befindet sich derzeit in der EFT-Phase (Early Field Testing) von Cisco. Weitere Informationen erhalten Sie vom [Cisco-Supportteam](https://www.webex.co.in/support/support-overview.html). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

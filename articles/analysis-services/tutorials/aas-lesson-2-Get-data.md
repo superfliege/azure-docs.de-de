@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e10f6cdb60a2c03bfb42e46f179546b623d625dd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5803bf2c71b2cf3fe7bb145b4d3d664c60642294
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443765"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42142211"
 ---
 # <a name="get-data"></a>Datensammlung
 
@@ -52,11 +52,11 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorge
   
 5.  Wählen Sie im Navigator die **AdventureWorksDW2014**-Datenbank, und klicken Sie dann auf **OK**. Dadurch wird die Verbindung zur Datenbank hergestellt. 
   
-6.  Aktivieren Sie im Navigator das Kontrollkästchen für die folgenden Tabellen: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory**, und **FactInternetSales**.  
+6.  Aktivieren Sie im Navigator das Kontrollkästchen für die folgenden Tabellen: **DimCustomer**, **DimDate**, **DimGeography**, **DimProduct**, **DimProductCategory**, **DimProductSubcategory** und **FactInternetSales**. Klicken Sie dann auf **Bearbeiten**.
 
     ![aas-lesson2-select-tables](../tutorials/media/aas-lesson2-select-tables.png)
   
-Wenn Sie auf „OK“ geklickt haben, wird der Abfrage-Editor geöffnet. Im nächsten Abschnitt wählen Sie nur die Daten aus, die Sie importieren möchten.
+    Der Abfrage-Editor wird geöffnet. Im nächsten Abschnitt wählen Sie nur die Daten aus, die Sie importieren möchten.
 
   
 ## <a name="filter-the-table-data"></a>Filtern der Tabellendaten  

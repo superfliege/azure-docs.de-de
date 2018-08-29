@@ -14,16 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 522bc9e757abeae930e47eaf53bb6da4bd9d0531
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224108"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142394"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Web-Apps in Azure App Service in Visual Studio
 ## <a name="overview"></a>Übersicht
-In diesem Tutorial lernen Sie die Visual Studio-Tools zum Debuggen von Web-Apps in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) kennen. Sie führen die App entweder remote im [Debugmodus](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) aus oder arbeiten mit Anwendungs- und Webserverprotokollen.
+In diesem Tutorial lernen Sie die Visual Studio-Tools zum Debuggen von Web-Apps in [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) kennen. Sie führen die App entweder remote im [Debugmodus](https://docs.microsoft.com/visualstudio/debugger/) aus oder arbeiten mit Anwendungs- und Webserverprotokollen.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -134,7 +134,8 @@ public ActionResult About()
     return View();
 }
 ```
-4. [Setzen Sie einen Haltepunkt](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) in der Zeile: `ViewBag.Message`.
+
+4. [Setzen Sie einen Haltepunkt](https://docs.microsoft.com/visualstudio/debugger/) in der Zeile: `ViewBag.Message`.
 
 5. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und klicken Sie anschließend auf **Veröffentlichen**.
 
@@ -185,7 +186,7 @@ Remotedebuggen funktioniert nur bei kontinuierlichen WebJobs. Geplante und bedar
 
 2. Öffnen Sie *Functions.cs*im Projekt "ContosoAdsWebJob".
 
-3. [Legen Sie einen Haltepunkt](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx) für die erste Anweisung in der `GnerateThumbnail`-Methode fest.
+3. [Legen Sie einen Haltepunkt](https://docs.microsoft.com/visualstudio/debugger/) für die erste Anweisung in der `GnerateThumbnail`-Methode fest.
 
     ![Haltepunkt setzen](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -250,7 +251,7 @@ Wenn die Funktion [Protokolle geschrieben hat](https://github.com/Azure/azure-we
   <httpRuntime targetFramework="4.5" />
 </system.web>
 ```
-* Falls der Debugger nicht in den gewünschten Code wechselt, müssen Sie möglicherweise die Einstellung „Nur eigenen Code“ ändern.  Weitere Informationen finden Sie unter [Schrittweises Durchlaufen für "Nur mein Code" beschränken](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code).
+* Falls der Debugger nicht in den gewünschten Code wechselt, müssen Sie möglicherweise die Einstellung „Nur eigenen Code“ ändern.  Weitere Informationen finden Sie unter [Angeben, ob nur das Debuggen von Benutzercode mit „Nur eigenen Code“ in Visual Studio erfolgen soll](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Bei Aktivierung der Remotedebuggen-Funktion startet ein Timer auf dem Server, und die Funktion wird nach 48 Stunden automatisch abgeschaltet. Dieses Limit von 48 Stunden existiert aus Sicherheits- und Leistungsgründen. Sie können die Funktion jederzeit und beliebig oft aktivieren. Wenn Sie nicht aktiv debuggen, sollten Sie die Funktion jedoch deaktivieren.
 * Sie können den Debugger manuell an einen beliebigen Prozess anfügen, nicht nur an den Web-App-Prozess (w3wp.exe). Weitere Informationen zum Debugmodus in Visual Studio finden Sie unter [Debuggen in Visual Studio](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
 

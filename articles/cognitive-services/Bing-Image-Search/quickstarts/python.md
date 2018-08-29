@@ -1,6 +1,6 @@
 ---
-title: Aufruf und Antwort – Python-Schnellstart für Azure Cognitive Services, Bing-Bildersuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Bildersuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Senden von Suchabfragen mithilfe der REST-API für die Bing-Bildersuche-API und Python'
+description: In diesem Schnellstart senden Sie Suchabfragen an die Bing-Suche-API, um mithilfe von Python eine Liste relevanter Bilder abzurufen.
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
@@ -8,14 +8,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 3b5d6a961ce4bcde8aaf73f1fbd30689a6c2c2d1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bc527ba39b580935f113f56aa63f7bdd283ba304
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374026"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929852"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-python"></a>Aufruf und Antwort: Ihre erste Bing-Bildersuche-Abfrage in Python
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>Schnellstart: Senden von Suchabfragen mithilfe der REST-API und Python
 
 Die Bing-Bildersuche-API bietet eine ähnliche Erfahrung wie „Bing.com/Images“: Sie können eine Suchabfrage eines Benutzers an Bing senden und eine Liste mit relevanten Bildern erhalten.
 
@@ -27,7 +27,7 @@ Sie können dieses Beispiel als Jupyter Notebook in [MyBinder](https://mybinder.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-walkthrough"></a>Ausführen der exemplarischen Vorgehensweise
 Legen Sie zum Fortsetzen der exemplarischen Vorgehensweise `subscription_key` auf Ihren API-Schlüssel für den Bing-API-Dienst fest.

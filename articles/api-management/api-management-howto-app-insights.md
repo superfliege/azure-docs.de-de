@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 8546b1228c8d8f213cb87692144e8d1d31a949d8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a660b36f383eaf1fd0e868200ad7f59aba0f8225
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001802"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42144008"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights
 
@@ -111,9 +111,15 @@ Für eine fehlerhafte Anforderung gilt Folgendes:
 
 Bei internen Auslastungstests reduzierte die Aktivierung dieses Features den Durchsatz um 40-50%, wenn die Anforderungsrate 1.000 Anforderungen pro Sekunde überschritt. Mit Azure Application Insights wird die statistische Analyse zur Bewertung der Anwendungsleistung verwendet. Jedoch ist dieses Programm kein Überwachungssystem und nicht zur Protokollierung jeder einzelnen an APIs mit hohem Volumen gerichteten Anforderung geeignet.
 
-Sie können die Anzahl der protokollierten Anforderungen durch Anpassen der Einstellung **Sampling** beeinflussen (siehe die oben beschriebenen Schritte). Der Wert 100% bedeutet, dass alle Anforderungen protokolliert werden, während 0% überhaupt keine Protokollierung widerspiegelt. Mit **Sampling** können Sie das Volumen von Telemetriedaten reduzieren, einen erheblichen Leistungsabfall effektiv verhindern und dabei dennoch die Vorteile der Protokollierung genießen.
+Sie können die Anzahl der protokollierten Anforderungen durch Anpassen der Einstellung **Sampling** beeinflussen (siehe die oben beschriebenen Schritte). Der Wert 100% bedeutet, dass alle Anforderungen protokolliert werden, während 0% überhaupt keine Protokollierung widerspiegelt. Mit **Sampling** können Sie das Volumen von Telemetriedaten reduzieren, einen erheblichen Leistungsabfall effektiv verhindern und dabei dennoch die Vorteile der Protokollierung nutzen.
 
 Das Überspringen der Protokollierung von Headern und Textkörpern der Anforderungen und Antworten hat auch positive Auswirkungen auf die Abschwächung von Leistungsproblemen.
+
+## <a name="video"></a>Video
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2pkXv]
+>
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

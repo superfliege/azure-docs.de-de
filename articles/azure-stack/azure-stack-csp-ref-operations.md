@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: efd1c1eafbff8bf56b16131e44cff6b03ce7338a
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: bb46881425398618df54288a9d2e6d65bb03dad4
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264809"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41947752"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Verwalten der Mandantenregistrierung in Azure Stack
 
@@ -86,10 +86,10 @@ Rufen Sie eine Liste aller Mandanten ab, die einer Registrierung hinzugefügt wu
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das Cmdlet Get-AzureRmResovurce, um alle registrierten Mandanten aufzulisten. Melden Sie sich bei Azure (`Add-AzureRmAccount`) mit dem Konto an, das Sie für die anfängliche Registrierung verwendet haben. Hier ist ein Beispiel für das Hinzufügen eines Mandanten:
+Verwenden Sie das Cmdlet „Get-AzureRmResource“, um alle registrierten Mandanten aufzulisten. Melden Sie sich bei Azure (`Add-AzureRmAccount`) mit dem Konto an, das Sie für die anfängliche Registrierung verwendet haben. Hier ist ein Beispiel für das Hinzufügen eines Mandanten:
 
 ```powershell
-  Get-AzureRmResovurce -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
+  Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
 ```
 
 ### <a name="api-call"></a>API-Aufruf

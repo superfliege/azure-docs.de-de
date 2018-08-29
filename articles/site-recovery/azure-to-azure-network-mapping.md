@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: 7b7f9c079a1fc9d74fed4cc4d94d37f336ca5dc7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916739"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42145101"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>Zuordnen virtueller Netzwerke in verschiedenen Azure-Regionen
 
@@ -88,16 +88,36 @@ Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers DHCP verwendet, wir
 ### <a name="static-ip-address"></a>Statische IP-Adresse
 Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers eine statische IP-Adresse verwendet, wird die Netzwerkschnittstelle des virtuellen Zielcomputers ebenfalls als statische IP-Adresse festgelegt. In den folgenden Abschnitten wird das Festlegen einer statischen IP-Adresse beschrieben.
 
-#### <a name="same-address-space"></a>Gleicher Adressraum
+### <a name="ip-assignment-behavior-during-failover"></a>IP-Zuweisungsverhalten während eines Failovers
+#### <a name="1-same-address-space"></a>1. Gleicher Adressraum
 
 Wenn das Quellsubnetz und das Zielsubnetz über denselben Adressraum verfügen, wird die IP-Adresse der Netzwerkschnittstelle des virtuellen Quellcomputers als Ziel-IP-Adresse festgelegt. Wenn dieselbe IP-Adresse nicht verfügbar ist, wird die nächste verfügbare IP-Adresse als Ziel-IP-Adresse festgelegt.
 
-#### <a name="different-address-spaces"></a>Verschiedene Adressräume
+#### <a name="2-different-address-spaces"></a>2. Verschiedene Adressräume
 
 Wenn das Quellsubnetz und das Zielsubnetz über unterschiedliche Adressräume verfügen, wird die nächste verfügbare IP-Adresse im Zielsubnetz als Ziel-IP-Adresse festgelegt.
 
-Zum Ändern der Ziel-IP an den einzelnen Netzwerkschnittstellen rufen Sie die Einstellungen für **Compute und Netzwerk** des virtuellen Computers auf.
 
+### <a name="ip-assignment-behavior-during-test-failover"></a>IP-Zuweisungsverhalten während eines Testfailovers
+#### <a name="1-if-the-target-network-chosen-is-the-production-vnet"></a>1. Das ausgewählte Zielnetzwerk ist das Produktions-VNET:
+- Die Wiederherstellungs-IP (Ziel-IP) ist eine statische IP. Dabei handelt es sich jedoch **nicht um dieselbe IP-Adresse**, die für das Failover reserviert ist.
+- Die zugewiesene IP-Adresse ist die nächste verfügbare IP vom Ende des Subnetzadressbereichs.
+- Beispiel: Als statische IP des virtuellen Quellcomputers ist „10.0.0.19“ konfiguriert, und das Testfailover wurde mit dem konfigurierten Produktionsnetzwerk ***dr-PROD-nw*** und dem Subnetzbereich „10.0.0.0/24“ ausgeführt. </br>
+Dem virtuellen Computer, für den das Failover ausgeführt wurde, wird die nächste verfügbare IP vom Ende des Subnetzadressbereichs (10.0.0.254) zugewiesen. </br>
+
+**Hinweis:** Der Begriff **Produktions-VNET** bezieht sich auf das „Zielnetzwerk“, das während der Konfiguration der Notfallwiederherstellung zugeordnet wird.
+####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2. Beim ausgewählten Zielnetzwerk handelt es sich nicht um das Produktions-VNET, es besitzt jedoch den gleichen Subnetzbereich wie das Produktionsnetzwerk: 
+
+- Die Wiederherstellungs-IP (Ziel-IP) ist eine statische IP **mit derselben IP-Adresse** (d.h. der konfigurierten statischen IP-Adresse), die für das Failover reserviert ist. Voraussetzung ist, dass die gleiche IP-Adresse verfügbar ist.
+- Wenn die konfigurierte statische IP bereits einem anderen virtuellen Computer/Gerät zugewiesen ist, handelt es sich bei der Wiederherstellungs-IP um die nächste verfügbare IP vom Ende des Subnetzadressbereichs.
+- Beispiel: Als statische IP des virtuellen Quellcomputers ist „10.0.0.19“ konfiguriert, und das Testfailover wurde mit dem Testnetzwerk ***dr-NON-PROD-nw*** und dem gleichen Subnetzbereich wie das des Produktionsnetzwerks ausgeführt: 10.0.0.0/24. </br>
+  Dem virtuellen Computer, für den das Failover ausgeführt wurde, wird die folgende statische IP zugewiesen: </br>
+    - Konfigurierte statische IP: 10.0.0.19 (sofern die IP verfügbar ist)
+    - Nächste verfügbare IP: 10.0.0.254 (falls die IP-Adresse „10.0.0.19“ bereits verwendet wird)
+
+
+Zum Ändern der Ziel-IP an den einzelnen Netzwerkschnittstellen rufen Sie die Einstellungen für **Compute und Netzwerk** des virtuellen Computers auf.</br>
+Als bewährte Methode wird immer empfohlen, ein Testnetzwerk für das Testfailover auszuwählen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Lesen Sie den [Netzwerkleitfaden zum Replizieren virtueller Azure-Computer](site-recovery-azure-to-azure-networking-guidance.md).

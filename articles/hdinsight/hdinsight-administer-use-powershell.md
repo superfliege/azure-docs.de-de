@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 60868ceb58a9ed4935ea540ad15abd0e5d35f559
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b23662ccda090b4d8a4cbb5eae3029affd075c33
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595527"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144088"
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Verwalten von Hadoop-Clustern in HDInsight mit Azure PowerShell
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Azure PowerShell kann zum Steuern und Automatisieren der Bereitstellung und Verwaltung Ihrer Workloads in Azure verwendet werden. In diesem Artikel erfahren Sie, wie Sie Hadoop-Cluster in Azure HDInsight mithilfe von Azure PowerShell verwalten. Eine Liste der HDInsight PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz][hdinsight-powershell-reference].
+Azure PowerShell kann zum Steuern und Automatisieren der Bereitstellung und Verwaltung Ihrer Workloads in Azure verwendet werden. In diesem Artikel erfahren Sie, wie Sie Hadoop-Cluster in Azure HDInsight mithilfe von Azure PowerShell verwalten. Eine Liste der HDInsight PowerShell-Cmdlets finden Sie unter [HDInsight-Cmdlet-Referenz](https://msdn.microsoft.com/library/azure/dn479228.aspx).
 
 **Voraussetzungen**
 
@@ -231,7 +231,7 @@ Weitere Informationen finden Sie unter [Verwenden von Oozie mit Hadoop zum Defin
 Siehe [Hochladen von Daten in HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Siehe auch
-* [Referenzdokumentation zum HDInsight-Cmdlet][hdinsight-powershell-reference]
+* [Referenzdokumentation zum HDInsight-Cmdlet](https://msdn.microsoft.com/library/azure/dn479228.aspx)
 * [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal]
 * [Verwalten von HDInsight über eine Befehlszeilenschnittstelle][hdinsight-admin-cli]
 * [Erstellen von HDInsight-Clustern][hdinsight-provision]

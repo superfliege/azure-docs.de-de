@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: b5028010953b9dbe2386c30e6fa05cc4a94cb971
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6a9b4fc5479dda58dd024cdf93cbdf4853f9c965
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185491"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145129"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Geräteauthentifizierung mit X.509-Zertifikaten
 
@@ -64,7 +64,7 @@ Hier erfahren Sie, wie Sie [Ihr CA-Zertifikat registrieren](iot-hub-security-x50
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>Erstellen eines Geräts auf IoT Hub
 
-Um einen Identitätswechsel des Geräts auszuschließen, müssen Sie IoT Hub mitteilen, welche Geräte zu erwarten sind.  Hierzu erstellen Sie einen Geräteeintrag in der Geräteregistrierung von IoT Hub.  Dieser Vorgang ist bei Verwendung des [Device Provisioning-Diensts](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) (Device Provisioning Service, DPS) von IoT Hub automatisiert. 
+Um einen Identitätswechsel des Geräts auszuschließen, müssen Sie IoT Hub mitteilen, welche Geräte zu erwarten sind.  Hierzu erstellen Sie einen Geräteeintrag in der Geräteregistrierung von IoT Hub.  Dieser Vorgang ist bei Verwendung von [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) von IoT Hub automatisiert. 
 
 Hier erfahren Sie, wie Sie [ein Gerät in IoT Hub manuell erstellen](iot-hub-security-x509-get-started.md#createdevice).
 

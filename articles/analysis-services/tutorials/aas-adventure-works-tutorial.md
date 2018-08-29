@@ -8,22 +8,21 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4b6e642c86c5e618cae2d46aad84a61b3f4866ae
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a53bcbe90f39999a838c84807ca834a1e6cd1813
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446145"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145848"
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services – Tutorial mit Adventure Works
 
-Dieses Tutorial enthält Lektionen zum Erstellen und Bereitstellen eines tabellarischen Modells mit dem Kompatibilitätsgrad 1400 mit Visual Studio und [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
-
+Dieses Tutorial enthält Lektionen zum Erstellen und Bereitstellen eines tabellarischen Modells mit dem Kompatibilitätsgrad 1400 mit Visual Studio [Analysis Services-Projekten](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects) oder [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).  
 Wenn Sie mit Analysis Services und der tabellarischen Modellierung noch nicht vertraut sind, ist dieses Tutorial die schnellste Methode, um zu erfahren, wie Sie mit Visual Studio ein einfaches tabellarisches Modell erstellen und bereitstellen. Sobald alle Voraussetzungen erfüllt sind, nimmt das Tutorial etwa zwei bis drei Stunden in Anspruch.  
   
 ## <a name="what-you-learn"></a>Lerninhalt   
   
--   Wie Sie ein neues Projekt für ein tabellarisches Modell mit dem **Kompatibilitätsgrad 1400** in Visual Studio mit SSDT erstellen können.
+-   Erstellen eines neuen Projekts für ein tabellarisches Modell mit dem **Kompatibilitätsgrad 1400** in Visual Studio.
   
 -   Wie Sie Daten aus einer relationalen Datenbank in eine Projektarbeitsbereich-Datenbank für ein tabellarisches Modell importieren können.  
   
@@ -37,7 +36,7 @@ Wenn Sie mit Analysis Services und der tabellarischen Modellierung noch nicht ve
   
 -   Wie Sie Modellobjekte und -daten sichern können, indem Sie Rollen mit Benutzern erstellen.  
   
--   Wie Sie ein tabellarisches Modell über SSDT für einen Server mit **Azure Analysis Services** oder für einen Server mit **SQL Server 2017 Analysis Services** bereitstellen können.  
+-   Bereitstellen eines tabellarischen Modells über Visual Studio für einen Server mit **Azure Analysis Services** oder für einen Server mit **SQL Server 2017 Analysis Services**.  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
 Für dieses Tutorial benötigen Sie Folgendes:  

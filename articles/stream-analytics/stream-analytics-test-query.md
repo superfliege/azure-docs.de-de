@@ -10,12 +10,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 3dc9091934f3db8ededc13f74d2f302eccace4d6
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d699d69362b2d28c205aab14a4bfb26570a68a4e
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312989"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42141956"
 ---
 # <a name="test-a-stream-analytics-query-with-sample-data"></a>Testen einer Stream Analytics-Abfrage mit Beispieldaten
 
@@ -29,9 +29,7 @@ Mit Azure Stream Analytics können Sie Beispieldaten und Testabfragen in das Azu
 
 3. Wählen Sie auf der Stream Analytics-Auftragsseite unter der Überschrift **Auftragstopologie** die Option **Abfrage** aus, um das Fenster des Abfrage-Editors zu öffnen. 
 
-4. Um Ihre Abfrage mit Beispieleingabedaten zu testen, klicken Sie mit der rechten Maustaste auf eine Ihrer Eingaben.  Wählen Sie dann **Beispieldaten aus Datei hochladen** aus.
-
-   Bei den Daten darf es sich nur um JSON-formatierte Daten handeln. Wenn Ihre Daten in einem anderen Format als CSV vorliegen, müssen Sie sie vor dem Hochladen in JSON konvertieren. Sie können ein Open-Source-Konvertierungstool wie [CSV to JSON Converter](http://www.convertcsv.com/csv-to-json.htm) verwenden, um Ihre Daten in JSON zu konvertieren.
+4. Um Ihre Abfrage mit Beispieleingabedaten zu testen, klicken Sie mit der rechten Maustaste auf eine Ihrer Eingaben.  Wählen Sie dann **Beispieldaten aus Datei hochladen** aus. Die Daten müssen in JSON, CSV oder AVRO serialisiert werden.
 
     ![Testen von Abfragen im Stream Analytics-Abfrage-Editor](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
 

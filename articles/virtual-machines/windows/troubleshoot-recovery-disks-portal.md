@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/07/2018
+ms.date: 08/013/2018
 ms.author: genli
-ms.openlocfilehash: db6a2279347b5746da706e7ad3629b141afd205b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 09e7a729dbb3e82bce08c06a1af1f0bf3f9c5c2f
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271163"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142195"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Beheben von Problemen einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM mit dem Azure-Portal
 Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie das Azure-Portal die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen.
@@ -32,7 +32,7 @@ Der Problembehebungsprozess sieht wie folgt aus:
 4. Heben Sie die Bereitstellung auf, und trennen Sie die virtuelle Festplatte von der Problembehebungs-VM.
 5. Erstellen Sie eine VM mithilfe der ursprünglichen virtuellen Festplatte.
 
-Für virtuelle Computer mit verwalteten Datenträgern finden Sie weitere Informationen unter [Problembehandlung bei einem virtuellen Computer mit verwalteten Datenträgern durch Anfügen eines neuen Betriebssystemdatenträgers](#troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk).
+Mit Azure PowerShell können Sie für einen virtuellen Computer, der verwaltete Datenträger verwendet, nun den Betriebssystemdatenträger ändern. Sie müssen die VM nicht löschen und neu erstellen. Weitere Informationen finden Sie unter [Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM per Azure PowerShell](troubleshoot-recovery-disks.md).
 
 ## <a name="determine-boot-issues"></a>Bestimmen von Problemen beim Start
 Überprüfen Sie den Screenshot mit der Startdiagnose der VM, um zu bestimmen, warum Ihre VM nicht richtig gestartet werden kann. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate oder eine zugrunde liegende virtuelle Festplatte, die gelöscht oder verschoben wird.
@@ -98,9 +98,9 @@ Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Füge
 
 ## <a name="mount-the-attached-data-disk"></a>Bereitstellen des hinzugefügten Datenträgers
 
-1. Öffnen Sie eine Remotedesktopverbindung mit Ihrem virtuellen Computer. Wählen Sie Ihre VM im Portal aus, und klicken Sie auf **Verbinden**. Laden Sie die RDP-Verbindungsdatei herunter, und öffnen Sie sie. Geben Sie Ihre Anmeldeinformationen ein, um sich wie folgt an der VM anzumelden:
+1. Öffnen Sie eine Remotedesktopverbindung mit Ihrem virtuellen Computer. Wählen Sie Ihre VM im Portal aus, und klicken Sie auf **Verbinden**. Laden Sie die RDP-Verbindungsdatei herunter, und öffnen Sie sie. Geben Sie Ihre Anmeldeinformationen ein, um sich wie folgt auf der VM anzumelden:
 
-    ![Anmelden an der VM per Remotedesktop](./media/troubleshoot-recovery-disks-portal/open-remote-desktop.png)
+    ![Anmelden auf der VM per Remotedesktop](./media/troubleshoot-recovery-disks-portal/open-remote-desktop.png)
 
 2. Öffnen Sie **Server-Manager**, und wählen Sie dann die Option **Datei- und Speicherdienste**. 
 
@@ -146,13 +146,6 @@ Die Vorlage wird im Azure-Portal für die Bereitstellung geladen. Geben Sie die 
 Wenn Sie Ihre VM aus der vorhandenen virtuellen Festplatte erstellen, werden Startdiagnoseeinstellungen möglicherweise nicht automatisch aktiviert. Wählen Sie Ihre VM im Portal aus, um den Status der Startdiagnoseeinstellungen zu überprüfen und sie ggf. zu aktivieren. Klicken Sie unter **Überwachen** auf **Diagnoseeinstellungen**. Stellen Sie sicher, dass der Status **An** lautet und das Häkchen neben **Startdiagnose** gesetzt ist. Wenn Sie Änderungen vornehmen, klicken Sie auf **Speichern**:
 
 ![Aktualisieren der Startdiagnoseeinstellungen](./media/troubleshoot-recovery-disks-portal/reenable-boot-diagnostics.png)
-
-## <a name="troubleshoot-a-managed-disk-vm-by-attaching-a-new-os-disk"></a>Problembehandlung bei einem virtuellen Computer mit verwalteten Datenträgern durch Anfügen eines neuen Betriebssystemdatenträgers
-1. Beenden Sie den betroffenen virtuellen Windows-Computer mit verwalteten Datenträgern.
-2. [Erstellen Sie eine Momentaufnahme](snapshot-copy-managed-disk.md) des Betriebssystemdatenträgers des virtuellen Computers mit verwalteten Datenträgern.
-3. [Erstellen Sie einen verwalteten Datenträger aus der Momentaufnahme](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-4. [Fügen Sie den verwalteten Datenträger als Datenträger des virtuellen Computers an](attach-disk-ps.md).
-5. [Ändern Sie den Datenträger aus Schritt 4 in den Betriebssystemdatenträger](os-disk-swap.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn Probleme beim Herstellen einer Verbindung mit Ihrer VM auftreten, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) weiter. Konsultieren Sie [Problembehandlung beim Zugriff auf eine Anwendung, die auf einem virtuellen Azure-Computer ausgeführt wird](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) bei Problemen mit dem Zugriff auf Anwendungen, die auf Ihrer VM ausgeführt werden.

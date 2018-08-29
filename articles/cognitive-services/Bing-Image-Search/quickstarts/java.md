@@ -1,6 +1,6 @@
 ---
-title: Aufruf und Antwort – Java-Schnellstart für Azure Cognitive Services, Bing-Bildersuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell in die Bing-Bildersuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Senden von Suchabfragen mithilfe der REST-API für die Bing-Bildersuche-API und Java'
+description: In diesem Schnellstart senden Sie Suchabfragen an die Bing-Suche-API, um mithilfe von Java eine Liste relevanter Bilder abzurufen.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,14 +9,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 658025e997f27a3974b473e5c556780733d68045
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3d779bae099bde5b015ee8316906ace77c0ad3bb
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376978"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929794"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-java"></a>Aufruf und Antwort: Ihre erste Bing-Bildersuche-Abfrage in Java
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-java"></a>Schnellstart: Senden von Suchabfragen mithilfe der REST-API und Java
 
 Die Bing-Bildersuche-API bietet eine ähnliche Erfahrung wie „Bing.com/Images“: Sie können eine Suchabfrage eines Benutzers an Bing senden und eine Liste mit relevanten Bildern erhalten.
 
@@ -26,7 +26,7 @@ Dieser Artikel enthält eine einfache Konsolenanwendung, die eine Abfrage mit de
 
 Zum Kompilieren und Ausführen des Codes benötigen Sie [JDK 7 oder 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html). Sie können auch eine Java-Entwicklungsumgebung verwenden, ein Text-Editor ist jedoch ausreichend.
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Ausführen der Anwendung
 

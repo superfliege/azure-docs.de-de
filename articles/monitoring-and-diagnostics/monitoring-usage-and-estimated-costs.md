@@ -5,18 +5,24 @@ author: dalekoetke
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/31/2018
+ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.component: ''
-ms.openlocfilehash: edfcc244105403ae33251777c560d4cc21dfe5cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 35e7d36043defd236252f86facf4b9e2ed945d67
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264281"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140978"
 ---
 # <a name="monitoring-usage-and-estimated-costs"></a>Überwachen der Nutzung und der geschätzten Kosten
+
+> [!NOTE]
+> In diesem Artikel wird beschrieben, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
+> - [Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics](../log-analytics/log-analytics-manage-cost-storage.md) beschreibt, wie Sie Ihre Kosten durch Ändern der Datenaufbewahrungsdauer steuern.
+> - [Analysieren der Datennutzung in Log Analytics](../log-analytics/log-analytics-usage.md) beschreibt, wie Sie Ihre Datennutzung analysieren und Warnungen dazu ausgeben.
+> - [Verwalten von Preisen und Datenvolumen in Application Insights](../application-insights/app-insights-pricing.md) beschreibt, wie Sie die Datennutzung in Application Insights analysieren.
 
 Die Seite **Nutzung und geschätzte Kosten** im Monitor-Hub des Azure-Portals erläutert die Nutzung wichtiger Überwachungsfeatures wie [Metriken, Warnungen, Benachrichtigungen](https://azure.microsoft.com/pricing/details/monitor/), [Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/) und [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/). Für Kunden mit Tarifen, die vor April 2018 verfügbar waren, umfasst dies auch die Log Analytics-Nutzung, die über das Insights- und Analytics-Angebot erworben wurde.
 

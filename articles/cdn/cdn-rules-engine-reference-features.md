@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-deasim
-ms.openlocfilehash: e1e002b51aa5a93e7fcc800f5cf48ac401c5cb2d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 57648486e515b5438f937c4295b33843583e622e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011423"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42141060"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Features der Azure CDN-Regel-Engine
 Dieser Artikel bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
@@ -333,7 +333,7 @@ Um das als „no-cache“ bezeichnete Verhalten für das Zwischenspeichern von A
 
 Das folgende Verwendungsbeispiel für dieses Feature umfasst eine Beispielanforderung und den Standardcacheschlüssel:
 
-- **Beispielanforderung:** http://wpc.0001.&lt;Domäne&gt;/800001/Origin/folder/asset.htm?sessionid=1234&amp;language=DE&amp;userid=01
+- **Beispielanforderung:** http://wpc.0001.&lt;Domäne&gt;/800001/Origin/folder/asset.htm?sessionid=1234&language=DE&userid=01
 - **Standardcacheschlüssel:** /800001/Origin/folder/asset.htm
 
 ##### <a name="include"></a>Include
@@ -497,8 +497,8 @@ Das Format zum Angeben der Anforderungs- und Antwortheader ist folgendermaßen d
 
 Headertyp|Format|Beispiele
 -|-|-
-Anforderungsheader|%{[RequestHeader]()}[i]() | %{Accept-Encoding}i <br/> {Referer}i <br/> %{Authorization}i
-Antwortheader|%{[ResponseHeader]()}[o]()| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
+Anforderungsheader|`%{[RequestHeader]()}[i]()` | %{Accept-Encoding}i <br/> {Referer}i <br/> %{Authorization}i
+Antwortheader|`%{[ResponseHeader]()}[o]()`| %{Age}o <br/> %{Content-Type}o <br/> %{Cookie}o
 
 Wichtige Informationen:
 

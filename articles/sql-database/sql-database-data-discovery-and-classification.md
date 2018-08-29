@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.author: giladm
-ms.openlocfilehash: cc093bebb4b3c39140d6fa5370a78d59168990fa
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 6ef9a701f3a228e4c40da94f83310ef2884a3f59
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950807"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42141379"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL-Datenbank – Datenermittlung und -klassifizierung
 Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
@@ -107,6 +107,13 @@ Mit T-SQL können Sie Spaltenklassifizierungen hinzufügen/entfernen sowie alle 
 * Hinzufügen/Aktualisieren der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG HINZUFÜGEN](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 * Entfernen der Klassifizierung einer oder mehrerer Spalten: [VERTRAULICHKEITSKLASSIFIZIERUNG VERWERFEN](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 * Anzeigen aller Klassifizierungen in der Datenbank: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+
+Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu verwalten. Die veröffentlichten REST-APIs unterstützen die folgenden Vorgänge:
+* [Erstellen oder aktualisieren:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) erstellt oder aktualisiert die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
+* [Löschen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) löscht die Vertraulichkeitsbezeichnung einer bestimmten Spalte.
+* [Abrufen:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab.
+* [Nach Datenbank auflisten:](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase) listet die Vertraulichkeitsbezeichnungen einer bestimmten Datenbank auf.
+
 
 ## <a id="subheading-5"></a>Nächste Schritte
 

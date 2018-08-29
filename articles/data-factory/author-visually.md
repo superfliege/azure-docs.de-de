@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/01/2018
+ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: 655a6ab2960047cde50bec2953015283ca8577f0
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214851"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42142181"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visuelles Erstellen in Azure Data Factory
 Mithilfe der Azure Data Factory-Benutzeroberfläche (UX) können Sie Ressourcen für Ihre Data Factory visuell erstellen und bereitstellen, ohne Code schreiben zu müssen. Sie können Aktivitäten auf eine Pipelinecanvas ziehen, Testläufe ausführen, iterativ debuggen sowie Ihre Pipelineausführungen bereitstellen und überwachen. Die Benutzeroberfläche kann auf zwei Arten zum visuellen Erstellen verwendet werden:
@@ -47,7 +47,7 @@ Das visuelle Erstellen mit VSTS Git-Integration unterstützt Quellcodeverwaltung
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurieren eines VSTS Git-Repositorys mit Azure Data Factory
 Es gibt zwei Methoden zum Konfigurieren eines VSTS Git-Repositorys mit einer Data Factory.
 
-#### <a name="method1"></a> Konfigurationsmethode 1: Seite „Erste Schritte“
+#### <a name="method1"></a> Konfigurationsmethode 1 (VSTS-Git-Repository): Seite „Erste Schritte“
 
 Wechseln Sie in Azure Data Factory zur Seite **Erste Schritte**. Wählen Sie **Coderepository konfigurieren** aus:
 
@@ -70,42 +70,130 @@ Im Bereich werden die folgenden Einstellungen für den VSTS-Coderepository angez
 | **Stammordner** | Ihr Stammordner im Branch für die VSTS-Kollaboration. | <your root folder name> |
 | **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der **UX-Canvas** für die Erstellung in ein VSTS Git-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Konfigurationsmethode 2: UX-Canvas für die Erstellung
+#### <a name="configuration-method-2--vsts-git-repo-ux-authoring-canvas"></a>Konfigurationsmethode 2 (VSTS-Git-Repository): UX-Canvas für die Erstellung
 Suchen Sie in Azure Data Factory in der **UX-Canvas** für die Erstellung nach Ihrer Data Factory. Klicken Sie auf das Dropdownmenü **Data Factory**, und wählen Sie dann **Coderepository konfigurieren** aus.
 
 Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den Beschreibungen zu <a href="#method1">Konfigurationsmethode 1</a>.
 
 ![Konfigurieren der Repositoryeinstellungen für Erstellung in der UX-Canvas](media/author-visually/configure-repo-2.png)
 
-#### <a name="switch-to-a-different-git-repo"></a>Wechseln zu einem anderen Git-Repository
+## <a name="use-a-different-azure-active-directory-tenant"></a>Verwenden eines anderen Azure Active Directory-Mandanten
+
+Sie können ein VSTS Git-Repository in einem anderen Azure Active Directory-Mandanten erstellen. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen.
+
+## <a name="switch-to-a-different-git-repo"></a>Wechseln zu einem anderen Git-Repository
 
 Um zu einem anderen Git-Repository zu wechseln, verwenden Sie das Symbol oben rechts auf der Data Factory-Übersichtseite, wie im folgenden Screenshot gezeigt. Wenn das Symbol nicht angezeigt wird, löschen Sie den lokalen Browsercache. Wählen Sie das Symbol aus, um die Zuordnung zum aktuellen Repository zu entfernen.
 
 Nachdem Sie die Zuordnung zum aktuellen Repository entfernt haben, können Sie Ihre Git-Einstellungen zur Verwendung eines anderen Repositorys konfigurieren. Dann können Sie vorhandene Data Factory-Ressourcen in das neue Repository importieren.
 
-![Entfernen Sie die Zuordnung zum aktuellen Git-Repository.](media/author-visually/remove-repo.png)
+![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repo.png)
 
-### <a name="use-version-control"></a>Verwenden von Versionskontrolle
+## <a name="use-version-control"></a>Verwenden von Versionskontrolle
 Versionskontrollsysteme (auch als _Quellcodeverwaltung_ bezeichnet) ermöglichen Entwicklern die Zusammenarbeit an Code und das Nachverfolgen von an der Codebasis vorgenommenen Änderungen. Quellcodeverwaltung ist ein unverzichtbares Tool für Projekte, an denen mehrere Entwickler arbeiten.
 
 Jedes VSTS Git-Repository, das einer Data Factory zugeordnet ist, verfügt über einen Branch für die Kollaboration. (`master` ist der Standardbranch für die Kollaboration.) Benutzer können auch Featurebranches verwenden, indem sie auf **+ Neuer Branch** klicken und in den Featurebranches Entwicklungsschritte ausführen.
 
 ![Ändern des Codes durch Synchronisieren oder Veröffentlichen](media/author-visually/sync-publish.png)
 
-Wenn Sie mit der Featurebereitstellung in Ihrem Featurebranch fertig sind, können Sie auf **Pull Request erstellen** klicken. Sie gelangen zu VSTS GIT, wo Sie Pull Requests auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen können. (`master` ist die Standardeinstellung.) Sie können nur Veröffentlichungen für den Data Factory-Dienst Ihres Kollaborationsbranchs durchführen. 
+Wenn Sie mit der Featurebereitstellung in Ihrem Featurebranch fertig sind, können Sie auf **Pull Request erstellen** klicken. Sie gelangen zu VSTS-GIT, wo Sie Pullanforderungen auslösen, Codereviews durchführen und Änderungen an Ihrem Kollaborationsbranch zusammenführen können. (`master` ist die Standardeinstellung.) Sie können nur Veröffentlichungen für den Data Factory-Dienst Ihres Kollaborationsbranchs durchführen. 
 
 ![Erstellen eines neuen Pull Requests](media/author-visually/create-pull-request.png)
 
-#### <a name="publish-code-changes"></a>Veröffentlichen von Codeänderungen
-Nachdem Sie die Änderungen des Kollaborationsbranchs zusammengeführt haben (`master` ist die Standardeinstellung), können Sie **Veröffentlichen** wählen, um Ihre Codeänderungen manuell im Branch „master“ für den Data Factory-Dienst zu veröffentlichen.
+## <a name="publish-code-changes"></a>Veröffentlichen von Codeänderungen
+Nachdem Sie die Änderungen des Kollaborationsbranchs zusammengeführt haben (`master` ist die Standardeinstellung), können Sie **Veröffentlichen** auswählen, um Ihre Codeänderungen manuell im Branch „master“ für den Data Factory-Dienst zu veröffentlichen.
 
 ![Veröffentlichen von Änderungen für den Data Factory-Dienst](media/author-visually/publish-changes.png)
 
 > [!IMPORTANT]
 > Der Masterbranch ist nicht repräsentativ für das, was im Data Factory-Dienst bereitgestellt wird. Der Masterbranch *muss* manuell im Data Factory-Dienst veröffentlicht werden.
 
+## <a name="author-with-github-integration"></a>Erstellen der GitHub-Integration
+
+Das visuelle Erstellen mit GitHub-Integration unterstützt Quellcodeverwaltung und Kollaboration beim Arbeiten an den Data Factory-Pipelines. Sie können eine Data Factory einem GitHub-Kontorepository für die Quellcodeverwaltung, Kollaboration und Versionsverwaltung zuordnen. Ein einzelnes GitHub-Konto kann über mehrere Repositorys verfügen. Allerdings kann ein GitHub-Repository nur einer einzigen Data Factory zugeordnet werden. Wenn Sie noch nicht über ein GitHub-Konto oder -Repository verfügen, folgen Sie [diesen Anweisungen](https://github.com/join) zum Erstellen der Ressourcen. Die GitHub-Integration von Data Factory unterstützt sowohl das öffentliche GitHub als auch GitHub Enterprise.
+
+Zum Konfigurieren eines GitHub-Repositorys müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen.
+
+Das folgende Video enthält eine neun-minütige Einführung und Demonstration dieses Features:
+
+> [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
+
+### <a name="limitations"></a>Einschränkungen
+
+- Sie können Skript- und Datendateien in einem GitHub-Repository speichern. Allerdings müssen Sie die Dateien manuell in Azure Storage hochladen. Eine Data Factory-Pipeline lädt Skript- oder Datendateien, die in einem GitHub-Repository gespeichert sind, nicht automatisch in Azure Storage hoch.
+
+- GitHub Enterprise-Versionen vor 2.14.0 funktionieren nicht im Browser Microsoft Edge.
+
+- Die GitHub-Integration der visuellen Data Factory-Entwicklungstools funktioniert nur in der allgemein verfügbaren Version von Data Factory.
+
+### <a name="configure-a-public-github-repository-with-azure-data-factory"></a>Konfigurieren eines GitHub-Repositorys mit Azure Data Factory
+
+Es gibt zwei Methoden zum Konfigurieren eines GitHub-Repositorys mit einer Data Factory.
+
+**Konfigurationsmethode 1 (öffentliches Repository): Seite „Erste Schritte“**
+
+Wechseln Sie in Azure Data Factory zur Seite **Erste Schritte**. Wählen Sie **Coderepository konfigurieren** aus:
+
+![Seite „Erste Schritte“ von Data Factory](media/author-visually/github-integration-image1.png)
+
+Der Konfigurationsbereich **Repositoryeinstellungen** wird angezeigt:
+
+![GitHub-Repositoryeinstellungen](media/author-visually/github-integration-image2.png)
+
+Im Bereich werden die folgenden Einstellungen für den VSTS-Coderepository angezeigt:
+
+| **Einstellung**                                              | **Beschreibung**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Wert**          |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **Repositorytyp**                                      | Der Typ des VSTS Coderepositorys.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **GitHub-Konto**                                       | Ihr GitHub-Kontoname. Sie finden diesen Namen in „https://github.com/{account-Name}/{Repositoryname}“. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert.                                                                                                                                                                                                                                               |                    |
+| **Repositoryname**                                       | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet.                                                                                                                                                                                                                              |                    |
+| **Collaboration branch** (Kollaborationsbranch)                                 | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten.                                                                                                                                                                                                                                                               |                    |
+| **Stammordner**                                          | Ihr Stammordner im Branch für die GitHub-Kollaboration.                                                                                                                                                                                                                                                                                                                                                                             |                    |
+| **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der **UX-Canvas für die Erstellung** in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
+| **Branch zum Importieren der Ressource**                       | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden                                                                                                                                                                                                     |                    |
+
+#### <a name="configuration-method-2-public-repo-ux-authoring-canvas"></a>Konfigurationsmethode 2 (öffentliches Repository): UX-Canvas für die Erstellung
+
+Suchen Sie in Azure Data Factory in der **UX-Canvas** für die Erstellung nach Ihrer Data Factory. Klicken Sie auf das Dropdownmenü **Data Factory**, und wählen Sie dann **Coderepository konfigurieren** aus.
+
+Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den obigen Beschreibungen zu *Konfigurationsmethode 1*.
+
+### <a name="configure-a-github-enterprise-repository-with-azure-data-factory"></a>Konfigurieren eines GitHub Enterprise-Repositorys mit Azure Data Factory
+
+Es gibt zwei Methoden zum Konfigurieren eines GitHub Enterprise-Repositorys mit einer Data Factory.
+
+ #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Konfigurationsmethode 1 (Enterprise-Repository): Seite „Erste Schritte“
+
+Wechseln Sie in Azure Data Factory zur Seite **Erste Schritte**. Wählen Sie **Coderepository konfigurieren** aus:
+
+![Seite „Erste Schritte“ von Data Factory](media/author-visually/github-integration-image1.png)
+
+Der Konfigurationsbereich **Repositoryeinstellungen** wird angezeigt:
+
+![GitHub-Repositoryeinstellungen](media/author-visually/github-integration-image3.png)
+
+Im Bereich werden die folgenden Einstellungen für den VSTS-Coderepository angezeigt:
+
+| **Einstellung**                                              | **Beschreibung**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Wert**          |
+|----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **Repositorytyp**                                      | Der Typ des VSTS Coderepositorys.                                                                                                                                                                                                                                                                                                                                                                                             | GitHub             |
+| **GitHub Enterprise verwenden**                                | Kontrollkästchen zum Auswählen von GitHub Enterprise                                                                                                                                                                                                                                                                                                                                                                                              |                    |
+| **GitHub Enterprise-URL**                                | Die Stamm-URL von GitHub Enterprise. Beispiel: https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
+| **GitHub-Konto**                                       | Ihr GitHub-Kontoname. Sie finden diesen Namen in „https://github.com/{account-Name}/{Repositoryname}“. Beim Navigieren zu dieser Seite werden Sie zur Eingabe der GitHub-OAuth-Anmeldeinformationen zu Ihrem GitHub-Konto aufgefordert.                                                                                                                                                                                                                                               |                    |
+| **Repositoryname**                                       | Der Name Ihres GitHub-Coderepositorys. GitHub-Konten enthalten Git-Repositorys zum Verwalten Ihres Quellcodes. Sie können ein neues Repository erstellen oder ein vorhandenes Repository verwenden, das sich bereits in Ihrem Konto befindet.                                                                                                                                                                                                                              |                    |
+| **Collaboration branch** (Kollaborationsbranch)                                 | Ihr Branch für die GitHub-Kollaboration, der für die Veröffentlichung verwendet wird. Standardmäßig ist dies „master“. Ändern Sie diese Einstellung, falls Sie Ressourcen eines anderen Branchs veröffentlichen möchten.                                                                                                                                                                                                                                                               |                    |
+| **Stammordner**                                          | Ihr Stammordner im Branch für die GitHub-Kollaboration.                                                                                                                                                                                                                                                                                                                                                                             |                    |
+| **Vorhandene Data Factory-Ressourcen in Repository importieren** | Gibt an, ob vorhandene Data Factory-Ressourcen aus der **UX-Canvas für die Erstellung** in ein GitHub-Repository importiert werden sollen. Aktivieren Sie das Kontrollkästchen, um Ihre Data Factory-Ressourcen in das zugehörige Git-Repository im JSON-Format zu importieren. Diese Aktion exportiert jede Ressource einzeln (d. h. die verknüpften Dienste und Datasets werden in separate JSONs exportiert). Ist dieses Kontrollkästchen nicht aktiviert, werden die vorhandenen Ressourcen nicht importiert. | Aktiviert (Standardeinstellung) |
+| **Branch zum Importieren der Ressource**                       | Gibt an, in welchen Branch die Data Factory-Ressourcen (Pipelines, Datasets, verknüpfte Dienste usw.) importiert werden. Sie können Ressourcen in einen der folgenden Branches importieren: a. Kollaboration b. Neu erstellen c. Vorhandene verwenden                                                                                                                                                                                                     |                    |
+
+#### <a name="configuration-method-2-enterprise-repo-ux-authoring-canvas"></a>Konfigurationsmethode 2 (Enterprise-Repository): UX-Canvas für die Erstellung
+
+Suchen Sie in Azure Data Factory in der **UX-Canvas** für die Erstellung nach Ihrer Data Factory. Klicken Sie auf das Dropdownmenü **Data Factory**, und wählen Sie dann **Coderepository konfigurieren** aus.
+
+Ein Konfigurationsbereich wird angezeigt. Ausführliche Informationen zu den Konfigurationseinstellungen finden Sie in den obigen Beschreibungen zu *Konfigurationsmethode 1*.
+
 ## <a name="use-the-expression-language"></a>Verwenden der Ausdruckssprache
-Sie können Ausdrücke für Eigenschaftswerte angeben, indem sie die Ausdruckssprache verwenden, die von Azure Data Factory unterstützt wird. 
+Sie können Ausdrücke für Eigenschaftswerte angeben, indem sie die Ausdruckssprache verwenden, die von Azure Data Factory unterstützt wird.
 
 Geben Sie Ausdrücke für Eigenschaftswerte an, indem Sie **Dynamischen Inhalt hinzufügen** auswählen:
 

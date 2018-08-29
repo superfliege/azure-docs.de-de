@@ -3,7 +3,7 @@ title: Methoden für die Zertifikaterstellung
 description: Möglichkeiten zum Erstellen eines Zertifikats in Key Vault.
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: e17b4c9b-4ff3-472f-8c9d-d130eb443968
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: 7b71c6a8daa97300ecf3b37ec6ab47207fece98e
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: bryanla
+ms.openlocfilehash: a2314eaac26688881dcf60f264f039081439db6a
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058397"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42146433"
 ---
 # <a name="certificate-creation-methods"></a>Methoden für die Zertifikaterstellung
 
@@ -89,7 +89,7 @@ Die Zertifikatserstellung kann manuell oder über einen „Self“-Zertifikataus
 |DigiCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit DigiCert|
 |GlobalCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit GlobalSign|
 
- Weitere Informationen, einschließlich geografischer Verfügbarkeit dieser Anbieter, finden Sie unter [Zertifikataussteller](/rest/api/keyvault/certificate-issuers.md).
+ Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.
 
 Beachten Sie, dass bei einer Bestellung beim Zertifikataussteller die x509-Zertifikaterweiterungen und die Gültigkeitsdauer des Zertifikats je nach Zertifikatstyp berücksichtigt oder außer Kraft gesetzt werden können.  
 

@@ -1,6 +1,6 @@
 ---
 title: Dienstkonzepte beim Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation
-description: Beschreibt Konzepte der Dienstbereitstellung, die speziell für Geräte mit DPS und IoT Hub gelten
+description: Beschreibt Konzepte der Dienstbereitstellung, die speziell für Geräte mit dem Device Provisioning Service und IoT Hub gelten
 author: nberdy
 ms.author: nberdy
 ms.date: 03/30/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2908e08e36f41ebb8a154e7c490e5c6719d911be
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ca2ea3c000e811223ded3022021c2516f547ae66
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628299"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42143795"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Konzepte beim IoT Hub Device Provisioning-Dienst
 
@@ -29,17 +29,20 @@ Der Endpunkt für Dienstvorgänge ist der Endpunkt zum Verwalten der Diensteinst
 
 ## <a name="device-provisioning-endpoint"></a>Endpunkt zur Gerätebereitstellung
 
-Der Endpunkt zur Gerätebereitstellung ist der einzelne Endpunkt, den alle Geräte für die automatische Bereitstellung verwenden. Die URL ist für alle Bereitstellungsdienstinstanzen identisch, sodass bei neuen Verbindungsinformationen in Supply Chain-Szenarien nicht die Firmware von Geräten aktualisiert werden muss. Durch den [ID-Bereich](#id-scope) wird die Mandantenisolation sichergestellt.
+Der Endpunkt zur Gerätebereitstellung ist der einzelne Endpunkt, den alle Geräte für die automatische Bereitstellung verwenden. Die URL ist für alle Bereitstellungsdienstinstanzen identisch, sodass bei neuen Verbindungsinformationen in Supply Chain-Szenarien nicht die Firmware von Geräten aktualisiert werden muss. Durch den ID-Bereich wird die Mandantenisolation sichergestellt.
 
 ## <a name="linked-iot-hubs"></a>Verknüpfte IoT Hubs
 
-Der Device Provisioning-Dienst kann nur Geräte in IoT Hubs bereitstellen, die mit dem Dienst verknüpft wurden. Durch Verknüpfen eines IoT Hub mit dem Device Provisioning-Dienst erhält der Dienst Lese-/Schreibberechtigungen für die Geräteregistrierung des IoT Hub. Durch die Verknüpfung kann der Device Provisioning-Dienst eine Geräte-ID registrieren und die Erstkonfiguration im Gerätezwilling festlegen. Verknüpfte IoT Hubs können sich in allen Azure-Regionen befinden. Sie können Hubs in anderen Abonnements mit Ihrem Bereitstellungsdienst verknüpfen.
+Der Device Provisioning-Dienst kann nur Geräte in IoT Hubs bereitstellen, die mit dem Dienst verknüpft wurden. Durch Verknüpfen eines IoT Hub mit einer Instanz des Device Provisioning-Diensts erhält der Dienst Lese-/Schreibberechtigungen für die Geräteregistrierung des IoT Hubs. Durch die Verknüpfung kann der Device Provisioning-Dienst eine Geräte-ID registrieren und die Erstkonfiguration im Gerätezwilling festlegen. Verknüpfte IoT Hubs können sich in allen Azure-Regionen befinden. Sie können Hubs in anderen Abonnements mit Ihrem Bereitstellungsdienst verknüpfen.
 
 ## <a name="allocation-policy"></a>Zuordnungsrichtlinie
 
 Die Einstellung auf Dienstebene, mit der festgelegt wird, wie der Device Provisioning-Dienst einem IoT Hub Geräte zuweist. Es gibt drei unterstützte Zuordnungsrichtlinien:
+
 * **Gleichmäßig gewichtete Verteilung:** Bei verknüpften IoT Hubs ist die Wahrscheinlichkeit gleich hoch, dass Geräte für sie bereitgestellt werden. Dies ist die Standardeinstellung. Wenn Sie nur für eine IoT Hub-Instanz Geräte bereitstellen, können Sie diese Einstellung beibehalten.
+
 * **Niedrigste Latenz:** Geräte werden für einen IoT Hub mit der geringsten Latenz für das Gerät bereitgestellt. Wenn mehrere verknüpfte IoT Hubs die gleiche geringste Latenz aufweisen, verteilt der Bereitstellungsdienst die Geräte auf diese Hubs.
+
 * **Statische Konfiguration über die Registrierungsliste:** Die Angabe des gewünschten IoT Hub in der Registrierungsliste hat gegenüber der Zuordnungsrichtlinie auf Dienstebene Vorrang.
 
 ## <a name="enrollment"></a>Registrierung

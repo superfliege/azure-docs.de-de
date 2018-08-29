@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 49f6d6ee65ffae71cba8c73301355bfe2bdcd1d6
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480555"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142387"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
@@ -41,11 +41,11 @@ Abgelaufene Dokumente (`ttl` + `_ts` <= aktuelle Serverzeit) werden mit „Abgel
 
 Die obige Logik wird in der folgenden Matrix veranschaulicht:
 
-|  | DefaultTTL fehlt/nicht für die Sammlung festgelegt | DefaultTTL = -1 für die Sammlung | DefaultTTL = n für die Sammlung |
+|  | DefaultTTL fehlt/nicht für die Sammlung festgelegt | DefaultTTL = -1 für die Sammlung | DefaultTTL = n' für die Sammlung |
 | --- |:--- |:--- |:--- |
-| TTL für Dokument nicht vorhanden |Auf der Dokumentebene kann nichts überschrieben werden, da das TTL-Konzept weder auf der Dokument- noch auf der Sammlungsebene zur Anwendung kommt. |In dieser Sammlung laufen keine Dokumente ab. |Die Dokumente in dieser Sammlung laufen nach dem Intervall n ab. |
-| TTL = -1 für das Dokument |Auf der Dokumentebene kann nichts überschrieben werden, da auf der Sammlungsebene keine DefaultTTL-Eigenschaft definiert ist, die ein Dokument überschreiben könnte. Der TTL-Wert für ein Dokument wird vom System nicht interpretiert. |In dieser Sammlung laufen keine Dokumente ab. |Das Dokument mit TTL = -1 in dieser Auflistung läuft nicht ab. Alle anderen Dokumente laufen nach dem Intervall n ab. |
-| TTL = n für das Dokument |Auf der Dokumentebene kann nichts überschrieben werden. Der TTL-Wert für ein Dokument wird vom System nicht interpretiert. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall -1 und laufen nie ab. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall n von der Sammlung. |
+| TTL für Dokument nicht vorhanden |Auf der Dokumentebene kann nichts überschrieben werden, da das TTL-Konzept weder auf der Dokument- noch auf der Sammlungsebene zur Anwendung kommt. |In dieser Sammlung laufen keine Dokumente ab. |Die Dokumente in dieser Sammlung laufen nach dem Intervall n' ab. |
+| TTL = -1 für das Dokument |Auf der Dokumentebene kann nichts überschrieben werden, da auf der Sammlungsebene keine DefaultTTL-Eigenschaft definiert ist, die ein Dokument überschreiben könnte. Der TTL-Wert für ein Dokument wird vom System nicht interpretiert. |In dieser Sammlung laufen keine Dokumente ab. |Das Dokument mit TTL = -1 in dieser Auflistung läuft nicht ab. Alle anderen Dokumente laufen nach dem Intervall n' ab. |
+| TTL = n für das Dokument |Auf der Dokumentebene kann nichts überschrieben werden. Der TTL-Wert für ein Dokument wird vom System nicht interpretiert. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall -1 und laufen nie ab. |Das Dokument mit TTL = n läuft nach dem Intervall n (in Sekunden) ab. Andere Dokumente erben das Intervall n' von der Sammlung. |
 
 ## <a name="configuring-ttl"></a>Konfigurieren von TTL
 Die Gültigkeitsdauer ist in Cosmos DB-Sammlungen und für alle Dokumente standardmäßig deaktiviert. TTL kann programmgesteuert oder über das Azure-Portal festgelegt werden. Führen Sie die folgenden Schritte aus, um TTL über das Azure-Portal zu konfigurieren:

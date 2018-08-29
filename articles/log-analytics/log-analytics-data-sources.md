@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9a43774a5327536ae4fa1346ae933739ea629771
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 4b7b1a9dc25b1bfaf72ab67dd0725a4518263ca5
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130083"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42146467"
 ---
 # <a name="data-sources-in-log-analytics"></a>Datenquellen in Log Analytics
 Log Analytics sammelt Daten aus Ihren verbundenen Quellen und speichert diese in Ihrem Log Analytics-Arbeitsbereich.  Welche Daten gesammelt werden, wird durch die von Ihnen konfigurierten Datenquellen definiert.  Daten in Log Analytics werden als Datensatzgruppe gespeichert.  Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.
@@ -59,7 +59,7 @@ Sie konfigurieren Datenquellen in Log Analytics über das Menü **Daten** unter 
 ## <a name="data-collection"></a>Datensammlung
 Die Konfigurationen der Datenquellen werden innerhalb weniger Minuten an Agents übermittelt, die direkt mit Log Analytics verbunden sind.  Die angegebenen Daten werden vom Agent gesammelt und in den für jede Datenquelle spezifischen Intervallen direkt an Log Analytics übermittelt.  Informationen zu diesen Spezifikationen finden Sie in der Dokumentation zu jeder Datenquelle.
 
-Bei System Center Operations Manager-Agents in einer verbundenen Verwaltungsgruppe werden Datenquellenkonfigurationen in Management Packs übersetzt und standardmäßig alle fünf Minuten an die Verwaltungsgruppe übermittelt.  Der Agent lädt das Management Pack wie jedes andere Paket herunter und sammelt die angegebenen Daten. Je nach Datenquelle werden die Daten entweder an einen Verwaltungsserver gesendet, der die Daten an Log Analytics weiterleitet, oder der Agent sendet die Daten ohne den Umweg über den Verwaltungsserver direkt an Log Analytics. Weitere Informationen finden Sie im Artikel zur [Datensammlung](log-analytics-add-solutions.md#data-collection-details).  Informationen zum Verbinden von Operations Manager und Log Analytics und zum Ändern der Häufigkeit, mit der die Konfiguration übermittelt wird, finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md).
+Bei System Center Operations Manager-Agents in einer verbundenen Verwaltungsgruppe werden Datenquellenkonfigurationen in Management Packs übersetzt und standardmäßig alle fünf Minuten an die Verwaltungsgruppe übermittelt.  Der Agent lädt das Management Pack wie jedes andere Paket herunter und sammelt die angegebenen Daten. Je nach Datenquelle werden die Daten entweder an einen Verwaltungsserver gesendet, der die Daten an Log Analytics weiterleitet, oder der Agent sendet die Daten ohne den Umweg über den Verwaltungsserver direkt an Log Analytics. Einzelheiten hierzu finden Sie unter [Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure](../monitoring/monitoring-solutions-inventory.md).  Informationen zum Verbinden von Operations Manager und Log Analytics und zum Ändern der Häufigkeit, mit der die Konfiguration übermittelt wird, finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md).
 
 Falls der Agent keine Verbindung mit Log Analytics oder Operations Manager herstellen kann, sammelt er weiter Daten und übermittelt diese, sobald eine Verbindung hergestellt wird.  Daten können verloren, wenn die Datenmenge die maximale Cachegröße für den Client erreicht oder der Agent 24 Stunden lang keine Verbindung herstellen kann.
 
@@ -67,6 +67,6 @@ Falls der Agent keine Verbindung mit Log Analytics oder Operations Manager herst
 Alle von Log Analytics gesammelten Daten werden im Arbeitsbereich als Datensätze gespeichert.  Datensätze, die aus verschiedenen Datenquellen gesammelt wurde, verfügen über einen eigenen Eigenschaftensatz und werden über die Eigenschaft **Typ** identifiziert.  Weitere Informationen zu den Datensatztypen finden Sie in der Dokumentation zur jeweiligen Datenquelle und Lösung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Lösungen](log-analytics-add-solutions.md), die Log Analytics um zusätzliche Funktionen erweitern und ebenfalls Daten für den Arbeitsbereich sammeln.
+* Erfahren Sie mehr über [Lösungen](../monitoring/monitoring-solutions.md), die Log Analytics um zusätzliche Funktionen erweitern und ebenfalls Daten für den Arbeitsbereich sammeln.
 * Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 * Konfigurieren Sie [Warnungen](log-analytics-alerts.md), damit Sie bei kritischen Daten, die aus Datenquellen und Lösungen gesammelt werden, direkt benachrichtigt werden.

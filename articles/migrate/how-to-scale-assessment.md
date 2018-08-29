@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 4bcb6734c33d70e4045860a2c0f0acfedfa06eff
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 06905a2f16a23e5a7c4612f4b567aaf86322924d
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215178"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42145119"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -75,7 +75,7 @@ Wenn es in Ihrer Umgebung mehrere vCenter Server-Instanzen gibt und die Gesamtza
 
 ### <a name="multiple-vcenter-servers-with-more-than-1500-vms"></a>Bei mehreren vCenter Server-Instanzen mit mehr als 1500 VMs
 
-Wenn Sie mehrere vCenter Server-Instanzen mit weniger als 1500 virtuellen Computern pro vCenter Server-Instanz, aber mehr als 1500 VMs über alle vCenter Server-Instanzen hinweg haben, müssen Sie mehrere Migrationsprojekte erstellen, da ein einzelnes Migrationsprojekt nur 1500 VMs enthalten kann. Hierzu können Sie ein Migrationsprojekt pro vCenter Server-Instanz erstellen und die Ermittlungen aufteilen. Sie können jede vCenter Server-Instanz (nacheinander) mithilfe eines einzigen Collectors ermitteln. Wenn Sie möchten, dass die Ermittlungen zeitgleich beginnen, lassen sie sich durch die Bereitstellung mehrerer Appliances parallel ausführen.
+Wenn Sie mehrere vCenter Server-Instanzen mit weniger als 1.500 virtuellen Computern pro vCenter Server-Instanz, aber mehr als 1.500 virtuelle Computer über alle vCenter Server-Instanzen hinweg haben, müssen Sie mehrere Migrationsprojekte erstellen, da ein einzelnes Migrationsprojekt nur 1.500 virtuelle Computer enthalten kann. Hierzu können Sie ein Migrationsprojekt pro vCenter Server-Instanz erstellen und die Ermittlungen aufteilen. Sie können jede vCenter Server-Instanz (nacheinander) mithilfe eines einzigen Collectors ermitteln. Wenn Sie möchten, dass die Ermittlungen zeitgleich beginnen, lassen sie sich durch die Bereitstellung mehrerer Appliances parallel ausführen.
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Bei mehr als 1500 Computern in einer einzigen vCenter Server-Instanz
 
@@ -94,7 +94,7 @@ Ist Ihre Planung abgeschlossen, können Sie mit dem Ermitteln der lokalen virtue
 Erstellen Sie ein für Ihre Anforderungen geeignetes Azure Migrate-Projekt:
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
-2. Suchen Sie nach **Azure Migrate**, und wählen Sie den Dienst **Azure Migrate (Vorschau)** in den Suchergebnissen aus. Klicken Sie anschließend auf **Erstellen**.
+2. Suchen Sie nach **Azure Migrate**, und wählen Sie in den Suchergebnissen den Dienst **Azure Migrate** aus. Klicken Sie anschließend auf **Erstellen**.
 3. Geben Sie einen Projektnamen und das Azure-Abonnement für das Projekt an.
 4. Erstellen Sie eine neue Ressourcengruppe.
 5. Geben Sie den Standort an, an dem das Projekt erstellt werden soll, und klicken Sie auf **Erstellen**. Beachten Sie, dass Sie Ihre VMs weiterhin für einen anderen Zielstandort bewerten können. Der für das Projekt angegebene Standort wird zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden.

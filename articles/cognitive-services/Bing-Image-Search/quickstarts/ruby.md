@@ -1,6 +1,6 @@
 ---
-title: Aufruf und Antwort – Ruby-Schnellstart für Azure Cognitive Services, Bing-Bildersuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Bildersuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Senden von Suchabfragen mithilfe der REST-API für die Bing-Bildersuche-API und Ruby'
+description: In diesem Schnellstart senden Sie Suchabfragen an die Bing-Suche-API, um mithilfe von Ruby eine Liste relevanter Bilder abzurufen.
 services: cognitive-services
 documentationcenter: ''
 author: v-jerkin
@@ -9,14 +9,14 @@ ms.component: bing-image-search
 ms.topic: article
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 30fae3c589bdb232d57c25a0cba46b89f2c58d2f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bbe154f22557fb357edfb6b981eb1024f0a81d38
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376874"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41929731"
 ---
-# <a name="call-and-response-your-first-bing-image-search-query-in-ruby"></a>Aufruf und Antwort: Ihre erste Bing-Bildersuche-Abfrage in Ruby
+# <a name="quickstart-send-search-queries-using-the-rest-api-and-ruby"></a>Schnellstart: Senden von Suchabfragen mithilfe der REST-API und Ruby
 
 Die Bing-Bildersuche-API bietet eine ähnliche Erfahrung wie „Bing.com/Images“: Sie können eine Suchabfrage eines Benutzers an Bing senden und eine Liste mit relevanten Bildern erhalten.
 
@@ -26,7 +26,7 @@ Dieser Artikel enthält eine einfache Konsolenanwendung, die eine Abfrage mit de
 
 Zum Ausführen dieses Beispielcodes benötigen Sie [Ruby 2.4 oder höher](https://www.ruby-lang.org/en/downloads/).
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 ## <a name="running-the-application"></a>Ausführen der Anwendung
 
@@ -186,4 +186,4 @@ Eine Beispielantwort folgt. Um die Länge des JSON-Codes zu beschränken, wird n
 [Übersicht zur Bing-Bildersuche](../overview.md)  
 [Testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 [Holen Sie sich einen Zugriffsschlüssel einer kostenlosen Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Bing-Bildersuche-API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+[Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

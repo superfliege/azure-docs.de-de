@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren eines Docker-Hosts mit VirtualBox | Microsoft Docs
+title: Konfigurieren eines Docker-Hosts mit VirtualBox | Microsoft-Dokumentation
 description: Schrittweise Anweisungen zum Konfigurieren einer Docker-Standardinstanz mithilfe von Docker Machine und VirtualBox
 services: azure-container-service
 documentationcenter: na
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
-ms.openlocfilehash: 11e238fa901a164df1dfd896e38df828601e650b
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7c78f27fa948c15202e83df4ed42a805a414a72e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190397"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42142383"
 ---
 # <a name="configure-a-docker-host-with-virtualbox"></a>Konfigurieren eines Docker-Hosts mit VirtualBox
 ## <a name="overview"></a>Übersicht
-Dieser Artikel führt Sie durch die Konfiguration einer Docker-Standardinstanz mithilfe von Docker Machine und VirtualBox. Bei Verwendung der [Betaversion von Docker für Windows](http://beta.docker.com/)ist diese Konfiguration nicht erforderlich.
+Dieser Artikel führt Sie durch die Konfiguration einer Docker-Standardinstanz mithilfe von Docker Machine und VirtualBox. Bei Verwendung von [Docker für Windows](https://www.docker.com/products/docker-desktop) ist diese Konfiguration nicht erforderlich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Die folgenden Tools müssen installiert werden:

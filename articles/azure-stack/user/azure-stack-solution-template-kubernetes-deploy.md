@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 43c0b7c87f9ee1cd33da3d617747c11dc120e51a
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f6a2b3f242e5989d0c72083eef4faad9c4798cfe
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823621"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41946608"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Bereitstellen eines Kubernetes-Clusters in Azure Stack
 
@@ -48,19 +48,19 @@ Stellen Sie zum Einstieg sicher, dass Sie über die erforderlichen Berechtigunge
 
     Anweisungen zum Überprüfen Ihrer Berechtigungen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions).
 
-2. Generieren Sie ein öffentlich-privates SSH-Schlüsselpaar für die Anmeldung beim virtuellen Linux-Computer in Azure Stack. Sie benötigen den öffentlichen Schlüssel bei der Clustererstellung.
+1. Generieren Sie ein öffentlich-privates SSH-Schlüsselpaar für die Anmeldung beim virtuellen Linux-Computer in Azure Stack. Sie benötigen den öffentlichen Schlüssel bei der Clustererstellung.
 
     Anweisungen zum Generieren eines Schlüssels finden Sie unter [SSH Key Generation](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation) (SSH-Schlüsselgenerierung).
 
-3. Stellen Sie sicher, dass Sie ein gültiges Abonnement im Azure Stack-Mandantenportal besitzen und ausreichend öffentliche IP-Adressen zum Hinzufügen neuer Anwendungen verfügbar sind.
+1. Stellen Sie sicher, dass Sie ein gültiges Abonnement im Azure Stack-Mandantenportal besitzen und ausreichend öffentliche IP-Adressen zum Hinzufügen neuer Anwendungen verfügbar sind.
 
     Der Cluster kann nicht in einem Azure Stack-Abonnement vom Typ **Administrator** bereitgestellt werden. Sie müssen ein Abonnement des Typs Benutzer verwenden. 
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>Erstellen eines Dienstprinzipals in Azure AD
 
 1. Melden Sie sich beim globalen [Azure-Portal](http://portal.azure.com) an.
-2. Sie müssen mit dem der Azure Stack-Instanz zugeordneten Azure AD-Mandanten angemeldet sein.
-3. Erstellen Sie eine Azure AD-Anwendung.
+1. Sie müssen mit dem der Azure Stack-Instanz zugeordneten Azure AD-Mandanten angemeldet sein.
+1. Erstellen Sie eine Azure AD-Anwendung.
 
     a. Wählen Sie **Azure Active Directory** > **+ App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.
 
@@ -72,9 +72,9 @@ Stellen Sie zum Einstieg sicher, dass Sie über die erforderlichen Berechtigunge
 
     c. Klicken Sie auf **Create**.
 
-4. Notieren Sie den Wert der **Anwendungs-ID**. Sie benötigen die ID bei der Clustererstellung. Die ID wird als **Client-ID des Dienstprinzipals** bezeichnet.
+1. Notieren Sie den Wert der **Anwendungs-ID**. Sie benötigen die ID bei der Clustererstellung. Die ID wird als **Client-ID des Dienstprinzipals** bezeichnet.
 
-5. Wählen Sie **Einstellungen** > **Schlüssel** aus.
+1. Wählen Sie **Einstellungen** > **Schlüssel** aus.
 
     a. Geben Sie die **Beschreibung** ein.
 
@@ -90,52 +90,52 @@ Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressource
 
 1.  Melden Sie sich beim [Verwaltungsportal](https://adminportal.local.azurestack.external) an.
 
-2. Klicken Sie auf **Weitere Dienste** > **Benutzerabonnements** > **+ Hinzufügen**.
+1. Klicken Sie auf **Weitere Dienste** > **Benutzerabonnements** > **+ Hinzufügen**.
 
-3. Wählen Sie das von Ihnen erstellte Abonnement aus.
+1. Wählen Sie das von Ihnen erstellte Abonnement aus.
 
-4. Klicken Sie auf **Zugriffssteuerung (IAM)** > **+ Hinzufügen**.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** > **+ Hinzufügen**.
 
-5. Wählen Sie die Rolle **Besitzer**.
+1. Wählen Sie die Rolle **Besitzer**.
 
-6. Wählen Sie den für Ihren Dienstprinzipal erstellten Anwendungsnamen aus. Unter Umständen müssen Sie den Namen in das Suchfeld eingeben.
+1. Wählen Sie den für Ihren Dienstprinzipal erstellten Anwendungsnamen aus. Unter Umständen müssen Sie den Namen in das Suchfeld eingeben.
 
-7. Klicken Sie auf **Speichern**.
+1. Klicken Sie auf **Speichern**.
 
 ## <a name="deploy-a-kubernetes-cluster"></a>Bereitstellen eines Kubernetes-Clusters
 
 1. Öffnen Sie das [Azure Stack-Portal](https://portal.local.azurestack.external).
 
-2. Klicken Sie auf **+Neu** > **Compute** > **Kubernetes-Cluster**. Klicken Sie auf **Create**.
+1. Klicken Sie auf **+Neu** > **Compute** > **Kubernetes-Cluster**. Klicken Sie auf **Create**.
 
     ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-3. Wählen Sie in „Kubernetes-Cluster erstellen“ die Option **Grundlagen** aus.
+1. Wählen Sie in „Kubernetes-Cluster erstellen“ die Option **Grundlagen** aus.
 
     ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
-2. Geben Sie unter **Linux VM Admin Username** (Benutzername des Linux-VM-Administrators) einen Namen ein. Hierbei handelt es sich um den Benutzernamen für die virtuellen Linux-Computer, die Teil des Kubernetes-Clusters und des DVM (Deployment Virtual Machine, virtueller Computer für die Bereitstellung) sind.
+1. Geben Sie unter **Linux VM Admin Username** (Benutzername des Linux-VM-Administrators) einen Namen ein. Hierbei handelt es sich um den Benutzernamen für die virtuellen Linux-Computer, die Teil des Kubernetes-Clusters und des DVM (Deployment Virtual Machine, virtueller Computer für die Bereitstellung) sind.
 
-3. Geben Sie den **öffentlichen SSH-Schlüssel** für die Autorisierung bei allen Linux-Computern ein, die als Teil des Kubernetes-Clusters und des DVM erstellt werden.
+1. Geben Sie den **öffentlichen SSH-Schlüssel** für die Autorisierung bei allen Linux-Computern ein, die als Teil des Kubernetes-Clusters und des DVM erstellt werden.
 
-4. Geben Sie das für die Region eindeutige **DNS-Präfix des Masterprofils** ein. Diese Angabe muss ein für die Region eindeutiger Name sein, beispielsweise `k8s-12345`. Es wird empfohlen, den gleichen Namen wie für die Ressourcengruppe zu wählen.
+1. Geben Sie das für die Region eindeutige **DNS-Präfix des Masterprofils** ein. Diese Angabe muss ein für die Region eindeutiger Name sein, beispielsweise `k8s-12345`. Es wird empfohlen, den gleichen Namen wie für die Ressourcengruppe zu wählen.
 
     > [!Note]  
     > Verwenden Sie für jeden Cluster ein neues, eindeutiges DNS-Präfix des Masterprofils.
 
-5. Geben Sie unter **Agent Pool Profile Count** (Agentpool-Profilanzahl) einen Wert ein. Er gibt die Anzahl von Agents im Cluster an. Sie können einen Wert von 1 bis 4 angeben.
+1. Geben Sie unter **Agent Pool Profile Count** (Agentpool-Profilanzahl) einen Wert ein. Er gibt die Anzahl von Agents im Cluster an. Sie können einen Wert von 1 bis 4 angeben.
 
-6. Geben Sie unter **Service Principal ClientId** (Dienstprinzipal-ClientId) einen Wert ein. Dieser wird vom Kubernetes Azure-Cloudanbieter verwendet.
+1. Geben Sie unter **Service Principal ClientId** (Dienstprinzipal-ClientId) einen Wert ein. Dieser wird vom Kubernetes Azure-Cloudanbieter verwendet.
 
-7. Geben Sie unter **Service Principal Client Secret** das Clientgeheimnis des Dienstprinzipals ein, das Sie beim Erstellen der Dienstprinzipalanwendung generiert haben.
+1. Geben Sie unter **Service Principal Client Secret** das Clientgeheimnis des Dienstprinzipals ein, das Sie beim Erstellen der Dienstprinzipalanwendung generiert haben.
 
-8. Geben Sie die **Version des Kubernetes Azure Cloudanbieters** ein. Dabei handelt es sich um die Version des Kubernetes Azure-Anbieters. Azure Stack veröffentlicht für jede Azure Stack-Version einen benutzerdefinierten Kubernetes-Build.
+1. Geben Sie die **Version des Kubernetes Azure Cloudanbieters** ein. Dabei handelt es sich um die Version des Kubernetes Azure-Anbieters. Azure Stack veröffentlicht für jede Azure Stack-Version einen benutzerdefinierten Kubernetes-Build.
 
-9. Wählen Sie die ID für Ihr **Abonnement** aus.
+1. Wählen Sie die ID für Ihr **Abonnement** aus.
 
-10. Geben Sie den Namen einer neuen Ressourcengruppe ein, oder wählen Sie eine vorhandene Ressourcengruppe aus. Der Ressourcenname muss alphanumerisch und in Kleinbuchstaben angegeben sein.
+1. Geben Sie den Namen einer neuen Ressourcengruppe ein, oder wählen Sie eine vorhandene Ressourcengruppe aus. Der Ressourcenname muss alphanumerisch und in Kleinbuchstaben angegeben sein.
 
-11. Wählen Sie den **Standort** der Ressourcengruppe aus. Dies ist die Region, die Sie für die Azure Stack-Installation auswählen.
+1. Wählen Sie den **Standort** der Ressourcengruppe aus. Dies ist die Region, die Sie für die Azure Stack-Installation auswählen.
 
 ### <a name="specify-the-azure-stack-settings"></a>Angeben der Einstellungen für Azure Stack
 
@@ -143,9 +143,9 @@ Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressource
 
     ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
-2. Geben Sie unter **Tenant Arm Endpoint** (ARM-Mandantenendpunkt) den Endpunkt ein. Dabei handelt es sich um den Azure Resource Manager-Endpunkt für die Verbindungsherstellung, um die Ressourcengruppe für den Kubernetes-Cluster zu erstellen. Bei einem integrierten System müssen Sie den Endpunkt vom Azure Stack-Bediener erfragen. Für das Azure Stack Development Kit (ASDK) können Sie `https://management.local.azurestack.external` verwenden.
+1. Geben Sie unter **Tenant Arm Endpoint** (ARM-Mandantenendpunkt) den Endpunkt ein. Dabei handelt es sich um den Azure Resource Manager-Endpunkt für die Verbindungsherstellung, um die Ressourcengruppe für den Kubernetes-Cluster zu erstellen. Bei einem integrierten System müssen Sie den Endpunkt vom Azure Stack-Bediener erfragen. Für das Azure Stack Development Kit (ASDK) können Sie `https://management.local.azurestack.external` verwenden.
 
-3. Geben Sie die **Mandanten-ID** für den Mandanten ein. Wenn Sie Unterstützung beim Ermitteln dieses Werts benötigen, lesen Sie die Informationen unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
+1. Geben Sie die **Mandanten-ID** für den Mandanten ein. Wenn Sie Unterstützung beim Ermitteln dieses Werts benötigen, lesen Sie die Informationen unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
 
 ## <a name="connect-to-your-cluster"></a>Herstellen einer Clusterverbindung
 

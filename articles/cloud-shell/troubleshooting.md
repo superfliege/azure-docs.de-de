@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: f954e726aabb34f74d81580e3afc08f2b0b9914b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0056364883d5a4a350e5b35374e1fc3abd0c7bea
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619405"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42142092"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -31,6 +31,11 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 
 - **Details:** Cloud Shell nutzt einen offenen Websocket für die Weitergabe der Ein- und Ausgaben an den Browser. Firefox verfügt über vordefinierte Richtlinien, die den Websocket vorzeitig schließen und damit frühe Timeouts in Cloud Shell verursachen können.
 - **Lösung:** Öffnen Sie Firefox, und navigieren Sie im Feld „URL“ zu „about:config“. Suchen Sie nach „network.websocket.timeout.ping.request“, und ändern Sie den Wert von 0 in 10.
+
+### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Deaktivieren von Cloud Shell in einer gesperrten Netzwerkumgebung
+
+- **Details**: Administratoren möchten möglicherweise den Zugriff auf Cloud Shell für die Benutzer deaktivieren. Cloud Shell nutzt den Zugriff auf die Domäne `ux.console.azure.com`, der verweigert werden kann, wodurch jeglicher Zugriff auf Einstiegspunkte von Cloud Shell unterbrochen wird, einschließlich des Zugriffs auf portal.azure.com, shell.azure.com, die Azure-Kontoerweiterung für Visual Studio Code und docs.microsoft.com.
+- **Lösung**: Beschränken Sie den Zugriff auf `ux.console.azure.com` über die Netzwerkeinstellungen für Ihre Umgebung. Das Cloud Shell-Symbol ist dann immer noch auf portal.azure.com vorhanden, es kann aber keine Verbindung mit dem Dienst hergestellt werden.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Speicherdialogfeld – Fehler: 403 RequestDisallowedByPolicy
 

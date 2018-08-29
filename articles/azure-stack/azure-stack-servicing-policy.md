@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 08/07/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: b1e162b9ae151ee947559d40f02909aea4010e5b
-ms.sourcegitcommit: d76d9e9d7749849f098b17712f5e327a76f8b95c
+ms.openlocfilehash: a76cf1394dc2c4900b370b52f3479dc03d1d8afe
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39242919"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41946584"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack-Wartungsrichtlinie
 Dieser Artikel beschreibt die Wartungsrichtlinie für integrierte Azure Stack-Systeme, und was Sie tun müssen, um den unterstützten Zustand Ihres Systems aufrechtzuerhalten. 
@@ -38,6 +38,7 @@ Es gibt zwei Arten von Updatepaketen für integrierte Systeme:
 Microsoft veröffentlicht Softwareupdatepakete in der Regel monatlich. Allerdings ist es möglich, dass in einem Monat mehrere oder keine Updatereleases veröffentlicht werden. OEM-Hardwareanbieter veröffentlichen ihre Updates nach Bedarf. 
 
 Die Dokumentation zur Planung und Verwaltung von Updates sowie zur Ermittlung Ihrer aktuellen Version finden Sie unter [Übersicht zum Verwalten von Updates in Azure Stack](azure-stack-updates.md). Informationen zu einem bestimmten Update und darüber, wie sie es herunterladen, finden Sie in den Versionshinweisen zu diesem Update: 
+- [Azure Stack-Update 1807](azure-stack-update-1807.md)
 - [Azure Stack-Update 1805](azure-stack-update-1805.md)
 - [Azure Stack-Update 1804](azure-stack-update-1804.md)
 

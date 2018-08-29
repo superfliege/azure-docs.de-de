@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2016
+ms.date: 08/08/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: a5ca615d984d07513b12399b6f7e7901490f2e41
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a1b2d68a4a9433dc5c68d65552bf6bd509463958
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298830"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42144784"
 ---
 # <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von AS2-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack 
 
@@ -67,6 +67,7 @@ Sie benötigen Folgendes:
 
     ![Wählen Sie bei den Ausgaben der Anforderung den Text und die Header aus.](media/logic-apps-enterprise-integration-as2-decode/as2decodeimage5.png) 
 
+
 ## <a name="as2-decoder-details"></a>Details des AS2-Decoders
 
 Der Connector „AS2-Nachricht decodieren“ führt folgende Aufgaben aus: 
@@ -75,6 +76,7 @@ Der Connector „AS2-Nachricht decodieren“ führt folgende Aufgaben aus:
 * Überprüfen der Signatur (sofern konfiguriert)
 * Entschlüsseln der Nachrichten (falls konfiguriert)
 * Dekomprimieren der Nachrichten (falls konfiguriert)
+* Suchen nach und Unterbinden von doppelten Nachrichten-IDs (falls konfiguriert)
 * Abgleichen einer empfangenen MDN mit der ursprünglichen ausgehenden Nachricht
 * Aktualisieren und Korrelieren von Datensätzen in der Nichtabstreitbarkeits-Datenbank
 * Schreiben von Datensätzen für AS2-Statusberichte
@@ -82,6 +84,13 @@ Der Connector „AS2-Nachricht decodieren“ führt folgende Aufgaben aus:
 * Bestimmen, ob eine MDN erforderlich ist und ob die MDN synchron oder asynchron sein soll (ausgehend von der Konfiguration in der AS2-Vereinbarung)
 * Generieren einer synchronen oder asynchronen MDN (ausgehend von der Konfiguration in der Vereinbarung)
 * Festlegen der Korrelationstoken und Eigenschaften für die MDN
+
+
+  > [!NOTE]
+  > Wenn Sie Azure Key Vault für die Zertifikatverwaltung verwenden, achten Sie darauf, die Schlüssel so zu konfigurieren, dass der Vorgang **Entschlüsseln** zulässig ist.
+  > Andernfalls schlägt die AS2-Decodierung fehl.
+  >
+  > ![KeyVault-Entschlüsselungen](media/logic-apps-enterprise-integration-as2-decode/keyvault1.png)
 
 ## <a name="try-this-sample"></a>Beispiel zum Ausprobieren
 
