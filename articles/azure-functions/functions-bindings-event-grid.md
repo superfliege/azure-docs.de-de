@@ -4,7 +4,7 @@ description: Behandlung von Event Grid-Ereignissen in Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: ''
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 08/20/2018
 ms.author: glenga
-ms.openlocfilehash: 6afc54bfcbef4d0714e9a09d0aa27ea4829d4dd5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f0cb698bad42bcfd035451361b9a20d0f0b5bddf
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715385"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143828"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -53,6 +53,7 @@ Siehe das jeweilige sprachspezifische Beispiel für einen Event Grid-Trigger:
 * [C#](#c-example)
 * [C#-Skript (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
+* [Java](#trigger---java-example)
 
 Ein Beispiel für einen HTTP-Trigger finden Sie unter [Verwenden eines HTTP-Triggers als Event Grid-Trigger](#use-an-http-trigger-as-an-event-grid-trigger) weiter unten in diesem Artikel.
 
@@ -180,6 +181,36 @@ module.exports = function (context, eventGridEvent) {
     context.done();
 };
 ```
+
+### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
+
+Das folgende Beispiel zeigt eine Triggerbindung in einer Datei *function.json* sowie eine [Java-Funktion](functions-reference-java.md), die die Bindung verwendet und ein Ereignis ausgibt.
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Dies ist der Java-Code:
+
+```java
+@FunctionName("eventGridMonitor")
+  public void logEvent(
+     @EventGridTrigger(name = "event") String content,
+      final ExecutionContext context
+  ) { 
+      context.getLogger().info(content);
+    }
+```
+
+Verwenden Sie die `EventGridTrigger`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Event Grid empfangen wird. Parameter mit diesen Anmerkungen führen dazu, dass die Funktion ausgeführt wird, wenn ein Ereignis empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit `Optional<T>`, die NULL-Werte annehmen können, verwendet werden. 
      
 ## <a name="attributes"></a>Attribute
 
@@ -310,7 +341,7 @@ Sie können den Systemschlüssel mithilfe der folgenden API (HTTP GET) abrufen:
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
 ```
 
-Dabei handelt es sich um eine Admin-API, für die Ihr [Administratorschlüssel](functions-bindings-http-webhook.md#authorization-keys) erforderlich ist. Verwechseln Sie den Systemschlüssel (zum Aufrufen einer Event Grid-Triggerfunktion) nicht mit dem Administratorschlüssel (zum Ausführen von Verwaltungsaufgaben in der Funktions-App). Verwenden Sie zum Abonnieren eines Event Grid-Themas immer den Systemschlüssel.
+Dabei handelt es sich um eine Admin-API, für die der [Masterschlüssel](functions-bindings-http-webhook.md#authorization-keys) Ihrer Funktion erforderlich ist. Verwechseln Sie den Systemschlüssel (zum Aufrufen einer Event Grid-Triggerfunktion) nicht mit dem Masterschlüssel (zum Ausführen von Verwaltungsaufgaben in der Funktions-App). Verwenden Sie zum Abonnieren eines Event Grid-Themas immer den Systemschlüssel. 
 
 Beispiel für die Antwort, die den Systemschlüssel enthält:
 

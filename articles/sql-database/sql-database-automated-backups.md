@@ -11,12 +11,12 @@ ms.workload: Active
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8798d0f17918ecce473afe8dc21b3f60bf0fa4b1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ac548d90d5a5ed931dc199b6fed52c7cd8f25239
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620129"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144651"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Informationen zu automatischen Sicherungen von SQL-Datenbank
 
@@ -26,7 +26,7 @@ SQL-Datenbank erstellt automatisch Datenbanksicherungen und verwendet georedunda
 
 ## <a name="what-is-a-sql-database-backup"></a>Was ist die Sicherung einer SQL-Datenbank-Instanz?
 
-SQL-Datenbank verwendet die SQL Server-Technologie, um [vollständige Sicherungen](https://msdn.microsoft.com/library/ms186289.aspx), [differenzielle Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) und [Transaktionsprotokollsicherungen](https://msdn.microsoft.com/library/ms191429.aspx) zum Zwecke der Point-in-Time-Wiederherstellung (Point-In-Time Restore, PITR) zu erstellen. Die Transaktionsprotokollsicherungen erfolgen im Allgemeinen alle 5-10 Minuten und differenzielle Sicherungen alle 12 Stunden, wobei die Häufigkeit auf der Leistungsebene und dem Umfang der Datenbankaktivität basiert. Transaktionsprotokollsicherungen mit vollständigen und differenziellen Sicherungen ermöglichen die Wiederherstellung einer Datenbank zu einem bestimmten Zeitpunkt auf dem gleichen Server, der die Datenbank hostet. Wenn Sie eine Datenbank wiederherstellen, ermittelt der Dienst, welche vollständigen und differenziellen Sicherungen bzw. Transaktionsprotokollsicherungen wiederhergestellt werden müssen.
+SQL-Datenbank verwendet die SQL Server-Technologie, um [vollständige Sicherungen](https://msdn.microsoft.com/library/ms186289.aspx), [differenzielle Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server) und [Transaktionsprotokollsicherungen](https://msdn.microsoft.com/library/ms191429.aspx) zum Zwecke der Point-in-Time-Wiederherstellung (Point-In-Time Restore, PITR) zu erstellen. Die Transaktionsprotokollsicherungen erfolgen im Allgemeinen alle 5-10 Minuten und differenzielle Sicherungen alle 12 Stunden, wobei die Häufigkeit auf der Leistungsebene und dem Umfang der Datenbankaktivität basiert. Transaktionsprotokollsicherungen mit vollständigen und differenziellen Sicherungen ermöglichen die Wiederherstellung einer Datenbank zu einem bestimmten Zeitpunkt auf dem gleichen Server, der die Datenbank hostet. Die vollständigen und differenziellen Datenbanksicherungen werden auch in ein [gekoppeltes Rechenzentrum](../best-practices-availability-paired-regions.md) repliziert, um weiteren Schutz bei Rechenzentrumsausfällen zu bieten. Wenn Sie eine Datenbank wiederherstellen, ermittelt der Dienst, welche vollständigen und differenziellen Sicherungen bzw. Transaktionsprotokollsicherungen wiederhergestellt werden müssen.
 
 
 Sie können diese Sicherungen für Folgendes verwenden:
@@ -51,12 +51,14 @@ Falls Sie die Sicherungen länger als die maximale PITR-Aufbewahrungsdauer beibe
 > [!IMPORTANT]
 > Wenn Sie die Azure SQL Server-Instanz löschen, auf der die SQL-Datenbanken gehostet werden, werden alle Pools für elastische Datenbanken und Datenbanken, die zum Server gehören, ebenfalls gelöscht und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen. Wenn Sie aber die langfristige Aufbewahrung konfiguriert haben, werden die Sicherungen für die Datenbanken mit LTR nicht gelöscht, und diese Datenbanken können wiederhergestellt werden.
 
-### <a name="pitr-retention-for-dtu-based-service-tiers"></a>PITR-Aufbewahrung für DTU-basierte Diensttarife
+### <a name="pitr-retention-period"></a>PITR-Aufbewahrungszeitraum
 Die Standardaufbewahrungsdauer für eine Datenbank, die mit dem DTU-basierten Kaufmodell erstellt wurde, hängt vom Diensttarif ab:
 
 * Für den Tarif „Basic“ beträgt sie eine Woche.
 * Für den Tarif „Standard“ beträgt sie fünf Wochen.
 * Für den Tarif „Premium“ beträgt sie fünf Wochen.
+
+Wenn Sie das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) verwenden, ist die Aufbewahrung von Sicherungen bis zu 35 Tage konfigurierbar. 
 
 Wenn Sie die aktuelle PITR-Aufbewahrungsdauer reduzieren, sind alle vorhandenen Sicherungen, die außerhalb der neuen Aufbewahrungsdauer liegen, nicht mehr verfügbar. 
 

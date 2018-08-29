@@ -11,22 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 8468186d545d7aae484b037f3962b01b0ed4cd2e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127549"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143358"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche
-
-> [!NOTE]
-> In diesem Artikel werden das Portal für die Protokollsuche in Azure Log Analytics und die Verwendung der neuen Abfragesprache behandelt.  Weitere Informationen zur neuen Sprache und zum Upgradeverfahren für den Arbeitsbereich finden Sie unter [Upgrade des Azure Log Analytics-Arbeitsbereichs auf die neue Protokollsuche](log-analytics-log-search-upgrade.md).  
->
-> Wenn für Ihren Arbeitsbereich noch kein Upgrade auf die neue Abfragesprache durchgeführt wurde, finden Sie unter [Suchen von Daten mithilfe der Protokollsuche in Log Analytics](log-analytics-log-searches.md) Informationen zur aktuellen Version des Portals für die Protokollsuche.
 
 Dieser Artikel enthält ein Tutorial, mit dem das Erstellen von Protokollsuchvorgängen und das Analysieren von Daten in Ihrem Log Analytics-Arbeitsbereich mithilfe des Portals für die Protokollsuche beschrieben wird.  Das Tutorial umfasst die Ausführung einiger einfachen Abfragen zum Zurückgeben von verschiedenen Arten von Daten und das Analysieren der Ergebnisse.  Im Mittelpunkt stehen die Funktionen im Portal für die Protokollsuche zum Ändern der Abfrage anstelle einer direkten Änderung der Abfrage.  Ausführliche Informationen zum direkten Bearbeiten der Abfrage finden Sie unter [Referenz zur Abfragesprache](https://go.microsoft.com/fwlink/?linkid=856079).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 675316b97e821a81ca4946d57a76d7bce978361b
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0e1c049596b5231ad72590fc17a73cd5aa457e4d
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714545"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246474"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Leitfaden zum Erstellen einer Lösungsvorlage für den Azure Marketplace
 Nach Abschluss von Schritt 1, [Erstellen und Registrieren eines Kontos][link-acct-creation], wurden Sie unter [Technische Voraussetzungen für das Erstellen einer Lösungsvorlage](marketplace-publishing-solution-template-creation-prerequisites.md) durch die Erstellung einer mit Azure kompatiblen Lösungsvorlage geleitet. Jetzt werden Sie die Schritte zum Erstellen einer Lösungsvorlage für mehrere virtuelle Computer im [Veröffentlichungsportal][link-pubportal] für den Azure Marketplace durchlaufen.
@@ -60,7 +60,7 @@ Da Sie nun Ihre Lösungsvorlage erstellt und die Zipdatei hochgeladen haben, bef
 Folgende Artikel könnten für Sie ebenfalls von Interesse sein:
 
 * VM-Images: [Grundlegendes zu VM-Images in Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* VM-Erweiterungen: Übersicht über [VM-Agent und VM-Erweiterungen](https://msdn.microsoft.com/library/azure/dn832621.aspx) und [Azure-VM-Erweiterungen und Features](https://msdn.microsoft.com/library/azure/dn606311.aspx)
+* VM-Erweiterungen: [Azure-VM-Erweiterungen und -Features](../virtual-machines/extensions/features-windows.md)
 * Azure Resource Manager: [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) und [Einfache Vorlagenbeispiele](https://github.com/rjmax/ArmExamples)
 * Drosseln von Speicherkonten: [Überwachen der Speicherkontodrosselung](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) und [Storage Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 

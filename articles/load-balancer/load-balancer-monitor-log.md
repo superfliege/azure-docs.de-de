@@ -1,6 +1,6 @@
 ---
-title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für Load Balancer | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Protokollierung für Warnereignisse und Integritätsteststatus für den Azure-Lastenausgleich aktivieren.
+title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für öffentliche Load Balancer vom Typ „Basic“ | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Protokollierung für Warnereignisse und Integritätsteststatus für öffentliche Load Balancer vom Typ „Basic“ aktivieren.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: dabf4bcae957559978e731636bb13554f1a68b73
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5c196a24d5cc9e4343762e55b5885c1264c2fcad
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179054"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143657"
 ---
-# <a name="log-analytics-for-azure-load-balancer"></a>Protokollanalysen für den Azure-Lastenausgleich
+# <a name="log-analytics-for-public-basic-load-balancer"></a>Protokollanalyse für öffentlichen Load Balancer vom Typ „Basic“
 
->[!NOTE] 
->Azure Load Balancer unterstützt zwei verschiedene Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](load-balancer-standard-overview.md).
+>[!IMPORTANT] 
+>Azure Load Balancer unterstützt zwei verschiedene Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md), der Telemetriedaten über mehrdimensionale Metriken in Azure Monitor verfügbar macht.
 
-Sie können in Azure verschiedene Protokolltypen verwenden, um den Lastenausgleich zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
+Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom Typ „Basic“ zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden. In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
 * **Überwachungsprotokolle:** Sie können [Azure-Überwachungsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebsprotokolle) verwenden, um alle Vorgänge, die an Ihre Azure-Abonnements übermittelt werden, sowie deren Status anzuzeigen. Überwachungsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
 * **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um Warnungen anzuzeigen, die vom Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
 * **Integritätstestprotokolle**: Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
 > [!IMPORTANT]
-> Die Protokollanalyse funktioniert derzeit nur für Lastenausgleichsmodule mit Internetzugriff. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+> Die Protokollanalyse funktioniert derzeit nur für Load Balancer vom Typ „Basic“. Protokolle sind nur für Ressourcen verfügbar, die im Ressourcen-Manager-Bereitstellungsmodell bereitgestellt werden. Sie können Protokolle nicht für Ressourcen im klassischen Bereitstellungsmodell verwenden. Weitere Informationen zu diesen Bereitstellungsmodellen finden Sie unter [Grundlegendes zur Bereitstellung über Resource Manager im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="enable-logging"></a>Aktivieren der Protokollierung
 
@@ -56,7 +56,9 @@ Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an. Wenn Sie noch ni
 7. Wählen Sie unter **PROTOKOLLE** ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues. Legen Sie mithilfe des Schiebereglers in Tagen fest, wie lange Ereignisdaten im Ereignisprotokoll gespeichert werden sollen. 
 8. Klicken Sie auf **Speichern**.
 
-    ![Portal – Diagnoseprotokolle](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+Diagnosen werden im Tabellenspeicher im angegebenen Speicherkonto gespeichert. Wenn keine Protokolle gespeichert werden, liegt das daran, dass keine relevanten Protokolle erzeugt werden.
+
+![Portal – Diagnoseprotokolle](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 
 > [!NOTE]
 > Für Überwachungsprotokolle ist kein separates Speicherkonto erforderlich. Bei der Nutzung von Speicher zur Ereignis- und Integritätstestprotokollierung fallen Gebühren an.

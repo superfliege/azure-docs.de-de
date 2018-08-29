@@ -8,29 +8,27 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/18/2017
+ms.date: 08/19/2018
 ms.author: laviswa
-ms.openlocfilehash: 4e9bdfab3abf9545218e80bf79d1b9b5df0cf2ff
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 33614628926e53354db14886530d7ca44da61f0a
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39042009"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144353"
 ---
 # <a name="azure-cosmos-db-sql-syntax-reference"></a>Azure Cosmos DB-SQL-Syntaxreferenz
 
-Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieses Thema enthält die Referenzdokumentation für die SQL-Abfragesprache, die mit SQL-API-Konten kompatibel ist.
-
-Eine exemplarische Vorgehensweise für die SQL-Abfragesprache finden Sie unter [SQL queries for Azure Cosmos DB](sql-api-sql-query.md) (SQL-Abfragen für Azure Cosmos DB).  
+Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieser Artikel enthält die Referenz-/Syntaxdokumentation für die SQL-Abfragesprache, die mit SQL-API-Konten kompatibel ist. Eine exemplarische Vorgehensweise zu den SQL-Abfragen mit Beispieldaten finden Sie unter [SQL-Abfragen für Azure Cosmos DB](sql-api-sql-query.md).  
   
-Wir laden Sie auch zum Besuch des [Query Playground](http://www.documentdb.com/sql/demo) (Abfragetestplatz) ein, wo Sie Azure Cosmos DB ausprobieren und SQL-Abfragen an unserem Dataset durchführen können.  
+Besuchen Sie auch den [Query Playground](http://www.documentdb.com/sql/demo) (Arbeiten mit Abfragen). Dort können Sie Azure Cosmos DB ausprobieren und SQL-Abfragen mit unserem Dataset durchführen.  
   
 ## <a name="select-query"></a>SELECT-Abfrage  
-Ruft JSON-Dokumente aus der Datenbank ab. Unterstützt die Auswertung von Ausdrücken, Projektionen, Filtern und Verknüpfungen.  Die Konventionen zum Beschreiben von SELECT-Anweisungen sind im Abschnitt zu Syntaxkonventionen tabellarisch dargestellt.  
+Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI-SQL-Standards. Normalerweise wird in jeder Abfrage die jeweilige Quelle in der From-Klausel aufgelistet. Anschließend wird in der WHERE-Klausel ein Filter auf die Quelle angewendet, um eine Teilmenge der JSON-Dokumente zurückzugeben. Zuletzt wird die SELECT-Klausel verwendet, um die abgefragten JSON-Werte in die ausgewählte Liste zu projizieren. Die Konventionen zum Beschreiben von SELECT-Anweisungen sind im Abschnitt zu Syntaxkonventionen tabellarisch dargestellt. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](sql-api-sql-query.md#SelectClause).
   
 **Syntax**  
   
-```
+```sql
 <select_query> ::=  
 SELECT <select_specification>   
     [ FROM <from_specification>]   
@@ -42,17 +40,14 @@ SELECT <select_specification>
   
  Weitere Informationen zu den einzelnen Klauseln finden Sie in den folgenden Abschnitten:  
   
--   [SELECT-Klausel](#bk_select_query)  
-  
--   [FROM-Klausel](#bk_from_clause)  
-  
--   [WHERE-Klausel](#bk_where_clause)  
-  
+-   [SELECT-Klausel](#bk_select_query)    
+-   [FROM-Klausel](#bk_from_clause)    
+-   [WHERE-Klausel](#bk_where_clause)    
 -   [ORDER BY-Klausel](#bk_orderby_clause)  
   
 Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. Jede der optionalen Klauseln kann ausgelassen werden. Aber wenn optionale Klauseln verwendet werden, müssen sie in der richtigen Reihenfolge stehen.  
   
-**Logische Verarbeitungsreihenfolge der SELECT-Anweisung**  
+### <a name="logical-processing-order-of-the-select-statement"></a>Logische Verarbeitungsreihenfolge der SELECT-Anweisung  
   
 Die Klauseln werden in folgender Reihenfolge verarbeitet:  
 
@@ -63,7 +58,7 @@ Die Klauseln werden in folgender Reihenfolge verarbeitet:
 
 Beachten Sie, dass sich dies von der Reihenfolge unterscheidet, in der sie in der Syntax auftreten. Die Reihenfolge ist, dass alle von einer verarbeiteten Klausel eingeführten neuen Symbole sichtbar sind und in Klauseln verwendet werden können, die zu einem späteren Zeitpunkt verarbeitet werden. So können z.B. WHERE- und SELECT-Klauseln auf Aliase zugreifen, die in einer FROM-Klausel deklariert werden.  
 
-**Leerzeichen und Kommentare**  
+### <a name="whitespace-characters-and-comments"></a>Leerzeichen und Kommentare  
 
 Alle Leerzeichen, die nicht Teil einer in Anführungszeichen gesetzten Zeichenfolge oder eines in Anführungszeichen gesetzten Bezeichners sind, sind nicht Bestandteil der Sprachgrammatik und werden während der Analyse ignoriert.  
 
@@ -74,10 +69,11 @@ Die Abfragesprache unterstützt Kommentare im T-SQL-Stil wie
 Obwohl Leerzeichen und Kommentare in der Grammatik keine Bedeutung haben, müssen sie zum Trennen von Tokens verwendet werden. Beispiel: `-1e5` ist ein einzelnes Zahlentoken, während `: – 1 e5` aus dem Minuszeichentoken gefolgt von der Zahl 1 und dem Bezeichner „e5“ zusammengesetzt ist.  
 
 ##  <a name="bk_select_query"></a> SELECT-Klausel  
-Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. Jede der optionalen Klauseln kann ausgelassen werden. Aber wenn optionale Klauseln verwendet werden, müssen sie in der richtigen Reihenfolge stehen.  
+Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. Jede der optionalen Klauseln kann ausgelassen werden. Aber wenn optionale Klauseln verwendet werden, müssen sie in der richtigen Reihenfolge stehen. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](sql-api-sql-query.md#SelectClause).
 
 **Syntax**  
-```  
+
+```sql
 SELECT <select_specification>  
 
 <select_specification> ::=   
@@ -92,25 +88,25 @@ SELECT <select_specification>
   
  **Argumente**  
   
- `<select_specification>`  
+- `<select_specification>`  
+
+  Eigenschaften oder Wert, die für das Resultset ausgewählt werden.  
   
- Eigenschaften oder Wert, die für das Resultset ausgewählt werden.  
+- `'*'`  
+
+  Gibt an, dass der Wert abgerufen werden sollte, ohne Änderungen vorzunehmen. Insbesondere, wenn der verarbeitete Wert ein Objekt ist, werden alle Eigenschaften abgerufen.  
   
- `'*'`  
+- `<object_property_list>`  
   
-Gibt an, dass der Wert abgerufen werden sollte, ohne Änderungen vorzunehmen. Insbesondere, wenn der verarbeitete Wert ein Objekt ist, werden alle Eigenschaften abgerufen.  
+  Gibt die Liste der abzurufenden Eigenschaften an. Jeder zurückgegebene Wert wird ein Objekt mit den angegebenen Eigenschaften sein.  
   
- `<object_property_list>`  
+- `VALUE`  
+
+  Gibt an, dass der JSON-Wert anstelle des vollständigen JSON-Objekts abgerufen werden sollte. Hiermit wird im Gegensatz zu `<property_list>` der projizierte Wert nicht in ein Objekt gehüllt.  
   
-Gibt die Liste der abzurufenden Eigenschaften an. Jeder zurückgegebene Wert wird ein Objekt mit den angegebenen Eigenschaften sein.  
-  
-`VALUE`  
-  
-Gibt an, dass der JSON-Wert anstelle des vollständigen JSON-Objekts abgerufen werden sollte. Hiermit wird im Gegensatz zu `<property_list>` der projizierte Wert nicht in ein Objekt gehüllt.  
-  
-`<scalar_expression>`  
-  
-Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](#bk_scalar_expressions).  
+- `<scalar_expression>`  
+
+  Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](#bk_scalar_expressions).  
   
 **Anmerkungen**  
   
@@ -118,17 +114,17 @@ Die `SELECT *`-Syntax ist nur gültig, wenn die FROM-Klausel genau einen Alias d
   
 Beachten Sie, dass `SELECT <select_list>` und `SELECT *` syntaktische Erleichterungen sind und auch, wie unten gezeigt, mithilfe einfacher SELECT-Anweisungen ausgedrückt werden können.  
   
-1.  `SELECT * FROM ... AS from_alias ...`  
+1. `SELECT * FROM ... AS from_alias ...`  
   
-     entspricht:  
+   entspricht:  
   
-     `SELECT from_alias FROM ... AS from_alias ...`  
+   `SELECT from_alias FROM ... AS from_alias ...`  
   
-2.  `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
+2. `SELECT <expr1> AS p1, <expr2> AS p2,..., <exprN> AS pN [other clauses...]`  
   
-     entspricht:  
+   entspricht:  
   
-     `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
+   `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
 **Weitere Informationen**  
   
@@ -136,11 +132,11 @@ Beachten Sie, dass `SELECT <select_list>` und `SELECT *` syntaktische Erleichter
 [SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM-Klausel  
-Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional. Wenn nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als ob die FROM-Klausel ein einzelnes Dokument bereitstellen würde.  
+Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient die gesamte Sammlung als Quelle, stattdessen kann aber auch eine Teilmenge der Sammlung angegeben werden. Wird diese Klausel nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als würde die FROM-Klausel ein einzelnes Dokument bereitstellen. Beispiele finden Sie unter [Beispiele für die FROM-Klausel](sql-api-sql-query.md#FromClause).
   
 **Syntax**  
   
-```  
+```sql  
 FROM <from_specification>  
   
 <from_specification> ::=   
@@ -160,55 +156,55 @@ FROM <from_specification>
   
 **Argumente**  
   
-`<from_source>`  
+- `<from_source>`  
   
-Gibt eine Datenquelle mit oder ohne Alias an. Wenn der Alias nicht angegeben wird, wird er mithilfe der folgenden Regeln aus dem `<collection_expression>` abgeleitet:  
+  Gibt eine Datenquelle mit oder ohne Alias an. Wenn der Alias nicht angegeben wird, wird er mithilfe der folgenden Regeln aus dem `<collection_expression>` abgeleitet:  
   
--   Wenn der Ausdruck ein „collection_name“ ist, wird „collection_name“ als Alias verwendet.  
+  -  Wenn der Ausdruck ein „collection_name“ ist, wird „collection_name“ als Alias verwendet.  
   
--   Wenn der Ausdruck `<collection_expression>` ist, wird „property_name“ als Alias verwendet. Wenn der Ausdruck ein „collection_name“ ist, wird „collection_name“ als Alias verwendet.  
+  -  Wenn der Ausdruck `<collection_expression>` ist, wird „property_name“ als Alias verwendet. Wenn der Ausdruck ein „collection_name“ ist, wird „collection_name“ als Alias verwendet.  
   
-AS `input_alias`  
+- AS `input_alias`  
   
-Gibt an, dass der `input_alias` ein Satz von Werten ist, die von dem zugrunde liegenden Sammlungsausdruck zurückgegeben werden.  
+  Gibt an, dass der `input_alias` ein Satz von Werten ist, die von dem zugrunde liegenden Sammlungsausdruck zurückgegeben werden.  
  
-`input_alias` IN  
+- `input_alias` IN  
   
-Gibt an, dass der `input_alias` den Satz von durch Iteration über alle Arrayelemente jedes Arrays gewonnenen Werten darstellen sollte, die vom zugrunde liegenden Sammlungsausdruck zurückgegeben werden. Jeder vom zugrunde liegenden Sammlungsausdruck zurückgegebene Wert, der kein Array ist, wird ignoriert.  
+  Gibt an, dass der `input_alias` den Satz von durch Iteration über alle Arrayelemente jedes Arrays gewonnenen Werten darstellen sollte, die vom zugrunde liegenden Sammlungsausdruck zurückgegeben werden. Jeder vom zugrunde liegenden Sammlungsausdruck zurückgegebene Wert, der kein Array ist, wird ignoriert.  
   
-`<collection_expression>`  
+- `<collection_expression>`  
   
-Gibt den Sammlungsausdruck an, der zum Abrufen der Dokumente verwendet wird.  
+  Gibt den Sammlungsausdruck an, der zum Abrufen der Dokumente verwendet wird.  
   
-`ROOT`  
+- `ROOT`  
   
-Gibt an, dass das Dokument von der standardmäßigen, derzeit verbundenen Sammlung abgerufen werden sollte.  
+  Gibt an, dass das Dokument von der standardmäßigen, derzeit verbundenen Sammlung abgerufen werden sollte.  
   
-`collection_name`  
+- `collection_name`  
   
-Gibt an, dass das Dokument von der bereitgestellten Sammlung abgerufen werden sollte. Der Name der Sammlung muss mit dem Namen der Sammlung übereinstimmen, zu der derzeit eine Verbindung besteht.  
+  Gibt an, dass das Dokument von der bereitgestellten Sammlung abgerufen werden sollte. Der Name der Sammlung muss mit dem Namen der Sammlung übereinstimmen, zu der derzeit eine Verbindung besteht.  
   
-`input_alias`  
+- `input_alias`  
   
-Gibt an, dass das Dokument von der anderen, durch den bereitgestellten Alias definierten Quelle abgerufen werden sollte.  
+  Gibt an, dass das Dokument von der anderen, durch den bereitgestellten Alias definierten Quelle abgerufen werden sollte.  
   
-`<collection_expression> '.' property_`  
+- `<collection_expression> '.' property_`  
   
-Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente, die durch den angegebenen Sammlungsausdruck abgerufen werden, abgerufen werden sollte.  
+  Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente, die durch den angegebenen Sammlungsausdruck abgerufen werden, abgerufen werden sollte.  
   
-`<collection_expression> '[' "property_name" | array_index ']'`  
+- `<collection_expression> '[' "property_name" | array_index ']'`  
   
-Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente, die durch den angegebenen Sammlungsausdruck abgerufen werden, abgerufen werden sollte.  
+  Gibt an, dass das Dokument durch den Zugriff auf die Eigenschaft `property_name` oder das Arrayelement „array_index“ für alle Dokumente, die durch den angegebenen Sammlungsausdruck abgerufen werden, abgerufen werden sollte.  
   
 **Anmerkungen**  
   
 Alle in den `<from_source>(`s) bereitgestellten oder abgeleiteten Aliase müssen eindeutig sein. Die Syntax `<collection_expression>.`property_name ist identisch mit `<collection_expression>' ['"property_name"']'`. Die letztgenannte Syntax kann jedoch verwendet werden, wenn ein Eigenschaftenname Nicht-ID-Zeichen enthält.  
   
-**Fehlende Eigenschaften, fehlende Arrayelemente, Verarbeitung undefinierter Werte**  
+### <a name="handling-missing-properties-missing-array-elements-and-undefined-values"></a>Behandeln fehlender Eigenschaften, fehlender Arrayelemente und undefinierter Werte
   
 Wenn ein Sammlungsausdruck auf Eigenschaften oder Arrayelemente zugreift, und dieser Wert nicht vorhanden ist, wird dieser Wert ignoriert und nicht weiter verarbeitet.  
   
-**Kontextbereich des Sammlungsausdrucks**  
+### <a name="collection-expression-context-scoping"></a>Kontextbereich des Sammlungsausdrucks  
   
 Ein Sammlungsausdruck kann sammlungsbezogen oder dokumentbezogen sein:  
   
@@ -216,11 +212,11 @@ Ein Sammlungsausdruck kann sammlungsbezogen oder dokumentbezogen sein:
   
 -   Ein Ausdruck ist dokumentbezogen, wenn die zugrunde liegende Quelle des Sammlungsausdrucks ein früher in der Abfrage eingeführter `input_alias` ist. Ein solcher Ausdruck stellt eine Reihe von Dokumenten dar, die durch das Auswerten des Sammlungsausdrucks im Bereich der einzelnen Dokumente gewonnen werden, die zu dem Satz gehören, der der Aliassammlung zugeordnet ist.  Das Resultset ist eine Vereinigung von Sätzen, die durch die Auswertung des Sammlungsausdrucks für jedes Dokument im zugrunde liegenden Satz gewonnen werden.  
   
-**Verknüpfungen**  
+### <a name="joins"></a>Joins 
   
-In der aktuellen Version unterstützt Azure Cosmos DB innere Verknüpfungen. Weitere Verknüpfungsfunktionen sind in Planung.
+In der aktuellen Version unterstützt Azure Cosmos DB innere Verknüpfungen. Weitere Verknüpfungsfunktionen sind in Planung. 
 
-Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann.  
+Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann. Beispiele finden Sie unter [Beispiele für das JOIN-Schlüsselwort](sql-api-sql-query.md#Joins).
   
 Die Auswertung der Verknüpfung hängt vom Kontextbereich der beteiligten Sätze ab:  
   
@@ -230,13 +226,13 @@ Die Auswertung der Verknüpfung hängt vom Kontextbereich der beteiligten Sätze
   
  In der aktuellen Version wird höchstens ein sammlungsbezogener Ausdruck vom Abfrageprozessor unterstützt.  
   
-**Beispiele für Verknüpfungen:**  
+### <a name="examples-of-joins"></a>Beispiele für Verknüpfungen  
   
 Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`  
   
  Jede Quelle definiert `input_alias1, input_alias2, …, input_aliasN`. Diese FROM-Klausel gibt einen Satz von N-Tupeln (Tupel mit N-Werten) zurück. Jedes Tupel enthält Werte, die durch Iteration aller Sammlungsaliase über deren jeweilige Sätze entstanden sind.  
   
-*JOIN-Beispiel 1 mit 2 Quellen:*  
+**Beispiel 1** – zwei Quellen  
   
 - `<from_source1>` ist sammlungsbezogen und stellt den Satz {A, B, C} dar.  
   
@@ -254,7 +250,7 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
     `(A, 1), (A, 2), (B, 3), (C, 4), (C, 5)`  
   
-*JOIN-Beispiel 2 mit 3 Quellen:*  
+**Beispiel 2** – drei Quellen  
   
 - `<from_source1>` ist sammlungsbezogen und stellt den Satz {A, B, C} dar.  
   
@@ -278,10 +274,10 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
     (A, 1, 100), (A, 1, 200), (B, 3, 300)  
   
-> [!NOTE]
-> Fehlende Tupel für andere Werte von `input_alias1`, `input_alias2`, für die `<from_source3>` keine Werte zurückgegeben hat.  
+  > [!NOTE]
+  > Fehlende Tupel für andere Werte von `input_alias1`, `input_alias2`, für die `<from_source3>` keine Werte zurückgegeben hat.  
   
-*JOIN-Beispiel 3 mit 3 Quellen:*  
+**Beispiel 3** – drei Quellen  
   
 - <from_source1> ist sammlungsbezogen und stellt den Satz {A, B, C} dar.  
   
@@ -307,19 +303,19 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
     (A, 1, 100), (A, 1, 200), (A, 2, 100), (A, 2, 200), (C, 4, 300), (C, 5, 300)  
   
-> [!NOTE]
-> Dies führt zu einem Kreuzprodukt zwischen `<from_source2>` und `<from_source3>`, da beide auf die gleiche `<from_source1>` bezogen sind.  Dies führt zu 4 (2 x 2) Tupeln mit dem Wert A, 0 Tupeln mit dem Wert B (1 x 0) und 2 (2 x 1) Tupeln mit dem Wert C.  
+  > [!NOTE]
+  > Dies führt zu einem Kreuzprodukt zwischen `<from_source2>` und `<from_source3>`, da beide auf die gleiche `<from_source1>` bezogen sind.  Dies führt zu 4 (2 x 2) Tupeln mit dem Wert A, 0 Tupeln mit dem Wert B (1 x 0) und 2 (2 x 1) Tupeln mit dem Wert C.  
   
 **Weitere Informationen**  
   
  [SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE-Klausel  
- Gibt die Suchbedingung für die Dokumente an, die von der Abfrage zurückgegeben werden.  
+ Gibt die Suchbedingung für die Dokumente an, die von der Abfrage zurückgegeben werden. Beispiele finden Sie unter [Beispiele für die WHERE-Klausel](sql-api-sql-query.md#WhereClause).
   
  **Syntax**  
   
-```  
+```sql  
 WHERE <filter_condition>  
 <filter_condition> ::= <scalar_expression>  
   
@@ -340,11 +336,11 @@ WHERE <filter_condition>
  Damit das Dokument zurückgegeben wird, muss ein als Filterbedingung angegebener Ausdruck mit „true“ ausgewertet werden. Nur der boolesche Wert „true“ erfüllt die Bedingung, jeder andere Wert – undefiniert, NULL, false, Number, Array oder Object – erfüllt die Bedingung nicht.  
   
 ##  <a name="bk_orderby_clause"></a> ORDER BY-Klausel  
- Gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an.  
+ Gibt die Sortierreihenfolge für die von der Abfrage zurückgegebenen Ergebnisse an. Beispiele finden Sie unter [Beispiele für die ORDER BY-Klausel](sql-api-sql-query.md#OrderByClause).
   
  **Syntax**  
   
-```  
+```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
 <sort_expression> ::= <scalar_expression> [ASC | DESC]  
@@ -378,13 +374,13 @@ ORDER BY <sort_specification>
  Die Abfragegrammatik unterstützt mehrere ORDER BY-Eigenschaften, die Abfragelaufzeit von Azure Cosmos DB hingegen nur die Sortierung für eine einzelne Eigenschaft, und nur für Eigenschaftennamen, d.h. nicht für berechnete Eigenschaften. Das Sortieren erfordert auch, dass die Indizierungsrichtlinie einen Bereichsindex für die Eigenschaft und den angegebenen Typ mit der maximalen Genauigkeit enthält. Weitere Informationen finden Sie in der Dokumentation zur Indizierungsrichtlinie.  
   
 ##  <a name="bk_scalar_expressions"></a> Skalarausdrücke  
- Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Einfache Ausdrücke können Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Einfache Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden.  
+ Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Einfache Ausdrücke können Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Einfache Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden. Beispiele finden Sie unter [Beispiele für skalare Ausdrücke](sql-api-sql-query.md#scalar-expressions).
   
  Ausführliche Informationen zu Werten, die skalare Ausdrücke aufweisen können, finden Sie im Abschnitt [Konstanten](#bk_constants).  
   
  **Syntax**  
   
-```  
+```sql  
 <scalar_expression> ::=  
        <constant>   
      | input_alias   
@@ -550,7 +546,7 @@ ORDER BY <sort_specification>
   
  **Syntax**  
   
-```  
+```sql  
 <constant> ::=  
    <undefined_constant>  
      | <null_constant>   
@@ -580,45 +576,45 @@ ORDER BY <sort_specification>
   
  **Argumente**  
   
-1.  `<undefined_constant>; undefined`  
+* `<undefined_constant>; undefined`  
   
-     Stellt einen undefinierten Wert vom Typ „Undefiniert“ dar.  
+  Stellt einen undefinierten Wert vom Typ „Undefiniert“ dar.  
   
-2.  `<null_constant>; null`  
+* `<null_constant>; null`  
   
-     Stellt einen **NULL**-Wert des Typs **NULL** dar.  
+  Stellt einen **NULL**-Wert des Typs **NULL** dar.  
   
-3.  `<boolean_constant>`  
+* `<boolean_constant>`  
   
-     Stellt eine Konstante des Typs „Boolesch“ dar.  
+  Stellt eine Konstante des Typs „Boolesch“ dar.  
   
-4.  `false`  
+* `false`  
   
-     Stellt einen **false**-Wert des Typs „Boolesch“ dar.  
+  Stellt einen **false**-Wert des Typs „Boolesch“ dar.  
   
-5.  `true`  
+* `true`  
   
-     Stellt einen **true**-Wert des Typs „Boolesch“ dar.  
+  Stellt einen **true**-Wert des Typs „Boolesch“ dar.  
   
-6.  `<number_constant>`  
+* `<number_constant>`  
   
-     Stellt eine Konstante dar.  
+  Stellt eine Konstante dar.  
   
-7.  `decimal_literal`  
+* `decimal_literal`  
   
-     Dezimalliterale sind Zahlen, die mithilfe von Dezimal- oder wissenschaftlicher Schreibweise dargestellt werden.  
+  Dezimalliterale sind Zahlen, die mithilfe von Dezimal- oder wissenschaftlicher Schreibweise dargestellt werden.  
   
-8.  `hexadecimal_literal`  
+* `hexadecimal_literal`  
   
-     Hexadezimalliterale sind Zahlen, die mit Präfix „0x“ gefolgt von einer oder mehreren hexadezimalen Ziffern dargestellt werden.  
+  Hexadezimalliterale sind Zahlen, die mit Präfix „0x“ gefolgt von einer oder mehreren hexadezimalen Ziffern dargestellt werden.  
   
-9. `<string_constant>`  
+* `<string_constant>`  
   
-     Stellt eine Konstante des Typs „String“ dar.  
+  Stellt eine Konstante des Typs „String“ dar.  
   
-10. `string _literal`  
+* `string _literal`  
   
-     Zeichenfolgenliterale sind Unicode-Zeichenfolgen, die durch eine Sequenz aus null oder mehr Unicode-Zeichen oder Escapesequenzen dargestellt werden. Zeichenfolgenliterale werden in einfache Anführungszeichen (Apostrophen: ') oder doppelte Anführungszeichen (Anführungszeichen: ") eingeschlossen.  
+  Zeichenfolgenliterale sind Unicode-Zeichenfolgen, die durch eine Sequenz aus null oder mehr Unicode-Zeichen oder Escapesequenzen dargestellt werden. Zeichenfolgenliterale werden in einfache Anführungszeichen (Apostrophen: ') oder doppelte Anführungszeichen (Anführungszeichen: ") eingeschlossen.  
   
  Folgende Escapesequenzen sind zulässig:  
   
@@ -1854,7 +1850,7 @@ SELECT
 |[LOWER](#bk_lower)|[LTRIM](#bk_ltrim)|[REPLACE](#bk_replace)|  
 |[REPLICATE](#bk_replicate)|[REVERSE](#bk_reverse)|[RIGHT](#bk_right)|  
 |[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[ToString](#bk_tostring)|[UPPER](#bk_upper)|||  
+|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[UPPER](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
  Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt.  
@@ -2440,7 +2436,40 @@ JOIN n IN food.nutrients
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ```  
+ ``` 
+ 
+####  <a name="bk_trim"></a> TRIM  
+ Gibt einen Zeichenfolgenausdruck zurück, nachdem führende und nachfolgende Leerzeichen entfernt wurden.  
+  
+ **Syntax**  
+  
+```  
+TRIM(<str_expr>)  
+```  
+  
+ **Argumente**  
+  
+-   `str_expr`  
+  
+     Ist ein beliebiger gültiger Zeichenfolgenausdruck.  
+  
+ **Rückgabetypen**  
+  
+ Gibt einen Zeichenfolgenausdruck zurück.  
+  
+ **Beispiele**  
+  
+ Das folgende Beispiel zeigt die Verwendung von TRIM in einer Abfrage.  
+  
+```  
+SELECT TRIM("   abc"), TRIM("   abc   "), TRIM("abc   "), TRIM("abc")   
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+[{"$1": "abc", "$2": "abc", "$3": "abc", "$4": "abc"}]  
+``` 
 ####  <a name="bk_upper"></a> UPPER  
  Gibt eine Zeichenfolge zurück, nachdem Kleinbuchstaben in Großbuchstaben konvertiert wurden.  
   
@@ -2681,7 +2710,7 @@ ST_DISTANCE (<spatial_expr>, <spatial_expr>)
   
  **Beispiele**  
   
- Das folgende Beispiel zeigt die Rückgabe aller Familiendokumente, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST_DISTANCE-Funktion verwendet. zu erstellen und zu verwalten.  
+ Das folgende Beispiel zeigt die Rückgabe aller Familiendokumente, die sich innerhalb von 30 km von der angegebenen Position befinden. Dazu wird die integrierte ST_DISTANCE-Funktion verwendet. .  
   
 ```  
 SELECT f.id   

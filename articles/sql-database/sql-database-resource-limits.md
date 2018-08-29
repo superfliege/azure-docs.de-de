@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f6fa1ebc086530f138d32ee5a9c799b5bfbbdeb
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3b05f553e591de2660e9842f316de0cb6f80c852
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412109"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142893"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Übersicht zu Ressourcenlimits für Azure SQL-Datenbank 
 
@@ -22,15 +22,15 @@ Dieser Artikel bietet eine Übersicht zu den Ressourcenlimits für Azure SQL-Dat
 
 ## <a name="what-is-the-maximum-number-of-servers-and-databases"></a>Was ist die maximale Anzahl von Servern und Datenbanken?
 
-| Maximum | Wert |
-| :--- | :--- |
-| Datenbanken pro Server | 5.000 |
-| Standardanzahl von Servern pro Abonnement in beliebiger Region | 20 |
-| Maximale Anzahl von Servern pro Abonnement in beliebiger Region | 200 |
-| DTU/eDTU-Kontingent pro Server | 54.000 |
-| Virtuelle Kerne pro Server | 540 |
-| Maximale Anzahl von Pools pro Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen |
-|||
+| Maximum | Logischer Server | Verwaltete Instanz |
+| :--- | :--- | :--- |
+| Datenbanken pro Server/Instanz | 5.000 | 100 |
+| Standardanzahl von Servern pro Abonnement in beliebiger Region | 20 | N/V |
+| Maximale Anzahl von Servern pro Abonnement in beliebiger Region | 200 | N/V | 
+| DTU/eDTU-Kontingent pro Server | 54.000 | N/V |  
+| Virtuelle Kerne pro Server/Instanz | 540 | 80 |
+| Maximale Anzahl von Pools pro Server | Begrenzt durch die Anzahl von DTUs oder virtuellen Kernen | N/V |
+||||
 
 > [!NOTE]
 > Um ein höheres DTU/eDTU-Kontingent oder eine höhere Anzahl von virtuellen Kernen oder Servern als die Standardanzahl zu erhalten, können Sie im Azure-Portal eine neue Supportanfrage für das Abonnement mit dem Problemtyp „Kontingent“ übermitteln. Durch das DTU/eDTU-Kontingent und das Limit für Datenbanken pro Server wird die Anzahl der Pools für elastische Datenbanken pro Server eingeschränkt. 

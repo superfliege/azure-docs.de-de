@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: d6915ce659d96021d4185be3818919fcfb9d4371
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: af57faddcc1413747b4bb847e27287ba86562175
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492891"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146278"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Zusammengeführte Registrierung für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication (öffentliche Vorschauversion)
 
@@ -55,6 +55,9 @@ Benutzern, die bei der Anmeldung aufgefordert werden, sich zu registrieren, wird
 > Dies wird nur angezeigt, wenn ein Benutzer bei der Anmeldung aufgefordert wird, sich zu registrieren. Benutzer, die direkt auf die neue Oberfläche auf aka.ms/setupsecurityinfo zugreifen, sehen eine andere Version der Oberfläche, die später in diesem Artikel beschrieben wird.
 
 Die angezeigten Authentifizierungsmethoden ändern sich basierend auf den in Ihren MFA- oder SSPR-Richtlinien aktivierten Methoden. Der Benutzer wird aufgefordert, die Mindestanzahl von Authentifizierungsmethoden zu registrieren, die erforderlich sind, um die MFA-Richtlinie, die SSPR-Richtlinie oder beides zu erfüllen. Wenn der Benutzer flexibel auswählen kann, welche Authentifizierungsmethoden er registriert, kann er auf **Sicherheitsinformationen auswählen** klicken, um andere Authentifizierungsmethoden auszuwählen.  
+
+> [!NOTE]
+> Wenn Sie das Empfangen einer Benachrichtigung in der mobilen App und das Erhalten eines Codes in der mobilen App aktivieren, können Benutzer, die die Microsoft Authenticator-App mithilfe einer Benachrichtigung registrieren, sowohl die Benachrichtigung als auch den Code zum Bestätigen ihrer Identität verwenden.
 
 Im Gegensatz zur bisherigen MFA-Registrierungsoberfläche werden die Benutzer nicht aufgefordert, ein App-Kennwort zu registrieren, wenn sie die neue Registrierung durchführen. Stattdessen sollten sie den Schritten folgen, die in unserem Tutorial zu App-Kennwörtern aufgeführt sind, um App-Kennwörter in der neuen Oberfläche zu registrieren.  
 

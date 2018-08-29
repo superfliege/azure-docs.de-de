@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/01/2018
 ms.author: genli
-ms.openlocfilehash: 48037bc92d26cd01086451fdc778651df5b6bf67
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 0f7b19b0848886c7a906e79d63a814fddf5ef5a6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398970"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144660"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 Bevor Sie einen virtuellen Windows-Computer aus einem lokalen Speicherort in Azure hochladen können, müssen Sie die virtuelle Festplatte (Virtual Hard Disk, VHD oder VHDX) vorbereiten. Azure unterstützt **nur virtuelle Computer der 1. Generation**, die das VHD-Dateiformat aufweisen und einen Datenträger mit fester Größe umfassen. Die maximal zulässige Größe für die virtuelle Festplatte beträgt 1.023 GB. Sie können virtuelle Computer der 1. Generation vom VHDX- in das VHD-Dateisystemformat und von einem dynamisch erweiterbaren Datenträger in einen Datenträger mit fester Größe konvertieren. Aber die Generation eines virtuellen Computers kann nicht geändert werden. Weitere Informationen finden Sie unter [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) (Sollte ich eine VM der 1. oder 2. Generation in Hyper-V erstellen?).
@@ -67,7 +67,7 @@ Führen Sie alle in den folgenden Schritten genannten Befehle über eine [Eingab
 1. Entfernen Sie alle statischen persistenten Routen aus der Routingtabelle:
    
    * Führen Sie zum Anzeigen der Routingtabelle `route print` über die Eingabeaufforderung aus.
-   * Überprüfen Sie die Abschnitte mit **Persistenzrouten** . Wenn eine persistente Route vorhanden ist, verwenden Sie [route delete](https://technet.microsoft.com/library/cc739598.apx) , um die Route zu entfernen.
+   * Überprüfen Sie die Abschnitte mit **Persistenzrouten** . Wenn eine persistente Route vorhanden ist, verwenden Sie den Befehl **route delete**, um die Route zu entfernen.
 2. Entfernen Sie den WinHTTP-Proxy:
    
     ```PowerShell
@@ -90,7 +90,7 @@ Führen Sie alle in den folgenden Schritten genannten Befehle über eine [Eingab
     ```PowerShell
     Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation' -name "RealTimeIsUniversal" 1 -Type DWord
 
-    Set-Service -Name w32time -StartupType Auto
+    Set-Service -Name w32time -StartupType Automatic
     ```
 5. Legen Sie das Energieprofil auf **Hohe Leistung** fest:
 
@@ -102,17 +102,17 @@ Führen Sie alle in den folgenden Schritten genannten Befehle über eine [Eingab
 Stellen Sie sicher, dass jeder der folgenden Windows-Dienste auf die **Windows-Standardwerte** festgelegt ist. Dies ist die Mindestanzahl an Diensten, die festgelegt werden muss, um Konnektivität für die VM sicherzustellen. Um die Starteinstellungen zurückzusetzen, führen Sie die folgenden Befehle aus:
    
 ```PowerShell
-Set-Service -Name bfe -StartupType Auto
-Set-Service -Name dhcp -StartupType Auto
-Set-Service -Name dnscache -StartupType Auto
-Set-Service -Name IKEEXT -StartupType Auto
-Set-Service -Name iphlpsvc -StartupType Auto
+Set-Service -Name bfe -StartupType Automatic
+Set-Service -Name dhcp -StartupType Automatic
+Set-Service -Name dnscache -StartupType Automatic
+Set-Service -Name IKEEXT -StartupType Automatic
+Set-Service -Name iphlpsvc -StartupType Automatic
 Set-Service -Name netlogon -StartupType Manual
 Set-Service -Name netman -StartupType Manual
-Set-Service -Name nsi -StartupType Auto
+Set-Service -Name nsi -StartupType Automatic
 Set-Service -Name termService -StartupType Manual
-Set-Service -Name MpsSvc -StartupType Auto
-Set-Service -Name RemoteRegistry -StartupType Auto
+Set-Service -Name MpsSvc -StartupType Automatic
+Set-Service -Name RemoteRegistry -StartupType Automatic
 ```
 
 ## <a name="update-remote-desktop-registry-settings"></a>Aktualisieren der Remotedesktop-Registrierungseinstellungen
@@ -307,11 +307,22 @@ Stellen Sie sicher, dass die folgenden Einstellungen für die Remotedesktopverbi
     - Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten\Anmelden über Remotedesktopdienste verweigern
 
 
-9. Starten Sie den virtuellen Computer neu, um sicherzustellen, dass Windows weiterhin fehlerfrei ausgeführt wird und über die RDP-Verbindung erreichbar ist. An diesem Punkt können Sie eine VM in Ihrer lokalen Hyper-V-Umgebung einrichten, um sicherzustellen, dass die VM vollständig startet. Anschließend können Sie testen, ob die VM über RDP erreichbar ist.
+9. Überprüfen Sie die folgende AD-Richtlinie, um sicherzustellen, dass Sie keins der folgenden erforderlichen Zugriffskonten entfernen:
 
-10. Entfernen Sie jegliche zusätzlichen Transport Driver Interface-Filter, beispielsweise Software zur Analyse von TCP-Paketen oder zusätzliche Firewalls. Sie können dies ggf. auch später überprüfen, nachdem die VM in Azure bereitgestellt wurde.
+    - Computerkonfiguration\Windows-Einstellungen\Sicherheitseinstellungen\Lokale Richtlinien\Zuweisen von Benutzerrechten\Zugriff vom Netzwerk auf diesen Computer
 
-11. Deinstallieren Sie jegliche Drittanbietersoftware und -treiber im Zusammenhang mit physischen Komponenten oder einer anderen Virtualisierungstechnologie.
+    Für diese Richtlinie sollten die folgenden Gruppen aufgeführt sein:
+
+    - Administratoren
+    - Sicherungsoperatoren
+    - Jeder
+    - Benutzer
+
+10. Starten Sie den virtuellen Computer neu, um sicherzustellen, dass Windows weiterhin fehlerfrei ausgeführt wird und über die RDP-Verbindung erreichbar ist. An diesem Punkt können Sie eine VM in Ihrer lokalen Hyper-V-Umgebung einrichten, um sicherzustellen, dass die VM vollständig startet. Anschließend können Sie testen, ob die VM über RDP erreichbar ist.
+
+11. Entfernen Sie jegliche zusätzlichen Transport Driver Interface-Filter, beispielsweise Software zur Analyse von TCP-Paketen oder zusätzliche Firewalls. Sie können dies ggf. auch später überprüfen, nachdem die VM in Azure bereitgestellt wurde.
+
+12. Deinstallieren Sie jegliche Drittanbietersoftware und -treiber im Zusammenhang mit physischen Komponenten oder einer anderen Virtualisierungstechnologie.
 
 ### <a name="install-windows-updates"></a>Installieren von Windows-Updates
 Die ideale Konfiguration ist die, dass **mindestens die Patchebene des Computers vorliegt**. Wenn dies nicht möglich ist, stellen Sie sicher, dass die folgenden Updates installiert sind:

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.author: roiyz
-ms.openlocfilehash: d95a1b510411f913a05762494dd48d6a5b6f84fd
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 307bdb5fa7a5d14a77c71d0ea40634a55d8507b6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413670"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144366"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA-GPU-Treibererweiterung für Linux
 
@@ -63,7 +63,8 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -77,7 +78,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 | apiVersion | 2015-06-15 | date |
 | Herausgeber | Microsoft.HpcCompute | Zeichenfolge |
 | type | NvidiaGpuDriverLinux | Zeichenfolge |
-| typeHandlerVersion | 1.0 | int |
+| typeHandlerVersion | 1.1 | int |
 
 
 ## <a name="deployment"></a>Bereitstellung
@@ -103,7 +104,8 @@ Im folgenden Beispiel wird davon ausgegangen, dass die Erweiterung in der VM-Res
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.0",
+    "typeHandlerVersion": "1.1",
+    "autoUpgradeMinorVersion": true,
     "settings": {
     }
   }
@@ -120,7 +122,7 @@ Set-AzureRmVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.0 `
+    -TypeHandlerVersion 1.1 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +135,7 @@ az vm extension set `
   --vm-name myVM `
   --name NvidiaGpuDriverLinux `
   --publisher Microsoft.HpcCompute `
-  --version 1.0 `
+  --version 1.1 `
   --settings '{ `
   }'
 ```
@@ -166,6 +168,8 @@ Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokollier
 | 1 | Falsche Verwendung der Erweiterung. | Wenden Sie sich mit dem Ausgabeprotokoll zur Ausführung an den Support. |
 | 10 | Linux Integration Services für Hyper-V und Azure ist nicht verfügbar oder nicht installiert. | Überprüfen Sie die Ispci-Ausgabe. |
 | 11 | NVIDIA-GPU kann bei dieser VM-Größe nicht gefunden werden. | Verwenden Sie eine [VM-Größe und ein Betriebssystem](../linux/n-series-driver-setup.md), die unterstützt werden. |
+| 12 | Imageangebot nicht unterstützt |
+| 13 | VM-Größe nicht unterstützt | Verwenden eines virtuellen Computers der N-Serie für die Bereitstellung |
 | 14 | Vorgang nicht erfolgreich | |
 | 21 | Fehler beim Update unter Ubuntu | Überprüfen Sie die Ausgabe von „sudo apt-get update“ |
 

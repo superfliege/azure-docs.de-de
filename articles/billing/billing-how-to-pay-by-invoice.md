@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: ac8262da05837dcdb4ebddd5029f9b5ece3dbc6f
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: cc174822af436e7c31eb5ad4bfa419e1fa022f44
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067946"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617368"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Stellen eines Antrags zum Zahlen eines Azure-Abonnements auf Rechnung
 
@@ -27,7 +27,7 @@ Sie können die Zahlungsmethode für Ihr Azure-Abonnement in „Auf Rechnung“ 
 
 > [!IMPORTANT]
 > * Die Zahlung per Rechnung ist nur für Geschäftskonten verfügbar.
-> * [Drittanbieter- und externe Dienste](billing-understand-your-azure-marketplace-charges.md) können nicht per Rechnung erworben oder bezahlt werden. Wenn Ihr Abonnement Ressourcen von externen Diensten wie ClearDB oder SendGrid enthält, müssen diese gelöscht werden, bevor Sie die Zahlungsmethode in Zahlung per Rechnung ändern. Um nach einem Wechsel zur Zahlung per Rechnung externe Dienste zu erwerben, benötigen Sie ein gesondertes Abonnement mit einer Kredit- oder Debitkarte.
+> * [Drittanbieter- und externe Dienste](billing-understand-your-azure-marketplace-charges.md) können nicht per Rechnung erworben oder bezahlt werden. Wenn Ihr Abonnement Ressourcen von externen Diensten wie SendGrid enthält, müssen diese gelöscht werden, bevor Sie die Zahlungsmethode in Zahlung per Rechnung ändern. Um nach einem Wechsel zur Zahlung per Rechnung externe Dienste zu erwerben, benötigen Sie ein gesondertes Abonnement mit einer Kredit- oder Debitkarte.
 > * Nach einem Wechsel zur Zahlung per Rechnung können Sie nicht wieder zur Zahlung per Kredit- oder Debitkarte wechseln.
 
 ## <a name="request-pay-by-invoice"></a>Anfordern der Zahlung per Rechnung

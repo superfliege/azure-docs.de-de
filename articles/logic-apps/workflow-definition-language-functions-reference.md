@@ -1,32 +1,287 @@
 ---
 title: Funktionsreferenz zur Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Informationen zu Funktionen zum Erstellen von Logik-Apps mit der Definitionssprache für Workflows
+description: Informationen zu Funktionen der Definitionssprache für Workflows für Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
 ms.topic: reference
-ms.date: 04/25/2018
+ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 46ccf9484b76ec5f24dba470a194b5b83c32f013
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 6292ea4ccd3780e1da86252b7ec9c09c2eea3982
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263775"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42144630"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps
 
-In diesem Artikel sind die Funktionen beschrieben, die Sie verwenden können, wenn Sie automatisierte Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen. Weitere Informationen zu Funktionen in Logik-App-Definitionen finden Sie unter [Definitionssprache für Workflows für Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md#functions). 
+Einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung der Logik-App-Workflowdefinition möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten. So können Sie beispielsweise mathematische Funktionen für Berechnungen verwenden, wie z.B. die Funktion [add()](../logic-apps/workflow-definition-language-functions-reference.md#add), welche die Summe aus ganzen Zahlen oder Gleitkommazahlen zurückgibt. Im Folgenden finden Sie einige weitere Beispielaufgaben, die mithilfe von Funktionen ausgeführt werden können:
+
+| Aufgabe | Funktionssyntax | Ergebnis | 
+| ---- | --------------- | ------ | 
+| Gibt eine Zeichenfolge in Kleinbuchstaben zurück. | toLower('<*text*>') <p>Beispiel: toLower('Hello') | "hello" | 
+| Gibt einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) zurück. | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" | 
+|||| 
+
+In diesem Artikel sind die Funktionen beschrieben, die Sie beim Erstellen Ihrer Logik-App-Definitionen verwenden können.
+In den nachfolgenden Tabellen sind Funktionen [basierend auf dem allgemeinen Zweck](#ordered-by-purpose) aufgeführt. Ausführliche Informationen zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](#alphabetical-list). 
 
 > [!NOTE]
 > In der Syntax für Parameterdefinitionen bedeutet ein Fragezeichen (?), das hinter einem Parameter steht, dass der Parameter optional ist. Sie finden dies beispielsweise in [getFutureTime()](#getFutureTime).
 
+## <a name="functions-in-expressions"></a>Funktionen in Ausdrücken
+
+Um die Verwendung einer Funktion in einem Ausdruck zu veranschaulichen, zeigt dieses Beispiel, wie Sie den Wert über den Parameter `customerName` abrufen und ihn mithilfe der Funktion [parameters()](#parameters) in einem Ausdruck der Eigenschaft `accountName` zuweisen können:
+
+```json
+"accountName": "@parameters('customerName')"
+```
+
+Im Folgenden werden einige weitere allgemeine Möglichkeiten für die Verwendung von Funktionen in Ausdrücken aufgeführt:
+
+| Aufgabe | Funktionssyntax in einem Ausdruck | 
+| ---- | -------------------------------- | 
+| Führen Sie Aufgaben mit einem Element durch, indem Sie dieses Element an eine Funktion übergeben. | „\@<*functionName*>(<*Element*>)“ | 
+| 1. Rufen Sie den Wert von *parameterName* mit der geschachtelten Funktion `parameters()` ab. </br>2. Führen Sie Aufgaben mit dem Ergebnis durch, indem Sie diesen Wert an *functionName* übergeben. | „\@<*functionName*>(parameters('<*parameterName*>'))“ | 
+| 1. Rufen Sie das Ergebnis der geschachtelten inneren Funktion *functionName* ab. </br>2. Übergeben Sie das Ergebnis an die äußere Funktion *functionName2*. | „\@<*functionName2*>(<*functionName*>(<*Element*>))“ | 
+| 1. Abrufen des Ergebnisses aus *functionName*. </br>2. Da das Ergebnis ein Objekt mit der Eigenschaft *propertyName* ist, rufen Sie den Eigenschaftswert ab. | „\@<*functionName*>(<*Element*>).<*propertyName*>“ | 
+||| 
+
+Die Funktion `concat()` kann z.B. mindestens zwei Zeichenfolgenwerte als Parameter aufweisen. In dieser Funktion werden diese Zeichenfolgen in einer Zeichenfolge kombiniert. Sie können Zeichenfolgenliterale eingeben, wie z.B. „Sophia“ und „Owen“, um eine kombinierte Zeichenfolge („SophiaOwen“) zu erhalten:
+
+```json
+"customerName": "@concat('Sophia', 'Owen')"
+```
+
+Alternativ können Sie Zeichenfolgenwerte von Parametern abrufen. In diesem Beispiel wird die Funktion `parameters()` in den einzelnen `concat()`-Parametern und den Parametern `firstName` und `lastName` verwendet. Anschließend übergeben Sie die resultierenden Zeichenfolgen an die Funktion `concat()`, um eine kombinierte Zeichenfolge zu erhalten, wie z.B. „SophiaOwen“:
+
+```json
+"customerName": "@concat(parameters('firstName'), parameters('lastName'))"
+```
+
+Das Ergebnis wird in beiden Fällen und Beispielen der Eigenschaft `customerName` zugewiesen. 
+
+Hier sind die verfügbaren Funktionen nach allgemeinem Zweck sortiert. Unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](#alphabetical-list) können Sie sich die Funktionen in alphabetischer Reihenfolge ansehen.
+
+<a name="ordered-by-purpose"></a>
+<a name="string-functions"></a>
+
+## <a name="string-functions"></a>Zeichenfolgenfunktionen
+
+Für die Arbeit mit Zeichenfolgen können Sie folgende Zeichenfolgenfunktionen und auch einige [Sammlungsfunktionen](#collection-functions) verwenden. Zeichenfolgenfunktionen können nur in Zeichenfolgen verwendet werden. 
+
+| Zeichenfolgenfunktion | Aufgabe | 
+| --------------- | ---- | 
+| [concat](../logic-apps/workflow-definition-language-functions-reference.md#concat) | Kombiniert mindestens zwei Zeichenfolgen miteinander und gibt die kombinierte Zeichenfolge zurück. | 
+| [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Überprüft, ob eine Zeichenfolge mit der angegebenen Teilzeichenfolge endet. | 
+| [guid](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Generiert einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) als Zeichenfolge. | 
+| [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Gibt die Anfangsposition für eine Teilzeichenfolge zurück. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Gibt die Endposition für eine Teilzeichenfolge zurück. | 
+| [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die aktualisierte Zeichenfolge zurück. | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Gibt ein Array zurück, das sämtliche Zeichen aus einer Zeichenfolge enthält und in dem die einzelnen Zeichen mit einem bestimmten Trennzeichen getrennt werden. | 
+| [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Überprüft, ob eine Zeichenfolge mit einer bestimmten Teilzeichenfolge beginnt. | 
+| [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Gibt Zeichen aus einer Zeichenfolge zurück, beginnend mit der angegebenen Position. | 
+| [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Gibt eine Zeichenfolge in Kleinbuchstaben zurück. | 
+| [toUpper](../logic-apps/workflow-definition-language-functions-reference.md#toUpper) | Gibt eine Zeichenfolge in Großbuchstaben zurück. | 
+| [trim](../logic-apps/workflow-definition-language-functions-reference.md#trim) | Entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge und gibt die aktualisierte Zeichenfolge zurück. | 
+||| 
+
+<a name="collection-functions"></a>
+
+## <a name="collection-functions"></a>Auflistungsfunktionen
+
+Für die Arbeit mit Sammlungen (in der Regel Arrays, Zeichenfolgen und manchmal auch Bibliotheken) können Sie folgende Sammlungsfunktionen verwenden. 
+
+| Sammlungsfunktion | Aufgabe | 
+| ------------------- | ---- | 
+| [contains](../logic-apps/workflow-definition-language-functions-reference.md#contains) | Überprüft, ob eine Sammlung ein bestimmtes Element enthält. |
+| [empty](../logic-apps/workflow-definition-language-functions-reference.md#empty) | Überprüft, ob eine Sammlung leer ist. | 
+| [first](../logic-apps/workflow-definition-language-functions-reference.md#first) | Gibt das erste Element aus einer Sammlung zurück. | 
+| [intersection](../logic-apps/workflow-definition-language-functions-reference.md#intersection) | Gibt eine Sammlung zurück, die *nur* die gängigen Elemente aus den angegebenen Sammlungen enthält. | 
+| [join](../logic-apps/workflow-definition-language-functions-reference.md#join) | Gibt eine Zeichenfolge zurück, die *alle* Elemente aus einem Array enthält, getrennt durch das angegebene Zeichen. | 
+| [last](../logic-apps/workflow-definition-language-functions-reference.md#last) | Gibt das letzte Element aus einer Sammlung zurück. | 
+| [Länge](../logic-apps/workflow-definition-language-functions-reference.md#length) | Gibt die Anzahl der Elemente in einer Zeichenfolge oder einem Array zurück. | 
+| [skip](../logic-apps/workflow-definition-language-functions-reference.md#skip) | Entfernt Elemente vom Anfang einer Sammlung und gibt *alle anderen* Elemente zurück. | 
+| [take](../logic-apps/workflow-definition-language-functions-reference.md#take) | Gibt Elemente vom Anfang einer Sammlung zurück. | 
+| [union](../logic-apps/workflow-definition-language-functions-reference.md#union) | Gibt eine Sammlung zurück, die *sämtliche* Elemente aus den angegebenen Sammlungen enthält. | 
+||| 
+
+<a name="comparison-functions"></a>
+
+## <a name="logical-comparison-functions"></a>Logische Vergleichsfunktionen
+
+Sie können für die Arbeit mit Bedingungen, das Vergleichen von Werten und Ausdrucksergebnissen oder das Auswerten verschiedener Logiken folgende logische Vergleichsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Logische Vergleichsfunktion | Aufgabe | 
+| --------------------------- | ---- | 
+| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Überprüft, ob für sämtliche Ausdrücke der Wert „TRUE“ festgelegt ist. | 
+| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Überprüft, ob beide Werte identisch sind. | 
+| [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Überprüft, ob der erste Wert größer als der zweite ist. | 
+| [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Überprüft, ob der erste Wert größer als oder gleich dem zweiten ist. | 
+| [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Überprüft, ob ein Ausdruck gleich „true“ oder „false“ ist. Gibt abhängig vom Ergebnis einen angegebenen Wert zurück. | 
+| [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Überprüft, ob der erste Wert kleiner als der zweite ist. | 
+| [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Überprüft, ob der erste Wert kleiner als oder gleich dem zweiten ist. | 
+| [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Überprüft, ob ein Ausdruck gleich „false“ ist. | 
+| [or](../logic-apps/workflow-definition-language-functions-reference.md#or) | Überprüft, ob mindestens ein Ausdruck gleich „true“ ist. |
+||| 
+
+<a name="conversion-functions"></a>
+
+## <a name="conversion-functions"></a>Konvertierungsfunktionen
+
+Sie können mit den folgenden Konvertierungsfunktionen den Typ oder das Format eines Werts ändern. So können Sie beispielsweise einen Wert von einem booleschen Wert in einen ganzzahligen Wert ändern. Weitere Informationen darüber, wie Logic Apps Inhaltstypen während des Wechsels behandelt, finden Sie unter [Behandeln von Inhaltstypen](../logic-apps/logic-apps-content-type.md). Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Konvertierungsfunktion | Aufgabe | 
+| ------------------- | ---- | 
+| [array](../logic-apps/workflow-definition-language-functions-reference.md#array) | Gibt ein Array aus einer einzelnen angegebenen Eingabe zurück. Für mehrere Eingaben siehe [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray). | 
+| [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Gibt die base64-codierte Version für eine Zeichenfolge zurück. | 
+| [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Gibt die Binärversion für eine base64-codierte Zeichenfolge zurück. | 
+| [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Gibt die Zeichenfolgenversion für eine base64-codierte Zeichenfolge zurück. | 
+| [binary](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Gibt die Binärversion für einen Eingabewert zurück. | 
+| [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Gibt die Version des booleschen Werts für einen Eingabewert zurück. | 
+| [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Gibt ein Array aus mehreren Eingaben zurück. | 
+| [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Gibt den Daten-URI für einen Eingabewert zurück. | 
+| [dataUriToBinary](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToBinary) | Gibt die Binärversion für einen Daten-URI zurück. | 
+| [dataUriToString](../logic-apps/workflow-definition-language-functions-reference.md#dataUriToString) | Gibt die Zeichenfolgenversion für einen Daten-URI zurück. | 
+| [decodeBase64](../logic-apps/workflow-definition-language-functions-reference.md#decodeBase64) | Gibt die Zeichenfolgenversion für eine base64-codierte Zeichenfolge zurück. | 
+| [decodeDataUri](../logic-apps/workflow-definition-language-functions-reference.md#decodeDataUri) | Gibt die Binärversion für einen Daten-URI zurück. | 
+| [decodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#decodeUriComponent) | Gibt eine Zeichenfolge zurück, die Escapezeichen durch decodierte Versionen ersetzt. | 
+| [encodeUriComponent](../logic-apps/workflow-definition-language-functions-reference.md#encodeUriComponent) | Gibt eine Zeichenfolge zurück, die URL-unsichere Zeichen durch Escapezeichen ersetzt. | 
+| [float](../logic-apps/workflow-definition-language-functions-reference.md#float) | Gibt eine Gleitkommazahl für einen Eingabewert zurück. | 
+| [int](../logic-apps/workflow-definition-language-functions-reference.md#int) | Gibt die Ganzzahlversion für eine Zeichenfolge zurück. | 
+| [json](../logic-apps/workflow-definition-language-functions-reference.md#json) | Gibt den JSON-Typwert oder das JSON-Objekt (JSON = JavaScript Object Notation) für eine Zeichenfolge oder XML zurück. | 
+| [string](../logic-apps/workflow-definition-language-functions-reference.md#string) | Gibt die Zeichenfolgenversion für einen Eingabewert zurück. | 
+| [uriComponent](../logic-apps/workflow-definition-language-functions-reference.md#uriComponent) | Gibt die URI-codierte Version für einen Eingabewert zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden. | 
+| [uriComponentToBinary](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToBinary) | Gibt die Binärversion für eine URI-codierte Zeichenfolge zurück. | 
+| [uriComponentToString](../logic-apps/workflow-definition-language-functions-reference.md#uriComponentToString) | Gibt die Zeichenfolgenversion für eine URI-codierte Zeichenfolge zurück. | 
+| [xml](../logic-apps/workflow-definition-language-functions-reference.md#xml) | Gibt die XML-Version für eine Zeichenfolge zurück. | 
+||| 
+
+<a name="math-functions"></a>
+
+## <a name="math-functions"></a>Mathematische Funktionen
+
+Sie können mithilfe der folgenden mathematischen Funktionen mit ganzen Zahlen und Gleitkommazahlen arbeiten. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Mathematische Funktion | Aufgabe | 
+| ------------- | ---- | 
+| [Hinzufügen](../logic-apps/workflow-definition-language-functions-reference.md#add) | Gibt das Ergebnis der Addition zweier Zahlen zurück. | 
+| [div](../logic-apps/workflow-definition-language-functions-reference.md#div) | Gibt das Ergebnis der Division zweier Zahlen zurück. | 
+| [max](../logic-apps/workflow-definition-language-functions-reference.md#max) | Gibt den höchsten Wert aus einer Reihe von Zahlen oder einem Array zurück. | 
+| [min](../logic-apps/workflow-definition-language-functions-reference.md#min) | Gibt den niedrigsten Wert aus einer Reihe von Zahlen oder einem Array zurück. | 
+| [mod](../logic-apps/workflow-definition-language-functions-reference.md#mod) | Gibt den Restwert aus der Division zweier Zahlen zurück. | 
+| [mul](../logic-apps/workflow-definition-language-functions-reference.md#mul) | Gibt das Produkt aus der Multiplikation zweier Zahlen zurück. | 
+| [rand](../logic-apps/workflow-definition-language-functions-reference.md#rand) | Gibt eine beliebige ganze Zahl aus einem angegebenen Bereich zurück. | 
+| [range](../logic-apps/workflow-definition-language-functions-reference.md#range) | Gibt ein Array mit ganzen Zahlen zurück, das mit einer angegebenen ganzen Zahl beginnt. | 
+| [sub](../logic-apps/workflow-definition-language-functions-reference.md#sub) | Gibt das Ergebnis aus der Subtraktion der zweiten Zahl von der ersten Zahl zurück. | 
+||| 
+
+<a name="date-time-functions"></a>
+
+## <a name="date-and-time-functions"></a>Datums- und Uhrzeitfunktionen
+
+Sie können für die Arbeit mit Datums- und Uhrzeitangaben folgende Datums- und Uhrzeitfunktionen verwenden.
+Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Datums- oder Zeitfunktion | Aufgabe | 
+| --------------------- | ---- | 
+| [addDays](../logic-apps/workflow-definition-language-functions-reference.md#addDays) | Fügt eine Anzahl von Tagen zu einem Zeitstempel hinzu. | 
+| [addHours](../logic-apps/workflow-definition-language-functions-reference.md#addHours) | Fügt eine Anzahl von Stunden zu einem Zeitstempel hinzu. | 
+| [addMinutes](../logic-apps/workflow-definition-language-functions-reference.md#addMinutes) | Fügt eine Anzahl von Minuten zu einem Zeitstempel hinzu. | 
+| [addSeconds](../logic-apps/workflow-definition-language-functions-reference.md#addSeconds) | Fügt eine Anzahl von Sekunden zu einem Zeitstempel hinzu. |  
+| [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime) | Fügt eine Anzahl von Zeiteinheiten zu einem Zeitstempel hinzu. Siehe auch [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime). | 
+| [convertFromUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertFromUtc) | Konvertiert einen Zeitstempel von der UTC-Zeitzone (UTC = Universal Time, Coordinated) in die Zielzeitzone. | 
+| [convertTimeZone](../logic-apps/workflow-definition-language-functions-reference.md#convertTimeZone) | Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone. | 
+| [convertToUtc](../logic-apps/workflow-definition-language-functions-reference.md#convertToUtc) | Konvertiert einen Zeitstempel von der Quellzeitzone in die UTC-Zeitzone (UTC = Universal Time, Coordinated). | 
+| [dayOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#dayOfMonth) | Gibt den Tag der Monatskomponente eines Zeitstempels zurück. | 
+| [dayOfWeek](../logic-apps/workflow-definition-language-functions-reference.md#dayOfWeek) | Gibt den Tag der Wochenkomponente eines Zeitstempels zurück. | 
+| [dayOfYear](../logic-apps/workflow-definition-language-functions-reference.md#dayOfYear) | Gibt den Tag der Jahreskomponente eines Zeitstempels zurück. | 
+| [formatDateTime](../logic-apps/workflow-definition-language-functions-reference.md#formatDateTime) | Gibt das Datum eines Zeitstempels zurück. | 
+| [getFutureTime](../logic-apps/workflow-definition-language-functions-reference.md#getFutureTime) | Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück. Siehe auch [addToTime](../logic-apps/workflow-definition-language-functions-reference.md#addToTime). | 
+| [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime) | Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück. Siehe auch [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime). | 
+| [startOfDay](../logic-apps/workflow-definition-language-functions-reference.md#startOfDay) | Gibt den Beginn des Tages für einen Zeitstempel zurück. | 
+| [startOfHour](../logic-apps/workflow-definition-language-functions-reference.md#startOfHour) | Gibt den Beginn der Stunde für einen Zeitstempel zurück. | 
+| [startOfMonth](../logic-apps/workflow-definition-language-functions-reference.md#startOfMonth) | Gibt den Beginn des Monats für einen Zeitstempel zurück. | 
+| [subtractFromTime](../logic-apps/workflow-definition-language-functions-reference.md#subtractFromTime) | Subtrahiert eine Anzahl von Zeiteinheiten von einem Zeitstempel. Siehe auch [getPastTime](../logic-apps/workflow-definition-language-functions-reference.md#getPastTime). | 
+| [ticks](../logic-apps/workflow-definition-language-functions-reference.md#ticks) | Gibt den Eigenschaftswert `ticks` für einen angegebenen Zeitstempel zurück. | 
+| [utcNow](../logic-apps/workflow-definition-language-functions-reference.md#utcNow) | Gibt den aktuellen Zeitstempel als Zeichenfolge zurück. | 
+||| 
+
+<a name="workflow-functions"></a>
+
+## <a name="workflow-functions"></a>Workflowfunktionen
+
+Diese Workflowfunktionen können für folgende Aktionen hilfreich sein:
+
+* Abrufen von Details zu einer Workflowinstanz zur Laufzeit. 
+* Arbeiten mit den Eingaben für die Instanziierung von Logik-Apps.
+* Verweisen auf die Ausgaben von Triggern und Aktionen.
+
+Sie können beispielsweise auf die Ausgaben einer Aktion verweisen und die Daten in einer späteren Aktion verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Workflowfunktion | Aufgabe | 
+| ----------------- | ---- | 
+| [action](../logic-apps/workflow-definition-language-functions-reference.md#action) | Gibt die Ausgabe der aktuellen Aktion zur Laufzeit oder Werte aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody) | Gibt die `body`-Ausgabe einer Aktion zur Laufzeit zurück. Siehe auch [body](../logic-apps/workflow-definition-language-functions-reference.md#body). | 
+| [actionOutputs](../logic-apps/workflow-definition-language-functions-reference.md#actionOutputs) | Gibt die Ausgabe einer Aktion zur Laufzeit zurück. Siehe [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions). | 
+| [actions](../logic-apps/workflow-definition-language-functions-reference.md#actions) | Gibt die Ausgabe einer Aktion zur Laufzeit oder Werte aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [action](../logic-apps/workflow-definition-language-functions-reference.md#action).  | 
+| [body](#body) | Gibt die `body`-Ausgabe einer Aktion zur Laufzeit zurück. Siehe auch [actionBody](../logic-apps/workflow-definition-language-functions-reference.md#actionBody). | 
+| [formDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#formDataMultiValues) | Erstellt ein Array mit den Werten, die mit einem Schlüsselnamen in Aktionsausgaben vom Typ *form-data* oder *form-encoded* übereinstimmen. | 
+| [formDataValue](../logic-apps/workflow-definition-language-functions-reference.md#formDataValue) | Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen in einer Aktionsausgabe vom Typ *form-data* oder *form-encoded* übereinstimmt. | 
+| [item](../logic-apps/workflow-definition-language-functions-reference.md#item) | Gibt in einer wiederholten Aktion für ein Array das aktuelle Element im Array während der aktuellen Iteration der Aktion zurück. | 
+| [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | Gibt in einer „for-each“- oder „do-until“-Schleife das aktuelle Element aus der angegebenen Schleife zurück.| 
+| [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Gibt die „Rückruf-URL“ zurück, die einen Trigger oder eine Aktion aufruft. | 
+| [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Gibt den Textteil für einen bestimmten Teil einer Aktionsausgabe zurück, die mehrere Teile hat. | 
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Gibt den Wert für einen Parameter zurück, der in der Definition Ihrer Logik-App beschrieben wird. | 
+| [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Gibt die Ausgabe eines Triggers zur Laufzeit oder aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [triggerOutputs](#triggerOutputs) und [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). | 
+| [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Gibt die `body`-Ausgabe eines Triggers zur Laufzeit zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmt. | 
+| [triggerMultipartBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerMultipartBody) | Gibt einen bestimmten Textteil in der mehrteiligen Ausgabe eines Triggers zurück. | 
+| [triggerFormDataMultiValues](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataMultiValues) | Erstellt ein Array, dessen Werte mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmen. | 
+| [triggerOutputs](../logic-apps/workflow-definition-language-functions-reference.md#triggerOutputs) | Gibt eine Triggerausgabe zur Laufzeit oder Werte aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). | 
+| [Variablen](../logic-apps/workflow-definition-language-functions-reference.md#variables) | Gibt den Wert für eine angegebene Variable zurück. | 
+| [workflow](../logic-apps/workflow-definition-language-functions-reference.md#workflow) | Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück. | 
+||| 
+
+<a name="uri-parsing-functions"></a>
+
+## <a name="uri-parsing-functions"></a>URI-Analysefunktionen
+
+Sie können für die Arbeit mit URIs (Uniform Resource Identifiers) und das Abrufen verschiedener Eigenschaftswerte für diese URIs folgende URI-Analysefunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| URI-Analysefunktion | Aufgabe | 
+| -------------------- | ---- | 
+| [uriHost](../logic-apps/workflow-definition-language-functions-reference.md#uriHost) | Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriPath](../logic-apps/workflow-definition-language-functions-reference.md#uriPath) | Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriPathAndQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriPathAndQuery) | Gibt die Werte `path` und `query` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriPort](../logic-apps/workflow-definition-language-functions-reference.md#uriPort) | Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriQuery](../logic-apps/workflow-definition-language-functions-reference.md#uriQuery) | Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück. | 
+| [uriScheme](../logic-apps/workflow-definition-language-functions-reference.md#uriScheme) | Gibt den Wert `scheme` für einen Uniform Resource Identifier (URI) zurück. | 
+||| 
+
+<a name="manipulation-functions"></a>
+
+## <a name="manipulation-functions-json--xml"></a>Bearbeitungsfunktionen: JSON und XML
+
+Für die Arbeit mit JSON-Objekten und XML-Knoten können Sie folgende Bearbeitungsfunktionen verwenden. Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
+
+| Bearbeitungsfunktion | Aufgabe | 
+| --------------------- | ---- | 
+| [addProperty](../logic-apps/workflow-definition-language-functions-reference.md#addProperty) | Fügt eine Eigenschaft und den zugehörigen Wert, oder ein Name/Wert-Paar zu einem JSON-Objekt hinzu und gibt das aktualisierte Objekt zurück. | 
+| [coalesce](../logic-apps/workflow-definition-language-functions-reference.md#coalesce) | Gibt den ersten Wert ungleich NULL aus mindestens einem Parameter zurück. | 
+| [removeProperty](../logic-apps/workflow-definition-language-functions-reference.md#removeProperty) | Entfernt eine Eigenschaft aus einem JSON-Objekt und gibt das aktualisierte Objekt zurück. | 
+| [setProperty](../logic-apps/workflow-definition-language-functions-reference.md#setProperty) | Legt den Wert für die Eigenschaft eines JSON-Objekts fest und gibt das aktualisierte Objekt zurück. | 
+| [xpath](../logic-apps/workflow-definition-language-functions-reference.md#xpath) | Überprüft die XML auf Knoten oder Werte, die mit einem XPath-Ausdruck (XML Path Language) übereinstimmen, und gibt die übereinstimmenden Knoten oder Werte zurück. | 
+||| 
+
+<a name="alphabetical-list"></a>
 <a name="action"></a>
 
-## <a name="action"></a>action
+### <a name="action"></a>action
 
 Gibt die Ausgabe der *aktuellen* Aktion zur Laufzeit oder Werte aus anderen JSON-Name/Wert-Paaren zurück, die Sie einem Ausdruck zuweisen können. Standardmäßig verweist diese Funktion auf das gesamte Aktionsobjekt, Sie können jedoch optional eine Eigenschaft angeben, deren Wert Sie abrufen möchten. Informationen hierzu finden Sie auch unter [actions()](../logic-apps/workflow-definition-language-functions-reference.md#actions).
 
@@ -53,7 +308,7 @@ action().outputs.body.<property>
 
 <a name="actionBody"></a>
 
-## <a name="actionbody"></a>actionBody
+### <a name="actionbody"></a>actionBody
 
 Gibt die `body`-Ausgabe einer Aktion zur Laufzeit zurück. Kurzform für `actions('<actionName>').outputs.body`. Weitere Informationen finden Sie unter [body()](#body) und [actions()](#actions).
 
@@ -98,7 +353,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="actionOutputs"></a>
 
-## <a name="actionoutputs"></a>actionOutputs
+### <a name="actionoutputs"></a>actionOutputs
 
 Gibt die Ausgabe einer Aktion zur Laufzeit zurück. Kurzform für `actions('<actionName>').outputs`. Siehe [actions()](#actions).
 
@@ -161,7 +416,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="actions"></a>
 
-## <a name="actions"></a>Aktionen
+### <a name="actions"></a>Aktionen
 
 Gibt die Ausgabe einer Aktion zur Laufzeit oder Werte aus anderen JSON-Name/Wert-Paaren zurück, die Sie einem Ausdruck zuweisen können. Standardmäßig verweist die Funktion auf das gesamte Aktionsobjekt, Sie können aber optional eine Eigenschaft angeben, deren Wert Sie abrufen möchten. Kurzformversionen finden Sie unter [actionBody()](#actionBody), [actionOutputs()](#actionOutputs) und [body()](#body). Informationen hinsichtlich der aktuellen Aktion finden Sie unter [action()](#action).
 
@@ -196,7 +451,7 @@ Dies ist das zurückgegebene Ergebnis: `"Succeeded"`
 
 <a name="add"></a>
 
-## <a name="add"></a>Hinzufügen
+### <a name="add"></a>Hinzufügen
 
 Gibt das Ergebnis der Addition zweier Zahlen zurück.
 
@@ -226,7 +481,7 @@ Dies ist das zurückgegebene Ergebnis: `2.5`
 
 <a name="addDays"></a>
 
-## <a name="adddays"></a>addDays
+### <a name="adddays"></a>addDays
 
 Fügt eine Anzahl von Tagen zu einem Zeitstempel hinzu.
 
@@ -268,7 +523,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-10T00:00:0000000Z"`
 
 <a name="addHours"></a>
 
-## <a name="addhours"></a>addHours
+### <a name="addhours"></a>addHours
 
 Fügt eine Anzahl von Stunden zu einem Zeitstempel hinzu.
 
@@ -310,7 +565,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T10:00:0000000Z"`
 
 <a name="addMinutes"></a>
 
-## <a name="addminutes"></a>addMinutes
+### <a name="addminutes"></a>addMinutes
 
 Fügt eine Anzahl von Minuten zu einem Zeitstempel hinzu.
 
@@ -352,7 +607,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T00:15:00.0000000Z"`
 
 <a name="addProperty"></a>
 
-## <a name="addproperty"></a>addProperty
+### <a name="addproperty"></a>addProperty
 
 Fügt eine Eigenschaft und den zugehörigen Wert, oder ein Name/Wert-Paar zu einem JSON-Objekt hinzu und gibt das aktualisierte Objekt zurück. Wenn das Objekt zur Laufzeit bereits vorhanden ist, löst die Funktion einen Fehler aus.
 
@@ -382,7 +637,7 @@ addProperty(json('customerProfile'), 'accountNumber', guid())
 
 <a name="addSeconds"></a>
 
-## <a name="addseconds"></a>addSeconds
+### <a name="addseconds"></a>addSeconds
 
 Fügt eine Anzahl von Sekunden zu einem Zeitstempel hinzu.
 
@@ -424,7 +679,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T00:00:25.0000000Z"`
 
 <a name="addToTime"></a>
 
-## <a name="addtotime"></a>addToTime
+### <a name="addtotime"></a>addToTime
 
 Fügt eine Anzahl von Zeiteinheiten zu einem Zeitstempel hinzu. Siehe auch [getFutureTime()](#getFutureTime).
 
@@ -467,7 +722,7 @@ Dies ist das zurückgegebene Ergebnis mit dem optionalen „D“-Format: `"Tuesd
 
 <a name="and"></a>
 
-## <a name="and"></a>and
+### <a name="and"></a>and
 
 Überprüft, ob für sämtliche Ausdrücke der Wert „TRUE“ festgelegt ist. Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind, oder gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist.
 
@@ -519,7 +774,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="array"></a>
 
-## <a name="array"></a>Array
+### <a name="array"></a>Array
 
 Gibt ein Array aus einer einzelnen angegebenen Eingabe zurück. Informationen hinsichtlich mehrerer Eingaben finden Sie unter [createArray()](#createArray). 
 
@@ -549,7 +804,7 @@ Dies ist das zurückgegebene Ergebnis: `["hello"]`
 
 <a name="base64"></a>
 
-## <a name="base64"></a>base64
+### <a name="base64"></a>base64
 
 Gibt die base64-codierte Version für eine Zeichenfolge zurück.
 
@@ -579,7 +834,7 @@ Dies ist das zurückgegebene Ergebnis: `"aGVsbG8="`
 
 <a name="base64ToBinary"></a>
 
-## <a name="base64tobinary"></a>base64ToBinary
+### <a name="base64tobinary"></a>base64ToBinary
 
 Gibt die Binärversion für eine base64-codierte Zeichenfolge zurück.
 
@@ -611,7 +866,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="base64ToString"></a>
 
-## <a name="base64tostring"></a>base64ToString
+### <a name="base64tostring"></a>base64ToString
 
 Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert. Sie sollten diese Funktion anstelle von [decodeBase64()](#decodeBase64) verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `base64ToString()` bevorzugt.
 
@@ -641,7 +896,7 @@ Dies ist das zurückgegebene Ergebnis: `"hello"`
 
 <a name="binary"></a>
 
-## <a name="binary"></a>binary 
+### <a name="binary"></a>binary 
 
 Gibt die Binärversion für eine Zeichenfolge zurück.
 
@@ -673,7 +928,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="body"></a>
 
-## <a name="body"></a>body
+### <a name="body"></a>body
 
 Gibt die `body`-Ausgabe einer Aktion zur Laufzeit zurück. Kurzform für `actions('<actionName>').outputs.body`. Siehe [actionBody()](#actionBody) und [actions()](#actions).
 
@@ -718,7 +973,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="bool"></a>
 
-## <a name="bool"></a>bool
+### <a name="bool"></a>bool
 
 Gibt die boolesche Version eines Werts zurück.
 
@@ -752,7 +1007,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="coalesce"></a>
 
-## <a name="coalesce"></a>coalesce
+### <a name="coalesce"></a>coalesce
 
 Gibt den ersten Wert ungleich NULL aus mindestens einem Parameter zurück. Leere Zeichenfolgen, leere Arrays und leere Objekte sind nicht NULL.
 
@@ -788,7 +1043,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="concat"></a>
 
-## <a name="concat"></a>concat
+### <a name="concat"></a>concat
 
 Kombiniert mindestens zwei Zeichenfolgen miteinander und gibt die kombinierte Zeichenfolge zurück. 
 
@@ -818,7 +1073,7 @@ Dies ist das zurückgegebene Ergebnis: `"HelloWorld"`
 
 <a name="contains"></a>
 
-## <a name="contains"></a>contains
+### <a name="contains"></a>contains
 
 Überprüft, ob eine Sammlung ein bestimmtes Element enthält. Gibt „true“ zurück, wenn das Element gefunden wurde, gibt andernfalls „false“ zurück. Für diese Funktion wird die Groß-/Kleinschreibung beachtet.
 
@@ -862,7 +1117,7 @@ contains('hello world', 'universe')
 
 <a name="convertFromUtc"></a>
 
-## <a name="convertfromutc"></a>convertFromUtc
+### <a name="convertfromutc"></a>convertFromUtc
 
 Konvertiert einen Zeitstempel von der UTC-Zeitzone (UTC = Universal Time, Coordinated) in die Zielzeitzone.
 
@@ -904,7 +1159,7 @@ Dies ist das zurückgegebene Ergebnis: `"Monday, January 1, 2018"`
 
 <a name="convertTimeZone"></a>
 
-## <a name="converttimezone"></a>convertTimeZone
+### <a name="converttimezone"></a>convertTimeZone
 
 Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone.
 
@@ -947,7 +1202,7 @@ Dies ist das zurückgegebene Ergebnis: `"Monday, January 1, 2018"`
 
 <a name="convertToUtc"></a>
 
-## <a name="converttoutc"></a>convertToUtc
+### <a name="converttoutc"></a>convertToUtc
 
 Konvertiert einen Zeitstempel von der Quellzeitzone in die UTC-Zeitzone (UTC = Universal Time, Coordinated).
 
@@ -989,7 +1244,7 @@ Dies ist das zurückgegebene Ergebnis: `"Monday, January 1, 2018"`
 
 <a name="createArray"></a>
 
-## <a name="createarray"></a>createArray
+### <a name="createarray"></a>createArray
 
 Gibt ein Array aus mehreren Eingaben zurück. Informationen zu Arrays mit einzelner Eingabe finden Sie unter [array()](#array).
 
@@ -1019,7 +1274,7 @@ Dies ist das zurückgegebene Ergebnis: `["h", "e", "l", "l", "o"]`
 
 <a name="dataUri"></a>
 
-## <a name="datauri"></a>dataUri
+### <a name="datauri"></a>dataUri
 
 Gibt einen Daten-URI (Uniform Resource Identifier) für eine Zeichenfolge zurück. 
 
@@ -1049,7 +1304,7 @@ Dies ist das zurückgegebene Ergebnis: `"data:text/plain;charset=utf-8;base64,aG
 
 <a name="dataUriToBinary"></a>
 
-## <a name="datauritobinary"></a>dataUriToBinary
+### <a name="datauritobinary"></a>dataUriToBinary
 
 Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück. Verwenden Sie diese Funktion anstelle von [decodeDataUri()](#decodeDataUri). Obwohl beide Funktionen in gleicher Weise funktionieren, wird `decodeDataUri()` bevorzugt.
 
@@ -1084,7 +1339,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="dataUriToString"></a>
 
-## <a name="datauritostring"></a>dataUriToString
+### <a name="datauritostring"></a>dataUriToString
 
 Gibt die Zeichenfolgenversion für einen Daten-URI (Uniform Resource Identifier) zurück.
 
@@ -1114,7 +1369,7 @@ Dies ist das zurückgegebene Ergebnis: `"hello"`
 
 <a name="dayOfMonth"></a>
 
-## <a name="dayofmonth"></a>dayOfMonth
+### <a name="dayofmonth"></a>dayOfMonth
 
 Gibt den Tag des Monats aus einem Zeitstempel zurück. 
 
@@ -1144,7 +1399,7 @@ Dies ist das zurückgegebene Ergebnis: `15`
 
 <a name="dayOfWeek"></a>
 
-## <a name="dayofweek"></a>dayOfWeek
+### <a name="dayofweek"></a>dayOfWeek
 
 Gibt den Wochentag aus einem Zeitstempel zurück.  
 
@@ -1174,7 +1429,7 @@ Dies ist das zurückgegebene Ergebnis: `3`
 
 <a name="dayOfYear"></a>
 
-## <a name="dayofyear"></a>dayOfYear
+### <a name="dayofyear"></a>dayOfYear
 
 Gibt den Tag des Jahres aus einem Zeitstempel zurück. 
 
@@ -1204,7 +1459,7 @@ Dies ist das zurückgegebene Ergebnis: `74`
 
 <a name="decodeBase64"></a>
 
-## <a name="decodebase64"></a>decodeBase64
+### <a name="decodebase64"></a>decodeBase64
 
 Gibt die Zeichenfolgenversion einer base64-codierten Zeichenfolge zurück, d. h., die base64-Zeichenfolge wird decodiert. Sie sollten [base64ToString()](#base64ToString) anstelle von `decodeBase64()` verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `base64ToString()` bevorzugt.
 
@@ -1234,7 +1489,7 @@ Dies ist das zurückgegebene Ergebnis: `"hello"`
 
 <a name="decodeDataUri"></a>
 
-## <a name="decodedatauri"></a>decodeDataUri
+### <a name="decodedatauri"></a>decodeDataUri
 
 Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück. Sie sollten [dataUriToBinary()](#dataUriToBinary) anstelle von `decodeDataUri()` verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `dataUriToBinary()` bevorzugt.
 
@@ -1269,7 +1524,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="decodeUriComponent"></a>
 
-## <a name="decodeuricomponent"></a>decodeUriComponent
+### <a name="decodeuricomponent"></a>decodeUriComponent
 
 Gibt eine Zeichenfolge zurück, in der Escapezeichen durch decodierte Versionen ersetzt sind. 
 
@@ -1299,7 +1554,7 @@ Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
 
 <a name="div"></a>
 
-## <a name="div"></a>div
+### <a name="div"></a>div
 
 Gibt das ganzzahlige Ergebnis der Division zweier Zahlen zurück. Informationen zum Abrufen des Restwerts finden Sie unter [mod()](#mod).
 
@@ -1331,7 +1586,7 @@ Dies ist das zurückgegebene Ergebnis: `2`
 
 <a name="encodeUriComponent"></a>
 
-## <a name="encodeuricomponent"></a>encodeUriComponent
+### <a name="encodeuricomponent"></a>encodeUriComponent
 
 Gibt eine URI-codierte (Uniform Resource Identifier) Version für eine Zeichenfolge zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden. Sie sollten [uriComponent()](#uriComponent) anstelle von `encodeUriComponent()` verwenden. Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` bevorzugt.
 
@@ -1361,7 +1616,7 @@ Dies ist das zurückgegebene Ergebnis: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
-## <a name="empty"></a>empty
+### <a name="empty"></a>empty
 
 Überprüft, ob eine Sammlung leer ist. Gibt „true“ zurück, wenn die Sammlung leer ist, oder gibt „false“ zurück, wenn sie nicht leer ist.
 
@@ -1396,7 +1651,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="endswith"></a>
 
-## <a name="endswith"></a>endsWith
+### <a name="endswith"></a>endsWith
 
 Überprüft, ob eine Zeichenfolge mit einer bestimmten Teilzeichenfolge endet. Gibt „true“ zurück, wenn die Teilzeichenfolge gefunden wurde, gibt andernfalls „false“ zurück. Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet.
 
@@ -1437,7 +1692,7 @@ Dies ist das zurückgegebene Ergebnis: `false`
 
 <a name="equals"></a>
 
-## <a name="equals"></a>equals
+### <a name="equals"></a>equals
 
 Überprüft, ob beide Werte, Ausdrücke oder Objekte gleichwertig sind. Gibt „true“ zurück, wenn beide gleichwertig sind, gibt andernfalls „false“ zurück.
 
@@ -1471,7 +1726,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="first"></a>
 
-## <a name="first"></a>first
+### <a name="first"></a>first
 
 Gibt das erste Element aus einer Zeichenfolge oder einem Array zurück.
 
@@ -1506,7 +1761,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="float"></a>
 
-## <a name="float"></a>Gleitkommawert
+### <a name="float"></a>Gleitkommawert
 
 Konvertiert die Zeichenfolgenversion einer Gleitkommazahl in eine tatsächliche Gleitkommazahl. Diese Funktion können Sie nur verwenden, wenn Sie einen benutzerdefinierten Parameter an eine App (z. B. eine Logik-App) übergeben.
 
@@ -1536,7 +1791,7 @@ Dies ist das zurückgegebene Ergebnis: `10.333`
 
 <a name="formatDateTime"></a>
 
-## <a name="formatdatetime"></a>formatDateTime
+### <a name="formatdatetime"></a>formatDateTime
 
 Gibt einen Zeitstempel im angegebenen Format zurück.
 
@@ -1567,7 +1822,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T12:00:00"`
 
 <a name="formDataMultiValues"></a>
 
-## <a name="formdatamultivalues"></a>formDataMultiValues
+### <a name="formdatamultivalues"></a>formDataMultiValues
 
 Gibt ein Array mit den Werten zurück, die mit einem Schlüsselnamen (key-Name) in der *form-data*- oder *form-encoded*-Ausgabe einer Aktion übereinstimmen. 
 
@@ -1598,7 +1853,7 @@ Der Betrefftext (Subject) wird in einem Array zurückgegeben, zum Beispiel: `["H
 
 <a name="formDataValue"></a>
 
-## <a name="formdatavalue"></a>formDataValue
+### <a name="formdatavalue"></a>formDataValue
 
 Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen (key-Name) in der *form-data*- oder *form-encoded*-Ausgabe einer Aktion übereinstimmt. Findet die Funktion mehrere Übereinstimmungen, löst sie einen Fehler aus.
 
@@ -1629,7 +1884,7 @@ Der Betrefftext (Subject) wird als Zeichenfolge zurückgegeben, zum Beispiel: `"
 
 <a name="getFutureTime"></a>
 
-## <a name="getfuturetime"></a>getFutureTime
+### <a name="getfuturetime"></a>getFutureTime
 
 Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück.
 
@@ -1671,7 +1926,7 @@ Dies ist das zurückgegebene Ergebnis: `"Tuesday, March 6, 2018"`
 
 <a name="getPastTime"></a>
 
-## <a name="getpasttime"></a>getPastTime
+### <a name="getpasttime"></a>getPastTime
 
 Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück.
 
@@ -1713,7 +1968,7 @@ Dies ist das zurückgegebene Ergebnis: `"Saturday, January 27, 2018"`
 
 <a name="greater"></a>
 
-## <a name="greater"></a>greater
+### <a name="greater"></a>greater
 
 Überprüft, ob der erste Wert größer als der zweite ist. Gibt „true“ zurück, wenn der erste Wert größer ist, gibt andernfalls „false“ zurück.
 
@@ -1749,7 +2004,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="greaterOrEquals"></a>
 
-## <a name="greaterorequals"></a>greaterOrEquals
+### <a name="greaterorequals"></a>greaterOrEquals
 
 Überprüft, ob der erste Wert größer als oder gleich dem zweiten ist.
 Gibt „true“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist, gibt andernfalls „false“ zurück.
@@ -1786,7 +2041,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="guid"></a>
 
-## <a name="guid"></a>GUID
+### <a name="guid"></a>GUID
 
 Generiert einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) als Zeichenfolge, z. B. „c2ecc88d-88c8-4096-912c-d6f2e2b138ce“: 
 
@@ -1822,7 +2077,7 @@ Dies ist das zurückgegebene Ergebnis: `"(c2ecc88d-88c8-4096-912c-d6f2e2b138ce)"
 
 <a name="if"></a>
 
-## <a name="if"></a>if
+### <a name="if"></a>if
 
 Überprüft, ob ein Ausdruck gleich „true“ oder „false“ ist. Gibt abhängig vom Ergebnis einen angegebenen Wert zurück.
 
@@ -1852,7 +2107,7 @@ if(equals(1, 1), 'yes', 'no')
 
 <a name="indexof"></a>
 
-## <a name="indexof"></a>indexOf
+### <a name="indexof"></a>indexOf
 
 Gibt die Anfangsposition oder den Anfangsindexwert für eine Teilzeichenfolge zurück. Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet, und Indizes beginnen mit der Zahl 0. 
 
@@ -1883,7 +2138,7 @@ Dies ist das zurückgegebene Ergebnis: `6`
 
 <a name="int"></a>
 
-## <a name="int"></a>int
+### <a name="int"></a>int
 
 Gibt die Ganzzahlversion für eine Zeichenfolge zurück.
 
@@ -1913,7 +2168,7 @@ Dies ist das zurückgegebene Ergebnis: `10`
 
 <a name="item"></a>
 
-## <a name="item"></a>item
+### <a name="item"></a>item
 
 Wird diese Funktion in einer wiederholten Aktion für ein Array verwendet, gibt sie das Element zurück, das in der aktuellen Iteration der Aktion das aktuelle Arrayelement ist. Sie können die Werte auch aus den Eigenschaften dieses Elements abrufen. 
 
@@ -1936,7 +2191,7 @@ item().body
 
 <a name="items"></a>
 
-## <a name="items"></a>items
+### <a name="items"></a>items
 
 Gibt das aktuelle Element aus jedem Zyklus einer for-each-Schleife zurück. Verwenden Sie diese Funktion in einer for-each-Schleife.
 
@@ -1964,7 +2219,7 @@ items('myForEachLoopName')
 
 <a name="json"></a>
 
-## <a name="json"></a>json
+### <a name="json"></a>json
 
 Gibt den JSON-Typwert oder das JSON-Objekt (JSON = JavaScript Object Notation) für eine Zeichenfolge oder XML zurück.
 
@@ -2033,7 +2288,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="intersection"></a>
 
-## <a name="intersection"></a>Schnittmenge
+### <a name="intersection"></a>Schnittmenge
 
 Gibt eine Sammlung zurück, die *nur* die gängigen Elemente aus den angegebenen Sammlungen enthält. Damit ein Element im Ergebnis enthalten ist, muss es in allen Sammlungen enthalten sein, die an diese Funktion übergeben werden. Haben mehrere Elemente denselben Namen, enthält das Ergebnis das letzte Element mit diesem Namen.
 
@@ -2064,7 +2319,7 @@ Es wird ein Array zurückgegeben, das *nur* diese Elemente enthält: `[1, 2]`
 
 <a name="join"></a>
 
-## <a name="join"></a>join
+### <a name="join"></a>join
 
 Gibt eine Zeichenfolge zurück, die alle Elemente aus einem Array enthält und in der je zwei Elemente durch ein *Trennzeichen* getrennt sind.
 
@@ -2095,7 +2350,7 @@ Dies ist das zurückgegebene Ergebnis: `"a.b.c"`
 
 <a name="last"></a>
 
-## <a name="last"></a>last
+### <a name="last"></a>last
 
 Gibt das letzte Element aus einer Sammlung zurück.
 
@@ -2130,7 +2385,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="lastindexof"></a>
 
-## <a name="lastindexof"></a>lastIndexOf
+### <a name="lastindexof"></a>lastIndexOf
 
 Gibt die Endposition oder den Endindexwert für eine Teilzeichenfolge zurück. Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet, und Indizes beginnen mit der Zahl 0.
 
@@ -2161,7 +2416,7 @@ Dies ist das zurückgegebene Ergebnis: `10`
 
 <a name="length"></a>
 
-## <a name="length"></a>length
+### <a name="length"></a>length
 
 Gibt Anzahl von Elementen einer Sammlung zurück
 
@@ -2193,7 +2448,7 @@ Dies ist das zurückgegebene Ergebnis: `4`
 
 <a name="less"></a>
 
-## <a name="less"></a>less
+### <a name="less"></a>less
 
 Überprüft, ob der erste Wert kleiner als der zweite ist.
 Gibt „true“ zurück, wenn der erste Wert kleiner ist, gibt andernfalls „false“ zurück.
@@ -2230,7 +2485,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="lessOrEquals"></a>
 
-## <a name="lessorequals"></a>lessOrEquals
+### <a name="lessorequals"></a>lessOrEquals
 
 Überprüft, ob der erste Wert kleiner als oder gleich dem zweiten ist.
 Gibt „true“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist, gibt andernfalls „false“ zurück.
@@ -2267,7 +2522,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="listCallbackUrl"></a>
 
-## <a name="listcallbackurl"></a>listCallbackUrl
+### <a name="listcallbackurl"></a>listCallbackUrl
 
 Gibt die „Rückruf-URL“ zurück, die einen Trigger oder eine Aktion aufruft. Diese Funktion funktioniert nur mit Triggern und Aktionen für die Connectortypen **HttpWebhook** und **ApiConnectionWebhook**, nicht für die Typen **Manual**, **Recurrence**, **HTTP** und **APIConnection**. 
 
@@ -2288,7 +2543,7 @@ Dieses Beispiel zeigt einer Beispielrückruf-URL, die von dieser Funktion zurüc
 
 <a name="max"></a>
 
-## <a name="max"></a>max
+### <a name="max"></a>max
 
 Gibt den größten Wert aus einer Liste oder einem Array mit Zahlen zurück, mit dem Wert an beiden Enden inklusive. 
 
@@ -2321,7 +2576,7 @@ Dies ist das zurückgegebene Ergebnis: `3`
 
 <a name="min"></a>
 
-## <a name="min"></a>Min
+### <a name="min"></a>Min
 
 Gibt den niedrigsten Wert aus einer Reihe von Zahlen oder einem Array zurück.
 
@@ -2354,7 +2609,7 @@ Dies ist das zurückgegebene Ergebnis: `1`
 
 <a name="mod"></a>
 
-## <a name="mod"></a>mod
+### <a name="mod"></a>mod
 
 Gibt den Restwert aus der Division zweier Zahlen zurück. Informationen zum Abrufen des Ganzzahlergebnisses finden Sie unter [div()](#div).
 
@@ -2385,7 +2640,7 @@ Dies ist das zurückgegebene Ergebnis: `1`
 
 <a name="mul"></a>
 
-## <a name="mul"></a>mul
+### <a name="mul"></a>mul
 
 Gibt das Produkt aus der Multiplikation zweier Zahlen zurück.
 
@@ -2420,7 +2675,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="multipartBody"></a>
 
-## <a name="multipartbody"></a>multipartBody
+### <a name="multipartbody"></a>multipartBody
 
 Gibt den Textteil für einen bestimmten Teil einer Aktionsausgabe zurück, die mehrere Teile hat.
 
@@ -2441,7 +2696,7 @@ multipartBody('<actionName>', <index>)
 
 <a name="not"></a>
 
-## <a name="not"></a>not
+### <a name="not"></a>not
 
 Überprüft, ob ein Ausdruck gleich „false“ ist. Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist, oder gibt „false“ zurück, wenn er gleich „true“ ist.
 
@@ -2489,7 +2744,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="or"></a>
 
-## <a name="or"></a>oder
+### <a name="or"></a>oder
 
 Überprüft, ob mindestens ein Ausdruck gleich „true“ ist. Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist, oder gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ ist.
 
@@ -2537,7 +2792,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="parameters"></a>
 
-## <a name="parameters"></a>Parameter
+### <a name="parameters"></a>Parameter
 
 Gibt den Wert für einen Parameter zurück, der in der Definition Ihrer Logik-App beschrieben wird. 
 
@@ -2575,7 +2830,7 @@ Dies ist das zurückgegebene Ergebnis: `"Sophia Owen"`
 
 <a name="rand"></a>
 
-## <a name="rand"></a>rand
+### <a name="rand"></a>rand
 
 Gibt eine zufällige Ganzzahl  aus einem angegebenen Bereich zurück, wobei nur der Anfangswert inklusive ist.
 
@@ -2606,7 +2861,7 @@ Eine dieser Zahlen wird als Ergebnis zurückgegeben: `1`, `2`, `3` oder `4`
 
 <a name="range"></a>
 
-## <a name="range"></a>range
+### <a name="range"></a>range
 
 Gibt ein Array mit ganzen Zahlen zurück, das mit einer angegebenen ganzen Zahl beginnt.
 
@@ -2637,7 +2892,7 @@ Dies ist das zurückgegebene Ergebnis: `[1, 2, 3, 4]`
 
 <a name="replace"></a>
 
-## <a name="replace"></a>replace
+### <a name="replace"></a>replace
 
 Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die resultierende Zeichenfolge zurück. Für diese Funktion wird die Groß-/Kleinschreibung beachtet.
 
@@ -2669,7 +2924,7 @@ Dies ist das zurückgegebene Ergebnis: `"the new string"`
 
 <a name="removeProperty"></a>
 
-## <a name="removeproperty"></a>removeProperty
+### <a name="removeproperty"></a>removeProperty
 
 Entfernt eine Eigenschaft aus einem Objekt und gibt das aktualisierte Objekt zurück.
 
@@ -2698,7 +2953,7 @@ removeProperty(json('customerProfile'), 'accountLocation')
 
 <a name="setProperty"></a>
 
-## <a name="setproperty"></a>setProperty
+### <a name="setproperty"></a>setProperty
 
 Legt den Wert für die Eigenschaft eines Objekts fest und gibt das aktualisierte Objekt zurück. Um eine neue Eigenschaft hinzuzufügen, können Sie diese Funktion oder die [addProperty()](#addProperty)-Funktion verwenden.
 
@@ -2728,7 +2983,7 @@ setProperty(json('customerProfile'), 'accountNumber', guid())
 
 <a name="skip"></a>
 
-## <a name="skip"></a>skip
+### <a name="skip"></a>skip
 
 Entfernt Elemente vom Anfang einer Sammlung und gibt *alle anderen* Elemente zurück.
 
@@ -2759,7 +3014,7 @@ Es wird dieses Array mit den restlichen Elementen zurückgegeben: `[1,2,3]`
 
 <a name="split"></a>
 
-## <a name="split"></a>split
+### <a name="split"></a>split
 
 Gibt ein Array zurück, das alle Zeichen aus einer Zeichenfolge enthält und in dem je zwei Zeichen durch ein *Trennzeichen* getrennt sind.
 
@@ -2790,7 +3045,7 @@ Dies ist das zurückgegebene Ergebnis: `[a, b, c]`
 
 <a name="startOfDay"></a>
 
-## <a name="startofday"></a>startOfDay
+### <a name="startofday"></a>startOfDay
 
 Gibt den Beginn des Tages für einen Zeitstempel zurück. 
 
@@ -2821,7 +3076,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T00:00:00.0000000Z"`
 
 <a name="startOfHour"></a>
 
-## <a name="startofhour"></a>startOfHour
+### <a name="startofhour"></a>startOfHour
 
 Gibt den Beginn der Stunde für einen Zeitstempel zurück. 
 
@@ -2852,7 +3107,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-15T13:00:00.0000000Z"`
 
 <a name="startOfMonth"></a>
 
-## <a name="startofmonth"></a>startOfMonth
+### <a name="startofmonth"></a>startOfMonth
 
 Gibt den Beginn des Monats für einen Zeitstempel zurück. 
 
@@ -2883,7 +3138,7 @@ Dies ist das zurückgegebene Ergebnis: `"2018-03-01T00:00:00.0000000Z"`
 
 <a name="startswith"></a>
 
-## <a name="startswith"></a>startsWith
+### <a name="startswith"></a>startsWith
 
 Überprüft, ob eine Zeichenfolge mit einer bestimmten Teilzeichenfolge beginnt. Gibt „true“ zurück, wenn die Teilzeichenfolge gefunden wurde, gibt andernfalls „false“ zurück. Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet.
 
@@ -2924,7 +3179,7 @@ Dies ist das zurückgegebene Ergebnis: `false`
 
 <a name="string"></a>
 
-## <a name="string"></a>Zeichenfolge
+### <a name="string"></a>Zeichenfolge
 
 Gibt die Zeichenfolgenversion für einen Wert zurück.
 
@@ -2964,7 +3219,7 @@ Dies ist das zurückgegebene Ergebnis: `"{ \\"name\\": \\"Sophie Owen\\" }"`
 
 <a name="sub"></a>
 
-## <a name="sub"></a>sub
+### <a name="sub"></a>sub
 
 Gibt das Ergebnis aus der Subtraktion der zweiten Zahl von der ersten Zahl zurück.
 
@@ -2995,7 +3250,7 @@ Dies ist das zurückgegebene Ergebnis: `10`
 
 <a name="substring"></a>
 
-## <a name="substring"></a>substring
+### <a name="substring"></a>substring
 
 Gibt Zeichen aus einer Zeichenfolge zurück, beginnend mit dem angegebenen Indexwert (Position). Indexwerte beginnen bei 0. 
 
@@ -3027,7 +3282,7 @@ Dies ist das zurückgegebene Ergebnis: `"world"`
 
 <a name="subtractFromTime"></a>
 
-## <a name="subtractfromtime"></a>subtractFromTime
+### <a name="subtractfromtime"></a>subtractFromTime
 
 Subtrahiert eine Anzahl von Zeiteinheiten von einem Zeitstempel. Siehe auch [getPastTime](#getPastTime).
 
@@ -3070,7 +3325,7 @@ Dies ist das zurückgegebene Ergebnis mit dem optionalen „D“-Format: `"Monda
 
 <a name="take"></a>
 
-## <a name="take"></a>take
+### <a name="take"></a>take
 
 Gibt Elemente vom Anfang einer Sammlung zurück. 
 
@@ -3106,7 +3361,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="ticks"></a>
 
-## <a name="ticks"></a>ticks
+### <a name="ticks"></a>ticks
 
 Gibt den Eigenschaftswert `ticks` für einen angegebenen Zeitstempel zurück. Ein *tick* ist eine Zeitspanne von 100 Nanosekunden.
 
@@ -3126,7 +3381,7 @@ ticks('<timestamp>')
 
 <a name="toLower"></a>
 
-## <a name="tolower"></a>toLower
+### <a name="tolower"></a>toLower
 
 Gibt eine Zeichenfolge in Kleinbuchstaben zurück. Gibt es für ein Zeichen in der Zeichenfolge keine Kleinschreibungsversion, verbleibt dieses Zeichen unverändert in der zurückgegebenen Zeichenfolge.
 
@@ -3156,7 +3411,7 @@ Dies ist das zurückgegebene Ergebnis: `"hello world"`
 
 <a name="toUpper"></a>
 
-## <a name="toupper"></a>toUpper
+### <a name="toupper"></a>toUpper
 
 Gibt eine Zeichenfolge in Großbuchstaben zurück. Gibt es für ein Zeichen in der Zeichenfolge keine Großschreibungsversion, verbleibt dieses Zeichen unverändert in der zurückgegebenen Zeichenfolge.
 
@@ -3186,7 +3441,7 @@ Dies ist das zurückgegebene Ergebnis: `"HELLO WORLD"`
 
 <a name="trigger"></a>
 
-## <a name="trigger"></a>trigger
+### <a name="trigger"></a>trigger
 
 Gibt die Ausgabe eines Triggers zur Laufzeit oder Werte aus anderen JSON-Name/Wert-Paaren zurück, die Sie einem Ausdruck zuweisen können. 
 
@@ -3207,7 +3462,7 @@ trigger()
 
 <a name="triggerBody"></a>
 
-## <a name="triggerbody"></a>triggerBody
+### <a name="triggerbody"></a>triggerBody
 
 Gibt die `body`-Ausgabe eines Triggers zur Laufzeit zurück. Kurzform für `trigger().outputs.body`. Siehe [trigger()](#trigger). 
 
@@ -3222,7 +3477,7 @@ triggerBody()
 
 <a name="triggerFormDataMultiValues"></a>
 
-## <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
+### <a name="triggerformdatamultivalues"></a>triggerFormDataMultiValues
 
 Gibt ein Array mit den Werten zurück, die mit einem Schlüsselnamen (key-Name) in der *form-data*- oder *form-encoded*-Ausgabe eines Triggers übereinstimmen. 
 
@@ -3252,7 +3507,7 @@ Dieses Array wird als Beispielergebnis zurückgegeben: `["http://feeds.reuters.c
 
 <a name="triggerFormDataValue"></a>
 
-## <a name="triggerformdatavalue"></a>triggerFormDataValue
+### <a name="triggerformdatavalue"></a>triggerFormDataValue
 
 Gibt eine Zeichenfolge mit einem einzelnen Wert zurück, der mit einem Schlüsselnamen (key-Name) in der *form-data*- oder *form-encoded*-Ausgabe eines Triggers übereinstimmt. Findet die Funktion mehrere Übereinstimmungen, löst sie einen Fehler aus.
 
@@ -3300,7 +3555,7 @@ triggerMultipartBody(<index>)
 
 <a name="triggerOutputs"></a>
 
-## <a name="triggeroutputs"></a>triggerOutputs
+### <a name="triggeroutputs"></a>triggerOutputs
 
 Gibt eine Triggerausgabe zur Laufzeit oder Werte aus anderen JSON-Name/Wert-Paaren zurück. Kurzform für `trigger().outputs`. Siehe [trigger()](#trigger). 
 
@@ -3315,7 +3570,7 @@ triggerOutputs()
 
 <a name="trim"></a>
 
-## <a name="trim"></a>trim
+### <a name="trim"></a>trim
 
 Entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge und gibt die aktualisierte Zeichenfolge zurück.
 
@@ -3345,7 +3600,7 @@ Dies ist das zurückgegebene Ergebnis: `"Hello World"`
 
 <a name="union"></a>
 
-## <a name="union"></a>union
+### <a name="union"></a>union
 
 Gibt eine Sammlung zurück, die *sämtliche* Elemente aus den angegebenen Sammlungen enthält. Damit ein Element im Ergebnis enthalten ist, kann es in irgendeiner der Sammlungen enthalten sein, die an diese Funktion übergeben werden. Haben mehrere Elemente denselben Namen, enthält das Ergebnis das letzte Element mit diesem Namen. 
 
@@ -3376,7 +3631,7 @@ Dies ist das zurückgegebene Ergebnis: `[1, 2, 3, 10, 101]`
 
 <a name="uriComponent"></a>
 
-## <a name="uricomponent"></a>uriComponent
+### <a name="uricomponent"></a>uriComponent
 
 Gibt eine URI-codierte (Uniform Resource Identifier) Version für eine Zeichenfolge zurück, indem URL-unsichere Zeichen durch Escapezeichen ersetzt werden. Verwenden Sie diese Funktion anstelle von [encodeUriComponent()](#encodeUriComponent). Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` bevorzugt.
 
@@ -3406,7 +3661,7 @@ Dies ist das zurückgegebene Ergebnis: `"http%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
-## <a name="uricomponenttobinary"></a>uriComponentToBinary
+### <a name="uricomponenttobinary"></a>uriComponentToBinary
 
 Gibt die binäre Version einer URI-Komponente (Uniform Resource Identifier) zurück.
 
@@ -3441,7 +3696,7 @@ Dies ist das zurückgegebene Ergebnis:
 
 <a name="uriComponentToString"></a>
 
-## <a name="uricomponenttostring"></a>uriComponentToString
+### <a name="uricomponenttostring"></a>uriComponentToString
 
 Gibt die Zeichenfolgenversion einer URI-codierten Zeichenfolge (Uniform Resource Identifier) zurück, d. h., die URI-codierte Zeichenfolge wird decodiert.
 
@@ -3471,7 +3726,7 @@ Dies ist das zurückgegebene Ergebnis: `"https://contoso.com"`
 
 <a name="uriHost"></a>
 
-## <a name="urihost"></a>uriHost
+### <a name="urihost"></a>uriHost
 
 Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück.
 
@@ -3501,7 +3756,7 @@ Dies ist das zurückgegebene Ergebnis: `"www.localhost.com"`
 
 <a name="uriPath"></a>
 
-## <a name="uripath"></a>uriPath
+### <a name="uripath"></a>uriPath
 
 Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück. 
 
@@ -3531,7 +3786,7 @@ Dies ist das zurückgegebene Ergebnis: `"/catalog/shownew.htm"`
 
 <a name="uriPathAndQuery"></a>
 
-## <a name="uripathandquery"></a>uriPathAndQuery
+### <a name="uripathandquery"></a>uriPathAndQuery
 
 Gibt die den `path`- und den `query`-Wert für einen Uniform Resource Identifier (URI) zurück.
 
@@ -3561,7 +3816,7 @@ Dies ist das zurückgegebene Ergebnis: `"/catalog/shownew.htm?date=today"`
 
 <a name="uriPort"></a>
 
-## <a name="uriport"></a>uriPort
+### <a name="uriport"></a>uriPort
 
 Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück.
 
@@ -3591,7 +3846,7 @@ Dies ist das zurückgegebene Ergebnis: `8080`
 
 <a name="uriQuery"></a>
 
-## <a name="uriquery"></a>uriQuery
+### <a name="uriquery"></a>uriQuery
 
 Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück.
 
@@ -3621,7 +3876,7 @@ Dies ist das zurückgegebene Ergebnis: `"?date=today"`
 
 <a name="uriScheme"></a>
 
-## <a name="urischeme"></a>uriScheme
+### <a name="urischeme"></a>uriScheme
 
 Gibt den Wert `scheme` für einen Uniform Resource Identifier (URI) zurück.
 
@@ -3651,7 +3906,7 @@ Dies ist das zurückgegebene Ergebnis: `"http"`
 
 <a name="utcNow"></a>
 
-## <a name="utcnow"></a>utcNow
+### <a name="utcnow"></a>utcNow
 
 Gibt den aktuellen Zeitstempel zurück. 
 
@@ -3694,7 +3949,7 @@ Dies ist das zurückgegebene Ergebnis: `"Sunday, April 15, 2018"`
 
 <a name="variables"></a>
 
-## <a name="variables"></a>variables
+### <a name="variables"></a>variables
 
 Gibt den Wert für eine angegebene Variable zurück. 
 
@@ -3724,7 +3979,7 @@ Dies ist das zurückgegebene Ergebnis: `20`
 
 <a name="workflow"></a>
 
-## <a name="workflow"></a>workflow
+### <a name="workflow"></a>workflow
 
 Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück. 
 
@@ -3747,7 +4002,7 @@ workflow().run.name
 
 <a name="xml"></a>
 
-## <a name="xml"></a>xml
+### <a name="xml"></a>xml
 
 Gibt die XML-Version einer Zeichenfolge zurück, die ein JSON-Objekt enthält. 
 
@@ -3805,7 +4060,7 @@ Dies ist das zurückgegebene XML-Objekt:
 
 <a name="xpath"></a>
 
-## <a name="xpath"></a>xpath
+### <a name="xpath"></a>xpath
 
 Überprüft die XML auf Knoten oder Werte, die mit einem XPath-Ausdruck (XML Path Language) übereinstimmen, und gibt die übereinstimmenden Knoten oder Werte zurück. Ein XPath-Ausdruck oder einfach „XPath“ vereinfacht Ihnen das Navigieren in einer XML-Dokumentstruktur, sodass Sie im XML-Inhalt Knoten auswählen oder Werte berechnen können.
 

@@ -1,22 +1,49 @@
 ---
-title: Dokumentation zum Cognitive Services Speech SDK
+title: Dokumentation zum Cognitive Services Speech SDK | Microsoft-Dokumentation
 description: Versionshinweise – Änderungen in den neuesten Versionen
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: f346241e1d10d16eae08e389296f4be9149ec086
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502457"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41929755"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: 2018-August-Release
+
+**Neue Features**
+
+* Mit dem Speech SDK erstellte UWP-Apps erfüllen nun die Anforderungen des Windows App Certification Kit (WACK).
+  Sehen Sie sich unseren [UWP-Schnellstart](quickstart-csharp-uwp.md) an.
+* Unterstützung für .NET Standard 2.0 unter Linux (Ubuntu 16.04 x 64)
+* Experimentell: Unterstützung für Java 8 unter Windows (64 Bit) und Linux (Ubuntu 16.04 x 64).
+  Sehen Sie sich den [Schnellstart zur Java Run-Time Environment](quickstart-java-jre.md) an.
+
+**Funktionale Änderungen**
+
+* Es werden weitere Detailinformationen zu Verbindungsfehlern verfügbar gemacht.
+
+**Wichtige Änderungen**
+
+* In Java (Android) erfordert die `SpeechFactory.configureNativePlatformBindingWithDefaultCertificate`-Funktion keinen Path-Parameter mehr. Der Pfad wird nun auf allen unterstützten Plattformen automatisch erkannt.
+* Der get-Accessor der `EndpointUrl`-Eigenschaft in Java und C# wurde entfernt.
+
+**Fehlerbehebungen**
+
+* In Java werden die Ergebnisse der Audiosynthese in der Übersetzungserkennung jetzt implementiert.
+* Ein Problem wurde behoben, das inaktive Threads und eine erhöhte Anzahl von offenen und nicht verwendeten Sockets verursachen konnte.
+* Ein Problem wurde behoben, das dazu führen konnte, dass lange ausgeführte Erkennungen während der Übertragung beendet wurden.
+* Eine Racebedingung beim Herunterfahren der Erkennung wurde behoben.
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0: 2018-July-Release
 

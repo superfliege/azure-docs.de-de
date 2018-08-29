@@ -1,8 +1,8 @@
 ---
 title: SCOM-Integration in Application Insights | Microsoft Docs
-description: "Nutzen Sie als SCOM-Benutzer Application Insights zur Überwachung der Leistung und zur Diagnose von Problem. Umfassende Dashboards, intelligente Warnungen, leistungsstarke Diagnosetools und Analyseabfragen."
+description: Nutzen Sie als SCOM-Benutzer Application Insights zur Überwachung der Leistung und zur Diagnose von Problem. Umfassende Dashboards, intelligente Warnungen, leistungsstarke Diagnosetools und Analyseabfragen.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
@@ -10,19 +10,23 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 08/12/2016
+ms.topic: conceptual
+ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 35ea37b751909e14e616a965462b832e4e51bae0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8880fbeaad85bc2615292820527c6a9e87000d66
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246493"
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Überwachung der Anwendungsleistung mithilfe von Application Insights für SCOM
 Falls Sie Ihre Server mithilfe von System Center Operations Manager (SCOM) verwalten, können Sie zum Überwachen der Leistung sowie zum Diagnostizieren von Leistungsproblemen [Azure Application Insights](app-insights-asp-net.md)verwenden. Application Insights überwacht eingehende Anforderungen, ausgehende REST- und SQL-Aufrufe sowie Ausnahmen und Protokollablaufverfolgungen Ihrer Webanwendung. Die Lösung stellt Metrikdiagramme und intelligente Warnungen für Dashboards bereit und bietet leistungsfähige diagnostische Suchfunktionen und analytische Abfragen für die Telemetriedaten. 
 
 Die Application Insights-Überwachung kann mithilfe eines SCOM-Management Packs aktiviert werden.
+
+> [!IMPORTANT]
+> Dieses System Center Operations Manager Management Pack ist jetzt **veraltet**. Es unterstützt nicht die neuesten Application Insights SDKs und wird nicht mehr empfohlen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 Wir treffen folgende Annahmen:

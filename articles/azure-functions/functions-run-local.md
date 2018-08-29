@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Azure-Funktionen über die Eingabeaufforderun
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 57011e1f7633688e00a4639ba36fd4442073161d
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: cb336d6742aab10e1fd8305fd52f1376bb4f2598
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618613"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146534"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -131,13 +131,13 @@ Führen Sie im Terminalfenster oder über eine Eingabeaufforderung den folgenden
 func init MyFunctionProj
 ```
 
+Wenn Sie einen Projektnamen angeben, wird ein neuer Ordner mit diesem Namen erstellt und initialisiert. Andernfalls wird der aktuelle Ordner initialisiert.  
 In Version 2.x müssen Sie beim Ausführen des Befehls eine Runtime für das Projekt auswählen. Wenn Sie JavaScript-Funktionen entwickeln möchten, wählen Sie **node** aus:
 
 ```output
 Select a worker runtime:
 dotnet
 node
-java
 ```
 
 Verwenden Sie die NACH-OBEN- oder NACH-UNTEN-TASTE, um eine Sprache auszuwählen, und drücken Sie dann die EINGABETASTE. Die Ausgabe ähnelt dem folgenden Beispiel für ein JavaScript-Projekt:
@@ -298,19 +298,24 @@ Um ein Functions-Projekt auszuführen, führen Sie den Functions-Host aus. Der H
 ```bash
 func host start
 ```
+Der Befehl `host` ist nur in Version 1.x erforderlich.
 
 `func host start` unterstützt die folgenden Optionen:
 
 | Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
-|**`--port -p`** | Der lokale Port, auf dem gelauscht werden soll. Standardwert: 7071. |
-| **`--debug <type>`** | Startet den Host mit geöffnetem Debugport, sodass Sie ihn in [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) oder [Visual Studio 2017](functions-dotnet-class-library.md) an den Prozess **func.exe** anfügen können. Die Optionen für *\<type\>* sind `VSCode` und `VS`.  |
 | **`--cors`** | Eine durch Trennzeichen getrennte Liste der CORS-Ursprünge ohne Leerzeichen. |
-| **`--nodeDebugPort -n`** | Der Port, den der Knotendebugger verwendet. Standard: Ein Wert von „launch.json“ oder 5858. |
-| **`--debugLevel -d`** | Die Konsolen-Ablaufverfolgungsebene (aus, ausführlich, Info, Warnung oder Fehler). Standard: Info.|
+| **`--debug <type>`** | Startet den Host mit geöffnetem Debugport, sodass Sie ihn in [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) oder [Visual Studio 2017](functions-dotnet-class-library.md) an den Prozess **func.exe** anfügen können. Die Optionen für *\<type\>* sind `VSCode` und `VS`.  |
+| **`--port -p`** | Der lokale Port, auf dem gelauscht werden soll. Standardwert: 7071. |
 | **`--timeout -t`** | Das Timeout für den zu startenden Functions-Host in Sekunden. Standard: 20 Sekunden.|
 | **`--useHttps`** | Erstellen Sie eine Bindung an `https://localhost:{port}` statt an `http://localhost:{port}`. Standardmäßig erstellt diese Option ein vertrauenswürdiges Zertifikat auf Ihrem Computer.|
-| **`--pause-on-error`** | Vor Beenden des Prozesses für zusätzliche Eingabe anhalten. Wird zum Starten von Core Tools in Visual Studio oder VS Code verwendet.|
+| **`--build`** | Erstellen des aktuellen Projekts vor dem Ausführen. Nur Version 2.x und C#-Projekte. |
+| **`--cert`** | Der Pfad zu einer PFX-Datei, die einen privaten Schlüssel enthält. Nur mit `--useHttps` verwendet. Nur Version 2.x. | 
+| **`--password`** | Entweder das Kennwort oder eine Datei, die das Kennwort für eine PFX-Datei enthält. Nur mit `--cert` verwendet. Nur Version 2.x. |
+| **`--language-worker`** | Argumente zum Konfigurieren des Spracharbeitsthreads. Nur Version 2.x. |
+| **`--nodeDebugPort -n`** | Der Port, den der Knotendebugger verwendet. Standard: Ein Wert von „launch.json“ oder 5858. Nur Version 1.x. |
+
+Bei einem C#-Klassenbibliotheksprojekt (CSPROJ) müssen Sie die Option `--build` einschließen, um die Bibliotheks-DLL zu generieren.
 
 Wenn der Functions-Host startet, gibt er die URL der HTTP-ausgelösten Funktionen aus:
 

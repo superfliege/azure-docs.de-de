@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: aea43eed0cb66b0e0d3bb7a393f569714feb475d
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 0656cfcc2dcded284be1a337f797681117f3b313
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850136"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143002"
 ---
 # <a name="network-monitoring-solutions"></a>Netzwerküberwachungslösungen 
 
@@ -35,7 +35,7 @@ Der Netzwerkleistungsmonitor (Network Performance Monitor, NPM) ist eine Sammlun
 * Unternehmenswichtigen Microservices/Anwendungen mit mehreren Ebenen
 * Benutzerstandorten und webbasierten Anwendungen (HTTP/HTTPS) 
 
-Systemmonitor, ExpressRoute-Monitor und Dienstendpunktmonitor sind Überwachungsfunktionen in NPM und werden im Folgenden beschrieben.
+Systemmonitor, ExpressRoute-Monitor und Dienstkonnektivitätsmonitor sind Überwachungsfunktionen in NPM und werden im Folgenden beschrieben.
 
 ## <a name="performance-monitor"></a>Systemmonitor
 
@@ -73,9 +73,9 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute](../expressroute/how-to-npm.md)
 * [Blogbeitrag](https://aka.ms/NPMExRmonitorGA)
 
-## <a name="service-endpoint-monitor"></a>Dienstendpunktmonitor
+## <a name="service-connectivity-monitor"></a>Dienstkonnektivitätsmonitor
 
-Mit der Dienstendpunktüberwachung können Sie nun die Erreichbarkeit von Anwendungen testen und Leistungsengpässe in der lokalen Umgebung, in Netzbetreiber-Netzwerken und in cloudbasierten/privaten Rechenzentren erkennen.
+Mit der Dienstkonnektivitätsüberwachung können Sie nun die Erreichbarkeit von Anwendungen testen und Leistungsengpässe in der lokalen Umgebung, in Netzbetreiber-Netzwerken und in cloudbasierten/privaten Rechenzentren erkennen.
 
 * Überwachen der End-to-End-Netzwerkkonnektivität mit Anwendungen
 * Korrelieren der Anwendungsbereitstellung mit der Netzwerkleistung sowie Ermitteln des genauen Orts der Leistungsminderung entlang des Pfads zwischen Benutzer und Anwendung

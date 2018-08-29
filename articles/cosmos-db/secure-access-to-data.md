@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2017
+ms.date: 08/19/2018
 ms.author: rafats
-ms.openlocfilehash: a8ea53b8f9b705078ac4ab56faeb60b8ba51e72e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: cfd1160d1592c03eea94e3c4d04fdc5754eca671
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038340"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143252"
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Sichern des Zugriffs auf Azure Cosmos DB-Daten
 Dieser Artikel bietet eine Übersicht über den sicheren Zugriff auf in [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) gespeicherte Daten.
@@ -174,6 +174,20 @@ foreach (Permission perm in permFeed)
 
 DocumentClient userClient = new DocumentClient(new Uri(endpointUrl), permList);
 ```
+
+## <a name="add-users-and-assign-roles"></a>Hinzufügen von Benutzern und Zuweisen von Rollen
+
+Um Ihrem Benutzerkonto Azure Cosmos DB-Kontoleserzugriff hinzuzufügen, lassen Sie den Besitzer eines Abonnements die folgenden Schritte im Azure-Portal ausführen.
+
+1. Öffnen Sie das Azure-Portal, und wählen Sie Ihr Azure Cosmos DB-Konto aus.
+2. Klicken Sie auf die Registerkarte **Zugriffssteuerung (IAM)** aus, und klicken Sie dann auf **Hinzufügen**.
+3. Wählen Sie im Bereich **Berechtigungen hinzufügen** im Feld **Rolle** die Option **Cosmos DB-Rolle "Kontoleser"** aus.
+4. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung** aus.
+5. Wählen Sie den Benutzer, die Gruppe oder die Anwendung aus, dem oder der Sie Zugriff gewähren möchten.  Sie können das Verzeichnis nach Anzeigename, E-Mail-Adresse oder Objektbezeichner durchsuchen.
+    Der ausgewählten Benutzer, die Gruppe oder die Anwendung wird in der Liste der ausgewählten Elemente angezeigt.
+6. Klicken Sie auf **Speichern**.
+
+Die Entität kann jetzt Azure Cosmos DB-Ressourcen lesen.
 
 ## <a name="delete-or-export-user-data"></a>Löschen oder Exportieren von Benutzerdaten
 Mithilfe von Azure Cosmos DB können Sie alle personenbezogenen Daten, die sich in einer Datenbank oder in Sammlungen befinden, durchsuchen, auswählen, ändern und löschen. Azure Cosmos DB stellt APIs für das Auffinden und Löschen von personenbezogenen Daten bereit, die Nutzung der APIs und die Entwicklung der erforderlichen Logik zum Löschen der personenbezogenen Daten liegt jedoch in Ihrer Verantwortung. Jede API für mehrere Modelle (SQL-API, MongoDB-API, Gremlin-API, Cassandra-API, Tabellen-API) stellt SDKs für verschiedene Sprachen bereit, die Methoden zum Durchsuchen und Löschen von personenbezogenen Daten enthalten. Sie können darüber hinaus die [TTL-Funktion (time-to-live)](time-to-live.md) verwenden, um Daten nach einem festgelegten Zeitraum automatisch zu löschen, wodurch keine weiteren Kosten anfallen.

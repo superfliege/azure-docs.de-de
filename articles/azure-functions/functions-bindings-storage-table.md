@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: f42948f0f3acf1bacf6c80010489890f4b8d122b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 28a6082718080314a769b59c81cf51a20ff7e120
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523664"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142663"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -58,6 +58,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#: Binden an CloudTable mit einem Skript](#input---c-script-example---cloudtable)
 * [F#](#input---f-example)
 * [JavaScript](#input---javascript-example)
+* [Java](#input---java-example)
 
 ### <a name="input---c-example---one-entity"></a>Eingabe: C#-Beispiel – eine Entität
 
@@ -414,6 +415,25 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
+### <a name="input---java-example"></a>Eingabe: Java-Beispiel
+
+Das folgende Beispiel zeigt eine durch HTTP ausgelöste Funktion, die die Gesamtanzahl der Elemente in einer angegebenen Partition in Table Storage zurückgibt.
+
+```java
+@FunctionName("getallcount")
+public int run(
+   @HttpTrigger(name = "req",
+                 methods = {"get"},
+                 authLevel = AuthorizationLevel.ANONYMOUS) Object dummyShouldNotBeUsed,
+   @TableInput(name = "items",
+                tableName = "mytablename",  partitionKey = "myparkey",
+                connection = "myconnvarname") MyItem[] items
+) {
+    return items.length;
+}
+```
+
+
 ## <a name="input---attributes"></a>Eingabe: Attribute
  
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die folgenden Attribute, um eine Tabelleneingabebindung zu konfigurieren:
@@ -471,6 +491,10 @@ Das zu verwendende Speicherkonto wird anhand von Folgendem bestimmt (in der ange
 * Das Attribut `StorageAccount`, das auf die Funktion angewendet wird.
 * Das Attribut `StorageAccount`, das auf die Klasse angewendet wird.
 * Das Standardspeicherkonto für die Funktions-App (App-Einstellung „AzureWebJobsStorage“).
+
+## <a name="input---java-annotations"></a>Eingabe: Java-Anmerkungen
+
+Verwenden Sie die `@TableInput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Table Storage empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit Optional<T>, die NULL-Werte annehmen können, verwendet werden. 
 
 ## <a name="input---configuration"></a>Eingabe: Konfiguration
 

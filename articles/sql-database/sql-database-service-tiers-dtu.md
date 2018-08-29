@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/01/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 5d16763fc8f3331082b98216d25190b945d95b60
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411819"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144957"
 ---
 # <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Auswählen einer DTU-basierten Dienstebene, von Leistungsstufe und Speicherressourcen 
 
@@ -67,6 +67,91 @@ Leistungsstufen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
+
+## <a name="dtu-benchmark"></a>DTU-Vergleichstest
+
+Physische Merkmale (CPU, Arbeitsspeicher, E/A), die jedem DTU-Measure zugeordnet sind, werden mithilfe eines Vergleichstests kalibriert, der eine realitätsnahe Datenbankworkload simuliert.
+
+### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korrelieren von Vergleichstestergebnissen mit realer Datenbankleistung
+Wichtig ist der Hinweis, dass alle Vergleichstests nur repräsentativen und informativen Charakter haben. Die mit der Vergleichstestanwendung erzielten Transaktionsraten entsprechen nicht denjenigen, die mit anderen Anwendungen erzielt werden. Der Vergleichstest umfasst eine Zusammenstellung verschiedener Typen von Transaktionen, die auf ein Schema angewendet werden, das einen Bereich von Tabellen und Datentypen enthält. Während für den Vergleichstest dieselben grundlegenden Vorgänge ausgeführt werden, die für alle OLTP-Workloads üblich sind, wird keine spezifische Klasse von Datenbank oder Anwendung abgebildet. Ziel des Vergleichstests ist das Bereitstellen eines vernünftigen Richtwerts für die relative Leistung einer Datenbank, der bei einer Skalierung nach oben und unten zwischen Leistungsstufen erwartet werden kann. In der Praxis haben Datenbanken eine unterschiedliche Größe und Komplexität, müssen verschiedene Kombinationen von Workloads bewältigen und reagieren auf unterschiedliche Weise. Beispielsweise kann eine E/A-intensive Anwendung E/A-Schwellenwerte früher erreichen, oder eine CPU-intensive Anwendung kann CPU-Grenzwerte früher erreichen. Es gibt keine Garantie, dass eine bestimmte Datenbank bei steigender Last auf die gleiche Weise wie im Vergleichstest skaliert wird.
+
+Der Vergleichstest und seine Methoden werden nachstehend ausführlich beschrieben.
+
+### <a name="benchmark-summary"></a>Übersicht über den Vergleichstest
+ASDB misst die Leistung einer Kombination grundlegender Datenbankvorgänge, die bei OLTP-Workloads (Online Transaction Processing, Onlinetransaktionsverarbeitung) am häufigsten vorkommen. Obwohl der Vergleichstest speziell für das Cloud Computing konzipiert ist, wurden das Datenbankschema, der Datenbestand und Transaktionen so gestaltet, dass sie für die grundlegenden Elemente der am häufigsten vorkommenden OLTP-Workloads repräsentativ sind.
+
+### <a name="schema"></a>Schema
+Das Schema zeichnet sich durch ausreichende Vielfalt und Komplexität aus, um eine Vielzahl von Vorgängen zu unterstützen. Der Vergleichstest wird auf eine Datenbank angewendet, die aus sechs Tabellen besteht. Die Tabellen gehören zu drei Kategorien: feste Größe, Skalierung und anwachsend. Es gibt zwei Tabellen mit fester Größe, drei Skalierungstabellen und eine anwachsende Tabelle. Die Tabellen mit fester Größe haben eine konstante Anzahl von Zeilen. Die Skalierungstabellen haben eine Kardinalität, die proportional zur Datenbankleistung ist, sich jedoch während des Vergleichstests nicht ändert. Die anwachsende Tabelle hat anfänglich dieselbe Größe wie eine Skalierungstabelle, doch ihre Kardinalität ändert sich im Verlauf des Vergleichstests, da Zeilen eingefügt und gelöscht werden.
+
+Das Schema enthält eine Kombination von Datentypen, wie z. B. ganze Zahl, numerisch, Zeichen und Datum/Uhrzeit. Das Schema enthält primäre und sekundäre Schlüssel, aber keine Fremdschlüssel, was bedeutet, dass es keine Einschränkungen der referentiellen Integrität zwischen Tabellen gibt.
+
+Ein Datengenerierungsprogramm erzeugt die Daten für die ursprüngliche Datenbank. Ganzzahl- und numerische Daten werden anhand verschiedener Strategien generiert. Mitunter werden Werte zufällig über einen Bereich verteilt. In anderen Fällen wird eine Gruppe von Werten nach dem Zufallsprinzip permutiert, um sicherzustellen, dass eine bestimmte Verteilung beibehalten wird. Textfelder werden anhand einer gewichteten Liste von Wörtern generiert, um realistisch wirkende Daten zu erstellen.
+
+Die Datenbankgröße basiert auf einem "Skalierungsfaktor". Der Skalierungsfaktor (abgekürzt SF) bestimmt die Kardinalität der Skalierungs- und anwachsenden Tabellen. Wie im folgenden Abschnitt "Benutzer und Geschwindigkeit" beschrieben, werden die Datenbankgröße, Anzahl der Benutzer und maximale Leistung allesamt proportional zueinander skaliert.
+
+### <a name="transactions"></a>Transaktionen
+Die Workload besteht aus neun Transaktionstypen, wie in der folgenden Tabelle dargestellt. Jede Transaktion ist darauf ausgelegt, eine bestimmte Gruppe von Systemmerkmalen in der Datenbank-Engine und in der Systemhardware in starker Abgrenzung zu den anderen Transaktionen hervorzuheben. Dieser Ansatz erleichtert das Bewerten der Auswirkung verschiedener Komponenten auf die Gesamtleistung. Beispielsweise erzeugt die Transaktion "Leseintensiv" eine hohe Anzahl von Lesevorgängen auf dem Datenträger.
+
+| Transaktionstyp | BESCHREIBUNG |
+| --- | --- |
+| Nicht leseintensiv |SELECT, speicherintern, schreibgeschützt |
+| Mittel leseintensiv |SELECT, zumeist speicherintern, schreibgeschützt |
+| Leseintensiv |SELECT, zumeist nicht speicherintern, schreibgeschützt |
+| Nicht aktualisierungsintensiv |UPDATE; speicherintern, lesen/schreiben |
+| Aktualisierungsintensiv |UPDATE, zumeist nicht speicherintern, lesen/schreiben |
+| Nicht einfügungsintensiv |INSERT, speicherintern; lesen/schreiben |
+| Einfügungsintensiv |INSERT, zumeist nicht speicherintern, lesen/schreiben |
+| Löschen |DELETE, Kombination aus speicherintern und nicht speicherintern, lesen/schreiben |
+| CPU-intensiv |SELECT, speicherintern, relativ hohe CPU-Last, schreibgeschützt |
+
+### <a name="workload-mix"></a>Kombination von Workloads
+Transaktionen werden zufällig aus einer gewichteten Verteilung in der folgenden Kombination ausgewählt. Die Kombination weist ein Verhältnis von Lese- zu Schreibvorgängen von ca. 2:1 auf.
+
+| Transaktionstyp | % der Kombination |
+| --- | --- |
+| Nicht leseintensiv |35 |
+| Mittel leseintensiv |20 |
+| Leseintensiv |5 |
+| Nicht aktualisierungsintensiv |20 |
+| Aktualisierungsintensiv |3 |
+| Nicht einfügungsintensiv |3 |
+| Einfügungsintensiv |2 |
+| Löschen |2 |
+| CPU-intensiv |10 |
+
+### <a name="users-and-pacing"></a>Benutzer und Geschwindigkeit
+Die Workload des Vergleichstests stammt von einem Tool, das Transaktionen über verschiedene Verbindungen übermittelt, um das Verhalten vieler gleichzeitiger Benutzer zu simulieren. Obwohl alle Verbindungen und Transaktionen computergeneriert sind, bezeichnen wir diese Verbindungen der Einfachheit halber als "Benutzer". Obwohl jeder Benutzer unabhängig von allen anderen Benutzern operiert, führen alle Benutzer denselben Zyklus der unten aufgeführten Schritte aus:
+
+1. Herstellen einer Datenbankverbindung.
+2. Wiederholen bis zur Aufforderung zum Beenden:
+   * Auswählen einer Transaktion nach dem Zufallsprinzip (aus gewichteter Verteilung)
+   * Ausführen der ausgewählten Transaktion und Messen der Antwortzeit
+   * Warten auf eine Geschwindigkeitsverzögerung
+3. Schließen der Datenbankverbindung
+4. Beenden
+
+Die Geschwindigkeitsverzögerung (in Schritt 2c) wird nach dem Zufallsprinzip ausgewählt, hat aber eine Verteilung mit durchschnittlich 1,0 Sekunden. Daher kann jeder Benutzer durchschnittlich höchstens eine Transaktion pro Sekunde generieren.
+
+### <a name="scaling-rules"></a>Skalierungsregeln
+Die Anzahl der Benutzer wird von der Größe der Datenbank (in Skalierungsfaktoreinheiten) bestimmt. Für alle fünf Skalierungsfaktoreinheiten gibt es einen Benutzer. Aufgrund der Geschwindigkeitsverzögerung kann ein Benutzer durchschnittlich höchstens eine Transaktion pro Sekunde generieren.
+
+Beim Skalierungsfaktor 500 (SF=500) hat die Datenbank 100 Benutzer und kann eine maximale Rate von 100 Transaktionen pro Sekunde (TPS) erreichen. Zum Erreichen einer höheren TPS-Rate sind mehr Benutzer und eine größere Datenbank erforderlich.
+
+### <a name="measurement-duration"></a>Messdauer
+Ein gültiger Vergleichstestlauf erfordert eine stabile Messdauer von mindestens einer Stunde.
+
+### <a name="metrics"></a>Metriken
+Die Hauptmetriken im Vergleichstest sind Durchsatz und Antwortzeit.
+
+* Der Durchsatz ist die wesentliche Messgröße im Vergleichstest. Der Durchsatz wird als Transaktionen pro Zeiteinheit gemeldet, wobei alle Transaktionstypen gezählt werden.
+* Die Antwortzeit ist ein Maß für die Vorhersagbarkeit von Leistung. Die Einschränkung der Antwortzeit variiert je nach Dienstklasse, wobei höhere Dienstklassen strengere Anforderungen an die Antwortzeit haben (siehe unten).
+
+| Dienstklasse | Durchsatzmaß | Anforderung an die Antwortzeit |
+| --- | --- | --- |
+| Premium |Transaktionen pro Sekunde |95. Perzentil bei 0,5 Sekunden |
+| Standard |Transaktionen pro Minute |90. Perzentil bei 1,0 Sekunden |
+| Basic |Transaktionen pro Stunde |80. Perzentil bei 2,0 Sekunden |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

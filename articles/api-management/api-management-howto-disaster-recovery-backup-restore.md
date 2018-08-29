@@ -3,7 +3,7 @@ title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstel
 description: Erfahren Sie, wie Sie Sichern und Wiederherstellen zur Notfallwiederherstellung in Azure API Management verwenden.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: erikre
 editor: ''
 ms.service: api-management
@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4135bd66e839037d7db694cb3c6df8f3905222e6
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283094"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142882"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -39,8 +39,6 @@ In dieser Anleitung wird erläutert, wie Anforderungen von Azure Resource Manage
 
 > [!IMPORTANT]
 > Die REST-API für die Sicherung und Wiederherstellung verwendet den Azure-Ressourcen-Manager und weist eine andere Authentifizierungsmethode als die REST-APIs für die Verwaltung von API Management-Entitäten auf. In den Schritten in diesem Abschnitt wird beschrieben, wie Anforderungen des Azure-Ressourcen-Managers authentifiziert werden. Weitere Informationen finden Sie unter [Authentifizieren von Anforderungen des Azure-Ressourcen-Managers](http://msdn.microsoft.com/library/azure/dn790557.aspx).
->
->
 
 Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausführen, müssen entsprechend den folgenden Schritten mit Azure Active Directory authentifiziert werden:
 
@@ -209,15 +207,16 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 > Sicherungs- und Wiederherstellungsvorgänge können ebenfalls mithilfe der PowerShell-Befehle *Backup-AzureRmApiManagement* bzw. *Restore-AzureRmApiManagement* ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sehen Sie sich die folgenden Microsoft-Blogs für zwei verschiedene Vorgehensweisen des Sicherungs- und Wiederherstellungsvorgangs an.
+
+Sehen Sie sich die folgenden Ressourcen für verschiedene Vorgehensweisen für den Sicherungs- und Wiederherstellungsvorgang an.
 
 * [Replicate Azure API Management Accounts (in englischer Sprache)](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
-* [Azure API Management: Backing Up and Restoring Configuration (in englischer Sprache)](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
-  * Der Ansatz von Stuart entspricht nicht der offiziellen Anleitung, ist aber sehr interessant.
+* [Automating API Management Backup and Restore with Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps) (Automatisieren der Sicherung und Wiederherstellung von API Management mit Logic Apps)
+* [Azure API Management: Backing Up and Restoring Configuration](http://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+  * (Azure API Management: Sicherung und Wiederherstellung der Konfiguration) – der Ansatz von Stuart entspricht nicht der offiziellen Anleitung, ist aber sehr interessant.*
 
 [Backup an API Management service]: #step1
 [Restore an API Management service]: #step2
-
 
 [Azure API Management REST API]: http://msdn.microsoft.com/library/azure/dn781421.aspx
 

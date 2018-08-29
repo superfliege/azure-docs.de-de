@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 08/17/2018
 ms.author: terrylan
-ms.openlocfilehash: 7533f9db25da8e69d3fcfa76a61a06af2f1bc78c
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345956"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42146762"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -57,6 +57,9 @@ Azure unterstützt verschiedene Typen von Netzwerkzugriffssteuerungen. Diese umf
 ### <a name="network-layer-control"></a>Die Steuerung der Vermittlungsschicht
 
 Jede sichere Bereitstellung erfordert ein gewisses Maß an Netzwerkzugriffssteuerung. Das Ziel der Netzwerkzugriffssteuerung ist die Einschränkung der Kommunikation virtueller Computer auf die erforderlichen Systeme. Andere Verbindungsversuche werden blockiert.
+
+>[!NOTE]
+Storage-Firewalls werden im Artikel [Übersicht über die Sicherheit von Azure Storage](security-storage-overview.md) behandelt.
 
 #### <a name="network-security-rules-nsgs"></a>Netzwerksicherheitsgruppen (NSGs)
 
@@ -323,7 +326,6 @@ Sie können auch das leistungsstarke Datenvisualisierungstool [Microsoft Power B
 Weitere Informationen:
 
 * [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md)
-
 
 ## <a name="azure-ddos-protection"></a>Azure-DDoS-Schutz
 

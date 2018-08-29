@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: 4e62342a32456787863da775ea98df178ab1d559
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 70f80b880fadaeb4d5859524b3ba3b55ececbdda
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806297"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40260077"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
 
@@ -42,7 +42,7 @@ Informationen zum Erstellen eines virtuellen Computers mit Managed Disks finden 
 
 In diesem Abschnitt werden einige der Features von Standardspeicher erläutert. Ausführlichere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../articles/storage/common/storage-introduction.md).
 
-**Standardspeicher:** Azure-Standardspeicher unterstützt Azure-Datenträger, Azure-Blobs, Azure-Dateien, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+**Standardspeicher:** Azure-Standardspeicher unterstützt Azure-Datenträger, Azure-Blobs, Azure-Dateien, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](../articles/storage/common/storage-quickstart-create-account.md).
 
 **Standard-SSD-Datenträger:** Standard-SSD-Datenträger bieten eine zuverlässigere Leistung als Standard-HDD-Datenträger und sind derzeit in der Vorschau verfügbar. Weitere Informationen zur Verfügbarkeit von Standard-SSD-Datenträgern in verschiedenen Regionen finden Sie unter [Regionsverfügbarkeit von Standard-SSD-Datenträgern (Vorschau)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
@@ -119,7 +119,12 @@ Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücks
 
 **Nicht verwaltete Speicherdaten und Datenträgergröße:** Bei nicht verwalteten Datenträgern und anderen Daten (Blobs, Tabellen, Warteschlangen und Dateien) fallen nur Kosten für den genutzten Speicherplatz an. Wenn Sie also beispielsweise über einen virtuellen Computer verfügen, bei dem das Seitenblob mit 127 GB bereitgestellt ist, aber nur 10 GB des Speicherplatzes tatsächlich genutzt werden, werden nur 10 GB in Rechnung gestellt. Standardspeicher bis zu 8191 GB und nicht verwaltete Standard-Datenträger bis zu 4.095 GB werden unterstützt. 
 
-**Verwaltete Datenträger:** Verwaltete Datenträger werden nach bereitgestellter Größe abgerechnet. Wenn Ihr Datenträger mit einer Kapazität von 10 GB bereitgestellt wird, Sie aber nur 5 GB davon nutzen, wird die bereitgestellte Größe von 10 GB in Rechnung gestellt.
+**Verwaltete Datenträger:** Die Abrechnung für verwaltete Standard-Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standard-Datenträger erstellen und eine bereitgestellte Größe von 200 GiB angeben, erfolgt die Abrechnung gemäß den Preisen für den Datenträgertyp S15.
+
+| **Verwalteter Standard-HDD-<br>Datenträgertyp** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
+| Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB) | 4.096 GiB (4 TiB) | 
+
 
 **Momentaufnahmen:** Für Momentaufnahmen von Standarddatenträgern wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen beansprucht wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
 

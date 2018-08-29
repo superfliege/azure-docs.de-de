@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 7c9a4a0fdbc362a1c2856e35f112deaabddeb229
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ef0001d5693d96abc128acf6c052dbedc0983b51
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594378"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142750"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Verwenden von C# mit MapReduce-Streaming auf Hadoop in HDInsight
 
@@ -41,7 +41,7 @@ Der in diesem Artikel verwendete grundlegende Prozess für das Streaming sieht w
 4. Der Reducer-Prozess liest die durch Tabstoppzeichen getrennten Schlüssel/Wert-Paare, verarbeitet die Daten und gibt dann das Ergebnis als durch Tabstoppzeichen getrennte Schlüssel/Wert-Paare auf STDOUT aus.
 5. Die Ausgabe wird von Hadoop gelesen und in das Ausgabeverzeichnis geschrieben.
 
-Weitere Informationen finden Sie unter [Hadoop Streaming (https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html) (Hadoop-Streaming).
+Weitere Informationen zum Streaming finden Sie unter [Hadoop-Streaming](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

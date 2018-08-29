@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 9c26a85a50bf4e7272b229bac8a8b9aa8c1ae364
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 93b9075831db356607438288a7c153dde2f8b210
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238521"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142768"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
@@ -33,13 +33,19 @@ Das Add-On stellt zwei Komponenten bereit: einen [Kubernetes-Eingangscontroller]
 Das Add-On für HTTP-Anwendungsrouting kann beim Bereitstellen eines AKS-Clusters über die Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) aktiviert werden. Verwenden Sie hierzu den Befehl [az aks create][az-aks-create] mit dem Argument `--enable-addons`.
 
 ```azurecli
-az aks create --resource-group myAKSCluster --name myAKSCluster --enable-addons http_application_routing
+az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
 
-Nachdem das Cluster bereitgestellt ist, rufen Sie mit dem Befehl [az aks show][az-aks-show] den Namen der DNS-Zone ab. Dieser Name wird zur Bereitstellung von Anwendungen im AKS-Cluster benötigt.
+Sie können auch HTTP-Routing für einen vorhandenen AKS-Cluster mithilfe des Befehls [az aks enable-addons][az-aks-enable-addons] aktivieren. Zum Aktivieren von HTTP-Routing für einen vorhandenen Cluster fügen Sie den Parameter `--addons` hinzu und geben *Http_application_routing* wie im folgenden Beispiel gezeigt an:
 
 ```azurecli
-$ az aks show --resource-group myAKSCluster --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
+az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing
+```
+
+Nachdem der Cluster bereitgestellt oder aktualisiert wurde, rufen Sie mit dem Befehl [az aks show][az-aks-show] den Namen der DNS-Zone ab. Dieser Name wird zur Bereitstellung von Anwendungen im AKS-Cluster benötigt.
+
+```azurecli
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
 
 Result
 -----------------------------------------------------
@@ -155,7 +161,7 @@ $ curl party-clippy.471756a6-e744-4aa0-aa01-89c4d162a7a7.canadaeast.aksapp.io
 Die HTTP-Routinglösung kann mithilfe der Azure CLI entfernt werden. Dazu führen Sie den folgenden Befehl aus und ersetzen dabei Ihren AKS-Cluster und Ressourcengruppennamen.
 
 ```azurecli
-az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myAKSCluster --no-wait
+az aks disable-addons --addons http_application_routing --name myAKSCluster --resource-group myResourceGroup --no-wait
 ```
 
 ## <a name="troubleshoot"></a>Problembehandlung
@@ -232,6 +238,7 @@ Informationen zur Installation eines HTTPS-gesicherten Eingangscontrollers in AK
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
 [ingress-https]: ./ingress.md
+[az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 
 
 <!-- LINKS - external -->

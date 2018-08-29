@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 08/20/2018
 ms.author: danlep
-ms.openlocfilehash: d0762f80267fa927681344a3e0de78b0800c8306
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fc245d38af90e0c395389e24b14d061fcfe0c10c
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630210"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142794"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -33,9 +33,9 @@ In diesem Artikel werden Möglichkeiten zum Generieren und Verwenden von Secure 
 ## <a name="windows-packages-and-ssh-clients"></a>Windows-Pakete und SSH-Clients
 Die Verbindungsherstellung mit virtuellen Linux-Computern in Azure sowie deren Verwaltung wird mithilfe eines *SSH-Clients* durchgeführt. Computer, die Linux oder macOS ausführen, verfügen in der Regel über eine Suite von SSH-Befehlen zum Generieren und Verwalten von SSH-Schlüsseln und Herstellen von SSH-Verbindungen. 
 
-Auf Windows-Computern sind nicht immer vergleichbare SSH-Befehle installiert. Windows 10-Versionen mit dem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/about) bieten Ihnen die Möglichkeit, direkt aus einer Bash-Shell auf Hilfsprogramme, z.B. einen SSH-Client, zuzugreifen und diese auszuführen. 
+Auf Windows-Computern sind nicht immer vergleichbare SSH-Befehle installiert. Neuere Versionen von Windows 10 bieten [OpenSSH-Clientbefehle](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/) zum Erstellen und Verwalten von SSH-Schlüsseln und SSH-Verbindungen über eine Eingabeaufforderung. Bei aktuellen Windows 10-Versionen mit dem [Windows-Subsystem für Linux](https://docs.microsoft.com/windows/wsl/about) können Sie direkt aus einer Bash-Shell auf Hilfsprogramme, z.B. einen SSH-Client, zugreifen und diese ausführen. 
 
-Wenn Sie nicht Bash für Windows, sondern eine andere Komponente verwenden möchten, finden Sie in den folgenden Paketen gängige Windows SSH-Clients, die Sie lokal installieren können:
+Wenn Sie ein anderes SSH-Tool für Windows verwenden möchten, finden Sie in den folgenden Paketen gängige Windows SSH-Clients, die Sie lokal installieren können:
 
 * [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git für Windows](https://git-for-windows.github.io/)
@@ -52,7 +52,7 @@ In diesem Abschnitt lernen Sie zwei Optionen zum Erstellen eines SSH-Schlüsselp
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>Erstellen von SSH-Schlüsseln mit „ssh-keygen“
 
-Wenn Sie eine Befehlsshell wie Bash für Windows oder GitBash (oder Bash in Azure Cloud Shell) ausführen können, erstellen Sie ein SSH-Schlüsselpaar mit dem `ssh-keygen`-Befehl. Geben Sie den folgenden Befehl ein, und beantworten Sie die Eingabeaufforderungen. Wenn am aktuellen Speicherort bereits ein SSH-Schlüsselpaar vorhanden ist, werden diese Dateien überschrieben. 
+Wenn Sie unter Windows eine Befehlsshell ausführen, die SSH-Clienttools unterstützt (oder wenn Sie Azure Cloud Shell verwenden), erstellen Sie mit dem Befehl `ssh-keygen` ein SSH-Schlüsselpaar. Geben Sie den folgenden Befehl ein, und beantworten Sie die Eingabeaufforderungen. Wenn am aktuellen Speicherort bereits ein SSH-Schlüsselpaar vorhanden ist, werden diese Dateien überschrieben. 
 
 ```bash
 ssh-keygen -t rsa -b 2048

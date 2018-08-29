@@ -2,18 +2,18 @@
 title: Bewährte Methoden für die Azure SQL-Datensynchronisierung | Microsoft-Dokumentation
 description: Hier können Sie sich über bewährte Methoden beim Konfigurieren und Ausführen der Azure SQL-Datensynchronisierung informieren.
 services: sql-database
-ms.date: 07/03/2018
+ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: allenwux
 ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 2b23f9f2edbec468ecbd1395bd138e1be801c6e5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 96fff35b95a63e4f806258eff59d08afb2db0ffd
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620799"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142899"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Bewährte Methoden für die SQL-Datensynchronisierung 
 
@@ -77,15 +77,14 @@ In diesem Abschnitt werden die Einschränkungen im Zusammenhang mit der Bereitst
 
 Für die SQL-Datensynchronisierung gelten in Bezug auf die automatische Bereitstellung die folgenden Einschränkungen:
 
--   Wählen Sie nur die Spalten aus, die in der Zieltabelle erstellt werden.  
-    Alle Spalten, die nicht Teil der Synchronisierungsgruppe sind, werden in Zieltabellen bereitgestellt.
--   Indizes werden nur für ausgewählte Spalten erstellt.  
-    Enthält der Quelltabellenindex Spalten, die nicht Teil der Synchronisierungsgruppe sind, werden diese Indizes nicht in den Zieltabellen bereitgestellt.  
+-   Wählen Sie nur die Spalten aus, die in der Zieltabelle erstellt werden. Alle Spalten, die nicht Teil der Synchronisierungsgruppe sind, werden in Zieltabellen bereitgestellt.
+-   Indizes werden nur für ausgewählte Spalten erstellt. Enthält der Quelltabellenindex Spalten, die nicht Teil der Synchronisierungsgruppe sind, werden diese Indizes nicht in den Zieltabellen bereitgestellt.  
 -   Indizes für XML-Spalten werden nicht bereitgestellt.  
 -   CHECK-Einschränkungen werden nicht bereitgestellt.  
 -   Vorhandene Trigger für die Quelltabellen werden nicht bereitgestellt.  
 -   Sichten und gespeicherte Prozeduren werden in der Zieldatenbank nicht erstellt.
 -   Die Aktionen ON UPDATE CASCADE und ON DELETE CASCADE werden für Fremdschlüsseleinschränkungen in den Zieltabellen nicht neu erstellt.
+-   Bei dezimalen oder numerischen Spalten mit einer größeren Genauigkeit als 28 kann bei der SQL-Datensynchronisierung während der Synchronisierung ein Konvertierungsüberlaufproblem auftreten. Es wird empfohlen, dass Sie die Genauigkeit von dezimalen oder numerischen Spalten auf 28 oder geringer beschränken.
 
 #### <a name="recommendations"></a>Empfehlungen
 

@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 05a571c4491122ec5c7c35f6bccc4b8c332a4be2
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 91821d66ac0be265e6b66fd9eb2378169e337430
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130708"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144650"
 ---
 # <a name="azure-iot-edge-support"></a>Azure IoT Edge-Support
 Für Azure IoT Edge stehen verschiedene Supportoptionen zur Verfügung:
@@ -24,7 +24,7 @@ Für Azure IoT Edge stehen verschiedene Supportoptionen zur Verfügung:
 
 **Funktionsanfragen:** Angefragte Funktionen werden von Azure IoT Edge über die [User Voice-Seite](https://feedback.azure.com/forums/907045-azure-iot-edge) des Produkts verfolgt.
 
-## <a name="operating-systems"></a>Operating Systems
+## <a name="operating-systems"></a>Betriebssysteme
 Azure IoT Edge ist für die meisten containerfähigen Betriebssysteme geeignet. Allerdings werden diese nicht alle gleich unterstützt. Betriebssysteme sind in Ebenen unterteilt, die jeweils den Grad der zu erwartenden Unterstützung angeben.
 
 ### <a name="tier-1"></a>Ebene 1
@@ -33,31 +33,32 @@ Systeme der Ebene 1 können als offiziell unterstützt betrachtet werden. Das be
 * Microsoft stellt Installationspakete für sie bereit.
 
 Allgemein verfügbar
-* Ubuntu Server 18.04
-* Ubuntu Server 16.04
-* Raspbian-stretch
+| Betriebssystem | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Ubuntu Server 18.04 | JA | Nein  |
+| Ubuntu Server 16.04 | JA | Nein  |
+| Raspbian-stretch | Nein  | JA|
 
 Öffentliche Vorschau
-* Windows 10 Server 1803
-* Windows 10 IoT Enterprise (mit Update von April 2018)
-* Windows 10 IoT Core (mit Update von April 2018)
+| Betriebssystem | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Windows 10 Server 1803 | JA | Nein  |
+| Windows 10 IoT Enterprise (Update von April 2018) | JA | Nein  |
+| Windows 10 IoT Core (Update von April 2018) | JA | Nein  |
 
 ### <a name="tier-2"></a>Ebene 2
 Systeme der Ebene 2 können als mit Azure IoT Edge kompatibel betrachtet und relativ einfach verwendet werden. Dies bedeutet Folgendes:
 * Microsoft hat Ad-hoc-Tests auf den Plattformen durchgeführt oder weiß, dass ein Partner Azure IoT Edge erfolgreich auf der Plattform ausführt.
 * Installationspakete für andere Plattformen können ggf. auch für diese Plattformen verwendet werden.
 
-Ubuntu 18.04
-
-Ubuntu 16.04
-
-Wind River 8
-
-Yocto
-
-Debian
-
-Mac
+| Betriebssystem | AMD64 | ARM32 |
+| ---------------- | ----- | ----- |
+| Ubuntu 18.04 | JA | Nein  |
+| Ubuntu 16.04 | JA | Nein  |
+| Wind River 8 | JA | Nein  |
+| Yocto | JA | Nein  |
+| Debian | JA | Nein  |
+| Mac | JA | Nein  |
 
 ## <a name="container-engines"></a>Container-Engines
 Zum Starten von Modulen benötigt Azure IoT Edge eine Container-Engine (unabhängig vom verwendeten Betriebssystem). Mit „moby-engine“ stellt Microsoft eine Container-Engine bereit, um diese Anforderung zu erfüllen. Sie basiert auf dem Open-Source-Projekt „Moby“. Weitere gängige Container-Engines sind Docker CE und Docker EE. Sie basieren ebenfalls auf dem Open-Source-Projekt „Moby“ und sind mit Azure IoT Edge kompatibel. Microsoft bietet bestmöglichen Support für Systeme mit diesen Container-Engines, kann für sie aber keine Fehlerkorrekturen für interne Probleme bereitstellen. Aus diesem Grund empfiehlt Microsoft, für Produktionssysteme die Moby-Engine zu verwenden.

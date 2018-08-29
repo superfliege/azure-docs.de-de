@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit dem Analytics-Portal in Azure Log Analytics | Microsoft-Dokumentation
-description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen in Log Analytics über das Analytics-Portal veranschaulicht wird.
+title: Erste Schritte mit der Log Analytics-Seite im Azure-Portal | Microsoft-Dokumentation
+description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen mithilfe der Log Analytics-Seite veranschaulicht wird.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6f6916b27aa251bc0a0c25be060378c11faab607
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39632286"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146793"
 ---
-# <a name="get-started-with-the-analytics-portal"></a>Erste Schritte mit dem Analytics-Portal
+# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Erste Schritte mit der Log Analytics-Seite im Azure-Portal
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe des Analytics-Portals Azure Log Analytics-Abfragen schreiben können. Es wird Folgendes vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie mithilfe der Log Analytics-Seite im Azure-Portal (derzeit in der Vorschauphase) Log Analytics-Abfragen schreiben können. Es wird Folgendes vermittelt:
 
 - Schreiben von einfachen Abfragen
 - Grundlegendes zum Schema Ihrer Daten
@@ -35,12 +35,12 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe des Analytics-Portals Azure Lo
 - Exportieren und Freigeben von Abfragen
 
 
-## <a name="meet-the-analytics-portal"></a>Das Analytics-Portal
-Das Analytics-Portal ist ein Webtool, das zum Schreiben und Ausführen von Azure Log Analytics-Abfragen verwendet wird. 
+## <a name="meet-the-log-analytics-page"></a>Einführung in die Log Analytics-Seite 
+Die Log Analytics-Seite ist ein Webtool, das zum Schreiben und Ausführen von Azure Log Analytics-Abfragen verwendet wird. Öffnen Sie die Seite, indem Sie im Log Analytics-Menü die Option **Protokolle (Vorschau)** auswählen. Zu Beginn wird eine neue leere Abfrage angezeigt.
 
 ![Startseite](media/get-started-analytics-portal/homepage.png)
 
-Die Startseite bietet einen einfachen Zugriff auf nützliche Ressourcen, z.B. aktuelle und gespeicherte Abfragen, und Beispiele. Öffnen Sie eine neue Registerkarte, um mit dem Schreiben eigener Abfragen zu beginnen.
+
 
 ## <a name="basic-queries"></a>Grundlegende Abfragen
 Mithilfe von Abfragen können Suchbegriffe verwendet, Trends identifiziert, Muster analysiert und viele andere Informationen basierend auf Ihren Daten ermittelt werden. Beginnen Sie mit einer einfachen Abfrage:
@@ -83,7 +83,7 @@ Fügen Sie zunächst alle Elemente in die _Event_-Tabelle ein.
 Event
 ```
 
-Das Analytics-Portal beschränkt die Ergebnisse automatisch auf Folgendes:
+Die Log Analytics-Seite beschränkt die Ergebnisse automatisch auf Folgendes:
 
 - Zeitbereich: Abfragen werden standardmäßig auf die letzten 24 Stunden beschränkt.
 - Anzahl von Ergebnissen: Ergebnisse sind auf maximal 10.000 Datensätze beschränkt.
@@ -121,7 +121,7 @@ Die Ergebnistabelle enthält oft viele Spalten. Einige der zurückgegebenen Spal
 
 
 ## <a name="select-a-time-range"></a>Auswählen eines Zeitbereichs
-Standardmäßig wendet das Analytics-Portal den Zeitbereich _Letzte 24 Stunden_ an. Um einen anderen Bereich zu verwenden, wählen Sie einen anderen Wert über die Zeitauswahl aus, und klicken Sie auf **Ausführen**. Neben den vordefinierten Werten können Sie die Option _Benutzerdefinierter Zeitbereich_ verwenden, um einen absoluten Bereich für Ihre Abfrage auszuwählen.
+Standardmäßig wendet die Log Analytics-Seite den Zeitbereich _Letzte 24 Stunden_ an. Um einen anderen Bereich zu verwenden, wählen Sie einen anderen Wert über die Zeitauswahl aus, und klicken Sie auf **Ausführen**. Neben den vordefinierten Werten können Sie die Option _Benutzerdefinierter Zeitbereich_ verwenden, um einen absoluten Bereich für Ihre Abfrage auszuwählen.
 
 ![Zeitauswahl](media/get-started-analytics-portal/time-picker.png)
 
@@ -183,7 +183,7 @@ Das Abfrage-Explorer-Symbol wird im oberen rechten Bereich angezeigt. Hiermit we
 ![Abfrage-Explorer](media/get-started-analytics-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Exportieren und Freigeben als Link
-Das Analytics-Portal unterstützt mehrere Exportmethoden:
+Die Log Analytics-Seite unterstützt mehrere Exportmethoden:
 
 - Excel: Speichern Sie die Ergebnisse als CSV-Datei.
 - Power BI: Exportieren Sie die Ergebnisse in Power BI. Einzelheiten finden Sie unter [Importieren von Log Analytics-Daten in Power BI](../log-analytics-powerbi.md).

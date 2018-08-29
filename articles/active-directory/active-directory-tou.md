@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 07/31/2018
+ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: edf8eccf8c0a1cba70ac178ac5863a68b26f14a3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622074"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616862"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -122,6 +122,8 @@ Wenn Nutzungsbedingungen erstellt wurden und erzwungen werden, wird den betroffe
 Der folgende Bildschirm veranschaulicht die Darstellung der Nutzungsbedingungen auf mobilen Geräten:
 
 ![Überwachungsereignis](media/active-directory-tou/mobile-tou.png)
+
+Benutzer müssen die Nutzungsbedingungen nur einmal akzeptieren, und diese Bedingungen werden ihnen bei nachfolgenden Anmeldungen nicht erneut angezeigt.
 
 ### <a name="how-users-can-review-their-terms-of-use"></a>Möglichkeiten zum Lesen der Nutzungsbedingungen für die Benutzer
 Benutzer können die Nutzungsbedingungen, die sie akzeptiert haben, wie folgt lesen und anzeigen:

@@ -4,22 +4,20 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ab7d42bd-8434-4026-a892-df4a97b60a9b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 69614fe84941ea2003d39de165c692b812d10785
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503579"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617289"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -113,11 +111,11 @@ Wenden Sie sich in folgenden Fällen an den [Support](https://portal.azure.com/#
 
 Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe und ein neues Abonnement:
 
+* Analysis Services
 * API Management
 * App Service-Apps (Web-Apps) – siehe [App Service-Einschränkungen](#app-service-limitations)
 * App Service-Zertifikate
 * Application Insights
-* Analysis Services
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
@@ -133,6 +131,8 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Cognitive Services
 * Containerregistrierung
 * Content Moderator
+* Cost Management
+* Customer Insights
 * Data Catalog
 * Data Factory
 * Data Lake Analytics
@@ -141,12 +141,14 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Event Grid
 * Event Hubs
 * HDInsight-Cluster – siehe [HDInsight-Einschränkungen](#hdinsight-limitations)
+* Iot Central
 * IoT Hubs
 * Key Vault
 * Load Balancer – siehe [Load Balancer-Einschränkungen](#lb-limitations)
 * Log Analytics
 * Logic Apps
 * Machine Learning – Machine Learning Studio-Webdienste können in eine Ressourcengruppe im gleichen Abonnement verschoben werden, aber nicht in ein anderes Abonnement. Andere Machine Learning-Ressourcen können über Abonnements hinweg verschoben werden.
+* Verwaltete Identität – vom Benutzer zugewiesen
 * Media Services
 * Mobile Engagement
 * Notification Hubs
@@ -160,6 +162,7 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Suchen,
 * Service Bus
 * Service Fabric
+* Service Fabric Mesh
 * SignalR Service
 * Speicher
 * Speicher (klassisch) – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
@@ -187,7 +190,10 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Azure Databricks
 * Batch AI
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
+* Container Instances
 * Container Service
+* Data Box
+* Dev Spaces
 * Dynamics LCS
 * ExpressRoute
 * Kubernetes Service
@@ -196,6 +202,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Verwaltete Anwendungen
 * Managed Disks – siehe [Einschränkungen von virtuellen Computern](#virtual-machines-limitations)
 * Microsoft Genomics
+* NetApp
 * Öffentliche IP-Adresse – siehe [Einschränkungen der öffentlichen IP-Adresse](#pip-limitations)
 * Recovery Services-Tresor – Verschieben Sie außerdem nicht die dem Recovery Services-Tresor zugeordneten Compute-, Netzwerk- und Speicherressourcen. Siehe [Einschränkungen von Recovery Services](#recovery-services-limitations).
 * SAP HANA in Azure
@@ -225,7 +232,7 @@ Virtuelle Computer mit in Key Vault gespeichertem Zertifikat können in eine neu
 
 ## <a name="virtual-networks-limitations"></a>Einschränkungen von virtuellen Netzwerken
 
-Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige Ressourcen verschieben. Beispielsweise müssen Sie Gateways mit dem virtuellen Netzwerk verschieben.
+Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige Ressourcen verschieben. Bei VPN-Gateways müssen Sie IP-Adressen, Gateways für virtuelle Netzwerke und alle zugehörigen Verbindungsressourcen verschieben. Gateways des lokalen Netzwerks können sich in einer anderen Ressourcengruppe befinden.
 
 Um ein mittels Peering verknüpftes virtuelles Netzwerk zu verschieben, müssen Sie zunächst das Peering des virtuellen Netzwerks deaktivieren. Nach der Deaktivierung können Sie das virtuelle Netzwerk verschieben. Aktivieren Sie nach der Verschiebung das Peering des virtuellen Netzwerks wieder.
 

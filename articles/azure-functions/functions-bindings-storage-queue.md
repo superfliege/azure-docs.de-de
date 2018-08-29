@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 04502e80cea096ce384f97559bc7bad95ee2bcd8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e034d6c57c619ea74003f531d3309f7da17210b0
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344098"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146507"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -54,6 +54,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#](#trigger---c-example)
 * [C#-Skript (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---Java-example)
 
 ### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
 
@@ -166,6 +167,22 @@ module.exports = function (context) {
 ```
 
 Im Abschnitt [Verwendung](#trigger---usage) finden Sie weitere Informationen zu `myQueueItem` (benannt durch die Eigenschaft `name` in „function.json“).  Alle anderen gezeigten Variablen werden im Abschnitt [Nachrichtenmetadaten](#trigger---message-metadata) erläutert.
+
+### <a name="trigger---java-example"></a>Trigger: Java-Beispiel
+
+Das folgende Java-Beispiel zeigt eine Funktion für einen Storage-Warteschlangentrigger, mit der die ausgelöste Nachricht, die in Warteschlange `myqueuename` abgelegt ist, protokolliert wird.
+ 
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
 
 ## <a name="trigger---attributes"></a>Trigger: Attribute
  
@@ -299,6 +316,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#](#output---c-example)
 * [C#-Skript (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
+* [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
 
@@ -428,6 +446,25 @@ module.exports = function(context) {
     context.done();
 };
 ```
+
+### <a name="output---java-example"></a>Ausgabe: Java-Beispiel
+
+ Die Java-Funktion des folgenden Beispiels erstellt eine Warteschlangennachricht bei Auslösung durch eine HTTP-Anforderung.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+ ```
+
+Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert in Queue Storage geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
+
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
  

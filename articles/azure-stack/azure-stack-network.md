@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/22/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: f54849b9fef8ff09aa9b5b6254c92fc3c452ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 48e2f85488adfb776da5f52c154028f8aafb167a
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414424"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617020"
 ---
 # <a name="network-connectivity"></a>Netzwerkverbindung
 Dieser Artikel enthält Informationen zur Netzwerkinfrastruktur von Azure Stack, die Sie bei der Entscheidung unterstützen, wie Sie Azure Stack am besten in Ihre bestehende Netzwerkumgebung integrieren können. 
@@ -41,7 +41,7 @@ Die folgende Tabelle zeigt die logischen Netzwerke und die zugehörigen IPv4-Sub
 
 | Logisches Netzwerk | BESCHREIBUNG | Größe | 
 | -------- | ------------- | ------------ | 
-| Öffentliche VIP | Azure Stack verwendet insgesamt 32 Adressen aus diesem Netzwerk. Acht öffentliche IP-Adressen werden für einen kleinen Satz von Azure Stack-Diensten verwendet, und die restlichen Adressen werden von virtuellen Computern von Mandanten verwendet. Wenn Sie App Service und SQL-Ressourcenanbieter verwenden möchten, werden sieben weitere Adressen verwendet. | /26 (62 Hosts) - /22 (1022 Hosts)<br><br>Empfohlen = /24 (254 Hosts) | 
+| Öffentliche VIP | Azure Stack verwendet insgesamt 31 Adressen aus diesem Netzwerk. Acht öffentliche IP-Adressen werden für einen kleinen Satz von Azure Stack-Diensten verwendet, und die restlichen Adressen werden von virtuellen Computern von Mandanten verwendet. Wenn Sie App Service und SQL-Ressourcenanbieter verwenden möchten, werden sieben weitere Adressen verwendet. Die verbleibenden 15 IP-Adressen sind für zukünftige Azure-Dienste reserviert. | /26 (62 Hosts) - /22 (1022 Hosts)<br><br>Empfohlen = /24 (254 Hosts) | 
 | Switchinfrastruktur | Point-to-Point-IP-Adressen für Routingzwecke, dedizierte Switchverwaltungsschnittstellen und Loopbackadressen, die dem Switch zugewiesen sind. | /26 | 
 | Infrastruktur | Für die Kommunikation mit internen Azure Stack-Komponenten. | /24 |
 | Private | Für das Speichernetzwerk und die privaten virtuellen IP-Adressen. | /24 | 

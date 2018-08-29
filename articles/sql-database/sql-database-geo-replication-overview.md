@@ -10,18 +10,24 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 77f95ef6fb04673d79b01694d1d6f84d2c694e96
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 08179ae21465a57161cc6f18c12a3d9a21449359
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038208"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143251"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Übersicht: Aktive Georeplikation und Gruppen für automatisches Failover
+
+Aktive Georeplikation ist eine Funktion in Azure SQL-Datenbank, mit der Sie lesbare Replikate Ihrer Datenbank im gleichen oder einem anderen Rechenzentrum (Region) erstellen können.
+
+![Georeplikation](./media/sql-database-geo-replication-failover-portal/geo-replication.png )
+
 Aktive Georeplikation ist als Geschäftskontinuitätslösung konzipiert, die der Anwendung im Falle eines größeren Rechenzentrumsausfalls eine schnelle Notfallwiederherstellung ermöglicht. Wenn Georeplikation aktiviert ist, kann die Anwendung ein Failover auf eine sekundäre Datenbank in einer anderen Azure-Region initiieren. Bis zu vier sekundäre Datenbanken werden in derselben oder verschiedenen Regionen unterstützt, und die sekundären Datenbanken können auch für schreibgeschützten Abfragezugriff verwendet werden. Das Failover muss durch die Anwendung oder den Benutzer manuell eingeleitet werden. Nach einem Failover hat die neue primäre Datenbank einen anderen Verbindungsendpunkt. 
 
 > [!NOTE]
 > Die aktive Georeplikation ist jetzt für alle Datenbanken in allen Diensttarifen und allen Regionen verfügbar.
+> Die aktive Georeplikation ist in einer verwalteten Instanz nicht verfügbar.
 >  
 
 Gruppen für automatisches Failover sind eine Erweiterung der aktiven Georeplikation. Sie dienen zum Verwalten des simultanen Failovers mehrerer georeplizierter Datenbanken mittels eines durch die Anwendung initiierten Failovers bzw. durch Delegieren des Failovers an den SQL-Datenbank-Dienst auf Basis benutzerdefinierter Kriterien. Letzteres gibt Ihnen die Möglichkeit, nach schwerwiegenden Ausfällen oder anderen ungeplanten Ereignissen, die zum vollständigen oder teilweisen Verlust der Verfügbarkeit der Dienste von SQL-Datenbank in der primären Region führen, automatisch mehrere verwandte Datenbanken in einer sekundären Region wiederherzustellen. Außerdem können sie die lesbaren sekundären Datenbanken zur Auslagerung schreibgeschützter Abfrageworkloads verwenden. Da Gruppen für automatisches Failover mehrere Datenbanken beinhalten, müssen diese Datenbanken auf dem primären Server konfiguriert werden. Primäre und sekundäre Server für die Datenbanken in der Failovergruppe müssen sich im selben Abonnement befinden. Gruppen für automatisches Failover unterstützen die Replikation aller Datenbanken in der Gruppe auf nur einen sekundären Server in einer anderen Region.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 24bd0e8eff616920dba0eb5353f983444e3161cd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 31fe386cfbe5b6ccf842c05a2dd1d6fcd45bc9b7
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019958"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142640"
 ---
 # <a name="security-frame-session-management--articles"></a>Sicherheitsrahmen: Sitzungsverwaltung | Artikel 
 | Produkt/Dienst | Artikel |
@@ -29,7 +29,7 @@ ms.locfileid: "28019958"
 | **Azure DocumentDB** | <ul><li>[Verwenden von minimalen Tokengültigkeitsdauern für generierte Ressourcentoken](#resource-tokens)</li></ul> |
 | **ADFS** | <ul><li>[Implementieren der richtigen Abmeldung mit WsFederation-Methoden bei Verwendung von ADFS](#wsfederation-logout)</li></ul> |
 | **Identity Server** | <ul><li>[Implementieren der richtigen Abmeldung bei Verwendung von Identity Server](#proper-logout)</li></ul> |
-| **Webanwendung** | <ul><li>[Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden](#https-secure-cookies)</li><li>[Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden](#cookie-definition)</li><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten](#csrf-asp)</li><li>[Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer](#inactivity-lifetime)</li><li>[Implementieren der richtigen Abmeldung von der Anwendung](#proper-app-logout)</li></ul> |
+| **Web Application** | <ul><li>[Für Anwendungen, die per HTTPS verfügbar sind, müssen sichere Cookies verwendet werden](#https-secure-cookies)</li><li>[Für alle HTTP-basierten Anwendungen sollte HTTP nur für die Cookiedefinition angegeben werden](#cookie-definition)</li><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Webseiten](#csrf-asp)</li><li>[Einrichten der Sitzung für die Inaktivitätsgültigkeitsdauer](#inactivity-lifetime)</li><li>[Implementieren der richtigen Abmeldung von der Anwendung](#proper-app-logout)</li></ul> |
 | **Web-API** | <ul><li>[Einleiten von Gegenmaßnahmen für Angriffe vom Typ „Websiteübergreifende Anforderungsfälschung“ auf ASP.NET-Web-APIs](#csrf-api)</li></ul> |
 
 ## <a id="logout-adal"></a>Implementieren der richtigen Abmeldung mit ADAL-Methoden bei Verwendung von Azure AD
@@ -552,6 +552,11 @@ Autorisierungsfilter, mit dem Folgendes überprüft wird:
 | **Schritte** | Wenn die Web-API mit OAuth 2.0 geschützt wird, wird im Autorisierungsheader der Anforderung ein Bearertoken erwartet und nur dann Zugriff auf die Anforderung gewährt, wenn das Token gültig ist. Im Gegensatz zur cookiebasierten Authentifizierung fügen Browser die Bearertoken nicht an Anforderungen an. Der anfordernde Client muss das Bearertoken explizit im Anforderungsheader anfügen. Daher werden Bearertoken für ASP.NET-Web-APIs, die per OAuth 2.0 geschützt sind, als Verteidigung gegen CSRF-Angriffe angesehen. Beachten Sie Folgendes: Wenn im MVC-Teil der Anwendung die Formularauthentifizierung verwendet wird (also Cookies), müssen für die MVC-Web-App Antifälschungstoken genutzt werden. |
 
 ### <a name="example"></a>Beispiel
-Die Web-API muss angewiesen werden, NUR Bearertoken und keine Cookies zu verwenden. Dies ist mit der folgenden Konfiguration in der `WebApiConfig.Register`-Methode möglich: ```C-Sharp-Code config.SuppressDefaultHostAuthentication(); config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+Die Web-API muss angewiesen werden, NUR Bearertoken und keine Cookies zu verwenden. Sie können dazu die folgende Konfiguration in der `WebApiConfig.Register`-Methode verwenden:
+
+```csharp
+config.SuppressDefaultHostAuthentication();
+config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 ```
-The SuppressDefaultHostAuthentication method tells Web API to ignore any authentication that happens before the request reaches the Web API pipeline, either by IIS or by OWIN middleware. That way, we can restrict Web API to authenticate only using bearer tokens.
+
+Die SuppressDefaultHostAuthentication-Methode weist die Web-API an, Authentifizierungen zu ignorieren, die vor dem Empfang der Anforderung in der Web-API-Pipeline durchgeführt wurden. Dazu wird IIS oder OWIN-Middleware verwendet. Auf diese Weise können Sie die Authentifizierung der Web-API ausschließlich auf Bearertoken einschränken.

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: c3aeb57bf9c613da3edb8c5dda0e88aa308a4b6e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448440"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143140"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Continuous Integration und Continuous Deployment in Azure Data Factory
 
@@ -48,6 +48,10 @@ Wählen Sie **Datei laden**, um die exportierte Resource Manager-Vorlage auszuw�
 
 ![](media/continuous-integration-deployment/continuous-integration-image5.png)
 
+**Verbindungszeichenfolgen**. Sie finden die zum Erstellen von Verbindungszeichenfolgen erforderlichen Informationen in den Artikeln zu den einzelnen Connectors. Informationen zu Azure SQL-Datenbank finden Sie z.B. unter [Kopieren von Daten nach und aus Azure SQL-Datenbank mithilfe von Azure Data Factory](connector-azure-sql-database.md). Um die Richtigkeit der Verbindungszeichenfolge zu überprüfen – z.B. für einen verknüpften Dienst –, können Sie auch die Codeansicht für die Ressource in der Benutzeroberfläche von Data Factory öffnen. In der Codeansicht werden jedoch das Kennwort und der Kontoschlüssel der Verbindungszeichenfolge nicht angezeigt. Um die Codeansicht zu öffnen, wählen Sie das Symbol aus, das im folgenden Screenshot hervorgehoben ist.
+
+![Öffnen der Codeansicht zum Anzeigen der Verbindungszeichenfolge](media/continuous-integration-deployment/continuous-integration-codeview.png)
+
 ## <a name="continuous-integration-lifecycle"></a>Continuous Integration-Lebenszyklus
 Hier ist der gesamte Lebenszyklus für Continuous Integration und Continuous Deployment angegeben, den Sie nach dem Aktivieren der VSTS GIT-Integration in die Data Factory-Benutzeroberfläche nutzen können:
 
@@ -69,7 +73,7 @@ Hier sind die Schritte zum Einrichten eines VSTS-Release angegeben, mit denen Si
 
 ![Abbildung zu Continuous Integration mit VSTS](media/continuous-integration-deployment/continuous-integration-image12.png)
 
-### <a name="requirements"></a>Requirements (Anforderungen)
+### <a name="requirements"></a>Anforderungen
 
 -   Ein Azure-Abonnement, das mit Team Foundation Server oder VSTS verknüpft ist und für das der [*Azure Resource Manager-Dienstendpunkt*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm) verwendet wird.
 
@@ -174,11 +178,7 @@ Für die Bereitstellung kann ein Fehler auftreten, wenn Sie versuchen, aktive Tr
 
 Sie können ähnliche Schritte ausführen und ähnlichen Code verwenden (mit der Funktion `Start-AzureRmDataFactoryV2Trigger`), um die Trigger nach der Bereitstellung neu zu starten.
 
-## <a name="sample-template-and-script"></a>Beispielvorlage und -skript
-Hier sind zwei Beispiele angegeben, die Sie verwenden können, um mit dem Continuous Integration- und Continuous Deployment-Vorgang für die Data Factory zu beginnen:
-
--   Eine Beispielvorlage für die Bereitstellung, die Sie in VSTS importieren können.
--   Ein Beispielskript zum Beenden von Triggern vor der Bereitstellung und zum anschließenden Neustarten von Triggern. Außerdem enthält das Skript den Code zum Löschen von Ressourcen, die entfernt wurden.
+## <a name="sample-deployment-template"></a>Beispielbereitstellungsvorlage
 
 Hier ist eine Beispielvorlage für die Bereitstellung angegeben, die Sie in VSTS importieren können:
 
@@ -718,7 +718,9 @@ Hier ist eine Beispielvorlage für die Bereitstellung angegeben, die Sie in VSTS
 }
 ```
 
-Hier ist ein Beispielskript zum Beenden von Triggern vor der Bereitstellung und zum anschließenden Neustarten von Triggern angegeben:
+## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Beispielskript zum Beenden und Neustarten von Triggern und zum Bereinigen
+
+Dies ist ein Beispielskript zum Beenden von Triggern vor der Bereitstellung und zum anschließenden Neustarten der Trigger. Außerdem enthält das Skript den Code zum Löschen von Ressourcen, die entfernt wurden.
 
 ```powershell
 param

@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 7/18/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: a075b60c525fc3883f4464f19a8964fb64ce15a0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 69ff295e434f199f3a15e96f134f92098b1b8b79
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627711"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143502"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -53,6 +53,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Anwendungsgateways |[Diagnoseprotokollierung für Application Gateway](../application-gateway/application-gateway-diagnostics.md) |
 | Azure-Automatisierung |[Protokollanalysen für Azure Automation](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Diagnoseprotokolle für Azure Batch](../batch/batch-diagnostics.md) |
+| Cognitive Services | Schema nicht verfügbar. |
 | Content Delivery Network | [Azure-Diagnoseprotokolle für CDN](../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB-Protokollierung](../cosmos-db/logging.md) |
 | Data Factory | [Überwachen von Data Factorys mit Azure Monitor](../data-factory/monitor-using-azure-monitor.md) |
@@ -61,13 +62,14 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 | Datenbank für PostgreSQL |  Schema nicht verfügbar. |
 | Event Hubs |[Azure Event Hubs-Diagnoseprotokolle](../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | Schema nicht verfügbar. |
+| Azure Firewall | Schema nicht verfügbar. |
 | IoT Hub | [IoT Hub-Vorgänge](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure-Schlüsseltresor-Protokollierung](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Protokollanalysen für den Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS-Schutz | [Verwalten von Azure DDoS Protection Standard](../virtual-network/manage-ddos-protection.md) |
-| PowerBI dediziert | Schema nicht verfügbar. |
+| PowerBI dediziert | [Diagnoseprotokollierung für Power BI Embedded in Azure](https://docs.microsoft.com/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datenmodell für Azure Backup](../backup/backup-azure-reports-data-model.md)|
 | Suchen, |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus Diagnoseprotokolle](../service-bus-messaging/service-bus-diagnostic-logs.md) |
@@ -88,6 +90,12 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Automation/automationAccounts|DscNodeStatus|DSC-Knotenstatus|
 |Microsoft.Batch/batchAccounts|ServiceLog|Dienstprotokolle|
 |Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Ruft die Metriken des Endpunkts ab, z.B. Bandbreite, ausgehenden Datenverkehr usw.|
+|Microsoft.ClassicNetwork/networksecuritygroups|Regelflussereignis der Netzwerksicherheitsgruppe|Regelflussereignis der Netzwerksicherheitsgruppe|
+|Microsoft.CognitiveServices/accounts|Audit|Audit|
+|Microsoft.ContainerService/managedClusters|kube-apiserver|Kubernetes-API-Server|
+|Microsoft.ContainerService/managedClusters|kube-controller-manager|Kubernetes-Controller-Manager|
+|Microsoft.ContainerService/managedClusters|kube-scheduler|Kubernetes-Scheduler|
+|Microsoft.ContainerService/managedClusters|guard|Authentifizierungs-Webhook|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
 |Microsoft.DataFactory/factories|ActivityRuns|Pipeline-Aktivitätsausführungsprotokoll|
 |Microsoft.DataFactory/factories|PipelineRuns|Pipelineausführungsprotokoll|
@@ -97,7 +105,6 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
-|Microsoft.DBforPostgreSQL/servers|PostgreSQLBackupEvents|PostgreSQL-Sicherungsereignisse|
 |Microsoft.Devices/IotHubs|Verbindungen|Verbindungen|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|Gerätetelemetrie|
 |Microsoft.Devices/IotHubs|C2DCommands|C2D-Befehle|
@@ -110,6 +117,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Devices/IotHubs|JobsOperations|Auftragsvorgänge|
 |Microsoft.Devices/IotHubs|DirectMethods|Direkte Methoden|
 |Microsoft.Devices/IotHubs|E2EDiagnostics|E2E-Diagnose (Vorschauversion)|
+|Microsoft.Devices/IotHubs|Configurations|Configurations|
 |Microsoft.Devices/provisioningServices|DeviceOperations|Gerätevorgänge|
 |Microsoft.Devices/provisioningServices|ServiceOperations|Dienstoperationen|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
@@ -130,13 +138,17 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
+|Microsoft.Network/securegateways|AzureFirewallApplicationRule|Azure Firewall-Anwendungsregel|
+|Microsoft.Network/securegateways|AzureFirewallNetworkRule|Azure Firewall-Netzwerkregel|
+|Microsoft.Network/azurefirewalls|AzureFirewallApplicationRule|Azure Firewall-Anwendungsregel|
+|Microsoft.Network/azurefirewalls|AzureFirewallNetworkRule|Azure Firewall-Netzwerkregel|
 |Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|Gatewaydiagnoseprotokolle|
 |Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|Tunneldiagnoseprotokolle|
 |Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|Routendiagnoseprotokolle|
 |Microsoft.Network/virtualNetworkGateways|IKEDiagnosticLog|IKE-Diagnoseprotokolle|
 |Microsoft.Network/virtualNetworkGateways|P2SDiagnosticLog|P2S-Diagnoseprotokolle|
 |Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|
-|Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabelle der GWM-Leistungsindikatoren|
+|Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Routentabellenprotokolle zum Peering|
 |Microsoft.PowerBIDedicated/capacities|Motor|Motor|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup-Berichtsdaten|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery-Aufträge|
@@ -148,15 +160,19 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Datenänderungen auf mit Azure Site Recovery geschützten Datenträgern|
 |Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Betriebsprotokolle|
+|Microsoft.Sql/servers/databases|SQLInsights|SQL-Informationen|
+|Microsoft.Sql/servers/databases|AutomaticTuning|Automatische Optimierung|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|Wartestatistik der Datenbank|
 |Microsoft.Sql/servers/databases|Zeitlimits|Zeitlimits|
 |Microsoft.Sql/servers/databases|Blöcke|Blöcke|
-|Microsoft.Sql/servers/databases|SQLInsights|SQL-Informationen|
+|Microsoft.Sql/servers/databases|Deadlocks|Deadlocks|
 |Microsoft.Sql/servers/databases|Audit|Überwachungsprotokolle|
 |Microsoft.Sql/servers/databases|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
+|Microsoft.Sql/servers/databases|SqlDw_Requests|SQL Data Warehouse-Anforderungen|
+|Microsoft.Sql/servers/databases|SqlDw_RequestSteps|SQL Data Warehouse-Anforderungsschritte|
 |Microsoft.StreamAnalytics/streamingjobs|Ausführung|Ausführung|
 |Microsoft.StreamAnalytics/streamingjobs|Erstellen|Erstellen|
 

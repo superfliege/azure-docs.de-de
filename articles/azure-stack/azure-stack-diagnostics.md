@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 08/22/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 50fef25a3b7b71821e64638729eb8d93f65b9e31
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a36609ae63351070bb28469d9ccf1f3deb7bc6ff
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064171"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616948"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
@@ -110,38 +110,40 @@ if($s)
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Überlegungen zu den Parametern für das ASDK und integrierte Systeme
 
 - Wenn die Parameter **FromDate** und **ToDate** nicht angegeben sind, werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
+- Verwenden Sie den Parameter **FilterByNode**, um Protokolle nach Computername zu filtern. Beispiel: ```Get-AzureStackLog -OutputPath <path> -FilterByNode azs-xrp01```
+- Verwenden Sie den Parameter **FilterByLogType**, um Protokolle nach Typ zu filtern. Sie können nach Datei (File), Freigabe (Share) oder Windows-Ereignis (WindowsEvent) filtern. Beispiel: ```Get-AzureStackLog -OutputPath <path> -FilterByLogType File```
 - Sie können den **TimeOutInMinutes**-Parameter verwenden, um das Timeout für die Sammlung von Protokollen festzulegen. Es ist standardmäßig auf 150 (2,5 Stunden) festgelegt.
 - Ab Version 1805 ist die Protokollsammlung von Dumpdateien standardmäßig deaktiviert. Sie können sie mithilfe des Switch-Parameters **IncludeDumpFile** aktivieren. 
 - Derzeit können Sie den **FilterByRole**-Parameter verwenden, um die Protokollsammlung nach den folgenden Rollen zu filtern:
 
-   |   |   |   |
-   | - | - | - |
-   | ACS                    | DeploymentMachine                | NC                         |
-   | ACSBlob                | DiskRP                           | Netzwerk                    |
-   | ACSFabric              | Domäne                           | NonPrivilegedAppGateway    |
-   | ACSFrontEnd            | ECE                              | NRP                        |
-   | ACSMetrics             | ExternalDNS                      | OEM                        |
-   | ACSMigrationService    | Fabric                           | PXE                        |
-   | ACSMonitoringService   | FabricRing                       | SeedRing                   | 
-   | ACSSettingsService     | FabricRingServices               | SeedRingServices           |
-   | ACSTableMaster         | FRP                              | SLB                        |   
-   | ACSTableServer         | Gallery                          | SlbVips                    |
-   | ACSWac                 | Gateway                          | SQL                        |   
-   | ADFS                   | HealthMonitoring                 | SRP                        |
-   | ASAppGateway           | HRP                              | Speicher                    |   
-   | NCAzureBridge          | IBC                              | Speicherkonten            |    
-   | AzurePackConnector     | IdentityProvider                 | StorageController          |  
-   | AzureStackBitlocker    | iDns                             | Tenant                     |
-   | BareMetal              | InfraServiceController           | TraceCollector             |
-   | BRP                    | Infrastruktur                   | URP                        |
-   | CA                     | KeyVaultAdminResourceProvider    | UsageBridge                |
-   | Cloud                  | KeyVaultControlPlane             | VirtualMachines            |
-   | Cluster                | KeyVaultDataPlane                | WAS                        |
-   | Compute                | KeyVaultInternalControlPlane     | WASBootstrap               |
-   | CPI                    | KeyVaultInternalDataPlane        | WASPUBLIC                  |
-   | CRP                    | KeyVaultNamingService            |                            |
-   | DatacenterIntegration  | MonitoringAgent                  |                            |
-   |                        |                                  |                            |
+ |   |   |   |    |
+ | - | - | - | -  |   
+ |ACS|Compute|InfraServiceController|QueryServiceCoordinator|
+ |ACSBlob|CPI|Infrastruktur|QueryServiceWorker|
+ |ACSDownloadService|CRP|KeyVaultAdminResourceProvider|SeedRing|
+ |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
+ |ACSFrontEnd|DeploymentMachine|KeyVaultDataPlane|SLB|
+ |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
+ |ACSMigrationService|Domäne|KeyVaultInternalDataPlane|SQL|
+ |ACSMonitoringService|ECE|KeyVaultNamingService|SRP|
+ |ACSSettingsService|EventAdminRP|MDM|Speicher|
+ |ACSTableMaster|EventRP|MetricsAdminRP|Speicherkonten|
+ |ACSTableServer|ExternalDNS|MetricsRP|StorageController|
+ |ACSWac|Fabric|MetricsServer|Tenant|
+ |ADFS|FabricRing|MetricsStoreService|TraceCollector|
+ |ApplicationController|FabricRingServices|MonAdminRP|URP|
+ |ASAppGateway|FirstTierAggregationService|MonitoringAgent|Verwendung|
+ |AzureBridge|FRP|MonRP|UsageBridge|
+ |AzureMonitor|Gallery|NC|VirtualMachines|
+ |AzureStackBitlocker|Gateway|Netzwerk|WAS|
+ |BareMetal|HealthMonitoring|NonPrivilegedAppGateway|WASBootstrap|
+ |BRP|HintingServiceV2|NRP|WASPUBLIC|
+ |CA|HRP|OboService|WindowsDefender|
+ |CacheService|IBC|OEM|     |
+ |Cloud|IdentityProvider|OnboardRP|     |   
+ |Cluster|iDns|PXE|     |
+ |   |   |   |    |
+
 
 ### <a name="bkmk_gui"></a>Erfassen von Protokollen mithilfe einer grafischen Benutzeroberfläche
 Anstatt die erforderlichen Parameter für das Cmdlet Get-AzureStackLog zum Abrufen von Azure Stack-Protokollen bereitzustellen, können Sie auch die verfügbaren Open Source-Tools für Azure Stack verwenden, die Sie im GitHub-Toolrepository unter http://aka.ms/AzureStackTools finden.

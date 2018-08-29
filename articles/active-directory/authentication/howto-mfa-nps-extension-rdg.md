@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e22fedda4861e68f2318aff89bc3fe5a15cb6ede
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160102"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144972"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -226,7 +226,7 @@ Um sicherzustellen, dass genügend Zeit zum Überprüfen der Anmeldeinformatione
 Wenn Sie das RD-Gateway zur Verwendung eines zentralen Richtlinienspeichers für Verbindungsautorisierungsrichtlinien konfigurieren, wird standardmäßig das RD-Gateway zum Weiterleiten von CAP-Anforderungen an den NPS-Server konfiguriert. Der mit der Azure MFA-Erweiterung installierte NPS-Server verarbeitet die RADIUS-Zugriffsanforderung. In den folgenden Schritten lernen Sie das Überprüfen der Standard-Verbindungsanforderungsrichtlinie. 
 
 1. Erweitern Sie auf dem RD-Gateway in der Konsole „NPS (Lokal)“ **Richtlinien**, und wählen Sie **Verbindungsanforderungsrichtlinien**.
-2. Klicken Sie mit der rechten Maustaste auf **Verbindungsanforderungsrichtlinien**, und doppelklicken Sie auf **TS-GATEWAYAUTORISIERUNGSRICHTLINIE**.
+2. Doppelklicken Sie auf **TS-GATEWAYAUTORISIERUNGSRICHTLINIE**.
 3. Klicken Sie im Dialogfeld **TS-GATEWAYAUTORISIERUNGSRICHTLINIE-Eigenschaften** auf die Registerkarte **Einstellungen**.
 4. Klicken Sie auf der Registerkarte **Einstellungen** unter „Weiterleitungsverbindungsanforderung“ auf **Authentifizierung**. Der RADIUS-Client ist zum Weiterleiten von Anforderungen für die Authentifizierung konfiguriert.
 
@@ -266,7 +266,7 @@ Das Remotedesktopgateway muss als RADIUS-Client des NPS-Servers konfiguriert wer
 ### <a name="configure-network-policy"></a>Konfigurieren der Netzwerkrichtlinie
 Denken Sie daran, dass der NPS-Server mit der Azure MFA-Erweiterung der angegebene zentrale Richtlinienspeicher für die Verbindungsautorisierungsrichtlinie (CAP) ist. Aus diesem Grund müssen Sie auf dem NPS-Server eine CAP zum Autorisieren gültiger Verbindungsanforderungen implementieren.  
 
-1. Erweitern Sie in der Konsole „NPS (Lokal)“ **Richtlinien**, und klicken Sie auf **Netzwerkrichtlinien**.
+1. Öffnen Sie auf dem NPS-Server die Konsole „NPS (Lokal)“, erweitern Sie **Richtlinien**, und klicken Sie auf **Netzwerkrichtlinien**.
 2. Klicken Sie mit der rechten Maustaste auf **Verbindungen mit anderen Zugriffsservern**, und klicken Sie auf **Duplizieren der Richtlinie**. 
 
  ![Duplizieren der Richtlinie](./media/howto-mfa-nps-extension-rdg/image19.png)
@@ -275,7 +275,7 @@ Denken Sie daran, dass der NPS-Server mit der Azure MFA-Erweiterung der angegebe
 
  ![Netzwerkeigenschaften](./media/howto-mfa-nps-extension-rdg/image20.png)
 
-4. Geben Sie im Dialogfeld **Kopie der Verbindungen mit anderen Zugriffsservern** in **Richtlinienname** einen geeigneten Namen ein, z.B. _RDG_CAP_. Aktivieren Sie **Richtlinie aktiviert**, und wählen Sie **Zugriff gewähren** aus. Wählen Sie optional unter **Typ des Netzwerkzugriffs** die Option  **Remotedesktopgateway** aus, oder behalten Sie **Nicht angegeben** bei.
+4. Geben Sie im Dialogfeld **Kopie der Verbindungen mit anderen Zugriffsservern** unter **Richtlinienname** einen geeigneten Namen ein, z.B. _RDG_CAP_. Aktivieren Sie **Richtlinie aktiviert**, und wählen Sie **Zugriff gewähren** aus. Wählen Sie optional unter **Typ des Netzwerkzugriffs** die Option  **Remotedesktopgateway** aus, oder behalten Sie **Nicht angegeben** bei.
 
  ![Kopie von Verbindungen](./media/howto-mfa-nps-extension-rdg/image21.png)
 

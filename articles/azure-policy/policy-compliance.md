@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f2283125aff705aae87b6260b48deee01aa12f0d
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343551"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146776"
 ---
 # <a name="getting-compliance-data"></a>Abrufen von Konformitätsdaten
 
@@ -26,6 +26,9 @@ Es gibt mehrere Möglichkeiten, auf Konformitätsinformationen, die von Ihrer Ri
 - Über [Befehlszeilen](#command_line)-Skripting
 
 Bevor wir uns die Methoden zur Berichterstellung zur Konformität ansehen, beschäftigen wir uns damit, wann Konformitätsinformationen aktualisiert werden und mit den Ereignissen, die einen Auswertungszyklus auslösen sowie mit der Häufigkeit.
+
+> [!WARNING]
+> Wenn der Konformitätsstatus als **'N/A'** gemeldet wird, überprüfen Sie, ob der **Microsoft.PolicyInsights**-Ressourcenanbieter registriert ist und der Benutzer über die entsprechenden Berechtigungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verfügt, wie es [hier](azure-policy-introduction.md#rbac-permissions-in-azure-policy) beschrieben ist.
 
 ## <a name="evaluation-triggers"></a>Auswertungsauslöser
 

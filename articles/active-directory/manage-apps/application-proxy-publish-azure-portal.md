@@ -2,25 +2,22 @@
 title: Veröffentlichen von Apps mit Azure AD-Anwendungsproxy | Microsoft Docs
 description: Es wird beschrieben, wie Sie lokale Anwendungen im Azure-Portal mit dem Azure AD-Anwendungsproxy in der Cloud veröffentlichen.
 services: active-directory
-documentationcenter: ''
 author: barbkess
 manager: mtillman
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/24/2018
+ms.date: 08/20/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 1224642bb7e6fc0c51b3f839a78449132db5b4bb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 973a6201a227e6c2e295e6e5ea2f40c302572504
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364256"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42143666"
 ---
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy
 
@@ -72,6 +69,7 @@ Führen Sie diese Schritte aus, um Ihre Apps mit dem Anwendungsproxy zu veröffe
    ![Konfigurieren der Anwendung](./media/application-proxy-publish-azure-portal/configure-app.png)
 5. Konfigurieren Sie bei Bedarf weitere Einstellungen. Für die meisten Anwendungen sollten Sie diese Einstellungen im Standardzustand belassen. 
    - **Backend Application Timeout** (Timeout der Back-End-Anwendung): Legen Sie diesen Wert nur auf **Lang** fest, wenn Ihre Anwendung bei der Authentifizierung und dem Verbinden langsam ist. 
+   - **Nur-HTTP-Cookie verwenden:** Legen Sie diesen Wert auf **Ja** fest, damit Anwendungsproxycookies das Flag „HTTPOnly“ im HTTP-Antwortheader enthalten.
    - **Translate URLs in Headers** (URLs in Headern übersetzen): Behalten Sie diesen Wert als **Ja** bei, wenn Ihre Anwendung den ursprünglichen Hostheader nicht in der Authentifizierungsanforderung erfordert.
    - **Translate URLs in Application Body** (URLs im Hauptteil der Anwendung übersetzen): Behalten Sie diesen Wert als **Nein** bei, wenn Sie nicht über hartcodierte HTML-Links zu anderen lokalen Anwendungen verfügen, und verwenden Sie keine benutzerdefinierten Domänen. Weitere Informationen finden Sie unter [Linkübersetzung mit dem Anwendungsproxy](application-proxy-configure-hard-coded-link-translation.md).
    

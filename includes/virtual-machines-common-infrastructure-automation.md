@@ -19,8 +19,8 @@ Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Com
 In diesem Artikel werden folgende Themen erläutert:
 
 - [Installieren und Konfigurieren von Ansible unter Linux für die Verwendung mit Azure](../articles/virtual-machines/linux/ansible-install-configure.md)
-- [Erstellen eines einfachen virtuellen Computers](../articles/virtual-machines/linux/ansible-create-vm.md)
-- [Erstellen einer vollständigen VM-Umgebung einschließlich unterstützender Ressourcen](../articles/virtual-machines/linux/ansible-create-complete-vm.md)
+- [Erstellen eines virtuellen Linux-Computers](../articles/virtual-machines/linux/ansible-create-vm.md)
+- [Verwalten eines virtuellen Linux-Computers](../articles/virtual-machines/linux/ansible-manage-linux-vm.md)
 
 
 ## <a name="chef"></a>Chef
@@ -37,7 +37,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Bereitstellen von Puppet über den Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2016-1?tab=Overview)
+- [Bereitstellen von Puppet über den Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2?tab=Overview)
 
 
 ## <a name="cloud-init"></a>cloud-init

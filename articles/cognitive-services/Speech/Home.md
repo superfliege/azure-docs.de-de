@@ -1,5 +1,5 @@
 ---
-title: Speech-Dienst von Microsoft | Microsoft-Dokumentation
+title: Microsoft Bing-Spracheingabe-Dienst | Microsoft-Dokumentation
 description: Verwenden Sie die Sprach-API von Microsoft, um Ihre Apps mit sprachbasierten Aktionen zu versehen – einschließlich Echtzeitinteraktion mit Benutzern.
 services: cognitive-services
 author: zhouwangzw
@@ -9,33 +9,36 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: c041132e992f07e94e4b6669ec7ce174f7c2d0dd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ee328145419aaf8962c08bca2fb9cf1a42daae0c
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373835"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41929862"
 ---
-# <a name="microsoft-speech-api-overview"></a>Übersicht über die Sprach-API von Microsoft
+# <a name="microsoft-bing-speech-api-overview"></a>Übersicht über die Microsoft Bing-Spracheingabe-API
 
-Mit der cloudbasierten Sprach-API von Microsoft können Entwickler komfortabel leistungsfähige Sprachfunktionen in ihre Anwendungen integrieren. Hierzu zählen beispielsweise die Steuerung per Sprachbefehl, Benutzerdialoge mit natürlicher Sprache sowie Transkription und Diktat. Die Sprach-API von Microsoft unterstützt sowohl die *Spracherkennung* (Umwandlung von Sprache in Text) als auch die *Sprachsynthese* (Umwandlung von Text in Sprache).
+Mit der cloudbasierten Bing-Spracheingabe-API von Microsoft können Entwickler komfortabel leistungsfähige Sprachfunktionen in ihre Anwendungen integrieren. Hierzu zählen beispielsweise die Steuerung per Sprachbefehl, Benutzerdialoge in natürlicher Sprache sowie Transkription und Diktat. Die Sprach-API von Microsoft unterstützt sowohl die *Spracherkennung* (Umwandlung von Sprache in Text) als auch die *Sprachsynthese* (Umwandlung von Text in Sprache).
 
 - Die **Spracherkennungs-API** wandelt gesprochene Sprache in Text um, der als Eingabe oder Befehl zur Steuerung Ihrer Anwendung verwendet werden kann.
 - Die **Sprachsynthese-API** wandelt Text in Audiostreams um, die für den Benutzer Ihrer Anwendung wiedergegeben werden können.
+
+> [!NOTE] 
+> Im Mai 2018 haben wir den neuen [Speech-Dienst](/speech-service/overview.md) als Public Preview veröffentlicht. Wir empfehlen Ihnen, diesen [kostenlos auszuprobieren](/speech-service/get-started.md).
 
 ## <a name="speech-to-text-speech-recognition"></a>Spracherkennung (Umwandlung von Sprache in Text)
 
 Die Spracherkennungs-API von Microsoft *überträgt* Audiodatenströme in Text, den Ihre Anwendung dem Benutzer anzeigen oder als Befehlseingabe nutzen kann. Entwickler können ihren Apps auf zwei Arten Spracherkennungsfeatures hinzufügen: mithilfe von REST-APIs **oder** mithilfe Websocket-basierter Clientbibliotheken.
 
 - [REST-APIs:](GetStarted/GetStartedREST.md) Entwickler können in ihren Apps HTTP-Aufrufe an den Spracherkennungsdienst richten.
-- [Clientbibliotheken:](GetStarted/GetStartedClientLibraries.md) Entwickler, die erweiterte Features nutzen möchten, können Microsoft Speech-Clientbibliotheken herunterladen und in ihre Apps einbinden.  Die Clientbibliotheken sind für verschiedene Plattformen (Windows, Android, iOS) mit verschiedenen Sprachen (C#, Java, JavaScript, Objective-C) verfügbar. Im Gegensatz zu den REST-APIs nutzen die Clientbibliotheken ein Websocket-basiertes Protokoll.
+- [Clientbibliotheken:](GetStarted/GetStartedClientLibraries.md) Entwickler, die erweiterte Features nutzen möchten, können Microsoft Speech-Clientbibliotheken herunterladen und in ihre Apps einbinden.  Die Clientbibliotheken sind für verschiedene Plattformen (Windows, Android, iOS) mit verschiedenen Sprachen (C#, Java, JavaScript, Objective-C) verfügbar. Im Gegensatz zu den REST-APIs nutzen die Clientbibliotheken ein auf Websockets basierendes Protokoll.
 
 | Anwendungsfälle | [REST-APIs](GetStarted/GetStartedREST.md) | [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Konvertieren von kurzem gesprochenem Audio mit einer Länge von weniger als 15 Sekunden (beispielsweise Befehle) ohne Zwischenergebnisse | Ja | Ja |
-| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein  | Ja |
-| Streamen von Audio mit Zwischenergebnissen | Nein  | Ja |
-| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein  | Ja |
+| Konvertieren von kurzem gesprochenem Audio mit einer Länge von weniger als 15 Sekunden (beispielsweise Befehle) ohne Zwischenergebnisse | JA | JA |
+| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein  | JA |
+| Streamen von Audio mit Zwischenergebnissen | Nein  | JA |
+| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein  | JA |
 
 Unabhängig vom gewählten Ansatz (REST-APIs oder Clientbibliotheken) unterstützt der Speech-Dienst von Microsoft Folgendes:
 
@@ -43,7 +46,7 @@ Unabhängig vom gewählten Ansatz (REST-APIs oder Clientbibliotheken) unterstüt
 - Fortlaufende Erkennung in Echtzeit. Die Spracherkennungs-API ermöglicht es Benutzern, Audio in Echtzeit in Text umzuwandeln, und unterstützt den Empfang von Zwischenergebnissen für die bislang erkannten Wörter. Der Speech-Dienst unterstützt auch die Erkennung des Endes der Spracheingabe. Darüber hinaus können Benutzer zusätzliche Formatierungsfunktionen wie Großschreibung und Interpunktion, Filterung von anstößigen Ausdrücken und Textnormalisierung auswählen.
 - Unterstützt optimierte Spracherkennungsergebnisse für *interaktive Szenarien*, *Konversationen* und *Diktierszenarien*. Für Benutzerszenarien, die benutzerdefinierte Sprach- und Akustikmodelle erfordern, ermöglicht [Custom Speech Service](../custom-speech-service/cognitive-services-custom-speech-home.md) die Erstellung von Sprachmodellen, die speziell auf Ihre Anwendung und Benutzer zugeschnitten sind.
 - Unterstützung zahlreicher gesprochener Sprachen in verschiedenen Dialekten. Eine vollständige Liste mit den unterstützten Sprachen für die einzelnen Erkennungsmodi finden Sie unter [Unterstützte Sprachen](api-reference-rest/supportedlanguages.md).
-- Integration von Sprachverständnis. Neben der Umwandlung von Audioeingaben in Text bietet die *Spracherkennung* Anwendungen zusätzlich die Möglichkeit, die Bedeutung des Texts zu erfassen. Hierzu werden mithilfe von [Language Understanding Intelligent Service (LUIS)](../LUIS/Home.md) Absichten und Entitäten aus dem erkannten Text extrahiert.
+- Integration von Sprachverständnis. Neben der Umwandlung von Audioeingaben in Text bietet die *Spracherkennung* Anwendungen zusätzlich die Möglichkeit, die Bedeutung des Texts zu erfassen. Hierzu werden mithilfe von [Language Understanding Intelligent Service (LUIS)](../LUIS/what-is-luis.md) Absichten und Entitäten aus dem erkannten Text extrahiert.
 
 ### <a name="next-steps"></a>Nächste Schritte
 

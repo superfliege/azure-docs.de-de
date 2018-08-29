@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 08/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: 6712fb0865284ccc2b84e3c2fcd49972f541f69b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 270228e73243e6b2670e7ccb30765526a5db6463
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004214"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142550"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -50,6 +50,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 * [C#-Skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 ### <a name="c-example"></a>C#-Beispiel
 
@@ -149,6 +150,21 @@ module.exports = function (context, myTimer) {
 
     context.done();
 };
+```
+
+### <a name="java-example"></a>Java-Beispiel
+
+Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt. Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](http://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 *&#47;5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
 ```
 
 ## <a name="attributes"></a>Attribute

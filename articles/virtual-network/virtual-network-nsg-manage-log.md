@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 81809660bdda957eb4502e02799b9f7f5538ae51
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 5635998eb72f08ddc665793e77008890b2cdb05d
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114022"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144494"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe
 
@@ -140,7 +140,7 @@ JSON-formatierte Daten werden für die folgenden Protokollkategorien geschrieben
 
 ### <a name="event"></a>Ereignis
 
-Dieses Ereignisprotokoll enthält Informationen darüber, welche NSG-Regeln basierend auf der MAC-Adresse für VMs gelten. Die folgenden Beispieldaten werden für jedes Ereignis protokolliert:
+Dieses Ereignisprotokoll enthält Informationen darüber, welche NSG-Regeln basierend auf der MAC-Adresse für VMs gelten. Die folgenden Daten werden für jedes Ereignis protokolliert. Im folgenden Beispiel werden die Daten für einen virtuellen Computer mit der IP-Adresse „192.168.1.4“ und der MAC-Adresse „00-0D-3A-92-6A-7C“ protokolliert:
 
 ```json
 {
@@ -154,16 +154,16 @@ Dieses Ereignisprotokoll enthält Informationen darüber, welche NSG-Regeln basi
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"[SECURITY RULE NAME]",
-        "direction":"In",
-        "priority":1000,
-        "type":"allow",
+        "ruleName":"[SECURITY-RULE-NAME]",
+        "direction":"[DIRECTION-SPECIFIED-IN-RULE]",
+        "priority":[PRIORITY-SPECIFIED-IN-RULE],
+        "type":"[ALLOW-OR-DENY-AS-SPECIFIED-IN-RULE]",
         "conditions":{
-            "protocols":"6",
-            "destinationPortRange":"[PORT RANGE]",
-            "sourcePortRange":"0-65535",
-            "sourceIP":"0.0.0.0/0",
-            "destinationIP":"0.0.0.0/0"
+            "protocols":"[PROTOCOLS-SPECIFIED-IN-RULE]",
+            "destinationPortRange":"[PORT-RANGE-SPECIFIED-IN-RULE]",
+            "sourcePortRange":"[PORT-RANGE-SPECIFIED-IN-RULE]",
+            "sourceIP":"[SOURCE-IP-OR-RANGE-SPECIFIED-IN-RULE]",
+            "destinationIP":"[DESTINATION-IP-OR-RANGE-SPECIFIED-IN-RULE]"
             }
         }
 }
@@ -171,7 +171,7 @@ Dieses Ereignisprotokoll enthält Informationen darüber, welche NSG-Regeln basi
 
 ### <a name="rule-counter"></a>Regelzähler
 
-Das Regelzählerprotokoll enthält Informationen über jede Regel, die auf Ressourcen angewendet wird. Die folgenden Beispieldaten werden jedes Mal protokolliert, wenn eine Regel angewendet wird:
+Das Regelzählerprotokoll enthält Informationen über jede Regel, die auf Ressourcen angewendet wird. Die folgenden Beispieldaten werden jedes Mal protokolliert, wenn eine Regel angewendet wird. Im folgenden Beispiel werden die Daten für einen virtuellen Computer mit der IP-Adresse „192.168.1.4“ und der MAC-Adresse „00-0D-3A-92-6A-7C“ protokolliert:
 
 ```json
 {
@@ -185,9 +185,9 @@ Das Regelzählerprotokoll enthält Informationen über jede Regel, die auf Resso
         "subnetPrefix":"192.168.1.0/24",
         "macAddress":"00-0D-3A-92-6A-7C",
         "primaryIPv4Address":"192.168.1.4",
-        "ruleName":"[SECURITY RULE NAME]",
-        "direction":"In",
-        "type":"allow",
+        "ruleName":"[SECURITY-RULE-NAME]",
+        "direction":"[DIRECTION-SPECIFIED-IN-RULE]",
+        "type":"[ALLOW-OR-DENY-AS-SPECIFIED-IN-RULE]",
         "matchedConnections":125
         }
 }

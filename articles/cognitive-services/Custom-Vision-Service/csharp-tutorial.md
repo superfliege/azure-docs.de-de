@@ -9,12 +9,12 @@ ms.component: custom-vision
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 80cb022808748ed2c60dff7c363d6020cb4043a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d3c2ffb0fd9578458bd07241eed4a87cf70d3c3c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374722"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617433"
 ---
 # <a name="use-the-custom-vision-service-from-a-c35-application"></a>Verwenden des Custom Vision Service über eine C&#35;-Anwendung
 
@@ -22,9 +22,15 @@ Es wird beschrieben, wie Sie den Custom Vision Service über eine C#-Anwendung v
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine beliebige Edition von Visual Studio 2015 oder 2017 für Windows.
+* Eine beliebige Edition von Visual Studio 2017 für Windows.
 
-* [Custom Vision Service SDK](http://github.com/Microsoft/Cognitive-CustomVision-Windows/). Enthält das in diesem Dokument verwendete Beispiel und die entsprechenden Bilder.
+## <a name="get-the-custom-vision-sdk-and-samples"></a>Abrufen des Custom Vision SDK und von Beispielen
+Die folgenden Custom Vision SDK NuGet-Pakete sind zum Erstellen dieses Beispiels erforderlich:
+
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/)
+* [Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)
+
+Sie können die Bilder zusammen mit den [C#-Beispielen](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/CustomVision) herunterladen.
 
 ## <a name="get-the-training-and-prediction-keys"></a>Abrufen der Trainings- und Vorhersageschlüssel
 

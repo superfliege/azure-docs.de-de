@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 08/20/2018
 ms.author: jeedes
-ms.openlocfilehash: d46f2aac5fb16b10f33cccabdcd76d60f0d6dfb9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eadf6724891d348c2ea3654bcf19ef0d74078049
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438056"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dropbox-for-business"></a>Tutorial: Azure Active Directory-Integration mit Dropbox für Unternehmen
 
@@ -50,29 +50,32 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
+Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von Dropbox für Unternehmen aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>Hinzufügen von Dropbox für Unternehmen aus dem Katalog
+
 Zum Konfigurieren der Integration von Dropbox für Unternehmen in Azure AD müssen Sie Dropbox für Unternehmen aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Dropbox für Unternehmen aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“][1]
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
-1. Geben Sie im Suchfeld **Dropbox für Unternehmen** ein, wählen Sie im Ergebnisbereich **Dropbox für Unternehmen** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Dropbox für Unternehmen** ein, wählen Sie im Ergebnisbereich **Dropbox für Unternehmen** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Dropbox für Unternehmen in der Ergebnisliste](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_addfromgallery.png)
 
@@ -87,10 +90,10 @@ Weisen Sie in Dropbox für Unternehmen den Wert für **Benutzername** aus Azure 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Dropbox für Unternehmen müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Dropbox für Unternehmen-Testbenutzers](#create-a-dropbox-for-business-test-user)**, um in Dropbox für Unternehmen eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Benutzerdarstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Dropbox für Unternehmen-Testbenutzers](#create-a-dropbox-for-business-test-user)**, um in Dropbox für Unternehmen eine Entsprechung von Britta Simon zu erhalten, die mit ihrer Benutzerdarstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
@@ -102,11 +105,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_samlbase.png)
 
-1. Führen Sie im Abschnitt **Domäne und URLs für Dropbox für Unternehmen** die folgenden Schritte aus:
+3. Führen Sie im Abschnitt **Domäne und URLs für Dropbox für Unternehmen** die folgenden Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Dropbox für Unternehmen](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_url1.png)
 
@@ -114,59 +117,56 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     b. Geben Sie im Textfeld **Bezeichner** einen Wert ein: `Dropbox`
 
-    > [!NOTE] 
-    > Der hier angegebene Wert für die Anmelde-URL ist kein echter Wert. Er muss mit der tatsächlichen Anmelde-URL aktualisiert werden. Dies wird weiter unten in diesem Tutorial beschrieben. Den Wert erhalten Sie vom [Supportteam für den Dropbox für Unternehmen-Client](https://www.dropbox.com/business/contact). 
- 
+    > [!NOTE]
+    > Der hier angegebene Wert für die Anmelde-URL ist kein echter Wert. Er muss mit der tatsächlichen Anmelde-URL aktualisiert werden. Dies wird weiter unten in diesem Tutorial beschrieben.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/dropboxforbusiness-tutorial/tutorial_general_400.png)
 
-1. Klicken Sie im Abschnitt **Dropbox für Unternehmen-Konfiguration** auf **Dropbox für Unternehmen konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+6. Klicken Sie im Abschnitt **Dropbox für Unternehmen-Konfiguration** auf **Dropbox für Unternehmen konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Konfiguration von Dropbox für Unternehmen](./media/dropboxforbusiness-tutorial/tutorial_dropboxforbusiness_configure.png) 
 
-1. Navigieren Sie zu Ihrem Dropbox für Unternehmen-Mandanten, um das einmalige Anmelden aufseiten von **Dropbox für Unternehmen** zu konfigurieren.
+7. Navigieren Sie zu Ihrem Dropbox für Unternehmen-Mandanten, und melden Sie sich bei diesem Mandanten an, um das einmalige Anmelden aufseiten von **Dropbox für Unternehmen** zu konfigurieren.
 
-    a. Melden Sie sich bei Ihrem Dropbox für Unternehmen-Mandanten an. 
-   
     ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/ic769509.png "Einmaliges Anmelden konfigurieren")
-   
-    b. Klicken Sie im Navigationsbereich auf der linken Seite auf **Verwaltungskonsole**. 
-   
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/ic769510.png "Einmaliges Anmelden konfigurieren")
-   
-    c. Klicken Sie in der **Verwaltungskonsole** im linken Navigationsbereich auf **Authentifizierung**. 
-   
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/ic769511.png "Einmaliges Anmelden konfigurieren")
-   
-    d. Wählen Sie im Abschnitt **Einmaliges Anmelden** die Option **Einmaliges Anmelden aktivieren**, und klicken Sie dann auf **Mehr**, um diesen Abschnitt zu erweitern.  
-   
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/ic769512.png "Einmaliges Anmelden konfigurieren")
-   
-    e. Kopieren Sie die URL neben **Users can sign in by entering their email address or they can go directly to** (Benutzer können sich durch Angabe ihrer E-Mail-Adresse anmelden oder direkt zu folgender URL navigieren), und fügen Sie sie im Azure-Portal im Abschnitt **Domäne und URLs für Dropbox für Unternehmen** in das Feld **Anmelde-URL** ein. 
-    
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/ic769513.png)
-    
-1. Führen Sie auf der Seite **Authentifizierung** im Abschnitt **Einmaliges Anmelden** folgende Schritte aus: 
-   
-    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/IC769516.png "Einmaliges Anmelden konfigurieren")
-   
-    a. Klicken Sie auf **Erforderlich**.
-   
-    b. Fügen Sie in das Textfeld **Sign In URL** (Anmelde-URL) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Klicken Sie auf **Zertifikat auswählen**, und wechseln Sie dann zu Ihrer **Base-64-codierten Zertifikatdatei**.
+8. Klicken Sie auf das **Benutzersymbol**, und wählen Sie die Registerkarte **Einstellungen** aus.
 
-    d. Klicken Sie auf **Änderungen speichern**, um die Konfiguration für Ihren DropBox für Unternehmen-Mandanten abzuschließen.
+    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure1.png "Einmaliges Anmelden konfigurieren")
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+9. Klicken Sie im Navigationsbereich auf der linken Seite auf **Verwaltungskonsole**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure2.png "Einmaliges Anmelden konfigurieren")
+
+10. Klicken Sie in der **Verwaltungskonsole** im linken Navigationsbereich auf **Einstellungen**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure3.png "Einmaliges Anmelden konfigurieren")
+
+11. Wählen Sie im Abschnitt **Authentifizierung** die Option **Einmaliges Anmelden** aus.
+
+    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure4.png "Einmaliges Anmelden konfigurieren")
+
+12. Führen Sie im Abschnitt **Einmaliges Anmelden** die folgenden Schritte aus:  
+
+    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure5.png "Einmaliges Anmelden konfigurieren")
+
+    a. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** die Option **Erforderlich** aus.
+
+    b. Klicken Sie auf **Anmelde-URL hinzufügen**, und fügen Sie den Wert der **SAML-Dienst-URL für einmaliges Anmelden**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Anmelde-URL des Identitätsanbieters** ein. Anschließend klicken Sie auf **Fertig**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/dropboxforbusiness-tutorial/configure6.png "Einmaliges Anmelden konfigurieren")
+
+    c. Klicken Sie auf **Zertifikat hochladen**, und navigieren Sie dann zu Ihrer **Base64-codierten Zertifikatsdatei**, die Sie aus dem Azure-Portal heruntergeladen haben.
+
+    d. Klicken Sie auf **Link kopieren**, und fügen Sie den kopierten Wert in das Textfeld **Anmelde-URL** im Abschnitt **Domäne und URLs für Dropbox für Unternehmen** im Azure-Portal ein.
+
+    e. Klicken Sie auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

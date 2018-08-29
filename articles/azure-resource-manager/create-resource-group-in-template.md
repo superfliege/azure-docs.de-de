@@ -9,20 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 90d21ac817f6fd4730ff4a7e98500a80af10ac70
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 003f5d114a233738783d265a18ee7d2ccbfaba10
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623208"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617265"
 ---
 # <a name="create-resource-groups-in-azure-resource-manager-templates"></a>Erstellen von Ressourcengruppen in Azure Resource Manager-Vorlagen
 
-Um eine Ressourcengruppe in einer Azure Resource Manager-Vorlage zu erstellen, definieren Sie eine Ressource **Microsoft.Resources/resourceGroups** mit einem Namen und einem Speicherort für die Ressourcengruppe. Stellen Sie die Vorlage in Ihrem Azure-Abonnement bereit. In dieser Vorlage können Sie auch Ressourcen für diese Ressourcengruppe bereitstellen.
+Um eine Ressourcengruppe in einer Azure Resource Manager-Vorlage zu erstellen, definieren Sie eine Ressource **Microsoft.Resources/resourceGroups** mit einem Namen und einem Speicherort für die Ressourcengruppe. Stellen Sie die Vorlage in Ihrem Azure-Abonnement bereit. Weitere Informationen zu Bereitstellungen auf Abonnementebene finden Sie unter [Bereitstellen von Ressourcen in einem Azure-Abonnement](deploy-to-subscription.md).
 
-In diesem Artikel werden die Vorlagen über die Azure CLI bereitgestellt. Derzeit unterstützt PowerShell nicht die Bereitstellung einer Vorlage in einem Abonnement.
+In dieser Vorlage können Sie auch Ressourcen für diese Ressourcengruppe bereitstellen.
+
+In diesem Artikel werden Vorlagen über die Azure CLI und PowerShell bereitgestellt.
 
 ## <a name="create-empty-resource-group"></a>Erstellen einer leeren Ressourcengruppe
 
@@ -62,6 +64,17 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json \
   --parameters rgName=demoRG rgLocation=northcentralus
+```
+
+Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoEmptyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/emptyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus
 ```
 
 ## <a name="create-several-resource-groups"></a>Erstellen von mehreren Ressourcengruppen
@@ -109,6 +122,18 @@ az deployment create \
   -l southcentralus \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json \
   --parameters rgNamePrefix=demoRG rgLocation=northcentralus instanceCount=3
+```
+
+Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoCopyRG `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/copyRG.json `
+  -rgName demogroup `
+  -rgLocation northcentralus `
+  -instanceCount 3
 ```
 
 ## <a name="create-resource-group-and-deploy-resource"></a>Erstellen einer Ressourcengruppe und Bereitstellen einer Ressource
@@ -190,7 +215,20 @@ az deployment create \
   --parameters rgName=rgStorage rgLocation=northcentralus storagePrefix=storage
 ```
 
+Um diese Vorlage mit PowerShell bereitzustellen, verwenden Sie:
+
+```azurepowershell-interactive
+New-AzureRmDeployment `
+  -Name demoRGStorage `
+  -Location southcentralus `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/newRGWithStorage.json `
+  -rgName rgStorage `
+  -rgLocation northcentralus `
+  -storagePrefix storage
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
+* Informationen zu Bereitstellungen auf Abonnementebene finden Sie unter [Bereitstellen von Ressourcen in einem Azure-Abonnement](deploy-to-subscription.md).
 * Informationen zur Behebung von Abhängigkeiten während der Bereitstellung finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](resource-manager-common-deployment-errors.md).
 * Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md). 
 * Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md).

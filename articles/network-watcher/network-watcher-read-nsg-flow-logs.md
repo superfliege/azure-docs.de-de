@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: 492a0a63198fe2013cfeac0459fc6da8521a5e6e
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056799"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143240"
 ---
 # <a name="read-nsg-flow-logs"></a>Lesen von NSG-Datenflussprotokollen
 
@@ -28,7 +28,7 @@ NSG-Datenflussprotokolle werden in einem Speicherkonto in [Blockblobs](/rest/api
 
 ## <a name="scenario"></a>Szenario
 
-Im folgenden Beispiel liegt ein Beispiel-Datenflussprotokoll vor, das in einem Speicherkonto gespeichert ist. Es wird schrittweise erläutert, wie Sie selektiv die aktuellen Ereignisse in NSG-Datenflussprotokollen lesen. In diesem Artikel wird PowerShell verwendet. Die erörterten Konzepte sind jedoch nicht auf diese Programmiersprache beschränkt und gelten für alle Sprachen, die von den Azure Storage-APIs unterstützt werden.
+Im folgenden Beispiel liegt ein Beispiel-Datenflussprotokoll vor, das in einem Speicherkonto gespeichert ist. Sie erfahren, wie Sie selektiv die aktuellen Ereignisse in NSG-Datenflussprotokollen lesen. In diesem Artikel verwenden Sie PowerShell. Die erörterten Konzepte sind jedoch nicht auf diese Programmiersprache beschränkt und gelten für alle Sprachen, die von den Azure Storage-APIs unterstützt werden.
 
 ## <a name="setup"></a>Einrichtung
 
@@ -98,7 +98,7 @@ ZjAyZTliYWE3OTI1YWZmYjFmMWI0MjJhNzMxZTI4MDM=      2      True
 
 ## <a name="read-the-block-blob"></a>Lesen des Blockblobs
 
-Nun muss die `$blocklist`-Variable gelesen werden, um die Daten abzurufen. In diesem Beispiel wird die Liste der Blöcke durchlaufen, die Bytes werden aus den einzelnen Blöcken gelesen und in einem Array gespeichert. Die Daten werden mit der [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_)-Methode abgerufen.
+Nun müssen Sie die `$blocklist`-Variable lesen, um die Daten abzurufen. In diesem Beispiel wird die Liste der Blöcke durchlaufen, die Bytes werden aus den einzelnen Blöcken gelesen und in einem Array gespeichert. Rufen Sie die Daten mit der [DownloadRangeToByteArray](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadrangetobytearray?view=azurestorage-8.1.3#Microsoft_WindowsAzure_Storage_Blob_CloudBlob_DownloadRangeToByteArray_System_Byte___System_Int32_System_Nullable_System_Int64__System_Nullable_System_Int64__Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_)-Methode ab.
 
 ```powershell
 # Set the size of the byte array to the largest block
@@ -132,7 +132,7 @@ $valuearray += $value
 }
 ```
 
-Nun enthält das `$valuearray`-Array den Zeichenfolgenwert jedes Blocks. Um den Eintrag zu überprüfen, rufen Sie den zweitletzten Wert aus dem Array ab. Führen Sie dazu `$valuearray[$valuearray.Length-2]` aus. Der letzte Wert ist lediglich die schließende Klammer und wird daher nicht gewünscht.
+Nun enthält das `$valuearray`-Array den Zeichenfolgenwert jedes Blocks. Um den Eintrag zu überprüfen, rufen Sie den zweitletzten Wert aus dem Array ab. Führen Sie dazu `$valuearray[$valuearray.Length-2]` aus. Der letzte Wert ist die schließende Klammer und daher von Ihnen nicht gewünscht.
 
 Die Ergebnisse dieses Werts werden im folgenden Beispiel gezeigt:
 
@@ -157,7 +157,6 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 ```
 
 Anhand dieses Szenarios wird beispielhaft veranschaulicht, wie Einträge in NSG-Datenflussprotokollen gelesen werden, ohne dass das gesamte Protokoll analysiert werden muss. Sie können neue Einträge im Protokoll lesen, da diese unter Verwendung der Block-ID geschrieben wurden. Sie können dazu auch die Länge der im Blockblob gespeicherten Blöcke verfolgen. Dadurch können Sie ausschließlich die neuen Einträge lesen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

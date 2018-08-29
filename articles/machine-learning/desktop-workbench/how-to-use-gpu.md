@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 852f514a36ea640f478c5cc5ebbb137ca962703a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f3b6c4f6af14615511400650662fe7a350c172ba
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115484"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144965"
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Verwenden von GPUs in Azure Machine Learning
 Ein Grafikprozessor (GPU) verarbeitet meistens rechenintensive Vorgänge, die in der Regel beim Trainieren bestimmter Modelle für tiefe neuronale Netzwerke vorkommen können. Mithilfe von GPUs können Sie die Trainingszeit der Modelle deutlich reduzieren. In diesem Dokument erfahren Sie, wie Sie Azure ML Workbench für die Verwendung der mit GPUs ausgestatteten [DSVM (Data Science Virtual Machine)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) als Ausführungsziel konfigurieren. 
@@ -25,7 +25,7 @@ Ein Grafikprozessor (GPU) verarbeitet meistens rechenintensive Vorgänge, die in
 - Um dieses Handbuch auszuführen, müssen Sie zuerst [Azure ML Workbench installieren](../service/quickstart-installation.md).
 - Sie benötigen Zugriff auf Computer, die mit NVidia-GPUs ausgestattet sind.
     - Sie können Ihre Skripts direkt auf dem lokalen Computer (Windows oder macOS) mit GPUs ausführen.
-    - Sie können Skripts auch in einem Docker-Container auf einem Computer mit GPUs ausführen.
+    - Sie können Skripts auch in einem Docker-Container auf einem Linux-Computer mit GPUs ausführen.
 
 ## <a name="execute-in-local-environment-with-gpus"></a>Ausführen in _lokaler_ Umgebung mit GPUs
 Sie können Azure ML Workbench auf einem mit GPUs ausgestatteten Computer installieren und in der _lokalen_ Umgebung ausführen. Infrage kommt:

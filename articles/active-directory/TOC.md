@@ -128,31 +128,6 @@
 #### [Registrieren für die Self-Service-Kennwortzurücksetzung](user-help/active-directory-passwords-reset-register.md)
 
 
-## Verwalten von Geräten
-### [Übersicht](devices/overview.md)
-
-### Schnellstarts
-#### [Einrichten von bei Azure AD registrierten Windows 10-Geräten](user-help/device-management-azuread-registered-devices-windows10-setup.md)
-#### [Einrichten von in Azure AD eingebundenen Geräten](user-help/device-management-azuread-joined-devices-setup.md)
-
-### Tutorials
-#### [Konfigurieren der Azure AD-Hybrideinbindung für verwaltete Domänen](devices/hybrid-azuread-join-managed-domains.md)
-#### [Konfigurieren der Azure AD-Hybrideinbindung für Verbunddomänen](devices/hybrid-azuread-join-federated-domains.md)
-#### [Manuelles Konfigurieren der Azure AD-Hybrideinbindung](devices/hybrid-azuread-join-manual-steps.md)
-#### [Konfigurieren der Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10](devices/azuread-joined-devices-frx.md)
-
-### Anleitungen
-#### [Planen der Azure AD-Einbindung](devices/azureadjoin-plan.md)
-#### [Planen der Implementierung Ihrer Azure AD-Hybrideinbindung](devices/hybrid-azuread-join-plan.md)
-#### [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](devices/hybrid-azuread-join-control.md)
-#### [Zuweisen lokaler Administratoren zu in Azure AD eingebundenen Geräten](devices/assign-local-admin.md)
-#### [Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [Problembehandlung für in Azure AD eingebundene ältere Windows-Hybridgeräte](devices/troubleshoot-hybrid-join-windows-legacy.md)
-
-### Konzepte
-#### [Verwalten von Geräten mithilfe des Azure-Portals](devices/device-management-azure-portal.md)
-#### [Häufig gestellte Fragen](devices/faq.md)
-
 ## Verwalten von Apps
 ### [Übersicht](manage-apps/what-is-application-management.md)
 ### [Erste Schritte](manage-apps/plan-an-application-integration.md)

@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 53b35fbdc469639b1fdc09293e05247bcc5d8c31
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714484"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42143647"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
@@ -137,7 +137,43 @@ Dieser Fehler kann durch veraltete Azure-Module verursacht werden.
 
 Dieser Fehler kann behoben werden, indem Sie Ihre Azure-Module auf die neueste Version aktualisieren.
 
-Klicken Sie in Ihrem Automation-Konto auf **Module** und anschließend auf **Azure-Module aktualisieren**. Das Update dauert ungefähr 15 Minuten. Führen Sie anschließend das Runbook, bei dem der Fehler aufgetreten ist, erneut aus.
+Klicken Sie in Ihrem Automation-Konto auf **Module** und anschließend auf **Azure-Module aktualisieren**. Das Update dauert ungefähr 15 Minuten. Führen Sie anschließend das Runbook, bei dem der Fehler aufgetreten ist, erneut aus. Weitere Informationen zum Aktualisieren Ihrer Module finden Sie unter [Aktualisieren von Azure-Modulen in Azure Automation](../automation-update-azure-modules.md).
+
+### <a name="child-runbook-auth-failure"></a>Szenario: Fehler beim untergeordneten Runbook, wenn mehrere Abonnements verwendet werden
+
+#### <a name="issue"></a>Problem
+
+Beim Ausführen untergeordneter Runbooks mit `Start-AzureRmRunbook` kann das untergeordnete Runbook Azure-Ressourcen nicht verwalten.
+
+#### <a name="cause"></a>Ursache
+
+Das untergeordnete Runbook verwendet beim Ausführen nicht den richtigen Kontext.
+
+#### <a name="resolution"></a>Lösung
+
+Wenn Sie mit mehreren Abonnements arbeiten, geht beim Aufrufen untergeordneter Runbooks möglicherweise der Abonnementkontext verloren. Um sicherzustellen, dass der Abonnementkontext an die untergeordneten Runbooks übergeben wird, fügen Sie den Parameter `DefaultProfile` zum Cmdlet hinzu, und übergeben Sie darin den Kontext.
+
+```azurepowershell-interactive
+# Connect to Azure with RunAs account
+$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
+
+Add-AzureRmAccount `
+    -ServicePrincipal `
+    -TenantId $ServicePrincipalConnection.TenantId `
+    -ApplicationId $ServicePrincipalConnection.ApplicationId `
+    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
+
+$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+
+$params = @{"VMName"="MyVM";"RepeatCount"=2;"Restart"=$true}
+
+Start-AzureRmAutomationRunbook `
+    –AutomationAccountName 'MyAutomationAccount' `
+    –Name 'Test-ChildRunbook' `
+    -ResourceGroupName 'LabRG' `
+    -DefaultProfile $AzureContext `
+    –Parameters $params –wait
+```
 
 ### <a name="not-recognized-as-cmdlet"></a>Szenario: Runbookfehler aufgrund eines fehlenden Cmdlets
 
@@ -189,6 +225,8 @@ Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 * Empfohlene Methoden, die innerhalb des Arbeitsspeichergrenzwerts funktionieren, sollen die Workload zwischen mehreren Runbooks aufteilen und nicht so viel Daten im Speicher verarbeiten, keine unnötige Ausgabe aus den Runbooks schreiben oder ermitteln, wie viele Prüfpunkt Sie in Ihre PowerShell-Workflow-Runbooks schreiben.  
 
 * Aktualisieren Sie Ihre Azure-Module, indem Sie die Schritte unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) befolgen.  
+
+* Eine andere Lösung ist das Ausführen des Runbooks in einem [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybrid Worker unterliegen nicht den von der [gleichmäßigen Verteilung](../automation-runbook-execution.md#fair-share) in Azure-Sandboxes vorgegebenen Grenzwerten.
 
 ### <a name="fails-deserialized-object"></a>Szenario: Runbookfehler aufgrund eines deserialisierten Objekts
 

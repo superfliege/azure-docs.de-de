@@ -13,46 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 83436fe7f47c156f70995d66922e9fc0564ef872
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601194"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144515"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Zertifizieren von AppSource für Azure Active Directory
+
 [Microsoft AppSource](https://appsource.microsoft.com/) ist ein Ziel für Geschäftsbenutzer zum Entdecken, Ausprobieren und Verwalten branchenspezifischer SaaS-Anwendungen (eigenständiges SaaS und Add-On zu vorhandenen SaaS-Produkten von Microsoft).
 
-Zum Auflisten einer eigenständigen SaaS-Anwendung auf AppSource muss Ihre Anwendung einmaliges Anmelden von Geschäftskonten aus von allen Unternehmen oder Organisationen akzeptieren, die über Azure Active Directory verfügen. Für den Anmeldevorgang muss das [OpenID Connect](v1-protocols-openid-connect-code.md)- oder [OAuth 2.0](v1-protocols-oauth-code.md)-Protokoll verwendet werden. SAML-Integration wird für die AppSource-Zertifizierung nicht akzeptiert.
+Zum Auflisten einer eigenständigen SaaS-Anwendung auf AppSource muss Ihre Anwendung einmaliges Anmelden von Geschäftskonten aus von allen Unternehmen oder Organisationen akzeptieren, die über Azure Active Directory (Azure AD) verfügen. Für den Anmeldevorgang muss das [OpenID Connect](v1-protocols-openid-connect-code.md)- oder [OAuth 2.0](v1-protocols-oauth-code.md)-Protokoll verwendet werden. SAML-Integration wird für die AppSource-Zertifizierung nicht akzeptiert.
 
 ## <a name="guides-and-code-samples"></a>Anleitungen und Codebeispiele
-Wenn Sie weitere Informationen über die Integration Ihrer Anwendung in Azure Active Directory mithilfe der Open ID-Verbindung wünschen, befolgen Sie unsere Anleitungen und Codebeispiele in [Azure Active Directory für Entwickler](azure-ad-developers-guide.md#get-started "Erste Schritte").
+
+Wenn Sie weitere Informationen über die Integration Ihrer Anwendung in Azure AD mithilfe der Open ID-Verbindung wünschen, befolgen Sie unsere Anleitungen und Codebeispiele in [Azure Active Directory für Entwickler](azure-ad-developers-guide.md#get-started "Erste Schritte").
 
 ## <a name="multi-tenant-applications"></a>Mehrinstanzenfähige Anwendungen
 
-Eine Anwendung, die Anmeldungen von Benutzern aus allen Unternehmen oder Organisationen akzeptiert, die über Azure Active Directory verfügen, ohne dass eine separate Instanz, Konfiguration oder Bereitstellung erforderlich ist, wird als *mehrinstanzenfähige Anwendung* bezeichnet. AppSource empfiehlt, dass Anwendungen Mehrinstanzenfähigkeit implementieren, um die kostenlose Testbenutzeroberfläche *per Einfachklick* zu aktivieren.
+Eine *mehrinstanzenfähige Anwendung* ist eine Anwendung, die Anmeldungen von Benutzern aus allen Unternehmen oder Organisationen akzeptiert, die über Azure AD verfügen, ohne dass eine separate Instanz, Konfiguration oder Bereitstellung erforderlich ist. AppSource empfiehlt, dass Anwendungen Mehrinstanzenfähigkeit implementieren, um die kostenlose Testbenutzeroberfläche *per Einfachklick* zu aktivieren.
 
-So aktivieren Sie die Mehrinstanzenfähigkeit in Ihrer Anwendung:
-- Legen Sie in den Registrierungsdaten Ihrer Anwendung im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) die `Multi-Tenanted`-Eigenschaft auf `Yes` fest (standardmäßig werden im Azure-Portal erstellte Anwendungen als *mit nur einem Mandanten* konfiguriert).
-- Aktualisieren Sie Ihren Code zum Senden von Anforderungen an den Endpunkt „`common`“ (aktualisieren Sie den Endpunkt von *https://login.microsoftonline.com/{yourtenant}* zu *https://login.microsoftonline.com/common*)
-- Für einige Plattformen, wie ASP.NET, müssen Sie den Code auch zum Akzeptieren mehrere Aussteller aktualisieren.
+Führen Sie diese Schritte aus, um die Mehrinstanzenfähigkeit für Ihre Anwendung zu aktivieren:
+1. Legen Sie im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) in den Registrierungsdaten Ihrer Anwendung die `Multi-Tenanted`-Eigenschaft auf `Yes` fest. Im Azure-Portal erstellte Anwendungen werden standardmäßig mit *[nur einem Mandanten](#single-tenant-applications)* konfiguriert.
+1. Aktualisieren Sie Ihren Code, um Anforderungen an den Endpunkt `common` zu senden. Ändern Sie dazu den Endpunkt von `https://login.microsoftonline.com/{yourtenant}` in `https://login.microsoftonline.com/common*`.
+1. Für einige Plattformen, z.B. ASP.NET, müssen Sie den Code auch so aktualisieren, dass er mehrere Aussteller akzeptiert.
 
-Weitere Informationen zur Mehrinstanzenfähigkeit finden Sie unter: [Anmelden von Azure Active Directory-Benutzern (AD) mit dem mehrinstanzenfähigen Anwendungsmuster](howto-convert-app-to-be-multi-tenant.md).
+Weitere Informationen zur Mehrinstanzenfähigkeit finden Sie unter [Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](howto-convert-app-to-be-multi-tenant.md).
 
 ### <a name="single-tenant-applications"></a>Anwendungen mit einem Mandanten
-Anwendungen, die nur Anmeldungen von Benutzern einer definierten Azure Active Directory-Instanz akzeptieren, werden *Anwendungen mit einem Mandanten* genannt. Externe Benutzer (einschließlich Geschäfts- oder Schulkonten aus anderen Organisationen oder persönliche Konten) können sich bei Anwendungen mit einem Mandanten anmelden, nachdem jeder Benutzer als *Gastkonto* der Azure Active Directory-Instanz hinzugefügt worden ist, bei der die Anwendung registriert ist. Sie können Benutzer über die [*Azure AD B2B-Zusammenarbeit*](../b2b/what-is-b2b.md) als Gastkonten einem Azure Active Directory hinzufügen – und dies kann [programmgesteuert](../../active-directory-b2c/code-samples.md) erfolgen. Wenn Sie einen Benutzer einem Azure Active Directory als Gastkonto hinzufügen, wird eine Einladungs-E-Mail an den Benutzer gesendet, der die Einladung durch Klicken auf den Link in der Einladungs-E-Mail annehmen muss. Bei Einladungen, die an weitere Benutzer in einer einladenden Organisation gesendet werden, die auch Mitglied der Partnerorganisation ist, ist das Akzeptieren einer Einladung keine Voraussetzung für die Anmeldung.
+
+Eine *Anwendung mit einem Mandanten* ist eine Anwendung, die nur Anmeldungen von Benutzern einer definierten Azure Active Directory-Instanz akzeptiert. Externe Benutzer (einschließlich Geschäfts- oder Schulkonten aus anderen Organisationen oder persönliche Konten) können sich bei Anwendungen mit einem Mandanten anmelden, nachdem jeder Benutzer als Gastkonto der Azure AD-Instanz hinzugefügt worden ist, bei der die Anwendung registriert ist. 
+
+Sie können Benutzer über die [Azure AD B2B-Zusammenarbeit](../b2b/what-is-b2b.md) als Gastkonten zu Azure AD hinzufügen – und zwar [programmgesteuert](../../active-directory-b2c/code-samples.md). Wenn Sie B2B verwenden, können Benutzer ein Self-Service-Portal erstellen, das keine Einladung für die Anmeldung erfordert. Weitere Informationen finden Sie unter [Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal).
 
 Anwendungen mit einem Mandanten können die *Kontaktformular*-Oberfläche aktivieren, aber wenn Sie die kostenlose Testbenutzeroberfläche per Einfachklick, die AppSource empfiehlt, aktivieren möchten, ermöglichen Sie stattdessen die Mehrinstanzenfähigkeit Ihrer Anwendung.
-
 
 ## <a name="appsource-trial-experiences"></a>AppSource – Testbenutzeroberflächen
 
 ### <a name="free-trial-customer-led-trial-experience"></a>Kostenlose Testversion (kundengeführte Testbenutzeroberfläche) 
-Die *kundengeführte Testversion* ist die Benutzeroberfläche, die AppSource empfiehlt, da sie einen Einfachklickzugriff auf Ihre Anwendung bietet. Die folgende Abbildung zeigt, wie diese Benutzeroberfläche aussieht:<br/><br/>
+
+Die kundengeführte Testversion ist die Benutzeroberfläche, die AppSource empfiehlt, da sie einen Einfachklickzugriff auf Ihre Anwendung bietet. Die folgende Abbildung zeigt, wie diese Benutzeroberfläche aussieht:<br/><br/>
 
 <table >
 <tr>
@@ -68,7 +73,8 @@ Die *kundengeführte Testversion* ist die Benutzeroberfläche, die AppSource emp
 </table>
 
 ### <a name="contact-me-partner-led-trial-experience"></a>Kontaktformular (partnergeführte Testbenutzeroberfläche)
-Die *partnergeführte Testbenutzeroberfläche* kann verwendet werden, wenn ein manueller oder langfristiger Vorgang nötig ist, um den Benutzer/das Unternehmen bereitzustellen: Ihre Anwendung muss z.B. virtuelle Computer, Datenbankinstanzen oder Vorgänge bereitstellen, die viel Zeit in Anspruch nehmen. In diesem Fall sendet AppSource Ihnen Kontaktinformationen des Benutzers, nachdem der Benutzer die Schaltfläche *„Testversion anfordern“* ausgewählt und ein Formular ausgefüllt hat. Bei Erhalt dieser Informationen stellen Sie dann die Umgebung bereit und senden die Anweisungen für den Zugriff auf die Testoberfläche an den Benutzer:<br/><br/>
+
+Sie können die partnergeführte Testbenutzeroberfläche verwenden, wenn ein manueller oder langfristiger Vorgang nötig ist, um den Benutzer/das Unternehmen bereitzustellen: Ihre Anwendung muss z.B. virtuelle Computer, Datenbankinstanzen oder Vorgänge bereitstellen, die viel Zeit in Anspruch nehmen. In diesem Fall sendet AppSource Ihnen Kontaktinformationen des Benutzers, nachdem der Benutzer die Schaltfläche **Testversion anfordern** ausgewählt und ein Formular ausgefüllt hat. Wenn Sie diese Informationen erhalten haben, stellen Sie die Umgebung bereit und senden die Anweisungen für den Zugriff auf die Testoberfläche an den Benutzer:<br/><br/>
 
 <table valign="top">
 <tr>
@@ -101,17 +107,18 @@ Die *partnergeführte Testbenutzeroberfläche* kann verwendet werden, wenn ein m
 </table>
 
 ### <a name="more-information"></a>Weitere Informationen
+
 Weitere Informationen zur AppSource-Testversionsbenutzeroberfläche finden Sie in [diesem Video](https://aka.ms/trialexperienceforwebapps). 
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Erstellen von Anwendungen, die Azure Active Directory-Anmeldungen unterstützen, finden Sie unter [Authentifizierungsszenarien für Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios). 
-
+- Weitere Informationen zum Erstellen von Anwendungen, die Azure AD-Anmeldungen unterstützen, finden Sie unter [Authentifizierungsszenarien für Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 - Informationen zum Auflisten der SaaS-Anwendung in AppSource finden Sie unter [AppSource-Partnerinformationen](https://appsource.microsoft.com/partners).
 
 
-## <a name="get-support"></a>Erhalten von Support
-Für die Azure Active Directory-Integration bieten wir Support mit der Community über [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource). 
+## <a name="get-support"></a>Support
+
+Für die Azure AD-Integration bieten wir Communitysupport über [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource). 
 
 Sie sollten Ihre Fragen unbedingt zuerst auf Stack Overflow stellen und die vorhandenen Probleme durchsuchen, um festzustellen, ob bereits vor Ihnen jemand Ihre Frage gestellt hat. Stellen Sie sicher, dass Ihre Fragen und Kommentare mit [`[azure-active-directory]` und `[appsource]`](http://stackoverflow.com/questions/tagged/azure-active-directory+appsource) markiert sind.
 

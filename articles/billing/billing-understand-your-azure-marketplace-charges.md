@@ -13,18 +13,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/9/2017
+ms.date: 06/15/2018
 ms.author: adpick
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6f7d8b89806e1f6d59e1a64e589558cd972f4fdc
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: bd99cf7b57cd004eb5ab2b62fd4c56e129583c8c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203968"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617660"
 ---
 # <a name="understand-your-azure-billing-for-external-service-charges"></a>Grundlegendes zur Abrechnung von Azure-Gebühren für externe Dienste
-Externe Dienste werden von Drittanbietern im Azure Marketplace veröffentlicht. Beispiele für externe Dienste, die Sie in Azure erwerben können, die jedoch nicht von Microsoft veröffentlicht werden, sind ClearDB und SendGrid.
+Externe Dienste werden von Drittanbietern im Azure Marketplace veröffentlicht. Ein Beispiel für einen externen Dienst, den Sie in Azure erwerben können, der jedoch nicht von Microsoft veröffentlicht wird, ist SendGrid.
 
 Beim Bereitstellen eines neuen externen Diensts oder einer neuen externen Ressource wird eine Warnung angezeigt:
 

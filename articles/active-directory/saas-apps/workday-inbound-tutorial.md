@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36334325"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42445659"
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung (Vorschau)
 
 In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von Personen aus Workday in sowohl Active Directory als auch Azure Active Directory ausführen müssen, wobei einige Attribute optional in Workday zurückgeschrieben werden.
 
@@ -31,9 +31,9 @@ Der [Azure Active Directory-Benutzerbereitstellungsdienst](../active-directory-s
 
 * **Bereitstellung von Benutzern in Active Directory**: Sie können ausgewählte Gruppen von Benutzern aus Workday in eine oder mehrere Active Directory-Gesamtstrukturen synchronisieren.
 
-* **Bereitstellung reiner Cloudbenutzer in Azure Active Directory**: Hybridbenutzer, die in Active Directory und Azure Active Directory vorhanden sind, können in letzterem mithilfe von [AAD Connect](../connect/active-directory-aadconnect.md) bereitgestellt werden. Reine Cloudbenutzer können jedoch mithilfe des Azure AD-Benutzerbereitstellungsdiensts direkt aus Workday in Azure Active Directory bereitgestellt werden.
+* **Bereitstellung reiner Cloudbenutzer in Azure Active Directory**: In Szenarien, in denen kein lokales Active Directory verwendet wird, können Benutzer mithilfe des Azure AD-Benutzerbereitstellungsdiensts direkt aus Workday in Azure Active Directory bereitgestellt werden. 
 
-* **Zurückschreiben von E-Mail-Adressen in Workday**: Der Azure AD-Benutzerbereitstellungsdienst kann ausgewählte Azure AD-Benutzerattribute wie die E-Mail-Adresse in Workday zurückschreiben.
+* **Zurückschreiben von E-Mail-Adressen in Workday**: Der Azure AD-Benutzerbereitstellungsdienst kann die E-Mail-Adressen von Azure AD-Benutzern in Workday zurückschreiben. 
 
 ### <a name="what-human-resources-scenarios-does-it-cover"></a>Welche Szenarien im Personalwesen werden unterstützt?
 
@@ -281,7 +281,7 @@ Beantworten Sie die folgenden Fragen, bevor Sie die Benutzerbereitstellung in ei
 
    * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
-   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
+   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
 
    * **Active Directory-Gesamtstruktur**: Der Name der Active Directory-Gesamtstruktur entsprechend der Rückgabe des PowerShell-Cmdlets „Get-ADForest“. Dieser meist eine Zeichenfolge wie: *contoso.com*
 
@@ -407,6 +407,9 @@ Führen Sie nach der Installation des Agents die folgenden PowerShell-Befehle zu
 * Eingabe: Geben Sie für „DirectoryName“ (Verzeichnisname) den Namen der Active Directory-Gesamtstruktur entsprechend der Eingabe in Teil \#2 ein.
 * Eingabe: Administratorbenutzername und -kennwort für die Active Directory-Gesamtstruktur
 
+>[!TIP]
+> Wenn die Fehlermeldung „Vertrauensstellung zwischen der primären Domäne und der vertrauenswürdigen Domäne konnte nicht hergestellt werden“ angezeigt wird, liegt das daran, dass sich der lokale Computer in einer Umgebung befindet, in der mehrere Active Directory-Gesamtstrukturen oder -Domänen konfiguriert sind und mindestens eine konfigurierte Vertrauensstellung entweder fehlerhaft oder nicht betriebsbereit ist. Um das Problem zu beheben, korrigieren oder entfernen Sie die fehlerhafte Vertrauensstellung.
+
 **Befehl 3**
 
 > Add-ADSyncAgentAzureActiveDirectoryConfiguration
@@ -418,7 +421,6 @@ Führen Sie nach der Installation des Agents die folgenden PowerShell-Befehle zu
 
 >[!IMPORTANT]
 >Es gibt derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei aktivierter mehrstufiger Authentifizierung nicht funktionieren. Deaktivieren Sie zur Umgehung dieses Problems die mehrstufige Authentifizierung für den globalen Administrator.
-
 
 **Befehl 4**
 
@@ -537,7 +539,7 @@ In den folgenden Abschnitten wird das Einrichten einer Verbindung zwischen Workd
 
    * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
-   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ durch die ordnungsgemäße Umgebungszeichenfolge ersetzt. Ist diese URL nicht bekannt, erkundigen Sie sich bei Ihrem Workday-Integrationspartner oder bei einem Supportmitarbeiter nach der korrekten URL.
+   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ durch die ordnungsgemäße Umgebungszeichenfolge ersetzt. Ist diese URL nicht bekannt, erkundigen Sie sich bei Ihrem Workday-Integrationspartner oder bei einem Supportmitarbeiter nach der korrekten URL.
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
@@ -640,7 +642,7 @@ Befolgen Sie diese Anweisungen zum Konfigurieren des Zurückschreibens von E-Mai
 
    * **Administratorkennwort**: Geben Sie das Kennwort des Workday-Systemintegrationskontos ein.
 
-   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ (bei Bedarf) durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
+   * **Mandanten-URL**: Geben Sie die URL des Workday-Webdienstendpunkts für Ihren Mandanten ein. Diese sollte wie folgt lauten: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources. Dabei wird „contoso4“ durch den Namen Ihres Mandanten und „wd3-impl“ (bei Bedarf) durch die ordnungsgemäße Umgebungszeichenfolge ersetzt.
 
    * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
@@ -654,7 +656,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 2. Im Feld **Quellobjektbereich** können Sie optional filtern, für welche Gruppen von Benutzern in Azure Active Directory E-Mail-Adressen in Workday zurückgeschrieben werden sollen. Die Standardoption ist „Alle Benutzer in Azure AD“. 
 
-3. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden. Für die E-Mail-Adresse gibt es standardmäßig eine Zuordnung. Die ID für den Abgleich muss jedoch aktualisiert werden, um Benutzer in Azure AD mit ihren entsprechenden Einträgen in Workday abzugleichen. Eine gängige Methode für den Abgleich ist das Synchronisieren der Mitarbeiter-ID von Workday mit „extensionAttribute“ 1-15 in Azure AD und das anschließende Verwenden dieses Attributs in Azure AD, um die Benutzer wieder mit Workday abzugleichen.
+3. Aktualisieren Sie im Abschnitt **Attributzuordnungen** die entsprechende ID, um das Attribut in Azure Active Directory anzugeben, in dem die Mitarbeiter-ID von Workday gespeichert ist. Eine gängige Methode für den Abgleich ist das Synchronisieren der Mitarbeiter-ID von Workday mit „extensionAttribute“ 1-15 in Azure AD und das anschließende Verwenden dieses Attributs in Azure AD, um die Benutzer wieder mit Workday abzugleichen. 
 
 4. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
@@ -794,6 +796,10 @@ Zu diesem Zweck müssen Sie [Workday Studio](https://community.workday.com/studi
 
 * Beim Ausführen des PowerShell-Befehls **Add-ADSyncAgentAzureActiveDirectoryConfiguration** gibt es derzeit ein bekanntes Problem, das dazu führt, dass globale Administratoranmeldeinformationen bei Verwendung einer benutzerdefinierten Domäne nicht funktionieren (Beispiel: admin@contoso.com). Erstellen und verwenden Sie zur Umgehung dieses Problems in Azure AD ein globales Administratorkonto mit einer onmicrosoft.com-Domäne (Beispiel: admin@contoso.onmicrosoft.com).
 
+* Das Schreiben von Daten in das Benutzerattribut „thumbnailPhoto“ im lokalen Active Directory wird derzeit nicht unterstützt.
+
+* Der Connector „Workday to Azure AD“ wird auf Azure AD-Mandanten, auf denen AAD Connect aktiviert ist, derzeit nicht unterstützt.  
+
 * Ein anderes Problem, das dazu führte, dass Überwachungsprotokolle bei Azure AD-Mandanten in der Europäischen Union nicht angezeigt wurden, ist inzwischen behoben. Für Azure AD-Mandanten in der EU müssen jedoch zusätzliche Agent-Konfigurationsschritte ausgeführt werden. Ausführlichere Informationen finden Sie in [Teil 3: Konfigurieren des lokalen Synchronisierungs-Agents](#Part 3: Configure the on-premises synchronization agent).
 
 ## <a name="managing-personal-data"></a>Verwalten von personenbezogenen Daten
@@ -805,3 +811,4 @@ Die Workday-Bereitstellungslösung für Active Directory benötigt einen Synchro
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
 * [Lesen Sie, wie Sie das einmalige Anmelden zwischen Workday und Azure Active Directory konfigurieren.](workday-tutorial.md)
 * [Erfahren Sie, wie Sie andere SaaS-Anwendungen in Azure Active Directory integrieren.](tutorial-list.md)
+

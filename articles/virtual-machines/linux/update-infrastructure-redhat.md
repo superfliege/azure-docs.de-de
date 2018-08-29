@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 570b820e21df6db70b9cadf33d5a120132be62ed
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4a8bc45b253def1130e5a02dfcd6d359f0e74506
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426750"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142796"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat-Updateinfrastruktur für virtuelle On-Demand-Red Hat Enterprise Linux-VMs in Azure
  Mit der [Red Hat-Updateinfrastruktur](https://access.redhat.com/products/red-hat-update-infrastructure) können Cloudanbieter (z. B. Azure) in Red Hat gehostete Repositoryinhalte spiegeln, benutzerdefinierte Repositorys mit Azure-spezifischem Inhalt erstellen und diese für Endbenutzer-VMs zur Verfügung stellen.
@@ -29,7 +29,7 @@ RHEL-Images (Red Hat Enterprise Linux) mit nutzungsbasierter Bezahlung (Pay-As-Y
 ## <a name="important-information-about-azure-rhui"></a>Wichtige Informationen zur Azure-RHUI
 * Azure-RHUI unterstützt derzeit nur die neueste Nebenversion in den einzelnen RHEL-Familien (RHEL6 oder RHEL7). Führen Sie `sudo yum update` aus, um für eine mit RHUI verbundene RHEL VM-Instanz ein Upgrade auf die neueste Nebenversion durchzuführen.
 
-    Wenn Sie beispielsweise eine VM aus einem RHEL 7.2 PAYG-Image bereitstellen und `sudo yum update` ausführen, erhalten Sie letztlich eine RHEL 7.4-VM (die neueste Nebenversion der RHEL7-Familie).
+    Wenn Sie beispielsweise eine VM aus einem RHEL 7.2 PAYG-Image bereitstellen und `sudo yum update` ausführen, erhalten Sie letztlich eine RHEL 7.5-VM (die neueste Nebenversion der RHEL7-Familie).
 
     Um dieses Verhalten zu vermeiden, müssen Sie Ihr eigenes Image erstellen, wie im Artikel [Erstellen und Hochladen eines auf Red Hat basierenden virtuellen Computers für Azure](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) beschrieben. Dann müssen Sie es mit einer anderen Updateinfrastruktur verbinden ([direkt auf Übermittlungsservern für Red Hat-Inhalte](https://access.redhat.com/solutions/253273) oder auf einem [Red Hat Satellite-Server](https://access.redhat.com/products/red-hat-satellite)).
 

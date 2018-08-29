@@ -8,13 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/29/2018
-ms.openlocfilehash: a832f45027fc5337d9e76ec9cc4898286121278c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/20/2018
+ms.openlocfilehash: 4f488128b3f7a9aa06be9358439536d78615430e
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659560"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144941"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL
 
@@ -25,7 +25,7 @@ Sie benötigen ein [virtuelles Netzwerk][vm-virtual-network-overview] (VNET) und
 ![Beispielhafte Funktionsweise eines VNET-Dienstendpunkts](media/concepts-data-access-and-security-vnet/vnet-concept.png)
 
 > [!NOTE]
-> Diese Funktion ist für Azure Database for PostgreSQL in der öffentlichen Vorschau in allen Regionen der Azure Public Cloud verfügbar, in denen Azure Database for PostgreSQL bereitgestellt wird.
+> Dieses Feature steht in allen Regionen der öffentlichen Azure-Cloud zur Verfügung, in denen Azure Database for PostgreSQL für universelle und arbeitsspeicheroptimierte Server bereitgestellt wird.
 
 <a name="anch-terminology-and-description-82f" />
 
@@ -69,7 +69,7 @@ Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und auf
 
 Würde sich Ihr **Microsoft.Sql**-Server auf einem Knoten in einem Subnetz in Ihrem virtuellen Netzwerk befinden, könnten alle Knoten innerhalb des virtuellen Netzwerks mit Ihrem Azure Database for PostgreSQL-Server kommunizieren. Dann könnten auch Ihre virtuellen Computer mit der Azure Database for PostgreSQL-Instanz kommunizieren – ohne VNET- oder IP-Regeln.
 
-Allerdings gehört der Azure Database for PostgreSQL-Dienst noch nicht zu den Diensten, die einem Subnetz direkt zugewiesen werden können (Stand Mai 2018).
+Allerdings gehört der Azure Database for PostgreSQL-Dienst noch nicht zu den Diensten, die einem Subnetz direkt zugewiesen werden können (Stand August 2018).
 
 <a name="anch-details-about-vnet-rules-38q" />
 
@@ -117,9 +117,7 @@ Bei Azure Database for PostgreSQL gelten für VNET-Regeln folgende Einschränkun
 
 - Wenn Sie die VNET-Dienstendpunkte für Azure Database for PostgreSQL mit dem Diensttag **Microsoft.Sql** aktivieren, werden auch die Endpunkte für alle Azure-Datenbankdienste aktiviert: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL-Datenbank und Azure SQL Data Warehouse.
 
-- In der öffentlichen Vorschau werden keine VNET-Verschiebevorgänge unterstützt. Wenn Sie eine VNET-Regel verschieben möchten, löschen Sie sie zuerst und erstellen Sie sie dann neu.
-
-- VNET-Dienstendpunkte werden nur für Server des Typs „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+- VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
 
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, Regeln für virtuelle Netzwerke jedoch nicht:
     - [Virtuelles privates Netzwerk zwischen Standorten][vpn-gateway-indexmd-608y]
@@ -130,6 +128,12 @@ Bei Azure Database for PostgreSQL gelten für VNET-Regeln folgende Einschränkun
 Wenn Ihr Netzwerk über [ExpressRoute][expressroute-indexmd-744v] mit Ihrem Azure-Netzwerk verbunden ist, wird jede Verbindung mit zwei öffentlichen IP-Adressen im Microsoft-Edgebereich konfiguriert. Die beiden IP-Adressen werden zum Herstellen der Verbindung mit Microsoft-Diensten, z.B. Azure Storage, mithilfe von öffentlichem Azure-Peering verwendet.
 
 Sie müssen IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindungen erstellen, um die Kommunikation zwischen Ihrer Verbindung und Azure Database for PostgreSQL zu ermöglichen. Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute, um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
+
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Hinzufügen einer VNET-Firewallregel zu Ihrem Server ohne Aktivierung von VNET-Dienstendpunkten
+
+Allein das Festlegen einer Firewallregel trägt nicht zur Sicherung des Servers im VNET bei. Sie müssen auch VNET-Dienstendpunkte**aktivieren**, damit der Server gesichert wird. Wenn Sie Dienstendpunkte**aktivieren**, fällt das VNET-Subnetz solange aus, bis der Übergang von**deaktiviert** zu **aktiviert** abgeschlossen ist. Dies gilt vor allem für sehr umfangreiche VNETs. Mithilfe des Flags **IgnoreMissingServiceEndpoint** können Sie die Ausfallzeit während des Übergangs reduzieren bzw. vermeiden.
+
+Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingServiceEndpoint** festzulegen.
 
 ## <a name="related-articles"></a>Verwandte Artikel
 - [Virtuelles Azure-Netzwerk][vm-virtual-network-overview]

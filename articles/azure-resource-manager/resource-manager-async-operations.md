@@ -4,25 +4,23 @@ description: Beschreibt, wie asynchrone Vorgänge in Azure nachverfolgt werden.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: f62212f0488e4d1be49b419615b3a16b80033fd9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 601f4a899393d8ddd5ea698d4d01ade7141ee91f
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358709"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42146794"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Nachverfolgen asynchroner Vorgänge in Azure
-Einige Azure-REST-Vorgänge werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. In diesem Thema wird beschrieben, wie der Status asynchroner Vorgänge mithilfe von Werten nachverfolgt wird, die in der Antwort zurückgegeben werden.  
+Einige Azure-REST-Vorgänge werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. In diesem Artikel wird beschrieben, wie der Status asynchroner Vorgänge mithilfe von Werten nachverfolgt wird, die in der Antwort zurückgegeben werden.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Statuscodes für asynchrone Vorgänge
 Ein asynchroner Vorgang gibt anfänglich einen dieser HTTP-Statuscodes zurück:
@@ -35,7 +33,7 @@ Wenn der Vorgang erfolgreich abgeschlossen wurde, wird einer dieser Statuscodes 
 * 200 (OK)
 * 204 (Kein Inhalt) 
 
-In der [REST-API-Dokumentation](/rest/api/) finden Sie Informationen zu den Antworten für den Vorgang, den Sie ausführen. 
+In der [REST-API-Dokumentation](/rest/api/) finden Sie Informationen zu den Antworten für den Vorgang, den Sie ausführen.
 
 ## <a name="monitor-status-of-operation"></a>Überwachen des Status eines Vorgangs
 Die asynchronen REST-Vorgänge geben Headerwerte zurück, mit deren Hilfe Sie den Status des jeweiligen Vorgangs bestimmen. Es gibt potenziell drei zu untersuchende Headerwerte:

@@ -13,23 +13,28 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 06/06/2018
 ms.author: bahariri
-ms.openlocfilehash: f6671e05c53b8be2e06eb969adc8a4d5736aff37
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 674c3b5cbd3b4253833a785b32e2bc4b0f1928da
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284444"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42146620"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Verwenden von Akka Streams mit Event Hubs für Apache Kafka
-
-Einer der Hauptvorteile der Verwendung von Apache Kafka ist das Ökosystem an Frameworks, mit dem eine Verbindung hergestellt werden kann. Kafka-fähige Event Hubs kombinieren die Flexibilität von Kafka mit der Skalierbarkeit, Konsistenz und Unterstützung des Azure-Ökosystems.
-
 Dieses Tutorial veranschaulicht, wie Sie Akka Streams mit Kafka-fähigen Event Hubs verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. Azure Event Hubs für Kafka unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html).
+
+In diesem Tutorial lernen Sie Folgendes:
+> [!div class="checklist"]
+> * Erstellen eines Event Hubs-Namespace
+> * Klonen des Beispielprojekts
+> * Ausführen des Flink-Producers 
+> * Ausführen des Flink-Consumers
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie vor dem Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
+* Lesen Sie den Artikel [Event Hubs für Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md). 
 * Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 * [Java Development Kit (JDK) 1.8 oder höher](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
     * Führen Sie unter Ubuntu `apt-get install default-jdk` aus, um das JDK zu installieren.
@@ -52,7 +57,7 @@ git clone https://github.com/Azure/azure-event-hubs.git
 cd azure-event-hubs/samples/kafka/akka
 ```
 
-## <a name="akka-streams-producer"></a>Akka Streams-Producer
+## <a name="run-akka-streams-producer"></a>Ausführen des Akka Streams-Producers
 
 Verwenden Sie das bereitgestellte Beispiel des Akka Streams-Producers, und senden Sie Nachrichten an den Event Hubs-Dienst.
 
@@ -89,7 +94,7 @@ mvn exec:java -Dexec.mainClass="AkkaTestProducer"
 
 Der Producer beginnt mit dem Senden von Ereignissen an den Kafka-fähigen Event Hub zum Thema `test` und druckt die Ereignisse an „stdout“.
 
-## <a name="akka-streams-consumer"></a>Akka Streams-Consumer
+## <a name="run-akka-streams-consumer"></a>Ausführen des Akka Streams-Consumers
 
 Verwenden Sie das bereitgestellte Consumer-Beispiel, und empfangen Sie Nachrichten aus den Kafka-fähigen Event Hubs.
 
@@ -132,6 +137,15 @@ Wenn der Kafka-fähige Event Hub über Ereignisse verfügt (wenn z.B. der Produc
 Ausführlichere Informationen zu Akka Streams finden Sie im [Akka Streams-Kafka-Handbuch](https://doc.akka.io/docs/akka-stream-kafka/current/home.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
+In diesem Tutorial haben Sie erfahren, wie Sie Akka Streams mit Kafka-fähigen Event Hubs verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. Azure Event Hubs für Kafka unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html). Im Rahmen dieses Tutorials haben Sie die folgenden Aktionen ausgeführt: 
+
+> [!div class="checklist"]
+> * Erstellen eines Event Hubs-Namespace
+> * Klonen des Beispielprojekts
+> * Ausführen des Flink-Producers 
+> * Ausführen des Flink-Consumers
+
+Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter folgendem Thema:  
 
 * [Informationen zu Event Hubs](event-hubs-what-is-event-hubs.md)
 * [Informationen zu Event Hubs für Kafka](event-hubs-for-kafka-ecosystem-overview.md)

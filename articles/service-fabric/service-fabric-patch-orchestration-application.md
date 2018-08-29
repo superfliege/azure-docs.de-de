@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: a74eab546eefd765b89aae6f12fcff554d9937c4
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036937"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42144513"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -391,6 +391,10 @@ Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anw
 - Korrektur eines Fehlers bei der Erstellung von RM-Aufgaben, durch den die Integritätsüberprüfung während Reparaturvorbereitungsaufgaben nicht wie erwartet erfolgt ist.
 - Änderung des Startmodus für den Windows-Dienst „POANodeSvc“ von automatisch in verzögert automatisch.
 
-### <a name="version-121-latest"></a>Version 1.2.1 (aktuell)
+### <a name="version-121"></a>Version 1.2.1
 
 - Fehlerbehebung im Workflow zum Herunterskalieren eines Clusters. Logik der automatischen Speicherbereinigung für POA-Reparaturaufgaben eingeführt, die nicht vorhandenen Knoten angehören.
+
+### <a name="version-122-latest"></a>Version 1.2.2 (aktuelle Version)
+
+- Verschiedene Fehlerbehebungen

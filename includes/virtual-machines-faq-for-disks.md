@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 336e6e163178cd6d244460dbf9bee2a5bc9d714e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935751"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40238256"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -67,7 +67,7 @@ Nein. Die virtuellen Computer in einer Verfügbarkeitsgruppe müssen entweder al
 
 **Ist Managed Disks die Standardoption im Azure-Portal?**
 
-Ja. 
+Ja.
 
 **Kann ich einen leeren verwalteten Datenträger erstellen?**
 
@@ -101,7 +101,6 @@ Kunden können eine Momentaufnahme ihrer verwalteten Datenträger erstellen und 
 
 Ja, es werden verwaltete und nicht verwaltete Datenträger unterstützt. Allerdings wird empfohlen, für neue Workloads verwaltete Datenträger zu verwenden und aktuelle Workloads zu verwalteten Datenträgern zu migrieren.
 
-
 **Wenn ich einen Datenträger mit einer Größe von 128 GB erstelle und die Größe anschließend auf 130 GB erhöhe, wird mir dann die nächsthöhere Datenträgergröße (256 GB) in Rechnung gestellt?**
 
 Ja.
@@ -130,23 +129,24 @@ Nein. Sie können die Eigenschaft „Computername“ nicht aktualisieren. Die ne
 
 Nein.
 
+**Gibt es beim Erstellen eines Datenträgers aus einem Blob eine ständig bestehende Beziehung mit diesem Quellblob?**
+
+Nein. Wenn der neue Datenträger erstellt wird, handelt es sich dabei um eine vollständige eigenständige Kopie dieses Blobs zu diesem Zeitpunkt, und es besteht keine Verbindung zwischen den beiden. Nachdem Sie den Datenträger erstellt haben, können Sie das Quellblob ohne Auswirkungen auf den neu erstellten Datenträger löschen.
+
+**Kann ich einen verwalteten oder nicht verwalteten Datenträger nach der Erstellung umbenennen?**
+
+Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen nicht verwalteten Datenträger umbenennen, sofern dieser aktuell nicht an eine virtuelle Festplatte oder einen virtuellen Computer angefügt ist.
+
 ## <a name="standard-ssd-disks-preview"></a>Standard-SSD-Datenträger (Vorschau)
 
 **Was sind Azure-Standard-SSD-Datenträger?**
 Standard-SSD-Datenträger sind Standarddatenträger mit Unterstützung durch SSD-Medien, die als kostengünstige Speicher für Workloads optimiert sind, bei denen eine konsistente Leistung auf niedrigeren IOPS-Ebenen benötigt wird. In der Vorschau sind sie in einer begrenzten Anzahl von Regionen und mit eingeschränkter Verwaltbarkeit (über Resource Manager-Vorlagen) verfügbar.
 
-<a id="standard-ssds-azure-regions"></a>**Welche Regionen werden derzeit für Standard-SSD-Datenträger (Vorschau) unterstützt?**
-* Nordeuropa
-* Frankreich, Mitte
-* USA (Ost) 2
-* USA (Mitte)
-* Kanada, Mitte
-* Asien, Osten
-* Korea, Süden
-* Australien (Osten)
+<a id="standard-ssds-azure-regions"></a>**Welche Regionen werden derzeit für Standard-SSD-Datenträger unterstützt?**
+Alle Azure-Regionen unterstützen jetzt Standard-SSD-Datenträger.
 
 **Wie erstelle ich Standard-SSD-Datenträger?**
-Derzeit können Sie Standard-SSD-Datenträger mithilfe von Azure Resource Manager-Vorlagen erstellen. Im Folgenden werden die in der Resource Manager-Vorlage zum Erstellen von Standard-SSD-Datenträgern erforderlichen Parameter aufgeführt:
+Sie können Standard-SSD-Datenträger mithilfe von Azure Resource Manager-Vorlagen, SDKs, PowerShell oder CLI erstellen. Im Folgenden werden die in der Resource Manager-Vorlage zum Erstellen von Standard-SSD-Datenträgern erforderlichen Parameter aufgeführt:
 
 * *apiVersion* für Microsoft.Compute muss auf `2018-04-01` (oder höher) festgelegt werden.
 * Geben Sie unter *managedDisk.storageAccountType* den Typ `StandardSSD_LRS` an.
@@ -171,17 +171,20 @@ Eine vollständige Beispielvorlage zum Erstellen eines Standard-SSD-Datenträger
 Ja, das ist möglich. Allgemeine Richtlinien zum Konvertieren von verwalteten Datenträgern finden Sie unter [Konvertieren zwischen dem Standardspeicher und Storage Premium für verwaltete Azure-Datenträger](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/convert-disk-storage). Verwenden Sie außerdem den folgenden Wert, um den Datenträgertyp auf Standard-SSD zu aktualisieren.
 -AccountType StandardSSD_LRS
 
+**Was ist der Vorteil der Verwendung von Standard-SSD-Datenträgern anstelle von HDD?**
+Im Vergleich zu Festplattenlaufwerken bieten Standard-SSD-Datenträger eine bessere Latenz, Konsistenz, Verfügbarkeit und Zuverlässigkeit. Aus diesem Grund können Anwendungsworkloads sehr viel reibungsloser auf Standard-SSD-Datenträgern ausgeführt werden. Premium-SSD-Datenträger sind die empfohlene Lösung für die meisten E/A-intensiven Produktionsworkloads. 
+
 **Kann ich Standard-SSDs als nicht verwaltete Datenträger verwenden?**
 Nein, Standard-SSD-Datenträger sind nur als verwaltete Datenträger verfügbar.
 
 **Unterstützen Standard-SSD-Datenträger SLAs für Einzelinstanz-VMs?**
 Nein, Standard-SSDs weisen keine SLA für Einzelinstanz-VMs auf. Verwenden Sie Premium-SSD-Datenträger für eine SLA für Einzelinstanz-VMs.
 
-## <a name="migrate-to-managed-disks"></a>Migrieren zu Managed Disks 
+## <a name="migrate-to-managed-disks"></a>Migrieren zu Managed Disks
 
 **Welche Änderungen sind in einer bereits vorhandenen Azure Backup-Dienstkonfiguration vor/nach der Migration zu Managed Disks erforderlich?**
 
-Es sind keine Änderungen erforderlich. 
+Es sind keine Änderungen erforderlich.
 
 **Werden meine VM-Sicherungen über den Azure Backup-Dienst erstellt, bevor die Migration weiterhin funktioniert?**
 
@@ -189,15 +192,15 @@ Ja, Sicherungen funktionieren reibungslos.
 
 **Welche Änderungen sind in einer bereits vorhandenen Azure Disk Encryption-Konfiguration vor/nach der Migration zu Managed Disks erforderlich?**
 
-Es sind keine Änderungen erforderlich. 
+Es sind keine Änderungen erforderlich.
 
 **Wird die automatisierte Migration einer vorhandenen VM-Skalierungsgruppe von nicht verwalteten Datenträgern zu Managed Disks unterstützt?**
 
-Nein. Sie können eine neue Skalierungsgruppe mit Managed Disks mithilfe des Images von Ihrer alten Skalierungsgruppe mit nicht verwalteten Datenträgern erstellen. 
+Nein. Sie können eine neue Skalierungsgruppe mit Managed Disks mithilfe des Images von Ihrer alten Skalierungsgruppe mit nicht verwalteten Datenträgern erstellen.
 
 **Kann ich verwaltete Datenträger über eine Seitenblob-Momentaufnahme erstellen, die vor der Migration zu Managed Disks erstellt wurde?**
 
-Nein. Sie können eine Seitenblob-Momentaufnahme als Seitenblob exportieren und anschließend den verwalteten Datenträger aus dem exportierten Seitenblob erstellen. 
+Nein. Sie können eine Seitenblob-Momentaufnahme als Seitenblob exportieren und anschließend den verwalteten Datenträger aus dem exportierten Seitenblob erstellen.
 
 **Kann ich für meine lokalen Computer, die mit Azure Site Recovery geschützt sind, ein Failover auf eine VM mit Managed Disks ausführen?**
 
@@ -209,9 +212,9 @@ Ja. Derzeit ist Azure-zu-Azure-Schutz mit Azure Site Recovery für virtuelle Com
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, zu verwalteten Datenträgern migrieren?**
 
-Ja
+JA
 
-## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks und Storage Service Encryption 
+## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks und Storage Service Encryption
 
 **Ist Azure Storage Service Encryption standardmäßig beim Erstellen eines verwalteten Datenträgers aktiviert?**
 
@@ -246,7 +249,7 @@ Ja. Alle verwalteten Momentaufnahmen und Bilder, die nach dem 9. Juni 2017 erste
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, in verwaltete Datenträger konvertieren?**
 
-Ja
+JA
 
 **Wird eine exportierte VHD-Datei von einem verwalteten Datenträger oder eine Momentaufnahme auch verschlüsselt?**
 

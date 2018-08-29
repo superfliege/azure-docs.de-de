@@ -9,18 +9,18 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/14/2018
 ms.author: bonova
-ms.openlocfilehash: edacb9fe1d09a4e775f8f7107dfa4d9810f53f07
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2c6cdcd5d8d50a54a87e3dabd2aa09eccc646738
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006043"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42144351"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
-Eine verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion) ist eine neue Funktion von Azure SQL-Datenbank, die für nahezu uneingeschränkte Kompatibilität mit einer lokalen SQL Server-Instanz (Enterprise Edition) sorgt. Darüber hinaus bietet sie eine native Implementierung eines [virtuellen Netzwerks (VNet)](../virtual-network/virtual-networks-overview.md) zur Bewältigung allgemeiner Sicherheitsrisiken sowie ein günstiges [Geschäftsmodell](https://azure.microsoft.com/pricing/details/sql-database/) für Kunden mit lokaler SQL Server-Instanz. Über eine verwaltete Instanz können bestehende SQL Server-Kunden ihre lokalen Anwendungen mit minimalen Änderungen an den Anwendungen und Datenbanken per Lift & Shift zur Cloud migrieren. Gleichzeitig behält die verwaltete Instanz alle PaaS-Funktionen (automatisches Patchen und automatische Versionsupdates, Sicherung, Hochverfügbarkeit) bei, die den Verwaltungsaufwand und die Gesamtkosten drastisch reduzieren.
+Eine verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion) ist ein neues Bereitstellungsmodell von Azure SQL-Datenbank, die für nahezu uneingeschränkte Kompatibilität mit der aktuellen lokalen SQL Server-Datenbank-Engine (Enterprise Edition) sorgt. Darüber hinaus bietet sie eine native Implementierung eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zur Bewältigung allgemeiner Sicherheitsrisiken sowie ein günstiges [Geschäftsmodell](https://azure.microsoft.com/pricing/details/sql-database/) für Kunden mit lokaler SQL Server-Instanz. Über eine verwaltete Instanz können bestehende SQL Server-Kunden ihre lokalen Anwendungen mit minimalen Änderungen an den Anwendungen und Datenbanken per Lift & Shift zur Cloud migrieren. Gleichzeitig behält die verwaltete Instanz alle PaaS-Funktionen (automatisches Patchen und automatische Versionsupdates, [automatische Sicherungen](sql-database-automated-backups.md), [Hochverfügbarkeit](sql-database-high-availability.md)) bei, die den Verwaltungsaufwand und die Gesamtkosten drastisch reduzieren.
 
 > [!IMPORTANT]
 > Eine Liste mit den Regionen, in denen die verwaltete Instanz derzeit verfügbar ist, finden Sie unter [Migrieren Ihrer Datenbanken zu einem vollständig verwalteten Dienst mit einer verwalteten Instanz von Azure SQL-Datenbank](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
@@ -29,49 +29,28 @@ In der folgenden Abbildung sind die wichtigsten Features der verwalteten Instanz
 
 ![Wichtigste Features](./media/sql-database-managed-instance/key-features.png)
 
-Eine verwaltete Instanz ist als bevorzugte Plattform für die folgenden Szenarien vorgesehen: 
-
-- Kunden von lokalem SQL Server und IaaS, die ihre Anwendungen mit minimalen Entwurfsänderungen zu einem vollständig verwalteten Dienst migrieren möchten
-- Unabhängige Softwarehersteller (ISVs), die SQL-Datenbanken verwenden und ihren Kunden ermöglichen möchten, die Migration in die Cloud durchzuführen und so einen erheblichen Wettbewerbsvorteil oder eine globale Marktreichweite zu erzielen 
+Die verwaltete Azure SQL-Datenbank-Instanz ist für Kunden konzipiert, die eine große Anzahl von Apps aus einer selbst erstellten oder über ISVs bereitgestellten lokalen Umgebung oder IaaS-Umgebung mit möglichst geringem Migrationsaufwand in eine vollständig verwaltete PaaS-Cloudumgebung migrieren möchten. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern. 
 
 Bis zur allgemeinen Verfügbarkeit wird für verwaltete Instanzen durch einen gestaffelten Releaseplan eine nahezu 100%ige Oberflächenkompatibilität mit dem neuesten lokalen SQL Server-Release angestrebt. 
 
-Die folgende Tabelle enthält die Hauptunterschiede und vorgesehenen Verwendungsszenarien für SQL-IaaS, Azure SQL-Datenbank und die verwaltete SQL-Datenbank-Instanz:
+Anhaltspunkte für die Entscheidung zwischen einer Azure SQL-Einzeldatenbank, einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server-IaaS auf einem virtuellen Computer finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](sql-database-paas-vs-sql-server-iaas.md).
 
-| | Verwendungsszenario | 
-| --- | --- | 
-|Verwaltete SQL-Datenbank-Instanz |Schlagen Sie Kunden, die eine große Anzahl von selbst erstellten oder über ISVs bereitgestellten Anwendungen lokal oder per IaaS mit möglichst geringem Migrationsaufwand migrieren möchten, eine verwaltete Instanz vor. Unter Verwendung des vollständig automatisierten [Data Migration Service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in Azure können Kunden ihren lokalen SQL Server per Lift & Shift zu einer verwalteten Instanz migrieren, die Kompatibilität mit dem lokalen SQL Server und vollständige Isolation von Kundeninstanzen mit nativer VNET-Unterstützung bietet.  Mit Software Assurance können Sie die vorhandenen Lizenzen der Kunden mit dem [Azure-Hybridvorteil für Windows Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zu ermäßigten Preisen für eine verwaltete SQL-Datenbank-Instanz austauschen.  Eine verwaltete SQL-Datenbank-Instanz ist das beste Migrationsziel in der Cloud für SQL Server-Instanzen, die hohe Sicherheit und eine umfangreiche Programmieroberfläche erfordern. |
-|Azure SQL-Datenbank (Einzelinstanz oder Pool) |**Elastische Pools**: Schlagen Sie Kunden, die neue mehrinstanzenfähige SaaS-Anwendungen entwickeln oder bewusst ihre vorhandenen lokalen Anwendungen in mehrinstanzenfähige SaaS-Anwendungen transformieren, Pools für elastische Datenbanken vor. Dieses Modell bietet folgende Vorteile: <br><ul><li>Umstellung des Geschäftsmodells vom Verkauf von Lizenzen zum Verkauf von Dienstabonnements (für ISVs)</li></ul><ul><li>Einfache und sichere Mandantenisolation</li></ul><ul><li>Vereinfachtes datenbankbasiertes Programmiermodell</li></ul><ul><li>Potenzial für horizontales Hochskalieren ohne feste Begrenzung</li></ul>**Einzelne Datenbanken**: Schlagen Sie Kunden, die andere neue Anwendungen als mehrinstanzenfähige SaaS-Anwendungen entwickeln, deren Workload stabil und vorhersagbar ist, einzelne Datenbanken vor. Dieses Modell bietet folgende Vorteile:<ul><li>Vereinfachtes datenbankbasiertes Programmiermodell</li></ul>  <ul><li>Vorhersagbare Leistung für die einzelnen Datenbanken</li></ul>|
-|Virtueller SQL-IaaS-Computer|Schlagen Sie Kunden, die das Betriebssystem oder den Datenbankserver anpassen müssen, und Kunden, die spezifische Anforderungen an die Ausführung von Drittanbieteranwendungen neben SQL Server (auf dem gleichen virtuellen Computer) haben, virtuelle SQL-Computer und SQL-IaaS als optimale Lösung vor.|
-|||
+## <a name="key-features-and-capabilities"></a>Wichtige Features und Funktionen 
 
-## <a name="how-to-programmatically-identify-a-managed-instance"></a>Programmgesteuertes Identifizieren einer verwalteten Instanz
-
-In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die über Transact-SQL zugegriffen werden kann und über die Sie ermitteln können, ob Ihre Anwendung mit der verwalteten Instanz ausgeführt wird, und mit denen Sie wichtige Eigenschaften abrufen können.
-
-|Eigenschaft|Wert|Comment|
-|---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|
-|`SERVERPROPERTY ('Edition')`|SQL Azure|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|
-|`SERVERPROPERTY('EngineEdition')`|8|Durch diesen Wert wird eine verwaltete Instanz eindeutig identifiziert.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Vollständiger DNS-Instanzname im folgenden Format: <instanceName>.<dnsPrefix>.database.windows.net, wobei <instanceName> der vom Kunden angegebene Name und <dnsPrefix> der automatisch generierte Teil des Namens ist, der die Eindeutigkeit des globalen DNS-Namens gewährleistet (z.B. „wcus17662feb9ce98“)|Beispiel: meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net|
-
-## <a name="key-features-and-capabilities-of-a-managed-instance"></a>Wichtige Features und Funktionen einer verwalteten Instanz 
+Eine verwaltete Azure SQL-Datenbank-Instanz kombiniert die besten Features, die sowohl in Azure SQL-Datenbank als auch SQL Server-Datenbank-Engine verfügbar sind.
 
 > [!IMPORTANT]
 > Eine verwaltete Instanz wird mit allen Features der neuesten Version von SQL Server ausgeführt – einschließlich Onlinevorgängen, automatischer Plankorrekturen und anderer Leistungsverbesserungen für Unternehmen. 
 
 | **PaaS-Vorteile** | **Geschäftskontinuität** |
 | --- | --- |
-|Kein Kauf und keine Verwaltung von Hardware <br>Kein zusätzlicher Aufwand für die Verwaltung der zugrunde liegenden Infrastruktur <br>Schnelle Bereitstellung und Dienstskalierung <br>Automatische Patches und Versionsupgrades <br>Integration in andere PaaS-Datendienste |Betriebszeit-SLA von 99,99 %  <br>Integrierte Hochverfügbarkeit <br>Schutz der Daten durch automatische Sicherungen <br>Vom Kunden konfigurierbare Aufbewahrungsdauer für Sicherungen (in der Public Preview-Phase auf 7 Tage festgelegt) <br>Vom Benutzer initiierte Sicherungen <br>Funktion für Point-in-Time-Datenbankwiederherstellung |
+|Kein Kauf und keine Verwaltung von Hardware <br>Kein zusätzlicher Aufwand für die Verwaltung der zugrunde liegenden Infrastruktur <br>Schnelle Bereitstellung und Dienstskalierung <br>Automatische Patches und Versionsupgrades <br>Integration in andere PaaS-Datendienste |Betriebszeit-SLA von 99,99 %  <br>Integrierte [Hochverfügbarkeit](sql-database-high-availability.md) <br>Schutz der Daten durch [automatische Sicherungen](sql-database-automated-backups.md) <br>Vom Kunden konfigurierbare Aufbewahrungsdauer für Sicherungen (in der Public Preview-Phase auf 7 Tage festgelegt) <br>Vom Benutzer initiierte [Sicherungen](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>Funktion für [Point-in-Time-Datenbankwiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Sicherheit und Konformität** | **Verwaltung**|
-|Isolierte Umgebung (VNET-Integration, Dienst mit einzelnem Mandanten, dedizierte Compute- und Speicherressourcen) <br>Transparent Data Encryption<br>Azure AD-Authentifizierung, Unterstützung für einmaliges Anmelden <br>Gleiche Kompatibilitätsstandards wie für Azure SQL-Datenbank <br>SQL-Überwachung <br>Bedrohungserkennung |Azure Resource Manager-API zur Automatisierung der Dienstbereitstellung und -skalierung <br>Funktionen des Azure-Portals für die manuelle Dienstbereitstellung und -skalierung <br>Data Migration Service 
-
-![Einmaliges Anmelden](./media/sql-database-managed-instance/sso.png) 
+|Isolierte Umgebung ([VNET-Integration](sql-database-managed-instance-vnet-configuration.md), Dienst mit einzelnem Mandanten, dedizierte Compute- und Speicherressourcen) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD-Authentifizierung](sql-database-aad-authentication.md), Unterstützung für einmaliges Anmelden <br>Gleiche Kompatibilitätsstandards wie für Azure SQL-Datenbank <br>[SQL-Überwachung](sql-database-managed-instance-auditing.md) <br>[Bedrohungserkennung](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager-API zur Automatisierung der Dienstbereitstellung und -skalierung <br>Funktionen des Azure-Portals für die manuelle Dienstbereitstellung und -skalierung <br>Data Migration Service 
 
 ## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
-Das V-Kern-basierte Kaufmodell bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Das Modell mit virtuellen Kernen ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
+Das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) bietet Ihnen mehr Flexibilität, Kontrolle und Transparenz sowie eine unkomplizierte Möglichkeit, Ihre lokalen Workloadanforderungen in der Cloud zu realisieren. Mit diesem Modell können Sie Computeressourcen, Arbeitsspeicher und Speicher entsprechend den jeweiligen Workloadanforderungen skalieren. Das Modell mit virtuellen Kernen ermöglicht mit dem [Azure-Hybridvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) zudem Einsparungen von bis zu 30 Prozent.
 
 Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten.
 - Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz.
@@ -89,9 +68,11 @@ Die folgende Tabelle bietet Informationen dazu, wie Sie die optimale Konfigurati
 ## <a name="managed-instance-service-tiers"></a>Dienstebenen für eine verwaltete Instanz
 
 Verwaltete Instanz ist in zwei Ebenen verfügbar:
-- **Allgemeine**: Entwickelt für Anwendungen mit typischer Verfügbarkeit und üblichen E/A-Latenzanforderungen.
-- **Unternehmenskritisch**: Entwickelt für Anwendungen mit hoher Verfügbarkeit und geringen E/A-Latenzanforderungen.
- 
+- **Universell**: Entwickelt für Anwendungen mit typischen Leistungs- und E/A-Latenzanforderungen.
+- **Unternehmenskritisch**: Entwickelt für Anwendungen mit niedrigen E/A-Latenzanforderungen und minimalen Auswirkungen auf zugrunde liegende Wartungsvorgänge für die Workload.
+
+Beide Tarife garantieren eine Verfügbarkeit von 99,99% und ermöglichen es Ihnen, die Speichergröße und Computekapazität unabhängig voneinander auszuwählen. 
+
 > [!IMPORTANT]
 > Das Ändern Ihrer Serviceebene von „Universell“ in „Unternehmenskritisch“ oder umgekehrt wird in Public Preview nicht unterstützt. Wenn Sie Ihre Datenbanken auf eine Instanz in einer anderen Dienstebene migrieren möchten, können Sie eine neue Instanz erstellen, Datenbanken mit Point-in-Time-Wiederherstellung aus der Originalinstanz wiederherstellen und dann die Originalinstanz löschen, wenn sie nicht mehr benötigt wird. 
 
@@ -99,22 +80,16 @@ Verwaltete Instanz ist in zwei Ebenen verfügbar:
 
 Folgende wichtige Merkmale kennzeichnen die universelle Dienstebene: 
 
-- Entwurf für den Großteil der Geschäftsanwendungen mit typischen Anforderungen an Leistung und Hochverfügbarkeit 
+- Entwurf für den Großteil der Geschäftsanwendungen mit typischen Leistungsanforderungen 
 - Azure Storage Premium mit hoher Leistung (8 TB) 
 - 100 Datenbanken pro Instanz 
-
-Auf dieser Ebene können Sie die Speicher- und die Computekapazität unabhängig voneinander auswählen. 
-
-In der folgenden Abbildung sind die aktiven Computeknoten und die redundanten Knoten auf dieser Dienstebene dargestellt.
- 
-![Universelle Dienstebene](./media/sql-database-managed-instance/general-purpose-service-tier.png) 
 
 Folgende wichtige Merkmale kennzeichnen die Dienstebene „Universell“:
 
 |Feature | BESCHREIBUNG|
 |---|---|
 | Anzahl der virtuellen Kerne* | 8, 16, 24 (Gen 4)<br>8, 16, 24, 32, 40, 64, 80 (Gen 5)|
-| SQL Server-Version/-Build | SQL Server (neueste verfügbare Version) |
+| SQL Server-Version/-Build | SQL Server-Datenbank-Engine (letzte stabile Version) |
 | Min. Speichergröße | 32 GB |
 | Max. Speichergröße | 8 TB |
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz |
@@ -132,16 +107,18 @@ Folgende wichtige Merkmale kennzeichnen die Dienstebene „Universell“:
 
 \* Ein virtueller Kern repräsentiert die logische CPU. Virtuelle Kerne werden für verschiedene Hardwaregenerationen angeboten. Logische CPUs der Generation 4 basieren auf Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz und logische CPUs der Generation 5 auf Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz. 
 
+Weitere Informationen finden Sie im Abschnitt zur [Verfügbarkeit und Architektur des Typs „Standard/Universell“ in Azure SQL-Datenbank](sql-database-high-availability.md#standardgeneral-purpose-availability).
+
 ### <a name="business-critical-service-tier"></a>Diensttarif „Unternehmenskritisch“
 
-Die unternehmenskritische Dienstebene wurde für Anwendungen mit hohen E/A-Anforderungen konzipiert. Sie bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte AlwaysOn-Replikate. Das folgende Diagramm zeigt die zugrundeliegende Architektur für diese Dienstebene:
-
-![Diensttarif „Unternehmenskritisch“](./media/sql-database-managed-instance/business-critical-service-tier.png)  
+Die unternehmenskritische Dienstebene wurde für Anwendungen mit hohen E/A-Anforderungen konzipiert. Sie bietet höchste Resilienz gegenüber Ausfällen durch mehrere isolierte AlwaysOn-Replikate. 
 
 Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch“: 
 -   Konzipiert für Geschäftsanwendungen mit höchster Leistung und Hochverfügbarkeitsanforderungen 
 -   Enthält einen äußerst schnellen SSD-Speicher (bis zu 1 TB auf Gen 4 und bis zu 4 TB auf Gen 5)
 -   Unterstützt bis zu 100 Datenbanken pro Instanz 
+- Integrierte zusätzliche schreibgeschützte Instanz, die für Berichte und andere schreibgeschützte Workloads verwendet werden kann
+- [In-Memory-OLTP](sql-database-in-memory.md), das für Workloads mit hohen Leistungsanforderungen verwendet werden kann  
 
 |Feature | BESCHREIBUNG|
 |---|---|
@@ -162,9 +139,13 @@ Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch�
 | Portal-Unterstützung | JA|
 |||
 
+Weitere Informationen finden Sie im Abschnitt zur [Verfügbarkeit und Architektur des Typs „Premium/Unternehmenskritisch“ in Azure SQL-Datenbank](sql-database-high-availability.md#premiumbusiness-critical-availability).
+
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität 
 
-### <a name="managed-instance-security-isolation"></a>Sicherheitsisolation bei verwalteten Instanzen 
+Eine verwaltete Azure SQL-Datenbank-Instanz Instanzen kombiniert erweiterte Sicherheitsfeatures, die von der Azure-Cloud und SQL Server-Datenbank-Engine bereitgestellt werden. 
+
+### <a name="managed-instance-security-isolation-in-azure-cloud"></a>Sicherheitsisolation bei verwalteten Instanzen in der Azure-Cloud 
 
 Verwaltete Instanzen bieten zusätzliche Sicherheitsisolation von anderen Mandanten in der Azure-Cloud. Die Sicherheitsisolation umfasst Folgendes: 
 
@@ -181,40 +162,29 @@ Weitere Informationen zu VNet-Integration und die Durchsetzung von Netzwerkricht
 > [!IMPORTANT]
 > Platzieren Sie mehrere verwaltete Instanzen im gleichen Subnetz, wo immer dies durch Ihre Sicherheitsanforderungen erlaubt ist, da Sie dadurch zusätzliche Vorteile erzielen können. Das Zusammenstellen von Instanzen im gleichen Subnetz wird die Wartung der Netzwerkinfrastruktur erheblich vereinfachen und die Zeit für die Instanzbereitstellung verkürzen, da eine lange Bereitstellungsdauer mit den Kosten für die Bereitstellung der ersten verwalteten Instanz in einem Subnetz verbunden ist.
 
+### <a name="azure-sql-database-security-features"></a>Sicherheitsfeatures für Azure SQL-Datenbank
 
-### <a name="auditing-for-compliance-and-security"></a>Überwachung auf Konformität und Sicherheit 
+Azure SQL-Datenbank bietet eine Reihe von erweiterten Sicherheitsfeatures, die zum Schutz Ihrer Daten verwendet werden können.
 
-Die [Überwachung verwalteter Instanzen](sql-database-managed-instance-auditing.md) verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung kann dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können. 
-
-### <a name="data-encryption-in-motion"></a>Datenverschlüsselung in Aktion 
-
-Eine verwaltete Instanz schützt Ihre Daten durch die Verschlüsselung für Daten während der Übertragung mit Transport Layer Security.
-
-Neben Transport Layer Security bietet eine verwaltete SQL-Datenbank-Instanz mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) einen Schutz für sensible Daten bei der Übertragung, im Ruhezustand und während der Abfrageverarbeitung. Always Encrypted ist das branchenweit erste System, das einen beispiellosen Schutz von Daten gegen Sicherheitsverletzungen wie dem Diebstahl wichtiger Daten bietet. Beispielsweise werden mit Always Encrypted Kreditkartennummern immer verschlüsselt in der Datenbank gespeichert, selbst während der Abfrageverarbeitung. Gleichzeitig wird autorisierten Mitarbeitern oder Anwendungen, die diese Daten verarbeiten müssen, die Entschlüsselung zum Zeitpunkt der Verwendung erlaubt. 
-
-### <a name="data-encryption-at-rest"></a>Datenverschlüsselung ruhender Daten 
-[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) verschlüsselt Datendateien einer verwalteten Azure SQL-Instanz-. Dies wird als Verschlüsselung ruhender Daten bezeichnet. TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten- und Protokolldateien in Echtzeit durch. Die Verschlüsselung verwendet einen Datenbank-Verschlüsselungsschlüssel (DEK), der im Startdatensatz der Datenbank gespeichert wird und während der Wiederherstellung zur Verfügung steht. Sie können alle Ihre Datenbanken in der verwalteten Instanz mit transparenter Datenverschlüsselung schützen. TDE ist die bewährte SQL-Verschlüsselungstechnologie für ruhende Daten, die für viele Konformitätsstandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist. In Public Review wird das automatische Schlüsselverwaltungsmodell unterstützt (durchgeführt von der PaaS-Plattform). 
+- Die [Überwachung verwalteter Instanzen](sql-database-managed-instance-auditing.md) verfolgt Datenbankereignisse nach und schreibt sie in eine Überwachungsprotokolldatei in Ihrem Azure-Speicherkonto. Die Überwachung kann dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können. 
+- Datenverschlüsselung in Aktion: Eine verwaltete Instanz schützt Ihre Daten durch die Verschlüsselung für Daten während der Übertragung mit Transport Layer Security. Neben Transport Layer Security bietet eine verwaltete SQL-Datenbank-Instanz mit [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) einen Schutz für sensible Daten bei der Übertragung, im Ruhezustand und während der Abfrageverarbeitung. Always Encrypted ist das branchenweit erste System, das einen beispiellosen Schutz von Daten gegen Sicherheitsverletzungen wie dem Diebstahl wichtiger Daten bietet. Beispielsweise werden mit Always Encrypted Kreditkartennummern immer verschlüsselt in der Datenbank gespeichert, selbst während der Abfrageverarbeitung. Gleichzeitig wird autorisierten Mitarbeitern oder Anwendungen, die diese Daten verarbeiten müssen, die Entschlüsselung zum Zeitpunkt der Verwendung erlaubt. 
+- [Bedrohungserkennung](sql-database-managed-instance-threat-detection.md) ergänzt die [Überwachung verwalteter Instanzen](sql-database-managed-instance-auditing.md): Sie erweitert den Dienst um eine zusätzliche integrierte Security Intelligence-Ebene, die ungewöhnliche und eventuell schädliche Zugriffs- oder Missbrauchsversuche für Datenbanken erkennt. Sie werden vor verdächtigen Aktivitäten, potenziellen Sicherheitsrisiken sowie Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbankzugriffsmustern gewarnt. Warnungen der Bedrohungserkennung können in [Azure Security Center](https://azure.microsoft.com/services/security-center/) angezeigt werden und bieten Detailinformationen zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann.  
+- Die [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. Mit der dynamischen Datenmaskierung können Sie mit minimalen Auswirkungen auf die Anwendungsschicht festlegen, wie viel von den sensiblen Daten offengelegt werden soll. Dies trägt zur Verhinderung des unbefugten Zugriffs auf sensible Daten bei. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, ohne dass die Daten in der Datenbank geändert werden. 
+- Bei der [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) können Sie den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext). Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung. Mit RLS können Sie den Zugriff auf Datenzeilen einschränken. So können Sie beispielsweise sicherstellen, dass Mitarbeiter nur auf die Datenzeilen zugreifen können, die für ihre Abteilung relevant sind, oder den Datenzugriff ausschließlich auf die relevanten Daten beschränken. 
+- [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) verschlüsselt Datendateien einer verwalteten Azure SQL-Instanz-. Dies wird als Verschlüsselung ruhender Daten bezeichnet. TDE führt die E/A-Verschlüsselung und -Entschlüsselung der Daten- und Protokolldateien in Echtzeit durch. Die Verschlüsselung verwendet einen Datenbank-Verschlüsselungsschlüssel (DEK), der im Startdatensatz der Datenbank gespeichert wird und während der Wiederherstellung zur Verfügung steht. Sie können alle Ihre Datenbanken in der verwalteten Instanz mit transparenter Datenverschlüsselung schützen. TDE ist die bewährte SQL-Verschlüsselungstechnologie für ruhende Daten, die für viele Konformitätsstandards zum Schutz vor Diebstahl von Speichermedien erforderlich ist. In Public Review wird das automatische Schlüsselverwaltungsmodell unterstützt (durchgeführt von der PaaS-Plattform). 
 
 Die Migration einer verschlüsselten Datenbank zur verwalteten SQL-Instanz wird über den Azure Database Migration Service (DMS) oder die native Wiederherstellung unterstützt. Wenn Sie planen, eine verschlüsselte Datenbank mittels nativer Wiederherstellung zu migrieren, ist die Migration des vorhandenen TDE-Zertifikats vom SQL Server vor Ort oder von der SQL Server-VM auf die verwaltete Instanz erforderlich. Weitere Informationen zu den Migrationsoptionen finden Sie unter [Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-migrate.md).
 
-### <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
+## <a name="azure-active-directory-integration"></a>Azure Active Directory-Integration
 
-Die [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) in SQL-Datenbank schränkt die Offenlegung sensibler Daten ein, indem sie für nicht berechtigte Benutzer maskiert werden. Mit der dynamischen Datenmaskierung können Sie mit minimalen Auswirkungen auf die Anwendungsschicht festlegen, wie viel von den sensiblen Daten offengelegt werden soll. Dies trägt zur Verhinderung des unbefugten Zugriffs auf sensible Daten bei. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, ohne dass die Daten in der Datenbank geändert werden. 
-
-### <a name="row-level-security"></a>Sicherheit auf Zeilenebene 
-
-Bei der [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) können Sie den Zugriff auf Zeilen in einer Datenbanktabelle basierend auf den Merkmalen des Benutzers steuern, der eine Abfrage ausführt (z.B. Gruppenmitgliedschaft oder Ausführungskontext). Die Sicherheit auf Zeilenebene (Row-Level Security, RLS) vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung. Mit RLS können Sie den Zugriff auf Datenzeilen einschränken. So können Sie beispielsweise sicherstellen, dass Mitarbeiter nur auf die Datenzeilen zugreifen können, die für ihre Abteilung relevant sind, oder den Datenzugriff ausschließlich auf die relevanten Daten beschränken. 
-
-### <a name="threat-detection"></a>Bedrohungserkennung 
-
-Die [Bedrohungserkennung für verwaltete Instanzen](sql-database-managed-instance-threat-detection.md) ergänzt die [Überwachung verwalteter Instanzen](sql-database-managed-instance-auditing.md): Sie erweitert den Dienst um eine zusätzliche integrierte Security Intelligence-Ebene, die ungewöhnliche und eventuell schädliche Zugriffs- oder Missbrauchsversuche für Datenbanken erkennt. Sie werden vor verdächtigen Aktivitäten, potenziellen Sicherheitsrisiken sowie Angriffen mit Einschleusung von SQL-Befehlen und anomalen Datenbankzugriffsmustern gewarnt. Warnungen der Bedrohungserkennung können in [Azure Security Center](https://azure.microsoft.com/services/security-center/) angezeigt werden und bieten Detailinformationen zu verdächtigen Aktivitäten sowie Empfehlungen, wie die Bedrohung untersucht und abgewendet werden kann.  
+Die verwaltete Azure SQL-Datenbank-Instanz unterstützt herkömmliche SQL Server-Datenbank-Engine-Anmeldungen und in Azure Active Directory (AAD) integrierte Anmeldungen. AAD-Anmeldungen sind die Azure-Cloudversion von Windows-Datenbankanmeldungen, die Sie in Ihrer lokalen Umgebung verwenden.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-Integration und Multi-Factor Authentication 
 
-SQL-Datenbank ermöglicht über die [Azure Active Directory-Integration](sql-database-aad-authentication.md) eine zentrale Verwaltung von Identitäten der Datenbankbenutzer und anderer Microsoft-Dienste. Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory unterstützt [Multi-Factor Authentication](sql-database-ssms-mfa-authentication-configure.md) (MFA), um die Daten- und Anwendungssicherheit zu erhöhen, während gleichzeitig einmaliges Anmelden unterstützt wird. 
+Eine verwaltete Instanz ermöglicht über die [Azure Active Directory-Integration](sql-database-aad-authentication.md) eine zentrale Verwaltung von Identitäten der Datenbankbenutzer und anderer Microsoft-Dienste. Diese Funktion vereinfacht die Berechtigungsverwaltung und erhöht die Sicherheit. Azure Active Directory unterstützt [Multi-Factor Authentication](sql-database-ssms-mfa-authentication-configure.md) (MFA), um die Daten- und Anwendungssicherheit zu erhöhen, während gleichzeitig einmaliges Anmelden unterstützt wird. 
 
 ### <a name="authentication"></a>Authentifizierung 
-Die SQL-Datenbank-Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Datenbank unterstützt zwei Arten der Authentifizierung:  
+Die Authentifizierung einer verwalteten Instanz bezieht sich darauf, wie Benutzer ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Datenbank unterstützt zwei Arten der Authentifizierung:  
 
 - SQL-Authentifizierung, bei der ein Benutzername und ein Kennwort verwendet werden
 - Azure Active Directory-Authentifizierung, bei der von Azure Active Directory verwaltete Identitäten verwendet werden und die für verwaltete und integrierte Domänen unterstützt wird 
@@ -227,22 +197,19 @@ Autorisierung bezieht sich darauf, welche Aufgaben ein Benutzer innerhalb einer 
 
 Verwaltete Instanzen zielen auf Benutzerszenarien mit einer Massenmigration der Datenbank von lokalen oder IaaS-Datenbankimplementierungen ab. Verwaltete Instanzen unterstützen mehrere Optionen zur Datenbankmigration: 
 
-### <a name="data-migration-service"></a>Data Migration Service
-
-Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken in Azure zu verschieben. Zu den Bereitstellungsoptionen in der Public Preview-Phase gehören Azure SQL-Datenbank, verwaltete Instanz und SQL Server auf einem virtuellen Azure-Computer. Siehe [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://aka.ms/migratetoMIusingDMS). 
-
 ### <a name="backup-and-restore"></a>Sichern und Wiederherstellen  
 
-Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In Azure Blob Storage gespeicherte Sicherungen können direkt in der verwalteten Instanz gespeichert werden. Um eine vorhandene SQL-­Datenbank in einer verwalteten Instanz wiederherzustellen, haben Sie folgende Möglichkeiten:
-
-- Verwenden Sie [Data Migration Service (DMS)](../dms/dms-overview.md). Ein Tutorial zum Wiederherstellen aus einer Datenbanksicherungsdatei finden Sie unter [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](../dms/tutorial-sql-server-to-managed-instance.md).
-- Verwenden Sie den [T-SQL RESTORE-Befehl](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
+Beim Migrationsansatz werden SQL-Sicherungen in Azure Blob Storage genutzt. In Azure Blob Storage gespeicherte Sicherungen können mithilfe des [T-SQL RESTORE-Befehls](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current) direkt in der verwalteten Instanz gespeichert werden. 
   - Ein Tutorial zum Wiederherstellen der Standardsicherungsdatei für die Wide World Importers-Datenbank finden Sie unter [Wiederherstellen einer Sicherungsdatei in einer verwalteten Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md). In diesem Tutorial wird gezeigt, wie eine Sicherungsdatei in den Azure Blob Storage hochgeladen und mit einem SAS-Schlüssel (Shared Access Signature) geschützt wird.
   - Weitere Informationen zur Wiederherstellung über eine URL finden Sie unter [Native RESTORE FROM URL-Option](sql-database-managed-instance-migrate.md#native-restore-from-url).
+  
+### <a name="data-migration-service"></a>Data Migration Service
+
+Azure Database Migration Service ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimaler Downtime ermöglicht. Dieser Dienst optimiert die Aufgaben, die erforderlich sind, um bestehende Drittanbieter- und SQL Server-Datenbanken in Azure zu verschieben. Zu den Bereitstellungsoptionen in der Public Preview-Phase gehören Azure SQL-Datenbank, verwaltete Instanz und SQL Server auf einem virtuellen Azure-Computer. Siehe [Migrieren von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz](https://aka.ms/migratetoMIusingDMS).
 
 ## <a name="sql-features-supported"></a>Unterstützte SQL-Features 
 
-Bis zur allgemeinen Verfügbarkeit des Diensts wird für verwaltete Instanzen in mehreren Stufen eine nahezu 100%ige Oberflächenkompatibilität mit der lokalen SQL Server-Version angestrebt. Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).
+Bis zur allgemeinen Verfügbarkeit des Diensts wird für verwaltete Instanzen in mehreren Stufen eine nahezu 100%ige Oberflächenkompatibilität mit der lokalen SQL Server-Version angestrebt. Eine Liste der Funktionen und einen Funktionsvergleich finden Sie unter [Funktionsvergleich: Azure SQL-Datenbank und SQL Server](sql-database-features.md) und eine Liste der T-SQL-Unterschiede in verwalteten Instanzen im Vergleich zu SQL Server finden Sie unter [T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server](sql-database-managed-instance-transact-sql-information.md).
  
 Verwaltete Instanzen unterstützen die Abwärtskompatibilität mit SQL 2008-Datenbanken. Die direkte Migration von SQL 2005-Datenbankservern wird unterstützt, der Kompatibilitätsgrad für migrierte SQL 2005-Datenbanken wird auf SQL 2008 aktualisiert. 
  
@@ -267,9 +234,21 @@ In einer verwalteten Instanz können Systemadministratoren sich auf die für das
 
 > [!IMPORTANT]
 > Eine Liste der unterstützten, teilweise unterstützten und nicht unterstützten Features finden Sie unter [Features von Azure SQL-Datenbank](sql-database-features.md). Eine Liste der T-SQL-Unterschiede in verwalteten Instanzen im Vergleich zu SQL Server finden Sie unter [T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server](sql-database-managed-instance-transact-sql-information.md).
- 
+
+### <a name="how-to-programmatically-identify-a-managed-instance"></a>Programmgesteuertes Identifizieren einer verwalteten Instanz
+
+In der folgenden Tabelle sind verschiedene Eigenschaften aufgeführt, auf die über Transact-SQL zugegriffen werden kann und über die Sie ermitteln können, ob Ihre Anwendung mit der verwalteten Instanz ausgeführt wird, und mit denen Sie wichtige Eigenschaften abrufen können.
+
+|Eigenschaft|Wert|Comment|
+|---|---|---|
+|`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|
+|`SERVERPROPERTY ('Edition')`|SQL Azure|Dieser Wert ist mit dem Wert in SQL-Datenbank identisch.|
+|`SERVERPROPERTY('EngineEdition')`|8|Durch diesen Wert wird eine verwaltete Instanz eindeutig identifiziert.|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Vollständiger DNS-Instanzname im folgenden Format: <instanceName>.<dnsPrefix>.database.windows.net, wobei <instanceName> der vom Kunden angegebene Name und <dnsPrefix> der automatisch generierte Teil des Namens ist, der die Eindeutigkeit des globalen DNS-Namens gewährleistet (z.B. „wcus17662feb9ce98“)|Beispiel: meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net|
+
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Im [Schnellstarthandbuch](sql-database-managed-instance-get-started.md) erfahren Sie, wie Sie Ihre erste verwaltete Instanz erstellen.
 - Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).
 - Weitere Informationen zur VNET-Konfiguration finden Sie unter [Configure a VNet for Azure SQL Database Managed Instance](sql-database-managed-instance-vnet-configuration.md) (Konfigurieren eines VNET für eine verwaltete Azure SQL-Datenbank-Instanz).
 - Ein Tutorial, in dem eine verwaltete Instanz erstellt und eine Datenbank von einer Sicherungsdatei wiederhergestellt wird, finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md).

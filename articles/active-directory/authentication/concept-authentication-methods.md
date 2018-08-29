@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 4a0fb5739812950f3a01a18acae1d797fa4f9158
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622251"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "42142879"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -137,6 +137,8 @@ Die Microsoft Authenticator-App kann dazu beitragen, nicht autorisierten Zugriff
 > Wenn zwei Methoden erforderlich sind, können Benutzer zum Zurücksetzen **ENTWEDER** die Option „Benachrichtigung“ **ODER** die Option „Prüfcode“ verwenden – zusätzlich zu anderen aktivierten Methoden.
 >
 
+Wenn Sie das Empfangen einer Benachrichtigung sowie das Erhalten eines Prüfcodes in der mobilen App aktivieren, können Benutzer, die die Microsoft Authenticator-App mithilfe einer Benachrichtigung registrieren, sowohl die Benachrichtigung als auch den Code zum Bestätigen ihrer Identität verwenden.
+
 ### <a name="verification-code-from-mobile-app"></a>Überprüfungscode von der mobilen App
 
 Die Microsoft Authenticator-App und andere Drittanbieter-Apps können als Softwaretoken zum Generieren eines OATH-Prüfcodes verwendet werden. Nachdem Sie Benutzernamen und Kennwort eingegeben haben, geben Sie auf dem Anmeldebildschirm den in der App generierten Code ein. Der Überprüfungscode kann als zweite Authentifizierungsmethode eingegeben werden.
@@ -199,6 +201,6 @@ Wenn für Ihr Unternehmen ein SSO-Verbund mit Azure AD konfiguriert ist und Sie 
 
 [Aktivieren von Azure Multi-Factor Authentication für Ihre Organisation](howto-mfa-getstarted.md)
 
-[Aktivieren der zusammengeführten Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD](concept-registration-mfa-sspr-converged.md)
+Lesen Sie außerdem, wie Sie die [zusammengeführte Registrierung für Azure Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung in Azure AD aktivieren](concept-registration-mfa-sspr-converged.md).
 
 [Dokumentation zur Konfiguration der Methode für die Authentifizierung von Endbenutzern](https://aka.ms/securityinfoguide)

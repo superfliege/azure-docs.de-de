@@ -8,29 +8,29 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: f21973855ceb3a257627c147490ac50465c54020
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 5af829ca076b39758973c28a44d918b9ba5782b1
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281938"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42351249"
 ---
 # <a name="batch-transcription"></a>Batch-Transkription
 
-Die Batch-Transkription ist optimal für Anwendungsfälle mit großen Audiodatenmengen geeignet. Sie ermöglicht es dem Entwickler, im asynchronen Modus auf Audiodateien zu verweisen und Transkriptionen zurückzuerhalten.
+Die Batch-Transkription ist optimal geeignet, wenn Sie über große Audiodatenmengen verfügen. Sie können im asynchronen Modus auf Audiodateien verweisen und Transkriptionen zurückerhalten.
 
 ## <a name="batch-transcription-api"></a>Batch-Transkriptions-API
 
-Die Batch-Transkriptions-API ermöglicht das oben beschriebene Szenario. Sie bietet asynchrone Transkription von Sprache in Text sowie zusätzliche Funktionen.
+Die Batch-Transkriptions-API bietet asynchrone Transkription von Sprache in Text sowie zusätzliche Funktionen.
 
 > [!NOTE]
 > Die Batch-Transkriptions-API eignet sich ideal für Callcenter, bei denen sich üblicherweise Tausende von Stunden mit Audioaufzeichnungen ansammeln. Aufgrund der eigenständigen Funktionsweise dieser API können große Mengen von Audioaufnahmen problemlos transkribiert werden.
 
 ### <a name="supported-formats"></a>Unterstützte Formate
 
-Die Batch-Transkriptions-API ist darauf ausgelegt, der De-facto-Standard für alle Callcenter-bezogenen Offline-Szenarien zu werden, und bietet Unterstützung für alle zugehörigen Formate. Derzeit unterstützte Formate:
+Die Batch-Transkriptions-API unterstützt die folgenden Formate:
 
-NAME| Kanal  |
+Name| Kanal  |
 ----|----------|
 MP3 |   Mono   |   
 MP3 |  Stereo  | 
@@ -55,28 +55,28 @@ Bei Audiodatenströmen in Stereo wird der linke und rechte Kanal während der Tr
 ```
 
 > [!NOTE]
-> Die Batch-Transkriptions-API verwendet einen REST-Dienst zum Anfordern von Transkriptionen, deren Status und zugehörigen Ergebnissen. Die API kann in jeder Sprache verwendet werden. Im nächsten Abschnitt wird ihre Verwendung beschrieben.
+> Die Batch-Transkriptions-API verwendet einen REST-Dienst zum Anfordern von Transkriptionen, deren Status und zugehörigen Ergebnissen. Sie können die API in jeder Sprache verwenden. Im nächsten Abschnitt wird ihre Verwendung beschrieben.
 
 ## <a name="authorization-token"></a>Autorisierungstoken
 
-Wie bei allen Features des vereinheitlichten Spracherkennungsdiensts muss der Benutzer einen Abonnementschlüssel aus dem [Azure-Portal](https://portal.azure.com) erstellen. Darüber hinaus muss ein API-Schlüssel aus dem Speech-Portal abgerufen werden. Zum Generieren eines API-Schlüssels müssen die folgenden Schritte ausgeführt werden:
+Wie bei allen Features des vereinheitlichten Spracherkennungsdiensts erstellen Sie einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com). Darüber hinaus rufen Sie einen API-Schlüssel aus dem Speech-Portal ab: 
 
-1. Melden Sie sich bei https://customspeech.ai an.
+1. Melden Sie sich bei [Custom Speech](https://customspeech.ai) an.
 
-2. Klicken Sie auf „Abonnements“.
+2. Wählen Sie **Abonnements**.
 
-3. Klicken Sie auf die Option `Generate API Key`.
+3. Wählen Sie **API-Schlüssel generieren**.
 
-    ![Die Uploadansicht](media/stt/Subscriptions.jpg)
+    ![Screenshot der Seite „Abonnements“ von Custom Speech](media/stt/Subscriptions.jpg)
 
-4. Kopieren Sie diesen Schlüssel, und fügen Sie ihn im Clientcode des nachfolgenden Beispiels ein.
+4. Kopieren Sie diesen Schlüssel, und fügen Sie ihn in den Clientcode im folgenden Beispiel ein.
 
 > [!NOTE]
-> Wenn Sie ein benutzerdefiniertes Modell verwenden möchten, benötigen Sie auch die ID dieses Modells. Beachten Sie, dass es sich hier nicht um die Bereitstellungs- oder Endpunkt-ID handelt, die in der Ansicht „Endpunktdetails“ angegeben ist, sondern um die Modell-ID, die Sie durch Klicken auf die Details dieses Modells abrufen können.
+> Wenn Sie ein benutzerdefiniertes Modell verwenden möchten, benötigen Sie auch die ID dieses Modells. Beachten Sie, dass es sich hier nicht um die Bereitstellungs- oder Endpunkt-ID handelt, die in der Ansicht „Endpunktdetails“ angegeben ist. Es ist die Modell-ID, die Sie durch Klicken auf die Details dieses Modells abrufen können.
 
 ## <a name="sample-code"></a>Beispielcode
 
-Die Verwendung der API ist recht unkompliziert. Der Beispielcode unten muss mit einem Abonnementschlüssel und einem API-Schlüssel angepasst werden, wodurch der Entwickler ein Bearertoken abrufen kann, wie der folgende Codeausschnitt zeigt:
+Passen Sie den folgenden Beispielcode mit einem Abonnementschlüssel und einem API-Schlüssel an. Dadurch können Sie ein Bearertoken abrufen.
 
 ```cs
     public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
@@ -93,7 +93,7 @@ Die Verwendung der API ist recht unkompliziert. Der Beispielcode unten muss mit 
         }
 ```
 
-Nachdem das Token abgerufen wurde, muss der Entwickler den SAS-URI angeben, der auf die Audiodatei zeigt, für die eine Transkription erforderlich ist. Der Rest des Codes durchläuft einfach den Status und zeigt Ergebnisse an.
+Nachdem Sie das Token abgerufen haben, müssen Sie den SAS-URI angeben, der auf die Audiodatei zeigt, für die eine Transkription erforderlich ist. Der Rest des Codes durchläuft den Status und zeigt Ergebnisse an.
 
 ```cs
    static async Task TranscribeAsync()
@@ -152,21 +152,20 @@ Nachdem das Token abgerufen wurde, muss der Entwickler den SAS-URI angeben, der 
 ```
 
 > [!NOTE]
-> Der im Codeausschnitt oben angegebene Abonnementschlüssel ist der Schlüssel von der Speech (Vorschau)-Ressource, die Sie im Azure-Portal erstellen. Schlüssel, die von der Custom Speech Service-Ressource abgerufen werden, funktionieren nicht.
+> Im oben angegebenen Code stammt der Abonnementschlüssel von der Speech (Vorschau)-Ressource, die Sie im Azure-Portal erstellen. Schlüssel, die von der Custom Speech Service-Ressource abgerufen werden, funktionieren nicht.
 
+Beachten Sie das asynchrone Setup für das Senden von Audiodaten und das Empfangen des Transkriptionsstatus. Der erstellte Client ist ein .NET-HTTP-Client. Es gibt eine `PostTranscriptions`-Methode für das Senden der Audiodateidetails und eine `GetTranscriptions`-Methode zum Empfangen der Ergebnisse. `PostTranscriptions` gibt ein Handle zurück, und `GetTranscriptions` verwendet dieses Handle, um ein Handle zum Abrufen des Transkriptionsstatus zu erstellen.
 
-Beachten Sie das asynchrone Setup für das Senden von Audiodaten und das Empfangen des Transkriptionsstatus. Der erstellte Client ist ein .NET-HTTP-Client. Es gibt eine `PostTranscriptions`-Methode für das Senden der Audiodateidetails und eine `GetTranscriptions`-Methode zum Empfangen der Ergebnisse. `PostTranscriptions` gibt ein Handle zurück, und die `GetTranscriptions`-Methode verwendet dieses Handle, um ein Handle zum Abrufen des Transkriptionsstatus zu erstellen.
+Im aktuellen Beispielcode sind keine benutzerdefinierten Modelle angegeben. Der Dienst verwendet die Basismodelle zum Transkribieren der Datei bzw. Dateien. Zum Angeben der Modelle können Sie dieselben Modell-IDs für das Akustikmodell und das Sprachmodell übergeben. 
 
-Im aktuellen Beispielcode sind keine benutzerdefinierten Modelle angegeben. Der Dienst verwendet die Basismodelle zum Transkribieren der Datei(en). Wenn der Benutzer die Modelle angeben möchte, können dieselben Modell-IDs für das Akustikmodell und das Sprachmodell übergeben werden. 
-
-Sollen die Basismodelle nicht verwendet werden, müssen Modell-IDs sowohl für das Akustikmodell als auch das Sprachmodell übergeben werden.
+Wenn Sie die Basismodelle nicht verwenden möchten, müssen Sie Modell-IDs sowohl für das Akustikmodell als auch das Sprachmodell übergeben.
 
 > [!NOTE]
-> Für eine Basistranskription muss der Benutzer die Endpunkte der Basismodelle nicht deklarieren. Sollen benutzerdefinierte Modelle verwendet werden, muss der Benutzer deren Endpunkte-IDs als [Beispiel](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI) angeben. Wenn der Benutzer ein Basisakustikmodell mit einem Basissprachmodell verwenden möchte, muss er nur die Endpunkt-ID des benutzerdefinierten Modells deklarieren. Das System ermittelt intern das Partnerbasismodell (ganz gleich, ob Akustik- oder Sprachmodell) und verwendet dieses zur Erfüllung der Transkriptionsanforderung.
+> Für eine Basistranskription müssen Sie die Endpunkte der Basismodelle nicht deklarieren. Wenn Sie benutzerdefinierte Modelle verwenden möchten, geben Sie deren Endpunkte-IDs als [Beispiel](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI) an. Wenn Sie ein Basisakustikmodell mit einem Basissprachmodell verwenden möchten, müssen Sie nur die Endpunkt-ID des benutzerdefinierten Modells deklarieren. Microsoft erkennt das Partnerbasismodell (ganz gleich, ob Akustik- oder Sprachmodell) und verwendet dieses zur Erfüllung der Transkriptionsanforderung.
 
 ### <a name="supported-storage"></a>Unterstützter Speicher
 
-Derzeit wird als Speicher nur Azure Blob unterstützt.
+Derzeit wird als Speicher nur Azure Blob Storage unterstützt.
 
 ## <a name="downloading-the-sample"></a>Herunterladen des Beispiels
 

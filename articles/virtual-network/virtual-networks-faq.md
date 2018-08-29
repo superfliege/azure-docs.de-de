@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 8dfe313cb82fd0ace7221ea320bb2228be75196c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2802a725bca7f63f6956293048b0e854ebfb59b5
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038307"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42142443"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -223,6 +223,9 @@ Ja. Weitere Informationen zur Verwendung von folgenden Tools:
 
 ## <a name="vnet-peering"></a>VNet-Peering
 
+### <a name="what-is-vnet-peering"></a>Was ist VNET-Peering?
+VNET-Peering (das Peering virtueller Netzwerke) ermöglicht Ihnen das Verbinden von virtuellen Netzwerken. Über eine VNET-Peeringverbindung zwischen virtuellen Netzwerken können Sie Datenverkehr zwischen diesen privat über IPv4-Adressen weiterleiten. Virtuelle Computer in den mittels Peering verknüpften VNETs können miteinander kommunizieren, als ob sie sich im gleichen Netzwerks befinden. Diese virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen (dann auch als globales VNET-Peering bezeichnet) befinden. VNET-Peeringverbindungen können auch über mehrere Azure-Abonnements hinweg erstellt werden.
+
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Kann ich eine Peeringverbindung mit einem VNET in einer anderen Region herstellen?
 Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNET-Peering ist in allen öffentlichen Azure-Regionen verfügbar. Globales Peering von öffentlichen Azure-Regionen mit nationalen Clouds ist nicht möglich. Globales Peering ist in nationalen Clouds zurzeit nicht verfügbar.
 
@@ -231,6 +234,9 @@ Derzeit ist es nicht möglich, VNET-Peering (ob lokal oder global) einzurichten,
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Meine VNET-Peeringverbindung befindet sich im Status *Initiiert* – warum kann ich keine Verbindung herstellen?
 Wenn Ihre Peeringverbindung sich im Status „Initiiert“ befindet, bedeutet dies, dass Sie nur einen Link erstellt haben. Damit eine Verbindung erfolgreich hergestellt werden kann, muss ein bidirektionaler Link erstellt werden. Um beispielsweise eine Peeringverbindung zwischen VNET A und VNET B herzustellen, muss ein Link von VNetA zu VNetB und von VNetB zu VNetA erstellt werden. Nach dem Erstellen beider Links ändert sich der Status in *Verbunden*.
+
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Meine VNET-Peeringverbindung befindet sich im Zustand *Getrennt*. Warum kann ich keine Peeringverbindung herstellen?
+Wenn Ihre VNET-Peeringverbindung den Zustand „Getrennt“ aufweist, bedeutet dies, dass eine der erstellen Verknüpfungen gelöscht wurde. Um die Peeringverbindung erneut herzustellen, müssen Sie die Verknüpfung löschen und neu erstellen.
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Kann ich eine Peeringverbindung meines VNETs mit einem VNET in einem anderen Abonnement herstellen?
 Ja. Sie können Peeringverbindungen zwischen VNETs Abonnements und Regionen übergreifend herstellen.
