@@ -11,12 +11,12 @@ ms.topic: article
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 61bc081ca3221c0d588b7b7a2d9482d2fc70c0d5
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038298"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42144085"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -78,9 +78,10 @@ azds list-uris
 
 Der Status *Ausstehend* für eine URL bedeutet, dass Dev Spaces auf den Abschluss der DNS-Registrierung wartet. Manchmal dauert dieser Vorgang einige Minuten. Dev Spaces öffnet zudem für die einzelnen Dienste einen localhost-Tunnel, den Sie beim Warten auf die DNS-Registrierung verwenden können.
 
-Wird für eine URL länger als fünf Minuten der Status *Ausstehend* angezeigt, weist dies unter Umständen auf ein Problem mit dem nginx-Eingangscontroller hin, der für das Abrufen des öffentlichen Endpunkts zuständig ist. Mit dem folgenden Befehl können Sie den Pod löschen, in dem der nginx-Controller ausgeführt wird. Er wird automatisch neu erstellt.
+Wird für eine URL länger als fünf Minuten der Status *Ausstehend* angezeigt, deutet dies unter Umständen auf ein Problem mit dem externen DNS-Pod hin, der den öffentlichen Endpunkt erstellt, und/oder mit dem Pod des Eingangscontrollers, der den öffentlichen Endpunkt abruft. Mit den folgenden Befehlen können Sie diese Pods löschen. Sie werden automatisch neu erstellt.
 
 ```cmd
+kubectl delete pod -n kube-system -l app=addon-http-application-routing-external-dns
 kubectl delete pod -n kube-system -l app=addon-http-application-routing-nginx-ingress
 ```
 
@@ -139,6 +140,14 @@ Das Starten des VS Code-Debuggers kann in einigen Fällen zu diesem Fehler führ
 1. Schließen Sie VS Code, und öffnen Sie es erneut.
 2. Drücken Sie erneut F5.
 
+## <a name="debugging-error-failed-to-find-debugger-extension-for-typecoreclr"></a>Debuggen des Fehlers „Debugger-Erweiterung für coreclr-Typ wurde nicht gefunden“
+Beim Ausführen des VS Code-Debuggers wird der folgende Fehler gemeldet: `Failed to find debugger extension for type:coreclr.`
+
+### <a name="reason"></a>Grund
+Auf Ihrem Entwicklungscomputer mit Debugging-Unterstützung für .Net Core (CoreCLR) ist die VS Code-Erweiterung für C# nicht installiert.
+
+### <a name="try"></a>Versuchen Sie Folgendes:
+Installieren Sie die [VS Code-Erweiterung für C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
 
 ## <a name="debugging-error-configured-debug-type-coreclr-is-not-supported"></a>Debuggen des Fehlers „Der konfigurierte Debugtyp ‚coreclr‘ wird nicht unterstützt.“
 Beim Ausführen des VS Code-Debuggers wird der folgende Fehler gemeldet: `Configured debug type 'coreclr' is not supported.`

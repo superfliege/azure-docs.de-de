@@ -1,74 +1,62 @@
 ---
-title: Schützen von B2B-Nachrichten mit Zertifikaten in Azure Logic Apps | Microsoft Docs
-description: Hinzufügen von Zertifikaten zum Schützen von B2B-Nachrichten mit dem Enterprise Integration Pack
+title: 'Schützen von B2B-Nachrichten mit Zertifikaten: Azure Logic Apps | Microsoft-Dokumentation'
+description: Hinzufügen von Zertifikaten zum Schützen von B2B-Nachrichten in Azure Logic Apps mit dem Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, LADocs
+manager: jeconnoc
+ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
+ms.suite: integration
 ms.topic: article
-ms.date: 02/03/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 7ba76a15792fe40b2a628b030f06930641d197a3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/17/2018
+ms.openlocfilehash: 5ae69d365a183f7d2a219d853241e73c1e27212b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299333"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42145132"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Schützen von B2B-Nachrichten mit Zertifikaten
 
-In einigen Fällen müssen Sie dafür sorgen, dass die B2B-Kommunikation vertraulich bleibt. Um die B2B-Kommunikation für Ihre Unternehmensintegrations-Apps, insbesondere Logik-Apps, zu schützen, können Sie Ihrem Integrationskonto Zertifikate hinzufügen. Zertifikate sind digitale Dokumente, mit denen die Identität der Teilnehmer einer elektronischen Kommunikation überprüft wird.
-Mit Zertifikaten können Sie die Kommunikation auf folgende Weise schützen:
+Wenn B2B-Kommunikation vertraulich sein soll, können Sie sie für Ihre Unternehmensintegrations-Apps, insbesondere Logik-Apps, schützen, indem Sie Ihrem Integrationskonto Zertifikate hinzufügen. Zertifikate sind digitale Dokumente, mit denen die Identität der Teilnehmer an einer elektronischen Kommunikation überprüft wird und die zur Sicherung der Kommunikation auf folgende Arten dienen:
 
 * Verschlüsseln des Nachrichteninhalts
-* Digitales Signieren von Nachrichten  
+* Digitales Signieren von Nachrichten 
 
 In Ihren Unternehmensintegrations-Apps können Sie die folgenden Zertifikate verwenden:
 
-* Öffentliche Zertifikate, die bei einer Zertifizierungsstelle erworben werden müssen.
-* Private, selbst ausgestellte Zertifikate. Diese Zertifikate werden gelegentlich auch als selbstsignierte Zertifikate bezeichnet.
+* [Öffentliche Zertifikate](https://en.wikipedia.org/wiki/Public_key_certificate), die Sie über eine öffentliche [Zertifizierungsstelle (ZS)](https://en.wikipedia.org/wiki/Certificate_authority) im Internet erwerben müssen, für die jedoch keine Schlüssel erforderlich sind 
+
+* Private Zertifikate oder [*selbstsignierte Zertifikate*](https://en.wikipedia.org/wiki/Self-signed_certificate), die Sie selbst erstellen und ausstellen, für die jedoch zusätzlich private Schlüssel erforderlich sind 
 
 ## <a name="upload-a-public-certificate"></a>Hochladen eines öffentlichen Zertifikats
 
 Um ein *öffentliches Zertifikat* in Logik-Apps mit B2B-Funktionen verwenden zu können, müssen Sie das Zertifikat zuerst in Ihr Integrationskonto hochladen. Nachdem Sie die Eigenschaften in den von Ihnen erstellten [Vereinbarungen](logic-apps-enterprise-integration-agreements.md) definiert haben, steht das Zertifikat zum Schützen Ihrer B2B-Nachrichten zur Verfügung.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie im Azure-Hauptmenü die Option **Alle Ressourcen** aus. Geben Sie im Suchfeld den Namen Ihres Integrationskontos ein, und wählen Sie dann das gewünschte Integrationskonto aus.
 
-2. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.
+   ![Suchen und Auswählen Ihres Integrationskontos](media/logic-apps-enterprise-integration-certificates/select-integration-account.png)  
 
-   ![Suchen Ihres Integrationskontos](media/logic-apps-enterprise-integration-certificates/overview-1.png)  
+2. Klicken Sie unter **Komponenten** auf die Kachel **Zertifikate**.
 
-3. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, dem Sie das Zertifikat hinzufügen möchten.
+   ![„Zertifikate“ auswählen](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-   ![Integrationskonto auswählen, dem Sie das Zertifikat hinzufügen möchten](media/logic-apps-enterprise-integration-certificates/overview-3.png)  
+3. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-4. Wählen Sie die Kachel **Zertifikate** aus.  
+   | Eigenschaft | Wert | BESCHREIBUNG | 
+   |----------|-------|-------------|
+   | **Name** | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel „PublicCert“) | 
+   | **Zertifikattyp** | Öffentlich | Der Typ Ihres Zertifikats |
+   | **Certificate** | <*certificate-file-name*> (Name der Zertifikatdatei) | Klicken Sie neben dem Feld **Zertifikat** auf das Ordnersymbol, um die Zertifikatdatei zu suchen und auszuwählen, die Sie hochladen möchten. |
+   ||||
 
-   ![„Zertifikate“ auswählen](media/logic-apps-enterprise-integration-certificates/certificate-1.png)
-
-5. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus.
-
-   ![„Hinzufügen“ auswählen](media/logic-apps-enterprise-integration-certificates/certificate-2.png)
-
-6. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an.
-   
-   1. Geben Sie den **Namen** für Ihr Zertifikat ein. Wählen Sie als Zertifikattyp die Option **Öffentlich** aus.
-
-   2. Wählen Sie rechts neben dem Feld **Zertifikat** das Ordnersymbol aus. 
-   Suchen Sie nach der Zertifikatsdatei, die Sie hochladen möchten, und wählen Sie diese aus. 
-   Wählen Sie **OK** aus, wenn Sie fertig sind.
-
-      ![Hochladen eines öffentlichen Zertifikats](media/logic-apps-enterprise-integration-certificates/certificate-3.png)
+   ![Klicken auf „Hinzufügen“, Angeben der Zertifikatdetails](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
 
    Azure lädt das Zertifikat nach dem Überprüfen Ihrer Auswahl hoch.
 
-   ![Neues Zertifikat anzeigen](media/logic-apps-enterprise-integration-certificates/certificate-4.png) 
+   ![Anzeigen des neuen Zertifikats in Azure](media/logic-apps-enterprise-integration-certificates/new-public-certificate.png) 
 
 ## <a name="upload-a-private-certificate"></a>Hochladen eines privaten Zertifikats
 
@@ -77,7 +65,7 @@ Um ein *privates Zertifikat* in Logik-Apps mit B2B-Funktionen verwenden zu könn
 Nachdem Sie die Eigenschaften in den von Ihnen erstellten [Vereinbarungen](logic-apps-enterprise-integration-agreements.md) definiert haben, steht das Zertifikat zum Schützen Ihrer B2B-Nachrichten zur Verfügung.
 
 > [!NOTE]
-> Stellen Sie bei privaten Zertifikaten sicher, dass Sie ein entsprechendes öffentliches Zertifikat hinzufügen, das in der [AS2-Vereinbarung](logic-apps-enterprise-integration-as2.md) in den Sende- und Empfangseinstellungen für das Signieren und Verschlüsseln von Nachrichten angezeigt wird.
+> Stellen Sie bei privaten Zertifikaten sicher, dass Sie ein entsprechendes öffentliches Zertifikat hinzufügen, das in der [AS2-Vereinbarung](logic-apps-enterprise-integration-as2.md) in den **Sende- und Empfangseinstellungen** für das Signieren und Verschlüsseln von Nachrichten angezeigt wird.
 
 1. [Fügen Sie Ihren privaten Schlüssel zu Azure Key Vault hinzu](../key-vault/key-vault-get-started.md#add), und geben Sie einen **Schlüsselnamen** an.
    
@@ -86,36 +74,31 @@ Nachdem Sie die Eigenschaften in den von Ihnen erstellten [Vereinbarungen](logic
    `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-3. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+3. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie im Azure-Hauptmenü die Option **Alle Ressourcen** aus. Geben Sie im Suchfeld den Namen Ihres Integrationskontos ein, und wählen Sie dann das gewünschte Integrationskonto aus.
 
-4. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. Geben Sie im Suchfeld das Wort „Integration“ ein, und wählen Sie dann **Integrationskonten** aus.
+   ![Suchen Ihres Integrationskontos](media/logic-apps-enterprise-integration-certificates/select-integration-account.png) 
 
-   ![Suchen Ihres Integrationskontos](media/logic-apps-enterprise-integration-certificates/overview-1.png) 
+4. Klicken Sie unter **Komponenten** auf die Kachel **Zertifikate**.  
 
-5. Wählen Sie unter **Integrationskonten** das Integrationskonto aus, dem Sie das Zertifikat hinzufügen möchten.
+   ![Kachel „Zertifikate“ auswählen](media/logic-apps-enterprise-integration-certificates/add-certificates.png)
 
-6. Wählen Sie die Kachel **Zertifikate** aus.  
+5. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-   ![Kachel „Zertifikate“ auswählen](media/logic-apps-enterprise-integration-certificates/certificate-1.png)
+   | Eigenschaft | Wert | BESCHREIBUNG | 
+   |----------|-------|-------------|
+   | **Name** | <*certificate-name*> (Zertifikatname) | Der Name Ihres Zertifikats (in diesem Beispiel „privateCert“) | 
+   | **Zertifikattyp** | Private | Der Typ Ihres Zertifikats |
+   | **Certificate** | <*certificate-file-name*> (Name der Zertifikatdatei) | Klicken Sie neben dem Feld **Zertifikat** auf das Ordnersymbol, um die Zertifikatdatei zu suchen und auszuwählen, die Sie hochladen möchten. | 
+   | **Ressourcengruppe** | <*integration-account-resource-group*> (Ressourcengruppe des Integrationskontos) | Die Ressourcengruppe Ihres Integrationskontos (in diesem Beispiel „MyResourceGroup“) | 
+   | **Schlüsseltresor** | <*key-vault-name*> (Name des Schlüsseltresors) | Der Name Ihres Azure-Schlüsseltresors |
+   | **Schlüsselname** | <*key-name*> | Der Name Ihres Schlüssels |
+   ||||
 
-7. Wählen Sie unter **Zertifikate** die Option **Hinzufügen** aus.   
-
-   ![Schaltfläche „Hinzufügen“ auswählen](media/logic-apps-enterprise-integration-certificates/certificate-2.png)
-
-8. Geben Sie unter **Zertifikat hinzufügen** die Details für Ihr Zertifikat an.
-   
-   1. Geben Sie den **Namen** für Ihr Zertifikat ein. Wählen Sie als Zertifikattyp die Option **Privat** aus.
-
-   2. Wählen Sie rechts neben dem Feld **Zertifikat** das Ordnersymbol aus. 
-   Suchen Sie nach der Zertifikatsdatei, die Sie hochladen möchten, und wählen Sie diese aus. 
-   Wählen Sie außerdem die **Ressourcengruppe**, den **Schlüsseltresor**, und den **Schlüsselnamen** aus. 
-   Wählen Sie **OK** aus, wenn Sie fertig sind.
-
-      ![Hinzufügen des Zertifikats](media/logic-apps-enterprise-integration-certificates/privatecertificate-1.png)
+   ![Klicken auf „Hinzufügen“, Angeben der Zertifikatdetails](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)
 
    Azure lädt das Zertifikat nach dem Überprüfen Ihrer Auswahl hoch.
 
-   ![Neues Zertifikat anzeigen](media/logic-apps-enterprise-integration-certificates/privatecertificate-2.png)
+   ![Anzeigen des neuen Zertifikats in Azure](media/logic-apps-enterprise-integration-certificates/new-private-certificate.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

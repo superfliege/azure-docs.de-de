@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b38d90251ab59e537e7d637f45f04c4db87a94ae
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6d3847f547646ae7c62f98b4cee716af5c6ba5e9
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580745"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42142917"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Bereiche, Berechtigungen und Zustimmung im Azure Active Directory v2. 0-Endpunkt
 Apps, die sich in Azure Active Directory (Azure AD) integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer festlegen können, wie eine App auf ihre Daten zugreift. Die v2.0-Implementierung dieses Autorisierungsmodells wurde aktualisiert, sodass die Art und Weise, wie eine App mit Azure AD interagieren muss, nun anders ist. Dieser Artikel behandelt die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung.
@@ -73,6 +73,19 @@ Mit dem [`offline_access`-Bereich](http://openid.net/specs/openid-connect-core-1
 Wenn die App den `offline_access`-Bereich nicht anfordert, werden auch keine Aktualisierungstoken empfangen. Dies bedeutet, dass Sie beim Einlösen eines Autorisierungscodes im [OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols.md) nur ein Zugriffstoken vom `/token`-Endpunkt erhalten. Das Zugriffstoken ist für eine kurze Zeit gültig. Das Zugriffstoken läuft in der Regel nach einer Stunde ab. Zu diesem Zeitpunkt muss Ihre App den Benutzer zurück auf den `/authorize`-Endpunkt leiten, um einen neuen Autorisierungscode abzurufen. Während dieser Umleitung muss der Benutzer möglicherweise seine Anmeldeinformationen erneut eingeben oder den Berechtigungen erneut zustimmen, je nach App-Typ.
 
 Weitere Informationen zum Abrufen und Verwenden von Aktualisierungstoken finden Sie in der [v2.0-Protokollreferenz](active-directory-v2-protocols.md).
+
+## <a name="accessing-v10-resources"></a>Zugreifen auf v1.0-Ressourcen
+v2.0-Anwendungen können Token und Zustimmung für v1.0-Anwendungen (z.B. die Power BI-API `https://analysis.windows.net/powerbi/api` oder die SharePoint-API `https://{tenant}.sharepoint.com`) anfordern.  Dazu können Sie auf den App-URI und die Bereichszeichenfolge im Parameter `scope` verweisen.  Mit `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` wird beispielsweise die Power BI-Berechtigung `View all Datasets` für die Anwendung angefordert. 
+
+Um mehrere Berechtigungen anzufordern, fügen Sie den vollständigen URI mit einem Leerzeichen oder `+` an, z.B. `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`.  Damit werden die Berechtigung `View all Datasets` sowie die Berechtigung `View all Reports` angefordert.  Beachten Sie, dass wie bei allen Bereichen und Berechtigungen in Azure AD Anwendungen nur jeweils eine Anforderung an eine Ressource senden können. Daher wird die Anforderung `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate`, bei der sowohl die Power BI-Berechtigung `View all Datasets` als auch die Skype for Business-Berechtigung `Initiate conversations` angefordert wird, abgelehnt, da Berechtigungen für zwei verschiedene Ressourcen angefordert werden.  
+
+### <a name="v10-resources-and-tenancy"></a>v1.0-Ressourcen und Mandanten
+Die Azure AD v1.0- und die Azure AD v2.0-Protokolle verwenden einen im URI (`https://login.microsoftonline.com/{tenant}/oauth2/`) eingebetteten `{tenant}`-Parameter.  Wenn Sie den v2.0-Endpunkt verwenden, um auf eine v1.0-Organisationsressource zuzugreifen, können die Mandanten `common` und `consumers` nicht verwendet werden, da auf diese Ressourcen nur über (Azure AD-)Organisationskonten zugegriffen werden kann.  Daher kann beim Zugriff auf diese Ressourcen nur die Mandanten-GUID oder `organizations` als `{tenant}`-Parameter verwendet werden.  
+
+Wenn eine Anwendung versucht, über einen falschen Mandanten auf eine v1.0-Organisationsressource zuzugreifen, wird ein Fehler ähnlich dem folgenden zurückgegeben. 
+
+`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
+
 
 ## <a name="requesting-individual-user-consent"></a>Anfordern der Zustimmung einzelner Benutzer
 In einer Autorisierungsanforderung von [OpenID Connect oder OAuth 2.0](active-directory-v2-protocols.md) kann eine App die erforderlichen Berechtigungen mithilfe des `scope`-Abfrageparameters anfordern. Wenn sich ein Benutzer beispielsweise in einer App anmeldet, sendet die App eine Anforderung wie die folgende (mit Zeilenumbrüchen zur besseren Lesbarkeit):

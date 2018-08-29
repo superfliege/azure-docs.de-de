@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: ed2d55b8346acb79563a882bbaf2f46110dcf1bb
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442716"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41953969"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Hinzufügen eines Kubernetes-Clusters zum Azure Stack-Marketplace
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!note]  
-> Azure Container Services (ACS) Kubernetes in Azure Stack befindet sich in der privaten Vorschau. Um Zugriff auf das Marketplace-Element für Kubernetes anzufordern, um die Anweisungen in diesem Artikel ausführen zu können, [übermitteln Sie eine Anforderung zum Zugriff](https://aka.ms/azsk8).
+> Azure Kubernetes Services (AKS) in Azure Stack befindet sich in der privaten Vorschau. Um Zugriff auf das Marketplace-Element für Kubernetes anzufordern, um die Anweisungen in diesem Artikel ausführen zu können, [übermitteln Sie eine Anforderung zum Zugriff](https://aka.ms/azsk8).
 
 Sie können einen Kubernetes-Cluster als ein Marketplace-Element für Ihre Benutzer anbieten. Ihre Benutzer können Kubernetes in einem einzelnen, koordinierten Vorgang bereitstellen.
 

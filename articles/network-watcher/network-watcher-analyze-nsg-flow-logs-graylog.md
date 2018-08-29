@@ -3,7 +3,7 @@ title: Analysieren der Datenflussprotokolle von Azure-Netzwerksicherheitsgruppen
 description: Hier wird erläutert, wie Datenflussprotokolle für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog verwaltet und analysiert werden.
 services: network-watcher
 documentationcenter: na
-author: mareat
+author: mattreatMSFT
 manager: vitinnan
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 8d82ffa84c3d75ec3acd102a2de2bdce3718a995
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 87d7c39a9340a82813f4df971c03a10be56e8f94
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26639284"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42145977"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog
 
@@ -51,30 +51,30 @@ Dieses Beispiel verwendet die Graylog-Mindestkonfiguration (d.h. eine einzelne G
 
 Graylog kann in vielerlei Hinsicht je nach Plattform und Vorlieben installiert werden. Eine vollständige Liste der möglichen Installationsmethoden finden Sie in Graylogs offizieller [Dokumentation](http://docs.graylog.org/en/2.2/pages/installation.html). Die Graylog-Serveranwendung wird auf Linux-Verteilungen ausgeführt und hat die folgenden Voraussetzungen:
 
--   Oracle Java SE 8 oder höher – [Oracles Installationsdokumentation](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
--   Elastic Search 2.x (2.1.0 oder höher) – [Elasticsearch-Installationsdokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
--   MongoDB 2.4 oder höher – [MongoDB-Installationsdokumentation](https://docs.mongodb.com/manual/administration/install-on-linux/)
+-  Oracle Java SE 8 oder höher – [Oracles Installationsdokumentation](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+-  Elastic Search 2.x (2.1.0 oder höher) – [Elasticsearch-Installationsdokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
+-  MongoDB 2.4 oder höher – [MongoDB-Installationsdokumentation](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
 ### <a name="install-logstash"></a>Installieren von Logstash
 
 Mithilfe von Logstash können Sie die JSON-formatierten Datenflussprotokolle auf Flusstupelebene vereinfachen. Das Vereinfachen der Datenflussprotokolle erleichtert die Organisation und Suche in Graylog.
 
-1.  Führen Sie die folgenden Befehle zum Installieren von Logstash aus:
+1. Führen Sie die folgenden Befehle zum Installieren von Logstash aus:
 
-    ```bash
-    curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
-    sudo dpkg -i logstash-5.2.0.deb
-    ```
+   ```bash
+   curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
+   sudo dpkg -i logstash-5.2.0.deb
+   ```
 
-2.  Konfigurieren Sie Logstash, um die Datenflussprotokolle zu analysieren und an Graylog zu senden. Erstellen Sie eine Logstash.conf-Datei:
+2. Konfigurieren Sie Logstash, um die Datenflussprotokolle zu analysieren und an Graylog zu senden. Erstellen Sie eine Logstash.conf-Datei:
 
-    ```bash
-    sudo touch /etc/logstash/conf.d/logstash.conf
-    ```
+   ```bash
+   sudo touch /etc/logstash/conf.d/logstash.conf
+   ```
 
-3.  Fügen Sie der Datei Folgendes hinzu. Ändern Sie die hervorgehobenen Werte entsprechend Ihrer Speicherkontodetails:
+3. Fügen Sie der Datei Folgendes hinzu. Ändern Sie die hervorgehobenen Werte entsprechend Ihrer Speicherkontodetails:
 
-    ```
+   ```
     input {
         azureblob
         {
@@ -147,7 +147,7 @@ Mithilfe von Logstash können Sie die JSON-formatierten Datenflussprotokolle auf
         }
     }
     ```
-Die bereitgestellte Konfigurationsdatei von Logstash besteht aus drei Teilen: Eingabe, Filter und Ausgabe. Der Eingabebereich bezeichnet die Eingabequelle der Protokolle, die Logstash verarbeitet. In diesem Fall verwenden wir ein Azure-Blog-Eingabe-Plug-In (das in den nächsten Schritten installiert wird). Es erlaubt uns, auf die JSON-Dateien des NSG-Datenflussprotokolls zuzugreifen, die in Blob Storage gespeichert sind.
+Die bereitgestellte Konfigurationsdatei von Logstash besteht aus drei Teilen: Eingabe, Filter und Ausgabe. Der Eingabebereich bezeichnet die Eingabequelle der Protokolle, die Logstash verarbeitet. In diesem Fall wird ein Azure-Blog-Eingabe-Plug-In verwendet (das in den nächsten Schritten installiert wird). Es erlaubt uns, auf die JSON-Dateien des NSG-Datenflussprotokolls zuzugreifen, die in Blob Storage gespeichert sind.
 
 Der Filterabschnitt vereinfacht dann jede Datenfluss-Protokolldatei so, dass jedes einzelnen Flusstupel und die ihm zugeordneten Eigenschaften zu einem gesonderten Logstash-Ereignis werden.
 
@@ -171,30 +171,28 @@ Weitere Informationen zu diesem Plug-In finden Sie in der [Dokumentation](https:
 
 ### <a name="set-up-connection-from-logstash-to-graylog"></a>Einrichten der Verbindung von Logstash zu Graylog
 
-Nun da wir mit Logstash eine Verbindung mit den Datenflussprotokollen und den Graylog-Server eingerichtet haben, müssen wir Graylog zum Akzeptieren von eingehenden Protokolldateien konfigurieren.
+Nachdem Sie mit Logstash eine Verbindung mit den Datenflussprotokollen hergestellt und den Graylog-Server eingerichtet haben, müssen Sie Graylog zum Akzeptieren von eingehenden Protokolldateien konfigurieren.
 
-1.  Navigieren Sie mit der URL, die Sie konfiguriert haben, zur Weboberfläche Ihres Graylog-Servers. Sie können auf die Schnittstelle zugreifen, indem Sie in Ihrem Browser zu `http://<graylog-server-ip>:9000/` navigieren
+1. Navigieren Sie mit der URL, die Sie konfiguriert haben, zur Weboberfläche Ihres Graylog-Servers. Sie können auf die Schnittstelle zugreifen, indem Sie in Ihrem Browser zu `http://<graylog-server-ip>:9000/` navigieren
 
-2.  Wählen Sie zum Navigieren auf die Konfigurationsseite das Dropdown-Menü **System** in der oberen Navigationsleiste auf der rechten Seite, und klicken Sie dann auf **Eingaben**.
-    Alternativ können Sie zu `http://<graylog-server-ip>:9000/system/inputs` navigieren
+2. Wählen Sie zum Navigieren auf die Konfigurationsseite das Dropdown-Menü **System** in der oberen Navigationsleiste auf der rechten Seite, und klicken Sie dann auf **Eingaben**.
+   Alternativ können Sie zu `http://<graylog-server-ip>:9000/system/inputs` navigieren
 
-    ![Erste Schritte](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
+   ![Erste Schritte](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3.  Um die neue Eingabe zu starten, wählen Sie *GELF-UDP* in der Dropdown-Liste **Eingabe auswählen** aus, und füllen Sie dann das Formular aus. GELF steht für Graylog Extended Log Format (erweitertes Graylog-Protokollformat). Das GELF-Format wird von Graylog entwickelt. Weitere Informationen zu dessen Vorteilen finden Sie unter der Graylog-[Dokumentation](http://docs.graylog.org/en/2.2/pages/gelf.html).
+3. Um die neue Eingabe zu starten, wählen Sie *GELF-UDP* in der Dropdown-Liste **Eingabe auswählen** aus, und füllen Sie dann das Formular aus. GELF steht für Graylog Extended Log Format (erweitertes Graylog-Protokollformat). Das GELF-Format wird von Graylog entwickelt. Weitere Informationen zu dessen Vorteilen finden Sie unter der Graylog-[Dokumentation](http://docs.graylog.org/en/2.2/pages/gelf.html).
 
-    Stellen Sie sicher, dass Sie die Eingabe an die IP-Adresse binden, auf der Sie Ihren Graylog-Server konfiguriert haben. Die IP-Adresse sollte mit dem **Host**-Feld der UDP-Ausgabe der Logstash-Konfigurationsdatei übereinstimmen. Der Standardport sollte *12201* sein. Stellen Sie sicher, dass der Port dem **Port**-Feld in der UDP-Ausgabe entspricht, die in der Konfigurationsdatei von Logstash festgelegt ist.
+   Stellen Sie sicher, dass Sie die Eingabe an die IP-Adresse binden, auf der Sie Ihren Graylog-Server konfiguriert haben. Die IP-Adresse sollte mit dem **Host**-Feld der UDP-Ausgabe der Logstash-Konfigurationsdatei übereinstimmen. Der Standardport sollte *12201* sein. Stellen Sie sicher, dass der Port dem **Port**-Feld in der UDP-Ausgabe entspricht, die in der Konfigurationsdatei von Logstash festgelegt ist.
 
-    ![Eingaben](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
+   ![Eingaben](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-    Nachdem Sie die Eingabe starten, sollten Sie eswie in der folgenden Abbildung gezeigt, im Abschnitt **Lokale Eingaben** sehen:
+   Nachdem Sie die Eingabe starten, sollten Sie eswie in der folgenden Abbildung gezeigt, im Abschnitt **Lokale Eingaben** sehen:
 
-    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
+   ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
-    Weitere Informationen zum Graylog-Nachrichteneingaben finden Sie in der [Dokumentation](http://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
+   Weitere Informationen zum Graylog-Nachrichteneingaben finden Sie in der [Dokumentation](http://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 
-4.  Sobald diese Konfigurationen vorgenommen wurden, können Sie Logstash starten, um den Lesevorgang der Datenflussprotokolle mithilfe des folgenden Befehls zu beginnen:
-
-    `sudo systemctl start logstash.service`
+4. Sobald diese Konfigurationen vorgenommen wurden, können Sie Logstash starten, um den Lesevorgang für Datenflussprotokolle mithilfe des folgenden Befehls zu beginnen: `sudo systemctl start logstash.service`
 
 ### <a name="search-through-graylog-messages"></a>Durchsuchen von Graylog-Nachrichten
 
@@ -208,16 +206,15 @@ Durch Klicken auf den blauen Link „% {Message}“ wird jede Nachricht erweiter
 
 Standardmäßig sind alle Nachrichtenfelder in der Suche enthalten, wenn Sie kein bestimmtes Nachrichtenfeld für die Suche auswählen. Wenn Sie nach bestimmten Nachrichten suchen (d.h. – Datenflusstupel aus einer bestimmten Quell-IP), können Sie die Graylog-Suchabfragesprache wie [dokumentiert](http://docs.graylog.org/en/2.2/pages/queries.html) verwenden
 
-
 ## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Graylog
 
-Nun, da Graylog eingerichtet ist und ausgeführt wird, können wir einige der Funktionen verwenden, um unsere Datenflussprotokolldaten besser zu verstehen. Eine solche Methode ist die Verwendung von Dashboards zur Erstellung bestimmter Datenansichten.
+Nun, da Graylog eingerichtet ist und ausgeführt wird, können Sie einige der Funktionen verwenden, um Ihre Datenflussprotokolldaten besser zu verstehen. Eine solche Methode ist die Verwendung von Dashboards zum Erstellen bestimmter Datenansichten.
 
 ### <a name="create-a-dashboard"></a>Erstellen eines Dashboards
 
-1.  Wählen Sie in der oberen Navigationsleiste **Dashboards** aus, oder navigieren Sie zu`http://<graylog-server-ip>:9000/dashboards/`
+1. Wählen Sie in der oberen Navigationsleiste **Dashboards** aus, oder navigieren Sie zu`http://<graylog-server-ip>:9000/dashboards/`
 
-2.  Klicken Sie dort auf die grüne **Dashboard erstellen**-Schaltfläche, und füllen Sie das kurze Formular mit dem Titel und der Beschreibung des Dashboards aus. Klicken Sie auf die **Speichern**-Schaltfläche, um das neue Dashboard zu erstellen. Sie sehen ein Dashboard ähnlich dem folgenden Bild:
+2. Klicken Sie dort auf die grüne **Dashboard erstellen**-Schaltfläche, und füllen Sie das kurze Formular mit dem Titel und der Beschreibung des Dashboards aus. Klicken Sie auf die **Speichern**-Schaltfläche, um das neue Dashboard zu erstellen. Sie sehen ein Dashboard ähnlich dem folgenden Bild:
 
     ![Dashboards](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
@@ -225,21 +222,21 @@ Nun, da Graylog eingerichtet ist und ausgeführt wird, können wir einige der Fu
 
 Sie können auf den Titel des Dashboards klicken, um ihn anzuzeigen. Im Moment ist er jedoch leer, da wir noch keine Widgets hinzugefügt haben. Ein einfacher und nützlicher Widgettyp, der zum Dashboard hinzugefügt werden kann, sind die Diagramme **Quick Vales (Kurze Werte)**, die eine Liste der Werte für das ausgewählte Feld und deren Verteilung anzeigen.
 
-1.  Navigieren Sie zurück zu den Suchergebnissen der UDP-Eingabe, die Datenflussprotokolle empfängt, indem Sie **Suche** in der oberen Navigationsleiste auswählen.
+1. Navigieren Sie zurück zu den Suchergebnissen der UDP-Eingabe, die Datenflussprotokolle empfängt, indem Sie **Suche** in der oberen Navigationsleiste auswählen.
 
-2.  Im Bereich **Suchergebnis** auf der linken Seite des Bildschirms finden Sie die Registerkarte **Felder**, die diverse Felder jeder eingehenden Datenflusstupelnachricht auflistet.
+2. Im Bereich **Suchergebnis** auf der linken Seite des Bildschirms finden Sie die Registerkarte **Felder**, die diverse Felder jeder eingehenden Datenflusstupelnachricht auflistet.
 
-3.  Wählen Sie alle gewünschten Parameter zur Visualisierung aus (in diesem Beispiel haben wir die Quell-IP ausgewählt). Um die Liste der möglichen Widgets anzuzeigen, klicken Sie auf den blauen Dropdown-Pfeil auf der linken Seite des Felds, und wählen Sie dann **Quick Values** (Schnelle Werte) aus, um das Widget zu generieren. Es sollte etwa das folgende Bild angezeigt werden:
+3. Wählen Sie alle gewünschten Parameter zur Visualisierung aus (in diesem Beispiel ist die Quell-IP ausgewählt). Um die Liste der möglichen Widgets anzuzeigen, klicken Sie auf den blauen Dropdown-Pfeil auf der linken Seite des Felds, und wählen Sie dann **Quick Values** (Schnelle Werte) aus, um das Widget zu generieren. Es sollte etwa das folgende Bild angezeigt werden:
 
-    ![Quell-IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
+   ![Quell-IP](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
-4.  Von dort aus können Sie die Schaltfläche **Zum Dashboard hinzufügen** in der oberen rechten Ecke des Widgets und das entsprechende Dashboard auswählen.
+4. Von dort aus können Sie die Schaltfläche **Zum Dashboard hinzufügen** in der oberen rechten Ecke des Widgets und das entsprechende Dashboard auswählen.
 
-5.  Navigieren Sie zurück zum Dashboard, um Widgets anzuzeigen, die Sie gerade hinzugefügt haben.
+5. Navigieren Sie zurück zum Dashboard, um Widgets anzuzeigen, die Sie gerade hinzugefügt haben.
 
-    Sie können eine Vielzahl von anderen Widgets zu Ihrem Dashboard hinzufügen, z.B. Histogramme und Anzahlen, um wichtige Metriken nachzuverfolgen. Dazu gehört das Beispiel-Dashboard in der folgenden Abbildung:
+   Sie können eine Vielzahl von anderen Widgets zu Ihrem Dashboard hinzufügen, z.B. Histogramme und Anzahlen, um wichtige Metriken nachzuverfolgen. Dazu gehört das Beispiel-Dashboard in der folgenden Abbildung:
 
-    ![Datenflussprotokoll-Dashboard](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
+   ![Datenflussprotokoll-Dashboard](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
 
     Weitere Erläuterungen zu Dashboards und anderen Widgettypen finden Sie in der [Dokumentation](http://docs.graylog.org/en/2.2/pages/dashboards.html) von Graylog.
 
