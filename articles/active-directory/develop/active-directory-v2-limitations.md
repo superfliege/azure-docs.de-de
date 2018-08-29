@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/14/2018
 ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: edf0b52e5889fe8fa875de65fcaa8c2a22df1a7f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9245e85781482a3aa1e45333d8e8a748983675b6
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590748"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246494"
 ---
 # <a name="should-i-use-the-v20-endpoint"></a>Sollte ich den v2.0-Endpunkt verwenden?
 
@@ -101,6 +101,7 @@ Die Bibliotheksunterstützung für den v2.0-Endpunkt ist gegenwärtig eingeschr�
 * Wenn Sie eine Anwendung für Desktop- oder Mobilgeräte entwickeln, können Sie eine der Microsoft Authentication Libraries verwenden (MSAL, derzeit in der Vorschauphase). Diese Bibliotheken gibt es in der für die Produktion unterstützten Vorschauversion, die Sie gefahrlos in Produktionsanwendungen einsetzen können. In der [Referenz zu Authentifizierungsbibliotheken](reference-v2-libraries.md) erfahren Sie mehr zu den Nutzungsbedingungen der Vorschauversion und verfügbaren Bibliotheken.
 * Für Plattformen, die nicht von den Microsoft-Bibliotheken abgedeckt sind, können Sie die Integration mit dem v2.0-Endpunkt auch erreichen, indem Sie Protokollnachrichten direkt in Ihrem Anwendungscode senden und empfangen. Die v2.0-Protokolle OpenID Connect und OAuth [wurden explizit dokumentiert](active-directory-v2-protocols.md), um Sie bei einer solchen Integration zu unterstützen.
 * Zudem können Sie die Open ID Connect- und OAuth-Open Source-Bibliotheken für die Integration in den v2.0-Endpunkt verwenden. Das v2.0-Protokoll sollte ohne wesentliche Änderungen mit vielen Open Source-Protokollbibliotheken kompatibel sein. Die Verfügbarkeit dieser Bibliotheksarten variiert je nach Sprache und Plattform. Die [Open ID Connect](http://openid.net/connect/)- und die [OAuth 2.0](http://oauth.net/2/)-Websites enthalten eine Liste gängiger Implementierungen. Weitere Informationen und die Liste der Open Source-Clientbibliotheken und -Beispiele, die mit dem v2.0-Endpunkt getestet wurden, finden Sie unter [Azure Active Directory (AD) v2.0 und Authentifizierungsbibliotheken](reference-v2-libraries.md).
+  * Als Referenz: Der `.well-known`-Endpunkt für den gemeinsamen v2.0-Endpunkt ist `https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration`.  Ersetzen Sie `common` durch Ihre Mandanten-ID, um mandantenspezifische Daten abzurufen.  
 
 ## <a name="restrictions-on-protocols"></a>Einschränkungen für Protokolle
 
@@ -109,7 +110,6 @@ Der v2.0-Endpunkt unterstützt keinen SAML- oder WS-Verbund, sondern nur Open ID
 Die folgenden Protokollfeatures und -funktionen sind aktuell für den v2. 0-Endpunkt *nicht verfügbar*:
 
 * Derzeit wird der Anspruch `email` nur zurückgegeben, wenn ein optionaler Anspruch konfiguriert und „scope=email“ in der Anforderung angegeben wurde. Allerdings wird sich dieses Verhalten ändern, da der v2.0-Endpunkt aktualisiert wird, um mehr Kompatibilität mit den Standards Open ID Connect und OAuth 2.0 herzustellen.
-* Der OpenID Connect UserInfo-Endpunkt ist für den v2.0-Endpunkt nicht implementiert. Alle Benutzerprofildaten, die Sie potenziell an diesem Endpunkt empfangen würden, stehen jedoch über den Microsoft Graph-Endpunkt `/me` zur Verfügung.
 * Die Ausgabe von Rollen- oder Gruppenansprüchen in ID-Token wird vom v2.0-Endpunkt nicht unterstützt.
 * [OAuth 2.0 Resource Owner Password Credentials Grant](https://tools.ietf.org/html/rfc6749#section-4.3) (Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers) wird vom v2.0-Endpunkt nicht unterstützt.
 

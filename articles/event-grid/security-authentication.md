@@ -6,13 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 783766c3e12da2c6fd77f919cf0ec44aea7db3b7
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140528"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -24,20 +25,32 @@ Azure Event Grid verfügt über drei Authentifizierungsarten:
 
 ## <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 
-Ein Webhook ist eine von vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Bei jedem neuen Ereignis sendet der Event Grid-Webhook eine HTTP-Anforderung mit dem Ereignis im Hauptteil an den konfigurierten HTTP-Endpunkt.
+Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der EventGrid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
 
-Wenn Sie Ihren eigenen Webhook-Endpunkt bei Event Grid registrieren, wird Ihnen eine POST-Anforderung mit einem einfachen Validierungscode gesendet, damit Sie den Besitz des Endpunkts nachweisen können. Ihre App muss durch Rückgabe desselben Validierungscodes reagieren. Event Grid übermittelt keine Ereignisse an Webhook-Endpunkte, welche die Validierung nicht erfolgreich abgeschlossen haben. Wenn Sie einen API-Dienst eines Drittanbieters (etwa [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)) verwenden, können Sie den Überprüfungscode unter Umständen nicht programmgesteuert wiederholen. Für diese Dienste können Sie das Abonnement mithilfe einer Überprüfungs-URL manuell überprüfen, die im Abonnementüberprüfungsereignis gesendet wird. Kopieren Sie diese URL, und senden Sie entweder über einen REST-Client oder Ihren Webbrowser eine GET-Anforderung.
+Wie viele andere Dienste, die Webhooks unterstützen, müssen Sie bei EventGrid nachweisen, das Sie im „Besitz“ Ihres Webhookendpunkts sind. Vorher wird mit dem Bereitstellen von Ereignissen für diesen Endpunkt nicht begonnen. Mit dieser Anforderung soll verhindert werden, dass ein nicht informierter Endpunkt zum Zielendpunkt für die Ereignisbereitstellung von EventGrid wird. Wenn Sie einen der drei unten angegebenen Azure-Dienste verwenden, wird diese Überprüfung aber automatisch von der Azure-Infrastruktur durchgeführt:
 
-Die manuelle Überprüfung befindet sich in der Vorschauphase. Sie müssen die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für [AZ CLI 2.0](/cli/azure/install-azure-cli) installieren, um sie zu verwenden. Diese können Sie mit `az extension add --name eventgrid` installieren. Wenn Sie die REST-API verwenden, achten Sie darauf, `api-version=2018-05-01-preview` zu verwenden.
+* Azure Logic Apps
+* Azure Automation
+* Azure Functions für EventGrid-Trigger
+
+Falls Sie einen anderen Typ von Endpunkt nutzen, z.B. eine auf einem HTTP-Trigger basierende Azure-Funktion, muss Ihr Endpunktcode an einem Überprüfungshandshake mit EventGrid beteiligt sein. EventGrid unterstützt zwei unterschiedliche Modelle für Überprüfungshandshakes:
+
+1. **ValidationCode-basierter Handshake**: Zum Zeitpunkt der Erstellung eines Ereignisabonnements sendet EventGrid per POST-Vorgang ein „Abonnementüberprüfungsereignis“ an Ihren Endpunkt. Das Schema dieses Ereignisses ähnelt den anderen Ereignissen vom Typ EventGridEvent, und der Datenteil dieses Ereignisses enthält eine `validationCode`-Eigenschaft. Nachdem Ihre Anwendung bestätigt hat, dass die Überprüfungsanforderung für ein erwartetes Ereignisabonnement bestimmt ist, muss Ihr Anwendungscode antworten, indem ein „Echo“ des Überprüfungscodes zurück an EventGrid gesendet wird. Dieser Handshakemechanismus wird in allen EventGrid-Versionen unterstützt.
+
+2. **ValidationURL-basierter Handshake (Manueller Handshake)**: In bestimmten Fällen können Sie ggf. nicht den Quellcode des Endpunkts steuern, um den ValidationCode-basierten Handshake implementieren zu können. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z.B. [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten. Ab Version 2018-05-01-preview unterstützt EventGrid daher jetzt einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement per SDK bzw. mit Tools erstellen, für die diese neue API-Version (2018-05-01-preview) verwendet wird, sendet EventGrid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft (zusätzlich zur `validationCode`-Eigenschaft). Senden Sie zum Durchführen des Handshakes einfach eine GET-Anforderung für diese URL, und zwar entweder über einen REST-Client oder Ihren Webbrowser. Die für die Überprüfung angegebene URL gilt nur für ungefähr 10 Minuten. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen die Erstellung des Ereignisabonnements wiederholen, bevor Sie versuchen, die manuelle Überprüfung erneut auszuführen.
+
+Dieser Mechanismus der manuellen Überprüfung befindet sich in der Vorschauphase. Sie müssen die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für [AZ CLI 2.0](/cli/azure/install-azure-cli) installieren, um sie zu verwenden. Diese können Sie mit `az extension add --name eventgrid` installieren. Wenn Sie die REST-API verwenden, achten Sie darauf, `api-version=2018-05-01-preview` zu verwenden.
 
 ### <a name="validation-details"></a>Überprüfungsdetails
 
-* Zum Zeitpunkt der Erstellung/Aktualisierung des Ereignisabonnements sendet Event Grid ein Ereignis „SubscriptionValidationEvent“ an den Zielendpunkt.
-* Das Ereignis enthält den Headerwert „Aeg-Event-Type: SubscriptionValidation“.
+* Zum Zeitpunkt der Erstellung/Aktualisierung des Ereignisabonnements sendet Event Grid ein Abonnementüberprüfungsereignis an den Zielendpunkt. 
+* Das Ereignis enthält den Headerwert „aeg-event-type: SubscriptionValidation“.
 * Der Hauptteil des Ereignisses weist dasselbe Schema wie andere Event Grid-Ereignisse auf.
-* Die Ereignisdaten enthalten die Eigenschaft „validationCode“ mit einer zufällig generierten Zeichenfolge. Beispiel: „validationCode: acb13…“.
-* Die Ereignisdaten enthalten die Eigenschaft „validationUrl“ mit einer URL für die manuelle Überprüfung des Abonnements.
+* Die eventType-Eigenschaft des Ereignisses lautet „Microsoft.EventGrid.SubscriptionValidationEvent“.
+* Die Dateneigenschaft des Ereignisses enthält eine „validationCode“-Eigenschaft mit einer zufällig generierten Zeichenfolge. Beispiel: „validationCode: acb13…“.
+* Wenn Sie die API-Version „2018-05-01-preview“ verwenden, enthalten die Ereignisdaten auch eine `validationUrl`-Eigenschaft mit einer URL für das manuelle Überprüfen des Abonnements.
 * Das Array enthält ausschließlich das Validierungsereignis. Andere Ereignisse werden in einer separaten Anforderung gesendet, nachdem Sie den Validierungscode zurückgegeben haben.
+* Die EventGrid-DataPlane-SDKs verfügen über Klassen, die den Daten des Abonnementüberprüfungsereignisses und der Abonnementüberprüfungsantwort entsprechen.
 
 Ein Beispiel für „SubscriptionValidationEvent“ finden Sie im folgenden Beispiel:
 
@@ -65,13 +78,24 @@ Senden Sie wie im folgenden Beispiel gezeigt den Validierungscode zurück an die
 }
 ```
 
-Überprüfen Sie alternativ das Abonnement manuell, indem Sie eine GET-Anforderung an die Überprüfungs-URL senden. Das Ereignisabonnement bleibt im Status „Ausstehend“, bis es überprüft wurde.
+Alternativ hierzu können Sie das Abonnement auch manuell überprüfen, indem Sie eine GET-Anforderung an die Überprüfungs-URL senden. Das Ereignisabonnement bleibt im Status „Ausstehend“, bis es überprüft wurde.
+
+Unter https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs ist ein C#-Beispiel verfügbar, in dem veranschaulicht wird, wie Sie den Handshake für die Abonnementüberprüfung behandeln.
+
+### <a name="checklist"></a>Checkliste
+
+Wenn während der Erstellung des Ereignisabonnements eine Fehlermeldung der Art „Fehler beim Versuch, den angegebenen Endpunkt https://your-endpoint-here zu überprüfen. Ausführlichere Informationen finden Sie unter https://aka.ms/esvalidation.“ angezeigt wird, ist dies ein Hinweis darauf, dass für den Überprüfungshandshake ein Fehler aufgetreten ist. Überprüfen Sie Folgendes, um diesen Fehler zu beheben:
+
+* Verfügen Sie über die Kontrolle über den Anwendungscode auf dem Zielendpunkt? Haben Sie beispielsweise beim Schreiben einer Azure Function, die auf einem HTTP-Trigger basiert, Zugriff auf den Anwendungscode, um Änderungen daran vorzunehmen?
+* Wenn Sie Zugriff auf den Anwendungscode haben, sollten Sie den ValidationCode-basierten Handshakemechanismus wie im obigen Beispiel implementieren.
+
+* Falls Sie keinen Zugriff auf den Anwendungscode haben (z.B. bei Nutzung eines Drittanbieterdiensts, der Webhooks unterstützt), können Sie den manuellen Handshakemechanismus verwenden. Stellen Sie hierzu sicher, dass Sie die API-Version „2018-05-01-preview“ nutzen (z.B. mit der oben beschriebenen EventGrid-CLI-Erweiterung), um den validationUrl-Wert im Überprüfungsereignis zu erhalten. Rufen Sie den Wert der „validationUrl“-Eigenschaft ab, und navigieren Sie im Webbrowser zu dieser URL, um den Handshake für die manuelle Validierung durchzuführen. Wenn die Überprüfung erfolgreich ist, sollte im Webbrowser eine Nachricht mit einem entsprechenden Hinweis angezeigt werden. Sie sehen dann, dass „provisioningState“ für das Ereignisabonnement auf „Succeeded“ (Erfolgreich) festgelegt ist. 
 
 ### <a name="event-delivery-security"></a>Sicherheit für die Ereignisbereitstellung
 
 Sie können Ihren Webhookendpunkt sichern, indem Sie der Webhook-URL beim Erstellen eines Ereignisabonnements Abfrageparameter hinzufügen. Legen Sie einen dieser Abfrageparameter als Geheimnis fest, z.B. ein [Zugriffstoken](https://en.wikipedia.org/wiki/Access_token), das der Webhook verwenden kann, um zu ermitteln, ob das Ereignis aus Event Grid stammt und gültige Berechtigungen aufweist. Event Grid nimmt diese Abfrageparameter in jede Ereignisbereitstellung an den Webhook auf.
 
-Wenn Sie das Ereignisabonnement bearbeiten, werden die Abfrageparameter nur angezeigt und zurückgegeben, wenn der Parameter [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) in Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) verwendet wird.
+Wenn Sie das Ereignisabonnement bearbeiten, werden die Abfrageparameter nur angezeigt und zurückgegeben, wenn der Parameter [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) in Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) verwendet wird.
 
 Abschließend ist es wichtig zu beachten, dass Azure Event Grid nur HTTPS-Webhook-Endpunkte unterstützt.
 

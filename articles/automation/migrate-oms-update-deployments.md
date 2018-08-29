@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9469a5827765a9b82469ac1eedc66666231d82d6
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: d0b380aa6046daa235098516a8c93d3ba72533a6
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117000"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140758"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Migrieren von OMS-Updatebereitstellungen zu Azure
 
@@ -61,10 +61,12 @@ Wählen Sie für zu aktualisierende Computer die gespeicherte Suche aus, die von
 | --- | --- |
 |NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Wählen Sie zwischen **Linux** und **Windows** aus.|
-|Zu aktualisierende Computer |Wählen Sie für zu aktualisierende Computer die gespeicherte Suche aus, die von der vorhandenen OMS-Bereitstellung verwendet wird. |
+|Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computern** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md). |
 |Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus. CentOS unterstützt dies nicht standardmäßig.|
 |Auszuschließende Updates|Geben Sie die auszuschließenden Updates ein. Geben Sie für Windows den KB-Artikel ohne das Präfix **KB** ein. Geben Sie für Linux den Paketnamen ein, oder verwenden Sie ein Platzhalterzeichen.  |
 |Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und wählen Sie dann unter „Wiederholung“ **Einmal** oder **Serie** aus.|| Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht kleiner als 30 Minuten oder größer als 6 Stunden sein. |
+| Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht weniger als 30 Minuten und nicht mehr als 6 Stunden betragen |
+| Neustartsteuerung| Legt fest, wie Neustarts behandelt werden sollen.</br>Die verfügbaren Optionen lauten wie folgt:</br>Neu starten bei Bedarf (Standard)</br>Immer neu starten</br>Nie neu starten</br>Nur neu starten – Updates werden nicht installiert|
 
 Klicken Sie auf **Geplante Updatebereitstellungen**, um den Status der neu erstellten Updatebereitstellung anzuzeigen.
 

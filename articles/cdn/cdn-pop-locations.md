@@ -3,8 +3,8 @@ title: Azure CDN-POP-Standorte nach Region | Microsoft-Dokumentation
 description: In diesem Artikel werden die Azure CDN-POP-Standorte sortiert nach Region für Azure CDN-Produkte aufgelistet.
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-deasim
-ms.openlocfilehash: b3138c2c3136b4bfa6c1c96e5f278bbadef6a73d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.date: 08/15/2018
+ms.author: magattus
+ms.openlocfilehash: 9f68d08ae1deac5b03d8fd7e6596bb4c98813ac2
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010583"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140969"
 ---
 # <a name="azure-cdn-pop-locations-by-region"></a>Azure CDN-POP-Standorte nach Region
 > [!div class="op_single_selector"]
@@ -38,13 +38,13 @@ Dieser Artikel enthält die aktuellen POP-Standorte (Point of Presence), sortier
 
 | Region | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Nordamerika | Toronto, Kanada<br />Querétaro, Mexiko<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Phoenix, AZ, USA<br />Quincy, WA, USA<br />San Antonio, TX, USA<br />Santa Clara, CA, USA<br />| Mexiko-Stadt, Mexiko<br />Puebla, Mexiko<br />Querétaro, Mexiko<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexiko<br />USA |
+| Nordamerika | Toronto, Kanada<br />Querétaro, Mexiko<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Phoenix, AZ, USA<br />Quincy, WA, USA<br />San Antonio, TX, USA<br />Santa Clara, CA, USA<br />Seattle, WA, USA | Mexiko-Stadt, Mexiko<br />Puebla, Mexiko<br />Querétaro, Mexiko<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexiko<br />USA |
 | Südamerika | Campinas, Brasilien<br />Rio de Janeiro, Brasilien<br />Santiago, Chile | Buenos Aires, Argentinien<br />Rio de Janeiro, Brasilien<br />São Paulo, Brasilien<br />Valparaíso, Chile<br />Barranquilla, Kolumbien<br />Medellin, Kolumbien<br />Quito, Ecuador<br />Lima, Peru | Brasilien<br />Peru |
-| Europa | Wien, Österreich<br />Brüssel, Belgien<br />Prag, Tschechien<br />Kopenhagen, Dänemark<br /> Helsinki, Finnland<br />Marseille, Frankreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Athen, Griechenland<br />Dublin, Irland<br />Mailand, Italien<br />Amsterdam, Niederlande<br />Madrid, Spanien<br />Stockholm, Schweden<br />Zürich, Schweiz<br />Durham, Großbritannien<br />London, Großbritannien<br />Manchester, Großbritannien | Wien, Österreich<br />Kopenhagen, Dänemark<br />Helsinki, Finnland<br />Marseille, Frankreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Mailand, Italien<br />Riga, Lettland<br />Amsterdam, Niederlande<br />Warschau, Polen<br />Madrid, Spanien<br />Stockholm, Schweden<br />London, Großbritannien | Österreich<br />Dänemark<br />Frankreich<br />Deutschland<br />Irland<br />Italien<br />Niederlande<br />Polen<br />Spanien<br />Schweden<br />Schweiz<br />Vereinigtes Königreich |
+| Europa | Wien, Österreich<br />Brüssel, Belgien<br />Prag, Tschechien<br />Kopenhagen, Dänemark<br /> Helsinki, Finnland<br />Marseille, Frankreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Athen, Griechenland<br />Budapest, Ungarn<br />Dublin, Irland<br />Mailand, Italien<br />Amsterdam, Niederlande<br />Warschau, Polen<br />Barcelona, Spanien<br />Madrid, Spanien<br />Stockholm, Schweden<br />Zürich, Schweiz<br />Durham, Großbritannien<br />London, Großbritannien<br />Manchester, Großbritannien | Wien, Österreich<br />Kopenhagen, Dänemark<br />Helsinki, Finnland<br />Marseille, Frankreich<br />Paris, Frankreich<br />Frankfurt, Deutschland<br />Mailand, Italien<br />Riga, Lettland<br />Amsterdam, Niederlande<br />Warschau, Polen<br />Madrid, Spanien<br />Stockholm, Schweden<br />London, Großbritannien | Österreich<br />Dänemark<br />Frankreich<br />Deutschland<br />Irland<br />Italien<br />Niederlande<br />Polen<br />Spanien<br />Schweden<br />Schweiz<br />Vereinigtes Königreich |
 | Afrika | Kapstadt, Südafrika<br />Johannesburg, Südafrika | Johannesburg, Südafrika | |
 | Naher Osten | | Maskat, Oman<br />Fujirah, Vereinigte Arabische Emirate | Katar |
-| Indien | Chennai, Indien<br />Mumbai, Indien | Bengaluru (Bangalore), Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br /> | Indien |
-| Asien | Hongkong<br />Osaka, Japan<br />Tokio, Japan<br />Kuala Lumpur, Malaysia<br />Manila, Philippinen<br />Singapur<br />Seoul, Südkorea<br />Taipei, Taiwan<br />Bangkok, Thailand | Hongkong<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Busan, Südkorea<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indonesien<br />Japan<br />Malaysia<br />Philippinen<br />Singapur<br />Taiwan<br />Thailand<br />Vietnam |
+| Indien | Chennai, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien | Bengaluru (Bangalore), Indien<br />Chennai, Indien<br />Delhi, Indien<br />Mumbai, Indien<br />Neu-Delhi, Indien<br /> | Indien |
+| Asien | Hongkong<br />Osaka, Japan<br />Tokio, Japan<br />Kuala Lumpur, Malaysia<br />Manila, Philippinen<br />Singapur<br />Busan, Südkorea<br />Seoul, Südkorea<br />Taipei, Taiwan<br />Bangkok, Thailand | Hongkong<br />Batam, Indonesien<br />Jakarta, Indonesien<br />Osaka, Japan<br />Tokio, Japan<br />Singapur<br />Busan, Südkorea<br />Seoul, Südkorea<br />Kaohsiung, Taiwan | Hongkong<br />Indonesien<br />Japan<br />Malaysia<br />Philippinen<br />Singapur<br />Taiwan<br />Thailand<br />Vietnam |
 | Australien und Neuseeland | Melbourne, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Melbourne, Australien<br />Sydney, Australien<br />Auckland, Neuseeland | Australien<br />Neuseeland |
 
 

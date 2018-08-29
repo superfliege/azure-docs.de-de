@@ -1,5 +1,5 @@
 ---
-title: Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics | Microsoft-Dokumentation
+title: Anzeigen und Analysieren von Daten in Azure Log Analytics | Microsoft-Dokumentation
 description: In diesem Artikel werden die Portale beschrieben, die Sie zum Erstellen und Bearbeiten von Protokollsuchen in Azure Log Analytics verwenden können.
 services: log-analytics
 documentationcenter: ''
@@ -11,38 +11,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 08/20/2018
 ms.author: magoedte; bwren
 ms.component: na
-ms.openlocfilehash: e2ea0bf1fb3f1c63f4e6f037e465e8fdfd9a4374
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 386aad94461fa3f2ceafb7564342797eefa2f086
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133349"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "40246508"
 ---
-# <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Portale zum Erstellen und Bearbeiten von Protokollabfragen in Azure Log Analytics
+# <a name="viewing-and-analyzing-data-in-log-analytics"></a>Anzeigen und Analysieren von Daten in Log Analytics
+Im Azure-Portal gibt es zwei Optionen zum Analysieren der in Log Analytics gespeicherten Daten und zum Erstellen von Abfragen für die Ad-hoc-Analyse. Die mit diesen Portalen erstellten Abfragen können für weitere Funktionen wie Warnungen und Dashboards verwendet werden.
 
-Protokollsuchen werden in Log Analytics in zahlreichen Bereichen zum Abrufen von Daten aus dem Arbeitsbereich verwendet.  Um tatsächlich Abfragen zu erstellen und zu bearbeiten und gleichzeitig jedoch interaktiv mit zurückgegebenen Daten zu arbeiten, haben Sie zwei Optionen, die im Folgenden beschrieben werden.  
+## <a name="log-analytics-page-preview"></a>Seite „Log Analytics“ (Vorschau)
+Öffnen Sie unter **Protokolle (Vorschau)** im Log Analytics-Menü die Seite „Log Analytics“. Dies ist eine neue Benutzeroberfläche für die Arbeit mit Protokolldaten und das Erstellen von Abfragen. Unter [Erste Schritte mit der Seite „Log Analytics“ im Azure-Portal](query-language/get-started-analytics-portal.md) finden Sie eine Einführung in dieses Portal und können die entsprechenden Funktionen überprüfen.
 
-## <a name="log-search"></a>Protokollsuche 
-Die Seite „Protokollsuche“ kann über das Azure-Portal aufgerufen werden.  Es dient zum Erstellen von grundlegenden Abfragen, die in einer einzelnen Zeile erstellt werden können.  Die Protokollsuche kann verwendet werden, ohne ein externes Portal starten zu müssen. Zudem können Sie damit eine Vielzahl von Funktionen mit Protokollsuchen durchführen, einschließlich der Erstellung von Warnungsregeln, der Erstellung von Computergruppen und des Exports der Abfrageergebnisse.  
+Auf der Seite „Log Analytics“ finden Sie die folgenden Verbesserungen gegenüber der Benutzeroberfläche für die [Protokollsuche](#log-search).
 
-Die Protokollsuche stellt verschiedene Funktionen für die Bearbeitung der Abfrage bereit – dabei sind keine umfassenden Kenntnisse bezüglich der Abfragesprache erforderlich.  Unter [Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche](log-analytics-log-search-log-search-portal.md) finden Sie eine Zusammenfassung dieser neuen Features.
+* Mehrere Registerkarten: Erstellen Sie separate Registerkarten für die Arbeit mit mehreren Abfragen.
+* Umfangreiche Visualisierungen dank vielfältiger Diagrammoptionen.
+* Verbesserungen bei IntelliSense und automatische Sprachvervollständigung.
+* Syntaxhervorhebung zur besseren Lesbarkeit von Abfragen. 
+* Abfrage-Explorer: Zugriff auf gespeicherte Abfragen und Funktionen.
+* Schemaansicht: Überprüfen Sie die Struktur Ihrer Daten, um das Schreiben von Abfragen zu unterstützen.
+* Freigeben: Erstellen Sie Links zu Abfragen, oder heften Sie Abfragen an ein freigegebenes Azure-Dashboard.
+* Intelligente Analysen: Identifizieren Sie Spitzen in den Diagrammen, und erhalten Sie eine schnelle Analyse der Fehlerursache.
+* Spaltenauswahl: Sortieren und gruppieren Sie Spalten in den Abfrageergebnissen.
 
-
-![Seite „Protokollsuche“](media/log-analytics-log-search-portals/log-search-portal.png)
-
-## <a name="advanced-analytics-portal"></a>Advanced Analytics-Portal
-Das Advanced Analytics-Portal ist ein dediziertes Portal mit erweiterten Funktionen, die in der Protokollsuche im Azure-Portal nicht verfügbar sind.  Zu den Funktionen zählen die Möglichkeiten, eine Abfrage in mehreren Zeilen zu bearbeiten, Codes selektiv auszuführen, kontextabhängige IntelliSense-Funktionen auszuführen und intelligente Analysen durchzuführen.  Das Advanced Analytics-Portal ist ideal für die Entwicklung komplexer Abfragen geeignet, die entweder als Protokollsuche gespeichert oder kopiert und in andere Log Analytics-Elemente eingefügt werden.  Das Advanced Analytics-Portal wird über einen Link auf der Seite „Protokollsuche“ gestartet.
+> [!NOTE]
+> Die Seite „Log Analytics“ verfügt über die gleiche Funktionalität wie das Advanced Analytics-Portal, ein externes Tool außerhalb des Azure-Portals. Das Advanced Analytics-Portal ist weiterhin verfügbar, allerdings werden Links und andere Verweise darauf im Azure-Portal durch diese neue Seite ersetzt.
 
 ![Advanced Analytics-Portal](media/log-analytics-log-search-portals/advanced-analytics-portal.png)
 
 
-Aufgrund der erweiterten Funktionen wird das Advanced Analytics-Portal in der Regel als primäres Tool für die Erstellung und Bearbeitung von Abfragen verwendet.  Nachdem Sie sich vergewissert haben, dass die Abfrage erwartungsgemäß funktioniert, kopieren Sie sie, und fügen Sie sie an anderer Stelle ein, z.B. auf der Seite „Protokollsuche“ oder im Ansicht-Designer.  
-
 ### <a name="firewall-requirements"></a>Firewallanforderungen
-Ihr Browser erfordert Zugriff auf die folgenden Adressen, um auf das Advanced Analytics-Portal zuzugreifen.  Wenn der Browser über eine Firewall auf das Azure-Portal zugreift, müssen Sie den Zugriff auf diese Adressen aktivieren.
+Ihr Browser benötigt Zugriff auf die folgenden Adressen, um auf die Seite „Log Analytics“ und das Advanced Analytics-Portal zuzugreifen.  Wenn der Browser über eine Firewall auf das Azure-Portal zugreift, müssen Sie den Zugriff auf diese Adressen aktivieren.
 
 | Uri | IP | Ports |
 |:---|:---|:---|
@@ -51,8 +55,15 @@ Ihr Browser erfordert Zugriff auf die folgenden Adressen, um auf das Advanced An
 | docs.loganalytics.io   | Dynamisch | 80, 443 |
 
 
+## <a name="log-search"></a>Protokollsuche
+Öffnen Sie die Seite „Protokollsuche“ über **Protokolle** im Log Analytics-Menü oder über **Log Analytics** im Azure Monitor-Menü. Diese eignet sich für die Analyse von Protokolldaten mit grundlegenden Abfragen. Die Protokollsuche stellt verschiedene Funktionen für die Bearbeitung von Abfragen bereit, ohne dass Sie die Abfragesprache im Detail kennen müssen.  Unter [Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche](log-analytics-log-search-log-search-portal.md) finden Sie eine Zusammenfassung dieser neuen Features. 
+
+
+![Seite „Protokollsuche“](media/log-analytics-log-search-portals/log-search-portal.png)
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Absolvieren Sie ein Tutorial zur Verwendung der [Protokollsuche](log-analytics-tutorial-viewdata.md), um zu erfahren, wie Abfragen mithilfe der Abfragesprache erstellt werden.
-- Lernen Sie das [Advanced Analytics-Portal](https://go.microsoft.com/fwlink/?linkid=856587) kennen, um komplexe Abfragen zu erstellen und sie als eine Entwicklungsumgebung für Ihre Protokollsuchen zu verwenden.
+- Absolvieren Sie ein [Tutorial zur Verwendung der Protokollsuche](log-analytics-tutorial-viewdata.md), um zu erfahren, wie Abfragen mithilfe der Abfragesprache erstellt werden.
+- Absolvieren Sie eine [Lektion zur Verwendung des Advanced Analytics-Portal](query-language/get-started-analytics-portal.md), welches die gleiche Funktionalität wie die Seite „Log Analytics“ bietet.
 

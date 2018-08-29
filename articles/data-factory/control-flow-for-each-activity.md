@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: a029cb815f7765e6fe4e2fdbf81d437d5ac4ebe3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 23f00280a69212b9e623ae1da16a681ca30c9d51
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047580"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140728"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-Aktivität in Azure Data Factory
 Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
@@ -72,11 +72,12 @@ Die Eigenschaften werden weiter unten in diesem Artikel beschrieben. Die Eigensc
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Name der ForEach-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **ForEach** festgelegt sein. | Zeichenfolge | Ja
+name | Name der ForEach-Aktivität. | Zeichenfolge | JA
+type | Muss auf **ForEach** festgelegt sein. | Zeichenfolge | JA
 isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Maximal 20 Schleifeniterationen können gleichzeitig parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Die Standardeinstellung ist "False". <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolescher Wert | Nein. Die Standardeinstellung ist "False".
-Items | Ein Ausdruck, der ein JSON-Array zurückgibt, das durchlaufen werden soll. | Ausdruck (der ein JSON-Array zurückgibt) | Ja
-Aktivitäten | Die Aktivitäten, die ausgeführt werden sollen. | Liste der Aktivitäten | Ja
+batchCount | Batchanzahl, die zum Steuern der Anzahl der parallelen Ausführungen verwendet werden soll (wenn „isSequential“ auf „false“ festgelegt ist). | Ganze Zahl (maximal 50) | Nein. Der Standardwert ist 20.
+Items | Ein Ausdruck, der ein JSON-Array zurückgibt, das durchlaufen werden soll. | Ausdruck (der ein JSON-Array zurückgibt) | JA
+Aktivitäten | Die Aktivitäten, die ausgeführt werden sollen. | Liste der Aktivitäten | JA
 
 ## <a name="parallel-execution"></a>Parallele Ausführung
 Wenn **isSequential** auf „false“ festgelegt ist, erfolgen maximal 20 gleichzeitige Iterationen der Aktivität parallel. Diese Einstellung sollte vorsichtig verwendet werden. Wenn die gleichzeitigen Iterationen in den gleichen Ordner, aber in andere Dateien schreiben, ist dieser Ansatz gut. Wenn die gleichzeitigen Iterationen gleichzeitig in genau dieselbe Datei schreiben, verursacht dieser Ansatz wahrscheinlich einen Fehler. 

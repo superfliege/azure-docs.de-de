@@ -142,16 +142,16 @@ items:
       href: memory-and-concurrency-limits.md
   - name: Verwaltbarkeit und Überwachung
     items:
-    - name: Abfrageaktivität und Ressourcennutzung
-      href: sql-data-warehouse-manage-monitor.md
+    - name: Skalieren, Anhalten, Fortsetzen
+      href: sql-data-warehouse-manage-compute-overview.md
+    - name: Ressourcennutzung und Abfrageaktivität
+      href: sql-data-warehouse-concept-resource-utilization-query-activity.md
     - name: Datenschutz
       href: backup-and-restore.md
-    - name: Horizontale Skalierung, Anhalten, Fortsetzen
-      href: sql-data-warehouse-manage-compute-overview.md
-    - name: Wartungszeitplan
-      href: service-maintenance.md
     - name: Empfehlungen
       href: sql-data-warehouse-concept-recommendations.md
+    - name: Wartungszeitplan
+      href: service-maintenance.md
     - name: Problembehandlung
       href: sql-data-warehouse-troubleshoot.md
   - name: Integration
@@ -212,13 +212,15 @@ items:
       href: analyze-your-workload.md
   - name: Überwachen und Optimieren
     items:
+    - name: Überwachen Ihrer Workload
+      href: sql-data-warehouse-manage-monitor.md
     - name: Wiederherstellung – Portal
       href: sql-data-warehouse-restore-database-portal.md
     - name: Wiederherstellung – PowerShell
       href: sql-data-warehouse-restore-database-powershell.md
     - name: Wiederherstellung – REST-API
       href: sql-data-warehouse-restore-database-rest-api.md
-    - name: Upgrade auf Gen2
+    - name: Aktualisieren eines Data Warehouse der ersten Generation (Gen1)
       href: upgrade-to-latest-generation.md
     - name: Automatisieren von Leistungsstufen
       href: manage-compute-with-azure-functions.md
@@ -276,9 +278,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Datenverwaltung
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: bdda7231ea4703b33c8547e493cbd47b68cf9aab
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 690faddea704b45f5fcba8079b03a8105b83a649
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42915124"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106744"

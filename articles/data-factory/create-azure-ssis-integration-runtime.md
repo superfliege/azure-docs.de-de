@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 08/16/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 1b9b1fa5b67e37181ff4c76773c6666ccbbcf275
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: a497ceab45bb3ace4e3f1ea063ef9c3e33818426
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082864"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140561"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen der Azure-SSIS Integration Runtime in Azure Data Factory
 In diesem Artikel werden die Schritte für die Bereitstellung einer Azure-SSIS-Integrationslaufzeit (Integration Runtime, IR) in Azure Data Factory beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen und Ausführen von SQL Server Integration Services-Paketen (SSIS) in dieser Runtime in Azure verwenden. 
@@ -45,7 +45,7 @@ Wenn Sie eine Azure SSIS IR-Instanz bereitstellen, werden auch das Azure Feature
 
 - **Azure SQL-Datenbankserver / Verwaltete Instanz (Vorschau)**. Wenn Sie noch nicht über einen Datenbankserver verfügen, erstellen Sie einen im Azure-Portal, bevor Sie beginnen. Dieser Server hostet die SSIS-Katalog-Datenbank (SSISDB). Es empfiehlt sich, den Datenbankserver in derselben Azure-Region zu erstellen, in der sich auch die Integration Runtime befindet. Diese Konfiguration ermöglicht es der Integration Runtime, Ausführungsprotokolle in SSISDB zu schreiben, ohne Azure-Regionen zu überschreiten. Basierend auf dem ausgewählten Datenbankserver kann SSISDB in Ihrem Auftrag als einzelne Datenbank, als Teil eines Pools für elastische Datenbanken oder in einer verwalteten Instanz (Vorschau) erstellt werden und in einem öffentlichen Netzwerk oder durch Hinzufügen zu einem virtuellen Netzwerk zugänglich sein. Eine Liste mit den unterstützten Tarifen für Azure SQL-Datenbank finden Sie unter [Ressourceneinschränkungen für Azure SQL-Datenbank](../sql-database/sql-database-resource-limits.md). 
 
-    Vergewissern Sie sich, dass der Azure SQL-Datenbank-Server oder die verwaltete Instanz (Vorschau) nicht bereits über einen SSIS-Katalog (SSIDB-Datenbank) verfügt. Für die Bereitstellung der Azure SSIS IR wird die Verwendung eines vorhandenen SSIS-Katalogs nicht unterstützt. 
+    Vergewissern Sie sich, dass der Azure SQL-Datenbank-Server oder die verwaltete Instanz (Vorschau) nicht bereits über einen SSIS-Katalog (SSIDB-Datenbank) verfügt. Für die Bereitstellung der Azure-SSIS IR wird die Verwendung eines vorhandenen SSIS-Katalogs nicht unterstützt. 
 
 - **Klassisches virtuelles Netzwerk oder virtuelles Azure Resource Manager-Netzwerk (optional)**. Sie benötigen ein virtuelles Azure-Netzwerk, wenn mindestens eine der folgenden Bedingungen zutrifft: 
     - Sie hosten die SSIS-Katalogdatenbank in Azure SQL-Datenbank mit Dienstendpunkten virtueller Netzwerke / einer verwalteten Instanz (Vorschau), die sich in einem virtuellen Netzwerk befindet. 
@@ -64,11 +64,11 @@ In der folgenden Tabelle werden bestimmte Features von SQL-Datenbank und verwalt
 
 | Feature | SQL-Datenbank | Verwaltete Instanz |
 |---------|--------------|------------------|
-| **Zeitplanung** | SQL Server-Agent ist nicht verfügbar.<br/><br/>Weitere Informationen finden Sie unter [Planen eines Pakets als Teil einer Azure Data Factory-Pipeline](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages.md#activity).| SQL Server-Agent ist verfügbar. |
+| **Zeitplanung** | SQL Server-Agent ist nicht verfügbar.<br/><br/>Weitere Informationen finden Sie unter [Planen eines Pakets als Teil einer Azure Data Factory-Pipeline](/sql/integration-services/lift-shift/ssis-azure-schedule-packages#activity).| SQL Server-Agent ist verfügbar. |
 | **Authentifizierung** | Sie können eine Datenbank mit einem Benutzerkonto für eine eigenständige Datenbank erstellen, das einen beliebigen Azure Active Directory-Benutzer der Rolle **dbmanager** darstellt.<br/><br/>Weitere Informationen finden Sie unter [Aktivieren von Azure AD in Azure SQL-Datenbank](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database). | Sie können eine Datenbank mit einem Benutzerkonto für eine eigenständige Datenbank erstellen, das einen beliebigen Azure Active Directory-Benutzer darstellt, der nicht Azure AD-Administrator ist. <br/><br/>Weitere Informationen finden Sie unter [Aktivieren von Azure AD in der verwalteten Azure SQL-Datenbank-Instanz](enable-aad-authentication-azure-ssis-ir.md#enable-azure-ad-on-azure-sql-database-managed-instance). |
 | **Dienstebene** | Wenn Sie die Azure SSIS-IR in SQL-Datenbank erstellen, können Sie die Dienstebene für SSISDB auswählen. Es gibt mehrere Dienstebenen. | Wenn Sie die Azure SSIS-IR in einer verwalteten Instanz erstellen, können Sie die Dienstebene für SSISDB nicht auswählen. Alle Datenbanken in derselben verwalteten Instanz nutzen dieselbe Ressource, die dieser Instanz zugeordnet ist, gemeinsam. |
 | **Virtuelles Netzwerk** | Die Lösung unterstützt sowohl virtuelle Azure Resource Manager-Netzwerke als auch klassische virtuelle Netzwerke. | Die Lösung unterstützt nur virtuelle Azure Resource Manager-Netzwerke. Das virtuelle Netzwerk ist erforderlich.<br/><br/>Wenn Sie Ihre Azure SSIS-IR mit demselben virtuellen Netzwerk verknüpfen wie die verwaltete Instanz, stellen Sie sicher, dass sich die Azure SSIS-IR in einem anderen Subnetz als die verwaltete Instanz befindet. Wenn Sie die Azure SSIS-IR mit einem anderen virtuellen Netzwerk verknüpfen als die verwaltete Instanz, empfiehlt sich das Peering virtueller Netzwerke (das auf die gleiche Region begrenzt ist) oder eine Verbindung zwischen virtuellem Netzwerk und virtuellem Netzwerk. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](../sql-database/sql-database-managed-instance-connect-app.md). |
-| **Verteilte Transaktionen** | Unterstützt über elastische Transaktionen. MS DTC-Transaktionen (Microsoft Distributed Transaction Coordinator) werden nicht unterstützt. Wenn Ihre Pakete MS DTC verwenden, um verteilte Transaktionen zu koordinieren, sollten Sie eine Migration zu elastischen Transaktionen für SQL-Datenbank erwägen. Weitere Informationen finden Sie unter [Verteilte Transaktionen über Clouddatenbanken](../sql-database/sql-database-elastic-transactions-overview.md). | Nicht unterstützt. |
+| **Verteilte Transaktionen** | MS DTC-Transaktionen (Microsoft Distributed Transaction Coordinator) werden nicht unterstützt. Wenn Ihre Pakete MS DTC zum Koordinieren verteilter Transaktionen verwenden, können Sie möglicherweise mithilfe von elastischen Transaktionen für SQL-Datenbank eine vorübergehende Lösung implementieren. Zu diesem Zeitpunkt ist in SSIS keine Unterstützung für elastische Transaktionen integriert. Damit Sie in Ihrem SSIS-Paket elastische Transaktionen verwenden können, müssen Sie in einem Skripttask einen benutzerdefinierten ADO.NET-Code schreiben. Dieser Skripttask muss Anfang und Ende der Transaktion sowie alle Aktionen enthalten, die innerhalb der Transaktion auftreten.<br/><br/>Weitere Informationen zum Codieren elastischer Transaktionen finden Sie unter [Elastische Datenbanktransaktionen mit Azure SQL-Datenbank](https://azure.microsoft.com/en-us/blog/elastic-database-transactions-with-azure-sql-database/). Weitere Informationen zu elastischen Transaktionen im Allgemeinen finden Sie unter [Verteilte Transaktionen über Clouddatenbanken hinweg](../sql-database/sql-database-elastic-transactions-overview.md). | Nicht unterstützt. |
 | | | |
 
 ## <a name="azure-portal"></a>Azure-Portal
@@ -76,12 +76,12 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
 
 ### <a name="create-a-data-factory"></a>Erstellen einer Data Factory 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt. 
-2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an. 
-3. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an. 
+1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
 
    ![Neu -> Data Factory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
 
-4. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **MyAzureSsisDataFactory** ein. 
+1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** die Zeichenfolge **MyAzureSsisDataFactory** ein. 
 
    ![Seite „Neue Data Factory“](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
 
@@ -89,34 +89,34 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
 
    `Data factory name “MyAzureSsisDataFactory” is not available`
 
-5. Wählen Sie Ihr **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll. 
-6. Führen Sie für die **Ressourcengruppe** einen der folgenden Schritte aus: 
+1. Wählen Sie Ihr **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll. 
+1. Führen Sie für die **Ressourcengruppe** einen der folgenden Schritte aus: 
 
    - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein. 
 
    Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md). 
 
-7. Wählen Sie **V2** als **Version** aus. 
-8. Wählen Sie den **Standort** für die Data Factory aus. Die Liste enthält nur Standorte, die für die Erstellung von Data Factorys geeignet sind. 
-9. Wählen Sie die Option **An Dashboard anheften** aus. 
-10. Klicken Sie auf **Create**. 
-11. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Die Data Factory wird bereitgestellt**. 
+1. Wählen Sie **V2** als **Version** aus. 
+1. Wählen Sie den **Standort** für die Data Factory aus. Die Liste enthält nur Standorte, die für die Erstellung von Data Factorys geeignet sind. 
+1. Wählen Sie die Option **An Dashboard anheften** aus. 
+1. Klicken Sie auf **Create**. 
+1. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Die Data Factory wird bereitgestellt**. 
 
     ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
 
-12. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt. 
+1. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt. 
 
     ![Data Factory-Startseite](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
 
-13. Klicken Sie auf **Erstellen und überwachen**, um die Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten. 
+1. Klicken Sie auf **Erstellen und überwachen**, um die Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten. 
 
 ### <a name="provision-an-azure-ssis-integration-runtime"></a>Bereitstellen einer Azure SSIS Integration Runtime 
 1. Klicken Sie auf der Seite „Erste Schritte“ auf die Kachel **Configure SSIS Integration Runtime** (SSIS Integration Runtime konfigurieren). 
 
    ![Kachel „Configure SSIS Integration Runtime“ (SSIS Integration Runtime konfigurieren)](./media/tutorial-create-azure-ssis-runtime-portal/configure-ssis-integration-runtime-tile.png)
 
-2. Führen Sie auf der Seite **Allgemeine Einstellungen** von **Integration Runtime Setup** (Integration Runtime-Setup) die folgenden Schritte aus: 
+1. Führen Sie auf der Seite **Allgemeine Einstellungen** von **Integration Runtime Setup** (Integration Runtime-Setup) die folgenden Schritte aus: 
 
    ![Allgemeine Einstellungen](./media/tutorial-create-azure-ssis-runtime-portal/general-settings.png)
 
@@ -136,7 +136,7 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
 
     h. Klicken Sie auf **Weiter**. 
 
-3. Führen Sie auf der Seite **SQL-Einstellungen** die folgenden Schritte aus: 
+1. Führen Sie auf der Seite **SQL-Einstellungen** die folgenden Schritte aus: 
 
    ![SQL-Einstellungen](./media/tutorial-create-azure-ssis-runtime-portal/sql-settings.png)
 
@@ -156,7 +156,7 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
 
     h. Klicken Sie auf **Verbindung testen** und bei erfolgreichem Test auf **Weiter**. 
 
-4.  Führen Sie auf der Seite **Erweiterte Einstellungen** die folgenden Schritte aus: 
+1.  Führen Sie auf der Seite **Erweiterte Einstellungen** die folgenden Schritte aus: 
 
     ![Erweiterte Einstellungen](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
@@ -164,7 +164,7 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
 
     b. Geben Sie unter **Container-SAS-URI des benutzerdefinierten Setups** optional den SAS-URI (Shared Access Signature, Uniform Resource Identifier) Ihres Azure Storage Blob-Containers an, in dem Ihr Einrichtungsskript und die zugehörigen Dateien gespeichert sind. Weitere Informationen finden Sie unter [Benutzerdefiniertes Setup von Azure-SSIS-Integration Runtime](https://docs.microsoft.com/en-us/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup). 
 
-5. Geben Sie mithilfe des Kontrollkästchens **Virtuelles Netzwerk auswählen...** an, ob Ihre Integration Runtime einem virtuellen Netzwerk hinzugefügt werden soll. Aktivieren Sie es, wenn Sie Azure SQL-Datenbank mit Dienstendpunkten im virtuellen Netzwerk / verwalteter Instanz (Vorschau) zum Hosten von SSISDB verwenden oder Zugriff auf lokale Daten benötigen, d.h. in Ihren SSIS-Paketen über lokale Datenquellen/-ziele verfügen. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Falls Sie es nicht aktivieren, führen Sie die folgenden Schritte aus: 
+1. Geben Sie mithilfe des Kontrollkästchens **Virtuelles Netzwerk auswählen...** an, ob Ihre Integration Runtime einem virtuellen Netzwerk hinzugefügt werden soll. Aktivieren Sie es, wenn Sie Azure SQL-Datenbank mit Dienstendpunkten im virtuellen Netzwerk / verwalteter Instanz (Vorschau) zum Hosten von SSISDB verwenden oder Zugriff auf lokale Daten benötigen, d.h. in Ihren SSIS-Paketen über lokale Datenquellen/-ziele verfügen. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Falls Sie es nicht aktivieren, führen Sie die folgenden Schritte aus: 
 
    ![Erweiterte Einstellungen mit virtuellem Netzwerk](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-vnet.png)
 
@@ -178,17 +178,17 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
 
     e. Wählen Sie unter **Subnetzname** den Namen des Subnetzes für Ihr virtuelles Netzwerk aus. Dies sollte ein anderes Subnetz sein als das für die verwaltete Instanz (Vorschau) zum Hosten von SSISDB verwendete. 
 
-6. Klicken Sie auf **VNET-Überprüfung**, und falls diese erfolgreich verläuft, auf **Fertig stellen**, um die Erstellung Ihrer Azure-SSIS-Integration Runtime zu starten. 
+1. Klicken Sie auf **VNET-Überprüfung**, und falls diese erfolgreich verläuft, auf **Fertig stellen**, um die Erstellung Ihrer Azure-SSIS-Integration Runtime zu starten. 
 
     > [!IMPORTANT]
     > - Dieser Prozess dauert etwa 20 bis 30 Minuten.
     > - Der Data Factory-Dienst stellt die Verbindung mit Ihrer Azure SQL-Datenbank her, um die SSIS-Katalogdatenbank (SSISDB) vorzubereiten. Außerdem konfiguriert das Skript Berechtigungen und Einstellungen für das virtuelle Netzwerk – sofern angegeben – und verknüpft die neue Instanz der Azure SSIS Integration Runtime mit dem virtuellen Netzwerk. 
 
-7. Wechseln Sie im Fenster **Verbindungen** ggf. zu **Integration Runtimes**. Klicken Sie zum Aktualisieren des Status auf **Aktualisieren**. 
+1. Wechseln Sie im Fenster **Verbindungen** ggf. zu **Integration Runtimes**. Klicken Sie zum Aktualisieren des Status auf **Aktualisieren**. 
 
    ![Status der Erstellung](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-creation-status.png)
 
-8. Verwenden Sie die Links in der Spalte **Aktionen**, um die Integration Runtime zu überwachen, zu beenden und zu starten, zu bearbeiten oder zu löschen. Über den letzten Link können Sie den JSON-Code für die Integration Runtime anzeigen. Die Schaltflächen zum Bearbeiten und Löschen sind nur verfügbar, wenn die IR beendet wird. 
+1. Verwenden Sie die Links in der Spalte **Aktionen**, um die Integration Runtime zu überwachen, zu beenden und zu starten, zu bearbeiten oder zu löschen. Über den letzten Link können Sie den JSON-Code für die Integration Runtime anzeigen. Die Schaltflächen zum Bearbeiten und Löschen sind nur verfügbar, wenn die IR beendet wird. 
 
    ![Azure SSIS IR – Aktionen](./media/tutorial-create-azure-ssis-runtime-portal/azure-ssis-ir-actions.png)
 
@@ -197,16 +197,16 @@ In diesem Abschnitt erstellen Sie mithilfe des Azure-Portals (insbesondere der D
 
    ![Anzeigen vorhandener IRs](./media/tutorial-create-azure-ssis-runtime-portal/view-azure-ssis-integration-runtimes.png)
 
-2. Klicken Sie auf **Neu**, um eine neue Azure SSIS IR zu erstellen. 
+1. Klicken Sie auf **Neu**, um eine neue Azure SSIS IR zu erstellen. 
 
    ![Integration Runtime über das Menü](./media/tutorial-create-azure-ssis-runtime-portal/edit-connections-new-integration-runtime-button.png)
 
-3. Klicken Sie zum Erstellen einer Azure SSIS Integration Runtime auf **Neu** wie in der Abbildung gezeigt. 
-4. Klicken Sie im Fenster für die Integration Runtime-Einrichtung auf **Lift-and-shift existing SSIS packages to execute in Azure** (Migrieren vorhandener SSIS-Pakete per Lift & Shift für die Ausführung in Azure), und klicken Sie auf **Weiter**. 
+1. Klicken Sie zum Erstellen einer Azure SSIS Integration Runtime auf **Neu** wie in der Abbildung gezeigt. 
+1. Klicken Sie im Fenster für die Integration Runtime-Einrichtung auf **Lift-and-shift existing SSIS packages to execute in Azure** (Migrieren vorhandener SSIS-Pakete per Lift & Shift für die Ausführung in Azure), und klicken Sie auf **Weiter**. 
 
    ![Angeben des Integration Runtime-Typs](./media/tutorial-create-azure-ssis-runtime-portal/integration-runtime-setup-options.png)
 
-5. Die übrigen Schritte zum Einrichten einer Azure SSIS IR finden Sie im Abschnitt [Bereitstellen einer Azure SSIS Integration Runtime](#provision-an-azure-ssis-integration-runtime). 
+1. Die übrigen Schritte zum Einrichten einer Azure SSIS IR finden Sie im Abschnitt [Bereitstellen einer Azure SSIS Integration Runtime](#provision-an-azure-ssis-integration-runtime). 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 In diesem Abschnitt verwenden Sie Azure PowerShell zum Erstellen einer Azure-SSIS IR.
@@ -561,7 +561,7 @@ In diesem Abschnitt verwenden Sie eine Azure Resource Manager-Vorlage, um eine A
     }
     ```
     
-2. Führen Sie zum Bereitstellen der Azure Resource Manager-Vorlage den Befehl New-AzureRmResourceGroupDeployment wie im folgenden Beispiel gezeigt aus, wobei ADFTutorialResourceGroup der Name der Ressourcengruppe und „ADFTutorialARM.json“ die Datei ist, die die JSON-Definition für Ihre Data Factory und Azure-SSIS-IR enthält. 
+1. Führen Sie zum Bereitstellen der Azure Resource Manager-Vorlage den Befehl New-AzureRmResourceGroupDeployment wie im folgenden Beispiel gezeigt aus, wobei ADFTutorialResourceGroup der Name der Ressourcengruppe und „ADFTutorialARM.json“ die Datei ist, die die JSON-Definition für Ihre Data Factory und Azure-SSIS-IR enthält. 
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json
@@ -569,7 +569,7 @@ In diesem Abschnitt verwenden Sie eine Azure Resource Manager-Vorlage, um eine A
 
     Dieser Befehl erstellt die Data Factory und darin eine Azure-SSIS-IR. Er startet die IR aber nicht. 
 
-3. Führen Sie zum Starten der Azure-SSIS-IR den Befehl Start-AzureRmDataFactoryV2IntegrationRuntime aus: 
+1. Führen Sie zum Starten der Azure-SSIS-IR den Befehl Start-AzureRmDataFactoryV2IntegrationRuntime aus: 
 
     ```powershell
     Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName "<Resource Group Name>" `

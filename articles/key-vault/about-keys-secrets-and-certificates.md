@@ -3,7 +3,7 @@ title: Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 description: Übersicht über REST-Schnittstelle und KV-Entwicklerdetails
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: BryanLa
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: 8597b2d995b68e9ccff9b856b2ef6bd325cd2439
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/14/2018
+ms.author: bryanla
+ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359188"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42140958"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 Mit Azure Key Vault können Benutzer kryptografische Schlüssel in der Microsoft Azure-Umgebung speichern und verwenden. Key Vault unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für Schlüssel von hohem Wert. Darüber hinaus ermöglicht Key Vault Benutzern das sichere Speichern von geheimen Schlüsseln. Geheime Schlüssel sind Oktettobjekte von begrenzter Größe ohne spezifische Semantik. Key Vault unterstützt auch Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen und ein automatisiertes Verlängerungsfeature hinzufügen.
@@ -28,26 +28,26 @@ Weitere Informationen zu Azure Key Vault finden Sie unter [Was ist der Azure-Sch
 
 **Allgemeine Informationen zu Key Vault**
 
--   [Unterstützung von Standards](about-keys-secrets-and-certificates.md#BKMK_Standards)
--   [Datentypen](about-keys-secrets-and-certificates.md#BKMK_DataTypes)  
--   [Objekte, Bezeichner und Versionsverwaltung](about-keys-secrets-and-certificates.md#BKMK_ObjId)  
+-   [Unterstützung von Standards](#BKMK_Standards)
+-   [Datentypen](#BKMK_DataTypes)  
+-   [Objekte, Bezeichner und Versionsverwaltung](#BKMK_ObjId)  
 
 **Informationen zu Schlüsseln**
 
--   [Schlüssel und Schlüsseltypen](about-keys-secrets-and-certificates.md#BKMK_KeyTypes)  
--   [RSA-Algorithmen](about-keys-secrets-and-certificates.md#BKMK_RSAAlgorithms)  
--   [RSA-HSM-Algorithmen](about-keys-secrets-and-certificates.md#BKMK_RSA-HSMAlgorithms)  
--   [Kryptografischer Schutz](about-keys-secrets-and-certificates.md#BKMK_Cryptographic)
--   [Schlüsselvorgänge](about-keys-secrets-and-certificates.md#BKMK_KeyOperations)  
--   [Schlüsselattribute](about-keys-secrets-and-certificates.md#BKMK_KeyAttributes)  
--   [Schlüsseltags](about-keys-secrets-and-certificates.md#BKMK_Keytags)  
+-   [Schlüssel und Schlüsseltypen](#BKMK_KeyTypes)  
+-   [RSA-Algorithmen](#BKMK_RSAAlgorithms)  
+-   [RSA-HSM-Algorithmen](#BKMK_RSA-HSMAlgorithms)  
+-   [Kryptografischer Schutz](#BKMK_Cryptographic)
+-   [Schlüsselvorgänge](#BKMK_KeyOperations)  
+-   [Schlüsselattribute](#BKMK_KeyAttributes)  
+-   [Schlüsseltags](#BKMK_Keytags)  
 
 **Informationen zu Geheimnissen** 
 
--   [Arbeiten mit Geheimnissen](about-keys-secrets-and-certificates.md#BKMK_WorkingWithSecrets)  
--   [Geheimnisattribute](about-keys-secrets-and-certificates.md#BKMK_SecretAttrs)  
--   [Geheimnistags](about-keys-secrets-and-certificates.md#BKMK_SecretTags)  
--   [Geheimniszugriffssteuerung](about-keys-secrets-and-certificates.md#BKMK_SecretAccessControl)  
+-   [Arbeiten mit Geheimnissen](#BKMK_WorkingWithSecrets)  
+-   [Geheimnisattribute](#BKMK_SecretAttrs)  
+-   [Geheimnistags](#BKMK_SecretTags)  
+-   [Geheimniszugriffssteuerung](#BKMK_SecretAccessControl)  
 
 **Informationen zu Zertifikaten**
 
@@ -133,7 +133,7 @@ Azure Key Vault unterstützt RSA-Schlüssel der Größen 2.048, 3.072 und 4.096 
 
 ### <a name="BKMK_Cryptographic"></a> Kryptografischer Schutz
 
-Die kryptografischen Module, die Azure Key Vault verwendet, ob HSM oder Software, werden von FIPS überprüft. Für die Ausführung im FIPS-Modus müssen Sie keine besonderen Maßnahmen ergreifen. Wenn Sie Schlüssel als HSM-geschützt **erstellen** oder **importieren**, ist sichergestellt, dass sie in HSMs verarbeitet werden, die auf FIPS 140-2 Level 2 oder höher überprüft sind. Wenn Sie Schlüssel als softwaregeschützt **erstellen** oder **importieren**, werden sie in kryptografischen Modulen verarbeitet, die auf FIPS 140-2 Level 1 oder höher überprüft sind. Weitere Informationen finden Sie unter [Schlüssel und Schlüsseltypen](about-keys-secrets-and-certificates.md#BKMK_KeyTypes).
+Die kryptografischen Module, die Azure Key Vault verwendet, ob HSM oder Software, werden von FIPS überprüft. Für die Ausführung im FIPS-Modus müssen Sie keine besonderen Maßnahmen ergreifen. Wenn Sie Schlüssel als HSM-geschützt **erstellen** oder **importieren**, ist sichergestellt, dass sie in HSMs verarbeitet werden, die auf FIPS 140-2 Level 2 oder höher überprüft sind. Wenn Sie Schlüssel als softwaregeschützt **erstellen** oder **importieren**, werden sie in kryptografischen Modulen verarbeitet, die auf FIPS 140-2 Level 1 oder höher überprüft sind. Weitere Informationen finden Sie unter [Schlüssel und Schlüsseltypen](#BKMK_KeyTypes).
 
 ###  <a name="BKMK_ECAlgorithms"></a> EC-Algorithmen
  Die folgenden Algorithmusbezeichner werden mit EC- und EC-HSM-Schlüsseln in Azure Key Vault unterstützt. 
@@ -174,7 +174,7 @@ Azure Key Vault unterstützt die folgenden Vorgänge bei Schlüsselobjekten:
 -   **Sichern**: Exportiert einen Schlüssel in einer geschützten Form.  
 -   **Wiederherstellen**: Importiert einen zuvor gesicherten Schlüssel.  
 
-Weitere Informationen finden Sie unter [Schlüsselvorgänge](/rest/api/keyvault/key-operations).  
+Weitere Informationen finden Sie unter [Schlüsselvorgänge in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault).  
 
 Nachdem ein Schlüssel in Azure Key Vault erstellt wurde, können die folgenden kryptografischen Vorgänge mit dem Schlüssel ausgeführt werden:  
 
@@ -194,22 +194,22 @@ Weitere Informationen zu JWK-Objekten finden Sie unter [JSON Web Key (JWK)](http
 
 Zusätzlich zum Schlüsselmaterial können die folgenden Attribute angegeben werden. In einer JSON-Anforderung sind die Attribute Schlüsselwort und Klammern, „{“ „}“, auch dann erforderlich, wenn keine Attribute angegeben werden.  
 
-- *enabled*: Boolesch, optional, Standardwert ist **true**. Gibt an, ob der Schlüssel aktiviert und für kryptografische Vorgänge verwendbar ist. Das Attribut *enabled* wird in Verbindung mit *nbf* und *exp* verwendet. Wenn ein Vorgang zwischen *nbf* und *exp* auftritt, wird er nur zugelassen, wenn *enabled* auf **true** gesetzt ist. Vorgänge außerhalb des *nbf* / *exp*-Fensters sind automatisch nicht zugelassen, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops).
-- *nbf*: IntDate, optional, Standardwert ist „now“. Das Attribut *nbf* („not before“, nicht vor) gibt den Zeitpunkt an, vor dem der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops). Die Verarbeitung des *nbf*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit mindestens dem Wert des *nbf*-Attributs entsprechen MUSS. Azure Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als ein paar Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wer MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
-- *exp*: IntDate, optional, Standardwert ist „forever“. Das Attribut *exp* („expiration time“, Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](about-keys-secrets-and-certificates.md#BKMK_key-date-time-ctrld-ops). Die Verarbeitung des *exp*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit vor dem Wert des *exp*-Attributs liegen MUSS. Azure Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als ein paar Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
+- *enabled*: Boolesch, optional, Standardwert ist **true**. Gibt an, ob der Schlüssel aktiviert und für kryptografische Vorgänge verwendbar ist. Das Attribut *enabled* wird in Verbindung mit *nbf* und *exp* verwendet. Wenn ein Vorgang zwischen *nbf* und *exp* auftritt, wird er nur zugelassen, wenn *enabled* auf **true** gesetzt ist. Vorgänge außerhalb des *nbf* / *exp*-Fensters sind automatisch nicht zugelassen, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#BKMK_key-date-time-ctrld-ops).
+- *nbf*: IntDate, optional, Standardwert ist „now“. Das Attribut *nbf* („not before“, nicht vor) gibt den Zeitpunkt an, vor dem der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#BKMK_key-date-time-ctrld-ops). Die Verarbeitung des *nbf*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit mindestens dem Wert des *nbf*-Attributs entsprechen MUSS. Azure Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als ein paar Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wer MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
+- *exp*: IntDate, optional, Standardwert ist „forever“. Das Attribut *exp* („expiration time“, Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen der Schlüssel NICHT für kryptografische Vorgänge verwendet werden darf, mit Ausnahme bestimmter Vorgangstypen unter [besonderen Bedingungen](#BKMK_key-date-time-ctrld-ops). Die Verarbeitung des *exp*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit vor dem Wert des *exp*-Attributs liegen MUSS. Azure Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als ein paar Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in alle Antworten einbezogen werden, die Schlüsselattribute enthalten:  
 
 - *created*: IntDate, optional. Das *created*-Attribut gibt an, wann diese Version des Schlüssels erstellt wurde. Dieser Wert ist NULL für Schlüssel, die vor dem Hinzufügen dieses Attributs erstellt wurden. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
 - *updated*: IntDate, optional. Das *updated*-Attribut gibt an, wann diese Version des Schlüssels aktualisiert wurde. Dieser Wert ist NULL für Schlüssel, die vor dem Hinzufügen dieses Attributs zuletzt aktualisiert wurden. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
 
-Weitere Informationen zu IntDate und anderen Datentypen finden Sie unter [Datentypen](about-keys-secrets-and-certificates.md#BKMK_DataTypes).  
+Weitere Informationen zu IntDate und anderen Datentypen finden Sie unter [Datentypen](#BKMK_DataTypes).  
 
 #### <a name="BKMK_key-date-time-ctrld-ops"></a> Durch Datum und Uhrzeit gesteuerte Vorgänge
 
 Noch nicht gültige und abgelaufene Schlüssel, die außerhalb des *nbf* / *exp*-Fensters liegen, sind in **decrypt**-, **unwrap**- und **verify**-Vorgängen verwendbar (ohne Rückgabe von „403 Verboten“). Grund für die Verwendung des „Noch-nicht-gültig“-Status ist, den Test eines Schlüssels vor der Verwendung in der Produktion zu ermöglichen. Grund für die Verwendung des abgelaufenen Zustands ist, Wiederherstellungsvorgänge bei Daten zu ermöglichen, die erstellt wurden, als der Schlüssel gültig war. Sie können den Zugriff auf einen Schlüssel auch mittels Key Vault-Richtlinien oder durch Aktualisieren des *enabled*-Schlüsselattributs mit **false** deaktivieren.
 
-Weitere Informationen zu Datentypen finden Sie unter [Datentypen](about-keys-secrets-and-certificates.md#BKMK_DataTypes).
+Weitere Informationen zu Datentypen finden Sie unter [Datentypen](#BKMK_DataTypes).
 
 Weitere Informationen zu anderen möglichen Attributen finden Sie unter [JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
@@ -256,9 +256,9 @@ Azure Key Vault unterstützt auch ein contentType-Feld für Geheimnisse. Clients
 
 Zusätzlich zu den Geheimnisdaten können die folgenden Attribute angegeben werden:  
 
-- *exp*: IntDate, optional, Standardwert ist **forever**. Das *exp*-Attribut (Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen die geheimen Daten NICHT abgerufen werden dürfen, [bestimmte Situationen](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops) ausgenommen. Die Verarbeitung des *exp*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit vor dem Wert des *exp*-Attributs liegen MUSS. Azure Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als ein paar Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
-- *nbf*: IntDate, optional, Standardwert ist **now**. Das *nbf*-Attribut („not before“, nicht vor) gibt den Zeitpunkt an, vor dem die geheimen Daten NICHT abgerufen werden dürfen, [bestimmte Situationen](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops) ausgenommen. Die Verarbeitung des *nbf*-Attributs erfordert, dass das aktuelle Datum / die aktuelle Uhrzeit mindestens dem Wert des *nbf*-Attributs entsprechen MUSS. Azure Key Vault KANN einen kleinen Spielraum von in der Regel nicht mehr als ein paar Minuten einräumen, um Abweichungen der Uhr zu berücksichtigen. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.  
-- *enabled*: Boolesch, optional, Standardwert ist **true**. Dieses Attribut gibt an, ob die geheimen Daten abgerufen werden können. Das enabled-Attribut wird in Verbindung mit „nbf“ und *exp* verwendet. Wenn ein Vorgang zwischen „nbf“ und „exp“ auftritt, wird er nur zugelassen, wenn „enabled“ auf **true** festgelegt ist. Vorgänge außerhalb des *nbf*- und *exp*-Fensters sind automatisch unzulässig, [bestimmte Situationen](about-keys-secrets-and-certificates.md#BKMK_secret-date-time-ctrld-ops) ausgenommen.  
+- *exp*: IntDate, optional, Standardwert ist **forever**. Das *exp*-Attribut (Ablaufzeit) gibt die Ablaufzeit an, nach deren Verstreichen die geheimen Daten – außer in [bestimmten Situationen](#BKMK_secret-date-time-ctrld-ops) – NICHT abgerufen werden sollen. Dieses Feld dient nur zu **Informationszwecken**, da es die Benutzer des Azure Key Vault-Diensts darüber informiert, dass ein bestimmter geheimer Schlüssel möglicherweise nicht verwendet werden kann. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält.   
+- *nbf*: IntDate, optional, Standardwert ist **now**. Das *nbf*-Attribut („not before“, nicht vor) gibt den Zeitpunkt an, vor dem die geheimen Daten – außer in [bestimmten Situationen](#BKMK_secret-date-time-ctrld-ops) – NICHT abgerufen werden sollen. Dieses Feld dient nur zu **Informationszwecken**. Der Wert MUSS eine Zahl sein, die einen IntDate-Wert enthält. 
+- *enabled*: Boolesch, optional, Standardwert ist **true**. Dieses Attribut gibt an, ob die geheimen Daten abgerufen werden können. Das enabled-Attribut wird in Verbindung mit „nbf“ und *exp* verwendet. Wenn ein Vorgang zwischen „nbf“ und „exp“ auftritt, wird er nur zugelassen, wenn „enabled“ auf **true** festgelegt ist. Vorgänge außerhalb des *nbf*- und *exp*-Fensters sind automatisch unzulässig, [bestimmte Situationen](#BKMK_secret-date-time-ctrld-ops) ausgenommen.  
 
 Es gibt zusätzliche schreibgeschützte Attribute, die in alle Antworten einbezogen werden, die Geheimnisattribute enthalten:  
 
@@ -269,7 +269,7 @@ Es gibt zusätzliche schreibgeschützte Attribute, die in alle Antworten einbezo
 
 Der **get**-Geheimnisvorgang funktioniert für noch nicht gültige und abgelaufene Geheimnisse außerhalb des *nbf* / *exp*-Fensters. Das Aufrufen eines **get**-Geheimnisvorgangs für ein noch nicht gültiges Geheimnis ist zu Testzwecken möglich. Abrufen (**get**) eines abgelaufenen Geheimnisses, kann für Wiederherstellungsvorgänge verwendet werden.
 
-Weitere Informationen zu Datentypen finden Sie unter [Datentypen](about-keys-secrets-and-certificates.md#BKMK_DataTypes).  
+Weitere Informationen zu Datentypen finden Sie unter [Datentypen](#BKMK_DataTypes).  
 
 ###  <a name="BKMK_SecretAccessControl"></a> Geheimniszugriffssteuerung
 
@@ -283,7 +283,7 @@ Die folgenden Berechtigungen können pro Prinzipal im Zugriffssteuerungseintrag 
 -   *delete*: Löschen des Geheimnisses  
 -   *all*: Alle Berechtigungen  
 
-Weitere Informationen zum Arbeiten mit Geheimnissen finden Sie unter [Azure Key Vault-Geheimnisvorgänge](/rest/api/keyvault/secret-operations).  
+Weitere Informationen zum Arbeiten mit geheimen Schlüsseln finden Sie unter [Vorgänge mit geheimen Schlüsseln in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault).  
 
 ###  <a name="BKMK_SecretTags"></a> Geheimnistags  
 Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angeben. Azure Key Vault unterstützt bis zu 15 Tags, von denen jeder einen 256 Zeichen langen Namen und einen Wert von 256 Zeichen aufweisen kann.  
@@ -436,18 +436,14 @@ Wenn für die Richtlinie eines Zertifikats eine automatische Verlängerung festg
 -   *create*: ermöglicht das Erstellen eines Key Vault-Zertifikats.  
 -   *import*: ermöglicht das Importieren von Zertifikatmaterial in ein Key Vault-Zertifikat.  
 -   *update*: ermöglicht das Aktualisieren eines Zertifikats.  
--   *manageconnects*: ermöglicht die Verwaltung der Key Vault-Zertifikatkontakte.  
+-   *managecontacts*: ermöglicht die Verwaltung der Key Vault-Zertifikatkontakte.  
 -   *getissuers*: ermöglicht das Abrufen der Aussteller eines Zertifikats.  
 -   *listissuers*: ermöglicht das Auflisten der Aussteller eines Zertifikats.  
 -   *setissuers*: ermöglicht das Erstellen oder Aktualisieren des Key Vault-Zertifikatausstellers.  
 -   *deleteissuers*: ermöglicht das Löschen von Key Vault-Zertifikatausstellern.  
 -   *all*: gewährt alle Berechtigungen.  
 
-## <a name="additional-information-for-certificates"></a>Zusätzliche Informationen zu Zertifikaten
-
-- [Azure Key Vault-Zertifikate und -Schlüssel](/rest/api/keyvault/certificates-and-policies)
-- [Zertifikataussteller](/rest/api/keyvault/certificate-issuers)
-- [Zertifikatkontakte](/rest/api/keyvault/certificate-contacts)
+Weitere Informationen finden Sie unter [Zertifikatvorgänge in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). 
 
 ## <a name="see-also"></a>Siehe auch
 

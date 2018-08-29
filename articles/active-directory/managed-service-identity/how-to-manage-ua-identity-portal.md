@@ -1,6 +1,6 @@
 ---
-title: Verwalten einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) über das Azure-Portal
-description: Ausführliche Anweisungen zum Erstellen, Auflisten und Löschen einer vom Benutzer zugewiesenen verwalteten Dienstidentität.
+title: Verwalten einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal
+description: Ausführliche Anweisungen zum Erstellen, Auflisten und Löschen einer vom Benutzer zugewiesenen verwalteten Identität.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,17 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 02073742264e4f65d3c582174348495d86f47d43
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: bd6327aa5c16d57c550025667659f9245a5b0b65
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903934"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140968"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-service-identity-msi-using-the-azure-portal"></a>Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Dienstidentität (MSI) über das Azure-Portal
+# <a name="create-list-or-delete-a-user-assigned-identity-using-the-azure-portal"></a>Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen Identität über das Azure-Portal
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Die verwaltete Dienstidentität (Managed Service Identity, MSI) stellt Azure-Dienste mit einer verwalteten Identität in Azure Active Directory bereit. Sie können diese Identität verwenden, um sich bei Diensten mit Unterstützung für die Azure AD-Authentifizierung zu authentifizieren, ohne dass Anmeldeinformationen in Ihren Code eingebettet werden müssen. 
 
-Derzeit ist es nicht möglich, eine vom Benutzer zugewiesene verwaltete Dienstidentität über das Azure-Portal zu erstellen, aufzulisten oder zu löschen.  Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen.
+In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal eine vom Benutzer zugewiesene Identität erstellen, auflisten und löschen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Wenn Sie nicht mit „Verwaltete Dienstidentität“ vertraut sind, helfen Ihnen die Informationen in dieser [Übersicht](overview.md) weiter. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
+- Um die Verwaltungsvorgänge in diesem Artikel auszuführen, benötigt Ihr Konto die folgenden Rollenzuweisungen:
+    - Rolle [Mitwirkender für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) zum Erstellen, Lesen (Auflisten), Aktualisieren und Löschen einer vom Benutzer zugewiesenen Identität
+    - Rolle [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator) zum Lesen (Auflisten) der Eigenschaften einer vom Benutzer zugewiesenen Identität
+
+## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer vom Benutzer zugewiesenen verwalteten Identität
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, um die vom Benutzer zugewiesene verwaltete Identität zu erstellen.
+2. Geben Sie *Verwaltete Identitäten* im Suchfeld ein, und klicken Sie unter **Dienste** auf **Verwaltete Identitäten**.
+3. Klicken Sie auf **Hinzufügen**, und geben Sie im Bereich **Vom Benutzer zugewiesene verwaltete Identität erstellen** in den folgenden Feldern Werte ein:
+   - **Ressourcenname**: Dies ist der Name für die vom Benutzer zugewiesene verwaltete Identität, z. B. UAI1.
+   - **Abonnement**: Wählen Sie das Abonnement aus, in dem die vom Benutzer zugewiesene verwaltete Identität erstellt werden soll.
+   - **Ressourcengruppe**: Erstellen Sie für die vom Benutzer zugewiesene Identität eine neue Ressourcengruppe, oder wählen Sie **Vorhandene verwenden** aus, um die vom Benutzer zugewiesene verwaltete Identität in einer vorhandenen Ressourcengruppe zu erstellen.
+   - **Standort**: Wählen Sie einen Standort zum Bereitstellen der vom Benutzer zugewiesenen, verwalteten Identität aus, z. B. **USA, Westen**.
+4. Klicken Sie auf **Create**.
+
+![Erstellen einer vom Benutzer zugewiesenen verwalteten Identität](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+
+## <a name="list-user-assigned-identities"></a>Auflisten der vom Benutzer zugewiesenen Identitäten
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, um die vom Benutzer zugewiesenen verwalteten Identitäten aufzulisten.
+2. Geben Sie *Verwaltete Identitäten* im Suchfeld ein, und klicken Sie unter „Dienste“ auf **Verwaltete Identitäten**.
+3. Eine Liste der vom Benutzer zugewiesenen verwalteten Identitäten für Ihr Abonnement wird zurückgegeben.  Durch Klicken auf den entsprechenden Namen können Sie die Details der vom Benutzer zugewiesenen Identität anzeigen.
+
+![Auflisten von vom Benutzer zugewiesenen verwalteten Identitäten](./media/how-to-manage-ua-identity-portal/list-user-assigned-managed-identity-portal.png)
+
+## <a name="delete-a-user-assigned-identity"></a>Löschen einer vom Benutzer zugewiesenen Identität
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, um eine vom Benutzer zugewiesene verwaltete Identität zu löschen.
+2. Wählen Sie die vom Benutzer zugewiesene Identität aus, und klicken Sie auf **Löschen**.
+3. Wählen Sie im Bestätigungsfeld **Ja** aus.
+
+![Löschen einer vom Benutzer zugewiesenen verwalteten Identität](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: 51f38cf7ade01b58ad5ce7925af5546d1a4f1a0c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 072573b16fbeebac1ec942b0be508cf901b5cd27
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525381"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42140710"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Einführung in Azure Data Lake Storage Gen2 Preview
 
@@ -33,6 +33,8 @@ In der Vergangenheit mussten bei cloudbasierten Analysen Kompromisse in puncto L
 
 - Die **Verwaltung** ist einfacher, weil Sie Dateien mithilfe von Verzeichnissen und Unterverzeichnissen organisieren und bearbeiten können.
 
+- Die **Sicherheit** ist durchsetzbar, da Sie POSIX-Berechtigungen für Ordner oder einzelne Dateien definieren können.
+
 - **Kosteneffizienz** wird ermöglicht, da Data Lake Storage Gen2 auf kostengünstigem [Azure Blob Storage](../blobs/storage-blobs-introduction.md) aufsetzt. Durch diese zusätzlichen Features werden die Gesamtbetriebskosten für Big Data-Analysen in Azure weiter gesenkt.
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Besondere Features von Data Lake Storage Gen2
@@ -43,9 +45,7 @@ In der Vergangenheit mussten bei cloudbasierten Analysen Kompromisse in puncto L
 
 - **Mit Hadoop kompatibler Zugriff**: Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten und deren Verwaltung. Der neue [ABFS-Treiber](./abfs-driver.md) ist in allen Apache Hadoop-Umgebungen verfügbar, einschließlich [Azure HDInsight](../../hdinsight/index.yml) und [Azure Databricks](../../azure-databricks/index.yml), um auf die in Data Lake Storage Gen2 gespeicherten Daten zuzugreifen.
 
-- **Datenzugriff mit Unterstützung mehrerer Protokolle und Modi**: Data Lake Storage Gen2 gilt als **multimodaler** Speicherdienst, da er sowohl Objektspeicher- als auch Dateisystemschnittstellen zu den gleichen Daten **zur gleichen Zeit** bereitstellt. Dies wird durch die Bereitstellung mehrerer Protokollendpunkte erreicht, die auf die gleichen Daten zugreifen können. 
-
-    Im Gegensatz zu anderen Analyselösungen müssen die in Data Lake Storage Gen2 gespeicherten Daten nicht verschoben oder transformiert werden, damit Sie eine Vielzahl von Analysetools ausführen können. Sie können auf Daten über herkömmliche [Blob Storage-APIs](../blobs/storage-blobs-introduction.md) zugreifen (z.B. Daten über [Event Hubs Capture](../../event-hubs/event-hubs-capture-enable-through-portal.md) erfassen) und diese Daten gleichzeitig mit HDInsight oder Azure Databricks verarbeiten. 
+- **Obermenge von POSIX-Berechtigungen**: Das Sicherheitsmodell für Data Lake Gen2 unterstützt in vollem Umfang Zugriffssteuerungslisten (ACL) und POSIX-Berechtigungen sowie zusätzliche Granularität speziell für Data Lake Storage Gen2. Die Einstellungen können über Verwaltungstools oder Frameworks wie Hive und Spark konfiguriert werden.
 
 - **Kosteneffizienz**: Data Lake Storage Gen2 bietet kostengünstige Speicherkapazität und -transaktionen. Während Daten ihren gesamten Lebenszyklus durchlaufen, ändern sich Abrechnungstarife, wodurch die Kosten durch integrierte Funktionen wie [Azure Blob Storage-Lebenszyklus](../common/storage-lifecycle-managment-concepts.md) auf ein Minimum reduziert werden.
 
