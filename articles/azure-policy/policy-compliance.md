@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bd3eeb5ebb9b30ac315fee1597348f3bd34f3bb6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 6b310daec67f41ba589ce279e4a2dad427adb734
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146776"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818891"
 ---
 # <a name="getting-compliance-data"></a>Abrufen von Konformitätsdaten
 
@@ -23,7 +23,7 @@ Sie genießen mit Azure Policy den Vorteil, Einblicke in Steuerelemente für Res
 Es gibt mehrere Möglichkeiten, auf Konformitätsinformationen, die von Ihrer Richtlinie sowie Initiativenzuweisungen erstellt wurden, zuzugreifen:
 
 - Über das [Azure-Portal](#portal)
-- Über [Befehlszeilen](#command_line)-Skripting
+- Über [Befehlszeilen](#command-line)-Skripting
 
 Bevor wir uns die Methoden zur Berichterstellung zur Konformität ansehen, beschäftigen wir uns damit, wann Konformitätsinformationen aktualisiert werden und mit den Ereignissen, die einen Auswertungszyklus auslösen sowie mit der Häufigkeit.
 

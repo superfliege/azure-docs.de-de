@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: 5e17638e030ae2827b0de7dc82ecf75062504112
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: dfc0a13c1804d8ea74c78a61bfa85e9f5bdd1685
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39575929"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42819069"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>Vorbereitung auf eine Änderung der ausgehenden IP-Adresse
 
@@ -39,7 +39,7 @@ Die neuen ausgehenden IP-Adressen werden im Portal angezeigt, bevor sie wirksam 
 
 3.  Wählen Sie Ihre App Service-App in der Liste aus.
 
-4.  Wenn es sich bei der App um eine Funktions-App handelt, finden Sie weitere Informationen unter [Ausgehende IP-Adressen einer Funktions-App](../azure-functions/ip-addresses.md#function-app-outbound-ip-addresses).
+4.  Wenn es sich bei der App um eine Funktions-App handelt, finden Sie weitere Informationen unter [Ausgehende IP-Adressen einer Funktions-App](../azure-functions/ip-addresses.md#find-outbound-ip-addresses).
 
 4.  Klicken Sie unter der Überschrift **Einstellungen** im linken Navigationsbereich auf **Eigenschaften**, und suchen Sie den Abschnitt mit der Bezeichnung **Ausgehende IP-Adressen**.
 

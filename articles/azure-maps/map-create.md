@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ec85854e5d9b7ee0d5e2c54881a417ba6cbb366e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b86f29e4d3faa1382ac3a79ed828855a5d9f6d7f
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599812"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42747218"
 ---
 # <a name="create-a-map"></a>Erstellen einer Karte
 
@@ -31,7 +31,7 @@ Es gibt zwei Wege, um eine Karte zu erstellen. Sie können die Kamera der Karte 
 <iframe height='310' scrolling='no' title='Erstellen einer Karte über „CameraOptions“' src='//codepen.io/azuremaps/embed/qxKBMN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/qxKBMN/'>Create a map via CameraOptions</a> (Erstellen einer Karte über „CameraOptions“) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Im oben gezeigten Code wird ein [Kartenobjekt](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest) über `new atlas.Map()` erstellt. Karteneigenschaften wie Mittelpunkt und Zoomfaktor sind Teil der [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/cameraoptions?view=azure-iot-typescript-latest). „CameraOptions“ können Sie im Kartenkonstruktor oder über die Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamera) der Map-Klasse definieren.
+Im oben gezeigten Code wird ein [Kartenobjekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) über `new atlas.Map()` erstellt. Karteneigenschaften wie Mittelpunkt und Zoomfaktor sind Teil der [CameraOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraoptions?view=azure-iot-typescript-latest). „CameraOptions“ können Sie im Kartenkonstruktor oder über die Funktion [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera) der Map-Klasse definieren.
 
 <a id="setCameraBoundsOptions"></a>
 
@@ -40,7 +40,7 @@ Im oben gezeigten Code wird ein [Kartenobjekt](https://docs.microsoft.com/javasc
 <iframe height='310' scrolling='no' title='Erstellen einer Karte über „CameraBoundsOptions“' src='//codepen.io/azuremaps/embed/ZrRbPg/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/ZrRbPg/'>Create a map via CameraBoundsOptions</a> (Erstellen einer Karte über „CameraOptions“) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Im oben gezeigten Code wird ein [Kartenobjekt](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest) über `new atlas.Map()` erstellt. Karteneigenschaften wie ein Begrenzungsrahmen sind Teil der [CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-javascript/cameraboundsoptions?view=azure-iot-typescript-latest). „CameraBoundsOptions“ können Sie über die Funktion [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds) der Map-Klasse definieren.
+Im oben gezeigten Code wird ein [Kartenobjekt](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) über `new atlas.Map()` erstellt. Karteneigenschaften wie ein Begrenzungsrahmen sind Teil der [CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest). „CameraBoundsOptions“ können Sie über die Funktion [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) der Map-Klasse definieren.
 
 ## <a name="try-out-the-code"></a>Testen Sie den Code 
 
@@ -51,9 +51,9 @@ Sehen Sie sich den obigen Beispielcode an. Sie können den JavaScript-Code links
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden: 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamera)
-    * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#setcamerabounds)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera)
+    * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds)
     
 Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln: 
 * [Hinzufügen von Stecknadeln zur Karte](./map-add-pin.md)

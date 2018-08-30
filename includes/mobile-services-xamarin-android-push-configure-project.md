@@ -1,42 +1,60 @@
-
+---
+author: conceptdev
+ms.author: crdun
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.openlocfilehash: 42c961b81a254adef5e42c3c8916c9c081f548c8
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42809439"
+---
 1. Klicken Sie in der Projektmappenansicht (oder in Visual Studio im **Projektmappen-Explorer**) mit der rechten Maustaste auf den **Komponentenordner**, klicken Sie auf **Get More Components...** (Weitere Komponenten...), suchen Sie nach der Komponente **Google Cloud Messaging Client**, und fügen Sie sie dem Projekt hinzu.
 2. Öffnen Sie die Projektdatei "ToDoActivity.cs", und fügen Sie die folgende "using"-Anweisung hinzu:
-   
-        using Gcm.Client;
+
+    ```csharp
+    using Gcm.Client;
+    ```
+
 3. Fügen Sie der **ToDoActivity** -Klasse den folgenden neuen Code hinzu: 
-   
-        // Create a new instance field for this activity.
-        static ToDoActivity instance = new ToDoActivity();
-   
-        // Return the current activity instance.
-        public static ToDoActivity CurrentActivity
+
+    ```csharp
+    // Create a new instance field for this activity.
+    static ToDoActivity instance = new ToDoActivity();
+
+    // Return the current activity instance.
+    public static ToDoActivity CurrentActivity
+    {
+        get
         {
-            get
-            {
-                return instance;
-            }
+            return instance;
         }
-        // Return the Mobile Services client.
-        public MobileServiceClient CurrentClient
+    }
+    // Return the Mobile Services client.
+    public MobileServiceClient CurrentClient
+    {
+        get
         {
-            get
-            {
-                return client;
-            }
+            return client;
         }
-   
+    }
+    ```
+
     Dies ermöglicht Ihnen den Zugriff auf die mobile Clientinstanz vom Pushhandler-Dienstprozess aus.
 4. Fügen Sie der **OnCreate**-Methode den folgenden Code hinzu, nachdem **MobileServiceClient** erstellt wurde:
-   
-       // Set the current instance of TodoActivity.
-       instance = this;
-   
-       // Make sure the GCM client is set up correctly.
-       GcmClient.CheckDevice(this);
-       GcmClient.CheckManifest(this);
-   
-       // Register the app for push notifications.
-       GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
+
+    ```csharp
+    // Set the current instance of TodoActivity.
+    instance = this;
+
+    // Make sure the GCM client is set up correctly.
+    GcmClient.CheckDevice(this);
+    GcmClient.CheckManifest(this);
+
+    // Register the app for push notifications.
+    GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
+    ```
 
 Die **ToDoActivity** ist damit für das Hinzufügen von Pushbenachrichtigungen vorbereitet.
-

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: c6c5e27dad7f80a329edbd8fbcb95647dc4cd15a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8cb3cae396016545c5d78a2ff7ccde4a053c4cf1
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626726"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746978"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>Konfigurieren des Solution Accelerators für Connected Factory
 
@@ -267,7 +267,7 @@ Eigenschaften in dieser Kategorie definieren die visuelle Darstellung des Connec
 * NAME
 * BESCHREIBUNG
 * Image
-* Speicherort
+* Standort
 * Units
 * Visible
 
@@ -282,7 +282,7 @@ Die OEE/KPI-Zahlen für die Connected Factory-Simulation werden parametrisiert d
 * Die OPC UA-Knotenwerte, die in die Berechnung einbezogen werden sollen.
 * Art der Berechnung der Zahl aus den Telemetriewerten.
 
-Connected Factory verwendet die von http://oeeindustrystandard.oeefoundation.org veröffentlichten OEE-Formeln.
+Connected Factory verwendet die von http://www.oeefoundation.org veröffentlichten OEE-Formeln.
 
 OPC UA-Knotenobjekte in Stationen ermöglichen eine Kennzeichnung für die Verwendung in der OEE/KPI-Berechnung. Die Eigenschaft **Relevance** gibt an, für welche OEE/KPI-Zahl der OPC UA-Knoten verwendet werden soll. Die Eigenschaft **OpCode** definiert, wie der Wert in die Berechnung einbezogen wird.
 

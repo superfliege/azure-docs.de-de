@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 803e82a294b64452ffd788880097b9d86ac1065b
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144192"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745289"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 Azure Maps ist eine Sammlung mit Geodiensten, die auf aktuellen Kartendaten basieren, damit Sie für Ihre Webanwendungen und mobilen Anwendungen den präzisen geografischen Kontext bereitstellen können. Die Sammlung umfasst REST-APIs zum Rendern von Karten, eine Suchfunktion für Points of Interest, Routen zu Points of Interest, Verkehrsinformationen, Zeitzonen und IP to Location-Dienste. Sie können diese APIs verwenden, um mithilfe vertrauter Entwicklungstools im Handumdrehen Lösungen für die Integration von Standortinformationen in Ihre Azure-Lösungen zu entwickeln und zu skalieren. Zusammen mit den REST-APIs wird ein webbasiertes JavaScript-Steuerelement bereitgestellt, um die Entwicklung für verschiedene Medien einfach, flexibel und portabel zu gestalten. 
@@ -98,7 +98,7 @@ Informationen zu den REST-APIs für den IP to Location-Dienst finden Sie auf der
 
 Azure Maps ist auf Mobilität ausgelegt und kann für plattformübergreifende Anwendungen eingesetzt werden. Es wird ein Programmiermodell genutzt, das sprachunabhängig ist und die JSON-Ausgabe über [REST-APIs](https://docs.microsoft.com/rest/api/maps/) unterstützt. 
 
-Außerdem verfügt Azure Maps über ein komfortables [JavaScript-Kartensteuerelement](https://docs.microsoft.com/javascript/api/azure-maps-javascript/?view=azure-iot-typescript-latest) mit einem einfachen Programmiermodell für die schnelle und einfache Entwicklung webbasierter und mobiler Anwendungen. 
+Außerdem verfügt Azure Maps über ein komfortables [JavaScript-Kartensteuerelement](https://docs.microsoft.com/javascript/api/azure-maps-control/models?view=azure-iot-typescript-latest) mit einem einfachen Programmiermodell für die schnelle und einfache Entwicklung webbasierter und mobiler Anwendungen. 
 
 
 ## <a name="usage"></a>Verwendung

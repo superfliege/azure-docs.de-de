@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: ba75c3448b4e8edb3851b97f076c0eaf64a2bce4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ea1e3ca76f779f442c9d22478ea93de3d5ab83f2
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428667"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43088105"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -442,7 +442,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, ziehen Sie die **Lookup**-Aktivität auf die Oberfläche des Pipeline-Designers, und geben Sie unter **Name** den Namen **LookupOldWaterMarkActivity** ein.
 
     ![Erste Lookup-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
-1. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
+1. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Einstellungen** , und führen Sie die folgenden Schritte aus: 
 
     1. Wählen Sie **WatermarkDataset** für **Source Dataset**.
     1. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 

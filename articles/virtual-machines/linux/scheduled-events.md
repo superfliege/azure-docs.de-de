@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: db4a0d1f288394276cd400e7a060cfb3662b34f0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f18892d32a385b41f3325623e21da1dd25af7253
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911997"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744706"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure-Metadatendienst: Geplante Ereignisse für Linux-VMs
 
@@ -53,7 +53,7 @@ Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 
   Der Metadatendienst macht Informationen zu ausgeführten virtuellen Computern mithilfe eines innerhalb einer VM zugänglichen REST-Endpunkts verfügbar. Die Informationen stehen über eine nicht routingfähige IP-Adresse bereit, die außerhalb der VM nicht verfügbar gemacht wird.
 
-### <a name="scope"></a>Umfang
+### <a name="scope"></a>Bereich
 Geplante Ereignisse werden übermittelt an:
 
 - Alle VMs in einem Clouddienst
@@ -158,7 +158,7 @@ Das folgende JSON-Beispiel wird im `POST`-Anforderungstext erwartet. Die Anforde
 
 #### <a name="bash-sample"></a>Bash-Beispiel
 ```
-curl -H Metadata:true -X POST -d '{"DocumentIncarnation":"5", "StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
+curl -H Metadata:true -X POST -d '{"StartRequests": [{"EventId": "f020ba2e-3bc0-4c40-a10b-86575a9eabd5"}]}' http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01
 ```
 
 > [!NOTE] 

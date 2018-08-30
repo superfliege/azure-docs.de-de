@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "30921307"
 ---
 Die häufig gestellten Fragen zu VNet-zu-VNet-Verbindungen gelten für VPN Gateway-Verbindungen. Informationen zum VNet-Peering finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md).

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6ff7a0270509c244fc97bd04d8ba648fd262dc58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2499822db587dbf47dccedf6039d0fb5823c58b5
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600118"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746077"
 ---
 # <a name="show-traffic-on-the-map"></a>Anzeigen von Datenverkehr auf einer Karte
 
@@ -27,13 +27,13 @@ Dieser Artikel erläutert, wie Sie Datenverkehrs- und Incidentinformationen auf 
 
 Der erste Block des oben gezeigten Codes erstellt ein Kartenobjekt. Eine Anleitung finden Sie unter [Erstellen einer Karte](map-create.md).
 
-Der zweite Codeblock verwendet die [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#settraffic)-Funktion der map-Klasse, um die Datenverkehrsflüsse und Incidents auf der Karte zu rendern.
+Der zweite Codeblock verwendet die [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic)-Funktion der map-Klasse, um die Datenverkehrsflüsse und Incidents auf der Karte zu rendern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden: 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#settraffic)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic)
 
 Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln: 
 * [Interacting with the map – mouse events](./map-events.md) (Interagieren mit der Karte – Mausereignisse)

@@ -4,7 +4,7 @@
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
 | Datenträgergröße           | 32 GB            | 64 GB            | 128 GB           | 256 GB | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
 | IOPS pro Datenträger       | 500              | 500              | 500              | 500 | 500              | 500              | 500             | 500              | 
-| Durchsatz pro Datenträger | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 50 MB/s|
+| Durchsatz pro Datenträger | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s | 60 MB/s|
 
 **Verwalteter Premium-VM-Datenträger: Grenzwerte pro Datenträger**
 

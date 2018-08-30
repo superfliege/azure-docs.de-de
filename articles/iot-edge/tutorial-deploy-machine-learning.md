@@ -4,17 +4,17 @@ description: In diesem Tutorial stellen Sie Azure Machine Learning als Modul auf
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/25/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c13cd495f7802f14937321134a975b7a00c791ab
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: db22b8ddeaa7fc8fd4d8f7a8b3b3d8b4bc143974
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41918454"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746398"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul – Vorschau
 
@@ -61,7 +61,7 @@ Entwicklungsressourcen:
 
 Um die Prozessidentifizierung auf Ihrem IoT Edge-Gerät zu deaktivieren, müssen Sie die IP-Adresse und den Port für **workload_uri** und **management_uri** im Abschnitt **connect** der IoT Edge-Daemonkonfiguration angeben.
 
-Ermitteln Sie zunächst die IP-Adresse. Geben Sie `ifconfig` in Ihre Befehlszeile ein, und kopieren Sie die IP-Adresse der Schnittstelle **docker0**.
+Ermitteln Sie zunächst die IP-Adresse. Geben Sie `ipconfig` in Ihre Befehlszeile ein, und kopieren Sie die IP-Adresse der Schnittstelle **docker0**.
 
 Bearbeiten Sie die Konfigurationsdatei für den IoT Edge-Daemon:
 

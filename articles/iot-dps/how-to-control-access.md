@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: wesmc
-ms.openlocfilehash: 4751a76c39060f48d3b816ecee0de5b58e29bdaa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e476ca498e4dc1b36d18927beddc812d6d803120
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141389"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818509"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Steuern des Zugriffs auf den Azure IoT Hub Device Provisioning-Dienst
 
@@ -34,7 +34,7 @@ Sie können [Berechtigungen](#device-provisioning-service-permissions) auf folge
 
 * **SAS-Autorisierungsrichtlinien:** SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#device-provisioning-service-permissions) gewähren. Sie können Richtlinien im [Azure-Portal][lnk-management-portal] oder programmgesteuert mithilfe der [REST-APIs des Device Provisioning-Diensts][lnk-resource-provider-apis] definieren. Ein neu erstellter Bereitstellungsdienst verfügt über folgende Standardrichtlinie:
 
-   **provisioningserviceowner**: Richtlinie mit sämtlichen Berechtigungen.
+* **provisioningserviceowner**: Richtlinie mit sämtlichen Berechtigungen.
 
 > [!NOTE]
 > Weitere Informationen finden Sie unter [Berechtigungen](#device-provisioning-service-permissions).
