@@ -8,24 +8,25 @@ ms.topic: include
 ms.date: 04/02/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 752feca30fdca663aaf8bd88e6686781b9065682
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 527567ee3f3a939c7358fb6a62271cbe38e16974
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836680"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42915154"
 ---
 Wenn Sie Vorlagenbenachrichtigungen senden, müssen Sie nur einen Satz von Eigenschaften bereitstellen. In diesem Szenario enthält der Satz von Eigenschaften die lokalisierte Version der aktuellen Nachrichten.
 
-    {
-        "News_English": "World News in English!",
-        "News_French": "World News in French!",
-        "News_Mandarin": "World News in Mandarin!"
-    }
-
-
+```json
+{
+    "News_English": "World News in English!",
+    "News_French": "World News in French!",
+    "News_Mandarin": "World News in Mandarin!"
+}
+```
 
 ### <a name="send-notifications-using-a-c-console-app"></a>Senden von Benachrichtigungen mit einer C#-Konsolen-App
+
 Dieser Abschnitt zeigt, wie Benachrichtigungen mit einer Konsolen-App gesendet werden. Der Code überträgt Benachrichtigungen an Windows Store- und iOS-Geräte. Ändern Sie die `SendTemplateNotificationAsync`-Methode in der zuvor erstellten Konsolen-App mit dem folgenden Code:
 
 ```csharp
@@ -66,6 +67,7 @@ private static async void SendTemplateNotificationAsync()
 Die SendTemplateNotificationAsync-Methode übermittelt den lokalisierten Teil der Nachrichten an **alle** Ihre Geräte, unabhängig von der Plattform. Ihr Benachrichtigungshub erstellt und übermittelt die richtige native Nutzlast für alle Geräte, die einen bestimmten Tag abonniert haben.
 
 ### <a name="sending-notification-with-mobile-services"></a>Senden von Benachrichtigungen mit Mobile Services
+
 Verwenden Sie im Mobile Service-Scheduler das folgende Skript:
 
 ```csharp
@@ -82,4 +84,3 @@ notificationHubService.send('World', notification, function(error) {
     }
 });
 ```
-

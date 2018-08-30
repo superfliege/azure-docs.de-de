@@ -1,0 +1,99 @@
+items:
+- name: Privileged Identity Management-Dokumentation
+- name: Übersicht
+  items:
+  - name: Was ist Azure AD PIM?
+    href: pim-configure.md
+- name: Konzepte
+  items:
+  - name: Abonnementanforderungen
+    href: subscription-requirements.md
+  - name: Verzeichnisrollen, die Sie verwalten können
+    href: pim-roles.md
+  - name: Schützen des privilegierten Zugriffs
+    href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+  - name: Übersichtsdashboards
+    href: pim-resource-roles-overview-dashboards.md
+  - name: E-Mail-Benachrichtigungen
+    href: pim-email-notifications.md
+  - name: Zuweisungstypen
+    href: pim-resource-roles-eligible-visibility.md
+  - name: Sicherheits-Assistent
+    href: pim-security-wizard.md
+- name: Anleitungen
+  items:
+  - name: Einstieg in PIM
+    href: pim-getting-started.md
+  - name: Aktivieren von Rollen
+    items:
+    - name: Aktivieren meiner Verzeichnisrollen
+      href: pim-how-to-activate-role.md
+    - name: Aktivieren meiner Ressourcenrollen
+      href: pim-resource-roles-activate-your-roles.md
+  - name: Konfigurieren von PIM
+    items:
+    - name: Ermitteln von Azure-Ressourcen
+      href: pim-resource-roles-discover-resources.md
+    - name: Gewähren des Zugriffs für andere Personen zur Verwaltung von PIM
+      href: pim-how-to-give-access-to-pim.md
+    - name: Aktivieren der Abonnementverwaltung
+      href: pim-resource-roles-enable-subscription-management.md
+  - name: Verwalten von Verzeichnisrollen
+    items:
+    - name: Zuweisen von Rollen
+      href: pim-how-to-add-role-to-user.md
+    - name: Konfigurieren von Rolleneinstellungen
+      href: pim-how-to-change-default-settings.md
+    - name: Anfordern von MFA
+      href: pim-how-to-require-mfa.md
+    - name: Konfigurieren von Warnungen
+      href: pim-how-to-configure-security-alerts.md
+    - name: Genehmigen von Anforderungen
+      href: azure-ad-pim-approval-workflow.md
+    - name: Anzeigen des Überwachungsverlaufs
+      href: pim-how-to-use-audit-log.md
+  - name: Verwalten von Ressourcenrollen
+    items:
+    - name: Anzeigen, wer Zugriff hat
+      href: azure-pim-resource-rbac.md
+    - name: Zuweisen von Rollen
+      href: pim-resource-roles-assign-roles.md
+    - name: Konfigurieren von Rolleneinstellungen
+      href: pim-resource-roles-configure-role-settings.md
+    - name: Anfordern von MFA
+      href: pim-resource-roles-require-mfa.md
+    - name: Konfigurieren von Warnungen
+      href: pim-resource-roles-configure-alerts.md
+    - name: Genehmigen von Anforderungen
+      href: pim-resource-roles-approval-workflow.md
+    - name: Erweitern oder Erneuern von Rollen
+      href: pim-resource-roles-renew-extend.md
+    - name: Anzeigen des Überwachungsverlaufs
+      href: pim-resource-roles-use-the-audit-log.md
+    - name: Verwenden von benutzerdefinierten Rollen
+      href: pim-resource-roles-custom-role-policy.md
+  - name: Überprüfen des Zugriffs
+    items:
+    - name: Verzeichnisrollen
+      items:
+      - name: Überprüfen meiner Verzeichnisrollen
+        href: pim-how-to-perform-security-review.md
+      - name: Starten einer Zugriffsüberprüfung
+        href: pim-how-to-start-security-review.md
+      - name: Abschließen einer Zugriffsüberprüfung
+        href: pim-how-to-complete-review.md
+    - name: Ressourcenrollen
+      items:
+      - name: Überprüfen meiner Ressourcenrollen
+        href: pim-resource-roles-perform-access-review.md
+      - name: Starten einer Zugriffsüberprüfung
+        href: pim-resource-roles-start-access-review.md
+      - name: Abschließen einer Zugriffsüberprüfung
+        href: pim-resource-roles-complete-access-review.md
+  expanded: true
+ms.openlocfilehash: 7a8fafb4782a02da5b1fbe189cba8cadf7c22bfe
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43191259"

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 532df20a7639f42d8ba1c840a5fd19f0ad0e4042
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143358"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246332"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche
 
@@ -38,9 +38,8 @@ In diesem Tutorial wird vorausgesetzt, dass Sie bereits über einen Log Analytic
 
 1. Öffnen Sie das Azure-Portal.
 2. Navigieren Sie zu „Log Analytics“, und wählen Sie Ihren Arbeitsbereich aus.
-3. Wählen Sie **Protokollsuche** aus.
+3. Wählen Sie **Protokolle** aus.
 
-![Schaltfläche für die Protokollsuche](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>Erstellen einer einfachen Suche
 Die schnellste Methode, Daten für die weitere Verwendung abzurufen, besteht in einer einfachen Abfrage, die alle Datensätze aus der Tabelle zurückgibt.  Wenn Windows- oder Linux-Clients mit Ihrem Arbeitsbereich verbunden sind, liegen die Daten in der Ereignistabelle (Windows) bzw. in der Syslog-Tabelle (Linux) vor.

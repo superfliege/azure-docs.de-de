@@ -3,18 +3,18 @@ title: Beschränken des Zugriffs mit Shared Access Signatures – Azure HDInsigh
 description: Erfahren Sie, wie Sie mit Shared Access Signatures den HDInsight-Zugriff auf Daten in Azure-Speicherblobs einschränken.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: c20bb5230ada24cf2363138a8678668abac89863
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 76e40f5178457f366ed386dba7a1817ddde3c8ac
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595758"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090227"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Azure Storage Shared Access Signatures zum Einschränken des Zugriffs auf Daten mit HDInsight
 
@@ -26,7 +26,7 @@ HDInsight hat vollen Zugriff auf Daten in Azure Storage-Konten, die mit dem Clus
 > [!WARNING]
 > HDInsight benötigt vollen Zugriff auf den Standardspeicher für den Cluster.
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 * Ein Azure-Abonnement
 * C# oder Python. C#-Beispielcode wird als Visual Studio-Projektmappe bereitgestellt.

@@ -3,19 +3,19 @@ title: Spickzettel für Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Es wird beschrieben, wo Sie Links und bewährte Methoden finden, um schnell Azure SQL Data Warehouse-Lösungen zu erstellen.
 services: sql-data-warehouse
 author: acomet
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.component: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: a22aadff2d58ace60a980a138035e30a638b08fa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4ef64b9d4e4e5c7f5a628359a8512dcb61b9c941
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32190409"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43245892"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Spickzettel für Azure SQL Data Warehouse
 Dieser Spickzettel bietet nützliche Tipps und bewährte Methoden zum Erstellen von Azure SQL Data Warehouse-Lösungen. Bevor Sie beginnen, können Sie mehr über jeden Schritt erfahren, indem Sie [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns) lesen. In diesem Artikel wird erläutert, was SQL Data Warehouse ist, und was es nicht ist.
@@ -64,7 +64,7 @@ Abhängig von den Tabelleneigenschaften sollten Sie folgende Strategien verwende
 * Verwenden Sie *[sys.dm_pdw_nodes_db_partition_stats]*, um eine etwaige Schiefe in den Daten zu analysieren.
 * Verwenden Sie *[sys.dm_pdw_request_steps]*, um Datenverschiebungen nach Abfragen zu analysieren, die Zeitübertragung zu überwachen und Vorgänge zu mischen. Dies ist für die Überprüfung Ihre Verteilungsstrategie hilfreich.
 
-Weitere Informationen finden Sie in den Artikeln zu [replizierten Tabellen] und [verteilten Tabellen].
+Weitere Informationen finden Sie in den Artikeln zu [replizierte Tabellen] und [verteilte Tabellen].
 
 ## <a name="index-your-table"></a>Indizieren von Tabellen
 
@@ -148,8 +148,8 @@ Stellen Sie mit einem Klick Ihre Speichen in SQL-Datenbanken aus SQL Data Wareho
 [Partitionen]:sql-data-warehouse-tables-partition.md
 [Statistiken]:sql-data-warehouse-tables-statistics.md
 [Ressourcenklassen und Parallelität]:resource-classes-for-workload-management.md
-[replizierten Tabellen]:design-guidance-for-replicated-tables.md
-[verteilten Tabellen]:sql-data-warehouse-tables-distribute.md
+[replizierte Tabellen]:design-guidance-for-replicated-tables.md
+[verteilte Tabellen]:sql-data-warehouse-tables-distribute.md
 
 <!--MSDN references-->
 

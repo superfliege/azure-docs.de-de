@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: a3d6ad9f2f442481908bc02252fcc8ab1a74419e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: aa2d8f50d8fb4ba356af20a290976b8b32601ebf
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205587"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188790"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (Python)
 
@@ -53,9 +53,9 @@ Die folgenden Schritte beschreiben das Herunterladen und Konfigurieren der Pytho
 * Reagieren auf Einstellungsänderungen, die in Azure IoT Central vorgenommen werden
 
 > [!NOTE]
-> Weitere Informationen zum Raspberry Pi-Python-Beispiel finden Sie in der [Readme](https://github.com/Microsoft/microsoft-iot-central-firmware/blob/master/RaspberryPi/README.md)-Datei auf GitHub.
+> Weitere Informationen zum Raspberry Pi-Python-Beispiel finden Sie in der [Readme](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md)-Datei auf GitHub.
 
-1. Verwenden Sie den Webbrowser auf dem Raspberry Pi-Desktop, um die Seite mit [Azure IoT Central-Firmwarereleases](https://github.com/Microsoft/microsoft-iot-central-firmware/releases) aufzurufen.
+1. Verwenden Sie den Webbrowser auf dem Raspberry Pi-Desktop, um die Seite mit [Azure IoT Central-Firmwarereleases](https://github.com/Azure/iot-central-firmware/releases) aufzurufen.
 
 1. Laden Sie die ZIP-Datei mit der neuesten Firmware in Ihren Startordner auf dem Raspberry Pi herunter. Der Dateiname sieht folgendermaßen aus: `RaspberryPi-IoTCentral-X.X.X.zip`.
 

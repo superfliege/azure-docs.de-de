@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e4bedd747c5a0010058efee595402448f6a30b
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: b6055dbab85acb1e5fed9679a5072144bc84712c
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507151"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917122"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto
 
@@ -31,6 +31,9 @@ ms.locfileid: "39507151"
 > [!IMPORTANT]
 > 
 > Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
+
+> [!div class="nextstepaction"]
+> [Beitragen zur Verbesserung von Azure-Abrechnungsdokumenten](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Übertragen des Besitzes eines Azure-Abonnements
 

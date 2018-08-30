@@ -14,19 +14,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 05041637aa5cbb044e6731208825f75edec83352
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 25eb5c732927dcfb18bfd92991391ff99d4e3629
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157043"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918257"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service
 Mobile App Service-Apps sind eine neue Methode zum Erstellen mobiler Anwendungen mit Microsoft Azure. Weitere Informationen finden Sie unter [Was sind Mobile Apps?].
 
 In diesem Thema wird beschrieben, wie Sie eine vorhandene .NET-Back-End-Anwendung von Azure Mobile Services auf eine neue mobile App Service-App aktualisieren. Während Sie dieses Upgrade ausführen, können Sie Ihre vorhandene Mobile Services-Anwendung weiter betreiben.   Wenn Sie eine Node.js-Back-End-Anwendung aktualisieren müssen, lesen Sie die Informationen unter [Aktualisieren eines vorhandenen Node.js-Azure Mobile Services auf App Service](app-service-mobile-node-backend-upgrading-from-mobile-services.md).
 
-Wenn ein Mobil-Back-End auf Azure App Service aktualisiert wird, hat dieses Zugriff auf alle App Service-Features, und die Abrechnung erfolgt gemäß [App Service-Preisen], nicht gemäß den Mobile Services-Preisen.
+Wenn ein Mobil-Back-End auf Azure App Service aktualisiert wird, hat dieses Zugriff auf alle App Service-Features, und die Abrechnung erfolgt gemäß [App Service – Preise], nicht gemäß den Mobile Services-Preisen.
 
 ## <a name="migrate-vs-upgrade"></a>Vergleich von Migration und Upgrade
 [!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
@@ -98,7 +98,7 @@ with
         .ApplyTo(config);
 
 > [!NOTE]
-> Wenn Sie mehr über das neue .NET-Server-SDK und die Features zum Hinzufügen oder Entfernen erfahren möchten, lesen Sie das Thema [Verwenden des .NET-Server-SDK] .
+> Wenn Sie mehr über das neue .NET-Server-SDK und die Features zum Hinzufügen oder Entfernen erfahren möchten, lesen Sie das Thema [Verwenden des .NET-Server-SDKs] .
 >
 >
 
@@ -260,16 +260,16 @@ Wenn die neue Clientversion bereit ist, testen Sie sie mit dem aktualisierten Se
 
 [Azure-Portal]: https://portal.azure.com/
 [klassischen Azure-Portals]: https://manage.windowsazure.com/
-[Was sind Mobile Apps?]: app-service-mobile-value-prop.md
+[Was sind mobile Apps?]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
 [Mobile App Server SDK]: http://www.nuget.org/packages/microsoft.azure.mobile.server
 [Create a Mobile App]: app-service-mobile-xamarin-ios-get-started.md
 [Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
-[Azure Scheduler]: /en-us/documentation/services/scheduler/
+[Azure Scheduler]: /azure/scheduler/
 [WebJob]: https://github.com/Azure/azure-webjobs-sdk/wiki
-[Verwenden des .NET-Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Verwenden des .NET-Server-SDKs]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[App Service-Preisen]: https://azure.microsoft.com/pricing/details/app-service/
+[App Service – Preise]: https://azure.microsoft.com/pricing/details/app-service/
 [Übersicht über das .NET Server-SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
