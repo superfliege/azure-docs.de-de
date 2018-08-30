@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003531"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143647"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
@@ -43,7 +43,7 @@ Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Bas
 | [Überwachung und Diagnose](iot-hub-monitor-resource-health.md) | JA | JA |
 | [Cloud-zu-Gerät-Messaging](iot-hub-devguide-c2d-guidance.md) |   | JA |
 | [Gerätezwillinge](iot-hub-devguide-device-twins.md), [Modulzwillinge](iot-hub-devguide-module-twins.md) und [Geräteverwaltung](iot-hub-device-management-overview.md) |   | JA |
-| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | JA |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | JA |
 
 Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests und Evaluierungen bestimmt ist. Er verfügt über alle Funktionen des Standard-Tarifs, aber das Messaging ist eingeschränkt. Ein Upgrade aus dem Free-Tarif in den Basic- oder Standard-Tarif ist nicht möglich. 
 

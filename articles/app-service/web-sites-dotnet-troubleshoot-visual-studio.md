@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142394"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125243"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Web-Apps in Azure App Service in Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -623,7 +623,7 @@ Sie haben gelernt, wie Visual Studio die Anzeige der Protokolle von Azure-Web-Ap
 ### <a name="azure-web-app-troubleshooting"></a>Problembehandlung von Azure-Web-Apps
 Weitere Informationen zur Problembehandlung von Web-Apps in Azure App Service finden Sie in den folgenden Ressourcen:
 
-* [Überwachen von Web-Apps](/manage/services/web-sites/how-to-monitor-websites/)
+* [Überwachen von Web-Apps](web-sites-monitor.md)
 * [Untersuchen von Speicherlecks in Azure-Web-Apps mit Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Microsoft ALM-Blogbeiträge über Visual Studio-Funktionen für die Untersuchung von Problemen mit verwaltetem Speicher.
 * [Onlinetools für Azure -Web-Apps, die Sie kennen sollten](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Blogbeitrag von Amit Apple.
 
@@ -674,7 +674,7 @@ catch (Exception ex)
 
 * [Ablaufprotokollierung und Streamingdiagnose über die Azure-Befehlszeile (plus Glimpse)](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   Verwenden der Befehlszeile für die Visual Studio-Aktionen aus diesem Lernprogramm. [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) ist ein Tool zum Debuggen von ASP.NET-Anwendungen.
-* [Using Web Apps Logging and Diagnostics – with David Ebbo](/documentation/videos/azure-web-site-logging-and-diagnostics/) (Verwenden der Web-App-Protokollierung – mit David Ebbo) und [Streaming Logs from Web Apps – with David Ebbo](/documentation/videos/log-streaming-with-azure-web-sites/) (Protokollstreaming aus Web-Apps – mit David Ebbo)<br>
+* [Using Web Apps Logging and Diagnostics – with David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) (Verwenden der Web-App-Protokollierung – mit David Ebbo) und [Streaming Logs from Web Apps – with David Ebbo](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/) (Protokollstreaming aus Web-Apps – mit David Ebbo)<br>
   Videos von Scott Hanselman und David Ebbo.
 
 Für die Fehlerprotokollierung können Sie Open-Source-Protokollframeworks wie [ELMAH](http://nuget.org/packages/elmah/) verwenden, anstatt Ihren eigenen Ablaufverfolgungscode zu schreiben. Weitere Informationen finden Sie in [Scott Hanselmans Blogbeiträgen zu ELMAH](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).

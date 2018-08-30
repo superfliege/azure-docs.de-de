@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: 69f11c77d01f546aecdcb5f0560f6f89483ac204
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: f1a6825cdfab2375f1a6f1858ef14684d374dae2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056401"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123481"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 
@@ -49,7 +49,7 @@ Der Aktionsaufruf für eine SaaS-Auflistung ohne Testversion und Abrechnungsfunk
 
 Zum Auflisten einer SaaS-Anwendung müssen Sie nicht Azure Active Directory konfigurieren. 
 
-|Requirements (Anforderungen)  |Details  |
+|Anforderungen  |Details  |
 |---------|---------|
 |Ihre App ist ein SaaS-Angebot  |   Ihre Lösung ist ein SaaS-Angebot, und Sie bieten ein mehrinstanzenfähiges SaaS-Produkt an.      |
 
@@ -59,7 +59,7 @@ Zum Auflisten einer SaaS-Anwendung müssen Sie nicht Azure Active Directory konf
 Sie stellen eine Lösung oder App mithilfe einer kostenlos zu testenden, SaaS-basierten Testversion bereit. Kostenlose Testangebote können als Testkonten mit eingeschränkter Nutzung oder begrenzter Dauer angeboten werden. 
 
 
-|Requirements (Anforderungen)  |Details  |
+|Anforderungen  |Details  |
 |---------|---------|
 |Ihre App ist ein SaaS-Angebot  |   Ihre Lösung ist ein SaaS-Angebot, und Sie bieten ein mehrinstanzenfähiges SaaS-Produkt an.      |
 |Ihre App ist AAD-tauglich     |   Der Kunde wird zu Ihrer Domäne umgeleitet, und Sie führen direkt mit dem Kunden eine Transaktion durch.       |
@@ -97,7 +97,7 @@ Eine kostenlose Azure Active Directory-Schulung finden Sie hier:
 * [Microsoft Azure for IT Pros Content Series: Azure Active Directory](https://mva.microsoft.com/en-US/training-courses/microsoft-azure-for-it-pros-content-series-azure-active-directory-16754?l=N0e23wtxC_2106218965) (Themenreihe zu Microsoft Azure für IT-Experten: Azure Active Directory)
 
 Darüber hinaus bietet Azure Active Directory eine Website für die Suche nach Dienstupdates:   
-* [Azure AD-Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)|
+* [Azure AD-Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Verwenden von Azure Active Directory, um Tests zu ermöglichen  
 
@@ -147,7 +147,7 @@ Microsoft hostet die Commerce-Transaktion. Microsoft stellt Ihrem Kunden Rechnun
 ## <a name="next-steps"></a>Nächste Schritte
 Falls Sie dies noch nicht getan haben, 
 
-- [Registrieren](https://azuremarketplace.microsoft.com/sell) Sie sich im Marketplace.
+- [registrieren](https://azuremarketplace.microsoft.com/sell) Sie sich im Marketplace.
 
 Wenn Sie registriert sind und ein neues Angebot erstellen oder an einem vorhandenen arbeiten,
 

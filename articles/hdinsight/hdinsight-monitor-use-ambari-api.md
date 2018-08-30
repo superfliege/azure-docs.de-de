@@ -3,18 +3,18 @@ title: Überwachen von Hadoop-Clustern in HDInsight mit der Ambari-API – Azure
 description: Verwenden Sie die Apache Ambari-APIs für die Erstellung, Verwaltung und Überwachung von Hadoop-Clustern. Die intuitiven Operatortools und APIs verbergen die Komplexität von Hadoop.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: f55ee02ada5bb53d4634d119311fb9230ff15105
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23da477fc24eaea4a6f987f13ad055022d2ba032
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592821"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108636"
 ---
 # <a name="monitor-hadoop-clusters-in-hdinsight-using-the-ambari-api"></a>Überwachen von Hadoop-Clustern in HDInsight mit der Ambari API
 Erfahren Sie, wie HDInsight-Cluster mithilfe der Ambari-APIs überwacht werden.

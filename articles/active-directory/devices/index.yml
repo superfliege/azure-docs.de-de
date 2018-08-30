@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 03a96770462e66c897b93ae0790838a9c8f1bd9b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43130614"
+documentType: LandingData
+title: Dokumentation zur Azure AD-Geräteverwaltung
+metadata:
+  document_id: 
+  title: 'Dokumentation zur Azure Active Directory-Geräteverwaltung: Tutorials, Konzepte, Referenzen | Microsoft-Dokumentation'
+  description: Hier erfahren Sie, wie Sie die Azure Active Directory-Geräteverwaltung konfigurieren und testen.
+  services: active-directory
+  ms.component: devices
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: markvi
+abstract:
+  description: Über Geräte erhalten Ihre Benutzer Zugriff auf Ihre Unternehmensressourcen. Zum Schutz der Unternehmensressourcen möchten Sie als IT-Administrator Kontrolle über diese Geräte haben. So können Sie sicherstellen, dass Ihre Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen.<br>Die Geräteverwaltung stellt zudem die Grundlage für gerätebasierten bedingten Zugriff dar. Mit dem gerätebasierten bedingten Zugriff können Sie sicherstellen, dass nur mit verwalteten Geräten auf Ressourcen in Ihrer Umgebung zugegriffen werden kann.
+sections:
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: Hier erfahren Sie, wie Sie Ihre lokalen in AD eingebundenen Geräte in Azure AD integrieren.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Verwaltete Domänen
+      href: hybrid-azuread-join-managed-domains.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Verbunddomänen
+      href: hybrid-azuread-join-federated-domains.md

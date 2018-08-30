@@ -1,5 +1,5 @@
 ---
-title: VMware-Überwachungslösung in Log Analytics | Microsoft-Dokumentation
+title: VMware-Überwachungslösung in Log Analytics | Microsoft Docs
 description: Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann, Protokolle zu verwalten und ESXi-Hosts zu überwachen.
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: b6078ac326fe51f4198137eec2de728b6036c271
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 7cb78647b8ae17e066f05acc32668d5c0c8b4ff5
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142188"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127676"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware-Überwachungslösung (Vorschau) in Log Analytics
 
@@ -153,8 +153,6 @@ Wenn Sie zusätzliche Daten zur VM-Erstellung auf einem ESXi-Host anzeigen möch
 
 #### <a name="common-search-queries"></a>Allgemeine Suchabfragen
 Die Lösung umfasst andere nützliche Abfragen, die Sie bei der Verwaltung Ihrer ESXi-Hosts unterstützen, z.B. hoher Speicherplatzbedarf, Speicherlatenz und Pfadfehler.
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Abfragen](./media/log-analytics-vmware/queries.png)
 

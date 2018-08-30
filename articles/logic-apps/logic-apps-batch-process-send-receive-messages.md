@@ -3,19 +3,18 @@ title: Batchverarbeitung von Nachrichten als Gruppe oder Sammlung – Azure Logi
 description: Senden und Empfangen von Nachrichten als Batches in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
+ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.reviewer: estfan, LADocs
-ms.suite: integration
-ms.openlocfilehash: 5190e5d4191cb4d07b000920dd1be1b53e679350
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144959"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128744"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Versand, Empfang und Batchverarbeitung von Nachrichten in Azure Logic Apps
 
@@ -29,7 +28,7 @@ Wenn Sie Nachrichten zusammen als Gruppen senden und verarbeiten möchten, könn
 
    Darüber hinaus können Sie einen eindeutigen Schlüssel (beispielsweise eine Kundennummer) angeben, die den Zielbatch auf der Grundlage dieses Schlüssels in logische Untergruppen *partitioniert* (unterteilt). Auf diese Weise kann die App für den Empfang alle Elemente mit demselben Schlüssel sammeln und zusammen verarbeiten.
 
-Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand im gleichen Azure-Abonnement *und* in der gleichen Azure-Region befinden. Ist dies nicht der Fall, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie füreinander nicht sichtbar sind.
+Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand im gleichen Azure-Abonnement *und* in der gleichen Azure-Region befinden. Wenn dies nicht der Fall ist, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie gegenseitig nicht sichtbar sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +40,7 @@ Für dieses Beispiel benötigen Sie Folgendes:
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md) 
 
-* Wenn Sie anstelle des Azure-Portals Visual Studio verwenden möchten, müssen Sie [Visual Studio zur Verwendung mit Logik Apps einrichten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+* Um anstelle des Azure-Portals Visual Studio zu verwenden, müssen Sie [Visual Studio zur Verwendung mit Logik Apps einrichten](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 <a name="batch-receiver"></a>
 
@@ -73,7 +72,7 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
    Fügen Sie für dieses Beispiel eine Aktion hinzu, die eine E-Mail sendet, wenn der Batchtrigger ausgelöst wird. 
    Der Trigger wird ausgeführt und sendet eine E-Mail, wenn der Batch 10 Nachrichten enthält oder 10 MB umfasst oder wenn 10 Minuten vergangen sind.
 
-   1. Wählen Sie unter dem Batchtrigger die Option **Neuer Schritt** aus.
+   1. Wählen Sie unter dem Batchtrigger die Option **+ Neuer Schritt** aus.
 
    2. Geben Sie im Suchfeld den Begriff „E-Mail senden“ als Filter ein.
    Wählen Sie basierend auf Ihrem E-Mail-Anbieter einen E-Mail-Connector aus.
@@ -126,9 +125,9 @@ Um Nachrichten an einen Batch senden zu können, muss dieser Batch zunächst als
 
 Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachrichten an die Logik-App für den Batchempfang senden. In jeder Logik-App für den Batchversand geben Sie die Logik-App für den Batchempfang sowie den Batchnamen, den Nachrichteninhalt und gegebenenfalls weitere Einstellungen an. Optional können Sie einen eindeutigen Partitionsschlüssel angeben, um den Batch zum Sammeln von Nachrichten mit diesem Schlüssel in logische Untergruppen zu unterteilen. 
 
-* Stellen Sie sicher, dass Sie bereits [die Logik-App für den Batchempfang erstellt haben](#batch-receiver), sodass Sie diese beim Erstellen der Logik-App für den Batchversand als Batchziel auswählen können. Beim Batchempfang sind keine Angaben zum Batchversand erforderlich, beim Batchversand wird dagegen das Ziel benötigt, an das Nachrichten gesendet werden. 
+* Stellen Sie sicher, dass Sie bereits [die Logik-App für den Batchempfang erstellt haben](#batch-receiver), sodass Sie diese beim Erstellen der Logik-App für den Batchversand als Batchziel auswählen können. Beim Batchempfang sind keine Angaben zum Batchversand erforderlich, beim Batchversand wird dagegen das Ziel benötigt, an das die Nachrichten gesendet werden. 
 
-* Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand in der gleichen Azure-Region *und* dem gleichen Azure-Abonnement befinden. Ist dies nicht der Fall, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie füreinander nicht sichtbar sind.
+* Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-App für den Batchversand in der gleichen Azure-Region *und* dem gleichen Azure-Abonnement befinden. Wenn dies nicht der Fall ist, können Sie beim Erstellen der Logik-App für den Batchversand nicht die Logik-App für den Batchempfang auswählen, da sie gegenseitig nicht sichtbar sind.
 
 1. Erstellen Sie eine weitere Logik-App namens „BatchSender“.
 
@@ -167,7 +166,7 @@ Erstellen Sie nun eine oder mehrere Logik-Apps für den Batchversand, die Nachri
 
    | Eigenschaft | BESCHREIBUNG | 
    |----------|-------------| 
-   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“ <p>**Wichtig:** Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
+   | **Batchname** | Der in der Logik-App für den Empfang definierte Batchname, in diesem Beispiel „TestBatch“. <p>**Wichtig:** Der Batchname wird zur Laufzeit überprüft und muss mit dem in der Logik-App für den Empfang angegebenen Namen übereinstimmen. Wenn Sie den Batchnamen ändern, funktioniert die Logik-App für den Batchversand nicht. | 
    | **Nachrichteninhalt** | Der Inhalt für die Nachricht, die Sie senden möchten | 
    ||| 
 

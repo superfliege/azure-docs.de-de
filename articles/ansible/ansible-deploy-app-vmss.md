@@ -4,29 +4,23 @@ description: Erfahren Sie, wie Sie Ansible zum Konfigurieren einer VM-Skalierung
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vmss
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: b9c8058606e13c0db4908530e98cddb69d2caf50
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.topic: tutorial
+ms.date: 08/24/2018
+ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011498"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918085"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Bereitstellen von Anwendungen für VM-Skalierungsgruppen in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mithilfe von Ansible Ihre Anwendungen in Azure bereitstellen. In diesem Artikel wird veranschaulicht, wie Sie eine Java-Anwendung in einer Azure-VM-Skalierungsgruppe (VMSS) bereitstellen.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- **Konfigurieren von Ansible** - [Erstellen von Azure-Anmeldeinformationen und Konfigurieren von Ansible](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Ansible und die Module des Azure SDK für Python** 
-  - [CentOS 7.4](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 - **VM-Skalierungsgruppe**: Wenn Sie noch keine VM-Skalierungsgruppe festgelegt haben, können Sie [eine VM-Skalierungsgruppe mit Ansible erstellen](ansible-create-configure-vmss.md). 
 - **Git** - [Git](https://git-scm.com) wird verwendet, um ein in diesem Tutorial verwendetes Java-Beispiel herunterzuladen.
 - **Java SE Development Kit (JDK)**: Mit dem JDK wird das Java-Beispielprojekt erstellt.
@@ -159,7 +153,7 @@ Um den Verbindungstyp „SSH“ mit Kennwörtern zu verwenden, müssen Sie das P
   - Führen Sie für Ubunto 16.04 den Befehl `apt-get install sshpass` aus.
   - Führen Sie für CentOS 7.4 den Befehl `yum install sshpass` aus.
 
-Möglicherweise wird eine Fehlermeldung angezeigt, die der folgenden ähnelt: **Verwendung eines SSH-Kennworts anstelle eines Schlüssels ist nicht möglich, da die Hostschlüsselüberprüfung aktiviert ist, aber nicht von SSHPASS unterstützt wird.  Fügen Sie den Fingerabdruck dieses Hosts Ihrer Datei „known_hosts“ hinzu, um diesen Host zu verwalten.** Wenn dieser Fehler angezeigt wird, können Sie die Hostschlüsselüberprüfung deaktivieren, indem Sie der Datei `/etc/ansible/ansible.cfg` oder der Datei `~/.ansible.cfg` die folgende Zeile hinzufügen:
+Möglicherweise wird eine Fehlermeldung angezeigt, die der folgenden ähnelt: **Verwendung eines SSH-Kennworts anstelle eines Schlüssels ist nicht möglich, da die Hostschlüsselüberprüfung aktiviert ist, aber nicht von SSHPASS unterstützt wird. Fügen Sie den Fingerabdruck dieses Hosts Ihrer Datei „known_hosts“ hinzu, um diesen Host zu verwalten.** Wenn dieser Fehler angezeigt wird, können Sie die Hostschlüsselüberprüfung deaktivieren, indem Sie der Datei `/etc/ansible/ansible.cfg` oder der Datei `~/.ansible.cfg` die folgende Zeile hinzufügen:
   ```bash
   [defaults]
   host_key_checking = False

@@ -5,17 +5,17 @@ keywords: HiveQL, was ist Hive, Hadoop HiveQL, Verwenden von Hive, Hive lernen, 
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0ca968c0412396852e531af3b37f6675e0b519db
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 446bb23e15d908c8afe189a33e4d8a70faad284a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596659"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126636"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Was sind Apache Hive und HiveQL in Azure HDInsight?
 
@@ -222,7 +222,7 @@ Es gibt mehrere Dienste, mit denen Hive-Abfragen als Teil eines geplanten oder b
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory ermöglicht Ihnen, HDInsight als Teil einer Data Factory-Pipeline zu verwenden. Weitere Informationen zum Verwenden von Hive aus einer Pipeline finden Sie im Dokument [Transformieren von Daten mit Hive-Aktivitäten in Azure Data Factory](/data-factory/transform-data-using-hadoop-hive.md).
+Azure Data Factory ermöglicht Ihnen, HDInsight als Teil einer Data Factory-Pipeline zu verwenden. Weitere Informationen zum Verwenden von Hive aus einer Pipeline finden Sie im Dokument [Transformieren von Daten mit Hive-Aktivitäten in Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md).
 
 ### <a name="hive-jobs-and-sql-server-integration-services"></a>Hive-Aufträge und SQL Server Integration Services
 

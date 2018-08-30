@@ -1,0 +1,57 @@
+items:
+- name: Dokumentation zur Geräteverwaltung
+  href: index.yml
+- name: Übersicht
+  items:
+  - name: Was ist Geräteverwaltung in Azure AD?
+    href: overview.md
+- name: Tutorials
+  items:
+  - name: Konfigurieren der Azure AD-Hybrideinbindung für verwaltete Domänen
+    href: hybrid-azuread-join-managed-domains.md
+  - name: Konfigurieren der Azure AD-Hybrideinbindung für Verbunddomänen
+    href: hybrid-azuread-join-federated-domains.md
+  - name: Manuelles Konfigurieren der Azure AD-Hybrideinbindung
+    href: hybrid-azuread-join-manual-steps.md
+  - name: Konfigurieren der Azure AD-Einbindung während des Eindrucks beim ersten Ausführen von Windows 10
+    href: azuread-joined-devices-frx.md
+  expanded: false
+- name: Anleitungen
+  items:
+  - name: Verwalten von Geräten mithilfe des Azure-Portals
+    href: device-management-azure-portal.md
+  - name: Planen der Azure AD-Einbindung
+    href: azureadjoin-plan.md
+  - name: Planen der Implementierung Ihrer Azure AD-Hybrideinbindung
+    href: hybrid-azuread-join-plan.md
+  - name: Steuern der Azure AD-Hybrideinbindung für Ihre Geräte
+    href: hybrid-azuread-join-control.md
+  - name: Zuweisen lokaler Administratoren zu in Azure AD eingebundenen Geräten
+    href: assign-local-admin.md
+  - name: Problembehandlung für in Azure AD eingebundene aktuelle Windows-Hybridgeräte
+    href: troubleshoot-hybrid-join-windows-current.md
+  - name: Problembehandlung für in Azure AD eingebundene ältere Windows-Hybridgeräte
+    href: troubleshoot-hybrid-join-windows-legacy.md
+  - name: Häufig gestellte Fragen
+    href: faq.md
+  expanded: true
+- name: angeben
+  items:
+  - name: Azure-Feedbackforum
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: MSDN-Forum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Dienstupdates
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Videos
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: e20a017ea6ce00749cf0dad990dd7a66907e074b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43130616"

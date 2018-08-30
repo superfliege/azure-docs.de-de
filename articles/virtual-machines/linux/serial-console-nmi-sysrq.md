@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 14bf68355550d756bd3f4da1a367133d83ddbf07
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 110bdcacf7433c1e0ab0cb31e1a04734137f9596
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140785"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885238"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
@@ -52,7 +52,7 @@ Um die SysReq-Konfiguration dauerhaft zu speichern, gehen Sie zum Aktivieren all
 ### <a name="command-keys"></a>Befehlstasten 
 Aus dem oben genannten SysRq-Administratorhandbuch entnommen:
 
-|Befehl| Funktion
+|Get-Help| Funktion
 | ------| ----------- |
 |``b``  |   Führt sofort einen Systemneustart ohne Synchronisieren oder Aufheben der Bereitstellung der Datenträger durch.
 |``c``  |   Führt einen Systemabsturz durch eine NULL-Zeigerdereferenzierung herbei. Wenn konfiguriert, wird ein Absturzabbild (Crash Dump) erstellt.
@@ -84,13 +84,17 @@ Aus dem oben genannten SysRq-Administratorhandbuch entnommen:
 
 ### <a name="distribution-specific-documentation"></a>Distributionsspezifische Dokumentation ###
 Eine distributionsspezifische Dokumentation zu SysRq und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines SysRq-Befehls des Typs „Crash“ ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
+
 #### <a name="ubuntu"></a>Ubuntu ####
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
+
 #### <a name="red-hat"></a>Red Hat ####
 - [Was ist die SysRq-Funktion, und wie wird sie verwendet?](https://access.redhat.com/articles/231663)
 - [Verwenden der SysRq-Funktion zum Sammeln von Informationen von einem RHEL-Server](https://access.redhat.com/solutions/2023)
+
 #### <a name="suse"></a>SUSE ####
 - [Konfigurieren der Erfassung des Kernel-Kernspeicherabbilds](https://www.suse.com/support/kb/doc/?id=3374462)
+
 #### <a name="coreos"></a>CoreOS ####
 - [Sammeln von Absturzprotokollen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
@@ -109,16 +113,17 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
 
 Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`, finden Sie unter [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
  
- ### <a name="ubuntu"></a>Ubuntu 
+### <a name="ubuntu"></a>Ubuntu 
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
- ### <a name="red-hat"></a>Red Hat 
+### <a name="red-hat"></a>Red Hat 
  - [Was ist ein NMI und wofür kann ich ihn verwenden?](https://access.redhat.com/solutions/4127)
  - [Wie kann ich mein System so konfigurieren, dass es beim Drücken des NMI-Switches abstürzt?](https://access.redhat.com/solutions/125103)
  - [Administratorhandbuch zu Absturzabbildern](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
 - [Konfigurieren der Erfassung des Kernel-Kernspeicherabbilds](https://www.suse.com/support/kb/doc/?id=3374462)
+
 ### <a name="coreos"></a>CoreOS 
 - [Sammeln von Absturzprotokollen](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 

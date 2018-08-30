@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5c865ff5c83626f13bb4fb9df7c1533371733540
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4ead83dc449f2b32461b0585f276c9f3bfd3f847
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038175"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919101"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
@@ -84,7 +84,7 @@ Sie können das Skript verwenden, um das Verbindungsobjekt zu erstellen. Als Sie
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Verwenden einer Verbindung in einem Runbook oder einer DSC-Konfiguration
 
-Rufen Sie eine Verbindung in einem Runbook oder einer DSC-Konfiguration mit dem Cmdlet **Get-AutomationConnection** ab.  Sie können die Aktivität [Get AzureRmAutomationConnection](https://docs.microsoft.com/powershell/resourcemanager/azurerm.automation/v1.0.12/Get-AzureRmAutomationConnection?redirectedfrom=msdn) nicht verwenden.  Mithilfe dieser Aktivität werden die Werte der verschiedenen Felder in der Verbindung abgerufen und als [Hashtabelle](http://go.microsoft.com/fwlink/?LinkID=324844) zurückgegeben, die anschließend mithilfe geeigneter Befehle im Runbook oder in der DSC-Konfiguration verwendet werden kann.
+Rufen Sie eine Verbindung in einem Runbook oder einer DSC-Konfiguration mit dem Cmdlet **Get-AutomationConnection** ab.  Sie können die Aktivität [Get AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection) nicht verwenden.  Mithilfe dieser Aktivität werden die Werte der verschiedenen Felder in der Verbindung abgerufen und als [Hashtabelle](http://go.microsoft.com/fwlink/?LinkID=324844) zurückgegeben, die anschließend mithilfe geeigneter Befehle im Runbook oder in der DSC-Konfiguration verwendet werden kann.
 
 ### <a name="textual-runbook-sample"></a>Beispiel für ein Textrunbook
 

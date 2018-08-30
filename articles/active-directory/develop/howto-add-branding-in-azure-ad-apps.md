@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 78a0b9bf7f49cc41c8d78287bcbe54c5c88f0809
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "39597904"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185419"
 ---
 # <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
 
@@ -72,7 +72,7 @@ Um das offizielle Microsoft-Logo zur Verwendung in Ihrer App herunterzuladen, kl
 
 | Asset                                | PNG-Format | SVG-Format |
 | ------------------------------------ | ---------- | ---------- |
-| Microsoft-Logo  | ![Microsoft-Logo als PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.png) | ![Microsoft-Logo als SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_MSSymbol_19.svg) |
+| Microsoft-Logo  | ![Microsoft-Logo als PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Microsoft-Logo als SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Darstellungsleitfaden für die Anmeldung
 
@@ -84,16 +84,16 @@ Durch die Kombination aus Microsoft-Logo und dem Text „Bei Microsoft anmelden�
 
 Das folgende Diagramm zeigt die von Microsoft empfohlenen Redlines bei der Verwendung der Assets in Ihrer App. Die Redlines gelten für „Mit Microsoft anmelden“ oder die kürzere Version „Anmelden“.
 
-![Redlines für „Mit Microsoft anmelden“](./media/howto-add-branding-in-azure-ad-apps/Sign-in-with-Microsoft-redlines.png)
+![Redlines für „Mit Microsoft anmelden“](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 Um die offiziellen Bilddateien zur Verwendung in Ihrer App herunterzuladen, klicken Sie mit der rechten Maustaste auf das gewünschte Logo, und speichern Sie es auf Ihrem Computer.
 
 | Asset                                | PNG-Format | SVG-Format |
 | ------------------------------------ | ---------- | ---------- |
-| Mit Microsoft anmelden (dunkles Design)  | ![Schaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.png) | ![Schaltfläche „Mit Microsoft anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark.svg) |
-| Mit Microsoft anmelden (helles Design) | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.png) | ![Schaltfläche „Mit Microsoft anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light.svg) |
-| Anmelden (dunkles Design)                 | ![Schaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.png) | ![Schaltfläche „Anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_dark_short.svg) |
-| Anmelden (helles Design)                | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.png) | ![Schaltfläche „Anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/MS-SymbolLockup_SignIn_light_short.svg) |
+| Mit Microsoft anmelden (dunkles Design)  | ![Schaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Schaltfläche „Mit Microsoft anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Mit Microsoft anmelden (helles Design) | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Schaltfläche „Mit Microsoft anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Anmelden (dunkles Design)                 | ![Schaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Schaltfläche „Anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Anmelden (helles Design)                | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Schaltfläche „Anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 
 ## <a name="branding-dos-and-donts"></a>Brandingempfehlungen

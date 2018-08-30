@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 86c301748b58e7642df9a738c70b4fe70be3310b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 5f7477671e7be4e6e8fd736ab94fa7e7b1e99a6e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400007"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184477"
 ---
 Zonenredundanter Speicher (ZRS) repliziert Ihre Daten synchron über drei Speichercluster in einer Region. Jeder Speichercluster ist physisch unabhängig von den anderen und befindet sich in einer eigenen Verfügbarkeitszone. Jede Verfügbarkeitszone und der ZRS-Cluster darin ist autonom und verfügt über getrennte Hilfsprogramme und Netzwerkfunktionen.
 
@@ -28,6 +28,7 @@ ZRS unterstützt derzeit Standardkonten vom Typ [Allgemein v2 (GPv2)](../article
 
 ZRS ist in den folgenden Regionen verfügbar:
 
+- USA, Osten
 - USA (Ost 2)
 - USA, Westen 2
 - USA, Mitte

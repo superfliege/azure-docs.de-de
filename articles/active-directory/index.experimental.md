@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 04/13/2018
 ms.author: mtillman
-ms.openlocfilehash: 218de4388c88161d3277c94fcb859e6ee3dc04e9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5acb697d5c830db1301fbe7b3ca3d8aebcdb823d
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224779"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887954"
 ---
 # <a name="azure-active-directory-documentation"></a>Dokumentation zu Azure Active Directory
 
@@ -115,8 +115,8 @@ Azure Active Directory (Azure AD) ist ein mehrinstanzenfähiger cloudbasierter V
                         <h3>Geräte</h3>
                         <p>
                         <a href="/azure/active-directory/device-management-introduction">Geräteverwaltung</a><br/>
-                        <a href="/azure/active-directory/device-management-azuread-registered-devices-windows10-setup">Windows 10-Geräte</a><br/>
-                        <a href="/azure/active-directory/device-management-azuread-joined-devices-setup">Eingebundene Geräte</a>
+                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Windows 10-Geräte</a><br/>
+                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">Eingebundene Geräte</a>
                         </p>
                     </div>
                 </div>

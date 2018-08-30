@@ -4,16 +4,16 @@ description: Matrix der Ansible-Module und -Versionen für Azure
 ms.service: ansible
 keywords: Ansible, Rollen, Matrix, Version, Azure, DevOps
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
 ms.date: 07/02/2018
 ms.topic: article
-ms.openlocfilehash: c9be94d1ea77b3609f146a373574e10b7f4d4355
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8bbb2563991b45fe7a20ce243751c1c1a1f75b99
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859917"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094906"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Matrix der Ansible-Module und -Versionen
 
@@ -24,91 +24,91 @@ In diesem Artikel werden die Ansible-Module für Azure aufgelistet, die Azure-Cl
 | Ansible-Module für Azure                   |  Ansible 2.4 |  Ansible 2.5 |  Ansible 2.6 |  Playbookrolle [azure_preview_module](#introduction-to-azurepreviewmodule) | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------| 
 | **Compute**                    |           |                          |                          |                                  | 
-| azure_rm_availabilityset                    | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_availabilityset_facts              | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_deployment                         | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_resource                           | -            | -                           | Ja          | Ja                                 | 
-| azure_rm_resource_facts                     | -            | -                           | Ja          | Ja                                 | 
-| azure_rm_virtualmachine_scaleset_facts      | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_virtualmachineimage_facts          | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_resourcegroup                      | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_resourcegroup_facts                | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_virtualmachine                     | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_virtualmachine_extension           | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_virtualmachine_scaleset            | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_image                              |              | Ja                         | Ja          | Ja                                 | 
+| azure_rm_availabilityset                    | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_availabilityset_facts              | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_deployment                         | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_resource                           | -            | -                           | JA          | JA                                 | 
+| azure_rm_resource_facts                     | -            | -                           | JA          | JA                                 | 
+| azure_rm_virtualmachine_scaleset_facts      | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_virtualmachineimage_facts          | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_resourcegroup                      | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_resourcegroup_facts                | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_virtualmachine                     | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_virtualmachine_extension           | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_virtualmachine_scaleset            | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_image                              |              | JA                         | Ja          | JA                                 | 
 | **Netzwerk**                    |           |                          |                          |                                  | 
-| azure_rm_virtualnetwork                     | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_virtualnetwork_facts               | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_subnet                             | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_networkinterface                   | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_networkinterface_facts             | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_publicipaddress                    | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_publicipaddress_facts              | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_dnsrecordset                       | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_dnsrecordset_facts                 | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_dnszone                            | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_dnszone_facts                      | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_loadbalancer                       | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_loadbalancer_facts                 | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_appgw                              | -            | -                           | -            | Ja                                 | 
-| azure_rm_appgwroute                         | -            | -                           | -            | Ja                                 | 
-| azure_rm_appgwroute                         | -            | -                           | -            | Ja                                 |
-| azure_rm_appgwroute_facts                   | -            | -                           | -            | Ja                                 |
-| azure_rm_appgwroutetable                    | -            | -                           | -            | Ja                                 |
-| azure_rm_securitygroup                      | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_appgwroutetable_facts              | -            | -                           | -            | Ja                                 | 
+| azure_rm_virtualnetwork                     | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_virtualnetwork_facts               | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_subnet                             | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_networkinterface                   | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_networkinterface_facts             | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_publicipaddress                    | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_publicipaddress_facts              | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_dnsrecordset                       | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_dnsrecordset_facts                 | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_dnszone                            | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_dnszone_facts                      | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_loadbalancer                       | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_loadbalancer_facts                 | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_appgw                              | -            | -                           | -            | JA                                 | 
+| azure_rm_appgwroute                         | -            | -                           | -            | JA                                 | 
+| azure_rm_appgwroute                         | -            | -                           | -            | JA                                 |
+| azure_rm_appgwroute_facts                   | -            | -                           | -            | JA                                 |
+| azure_rm_appgwroutetable                    | -            | -                           | -            | JA                                 |
+| azure_rm_securitygroup                      | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_appgwroutetable_facts              | -            | -                           | -            | JA                                 | 
 | **Speicher**                    |           |                          |                          |                                  | 
-| azure_rm_storageaccount                     | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_storageaccount_facts               | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_storageblob                        | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_managed_disk                       | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_managed_disk_facts                 | Ja          | Ja                         | Ja          | Ja                                 | 
+| azure_rm_storageaccount                     | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_storageaccount_facts               | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_storageblob                        | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_managed_disk                       | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_managed_disk_facts                 | JA          | Ja                         | Ja          | JA                                 | 
 | **Container**                    |           |                          |                          |                                  | 
-| azure_rm_aks                                | -            | -                           | Ja          | Ja                                 | 
-| azure_rm_aks_facts                          | -            | -                           | Ja          | Ja                                 | 
-| azure_rm_acs                                | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_containerinstance                  | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_containerinstance_facts            | -            | -                           | -            | Ja                                 | 
-| azure_rm_containerregistry                  | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_containerregistry_facts            | -            | -                           | -            | Ja                                 | 
-| azure_rm_containerregistryreplication       | -            | -                           | -            | Ja                                 | 
-| azure_rm_containerregistryreplication_facts | -            | -                           | -            | Ja                                 | 
-| azure_rm_containerregistrywebhook           | -            | -                           | -            | Ja                                 | 
-| azure_rm_containerregistrywebhook_facts     | -            | -                           | -            | Ja                                 | 
+| azure_rm_aks                                | -            | -                           | JA          | JA                                 | 
+| azure_rm_aks_facts                          | -            | -                           | JA          | JA                                 | 
+| azure_rm_acs                                | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_containerinstance                  | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_containerinstance_facts            | -            | -                           | -            | JA                                 | 
+| azure_rm_containerregistry                  | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_containerregistry_facts            | -            | -                           | -            | JA                                 | 
+| azure_rm_containerregistryreplication       | -            | -                           | -            | JA                                 | 
+| azure_rm_containerregistryreplication_facts | -            | -                           | -            | JA                                 | 
+| azure_rm_containerregistrywebhook           | -            | -                           | -            | JA                                 | 
+| azure_rm_containerregistrywebhook_facts     | -            | -                           | -            | JA                                 | 
 | **Azure-Funktionen**                    |           |                          |                          |                                  | 
-| azure_rm_functionapp                        | Ja          | Ja                         | Ja          | Ja                                 | 
-| azure_rm_functionapp_facts                  | Ja          | Ja                         | Ja          | Ja                                 | 
+| azure_rm_functionapp                        | JA          | Ja                         | Ja          | JA                                 | 
+| azure_rm_functionapp_facts                  | JA          | Ja                         | Ja          | JA                                 | 
 | **Datenbanken**                    |           |                          |                          |                                  | 
-| azure_rm_sqlserver                          | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_sqlserver_facts                    | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_sqldatabase                        | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_sqldatabase_facts                  | -            | -                           | -            | Ja                                 | 
-| azure_rm_sqlelasticpool                     | -            | -                           | -            | Ja                                 | 
-| azure_rm_sqlelasticpool_facts               | -            | -                           | -            | Ja                                 | 
-| azure_rm_sqlfirewallrule                    | -            | -                           | -            | Ja                                 | 
-| azure_rm_sqlfirewallrule_facts              | -            | -                           | -            | Ja                                 | 
-| azure_rm_mysqlserver                        | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_mysqlserver_facts                  | -            | -                           | -            | Ja                                 | 
-| azure_rm_mysqldatabase                      | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_mysqldatabase_facts                | -            | -                           | -            | Ja                                 | 
-| azure_rm_mysqlfirewallrule                  | -            | -                           | -            | Ja                                 | 
-| azure_rm_mysqlfirewallrule_facts            | -            | -                           | -            | Ja                                 | 
-| azure_rm_mysqlconfiguration                 | -            | -                           | -            | Ja                                 | 
-| azure_rm_mysqlconfiguration_facts           | -            | -                           | -            | Ja                                 | 
-| azure_rm_postgresqlserver                   | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_postgresqlserver_facts             | -            | -                           | -            | Ja                                 | 
-| azure_rm_postgresqldatabase                 | -            | Ja                         | Ja          | Ja                                 | 
-| azure_rm_postgresqldatabase_facts           | -            | -                           | -            | Ja                                 | 
-| azure_rm_postgresqlfirewallrule             | -            | -                           | -            | Ja                                 | 
-| azure_rm_postgresqlfirewallrule_facts       | -            | -                           | -            | Ja                                 | 
-| azure_rm_postgresqlconfiguration            | -            | -                           | -            | Ja                                 | 
-| azure_rm_postgresqlconfiguration_facts      | -            | -                           | -            | Ja                                 | 
+| azure_rm_sqlserver                          | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_sqlserver_facts                    | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_sqldatabase                        | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_sqldatabase_facts                  | -            | -                           | -            | JA                                 | 
+| azure_rm_sqlelasticpool                     | -            | -                           | -            | JA                                 | 
+| azure_rm_sqlelasticpool_facts               | -            | -                           | -            | JA                                 | 
+| azure_rm_sqlfirewallrule                    | -            | -                           | -            | JA                                 | 
+| azure_rm_sqlfirewallrule_facts              | -            | -                           | -            | JA                                 | 
+| azure_rm_mysqlserver                        | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_mysqlserver_facts                  | -            | -                           | -            | JA                                 | 
+| azure_rm_mysqldatabase                      | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_mysqldatabase_facts                | -            | -                           | -            | JA                                 | 
+| azure_rm_mysqlfirewallrule                  | -            | -                           | -            | JA                                 | 
+| azure_rm_mysqlfirewallrule_facts            | -            | -                           | -            | JA                                 | 
+| azure_rm_mysqlconfiguration                 | -            | -                           | -            | JA                                 | 
+| azure_rm_mysqlconfiguration_facts           | -            | -                           | -            | JA                                 | 
+| azure_rm_postgresqlserver                   | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_postgresqlserver_facts             | -            | -                           | -            | JA                                 | 
+| azure_rm_postgresqldatabase                 | -            | JA                         | Ja          | JA                                 | 
+| azure_rm_postgresqldatabase_facts           | -            | -                           | -            | JA                                 | 
+| azure_rm_postgresqlfirewallrule             | -            | -                           | -            | JA                                 | 
+| azure_rm_postgresqlfirewallrule_facts       | -            | -                           | -            | JA                                 | 
+| azure_rm_postgresqlconfiguration            | -            | -                           | -            | JA                                 | 
+| azure_rm_postgresqlconfiguration_facts      | -            | -                           | -            | JA                                 | 
 | **Schlüsseltresor**                    |           |                          |                          |                                  | 
-| azure_rm_keyvault                           | -            | Ja                         | Ja          | Ja                                 |
-| azure_rm_keyvault_facts                     | -            | -                           | -            | Ja                                 |
-| azure_rm_keyvaultkey                        | -            | Ja                         | Ja          | Ja                                 |
-| azure_rm_keyvaultsecret                     | -            | Ja                         | Ja          | Ja                                 |
+| azure_rm_keyvault                           | -            | JA                         | Ja          | JA                                 |
+| azure_rm_keyvault_facts                     | -            | -                           | -            | JA                                 |
+| azure_rm_keyvaultkey                        | -            | JA                         | Ja          | JA                                 |
+| azure_rm_keyvaultsecret                     | -            | JA                         | Ja          | JA                                 |
 
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Einführung in die Playbookrolle für Azure

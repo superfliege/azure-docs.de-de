@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: ee328145419aaf8962c08bca2fb9cf1a42daae0c
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: d58642b95a60d4f1c83dfd969d0c76511dca4653
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41929862"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43097394"
 ---
 # <a name="microsoft-bing-speech-api-overview"></a>Übersicht über die Microsoft Bing-Spracheingabe-API
 
@@ -24,7 +24,7 @@ Mit der cloudbasierten Bing-Spracheingabe-API von Microsoft können Entwickler k
 - Die **Sprachsynthese-API** wandelt Text in Audiostreams um, die für den Benutzer Ihrer Anwendung wiedergegeben werden können.
 
 > [!NOTE] 
-> Im Mai 2018 haben wir den neuen [Speech-Dienst](/speech-service/overview.md) als Public Preview veröffentlicht. Wir empfehlen Ihnen, diesen [kostenlos auszuprobieren](/speech-service/get-started.md).
+> Im Mai 2018 haben wir den neuen [Speech-Dienst](../speech-service/overview.md) als Public Preview veröffentlicht. Wir empfehlen Ihnen, diesen [kostenlos auszuprobieren](../speech-service/get-started.md).
 
 ## <a name="speech-to-text-speech-recognition"></a>Spracherkennung (Umwandlung von Sprache in Text)
 

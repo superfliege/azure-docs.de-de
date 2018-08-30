@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6bfe6f9b76693ded79aa9b9d21ddcac4e1a0733e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440472"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43110303"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -48,7 +48,7 @@ Für den Befehl `az aks create` sind die folgenden Optionen verfügbar: Weitere 
 | `--enable-rbac``-r` | Aktivieren der rollenbasierten Zugriffssteuerung für Kubernetes | no |
 | `--generate-ssh-keys` | Erstellen der Dateien für öffentliche und private SSH-Schlüssel, sofern diese fehlen. | no |
 | `--kubernetes-version``-k` | Die Version von Kubernetes zum Erstellen des Clusters, z.B. „1.7.9“ oder „1.9.6“. | no |
-| `--locaton``-l` | Speicherort für die automatisch erstellte Ressourcengruppe | no |
+| `--location``-l` | Speicherort für die automatisch erstellte Ressourcengruppe | no |
 | `--max-pods``-m` | Maximale Anzahl von Pods, die auf einem Knoten bereitgestellt werden können | no |
 | `--network-plugin` | Zu verwendendes Kubernetes-Netzwerk-Plug-In | no |
 | `--no-ssh-key``-x` | Keinen lokalen SSH-Schlüssel verwenden oder erstellen | no |

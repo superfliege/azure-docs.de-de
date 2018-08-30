@@ -2,19 +2,19 @@
 title: 'Debuggen von Hadoop in HDInsight: Anzeigen von Protokollen und Verstehen von Fehlermeldungen – Azure '
 description: Lernen Sie die Fehlermeldungen kennen, die Sie bei der Administration von HDInsight mit PowerShell erhalten können und Schritte zu deren Behebung.
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: ashishthaps
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 00d09619db11ea0026f5386048f1c10a8f831948
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: cd688ec1f5b7b46138a3b601f52b54dd6f3615e3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592780"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046489"
 ---
 # <a name="analyze-hadoop-logs"></a>Analysieren von Hadoop-Protokollen
 

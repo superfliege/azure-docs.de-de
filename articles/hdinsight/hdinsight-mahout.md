@@ -3,18 +3,18 @@ title: Generieren von Empfehlungen mit Mahout HDInsight über PowerShell – Azu
 description: Erfahren Sie, wie Sie Filmempfehlungen mit der Apache Mahout-Bibliothek für Machine Learning und HDInsight (Hadoop) über ein PowerShell-Skript erstellen können, das auf Ihrem Client ausgeführt wird.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: 587ea8d9082a696853d8e25a36d9536c762d0582
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 66bcddf478a717c13ff450bc48e52be0aaf7a6ef
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599988"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108732"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Hadoop in HDInsight (PowerShell)
 

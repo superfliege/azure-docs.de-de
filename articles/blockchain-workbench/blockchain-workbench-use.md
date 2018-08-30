@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e17a9275792e3a7fdbea6e3b95e596eaa15f4359
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34258038"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105810"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Verwenden von Anwendungen in Azure Blockchain Workbench
 
@@ -24,7 +24,7 @@ Mithilfe von Blockchain Workbench können Sie Aktionen zu Verträgen erstellen u
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Eine Blockchain Workbench-Bereitstellung. Weitere Informationen zu Details dieser Bereitstellung finden Sie unter [Azure Blockchain Workbench-Bereitstellung](blockchain-workbench-deploy.md).
-* Eine bereitgestellte Blockchainanwendung in Blockchain Workbench. Siehe [Erstellen einer Blockchainanwendung in Blockchain Workbench]().
+* Eine bereitgestellte Blockchainanwendung in Blockchain Workbench. Siehe [Erstellen einer Blockchainanwendung in Blockchain Workbench](blockchain-workbench-create-app.md).
 
 [Öffnen Sie die Blockchain Workbench](blockchain-workbench-deploy.md#blockchain-workbench-web-url) in Ihrem Browser.
 
@@ -63,7 +63,7 @@ Abhängig vom Status des Vertrags können Mitglieder Aktionen für den Übergang
     |---------|---------|
     | Status | Liste des aktuellen Fortschritts innerhalb der Vertragsstufen |
     | Details | Die aktuellen Werte des Vertrags |
-    | anzuzeigen. | Details zur letzten Aktion |
+    | Aktion | Details zur letzten Aktion |
     | Aktivität | Transaktionsverlauf des Vertrags |
     
 3. Wählen Sie im Abschnitt **Aktion** die Option **Aktion ausführen**.

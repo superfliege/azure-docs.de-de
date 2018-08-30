@@ -4,18 +4,18 @@ description: Erfahren Sie, wie Sie Spark MLlib verwenden, um eine Machine Learni
 keywords: Spark Machine Learning, Beispiel für Spark Machine Learning
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: jasonh
-ms.openlocfilehash: 068d5ee7200f9597da11c0a2850ef4941f4ea900
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 78f9240e6b01bafc68b71d20044c7ec7458cc972
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39619531"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047295"
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Verwenden Sie Spark MLlib zum Erstellen einer Machine Learning-Anwendung und zur Analyse eines Datasets
 

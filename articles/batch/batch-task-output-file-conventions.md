@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d86a8fcd1dc85ccacea91afe36cb39dabe10464
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117160"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128048"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET 
 
@@ -49,7 +49,7 @@ Wenn Ihr Szenario sich von den oben aufgeführten unterscheidet, müssen Sie mö
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Was ist der Batch-Dateikonventionenstandard?
 
-Der [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) bietet ein Benennungsschema für die Zielcontainer und Blob-Pfade, in dem die Ausgabedateien geschrieben werden. In Azure Storage gespeicherte Dateien, die dem Dateikonventionenstandard entsprechen, stehen automatisch für die Anzeige im Azure-Portal zur Verfügung. Das Portal erkennt die Benennungskonvention und kann daher Dateien anzeigen, die dieser entsprechen.
+Der [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) bietet ein Benennungsschema für die Zielcontainer und Blob-Pfade, in dem die Ausgabedateien geschrieben werden. In Azure Storage gespeicherte Dateien, die dem Dateikonventionenstandard entsprechen, stehen automatisch für die Anzeige im Azure-Portal zur Verfügung. Das Portal erkennt die Benennungskonvention und kann daher Dateien anzeigen, die dieser entsprechen.
 
 Die Dateikonventionenbibliothek für .NET benennt Ihre Speichercontainer und Taskausgabedateien automatisch entsprechend des Dateikonventionenstandards. Die Dateikonventionenbibliothek bietet ebenfalls Methoden zum Abfragen von Ausgabedateien in Azure Storage nach Auftrags-ID, Task-ID oder Zweck.   
 
@@ -201,7 +201,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>Anzeigen von Ausgabedateien im Azure-Portal
 
-Im Azure-Portal werden Taskausgabedateien und Protokolle angezeigt, die unter Verwendung der [Batch-Dateikonventionenstandards](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) dauerhaft in einem verknüpften Azure Storage-Konto gespeichert werden. Sie können diese Konventionen in Ihrer bevorzugten Sprache implementieren oder die Dateikonventionenbibliothek in Ihren .NET-Anwendungen verwenden.
+Im Azure-Portal werden Taskausgabedateien und Protokolle angezeigt, die unter Verwendung der [Batch-Dateikonventionenstandards](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) dauerhaft in einem verknüpften Azure Storage-Konto gespeichert werden. Sie können diese Konventionen in Ihrer bevorzugten Sprache implementieren oder die Dateikonventionenbibliothek in Ihren .NET-Anwendungen verwenden.
 
 Um die Anzeige Ihrer Ausgabedateien im Portal zu aktivieren, müssen die folgenden Voraussetzungen erfüllt sein:
 

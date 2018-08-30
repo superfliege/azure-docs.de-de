@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390193"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128519"
 ---
 # <a name="language-understanding-faq"></a>Häufig gestellte Fragen zu Language Understanding
 
@@ -151,7 +151,7 @@ Sie sollten keine Testäußerungen protokollieren, wenn Sie das Protokoll für d
 
 Nein. Das Datenmodell der LUIS-App wird weder von LUIS verwendet, um LUIS als Plattform zu verbessern, noch in irgendeiner Weise von Microsoft. Die Daten jeder App sind separat und nur im Besitz des Benutzers und Mitwirkender. 
 
-Erfahren Sie mehr über [Benutzerdatenschutz](luis-reference-gdpr.md), [zusätzliche Sicherheitskonformität](luis-concept-security.md#security-compliance) und [Datenspeicherung](luis-concept-data-storage.md).
+Erfahren Sie mehr über [Benutzerdatenschutz](luis-user-privacy.md), [zusätzliche Sicherheitskonformität](luis-concept-security.md#security-compliance) und [Datenspeicherung](luis-concept-data-storage.md).
 
 ## <a name="language-and-translation-support"></a>Sprach- und Übersetzungsunterstützung 
 

@@ -3,19 +3,19 @@ title: Elastische Abfrage – Zugreifen auf Daten in Azure SQL Data Warehouse ü
 description: Hier werden die bewährten Methoden zur Verwendung von elastischen Abfragen zum Zugreifen auf Daten in Azure SQL Data Warehouse über Azure SQL-Datenbank beschrieben.
 services: sql-data-warehouse
 author: hirokib
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 344cb1bed56b0b6af7bd3704f8674ae30695f885
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: fcc3fd39f9ea4de64faa3a53af98ff9909dc32f3
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140140"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247952"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Bewährte Methoden zur Verwendung von elastischen Abfragen in Azure SQL-Datenbank zum Zugreifen auf Daten in Azure SQL Data Warehouse
 Hier werden die bewährten Methoden zur Verwendung von elastischen Abfragen zum Zugreifen auf Daten in Azure SQL Data Warehouse über Azure SQL-Datenbank beschrieben. 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 21dde5b0199345e9e8faffc6feac4854a3aa7350
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: c223e8fb000686aedefa1c02e93c1c8cbb30ec73
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142408"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888292"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
@@ -210,6 +210,6 @@ Wenn Ihr SSL-Zertifikat für die automatische Verlängerung konfiguriert ist, ab
 ## <a name="more-resources"></a>Weitere Ressourcen
 
 * [Erzwingen von HTTPS](app-service-web-tutorial-custom-ssl.md#enforce-https)
-* [Erzwingen von TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-1112)
+* [Erzwingen von TLS 1.1/1.2](app-service-web-tutorial-custom-ssl.md#enforce-tls-versions)
 * [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](app-service-web-ssl-cert-load.md)
 * [Häufig gestellte Fragen: App Service-Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

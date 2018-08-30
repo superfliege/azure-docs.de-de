@@ -2,7 +2,7 @@
 title: Ausführen von Sqoop-Aufträgen mit .NET und HDInsight – Azure
 description: Erfahren Sie, wie Sie mit dem HDInsight .NET-SDK einen Sqoop-Import und -Export zwischen einem Hadoop-Cluster und einer Azure SQL-Datenbank durchführen können.
 keywords: Sqoop-Auftrag
-editor: jasonwhowell
+ms.reviewer: jasonh
 services: hdinsight
 author: jasonwhowell
 ms.service: hdinsight
@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 19c275de80b872fe214e45a52de7d6fb283daf41
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ffcc2bff17fbe07c58df032dbb8994edb04ae5d0
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595143"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046776"
 ---
 # <a name="run-sqoop-jobs-by-using-net-sdk-for-hadoop-in-hdinsight"></a>Ausführen von Sqoop-Aufträgen mithilfe des .NET-SDK für Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]

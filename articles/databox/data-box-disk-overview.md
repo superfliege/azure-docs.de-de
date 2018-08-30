@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 22211f52f6b9a16f785cacb9364ebe5b74617453
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: f2e1a59584507b52d0a834af1869e3e9f2db5f07
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126625"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127363"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
 
@@ -88,7 +88,7 @@ Weitere Informationen finden Sie unter [Azure Data Box-Datenträger – Sicherhe
 
 | Spezifikationen                                          | BESCHREIBUNG              |
 |---------------------------------------------------------|--------------------------|
-| Gewicht                                                  | Weniger als ca. 900 g pro Paket; Paket enthält maximal fünf Datenträger                |
+| Weight                                                  | Weniger als ca. 900 g pro Paket; Paket enthält maximal fünf Datenträger                |
 | Dimensionen                                              | Datenträger – SSD 2,5 Zoll |            
 | Kabel                                                  | 1 USB-3.1-Kabel pro Datenträger|
 | Speicherkapazität pro Auftrag                              | 40 TB (ca. 35 TB nutzbar)|
@@ -106,11 +106,13 @@ Während der Vorschauphase können per Data Box-Datenträger Daten in die folgen
 
 |Azure-Region  |Azure-Region  |
 |---------|---------|
-|USA, Westen-Mitte     |USA Nord Mitte         |        
-|USA, Westen 2     | USA (Ost)          |     
-|USA (Westen)     | USA (Ost 2)           |      
-|USA Süd Mitte   | Europa, Westen       |         
-|USA (Mitte)     | Nordeuropa |
+|USA, Westen-Mitte     |USA (Ost)        |        
+|USA, Westen 2     |USA (Ost 2)          |     
+|USA (Westen)     | Europa, Westen        |      
+|USA Süd Mitte   |Nordeuropa     |         
+|USA (Mitte)     |Kanada, Osten|
+|USA Nord Mitte  |Kanada, Mitte    |
+
 
 
 

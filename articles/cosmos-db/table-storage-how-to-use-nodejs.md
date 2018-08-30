@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19e152b8cb8f18a616af647b31a4f35998f47858
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2b88bd3c86d520b10c27746319f807d2f6208bfa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798218"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048174"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Verwenden von Azure Table Storage oder der Azure Cosmos DB-Tabellen-API über Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -69,7 +69,7 @@ Das Azure-Modul liest in den Umgebungsvariablen AZURE_STORAGE_ACCOUNT und AZURE_
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-comsos-db-connection"></a>Hinzufügen einer Azure Cosmos DB-Verbindung
+## <a name="add-an-azure-cosmos-db-connection"></a>Hinzufügen einer Azure Cosmos DB-Verbindung
 Wenn Sie eine Verbindung zu Azure Cosmos DB hinzufügen möchten, erstellen Sie ein **TableService**-Objekt, und geben Sie Ihren Kontonamen, den Primärschlüssel und den Endpunkt an. Sie können diese Werte aus **Einstellungen** > **Verbindungszeichenfolge** im Azure-Portal für Ihr Cosmos DB-Konto kopieren. Beispiel: 
 
 ```nodejs

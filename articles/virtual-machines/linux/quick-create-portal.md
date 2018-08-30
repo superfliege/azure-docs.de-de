@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447957"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108805"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
@@ -53,7 +53,7 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 3. Geben Sie einen Namen für den virtuellen Computer ein, etwa *myVM*, übernehmen Sie den Datenträgertyp *SSD*, und geben Sie einen Benutzernamen (etwa *azureuser*) an.
 
-4. zu erstellen und zu verwalten. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** aus, und fügen Sie Ihren öffentlichen Schlüssel in das Textfeld ein. Entfernen Sie in Ihrem öffentlichen SSH-Schlüssel alle voran- bzw. nachgestellten Leerzeichen.
+4. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** aus, und fügen Sie Ihren öffentlichen Schlüssel in das Textfeld ein. Entfernen Sie in Ihrem öffentlichen SSH-Schlüssel alle voran- bzw. nachgestellten Leerzeichen.
 
     ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-vm-portal-basic-blade.png)
 

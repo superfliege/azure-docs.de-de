@@ -8,12 +8,12 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: b05b7745bdb5020a4a0912635e040256415b2626
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c8e2a6a7fc3609932a7a1139d7b34553e5f9c291
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376154"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888322"
 ---
 # <a name="project-answer-search-query-in-c"></a>Project Answer Search-Abfrage in C#
 
@@ -21,7 +21,7 @@ Das folgende C#-Beispiel erstellt und sendet eine Abfrage für Informationen üb
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen dieses Codes unter Windows benötigen Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Die kostenlose Community Edition ist hierfür geeignet.)
+Sie benötigen [Visual Studio 2017](https://www.visualstudio.com/downloads/), um diesen Code unter Windows ausführen zu können. (Die kostenlose Community Edition ist hierfür geeignet.)
 
 Rufen Sie einen Zugriffsschlüssel für die kostenlose Testversion von [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ab.
 
@@ -53,7 +53,7 @@ namespace Answers_csharp
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "YOUR-SUBSCRIPTION-KEY";
 
-        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search "; 
+        const string uriBase = "https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search"; 
 
         const string searchTerm = "third law of calculus"; 
 
@@ -190,7 +190,7 @@ So führen Sie die Anwendung aus:
 1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio
 2. Ersetzen Sie `Program.cs` durch den bereitgestellten Code
 3. Ersetzen Sie den `YOUR-ACCESS-KEY`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel
-4. Führen Sie das Programm aus
+4. Führen Sie das Programm aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Java-Schnellstart](java-quickstart.md)

@@ -15,16 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: genli
-ms.openlocfilehash: 97210c0d9dba9c4130b1da9ad17a257ff1d81b42
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b0e24e498acd823242b3613abb62df978466d56d
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448973"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918311"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 
 Für die Verwaltung von Azure-Ressourcen müssen Sie über die entsprechende Administratorrolle verfügen. In diesem Artikel wird beschrieben, wie die Administratorrolle für einen Benutzer auf Abonnementebene hinzugefügt oder geändert werden kann.
+
+> [!div class="nextstepaction"]
+> [Beitragen zur Verbesserung von Azure-Abrechnungsdokumenten](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="what-administrator-role-do-i-use"></a>Welche Administratorrolle sollte ich verwenden?
 
@@ -90,8 +93,8 @@ Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement änd
 
   | Anmeldemethode | Hinzufügen Microsoft-Kontobenutzers als Dienstadministrator? | Hinzufügen eines Geschäfts-, Schul- oder Unikontos in der gleichen Organisation als Dienstadministrator? | Hinzufügen eines Geschäfts-, Schul- oder Unikontos in einer anderen Organisation als Dienstadministrator? |
   | --- | --- | --- | --- |
-  |  Microsoft-Konto |Ja |Nein  |Nein  |
-  |  Geschäfts-, Schul- oder Unikonto |Ja |Ja |Nein  |
+  |  Microsoft-Konto |JA |Nein  |Nein  |
+  |  Geschäfts-, Schul- oder Unikonto |JA |JA |Nein  |
 
 ## <a name="change-the-account-administrator-for-an-azure-subscription"></a>Ändern des Kontoadministrators für ein Azure-Abonnement
 

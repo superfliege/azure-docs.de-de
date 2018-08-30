@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41954626"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050648"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Von Profilen in Azure Stack unterstützte API-Versionen von Ressourcenanbietern
 
@@ -197,26 +197,26 @@ Mit Azure Resource Manager können Sie die Infrastruktur für Ihre Azure-Lösung
 | Delegierte Anbieter | 2015-01-01 |
 | Delegierte Anbieter/Angebote | 2015-01-01 |
 | Delegierte Anbieter/Angebote/geschätzter Preis | 2015-01-01 |
-| Bereitstellungen | 2016-0209-01 |
-| Bereitstellungen/Vorgänge | 2016-0209-01 |
+| Bereitstellungen | 2016-09-01 |
+| Bereitstellungen/Vorgänge | 2016-09-01 |
 | Metadaten zu Erweiterungen | 2015-01-01 |
 | Links | 2016-09-01 |
 | Standorte | 2015-01-01 |
 | Angebote | 2015-01-01 |
 | Vorgänge | 2015-01-01 |
-| Anbieter | 2015-012017-08-01 |
+| Anbieter | 2017-08-01 |
 | Ressourcengruppen | 2016-09-01 |
 | angeben | 2016-09-01 |
 | Abonnements | 2016-09-01 |
 | Abonnements/Speicherort | 2016-09-01 |
 | Abonnements/Vorgangsergebnisse | 2016-09-01 |
-| Abonnements/Anbieter | 2015-012017-08-01 |
+| Abonnements/Anbieter | 2017-08-01 |
 | Abonnements/Ressourcengruppen | 2016-09-01 |
 | Abonnements/Ressourcengruppen/Ressourcen | 2016-09-01 |
 | Abonnements/Ressourcen | 2016-09-01 |
-| Abonnements/Tagnamen | 2016-0609-01 |
-| Abonnements/Tagnamen/Tagwerte | 2016-0609-01 |
-| Mandanten | 2015-012017-08-01 |
+| Abonnements/Tagnamen | 2016-09-01 |
+| Abonnements/Tagnamen/Tagwerte | 2016-09-01 |
+| Mandanten | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 

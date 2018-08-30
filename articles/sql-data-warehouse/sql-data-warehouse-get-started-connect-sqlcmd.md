@@ -3,19 +3,19 @@ title: Verbinden mit Azure SQL Data Warehouse mithilfe von sqlcmd | Microsoft-Do
 description: Verwenden Sie das Befehlszeilenprogramm [sqlcmd][sqlcmd], um eine Verbindung mit einer Azure SQL Data Warehouse-Instanz herzustellen und diese abzufragen.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: a4399382445cef5732262520986281ea440f7d51
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 94f3955f9ce94fa52e89180fa649c4e412b80109
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600701"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247712"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Verbinden mit SQL Data Warehouse per sqlcmd
 > [!div class="op_single_selector"]

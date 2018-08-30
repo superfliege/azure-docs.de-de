@@ -15,12 +15,12 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 20c43669b9da24cea4b0b552a86ec7d5a77dc5a7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: b730f80faa031b1866d3c11d8a2c885ec67f965e
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264510"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144319"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren. Es wird empfohlen, immer die aktuelle Version von Azure AD Connect zu nutzen. Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
@@ -67,7 +67,7 @@ Diese Schritte funktionieren auch bei einem Wechsel von Azure AD Sync oder einer
 
 ### <a name="use-a-swing-migration-to-upgrade"></a>Verwenden der Swing-Migration für das Upgraden
 1. Wenn Sie Azure AD Connect auf beiden Servern verwenden und lediglich Konfigurationsänderungen vornehmen möchten, stellen Sie sicher, dass auf dem aktiven und dem Stagingserver die gleiche Version verwendet wird. So sind die Unterschiede später leichter zu erkennen. Wenn Sie ein Upgrade von Azure AD Sync durchführen, weisen diese Server unterschiedliche Versionen auf. Wenn Sie das Upgrade von einer älteren Version von Azure AD Connect durchführen, ist es ratsam, mit den beiden Servern zu beginnen, auf denen dieselbe Version installiert ist. Dies ist jedoch nicht zwingend erforderlich.
-2. Wenn Sie eine benutzerdefinierte Konfiguration erstellt haben, die auf dem Stagingserver nicht vorhanden ist, führen Sie die Schritte unter [Verschieben einer benutzerdefinierten Konfiguration vom aktiven Server auf den Stagingserver](#move-custom-configuration-from-active-to-staging-server) aus.
+2. Wenn Sie eine benutzerdefinierte Konfiguration erstellt haben, die auf dem Stagingserver nicht vorhanden ist, führen Sie die Schritte unter [Verschieben einer benutzerdefinierten Konfiguration vom aktiven Server auf den Stagingserver](#move-a-custom-configuration-from-the-active-server-to-the-staging-server) aus.
 3. Wenn Sie ein Upgrade von einer früheren Version von Azure AD Connect durchführen, aktualisieren Sie den Stagingserver auf die neueste Version. Wenn Sie eine Verschiebung von Azure AD Sync durchführen, installieren Sie Azure AD Connect auf Ihrem Stagingserver.
 4. Führen Sie mit dem Synchronisierungsmodul einen vollständigen Import und eine vollständige Synchronisierung auf dem Stagingserver aus.
 5. Stellen Sie mithilfe der Schritte unter „Überprüfen“ in [Überprüfen der Konfiguration eines Servers](active-directory-aadconnectsync-operations.md#verify-the-configuration-of-a-server) sicher, dass die neue Konfiguration nicht zu unerwarteten Änderungen führt. Wenn etwas nicht den Erwartungen entspricht, korrigieren Sie es, und führen Sie die Import- und Synchronisierungsschritte so lange anhand dieser Schritte erneut aus, bis die Daten stimmen.

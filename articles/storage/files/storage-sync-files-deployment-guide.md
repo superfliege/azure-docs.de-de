@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Azure File Sync | Microsoft-Dokumentation
-description: Informationen über sämtliche Schritte zum Bereitstellen von Azure File Sync.
+title: Bereitstellen der Azure-Dateisynchronisierung | Microsoft-Dokumentation
+description: Informationen über sämtliche Schritte zum Bereitstellen der Azure-Dateisynchronisierung.
 services: storage
 author: wmgries
 ms.service: storage
@@ -8,24 +8,24 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b84de7475c54d2bc35dcc10b0bbfb0c1839c5631
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 261f8dfe41ece0cd56a4a71972e3142ef8440afb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522134"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918108"
 ---
-# <a name="deploy-azure-file-sync"></a>Bereitstellen von Azure File Sync
-Mit Azure File Sync können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
+# <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
+Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
 
 Es wird dringend empfohlen, die Anleitungen [Planning for an Azure Files deployment](storage-files-planning.md) (Planung für eine Azure Files-Bereitstellung, in englischer Sprache) und [Planung für die Bereitstellung einer Azure-Dateisynchronisierung](storage-sync-files-planning.md) zu lesen, bevor Sie die in diesem Artikel beschriebenen Schritte ausführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Ein Azure-Speicherkonto und eine Azure-Dateifreigabe in der gleichen Region, in der Sie Azure File Sync bereitstellen möchten. Weitere Informationen finden Sie unter
-    - [Region availability](storage-sync-files-planning.md#region-availability) (Regionale Verfügbarkeit, in englischer Sprache) für Azure File Sync.
+* Ein Azure-Speicherkonto und eine Azure-Dateifreigabe in der gleichen Region, in der Sie die Azure-Dateisynchronisierung bereitstellen möchten. Weitere Informationen finden Sie unter
+    - [Region availability](storage-sync-files-planning.md#region-availability) (Regionale Verfügbarkeit, in englischer Sprache) für die Azure-Dateisynchronisierung.
     - Eine Schritt-für-Schritt-Beschreibung zum Erstellen eines Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
     - Eine Schritt-für-Schritt-Beschreibung zum Erstellen einer Dateifreigabe finden Sie unter [Erstellen einer Dateifreigabe](storage-how-to-create-file-share.md).
-* Mindestens eine unterstützte Instanz von Windows Server oder Windows Server-Cluster für die Synchronisierung mit Azure File Sync. Weitere Informationen zu unterstützten Versionen von Windows Server finden Sie unter [Interoperability with Windows Server](storage-sync-files-planning.md#azure-file-sync-interoperability) (Interoperabilität mit Windows Server, in englischer Sprache).
+* Mindestens eine unterstützte Instanz von Windows Server oder Windows Server-Cluster für die Synchronisierung mit der Azure-Dateisynchronisierung. Weitere Informationen zu unterstützten Versionen von Windows Server finden Sie unter [Interoperability with Windows Server](storage-sync-files-planning.md#azure-file-sync-system-requirements-and-interoperability) (Interoperabilität mit Windows Server, in englischer Sprache).
 * Stellen Sie sicher, dass PowerShell 5.1 auf Ihrer Windows Server-Instanz installiert ist. Wenn Sie Windows Server 2012 R2 verwenden, stellen Sie sicher, dass mindestens PowerShell 5.1\* ausgeführt wird. Sie können diese Überprüfung unter Windows Server 2016 problemlos überspringen, da PowerShell 5.1 die sofort einsatzbereite Standardversion ist. Unter Windows Server 2012 R2 können Sie anhand des Werts der **PSVersion**-Eigenschaft des **$PSVersionTable**-Objekts überprüfen, ob PowerShell 5.1\* ausgeführt wird:
 
     ```PowerShell
@@ -35,11 +35,11 @@ Es wird dringend empfohlen, die Anleitungen [Planning for an Azure Files deploym
     Wenn die PSVersion niedriger als 5.1.\* ist, wie dies bei den meisten neuen Installationen von Windows Server 2012 R2 der Fall ist, können Sie problemlos ein Upgrade ausführen, indem Sie [Windows Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616) herunterladen und installieren. Das Paket, das für Windows Server 2012 R2 heruntergeladen und installiert werden sollte, lautet **Win8.1AndW2K12R2-KB\*\*\*\*\*\*\*-x64.msu**.
 
     > [!Note]  
-    > Azure File Sync unterstützt noch nicht PowerShell 6+ unter Windows Server 2012 R2 oder Windows Server 2016.
-* Das AzureRM PowerShell-Modul auf den Servern, die Sie mit Azure File Sync verwenden möchten. Weitere Informationen zum Installieren von AzureRM PowerShell-Modulen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Es wird empfohlen, immer die neueste Version der Azure PowerShell-Module zu verwenden. 
+    > Die Azure-Dateisynchronisierung unterstützt noch nicht PowerShell 6+ unter Windows Server 2012 R2 oder Windows Server 2016.
+* Das AzureRM PowerShell-Modul auf den Servern, die Sie mit der Azure-Dateisynchronisierung verwenden möchten. Weitere Informationen zum Installieren von AzureRM PowerShell-Modulen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Es wird empfohlen, immer die neueste Version der Azure PowerShell-Module zu verwenden. 
 
-## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Vorbereiten von Windows Server für die Verwendung mit Azure File Sync
-Deaktivieren Sie für jeden Server, den Sie mit Azure File Sync verwenden möchten, einschließlich aller Serverknoten in einem Failovercluster, die **Verstärkte Sicherheitskonfiguration für Internet Explorer**. Dies ist nur für die anfängliche Serverregistrierung erforderlich. Sie können sie nach dem Registrieren des Servers erneut aktivieren.
+## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Vorbereiten von Windows Server für die Verwendung mit der Azure-Dateisynchronisierung
+Deaktivieren Sie für jeden Server, den Sie mit der Azure-Dateisynchronisierung verwenden möchten, einschließlich aller Serverknoten in einem Failovercluster, die **Verstärkte Sicherheitskonfiguration für Internet Explorer**. Dies ist nur für die anfängliche Serverregistrierung erforderlich. Sie können sie nach dem Registrieren des Servers erneut aktivieren.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 1. Öffnen Sie den Server-Manager.
@@ -71,25 +71,25 @@ Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>Installieren des Azure-Dateisynchronisierungs-Agents
-Der Azure File Sync-Agent ist ein herunterladbares Paket, mit dem ein Windows Server-Computer mit einer Azure-Dateifreigabe synchronisiert werden kann. 
+Der Azure-Dateisynchronisierungs-Agent ist ein herunterladbares Paket, mit dem ein Windows Server-Computer mit einer Azure-Dateifreigabe synchronisiert werden kann. 
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-Sie können den Agent aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) herunterladen. Doppelklicken Sie nach Abschluss des Downloads auf das MSI-Paket, um die Installation des Azure File Sync-Agents zu starten.
+Sie können den Agent aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) herunterladen. Doppelklicken Sie nach Abschluss des Downloads auf das MSI-Paket, um die Installation des Azure-Dateisynchronisierungs-Agents zu starten.
 
 > [!Important]  
-> Wenn Sie Azure File Sync mit einem Failovercluster verwenden möchten, muss der Azure File Sync-Agent auf jedem Knoten im Cluster installiert werden. Jeder Knoten im Cluster muss registriert werden, um mit der Azure-Dateisynchronisierung verwendet werden zu können.
+> Wenn Sie die Azure-Dateisynchronisierung mit einem Failovercluster verwenden möchten, muss der Azure-Dateisynchronisierungs-Agent auf jedem Knoten im Cluster installiert werden. Jeder Knoten im Cluster muss registriert werden, um mit der Azure-Dateisynchronisierung verwendet werden zu können.
 
 Folgendes Vorgehen wird empfohlen:
 - Übernehmen Sie den Standardinstallationspfad („C:\Programme\Microsoft Files\Azure\StorageSyncAgent“), um die Problembehandlung und Serverwartung zu vereinfachen.
-- Aktivieren Sie Microsoft Update, um Azure File Sync auf dem aktuellen Stand zu halten. Alle Updates des Azure File Sync-Agents, einschließlich Funktionsupdates und Hotfixe, erfolgen über Microsoft Update. Es wird empfohlen, das neueste Update von Azure File Sync zu installieren. Weitere Informationen finden Sie unter [Updaterichtlinie für Azure File Sync](storage-sync-files-planning.md#azure-file-sync-agent-update-policy).
+- Aktivieren Sie Microsoft Update, um die Azure-Dateisynchronisierung auf dem aktuellen Stand zu halten. Alle Updates des Azure-Dateisynchronisierungs-Agents, einschließlich Funktionsupdates und Hotfixe, erfolgen über Microsoft Update. Es wird empfohlen, das neueste Update der Azure-Dateisynchronisierung zu installieren. Weitere Informationen finden Sie unter [Updaterichtlinie für Azure-Dateisynchronisierung](storage-sync-files-planning.md#azure-file-sync-agent-update-policy).
 
-Wenn die Installation des Azure File Sync-Agents abgeschlossen ist, wird automatisch die Benutzeroberfläche der Serverregistrierung geöffnet. Vor der Registrierung benötigen Sie einen Speichersynchronisierungsdienst. Wie Sie einen Speichersynchronisierungsdienst erstellen, erfahren Sie im nächsten Abschnitt.
+Wenn die Installation des Azure-Dateisynchronisierungs-Agents abgeschlossen ist, wird automatisch die Benutzeroberfläche der Serverregistrierung geöffnet. Vor der Registrierung benötigen Sie einen Speichersynchronisierungsdienst. Wie Sie einen Speichersynchronisierungsdienst erstellen, erfahren Sie im nächsten Abschnitt.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-Führen Sie den folgenden PowerShell-Code aus, um die entsprechende Version des Azure File Sync-Agents für Ihr Betriebssystem herunterzuladen und auf Ihrem System zu installieren.
+Führen Sie den folgenden PowerShell-Code aus, um die entsprechende Version des Azure-Dateisynchronisierungs-Agents für Ihr Betriebssystem herunterzuladen und auf Ihrem System zu installieren.
 
 > [!Important]  
-> Wenn Sie Azure File Sync mit einem Failovercluster verwenden möchten, muss der Azure File Sync-Agent auf jedem Knoten im Cluster installiert werden. Jeder Knoten im Cluster muss registriert werden, um mit der Azure-Dateisynchronisierung verwendet werden zu können.
+> Wenn Sie die Azure-Dateisynchronisierung mit einem Failovercluster verwenden möchten, muss der Azure-Dateisynchronisierungs-Agent auf jedem Knoten im Cluster installiert werden. Jeder Knoten im Cluster muss registriert werden, um mit der Azure-Dateisynchronisierung verwendet werden zu können.
 
 ```PowerShell
 # Gather the OS version
@@ -126,28 +126,28 @@ Remove-Item -Path ".\StorageSyncAgent.exe", ".\afstemp" -Recurse -Force
 ---
 
 ## <a name="deploy-the-storage-sync-service"></a>Bereitstellen des Speichersynchronisierungsdiensts 
-Die Bereitstellung von Azure File Sync beginnt mit der Platzierung einer **Speichersynchronisierungsdienst**-Ressource in einer Ressourcengruppe Ihres ausgewählten Abonnements. Sie sollten von diesen Ressourcen so wenig wie möglich bereitstellen. Sie schaffen eine Vertrauensstellung zwischen Ihren Servern und dieser Ressource, und ein Server kann nur bei einem Speichersynchronisierungsdienst registriert werden. Darum sollten Sie so viele Speichersynchronisierungsdienste bereitstellen, wie Sie benötigen, um Gruppen von Servern zu trennen. Bedenken Sie, dass Server aus verschiedenen Speichersynchronisierungsdiensten nicht miteinander synchronisiert werden können.
+Die Bereitstellung der Azure-Dateisynchronisierung beginnt mit der Platzierung einer **Speichersynchronisierungsdienst**-Ressource in einer Ressourcengruppe Ihres ausgewählten Abonnements. Sie sollten von diesen Ressourcen so wenig wie möglich bereitstellen. Sie schaffen eine Vertrauensstellung zwischen Ihren Servern und dieser Ressource, und ein Server kann nur bei einem Speichersynchronisierungsdienst registriert werden. Darum sollten Sie so viele Speichersynchronisierungsdienste bereitstellen, wie Sie benötigen, um Gruppen von Servern zu trennen. Bedenken Sie, dass Server aus verschiedenen Speichersynchronisierungsdiensten nicht miteinander synchronisiert werden können.
 
 > [!Note]
 > Der Speichersynchronisierungsdienst hat Zugriffsberechtigungen aus dem Abonnement und der Ressourcengruppe geerbt, wo er bereitgestellt worden ist. Sie sollten sorgfältig überprüfen, wer darauf zugreifen darf. Entitäten mit Schreibzugriff können die Synchronisierung neuer Sätze von Dateien aus Server starten, die bei diesem Speichersynchronisierungsdienst registriert sind, und bewirken, dass Daten in Azure-Speicher übertragen werden, auf den sie zugreifen können.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-Navigieren Sie zum Bereitstellen eines Speichersynchronisierungsdiensts zum [Azure-Portal](https://portal.azure.com/), klicken Sie auf *Neu*, und suchen Sie dann nach „Azure File Sync“. Wählen Sie in den Suchergebnissen **Azure File Sync** aus, und klicken Sie auf **Erstellen**, um die Registerkarte **Speichersynchronisierung bereitstellen** zu öffnen.
+Navigieren Sie zum Bereitstellen eines Speichersynchronisierungsdiensts zum [Azure-Portal](https://portal.azure.com/), klicken Sie auf *Neu*, und suchen Sie dann nach „Azure-Dateisynchronisierung“. Wählen Sie in den Suchergebnissen **Azure-Dateisynchronisierung** aus, und klicken Sie auf **Erstellen**, um die Registerkarte **Speichersynchronisierung bereitstellen** zu öffnen.
 
 Geben Sie in dem neuen Bereich, der geöffnet wird, Folgendes ein:
 
 - **Name**: Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.
 - **Abonnement**: Das Abonnement, in dem Sie den Speichersynchronisierungsdienst erstellen möchten. Abhängig von der Konfigurationsstrategie Ihrer Organisation haben Sie möglicherweise Zugriff auf ein oder mehrere Abonnements. Die Abrechnung für die einzelnen Clouddienste (z.B. Azure Files) erfolgt innerhalb eines Azure-Abonnements.
-- **Ressourcengruppe**: Eine Ressourcengruppe ist eine logische Gruppe von Azure-Ressourcen, z.B. ein Speicherkonto oder Speichersynchronisierungsdienst. Sie können für Azure File Sync eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen. (Wir empfehlen, Ressourcengruppen als Container zu verwenden, um Ressourcen für Ihre Organisation logisch voneinander zu trennen, etwa indem Sie alle Personalressourcen oder alle Ressourcen für ein bestimmtes Projekt gruppieren.)
-- **Standort**: Die Region, in der Sie Azure File Sync bereitstellen möchten. In dieser Liste sind nur die unterstützten Regionen verfügbar.
+- **Ressourcengruppe**: Eine Ressourcengruppe ist eine logische Gruppe von Azure-Ressourcen, z.B. ein Speicherkonto oder Speichersynchronisierungsdienst. Sie können für die Azure-Dateisynchronisierung eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen. (Wir empfehlen, Ressourcengruppen als Container zu verwenden, um Ressourcen für Ihre Organisation logisch voneinander zu trennen, etwa indem Sie alle Personalressourcen oder alle Ressourcen für ein bestimmtes Projekt gruppieren.)
+- **Standort**: Die Region, in der Sie die Azure-Dateisynchronisierung bereitstellen möchten. In dieser Liste sind nur die unterstützten Regionen verfügbar.
 
 Wenn Sie fertig sind, wählen Sie **Erstellen** aus, um den Speichersynchronisierungsdienst bereitzustellen.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
-Vor der Interaktion mit den Cmdlets zur Azure File Sync-Verwaltung müssen Sie eine DLL-Datei importieren und einen Azure File Sync-Verwaltungskontext erstellen. Dies ist erforderlich, da die Cmdlets zur Azure File Sync-Verwaltung noch nicht Teil des AzureRM PowerShell-Moduls sind.
+Vor der Interaktion mit den Cmdlets zur Verwaltung der Azure-Dateisynchronisierung müssen Sie eine DLL-Datei importieren und einen Azure-Dateisynchronisierungs-Verwaltungskontext erstellen. Dies ist erforderlich, da die Cmdlets zur Verwaltung der Azure-Dateisynchronisierung noch nicht Teil des AzureRM PowerShell-Moduls sind.
 
 > [!Note]  
-> Das StorageSync.Management.PowerShell.Cmdlets.dll-Paket, das die Cmdlets zur Azure File Sync-Verwaltung enthält, enthält (absichtlich) ein Cmdlet mit einem nicht genehmigten Verb (`Login`). Der Name `Login-AzureRmStorageSync` wurde gewählt, weil er dem `Login-AzureRmAccount`-Cmdlet-Alias im AzureRM PowerShell-Modul entspricht. Diese Fehlermeldung (und das Cmdlet) werden entfernt, wenn der Azure File Sync-Agent dem AzureRM PowerShell-Modul hinzugefügt wird.
+> Das Paket „StorageSync.Management.PowerShell.Cmdlets.dll“, das die Cmdlets zur Verwaltung der Azure-Dateisynchronisierung enthält, enthält (absichtlich) ein Cmdlet mit einem nicht genehmigten Verb (`Login`). Der Name `Login-AzureRmStorageSync` wurde gewählt, weil er dem `Login-AzureRmAccount`-Cmdlet-Alias im AzureRM PowerShell-Modul entspricht. Diese Fehlermeldung (und das Cmdlet) werden entfernt, wenn der Azure-Dateisynchronisierungs-Agent dem AzureRM PowerShell-Modul hinzugefügt wird.
 
 ```PowerShell
 $acctInfo = Login-AzureRmAccount
@@ -207,7 +207,7 @@ Login-AzureRmStorageSync `
     -Location $region
 ```
 
-Nach der Erstellung des Azure File Sync-Kontexts mit dem `Login-AzureRmStorageSync`-Cmdlet können Sie den Speichersynchronisierungsdienst erstellen. Achten Sie darauf, dass Sie `<my-storage-sync-service>` mit dem gewünschten Namen Ihres Speichersynchronisierungsdiensts ersetzen.
+Nach der Erstellung des Kontexts der Azure-Dateisynchronisierung mit dem `Login-AzureRmStorageSync`-Cmdlet können Sie den Speichersynchronisierungsdienst erstellen. Achten Sie darauf, dass Sie `<my-storage-sync-service>` mit dem gewünschten Namen Ihres Speichersynchronisierungsdiensts ersetzen.
 
 ```PowerShell
 $storageSyncName = "<my-storage-sync-service>"
@@ -223,7 +223,7 @@ Durch das Registrieren des Windows-Servers bei einem Speichersynchronisierungsdi
 > Die Serverregistrierung verwendet Ihre Azure-Anmeldeinformationen zum Erstellen einer Vertrauensstellung zwischen dem Speichersynchronisierungsdienst und Ihrer Windows Server-Instanz, doch anschließend erstellt der Server seine eigene Identität, die gültig ist, solange der Server registriert bleibt und das aktuelle Shared Access Signature-Token (Speicher-SAS) gültig ist, und verwendet sie. Sobald die Registrierung des Servers aufgehoben ist, kann kein neues SAS-Token an den Server ausgegeben werden, sodass der Server nicht mehr auf Ihre Azure-Dateifreigaben zugreifen kann und damit jede Synchronisierung beendet wird.
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
-Die Benutzeroberfläche der Serverregistrierung sollte sich nach der Installation des Azure File Sync-Agents automatisch öffnen. Wenn das nicht der Fall ist, können Sie sie an Ihrem Dateispeicherort manuell öffnen: „C:\Programme\Azure\StorageSyncAgent\ServerRegistration.exe“. Wenn die Benutzeroberfläche der Serverregistrierung geöffnet ist, wählen Sie **Anmelden** aus, um mit der Registrierung zu beginnen.
+Die Benutzeroberfläche der Serverregistrierung sollte sich nach der Installation des Azure-Dateisynchronisierungs-Agents automatisch öffnen. Wenn das nicht der Fall ist, können Sie sie an Ihrem Dateispeicherort manuell öffnen: „C:\Programme\Azure\StorageSyncAgent\ServerRegistration.exe“. Wenn die Benutzeroberfläche der Serverregistrierung geöffnet ist, wählen Sie **Anmelden** aus, um mit der Registrierung zu beginnen.
 
 Nach der Anmeldung werden die folgenden Informationen abgefragt:
 
@@ -248,7 +248,7 @@ Eine Synchronisierungsgruppe definiert die Synchronisierungstopologie für einen
 Ein Cloudendpunkt ist ein Zeiger auf eine Azure-Dateifreigabe. Alle Serverendpunkte werden mit einem Cloudendpunkt synchronisiert, sodass der Cloudendpunkt zum Hub wird. Das Speicherkonto für die Azure-Dateifreigabe muss sich in der gleichen Region wie der Speichersynchronisierungsdienst befinden. Mit einer Ausnahme wird die gesamte Azure-Dateifreigabe synchronisiert: Ein besonderer Ordner, vergleichbar mit dem versteckten Ordner „System Volume Information“ auf einem NTFS-Volume, wird bereitgestellt. Dieses Verzeichnis heißt „.SystemShareInformation“. Er enthält wichtige Synchronisierungsmetadaten, die nicht mit anderen Endpunkten synchronisiert werden. Sie dürfen ihn weder verwenden noch löschen!
 
 > [!Important]  
-> Sie können Änderungen an jedem Cloudendpunkt oder Serverendpunkt in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, müssen Änderungen zunächst von einem Azure File Sync-Auftrag zum Erkennen von Änderungen entdeckt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
+> Sie können Änderungen an jedem Cloudendpunkt oder Serverendpunkt in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, müssen Änderungen zunächst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen entdeckt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
 
 # <a name="portaltabportal"></a>[Portal](#tab/portal)
 Um eine Synchronisierungsgruppe zu erstellen, navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem Speichersynchronisierungsdienst, und wählen Sie dann **+ Synchronisierungsgruppe** aus:
@@ -363,18 +363,18 @@ else {
 
 ---
 
-## <a name="onboarding-with-azure-file-sync"></a>Onboarding bei Azure File Sync
-Die empfohlenen Schritte zum erstmaligen Onboarding bei Azure File Sync ohne Ausfallzeiten unter Beibehaltung der vollen Dateitreue und Zugriffssteuerungsliste (ACL) sind wie folgt:
+## <a name="onboarding-with-azure-file-sync"></a>Onboarding bei der Azure-Dateisynchronisierung
+Die empfohlenen Schritte zum erstmaligen Onboarding bei der Azure-Dateisynchronisierung ohne Ausfallzeiten unter Beibehaltung der vollen Dateitreue und Zugriffssteuerungsliste (ACL) sind wie folgt:
  
 1. Stellen Sie einen Speichersynchronisierungsdienst bereit.
 2. Erstellen Sie eine Synchronisierungsgruppe.
-3. Installieren Sie den Azure File Sync-Agent auf dem Server mit dem vollständigen Dataset.
+3. Installieren Sie den Azure-Dateisynchronisierungs-Agent auf dem Server mit dem vollständigen Dataset.
 4. Registrieren Sie diesen Server, und erstellen Sie einen Serverendpunkt in der Freigabe. 
 5. Lassen Sie die Synchronisierung den vollständigen Upload in die Azure-Dateifreigabe (den Cloudendpunkt) durchführen.  
-6. Installieren Sie nach Abschluss des anfänglichen Uploads den Azure File Sync-Agent auf allen verbleibenden Servern.
+6. Installieren Sie nach Abschluss des anfänglichen Uploads den Azure-Dateisynchronisierungs-Agent auf allen verbleibenden Servern.
 7. Erstellen Sie auf den verbleibenden Servern neue Dateifreigaben.
 8. Erstellen Sie nach Wunsch Serverendpunkte in neuen Dateifreigaben mit der Cloudtieringrichtlinie. (Für diesen Schritt muss zusätzlicher Speicherplatz für das anfängliche Setup zur Verfügung stehen.)
-9. Lassen Sie den Azure File Sync-Agent eine schnelle Wiederherstellung des gesamten Namespace ohne die eigentliche Datenübertragung durchführen. Nach der vollständigen Synchronisierung des Namespace füllt das Synchronisierungsmodul den lokalen Speicherplatz basierend auf der Cloudtieringrichtlinie für den Serverendpunkt auf. 
+9. Lassen Sie den Azure-Dateisynchronisierungs-Agent eine schnelle Wiederherstellung des gesamten Namespace ohne die eigentliche Datenübertragung durchführen. Nach der vollständigen Synchronisierung des Namespace füllt das Synchronisierungsmodul den lokalen Speicherplatz basierend auf der Cloudtieringrichtlinie für den Serverendpunkt auf. 
 10. Vergewissern Sie sich, dass die Synchronisierung abgeschlossen wird, und testen Sie Ihre Topologie bei Bedarf. 
 11. Leiten Sie Benutzer und Anwendungen zu dieser neuen Freigabe um.
 12. Optional können Sie duplizierte Freigaben auf den Servern löschen.
@@ -383,31 +383,31 @@ Wenn Sie nicht über zusätzlichen Speicherplatz für das erste Onboarding verf�
  
 1. Stellen Sie sicher, dass sich die Daten auf den Servern während des Onboardingprozesses nicht ändern können.
 2. Führen Sie auf den Azure-Dateifreigaben vorab ein Seeding mit den Serverdaten mithilfe eines Datenübertragungstools über den SBM durch, wie z.B. Robocopy oder direkte SMB-Kopie. Da AzCopy keine Daten über den SMB hochlädt, kann dieses Tool nicht für das Vorabseeding verwendet werden.
-3. Erstellen Sie eine Azure File Sync-Topologie mit den gewünschten Serverendpunkten, die auf die vorhandenen Freigaben zeigen.
+3. Erstellen Sie eine Azure-Dateisynchronisierungstopologie mit den gewünschten Serverendpunkten, die auf die vorhandenen Freigaben zeigen.
 4. Lassen Sie die Synchronisierung den Abstimmungsprozess auf allen Endpunkten abschließen. 
 5. Sobald die Abstimmung abgeschlossen ist, können Sie Freigaben für Änderungen öffnen.
  
 Beachten Sie, dass der Ansatz des Vorabseedings derzeit einige Einschränkungen aufweist: 
 - Vollständige Originaltreue für Dateien wird nicht beibehalten. Dateien verlieren beispielsweise Zugriffssteuerungslisten und Zeitstempel.
 - Datenänderungen auf dem Server, bevor die Synchronisierungstopologie vollständig in Betrieb ist, können zu Konflikten auf den Serverendpunkten führen.  
-- Nachdem der Cloudendpunkt erstellt wurde, führt Azure File Sync einen Prozess aus, um die Dateien in der Cloud zu erkennen, bevor die anfängliche Synchronisierung gestartet wird. Die zum Abschluss dieses Prozesses benötigte Zeit variiert je nach den verschiedenen Faktoren wie Netzwerkgeschwindigkeit, verfügbare Bandbreite und Anzahl der Dateien und Ordner. Grob geschätzt schafft der Erkennungsprozess in der Vorschauversion ca. 10 Dateien pro Sekunde. Selbst wenn das Vorabseeding schnell erfolgt, kann die Gesamtzeit bis zur Inbetriebnahme eines voll funktionsfähigen Systems erheblich länger sein, wenn für die Daten in der Cloud vorab ein Seeding durchgeführt wird.
+- Nachdem der Cloudendpunkt erstellt wurde, führt die Azure-Dateisynchronisierung einen Prozess aus, um die Dateien in der Cloud zu erkennen, bevor die anfängliche Synchronisierung gestartet wird. Die zum Abschluss dieses Prozesses benötigte Zeit variiert je nach den verschiedenen Faktoren wie Netzwerkgeschwindigkeit, verfügbare Bandbreite und Anzahl der Dateien und Ordner. Grob geschätzt schafft der Erkennungsprozess in der Vorschauversion ca. 10 Dateien pro Sekunde. Selbst wenn das Vorabseeding schnell erfolgt, kann die Gesamtzeit bis zur Inbetriebnahme eines voll funktionsfähigen Systems erheblich länger sein, wenn für die Daten in der Cloud vorab ein Seeding durchgeführt wird.
 
-## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrieren einer DFS-R-Bereitstellung (DFS-Replikation) zu Azure File Sync
-So migrieren eine DFS-R-Bereitstellung zu Azure File Sync
+## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrieren einer DFS-R-Bereitstellung (DFS-Replikation) zur Azure-Dateisynchronisierung
+So migrieren eine DFS-R-Bereitstellung zur Azure-Dateisynchronisierung
 
 1. Erstellen Sie eine Synchronisierungsgruppe, um die DFS-R-Topologie darzustellen, die Sie ersetzen möchten.
-2. Beginnen Sie auf dem Server, der den vollständigen Satz von Daten in der DFS-R-Topologie, die migriert werden soll, enthält. Installieren Sie auf diesem Server Azure File Sync.
+2. Beginnen Sie auf dem Server, der den vollständigen Satz von Daten in der DFS-R-Topologie, die migriert werden soll, enthält. Installieren Sie auf diesem Server die Azure-Dateisynchronisierung.
 3. Registrieren Sie diesen Server, und erstellen Sie einen Serverendpunkt, zu dem der erste Server migriert werden soll. Aktivieren Sie nicht das Cloudtiering.
 4. Lassen Sie alle Daten mit der Azure-Dateifreigabe (Cloudendpunkt) synchronisieren.
-5. Installieren und registrieren Sie den Azure File Sync-Agent auf jedem der verbleibenden DFS-R-Server.
+5. Installieren und registrieren Sie den Azure-Dateisynchronisierungs-Agent auf jedem der verbleibenden DFS-R-Server.
 6. Deaktivieren Sie DFS-R. 
 7. Erstellen Sie einen Serverendpunkt auf jedem DFS-R-Server. Aktivieren Sie nicht das Cloudtiering.
 8. Vergewissern Sie sich, dass die Synchronisierung abgeschlossen wird, und testen Sie Ihre Topologie bei Bedarf.
 9. Setzen Sie DFS-R außer Kraft.
 10. Cloudtiering kann jetzt bei Bedarf auf allen Serverendpunkten aktiviert werden.
 
-Weitere Informationen finden Sie unter [Zusammenarbeit zwischen Azure File Sync und DFS (verteiltes Dateisystem)](storage-sync-files-planning.md#distributed-file-system-dfs).
+Weitere Informationen finden Sie unter [Zusammenarbeit zwischen der Azure-Dateisynchronisierung und DFS (verteiltes Dateisystem)](storage-sync-files-planning.md#distributed-file-system-dfs).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Hinzufügen/Entfernen eines Azure File Sync-Serverendpunkts](storage-sync-files-server-endpoint.md)
-- [Registrieren/Aufheben der Registrierung eines Servers bei Azure File Sync](storage-sync-files-server-registration.md)
+- [Hinzufügen/Entfernen eines Serverendpunkts für die Azure-Dateisynchronisierung](storage-sync-files-server-endpoint.md)
+- [Registrieren/Aufheben der Registrierung eines Servers bei der Azure-Dateisynchronisierung](storage-sync-files-server-registration.md)

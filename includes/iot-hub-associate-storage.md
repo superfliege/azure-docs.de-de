@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/20/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 892dd050829dce242035e2b875ea43ed13910d4a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 8aa4695ea1175fe9d558e02bae661c9610123299
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246073"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086404"
 ---
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Zuweisen eines Azure Storage-Kontos zu IoT Hub
 
@@ -21,4 +21,4 @@ Da von der simulierten Geräte-App eine Datei in ein Blob hochgeladen wird, müs
 
 Befolgen Sie die Anweisungen unter [Konfigurieren von Dateiuploads über das Azure-Portal](../articles/iot-hub/iot-hub-configure-file-upload.md), um Ihrem IoT Hub ein Azure Storage-Konto zuzuordnen. Stellen Sie sicher, dass Ihrem IoT Hub ein Blobcontainer zugeordnet ist und die Dateibenachrichtigungen aktiviert sind.
 
-![Aktivieren von Dateibenachrichtigungen im Portal](media/iot-hub-associate-storage/enable-file-notifications.png)
+![Aktivieren von Dateibenachrichtigungen im Portal](./media/iot-hub-associate-storage/enable-file-notifications.png)

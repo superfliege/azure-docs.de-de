@@ -9,12 +9,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5542c1c0eee5e4c7c85c566908dc8999b118f06e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: f5b916ba3b6b044f12b84958b2eb69f44e2f8136
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032435"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888140"
 ---
 # <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Unterstützte Sprachen in der Microsoft Translator-Text-API
 
@@ -108,7 +108,7 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 | Kannada | kn | Kannada | --> | Lateinisch |
 | Malaiisch | ml | Malayalam | --> | Lateinisch |
 | Marathi | mr | Devanagari | --> | Lateinisch |
-| Oriya | or | Oriya | <--> | Lateinisch |
+| Oriya | oder | Oriya | <--> | Lateinisch |
 | Pandschabi | pa | Gurmukhi | <--> | Lateinisch  |
 | Serbisch (Kyrillisch) | sr-Cyrl | Kyrillisch  | --> | Lateinisch |
 | Serbisch (Lateinisch) | sr-Latn | Lateinisch | --> | Kyrillisch |
@@ -211,8 +211,8 @@ Die folgenden Sprachen können von der „Detect“-Methode erkannt werden. Mith
 | Italienisch |
 | Japanisch |
 | Koreanisch |
-| Kurdisch (Arabisch) |
-| Kurdisch (Lateinisch) |
+| Kurdisch (arabisch) |
+| Kurdisch (lateinisch) |
 | Lateinisch |
 | Lettisch |
 | Litauisch |
@@ -220,7 +220,7 @@ Die folgenden Sprachen können von der „Detect“-Methode erkannt werden. Mith
 | Malaiisch |
 | Maltesisch |
 | Norwegisch |
-| Norwegisch Nynorsk |
+| Norwegisch (Nynorsk) |
 | Paschtu |
 | Persisch |
 | Polnisch |
@@ -240,8 +240,8 @@ Die folgenden Sprachen können von der „Detect“-Methode erkannt werden. Mith
 | Türkisch |
 | Ukrainisch |
 | Urdu |
-| Usbekisch (Kyrillisch) |
-| Usbekisch (Lateinisch) |
+| Usbekisch (kyrillisch) |
+| Usbekisch (lateinisch) |
 | Vietnamesisch |
 | Walisisch |
 | Jiddisch |

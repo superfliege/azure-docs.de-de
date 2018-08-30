@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 397a6aaf7dc27adfa0fc0e722b8a2be5cc1d75f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1ffc80994244fc44e3cd23cbb05b14e6f878ddb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986255"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125801"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Problembehandlung bei HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ in Ihren Azure-Web-Apps
 „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“ sind häufige Fehler in Ihrer Web-App, die im [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)gehostet wird. Dieser Artikel hilft Ihnen, diese Fehler zu beheben.
@@ -45,7 +45,7 @@ Die Problembehandlung lässt sich in diesem Fall in drei unterschiedliche Aufgab
 2. [Sammeln von Daten](#collect)
 3. [Minimieren der Auswirkungen des Problems](#mitigate)
 
-[App Service-Web-Apps](/services/app-service/web/) bietet Ihnen bei jedem Schritt verschiedene Optionen.
+[App Service-Web-Apps](app-service-web-overview.md) bietet Ihnen bei jedem Schritt verschiedene Optionen.
 
 <a name="observe" />
 
@@ -66,7 +66,7 @@ Folgende Metriken können Sie z. B. für Ihre Web-App überwachen:
 
 ![Überwachen der Web-App bei Behebung der HTTP-Fehler „502 Ungültiges Gateway“ und „503 Dienst nicht verfügbar“](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 * [Überwachen von Web-Apps in Azure App Service](web-sites-monitor.md)
 * [Empfangen von Warnbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)

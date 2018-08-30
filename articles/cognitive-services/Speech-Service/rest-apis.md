@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9991e0a1fc54e6aa4a99b8bfbd93abdfe974b01b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283068"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122102"
 ---
 # <a name="speech-service-rest-apis"></a>REST-APIs des Spracherkennungsdiensts
 
@@ -23,7 +23,7 @@ Die REST-APIs des vereinheitlichten Spracherkennungsdiensts ähneln den APIs, di
 
 In der Spracherkennungs-API unterscheiden sich nur die verwendeten Endpunkte von der Spracherkennungs-API des vorhergegangenen Sprachdiensts. Die neuen Endpunkte sind in der Tabelle unten dargestellt. Verwenden Sie den Endpunkt, der die beste Übereinstimmung mit Ihrer Abonnementregion aufweist.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 Die Spracherkennungs-API ist ansonsten der [REST-API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) für die vorhergegangene Sprach-API ähnlich.
 
@@ -54,7 +54,7 @@ en-US  | Englisch (USA) | Male   | Microsoft Server Speech Text to Speech Voice 
 
 Die folgende Aufstellung enthält die REST-Endpunkte für die Text-to-Speech-API des vereinheitlichten Spracherkennungsdiensts. Verwenden Sie den Endpunkt für Ihre Abonnementregion.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 Beachten Sie diese Unterschiede bei der Verwendung der [REST-API-Dokumentation](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) der vorhergegangenen Sprach-API.
 
@@ -62,7 +62,7 @@ Beachten Sie diese Unterschiede bei der Verwendung der [REST-API-Dokumentation](
 
 Für das Senden einer Anforderung an die REST-API des Spracherkennungsdiensts ist ein Zugriffstoken erforderlich. Sie erhalten ein Token, indem Sie einem regionalen `issueToken`-Endpunkt des Spracherkennungsdiensts Ihren Abonnementschlüssel zur Verfügung stellen. Verwenden Sie den Endpunkt für Ihre Abonnementregion.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 Jedes Zugriffstoken ist 10 Minuten lang gültig. Sie können jederzeit ein neues Token anfordern – wenn Sie möchten auch vor jeder Anforderung der Sprach-REST-API. Um Netzwerkverkehr und Latenz zu minimieren, empfiehlt es sich jedoch, neun Minuten lang das gleiche Token zu verwenden.
 
@@ -265,6 +265,6 @@ Achten Sie wie auch in den anderen Beispielen darauf, dass der Wert von `FetchTo
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
-- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
 

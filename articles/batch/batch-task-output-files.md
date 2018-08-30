@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
-ms.openlocfilehash: 69990ab7852999dca2b586fd28ef74c44cc283fd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: f562a6647cadbde6c46eba87b180dfb4cbb3fb90
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116980"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126311"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 
@@ -34,7 +34,7 @@ Azure Batch bietet mehr als eine Möglichkeit zum Beibehalten der Taskausgabe. D
 - Sie möchten Code schreiben, um die Taskausgabe von innerhalb Ihrer Clientanwendung beizubehalten, ohne die Anwendung ändern zu müssen, die der Task ausführt.
 - Sie möchten die Ausgabe von Batch-Tasks und Auftrags-Manager-Aufgaben in Pools beibehalten, die mit den Konfigurationen des virtuellen Computers erstellt wurden.
 - Sie möchten die Ausgabe in einem Azure Storage-Container mit einem beliebigen Namen beibehalten.
-- Sie möchten die Ausgabe in einem Azure Storage-Container beibehalten, der auf Grundlage des [Batch-Dateikonventionenstandards](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) benannt wurde. 
+- Sie möchten die Ausgabe in einem Azure Storage-Container beibehalten, der auf Grundlage des [Batch-Dateikonventionenstandards](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) benannt wurde. 
 
 Wenn Ihr Szenario sich von den oben aufgeführten unterscheidet, müssen Sie möglicherweise einen anderen Ansatz in Betracht ziehen. Die Batch-Dienst-API unterstützt beispielsweise derzeit kein Streaming von Ausgaben an Azure Storage während der Ausführung des Tasks. Um die Ausgabe zu streamen, sollten Sie die Bibliothek für Batch-Dateikonventionen für .NET verwenden. Für andere Sprachen müssen Sie Ihre eigene Lösung implementieren. Weitere Informationen zu anderen Optionen für das Beibehalten der Taskausgabe finden Sie unter [Persistente Aufträge und Aufgabenausgabe in Azure Storage](batch-task-output.md). 
 
@@ -164,7 +164,7 @@ Die Datei `fileuploadout.txt` protokolliert den Uploadvorgang. Sie können diese
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>Verwenden der Batch-Dienst-API mit dem Batch-Dateikonventionenstandard
 
-Wenn Sie die Taskausgabe mit der Batch-Dienst-API beibehalten, können Sie Ihren Zielcontainern und Blobs einen beliebigen Namen geben. Sie können sie auch in Übereinstimmung mit dem [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) benennen. Der Dateikonventionenstandard bestimmt die Namen des Zielcontainers und des Blobs in Azure Storage für eine gegebene Ausgabedatei, die auf den Namen des Auftrags und der Aufgabe basiert. Wenn sie den Dateikonventionenstandard zum Benennen von Ausgabedateien verwenden, sind Ihre Ausgabedateien zur Anzeige im [Azure-Portal](https://portal.azure.com) verfügbar.
+Wenn Sie die Taskausgabe mit der Batch-Dienst-API beibehalten, können Sie Ihren Zielcontainern und Blobs einen beliebigen Namen geben. Sie können sie auch in Übereinstimmung mit dem [Batch-Dateikonventionenstandard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) benennen. Der Dateikonventionenstandard bestimmt die Namen des Zielcontainers und des Blobs in Azure Storage für eine gegebene Ausgabedatei, die auf den Namen des Auftrags und der Aufgabe basiert. Wenn sie den Dateikonventionenstandard zum Benennen von Ausgabedateien verwenden, sind Ihre Ausgabedateien zur Anzeige im [Azure-Portal](https://portal.azure.com) verfügbar.
 
 Wenn Sie in C# entwickeln, können Sie die Methoden verwenden, die in der [Bibliothek für Batch-Dateikonventionen für .NET](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files) integriert sind. Diese Bibliothek erstellt Container und Blobpfade mit ordnungsgemäßen Namen für Sie. Sie können die API beispielsweise aufrufen, um den korrekten Namen für den Container auf Grundlage des Auftragsnamens abzurufen:
 
