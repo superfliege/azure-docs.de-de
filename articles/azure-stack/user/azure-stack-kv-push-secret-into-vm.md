@@ -3,7 +3,7 @@ title: Bereitstellen eines virtuellen Computers mit einem sicher gespeicherten Z
 description: Hier erfahren Sie, wie Sie einen virtuellen Computer bereitstellen und mithilfe eines Schlüsseltresors in Azure Stack ein Zertifikat per Push auf ihn übertragen.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: 05278ee4b0dc1f2c22f40bfcff4f9d7342017c0f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 08/15/2018
+ms.author: sethm
+ms.openlocfilehash: aef706d18d558f5fe321735c7f93361a5ef50606
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37108755"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43050423"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Erstellen eines virtuellen Computers und Installieren eines Zertifikats, das aus einem Azure Stack-Schlüsseltresor abgerufen wurde
 

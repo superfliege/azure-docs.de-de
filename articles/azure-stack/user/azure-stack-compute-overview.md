@@ -2,19 +2,19 @@
 title: Einführung in virtuelle Azure Stack-Computer
 description: Erfahren Sie mehr über virtuelle Azure Stack-Computer.
 services: azure-stack
-author: mattbriggs
+author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 05/21/2018
-ms.author: mabrigg
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: 967fcb86c1bf0c85517bc13c2066ed32e8fa28d9
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604130"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43050414"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Einführung in virtuelle Azure Stack-Computer
 
@@ -98,11 +98,11 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 
 |Ressource|Erforderlich|BESCHREIBUNG|
 |---------|---------|---------|
-|Ressourcengruppe|Ja|Der virtuelle Computer muss sich in einer Ressourcengruppe befinden.|
-|Speicherkonto|Ja|Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten.|
-|Virtuelles Netzwerk|Ja|Der virtuelle Computer muss einem virtuellen Netzwerk angehören.|
+|Ressourcengruppe|JA|Der virtuelle Computer muss sich in einer Ressourcengruppe befinden.|
+|Speicherkonto|JA|Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten.|
+|Virtuelles Netzwerk|JA|Der virtuelle Computer muss einem virtuellen Netzwerk angehören.|
 |Öffentliche IP-Adresse|Nein |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden.|
-|Netzwerkschnittstelle|Ja|Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk.|
+|Netzwerkschnittstelle|JA|Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk.|
 |Datenträger|Nein |Der virtuelle Computer kann Datenträger enthalten, um die Speicherkapazität zu erhöhen.|
 
 ## <a name="create-your-first-vm"></a>Erstellen Ihres ersten virtuellen Computers

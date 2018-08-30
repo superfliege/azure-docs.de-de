@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 2/22/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 607c7938a789b3504a425057645b291bd4c8235b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a5390b51b3b901b159f99e757ca4db1aaf8258e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399030"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050966"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Übersicht über die Identität für Azure Stack
 
@@ -137,7 +137,7 @@ Für Anwendungen und Benutzer wird die Architektur von Azure Stack anhand von vi
 |Ebene    |Authentifizierung zwischen Ebenen  |
 |---------|---------|
 |Tools und Clients, z.B. das Admin-Portal     | Zum Zugreifen auf oder Ändern einer Ressource in Azure Stack nutzen Tools und Clients [JSON Web Tokens](/azure/active-directory/develop/active-directory-token-and-claims), um einen Aufruf von Azure Resource Manager durchzuführen. <br>Azure Resource Manager überprüft das JSON Web Token und sieht sich die *Ansprüche* im ausgestellten Token an, um die Autorisierungsebene einzuschätzen, die für den Benutzer oder den Dienstprinzipal in Azure Stack besteht. |
-|Azure Resource Manager und seine Kerndienste     |Azure Resource Manager kommuniziert mit Ressourcenanbietern, um die Kommunikation von Benutzern zu übertragen. <br> Für Übertragungen werden *direkte imperative* Aufrufe oder *deklarative* Aufrufe über [Azure Resource Manager-Vorlagen](/azure/azure-stack/user/azure-stack-arm-templates.md) verwendet.|
+|Azure Resource Manager und seine Kerndienste     |Azure Resource Manager kommuniziert mit Ressourcenanbietern, um die Kommunikation von Benutzern zu übertragen. <br> Für Übertragungen werden *direkte imperative* Aufrufe oder *deklarative* Aufrufe über [Azure Resource Manager-Vorlagen](/azure/azure-stack/user/azure-stack-arm-templates) verwendet.|
 |Ressourcenanbieter     |Aufrufe, die an Ressourcenanbieter übergeben werden, sind per zertifikatbasierter Authentifizierung geschützt. <br>Azure Resource Manager und der Ressourcenanbieter kommunizieren dann über eine API. Für jeden Aufruf, der vom Azure Resource Manager eingeht, überprüft der Ressourcenanbieter den Aufruf mit diesem Zertifikat.|
 |Infrastruktur und Geschäftslogik     |Ressourcenanbieter kommunizieren mit der Geschäftslogik und der Infrastruktur, indem ein Authentifizierungsmodus ihrer Wahl verwendet wird. Für die Standardressourcenanbieter von Azure Stack wird die Windows-Authentifizierung verwendet, um die Kommunikation zu schützen.|
 
@@ -180,7 +180,7 @@ Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure 
 Ausführliche Informationen zur Verwendung von Azure PowerShell für die Authentifizierung bei Azure Stack finden Sie unter [Konfigurieren der PowerShell-Umgebung des Azure Stack-Benutzers](azure-stack-powershell-configure-user.md).
 
 ### <a name="authenticate-with-azure-cli"></a>Authentifizieren mit der Azure CLI
-Informationen zur Verwendung von Azure PowerShell für die Authentifizierung bei Azure Stack finden Sie unter [Installieren und Konfigurieren der Azure CLI für die Verwendung mit Azure Stack](/azure/azure-stack/user/azure-stack-connect-cli.md).
+Informationen zur Verwendung von Azure PowerShell für die Authentifizierung bei Azure Stack finden Sie unter [Installieren und Konfigurieren der Azure CLI für die Verwendung mit Azure Stack](/azure/azure-stack/user/azure-stack-connect-cli).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Identitätsarchitektur für Azure Stack](azure-stack-identity-architecture.md)   
