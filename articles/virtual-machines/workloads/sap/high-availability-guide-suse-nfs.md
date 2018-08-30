@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 004baee6f3b1ed016ee0336a86d5ea3909d8f255
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1b1e6d3e5a0a1eb789b6a31ca66232ea6beb5b89
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656226"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42139954"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server
 
@@ -41,8 +41,8 @@ ms.locfileid: "34656226"
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
 
-[suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
-[suse-drbd-guide]:https://www.suse.com/documentation/sle-ha-12/singlehtml/book_sleha_techguides/book_sleha_techguides.html
+[sles-hae-guides]:https://www.suse.com/documentation/sle-ha-12/
+[sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -73,10 +73,9 @@ Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 * [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP unter Linux (dieser Artikel)][deployment-guide]
 * [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-* [SAP HANA SR Performance Optimized Scenario][suse-hana-ha-guide] (SAP HANA-SR-Leistung – optimiertes Szenario)  
-  Das Handbuch enthält alle erforderlichen Informationen zum lokalen Einrichten der SAP HANA-Replikation. Verwenden Sie dieses Handbuch als Grundlage.
-* [Hochverfügbarer NFS-Speicher mit DRBD und Pacemaker][suse-drbd-guide] Der Leitfaden enthält alle erforderlichen Informationen zum Einrichten eines hochverfügbaren NFS-Servers. Verwenden Sie dieses Handbuch als Grundlage.
-
+* [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise High Availability Extension 12 SP3][sles-hae-guides]
+  * Hochverfügbarer NFS-Speicher mit DRBD und Pacemaker
+* [Leitfäden für bewährte Methoden zu SUSE Linux Enterprise Server für SAP-Anwendungen 12 SP3][sles-for-sap-bp]
 
 ## <a name="overview"></a>Übersicht
 
@@ -107,13 +106,14 @@ Sie können entweder eine Azure-Vorlage aus GitHub verwenden, um alle erforderli
 ### <a name="deploy-linux-via-azure-template"></a>Bereitstellen von Linux über die Azure-Vorlage
 
 Der Azure Marketplace enthält ein Image für den SUSE Linux Enterprise Server for SAP Applications 12, das Sie zum Bereitstellen neuer virtueller Computer verwenden können.
-Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
+Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 1. Öffnen Sie im Azure-Portal die [SAP-Dateiservervorlage][template-file-server].   
 1. Legen Sie die folgenden Parameter fest:
    1. Ressourcenpräfix  
       Geben Sie das Präfix ein, das verwendet werden soll. Der Wert wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
-   2. Anzahl der SAP-Systeme: Geben Sie die Anzahl der SAP-Systeme ein, die den Dateiserver verwenden. Dadurch wird die erforderliche Menge an Front-End-Konfigurationen, Lastenausgleichsregeln, Testports, Datenträger usw. bereitgestellt.
+   2. Anzahl der SAP-Systeme  
+      Geben Sie die Anzahl der SAP-Systeme ein, die den Dateiserver verwenden. Dadurch wird die erforderliche Menge an Front-End-Konfigurationen, Lastenausgleichsregeln, Testports, Datenträger usw. bereitgestellt.
    3. Betriebssystemtyp  
       Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel die Option „SLES 12“.
    4. Administratorbenutzername und Administratorkennwort  
@@ -129,11 +129,9 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
 1. Erstellen eines virtuellen Netzwerks
 1. Erstellen Sie eine Verfügbarkeitsgruppe.  
    Richten Sie die maximale Updatedomäne ein.
-1. Erstellen Sie den virtuellen Computer 1.   
-   Verwenden Sie mindestens SLES4SAP 12 SP3. In diesem Beispiel wird das SLES4SAP 12 SP3 BYOS-Image, „SLES für SAP-Anwendungen 12 SP3 (BYOS)“, verwendet.  
+1. Erstellen von VM 1: Verwenden Sie mindestens SLES4SAP 12 SP3. In diesem Beispiel wird das SLES4SAP 12 SP3 BYOS-Image, „SLES für SAP-Anwendungen 12 SP3 (BYOS)“, verwendet.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
-1. Erstellen Sie den virtuellen Computer 2.   
-   Verwenden Sie mindestens SLES4SAP 12 SP3. In diesem Beispiel wird das SLES4SAP 12 SP3 BYOS-Image,  
+1. Erstellen von VM 2: Verwenden Sie mindestens SLES4SAP 12 SP3. In diesem Beispiel wird das SLES4SAP 12 SP3 BYOS-Image,  
    „SLES für SAP-Anwendungen 12 SP3 (BYOS)“, verwendet.  
    Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.  
 1. Fügen Sie einen Datenträger für jedes SAP-System auf beiden virtuellen Computern hinzu.
@@ -143,7 +141,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
          1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
          1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-frontend**).
          1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.4**).
-         1. OK klicken         
+         1. OK klicken
       1. IP-Adresse 10.0.0.5 für NW2
          * Wiederholen Sie die oben genannten Schritte für NW2.
    1. Erstellen der Back-End-Pools
@@ -172,7 +170,7 @@ Sie müssen zunächst die virtuellen Computer für diesen NFS-Cluster erstellen.
          1. Behalten Sie **TCP** als Protokoll bei, und geben Sie Port **2049** ein.
          1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
-         1. OK klicken    
+         1. OK klicken
       1. 2049 UDP für NW1
          * Wiederholen Sie die oben genannten Schritte für Port 2049 und UDP für NW1.
       1. 2049 TCP für NW2
@@ -188,48 +186,40 @@ Führen Sie die Schritte unter [Einrichten von Pacemaker unter SUSE Linux Enterp
 
 Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** – gilt für alle Knoten, **[1]** – gilt nur für Knoten 1, oder **[2]** – gilt nur für Knoten 2.
 
-1. **[A]** Richten Sie die Hostnamensauflösung ein.   
+1. **[A]** Richten Sie die Hostnamensauflösung ein.
 
    Sie können entweder einen DNS-Server verwenden oder „/etc/hosts“ auf allen Knoten ändern. In diesem Beispiel wird die Verwendung der /etc/hosts-Datei veranschaulicht.
    Ersetzen Sie die IP-Adresse und den Hostnamen in den folgenden Befehlen.
 
-   <pre><code>
-   sudo vi /etc/hosts
+   <pre><code>sudo vi /etc/hosts
    </code></pre>
    
-   Fügen Sie „/etc/hosts“ die folgenden Zeilen hinzu. Ändern Sie die IP-Adresse und den Hostnamen Ihrer Umgebung entsprechend.   
+   Fügen Sie „/etc/hosts“ die folgenden Zeilen hinzu. Ändern Sie die IP-Adresse und den Hostnamen Ihrer Umgebung entsprechend.
    
-   <pre><code>
-   # IP address of the load balancer frontend configuration for NFS
+   <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>
    <b>10.0.0.5 nw2-nfs</b>
    </code></pre>
 
 1. **[A]** Aktivieren Sie den NFS-Server.
 
-   Erstellen Sie den Eintrag für den Root-Export, starten Sie den NFS-Server, und aktivieren Sie den automatischen Start.
+   Erstellen des Eintrags für den Stammeintrag für den NFS-Export
 
-   <pre><code>
-   sudo sh -c 'echo /srv/nfs/ *\(rw,no_root_squash,fsid=0\)>/etc/exports'
+   <pre><code>sudo sh -c 'echo /srv/nfs/ *\(rw,no_root_squash,fsid=0\)>/etc/exports'
    
    sudo mkdir /srv/nfs/
-
-   sudo systemctl enable nfsserver
-   sudo service nfsserver restart
    </code></pre>
 
 1. **[A]** Installieren Sie DRBD-Komponenten.
 
-   <pre><code>
-   sudo zypper install drbd drbd-kmp-default drbd-utils
+   <pre><code>sudo zypper install drbd drbd-kmp-default drbd-utils
    </code></pre>
 
 1. **[A]** Erstellen Sie eine Partition für die DRBD-Geräte.
 
    Listen Sie alle verfügbaren Datenträger auf.
 
-   <pre><code>
-   sudo ls /dev/disk/azure/scsi1/
+   <pre><code>sudo ls /dev/disk/azure/scsi1/
    </code></pre>
 
    Beispielausgabe
@@ -240,8 +230,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    Erstellen Sie Partitionen für alle Datenträger.
 
-   <pre><code>
-   sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
+   <pre><code>sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun0'
    sudo sh -c 'echo -e "n\n\n\n\n\nw\n" | fdisk /dev/disk/azure/scsi1/lun1'
    </code></pre>
 
@@ -249,8 +238,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    Listen Sie alle verfügbaren Partitionen auf.
 
-   <pre><code>
-   ls /dev/disk/azure/scsi1/lun*-part*
+   <pre><code>ls /dev/disk/azure/scsi1/lun*-part*
    </code></pre>
 
    Beispielausgabe
@@ -261,8 +249,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    Erstellen Sie LVM-Volumes für alle Partitionen.
 
-   <pre><code>
-   sudo pvcreate /dev/disk/azure/scsi1/lun0-part1  
+   <pre><code>sudo pvcreate /dev/disk/azure/scsi1/lun0-part1  
    sudo vgcreate vg-<b>NW1</b>-NFS /dev/disk/azure/scsi1/lun0-part1
    sudo lvcreate -l 100%FREE -n <b>NW1</b> vg-<b>NW1</b>-NFS
 
@@ -273,27 +260,23 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[A]** Konfigurieren Sie DRBD.
 
-   <pre><code>
-   sudo vi /etc/drbd.conf
+   <pre><code>sudo vi /etc/drbd.conf
    </code></pre>
 
    Stellen Sie sicher, dass die Datei „drbd.conf“ die folgenden beiden Zeilen enthält.
 
-   <pre><code>
-   include "drbd.d/global_common.conf";
+   <pre><code>include "drbd.d/global_common.conf";
    include "drbd.d/*.res";
    </code></pre>
 
    Ändern Sie die globale DRBD-Konfiguration.
 
-   <pre><code>
-   sudo vi /etc/drbd.d/global_common.conf
+   <pre><code>sudo vi /etc/drbd.d/global_common.conf
    </code></pre>
 
    Fügen Sie die folgenden Einträge den Abschnitten „handler“ und „net“ hinzu.
 
-   <pre><code>
-   global {
+   <pre><code>global {
         usage-count no;
    }
    common {
@@ -309,26 +292,35 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
         options {
         }
         disk {
-             resync-rate 50M;
+             md-flushes yes;
+             disk-flushes yes;
+             c-plan-ahead 1;
+             c-min-rate 100M;
+             c-fill-target 20M;
+             c-max-rate 4G;
         }
         net {
              after-sb-0pri discard-younger-primary;
              after-sb-1pri discard-secondary;
              after-sb-2pri call-pri-lost-after-sb;
+             protocol     C;
+             tcp-cork yes;
+             max-buffers 20000;
+             max-epoch-size 20000;
+             sndbuf-size 0;
+             rcvbuf-size 0;
         }
    }
    </code></pre>
 
 1. **[A]** Erstellen Sie die NFS-DRBD-Geräte.
 
-   <pre><code>
-   sudo vi /etc/drbd.d/<b>NW1</b>-nfs.res
+   <pre><code>sudo vi /etc/drbd.d/<b>NW1</b>-nfs.res
    </code></pre>
 
    Fügen Sie die Konfiguration für das neue DRBD-Gerät ein, und beenden Sie es.
 
-   <pre><code>
-   resource <b>NW1</b>-nfs {
+   <pre><code>resource <b>NW1</b>-nfs {
         protocol     C;
         disk {
              on-io-error       detach;
@@ -348,14 +340,12 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    }
    </code></pre>
 
-   <pre><code>
-   sudo vi /etc/drbd.d/<b>NW2</b>-nfs.res
+   <pre><code>sudo vi /etc/drbd.d/<b>NW2</b>-nfs.res
    </code></pre>
 
    Fügen Sie die Konfiguration für das neue DRBD-Gerät ein, und beenden Sie es.
 
-   <pre><code>
-   resource <b>NW2</b>-nfs {
+   <pre><code>resource <b>NW2</b>-nfs {
         protocol     C;
         disk {
              on-io-error       detach;
@@ -377,8 +367,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
    Erstellen Sie das DRBD-Gerät, und starten Sie es.
 
-   <pre><code>
-   sudo drbdadm create-md <b>NW1</b>-nfs
+   <pre><code>sudo drbdadm create-md <b>NW1</b>-nfs
    sudo drbdadm create-md <b>NW2</b>-nfs
    sudo drbdadm up <b>NW1</b>-nfs
    sudo drbdadm up <b>NW2</b>-nfs
@@ -386,32 +375,29 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Überspringen Sie die Erstsynchronisierung.
 
-   <pre><code>
-   sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
+   <pre><code>sudo drbdadm new-current-uuid --clear-bitmap <b>NW1</b>-nfs
    sudo drbdadm new-current-uuid --clear-bitmap <b>NW2</b>-nfs
    </code></pre>
 
 1. **[1]** Legen Sie den primären Knoten fest.
 
-   <pre><code>
-   sudo drbdadm primary --force <b>NW1</b>-nfs
+   <pre><code>sudo drbdadm primary --force <b>NW1</b>-nfs
    sudo drbdadm primary --force <b>NW2</b>-nfs
    </code></pre>
 
 1. **[1]** Warten Sie, bis die neuen DRBD-Geräte synchronisiert sind.
 
-   <pre><code>
-   sudo drbdsetup wait-sync-resource NW1-nfs
+   <pre><code>sudo drbdsetup wait-sync-resource NW1-nfs
    sudo drbdsetup wait-sync-resource NW2-nfs
    </code></pre>
 
 1. **[1]** Erstellen Sie Dateisysteme auf den DRBD-Geräten.
 
-   <pre><code>
-   sudo mkfs.xfs /dev/drbd0
+   <pre><code>sudo mkfs.xfs /dev/drbd0
    sudo mkdir /srv/nfs/NW1
    sudo chattr +i /srv/nfs/NW1
    sudo mount -t xfs /dev/drbd0 /srv/nfs/NW1
+   sudo mkdir /srv/nfs/NW1
    sudo mkdir /srv/nfs/NW1/sidsys
    sudo mkdir /srv/nfs/NW1/sapmntsid
    sudo mkdir /srv/nfs/NW1/trans
@@ -437,7 +423,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[A]** Richten Sie die DRBD-Split Brain-Erkennung ein.
 
-   Bei Verwendung von DRBD zum Synchronisieren von Daten zwischen verschiedenen Hosts kann ein sogenanntes Split Brain-Syndrom auftreten. Ein Split Brain-Syndrom ist ein Szenario, bei dem beide Clusterknoten das DRBD-Gerät als primäres Gerät höher gestuft haben und nicht mehr synchronisiert sind. Dies ist wohl ein sehr selten auftretender Fall, dennoch sollte ein Split Brain-Problem schnellstmöglich behandelt und behoben werden. Es ist daher wichtig, dass bei einem aufgetretenen Split Brain-Problem eine Benachrichtigung erfolgt.
+   Bei Verwendung von DRBD zum Synchronisieren von Daten zwischen verschiedenen Hosts kann ein sogenanntes Split Brain-Syndrom auftreten. Ein Split Brain-Syndrom ist ein Szenario, bei dem beide Clusterknoten das DRBD-Gerät als primäres Gerät höher gestuft haben und nicht mehr synchronisiert sind. Dies ist wohl ein selten auftretender Fall, dennoch sollte ein Split Brain-Problem schnellstmöglich behandelt und behoben werden. Es ist daher wichtig, dass bei einem aufgetretenen Split Brain-Problem eine Benachrichtigung erfolgt.
 
    Informationen zum Einrichten einer Benachrichtigung zu einem Split Brain-Problem finden Sie in der [offiziellen DRBD-Dokumentation](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification).
 
@@ -447,7 +433,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Fügen Sie der Clusterkonfiguration die NFS-DRBD-Geräte für das SAP-System NW1 hinzu.
 
-   <pre><code>
+   <pre><code>sudo crm configure rsc_defaults resource-stickiness="200"
+
    # Enable maintenance mode
    sudo crm configure property maintenance-mode=true
    
@@ -468,45 +455,14 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
      fstype=xfs \
      op monitor interval="10s"
    
+   sudo crm configure primitive nfsserver systemd:nfs-server \
+     op monitor interval="30s"
+   sudo crm configure clone cl-nfsserver nfsserver
+
    sudo crm configure primitive exportfs_<b>NW1</b> \
      ocf:heartbeat:exportfs \
      params directory="/srv/nfs/<b>NW1</b>" \
-     options="rw,no_root_squash" clientspec="*" fsid=1 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_sidsys \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/sidsys" \
-     options="rw,no_root_squash" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_sapmntsid \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/sapmntsid" \
-     options="rw,no_root_squash" clientspec="*" fsid=3 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_trans \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/trans" \
-     options="rw,no_root_squash" clientspec="*" fsid=4 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_ASCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/ASCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=5 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_ASCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/ASCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=6 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_SCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/SCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=7 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW1</b>_SCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW1</b>/SCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=8 wait_for_leasetime_on_stop=true op monitor interval="30s"
+     options="rw,no_root_squash,crossmnt" clientspec="*" fsid=1 wait_for_leasetime_on_stop=true op monitor interval="30s"
    
    sudo crm configure primitive vip_<b>NW1</b>_nfs \
      IPaddr2 \
@@ -517,10 +473,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
      params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61000</b>" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW1</b>_nfs \
-     fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> exportfs_<b>NW1</b>_sidsys \
-     exportfs_<b>NW1</b>_sapmntsid exportfs_<b>NW1</b>_trans exportfs_<b>NW1</b>_ASCS \
-     exportfs_<b>NW1</b>_ASCSERS exportfs_<b>NW1</b>_SCS exportfs_<b>NW1</b>_SCSERS \
-     nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
+     fs_<b>NW1</b>_sapmnt exportfs_<b>NW1</b> nc_<b>NW1</b>_nfs vip_<b>NW1</b>_nfs
    
    sudo crm configure order o-<b>NW1</b>_drbd_before_nfs inf: \
      ms-drbd_<b>NW1</b>_nfs:promote g-<b>NW1</b>_nfs:start
@@ -531,9 +484,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Fügen Sie der Clusterkonfiguration die NFS-DRBD-Geräte für das SAP-System NW2 hinzu.
 
-   <pre><code>
-   # Enable maintenance mode
-   sudo crm configure property maintenance-mode=true   
+   <pre><code># Enable maintenance mode
+   sudo crm configure property maintenance-mode=true
    
    sudo crm configure primitive drbd_<b>NW2</b>_nfs \
      ocf:linbit:drbd \
@@ -555,42 +507,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo crm configure primitive exportfs_<b>NW2</b> \
      ocf:heartbeat:exportfs \
      params directory="/srv/nfs/<b>NW2</b>" \
-     options="rw,no_root_squash" clientspec="*" fsid=9 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_sidsys \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/sidsys" \
-     options="rw,no_root_squash" clientspec="*" fsid=10 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_sapmntsid \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/sapmntsid" \
-     options="rw,no_root_squash" clientspec="*" fsid=11 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_trans \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/trans" \
-     options="rw,no_root_squash" clientspec="*" fsid=12 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_ASCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/ASCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=13 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_ASCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/ASCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=14 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_SCS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/SCS" \
-     options="rw,no_root_squash" clientspec="*" fsid=15 wait_for_leasetime_on_stop=true op monitor interval="30s"
-   
-   sudo crm configure primitive exportfs_<b>NW2</b>_SCSERS \
-     ocf:heartbeat:exportfs \
-     params directory="/srv/nfs/<b>NW2</b>/SCSERS" \
-     options="rw,no_root_squash" clientspec="*" fsid=16 wait_for_leasetime_on_stop=true op monitor interval="30s"
+     options="rw,no_root_squash" clientspec="*" fsid=2 wait_for_leasetime_on_stop=true op monitor interval="30s"
    
    sudo crm configure primitive vip_<b>NW2</b>_nfs \
      IPaddr2 \
@@ -601,10 +518,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
      params binfile="/usr/bin/nc" cmdline_options="-l -k <b>61001</b>" op monitor timeout=20s interval=10 depth=0
    
    sudo crm configure group g-<b>NW2</b>_nfs \
-     fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> exportfs_<b>NW2</b>_sidsys \
-     exportfs_<b>NW2</b>_sapmntsid exportfs_<b>NW2</b>_trans exportfs_<b>NW2</b>_ASCS \
-     exportfs_<b>NW2</b>_ASCSERS exportfs_<b>NW2</b>_SCS exportfs_<b>NW2</b>_SCSERS \
-     nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs
+     fs_<b>NW2</b>_sapmnt exportfs_<b>NW2</b> nc_<b>NW2</b>_nfs vip_<b>NW2</b>_nfs
    
    sudo crm configure order o-<b>NW2</b>_drbd_before_nfs inf: \
      ms-drbd_<b>NW2</b>_nfs:promote g-<b>NW2</b>_nfs:start
@@ -615,11 +529,11 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Deaktivieren Sie den Wartungsmodus.
    
-   <pre><code>
-   sudo crm configure property maintenance-mode=false
+   <pre><code>sudo crm configure property maintenance-mode=false
    </code></pre>
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Installieren der SAP ASCS-Instanz und der SAP-Datenbank](high-availability-guide-suse.md)
 * [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]

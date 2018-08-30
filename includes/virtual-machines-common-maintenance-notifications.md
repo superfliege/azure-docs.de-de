@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 782c855ff6d28f2cd96a87893ebf74023472badc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: efedb2f48748264fb936fe82a1dbb3cf4403cc5e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38941661"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40167122"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>Anzeigen der virtuellen Computer mit geplanter Wartung im Portal
 
@@ -38,6 +38,8 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
       | Bereits aktualisiert | Ihr virtueller Computer wurde bereits aktualisiert, und zu diesem Zeitpunkt ist keine weitere Aktion erforderlich. | 
       | Versuchen Sie es später noch mal. | Sie haben erfolglos versucht, die Wartung zu initiieren. Die Option für die Self-Service-Wartung kann zu einem späteren Zeitpunkt verwendet werden. | 
       | Jetzt erneut versuchen | Sie können eine zuvor nicht erfolgreiche selbst initiierte Wartung wiederholen. | 
+      | - | Ihre VM ist nicht Teil einer geplanten Wartung. |
+      
 
    **Wartung – Self-Service-Fenster:** zeigt das Zeitfenster an, in dem Sie die Wartung für Ihre virtuellen Computer selbst starten können.
    
@@ -47,7 +49,7 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Benachrichtigungen und Warnungen im Portal
 
-Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
+Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im Menü auf der linken Seite auf **Überwachen**. 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 6777842f3ca336eb4ae0d134cbc7ffd062bc6f29
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1a4be7b5caba751f0f90e865d8ef23e5e9c899d6
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37890804"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140516"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -87,7 +87,7 @@ Wenn eine Back-End-Pool-VM als fehlerfrei aufgeführt ist und auf die Integritä
 * Die VM des Load Balancer-Back-End-Pools lauscht nicht am Datenport 
 * Eine Netzwerksicherheitsgruppe blockiert den Port auf der VM des Load Balancer-Back-End-Pools  
 * Zugreifen auf den Load Balancer über die gleiche VM und NIC 
-* Zugreifen auf die Internet Load Balancer-VIP über die beteiligte VM des Load Balancer-Back-End-Pools 
+* Zugreifen auf das Internet Load Balancer-Front-End über die beteiligte VM des Load Balancer-Back-End-Pools 
 
 ### <a name="cause-1-load-balancer-backend-pool-vm-is-not-listening-on-the-data-port"></a>Ursache 1: Die VM des Load Balancer-Back-End-Pools lauscht nicht am Datenport 
 Wenn eine VM nicht auf den Datenverkehr antwortet, kann dies daran liegen, dass der Zielport auf der beteiligten VM nicht geöffnet ist oder dass die VM nicht an diesem Port lauscht. 
@@ -119,10 +119,11 @@ Wenn die auf der Back-End-VM eines Load Balancers gehostete Anwendung versucht, 
 * Konfigurieren Sie separate Back-End-Pool-VMs für jede Anwendung. 
 * Konfigurieren Sie die Anwendung in VMs mit zwei NICs, damit jede Anwendung eine eigene Netzwerkschnittstelle und IP-Adresse verwendet. 
 
-### <a name="cause-4-accessing-the-internal-load-balancer-vip-from-the-participating-load-balancer-backend-pool-vm"></a>Ursache 4: Zugreifen auf die Internal Load Balancer-VIP über die beteiligte VM des Load Balancer-Back-End-Pools
+### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>Ursache 4: Zugreifen auf das Front-End des internen Load Balancers über die beteiligte VM des Load Balancer-Back-End-Pools
 
-Wenn eine ILB-VIP in einem VNET konfiguriert ist und eine der beteiligten Back-End-VMs auf die Internal Load Balancer-VIP zugreifen möchte, führt dies zu einem Fehler. Dieses Szenario wird nicht unterstützt.
-**Lösung:** Prüfen Sie Application Gateway oder andere Proxys (z.B. nginx oder HAProxy), um diese Art von Szenario zu unterstützen. Weitere Informationen zu Application Gateway finden Sie unter [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md).
+Wenn ein interner Load Balancer innerhalb eines VNet konfiguriert wird und eine der teilnehmenden Back-End-VMs versucht, auf das Front-End des internen Load Balancers zuzugreifen, treten möglicherweise Fehler auf, wenn der Flow der Ausgangs-VM zugeordnet wird. Nein, dieses Szenario wird nicht unterstützt. Überprüfen Sie die [Beschränkungen](load-balancer-overview.md#limitations) für eine ausführliche Beschreibung.
+
+**Auflösung:** Es gibt mehrere Möglichkeiten, die Blockierung für dieses Szenarios aufzuheben, einschließlich der Verwendung eines Proxys. Evaluieren Sie Application Gateway oder andere Proxys von Drittanbietern (z.B. nginx oder haproxy). Weitere Informationen zu Application Gateway finden Sie unter [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md).
 
 ## <a name="additional-network-captures"></a>Zusätzliche Netzwerkerfassungen
 Wenn Sie eine Supportanfrage öffnen möchten, erfassen Sie die folgenden Informationen, um eine schnellere Lösung zu ermöglichen. Wählen Sie eine einzelne Back-End-VM für die Durchführung der folgenden Tests aus:

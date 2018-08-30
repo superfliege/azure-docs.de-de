@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c510bb060d5c0dc866c3802fab751c1cbeff3745
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23126308"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42140303"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit hoher Verfügbarkeit
 In diesem Artikel erhalten Sie einen Überblick über Optionen zur Konfiguration der hohen Verfügbarkeit für standortübergreifende Verbindungen und VNet-zu-VNet-Verbindungen mit Azure-VPN-Gateways.
@@ -44,7 +44,7 @@ Sie können mehrere VPN-Geräte in Ihrem lokalen Netzwerk verwenden, um eine Ver
 
 Diese Konfiguration enthält mehrere aktive Tunnel von demselben Azure-VPN-Gateway zu Ihren lokalen Geräten an einem Standort. Es gelten einige Anforderungen und Einschränkungen:
 
-1. Sie müssen mehrere S2S-VPN-Verbindungen von Ihren VPN-Geräten mit Azure herstellen. Wenn Sie für mehrere VPN-Geräte eine Verbindung aus demselben lokalen Netzwerk mit Azure herstellen, müssen Sie für jedes VPN-Gerät ein Gateway für das lokale Netzwerk und eine Verbindung von Ihrem Azure-VPN-Gateway zum Gateway des lokalen Netzwerks erstellen.
+1. Sie müssen mehrere S2S-VPN-Verbindungen von Ihren VPN-Geräten mit Azure herstellen. Wenn Sie für mehrere VPN-Geräte eine Verbindung aus demselben lokalen Netzwerk mit Azure herstellen, müssen Sie für jedes VPN-Gerät ein Gateway für das lokale Netzwerk und eine Verbindung von Ihrem Azure-VPN-Gateway zu jedem Gateway des lokalen Netzwerks erstellen.
 2. Die Gateways des lokalen Netzwerks, die Sie für die VPN-Geräte erstellen, müssen in der „GatewayIpAddress“-Eigenschaft über eindeutige öffentliche IP-Adressen verfügen.
 3. Für diese Konfiguration wird BGP benötigt. Für jedes Gateway des lokalen Netzwerks, das für ein VPN-Gerät steht, muss in der „BgpPeerIpAddress“-Eigenschaft eine eindeutige BGP-Peer-IP-Adresse angegeben werden.
 4. Die AddressPrefix-Eigenschaftenfelder dürfen sich in einem Gateway des lokalen Netzwerks jeweils nicht überlappen. Geben Sie „BgpPeerIpAddress“ im Feld „AddressPrefix“ im CIDR-Format „/32“ ein, z.B. 10.200.200.254/32.
@@ -71,7 +71,7 @@ Die zuverlässigste Option ist eine Kombination der Aktiv/Aktiv-Gateways in Ihre
 
 Hier führen Sie die Erstellung und Einrichtung des Azure-VPN-Gateways in einer Aktiv/Aktiv-Konfiguration durch und erstellen wie oben beschrieben zwei Gateways des lokalen Netzwerks und zwei Verbindungen für Ihre lokalen VPN-Geräte. Das Ergebnis ist eine vollständig vermaschte Verbindung mit vier IPsec-Tunneln zwischen Ihrem virtuellen Azure-Netzwerk und dem lokalen Netzwerk.
 
-Alle Gateways und Tunnel sind auf der Azure-Seite aktiv. Der Datenverkehr wird also auf alle vier Tunnel gleichzeitig verteilt, aber jeder TCP- oder UDP-Fluss verläuft von der Azure-Seite aus wieder über denselben Tunnel oder Pfad. Auch wenn Sie durch das Aufteilen des Datenverkehrs einen etwas besseren Durchsatz über die IPsec-Tunnel erzielen, ist das Hauptziel dieser Konfiguration die hohe Verfügbarkeit. Aufgrund der statistischen Art und Weise der Verteilung ist es außerdem schwierig zu messen, wie sich unterschiedliche Bedingungen für den Anwendungsdatenverkehr auf den Gesamtdurchsatz auswirken.
+Alle Gateways und Tunnel sind auf der Azure-Seite aktiv. Der Datenverkehr wird also auf alle vier Tunnel gleichzeitig verteilt, aber jeder TCP- oder UDP-Fluss verläuft von der Azure-Seite aus wieder über denselben Tunnel oder Pfad. Auch wenn Sie durch das Aufteilen des Datenverkehrs einen etwas besseren Durchsatz über die IPsec-Tunnel erzielen, ist das Hauptziel dieser Konfiguration die Hochverfügbarkeit. Aufgrund der statistischen Art und Weise der Verteilung ist es außerdem schwierig zu messen, wie sich unterschiedliche Bedingungen für den Anwendungsdatenverkehr auf den Gesamtdurchsatz auswirken.
 
 Für diese Topologie sind zwei Gateways des lokalen Netzwerks und zwei Verbindungen erforderlich, um das lokale VPN-Gerätepaar zu unterstützen, und BGP wird benötigt, um die Zulässigkeit der beiden Verbindungen für dasselbe lokale Netzwerk zu ermöglichen. Diese Anforderungen sind mit den [obigen](#activeactiveonprem)Anforderungen identisch. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 4c14bfbad58849acefdc8c3a5513f681aba84ab8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37909984"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "40238538"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
 Azure Storage Premium bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs) mit E/A-intensiven Workloads. Für VM-Datenträger, die Storage Premium nutzen, werden Daten auf SSD-Laufwerken (Solid-State Drives) gespeichert. Um die Geschwindigkeit und Leistung von Storage Premium-Datenträgern zu nutzen, können Sie vorhandene VM-Datenträger zu Storage Premium migrieren.
@@ -52,7 +52,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 * **Storage Premium-Datenträger**
 
-    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt eine Vielzahl von virtuellen Azure-Computern. Sie können aus sieben Datenträgergrößen auswählen:  P4 (32 GB), P6 (64 GB), P10 (128 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt eine Vielzahl von virtuellen Azure-Computern. Sie können aus acht Datenträgergrößen auswählen: P4 (32 GB), P6 (64 GB), P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 * **Premium-Seitenblobs**
 
@@ -150,7 +150,7 @@ Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für
 Wenn Sie Storage Premium-Konten für nicht verwaltete Datenträger verwenden und Ihre Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreitet, sollten Sie die Migration zu verwalteten Datenträgern erwägen. Falls die Migration zu verwalteten Datenträgern für Sie keine Option ist, können Sie Ihre Anwendung für die Nutzung mehrerer Speicherkonten erstellen. Partitionieren Sie Ihre Daten dann basierend auf diesen Speicherkonten. Wenn Sie beispielsweise 51-TB-Datenträger an mehrere VMs anfügen möchten, können Sie sie auf zwei Speicherkonten verteilen. 35 TB ist der Grenzwert pro Storage Premium-Konto. Stellen Sie sicher, dass ein Storage Premium-Konto stets Datenträger mit einer Größe von maximal 35 TB enthält.
 
 ### <a name="premium-storage-disk-limits"></a>Grenzwerte für Storage Premium-Datenträger
-Wenn Sie einen Storage Premium-Datenträger bereitstellen, wird anhand der Größe des Datenträgers der maximale IOPS- und Durchsatzwert (Bandbreite) ermittelt. Azure bietet sieben Typen von Storage Premium-Datenträgern: P4 (nur Managed Disks), P6 (nur Managed Disks), P10, P20, P30, P40 und P50. Für jeden Typ von Storage Premium-Datenträger gelten für IOPS und den Durchsatz bestimmte Grenzwerte. Die Grenzwerte für die Datenträgertypen sind in der folgenden Tabelle beschrieben:
+Wenn Sie einen Storage Premium-Datenträger bereitstellen, wird anhand der Größe des Datenträgers der maximale IOPS- und Durchsatzwert (Bandbreite) ermittelt. Azure bietet acht Typen von Storage Premium-Datenträgern: P4 (nur Managed Disks), P6 (nur Managed Disks), P10, P15, P20, P30, P40 und P50. Für jeden Typ von Storage Premium-Datenträger gelten für IOPS und den Durchsatz bestimmte Grenzwerte. Die Grenzwerte für die Datenträgertypen sind in der folgenden Tabelle beschrieben:
 
 | Premium-Datenträgertyp  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
@@ -206,7 +206,7 @@ Die folgenden Beispiele veranschaulichen, wie die Drosselungsebenen berechnet we
 Ihre Anwendung hat 495 E/A-Einheiten mit einer Größe von 16 KB in einer Sekunde auf einem Datenträger des Typs P10 verarbeitet. Die E/A-Einheiten werden als 495 IOPS gezählt. Wenn Sie versuchen, in der gleichen Sekunde einen E/A-Vorgang mit 2 MB durchzuführen, entspricht die Summe der E/A-Einheiten 495 + 8 IOPS. Dies liegt daran, dass ein E/A-Vorgang mit 2 MB acht E/A-Einheiten entspricht (2.048 KB/256 KB), wenn die Größe der E/A-Einheiten 256 KB beträgt. Da die Summe von 495 + 8 die IOPS-Grenze von 500 für den Datenträger überschreitet, kommt es zu einer Drosselung.
 
 ### <a name="example-2"></a>Beispiel 2
-Ihre Anwendung hat 400 E/A-Einheiten mit einer Größe von 256 KB auf einem Datenträger des Typs P10 verarbeitet. Verwendete Gesamtbandbreite: (400*256)/1.024 KB = 100 MB/s. Das Durchsatzlimit eines P10-Datenträgers liegt bei 100 MB/s. Wenn Ihre Anwendung versucht, weitere E/A-Vorgänge in dieser Sekunde auszuführen, wird sie gedrosselt, weil der zugewiesene Grenzwert überschritten wird.
+Ihre Anwendung hat 400 E/A-Einheiten mit einer Größe von 256 KB auf einem Datenträger des Typs P10 verarbeitet. Verwendete Gesamtbandbreite: (400 &#215; 256)/1.024 KB = 100 MB/s. Das Durchsatzlimit eines P10-Datenträgers liegt bei 100 MB/s. Wenn Ihre Anwendung versucht, weitere E/A-Vorgänge in dieser Sekunde auszuführen, wird sie gedrosselt, weil der zugewiesene Grenzwert überschritten wird.
 
 ### <a name="example-3"></a>Beispiel 3
 Sie besitzen einen virtuellen DS4-Computer mit zwei angefügten P30-Datenträgern. Bei jedem P30-Datenträger ist ein Durchsatz von 200 MB/s möglich. Ein virtueller DS4-Computer verfügt aber über eine Datenträger-Bandbreitenkapazität von insgesamt 256 MB/s. Sie können auf diesem virtuellen DS4-Computer für die angeschlossenen Datenträger nicht gleichzeitig den maximalen Durchsatz erzielen. Um dieses Problem zu beheben, können Sie auf einem Datenträger Datenverkehr von 200 MB/s und auf dem anderen Datenträger 56 MB/s tolerieren. Wenn die Summe Ihres Datenträger-Datenverkehrs 256 MB/s übersteigt, wird der Datenverkehr für den Datenträger gedrosselt.

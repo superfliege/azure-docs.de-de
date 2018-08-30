@@ -6,19 +6,18 @@ author: meladie
 ms.assetid: f53a25c4-1c75-42d6-a0e7-a91661673891
 ms.service: security
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 2179398cdd79db99540ce219b8f4eae24f0eca39
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: b269a145c78aaf025ef05a4562cf55124c17e2ee
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246228"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818004"
 ---
 # <a name="azure-security-and-compliance-blueprint---iaas-web-application-for-australia-protected"></a>Azure-Blaupause für Sicherheit und Compliance – IaaS-Webanwendung für GESCHÜTZTE Daten (Australien, AU-PROTECTED)
 
 ## <a name="overview"></a>Übersicht
-
 Diese Azure-Blaupause für Sicherheit und Compliance bietet Orientierungshilfe für die Bereitstellung einer Infrastructure-as-a-Service-Umgebung (IaaS-Umgebung), die für das Erfassen, Speichern und Abrufen von AU-PROTECTED-Regierungsdaten geeignet ist und den Zielen des vom Australischen Direktorium für Signale (Australian Signals Directorate, ASD) erstellten Australian Government Information Security Manual (ISM) entspricht. Diese Blaupause stellt eine allgemeine Referenzarchitektur dar und veranschaulicht die ordnungsgemäße Verarbeitung vertraulicher Regierungsdaten in einer sicheren, konformen Umgebung mit mehreren Ebenen.
 
 Diese Referenzarchitektur, ein Implementierungsleitfaden und ein Bedrohungsmodell bieten Kunden eine Grundlage für die Ausführung ihrer eigenen Planungs- und Systemakkreditierungsprozesse und unterstützen Kunden dabei, Workloads ASD-konform für Azure bereitzustellen. Kunden können auch eine Azure VPN Gateway-Instanz oder ExpressRoute implementieren, um Verbunddienste zu verwenden und lokale Ressourcen in Azure-Ressourcen zu integrieren. Kunden müssen die Auswirkungen der Verwendung lokaler Ressourcen auf die Sicherheit berücksichtigen. Eine zusätzliche Konfiguration ist erforderlich, um alle Anforderungen zu erfüllen, da diese je nach den Besonderheiten der jeweiligen Kundenimplementierung variieren können.
@@ -71,7 +70,6 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Weitere Informationen finde
 Diese Blaupause enthält Azure-Dienste, die nicht für die Verwendung unter der Klassifizierung „Protected“ (Geschützt) vom Australian Cyber Security Centre (ACSC) zertifiziert wurden. Alle in dieser Referenzarchitektur enthaltenen Dienste wurden vom ACSC auf der Ebene von Dissemination Limiting Markers (DLM) zertifiziert. Microsoft empfiehlt, dass Kunden die veröffentlichten Sicherheits- und Überwachungsberichte überprüfen, die sich auf diese Azure-Dienste beziehen, und anhand des jeweiligen Risikomanagementframeworks ermitteln, ob der Azure-Dienst für ihre interne Akkreditierung und Nutzung unter der Klassifizierung „Protected“ (Geschützt) geeignet ist.
 
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
-
 Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung beschrieben.
 
 **Bastionhost:** Der Bastionhost ist der einzelne Zugangspunkt, über den Benutzer Zugriff auf die bereitgestellten Ressourcen in dieser Umgebung erhalten. Der Bastionhost bietet eine sichere Verbindung mit den bereitgestellten Ressourcen, indem nur Remotedatenverkehr von öffentlichen IP-Adressen auf einer Sicherheitsliste zugelassen wird. Damit RDP-Datenverkehr (Remotedesktopprotokoll) zugelassen wird, muss die Quelle des Datenverkehrs in der Netzwerksicherheitsgruppe definiert sein.
@@ -84,7 +82,6 @@ Diese Lösung erstellt einen virtuellen Computer als Bastionhost in der Domäne 
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) ist aktiviert, damit Anmeldeinformationen und andere Geheimnisse in einer geschützten Umgebung, die vom ausgeführten Betriebssystem isoliert ist, ausgeführt werden.
 
 ### <a name="virtual-network"></a>Virtuelles Netzwerk
-
 Die Architektur definiert ein privates virtuelles Netzwerk mit dem Adressraum 10.200.0.0/16.
 
 **Netzwerksicherheitsgruppen:** Diese Lösung stellt Ressourcen in einer Architektur mit separatem Websubnetz, Datenbanksubnetz, Active Directory-Subnetz und Verwaltungssubnetz innerhalb eines virtuellen Netzwerks bereit. Subnetze werden logisch durch Regeln für Netzwerksicherheitsgruppen getrennt, die auf die einzelnen Subnetze angewendet werden, um den Datenverkehr zwischen den Subnetzen auf das für die System- und Verwaltungsfunktionen erforderliche Maß einzuschränken.
@@ -105,7 +102,6 @@ Für geschützte Daten während der Übertragung aus kundeneigenen Netzwerken ve
 Darüber hinaus erfolgen alle Transaktionen mit Azure über das Azure-Verwaltungsportal über HTTPS mit TLS 1.2.
 
 ### <a name="data-at-rest"></a>Ruhende Daten
-
 Die Architektur schützt ruhende Daten durch die Verwendung von Verschlüsselung, Datenbanküberwachung und anderen Maßnahmen.
 
 **Azure Storage:** Um die Anforderungen an verschlüsselte ruhende Daten zu erfüllen, wird für den gesamten [Azure Storage](https://azure.microsoft.com/services/storage/) die [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/storage-service-encryption) verwendet. Dadurch werden Daten geschützt, um die Zusagen und Anforderungen der Organisation im Hinblick auf die Sicherheit und Konformität gemäß dem Australian Government ISM einzuhalten.
@@ -113,7 +109,6 @@ Die Architektur schützt ruhende Daten durch die Verwendung von Verschlüsselung
 **Azure Disk Encryption**: [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt das BitLocker-Features von Windows, um Volumeverschlüsselung für Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel zu erleichtern.
 
 **SQL Server:** In der SQL Server-Instanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
-
 -   Bei der [SQL Server-Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine?view=sql-server-2017) werden Datenbankereignisse nachverfolgt und in Überwachungsprotokolle geschrieben.
 -   Beim [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017)-Vorgang wird die Echtzeitverschlüsselung und -entschlüsselung der Datenbank, der zugehörigen Sicherungen und der Transaktionsprotokolldateien durchgeführt, um ruhende Informationen zu schützen. Die transparente Datenverschlüsselung gewährleistet, dass gespeicherte Daten keinen unbefugten Zugriffen ausgesetzt sind.
 -   [Firewallregeln](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) verhindern sämtlichen Zugriff auf Datenbankserver, bis die richtigen Berechtigungen erteilt werden. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -121,7 +116,6 @@ Die Architektur schützt ruhende Daten durch die Verwendung von Verschlüsselung
 - Die [dynamische Datenmaskierung](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?view=sql-server-2017) schränkt die Offenlegung vertraulicher Daten ein, indem diese Daten für nicht berechtigte Benutzer maskiert werden. Die dynamische Datenmaskierung kann automatisch potenziell vertrauliche Daten ermitteln und eine geeignete Maskierung vorschlagen. Dies trägt zur Beschränkung des Zugriffs bei, damit sensible Daten die Datenbank nicht aufgrund von unberechtigtem Zugriff verlassen. **Kunden sind dafür verantwortlich, die Einstellungen für die dynamische Datenmaskierung an ihr Datenbankschema anzupassen.**
 
 ### <a name="identity-management"></a>Identitätsverwaltung
-
 Kunden können lokale Active Directory-Verbunddienste für einen Verbund mit [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) verwenden, dem mehrinstanzenfähigen cloudbasierten Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) integriert lokale Verzeichnisse in Azure Active Directory. Alle Benutzer dieser Lösung benötigen Azure Active Directory-Konten. Durch die Verbundanmeldung können sich Benutzer mit ihren lokalen Anmeldeinformationen bei Azure Active Directory anmelden und bei Azure-Ressourcen authentifizieren.
 
 Darüber hinaus unterstützen Sie die folgenden Azure Active Directory-Funktionen beim Verwalten des Zugriffs auf Daten in der Azure-Umgebung:
@@ -133,7 +127,6 @@ Darüber hinaus unterstützen Sie die folgenden Azure Active Directory-Funktione
 **Azure Multi-Factor Authentication**: Um Identitäten zu schützen, sollte die mehrstufige Authentifizierung implementiert werden. [Azure Multi-Factor Authentication](https://azure.microsoft.com/services/multi-factor-authentication/) ist eine benutzerfreundliche, skalierbare und zuverlässige Lösung, die eine zweite Authentifizierungsmethode zum Schutz der Benutzer bietet. Azure Multi-Factor Authentication nutzt die Vorteile der Cloud und kann nahtlos in das lokale Active Directory und in benutzerdefinierte Anwendungen integriert werden. Dieser Schutz wird auf umfangreiche unternehmenskritische Szenarien erweitert.
 
 ### <a name="security"></a>Sicherheit
-
 **Geheimnisverwaltung:** Die Lösung verwendet [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) für die Verwaltung von Schlüsseln und Geheimnissen. Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Die folgenden Funktionen von Azure Key Vault unterstützen Kunden beim Schützen von und Zugreifen auf diese Daten:
 
 - Erweiterte Zugriffsrichtlinien werden auf Bedarfsbasis konfiguriert.
@@ -169,7 +162,6 @@ Darüber hinaus nutzt diese Referenzarchitektur die [Sicherheitsrisikobewertung]
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) und [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) bieten zusätzlichen Schutz und zusätzliche Benachrichtigungen. Azure Security Center stellt außerdem ein Reputationssystem bereit.
 
 ### <a name="business-continuity"></a>Geschäftskontinuität
-
 **Hochverfügbarkeit:** Die Lösung stellt alle virtuellen Computer in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) bereit. Verfügbarkeitsgruppen stellen sicher, dass die virtuellen Computer über mehrere isolierte Hardwarecluster verteilt sind, um die Verfügbarkeit zu verbessern. Während einer geplanten oder ungeplanten Wartung ist mindestens ein virtueller Computer verfügbar, um die Azure-SLA von 99,95 % zu erfüllen.
 
 **Recovery Services-Tresor:** Der [Recovery Services-Tresor](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview) speichert Sicherungsdaten und schützt alle Konfigurationen von Azure Virtual Machines in dieser Architektur. Durch einen Recovery Services-Tresor können Kunden Dateien und Ordner von einem virtuellen IaaS-Computer wiederherstellen, ohne den gesamten virtuelle Computer wiederherstellen zu müssen. So werden die Wiederherstellungszeiten verkürzt.
@@ -177,7 +169,6 @@ Darüber hinaus nutzt diese Referenzarchitektur die [Sicherheitsrisikobewertung]
 **Cloudzeuge**: Ein [Cloudzeuge](https://docs.microsoft.com/windows-server/failover-clustering/whats-new-in-failover-clustering#BKMK_CloudWitness) ist ein Failovercluster-Quorumzeuge in Windows Server 2016, der Azure als Vermittlungspunkt nutzt. Der Cloudzeuge erhält wie jeder andere Quorumzeuge eine Stimme und kann damit an Quorumberechnungen teilnehmen. Er verwendet aber den öffentlich verfügbaren Azure Blob Storage-Standard. Damit entfällt der zusätzliche Wartungsaufwand für virtuelle Computer, die in einer öffentlichen Cloud gehostet werden.
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
-
 Azure-Dienste protokollieren umfassend die System- und Benutzeraktivitäten sowie die Systemintegrität:
 - **Aktivitätsprotokolle:** [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
 - **Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von den einzelnen Ressourcen ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle. Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden.
@@ -197,13 +188,11 @@ Die folgenden Log Analytics-[Verwaltungslösungen](https://docs.microsoft.com/az
 [Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung oder Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt.  Commonwealth-Entitäten sollten Network Watcher-Datenflussprotokolle für Netzwerksicherheitsgruppen und virtuelle Computer implementieren. Diese Protokolle sollten in einem dedizierten Speicherkonto gespeichert werden, in dem nur Sicherheitsprotokolle gespeichert werden, und der Zugriff auf das Speicherkonto sollte durch rollenbasierte Zugriffssteuerungen geschützt werden.
 
 ## <a name="threat-model"></a>Bedrohungsmodell
-
 Das Datenflussdiagramm für diese Referenzarchitektur steht zum [Download](https://aka.ms/au-protected-iaaswa-tm) bereit und ist unten angegeben. Dieses Modell kann Kunden dabei helfen, bei Änderungen die potenziellen Risikopunkte in der Systeminfrastruktur zu verstehen.
 
 ![IaaS-Webanwendung für das AU-PROTECTED-Bedrohungsmodell](images/au-protected-iaaswa-threat-model.png?raw=true "Diagramm zur IaaS-Webanwendung für das AU-PROTECTED-Bedrohungsmodell")
 
 ## <a name="compliance-documentation"></a>Konformitätsdokumentation
-
 Diese Konformitätsdokumentation wird von Microsoft basierend auf den verfügbaren Plattformen und Diensten von Microsoft erstellt. Aufgrund der vielen unterschiedlichen Kundenbereitstellungen bietet diese Dokumentation einen allgemeinen Ansatz für eine Lösung, die nur in der Azure-Umgebung gehostet wird. Kunden können andere Produkte und Dienste basierend auf ihren eigenen Betriebssystemumgebungen und Geschäftsergebnissen identifizieren und verwenden. Kunden, die sich für die Verwendung lokaler Ressourcen entscheiden, müssen die Sicherheit und die Vorgänge für diese lokalen Ressourcen berücksichtigen. Die dokumentierte Lösung kann von den Kunden angepasst werden, um die spezifischen lokalen und sicherheitsrelevanten Anforderungen zu erfüllen.
 
 In der [Azure-Blaupause für Sicherheit und Compliance – AU-PROTECTED-Kundenzuständigkeitsmatrix](https://aka.ms/au-protected-crm) sind alle für AU-PROTECTED erforderlichen Sicherheitskontrollen aufgeführt. In dieser Matrix ist angegeben, ob die Implementierung der einzelnen Kontrollen Aufgabe von Microsoft, des Kunden oder beider Seiten ist.
@@ -211,9 +200,7 @@ In der [Azure-Blaupause für Sicherheit und Compliance – AU-PROTECTED-Kundenzu
 Die [Azure-Blaupause für Sicherheit und Compliance – Implementierungsmatrix für die IaaS-Webanwendung für GESCHÜTZTE Daten (AU-PROTECTED)](https://aka.ms/au-protected-iaaswa-cim) enthält Informationen zu den AU-PROTECTED-Kontrollen, die in der Architektur der IaaS-Webanwendung berücksichtigt werden, sowie eine ausführliche Beschreibung, wie die Implementierung die Anforderungen der einzelnen Kontrollen erfüllt.
 
 ## <a name="guidance-and-recommendations"></a>Anleitungen und Empfehlungen
-
 ### <a name="vpn-and-expressroute"></a>VPN und ExpressRoute
-
 Für klassifizierte Daten muss ein sicherer IPSec-VPN-Tunnel konfiguriert werden, um eine sichere Verbindung mit den Ressourcen herzustellen, die als Teil dieser Referenzarchitektur einer IaaS-Webanwendung bereitgestellt werden. Durch die ordnungsgemäße Einrichtung eines IPSec-VPNs können Kunden eine zusätzliche Schutzebene für Daten während der Übertragung hinzufügen.
 
 Durch die Implementierung eines sicheren IPSec-VPN-Tunnels mit Azure kann eine virtuelle private Verbindung zwischen einem lokalen Netzwerk und einem virtuellen Azure-Netzwerk hergestellt werden. Diese Verbindung kann über das Internet erfolgen und ermöglicht den Kunden das Übertragen von Informationen in einem sicheren „Tunnel“ innerhalb einer verschlüsselten Verbindung zwischen dem Kundennetzwerk und Azure. Eine Site-to-Site-VPN-Verbindung ist eine sichere, ausgereifte Technologie, die seit Jahrzehnten von Unternehmen aller Größen eingesetzt wird. 
@@ -231,7 +218,7 @@ Unabhängig davon, ob die Übertragung über das Internet oder Azure ExpressRout
 
 Informationen zu den Konfigurationsoptionen für VPN-Geräte und IPSec-/IKE-Parameter [finden Sie hier](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
 
-### <a name="azure-active-directory-setup"></a>Einrichtung von Azure Active Directory
+### <a name="azure-active-directory-setup"></a>Azure Active Directory-Einrichtungen
 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ist wichtig für die Verwaltung der Bereitstellung von Zugriff für Mitarbeiter, die mit der Umgebung interagieren. Ein bereits vorhandenes Windows Server Active Directory-Verzeichnis kann über [vier Klicks](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express) in Azure Active Directory integriert werden.
 
 Darüber hinaus können Kunden mit [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) einen Verbund mit lokalen [Active Directory-Verbunddiensten]( https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-azure-adfs) und Azure Active Directory konfigurieren. Durch die Verbundanmeldung können Kunden es ihren Benutzern ermöglichen, sich mit ihren lokalen Kennwörtern bei Azure Active Directory-basierten Diensten anzumelden, ohne ihre Kennwörter erneut eingeben zu müssen, während sie im Unternehmensnetzwerk angemeldet sind. Wenn Sie die Verbundoption mit Active Directory-Verbunddiensten (AD FS) verwenden, können Sie eine neue Installation von AD FS bereitstellen oder eine vorhandene Installation in einer Windows Server 2012 R2-Farm angeben.
@@ -244,7 +231,6 @@ Um zu verhindern, dass klassifizierte Daten mit Azure Active Directory synchroni
 - Übernehmen der Standardeinstellungen für die Funktion zum [Verhindern von versehentlichen Löschungen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-prevent-accidental-deletes) und für [Automatisches Upgrade](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-feature-automatic-upgrade)
 
 ## <a name="disclaimer"></a>Haftungsausschluss
-
 - Dieses Dokument dient nur zu Informationszwecken. MICROSOFT ÜBERNIMMT KEINE AUSDRÜCKLICHEN, STILLSCHWEIGENDEN ODER GESETZLICH VORGEGEBENEN GARANTIEN HINSICHTLICH DER INFORMATIONEN IN DIESEM DOKUMENT. Dieses Dokument wird so bereitgestellt, wie es ist. Informationen und Stellungnahmen in diesem Dokument, einschließlich URLs und anderer Verweise auf Internetwebsites, können ohne vorherige Ankündigung geändert werden. Kunden, die dieses Dokument lesen, tragen das Risiko, es zu verwenden.
 - Dieses Dokument gibt Kunden keine Rechte an geistigem Eigentum an Microsoft-Produkten oder -Lösungen.
 - Kunden dürfen dieses Dokument zu internen Referenzzwecken kopieren und verwenden.

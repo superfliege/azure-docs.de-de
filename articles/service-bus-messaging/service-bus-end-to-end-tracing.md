@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 847056acd2d97391782dcac1874a2739b7f5825c
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 5489fa999f3427345c3ee9f07f904296de224e31
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27741217"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140370"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
 
@@ -30,7 +30,7 @@ Wenn ein Producer eine Nachricht über eine Warteschlange sendet, geschieht dies
 Microsoft Azure Service Bus-Messaging verfügt über definierte Nutzlasteigenschaften, die sowohl von Producern als auch von Consumern zur Übergabe dieser Ablaufverfolgungskontexte verwendet werden müssen.
 Das Protokoll basiert auf dem [HTTP-Korrelationsprotokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
 
-| Eigenschaftenname        | Beschreibung                                                 |
+| Eigenschaftenname        | BESCHREIBUNG                                                 |
 |----------------------|-------------------------------------------------------------|
 |  Diagnostic-Id       | Ein eindeutiger Bezeichner eines externen Aufrufs, der vom Producer an die Warteschlange gesendet wird. Unter [Request-Id im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) finden Sie weitere Begründungen, Überlegungen und Informationen zum Format |
 |  Correlation-Context | des Vorgangskontexts, der über alle Dienste hinweg weitergegeben wird, die an der Vorgangsverarbeitung beteiligt sind. Weitere Informationen finden Sie unter [Correlation-Context im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context). |
@@ -45,8 +45,8 @@ Die Instrumentierung ermöglicht die Nachverfolgung aller Aufrufe, die von Clien
 [Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) bietet umfassende Funktionen zur Leistungsüberwachung, darunter die automatische Nachverfolgung von Anforderungen und Abhängigkeiten.
 
 Installieren Sie je nach Projekttyp ggf. das Application Insights SDK:
-- [ASP.NET](../application-insights/app-insights-asp-net.md)-Version 2.5-beta2 oder höher
-- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md)-Version 2.2.0-beta2 oder höher.
+- [ASP.NET](../application-insights/app-insights-asp-net.md): Installieren Sie Version 2.5-beta2 oder höher.
+- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md): Installieren Sie Version 2.2.0-beta2 oder höher.
 Über diese Links können Sie Details zur Erstellung von Ressourcen sowie zur Installation und Konfiguration des SDKs (falls erforderlich) abrufen. Weitere Informationen zu Nicht-ASP.NET-Anwendungen finden Sie im Artikel [Azure Application Insights für Konsolenanwendungen](../application-insights/application-insights-console.md).
 
 Wenn Sie das [Muster „Meldungshandler“](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) zum Verarbeiten von Nachrichten verwenden, sind Sie bereits fertig: Alle Service Bus-Aufrufe, die von Ihrem Dienst durchgeführt werden, werden automatisch nachverfolgt und mit anderen Telemetrieelementen korreliert. Andernfalls finden Sie im folgenden Beispiel Informationen zur manuellen Nachverfolgung der Nachrichtenverarbeitung.

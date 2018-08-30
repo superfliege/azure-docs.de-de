@@ -196,13 +196,13 @@ Mit Azure Storage Premium erhalten Sie unter Windows und Linux das gleiche Maß 
 Überprüfen Sie bei Ausführen von Linux mit Storage Premium die neuesten Updates hinsichtlich erforderlicher Treiber, um eine hohe Leistung zu gewährleisten.
 
 ## <a name="premium-storage-disk-sizes"></a>Größen von Storage Premium-Datenträgern
-Für Azure Storage Premium werden derzeit sieben Datenträgergrößen angeboten. Jede Datenträgergröße hat ein anderes Skalierungslimit hinsichtlich IOPS, Bandbreite und Speicher. Wählen Sie abhängig von den Anwendungsanforderungen und der Größe der Hochleistungs-VM die richtige Storage Premium-Datenträgergröße. Die folgende Tabelle zeigt die sieben verschiedenen Datenträgergrößen und ihre Kapazitäten. Die Datenträgergrößen P4 und P6 werden aktuell nur für verwaltete Datenträger unterstützt.
+Für Azure Storage Premium werden derzeit acht Datenträgergrößen angeboten. Jede Datenträgergröße hat ein anderes Skalierungslimit hinsichtlich IOPS, Bandbreite und Speicher. Wählen Sie abhängig von den Anwendungsanforderungen und der Größe der Hochleistungs-VM die richtige Storage Premium-Datenträgergröße. Die folgende Tabelle zeigt die acht verschiedenen Datenträgergrößen und ihre Kapazitäten. Die Datenträgergrößen P4, P6 und P15 werden aktuell nur für verwaltete Datenträger unterstützt.
 
-| Premium-Datenträgertyp  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Datenträgergröße           | 32 GB | 64 GB | 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS pro Datenträger       | 120   | 240   | 500   | 2.300              | 5.000              | 7.500              | 7.500              | 
-| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 
+| Premium-Datenträgertyp  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Datenträgergröße           | 32 GB | 64 GB | 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS pro Datenträger       | 120   | 240   | 500   | 1100 | 2.300              | 5.000              | 7.500              | 7.500              | 
+| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde |125 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 
 
 
 Die zu wählende Anzahl von Datenträgern hängt von der gewählten Datenträgergröße ab. Zum Erfüllen Ihrer Anwendungsanforderung können Sie entweder einen einzelnen P50- oder mehrere P10-Datenträger verwenden. Berücksichtigen Sie bei Ihrer Wahl die nachstehenden Aspekte.

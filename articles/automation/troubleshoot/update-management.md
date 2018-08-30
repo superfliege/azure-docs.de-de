@@ -4,20 +4,44 @@ description: Erfahren Sie, wie Sie Fehler mit Updateverwaltung beheben können.
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 08/08/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b77d1210ff48a4bd30834fcbad64173bf77b1290
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064385"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140327"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Behandeln von Problemen mit Updateverwaltung
 
-In diesem Artikel werden Lösungen zur Behebung von Problemen beschrieben, die bei Verwendung von Updateverwaltung auftreten können.
+In diesem Artikel werden Lösungen zur Behebung von Problemen beschrieben, die bei Verwendung der Updateverwaltung auftreten können.
+
+## <a name="general"></a>Allgemein
+
+### <a name="components-enabled-not-working"></a>Szenario: Die Komponenten für die Lösung „Updateverwaltung“ wurden aktiviert, und diese VM wird nun konfiguriert.
+
+#### <a name="issue"></a>Problem
+
+Die folgende Meldung wird 15 Minuten nach dem Onboarding auf einer VM angezeigt:
+
+```
+The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler kann die folgenden Gründe haben:
+
+1. Die Kommunikation an das Automation-Konto wird blockiert.
+2. Die VM, die integriert wird, stammt womöglich von einem Cloudcomputer, dessen System nicht mit dem installierten Microsoft Monitoring Agent vorbereitet wurde.
+
+#### <a name="resolution"></a>Lösung
+
+1. Sehen Sie sich den Abschnitt [Konfigurieren des Netzwerks](../automation-hybrid-runbook-worker.md#network-planning) an, um zu erfahren, welche Adressen und Ports zugelassen werden müssen, damit die Updateverwaltung funktioniert.
+2. Wenn Sie ein geklontes Image verwenden, bereiten Sie mit Sysprep das Image zunächst vor, und installieren Sie den MMA-Agent anschließend.
 
 ## <a name="windows"></a>Windows
 
@@ -31,7 +55,7 @@ Der folgende Abschnitt enthält spezifische Fehlermeldungen und passende Lösung
 
 Sie erhalten die folgende Fehlermeldung:
 
-```error
+```
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 

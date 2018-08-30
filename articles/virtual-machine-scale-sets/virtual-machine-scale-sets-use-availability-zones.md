@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: e19130c5ee418ebaa41f9ee42e217c52cdeec6cb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697941"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42139952"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 
@@ -45,10 +45,10 @@ Bei der Bereitstellung einer Skalierungsgruppe haben Sie auch die Möglichkeit, 
 
 ### <a name="zone-balancing"></a>Sicherstellen eines Zonengleichgewichts
 
-Für Skalierungsgruppen, die über mehrere Zonen hinweg bereitgestellt werden, können Sie auch „bestmögliches Zonengleichgewicht“ oder „strenges Zonengleichgewicht“ wählen. Eine Skalierungsgruppe befindet sich „im Gleichgewicht“, wenn die Anzahl von VMs in jeder Zone innerhalb einer VM-Anzahl aller anderen Zonen der Skalierungsgruppe liegt. Beispiel: 
+Für Skalierungsgruppen, die über mehrere Zonen hinweg bereitgestellt werden, können Sie auch „bestmögliches Zonengleichgewicht“ oder „strenges Zonengleichgewicht“ wählen. Eine Skalierungsgruppe befindet sich „im Gleichgewicht“, wenn die gleiche Anzahl von VMs oder +\\– 1 VM in allen anderen Zonen der Skalierungsgruppe liegt. Beispiel: 
 
-- Eine Skalierungsgruppe wird mit zwei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als im Gleichgewicht befindlich angesehen.
-- Eine Skalierungsgruppe wird mit einer VM in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als nicht im Gleichgewicht befindlich angesehen.
+- Eine Skalierungsgruppe wird mit zwei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als im Gleichgewicht befindlich angesehen. Es ist nur eine Zone mit einer unterschiedlichen VM-Anzahl vorhanden, und diese Anzahl ist nur 1 geringer als die Anzahl der VMs in anderen Zonen. 
+- Eine Skalierungsgruppe wird mit einer VM in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 als nicht im Gleichgewicht befindlich angesehen. Zone 1 verfügt über zwei VMs weniger als Zone 2 und 3.
 
 Es ist möglich, dass VMs in der Skalierungsgruppe erfolgreich erstellt werden, dies ist für die Bereitstellung von Erweiterungen dieser VMs jedoch nicht der Fall. Diese VMs mit Erweiterungsfehlern werden trotzdem mitgezählt, wenn ermittelt wird, ob sich eine Skalierungsgruppe im Gleichgewicht befindet. Eine Skalierungsgruppe mit drei VMs in Zone 1, drei VMs in Zone 2 und drei VMs in Zone 3 wird beispielsweise auch dann als im Gleichgewicht befindlich angesehen, wenn alle Erweiterungen in Zone 1 nicht erfolgreich und alle Erweiterungen in den Zonen 2 und 3 erfolgreich waren.
 
@@ -98,7 +98,7 @@ Ein vollständiges Beispiel einer Skalierungsgruppe mit einer einzelnen Zone und
 
 ### <a name="zone-redundant-scale-set"></a>Zonenredundante Skalierungsgruppe
 
-Um eine zonenredundante Skalierungsgruppe zu erstellen, verwenden Sie die öffentliche IP-Adresse einer *Standard*-SKU und einen Lastenausgleich. Für eine verbesserte Redundanz erstellt die *Standard*-SKU zonenredundante Netzwerkressourcen. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
+Um eine zonenredundante Skalierungsgruppe zu erstellen, verwenden Sie die öffentliche IP-Adresse einer *Standard*-SKU und einen Lastenausgleich. Für eine verbesserte Redundanz erstellt die *Standard*-SKU zonenredundante Netzwerkressourcen. Weitere Informationen finden Sie unter [Übersicht: Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) und [Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Geben Sie zum Erstellen einer zonenredundanten Skalierungsgruppe mehrere Zonen mit dem Parameter `--zones` an. Im folgenden Beispiel wird eine zonenredundante Skalierungsgruppe namens *myScaleSet* in den Zonen *1, 2 und 3* erstellt:
 
@@ -215,7 +215,7 @@ Um eine zonenredundante Skalierungsgruppe zu erstellen, geben Sie in der `zones`
 }
 ```
 
-Wenn Sie eine öffentliche IP-Adresse oder einen Lastenausgleich erstellen, geben Sie die Eigenschaft *"sku": { "name": "Standard" }"* an, um zonenredundante Netzwerkressourcen zu erstellenden. Sie müssen außerdem eine Netzwerksicherheitsgruppe und Regeln zum Zulassen von Datenverkehr erstellen. Weitere Informationen finden Sie unter [Übersicht über Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
+Wenn Sie eine öffentliche IP-Adresse oder einen Lastenausgleich erstellen, geben Sie die Eigenschaft *"sku": { "name": "Standard" }"* an, um zonenredundante Netzwerkressourcen zu erstellenden. Sie müssen außerdem eine Netzwerksicherheitsgruppe und Regeln zum Zulassen von Datenverkehr erstellen. Weitere Informationen finden Sie unter [Übersicht: Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md) und [Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md).
 
 Ein vollständiges Beispiel einer zonenredundanten Skalierungsgruppe mit Netzwerkressourcen finden Sie in [dieser Resource Manager-Beispielvorlage](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json).
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: a2aab89bcd550cc2b1dcc4f980f09b5c1e0e9464
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3c4c2d8f49fbddc4875d7a4abf5d7629bc8f942e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436378"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140145"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Log Analytics autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
@@ -471,3 +471,5 @@ post_data(customer_id, shared_key, body, log_type)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Verwenden Sie zum Abrufen von Daten aus dem Log Analytics-Repository die [Protokollsuch-API](log-analytics-log-search-api.md).
+
+- Erfahren Sie mehr über das [Erstellen einer Datenpipeline mit der Datensammler-API](log-analytics-create-pipeline-datacollector-api.md) mithilfe des Logic Apps-Workflows für Log Analytics.

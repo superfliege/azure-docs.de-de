@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/09/2018
+ms.date: 08/16/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 1b9807b587b6b52594133e8c792c72b21e8bd4ea
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7d27b95f9c7d21f49f547534ca99a44657062abc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503620"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42139859"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke
 
-In diesem Artikel erfahren Sie, wie Sie ein Peering virtueller Netzwerke erstellen, ändern oder löschen. VNet-Peering ist ein Mechanismus, mit dem virtuelle Netzwerke (VNets) über das Azure-Backbonenetzwerk miteinander verbunden werden können. Nach dem Peering werden die virtuellen Netzwerke weiterhin als separate Ressourcen verwaltet. Wenn Sie mit dem Peering virtueller Netzwerke noch nicht vertraut sind, lesen Sie mehr darüber in der [Übersicht über das Peering virtueller Netzwerke](virtual-network-peering-overview.md), oder arbeiten Sie ein [Tutorial](tutorial-connect-virtual-networks-portal.md) durch.
+In diesem Artikel erfahren Sie, wie Sie ein Peering virtueller Netzwerke erstellen, ändern oder löschen. VNET-Peering ist ein Mechanismus, mit dem virtuelle Netzwerke (VNETs) in der gleichen Region und regionsübergreifend (auch globales VNet-Peering genannt) über das Azure-Backbonenetzwerk miteinander verbunden werden können. Nach dem Peering werden die virtuellen Netzwerke weiterhin als separate Ressourcen verwaltet. Wenn Sie mit dem Peering virtueller Netzwerke noch nicht vertraut sind, lesen Sie mehr darüber in der [Übersicht über das Peering virtueller Netzwerke](virtual-network-peering-overview.md), oder arbeiten Sie ein [Tutorial](tutorial-connect-virtual-networks-portal.md) durch.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -112,10 +112,10 @@ Wenn Sie möchten, dass virtuelle Netzwerke gelegentlich, jedoch nicht immer, ko
 
 ## <a name="requirements-and-constraints"></a>Anforderungen und Einschränkungen 
 
-- <a name="cross-region"></a>Sie können virtuelle Netzwerke in derselben Region oder in verschiedenen Regionen per Peering verknüpfen. Die folgenden Einschränkungen gelten nicht, wenn sich beide virtuelle Netzwerke in der *gleichen* Region befinden, sondern nur, wenn sie global per Peering verknüpft werden: 
-    - Die virtuellen Netzwerke können sich in einer beliebigen Region einer öffentlichen Azure-Cloud befinden, jedoch nicht in Regionen nationaler Azure-Clouds.
-    - Ressourcen in einem virtuellen Netzwerk können nicht mit der IP-Adresse eines internen Azure-Lastenausgleichs in einem per Peering verbundenen virtuellen Netzwerk kommunizieren. Der Lastenausgleich und die Ressourcen, die mit diesem kommunizieren, müssen sich im selben virtuellen Netzwerk befinden.
-    - Sie können keine Remotegateways verwenden oder einen Gatewaytransit zulassen. Dies ist nur möglich, wenn sich beide virtuelle Netzwerke im Peering in derselben Region befinden. 
+- <a name="cross-region"></a>Sie können virtuelle Netzwerke in derselben Region oder in verschiedenen Regionen per Peering verknüpfen. Das Peering von virtuellen Netzwerken in unterschiedlichen Regionen wird auch als *globales Peering* bezeichnet. 
+- Wenn ein globales Peering erstellt wird, können sich die virtuellen Netzwerke in einer beliebigen Region einer öffentlichen Azure-Cloud befinden, jedoch nicht in Regionen nationaler Azure-Clouds. Sie können virtuelle Netzwerke nur in derselben Region oder in nationalen Clouds per Peering verknüpfen.
+- Ressourcen in einem virtuellen Netzwerk können nicht mit der Front-End-IP-Adresse eines internen Azure-Lastenausgleichs in einem per globalem Peering verbundenen virtuellen Netzwerk kommunizieren. Der Lastenausgleich und die Ressourcen, die mit diesem kommunizieren, müssen sich in einem virtuellen Netzwerk in derselben Region befinden. Wenn sich jedoch die virtuellen Netzwerke mit Peering in derselben Region befinden, können Ressourcen in jedem virtuellen Netzwerk mit der Front-End-IP-Adresse eines internen Azure-Lastenausgleichs in jedem virtuellen Netzwerk im Peering kommunizieren.
+- Sie können keine Remotegateways verwenden oder Gatewaytransit in virtuellen Netzwerken mit globalem Peering zulassen. Dies ist nur möglich, wenn sich die per Peering verbundene virtuelle Netzwerke in derselben Region befinden.
 - Die virtuellen Netzwerke können sich im gleichen Abonnement oder in verschiedenen Abonnements befinden. Wenn Sie eine Peerverbindung zwischen virtuellen Netzwerken in verschiedenen Abonnements herstellen, müssen beide Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Wenn Sie noch keinen AD-Mandanten besitzen, [erstellen Sie schnell einen](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Sie können ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) verwenden, um zwei virtuelle Netzwerke in unterschiedlichen Abonnements zu verknüpfen, die verschiedenen Active Directory-Mandanten zugewiesen sind.
 - Die mittels Peering verknüpften virtuellen Netzwerke dürfen keine sich überschneidenden IP-Adressräume aufweisen.
 - Sie können Adressbereiche zum Adressraum eines virtuellen Netzwerks hinzufügen oder aus diesem löschen, nachdem ein virtuelles Netzwerk per Peering mit einem anderen virtuellen Netzwerk verknüpft wurde. Um Adressbereiche hinzuzufügen oder zu entfernen, das Peering zu löschen oder Adressräume hinzuzufügen oder zu entfernen, erstellen Sie das Peering erneut. Informationen zum Hinzufügen oder Entfernen von Adressbereichen in virtuellen Netzwerken finden Sie unter [Verwalten virtueller Netzwerke](manage-virtual-network.md).

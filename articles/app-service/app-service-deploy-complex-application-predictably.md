@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 3719e037f1564411a8f94d1ca962ba1ef6b5d435
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22987455"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42140317"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
-Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 
+Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](https://azure.microsoft.com/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 
 
-Beim Bereitstellen umfassender Anwendungen, die aus stark entkoppelten Microservices bestehen, sind Wiederholbarkeit und Vorhersagbarkeit von entscheidender Bedeutung für den Erfolg. [Azure App Service](/services/app-service/) ermöglicht Ihnen, Microservices zu erstellen, die Web-, mobile, API- und Logik-Apps enthalten. Mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) können Sie alle Microservices zusammen mit Ressourcenabhängigkeiten, z.B. Datenbank- und Quellcodeverwaltungseinstellungen, als Einheit verwalten. Jetzt können Sie auch eine solche Anwendung mit JSON-Vorlagen und einfachen PowerShell-Skripts bereitstellen. 
+Beim Bereitstellen umfassender Anwendungen, die aus stark entkoppelten Microservices bestehen, sind Wiederholbarkeit und Vorhersagbarkeit von entscheidender Bedeutung für den Erfolg. [Azure App Service](https://azure.microsoft.com/services/app-service/) ermöglicht Ihnen, Microservices zu erstellen, die Web-, mobile, API- und Logik-Apps enthalten. Mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) können Sie alle Microservices zusammen mit Ressourcenabhängigkeiten, z.B. Datenbank- und Quellcodeverwaltungseinstellungen, als Einheit verwalten. Jetzt können Sie auch eine solche Anwendung mit JSON-Vorlagen und einfachen PowerShell-Skripts bereitstellen. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -68,7 +68,7 @@ Lassen Sie uns jetzt beginnen.
 3. Die Website [deploy-to-azure](https://deploy.azure.com) wird aufgerufen, und Sie werden zur Eingabe von Bereitstellungsparametern aufgefordert. Beachten Sie, dass die meisten Felder mit dem Namen des Repositorys und einigen zufälligen Zeichenfolgen gefüllt sind. Sie können bei Bedarf alle Felder ändern, aber Sie müssen nur den SQL Server-Administratoranmeldenamen und das Kennwort eingeben. Klicken Sie dann auf **Next**.
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-1-deploybuttonui.png)
-4. Klicken Sie als Nächstes auf **Deploy** , um den Bereitstellungsprozess zu starten. Sobald der Prozess bis zum Abschluss ausgeführt wurde, klicken Sie auf den Link „http://todoapp*XXXX*.azurewebsites.net“, um die bereitgestellte Anwendung anzuzeigen. 
+4. Klicken Sie als Nächstes auf **Deploy** , um den Bereitstellungsprozess zu starten. Sobald der Prozess abgeschlossen wurde, klicken Sie auf den Link „http://todoapp*XXXX*.azurewebsites.net“, um die bereitgestellte Anwendung anzuzeigen. 
    
    ![](./media/app-service-deploy-complex-application-predictably/gettemplate-2-deployprogress.png)
    
@@ -103,7 +103,7 @@ Hier werden nicht alle Details des JSON-Formats beschrieben, aber der Abschnitt 
 ### <a name="parameters"></a>Parameter
 Sehen Sie sich den Parameterabschnitt an. Dort erkennen Sie, dass die meisten dieser Parameter deshalb vorhanden sind, weil die Schaltfläche **Deploy to Azure** Sie zur Eingabe aufgefordert hat. Die Website hinter der Schaltfläche **Deploy to Azure** füllt die Eingabebenutzeroberfläche mit den Parametern, die in „azuredeploy.json“ definiert wurden. Diese Parameter werden in den Ressourcendefinitionen verwendet, z. B. als Ressourcennamen, Eigenschaftswerte usw.
 
-### <a name="resources"></a>Ressourcen
+### <a name="resources"></a>angeben
 Im Ressourcenknoten sehen Sie, dass vier Ressourcen der obersten Ebene definiert wurden, einschließlich einer SQL Server-Instanz, eines App Service-Plans und zwei Web-Apps. 
 
 #### <a name="app-service-plan"></a>App Service-Plan

@@ -1,0 +1,53 @@
+---
+title: Exemplarische Vorgehensweise zum Project Acoustics-Beispiel – Cognitive Services
+description: In dieser exemplarischen Vorgehensweise wird die Unity-Beispielszene für Project Acoustics mit der Bereitstellung auf dem Desktop und in einer VR beschrieben.
+services: cognitive-services
+author: kegodin
+manager: noelc
+ms.service: cognitive-services
+ms.component: acoustics
+ms.topic: article
+ms.date: 08/17/2018
+ms.author: kegodin
+ms.openlocfilehash: b738cc2fc7db6987b8f4ad54a2c53cc9e69989b3
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "40181194"
+---
+# <a name="unity-sample-walkthrough"></a>Exemplarische Vorgehensweise zu Unity
+Dies ist eine exemplarische Vorgehensweise zum Project Acoustics-Beispiel. Weitere Informationen dazu, was Project Acoustics ist, finden Sie unter [Introduction to Project Acoustics (Einführung in Project Acoustics)](what-is-acoustics.md). Unterstützung beim Hinzufügen des Project Acoustics-Pakets zu einem bereits vorhandenen Unity-Projekt finden Sie im [Leitfaden für erste Schritte](getting-started.md).
+
+## <a name="requirements-for-running-the-sample-project"></a>Voraussetzungen für die Ausführung des Beispielprojekts
+* Unity 2018.2 und höher mit Skriptlaufzeitversion .NET 4.x
+* Unity-Editor für Windows (64-Bit)
+* Das Beispiel unterstützt Windows Desktop, UWP und Android-Ziele mit Head-Mounted Displays (HMDs).
+* Ein Azure Batch-Abonnement ist für Bake-Vorgänge erforderlich.
+
+## <a name="sample-project-setup"></a>Einrichtung des Beispielprojekts
+Laden Sie das Paket **MicrosoftAcoustics.Sample.unitypackage** herunter, und importieren Sie es. Beim Importieren werden Projekteinstellungen wie **Spatializer** und **Skriptlaufzeitversion** entsprechend der Anforderungen des Plug-Ins aktualisiert. Nach dem Importieren wird in der Unity-Konsole eine Fehlermeldung von **AcousticsGeometry.cs** zum Ändern der Skriptlaufzeitversion in **.NET 4.x Equivalent** (.NET 4.x-Entsprechung) angezeigt. Diese Einstellung wird im Rahmen des Paketimports geändert. Danach muss Unity neu gestartet werden, damit die Änderung wirksam wird. Starten Sie Unity jetzt neu.
+
+## <a name="running-the-sample"></a>Ausführen des Beispiels
+Das Beispiel enthält die Demoszene **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Diese Szene enthält eine verräumlichte Audioquelle, die über einen Floating-Cube (mit der Bezeichnung **AudioHolder** in der **Hierarchie**) wiedergegeben wird. Zur Unterstützung beim Erstellen eines allgemeinen Navigationsskripts ist die Hauptkamera ein untergeordnetes Element des Objekts „CameraHolder“. 
+
+![Hierarchieansicht](media/SampleHierarchyView.png)
+
+Die Szene wurde bereits erstellt und enthält eine ACE-Datei, die dem Prefab **MicrosoftAcoustics** in der **Hierarchie** zugeordnet ist. 
+
+Hören Sie sich an, wie die Szene klingt, indem Sie im Unity-Editor auf die Wiedergabeschaltfläche klicken. Navigieren Sie mit den Tasten W, A, S und D sowie mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, klicken Sie mit der linken Maustaste, oder drücken Sie die Taste des primären Controllers. Um die verschiedenen Tonquellen zu durchlaufen, klicken Sie mit der rechten Maustaste, oder drücken Sie die Zurück-Taste am Controller.
+
+## <a name="targeting-other-platforms"></a>Verwenden von anderen Plattformen als Ziel
+Das Beispiel enthält Einstellungen zum Ausführen unter Windows Desktop, UWP, Windows Mixed Reality, Android und Oculus Go. Standardmäßig ist das Projekt für Windows Desktop konfiguriert. Wenn Sie eine VR-Plattform als Ziel verwenden möchten, wechseln Sie zu den Playereinstellungen (**Edit > Project Settings > Player** (Bearbeiten > Projekteinstellungen > Player)), suchen Sie die **XR Settings** (VR-Einstellungen), und aktivieren Sie das Kontrollkästchen **Virtual Reality Supported** (Virtuelle Realität unterstützen).
+
+![Aktivieren von VR](media/VRSupport.png)  
+
+Schließen Sie ein VR-Headset an Ihren PC an. Wechseln Sie zu **File > Build Settings** (Datei > Buildeinstellungen), und klicken Sie auf **Build and Run** (Erstellen und Ausführen), um das Beispiel für Ihr VR-Headset bereitzustellen. Navigieren Sie mit den Motion-Controllern für Ihr Headset durch die Szenen, oder verwenden Sie die Tasten W, A, S und D auf der Tastatur.    
+Wenn Sie Android und Oculus Go als Ziel verwenden möchten, wählen Sie im Menü **Build Settings** (Buildeinstellungen) die Option „Android“ aus. Klicken Sie auf **Switch Target** (Ziel wechseln) und dann auf **Build and Run** (Erstellen und Ausführen). Dadurch wird die Beispielszene für das angeschlossene Android-Gerät bereitgestellt. Weitere Informationen zur Unity-Entwicklung für Android finden Sie in der [Dokumentation zu Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
+
+![Android-Zielgeräte](media/TargetAndroid.png)  
+
+## <a name="next-steps"></a>Nächste Schritte
+* [Erstellen eines Azure-Kontos](create-azure-account.md) für eigene Bake-Vorgänge
+* Untersuchen des [Entwurfsprozesses](design-process.md)
+

@@ -1,34 +1,32 @@
 ---
 title: Azure SQL-Anmeldungen und -Benutzer | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenbank und insbesondere dazu, wie der Datenbankzugriff und die Anmeldesicherheit über das Prinzipalkonto auf Serverebene verwaltet wird.
+description: Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenbank und SQL Data Warehouse und insbesondere dazu, wie der Datenbankzugriff und die Anmeldesicherheit über das Prinzipalkonto auf Serverebene verwaltet werden.
 keywords: Sicherheit für SQL-Datenbank,Datenbanksicherheitsverwaltung,Anmeldesicherheit,Datenbanksicherheit,Datenbankzugriff
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 08/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 8529256313d8e3cb3b7155bb1b79764c17274397
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7dbd2585628c64f5baf7df6083e38217d00953be
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649804"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42140356"
 ---
-# <a name="controlling-and-granting-database-access"></a>Steuern und Gewähren von Datenbankzugriff
+# <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Steuern und Gewähren des Datenbankzugriffs für SQL-Datenbank und SQL Data Warehouse
 
-Nachdem Firewallregeln konfiguriert wurden, können Benutzer über ein Administratorkonto, als Datenbankbesitzer oder als Datenbankbenutzer in der Datenbank eine Verbindung mit einer SQL-Datenbank herstellen.  
+Nach der Konfiguration von Firewallregeln können Sie über ein Administratorkonto als Datenbankbesitzer oder als Datenbankbenutzer in der Datenbank eine Verbindung mit einer Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) herstellen.  
 
 >  [!NOTE]  
 >  Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. 
->
 
 > [!TIP]
 > Ein Tutorial finden Sie unter [Schützen von Azure SQL-Datenbank](sql-database-security-tutorial.md).
->
-
 
 ## <a name="unrestricted-administrative-accounts"></a>Uneingeschränkte Administratorkonten
 Es gibt zwei Administratorkonten (**Serveradministrator** und **Active Directory-Administrator**), die als Administratoren fungieren. Öffnen Sie das Azure-Portal, und navigieren Sie zu den Eigenschaften Ihres SQL-Servers, um diese Administratorkonten für Ihren SQL-Server zu identifizieren.
@@ -38,17 +36,17 @@ Es gibt zwei Administratorkonten (**Serveradministrator** und **Active Directory
 - **Serveradministrator**   
 Wenn Sie einen Azure SQL-Server erstellen, müssen Sie eine **Serveradministratoranmeldung** angeben. Vom SQL-Server wird dieses Konto als Anmeldung für die Masterdatenbank erstellt. Dieses Konto stellt die Verbindung per SQL Server-Authentifizierung (Benutzername und Kennwort) her. Nur eines dieser Konten kann vorhanden sein.   
 - **Azure Active Directory-Administrator**   
-Ein Azure Active Directory-Konto – entweder für eine Einzelperson oder eine Sicherheitsgruppe – kann auch als Administrator konfiguriert werden. Die Konfiguration eines Azure AD-Administrators ist optional. Ein Azure AD-Administrator muss aber konfiguriert werden, wenn Sie Azure AD-Konten zum Herstellen der Verbindung mit SQL-Datenbank verwenden möchten. Weitere Informationen zur Konfiguration des Azure Active Directory-Zugriffs finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md) und [SSMS-Unterstützung für Azure AD MFA mit SQL-Datenbank und SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
+Ein Azure Active Directory-Konto – entweder für eine Einzelperson oder eine Sicherheitsgruppe – kann auch als Administrator konfiguriert werden. Die Konfiguration eines Azure AD-Administrators ist optional. Ein Azure AD-Administrator **muss** aber konfiguriert werden, wenn Sie Azure AD-Konten zum Herstellen der Verbindung mit SQL-Datenbank verwenden möchten. Weitere Informationen zur Konfiguration des Azure Active Directory-Zugriffs finden Sie unter [Herstellen einer Verbindung mit SQL-Datenbank oder SQL Data Warehouse unter Verwendung der Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md) und [SSMS-Unterstützung für Azure AD MFA mit SQL-Datenbank und SQL Data Warehouse](sql-database-ssms-mfa-authentication.md).
  
 
 Die Konten **Serveradministrator** und **Azure AD-Administrator** weisen die folgenden Merkmale auf:
-- Dies sind die einzigen Konten, mit denen automatisch eine Verbindung mit einer beliebigen SQL-Datenbank auf dem Server hergestellt werden kann. (Zum Herstellen einer Verbindung mit einer Benutzerdatenbank müssen andere Konten entweder der Besitzer der Datenbank sein oder in der Benutzerdatenbank über ein Benutzerkonto verfügen.)
+- Sie sind die einzigen Konten, mit denen automatisch eine Verbindung mit einer beliebigen SQL-Datenbank auf dem Server hergestellt werden kann. (Zum Herstellen einer Verbindung mit einer Benutzerdatenbank müssen andere Konten entweder der Besitzer der Datenbank sein oder in der Benutzerdatenbank über ein Benutzerkonto verfügen.)
 - Für diese Konten wird auf Benutzerdatenbanken mit dem Benutzer `dbo` zugegriffen, und alle Berechtigungen sind in den Benutzerdatenbanken enthalten. (Der Besitzer einer Benutzerdatenbank greift auf die Datenbank ebenfalls als Benutzer `dbo` zu.) 
-- Diese Konten greifen auf die Datenbank `master` nicht als Benutzer `dbo` zu und verfügen für „master“ über eingeschränkte Berechtigungen. 
-- Diese Konten sind keine Mitglieder der festen Standardserverrolle `sysadmin` von SQL Server, die in SQL-Datenbank nicht verfügbar ist.  
+- Die Konten greifen auf die Datenbank `master` nicht als Benutzer `dbo` zu und verfügen für „master“ über eingeschränkte Berechtigungen. 
+- Diese Konten sind **keine** Mitglieder der festen Standardserverrolle `sysadmin` von SQL Server, die in SQL-Datenbank nicht verfügbar ist.  
 - Mit diesen Konten können Datenbanken, Anmeldungen, Benutzer in „master“ und Firewallregeln auf Serverebene erstellt, geändert und verworfen werden.
-- Mit diesen Konten können Mitglieder für die Rollen `dbmanager` und `loginmanager` hinzugefügt und entfernt werden.
-- Mit diesen Konten kann die Systemtabelle `sys.sql_logins` angezeigt werden.
+- Sie können Mitglieder für die Rollen `dbmanager` und `loginmanager` hinzufügen und entfernen.
+- Sie können die `sys.sql_logins`-Systemtabelle anzeigen.
 
 ### <a name="configuring-the-firewall"></a>Konfigurieren der Firewall
 Wenn eine Firewall auf Serverebene für eine einzelne IP-Adresse oder einen Bereich konfiguriert wird, kann über **SQL Server-Administrator** und **Azure Active Directory-Administrator** eine Verbindung mit der Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die erste Firewall auf Serverebene kann über das [Azure-Portal](sql-database-get-started-portal.md) konfiguriert werden, indem die [PowerShell](sql-database-get-started-powershell.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx) verwendet wird. Nachdem eine Verbindung hergestellt wurde, können Sie per [Transact-SQL](sql-database-configure-firewall-settings.md) auch weitere Firewallregeln auf Serverebene konfigurieren.
@@ -89,7 +87,7 @@ Eine dieser Administratorrollen ist die Rolle **dbmanager**. Mitglieder dieser R
    
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
-   CREATE USER Tran WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
+   CREATE USER Ann WITH PASSWORD = '<strong_password>'; -- To create a SQL Database contained database user
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 

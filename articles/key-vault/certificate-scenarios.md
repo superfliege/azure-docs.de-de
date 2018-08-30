@@ -3,7 +3,7 @@ title: Erste Schritte mit Key Vault-Zertifikaten
 description: Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
 services: key-vault
 documentationcenter: ''
-author: lleonard-msft
+author: bryanla
 manager: mbaldwin
 tags: azure-resource-manager
 ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: alleonar
-ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.author: bryanla
+ms.openlocfilehash: f2becc5d746c3079e8f686748f33f10cd4a8d8c8
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109483"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140322"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -51,14 +51,14 @@ Zertifikate bestehen aus drei zusammenhängenden Ressourcen, die als Key Vault-Z
 
 **Schritt 3**: Ein Contoso-Administrator und ein Contoso-Mitarbeiter (Key Vault-Benutzer), der Zertifikate besitzt, kann abhängig von der Zertifizierungsstelle ein Zertifikat vom Administrator oder direkt über das Konto bei der Zertifizierungsstelle abrufen.  
 
--   Beginnen Sie mit einem Vorgang zum Hinzufügen von Anmeldeinformationen zu einem Schlüsseltresor, indem Sie eine [Zertifikataussteller](https://docs.microsoft.com/rest/api/keyvault/certificate-issuers)-Ressource erstellen. 
+-   Beginnen Sie mit einem Vorgang zum Hinzufügen von Anmeldeinformationen zu einem Schlüsseltresor, indem Sie eine [Zertifikataussteller-Ressource festlegen](/rest/api/keyvault/setcertificateissuer). Ein Zertifikataussteller ist eine Entität, die in Azure Key Vault (KV) als eine CertificateIssuer-Ressource dargestellt wird. Sie dient zur Bereitstellung von Informationen zur Quelle eines KV-Zertifikats: Ausstellername, Anbieter, Anmeldeinformationen und andere administrative Details.
     -   Beispiel: MyDigiCertIssuer  
         -   Anbieter  
         -   Anmeldeinformationen: Kontoanmeldeinformationen für die Zertifizierungsstelle. Jede Zertifizierungsstelle verfügt über eigene spezifische Daten.  
 
      Weitere Informationen zum Erstellen von Konten bei Anbietern von Zertifizierungsstellen finden Sie im zugehörigen Beitrag im [Key Vault-Blog](http://aka.ms/kvcertsblog).  
 
-**Schritt 3.1**: Einrichten von [Zertifikatkontakten](https://docs.microsoft.com/rest/api/keyvault/certificate-contacts) für Benachrichtigungen. Dies ist der Kontakt für den Key Vault-Benutzer. Key Vault erzwingt diesen Schritt nicht.  
+**Schritt 3.1**: Einrichten von [Zertifikatkontakten](/rest/api/keyvault/setcertificatecontacts) für Benachrichtigungen. Dies ist der Kontakt für den Key Vault-Benutzer. Key Vault erzwingt diesen Schritt nicht.  
 
 Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.  
 
@@ -121,5 +121,5 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
   (5): Ihre Anwendung schließt die Erstellung des neuen Zertifikats durch das Zusammenführen mit dem X.509-Zertifikat Ihrer Zertifizierungsstelle ab.
 
 ## <a name="see-also"></a>Siehe auch
-- [Zertifikatvorgänge](/rest/api/keyvault/certificate-operations)
+
 - [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9f37a7665521b69634329078258b00cb9f53c407
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358717"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818213"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -146,7 +146,7 @@ Einige Features werden unter Windows unterstützt, aber nicht unter Linux. Weite
 ### <a name="standalone-clusters"></a>Eigenständige Cluster
 Service Fabric verfügt über ein Installationspaket, mit dem Sie eigenständige Service Fabric-Cluster lokal oder bei einem Cloudanbieter erstellen können. Eigenständige Cluster bieten Ihnen die Möglichkeit zum Hosten von Clustern an beliebigen Orten. Wenn Ihre Daten der Konformität oder gesetzlichen Einschränkungen unterliegen oder Sie Ihre Daten lokal speichern möchten, können Sie Ihre eigenen Cluster und Anwendungen hosten. Service Fabric-Anwendungen können ohne Änderungen in mehreren Hostumgebungen ausgeführt werden. Daher lassen sich Ihre Kenntnisse über das Erstellen von Anwendungen von einer Hostumgebung in die andere übertragen. 
 
-[Erstellen Ihres ersten eigenständigen Service Fabric-Clusters](service-fabric-get-started-standalone-cluster.md)
+[Erstellen Ihres ersten eigenständigen Service Fabric-Clusters](service-fabric-cluster-creation-for-windows-server.md)
 
 Eigenständige Linux-Clustern werden noch nicht unterstützt.
 

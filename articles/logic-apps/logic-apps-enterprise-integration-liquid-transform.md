@@ -1,54 +1,50 @@
 ---
 title: Konvertieren von JSON-Daten mit Liquid-Transformationen – Azure Logic Apps | Microsoft Docs
-description: Erstellen Sie mithilfe von Logic Apps und einer Liquid-Vorlage Transformationen oder Zuordnungen für erweiterte JSON-Transformationen.
+description: Erstellen von Transformationen oder Zuordnungen für erweiterte JSON-Transformationen mithilfe von Logic Apps und einer Liquid-Vorlage
 services: logic-apps
-documentationcenter: ''
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: divyaswarnkar
+ms.author: divswa
+manager: jeconnoc
+ms.reviewer: estfan, LADocs
+ms.suite: integration
 ms.topic: article
-ms.date: 12/05/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 42a102c9b2663380a93d56cc5f8fb82abaa83b74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/16/2018
+ms.openlocfilehash: 140c92d260ac6423127e478e304cbebcf9c42124
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299510"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42140159"
 ---
-# <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>Durchführen von erweiterten JSON-Transformationen mit einer Liquid-Vorlage
+# <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Ausführen erweiterter JSON-Transformationen mit Liquid-Vorlagen in Azure Logic Apps
 
-Azure Logic Apps unterstützt grundlegende JSON-Transformationen über native Datenvorgangsaktionen wie **JSON erstellen** oder **JSON analysieren**. Für erweiterte JSON-Transformationen können Sie mit Ihren Logik-Apps Liquid-Vorlagen verwenden. 
-[Liquid](https://shopify.github.io/liquid/) ist eine Open-Source-Vorlagensprache für flexible Web-Apps.
- 
-In diesem Artikel erfahren Sie, wie Sie eine Liquid-Zuordnung oder -Vorlage verwenden, die komplexere JSON-Transformationen wie Iterationen, Ablaufsteuerungen, Variablen usw. unterstützen kann. Bevor Sie eine Liquid-Transformation in Ihrer Logik-App ausführen können, müssen Sie eine JSON-zu-JSON-Zuordnung mit dieser Liquid-Zuordnung definieren und die Zuordnung in Ihrem Integrationskonto speichern.
+Sie können grundlegende JSON-Transformationen in Ihren Logik-Apps über native Datenvorgangsaktionen wie **JSON erstellen** oder **JSON analysieren** durchführen. Sie können Vorlagen oder Zuordnungen mit [Liquid](https://shopify.github.io/liquid/) erstellen, einer Open Source-Vorlagensprache für flexible Web-Apps, um erweiterte JSON-Transformationen durchzuführen. Mit Liquid-Vorlagen können Sie definieren, wie JSON-Ausgaben umgewandelt werden. Dazu unterstützt Liquid komplexere JSON-Transformationen wie Iterationen, Ablaufsteuerungen, Variablen usw. unterstützen kann. 
+
+Bevor Sie eine Liquid-Transformation in Ihrer Logik-App ausführen können, müssen Sie daher zunächst eine JSON-zu-JSON-Zuordnung mit dieser Liquid-Vorlage definieren und die Zuordnung in Ihrem Integrationskonto speichern. Dieser Artikel zeigt, wie diese Liquid-Vorlage bzw. -Zuordnung erstellt und verwendet wird. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Sie können sich aber auch [für ein Abonnement mit nutzungsbasierter Bezahlung registrieren](https://azure.microsoft.com/pricing/purchase-options/).
+* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Ein Basic-[Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md)
+* Ein Basic-[Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
+## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Erstellen einer Liquid-Vorlage oder -Zuordnung für Ihr Integrationskonto
 
-## <a name="create-a-liquid-template-or-map-for-your-integration-account"></a>Erstellen einer Liquid-Vorlage oder -Zuordnung für Ihr Integrationskonto
+1. Erstellen Sie für dieses Beispiel die Liquid-Beispielvorlage, die in diesem Schritt beschrieben wird.
+Wenn Sie Filter in Ihrer Liquid-Vorlage verwenden möchten, stellen Sie sicher, dass diese mit Großbuchstaben beginnen. Weitere Informationen zu [Liquid-Filtern](https://shopify.github.io/liquid/basics/introduction/#filters). 
 
-1. Erstellen Sie die Liquid-Beispielvorlage für dieses Beispiel. Die Liquid-Vorlage definiert, wie JSON-Eingaben transformiert werden, wie hier beschrieben:
-
-   ``` json
+   ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
-      {
-        "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
-        "firstNameUpperCase": "{{content.firstName | Upcase}}",
-        "phoneAreaCode": "{{content.phone | Slice: 1, 3}}",
-        "devices" : [
-        {%- for device in deviceList -%}
+   
+   {
+      "fullName": "{{content.firstName | Append: ' ' | Append: content.lastName}}",
+      "firstNameUpperCase": "{{content.firstName | Upcase}}",
+      "phoneAreaCode": "{{content.phone | Slice: 1, 3}}",
+      "devices" : [
+         {%- for device in deviceList -%}
             {%- if forloop.Last == true -%}
             "{{device}}"
             {%- else -%}
@@ -56,42 +52,39 @@ In diesem Artikel erfahren Sie, wie Sie eine Liquid-Zuordnung oder -Vorlage verw
             {%- endif -%}
         {%- endfor -%}
         ]
-      }
+   }
    ```
-   > [!NOTE]
-   > Wenn Ihre Liquid-Vorlage [Filter](https://shopify.github.io/liquid/basics/introduction/#filters) verwendet, müssen diese Filter mit Großbuchstaben beginnen. 
 
-2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-3. Wählen Sie im Azure-Hauptmenü die Option **Alle Ressourcen** aus. 
-
-4. Suchen Sie im Suchfeld nach Ihrem Integrationskonto, und wählen Sie es aus.
+2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie im Azure-Hauptmenü die Option **Alle Ressourcen** aus. Suchen Sie im Suchfeld nach Ihrem Integrationskonto, und wählen Sie es aus.
 
    ![Auswählen des Integrationskontos](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-5.  Wählen Sie auf der Kachel „Integrationskonto“ die Option **Zuordnungen** aus.
+3.  Wählen Sie unter **Komponenten** die Option **Zuordnungen** aus.
 
-   ![Auswählen von Zuordnungen](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
+    ![Auswählen von Zuordnungen](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
 
-6. Wählen Sie **Hinzufügen** aus, und geben Sie dann die folgenden Details für die Zuordnung an:
+4. Wählen Sie **Hinzufügen** aus, und geben Sie dann die folgenden Details für die Zuordnung an:
 
-   * **Name**: Der Name für Ihre Zuordnung, der in diesem Beispiel „JsontoJsonTemplate“ lautet.
-   * **Zuordnungstyp**: Der Typ Ihrer Zuordnung. Bei JSON-zu-JSON-Transformationen müssen Sie **liquid** auswählen.
-   * **Zuordnung**: Eine vorhandene Liquid-Vorlagen- oder -Zuordnungsdatei, die für die Transformation verwendet wird. In diesem Beispiel heißt die Datei „SimpleJsonToJsonTemplate.liquid“. Sie können die Dateiauswahl verwenden, um diese Datei zu suchen.
+   | Eigenschaft | Wert | BESCHREIBUNG | 
+   |----------|-------|-------------|
+   | **Name** | JsonToJsonTemplate | Der Name für Ihre Zuordnung, der in diesem Beispiel „JsonToJsonTemplate“ lautet. | 
+   | **Zuordnungstyp** | **Liquid** | Der Typ Ihrer Zuordnung. Bei JSON-zu-JSON-Transformationen müssen Sie **liquid** auswählen. | 
+   | **Map** | "SimpleJsonToJsonTemplate.liquid" | Eine vorhandene Liquid-Vorlagen- oder -Zuordnungsdatei, die für die Transformation verwendet wird. In diesem Beispiel heißt die Datei „SimpleJsonToJsonTemplate.liquid“. Sie können die Dateiauswahl verwenden, um diese Datei zu suchen. |
+   ||| 
 
    ![Hinzufügen der Liquid-Vorlage](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
     
 ## <a name="add-the-liquid-action-for-json-transformation"></a>Hinzufügen der Liquid-Aktion für die JSON-Transformation
 
-1. [Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+1. Führen Sie die folgenden Schritte aus, um über das Azure-Portal [eine Ressourcengruppe zu erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-2. Fügen Sie Ihrer Logik-App den [Anforderungstrigger](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) hinzu.
+2. Fügen Sie Ihrer Logik-App im Logik-App-Designer den [Anforderungstrigger](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) hinzu.
 
-3. Wählen Sie **+ Neuer Schritt > Aktion hinzufügen** aus. Geben Sie in das Suchfeld *Liquid* ein, und wählen Sie **Liquid – Von JSON in JSON transformieren** aus.
+3. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus. Geben Sie im Suchfeld „liquid“ als Filter ein, und wählen Sie diese Aktion aus: **Liquid – Von JSON in JSON transformieren**.
 
    ![Suchen und Auswählen von Liquid-Aktionen](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. Wählen Sie im Feld **Inhalt** in der Liste dynamischer Inhalte oder in der Parameterliste (je nachdem, welche Liste angezeigt wird) den Eintrag **Text** aus.
+4. Klicken Sie in das Feld **Inhalt**, damit die dynamische Inhaltsliste angezeigt wird, und wählen Sie das **Textkörpertoken** aus.
   
    ![Auswählen eines Textkörpers](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
  
@@ -99,13 +92,14 @@ In diesem Artikel erfahren Sie, wie Sie eine Liquid-Zuordnung oder -Vorlage verw
 
    ![Auswählen einer Zuordnung](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
-   Wenn die Liste keine Einträge enthält, ist Ihre Logik-App höchstwahrscheinlich nicht mit Ihrem Integrationskonto verknüpft. 
+   Wenn die Zuordnungsliste keine Einträge enthält, ist Ihre Logik-App höchstwahrscheinlich nicht mit Ihrem Integrationskonto verknüpft. 
    Führen Sie die folgenden Schritte aus, um Ihre Logik-App mit dem Integrationskonto zu verknüpfen, das die Liquid-Vorlage oder -Zuordnung enthält:
 
    1. Wählen Sie im Menü Ihrer Logik-App die Option **Workfloweinstellungen** aus.
+
    2. Wählen Sie in der Liste **Wählen Sie ein Integrationskonto aus** Ihr Integrationskonto aus, und wählen Sie dann **Speichern** aus.
 
-   ![Verknüpfen der Logik-App mit dem Integrationskonto](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+     ![Verknüpfen der Logik-App mit dem Integrationskonto](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>Testen Ihrer Logik-App
 

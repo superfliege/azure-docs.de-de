@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: a41cd658060ef92efb0fc21a98ca616276378c5e
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39113853"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42139838"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
 
@@ -148,12 +148,44 @@ Führen Sie diese Schritte aus, da SuSE Linux zum Verwalten einer Zertifikatlist
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Ausgehende Konnektivität für Site Recovery-URLs oder IP-Bereiche (Fehlercode 151037 oder 151072)
 
-Damit die Site Recovery-Replikation funktioniert, ist für die VM die ausgehende Konnektivität zu bestimmten URLs oder IP-Bereichen erforderlich. Wenn sich Ihre VM hinter eine Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt:
+Damit die Site Recovery-Replikation funktioniert, ist für die VM die ausgehende Konnektivität zu bestimmten URLs oder IP-Bereichen erforderlich. Wenn sich Ihr virtueller Computer hinter einer Firewall befindet oder Netzwerksicherheitsgruppen-Regeln (NSG-Regeln) zum Steuern der ausgehenden Konnektivität verwendet werden, wird ggf. eine dieser Fehlermeldungen angezeigt.
 
-**Fehlercodes** | **Mögliche Ursachen** | **Empfehlungen**
---- | --- | ---
-151037<br></br>**Meldung**: Fehler beim Registrieren des virtuellen Azure-Computers bei Site Recovery. | - Sie verwenden die NSG zum Steuern des Zugriffs in ausgehender Richtung auf der VM, und die erforderlichen IP-Bereiche sind für den Zugriff in ausgehender Richtung nicht auf einer Positivliste aufgeführt.</br></br>- Sie verwenden Firewalltools von Drittanbietern, und die erforderlichen IP-Bereiche/URLs sind nicht auf einer Positivliste aufgeführt.</br>| - Wenn Sie einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen URLs oder Datencenter-IP-Bereiche auf der Positivliste enthalten sind. Siehe hierzu die [Firewallproxy-Anleitung](https://aka.ms/a2a-firewall-proxy-guidance).</br></br>- Wenn Sie NSG-Regeln zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen Datencenter-IP-Bereiche auf der Positivliste enthalten sind. Informationen hierzu unter [Networking guidance for replicating Azure virtual machines](https://aka.ms/a2a-nsg-guidance) (Netzwerkanleitung für die Replikation von virtuellen Azure-Computern).
-151072<br></br>**Meldung**: Fehler bei der Site Recovery-Konfiguration. | Die Verbindung mit Site Recovery-Dienstendpunkten kann nicht hergestellt werden. | - Wenn Sie einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen URLs oder Datencenter-IP-Bereiche auf der Positivliste enthalten sind. Siehe hierzu die [Firewallproxy-Anleitung](https://aka.ms/a2a-firewall-proxy-guidance).</br></br>- Wenn Sie NSG-Regeln zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen Datencenter-IP-Bereiche auf der Positivliste enthalten sind. Informationen hierzu unter [Networking guidance for replicating Azure virtual machines](https://aka.ms/a2a-nsg-guidance) (Netzwerkanleitung für die Replikation von virtuellen Azure-Computern).
+### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151037-br"></a>Problem 1: Fehler beim Registrieren des virtuellen Azure-Computers bei Site Recovery (151037) </br>
+- **Mögliche Ursache** </br>
+  - Sie verwenden die NSG zum Steuern des Zugriffs in ausgehender Richtung auf der VM, und die erforderlichen IP-Bereiche sind für den Zugriff in ausgehender Richtung nicht auf einer Positivliste aufgeführt.
+  - Sie verwenden Firewalltools von Drittanbietern, und die erforderlichen IP-Bereiche/URLs sind nicht auf einer Positivliste aufgeführt.
+
+
+- **Lösung**
+   - Wenn Sie einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen URLs oder Rechenzentrums-IP-Bereiche auf der Positivliste enthalten sind. Siehe hierzu die [Firewallproxy-Anleitung](https://aka.ms/a2a-firewall-proxy-guidance).
+   - Wenn Sie NSG-Regeln zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen Rechenzentrums-IP-Bereiche auf der Positivliste enthalten sind. Informationen hierzu unter [Networking guidance for replicating Azure virtual machines](https://aka.ms/a2a-nsg-guidance) (Netzwerkanleitung für die Replikation von virtuellen Azure-Computern).
+   - Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](site-recovery-azure-to-azure-networking-guidance.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) auf eine Positivliste zu setzen.
+
+### <a name="issue-2-site-recovery-configuration-failed-151072"></a>Problem 2: Fehler bei der Site Recovery-Konfiguration (151072)
+- **Mögliche Ursache** </br>
+  - Die Verbindung mit Site Recovery-Dienstendpunkten kann nicht hergestellt werden.
+
+
+- **Lösung**
+   - Wenn Sie einen Firewallproxy zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen URLs oder Rechenzentrums-IP-Bereiche auf der Positivliste enthalten sind. Siehe hierzu die [Firewallproxy-Anleitung](https://aka.ms/a2a-firewall-proxy-guidance).
+   - Wenn Sie NSG-Regeln zum Steuern der ausgehenden Netzwerkkonnektivität auf der VM verwenden, sollten Sie sicherstellen, dass die erforderlichen Rechenzentrums-IP-Bereiche auf der Positivliste enthalten sind. Informationen hierzu unter [Networking guidance for replicating Azure virtual machines](https://aka.ms/a2a-nsg-guidance) (Netzwerkanleitung für die Replikation von virtuellen Azure-Computern).
+   - Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](site-recovery-azure-to-azure-networking-guidance.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) auf eine Positivliste zu setzen.
+
+### <a name="issue-3-a2a-replication-failed-when-the-network-traffic-goes-through-on-premise-proxy-server-151072"></a>Problem 3: Fehler bei der A2A-Replikation, wenn der Netzwerkdatenverkehr lokale Proxyserver durchläuft (151072)
+ - **Mögliche Ursache** </br>
+   - Die benutzerdefinierten Proxyeinstellungen sind ungültig, und der ASR Mobility Service-Agent hat die Proxyeinstellungen von Internet Explorer nicht automatisch erkannt.
+
+
+ - **Lösung**
+  1.    Der Mobilitätsdienst-Agent erkennt die Proxyeinstellungen von Internet Explorer unter Windows und /etc/environment unter Linux.
+  2.  Wenn nur für ASR Mobility Service ein Proxy festgelegt werden soll, können Sie die Proxydetails in ProxyInfo.conf angeben, die sich hier befinden:</br>
+      - ``/usr/local/InMage/config/`` unter ***Linux***
+      - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` unter ***Windows***
+  3.    ProxyInfo.conf sollte die Proxyeinstellungen im folgenden INI-Format aufweisen. </br>
+                   *[proxy]*</br>
+                   *Address=http://1.2.3.4*</br>
+                   *Port=567*</br>
+  4. Der ASR Mobility Service-Agent unterstützt nur ***nicht authentifizierte Proxys***.
 
 ### <a name="fix-the-problem"></a>Beheben des Problems
 Führen Sie die Schritte im [Dokument mit der Netzwerkanleitung](site-recovery-azure-to-azure-networking-guidance.md) aus, um die [erforderlichen URLs](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) bzw. die [erforderlichen IP-Bereiche](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) auf eine Positivliste zu setzen.
@@ -213,6 +245,20 @@ Um die Replikation auf dem virtuellen Computer zu aktivieren, muss der Bereitste
 - Wenn **provisioningState** den Status **Fehler** aufweist, wenden Sie sich mit den Informationen zur Problembehandlung an den Support.
 - Wenn **provisioningState** den Status **Aktualisieren** aufweist, wird möglicherweise gerade eine andere Erweiterung bereitgestellt. Überprüfen Sie, ob gerade Vorgänge mit dem virtuellen Computer ausgeführt werden, warten Sie, bis diese abgeschlossen sind, und wiederholen Sie dann den Auftrag **Replikation aktivieren** für die Sitewiederherstellung.
 
+## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>Das virtuelle Zielnetzwerk kann nicht ausgewählt werden, die Registerkarte „Netzwerkauswahl“ ist ausgegraut.
+
+**Ursache 1: Ihr virtueller Computer ist mit einem Netzwerk verbunden, das bereits einem Zielnetzwerk zugeordnet ist.**
+- Wenn der virtuelle Quellcomputer Teil eines virtuellen Netzwerks ist, und ein anderer virtueller Computer des gleichen virtuellen Netzwerks bereits einem Netzwerk in der Zielressourcengruppe zugeordnet ist, wird das Dropdownfeld „Netzwerkauswahl“ standardmäßig deaktiviert.
+
+![Netzwerk_Auswahl_ausgegraut](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
+
+**Ursache 2: Sie haben den virtuellen Computer zuvor mithilfe von Azure Site Recovery geschützt und die Replikation deaktiviert.**
+ - Durch das Deaktivieren der Replikation eines virtuellen Computers wird die Netzwerkzuordnung nicht gelöscht. Diese muss in dem Recovery Services-Tresor gelöscht werden, in dem der virtuelle Computer geschützt wurde. </br>
+ Navigieren Sie zu Recovery Services-Tresor > Site Recovery-Infrastruktur > Netzwerkzuordnung. </br>
+ ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
+ - Das während der Notfallwiederherstellungseinrichtung konfigurierte Zielnetzwerk kann nach dem erstmaligen Einrichten und nachdem der virtuelle Computer geschützt ist, geändert werden. </br>
+ ![Modify_NW_mapping](./media/site-recovery-azure-to-azure-troubleshoot/modify_nw_mapping.png)
+ - Beachten Sie, dass sich die Änderung der Netzwerkzuordnung auf alle geschützten virtuellen Computer auswirken, die diese bestimmte Netzwerkzuordnung verwenden.
 
 
 ## <a name="comvolume-shadow-copy-service-error-error-code-151025"></a>COM+/Volumeschattenkopie: Dienstfehler (Fehlercode 151025)

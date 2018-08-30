@@ -2,21 +2,20 @@
 title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (C) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit IoT SDKs für C eine Modulidentität erstellen und den Modulzwilling aktualisieren.
 author: chrissie926
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
 ms.author: menchi
-ms.openlocfilehash: 5a9e3fb741563d2804c916dc3db3e02a79147b6c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 94c7bd50b9c331370aaac802e0a453c5cdd8b7c1
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034888"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42140128"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-back-end-and-c-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung eines C-Back-Ends und eines C-Geräts
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-c-backend-and-c-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung eines C-Back-Ends und eines C-Geräts
 
 > [!NOTE]
 > [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts und geben Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität hingegen für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen sie isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
@@ -24,24 +23,23 @@ ms.locfileid: "37034888"
 Am Ende dieses Tutorials verfügen Sie über zwei C-Apps:
 
 * **CreateIdentities**: Hiermit werden eine Geräteidentität, eine Modulidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden Ihrer Geräte- und Modulclients erstellt.
+
 * **UpdateModuleTwinReportedProperties**: Hiermit werden aktualisierte vom Modulzwilling gemeldete Eigenschaften an Ihren IoT Hub sendet.
 
 > [!NOTE]
-> Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können, finden Sie unter [Azure IoT SDKs][lnk-hub-sdks].
+> Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Anwendungen für Geräte als auch das zugehörige Lösungs-Back-End erstellen können, finden Sie unter [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
+* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Azure-Konto](http://azure.microsoft.com/pricing/free-trial/) erstellen.)
 * Einen IoT Hub.
-* Installieren Sie das neueste [C SDK](https://github.com/Azure/azure-iot-sdk-c).
-
+* Das neueste [Azure IoT SDK für C](https://github.com/Azure/azure-iot-sdk-c).
 
 Sie haben nun Ihren IoT-Hub erstellt und verfügen über den Hostnamen und die IoT Hub-Verbindungszeichenfolge, die Sie für die weiteren Schritte in diesem Tutorial benötigen.
 
-<a id="DeviceIdentity_csharp"></a>
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Erstellen einer Geräteidentität und einer Modulidentität in IoT Hub
 
-In diesem Abschnitt erstellen Sie eine C-App, mit der eine Geräte- und eine Modulidentität in der Identitätsregistrierung Ihres IoT Hub erstellt wird. Ein Gerät oder Modul kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity] im Abschnitt zur Identitätsregistrierung. Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und einen eindeutigen Schlüssel für das Gerät und das Modul. Ihr Gerät und Ihr Modul verwenden diese Werte, um sich beim Senden von D2C-Nachrichten an IoT Hub zu identifizieren. Bei den IDs gilt Groß-/Kleinschreibung.
+In diesem Abschnitt erstellen Sie eine C-App, mit der eine Geräte- und eine Modulidentität in der Identitätsregistrierung Ihres IoT Hub erstellt wird. Ein Gerät oder Modul kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt **Identitätsregistrierung** des [IoT Hub-Entwicklerhandbuchs](iot-hub-devguide-identity-registry.md). Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und einen eindeutigen Schlüssel für das Gerät und das Modul. Ihr Gerät und Ihr Modul verwenden diese Werte, um sich beim Senden von D2C-Nachrichten an IoT Hub zu identifizieren. Bei den IDs gilt Groß-/Kleinschreibung.
 
 Fügen Sie Ihrer C-Datei folgenden Code hinzu:
 
@@ -58,7 +56,8 @@ Fügen Sie Ihrer C-Datei folgenden Code hinzu:
 
 static const char* hubConnectionString ="[your hub's connection string]"; // modify
 
-static void createDevice(IOTHUB_REGISTRYMANAGER_HANDLE iotHubRegistryManagerHandle, const char* deviceId)
+static void createDevice(IOTHUB_REGISTRYMANAGER_HANDLE 
+  iotHubRegistryManagerHandle, const char* deviceId)
 {
     IOTHUB_REGISTRY_DEVICE_CREATE_EX deviceCreateInfo;
     IOTHUB_REGISTRYMANAGER_RESULT result;
@@ -75,7 +74,8 @@ static void createDevice(IOTHUB_REGISTRYMANAGER_HANDLE iotHubRegistryManagerHand
     deviceInfoEx.version = 1;
     
     // Create device
-    result = IoTHubRegistryManager_CreateDevice_Ex(iotHubRegistryManagerHandle, &deviceCreateInfo, &deviceInfoEx);
+    result = IoTHubRegistryManager_CreateDevice_Ex(iotHubRegistryManagerHandle, 
+      &deviceCreateInfo, &deviceInfoEx);
     if (result == IOTHUB_REGISTRYMANAGER_OK)
     {
         (void)printf("IoTHubRegistryManager_CreateDevice: Device has been created successfully: deviceId=%s, primaryKey=%s\n", deviceInfoEx.deviceId, deviceInfoEx.primaryKey);
@@ -170,17 +170,15 @@ int main(void)
 Diese App erstellt eine Geräteidentität mit der ID **myFirstDevice** und ein Identitätsmodul mit der ID **myFirstModule** unter dem Gerät **myFirstDevice**. (Falls diese Modul-ID in der Identitätsregistrierung bereits vorhanden ist, werden mit dem Code lediglich die vorhandenen Modulinformationen abgerufen.) Anschließend zeigt die App den Primärschlüssel für diese Identität an. Sie verwenden diesen Schlüssel in der simulierten Modul-App, um eine Verbindung mit Ihrem IoT Hub herzustellen.
 
 > [!NOTE]
-> Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch][lnk-devguide-identity].
+> Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch](iot-hub-devguide-identity-registry.md).
 
-
-<a id="D2C_csharp"></a>
 ## <a name="update-the-module-twin-using-c-device-sdk"></a>Aktualisieren des Modulzwillings mithilfe des C-Geräte-SDK
 
 In diesem Abschnitt erstellen Sie eine C-App auf Ihrem simulierten Gerät, die die vom Modulzwilling gemeldeten Eigenschaften aktualisiert.
 
-1. **Abrufen der Modulverbindungszeichenfolge:** Melden Sie sich beim [Azure-Portal][lnk-portal] an. Navigieren Sie zu Ihrer IoT Hub-Instanz, und klicken Sie auf „IoT-Geräte“. Suchen Sie nach „myFirstDevice“, und öffnen Sie den Eintrag. Sie sehen, dass „myFirstModule“ erfolgreich erstellt wurde. Kopieren Sie die Modulverbindungszeichenfolge. Sie wird im nächsten Schritt benötigt.
+1. **Abrufen der Modulverbindungszeichenfolge:** Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Navigieren Sie zu Ihrer IoT Hub-Instanz, und klicken Sie auf „IoT-Geräte“. Suchen Sie nach „myFirstDevice“, und öffnen Sie den Eintrag. Sie sehen, dass „myFirstModule“ erfolgreich erstellt wurde. Kopieren Sie die Modulverbindungszeichenfolge. Sie wird im nächsten Schritt benötigt.
 
-    ![Moduldetails im Azure-Portal][15]
+    ![Moduldetails im Azure-Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG)
 
 2. **Erstellen der App UpdateModuleTwinReportedProperties:** Fügen Sie die folgenden `using`-Anweisungen oben in der Datei **Program.cs** ein:
 
@@ -241,6 +239,7 @@ In diesem Abschnitt erstellen Sie eine C-App auf Ihrem simulierten Gerät, die d
 In diesem Codebeispiel wird gezeigt, wie Sie den Modulzwilling abrufen und die gemeldeten Eigenschaften aktualisieren. 
 
 ## <a name="get-updates-on-the-device-side"></a>Abrufen von Updates auf Geräteseite
+
 Neben dem oben aufgeführten Code können Sie den nachstehenden Codeblock hinzufügen, um die Updatenachricht des Gerätezwillings auf Ihrem Gerät abzurufen.
 
 ```C
@@ -300,7 +299,6 @@ static void reportedStateCallback(int status_code, void* userContextCallback)
 
     g_continueRunning = false;
 }
-
 
 void iothub_module_client_sample_device_twin_run(void)
 {
@@ -373,23 +371,9 @@ int main(void)
 }
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
 
-* [Erste Schritte mit der Geräteverwaltung][lnk-device-management]
-* [Erste Schritte mit IoT Edge][lnk-iot-edge]
-
-
-<!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
-<!-- Links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-portal]: https://portal.azure.com/
-
-[lnk-device-management]: iot-hub-node-node-device-management-get-started.md
-[lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-devguide-identity]: iot-hub-devguide-identity-registry.md
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
+* [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md)
+* [Erste Schritte mit IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

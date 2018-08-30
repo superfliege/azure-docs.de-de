@@ -1,5 +1,5 @@
 ---
-title: Informationen zu Azure IoT SDKs | Microsoft-Dokumentation
+title: Informationen zu Azure IoT SDKs | Microsoft Docs
 description: 'Entwicklerhandbuch: Informationen und Links zu verschiedenen Geräte- und Dienst-SDKs für Azure IoT, mit denen Sie Geräte- und Back-End-Apps erstellen können.'
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.openlocfilehash: 718bf82a921ec3b70939b7a70205a4c650702dd0
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: ad1ce768ea5be2356f141d10a53ea0166546a2b7
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823349"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42140113"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Verstehen und Verwenden von Azure IoT Hub SDKs
 
@@ -66,6 +66,7 @@ Azure IoT Hub Device SDK für iOS:
 
 ### <a name="os-platform-and-hardware-compatibility"></a>Betriebssystemplattformen und Hardwarekompatibilität
 
+Unterstützte Plattformen für die SDKs sind in [diesem Dokument](iot-hub-device-sdk-platform-support.md) aufgeführt.
 Weitere Informationen zur Kompatibilität von SDKs mit bestimmten Hardwaregeräten finden Sie im [Azure Certified for IoT-Gerätekatalog][lnk-certified] oder im jeweiligen Repository.
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT-Dienst-SDKs
@@ -103,7 +104,12 @@ Azure IoT Hub Service SDK für iOS:
 > In den „Readme“-Dateien in den GitHub-Repositorys finden Sie Informationen zum Verwenden sprach- und plattformspezifischer Paket-Manager zum Installieren von Binärdateien und Abhängigkeiten auf Ihrem Entwicklungscomputer.
 
 
+
 ## <a name="next-steps"></a>Nächste Schritte
+
+Azure IoT SDKs stellen ebenso Tools für die Entwicklung bereit:
+* [iothub-diagnostics:](https://github.com/Azure/iothub-diagnostics) ein plattformübergeifendes Befehlszeilentool zum Diagnostizieren von Problemen, die im Zusammenhang mit der Verbindung mit IoT Hub stehen.
+* [device-explorer:](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) eine Windows-Desktopanwendung für die Verbindung mit Ihrem IoT Hub.
 
 Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
@@ -112,6 +118,7 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 * [Kontingente und Drosselung][lnk-devguide-quotas]
 * [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt]
 * [REST-API-Referenz zu IoT Hub][lnk-rest-ref]
+* [Azure IoT SDK – Plattformunterstützung](iot-hub-device-sdk-platform-support.md)
 
 <!-- Links and images -->
 
