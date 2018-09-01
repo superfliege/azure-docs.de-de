@@ -123,10 +123,6 @@
 #### [Verwenden von Zertifikaten](reports-monitoring/tutorial-access-api-with-certificates.md)
 
 ## [Verwalten von Kennwörtern](authentication/concept-sspr-howitworks.md)
-### Benutzerdokumente
-#### [Zurücksetzen oder Ändern des Kennworts](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Registrieren für die Self-Service-Kennwortzurücksetzung](user-help/active-directory-passwords-reset-register.md)
-
 
 ## Verwalten von Apps
 ### [Übersicht](manage-apps/what-is-application-management.md)
@@ -338,10 +334,6 @@
 ### [Abrufen der Ergebnisse der Zugriffsüberprüfung](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Schützen Ihrer Identitäten
-### Zertifikatbasierte Authentifizierung
-#### [Android](active-directory-certificate-based-authentication-android.md)
-#### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [Erste Schritte](active-directory-certificate-based-authentication-get-started.md)
 
 ### Azure AD Identity Protection
 #### [Übersicht](identity-protection/overview.md)
