@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d3be19c67027746ddb73cf2cd9b4545584fd3ce0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: ccc508b8dbfb990639abe24efa2822ff27f2f910
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389780"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341563"
 documentType: LandingData
-title: Dokumentation zur verwalteten Dienstidentität von Azure Active Directory
+title: 'Verwaltete Azure AD-Identitäten für Azure-Ressourcen: Dokumentation'
 metadata:
   document_id: 
-  title: Dokumentation zur verwalteten Dienstidentität von Azure Active Directory
-  description: Hier erfahren Sie, wie Sie sich mit der verwalteten Dienstidentität sicher bei Azure-Clouddiensten authentifizieren, ohne Anmeldeinformationen in den Quellcode aufnehmen zu müssen.
+  title: 'Verwaltete Azure AD-Identitäten für Azure-Ressourcen: Dokumentation'
+  description: Hier erfahren Sie, wie Sie sich mit verwalteten Identitäten für Azure-Ressourcen sicher bei Azure-Clouddiensten authentifizieren, ohne Anmeldeinformationen in den Quellcode aufnehmen zu müssen.
   services: active-directory
   ms.component: msi
   author: daveba
@@ -22,21 +22,21 @@ metadata:
   ms.date: 03/16/2018
   ms.author: daveba
 abstract:
-  description: Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.  Anhand unserer Schnellstartanleitungen und Tutorials erfahren Sie, wie Sie verwaltete Dienstidentitäten erstellen und verwalten.
+  description: Verwaltete Dienstidentitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.  Anhand unserer Schnellstartanleitungen und Tutorials erfahren Sie, wie Sie verwaltete Identitäten für Azure-Ressourcen erstellen und verwalten.
   aside:
     image:
       alt: 
       height: 112
       src: media/index/video-thumb-landing-page.png
       width: 200
-    title: Einführung in die verwaltete Dienstidentität
+    title: Einführung in verwaltete Identitäten für Azure-Ressourcen
     href: https://www.youtube.com/embed/bBi1bll2928
     width: 200
 sections:
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: Hier erfahren Sie, wie Sie mithilfe der verwalteten Dienstidentität auf die Azure Resource Manager-API zugreifen.
+    text: Hier erfahren Sie, wie Sie mithilfe von verwalteten Identitäten für Azure-Ressourcen auf die Azure Resource Manager-API zugreifen.
   - type: list
     style: unordered
     items:
@@ -45,7 +45,7 @@ sections:
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: Hier erfahren Sie, wie Sie mithilfe der verwalteten Dienstidentität sicher auf Azure-Ressourcen zugreifen.
+    text: Hier erfahren Sie, wie Sie mithilfe von verwalteten Identitäten für Azure-Ressourcen sicher auf Azure-Ressourcen zugreifen.
   - type: paragraph
     text: Windows-VM/-VMSS
   - type: list
@@ -56,7 +56,7 @@ sections:
     - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-sql">Zugreifen auf Azure SQL</a>
     - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-nonaad">Zugreifen auf Azure Key Vault</a>
     - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-cosmos-db">Zugreifen auf Azure Cosmos DB</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">Zugreifen auf Azure Resource Manager mit einer vom Benutzer zugewiesenen Identität</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">Zugreifen auf Azure Resource Manager mit einer benutzerseitig zugewiesenen Identität</a>
   - type: paragraph
     text: Linux-VM/-VMSS
   - type: list
@@ -66,7 +66,7 @@ sections:
     - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage-access-key">Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels</a>
     - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-nonaad">Zugreifen auf Azure Key Vault</a>
     - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-cosmos-db">Zugreifen auf Azure Cosmos DB</a>
-    - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">Zugreifen auf Azure Resource Manager mit einer vom Benutzer zugewiesenen Identität</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">Zugreifen auf Azure Resource Manager mit einer benutzerseitig zugewiesenen Identität</a>
 - title: Verweis
   items:
   - type: list
