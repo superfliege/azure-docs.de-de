@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/14/2018
+ms.date: 08/23/2018
 ms.author: jdial
-ms.openlocfilehash: 2442c177b303600f936e80f6c765e2d4096b1dca
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b951386fbeca883ae61a7f8040893e55467c8e5d
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021718"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42810083"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Tutorial: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe des Azure-Portals
 
@@ -39,9 +39,9 @@ Dieser Artikel kann auch mit der [Azure-Befehlszeilenschnittstelle](tutorial-res
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure 
+## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
@@ -49,19 +49,18 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **Erstellen** aus:
 
-    |Einstellung|Wert|
-    |----|----|
-    |NAME| myVirtualNetwork |
-    |Adressraum| 10.0.0.0/16|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
-    |Speicherort| Wählen Sie **USA, Osten** aus. |
-    |Subnetzname| Öffentlich|
-    |Subnetzadressbereich| 10.0.0.0/24|
-    |Dienstendpunkte| Deaktiviert|
+   |Einstellung|Wert|
+   |----|----|
+   |NAME| myVirtualNetwork |
+   |Adressraum| 10.0.0.0/16|
+   |Abonnement| Wählen Sie Ihr Abonnement aus.|
+   |Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
+   |Standort| Wählen Sie **USA, Osten** aus. |
+   |Subnetzname| Öffentlich|
+   |Subnetzadressbereich| 10.0.0.0/24|
+   |Dienstendpunkte| Deaktiviert|
 
-    ![Eingeben grundlegender Informationen zu Ihrem virtuellen Netzwerk](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
-
+   ![Eingeben grundlegender Informationen zu Ihrem virtuellen Netzwerk](./media/tutorial-restrict-network-access-to-resources/create-virtual-network.png)
 
 ## <a name="enable-a-service-endpoint"></a>Aktivieren eines Dienstendpunkts
 
@@ -96,12 +95,12 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
     |NAME| myNsgPrivate |
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup* aus.|
-    |Speicherort| Wählen Sie **USA, Osten** aus. |
+    |Standort| Wählen Sie **USA, Osten** aus. |
 
 4. Nachdem die Sicherheitsgruppe erstellt wurde geben Sie im Feld **Ressourcen, Dienste und Dokumente durchsuchen** oben im Portal *myNsgPrivate* ein. Wenn **myNsgPrivate** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 5. Wählen Sie unter **EINSTELLUNGEN** **Ausgangssicherheitsregeln** aus.
 6. Wählen Sie **+ Hinzufügen**.
-7. Erstellen Sie eine Regel, die ausgehende Kommunikation mit dem Azure Storage-Dienst zulässt. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **OK** aus:
+7. Erstellen Sie eine Regel, die ausgehende Kommunikation mit dem Azure Storage-Dienst zulässt. Geben Sie die folgenden Informationen ein (oder wählen Sie sie aus), und klicken Sie anschließend auf **Hinzufügen**:
 
     |Einstellung|Wert|
     |----|----|
@@ -114,8 +113,8 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
     |Aktion|ZULASSEN|
     |Priorität|100|
     |NAME|Allow-Storage-All|
-    
-8. Erstellen Sie eine Regel, die ausgehende Kommunikation mit dem Internet verweigert. Diese Regel überschreibt eine Standardregel in allen Netzwerksicherheitsgruppen, die ausgehende Internetkommunikation zulässt. Führen Sie die Schritte 6 und 7 erneut aus, und verwenden Sie dabei die folgenden Werte:
+
+8. Erstellen Sie eine weitere Ausgangssicherheitsregel, die Kommunikation mit dem Internet verweigert. Diese Regel überschreibt eine Standardregel in allen Netzwerksicherheitsgruppen, die ausgehende Internetkommunikation zulässt. Wiederholen Sie die Schritte 5–7 mit folgenden Werten:
 
     |Einstellung|Wert|
     |----|----|
@@ -131,14 +130,13 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
 
 9. Wählen Sie unter **EINSTELLUNGEN** **Eingangssicherheitsregeln** aus.
 10. Wählen Sie **+ Hinzufügen**.
-11. Erstellen Sie eine Regel, die eingehenden RDP-Datenverkehr (Remote Desktop Protocol) in das Subnetz von überall aus erlaubt. Die Regel setzt eine Standardsicherheitsregel außer Kraft, die jeglichen eingehenden Verkehr aus dem Internet abweist. Remotedesktopverbindungen in das Subnetz sind zulässig, sodass die Konnektivität in einem späteren Schritt getestet werden kann. Führen Sie die Schritte 6 und 7 erneut aus, und verwenden Sie dabei die folgenden Werte:
+11. Erstellen Sie eine Eingangssicherheitsregel, die RDP-Datenverkehr (Remote Desktop Protocol) an das Subnetz von überall erlaubt. Die Regel setzt eine Standardsicherheitsregel außer Kraft, die jeglichen eingehenden Verkehr aus dem Internet abweist. Remotedesktopverbindungen in das Subnetz sind zulässig, sodass die Konnektivität in einem späteren Schritt getestet werden kann. Klicken Sie unter **EINSTELLUNGEN** auf **Eingangssicherheitsregeln** > **+ Hinzufügen**, geben Sie die folgenden Werte ein, und klicken Sie anschließend auf **Hinzufügen**:
 
     |Einstellung|Wert|
     |----|----|
     |Quelle| Beliebig |
     |Quellportbereiche| * |
-    |Ziel | Wählen Sie **Diensttag** aus.|
-    |Zieldiensttag| Wählen Sie **VirtualNetwork** aus.|
+    |Ziel | Wählen Sie **VirtualNetwork** aus.|
     |Zielportbereiche| 3389 |
     |Protokoll|Beliebig|
     |Aktion|ZULASSEN|
@@ -164,18 +162,19 @@ Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzu
     |----|----|
     |NAME| Geben Sie einen Namen ein, der an allen Azure-Standorten eindeutig, zwischen 3 und 24 Zeichen lang ist und nur aus Ziffern und Kleinbuchstaben besteht.|
     |Kontoart|StorageV2 (allgemein, Version 2)|
+    |Standort| Wählen Sie **USA, Osten** aus. |
     |Replikation| Lokal redundanter Speicher (LRS)|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup* aus.|
-    |Speicherort| Wählen Sie **USA, Osten** aus. |
 
 ### <a name="create-a-file-share-in-the-storage-account"></a>Erstellen einer Dateifreigabe im Speicherkonto
 
 1. Geben Sie nach dem Erstellen des Speicherkontos oben im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen** den Namen des Speicherkontos ein. Wenn der Name Ihres Speicherkontos in den Suchergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Klicken Sie auf **Dateien**, wie in der folgenden Abbildung gezeigt:
 
-    ![Speicherkonto](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
-3. Wählen Sie unter **Dateidienst** **+ Dateifreigabe** aus.
+   ![Speicherkonto](./media/tutorial-restrict-network-access-to-resources/storage-account.png) 
+
+3. Klicken Sie auf **+ Dateifreigabe**.
 4. Geben Sie unter **Name** *my-file-share* ein, und wählen Sie dann **OK** aus.
 5. Schließen Sie das Feld **Dateidienst**.
 
@@ -184,8 +183,8 @@ Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzu
 Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in allen Netzwerken, einschließlich des Internets. Verweigern Sie den Zugriff über das Internet sowie alle anderen Subnetze in allen virtuellen Netzwerken außer über das Subnetz *Private* im virtuellen Netzwerk *myVirtualNetwork*.
 
 1. Wählen Sie unter **EINSTELLUNGEN** für das Speicherkonto **Firewalls und virtuelle Netzwerke** aus.
-2. Wählen Sie unter **Virtuelle Netzwerke** **Ausgewählte Netzwerke** aus.
-3. Wählen Sie **Vorhandenes virtuelles Netzwerk hinzufügen** aus.
+2. Klicken Sie auf **Ausgewählte Netzwerke**.
+3. Klicken Sie auf **+Vorhandenes virtuelles Netzwerk hinzufügen**.
 4. Wählen Sie unter **Netzwerke hinzufügen** die folgenden Werte und dann **Hinzufügen** aus:
 
     |Einstellung|Wert|
@@ -194,7 +193,7 @@ Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in a
     |Virtuelle Netzwerke|Wählen Sie unter **Virtuelle Netzwerke** **myVirtualNetwork** aus.|
     |Subnetze| Wählen Sie unter **Subnetze** **Private** aus.|
 
-    ![Firewalls und virtuelle Netzwerke](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png) 
+    ![Firewalls und virtuelle Netzwerke](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
 5. Wählen Sie **Speichern**aus.
 6. Schließen Sie das Feld **Firewalls und virtuelle Netzwerke**.
@@ -212,27 +211,29 @@ Zum Testen des Netzwerkzugriffs auf ein Speicherkonto stellen Sie einen virtuell
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**.
-3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, und wählen Sie dann **OK** aus:
+3. Geben Sie die folgenden Informationen ein (oder wählen Sie sie aus), und klicken Sie anschließend auf **OK**:
 
-    |Einstellung|Wert|
-    |----|----|
-    |NAME| myVmPublic|
-    |Benutzername|Geben Sie den gewünschten Benutzernamen ein.|
-    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
-    |Speicherort| Wählen Sie **USA, Osten** aus.|
+   |Einstellung|Wert|
+   |----|----|
+   |NAME| myVmPublic|
+   |Benutzername|Geben Sie den gewünschten Benutzernamen ein.|
+   |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+   |Abonnement| Wählen Sie Ihr Abonnement aus.|
+   |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
+   |Standort| Wählen Sie **USA, Osten** aus.|
 
-    ![Eingeben von grundlegenden Informationen zu einem virtuellen Computer](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
+   ![Eingeben von grundlegenden Informationen zu einem virtuellen Computer](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und wählen Sie dann **Auswählen** aus.
 5. Wählen Sie unter **Einstellungen** **Netzwerk** und dann **myVirtualNetwork** aus. Wählen Sie dann **Subnetz** und **Public** aus, wie in der folgenden Abbildung zu sehen:
 
-    ![Auswählen eines virtuellen Netzwerks](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
-6. Wählen Sie auf der Seite **Zusammenfassung** die Option **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten. Die Bereitstellung der VM nimmt einige Minuten in Anspruch, Sie können aber während der Erstellung der VM bereits mit dem nächsten Schritt fortfahren.
+   ![Auswählen eines virtuellen Netzwerks](./media/tutorial-restrict-network-access-to-resources/virtual-machine-settings.png)
+
+6. Wählen Sie unter **Netzwerksicherheitsgruppe** die Option **Erweitert**. Das Portal erstellt automatisch eine Netzwerksicherheitsgruppe, die den Port 3389 zulässt. Dieser Port muss geöffnet werden, um in einem späteren Schritt eine Verbindung mit dem virtuellen Computer herstellen zu können. Klicken Sie auf der Seite **Einstellungen** auf **OK**.
+7. Wählen Sie auf der Seite **Zusammenfassung** die Option **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten. Die Bereitstellung der VM nimmt einige Minuten in Anspruch, Sie können aber während der Erstellung der VM bereits mit dem nächsten Schritt fortfahren.
 
 ### <a name="create-the-second-virtual-machine"></a>Erstellen des zweiten virtuellen Computers
 
-Führen Sie die Schritte 1–6 erneut aus, benennen Sie aber in Schritt 3 den virtuellen Computer *myVmPrivate*, und wählen Sie in Schritt 5 das Subnetz **Private** aus.
+Wiederholen Sie die Schritte 1–7, nennen Sie den virtuellen Computer in Schritt 3 aber *myVmPrivate*, und wählen Sie in Schritt 5 das Subnetz **Private** aus.
 
 Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie erst mit dem nächsten Schritt fort, nachdem die Erstellung abgeschlossen wurde und seine Einstellungen sich im Portal geöffnet haben.
 
@@ -240,7 +241,7 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
 
 1. Sobald die Erstellung des virtuellen Computers *myVmPrivate* abgeschlossen ist, öffnet Azure seine Einstellungen. Stellen Sie eine Verbindung mit der VM her, indem Sie die Schaltfläche **Verbinden** auswählen, wie in der folgenden Abbildung gezeigt:
 
-    ![Herstellen einer Verbindung mit einem virtuellen Computer](./media/tutorial-restrict-network-access-to-resources/connect-to-virtual-machine.png)
+   ![Herstellen einer Verbindung mit einem virtuellen Computer](./media/tutorial-restrict-network-access-to-resources/connect-to-virtual-machine.png)
 
 2. Nachdem Sie die Schaltfläche **Verbinden** ausgewählt haben, wird eine RDP-Datei (Remotedesktopprotokoll) erstellt und auf Ihren Computer heruntergeladen.  
 3. Öffnen Sie die heruntergeladene RDP-Datei. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus. Geben Sie den Benutzernamen und das Kennwort ein, die Sie beim Erstellen des virtuellen Computers festgelegt haben. Unter Umständen müssen Sie auf **Weitere Optionen** und anschließend auf **Anderes Konto verwenden** klicken, um die Anmeldeinformationen anzugeben, die Sie beim Erstellen des virtuellen Computers eingegeben haben. 
@@ -248,29 +249,29 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
 5. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wenn eine Warnung angezeigt wird, klicken Sie auf **Ja** bzw. **Weiter**, um mit dem Herstellen der Verbindung fortzufahren.
 6. Ordnen Sie auf dem virtuellen Computer *myVmPrivate* mithilfe von PowerShell die Azure-Dateifreigabe dem Laufwerk Z zu. Ersetzen Sie vor dem Ausführen der nachfolgenden Befehle die Werte `<storage-account-key>` und `<storage-account-name>` durch Werte, die Sie unter [Erstellen eines Speicherkontos](#create-a-storage-account) angegeben und abgerufen haben.
 
-    ```powershell
-    $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
-    $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
-    New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
-    ```
-    
-    PowerShell gibt eine Ausgabe ähnlich der folgenden Beispielausgabe zurück:
+   ```powershell
+   $acctKey = ConvertTo-SecureString -String "<storage-account-key>" -AsPlainText -Force
+   $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "Azure\<storage-account-name>", $acctKey
+   New-PSDrive -Name Z -PSProvider FileSystem -Root "\\<storage-account-name>.file.core.windows.net\my-file-share" -Credential $credential
+   ```
 
-    ```powershell
-    Name           Used (GB)     Free (GB) Provider      Root
-    ----           ---------     --------- --------      ----
-    Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
-    ```
+   PowerShell gibt eine Ausgabe ähnlich der folgenden Beispielausgabe zurück:
 
-    Die Azure-Dateifreigabe wurde dem Laufwerk Z erfolgreich zugeordnet.
+   ```powershell
+   Name           Used (GB)     Free (GB) Provider      Root
+   ----           ---------     --------- --------      ----
+   Z                                      FileSystem    \\vnt.file.core.windows.net\my-f...
+   ```
+
+   Die Azure-Dateifreigabe wurde dem Laufwerk Z erfolgreich zugeordnet.
 
 7. Bestätigen Sie an einer Eingabeaufforderung, dass der virtuelle Computer über keine ausgehende Verbindung mit dem Internet verfügt:
 
-    ```
-    ping bing.com
-    ```
-    
-    Sie erhalten keine Antworten, da die dem Subnetz *Private* zugeordnete Netzwerksicherheitsgruppe keinen ausgehenden Zugriff auf das Internet zulässt.
+   ```
+   ping bing.com
+   ```
+
+   Sie erhalten keine Antworten, da die dem Subnetz *Private* zugeordnete Netzwerksicherheitsgruppe keinen ausgehenden Zugriff auf das Internet zulässt.
 
 8. Schließen Sie die Remotedesktopsitzung mit der VM *myVmPrivate*.
 
@@ -280,7 +281,7 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
 2. Wenn **myVmPublic** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 3. Führen Sie in [Bestätigen des Zugriffs auf das Speicherkonto](#confirm-access-to-storage-account) für die VM *myVmPublic* die Schritte 1–6 aus.
 
-    Der Zugriff wird verweigert, und die Fehlermeldung `New-PSDrive : Access is denied` wird angezeigt. Der Zugriff wird verweigert, da der virtuelle Computer *myVmPublic* im Subnetz *Public* bereitgestellt wird. Das Subnetz *Public* verfügt nicht über einen Dienstendpunkt, der für Azure Storage aktiviert ist. Das Speicherkonto lässt Netzwerkzugriff nur über das Subnetz *Private*, nicht jedoch über das Subnetz *Public* zu.
+   Nach einer kurzen Wartezeit tritt ein Fehler vom Typ `New-PSDrive : Access is denied` auf. Der Zugriff wird verweigert, da der virtuelle Computer *myVmPublic* im Subnetz *Public* bereitgestellt wird. Das Subnetz *Public* verfügt nicht über einen Dienstendpunkt, der für Azure Storage aktiviert ist. Das Speicherkonto lässt Netzwerkzugriff nur über das Subnetz *Private*, nicht jedoch über das Subnetz *Public* zu.
 
 4. Schließen Sie die Remotedesktopsitzung für den virtuellen Computer *myVmPublic*.
 
@@ -289,9 +290,9 @@ Die Bereitstellung des virtuellen Computers dauert einige Minuten. Fahren Sie er
 7. Wählen Sie **Dateien** aus.
 8. Sie erhalten den Fehler, der in der folgenden Abbildung dargestellt ist:
 
-    ![Zugriffsfehler](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
+   ![Zugriffsfehler](./media/tutorial-restrict-network-access-to-resources/access-denied-error.png)
 
-    Der Zugriff wird verweigert, da sich Ihr Computer nicht im Subnetz *Private* des Netzwerks *MyVirtualNetwork* befindet.
+   Der Zugriff wird verweigert, da sich Ihr Computer nicht im Subnetz *Private* des Netzwerks *MyVirtualNetwork* befindet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/14/2018
+ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 9322c364832a12e711ee7e1b6ad9722ec82d8468
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450244"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43050431"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Herstellen einer Verbindung zwischen Azure Stack und Azure mithilfe von Azure ExpressRoute
 
@@ -180,7 +180,7 @@ Nachdem Sie das Gateway für virtuelle Netzwerke erstellt haben, können Sie die
 
 1. Klicken Sie im Azure Stack-Benutzerportal auf **Alle Ressourcen**.
 1. Wählen Sie unter **Alle Ressourcen** das Gateway für virtuelle Netzwerke aus (**GW1** im Beispiel).
-1. Wählen Sie unter **Gateway für virtuelle Netzwerke** die Option **Übersicht** in der Ressourcenliste aus. Alternativ können Sie auf **Eigenschaften** klicken.
+1. Wählen Sie unter **Gateway für virtuelle Netzwerke** in der Ressourcenliste die Option **Übersicht** aus. Alternativ können Sie auf **Eigenschaften** klicken.
 1. Notieren Sie die unter **Öffentliche IP-Adresse** angezeigte IP-Adresse. Für die Beispielkonfiguration lautet diese Adresse 192.68.102.1.
 
 #### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
@@ -368,7 +368,7 @@ Sie können das folgende Diagramm *Konfiguration des ExpressRoute-Routers* als O
 
 Sie können einen beliebigen Router verwenden, der ein IKEv2-VPN und BGP unterstützt, um die Site-to-Site-VPN-Verbindung von Azure Stack zu beenden. Derselbe Router wird verwendet, um über eine ExpressRoute-Verbindung eine Verbindung mit Azure herzustellen.
 
-Das folgende Konfigurationsbeispiel für Cisco Azure Site Recovery 1000 unterstützt die im Diagramm *Konfiguration des ExpressRoute-Routers* dargestellte Netzwerkinfrastruktur.
+Das folgende Konfigurationsbeispiel für den Aggregation Services Router der ASR 1000-Reihe von Cisco unterstützt die im Diagramm *Konfiguration des ExpressRoute-Routers* dargestellte Netzwerkinfrastruktur.
 
 **Konfigurationsbeispiel für Cisco ASR 1000**
 
@@ -457,7 +457,7 @@ description S2S VPN Tunnel for Tenant 2
  tunnel protection ipsec profile V4-PROFILE
 !
 interface GigabitEthernet0/0/1
- description PRIMARY Express Route Link to AZURE over Equinix
+ description PRIMARY ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !
@@ -476,7 +476,7 @@ description Primary WAN interface of Tenant 2
  ip address 192.168.1.17 255.255.255.252
 !
 interface GigabitEthernet0/0/2
- description BACKUP Express Route Link to AZURE over Equinix
+ description BACKUP ExpressRoute Link to AZURE over Equinix
  no ip address
  negotiation auto
 !

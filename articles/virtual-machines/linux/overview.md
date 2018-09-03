@@ -15,20 +15,20 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d2e4a014a0f7bb7f94885528abc930d2b243318b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911317"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42820295"
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
-Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web – damit eignet Azure sich ideal zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
+Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web. Azure eignet sich also perfekt zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
 
 Wenn Sie mit den Funktionen der verschiedenen Amazon Web Services (AWS) vertraut sind, sehen Sie sich den [Vergleich der Dienste von Azure und AWS](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)an.
 
 ## <a name="regions"></a>Regionen
-Microsoft Azure-Ressourcen sind auf mehrere geografische Regionen weltweit verteilt.  Eine „Region“ umfasst mehrere Rechenzentren in einem bestimmten geografischen Bereich. Azure verfügt aktuell (Stand: November 2017) über 36 allgemein verfügbare Regionen auf der ganzen Welt. Weitere sechs Regionen wurden bereits angekündigt. Eine aktualisierte Liste mit vorhandenen und neu angekündigten Regionen finden Sie auf der folgenden Seite:
+Microsoft Azure-Ressourcen sind auf mehrere geografische Regionen weltweit verteilt.  Eine „Region“ umfasst mehrere Rechenzentren in einem bestimmten geografischen Bereich. Azure verfügt aktuell (Stand: August 2018) über 42 allgemein verfügbare Regionen auf der ganzen Welt. Weitere 12 Regionen wurden bereits angekündigt. Das sind mehr globale Regionen als bei jedem anderen Cloudanbieter. Eine aktualisierte Liste mit vorhandenen und neu angekündigten Regionen finden Sie auf der folgenden Seite:
 
 * [Azure-Regionen](https://azure.microsoft.com/regions/)
 
@@ -59,7 +59,7 @@ Um eine sinnvolle DevOps-Kultur zu erzielen, muss die gesamte Infrastruktur als 
 * [Azure-Vorlagen](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure führt Unterstützung für [cloud-init](http://cloud-init.io/) für die meisten Linux-Distributionen ein, die dies unterstützen.  Zurzeit werden die Ubuntu-VMs von Canonical mit standardmäßig aktiviertem cloud-init bereitgestellt.  RHEL, CentOS und Fedora von Red Hat unterstützen zwar „cloud-init“, auf den von Red Hat verwalteten Azure-Images ist „cloud-init“ derzeit jedoch nicht installiert.  Um cloud-init unter einem Betriebssystem der Red Hat-Familie zu verwenden, müssen Sie ein benutzerdefiniertes Image mit installiertem cloud-init erstellen.
+Azure führt Unterstützung für [cloud-init](http://cloud-init.io/) für die meisten Linux-Distributionen ein, die dies unterstützen.  Zurzeit werden die Ubuntu-VMs von Canonical mit standardmäßig aktiviertem cloud-init bereitgestellt.  RHEL, CentOS und Fedora von Red Hat unterstützen zwar „cloud-init“, auf den von Red Hat verwalteten Azure-Images ist „cloud-init“ derzeit jedoch nicht installiert.  Wenn Sie „cloud-init“ unter einem Betriebssystem der Red Hat-Familie verwenden möchten, müssen Sie ein benutzerdefiniertes Image mit installiertem „cloud-init“ erstellen.
 
 * [Verwenden von cloud-init auf virtuellen Linux-Computern in Azure](using-cloud-init.md)
 

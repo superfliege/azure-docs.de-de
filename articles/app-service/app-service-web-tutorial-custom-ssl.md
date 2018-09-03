@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 06/19/2018
+ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6e3679a994a7340fc38bf98f370efd359785fd90
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 2aca366e6a433e3e71cccb49a13638dedacc38d6
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214964"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887505"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Tutorial: Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps
 
@@ -237,11 +237,11 @@ Wenn der Vorgang abgeschlossen ist, navigieren Sie zu einer beliebigen HTTP-URL,
 - `http://contoso.com`
 - `http://www.contoso.com`
 
-## <a name="enforce-tls-1112"></a>Erzwingen von TLS 1.1/1.2
+## <a name="enforce-tls-versions"></a>Erzwingen von TLS-Versionen
 
-Ihre App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 zu. Dies ist laut Branchenstandards wie [PCI-DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) nicht mehr sicher. Gehen Sie wie folgt vor, um höhere TLS-Versionen zu erzwingen:
+Ihre App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2 zu. Diese TLS-Version wird von Branchenstandards wie [PCI-DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard) empfohlen. Andere TLS-Versionen können wie folgt erzwungen werden:
 
-Klicken Sie im linken Navigationsbereich der Web-App-Seite auf **SSL-Einstellungen**. Wählen Sie dann unter **TLS-Version** die gewünschte TLS-Mindestversion aus.
+Klicken Sie im linken Navigationsbereich der Web-App-Seite auf **SSL-Einstellungen**. Wählen Sie dann unter **TLS-Version** die gewünschte TLS-Mindestversion aus. Diese Einstellung steuert nur eingehende Aufrufe. 
 
 ![Erzwingen von TLS 1.1 oder 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 

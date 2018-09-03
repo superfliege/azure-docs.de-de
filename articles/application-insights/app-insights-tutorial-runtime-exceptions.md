@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 115611c5d4eeffb0f0600dd0a792ee9f80247e36
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2018
-ms.locfileid: "27998048"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815112"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -43,7 +43,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Das Tutorial verfolgt die Identifikation einer Ausnahme in Ihrer Anwendung, ändern Sie also den Code in Ihrer Entwicklungs- oder Testumgebung, um eine Ausnahme zu generieren. 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) am Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 
 ## <a name="analyze-failures"></a>Analysieren von Fehlern
@@ -62,20 +62,17 @@ Application Insights erfasst alle Fehler in Ihrer Anwendung und ermöglicht Ihne
 
     ![Fenster „Anforderungsfehler“](media/app-insights-tutorial-runtime-exceptions/failed-requests-window.png)
 
-5. Klicken Sie auf **Details anzeigen** um die Details für den Vorgang anzuzeigen.  Dazu gehört ein Gantt-Diagramm, das zwei fehlgeschlagene Abhängigkeiten zeigt, deren Abschluss zusammen fast eine halbe Sekunde gedauert hat.  Durch das Analysieren von Leistungsproblemen können Sie mehr erfahren. Führen Sie dazu das Tutorial [Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights](app-insights-tutorial-performance.md) aus.
+5. Klicken Sie auf die Schaltfläche mit der Anzahl gefilterter Ergebnisse, um sich die entsprechenden Ergebnisse anzusehen. Die vorgeschlagenen Beispiele verfügen über entsprechende Telemetriedaten von allen Komponenten, auch wenn für sie ggf. die Stichprobenentnahme aktiviert war. Klicken Sie auf ein Suchergebnis, um Details des Fehlers anzuzeigen.
 
-    ![Details zu Anforderungsfehlern](media/app-insights-tutorial-runtime-exceptions/failed-requests-details.png)
+    ![Beispiele für Anforderungsfehler](media/app-insights-tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. In den Vorgangsdetails wird auch eine Ausnahme vom Typ „FormatException“ angezeigt, die den Fehler anscheinend verursacht hat.  Klicken Sie auf die Ausnahme oder die Anzahl der **Top-3-Ausnahmetypen**, um die Details dazu anzuzeigen.  Sie können sehen, dass die Ursache eine ungültige Postleitzahl ist.
+6. Die Details des Anforderungsfehlers enthalten ein Gantt-Diagramm, dem Sie entnehmen können, dass bei dieser Transaktion zwei Abhängigkeitsfehler aufgetreten sind, die über 50 Prozent der Gesamtdauer der Transaktion ausgemacht haben. Auf dieser Oberfläche werden alle Telemetriedaten für die Komponenten einer verteilten Anwendung dargestellt, die mit dieser Vorgangs-ID zusammenhängen. Weitere Informationen zu der neuen Oberfläche finden Sie [hier](app-insights-transaction-diagnostics.md). Sie können auf beliebige Elemente klicken, um auf der rechten Seite entsprechende Details anzuzeigen. 
+
+    ![Details zu Anforderungen mit Fehlern](media/app-insights-tutorial-runtime-exceptions/failed-request-details.png)
+
+7. In den Vorgangsdetails wird auch eine Ausnahme vom Typ „FormatException“ angezeigt, die den Fehler anscheinend verursacht hat.  Sie können sehen, dass die Ursache eine ungültige Postleitzahl ist. Sie können die Debugmomentaufnahme öffnen, um Debuginformationen auf Codeebene in Visual Studio anzuzeigen.
 
     ![Ausnahmedetails](media/app-insights-tutorial-runtime-exceptions/failed-requests-exception.png)
-
-> [!NOTE]
-Aktivieren Sie die [Vorschauoberfläche](app-insights-previews.md) „Unified details: E2E Transaction Diagnostics“ (Einheitliche Details: E2E-Transaktionsdiagnose), um die gesamten serverseitigen Telemetriedaten in einer Bildschirmansicht anzuzeigen, z.B. Anforderungen, Abhängigkeiten, Ausnahmen, Ablaufverfolgungen, Ereignisse usw. 
-
-Bei aktivierter Vorschau können Sie verfolgen, wie viel Zeit für Abhängigkeitsaufrufe aufgewendet wurde und welche Fehler oder Ausnahmen aufgetreten sind – alles in einer Oberfläche. Für komponentenübergreifende Transaktionen ermöglicht das Gantt-Diagramm zusammen mit dem Detailbereich eine schnelle Diagnose der Grundursache in Bezug auf die Komponente, Abhängigkeit oder Ausnahme. Sie können den untersten Abschnitt erweitern, um den zeitlichen Ablauf für alle Ablaufverfolgungen oder Ereignisse anzuzeigen, die für den gewählten Komponentenvorgang gesammelt wurden. [Weitere Informationen zur neuen Oberfläche](app-insights-transaction-diagnostics.md)  
-
-![Transaktionsdiagnose](media/app-insights-tutorial-runtime-exceptions/e2e-transaction-preview.png)
 
 ## <a name="identify-failing-code"></a>Fehlerhaften Code identifizieren
 Der Momentaufnahmedebugger erfasst Momentaufnahmen der häufigsten Ausnahmen in Ihrer Anwendung, um Sie beim Diagnostizieren der Ursache in der Produktion zu unterstützen.  Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeigen und die Variablen in jedem Aufruflistenrahmen zu überprüfen. Sie können den Quellcode debuggen, indem Sie die Momentaufnahme herunterladen und in Visual Studio 2017 öffnen.
@@ -104,15 +101,6 @@ Alle von Application Insights gesammelten Daten werden in Azure Log Analytics ge
     ![Code](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. Klicken Sie auf **Auswirkungen analysieren**, um Application Insights Analytics zu öffnen.  Die Analyse enthält mehrere Abfragen, die Details über Anforderungsfehler bereitstellen, z.B. betroffene Benutzer, Browser und Regionen.<br><br>![Analyse](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
-
-## <a name="add-work-item"></a>Arbeitselement hinzufügen
-Wenn Sie Application Insights mit einem Nachverfolgungssystem wie Visual Studio Team Services oder GitHub verbinden, können Sie direkt in Application Insights ein Arbeitselement erstellen.
-
-1. Kehren Sie zum Bereich mit den **Ausnahmeeigenschaften** in Application Insights zurück.
-2. Klicken Sie auf **Neues Arbeitselement**.
-3. Der Bereich **New Work Item** wird geöffnet und enthält bereits Details zur Ausnahme.  Sie können vor dem Speichern weitere Informationen hinzufügen.
-
-    ![Neues Arbeitselement](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie sich nun mit dem Identifizieren von Laufzeitausnahmen vertraut gemacht haben, können Sie mit dem nächsten Tutorial fortfahren. Dort erfahren Sie, wie Leistungsprobleme identifiziert und diagnostiziert werden.

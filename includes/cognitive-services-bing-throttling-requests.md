@@ -1,5 +1,5 @@
-Der Dienst- und Abonnementtyp bestimmt die Anzahl von den pro Sekunde (QPS) gesendeten Anforderungen. Stellen Sie unbedingt sicher, dass Ihre Anwendung die erforderliche Logik enthält, um das Kontingent nicht zu überschreiten. Wenn die QPS überschritten wurden, tritt bei der Anforderung ein Fehler mit dem HTTP-Statuscode 429 auf. Die Antwort enthält darüber hinaus den Retry-After-Header mit der Anzahl von Sekunden, die vor dem Senden einer weiteren Anforderung gewartet werden sollte.  
-  
-### <a name="denial-of-service-dos-versus-throttling"></a>Denial-of-Service (DOS) im Vergleich zur Drosselung
+Der Dienst und Ihr Abonnementtyp bestimmen die zulässige Anzahl von Abfragen pro Sekunde (Queries Per Second, QPS). Stellen Sie sicher, dass Ihre Anwendung die erforderliche Logik enthält, um das Kontingent nicht zu überschreiten. Wenn der QPS-Grenzwert erreicht oder überschritten wird, ist die Anforderung nicht erfolgreich, und es wird ein HTTP 429-Statuscode zurückgegeben. Die Antwort enthält den Header `Retry-After`, der angibt, wie lange bis zum Senden einer weiteren Anforderung gewartet werden muss.
 
-Der Dienst unterscheidet zwischen einem DOS-Angriff und einer QPS-Verletzung. Wenn der Dienst einen Denial-of-Service-Angriff vermutet, ist die Anforderung erfolgreich (HTTP-Statuscode: 200 OK). Der Antworttext ist jedoch leer.
+## <a name="denial-of-service-versus-throttling"></a>Denial-of-Service im Vergleich zur Drosselung
+
+Der Dienst unterscheidet zwischen einem DoS-Angriff (Denial-of-Service) und einem QPS-Verstoß. Wenn der Dienst einen DoS-Angriff vermutet, ist die Anforderung erfolgreich (HTTP-Statuscode: 200 OK). Der Antworttext ist jedoch leer.

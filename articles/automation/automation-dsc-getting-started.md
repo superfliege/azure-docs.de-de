@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit der Azure Automation-Zustandskonfiguration
-description: Erläuterung und Beispiele für die gängigsten Aufgaben der Azure Automation-Zustandskonfiguration (DSC, Desired State Configuration)
+title: Erste Schritte mit Azure Automation State Configuration
+description: Erläuterung und Beispiele für die gängigsten Aufgaben in Azure Automation State Configuration (DSC, Desired State Configuration)
 services: automation
 ms.service: automation
 ms.component: dsc
@@ -16,11 +16,11 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 08/09/2018
 ms.locfileid: "40004231"
 ---
-# <a name="getting-started-with-azure-automation-state-configuration"></a>Erste Schritte mit der Azure Automation-Zustandskonfiguration
+# <a name="getting-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
-In diesem Artikel wird erläutert, wie die gängigsten Aufgaben mit der Azure Automation-Zustandskonfiguration ausgeführt werden, z.B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über die Azure Automation-Zustandskonfiguration finden Sie unter [Übersicht über die Azure Automation-Zustandskonfiguration](automation-dsc-overview.md). Die DSC-Dokumentation (Desired State Configuration, Konfiguration des gewünschten Zustands) finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview).
+In diesem Artikel wird erläutert, wie die gängigsten Aufgaben mit Azure Automation State Configuration ausgeführt werden, z.B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation State Configuration finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md). Die DSC-Dokumentation (Desired State Configuration, Konfiguration des gewünschten Zustands) finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview).
 
-Dieser Artikel enthält eine detaillierte Anleitung zur Verwendung der Azure Automation-Zustandskonfiguration. Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die in diesem Artikel beschriebenen Schritte auszuführen, können Sie die folgende Resource Manager-Vorlage verwenden: [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Mit dieser Vorlage wird eine vollständige Umgebung für die Azure Automation-Zustandskonfiguration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von der Azure Automation-Zustandskonfiguration verwaltet wird.
+Dieser Artikel enthält eine detaillierte Anleitung zur Verwendung von Azure Automation State Configuration. Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die in diesem Artikel beschriebenen Schritte auszuführen, können Sie die folgende Resource Manager-Vorlage verwenden: [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/101-automation-configuration). Mit dieser Vorlage wird eine vollständige Umgebung für Azure Automation State Configuration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von Azure Automation State Configuration verwaltet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -93,7 +93,7 @@ Nachdem Sie eine Konfiguration importiert haben, können Sie sie im Azure-Portal
 
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Kompilieren einer Konfiguration in Azure Automation
 
-Bevor Sie einen gewünschten Status auf einen Knoten anwenden können, muss eine DSC-Konfiguration, die diesen Status definiert, in eine oder mehrere Knotenkonfigurationen (MOF-Dokumente) kompiliert und auf dem Pullserver von Automation DSC abgelegt werden. Eine ausführlichere Beschreibung der Kompilierung von Konfigurationen in der Azure Automation-Zustandskonfiguration finden Sie unter [Kompilieren von DSC-Konfigurationen in der Azure Automation-Zustandskonfiguration](automation-dsc-compile.md).
+Bevor Sie einen gewünschten Status auf einen Knoten anwenden können, muss eine DSC-Konfiguration, die diesen Status definiert, in eine oder mehrere Knotenkonfigurationen (MOF-Dokumente) kompiliert und auf dem Pullserver von Automation DSC abgelegt werden. Eine ausführlichere Beschreibung der Kompilierung von Konfigurationen in Azure Automation State Configuration finden Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
 Weitere Informationen zum Kompilieren von Konfigurationen finden Sie unter [DSC-Konfigurationen](/powershell/dsc/configurations).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -132,11 +132,11 @@ Bei erfolgreicher Erstellung eines Kompilierungsauftrags werden eine oder mehrer
 
    ![Screenshot der Registerkarte „Kompilierte Konfigurationen“](./media/automation-dsc-getting-started/NodeConfigs.png)
 
-## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Integrieren eines virtuellen Azure-Computers zur Verwaltung mit der Azure Automation-Zustandskonfiguration
+## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-state-configuration"></a>Integrieren eines virtuellen Azure-Computers zur Verwaltung mit Azure Automation State Configuration
 
-Mit der Azure Automation-Zustandskonfiguration können Sie virtuelle Azure-Computer (mit dem klassischen Modell oder dem Resource Manager-Modell), lokale virtuelle Computer, Linux-Computer, virtuelle AWS-Computer und lokale physische Computer verwalten. In diesem Artikel erfahren Sie, wie ausschließlich Azure Resource Manager-VMs integriert werden. Informationen zum Integrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md).
+Mit Azure Automation State Configuration können Sie virtuelle Azure-Computer (mit dem klassischen Modell oder dem Resource Manager-Modell), lokale virtuelle Computer, Linux-Computer, virtuelle AWS-Computer und lokale physische Computer verwalten. In diesem Artikel erfahren Sie, wie ausschließlich Azure Resource Manager-VMs integriert werden. Informationen zum Integrieren anderer Computertypen finden Sie unter [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
 
-### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>So integrieren Sie einen virtuellen Azure Resource Manager-Computer für die Verwaltung mit der Azure Automation-Zustandskonfiguration
+### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-state-configuration"></a>So integrieren Sie einen virtuellen Azure Resource Manager-Computer für die Verwaltung mit Azure Automation State Configuration
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
@@ -172,7 +172,7 @@ Auf der Registerkarte **Knoten** der Seite **Zustandskonfiguration (DSC)** könn
 
 ## <a name="viewing-reports-for-managed-nodes"></a>Anzeigen von Berichten für verwaltete Knoten
 
-Immer wenn die Azure Automation-Zustandskonfiguration eine Konsistenzprüfung auf einem verwalteten Knoten ausführt, sendet der Knoten einen Statusbericht zurück an den Pullserver. Sie können diese Berichte auf der Seite dieses Knotens anzeigen.
+Immer wenn Azure Automation State Configuration eine Konsistenzprüfung auf einem verwalteten Knoten ausführt, sendet der Knoten einen Statusbericht zurück an den Pullserver. Sie können diese Berichte auf der Seite dieses Knotens anzeigen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
@@ -233,7 +233,7 @@ Wenn ein Knoten nicht mehr von Azure Automation DSC verwaltet werden soll, könn
 ## <a name="related-articles"></a>Verwandte Artikel
 
 - [Übersicht über die Azure Automation-Zustandskonfiguration](automation-dsc-overview.md)
-- [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md)
+- [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md)
 - [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview)
-- [Cmdlets der Azure Automation-Zustandskonfiguration](/powershell/module/azurerm.automation/#automation)
-- [Azure Automation-Zustandskonfiguration: Preise](https://azure.microsoft.com/pricing/details/automation/)
+- [Azure Automation State Configuration-Cmdlets](/powershell/module/azurerm.automation/#automation)
+- [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/)

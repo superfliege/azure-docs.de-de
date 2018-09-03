@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7a3e91e8f928f6e7e2df7a26f52bd44b3b3a81b2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 70b7af1701c13e6a5d7644f04e4502f76ef7743a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618953"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187844"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Tutorial: Erstellen einer Node.js- und MongoDB-Web-App in Azure
 
@@ -117,6 +117,9 @@ Die MEAN.js-Beispielanwendung speichert Benutzerdaten in der Datenbank. Wenn Sie
 Wählen Sie **Admin > Manage Articles** (Admin > Artikel verwalten) aus, um Artikel hinzuzufügen.
 
 Sie können Node.js jederzeit beenden, indem Sie im Terminal `Ctrl+C` drücken. 
+
+> [!NOTE]
+> In der [Schnellstartanleitung für Node.js](app-service-web-get-started-nodejs.md) wird darauf hingewiesen, dass im App-Stammverzeichnis eine Datei vom Typ „web.config“ erforderlich ist. In diesem Tutorial wird diese Datei vom Typ „web.config“ allerdings automatisch von App Service generiert, wenn Sie Ihre Dateien mithilfe der [lokalen Git-Bereitstellung](app-service-deploy-local-git.md) (anstelle der Bereitstellung per ZIP-Datei) bereitstellen. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

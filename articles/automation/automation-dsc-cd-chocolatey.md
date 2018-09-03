@@ -1,6 +1,6 @@
 ---
-title: 'Azure Automation-Zustandskonfiguration: Continuous Deployment mit Chocolatey'
-description: DevOps-Continuous Deployment mit Azure Automation-Zustandskonfiguration, DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-Resource Manager-Vorlage und PowerShell-Quelle.
+title: Continuous Deployment mit Azure Automation State Configuration und Chocolatey
+description: DevOps-Continuous Deployment mit Azure Automation State Configuration, DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-Resource Manager-Vorlage und PowerShell-Quelle.
 services: automation
 ms.service: automation
 ms.component: dsc
@@ -16,9 +16,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 08/10/2018
 ms.locfileid: "40038313"
 ---
-# <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit der Automation-Zustandskonfiguration und Chocolatey
+# <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Azure Automation State Configuration und Chocolatey
 
-In einer DevOps-Welt gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen. Die Azure Automation-Zustandskonfiguration ist eine willkommene neue Option für DevOps-Teams. In diesem Artikel wird das Einrichten der fortlaufenden Bereitstellung (Continuous Deployment, CD) für einen Windows-Computer veranschaulicht. Sie können das Verfahren leicht so erweitern, dass in der Rolle (z. B. einer Website) so viele Windows-Computer wie nötig enthalten sind, und von diesem Punkt aus noch eine Erweiterung auf zusätzliche Rollen durchführen.
+In einer DevOps-Welt gibt es viele Tools, die an den verschiedenen Punkten der Continuous Integration-Pipeline als Hilfe dienen. Azure Automation State Configuration ist eine willkommene neue Option für DevOps-Teams. In diesem Artikel wird das Einrichten der fortlaufenden Bereitstellung (Continuous Deployment, CD) für einen Windows-Computer veranschaulicht. Sie können das Verfahren leicht so erweitern, dass in der Rolle (z. B. einer Website) so viele Windows-Computer wie nötig enthalten sind, und von diesem Punkt aus noch eine Erweiterung auf zusätzliche Rollen durchführen.
 
 ![Kontinuierliche Bereitstellung für virtuelle IaaS-Computer](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
 
@@ -39,10 +39,10 @@ Paket-Manager, z. B. [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging
 Desired State Configuration (DSC) ([Übersicht](/powershell/dsc/overview)) ist ein PowerShell-Tool, mit dem Sie die gewünschte Konfiguration für einen Computer deklarieren können. Beispielsweise können Sie angeben, dass Sie Chocolatey installieren, IIS installieren, Port 80 öffnen und Version 1.0.0 Ihrer Website installieren möchten. Diese Konfiguration wird dann mit dem lokalen Konfigurations-Manager (LCM) für DSC implementiert. Ein DSC-Pullserver enthält ein Repository mit Konfigurationen für Ihre Computer. Der LCM jedes Computers checkt sich regelmäßig ein, um zu überprüfen, ob die Konfiguration mit der gespeicherten Konfiguration übereinstimmt. Es kann entweder der Status gemeldet werden, oder es kann versucht werden, den Computer wieder auf den Stand der gespeicherten Konfiguration zu bringen. Sie können die gespeicherte Konfiguration auf dem Pullserver bearbeiten, um einen Computer oder eine Gruppe von Computern auf den Stand der geänderten Konfiguration zu bringen.
 
 Azure Automation ist ein verwalteter Dienst in Microsoft Azure, der Ihnen die Automatisierung verschiedener Aufgaben ermöglicht, indem Sie Runbooks, Knoten, Anmeldeinformationen und Assets verwenden, z. B. Zeitpläne und globale Variablen.
-Die Azure Automation-Zustandskonfiguration erweitert diese Automatisierungsfunktion auf PowerShell DSC-Tools. Hier ist eine gute [Übersicht](automation-dsc-overview.md).
+Azure Automation State Configuration erweitert diese Automatisierungsfunktion auf PowerShell DSC-Tools. Hier ist eine gute [Übersicht](automation-dsc-overview.md).
 
 Eine DSC-Ressource ist ein Codemodul mit speziellen Funktionen, z. B. zur Verwaltung von Netzwerken, Active Directory oder SQL Server. Die Chocolatey DSC-Ressource kann zum Zugreifen auf einen NuGet-Server (unter anderem), Herunterladen von Paketen, Installieren von Paketen usw. verwendet werden. Der [PowerShell-Katalog](http://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title) enthält noch viele weitere DSC-Ressourcen.
-Diese Module wurden (von Ihnen) auf Ihrem Pullserver für die Azure Automation-Zustandskonfiguration installiert, damit sie für die Konfigurationen verwendet werden können.
+Diese Module wurden (von Ihnen) auf Ihrem Pullserver für Azure Automation State Configuration installiert, damit sie für die Konfigurationen verwendet werden können.
 
 Resource Manager-Vorlagen stellen einen deklarativen Weg zum Generieren Ihrer Infrastruktur dar: Netzwerke, Subnetze, Netzwerksicherheit und -routing, Load Balancer, Netzwerkschnittstellenkarten, virtuelle Computer usw. In diesem [Artikel](../azure-resource-manager/resource-manager-deployment-model.md) wird das (deklarative) Resource Manager-Bereitstellungsmodell mit dem (obligatorischen) Azure Service Management-Bereitstellungsmodell (ASM bzw. klassisch) verglichen. Außerdem werden die Hauptressourcenanbieter sowie Compute-, Speicher- und Netzwerkkomponenten erläutert.
 
@@ -53,12 +53,12 @@ Ein wichtiges Merkmal einer Resource Manager-Vorlage ist die Möglichkeit, bei d
 Sie beginnen oben und schreiben Ihren Code, führen die Erstellung und das Testen durch und erstellen dann ein Installationspaket.
 Chocolatey kann verschiedene Arten von Installationspaketen verarbeiten, z. B. MSI, MSU, ZIP. Und Sie verfügen über die volle Leistungsfähigkeit von PowerShell zum Durchführen der eigentlichen Installation, falls die nativen Funktionen von Chocolatey nicht ausreichen sollten. Legen Sie das Paket an einem erreichbaren Ort ab, z. B. in einem Paketrepository. In diesem Anwendungsbeispiel wird ein öffentlicher Ordner in einem Azure Blob Storage-Konto verwendet, aber er kann sich an einem beliebigen Ort befinden. Chocolatey arbeitet standardmäßig mit NuGet-Servern und einigen anderen zusammen, was die Verwaltung der Paketmetadaten betrifft. Die Optionen werden in [diesem Artikel](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) beschrieben. In diesem Anwendungsbeispiel wird NuGet verwendet. Bei „Nuspec“ handelt es sich um Metadaten zu Ihren Paketen. Nuspec-Elemente werden im NuPkg-Element „kompiliert“ und auf einem NuGet-Server gespeichert. Wenn Ihre Konfiguration ein Paket dem Namen nach anfordert und auf einen NuGet-Server verweist, verwendet die Chocolatey DSC-Ressource (die sich jetzt auf dem virtuellen Computer befindet) das Paket und installiert es für Sie. Sie können auch eine bestimmte Version eines Pakets anfordern.
 
-Im unteren linken Bereich des Bilds befindet sich eine Azure Resource Manager-Vorlage. In diesem Anwendungsbeispiel wird der virtuelle Computer von der VM-Erweiterung beim Pullserver für die Azure Automation-Zustandskonfiguration (also einem Pullserver) als Knoten registriert. Die Konfiguration wird auf dem Pullserver gespeichert.
+Im unteren linken Bereich des Bilds befindet sich eine Azure Resource Manager-Vorlage. In diesem Anwendungsbeispiel wird der virtuelle Computer von der VM-Erweiterung beim Pullserver für Azure Automation State Configuration (also einem Pullserver) als Knoten registriert. Die Konfiguration wird auf dem Pullserver gespeichert.
 Eigentlich wird sie zweimal gespeichert: einmal in reiner Textform und einmal kompiliert als MOF-Datei (als Hinweis für Benutzer, die sich hiermit auskennen). Im Portal ist die MOF-Datei eine „Knotenkonfiguration“ (im Gegensatz zu einer normalen „Konfiguration“). Es ist das Artefakt, das einem Knoten zugeordnet ist, damit dem Knoten die Konfiguration bekannt ist. Die Details unten verdeutlichen, wie Sie die Knotenkonfiguration dem Knoten zuweisen.
 
 Wahrscheinlich erledigen Sie dies bzw. den größten Teil davon bereits im oberen Bereich. Das Erstellen von Nuspec und das Kompilieren und Speichern auf einem NuGet-Server bedeutet keinen großen Aufwand. Und Sie verwalten bereits virtuelle Computer. Der nächste Schritte der fortlaufenden Bereitstellung erfordert das Einrichten des Pullservers (einmalig), das Registrieren Ihrer Knoten dafür (einmalig) und das Erstellen und Speichern der Konfiguration darunter (am Anfang). Wenn die Pakete dann aktualisiert und im Repository bereitgestellt werden, aktualisieren Sie die Konfiguration und Knotenkonfiguration auf dem Pullserver (nach Bedarf wiederholen).
 
-Falls Sie nicht mit einer Resource Manager-Vorlage beginnen, ist dies auch in Ordnung. Es sind PowerShell-Cmdlets vorhanden, mit denen Sie Ihre virtuellen Computer für den Pullserver und den anderen Komponenten registrieren können. Weitere Informationen finden Sie im Artikel [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md).
+Falls Sie nicht mit einer Resource Manager-Vorlage beginnen, ist dies auch in Ordnung. Es sind PowerShell-Cmdlets vorhanden, mit denen Sie Ihre virtuellen Computer für den Pullserver und den anderen Komponenten registrieren können. Weitere Informationen finden Sie im Artikel [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Schritt 1: Einrichten des Pullservers und des Automatisierungskontos
 
@@ -202,9 +202,9 @@ Den vollständigen Quellcode für dieses Anwendungsbeispiel finden Sie in [diese
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Einen Überblick finden Sie unter [Azure Automation-Zustandskonfiguration](automation-dsc-overview.md).
-- Eine Einführung finden Sie unter [Erste Schritte mit der Azure Automation-Zustandskonfiguration](automation-dsc-getting-started.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in der Azure Automation-Zustandskonfiguration](automation-dsc-compile.md).
-- Eine PowerShell-Cmdlet-Referenz ist unter [Cmdlets der Azure Automation-Zustandskonfiguration](/powershell/module/azurerm.automation/#automation) verfügbar.
-- Eine Preisübersicht finden Sie unter [Azure Automation-Zustandskonfiguration: Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Verwendungsbeispiel für die Azure Automation-Zustandskonfiguration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit der Azure Automation-Zustandskonfiguration und Chocolatey](automation-dsc-cd-chocolatey.md).
+- Einen Überblick finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md).
+- Eine Einführung finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
+- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
+- Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation State Configuration-Cmdlets](/powershell/module/azurerm.automation/#automation) verfügbar.
+- Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
+- Ein Verwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation State Configuration und Chocolatey](automation-dsc-cd-chocolatey.md).

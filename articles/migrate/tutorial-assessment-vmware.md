@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie lokale virtuelle VMware-Com
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 08/20/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: fab8e4f09062f671714dabd1dae86a1979e356d2
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 65f1d6b448e6c0f16d51e1a4b8b897f52052ff15
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172346"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127629"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -151,7 +151,7 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
     - Wenn der virtuelle Computer über einen Proxy auf das Internet zugreift, klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert. [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity) über die Anforderungen für Internetkonnektivität und die Liste der URLs, auf die der Collector zugreift.
 
     > [!NOTE]
-    > Die Proxyadresse muss im Format http://ProxyIPAddress oder http://ProxyFQDN eingegeben werden. Es werden nur HTTP-Proxys unterstützt.
+    > Die Proxyadresse muss im Format http://ProxyIPAddress oder http://ProxyFQDN eingegeben werden. Es werden nur HTTP-Proxys unterstützt. Bei Verwendung eines abfangenden Proxys tritt bei der Internetverbindung unter Umständen zunächst ein Fehler auf, wenn Sie das Proxyzertifikat nicht importiert haben. Wie Sie dieses Problem beheben, indem Sie das Proxyzertifikat als vertrauenswürdiges Zertifikat auf dem virtuellen Collectorcomputer importieren, erfahren Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity-with-intercepting-proxy).
 
     - Der Collector überprüft, ob der Collector-Dienst ausgeführt wird. Der Dienst wird standardmäßig auf dem virtuellen Collectorcomputer installiert.
     - Laden Sie die VMware PowerCLI herunter, und installieren Sie sie.

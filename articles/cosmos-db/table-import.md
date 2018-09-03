@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 905815259707116759e0b980690fac108ab81c7b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856806"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186829"
 ---
-# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Importieren von Daten für die Verwendung mit der Table-API von Azure Cosmos DB
+# <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Tabellen-API
 
-In diesem Tutorial erfahren Sie, wie Sie Daten für die Verwendung mit der [Table-API](table-introduction.md) von Azure Cosmos DB importieren. Wenn Sie Daten in Azure Table Storage gespeichert haben, können Sie entweder das Datenmigrationstool oder AzCopy verwenden, um Ihre Daten zu importieren. Wenn Sie Daten in einem Konto der Tabellen-API von Azure Cosmos DB (Vorschauversion) gespeichert haben, müssen Sie Ihre Daten mit dem Datenmigrationstool migrieren. Nach dem Importieren der Daten stehen Ihnen die Premiumfunktionen von Azure Cosmos DB wie globale, sofort einsatzbereite Verteilung, dedizierter Durchsatz, Wartezeiten im einstelligen Millisekundenbereich im 99. Perzentil, garantierte Hochverfügbarkeit und automatische sekundäre Indizierung zur Verfügung.
+In diesem Tutorial erfahren Sie, wie Sie Daten für die Verwendung mit der [Table-API](table-introduction.md) von Azure Cosmos DB importieren. Wenn Sie Daten in Azure Table Storage gespeichert haben, können Sie entweder das Datenmigrationstool oder AzCopy verwenden, um Ihre Daten für die Azure Cosmos DB-Tabellen-API zu importieren. Wenn Sie Daten in einem Konto der Tabellen-API von Azure Cosmos DB (Vorschauversion) gespeichert haben, müssen Sie Ihre Daten mit dem Datenmigrationstool migrieren. 
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -39,11 +39,11 @@ Das Datenmigrationstool von Azure Cosmos DB für die Befehlszeile („dt.exe“)
 Um eine Migration von Tabellendaten durchzuführen, führen Sie die folgenden Aufgaben aus:
 
 1. Laden Sie das Migrationstool von [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) herunter.
-2. Führen Sie `dt.exe` mit den Befehlszeilenargumenten für Ihr Szenario aus.
+2. Führen Sie `dt.exe` mit den Befehlszeilenargumenten für Ihr Szenario aus. `dt.exe` akzeptiert einen Befehl im folgenden Format:
 
-„dt.exe“ akzeptiert einen Befehl im folgenden Format:
-
+   ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
+```
 
 Optionen für den Befehl:
 
@@ -105,7 +105,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren aus der Vors
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
-## <a name="azcopy-command"></a>AzCopy-Befehl
+## <a name="migrate-data-by-using-azcopy"></a>Migrieren von Daten mithilfe von AzCopy
 
 Die andere Option zum Migrieren von Daten aus Azure Table Storage in die Table-API von Azure Cosmos DB ist das AzCopy-Befehlszeilenprogramm. Bei Verwendung von AzCopy exportieren Sie Ihre Daten zunächst wie in [Exportieren von Daten aus Table Storage](../storage/common/storage-use-azcopy.md#export-data-from-table-storage) beschrieben und importieren sie anschließend wie in [Tabellen-API von Azure Cosmos DB](../storage/common/storage-use-azcopy.md#import-data-into-table-storage) beschrieben in Azure Cosmos DB.
 

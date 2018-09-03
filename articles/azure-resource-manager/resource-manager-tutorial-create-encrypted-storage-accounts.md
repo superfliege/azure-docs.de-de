@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7c78636a210ae90c5bfe1d0bfd35e4e05633f5cd
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188198"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43097884"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Tutorial: Erstellen einer Azure Resource Manager-Vorlage für die Bereitstellung eines verschlüsselten Speicherkontos
 
@@ -30,9 +30,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 > [!div class="checklist"]
 > * Öffnen einer Schnellstartvorlage
-> * Verstehen des Vorlagenformats
-> * Verwenden von Parametern in der Vorlage
-> * Verwenden von Variablen in der Vorlage
+> * Kennenlernen der Vorlage
 > * Bearbeiten der Vorlage
 > * Bereitstellen der Vorlage
 
@@ -111,10 +109,10 @@ So verwenden Sie die in der Vorlage definierte Variable:
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-Sie können die Vorlagenreferenz des Azure Storage-Kontos verwenden, um die Konfiguration für die Speicherkontoverschlüsselung zu ermitteln.
+In diesem Tutorial wird eine Vorlage zum Erstellen eines verschlüsselten Speicherkontos definiert.  Die Beispielvorlage erstellt nur ein einfaches unverschlüsseltes Speicherkonto. Sie können die Vorlagenreferenz des Azure Storage-Kontos verwenden, um die verschlüsselungsbezogene Konfiguration zu ermitteln.
 
 1. Navigieren Sie zu [Azure-Vorlagen](https://docs.microsoft.com/azure/templates/).
-2. Wählen Sie im Inhaltsverzeichnis auf der linken Seite **Referenz**->**Speicher**->**Speicherkonten**. Die Seite enthält die Informationen zum Definieren von Speicherkontoinformationen.
+2. Wählen Sie im Inhaltsverzeichnis auf der linken Seite **Referenz**->**Speicher**->**Speicherkonten**. Sie können auch **Speicher** in das Feld **Nach Titel filtern** eingeben.  Die Seite enthält das Schema zum Definieren von Speicherkontoinformationen.
 3. Untersuchen Sie die verschlüsselungsbezogenen Informationen.  
 4. Fügen Sie im properties-Element der Ressourcendefinition für das Speicherkonto den folgenden JSON-Code ein:
 
@@ -130,59 +128,17 @@ Sie können die Vorlagenreferenz des Azure Storage-Kontos verwenden, um die Konf
     ```
     Dieser Teil aktiviert die Verschlüsselungsfunktion des Blobspeicherdiensts.
 
-Das endgültige resources-Element sieht wie folgt aus:
+Ändern Sie die Vorlage in Visual Studio Code, sodass das endgültige Ressourcenelement wie folgt aussieht:
 
 ![Verschlüsselte Speicherkontoressourcen der Resource Manager-Vorlage](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In diesem Tutorial verwenden Sie Cloud Shell aus dem Azure-Portal. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell. In den hier aufgeführten Anweisungen wird die CLI verwendet.
+Informationen zum Bereitstellungsverfahren finden Sie in der Visual Studio Code-Schnellstartanleitung im Abschnitt [Bereitstellen der Vorlage](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
-2. Wählen Sie oben rechts **Cloud Shell** aus, wie in der folgenden Abbildung dargestellt:
+Der folgende Screenshot zeigt den CLI-Befehl zum Auflisten des neu erstellten Speicherkontos, um zu sehen, dass die Verschlüsselung für den Blobspeicher aktiviert wurde.
 
-    ![Azure-Portal, Cloud Shell](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell.png)
-
-3. Klicken Sie auf den Pfeil nach unten, und wählen Sie dann **Bash** aus, sofern diese Option noch nicht ausgewählt wurde. In diesem Tutorial verwenden Sie die Azure CLI.
-
-    ![Azure-Portal, Cloud Shell, CLI](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-choose-cli.png)
-4. Wählen Sie **Neustart** aus, um die Shell neu zu starten.
-5. Wählen Sie **Dateien hochladen/herunterladen** und dann **Hochladen** aus.
-
-    ![Azure-Portal, Cloud Shell, Datei hochladen](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-upload-file.png)
-6. Wählen Sie die Datei aus, die Sie zuvor im Tutorial gespeichert haben. Der Standardname lautet **azuredeploy.json**.
-7. Führen Sie aus Cloud Shell den Befehl **ls** aus, um zu überprüfen, ob die Datei erfolgreich hochgeladen wurde. Sie können auch den Befehl **Cat** verwenden, um den Inhalt der Vorlage zu überprüfen.
-
-    ![Azure-Portal, Cloud Shell, Datei auflisten](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-list-file.png)
-8. Führen Sie in Cloud Shell die folgenden Befehle aus:
-
-    ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file azuredeploy.json
-    ```
-    Hier ist der Screenshot einer Beispiel-Bereitstellung:
-
-    ![Azure-Portal, Cloud Shell, Vorlage bereitstellen](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-deploy-template.png)
-
-    Im Screenshot werden diese Werte verwendet:
-
-    * **&lt;ResourceGroupName>**: myresourcegroup0719. Es gibt zwei Darstellungen des Parameters.  Stellen Sie sicher, dass der gleiche Wert verwendet wird.
-    * **&lt;AzureLocation>**: eastus2
-    * **&lt;DeployName>**: mydeployment0719
-    * **&lt;TemplateFile>**: azuredeploy.json
-
-    In der Screenshotausgabe lautet der Name des Speicherkontos *fhqbfslikdqdsstandardsa*. 
-
-9. Führen Sie den folgenden PowerShell-Befehl zum Auflisten des neu erstellen Speicherkontos aus:
-
-    ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
-    ```
-
-    Eine Ausgabe wie im folgenden Screenshot wird angezeigt. Sie gibt an, dass die Verschlüsselung für den Blobspeicher aktiviert wurde.
-
-    ![Verschlüsseltes Azure Resource Manager-Speicherkonto](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
+![Verschlüsseltes Azure Resource Manager-Speicherkonto](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -195,7 +151,7 @@ Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie die Vorlagenreferenz zum Anpassen einer vorhandenen Vorlage verwenden. Die in diesem Tutorial verwendete Vorlage enthält nur eine Azure-Ressource.  Im nächsten Tutorial entwickeln Sie eine Vorlage mit mehreren Ressourcen.  Einige der Ressourcen verfügen über abhängige Ressourcen.
+In diesem Tutorial haben Sie gelernt, wie Sie die Vorlagenreferenz zum Anpassen einer vorhandenen Vorlage verwenden. Die in diesem Tutorial verwendete Vorlage enthält nur eine Azure-Ressource.  Im nächsten Tutorial entwickeln Sie eine Vorlage mit mehreren Ressourcen. Einige der Ressourcen verfügen über abhängige Ressourcen.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

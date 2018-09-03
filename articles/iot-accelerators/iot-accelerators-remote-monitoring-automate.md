@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d94f8d38ef771bd5ab03f4d3cef25233c33e7546
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6759568a678394f7cec4ac9f0bdd99d8ed1db9de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282616"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886789"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Tutorial: Erkennen von Problemen mit Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -112,11 +112,23 @@ Um eine Änderung an einer vorhandenen Regel vorzunehmen, wählen Sie sie in der
 
 ## <a name="disable-a-rule"></a>Deaktivieren einer Regel
 
-Um eine Regel vorübergehend auszuschalten, können Sie sie in der Regelliste deaktivieren. Wählen Sie die zu deaktivierende Regel und dann **Disable** (Deaktivieren) aus. Der **Status** der Regel in der Liste ändert sich, um anzugeben, dass die Regel jetzt deaktiviert ist. Sie können eine zuvor deaktivierte Regel mit dem gleichen Verfahren wieder aktivieren.
+Um eine Regel vorübergehend auszuschalten, können Sie sie in der Regelliste deaktivieren. Wählen Sie die zu deaktivierende Regel aus, und klicken Sie anschließend auf **Deaktivieren**. Der **Status** der Regel in der Liste ändert sich, um anzugeben, dass die Regel jetzt deaktiviert ist. Sie können eine zuvor deaktivierte Regel mit dem gleichen Verfahren wieder aktivieren.
 
 [![Deaktivieren einer Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
 Sie können mehrere Regeln gleichzeitig aktivieren und deaktivieren, indem Sie in der Liste mehrere Regeln auswählen.
+
+## <a name="delete-a-rule"></a>Löschen einer Regel
+
+Wenn Sie eine Regel dauerhaft löschen möchten, können Sie sie in der Regelliste löschen. Wählen Sie die zu löschende Regel aus, und klicken Sie anschließend auf **Löschen**.
+
+[![Löschen der Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+
+Nachdem Sie bestätigt haben, dass Sie die Regel löschen möchten, haben Sie die Option, alle Warnungen im Zusammenhang mit der Regel auf der Seite **Wartung** zu löschen.
+
+[![Löschen der Regel](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-expanded.png#lightbox)
+
+Die Regeln können nur einzeln gelöscht werden.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

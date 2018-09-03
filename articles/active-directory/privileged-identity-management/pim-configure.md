@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Azure AD Privileged Identity Management | Microsoft-Dokumentation
-description: Ein Thema, in dem erläutert wird, was Azure AD Privileged Identity Management ist und wie Sie damit die Sicherheit in Ihrer Cloud erhöhen.
+title: Was ist Azure AD Privileged Identity Management? | Microsoft-Dokumentation
+description: Hier finden Sie eine Übersicht über Azure Active Directory Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8ac1dad9413d9e2710722127c2e837223a5b6f7f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618851"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186210"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -51,6 +51,35 @@ In Azure AD kann Azure AD Privileged Identity Management die Benutzer verwalten,
 ## <a name="just-in-time-administrator-access"></a>Bedarfsabhängiger Administratorzugriff
 
 In der Vergangenheit konnten Sie einen Benutzer über das Azure-Portal, über andere Portale von Microsoft-Onlinediensten oder über die Azure AD-Cmdlets in Windows PowerShell einer Administratorrolle zuweisen. Dadurch wird der Benutzer zum **permanenten Administrator**, der in seiner zugewiesenen Rolle stets aktiv bleibt. Mit Azure AD Privileged Identity Management wird das Konzept **berechtigter Administratoren** eingeführt. Berechtigte Administratoren sollten Benutzer sein, die von Zeit zu Zeit (aber nicht ständig und jeden Tag) Zugriff mit erhöhten Rechten benötigen. Die Rolle ist inaktiv, bis der Benutzer Zugriff benötigt. Dann wird eine Aktivierung ausgeführt, und der Benutzer wird für einen zuvor festgelegten Zeitraum zu einem aktiven Administrator. Immer mehr Unternehmen entscheiden sich für diesen Ansatz, um den ständigen Administratorzugriff auf privilegierte Rollen zu verringern oder ganz zu beseitigen.
+
+
+## <a name="terminology"></a>Begriff
+
+*Benutzer mit berechtigter Rolle:* Ein Benutzer mit berechtigter Rolle ist ein Benutzer in Ihrer Organisation, der einer Rolle in Azure AD als berechtigt zugewiesen ist (Rolle erfordert Aktivierung).
+
+*Delegierte genehmigende Person:* Einzelne oder mehrere Personen oder Gruppen in Ihrem Azure AD, die für die Genehmigung von Anforderungen der Rollenaktivierung verantwortlich sind, sind genehmigende Personen.
+
+## <a name="scenarios"></a>Szenarien
+
+Privileged Identity Management unterstützt folgende Szenarien:
+
+**Als Administrator für privilegierte Rollen haben Sie folgende Möglichkeiten:**
+
+- Aktivieren der Genehmigung für bestimmte Rollen
+- Festlegen von Benutzern und/oder Gruppen als genehmigende Personen für die Genehmigung von Anforderungen
+- Anzeigen des Anforderungs- und Genehmigungsverlaufs für alle privilegierten Rollen
+
+**Als festgelegte genehmigende Person können Sie:**
+
+- Anzeigen ausstehender Genehmigungen (Anforderungen)
+- Genehmigen oder Ablehnen von Anforderungen von Rechteerweiterungen für Rollen (einzeln und/oder mehrere)
+- Abgeben einer Begründung für die Genehmigung/Ablehnung 
+
+**Als Benutzer mit berechtigter Rolle haben Sie folgende Möglichkeiten:**
+
+- Anfordern der Aktivierung einer Rolle, die genehmigt werden muss
+- Anzeigen des Status Ihrer Aktivierungsanforderung
+- Fertigstellen Ihrer Aufgabe in Azure AD, wenn die Aktivierung genehmigt wurde
 
 ## <a name="enable-privileged-identity-management-for-your-directory"></a>Aktivieren von Privileged Identity Management für Ihr Verzeichnis
 
@@ -157,4 +186,6 @@ Wenn Ihre Organisation Azure AD Premium P2 nicht verlängert oder der Testzeitra
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+- [Abonnementanforderungen für die Verwendung von PIM](subscription-requirements.md)
+- [Azure AD-Verzeichnisrollen, die Sie in PIM verwalten können](pim-roles.md)
+- [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
