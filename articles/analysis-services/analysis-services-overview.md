@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/21/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937936"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104981"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -81,13 +81,13 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |Brasilien Süd     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Kanada, Mitte    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |USA (Ost)     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
+|USA (Ost) 2     |     B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>1    |
 |USA Nord Mitte     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA (Mitte)     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA Süd Mitte     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |USA, Westen-Mitte   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|USA (Westen)     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
-|USA, Westen 2    |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    3     |
+|USA (Westen)     |    B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>2  |
+|USA, Westen 2    |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9  |    3<br>1     |
 
 ### <a name="europe"></a>Europa
 
@@ -95,7 +95,7 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |---------|---------|:---------:|
 |Nordeuropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |UK, Süden   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Europa, Westen     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1      |    7     |
+|Europa, Westen     |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9    |    7<br>1     |
 
 ### <a name="asia-pacific"></a>Asien-Pazifik 
 
@@ -103,10 +103,8 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 |---------|---------|:---------:|
 |Australien, Südosten     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan, Osten  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |   1      |
+|Asien, Südosten     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indien, Westen     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-
-\* Für die Pläne S8 und S9 des Standard-Tarifs wird nur ein Abfragereplikat unterstützt.
 
 ## <a name="scale-to-your-needs"></a>Bedarfsgerechte Skalierung
 

@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 5288e9900c75eae7601b84f7366edf9ac739d5da
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125802"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143541"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
 
@@ -60,10 +60,10 @@ A.  Um Azure Data Box-Datenträger zu erhalten, müssen Sie sich zunächst für 
 A. Für fünf Datenträger mit jeweils 8 TB (7 TB nutzbare Kapazität) ergibt sich eine maximal nutzbare Kapazität von 35 TB. Sie können also 35 TB an Daten auf einmal übertragen.  Um eine größere Datenmenge zu übertragen, können Sie weitere Datenträger bestellen.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>F: Wie kann ich prüfen, ob Data Box-Datenträger in meiner Region verfügbar sind? 
-A.  Data Box-Datenträger sind während der Vorschauphase in den USA und allen Ländern der Europäischen Union verfügbar.  
+A.  Data Box-Datenträger sind während der Vorschauphase in den USA, in Kanada und in allen Ländern der Europäischen Union verfügbar.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>F: In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
-A. Die Vorschauversion der Data Box-Datenträger wird für alle Regionen in den USA und in Westeuropa und Nordeuropa unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
+A. Die Vorschauversion von Data Box Disk wird für alle Regionen in den USA, in Kanada, in Westeuropa und Nordeuropa unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>F: An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
 A. Wenden Sie sich an den [Support für Data Box-Datenträger](mailto:expresspodsupport@microsoft.com), falls Probleme mit Data Box-Datenträgern auftreten.

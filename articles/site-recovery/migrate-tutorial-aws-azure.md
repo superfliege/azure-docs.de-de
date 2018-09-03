@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 08/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922656"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885324"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -33,10 +33,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Vergewissern Sie sich, dass auf den zu migrierenden virtuellen Computern eine unterstützte Betriebssystemversion ausgeführt wird. Unterstützte Versionen: 
-    - Windows Server 2016
-    - Red Hat Enterprise Linux 6.7 (nur virtualisierte HVM-Instanzen); darf nur über Citrix PV- oder AWS PV-Treiber verfügen. Instanzen mit Red Hat PV-Treibern werden **nicht** unterstützt.
-
-- Der Mobilitätsdienst muss auf jeder VM installiert sein, die Sie replizieren möchten. 
+  - Windows Server 2016 
+  - Windows Server 2012 R2
+  - Windows Server 2012 
+  - 64-Bit-Version von Windows Server 2008 R2 SP1 oder höher
+  - Red Hat Enterprise Linux 6.7 (nur virtualisierte HVM-Instanzen) mit einem Citrix PV- oder AWS PV-Treiber. Instanzen mit RedHat PV-Treibern werden *nicht* unterstützt.
+ - Der Mobilitätsdienst muss auf jeder VM installiert sein, die Sie replizieren möchten. 
 
     > [!IMPORTANT]
     > Site Recovery installiert diesen Dienst automatisch, wenn Sie die Replikation für die VM aktivieren. Für die automatische Installation müssen Sie ein Konto für die EC2-Instanzen vorbereiten, mit dem Site Recovery auf die VM zugreift. Sie können ein Domänenkonto oder ein lokales Konto verwenden. 

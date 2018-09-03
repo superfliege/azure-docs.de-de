@@ -1,26 +1,21 @@
 ---
 title: Erstellen von Genehmigungsworkflows für die Verarbeitung von Adressenlistenanforderungen – Azure Logic Apps | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Logic Apps automatisierte Genehmigungsworkflows für die Verarbeitung von Adressenlistenabonnements erstellen.
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: 'Tutorial: Erstellen automatisierter Genehmigungsworkflows für die Verarbeitung von Adressenlistenabonnements mit Azure Logic Apps'
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: e31be6ac24b7b194ab77856cb7376f9431a79f24
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4ac5861dabbc473099886b4f099824cde60f38b9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300673"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122868"
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>Verwalten von Adressenlistenanforderungen mit einer Logik-App
 

@@ -14,23 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5117444b6312d96f87f9e1edf8ce26d0360417ef
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049336"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885750"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden einer verwalteten Identität für die Linux-VM für den Zugriff auf Azure Storage 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Identität für die Linux-VM für den Zugriff auf Azure Storage erstellen und verwenden. Folgendes wird vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie eine vom System zugewiesene Identität für einen virtuellen Linux-Computer für den Zugriff auf Azure Storage verwenden. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Linux-Computers in einer neuen Ressourcengruppe
-> * Aktivieren einer verwalteten Dienstidentität auf einem virtuellen Linux-Computer (VM)
+> * Speicherkonto erstellen
 > * Erstellen eines Blobcontainers im Speicherkonto
 > * Gewähren Sie der verwalteten Identität der Linux-VM Zugriff auf einen Azure Storage-Container.
 > * Erhalten eines Zugriffstokens und seine Verwendung zum Aufrufen von Azure Storage
@@ -40,41 +38,20 @@ In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Identität für die Lin
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com), bevor Sie fortfahren.
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Anmelden beim Azure-Portal](https://portal.azure.com)
+
+- [Erstellen eines virtuellen Linux-Computers](/azure/virtual-machines/linux/quick-create-portal)
+
+- [Aktivieren einer vom System zugewiesenen Identität auf dem virtuellen Computer](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 Für die Ausführung der CLI-Beispielskripts in diesem Tutorial stehen Ihnen zwei Möglichkeiten zur Verfügung:
 
 - Verwenden Sie [Azure Cloud Shell](~/articles/cloud-shell/overview.md) entweder vom Azure-Portal aus oder über die Schaltfläche **Ausprobieren**, die sich in der rechten oberen Ecke eines jeden Codeblocks befindet.
 - [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
-
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
-
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Linux-Computers in einer neuen Ressourcengruppe
-
-In diesem Abschnitt erstellen Sie einen virtuellen Linux-Computer, für den später eine verwaltete Identität gewährt wird.
-
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
-2. Wählen Sie **Compute** und dann **Ubuntu Server 16.04 LTS**.
-3. Geben Sie die Informationen zum virtuellen Computer ein. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** oder **Kennwort**. Mit den erstellten Anmeldeinformationen können Sie sich auf dem virtuellen Computer anmelden.
-
-   ![Bereich „Grundeinstellungen“ zum Erstellen eines virtuellen Computers](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. Wählen Sie in der Liste **Abonnement** ein Abonnement für den virtuellen Computer aus.
-5. Um eine neue Ressourcengruppe auszuwählen, in der der virtuelle Computer erstellt werden soll, klicken Sie auf **Ressourcengruppe** > **Neu erstellen**. Wenn Sie fertig sind, klicken Sie auf **OK**.
-6. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie im Bereich „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
-
-## <a name="enable-managed-identity-on-your-vm"></a>Aktivieren der MSI auf dem virtuellen Computer
-
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne Anmeldeinformationen in Ihren Code einfügen zu müssen. Im Hintergrund werden durch das Aktivieren der MSI auf einem virtuellen Computer über das Azure-Portal zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure AD registriert, um eine verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
-
-1. Navigieren Sie zu der Ressourcengruppe des neuen virtuellen Computers, und wählen Sie den virtuellen Computer aus, den Sie im vorherigen Schritt erstellt haben.
-2. Klicken Sie in der Kategorie **Einstellungen** auf **Konfiguration**.
-3. Wählen Sie zum Aktivieren der MSI **Ja** aus.
-4. Klicken Sie zum Anwenden der Konfiguration auf **Speichern**. 
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 

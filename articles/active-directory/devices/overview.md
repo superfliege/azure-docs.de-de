@@ -1,5 +1,5 @@
 ---
-title: Einführung in die Geräteverwaltung in Azure Active Directory | Microsoft-Dokumentation
+title: Worum handelt es sich bei der Geräteverwaltung in Azure Active Directory? | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe der Geräteverwaltung Kontrolle über die Geräte erhalten, die auf Ressourcen in Ihrer Umgebung zugreifen.
 services: active-directory
 documentationcenter: ''
@@ -12,18 +12,18 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 05/21/2018
+ms.topic: overview
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 7e71ff5f5da17165d5127f3547d8eb0756411b8c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 456b28c50bd5e7d69c3f16dd3e76a9ced20112f9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597692"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048861"
 ---
-# <a name="introduction-to-device-management-in-azure-active-directory"></a>Einführung in die Geräteverwaltung in Azure Active Directory
+# <a name="what-is-device-management-in-azure-active-directory"></a>Worum handelt es sich bei der Geräteverwaltung in Azure Active Directory?
 
 In einer Welt, in der Mobilität und die Cloud an erster Stelle stehen, ermöglicht Azure Active Directory (Azure AD) das einmalige Anmelden an Geräten, Apps und Diensten an jedem Ort. Aufgrund der steigenden Zahl von Geräten, etwa in Form von „Bring Your Own Device“ (BYOD), gelten für IT-Spezialisten zwei gegensätzliche Zielsetzungen:
 

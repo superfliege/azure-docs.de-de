@@ -4,17 +4,17 @@ description: Verwenden Sie Azure Policy, um die Einhaltung von Standards, gesetz
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/13/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: b8ac93da2f0dd4099ab1aa2df93e5d979ecdd285
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 68ee6b64baf4284bbd0977e82fc473a58a59874c
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049743"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42813423"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -36,26 +36,26 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
    ![Suchen nach „Policy“](media/create-manage-policy/search-policy.png)
 
-2. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**. Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
-3. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Richtlinie zuweisen**.
+1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**. Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
+1. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Richtlinie zuweisen**.
 
    ![Zuweisen einer Richtliniendefinition](media/create-manage-policy/select-assign-policy.png)
 
-4. Wählen Sie auf der Seite **Richtlinie zuweisen** den **Bereich** aus, indem Sie auf die Auslassungspunkte klicken und ein Abonnement (erforderlich) und eine Ressourcengruppe (optional) auswählen. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird.  Klicken Sie dann unten im Abschnitt der Seite **Bereich** auf **Auswählen**.
+1. Wählen Sie auf der Seite **Richtlinie zuweisen** den **Bereich** aus, indem Sie auf die Auslassungspunkte klicken und ein Abonnement (erforderlich) und eine Ressourcengruppe (optional) auswählen. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird.  Klicken Sie dann unten im Abschnitt der Seite **Bereich** auf **Auswählen**.
 
    Dieses Beispiel verwendet das **Contoso-Abonnement**. Ihr Abonnement wird sich davon unterscheiden.
 
-5. Wenn Sie eine oder mehrere Ressourcengruppen (wenn Sie nur ein Abonnement erfasst haben) oder bestimmte Ressourcen innerhalb einer Ressourcengruppe (bei der Bereichswahl) ausschließen möchten, können Sie **Ausschlüsse** von der Richtlinienzuweisung konfigurieren. Lassen Sie dieses Feld im Moment leer.
+1. Wenn Sie eine oder mehrere Ressourcengruppen (wenn Sie nur ein Abonnement erfasst haben) oder bestimmte Ressourcen innerhalb einer Ressourcengruppe (bei der Bereichswahl) ausschließen möchten, können Sie **Ausschlüsse** von der Richtlinienzuweisung konfigurieren. Lassen Sie dieses Feld im Moment leer.
 
-6. Wählen Sie die **Richtliniendefinition** mit den Auslassungspunkten, um die Liste der verfügbaren Definitionen zu öffnen. Sie können den **Typ** der Richtliniendefinition nach *Integriert* filtern, um alle Definitionen anzuzeigen und ihre Beschreibungen zu lesen.
+1. Wählen Sie die **Richtliniendefinition** mit den Auslassungspunkten, um die Liste der verfügbaren Definitionen zu öffnen. Sie können den **Typ** der Richtliniendefinition nach *Integriert* filtern, um alle Definitionen anzuzeigen und ihre Beschreibungen zu lesen.
 
-7. Wählen Sie **SQL Server-Version 12.0 erfordern** aus. Wenn Sie die Option nicht direkt finden, geben Sie in das Suchfeld **SQL Server erfordern** ein, und drücken Sie dann die EINGABETASTE oder klicken Sie außerhalb des Suchfelds. Klicken Sie unten auf der Seite **Verfügbare Definitionen** auf **Auswählen**, nachdem Sie die Richtliniendefinition gefunden und ausgewählt haben.
+1. Wählen Sie **SQL Server-Version 12.0 erfordern** aus. Wenn Sie die Option nicht direkt finden, geben Sie in das Suchfeld **SQL Server erfordern** ein, und drücken Sie dann die EINGABETASTE oder klicken Sie außerhalb des Suchfelds. Klicken Sie unten auf der Seite **Verfügbare Definitionen** auf **Auswählen**, nachdem Sie die Richtliniendefinition gefunden und ausgewählt haben.
 
    ![Suchen nach einer Richtlinie](media/create-manage-policy/select-available-definition.png)
 
-8. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. In diesem Beispiel verwenden Sie *SQL Server-Version 12.0 erfordern*. Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.
+1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. In diesem Beispiel verwenden Sie *SQL Server-Version 12.0 erfordern*. Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.
 
-9. Klicken Sie auf **Zuweisen**.
+1. Klicken Sie auf **Zuweisen**.
 
 ## <a name="implement-a-new-custom-policy"></a>Implementieren einer neuen benutzerdefinierten Richtlinie
 
@@ -65,8 +65,8 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
 
    ![„Definition“ unter „Authoring“ (Erstellung)](media/create-manage-policy/definition-under-authoring.png)
 
-2. Wählen Sie oben auf der Seite **+ Richtliniendefinition** aus. Daraufhin wird die Seite **Richtliniendefinition** geöffnet.
-3. Geben Sie Folgendes ein:
+1. Wählen Sie oben auf der Seite **+ Richtliniendefinition** aus. Daraufhin wird die Seite **Richtliniendefinition** geöffnet.
+1. Geben Sie Folgendes ein:
 
    - Die Verwaltungsgruppe oder das Abonnement, in der bzw. in dem die Richtliniendefinition gespeichert ist. Wählen Sie über die Auslassungspunkte bei **Speicherort der Definition** aus.
 
@@ -108,7 +108,7 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
 
     Weitere Beispiele für Azure-Richtlinien finden Sie unter [Vorlagen für Azure Policy](json-samples.md).
 
-4. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern**aus.
 
 ## <a name="create-a-policy-definition-with-rest-api"></a>Erstellen einer Richtliniendefinition mit der REST-API
 
@@ -247,7 +247,7 @@ Get-AzureRmPolicyDefinition
 
 Es gibt alle verfügbaren Richtliniendefinitionen, einschließlich integrierten Richtlinien, zurück. Jede Richtlinie wird im folgenden Format zurückgeben:
 
-```
+```output
 Name               : e56962a6-4747-49cd-b67b-bf8b01975c4c
 ResourceId         : /providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c
 ResourceName       : e56962a6-4747-49cd-b67b-bf8b01975c4c
@@ -327,19 +327,19 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    ![Klicken auf „Definitionen“](media/create-manage-policy/select-definitions.png)
 
-2. Klicken Sie im oberen Bereich der Seite auf **+ Initiativdefinition**, um zur Seite **Initiativdefinition** zu gelangen.
+1. Klicken Sie im oberen Bereich der Seite auf **+ Initiativdefinition**, um zur Seite **Initiativdefinition** zu gelangen.
 
    ![Initiativdefinition](media/create-manage-policy/initiative-definition.png)
 
-3. Wählen Sie über die Auslassungspunkte unter **Speicherort der Definition** ein Abonnement zum Speichern der Definition aus.
+1. Wählen Sie über die Auslassungspunkte unter **Speicherort der Definition** eine Verwaltungsgruppe oder ein Abonnement zum Speichern der Definition aus.
 
-4. Geben Sie **Name** und **Beschreibung** der Initiative ein.
+1. Geben Sie **Name** und **Beschreibung** der Initiative ein.
 
    Dieses Beispiel stellt sicher, dass Ressourcen mit Richtliniendefinitionen zur Verbesserung der Sicherheit konform sind. Daher nennen wir die Initiative **Get Secure** (Sicherheit verbessern) und geben als Beschreibung Folgendes an: **This initiative has been created to handle all policy definitions associated with securing resources.** (Diese Initiative gilt für alle Richtliniendefinitionen, die mit dem Schutz von Ressourcen in Zusammenhang stehen.)
 
-5. Wählen Sie für **Kategorie** eine der vorhandenen Optionen, oder erstellen Sie eine neue Kategorie.
+1. Wählen Sie für **Kategorie** eine der vorhandenen Optionen, oder erstellen Sie eine neue Kategorie.
 
-6. Durchsuchen Sie die Liste mit den verfügbaren **Definitionen** (rechte Hälfte der Seite **Initiativdefinition**), und wählen Sie die Richtliniendefinitionen aus, die Sie dieser Initiative hinzufügen möchten. Fügen Sie für die Initiative **Get secure** die folgenden integrierten Richtliniendefinitionen hinzu, indem Sie auf **+** neben den Informationen zur Richtliniendefinition oder auf eine Zeile mit den Richtliniendefinitionen und dann auf der Detailseite auf die Option **+ Hinzufügen** klicken:
+1. Durchsuchen Sie die Liste mit den verfügbaren **Definitionen** (rechte Hälfte der Seite **Initiativdefinition**), und wählen Sie die Richtliniendefinitionen aus, die Sie dieser Initiative hinzufügen möchten. Fügen Sie für die Initiative **Get secure** die folgenden integrierten Richtliniendefinitionen hinzu, indem Sie auf **+** neben den Informationen zur Richtliniendefinition oder auf eine Zeile mit den Richtliniendefinitionen und dann auf der Detailseite auf die Option **+ Hinzufügen** klicken:
    - Require SQL Server version 12.0 (SQL Server-Version 12.0 fordern)
    - [Preview]: Monitor unprotected web applications in Security Center.
    - [Preview]: Monitor permissive network across in Security Center.
@@ -350,13 +350,20 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    ![Initiativdefinitionen](media/create-manage-policy/initiative-definition-2.png)
 
-7. Klicken Sie auf **Speichern**.
+1. Wenn eine zur Initiative hinzugefügte Richtliniendefinition Parameter enthält, werden sie unterhalb des Richtliniennamens im Bereich **RICHTLINIEN UND PARAMETER** angezeigt. Der _Wert_ kann entweder auf „Wert festlegen“ (hartcodiert für alle Zuweisungen dieser Initiative) oder auf „Initiativenparameter verwenden“ (Festlegung während der einzelnen Initiativenzuweisungen) festgelegt werden. Wird „Wert festlegen“ ausgewählt, können in der Dropdownliste rechts neben _Werte_ die gewünschten Werte eingegeben oder ausgewählt werden. Wird „Initiativenparameter verwenden“ ausgewählt, wird ein neuer Abschnitt **Initiativenparameter** angezeigt, in dem Sie die Parameter definieren können, die während der Initiativenzuweisung festgelegt werden. Mit den zulässigen Werten für diesen Initiativenparameter können Sie weiter einschränken, welche Werte während der Initiativenzuweisung festgelegt werden können.
+
+   ![Parameter der Initiativendefinition](media/create-manage-policy/initiative-definition-3.png)
+
+   > [!NOTE]
+   > Werden einige `strongType`-Parameter verwendet, kann die Liste der Werte nicht automatisch ermittelt werden. In diesem Fall wird rechts neben der Parameterzeile eine Ellipse angezeigt. Wenn Sie darauf klicken, wird die Seite „Parameterbereich (&lt;Parametername&gt;)“ geöffnet. Wählen Sie auf dieser Seite das Abonnement aus, mit dem die Wertoptionen bereitgestellt werden sollen. Dieser Parameterbereich wird nur während der Erstellung der Initiativendefinition verwendet und wirkt sich bei der Zuweisung nicht auf die Richtlinienauswertung oder den Bereich der Initiative aus.
+
+1. Klicken Sie auf **Speichern**.
 
 ### <a name="assign-an-initiative-definition"></a>Zuweisen einer Initiativdefinition
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **ERSTELLUNG** die Option **Definitionen**.
-2. Suchen Sie die Initiativdefinition **Get Secure**, die Sie zuvor erstellt haben, und wählen Sie sie aus.
-3. Wählen Sie oben auf der Seite **Zuweisen** aus, um die Seite **Get Secure: Initiative zuweisen** zu öffnen.
+1. Suchen Sie die Initiativdefinition **Get Secure**, die Sie zuvor erstellt haben, und wählen Sie sie aus.
+1. Wählen Sie oben auf der Seite **Zuweisen** aus, um die Seite **Get Secure: Initiative zuweisen** zu öffnen.
 
    ![Zuweisen einer Definition](media/create-manage-policy/assign-definition.png)
 
@@ -364,14 +371,14 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    ![Rechtsklick auf eine Zeile](media/create-manage-policy/select-right-click.png)
 
-4. Füllen Sie die Seite **Get Secure: Initiative zuweisen** aus, indem Sie die folgenden Beispielinformationen eingeben. Sie können Ihre eigenen Daten verwenden.
+1. Füllen Sie die Seite **Get Secure: Initiative zuweisen** aus, indem Sie die folgenden Beispielinformationen eingeben. Sie können Ihre eigenen Daten verwenden.
 
    - Bereich: Das Abonnement, für das Sie die Initiative gespeichert haben, ist die Standardeinstellung.  Sie können den Bereich ändern, um die Initiative einer Ressourcengruppe innerhalb des Speicherorts des Abonnements zuzuweisen.
    - Ausschlüsse: Konfigurieren Sie alle Ressourcen innerhalb des Bereichs, um zu verhindern, dass die Zuweisung der Initiative auf sie angewendet wird.
    - Initiativdefinition und Zuweisungsname: Get Secure (vorab ausgefüllt als Name der zuzuweisenden Initiative).
    - Beschreibung: Diese Initiativenzuweisung dient zur Erzwingung dieser Gruppe von Richtliniendefinitionen.
 
-5. Klicken Sie auf **Zuweisen**.
+1. Klicken Sie auf **Zuweisen**.
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Ausnehmen einer nicht konformen oder abgelehnten Ressource mithilfe eines Ausschlusses
 
@@ -392,15 +399,15 @@ In diesem Beispiel hat Trent Baker, einer der Virtualisierungsspezialisten von C
 ### <a name="update-assignment-with-exclusion"></a>Aktualisieren einer Zuweisung mit Ausschluss
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **ERSTELLUNG** die Option **Zuweisungen**.
-2. Durchsuchen Sie alle Richtlinienzuweisungen, und öffnen Sie die Zuweisung *Require SQL Server version 12.0* (SQL Server-Version 12.0 fordern).
-3. Legen Sie den **Ausschluss** fest, indem Sie auf die Auslassungspunkte klicken und die auszuschließende Ressourcengruppe auswählen (in diesem Beispiel *SQLServers_Excluded*).
+1. Durchsuchen Sie alle Richtlinienzuweisungen, und öffnen Sie die Zuweisung *Require SQL Server version 12.0* (SQL Server-Version 12.0 fordern).
+1. Legen Sie den **Ausschluss** fest, indem Sie auf die Auslassungspunkte klicken und die auszuschließende Ressourcengruppe auswählen (in diesem Beispiel *SQLServers_Excluded*).
 
    ![Anfordern eines Ausschlusses](media/create-manage-policy/request-exclusion.png)
 
    > [!NOTE]
    > Je nach Richtlinie und Auswirkung kann der Ausschluss auch für bestimmte Ressourcen innerhalb einer Ressourcengruppe im Bereich der Zuweisung gewährt werden. Da in diesem Tutorial die Auswirkung **Ablehnen** verwendet wurde, wäre es nicht sinnvoll, den Ausschluss auf eine bestimmte Ressource festzulegen, die bereits vorhanden ist.
 
-4. Klicken Sie auf **Auswählen**, und klicken Sie dann auf **Speichern**.
+1. Klicken Sie auf **Auswählen**, und klicken Sie dann auf **Speichern**.
 
 In diesem Abschnitt haben Sie die Ablehnung des Versuchs, eine unzulässige Version des SQL-Servers zu erstellen, aufgehoben, indem Sie einen Ausschluss für eine einzelne Ressourcengruppe erstellt haben.
 
@@ -409,8 +416,8 @@ In diesem Abschnitt haben Sie die Ablehnung des Versuchs, eine unzulässige Vers
 Falls Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die folgenden Schritte aus, um alle weiter oben erstellten Zuweisungen oder Definitionen zu löschen:
 
 1. Klicken Sie links auf der Seite „Azure Policy“ unter **ERSTELLUNG** auf **Definitionen** (oder auf **Zuweisungen**, wenn Sie eine Zuweisung löschen möchten).
-2. Suchen Sie nach der neuen Initiativ- oder Richtliniendefinition (bzw. der Zuweisung), die Sie entfernen möchten.
-3. Klicken Sie mit der rechten Maustaste auf die Zeile, oder wählen Sie die Auslassungspunkte am Ende der Definition (oder Zuweisung), und wählen Sie anschließend **Definition löschen** (bzw. **Zuweisung löschen**) aus.
+1. Suchen Sie nach der neuen Initiativ- oder Richtliniendefinition (bzw. der Zuweisung), die Sie entfernen möchten.
+1. Klicken Sie mit der rechten Maustaste auf die Zeile, oder wählen Sie die Auslassungspunkte am Ende der Definition (oder Zuweisung), und wählen Sie anschließend **Definition löschen** (bzw. **Zuweisung löschen**) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

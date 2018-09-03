@@ -1,5 +1,5 @@
 ---
-title: Administratorhandbuch für das Azure Data Box-Portal | Microsoft-Dokumentation
+title: Administratorhandbuch für das Azure Data Box Disk-Portal | Microsoft-Dokumentation
 description: Beschreibt die Verwaltung von Azure Data Box über das Azure-Portal.
 services: databox
 documentationcenter: NA
@@ -13,16 +13,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/10/2018
+ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: c76d8bc6af808fd1257e44ad296e3e2d65b8695d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 7bf88a4e9d7af1033f014939d95783f9430dd84a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238113"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124962"
 ---
-# <a name="use-azure-portal-to-administer-your-data-box-preview"></a>Verwalten Ihrer Data Box (Vorschauversion) über das Azure-Portal
+# <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>Verwalten von Data Box Disk (Vorschauversion) über das Azure-Portal
 
 Die Tutorials in diesem Artikel beziehen sich auf Microsoft Azure Data Box Disk während der Vorschauphase. Dieser Artikel beschreibt einige der komplexen Workflows und Verwaltungsaufgaben, die für die Data Box Disk-Instanz ausgeführt werden können. 
 

@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: aeb4ff26b05a5542fd77ac32589c8f8efb622798
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4c4a5b66fe35da01a3661715e17a9fda20bc2411
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40166889"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43184721"
 ---
 ## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Erstellen eines Kubernetes-Clusters mit Aktivierung für Azure Dev Spaces
 
@@ -42,7 +42,7 @@ ms.locfileid: "40166889"
 
    ![Aktivieren von HTTP-Anwendungsrouting](../media/common/Kubernetes-Create-Cluster-3.PNG)
 
-    > [!IMPORTANT]
-    > Sie müssen das HTTP-Anwendungsrouting aktivieren, wenn Sie einen AKS-Cluster erstellen. Es ist nicht möglich, diese Einstellung später zu ändern.
+    > [!Note]
+    > Führen Sie zum Aktivieren von [HTTP-Anwendungsrouting](/azure/aks/http-application-routing) auf einem vorhandenen Cluster den folgenden Befehl aus: `az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing`
 
 1. Wählen Sie **Überprüfen + erstellen** und danach **Erstellen**.

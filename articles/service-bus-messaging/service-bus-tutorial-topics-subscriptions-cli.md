@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 42f0781de5412310ecb5326f0384268aba9c53dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81d538c0324f8fa89a7ce86ceaf2b0a2a76b4d51
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651468"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120683"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über die CLI und mit Themen/Abonnements
 
@@ -50,11 +50,11 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 Jedes [Abonnement eines Themas](service-bus-messaging-overview.md#topics) kann eine Kopie jeder Nachricht empfangen. Die Themen sind in Bezug auf das Protokoll und die Semantik vollständig mit Service Bus-Warteschlangen kompatibel. Service Bus-Themen unterstützen ein umfassendes Auswahlregel-Array mit Filterbedingungen. Es sind optionale Aktionen vorhanden, mit denen Nachrichteneigenschaften festgelegt oder geändert werden. Jedes Mal, wenn sich für eine Regel eine Übereinstimmung ergibt, wird eine Nachricht erzeugt. Weitere Informationen zu Regeln, Filtern und Aktionen finden Sie unter diesem [Link](topic-filters.md).
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Öffnen Sie nach der Installation der CLI eine Eingabeaufforderung, und geben Sie die folgenden Befehle ein, um sich an Azure anzumelden. Diese Schritte sind nicht erforderlich, wenn Sie Cloud Shell nutzen:
+Öffnen Sie nach der Installation der CLI eine Eingabeaufforderung, und geben Sie die folgenden Befehle ein, um sich bei Azure anzumelden. Diese Schritte sind nicht erforderlich, wenn Sie Cloud Shell nutzen:
 
-1. Führen Sie bei lokaler Verwendung der Azure CLI die folgenden Befehle aus, um sich an Azure anzumelden. Dieser Anmeldeschritt ist nicht erforderlich, wenn Sie diese Befehle in Cloud Shell ausführen:
+1. Führen Sie bei lokaler Verwendung der Azure CLI den folgenden Befehl aus, um sich bei Azure anzumelden. Dieser Anmeldeschritt ist nicht erforderlich, wenn Sie diese Befehle in Cloud Shell ausführen:
 
    ```azurecli-interactive
    az login
@@ -343,7 +343,7 @@ Fahren Sie mit dem nächsten Tutorial fort, um weitere Informationen zur Verwend
 > [!div class="nextstepaction"]
 > [Aktualisieren des Bestands mit PowerShell und Themen/Abonnements](service-bus-tutorial-topics-subscriptions-portal.md)
 
-[Kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Install Azure CLI 2.0]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

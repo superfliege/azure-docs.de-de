@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: b34fd81532e27960d0dd92f172790aee3cd82ca5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639417"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050226"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Schnellstartanleitung: Erstellen eines Azure Database for PostgreSQL-Servers im Azure-Portal
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um einen Azure-Datenbank für PostgreSQL
     Quelle auswählen | *Leer* | Wählen Sie *Leer* aus, um einen neuen Server ohne Vorlage zu erstellen. (Die Option *Sicherung* können Sie auswählen, wenn Sie einen Server auf der Grundlage einer Geosicherung eines vorhandenen Azure Database for PostgreSQL-Servers erstellen.)
     Serveradministratoranmeldung |*myadmin*| Ihr eigenes Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest**, oder **public** lauten. Er kann nicht mit **pg_** beginnen.
     Password |Ihr Kennwort| Ein neues Kennwort für das Serveradministratorkonto. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0–9) und nicht alphanumerische Zeichen (!, $, #, % usw.).
-    Speicherort|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist.
+    Standort|Die Region, die Ihren Benutzern am nächsten liegt| Der Standort, der Ihren Benutzern am nächsten ist.
     Version|Die neueste Version| Die neueste PostgreSQL-Version (es sei denn, Sie haben besondere Anforderungen).
     Tarif | **Universell**, **Gen 4**, **2 virtuelle Kerne**, **5 GB**, **7 Tage**, **Georedundant** | Die Compute-, Speicher- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Tarif**aus. Klicken Sie als Nächstes auf die Registerkarte **Universell**. *Gen 4*, *2 virtuelle Kerne*, *5 GB* und *7 Tage* sind die Standardwerte für **Computegeneration**, **Virtueller Kern**, **Speicher** und **Aufbewahrungszeit für Sicherung**. Sie können diese Schieberegler unverändert lassen. Wählen Sie zum Aktivieren der Serversicherungen in georedundantem Speicher unter **Optionen für Sicherungsredundanz** die Option **Georedundant** aus. Klicken Sie auf **OK**, um die Tarifauswahl zu speichern. Der nächste Screenshot zeigt die gewählten Optionen.
 
@@ -85,6 +85,10 @@ Azure-Datenbank für PostgreSQL erstellt eine Firewall auf Serverebene. Sie verh
     AllowAllIps | 0.0.0.0 | 255.255.255.255
 
      ![Festlegen von Firewallregeln](./media/quickstart-create-database-portal/5-firewall-2.png)
+     
+      > [!NOTE]
+      > Bei Produktionsinstanzen sollten Sie die Firewallregeln so festlegen, dass sie ausschließlich eingehende Anforderungen von bekannten IP-Adressen akzeptieren.  Diese Einstellungen dienen nur als Beispiel.
+      >
 
 4. Wählen Sie auf der oberen Symbolleiste der Seite **Verbindungssicherheit** die Option **Speichern** aus. Warten Sie, bis die Benachrichtigung mit dem Hinweis angezeigt wird, dass das Update der Verbindungssicherheit erfolgreich abgeschlossen wurde, bevor Sie fortfahren.
 

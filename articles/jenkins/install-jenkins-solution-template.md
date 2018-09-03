@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines Jenkins-Servers in Azure
 description: Installieren Sie Jenkins auf der Grundlage der Jenkins-Lösungsvorlage auf einem virtuellen Azure-Linux-Computer, und erstellen Sie eine Java-Beispielanwendung.
-ms.topic: quickstart
-ms.author: tarcher
+ms.service: jenkins
+keywords: Jenkins, Azure, DevOps, Portal, virtueller Computer, Lösungsvorlage
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
-ms.date: 07/31/2018
-ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: quickstart
+ms.date: 6/7/2017
+ms.openlocfilehash: 92a0583ad01c4dc9263988f6ef48c95c380c9289
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390427"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086573"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Erstellen eines Jenkins-Servers auf einem virtuellen Azure-Linux-Computer über das Azure-Portal
 
@@ -75,7 +75,7 @@ Wählen Sie auf der Registerkarte **Build** die Option **Add build step** (Build
 
 ![Verwenden des Gradle-Wrappers für die Erstellung](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-Wählen Sie **Advanced...** (Erweitert) aus, und geben Sie dann im Feld **Root Build script** (Stammerstellungsskript) die Zeichenfolge `complete` ein. Wählen Sie **Speichern**aus.
+Wählen Sie **Erweitert** aus, und geben Sie dann im Feld **Root Build script** (Stammerstellungsskript) die Zeichenfolge `complete` ein. Wählen Sie **Speichern**aus.
 
 ![Festlegen erweiterter Einstellungen im Buildschritt des Gradle-Wrappers](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 

@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/13/2017
+ms.date: 08/24/2018
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1d2be80ad922e7a2ceb0b25f86cae6fbb9fa9c2c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0dd8f90a39abc18263fcaa5bdb63a5b743728952
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444033"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42884963"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Erstellen einer PHP-Web-App in Azure
 
@@ -45,7 +45,7 @@ So führen Sie diesen Schnellstart durch:
 
 ## <a name="download-the-sample-locally"></a>Lokales Herunterladen des Beispiels
 
-Führen Sie in einem Terminalfenster die folgenden Befehle aus. Dadurch wird die Beispielanwendung auf Ihren lokalen Computer geklont und zum Verzeichnis mit dem Beispielcode gewechselt.
+Führen Sie in einem Terminalfenster die folgenden Befehle aus. Dadurch wird die Beispielanwendung auf Ihren lokalen Computer geklont und zum Verzeichnis mit dem Beispielcode gewechselt. 
 
 ```bash
 git clone https://github.com/Azure-Samples/php-docs-hello-world
@@ -54,7 +54,7 @@ cd php-docs-hello-world
 
 ## <a name="run-the-app-locally"></a>Lokales Ausführen der App
 
-Öffnen Sie zum lokalen Ausführen der Anwendung ein Terminalfenster, und verwenden Sie den Befehl `php`, um den integrierten PHP-Webserver zu starten.
+Führen Sie die Anwendung lokal aus, damit Sie sehen, wie sie beim Bereitstellen in Azure aussehen sollte. Öffnen Sie ein Terminalfenster, und verwenden Sie den Befehl `php`, um den integrierten PHP-Webserver zu starten.
 
 ```bash
 php -S localhost:8080

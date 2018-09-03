@@ -12,27 +12,38 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2018
+ms.topic: tutorial
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ba47223f86005809189214f26a63b75b21449e3a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630618"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049936"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Tutorial: Manuelles Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten 
 
 Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. Weitere Informationen finden Sie unter [Einführung in die Geräteverwaltung in Azure Active Directory](overview.md).
 
-Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. Die entsprechenden Schritte werden in diesem Artikel beschrieben. 
-
-
 
 > [!TIP]
 > Wenn die Verwendung von Azure AD Connect für Sie eine Option ist, helfen Ihnen die Informationen unter [Select your scenario](hybrid-azuread-join-plan.md#select-your-scenario) (Auswählen Ihres Szenarios) weiter. Durch die Verwendung von Azure AD Connect können Sie die Konfiguration einer Azure AD-Hybrideinbindung erheblich vereinfachen.
+
+
+
+Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebundenen Geräte in Azure AD einbinden möchten, kann dies durch Konfigurieren von in Azure AD eingebundenen Hybridgeräten erfolgen. In diesem Tutorial erfahren Sie, wie Sie die Azure AD-Hybrideinbindung für Ihre Geräte manuell konfigurieren.
+
+> [!div class="checklist"]
+> * Voraussetzungen
+> * Konfigurationsschritte
+> * Konfigurieren des Dienstverbindungspunkts
+> * Einrichten der Ausstellung von Ansprüchen
+> * Aktivieren von kompatiblen Windows-Geräten
+> * Überprüfen der eingebundenen Geräte
+> * Problembehandlung bei der Implementierung
+ 
 
 
 

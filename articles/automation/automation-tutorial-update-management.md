@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 08/29/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918765"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247367"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Verwalten von Windows-Updates mithilfe von Azure Automation
 
@@ -82,9 +82,19 @@ Klicken Sie im Update auf eine andere Stelle, um den Bereich **Protokollsuche** 
 
 ## <a name="configure-alerts"></a>Konfigurieren von Warnungen
 
-In diesem Schritt legen Sie eine Warnung fest, um darüber informiert zu werden, wenn Updates erfolgreich bereitgestellt wurden. Die von Ihnen erstellte Warnung basiert auf einer Log Analytics-Abfrage. Sie können eine benutzerdefinierte Abfrage für zusätzliche Warnungen schreiben, um viele verschiedene Szenarien abzudecken. Navigieren Sie im Azure-Portal zu **Überwachen**, und klicken Sie dann auf **Warnung erstellen**. 
+In diesem Schritt erfahren Sie, wie Sie eine Warnung einrichten, die Sie über die erfolgreiche Bereitstellung von Updates informiert. Dazu können Sie entweder eine Log Analytics-Abfrage verwenden oder das Masterrunbook für die Updateverwaltung auf nicht erfolgreiche Bereitstellungen überwachen.
 
-Klicken Sie im Bereich **Regel erstellen** unter **1. Warnungsbedingung definieren** auf **Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Log Analytics**. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
+### <a name="alert-conditions"></a>Warnungsbedingungen
+
+Für jeden Warnungstyp müssen verschiedene Warnungsbedingungen definiert werden.
+
+#### <a name="log-analytics-query-alert"></a>Log Analytics-Abfragewarnung
+
+Für erfolgreiche Bereitstellungen können Sie eine auf einer Log Analytics-Abfrage basierende Warnung erstellen. Für nicht erfolgreiche Bereitstellungen können Sie die Schritte für [Runbookwarnungen](#runbook-alert) ausführen, um benachrichtigt zu werden, wenn beim Masterrunbook, das Updatebereitstellungen orchestriert, ein Fehler auftritt. Sie können eine benutzerdefinierte Abfrage für zusätzliche Warnungen schreiben, um viele verschiedene Szenarien abzudecken.
+
+Navigieren Sie im Azure-Portal zu **Überwachen**, und klicken Sie dann auf **Warnung erstellen**.
+
+Klicken Sie unter **1. Warnungsbedingung definieren** auf **Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Log Analytics**. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
 
 ![Erstellen einer Warnung](./media/automation-tutorial-update-management/create-alert.png)
 
@@ -104,7 +114,21 @@ Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **1** ein. Kli
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-update-management/signal-logic.png)
 
-Wählen Sie unter **2. Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)** fest, da die Warnung für eine erfolgreiche Ausführung bestimmt ist.
+#### <a name="runbook-alert"></a>Runbookwarnung
+
+Bei nicht erfolgreichen Bereitstellungen müssen Sie über den Fehler der Masterausführung benachrichtigt werden. Navigieren Sie im Azure-Portal zu **Überwachen**, und klicken Sie auf **Warnung erstellen**.
+
+Klicken Sie unter **1. Warnungsbedingung definieren** auf **Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Automation-Konten** aus. Wählen Sie Ihr Automation-Konto aus, und klicken Sie auf **Fertig**.
+
+Klicken Sie neben **Runbookname** auf das Pluszeichen (**\+**), und geben Sie als benutzerdefinierten Namen **Patch-MicrosoftOMSComputers** ein. Wählen Sie als **Status** die Option **Fehler**, oder klicken Sie auf das Pluszeichen (**\+**), um **Fehler** einzugeben.
+
+![Konfigurieren der Signallogik für Runbooks](./media/automation-tutorial-update-management/signal-logic-runbook.png)
+
+Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **1** ein. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
+
+### <a name="alert-details"></a>Warnungsdetails
+
+Wählen Sie unter **2. Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** für eine erfolgreiche Ausführung auf **Information (Schweregrad 2)** bzw. für eine Ausführung mit Fehler auf **Information (Schweregrad 1)** fest.
 
 ![Konfigurieren der Signallogik](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -134,7 +158,7 @@ Geben Sie unter **Neue Updatebereitstellung** die folgenden Informationen ein:
 
 * **Betriebssystem:** Wählen Sie das Betriebssystem aus, das als Ziel für die Updatebereitstellung dienen soll.
 
-* **Zu aktualisierende Computer:** Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Wenn Sie auf **Computer** klicken, wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics-Protokollsuchen](../log-analytics/log-analytics-computer-groups.md).
+* **Zu aktualisierende Computer:** Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
 * **Updateklassifizierung:** Wählen Sie die Softwareklassen aus, die in die Updatebereitstellung eingeschlossen werden sollen. Lassen Sie für dieses Tutorial alle Typen ausgewählt.
 

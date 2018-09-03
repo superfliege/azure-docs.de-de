@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebaa72f87a64484dd8687a0ec7548e67b0df9510
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073859"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190674"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Dokumentation zu virtuellen Windows-Computern
 
@@ -25,7 +25,7 @@ Erfahren Sie, wie Sie einen IIS-Webserver auf einem virtuellen Computer unter Wi
 
 - [Azure-Portal](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-- [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure-CLI](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="step-by-step-tutorials"></a>Schritt-für-Schritt-Tutorials
 
@@ -46,15 +46,13 @@ Es wird beschrieben, wie Sie virtuelle Windows-Computer in Azure bereitstellen, 
 
 ## <a name="free-pluralsight-video-training"></a>Kostenloses PluralSight-Videotraining
 
-- [Verwalten der Infrastruktur](https://www.pluralsight.com/courses/managing-infrastructure-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [Erste Schritte mit virtuellen Computern](https://www.pluralsight.com/courses/azure-vms-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
-- [Erste Schritte mit IaaS-Überwachung](https://www.pluralsight.com/courses/azure-iaas-monitoring-management-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02")
+- [Azure-Administrator](https://go.microsoft.com/fwlink/?linkid=2012827)
 
 ## <a name="samples"></a>Beispiele
 
 Stellen Sie Ihre erste Anwendung in Azure bereit.
 
-- [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure-CLI](/azure/virtual-machines/virtual-machines-windows-cli-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="more"></a>Weitere Informationen

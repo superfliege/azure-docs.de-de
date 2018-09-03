@@ -14,23 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 4a9d147d1605f4efa638ff258df2667b6b95230e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258829"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885157"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Tutorial: Verwenden einer verwalteten Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store verwenden. Azure verwaltet von Ihnen erstellte Identitäten automatisch über die verwaltete Dienstidentität. Sie können die verwaltete Dienstidentität verwenden, um sich bei Diensten mit Unterstützung für die Azure Active Directory-Authentifizierung (Azure AD) zu authentifizieren, ohne dass Anmeldeinformationen in Ihren Code eingebettet werden müssen. 
+In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene Identität für einen virtuellen Linux-Computer für den Zugriff auf Azure Data Lake Store verwenden. Azure verwaltet von Ihnen erstellte Identitäten automatisch über die verwaltete Dienstidentität. Sie können die verwaltete Dienstidentität verwenden, um sich bei Diensten mit Unterstützung für die Azure Active Directory-Authentifizierung (Azure AD) zu authentifizieren, ohne dass Anmeldeinformationen in Ihren Code eingebettet werden müssen. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Aktivieren der verwalteten Dienstidentität auf einer Linux-VM 
 > * Gewähren des Zugriffs auf Azure Data Lake Store durch Ihren virtuellen Computer
 > * Abrufen eines Zugriffstokens mithilfe der VM-Identität und Verwenden dieses Zugriffstokens für den Zugriff auf Azure Data Lake Store
 
@@ -40,33 +39,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+- [Anmelden beim Azure-Portal](https://portal.azure.com)
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+- [Erstellen eines virtuellen Linux-Computers](/azure/virtual-machines/linux/quick-create-portal)
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Linux-Computers in einer neuen Ressourcengruppe
-
-In diesem Tutorial wird ein neuer virtueller Linux-Computer erstellt. Sie können MSI auch auf einem vorhandenen virtuellen Computer aktivieren.
-
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
-2. Wählen Sie **Compute** und dann **Ubuntu Server 16.04 LTS**.
-3. Geben Sie die Informationen zum virtuellen Computer ein. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** oder **Kennwort**. Mit den erstellten Anmeldeinformationen können Sie sich auf dem virtuellen Computer anmelden.
-
-   ![Bereich „Grundeinstellungen“ zum Erstellen eines virtuellen Computers](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. Wählen Sie in der Liste **Abonnement** ein Abonnement für den virtuellen Computer aus.
-5. Um eine neue Ressourcengruppe auszuwählen, in der der virtuelle Computer erstellt werden soll, klicken Sie auf **Ressourcengruppe** > **Neu erstellen**. Wenn Sie fertig sind, klicken Sie auf **OK**.
-6. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie im Bereich „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrer VM
-
-Eine verwaltete Dienstidentität eines virtuellen Computers ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität auf einem virtuellen Computer werden zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
-
-1. Wählen Sie unter **Virtueller Computer** den virtuellen Computer aus, auf dem Sie die verwaltete Dienstidentität aktivieren möchten.
-2. Wählen Sie im linken Bereich die Option **Konfiguration**.
-3. Die Option **Verwaltete Dienstidentität** wird angezeigt. Wählen Sie **Ja**, um die verwaltete Dienstidentität zu registrieren und zu aktivieren. Klicken Sie zum Deaktivieren auf **Nein**.
-   ![Auswahl „Registrierung bei Azure Active Directory“](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-4. Wählen Sie **Speichern**aus.
+- [Aktivieren einer vom System zugewiesenen Identität auf dem virtuellen Computer](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Gewähren des Zugriffs auf Azure Data Lake Store durch Ihre VM
 

@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: e001907b9df77eff1455043a3fd7ce5533838fcc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0781bf3fe9806c2c8aaa911433c4d6eddcafe04c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056173"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885492"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Tutorial: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Managed Service Identity, MSI) für einen virtuellen Windows-Computer aktivieren und mit dieser Identität auf Azure Storage zugreifen.  Folgendes wird vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie eine vom System zugewiesene Identität für einen virtuellen Windows-Computer für den Zugriff auf Azure Storage verwenden. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Windows-Computers in einer neuen Ressourcengruppe 
-> * Aktivieren einer verwalteten Dienstidentität auf einem virtuellen Windows-Computer (VM)
 > * Erstellen eines Blobcontainers im Speicherkonto
 > * Gewähren des Zugriffs auf ein Speicherkonto für Ihre Windows-VM-MSI 
 > * Erhalten eines Zugriffs und seine Verwendung zum Aufrufen von Azure Storage 
@@ -43,31 +41,11 @@ In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität (Manag
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+- [Anmelden beim Azure-Portal](https://portal.azure.com)
 
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
+- [Erstellen eines virtuellen Windows-Computers](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Windows-Computers in einer neuen Ressourcengruppe
-
-In diesem Abschnitt erstellen Sie einen virtuellen Windows-Computer, für den später eine verwaltete Identität gewährt wird.
-
-1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **+/Neuen Dienst erstellen**.
-2.  Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
-3.  Geben Sie die Informationen zum virtuellen Computer ein. Der **Benutzername** und das **Kennwort**, die hier erstellt werden, sind die Anmeldeinformationen, die Sie für die Anmeldung beim virtuellen Computer verwenden.
-4.  Wählen Sie in der Dropdownliste das richtige **Abonnement** für den virtuellen Computer aus.
-5.  Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen** aus. Klicken Sie zum Abschluss auf **OK**.
-6.  Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie auf dem Blatt „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
-
-    ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-identity-on-your-vm"></a>Aktivieren der MSI auf dem virtuellen Computer
-
-Eine VM-MSI ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne Anmeldeinformationen in Ihren Code einfügen zu müssen. Im Hintergrund werden durch das Aktivieren der MSI auf einem virtuellen Computer über das Azure-Portal zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure AD registriert, um eine verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert. 
-
-1. Navigieren Sie zu der Ressourcengruppe des neuen virtuellen Computers, und wählen Sie den virtuellen Computer aus, den Sie im vorherigen Schritt erstellt haben.
-2. Klicken Sie in der Kategorie **Einstellungen** auf **Konfiguration**.
-3. Wählen Sie zum Aktivieren der MSI **Ja** aus.
-4. Klicken Sie zum Anwenden der Konfiguration auf **Speichern**. 
+- [Aktivieren einer vom System zugewiesenen Identität auf dem virtuellen Computer](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen einer Azure Cosmos DB-.NET Framework- oder Core-Anwendung mit der Graph-API | Microsoft-Dokumentation
+title: Erstellen einer Azure Cosmos DB-.NET Framework- oder Core-Anwendung mit der Gremlin-API | Microsoft-Dokumentation
 description: Hier finden Sie ein .NET Framework-/Core-Codebeispiel, das Sie zum Herstellen einer Verbindung mit und zum Abfragen von Azure Cosmos DB verwenden können.
 services: cosmos-db
 author: luisbosquez
@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 75bca93b8aa4329a20e7491f1a0e1318cdbc13a5
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 5a6e80a65ea1ac5a5d4dbc7e422131da2a464a6a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214658"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186952"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Erstellen einer .NET Framework oder Core-Anwendung mit der Graph-API
 

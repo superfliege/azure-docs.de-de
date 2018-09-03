@@ -14,22 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: c2c138e7064ae5f8bfb11d2f8d4c6b8e9e45760d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b38804a4450bfc76f5048f8049a7369d7ebebc30
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442002"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886234"
 ---
 # <a name="tutorial-use-a-linux-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Tutorial: Verwenden einer Linux-VM-MSI für den Zugriff auf Azure Cosmos DB 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für eine Linux-VM erstellen und verwenden. Folgendes wird vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene Identität für einen virtuellen Linux-Computer für den Zugriff auf Azure Cosmos DB verwenden. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Linux-Computers mit Aktivierung der verwalteten Dienstidentität
 > * Erstellen eines Cosmos DB-Kontos
 > * Erstellen einer Sammlung im Cosmos DB-Konto
 > * Gewähren des Zugriffs auf eine Azure Cosmos DB-Instanz für die verwaltete Dienstidentität
@@ -39,42 +38,20 @@ In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für e
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com), bevor Sie fortfahren.
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Anmelden beim Azure-Portal](https://portal.azure.com)
+
+- [Erstellen eines virtuellen Linux-Computers](/azure/virtual-machines/linux/quick-create-portal)
+
+- [Aktivieren einer vom System zugewiesenen Identität auf dem virtuellen Computer](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 Für die Ausführung der CLI-Beispielskripts in diesem Tutorial stehen Ihnen zwei Möglichkeiten zur Verfügung:
 
 - Verwenden Sie [Azure Cloud Shell](~/articles/cloud-shell/overview.md) entweder vom Azure-Portal aus oder über die Schaltfläche **Ausprobieren**, die sich in der rechten oberen Ecke eines jeden Codeblocks befindet.
 - [Installieren Sie die neueste Version von CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 oder höher), wenn Sie lieber eine lokale CLI-Konsole verwenden möchten.
-
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
-
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Linux-Computers in einer neuen Ressourcengruppe
-
-Für dieses Tutorial erstellen Sie eine neue Linux-VM, für die die verwaltete Dienstidentität aktiviert ist.
-
-Erstellen Sie die VM, die für die verwaltete Dienstidentität aktiviert ist, wie folgt:
-
-1. Melden Sie sich bei Verwendung der Azure CLI in einer lokalen Konsole zunächst mit [az login](/cli/azure/reference-index#az-login) bei Azure an. Verwenden Sie ein Konto, das dem Azure-Abonnement zugeordnet ist, unter dem Sie den virtuellen Computer bereitstellen möchten:
-
-   ```azurecli-interactive
-   az login
-   ```
-
-2. Erstellen Sie eine [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md#terminology) für das Einschließen und Bereitstellen des virtuellen Computers und der zugehörigen Ressourcen. Verwenden Sie hierfür [az group create](/cli/azure/group/#az-group-create). Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie stattdessen verwenden möchten:
-
-   ```azurecli-interactive 
-   az group create --name myResourceGroup --location westus
-   ```
-
-3. Erstellen Sie einen virtuellen Computer mit [az vm create](/cli/azure/vm/#az-vm-create). Im folgenden Beispiel wird ein virtueller Computer mit dem Namen *myVM* mit einer verwalteten Dienstidentität erstellt. Dies wird über den Parameter `--assign-identity` angefordert. Der `--admin-username`-Parameter und der `--admin-password`-Parameter geben den Namen und das Kennwort des Administratorbenutzers für die Anmeldung am virtuellen Computer an. Aktualisieren Sie diese Werte ggf. mit den entsprechenden Werten für Ihre Umgebung: 
-
-   ```azurecli-interactive 
-   az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --generate-ssh-keys --assign-identity --admin-username azureuser --admin-password myPassword12
-   ```
 
 ## <a name="create-a-cosmos-db-account"></a>Erstellen eines Cosmos DB-Kontos 
 

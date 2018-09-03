@@ -1,9 +1,9 @@
 ---
-title: Importieren einer Azure Functions-App als API im Azure-Portal | Microsoft-Dokumentation
-description: Dieses Tutorial veranschaulicht, wie Sie Azure API Management verwenden, um eine Azure Functions-App als API zu importieren.
+title: Importieren einer Azure-Funktionen-App als API in Azure API Management | Microsoft-Dokumentation
+description: Dieses Tutorial veranschaulicht, wie Sie eine Azure-Funktionen-App als API in Azure API Management importieren.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,100 +11,168 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/15/2018
+ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: 670fa58de7155028b0f72f1f819b9f269e07b9eb
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: ea6078088417099045006f81dcaf1f769bbd64d7
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239051"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246814"
 ---
-# <a name="import-an-azure-functions-app-as-an-api"></a>Importieren einer Azure Functions-App als API
+# <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importieren einer Azure-Funktionen-App als API in Azure API Management
 
-Dieser Artikel zeigt, wie Sie eine Azure Functions-App als API importieren. Der Artikel zeigt außerdem, wie Sie die Azure API Management-API testen.
+Azure API Management unterstützt das Importieren von Azure-Funktionen-Apps als neue APIs und das Anfügen dieser Apps an vorhandene APIs. Bei diesem Prozess wird automatisch ein Hostschlüssel in der Azure-Funktionen-App generiert, der dann einem benannten Wert in Azure API Management zugewiesen wird.
 
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
+In diesem Artikel werden die Schritte zum Importieren einer Azure-Funktionen-App als API in Azure API Management erläutert. Darüber hinaus wird der Prozess zum Testen beschrieben.
+
+Sie lernen Folgendes:
 
 > [!div class="checklist"]
-> * Importieren einer Functions-App als API
+> * Importieren einer Azure-Funktionen-App als API
+> * Anfügen einer Azure-Funktionen-App an eine API
+> * Anzeigen des neuen Hostschlüssels der Azure-Funktionen-App und des benannten Azure API Management-Werts
 > * Testen der API im Azure-Portal
 > * Testen der API im Entwicklerportal
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Absolvieren Sie den Schnellstart [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
-+ Stellen Sie sicher, dass Ihr Abonnement eine Azure Functions-App enthält. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
-+ [Erstellen Sie eine OpenAPI-Definition](../azure-functions/functions-openapi-definition.md) Ihrer Azure Functions-App.
+* Absolvieren Sie den Schnellstart [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
+* Stellen Sie sicher, dass Ihr Abonnement eine Azure Functions-App enthält. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Sie muss Funktionen mit einem HTTP-Trigger enthalten, und die Einstellung für die Autorisierungsstufe muss auf *Anonym* oder *Funktion* festgelegt sein.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-api"></a>Importieren und Veröffentlichen einer Back-End-API
+## <a name="add-new-api-from-azure-function-app"></a> Importieren einer Azure-Funktionen-App als neue API
 
-1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
-2. Wählen Sie **Functions-App** in der Liste **Neue API hinzufügen** aus.
+Führen Sie die folgenden Schritte aus, um auf der Grundlage einer Azure-Funktionen-App eine neue API zu erstellen.
 
-    ![Functions-App](./media/import-function-app-as-api/function-app-api.png)
-3. Klicken Sie auf **Durchsuchen**, um die Liste der Functions-Apps in Ihrem Abonnement anzuzeigen.
-4. Wählen Sie die App aus. API Management sucht den Swagger, der der ausgewählten App zugeordnet ist, ruft ihn ab und importiert ihn. 
-5. Fügen Sie ein API-URL-Suffix hinzu. Das Suffix ist ein Name, der diese spezifische API in dieser API Management-Instanz identifiziert. Das Suffix muss in dieser API Management-Instanz eindeutig sein.
-6. Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. In diesem Fall wird das Produkt **Unlimited** verwendet. Wenn die API veröffentlicht werden und Entwicklern zur Verfügung stehen soll, fügen Sie sie einem Produkt hinzu. Sie können die API bei ihrer Erstellung oder später zu einem Produkt hinzufügen.
+1. Klicken Sie in Ihrer **Azure API Management**-Dienstinstanz im Menü auf der linken Seite auf **APIs**.
 
-    Bei Produkten handelt es sich um API-Zuordnungen. Sie können mehrere APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn ein Entwickler ein Produkt abonniert, erhält er einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die API Management-Instanz erstellt haben, sind Sie Administrator. Administratoren haben standardmäßig alle Produkte abonniert.
+2. Wählen Sie in der Liste **Neue API hinzufügen** die Option **Funktionen-App** aus.
 
-    Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte:
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-01.png)
 
-    * **Starter**
-    * **Unbegrenzt**   
-7. Klicken Sie auf **Erstellen**.
+3. Klicken Sie auf **Durchsuchen**, um eine Funktionen-App für den Import auszuwählen.
 
-## <a name="populate-azure-functions-keys-in-azure-api-management"></a>Auffüllen von Azure-Funktionsschlüsseln in Azure API Management
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-02.png)
 
-Wenn die importierten Azure Functions-Apps durch Schlüssel geschützt sind, erstellt API Management automatisch *benannte Werte* für die Schlüssel. API Management füllt die Einträge nicht mit Geheimnissen auf. Führen Sie für jeden Eintrag die folgenden Schritte aus:  
+4. Klicken Sie auf den Abschnitt **Funktionen-App**, um in der Liste der verfügbaren Funktionen-Apps eine App auszuwählen.
 
-1. Navigieren Sie in der API Management-Instanz zur Registerkarte **Benannte Werte**.
-2. Klicken Sie auf einen Eintrag und dann auf der Randleiste auf **Wert anzeigen**.
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-03.png)
 
-    ![Benannte Werte](./media/import-function-app-as-api/apim-named-values.png)
+5. Suchen Sie die Funktionen-App, aus der Sie Funktionen importieren möchten, klicken Sie darauf, und klicken Sie auf **Auswählen**.
 
-3. Wenn das Feld **Wert** einen Text wie **Code für \<Azure Functions-Name\>** enthält, navigieren Sie zu **Functions-Apps** und dann zu **Functions**.
-4. Klicken Sie auf **Verwalten**, und kopieren Sie basierend auf der Authentifizierungsmethode Ihrer App den entsprechenden Schlüssel.
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-04.png)
 
-    ![Functions-App – Kopieren von Schlüsseln](./media/import-function-app-as-api/azure-functions-app-keys.png)
+6. Wählen Sie die Funktionen aus, die Sie importieren möchten, und klicken Sie auf **Auswählen**.
 
-5. Fügen Sie den Schlüssel im Feld **Wert** ein, und wählen Sie dann **Speichern**.
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-05.png)
 
-    ![Functions-App – Einfügen von Schlüsselwerten](./media/import-function-app-as-api/apim-named-values-2.png)
+    > [!NOTE]
+    > Sie können nur Funktionen importieren, die auf dem HTTP-Trigger basieren und deren Einstellung für die Autorisierungsstufe auf *Anonym* oder *Funktion* festgelegt ist.
 
-## <a name="test-the-new-api-management-api-in-the-azure-portal"></a>Testen der neuen API Management-API im Azure-Portal
+7. Bearbeiten Sie bei Bedarf die vorab aufgefüllten Feldern. Klicken Sie auf **Create**.
+
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-06.png)
+
+## <a name="append-azure-function-app-to-api"></a> Anfügen einer Azure-Funktionen-App an eine vorhandene API
+
+Führen Sie die folgenden Schritte aus, um eine Azure-Funktionen-App zu einer vorhandenen API hinzuzufügen.
+
+1. Klicken Sie in Ihrer **Azure API Management**-Dienstinstanz im Menü auf der linken Seite auf **APIs**.
+
+2. Wählen Sie eine API aus, in die Sie eine Azure-Funktionen-App importieren möchten. Klicken Sie auf **...**, und klicken Sie im Kontextmenü auf **Importieren**.
+
+    ![Anfügen aus einer Funktionen-App](./media/import-function-app-as-api/append-01.png)
+
+3. Klicken Sie auf die Kachel **Funktionen-App**.
+
+    ![Anfügen aus einer Funktionen-App](./media/import-function-app-as-api/append-02.png)
+
+4. Klicken Sie im Popupfenster auf **Durchsuchen**.
+
+    ![Anfügen aus einer Funktionen-App](./media/import-function-app-as-api/append-03.png)
+
+5. Klicken Sie auf den Abschnitt **Funktionen-App**, um in der Liste der verfügbaren Funktionen-Apps eine App auszuwählen.
+
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-03.png)
+
+6. Suchen Sie die Funktionen-App, aus der Sie Funktionen importieren möchten, klicken Sie darauf, und klicken Sie auf **Auswählen**.
+
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-04.png)
+
+7. Wählen Sie die Funktionen aus, die Sie importieren möchten, und klicken Sie auf **Auswählen**.
+
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/add-05.png)
+
+8. Klicken Sie auf **Importieren**.
+
+    ![Anfügen aus einer Funktionen-App](./media/import-function-app-as-api/append-04.png)
+
+## <a name="function-app-import-keys"></a> Generierter Hostschlüssel der Azure-Funktionen-App
+
+Beim Importieren einer Azure-Funktionen-App wird automatisch Folgendes generiert:
+* Hostschlüssel in der Funktionen-App mit dem Namen „apim-{*Name Ihrer Azure API Management-Dienstinstanz*}“
+* benannter Wert in der Azure API Management-Instanz mit dem Namen „{*Name der Instanz Ihrer Azure-Funktionen-App*}-key“, die den erstellten Hostschlüssel enthält
+
+> [!WARNING]
+> Wenn Sie den Wert des Hostschlüssels der Azure-Funktionen-App oder den benannten Wert von Azure API Management entfernen oder ändern, wird die Kommunikation zwischen den Diensten unterbrochen. Die Werte werden nicht automatisch synchronisiert.
+>
+> Falls Sie den Hostschlüssel rotieren müssen, ändern Sie auch den benannten Wert in Azure API Management.
+
+### <a name="access-azure-function-app-host-key"></a>Zugreifen auf den Hostschlüssel der Azure-Funktionen-App
+
+1. Navigieren Sie zur Instanz Ihrer Azure-Funktionen-App.
+
+2. Wählen Sie in der Übersicht **Funktionen-App-Einstellungen** aus.
+
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/keys-02-a.png)
+
+3. Der Schlüssel befindet sich im Abschnitt **Hostschlüssel**.
+
+    ![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/keys-02-b.png)
+
+### <a name="access-the-named-value-in-azure-api-management"></a>Zugreifen auf den benannten Wert in Azure API Management
+
+Navigieren Sie zu Ihrer Azure API Management-Instanz, und klicken Sie im Menü auf der linken Seite auf **Benannte Werte**. Der Schlüssel der Azure-Funktionen-App ist dort gespeichert.
+
+![Hinzufügen aus einer Funktionen-App](./media/import-function-app-as-api/keys-01.png)
+
+## <a name="test-in-azure-portal"></a> Testen der neuen API Management-API im Azure-Portal
 
 Sie können Vorgänge direkt über das Azure-Portal aufrufen. Das Azure-Portal bietet eine komfortable Möglichkeit, die Vorgänge einer API anzuzeigen und zu testen.  
 
 1. Wählen Sie die im vorherigen Abschnitt erstellte API aus.
+
 2. Wählen Sie die Registerkarte **Testen** aus.
+
 3. Wählen Sie einen Vorgang aus.
 
     Die Seite zeigt Felder für Abfrageparameter und Felder für die Header. Einer der Header ist **Ocp-Apim-Subscription-Key**. Er steht für den Abonnementschlüssel des Produkts, das dieser API zugeordnet ist. Wenn Sie die API Management-Instanz erstellt haben, sind Sie bereits Administrator, sodass der Schlüssel automatisch eingetragen wird. 
+
 4. Wählen Sie **Senden** aus.
 
     Das Back-End antwortet mit **200 OK** und einigen Daten.
 
-## <a name="call-operation"></a>Aufrufen eines Vorgangs über das Entwicklerportal
+## <a name="test-in-developer-portal"></a> Aufrufen eines Vorgangs über das Entwicklerportal
 
 Sie können Vorgänge auch über das Entwicklerportal aufrufen, um APIs zu testen. 
 
 1. Wählen Sie die API aus, die Sie im Schritt [Importieren und Veröffentlichen einer Back-End-API](#create-api) erstellt haben.
+
 2. Klicken Sie auf **Entwicklerportal**.
 
     Die Website „Entwicklerportal“ wird geöffnet.
+
 3. Wählen Sie die **API** aus, die Sie erstellt haben.
+
 4. Wählen Sie den Vorgang aus, den Sie testen möchten.
+
 5. Wählen Sie **Testen**.
+
 6. Wählen Sie **Senden** aus.
     
     Nach dem Aufruf der Operation zeigt das Entwicklerportal den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
-
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 

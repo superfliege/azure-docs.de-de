@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969133"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42812870"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -53,27 +53,20 @@ Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in
 
     ![Bereich „Leistung“](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. Das Diagramm zeigt derzeit die durchschnittliche Dauer aller Vorgänge im Zeitverlauf an.  Fügen Sie die für Sie interessanten Vorgänge hinzu, indem Sie sie an das Diagramm anheften.  Dies verdeutlicht, dass es einige Spitzen gibt, die eine Untersuchung wert sind.  Isolieren Sie sie weiter, indem Sie das Zeitfenster des Diagramms verkleinern.
+3. Das Diagramm zeigt derzeit die durchschnittliche Dauer der ausgewählten Vorgänge im Zeitverlauf an. Sie können zum 95. Perzentil wechseln, um die Leistungsprobleme zu ermitteln. Fügen Sie die für Sie interessanten Vorgänge hinzu, indem Sie sie an das Diagramm anheften.  Dies verdeutlicht, dass es einige Spitzen gibt, die eine Untersuchung wert sind.  Isolieren Sie sie weiter, indem Sie das Zeitfenster des Diagramms verkleinern.
 
     ![Anheftvorgänge](media/app-insights-tutorial-performance/pin-operations.png)
 
-4.  Klicken Sie auf einen Vorgang, um seinen Leistungsbereich auf der rechten Seite anzuzeigen. Hier wird die Dauerverteilung verschiedener Abfragen dargestellt.  Benutzer bemerken Leistungseinbußen in der Regel bei einer Verzögerung von ca. einer halben Sekunde. Legen Sie die Dauer also auf mehr als 500 Millisekunden fest.  
+4.  Im Leistungsbereich auf der rechten Seite sehen Sie die Verteilung der Dauer der verschiedenen Anforderungen für den ausgewählten Vorgang.  Reduzieren Sie das Fenster, um etwa beim 95. Perzentil zu beginnen. Auf der Insights-Karte „3 Hauptabhängigkeiten“ sehen Sie auf einen Blick, dass die externen Abhängigkeiten wahrscheinlich zu einer langsamen Ausführung der Transaktionen beitragen.  Klicken Sie auf die Schaltfläche mit der Anzahl von Beispielen, um eine Liste der Beispiele anzuzeigen. Anschließend können Sie ein beliebiges Beispiel auswählen, um Transaktionsdetails anzuzeigen.
 
     ![Dauerverteilung](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  In diesem Beispiel sehen Sie, dass die Verarbeitungsdauer für eine erhebliche Anzahl von Anforderungen bei über einer Sekunde liegt. Die Details dieses Vorgangs lassen sich durch Klicken auf **Vorgangsdetails** aufrufen.
+5.  Sie sehen auf einen Blick, dass der Aufruf der Azure Table-Instanz „Fabrikamaccount“ am meisten zur Gesamtdauer der Transaktion beiträgt. Darüber hinaus können Sie erkennen, dass eine Ausnahme zu einem Fehler geführt hat. Sie können auf ein beliebiges Element in der Liste klicken, um seine Details auf der rechten Seite anzuzeigen. [Weitere Informationen zur Oberfläche zur Transaktionsdiagnose](app-insights-transaction-diagnostics.md)
 
     ![Vorgangsdetails](media/app-insights-tutorial-performance/operation-details.png)
+    
 
-    > [!NOTE]
-    Aktivieren Sie die [Vorschauoberfläche](app-insights-previews.md) „Unified details: E2E Transaction Diagnostics“ (Einheitliche Details: E2E-Transaktionsdiagnose), um die gesamten serverseitigen Telemetriedaten in einer Bildschirmansicht anzuzeigen, z.B. Anforderungen, Abhängigkeiten, Ausnahmen, Ablaufverfolgungen, Ereignisse usw. 
-
-    Bei aktivierter Vorschau können Sie verfolgen, wie viel Zeit für Abhängigkeitsaufrufe aufgewendet wurde und welche Fehler oder Ausnahmen aufgetreten sind – alles in einer Oberfläche. Für komponentenübergreifende Transaktionen ermöglicht das Gantt-Diagramm zusammen mit dem Detailbereich eine schnelle Diagnose der Grundursache in Bezug auf die Komponente, Abhängigkeit oder Ausnahme. Sie können den untersten Abschnitt erweitern, um den zeitlichen Ablauf für alle Ablaufverfolgungen oder Ereignisse anzuzeigen, die für den gewählten Komponentenvorgang gesammelt wurden. [Weitere Informationen zur neuen Oberfläche](app-insights-transaction-diagnostics.md)  
-
-    ![Transaktionsdiagnose](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
-
-
-6.  Die Informationen, die Sie bisher gesammelt haben, bestätigen, dass es Leistungseinbußen gibt. Sie erzählen jedoch wenig über die Grundursache.  Hier kommt der **Profiler** ins Spiel: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
+6.  **Profiler** unterstützt Sie bei der Diagnose auf Codeebene: Er zeigt den tatsächlichen Code, der für den Vorgang ausgeführt wurde, und den Zeitaufwand für die einzelnen Schritte an. Einige Vorgänge haben möglicherweise keine Ablaufverfolgung, da der Profiler in regelmäßigen Abständen ausgeführt wird.  Im Laufe der Zeit sollten weitere Vorgänge aber Ablaufverfolgungen erhalten.  Um den Profiler für den Vorgang zu starten, klicken Sie auf **Profiler-Ablaufverfolgungen**.
 5.  Die Ablaufverfolgung zeigt die einzelnen Ereignisse für jeden Vorgang an, damit Sie die Grundursache für die Dauer des gesamten Vorgangs diagnostizieren können.  Klicken Sie auf eines der obersten Beispiele, die am längsten dauern.
 6.  Klicken Sie auf **Langsamsten Pfad anzeigen**, um den Pfad der Ereignisse zu markieren, die für die hohe Gesamtdauer des Vorgangs verantwortlich sind.  In diesem Beispiel können Sie sehen, dass der langsamste Aufruf von der Methode *FabrikamFiberAzureStorage.GetStorageTableData* stammt. Der Teil, der den Großteil der Zeit beansprucht, ist die Methode *CloudTable.CreateIfNotExist*. Wenn diese Codezeile bei jedem Aufruf der Funktion ausgeführt wird, werden unnötige Netzwerkaufruf- und CPU-Ressourcen verbraucht. Die beste Möglichkeit zum Korrigieren des Codes besteht darin, diese Zeile in eine Startmethode einzufügen, die nur einmal ausgeführt wird. 
 
@@ -94,7 +87,7 @@ Application Insights Analytics bietet eine umfangreiche Abfragesprache, mit der 
 
 2. Application Insights Analytics wird mit einer Abfrage für jede der Ansichten im Bereich geöffnet.  Sie können diese Abfragen ohne weitere Veränderungen ausführen oder sie Ihren Anforderungen entsprechend ändern.  Die erste Abfrage zeigt die Dauer dieses Vorgangs im Zeitverlauf an.
 
-    ![Analyse](media/app-insights-tutorial-performance/server-analytics.png)
+    ![Analytics](media/app-insights-tutorial-performance/server-analytics.png)
 
 
 ## <a name="identify-slow-client-operations"></a>Identifizieren langsamer Clientvorgänge
@@ -122,7 +115,7 @@ So wie bei den für die Serverleistung gesammelten Daten stellt Application Insi
 
 2. Application Insights Analytics wird mit einer Abfrage für jede der Ansichten im Bereich geöffnet. Die erste Abfrage zeigt die Dauer für verschiedene Seitenansichten im Zeitverlauf an.
 
-    ![Analyse](media/app-insights-tutorial-performance/client-analytics.png)
+    ![Analytics](media/app-insights-tutorial-performance/client-analytics.png)
 
 3.  Die intelligente Diagnose ist eine Funktion von Application Insights Analytics, die eindeutige Muster in den Daten ermittelt.  Wenn Sie auf den Punkt für die intelligente Diagnose im Liniendiagramm klicken, wird dieselbe Abfrage ohne Datensätze ausgeführt, die die Anomalie verursacht hat.  Details zu diesen Datensätzen werden im Kommentarabschnitt der Abfrage angezeigt, damit Sie ermitteln können, welche Eigenschaften dieser Seitenansichten die hohe Dauer verursacht haben.
 

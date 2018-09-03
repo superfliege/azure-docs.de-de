@@ -4,29 +4,23 @@ description: Informationen zum Erstellen und Konfigurieren einer VM-Skalierungsg
 ms.service: ansible
 keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vmss
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 5f915f7b1b425a3bd6e5d62eb70bb3f633b7eda8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.topic: tutorial
+ms.date: 08/24/2018
+ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011708"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918574"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Erstellen von VM-Skalierungsgruppen mit Ansible in Azure
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre VM-Skalierungsgruppe in Azure wie jede andere Azure-Ressource verwalten. In diesem Artikel erfahren Sie, wie Sie Ansible verwenden können, um eine VM-Skalierungsgruppe zu erstellen und horizontal hochzuskalieren. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- **Konfigurieren von Ansible** - [Erstellen von Azure-Anmeldeinformationen und Konfigurieren von Ansible](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Ansible und die Module des Azure SDK für Python** 
-  - [CentOS 7.4](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
 > Für die Ausführung der folgenden Beispielplaybooks in diesem Tutorial ist Ansible 2.6 erforderlich. 
@@ -186,7 +180,7 @@ Die erstellte VM-Skalierungsgruppe verfügt über zwei Instanzen. Wenn Sie im Az
   az vmss show -n myVMSS -g myResourceGroup --query '{"capacity":sku.capacity}' 
   ```
 
-Die Ausgabe sollte in etwa wie folgt aussehen:
+Die Ergebnisse sehen in etwa wie in der folgenden Ausgabe aus:
 
   ```bash
   {

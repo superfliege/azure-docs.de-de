@@ -6,20 +6,20 @@ documentationcenter: ''
 author: brenduns
 manager: femila
 editor: ''
-ms.assetid: 96b080a4-a9a5-407c-ba54-111de2413d59
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/2/2018
+ms.date: 08/20/2018
 ms.author: brenduns
-ms.openlocfilehash: eed715a7c2cb967f6c9ea0b7d4442a4f9976bd17
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.reviewer: efemmano
+ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345888"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "43050439"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Erstellen von Angeboten in Azure Stack
 
@@ -46,20 +46,16 @@ ms.locfileid: "37345888"
    > [!TIP]  
    > Änderungen am Angebot sind nicht sofort für Benutzer sichtbar. Um die Änderungen zu sehen, müssen sich Benutzer möglicherweise ab- und erneut beim Benutzerportal anmelden, damit das neue Angebot angezeigt wird.
 
-   So ändern Sie den Zustand des Angebots:
-
-   - **Ab Version 1803:**  
-     Klicken Sie in der Übersicht für das Angebot auf **Status der Barrierefreiheit**. Wählen Sie den gewünschten Status aus (beispielsweise *Öffentlich*), und klicken Sie anschließend auf **Speichern**.
+   Klicken Sie in der Übersicht für das Angebot auf **Status der Barrierefreiheit**. Wählen Sie den gewünschten Status aus (beispielsweise **Öffentlich**), und klicken Sie anschließend auf **Speichern**.
  
-     ![Auswählen von „Status der Barrierefreiheit“](media/azure-stack-create-offer/change-state.png)
+     ![Ändern des Status](media/azure-stack-create-offer/change-stage-1807.png)
 
-     Alternativ können Sie nach dem Aufrufen eines Angebots zu **Angebotseinstellungen** navigieren. Klicken Sie auf **Status der Barrierefreiheit**, um den Status zu ändern.
+     Klicken Sie alternativ auf **Status ändern**, und wählen Sie dann einen Status aus.
 
-   - **Vor Version 1803:**  
-     Klicken Sie auf **Alle Ressourcen**, suchen Sie nach Ihrem neuen Angebot, und wählen Sie es aus. Klicken Sie auf **Status ändern**, und wählen Sie **Öffentlich** aus.
+    ![Auswählen von „Status der Barrierefreiheit“](media/azure-stack-create-offer/change-stage-select-1807.png)
 
    > [!NOTE]
-   > Sie können auch PowerShell verwenden, um Standardangebote, Pläne und Kontingente zu erstellen. Weitere Informationen finden Sie in der [Azure Stack-PowerShell-Modul 1.3.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0).
+   > Sie können auch PowerShell verwenden, um Standardangebote, Pläne und Kontingente zu erstellen. Weitere Informationen finden Sie unter [Azure Stack-Modul 1.4.0](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

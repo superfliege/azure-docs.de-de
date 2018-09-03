@@ -12,18 +12,19 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 43092a12535ed18a5c91f924e3fdf72ad6d47d7b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ea8bb1db53deaa546f4174ddc04d9a270aa96d9a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41918913"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187782"
 ---
-# <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Datenmigrationstool
+# <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools 
 
 In diesem Tutorial erfahren Sie, wie Sie das Azure Cosmos DB-Datenmigrationstool verwenden, mit dem Sie Daten aus verschiedenen Quellen in Azure Cosmos DB-Sammlungen und -Tabellen importieren können. Daten können aus JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure Table Storage, Amazon DynamoDB und sogar aus Azure Cosmos DB-SQL-API-Sammlungen importiert werden. Diese Daten werden für die Verwendung mit Azure Cosmos DB in entsprechende Sammlungen und Tabellen migriert. Das Datenmigrationstool kann auch für die Migration von einer Sammlung mit einer einzelnen Partition zu einer Sammlung mit mehreren Partitionen für die SQL-API verwendet werden.
 
 Welche API wird mit Azure Cosmos DB verwendet? 
+
 * **[SQL-API:](documentdb-introduction.md)** Sie können eine beliebige Quelloption des Datenmigrationstools verwenden, um Daten zu importieren.
 * **[Table-API:](table-introduction.md)** Daten können mithilfe des Datenmigrationstools oder mithilfe von AzCopy importiert werden. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Table-API von Azure Cosmos DB](table-import.md).
 * **[MongoDB-API:](mongodb-introduction.md)** Das Tool für die Datenmigration unterstützt derzeit die Azure Cosmos DB-MongoDB-API weder als Quelle noch als Ziel. Wenn Sie die Daten in MongoDB-API-Sammlungen in Azure-Cosmos DB oder aus diesen migrieren möchten, finden Sie Anweisungen dazu unter [Azure Cosmos DB: Migrieren von Daten für die MongoDB-API](mongodb-migrate.md). Sie können weiterhin das Datenmigrationstool verwenden, um Daten von MongoDB in Azure Cosmos DB-SQL-API-Sammlungen für die Verwendung mit der SQL-API zu exportieren. 
@@ -77,8 +78,8 @@ Nachdem Sie das Tool installiert haben, können Ihre Daten importiert werden. We
 * [Blob](#BlobImport)
 * [Azure Cosmos DB-Sammlungen](#SQLSource)
 * [HBase](#HBaseSource)
-* [Azure Cosmos DB-Massenimport](#SQLBulkImport)
-* [Sequenzieller Datensatzimport mit Azure DB Cosmos](#DocumentDSeqTarget)
+* [Azure Cosmos DB-Massenimport](#SQLBulkTarget)
+* [Sequenzieller Datensatzimport mit Azure DB Cosmos](#SQLSeqTarget)
 
 
 ## <a id="JSON"></a>Importieren von JSON-Dateien

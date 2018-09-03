@@ -12,18 +12,18 @@ ms.component: devices
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/15/2018
+ms.topic: tutorial
+ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1376f011d056aac33333f6ac31ee2eaadaf3ef4a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: eaf0b3e3b607145598660dbb64cadd5a277360cb
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415793"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046321"
 ---
-# <a name="join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite
+# <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>Tutorial: Einbinden eines neuen Windows 10-Geräts in Azure AD auf der Windows-Willkommensseite
 
 Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. Weitere Informationen finden Sie in der [Einführung in die Geräteverwaltung in Azure Active Directory](overview.md).
 
@@ -34,9 +34,13 @@ Wenn Windows 10 Professional oder Windows 10 Enterprise auf einem Gerät install
 
 Auf der *Windows-Willkommensseite* wird das Verknüpfen einer lokalen Active Directory-Domäne (AD) nicht unterstützt. Wenn Sie einen Computer mit einer AD-Domäne verknüpfen möchten, klicken Sie während des Setups auf den Link **Windows mit einem lokalen Konto einrichten**. Sie können dann die Domäne über die Einstellungen Ihres Computers verknüpfen.
  
+In diesem Tutorial erfahren Sie, wie Sie auf der Windows-Willkommensseite ein Gerät in Azure AD einbinden:
+ > [!div class="checklist"]
+> * Voraussetzungen
+> * Einbinden eines Geräts
+> * Überprüfung
 
-
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 Um ein Windows 10-Gerät einzubinden, muss der Geräteregistrierungsdienst so konfiguriert sein, dass Sie Geräte registrieren können. Sie benötigen Berechtigungen zum Einbinden von Geräten in den Azure AD-Mandanten. Darüber hinaus müssen weniger Geräte registriert sein als die konfigurierte maximale Anzahl. Weitere Informationen finden Sie unter [Configure device settings](device-management-azure-portal.md#configure-device-settings) (Konfigurieren von Geräteeinstellungen).
 

@@ -4,17 +4,17 @@ description: In diesem Tutorial stellen Sie eine Azure-Funktion als Modul auf ei
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/10/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 426d9fd81a0cd856378be3bb4f430f310bee53eb
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: cf973899a6f56010c47588bdd506418a3d9a7cd8
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41920848"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744041"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Tutorial: Bereitstellen von Azure-Funktionen als IoT Edge-Module (Vorschauversion)
 
@@ -170,7 +170,7 @@ Im vorherigen Abschnitt haben Sie eine IoT Edge-Projektmappe erstellt und **CSha
 
 In diesem Abschnitt geben Sie die Anmeldeinformationen für Ihre Containerregistrierung zweimal an. Das erste Mal, um sich lokal auf Ihrem Entwicklungscomputer anzumelden, damit Visual Studio Code per Push Images an Ihre Registrierung übertragen kann. Das zweite Mal in der **ENV**-Datei Ihrer IoT Edge-Projektmappe, damit Ihr IoT Edge Gerät Berechtigungen zum Abrufen von Images per Pull aus Ihrer Registrierung erhält. 
 
-1. Öffnen Sie das in VS Code integrierte Terminal, indem Sie **Ansicht** > **Integriertes Terminal** auswählen. 
+1. Öffnen Sie das in VS Code integrierte Terminal über **Ansicht** > **Terminal**. 
 
 1. Melden Sie sich bei Ihrer Containerregistrierung an, indem Sie den folgenden Code im integrierten Terminal eingeben. Anschließend können Sie Ihr Modulimage an Ihre Azure-Containerregistrierung pushen: 
      
@@ -219,7 +219,7 @@ Sie können das Azure-Portal verwenden, um Ihr Funktionsmodul wie in den Schnell
 
 5. Erweitern Sie im VS Code-Explorer den Abschnitt **Azure IoT Hub-Geräte**. 
 
-6. Klicken Sie mit der rechten Maustaste auf den Namen Ihres IoT Edge-Geräts, und klicken Sie anschließend auf **Create Deployment for IoT Edge device** (Bereitstellung für IoT Edge-Gerät erstellen). 
+6. Klicken Sie mit der rechten Maustaste auf den Namen Ihres IoT Edge-Geräts, und klicken Sie dann auf **Create Deployment for Single Device** (Bereitstellung für einzelnes Gerät erstellen). 
 
 7. Navigieren Sie zum Projektmappenordner mit **CSharpFunction**. Öffnen Sie den Konfigurationsordner, wählen Sie die Datei „deployment.json“ aus, und klicken Sie anschließend auf **Select Edge Deployment Manifest** (Edge-Bereitstellungsmanifest auswählen).
 

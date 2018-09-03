@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 7ff4c6ce5e42154b3ded9c05ef1437d30f9477f0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41919781"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42811912"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -167,7 +167,7 @@ Wenn Sie das Adresspräfix 0.0.0.0/0 außer Kraft setzen, werden zusätzlich daz
         - Möglichkeit zur Übersetzung der Netzwerkadresse und zur Weiterleitung oder Übergabe des Datenverkehrs an die Zielressource im Subnetz per Proxy und Rückgabe des Datenverkehrs ins Internet 
     - **Gateway für virtuelle Netzwerke**: Wenn es sich beim Gateway um ein ExpressRoute-Gateway für virtuelle Netzwerke handelt, kann ein lokal angeordnetes Gerät mit Internetverbindung die Übersetzung der Netzwerkadresse und die Weiterleitung durchführen oder den Datenverkehr per Proxy an die Zielressource im Subnetz übergeben (per [privatem Peering](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) von ExpressRoute). 
 
-Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen Sie [GatewaySubnet](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) keine Routingtabelle zu, die eine Route mit dem Ziel 0.0.0.0/0 enthält. Andernfalls ist die ordnungsgemäße Funktion des Gateways gefährdet.
+Wenn Ihr virtuelles Netzwerk mit einem Azure-VPN-Gateway verbunden ist, ordnen Sie dem [Gatewaysubnetz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) keine Routingtabelle zu, die eine Route mit dem Ziel 0.0.0.0/0 enthält. Andernfalls ist die ordnungsgemäße Funktion des Gateways gefährdet. Ausführliche Informationen finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](../vpn-gateway/vpn-gateway-vpn-faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#why-are-certain-ports-opened-on-my-vpn-gateway) in der Frage *Warum werden auf meinem VPN-Gateway bestimmte Ports geöffnet?*.
 
 Implementierungsdetails bei Verwendung von Gateways für virtuelle Netzwerke und virtuellen Geräten zwischen dem Internet und Azure finden Sie unter [DMZ between Azure and your on-premises datacenter](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) (DMZ zwischen Azure und Ihrem lokalen Datencenter) und [DMZ zwischen Azure und dem Internet](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json).
 

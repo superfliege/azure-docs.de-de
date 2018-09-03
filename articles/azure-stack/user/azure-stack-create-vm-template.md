@@ -3,7 +3,7 @@ title: Tutorial zum Erstellen einer Azure Stack-VM mit einer Vorlage | Microsoft
 description: Es wird beschrieben, wie Sie das ASDK zum Erstellen einer VM mit einer vordefinierten Vorlage und einer benutzerdefinierten GitHub-Vorlage verwenden.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: e772dc41ce2cb77a03b91515cae35ffc48f5dbc3
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5026a7a753ec744d281266b2fb30a70a66a7f9db
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236948"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43050399"
 ---
 # <a name="tutorial-create-a-vm-using-a-community-template"></a>Tutorial: Erstellen einer VM mit einer Communityvorlage
 Als Azure Stack-Betreiber oder -Benutzer können Sie eine VM erstellen, indem Sie [benutzerdefinierte GitHub-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates) verwenden, anstatt eine Vorlage manuell über den Azure Stack-Marketplace bereitzustellen.
@@ -107,7 +107,7 @@ Nachdem die Linux-VM nun erfolgreich erstellt wurde, können Sie sich anmelden, 
 
    ![](media/azure-stack-create-vm-template/9.PNG)
 
-2. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten **mstsc.exe** aus, um die Remotedesktopverbindung zu öffnen und eine Verbindung mit der öffentlichen IP-Adresse der Linux-VM herzustellen, die im vorherigen Schritt ermittelt wurde. Wenn Sie zum Anmelden an xRDP aufgefordert werden, verwenden Sie die Anmeldeinformationen, die Sie bei der Erstellung der VM angegeben haben.
+2. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten **mstsc.exe** aus, um die Remotedesktopverbindung zu öffnen und eine Verbindung mit der öffentlichen IP-Adresse der Linux-VM herzustellen, die im vorherigen Schritt ermittelt wurde. Wenn Sie zum Anmelden bei xRDP aufgefordert werden, verwenden Sie die Anmeldeinformationen, die Sie bei der Erstellung der VM angegeben haben.
 
    ![](media/azure-stack-create-vm-template/10.PNG)
 

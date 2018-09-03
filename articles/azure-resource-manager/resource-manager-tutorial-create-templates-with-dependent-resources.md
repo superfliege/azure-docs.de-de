@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bd559cb9f0140706a4b9735c642367e03616a14d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188164"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107104"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen
 
@@ -56,12 +56,27 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="explore-the-template"></a>Untersuchen der Vorlage
 
+Sehen Sie sich die Vorlage in diesem Abschnitt an, und versuchen Sie, die folgenden Fragen zu beantworten:
+
+- Wie viele Azure-Ressourcen sind in dieser Vorlage definiert?
+- Bei einer der Ressourcen handelt es sich um ein Azure-Speicherkonto.  Sieht die Definition wie die Definition im letzten Tutorial aus?
+- Finden Sie die Vorlagenreferenzen für die in dieser Vorlage definierten Ressourcen?
+- Finden Sie die Abhängigkeiten der Ressourcen?
+
 1. Reduzieren Sie in Visual Studio Code die Elemente, bis unter **resources** nur die Elemente der ersten und zweiten Ebene angezeigt werden:
 
     ![Azure Resource Manager-Vorlagen in Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     Es gibt fünf Ressourcen, die von der Vorlage definiert werden.
-2. Erweitern Sie das vierte Element:
+2. Erweitern Sie die erste Ressource. Es handelt sich um ein Speicherkonto. Die Definition muss mit der Definition identisch sein, die Sie zu Beginn des letzten Tutorials verwendet haben.
+
+    ![Azure Resource Manager-Vorlagen in Visual Studio Code: Speicherkontodefinition](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+
+3. Erweitern Sie die zweite Ressource. Der Ressourcentyp lautet **Microsoft.Network/publicIPAddresses**. Navigieren Sie zum Ermitteln der Vorlagenreferenz zu [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/), und geben Sie **öffentliche IP-Adresse** oder **öffentliche IP-Adressen** ins Feld **Nach Titel filtern** ein. Vergleichen Sie die Ressourcendefinition mit der Vorlagenreferenz.
+
+    ![Azure Resource Manager-Vorlagen in Visual Studio Code: Definition der öffentlichen IP-Adresse](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+4. Wiederholen Sie den letzten Schritt, um die Vorlagenreferenzen für die anderen in dieser Vorlage definierten Ressourcen zu ermitteln.  Vergleichen Sie die Ressourcendefinitionen mit den Referenzen.
+5. Erweitern Sie die vierte Ressource:
 
     ![„dependsOn“ für Azure Resource Manager-Vorlagen in Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -70,7 +85,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     * publicIPAddress
     * virtualNetwork
 
-3. Erweitern Sie das fünfte Element. Diese Ressource ist ein virtueller Computer. Sie hängt von zwei weiteren Ressourcen ab:
+6. Erweitern Sie die fünfte Ressource. Diese Ressource ist ein virtueller Computer. Sie hängt von zwei weiteren Ressourcen ab:
 
     * storageAccount
     * networkInterface

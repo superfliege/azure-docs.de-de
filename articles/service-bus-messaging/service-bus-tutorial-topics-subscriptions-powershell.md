@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 05c30504eb9b4440694f78ee979d4b25f30f65dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6246e951cb9b1e0b4dac656fef6acf8027e79271
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237963"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126550"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands mit PowerShell und Themen/Abonnements
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Ein Beispiel dieses Szenarios ist eine Aktualisierung des Bestandssortiments für mehrere Einzelhandelsgeschäfte. Hierbei erhält jedes Geschäft bzw. jede Gruppe von Geschäften Nachrichten, die jeweils die Aktualisierung der Sortimente betreffen. In diesem Tutorial wird veranschaulicht, wie Sie dieses Szenario mit Abonnements und Filtern implementieren. Zuerst erstellen Sie ein Thema mit drei Abonnements, fügen einige Regeln und Filter hinzu und führen dann das Senden und Empfangen von Nachrichten aus den Themen und Abonnements durch.
 
-![queue](./media/service-bus-quickstart-powershell/quick-start-queue.png)
+![Thema](./media/service-bus-tutorial-topics-subscriptions-powershell/about-service-bus-topic.png)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
 
@@ -47,9 +47,9 @@ Für dieses Tutorial ist die Ausführung der aktuellen Version von Azure PowerSh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Führen Sie die folgenden Befehle aus, um sich an Azure anzumelden. Diese Schritte sind nicht erforderlich, wenn Sie PowerShell-Befehle in Cloud Shell ausführen: 
+Führen Sie die folgenden Befehle aus, um sich bei Azure anzumelden. Diese Schritte sind nicht erforderlich, wenn Sie PowerShell-Befehle in Cloud Shell ausführen: 
 
 1. Installieren Sie das Service Bus-PowerShell-Modul:
 
@@ -57,7 +57,7 @@ Führen Sie die folgenden Befehle aus, um sich an Azure anzumelden. Diese Schrit
    Install-Module AzureRM.ServiceBus
    ```
 
-2. Führen Sie den folgenden Befehl aus, um sich an Azure anzumelden:
+2. Führen Sie den folgenden Befehl aus, um sich bei Azure anzumelden:
 
    ```azurepowershell-interactive
    Login-AzureRmAccount
@@ -72,7 +72,7 @@ Führen Sie die folgenden Befehle aus, um sich an Azure anzumelden. Diese Schrit
 
 ## <a name="provision-resources"></a>Bereitstellen von Ressourcen
 
-Führen Sie nach dem Anmelden an Azure die folgenden Befehle aus, um Service Bus-Ressourcen bereitzustellen. Achten Sie darauf, dass Sie alle Platzhalter durch die entsprechenden Werte ersetzen:
+Führen Sie nach dem Anmelden bei Azure die folgenden Befehle aus, um Service Bus-Ressourcen bereitzustellen. Achten Sie darauf, dass Sie alle Platzhalter durch die entsprechenden Werte ersetzen:
 
 ```azurepowershell-interactive
 # Create a resource group 

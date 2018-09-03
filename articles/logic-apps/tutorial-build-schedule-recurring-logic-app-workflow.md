@@ -1,28 +1,23 @@
 ---
-title: Erstellen von planerbasierten automatisierten Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: In diesem Tutorial wird veranschaulicht, wie Sie mit Azure Logic Apps einen planerbasierten, periodischen automatisierten Workflow erstellen.
-author: ecfan
-manager: jeconnoc
-editor: ''
+title: Erstellen von zeitplanbasierten automatisierten Workflows – Azure Logic Apps | Microsoft-Dokumentation
+description: 'Tutorial: Erstellen eines zeitplanbasierten, periodischen automatisierten Workflows mit Azure Logic Apps'
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300768"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124017"
 ---
-# <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Überprüfen der Verkehrslage mit einer planerbasierten Logik-App
+# <a name="check-traffic-with-a-schedule-based-logic-app"></a>Überprüfen des Datenverkehrs mit einer zeitplanbasierten Logik-App
 
 Azure Logic Apps unterstützt Sie beim Automatisieren von Workflows, die gemäß einem Zeitplan ausgeführt werden. In diesem Tutorial wird gezeigt, wie Sie eine [Logik-App](../logic-apps/logic-apps-overview.md) mit einem Planer-Trigger erstellen, die morgens an Wochentagen ausgeführt wird und die Reisezeit (einschließlich Verkehrslage) zwischen zwei Orten überprüft. Wenn die Reisezeit einen bestimmten Grenzwert überschreitet, sendet die Logik-App eine E-Mail mit der Reisezeit und der zusätzlich bis zum Ziel benötigten Zeit.
 

@@ -1,26 +1,19 @@
 ---
-title: Ausführen der Azure CLI mit Jenkins | Microsoft-Dokumentation
+title: Ausführen der Azure CLI mit Jenkins
 description: Erfahren Sie, wie Sie mit der Azure CLI eine Java-Web-App an Azure in der Jenkins-Pipeline bereitstellen.
-services: app-service\web
-documentationcenter: ''
-author: mlearned
-manager: douge
-editor: ''
-ms.assetid: ''
 ms.service: jenkins
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
+keywords: Jenkins, Azure, DevOps, App Service, CLI
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 6/7/2017
-ms.author: mlearned
-ms.custom: Jenkins
-ms.openlocfilehash: 1796e9f76e39334c8bbdd03463a0f91e9b47cb17
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7d9565db8fe46ee26fafa7bd021d771e728e9a77
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421303"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43101611"
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Bereitstellen an Azure App Service mit Jenkins und der Azure CLI
 Für das Bereitstellen einer Java-Web-App in Azure können Sie die Azure CLI in der [Jenkins-Pipeline](https://jenkins.io/doc/book/pipeline/) nutzen. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline auf einer Azure-VM und erfahren, wie Sie:
@@ -46,7 +39,7 @@ Stellen Sie sicher, dass Sie über Version 1.2 oder höher verfügen:
 * Klicken Sie im Jenkins-Dashboard auf **Manage Jenkins -> Plugin Manager ->** (Jenkins verwalten -> Plug-In-Manager ->), und suchen Sie nach **Azure-Anmeldeinformationen**. 
 * Aktualisieren Sie das Plug-In, wenn die Version älter als 1.2 ist.
 
-Java JDK und Maven werden auch im Jenkins-Master benötigt. Melden Sie sich zum Installieren mithilfe von SSH im Jenkins-Master an, und führen Sie die folgenden Befehle aus:
+Java JDK und Maven werden auch im Jenkins-Master benötigt. Melden Sie sich zum Installieren mithilfe von SSH beim Jenkins-Master an, und führen Sie die folgenden Befehle aus:
 ```bash
 sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
@@ -122,7 +115,7 @@ Wenn die Web-App-Definition fertig ist, zeigt die Azure CLI Informationen wie im
 
 ### <a name="configure-java"></a>Konfigurieren von Java 
 
-Richten Sie mit dem Befehl [az appservice web config update](/cli/azure/appservice/web/config#az-appservice-web-config-update) die für Ihre App erforderliche Java-Laufzeitkonfiguration ein.
+Richten Sie mit dem Befehl [az appservice web config update](/cli/azure/webapp/config#az-appservice-web-config-update) die für Ihre App erforderliche Java-Laufzeitkonfiguration ein.
 
 Der folgende Befehl konfiguriert die Web-App für die Ausführung mit einer aktuellen Java 8 JDK-Version und [Apache Tomcat](http://tomcat.apache.org/) 8.0.
 

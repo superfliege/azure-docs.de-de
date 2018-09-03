@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 20dc414c5cdd309434ba53acf2d7f6716d3edfe5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009925"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143422"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>Schnellstart: Bereitstellen des Azure Data Box-Datenträgers über das Azure-Portal (Vorschauversion)
 
@@ -54,7 +54,6 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 
 Nachdem der Auftrag erstellt wurde, werden die Datenträger für den Versand vorbereitet. 
 
-
 ## <a name="unpack"></a>Auspacken
 
 Dieser Schritt dauert ungefähr fünf Minuten.
@@ -64,7 +63,6 @@ Die Data Box-Datenträger werden per UPS Express-Paket verschickt. Öffnen Sie d
 - 1 bis 5 USB-Datenträger in Luftpolsterfolie
 - Ein Verbindungskabel pro Datenträger 
 - Versandetikett für die Rücksendung
- 
 
 ## <a name="connect-and-unlock"></a>Anschließen und Entsperren
 
@@ -75,10 +73,8 @@ Dieser Schritt dauert ungefähr fünf Minuten.
 
     1. Wechseln Sie im Azure-Portal zu **Allgemein > Gerätedetails**, und rufen Sie den Hauptschlüssel ab.
     2. Laden Sie das Tool zum Entsperren von Data Box-Datenträgern herunter, und extrahieren Sie es auf dem Computer, den Sie zum Kopieren der Daten auf die Datenträger verwenden möchten. 
-    3. Führen Sie *DataBoxDiskUnlock.exe* aus, und geben Sie den Hauptschlüssel ein. Wiederholen Sie diesen Schritt für alle zukünftigen Datenträgeraktivierungen dieser Art.
+    3. Führen Sie *DataBoxDiskUnlock.exe* aus, und geben Sie den Hauptschlüssel ein. Führen Sie für alle neu eingelegten Datenträger erneut das Entsperrungstool aus, und geben Sie den Hauptschlüssel an. **Verwenden Sie zum Entsperren des Datenträgers nicht das BitLocker-Dialogfeld oder den BitLocker-Schlüssel.** 
     4. Der Laufwerkbuchstabe, der dem Datenträger zugewiesen ist, wird vom Tool angezeigt. Notieren Sie sich den Laufwerkbuchstaben des Datenträgers. Er wird in den nachfolgenden Schritten verwendet.
-
-
 
 ## <a name="copy-data-and-verify"></a>Kopieren der Daten und Durchführen der Überprüfung
 
@@ -92,7 +88,7 @@ Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, häng
     > - Für alle Container und Blobs sollten die [Azure-Namenskonventionen](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions) eingehalten werden. Wenn diese Regeln nicht befolgt werden, tritt beim Datenupload in Azure ein Fehler auf.
     > - Stellen Sie sicher, dass Dateien für Blockblobs eine Größe von ca. 4,7 TiB und für Seitenblobs eine Größe von ca. 8 TiB nicht überschreiten.
 
-2. (Optional) Nachdem der Kopiervorgang abgeschlossen ist, ist es ratsam, die im Ordner *AzureImportExport* enthaltene Datei `AzureExpressDiskService.ps1` auszuführen, um Prüfsummen für die Validierung zu generieren. Je nach Datengröße kann dieser Schritt relativ lange dauern. 
+2. (Optional) Nachdem der Kopiervorgang abgeschlossen ist, ist es ratsam, die im Ordner *AzureImportExport* enthaltene Datei `AzureExpressDiskService.cmd` auszuführen, um Prüfsummen für die Validierung zu generieren. Je nach Datengröße kann dieser Schritt relativ lange dauern. 
 3. Trennen Sie die Kabelverbindung des Laufwerks mit dem Computer. 
 
 
@@ -116,7 +112,6 @@ Der Zeitraum, der für die Durchführung dieses Vorgangs erforderlich ist, häng
     1. Prüfen Sie die Fehlerprotokolle auf Fehler, und ergreifen Sie ggf. entsprechende Maßnahmen.
     2. Stellen Sie sicher, dass sich Ihre Daten in den Speicherkonten befinden, bevor Sie sie aus der Quelle löschen.
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Dieser Schritt dauert zwei bis drei Minuten.
@@ -131,7 +126,7 @@ Sie können den Data Box-Auftrag stornieren und dann löschen, um die Bereinigun
 
     Navigieren Sie zum Löschen des Auftrags zu **Übersicht**, und klicken dann in der Befehlsleiste auf **Löschen**.
 
-## <a name="next-step"></a>Nächster Schritt
+## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Schnellstartanleitung haben Sie einen Azure Data Box-Datenträger bereitgestellt, über den Ihre Daten in Azure importiert werden. Fahren Sie mit dem folgenden Tutorial fort, um sich weiter über die Verwaltung von Azure Data Box-Datenträgern zu informieren: 
 

@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 05b31dffbe51dcbcd76c13a17f6ecc640b63569b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5f7a0f2bd6820ce65490ae9241dac519fb635da2
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248967"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885457"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Tutorial: Verwenden einer verwalteten Dienstidentität eines virtuellen Windows-Computers für den Zugriff auf Azure Cosmos DB
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität eines virtuellen Windows-Computers für den Zugriff auf Cosmos DB erstellen und verwenden. Folgendes wird vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie eine vom System zugewiesene Identität für einen virtuellen Windows-Computer für den Zugriff auf Cosmos DB verwenden. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen eines virtuellen Windows-Computers, für den die verwaltete Dienstidentität aktiviert ist 
 > * Erstellen eines Cosmos DB-Kontos
 > * Gewähren des Zugriffs auf die Zugriffsschlüssel des Cosmos DB-Kontos für Ihre verwaltete Dienstidentität des virtuellen Windows-Computers
 > * Abrufen eines Zugriffstokens mithilfe der verwalteten Dienstidentität des virtuellen Windows-Computers zum Aufrufen von Azure Resource Manager
@@ -40,33 +39,11 @@ In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität eines 
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
+- [Anmelden beim Azure-Portal](https://portal.azure.com)
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+- [Erstellen eines virtuellen Windows-Computers](/azure/virtual-machines/windows/quick-create-portal)
 
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Windows-Computers in einer neuen Ressourcengruppe
-
-In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt.  Sie können die verwaltete Dienstidentität auch auf einem vorhandenen virtuellen Computer aktivieren.
-
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Ressource erstellen**.
-2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
-3. Geben Sie die Informationen zum virtuellen Computer ein. Der **Benutzername** und das **Kennwort**, die hier erstellt werden, sind die Anmeldeinformationen, die Sie für die Anmeldung beim virtuellen Computer verwenden.
-4. Wählen Sie in der Dropdownliste das richtige **Abonnement** für den virtuellen Computer aus.
-5. Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen**. Klicken Sie zum Abschluss auf **OK**.
-6. Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie auf der Seite „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
-
-   ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrem virtuellen Computer 
-
-Eine verwaltete Dienstidentität eines virtuellen Computers ermöglicht es Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Im Hintergrund werden durch das Aktivieren der verwalteten Dienstidentität auf einem virtuellen Computer über das Azure-Portal zwei Vorgänge ausgelöst: Der virtuelle Computer wird bei Azure AD registriert, um eine verwaltete Identität zu erstellen, und die Identität wird auf dem virtuellen Computer konfiguriert.
-
-1. Wählen Sie den **virtuellen Computer** aus, auf dem Sie die verwaltete Dienstidentität aktivieren möchten.  
-2. Klicken Sie in der links angezeigten Navigationsleiste auf **Konfiguration**. 
-3. Die Option **Verwaltete Dienstidenität** wird angezeigt. Wählen Sie zum Registrieren und Aktivieren der verwalteten Dienstidentität die Option **Ja** oder zum Deaktivieren „Nein“. 
-4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.  
-   ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [Aktivieren einer vom System zugewiesenen Identität auf dem virtuellen Computer](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-cosmos-db-account"></a>Erstellen eines Cosmos DB-Kontos 
 

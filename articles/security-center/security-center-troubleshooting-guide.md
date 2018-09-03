@@ -3,7 +3,7 @@ title: Azure Security Center – Handbuch zur Problembehandlung | Microsoft Docs
 description: In diesem Dokument wird die Problembehandlung in Azure Security Center beschrieben.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 44462de6-2cc5-4672-b1d3-dbb4749a28cd
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
-ms.author: yurid
-ms.openlocfilehash: 0cbc0db7e982ad85dd1e3514def8cf13be595f24
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.date: 08/26/2018
+ms.author: rkarlin
+ms.openlocfilehash: eebdff338454b1fb50b27d5b3d8c1c37d28f6b6f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779225"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121201"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 Dieses Handbuch ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, in deren Organisation Azure Security Center verwendet wird und die Security Center-Probleme lösen müssen.
@@ -64,7 +64,7 @@ zu erstellen und zu verwalten.
 > Um das Verhalten im zweiten Szenario zu vermeiden, müssen Sie die neueste Version des Agents herunterladen.
 >
 
-## <a name="monitoring-agent-health-issues"></a>Integritätsprobleme des Überwachungs-Agents
+## Integritätsprobleme des Überwachungs-Agents <a name="mon-agent"></a>
 Mit der **Zustandsüberwachung** wird der Grund dafür definiert, warum Security Center keine erfolgreiche Überwachung von VMs und Computern durchführen kann, die für die automatische Bereitstellung initialisiert wurden. In der folgenden Tabelle sind die Werte, Beschreibungen und Lösungsschritte der **Zustandsüberwachung** enthalten.
 
 | Zustandsüberwachung | BESCHREIBUNG | Lösungsschritte |
@@ -81,7 +81,7 @@ Mit der **Zustandsüberwachung** wird der Grund dafür definiert, warum Security
 | Agent nicht installiert | Die Datensammlung ist deaktiviert. | Aktivieren Sie die Datensammlung in der Sicherheitsrichtlinie, oder installieren Sie den Microsoft Monitoring Agent manuell. |
 
 
-## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent
+## Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent <a name="mon-network-req"></a>
 Damit Agents eine Verbindung mit Security Center herstellen und sich bei diesem registrieren können, müssen sie Zugriff auf Netzwerkressourcen, einschließlich der Portnummern und Domänen-URLs, haben.
 
 - Für Proxy-Server müssen Sie sicherstellen, dass die entsprechenden Proxy-Serverressourcen in Agenteinstellungen konfiguriert sind. Weitere Informationen zum [Ändern der Proxyeinstellungen](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents#configure-proxy-settings) finden Sie in diesem Artikel.
@@ -91,10 +91,10 @@ Die folgende Tabelle zeigt die für die Kommunikation erforderlichen Ressourcen.
 
 | Agent-Ressource | Ports | Umgehung der HTTPS-Überprüfung |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Ja |
-| *.oms.opinsights.azure.com | 443 | Ja |
-| *.blob.core.windows.net | 443 | Ja |
-| *.azure-automation.net | 443 | Ja |
+| *.ods.opinsights.azure.com | 443 | JA |
+| *.oms.opinsights.azure.com | 443 | JA |
+| *.blob.core.windows.net | 443 | JA |
+| *.azure-automation.net | 443 | JA |
 
 Wenn mit dem Agent Onboardingprobleme auftreten, lesen Sie den Artikel [How to troubleshoot Operations Management Suite onboarding issues](https://support.microsoft.com/en-us/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues) (Behandeln von Onboardingproblemen mit Operations Management Suite).
 

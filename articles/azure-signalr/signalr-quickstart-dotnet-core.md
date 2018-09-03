@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cf47b2d6bd17fa5a9f7cbe98ab7db2799f6e8287
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674851"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916299"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Schnellstart: Erstellen eines Chatraums per SignalR Service
 
@@ -93,15 +93,20 @@ In diesem Abschnitt fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https:
 
         dotnet restore
 
-3. Fügen Sie dem Geheimnis-Manager ein Geheimnis mit dem Namen *Azure__SignalR__ConnectionString* hinzu. Dieses Geheimnis ist ein hierarchischer Konfigurationswert, und ein Doppelpunkt (:) funktioniert möglicherweise nicht auf allen Plattformen. Ein doppelter Unterstrich (__), so wie von diesem Geheimnis verwendet, wird von allen Plattformen unterstützt.  Dieses Geheimnis enthält die Verbindungszeichenfolge für den Zugriff auf Ihre SignalR Service-Ressource. *Azure__SignalR__ConnectionString* ist der Standardkonfigurationsschlüssel, nach dem SignalR sucht, um eine Verbindung herzustellen. Ersetzen Sie den Wert im Befehl unten durch die Verbindungszeichenfolge für Ihre SignalR Service-Ressource.
+3. Fügen Sie dem Geheimnis-Manager ein Geheimnis mit dem Namen *Azure:SignalR:ConnectionString* hinzu. 
+
+    Dieses Geheimnis enthält die Verbindungszeichenfolge für den Zugriff auf Ihre SignalR Service-Ressource. *Azure:SignalR:ConnectionString* ist der Standardkonfigurationsschlüssel, nach dem SignalR sucht, um eine Verbindung herzustellen. Ersetzen Sie den Wert im Befehl unten durch die Verbindungszeichenfolge für Ihre SignalR Service-Ressource.
 
     Dieser Befehl muss in dem Verzeichnis ausgeführt werden, in dem die *.csproj*-Datei enthalten ist.
 
     ```
-    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     Der Geheimnis-Manager wird nur verwendet, um die Web-App zu testen, während sie lokal gehostet wird. In einem späteren Tutorial stellen Sie die Chat-Web-App dann in Azure bereit. Nachdem Sie die Web-App in Azure bereitgestellt haben, verwenden Sie eine Anwendungseinstellung, anstatt die Verbindungszeichenfolge im Geheimnis-Manager zu speichern.
+
+    Auf dieses Geheimnis wird mit der Konfigurations-API zugegriffen. Ein Doppelpunkt (:) kann im Konfigurationsnamen mit der Konfigurations-API auf allen unterstützten Plattformen verwendet werden. Informationen finden Sie unter [Konfiguration in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment). 
+
 
 4. Öffnen Sie *Startup.cs*, und aktualisieren Sie die `ConfigureServices`-Methode auf die Nutzung des Azure SignalR Service, indem Sie die `services.AddSignalR().AddAzureSignalR()`-Methode aufrufen:
 
@@ -113,7 +118,7 @@ In diesem Abschnitt fügen Sie Ihrem Projekt das [Geheimnis-Manager-Tool](https:
     }
     ```
 
-    Indem kein Parameter an `AddAzureSignalR()` übergeben wird, wird in diesem Code der Standardkonfigurationsschlüssel *Azure__SignalR__ConnectionString* für die Verbindungszeichenfolge der SignalR Service-Ressource verwendet.
+    Indem kein Parameter an `AddAzureSignalR()` übergeben wird, wird in diesem Code der Standardkonfigurationsschlüssel *Azure:SignalR:ConnectionString* für die Verbindungszeichenfolge der SignalR Service-Ressource verwendet.
 
 5. Aktualisieren Sie ebenfalls in *Startup.cs* die `Configure`-Methode, indem Sie den Aufruf von `app.UseStaticFiles()` durch den folgenden Code ersetzen und die Datei speichern.
 

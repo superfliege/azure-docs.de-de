@@ -3,7 +3,7 @@ title: Manuelles Hinzufügen einer SOAP-API mithilfe des Azure-Portals | Microso
 description: Dieses Tutorial veranschaulicht, wie Sie API Management (APIM) verwenden, um eine API manuell hinzuzufügen.
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307447"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247901"
 ---
-# <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API 
+# <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API
 
 Die Schritte in diesem Artikel zeigen, wie Sie das Azure-Portal verwenden, um der API Management-Instanz (APIM) manuell eine API hinzuzufügen. Ein häufiges Szenario für das Erstellen einer leeren API und das manuelle Definieren ist, wenn Sie die API simulieren möchten. Weitere Informationen zum Simulieren von APIs finden Sie unter [Simulieren von API-Antworten](mock-api-responses.md).
 
@@ -54,17 +54,16 @@ Absolvieren Sie den folgende Schnellstart: [Erstellen einer Azure API Management
     |**Produkte**|„*Unlimited*“ |Veröffentlichen Sie die API, indem Sie sie einem Produkt zuordnen. Wenn Sie möchten, dass die API veröffentlicht wird und dann Entwicklern zur Verfügung steht, fügen Sie sie einem Produkt hinzu. Sie können dies während der Erstellung der API vornehmen oder später festlegen.<br/><br/>Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs einfügen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/>Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.<br/><br/> Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte: **Starter** und **Unlimited**.| 
 5. Klicken Sie auf **Erstellen**.
 
-An diesem Punkt enthält APIM noch keine Vorgänge, die Vorgängen in Ihrer Back-End-API zugeordnet sind. Wenn Sie einen Vorgang aufrufen, der über das Back-End und nicht über APIM verfügbar gemacht wird, erhalten Sie den Fehler **404**. 
+An diesem Punkt enthält APIM noch keine Vorgänge, die Vorgängen in Ihrer Back-End-API zugeordnet sind. Wenn Sie einen Vorgang aufrufen, der über das Back-End und nicht über APIM verfügbar gemacht wird, erhalten Sie den Fehler **404**.
 
 >[!NOTE] 
 > Wenn Sie eine API hinzufügen, macht APIM standardmäßig Vorgänge erst verfügbar, wenn Sie diese auf die Whitelist setzen. Dies gilt auch dann, wenn die API mit einem Back-End-Dienst verbunden ist. Um einen Vorgang Ihres Back-End-Diensts auf die Whitelist zu setzen, erstellen Sie einen APIM-Vorgang, der dem Back-End-Vorgang zugeordnet ist.
->
 
 ## <a name="add-and-test-an-operation"></a>Hinzufügen und Testen von Vorgängen
 
 In diesem Abschnitt wird zeigt, wie Sie einen „/get“-Vorgang hinzufügen, um diesen dem Back-End-Vorgang „http://httpbin.org/get“ zuzuordnen.
 
-### <a name="add-the-operation"></a>Hinzufügen des Vorgangs
+### <a name="add-an-operation"></a>Hinzufügen eines Vorgangs
 
 1. Wählen Sie die API aus, die Sie im vorherigen Schritt erstellt haben.
 2. Klicken Sie auf **+ Vorgang hinzufügen**.
@@ -72,7 +71,7 @@ In diesem Abschnitt wird zeigt, wie Sie einen „/get“-Vorgang hinzufügen, um
 4. Geben Sie *FetchData* als **Anzeigename** ein.
 5. Wählen Sie **Speichern**aus.
 
-### <a name="test-the-operation"></a>Testen des Vorgangs
+### <a name="test-an-operation"></a>Testen eines Vorgangs
 
 Testen Sie den Vorgang im Azure-Portal. Alternativ können Sie ihn auch im **Entwicklerportal** testen.
 

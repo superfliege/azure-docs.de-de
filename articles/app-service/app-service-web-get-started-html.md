@@ -12,19 +12,19 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/15/2018
+ms.date: 08/28/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: e48c2aceb2a8f45d01b922a186900780c1c5ef51
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: cee0bdffb99076903df988d30fcaa4f6cb2234c6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968755"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123189"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Erstellen einer statischen HTML-Web-App in Azure
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching.  In diesem Schnellstart wird erläutert, wie Sie eine einfache Website mit HTML und CSS in Azure-Web-Apps bereitstellen. In dieser Schnellstartanleitung wird [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) ausgeführt werden.
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. In diesem Schnellstart wird erläutert, wie Sie eine einfache Website mit HTML und CSS in Azure-Web-Apps bereitstellen. In dieser Schnellstartanleitung wird [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) ausgeführt werden.
 
 ![Startseite der Beispiel-App](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -39,7 +39,7 @@ Für diese Schnellstartanleitung müssen Sie die [az-Web-App-Erweiterung](https:
 Führen Sie zum Installieren der Web-App-Erweiterung den folgenden Befehl aus:
 
 ```bash
-az extension add -n webapp
+az extension add --name webapp
 ```
 
 Wenn die Erweiterung installiert wurde, zeigt Cloud Shell Informationen wie im folgenden Beispiel an:
@@ -73,7 +73,7 @@ Ersetzen Sie im folgenden Beispiel „<app_name>“ durch einen eindeutigen App-
 ```bash
 cd html-docs-hello-world
 
-az webapp up -n <app_name>
+az webapp up --location westeurope --name <app_name>
 ```
 
 Der Befehl `az webapp up` bewirkt Folgendes:
@@ -91,13 +91,13 @@ Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen. Während 
 ```json
 {
   "app_url": "https://<app_name>.azurewebsites.net",
-  "location": "Central US",
+  "location": "westeurope",
   "name": "<app_name>",
   "os": "Windows",
-  "resourcegroup": "appsvc_rg_Windows_CentralUS ",
-  "serverfarm": "appsvc_asp_Windows_CentralUS",
+  "resourcegroup": "appsvc_rg_Windows_westeurope",
+  "serverfarm": "appsvc_asp_Windows_westeurope",
   "sku": "FREE",
-  "src_path": "/home/username/quickstart/html-docs-hello-world ",
+  "src_path": "/home/<username>/quickstart/html-docs-hello-world ",
   < JSON data removed for brevity. >
 }
 ```
@@ -116,7 +116,7 @@ Die Seite wird als Azure App Service-Web-App ausgeführt.
 
 ## <a name="update-and-redeploy-the-app"></a>Aktualisieren und erneutes Bereitstellen der App
 
-Geben Sie in Cloud Shell `nano index.html` ein, um den Nano-Text-Editor zu öffnen. Ändern Sie in der H1-Überschrift „Azure App Service – Statische HTML-Beispielsite“ in „Azure App Service“ wie nachfolgend gezeigt.
+Geben Sie in Cloud Shell `nano index.html` ein, um den Nano-Text-Editor zu öffnen. Ändern Sie im Tag der Überschrift `<h1>` „Azure App Service – Statische HTML-Beispielsite“ in „Azure App Service“ wie nachfolgend gezeigt:
 
 ![Nano index.html](media/app-service-web-get-started-html/nano-index-html.png)
 
@@ -125,7 +125,7 @@ Speichern Sie Ihre Änderungen, und beenden Sie Nano. Verwenden Sie `^O` zum Spe
 Nun stellen Sie die App mit dem gleichen `az webapp up`-Befehl erneut bereit.
 
 ```bash
-az webapp up -n <app_name>
+az webapp up --location westeurope --name <app_name>
 ```
 
 Wechseln Sie nach Abschluss der Bereitstellung wieder zu dem Browserfenster, das im Schritt **Navigieren zur App** geöffnet wurde, und aktualisieren Sie die Seite.
@@ -151,7 +151,7 @@ Im linken Menü werden verschiedene Seiten für die Konfiguration Ihrer App ange
 In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Ressourcengruppe erstellt. Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, löschen Sie die Ressourcengruppe, indem Sie den folgenden Befehl in Cloud Shell ausführen. Denken Sie daran, dass der Name der Ressourcengruppe im Schritt [Erstellen einer Web-App](#create-a-web-app) automatisch für Sie generiert wurde.
 
 ```bash
-az group delete --name appsvc_rg_Windows_CentralUS
+az group delete --name appsvc_rg_Windows_westeurope
 ```
 
 Die Ausführung dieses Befehls kann eine Minute in Anspruch nehmen.

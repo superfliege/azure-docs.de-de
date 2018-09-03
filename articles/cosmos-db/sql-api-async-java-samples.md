@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: sample
 ms.date: 06/18/2018
 ms.author: sngun
-ms.openlocfilehash: eafc05d825535fe1a0c13dd52823b4e59499fb91
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 02e60b3899280afde2927d40ad54cb514bf0fa0e
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113655"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246730"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Async Java-Beispiele für die SQL-API
 
@@ -30,7 +30,7 @@ ms.locfileid: "37113655"
 > 
 > 
 
-Die neuesten Beispielanwendungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Azure Cosmos DB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-comsosdb-java](https://github.com/Azure/azure-cosmosdb-java). Dieser Artikel enthält Folgendes:
+Die neuesten Beispielanwendungen, in denen CRUD-Vorgänge und andere gängige Vorgänge für Azure Cosmos DB-Ressourcen ausgeführt werden, finden Sie im GitHub-Repository [azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java). Dieser Artikel enthält Folgendes:
 
 * Links zu den Aufgaben in den einzelnen Async Java-Beispielprojektdateien. 
 * Links zum zugehörigen API-Referenzinhalt.
@@ -155,7 +155,7 @@ Die Datei [OfferCRUDAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/b
 | Aufgabe | API-Referenz |
 | --- | --- |
 | [Erstellen einer Sammlung und Festlegen des Durchsatzes](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L106-L113) | [AsyncDocumentClient.createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.createcollection)<br>[RequestOptions.setOfferThroughput](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._request_options.setofferthroughput) |
-| [Lesen einer Sammlung, um das zugehörige Angebot zu finden](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L118-L130) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._offer.getcontent)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.queryoffers) |
+| [Lesen einer Sammlung, um das zugehörige Angebot zu finden](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L118-L130) | [Offer.getContent](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._offer.getContent)<br>[DocumentClient.queryOffers](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.queryoffers) |
 | [Aktualisieren des Durchsatzes einer Sammlung durch Ersetzen des Angebots](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L101-L153) | [AsyncDocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Beispiele für gespeicherte Prozeduren

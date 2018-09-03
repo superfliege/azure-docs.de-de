@@ -5,16 +5,16 @@ services: service-fabric-mesh
 keywords: Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten, ohne Ihren SEO-Experten zurate zu ziehen.
 author: rwike77
 ms.author: ryanwi
-ms.date: 07/12/2018
+ms.date: 08/24/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: a740672ea948bd86efce92c534e0f95f65563438
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: f5b834f92b2a126f68780a7647fda4d8b35dfe43
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42023940"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886443"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Schnellstart: Bereitstellen von „Hello World“ in Service Fabric Mesh
 
@@ -45,11 +45,18 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application"></a>Bereitstellen der Anwendung
-Erstellen Sie Ihre Anwendung in der Ressourcengruppe mit dem Befehl `az mesh deployment create`:
+Erstellen Sie Ihre Anwendung in der Ressourcengruppe mit dem Befehl `az mesh deployment create`.  Führen Sie bei Verwendung einer Bash-Konsole Folgendes aus:
 
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}}" 
 ```
+
+Führen Sie bei Verwendung einer PowerShell-Konsole Folgendes aus:
+
+```azurecli-interactive
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}"
+```
+
 Der vorherige Befehl stellt eine Linux-Anwendung mit der [mesh_rp.linux.json-Vorlage](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json) bereit. Wenn Sie eine Windows-Anwendung bereitstellen möchten, verwenden Sie die [mesh_rp.windows.json-Vorlage](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json). Windows-Containerimages sind größer als Linux-Containerimages und benötigen ggf. mehr Zeit für die Bereitstellung.
 
 Innerhalb weniger Minuten gibt der Befehl Folgendes zurück:
