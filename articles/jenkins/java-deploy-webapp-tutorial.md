@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Jenkins zum Bereitstellen Ihrer Web-Apps in Azure
 description: Richten Sie Continuous Integration aus GitHub in Azure App Service für Ihre Java-Web-Apps mithilfe von Jenkins und Docker ein.
-ms.topic: tutorial
-ms.author: tarcher
+ms.service: jenkins
+keywords: Jenkins, Azure, DevOps, App Service, Continuous Integration, CI, Continuous Deployment, CD
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: e880d84c3ae0fd23c11bb9b30733544bd5f28872
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b1af82060d316a18cd6427f70695ca4fa982064d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389941"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106796"
 ---
 # <a name="set-up-continuous-integration-and-deployment-to-azure-app-service-with-jenkins"></a>Einrichten von Continuous Integration und Continuous Deployment in Azure App Service mit Jenkins
 
@@ -102,7 +102,7 @@ Richten Sie Jenkins so ein, dass [GitHub-Webhooks](https://developer.github.com/
 ## <a name="configure-the-azure-app-service-jenkins-plug-in"></a>Konfigurieren des Jenkins-Plug-Ins für Azure App Service
 
 1. Wählen Sie in der Jenkins-Webkonsole den erstellten Auftrag **MyJavaApp** aus, und wählen Sie dann links auf der Seite die Option **Configure** aus.
-2. Scrollen Sie zu **Post-build Actions**, und wählen Sie **Add post-build action** und dann **Publish an Azure Web App** aus.
+2. Scrollen Sie zu **Post-build Actions** (Aktionen nach dem Erstellen), und wählen Sie **Add post-build action** (Postbuildaktion hinzufügen) und dann **Publish an Azure Web App** (Azure-Web-App veröffentlichen) aus.
 3. Wählen Sie unter **Azure Profile Configuration** neben **Azure Credentials** die Option **Add**, und wählen Sie dann **Jenkins** aus.
 4. Wählen Sie im Dialogfeld **Add Credentials** aus der Dropdownliste **Kind** die Option **Microsoft Azure Service Principal** aus.
 5. Erstellen Sie über die Azure CLI oder die [Cloud Shell](/azure/cloud-shell/overview) einen Active Directory-Dienstprinzipal.
