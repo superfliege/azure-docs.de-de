@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5867012e0322e520b4ef234599fa25a2ec08138d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: d5b43f81cbb3bbebb231a8a9738f6138b62ef7f6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325767"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046028"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Bereitstellen von Azure IoT Edge-Modulen mithilfe von Visual Studio Code
 
@@ -130,7 +130,7 @@ Zur Bereitstellung von Modulen auf Ihrem Gerät wenden Sie das Bereitstellungsma
 
 2. Klicken Sie mit der rechten Maustaste auf das Gerät, das Sie mit dem Bereitstellungsmanifest konfigurieren möchten. 
 
-3. Klicken Sie auf **Create Deployment for IoT Edge Device** (Bereitstellung für IoT Edge-Gerät erstellen). 
+3. Klicken Sie auf **Create Deployment for Single Device** (Bereitstellung für einzelnes Gerät erstellen). 
 
 4. Navigieren Sie zur gewünschten JSON-Datei mit dem Bereitstellungsmanifest, und klicken Sie auf **Select Edge Deployment Manifest** (Edge-Bereitstellungsmanifest auswählen). 
 

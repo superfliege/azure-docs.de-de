@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 08/27/2018
 ms.author: Kumud
-ms.openlocfilehash: 9d5d596254f673b86650e8d9754dacdb70be0666
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 43945dc8810151eb701aa9e1aa1be47d4fbb0491
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179793"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125643"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Metriken und Integritätsdiagnosen für Standard Load Balancer
 
@@ -37,14 +37,14 @@ Azure Load Balancer stellt neue mehrdimensionale Metriken über die neuen Azure-
 
 Die verschiedenen Standard Load Balancer-Konfigurationen bieten die folgenden Metriken:
 
-| Metrik | Ressourcentyp | Beschreibung | Empfohlene Aggregation |
+| Metrik | Ressourcentyp | BESCHREIBUNG | Empfohlene Aggregation |
 | --- | --- | --- | --- |
-| VIP-Verfügbarkeit (Datenpfadverfügbarkeit) | Öffentlicher Load Balancer | Standard Load Balancer wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.| Mittelwert |
-| DIP-Verfügbarkeit (Integritätsteststatus) |  Öffentlicher und interner Load Blancer | Standard Load Balancer verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes Instanzendpunkts im Load Balancer-Pool bereit. Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt. |  Mittelwert |
-| SYN-Pakete (Synchronisierung) |  Öffentlicher Load Balancer | Standard Load Balancer beendet keine TCP-Verbindungen (Transmission Control Protocol) und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.| Mittelwert |
-| SNAT-Verbindungen |  Öffentlicher Load Balancer |Standard Load Balancer meldet die Anzahl von maskierten ausgehenden Datenflüssen an das Front-End mit der öffentlichen IP-Adresse. SNAT-Ports (Source Network Address Translation) stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Datenflüsse nutzt. Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Datenflüsse werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Datenflüsse verwendet werden.| Mittelwert |
-| Byteleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten.| Mittelwert |
-| Paketleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Pakete.| Mittelwert |
+| VIP-Verfügbarkeit (Datenpfadverfügbarkeit) | Öffentlicher Load Balancer | Standard Load Balancer wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.| Durchschnitt |
+| DIP-Verfügbarkeit (Integritätsteststatus) |  Öffentlicher und interner Load Blancer | Standard Load Balancer verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes Instanzendpunkts im Load Balancer-Pool bereit. Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt. |  Durchschnitt |
+| SYN-Pakete (Synchronisierung) |  Öffentlicher Load Balancer | Standard Load Balancer beendet keine TCP-Verbindungen (Transmission Control Protocol) und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.| Durchschnitt |
+| SNAT-Verbindungen |  Öffentlicher Load Balancer |Standard Load Balancer meldet die Anzahl von maskierten ausgehenden Datenflüssen an das Front-End mit der öffentlichen IP-Adresse. SNAT-Ports (Source Network Address Translation) stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Flows nutzt. Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Flows werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Flows verwendet werden.| Durchschnitt |
+| Byteleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten.| Durchschnitt |
+| Paketleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Pakete.| Durchschnitt |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Anzeigen Ihrer Load Balancer-Metriken im Azure-Portal
 
@@ -70,7 +70,7 @@ Eine API-Anleitung zum Abrufen von Definitionen und Werten für multidimensional
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Ist der Datenpfad aktiv und für meine Load Balancer-VIP verfügbar?
 
 Die VIP-Verfügbarkeitsmetrik beschreibt die Integrität des Datenpfads innerhalb des Bereichs zu dem Computehost, auf dem sich Ihre virtuellen Computer befinden. Die Metrik reflektiert die Integrität der Azure-Infrastruktur. Anhand der Metrik können Sie:
-- Die externe Verfügbarkeit Ihres Diensts überwachen.
+- Die externe Verfügbarkeit Ihres Diensts überwachen
 - Tiefer einsteigen und ermitteln, ob die Plattform, auf der Ihr Dienst bereitgestellt wird, fehlerfrei ist, oder ob Ihr Gastbetriebssystem oder die Anwendungsinstanz fehlerfrei ist.
 - Bestimmen, ob sich ein Ereignis auf Ihren Dienst oder die zugrunde liegende Datenebene bezieht. Verwechseln Sie diese Metrik nicht mit dem Integritätsteststatus („DIP-Verfügbarkeit“).
 
@@ -183,7 +183,7 @@ VIP-Verfügbarkeit ist derzeit nur für öffentliche Front-Ends verfügbar.
 
 ## <a name = "ResourceHealth"></a>Ressourcenintegritätsstatus
 
-Der Integritätsstatus für die Standard Load Balancer-Ressourcen wird über die vorhandene **Ressourcenintegrität** unter **Monitor > Dienstintegrität** verfügbar gemacht.
+Der Integritätsstatus für die Standard Load Balancer-Ressourcen wird über die vorhandene **Ressourcenintegrität** unter **Monitor > Service Health** verfügbar gemacht.
 
 >[!NOTE]
 >Der Ressourcenintegritätsstatus für Load Balancer ist derzeit nur für die öffentliche Konfiguration von Standard Load Balancer verfügbar. Interne Load Balancer-Ressourcen oder Basic-SKUs von Load Balancer-Ressourcen machen keine Ressourcenintegrität verfügbar.
@@ -209,15 +209,16 @@ So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressour
  
 In der folgenden Tabelle sind die verschiedenen Ressourcenintegritätsstatus und deren Beschreibungen aufgeführt: 
 
-| Ressourcenintegritätsstatus | Beschreibung |
+| Ressourcenintegritätsstatus | BESCHREIBUNG |
 | --- | --- |
 | Verfügbar | Ihre öffentliche Standard Load Balancer-Ressource ist fehlerfrei und verfügbar. |
 | Nicht verfügbar | Ihre öffentliche Standard Load Balancer-Ressource ist nicht fehlerfrei. Wählen Sie **Azure Monitor** > **Metriken** aus, um eine Diagnose der Integrität auszuführen.<br>(Der Status *Nicht verfügbar* kann auch bedeuten, dass die Ressource nicht mit Ihrem öffentliche Standard Load Balancer verbunden ist.) |
-| Unbekannt | Der Ressourcenintegritätsstatus für Ihre öffentliche Standard Load Balancer-Ressource wurde noch nicht aktualisiert.<br>(Der Status *Unbekannt* kann auch bedeuten, dass die Ressource nicht mit Ihrem öffentliche Standard Load Balancer verbunden ist.)  |
+| Unknown | Der Ressourcenintegritätsstatus für Ihre öffentliche Standard Load Balancer-Ressource wurde noch nicht aktualisiert.<br>(Der Status *Unbekannt* kann auch bedeuten, dass die Ressource nicht mit Ihrem öffentliche Standard Load Balancer verbunden ist.)  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Standard Load Balancer](load-balancer-standard-overview.md)
+- Weitere Informationen finden Sie unter [Load Balancer Standard](load-balancer-standard-overview.md).
 - Weitere Informationen zu Ihren [ausgehenden Verbindungen für Load Balancer](https://aka.ms/lboutbound)
+- Informieren Sie sich über die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics/).
 
 

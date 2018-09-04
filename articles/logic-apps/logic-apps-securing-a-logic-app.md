@@ -1,35 +1,31 @@
 ---
 title: Sicherer Zugriff auf Azure Logic Apps | Microsoft-Dokumentation
-description: Legen Sie die Sicherheit fest für den Schutz des Zugriffs auf Trigger, Eingaben und Ausgaben, Aktionsparameter und Dienste, die mit Workflows in Azure Logic Apps verwendet werden.
+description: Schützen des Zugriffs auf Trigger, Eingaben und Ausgaben, Aktionsparameter und Dienste in Workflows für Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
+ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
 ms.date: 11/22/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 2052e58dab7241836409fb013778f9702004021c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299908"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127478"
 ---
-# <a name="secure-access-to-your-logic-apps"></a>Sichern des Zugriffs auf Ihre Logik-Apps
+# <a name="secure-access-in-azure-logic-apps"></a>Schützen des Zugriffs in Azure Logic Apps
 
-Es stehen viele Tools zur Verfügung, um Ihre Logik-App zu sichern.
+Sie können den Zugriff auf verschiedene Komponenten in Ihrer Logik-App schützen:
 
-* Sichern des Zugriffs zum Auslösen einer Logik-App (HTTP-Anforderungstrigger)
-* Sichern des Zugriffs zum Verwalten, Bearbeiten oder Lesen einer Logik-App
-* Sichern des Zugriffs auf Inhalte von Eingaben und Ausgaben für eine Ausführung
-* Sichern von Parametern oder Eingaben in Aktionen in einem Workflow
-* Sichern des Zugriffs auf Dienste, die Anforderungen von einem Workflow empfangen
+* Schützen Sie den Zugriff auf das Auslösen eines Logik-App-Workflows mit dem HTTP-Anforderungstrigger.
+* Schützen Sie den Zugriff auf die Verwaltung, die Bearbeitung oder das Lesen einer Logik-App.
+* Schützen Sie den Zugriff auf den Inhalt von Ein-/Ausgaben für eine Logik-App-Ausführung.
+* Schützen Sie Parameter oder Eingaben für Aktionen in einem Logik-App-Workflow.
+* Schützen Sie den Zugriff auf Dienste, die Anforderungen von einem Logik-App-Workflow erhalten.
 
 ## <a name="secure-access-to-trigger"></a>Sichern des Zugriffs für Trigger
 

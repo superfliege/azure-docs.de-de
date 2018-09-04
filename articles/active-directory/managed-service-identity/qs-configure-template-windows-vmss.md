@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 68304b3e5eea50aba28f46344abcbd7ad060c5c8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 69b88b5aabbadadea3b04f96d9a21f266c85a52f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141164"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125383"
 ---
 # <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>Konfigurieren einer verwalteten Dienstidentität für eine VM-Skalierungsgruppe über eine Vorlage
 
@@ -339,7 +339,7 @@ Wenn die verwaltete Dienstidentität in einer VM-Skalierungsgruppe nicht mehr be
    
    **Microsoft.Compute/virtualMachineScaleSets-API, Version 2018-06-01**
     
-   Um eine einzelne vom Benutzer zugewiesene Identität aus einer VM-Skalierungsgruppe zu entfernen, entfernen Sie sie aus dem `userAssignedIdentities`-Wörterbuch.
+   Um eine einzelne, vom Benutzer zugewiesene Identität aus einer VM-Skalierungsgruppe zu entfernen, entfernen Sie sie aus dem `userAssignedIdentities`-Wörterbuch.
 
    Wenn Sie eine vom System zugewiesene Identität verwenden, behalten Sie sie im Wert `type` unter dem Wert `identity` bei.
 

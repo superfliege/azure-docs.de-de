@@ -1,27 +1,23 @@
 ---
 title: Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Definitionen – Azure Logic Apps | Microsoft-Dokumentation
-description: Erstellen und Anpassen von Logik-App-Definitionen in JSON
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: Erstellen und Erweitern von JSON-Code für Logik-App-Definitionen in Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 9793fdf2bd351bd1f15bcb88ffd25d6b19485303
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1f2e136810194ad044255f9d129b5c03549221b9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297851"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128659"
 ---
-# <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Erstellen, Bearbeiten oder Anpassen von JSON-Code für Logik-App-Definitionen
+# <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Definitionen in Azure Logic Apps
 
 Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen, verwenden die zugrunde liegenden Logik-App-Definitionen einfachen und deklarativen JSON-Code (JavaScript Object Notation) sowie das [Schema der Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) zur Beschreibung und Überprüfung der Definitionen. Diese Formate erleichtern Benutzern ohne umfassende Codekenntnisse das Lesen und Verständnis von Logik-App-Definitionen. Wenn Sie die Erstellung und Bereitstellung von Logik-Apps automatisieren möchten, können Sie Logik-App-Definitionen als [Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-overview.md#template-deployment) einbinden. Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp), die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](https://docs.microsoft.com/rest/api/logic/) verwenden.
 

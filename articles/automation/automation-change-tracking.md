@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 08/27/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238878"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128125"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -94,8 +94,18 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Gruppenname für die logische Gruppierung von Dateien        |
-|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“       |
+|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „c:\temp\\\*.txt“<br>Sie können auch Umgebungsvariablen verwenden, beispielsweise „%winDir%\System32\\\*.*“.       |
+|Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Hochladen von Dateiinhalt für alle Einstellungen| Aktiviert oder deaktiviert den Upload des Dateiinhalts für nachverfolgte Änderungen. Verfügbare Optionen: **TRUE** oder **FALSE**.|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>Platzhalter, Rekursion und Umgebungseinstellungen
+
+Rekursion ermöglicht die Angabe von Platzhaltern, um die verzeichnisübergreifende Nachverfolgung zu vereinfachen, sowie die Angabe von Umgebungsvariablen, um Dateien in Umgebungen mit mehreren oder dynamischen Laufwerksnamen nachzuverfolgen. Die folgende Liste enthält allgemeine Informationen, mit denen Sie beim Konfigurieren der Rekursion vertraut sein sollten:
+
+* Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
+* Platzhalter können immer nur im letzten Segment eines Pfads verwendet werden. (Beispiel: „C:\Ordner\\**Datei**“ oder „/etc/*.conf“)
+* Wenn eine Umgebungsvariable einen ungültigen Pfad besitzt, ist die Überprüfung zwar erfolgreich, bei der Ausführung der Inventur tritt jedoch ein Fehler für den Pfad auf.
+* Vermeiden Sie die Verwendung allgemeiner Pfade wie `c:\*.*`, da in diesem Fall zu viele Ordner durchlaufen werden müssen.
 
 ## <a name="configure-file-content-tracking"></a>Konfigurieren der Nachverfolgung von Dateiinhalten
 
@@ -122,13 +132,8 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 
 Die Lösung für die Änderungsnachverfolgung unterstützt derzeit folgende Elemente nicht:
 
-* Ordner (Verzeichnisse) für die Nachverfolgung von Windows-Dateien
-* Rekursion für die Nachverfolgung von Windows-Dateien
-* Platzhalter für die Nachverfolgung von Windows-Dateien
 * Rekursion für die Nachverfolgung der Windows-Registrierung
-* Pfadvariablen
 * Netzwerkdateisysteme
-* Inhalt der Datei
 
 Weitere Einschränkungen:
 

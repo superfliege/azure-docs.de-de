@@ -1,28 +1,23 @@
 ---
-title: Serverloses Szenario – Erstellen eines Customer Insights-Dashboards mit Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Kundenfeedback, Daten aus sozialen Netzwerken usw. verwalten können, indem Sie mit Azure Logic Apps und Azure Functions ein Kundendashboard erstellen.
-keywords: ''
+title: 'Serverloses Szenario: Erstellen eines Customer Insights-Dashboards mit Azure-Diensten | Microsoft-Dokumentation'
+description: Verwalten von Kundenfeedback, Daten aus sozialen Netzwerken und Ähnlichem durch Erstellen eines Kundendashboards mit Azure Logic Apps und Azure Functions
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: jeffhollan
+ms.author: jehollan
+ms.reviewer: estfan, LADocs
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 3ee3ec3107cf8aad834e8201405c9aa833d838af
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9d6d74c4afb4d1cd62e5946b7e6f8c401e7ef2aa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299959"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124643"
 ---
-# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
+# <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
 Azure bietet serverlose Tools, mit denen Sie Apps schnell erstellen und in der Cloud hosten können, ohne sich um die Infrastruktur kümmern zu müssen. In diesem Tutorial können Sie ein Dashboard erstellen, das bei Kundenfeedback ausgelöst wird, Feedback mittels Machine Learning analysiert und Erkenntnisse in einer Quelle wie Power BI oder Azure Data Lake veröffentlicht.
 

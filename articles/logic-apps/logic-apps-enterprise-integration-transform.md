@@ -1,28 +1,24 @@
 ---
-title: 'Konvertieren von XML-Daten mit Transformationen: Azure Logic Apps | Microsoft-Dokumentation'
-description: Erstellen von Transformationen bzw. Zuordnungen zum Konvertieren von XML-Daten zwischen Formaten in Logik-Apps mit dem Enterprise Integration SDK
+title: Transformieren von XML zwischen Formaten – Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen von Transformationen oder Zuordnungen zum Konvertieren von XML zwischen Formaten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 1621843d58954aa05a572f43fdab0fb16097332e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9dd471f70407191734b4c5a3aa84d5365a7beab8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299452"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125294"
 ---
-# <a name="enterprise-integration-with-xml-transforms"></a>Unternehmensintegration mit XML-Transformationen
-## <a name="overview"></a>Übersicht
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Erstellen von Zuordnungen zum Transformieren von XML zwischen Formaten in Azure Logic Apps mit Enterprise Integration Pack
+
 Der Unternehmensintegrationsconnector „Transformieren“ wandelt Daten von einem Format in ein anderes um. Angenommen, es gibt eine eingehende Nachricht, die das aktuelle Datum im Format „JahrMonatTag“ enthält. Mithilfe einer Transformation können Sie das Datum in das Format „TagMonatJahr“ umformatieren.
 
 ## <a name="what-does-a-transform-do"></a>Aufgaben einer Transformation

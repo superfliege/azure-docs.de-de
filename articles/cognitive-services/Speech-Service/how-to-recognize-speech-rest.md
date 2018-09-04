@@ -1,6 +1,6 @@
 ---
 title: Erkennen von Sprache mit der REST-API
-description: Erfahren Sie, wie Sie Spracherkennung im Speech-Dienst verwenden.
+description: Hier erfahren Sie, wie Sie die Spracherkennungs-API des Speech-Diensts von Cognitive Services verwenden.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -9,29 +9,27 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 15db2d9b872c76d70fd531af07fb55c701e86494
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: eafec2dd262098bc4b7e485293818b79debe3d27
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331278"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126845"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>Erkennen von Sprache mit der REST-API
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-selector.md)]
 
-Die REST-API kann zum Erkennen von kurzen Äußerungen mithilfe einer HTTP POST-Anforderung verwendet werden.
+Die REST-API kann zum Erkennen kurzer Äußerungen mithilfe einer HTTP POST-Anforderung verwendet werden.
 
-Die REST-API ist die einfachste Möglichkeit zur Spracherkennung, wenn Sie eine Sprache verwenden, die vom SDK nicht unterstützt wird.
-Sie senden eine HTTP POST-Anforderung an den Dienstendpunkt und übergeben die gesamte Äußerung in den Anforderungstext.
-Sie erhalten eine Antwort mit dem erkannten Text.
+Die REST-API ist die einfachste Möglichkeit zur Spracherkennung, wenn Sie keine vom [SDK](speech-sdk.md) unterstützte Sprache verwenden. Sie senden eine HTTP POST-Anforderung an den Dienstendpunkt und übergeben die gesamte Äußerung im Anforderungstext. Sie erhalten eine Antwort mit dem erkannten Text.
 
 > [!NOTE]
-> Bei Verwendung der REST-API sind Äußerungen auf maximal 15 Sekunden beschränkt.
+> Bei Verwendung der REST-API sind Äußerungen auf maximal 15 Sekunden begrenzt.
 > Im [Speech SDK](how-to-recognize-speech-csharp.md) finden Sie Möglichkeiten zur Erkennung von längeren Äußerungen.
 
-Weitere Informationen zur REST-API für die **Spracherkennung** finden Sie unter [REST-APIs](rest-apis.md#speech-to-text). Um sie zu testen, laden Sie die [REST-API-Beispiele](https://github.com/Azure-Samples/SpeechToText-REST) von GitHub herunter.
+Weitere Informationen zur REST-API für die **Spracherkennung** finden Sie im [Artikel zu REST-APIs](rest-apis.md#speech-to-text). Um die API in Aktion zu erleben, laden Sie die [REST-API-Beispiele](https://github.com/Azure-Samples/SpeechToText-REST) von GitHub herunter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Lesen Sie die REST-API-Übersicht](rest-apis.md)
+- Sehen Sie sich die [REST-API-Übersicht](rest-apis.md) an.

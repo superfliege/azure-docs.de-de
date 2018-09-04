@@ -1,28 +1,24 @@
 ---
-title: Planen von Aufgaben und regelmäßig ausgeführten Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Es wird beschrieben,wie Sie regelmäßig ausgeführte Aufgaben, Aktionen, Workflows, Prozesse und Workloads mit Logik-Apps erstellen und planen.
+title: Erstellen von regelmäßig ausgeführten Aufgaben und Workflows mit Azure Logic Apps | Microsoft-Dokumentation
+description: Automatisieren von zeitplangesteuerten Aufgaben und Workflows mit dem Wiederholungsconnector in Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 51dd4f22-7dc5-41af-a0a9-e7148378cd50
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/25/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 3bd396355681cdde486cfbea7004c9c1aece09da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 905157ab530ae042318de520f9d6fe24cb9d59ce
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296786"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127053"
 ---
-# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Erstellen und Planen von regelmäßig laufenden Tasks mit Azure Logic Apps
+# <a name="create-and-run-recurring-tasks-and-workflows-with-azure-logic-apps"></a>Erstellen und Ausführen wiederkehrender Aufgaben und Workflows mit Azure Logic Apps
 
 Zum Planen von regelmäßig ausgeführten Aufgaben, Aktionen, Workloads oder Prozessen können Sie einen Logik-App-Workflow erstellen, der mit dem [Trigger](../logic-apps/logic-apps-overview.md#logic-app-concepts) **Zeitplan: Wiederholung** gestartet wird. Mit diesem Trigger können Sie ein Datum und eine Uhrzeit zum Starten der Wiederholung und einen Wiederholungszeitplan für die Durchführung von Aufgaben festlegen. Hier sind einige Beispiele angegeben:
 
@@ -99,8 +95,8 @@ Sie können diese Eigenschaften für den Wiederholungstrigger konfigurieren.
 
 | NAME | Erforderlich | Eigenschaftenname | Typ | BESCHREIBUNG | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **Frequency** | Ja | frequency | Zeichenfolge | Die Zeiteinheit für die Wiederholung: **Second** (Sekunde), **Minute** (Minute), **Hour** (Stunde), **Day** (Tag), **Week** (Woche) oder **Month** (Monat) | 
-| **Intervall** | Ja | interval | Ganze Zahl  | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Das Standardintervall beträgt 1. Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| **Frequency** | JA | frequency | Zeichenfolge | Die Zeiteinheit für die Wiederholung: **Second** (Sekunde), **Minute** (Minute), **Hour** (Stunde), **Day** (Tag), **Week** (Woche) oder **Month** (Monat) | 
+| **Intervall** | JA | interval | Ganze Zahl  | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Das Standardintervall beträgt 1. Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 | **Zeitzone** | Nein  | timeZone | Zeichenfolge | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. | 
 | **Startzeit** | Nein  | startTime | Zeichenfolge | Geben Sie eine Startzeit im folgenden Format ein: <p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (z.B. „Pacific Time“) auswählen. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, aber ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitplänen ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](#start-time) | 
 | **An diesen Tagen** | Nein  | weekDays | Zeichenfolge oder Zeichenfolgenarray | Bei Auswahl von „Week“ (Woche) können Sie einen oder mehrere Tage angeben, an denen der Workflow ausgeführt werden soll: **Monday** (Montag), **Tuesday** (Dienstag), **Wednesday** (Mittwoch), **Thursday** (Donnerstag), **Friday** (Freitag), **Saturday** (Samstag) und **Sunday** (Sonntag) | 

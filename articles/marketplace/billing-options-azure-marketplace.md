@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d0dbf603c600639679e121723556a7f3ceb17e37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 67806563dcd67876d4d922c7f2c76379f7ad7222
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158980"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125512"
 ---
 # <a name="billing-options-in-the-azure-marketplace"></a>Abrechnungsoptionen im Azure Marketplace
 
@@ -70,7 +70,7 @@ Ein wesentlicher Vorteil der Veröffentlichungsoption „Transaktion“ im Marke
 In diesem Szenario wickelt Microsoft Abrechnung und Zahlungseingänge in Ihrem Auftrag ab. Bei der Abrechnung durch Microsoft entfällt für Sie die Notwendigkeit, eine eigene Zahlungsvereinbarung mit Ihren Kunden zu treffen. Durch Einzelabrechnungen können Sie Zeit und Ressourcen sparen. Außerdem können Sie sich so vielleicht eher auf das Erzielen von Verkäufen statt auf das Abkassieren konzentrieren. 
 
 ## <a name="enterprise-agreement"></a>Enterprise Agreement  
-Wenn Sie ein Microsoft Enterprise Agreement-Kunde sind, können Sie Ihr Enterprise Agreement verwenden, um Microsoft-Produkte zu bezahlen. Ihnen können Produkte in Rechnung gestellt werden, Ihre Azure-Nutzung inbegriffen. Die Verwendung des Enterprise Agreements ist für Organisationen gedacht, die Software und Clouddienste für mindestens drei Jahre lizenzieren möchten. Sie können Zahlungen verteilen statt eine große Zahlung zu leisten. Vorauszahlung. Wenn Sie eine Veröffentlichungsoption mit nutzungsbasierter Bezahlung verwenden, folgt die Abrechnung für Ihre Softwarelizenzkosten dem vierteljährlichen Enterprise Agreement-Abrechnungszyklus für Überschreitungen.  
+Wenn Sie ein Microsoft Enterprise Agreement-Kunde sind, können Sie Ihr Enterprise Agreement verwenden, um Microsoft-Produkte zu bezahlen. Ihnen können Produkte in Rechnung gestellt werden, Ihre Azure-Nutzung inbegriffen. Die Verwendung des Enterprise Agreements ist für Organisationen gedacht, die Software und Clouddienste für mindestens drei Jahre lizenzieren möchten. Sie können Zahlungen aufteilen, anstatt eine einzelne Vorauszahlung zu leisten. Wenn Sie eine Veröffentlichungsoption mit nutzungsbasierter Bezahlung verwenden, folgt die Abrechnung für Ihre Softwarelizenzkosten dem vierteljährlichen Enterprise Agreement-Abrechnungszyklus für Überschreitungen.  
 
 ### <a name="monetary-commitment"></a>Finanzielle Verpflichtung
 Wenn Sie ein Enterprise Agreement-Kunde sind, können Sie Azure Ihrer Vereinbarung hinzufügen. Dazu vereinbaren Sie im Rahmen der EA einen verbindlichen Betrag für Azure. Dieser verbindliche Betrag wird im Laufe des Jahres verbraucht. Der Betrag deckt jede Kombination der Nutzung von Azure-Diensten ab.

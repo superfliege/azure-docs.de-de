@@ -1,28 +1,23 @@
 ---
-title: Erstellen von Partnern für B2B-Nachrichten (Business-to-Business) – Azure Logic Apps | Microsoft Docs
-description: Erfahren Sie, wie Sie Ihrem Integrationskonto mit dem Enterprise Integration Pack und Logic Apps Partner hinzufügen.
+title: Hinzufügen von Handelspartnern für B2B-Integrationen – Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen von Handelspartnern für Ihr Integrationskonto in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: b179325c-a511-4c1b-9796-f7484b4f6873
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4abfdaa8145f14bc6496e57ebce0da10cdd2c365
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 20ca5e06cd1cd0d0abfe6d31f622cd6b61b4178f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299738"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125260"
 ---
-# <a name="add-or-update-partners-in-business-to-business-agreements-in-your-workflow"></a>Hinzufügen oder Aktualisieren von Partnern in B2B-Vereinbarungen in Ihrem Workflow
+# <a name="add-trading-partners-for-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Hinzufügen von Handelspartnern für Integrationskonten in Azure Logic Apps mit Enterprise Integration Pack
 
 Partner sind Entitäten, die an B2B-Transaktionen (Business-To-Business) teilnehmen und gegenseitig Nachrichten austauschen. Bevor Sie Partner erstellen können, die Sie und eine andere Organisation in diesen Transaktionen darstellen, müssen Sie Informationen abstimmen, die zum Identifizieren und Überprüfen der gegenseitig gesendeten Nachrichten dienen. Sobald Sie diese Details abgestimmt haben und bereit sind, Ihre Geschäftsbeziehung zu starten, können Sie in Ihrem Integrationskonto Partner erstellen, die beiden Parteien darstellen.
 

@@ -2,7 +2,7 @@
 title: Erkennen von Sprache mit dem Speech SDK für C++
 titleSuffix: Microsoft Cognitive Services
 description: >
-  Zeigt verschiedene Möglichkeiten der Spracherkennung (über eine Datei, ein Mikrofon, mit einem benutzerdefinierten Modell, kontinuierlich oder einmalig) mit dem Speech SDK für C++.
+  Hier erfahren Sie, wie Sie Sprache (aus einer Datei, von einem Mikrofon, mit einem benutzerdefinierten Modell, kontinuierlich oder einmalig) mit dem Speech SDK für C++ erkennen.
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
@@ -10,37 +10,37 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 27108285cff5081fdf31cfdc7e1d24ae1dda66d3
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: f4b2b1dc84523696d45d143f2c729028026b667b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331291"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128353"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>Erkennen von Sprache mit dem Speech SDK für C++
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-selector.md)]
 
-[!include[Intro](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-intro.md)]
+[!INCLUDE [Introduction](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-intro.md)]
 
-[!include[Intro - top-level declarations](../../../includes/cognitive-services-speech-service-how-to-toplevel-declarations.md)]
+[!INCLUDE [Introduction for top-level declarations](../../../includes/cognitive-services-speech-service-how-to-toplevel-declarations.md)]
 
 [!code-cpp[Top-level declarations](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#toplevel)]
 
-[!include[Intro - using microphone](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-microphone.md)]
+[!INCLUDE [Introduction to using a microphone](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-microphone.md)]
 
-[!code-cpp[Speech Recognition Using Microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionWithMicrophone)]
+[!code-cpp[Speech recognition by using a microphone](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionWithMicrophone)]
 
-[!include[Intro - customized](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-customized.md)]
+[!INCLUDE [Introduction to using customized recognition](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-customized.md)]
 
-[!code-cpp[Speech Recognition Using a Customized Model](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionUsingCustomizedModel)]
+[!code-cpp[Speech recognition by using a customized model](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechRecognitionUsingCustomizedModel)]
 
-[!include[Intro - continuous file](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-continuous.md)]
+[!INCLUDE [Introduction to using a continuous file](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-continuous.md)]
 
-[!code-cpp[Continuous Speech Recognition](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechContinuousRecognitionWithFile)]
+[!code-cpp[Continuous speech recognition](~/samples-cognitive-services-speech-sdk/samples/cpp/windows/console/samples/speech_recognition_samples.cpp#SpeechContinuousRecognitionWithFile)]
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
-Den Code in diesem Artikel finden Sie im Ordner `samples/cpp/windows/console`.
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+Den Code aus diesem Artikel finden Sie im Ordner „samples/cpp/windows/console“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

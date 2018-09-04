@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 9b56f540af2b8d35258a4db79502c9edf83cdb45
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142572"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128465"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
 
@@ -75,6 +75,8 @@ Die folgenden Administratorrollen sind verfügbar:
 * **[Information Protection-Administrator:](#information-protection-administrator)** Benutzer mit dieser Rolle verfügen über alle Berechtigungen für den Azure Information Protection-Dienst. Sie können Bezeichnungen für die Azure Information Protection-Richtlinie konfigurieren, Schutzvorlagen verwalten und den Schutz aktivieren. Diese Rolle gewährt keine Berechtigungen für Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health oder Office 365 Security & Compliance Center.
 
 * **[Intune-Dienstadministrator:](#intune-service-administrator)** Benutzer mit dieser Rolle haben globale Berechtigungen in Microsoft Intune Online, wenn der Dienst vorhanden ist. Darüber hinaus beinhaltet diese Rolle die Möglichkeit, Benutzer und Geräte zum Zuordnen von Richtlinien zu verwalten sowie Gruppen zu erstellen und zu verwalten. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung mit Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control).
+
+* **[Lizenzadministrator:](#license-administrator)** Benutzer mit dieser Rolle können Lizenzzuweisungen für Benutzer und Gruppen (unter Verwendung der gruppenbasierten Lizenzierung) hinzufügen, entfernen und aktualisieren sowie den Verwendungsstandort für Benutzer verwalten. Mit dieser Rolle ist es nicht möglich, Abonnements zu erwerben oder zu verwalten, Gruppen zu erstellen oder zu verwalten oder Benutzer zu erstellen oder zu verwalten (mit Ausnahme des Verwendungsstandorts).
 
 * **[Nachrichtencenter-Leser:](#message-center-reader)** Benutzer mit dieser Rolle können Benachrichtigungen und empfohlene Integritätsupdates für ihre Organisation und die konfigurierten Dienste wie Exchange, Intune und Microsoft Teams im [Office 365-Nachrichtencenter](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) überwachen. Nachrichtencenter-Leser erhalten eine wöchentliche E-Mail-Übersicht der Beiträge und Updates und können Beiträge in Office 365 teilen. In Azure AD haben Benutzer mit dieser Rolle nur schreibgeschützten Zugriff auf Azure AD-Dienste wie Benutzer und Gruppen. 
 
@@ -610,6 +612,23 @@ Verwalten sämtlicher Aspekte des Produkts Intune.
 | microsoft.aad.directory/User/Update/Manager | Aktualisieren der Users.Manager-Eigenschaft in Azure Active Directory. |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Erstellen und Verwalten von Office 365-Supporttickets. |
 | microsoft.intune/AllEntities/AllActions | Verwalten sämtlicher Aspekte von Intune. |
+
+
+### <a name="license-administrator"></a>Lizenzadministrator
+Kann Produktlizenzen für Benutzer und Gruppen verwalten.
+ 
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+ 
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.directory/users/assignLicense | Verwalten der Lizenzen für Benutzer in Azure Active Directory |
+| microsoft.aad.directory/users/usageLocation/update | Aktualisieren der users.usageLocation-Eigenschaft in Azure Active Directory |
+| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 
 ### <a name="lync-service-administrator"></a>Lync-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Skype for Business.

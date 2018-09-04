@@ -1,28 +1,23 @@
 ---
 title: Verwalten von Artefaktmetadaten in Integrationskonten – Azure Logic Apps| Microsoft-Dokumentation
-description: Hinzufügen oder Abrufen von Artefaktmetadaten aus Integrationskonten für Azure Logic Apps
-author: padmavc
-manager: jeconnoc
-editor: ''
+description: Hinzufügen oder Abrufen von Artefaktmetadaten aus Integrationskonten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 02/23/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 3e7ef6aef9bc1062ae0f76adfbaf086961fcaa94
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 537014c2780fe94cfb35806759f8bcbd974c4c95
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298364"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128802"
 ---
-# <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>Verwalten von Artefaktmetadaten in Integrationskonten für Logik-Apps
+# <a name="manage-artifact-metadata-from-integration-accounts-in-azure-logic-apps-with-enterprise-integration-pack"></a>Verwalten von Artefaktmetadaten aus Integrationskonten in Azure Logic Apps mit Enterprise Integration Pack
 
 Sie können benutzerdefinierte Metadaten für Artefakte in Integrationskonten definieren und diese Metadaten während der Laufzeit der Logik-App abrufen. Beispielsweise können Sie Metadaten für Artefakte wie Partner, Vereinbarungen, Schemas und Zuordnungen angeben – alle speichern Metadaten mit Schlüssel-Wert-Paaren. 
 

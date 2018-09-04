@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 67cff664f3723b2194ecd1519729cca17069d07f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcfa6ead0eac4a8a631c0388466534406c7a594b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040215"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887337"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Anwenden der Datenträgerverschlüsselung in Azure Security Center
 Azure Security Center empfiehlt die Anwendung der Datenträgerverschlüsselung, wenn Sie über Windows- oder Linux-VM-Datenträger verfügen, die nicht per Azure Disk Encryption verschlüsselt sind. Mit der Datenträgerverschlüsselung können Sie Ihre Windows- und Linux-IaaS-VM-Datenträger verschlüsseln.  Die Verschlüsselung wird sowohl für die Betriebssystem- als auch für die Datenvolumes auf Ihrer VM empfohlen.
@@ -44,7 +44,7 @@ Zum Verschlüsseln virtueller Azure-Computer, für die von Security Center festg
 * Rufen Sie das für Azure Disk Encryption erforderliche PowerShell-Skript ab, und führen Sie es aus.
 * Verschlüsseln Sie Ihre virtuellen Computer.
 
-[Verschlüsseln eines virtuellen Azure-Computers](security-center-disk-encryption.md) führt Sie durch diese Schritte.  In diesem Thema wird angenommen, dass Sie Windows 10 als Clientcomputer verwenden, von dem aus Sie die Datenträgerverschlüsselung konfigurieren.
+Eine entsprechende Anleitung finden Sie unter [Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../security/quick-encrypt-vm-powershell.md). In diesem Thema wird davon ausgegangen, dass Sie einen Windows-Clientcomputer verwenden, von dem aus Sie die Datenträgerverschlüsselung konfigurieren.
 
 Es gibt verschiedene Methoden, die für virtuelle Azure-Computer verwendet werden können. Wenn Sie bereits über Kenntnisse in Azure PowerShell oder Azure-CLI verfügen, ziehen Sie möglicherweise andere Methoden vor. Informationen zu diesen anderen Methoden erhalten Sie unter [Azure-Datenträgerverschlüsselung](../security/azure-security-disk-encryption.md).
 
@@ -52,15 +52,14 @@ Es gibt verschiedene Methoden, die für virtuelle Azure-Computer verwendet werde
 In diesem Dokument wurde gezeigt, wie Sie die Security Center-Empfehlung „Datenträgerverschlüsselung anwenden“ implementieren. Weitere Informationen zur Datenträgerverschlüsselung finden Sie unter folgenden Themen:
 
 * [Encryption and key management with Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (Verschlüsselung und Schlüsselverwaltung mit dem Azure-Schlüsseltresor, Video, 36 Min. 39 Sek.): Erfahren Sie, wie Sie die Verwaltung der Datenträgerverschlüsselung für IaaS-VMs und Azure Key Vault nutzen, um Ihre Daten besser zu schützen.
-* [Verschlüsseln eines virtuellen Azure-Computers](security-center-disk-encryption.md) (Dokument): Erfahren Sie, wie virtuelle Azure-Computer verschlüsselt werden.
-* [Azure-Datenträgerverschlüsselung](../security/azure-security-disk-encryption.md) (Dokument): Enthält Informationen zum Aktivieren der Datenträgerverschlüsselung für Windows- und Linux-VMs.
+* [Azure-Datenträgerverschlüsselung](../security/azure-security-disk-encryption-overview.md) (Dokument): Enthält Informationen zum Aktivieren der Datenträgerverschlüsselung für Windows- und Linux-VMs.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md) : Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Hier erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
-* [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md) : Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
+* [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 

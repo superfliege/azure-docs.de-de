@@ -1,27 +1,23 @@
 ---
 title: Decodieren von AS2-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
-description: Verwenden des im Enterprise Integration Pack enthaltenen AS2-Decoders für Azure Logic Apps
+description: Decodieren von AS-Nachrichten mit Azure Logic Apps und Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 08/08/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: a1b2d68a4a9433dc5c68d65552bf6bd509463958
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 06ffa6bddc1340ad548f9baf30eba65ba503bf73
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42144784"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128280"
 ---
-# <a name="decode-as2-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von AS2-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack 
+# <a name="decode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>Decodieren von AS2-Nachrichten mit Azure Logic Apps und Enterprise Integration Pack 
 
 Verwenden Sie den Connector „AS2-Nachricht decodieren“, um eine sichere und zuverlässige Nachrichtenübertragung zu gewährleisten. Dieser Connector ermöglicht die digitale Signierung, Entschlüsselung und Bestätigungen durch Benachrichtigungen über den Nachrichtenstatus (Message Disposition Notifications, MDNs).
 

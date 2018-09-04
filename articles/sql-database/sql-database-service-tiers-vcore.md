@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443581"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124996"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen
 
@@ -35,8 +35,8 @@ Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle 
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
 |Compute|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|
 |Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern |
-|Speicher|[Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md),<br/>Singleton-Datenbank: 5 GB bis 4 TB<br/>Verwaltete Instanz: 32 GB bis 8 TB |Lokaler SSD-Speicher,<br/>Einzeldatenbank: 5 GB bis 4 TB<br/>Verwaltete Instanz: 32 GB bis 4 TB |
-|E/A-Durchsatz (ungefähr)|Singleton-Datenbank: 500 IOPS pro virtuellem Kern mit maximal 7.000 IOPS</br>Verwaltete Instanz: abhängig von der [Dateigröße](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
+|Speicher|[Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md),<br/>Einzeldatenbank: 5 GB bis 4 TB<br/>Verwaltete Instanz: 32 GB bis 8 TB |Lokaler SSD-Speicher,<br/>Einzeldatenbank: 5 GB bis 1 TB<br/>Verwaltete Instanz: 32 GB bis 4 TB |
+|E/A-Durchsatz (ungefähr)|Einzeldatenbank: 500 IOPS pro virtuellem Kern (maximal 7.000 IOPS)</br>Verwaltete Instanz: abhängig von der [Dateigröße](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>Zonenredundante HA|
 |Backups|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|
 |In-Memory|N/V|Unterstützt|
@@ -53,10 +53,10 @@ Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häuf
 
 Beachten Sie Folgendes:
 - Der zugeordnete Speicher wird für Datendateien (MDF) und Protokolldateien (LDF) verwendet.
-- Jede Singelton-Datenbank-Leistungsstufe unterstützt eine maximale Datenbankgröße, die standardmäßig bei 32 GB liegt.
-- Wenn Sie die erforderliche Singelton-Datenbankgröße (MDF-Größe) konfigurieren, werden 30% des zusätzlichen Speichers automatisch hinzugefügt, um LDF zu unterstützen.
+- Jede Einzeldatenbank-Leistungsstufe unterstützt eine maximale Datenbankgröße, die standardmäßig bei 32 GB liegt.
+- Wenn Sie die erforderliche Einzeldatenbankgröße (MDF-Größe) konfigurieren, werden automatisch 30 Prozent zusätzlicher Speicher hinzugefügt, um LDF zu unterstützen.
 - Die Speichergröße in einer verwalteten Azure SQL-Datenbank-Instanz muss als Vielfaches von 32 GB angegeben werden.
-- Sie können eine beliebige Singelton-Datenbankgröße zwischen 10 GB und dem unterstützten Maximum auswählen.
+- Sie können eine beliebige Singleton-Datenbankgröße zwischen 10 GB und dem unterstützten Maximum auswählen.
  - Für Speicher vom Typ „Standard“ erhöhen bzw. verringern Sie die Größe in Schritten von 10 GB.
  - Für Speicher vom Typ „Premium“ erhöhen bzw. verringern Sie die Größe in Schritten von 250 GB.
 - Im Diensttarif „Universell“ wird für `tempdb` eine angefügte SSD verwendet, und diese Speicherkosten sind im V-Kern-Preis enthalten.

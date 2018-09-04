@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8886c08e88c1dd46d2b325b9ba8e9e0b8ae104f9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007382"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886309"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurieren der rollenbasierten Zugriffssteuerung im Solution Accelerator der Remoteüberwachung
 
@@ -51,7 +51,7 @@ Im Azure-Portal können Sie Benutzer der Remoteüberwachungslösung hinzufügen 
 
 1. Überprüfen Sie, ob der [Benutzer sich in dem Verzeichnis befindet](../active-directory/fundamentals/add-users-azure-active-directory.md), das Sie verwenden. Sie haben das zu verwendende Verzeichnis ausgewählt, als Sie sich auf der Seite [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) angemeldet haben. Der Verzeichnisname wird oben rechts auf der [Seite](https://www.azureiotsolutions.com/Accelerators) angezeigt.
 
-1. Suchen Sie nach der **Unternehmensanwendung** für Ihre Lösung im Azure-Portal. Der Anwendungsname ist der Name Ihrer Remoteüberwachungslösung. Im folgenden Screenshot sind der Anzeigename der Lösung und der Anwendung **contoso-rm4**.
+1. Suchen Sie nach der **Unternehmensanwendung** für Ihre Lösung im Azure-Portal. Filtern Sie dort die Liste, indem Sie **Anwendungstyp** auf **Alle Anwendungen** festlegen. Suchen Sie anhand des Anwendungsnamens nach Ihrer Anwendung. Der Anwendungsname ist der Name Ihrer Remoteüberwachungslösung. Im folgenden Screenshot sind der Anzeigename der Lösung und der Anwendung **contoso-rm4**.
 
     ![Unternehmensanwendung](media/iot-accelerators-remote-monitoring-rbac/appregistration.png)
 

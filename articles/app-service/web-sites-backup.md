@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: fd1e10239d63417a21eb6f76017539ec0d447258
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 44b4da7c293da0643fb88cc2de21433c6ea72c5c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224801"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886403"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](app-service-web-overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
@@ -55,6 +55,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
 * Sicherungen können bis zu 10GB an App- und Datenbankinhalten umfassen. Wenn die Sicherungsgröße diesen Grenzwert überschreitet, erhalten Sie eine Fehlermeldung.
 * Sicherungen von Azure Database for MySQL mit aktiviertem SSL werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
 * Sicherungen von Azure Database for PostgreSQL mit aktiviertem SSL werden nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
+* In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
 * Die Verwendung eines Speicherkontos mit aktivierter Firewall als Ziel für Ihre Sicherungen wird nicht unterstützt. Wenn eine Sicherung konfiguriert ist,werden fehlerhafte Sicherungen angezeigt.
 
 
@@ -85,7 +86,9 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
     ![Speicherkonto auswählen](./media/web-sites-backup/03ConfigureDatabase1.png)
    
    > [!NOTE]
-   > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf der Seite **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein.
+   > Damit eine Datenbank in dieser Liste angezeigt wird, muss die zugehörige Verbindungszeichenfolge auf der Seite **Anwendungseinstellungen** für Ihre App im Abschnitt **Verbindungszeichenfolgen** angegeben sein. 
+   >
+   > In-App-MySQL-Datenbanken werden automatisch ohne Konfiguration gesichert. Wenn Sie manuell Einstellungen für In-App-MySQL-Datenbanken festlegen (beispielsweise durch Hinzufügen von Verbindungszeichenfolgen), funktionieren die Sicherungen unter Umständen nicht ordnungsgemäß.
    > 
    > 
 6. Klicken Sie auf der Seite **Sicherungskonfiguration** auf **Speichern**.    

@@ -4,14 +4,14 @@ description: Bietet eine Übersicht über bekannte Probleme im Azure Migrate-Die
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 08/25/2018
 ms.author: raynew
-ms.openlocfilehash: 896e918f6031f3bc6b925a2ecdfa2a5c82f00e0b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ca34f27e1d22c6235ec0d6b965d49ec5266f17f6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228253"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126360"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -50,6 +50,10 @@ Wenn Sie URL-basierte Firewallproxys zur Steuerung ausgehender Verbindungen verw
 --- | ---
 *.portal.azure.com | Erforderlich, um die Konnektivität mit dem Azure-Dienst zu überprüfen und Probleme mit der Zeitsynchronisation zu überprüfen.
 *.oneget.org | Erforderlich, um das auf PowerShell basierende vCenter PowerCLI-Modul herunterzuladen.
+
+**Der Collector kann aufgrund von Fehlern bei der Zertifikatüberprüfung keine Internetverbindung herstellen.**
+
+Dieses Problem kann auftreten, wenn Sie einen abfangenden Proxy verwenden, um eine Internetverbindung herzustellen, und auf dem virtuellen Collectorcomputer das Proxyzertifikat nicht importiert haben. Eine Anleitung zum Importieren des Proxyzertifikats finden Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector#internet-connectivity).
 
 **Der Collector kann mit der Projekt-ID und dem Schlüssel, die ich aus dem Portal kopiert habe, keine Verbindung mit dem Projekt herstellen.**
 

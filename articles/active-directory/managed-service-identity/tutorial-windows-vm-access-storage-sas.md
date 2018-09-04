@@ -14,24 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 983cecdcdb95dca398f728dbdbe5feac69075d6a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 7f6049e874f329c1e3a4f72417dd9a7eebc42628
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248369"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887062"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-storage-via-a-sas-credential"></a>Tutorial: Verwenden einer Windows-VM-MSI für den Zugriff auf Azure Storage mithilfe von SAS-Anmeldeinformationen
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie eine verwaltete Dienstidentität für einen virtuellen Windows-Computer aktivieren und anschließend mit dieser verwalteten Dienstidentität SAS-Anmeldeinformationen für Azure Storage erhalten. Im Speziellen geht es um [Anmeldeinformationen für eine Dienst-SAS](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
+In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität für einen virtuellen Windows-Computer verwenden, um SAS-Anmeldeinformationen (Shared Access Signature) für Storage abzurufen. Im Speziellen geht es um [Anmeldeinformationen für eine Dienst-SAS](/azure/storage/common/storage-dotnet-shared-access-signature-part-1?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-shared-access-signatures). 
 
 Eine Dienst-SAS erlaubt für einen begrenzten Zeitraum den eingeschränkten Zugriff auf Objekte in einem Speicherkonto für einen bestimmten Dienst (in unserem Fall der Blob-Dienst), ohne dass dabei der Zugriffsschlüssel für das Konto offengelegt wird. Sie können SAS-Anmeldeinformationen wie gewohnt bei Speichervorgängen verwenden, z.B. bei der Verwendung des Storage SDK. Für dieses Tutorial veranschaulichen wir das Hoch- und Herunterladen eines Blobs mithilfe von Azure Storage PowerShell. Sie lernen Folgendes:
 
-
 > [!div class="checklist"]
-> * Aktivieren einer verwalteten Dienstidentität auf einem virtuellen Windows-Computer 
+> * Speicherkonto erstellen
 > * Gewähren des Zugriffs auf eine Speicherkonto-SAS für Ihren virtuellen Computer in Ressourcen-Manager 
 > * Abrufen eines Zugriffstokens mithilfe der Identität Ihres virtuellen Computers und Verwenden dieses Zugriffstokens zum Abrufen der SAS von Ressourcen-Manager 
 
@@ -41,33 +40,12 @@ Eine Dienst-SAS erlaubt für einen begrenzten Zeitraum den eingeschränkten Zugr
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+- [Anmelden beim Azure-Portal](https://portal.azure.com)
 
-Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
+- [Erstellen eines virtuellen Windows-Computers](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Erstellen eines virtuellen Windows-Computers in einer neuen Ressourcengruppe
+- [Aktivieren einer vom System zugewiesenen Identität auf dem virtuellen Computer](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
-In diesem Tutorial wird ein neuer virtueller Windows-Computer erstellt. Sie können die verwaltete Dienstidentität auch auf einer vorhandenen VM aktivieren.
-
-1.  Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **+/Neuen Dienst erstellen**.
-2.  Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
-3.  Geben Sie die Informationen zum virtuellen Computer ein. Der **Benutzername** und das **Kennwort**, die hier erstellt werden, sind die Anmeldeinformationen, die Sie für die Anmeldung beim virtuellen Computer verwenden.
-4.  Wählen Sie in der Dropdownliste das richtige **Abonnement** für den virtuellen Computer aus.
-5.  Um eine neue **Ressourcengruppe** auszuwählen, in der der virtuelle Computer erstellt werden soll, wählen Sie **Neu erstellen** aus. Klicken Sie zum Abschluss auf **OK**.
-6.  Wählen Sie eine Größe für den virtuellen Computer. Wählen Sie die Option **Alle anzeigen**, oder ändern Sie den Filter **Supported disk type** (Unterstützter Datenträgertyp), um weitere Größen anzuzeigen. Behalten Sie auf dem Blatt „Einstellungen“ die Standardwerte bei, und klicken Sie auf **OK**.
-
-    ![Alternativer Bildtext](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Aktivieren der verwalteten Dienstidentität auf Ihrer VM
-
-Die verwaltete Dienstidentität einer VM ermöglicht Ihnen, Zugriffstoken aus Azure AD abzurufen, ohne dass Sie Anmeldeinformationen in Ihren Code einfügen müssen. Durch das Aktivieren der verwalteten Dienstidentität werden zwei Vorgänge im Hintergrund ausgelöst: Die VM wird bei Azure Active Directory registriert, um die zugehörige verwaltete Identität zu erstellen, und die Identität wird auf der VM konfiguriert.
-
-1. Navigieren Sie zu der Ressourcengruppe des neuen virtuellen Computers, und wählen Sie den virtuellen Computer aus, den Sie im vorherigen Schritt erstellt haben.
-2. Klicken Sie in den „Einstellungen“ des virtuellen Computers auf der linken Seite auf **Konfiguration**.
-3. Wählen Sie zum Registrieren und Aktivieren der verwalteten Dienstidentität die Option **Ja** und zum Deaktivieren „Nein“ aus.
-4. Achten Sie darauf, zum Speichern der Konfiguration auf **Speichern** zu klicken.
-
-    ![Alternativer Bildtext](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen 
 

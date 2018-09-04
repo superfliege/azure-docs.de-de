@@ -1,27 +1,23 @@
 ---
 title: AS2-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
-description: Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration mit Azure Logic Apps
+description: Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 8984b76c68ebd562ce9e5af9bded859b38d498da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298238"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124661"
 ---
-# <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von AS2-Nachrichten für die Unternehmensintegration mit Logik-Apps
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Austauschen von AS2-Nachrichten für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 
 Bevor Sie AS2-Nachrichten für Azure Logic Apps austauschen können, müssen Sie eine AS2-Vereinbarung erstellen und in Ihrem Integrationskonto speichern. Hier erfahren Sie, wie Sie eine AS2-Vereinbarung erstellen.
 

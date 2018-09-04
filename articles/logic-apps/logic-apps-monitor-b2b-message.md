@@ -1,32 +1,27 @@
 ---
-title: 'Überwachen von B2B-Transaktionen und Einrichten der Protokollierung: Azure Logic Apps | Microsoft-Dokumentation'
-description: Überwachen Sie AS2-, X12 und EDIFACT-Nachrichten, und starten Sie die Diagnoseprotokollierung für Ihr Integrationskonto.
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: Überwachen von B2B-Nachrichten und Einrichten der Protokollierung – Azure Logic Apps | Microsoft-Dokumentation
+description: Überwachen Sie AS2-, X12- und EDIFACT-Nachrichten. Richten Sie die Diagnoseprotokollierung für Ihr Integrationskonto in Azure Logic Apps ein.
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 399c7b91949a854f3a152e9a3788d9163c565934
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: decc0271ae0e7c359f72648d7c4d0076892285da
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299316"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125174"
 ---
-# <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>Überwachen und Einrichten der Diagnoseprotokollierung für die B2B-Kommunikation in Integrationskonten
+# <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>Überwachen von B2B-Nachrichten und Einrichten der Protokollierung für Integrationskonten in Azure Logic Apps
 
 Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei laufenden Geschäftsprozessen oder -anwendungen eingerichtet haben, können diese Entitäten untereinander Nachrichten austauschen. Um zu prüfen, ob die Kommunikation erwartungsgemäß funktioniert, können Sie über den Dienst [Azure Log Analytics](../log-analytics/log-analytics-overview.md) die Überwachung für AS2-, X12- und EDIFACT-Nachrichten sowie die Diagnoseprotokollierung für Ihr Integrationskonto einrichten. Dieser Dienst überwacht sowohl Ihre Cloudumgebung als auch Ihre lokale Umgebung und unterstützt Sie nicht nur dabei, deren Verfügbarkeit und Leistung zu gewährleisten, sondern erfasst auch Laufzeitdetails und Ereignisse für ein ausführlicheres Debugging. Darüber hinaus können Sie diese [Diagnosedaten mit anderen Diensten verwenden](#extend-diagnostic-data) (beispielsweise mit Azure Storage und Azure Event Hubs).
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informationen zum Einrichten der Protokollierung für diese Logik-App finden Sie [hier](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 

@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie eine große Anzahl lokaler Computer mit 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/25/2018
 ms.author: raynew
-ms.openlocfilehash: 06905a2f16a23e5a7c4612f4b567aaf86322924d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 553e0d6569a3a35802703ef58e1460878dcd930b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145119"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127513"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -22,7 +22,7 @@ Bei Azure Migrate gilt eine Beschränkung von 1500 Computern pro Projekt. In die
 - **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen über die vCenter Server-Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen.
 - **vCenter-Konto**: Sie benötigen ein schreibgeschütztes Konto für den Zugriff auf vCenter Server. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
 - **Berechtigungen:** In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
-- **Statistikeinstellungen:** Die Statistikeinstellungen für vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden in diesem Fall auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
+- **Statistikeinstellungen:** Die Statistikeinstellungen für vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Die Statistikebene muss für das Tages-, Wochen- und Monatssammlungsintervall jeweils auf 3 festgelegt werden. Bei einer niedrigeren Ebene für eines dieser Sammlungsintervalle wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen werden dann auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher sowie basierend auf den Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt.
 
 
 ### <a name="set-up-permissions"></a>Einrichten von Berechtigungen

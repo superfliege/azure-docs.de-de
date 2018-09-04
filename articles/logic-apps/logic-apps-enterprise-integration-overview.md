@@ -1,27 +1,23 @@
 ---
-title: 'Unternehmensintegration für B2B: Azure Logic Apps | Microsoft-Dokumentation'
-description: Informationen zum Erstellen von B2B-Workflows und Unterstützen von Unternehmensintegrationsszenarien für Logik-Apps mit dem Enterprise Integration Pack
+title: Übersicht über die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen automatisierter B2B-Workflows für Unternehmensintegrationslösungen mit Azure Logic Apps und Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b2e2c81914e8c0440b358d59c7f0248db46b6c50
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42146466"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124291"
 ---
-# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Übersicht: B2B-Szenarien und Kommunikation mit dem Enterprise-Integrationspaket
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Übersicht: B2B Unternehmensintegrationsszenarien in Azure Logic Apps mit Enterprise Integration Pack
 
 Für Business-to-Business-Workflows (B2B) und eine nahtlose Kommunikation mit Azure Logic Apps können Sie Unternehmensszenarien mithilfe der Microsoft-Cloudlösung mit dem Namen Enterprise Integration Pack ermöglichen. Organisationen können Nachrichten elektronisch austauschen, auch wenn sie unterschiedliche Protokolle und Formate verwenden. Das Pack wandelt verschiedene Formaten in ein Format um, das die Systeme von Unternehmen interpretieren und verarbeiten können. Unternehmen können Nachrichten über branchenübliche Protokolle wie [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) und [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) austauschen. Sie können Nachrichten auch mit Verschlüsselung und digitalen Signaturen schützen.
 

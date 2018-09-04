@@ -1,28 +1,23 @@
 ---
 title: Bereitstellen und Aufrufen von Web- und REST-APIs über Azure Logic Apps | Microsoft-Dokumentation
-description: Bereitstellen und Aufrufen Ihrer Web- und REST-APIs für Workflows für die Systemintegration in Azure Logic Apps
-keywords: Web-APIs, REST-APIs, Anschlüsse, Workflows, Systemintegrationen, Authentifizierung
+description: Bereitstellen und Aufrufen von Web- und REST-APIs für Workflows für die Systemintegration in Azure Logic Apps
 services: logic-apps
-author: stepsic-microsoft-com
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
+ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.author: LADocs; stepsic
-ms.openlocfilehash: e808a463beb312df6ee2f8fc4378f72755dcdf33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0d53c8355fadf53c81676a1fe3c71f8e0b046630
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299006"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126567"
 ---
-# <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>Bereitstellen und Aufrufen benutzerdefinierter APIs in Logik-App-Workflows
+# <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Bereitstellen und Aufrufen benutzerdefinierter APIs über Workflows in Azure Logic Apps
 
 Nachdem Sie den Vorgang [Benutzerdefinierte APIs erstellen](./logic-apps-create-api-app.md) für die Verwendung in Workflows der Logik-App durchgeführt haben, müssen Sie Ihre APIs bereitstellen, bevor Sie sie aufrufen können. Sie können Ihre APIs als [Web-Apps](../app-service/app-service-web-overview.md) bereitstellen, sollten jedoch in Erwägung ziehen, Ihre APIs als [API-Apps](../app-service/app-service-web-tutorial-rest-api.md) bereitzustellen. Dadurch wird das Erstellen, Hosten und Nutzen der APIs in der Cloud und lokal vereinfacht. Sie müssen keinen Code in Ihren APIs ändern. Stellen Sie einfach Ihren Code für eine API-App bereit. Sie können Ihre APIs in [Azure App Service](../app-service/app-service-web-overview.md) hosten, einem PaaS-Angebot (Platform-as-a-Service), das ein einfaches API-Hosting mit hoher Skalierbarkeit ermöglicht.
 

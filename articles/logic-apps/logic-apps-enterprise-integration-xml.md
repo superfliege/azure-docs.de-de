@@ -1,28 +1,23 @@
 ---
-title: Arbeiten mit XML-Nachrichten in Ihren Workflows – Azure Logic Apps| Microsoft-Dokumentation
-description: Verarbeiten, Überprüfen, Transformieren und Anreichern von XML-Nachrichten in Logik-Apps und „Business-to“-Szenarien mithilfe des Enterprise Integration Packs
+title: XML-Nachrichten für die B2B-Unternehmensintegration – Azure Logic Apps | Microsoft-Dokumentation
+description: Verarbeiten, Überprüfen, Transformieren und Anreichern von XML-Nachrichten für B2B-Lösungen in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.custom: H1Hack27Feb2017
+ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 85bdaff5cb88bbadaed778458b66c0cce7bce9de
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5f804bf656b423d6dbe8f5c2ed73ba54d8361000
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298973"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124534"
 ---
-# <a name="validate-and-transform-xml-encode-and-decode-flat-files-and-enrich-messages-features-in-logic-apps"></a>Überprüfen und Transformieren von XML-Nachrichten, Codieren und Decodieren von Flatfiles und Anreichern von Nachrichtenfeatures in Logik-Apps
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-Nachrichten und Flatfiles in Azure Logic Apps mit Enterprise Integration Pack
 
 Mit Logik-Apps können Sie XML-Nachrichten verarbeiten, die Sie senden und empfangen. Dieses Feature ist im Enterprise Integration Pack enthalten. Für Benutzer mit einem BizTalk Server-Hintergrund bietet Ihnen das Enterprise Integration Pack ähnliche Möglichkeiten zum Transformieren und Überprüfen von Nachrichten, Arbeiten mit Flatfiles und sogar Verwenden von XPath, um eine Nachricht mit bestimmten Eigenschaften anzureichern oder bestimmte Eigenschaften aus einer Nachricht zu extrahieren. 
 

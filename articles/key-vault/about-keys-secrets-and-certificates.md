@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: bryanla
-ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f36e0e3ddc605d960ed764252308cbf09578832c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140958"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126141"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 Mit Azure Key Vault können Benutzer kryptografische Schlüssel in der Microsoft Azure-Umgebung speichern und verwenden. Key Vault unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von Hardwaresicherheitsmodulen (Hardware Security Modules, HSM) für Schlüssel von hohem Wert. Darüber hinaus ermöglicht Key Vault Benutzern das sichere Speichern von geheimen Schlüsseln. Geheime Schlüssel sind Oktettobjekte von begrenzter Größe ohne spezifische Semantik. Key Vault unterstützt auch Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen und ein automatisiertes Verlängerungsfeature hinzufügen.
@@ -283,7 +283,7 @@ Die folgenden Berechtigungen können pro Prinzipal im Zugriffssteuerungseintrag 
 -   *delete*: Löschen des Geheimnisses  
 -   *all*: Alle Berechtigungen  
 
-Weitere Informationen zum Arbeiten mit geheimen Schlüsseln finden Sie unter [Vorgänge mit geheimen Schlüsseln in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault).  
+Weitere Informationen zur Verwendung von Geheimnissen finden Sie unter den [Geheimnisvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault).  
 
 ###  <a name="BKMK_SecretTags"></a> Geheimnistags  
 Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angeben. Azure Key Vault unterstützt bis zu 15 Tags, von denen jeder einen 256 Zeichen langen Namen und einen Wert von 256 Zeichen aufweisen kann.  
@@ -443,7 +443,7 @@ Wenn für die Richtlinie eines Zertifikats eine automatische Verlängerung festg
 -   *deleteissuers*: ermöglicht das Löschen von Key Vault-Zertifikatausstellern.  
 -   *all*: gewährt alle Berechtigungen.  
 
-Weitere Informationen finden Sie unter [Zertifikatvorgänge in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). 
+Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). 
 
 ## <a name="see-also"></a>Siehe auch
 

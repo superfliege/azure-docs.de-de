@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142882"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046378"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -179,7 +179,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 Hierbei gilt:
 
 * `subscriptionId`– Abonnement-ID des API Management-Diensts, den Sie sichern möchten
-* `resourceGroupName` – Zeichenfolge in der Form „Api-Default-{service-region}“, wobei `service-region` die Azure-Region angibt, in der der zu wiederherzustellende API Management-Dienst gehostet wird, z.B. `North-Central-US`
+* `resourceGroupName`– Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen
 * `serviceName` – Der Name des wiederherzustellenden API Management-Diensts zum Zeitpunkt seiner Erstellung
 * `api-version` – ersetzen durch `2018-06-01-preview`
 

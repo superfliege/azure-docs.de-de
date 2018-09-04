@@ -1,25 +1,21 @@
 ---
 title: Nachverfolgen von B2B-Nachrichten mit Azure Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
-description: Nachverfolgen der B2B-Kommunikation für Ihr Integrationskonto und Ihre Logik-Apps mit Azure Log Analytics
-author: padmavc
-manager: jeconnoc
-editor: ''
+description: Nachverfolgen der B2B-Kommunikation für Integrationskonten und Azure Logic Apps mit Azure Log Analytics
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 82d1fbc4167d1df4cb2c976395c181e4abd1ba3c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293202"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125767"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Nachverfolgen der B2B-Kommunikation mit Azure Log Analytics
 
@@ -31,7 +27,7 @@ Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei lauf
 * Ausführliche Fehlerbeschreibung für Fehler
 * Suchfunktionen
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 

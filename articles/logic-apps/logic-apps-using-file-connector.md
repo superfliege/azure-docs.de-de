@@ -1,99 +1,99 @@
 ---
 title: Herstellen einer Verbindung mit lokalen Dateisystemen – Azure Logic Apps | Microsoft-Dokumentation
-description: Informationen zum Herstellen einer Verbindung mit lokalen Dateisystemen in Ihrem Logik-App-Workflow über das lokale Datengateway und den Dateisystem-Connector
-keywords: Dateisysteme, lokal
+description: Automatisieren von Aufgaben und Workflows, die über das lokale Datengateway in Azure Logic Apps eine Verbindung mit lokalen Dateisystemen mit dem Dateisystem-Connector herstellen
 services: logic-apps
-author: derek1ee
-manager: jeconnoc
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/18/2017
-ms.author: LADocs; deli
-ms.openlocfilehash: 019b5fcd218ddd471c5f02d0332b8f5b5bf0edb3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/25/2018
+ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300819"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125277"
 ---
-# <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>Herstellen einer Verbindung mit lokalen Dateisystemen in Logik-Apps mit dem Dateisystem-Connector
+# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Dateisystemen mit Azure Logic Apps
 
-Sie können zum Verwalten von Daten und für den sicheren Zugriff auf lokale Ressourcen für Ihre Logik-Apps das lokale Datengateway verwenden. In diesem Artikel veranschaulichen wir das Herstellen einer Verbindung mit einem lokalen Dateisystem mithilfe eines einfachen Szenarios: Kopieren einer Datei, die in Dropbox hochgeladen wurde, in eine Dateifreigabe, und anschließendes Senden einer E-Mail.
+Mit dem Dateisystem-Connector und Azure Logic Apps können Sie automatisierte Aufgaben und Workflows erstellen, die Dateien auf einer lokalen Dateifreigabe erstellen und verwalten, um beispielsweise folgende Aufgaben auszuführen:  
+
+- Erstellen, Abrufen, Anfügen, Aktualisieren und Löschen von Dateien
+- Auflisten von Dateien in Ordnern oder Stammordnern
+- Abrufen von Dateiinhalten und Metadaten
+
+In diesem Artikel erfahren Sie anhand des folgenden Beispielszenarios, wie Sie eine Verbindung mit einem lokalen Dateisystem herstellen. In dem Szenario kopieren Sie eine in Dropbox hochgeladene Datei in eine Dateifreigabe und senden anschließend eine E-Mail. Logik-Apps verwenden das [lokale Datengateway](../logic-apps/logic-apps-gateway-connection.md), um eine sichere Verbindung mit lokalen Systemen herzustellen und auf sie zuzugreifen. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Laden Sie das neueste [lokale Datengateway](https://www.microsoft.com/download/details.aspx?id=53127) herunter.
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
 
-* Installieren Sie das neueste lokale Datengateway, Version 1.15.6150.1 oder höher, und richten Sie es ein. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Datenquellen in der lokalen Umgebung](http://aka.ms/logicapps-gateway). Sie müssen das Gateway auf einem lokalen Computer installieren, bevor Sie mit diesen Schritten fortfahren können.
+* Bevor Sie eine Verbindung zwischen Logik-Apps und lokalen Systemen wie etwa Ihrem Dateisystemserver herstellen können, müssen Sie [ein lokales Datengateway installieren und einrichten](../logic-apps/logic-apps-gateway-install.md). So können Sie beim Erstellen der Dateisystemverbindung in Ihrer Logik-App angeben, dass die Gatewayinstallation verwendet werden soll.
 
-* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Ein [Dropbox-Konto](https://www.dropbox.com/) und Ihre Benutzeranmeldeinformationen.
 
-## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>Hinzufügen eines Triggers und von Aktionen für die Verbindung mit dem Dateisystem
+  Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Ihrem Dropbox-Konto sowie zum Zugriff auf das Konto. 
 
-1. Erstellen einer leeren Logik-App Fügen Sie als ersten Schritt diesen Trigger hinzu: **Dropbox – Wenn eine Datei erstellt wird** 
+* Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md). Für dieses Beispiel benötigen Sie eine leere Logik-App.
 
-2. Wählen Sie unter dem Trigger **+ Nächster Schritt** > **Aktion hinzufügen** aus. 
+## <a name="add-trigger"></a>Hinzufügen des Triggers
 
-3. Geben Sie im Suchfeld „Dateisystem“ als Filter ein. Wenn alle Aktionen für den Dateisystem-Connector angezeigt werden, wählen Sie die Aktion **Dateisystem – Datei erstellen** aus. 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-   ![Suchen nach „Dateiconnector“](media/logic-apps-using-file-connector/search-file-connector.png)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-4. Wenn noch keine Verbindung mit Ihrem Dateisystem besteht, werden Sie aufgefordert, eine Verbindung herzustellen. 
+1. Geben Sie im Suchfeld den Begriff „dropbox“ als Filter ein. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Wenn eine Datei erstellt wird** 
 
-5. Wählen Sie **Verbinden über lokales Datengateway**. Wenn die Verbindungseigenschaften angezeigt werden, richten Sie die Verbindung entsprechend den Angaben in der Tabelle ein.
+   ![Auswählen des Dropbox-Triggers](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
-   ![Konfigurieren der Verbindung](media/logic-apps-using-file-connector/create-file.png)
+1. Melden Sie sich mit den Anmeldeinformationen Ihres Dropbox-Kontos an, und autorisieren Sie den Zugriff auf Ihre Dropbox-Daten durch Azure Logic Apps. 
 
-   | Einstellung | BESCHREIBUNG |
-   | ------- | ----------- |
-   | **Stammordner** | Geben Sie den Stammordner Ihres Dateisystems an. Sie können einen lokalen Ordner auf dem Computer angeben, auf dem das lokale Datengateway installiert ist, oder eine Netzwerkfreigabe, auf die der Computer Zugriff hat. <p>**Tipp:** Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. | 
-   | **Authentifizierungstyp** | Der Typ der Authentifizierung, die von Ihrem Dateisystem verwendet wird | 
-   | **Benutzername** | Geben Sie Ihren Benutzernamen {*Domäne*\\*Benutzername*} für das zuvor installierte Gateway an. | 
-   | **Kennwort** | Geben Sie Ihr Kennwort für das zuvor installierte Gateway an. | 
-   | **Gateway** | Wählen Sie das zuvor installierte Gateway aus. | 
+1. Geben Sie die erforderlichen Informationen für Ihren Trigger an.
+
+   ![Dropbox-Trigger](media/logic-apps-using-file-connector/dropbox-trigger.png)
+
+## <a name="add-actions"></a>Hinzufügen von Aktionen
+
+1. Klicken Sie unter dem Trigger auf **Nächster Schritt**. Geben Sie im Suchfeld „Dateisystem“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die folgende Aktion aus: **Datei erstellen – Dateisystem**.
+
+   ![Suchen nach dem Dateisystem-Connector](media/logic-apps-using-file-connector/find-file-system-action.png)
+
+1. Wenn noch keine Verbindung mit Ihrem Dateisystem besteht, werden Sie aufgefordert, eine Verbindung herzustellen.
+
+   ![Erstellen der Verbindung](media/logic-apps-using-file-connector/file-system-connection.png)
+
+   | Eigenschaft | Erforderlich | Wert | Beschreibung | 
+   | -------- | -------- | ----- | ----------- | 
+   | **Verbindungsname** | JA | <*verbindungsname*> | Der gewünschte Name für die Verbindung. | 
+   | **Stammordner** | JA | <*Name des Stammordners*> | Der Stammordner für Ihr Dateisystem – beispielsweise ein lokaler Ordner auf dem Computer, auf dem das lokale Datengateway installiert ist, oder der Ordner für eine Netzwerkfreigabe, auf die der Computer zugreifen kann. <p>Beispiel: `\\PublicShare\\DropboxFiles` <p>Der Stammordner ist der übergeordnete Hauptordner, der bei allen dateibezogenen Aktionen für relative Pfade verwendet wird. | 
+   | **Authentifizierungstyp** | Nein  | <*Authentifizierungstyp*> | Die Art der Authentifizierung, die von Ihrem Dateisystem verwendet wird (beispielsweise **Windows**). | 
+   | **Benutzername** | JA | <*Domäne*>\\<*Benutzername*> | Der Benutzername für Ihr zuvor installiertes Datengateway. | 
+   | **Kennwort** | JA | <*Ihr Kennwort*> | Das Kennwort für Ihr zuvor installiertes Datengateway. | 
+   | **Gateway** | JA | <*Name des installierten Gateways*> | Der Name für das zuvor installierte Gateway. | 
    ||| 
 
-6. Wählen Sie **Erstellen** aus, nachdem Sie alle Verbindungsdetails angegeben haben. 
+1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus. 
 
    Die Verbindung wird in Logic Apps konfiguriert und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert. 
    Wenn die Verbindung ordnungsgemäß eingerichtet ist, werden Optionen für die zuvor ausgewählte Aktion angezeigt. 
-   Der Dateisystem-Connector kann jetzt verwendet werden.
 
-7. Richten Sie die Aktion **Datei erstellen** zum Kopieren von Dateien aus Dropbox in den Stammordner auf Ihrer lokalen Dateifreigabe ein.
+1. Geben Sie unter der Aktion **Datei erstellen** die Details an, die benötigt werden, um Dateien aus Dropbox in den Stammordner auf Ihrer lokalen Dateifreigabe zu kopieren. Um Ausgaben aus den vorherigen Schritten hinzuzufügen, klicken Sie auf die Felder. Daraufhin wird eine Liste mit dynamischen Inhalten angezeigt, in der Sie verfügbare Felder auswählen können.
 
    ![Erstellen einer Dateiaktion](media/logic-apps-using-file-connector/create-file-filled.png)
 
-8. Fügen Sie im Anschluss an diese Aktion zum Kopieren der Datei eine Outlook-Aktion hinzu, über die eine E-Mail zum Informieren entsprechender Benutzer über die neue Datei gesendet wird. Geben Sie die Empfänger, den Titel und Text der E-Mail ein. 
-
-   In der Liste **Dynamische Inhalte** können Sie Datenausgaben im Datei-Connector auswählen und so der E-Mail weitere Details hinzufügen.
+1. Fügen Sie nun eine Outlook-Aktion hinzu, die eine E-Mail sendet, damit die entsprechenden Benutzer über die neue Datei informiert werden. Geben Sie die Empfänger, den Titel und Text der E-Mail ein. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben.
 
    ![Aktion „E-Mail senden“](media/logic-apps-using-file-connector/send-email.png)
 
-9. Speichern Sie Ihre Logik-App. Testen Sie die App durch Hochladen einer Datei in Dropbox. Die Datei sollte in die lokale Dateifreigabe kopiert werden, und Sie sollten eine E-Mail zu diesem Vorgang erhalten.
+1. Speichern Sie Ihre Logik-App. Testen Sie die App durch Hochladen einer Datei in Dropbox. 
 
-Herzlichen Glückwunsch, Sie verfügen nun über eine funktionsfähige Logik-App, über die eine Verbindung mit dem lokalen Dateisystem hergestellt werden kann. 
+   Ihre Logik-App sollte die Datei in Ihre lokale Dateifreigabe kopieren und den Empfängern eine E-Mail senden, um sie über die kopierte Datei zu informieren.
 
-Sie können nun weitere Funktionen des Connectors ausprobieren, beispielsweise:
+## <a name="connector-reference"></a>Connector-Referenz
 
-- Datei erstellen
-- Dateien im Ordner aufführen
-- Datei anfügen
-- Datei löschen
-- Dateiinhalte abrufen
-- Dateiinhalt anhand des Pfads abrufen
-- Dateimetadaten abrufen
-- Dateimetadaten anhand des Pfads abrufen
-- Dateien im Stammordner aufführen
-- Datei aktualisieren
-
-## <a name="view-the-swagger"></a>Anzeigen von Swagger
-
-Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/fileconnector/). 
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/fileconnector/) des Connectors.
 
 ## <a name="get-support"></a>Support
 
@@ -103,6 +103,5 @@ Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/fileconn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Herstellen einer Verbindung mit lokalen Daten](../logic-apps/logic-apps-gateway-connection.md) 
-* [Überwachen von Logik-Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Enterprise Integration für B2B-Szenarien](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* Informationen zum [Herstellen einer Verbindung mit lokalen Daten](../logic-apps/logic-apps-gateway-connection.md) 
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

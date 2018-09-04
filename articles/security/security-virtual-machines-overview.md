@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: fb6a984ff838305b4ce411538465c0b9b5c152da
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061298"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886913"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Mit Azure Virtual Machines können Sie sehr flexibel eine Vielzahl unterschiedlicher Computinglösungen bereitstellen. Der Dienst unterstützt Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP und Azure BizTalk Services. Daher können Sie jede Workload und jede Sprache für nahezu alle Betriebssysteme bereitstellen.
@@ -82,9 +82,8 @@ Die Lösung ist in Azure Key Vault integriert, damit Sie die Verschlüsselungssc
 
 Weitere Informationen:
 
-* [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
-* [Azure Disk Encryption für virtuelle Computer unter Windows und Linux](https://blogs.msdn.microsoft.com/azuresecurity/2015/11/16/azure-disk-encryption-for-linux-and-windows-virtual-machines-public-preview-now-available/)
-* [Verschlüsseln eines virtuellen Computers](../security-center/security-center-disk-encryption.md)
+* [Azure Disk Encryption für virtuelle IaaS-Computer](../security/azure-security-disk-encryption-overview.md)
+* [Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>Sicherung virtueller Computer
 Azure Backup ist eine skalierbare Lösung, die Ihre Anwendungsdaten schützt – ganz ohne Investitionskosten und mit sehr niedrigen Betriebskosten. Anwendungsfehler können Ihre Daten beschädigen, und menschliche Fehler können Bugs in Ihren Anwendungen verursachen. Mit Azure Backup sind Ihre virtuellen Windows- und Linux-Computer geschützt.

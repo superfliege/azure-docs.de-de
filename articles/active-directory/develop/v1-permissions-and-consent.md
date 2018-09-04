@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 08/27/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: db50a43e23d982722a4f3a7b663086863d915dd2
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 735c5a3645f5e2e0f31bac4d4b2f61d73dfe069e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580394"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128778"
 ---
 # <a name="permissions-in-azure-active-directory"></a>Berechtigungen in Azure Active Directory
 
@@ -38,10 +38,10 @@ Effektive Berechtigungen sind die Berechtigungen, über die Ihre App verfügt, w
 
 * Bei delegierten Berechtigungen verfügt Ihre App über die folgenden Berechtigungen: Die jeweils geringsten Rechte, die sich zusammen genommen aus den delegierten Berechtigungen, die der App (per Zustimmung) gewährt wurden, und den Berechtigungen des derzeit angemeldeten Benutzers ergeben. Ihre App kann niemals über mehr Berechtigungen als der angemeldete Benutzer verfügen. In Organisationen können die Berechtigungen des angemeldeten Benutzers anhand einer Richtlinie oder der Mitgliedschaft in einer oder mehreren Administratorrollen bestimmt werden. Weitere Informationen zu Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
     Angenommen, für Ihre App wurde in Microsoft Graph die delegierte Berechtigung `User.ReadWrite.All` gewährt. Mit dieser Berechtigung wird Ihrer App nominell die Berechtigung zum Lesen und Aktualisieren des Profils jedes Benutzers einer Organisation gewährt. Wenn es sich beim angemeldeten Benutzer um einen globalen Administrator handelt, kann Ihre App das Profil jedes Benutzers in der Organisation aktualisieren. Falls der angemeldete Benutzer aber keine Administratorrolle innehat, kann Ihre App nur das Profil des angemeldeten Benutzers aktualisieren. Sie kann die Profile von anderen Benutzern der Organisation nicht aktualisieren, da der Benutzer, für den die App die Berechtigung zum Durchführen von Aktionen in dessen Namen hat, nicht über diese Berechtigungen verfügt.
-* Für Anwendungsberechtigungen umfassen die geltenden Rechte Ihrer App die vollständige Berechtigungsebene, die mit der Berechtigung verbunden ist. Beispielsweise kann eine App, die über die Anwendungsberechtigung `User.ReadWrite.All` verfügt, das Profil aller Benutzer der Organisation aktualisieren. 
+* Für Anwendungsberechtigungen umfassen die geltenden Rechte Ihrer App die vollständige Berechtigungsebene, die mit der Berechtigung verbunden ist. Beispielsweise kann eine App, die über die Anwendungsberechtigung `User.ReadWrite.All` verfügt, das Profil aller Benutzer der Organisation aktualisieren.
 
 ## <a name="permission-attributes"></a>Berechtigungsattribute
-Berechtigungen in Azure AD weisen eine Reihe von Eigenschaften auf, mit deren Hilfe Benutzer, Administratoren oder App-Entwickler fundierte Entscheidungen darüber treffen können, welche Art von Zugriff mit der Berechtigung gewährt wird. 
+Berechtigungen in Azure AD weisen eine Reihe von Eigenschaften auf, mit deren Hilfe Benutzer, Administratoren oder App-Entwickler fundierte Entscheidungen darüber treffen können, welche Art von Zugriff mit der Berechtigung gewährt wird.
 
 > [!NOTE]
 > Sie können die Berechtigungen anzeigen, die von einer Azure AD-Anwendung oder einem Dienstprinzipal verfügbar gemacht werden, indem Sie das Azure-Portal oder PowerShell verwenden. Probieren Sie dieses Skript aus, um die von Microsoft Graph verfügbar gemachten Berechtigungen anzuzeigen.
@@ -55,28 +55,28 @@ Berechtigungen in Azure AD weisen eine Reihe von Eigenschaften auf, mit deren Hi
 > (Get-AzureADServicePrincipal -filter "DisplayName eq 'Microsoft Graph'").AppRoles
 > ```
 
-| Eigenschaftenname | BESCHREIBUNG | Beispiel | 
+| Eigenschaftenname | BESCHREIBUNG | Beispiel |
 | --- | --- | --- |
-| `ID` | Ein GUID-Wert, mit dem diese Berechtigung eindeutig identifiziert wird. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca | 
-| `IsEnabled` | Gibt an, ob diese Berechtigung für die Nutzung verfügbar ist. | true | 
-| `Type` | Gibt an, ob für diese Berechtigung die Zustimmung des Benutzers oder des Administrators erforderlich ist. | Benutzer | 
-| `AdminConsentDescription` | Eine Beschreibung, die Administratoren auf der Benutzeroberfläche für die Administratorzustimmung angezeigt wird. | Ermöglicht der App, E-Mails in Benutzerpostfächern zu lesen. | 
-| `AdminConsentDisplayName` | Der Anzeigename, der Administratoren auf der Benutzeroberfläche für die Administratorzustimmung angezeigt wird. | Lesen von Benutzer-E-Mails | 
-| `UserConsentDescription` | Eine Beschreibung, die Benutzern auf der Benutzeroberfläche für die Benutzerzustimmung angezeigt wird. |  Ermöglicht der App, E-Mails in Ihrem Postfach zu lesen. | 
-| `UserConsentDisplayName` | Der Anzeigename, der Benutzern auf der Benutzeroberfläche für die Benutzerzustimmung angezeigt wird. | Lesen Ihrer E-Mails | 
-| `Value` | Die Zeichenfolge, die verwendet wird, um die Berechtigung bei OAuth 2.0-Autorisierungsdatenflüssen zu identifizieren. `Value` kann auch mit der URI-Zeichenfolge für die App-ID kombiniert werden, um einen vollqualifizierten Berechtigungsnamen zu bilden. | `Mail.Read` | 
+| `ID` | Ein GUID-Wert, mit dem diese Berechtigung eindeutig identifiziert wird. | 570282fd-fa5c-430d-a7fd-fc8dc98a9dca |
+| `IsEnabled` | Gibt an, ob diese Berechtigung für die Nutzung verfügbar ist. | true |
+| `Type` | Gibt an, ob für diese Berechtigung die Zustimmung des Benutzers oder des Administrators erforderlich ist. | Benutzer |
+| `AdminConsentDescription` | Eine Beschreibung, die Administratoren auf der Benutzeroberfläche für die Administratorzustimmung angezeigt wird. | Ermöglicht der App, E-Mails in Benutzerpostfächern zu lesen. |
+| `AdminConsentDisplayName` | Der Anzeigename, der Administratoren auf der Benutzeroberfläche für die Administratorzustimmung angezeigt wird. | Lesen von Benutzer-E-Mails |
+| `UserConsentDescription` | Eine Beschreibung, die Benutzern auf der Benutzeroberfläche für die Benutzerzustimmung angezeigt wird. |  Ermöglicht der App, E-Mails in Ihrem Postfach zu lesen. |
+| `UserConsentDisplayName` | Der Anzeigename, der Benutzern auf der Benutzeroberfläche für die Benutzerzustimmung angezeigt wird. | Lesen Ihrer E-Mails |
+| `Value` | Die Zeichenfolge, die verwendet wird, um die Berechtigung bei OAuth 2.0-Autorisierungsdatenflüssen zu identifizieren. `Value` kann auch mit der URI-Zeichenfolge für die App-ID kombiniert werden, um einen vollqualifizierten Berechtigungsnamen zu bilden. | `Mail.Read` |
 
 ## <a name="types-of-consent"></a>Arten der Zustimmung
+
 Für Anwendungen in Azure AD ist eine Zustimmung erforderlich, um Zugriff auf benötigte Ressourcen oder APIs zu erhalten. Es gibt verschiedene Arten von Zustimmungen, über die Ihre App ggf. Informationen benötigt, um erfolgreich arbeiten zu können. Beim Definieren von Berechtigungen müssen Sie auch wissen, wie Ihre Benutzer Zugriff auf Ihre App oder die API erhalten.
 
-* 
-  **Statische Benutzerzustimmung:** Erfolgt automatisch während des [OAuth 2.0-Autorisierungsdatenflusses](v1-protocols-oauth-code.md#request-an-authorization-code), wenn Sie die Ressource angeben, mit der Ihre App interagieren möchte. Beim Szenario mit statischer Benutzerzustimmung müssen für Ihre App alle erforderlichen Berechtigungen bereits im Azure-Portal in der Konfiguration der App angegeben werden. Wenn der Benutzer (bzw. Administrator) die Zustimmung für diese App nicht erteilt hat, wird der Benutzer von Azure AD aufgefordert, die Zustimmung jetzt zu erteilen. 
+* **Statische Benutzerzustimmung:** Erfolgt automatisch während des [OAuth 2.0-Autorisierungsdatenflusses](v1-protocols-oauth-code.md#request-an-authorization-code), wenn Sie die Ressource angeben, mit der Ihre App interagieren möchte. Beim Szenario mit statischer Benutzerzustimmung müssen für Ihre App alle erforderlichen Berechtigungen bereits im Azure-Portal in der Konfiguration der App angegeben werden. Wenn der Benutzer (bzw. Administrator) die Zustimmung für diese App nicht erteilt hat, wird der Benutzer von Azure AD aufgefordert, die Zustimmung jetzt zu erteilen. 
 
     Informieren Sie sich weiter über die Registrierung einer Azure AD-App, die den Zugriff auf eine statische Gruppe mit APIs anfordert.
 * **Dynamische Benutzerzustimmung:** Dies ist ein Feature der Version 2 (v2) des Azure AD-App-Modells. In diesem Szenario fordert Ihre App eine benötigte Gruppe von Berechtigungen im [OAuth 2.0-Autorisierungsdatenfluss für v2-Apps](/azure/active-directory/develop/active-directory-v2-scopes#requesting-individual-user-consent) an. Wenn der Benutzer nicht bereits zugestimmt hat, wird er aufgefordert, dies jetzt nachzuholen. [Informieren Sie sich weiter über die dynamische Zustimmung](/azure/active-directory/develop/active-directory-v2-compare#incremental-and-dynamic-consent).
 
-    > [!NOTE]
-    > Die dynamische Zustimmung kann komfortabel sein. Sie stellt aber eine große Herausforderung in Bezug auf Berechtigungen dar, für die die Zustimmung durch einen Administrator erforderlich ist, da diese Berechtigungen in der Umgebung für die Administratorzustimmung zum Zustimmungszeitpunkt nicht bekannt sind. Falls Sie mit Administratorberechtigungen versehene Berechtigungen benötigen, muss Ihre App diese im Azure-Portal registrieren.
+    > [!IMPORTANT]
+    > Die dynamische Zustimmung kann komfortabel sein. Sie stellt aber eine große Herausforderung in Bezug auf Berechtigungen dar, für die die Zustimmung durch einen Administrator erforderlich ist, da diese Berechtigungen in der Umgebung für die Administratorzustimmung zum Zustimmungszeitpunkt nicht bekannt sind. Falls Sie Administratorberechtigungen benötigen oder Ihre App eine dynamische Zustimmung verwendet, müssen Sie alle Berechtigungen im Azure-Portal registrieren (nicht nur die Berechtigungen, für die eine Administratoreinwilligung erforderlich ist). Dadurch können Mandantenadministratoren im Namen aller ihrer Benutzer zustimmen.
   
 * **Zustimmung des Administrators:** Ist erforderlich, wenn Ihre App Zugriff auf bestimmte hochrangige Berechtigungen benötigt. Mit der Zustimmung des Administrators wird sichergestellt, dass Administratoren über einige zusätzliche Steuerelemente verfügen, bevor sie für Apps oder Benutzer den Zugriff auf Organisationsdaten mit hoher Berechtigungsebene autorisieren. [Erfahren Sie mehr dazu, wie Sie die Zustimmung des Administrators erteilen](/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
@@ -85,7 +85,7 @@ Für Anwendungen in Azure AD ist eine Zustimmung erforderlich, um Zugriff auf be
 ### <a name="client-best-practices"></a>Bewährte Methoden für Kunden
 
 - Fordern Sie nur Berechtigungen an, die für Ihre App erforderlich sind. Für Apps mit zu vielen Berechtigungen besteht die Gefahr, dass Benutzerdaten offengelegt werden, wenn sie kompromittiert werden.
-- Wählen Sie basierend auf dem Szenario, das von Ihrer App unterstützt wird, zwischen delegierten Berechtigungen und Anwendungsberechtigungen. 
+- Wählen Sie basierend auf dem Szenario, das von Ihrer App unterstützt wird, zwischen delegierten Berechtigungen und Anwendungsberechtigungen.
     - Verwenden Sie immer delegierte Berechtigungen, wenn der Aufruf im Namen eines Benutzers durchgeführt wird.
     - Nutzen Sie Anwendungsberechtigungen nur dann, wenn die App nicht interaktiv ist und keine Aufrufe im Namen von bestimmten Benutzern durchführt. Anwendungsberechtigungen verfügen über weit reichende Privilegien und sollten nur verwendet werden, wenn dies unbedingt erforderlich ist.
 - Bei Verwendung einer App basierend auf dem v2.0-Endpunkt sollten Sie die statischen Berechtigungen (in Ihrer Anwendungsregistrierung angegeben) immer als Obermenge der dynamischen Berechtigungen festlegen, die Sie zur Laufzeit anfordern (im Code angegeben und als Abfrageparameter in der Autorisierungsanforderung gesendet). So wird sichergestellt, dass Szenarien wie die Zustimmung des Administrators richtig funktionieren.
@@ -96,16 +96,11 @@ Für Anwendungen in Azure AD ist eine Zustimmung erforderlich, um Zugriff auf be
 - Für Ressourcen sollten die Berechtigungen `Read` und `ReadWrite` separat explizit definiert werden.
 - Ressourcen sollten alle Berechtigungen, die Zugriff auf Daten über Benutzergrenzen hinweg zulassen, als Berechtigungen vom Typ `Admin` kennzeichnen.
 - Für Ressourcen sollte das Namensmuster `Subject.Permission[.Modifier]` befolgt werden. Hierbei gilt Folgendes:
-    - `Subject` entspricht dem Typ der verfügbaren Daten.
-    - `Permission` entspricht der Aktion, die ein Benutzer für diese Daten durchführen kann. 
-    - `Modifier` wird optional verwendet, um Spezialisierungen einer anderen Berechtigung zu beschreiben. 
+    - `Subject` entspricht der Art der verfügbaren Daten.
+    - `Permission` entspricht der Aktion, die ein Benutzer für diese Daten ausführen kann.
+    - `Modifier` wird optional verwendet, um Spezialisierungen einer anderen Berechtigung zu beschreiben.
     
-    Beispiel:  
+    Beispiel: 
     * Mail.Read: Ermöglicht Benutzern das Lesen von E-Mails.
     * Mail.ReadWrite: Ermöglicht Benutzern das Lesen oder Schreiben von E-Mails.
     * Mail.ReadWrite.All: Ermöglicht einem Administrator oder Benutzer den Zugriff auf alle E-Mails der Organisation.
-
-
-
-
-

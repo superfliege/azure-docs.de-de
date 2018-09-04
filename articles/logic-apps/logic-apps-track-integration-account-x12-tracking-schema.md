@@ -1,29 +1,25 @@
 ---
-title: X12-Nachverfolgungsschemas für die B2B-Überwachung – Azure Logic Apps | Microsoft-Dokumentation
-description: Verwenden Sie X12-Nachverfolgungsschemas, um B2B-Nachrichten von Transaktionen in Ihrem Azure-Integrationskonto zu überwachen.
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: X12-Nachverfolgungsschemas für B2B-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
+description: Erstellen von X12-Nachverfolgungsschemas zur Überwachung von B2B-Nachrichten in Integrationskonten für Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: ''
-ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: a5413f80-eaad-4bcf-b371-2ad0ef629c3d
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 385ff73d780f62f19af2face591cd0b2291ef396
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: cfd195f2f812c8b2e09058d325d0dbb6f7a60d59
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300972"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125600"
 ---
-# <a name="start-or-enable-tracking-of-x12-messages-to-monitor-success-errors-and-message-properties"></a>Starten oder Aktivieren der Nachverfolgung von X12-Nachrichten für die Überwachung von Erfolgs-, Fehler- und Nachrichteneigenschaften
-Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto als Unterstützung bei der Überwachung von B2B-Transaktionen (Business-to-Business) verwenden:
+# <a name="create-schemas-for-tracking-x12-messages-in-integration-accounts-for-azure-logic-apps"></a>Erstellen von Schemas für die Nachverfolgung von X12-Nachrichten in Integrationskonten für Azure Logic Apps
+
+Zur Unterstützung bei der Überwachung des Erfolgs, der Fehler und der Nachrichteneigenschaften für B2B-Transaktionen (Business-to-Buiness) können Sie in Ihrem Integrationskonto folgende X12-Nachverfolgungsschemas verwenden:
 
 * X12-Transaktionssatz-Nachverfolgungsschema
 * X12-Transaktionssatzbestätigung-Nachverfolgungsschema
@@ -33,33 +29,33 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 * X12-Funktionsgruppenbestätigung-Nachverfolgungsschema
 
 ## <a name="x12-transaction-set-tracking-schema"></a>X12-Transaktionssatz-Nachverfolgungsschema
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "transactionSetControlNumber": "",
-                "CorrelationMessageId": "",
-                "messageType": "",
-                "isMessageFailed": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isFunctionalAcknowledgmentExpected": "",
-                "needAk2LoopForValidMessages":  "",
-                "segmentsCount": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "transactionSetControlNumber": "",
+      "CorrelationMessageId": "",
+      "messageType": "",
+      "isMessageFailed": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isFunctionalAcknowledgmentExpected": "",
+      "needAk2LoopForValidMessages":  "",
+      "segmentsCount": ""
+   }
+}
+```
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
@@ -81,40 +77,41 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 | isFunctionalAcknowledgmentExpected | Boolescher Wert | Gibt an, ob die Funktionsbestätigung in der X12-Vereinbarung konfiguriert ist. (Erforderlich) |
 | needAk2LoopForValidMessages | Boolescher Wert | Gibt an, ob die AK2-Schleife für eine gültige Nachricht erforderlich ist. (Erforderlich) |
 | segmentsCount | Integer | Anzahl von Segmenten im X12-Transaktionssatz. (Optional) |
+||||
 
 ## <a name="x12-transaction-set-acknowledgement-tracking-schema"></a>X12-Transaktionssatzbestätigung-Nachverfolgungsschema
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "isaSegment": "",
-                "gsSegment": "",
-                "respondingfunctionalGroupControlNumber": "",
-                "respondingFunctionalGroupId": "",
-                "respondingtransactionSetControlNumber": "",
-                "respondingTransactionSetId": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "CorrelationMessageId": ""
-                "isMessageFailed": "",
-                "ak2Segment": "",
-                "ak3Segment": "",
-                "ak5Segment": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "isaSegment": "",
+      "gsSegment": "",
+      "respondingfunctionalGroupControlNumber": "",
+      "respondingFunctionalGroupId": "",
+      "respondingtransactionSetControlNumber": "",
+      "respondingTransactionSetId": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "CorrelationMessageId": "",
+      "isMessageFailed": "",
+      "ak2Segment": "",
+      "ak3Segment": "",
+      "ak5Segment": ""
+   }
+}
+```
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
@@ -142,36 +139,37 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 | ak2Segment | Zeichenfolge | Bestätigung für einen Transaktionssatz in der empfangenen Funktionsgruppe. (Optional) |
 | ak3Segment | Zeichenfolge | Meldet Fehler in einem Datensegment. (Optional) |
 | ak5Segment | Zeichenfolge | Meldet, ob der im AK2-Segment angegebene Transaktionssatz akzeptiert oder abgelehnt wurde (einschließlich des Grunds). (Optional) |
+||||
 
 ## <a name="x12-interchange-tracking-schema"></a>X12-Austausch-Nachverfolgungsschema
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "isaSegment": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isMessageFailed": "",
-                "isa09": "",
-                "isa10": "",
-                "isa11": "",
-                "isa12": "",
-                "isa14": "",
-                "isa15": "",
-                "isa16": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "isaSegment": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isMessageFailed": "",
+      "isa09": "",
+      "isa10": "",
+      "isa11": "",
+      "isa12": "",
+      "isa14": "",
+      "isa15": "",
+      "isa16": ""
+   }
+}
+```
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
@@ -194,33 +192,35 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 | isa14 | Zeichenfolge | X12-Bestätigung wurde angefordert. (Optional) |
 | isa15 | Zeichenfolge | Indikator für Test oder Produktion. (Optional) |
 | isa16 | Zeichenfolge | Elementtrennzeichen. (Optional) |
+||||
 
 ## <a name="x12-interchange-acknowledgement-tracking-schema"></a>X12-Austauschbestätigung-Nachverfolgungsschema
-````java
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "isaSegment": "",
-                "respondingInterchangeControlNumber": "",
-                "isMessageFailed": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "ta102": "",
-                "ta103": "",
-                "ta105": ""
-            }
-    }
-````
+
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "isaSegment": "",
+      "respondingInterchangeControlNumber": "",
+      "isMessageFailed": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "ta102": "",
+      "ta103": "",
+      "ta105": ""
+   }
+}
+```
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
@@ -241,38 +241,39 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 | ta102 | Zeichenfolge | Austauschdatum. (Optional) |
 | ta103 | Zeichenfolge | Austauschuhrzeit. (Optional) |
 | ta105 | Zeichenfolge | Austauschhinweiscode. (Optional) |
+||||
 
 ## <a name="x12-functional-group-tracking-schema"></a>X12-Funktionsgruppen-Nachverfolgungsschema
-````java
 
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "gsSegment": "",
-                "isTechnicalAcknowledgmentExpected": "",
-                "isFunctionalAcknowledgmentExpected": "",
-                "isMessageFailed": "",
-                "gs01": "",
-                "gs02": "",
-                "gs03": "",
-                "gs04": "",
-                "gs05": "",
-                "gs07": "",
-                "gs08": ""
-            }
-    }
-````
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "gsSegment": "",
+      "isTechnicalAcknowledgmentExpected": "",
+      "isFunctionalAcknowledgmentExpected": "",
+      "isMessageFailed": "",
+      "gs01": "",
+      "gs02": "",
+      "gs03": "",
+      "gs04": "",
+      "gs05": "",
+      "gs07": "",
+      "gs08": ""
+   }
+}
+```
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
@@ -297,36 +298,38 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 | gs05 | Zeichenfolge | Uhrzeit der Funktionsgruppe. (Optional) |
 | gs07 | Zeichenfolge | Code der zuständigen Behörde. (Optional) |
 | gs08 | Zeichenfolge | Versions/Freigabe-/Branchen-ID-Code. (Optional) |
+||||
 
 ## <a name="x12-functional-group-acknowledgement-tracking-schema"></a>X12-Funktionsgruppenbestätigung-Nachverfolgungsschema
-````java
-    {
-            "agreementProperties": {
-                "senderPartnerName": "",
-                "receiverPartnerName": "",
-                "senderQualifier": "",
-                "senderIdentifier": "",
-                "receiverQualifier": "",
-                "receiverIdentifier": "",
-                "agreementName": ""
-            },
-            "messageProperties": {
-                "direction": "",
-                "interchangeControlNumber": "",
-                "functionalGroupControlNumber": "",
-                "isaSegment": "",
-                "gsSegment": "",
-                "respondingfunctionalGroupControlNumber": "",
-                "respondingFunctionalGroupId": "",
-                "isMessageFailed": "",
-                "statusCode": "",
-                "processingStatus": "",
-                "ak903": "",
-                "ak904": "",
-                "ak9Segment": ""
-            }
-    }
-````
+
+```json
+{
+   "agreementProperties": {
+      "senderPartnerName": "",
+      "receiverPartnerName": "",
+      "senderQualifier": "",
+      "senderIdentifier": "",
+      "receiverQualifier": "",
+      "receiverIdentifier": "",
+      "agreementName": ""
+   },
+   "messageProperties": {
+      "direction": "",
+      "interchangeControlNumber": "",
+      "functionalGroupControlNumber": "",
+      "isaSegment": "",
+      "gsSegment": "",
+      "respondingfunctionalGroupControlNumber": "",
+      "respondingFunctionalGroupId": "",
+      "isMessageFailed": "",
+      "statusCode": "",
+      "processingStatus": "",
+      "ak903": "",
+      "ak904": "",
+      "ak9Segment": ""
+   }
+}
+```
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | --- | --- | --- |
@@ -350,10 +353,16 @@ Sie können diese X12-Nachverfolgungsschemas in Ihrem Azure-Integrationskonto al
 | ak903 | Zeichenfolge | Anzahl der empfangenen Transaktionssätze. (Optional) |
 | ak904 | Zeichenfolge | Anzahl von Transaktionssätzen an, die in der identifizierten Funktionsgruppe akzeptiert wurden. (Optional) |
 | ak9Segment | Zeichenfolge | Gibt an, ob die im AK1-Segment angegebene Funktionsgruppe akzeptiert oder abgelehnt wurde (einschließlich des Grunds). (Optional) |
+|||| 
+
+## <a name="b2b-protocol-tracking-schemas"></a>B2B-Protokollnachverfolgungsschemas
+
+Informationen zu B2B-Protokollnachverfolgungsschemas finden Sie unter:
+
+* [AS2-Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)   
+* [Benutzerdefinierte B2B-Nachverfolgungsschemas](logic-apps-track-integration-account-custom-tracking-schema.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md).
-* Weitere Informationen zu [AS2-Nachverfolgungsschemas](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md).
-* Informieren Sie sich über das [benutzerdefinierte B2B-Nachverfolgungsschema](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md).
+
+* Informieren Sie sich über das [Überwachen von B2B-Nachrichten](logic-apps-monitor-b2b-message.md).
 * Informieren Sie sich über das [Nachverfolgen von B2B-Nachrichten in Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
-* Weitere Informationen zum [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)  

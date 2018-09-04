@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 69313adea1719324e2b22b45c6a45535ea65097f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616862"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125041"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -164,7 +164,7 @@ Im Folgenden wird das Verfahren zum Hinzufügen einer Sprache der Nutzungsbeding
 
 1. Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
 
-1. Klicken Sie im Bereich „Details“ auf die Registerkarte **Sprachen**.
+1. Klicken Sie im Detailbereich auf die Registerkarte **Sprachen**.
 
     ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/languages-tou.png)
 
