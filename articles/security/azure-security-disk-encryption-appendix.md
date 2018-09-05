@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: cf3e9ce055219bccb44c19fd8e77fe39c938c968
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9efd8730af292e6f720c3bacd5707c48f0eab7ac
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392597"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887932"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Anhang zu Azure Disk Encryption 
 Dieser Artikel enthält den Anhang zu [Azure Disk Encryption für virtuelle IaaS-Computer](azure-security-disk-encryption-overview.md). Lesen Sie zuerst die Artikel zu Azure Disk Encryption für virtuelle IaaS-Computer, damit der Kontext für Sie verständlich ist. In diesem Artikel wird beschrieben, wie Sie vorverschlüsselte VHDs vorbereiten und andere Aufgaben durchführen.
 
 ## <a name="connect-to-your-subscription"></a>Verbinden mit Ihrem Abonnement
-Lesen Sie den Artikel zu den [Voraussetzungen](azure-security-disk-encryption-prerequisites.md), bevor Sie fortfahren. Wenn Sie sichergestellt haben, dass alle Voraussetzungen erfüllt sind, können Sie die folgenden Cmdlets ausführen, um eine Verbindung mit Ihrem Abonnement herzustellen:
+Lesen Sie, bevor Sie anfangen, den Artikel zu den [Voraussetzungen](azure-security-disk-encryption-prerequisites.md). Wenn alle Voraussetzungen erfüllt sind, können Sie die folgenden Cmdlets ausführen, um eine Verbindung mit Ihrem Abonnement herzustellen:
 
 ### <a name="bkmk_ConnectPSH"></a> Verbinden Ihres Abonnements mit PowerShell
 
@@ -59,11 +59,11 @@ Lesen Sie den Artikel zu den [Voraussetzungen](azure-security-disk-encryption-pr
      Get-command *diskencryption*
      ```
                        
-7. Lesen Sie sich bei Bedarf die Informationen unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps) und [Azure AD](/powershell/module/azuread) durch.
+7. Weitere Informationen finden Sie bei Bedarf unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps) und [Azure AD](/powershell/module/azuread).
 
 ### <a name="bkmk_ConnectCLI"></a> Verbinden Ihres Abonnements mit der Azure CLI
 
-1. Melden Sie sich mit dem Befehl [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) an Azure an. 
+1. Melden Sie sich mit dem Befehl [az login](/cli/azure/authenticate-azure-cli#interactive-log-in) bei Azure an. 
      
      ```azurecli
      az login
@@ -106,33 +106,77 @@ Lesen Sie den Artikel zu den [Voraussetzungen](azure-security-disk-encryption-pr
      Get-AzureKeyVaultSecret -VaultName $KeyVaultName | where {$_.Tags.ContainsKey('DiskEncryptionKeyFileName')} | format-table @{Label="MachineName"; Expression={$_.Tags['MachineName']}}, @{Label="VolumeLetter"; Expression={$_.Tags['VolumeLetter']}}, @{Label="EncryptionKeyURL"; Expression={$_.Id}}
      ```
 
+### <a name="bkmk_prereq-script"></a> Verwenden des PowerShell-Skripts zur Überprüfung der Voraussetzungen für Azure Disk Encryption
+Wenn Sie bereits mit den Voraussetzungen für Azure Disk Encryption vertraut sind, können Sie das [PowerShell-Skript zur Überprüfung der Azure Disk Encryption-Voraussetzungen](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ) verwenden. Ein Beispiel für die Verwendung dieses PowerShell-Skripts finden Sie im [Schnellstart: Verschlüsseln einer VM](quick-encrypt-vm-powershell.md). Sie können die Kommentare aus einem Abschnitt des Skripts, beginnend ab Zeile 211, entfernen, um alle Datenträger für vorhandene virtuelle Computer in einer vorhandenen Ressourcengruppe zu verschlüsseln. 
+
+Die folgende Tabelle zeigt, welche Parameter im PowerShell-Skript verwendet werden können: 
+
+
+|Parameter|BESCHREIBUNG|Ist obligatorisch|
+|------|------|------|
+|$resourceGroupName| Name der Ressourcengruppe, zu der der Schlüsseltresor gehört.  Sofern noch nicht vorhanden, wird eine neue Ressourcengruppe mit diesem Namen erstellt.| True|
+|$keyVaultName|Name des Schlüsseltresors, in dem Verschlüsselungsschlüssel platziert werden sollen. Sofern noch nicht vorhanden, wird ein neuer Tresor mit diesem Namen erstellt.| True|
+|$location|Standort des Schlüsseltresors. Der Schlüsseltresor und die zu verschlüsselnden virtuellen Computer müssen sich am gleichen Standort befinden. Mit `Get-AzureRMLocation` können Sie eine Standortliste abrufen.|True|
+|$subscriptionId|Bezeichner des zu verwendenden Azure-Abonnements.  Die Abonnement-ID kann mit `Get-AzureRMSubscription` abgerufen werden.|True|
+|$aadAppName|Name der Azure AD-Anwendung, die zum Schreiben von Geheimnissen in den Schlüsseltresor verwendet wird. Sofern noch nicht vorhanden, wird eine neue Anwendung mit diesem Namen erstellt. Wenn diese App bereits vorhanden ist, übergeben Sie den Parameter aadClientSecret an das Skript.|False|
+|$aadClientSecret|Clientgeheimnis der Azure AD-Anwendung, die zuvor erstellt wurde.|False|
+|$keyEncryptionKeyName|Name des optionalen Schlüssels für die Schlüsselverschlüsselung in Key Vault. Sofern noch nicht vorhanden, wird ein neuer Schlüssel mit diesem Namen erstellt.|False|
+
+
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
-- [Erstellen eines Schlüsseltresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) 
+<!--   - [Create a key vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) -->
+
+### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>Ver- oder Entschlüsseln von virtuellen Computer ohne eine Azure AD-App
+
+
+- [Enable disk encryption on existing or running IaaS Windows VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-without-aad) (Aktivieren der Datenträgerverschlüsselung auf vorhandenen oder ausgeführten virtuellen Windows-IaaS-Computern)
+- [Disable disk encryption on existing or running IaaS Windows VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm-without-aad) (Deaktivieren der Datenträgerverschlüsselung auf vorhandenen oder ausgeführten virtuellen Windows-IaaS-Computern)
+- [Enable disk encryption on an existing or running IaaS Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad) (Aktivieren der Datenträgerverschlüsselung auf einem vorhandenen oder ausgeführten virtuellen Linux-IaaS-Computer)  
+ -  [Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) (Deaktivieren der Verschlüsselung auf einem ausgeführten virtuellen Linux-Computer) 
+    - Die Deaktivierung der Verschlüsselung ist nur auf Datenvolumes für virtuelle Linux-Computer zulässig.  
+
+### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>Ver- oder Entschlüsseln von virtuellen Computer mit einer Azure AD-App (früheres Release) 
  
-- [Enable disk encryption on new IaaS Windows VM from the Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) (Aktivieren der Datenträgerverschlüsselung auf einem neuen virtuellen Windows-IaaS-Computer über den Marketplace)
-    - Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer erstellt, der das Windows Server 2012-Katalogimage verwendet.
-
-- [Deployment of RHEL 7.2 with full disk encryption](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) (Bereitstellung von RHEL 7.2 mit vollständiger Datenträgerverschlüsselung)
-    - Mit dieser Vorlage wird eine vollständig verschlüsselte RHEL 7.2-VM in Azure erstellt, die über ein verschlüsseltes Betriebssystemlaufwerk mit 30 GB und ein RAID-0-Array mit 200 GB unter „/mnt/raidencrypted“ verfügt. Der Artikel mit den [häufig gestellten Fragen](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) enthält Informationen zu den unterstützten Linux-Serverdistributionen. 
-
-- [Enable disk encryption on a pre-encrypted VHD for Windows or Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm) (Aktivieren der Datenträgerverschlüsselung auf einer vorverschlüsselten VHD für Windows oder Linux)
-
 - [Enable disk encryption on existing or running IaaS Windows VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm) (Aktivieren der Datenträgerverschlüsselung auf vorhandenen oder ausgeführten virtuellen Windows-IaaS-Computern)
 
-- [Enable disk encryption on an existing or running IaaS Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrt-running-linux-vm) (Aktivieren der Datenträgerverschlüsselung auf einem vorhandenen oder ausgeführten virtuellen Linux-IaaS-Computer)    
+- [Enable disk encryption on an existing or running IaaS Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm) (Aktivieren der Datenträgerverschlüsselung auf einem vorhandenen oder ausgeführten virtuellen Linux-IaaS-Computer)    
 
 - [Disable disk encryption on running Windows IaaS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-windows-vm) (Deaktivieren der Datenträgerverschlüsselung auf ausgeführten virtuellen Windows-IaaS-Computern) 
 
--  [Disable encryption on a running Linux VM](https://aka.ms/decrypt-linuxvm) (Deaktivieren der Verschlüsselung auf einem ausgeführten virtuellen Linux-Computer) 
+-  [Disable encryption on a running Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) (Deaktivieren der Verschlüsselung auf einem ausgeführten virtuellen Linux-Computer) 
     - Die Deaktivierung der Verschlüsselung ist nur auf Datenvolumes für virtuelle Linux-Computer zulässig. 
 
-- [Create a new encrypted managed disk from a pre-encrypted VHD/storage blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk) (Erstellen eines neuen verschlüsselten verwalteten Datenträgers auf der Grundlage einer vorverschlüsselten VHD/eines Speicherblobs)
-    - Erstellt einen neuen verschlüsselten verwalteten Datenträger, wenn eine vorverschlüsselte VHD und die entsprechenden Verschlüsselungseinstellungen vorhanden sind.
+- [Enable disk encryption on new IaaS Windows VM from the Marketplace](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image) (Aktivieren der Datenträgerverschlüsselung auf einem neuen virtuellen Windows-IaaS-Computer über den Marketplace)
+    - Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer erstellt, der das Windows Server 2012-Katalogimage verwendet.
 
 - [Create a new encrypted Windows IaaS Managed Disk VM from gallery image](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks) (Erstellen eines neuen verschlüsselten virtuellen Windows-IaaS-Computers mit verwaltetem Datenträger auf der Grundlage eines Katalogimages)
     - Mit dieser Vorlage wird ein neuer verschlüsselter virtueller Windows-Computer mit verwalteten Datenträgern erstellt, indem das Windows Server 2012-Katalogimage verwendet wird.
+
+- [Deployment of RHEL 7.2 with full disk encryption with managed disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) (Bereitstellung von RHEL 7.2 mit vollständiger Datenträgerverschlüsselung und verwalteten Datenträgern)
+    - Diese Vorlage erstellt eine vollständig verschlüsselte RHEL 7.2-VM in Azure unter Verwendung von verwalteten Datenträgern. Sie enthält ein verschlüsseltes Betriebssystemlaufwerk mit 30 GB und ein verschlüsseltes 200-GB-Array (RAID-0), das unter „/mnt/raidencrypted“ bereitgestellt wird. Der Artikel mit den [häufig gestellten Fragen](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) enthält Informationen zu den unterstützten Linux-Serverdistributionen. 
+
+- [Deployment of RHEL 7.2 with full disk encryption with unmanaged disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged) (Bereitstellung von RHEL 7.2 mit vollständiger Datenträgerverschlüsselung und nicht verwalteten Datenträgern)
+    - Mit dieser Vorlage wird eine vollständig verschlüsselte RHEL 7.2-VM in Azure erstellt, die über ein verschlüsseltes Betriebssystemlaufwerk mit 30 GB und ein 200-GB-Array (RAID-0) verfügt, das unter „/mnt/raidencrypted“ bereitgestellt wird. Der Artikel mit den [häufig gestellten Fragen](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) enthält Informationen zu den unterstützten Linux-Serverdistributionen. 
+
+- [Enable disk encryption on a pre-encrypted VHD for Windows or Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm) (Aktivieren der Datenträgerverschlüsselung auf einer vorverschlüsselten VHD für Windows oder Linux)
+
+- [Create a new encrypted managed disk from a pre-encrypted VHD/storage blob](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk) (Erstellen eines neuen verschlüsselten verwalteten Datenträgers auf der Grundlage einer vorverschlüsselten VHD/eines Speicherblobs)
+    - Erstellt einen neuen verschlüsselten verwalteten Datenträger, wenn eine vorverschlüsselte VHD und die entsprechenden Verschlüsselungseinstellungen vorhanden sind
+
+- [Enable disk encryption on a running Windows VM using an Azure AD client certificate thumbprint](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-windows-vm-aad-client-cert) (Aktivieren der Datenträgerverschlüsselung auf einer ausgeführten Windows-VM mit einem Azure AD-Zertifikatfingerabdruck des Clients)
     
+- [Enable disk encryption on a running Linux virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux) (Aktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Linux)
+
+- [Enable disk encryption on a running Windows virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-windows) (Aktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Windows)
+
+ - [Deploy a VM Scale Set of Linux VMs with a jumpbox and enables encryption on Linux VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) (Bereitstellen einer VM Skalieren mit Linux-VMs mit einer Jumpbox und Aktivieren der Verschlüsselung in der Linux-VM-Skalierungsgruppe)
+
+ - [Deploy a VM Scale Set of Windows VMs with a jumpbox and enables encryption on Windows VMSS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) (Bereitstellen einer VM Skalieren mit Windows-VMs mit einer Jumpbox und Aktivieren der Verschlüsselung in der Windows-VM-Skalierungsgruppe)
+
+- [Disable disk encryption on a running Linux virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux) (Deaktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Linux)
+
+- [Disable disk encryption on a running Windows virtual machine scale set](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows) (Deaktivieren der Datenträgerverschlüsselung in einer ausgeführten VM-Skalierungsgruppe unter Windows)
 
 ## <a name="bkmk_preWin"></a> Vorbereiten einer vorverschlüsselten Windows-VHD
 Die folgenden Abschnitte sind erforderlich, um eine vorverschlüsselte Windows-VHD für die Bereitstellung als verschlüsselte VHD in Azure IaaS vorzubereiten. Verwenden Sie die Informationen, um einen neuen virtuellen Windows-Computers (VHD) in Azure Site Recovery oder Azure vorzubereiten und zu starten. Weitere Informationen zum Vorbereiten und Hochladen einer VHD finden Sie unter [Hochladen einer generalisierten VHD und Verwendung dieser zum Erstellen neuer VMs in Azure](../virtual-machines/windows/upload-generalized-managed.md).
@@ -253,7 +297,7 @@ Es gibt drei Möglichkeiten, den Fortschritt der Betriebssystemverschlüsselung 
 Die Vorbereitung für vorverschlüsselte VHDs kann je nach Distribution variieren. Es sind Beispiele zur Vorbereitung von [Ubuntu 16](#bkmk_Ubuntu), [openSUSE 13.2](#bkmk_openSUSE) und [CentOS 7](#bkmk_CentOS) verfügbar. 
 
 ### <a name="bkmk_Ubuntu"></a> Ubuntu 16
-Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie diese Schritte ausführen:
+Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie die folgenden Schritte ausführen:
 
 1. Wählen Sie beim Partitionieren von Datenträgern die Option **Configure encrypted volumes** (Verschlüsselte Volumes konfigurieren).
 
@@ -279,7 +323,7 @@ Konfigurieren Sie die Verschlüsselung während der Installation einer Distribut
 
 Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schritte ausführen:
 
-1. Erstellen Sie unter „/usr/local/sbin/azure_crypt_key.sh“ eine Datei mit dem Inhalt des folgenden Skripts. Achten Sie auf KeyFileName, da dies der von Azure verwendete Passphrasename ist.
+1. Erstellen Sie unter „/usr/local/sbin/azure_crypt_key.sh“ eine Datei mit dem Inhalt des folgenden Skripts. Achten Sie auf KeyFileName, da dies der von Azure verwendete Dateiname für die Passphrase ist.
 
     ```
     #!/bin/sh
@@ -461,11 +505,11 @@ Und ändern Sie alle Vorkommen von:
 ```
     if [ -z "$DRACUT_SYSTEMD" ]; then
 ```
-in:
+zu
 ```
     if [ 1 ]; then
 ```
-4. Bearbeiten Sie die Datei „/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh“, und fügen Sie sie nach „# Open LUKS device“ an:
+4. Bearbeiten Sie die Datei „/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh“, und fügen Sie sie nach „# Open LUKS device“ Folgendes an:
     ```
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -496,7 +540,7 @@ Nachdem die BitLocker- oder DM-Crypt-Verschlüsselung aktiviert wurde, muss die 
     Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a> Hochladen des Geheimnisses für den vorverschlüsselten virtuellen Computer in Ihren Schlüsseltresor
-Das zuvor abgerufene Geheimnis der Datenträgerverschlüsselung muss als Geheimnis in den Schlüsseltresor hochgeladen werden. Der Schlüsseltresor muss für die Datenverschlüsselung aktiviert sein und über Berechtigungen für Ihren Azure AD-Client verfügen.
+Beim Verschlüsseln mit einer Azure AD-App (früheres Release) muss das zuvor abgerufene Geheimnis zur Datenträgerverschlüsselung als Geheimnis in den Schlüsseltresor hochgeladen werden. Der Schlüsseltresor muss für die Datenverschlüsselung aktiviert sein und über Berechtigungen für Ihren Azure AD-Client verfügen.
 
 ```powershell 
  $AadClientId = "My-AAD-Client-Id"

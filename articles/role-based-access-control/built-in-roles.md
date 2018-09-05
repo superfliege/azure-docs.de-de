@@ -15,12 +15,12 @@ ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617157"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048367"
 ---
 # <a name="built-in-roles-in-azure"></a>Integrierte Rollen in Azure
 Die [rollenbasierte Zugriffssteuerung (RBAC)](overview.md) verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern, Gruppen und Dienstprinzipalen zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Ressourcen in Azure zugreifen. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](custom-roles.md) erstellen.
@@ -43,7 +43,7 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 | [Operatorrolle des API Management-Diensts](#api-management-service-operator-role) | Kann den Dienst, aber nicht die APIs verwalten. |
 | [Leserrolle des API Management-Diensts](#api-management-service-reader-role) | Schreibgeschützter Zugriff auf Dienst und APIs |
 | [Mitwirkender der Application Insights-Komponente](#application-insights-component-contributor) | Kann Application Insights-Komponenten verwalten |
-| [Application Insights-Momentaufnahmedebugger](#application-insights-snapshot-debugger) | Erteilt dem Benutzer die Berechtigung zum Verwenden von Features des Momentaufnahmedebuggers in Application Insights. |
+| [Application Insights-Momentaufnahmedebugger](#application-insights-snapshot-debugger) | Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomentaufnahmen, die mit dem Application Insights-Momentaufnahmedebugger erfasst wurden. Beachten Sie, dass diese Rolle weder in der Rolle [Besitzer](#owner) noch in der Rolle [Mitwirkender](#contributor) enthalten ist. |
 | [Automation-Auftragsoperator](#automation-job-operator) | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. |
 | [Operator für Automation](#automation-operator) | Automatisierungsoperatoren können Aufträge starten, beenden, anhalten und fortsetzen. |
 | [Automation-Runbookoperator](#automation-runbook-operator) | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. |

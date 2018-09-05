@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: diberry
-ms.openlocfilehash: cb68ad57302f151975c1ca6616a24db9804a6a68
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e7460a0eaf51e839accf08b6f8b07a112033af17
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223054"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43130518"
 ---
 # <a name="api-v2-migration-guide"></a>API v2-Migrationshandbuch
 Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind demnächst veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://aka.ms/luis-endpoint-apis)- und [Erstellungs](https://aka.ms/luis-authoring-apis)-APIs der Version 2 migrieren. 
@@ -157,7 +157,7 @@ Der JSON-Code der exportierten 1.x-App JSON enthält einige Bereiche, die Sie vo
 ### <a name="prebuilt-entities"></a>Vordefinierte Entitäten 
 Die [vordefinierten Entitäten](luis-prebuilt-entities.md) wurden geändert. Stellen Sie sicher, dass Sie die vordefinierten Entitäten von v2 verwenden. Dazu gehört die Verwendung von [datetimeV2](luis-prebuilt-entities.md#use-a-prebuilt-datetimev2-entity) anstelle von datetime. 
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 Die actions-Eigenschaft ist nicht mehr gültig. Sie sollte leer sein. 
 
 ### <a name="labeled-utterances"></a>Bezeichnete Äußerungen

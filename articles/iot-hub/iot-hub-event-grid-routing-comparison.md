@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: 320320687e441a1296065eb9d0b7b12771036459
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: af03f737c082a7fda90104303e018f7b417729b9
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636170"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143792"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub
 
@@ -29,11 +29,11 @@ Sowohl bei der Nachrichtenweiterleitung als auch bei Even Grid ist eine Warnungs
 | Feature | IoT Hub-Nachrichtenweiterleitung | IoT Hub-Integration mit Event Grid |
 | ------- | --------------- | ---------- |
 | **Gerätemeldungen** | Ja, die Nachrichtenweiterleitung kann für Telemetriedaten verwendet werden. | Nein, Event Grid kann nur für telemetriefremde IoT Hub-Ereignisse verwendet werden. |
-| **Ereignistyp** | Ja, die Nachrichtenweiterleitung kann Änderungen am Gerätezwilling und Gerätelebenszyklus-Ereignisse melden. | Ja, Event Grid kann melden, wenn Geräte bei einem IoT Hub registriert sind und wenn Geräte gelöscht werden. |
+| **Ereignistyp** | Ja, die Nachrichtenweiterleitung kann Änderungen am Gerätezwilling und Gerätelebenszyklus-Ereignisse melden. | Ja, Event Grid kann melden, wenn Geräte erstellt, gelöscht, verbunden und von IoT Hub getrennt werden. |
 | **Reihenfolge** | Ja, die Reihenfolge von Ereignissen wird beibehalten.  | Nein, die Reihenfolge von Ereignissen ist nicht garantiert. | 
 | **Maximale Nachrichtengröße** | 256 KB, Gerät-zu-Cloud | 64 KB |
 | **Filterung** | Umfassende Filtermöglichkeiten über eine SQL-ähnliche Sprache unterstützen das Filtern anhand von Nachrichtenheadern und -texten. Beispiele finden Sie unter [IoT Hub-Abfragesprache](iot-hub-devguide-query-language.md). | Filterung anhand des Suffix/Präfix von Geräte-IDs, die gut für hierarchische Dienste wie Storage funktioniert. |
-| **Endpunkte** | <ul><li>Event Hub</li> <li>Speicherblob</li> <li>Service Bus-Warteschlange</li> <li>Service Bus-Themen</li></ul><br>Kostenpflichtige IoT Hub-SKUs (S1, S2 und S3) sind auf 10 benutzerdefinierte Endpunkte beschränkt. Pro IoT Hub können 100 Routen erstellt werden. | <ul><li>Azure-Funktionen</li> <li>Azure-Automatisierung</li> <li>Event Hub</li> <li>Logic Apps</li> <li>Microsoft Flow</li> <li>Drittanbieterdienste über Webhooks</li></ul><br>Die aktuelle Liste der Endpunkte finden Sie unter [Event Grid-Ereignishandler](../event-grid/overview.md#event-handlers). |
+| **Endpunkte** | <ul><li>Event Hubs</li> <li>Speicherblob</li> <li>Service Bus-Warteschlange</li> <li>Service Bus-Themen</li></ul><br>Kostenpflichtige IoT Hub-SKUs (S1, S2 und S3) sind auf 10 benutzerdefinierte Endpunkte beschränkt. Pro IoT Hub können 100 Routen erstellt werden. | <ul><li>Azure-Funktionen</li> <li>Azure-Automatisierung</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Speicherblob</li> <li>Benutzerdefinierte Themen</li> <li>Drittanbieterdienste über Webhooks</li></ul><br>Die aktuelle Liste der Endpunkte finden Sie unter [Event Grid-Ereignishandler](../event-grid/overview.md#event-handlers). |
 | **Kosten** | Für die Nachrichtenweiterleitung fallen keine separaten Gebühren an. Nur der Eingang von Telemetriedaten in IoT Hub wird in Rechnung gestellt. Wenn beispielsweise eine Nachricht an drei verschiedene Endpunkte weitergeleitet wird, wird Ihnen nur eine Nachricht berechnet. | Es fallen keine Gebühren von IoT Hub an. Event Grid bietet die ersten 100.000 Vorgänge pro Monat kostenlos, danach 0,60 US-Dollar pro Million Vorgänge. |
 
 IoT Hub-Nachrichtenweiterleitung und Event Grid weisen auch Ähnlichkeiten auf, von denen einige in der folgenden Tabelle beschrieben werden:
@@ -54,7 +54,7 @@ Die IoT Hub-Nachrichtenweiterleitung und die IoT Hub-Integration mit Event Grid 
 
    Verwenden Sie die IoT Hub-Nachrichtenweiterleitung, wenn Sie Telemetriedaten an andere Dienste senden müssen. Die Nachrichtenweiterleitung ermöglicht auch das Abfragen von Nachrichtenheadern und Nachrichtentexten. 
 
-   Die IoT Hub-Integration mit Event Grid arbeitet mit Ereignissen, die im IoT Hub-Dienst auftreten. Zu diesen IoT Hub-Ereignissen gehören das Erstellen und Löschen von Geräten. 
+   Die IoT Hub-Integration mit Event Grid arbeitet mit Ereignissen, die im IoT Hub-Dienst auftreten. Diese IoT Hub-Ereignisse umfassen „Gerät erstellt“, „Gerät gelöscht“, „Gerät verbunden“ und „Gerät getrennt“. 
 
 * **Welche Endpunkte müssen diese Informationen erhalten?**
 

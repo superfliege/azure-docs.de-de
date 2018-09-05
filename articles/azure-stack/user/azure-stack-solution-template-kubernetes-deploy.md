@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 08/27/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: f6a2b3f242e5989d0c72083eef4faad9c4798cfe
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 67e82a4809253123e15305b5f2ecd8cc5f7ee4ed
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41946608"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046849"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Bereitstellen eines Kubernetes-Clusters in Azure Stack
 
@@ -88,9 +88,9 @@ Stellen Sie zum Einstieg sicher, dass Sie über die erforderlichen Berechtigunge
 
 Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressourcen erstellen kann.
 
-1.  Melden Sie sich beim [Verwaltungsportal](https://adminportal.local.azurestack.external) an.
+1.  Melden Sie sich beim [Azure Stack-Portal](https://portal.local.azurestack.external/) an.
 
-1. Klicken Sie auf **Weitere Dienste** > **Benutzerabonnements** > **+ Hinzufügen**.
+1. Wählen Sie **Weitere Dienste** > **Abonnements** aus.
 
 1. Wählen Sie das von Ihnen erstellte Abonnement aus.
 

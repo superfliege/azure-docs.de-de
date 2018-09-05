@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 08/29/2018
 ms.author: douglasl
-ms.openlocfilehash: 2dab0adb0728a1fb5e8ac9bebe01f861ed8c7c3a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055363"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144353"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -99,15 +99,19 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 | Eigenschaft              | BESCHREIBUNG                              | Erforderlich |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | Name der Aktivität in der Pipeline     | Ja      |
+| name                  | Name der Aktivität in der Pipeline     | JA      |
 | Beschreibung           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
-| type                  | Für die benutzerdefinierte Aktivität ist der Aktivitätstyp **Custom**. | Ja      |
-| linkedServiceName     | Mit Azure Batch verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  | Ja      |
-| command               | Befehl der benutzerdefinierten Anwendung, der ausgeführt werden soll. Wenn die Anwendung bereits auf dem Knoten des Azure Batch-Pools verfügbar ist, können „resourceLinkedService“ und „folderPath“ übersprungen werden. Sie können beispielsweise den Befehl `cmd /c dir` angeben, was vom Knoten des Azure Batch-Pools nativ unterstützt wird. | Ja      |
+| type                  | Für die benutzerdefinierte Aktivität ist der Aktivitätstyp **Custom**. | JA      |
+| linkedServiceName     | Mit Azure Batch verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  | JA      |
+| command               | Befehl der benutzerdefinierten Anwendung, der ausgeführt werden soll. Wenn die Anwendung bereits auf dem Knoten des Azure Batch-Pools verfügbar ist, können „resourceLinkedService“ und „folderPath“ übersprungen werden. Sie können beispielsweise den Befehl `cmd /c dir` angeben, was vom Knoten des Azure Batch-Pools nativ unterstützt wird. | JA      |
 | resourceLinkedService | Mit dem Speicherkonto verknüpfter Azure Storage-Dienst, in dem die benutzerdefinierte Anwendung gespeichert wird. | Nein        |
 | folderPath            | Pfad zum Ordner der benutzerdefinierten Anwendung und allen ihren abhängigen Elementen | Nein        |
 | referenceObjects      | Array vorhandener verknüpfter Dienste und Datasets. Die referenzierten verknüpften Dienste und Datasets werden im JSON-Format an die benutzerdefinierte Anwendung übergeben, sodass Ihr benutzerdefinierter Code auf Data Factory-Ressourcen verweisen kann. | Nein        |
 | extendedProperties    | Benutzerdefinierte Eigenschaften, die im JSON-Format an die benutzerdefinierte Anwendung übergeben werden können, sodass Ihr benutzerdefinierter Code auf zusätzliche Eigenschaften verweisen kann. | Nein        |
+
+## <a name="custom-activity-permissions"></a>Berechtigungen für benutzerdefinierte Aktivitäten
+
+Die benutzerdefinierte Aktivität legt das automatische Benutzerkonto von Azure Batch auf *Zugriff ohne Administratorrechte mit Aufgabenbereich* (die Standardspezifikation für den automatischen Benutzer) fest. Sie können die Berechtigungsebene für das automatische Benutzerkonto nicht ändern. Weitere Informationen finden Sie unter [Ausführen von Aufgaben unter Benutzerkonten in Batch | Automatische Benutzerkonten](../batch/batch-user-accounts.md#auto-user-accounts).
 
 ## <a name="executing-commands"></a>Ausführen von Befehlen
 

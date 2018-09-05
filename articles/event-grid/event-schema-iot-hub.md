@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 08/17/2018
 ms.author: kgremban
-ms.openlocfilehash: 4bb33eae53d31701b66d13cb4e810b1a0b8a4b0b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144115"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143572"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Azure Event Grid-Ereignisschema für IoT Hub
 
@@ -31,8 +31,33 @@ Azure IoT Hub gibt die folgenden Ereignistypen aus:
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. | 
+| Microsoft.Devices.DeviceConnected | Wird ausgelöst, wenn ein Gerät mit einem IoT Hub verbunden wird. |
+| Microsoft.Devices.DeviceDisconnected | Wird ausgelöst, wenn ein Gerät von einem IoT Hub getrennt wird. | 
 
 ## <a name="example-event"></a>Beispielereignis
+
+Die Schemas für DeviceConnected- und DeviceDisconnected-Ereignisse verfügen über die gleiche Struktur. Dieses Beispielereignis zeigt das Schema eines Ereignisses, das ausgelöst wird, wenn ein Gerät mit einem IoT Hub verbunden wird:
+
+```json
+[{
+  "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8", 
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceConnected", 
+  "eventTime": "2018-06-02T19:17:44.4383997Z", 
+  "data": {
+    "deviceConnectionStateEventInfo": {
+      "sequenceNumber":
+        "000000000000000001D4132452F67CE200000002000000000000000000000001"
+    },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice",
+    "moduleId" : "DeviceModuleID"
+  }, 
+  "dataVersion": "1", 
+  "metadataVersion": "1" 
+}]
+```
 
 Das Schema für DeviceCreated- und DeviceDeleted-Ereignisse verfügen über die gleiche Struktur. Das Beispielereignis zeigt das Schema eines Ereignisses, das ausgelöst wird, wenn ein Gerät bei einem IoT Hub registriert wird:
 
@@ -47,6 +72,7 @@ Das Schema für DeviceCreated- und DeviceDeleted-Ereignisse verfügen über die 
     "twin": {
       "deviceId": "LogicAppTestDevice",
       "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "null",
       "status": "enabled",
       "statusUpdateTime": "0001-01-01T00:00:00",
       "connectionState": "Disconnected",
@@ -74,11 +100,9 @@ Das Schema für DeviceCreated- und DeviceDeleted-Ereignisse verfügen über die 
       }
     },
     "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice",
-    "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-    "opType": "DeviceCreated"
+    "deviceId": "LogicAppTestDevice"
   },
-  "dataVersion": "",
+  "dataVersion": "1",
   "metadataVersion": "1"
 }]
 ```
@@ -98,17 +122,29 @@ Alle Ereignisse enthalten die gleichen Daten der obersten Ebene:
 | dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
 | metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
 
-Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
+Für IoT Hub-Ereignisse enthält das Datenobjekt die folgenden Eigenschaften:
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | hubName | Zeichenfolge | Name des IoT Hubs, in dem das Gerät erstellt bzw. aus dem das Gerät gelöscht wurde. |
 | deviceId | Zeichenfolge | Der eindeutige Bezeichner des Geräts. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| operationTimestamp | Zeichenfolge | Der ISO8601-Zeitstempel des Vorgangs. |
-| opType | Zeichenfolge | Der Ereignistyp, der von IoT Hub für diesen Vorgang angegeben wurde: entweder `DeviceCreated` oder `DeviceDeleted`.
+
+Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. Für die IoT Hub-Ereignisse **Gerät verbunden** und **Gerät getrennt** enthält das Datenobjekt die folgenden Eigenschaften:
+
+| Eigenschaft | Typ | BESCHREIBUNG |
+| -------- | ---- | ----------- |
+| moduleId | Zeichenfolge | Der eindeutige Bezeichner des Moduls. Dieses Feld dient nur der Ausgabe für Modulgeräte. Eine Zeichenfolge mit Beachtung von Groß-/Kleinschreibung, die bis zu 128 Zeichen lang sein kann und alphanumerische 7-Bit-ASCII-Zeichen sowie die folgenden Sonderzeichen unterstützt: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| deviceConnectionStateEventInfo | object | Ereignisinformationen zum Verbindungsstatus des Geräts
+| sequenceNumber | Zeichenfolge | Eine Zahl, die hilft, die Reihenfolge der Ereignisse „Gerät verbunden“ oder „Gerät getrennt“ anzugeben. Die letzten Ereignisse haben eine höhere Sequenznummer als frühere Ereignisse. Diese Zahl kann sich um mehr als 1 ändern, aber sie ist immer ansteigend. Weitere Informationen finden Sie unter [Verwenden der Sequenznummer](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+
+Die Inhalte des Datenobjekts unterscheiden sich für jeden Ereignisherausgeber. Für die IoT Hub-Ereignisse **Gerät erstellt** und **Gerät gelöscht** enthält das Datenobjekt die folgenden Eigenschaften:
+
+| Eigenschaft | Typ | BESCHREIBUNG |
+| -------- | ---- | ----------- |
 | twin | object | Informationen zum Gerätezwilling, der Cloudrepräsentation der Anwendungsgeräte-Metadaten. | 
 | deviceID | Zeichenfolge | Der eindeutige Bezeichner des Gerätezwillings. | 
-| etag | Zeichenfolge | Informationen, die den Inhalt des Gerätezwillings beschreiben. Jedes ETag ist pro Gerätezwilling garantiert eindeutig. | 
+| etag | Zeichenfolge | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen eines Gerätezwillings sichergestellt wird. Jedes ETag ist pro Gerätezwilling garantiert eindeutig. |  
+| deviceEtag| Zeichenfolge | Ein Validierungssteuerelement, mit dem die Konsistenz von Aktualisierungen einer Geräteregistrierung sichergestellt wird. Jedes deviceEtag ist pro Gerätezwilling garantiert eindeutig. |
 | status | Zeichenfolge | Gibt an, ob der Gerätezwilling aktiviert oder deaktiviert ist. | 
 | statusUpdateTime | Zeichenfolge | Der ISO8601-Zeitstempel der letzten Statusaktualisierung für den Gerätezwilling. |
 | connectionState | Zeichenfolge | Gibt an, ob das Gerät verbunden oder getrennt ist. | 

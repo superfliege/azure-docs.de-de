@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: a5ee6241630ee24a05c2c4b932453bd7946a7508
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 64095089e4c0841aa1f77165969221836c747738
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374762"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888572"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtern der Ergebnisse, die die Suchantwort enthält  
 
@@ -79,6 +79,12 @@ Das folgende Beispiel zeigt die Antwort auf die vorherige Abfrage. Wie Sie sehen
         }
     }
 }
+```
+
+Wenn Sie bestimmte Inhalte (z.B. Bilder) aus der Antwort ausschließen möchten, können Sie dazu dem Wert „responseFilter“ einen Bindestrich (Minuszeichen) voranstellen. Trennen Sie ausgeschlossene Inhaltstypen durch ein Komma voneinander ab: 
+
+```
+&responseFilter=-images,-videos
 ```
 
 Obwohl Bing in der vorherigen Antwort keine Video- und News-Ergebnisse zurückgegeben hat, bedeutet dies nicht, dass es keine Video- und News-Inhalte gibt. Es bedeutet lediglich, dass sie nicht auf der Seite enthalten waren. Wenn Sie jedoch weitere [Seiten](./paging-webpages.md) mit Ergebnissen anzeigen, werden die nachfolgenden Seiten solche Ergebnisse wahrscheinlich enthalten. Auch wenn Sie die [Videosuche-API](../bing-video-search/search-the-web.md)- und [News-Suche-API](../bing-news-search/search-the-web.md)-Endpunkte direkt aufrufen, enthält die Antwort wahrscheinlich Ergebnisse. 

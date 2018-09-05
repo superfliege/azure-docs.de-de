@@ -1,5 +1,5 @@
 ---
-title: Unterstützte Länder/Regionen und Sprachen für die Bing-Websuche-API in Azure | Microsoft-Dokumentation
+title: Durch die Bing-Websuche-API unterstützte Länder, Regionen und Sprachen
 description: Finden Sie heraus, welche Länder/Regionen und Sprachen von der Bing-Websuche-API unterstützt werden.
 services: cognitive-services
 author: v-jerkin
@@ -7,24 +7,24 @@ manager: jhubbard
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
-ms.date: 10/06/2017
-ms.author: v-jerkin
-ms.openlocfilehash: e1994ddf3bf71d01adeac4ff8688bdd1e6eac660
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 87384a8aeabfe0c4a178344235debcc586cdf3de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001717"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888470"
 ---
-# <a name="bing-web-search-countriesregions-and-languages"></a>Länder/Regionen und Sprachen der Bing-Websuche
+# <a name="countries-regions-and-languages-supported-by-the-bing-web-search-api"></a>Durch die Bing-Websuche-API unterstützte Länder, Regionen und Sprachen
 
-Die Bing-Websuche-API unterstützt mehr als drei Dutzend Länder/Regionen, viele davon mit mehreren Sprachen. Die Angabe eines Lands/einer Region mit einer Abfrage dient in erster Linie dazu, Suchergebnisse auf Grundlage des Interesses an diesem Land/dieser Region zu verfeinern. Außerdem können die Ergebnisse Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land/der angegebenen Region oder der angegebenen Sprache lokalisieren.
+Die Bing-Websuche-API unterstützt über drei Dutzend Länder oder Regionen, viele davon mit mehreren Sprachen. Die Angabe eines Lands oder einer Region mit einer Abfrage dient dazu, Suchergebnisse auf Grundlage der Interessen des Lands oder der Region zu verfeinern. Die Ergebnisse können Links zu Bing enthalten, und diese Links können die Bing-Benutzeroberfläche entsprechend dem angegebenen Land bzw. der angegebenen Region oder der angegebenen Sprache lokalisieren.
 
-Sie können mit dem `cc`-Abfrageparameter ein Land/eine Region angeben. Wenn Sie ein Land/eine Region angeben, müssen Sie mithilfe des HTTP-Headers `Accept-Language` auch mindestens einen Sprachcode angeben. Die unterstützten Sprachen sind je nach Land/Region unterschiedlich. Sie werden für jedes Land/jede Region in der Tabelle „Märkte“ angegeben.
+Sie können mit dem Abfrageparameter `cc` ein Land oder eine Region angeben. Bei der Angabe eines Lands oder einer Region müssen Sie mithilfe des [`Accept-Language`-Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers) auch mindestens einen Sprachcode angeben. Unter [Märkte](#Markets) finden Sie eine Aufstellung der in jedem Markt unterstützten Sprachen.
 
-Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einen Code aus der Tabelle **Märkte** angeben. Bei der Angabe eines Markts werden gleichzeitig ein Land/eine Region und die bevorzugte Sprache angegeben. Der Abfrageparameter `setLang` kann in diesem Fall auf einen Sprachcode festgelegt sein. Dies ist in der Regel dieselbe von `mkt` angegebene Sprache, es sei denn, der Benutzer möchte Bing in einer anderen Sprache anzeigen.
+Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einem Code aus der Tabelle **Märkte** angeben. Bei der Angabe eines Markts werden gleichzeitig ein Land oder eine Region und die bevorzugte Sprache angegeben. Mit dem Abfrageparameter `setLang` können Sie die Sprache ausdrücklich festlegen.
 
-## <a name="countries"></a>Länder
+## <a name="countriesregions"></a>Länder/Regionen
 
 |Land/Region|Code|
 |-------|----|
@@ -64,7 +64,6 @@ Alternativ können Sie den Markt mit dem Abfrageparameter `mkt` und einen Code a
 |Türkei|TR|
 |Vereinigtes Königreich|GB|
 |USA|US|
-
 
 ## <a name="markets"></a>Märkte
 

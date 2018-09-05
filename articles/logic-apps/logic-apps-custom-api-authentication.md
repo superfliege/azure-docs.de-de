@@ -1,27 +1,22 @@
 ---
 title: 'Hinzufügen der Authentifizierung zu benutzerdefinierten APIs: Azure Logic Apps | Microsoft-Dokumentation'
-description: Informationen zum Einrichten der Authentifizierung für Aufrufe Ihrer benutzerdefinierten APIs in Logik-Apps
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: Einrichten der Authentifizierung für Aufrufe benutzerdefinierter APIs in Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 705abb2a3cc25c965bdce364eb169b4e3a814bff
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298548"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43132646"
 ---
-# <a name="secure-calls-to-your-custom-apis-from-logic-apps"></a>Schützen von Aufrufen Ihrer benutzerdefinierten APIs in Logik-Apps
+# <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Schützen von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
 Um Aufrufe Ihrer APIs zu schützen, können Sie die Azure Active Directory-Authentifizierung (Azure AD) über das Azure-Portal einrichten, sodass Sie Ihren Code nicht aktualisieren müssen. Alternativ können Sie die Authentifizierung über den API-Code anfordern oder erzwingen.
 
@@ -29,7 +24,7 @@ Um Aufrufe Ihrer APIs zu schützen, können Sie die Azure Active Directory-Authe
 
 Sie können Aufrufe Ihrer benutzerdefinierten API auf folgende Arten sichern:
 
-* [Keine Änderungen am Code](#no-code): Schützen Sie Ihre API mit [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) über das Azure-Portal, damit Sie Ihren Code nicht aktualisieren bzw. Ihre API nicht bereitstellen müssen.
+* [Keine Änderungen am Code](#no-code): Schützen Sie Ihre API mit [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) über das Azure-Portal, damit Sie Ihren Code nicht aktualisieren bzw. Ihre API nicht bereitstellen müssen.
 
   > [!NOTE]
   > Bei der Azure AD-Authentifizierung, die Sie im Azure-Portal aktivieren, wird standardmäßig keine fein abgestufte Autorisierung durchgeführt. Beispielsweise sperrt diese Authentifizierung Ihre API nur für einen bestimmten Mandanten und nicht für einen bestimmten Benutzer oder eine App. 
@@ -193,11 +188,11 @@ In der obigen Vorlage ist der Abschnitt für die Autorisierung bereits eingerich
 
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| Mandant | Ja | Die GUID für den Azure AD-Mandanten | 
-| audience | Ja | Die GUID für die Zielressource, auf die Sie zugreifen möchten. Dies ist die Client-ID der Anwendungsidentität für Ihre Web-App oder API-App | 
-| clientId | Ja | Die GUID für den Client, der darauf zugreifen möchte. Dies ist die Client-ID der Anwendungsidentität für Ihre Logik-App | 
-| secret | Ja | Der Schlüssel oder das Kennwort der Anwendungsidentität für den Client, der das Zugriffstoken anfordert | 
-| type | Ja | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. | 
+| Mandant | JA | Die GUID für den Azure AD-Mandanten | 
+| audience | JA | Die GUID für die Zielressource, auf die Sie zugreifen möchten. Dies ist die Client-ID der Anwendungsidentität für Ihre Web-App oder API-App | 
+| clientId | JA | Die GUID für den Client, der darauf zugreifen möchte. Dies ist die Client-ID der Anwendungsidentität für Ihre Logik-App | 
+| secret | JA | Der Schlüssel oder das Kennwort der Anwendungsidentität für den Client, der das Zugriffstoken anfordert | 
+| type | JA | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. | 
 |||| 
 
 Beispiel: 
@@ -239,9 +234,9 @@ Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| type | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. | 
-| password | Ja | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) | 
-| pfx | Ja | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) | 
+| type | JA | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. | 
+| password | JA | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) | 
+| pfx | JA | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) | 
 |||| 
 
 <a name="basic"></a>
@@ -256,9 +251,9 @@ Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| type | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
-| username | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
-| password | Ja | Das Kennwort, das Sie für die Authentifizierung verwenden möchten | 
+| type | JA | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
+| username | JA | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
+| password | JA | Das Kennwort, das Sie für die Authentifizierung verwenden möchten | 
 |||| 
 
 <a name="azure-ad-code"></a>

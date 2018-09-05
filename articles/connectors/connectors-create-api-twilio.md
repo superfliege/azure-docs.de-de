@@ -1,52 +1,81 @@
 ---
-title: Hinzufügen des Twilio-Connectors zu Ihren Azure-Logik-Apps | Microsoft-Dokumentation
-description: Übersicht über den Twilio-Connector mit REST-API-Parametern
+title: Herstellen einer Verbindung mit Twilio aus Azure Logic Apps | Microsoft-Dokumentation
+description: Automatisieren Sie Aufgaben und Workflows zur Verwaltung globaler SMS-, MMS- und IP-Nachrichten über Ihr Twilio-Konto mithilfe von Azure Logic Apps.
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 09/19/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 8bcf69a7c8e04cb45d795fd0d6f20d477c15865d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: db7677042737ea1377af54cc02ee1c82c05435c8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652004"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047573"
 ---
-# <a name="get-started-with-the-twilio-connector"></a>Erste Schritte mit dem Twilio-Connector
-Stellen Sie eine Verbindung mit Twilio her, um global SMS, MMS und IP-Nachrichten zu senden und zu empfangen. Mit Twilio können Sie folgende Aktionen ausführen:
+# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Verwalten von Nachrichten in Twilio mit Azure Logic Apps
 
-* Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Twilio abgerufen werden. 
-* Verwenden von Aktionen zum Abrufen einer Nachricht, von Listennachrichten und mehr. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn Sie eine neue Twilio-Nachricht erhalten, können Sie diese Nachricht B. annehmen und als Service Bus-Workflow verwenden. 
+Mit Azure Logic Apps und dem Twilio-Connector können Sie automatisierte Aufgaben und Workflows erstellen, die Nachrichten in Twilio abrufen, senden und auflisten. Dazu gehören globale SMS-, MMS- und IP-Nachrichten. Sie können diese Aktionen verwenden, um Aufgaben mit Ihrem Twilio-Konto auszuführen. Sie können die Ausgaben von Twilio-Aktionen auch in anderen Aktionen verwenden. Wenn z.B. eine neue Nachricht eingeht, können Sie den Nachrichteninhalt mit dem Slack-Connector senden. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="create-a-connection-to-twilio"></a>Herstellen einer Verbindung mit Twilio
-Wenn Sie diesen Connector Ihren Logik-Apps hinzufügen, geben Sie die folgenden Twilio-Werte ein:
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
 
-| Eigenschaft | Erforderlich | BESCHREIBUNG |
-| --- | --- | --- |
-| Konto-ID |Ja |Geben Sie Ihre Twilio-Konto-ID ein. |
-| Access Token |Ja |Geben Sie Ihr Twilio-Zugriffstoken ein. |
+* In [Twilio](https://www.twilio.com/): 
 
-> [!INCLUDE [Steps to create a connection to Twilio](../../includes/connectors-create-api-twilio.md)]
-> 
-> 
+  * Ihre Twilio-Konto-ID und das [Authentifizierungstoken](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), die Sie in Ihrem Twilio-Dashboard finden
 
-Wenn Sie kein Zugriffstoken für Twilio besitzen, finden Sie unter [User Identity & Access Tokens](https://www.twilio.com/docs/api/chat/guides/identity) (Benutzeridentität und Zugriffstoken) weitere Informationen.
+    Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Herstellung einer Verbindung mit Ihrem Twilio-Konto sowie zum Zugriff auf das Konto aus Ihrer Logik-App. 
+    Wenn Sie ein Twilio-Testkonto verwenden, können Sie SMS-Nachrichten nur an *verifizierte* Telefonnummern senden.
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+  * Eine verifizierte Twilio-Telefonnummer, die SMS senden kann
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/twilio/) an.
+  * Eine verifizierte Twilio-Telefonnummer, die SMS empfangen kann
 
-## <a name="more-connectors"></a>Weitere Connectors
-Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Die Logik-App, in der Sie auf Ihr Twilio-Konto zugreifen möchten. Um eine Twilio-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
+
+## <a name="connect-to-twilio"></a>Verbinden mit Twilio
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
+
+1. Auswählen eines Pfads: 
+
+     * Wählen Sie im letzten Schritt zum Hinzufügen einer Aktion **Neuer Schritt** aus. 
+
+       Oder
+
+     * Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
+     Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
+     
+       Geben Sie im Suchfeld den Begriff „Twilio“ als Filter ein. 
+       Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
+
+1. Geben Sie die erforderlichen Informationen zu Ihrer Verbindung ein, und wählen Sie dann **Erstellen** aus:
+
+   * Der Name, der für Ihre Verbindung verwendet werden soll
+   * Ihre Twilio-Konto-ID 
+   * Ihr Twilio-Zugriffstoken (Authentifizierung)
+
+1. Geben Sie die erforderlichen Informationen für die ausgewählte Aktion ein, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/twilio/) des Connectors.
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

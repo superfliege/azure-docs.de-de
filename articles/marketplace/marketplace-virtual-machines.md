@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5508b5943e116545297d91e85621d2a11a635299
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058072"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144521"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von VM-Angeboten
 
@@ -31,7 +31,7 @@ Hierbei handelt es sich um Transaktionsangebote, die über den Marketplace berei
 
 Bei Verwendung des Abrechnungsmodells Bring-Your-Own-License (BYOL) können Sie arrangieren, dass Benutzer zum Testen Ihres Angebots Zugriff mittels zeitlich begrenzter Softwarelizenzen erhalten. Im Folgenden sind die Anforderungen zum Bereitstellen dieses Angebots aufgeführt. 
 
-|Requirements (Anforderungen)  |Details  |
+|Anforderungen  |Details  |
 |---------|---------|
 |Kostenloser Testzeitraum und Testversion     |   Ihr Kunde kann Ihre App für begrenzte Zeit kostenlos ausprobieren. Ihr Kunde muss keine Lizenz- oder Abonnementgebühren für Ihr Angebot bezahlen. Ihr Kunde muss nicht für das zugrunde liegende Erstanbieterprodukt bzw. den zugrunde liegenden Erstanbieterdienst von Microsoft bezahlen. Alle Testoptionen werden in Ihrem Azure-Abonnement bereitgestellt. Sie haben alleinige Kontrolle über die Kostenoptimierung und -verwaltung. Sie können eine kostenlose Testversion oder eine interaktive Demo auswählen. Unabhängig von Ihrer Wahl muss Ihre kostenlose Testversion dem Kunden einen vorab festgelegten Zeitraum bereitstellen, in dem er Ihr Angebot ohne zusätzliche Kosten testen kann.|
 |Einfach konfigurierbare und einsatzbereite Lösungen    |  Ihre App muss sich einfach und schnell konfigurieren und einrichten lassen.       |
@@ -42,9 +42,9 @@ Bei Verwendung des Abrechnungsmodells Bring-Your-Own-License (BYOL) können Sie 
 
 Sie stellen eine oder mehrere VMs über IaaS- (Infrastructure-As-A-Service) oder SaaS-Apps bereit. Ein Vorteil der Testversion-Veröffentlichungsoption ist die automatische Bereitstellung einer VM oder einer gesamten Lösung mit einer von einem Partner gehosteten geführten Tour. Eine Testversion stellt Ihrem Kunden eine Bewertung ohne Zusatzkosten zur Verfügung. Ihr Kunde muss nicht bereits Azure-Kunde sein, um die Testversion zu nutzen. 
 
-Senden Sie eine E-Mail an amp-testdrive@microsoft.com, um zu beginnen. 
+Für erste Schritte kontaktieren Sie uns unter [amp-testdrive](mailto:amp-testdrive@microsoft.com). 
 
-|Requirements (Anforderungen)  |Details |
+|Anforderungen  |Details |
 |---------|---------|
 | Sie verfügen über eine Marketplace-App   |    Mindestens eine VM über IaaS oder SaaS.      |
 

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/25/2018
+ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: 9e4d65875085ec293813e2683acde095ae112b75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503705"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144037"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 In diesem Artikel wird beschrieben, wie Sie die verschiedenen Fabric-Einstellungen für Ihren Service Fabric-Cluster anpassen. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei „ClusterConfig.json“ und ein Konfigurationsupgrade in Ihrem Cluster an. 
@@ -187,9 +187,10 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="dnsservice"></a>DnsService
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|InstanceCount|Ganze Zahl, Standardwert -1|statischen|Standardwert ist -1. Das bedeutet, dass DnsService auf jedem Knoten ausgeführt wird. Für OneBox muss diese Option auf 1 festgelegt werden, da DnsService den bekannten Port 53 verwendet, damit nicht mehrere Instanzen auf dem gleichen Computer auftreten.|
+|EnablePartitionedQuery|Boolesch, Standardwert FALSE|statischen|Das Flag zum Aktivieren der Unterstützung für DNS-Abfragen bei partitionierten Diensten. Dieses Feature ist standardmäßig deaktiviert. Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
+|InstanceCount|Ganze Zahl, Standardwert -1|statischen|Der Standardwert ist -1. Das bedeutet, dass DnsService auf jedem Knoten ausgeführt wird. Für OneBox muss diese Option auf 1 festgelegt werden, da DnsService den bekannten Port 53 verwendet, damit nicht mehrere Instanzen auf dem gleichen Computer auftreten.|
 |IsEnabled|Boolesch, Standardwert FALSE|statischen|Aktiviert/deaktiviert DnsService. DnsService ist standardmäßig deaktiviert, und diese Konfiguration muss zur Aktivierung festgelegt werden. |
-|PartitionPrefix|Zeichenfolge, Standardwert „-“|statischen|Steuert den Wert der Partitionspräfix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Darf keine leere Zeichenfolge sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
+|PartitionPrefix|Zeichenfolge, Standardwert „--“|statischen|Steuert den Wert der Partitionspräfix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Darf keine leere Zeichenfolge sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).|
 |PartitionSuffix|string, Standardwert ""|statischen|Steuert den Wert der Partitionssuffix-Zeichenfolge in DNS-Abfragen für partitionierte Dienste. Der Wert: <ul><li>Muss RFC-kompatibel sein, da er Teil einer DNS-Abfrage ist.</li><li>Darf keinen Punkt („.“) enthalten, weil Punkte das Verhalten von DNS-Suffixen beeinträchtigen.</li><li>Darf nicht länger als 5 Zeichen sein.</li><li>Wenn die PartitionPrefix-Einstellung überschrieben wird, muss auch PartitionSuffix überschrieben werden – und umgekehrt.</li></ul>Weitere Informationen finden Sie unter [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md). |
 
 ## <a name="fabricclient"></a>FabricClient
@@ -350,6 +351,9 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |ApplicationHostCloseTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Wenn die Beendigung von Fabric in einem selbstaktivierten Prozess erkannt wird, schließt FabricRuntime alle Replikate im Hostprozess des Benutzers (applicationhost). Dies ist das Timeout für den Schließvorgang. |
 |ApplicationUpgradeTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(360)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für das Anwendungsupgrade. Wenn das Timeout kleiner als „ActivationTimeout“ ist, tritt für das Bereitstellungsmodul ein Fehler auf. |
 |ContainerServiceArguments|Zeichenfolge, Standardwert „-H localhost:2375 -H npipe://“|statischen|Service Fabric (SF) verwaltet den Docker-Daemon (außer auf Windows-Clientcomputern wie Win10). Diese Konfiguration ermöglicht Benutzern, benutzerdefinierte Argumente anzugeben, die beim Start an den Docker-Daemon übergeben werden sollen. Wenn Sie benutzerdefinierte Argumente angegeben, übergibt Service Fabric ausschließlich das Argument „--pidfile“ an die Docker-Engine. Benutzer sollten daher das Argument „--pidfile“ nicht in ihren benutzerdefinierten Argumenten angeben. Außerdem sollte mit den benutzerdefinierten Argumenten sichergestellt werden, dass der Docker-Daemon unter Windows an der Standard-Named Pipe (bzw. unter Linux am Unix-Domänensocket) lauscht, damit Service Fabric mit ihm kommunizieren kann.|
+|ContainerServiceLogFileMaxSizeInKb|Ganze Zahl, Standardwert 32768|statischen|Maximale Größe der Protokolldatei, die von Docker-Containern generiert wird.  Nur Windows|
+|ContainerServiceLogFileNamePrefix|Zeichenfolge, Standardwert „sfcontainerlogs“|statischen|Dateinamenpräfix für Protokolldateien, die von Docker-Containern generiert werden.  Nur Windows|
+|ContainerServiceLogFileRetentionCount|Ganze Zahl, Standardwert 10|statischen|Anzahl der Protokolldateien, die von Docker-Container generiert werden, bevor Protokolldateien überschrieben werden.  Nur Windows|
 |CreateFabricRuntimeTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den FabricCreateRuntime-Synchronisierungsaufruf. |
 |DefaultContainerRepositoryAccountName|string, Standardwert ""|statischen|Verwendung der Standardanmeldeinformationen anstelle der in ApplicationManifest.xml angegebenen Anmeldeinformationen. |
 |DefaultContainerRepositoryPassword|string, Standardwert ""|statischen|Verwendung der standardmäßigen Kennwortanmeldeinformationen anstelle der in ApplicationManifest.xml angegebenen Anmeldeinformationen.|
@@ -357,6 +361,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |DeploymentMaxRetryInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(3600)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das maximale Wiederholungsintervall für die Bereitstellung. Bei jedem andauernden Fehler wird das Wiederholungsintervall wie folgt berechnet: Min( DeploymentMaxRetryInterval; Anzahl andauernder Fehler * DeploymentRetryBackoffInterval). |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
+|EnableContainerServiceDebugMode|Boolesch, Standardwert TRUE|statischen|Aktivieren/Deaktivieren der Protokollierung für Docker-Container.  Nur Windows|
 |EnableDockerHealthCheckIntegration|Boolesch, Standardwert TRUE|statischen|Ermöglicht die Integration von HEALTCHECK-Ereignissen des Docker-Tools in den Service Fabric-Systemintegritätsbericht. |
 |EnableProcessDebugging|Boolesch, Standardwert FALSE|Dynamisch| Ermöglicht das Starten von Anwendungshosts unter dem Debugger. |
 |EndpointProviderEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht die Verwaltung von Endpunktressourcen durch Fabric. Erfordert die Angabe des Start- und Endportbereichs dder Anwendungen in FabricNode. |

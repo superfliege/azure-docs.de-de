@@ -1,125 +1,141 @@
 ---
-title: Einrichten des Messaging mit Azure Service Bus für Azure Logic Apps | Microsoft-Dokumentation
-description: Senden und Empfangen von Nachrichten mit Ihren Logik-Apps mithilfe von Azure Service Bus
+title: Senden und Empfangen von Nachrichten mit Azure Service Bus – Azure Logic Apps | Microsoft-Dokumentation
+description: Einrichten des Messaging in der Unternehmenscloud mit Azure Service Bus in Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
-ms.date: 02/06/2018
-ms.author: ladocs
-ms.openlocfilehash: aa6ab10dded541b352bdb7c8c3a47dbbbfe6a15c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 813df5b4ef37ad1264df48863aa8f0ed5a4d4789
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295467"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048773"
 ---
-# <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>Senden und Empfangen von Nachrichten mit dem Azure Service Bus-Connector
+# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Austauschen von Nachrichten in der Cloud mit Azure Service Bus und Azure Logic Apps
 
-Um Nachrichten mit Ihrer Logik-App zu senden und zu empfangen, stellen Sie eine Verbindung mit [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) her. Sie können Aktionen ausführen wie Senden an eine Warteschlange, Senden an ein Thema, Empfangen aus einer Warteschlange und Empfangen aus Abonnements usw. Erfahren Sie mehr über [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) und die [Preisgestaltung für Logic Apps-Trigger](../logic-apps/logic-apps-pricing.md).
+Mit Azure Logic Apps und dem Azure Service Bus-Connector können Sie automatisierte Aufgaben und Workflows, die Daten wie Verkäufe, Bestellungen, Journale und Warenbestandsbewegungen in Anwendungen für Ihre Organisation übertragen, erstellen. Der Connector überwacht, sendet und verwaltet nicht nur Nachrichten, sondern führt auch Aktionen mit Warteschlangen, Sitzungen, Themen, Abonnements usw. aus, zum Beispiel:
+
+* Überwachen des Eingangs (automatisch abschließen) oder Empfangs (Peek-Lock) von Nachrichten in Warteschlangen, Themen und Abonnements 
+* Senden von Nachrichten
+* Erstellen und Löschen von Themenabonnements
+* Verwalten von Nachrichten in Warteschlangen und Themenabonnements, z.B. abrufen, verzögert abrufen, abschließen, verzögern, verwerfen und als unzustellbar kennzeichnen.
+* Erneuern von Sperren für Nachrichten und Sitzungen in Warteschlangen und Themenabonnements
+* Schließen von Sitzungen in Warteschlangen und Themen
+
+Sie können Trigger verwenden, die Antworten von Service Bus erhalten und die Ausgabe für andere Aktionen in Ihren Logik-Apps verfügbar machen. Sie können die Ausgaben von Service Bus-Aktionen auch in anderen Aktionen verwenden. Wenn Sie noch nicht mit Service Bus und Logik-Apps vertraut sind, lesen Sie [Was ist Azure Service Bus?](../service-bus-messaging/service-bus-messaging-overview.md) und [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie den Service Bus-Connector verwenden können, müssen Sie über diese Elemente verfügen, die im gleichen Azure-Abonnement vorhanden sein müssen, damit sie füreinander sichtbar sind:
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
 
-* Ein [Service Bus-Namespace und eine Messagingentität, z.B. eine Warteschlange](../service-bus-messaging/service-bus-create-namespace-portal.md)
-* Eine [Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Ein Service Bus-Namespace und eine Messagingentität, z.B. eine Warteschlange. Wenn Sie nicht über diese Elemente verfügen, informieren Sie sich, wie Sie [Ihren Service Bus-Namespace und eine Warteschlange erstellen](../service-bus-messaging/service-bus-create-namespace-portal.md). 
+
+  Diese Elemente müssen im gleichen Azure-Abonnement wie Ihre Logik-Apps, die diese Elemente verwenden, vorhanden sein.
+
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Die Logik-App, in der Sie Service Bus verwenden möchten. Ihre Logik-App muss demselben Azure-Abonnement wie Ihre Service Bus-Instanz angehören. Wenn Sie mit einem Service Bus-Trigger beginnen möchten, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine Service Bus-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
 
 <a name="permissions-connection-string"></a>
 
-## <a name="connect-to-azure-service-bus"></a>Herstellen der Verbindung mit Azure Service Bus
+## <a name="check-permissions"></a>Überprüfen der Berechtigungen
 
-Damit Ihre Logik-App auf einen Dienst zugreifen kann, müssen Sie eine [*Verbindung*](./connectors-overview.md) zwischen Ihrer Logik-App und dem Dienst erstellen, sofern dies noch nicht geschehen ist. Diese Verbindung erlaubt Ihrer Logik-App den Zugriff auf Daten. Überprüfen Sie, ob Ihre Berechtigungen den Zugriff Ihrer Logik-App auf Ihr Service Bus-Konto erlauben.
+Vergewissern Sie sich, dass Ihre Logik-App über Berechtigungen für den Zugriff auf Ihren Service Bus-Namespace verfügt. 
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
-2. Wechseln Sie zu Ihrem Service Bus-*Namespace*, nicht zu einer bestimmten „Messagingentität“. Wählen Sie auf der Seite „Namespace“ unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien**. Stellen Sie im Bereich **Ansprüche** sicher, dass Sie die **Verwaltungsberechtigungen** für diesen Namespace besitzen.
+2. Navigieren Sie zu Ihrem Service Bus-*Namespace*. Wählen Sie auf der Seite „Namespace“ unter **Einstellungen** die Option **Freigegebene Zugriffsrichtlinien** aus. Stellen Sie im Bereich **Ansprüche** sicher, dass Sie die **Verwaltungsberechtigungen** für diesen Namespace besitzen.
 
    ![Verwalten von Berechtigungen für Ihren Service Bus-Namespace](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. Wenn Sie die Verbindungsinformationen später manuell eingeben möchten, rufen Sie die Verbindungszeichenfolge für Ihren Service Bus-Namespace ab. Wählen Sie **RootManageSharedAccessKey**. Wählen Sie neben der Verbindungszeichenfolge Ihres Primärschlüssels die Schaltfläche „Kopieren“. Speichern Sie die Verbindungszeichenfolge für die spätere Verwendung.
+3. Rufen Sie die Verbindungszeichenfolge für Ihren Service Bus-Namespace ab. Sie benötigen diese Zeichenfolge, wenn Sie die Verbindungsinformationen in Ihrer Logik-App eingeben.
 
-   ![Kopieren der Verbindungszeichenfolge für Service Bus-Namespaces](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
+   1. Wählen Sie **RootManageSharedAccessKey**. 
+   
+   1. Wählen Sie neben der primären Verbindungszeichenfolge die Schaltfläche „Kopieren“ aus. Speichern Sie die Verbindungszeichenfolge für die spätere Verwendung.
+
+      ![Kopieren der Verbindungszeichenfolge für Service Bus-Namespaces](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Um zu überprüfen, ob Ihre Verbindungszeichenfolge mit Ihrem Service Bus-Namespace oder einer bestimmten Entität verknüpft ist, überprüfen Sie die Verbindungszeichenfolge für den Parameter `EntityPath`. Wenn Sie diesen Parameter gefunden haben, gilt die Verbindungszeichenfolge für eine bestimmte Entität und stellt nicht die richtige Zeichenfolge für die Verwendung mit Ihrer Logik-App dar.
+   > Um zu überprüfen, ob Ihre Verbindungszeichenfolge mit Ihrem Service Bus-Namespace oder einer Messagingentität (z.B. einer Warteschlange) verknüpft ist, suchen Sie die Verbindungszeichenfolge für den Parameter `EntityPath`. Wenn Sie diesen Parameter gefunden haben, gilt die Verbindungszeichenfolge für eine bestimmte Entität und stellt nicht die richtige Zeichenfolge für die Verwendung mit Ihrer Logik-App dar.
 
-## <a name="trigger-workflow-when-your-service-bus-gets-new-messages"></a>Auslösen des Workflows, wenn Ihr Service Bus neue Nachrichten erhält
+## <a name="add-trigger-or-action"></a>Hinzufügen von Triggern oder Aktionen
 
-Ein [*Trigger*](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist ein Ereignis, das einen Workflow in Ihrer Logik-App startet. Um einen Workflow zu starten, wenn neue Nachrichten an Ihren Service Bus gesendet werden, führen Sie diese Schritte zum Hinzufügen des Triggers durch, der diese Nachrichten erkennt.
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com "Azure-Portal") zu Ihrer vorhandenen Logik-App oder erstellen Sie eine leere Logik-App.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-2. Geben Sie im Designer für Logik-Apps „Service Bus“ als Filter in das Suchfeld ein. Wählen Sie den **Service Bus**-Connector aus. 
+1. Um einer leeren Logik-App einen *Trigger* hinzuzufügen, geben Sie in das Suchfeld „Azure Service Bus“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
 
-   ![Service Bus-Connector auswählen](./media/connectors-create-api-azure-service-bus/select-service-bus-connector.png) 
-
-3. Wählen Sie den zu verwendenden Trigger aus. Um z.B. eine Logik-App auszuführen, wenn ein neues Element an eine Service Bus-Warteschlange gesendet wird, wählen Sie diesen Trigger: **Service Bus – Wenn eine Nachricht in einer Warteschlange empfangen wird (automatisch abschließen)**.
+   Um z.B. Ihre Logik-App auszulösen, wenn ein neues Element an eine Service Bus-Warteschlange gesendet wird, wählen Sie diesen Trigger aus: **Bei Empfang einer Nachricht in einer Warteschlange (automatisch abschließen)**.
 
    ![Service Bus-Trigger auswählen](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > Einige Trigger geben mindestens eine Nachricht zurück, z. B. der Trigger*Service Bus - Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)*.
-   > Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
+   > Einige Trigger können eine oder mehrere Nachrichten zurückgeben, z.B. der Trigger **Bei Empfang mindestens einer Nachricht in der Warteschlange (autom. abschließen)**. Wird ein solcher Trigger ausgelöst, gibt er mindestens eine und maximal so viele Nachrichten zurück, wie diese in seiner Eigenschaft **Maximale Nachrichtenanzahl** angegeben ist.
 
-   1. Wenn noch keine Verbindung zu Ihrem Service Bus-Namespace besteht, werden Sie aufgefordert, diese Verbindung nun zu erstellen. Benennen Sie Ihre Verbindung, und wählen Sie den Service Bus-Namespace, den Sie verwenden möchten.
+   *Alle Service Bus-Trigger sind Trigger mit langem Abruf*. Das bedeutet, dass ein Trigger beim Auslösen alle Nachrichten verarbeitet und dann 30 Sekunden lang auf weitere Nachrichten wartet, die in der Warteschlange oder im Themenabonnement eingehen. 
+   Gehen innerhalb von 30 Sekunden keine Nachrichten ein, wird die Triggerausführung übersprungen. 
+   Andernfalls fährt der Trigger mit dem Lesen von Nachrichten fort, bis die Warteschlange oder das Themenabonnement leer ist. Der nächste Triggerabruf basiert auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
 
-      ![Service Bus-Verbindung herstellen](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+1. Führen Sie zum Hinzufügen einer *Aktion* zu einer vorhandenen Logik-App die folgenden Schritte aus: 
 
-      Wenn Sie die Verbindungszeichenfolge manuell eingeben möchten, wählen Sie **Verbindungsinformationen manuell eingeben**. 
-      Erfahren Sie, [wie Sie Ihre Verbindungszeichenfolge suchen](#permissions-connection-string).
-      
+   1. Wählen Sie im letzten Schritt zum Hinzufügen einer Aktion **Neuer Schritt** aus. 
 
-   2. Wählen Sie jetzt die zu verwendende Service Bus-Richtlinie aus, und wählen Sie **Erstellen**.
+      Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
+      Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
+
+   1. Geben Sie im Suchfeld den Begriff „Azure Service Bus“ als Filter ein. 
+   Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus. 
+ 
+      Wählen Sie z.B. diese Aktion aus: **Nachricht senden**.
+
+      ![Auswählen einer Service Bus-Aktion](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+
+1. Wenn Sie Ihre Logik-App zum ersten Mal mit Ihrem Service Bus-Namespace verbinden, fordert der Logik-App-Designer nun die Verbindungsinformationen an. 
+
+   1. Geben Sie einen Namen für Ihre Verbindung ein, und wählen Sie den Service Bus-Namespace aus.
+
+      ![Erstellen einer Service Bus-Verbindung, Teil 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+
+      Wenn Sie die Verbindungszeichenfolge stattdessen manuell eingeben möchten, wählen Sie **Verbindungsinformationen manuell eingeben** aus. 
+      Wenn Sie die Verbindungszeichenfolge nicht kennen, lesen Sie [Suchen der Verbindungszeichenfolge](#permissions-connection-string).
+
+   1. Wählen Sie jetzt Ihre Service Bus-Richtlinie und dann **Erstellen** aus.
 
       ![Service Bus-Verbindung herstellen, Teil 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
 
-4. Wählen Sie die zu verwendende Service Bus-Warteschlange aus, und richten Sie Intervall und Häufigkeit der Warteschlangenüberprüfung ein.
+1. Wählen Sie in diesem Beispiel die gewünschte Messagingentität aus, z.B. eine Warteschlange oder ein Thema. In diesem Beispiel wählen Sie Ihre Service Bus-Warteschlange aus. 
+   
+   ![Auswählen der Service Bus-Warteschlange](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
 
-   ![Service Bus-Warteschlange auswählen, Abrufintervall einrichten](./media/connectors-create-api-azure-service-bus/select-service-bus-queue.png)
+1. Geben Sie die erforderlichen Informationen zu Ihrem Trigger oder Ihrer Aktion ein. Führen Sie in diesem Beispiel die erforderlichen Schritte für Ihren Trigger oder Ihre Aktion aus: 
 
-   > [!NOTE]
-   > Alle Service Bus-Trigger sind Trigger mit **langem Abruf**. Das bedeutet, dass ein Trigger beim Auslösen alle Nachrichten verarbeitet und dann 30 Sekunden lang auf weitere Nachrichten wartet, die in der Warteschlange oder im Themenabonnement eingehen.
-   > Werden innerhalb von 30 Sekunden keine Nachrichten empfangen, wird die Triggerausführung übersprungen. Andernfalls fährt der Trigger mit dem Lesen von Nachrichten fort, bis die Warteschlange oder das Themenabonnement leer ist.
-   > Der nächste Triggerabruf basiert auf dem in den Triggereigenschaften angegebenen Wiederholungsintervall.
+   * **Für den Beispieltrigger:** Legen Sie das Abrufintervall und die Häufigkeit für die Überprüfung der Warteschlange fest.
 
-5. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
+     ![Einrichten des Abrufintervalls](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-Wenn Ihre Logik-App jetzt die ausgewählte Warteschlange überprüft und eine neue Nachricht findet, führt der Trigger die Aktionen für die gefundene Nachricht in der Logik-App aus.
+     Wenn Sie fertig sind, fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort, indem Sie die gewünschten Aktionen hinzufügen. Sie können beispielsweise eine Aktion hinzufügen, die eine E-Mail sendet, wenn eine neue Nachricht eingeht.
+     Wenn Ihr Trigger die Warteschlange überprüft und eine neue Nachricht findet, führt Ihre Logik-App die von Ihnen ausgewählten Aktionen für die gefundene Nachricht aus.
 
-## <a name="send-messages-from-your-logic-app-to-your-service-bus"></a>Senden von Nachrichten von der Logik-App an Ihren Service Bus
+   * **Für die Beispielaktion:** Geben Sie den Nachrichteninhalt und weitere Details ein. 
 
-Eine [*Aktion*](../logic-apps/logic-apps-overview.md#logic-app-concepts) ist eine Aufgabe, die von Ihrem Logik-App-Workflow ausgeführt wird. Nachdem Sie Ihrer Logik-App einen Trigger hinzugefügt haben, können Sie eine Aktion zum Ausführen von Vorgängen mit Daten hinzufügen, die von diesem Trigger generiert wurden. Um eine Nachricht aus Ihrer Logik-App an Ihre Service Bus-Messagingentität zu senden, befolgen Sie diese Schritte.
+     ![Angeben von Nachrichteninhalt und weiteren Informationen](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
-1. Wählen Sie im Designer für Logik-Apps unter dem Trigger **Neuer Schritt** > **Aktion hinzufügen**.
+     Wenn Sie fertig sind, fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort, indem Sie weitere gewünschte Aktionen hinzufügen. Sie können beispielsweise eine Aktion hinzufügen, die eine E-Mail sendet, um das Senden Ihrer Nachricht zu bestätigen.
 
-2. Geben Sie im Suchfeld den Begriff „Service Bus“ als Filter ein. Wählen Sie diesen Connector aus: **Service Bus**.
+1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern**.
 
-   ![Connector „Service Bus“ auswählen](./media/connectors-create-api-azure-service-bus/select-service-bus-connector-for-action.png) 
+## <a name="connector-reference"></a>Connector-Referenz
 
-3. Wählen Sie diese Aktion aus: **Service Bus – Nachricht senden**.
-
-   ![„Service Bus – Nachricht senden“ auswählen](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png)
-
-4. Wählen Sie die Messagingentität aus, die die Warteschlange oder ein Themenname ist, wohin die Nachricht gesendet werden soll. Geben Sie dann den Nachrichteninhalt und andere Details ein.
-
-   ![Messagingentität auswählen und Nachrichtendetails angeben](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)    
-
-5. Speichern Sie Ihre Logik-App. 
-
-Sie haben nun eine Aktion zum Senden von Nachrichten über Ihre Logik-App eingerichtet. 
-
-## <a name="connector-specific-details"></a>Connectorspezifische Details
-
-Weitere Informationen zu Triggern und Aktionen gemäß Definition in der Swagger-Datei und etwaige Grenzwerte finden Sie in den [Connectordetails](/connectors/servicebus/).
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/servicebus/) des Connectors.
 
 ## <a name="get-support"></a>Support
 
@@ -128,4 +144,4 @@ Weitere Informationen zu Triggern und Aktionen gemäß Definition in der Swagger
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über [andere Connectors für Azure Logic Apps](../connectors/apis-list.md).
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

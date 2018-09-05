@@ -2,18 +2,18 @@
 title: Verschieben großer Datenmengen in/aus Cloudspeicher in Azure | Microsoft-Dokumentation
 description: Hier finden Sie eine Übersicht über die verschiedenen Methoden zum Verschieben von Daten in und aus Azure Storage.
 services: storage
-author: JarrettRenshaw
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: jarrettr
+ms.date: 08/26/2018
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 81d7b5cf03e56ecc54db71b09af335d6cb794806
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525534"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049609"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Verschieben von Daten in und aus Azure Storage
 Wenn Sie lokale Daten in Azure Storage verschieben möchten (oder umgekehrt), steht Ihnen eine Vielzahl von Methoden zur Verfügung. Es hängt vom jeweiligen Szenario ab, welche Methode für Sie am besten geeignet ist. Dieser Artikel bietet eine kurze Übersicht über die verschiedenen Szenarien und die jeweiligen Angebote.
@@ -21,7 +21,7 @@ Wenn Sie lokale Daten in Azure Storage verschieben möchten (oder umgekehrt), st
 ## <a name="building-applications"></a>Erstellen von Anwendungen
 Wenn Sie eine Anwendung erstellen, ist das Entwickeln mit der REST-API oder einer unserer vielen Clientbibliotheken eine hervorragende Möglichkeit zum Verschieben von Daten in und aus Azure Storage.
 
-Azure Storage bietet umfangreiche Clientbibliotheken für .NET, iOS, Java, Android, die universelle Windows-Plattform (UWP), Xamarin, C++, Node.JS, PHP, Ruby und Python. Die Clientbibliotheken bieten erweiterte Funktionen, beispielsweise Wiederholungslogik, Protokollierung und parallele Uploads. Die Entwicklung kann direkt mit der REST-API erfolgen. Diese API lässt sich mithilfe jeder Sprache aufrufen, die HTTP/HTTPS-Anforderungen verarbeitet.
+Azure Storage bietet umfassende Clientbibliotheken für viele beliebte Sprachen, einschließlich .NET, Java, Android, Go, Xamarin, C++, Node.JS, PHP, Ruby, Python und iOS. Die Clientbibliotheken bieten erweiterte Funktionen, beispielsweise Wiederholungslogik, Protokollierung und parallele Uploads. Die Entwicklung kann direkt mit der REST-API erfolgen. Diese API lässt sich mithilfe jeder Sprache aufrufen, die HTTP/HTTPS-Anforderungen verarbeitet.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../blobs/storage-dotnet-how-to-use-blobs.md) .
 

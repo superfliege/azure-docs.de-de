@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9e013e237a996d722d958920a1310e3aaea36c52
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170907"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888203"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>Verwenden der Eigenschaft „Erwartete Entität“ von Aktionen
 
@@ -25,7 +25,7 @@ In diesem Tutorial wird das Feld „Erwartete Entität“ von Aktionen veranscha
 
 [![Tutorial 4 – Vorschau](http://aka.ms/cl-tutorial-04-preview)](http://aka.ms/blis-tutorial-04)
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 Für dieses Tutorial muss der allgemeine Tutorialbot ausgeführt werden.
 
     npm run tutorial-general
@@ -65,7 +65,7 @@ Wenn das Feld „Erwartete Entität“ einer Aktion auf „$entity“ festgelegt
     - Dieser Wert bedeutet Folgendes: Wenn diese Frage gestellt wird und für die Benutzerantwort keine Entitäten erkannt werden, sollte der Bot davon ausgehen, dass die gesamte Antwort des Benutzers diese Entität ist.
 2. Klicken Sie auf „Aktionen“, und klicken Sie dann auf „Neue Aktion“, um eine zweite Aktion zu erstellen.
 3. Geben Sie im Feld „Antwort“ die Grußformel „Hallo $name“ ein.
-    - Die Entität wird automatisch als disqualifizierende Entität hinzugefügt. 
+    - Die Entität wird automatisch als erforderliche Entität hinzugefügt. 
 4. Klicken Sie auf Speichern.
 
 Jetzt sind zwei Aktionen vorhanden.
@@ -95,9 +95,9 @@ Hier sind zwei Beispiele, in denen das auf maschinellem Lernen basierende Entit�
 3. Wählen Sie „Hallo $name“ aus.
 4. Geben Sie „Mein Name ist Susan“ ein.
     - Das Modell identifiziert Susan als Name, weil dieses Muster bereits vorgekommen ist.
-2. Klicken Sie auf „Bewertungsaktionen“.
+2. Klicken Sie auf „Score Actions“ (Bewertungsaktionen).
 2. Wählen Sie „Hallo Susan“ aus.
-3. Klicken Sie auf „Training abgeschlossen“.
+3. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
 
 In den folgenden Beispielen wird die Heuristik „erwartete Entität“ ausgelöst, ist aber falsch. Anschließend wird veranschaulicht, wie eine Korrektur vorgenommen wird.
 
@@ -115,7 +115,7 @@ In den folgenden Beispielen wird die Heuristik „erwartete Entität“ ausgelö
 3. Klicken Sie zum Auswählen auf „Frank“, und klicken Sie dann auf „name“.
 2. Klicken Sie auf „Bewertungsaktionen“.
 3. Wählen Sie „Hallo $name“ aus.
-4. Klicken Sie auf „Training abgeschlossen“.
+4. Klicken Sie auf „Done Teaching“ (Training abgeschlossen).
 
 ![](../media/tutorial4_dialogs.PNG)
 

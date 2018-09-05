@@ -8,15 +8,15 @@ author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 08/28/2018
 ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: cdf067839c73f9da40d03628ff1c9920764e2219
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127478"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143809"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank und SQL Data Warehouse
 
@@ -181,11 +181,10 @@ In Azure Storage ist dasselbe Feature implementiert, mit dem Sie die Konnektivit
 Wenn Sie dieses Feature mit einem Speicherkonto verwenden, das von einer Azure SQL Server-Instanz verwendet wird, können Probleme auftreten. Im Folgenden finden Sie eine Liste mit Erläuterungen der Azure SQLDB-Features, die davon betroffen sind.
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-PolyBase wird häufig verwendet, um Daten aus Speicherkonten in Azure SQLDW zu laden. Wenn das Speicherkonto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Hierfür gibt es jedoch eine Lösung. Wenden Sie sich an *dmalik@microsoft.com*, um weitere Informationen zu erhalten.
+PolyBase wird häufig verwendet, um Daten aus Speicherkonten in Azure SQLDW zu laden. Wenn das Speicherkonto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen. Hierfür gibt es jedoch eine Lösung. Wenden Sie sich an den Microsoft-Support, um weitere Informationen zu erhalten.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB-Blobüberwachung
 Bei der Blobüberwachung werden die Überwachungsprotokolle in Ihr eigenes Speicherkonto gepusht. Wenn dieses Speicherkonto das Feature für VNET-Dienstendpunkte verwendet, wird die Konnektivität zwischen Azure SQLDB und dem Speicherkonto unterbrochen.
-
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Hinzufügen einer VNET-Firewallregel zu Ihrem Server ohne Aktivierung von VNET-Dienstendpunkten
 

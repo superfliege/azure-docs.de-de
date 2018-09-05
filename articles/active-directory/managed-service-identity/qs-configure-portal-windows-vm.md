@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 6ba090065b18a44cc1f01a62eefb5dcf52bcf356
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 552fce2ffd8b6bd786010da82e702ee98c3f8647
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213264"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888555"
 ---
 # <a name="configure-a-vm-managed-service-identity-using-the-azure-portal"></a>Konfigurieren einer verwalteten VM-Dienstidentität über das Azure-Portal
 
@@ -27,10 +27,7 @@ ms.locfileid: "39213264"
 
 Eine verwaltete Dienstidentität stellt für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-In diesem Artikel erfahren Sie, wie Sie die vom System zugewiesene Identität für eine Azure-VM über das Azure-Portal aktivieren und deaktivieren. Das Zuweisen und Entfernen von vom Benutzer zugewiesenen Identitäten für eine Azure-VM wird derzeit über das Azure-Portal nicht unterstützt.
-
-> [!NOTE]
-> Derzeit werden keine Vorgänge für vom Benutzer zugewiesene Identitäten über das Azure-Portal unterstützt. Überprüfen Sie zu einem späteren Zeitpunkt auf dieser Seite, ob neue Informationen vorliegen. 
+In diesem Artikel erfahren Sie, wie Sie eine vom System und vom Benutzer zugewiesene Identität für einen virtuellen Azure-Computer über das Azure-Portal aktivieren und deaktivieren. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,44 +36,69 @@ In diesem Artikel erfahren Sie, wie Sie die vom System zugewiesene Identität f�
 - Um die Verwaltungsvorgänge in diesem Artikel durchzuführen, benötigt Ihr Konto die folgende Rollenzuweisung:
     - [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) zum Aktivieren und Entfernen einer vom System zugewiesenen Identität von einer Azure-VM
 
-## <a name="managed-service-identity-during-creation-of-an-azure-vm"></a>Verwaltete Dienstidentität während der Erstellung einer Azure-VM
+## <a name="system-assigned-identity"></a>Systemzugewiesene Identität
 
-Derzeit werden bei der Erstellung von virtuellen Computern über das Azure-Portal keine Vorgänge zur verwalteten Dienstidentität unterstützt. Verwenden Sie stattdessen einen der folgenden Schnellstartartikel zur Erstellung virtueller Computer, um erstmals einen virtuellen Computer zu erstellen:
+In diesem Abschnitt erfahren Sie, wie Sie eine vom System zugewiesene Identität für einen virtuellen Computer mit dem Azure-Portal aktivieren und deaktivieren.
+
+### <a name="enable-system-assigned-identity-during-creation-of-a-vm"></a>Aktivieren einer vom System zugewiesenen Identität beim Erstellen eines virtuellen Computers
+
+Derzeit unterstützt das Azure-Portal keine Aktivierung einer vom System zugewiesenen Identität während der Erstellung einer VM. Lesen Sie stattdessen die folgenden Schnellstartartikel, um zunächst einen virtuellen Computer zu erstellen, und fahren Sie dann mit dem nächsten Abschnitt mit Einzelheiten zum Aktivieren einer vom System zugewiesenen Identität zum virtuellen Computer fort:
 
 - [Erstellen eines virtuellen Windows-Computers mit dem Azure-Portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [Erstellen Sie eines virtuellen Linux-Computers mit dem Azure-Portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
 
-Fahren Sie anschließend mit dem nächsten Abschnitt fort, um ausführlichere Informationen zur Aktivierung der verwalteten Dienstidentität auf dem virtuellen Computer zu erhalten.
-
-## <a name="enable-managed-service-identity-on-an-existing-azure-vm"></a>Aktivieren der verwalteten Dienstidentität für eine vorhandene Azure-VM
+### <a name="enable-system-assigned-identity-on-an-existing-vm"></a>Aktivieren einer vom System zugewiesenen Identität auf einem vorhandenen virtuellen Computer
 
 So aktivieren Sie die vom System zugewiesene Identität auf einem virtuellen Computer, der ursprünglich ohne sie bereitgestellt wurde
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
 
-2. Navigieren Sie zum gewünschten virtuellen Computer, und wählen Sie die Seite „Konfiguration“.
+2. Navigieren Sie zum gewünschten virtuellen Computer, und wählen Sie **Identität** aus.
 
-3. Aktivieren Sie die vom System zugewiesene Identität auf dem virtuellen Computer, indem Sie unter „Verwaltete Dienstidentität“ die Option „Ja“ auswählen, und klicken Sie dann auf **Speichern**. Dieser Vorgang kann 60 Sekunden oder länger dauern:
-
-   > [!NOTE]
-   > Das Hinzufügen einer vom Benutzer zugewiesenen Identität zu einem virtuellen Computer über das Azure-Portal wird derzeit nicht unterstützt.
+3. Wählen Sie unter **Vom System zugewiesen**, **Status** die Option **Ein** aus, und klicken Sie dann auf **Speichern**:
 
    ![Screenshot der Konfigurationsseite](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade.png)  
 
-## <a name="remove-managed-service-identity-from-an-azure-vm"></a>Entfernen der verwalteten Dienstidentität von einer Azure-VM
+### <a name="remove-system-assigned-identity-from-a-vm"></a>Entfernen einer vom System zugewiesenen Identität von einem virtuellen Computer
 
 Bei einem virtuellen Computer, für den die vom System zugewiesene Identität nicht mehr benötigt wird:
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält. 
 
-2. Navigieren Sie zum gewünschten virtuellen Computer, und wählen Sie die Seite „Konfiguration“.
+2. Navigieren Sie zum gewünschten virtuellen Computer, und wählen Sie **Identität** aus.
 
-3. Deaktivieren Sie die vom System zugewiesene Identität auf dem virtuellen Computer, indem Sie unter „Verwaltete Dienstidentität“ die Option „Nein“ auswählen, und klicken Sie dann auf „Speichern“. Dieser Vorgang kann 60 Sekunden oder länger dauern:
+3. Wählen Sie unter **Vom System zugewiesen**, **Status** die Option **Aus** aus, und klicken Sie dann auf **Speichern**:
 
-    > [!NOTE]
-    > Das Hinzufügen einer vom Benutzer zugewiesenen Identität zu einem virtuellen Computer über das Azure-Portal wird derzeit nicht unterstützt.
+   ![Screenshot der Konfigurationsseite](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)
 
-   ![Screenshot der Konfigurationsseite](../managed-service-identity/media/msi-qs-configure-portal-windows-vm/create-windows-vm-portal-configuration-blade-disable.png)  
+## <a name="user-assigned-identity"></a>Benutzerzugewiesene Identität
+
+ In diesem Abschnitt erfahren Sie, wie Sie mithilfe des Azure-Portals eine vom Benutzer zugewiesene Identität einer VM hinzufügen und von dieser entfernen.
+
+### <a name="assign-a-user-assigned-identity-during-the-creation-of-a-vm"></a>Zuweisen einer vom Benutzer zugewiesenen Identität beim Erstellen eines virtuellen Computers
+
+Derzeit unterstützt das Azure-Portal nicht das Zuweisen einer vom System zugewiesenen Identität während der Erstellung einer VM. Lesen Sie stattdessen die folgenden Schnellstartartikel, um zunächst einen virtuellen Computer zu erstellen, und fahren Sie dann mit dem nächsten Abschnitt mit Einzelheiten zum Zuweisen einer vom Benutzer zugewiesenen Identität zum virtuellen Computer fort:
+
+- [Erstellen eines virtuellen Windows-Computers mit dem Azure-Portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Erstellen Sie eines virtuellen Linux-Computers mit dem Azure-Portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+
+### <a name="assign-a-user-assigned-identity-to-an-existing-vm"></a>Zuweisen einer vom Benutzer zugewiesenen Identität zu einem vorhandenen virtuellen Computer
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
+2. Navigieren Sie zur gewünschten VM, und klicken Sie auf **Identität**, **Vom Benutzer zugewiesen** und dann auf **\+Hinzufügen**.
+
+   ![Hinzufügen einer vom Benutzer zugewiesenen Identität zu einer VM](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot1.png)
+
+3. Klicken Sie auf die vom Benutzer zugewiesene Identität, die Sie der VM hinzufügen möchten, und dann auf **Hinzufügen**.
+
+    ![Hinzufügen einer vom Benutzer zugewiesenen Identität zu einer VM](./media/msi-qs-configure-portal-windows-vm/add-user-assigned-identity-vm-screenshot2.png)
+
+### <a name="remove-a-user-assigned-identity-from-a-vm"></a>Entfernen einer vom Benutzer zugewiesenen Identität von einer VM
+
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit einem Konto an, das dem Azure-Abonnement zugeordnet ist, das den virtuellen Computer enthält.
+2. Navigieren Sie zur gewünschten VM, und klicken Sie auf **Identität**, **Vom Benutzer zugewiesen**, den Namen der vom Benutzer zugewiesenen Identität, die Sie löschen möchten, und dann auf **Entfernen**. (Klicken Sie im Bestätigungsbereich auf **Ja**.)
+
+   ![Entfernen einer vom Benutzer zugewiesenen Identität von einer VM](./media/msi-qs-configure-portal-windows-vm/remove-user-assigned-identity-vm-screenshot.png)
 
 ## <a name="related-content"></a>Verwandte Inhalte
 

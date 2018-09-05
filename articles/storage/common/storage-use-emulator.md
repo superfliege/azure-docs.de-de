@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 543f581659d54bd14ccb2a818fd74e379bcc8cfe
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42146465"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888082"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -26,9 +26,8 @@ Der Speicheremulator wird derzeit nur unter Windows ausgeführt. Eine Option fü
 
 > [!NOTE]
 > Der Zugriff auf die Daten, die in einer bestimmten Version des Speicheremulators erstellt wurden, ist bei Verwendung einer anderen Version nicht garantiert. Wenn Sie die Daten langfristig beibehalten möchten, sollten Sie diese Daten in einem Azure Storage-Konto und nicht im Speicheremulator speichern.
-> <p/>
+> 
 > Für den Speicheremulator sind spezifische Versionen der OData-Bibliotheken erforderlich. Das Ersetzen der OData-DLLs, die vom Speicheremulator mit anderen Versionen verwendet werden, wird nicht unterstützt und führt möglicherweise zu unerwartetem Verhalten. Es kann aber jede Version von OData, die vom Speicherdienst unterstützt wird, zum Senden von Anforderungen an den Emulator verwendet werden.
->
 
 ## <a name="how-the-storage-emulator-works"></a>Funktionsweise des Speicheremulators
 Der Speicheremulator verwendet zum Emulieren von Azure Storage-Diensten eine lokale Microsoft SQL Server-Instanz und das lokale Dateisystem. Der Speicheremulator verwendet standardmäßig eine Datenbank in Microsoft SQL Server 2012 Express LocalDB. Sie können den Speicheremulator für den Zugriff auf eine lokale Instanz von SQL Server statt für den Zugriff auf die LocalDB-Instanz konfigurieren. Weitere Informationen finden Sie im Abschnitt [Starten und Initialisieren des Speicheremulators](#start-and-initialize-the-storage-emulator) weiter unten in diesem Artikel.
@@ -187,6 +186,7 @@ Da der Speicheremulator eine emulierte Umgebung darstellt, die in einer lokalen 
 Die folgenden Unterschiede gelten für Blob-Speicher im Emulator:
 
 * Der Speicheremulator unterstützt nur Blob-Größen bis 2 GB.
+* Die maximale Länge eines Blobnamens im Speicheremulator ist 256 Zeichen, während sie im Azure-Speicher 1024 Zeichen beträgt.
 * Bei inkrementellen Kopien können Momentaufnahmen von überschriebenen Blobs kopiert werden, wodurch ein Fehler für den Dienst zurückgegeben wird.
 * „Get Page Ranges Diff“ funktioniert nicht zwischen Momentaufnahmen, die per inkrementeller Blobkopie kopiert wurden.
 * Ein Ablegevorgang für ein Blob kann bei einem Blob, das im Speicheremulator vorhanden ist und über eine aktive Lease verfügt, erfolgreich durchgeführt werden. Dies gilt auch, wenn die Lease-ID in der Anforderung nicht angegeben wurde.

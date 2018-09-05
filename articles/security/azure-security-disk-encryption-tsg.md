@@ -11,28 +11,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
+ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: e669fb5da0e3fd3c6a14ffed5cbdf80b8a4d9590
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: e63d798c24159777711c9cdd765e40b44826a530
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390720"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888728"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
 
-Dieser Leitfaden ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren bestimmt, in deren Organisationen Azure Disk Encryption verwendet wird. Dieser Artikel enthält eine Anleitung zur Behandlung von Problemen mit der Verschlüsselung von Datenträgern.
+Dieser Leitfaden ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren bestimmt, in deren Organisationen Azure Disk Encryption verwendet wird. Dieser Artikel hilft beim Beheben von Problemen mit der Verschlüsselung von Datenträgern.
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Problembehandlung für die Verschlüsselung von Datenträgern mit Linux-Betriebssystem
 
 Bei der Verschlüsselung von Datenträgern mit Linux-Betriebssystem muss die Bereitstellung des Betriebssystemlaufwerks aufgehoben werden, bevor die vollständige Datenträgerverschlüsselung erfolgt. Wenn das Aufheben der Bereitstellung nicht möglich ist, wird voraussichtlich eine Fehlermeldung der Art „Fehler beim Aufheben der Bereitstellung…“ angezeigt.
 
-Dieser Fehler kann auftreten, wenn die Verschlüsselung von Betriebssystemdatenträgern für eine VM-Zielumgebung durchgeführt wird, die gegenüber dem unterstützten normalen Katalogimage verändert wurde. Im Folgenden sind Beispiele für Abweichungen vom unterstützten Image angegeben, durch die die Fähigkeit der Erweiterung zum Aufheben der Bereitstellung des Betriebssystemlaufwerks beeinträchtigt werden kann:
+Dieser Fehler kann auftreten, wenn die Verschlüsselung von Betriebssystemdatenträgern für eine VM-Zielumgebung durchgeführt wird, die gegenüber dem unterstützten normalen Katalogimage verändert wurde. Abweichungen vom unterstützten Image können die Fähigkeit der Erweiterung zum Aufheben der Bereitstellung des Betriebssystemlaufwerks beeinträchtigen. Beispiele für Abweichungen:
 - Angepasste Images, die nicht mehr mit einem unterstützten Dateisystem oder Partitionierungsschema übereinstimmen.
-- Große Anwendungen, z.B. SAP, MongoDB, Apache Cassandra oder Docker werden nicht unterstützt, wenn sie vor der Verschlüsselung im Betriebssystem installiert und ausgeführt werden. Azure Disk Encryption kann diese Prozesse zur Vorbereitung des Betriebssystemlaufwerks für die Datenträgerverschlüsselung nicht sicher herunterfahren. Wenn es immer noch aktive Prozesse mit offenen Dateihandles auf dem Betriebssystemlaufwerk gibt, kann die Bereitstellung des Betriebssystemlaufwerks nicht aufgehoben werden, was zu einem Fehler bei der Verschlüsselung des Betriebssystemlaufwerks führt. 
+- Große Anwendungen, z.B. SAP, MongoDB, Apache Cassandra oder Docker, werden nicht unterstützt, wenn sie vor der Verschlüsselung im Betriebssystem installiert und ausgeführt werden. Azure Disk Encryption kann diese Prozesse zur Vorbereitung des Betriebssystemlaufwerks für die Datenträgerverschlüsselung nicht sicher herunterfahren. Wenn es immer noch aktive Prozesse mit offenen Dateihandles auf dem Betriebssystemlaufwerk gibt, kann die Bereitstellung des Betriebssystemlaufwerks nicht aufgehoben werden, was zu einem Fehler bei der Verschlüsselung des Betriebssystemlaufwerks führt. 
 - Wenn benutzerdefinierte Skripts in einem engen zeitlichen Abstand zur Aktivierung der Verschlüsselung ausgeführt werden oder während des Verschlüsselungsprozesses andere Änderungen an der VM vorgenommen werden. Dieser Konflikt kann auftreten, wenn eine Azure Resource Manager-Vorlage mehrere Erweiterungen für die gleichzeitige Ausführung definiert oder wenn eine benutzerdefinierte Skripterweiterung oder andere Aktion parallel zur Datenträgerverschlüsselung erfolgt. Durch eine Serialisierung und Isolierung dieser Schritte lässt sich das Problem ggf. beheben.
-- Security Enhanced Linux (SELinux) wurde vor der Aktivierung der Verschlüsselung nicht deaktiviert, weshalb der Schritt zur Aufhebung der Bereitstellung fehlschlägt. SELinux kann wieder aktiviert werden, nachdem die Verschlüsselung abgeschlossen ist.
+- Security Enhanced Linux (SELinux) wurde vor der Aktivierung der Verschlüsselung nicht deaktiviert, weshalb der Schritt zur Aufhebung der Bereitstellung zu einem Fehler führt. SELinux kann wieder aktiviert werden, nachdem die Verschlüsselung abgeschlossen ist.
 - Der Betriebssystemdatenträger verwendet ein LVM-Schema (Logical Volume Manager). Wenngleich eingeschränkte Unterstützung für LVM-Datenträger geboten wird, gilt dies nicht für LVM-Betriebssystemdatenträger.
 - Die Mindestanforderungen für den Arbeitsspeicher sind nicht erfüllt (für die Verschlüsselung des Betriebssystemdatenträgers werden 7 GB empfohlen).
 - Datenlaufwerke sind rekursiv im Verzeichnis „/mnt/“ oder gegenseitig bereitgestellt worden (z.B. „/mnt/data1“, „/mnt/data2“, „/data3 + /data3/data4“).
@@ -80,7 +80,7 @@ Die VM muss auf einen Schlüsseltresor zugreifen können. Lesen Sie den Leitfade
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Linux-Paketverwaltung hinter einer Firewall
 
-Zur Laufzeit nutzt Azure Disk Encryption für Linux das Paketverwaltungssystem der Zieldistribution, um vor dem Aktivieren der Verschlüsselung erforderliche Komponenten zu installieren. Falls die VM durch Firewalleinstellungen am Herunterladen und Installieren dieser Komponenten gehindert wird, ist mit nachfolgend auftretenden Fehlern zu rechnen. Die Schritte zum Konfigurieren dieses Paketverwaltungssystems können je nach Distribution variieren. Wenn unter Red Hat ein Proxy erforderlich ist, müssen Sie sicherstellen, dass die richtige Einrichtung von „subscription-manager“ und „yum“ sichergestellt ist. Weitere Informationen finden Sie unter [How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533) (Beheben von Problemen mit subscription-manager und yum).  
+Zur Laufzeit nutzt Azure Disk Encryption für Linux das Paketverwaltungssystem der Zieldistribution, um vor dem Aktivieren der Verschlüsselung erforderliche Komponenten zu installieren. Falls die VM durch Firewalleinstellungen am Herunterladen und Installieren dieser Komponenten gehindert wird, ist mit nachfolgend auftretenden Fehlern zu rechnen. Die Schritte zum Konfigurieren dieses Paketverwaltungssystems können je nach Distribution variieren. Wenn unter Red Hat ein Proxy erforderlich ist, müssen Sie sicherstellen, dass die richtige Einrichtung von subscription-manager und yum sichergestellt ist. Weitere Informationen finden Sie unter [How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533) (Beheben von Problemen mit subscription-manager und yum).  
 
 
 ## <a name="troubleshooting-windows-server-2016-server-core"></a>Problembehandlung bei Windows Server 2016 Server Core
@@ -117,14 +117,14 @@ DISKPART> list vol
   Volume 1                      NTFS   Partition    550 MB  Healthy    System
   Volume 2     D   Temporary S  NTFS   Partition     13 GB  Healthy    Pagefile
 ```
-## <a name="troubleshooting-encryption-status"></a>Behandeln von Problemen mit dem Verschlüsselungsstatus
+<!-- ## Troubleshooting encryption status
 
-Lesen Sie den folgenden Supportartikel, wenn der erwartete Verschlüsselungsstatus nicht mit dem im Portal gemeldeten Status übereinstimmt: [Verschlüsselung wird auf Azure-Verwaltungsportal falsch angezeigt](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por).
+If the expected encryption state does not match what is being reported in the portal, see the following support article:
+[Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument haben Sie weitere Informationen zu einigen häufigen Problemen in Azure Disk Encryption und deren Behandlung erhalten. Weitere Informationen zu diesem Dienst und seinen Funktionen finden Sie in den folgenden Artikeln:
 
 - [Anwenden der Datenträgerverschlüsselung in Azure Security Center](../security-center/security-center-apply-disk-encryption.md)
-- [Verschlüsseln eines virtuellen Azure-Computers](../security-center/security-center-disk-encryption.md)
 - [Datenverschlüsselung ruhender Azure-Daten](azure-security-encryption-atrest.md)

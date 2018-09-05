@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: b180c7e8d26acc86aa1d1982ace92efafa85f9ef
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: d4c27c8297fb5a2ad13a245279a206d00fc4f8b1
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115507"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144124"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
@@ -251,7 +251,8 @@ Der Hauptprozess wird mit minimaler Unterbrechung weiter ausgeführt und stellt 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 ### <a name="publish-symbols"></a>Veröffentlichen von Symbolen
-Für den Momentaufnahmedebugger müssen Symboldateien auf dem Produktionsserver vorhanden sein, um Variablen zu decodieren und eine gute Debugleistung in Visual Studio zu erzielen. Die Version 15.2 von Visual Studio 2017 veröffentlicht Symbole für Releasebuilds standardmäßig im Rahmen der Veröffentlichung für App Service. In Vorgängerversionen müssen Sie der Veröffentlichungsprofildatei vom Typ `.pubxml` die folgende Zeile hinzufügen, um Symbole im Releasemodus zu veröffentlichen:
+Für den Momentaufnahmedebugger müssen Symboldateien auf dem Produktionsserver vorhanden sein, um Variablen zu decodieren und eine gute Debugleistung in Visual Studio zu erzielen.
+Die Version 15.2 (oder höher) von Visual Studio 2017 veröffentlicht Symbole für Releasebuilds standardmäßig im Rahmen der Veröffentlichung für App Service. In Vorgängerversionen müssen Sie der Veröffentlichungsprofildatei vom Typ `.pubxml` die folgende Zeile hinzufügen, um Symbole im Releasemodus zu veröffentlichen:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
@@ -400,6 +401,49 @@ Führen Sie die folgenden Schritte aus, um Ihre Clouddienstrolle mit einer dediz
       <!-- Other SnapshotCollector configuration options -->
     </Add>
    </TelemetryProcessors>
+   ```
+
+### <a name="overriding-the-shadow-copy-folder"></a>Überschreiben des Momentaufnahmeordners
+
+Wenn der Snapshot Collector gestartet wird, versucht er, einen Ordner auf dem Datenträger zu finden, der für die Ausführung des Snapshot Uploader-Prozesses geeignet ist. Der ausgewählte Ordner wird als Momentaufnahmeordner bezeichnet.
+
+Der Snapshot Collector überprüft einige bekannte Speicherorte und stellt dabei sicher, dass er über die Berechtigungen zum Kopieren der Binärdateien für den Snapshot Uploader verfügt. Folgende Umgebungsvariablen werden verwendet:
+- Fabric_Folder_App_Temp
+- LOCALAPPDATA
+- APPDATA
+- TEMP
+
+Wenn kein geeigneter Ordner gefunden werden kann, meldet der Snapshot Collector einen Fehler, dass _kein geeigneter Momentaufnahmeordner gefunden wurde_.
+
+Bei einem fehlerhaften Kopiervorgang meldet Snapshot Collector den Fehler `ShadowCopyFailed`.
+
+Wenn der Uploader nicht gestartet werden kann, meldet Snapshot Collector den Fehler `UploaderCannotStartFromShadowCopy`. Der Text der Meldung enthält häufig `System.UnauthorizedAccessException`. Dieser Fehler tritt gewöhnlich auf, wenn die Anwendung unter einem Konto mit eingeschränkten Berechtigungen ausgeführt wird. Das Konto verfügt über die Berechtigung zum Schreiben in den Momentaufnahmeordner, aber es hat keine Berechtigung zum Ausführen von Code.
+
+Da diese Fehler in der Regel während des Starts auftreten, folgt darauf meist der Fehler `ExceptionDuringConnect`, der aussagt, dass _der Uploader nicht gestartet werden konnte_.
+
+Um diese Fehler zu umgehen, können Sie den Momentaufnahmeordner manuell über die Konfigurationsoption `ShadowCopyFolder` angeben. Sie können beispielsweise „ApplicationInsights.config“ verwenden:
+
+   ```xml
+   <TelemetryProcessors>
+    <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
+      <!-- Override the default shadow copy folder. -->
+      <ShadowCopyFolder>D:\SnapshotUploader</ShadowCopyFolder>
+      <!-- Other SnapshotCollector configuration options -->
+    </Add>
+   </TelemetryProcessors>
+   ```
+
+Oder Sie können „appsettings.json“ mit einer .NET Core-Anwendung verwenden:
+
+   ```json
+   {
+     "ApplicationInsights": {
+       "InstrumentationKey": "<your instrumentation key>"
+     },
+     "SnapshotCollectorConfiguration": {
+       "ShadowCopyFolder": "D:\\SnapshotUploader"
+     }
+   }
    ```
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Suchen nach Ausnahmen mit Momentaufnahmen über die Application Insights-Suche

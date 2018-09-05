@@ -1,26 +1,28 @@
 ---
-title: Installieren von Azure IoT Edge unter Linux | Microsoft-Dokumentation
-description: Anweisungen zur Installation von Azure IoT Edge unter Linux in ARM32
+title: Installieren von Azure IoT Edge unter Linux ARM32 | Microsoft-Dokumentation
+description: Anweisungen zur Installation von Azure IoT Edge unter Linux auf einem ARM32-Gerät wie einem Raspberry Pi
 author: kgremban
 manager: timlt
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 7720e0471c6d8f2ba20f28753773829a28f93c7a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3f4e914f12feab3c36fca604c1bb37ab1a61b66f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141969"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127224"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>Installieren der Azure IoT Edge-Runtime unter Linux (ARM32v7/armhf)
 
-Die Azure IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für IoT Edge-Sicherheit** dient zum Bereitstellen und Einhalten von Sicherheitsstandards auf dem Edge-Gerät. Der Daemon wird bei jedem Start gestartet und führt durch Starten des IoT Edge-Agents einen Bootstrap für das Gerät aus. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem Edge-Gerät, einschließlich des IoT Edge-Hubs. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub.
+Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Runtime kann auf verschiedensten Geräten bereitgestellt werden – vom kleinen Raspberry Pi bis hin zum großen industriellen Server. Wenn ein Gerät mit der IoT Edge-Runtime konfiguriert wurde, können Sie darauf Geschäftslogik aus der Cloud bereitstellen. 
 
-In diesem Artikel werden die Schritte zum Installieren der Azure IoT Edge-Runtime auf einem Edge-Gerät des Typs Linux-ARM32v7/armhf (z.B. Raspberry Pi) erläutert.
+Weitere Informationen zur Funktionsweise und zu den Komponenten der IoT Edge-Runtime finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
+
+In diesem Artikel werden die Schritte zum Installieren der Azure IoT Edge-Runtime auf einem Edge-Gerät des Typs Linux-ARM32v7/armhf erläutert. Diese Schritte funktionieren beispielsweise für Raspberry Pi-Geräte. Unter [Azure IoT Edge-Support](support.md#operating-systems) finden Sie eine Liste mit derzeit unterstützten ARM32-Betriebssystemen. 
 
 >[!NOTE]
 >Pakete in den Linux-Softwarerepositorys unterliegen den Lizenzbedingungen im jeweiligen Paket (/usr/share/doc/*Paketname*). Lesen Sie vor Verwendung des Pakets die Lizenzbedingungen. Durch die Installation und Nutzung des Pakets erklären Sie sich mit diesen Bedingungen einverstanden. Wenn Sie mit den Lizenzbedingungen nicht einverstanden sind, verwenden Sie das Paket nicht.
@@ -31,7 +33,7 @@ Azure IoT Edge basiert auf einer [OCI-kompatiblen][lnk-oci] Containerruntime. F�
 
 Über die nachstehenden Befehle werden sowohl die Moby-basierte Engine als auch die Befehlszeilenschnittstelle (Command-Line Interface, CLI) installiert. Die CLI ist nützlich für die Entwicklung, für Produktionsbereitstellungen jedoch optional.
 
-```cmd/sh
+```bash
 
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
@@ -49,7 +51,10 @@ sudo apt-get install -f
 
 ## <a name="install-the-iot-edge-security-daemon"></a>Installieren des Daemons für IoT Edge-Sicherheit
 
-```cmd/sh
+Der **Daemon für IoT Edge-Sicherheit** dient zum Bereitstellen und Einhalten von Sicherheitsstandards auf dem Edge-Gerät. Der Daemon wird bei jedem Start gestartet und führt durch Starten der restlichen IoT Edge-Runtime einen Bootstrap für das Gerät aus. 
+
+
+```bash
 # You can copy the entire text from this code block and 
 # paste in terminal. The comment lines will be ignored.
 
@@ -63,18 +68,26 @@ curl -L https://aka.ms/iotedged-linux-armhf-latest -o iotedge.deb && sudo dpkg -
 sudo apt-get install -f
 ```
 
-## <a name="configure-the-azure-iot-edge-security-daemon"></a>Konfigurieren des Daemons für Azure IoT Edge-Sicherheit
+## <a name="connect-your-device-to-an-iot-hub"></a>Verbinden Ihres Geräts mit IoT Hub 
 
+Konfigurieren Sie die IoT Edge-Runtime für die Verknüpfung Ihres physischen Geräts mit einer Geräteidentität, die in einem Azure IoT Hub vorhanden ist. 
 
 Der Daemon kann mithilfe der Konfigurationsdatei unter `/etc/iotedge/config.yaml` konfiguriert werden. Die Datei ist standardmäßig schreibgeschützt. Sie benötigen möglicherweise erhöhte Berechtigungen, um sie bearbeiten können.
+
+Ein einzelnes IoT Edge-Gerät kann manuell bereitgestellt werden, indem eine von IoT Hub bereitgestellte Gerät-Verbindungszeichenfolge verwendet wird. Oder Sie können den Device Provisioning-Dienst verwenden, um automatisch Geräte bereitzustellen. Dies ist hilfreich, wenn es sich um eine große Zahl von Geräten handelt. Je nach gewählter Bereitstellung können Sie dazu das richtige Installationsskript auswählen. 
+
+### <a name="option-1-manual-provisioning"></a>Option 1: Manuelle Bereitstellung
+
+Zur manuellen Bereitstellung eines Geräts müssen Sie es mit einer [Geräte-Verbindungszeichenfolge][lnk-dcs] bereitstellen, die Sie durch die Registrierung eines neuen Geräts in Ihrem IoT Hub erstellen können.
+
+
+Öffnen Sie die Konfigurationsdatei. 
 
 ```bash
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Das Edgegerät kann manuell über eine [Verbindungszeichenfolge für Geräte][lnk-dcs] oder [automatisch über Device Provisioning Service][lnk-dps] konfiguriert werden.
-
-* Heben Sie bei einer manuellen Konfiguration die Auskommentierung des **manuellen** Bereitstellungsmodus auf. Aktualisieren Sie den Wert von **device_connection_string** durch die Verbindungszeichenfolge Ihres IoT Edge-Geräts.
+Suchen Sie den Bereitstellungsabschnitt der Datei, und heben Sie die Auskommentierung des **manuellen** Bereitstellungsmodus auf. Aktualisieren Sie den Wert von **device_connection_string** durch die Verbindungszeichenfolge Ihres IoT Edge-Geräts.
 
    ```yaml
    provisioning:
@@ -88,7 +101,27 @@ Das Edgegerät kann manuell über eine [Verbindungszeichenfolge für Geräte][ln
    #   registration_id: "{registration_id}"
    ```
 
-* Heben Sie bei einer automatischen Konfiguration die Auskommentierung des **DPS**-Bereitstellungsmodus auf. Aktualisieren Sie die Werte von **scope_id** und **registration_id** durch die Werte aus Ihrer IoT Hub-DPS-Instanz und Ihrem IoT Edge-Gerät mit TPM. 
+Speichern und schließen Sie die Datei. 
+
+   `CTRL + X`, `Y`, `Enter`
+
+Starten Sie nach Eingabe der Bereitstellungsinformationen in der Konfigurationsdatei den Daemon neu:
+
+```bash
+sudo systemctl restart iotedge
+```
+
+### <a name="option-2-automatic-provisioning"></a>Option 2: Automatische Bereitstellung
+
+Für die automatische Bereitstellung eines Geräts [richten Sie Device Provisioning Service ein und rufen die Registrierungs-ID Ihres Geräts ab][lnk-dps]. Die automatische Bereitstellung funktioniert nur mit Geräten, die über einen Trusted Platform Module (TPM)-Chip verfügen. Raspberry Pi-Geräte sind beispielsweise nicht standardmäßig mit TPM ausgestattet. 
+
+Öffnen Sie die Konfigurationsdatei. 
+
+```bash
+sudo nano /etc/iotedge/config.yaml
+```
+
+Suchen Sie den Bereitstellungsabschnitt der Datei, und heben Sie die Auskommentierung des **DPS**-Bereitstellungsmodus auf. Aktualisieren Sie die Werte von **scope_id** und **registration_id** mit den Werten aus Ihrem IoT Hub Device Provisioning-Dienst und Ihrem IoT Edge-Gerät mit TPM. 
 
    ```yaml
    # provisioning:
@@ -106,14 +139,12 @@ Speichern und schließen Sie die Datei.
 
    `CTRL + X`, `Y`, `Enter`
 
-Starten Sie nach Eingabe der Bereitstellungsinformationen in der Konfiguration den Daemon neu:
+Starten Sie nach Eingabe der Bereitstellungsinformationen in der Konfigurationsdatei den Daemon neu:
 
-```cmd/sh
+```bash
 sudo systemctl restart iotedge
 ```
 
->[!TIP]
->Sie benötigen erhöhte Rechte zum Ausführen von `iotedge`-Befehlen. Nachdem Sie sich bei Ihrem Computer abgemeldet und sich nach der Installation der IoT Edge-Runtime zum ersten Mal erneut angemeldet haben, werden Ihre Berechtigungen automatisch aktualisiert. Verwenden Sie bis dahin **sudo** vor den Befehlen. 
 
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
@@ -121,24 +152,27 @@ Wenn Sie im vorherigen Abschnitt die Schritte für die **manuelle Konfiguration*
 
 Sie können den Status des IoT Edge-Daemons wie folgt überprüfen:
 
-```cmd/sh
+```bash
 systemctl status iotedge
 ```
 
 Untersuchen Sie die Daemonprotokolle wie folgt:
 
-```cmd/sh
+```bash
 journalctl -u iotedge --no-pager --no-full
 ```
 
 Führen Sie die ausgeführten Module wie folgt auf:
 
-```cmd/sh
+```bash
 sudo iotedge list
 ```
->[!NOTE]
->Auf Geräten mit Ressourceneinschränkungen wie RaspberryPi wird dringend empfohlen, die Umgebungsvariable *OptimizeForPerformance* auf *FALSE* zu setzen, wie im [Leitfaden zur Problembehandlung][lnk-trouble] beschrieben.
 
+## <a name="tips-and-suggestions"></a>Tipps und Vorschläge
+
+Sie benötigen erhöhte Rechte zum Ausführen von `iotedge`-Befehlen. Melden Sie sich der Installation der Runtime von Ihrem Computer ab und anschließend wieder an, um Ihres Berechtigungen automatisch zu aktualisieren. Verwenden Sie bis dahin **sudo** vor allen `iotedge`-Befehlen.
+
+Auf Geräten mit Ressourceneinschränkungen wird dringend empfohlen, die Umgebungsvariable *OptimizeForPerformance* auf *false* zu setzen, wie im [Leitfaden zur Problembehandlung][lnk-trouble] beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: efc71e02cc02574973f0b6b428b5b670cd9cfd5b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617351"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144228"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Ereignisquellen in Azure Event Grid
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält Links zu Inhalten für jede Ereignisquelle.
 
 Abonnieren Sie Azure-Abonnementereignisse, um auf Änderungen an Ressourcen in einem ganzen Azure-Abonnement zu reagieren.
 
-|Titel |Beschreibung  |
+|Titel |BESCHREIBUNG  |
 |---------|---------|
 | [Tutorial: Azure Automation mit Event Grid und Microsoft Teams](ensure-tags-exists-on-new-virtual-machines.md) |Erstellen Sie einen virtuellen Computer, der ein Ereignis gesendet. Das Ereignis löst ein Automation-Runbook, das den virtuellen Computer markiert, sowie eine Nachricht aus, die an einen Microsoft Teams-Kanal gesendet wird. |
 | [Gewusst wie: Abonnieren von Ereignissen über das Portal](subscribe-through-portal.md) | Verwenden Sie das Portal, um Ereignisse für ein Azure-Abonnement zu abonnieren. |
@@ -32,11 +32,11 @@ Abonnieren Sie Azure-Abonnementereignisse, um auf Änderungen an Ressourcen in e
 | [PowerShell: Abonnieren von Ereignissen für ein Azure-Abonnement](./scripts/event-grid-powershell-azure-subscription.md)| Beispielskript, mit dem ein Event Grid-Abonnement für ein Azure-Abonnement erstellt wird und Ereignisse an einen WebHook gesendet werden. |
 | [Ereignisschema](event-schema-subscriptions.md) | Zeigt Felder in Azure-Abonnementereignissen an. |
 
-## <a name="container-registry"></a>Container Registry
+## <a name="container-registry"></a>Containerregistrierung
 
 Abonnieren Sie Container Registry-Ereignisse, um auf Änderungen in Images zu reagieren.
 
-|Titel |Beschreibung  |
+|Titel |BESCHREIBUNG  |
 |---------|---------|
 | [Schnellstart: Senden von Container Registry-Ereignissen](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Zeigt die Verwendung von Azure CLI zum Senden von Container Registry-Ereignissen. |
 | [Ereignisschema](event-schema-container-registry.md) | Zeigt Felder in Container Registry-Ereignissen. |
@@ -45,7 +45,7 @@ Abonnieren Sie Container Registry-Ereignisse, um auf Änderungen in Images zu re
 
 Abonnieren Sie benutzerdefinierte Themen, um auf Anwendungsereignisse zu reagieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Schnellstart: Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure CLI](custom-event-quickstart.md) | Zeigt die Verwendung von Azure CLI zum Senden von benutzerdefinierten Ereignissen. |
 | [Schnellstart: Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure PowerShell](custom-event-quickstart-powershell.md) | Zeigt die Verwendung von Azure PowerShell zum Senden von benutzerdefinierten Ereignissen. |
@@ -65,7 +65,7 @@ Abonnieren Sie benutzerdefinierte Themen, um auf Anwendungsereignisse zu reagier
 
 Abonnieren Sie Event Hubs, um auf Capture-Dateiereignisse zu reagieren. Event Hubs können entweder als Ereignisquelle oder Ereignishandler fungieren. In den folgenden Artikeln wird gezeigt, wie Event Hubs als eine Quelle verwendet werden.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Tutorial: Streamen von Big Data in ein Data Warehouse](event-grid-event-hubs-integration.md) | Wenn Event Hubs eine Capture-Datei erstellt, sendet Event Grid ein Ereignis an eine Funktions-App. Die App ruft die Capture-Datei ab und migriert Daten zu einem Data Warehouse. |
 | [Ereignisschema](event-schema-event-hubs.md) | Zeigt Felder in Event Hubs-Ereignissen an. |
@@ -74,19 +74,20 @@ Beispiele für Event Hubs als Handler finden Sie unter [Event Hubs-Handler](even
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Abonnieren Sie IoT Hub-Ereignisse, um auf Ereignisse der Geräteerstellung und -löschung zu reagieren.
+Abonnieren Sie IoT Hub-Ereignisse, um auf die Ereignisse beim Erstellen, Löschen, Verbinden und Trennen von Geräten zu reagieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
-| [Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Eine Logik-App sendet jedes Mal eine E-Mail-Benachrichtigung, wenn Ihrer IoT Hub-Instanz ein Gerät hinzugefügt wird. |
-| [Übersicht: Reagieren auf Ereignisse in IoT Hub mithilfe von Event Grid zum Auslösen von Aktionen](../iot-hub/iot-hub-event-grid.md) | Übersicht über die Integration von IoT Hub-Instanzen in Event Grid. |
+| [Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Eine Logik-App sendet jedes Mal eine E-Mail-Benachrichtigung, wenn Ihrer IoT Hub-Instanz ein Gerät hinzugefügt wird. |
+| [Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen](../iot-hub/iot-hub-event-grid.md) | Übersicht über die Integration von IoT Hub-Instanzen in Event Grid |
 | [Ereignisschema](event-schema-iot-hub.md) | Zeigt Felder in IoT Hub-Ereignissen an. |
+| [Sortieren von Ereignissen im Zusammenhang mit der Herstellung und Trennung von Geräteverbindungen](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Erfahren Sie, wie Sie Ereignisse zum Verbindungsstatus von Geräten sortieren. |
 
 ## <a name="media-services"></a>Media Services
 
 Abonnieren Sie Media Services-Ereignisse, um auf Auftragsstatusereignisse zu reagieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Übersicht: Reagieren auf Media Services-Ereignisse](../media-services/latest/reacting-to-media-services-events.md) | Übersicht über die Integration von Media Services in Event Grid. |
 | [Tutorial: Weiterleiten von Azure Media Services-Ereignissen an einen benutzerdefinierten Webendpunkt mithilfe der CLI](../media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Zeigt, wie Sie Ereignisse von Media Services senden. |
@@ -96,7 +97,7 @@ Abonnieren Sie Media Services-Ereignisse, um auf Auftragsstatusereignisse zu rea
 
 Abonnieren Sie Ressourcengruppenereignisse, um auf Änderungen in Ressourcen in einer ganzen Ressourcengruppe zu reagieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Tutorial: Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps](monitor-virtual-machine-changes-event-grid-logic-app.md) | Eine Logik-App überwacht die Änderungen an einem virtuellen Computer und sendet E-Mails zu diesen Änderungen. |
 | [Azure CLI: Abonnieren von Ereignissen für eine Ressourcengruppe](./scripts/event-grid-cli-resource-group.md)| Beispielskript, mit dem Ereignisse für eine Ressourcengruppe abonniert werden. Sendet Ereignisse an einen WebHook. |
@@ -110,17 +111,17 @@ Abonnieren Sie Ressourcengruppenereignisse, um auf Änderungen in Ressourcen in 
 
 Abonnieren Sie Service Bus-Ereignisse, um ohne aktiven Listener auf Nachrichten zu reagieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Tutorial: Beispiele für die Integration von Azure Service Bus in Azure Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Event Grid sendet Nachrichten von einem Service Bus-Thema an eine Funktions-App und an eine Logik-App. |
 | [Übersicht: Integration von Azure Service Bus in Event Grid](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | Übersicht über die Integration von Service Bus in Event Grid. |
 | [Ereignisschema](event-schema-service-bus.md) | Zeigt Felder in Service Bus-Ereignissen an. |
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Speicher
 
 Abonnieren Sie Blob Storage-Ereignisse, um auf Ereignisse der Bloberstellung und -löschung zu reagieren.
 
-|Titel  |Beschreibung  |
+|Titel  |BESCHREIBUNG  |
 |---------|---------|
 | [Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit Azure CLI](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Zeigt die Verwendung von Azure CLI zum Senden von Blob Storage-Ereignissen an einen WebHook. |
 | [Schnellstart: Weiterleiten von Blob Storage-Ereignissen an einen benutzerdefinierten Webendpunkt mit PowerShell](../storage/blobs/storage-blob-event-quickstart-powershell.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Zeigt die Verwendung von Azure PowerShell zum Senden von Blob Storage-Ereignissen an einen WebHook. |
