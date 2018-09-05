@@ -1,39 +1,67 @@
 ---
-title: RSS-Connector in Azure Logic Apps | Microsoft-Dokumentation
-description: Erstellen Sie Logik-Apps mit Azure App Service. Der RSS-Connector ermöglicht Benutzers das Veröffentlichen und Abrufen von Feedelementen. Mit ihm können Benutzer auch Operationen auslösen, wenn ein Element im Feed veröffentlicht wird.
+title: Herstellen einer Verbindung mit RSS-Feeds über Azure Logic Apps | Microsoft-Dokumentation
+description: Automatisieren von Aufgaben und Workflows, die RSS-Feeds mithilfe von Azure Logic Apps überwachen und verwalten
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 ms.service: logic-apps
-ms.devlang: multiple
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.suite: integration
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 268fa6d260f1107659208ea07ce3e43c27eca2d3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: c8d1122572764dda1fc550a06ae254109e3bf033
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295726"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885797"
 ---
-# <a name="get-started-with-the-rss-connector"></a>Erste Schritte mit dem RSS-Connector
-RSS ist ein beliebtes Webformat zum Veröffentlichen von Inhalten, die häufig aktualisiert werden. Beispiele hierfür wären etwa Blogbeiträge und Schlagzeilen.  Viele Inhaltsherausgeber bieten einen RSS-Feed an, der von Benutzern abonniert werden kann.  Mit dem RSS-Connector können Sie Feedinformationen abrufen und Abläufe auslösen, wenn in einem RSS-Feed neue Elemente veröffentlicht werden.
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Verwalten von RSS-Feeds mithilfe von Azure Logic Apps
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
+Mit Azure Logic Apps und dem RSS-Connector können Sie automatisierte Aufgaben und Workflows für jeden beliebigen RSS-Feed erstellen, z.B.:
 
-## <a name="create-a-connection-to-rss"></a>Herstellen einer Verbindung mit RSS
-> [!INCLUDE [Steps to create a connection to an RSS feed](../../includes/connectors-create-api-rss.md)]
-> 
+* Überwachen, wann RSS-Feedelemente veröffentlicht werden
+* Auflisten aller RSS-Feedelemente
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+RSS (Rich Site Summary), auch als „Really Simple Syndication“ bezeichnet, ist ein beliebtes Format für die Websyndikation und wird für die Veröffentlichung von häufig aktualisierten Inhalten wie Blogbeiträge und Schlagzeilen verwendet. Viele Inhaltsherausgeber bieten einen RSS-Feed an, damit Benutzer den Inhalt abonnieren können. 
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/rss/) an.
+Sie können einen RSS-Trigger verwenden, der Antworten von einem RSS-Feed erhält und die Ausgabe für andere Aktionen verfügbar macht. Sie können eine RSS-Aktion in Ihren Logik-Apps zum Ausführen einer Aufgabe mit dem RSS-Feed verwenden. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-## <a name="more-connectors"></a>Weitere Connectors
-Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+
+* Die URL für einen RSS-Feed
+
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Die Logik-App, in der Sie auf einen RSS-Feed zugreifen möchten. Wenn Sie mit einem RSS-Trigger beginnen möchten, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine RSS-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
+
+## <a name="connect-to-an-rss-feed"></a>Herstellen einer Verbindung mit einem RSS-Feed
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
+
+1. Auswählen eines Pfads: 
+
+   * Geben Sie für leere Logik-Apps im Suchfeld die Zeichenfolge „rss“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
+
+     Oder
+
+   * Für vorhandene Logik-App wählen Sie im Schritt zum Hinzufügen einer Aktion **Neuer Schritt** aus. Geben Sie im Suchfeld den Begriff „rss“ als Filter ein. Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
+
+1. Geben Sie die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/rss/) des Connectors.
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

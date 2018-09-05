@@ -7,20 +7,22 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: ea576c0d434d4db7077fc41bc1f5bbbc89e7779e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d6852b5b1fe3d0b3c248fc1948fa4c3a9428de89
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576646"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125407"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Installieren der Azure IoT Edge-Runtime unter Windows zur Verwendung mit Linux-Containern
 
-Die Azure IoT Edge-Runtime wird auf allen IoT Edge-Geräten bereitgestellt. Sie besteht aus drei Komponenten. Der **Daemon für IoT Edge-Sicherheit** dient zum Bereitstellen und Einhalten von Sicherheitsstandards auf dem Edge-Gerät. Der Daemon wird bei jedem Start gestartet und führt durch Starten des IoT Edge-Agents einen Bootstrap für das Gerät aus. Der **IoT Edge-Agent** erleichtert die Bereitstellung und Überwachung von Modulen auf dem Edge-Gerät, einschließlich des IoT Edge-Hubs. Der **IoT Edge-Hub** verwaltet die Kommunikation zwischen Modulen auf dem IoT Edge-Gerät sowie zwischen dem Gerät und IoT Hub.
+Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Runtime kann auf verschiedensten Geräten bereitgestellt werden – vom kleinen Raspberry Pi bis hin zum großen industriellen Server. Wenn ein Gerät mit der IoT Edge-Runtime konfiguriert wurde, können Sie darauf Geschäftslogik aus der Cloud bereitstellen. 
 
-In diesem Artikel sind die Schritte zum Installieren der Azure IoT Edge-Runtime auf dem Windows-x64-System (AMD/Intel) aufgeführt. Die Windows-Unterstützung befindet sich derzeit in der Vorschauphase.
+Weitere Informationen zur Funktionsweise und zu den Komponenten der IoT Edge-Runtime finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
+
+In diesem Artikel sind die Schritte zum Installieren der Azure IoT Edge-Runtime mit Linux-Containern auf Ihrem Windows-x64-System (AMD/Intel) aufgeführt. Die Windows-Unterstützung befindet sich derzeit in der Vorschauphase.
 
 >[!NOTE]
 Die Verwendung von Linux-Containern auf Windows-Systemen ist keine empfohlene oder unterstützte Produktionskonfiguration für Azure IoT Edge. Die Container können jedoch zu Entwicklungs- und Testzwecken eingesetzt werden.
@@ -29,6 +31,8 @@ Die Verwendung von Linux-Containern auf Windows-Systemen ist keine empfohlene od
 Azure IoT Edge kann bei Verwendung von Linux-Containern unter folgenden Windows-Versionen zu Entwicklungs- und Testzwecken genutzt werden:
   * Windows 10 oder neuere Desktopbetriebssysteme
   * Windows Server 2016 oder neuere Serverbetriebssysteme
+
+Weitere Informationen zu den aktuell unterstützten Betriebssystemen finden Sie unter [Azure IoT Edge-Support](support.md#operating-systems). 
 
 ## <a name="install-the-container-runtime"></a>Installieren der Containerruntime 
 
@@ -43,7 +47,7 @@ Sie können [Docker für Windows][lnk-docker-for-windows] für Entwicklungs- und
 
 Ein einzelnes IoT Edge-Gerät kann manuell bereitgestellt werden, indem eine von IoT Hub bereitgestellte Gerät-Verbindungszeichenfolge verwendet wird. Oder Sie können den Device Provisioning-Dienst verwenden, um automatisch Geräte bereitzustellen. Dies ist hilfreich, wenn es sich um eine große Zahl von Geräten handelt. Je nach gewählter Bereitstellung können Sie dazu das richtige Installationsskript auswählen. 
 
-### <a name="install-and-manually-provision"></a>Installation und manuelle Bereitstellung
+### <a name="option-1-install-and-manually-provision"></a>Option 1: Installation und manuelle Bereitstellung
 
 1. Führen Sie die Schritte zum [Registrieren eines neuen Azure IoT Edge-Geräts][lnk-dcs] aus, um Ihr Gerät zu registrieren und die Gerät-Verbindungszeichenfolge abzurufen. 
 
@@ -58,7 +62,7 @@ Ein einzelnes IoT Edge-Gerät kann manuell bereitgestellt werden, indem eine von
 
 4. Geben Sie die Verbindungszeichenfolge an, die Sie vom IoT Hub abgerufen haben, wenn die Aufforderung zur Eingabe der **DeviceConnectionString** angezeigt wird. Geben Sie die Anführungszeichen um die Verbindungszeichenfolge nicht mit an. 
 
-### <a name="install-and-automatically-provision"></a>Installation und automatische Bereitstellung
+### <a name="option-2-install-and-automatically-provision"></a>Option 2: Installation und automatische Bereitstellung
 
 1. Führen Sie die Schritte unter [Erstellen und Bereitstellen eines simulierten TPM-Edge-Geräts unter Windows][lnk-dps] aus, um den Device Provisioning-Dienst einzurichten und die **Bereichs-ID** abzurufen, ein TPM-Gerät zu simulieren und die zugehörige **Registrierungs-ID** abzurufen. Erstellen Sie anschließend eine individuelle Registrierung. Nachdem Ihr Gerät in Ihrem IoT Hub registriert wurde, können Sie mit der Installation fortfahren.  
 
