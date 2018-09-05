@@ -103,6 +103,7 @@
 #### [Weiterleiten von Aktivitätsprotokollen an eine Azure Event Hub-Instanz](reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 #### [Archivieren von Aktivitätsprotokollen in einem Azure-Speicherkonto](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Integrieren von Aktivitätsprotokollen mit Splunk unter Verwendung von Azure Monitor](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
+#### [Integrieren von Aktivitätsprotokollen mit SumoLogic unter Verwendung von Azure Monitor](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
 
 ### Verweis
 #### [Vermerkdauer](reports-monitoring/reference-reports-data-retention.md)
@@ -332,6 +333,8 @@
 ### [Verwaltung des Benutzerzugriffs mit Überprüfungen](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [Verwalten von Programmen und Steuerelementen](active-directory-azure-ad-controls-manage-programs-controls.md)
 ### [Abrufen der Ergebnisse der Zugriffsüberprüfung](active-directory-azure-ad-controls-retrieve-access-review.md)
+
+## [Nutzungsbedingungen](active-directory-tou.md)
 
 ## Schützen Ihrer Identitäten
 

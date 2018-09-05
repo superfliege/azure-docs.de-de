@@ -16,23 +16,33 @@ items:
   expanded: true
 - name: Tutorials
   items:
-  - name: Erstellen eines Kubernetes-Clusters mit AKS und Terraform
-    href: terraform-create-k8s-cluster-with-tf-and-aks.md
-  - name: Bereitstellungsslots für Terraform- und Azure-Anbieter
-    href: terraform-slot-walkthru.md
-  - name: Erstellen eines virtuellen Terraform-Computers mit MSI-Aktivierung
-    href: terraform-vm-msi.md
-  - name: Erstellen eines VM-Clusters mit Terraform-Modulen
-    href: terraform-create-vm-cluster-module.md
-  - name: Erstellen eines VM-Clusters mit Terraform und HCL
-    href: terraform-create-vm-cluster-with-infrastructure.md
-  - name: Bereitstellen einer VM-Skalierungsgruppe mit Infrastruktur
-    href: terraform-create-vm-scaleset-network-disks-hcl.md
-  - name: Bereitstellen einer VM-Skalierungsgruppe auf der Grundlage eines benutzerdefinierten Packer-Images
-    href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: App Service
+    items:
+    - name: Bereitstellungsslots für Terraform- und Azure-Anbieter
+      href: terraform-slot-walkthru.md
+  - name: Container
+    items:
+    - name: Erstellen eines Kubernetes-Clusters mit AKS und Terraform
+      href: terraform-create-k8s-cluster-with-tf-and-aks.md
+  - name: Infrastruktur
+    items:
+    - name: Erstellen eines virtuellen Terraform-Computers mit MSI-Aktivierung
+      href: terraform-vm-msi.md
+    - name: Erstellen eines VM-Clusters mit Terraform-Modulen
+      href: terraform-create-vm-cluster-module.md
+    - name: Erstellen eines VM-Clusters mit Terraform und HCL
+      href: terraform-create-vm-cluster-with-infrastructure.md
+    - name: Bereitstellen einer VM-Skalierungsgruppe mit Infrastruktur
+      href: terraform-create-vm-scaleset-network-disks-hcl.md
+    - name: Bereitstellen einer VM-Skalierungsgruppe auf der Grundlage eines benutzerdefinierten Packer-Images
+      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: Tools
+    items:
+    - name: Installieren der Terraform-Erweiterung für Visual Studio Code
+      href: terraform-vscode-extension.md
 - name: Konzepte
   items:
-  - name: Cloud Shell-Integration
+  - name: Azure Cloud Shell-Integration
     href: terraform-cloud-shell.md
 - name: Beispiele
   items:
@@ -44,17 +54,15 @@ items:
     href: https://registry.terraform.io/modules/Azure
   - name: Terraform-Referenz
     href: http://aka.ms/terraform
-  - name: Azure Terraform-Erweiterung für VS Code
-    href: terraform-vscode-extension.md
 - name: angeben
   items:
   - name: Azure und Terraform
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 349348f2230005831c1ad68eb7f48dfaa8f4b78c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e6c4637618d794f96db8ed9ca8eb063a62f704a1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41927369"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663535"
