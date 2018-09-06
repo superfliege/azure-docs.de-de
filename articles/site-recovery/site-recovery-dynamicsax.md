@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 931cc628dccc77a026791b27a7a8159b37c585d4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919562"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669441"
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Replizieren einer Dynamics AX-Anwendung mit mehreren Schichten mithilfe von Azure Site Recovery
 
@@ -52,9 +52,9 @@ Für die Erstellung dieses Artikels wurden virtuelle VMware-Computer mit Dynamic
 
 **Szenario** | **Am sekundären Standort** | **In Azure**
 --- | --- | ---
-**Hyper-V** | Ja | Ja
-**VMware** | Ja | Ja
-**Physischer Server** | Ja | Ja
+**Hyper-V** | JA | JA
+**VMware** | JA | JA
+**Physischer Server** | JA | JA
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Aktivieren der Notfallwiederherstellung der Dynamics AX-Anwendung mithilfe von Site Recovery
 ### <a name="protect-your-dynamics-ax-application"></a>Schützen Sie Ihre Dynamics AX-Anwendung
@@ -99,7 +99,7 @@ Sie können den virtuellen Computer in den replizierten Elementen auswählen, um
 
 * Geben Sie bei Verwendung einer statischen IP-Adresse im Textfeld **Ziel-IP** die IP an, die vom virtuellen Computer genutzt werden soll.
 
-    ![Netzwerkeinstellungen ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)zu erstellen und zu verwalten.
+    ![Netzwerkeinstellungen ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5. Erstellen eines Wiederherstellungsplans

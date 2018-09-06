@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.openlocfilehash: 01635b184903b88fa12e23c370caa65bb1eb377c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 31676ea43acc495bf0cb6a249901e5b64ef217b7
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37024733"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782929"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Häufig gestellte Fragen zu Azure Machine Learning: Abrechnung, Funktionen, Einschränkungen und Support
 Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworten zu Azure Machine Learning aufgeführt. Bei Azure Machine Learning handelt es sich um einen Clouddienst zum Entwickeln von Vorhersagemodellen und Operationalisieren von Lösungen mithilfe von Webdiensten. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -312,7 +312,7 @@ Es werden auch Schulungen unter [Microsoft Virtual Academy](http://www.microsoft
 
 **Wo erhalte ich Support für Azure Machine Learning?**
 
-Technischen Support für Azure Machine Learning erhalten Sie, indem Sie den [Azure-Support](/support/options/) besuchen und **Machine Learning** auswählen.
+Technischen Support für Azure Machine Learning erhalten Sie, indem Sie den [Azure-Support](https://azure.microsoft.com/support/options/) besuchen und **Machine Learning** auswählen.
 
 Für Azure Machine Learning gibt es außerdem ein Community-Forum auf MSDN, in dem Sie Fragen zu Azure Machine Learning stellen können. Das Forum wird vom Azure Machine Learning-Team überwacht. Wechseln Sie zum [Azure-Forum](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning).
 

@@ -2,20 +2,20 @@
 title: T-SQL-Sprachelemente – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.
 services: sql-data-warehouse
-author: ckarst
-manager: craigg-msft
+author: twounder
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 06/13/2018
+ms.author: mausher
 ms.reviewer: igorstan
-ms.openlocfilehash: bd7665798e5bf26c0e538deb713ef9696c84338c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d40861650f479f8ef840c5150b2153f461871331
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603311"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43311154"
 ---
 # <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>T-SQL-Sprachelemente, die in Azure SQL Data Warehouse unterstützt werden
 Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Sprachelemente.
@@ -81,7 +81,7 @@ Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQ
 * [| = (Bitweises OR EQUALS)](https://msdn.microsoft.com/library/cc627409.aspx)
 * [&amp;= (Bitweises AND EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>Funktionen
+## <a name="functions"></a>Functions
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)

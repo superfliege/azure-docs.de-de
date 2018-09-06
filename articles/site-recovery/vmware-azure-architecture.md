@@ -3,14 +3,14 @@ title: Architektur der VMware-zu-Azure-Replikation in Azure Site Recovery | Micr
 description: Dieser Artikel bietet eine Übersicht über die Komponenten und Architektur, die beim Replizieren von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 08/29/2018
 ms.author: raynew
-ms.openlocfilehash: 48adf61dc0f1796b820e1e14ca509d4618c6256b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920566"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288140"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware in der Architektur für die Azure-Replikation
 
@@ -32,22 +32,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 ![Komponenten](./media/vmware-azure-architecture/arch-enhanced.png)
 
-## <a name="configuration-steps"></a>Konfigurationsschritte
 
-Die folgenden allgemeinen Schritte zum Einrichten von VMware für Azure-Notfallwiederherstellung oder -Migration sind erforderlich:
-
-1. **Einrichten von Azure-Komponenten**. Sie benötigen ein Azure-Konto mit den richtigen Berechtigungen, ein Azure-Speicherkonto, ein virtuelles Azure-Netzwerk und einen Recovery Services-Tresor. [Weitere Informationen](tutorial-prepare-azure.md)
-2. **Lokale Einrichtung**. Dazu gehören die Einrichtung eines Kontos auf dem VMware-Server, damit Site Recovery automatisch die zu replizierenden virtuellen Computer ermitteln kann, die Einrichtung eines Kontos, mit dem die Mobility Service-Komponente auf den zu replizierenden virtuellen Computern installiert werden kann, und die Überprüfung, ob VMware-Server und die virtuellen Computer die Voraussetzungen erfüllen. Sie können optional auch eine Verbindung mit diesen virtuellen Azure-Computern nach einem Failover vorbereiten. Site Recovery repliziert Daten virtueller Computer in ein Azure-Speicherkonto und erstellt virtuelle Azure-Computer unter Verwendung der Daten, wenn Sie ein Failover in Azure ausführen. [Weitere Informationen](vmware-azure-tutorial-prepare-on-premises.md)
-3. **Einrichten der Replikation**. Sie wählen aus, wohin Sie replizieren möchten. Sie konfigurieren die Quellreplikationsumgebung, indem Sie einen einzelnen lokalen virtuellen VMware-Computer (den Konfigurationsserver) einrichten, der alle benötigten lokalen Site Recovery-Komponenten ausführt. Nach der Einrichtung registrieren Sie den Konfigurationsserver im Recovery Services-Tresor. Anschließend wählen Sie die Zieleinstellungen aus. [Weitere Informationen](vmware-azure-tutorial.md)
-4. **Erstellen einer Replikationsrichtlinie**. Sie erstellen eine Replikationsrichtlinie, die angibt, wie die Replikation ausgeführt werden soll. 
-    - **RPO-Schwellenwert**: Diese Überwachungseinstellung besagt, dass eine Warnung (und optional eine E-Mail) ausgegeben wird, wenn die Replikation nicht innerhalb der angegebenen Zeit erfolgt. Wenn Sie den RPO-Schwellenwert z.B. auf 30 Minuten festlegen und ein Problem die Replikation 30 Minuten lang verhindert, wird ein Ereignis generiert. Diese Einstellung besitzt keine Auswirkungen auf die Replikation. Die Replikation ist fortlaufend, und Wiederherstellungspunkte werden in Intervallen von wenigen Minuten erstellt.
-    - **Aufbewahrung**: Der Aufbewahrungszeitraum des Wiederherstellungspunkts gibt an, wie lange Wiederherstellungspunkte in Azure beibehalten werden sollen. Sie können einen Wert zwischen 0 und 24 Stunden für Storage Premium oder bis zu 72 Stunden für Standardspeicher angeben. Sie können ein Failover zum letzten Wiederherstellungspunkt oder zu einem gespeicherten Punkt ausführen, wenn Sie einen Wert größer als 0 festlegen. Nach Ablauf des Aufbewahrungszeitraum-Fensters werden Wiederherstellungspunkte bereinigt.
-    - **Ausfallsichere Momentaufnahmen**: Standardmäßig generiert Site Recovery ausfallsichere Momentaufnahmen und erstellt mit diesen im Abstand weniger Minuten Wiederherstellungspunkte. Ein Wiederherstellungspunkt ist ausfallsicher, wenn alle zusammenhängenden Datenkomponenten wie zum Zeitpunkt der Erstellung des Wiederherstellungspunkts in der Schreibreihenfolge konsistent sind. Zum besseren Verständnis stellen Sie sich den Status der Daten auf dem Festplattenlaufwerk Ihres PCs nach einem Stromausfall oder einem ähnlichen Ereignis vor. Ein ausfallsicherer Wiederherstellungspunkt ist in der Regel ausreichend, wenn Ihre Anwendung für die Wiederherstellung nach einem Ausfall ohne Dateninkonsistenzen konzipiert ist.
-    - **App-konsistente Momentaufnahmen**: Wenn dieser Wert nicht 0 ist, versucht der Mobility Service, der auf dem virtuellen Computer ausgeführt wird, dateisystemkonsistente Momentaufnahmen und Wiederherstellungspunkte zu generieren. Die erste Momentaufnahme wird erstellt, nachdem die anfängliche Replikation abgeschlossen wurde. Momentaufnahmen werden dann mit der Häufigkeit erstellt, die Sie angeben. Ein Wiederherstellungspunkt ist anwendungskonsistent, wenn nicht nur die Schreibreihenfolge konsistent ist, sondern auch die aktuell ausgeführten Anwendungen alle ihre Vorgänge abschließen und ihre Puffer auf der Festplatte speichern können (Anwendungsstilllegung). App-konsistente Wiederherstellungspunkte werden für Datenbankanwendungen wie SQL, Oracle und Exchange empfohlen. Wenn eine ausfallsichere Momentaufnahme ausreicht, kann dieser Wert auf 0 festgelegt werden.  
-    - **Multi-VM-Konsistenz**: Sie können optional eine Replikationsgruppe erstellen. Wenn Sie die Replikation aktivieren, können Sie dann virtuelle Computer in dieser Gruppe sammeln. Virtuelle Computer in einer Replikationsgruppe werden gemeinsam repliziert und verfügen beim Failover über gemeinsame ausfallsichere und app-konsistente Wiederherstellungspunkte. Sie sollten diese Option mit Vorsicht verwenden, da sie die Workloadleistung beeinträchtigen kann, da Momentaufnahmen über mehrere Computer hinweg gesammelt werden müssen. Gehen Sie nur dann so vor, wenn virtuelle Computer die gleiche Workload ausführen und konsistent sein müssen und die virtuellen Computer ähnliche Änderungen aufweisen. Sie können einer Gruppe bis zu 8 virtuelle Computer hinzufügen. 
-5. **Aktivieren der Replikation virtueller Computer**. Schließlich aktivieren Sie die Replikation für Ihre lokalen virtuellen VMware-Computer. Wenn Sie ein Konto für die Installation von Mobility Service erstellt und angegeben haben, dass Site Recovery eine Pushinstallation ausführen soll, wird Mobility Service auf jedem virtuellen Computer installiert, für den Sie Replikation aktivieren. [Weitere Informationen](vmware-azure-tutorial.md#enable-replication) Wenn Sie eine Replikationsgruppe für Multi-VM-Konsistenz erstellt haben, können Sie dieser Gruppe virtuelle Computer hinzufügen.
-6. **Testfailover**. Nachdem alles eingerichtet wurde, können Sie ein Testfailover ausführen, um zu überprüfen, ob die virtuellen Computer wie erwartet ein Failover in Azure ausführen. [Weitere Informationen](tutorial-dr-drill-azure.md)
-7. **Failover**. Wenn Sie nur die virtuellen Computer zu Azure migrieren: Sie führen zu diesem Zweck ein vollständiges Failover aus. Wenn Sie Notfallwiederherstellung einrichten, können Sie wie erforderlich ein vollständiges Failover ausführen. Für vollständige Notfallwiederherstellung können Sie nach dem Failover in Azure ein Failback auf Ihren lokalen Standort ausführen, wenn dieser verfügbar ist. [Weitere Informationen](vmware-azure-tutorial-failover-failback.md)
 
 ## <a name="replication-process"></a>Replikationsprozess
 

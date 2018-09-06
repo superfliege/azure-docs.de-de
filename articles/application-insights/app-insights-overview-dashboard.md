@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf7c151121ddf8b2dc57d5db66a62f4d46e463de
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970971"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344629"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-Übersichtsdashboard
 
@@ -50,7 +50,7 @@ Wählen Sie oben links die Option _Anwendungsdashboard_, um auf das Standarddash
 
 Wenn Sie zum ersten Mal auf das Dashboard zugreifen, wird eine Standardansicht gestartet:
 
-![Dashboardansicht](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
+![Dashboardansicht](.\media\app-insights-overview-dashboard\0001-dashboard.png)
 
 Sie können die Standardansicht beibehalten, wenn Sie möchten. Alternativ können Sie dem Dashboard auch Elemente hinzufügen und daraus löschen, um die Anforderungen Ihres Teams bestmöglich zu erfüllen.
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 62e928525c8bd63258ea079830585db0f0ffc358
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 4a84e8f7460d3a339be783be6a12353770ced1b8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716490"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665822"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Grundlegendes zu Eingaben für Azure Stream Analytics
 
@@ -42,7 +42,7 @@ Stream Analytics unterstützt auch Eingaben wie *Verweisdaten*. Verweisdaten sin
 
 Weitere Informationen zu Verweisdateneingaben finden Sie unter [Verwenden von Verweisdaten für Suchvorgänge in Stream Analytics](stream-analytics-use-reference-data.md).
 
-Dieser Artikel ist ein Schritt im [Stream Analytics-Lernpfad](/documentation/learning-paths/stream-analytics/).
+Dieser Artikel ist ein Schritt im [Stream Analytics-Lernpfad](https://azure.microsoft.com/documentation/learning-paths/stream-analytics/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

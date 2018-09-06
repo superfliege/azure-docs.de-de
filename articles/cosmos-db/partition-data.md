@@ -10,21 +10,16 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9c1379cd457dcba37246985058b01e85633f968
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 3cc2794105eff196c3e1db02d664a89c9b37e318
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038187"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286984"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partitionieren und Skalieren in Azure Cosmos DB
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ist ein weltweit verteilter Datenbankdienst mit mehreren Modellen, der Ihnen helfen soll, eine schnelle und vorhersagbare Leistung zu erzielen. Er lässt sich nahtlos zusammen mit Ihrer Anwendung skalieren. Dieser Artikel bietet eine Übersicht darüber, wie die Partitionierung für alle Datenmodelle in Azure Cosmos DB funktioniert. Außerdem wird beschrieben, wie Sie Azure Cosmos DB-Container konfigurieren, um Ihre Anwendungen effektiv zu skalieren.
-
-Partitionierung und Partitionsschlüssel werden in diesem Video erläutert:
-
-> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
-> 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB
 Azure Cosmos DB stellt Container für das Speichern von Daten bereit, die als Sammlungen (für Dokumente), Graphen oder Tabellen bezeichnet werden. Container sind logische Ressourcen und können eine oder mehrere physische Partitionen bzw. einen oder mehrere Server umfassen. Die Partitionenanzahl wird von Azure Cosmos DB auf Basis der Speichergröße und des bereitgestellten Durchsatzes für einen Container oder eine Gruppe von Containern bestimmt. 

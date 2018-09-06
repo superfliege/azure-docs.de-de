@@ -10,20 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 57ad621006a79148aaa6e9435d6ede446539c648
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714752"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287709"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
  
 Mit dem Apache Spark-Connector für Azure Cosmos DB kann Azure Cosmos DB als Ein- oder Ausgabe für Apache Spark-Aufträge fungieren. Durch das Verbinden von [Spark](http://spark.apache.org/) mit [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) haben Sie die Möglichkeit, plötzlich auftretende Data Science-Probleme schnell zu lösen. Mit Azure Cosmos DB können Sie Daten schnell speichern und abfragen. Der Connector nutzt effizient die nativen verwalteten Azure Cosmos DB-Indizes. Die Indizes aktivieren aktualisierbare Spalten, wenn Sie Analysen durchführen und Pushdown-Prädikatfilter für sich schnell ändernde global verteilte Daten verwenden. Die Daten können aus dem Internet der Dinge (IoT), aus Data Science und Analyseszenarien stammen.
-
-Weitere Informationen zu diesem Connector bietet dieses Video:
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 ## <a name="connector-components"></a>Connectorkomponenten
 

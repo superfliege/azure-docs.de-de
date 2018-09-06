@@ -3,7 +3,7 @@ title: REST-Tutorial mit Azure Relay | Microsoft-Dokumentation
 description: Erstellen einer einfachen Azure Service Bus Relay-Hostanwendung, die eine REST-basierte Schnittstelle bereitstellt.
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2017
-ms.author: sethm
-ms.openlocfilehash: 7a5a2916514a125d0b7443ced42e5ec600c68857
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.author: spelluru
+ms.openlocfilehash: fa5b4ba02eda75d16243c9aebbf38dfb30afe53d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24008035"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695407"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Tutorial zu Azure WCF Relay mit REST
 
@@ -40,7 +40,7 @@ Der Hauptunterschied zwischen einem WCF-Vertrag und einem Vertrag im REST-Stil i
 ### <a name="to-create-a-contract-with-an-interface"></a>So erstellen Sie einen Vertrag mit einer Schnittstelle
 
 1. Öffnen Sie Visual Studio als Administrator: Klicken Sie mit der rechten Maustaste im **Startmenü** auf das Programm, und klicken Sie dann auf **Als Administrator ausführen**.
-2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** und dann **Projekt** aus. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#**, wählen Sie die Vorlage **Konsolenanwendung** aus, und nennen Sie sie **ImageListener**. Verwenden Sie den standardmäßigen **Speicherort**. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+2. Erstellen Sie ein neues Konsolenanwendungsprojekt. Klicken Sie auf das Menü **Datei**, wählen Sie **Neu** und dann **Projekt** aus. Klicken Sie im Dialogfeld **Neues Projekt** auf **Visual C#**, wählen Sie die Vorlage **Konsolenanwendung** aus, und nennen Sie sie **ImageListener**. Verwenden Sie den standardmäßigen **Speicherort**. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 3. Für ein C#-Projekt erstellt Visual Studio erstellt eine `Program.cs`-Datei. Diese Klasse enthält eine leere `Main()`-Methode, die erforderlich ist, damit ein Konsolenanwendungsprojekt ordnungsgemäß erstellt wird.
 4. Fügen Sie dem Projekt Verweise auf Service Bus und **System.ServiceModel.dll** hinzu, indem Sie das NuGet-Paket „Service Bus“ installieren. Dieses Paket fügt automatisch Verweise auf die Service Bus-Bibliotheken sowie **System.ServiceModel** (WCF) hinzu. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ImageListener**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 5. Dem Projekt muss explizit ein Verweis auf **System.ServiceModel.Web.dll** hinzugefügt werden:

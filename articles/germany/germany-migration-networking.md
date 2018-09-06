@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: c3ba77675876387c037c3068d713a4be6f33162b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346255"
 ---
-
 # <a name="migration-of-network-resources-from-azure-germany-to-global-azure"></a>Migration von Netzwerkressourcen von Azure Deutschland zu Azure weltweit
 
 Die meisten Netzwerkdienste unterstützen keine Migration von Azure Deutschland zu Azure weltweit. Allerdings können Sie Ihre Netzwerke in beiden Cloudumgebungen verbinden, indem ein Site-to-Site-VPN verwendet wird. Die Schritte ähneln dem Bereitstellen eines Site-to-Site-VPN zwischen Ihrem lokalen Netzwerk und Azure: Definieren Sie ein Gateway in beiden Clouds, und geben Sie an, wie die Kommunikation zwischen ihnen erfolgen soll. Es ist ein [Artikel zu Site-to-Site-VPNs](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) verfügbar, der die Schritte zum Bereitstellen eines Site-to-Site-VPN beschreibt:

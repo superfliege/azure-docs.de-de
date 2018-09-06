@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/31/2018
 ms.author: bikang
-ms.openlocfilehash: 68799fe2755d8c0e811ae217f2cf6ceb84c7d869
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1e77dfdec902b64f2524c790bda6742eaa1105fc
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494225"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669173"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 Ermöglicht es, den Chaos-Testdienst zu starten und zu beenden sowie seine Berichte anzuzeigen.
@@ -47,9 +47,9 @@ Um das jeweils nächste Segment der Chaostestereignisse abzurufen, können Sie d
 |Argument|BESCHREIBUNG|
 | --- | --- |
 | --continuation-token | Der Parameter „continuation-token“ (Fortsetzungstoken) wird dazu verwendet, den nächsten Satz von Ergebnissen abzurufen. Ein Fortsetzungstoken mit einem nicht leeren Wert wird in die Antwort der API eingefügt, wenn die Ergebnisse aus dem System nicht in eine einzige Antwort passen. Wird dieser Wert an den nächsten API-Aufruf übergeben, gibt die API den nächsten Satz von Ergebnissen zurück. Gibt es keine weiteren Ergebnisse, enthält das Fortsetzungstoken keinen Wert. Der Wert dieses Parameters darf nicht als URL codiert sein. |
-| --end-time-utc | Die Windows-Dateizeit, die die Endzeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx). |
+| --end-time-utc | Die Windows-Dateizeit, die die Endzeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc). |
 | --max-results | Die maximale Anzahl von Ergebnissen, die als Teil der seitenweisen Abfragen zurückgegeben werden sollen. Dieser Parameter definiert die obere Grenze für die Anzahl von zurückgegebenen Ergebnissen. Es können weniger Ergebnisse zurückgegeben werden, als dieser maximalen Anzahl entspricht. Dies ist der Fall, wenn die Ergebnisse wegen der Größenbeschränkungen, die für Meldungen in der Konfiguration definiert sind, nicht in die jeweilige Meldung passen. Ist dieser Parameter gleich null oder nicht angegeben, enthält die seitenweise Abfrage so viele Ergebnisse, wie in die Rückgabemeldung passen. |
-| --start-time-utc | Die Windows-Dateizeit, die die Anfangszeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx). |
+| --start-time-utc | Die Windows-Dateizeit, die die Anfangszeit des Zeitbereichs angibt, für den ein Chaos-Bericht generiert werden soll. Weitere Informationen finden Sie unter [DateTime.ToFileTimeUtc-Methode](https://docs.microsoft.com/dotnet/api/system.datetime.tofiletimeutc?redirectedfrom=MSDN&view=netframework-4.7.2#System_DateTime_ToFileTimeUtc). |
 | --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente

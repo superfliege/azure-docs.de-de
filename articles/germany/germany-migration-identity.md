@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: d417206ead8cd5639a157326762cdf3ffe56a61c
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346258"
 ---
-
 # <a name="migration-of-identity-resources-from-azure-germany-to-global-azure"></a>Migration von Identity-Ressourcen von Azure Deutschland zu Azure weltweit
 
 Dieser Artikel unterstützt Sie bei der Migration von Azure Identity-Ressourcen von Azure Deutschland zu Azure weltweit.

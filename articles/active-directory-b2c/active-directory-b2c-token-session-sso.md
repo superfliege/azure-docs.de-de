@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 061e2257200b6d660a421a86c540f43597112c5e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444825"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337884"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Token, Sitzung und einmaliges Anmelden – Konfiguration
 
@@ -69,8 +69,8 @@ Dies sind einige Anwendungsfälle, die Sie mit diesen Eigenschaften aktivieren k
 Das Format wichtiger Ansprüche in den von Azure AD B2C ausgegebenen Sicherheitstoken wurde geändert. Diese Änderung wurde zur Verbesserung der Standardprotokollunterstützung und zur besseren Interoperabilität mit Identitätsbibliotheken von Drittanbietern vorgenommen. Um die fehlerfreie Nutzung vorhandener Apps zu gewährleisten, wurden die folgenden Eigenschaften erstellt, um Kunden die Anwendung nach Bedarf zu ermöglichen:
 
 * **Issuer (iss) claim** (Ausstelleranspruch): Der Azure AD B2C-Mandant, der das Token ausgestellt hat
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: Dies ist der Standardwert.
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Dieser Wert enthält IDs für den B2C-Mandanten und die in der Tokenanforderung verwendete Richtlinie. Verwenden Sie diesen Wert, wenn für Ihre App oder Bibliothek Azure AD B2C die [OpenID Connect Discovery 1.0-Spezifikationen](http://openid.net/specs/openid-connect-discovery-1_0.html) erfüllen muss.
+  * `https://<domain>/{B2C tenant GUID}/v2.0/`: Dies ist der Standardwert.
+  * `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Dieser Wert enthält IDs für den B2C-Mandanten und die in der Tokenanforderung verwendete Richtlinie. Verwenden Sie diesen Wert, wenn für Ihre App oder Bibliothek Azure AD B2C die [OpenID Connect Discovery 1.0-Spezifikationen](http://openid.net/specs/openid-connect-discovery-1_0.html) erfüllen muss.
 * **Subject (sub) claim** (Antragstelleranspruch): Die Entität, d.h. der Benutzer, für den das Token Informationen bestätigt
   * **ObjectID**: Dies ist der Standardwert. Er wird als Objekt-ID des Benutzers im Verzeichnis in den `sub`-Anspruch des Tokens eingefügt.
   * **Not supported** (Nicht unterstützt): Nur für Abwärtskompatibilität. Es wird empfohlen, baldmöglichst auf **ObjectID** umzustellen.

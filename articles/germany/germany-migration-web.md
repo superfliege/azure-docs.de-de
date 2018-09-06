@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: 8c5bae86636774b23da5507936e3dd0002538f05
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346256"
 ---
-
 # <a name="migration-of-web-resources-from-azure-germany-to-global-azure"></a>Migration von Web-Ressourcen von Azure Deutschland zu Azure weltweit
 
 Dieser Artikel unterstützt Sie bei der Migration von Azure Web-Ressourcen von Azure Deutschland zu Azure weltweit.

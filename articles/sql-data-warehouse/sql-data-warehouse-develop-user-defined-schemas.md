@@ -3,19 +3,19 @@ title: Verwenden benutzerdefinierter Schemas in SQL Data Warehouse | Microsoft D
 description: Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c18e6d34416390ae7e93b69b28d508a540f7b1ab
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d46f41e75538fae230219068d3530b7181564ac0
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31522706"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302640"
 ---
 # <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Verwenden benutzerdefinierter Schemas in SQL Data Warehouse
 Tipps für die Verwendung von benutzerdefinierten T-SQL-Schemas in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
@@ -121,5 +121,5 @@ FROM    [edw].customer
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Tipps zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
+Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht](sql-data-warehouse-overview-develop.md).
 

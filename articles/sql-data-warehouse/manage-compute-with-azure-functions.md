@@ -3,19 +3,19 @@ title: 'Tutorial: Verwalten von Computeressourcen mit Azure Functions in Azure S
 description: Es wird beschrieben, wie Sie Azure Functions zum Verwalten der Computevorgänge Ihres Data Warehouse verwenden.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 48428ef329de4719a25afd20c21ac102bba540a8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2f366718a11f715b0c91a556eb3b0f216424b82c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188445"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287900"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen mit Azure Functions in Azure SQL Data Warehouse
 

@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: 6f5cccc41ca6430eb417539e09582bd25a615bab
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346251"
 ---
-
 # <a name="migration-of-database-resources-from-azure-germany-to-global-azure"></a>Migration von Datenbankressourcen von Azure Deutschland zu Azure weltweit
 
 Dieser Artikel unterstützt Sie bei der Migration von Azure-Datenbankressourcen von Azure Deutschland zu Azure weltweit.
@@ -35,7 +40,7 @@ Um Azure SQL-Datenbanken zu migrieren, können Sie (für kleinere Workloads) die
 
 ### <a name="references"></a>Referenzen
 
-- [Dokumentation zur Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/)
+- [Dokumentation zu Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/)
 
 
 

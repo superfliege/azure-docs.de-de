@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rimman
-ms.openlocfilehash: 160ff4e09f70036fd261c07fa59e13772bc00660
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 66beeb2cc724f75d17a4c155f1cdb888153e8fbf
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053326"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286764"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
@@ -40,12 +40,6 @@ Azure Cosmos DB ist eine Datenbank mit mehreren Modellen. Beachten Sie daher, da
 Azure Cosmos DB bietet eine schnelle, vorhersagbare Leistung durch die Reservierung von Ressourcen, um die Durchsatzanforderungen Ihrer Anwendung zu erfüllen. Anwendungsauslastung und Zugriffsmuster ändern sich im Lauf der Zeit. Azure Cosmos DB kann Sie dabei unterstützen, den reservierten Durchsatz, der für Ihre Anwendung zur Verfügung steht, ganz einfach zu erhöhen oder zu verringern.
 
 Bei Azure Cosmos DB wird der reservierte Durchsatz in verarbeiteten Anforderungseinheiten pro Sekunde angegeben. Sie können sich Anforderungseinheiten als Währung für den Durchsatz vorstellen. Sie reservieren eine bestimmte Anzahl von Anforderungseinheiten, die Ihrer Anwendung garantiert pro Sekunde zur Verfügung stehen. Jeder Vorgang in Azure Cosmos DB – beispielsweise das Schreiben eines Dokuments, das Durchführen einer Abfrage oder das Aktualisieren eines Dokuments – verbraucht CPU, Arbeitsspeicher und IOPS. Mit anderen Worten: Für jeden Vorgang fällt eine Anforderungsgebühr an, die in Anforderungseinheiten ausgedrückt wird. Wenn Sie die Faktoren, die sich auf die Gebühren für Anforderungseinheiten auswirken, sowie die Durchsatzanforderungen Ihrer Anwendung genau kennen, können Sie Ihre Anwendung so kosteneffektiv wie möglich ausführen. 
-
-Um Ihnen den Einstieg zu erleichtern, erläutert Azure Cosmos DB-Programm-Manager Andrew Liu im folgenden Video das Konzept der Anforderungseinheiten (das Video enthält einen Tippfehler im Beispiel für Anforderungseinheiten – wenn 1 KB Daten mit 100.000 Datensätzen verwendet werden, wird insgesamt ein Speicherplatz von 100 MB verbraucht, nicht 100 GB): <br /><br />
-
-> [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
-> 
-> 
 
 ## <a name="throughput-isolation-in-globally-distributed-databases"></a>Durchsatzisolation in global verteilten Datenbanken
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b1fe17adc80fc7f93f1511d577b1dc363e36e2e3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 5315e7d45ef3af838f26422655cf6971af6f903e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746000"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382549"
 ---
 # <a name="add-a-shape-to-a-map"></a>Hinzufügen einer Form zu einer Karte
 
@@ -29,7 +29,7 @@ In diesem Artikel wird gezeigt, wie Sie eine Linie, einen Kreis und ein Polygon 
 
 Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-In der zweiten Codeblock wird eine Linie erstellt. Eine Linie ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest) von „LineString“ mit „LineStringProperties“ als „Feature“-Eigenschaft. Verwenden Sie `new atlas.data.Feature(new atlas.data.LineString())`, um eine Linie zu erstellen und deren Eigenschaften zu definieren. 
+In der zweiten Codeblock wird eine Linie erstellt. Eine Linie ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) von „LineString“ mit „LineStringProperties“ als „Feature“-Eigenschaft. Verwenden Sie `new atlas.data.Feature(new atlas.data.LineString())`, um eine Linie zu erstellen und deren Eigenschaften zu definieren. 
 
 Bei einer Linienebene handelt es sich um ein Array von Linien. Im letzten Codeblock wird die Funktion [addLineStrings](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings) der Map-Klasse verwendet, um die Linienebene zur Karte hinzuzufügen und die Eigenschaften der Linienebene zu definieren. Die Eigenschaften einer Linienebene finden Sie unter [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.linestringlayeroptions?view=azure-iot-typescript-latest).
 
@@ -42,7 +42,7 @@ Bei einer Linienebene handelt es sich um ein Array von Linien. Im letzten Codebl
 
 Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-In der zweiten Codeblock wird ein Kreis erstellt. Ein Kreis ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest) von [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.point?view=azure-iot-typescript-latest) mit [CircleProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/modelscircleproperties?view=azure-iot-typescript-latest) als „Feature“-Eigenschaft. Verwenden Sie `new atlas.data.Feature(new atlas.data.Point())`, um einen Kreis zu erstellen und dessen Eigenschaften zu definieren.
+In der zweiten Codeblock wird ein Kreis erstellt. Ein Kreis ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) von [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) mit [CircleProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.circleproperties?view=azure-iot-typescript-latest) als „Feature“-Eigenschaft. Verwenden Sie `new atlas.data.Feature(new atlas.data.Point())`, um einen Kreis zu erstellen und dessen Eigenschaften zu definieren.
 
 Eine Kreisebene ist ein Array von Kreisen. Im letzten Codeblock wird die Funktion [addCircle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcircles) der Map-Klasse verwendet, um die Kreisebene zur Karte hinzuzufügen und die Eigenschaften der Kreisebene zu definieren. Die Eigenschaften einer Kreisebene finden Sie unter [CircleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.circlelayeroptions?view=azure-iot-typescript-latest).
 
@@ -54,7 +54,7 @@ Eine Kreisebene ist ein Array von Kreisen. Im letzten Codeblock wird die Funktio
 
 Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-In der zweiten Codeblock wird ein Polygon erstellt. Ein Polygon ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.feature?view=azure-iot-typescript-latest) von [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.polygon?view=azure-iot-typescript-latest) mit [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.data.polygonproperties?view=azure-iot-typescript-latest) als „Feature“-Eigenschaft. Verwenden Sie `new atlas.data.Feature(new atlas.data.Polygon())`, um ein Polygon zu erstellen und dessen Eigenschaften zu definieren. Geben Sie im Polygonkonstruktor die geordneten Koordinaten des Polygonpfads an.
+In der zweiten Codeblock wird ein Polygon erstellt. Ein Polygon ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) von [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) mit [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonproperties?view=azure-iot-typescript-latest) als „Feature“-Eigenschaft. Verwenden Sie `new atlas.data.Feature(new atlas.data.Polygon())`, um ein Polygon zu erstellen und dessen Eigenschaften zu definieren. Geben Sie im Polygonkonstruktor die geordneten Koordinaten des Polygonpfads an.
 
 Eine Polygonebene ist ein Array von Polygonen. Im letzten Codeblock wird die Funktion [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpolygons) der Map-Klasse verwendet, um die Polygonebene zur Karte hinzuzufügen und die Eigenschaften der Polygonebene zu definieren. Die Eigenschaften einer Polygonebene finden Sie unter [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest). 
 

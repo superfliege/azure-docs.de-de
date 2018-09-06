@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 60da24b5b0bb7d83414539f07936c61a196e0b62
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d8c3bb07c88dc96b7ca779ca0f4dfe09052ab290
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783689"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666169"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Medienanalyse mithilfe des Azure-Portals
 > [!NOTE]
@@ -34,8 +34,8 @@ In diesem Thema wird beschrieben, wie Sie Medien mit Media Analytics-Medienproze
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>Auswählen eines zu analysierenden Assets
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
-2. Wählen Sie im Fenster **Einstellungen** die Option **Assets** aus.  
-   zu erstellen und zu verwalten.
+2. Wählen Sie im Fenster **Einstellungen** die Option **Assets**.  
+   
     ![Analysieren von Videos](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
 3. Wählen Sie das Asset aus, das Sie analysieren möchten, und klicken Sie auf die Schaltfläche **Analysieren**.
    

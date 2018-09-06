@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/21/2018
-ms.openlocfilehash: fcb2da93a39bd4e1a81f7767dc40b3a24fd7d213
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9ad18397a3463fc845692c79b5e1f817d0912a8e
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250643"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663666"
 ---
 # <a name="install-ansible-on-azure-virtual-machines"></a>Installieren von Ansible auf virtuellen Azure-Computern
 
@@ -23,7 +23,7 @@ Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von
 
 - **Azure-Abonnement:** Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen.
 
-- **Zugriff auf Linux oder einen virtuellen Linux-Computer:** Falls Sie keinen Linux-Computer besitzen, erstellen Sie einen [virtuellen Linux-Computer](/virtual-machines/linux/quick-create-cli.md).
+- **Zugriff auf Linux oder einen virtuellen Linux-Computer:** Falls Sie keinen Linux-Computer besitzen, erstellen Sie einen [virtuellen Linux-Computer](https://docs.microsoft.com/azure/virtual-network/quick-create-cli).
 
 - **Azure-Dienstprinzipal**: Befolgen Sie die Anweisungen im Abschnitt **Erstellen des Dienstprinzipals** des Artikels [Erstellen eines Azure-Dienstprinzipals mit Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Notieren Sie sich die Werte für **appId**, **displayName**, **password** und **tenant**.
 

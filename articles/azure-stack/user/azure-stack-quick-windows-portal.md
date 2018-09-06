@@ -2,24 +2,24 @@
 title: Azure Stack-Schnellstart – Erstellen eines virtuellen Windows-Computers
 description: Azure Stack-Schnellstart – Erstellen eines virtuellen Windows-Computers mit dem Portal
 services: azure-stack
-author: brenduns
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 04/23/2018
-ms.author: brenduns
+ms.date: 08/15/2018
+ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 5776fc472483018eb2c9e4f8962d0b1e8bce8081
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: efe6213e5c0261fb26ac40e74c2b0f6e0c9252dd
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32155580"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "43775058"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Schnellstart: Erstellen eines virtuellen Windows Server-Computers im Azure Stack-Portal
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können einen virtuellen Windows Server 2016-Computer im Azure Stack-Portal erstellen. Befolgen Sie die Schritte in diesem Artikel zum Erstellen und Verwenden eines virtuellen Computers.
 

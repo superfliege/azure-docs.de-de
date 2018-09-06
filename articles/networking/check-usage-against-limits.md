@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 0c51f48576c665fbe67f2f18198d6422fe872895
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 30b0c1bdd23858b5cc6224deb2698b5f180359eb
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34811784"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288229"
 ---
 # <a name="check-resource-usage-against-limits"></a>Vergleichen der Ressourcennutzung mit Grenzwerten
 
@@ -49,7 +49,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anzahl von Ressourcen für jeden im 
 
 Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie das PowerShell-Modul *AzureRM* Version 6.0.1 oder höher ausführen. Führen Sie `Get-Module -ListAvailable AzureRM` auf Ihrem Computer aus, um nach der installierten Version zu suchen. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um sich bei Azure anzumelden.
 
-Zeigen Sie mit [Get-AzureRmNetworkUsage](/powershell/module/azurerm.network/powershell/module/azurerm.network/get-azurermnetworkusage) die Nutzung Ihrer Ressourcen im Vergleich mit den Grenzwerten an. Das folgende Beispiel ruft die Nutzung für diejenigen Ressourcen ab, von denen mindestens eine in „USA, Osten“ bereitgestellt ist:
+Zeigen Sie mit [Get-AzureRmNetworkUsage](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0) die Nutzung Ihrer Ressourcen im Vergleich mit den Grenzwerten an. Das folgende Beispiel ruft die Nutzung für diejenigen Ressourcen ab, von denen mindestens eine in „USA, Osten“ bereitgestellt ist:
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkUsage `

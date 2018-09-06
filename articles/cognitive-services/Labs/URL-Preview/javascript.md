@@ -8,12 +8,12 @@ ms.technology: project-url-preview
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9041a88a292fb2dabead69195ebc3074e2ecf486
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376259"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301351"
 ---
 # <a name="url-preview-in-javascript"></a>URL-Vorschau in JavaScript 
 
@@ -21,7 +21,7 @@ Die folgende einseitige Anwendung verwendet JavaScript zum Erstellen einer URL-V
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Rufen Sie einen Zugriffsschlüssel für die kostenlose Testversion von [Cognitive Services Labs](https://aka.ms/answersearchsubscription) ab.
+Rufen Sie einen Zugriffsschlüssel für die kostenlose Testversion von [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-url-preview) ab.
 
 ## <a name="code-scenario"></a>Codeszenario
 Das folgende Javascript-Beispiel enthält ein Textfeld-Eingabeobjekt, in das der Benutzer die URL eingibt, für die eine Vorschau ausgeführt werden soll.  Wenn der Benutzer auf die Schaltfläche **Preview** (Vorschau) klickt, wird die onclick-Methode an `getPreview` weitergeleitet, wo Code eine Webanforderung für den **UrlPreview**-Endpunkt generiert.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 70d3a19b715052fe658102929a1c29cf3db2d595
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e09ad89f3225af9de40781fafc022c8326f80619
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443724"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338637"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C: Anmelden mithilfe von Azure AD-Konten über eine integrierte Richtlinie
 
@@ -37,13 +37,13 @@ Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu akt
 1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie einen Namen für Ihre Anwendung ein (z.B. `Azure AD B2C App`).
 1. Wählen Sie **Web-App/API** als Anwendungstyp aus.
-1. Geben Sie für **Anmelde-URL** die folgende URL ein, in der `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten (`fabrikamb2c.onmicrosoft.com`) ersetzt wird:
+1. Geben Sie für **Anmelde-URL** die folgende URL ein, in der `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten (`fabrikamb2c`) ersetzt wird:
 
     >[!NOTE]
     >Der Wert für „yourtenant“ muss in der **Anmelde-URL** in Kleinbuchstaben angegeben werden.
 
     ```Console
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. Speichern Sie die Anwendungs-ID, die Sie im nächsten Abschnitt als Client-ID verwenden werden.

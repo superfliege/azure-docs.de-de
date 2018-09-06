@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e25103d2fcbfc70be7f96f5c0e5fa6abe13fe393
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 36fad697758273246d567dfa1010f0e6bfc68939
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446740"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344561"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: Erste Schritte mit benutzerdefinierten Richtlinien
 
@@ -77,7 +77,7 @@ Azure AD B2C erfordert, dass Sie zwei zusätzliche Anwendungen registrieren, die
 4. Wählen Sie **Registrierung einer neuen Anwendung** aus.
    * Verwenden Sie für **Name** den Wert `IdentityExperienceFramework`.
    * Verwenden Sie für **Anwendungstyp** die Option **Web-App/API**.
-   * Verwenden Sie `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` für **Anmelde-URL**, wobei `yourtenant` für den Domänennamen Ihres Azure AD B2C-Mandanten steht.
+   * Verwenden Sie `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com` für **Anmelde-URL**, wobei `yourtenant` für den Domänennamen Ihres Azure AD B2C-Mandanten steht.
 5. Klicken Sie auf **Erstellen**.
 6. Wählen Sie die neu erstellte Anwendung **IdentityExperienceFramework** aus, sobald die Erstellung abgeschlossen ist.<br>
    * Wählen Sie **Eigenschaften** aus.<br>
@@ -89,7 +89,7 @@ Azure AD B2C erfordert, dass Sie zwei zusätzliche Anwendungen registrieren, die
 1. Wählen Sie **Registrierung einer neuen Anwendung** aus.
    * Verwenden Sie für **Name** den Wert `ProxyIdentityExperienceFramework`.
    * Verwenden Sie für **Anwendungstyp** die Option **Nativ**.
-   * Verwenden Sie `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` für den **Umleitungs-URI**, wobei `yourtenant` für Ihren Azure AD B2C-Mandanten steht.
+   * Verwenden Sie `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com` für den **Umleitungs-URI**, wobei `yourtenant` für Ihren Azure AD B2C-Mandanten steht.
 1. Klicken Sie auf **Erstellen**.
 1. Wählen Sie die Anwendung **ProxyIdentityExperienceFramework** aus, sobald sie erstellt wurde.<br>
    * Wählen Sie **Eigenschaften** aus. <br>

@@ -2,19 +2,19 @@
 title: Tutorial – Aktualisieren des Einzelhandelsbestands-Sortiments mit Veröffentlichen/Abonnieren-Kanälen und Themenfiltern über die Azure CLI | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie Nachrichten für ein Thema und ein Abonnement senden und empfangen und Filterregeln per Azure CLI hinzufügen und verwenden.
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
-ms.author: sethm
+ms.author: spelluru
 ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 81d538c0324f8fa89a7ce86ceaf2b0a2a76b4d51
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b68b3f311312a952ab55c15083ff5ed562443be2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120683"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702002"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über die CLI und mit Themen/Abonnements
 

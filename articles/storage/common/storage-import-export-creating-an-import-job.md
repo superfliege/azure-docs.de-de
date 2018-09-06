@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 3c6adc3f27e49facec124401f03a036269b7c7a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524446"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666018"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Erstellen eines Importauftrags für den Azure Import/Export-Dienst
 
@@ -57,7 +57,7 @@ Die Vorbereitung des Laufwerks umfasst Folgendes:
 
 ## <a name="obtaining-your-shipping-location"></a>Beschaffen der Versandadresse
 
-Vor dem Erstellen eines Importauftrags müssen Sie sich die Versandadresse beschaffen, indem Sie den Vorgang [List Locations](/rest/api/storageimportexport/listlocations) aufrufen. `List Locations` gibt eine Liste mit Orten und den dazugehörigen Versandadressen zurück. Sie können einen Ort aus der zurückgegebenen Liste auswählen und Ihre Festplatten an diese Adresse schicken. Sie können auch den Vorgang `Get Location` verwenden, um die Versandadresse für einen bestimmten Ort direkt zu beschaffen.
+Vor dem Erstellen eines Importauftrags müssen Sie sich die Versandadresse beschaffen, indem Sie den Vorgang [List Locations](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) aufrufen. `List Locations` gibt eine Liste mit Orten und den dazugehörigen Versandadressen zurück. Sie können einen Ort aus der zurückgegebenen Liste auswählen und Ihre Festplatten an diese Adresse schicken. Sie können auch den Vorgang `Get Location` verwenden, um die Versandadresse für einen bestimmten Ort direkt zu beschaffen.
 
  Führen Sie die unten angegebenen Schritte aus, um das Versandziel zu beschaffen:
 

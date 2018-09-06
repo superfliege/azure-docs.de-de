@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 305c017bd49f233c10479e2c33ec8db72cae3aa7
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: a1616150ebf696654bc0ca9a79d39c3877c363d9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28198867"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699385"
 ---
 # <a name="topic-filters-and-actions"></a>Themenfilter und -aktionen
 
@@ -38,7 +38,7 @@ Alle Filter werten Nachrichteneigenschaften aus. Der Nachrichtentext kann nicht 
 
 Komplexe Filterregeln erfordern Verarbeitungskapazitäten. Insbesondere führt die Verwendung von SQL-Filterregeln zu einem geringeren Gesamtnachrichtendurchsatz auf Ebene des Abonnements, des Themas und des Namespace. Nach Möglichkeit sollten Anwendungen eher Korrelationsfilter als SQL-ähnliche Filter verwenden, da sie erheblich effizienter verarbeitet werden und daher geringere Auswirkungen auf den Durchsatz haben.
 
-## <a name="actions"></a>Actions
+## <a name="actions"></a>Aktionen
 
 Mit SQL-Filterbedingungen (und nur mit diesen) können Sie eine Aktion definieren, die die Nachricht durch Hinzufügen, Entfernen oder Ersetzen von Eigenschaften und deren Werten kommentieren kann. Die Aktion [verwendet einen SQL-ähnlichen Ausdruck](service-bus-messaging-sql-filter.md), der grob an die Syntax der SQL UPDATE-Anweisung angelehnt ist. Die Aktion wird auf die Nachricht angewendet, nachdem für diese eine Übereinstimmung gefunden wurde und bevor die Nachricht für das Thema ausgewählt wird. Die Änderungen an den Nachrichteneigenschaften sind innerhalb der in das Abonnement kopierten Nachricht privat.
 

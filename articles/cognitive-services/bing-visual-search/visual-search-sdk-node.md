@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 51797f4b674224b4348f3f51518a5b087fd2329a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: bb245f9eab0f367a0e1b69af88352c54132ea29d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961892"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782439"
 ---
 # <a name="visual-search-sdk-node-quickstart"></a>Node SDK für die thematische Suche – Schnellstart
 
@@ -28,7 +28,7 @@ Codeszenarien sind unter den folgenden Themen dokumentiert:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die Authentifizierung von SDK-Aufrufen ist ein Cognitive Services-API-Schlüssel erforderlich. Registrieren Sie sich für einen [kostenlosen Testschlüssel]((https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)). Der Testschlüssel ist sieben Tage lang gültig und auf einen Aufruf pro Sekunde beschränkt. Für Produktionsszenarien [erwerben Sie einen Zugriffsschlüssel](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Weitere Details finden Sie in den [Preisinformationen](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Für die Authentifizierung von SDK-Aufrufen ist ein Cognitive Services-API-Schlüssel erforderlich. Registrieren Sie sich für einen [kostenlosen Testschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Der Testschlüssel ist sieben Tage lang gültig und auf einen Aufruf pro Sekunde beschränkt. Für Produktionsszenarien [erwerben Sie einen Zugriffsschlüssel](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Weitere Details finden Sie in den [Preisinformationen](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
 
 ## <a name="application-dependencies"></a>Anwendungsabhängigkeiten
 

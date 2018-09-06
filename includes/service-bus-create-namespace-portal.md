@@ -2,18 +2,18 @@
 title: Includedatei
 description: Includedatei
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
 ms.date: 07/03/2018
-ms.author: sethm
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 6fb9b5cd1379f39796f984f0436900f629c66436
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 377ea6629223c365ef3d00c756929bf23ddffde5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40209828"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702632"
 ---
 Um mit der Verwendung von Service Bus-Nachrichtenentitäten in Azure beginnen zu können, müssen Sie zuerst einen Namespace mit einem in Azure eindeutigen Namen erstellen. Ein Namespace ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung.
 

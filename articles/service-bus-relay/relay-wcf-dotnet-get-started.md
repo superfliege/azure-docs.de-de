@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure Relay-WCF-Relays in .NET | Microsoft-Dokumentati
 description: Erfahren Sie etwas über die Verwendung von Azure Relay-WCF-Relays zum Herstellen einer Verbindung zwischen zwei Anwendungen, die an unterschiedlichen Standorten gehostet sind.
 services: service-bus-relay
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 5493281a-c2e5-49f2-87ee-9d3ffb782c75
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
-ms.author: sethm
-ms.openlocfilehash: face684190456fbf4b78a84ac3afe7a4ead8995a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: b9701eae026522238424a21ae3ecf2baa40334fa
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697891"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701764"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Verwenden von Azure Relay-WCF-Relays mit .NET
 In diesem Artikel wird die Verwendung des Azure Relay-Diensts beschrieben. Die Beispiele sind in C# geschrieben und nutzen die Windows Communication Foundation (WCF)-API mit den Erweiterungen, die in der Service Bus-Assembly enthalten sind. Weitere Informationen zum Azure Relay-Dienst finden Sie in der [Übersicht über Azure Relay](relay-what-is-it.md).

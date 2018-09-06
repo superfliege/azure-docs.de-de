@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/11/2018
 ms.author: rolyon
-ms.openlocfilehash: 4eeae864721040bda18409b48abf5d33b81ca609
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cac585b36c3b5969a18c941215b623443850cd4c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295897"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301727"
 ---
 # <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure PowerShell
 
@@ -44,7 +44,7 @@ Um dieses Lernprogramm abzuschließen, benötigen Sie:
 
 In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich. In diesem Tutorial führen Sie die zwei folgenden Rollenzuweisungen aus:
 
-| Sicherheitsprinzipal | Rollendefinition | Umfang |
+| Sicherheitsprinzipal | Rollendefinition | Bereich |
 | --- | --- | --- |
 | Benutzer<br>(Benutzer des RBAC-Tutorials) | [Leser](built-in-roles.md#reader) | Abonnement |
 | Benutzer<br>(Benutzer des RBAC-Tutorials)| [Mitwirkender](built-in-roles.md#contributor) | Ressourcengruppe<br>(rbac-tutorial-resource-group) |
@@ -109,7 +109,7 @@ Sie verwenden eine Ressourcengruppe, um zu veranschaulichen, wie eine Rolle im R
 
 Um Zugriff für den Benutzer zu gewähren, verwenden Sie den Befehl [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) zum Zuweisen einer Rolle. Sie müssen den Sicherheitsprinzipal, die Rollendefinition und den Bereich angeben.
 
-1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription) ab.
+1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) ab.
 
     ```azurepowershell
     Get-AzureRmSubscription

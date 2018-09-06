@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: 238d87143597809e12155084fc755c032fab278a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346250"
 ---
-
 # <a name="migration-of-media-resources-from-azure-germany-to-global-azure"></a>Migration von Media-Ressourcen von Azure Deutschland zu Azure weltweit
 
 Dieser Artikel unterstützt Sie bei der Migration von Azure Media-Ressourcen von Azure Deutschland zu Azure weltweit.

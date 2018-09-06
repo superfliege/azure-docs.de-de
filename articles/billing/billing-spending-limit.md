@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 06/15/2018
 ms.author: genli
-ms.openlocfilehash: 6049e3614b63bfabee6721dcaa83008eb3306493
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069981"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43670103"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Grundlegendes zum Azure-Ausgabenlimit und zu dessen Entfernung
 
@@ -48,8 +48,7 @@ Wenn eine gültige Zahlungsmethode für Ihr Abonnement festgelegt wurde, können
 Führen Sie die folgenden Schritte aus, um das Ausgabenlimit zu entfernen:
 
 1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/Subscriptions) an.
-1. Wählen Sie ein Abonnement aus.
-zu erstellen und zu verwalten. Wenn das Abonnement deaktiviert wurde, weil das Ausgabenlimit erreicht wurde, klicken Sie auf die Benachrichtigung „Abonnement hat das Ausgabenlimit erreicht und wurde deaktiviert, um zu verhindern, dass Kosten anfallen.“ Klicken Sie andernfalls im Bereich **ABONNEMENTSTATUS** auf **Ausgabenlimit entfernen**.
+1. Wählen Sie ein Abonnement aus. Wenn das Abonnement deaktiviert wurde, weil das Ausgabenlimit erreicht wurde, klicken Sie auf die Benachrichtigung „Abonnement hat das Ausgabenlimit erreicht und wurde deaktiviert, um zu verhindern, dass Kosten anfallen.“ Klicken Sie andernfalls im Bereich **ABONNEMENTSTATUS** auf **Ausgabenlimit entfernen**.
 1. Wählen Sie die gewünschte Option aus.
 
 ![Auswählen einer Option zum Entfernen des Ausgabenlimits](./media/billing-spending-limit/remove-spending-limit.PNG)

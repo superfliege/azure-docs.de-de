@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: a1e8c53263093554bb616ec130cd17a0d6d4339c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41918204"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302914"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -220,7 +220,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 
 ![Veröffentlichen der Anwendung][publish-app]
 
-Im Fenster „Ausgabe“ können Sie den Fortschritt der Bereitstellung nachverfolgen.  Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse und den Anwendungsport ein. Beispiel: http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
+Im Fenster „Ausgabe“ können Sie den Fortschritt der Bereitstellung nachverfolgen.  Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse und den Anwendungsport ein. Beispiel: http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Fabrikam-Webbeispiel][fabrikam-web-page-deployed]
 

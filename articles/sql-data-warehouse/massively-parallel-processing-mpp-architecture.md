@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse – MPP-Architektur | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie in Azure SQL Data Warehouse durch Kombination von Massively Parallel Processing (MPP) und Azure Storage hohe Leistung und Skalierbarkeit erzielt werden.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e8fef156f4b78c9f7241c9eb9623e061f5a31fe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 34b908ef79b0a2479c420675272f7d3f3bf0ff15
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799276"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286791"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – MPP-Architektur (Massively Parallel Processing)
 In diesem Artikel erfahren Sie, wie in Azure SQL Data Warehouse durch Kombination von Massively Parallel Processing (MPP) und Azure Storage hohe Leistung und Skalierbarkeit erzielt werden. 

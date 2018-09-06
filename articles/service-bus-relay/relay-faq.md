@@ -3,7 +3,7 @@ title: Azure Relay – häufig gestellte Fragen | Microsoft-Dokumentation
 description: Hier erhalten Sie Antworten auf einige häufig gestellte Fragen zu Azure Relay.
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 886d2c7f-838f-4938-bd23-466662fb1c8e
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
-ms.author: sethm
-ms.openlocfilehash: 1795c1ec0b4129e3c99fff3fc893148e191ce83e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: e30e8c94547ac0f9106a69f1e99cf9a7c03abea5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641491"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695896"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -77,7 +77,7 @@ Das Senden einer Nachricht an ein Service Bus-Relay wird als vollständiger Send
 Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln Nachrichten nicht als einzelne Nachrichten, sondern als Datenstrom, der durch das System fließt. Wenn Sie diese Bindung verwenden, erhalten nur der Sender und der Listener Einblick in das Framing der einzelnen Nachrichten, die gesendet/empfangen werden. Bei Relays, die die **netTCPRelay**-Bindung verwenden, werden zur Ermittlung abrechenbarer Nachrichten alle Daten als Datenstrom behandelt. In diesen Fall berechnet Service Bus die Gesamtmenge der über jedes einzelne Relay gesendeten oder empfangenen Daten für einen Zeitraum von 5 Minuten. Dann wird diese Gesamtmenge durch 64 KB dividiert, um die Anzahl von abrechenbaren Nachrichten für dieses Relay in diesem Zeitraum zu ermitteln.
 
 ## <a name="quotas"></a>Kontingente
-| Namen des Kontingents | Umfang |  Notizen | Wert |
+| Namen des Kontingents | Bereich |  Notizen | Wert |
 | --- | --- | --- | --- |
 | Gleichzeitige Listener für ein Relay |Entität |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
 | Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5.000 |

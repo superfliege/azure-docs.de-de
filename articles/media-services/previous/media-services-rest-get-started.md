@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST | Microsoft-Dokumentation
+title: Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST | Microsoft Docs
 description: Dieses Lernprogramm führt Sie durch die Schritte zum Implementieren einer Anwendung zur Übermittlung von Inhalten nach Bedarf mit Azure Media Services mithilfe der REST-API.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: juliako
-ms.openlocfilehash: 53ccd4dc40136ada30a0e230d526414b567919c7
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 757ba9e999bfbb46be96e653e7939d91bdf67679
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36960456"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287124"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -54,7 +54,7 @@ Die folgenden Aufgaben werden in diesem Schnellstart beschrieben.
 >[!NOTE]
 >Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z. B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), verwenden Sie dieselbe Richtlinien-ID. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-dotnet-manage-entities.md#limit-access-policies).
 
-Weitere Informationen zu AMS-REST-Entitäten, die in diesem Artikel verwendet werden, finden Sie unter [Azure Media Services REST-API-Referenz](/rest/api/media/services/azure-media-services-rest-api-reference). Siehe auch [Azure Media Services-Konzepte](media-services-concepts.md).
+Weitere Informationen zu AMS-REST-Entitäten, die in diesem Artikel verwendet werden, finden Sie unter [Azure Media Services REST-API-Referenz](https://docs.microsoft.com/en-us/rest/api/media/services/azure-media-services-rest-api-reference). Siehe auch [Azure Media Services-Konzepte](media-services-concepts.md).
 
 >[!NOTE]
 >Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
@@ -330,7 +330,7 @@ Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie die eigentliche Datei mithilfe der Azure Storage-REST-APIs in einen Azure Blob Storage-Container hochladen. Sie müssen die Dateien als Blockblobs hochladen. Seitenblobs werden von Azure Media Services nicht unterstützt.  
 
 > [!NOTE]
-> Sie müssen den Dateinamen der Uploaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Zum Beispiel, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten.
+> Sie müssen den Dateinamen der Uploaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Zum Beispiel, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 >
 >
 
@@ -405,7 +405,7 @@ Im Erfolgsfall wird Folgendes zurückgegeben:
 
 ## <a id="encode"></a>Codieren der Quelldatei in einen Satz von MP4-Dateien mit adaptiver Bitrate
 
-Nach dem Erfassen der Medienobjekte in Media Services können die Medien u. a. codiert, transcodiert/multiplexiert und mit einem Wasserzeichen versehen werden, bevor sie an die Clients übermittelt werden. Diese Aktivitäten werden geplant und für mehrere Hintergrundrolleninstanzen ausgeführt, um hohe Leistung und Verfügbarkeit zu gewährleisten. Diese Aktivitäten werden als Aufträge bezeichnet, und jeder Auftrag besteht aus atomaren Tasks, welche die eigentliche Arbeit für die Medienobjektdatei leisten (weitere Informationen finden Sie in den Beschreibungen zu [Job](/rest/api/media/services/job) und [Task](/rest/api/media/services/task)).
+Nach dem Erfassen der Medienobjekte in Media Services können die Medien u. a. codiert, transcodiert/multiplexiert und mit einem Wasserzeichen versehen werden, bevor sie an die Clients übermittelt werden. Diese Aktivitäten werden geplant und für mehrere Hintergrundrolleninstanzen ausgeführt, um hohe Leistung und Verfügbarkeit zu gewährleisten. Diese Aktivitäten werden als Aufträge bezeichnet, und jeder Auftrag besteht aus atomaren Tasks, welche die eigentliche Arbeit für die Medienobjektdatei leisten (weitere Informationen finden Sie in den Beschreibungen zu [Job](https://docs.microsoft.com/en-us/rest/api/media/operations/job) und [Task](https://docs.microsoft.com/en-us/rest/api/media/operations/task)).
 
 Wie bereits erwähnt, besteht beim Arbeiten mit Azure Media Services eines der häufigsten Szenarios darin, Streaming mit adaptiver Bitrate an Ihre Clients zu übermitteln. Media Services kann eine Reihe von MP4-Dateien mit adaptiver Bitrate dynamisch in eines der folgenden Formate verpacken: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
 
@@ -815,7 +815,7 @@ Die zurückgegebene **Path** -Eigenschaft enthält die SAS-URL.
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie Dateien mithilfe der Azure Storage-REST-APIs herunterladen.  
 
 > [!NOTE]
-> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Zum Beispiel, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? zu erstellen und zu verwalten. zu erstellen und zu verwalten. zu erstellen und zu verwalten.
+> Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Zum Beispiel, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
 >
 >
 

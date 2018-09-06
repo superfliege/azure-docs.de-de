@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 18f921fb718aeb7ae4add2836fbb6ffabd66668f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1a37a37dbed3b5ef9733f1105444529b4d255bcf
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445057"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336780"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: Ein Hilfsprogramm, mit dem das Anpassungsfeature für die Seitenbenutzeroberfläche (UI) veranschaulicht werden kann
 Dies ist ein Begleitartikel zum [Hauptartikel zur Anpassung der Benutzeroberfläche](active-directory-b2c-reference-ui-customization.md) in Azure Active Directory (Azure AD) B2C. In den folgenden Schritten wird beschrieben, wie Sie das Feature zum Anpassen der Seiten-UI verwenden. Zu diesem Zweck haben wir HTML- und CSS-Beispielinhalte bereitgestellt.
@@ -74,7 +74,7 @@ Sie können das [Azure Blob Storage-Hilfsprogramm und die Beispieldateien als ZI
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-Dieses Repository enthält das Verzeichnis `sample_templates\wingtip` mit HTML- und CSS-Beispieldaten und Bildern. Damit diese Vorlagen auf Ihr eigenes Azure Blob Storage-Konto verweisen, müssen Sie die HTML-Dateien bearbeiten. Öffnen Sie `unified.html` und `selfasserted.html`, und ersetzen Sie alle Instanzen von `https://localhost` durch die URL Ihres eigenen Containers, die Sie in den vorherigen Schritten notiert haben. Sie müssen den absoluten Pfad der HTML-Dateien verwenden, da die HTML-Daten in diesem Fall von Azure AD unter der Domäne `https://login.microsoftonline.com`bereitgestellt werden.
+Dieses Repository enthält das Verzeichnis `sample_templates\wingtip` mit HTML- und CSS-Beispieldaten und Bildern. Damit diese Vorlagen auf Ihr eigenes Azure Blob Storage-Konto verweisen, müssen Sie die HTML-Dateien bearbeiten. Öffnen Sie `unified.html` und `selfasserted.html`, und ersetzen Sie alle Instanzen von `https://localhost` durch die URL Ihres eigenen Containers, die Sie in den vorherigen Schritten notiert haben. Sie müssen den absoluten Pfad der HTML-Dateien verwenden, da die HTML-Daten in diesem Fall von Azure AD unter der Domäne `tenantname.b2clogin.com`bereitgestellt werden.
 
 ### <a name="upload-the-sample-files"></a>Hochladen der Beispieldateien
 Entzippen Sie in demselben Repository die Datei `B2CAzureStorageClient.zip`, und führen Sie die darin enthaltene Datei `B2CAzureStorageClient.exe` aus. Mit diesem Programm werden alle Dateien im von Ihnen angegebenen Verzeichnis einfach in Ihr Speicherkonto hochgeladen, und der CORS-Zugriff für diese Dateien wird aktiviert. Wenn Sie die obigen Schritte befolgt haben, wird in den HTML- und CSS-Dateien jetzt auf Ihr Speicherkonto verwiesen. Beachten Sie, dass der Name Ihres Speicherkontos vor `blob.core.windows.net` steht, z.B. `contoso`. Sie können prüfen, ob der Inhalt ordnungsgemäß hochgeladen wurde, indem Sie versuchen, auf `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` in einem Browser zuzugreifen. Sie können auch [http://test-cors.org/](http://test-cors.org/) verwenden, um sicherzustellen, dass der Inhalt jetzt für CORS aktiviert ist. (Suchen Sie im Ergebnis nach „XHR status: 200“.)

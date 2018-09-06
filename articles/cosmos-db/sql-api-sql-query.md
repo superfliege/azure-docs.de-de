@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 26928e36b09ef0dfe5576a8a8039ffac2dd3fb4a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142668"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287757"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Abfragen von Azure Cosmos DB-Daten mit SQL-Abfragen
 
@@ -27,17 +27,7 @@ Microsoft Azure Cosmos DB unterstützt Dokumentabfragen mit SQL (Structured Quer
 
 * Azure Cosmos DB verwendet das Programmiermodell von JavaScript als Grundlage für die Abfragesprache. Die SQL-API verwendet Typsystem, Ausdrucksauswertung und Funktionsaufrufe von JavaScript. Dies wiederum bietet ein natürliches Programmiermodell für relationale Projektionen, eine hierarchische Navigation in JSON-Dokumenten, Selbstverknüpfungen, Abfragen für räumliche Daten, den Aufruf vollständig in JavaScript geschriebener, benutzerdefinierter Funktionen (User Defined Functions, UDFs) und andere Features. 
 
-Dieser Artikel führt Sie durch einige Beispiele für SQL-Abfragen für einfache JSON-Dokumente. Weitere Informationen zur SQL-Sprachsyntax in Azure Cosmos DB finden Sie im Artikel [SQL-Syntaxreferenz](sql-api-sql-query-reference.md). Sie können auch damit beginnen, sich die folgenden Videos anzusehen, die Abfragefunktionen von Azure Cosmos DB zeigen und den Online-[Query Playground](http://www.documentdb.com/sql/demo) demonstrieren.
-
-> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
->
->
-
-Komplexere Abfragetechniken werden im folgenden Video vorgeführt:
-
-> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
->
->
+Dieser Artikel führt Sie durch einige Beispiele für SQL-Abfragen für einfache JSON-Dokumente. Weitere Informationen zur SQL-Sprachsyntax in Azure Cosmos DB finden Sie im Artikel [SQL-Syntaxreferenz](sql-api-sql-query-reference.md). 
 
 ## <a id="GettingStarted"></a>Erste Schritte mit SQL-Befehlen
 Erstellen Sie zwei einfache JSON-Dokumente und fragen diese auf Daten ab. Fügen Sie zwei JSON-Dokumenten über Familien in eine Sammlung ein, und fragen Sie anschließend die Daten ab. Hier haben wir ein einfaches JSON-Dokument für die Familien Andersen und Wakefield mit Eltern, Kindern (und deren Haustieren), Adresse und Registrierungsinformationen. Das Dokument enthält Zeichenfolgen, Zahlen, boolesche Werte, Arrays und verschachtelte Eigenschaften. 

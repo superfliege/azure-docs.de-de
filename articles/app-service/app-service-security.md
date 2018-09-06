@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 78487061dd49c057e8f569fd2ccdaa6408443fd2
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885869"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382115"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Sicherheit in Azure App Service und Azure Functions
 
@@ -29,7 +29,7 @@ Die Plattformkomponenten von App Service werden aktiv geschützt und gehärtet. 
 
 - Ihre App-Ressourcen sind zu ihrem [Schutz](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) von den Azure-Ressourcen anderer Kunden isoliert.
 - [VM-Instanzen und Laufzeitsoftware werden regelmäßig aktualisiert](app-service-patch-os-runtime.md), um auf neu entdeckte Sicherheitsrisiken zu reagieren. 
-- Die Weitergabe von Geheimnissen (etwa Verbindungszeichenfolgen) zwischen Ihrer App und anderen Azure-Ressourcen (etwa [SQL-Datenbank](/services/sql-database/)) erfolgt innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Gespeicherte Geheimnisse werden immer verschlüsselt.
+- Die Weitergabe von Geheimnissen (etwa Verbindungszeichenfolgen) zwischen Ihrer App und anderen Azure-Ressourcen (etwa [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)) erfolgt innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Gespeicherte Geheimnisse werden immer verschlüsselt.
 - Die gesamte Kommunikation über die App Service-Verbindungsfeatures (beispielsweise [Hybridverbindung](app-service-hybrid-connections.md)) wird verschlüsselt. 
 - Verbindungen mit Remoteverwaltungstools wie Azure PowerShell, Azure CLI, Azure SDKs und REST-APIs werden jeweils verschlüsselt.
 - Das Bedrohungsmanagement schützt die Infrastruktur und die Plattform rund um die Uhr vor Schadsoftware sowie vor DDoS-Angriffen (Distributed Denial of Service), MITM-Angriffen (Man in the Middle) und anderen Bedrohungen.
@@ -84,7 +84,7 @@ In jedem dieser Fälle bietet App Service eine Möglichkeit zur Herstellung sich
 
 ### <a name="azure-resources"></a>Azure-Ressourcen
 
-Wenn Ihre App eine Verbindung mit Azure-Ressourcen (etwa mit [SQL-Datenbank](/services/sql-database/) und [Azure Storage](/azure/storage/)) herstellt, bleibt die Verbindung innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Die Verbindung durchläuft jedoch die gemeinsam genutzten Netzwerke in Azure. Stellen Sie daher sicher, dass Ihre Verbindung verschlüsselt ist. 
+Wenn Ihre App eine Verbindung mit Azure-Ressourcen (etwa mit [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) und [Azure Storage](/azure/storage/)) herstellt, bleibt die Verbindung innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Die Verbindung durchläuft jedoch die gemeinsam genutzten Netzwerke in Azure. Stellen Sie daher sicher, dass Ihre Verbindung verschlüsselt ist. 
 
 Wenn Ihre App in einer [App Service-Umgebung](environment/intro.md) gehostet wird, sollten Sie [über unterstützte Dienstendpunkte im virtuellen Netzwerk eine Verbindung mit Azure-Diensten herstellen](../virtual-network/virtual-network-service-endpoints-overview.md).
 
@@ -117,4 +117,4 @@ Mit Ausnahme des Tarifs **Isoliert** wird Ihre App bei allen Tarifen in der geme
 - Sie können interne Anwendungen unter Verwendung eines internen Lastenausgleichsmoduls (internal load balancer, ILB) bereitstellen, wodurch der Zugriff nur innerhalb Ihrer Azure Virtual Network-Instanz möglich ist. Das interne Lastenausgleichsmodul besitzt eine IP-Adresse aus Ihrem privaten Subnetz, sodass Ihre Apps vollständig vom Internet isoliert sind.
 - Sie können [ein internes Lastenausgleichsmodul hinter einer Web Application Firewall (WAF) verwenden](environment/integrate-with-application-gateway.md). Die WAF bietet professionellen Schutz für Ihre öffentlichen Anwendungen – beispielsweise DDoS-Schutz, URI-Filterung und Verhinderung der Einschleusung von SQL-Befehlen.
 
-Weitere Informationen finden Sie in der [Einführung in die App Service-Umgebungen](environment/intro.md).
+Weitere Informationen finden Sie in der [Einführung in die App Service-Umgebungen](environment/intro.md). 

@@ -4,21 +4,16 @@ description: Mit der Verschlüsselung in Azure Data Lake Store können Sie Ihre 
 services: data-lake-store
 documentationcenter: ''
 author: esung22
-manager: ''
-editor: ''
-ms.assetid: ''
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 2328f7e233025d9f9ee9113aa28fb74754dd9193
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c3f79348cb5d80639d76ad1a8ba82fcfa56ebed1
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43311434"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Datenverschlüsselung in Azure Data Lake Store
 
@@ -60,7 +55,7 @@ Im Anschluss folgt eine kurze Gegenüberstellung der Funktionen, die in den beid
 |  | Vom Dienst verwaltete Schlüssel | Vom Kunden verwaltete Schlüssel |
 | --- | --- | --- |
 |Wie werden die Daten gespeichert?|Immer verschlüsselt (vor dem Speichern)|Immer verschlüsselt (vor dem Speichern)|
-|Wo wird der Masterverschlüsselungsschlüssel gespeichert?|Schlüsseltresor|Schlüsseltresor|
+|Wo wird der Masterverschlüsselungsschlüssel gespeichert?|Key Vault|Key Vault|
 |Werden Verschlüsselungsschlüssel unverschlüsselt außerhalb von Key Vault gespeichert? |Nein |Nein |
 |Kann der MEK aus Key Vault abgerufen werden?|Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.|Nein. Wenn der MEK in Key Vault gespeichert wurde, kann er ausschließlich zur Ver- und Entschlüsselung verwendet werden.|
 |Wer ist der Eigentümer der Key Vault-Instanz und des MEK?|Der Data Lake Store-Dienst|Sie sind Eigentümer der Key Vault-Instanz, die zu Ihrem Azure-Abonnement gehört. Der MEK in Key Vault kann per Software oder Hardware verwaltet werden.|
@@ -81,7 +76,7 @@ Im Rahmen der Datenverschlüsselung gibt es drei Arten von Schlüsseln. In der f
 
 | Schlüssel                   | Abkürzung | Zugeordnet zu | Speicherort                             | Typ       | Notizen                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
-| Masterverschlüsselungsschlüssel | MEK          | Data Lake Store-Konto | Schlüsseltresor                              | Asymmetrisch | Kann von Data Lake Store oder von Ihnen verwaltet werden.                                                              |
+| Masterverschlüsselungsschlüssel | MEK          | Data Lake Store-Konto | Key Vault                              | Asymmetrisch | Kann von Data Lake Store oder von Ihnen verwaltet werden.                                                              |
 | Datenverschlüsselungsschlüssel   | DEK          | Data Lake Store-Konto | Persistenter Speicher (vom Data Lake Store-Dienst verwaltet) | Symmetrisch  | Der DEK wird vom MEK verschlüsselt. Der verschlüsselte DEK ist das, was auf einem persistenten Medium gespeichert wird. |
 | Blockverschlüsselungsschlüssel  | BEK          | Einem Datenblock | Keine                                         | Symmetrisch  | Der BEK wird vom DEK und dem Datenblock abgeleitet.                                                      |
 

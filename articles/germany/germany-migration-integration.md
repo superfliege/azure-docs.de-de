@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: 16e7ffa822f645c2a5a070ab3c693cef84a1a85c
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346266"
 ---
-
 # <a name="migration-of-integration-resources-from-azure-germany-to-global-azure"></a>Migration von Integration-Ressourcen von Azure Deutschland zu Azure weltweit
 
 Dieser Artikel unterstützt Sie bei der Migration von Azure Integration-Ressourcen von Azure Deutschland zu Azure weltweit.

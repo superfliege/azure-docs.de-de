@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: ba2f4575864ef667ca5a77452a1a65aa13345ed5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346270"
 ---
-
 # <a name="migration-of-compute-resources-from-azure-germany-to-global-azure"></a>Migration von Compute-Ressourcen von Azure Deutschland zu Azure weltweit
 
 Dieser Artikel unterstützt Sie bei der Migration von Azure Compute-Ressourcen von Azure Deutschland zu Azure weltweit.

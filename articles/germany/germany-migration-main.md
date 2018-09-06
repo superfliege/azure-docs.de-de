@@ -9,8 +9,13 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
+ms.openlocfilehash: 750f58f825071e9b84b4fa40404088544af72f15
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43346267"
 ---
-
 # <a name="introduction-to-migration-guidance-for-azure-germany"></a>Einführung in die Migrationsanleitung für Azure Deutschland
 
 Diese Artikel bieten Anleitungen, um Ihre Workloads von Azure Deutschland zu Azure weltweit zu migrieren. Obwohl Azure Tools für die Migration von Ressourcen im [Azure Migration Center](https://azure.microsoft.com/migration/) bereitstellt, sind einige dieser Tools nur für Migrationen innerhalb desselben Mandanten oder derselben Region konzipiert.
@@ -39,7 +44,7 @@ Am Ende dieser Phase sind die folgenden Informationen bekannt:
 - Abhängigkeiten innerhalb dieser Ressourcen und
 - die Komplexität des Migrationsaufwands.
 
-### <a name="plan"></a>Planen
+### <a name="plan"></a>Plan
 
 - Verwenden Sie die Ausgabe der Abhängigkeitsanalyse aus der Bewertungsphase, um verwandte Komponenten zu definieren. Ziehen Sie die gemeinsame Migration in einem „**Migrationspaket**“ in Betracht.
 - [Optional] Nutzen Sie diese Migrationsmöglichkeit, um [Gartner 5-R-Kriterien](https://www.gartner.com/newsroom/id/1684114) anzuwenden und Ihre Workload zu optimieren.

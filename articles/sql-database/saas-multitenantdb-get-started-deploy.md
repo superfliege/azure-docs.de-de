@@ -3,20 +3,21 @@ title: Bereitstellen einer mehrinstanzenfähigen SaaS-Datenbankanwendung mit Sha
 description: Es wird beschrieben, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Datenbankanwendung mit Sharding bereitstellen und kennenlernen, mit der SaaS-Muster per Azure SQL-Datenbank dargestellt werden.
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: MightyPen
+author: billgib
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.workload: data-management
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: genemi
-ms.openlocfilehash: ac53443140b792d01147cdf22b81d0e6658fa429
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 04/02/2018
+ms.reviewer: genemi
+ms.author: billgib
+ms.openlocfilehash: 0c2677622b118c11216bef62ff70e87f4de4cded
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646455"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665922"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
 

@@ -2,20 +2,20 @@
 title: T-SQL-Anweisungen – Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.
 services: sql-data-warehouse
-author: ckarst
-manager: craigg-msft
+author: twounder
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 06/13/2018
+ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: ec708f30b59bbd6af878720c65f9a464224c57a5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fa497979349346016e1c176ace98407d98eebdca
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31604057"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43311184"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>T-SQL-Anweisungen, die in Azure SQL Data Warehouse unterstützt werden
 Links zur Dokumentation für die in Azure SQL Data Warehouse unterstützten T-SQL-Anweisungen.

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: d5f775761def1c06063cd02b4141c5de2a752cce
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d3fc3ef6c5fdcf5a87c691c73169ef2bec95805e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089909"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382687"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Hinzufügen von Mandanten für Nutzung und Abrechnung zu Azure Stack
 
@@ -91,5 +91,5 @@ Nachdem Sie Azure Stack den neuen Kunden hinzugefügt haben, bzw. der Endkundenm
 ## <a name="next-steps"></a>Nächste Schritte
 
  - Wie Sie ggf. die in Ihrem Registrierungsprozess ausgelösten Fehlermeldungen überprüfen, erfahren Sie unter [Fehlermeldungen bei der Mandantenregistrierung](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
- - Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](/azure-stack-billing-and-chargeback.md).
+ - Weitere Informationen zum Abrufen von Ressourcennutzungsinformationen aus Azure Stack finden Sie unter [Verbrauch und Abrechnung in Azure Stack](azure-stack-billing-and-chargeback.md).
  - Wie ein Endkunde Sie als CSP als Manager für seinen Azure Stack-Mandanten hinzufügen kann, erfahren Sie unter [Wie Sie einem Cloud-Dienstanbieter ermöglichen, Ihr Azure Stack-Abonnement zu verwalten](user\azure-stack-csp-enable-billing-usage-tracking.md).

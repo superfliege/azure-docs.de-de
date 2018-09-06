@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 2757dea5e73f226efc13b7788ce1ab0702aa2e61
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 1b8c1ba80b4c69f36e8304cbe978452a359ac911
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104696"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698076"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Verwalten dynamischer Azure-Bestände mithilfe von Ansible
 Mit Ansible können Bestandsinformationen aus verschiedenen Quellen (einschließlich Cloudquellen wie Azure) in einen *dynamischen Bestand* abgerufen werden. In diesem Artikel verwenden Sie [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md), um einen dynamischen Azure-Bestand von Ansible zu konfigurieren, in dem Sie zwei virtuelle Computer erstellen, einen der beiden virtuellen Computer markieren und NGINX auf dem markierten virtuellen Computer installieren.
@@ -137,25 +137,26 @@ Das Tag ermöglicht die schnelle und einfache Verwendung von Untergruppen virtue
 1. Fügen Sie den folgenden Code in die neu erstellte Datei `nginx.yml` ein:
 
     ```yml
+    ---
     - name: Install and start Nginx on an Azure virtual machine
     hosts: azure
     become: yes
     tasks:
     - name: install nginx
-        apt: pkg=nginx state=installed
-        notify:
-        - start nginx
+      apt: pkg=nginx state=installed
+      notify:
+      - start nginx
 
     handlers:
     - name: start nginx
-        service: name=nginx state=started
+      service: name=nginx state=started
     ```
 
 1. Führen Sie das Playbook `nginx.yml` aus:
 
-  ```azurecli-interactive
-  ansible-playbook -i azure_rm.py nginx.yml
-  ```
+    ```azurecli-interactive
+    ansible-playbook -i azure_rm.py nginx.yml
+    ```
 
 1. Nach Ausführen des Playbooks werden Ergebnisse angezeigt. Diese sehen in etwa wie in der folgenden Ausgabe aus:
 
