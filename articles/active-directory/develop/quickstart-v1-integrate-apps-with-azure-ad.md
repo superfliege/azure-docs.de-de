@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: luleon
-ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.reviewer: celested
+ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592202"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188239"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrieren von Anwendungen in Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -100,7 +100,7 @@ Die folgenden Schritte zeigen, wie das Zustimmungs-Framework in der Benutzerober
   ![Erteilen von Berechtigungen für explizite Administratorzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
     
   > [!NOTE]
-  > Das Gewähren der expliziten Zustimmung über die Schaltfläche **Berechtigungen erteilen** ist derzeit für Single-Page-Anwendungen (SPA) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird. 
+  > Das explizite Gewähren der Zustimmung über die Schaltfläche **Berechtigungen erteilen** ist derzeit für Single-Page-Anwendungen (SPA) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird. 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
 Damit eine Webanwendung oder vertrauliche Clientanwendung an einem Flow zur Autorisierungsgenehmigung teilnehmen kann, bei dem eine Authentifizierung (und das Abrufen eines Zugriffstokens) erforderlich ist, benötigt sie sichere Anmeldeinformationen. Die Standardauthentifizierungsmethode im Azure-Portal ist „Client-ID + geheimer Schlüssel“. In diesem Abschnitt werden die Konfigurationsschritte behandelt, die erforderlich sind, um den geheimen Schlüssel mit den Anmeldeinformationen Ihres Clients bereitzustellen.
@@ -112,7 +112,7 @@ Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwe
 - Delegierte Berechtigungen: Ihre Clientanwendung benötigt als angemeldeter Benutzer Zugriff auf die Web-API. Der Zugriff ist jedoch durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden, sofern für die Berechtigung nicht die Zustimmung durch einen Administrator erforderlich ist. 
 
   > [!NOTE]
-  > Durch Hinzufügen einer delegierten Berechtigung zu einer Anwendung erteilen Sie den Benutzern im Mandanten nicht automatisch Ihre Zustimmung. Benutzer müssen den hinzugefügten delegierten Berechtigungen bei der Ausführung noch manuell zustimmen, sofern der Administrator nicht auf die Schaltfläche **Erteilen von Berechtigungen** im Abschnitt **Erforderliche Berechtigungen** der Anwendungsseite im Azure-Portal klickt. 
+  > Durch Hinzufügen einer delegierten Berechtigung zu einer Anwendung erteilen Sie den Benutzern im Mandanten nicht automatisch Ihre Zustimmung. Benutzer müssen den zusätzlichen delegierten Berechtigungen weiterhin zur Laufzeit manuell zustimmen, sofern der Administrator nicht im Namen aller Benutzer die Zustimmung erteilt hat.
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>So fügen Sie Anmeldeinformationen für Anwendungen oder Zugriffsberechtigungen für Web-APIs hinzu
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -121,13 +121,15 @@ Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwe
 
    ![Aktualisieren der Registrierung einer Anwendung](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
-4. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet. Gehen Sie wie folgt vor, um einen geheimen Schlüssel für die Anmeldeinformationen Ihrer Webanwendung hinzuzufügen:
+4. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet. So fügen Sie Anmeldeinformationen für Ihre Webanwendung hinzu:
   - Klicken Sie auf der Seite **Einstellungen** auf den Abschnitt **Schlüssel**. 
-  - Fügen Sie eine Beschreibung für Ihren Schlüssel hinzu.
-  - Wählen Sie entweder eine Dauer von ein oder zwei Jahren aus.
-  - Klicken Sie auf **Speichern**. Die Spalte ganz rechts enthält nach dem Speichern der Konfigurationsänderungen den Schlüsselwert. **Kopieren Sie den Schlüssel** zur Verwendung im Code Ihrer Clientanwendung, da er nach dem Verlassen dieser Seite nicht mehr zugänglich ist.
-
-  ![Aktualisieren der Registrierung einer Anwendung – Schlüssel](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-keys.png)
+  - So fügen Sie ein Zertifikat hinzu:
+    - Klicken Sie auf **Öffentlichen Schlüssel hochladen**.
+    - Wählen Sie die Datei aus, die Sie hochladen möchten. Die Datei muss einen der folgenden Dateitypen aufweisen: CER, PEM, CRT.
+  - So fügen Sie ein Kennwort hinzu:
+    - Fügen Sie eine Beschreibung für Ihren Schlüssel hinzu.
+    - Wählen Sie eine Dauer aus.
+    - Klicken Sie auf **Speichern**. Die Spalte ganz rechts enthält nach dem Speichern der Konfigurationsänderungen den Schlüsselwert. **Kopieren Sie den Schlüssel** zur Verwendung im Code Ihrer Clientanwendung, da er nach dem Verlassen dieser Seite nicht mehr zugänglich ist.
 
 5. So fügen Sie Berechtigungen für den Zugriff auf Ressourcen-APIs von Ihrem Client hinzu
   - Klicken Sie auf der Seite **Einstellungen** auf den Abschnitt **Erforderliche Berechtigungen**. 
@@ -141,11 +143,6 @@ Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwe
   ![Aktualisieren der Registrierung einer Anwendung – Berechtigungen](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Klicken Sie abschließend auf der Seite **Zugriff aktivieren** auf die Schaltfläche **Auswählen** und dann auf der Seite **API-Zugriff hinzufügen** auf die Schaltfläche **Fertig**. Sie gelangen zurück auf die Seite **Erforderliche Berechtigungen**, auf der Sie sehen, dass die neue Ressource der Liste mit den APIs hinzugefügt wurde.
-
-  > [!NOTE]
-  > Wenn Sie auf die Schaltfläche **Fertig** klicken, werden basierend auf den von Ihnen konfigurierten Berechtigungen für andere Anwendungen automatisch die Berechtigungen für die Anwendung in Ihrem Verzeichnis festgelegt. Sie können diese Anwendungsberechtigungen auf der Seite **Einstellungen** anzeigen.
-  > 
-  > 
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Konfigurieren einer Ressourcenanwendung zum Bereitstellen von Web-APIs
 

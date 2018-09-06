@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628170"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049123"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
@@ -48,26 +48,26 @@ Bevor Sie beginnen, müssen Sie [einen Event Hubs-Namespace und einen Event Hub 
 
 Lesen Sie auch die Informationen unter [Azure Event Hubs – häufig gestellte Fragen](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich Überwachungsdaten zu Azure-Mandaten für das Streaming an einen Event Hub ein?
+## <a name="azure-tenant-monitoring-data"></a>Überwachungsdaten zu Azure-Mandanten
 
 Überwachungsdaten zu Azure-Mandanten sind derzeit nur für Azure Active Directory verfügbar. Sie können die [Azure Active Directory-Berichterstellungsdaten](../active-directory/reports-monitoring/overview-reports.md) verwenden, die den Verlauf der Anmeldeaktivität und des Überwachungspfads von Änderungen beinhaltet, die innerhalb eines bestimmten Mandanten vorgenommen wurden.
 
-### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Streamen von Azure Active Directory-Daten an einen Event Hub
+### <a name="azure-active-directory-data"></a>Azure Active Directory-Daten
 
 Um Daten aus dem Azure Active Directory-Protokoll an einen Event Hubs-Namespace zu senden, richten Sie eine Mandantendiagnoseeinstellung für Ihren AAD-Mandanten ein. [Befolgen Sie diese Anleitung](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md), um eine Diagnoseeinstellung für Mandanten einzurichten.
 
-## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich Überwachungsdaten zum Azure-Abonnement für das Streaming an einen Event Hub ein?
+## <a name="azure-subscription-monitoring-data"></a>Überwachungsdaten zum Azure-Abonnement
 
 Überwachungsdaten zum Azure-Abonnement finden Sie im [Azure-Aktivitätsprotokoll](./monitoring-overview-activity-logs.md). Dieses umfasst die Erstellungs-, Aktualisierungs- und Löschvorgänge im Resource Manager, Änderungen in [Azure Service Health](../service-health/service-health-overview.md) mit Auswirkungen auf Ihre Abonnementressourcen, [Resource Health](../service-health/resource-health-overview.md)-Statusübergänge und diverse andere Ereignistypen auf Abonnementebene. [In diesem Artikel werden alle Kategorien von Ereignissen erläutert, die im Azure-Aktivitätsprotokoll angezeigt werden](./monitoring-activity-log-schema.md).
 
-### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Streamen von Azure-Aktivitätsprotokolldaten an einen Event Hub
+### <a name="activity-log-data"></a>Aktivitätsprotokolldaten
 
 Um Daten aus dem Azure-Aktivitätsprotokoll an Event Hubs-Namespaces zu senden, richten Sie ein Protokollprofil für Ihr Abonnement ein. [Befolgen Sie die Schritte in diesem Handbuch](./monitoring-stream-activity-logs-event-hubs.md) zum Einrichten eines Protokollprofils für Ihr Abonnement. Führen Sie diesen Vorgang für jedes zu überwachende Abonnement durch.
 
 > [!TIP]
 > Derzeit können Sie mithilfe eines Protokollprofils nur einen Event Hubs-Namespace auswählen, in dem ein Event Hub mit dem Namen „insights-operational-logs“ erstellt wird. Es ist noch nicht möglich, einen eigenen Event Hub-Namen in einem Protokollprofil anzugeben.
 
-## <a name="how-do-i-set-up-azure-resource-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich die Überwachungsdaten zu Azure-Ressourcen für das Streaming an einen Event Hub ein?
+## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure-Ressourcenmetriken und -Diagnoseprotokolle
 
 Azure-Ressourcen geben zwei Arten von Überwachungsdaten aus:
 1. [Ressourcendiagnoseprotokolle](./monitoring-overview-of-diagnostic-logs.md)
@@ -78,25 +78,25 @@ Beide Arten von Daten werden mithilfe einer Ressourcendiagnoseeinstellung an ein
 > [!TIP]
 > Mit Azure Policy können Sie [durch den DeployIfNotExists-Effekt in der Richtlinienregel](../azure-policy/policy-definition.md#policy-rule) sicherstellen, dass alle Ressourcen innerhalb eines bestimmten Bereichs stets mit einer Diagnoseeinstellung eingerichtet werden. DeployIfNotExists wird derzeit nur für integrierte Richtlinien unterstützt.
 
-## <a name="how-do-i-set-up-guest-os-monitoring-data-to-be-streamed-to-an-event-hub"></a>Wie richte ich die Überwachungsdaten zu Gast-BS für das Streaming an einen Event Hub ein?
+## <a name="guest-os-data"></a>Daten zum Gastbetriebssystem
 
 Sie müssen einen Agent zum Senden von Überwachungsdaten zu Gast-BS an einen Event Hub installieren. Unter Windows oder Linux geben Sie die an den Event Hub zu sendenden Daten sowie den Event Hub an, an den die Daten in einer Konfigurationsdatei gesendet werden sollen, und übergeben die Konfigurationsdatei an den Agent, der auf der VM ausgeführt wird.
 
-### <a name="stream-linux-data-to-an-event-hub"></a>Streamen von Linux-Daten an einen Event Hub
+### <a name="linux-data"></a>Linux-Daten
 
 Mit dem [Azure-Diagnose-Agent für Linux](../virtual-machines/extensions/diagnostics-linux.md) können Überwachungsdaten von einem Linux-Computer an einen Event Hub gesendet werden. Hierzu wird der Event Hub als Senke in den geschützten JSON-Einstellungen Ihrer LAD-Konfigurationsdatei. [In diesem Artikel finden Sie weitere Informationen zum Hinzufügen der Event Hub-Senke zu Ihrem Azure-Diagnose-Agent für Linux](../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
 
 > [!NOTE]
 > Das Streaming von Überwachungsdaten zu Gast-BS an einen Event Hub kann nicht im Portal eingerichtet werden. Sie müssen die Konfigurationsdatei stattdessen manuell bearbeiten.
 
-### <a name="stream-windows-data-to-an-event-hub"></a>Streamen von Windows-Daten an einen Event Hub
+### <a name="windows-data"></a>Windows-Daten
 
 Mit dem [Azure-Diagnose-Agent für Windows](./azure-diagnostics.md) können Überwachungsdaten von einem Windows-Computer an einen Event Hub gesendet werden. Hierzu wird der Event Hub im privateConfig-Abschnitt der WAD-Konfigurationsdatei als Senke hinzugefügt. [In diesem Artikel finden Sie weitere Informationen zum Hinzufügen der Event Hub-Senke zu Ihrem Azure-Diagnose-Agent für Windows](./azure-diagnostics-streaming-event-hubs.md).
 
 > [!NOTE]
 > Das Streaming von Überwachungsdaten zu Gast-BS an einen Event Hub kann nicht im Portal eingerichtet werden. Sie müssen die Konfigurationsdatei stattdessen manuell bearbeiten.
 
-## <a name="how-do-i-set-up-application-monitoring-data-to-be-streamed-to-event-hub"></a>Wie richte ich die Überwachungsdaten zu Anwendungen für das Streaming an einen Event Hub ein?
+## <a name="application-monitoring-data"></a>Überwachungsdaten zu Anwendungen
 
 Für Überwachungsdaten zu Anwendungen muss Ihr Code mit einem SDK instrumentiert sein. Deshalb gibt es keine allgemeine Lösung, um Überwachungsdaten zu Anwendungen an einen Event Hub in Azure weiterzuleiten. Allerdings ist [Azure Application Insights](../application-insights/app-insights-overview.md) ein Dienst, der zum Sammeln von Azure-Daten auf Anwendungsebene verwendet werden kann. Wenn Sie Application Insights verwenden, können Sie Überwachungsdaten folgendermaßen an einen Event Hub streamen:
 

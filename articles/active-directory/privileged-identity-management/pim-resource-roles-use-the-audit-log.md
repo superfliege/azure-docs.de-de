@@ -1,6 +1,6 @@
 ---
-title: Überwachen von Rollen für Azure-Ressourcen mit Privileged Identity Management | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie für eine bestimmte Ressource eine Ansicht mit allen Rollenaktivitäten anzeigen.
+title: Anzeigen des Überwachungsverlaufs für Azure-Ressourcenrollen in PIM| Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Überwachungsverlauf für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) anzeigen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8f328a609d696886ed452589d3cdfb5f45aec62a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c0536423e9640f78149b612ec66b0a07cdcf24bb
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621282"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189310"
 ---
-# <a name="audit-resource-roles-for-azure-resources-by-using-privileged-identity-management"></a>Überwachen von Rollen für Azure-Ressourcen mit Privileged Identity Management 
+# <a name="view-audit-history-for-azure-resource-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure-Ressourcenrollen in PIM
 
 Die Ressourcenüberwachung liefert einen Überblick über alle Rollenaktivitäten für die Ressource. Die Informationen können nach einem vordefinierten oder benutzerdefinierten Datumsbereich gefiltert werden.
 ![Filtern von Informationen](media/azure-pim-resource-rbac/rbac-resource-audit.png)
@@ -31,7 +31,7 @@ Die Ressourcenüberwachung ermöglicht außerdem den schnellen Zugriff auf die D
 
 ![Weitere Aktivitätsdetails](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-# <a name="my-audit"></a>Meine Überwachung
+## <a name="my-audit"></a>Meine Überwachung
 
 Unter „Meine Überwachung“ erhalten Sie eine Ansicht der persönlichen Rollenaktivität eines Benutzers. Die Informationen können nach einem vordefinierten oder benutzerdefinierten Datumsbereich gefiltert werden.
 ![Persönliche Rollenaktivität](media/azure-pim-resource-rbac/my-audit-time.png)
@@ -46,3 +46,6 @@ Wenn Sie eine bestimmte Rollenaktivierung auswählen, werden Details zu der Roll
 
 ![Rollenaktivierung auswählen](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Anzeigen des Überwachungsverlaufs für Azure AD-Verzeichnisrollen in PIM](pim-how-to-use-audit-log.md)

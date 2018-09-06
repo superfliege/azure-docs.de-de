@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 08/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 603a6e2f3ce744d792ad9c9be20622c65a37dda3
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 8e7af24133b7e034bb7bc1898609cebbb860b738
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414605"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919077"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
@@ -23,7 +23,7 @@ Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Einzeldat
 Informationen zu Einschränkungen bei DTU-basierten Einkaufsmodellen finden Sie unter [Einschränkungen des DTU-basierten Ressourcenmodells für Azure SQL-Datenbank](sql-database-dtu-resource-limits.md).
 
 > [!IMPORTANT]
-> Unter bestimmten Umständen müssen Sie möglicherweise eine Datenbank verkleinern, um Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
+> Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
 
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>Einzeldatenbank: Speichergrößen und Leistungsstufen
@@ -43,7 +43,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1536|3072|4096|4096|
-|Maximale Protokollgröße|307|307|461|922|1229|1229|
+|Maximale Protokollgröße (GB)|307|307|461|922|1229|1229|
 |tempdb-Größe (GB)|32|64|128|256|384|384|
 |Ziel-IOPS (64 KB)|500|1000|2000|4000|7.000|7.000|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
@@ -65,7 +65,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1536|3072|4096|4096|4096|4096|
-|Maximale Protokollgröße|307|307|461|614|1229|1229|1229|1229|
+|Maximale Protokollgröße (GB)|307|307|461|614|1229|1229|1229|1229|
 |tempdb-Größe (GB)|64|128|256|384|384|384|384|384|
 |Ziel-IOPS (64 KB)|500|1000|2000|4000|6000|7.000|7.000|7.000|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|
@@ -88,7 +88,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |In-Memory-OLTP-Speicher (GB)|1|2|4|8|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
-|Maximale Protokollgröße|307|307|307|307|307|307|
+|Maximale Protokollgröße (GB)|307|307|307|307|307|307|
 |tempdb-Größe (GB)|32|64|128|256|384|384|
 |Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|80.000|120000|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
@@ -111,7 +111,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
-|Maximale Protokollgröße|307|307|307|307|614|1229|1229|1229|
+|Maximale Protokollgröße (GB)|307|307|307|307|614|1229|1229|1229|
 |tempdb-Größe (GB)|64|128|256|384|384|384|384|384|
 |Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|100.000|200.000
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|

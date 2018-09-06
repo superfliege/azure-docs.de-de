@@ -13,25 +13,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 9d38f6e6d6b9fa47b1cd1497820f7ff887954ad5
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: bebabad4c7beb27022e12e5d48b77d88fc054fc2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156186"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190114"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
-Dieses Dokument enthält Kontext und Beschreibungen zu verschiedenen Features im App-Registrierungsportal von Microsoft: [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
+Dieses Dokument enthält Kontextinformationen und Beschreibungen zu verschiedenen Features im [App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
 
-## <a name="my-applications"></a>Meine Anwendungen
+## <a name="my-applications-or-converged-applications"></a>Eigene Anwendungen oder konvergente Anwendungen
 Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Azure AD v2.0-Endpunkt registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zum Azure AD v2.0-Endpunkt finden Sie in der [v2.0-Übersicht](active-directory-appmodel-v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.
 
+## <a name="azure-ad-only-applications"></a>Nur Azure AD-Anwendungen
+Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Azure AD v1.0-Endpunkt registriert sind. Bei diesen Anwendungen kann die Benutzeranmeldung nur mithilfe von Geschäfts-, Schul- oder Unikonten aus Azure Active Directory erfolgen. Diese Liste enthält Anwendungen, die über den Abschnitt **App-Registrierungen** im [Azure-Portal](https://portal.azure.com) registriert wurden.
+
 ## <a name="live-sdk-applications"></a>Live SDK-Anwendungen
-Diese Liste enthält all Ihre Anwendungen, die für die ausschließliche Verwendung mit dem Microsoft-Konto registriert sind. Sie können nicht mit Azure Active Directory verwendet werden. Hier finden Sie alle Anwendungen, die zuvor beim MSA-Entwicklerportal unter `https://account.live.com/developers/applications` registriert wurden. Alle Funktionen, die Sie zuvor unter `https://account.live.com/developers/applications` ausgeführt haben, können jetzt in diesem neuen Portal unter `https://apps.dev.microsoft.com` ausgeführt werden. Wenn Sie weitere Fragen zu Ihren Microsoft-Kontoanwendungen haben, setzen Sie sich mit uns in Verbindung.
+Diese Liste enthält all Ihre Anwendungen, die für die ausschließliche Verwendung mit dem Microsoft-Konto registriert sind. Sie können nicht mit Azure Active Directory verwendet werden. Hier finden Sie alle Anwendungen, die zuvor beim MSA-Entwicklerportal unter `https://account.live.com/developers/applications` registriert wurden. Alle Funktionen, die Sie zuvor unter `https://account.live.com/developers/applications` ausgeführt haben, können jetzt in diesem neuen Portal unter `https://apps.dev.microsoft.com` ausgeführt werden.
 
 ## <a name="application-secrets"></a>Geheime Schlüssel für Anwendungen
 Geheime Schlüssel für Anwendungen sind Anmeldeinformationen, mit denen Ihre Anwendung eine zuverlässige [Clientauthentifizierung](http://tools.ietf.org/html/rfc6749#section-2.3) bei Azure AD durchführen kann. In OAuth und OpenID Connect werden Anwendungsgeheimnisse gemeinhin als `client_secret` bezeichnet. Im v2.0-Protokoll muss jede Anwendung, die ein Sicherheitstoken an einem adressierbaren Webspeicherort (nach `https` -Schema) empfängt, einen geheimen Schlüssel für Anwendungen verwenden, um sich beim Einlösen dieses Sicherheitstokens bei Azure AD zu identifizieren. Darüber hinaus wird jedem nativen Client, der auf einem Gerät Token empfängt, die Verwendung eines Anwendungsgeheimnisses zur Clientauthentifizierung untersagt. Dadurch wird die Speicherung von Geheimnissen in unsicheren Umgebungen verhindert.

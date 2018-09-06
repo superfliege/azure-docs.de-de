@@ -1,6 +1,6 @@
 ---
-title: Ermitteln und Verwalten von Azure-Ressourcen mit Privileged Identity Management | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Azure-Ressourcen mit PIM schützen.
+title: Ermitteln von Azure-Ressourcen zur Verwaltung in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure-Ressourcen zur Verwaltung in Azure AD Privileged Identity Management (PIM) ermitteln.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,21 +13,21 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: c5b26c01028e2a5746132939a2058cacdcad859f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b5d48b3f854afaa79574e0ec13cff91f60396ac6
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622101"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190657"
 ---
-# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Ermitteln und Verwalten von Azure-Ressourcen mit Privileged Identity Management
+# <a name="discover-azure-resources-to-manage-in-pim"></a>Ermitteln von Azure-Ressourcen zur Verwaltung in PIM
 
 Erfahren Sie, wie Sie Azure-Ressourcen ermitteln und verwalten, wenn Sie Privileged Identity Management (PIM) in Azure Active Directory (Azure AD) verwenden. Diese Informationen können hilfreich sein für Organisationen, die PIM bereits zum Schutz von Administratorressourcen verwenden, und für Abonnementbesitzer, die Produktionsressourcen schützen möchten.
 
 Beim erstmaligen Einrichten von PIM für Azure-Ressourcen müssen Sie Ressourcen ermitteln und auswählen, die mit PIM geschützt werden sollen. Die Anzahl der Ressourcen, die Sie mit PIM verwalten können, ist nicht beschränkt. Es empfiehlt sich aber, mit Ihren wichtigsten Ressourcen (für die Produktion) zu beginnen.
 
 > [!NOTE]
-> Zur Verwaltung mithilfe von PIM können Sie nur Abonnementressourcen durchsuchen und auswählen. Wenn Sie ein Abonnement in PIM verwalten, können Sie auch die untergeordneten Ressourcen im Abonnement verwalten.
+> Sie können nur Verwaltungsgruppen oder Abonnementressourcen suchen und auswählen, um sie mithilfe von PIM zu verwalten. Wenn Sie eine Verwaltungsgruppe oder ein Abonnement in PIM verwalten, können Sie auch deren untergeordnete Ressourcen verwalten.
 
 ## <a name="discover-resources"></a>Ermitteln von Ressourcen
 
@@ -64,5 +64,5 @@ Die ausgewählten Ressourcen werden jetzt über PIM verwaltet. Um das Fenster f�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Rolleneinstellungen](pim-resource-roles-configure-role-settings.md)
-- [Zuweisen von Rollen in PIM](pim-resource-roles-assign-roles.md)
+- [Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-configure-role-settings.md)
+- [Zuweisen von Azure-Ressourcenrollen in PIM](pim-resource-roles-assign-roles.md)

@@ -40,7 +40,7 @@ Zeichenfolgenwerte werden entweder in einfache oder doppelte Anführungszeichen 
 print "this is a 'string' literal in double \" quotes"
 ```
 
-Wenn „\\“ nicht als Escapezeichen verwendet werden soll, müssen Sie der Zeichenfolge „@“ voranstellen.
+Wenn „\\“ nicht als Escapezeichen verwendet werden soll, müssen Sie der Zeichenfolge \"\@\" voranstellen.
 
 ```OQL
 print @"C:\backslash\not\escaped\with @ prefix"

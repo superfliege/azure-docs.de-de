@@ -1,5 +1,5 @@
 ---
-title: Übersicht über IPv6 für Azure Load Balancer | Microsoft Docs
+title: Übersicht über IPv6 für Azure Load Balancer | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich bereitstellen.
 services: load-balancer
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 08/24/2018
 ms.author: kumud
-ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7cda30beaea8a9e15794c9330832e9ca651eb7
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30189663"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918687"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
 
@@ -79,6 +79,7 @@ Einschränkungen
 * Das Ändern des Parameters IdleTimeout wird für IPv6 **derzeit nicht unterstützt**. Der Standardwert ist vier Minuten.
 * Das Ändern des Parameters loadDistributionMethod wird für IPv6 **derzeit nicht unterstützt**.
 * Reservierte IPv6-IP-Adressen (wobei IPAllocationMethod = static) werden **derzeit nicht unterstützt**.
+* NAT64 (Übersetzung von IPv6 in IPv4) wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

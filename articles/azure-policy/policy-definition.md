@@ -4,16 +4,16 @@ description: Beschreibt, wie die von Azure Policy verwendete Definition von Ress
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/03/2018
+ms.date: 08/16/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ced8ebad0122973595cdede4497cd200e3090043
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ac561be75306cab6b73b457a7d450bd640aac067
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524106"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818696"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -107,7 +107,7 @@ Innerhalb der Metadateneigenschaft können Sie mit **strongType** eine Liste der
 - `"existingResourceGroups"`
 - `"omsWorkspace"`
 
-In der Richtlinienregel wird die folgende Syntax verwendet, um auf Parameter zu verweisen:
+In der Richtlinienregel wird die folgende Syntax für die `parameters`Bereitstellungswertefunktion verwendet, um auf Parameter zu verweisen:
 
 ```json
 {
@@ -245,6 +245,53 @@ Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein
 Ein Beispiel für das Überwachen, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit if extension does not exist (Überwachen bei nicht vorhandener Erweiterung)](scripts/audit-ext-not-exist.md).
 
 Umfassende Informationen zu den einzelnen Auswirkungen, zur Reihenfolge der Auswertung und zu Eigenschaften sowie Beispiele finden Sie unter [Grundlegendes zu Richtlinienauswirkungen](policy-effects.md).
+
+### <a name="policy-functions"></a>Richtlinienfunktionen
+
+Eine Teilmenge der [Resource Manager-Vorlagenfunktionen](../azure-resource-manager/resource-group-template-functions.md) können innerhalb einer Richtlinienregel verwendet werden. Diese Funktionen werden derzeit unterstützt:
+
+- [parameters](../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
+- [concat](../azure-resource-manager/resource-group-template-functions-array.md#concat)
+- [Ressourcengruppe](../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
+- [Abonnement](../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+
+Darüber hinaus ist die `field` Funktion für Richtlinienregeln verfügbar. Diese Funktion ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet wird. Ein Beispiel hierfür finden Sie im [DeployIfNotExists-Beispiel](policy-effects.md#deployifnotexists-example).
+
+#### <a name="policy-function-examples"></a>Beispiele für Richtlinienfunktionen
+
+Dieses Richtlinienregelbeispiel verwendet die Ressourcenfunktion `resourceGroup`, um die Eigenschaft **name** zu erhalten, kombiniert mit dem Array `concat` und der Objektfunktion, um eine `like`-Bedingung zu erstellen, die für den Ressourcennamen erzwingt, mit dem Ressourcengruppennamen zu beginnen.
+
+```json
+{
+    "if": {
+        "not": {
+            "field": "name",
+            "like": "[concat(resourceGroup().name,'*')]"
+        }
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+Dieses Richtlinienregelbeispiel verwendet die Ressourcenfunktion `resourceGroup`, um den Wert des Eigenschaftsarrays **tags** des Tags **CostCenter** in der Ressourcengruppe abzurufen und an das Tag **CostCenter** in der neuen Ressource anzuhängen.
+
+```json
+{
+    "if": {
+        "field": "tags.CostCenter",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "tags.CostCenter",
+            "value": "[resourceGroup().tags.CostCenter]"
+        }]
+    }
+}
+```
 
 ## <a name="aliases"></a>Aliase
 

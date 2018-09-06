@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management für Azure-Ressourcen – Aktivieren der Abonnementverwaltung | Microsoft-Dokumentation
-description: Es wird beschrieben, wie globale Administratoren im Mandanten Abonnements verwalten können.
+title: Aktivieren der Abonnementverwaltung in Ihrem Mandanten – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie bei Verwendung von Azure AD Privileged Identity Management (PIM) die Abonnementverwaltung in Ihrem Mandanten aktivieren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d7a9c0090d3bfaaf1161b6255c4c0b659c77d692
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89bb6fd48c58b7672b7a2251a172cc169093d368
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620279"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189994"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>Aktivieren der Abonnementverwaltung in Ihrem Mandanten
 
@@ -79,14 +79,5 @@ Nachdem Sie nun über passende Zuweisungen für die wichtigen Abonnements Ihrer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Ermitteln von Ressourcen](pim-resource-roles-discover-resources.md)
-
-[Konfigurieren von Rolleneinstellungen](pim-resource-roles-configure-role-settings.md)
-
-
-
-
-
-
-
-
+- [Ermitteln von Azure-Ressourcen zur Verwaltung in PIM](pim-resource-roles-discover-resources.md)
+- [Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-configure-role-settings.md)

@@ -1,6 +1,6 @@
 ---
-title: Abschließen einer Zugriffsüberprüfung | Microsoft Docs
-description: Nachdem Sie eine Überprüfung in Azure AD Privileged Identity Management gestartet haben, erfahren Sie, wie Sie sie abschließen und die Ergebnisse anzeigen
+title: Abschließen einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Ihre Azure AD-Verzeichnisrollen in Azure AD Privileged Identity Management (PIM) abschließen und die Ergebnisse anzeigen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3b4135368c2222a08b155c851b384244774ce246
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3955f4bf9b579ae40424c2650f9d3b4c2ac4f030
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622529"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188585"
 ---
-# <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Abschließen einer Zugriffsüberprüfung in Azure AD Privileged Identity Management
+# <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Abschließen einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM
 Nachdem eine [Zugriffsüberprüfung gestartet wurde](pim-how-to-start-security-review.md), können Administratoren für privilegierte Rollen den privilegierten Zugriff überprüfen. Azure AD Privileged Identity Management (PIM) sendet automatisch eine E-Mail, in der Benutzer aufgefordert werden, ihren Zugriff zu überprüfen. Benutzern, die diese E-Mail nicht erhalten, können Sie die Anweisungen unter [Ausführen einer Zugriffsüberprüfung](pim-how-to-perform-security-review.md) senden.
 
 Wenn der Zeitraum für die Zugriffsüberprüfung abgelaufen ist oder alle Benutzer die Selbstüberprüfung abgeschlossen haben, führen Sie die Schritte in diesem Artikel aus, um die Überprüfung zu verwalten und die Ergebnisse anzuzeigen.
@@ -53,4 +53,6 @@ Wenn Sie an einer Überprüfung nicht weiter interessiert sind, löschen Sie sie
 > Vor dem Löschvorgang wird keine Warnung angezeigt. Vergewissern Sie sich daher, dass Sie die Überprüfung tatsächlich löschen möchten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Starten einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM](pim-how-to-start-security-review.md)
+- [Ausführen einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM](pim-how-to-perform-security-review.md)

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 705f2ce674a31d7dda4d87d893078a2ade26e327
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443389"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044729"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
@@ -156,6 +156,8 @@ Gehen Sie in der selbstgehosteten IR, die freigegeben werden soll, folgendermaß
 
    ![](media\create-self-hosted-integration-runtime\grant-permissions-IR-sharing.png)
 
+   ![](media\create-self-hosted-integration-runtime\3_rbac_permissions.png)
+
 2. Notieren Sie sich die **Ressourcen-ID** der selbstgehosteten IR, die freigegeben werden soll.
 
    ![](media\create-self-hosted-integration-runtime\4_ResourceID_self-hostedIR.png)
@@ -167,6 +169,20 @@ Gehen Sie in der Data Factory, der die Berechtigungen erteilt wurden, folgenderm
    ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_2.png)
 
    ![](media\create-self-hosted-integration-runtime\6_create-linkedIR_3.png)
+
+#### <a name="monitoring"></a>Überwachung 
+
+- **Freigegebene IR**
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-shared-IR.png)
+
+  ![](media\create-self-hosted-integration-runtime\contoso-shared-ir-monitoring.png)
+
+- **Verknüpfte IR**
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-linked-ir.png)
+
+  ![](media\create-self-hosted-integration-runtime\Contoso-linked-ir-monitoring.png)
 
 #### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Bekannte Einschränkungen der Freigabe selbstgehosteter IRs
 
@@ -182,6 +198,8 @@ Für implizit erstellte (z.B. mit einer Azure Resource Manager-Vorlage (ARM) ode
 5. Das ADF .NET SDK, das dieses Feature unterstützt, muss die Version 1.1.0 oder höher aufweisen.
 
 6. Die Azure-PowerShell-Version muss für die Unterstützung dieses Features Version 6.6.0 oder höher sein (AzureRM.DataFactoryv2 0.5.7 oder höher).
+
+7. Zum Gewähren von Berechtigungen muss der Benutzer über die Rolle „Besitzer“ oder die geerbte Rolle „Besitzer“ in der Data Factory verfügen, in der die verknüpfte IR vorhanden ist. 
 
   > [!NOTE]
   > Dieses Feature steht nur in Azure Data Factory Version 2 zur Verfügung. 

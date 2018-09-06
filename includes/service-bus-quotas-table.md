@@ -2,18 +2,18 @@
 title: Includedatei
 description: Includedatei
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/04/2018
-ms.author: sethm
+ms.date: 08/29/2018
+ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 0ff1e31e52c7db5c41f92cb9e4cb1a17f28dea6f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 481ae07ae9f8877ff93b2fee948849076c054906
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755865"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187047"
 ---
 In der folgenden Tabelle sind die Kontingentinformationen für das Service Bus Messaging aufgeführt. Informationen zu Preisen und anderen Kontingenten für Service Bus finden Sie in der Übersicht der [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/) .
 
@@ -24,7 +24,7 @@ In der folgenden Tabelle sind die Kontingentinformationen für das Service Bus M
 | Warteschlangen-/Themengröße |Entität |Bei der Erstellung der Warteschlange/des Themas definiert. <br/><br/> Nachfolgende eingehende Nachrichten werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |1, 2, 3, 4 oder 5 GB.<br /><br />In der Premium-SKU, aber wenn in der Standard-SKU [Partitionierung](/azure/service-bus-messaging/service-bus-partitioning) aktiviert ist, beträgt die maximale Größe von Warteschlangen bzw. Themen 80 GB. |
 | Maximale Anzahl gleichzeitiger Verbindungen in einem Namespace |Namespace |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. REST-Vorgänge werden nicht zu den gleichzeitigen TCP-Verbindungen hinzugezählt. |NetMessaging: 1.000<br /><br />AMQP: 5.000 |
 | Anzahl der gleichzeitigen Empfangsanforderungen für eine Warteschlangen-/Themen-/Abonnement-Entität |Entität |Nachfolgende Empfangsanforderungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. Dieses Kontingent gilt für alle gleichzeitigen Empfangsvorgänge über alle Abonnements eines Themas hinweg. |5.000 |
-| Anzahl von Themen/Warteschlangen pro Namespace |Namespace |Nachfolgende Anforderungen zum Erstellen eines neuen Themas bzw. einer neuen Warteschlange im Namespace werden abgelehnt. Als Ergebnis wird bei der Konfiguration über das [Azure-Portal][Azure portal] eine Fehlermeldung generiert. Bei einem Aufruf über die Verwaltungs-API wird vom aufrufenden Code eine Ausnahme empfangen. |10.000<br /><br />Die Gesamtzahl von Themen plus Warteschlangen in einem Namespace muss kleiner oder gleich 10.000 sein. |
+| Anzahl von Themen/Warteschlangen pro Namespace |Namespace |Nachfolgende Anforderungen zum Erstellen eines neuen Themas bzw. einer neuen Warteschlange im Namespace werden abgelehnt. Als Ergebnis wird bei der Konfiguration über das [Azure-Portal][Azure portal] eine Fehlermeldung generiert. Bei einem Aufruf über die Verwaltungs-API wird vom aufrufenden Code eine Ausnahme empfangen. |10.000 (Basic-/Standard-Tarif). Die Gesamtzahl von Themen und Warteschlangen in einem Namespace muss kleiner oder gleich 10.000 sein. <br/><br/>Im Premium-Tarif ist ein Wert von 1.000 pro Messagingeinheit (Messaging Unit, MU) zulässig. Der maximale Wert beträgt 4.000. |
 | Anzahl von [partitionierten Themen/Warteschlangen](/azure/service-bus-messaging/service-bus-partitioning) pro Namespace |Namespace |Nachfolgende Anforderungen zum Erstellen eines neuen partitionierten Themas bzw. einer neuen Warteschlange im Namespace werden abgelehnt. Als Ergebnis wird bei der Konfiguration über das [Azure-Portal][Azure portal] eine Fehlermeldung generiert. Bei einem Aufruf über die Verwaltungs-API wird vom aufrufenden Code eine **QuotaExceededException**-Ausnahme empfangen. |Basic- und Standard-Tarif – 100<br/><br/>Partitionierte Entitäten werden im [Premium](../articles/service-bus-messaging/service-bus-premium-messaging.md)-Tarif nicht unterstützt.<br/><br />Jede partitionierte Warteschlange bzw. jedes partitionierte Thema wird in das zulässige Kontingent von 10.000 Entitäten pro Namespace eingerechnet. |
 | Maximale Größe eines Messagingentitätspfads: Warteschlange oder Thema |Entität |- |260 Zeichen |
 | Maximale Größe eines Messagingentitätsnamens: Namespace, Abonnement oder Abonnementregel |Entität |- |50 Zeichen |

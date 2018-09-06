@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 0715f1723f7bb43b0d11e55e8af01202fc8a92be
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: d408456373c8124e1a385879852d6198caf0813c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344459"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050189"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB-Bindungen für Azure Functions 1.x
 
@@ -36,6 +36,10 @@ Dieser Artikel erläutert das Arbeiten mit [Azure Cosmos DB](..\cosmos-db\server
 >Diese Bindung hatte ursprünglich die Bezeichnung „DocumentDB“. In Functions Version 1.x wurde nur der Trigger in „Cosmos DB“ umbenannt. Die Eingabebindung, die Ausgabebindung und das NuGet-Paket behalten den Namen „DocumentDB“.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="supported-apis"></a>Unterstützte APIs
+
+[!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
@@ -216,10 +220,7 @@ Der Trigger gibt nicht an, ob ein Dokument aktualisiert oder eingefügt wurde, e
 
 ## <a name="input"></a>Eingabe
 
-Die Azure Cosmos DB-Eingabebindung ruft Azure Cosmos DB-Dokumente ab und übergibt diese an den Eingabeparameter der Funktion. Die Dokument-ID oder die Abfrageparameter können basierend auf dem Trigger, der die Funktion aufruft, ermittelt werden. 
-
->[!NOTE]
-> Sie sollten keine Azure Cosmos DB-Eingabe- oder Ausgabebindungen verwenden, wenn Sie die MongoDB-API unter einem Cosmos DB-Konto verwenden. In diesem Fall ist Datenbeschädigung möglich.
+Die Azure Cosmos DB-Eingabebindung verwendet die SQL-API, um mindestens ein Azure Cosmos DB-Dokument abzurufen und an den Eingabeparameter der Funktion zu übergeben. Die Dokument-ID oder die Abfrageparameter können basierend auf dem Trigger, der die Funktion aufruft, ermittelt werden.
 
 ## <a name="input---examples"></a>Eingabe: Beispiele
 
@@ -1185,10 +1186,7 @@ In JavaScript-Funktionen erfolgen Aktualisierungen bei Beenden der Funktion nich
 
 ## <a name="output"></a>Output
 
-Die Azure Cosmos DB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank. 
-
->[!NOTE]
-> Sie sollten keine Azure Cosmos DB-Eingabe- oder Ausgabebindungen verwenden, wenn Sie die MongoDB-API unter einem Cosmos DB-Konto verwenden. In diesem Fall ist Datenbeschädigung möglich.
+Die Azure Cosmos DB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank mithilfe der SQL-API. 
 
 ## <a name="output---examples"></a>Ausgabe – Beispiele
 

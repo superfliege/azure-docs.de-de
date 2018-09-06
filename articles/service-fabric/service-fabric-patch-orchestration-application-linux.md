@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 00e5f5a73973a34a8611143719c91a2b1ad0c8eb
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0aadb5964b5fe08b02397588dd9b2695fb4db4ce
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971265"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746716"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Patchen des Linux-Betriebssystems in Ihrem Service Fabric-Cluster
 
@@ -121,7 +121,7 @@ Für Ubuntu wird [unattended-upgrades](https://help.ubuntu.com/community/Automat
 
 Die Anwendung kann zusammen mit Installationsskripts über den [Archivlink](https://go.microsoft.com/fwlink/?linkid=867984) heruntergeladen werden.
 
-Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://go.microsoft.com/fwlink/?linkid=867984&pc=sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
+Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://aka.ms/POA/POA_v2.0.2.sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurieren der App
 
@@ -370,5 +370,8 @@ Die App für die Patchorchestrierung sammelt Telemetriedaten zum Nachverfolgen v
 ### <a name="version-200"></a>Version 2.0.0
 - Öffentliche Version
 
-### <a name="version-201-latest"></a>Version 2.0.1 (aktuellste Version)
+### <a name="version-201"></a>Version 2.0.1
 - Die App wurde mithilfe des neuesten Service Fabric-SDK erneut kompiliert.
+
+### <a name="version-202-latest"></a>Version 2.0.2 (aktuelle Version)
+- Es wurde ein Problem behoben, bei dem Zustandswarnungen während des Neustarts vernachlässigt wurden.

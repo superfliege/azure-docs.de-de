@@ -1,20 +1,20 @@
 ---
-title: Verwenden von DPM zum Sichern von Workloads im Azure-Portal
-description: Eine Einführung in die Sicherung von DPM-Servern mithilfe des Azure Backup-Diensts
+title: Verwenden von DPM zum Sichern von Workloads in Azure
+description: Eine Einführung zur Sicherung von DPM-Daten in einem Azure Recovery Services-Tresor.
 services: backup
 author: adigan
 manager: nkolli
 keywords: System Center Data Protection Manager, Data Protection Manager, DPM-Sicherung
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/15/2017
+ms.date: 8/22/2018
 ms.author: adigan
-ms.openlocfilehash: ffb3a5a5729e97e1a9b00072624d7e51842f61f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 873e7066bcf51b32c3a7a54e845ffd5a744f407f
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605048"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745434"
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit DPM
 > [!div class="op_single_selector"]
@@ -23,9 +23,9 @@ ms.locfileid: "34605048"
 >
 >
 
-Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Backup zum Schutz von DPM-Servern  und -Workloads (System Center Data Protection Manager). In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel wird erläutert, wie Sie Daten aus System Center Data Protection Manager (DPM) in Azure sichern können, einschließlich:
 
-* Funktionsweise der Azure DPM-Serversicherung
+* Sichern von DPM-Serverdaten in Azure
 * Voraussetzungen für eine reibungslose Sicherung
 * Typische Fehler und ihre Behandlung
 * Unterstützte Szenarien
@@ -37,7 +37,7 @@ Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Back
 
 [System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) sichert Datei- und Anwendungsdaten. Weitere Informationen zu unterstützten Workloads finden Sie [hier](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix). Daten, die in DPM gesichert werden, können auf Band, auf Festplatte gespeichert oder in Azure mit Microsoft Azure Backup gesichert werden. DPM interagiert mit Azure Backup wie folgt:
 
-* **DPM als physischer Server oder auf einem lokalen virtuellen Computer bereitgestellt** – Wenn DPM als physischer Server oder als lokaler Hyper-V-Computer bereitgestellt wird, können Sie Daten zusätzlich zur Festplatten- und Bandsicherung im Recovery Services-Tresor sichern.
+* **DPM als physischer Server oder auf einem lokalen virtuellen Computer bereitgestellt** – Wenn DPM als physischer Server oder als lokaler Hyper-V-Computer bereitgestellt wird, werden Daten zusätzlich zur Festplatten- und Bandsicherung im Recovery Services-Tresor gesichert.
 * **DPM als virtueller Azure-Computer bereitgestellt** – Ab System Center 2012 R2 mit Update 3 können Sie DPM als virtuellen Azure-Computer bereitstellen. Wenn DPM als virtueller Azure-Computer bereitgestellt wird, können Sie Daten auf mit der VM verbundenen Azure-Datenträgern sichern, oder Sie können die Datenspeicherung durch Sichern in einem Recovery Services-Tresor auslagern.
 
 ## <a name="why-back-up-dpm-to-azure"></a>Gründe für die Sicherung von DPM in Azure
@@ -64,54 +64,43 @@ Hier folgen einige wichtige Definitionen für die Sicherung in Azure für DPM:
 3. **Sicherheits-PIN**: Wenn Sie die [Sicherheitseinstellungen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) des Tresors aktiviert haben, ist die Sicherheits-PIN zum Ausführen von Sicherungsvorgängen erforderlich. Diese Multi-Factor Authentication sorgt für eine zusätzliche Sicherheitsebene. 
 4. **Wiederherstellungsordner**: Dies ist die Bezeichnung für den Ordner, in den die Sicherungen aus der Cloud während der Cloudwiederherstellungen vorübergehend heruntergeladen werden. Seine Größe sollte ungefähr der Größe der Sicherungselemente entsprechen, die Sie gleichzeitig wiederherstellen möchten.
 
+[!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
 
-### <a name="1-create-a-recovery-services-vault"></a>1. Erstellen eines Recovery Services-Tresors
-So erstellen Sie einen Recovery Services-Tresor:
+## <a name="edit-storage-replication"></a>Tresorspeicherreplikation bearbeiten
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
-
-    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-dpm-introduction/open-recovery-services-vault.png)
-
-    Die Liste mit den Recovery Services-Tresoren wird angezeigt.
-3. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
-
-    ![Erstellen eines Recovery Services-Tresors – Schritt 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
-
-    Das Menü „Recovery Services-Tresor“ wird geöffnet, und Sie werden aufgefordert, **Name**, **Abonnement**, **Ressourcengruppe** und **Standort** anzugeben.
-
-    ![Erstellen eines Recovery Services-Tresors – Schritt 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
-4. Geben Sie unter **Name**einen Anzeigenamen für den Tresor ein. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der zwischen 2 und 50 Zeichen enthält. Er muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-5. Klicken Sie auf **Abonnement** , um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
-6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen.
-8. Klicken Sie auf **Create**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal.
-   Nachdem der Tresor erstellt wurde, wird er im Portal geöffnet.
-
-### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation
-Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn es sich hierbei um Ihre primäre Sicherung handelt. Wählen Sie lokal redundanten Speicher, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
+Bei der Speicherreplikation haben Sie die Wahl zwischen georedundantem Speicher und lokal redundantem Speicher. Standardmäßig verfügt Ihr Tresor über einen georedundanten Speicher. Behalten Sie den georedundanten Speicher bei, wenn der Tresor Ihre primäre Sicherung ist. Befolgen Sie die unten aufgeführten Schritte, um einen lokal redundanten Speicher zu konfigurieren, wenn Sie eine günstigere und weniger langfristige Option wünschen. Weitere Informationen zu den Optionen für [georedundanten](../storage/common/storage-redundancy-grs.md) und [lokal redundanten](../storage/common/storage-redundancy-lrs.md) Speicher finden Sie in der [Übersicht über die Azure Storage-Replikation](../storage/common/storage-redundancy.md).
 
 So bearbeiten Sie die Einstellung für die Speicherreplikation:
 
-1. Wählen Sie Ihren Tresor aus, um das Tresordashboard und das Menü „Einstellungen“ zu öffnen. Sollte das Menü **Einstellungen** nicht geöffnet werden, klicken Sie im Tresordashboard auf **Alle Einstellungen**.
-2. Klicken Sie im Menü **Einstellungen** auf **Sicherungsinfrastruktur** > **Sicherungskonfiguration**, um das Menü **Sicherungskonfiguration** zu öffnen. Wählen Sie im Menü **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
+> [!NOTE] 
+> Konfigurieren Sie die Speicherreplikation vor dem Auslösen der ersten Sicherung. Wenn Sie die Konfiguration für die Speicherreplikation nach der Sicherung des geschützten Elements ändern möchten, müssen Sie den Schutz für den Tresor vor dem Wechseln der Speicherkonfiguration beenden.
+>  
 
-    ![Liste der Sicherungstresore](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
+1. Wählen Sie den Tresor aus, und öffnen Sie das dazugehörige Dashboard.
+
+2. Klicken Sie im Abschnitt **Verwalten** auf die Option **Sicherungsinfrastruktur**.
+
+3. Wählen Sie im Menü **Speicherkonfiguration** die Speicherreplikationsoption für Ihren Tresor aus.
+
+    ![Liste der Sicherungstresore](./media/backup-azure-dpm-introduction/choose-storage-configuration-rs-vault.png)
 
     Wenn Sie die Speicheroption für Ihren Tresor ausgewählt haben, können Sie den virtuellen Computer dem Tresor zuordnen. Ermitteln und registrieren Sie die virtuellen Azure-Computer, um mit der Zuordnung zu beginnen.
 
-### <a name="2-download-vault-credentials"></a>2. Herunterladen der Tresoranmeldedaten
-Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für jeden Sicherungstresor generiert wird. Das Portal lädt anschließend den öffentlichen Schlüssel in den Access Control Service (ACS) hoch. Der private Schlüssel des Zertifikats wird dem Benutzer während des Workflows zur Verfügung gestellt und dient als Eingabe für den Workflow zur Computerregistrierung. Dadurch wird der Computer zum Senden von Sicherungsdaten an einen identifizierten Tresor im Azure Backup-Dienst authentifiziert.
+## <a name="download-vault-credentials"></a>Herunterladen der Tresoranmeldedaten
+Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für jeden Sicherungstresor generiert wird. Das Portal lädt anschließend den öffentlichen Schlüssel in den Access Control Service (ACS) hoch. Während des Registrierungsworkflows für den Computer, wird der private Schlüssel des Zertifikats für den Benutzer zur Verfügung gestellt, der den Computer authentifiziert. Basierend auf der Authentifizierung sendet der Azure Backup-Dienst Daten an den festgelegte Tresor.
 
-Die Tresoranmeldeinformationen werden nur während des Registrierungsworkflows verwendet. Es ist Aufgabe des Benutzers sicherzustellen, dass die Datei mit den Tresoranmeldeinformationen sicher aufbewahrt wird. Fällt sie in die Hände eines böswilligen Benutzers, kann dieser die Datei mit den Tresoranmeldeinformationen zur Registrierung weiterer Computer beim selben Tresor verwenden. Da die Sicherungsdaten jedoch durch eine Passphrase verschlüsselt sind, die dem Kunden gehört, sind vorhandene Sicherungsdaten nicht gefährdet. Um dieses Risiko auf ein Mindestmaß zu verringern, laufen die Tresoranmeldeinformationen nach 48 Stunden ab. Sie können die Anmeldeinformationen eines Recovery Services-Tresors beliebig oft herunterladen – jedoch nur die neueste Datei mit Tresoranmeldeinformationen ist für den Registrierungsworkflow gültig.
+Die Tresoranmeldeinformationen werden nur während des Registrierungsworkflows verwendet. Es ist Aufgabe des Benutzers sicherzustellen, dass die Datei mit den Tresoranmeldeinformationen sicher aufbewahrt wird. Wenn die Anmeldeinformationen verloren gehen, können die Anmeldeinformationen des Tresors zum Registrieren anderer Computer als Tresor verwendet werden. Die Sicherungsdaten sind jedoch durch eine Passphrase verschlüsselt, die dem Kunden gehört. Daher sind vorhandene Sicherungsdaten nicht gefährdet. Um dieses Risiko zu minimieren, laufen die Tresoranmeldeinformationen nach 48 Stunden ab. Sie können die neuen Tresoranmeldeinformationen so oft wie erforderlich herunterladen. Allerdings kann nur die neueste Datei mit Tresoranmeldeinformationen während des Registrierungsworkflows verwendet werden.
 
-Die Datei mit Tresoranmeldeinformationen wird über einen sicheren Kanal aus dem Azure-Portal heruntergeladen. Der Azure Backup-Dienst kennt nicht den privaten Schlüssel des Zertifikats, und der private Schlüssel wird weder im Portal noch im Dienst aufbewahrt. Gehen Sie folgendermaßen vor, um die Datei mit Tresoranmeldeinformationen auf einen lokalen Computer herunterzuladen.
+Die Datei mit Tresoranmeldeinformationen wird über einen sicheren Kanal aus dem Azure-Portal heruntergeladen. Der Azure Backup-Dienst kennt nicht den privaten Schlüssel des Zertifikats, und der private Schlüssel ist weder im Portal noch im Dienst verfügbar. Gehen Sie folgendermaßen vor, um die Datei mit Tresoranmeldeinformationen auf einen lokalen Computer herunterzuladen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Öffnen Sie den Recovery Services-Tresor, bei dem Sie den DPM-Computer registrieren möchten.
-3. Das Menü „Einstellungen“ wird standardmäßig geöffnet. Wenn es geschlossen ist, klicken Sie auf dem Tresordashboard auf **Einstellungen**, um das Menü mit den Einstellungen zu öffnen. Klicken Sie im Menü „Einstellungen“ auf **Eigenschaften**.
+
+2. Öffnen Sie den Recovery Services-Tresor, den Sie bei einem DPM-Server registrieren möchten.
+
+3. Das Menü „Einstellungen“ wird standardmäßig geöffnet. Wenn es geschlossen ist, klicken Sie auf dem Tresordashboard auf **Einstellungen**, um das Menü zu öffnen. Klicken Sie im Menü **Einstellungen** auf **Eigenschaften**.
 
     ![Tresormenü öffnen](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
+
 4. Klicken Sie auf der Seite „Eigenschaften“ unter **Sicherungsanmeldeinformationen** auf **Herunterladen**. Das Portal generiert die Datei mit Tresoranmeldeinformationen, die zum Download zur Verfügung gestellt wird.
 
     ![Download](./media/backup-azure-dpm-introduction/vault-credentials.png)
@@ -123,7 +112,7 @@ Das Portal generiert Tresoranmeldeinformationen mit einer Kombination aus dem Tr
 * Die Datei mit den Tresoranmeldeinformationen wird nur während des Registrierungsworkflows verwendet.
 * Die Datei mit den Tresoranmeldeinformationen läuft nach 48 Stunden ab und kann über das Portal heruntergeladen werden.
 
-### <a name="3-install-backup-agent"></a>3. Installieren des Backup-Agents
+## <a name="install-backup-agent"></a>Installieren des Backup-Agents
 Nach dem Erstellen des Azure Backup-Tresors sollte auf jedem Windows-Computer (Windows Server, Windows-Client oder System Center Data Protection Manager-Server oder Azure Backup Server-Computer) ein Agent installiert werden, der das Sichern von Daten und Anwendungen in Azure ermöglicht.
 
 1. Öffnen Sie den Recovery Services-Tresor, bei dem Sie den DPM-Computer registrieren möchten.
@@ -135,12 +124,17 @@ Nach dem Erstellen des Azure Backup-Tresors sollte auf jedem Windows-Computer (W
     ![Download](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
    Sobald der Agent heruntergeladen ist, führen Sie „MARSAgentInstaller.exe“ aus, um die Installation des Azure Backup-Agents zu starten. Wählen Sie den Installationsordner und den Ablageordner aus, der für den Agent erforderlich ist. Der verfügbare Speicherplatz am angegebenen Speicherort muss mindestens 5 % der Sicherungsdaten betragen.
+
 4. Wenn Sie einen Proxyserver für die Verbindung mit dem Internet verwenden, geben Sie im Bildschirm **Proxykonfiguration** die Details des Proxyservers ein. Wenn Sie einen authentifizierten Proxy verwenden, geben Sie in diesem Bildschirm die Informationen zum Benutzernamen und zum Kennwort ein.
+
 5. Der Azure Backup-Agent installiert .NET Framework 4.5 und Windows PowerShell (falls noch nicht verfügbar), um die Installation abzuschließen.
+
 6. Sobald der Agent installiert ist, **Schließen** Sie das Fenster.
 
    ![Close (Schließen)](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
+
 7. Zum **Registrieren des DPM-Servers** klicken Sie im Tresor auf der Registerkarte **Verwaltung** auf **Online**. Wählen Sie dann **Registrieren**. Der Registrierungssetup-Assistent wird geöffnet.
+
 8. Wenn Sie einen Proxyserver für die Verbindung mit dem Internet verwenden, geben Sie im Bildschirm **Proxykonfiguration** die Details des Proxyservers ein. Wenn Sie einen authentifizierten Proxy verwenden, geben Sie in diesem Bildschirm die Informationen zum Benutzernamen und zum Kennwort ein.
 
     ![Proxykonfiguration](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
@@ -153,12 +147,15 @@ Nach dem Erstellen des Azure Backup-Tresors sollte auf jedem Windows-Computer (W
     Stellen Sie sicher, dass die Datei mit den Tresoranmeldeinformationen an einem Speicherort verfügbar ist, der für die Setupanwendung zugänglich ist. Wenn Zugriffsfehler auftreten, kopieren Sie die Datei mit den Tresoranmeldeinformationen in einen temporären Speicherort auf diesem Computer, und wiederholen Sie den Vorgang.
 
     Wenn ein Fehler wegen ungültiger Tresoranmeldeinformationen angezeigt wird (z. B. „Ungültige Tresoranmeldeinformationen angegeben“), ist die Datei entweder beschädigt oder enthält nicht die aktuellen Anmeldeinformationen, die dem Wiederherstellungsdienst zugeordnet sind. Wiederholen Sie den Vorgang, nachdem Sie eine neue Datei mit Tresoranmeldeinformationen vom Portal heruntergeladen haben. Dieser Fehler tritt i.d R. auf, wenn der Benutzer im Azure-Portal in schneller Folge auf die Option **Tresoranmeldedaten herunterladen** klickt. In diesem Fall ist nur die zweite Datei mit Tresoranmeldeinformationen gültig.
+
 10. Um die Nutzung der Netzwerkbandbreite während Arbeitszeit und arbeitsfreien Stunden zu steuern, können Sie im Bildschirm **Einstellung für die Bandbreiteneinschränkung** die Grenzwerte der Bandbreitennutzung festlegen und Arbeitszeit und arbeitsfreie Stunden definieren.
 
     ![Einstellung für die Bandbreiteneinschränkung](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
+
 11. Wechseln Sie im Bildschirm **Einstellungen für den Wiederherstellungsordner** zu dem Ordner, in dem die aus Azure heruntergeladenen Dateien vorübergehend bereitgestellt werden.
 
     ![Einstellungen für den Wiederherstellungsordner](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
+
 12. Im Bildschirm **Verschlüsselungseinstellung** können Sie entweder eine Passphrase generieren oder eine Passphrase angeben (mindestens 16 Zeichen). Vergessen Sie nicht, die Passphrase an einem sicheren Speicherort zu speichern.
 
     ![Verschlüsselung](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
@@ -167,7 +164,9 @@ Nach dem Erstellen des Azure Backup-Tresors sollte auf jedem Windows-Computer (W
     > Wenn die Passphrase verloren geht oder vergessen wird, kann Microsoft Ihnen bei der Wiederherstellung der Sicherungsdaten nicht behilflich sein. Der Endbenutzer besitzt die Verschlüsselungspassphrase, und Microsoft kann nicht auf die vom Endbenutzer verwendete Passphrase zugreifen. Speichern Sie die Datei an einem sicheren Speicherort, da sie bei einem Wiederherstellungsvorgang benötigt wird.
     >
     >
+
 13. Nach dem Klicken auf die Schaltfläche **Registrieren** wird der Computer erfolgreich beim Tresor registriert, und Sie können mit der Sicherung in Microsoft Azure beginnen.
+
 14. Bei Verwendung von Data Protection Manager können Sie die während des Registrierungsworkflows angegebenen Einstellungen ändern, indem Sie auf der Registerkarte **Verwaltung** unter **Online** auf die Option **Konfigurieren** klicken.
 
 ## <a name="requirements-and-limitations"></a>Anforderungen (und Einschränkungen)
@@ -198,6 +197,6 @@ Diese werden nicht unterstützt:
 * Platzsparender Stream
 
 > [!NOTE]
-> Ab System Center 2012 DPM mit SP1 können Sie Workloads, die von DPM geschützt werden, in Azure mithilfe von Microsoft Azure Backup sichern.
+> Ab System Center 2012 DPM mit SP1 oder höher können Sie geschützte Workloads in Azure sichern.
 >
 >

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 08/24/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: 46e46cfea621f99e150446fcc75b71feb468fa49
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aedaa729ec51d7b60b2c242239935f7b3e41794f
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052697"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918186"
 ---
 # <a name="provider-resource-usage-api"></a>Ressourcennutzungs-API für Anbieter
 Der Begriff *Anbieter* bezieht sich auf den Dienstadministrator und alle delegierten Anbieter. Azure Stack-Operators und delegierte Anbieter können die Nutzungs-API für Anbieter verwenden, um einen Einblick in die Nutzung ihrer direkten Mandanten zu erhalten. Wie im Diagramm dargestellt, kann P0 beispielsweise die Anbieter-API aufrufen, um die Nutzungsinformationen zur direkten Nutzung von P1 und P2 abzurufen, und P1 kann die Nutzungsinformationen von P3 und P4 abrufen.
@@ -93,6 +93,8 @@ meterID1",
 
 ## <a name="retrieve-usage-information"></a>Abrufen von Nutzungsinformationen
 
+### <a name="powershell"></a>PowerShell
+
 Um Nutzungsdaten zu generieren, benötigen Sie Ressourcen, die ausgeführt werden und das System aktiv verwenden, beispielsweise einen aktiven virtuellen Computer oder ein Speicherkonto mit Daten. Wenn Sie nicht sicher sind, ob Sie über Ressourcen verfügen, die im Azure Stack Marketplace ausgeführt werden, stellen Sie einen virtuellen Computer bereit, und überprüfen Sie das Überwachungsblatt für diesen Computer, um sicherzustellen, dass er ausgeführt wird. Verwenden Sie die folgenden PowerShell-Cmdlets, um die Nutzungsdaten anzuzeigen:
 
 1. [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)
@@ -101,6 +103,22 @@ Um Nutzungsdaten zu generieren, benötigen Sie Ressourcen, die ausgeführt werde
 ```powershell
 Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
 ```
+### <a name="rest-api"></a>REST-API
+
+Sie können Nutzungsinformationen für gelöschte Abonnements sammeln, indem Sie den Microsoft.Commerce.Admin-Dienst aufrufen. 
+
+**So geben Sie die gesamte Mandantennutzung für gelöschte Abonnements für aktive Benutzer zurück:**
+
+| **Methode** | **Anforderungs-URI** |
+| --- | --- |
+| GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview |
+
+**So geben Sie die Nutzung für gelöschte oder aktive Mandanten zurück:**
+
+| **Methode** | **Anforderungs-URI** |
+| --- | --- |
+| GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Referenz zur Ressourcennutzungs-API für Mandanten](azure-stack-tenant-resource-usage-api.md)

@@ -1,6 +1,6 @@
 ---
-title: Zuweisen von Rollen für Azure-Ressourcen mit Privileged Identity Management | Microsoft Docs
-description: Es wird beschrieben, wie Sie in PIM Rollen zuweisen.
+title: Zuweisen von Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) zuweisen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,25 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 52320fe160fc1df2997dd419b406fce24f43b786
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622975"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188919"
 ---
-# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Zuweisen von Rollen für Azure-Ressourcen mit Privileged Identity Management
+# <a name="assign-azure-resource-roles-in-pim"></a>Zuweisen von Azure-Ressourcenrollen in PIM
+
+Azure AD PIM kann sowohl die integrierten Azure-Ressourcenrollen als auch benutzerdefinierte Rollen verwalten. Beispiele:
+
+- Owner (Besitzer)
+- Benutzerzugriffsadministrator
+- Mitwirkender
+- Sicherheitsadministrator
+- Sicherheits-Manager
+
+>[!NOTE]
+Benutzer oder Mitglieder von Gruppen, die der Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ zugewiesen sind, sowie globale Administratoren, die die Abonnementverwaltung in Azure AD ermöglichen, sind Ressourcenadministratoren. Diese Administratoren können Rollen zuweisen, Rolleneinstellungen konfigurieren und den Zugriff mithilfe von PIM für Azure-Ressourcen prüfen. Eine Liste mit den integrierten Rollen für Azure-Ressourcen finden Sie [hier](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="assign-roles"></a>Zuweisen von Rollen
 
@@ -76,3 +87,8 @@ Ist eine Rolle mit ausstehender Aktivierung vorhanden, wird beim Anzeigen der Mi
 Wenn Sie vorhandene Zuweisungen über die Benutzer-/Gruppendetailansicht ändern möchten, klicken Sie auf der Aktionsleiste auf **Einstellungen ändern**. Ändern Sie den Zuweisungstyp in **Just In Time** (Just-In-Time-Zuweisung) oder **Direct** (Direkte Zuweisung).
 
 ![Bereich „Benutzerdetails“ mit der Schaltfläche „Einstellungen ändern“](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-configure-role-settings.md)
+- [Zuweisen von Azure AD-Verzeichnisrollen in PIM](pim-how-to-add-role-to-user.md)

@@ -1,6 +1,6 @@
 ---
-title: Verwenden benutzerdefinierter Rollen für Privileged Identity Management-Einstellungen für Azure-Ressourcen | Microsoft Docs
-description: Beschreibt, wie benutzerdefinierte Rollen für Azure-Ressourcen mit PIM verwendet werden.
+title: Verwenden benutzerdefinierter Azure-Ressourcne in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie benutzerdefinierte Rollen für Azure-Ressourcen in Azure AD Privileged Identity Management (PIM) verwenden.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03091b50eb4fb368ae0277344317b261991c4bd1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622686"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189872"
 ---
-# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Verwenden benutzerdefinierter Rollen für Privileged Identity Management-Einstellungen
+# <a name="use-custom-roles-for-azure-resources-in-pim"></a>Verwenden benutzerdefinierter Rollen für Azure-Ressourcen in PIM
 
 Es kann erforderlich sein, strikte PIM-Einstellungen (Privileged Identity Management) auf einige Mitglieder einer Rolle anzuwenden, während anderen mehr Freiheiten gewährt werden. Stellen Sie sich ein Szenario vor, in dem eine Organisation mehrere Vertragspartner nutzt, um Unterstützung bei der Entwicklung einer Anwendung zu leisten, die in einem Azure-Abonnement ausgeführt wird.
 
@@ -49,4 +49,5 @@ Führen Sie abschließend das [Zuweisen von Rollen](pim-resource-roles-assign-ro
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Überprüfen der Abonnementbesitzer und des Zugriffs](pim-resource-roles-perform-access-review.md)
+- [Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-configure-role-settings.md)
+- [Benutzerdefinierte Rollen in Azure](../../role-based-access-control/custom-roles.md)

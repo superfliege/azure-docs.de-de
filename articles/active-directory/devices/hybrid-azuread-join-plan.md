@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143105"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190271"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -126,11 +126,12 @@ Wenn Ihre Umgebung verwaltete Domänen umfasst, unterstützt die Azure AD-Hybrid
 
 - Passthroughauthentifizierung mit nahtlosem einmaligen Anmelden 
 
-- Kennworthashsynchronisierung mit nahtlosem einmaligen Anmelden 
+- Kennworthashsynchronisierung mit nahtlosem einmaligen Anmelden (Single Sign-On, SSO) 
 
 Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfiguration der Azure AD-Hybrideinbindung. Mit dem Assistenten können Sie den Konfigurationsprozess erheblich vereinfachen. Weitere Informationen finden Sie unter
 
 - [Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen](hybrid-azuread-join-federated-domains.md)
+
 
 - [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](hybrid-azuread-join-managed-domains.md)
 

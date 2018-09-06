@@ -1,47 +1,84 @@
 ---
-title: Wunderlist-Connector in Azure Logic Apps | Microsoft-Dokumentation
-description: Stellen Sie eine Verbindung mit Wunderlist her, und verwenden Sie diese Verbindung zum Erstellen Ihres Workflows in Logic Apps.
+title: Herstellen einer Verbindung mit Wunderlist über Azure Logic Apps | Microsoft-Dokumentation
+description: Automatisieren von Aufgaben und Workflows, die Listen, Aufgaben, Erinnerungen und vieles mehr in Ihrem Wunderlist-Konto mithilfe von Azure Logic Apps überwachen und verwalten
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 1ed9b19700157abca6e5ac4265f1e8c99a3d846d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 7226b59504c7112c039061ab0c184fe14f6e59d0
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296372"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918670"
 ---
-# <a name="get-started-with-the-wunderlist-connector"></a>Erste Schritte mit dem Wunderlist-Connector
-Wunderlist ist eine Kombination aus Aufgabenliste und Aufgaben-Manager, die Benutzer bei der Erledigung von Aufgaben unterstützt.  Ganz gleich, ob Sie eine Einkaufsliste teilen, an einem Projekt arbeiten oder Ihren Urlaub planen – Wunderlist hilft Ihnen dabei, Ihre Aufgaben zu erfassen, sie zu teilen und zu erledigen. Dabei übernimmt Wunderlist die umgehende Synchronisierung zwischen Telefon, Tablet und Computer, sodass die Aufgaben auf allen Geräten zur Verfügung stehen.
+# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Überwachen und Verwalten von Wunderlist mithilfe von Azure Logic Apps
 
-Erstellen Sie zunächst eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
+Mit Azure Logic Apps und dem Wunderlist-Connector können Sie automatisierte Aufgaben und Workflows erstellen, die Todo-Listen, Aufgaben, Erinnerungen und vieles mehr in Ihrem Wunderlist-Konto überwachen und verwalten. Darüber hinaus können z.B. folgende Aktionen ausgeführt werden:
 
-## <a name="create-a-connection-to-wunderlist"></a>Herstellen einer Verbindung mit Wunderlist
-Um Logik-Apps mit Wunderlist zu erstellen, müssen Sie zuerst eine **Verbindung** erstellen und anschließend die Details für die folgenden Eigenschaften angeben:
+* Sie können die Vorgänge überwachen, wenn neue Aufgaben erstellt werden, wenn Aufgaben fällig sind oder wenn Erinnerungen übermittelt werden.
+* Sie können Listen, Notizen, Aufgaben, Unteraufgaben und vieles mehr erstellen und verwalten.
+* Sie können Erinnerungen einrichten.
+* Sie können Listen, Aufgaben, Unteraufgaben, Erinnerungen, Dateien, Notizen, Kommentare und vieles mehr abrufen.
 
-| Eigenschaft | Erforderlich | BESCHREIBUNG |
-| --- | --- | --- |
-| Tokenverschlüsselung |Ja |Angeben der Anmeldeinformationen für Wunderlist |
+[Wunderlist](https://www.wunderlist.com/) ist ein Dienst, der Sie dabei unterstützt, Ihre Projekte, Todo-Listen und Aufgaben zu planen, zu verwalten und abzuschließen – auf jedem beliebigen Gerät und überall. Sie können Trigger verwenden, die Antworten von Ihrem Wunderlist-Konto erhalten und die Ausgabe für andere Aktionen verfügbar machen. Sie können Aktionen verwenden, die Aufgaben mit Ihrem Wunderlist-Konto ausführen. Sie können die Ausgaben von Wunderlist-Aktionen auch in anderen Aktionen verwenden. Sie können z.B. Nachrichten mit dem Slack-Connector senden, wenn neue Aufgaben fällig werden. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-Nachdem Sie die Verbindung erstellt haben, können Sie sie zum Ausführen der Aktionen und zum Lauschen auf die Trigger verwenden.
+## <a name="prerequisites"></a>Voraussetzungen
 
-> [!INCLUDE [Steps to create a connection to Wunderlist](../../includes/connectors-create-api-wunderlist.md)]
-> 
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+* Ihr Wunderlist-Konto und Benutzeranmeldeinformationen.
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/wunderlist/) an.
+   Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Ihrem Wunderlist-Konto sowie zum Zugriff auf das Konto.
 
-## <a name="more-connectors"></a>Weitere Connectors
-Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+
+* Die Logik-App, in der Sie auf Ihr Wunderlist-Konto zugreifen möchten. Um mit einem Wunderlist-Trigger zu beginnen, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine Wunderlist-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
+
+## <a name="connect-to-wunderlist"></a>Herstellen einer Verbindung mit Wunderlist
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
+
+1. Wählen Sie einen Pfad aus: 
+
+   * Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „wunderlist“ als Filter ein. 
+   Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
+
+     oder
+
+   * Für vorhandene Logik-Apps: 
+   
+     * Wählen Sie im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** aus. 
+
+       oder
+
+     * Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
+     Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
+     
+       Geben Sie im Suchfeld den Begriff „wunderlist“ als Filter ein. 
+       Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
+
+1. Wenn Sie zur Anmeldung bei Wunderlist aufgefordert werden, melden Sie sich jetzt an, sodass Sie den Zugriff zulassen können.
+
+1. Geben Sie die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/wunderlist/) des Connectors.
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

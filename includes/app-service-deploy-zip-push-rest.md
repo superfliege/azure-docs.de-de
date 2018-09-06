@@ -12,7 +12,7 @@ Im folgenden Beispiel wird das cURL-Tool verwendet, um eine ZIP-Datei bereitzust
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
-Diese Anforderung löst die Push-Bereitstellung aus der hochgeladenen ZIP-Datei aus. Sie können die aktuelle und vorhergegangene Bereitstellungen mithilfe des Endpunkts „https://<app_name>.scm.azurewebsites.net/api/deployments“ überprüfen, wie im folgenden cURL-Beispiel zu sehen. Ersetzen Sie auch hier `<app_name>` durch den Namen Ihrer App und `<deployment_user>` durch den Benutzernamen Ihrer Anmeldeinformationen für die Bereitstellung.
+Diese Anforderung löst die Push-Bereitstellung aus der hochgeladenen ZIP-Datei aus. Sie können die aktuelle und vorhergegangene Bereitstellungen mithilfe des Endpunkts `https://<app_name>.scm.azurewebsites.net/api/deployments` überprüfen, wie im folgenden cURL-Beispiel zu sehen. Ersetzen Sie auch hier `<app_name>` durch den Namen Ihrer App und `<deployment_user>` durch den Benutzernamen Ihrer Anmeldeinformationen für die Bereitstellung.
 
 ```bash
 curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deployments

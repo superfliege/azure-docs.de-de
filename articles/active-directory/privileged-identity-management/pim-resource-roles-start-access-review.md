@@ -1,6 +1,6 @@
 ---
-title: Ausführen von Zugriffsüberprüfungen in Azure-Ressourcen mit Privileged Identity Management | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Zugriffsüberprüfung in Privileged Identity Management für Azure-Ressourcen starten.
+title: Starten einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) starten.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f88c4a2f7e6eb569c9c0de33ab86e8b484a923e3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9a35d32d89931a03b33f232ba4f79226fc3f57e5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622880"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189173"
 ---
-# <a name="perform-access-reviews-in-azure-resources-by-using-privileged-identity-management"></a>Ausführen von Zugriffsüberprüfungen in Azure-Ressourcen mit Privileged Identity Management
+# <a name="start-an-access-review-for-azure-resource-roles-in-pim"></a>Starten einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM
 Rollenzuweisungen „veralten“, wenn Benutzer über privilegierten Zugriff verfügen, den sie nicht mehr benötigen. Um die Risiken im Zusammenhang mit diesen veralteten Rollenzuweisungen zu verringern, sollten Administratoren für privilegierte Rollen die Rollen regelmäßig überprüfen. In diesem Dokument werden die Schritte zum Starten einer Zugriffsüberprüfung in Privileged Identity Management (PIM) für Azure-Ressourcen beschrieben.
 
 Wechseln Sie auf der Hauptseite der PIM-Anwendung zu:
@@ -71,3 +71,8 @@ Im Dashboard mit den PIM-Azure-Ressourcen können Sie den Status der Überprüfu
 
 Bis der Überprüfungszeitraum beendet ist, können Sie die Benutzer daran erinnern, die Überprüfung abzuschließen, oder die Überprüfung vorzeitig im Abschnitt mit den Zugriffsüberprüfungen beenden.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-complete-access-review.md)
+- [Ausführen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-perform-access-review.md)
+- [Starten einer Zugriffsüberprüfung für Azure AD-Verzeichnisrollen in PIM](pim-how-to-start-security-review.md)

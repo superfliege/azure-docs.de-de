@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: bc9fbf56b37cb8c6690bd036db704532cb8b0437
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f43715b9c419aab1f5b95e140eac72642ef74198
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144513"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746896"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -139,7 +139,7 @@ Automatische Windows-Updates können zu einer Verringerung der Verfügbarkeit f�
 
 Die Anwendung kann zusammen mit Installationsskripts über den [Archivlink](https://go.microsoft.com/fwlink/?linkid=869566) heruntergeladen werden.
 
-Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://go.microsoft.com/fwlink/?linkid=869567) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
+Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://aka.ms/POA/POA_v1.2.2.sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurieren der App
 
@@ -398,3 +398,5 @@ Ein Administrator muss eingreifen und ermitteln, weshalb die Integrität der Anw
 ### <a name="version-122-latest"></a>Version 1.2.2 (aktuelle Version)
 
 - Verschiedene Fehlerbehebungen
+- Binärdateien werden jetzt signiert.
+- Sfpkg-Download-Link verweist jetzt auf eine bestimmte Version.

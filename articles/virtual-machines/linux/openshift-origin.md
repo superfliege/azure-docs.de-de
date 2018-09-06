@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von OpenShift Origin in Azure | Microsoft-Dokumentation
-description: Stellen Sie OpenShift Origin in Azure bereit.
+title: Bereitstellen von OKD in Azure | Microsoft-Dokumentation
+description: Bereitstellen von OKD in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: f7a668f30d7acb1ea14fe9fd8921066d40a6669b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0d3a9f05802bef7d6dfc99fcfae6668044f214c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29123118"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190303"
 ---
-# <a name="deploy-openshift-origin-in-azure"></a>Bereitstellen von OpenShift Origin in Azure
+# <a name="deploy-okd-in-azure"></a>Bereitstellen von OKD in Azure
 
-Sie können eine von zwei Methoden verwenden, um OpenShift Origin in Azure bereitzustellen:
+Sie können eine von zwei Methoden verwenden, um OKD (vormals OpenShift Origin) in Azure bereitzustellen:
 
-- Sie können manuell die erforderlichen Azure-Infrastrukturkomponenten bereitstellen und dann die [Dokumentation](https://docs.openshift.org/3.6/welcome/index.html) von OpenShift Origin befolgen.
-- Sie können auch eine vorhandene [Ressourcen-Manager-Vorlage](https://github.com/Microsoft/openshift-origin) verwenden, die die Bereitstellung des OpenShift Origin-Clusters vereinfacht.
+- Sie können manuell die erforderlichen Azure-Infrastrukturkomponenten bereitstellen und dann den Anweisungen in der [Dokumentation](https://docs.okd.io/3.10/welcome/index.html) von OKD folgen.
+- Sie können auch eine vorhandene [Resource Manager-Vorlage](https://github.com/Microsoft/openshift-origin) verwenden, die die Bereitstellung des OKD-Clusters vereinfacht.
 
-## <a name="deploy-by-using-the-openshift-origin-template"></a>Bereitstellen mithilfe der OpenShift Origin-Vorlage
+## <a name="deploy-by-using-the-okd-template"></a>Bereitstellung mithilfe der OKD-Vorlage
 
 Verwenden Sie den Wert `appId` des zuvor erstellten Dienstprinzipals für den `aadClientId`-Parameter.
 
@@ -101,7 +101,7 @@ Das folgende Beispiel erstellt die Parameterdatei „azuredeploy.parameters.json
 > [!NOTE] 
 > Der folgende Befehl erfordert Azure CLI 2.0.8 oder höher. Sie können die CLI-Version mit dem `az --version`-Befehl überprüfen. Informationen zum Aktualisieren der CLI-Version finden Sie unter [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Im folgende Beispiel werden der OpenShift-Cluster und alle zugehörigen Ressourcen in der Ressourcengruppe myResourceGroup mit dem Bereitstellungsnamen myOpenShiftCluster bereitgestellt. Auf die Vorlage wird direkt aus dem GitHub-Repository verwiesen. Dazu wird eine lokale Parameterdatei namens „azuredeploy.parameters.json“ verwendet.
+Im folgende Beispiel werden der OKD-Cluster und alle zugehörigen Ressourcen in einer Ressourcengruppe namens „myResourceGroup“ mit dem Bereitstellungsnamen „myOpenShiftCluster“ bereitgestellt. Auf die Vorlage wird direkt aus dem GitHub-Repository verwiesen. Dazu wird eine lokale Parameterdatei namens „azuredeploy.parameters.json“ verwendet.
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -109,7 +109,7 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Die Bereitstellung dauert mindestens 25 Minuten – die Dauer hängt von der Gesamtzahl der bereitgestellten Knoten ab. Die URL der OpenShift-Konsole und der DNS-Name des OpenShift-Masters werden am Terminal ausgegeben, wenn die Bereitstellung abgeschlossen ist.
+Die Bereitstellung dauert mindestens 25 Minuten – die Dauer hängt von der Gesamtzahl der bereitgestellten Knoten ab. Die URL der OKD-Konsole und der DNS-Name des OpenShift-Masters werden am Terminal ausgegeben, wenn die Bereitstellung abgeschlossen ist.
 
 ```json
 {
@@ -118,9 +118,9 @@ Die Bereitstellung dauert mindestens 25 Minuten – die Dauer hängt von der Ges
 }
 ```
 
-## <a name="connect-to-the-openshift-cluster"></a>Herstellen einer Verbindung mit dem OpenShift-Cluster
+## <a name="connect-to-the-okd-cluster"></a>Verbindungsherstellung mit dem OKD-Cluster
 
-Wenn die Bereitstellung abgeschlossen ist, stellen Sie eine Verbindung mit der OpenShift-Konsole her, indem Sie `OpenShift Console Uri` über den Browser verwenden. Alternativ können Sie mithilfe des folgenden Befehls eine Verbindung mit dem OpenShift-Master herstellen:
+Wenn die Bereitstellung abgeschlossen ist, stellen Sie eine Verbindung mit der OKD-Konsole her, indem Sie `OpenShift Console Uri` über den Browser verwenden. Alternativ können Sie mithilfe des folgenden Befehls eine Verbindung mit dem OKD-Master herstellen:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -138,4 +138,4 @@ az group delete --name myResourceGroup
 
 - [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
 - [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-troubleshooting.md)
-- [Getting started with OpenShift Origin (Erste Schritte mit OpenShift Origin)](https://docs.openshift.org/latest/getting_started/index.html)
+- [Erste Schritte mit OKD](https://docs.okd.io/latest/getting_started/index.html)

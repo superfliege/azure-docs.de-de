@@ -1,21 +1,21 @@
 ---
-title: LUIS-Regionen (Language Understanding Intelligent Service) | Microsoft-Dokumentation
+title: Regionen und Endpunkte für Language Understanding (LUIS) – Azure Cognitive Services | Microsoft-Dokumentation
 titleSuffix: Azure
-description: Dieser Artikel enthält Listen der LUIS-Regionen für die LUIS-Website, Azure-Abonnements und Regionen weltweit.
+description: Die Region, in der Sie Ihre LUIS-App veröffentlichen, entspricht der gewählten Region oder dem Standort, die bzw. den Sie im Azure-Portal angeben, wenn Sie einen Azure-LUIS-Endpunktschlüssel erstellen. Wenn Sie eine App veröffentlichen, generiert LUIS automatisch eine Endpunkt-URL für die Region, die dem Schlüssel zugeordnet ist. Zum Veröffentlichen einer LUIS-App in mehreren Regionen benötigen Sie mindestens einen Schlüssel pro Region.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 08/23/2018
 ms.author: diberry
-ms.openlocfilehash: 1f6090bf1ac588585a16f93d2ac091e8950ca45f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 7812ce37cb22c8774c785f5f645b8fef90b02a3e
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238929"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815502"
 ---
 # <a name="regions-and-keys"></a>Regionen und Schlüssel
 
@@ -59,6 +59,24 @@ Zum Veröffentlichen in den europäischen Regionen erstellen Sie nur in https://
 ## <a name="publishing-to-australia"></a>Veröffentlichen in Australien
 
 Zum Veröffentlichen in den australischen Regionen erstellen Sie nur in https://au.luis.ai LUIS-Apps. Wenn Sie es in einer anderen Region mit einem Schlüssel für die Region Australien versuchen, zeigt LUIS eine Warnmeldung an. Verwenden Sie stattdessen https://au.luis.ai. LUIS-Apps, die in [https://au.luis.ai][au.luis.ai] erstellt wurden, werden nicht automatisch zu anderen Regionen migriert. Exportieren Sie die LUIS-App, und importieren Sie sie dann, um sie zu migrieren.
+
+## <a name="endpoints"></a>Endpunkte
+
+LUIS verfügt derzeit über 2 Endpunkte: einen für die Dokumenterstellung und einen für Textanalyse.
+
+|Zweck|URL|
+|--|--|
+|Erstellen|`https://{region}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
+|Textanalyse (Abfragevorhersage)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
+
+In der folgende Tabelle werden die Parameter erläutert, die in der vorherigen Tabelle durch geschweifte Klammern `{}` gekennzeichnet sind.
+
+|Parameter|Zweck|
+|--|--|
+|region|Azure-Region – die Dokumenterstellung und die Veröffentlichung haben unterschiedliche Regionen|
+|appID|Die in der URL-Route verwendete und auf dem App-Dashboard angezeigten LUIS-App-ID|
+|q|Äußerungstext, der von der Clientanwendung gesendet wird, wie z.B. ein Chatbot|
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

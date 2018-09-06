@@ -10,21 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 053e72ce81f69b267c72ded572e8912a1a09d2e6
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a8d9704c48801b98800abb71769ba0954e727848
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579696"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190455"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
-### <a name="what-is-azure-cosmos-db"></a>Was ist Azure Cosmos DB?
-Azure Cosmos DB ist ein global replizierter Datenbankdienst mit mehreren Modellen, der das Durchführen umfassender Abfragen für schemafreie Daten, eine konfigurierbare und zuverlässige Leistung und eine schnelle Entwicklung ermöglicht. Dies wird mithilfe einer verwalteten Plattform erreicht, die auf der Leistungsstärke und hohen Reichweite von Microsoft Azure basiert. 
-
-Azure Cosmos DB ist die geeignete Lösung für Web-, Mobil-, Gaming- und IoT-Anwendungen, wenn vorhersagbarer Durchsatz, Hochverfügbarkeit, niedrige Latenz und schemafreie Datenmodelle wichtige Anforderungen sind. Sie bietet Schemaflexibilität und umfassende Indizierung und verfügt über die Transaktionsunterstützung mehrerer Dokumente durch integriertes JavaScript. 
-
-Weitere Datenbankfragen, -antworten und -anweisungen zur Bereitstellung und Verwendung des Diensts finden Sie auf der Seite [Dokumentation für Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/).
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Was ist mit der DocumentDB-API passiert?
 
@@ -84,8 +78,8 @@ Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anf
 
 Andere Fragen können dem Team unter [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) gestellt werden. Dies ist allerdings kein Alias für technischen Support. 
 
-<a id="try-cosmos-db"></a>
-## <a name="try-azure-cosmos-db-subscriptions"></a>Testabonnements für Azure Cosmos DB
+
+## <a id="try-cosmos-db"></a>Testabonnements für Azure Cosmos DB
 
 Nutzen Sie für eine begrenzte Zeit die Vorteile von Azure Cosmos DB auch ohne Abonnement – kostenlos und ohne jegliche Verpflichtung. Sie können sich unter [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/) für ein Testabonnement für Azure Cosmos DB registrieren. Dieses Abonnement ist unabhängig von der [kostenlosen Azure-Testversion](https://azure.microsoft.com/free/) und kann zusätzlich zu einer kostenlosen Azure-Testversion oder einem kostenpflichtigen Azure-Abonnement verwendet werden. 
 
@@ -124,7 +118,7 @@ Die Bereitstellung auf Container- und Datenbankebene wird gesondert angeboten. F
 
 Derzeit können Sie eine Sammlung mit einem Partitionsschlüsseldurchsatz erstellen, indem Sie die [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118)-Methode von .Net SDK oder die [Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create) verwenden. Die Erstellung einer festen Sammlung über das Azure-Portal wird derzeit nicht unterstützt.  
 
-## <a name="develop-against-the-sql-api"></a>Entwickeln für die SQL-API
+## <a name="sql-api"></a>SQL-API
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Wie beginne ich mit dem Entwickeln für die SQL-API?
 Zuerst müssen Sie sich für ein Azure-Abonnement registrieren. Nachdem Sie sich für ein Azure-Abonnement registriert haben, können Sie Ihrem Azure-Abonnement einen SQL-API-Container hinzufügen. Anweisungen zum Hinzufügen eines Azure Cosmos DB-Kontos finden Sie unter [Erstellen eines Azure Cosmos DB-Datenbankkontos](create-sql-api-dotnet.md#create-account). 
@@ -195,7 +189,7 @@ Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkomma
 Die Erstellung von Berechtigungen mit ResourceTokens ist auf der Containerebene und den untergeordneten Elementen (z.B. Dokumente, Anlagen) zulässig. Hieraus ergibt sich, dass auf Datenbank- oder Kontoebene derzeit keine Berechtigung erstellt werden kann.
 
 
-## <a name="develop-against-the-api-for-mongodb"></a>Entwickeln mit der API für MongoDB
+## <a name="mongodb-api"></a>MongoDB-API
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Was ist die Azure Cosmos DB-API für MongoDB?
 Die Azure Cosmos DB-API für MongoDB ist eine Kompatibilitätsebene, mit der Anwendungen auf einfache und transparente Weise über vorhandene, von der Community unterstützte Apache MongoDB-APIs und -Treiber mit der nativen Azure Cosmos DB-Datenbank-Engine kommunizieren können. Entwickler können jetzt vorhandene MongoDB-Toolketten und -Fähigkeiten verwenden, um Anwendungen zu erstellen, die Azure Cosmos DB nutzen. Entwickler profitieren von den einzigartigen Funktionen von Azure Cosmos DB, z.B. automatische Indizierung, Sicherungsverwaltung, finanziell abgesicherte Vereinbarungen zum Servicelevel (SLAs) usw.
 
@@ -215,7 +209,7 @@ Die MongoDB-API verfügt zusätzlich zu den allgemeinen MongoDB-Fehlercodes übe
 | TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Erwägen Sie eine Skalierung des einem Container oder mehreren Containern zugewiesenen Durchsatzes über das Azure-Portal oder eine Wiederholung des Vorgangs. |
 | ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. <br><br>Beispiel: *&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
-## <a name="develop-with-the-table-api"></a>Entwickeln mit der Table-API
+## <a id="table"></a>Tabellen-API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Wie kann ich das Table-API-Angebot verwenden? 
 Die Azure Cosmos DB-Table-API ist im [Azure-Portal][azure-portal] verfügbar. Zuerst müssen Sie sich für ein Azure-Abonnement registrieren. Nach der Registrierung können Sie Ihrem Azure-Abonnement ein Azure Cosmos DB-Table-API-Konto und Ihrem Konto anschließend Tabellen hinzufügen. 
@@ -446,7 +440,7 @@ Da Azure Table Storage und die Table-API von Azure Cosmos DB die gleichen SDKs v
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Warum kommt es zu einer Drosselung, wenn ich versuche, über die Table-API nacheinander eine große Anzahl von Tabellen zu erstellen?
 Azure Cosmos DB ist ein SLA-basiertes System mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz. Da es sich um ein bereitgestelltes System handelt, werden Ressourcen reserviert, um diese Anforderungen zu garantieren. Eine hohe Erstellungsrate von Tabellen in rascher Folge wird erkannt und gedrosselt. Es wird empfohlen, dass Sie sich die Erstellungsrate der Tabellen ansehen und auf weniger als „5 pro Minute“ reduzieren. Bedenken Sie, dass es sich bei der Table-API um ein bereitgestelltes System handelt. Ab dem Moment, in dem Sie es bereitstellen, werden Gebühren fällig. 
 
-## <a name="develop-against-the-graph-api"></a>Entwickeln für die Graph-API
+## <a name="graph-api"></a>Graph-API
 ### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Wie kann ich die Funktionalität der Graph-API auf Azure Cosmos DB anwenden?
 Sie können eine Erweiterungsbibliothek verwenden, um die Funktionalität der Graph-API anzuwenden. Diese Bibliothek wird als Microsoft Azure Graphs bezeichnet und ist über [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs) verfügbar. 
 
@@ -456,8 +450,8 @@ Ja. Für die Zukunft ist die Hinzufügung von anderen Abfragemechanismen geplant
 ### <a name="how-can-i-use-the-new-graph-api-offering"></a>Wie kann ich das neue Graph-API-Angebot nutzen? 
 Arbeiten Sie den Schnellstartartikel [Azure Cosmos DB: Erstellen einer .NET-Anwendung mit der Graph-API](../cosmos-db/create-graph-dotnet.md) durch.
 
-<a id="cassandra"></a> 
-## <a name="develop-with-the-apache-cassandra-api-preview"></a>Entwickeln mit der Apache Cassandra-API (Vorschauversion)
+
+## <a id="cassandra"></a>Cassandra-API
 
 ### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>Welche Protokollversion wird in der privaten Vorschauversion unterstützt? Ist eine Unterstützung weiterer Protokolle geplant?
 Die Apache Cassandra-API für Azure Cosmos DB unterstützt derzeit die CQL-Version 4. Wenn Sie Feedback zur Unterstützung anderer Protokolle haben, informieren Sie uns per [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db), oder senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 

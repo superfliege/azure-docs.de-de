@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 66ba79926a949371cb2280de408835862dd1a099
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41936192"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744750"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -46,7 +46,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein Video Indexer-Konto erstelle
 
 * Registrieren Sie den EventGrid-Ressourcenanbieter mit dem Azure-Portal.
 
-    Navigieren Sie im Azure-Portal zu **Abonnements** > [Abonnement] > **ResourceProviders** > **Microsoft.EventGrid**. Klicken Sie auf **Registrieren**, falls der Status nicht „Registriert“ lautet. Die Registrierung nimmt einige Minuten in Anspruch. 
+    Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu **Abonnements** > [Abonnement] > **ResourceProviders** > **Microsoft.EventGrid**. Klicken Sie auf **Registrieren**, falls der Status nicht „Registriert“ lautet. Die Registrierung nimmt einige Minuten in Anspruch. 
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -96,19 +96,16 @@ Für Azure Media Services gilt Folgendes:
 
     Unter Umständen müssen Sie den Typ und die Anzahl von **Reservierte Einheiten** für Medien gemäß Ihrer geplanten Last anpassen. Beachten Sie Folgendes: Wenn die Last hoch ist und Sie nicht über genügend Einheiten oder eine ausreichend hohe Geschwindigkeit verfügen, kann es bei der Videoverarbeitung zu Timeoutfehlern kommen.
 
-* Bei der Verbindungsherstellung mit einem neuen Media Services-Konto startet Video Indexer dafür automatisch einen **Streamingendpunkt**:
+* Bei der Verbindungsherstellung mit einem neuen Media Services-Konto startet Video Indexer dafür automatisch den standardmäßigen **Streamingendpunkt**:
 
     ![Media Services-Streamingendpunkt](./media/create-account/ams-streaming-endpoint.png)
 
-* Falls Sie eine Verbindung mit einem vorhandenen Media Services-Konto hergestellt haben, ändert Video Indexer die Konfiguration für den Streamingendpunkt nicht. Wenn kein ausgeführter **Streamingendpunkt** vorhanden ist, ist es für Sie nicht möglich, Videos über dieses Media Services-Konto oder in Video Indexer anzusehen.
+* Falls Sie eine Verbindung mit einem vorhandenen Media Services-Konto hergestellt haben, ändert Video Indexer die Konfiguration für den standardmäßigen Streamingendpunkt nicht. Wenn kein ausgeführter **Streamingendpunkt** vorhanden ist, ist es für Sie nicht möglich, Videos über dieses Media Services-Konto oder in Video Indexer anzusehen.
 
-## <a name="use-video-indexer-apis-v2"></a>Verwenden der Video Indexer-APIs v2
+## <a name="next-steps"></a>Nächste Schritte
 
 Sie können programmgesteuert mit Ihrem Testkonto bzw. Ihren Video Indexer-Konten interagieren, die mit Azure verbunden sind, indem Sie die Anleitung unter [Verwenden von APIs](video-indexer-use-apis.md) befolgen.
 
 Sie sollten hierfür denselben Azure AD-Benutzer verwenden, den Sie beim Herstellen der Verbindung mit Azure genutzt haben.
 
-## <a name="next-steps"></a>Nächste Schritte
-
-[Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe](video-indexer-output-json-v2.md)
 

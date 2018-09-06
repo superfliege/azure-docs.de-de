@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management-Abonnements – Azure | Microsoft-Dokumentation
-description: Erläutert die Abonnement- und Lizenzierungsanforderungen für die Verwaltung und Verwendung von Azure AD Privileged Identity Management im Mandanten.
+title: Abonnementanforderungen für die Verwendung von PIM – Azure | Microsoft-Dokumentation
+description: Beschreibt die Abonnement- und Lizenzierungsanforderungen für die Verwendung von Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1554895dcba0c09a3a2e19c284a1cd6f0416cfe1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617068"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190609"
 ---
-# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Abonnementanforderungen für Azure Active Directory Privileged Identity Management
+# <a name="subscription-requirements-to-use-pim"></a>Abonnementanforderungen für die Verwendung von PIM
 
 Azure AD Privileged Identity Management ist nur mit der Premium P2-Edition von Azure AD verfügbar. Weitere Informationen zu anderen Features von P2 und eine Gegenüberstellung zu Premium P1 finden Sie unter [Azure Active Directory-Editionen](../active-directory-editions.md).
 
@@ -61,5 +61,5 @@ Wenn ein Azure AD Premium P2-oder EMS E5-Abonnement abläuft oder eine Organisat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erste Schritte mit Azure AD Privileged Identity Management](pim-getting-started.md)
-- [Rollen in Azure AD Privileged Identity Management](pim-roles.md)
+- [Einstieg in die Verwendung von PIM](pim-getting-started.md)
+- [Azure AD-Verzeichnisrollen, die Sie in PIM verwalten können](pim-roles.md)

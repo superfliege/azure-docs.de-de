@@ -11,26 +11,46 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: a8756e168a8d75cbe705ce2408b6d363f7435b5c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b5c8c18c6d02710646560f29d4bc7b5784f730a2
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295073"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746876"
 ---
-# <a name="get-started-with-the-box-connector"></a>Erste Schritte mit dem Box-Connector
-Verbinden Sie sich mit Box, um Dateien zu erstellen, zu löschen usw. Box ermöglicht Folgendes:
+# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Erstellen und Verwalten von Dateien in Box mit Azure Logic Apps
+
+In diesem Artikel wird gezeigt, wie Sie Ihre Dateien in Box innerhalb einer Logik-App mit dem Box-Connector erstellen und verwalten. Auf diese Weise können Sie Logik-Apps erstellen, mit denen Aufgaben und Workflows für das Verwalten Ihrer Dateien und anderer Aktionen automatisiert werden, wie z.B.:
 
 * Erstellen eines Geschäftsworkflows basierend auf den Daten, die aus Box abgerufen werden. 
-* Verwenden von Triggern, wenn eine Datei erstellt oder aktualisiert wird.
-* Verwenden von Aktionen, um eine Datei zu kopieren, zu löschen usw. Diese Aktionen erhalten eine Antwort und stellen anschließend die Ausgabe anderen Aktionen zur Verfügung. Wenn z. B. in Box eine Datei geändert wird, können Sie diese Datei auswählen und mithilfe von Office 365 per E-Mail senden.
 
-Erstellen Sie zu Beginn eine Logik-App, wie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
+* Auslösen automatisierter Aufgaben und Workflows beim Erstellen oder Aktualisieren einer Datei.
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+* Ausführen von Aktionen, um eine Datei zu kopieren, zu löschen usw. 
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/box/) an.
+  Wenn diese Aktionen eine Antwort erhalten, stellen sie anschließend die Ausgabe anderen Aktionen zur Verfügung. 
+  Wenn z. B. in Box eine Datei geändert wird, können Sie diese Datei mithilfe von Office 365 per E-Mail senden.
 
-## <a name="more-connectors"></a>Weitere Connectors
-Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
+## <a name="prerequisites"></a>Voraussetzungen
 
+* Ein [Box-Konto](https://www.box.com/home).
+
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+
+* Die Logik-App, in der Sie auf Ihr Box-Konto zugreifen möchten. Um Ihre Logik-App mit einem Box-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). 
+
+* Grundlegende Kenntnisse über das [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Wenn Sie mit Logik-Apps noch nicht vertraut sind, lesen Sie [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/box/). 
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

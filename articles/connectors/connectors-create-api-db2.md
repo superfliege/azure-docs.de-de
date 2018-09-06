@@ -1,282 +1,368 @@
 ---
-title: Herstellen einer Verbindung mit DB2 – Azure Logic Apps | Microsoft-Dokumentation
-description: Verwalten von Ressourcen mit DB2-REST-APIs und Azure Logic Apps
-author: gplarsen
-manager: jeconnoc
-ms.author: plarsen
-ms.date: 09/26/2016
-ms.topic: article
-ms.service: logic-apps
+title: Herstellen einer Verbindung mit IBM DB2 – Azure Logic Apps | Microsoft-Dokumentation
+description: Verwalten von Ressourcen IBM mit DB2-REST-APIs und Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, estfan
+ms.service: logic-apps
+author: ecfan
+ms.author: estfan
+ms.reviewer: plarsen, LADocs
 ms.suite: integration
+ms.topic: article
+ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 507bc48b6b775d6a6fb5f855210d33520e187a74
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 354e67183a36f511811d74a0685dea2e23d6c0e2
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295090"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818874"
 ---
-# <a name="get-started-with-the-db2-connector"></a>Erste Schritte mit dem DB2-Connector
-Mit dem Microsoft Connector für DB2 werden Logik-Apps mit Ressourcen verbunden, die in einer IBM DB2-Datenbank gespeichert sind. Dieser Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteservercomputern über ein TCP/IP-Netzwerk. Dies umfasst Clouddatenbanken, z.B. IBM Bluemix dashDB oder IBM DB2 für Windows, in Azure sowie lokale Datenbanken unter Verwendung des lokalen Datengateways. Siehe [Liste mit unterstützten IBM DB2-Plattformen und -Versionen](connectors-create-api-db2.md#supported-db2-platforms-and-versions) (in diesem Thema).
+# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Verwalten von Ressourcen mit IBM DB2-REST-APIs und Azure Logic Apps
 
-Der DB2-Connector unterstützt die folgenden Datenbankvorgänge:
+Mit Azure Logic Apps und dem IBM DB2-Connector können Sie automatisierte Aufgaben und Workflows auf der Grundlage der in Ihrer DB2-Datenbank gespeicherten Ressourcen erstellen. Ihre Workflows können eine Verbindung zu den Ressourcen in Ihrer Datenbank herstellen, Ihre Datenbanktabellen auslesen und auflisten und Zeilen hinzufügen, ändern, löschen usw. Sie können Aktionen in Ihre Logik-Apps integrieren, die Antworten von Ihrer Datenbank erhalten und die Ausgabe für andere Aktionen verfügbar machen. 
 
-* Datenbanktabellen auflisten
-* Eine Zeile mit SELECT lesen
-* Alle Zeilen mit SELECT lesen
-* Eine Zeile mit INSERT hinzufügen
-* Eine Zeile mit UPDATE ändern
-* Eine Zeile mit DELETE entfernen
+In diesem Artikel wird gezeigt, wie Sie eine Logik-App erstellen können, die verschiedene Datenbankvorgänge durchführt. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-In diesem Thema wird veranschaulicht, wie Sie den Connector in einer Logik-App zum Verarbeiten von Datenbankvorgängen verwenden.
+## <a name="supported-platforms-and-versions"></a>Unterstützte Plattformen und Versionen
 
-Weitere Informationen zu Logik-Apps finden Sie unter [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Dieser DB2-Connector enthält einen Microsoft-Client zum Kommunizieren mit DB2-Remoteserverservern über ein TCP/IP-Netzwerk. Sie können diesen Connector für den Zugriff auf Clouddatenbanken verwenden, z.B. IBM Bluemix DashDB oder IBM DB2 für Windows, die in der Azure-Virtualisierung ausgeführt werden. Nach der [Installation und Einrichtung des lokalen Datengateway](../logic-apps/logic-apps-gateway-connection.md) können Sie auch auf lokale DB2-Datenbanken zugreifen. 
 
-## <a name="available-actions"></a>Verfügbare Aktionen
-Der DB2-Connector unterstützt die folgenden Logik-App-Aktionen:
+Der IBM DB2-Connector unterstützt diese IBM DB2-Plattformen und -Versionen sowie IBM DB2-kompatible Produkte, z.B. IBM Bluemix DashDB, die Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 10 und 11 unterstützen:
 
-* GetTables
-* GetRow
-* GetRows
-* InsertRow
-* UpdateRow
-* DeleteRow
+| Plattform | Version | 
+|----------|---------|
+| IBM DB2 für z/OS | 11.1, 10.1 |
+| IBM DB2 für i | 7.3, 7.2, 7.1 |
+| IBM DB2 für LUW 11 | 11, 10.5 |
+|||
 
-## <a name="list-tables"></a>Auflisten von Tabellen
-Das Erstellen einer Logik-App für einen beliebigen Vorgang umfasst viele Schritte, die über das Microsoft Azure-Portal ausgeführt werden.
+## <a name="supported-database-operations"></a>Unterstützte Datenbankvorgänge
 
-Innerhalb der Logik-App können Sie eine Aktion zum Auflisten von Tabellen in einer DB2-Datenbank hinzufügen. Die Aktion weist den Connector an, eine DB2-Schemaanweisung zu verarbeiten, z.B. `CALL SYSIBM.SQLTABLES`.
+Der IBM DB2-Connector unterstützt diese Datenbankvorgänge, die den entsprechenden Aktionen im Connector zugeordnet sind:
 
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `Db2getTables`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
+| Datenbankvorgang | Connectoraktion | 
+|--------------------|------------------|
+| Datenbanktabellen auflisten | Tabellen abrufen | 
+| Eine Zeile mit SELECT lesen | Zeile abrufen | 
+| Alle Zeilen mit SELECT lesen | Zeilen abrufen | 
+| Eine Zeile mit INSERT hinzufügen | Zeile einfügen | 
+| Eine Zeile mit UPDATE bearbeiten | Zeile aktualisieren | 
+| Eine Zeile mit DELETE entfernen | Zeile löschen | 
+|||
 
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest.  
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** `db2` ein, und wählen Sie dann **DB2 - Get tables (Preview)** (DB2 – Tabellen abrufen [Vorschau]) aus.
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+
+* Ein IBM DB2-Datenbank, entweder cloudbasiert oder lokal
+
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Die Logik-App, in der Sie auf Ihre DB2-Datenbank zugreifen möchten. Dieser Connector ermöglicht nur Aktionen, daher müssen Sie zum Starten Ihrer Logik-App einen separaten Trigger wie einen **Wiederholungstrigger** verwenden.
+In den Beispielen dieses Artikels wird der **Wiederholungstrigger** verwendet.
+
+<a name="add-db2-action"></a>
+
+## <a name="add-db2-action---get-tables"></a>DB2-Aktion hinzufügen – Tabellen abrufen
+
+1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer, wenn sie nicht bereits geöffnet ist.
+
+1. Wählen Sie unter dem Trigger die Option **Neuer Schritt** aus.
+
+1. Geben Sie im Suchfeld den Begriff „db2“ als Filter ein. Wählen Sie in diesem Beispiel in der Aktionsliste diese Aktion: **Tabellen abrufen (Vorschau)**
    
-   ![](./media/connectors-create-api-db2/Db2connectorActions.png)  
-6. Aktivieren Sie im Konfigurationsbereich **DB2 - Get tables** (DB2 – Tabellen abrufen) das **Kontrollkästchen**, um **Verbinden über lokales Datengateway** zu aktivieren. Sie sehen, dass die Cloudeinstellungen in die lokalen Einstellungen geändert werden.
+   ![Aktion select](./media/connectors-create-api-db2/select-db2-action.png)
+
+   Sie werden nun aufgefordert, Verbindungsdetails für die DB2-Datenbank anzugeben. 
+
+1. Führen Sie die Schritte zum Erstellen von Verbindungen für [cloudbasierte Datenbanken](#cloud-connection) oder [lokale Datenbanken](#on-premises-connection) aus.
+
+<a name="cloud-connection"></a>
+
+## <a name="connect-to-cloud-db2"></a>Verbinden mit Cloud-DB2
+
+Um die Verbindung einzurichten, geben Sie diese Verbindungsdetails ein, wenn Sie dazu aufgefordert werden, wählen Sie **Erstellen**, und speichern Sie Ihre Logik-App:
+
+| Eigenschaft | Erforderlich | BESCHREIBUNG | 
+|----------|----------|-------------| 
+| **Über lokales Datengateway verbinden** | Nein  | Gilt nur für lokale Verbindungen. | 
+| **Verbindungsname** | JA | Der Name Ihrer Verbindung, z.B. „MyLogicApp-DB2-connection“ |
+| **Server** | JA | Die Adresse oder Aliasportnummer für Ihren DB2-Server, z.B. „myDB2server.cloudapp.net:50000“ <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge im IPv4- oder IPv6-Format, die für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |
+| **Datenbank** | JA | Der Name Ihrer Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, die einen DRDA-Namen einer relationalen Datenbank (RDBNAM) darstellt: <p>- DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge, wobei die Datenbank ein Speicherort vom Typ „IBM DB2 für z/OS“ ist. <br>- DB2 für i akzeptiert eine 18-Byte-Zeichenfolge, wobei die Datenbank eine relationale Datenbank vom Typ „IBM DB2 für i“ ist. <br>- DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. |
+| **Benutzername** | JA | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. | 
+| **Kennwort** | JA | Ihr Kennwort für die Datenbank | 
+|||| 
+
+Beispiel: 
+
+![Verbindungsdetails für cloudbasierte Datenbanken](./media/connectors-create-api-db2/create-db2-cloud-connection.png)
+
+<a name="on-premises-connection"></a>
+
+## <a name="connect-to-on-premises-db2"></a>Herstellen einer Verbindung mit einer lokalen DB2-Datenbank
+
+Vor dem Herstellen einer Verbindung muss Ihr lokales Datengateway bereits installiert sein. Andernfalls können Sie keine Verbindung einrichten. Wenn Ihr Gateway installiert ist, geben Sie die Verbindungsdetails ein, und wählen Sie dann **Erstellen**.
+
+| Eigenschaft | Erforderlich | BESCHREIBUNG | 
+|----------|----------|-------------| 
+| **Über lokales Datengateway verbinden** | JA | Gilt, wenn Sie eine lokale Verbindung herstellen möchten, und zeigt die lokale Verbindungseigenschaften an. | 
+| **Verbindungsname** | JA | Der Name Ihrer Verbindung, z.B. „MyLogicApp-DB2-connection“ | 
+| **Server** | JA | Die Adresse oder Aliasportnummer für Ihren DB2-Server, z.B. „myDB2server:50000“ <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge im IPv4- oder IPv6-Format, die für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. | 
+| **Datenbank** | JA | Der Name Ihrer Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, die einen DRDA-Namen einer relationalen Datenbank (RDBNAM) darstellt: <p>- DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge, wobei die Datenbank ein Speicherort vom Typ „IBM DB2 für z/OS“ ist. <br>- DB2 für i akzeptiert eine 18-Byte-Zeichenfolge, wobei die Datenbank eine relationale Datenbank vom Typ „IBM DB2 für i“ ist. <br>- DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. | 
+| **Authentifizierung** | JA | Der Authentifizierungstyp für Ihre Verbindung, z.B. „Basic“ <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die „Basic“ oder „Windows“ (Kerberos) enthält. | 
+| **Benutzername** | JA | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. | 
+| **Kennwort** | JA | Ihr Kennwort für die Datenbank | 
+| **Gateway** | JA | Der Name Ihres installierten lokalen Datengateways <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die alle installierten Datengateways in Ihrem Azure-Abonnement und der Ressourcengruppe enthält. | 
+|||| 
+
+Beispiel: 
+
+![Verbindungsdetails für die lokalen Datenbanken](./media/connectors-create-api-db2/create-db2-on-premises-connection.png)
+
+### <a name="view-output-tables"></a>Anzeigen von Ausgabetabellen
+
+Um Ihre Logik-App manuell auszuführen, wählen Sie in der Designersymbolleiste **Ausführen**. Nachdem Ihre Logik-App ausgeführt wurde, können Sie die Ausgabe aus der Ausführung anzeigen.
+
+1. Wählen Sie in Ihrem Logik-App-Menü **Übersicht** aus. 
+
+1. Wählen Sie unter **Zusammenfassung** im Abschnitt **Ausführungsverlauf** die letzte Ausführung (erstes Element in der Liste). 
+
+   ![Anzeigen des Ausführungsverlaufs](./media/connectors-create-api-db2/run-history.png)
+
+1. Unter **Logik-App-Ausführung** können Sie jetzt den Status, Eingaben und Ausgaben für jeden Schritt in Ihrer Logik-App anschauen. Erweitern Sie die Aktion **Tabellen abrufen**.
+
+   ![Aktion erweitern](./media/connectors-create-api-db2/expand-action-step.png)
+
+1. Um die Eingaben anzuzeigen, wählen Sie **Unformatierte Eingaben anzeigen**. 
+
+1. Um die Ausgaben anzuzeigen, wählen Sie **Unformatierte Ausgaben anzeigen**. 
+
+   Die Ausgaben enthalten eine Liste der Tabellen. 
    
-   * Geben Sie einen Wert für **Server** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `ibmserver01:50000`.
-   * Geben Sie einen Wert für **Datenbank** ein. Geben Sie beispielsweise `nwind`.
-   * Wählen Sie einen Wert für **Authentifizierung** aus. Wählen Sie z. B. **Standard**.
-   * Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `db2admin`.
-   * Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-   * Wählen Sie einen Wert für **Gateway** aus. Wählen Sie z. B. **datagateway01** aus.
-7. Wählen Sie **Erstellen** und dann **Speichern** aus. 
+   ![Anzeigen von Ausgabetabellen](./media/connectors-create-api-db2/db2-connector-get-tables-outputs.png)
+
+## <a name="get-row"></a>Zeile abrufen
+
+Um einen Datensatz in einer DB2-Datenbanktabelle abzurufen, verwenden Sie die Aktion **Zeile abrufen** in Ihrer Logik-App. Diese Aktion führt eine DB2-`SELECT WHERE`-Anweisung aus, z.B. `SELECT FROM AREA WHERE AREAID = '99999'`.
+
+1. Wenn Sie in Ihrer Logik-App bisher noch keine DB2-Aktionen verwendet haben, schauen Sie sich die Schritte in [DB2-Aktion hinzufügen – Tabellen abrufen](#add-db2-action) an, aber fügen Sie stattdessen die Aktion **Zeile abrufen** hin, und kehren Sie anschließend an diese Stelle zurück, um fortzufahren. 
+
+   Nachdem Sie die Aktion **Zeile abrufen** hinzugefügt haben, sieht Ihre Beispiel-Logik-App folgendermaßen aus:
+
+   ![Aktion „Zeile abrufen“](./media/connectors-create-api-db2/db2-get-row-action.png)
+
+1. Geben Sie Werte für alle erforderlichen Eigenschaften (*) an. Nachdem Sie eine Tabelle ausgewählt haben, zeigt die Aktion die relevanten Eigenschaften an, die sich Datensätze in dieser Tabelle beziehen.
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG | 
+   |----------|----------|-------------| 
+   | **Tabellenname** | JA | Die Tabelle, die den gewünschten Datensatz enthält, wie z.B. „AREA“ in diesem Beispiel | 
+   | **Bereichs-ID** | JA | Die ID für den gewünschten Datensatz, wie z.B. „99999“ in diesem Beispiel | 
+   |||| 
+
+   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
+
+1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus. 
+
+### <a name="view-output-row"></a>Ausgabezeile anzeigen
+
+Um Ihre Logik-App manuell auszuführen, wählen Sie in der Designersymbolleiste **Ausführen**. Nachdem Ihre Logik-App ausgeführt wurde, können Sie die Ausgabe aus der Ausführung anzeigen.
+
+1. Wählen Sie in Ihrem Logik-App-Menü **Übersicht** aus. 
+
+1. Wählen Sie unter **Zusammenfassung** im Abschnitt **Ausführungsverlauf** die letzte Ausführung (erstes Element in der Liste). 
+
+1. Unter **Logik-App-Ausführung** können Sie jetzt den Status, Eingaben und Ausgaben für jeden Schritt in Ihrer Logik-App anschauen. Erweitern Sie die Aktion **Zeile abrufen**.
+
+1. Um die Eingaben anzuzeigen, wählen Sie **Unformatierte Eingaben anzeigen**. 
+
+1. Um die Ausgaben anzuzeigen, wählen Sie **Unformatierte Ausgaben anzeigen**. 
+
+   Die Ausgaben enthalten die angegebene Zeile. 
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
-8. Wählen Sie auf dem Blatt **Db2getTables** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-9. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_tables** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die eine Liste mit Tabellen enthalten sollten.
+   ![Ausgabezeile anzeigen](./media/connectors-create-api-db2/db2-connector-get-row-outputs.png)
+
+## <a name="get-rows"></a>Zeilen abrufen
+
+Um alle Datensätze in einer DB2-Datenbanktabelle abzurufen, verwenden Sie die Aktion **Zeilen abrufen** in Ihrer Logik-App. Diese Aktion führt eine DB2-`SELECT`-Anweisung aus, z.B. `SELECT * FROM AREA`.
+
+1. Wenn Sie in Ihrer Logik-App bisher noch keine DB2-Aktionen verwendet haben, schauen Sie sich die Schritte in [DB2-Aktion hinzufügen – Tabellen abrufen](#add-db2-action) an, aber fügen Sie stattdessen die Aktion **Zeilen abrufen** hin, und kehren Sie anschließend an diese Stelle zurück, um fortzufahren. 
+
+   Nachdem Sie die Aktion **Zeilen abrufen** hinzugefügt haben, sieht Ihre Beispiel-Logik-App folgendermaßen aus:
+
+   ![Aktion „Zeilen abrufen“](./media/connectors-create-api-db2/db2-get-rows-action.png)
+
+1. Öffnen Sie die Liste **Tabellenname** und wählen Sie die gewünschte Tabelle, in diesem Beispiel „AREA“: 
+
+   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-get-rows-action-select-table.png)
+
+1. Um einen Filter oder eine Abfrage für die Ergebnisse anzugeben, wählen Sie **Erweiterte Optionen anzeigen**.
+
+1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus. 
+
+### <a name="view-output-rows"></a>Ausgabezeilen anzeigen
+
+Um Ihre Logik-App manuell auszuführen, wählen Sie in der Designersymbolleiste **Ausführen**. Nachdem Ihre Logik-App ausgeführt wurde, können Sie die Ausgabe aus der Ausführung anzeigen.
+
+1. Wählen Sie in Ihrem Logik-App-Menü **Übersicht** aus. 
+
+1. Wählen Sie unter **Zusammenfassung** im Abschnitt **Ausführungsverlauf** die letzte Ausführung (erstes Element in der Liste). 
+
+1. Unter **Logik-App-Ausführung** können Sie jetzt den Status, Eingaben und Ausgaben für jeden Schritt in Ihrer Logik-App anschauen. Erweitern Sie die Aktion **Zeilen abrufen**.
+
+1. Um die Eingaben anzuzeigen, wählen Sie **Unformatierte Eingaben anzeigen**. 
+
+1. Um die Ausgaben anzuzeigen, wählen Sie **Unformatierte Ausgaben anzeigen**. 
+
+   Die Ausgaben enthalten alle Datensätze aus der angegebenen Tabelle.
    
-   ![](./media/connectors-create-api-db2/Db2connectorGetTablesLogicAppRunOutputs.png)
+   ![Ausgabezeilen anzeigen](./media/connectors-create-api-db2/db2-connector-get-rows-outputs.png)
 
-## <a name="create-the-connections"></a>Erstellen der Verbindungen
-Der Connector unterstützt Verbindungen mit lokal und in der Cloud gehosteten Datenbanken durch Verwenden der folgenden Verbindungseigenschaften. 
+## <a name="insert-row"></a>Zeile einfügen
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| server |Erforderlich. Akzeptiert einen Zeichenfolgenwert im IPv4- oder IPv6-Format, der für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einer mit Doppelpunkt angefügten TCP/IP-Portnummer. |
-| database |Erforderlich. Akzeptiert einen Zeichenfolgenwert , der einen DRDA-Namen einer relationalen Datenbank darstellt. DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge („database“ ist ein Speicherort vom Typ „IBM DB2 für z/OS“). DB2 für i5/OS akzeptiert eine 18-Byte-Zeichenfolge („database“ ist eine relationale Datenbank vom Typ „IBM DB2 für i). DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. |
-| authentication |Optional. Akzeptiert einen Listenelementwert, und zwar entweder „Basic“ oder „Windows“ (Kerberos). |
-| username |Erforderlich. Akzeptiert einen Zeichenfolgenwert. DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
-| password |Erforderlich. Akzeptiert einen Zeichenfolgenwert. |
-| gateway |Erforderlich. Akzeptiert einen Listenelementwert, der für das lokale Datengateway steht, das für Logik-Apps in der Speichergruppe definiert ist. |
+Um einen einzelnen Datensatz zu einer DB2-Datenbanktabelle hinzuzufügen, verwenden Sie die Aktion **Zeile einfügen** in Ihrer Logik-App. Diese Aktion führt eine DB2-`INSERT`-Anweisung aus, z.B. `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
 
-## <a name="create-the-on-premises-gateway-connection"></a>Erstellen einer Verbindung über das lokale Gateway
-Dieser Connector kann über das lokale Gateway auf eine lokale DB2-Datenbank zugreifen. Weitere Informationen finden Sie in den Themen zum Gateway. 
+1. Wenn Sie in Ihrer Logik-App bisher noch keine DB2-Aktionen verwendet haben, schauen Sie sich die Schritte in [DB2-Aktion hinzufügen – Tabellen abrufen](#add-db2-action) an, aber fügen Sie stattdessen die Aktion **Zeile einfügen** hin, und kehren Sie anschließend an diese Stelle zurück, um fortzufahren. 
 
-1. Aktivieren Sie im Konfigurationsbereich **Gateways** das **Kontrollkästchen**, um **Connect via gateway** (Über Gateway verbinden) zu aktivieren. Sie sehen, dass die Cloudeinstellungen in die lokalen Einstellungen geändert werden.
-2. Geben Sie einen Wert für **Server** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `ibmserver01:50000`.
-3. Geben Sie einen Wert für **Datenbank** ein. Geben Sie beispielsweise `nwind`.
-4. Wählen Sie einen Wert für **Authentifizierung** aus. Wählen Sie z. B. **Standard**.
-5. Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `db2admin`.
-6. Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-7. Wählen Sie einen Wert für **Gateway** aus. Wählen Sie z. B. **datagateway01** aus.
-8. Klicken Sie auf **Erstellen** , um fortzufahren. 
+   Nachdem Sie die Aktion **Zeile einfügen** hinzugefügt haben, sieht Ihre Beispiel-Logik-App folgendermaßen aus:
+
+   ![Aktion „Zeile einfügen“](./media/connectors-create-api-db2/db2-insert-row-action.png)
+
+1. Geben Sie Werte für alle erforderlichen Eigenschaften (*) an. Nachdem Sie eine Tabelle ausgewählt haben, zeigt die Aktion die relevanten Eigenschaften an, die sich Datensätze in dieser Tabelle beziehen. 
+
+   Für dieses Beispiel werden folgende Eigenschaften verwendet:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG | 
+   |----------|----------|-------------| 
+   | **Tabellenname** | JA | Die Tabelle, in der der Datensatz hinzugefügt werden soll, z.B. „AREA“ | 
+   | **Bereichs-ID** | JA | Die ID für den hinzuzufügenden Bereich, z.B. „99999“ | 
+   | **Bereichsbeschreibung** | JA | Die Beschrei für den hinzuzufügenden Bereich, z.B. „Area 99999“ | 
+   | **Regions-ID** | JA | Die ID für die hinzuzufügenden Region, z.B. „102“ | 
+   |||| 
+
+   Beispiel: 
+
+   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-insert-row-action-select-table.png)
+
+1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus. 
+
+### <a name="view-insert-row-outputs"></a>Ausgabe vom Einfügen der Zeile anzeigen
+
+Um Ihre Logik-App manuell auszuführen, wählen Sie in der Designersymbolleiste **Ausführen**. Nachdem Ihre Logik-App ausgeführt wurde, können Sie die Ausgabe aus der Ausführung anzeigen.
+
+1. Wählen Sie in Ihrem Logik-App-Menü **Übersicht** aus. 
+
+1. Wählen Sie unter **Zusammenfassung** im Abschnitt **Ausführungsverlauf** die letzte Ausführung (erstes Element in der Liste). 
+
+1. Unter **Logik-App-Ausführung** können Sie jetzt den Status, Eingaben und Ausgaben für jeden Schritt in Ihrer Logik-App anschauen. Erweitern Sie die Aktion **Zeile einfügen**.
+
+1. Um die Eingaben anzuzeigen, wählen Sie **Unformatierte Eingaben anzeigen**. 
+
+1. Um die Ausgaben anzuzeigen, wählen Sie **Unformatierte Ausgaben anzeigen**. 
+
+   Die Ausgaben enthalten alle Datensätze, die Sie zur angegebenen Tabelle hinzugefügt haben.
    
-    ![](./media/connectors-create-api-db2/Db2connectorOnPremisesDataGatewayConnection.png)
+   ![Anzeigen der Ausgabe mit der eingefügten Zeile](./media/connectors-create-api-db2/db2-connector-insert-row-outputs.png)
 
-## <a name="create-the-cloud-connection"></a>Erstellen der Cloudverbindung
-Dieser Connector kann auf eine DB2-Clouddatenbank zugreifen. 
+## <a name="update-row"></a>Zeile aktualisieren
 
-1. Lassen Sie im Konfigurationsbereich **Gateways** das **Kontrollkästchen** deaktiviert (**Connect via gateway** (Verbinden über Gateway)). 
-2. Geben Sie einen Wert für **Verbindungsname** ein. Geben Sie beispielsweise `hisdemo2`.
-3. Geben Sie einen Wert für **DB2-Servername** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `hisdemo2.cloudapp.net:50000`.
-4. Geben Sie einen Wert für **DB2-Datenbankname** ein. Geben Sie beispielsweise `nwind`.
-5. Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `db2admin`.
-6. Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-7. Klicken Sie auf **Erstellen** , um fortzufahren. 
+Um einen einzelnen Datensatz in einer DB2-Datenbanktabelle zu aktualisieren, verwenden Sie die Aktion **Zeile aktualisieren** in Ihrer Logik-App. Diese Aktion führt eine DB2-`UPDATE`-Anweisung aus, z.B. `UPDATE AREA SET AREAID = '99999', AREADESC = 'Updated 99999', REGIONID = 102)`.
+
+1. Wenn Sie in Ihrer Logik-App bisher noch keine DB2-Aktionen verwendet haben, schauen Sie sich die Schritte in [DB2-Aktion hinzufügen – Tabellen abrufen](#add-db2-action) an, aber fügen Sie stattdessen die Aktion **Zeile aktualisieren** hin, und kehren Sie anschließend an diese Stelle zurück, um fortzufahren. 
+
+   Nachdem Sie die Aktion **Zeile aktualisieren** hinzugefügt haben, sieht Ihre Beispiel-Logik-App folgendermaßen aus:
+
+   ![Aktion „Zeile aktualisieren“](./media/connectors-create-api-db2/db2-update-row-action.png)
+
+1. Geben Sie Werte für alle erforderlichen Eigenschaften (*) an. Nachdem Sie eine Tabelle ausgewählt haben, zeigt die Aktion die relevanten Eigenschaften an, die sich Datensätze in dieser Tabelle beziehen. 
+
+   Für dieses Beispiel werden folgende Eigenschaften verwendet:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG | 
+   |----------|----------|-------------| 
+   | **Tabellenname** | JA | Die Tabelle, in der der Datensatz aktualisiert werden soll, z.B. „AREA“ | 
+   | **Zeilen-ID** | JA | Die ID für den zu aktualisierenden Datensatz, z.B. „99999“ | 
+   | **Bereichs-ID** | JA | Die neue Bereich-ID, z.B. „99999“ | 
+   | **Bereichsbeschreibung** | JA | Die neue Bereichsbeschreibung, z.B. „Updated 99999“ | 
+   | **Regions-ID** | JA | Die neue Regions-ID, z.B. „102“ | 
+   |||| 
+
+   Beispiel: 
+
+   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-update-row-action-select-table.png)
+
+1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus. 
+
+### <a name="view-update-row-outputs"></a>Anzeigen der Ausgabe zum Aktualisieren der Zeile
+
+Um Ihre Logik-App manuell auszuführen, wählen Sie in der Designersymbolleiste **Ausführen**. Nachdem Ihre Logik-App ausgeführt wurde, können Sie die Ausgabe aus der Ausführung anzeigen.
+
+1. Wählen Sie in Ihrem Logik-App-Menü **Übersicht** aus. 
+
+1. Wählen Sie unter **Zusammenfassung** im Abschnitt **Ausführungsverlauf** die letzte Ausführung (erstes Element in der Liste). 
+
+1. Unter **Logik-App-Ausführung** können Sie jetzt den Status, Eingaben und Ausgaben für jeden Schritt in Ihrer Logik-App anschauen. Erweitern Sie die Aktion **Zeile aktualisieren**.
+
+1. Um die Eingaben anzuzeigen, wählen Sie **Unformatierte Eingaben anzeigen**. 
+
+1. Um die Ausgaben anzuzeigen, wählen Sie **Unformatierte Ausgaben anzeigen**. 
+
+   Die Ausgaben enthalten den Datensatz, den Sie in der angegebenen Tabelle aktualisiert haben.
    
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
+   ![Anzeigen der Ausgabe mit der aktualisierten Zeile](./media/connectors-create-api-db2/db2-connector-update-row-outputs.png)
 
-## <a name="fetch-all-rows-using-select"></a>Abrufen aller Zeilen mit SELECT
-Sie können eine Logik-App-Aktion zum Abrufen aller Zeilen in einer DB2-Tabelle definieren. Diese Aktion weist den Connector an, eine DB2 SELECT-Anweisung zu verarbeiten, z.B. `SELECT * FROM AREA`.
+## <a name="delete-row"></a>Zeile löschen
 
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `Db2getRows`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
+Um einen einzelnen Datensatz aus einer DB2-Datenbanktabelle zu löschen, verwenden Sie die Aktion **Zeile löschen** in Ihrer Logik-App. Diese Aktion führt eine DB2-`DELETE`-Anweisung aus, z.B. `DELETE FROM AREA WHERE AREAID = '99999'`.
 
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** `db2` ein, und wählen Sie dann **DB2 - Get rows (Preview)** (DB2 – Zeilen abrufen [Vorschau]) aus.
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus.
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** die Option **Neu erstellen** aus. 
+1. Wenn Sie in Ihrer Logik-App bisher noch keine DB2-Aktionen verwendet haben, schauen Sie sich die Schritte in [DB2-Aktion hinzufügen – Tabellen abrufen](#add-db2-action) an, aber fügen Sie stattdessen die Aktion **Zeile löschen** hin, und kehren Sie anschließend an diese Stelle zurück, um fortzufahren. 
+
+   Nachdem Sie die Aktion **Zeile löschen** hinzugefügt haben, sieht Ihre Beispiel-Logik-App folgendermaßen aus:
+
+   ![Aktion „Zeile löschen“](./media/connectors-create-api-db2/db2-delete-row-action.png)
+
+1. Geben Sie Werte für alle erforderlichen Eigenschaften (*) an. Nachdem Sie eine Tabelle ausgewählt haben, zeigt die Aktion die relevanten Eigenschaften an, die sich Datensätze in dieser Tabelle beziehen. 
+
+   Für dieses Beispiel werden folgende Eigenschaften verwendet:
+
+   | Eigenschaft | Erforderlich | BESCHREIBUNG | 
+   |----------|----------|-------------| 
+   | **Tabellenname** | JA | Die Tabelle, in der der Datensatz gelöscht werden soll, z.B. „AREA“ | 
+   | **Zeilen-ID** | JA | Die ID für den zu löschenden Datensatz, z.B. „99999“ | 
+   |||| 
+
+   Beispiel: 
+
+   ![Tabelle auswählen](./media/connectors-create-api-db2/db2-delete-row-action-select-table.png)
+
+1. Wenn Sie fertig sind, wählen Sie auf der Symbolleiste des Designers die Option **Speichern** aus. 
+
+### <a name="view-delete-row-outputs"></a>Anzeigen der Ausgabe mit der gelöschten Zeile
+
+Um Ihre Logik-App manuell auszuführen, wählen Sie in der Designersymbolleiste **Ausführen**. Nachdem Ihre Logik-App ausgeführt wurde, können Sie die Ausgabe aus der Ausführung anzeigen.
+
+1. Wählen Sie in Ihrem Logik-App-Menü **Übersicht** aus. 
+
+1. Wählen Sie unter **Zusammenfassung** im Abschnitt **Ausführungsverlauf** die letzte Ausführung (erstes Element in der Liste). 
+
+1. Unter **Logik-App-Ausführung** können Sie jetzt den Status, Eingaben und Ausgaben für jeden Schritt in Ihrer Logik-App anschauen. Erweitern Sie die Aktion **Zeile löschen**.
+
+1. Um die Eingaben anzuzeigen, wählen Sie **Unformatierte Eingaben anzeigen**. 
+
+1. Um die Ausgaben anzuzeigen, wählen Sie **Unformatierte Ausgaben anzeigen**. 
+
+   Die Ausgaben enthalten nicht mehr den Datensatz, den Sie aus der angegebenen Tabelle gelöscht haben.
    
-    ![](./media/connectors-create-api-db2/Db2connectorNewConnection.png)
-8. Lassen Sie im Konfigurationsbereich **Gateways** das **Kontrollkästchen** deaktiviert (**Connect via gateway** (Verbinden über Gateway)).
-   
-   * Geben Sie einen Wert für **Verbindungsname** ein. Geben Sie beispielsweise `HISDEMO2`.
-   * Geben Sie einen Wert für **DB2-Servername** als Adresse bzw. in der Form „Alias:Portnummer“ ein. Geben Sie beispielsweise `HISDEMO2.cloudapp.net:50000`.
-   * Geben Sie einen Wert für **DB2-Datenbankname** ein. Geben Sie beispielsweise `NWIND`.
-   * Geben Sie einen Wert für **Benutzername** ein. Geben Sie beispielsweise `db2admin`.
-   * Geben Sie einen Wert für **Kennwort** ein. Geben Sie beispielsweise `Password1`.
-9. Klicken Sie auf **Erstellen** , um fortzufahren.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorCloudConnection.png)
-10. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-11. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-12. Wählen Sie **Speichern**aus. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsTableName.png)
-13. Wählen Sie auf dem Blatt **Db2getRows** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-14. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die eine Liste mit Zeilen enthalten sollten.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowsOutputs.png)
+   ![Anzeigen der Ausgabe ohne die gelöschte Zeile](./media/connectors-create-api-db2/db2-connector-delete-row-outputs.png)
 
-## <a name="add-one-row-using-insert"></a>Eine Zeile mit INSERT hinzufügen
-Sie können eine Logik-App-Aktion zum Hinzufügen einer Zeile zu einer DB2-Tabelle definieren. Diese Aktion weist den Connector an, eine DB2 INSERT-Anweisung zu verarbeiten, z.B. `INSERT INTO AREA (AREAID, AREADESC, REGIONID) VALUES ('99999', 'Area 99999', 102)`.
+## <a name="connector-reference"></a>Connector-Referenz
 
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `Db2insertRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
+Technische Details, z.B. Trigger, Aktionen und Grenzwerte, wie sie in der Swagger-Datei des Connectors beschrieben werden, finden Sie auf der [Referenzseite des Connectors](/connectors/db2/). 
 
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen** den Text **db2** ein, und klicken Sie dann auf **DB2 - Insert row (Preview)** (DB2 – Zeile einfügen [Vorschau]).
-6. Wählen Sie in der Aktion **DB2 - Insert row (Preview)** (DB2 – Zeile einfügen [Vorschau]) die Option **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Area 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern**aus.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowValues.png)
-11. Wählen Sie auf dem Blatt **Db2insertRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-12. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die neue Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorInsertRowOutputs.png)
+## <a name="get-support"></a>Support
 
-## <a name="fetch-one-row-using-select"></a>Abrufen einer Zeile mit SELECT
-Sie können eine Logik-App-Aktion zum Abrufen einer Zeile aus einer DB2-Tabelle definieren. Diese Aktion weist den Connector an, eine DB2 SELECT WHERE-Anweisung zu verarbeiten, z.B. `SELECT FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name** (z. B. **Db2getRow**, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**. 
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen suchen** **db2** ein, und wählen Sie dann **db2 - Get rows (Preview)** (DB2 – Zeilen abrufen [Vorschau]) aus.
-6. Wählen Sie in der Aktion **Get rows (Preview)** (Zeilen abrufen [Vorschau]) **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
-10. Optional können Sie **Erweiterte Optionen anzeigen** auswählen, um Abfrageoptionen anzugeben.
-11. Wählen Sie **Speichern**aus. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowValues.png)
-12. Wählen Sie auf dem Blatt **Db2getRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-13. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorGetRowOutputs.png)
-
-## <a name="change-one-row-using-update"></a>Ändern einer Zeile mit UPDATE
-Sie können eine Logik-App-Aktion zum Ändern einer Zeile in einer DB2-Tabelle definieren. Diese Aktion weist den Connector an, eine DB2 UPDATE-Anweisung zu verarbeiten, z.B. `UPDATE AREA SET AREAID = '99999', AREADESC = 'Area 99999', REGIONID = 102)`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `Db2updateRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**.
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Geben Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen** den Text **db2** ein, und klicken Sie dann auf **DB2 - Update row (Preview)** (DB2 – Zeile aktualisieren [Vorschau]).
-6. Wählen Sie in der Aktion **DB2 - Update row (Preview)** (DB2 – Zeile aktualisieren [Vorschau]) die Option **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**, `Updated 99999` und `102` für **REGIONID** ein. 
-10. Wählen Sie **Speichern**aus. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowValues.png)
-11. Wählen Sie auf dem Blatt **Db2updateRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-12. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die neue Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorUpdateRowOutputs.png)
-
-## <a name="remove-one-row-using-delete"></a>Eine Zeile mit DELETE entfernen
-Sie können eine Logik-App-Aktion zum Entfernen einer Zeile aus einer DB2-Tabelle definieren. Diese Aktion weist den Connector an, eine DB2 DELETE-Anweisung zu verarbeiten, z.B. `DELETE FROM AREA WHERE AREAID = '99999'`.
-
-### <a name="create-a-logic-app"></a>Erstellen einer Logik-App
-1. Wählen Sie im **Azure-Startmenü** die Optionen **+** (Pluszeichen), **Web und mobil** und dann **Logik-App**.
-2. Geben Sie **Name**, z. B. `Db2deleteRow`, **Abonnement**, **Ressourcengruppe**, **Speicherort** und **App Service-Plan** ein. Wählen Sie **An Dashboard anheften** und dann **Erstellen** aus.
-
-### <a name="add-a-trigger-and-action"></a>Hinzufügen eines Triggers und einer Aktion
-1. Klicken Sie im **Logik-App-Designer** in der Liste **Vorlagen** auf **Leere Logik-App**. 
-2. Klicken Sie in der Liste **Trigger** auf **Wiederholung**. 
-3. Klicken Sie für den Trigger **Wiederholung** auf **Bearbeiten**. Wählen Sie die Dropdownliste **Häufigkeit** aus, um die Option **Tag** auszuwählen, und legen Sie **Intervall** auf den Typ **7** fest. 
-4. Wählen Sie das Feld **+ Neuer Schritt** und dann **Aktion hinzufügen** aus.
-5. Wählen Sie in der Liste **Aktionen** im Bearbeitungsfeld **Nach weiteren Aktionen** den Text **db2** aus, und klicken Sie dann auf **DB2 - Delete row (Preview)** (DB2 – Zeile löschen [Vorschau]).
-6. Wählen Sie in der Aktion **DB2 - Delete row (Preview)** (DB2 – Zeile löschen [Vorschau]) die Option **Verbindung ändern** aus. 
-7. Wählen Sie im Konfigurationsbereich **Verbindungen** eine vorhandene Verbindung aus. Wählen Sie z. B. **hisdemo2**.
-   
-    ![](./media/connectors-create-api-db2/Db2connectorChangeConnection.png)
-8. Wählen Sie in der Liste **Tabellenname** den **Pfeil nach unten** und dann **BEREICH** aus.
-9. Geben Sie Werte für alle erforderlichen Spalten ein (siehe rotes Sternchen). Geben Sie beispielsweise `99999` für **AREAID**ein. 
-10. Wählen Sie **Speichern**aus. 
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowValues.png)
-11. Wählen Sie auf dem Blatt **Db2deleteRow** in der Liste **Alle Testläufe** unter **Zusammenfassung** den zuerst aufgeführten Eintrag (letzte Ausführung) aus.
-12. Wählen Sie auf dem Blatt **Logik-App-Ausführung** die Option **Testlaufdetails** aus. Wählen Sie in der Liste **Aktion** den Eintrag **Get_rows** aus. Der Wert für **Status** sollte **Erfolgreich** lauten. Wählen Sie den Link **Eingaben** aus, um die Eingaben anzuzeigen. Wählen Sie den Link **Ausgaben**aus, um die Ausgaben anzuzeigen, die die gelöschte Zeile enthalten sollten.
-    
-    ![](./media/connectors-create-api-db2/Db2connectorDeleteRowOutputs.png)
-
-## <a name="supported-db2-platforms-and-versions"></a>Unterstützte DB2-Plattformen und -Versionen
-Dieser Connector unterstützt die folgenden IBM DB2-Plattformen und -Versionen sowie IBM DB2-kompatible Produkte (z.B. IBM Bluemix dashDB), die Distributed Relational Database Architecture (DRDA) SQL Access Manager (SQLAM) Version 10 und 11 unterstützen:
-
-* IBM DB2 für z/OS 11.1
-* IBM DB2 für z/OS 10.1
-* IBM DB2 für i 7.3
-* IBM DB2 für i 7.2
-* IBM DB2 für i 7.1
-* IBM DB2 für LUW 11
-* IBM DB2 für LUW 10.5
-
-## <a name="connector-specific-details"></a>Connectorspezifische Details
-
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/db2/) an. 
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Informieren Sie sich in unserer [API-Liste](apis-list.md)über die anderen verfügbaren Connectors für Logik-Apps.
 
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

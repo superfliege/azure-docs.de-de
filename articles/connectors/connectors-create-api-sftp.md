@@ -1,66 +1,89 @@
 ---
-title: "So wird's gemacht: Verwenden des SFTP-Connectors in Ihren Logik-Apps | Microsoft Docs"
-description: Erstellen Sie Logik-Apps mit Azure App Service. Stellen Sie eine Verbindung mit der SFTP-API her, um Dateien zu senden und zu empfangen. Sie können verschiedene Vorgänge ausführen und beispielsweise Dateien erstellen, aktualisieren, abrufen oder löschen.
+title: Herstellen einer Verbindung mit einem SFTP-Konto über Azure Logic Apps | Microsoft-Dokumentation
+description: Automatisieren von Aufgaben und Workflows, die Dateien auf einem SFTP-Server mithilfe von Azure Logic Apps überwachen, erstellen, verwalten, senden und empfangen
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 07/20/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 28ea02082903f71f619a52672ba41ce65557b0c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/24/2018
+ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296001"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042037"
 ---
-# <a name="get-started-with-the-sftp-connector"></a>Erste Schritte mit dem SFTP-Connector
-Greifen Sie mithilfe des SFTP-Connectors auf ein SFTP-Konto zu, um Dateien zu senden und zu empfangen. Sie können verschiedene Vorgänge ausführen und beispielsweise Dateien erstellen, aktualisieren, abrufen oder löschen.  
+# <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von Azure Logic Apps
 
-Wenn Sie [einen Connector](apis-list.md) verwenden möchten, müssen Sie zuerst eine Logik-App erstellen. Erstellen Sie daher erst einmal eine Logik-App, wie [hier](../logic-apps/quickstart-create-first-logic-app-workflow.md) beschrieben.
+Mit Azure Logic Apps und dem SFTP-Connector können Sie automatisierte Aufgaben und Workflows erstellen, die Dateien über Ihr Konto auf einem [SFTP](https://www.ssh.com/ssh/sftp/)-Server überwachen, erstellen, senden und empfangen sowie weitere Aktionen ausführen, wie z.B. folgende:
+
+* Sie können die Vorgänge überwachen, wenn Dateien hinzugefügt oder geändert werden.
+* Sie können Dateien abrufen, erstellen, kopieren, aktualisieren, auflisten und löschen.
+* Sie können Dateiinhalte und Metadaten abrufen.
+* Sie können Archive in Ordner extrahieren.
+
+Sie können Trigger verwenden, die Antworten von Ihrem SFTP-Server erhalten und die Ausgabe für andere Aktionen verfügbar machen. Sie können Aktionen in Ihren Logik-Apps verwenden, um Aufgaben mit Dateien auf Ihrem SFTP-Server auszuführen. Sie können die Ausgaben von SFTP-Aktionen auch in anderen Aktionen verwenden. Wenn Sie z.B. regelmäßig Dateien von Ihrem SFTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder mithilfe des Outlook.com-Connectors E-Mails zu diesen Dateien und ihren Inhalten senden.
+Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>. 
+
+* Die Adresse Ihres SFTP-Hostservers und die zugehörigen Anmeldeinformationen.
+
+   Ihre Anmeldeinformationen autorisieren Ihre Logik-App zur Erstellung einer Verbindung mit Ihrem SFTP-Konto sowie zum Zugriff auf das Konto.
+
+* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Die Logik-App, in der Sie auf Ihr SFTP-Konto zugreifen möchten. Um mit einem SFTP-Trigger zu beginnen, [erstellen Sie eine leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md). Um eine SFTP-Aktion zu verwenden, starten Sie Ihre Logik-App mit einem anderen Trigger, z.B. dem **Wiederholungstrigger**.
 
 ## <a name="connect-to-sftp"></a>Herstellen einer Verbindung mit SFTP
-Damit Ihre Logik-App überhaupt auf einen Dienst zugreifen kann, müssen Sie zunächst eine *Verbindung* mit dem Dienst herstellen. Eine [Verbindung](connectors-overview.md) stellt den Kontakt zwischen einer Logik-App und einem anderen Dienst her.  
 
-### <a name="create-a-connection-to-sftp"></a>Herstellen einer Verbindung mit SFTP
-> [!INCLUDE [Steps to create a connection to SFTP](../../includes/connectors-create-api-sftp.md)]
-> 
-> 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-## <a name="use-an-sftp-trigger"></a>Verwenden eines SFTP-Triggers
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. Weitere Informationen zu Triggern finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-In diesem Beispiel erfahren Sie, wie mithilfe des Triggers **SFTP – Wenn eine Datei hinzugefügt oder geändert wird** ein Logik-App-Workflow initiiert wird, wenn einem SFTP-Server eine Datei hinzugefügt oder eine Datei auf einem SFTP-Server geändert wird. Darüber hinaus fügen Sie eine Bedingung hinzu, die den Inhalt der neuen oder geänderten Datei überprüft und entscheidet, dass die Datei extrahiert werden soll, wenn deren Inhalt darauf hindeutet, dass die Datei vor der Verwendung des Inhalts extrahiert werden muss. Schließlich fügen Sie eine Aktion hinzu, die den Inhalt einer Datei extrahiert und in einem Ordner auf dem SFTP-Server ablegt. 
+1. Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „sftp“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
 
-In einem Unternehmensszenario können Sie mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die jeweils Kundenaufträge darstellen.  Anschließend können Sie den Inhalt der Bestellung zur weiteren Verarbeitung und Speicherung in einer Bestelldatenbank mithilfe einer SFTP-Connectoraktion wie **Dateiinhalt abrufen** abrufen.
+   oder
 
-> [!INCLUDE [Steps to create an SFTP trigger](../../includes/connectors-create-api-sftp-trigger.md)]
-> 
-> 
+   Wählen Sie für vorhandene Logik-Apps im letzten Schritt zum Hinzufügen einer Aktion die Option **Neuer Schritt** aus. 
+   Geben Sie im Suchfeld den Begriff „sftp“ als Filter ein. 
+   Wählen Sie in der Liste mit den Aktionen die gewünschte Aktion aus.
 
-## <a name="add-a-condition"></a>Bedingung hinzufügen
-> [!INCLUDE [Steps to add a condition](../../includes/connectors-create-api-sftp-condition.md)]
-> 
-> 
+   Wenn Sie zwischen Schritten eine Aktion einfügen möchten, bewegen Sie den Mauszeiger über den Pfeil zwischen den Schritten. 
+   Wählen Sie das daraufhin angezeigte Pluszeichen (**+**) und dann **Aktion hinzufügen** aus.
 
-## <a name="use-an-sftp-action"></a>Verwenden einer SFTP-Aktion
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](../logic-apps/logic-apps-overview.md#logic-app-concepts).  
+1. Geben Sie die erforderlichen Informationen zu Ihrer Verbindung ein, und wählen Sie dann **Erstellen** aus.
 
-> [!INCLUDE [Steps to create an SFTP action](../../includes/connectors-create-api-sftp-action.md)]
-> 
-> 
+1. Geben Sie die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
 
-## <a name="connector-specific-details"></a>Connectorspezifische Details
+## <a name="examples"></a>Beispiele
 
-Zeigen Sie die in Swagger definierten Trigger und Aktionen sowie mögliche Beschränkungen in den [Connectordetails](/connectors/sftpconnector/) an.
+### <a name="sftp-trigger-when-a-file-is-added-or-modified"></a>SFTP-Trigger: wenn eine Datei hinzugefügt oder geändert wird
 
-## <a name="more-connectors"></a>Weitere Connectors
-Gehen Sie zur [Liste der APIs](apis-list.md)zurück.
+Dieser Trigger startet einen Logik-App-Workflow, wenn er erkennt, dass eine Datei auf einem SFTP-Server hinzugefügt oder geändert wurde. Sie können z.B. eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und entscheidet, ob dieser Inhalt abgerufen wird. Die Entscheidung basiert darauf, ob der Inhalt eine bestimmte Bedingung erfüllt oder nicht. Zum Schluss können Sie eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt. 
+
+**Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Dann können Sie eine SFTP-Aktion wie z.B. **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung und Speicherung in einer Bestelldatenbank abzurufen.
+
+### <a name="sftp-action-get-content"></a>SFTP-Aktion: Inhalt abrufen
+
+Diese Aktion ruft den Inhalt einer Datei auf einem SFTP-Server ab. Sie können z.B. den Trigger aus dem vorherigen Beispiel sowie eine Bedingung hinzufügen, die vom Dateiinhalt erfüllt werden muss. Wenn die Bedingung als TRUE ausgewertet wird, kann die Aktion ausgeführt werden, die den Inhalt abruft. 
+
+## <a name="connector-reference"></a>Connector-Referenz
+
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/sftpconnector/) des Connectors.
+
+## <a name="get-support"></a>Support
+
+* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Informationen zu anderen [Logic Apps-Connectors](../connectors/apis-list.md)

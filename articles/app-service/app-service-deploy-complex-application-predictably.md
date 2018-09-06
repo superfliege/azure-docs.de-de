@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140317"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050745"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
 Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](https://azure.microsoft.com/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 
@@ -40,7 +40,7 @@ In diesem Lernprogramm werden Sie eine Anwendung bereitstellen, die Folgendes en
 In diesem Lernprogramm verwenden Sie die folgenden Tools. Da dies keine umfassende Erläuterung der Tools ist, wird schwerpunktmäßig das komplette Szenario dargestellt. Sie erhalten eine kurze Einführung zu allen Tools und erfahren, wo Sie weiterführende Informationen finden. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure-Ressourcen-Manager-Vorlagen (JSON)
-Jedes Mal, wenn Sie beispielsweise eine Web-App in Azure App Service erstellen, verwendet der Azure-Ressourcen-Manager eine JSON-Vorlage zum Erstellen der gesamten Ressourcengruppe mit den Komponentenressourcen. Eine komplexe Vorlage aus [Azure Marketplace](/marketplace) wie die App [Scalable WordPress](/marketplace/partners/wordpress/scalablewordpress/) kann die MySQL-Datenbank, Speicherkonten, den App Service-Plan, die Web-App selbst, Warnregeln, App-Einstellungen, Einstellungen für die automatische Skalierung und mehr enthalten, und alle diese Vorlagen stehen Ihnen über PowerShell zur Verfügung. Informationen zum Herunterladen und Verwenden dieser Vorlagen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
+Jedes Mal, wenn Sie beispielsweise eine Web-App in Azure App Service erstellen, verwendet der Azure-Ressourcen-Manager eine JSON-Vorlage zum Erstellen der gesamten Ressourcengruppe mit den Komponentenressourcen. Eine komplexe Vorlage aus dem [Azure Marketplace](/azure/marketplace) kann die Datenbank, Speicherkonten, den App Service-Plan, die Web-App selbst, Warnregeln, App-Einstellungen, Einstellungen für die automatische Skalierung und vieles mehr enthalten. All diese Vorlagen stehen Ihnen über PowerShell zur Verfügung. Informationen zum Herunterladen und Verwenden dieser Vorlagen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure-Ressourcen-Manager](../powershell-azure-resource-manager.md).
 
 Weitere Informationen zu den Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 

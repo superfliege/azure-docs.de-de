@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c9d656908d265aeb6143e857b0ea4f635203bdd9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 82e8836892b033ccbb3c3ad9806257348afe3702
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258727"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818401"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -75,9 +75,23 @@ Dieses Szenario ist in der folgenden Abbildung dargestellt:
 
 Auf eine verwaltete Instanz kann nur über eine private IP-Adresse zugegriffen werden. Für den Zugriff auf die verwaltete Instanz über die Entwicklerbox müssen Sie daher zunächst eine Verbindung zwischen der Entwicklerbox und dem VNET der verwalteten Instanz herstellen.  
  
-Konfigurieren Sie eine Point-to-Site-Verbindung mit einem VNET unter Verwendung einer nativen Azure-Zertifikatauthentifizierung ([Azure-Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md) oder [Azure CLI](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)). In diesen Artikeln finden Sie diesbezügliche Informationen.  
+Konfigurieren Sie eine Point-to-Site-Verbindung mit einem VNET unter Verwendung einer nativen Azure-Zertifikatauthentifizierung ([Azure-Portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md), [PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md) oder [Azure CLI](../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md)). In diesen Artikeln finden Sie diesbezügliche Informationen. 
+
+## <a name="required-versions-of-drivers-and-tools"></a>Erforderliche Versionen von Treibern und Tools
+
+Die folgenden Mindestversionen der Tools und Treiber werden empfohlen, wenn Sie eine Verbindung zu einer verwalteten Instanz herstellen möchten:
+
+| Treiber/Tool | Version |
+| --- | --- |
+|.NET Framework | 4.6.1 (oder .NET Core) | 
+|ODBC-Treiber    | v17 |
+|PHP-Treiber | 5.2.0 |
+|JDBC-Treiber    | 6.4.0 |
+|Node.js-Treiber | 2.1.1 |
+|OLEDB-Treiber   | 18.0.2.0 |
+|SSMS   | 17.8.1 oder [höher](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
-- Ein Tutorial, in dem die Erstellung einer neuen verwalteten Instanz gezeigt wird, finden Sie unter [Create an Azure SQL Database Managed Instance in the Azure portal](sql-database-managed-instance-create-tutorial-portal.md) (Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal).
+- Ein Tutorial, in dem die Erstellung einer neuen verwalteten Instanz gezeigt wird, finden Sie unter [Create an Azure SQL Database Managed Instance in the Azure portal](sql-database-managed-instance-get-started.md) (Erstellen einer verwalteten Azure SQL-Datenbank-Instanz im Azure-Portal).

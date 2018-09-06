@@ -1,6 +1,6 @@
 ---
-title: Gewähren des Zugriffs auf Privileged Identity Management – Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit der Erweiterung Azure Active Directory Privileged Identity Management Rollen zu Benutzern hinzufügen, sodass diese PIM verwalten können.
+title: Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM – Azure | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie anderen Administratoren Zugriff zum Verwalten von Azure AD Privileged Identity Management (PIM) gewähren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ade3939057669e7f9979001db4376fe61c2f4ad9
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623067"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189554"
 ---
-# <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Gewähren des Zugriffs zur Verwaltung von Azure AD Privileged Identity Management
+# <a name="grant-access-to-other-administrators-to-manage-pim"></a>Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM
 Der globale Administrator, der Azure AD Privileged Identity Management (PIM) für eine Organisation aktiviert, erhält automatisch Rollenzuweisungen und Zugriff auf PIM. Andere Benutzer dagegen erhalten nicht standardmäßig Schreibzugriff, auch nicht die weiteren globalen Administratoren. Andere globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen erhalten schreibgeschützten Zugriff auf Azure AD PIM. Um Zugriff auf PIM zu gewähren, kann der erste Benutzer andere der Rolle **Administrator für privilegierte Rollen** zuweisen.
 
 > [!NOTE]
@@ -54,4 +54,5 @@ Bevor Sie einen Benutzer aus der Rolle der Administratoren für privilegierte Ro
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Aktivieren der Abonnementverwaltung in Ihrem Mandanten](pim-resource-roles-enable-subscription-management.md)

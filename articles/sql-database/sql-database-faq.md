@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246553"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091823"
 ---
 # <a name="sql-database-faq"></a>SQL-Datenbank – Häufig gestellte Fragen
 
@@ -155,7 +155,7 @@ Beispiel:
 - Wenn Sie eine verwaltete Instanz im Tarif „Universell“ mit acht virtuellen Kernen erstellen und umgehend ein Upgrade auf 16 virtuelle Kerne durchführen, werden Ihnen für die erste Stunde 16 virtuelle Kerne in Rechnung gestellt.
 
 > [!NOTE]
-> Bis zum 30. Juni 2018 werden keine Gebühren für Sicherungen und E/A-Vorgänge berechnet.
+> Für einen begrenzten Zeitraum werden keine Gebühren für Sicherungen und E/A-Vorgänge berechnet.
 
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Wie wird die Nutzung der aktiven Georeplikation in einem Pool für elastische Datenbanken auf meiner Rechnung ausgewiesen?
 Im Gegensatz zu Einzeldatenbanken hat die Nutzung der [aktiven Georeplikation](sql-database-geo-replication-overview.md) mit elastischen Datenbanken keine direkte Auswirkung auf die Abrechnung.  Ihnen werden nur die für die einzelnen Pools (primärer Pool und sekundärer Pool) bereitgestellten Ressourcen in Rechnung gestellt.

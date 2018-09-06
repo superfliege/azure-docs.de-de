@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: a3208152ddf198d00c0a158e466c9d024c17b4d6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af32ea826f8150284c242fb6d1013924945aee97
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528442"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247781"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
@@ -37,7 +37,7 @@ Richtlinien zur Lebenszyklusverwaltung sind sowohl für das GPv2-Konto (General 
 Die Funktion zur Lebenszyklusverwaltung ist in der Vorschau kostenlos. Kunden werden die gewöhnlichen Betriebskosten für die API-Aufrufe [Blobs auflisten](https://docs.microsoft.com/rest/api/storageservices/list-blobs) und [Blobtarif festlegen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) in Rechnung gestellt. Weitere Informationen zu Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="register-for-preview"></a>Registrieren für die Vorschau 
-Um sich für die öffentliche Vorschau zu registrieren, müssen Sie eine Anforderung einreichen, diese Funktion für Ihr Abonnement zu registrieren. Nachdem Ihre Anforderung genehmigt wurde (innerhalb einiger Tage), wird die Funktion für alle vorhandenen und neuen GPv2- oder Blobspeicherkonten in USA, Westen 2 und USA, Westen-Mitte aktiviert. Während der Vorschau wird nur Blockblob unterstützt. Wie bei den meisten Vorschauversionen sollte diese Funktion bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.
+Um sich für die öffentliche Vorschau zu registrieren, müssen Sie eine Anforderung einreichen, diese Funktion für Ihr Abonnement zu registrieren. Nachdem Ihre Anforderung genehmigt wurde (innerhalb einiger Tage), wird die Funktion für alle vorhandenen und neuen GPv2- oder Blob Storage-Konten in „USA, Westen 2“ und „Europa, Westen“ aktiviert. Während der Vorschau wird nur Blockblob unterstützt. Wie bei den meisten Vorschauversionen sollte diese Funktion bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.
 
 Um eine Anforderung zu senden, führen Sie die folgenden PowerShell- oder CLI-Befehle aus.
 

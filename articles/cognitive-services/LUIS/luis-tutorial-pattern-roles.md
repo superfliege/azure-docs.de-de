@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 633bf16790437ba83e9a2a99f33a23fef9255364
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524143"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090525"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Tutorial: Verbessern der App mit Musterrollen
 
@@ -52,7 +52,7 @@ In diesem Tutorial erkennt die Personalabteilungs-App Äußerungen zur Verlegung
 |[Tutorial: Hinzufügen einer hierarchischen Entität (ohne Rollen)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349, b-1298|
 |Dieses Tutorial (mit Rollen)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma, Denver|
 
-Die hierarchische Entität kann nicht im Muster verwendet werden, da nur hierarchisch übergeordnete Elemente in übergeordneten Elementen verwendet werden. Um die benannten Standorte des Ursprungs und des Ziels zurückzugeben, müssen Sie ein Muster verwenden.
+Die hierarchische Entität kann nicht im Muster verwendet werden, da in Mustern nur hierarchisch übergeordnete Elemente verwendet werden. Um die benannten Standorte des Ursprungs und des Ziels zurückzugeben, müssen Sie ein Muster verwenden.
 
 ### <a name="simple-entity-for-new-employee-name"></a>Einfache Entität für den Namen eines neuen Mitarbeiters
 Der Name des neuen Mitarbeiters, Billy Patterson, ist noch nicht Teil der Listenentität **Employee**. Der Name des neuen Mitarbeiters wird zuerst extrahiert, um den Namen für die Erstellung der Unternehmensanmeldeinformationen an ein externes System zu senden. Nachdem die Unternehmensanmeldeinformationen erstellt wurden, werden die Mitarbeiteranmeldeinformationen der Listenentität **Employee** hinzugefügt.

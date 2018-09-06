@@ -1,5 +1,5 @@
 ---
-title: Informationen zur Azure IoT Hub-Identitätsregistrierung | Microsoft Docs
+title: Informationen zur Azure IoT Hub-Identitätsregistrierung | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Beschreibung der Identitätsregistrierung von IoT Hub und Anleitung zum Verwalten von Geräten mithilfe der Identitätsregistrierung. Enthält Informationen zum Importieren und Exportieren von Geräteidentitäten in einem Massenvorgang.'
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 2039b7760704de35c688dda41e3b75425e5ec0e8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186270"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247644"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz
 
@@ -85,10 +85,9 @@ Die Gerätedaten, die von einer bestimmten IoT-Lösung gespeichert werden, richt
 
 ## <a name="device-heartbeat"></a>Gerätetakt
 
-Die IoT Hub-Identitätsregistrierung enthält das Feld **connectionState**. Verwenden Sie das Feld **connectionState** nur bei der Entwicklung und beim Debuggen. Das Feld sollte von IoT-Lösungen nicht zur Laufzeit abgefragt werden. Fragen Sie das Feld **connectionState** also beispielsweise nicht ab, um zu ermitteln, ob ein Gerät verbunden ist, bevor Sie eine Cloud-zu-Gerät-Nachricht oder eine SMS senden.
+Die IoT Hub-Identitätsregistrierung enthält das Feld **connectionState**. Verwenden Sie das Feld **connectionState** nur bei der Entwicklung und beim Debuggen. Das Feld sollte von IoT-Lösungen nicht zur Laufzeit abgefragt werden. Fragen Sie das Feld **connectionState** also beispielsweise nicht ab, um zu ermitteln, ob ein Gerät verbunden ist, bevor Sie eine Cloud-zu-Gerät-Nachricht oder eine SMS senden. Es wird empfohlen, das [Ereignis **Gerät getrennt**](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types) in Event Grid zu abonnieren, um Warnungen zu erhalten und den Verbindungsstatus des Geräts zu überwachen. Nutzen Sie dieses [Tutorial](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps), um zu erfahren, wie Sie Ereignisse aus IoT Hub in Ihre IoT-Lösung integrieren.
 
-Wenn Ihre IoT-Lösung wissen muss, ob ein Gerät verbunden ist, implementieren Sie das *Taktmuster*.
-
+Wenn Ihre IoT-Lösung wissen muss, ob ein Gerät verbunden ist, können Sie das *Taktmuster* implementieren.
 Beim Taktmuster sendet das Gerät D2C-Nachrichten mindestens einmal pro festgelegtem Zeitraum (z. B. mindestens einmal pro Stunde). Selbst wenn ein Gerät keine zu sendenden Daten hat, sendet es daher trotzdem eine leere D2C-Nachricht (in der Regel mit einer Eigenschaft, die sie als Takt identifiziert). Auf der Dienstseite verwaltet die Lösung eine Karte mit dem letzten für jedes Gerät empfangenen Takt. Falls die Lösung nicht innerhalb der erwarteten Zeit eine Taktnachricht vom Gerät erhält, geht sie davon aus, dass ein Problem mit dem Gerät vorliegt.
 
 Eine komplexere Implementierung kann die Informationen aus der [Vorgangsüberwachung][lnk-devguide-opmon] enthalten, um Geräte zu ermitteln, die erfolglos versuchen, eine Verbindung herzustellen oder zu kommunizieren. Wenn Sie das Taktmuster implementieren, informieren Sie sich über [IoT Hub-Kontingente und -Drosselungen][lnk-quotas].

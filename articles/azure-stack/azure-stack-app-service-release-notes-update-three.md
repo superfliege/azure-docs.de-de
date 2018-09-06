@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 88a4bcf018387ac83b485ec9e2efac11f85ba97c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f825a2a343d9b5ad8f9802042b7aca2ba1544dfb
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42432288"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917401"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 3
 
@@ -178,6 +178,21 @@ Führen Sie diese Schritte aus, nachdem das Update für Azure App Service in Azu
     ```sql
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
+
+### <a name="known-issues-post-installation"></a>Bekannte Probleme (nach der Installation)
+
+- Worker können den Dateiserver nicht erreichen, wenn der App Service in einem bestehenden virtuellen Netzwerk bereitgestellt wird und der Dateiserver nur im privaten Netzwerk verfügbar ist.  Dies wird auch in der Dokumentation zu Azure App Service in einer Azure Stack-Bereitstellung beschrieben.
+
+Wenn Sie sich für die Bereitstellung in einem bestehenden virtuellen Netzwerk und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver entschieden haben, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen, die den SMB-Verkehr zwischen dem Workersubnetz und dem Dateiserver ermöglicht. Wechseln Sie dazu im Admin-Portal zur WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
+ * Quelle: Beliebig
+ * Quellportbereich: *
+ * Ziel: IP-Adressen
+ * Ziel-IP-Adressbereich: Bereich der IPs für Ihren Dateiserver
+ * Zielportbereich: 445
+ * Protokoll: TCP
+ * Aktion: Zulassen
+ * Priorität: 700
+ * Name: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Bekannte Probleme von Cloudadministratoren, die Azure App Service in Azure Stack betreiben
 

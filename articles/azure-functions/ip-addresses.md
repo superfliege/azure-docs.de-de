@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: c2e066ddf444cb81d7f0033641a300d18b266f62
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ce520c5972bf27c30ecb175d58b6b6071bf804db
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397846"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818291"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -39,7 +39,7 @@ Jede Funktionen-App verfügt über eine einzelne eingehende IP-Adresse. So finde
 3. Wählen Sie **Plattformfeatures**.
 4. Wenn Sie **Eigenschaften** wählen, wird die eingehende IP-Adresse unter **Virtuelle IP-Adresse** angezeigt.
 
-## <a name="function-app-outbound-ip-addresses"></a>Ausgehende IP-Adressen einer Funktionen-App
+## <a name="find-outbound-ip-addresses"></a>Ausgehende IP-Adressen einer Funktions-App
 
 Jede Funktionen-App verfügt über einen Satz von verfügbaren ausgehenden IP-Adressen. Jede ausgehende Verbindung von einer Funktion, beispielsweise mit einer Back-End-Datenbank, verwendet eine der verfügbaren ausgehenden IP-Adressen als IP-Ursprungsadresse. Im Vorfeld ist nicht klar, welche IP-Adresse eine bestimmte Verbindung verwendet. Daher muss Ihr Back-End-Dienst seine Firewall für alle ausgehenden IP-Adressen der App öffnen.
 

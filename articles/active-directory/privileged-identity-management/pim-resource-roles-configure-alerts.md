@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Sicherheitswarnungen für Azure-Ressourcen mit Privileged Identity Management | Microsoft Docs
-description: Enthält eine Beschreibung der PIM-Sicherheitswarnungen.
+title: Konfigurieren von Sicherheitswarnungen für Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Sicherheitswarnungen für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 46b19866ec3f276c8337cf9501b779701377d0a5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 33bd13421b0c1574475516da942abe4e8c71ed52
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620415"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188831"
 ---
-# <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Verwalten von Sicherheitswarnungen für Azure-Ressourcen mit Privileged Identity Management
+# <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure-Ressourcenrollen in PIM
 Privileged Identity Management (PIM) für Azure-Ressourcen generiert bei verdächtigen oder nicht sicheren Aktivitäten in Ihrer Umgebung Warnungen. Wenn eine Warnung ausgelöst wird, wird sie auf der Seite „Warnungen“ angezeigt. 
 
 ![Seite „Warnungen“](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
@@ -50,3 +50,8 @@ Navigieren Sie auf der Seite „Warnungen“ zu **Einstellungen**.
 
 Passen Sie die Einstellungen für die verschiedenen Warnungen so an, dass sie für Ihre Umgebung und Sicherheitsziele funktionieren.
 ![Anpassen von Einstellungen](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Anfordern der mehrstufigen Authentifizierung für Azure-Ressourcenrollen in PIM](pim-resource-roles-require-mfa.md)
+- [Konfigurieren von Sicherheitswarnungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-configure-alerts.md)

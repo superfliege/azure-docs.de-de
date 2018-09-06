@@ -13,37 +13,36 @@ ms.devlang: ''
 ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 08/21/2018
+ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 286b9b133bfbe633ad1fe69f66aa11b9e4c4fc1d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142690"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190424"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
 Dieser Leitfaden enthält eine Einführung in die wichtigsten Konzepte im Zusammenhang mit der Bereitstellung und Verwaltung einer Microsoft Azure-Infrastruktur. Wenn Sie mit Cloud Computing oder Azure selbst noch nicht vertraut sind, ermöglicht dieser Leitfaden Ihnen den schnellen Einstieg in Konzeptdetails, Bereitstellungsvorgänge und die Verwaltung. In vielen Abschnitten wird ein Vorgang beschrieben, z.B. die Bereitstellung eines virtuellen Computers, und anschließend ein Link zu weiterführenden technischen Details angegeben.
 
-
 ## <a name="cloud-computing-overview"></a>Übersicht über Cloud Computing
 
 Cloud Computing stellt eine moderne Alternative zum herkömmlichen lokalen Datencenter dar. Anbieter von öffentlichen Clouds sorgen für die Bereitstellung und Verwaltung der gesamten Computing-Infrastruktur und der zugrunde liegenden Verwaltungssoftware. Bei diesen Anbietern sind viele unterschiedliche Clouddienste erhältlich. Ein Clouddienst kann hierbei ein virtueller Computer, ein Webserver oder eine in der Cloud gehostete Datenbank-Engine sein. Als Kunde eines Cloudanbieters leasen Sie diese Clouddienste je nach Bedarf. Auf diese Weise wandeln Sie die Investitionsaufwendungen für die Hardwarewartung in betriebliche Gesamtaufwendungen um. Außerdem bietet ein Clouddienst die folgenden Vorteile:
 
--   Schnelle Bereitstellung von großen Compute-Umgebungen
+- Schnelle Bereitstellung von großen Compute-Umgebungen
 
--   Schnelle Außerbetriebnahme von Systemen, die nicht mehr erforderlich sind
+- Schnelle Außerbetriebnahme von Systemen, die nicht mehr erforderlich sind
 
--   Einfache Bereitstellung von Systemen, die normalerweise sehr komplex sind, z.B. Lastenausgleichsmodule
+- Einfache Bereitstellung von Systemen, die normalerweise sehr komplex sind, z.B. Lastenausgleichsmodule
 
--   Nutzung von flexibler Computekapazität oder Skalierbarkeit bei Bedarf
+- Nutzung von flexibler Computekapazität oder Skalierbarkeit bei Bedarf
 
--   Höhere Kosteneffizienz für Computing-Umgebungen
+- Höhere Kosteneffizienz für Computing-Umgebungen
 
--   Zugriff von jedem Ort aus per webbasiertem Portal oder programmgesteuerter Automatisierung
+- Zugriff von jedem Ort aus per webbasiertem Portal oder programmgesteuerter Automatisierung
 
--   Cloudbasierte Dienste zur Erfüllung der meisten Compute- und Anwendungsanforderungen
+- Cloudbasierte Dienste zur Erfüllung der meisten Compute- und Anwendungsanforderungen
 
 Mit der lokalen Infrastruktur haben Sie die vollständige Kontrolle über die bereitgestellte Hardware und Software. Bisher hat dies bei Entscheidungen zur Hardwarebeschaffung häufig dazu geführt, dass der Schwerpunkt auf dem zentralen Hochskalieren lag. Ein Beispiel hierfür ist der Kauf eines Servers mit mehr Kernen, um Leistungsspitzen abdecken zu können. Der Nachteil ist, dass diese Infrastruktur nicht ausgelastet werden kann, wenn der Bedarf weniger hoch ist. Mit Azure haben Sie die Möglichkeit, nur die Infrastruktur bereitzustellen, die Sie wirklich benötigen, und Sie können jederzeit Anpassungen vornehmen. Der Schwerpunkt liegt also auf dem horizontalen Hochskalieren, indem zusätzliche Computeknoten bereitgestellt werden, um bestimmte Leistungsanforderungen zu erfüllen. Das horizontale Hochskalieren von Clouddiensten ist kostengünstiger als das zentrale Hochskalieren mit teurer Hardware.
 
@@ -55,7 +54,7 @@ Weitere Informationen zu den verfügbaren Azure-Regionen finden Sie unter [Azure
 
 ### <a name="cloud-computing-model"></a>Cloud Computing-Modell
 
-Azure verwendet ein Cloud Computing-Modell basierend auf Dienstkategorien, die für Kunden bereitgestellt werden. Die drei Dienstkategorien sind Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS) und Software-as-a-Service (SaaS). Die Anbieter teilen sich die Verantwortung für die Komponenten im Cloud Computing-Stapel in jeder dieser Kategorien ganz oder teilweise. Werfen wir einen Blick auf die einzelnen Kategorien für Cloud Computing.
+Azure verwendet ein Cloud Computing-Modell basierend auf Dienstkategorien, die für Kunden bereitgestellt werden. Die drei Dienstkategorien sind Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS) und Software-as-a-Service (SaaS). Die Anbieter teilen sich die Verantwortung für die Komponenten im Computing-Stapel in jeder dieser Kategorien ganz oder teilweise. Werfen wir einen Blick auf die einzelnen Kategorien für Cloud Computing.
 ![Cloud Computing-Stapel im Vergleich](./media/cloud-computing-comparison.png)
 
 #### <a name="iaas-infrastructure-as-a-service"></a>IaaS: Infrastructure-as-a-Service
@@ -68,7 +67,7 @@ VM-Skalierungsgruppen werden basierend auf virtuellen Azure-Computern erstellt u
 
 #### <a name="paas-platform-as-a-service"></a>PaaS: Platform-as-a-Service
 
-Bei PaaS stellen Sie Ihre Anwendung in einer Umgebung des Clouddienstanbieters bereit. Der Anbieter übernimmt die gesamte Infrastrukturverwaltung, damit Sie sich auf die Anwendungsentwicklung und Datenverwaltung konzentrieren können.
+Bei PaaS stellen Sie Ihre Anwendung in einer Umgebung des Clouddienstanbieters bereit. Der Anbieter übernimmt die gesamte Infrastrukturverwaltung, damit Sie sich auf die Anwendungsentwicklung und die Datenverwaltung konzentrieren können.
 
 Azure umfasst mehrere PaaS-Computeangebote, z.B. das Web-Apps-Feature von Azure App Service und Azure Cloud Services (Web- und Workerrollen). In beiden Fällen können Entwickler ihre Anwendung auf unterschiedliche Arten bereitstellen, ohne dass sie sich mit den zugrunde liegenden Details auskennen müssen. Entwickler müssen keine virtuellen Computer (VMs) erstellen, nicht jeweils Remotedesktopprotokoll (RDP) für die Anmeldung verwenden und auch die Anwendung nicht installieren. Sie klicken nur auf eine Schaltfläche (bzw. in die Nähe). Mit den Tools von Microsoft werden dann die VMs bereitgestellt, und anschließend wird die Anwendung darauf bereitgestellt und installiert.
 
@@ -78,9 +77,6 @@ Bei SaaS handelt es sich um Software, die zentral gehostet und verwaltet wird. N
 
 Microsoft Office 365 ist ein gutes Beispiel für ein SaaS-Angebot. Abonnenten zahlen eine monatliche oder jährliche Abonnementgebühr und können Microsoft Exchange, Microsoft OneDrive und die restlichen Anwendungen der Microsoft Office Suite als Dienst nutzen. Die Abonnenten erhalten immer die aktuelle Version, und die Verwaltung des Exchange-Servers ist inbegriffen. Verglichen mit der jährlichen Office-Installation und -Aktualisierung ist dies kostengünstiger und weniger aufwändig.
 
-
-
-
 ## <a name="azure-services"></a>Azure-Dienste
 
 Azure bietet über seine Cloud Computing-Plattform viele Dienste an. Dies sind die folgenden Dienste:
@@ -89,57 +85,57 @@ Azure bietet über seine Cloud Computing-Plattform viele Dienste an. Dies sind d
 
 Dienste zum Hosten und Ausführen der Anwendungsworkload:
 
--   Azure Virtual Machines – sowohl Linux als auch Windows
+- Azure Virtual Machines – sowohl Linux als auch Windows
 
--   App Services (Web-Apps, Mobile Apps, Logic Apps, API-Apps und Funktionen-Apps)
+- App Services (Web-Apps, Mobile Apps, Logic Apps, API-Apps und Funktionen-Apps)
 
--   Azure Batch (für umfangreiche parallele Compute- und Batchcomputeaufträge)
+- Azure Batch (für umfangreiche parallele Compute- und Batchcomputeaufträge)
 
--   Azure Service Fabric
+- Azure Service Fabric
 
--   Azure Container Service
+- Azure Container Service
 
 ### <a name="data-services"></a>Datendienste
 
 Dienste zum Speichern und Verwalten von Daten:
 
--   Azure Storage (umfasst Azure-Dienste für Blob, Warteschlange, Tabelle und Datei)
+- Azure Storage (umfasst Azure-Dienste für Blob, Warteschlange, Tabelle und Datei)
 
--   Azure SQL-Datenbank
+- Azure SQL-Datenbank
 
--   Azure Cosmos DB
+- Azure Cosmos DB
 
--   Microsoft Azure StorSimple
+- Microsoft Azure StorSimple
 
--   Azure Redis Cache
+- Azure Redis Cache
 
 ### <a name="application-services"></a>Anwendungsdienste
 
 Dienste zum Erstellen und Betreiben von Anwendungen:
 
--   Azure Active Directory (Azure AD)
+- Azure Active Directory (Azure AD)
 
--   Azure Service Bus zum Verbinden von verteilten Systemen
+- Azure Service Bus zum Verbinden von verteilten Systemen
 
--   Azure HDInsight für die Big Data-Verarbeitung
+- Azure HDInsight für die Big Data-Verarbeitung
 
--   Azure Scheduler
+- Azure Scheduler
 
--   Azure Media Services
+- Azure Media Services
 
 ### <a name="network-services"></a>Netzwerkdienste
 
 Dienste für Netzwerke sowohl in Azure als auch zwischen Azure und lokalen Datencentern:
 
--   Virtuelles Azure-Netzwerk
+- Virtuelles Azure-Netzwerk
 
--   Azure ExpressRoute
+- Azure ExpressRoute
 
--   Von Azure bereitgestelltes DNS
+- Von Azure bereitgestelltes DNS
 
--   Azure Traffic Manager
+- Azure Traffic Manager
 
--   Azure Content Delivery Network
+- Azure Content Delivery Network
 
 Eine ausführliche Dokumentation zu Azure-Diensten finden Sie in der [Dokumentation zu Azure-Diensten](https://docs.microsoft.com/azure).
 
@@ -153,7 +149,7 @@ Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in ve
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Das Azure-Portal ist eine webbasierte Anwendung, die zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen und -Diensten verwendet werden kann. Das Azure-Portal finden Sie unter https://portal.azure.com. Es enthält ein anpassbares Dashboard und Tools zum Verwalten der Azure-Ressourcen. Darüber hinaus werden Informationen zur Abrechnung für das Abonnement bereitgestellt. Weitere Informationen finden Sie unter [Übersicht über das Microsoft Azure-Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) und [Verwalten von Azure-Ressourcen über das Portal](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Das Azure-Portal ist eine webbasierte Anwendung, die zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen und -Diensten verwendet werden kann. Das Azure-Portal finden Sie unter [Shell.Azure.com](https://portal.azure.com). Es enthält ein anpassbares Dashboard und Tools zum Verwalten der Azure-Ressourcen. Darüber hinaus werden Informationen zur Abrechnung für das Abonnement bereitgestellt. Weitere Informationen finden Sie unter [Übersicht über das Microsoft Azure-Portal](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) und [Verwalten von Azure-Ressourcen über das Portal](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>angeben
 
@@ -171,22 +167,25 @@ Eine Azure Resource Manager-Vorlage ist eine JSON-Datei (JavaScript Object Notat
 
 Zusätzlich zum Erstellen, Verwalten und Löschen von Ressourcen mit dem Azure-Portal können Sie diese Aktivitäten automatisieren, indem Sie PowerShell oder die Azure-Befehlszeilenschnittstelle (CLI) verwenden.
 
-**Azure PowerShell**
+#### <a name="azure-powershell"></a>Azure PowerShell
 
 Azure PowerShell umfasst eine Gruppe von Modulen, mit denen Cmdlets für die Verwaltung von Azure bereitgestellt werden. Sie können die Cmdlets zum Erstellen, Verwalten und Entfernen von Azure-Diensten verwenden. Mit den Cmdlets können Sie einheitliche und wiederholbare Bereitstellungen ohne Benutzereingriff erzielen. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
-**Azure-Befehlszeilenschnittstelle**
+#### <a name="azure-command-line-interface"></a>Azure-Befehlszeilenschnittstelle
 
-Die Azure-Befehlszeilenschnittstelle ist ein Tool, das Sie zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen über die Befehlszeile verwenden können. Die Azure CLI ist für Linux, Mac OS X und Windows verfügbar. Weitere Informationen und technische Details finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli.md).
+Die Azure-Befehlszeilenschnittstelle ist ein Tool, das Sie zum Erstellen, Verwalten und Entfernen von Azure-Ressourcen über die Befehlszeile verwenden können. Die Azure CLI ist für Linux, Mac OS X und Windows verfügbar. Weitere Informationen und technische Details finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-**REST-APIs** Azure basiert auf einem Satz von REST-APIs, die die Benutzeroberfläche des Azure-Portals unterstützen. Die meisten dieser REST-APIs werden ebenfalls unterstützt, um es Ihnen zu ermöglichen, Ihre Azure-Ressourcen und -Apps über jedes internetfähige Gerät programmgesteuert bereitzustellen und zu verwalten. Weitere Informationen finden Sie unter [Azure REST API Reference](https://docs.microsoft.com/rest/api/index) (Azure-REST-API – Referenz).
+#### <a name="rest-apis"></a>REST-APIs
+
+Azure basiert auf einem Satz von REST-APIs, die die Benutzeroberfläche des Azure-Portals unterstützen. Die meisten dieser REST-APIs werden ebenfalls unterstützt, um es Ihnen zu ermöglichen, Ihre Azure-Ressourcen und -Apps über jedes internetfähige Gerät programmgesteuert bereitzustellen und zu verwalten. Weitere Informationen finden Sie unter [Azure REST API Reference](https://docs.microsoft.com/rest/api/index) (Azure-REST-API – Referenz).
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Administratoren können auf Azure PowerShell und die Azure CLI über eine browserbasierte Benutzeroberfläche namens Azure Cloud Shell zugreifen. Diese interaktive Schnittstelle bietet ein flexibles Tool für Linux- und Windows-Administratoren, um die Befehlszeilenschnittstelle ihrer Wahl (Bash oder PowerShell) zu verwenden. Auf Azure Cloud Shell kann über das Portal, als eigenständige Webschnittstelle unter [shell.azure.com](https://shell.azure.com) oder von mehreren anderen Zugangspunkten aus zugegriffen werden. Weitere Informationen finden Sie in der [Übersicht über Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+Administratoren können auf Azure PowerShell und die Azure CLI über eine browserbasierte Benutzeroberfläche namens Azure Cloud Shell zugreifen. Diese interaktive Schnittstelle bietet ein flexibles Tool für Linux- und Windows-Administratoren, um die Befehlszeilenschnittstelle ihrer Wahl (Bash oder PowerShell) zu verwenden. Auf Azure Cloud Shell kann über das Portal, als eigenständige Webschnittstelle unter [shell.azure.com](https://shell.azure.com) oder von mehreren anderen Zugangspunkten aus zugegriffen werden. Weitere Informationen finden Sie in der [Übersicht über Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+
 ## <a name="azure-subscriptions"></a>Azure-Abonnements
 
-Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die volle Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Zusätzlich zu Administratoren kann einzelnen Konten über die rollenbasierte Zugriffssteuerung (RBAC) die detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
+Ein Abonnement ist eine logische Gruppierung von Azure-Diensten, die mit einem Azure-Konto verknüpft ist. Ein einzelnes Azure-Konto kann mehrere Abonnements enthalten. Die Abrechnung für Azure-Dienste erfolgt auf Abonnementbasis. Azure-Abonnements verfügen über einen Kontoadministrator, der die volle Kontrolle über das Abonnement hat, und einen Dienstadministrator, der die Kontrolle über alle Dienste des Abonnements hat. Zusätzlich zu Administratoren kann einzelnen Konten über die rollenbasierte Zugriffssteuerung (RBAC) detaillierte Kontrolle über Azure-Ressourcen gewährt werden.
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Auswählen und Aktivieren eines Azure-Abonnements
 
@@ -208,9 +207,9 @@ Wenn der Gutschriftbetrag überschritten wird, wird Ihr Dienst bis zum Beginn de
 
 Es sind mehrere Kontoadministratorrollen verfügbar, die jederzeit geändert werden können. Zwei wichtige Rollen sind:
 
--   **Dienstadministrator**: Mit dieser Rolle sind Benutzer berechtigt, Azure-Dienste zu verwalten. Standardmäßig wird der Zugriff auf dasselbe Konto wie für den Kontoadministrator gewährt.
+- **Dienstadministrator**: Mit dieser Rolle sind Benutzer berechtigt, Azure-Dienste zu verwalten. Standardmäßig wird der Zugriff auf dasselbe Konto wie für den Kontoadministrator gewährt.
 
--   **Co-Administrator**: Mit dieser Rolle verfügen Sie über den gleichen Zugriff wie der Dienstadministrator. Es ist aber nicht möglich, damit die Zuordnung eines Abonnements zu Azure-Verzeichnissen zu ändern.
+- **Co-Administrator**: Mit dieser Rolle verfügen Sie über den gleichen Zugriff wie der Dienstadministrator. Es ist aber nicht möglich, damit die Zuordnung eines Abonnements zu Azure-Verzeichnissen zu ändern.
 
 Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../../billing/billing-add-change-azure-subscription-administrator.md).
 
@@ -224,9 +223,9 @@ Weitere Informationen finden Sie unter [Herunterladen von Azure-Rechnungen und t
 
 Zusätzlich zum Anzeigen der Abrechnung im Portal können Sie auf die Abrechnungsinformationen zugreifen, indem Sie über die Azure-Abrechnungs-REST-APIs ein Skript oder Programm verwenden:
 
--   Sie können die Azure-Nutzungs-API zum Abrufen Ihrer Nutzungsdaten verwenden. Sie können die Abrechnungs- bzw. Nutzungsinformationen optimieren, indem Sie zusammengehörende Azure-Ressourcen entsprechend markieren. Beispielsweise können Sie alle Ressourcen einer Ressourcengruppe mit einem Abteilungsnamen oder Projektnamen markieren und dann die spezifischen Kosten für diese Markierung nachverfolgen.
+- Sie können die Azure-Nutzungs-API zum Abrufen Ihrer Nutzungsdaten verwenden. Sie können die Abrechnungs- bzw. Nutzungsinformationen optimieren, indem Sie zusammengehörende Azure-Ressourcen entsprechend markieren. Beispielsweise können Sie alle Ressourcen einer Ressourcengruppe mit einem Abteilungsnamen oder Projektnamen markieren und dann die spezifischen Kosten für diese Markierung nachverfolgen.
 
--   Sie können die Azure-Gebührenkarten-API verwenden, um alle verfügbaren Ressourcen zusammen mit den Metadaten und Preisinformationen zu diesen einzelnen Ressourcen aufzulisten.
+- Sie können die Azure-Gebührenkarten-API verwenden, um alle verfügbaren Ressourcen zusammen mit den Metadaten und Preisinformationen zu diesen einzelnen Ressourcen aufzulisten.
 
 Weitere Informationen finden Sie unter [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../../billing/billing-usage-rate-card-overview.md).
 
@@ -246,35 +245,35 @@ Außerdem enthält der Resource Manager Bereitstellungsfunktionen, die eine anpa
 
 Der Ressourcen-Manager bietet mehrere Vorteile:
 
--   Sie können alle Ressourcen für Ihre Lösung als Gruppe bereitstellen, verwalten und überwachen, anstatt diese Ressourcen einzeln zu verarbeiten.
+- Sie können alle Ressourcen für Ihre Lösung als Gruppe bereitstellen, verwalten und überwachen, anstatt diese Ressourcen einzeln zu verarbeiten.
 
--   Sie können die Lösung während des gesamten Entwicklungslebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
+- Sie können die Lösung während des gesamten Entwicklungslebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden.
 
--   Sie können zum Verwalten Ihrer Infrastruktur anstelle von Skripts auch deklarative Vorlagen verwenden.
+- Sie können zum Verwalten Ihrer Infrastruktur anstelle von Skripts auch deklarative Vorlagen verwenden.
 
--   Sie können die Abhängigkeiten zwischen Ressourcen definieren, sodass diese in der richtigen Reihenfolge bereitgestellt werden.
+- Sie können die Abhängigkeiten zwischen Ressourcen definieren, sodass diese in der richtigen Reihenfolge bereitgestellt werden.
 
--   Sie können die Zugriffssteuerung auf alle Dienste in der Ressourcengruppe anwenden, da die rollenbasierte Zugriffssteuerung (RBAC) standardmäßig in die Verwaltungsplattform integriert ist.
+- Sie können die Zugriffssteuerung auf alle Dienste in der Ressourcengruppe anwenden, da die rollenbasierte Zugriffssteuerung (RBAC) standardmäßig in die Verwaltungsplattform integriert ist.
 
--   Sie können Tags auf Ressourcen anwenden, um alle Ressourcen in Ihrem Abonnement logisch zu organisieren.
+- Sie können Tags auf Ressourcen anwenden, um alle Ressourcen in Ihrem Abonnement logisch zu organisieren.
 
--   Indem Sie die Kosten für eine Gruppe mit Ressourcen anzeigen, für die das gleiche Tag verwendet wird, erhalten Sie die Abrechnungsinformationen für Ihre Organisation.
+- Indem Sie die Kosten für eine Gruppe mit Ressourcen anzeigen, für die das gleiche Tag verwendet wird, erhalten Sie die Abrechnungsinformationen für Ihre Organisation.
 
 ### <a name="tips-for-creating-resource-groups"></a>Tipps zum Erstellen von Ressourcengruppen
 
 Beachten Sie diese Tipps, wenn Sie Entscheidungen zu Ihren Ressourcengruppen treffen:
 
--   Alle Ressourcen einer Ressourcengruppe sollten über den gleichen Lebenszyklus verfügen.
+- Alle Ressourcen einer Ressourcengruppe sollten über den gleichen Lebenszyklus verfügen.
 
--   Sie können eine Ressource nur jeweils einer Gruppe zuweisen.
+- Sie können eine Ressource nur jeweils einer Gruppe zuweisen.
 
--   Sie können eine Ressource jederzeit einer Ressourcengruppe hinzufügen bzw. sie daraus entfernen. Jede Ressource muss einer Ressourcengruppe angehören. Dies bedeutet also Folgendes: Wenn Sie eine Ressource aus einer Gruppe entfernen, müssen Sie sie einer anderen Gruppe hinzufügen.
+- Sie können eine Ressource jederzeit einer Ressourcengruppe hinzufügen bzw. sie daraus entfernen. Jede Ressource muss einer Ressourcengruppe angehören. Dies bedeutet also Folgendes: Wenn Sie eine Ressource aus einer Gruppe entfernen, müssen Sie sie einer anderen Gruppe hinzufügen.
 
--   Sie können die meisten Arten von Ressourcen jederzeit in eine andere Ressourcengruppe verschieben.
+- Sie können die meisten Arten von Ressourcen jederzeit in eine andere Ressourcengruppe verschieben.
 
--   Die Ressourcen einer Ressourcengruppe können sich in unterschiedlichen Regionen befinden.
+- Die Ressourcen einer Ressourcengruppe können sich in unterschiedlichen Regionen befinden.
 
--   Sie können eine Ressourcengruppe verwenden, um den Zugriff für die darin enthaltenen Ressourcen zu steuern.
+- Sie können eine Ressourcengruppe verwenden, um den Zugriff für die darin enthaltenen Ressourcen zu steuern.
 
 ### <a name="building-resource-manager-templates"></a>Erstellen von Resource Manager-Vorlagen
 
@@ -282,21 +281,21 @@ Mit Resource Manager-Vorlagen werden die Ressourcen und Ressourcenkonfiguratione
 
 Eine Resource Manager-Vorlage besteht aus vier Abschnitten:
 
--   **Parameter**: Dies sind Eingaben für die Bereitstellung. Parameterwerte können vom Benutzer oder automatisiert angegeben werden. Ein Beispielparameter ist ein Administratorbenutzername mit dem dazugehörigen Kennwort für eine Windows-VM. Die Parameterwerte werden nach dem Angeben für die gesamte Bereitstellung verwendet.
+- **Parameter**: Dies sind Eingaben für die Bereitstellung. Parameterwerte können vom Benutzer oder automatisiert angegeben werden. Ein Beispielparameter ist ein Administratorbenutzername mit dem dazugehörigen Kennwort für eine Windows-VM. Die Parameterwerte werden nach dem Angeben für die gesamte Bereitstellung verwendet.
 
--   **Variablen**: Enthalten Werte, die für die gesamte Bereitstellung verwendet werden. Ein Variablenwert wird im Gegensatz zu Parametern nicht während der Bereitstellung angegeben. Stattdessen wird er hartcodiert oder dynamisch generiert.
+- **Variablen**: Enthalten Werte, die für die gesamte Bereitstellung verwendet werden. Ein Variablenwert wird im Gegensatz zu Parametern nicht während der Bereitstellung angegeben. Stattdessen wird er hartcodiert oder dynamisch generiert.
 
--   **Ressourcen**: In diesem Abschnitt der Vorlage werden die bereitzustellenden Ressourcen definiert, z.B. virtuelle Computer, Speicherkonten und virtuelle Netzwerke.
+- **Ressourcen**: In diesem Abschnitt der Vorlage werden die bereitzustellenden Ressourcen definiert, z.B. virtuelle Computer, Speicherkonten und virtuelle Netzwerke.
 
--   **Ausgabe**: Nach Abschluss einer Bereitstellung kann der Resource Manager Daten zurückgeben, z.B. dynamisch generierte Verbindungszeichenfolgen.
+- **Ausgabe**: Nach Abschluss einer Bereitstellung kann der Resource Manager Daten zurückgeben, z.B. dynamisch generierte Verbindungszeichenfolgen.
 
 Die folgenden Mechanismen sind für die Automatisierung der Bereitstellung verfügbar:
 
--   **Funktionen**: Sie können in Resource Manager-Vorlagen mehrere Funktionen verwenden. Hierzu gehören Vorgänge wie das Konvertieren einer Zeichenfolge in Kleinbuchstaben, das Bereitstellen von mehreren Instanzen einer definierten Ressource und das dynamische Zurückgeben der Zielressourcengruppe. Resource Manager-Funktionen sind für das Erstellen von dynamischen Bereitstellungen hilfreich.
+- **Funktionen**: Sie können in Resource Manager-Vorlagen mehrere Funktionen verwenden. Hierzu gehören Vorgänge wie das Konvertieren einer Zeichenfolge in Kleinbuchstaben, das Bereitstellen von mehreren Instanzen einer definierten Ressource und das dynamische Zurückgeben der Zielressourcengruppe. Resource Manager-Funktionen sind für das Erstellen von dynamischen Bereitstellungen hilfreich.
 
--   **Ressourcenabhängigkeiten**: Wenn Sie mehrere Ressourcen bereitstellen, sind einige Ressourcen von anderen Ressourcen abhängig. Zur Erleichterung der Bereitstellung können Sie eine Abhängigkeitsdeklaration verwenden, sodass abhängige Ressourcen vor anderen Ressourcen bereitgestellt werden.
+- **Ressourcenabhängigkeiten**: Wenn Sie mehrere Ressourcen bereitstellen, sind einige Ressourcen von anderen Ressourcen abhängig. Zur Erleichterung der Bereitstellung können Sie eine Abhängigkeitsdeklaration verwenden, sodass abhängige Ressourcen vor anderen Ressourcen bereitgestellt werden.
 
--   **Vorlagenlinks**: In einer Resource Manager-Vorlage können Sie einen Link zu einer anderen Vorlage einrichten. Auf diese Weise können Sie die Bereitstellung in eine Gruppe von zielgerichteten, zweckgebundenen Vorlagen unterteilen.
+- **Vorlagenlinks**: In einer Resource Manager-Vorlage können Sie einen Link zu einer anderen Vorlage einrichten. Auf diese Weise können Sie die Bereitstellung in eine Gruppe von zielgerichteten, zweckgebundenen Vorlagen unterteilen.
 
 Sie können Resource Manager-Vorlagen in jedem beliebigen Text-Editor erstellen. Das Azure SDK für Visual Studio enthält aber Tools, die hierfür hilfreich sind. Mit Visual Studio können Sie der Vorlage Ressourcen über einen Assistenten hinzufügen und die Vorlage dann direkt aus Visual Studio bereitstellen und debuggen. Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md).
 
@@ -310,17 +309,17 @@ Um Zugriff zu gewähren, weisen Sie dem Benutzer oder der Benutzergruppe eine Ro
 
 Hier sind einige Beispielrollen angegeben, die in Azure integriert sind:
 
--   **Besitzer**: Ein Benutzer mit dieser Rolle kann alles verwalten, z.B. auch den Zugriff.
+- **Besitzer**: Ein Benutzer mit dieser Rolle kann alles verwalten, z.B. auch den Zugriff.
 
--   **Leser**: Eine Benutzer mit dieser Rolle kann Ressourcen jedes Typs (mit Ausnahme von Geheimnissen) lesen, aber keine Änderungen vornehmen.
+- **Leser**: Eine Benutzer mit dieser Rolle kann Ressourcen jedes Typs (mit Ausnahme von Geheimnissen) lesen, aber keine Änderungen vornehmen.
 
--   **Mitwirkender für virtuelle Computer**: Ein Benutzer mit dieser Rolle kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk, mit dem er verbunden ist, oder das Speicherkonto, unter dem sich die VHD-Datei befindet.
+- **Mitwirkender für virtuelle Computer**: Ein Benutzer mit dieser Rolle kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk, mit dem er verbunden ist, oder das Speicherkonto, unter dem sich die VHD-Datei befindet.
 
--   **SQL-DB-Mitwirkender**: Ein Benutzer mit dieser Rolle kann SQL-Datenbanken verwalten, aber nicht die sicherheitsbezogenen Richtlinien.
+- **SQL-DB-Mitwirkender**: Ein Benutzer mit dieser Rolle kann SQL-Datenbanken verwalten, aber nicht die sicherheitsbezogenen Richtlinien.
 
--   **SQL-Sicherheits-Manager**: Ein Benutzer mit dieser Rolle kann die sicherheitsbezogenen Richtlinien von SQL-Servern und -Datenbanken verwalten.
+- **SQL-Sicherheits-Manager**: Ein Benutzer mit dieser Rolle kann die sicherheitsbezogenen Richtlinien von SQL-Servern und -Datenbanken verwalten.
 
--   **Speicherkontomitwirkender**: Ein Benutzer mit dieser Rolle kann Speicherkonten verwalten, aber nicht den Zugriff auf die Speicherkonten.
+- **Speicherkontomitwirkender**: Ein Benutzer mit dieser Rolle kann Speicherkonten verwalten, aber nicht den Zugriff auf die Speicherkonten.
 
 Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md).
 
@@ -340,19 +339,19 @@ Da virtuelle Azure-Computer eine vollständige Kontrolle der Konfiguration ermö
 
 Sie können virtuelle Azure-Computer bereitstellen, indem Sie das Azure-Portal, die Automatisierung mit dem Azure PowerShell-Modul oder die Automatisierung per plattformübergreifender CLI verwenden.
 
-**Portal**
+#### <a name="portal"></a>Portal
 
 Für die Bereitstellung eines virtuellen Computers mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können viele verschiedene Betriebssystemimages mit unterschiedlichen Konfigurationen wählen. Alle Speicher- und Netzwerkanforderungen werden während der Bereitstellung konfiguriert. Weitere Informationen finden Sie unter „Erstellen einer Linux-VM mit dem Azure-Portal“ für [Windows](../../virtual-machines/windows/quick-create-portal.md) und [Linux](../../virtual-machines/linux/quick-create-portal.md).
 
 Zusätzlich zur Bereitstellung eines virtuellen Computers mit dem Azure-Portal können Sie auch eine Azure Resource Manager-Vorlage über das Portal bereitstellen. Auf diese Weise werden alle Ressourcen so bereitgestellt und konfiguriert, wie sie in der Vorlage definiert sind. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-**PowerShell**
+#### <a name="powershell"></a>PowerShell
 
 Die Bereitstellung eines virtuellen Azure-Computers mit PowerShell ermöglicht die vollständige Automatisierung der Bereitstellung aller dazugehörigen VM-Ressourcen, z.B. Speicher und Netzwerk. Weitere Informationen finden Sie unter [Erstellen einer Windows-VM mit dem Resource Manager und PowerShell](../../virtual-machines/windows/quick-create-powershell.md).
 
 Zusätzlich zum individuellen Bereitstellen von Azure-Computeressourcen können Sie das Azure PowerShell-Modul verwenden, um eine Azure Resource Manager-Vorlage bereitzustellen. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
-**Befehlszeilenschnittstelle**
+#### <a name="command-line-interface-cli"></a>Befehlszeilenschnittstelle (CLI)
 
 Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Wenn Sie den Azure CLI-Befehl **vm quick-create** verwenden, werden alle dazugehörigen VM-Ressourcen (einschließlich Speicher und Netzwerk) und der virtuelle Computer selbst bereitgestellt. Weitere Informationen finden Sie unter [Erstellen einer Linux-VM mit der Azure CLI](../../virtual-machines/linux/quick-create-cli.md).
 
@@ -364,7 +363,6 @@ Für den Zugriff auf einen virtuellen Computer über das Internet muss für die 
 
 Sie verwalten den Zugriff auf den virtuellen Computer über die öffentliche IP-Adresse, indem Sie eine NSG-Ressource (Netzwerksicherheitsgruppe) verwenden. Eine NSG verhält sich wie eine Firewall und kann Datenverkehr über die Netzwerkschnittstelle oder ein Subnetz für eine Gruppe von definierten Ports zulassen oder verweigern. Zum Erstellen einer Remotedesktopsitzung mit einer Azure-VM müssen Sie die NSG beispielsweise so konfigurieren, dass eingehender Datenverkehr über Port 3389 zugelassen ist. Weitere Informationen finden Sie unter [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../../virtual-machines/windows/nsg-quickstart-portal.md).
 
-
 Schließlich sollten Sie die Sicherheit für einen virtuellen Azure-Computer wie bei der Verwaltung aller Computersysteme über das Betriebssystem gewährleisten, indem Sie Sicherheitsanmeldeinformationen und Softwarefirewalls verwenden.
 
 ## <a name="azure-storage"></a>Azure Storage
@@ -373,31 +371,31 @@ Azure Storage ist ein von Microsoft verwalteter Dienst zur Bereitstellung von da
 
 Azure-Speicherkonten können mit unterschiedlichen Redundanzebenen konfiguriert werden:
 
--   **Lokal redundanter Speicher** bietet Hochverfügbarkeit, indem sichergestellt wird, dass synchron drei Kopien aller Daten erstellt werden, bevor ein Schreibvorgang als erfolgreich angesehen wird. Diese Kopien werden in einer einzelnen Einrichtung in einer einzelnen Region gespeichert. Die Replikate befinden sich in separaten Fehler- und Upgradedomänen. Dies bedeutet Folgendes: Die Daten sind auch dann verfügbar, wenn ein Speicherknoten, der Ihre Daten enthält, ausfällt oder zur Durchführung eines Updates in den Offlinezustand versetzt wird.
+- **Lokal redundanter Speicher** bietet Hochverfügbarkeit, indem sichergestellt wird, dass synchron drei Kopien aller Daten erstellt werden, bevor ein Schreibvorgang als erfolgreich angesehen wird. Diese Kopien werden in einer einzelnen Einrichtung in einer einzelnen Region gespeichert. Die Replikate befinden sich in separaten Fehler- und Upgradedomänen. Dies bedeutet Folgendes: Die Daten sind auch dann verfügbar, wenn ein Speicherknoten, der Ihre Daten enthält, ausfällt oder zur Durchführung eines Updates in den Offlinezustand versetzt wird.
 
--   **Georedundanter Speicher** erstellt drei synchrone Kopien der Daten in der primären Region, um für Hochverfügbarkeit zu sorgen, und anschließend asynchron drei Replikate in einer verknüpften Region für die Notfallwiederherstellung.
+- **Georedundanter Speicher** erstellt drei synchrone Kopien der Daten in der primären Region, um für Hochverfügbarkeit zu sorgen, und anschließend asynchron drei Replikate in einer verknüpften Region für die Notfallwiederherstellung.
 
--   Bei **georedundantem Speicher mit Lesezugriff** handelt es sich um georedundanten Speicher, der zusätzlich über die Möglichkeit verfügt, dass Daten in der sekundären Region gelesen werden. Hierdurch ist der Speicher für Teilnotfallwiederherstellungen geeignet. Wenn ein Problem mit der primären Region besteht, können Sie Ihre Anwendung so ändern, dass sie über schreibgeschützten Zugriff auf die verknüpfte Region verfügt.
+- Bei **georedundantem Speicher mit Lesezugriff** handelt es sich um georedundanten Speicher, der zusätzlich über die Möglichkeit verfügt, dass Daten in der sekundären Region gelesen werden. Hierdurch ist der Speicher für Teilnotfallwiederherstellungen geeignet. Wenn ein Problem mit der primären Region besteht, können Sie Ihre Anwendung so ändern, dass sie über schreibgeschützten Zugriff auf die verknüpfte Region verfügt.
 
 ### <a name="use-cases"></a>Anwendungsfälle
 
 Für jeden Speichertyp gilt ein anderer Anwendungsfall.
 
-**Blob Storage**
+#### <a name="blob-storage"></a>Blob Storage
 
 Der Ausdruck *Blob* ist ein Akronym für *Binary Large Object*. Blobs sind unstrukturierte Dateien, also beispielsweise die Dateien, die Sie auf Ihrem Computer speichern. In Blob Storage können alle Arten von Text- oder Binärdaten gespeichert werden, z. B. ein Dokument, eine Mediendatei oder ein Installer einer Anwendung. Der Blobspeicher wird auch als Objektspeicher bezeichnet. Azure Blob Storage umfasst auch Azure Virtual Machines-Datenträger für Daten.
 
 Azure Storage unterstützt drei Arten von Blobs:
 
--   **Blockblobs** werden für gewöhnliche Dateien mit einer Größe von bis zu 195 GB verwendet (4 MB mal 50.000 Blöcke). Der wichtigste Anwendungsfall für Blockblobs ist die Speicherung von Dateien, die von Anfang bis Ende gelesen werden, z.B. Mediendateien oder Imagedateien für Websites. Sie werden als Blockblobs bezeichnet, da Dateien, die größer als 64 MB sind, als kleine Blöcke hochgeladen werden müssen. Diese Blöcke werden dann im endgültigen Blob konsolidiert (Commit-Vorgang).
+- **Blockblobs** werden für gewöhnliche Dateien mit einer Größe von bis zu 195 GB verwendet (4 MB mal 50.000 Blöcke). Der wichtigste Anwendungsfall für Blockblobs ist die Speicherung von Dateien, die von Anfang bis Ende gelesen werden, z.B. Mediendateien oder Imagedateien für Websites. Sie werden als Blockblobs bezeichnet, da Dateien, die größer als 64 MB sind, als kleine Blöcke hochgeladen werden müssen. Diese Blöcke werden dann im endgültigen Blob konsolidiert (Commit-Vorgang).
 
--   **Seitenblobs** werden für Random-Access-Dateien mit einer Größe von bis zu 1 TB verwendet. Seitenblobs werden hauptsächlich als Hintergrundspeicher für die VHDs verwendet, die dauerhafte Datenträger für Azure Virtual Machines, den IaaS-Computedienst von Azure, bereitstellen. Sie werden als Seitenblobs bezeichnet, da sie zufälligen Lese-/Schreibzugriff auf 512-Byte-Seiten ermöglichen.
+- **Seitenblobs** werden für Random-Access-Dateien mit einer Größe von bis zu 1 TB verwendet. Seitenblobs werden hauptsächlich als Hintergrundspeicher für die VHDs verwendet, die dauerhafte Datenträger für Azure Virtual Machines, den IaaS-Computedienst von Azure, bereitstellen. Sie werden als Seitenblobs bezeichnet, da sie zufälligen Lese-/Schreibzugriff auf 512-Byte-Seiten ermöglichen.
 
--   **Anfügeblobs** bestehen wie Blockblobs auch aus Blöcken, aber sie sind für Anfügevorgänge optimiert. Diese werden häufig eingesetzt, um Informationen aus mindestens einer Quelle in demselben Blob zu protokollieren. Beispielsweise können Sie die gesamte Protokollierung der Ablaufverfolgung für eine Anwendung, die auf mehreren VMs ausgeführt wird, in dasselbe Anfügeblob schreiben. Ein einzelnes Anfügeblob kann eine maximale Größe von 195 GB haben.
+- **Anfügeblobs** bestehen wie Blockblobs auch aus Blöcken, aber sie sind für Anfügevorgänge optimiert. Diese werden häufig eingesetzt, um Informationen aus mindestens einer Quelle in demselben Blob zu protokollieren. Beispielsweise können Sie die gesamte Protokollierung der Ablaufverfolgung für eine Anwendung, die auf mehreren VMs ausgeführt wird, in dasselbe Anfügeblob schreiben. Ein einzelnes Anfügeblob kann eine maximale Größe von 195 GB haben.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 
-**File Storage**
+#### <a name="file-storage"></a>File Storage
 
 Azure File Storage ist ein Dienst, bei dem Dateifreigaben in der Cloud mit dem standardmäßigen SMB-Protokoll (Server Message Block) bereitgestellt werden können. Der Dienst unterstützt sowohl SMB 2.1 als auch SMB 3.0. Mit Azure File Storage können Sie Anwendungen, für die Dateifreigaben benötigt werden, schnell und ohne teures Umschreiben zu Azure migrieren. Anwendungen, die auf virtuellen Azure-Computern, in Clouddiensten oder auf lokalen Clients ausgeführt werden, können eine Dateifreigabe in der Cloud bereitstellen. Dies ähnelt dem Bereitstellen einer typischen SMB-Freigabe durch eine Desktopanwendung. Die File Storage-Freigaben können dann von beliebig vielen Anwendungskomponenten gleichzeitig eingebunden und genutzt werden.
 
@@ -405,7 +403,7 @@ Da es sich bei File Storage-Freigaben um gewöhnliche SMB-Dateifreigaben handelt
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure File Storage unter Windows](../../storage/files/storage-how-to-use-files-windows.md) und [Verwenden des Azure-Dateispeichers unter Linux](../../storage/files/storage-how-to-use-files-linux.md).
 
-**Table Storage**
+#### <a name="table-storage"></a>Table Storage
 
 Azure Table Storage ist ein Dienst, bei dem strukturierte NoSQL-Daten in der Cloud gespeichert werden. Bei Table Storage handelt es sich um einen Schlüssel-/Attributspeicher mit einem schemalosen Design. Aufgrund der Schemalosigkeit von Table Storage ist es einfach, Ihre Daten an die Entwicklung Ihrer Anwendungen anzupassen. Der Datenzugriff ist für alle Arten von Anwendungen schnell und kostengünstig. Table Storage ist in der Regel erheblich günstiger als herkömmliche SQL-Lösungen für ähnliche Datenmengen.
 
@@ -413,7 +411,7 @@ Mit Table Storage können Sie flexible Datasets wie Benutzerdaten für Webanwend
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure Table Storage](../../cosmos-db/table-storage-how-to-use-dotnet.md).
 
-**Queue Storage**
+#### <a name="queue-storage"></a>Queue Storage
 
 Azure Queue Storage ermöglicht Cloud-Messaging zwischen Anwendungskomponenten. Bei der Entwicklung skalierbarer Anwendungen werden häufig einzelne Anwendungskomponenten entkoppelt, um eine unabhängige Skalierung zu ermöglichen. Queue Storage bietet asynchrones Messaging für die Kommunikation zwischen Anwendungskomponenten, egal ob diese in der Cloud, auf dem Desktop, auf einem lokalen Server oder einem mobilen Gerät ausgeführt werden. Queue Storage unterstützt auch die Verwaltung asynchroner Aufgaben und den Aufbau von Prozessworkflows.
 
@@ -423,19 +421,19 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage](
 
 Es gibt mehrere Optionen zum Bereitstellen eines Speicherkontos.
 
-**Portal**
+#### <a name="portal"></a>Portal
 
 Für die Bereitstellung eines Speicherkontos mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues Speicherkonto in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Nachdem Sie das Speicherkonto erstellt haben, können Sie mit dem Portal einen Blobcontainer oder eine Dateifreigabe erstellen. Sie können Table Storage- und Queue Storage-Entitäten programmgesteuert erstellen. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../../storage/common/storage-quickstart-create-account.md).
 
 Zusätzlich zur Bereitstellung eines Speicherkontos mit dem Azure-Portal können Sie auch eine Azure Resource Manager-Vorlage über das Portal bereitstellen. Hierbei werden alle Ressourcen gemäß der Definition in der Vorlage, einschließlich aller Speicherkonten, bereitgestellt und konfiguriert. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-**PowerShell**
+#### <a name="powershell"></a>PowerShell
 
 Die Bereitstellung eines Azure-Speicherkontos mithilfe von PowerShell ermöglicht eine vollständige Automatisierung der Bereitstellung von Speicherkonten. Weitere Informationen finden Sie unter [Verwenden von Azure PowerShell mit Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
 Zusätzlich zum individuellen Bereitstellen von Azure-Ressourcen können Sie das Azure PowerShell-Modul verwenden, um eine Azure Resource Manager-Vorlage bereitzustellen. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
 
-**Befehlszeilenschnittstelle**
+#### <a name="command-line-interface-cli"></a>Befehlszeilenschnittstelle (CLI)
 
 Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Sie können den Azure CLI-Befehl **storage account create** verwenden, um ein Speicherkonto zu erstellen. Weitere Informationen finden Sie unter [Verwenden der Azure CLI 2.0 mit Azure Storage](../../storage/common/storage-azure-cli.md).
 
@@ -445,66 +443,55 @@ Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage be
 
 Der Zugriff auf Azure Storage ist auf verschiedene Arten möglich, z.B. über das Azure-Portal, während der Erstellung und des Betriebs der VM und über Speicherclientbibliotheken.
 
-**VM-Datenträger**
+#### <a name="virtual-machine-disks"></a>VM-Datenträger
 
 Beim Bereitstellen eines virtuellen Computers müssen Sie auch ein Speicherkonto erstellen, unter dem der Betriebssystemdatenträger des virtuellen Computers und alle weiteren Datenträger angeordnet sind. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. Da die maximale Größe eines Blobs 1.024 GB beträgt, kann ein einzelner VM-Datenträger eine maximale Größe von 1.023 GB haben. Zum Konfigurieren eines größeren Datenträgers können Sie für den virtuellen Computer mehrere Datenträger für Daten bereitstellen und zusammen als logischen Einzeldatenträger in einem Pool anordnen. Weitere Informationen finden Sie im Artikel zur Verwaltung von Azure-Datenträgern für [Windows](../../virtual-machines/windows/tutorial-manage-data-disk.md) und [Linux](../../virtual-machines/linux/tutorial-manage-disks.md).
 
-**Speichertools**
+#### <a name="storage-tools"></a>Speichertools
 
 Auf Azure Storage-Konten kann mit vielen unterschiedlichen Storage-Explorern zugegriffen werden, z.B. Visual Studio Cloud-Explorer. Mit diesen Tools können Sie Speicherkonten und Daten durchsuchen. Weitere Informationen und eine Liste mit verfügbaren Storage-Explorern finden Sie unter [Azure Storage-Clienttools](../../storage/common/storage-explorers.md).
 
-**Storage-API**
+#### <a name="storage-api"></a>Storage-API
 
 Auf Storage-Ressourcen kann über jede Sprache zugegriffen werden, die für HTTP/HTTPS-Anforderungen geeignet ist. Zusätzlich bietet Azure Storage Programmierbibliotheken für einige beliebte Sprachen. Diese Bibliotheken vereinfachen die Arbeit mit Azure Storage und behandeln bestimmte Details wie synchrone und asynchrone Aufrufe, die Zusammenfassung von Vorgängen, die Ausnahmeverwaltung und automatische Wiederholungen. Weitere Informationen finden Sie unter [Referenz zur REST-API von Azure Storage Services](/rest/api/storageservices/Azure-Storage-Services-REST-API-Reference).
 
-**Speicherzugriffsschlüssel**
+#### <a name="storage-access-keys"></a>Speicherzugriffsschlüssel
 
 Jedes Speicherkonto verfügt über zwei Authentifizierungsschlüssel: einen primären und einen sekundären Schlüssel. Beide können für Speicherzugriffsvorgänge verwendet werden. Diese Speicherschlüssel werden zum Schützen eines Speicherkontos genutzt und sind für den programmgesteuerten Zugriff auf Daten erforderlich. Es sind zwei Schlüssel vorhanden, um bei Bedarf einen Rollover der Schlüssel zur Erhöhung der Sicherheit zu ermöglichen. Es ist sehr wichtig, diese Schlüssel sicher aufzubewahren, da sie zusammen mit dem Kontonamen den unbegrenzten Zugriff auf alle Daten im Speicherkonto ermöglichen.
 
-**Shared Access Signatures**
+#### <a name="shared-access-signatures"></a>Shared Access Signatures
 
 Wenn Sie anderen Benutzern kontrollierten Zugriff auf Ihre Speicherressourcen gewähren müssen, können Sie eine Shared Access Signature erstellen. Eine Shared Access Signature ist ein Token, das an eine URL angefügt werden kann und den delegierten Zugriff auf eine Speicherressource ermöglicht. Jeder Benutzer, der über dieses Token verfügt, kann während der Gültigkeitsdauer mit festgelegten Berechtigungen auf die Ressource zugreifen, auf die das Token verweist. Weitere Informationen finden Sie unter [Verwenden von Shared Access Signatures](../../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ## <a name="azure-virtual-network"></a>Virtuelles Azure-Netzwerk
 
+Virtuelle Netzwerke sind erforderlich, um die Kommunikation zwischen virtuellen Computern zu unterstützen. Sie können Subnetze, benutzerdefinierte IP-Adressen, DNS-Einstellungen, Sicherheitsfilter und den Lastenausgleich definieren. Azure unterstützt verschiedene Anwendungsfälle: rein cloudbasierte Netzwerke oder hybride virtuelle Netzwerke.
 
-Virtuelle Netzwerke sind erforderlich, um die Kommunikation zwischen virtuellen Computern zu unterstützen. Sie können Subnetze, benutzerdefinierte IP-Adressen, DNS-Einstellungen, Sicherheitsfilter und den Lastenausgleich definieren. Durch Verwendung eines VPN-Gateways oder einer ExpressRoute-Verbindung können Sie virtuelle Azure-Netzwerke mit Ihren lokalen Netzwerken verbinden.
-
-### <a name="use-cases"></a>Anwendungsfälle
-
-Für Azure-Netzwerke gibt es verschiedene Anwendungsfälle.
-
-**Ausschließlich cloudbasierte virtuelle Netzwerke**
+### <a name="cloud-only-virtual-networks"></a>Rein cloudbasierte virtuelle Netzwerke
 
 Ein virtuelles Azure-Netzwerk ist standardmäßig nur für Ressourcen zugänglich, die in Azure gespeichert sind. Ressourcen, die mit demselben virtuellen Netzwerk verbunden sind, können miteinander kommunizieren. Sie können VM-Netzwerkschnittstellen und Lastenausgleichsmodule einer öffentlichen IP-Adresse zuordnen, um den virtuellen Computer über das Internet zugänglich zu machen. Sie können den Zugriff auf die öffentlich verfügbar gemachten Ressourcen schützen, indem Sie eine Netzwerksicherheitsgruppe verwenden.
 
-**Standortübergreifende virtuelle Netzwerke**
+![Virtuelles Azure-Netzwerk für eine zweischichtige Webanwendung](https://docs.microsoft.com/azure/load-balancer/media/load-balancer-internal-overview/ic744147.png)
+
+### <a name="hybrid-virtual-networks"></a>Hybride virtuelle Netzwerke
 
 Sie können ein lokales Netzwerk mit einem virtuellen Azure-Netzwerk verbinden, indem Sie ExpressRoute oder eine Site-to-Site-VPN-Verbindung nutzen. In dieser Konfiguration stellt das virtuelle Azure-Netzwerk im Grunde eine cloudbasierte Erweiterung des lokalen Netzwerks dar.
+![Hybrides virtuelles Netzwerk mit VPN](https://docs.microsoft.com/azure/architecture/reference-architectures/_images/blueprints/hybrid-network-vpn.png)
 
 Da das virtuelle Azure-Netzwerk mit Ihrem lokalen Netzwerk verbunden ist, muss für standortübergreifende virtuelle Netzwerke ein eindeutiger Teil des Adressraums verwendet werden, der von Ihrer Organisation genutzt wird. Ebenso wie verschiedenen Unternehmensstandorten ein spezifisches IP-Subnetz zugewiesen wird, wird Azure bei Erweiterung Ihres Netzwerks zu einem weiteren Standort.
-
-### <a name="deploying-a-virtual-network"></a>Bereitstellen eines virtuellen Netzwerks
-
 Es gibt mehrere Optionen zum Bereitstellen eines virtuellen Netzwerks.
 
-**Portal**
+- [Portal](../..//virtual-network/quick-create-portal.md)
 
-Für die Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues virtuelles Netzwerk in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Wenn Sie im Portal einen neuen virtuellen Computer erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../virtual-network/quick-create-portal.md).
+- [PowerShell](../../virtual-network/quick-create-powershell.md)
 
-Zusätzlich zur Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal können Sie auch eine Azure Resource Manager-Vorlage über das Portal bereitstellen. Hierbei werden alle Ressourcen gemäß der Definition in der Vorlage, einschließlich aller Ressourcen des virtuellen Netzwerks, bereitgestellt und konfiguriert. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+- [Befehlszeilenschnittstelle (CLI)](../../virtual-network/quick-create-cli.md)
 
-**PowerShell**
+- Azure Resource Manager-Vorlagen
 
-Die Bereitstellung eines virtuellen Azure-Netzwerks mithilfe von PowerShell ermöglicht eine vollständige Automatisierung der Bereitstellung von Speicherkonten. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks über PowerShell](../../virtual-network/quick-create-powershell.md).
+>**Verwendung**: Immer dann, wenn Sie mit VMs in Azure arbeiten, verwenden Sie virtuelle Netzwerke. Dies ermöglicht eine Unterteilung Ihrer VMs in öffentliche und private Subnetze, ähnlich wie bei lokalen Rechenzentren.
 
-Zusätzlich zum individuellen Bereitstellen von Azure-Ressourcen können Sie das Azure PowerShell-Modul verwenden, um eine Azure Resource Manager-Vorlage bereitzustellen. Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md).
-
-**Befehlszeilenschnittstelle**
-
-Wie beim PowerShell-Modul auch, ermöglicht die Azure-Befehlszeilenschnittstelle die Automatisierung der Bereitstellung und kann unter den Betriebssystemen Windows, OS X oder Linux verwendet werden. Sie können den Befehl **network vnet create** verwenden, um ein virtuelles Netzwerk zu erstellen. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Netzwerks über die Azure-Befehlszeilenschnittstelle](../../virtual-network/quick-create-cli.md).
-
-Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage bereitzustellen. Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md).
+>**Erste Schritte**: Für die Bereitstellung eines virtuellen Azure-Netzwerks mit dem Azure-Portal sind nur ein aktives Azure-Abonnement und Zugriff auf einen Webbrowser erforderlich. Sie können ein neues virtuelles Netzwerk in einer neuen oder vorhandenen Ressourcengruppe bereitstellen. Wenn Sie im Portal einen neuen virtuellen Computer erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen oder ein neues erstellen. Informationen zum Einstieg finden Sie unter [Erstellen eines virtuellen Netzwerks über das Azure-Portal](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Zugriff und Sicherheit für virtuelle Netzwerke
 
@@ -512,5 +499,5 @@ Sie können virtuelle Azure-Netzwerke mit einer Netzwerksicherheitsgruppe schüt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines virtuellen Windows-Computers](/virtual-machines/windows/quick-create-portal.md)
+- [Erstellen eines virtuellen Windows-Computers](../../virtual-machines/windows/quick-create-portal.md)
 - [Erstellen eines virtuellen Linux-Computers](../../virtual-machines/linux/quick-create-portal.md)

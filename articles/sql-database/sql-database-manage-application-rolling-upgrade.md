@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 08/23/2018
 ms.author: sashan
-ms.openlocfilehash: a73284d679b4be1fbae6d5e1688915c98cbf2392
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 37960995c89c2b30d90ac45dcd8cc44d80088398
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649498"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818615"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Verwalten von parallelen Upgrades von Cloudanwendungen mithilfe der aktiven Georeplikation von SQL-Datenbank
 > [!NOTE]
@@ -31,10 +31,10 @@ Beim Evaluieren der Upgradeoptionen sollten Sie die folgenden Faktoren berücksi
 * Die insgesamt anfallenden Kosten.  Dies schließt zusätzliche Redundanz und Mehrkosten der vom Upgradevorgang verwendeten temporären Komponenten ein. 
 
 ## <a name="upgrading-applications-that-rely-on-database-backups-for-disaster-recovery"></a>Upgraden von Anwendungen, die sich auf Datenbanksicherungen für die Notfallwiederherstellung verlassen
-Wenn sich Ihre Anwendung auf automatische Datenbanksicherungen verlässt und die Geowiederherstellung zur Notfallwiederherstellung verwendet, wird sie normalerweise in einer einzelnen Azure-Region bereitgestellt. In diesem Fall umfasst der Upgradevorgang das Erstellen einer Sicherungsbereitstellung aller am Upgrade beteiligter Anwendungskomponenten. Nutzen Sie Azure Traffic Manager mit dem Failoverprofil, um die Endnutzerunterbrechung zu minimieren.  Das folgende Diagramm veranschaulicht die Betriebsumgebung vor dem Upgradevorgang. Der Endpunkt <i>contoso-1.azurewebsites.net</i> stellt einen Produktionsslot der Anwendung dar, die upgegradet werden muss. Sie müssen einen Stagingslot mit einer vollständig synchronisierten Kopie der Anwendung erstellen, um ein Rollback des Upgrades zu ermöglichen. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
+Wenn sich Ihre Anwendung auf automatische Datenbanksicherungen verlässt und die Geowiederherstellung zur Notfallwiederherstellung verwendet, wird sie normalerweise in einer einzelnen Azure-Region bereitgestellt. In diesem Fall umfasst der Upgradevorgang das Erstellen einer Sicherungsbereitstellung aller am Upgrade beteiligter Anwendungskomponenten. Nutzen Sie Azure Traffic Manager (ATM) mit dem Failoverprofil, um die Endnutzerunterbrechung zu minimieren.  Das folgende Diagramm veranschaulicht die Betriebsumgebung vor dem Upgradevorgang. Der Endpunkt <i>contoso-1.azurewebsites.net</i> stellt einen Produktionsslot der Anwendung dar, die upgegradet werden muss. Sie müssen einen Stagingslot mit einer vollständig synchronisierten Kopie der Anwendung erstellen, um ein Rollback des Upgrades zu ermöglichen. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
 
 1. Erstellen Sie einen Stagingslot für das Upgrade. Hierzu erstellen Sie eine sekundäre Datenbank (1) und stellen eine identische Website in derselben Azure-Region bereit. Überwachen Sie die sekundäre Datenbank, um festzustellen, ob der Seedingprozess abgeschlossen ist.
-2. Erstellen Sie ein Failoverprofil in Azure Traffic Manager mit <i>contoso-1.azurewebsites.net</i> als Onlineendpunkt und <i>contoso-2.azurewebsites.net</i> als Offlineendpunkt. 
+2. Erstellen Sie ein Failoverprofil in ATM mit <i>contoso-1.azurewebsites.net</i> als Onlineendpunkt und <i>contoso-2.azurewebsites.net</i> als Offlineendpunkt. 
 
 > [!NOTE]
 > Beachten Sie, dass sich die Vorbereitungsschritte nicht auf die Anwendung im Produktionsslot auswirken und diese im Vollzugriffsmodus funktionieren kann.
@@ -52,7 +52,7 @@ Wenn die Vorbereitungsschritte abgeschlossen sind, ist die Anwendung bereit für
 
 Wenn das Upgrade erfolgreich abgeschlossen ist, können die Endbenutzer jetzt zu der bereitgestellten Kopie der Anwendung wechseln. Diese wird nun zum Produktionsslot der Anwendung.  Dies umfasst ein paar mehr Schritte, wie im folgenden Diagramm dargestellt.
 
-1. Ändern Sie den Onlineendpunkt im Azure Traffic Manager-Profil in <i>contoso-2.azurewebsites.net</i>, der auf die V2-Version der Website verweist (6). Dieser wird nun zum Produktionsslot mit der V2-Anwendung, und der Endbenutzerdatenverkehr wird an ihn umgeleitet.  
+1. Ändern Sie den Onlineendpunkt im ATM-Profil in <i>contoso-2.azurewebsites.net</i>, der auf die V2-Version der Website verweist (6). Dieser wird nun zum Produktionsslot mit der V2-Anwendung, und der Endbenutzerdatenverkehr wird an ihn umgeleitet.  
 2. Wenn Sie die V1-Anwendungskomponenten nicht mehr benötigen, können Sie diese sicher entfernen (7).   
 
 ![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
@@ -65,7 +65,7 @@ Wenn der Upgradevorgang nicht erfolgreich ist, z.B. aufgrund eines Fehlers im Up
 An dieser Stelle ist die Anwendung voll funktionsfähig, und die Upgradeschritte können wiederholt werden.
 
 > [!NOTE]
-> Das Rollback erfordert keine Änderungen im Azure Traffic Manager-Profil, da es bereits auf <i>contoso-1.azurewebsites.net</i> als aktiven Endpunkt verweist.
+> Das Rollback erfordert keine Änderungen im ATM-Profil, da es bereits auf <i>contoso-1.azurewebsites.net</i> als aktiven Endpunkt verweist.
 > 
 > 
 
@@ -79,12 +79,12 @@ Wenn Ihre Anwendung für die Geschäftskontinuität die Georeplikation nutzt, wi
 * Die Anwendung bleibt jederzeit während des Upgrades vor schwerwiegenden Fehlern geschützt
 * Die georedundanten Komponenten der Anwendung werden parallel mit den aktiven Komponenten upgegradet
 
-Zum Erreichen dieser Ziele nutzen Sie Azure Traffic Manager, indem Sie das Failoverprofil mit einem aktiven Endpunkt und drei Sicherungsendpunkten verwenden.  Das folgende Diagramm veranschaulicht die Betriebsumgebung vor dem Upgradevorgang. Die Websites <i>contoso-1.azurewebsites.net</i> und <i>contoso-dr.azurewebsites.net</i> stellen einen Produktionsslot der Anwendung mit vollständiger geografischer Redundanz dar. Sie müssen einen Stagingslot mit einer vollständig synchronisierten Kopie der Anwendung erstellen, um ein Rollback des Upgrades zu ermöglichen. Der Stagingslot muss ebenfalls georedundant sein, da Sie sicherstellen müssen, dass die Anwendung im Fall eines schwerwiegenden Fehlers während des Upgradevorgangs schnell wiederhergestellt werden kann. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
+Zum Erreichen dieser Ziele nutzen Sie Azure Traffic Manager (ATM), indem Sie das Failoverprofil mit einem aktiven Endpunkt und drei Sicherungsendpunkten verwenden.  Das folgende Diagramm veranschaulicht die Betriebsumgebung vor dem Upgradevorgang. Die Websites <i>contoso-1.azurewebsites.net</i> und <i>contoso-dr.azurewebsites.net</i> stellen einen Produktionsslot der Anwendung mit vollständiger geografischer Redundanz dar. Sie müssen einen Stagingslot mit einer vollständig synchronisierten Kopie der Anwendung erstellen, um ein Rollback des Upgrades zu ermöglichen. Der Stagingslot muss ebenfalls georedundant sein, da Sie sicherstellen müssen, dass die Anwendung im Fall eines schwerwiegenden Fehlers während des Upgradevorgangs schnell wiederhergestellt werden kann. Die folgenden Schritte sind erforderlich, um die Anwendung für das Upgrade vorzubereiten:
 
 1. Erstellen Sie einen Stagingslot für das Upgrade. Hierzu erstellen Sie eine sekundäre Datenbank (1) und stellen eine identische Kopie der Website in derselben Azure-Region bereit. Überwachen Sie die sekundäre Datenbank, um festzustellen, ob der Seedingprozess abgeschlossen ist.
 2. Erstellen Sie im Stagingslot eine georedundante sekundäre Datenbank, indem Sie eine Georeplikation der sekundären Datenbank auf die Sicherungsregion durchführen (dies wird „verkettete Georeplikation“ genannt). Überwachen Sie die sekundäre Sicherungsdatenbank, um festzustellen, ob der Seedingprozess abgeschlossen ist (3).
 3. Erstellen Sie eine Standby-Kopie der Website in der Sicherungsregion, und verknüpfen Sie diese mit der georedundanten sekundären Datenbank (4).  
-4. Fügen Sie dem Failoverprofil in Azure Traffic Manager die zusätzlichen Endpunkte <i>contoso-2.azurewebsites.net</i> und <i>contoso-3.azurewebsites.net</i> als Offlineendpunkte hinzu (5). 
+4. Fügen Sie dem Failoverprofil in ATM die zusätzlichen Endpunkte <i>contoso-2.azurewebsites.net</i> und <i>contoso-3.azurewebsites.net</i> als Offlineendpunkte hinzu (5). 
 
 > [!NOTE]
 > Beachten Sie, dass sich die Vorbereitungsschritte nicht auf die Anwendung im Produktionsslot auswirken und diese im Vollzugriffsmodus funktionieren kann.
@@ -103,7 +103,7 @@ Wenn die Vorbereitungsschritte abgeschlossen sind, ist der Stagingslot bereit f�
 
 Wenn das Upgrade erfolgreich abgeschlossen ist, können die Endbenutzer jetzt zu der V2-Version der Anwendung wechseln. Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte.
 
-1. Ändern Sie den aktiven Endpunkt im Azure Traffic Manager-Profil in <i>contoso-2.azurewebsites.net</i>, der nun auf die V2-Version der Website verweist (9). Dieser wird nun zu einem Produktionsslot mit der V2-Anwendung, und der Endbenutzerdatenverkehr wird an ihn umgeleitet. 
+1. Ändern Sie den aktiven Endpunkt im ATM-Profil in <i>contoso-2.azurewebsites.net</i>, der nun auf die V2-Version der Website verweist (9). Dieser wird nun zu einem Produktionsslot mit der V2-Anwendung, und der Endbenutzerdatenverkehr wird an ihn umgeleitet. 
 2. Wenn Sie die V1-Anwendung nicht mehr benötigen, können Sie diese sicher entfernen (10 und 11).  
 
 ![Konfiguration der SQL-Datenbank-Georeplikation Cloudbasierte Notfallwiederherstellung](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
@@ -116,7 +116,7 @@ Wenn der Upgradevorgang nicht erfolgreich ist, z.B. aufgrund eines Fehlers im Up
 An dieser Stelle ist die Anwendung voll funktionsfähig, und die Upgradeschritte können wiederholt werden.
 
 > [!NOTE]
-> Das Rollback erfordert keine Änderungen im Azure Traffic Manager-Profil, da es bereits auf <i>contoso-1.azurewebsites.net</i> als aktiven Endpunkt verweist.
+> Das Rollback erfordert keine Änderungen im ATM-Profil, da es bereits auf <i>contoso-1.azurewebsites.net</i> als aktiven Endpunkt verweist.
 > 
 > 
 

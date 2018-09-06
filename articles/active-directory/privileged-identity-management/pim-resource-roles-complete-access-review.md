@@ -1,6 +1,6 @@
 ---
-title: Ausführen einer Zugriffsüberprüfung für Azure-Ressourcen mit Privileged Identity Management | Microsoft Docs
-description: Beschreibt, wie Sie eine Zugriffsüberprüfung für Azure-Ressourcen ausführen.
+title: Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Zugriffsüberprüfung für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) abschließen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: f1fc23afb41753bfe358cb05376a5ee9a07e34fd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: f998c509e9bea65980367690a5e9d03f579b8e98
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620041"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189126"
 ---
-# <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Ausführen einer Zugriffsüberprüfung für Azure-Ressourcen mit Privileged Identity Management
+# <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>Abschließen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM
 Nachdem eine [Zugriffsüberprüfung gestartet wurde](pim-resource-roles-start-access-review.md), können Administratoren für privilegierte Rollen den privilegierten Zugriff überprüfen. Privileged Identity Management (PIM) für Azure-Ressourcen sendet automatisch eine E-Mail, in der Benutzer aufgefordert werden, ihren Zugriff zu überprüfen. Wenn ein Benutzer diese E-Mail nicht erhalten hat, können Sie ihm die Anweisungen unter [Ausführen einer Zugriffsüberprüfung](pim-resource-roles-perform-access-review.md) zusenden.
 
 Wenn der Zeitraum für die Zugriffsüberprüfung abgelaufen ist oder alle Benutzer die Selbstüberprüfung abgeschlossen haben, führen Sie die Schritte in diesem Artikel aus, um die Überprüfung zu verwalten und die Ergebnisse anzuzeigen.
@@ -60,5 +60,7 @@ Auf der Registerkarte **Ergebnisse** können Sie eine Liste mit Ihren Ergebnisse
 Zeigen Sie Prüfer für Ihre vorhandene Zugriffsüberprüfung an, und fügen Sie sie hinzu. Erinnern Sie Prüfer daran, ihre Überprüfungen durchzuführen.
 ![Prüfer hinzufügen](media/azure-pim-resource-rbac/rbac-access-review-reviewers.png)
 
+## <a name="next-steps"></a>Nächste Schritte
 
-
+- [Starten einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-start-access-review.md)
+- [Ausführen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM](pim-resource-roles-perform-access-review.md)

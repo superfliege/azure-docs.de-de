@@ -1,6 +1,6 @@
 ---
-title: Erzwingen der Multi-Factor Authentication | Microsoft Docs
-description: Erfahren Sie, wie Sie mit der Erweiterung Azure Active Directory Privileged Identity Management Multi-Factor Authentication (MFA) als erforderlich festlegen.
+title: Anfordern der mehrstufigen Authentifizierung für Azure AD-Verzeichnisrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die mehrstufige Authentifizierung für Azure AD-Verzeichnisrollen in Azure AD Privileged Identity Management (PIM) anfordern.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8e1c0fa212b31c05fcc4559f9f8d42b627f0da0e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9777a7d2ed07ea2edf4bea661a5065c808de9f2b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622846"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188352"
 ---
-# <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>Erfordern von MFA in Azure AD Privileged Identity Management
+# <a name="require-multi-factor-authentication-for-azure-ad-directory-roles-in-pim"></a>Anfordern der mehrstufigen Authentifizierung für Azure AD-Verzeichnisrollen in PIM
 Es wird empfohlen, von allen Administratoren Multi-Factor Authentication (MFA) zu fordern. Auf diese Weise sinkt das Risiko eines Angriffs aufgrund eines offengelegten Kennworts.
 
 Sie können festlegen, dass Benutzer beim Anmelden eine mehrstufige Authentifizierung durchlaufen müssen. Im Blogbeitrag [MFA for Office 365 and MFA for Azure](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) (MFA für Office 365 und MFA für Azure) werden die in Office- und Azure-Abonnements enthaltenen Funktionen mit den Funktionen der Microsoft Azure Multi-Factor Authentication verglichen.
@@ -46,5 +46,6 @@ Wenn sich Benutzer lokal authentifizieren, können Sie alternativ festlegen, das
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-change-default-settings.md)
+- [Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-configure-security-alerts.md)

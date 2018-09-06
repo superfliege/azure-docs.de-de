@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: dba43f0823282bd385dca30402a9b16fa3b99de6
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41946415"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091379"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack-Update 1807
 
@@ -168,6 +168,8 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversion vorgestellt.
 
 ### <a name="portal"></a>Portal
+- <!-- 2931230 – IS  ASDK --> Pläne, die einem Benutzerabonnement als Add-On-Plan hinzugefügt wurden, können nicht gelöscht werden, auch wenn Sie den Plan aus dem Benutzerabonnement entfernen. Der Plan ist so lange vorhanden, bis die Abonnements gelöscht werden, die auf den Add-On-Plan verweisen. 
+
 - <!--2760466 – IS  ASDK --> Bei der Installation einer neuen Azure Stack-Umgebung, die diese Version ausführt, wird die Warnung, dass eine *Aktivierung erforderlich* ist, möglicherweise nicht angezeigt. Die [Aktivierung](azure-stack-registration.md) ist erforderlich, damit Sie die Marketplace-Syndikation verwenden können.  
 
 - <!-- TBD - IS ASDK --> Die zwei administrativen Abonnementtypen, die [in Version 1804 eingeführt](azure-stack-update-1804.md#new-features) wurden, sollten nicht verwendet werden. Die Abonnementtypen sind **Messungsabonnement** und **Verbrauchsabonnement**. Diese Abonnementtypen sind in neuen Azure Stack-Umgebungen ab Version 1804 sichtbar, aber noch nicht zur Verwendung bereit. Sie sollten den Abonnementtyp **Standardanbieter** weiterhin verwenden.
@@ -245,7 +247,9 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
 - <!-- 1662991 IS ASDK --> Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren.  
 
-- <!-- 2724961- IS ASDK --> Wenn Sie den Ressourcenanbieter **Microsoft.Insight** in den Abonnementeinstellungen registrieren und eine Windows-VM mit aktivierter Gastbetriebssystemdiagnose erstellen, können im Diagramm „CPU-Prozentsatz“ auf der Übersichtsseite der VM keine Metrikdaten angezeigt werden. Navigieren Sie zum Anzeigen des Diagramms „CPU-Prozentsatz“ für die VM zum Blatt **Metriken**, und zeigen Sie alle unterstützten Gastmetriken für Windows-VMs an.
+- <!-- 2724961- IS ASDK --> Wenn Sie den **Microsoft.Insight**-Ressourcenanbieter in den Abonnementeinstellungen registrieren und einen virtuellen Windows-Computer mit aktivierter Gastbetriebssystemdiagnose erstellen, werden auf der Übersichtsseite des virtuellen Computers keine Metrikdaten angezeigt. 
+
+   Navigieren Sie zum Anzeigen von Metrikdaten (etwa das Diagramm „CPU-Prozentsatz“ für den virtuellen Computer) zum Blatt **Metriken**, und zeigen Sie alle unterstützten Gastbetriebssystemmetriken für virtuelle Windows-Computer an.
 
 ### <a name="networking"></a>Netzwerk  
 

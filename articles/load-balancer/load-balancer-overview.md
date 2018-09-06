@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Azure Load Balancer | Microsoft-Dokumentation
-description: Übersicht über Features, Architektur und Implementierung des Azure Load Balancers. Erfahren Sie, wie der Load Balancer funktioniert, und nutzen Sie ihn in der Cloud.
+description: Übersicht über Features, Architektur und Implementierung des Azure Load Balancers. Erfahren Sie, wie Load Balancer funktioniert, und nutzen Sie den Dienst in der Cloud.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 08/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 47509cd0a9208f41a52bf1a07c460bcdda2cb479
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 618b00906a799e1b8cfcfac5ee6bcc3a714c2f87
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144508"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918741"
 ---
-# <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
+# <a name="what-is-azure-load-balancer"></a>Was ist Azure Load Balancer?
 
 Mit Azure Load Balancer können Sie Ihre Anwendungen skalieren und Dienste mit Hochverfügbarkeit bereitstellen. Load Balancer unterstützt Szenarios mit eingehenden sowie ausgehenden Verbindungen, bietet niedrige Latenzen und einen hohen Durchsatz und skaliert Datenflüsse aller TCP- und UDP-Anwendungen im Millionenbereich hoch.  
 
-Load Balancer verteilt neue eingehende Flows, die beim Front-End des Load Balancers eintreffen, gemäß den Regeln und Integritätstests auf die Instanzen des Back-End-Pools. 
+Load Balancer verteilt neue eingehende Flows, die im Load Balancer-Front-End eintreffen, gemäß den Regeln und Integritätstests auf die Instanzen des Back-End-Pools. 
 
 Zusätzlich kann ein öffentlicher Load Balancer auch ausgehende Verbindungen für virtuelle Computer in Ihrem virtuellen Netzwerk bereitstellen, indem er deren private IP-Adressen in öffentliche IP-Adressen übersetzt.
 
@@ -38,9 +38,9 @@ Azure Load Balancer ist in zwei SKUs verfügbar: Basic und Standard. Diese unter
 Sie können Azure Load Balancer für Folgendes verwenden:
 
 * Führen Sie einen Lastenausgleich für den eingehenden Internetdatenverkehr für virtuelle Computer aus. Diese Konfiguration wird als [öffentlicher Load Balancer](#publicloadbalancer) bezeichnet.
-* Ausführen eines Lastenausgleichs des Datenverkehrs für mehrere VMs in einem virtuellen Netzwerk. Sie können ein Load Balancer-Front-End auch aus einem lokalen Netzwerk in einem Hybridszenario erreichen. Für beide Szenarios wird eine Konfiguration verwendet, die als ein [interner Load Balancer](#internalloadbalancer) bezeichnet wird.
+* Ausführen eines Lastenausgleichs des Datenverkehrs für mehrere VMs in einem virtuellen Netzwerk. Sie können ein Load Balancer-Front-End in einem Hybridszenario auch aus einem lokalen Netzwerk erreichen. In beiden Szenarien wird eine Konfiguration verwendet, die als [interner Load Balancer](#internalloadbalancer) bezeichnet wird.
 * Der Port leitet den Datenverkehr an einen bestimmten Port auf bestimmten virtuellen Computern mit Regeln für die Netzwerkadressenübersetzung für eingehenden Datenverkehr weiter.
-* Bereitstellung von [ausgehenden Verbindungen](load-balancer-outbound-connections.md) für virtuelle Computer in Ihrem virtuellen Netzwerk durch Verwenden eines öffentlichen Load Balancers.
+* Stellen Sie [ausgehende Verbindungen](load-balancer-outbound-connections.md) für virtuelle Computer in Ihrem virtuellen Netzwerk durch Verwenden eines öffentlichen Load Balancers bereit.
 
 
 >[!NOTE]
@@ -48,9 +48,9 @@ Sie können Azure Load Balancer für Folgendes verwenden:
 
 ## <a name="what-are-load-balancer-resources"></a>Was sind Load Balancer-Ressourcen?
 
-Eine Load Balancer-Ressource kann entweder als öffentlicher Load Balancer oder als interner Load Balancer vorhanden sein. Die Funktionen einer Load Balancer-Ressource werden als Front-End-, Regel-, Integritätstest- und Back-End-Pool-Definitionen ausgedrückt. Platzieren Sie virtuelle Computer im Back-End-Pool, indem Sie diesen über den virtuellen Computer angeben.
+Eine Load Balancer-Ressource (Lastenausgleichsressource) kann entweder als ein öffentlicher Load Balancer oder als ein interner Load Balancer vorhanden sein. Die Funktionen einer Load Balancer-Ressource werden in Form von Front-End-, Regel-, Integritätstest- und Back-End-Pool-Definitionen ausgedrückt. Platzieren Sie virtuelle Computer im Back-End-Pool, indem Sie diesen über den virtuellen Computer angeben.
 
-Load Balancer-Ressourcen sind Objekte, in denen Sie formulieren können, wie Azure seine mehrinstanzenfähige Infrastruktur programmieren sollte, um das Szenario zu erzielen, das Sie erstellen möchten. Es gibt keine direkte Beziehung zwischen Load Balancer-Ressourcen und tatsächlicher Infrastruktur. Bei der Erstellung eines Load Balancers wird keine Instanz erstellt, und die Kapazität ist stets verfügbar. 
+Load Balancer-Ressourcen sind Objekte, in denen Sie formulieren können, wie Azure die mehrinstanzenfähige Infrastruktur programmieren muss, um das Szenario zu erzielen, das Sie erstellen möchten. Es gibt keine direkte Beziehung zwischen Load Balancer-Ressourcen und der tatsächlichen Infrastruktur. Beim Erstellen eines Load Balancers wird keine Instanz erstellt, und die Kapazität ist stets verfügbar. 
 
 ## <a name="fundamental-load-balancer-features"></a>Grundlegende Load Balancer-Features
 
@@ -82,11 +82,11 @@ Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anw
 
 * **Automatische Neukonfiguration**
 
-    Der Load Balancer konfiguriert sich selbst sofort, wenn Sie Instanzen nach oben oder nach unten skalieren. Das Hinzufügen oder Entfernen von virtuellen Computern aus dem Back-End-Pool bewirkt, dass der Lastenausgleich neu konfiguriert wird. Es werden aber keine zusätzlichen Vorgänge für die Lastenausgleichressource ausgeführt.
+    Der Load Balancer konfiguriert sich selbst sofort, wenn Sie Instanzen nach oben oder nach unten skalieren. Das Hinzufügen oder Entfernen von virtuellen Computern zum bzw. aus dem Back-End-Pool bewirkt, dass Load Balancer neu konfiguriert wird. Es werden aber keine zusätzlichen Vorgänge für die Load Balancer-Ressource ausgeführt.
 
 * **Integritätstests**
 
-    Load Balancer verwendet von Ihnen definierte Integritätstests, um die Integrität von Instanzen im Back-End-Pool zu ermitteln. Wenn ein Test nicht reagiert, beendet der Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Vorhandene Verbindungen sind nicht betroffen und werden fortgesetzt, bis die Anwendung den Flow beendet, ein Leerlauftimeout auftritt oder der virtuelle Computer heruntergefahren wird.
+    Load Balancer verwendet von Ihnen definierte Integritätstests, um die Integrität von Instanzen im Back-End-Pool zu ermitteln. Wenn ein Test nicht reagiert, beendet Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Vorhandene Verbindungen sind nicht betroffen und werden fortgesetzt, bis die Anwendung den Flow beendet, ein Leerlauftimeout auftritt oder der virtuelle Computer heruntergefahren wird.
      
     Load Balancer bietet [verschiedene Integritätstesttypen](load-balancer-custom-probe-overview.md#types) für TCP-, HTTP- und HTTPS-Endpunkte.
 
@@ -94,7 +94,7 @@ Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anw
     
 * **Ausgehende (SNAT-)Verbindungen**
 
-    Alle ausgehenden Datenströme von privaten IP-Adressen in Ihrem virtuellen Netzwerk zu öffentlichen IP-Adressen im Internet können in eine Front-End-IP-Adresse des Lastenausgleichs übersetzt werden. Wenn ein öffentliches Front-End über eine Lastenausgleichsregel an einen virtuellen Back-End-Computer gebunden ist, programmiert Azure ausgehende Verbindungen so, dass sie automatisch in die IP-Adresse des öffentlichen Front-Ends übersetzt werden.
+    Alle ausgehenden Flows von privaten IP-Adressen in Ihrem virtuellen Netzwerk zu öffentlichen IP-Adressen im Internet können in eine Front-End-IP-Adresse von Load Balancer übersetzt werden. Wenn ein öffentliches Front-End über eine Lastenausgleichsregel an einen virtuellen Back-End-Computer gebunden ist, programmiert Azure ausgehende Verbindungen so, dass sie automatisch in die IP-Adresse des öffentlichen Front-Ends übersetzt werden.
 
     * Es werden einfache Upgrades und eine Notfallwiederherstellung von Diensten ermöglicht, da das Front-End dynamisch einer anderen Instanz des Diensts zugeordnet werden kann.
     * Die Verwaltung von Zugriffssteuerungslisten wird vereinfacht. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste zentral hoch- oder herunterskaliert oder erneut bereitgestellt werden.  Wenn ausgehende Verbindungen in weniger IP-Adressen übersetzt werden als Computer vorhanden sind, ist ein geringeres Maß an Whitelisting nötig.
@@ -127,15 +127,15 @@ Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](https://aka.ms
 
 ### <a name = "publicloadbalancer"></a>Öffentlicher Load Balancer
 
-Der öffentliche Load Balancer führt die Zuordnung zwischen öffentlicher IP-Adresse und Portnummer des eingehenden Datenverkehrs zu den privaten IP-Adressen und Portnummern des virtuellen Computers durch und ordnet umgekehrt den Antwortdatenverkehr aus dem virtuellen Computer zu. Wenn Sie Regeln für den Lastenausgleich anwenden, können Sie bestimmte Typen von Datenverkehr auf verschiedene VMs oder Dienste verteilen. Sie können zum Beispiel die Netzwerklast von Webanforderungen auf mehrere Webserver verteilen.
+Der öffentliche Load Balancer ordnet die öffentliche IP-Adresse und Portnummer des eingehenden Datenverkehrs der privaten IP-Adresse und Portnummer des virtuellen Computers zu und führt auch die Zuordnung des Antwortdatenverkehrs aus dem virtuellen Computer durch. Wenn Sie Regeln für den Lastenausgleich anwenden, können Sie bestimmte Typen von Datenverkehr auf verschiedene VMs oder Dienste verteilen. Sie können zum Beispiel die Netzwerklast von Webanforderungen auf mehrere Webserver verteilen.
 
 Die folgende Abbildung zeigt einen Endpunkt für Webdatenverkehr mit Lastenausgleich, der von drei virtuellen Computern für den öffentlichen TCP-Port 80 genutzt wird. Diese drei virtuellen Computer bilden eine Gruppe mit Lastenausgleich.
 
-![Beispiel für öffentlichen Lastenausgleich](./media/load-balancer-overview/IC727496.png)
+![Beispiel für einen öffentlichen Load Balancer](./media/load-balancer-overview/IC727496.png)
 
-*Abbildung: Vornehmen eines Lastenausgleichs für Webdatenverkehr mit einem öffentlichen Load Balancer*
+*Abbildung: Durchführen des Lastenausgleichs für Webdatenverkehr mit einem öffentlichen Load Balancer*
 
-Wenn Internetclients Webseitenanforderungen über den TCP-Port 80 an die öffentliche IP-Adresse einer Web-App senden, verteilt der Azure Load Balancer diese Anfragen auf die drei virtuellen Computer in der Lastenausgleichsgruppe. Weitere Informationen zu Lastenausgleichsalgorithmen finden Sie im Abschnitt [Lastenausgleichsfunktionen](load-balancer-overview.md##fundamental-load-balancer-features) in diesem Artikel.
+Wenn Internetclients Webseitenanforderungen über den TCP-Port 80 an die öffentliche IP-Adresse einer Web-App senden, verteilt der Azure Load Balancer diese Anfragen auf die drei virtuellen Computer in der Lastenausgleichsgruppe. Weitere Informationen zu Load Balancer-Algorithmen finden Sie im Abschnitt [Load Balancer-Features](load-balancer-overview.md##fundamental-load-balancer-features) in diesem Artikel.
 
 Standardmäßig verteilt Azure Load Balancer Netzwerkdatenverkehr gleichmäßig auf mehrere Instanzen virtueller Computer. Sie können auch Sitzungsaffinität konfigurieren. Weitere Informationen hierzu finden Sie unter [Load Balancer-Verteilungsmodus](load-balancer-distribution-mode.md).
 
@@ -150,9 +150,9 @@ Ein interner Load Balancer ermöglicht die folgenden Arten von Lastenausgleich:
 * **Für Anwendungen mit mehreren Schichten:** Lastenausgleich für Anwendungen mit mehreren Schichten mit Internetzugriff, bei denen die Back-End-Schichten nicht über Internetzugriff verfügen. Die Back-End-Schichten erfordern einen Lastenausgleich des Datenverkehrs aus einer mit dem Internet verbundenen Schicht (weitere Details finden Sie in der folgenden Abbildung).
 * **Für Branchenanwendungen:** Lastenausgleich für Branchenanwendungen, die in Azure ohne zusätzliche Hardware oder Software für den Lastenausgleich gehostet werden. Dieses Szenario enthält lokale Server, die sich in der Gruppe der Computer befinden, für deren Datenverkehr Lastenausgleich stattfindet.
 
-![Beispiel für den internen Load Balancer](./media/load-balancer-overview/IC744147.png)
+![Beispiel für einen internen Load Balancer](./media/load-balancer-overview/IC744147.png)
 
-*Abbildung: Durchführen eines Lastenausgleichs für Anwendungen mit mehreren Schichten mit öffentlichen und internen Load Balancers*
+*Abbildung: Durchführen eines Lastenausgleichs für mehrschichtige Anwendungen mit einem öffentlichen und einem internen Load Balancer*
 
 ## <a name="pricing"></a>Preise
 Die Nutzung des Standard-Load Balancers wird anhand der Anzahl konfigurierter Regeln für den Lastenausgleich und die Menge von eingehenden und ausgehenden Daten berechnet. Informationen zu den Preisen für den Standard-Load Balancer finden Sie auf der Seite [Load Balancer – Preise](https://azure.microsoft.com/pricing/details/load-balancer/).
@@ -170,4 +170,4 @@ Informationen zum SLA für den Standard-Load Balancer finden Sie auf der Seite [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben nun einen Überblick über die Verwendung von Azure Load Balancer erhalten. Wenn Sie den Load Balancer jetzt verwenden möchten, erstellen Sie einen, erstellen Sie VMs mit installierten benutzerdefinierten IIS-Erweiterungen, und führen Sie einen Lastenausgleich für die Web-App zwischen den VMs durch. Weitere Informationen finden Sie im Schnellstart [Schnellstart: Erstellen eines öffentlichen Load Balancers](quickstart-create-basic-load-balancer-portal.md).
+Sie haben nun einen Überblick über die Verwendung von Azure Load Balancer erhalten. Wenn Sie loslegen möchten, erstellen Sie einen Load Balancer, erstellen Sie VMs mit einer installierten benutzerdefinierten IIS-Erweiterung, und richten Sie den Lastenausgleich für die Web-App zwischen den VMs ein. Weitere Informationen finden Sie im Schnellstart [Schnellstart: Erstellen eines öffentlichen Load Balancers](quickstart-create-basic-load-balancer-portal.md).

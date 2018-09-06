@@ -1,6 +1,6 @@
 ---
-title: Verlängern und Überprüfen von Rollen in Azure-Ressourcen mit Privileged Identity Management | Microsoft-Dokumentation
-description: In diesem Dokument wird beschrieben, wie Sie die Azure-Ressourcenrollen für PIM-Ressourcen verlängern und erneuern.
+title: Verlängern oder Erneuern von Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) verlängern oder erneuern.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7eb30f895214ff7d5a1607fc7e477d3d876a6fc1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617522"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189649"
 ---
-# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Verlängern und Überprüfen von Rollen in Azure-Ressourcen mit Privileged Identity Management
+# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>Verlängern oder Erneuern von Azure-Ressourcenrollen in PIM
 
 Mit Privileged Identity Management (PIM) für Azure-Ressourcen werden neue Steuerelemente zum Verwalten des Zugriffs und des Zuweisungslebenszyklus für Azure-Ressourcen eingeführt. Administratoren können die Mitgliedschaft zuweisen, indem sie Eigenschaften für die Start- und Endzeit verwenden. Wenn das Ende der Zuweisung fast erreicht ist, sendet PIM E-Mail-Benachrichtigungen an die betroffenen Benutzer oder Gruppen. Außerdem werden E-Mail-Benachrichtigungen an Administratoren der Ressource gesendet, um einen entsprechenden Zugriff zu gewährleisten. Zuweisungen können auch verlängert werden. Sie bleiben im abgelaufenen Zustand noch 30 Tage lang sichtbar, auch wenn der Zugriff nicht verlängert wird.
 
@@ -131,8 +131,5 @@ Um eine Liste mit allen abgelaufenen Rollenzuweisungen anzuzeigen, wählen Sie a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erzwingen einer Genehmigung für die Aktivierung](pim-resource-roles-approval-workflow.md)
-
-[Aktivieren einer Rolle](pim-resource-roles-use-the-audit-log.md)
-
-
+- [Genehmigen oder Ablehnen von Anforderungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-approval-workflow.md)
+- [Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-configure-role-settings.md)

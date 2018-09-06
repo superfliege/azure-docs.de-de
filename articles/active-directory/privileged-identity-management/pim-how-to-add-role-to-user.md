@@ -1,6 +1,6 @@
 ---
-title: Zuweisen von Verzeichnisrollen zu Benutzern mithilfe von Azure AD PIM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Benutzern mit Azure Active Directory Privileged Identity Management und dem Azure-Portal Verzeichnisrollen zuweisen.
+title: Zuweisen von Azure AD-Verzeichnisrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure AD-Verzeichnisrollen in Azure AD Privileged Identity Management (PIM) zuweisen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,18 +12,18 @@ ms.workload: identity
 ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
-ms.openlocfilehash: 1aede38cabba7f9811f2b9320bc1e9a9da857f08
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 33bfe28bf612c47c9f42345dabccc017337c3d45
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621812"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190155"
 ---
-# <a name="assign-directory-roles-to-users-using-azure-ad-pim"></a>Zuweisen von Verzeichnisrollen zu Benutzern mithilfe von Azure AD PIM
+# <a name="assign-azure-ad-directory-roles-in-pim"></a>Zuweisen von Azure AD-Verzeichnisrollen in PIM
 
 Mit Azure Active Directory (Azure AD) kann ein globaler Administrator **permanente** Verzeichnisrollenzuweisungen vornehmen. Diese Rollenzuweisungen können über das [Azure-Portal](../users-groups-roles/directory-assign-admin-roles.md) oder über [PowerShell-Befehle](/powershell/module/azuread#directory_roles) erstellt werden.
 
-Der Dienst Azure AD Privileged Identity Management (PIM) ermöglicht es auch Administratoren für privilegierte Rollen, permanente Verzeichnisrollenzuweisungen vorzunehmen. Außerdem können Administratoren für privilegierte Rollen Benutzer als für Verzeichnisrollen **berechtigt** festlegen. Ein berechtigter Administrator kann die Rolle bei Bedarf aktivieren, und die entsprechenden Berechtigungen laufen nach einem bestimmten Zeitraum ab. Informationen zu den Rollen, die Sie mit PIM verwalten können, finden Sie unter [Verschiedene Administratorrollen in Azure Active Directory PIM](pim-roles.md).
+Der Dienst Azure AD Privileged Identity Management (PIM) ermöglicht es auch Administratoren für privilegierte Rollen, permanente Verzeichnisrollenzuweisungen vorzunehmen. Außerdem können Administratoren für privilegierte Rollen Benutzer als für Verzeichnisrollen **berechtigt** festlegen. Ein berechtigter Administrator kann die Rolle bei Bedarf aktivieren, und die entsprechenden Berechtigungen laufen nach einem bestimmten Zeitraum ab. Informationen zu den Rollen, die Sie mit PIM verwalten können, finden Sie unter [Azure AD-Verzeichnisrollen, die Sie in PIM verwalten können](pim-roles.md).
 
 ## <a name="make-a-user-eligible-for-a-role"></a>Festlegen eines Benutzers als „berechtigt“ für eine Rolle
 
@@ -31,15 +31,15 @@ Führen Sie folgende Schritte aus, um einen Benutzer für eine Azure AD-Verzeich
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ist.
 
-    Weitere Informationen darüber, wie Sie einem anderen Benutzer Zugriff auf die Verwaltung von PIM gewähren, finden Sie unter [Gewähren des Zugriffs für einen anderen Benutzer zur Verwaltung von PIM](pim-how-to-give-access-to-pim.md).
+    Informationen dazu, wie Sie anderen Administratoren Zugriff für die Verwaltung in PIM gewähren, finden Sie unter [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md).
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-    Wenn PIM im Azure-Portal noch nicht aktiviert ist, finden Sie entsprechende Informationen unter [Erste Schritte mit Azure AD Privileged Identity Management](pim-getting-started.md).
+    Wenn Sie PIM noch nicht im Azure-Portal geöffnet haben, wechseln Sie zu [Einstieg in die Verwendung von PIM](pim-getting-started.md).
 
 1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
 
-1. Klicken Sie auf **Rolle (Vorschau)** oder **Mitglieder**.
+1. Klicken Sie auf **Rollen** oder **Mitglieder**.
 
     ![Azure AD-Verzeichnisrollen](./media/pim-how-to-add-role-to-user/pim-directory-roles.png)
 
@@ -55,11 +55,13 @@ Führen Sie folgende Schritte aus, um einen Benutzer für eine Azure AD-Verzeich
 
 1. Klicken Sie in „Verwaltete Mitglieder hinzufügen“ auf **OK**, um den Benutzer zur Rolle hinzuzufügen.
 
-     Nach dem Zuweisen der Rolle wird der von Ihnen ausgewählte Benutzer in der Liste als **berechtigt** für die Rolle angezeigt.
+1. Klicken Sie in der Liste der Rollen auf die soeben zugewiesene Rolle, um die Liste der Mitglieder anzuzeigen.
+
+     Nach dem Zuweisen der Rolle wird der von Ihnen ausgewählte Benutzer in der Liste als **Berechtigt** für die Rolle angezeigt.
 
     ![Berechtigter Benutzer für eine Rolle](./media/pim-how-to-add-role-to-user/pim-directory-role-eligible.png)
 
-1. Nachdem der Benutzer für eine Rolle berechtigt ist, informieren Sie ihn darüber, dass er die Rolle entsprechend den Anweisungen unter [Gewusst wie: Aktivieren oder Deaktivieren einer Rolle](pim-how-to-activate-role.md)aktivieren kann.
+1. Nachdem der Benutzer jetzt für die Rolle berechtigt ist, informieren Sie ihn darüber, dass er die Rolle entsprechend den Anweisungen unter [Aktivieren von Azure AD-Verzeichnisrollen in PIM](pim-how-to-activate-role.md) aktivieren kann.
 
     Berechtigte Administratoren werden aufgefordert, sich während der Aktivierung für die Multi-Factor Authentication (MFA) von Azure zu registrieren. Wenn sich ein Benutzer nicht für MFA registrieren kann oder ein Microsoft-Konto nutzt (in der Regel @outlook.com), müssen Sie ihn in allen Rollen als permanent einrichten.
 
@@ -75,7 +77,7 @@ Standardmäßig sind neue Benutzer nur für eine Verzeichnisrolle berechtigt. F�
 
     ![Liste der Mitglieder](./media/pim-how-to-add-role-to-user/pim-directory-role-list-members.png)
 
-1. Klicken Sie auf eine **berechtigte** Rolle, die Sie als permanente Rollenzuweisung festlegen möchten.
+1. Klicken Sie auf eine als **Berechtigt** markierte Rolle, die Sie als dauerhafte Rollenzuweisung festlegen möchten.
 
 1. Klicken Sie auf **Weitere**, und klicken Sie anschließend auf **Als permanent festlegen**.
 
@@ -112,4 +114,6 @@ Führen Sie die folgenden Schritte aus, um einen bestimmten Benutzer aus einer V
     Die Rollenzuweisung wurde entfernt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-change-default-settings.md)
+- [Zuweisen von Azure-Ressourcenrollen in PIM](pim-resource-roles-assign-roles.md)

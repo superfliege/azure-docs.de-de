@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9d28b6ea5612a3db539c51d2603c3f12282ca519
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063679"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090415"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
 
@@ -290,7 +290,7 @@ Für Greenfield-Implementierungen steht der SAP Quick Sizer zur Verfügung, um A
 
 Der Arbeitsspeicherbedarf für HANA nimmt mit zunehmender Datenmenge zu. Beobachten Sie Ihre aktuelle Arbeitsspeichernutzung, um den zukünftigen Bedarf zu prognostizieren. Basierend auf den Arbeitsspeicheranforderungen können Sie Ihren Bedarf dann einer der SKUs von HANA (große Instanz) zuordnen.
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (große Instanzen) auf.
 
@@ -325,6 +325,10 @@ Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (groß
 Die Supportmatrix der anderen SAP HANA-Versionen mit den verschiedenen Linux-Versionen finden Sie im [SAP-Hinweis 2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
 Die Kompatibilitätsmatrix des Betriebssystems und der HLI-Firmware-/Treiberversionen finden Sie unter [Operating System Upgrade](os-upgrade-hana-large-instance.md) (Betriebssystemupgrade).
+
+
+> [!IMPORTANT] 
+> Derzeit wird für Einheiten vom Typ II nur die Betriebssystemversion SLES 12 SP2 unterstützt. 
 
 
 **Datenbank**

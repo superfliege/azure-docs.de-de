@@ -1,6 +1,6 @@
 ---
-title: E-Mail-Benachrichtigungen in Azure AD PIM | Microsoft-Dokumentation
-description: Beschreibt E-Mail-Benachrichtigungen in Azure AD Privileged Identity Management (PIM)
+title: E-Mail-Benachrichtigungen in PIM – Azure | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Beschreibung der E-Mail-Benachrichtigungen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 7943b4fb8c2027b50ce04c30d21f1b0a58f98ace
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621581"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190175"
 ---
-# <a name="email-notifications-in-azure-ad-pim"></a>E-Mail-Benachrichtigungen in Azure AD PIM
+# <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
 Wenn in Azure AD Privileged Identity Management (PIM) wichtige Ereignisse auftreten, werden E-Mail-Benachrichtigungen an den entsprechenden Administrator oder Benutzer gesendet. PIM sendet E-Mail-Benachrichtigungen z.B. bei folgenden Ereignissen:
 
@@ -74,5 +74,5 @@ Wenn einem Benutzer früher eine privilegierte Rolle zugewiesen wurde, erhielt e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwalten der Einstellungen für die Rollenaktivierung in Azure AD Privileged Identity Management](pim-how-to-change-default-settings.md)
-- [Genehmigungen](azure-ad-pim-approval-workflow.md)
+- [Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-change-default-settings.md)
+- [Genehmigen oder Ablehnen von Anforderungen für Azure AD-Verzeichnisrollen in PIM](azure-ad-pim-approval-workflow.md)

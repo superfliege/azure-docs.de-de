@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 08/28/2018
 ms.author: kumud
-ms.openlocfilehash: 91c7d16296653aea2381793f2e52f2b33b831185
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42145589"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190732"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -181,7 +181,12 @@ Wenn bei allen Tests für einen Back-End-Pool Fehler auftreten, werden alle vorh
 
 ## <a name="probesource"></a>Quell-IP-Adresse von Tests
 
-Bei allen Lastenausgleichs-Integritätstests lautet die Quell-IP-Adresse 168.63.129.16.  Wenn Sie Ihre eigenen IP-Adressen in Azure Virtual Network verwenden, ist gewährleistet, dass diese Quell-IP-Adresse für Integritätstests eindeutig ist, da sie global für Microsoft reserviert ist.  Diese Adresse ist in allen Regionen identisch und wird nicht geändert. Dies dürfte kein Sicherheitsrisiko darstellen, da nur die interne Azure-Plattform ein Paket von dieser IP-Adresse senden kann. 
+Load Balancer verwendet einen verteilten Dienst für die Stichprobenentnahme für sein internes Integritätsmodell. Jeder Host mit VMs kann so programmiert werden, dass Integritätstests gemäß Kundenkonfiguration generiert werden. Der Datenverkehr im Rahmen von Integritätstests findet direkt zwischen der Infrastrukturkomponente, auf der der Integritätstest generiert wird, und der Kunden-VM statt. Bei allen Lastenausgleichs-Integritätstests lautet die Quell-IP-Adresse 168.63.129.16.  Wenn Sie Ihre eigenen IP-Adressen in Azure Virtual Network verwenden, ist gewährleistet, dass diese Quell-IP-Adresse für Integritätstests eindeutig ist, da sie global für Microsoft reserviert ist.  Diese Adresse ist in allen Regionen identisch und wird nicht geändert. Dies dürfte kein Sicherheitsrisiko darstellen, da nur die interne Azure-Plattform ein Paket von dieser IP-Adresse senden kann. 
+
+Zusätzlich zu Load Balancer-Integritätstests wird diese IP-Adresse für die folgenden Vorgänge verwendet:
+
+- Ermöglichen der Kommunikation zwischen VM-Agent und Plattform, um zu signalisieren, dass sich der VM-Agent im Zustand „Bereit“ befindet.
+- Ermöglichen der Kommunikation mit dem virtuellen DNS-Server, um für die Kunden eine gefilterte Namensauflösung bereitzustellen, die keine benutzerdefinierten DNS-Server definieren.  Diese Filterung stellt sicher, dass Kunden nur die Hostnamen ihrer Bereitstellung auflösen können.
 
 Damit der Lastenausgleichs-Integritätstest Ihre Instanz als online kennzeichnen kann, **müssen** Sie diese IP-Adresse in allen Azure-[Sicherheitsgruppen](../virtual-network/security-overview.md) und lokalen Firewallrichtlinien zulassen.
 

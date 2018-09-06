@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 3ae2e883e3e27adc167b7e831ca53d3cd1572257
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038346"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189037"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -480,7 +480,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Melden Sie sich unter https://portal.azure.com als globaler Administrator (GA) an, und führen Sie den Bootstrap-Vorgang für das Blatt „PIM“ durch. Für den globalen Administrator, der diesen Schritt ausführt, erfolgt das Seeding als Sicherheitsadministrator.  Nennen wir diesen Akteur „GA1“. | [Verwenden des Sicherheits-Assistenten in Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
 | Bestimmen Sie den globalen Administrator, und ändern Sie seine Rolle von „Permanent“ in „Berechtigt“. Dabei sollte es sich der Übersichtlichkeit halber um einen anderen Administrator als den in Schritt 1 handeln. Nennen wir diesen Akteur „GA2“. | [Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Was ist Azure AD Privileged Identity Management?: Konfigurieren der Rollenaktivierungseinstellungen](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
 | Melden Sie sich jetzt unter https://portal.azure.com als GA2 an, und versuchen Sie, Benutzereinstellungen zu ändern. Hinweis: Einige Optionen sind abgeblendet. | |
-| Navigieren Sie in der gleichen Sitzung wie in Schritt 3 auf einer neuen Registerkarte zu https://portal.azure.com, und fügen Sie das Blatt „PIM“ zum Dashboard hinzu. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Hinzufügen der Anwendung Privileged Identity Management](privileged-identity-management/pim-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| Navigieren Sie in der gleichen Sitzung wie in Schritt 3 auf einer neuen Registerkarte zu https://portal.azure.com, und fügen Sie das Blatt „PIM“ zum Dashboard hinzu. | [Einstieg in die Verwendung von PIM](privileged-identity-management/pim-getting-started.md) |
 | Fordern Sie die Aktivierung der Rolle „Globaler Administrator“ an. | [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management: Aktivieren einer Rolle](privileged-identity-management/pim-how-to-activate-role.md#activate-a-role) |
 | Hinweis: Wenn GA2 nicht für Azure MFA registriert wurde, muss dies jetzt nachgeholt werden. |  |
 | Wechseln Sie zurück zur ursprünglichen Registerkarte (Schritt 3). Klicken Sie dann auf die Aktualisierungsschaltfläche des Browsers. Sie können die „Benutzereinstellungen“ jetzt ändern. | |

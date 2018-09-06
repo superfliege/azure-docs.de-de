@@ -6,22 +6,26 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 562bd8da54605986e95d8105782ce7ebb9b359ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432387"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189020"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade einer klassischen Containerregistrierung
 
-Azure Container Registry (ACR) ist in verschiedenen Dienstebenen verfügbar, [sogenannten SKUs](container-registry-skus.md). Die erste Version von ACR bot nur eine einzige SKU (Classic), der viele Features fehlen, die bei den SKUs „Basic“, „Standard“ und „Premium“ (zusammenfassend als *verwaltete* Registrierungen bezeichnet) selbstverständlich sind. Dieser Artikel erläutert, wie Sie Ihre nicht verwaltete klassische Registrierung in eine der verwalteten SKUs migrieren, sodass Sie von den erweiterten Features profitieren können.
+Azure Container Registry (ACR) ist in verschiedenen Dienstebenen verfügbar, [sogenannten SKUs](container-registry-skus.md). Die erste Version von ACR bot nur eine einzige SKU (Classic), der viele Features fehlen, die bei den SKUs „Basic“, „Standard“ und „Premium“ (zusammenfassend als *verwaltete* Registrierungen bezeichnet) selbstverständlich sind.
+
+Die SKU „Klassisch“ wird eingestellt und ist ab März 2019 nicht mehr verfügbar. Dieser Artikel erläutert, wie Sie Ihre nicht verwaltete klassische Registrierung in eine der verwalteten SKUs migrieren, sodass Sie von den erweiterten Features profitieren können.
 
 ## <a name="why-upgrade"></a>Gründe für ein Upgrade
 
-Aufgrund des eingeschränkten Funktionsumfangs der klassischen nicht verwalteten Registrierungen wird empfohlen, alle klassischen Registrierungen auf verwaltete Basic-, Standard- oder Premium-Registrierungen zu aktualisieren. Die SKUs auf höherer Ebene integrieren die Registrierung nahtloser mit den Funktionen von Azure.
+Die SKU „Klassisch“ wird **eingestellt** und ist ab **März 2019** nicht mehr verfügbar. Für alle vorhandenen klassischen Registrierungen muss vor März 2019 ein Upgrade durchgeführt werden.
+
+Aufgrund der geplanten Einstellung und des eingeschränkten Funktionsumfangs von klassischen nicht verwalteten Registrierungen müssen alle klassischen Registrierungen auf verwaltete Basic-, Standard- oder Premium-Registrierungen aktualisiert werden. Die SKUs auf höherer Ebene integrieren die Registrierung nahtloser mit den Funktionen von Azure.
 
 Verwaltete Registrierungen bieten Folgendes:
 
@@ -30,7 +34,7 @@ Verwaltete Registrierungen bieten Folgendes:
 * [Georeplikation](container-registry-geo-replication.md)
 * [Webhooks](container-registry-webhook.md)
 
-Die klassische Registrierung ist vor allem von dem Speicherkonto abhängig, das von Azure automatisch beim Erstellen der Registrierung bereitgestellt wird. Im Gegensatz dazu nutzen die Basic-, Standard- und Premium-SKUs die [erweiterten Speicherfeatures](container-registry-storage.md) von Azure und bieten eine transparente Speicherung Ihrer Images. In Ihrem eigenen Abonnement wird kein separates Speicherkonto erstellt.
+Die klassische Registrierung ist von dem Speicherkonto abhängig, das von Azure beim Erstellen der Registrierung automatisch in Ihrem Azure-Abonnement bereitgestellt wird. Im Gegensatz dazu nutzen die Basic-, Standard- und Premium-SKUs die [erweiterten Speicherfeatures](container-registry-storage.md) von Azure und bieten eine transparente Speicherung Ihrer Images. In Ihrem eigenen Abonnement wird kein separates Speicherkonto erstellt.
 
 Ein Speicher mit verwalteter Registrierung bietet folgende Vorteile:
 

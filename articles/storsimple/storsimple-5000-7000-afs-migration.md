@@ -11,16 +11,19 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/15/2018
+ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 6a52db27491ef707b813a7645d275b371b11368c
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d54394a8dc74d04f1922a78826b10a4a421d193b
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145118"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42814589"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrieren von Daten aus der StorSimple-Serie 5000/7000 zur Azure-Dateisynchronisierung
+
+> [!IMPORTANT]
+> Ab dem 31. Juli 2019 wird die StorSimple-Serie 5000/7000 nicht mehr unterstützt. Es wird empfohlen, dass Kunden der StorSimple-Serie 5000/7000 zu einer der in diesem Dokument beschriebenen Alternativen migrieren.
 
 Die Datenmigration ist der Prozess des Verschiebens von Daten aus einem Speicherort in einen anderen. Dabei muss eine genaue Kopie der auf einem Gerät befindlichen aktuellen Daten einer Organisation auf einem anderen Gerät erstellt werden – vorzugsweise ohne Unterbrechung oder Deaktivierung aktiver Anwendungen – und dann die gesamte Eingabe/Ausgabe-Aktivität (E/A) auf das neue Gerät umgeleitet werden. 
 

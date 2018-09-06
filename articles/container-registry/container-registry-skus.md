@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 5d9001bce4f835e4b9b82ba1c30d09f74eebd1d2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5c10c961519614d1560f27c41ba57237085261ba
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442750"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190407"
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry-SKUs
 
@@ -24,13 +24,11 @@ Azure Container Registry (ACR) steht in verschiedenen Dienstebenen, sogenannten 
 | **Basic** | JA | Ein kostenoptimierter Einstiegspunkt für Entwickler, die sich mit Azure Container Registry vertraut machen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (Azure Active Directory-Authentifizierungsintegration, Löschen von Images sowie Webhooks). Allerdings bestehen Einschränkungen bei Größe und Nutzung. |
 | **Standard** | JA | Standard-Registrierungen bieten die gleichen Funktionen wie Basic. In Standard gibt es jedoch erweiterte Speicherlimits und einen erhöhten Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse der meisten Produktionsszenarios. |
 | **Premium** | JA | Premium-Registrierungen sind die Grenzwerte für den Speicher und gleichzeitige Vorgänge noch höher, sodass Szenarios mit großen Volumen möglich sind. Zusätzlich zu Funktionen für einen erhöhten Imagedurchsatz enthält Premium Funktionen wie die [Georeplikation][container-registry-geo-replication] zum regionsübergreifenden Verwalten einer Registrierung, sodass die Registrierung jeder Bereitstellung netzwerknah ist. |
-| Klassisch | Nein  | Durch die klassische Registrierungs-SKU war das erstmalige Release des Azure Container Registry-Diensts in Azure möglich. Klassische Registrierungen werden von einem Speicherkonto unterstützt, das von Azure in Ihrem Abonnement erstellt wird, das dazu führt, dass ACR nur eingeschränkt allgemeine Funktionen wie einen erhöhten Durchsatz oder die Georeplikation bieten kann. Durch diese eingeschränkten Funktionen wird die Unterstützung für die klassische SKU in naher Zukunft eingestellt. |
+| Klassisch<sup>1</sup> | Nein  | Diese SKU ermöglichte das erstmalige Release des Azure Container Registry-Diensts in Azure. Klassische Registrierungen werden von einem Speicherkonto unterstützt, das von Azure in Ihrem Abonnement erstellt wird, das dazu führt, dass ACR nur eingeschränkt allgemeine Funktionen wie einen erhöhten Durchsatz oder die Georeplikation bieten kann. |
+
+<sup>1</sup> Die SKU „Klassisch“ wird im **März 2019** **eingestellt**. Verwenden Sie für alle neuen Containerregistrierungen die SKUs „Basic“, „Standard“ oder „Premium“.
 
 Die Wahl einer übergeordneten SKU bringt eine höhere Leistung und Skalierbarkeit, jedoch bieten alle verwalteten SKUs die gleichen programmgesteuerten Möglichkeiten. Wenn mehrere Dienstebenen vorhanden sind, können Sie mit Basic beginnen und dann bei zunehmender Registrierungsnutzung in Standard und Premium konvertieren.
-
-> [!NOTE]
-> Wegen der geplanten Einstellung der Unterstützung für die klassische Registrierungs-SKU wird empfohlen, Basic, Standard oder Premium für alle neuen Registrierungen zu verwenden. Informationen zum Konvertieren Ihrer vorhandenen klassischen Registrierung finden Sie unter [Aktualisieren einer klassischen Registrierung][container-registry-upgrade].
->
 
 ## <a name="managed-vs-unmanaged"></a>Verwaltete im Vergleich zu nicht verwalteten Registrierungen
 
@@ -41,6 +39,9 @@ Die Basic-, Standard- und Premium-SKUs werden zusammenfassend als *verwaltete* R
 Imagespeicher, die vollständig von Azure verwaltet werden, sind insbesondere für verwaltete Registrierungen von Vorteil. Ein Speicherkonto, in dem die Images gespeichert werden, wird also nicht in Ihrem Azure-Abonnement angezeigt. Es gibt mehrere Vorteile, die sich aus der Verwendung einer der verwalteten Registrierungs-SKUs ergeben, die ausführlich unter [Speichern von Containerimages in Azure Container Registry][container-registry-storage] beschrieben werden. Der Schwerpunkt dieses Artikels liegt auf den verwalteten Registrierungs-SKUs und den Möglichkeiten, die sie bieten.
 
 ### <a name="unmanaged-classic"></a>Nicht verwaltet (klassisch)
+
+> [!IMPORTANT]
+> Die SKU „Klassisch“ wird eingestellt und ist ab März 2019 nicht mehr verfügbar. Verwenden Sie für alle neuen Registrierungen die SKUs „Basic“, „Standard“ oder „Premium“.
 
 Klassische Registrierungen werden als „nicht verwaltet“ bezeichnet, da sich das Speicherkonto, das eine klassische Registrierung unterstützt, in *Ihrem* Azure-Abonnement befindet. Daher sind Sie selbst für die Verwaltung des Speicherkontos verantwortlich, in dem Ihre Containerimages gespeichert sind. Bei nicht verwalteten Registrierungen ist ein bedarfsgerechter Wechsel zwischen SKUs nicht möglich (außer bei einem [Upgrade][container-registry-upgrade] auf eine verwaltete Registrierung), und einige Features der verwalteten Registrierungen sind nicht verfügbar (z.B. Containerimagelöschung, [Georeplikation][container-registry-geo-replication] und [Webhooks][container-registry-webhook]).
 

@@ -1,26 +1,29 @@
 ---
 title: Connectors für Azure Logic Apps | Microsoft-Dokumentation
-description: Automatisieren von Workflows mit integrierten, verwaltete API-, lokalen, Integrationskonto- und Enterprise-Connectors für Azure Logic Apps
+description: Automatisieren von Workflows mit Connectors für Azure Logic Apps mit integrierten, verwalteten, lokalen, Integrationskonto- und Enterprise-Connectors
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 06/29/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 2bb3e2ce29037372395aa0b30e9f76f3e712667d
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.topic: article
+ms.date: 08/23/2018
+ms.openlocfilehash: 6b31882ec3916e60ac7dc7b8117328176abef1b4
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096610"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42818533"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
-Connectors sind ein wesentlicher Bestandteil bei der Erstellung von automatisierten Workflows mit Azure Logic Apps. Durch Verwenden von Connectors in Ihren Logik-Apps erweitern Sie die Funktionen für Ihre lokalen und Cloud-Apps und können Aufgaben mit den Daten ausführen, die Sie erstellen und über die Sie bereits verfügen. Logic Apps bietet insgesamt ca. 200 Connectors. In diesem Artikel werden beliebte und häufiger verwendete Connectors beschrieben, die in Tausenden von Apps und Millionen von Ausführungen zur Verarbeitung von Daten und Informationen erfolgreich verwendet werden.
-Connectors stehen als integrierte Aktionen oder als verwaltete Connectors zur Verfügung. 
+Connectors sind ein wesentlicher Bestandteil bei der Erstellung von automatisierten Workflows mit Azure Logic Apps. Durch Verwenden von Connectors in Ihren Logik-Apps erweitern Sie die Funktionen für Ihre lokalen und Cloud-Apps und können Aufgaben mit den Daten ausführen, die Sie erstellen und über die Sie bereits verfügen. 
+
+Logic Apps bietet insgesamt [ca. 200 Connectors](https://docs.microsoft.com/connectors). In diesem Artikel werden beliebte und häufiger verwendete Connectors beschrieben, die in Tausenden von Apps und Millionen von Ausführungen zur Verarbeitung von Daten und Informationen erfolgreich verwendet werden. Connectors stehen als integrierte Aktionen oder als verwaltete Connectors zur Verfügung. 
+
+> [!NOTE]
+> Die vollständige Liste der Connectors und die Referenzinformationen jedes Connectors, wie z.B. Aktionen, Trigger und Limits, finden Sie in der [Connectors-Übersicht](https://docs.microsoft.com/connectors).
 
 * [**Integrierte Aktionen:**](#built-ins) Mit diesen integrierten Aktionen und Triggern können Sie Logik-Apps erstellen, die in benutzerdefinierten Zeitplänen ausgeführt werden, mit anderen Endpunkten kommunizieren, Anforderungen empfangen und auf diese antworten sowie Azure-Funktionen, Azure API-Apps (Web-Apps), Ihre eigenen mit Azure API Management verwalteten und veröffentlichten APIs und geschachtelte Logik-Apps aufrufen, die Anforderungen empfangen können. Sie können zudem integrierte Aktionen verwenden, mit denen Sie den Workflow Ihrer Logik-App organisieren und steuern können und die auch mit Daten funktionieren.
 
@@ -37,7 +40,8 @@ Connectors stehen als integrierte Aktionen oder als verwaltete Connectors zur Ve
   Wenn Sie beispielsweise Microsoft BizTalk Server nutzen, können Ihre Logik-Apps eine Verbindung mit Ihrer BizTalk Server-Instanz herstellen und damit kommunizieren, indem der [BizTalk Server-Connector](#on-premises-connectors) verwendet wird. 
   Sie können dann mithilfe der [Integrationskonto-Connectors](#integration-account-connectors) BizTalk-ähnliche Vorgänge in Ihren Logik-Apps erweitern oder durchführen. 
 
-Technische Informationen zu den in einer Swagger-Beschreibung definierten Triggern und Aktionen der einzelnen Connectors sowie mögliche Einschränkungen finden Sie unter [Connectors](/connectors/). Informationen zu den Kosten finden Sie unter [Logic Apps – Preise ](https://azure.microsoft.com/pricing/details/logic-apps/) und [Preismodell für Logik-Apps](../logic-apps/logic-apps-pricing.md). 
+> [!NOTE] 
+> Die vollständige Liste der Connectors und die Referenzinformationen jedes Connectors, wie z.B. Aktionen, Trigger, die von einer Swagger-Beschreibung definiert wurden, und jegliche Limits finden Sie in der [Connectors-Übersicht](/connectors/). Preisinformationen finden Sie unter [Logik-Apps – Preise ](https://azure.microsoft.com/pricing/details/logic-apps/) und [Preismodell für Logik-Apps](../logic-apps/logic-apps-pricing.md). 
 
 <a name="built-ins"></a>
 
@@ -160,6 +164,7 @@ Um benutzerdefinierte API-Apps oder Connectors für alle Benutzer in Azure öffe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Suchen der [vollständige Liste der Connectors](https://docs.microsoft.com/connectors)
 * [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Erstellen benutzerdefinierter Connectors für Logik-Apps](https://docs.microsoft.com/connectors/custom-connectors/)
 * [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](../logic-apps/logic-apps-create-api-app.md)

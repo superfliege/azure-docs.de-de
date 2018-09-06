@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: fbb6fc15663570d9b9470fc7d4de3c8eb30de9d9
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29763144"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188872"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 In diesem Artikel wird die bereits vorhandene Unterstützung für [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren virtueller Computer (VM) oder VM-Skalierungsgruppen (VMSS) während der Bereitstellung in Azure erläutert. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden.  
@@ -32,8 +32,10 @@ Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. ni
 
  Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und VM Scale Sets (VMSS). In der folgenden Tabelle sind die aktuell verfügbaren cloud-init-fähigen Images für die Azure-Plattform aufgeführt:
 
-| Herausgeber | Angebot | SKU | Version | cloud-init-fähig
-|:--- |:--- |:--- |:--- |:--- |:--- |
+| Herausgeber | Angebot | SKU | Version | cloud-init-fähig |
+|:--- |:--- |:--- |:--- |:--- |
+|Canonical |UbuntuServer |18.04-LTS |neueste |Ja | 
+|Canonical |UbuntuServer |17.10 |neueste |Ja | 
 |Canonical |UbuntuServer |16.04-LTS |neueste |Ja | 
 |Canonical |UbuntuServer |14.04.5-LTS |neueste |Ja |
 |CoreOS |CoreOS |Stable |neueste |Ja |

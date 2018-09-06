@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: b05eef79e94cff74b1e02243cd7c8d94e5acbb3c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: c9cebd16d34758550144a50b6ff26da84924a964
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493969"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745667"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,6 +58,11 @@ Wenn der Clouddatenspeicher HTTPS oder TLS unterstützt, erfolgen alle Datenübe
 
 > [!NOTE]
 > Für alle Verbindungen mit Azure SQL-Datenbank und Azure SQL Data Warehouse ist eine Verschlüsselung (SSL/TLS) erforderlich, solange Daten in die und aus der Datenbank übertragen werden. Wenn Sie eine Pipeline mit JSON erstellen, fügen Sie die Verschlüsselungseigenschaft hinzu, und legen Sie die Eigenschaft in der Verbindungszeichenfolge auf **true** fest. Für Azure Storage können Sie **HTTPS** in der Verbindungszeichenfolge verwenden.
+
+> [!NOTE]
+> Um die Verschlüsselung während der Datenübertragung von Oracle zu aktivieren, führen Sie eine der unten aufgeführten Optionen aus:
+> 1. Wechseln Sie auf dem Oracle-Server zu Oracle Advanced Security (OAS) und konfigurieren die Verschlüsselungseinstellungen, die Triple-DES-Verschlüsselung (3DES) and Advanced Encryption Standard (AES) unterstützen. Details dazu finden Sie [hier](https://docs.oracle.com/cd/E11882_01/network.112/e40393/asointro.htm#i1008759). Die ADF handelt automatisch die zu verwendende Verschlüsselungsmethode als diejenige aus, die Sie in OAS beim Herstellen der Verbindung mit Oracle konfigurieren.
+> 2. In der ADF können Sie „ EncryptionMethod=1“ in der Verbindungszeichenfolge (im verknüpften Dienst) hinzufügen. Dadurch wird SSL/TLS als Verschlüsselungsmethode verwendet. Zu diesem Zweck müssen Sie Verschlüsselungseinstellungen ohne SSL in OAS auf Oracle-Serverseite deaktivieren, um Verschlüsselungskonflikte zu vermeiden.
 
 > [!NOTE]
 > Die verwendete TLS-Version ist 1.2.

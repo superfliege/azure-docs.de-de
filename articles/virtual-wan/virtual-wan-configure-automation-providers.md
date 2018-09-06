@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 08/23/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: a1ff4364e394b3807cf767722ee934ae024399b0
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: bac728f286c90550107b27da76a070623577ed82
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114343"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918899"
 ---
 # <a name="configure-virtual-wan-automation---for-virtual-wan-partners-preview"></a>Konfigurieren von Virtual WAN-Automatisierung – für Virtual WAN-Partner (Vorschauversion)
 
@@ -23,7 +23,7 @@ Softwaredefinierte Konnektivitätslösungen verwalten ihre Zweigstellengeräte n
 
 ##  <a name="access"></a>Zugriffssteuerung
 
-Kunden müssen entsprechende Zugriffssteuerungen für Virtual WAN in der Gerätebenutzeroberfläche einrichten können. Dafür wird ein Azure-Dienstprinzipal empfohlen. Der auf einem Dienstprinzipal basierende Zugriff bietet dem Gerätecontroller eine entsprechende Authentifizierung, um Zweigstelleninformationen hochzuladen.
+Kunden müssen entsprechende Zugriffssteuerungen für Virtual WAN in der Gerätebenutzeroberfläche einrichten können. Dafür wird ein Azure-Dienstprinzipal empfohlen. Der auf einem Dienstprinzipal basierende Zugriff bietet dem Gerätecontroller eine entsprechende Authentifizierung, um Zweigstelleninformationen hochzuladen. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application).
 
 ##  <a name="site"></a>Hochladen von Zweigstelleninformationen
 

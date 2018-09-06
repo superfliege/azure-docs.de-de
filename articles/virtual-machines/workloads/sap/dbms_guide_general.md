@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fdf5685ad8072175bdabf8938ef293bed6f5cc13
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075388"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918800"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -74,7 +74,7 @@ In diesem Dokument werden die folgenden Begriffe verwendet:
 
 In einigen Microsoft-Dokumentationen werden standortübergreifende Szenarien etwas anders beschrieben, insbesondere bei DBMS-HA-Konfigurationen. In Dokumenten zu SAP bezieht sich ein standortübergreifendes Szenario nur auf eine Site-to-Site- oder private [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Konnektivität und die Tatsache, dass die SAP-Landschaft zwischen lokalen Systemen und Azure verteilt ist.
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 Es gibt verschiedene Artikel zu SAP-Workload in Azure.  Es wird empfohlen, zuerst den Artikel [Erste Schritte mit SAP in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) zu lesen und dann mit dem gewünschten Thema fortzufahren.
 
 Die nachstehenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem Dokument behandelten Themen:
@@ -263,7 +263,7 @@ Dieses [Tutorial](https://docs.microsoft.com/azure/virtual-machines/windows/tuto
 
 
 ## <a name="azure-network-considerations"></a>Überlegungen zum Azure-Netzwerk 
-Für große SAP-Bereitstellungen wird empfohlen, dass Sie die Blaupause aus [Virtuelles Rechenzentrum in Microsoft Azure](https://docs.microsoft.com/azure/networking/networking-virtual-datacenter) für die VNET-Konfiguration, die Berechtigungen und die Rollenzuweisungen zu verschiedenen Organisationsteilen verwenden.
+Für große SAP-Bereitstellungen wird empfohlen, dass Sie die Blaupause aus [Virtuelles Rechenzentrum in Microsoft Azure](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) für die VNET-Konfiguration, die Berechtigungen und die Rollenzuweisungen zu verschiedenen Organisationsteilen verwenden.
 
 Es gibt mehrere Best Practices, die infolge von Hunderten von Kundenbereitstellungen entstanden sind:
 
@@ -281,7 +281,7 @@ Wenn Sie zwei VMs für Ihre DBMS-Produktionsbereitstellung in einer Azure-Verfü
 ### <a name="azure-load-balancer-for-redirecting-traffic"></a>Azure Load Balancer-Instanz zum Umleiten von Datenverkehr
 Die Verwendung von privaten virtuellen IP-Adressen, die in Funktionen wie SQL Server Always On oder HANA-Systemreplikation verwendet werden, erfordert die Konfiguration einer Azure Load Balancer-Instanz. Die Azure Load Balancer-Instanz kann mithilfe von Testports den aktiven DBMS-Knoten ermitteln und den Datenverkehr ausschließlich an diesen aktiven Datenbankknoten weiterleiten. Bei einem Failover des Datenbankknotens muss die SAP-Anwendung nicht erneut konfiguriert werden. Stattdessen werden die gängigsten SAP-Anwendungsarchitekturen wieder mit der privaten virtuellen IP-Adresse verbunden. Inzwischen hat die Azure Load Balancer-Instanz auf das Failover des Knotens reagiert, indem er den Datenverkehr an die private virtuelle IP-Adresse auf dem zweiten Knoten umgeleitet hat.
 
-Azure bietet zwei verschiedene [Load Balancer-SKUs](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview): Basic und Standard. Wenn Sie nicht über Azure-Verfügbarkeitszonen hinweg bereitstellen möchten, ist die Load-Balancer-SKU „Basic“ vollkommen ausreichend. 
+Azure bietet zwei verschiedene [Load Balancer-SKUs](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview): eine Basic-SKU und eine Standard-SKU. Wenn Sie nicht über Azure-Verfügbarkeitszonen hinweg bereitstellen möchten, ist die Load-Balancer-SKU „Basic“ vollkommen ausreichend. 
 
 Wird der Datenverkehr zwischen den DBMS-VMs und der SAP-Anwendungsschicht immer über Azure Load Balancer weitergeleitet? Die Antwort hängt von der Load Balancer-Konfiguration ab. Zu diesem Zeitpunkt wird der eingehende Datenverkehr auf der DBMS-VM immer über eine Azure Load Balancer-Instanz weitergeleitet. Der ausgehende Datenverkehr von der DBMS-VM zur Anwendungsschicht-VM hängt von der Konfiguration der Azure Load Balancer-Instanz ab. Die Load Balancer-Instanz bietet eine Möglichkeit, DirectServerReturn. Wenn diese Option konfiguriert ist, wird der Datenverkehr von der DBMS-VM zur SAP-Anwendungsschicht **NICHT** über die Azure Load Balancer-Instanz weitergeleitet. Stattdessen geht er direkt zur Anwendungsschicht. Wenn DirectServerReturn nicht konfiguriert ist, wird der zur SAP-Anwendungsschicht zurückkommende Datenverkehr über die Azure Load Balancer-Instanz weitergeleitet.
 

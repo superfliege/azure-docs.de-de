@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 9845476e23396eecc4149f3e856c40b0f80f13cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f099eefbc6d196f25c2b09669cdc1c3cdec68a12
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004765"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050013"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Beheben von Problemen mit einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM per Azure PowerShell
 Wenn für Ihre Windows-VM in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie die Problembehandlung ggf. auf dem Datenträger selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. Dieser Artikel beschreibt, wie Sie mit Azure PowerShell eine Verbindung zwischen dem Datenträger und einer anderen Windows-VM herstellen, um Fehler zu beheben und dann Ihre ursprüngliche VM zu reparieren. 
@@ -39,6 +39,8 @@ Der Problembehebungsprozess sieht wie folgt aus:
 5. Stellen Sie eine Verbindung zur Wiederherstellungs-VM her. Bearbeiten Sie Dateien, oder führen Sie ein beliebiges Tool zum Beheben von Problemen auf dem kopierten Betriebssystemdatenträger aus.
 6. Heben Sie die Bereitstellung des Datenträgers auf, und trennen Sie ihn von der Wiederherstellungs-VM.
 7. Ändern Sie den Betriebssystemdatenträger für die betroffene VM.
+
+Sie können die VM-Wiederherstellungsskripts verwenden, um die Schritte 1, 2, 3, 4, 6 und 7 zu automatisieren. Weitere Informationen und Anleitungen dazu finden Sie unter [VM Recovery Scripts for Resource Manager VM](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager) (VM-Wiederherstellungsskripts für Resource Manager-VM).
 
 Stellen Sie sicher, dass Sie die [aktuelle Version von Azure PowerShell](/powershell/azure/overview) installiert haben und an Ihrem Abonnement angemeldet sind:
 
@@ -187,7 +189,7 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
     2        newOSDisk                                  Healthy             Online       127 GB MBR
     ```
 
-Wenn die Kopie des ursprünglichen Betriebssystemdatenträgers bereitgestellt wurde, können Sie die erforderlichen Wartungs- und Problembehandlungsvorgänge ausführen. Fahren Sie mit den folgenden Schritten fort, nachdem Sie die Probleme behoben haben.
+Wenn die Kopie des ursprünglichen Betriebssystemdatenträgers bereitgestellt wurde, können Sie die erforderlichen Wartungs- und Problembehandlungsvorgänge ausführen. Fahren Sie mit den folgenden Schritte fort, nachdem Sie die Probleme behoben haben.
 
 ## <a name="unmount-and-detach-original-os-disk"></a>Aufheben der Bereitstellung und Trennen des ursprünglichen Betriebssystemdatenträgers
 Sobald die Fehler behoben sind, heben Sie die Bereitstellung auf, und trennen Sie den vorhandenen Datenträger von Ihrer Wiederherstellungs-VM. Sie können Ihren Datenträger nicht mit einer anderen VM nutzen, bis die Lease freigegeben wird, die die VM der Wiederherstellungs-VM anfügt.

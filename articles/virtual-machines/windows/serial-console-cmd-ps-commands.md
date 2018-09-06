@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 83b3aa1efdde367577a563b477403c313a51d4fe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: a6f8984086771fea4df4851b2a878d480b2050ea
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177474"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918516"
 ---
-# <a name="windows-commands---cmd"></a>Windows-Befehle – CMD 
+# <a name="windows-commands---cmd-and-powershell"></a>Windows-Befehle – CMD und PowerShell
 
 Dieser Abschnitt enthält Beispielbefehle für allgemeine Aufgaben in Szenarios, in denen Sie ggf. über die spezielle Verwaltungskonsole (Special Administration Console, SAC) auf den virtuellen Windows-Computer zugreifen müssen, um beispielsweise Probleme mit RDP-Verbindungsfehlern zu behandeln.
 
@@ -91,6 +91,8 @@ oder
 `netsh interface set interface name="<interface name>" admin=enabled`
 ### <a name="set-nic-to-use-dhcp"></a>Konfigurieren der NIC für die DHCP-Verwendung
 `netsh interface ip set address name="<interface name>" source=dhcp`
+
+Für weitere Informationen `netsh`[klicken Sie hier](https://docs.microsoft.com/windows-server/networking/technologies/netsh/netsh-contexts).
 
 Virtuelle Azure-Computer müssen im Gastbetriebssystem immer so konfiguriert werden, dass sie eine IP-Adresse über DHCP beziehen. DHCP wird auch bei Verwendung der Azure-Einstellung für statische IP-Adressen verwendet, um die statische IP-Adresse für den virtuellen Computer zu vergeben.
 ### <a name="ping"></a>Pingen

@@ -1,6 +1,6 @@
 ---
-title: Berechtigte Zuweisungen und Ressourcensichtbarkeit für Azure in Privileged Identity Management | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie bei Verwendung von PIM Mitglieder für Ressourcenrollen als „Berechtigt“ zuweisen.
+title: Berechtigte Zuweisungen und Ressourcensichtbarkeit in PIM – Azure | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt, wie Sie Mitgliedern in Azure AD Privileged Identity Management (PIM) die Berechtigung für Azure-Ressourcenrollen zuweisen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336453c1ef6ef8d0295d00f31afc6a5e7e42e8b6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3551c3231a94f8a844d26a713cbf171ca7653815
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621547"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189213"
 ---
-# <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Berechtigte Zuweisungen und Ressourcensichtbarkeit mit Privileged Identity Management
+# <a name="eligible-assignments-and-resource-visibility-in-pim"></a>Zugewiesene Berechtigungen und Ressourcensichtbarkeit in PIM
 
 Privileged Identity Management (PIM) für Azure-Ressourcenrollen ermöglicht eine verbesserte Sicherheit für Organisationen, die über wichtige Azure-Ressourcen verfügen. Mit PIM können Ressourcenadministratoren Mitglieder als „Berechtigt“ für Ressourcenrollen zuweisen. In den folgenden Abschnitten erhalten Sie weitere Informationen zu den verschiedenen Zuweisungstypen und Zuweisungsstatus für Azure-Ressourcenrollen. 
 
@@ -70,4 +70,4 @@ Beim Anzeigen einer Mitgliedschaft, die unter **Aktive Rollen** aufgeführt ist,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Zuweisen von Rollen in Privileged Identity Management](pim-resource-roles-assign-roles.md)
+- [Zuweisen von Azure-Ressourcenrollen in PIM](pim-resource-roles-assign-roles.md)

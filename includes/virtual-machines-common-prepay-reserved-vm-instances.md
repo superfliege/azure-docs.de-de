@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 19a153a5cdc9d5f878494984313baebd12dbcbb5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631162"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43039291"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances
 
@@ -30,6 +30,9 @@ Die Felder für die Unterkategorie der Verbrauchseinheit und für das Produkt in
 
 Reservierte VM-Instanzen sind für die meisten VM-Größen bis auf einige Ausnahmen verfügbar:
 
+- Für klassische virtuelle Computer und Clouddienste gilt kein Reservierungsrabatt.
+- Für unterdrückte Kern-VMs gelten keine Reservierungsrabatte.
+- Für die folgenden VM-Serien gelten keine Reservierungsrabatte: A-Serie, Av2-Serie und G-Serie.
 - Virtuelle Computer in Vorschauversionen: VM-Serien oder -Größen in Vorschauversionen sind nicht für den Reservierungserwerb verfügbar.
 - Clouds: Reservierungen sind in den Regionen „Azure US-Regierung“, „Deutschland“ und „China“ nicht zum Kauf verfügbar.
 - Nicht genügend Kontingent: Für eine Reservierung, die einem einzelnen Abonnement zugeordnet ist, muss im Abonnement vCPU-Kontingent für die neue RI verfügbar sein. Beispiel: Wenn für das Zielabonnement eine Kontingentgrenze von zehn vCPUs für die D-Serie gilt, können Sie keine Reservierung für elf Standard_D1-Instanzen erwerben. Bei der Kontingentüberprüfung für Reservierungen werden die im Abonnement bereits bereitgestellten virtuellen Computer berücksichtigt. Beispiel: Wenn im Abonnement ein Kontingent von zehn vCPUs für die D-Serie enthalten ist und zwei Standard_D1-Instanzen bereitgestellt sind, können Sie eine Reservierung für zehn Standard_D1-Instanzen in diesem Abonnement erwerben. 
@@ -69,11 +72,11 @@ Informationen zum Verwalten einer Reservierung finden Sie unter [Verwalten von r
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
-- [Was ist Azure Reserved VM Instances?](../articles/billing/billing-save-compute-costs-reservations.md)
-- [Verwalten von reservierten Instanzen in Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
-- [Grundlegendes zur Anwendung des Rabatts für reservierte Instanzen](../articles/billing/billing-understand-vm-reservation-charges.md)
-- [Grundlagen zur Verwendung reservierter Azure-Instanzen für Ihr Abonnement mit nutzungsbasierter Zahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
-- [Grundlegendes zur Nutzung reservierter Azure-Instanzen für die Enterprise-Registrierung](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+- [Was sind Azure-Reservierungen?](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Verwalten von Reservierungen für Ressourcen in Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
+- [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](../articles/billing/billing-understand-vm-reservation-charges.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
+- [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
 - [Nicht in reservierten Azure-Instanzen enthaltene Windows-Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md)
 - [Verkaufen von Microsoft Azure Reserved VM Instances](https://docs.microsoft.com/partner-center/azure-reservations)
 

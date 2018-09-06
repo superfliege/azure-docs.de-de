@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a6f6beedfc6c23be70693428388f6d0e585260bc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433169"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42919005"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -37,10 +37,11 @@ Erfahren Sie mehr über die zahlreichen [Vorteile der Verwendung von Resource Ma
 > [!NOTE]
 > Wenn Sie eine Resource Manager-Vorlage als Grundlage zum Erstellen weiterer Lab-VMs verwenden, sind jedoch einige Unterschiede dahingehend zu berücksichtigen, ob Sie einzelne oder mehrere VMs erstellen. Unter [Verwenden der Azure Resource Manager-Vorlage eines virtuellen Computers](devtest-lab-use-resource-manager-template.md) werden diese Unterschiede detaillierter veranschaulicht.
 >
->
 
-## <a name="configure-azure-resource-manager-template-repositories"></a>Konfigurieren von Azure Resource Manager-Vorlagenrepositorys
+## <a name="devtest-labs-public-environments"></a>Öffentliche DevTest Labs-Umgebungen
+Azure DevTest Labs verfügt über ein [öffentliches Repository von Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Environments), die Sie zum Erstellen von Umgebungen verwenden können, ohne selbst eine Verbindung mit einer externen GitHub-Quelle herstellen zu müssen. Dieses Repository enthält häufig verwendete Vorlagen wie Azure-Web-Apps, Service Fabric-Cluster und SharePoint Farm-Entwicklungsumgebungen. Dieses Feature ähnelt dem öffentlichen Repository von Artefakten, das für jedes von Ihnen erstellte Lab enthalten ist. Das Umgebungsrepository ermöglicht Ihnen einen schnellen und reibungslosen Einstieg mit zuvor erstellten Umgebungsvorlagen mit minimalen Eingabeparametern für PaaS-Ressourcen in Labs. Weitere Informationen finden Sie unter [Konfigurieren und Verwenden von Umgebungen in Azure DevTest Labs](devtest-lab-configure-use-public-environments.md).
 
+## <a name="configure-your-own-template-repositories"></a>Konfigurieren eigener Vorlagenrepositorys
 Bei Infrastruktur als Code und Konfiguration als Code empfiehlt es sich, Umgebungsvorlagen in der Quellcodeverwaltung zu verwalten. Azure DevTest Labs wendet diese Vorgehensweise an und lädt alle Azure Resource Manager-Vorlagen direkt aus Ihrem GitHub- oder VSTS Git-Repository. Folglich können Resource Manager-Vorlagen im gesamten Freigabezyklus (von der Test- bis zur Produktionsumgebung) verwendet werden.
 
 Sehen Sie sich die Vorlagen in unserem [öffentlichen GitHub-Repository](https://github.com/Azure/azure-devtestlab/tree/master/Environments) an, die vom DevTest Labs-Team erstellt wurden. In diesem öffentlichen Repository können Sie Vorlagen anzeigen, die von anderen Benutzern freigegeben werden und die Sie direkt verwenden oder entsprechend Ihren Anforderungen anpassen können. Speichern Sie Ihre Vorlage nach der Erstellung in diesem Repository, um sie für andere Benutzer freizugeben. Sie können auch ein eigenes Git-Repository mit Vorlagen einrichten, die zum Einrichten von Umgebungen in der Cloud verwendet werden können. 
@@ -56,12 +57,9 @@ Zum Organisieren von Azure Resource Manager-Vorlagen in einem Repository sind fo
 - Sie können Metadaten definieren, um den Anzeigenamen und die Beschreibung der Vorlage anzugeben. Diese Metadaten müssen sich in einer Datei namens `metadata.json` befinden. Die folgende Metadaten-Beispieldatei veranschaulicht das Angeben von Anzeigename und Beschreibung: 
 
     ```json
-    {
- 
-        "itemDisplayName": "<your template name>",
- 
-        "description": "<description of the template>"
- 
+    { 
+        "itemDisplayName": "<your template name>", 
+        "description": "<description of the template>" 
     }
     ```
 
