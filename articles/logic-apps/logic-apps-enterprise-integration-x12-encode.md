@@ -1,27 +1,23 @@
 ---
 title: Codieren von X12-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
-description: Überprüfen von EDI und Konvertieren XML-codierter Nachrichten mit dem X12-Nachrichtenencoder im Enterprise Integration Pack für Azure Logic Apps
+description: Überprüfen von EDI und Konvertieren XML-codierter Nachrichten mit dem X12-Nachrichtenencoder in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: a01e9ca9-816b-479e-ab11-4a984f10f62d
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: ec350560f4aca4e9a0b4f00892b690012c9f08dd
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3ed5cb61fef5f07913f11c4e4df309d720d5b901
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299012"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123504"
 ---
-# <a name="encode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Codieren von X12-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
+# <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Codieren von X12-Nachrichten in Azure Logic Apps mit Enterprise Integration Pack
 
 Mit dem Connector zum Codieren von X12-Nachrichten können Sie EDI- und partnerspezifische Eigenschaften überprüfen, XML-codierte Nachrichten in EDI-Transaktionssätze im Austausch konvertieren und eine technische Bestätigung und/oder eine Funktionsbestätigung anfordern.
 Um diesen Connector verwenden zu können, müssen Sie ihn einem vorhandenen Trigger in Ihrer Logik-App hinzufügen.

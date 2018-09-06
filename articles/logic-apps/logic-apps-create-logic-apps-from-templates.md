@@ -1,26 +1,21 @@
 ---
 title: Erstellen von Workflows aus Vorlagen – Azure Logic Apps | Microsoft-Dokumentation
-description: Schnelleres Erstellen von Workflows mit Logik-App-Vorlagen
-author: kevinlam1
-manager: jeconnoc
-editor: ''
+description: Schnelleres Erstellen von Workflows mit Logik-App-Vorlagen in Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: kevinlam1
+ms.author: klam
+ms.reviewer: estfan, LADocs
 ms.topic: article
+ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.author: LADocs; klam
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 72aca1420d76a34f8f43f05b25d146eb743b3233
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 10191a4fbab325dcd5134b082f050188c6798079
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298687"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122119"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
 

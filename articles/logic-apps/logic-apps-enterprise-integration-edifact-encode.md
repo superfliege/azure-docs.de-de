@@ -1,27 +1,23 @@
 ---
 title: Codieren von EDIFACT-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
-description: Überprüfen von EDI und Generieren von XML-Code mit dem EDIFACT-Nachrichtendecoder im Enterprise Integration Pack für Azure Logic Apps
+description: Überprüfen von EDI und Generieren von XML-Code mit dem EDIFACT-Nachrichtendecoder für Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: eaad2561254d858af99f06e576d67c05838e1220
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e1c990030a9fa9ad25950ccb24b36b82a8c69f5c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299891"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122352"
 ---
-# <a name="encode-edifact-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Codieren von EDIFACT-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
+# <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Codieren von EDIFACT-Nachrichten für Azure Logic Apps mit Enterprise Integration Pack
 
 Mit dem Connector zum Codieren von EDIFACT-Nachrichten können Sie EDI- und partnerspezifische Eigenschaften überprüfen, ein XML-Dokument für jeden Transaktionssatz generieren und eine technische Bestätigung und/oder eine Funktionsbestätigung anfordern.
 Um diesen Connector verwenden zu können, müssen Sie ihn einem vorhandenen Trigger in Ihrer Logik-App hinzufügen.

@@ -6,14 +6,14 @@ author: jj09
 manager: jlembicz
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/14/2016
+ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: 2f52ed0ab302d1c3dad699258287f6edd7197cef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6fed5a8afe6030038752d540bfabbc446c57db2c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525619"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124150"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Erste Schritte mit Azure Search in Java
 > [!div class="op_single_selector"]
@@ -28,9 +28,9 @@ Um dieses Beispiel auszuführen, benötigen Sie einen Azure Search-Dienst, für 
 
 Zum Erstellen und Testen dieses Beispiels wurde die folgende Software verwendet:
 
-* [Eclipse-IDE für Java EE-Entwickler](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar). Achten Sie darauf, dass Sie die EE-Version herunterladen. Ein Überprüfungsschritt erfordert eine Funktion, die nur in dieser Version verfügbar ist.
-* [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
+* [Eclipse-IDE für Java EE-Entwickler](https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers). Achten Sie darauf, dass Sie die EE-Version herunterladen. Ein Überprüfungsschritt erfordert eine Funktion, die nur in dieser Version verfügbar ist.
+* [JDK 8u181](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>Informationen zu den Daten
 In dieser Beispielanwendung werden Daten von [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm)verwendet, die nach dem Bundesstaat Rhode Island gefiltert wurden, um die Größe des Datasets zu verringern. Wir verwenden diese Daten, um eine Suchanwendung zu erstellen, die markante Gebäude, wie Krankenhäuser und Schulen, sowie geologische Merkmale, wie Flüsse, Seen und Gipfel, zurückgibt.
@@ -51,7 +51,7 @@ Die folgende Liste beschreibt die Dateien, die für dieses Beispiel relevant sin
 * SearchServiceHelper.java: Eine Hilfsklasse, die statische Methoden enthält.
 * Document.Java: Stellt das Datenmodell bereit.
 * config.Properties: Legt die URL und den API-Schlüssel des Search-Diensts fest.
-* Pom.XML: Eine Maven-Abhängigkeit.
+* pom.xml: Eine Maven-Abhängigkeit
 
 <a id="sub-2"></a>
 

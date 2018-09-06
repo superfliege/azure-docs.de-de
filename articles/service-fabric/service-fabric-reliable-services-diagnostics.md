@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2018
+ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 51895731efd466a314877e963a5fd2c6d868ec02
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a7ba92d871bb440b7b8c8a12c1e90f9aa10df3be
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110871"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105340"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
 Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
@@ -117,7 +117,10 @@ Die Reliable Services-Runtime gibt die folgenden Ereignisse unter der `Service F
 
  Name des Leistungsindikators | BESCHREIBUNG |
 | --- | --- |
-| Anzahl der Elemente | Die Anzahl von Schlüsseln im Speicher.|
+| Anzahl der Elemente | Die Anzahl von Elementen im Speicher|
+| Datenträgergröße | Gesamtgröße von Prüfpunktdateien für den Speicher auf dem Datenträger in Byte|
+| Für Prüfpunktdatei geschriebene Bytes/s | Die Anzahl von Bytes, die pro Sekunde für die letzte Prüfpunktdatei geschrieben wurden|
+| Beim Kopieren des Datenträgers übertragene Bytes/s | Die Anzahl gelesener (auf primärem Replikat) oder geschriebener (auf sekundärem Replikat) Datenträgerbytes pro Sekunde beim Speichern einer Kopie|
 
 ## <a name="next-steps"></a>Nächste Schritte
 [EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

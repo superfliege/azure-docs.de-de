@@ -1,27 +1,23 @@
 ---
 title: Decodieren von X12-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
-description: Überprüfen von EDI und Generieren von Bestätigungen mit dem X12-Nachrichtendecoder im Enterprise Integration Pack für Azure Logic Apps
+description: Überprüfen von EDI und Generieren von Bestätigungen mit dem X12-Nachrichtendecoder in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 14e9f0eefb705eea59a00390494871f5668b0a01
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298660"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121644"
 ---
-# <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von X12-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
+# <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>Decodieren von X12-Nachrichten in Azure Logic Apps mit Enterprise Integration Pack
 
 Mit dem Connector zum Decodieren von X12-Nachrichten können Sie den Umschlag für eine Handelspartnervereinbarung sowie EDI- und partnerspezifische Eigenschaften überprüfen, Austauschvorgänge in Transaktionssätze aufteilen oder gesamte Austauschvorgänge beibehalten und Bestätigungen für verarbeitete Transaktionen generieren. Um diesen Connector verwenden zu können, müssen Sie ihn einem vorhandenen Trigger in Ihrer Logik-App hinzufügen.
 

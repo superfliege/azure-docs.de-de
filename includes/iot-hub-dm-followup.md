@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: iot-hub
+ms.service: iot-hub
+author: dominicbetts
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43100240"
+---
 ## <a name="customize-and-extend-the-device-management-actions"></a>Anpassen und Erweitern der Geräteverwaltungsaktionen
 
 Ihre IoT-Lösungen können die festgelegten Geräteverwaltungsmuster erweitern oder benutzerdefinierte Muster ermöglichen. Dazu werden die Grundtypen für die Gerätezwillings- oder die C2D-Methode verwendet. Andere Beispiele für Geräteverwaltungsaktionen sind das Zurücksetzen auf die Werkseinstellungen, Firmware- und Softwareaktualisierungen, Energieverwaltung, Netzwerk- und Konnektivitätsverwaltung und Datenverschlüsselung.
@@ -12,12 +29,8 @@ In diesem Tutorial haben Sie eine direkte Methode zum Auslösen eines Remoteneus
 
 Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie unter:
 
-[Tutorial: Durchführen eines Firmwareupdates][lnk-fwupdate]
+[Tutorial: Durchführen eines Firmwareupdates](../articles/iot-hub/tutorial-firmware-update.md)
 
-Im Tutorial [Planen und Senden von Aufträgen][lnk-tutorial-jobs] erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
+Im Tutorial [Planen und Übertragen von Aufträgen](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md) erfahren Sie, wie Sie Ihre IoT-Lösung erweitern und Methodenaufrufe für mehrere Geräte planen.
 
-Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit IoT Edge][lnk-iot-edge].
-
-[lnk-fwupdate]: ../articles/iot-hub/tutorial-firmware-update.md
-[lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
-[lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md
+Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit IoT Edge](../articles/iot-edge/tutorial-simulate-device-linux.md).

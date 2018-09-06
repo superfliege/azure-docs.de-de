@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Lesson.ly | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Lesson.ly konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Lessonly.com | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Lessonly.com konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 13c053b41782fbf1a64d93b500938680f464cf0f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 050e8efed38c40d8c7da292c0d6865869a07c9f9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438517"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121708"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>Tutorial: Azure Active Directory-Integration mit Lesson.ly
+# <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Tutorial: Azure Active Directory-Integration mit Lessonly.com
 
-In diesem Tutorial erfahren Sie, wie Sie Lesson.ly in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Lessonly.com in Azure Active Directory (Azure AD) integrieren.
 
-Die Integration von Lesson.ly in Azure AD bietet die folgenden Vorteile:
+Die Integration von Lessonly.com in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Lesson.ly hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Lesson.ly anzumelden (einmaliges Anmelden).
+- Sie können in Azure AD steuern, wer Zugriff auf Lessonly.com hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Lessonly.com anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
 - Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Lesson.ly konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Lessonly.com konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Lesson.ly-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Lessonly.com-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -51,13 +51,13 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Lesson.ly aus dem Katalog
+1. Hinzufügen von Lessonly.com aus dem Katalog
 1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-lessonly-from-the-gallery"></a>Hinzufügen von Lesson.ly aus dem Katalog
-Zum Konfigurieren der Integration von Lesson.ly in Azure AD müssen Sie Lesson.ly aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+## <a name="adding-lessonlycom-from-the-gallery"></a>Hinzufügen von Lessonly.com aus dem Katalog
+Zum Konfigurieren der Integration von Lessonly.com in Azure AD müssen Sie Lessonly.com aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Lesson.ly aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Um Lessonly.com aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -71,51 +71,50 @@ Zum Konfigurieren der Integration von Lesson.ly in Azure AD müssen Sie Lesson.l
 
     ![ANWENDUNGEN][3]
 
-1. Geben Sie im Suchfeld als Suchbegriff **Lesson.ly**ein.
+1. Geben Sie im Suchfeld als Suchbegriff **Lessonly.com** ein.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/lessonly-tutorial/tutorial_lesson.ly_search.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/lessonly-tutorial/tutorial_lessonly.com_search.png)
 
-1. Wählen Sie im Ergebnisbereich die Option **Lesson.ly** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. Wählen Sie im Ergebnisbereich die Option **Lessonly.com** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/lessonly-tutorial/tutorial_lesson.ly_addfromgallery.png)
+    ![Erstellen eines Azure AD-Testbenutzers](./media/lessonly-tutorial/tutorial_lessonly.com_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei Lesson.ly mithilfe einer Testbenutzerin namens „Britta Simon“.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Lessonly.com basierend auf einer Testbenutzerin mit dem Namen Britta Simon.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Lesson.ly als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Das heißt, zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Lesson.ly muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Lessonly.com als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Lessonly.com muss eine Linkbeziehung eingerichtet werden.
 
-Weisen Sie in Lesson.ly den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+Weisen Sie in Lessonly.com den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um die Linkbeziehung herzustellen.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Lesson.ly müssen Sie die folgenden Schritte durchführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Lessonly.com müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines Lesson.ly-Testbenutzers](#creating-a-lessonly-test-user)** , um eine Entsprechung von Britta Simon in Lesson.ly zu erhalten, die mit der Darstellung dieses Benutzers in Azure AD verknüpft ist.
+1. **[Erstellen eines Lessonly.com-Testbenutzers](#creating-a-lessonly-test-user)**, um eine Entsprechung von Britta Simon in Lessonly.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Lesson.ly-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Lessonly.com-Anwendung.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Lesson.ly die folgenden Schritte aus:**
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Lessonly.com die folgenden Schritte aus:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Lesson.ly** auf **Einmaliges Anmelden**.
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Lessonly.com** auf **Einmaliges Anmelden**.
 
     ![Configure single sign-on][4]
 
 1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lesson.ly_samlbase.png)
+    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lessonly.com_samlbase.png)
 
-1. Führen Sie auf der Seite **Domäne und URLs für Lesson.ly** die folgenden Schritte aus:
+1. Führen Sie im Abschnitt **Domäne und URLs für Lessonly.com** die folgenden Schritte aus:
 
-    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lesson.ly_url.png)
+    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lessonly.com_url.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein:
     | |
     |--|
-    | `https://<companyname>.lesson.ly/signin`|
     | `https://<companyname>.lessonly.com/signin`|
 
     >[!NOTE]
@@ -124,17 +123,16 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
     | |
     |--|
-    | `https://<companyname>.lesson.ly/auth/saml/metadata`|
     | `https://<companyname>.lessonly.com/auth/saml/metadata`|
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von Lesson.ly Client](mailto:dev@lessonly.com), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Lessonly.com-Client](mailto:dev@lessonly.com), um diese Werte zu erhalten. 
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lesson.ly_certificate.png)
+    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lessonly.com_certificate.png)
 
-1. Die Lesson.ly-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen.
+1. Die Lessonly.com-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen.
 
     ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lessonly_06.png)
            
@@ -163,11 +161,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/lessonly-tutorial/tutorial_general_400.png)
 
-1. Klicken Sie im Abschnitt **Lesson.ly-Konfiguration** auf **Lesson.ly konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. Klicken Sie im Abschnitt **Lessonly.com-Konfiguration** auf **Lessonly.com konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lesson.ly_configure.png)
+    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lessonly.com_configure.png)
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Lesson.ly** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmalige Anmeldung** an das [Lesson.ly-Supportteam](mailto:dev@lessonly.com) senden.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **Lessonly.com** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Lessonly.com-Supportteam](mailto:dev@lessonly.com) senden.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -203,30 +201,30 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Klicken Sie auf **Create**.
  
-### <a name="creating-a-lessonly-test-user"></a>Erstellen eines Lesson.ly-Testbenutzers
+### <a name="creating-a-lessonlycom-test-user"></a>Erstellen eines Lessonly.com-Testbenutzers
 
-Das Ziel dieses Abschnitts besteht darin, einen Benutzer namens Britta Simon in Lesson.ly zu erstellen. Lesson.ly unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
+Das Ziel dieses Abschnitts besteht darin, einen Benutzer namens Britta Simon in Lessonly.com zu erstellen. Lessonly.com unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Lesson.ly ein neuer Benutzer erstellt.
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Lessonly.com ein neuer Benutzer erstellt.
 
 > [!NOTE]
-> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam von Lesson.ly](mailto:dev@lessonly.com) in Verbindung.
+> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam von Lessonly.com](mailto:dev@lessonly.com) in Verbindung.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Lesson.ly gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Lessonly.com gewähren.
 
 ![Benutzer zuweisen][200] 
 
-**Um Britta Simon Lesson.ly zuzuweisen, führen Sie die folgenden Schritte aus:**
+**Um Britta Simon Lessonly.com zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
-1. Wählen Sie in der Anwendungsliste **Lesson.ly**aus.
+1. Wählen Sie in der Anwendungsliste **Lessonly.com** aus.
 
-    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lesson.ly_app.png) 
+    ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lessonly.com_app.png)
 
 1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
@@ -246,7 +244,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Lesson.ly“ klicken, sollten Sie automatisch bei Ihrer Lesson.ly-Anwendung angemeldet werden.
+Wenn Sie im Zugriffsbereich auf die Kachel „Lessonly.com“ klicken, sollten Sie automatisch bei Ihrer Lessonly.com-Anwendung angemeldet werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

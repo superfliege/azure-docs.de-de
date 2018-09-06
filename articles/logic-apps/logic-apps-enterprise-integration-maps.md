@@ -1,27 +1,23 @@
 ---
 title: 'Transformieren von XML mit XSLT-Zuordnungen: Azure-Logik-Apps | Microsoft-Dokumentation'
-description: Informationen zum Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML-Daten mit Azure Logic Apps und dem Enterprise Integration Pack
+description: Hinzufügen von XSLT-Zuordnungen zum Transformieren von XML in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 90f5cfc4-46b2-4ef7-8ac4-486bb0e3f289
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: e0a8e5dfd42d447b4e049574b346c41fe0067c9f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c5e5e0a0a3f8bd5feedc00d5bbfb76a1453ccc84
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299136"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123555"
 ---
-# <a name="add-maps-for-xml-data-transform"></a>Hinzufügen von Zuordnungen für die XML-Datentransformation
+# <a name="add-maps-for-xml-transformation-in-azure-logic-apps-with-enterprise-integration-pack"></a>Hinzufügen von Zuordnungen für die XML-Transformation in Azure Logic Apps mit Enterprise Integration Pack
 
 Für die Unternehmensintegration werden Zuordnungen verwendet, um XML-Daten in andere Formate zu transformieren. Eine Zuordnung ist ein XML-Dokument, das definiert, welche Daten in einem Dokument in ein anderes Format transformiert werden sollen. 
 

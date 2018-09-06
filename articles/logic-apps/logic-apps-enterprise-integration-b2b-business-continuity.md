@@ -1,27 +1,23 @@
 ---
-title: Notfallwiederherstellung für das B2B-Integrationskonto – Azure Logic Apps | Microsoft-Dokumentation
-description: Logic Apps B2B-Notfallwiederherstellung
+title: Notfallwiederherstellung für B2B-Integrationskonten – Azure Logic Apps | Microsoft-Dokumentation
+description: Bereiten Sie sich auf die regionsübergreifende Notfallwiederherstellung in Azure Logic Apps vor.
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/10/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3d465123f814887282bf2b29a5b6e0836601c243
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045601"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123903"
 ---
-# <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Logic Apps B2B – regionsübergreifende Notfallwiederherstellung
+# <a name="cross-region-disaster-recovery-for-b2b-integration-accounts-in-azure-logic-apps"></a>Regionsübergreifende Notfallwiederherstellung für B2B-Integrationskonten in Azure Logic Apps
 
 B2B-Workloads umfassen Geldtransaktionen wie Aufträge und Rechnungen. Bei Notfallereignissen ist für Unternehmen eine schnelle Wiederherstellung von maßgeblicher Bedeutung, um die mit den Partnern getroffenen Vereinbarungen zum Servicelevel auf Unternehmensebene zu erfüllen. In diesem Artikel wird die Erstellung eines Geschäftskontinuitätsplans für B2B-Workloads beschrieben. 
 

@@ -1,28 +1,23 @@
 ---
 title: Erstellen von Web- und REST-APIs für Azure Logic Apps | Microsoft-Dokumentation
-description: Informationen zum Erstellen von Web- und REST-APIs, um Ihre APIs, Dienste oder Systeme in Logik-App-Workflows für die Systemintegration aufzurufen
-keywords: Web-APIs, REST-APIs, Workflows, Systemintegrationen
+description: Erstellen von Web- und REST-APIs zum Aufrufen Ihrer APIs, Dienste oder Systeme für die Systemintegration in Azure Logic Apps
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.date: 5/26/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 748070d43c34b501af3455d03429be1f44178b7f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
+ms.date: 05/26/2017
+ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172016"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122245"
 ---
-# <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Erstellen benutzerdefinierter APIs, die in Logik-App-Workflows aufgerufen werden können
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
 Obwohl Azure Logic Apps [100+ integrierte Connectors](../connectors/apis-list.md) bietet, die Sie in Logik-App-Workflows verwenden können, möchten Sie möglicherweise APIs, Systeme und Dienste aufrufen, die nicht als Connectors zur Verfügung stehen. Sie können eigene APIs erstellen, die Aktionen und Trigger zur Verwendung in Logik-Apps bereitstellen. Es gibt noch andere Gründe, warum Sie möglicherweise eigene APIs erstellen möchten, die Sie in Logik-App-Workflows aufrufen können:
 

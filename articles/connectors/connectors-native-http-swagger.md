@@ -1,28 +1,24 @@
 ---
-title: Aufrufen von REST-Endpunkten mit dem „HTTP + Swagger“-Connector für Azure Logic Apps | Microsoft-Dokumentation
-description: Verbinden mit REST-Endpunkten von Logik-Apps über Swagger mit dem „HTTP + Swagger“-Connector
+title: Aufrufen von REST-Endpunkten über Azure Logic Apps | Microsoft-Dokumentation
+description: Verwenden des Connectors „HTTP + Swagger“ in Azure Logic Apps zum Automatisieren von Aufgaben und Workflows, die mit REST-Endpunkten kommunizieren
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
+tags: connectors
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/18/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 4e4421b0dfe0f29c3d50764b9ca04471c73a1450
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296518"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123171"
 ---
-# <a name="get-started-with-the-http--swagger-action"></a>Erste Schritte mit der Aktion „HTTP + Swagger“
+# <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit dem Connector „HTTP + Swagger“ in Azure Logic Apps
 
 Sie können einen erstklassigen Connector für beliebige REST-Endpunkte über ein [Swagger-Dokument](https://swagger.io) erstellen, indem Sie die Aktion „HTTP + Swagger“ in Ihrem Logik-App-Workflow verwenden. Sie können Logik-Apps auch so erweitern, dass sie beliebige REST-Endpunkte mit erstklassigen Logik-App-Designer-Funktionen aufruft.
 

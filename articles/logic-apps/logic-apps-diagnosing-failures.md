@@ -1,27 +1,23 @@
 ---
 title: Behandeln und Diagnostizieren von Fehlern – Azure Logic Apps | Microsoft-Dokumentation
-description: Grundlegendes zu Fehlern in Logik-Apps
+description: Hier erfahren Sie, wie Sie Workflowfehler in Azure Logic Apps diagnostizieren und beheben.
 services: logic-apps
-documentationcenter: ''
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.service: logic-apps
-ms.devlang: ''
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
+ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: b0bf6cd747860d938f80787d9bef6634a6a22d09
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 994e7945a7107815029bd415f4cc0d45bb68e335
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441531"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123686"
 ---
-# <a name="troubleshoot-and-diagnose-logic-app-failures"></a>Behandeln und Diagnostizieren von Logik-App-Fehlern
+# <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>Diagnostizieren und Beheben von Workflowfehlern in Azure Logic Apps
 
 Ihre Logik-App generiert Informationen, die Ihnen beim Diagnostizieren und Debuggen von Problemen in Ihrer App helfen. Zum Diagnostizieren einer Logik-App können Sie im Azure-Portal die einzelnen Schritte des Workflows prüfen. Sie können einem Workflow aber auch einige Schritte hinzufügen, um ein Laufzeit-Debugging durchzuführen.
 

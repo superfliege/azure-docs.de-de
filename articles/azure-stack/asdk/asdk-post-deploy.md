@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e057d7a649397083240e9f67080808a3057c7f50
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946477"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840268"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Konfigurationsaufgaben nach der Installation des ASDK
 
@@ -140,16 +140,6 @@ Die Tests dauern einige Minuten. Wenn die Installation erfolgreich war, sieht di
 ![Test-AzureStack](media/asdk-post-deploy/test-azurestack.png)
 
 Wenn ein Fehler aufgetreten ist, führen Sie die Schritte zur Problembehandlung aus, um Hilfe zu erhalten.
-
-## <a name="activate-the-administrator-and-tenant-portals"></a>Aktivieren des Administrator- und Mandantenportals
-Nach Bereitstellungen, für die Azure AD verwendet wird, müssen Sie sowohl das Azure Stack-Administratorportal als auch das Mandantenportal aktivieren. Mit dieser Aktivierung wird die Zustimmung erteilt, dass dem Azure Stack-Portal und Azure Resource Manager die richtigen Berechtigungen (auf der Zustimmungsseite aufgeführt) für alle Benutzer des Verzeichnisses gewährt werden können.
-
-- Navigieren Sie zum Administratorportal unter https://adminportal.local.azurestack.external/guest/signup, lesen Sie die Informationen, und klicken Sie dann auf **Akzeptieren**. Nach dem Akzeptieren können Sie Dienstadministratoren hinzufügen, die nicht gleichzeitig Verzeichnismandantenadministratoren sind.
-
-- Navigieren Sie zum Mandantenportal unter https://portal.local.azurestack.external/guest/signup, lesen Sie die Informationen, und klicken Sie dann auf **Akzeptieren**. Nach dem Akzeptieren können sich Benutzer im Verzeichnis am Mandantenportal anmelden. 
-
-> [!NOTE] 
-> Wenn die Portale nicht aktiviert sind, kann sich nur der Verzeichnisadministrator anmelden und die Portale verwenden. Anderen Benutzern, die sich anmelden, wird ein Fehler mit dem Hinweis angezeigt, dass der Administrator keine Berechtigungen für andere Benutzer erteilt hat. Falls der Administrator nicht nativ dem Verzeichnis angehört, für das Azure Stack registriert ist, muss das Azure Stack-Verzeichnis an die Aktivierungs-URL angefügt werden. Wenn Azure Stack z.B. für fabrikam.onmicrosoft.com registriert und der Administratorbenutzer admin@contoso.com ist, navigieren Sie zu https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com, um das Portal zu aktivieren. 
 
 ## <a name="reset-the-password-expiration-policy"></a>Zurücksetzen der Kennwortablaufrichtlinie 
 Führen Sie nach dem Bereitstellen des ASDK die unten angegebenen Schritte aus, um sicherzustellen, dass das Kennwort für den Development Kit-Host nicht vor dem Ende des Evaluierungszeitraums abläuft.

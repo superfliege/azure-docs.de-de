@@ -1,31 +1,26 @@
 ---
-title: Abfragen von B2B-Nachrichten in Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
-description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten in Log Analytics
-author: padmavc
-manager: jeconnoc
-editor: ''
+title: 'Erstellen von Abfragen für B2B-Nachrichten in Log Analytics: Azure Logic Apps | Microsoft-Dokumentation'
+description: Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten mit Log Analytics für Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: baccd255fc2812eae0de3a98dfcef3dcbc7e1b46
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294308"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124269"
 ---
-# <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Abfragen von AS2-, X12- und EDIFACT-Nachrichten in Log Analytics
+# <a name="create-queries-for-tracking-as2-x12-and-edifact-messages-in-log-analytics-for-azure-logic-apps"></a>Erstellen von Abfragen zum Nachverfolgen von AS2-, X12- und EDIFACT-Nachrichten mit Log Analytics für Azure Logic Apps
 
 Sie können Abfragen erstellen, die Aktionen auf der Grundlage bestimmter Kriterien filtern, um die AS2-, X12- oder EDIFACT-Nachrichten zu finden, die Sie mithilfe von [Azure Log Analytics](../log-analytics/log-analytics-overview.md) nachverfolgen. So können Sie beispielsweise anhand einer bestimmten Austauschkontrollnummer nach Nachrichten suchen.
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informieren Sie sich über das [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) und das [Einrichten der Protokollierung für diese Logik-App](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 

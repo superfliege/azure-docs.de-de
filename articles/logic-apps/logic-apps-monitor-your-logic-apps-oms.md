@@ -1,25 +1,20 @@
 ---
-title: Überwachen und Auswerten von Logik-App-Ausführungen mit Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
-description: Überwachen Sie Ihre Logik-App-Ausführungen mit Log Analytics, um Erkenntnisse zu gewinnen und ausführlichere Debuggingdetails für die Problembehandlung und Diagnose zu erhalten.
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
+title: Überwachen von Logik-App-Ausführungen mit Log Analytics – Azure Logic Apps | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe von Log Analytics Erkenntnisse und Debuggingdaten zu Logik-App-Ausführungen erhalten, die bei der Problembehandlung und Diagnose hilfreich sind.
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: LADocs; divswa
-ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1aa55728b222c2838026cf5b06175736c5c84194
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294573"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123289"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Überwachen und Auswerten von Logik-App-Ausführungen mit Log Analytics
 
@@ -30,7 +25,7 @@ In diesem Artikel wird veranschaulicht, wie Sie Log Analytics aktivieren, um Lau
  > [!TIP]
  > Führen Sie diese Schritte zum [Aktivieren der Diagnoseprotokollierung und Senden von Logik-App-Laufzeitdaten an Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics) aus, um Ihre vorhandenen Logik-Apps zu überwachen.
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 Sie müssen über einen Log Analytics-Arbeitsbereich verfügen, bevor Sie beginnen. Erfahren Sie mehr über das [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md). 
 

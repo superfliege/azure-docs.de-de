@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: dobett
-ms.openlocfilehash: c598fa5b8f44c6d04d3b4ca6b02b660a4cedaf04
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 340453448d38db66558e59edb845f2caf4454cf9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42142370"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104149"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Erste Schritte mit Gerätezwillingen (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -22,208 +22,218 @@ ms.locfileid: "42142370"
 Am Ende dieses Tutorials verfügen Sie über diese .NET-Konsolen-Apps:
 
 * **CreateDeviceIdentity** ist eine .NET-App, mit der eine Geräteidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden mit Ihrer simulierten Geräte-App erstellt werden.
+
 * **AddTagsAndQuery** ist eine .NET-Back-End-App, die Tags hinzufügt und Gerätezwillinge abfragt.
+
 * **ReportConnectivity** ist eine .NET-Geräte-App, die ein Gerät simuliert, das eine Verbindung mit Ihrer IoT Hub-Instanz mit der zuvor erstellten Geräteidentität herstellt und seine Verbindungsbedingung meldet.
 
 > [!NOTE]
-> Im Artikel [Azure IoT SDKs][lnk-hub-sdks] finden Sie Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Apps erstellen können.
-> 
+> Im Artikel [Azure IoT SDKs](iot-hub-devguide-sdks.md) finden Sie Informationen zu den verschiedenen Azure IoT SDKs, mit denen Sie sowohl Geräte- als auch Back-End-Apps erstellen können.
 > 
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Visual Studio 2015 oder Visual Studio 2017
-* Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
+* Visual Studio 2017.
+* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](http://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity-portal](../../includes/iot-hub-get-started-create-device-identity-portal.md)]
 
 ## <a name="create-the-service-app"></a>Erstellen der Dienst-App
+
 In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (in C#), mit der dem Gerätezwilling, der **myDeviceId** zugeordnet ist, Standortmetadaten hinzugefügt werden. Anschließend werden die in dem IoT Hub, der die Geräte in den USA auswählt, gespeicherten Gerätezwillinge abgefragt und dann diejenigen, die eine Mobilfunkverbindung gemeldet haben.
 
 1. Fügen Sie in Visual Studio in der aktuellen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Nennen Sie das Projekt **AddTagsAndQuery**.
    
-    ![Neues Visual C#-Projekt für den klassischen Windows-Desktop][img-createapp]
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **AddTagsAndQuery**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-1. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, und suchen Sie dann nach **microsoft.azure.devices**. Wählen Sie **Installieren** aus, um das Paket **Microsoft.Azure.Devices** zu installieren, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket [Azure IoT-Dienst-SDK][lnk-nuget-service-sdk] heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
+    ![Neues Visual C#-Projekt für den klassischen Windows-Desktop](./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png)
+
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **AddTagsAndQuery**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
+
+3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, und suchen Sie dann nach **Microsoft.Azure.Devices**. Wählen Sie **Installieren** aus, um das Paket **Microsoft.Azure.Devices** zu installieren, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket [Azure IoT-Dienst-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
    
-    ![Fenster „NuGet-Paket-Manager“][img-servicenuget]
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
-   
-        using Microsoft.Azure.Devices;
-1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben.
-   
-        static RegistryManager registryManager;
-        static string connectionString = "{iot hub connection string}";
-1. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
-   
-        public static async Task AddTagsAndQuery()
-        {
-            var twin = await registryManager.GetTwinAsync("myDeviceId");
-            var patch =
-                @"{
-                    tags: {
-                        location: {
-                            region: 'US',
-                            plant: 'Redmond43'
-                        }
+    ![Fenster „NuGet-Paket-Manager“](./media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png)
+
+4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+
+    ```csharp  
+    using Microsoft.Azure.Devices;
+    ```
+
+5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die IoT Hub-Verbindungszeichenfolge für den Hub, den Sie im vorherigen Abschnitt erstellt haben.
+
+    ```csharp  
+    static RegistryManager registryManager;
+    static string connectionString = "{iot hub connection string}";
+    ```
+
+6. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
+
+    ```csharp  
+    public static async Task AddTagsAndQuery()
+    {
+        var twin = await registryManager.GetTwinAsync("myDeviceId");
+        var patch =
+            @"{
+                tags: {
+                    location: {
+                        region: 'US',
+                        plant: 'Redmond43'
                     }
-                }";
-            await registryManager.UpdateTwinAsync(twin.DeviceId, patch, twin.ETag);
+                }
+            }";
+        await registryManager.UpdateTwinAsync(twin.DeviceId, patch, twin.ETag);
    
-            var query = registryManager.CreateQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'", 100);
-            var twinsInRedmond43 = await query.GetNextAsTwinAsync();
-            Console.WriteLine("Devices in Redmond43: {0}", string.Join(", ", twinsInRedmond43.Select(t => t.DeviceId)));
+        var query = registryManager.CreateQuery(
+          "SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'", 100);
+        var twinsInRedmond43 = await query.GetNextAsTwinAsync();
+        Console.WriteLine("Devices in Redmond43: {0}", 
+          string.Join(", ", twinsInRedmond43.Select(t => t.DeviceId)));
    
-            query = registryManager.CreateQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
-            var twinsInRedmond43UsingCellular = await query.GetNextAsTwinAsync();
-            Console.WriteLine("Devices in Redmond43 using cellular network: {0}", string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
-        }
+        query = registryManager.CreateQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
+        var twinsInRedmond43UsingCellular = await query.GetNextAsTwinAsync();
+        Console.WriteLine("Devices in Redmond43 using cellular network: {0}", 
+          string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
+    }
+    ```
    
     Die **Registry**-Klasse macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Diensts erforderlich sind. Mit dem vorherigen Code werden zunächst das **registryManager**-Objekt initialisiert, dann der Gerätezwilling für **myDeviceId** abgerufen und schließlich die zugehörigen Tags mit den gewünschten Standortinformationen aktualisiert.
    
     Nach der Aktualisierung werden zwei Abfragen ausgeführt: Mit der ersten werden nur die Gerätezwillinge von Geräten in der Anlage **Redmond43** ausgewählt. Mit der zweiten wird die Abfrage so angepasst, dass nur die Geräte ausgewählt werden, die über ein Mobilfunknetz verbunden sind.
    
     Beachten Sie, dass mit diesem Code beim Erstellen des **query**-Objekts eine maximale Anzahl von zurückgegebenen Dokumenten angegeben wird. Das **query**-Objekt enthält die boolesche Eigenschaft **HasMoreResults**, mit der Sie die **GetNextAsTwinAsync**-Methoden mehrmals aufrufen können, um alle Ergebnisse abzurufen. Die **GetNextAsJson**-Methode ist für Ergebnisse verfügbar, die keine Gerätezwillinge sind, z.B. Ergebnisse von Aggregationsabfragen.
-1. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
-   
-        registryManager = RegistryManager.CreateFromConnectionString(connectionString);
-        AddTagsAndQuery().Wait();
-        Console.WriteLine("Press Enter to exit.");
-        Console.ReadLine();
 
-1. Öffnen Sie im Projektmappen-Explorer **Startprojekte festlegen**, und vergewissern Sie sich, dass als **Aktion** für **AddTagsAndQuery** **Starten** festgelegt ist. Erstellen Sie die Projektmappe.
-1. Führen Sie diese Anwendung aus, indem Sie mit der rechten Maustaste auf das Projekt **AddTagsAndQuery** klicken und **Debuggen** und anschließend **Neue Instanz starten** auswählen. In den Ergebnissen für die Abfrage, mit der alle Geräte in der Anlage **Redmond43** abgefragt werden, sollte ein Gerät angezeigt werden und keines für die Abfrage, mit der die Ergebnisse auf die über ein Mobilfunknetz verbundenen Geräte beschränkt werden.
+7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+
+    ```csharp  
+    registryManager = RegistryManager.CreateFromConnectionString(connectionString);
+    AddTagsAndQuery().Wait();
+    Console.WriteLine("Press Enter to exit.");
+    Console.ReadLine();
+    ```
+
+8. Öffnen Sie im Projektmappen-Explorer **Startprojekte festlegen**, und vergewissern Sie sich, dass als **Aktion** für **AddTagsAndQuery** **Starten** festgelegt ist. Erstellen Sie die Projektmappe.
+
+9. Führen Sie diese Anwendung aus, indem Sie mit der rechten Maustaste auf das Projekt **AddTagsAndQuery** klicken und **Debuggen** und anschließend **Neue Instanz starten** auswählen. In den Ergebnissen für die Abfrage, mit der alle Geräte in der Anlage **Redmond43** abgefragt werden, sollte ein Gerät angezeigt werden und keines für die Abfrage, mit der die Ergebnisse auf die über ein Mobilfunknetz verbundenen Geräte beschränkt werden.
    
-    ![Abfrageergebnisse im Fenster][img-addtagapp]
+    ![Abfrageergebnisse im Fenster](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
 Im nächsten Abschnitt erstellen Sie eine Geräte-App, mit der die Verbindungsinformationen gemeldet und das Ergebnis der im vorherigen Abschnitt ausgeführten Abfrage geändert wird.
 
 ## <a name="create-the-device-app"></a>Erstellen der Geräte-App
+
 In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die als **myDeviceId** eine Verbindung mit dem Hub herstellt und dann die gemeldeten Eigenschaften so aktualisiert, dass sie die Informationen über die Verbindung mit einem Mobilfunknetz enthalten.
 
 1. Fügen Sie in Visual Studio in der aktuellen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Nennen Sie das Projekt **ReportConnectivity**.
    
-    ![Neue klassische Visual C#-App für Windows][img-createdeviceapp]
+    ![Neue klassische Visual C#-App für Windows](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
     
-1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ReportConnectivity**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
-1. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, und suchen Sie dann nach **microsoft.azure.devices.client**. Wählen Sie **Installieren** aus, um das Paket **Microsoft.Azure.Devices.Client** zu installieren, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das [NuGet-Paket mit dem Azure IoT-Geräte-SDK][lnk-nuget-client-sdk] heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
-   
-    ![Fenster „NuGet-Paket-Manager“ mit Client-App][img-clientnuget]
-1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
-   
-        using Microsoft.Azure.Devices.Client;
-        using Microsoft.Azure.Devices.Shared;
-        using Newtonsoft.Json;
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ReportConnectivity**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
 
-1. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die Geräteverbindungszeichenfolge, die Sie sich im vorherigen Abschnitt notiert haben.
+3. Wählen Sie im Fenster **NuGet-Paket-Manager** die Option **Durchsuchen** aus, und suchen Sie dann nach **Microsoft.Azure.Devices.Client**. Wählen Sie **Installieren** aus, um das Paket **Microsoft.Azure.Devices.Client** zu installieren, und akzeptieren Sie die Nutzungsbedingungen. Bei diesem Verfahren wird das NuGet-Paket [Azure IoT-Geräte-SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) heruntergeladen und installiert und ein Verweis auf das Paket und seine Abhängigkeiten hinzugefügt.
    
-        static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
-        static DeviceClient Client = null;
+    ![Fenster „NuGet-Paket-Manager“ mit Client-App](./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png)
 
-1. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
+4. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
 
-       public static async void InitClient()
+    ```csharp  
+    using Microsoft.Azure.Devices.Client;
+    using Microsoft.Azure.Devices.Shared;
+    using Newtonsoft.Json;
+    ```
+
+5. Fügen Sie der **Program** -Klasse die folgenden Felder hinzu. Ersetzen Sie den Platzhalterwert durch die Geräteverbindungszeichenfolge, die Sie sich im vorherigen Abschnitt notiert haben.
+
+    ```csharp  
+    static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;
+      DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static DeviceClient Client = null;
+    ```
+
+6. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
+
+    ```csharp
+    public static async void InitClient()
+    {
+        try
         {
-            try
-            {
-                Console.WriteLine("Connecting to hub");
-                Client = DeviceClient.CreateFromConnectionString(DeviceConnectionString, TransportType.Mqtt);
-                Console.WriteLine("Retrieving twin");
-                await Client.GetTwinAsync();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Error in sample: {0}", ex.Message);
-            }
+            Console.WriteLine("Connecting to hub");
+            Client = DeviceClient.CreateFromConnectionString(DeviceConnectionString, 
+              TransportType.Mqtt);
+            Console.WriteLine("Retrieving twin");
+            await Client.GetTwinAsync();
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Error in sample: {0}", ex.Message);
+        }
+    }
+    ```
 
     Das **Client**-Objekt macht alle Methoden verfügbar, die für die Interaktion mit Gerätezwillingen des Geräts erforderlich sind. Der oben gezeigte Code initialisiert das **Client**-Objekt und ruft dann den Gerätezwilling für **myDeviceId** ab.
 
-1. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
-   
-        public static async void ReportConnectivity()
+7. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
+
+    ```csharp  
+    public static async void ReportConnectivity()
+    {
+        try
         {
-            try
-            {
-                Console.WriteLine("Sending connectivity data as reported property");
-                
-                TwinCollection reportedProperties, connectivity;
-                reportedProperties = new TwinCollection();
-                connectivity = new TwinCollection();
-                connectivity["type"] = "cellular";
-                reportedProperties["connectivity"] = connectivity;
-                await Client.UpdateReportedPropertiesAsync(reportedProperties);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine();
-                Console.WriteLine("Error in sample: {0}", ex.Message);
-            }
+            Console.WriteLine("Sending connectivity data as reported property");
+            
+            TwinCollection reportedProperties, connectivity;
+            reportedProperties = new TwinCollection();
+            connectivity = new TwinCollection();
+            connectivity["type"] = "cellular";
+            reportedProperties["connectivity"] = connectivity;
+            await Client.UpdateReportedPropertiesAsync(reportedProperties);
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine();
+            Console.WriteLine("Error in sample: {0}", ex.Message);
+        }
+    }
+    ```
 
    Der Code oben aktualisiert die für **myDeviceId** gemeldete Eigenschaft mit den Konnektivitätsinformationen.
 
-1. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
-   
-       try
-       {
-            InitClient();
-            ReportConnectivity();
-       }
-       catch (Exception ex)
-       {
-            Console.WriteLine();
-            Console.WriteLine("Error in sample: {0}", ex.Message);
-       }
-       Console.WriteLine("Press Enter to exit.");
-       Console.ReadLine();
+8. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
 
-1. Öffnen Sie im Projektmappen-Explorer **Startprojekte festlegen**, und vergewissern Sie sich, dass als **Aktion** für **ReportConnectivity** die Option **Starten** festgelegt ist. Erstellen Sie die Projektmappe.
-1. Sie führen diese Anwendung aus, indem Sie mit der rechten Maustaste auf das Projekt **ReportConnectivity** klicken und dann **Debuggen** und anschließend **Neue Instanz starten** auswählen. Sie sollten sehen, wie die Zwillingsinformationen abgerufen und die Konnektivität anschließend als *gemeldete Eigenschaft* gesendet wird.
+    ```csharp
+    try
+    {
+        InitClient();
+        ReportConnectivity();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Error in sample: {0}", ex.Message);
+    }
+    Console.WriteLine("Press Enter to exit.");
+    Console.ReadLine();
+    ```
+
+9. Öffnen Sie im Projektmappen-Explorer **Startprojekte festlegen**, und vergewissern Sie sich, dass als **Aktion** für **ReportConnectivity** die Option **Starten** festgelegt ist. Erstellen Sie die Projektmappe.
+
+10. Sie führen diese Anwendung aus, indem Sie mit der rechten Maustaste auf das Projekt **ReportConnectivity** klicken und dann **Debuggen** und anschließend **Neue Instanz starten** auswählen. Sie sollten sehen, wie die Zwillingsinformationen abgerufen und die Konnektivität anschließend als *gemeldete Eigenschaft* gesendet wird.
    
-    ![Ausführen der Geräte-App zum Melden der Konnektivität][img-rundeviceapp]
-    
-    
-1. Da das Gerät nun die Verbindungsinformationen gemeldet hat, sollten diese in beiden Abfragen angezeigt werden. Führen Sie die .NET-App **AddTagsAndQuery** aus, um die Abfragen erneut durchzuführen. Nun sollte **myDeviceId** in beiden Abfrageergebnisse angezeigt werden.
+    ![Ausführen der Geräte-App zum Melden der Konnektivität](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
+       
+11. Da das Gerät nun die Verbindungsinformationen gemeldet hat, sollten diese in beiden Abfragen angezeigt werden. Führen Sie die .NET-App **AddTagsAndQuery** aus, um die Abfragen erneut durchzuführen. Nun sollte **myDeviceId** in beiden Abfrageergebnisse angezeigt werden.
    
-    ![Gerätekonnektivität erfolgreich gemeldet][img-tagappsuccess]
+    ![Gerätekonnektivität erfolgreich gemeldet](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie im Azure-Portal einen neuen IoT-Hub konfiguriert und anschließend in der Identitätsregistrierung des IoT-Hubs eine Geräteidentität erstellt. Sie haben Gerätemetadaten aus einer Back-End-App als Tags hinzugefügt und eine simulierte Geräte-App zum Melden von Geräteverbindungsinformationen im Gerätezwilling geschrieben. Sie haben zudem erfahren, wie diese Informationen mithilfe der SQL-ähnlichen IoT Hub-Abfragesprache abgefragt werden können.
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* Senden von Telemetriedaten von Geräten im Tutorial [Erste Schritte mit IoT Hub][lnk-iothub-getstarted]
-* Informationen zum Konfigurieren von Geräten mit den gewünschten Eigenschaften des Gerätezwillings im Tutorial [Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten][lnk-twin-how-to-configure]
-* Informationen zur interaktiven Steuerung von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App) im Tutorial [Verwenden von direkten Methoden][lnk-methods-tutorial]
+* Senden von Telemetriedaten von Geräten: [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C#)](quickstart-send-telemetry-dotnet.md)
 
-<!-- images -->
-[img-servicenuget]: media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png
-[img-createapp]: media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png
-[img-addtagapp]: media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png
-[img-createdeviceapp]: media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png
-[img-clientnuget]: media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png
-[img-rundeviceapp]: media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png
-[img-tagappsuccess]: media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png
+* Konfigurieren von Geräten mit den gewünschten Eigenschaften des Gerätezwillings: [Tutorial: Konfigurieren Ihrer Geräte über einen Back-End-Dienst](tutorial-device-twins.md)
 
-<!-- links -->
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
-[lnk-nuget-service-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices/
-[lnk-nuget-client-sdk]: https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/
-
-[lnk-d2c]: iot-hub-devguide-messaging.md#device-to-cloud-messages
-[lnk-methods]: iot-hub-devguide-direct-methods.md
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-identity]: iot-hub-devguide-identity-registry.md
-
-[lnk-iothub-getstarted]: quickstart-send-telemetry-dotnet.md
-[lnk-methods-tutorial]: quickstart-control-device-node.md
-[lnk-twin-how-to-configure]: tutorial-device-twins.md
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/blob/master/doc/node-devbox-setup.md
-
+* Interaktives Steuern von Geräten (z.B. Einschalten eines Lüfters über eine benutzergesteuerte App): [Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Node.js)](quickstart-control-device-node.md)

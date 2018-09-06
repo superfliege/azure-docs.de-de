@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecef13f0ce97c7cec5a6583479911a08a99b0877
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 1d335e135551b7b6faed8ee566acb14b46fd6c81
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110727"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107510"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)
 
@@ -41,6 +41,9 @@ Die Installation von SAP HANA liegt in Ihrer Verantwortung, und Sie können die 
 > Gemäß SAP-Richtlinie muss die Installation von SAP HANA von einer Person durchgeführt werden, die für die Durchführung von SAP HANA-Installationen zertifiziert ist. Dies ist eine Person, die die Certified SAP Technology Associate-Prüfung, die SAP HANA Installation-Zertifizierungsprüfung oder die Prüfung durch einen SAP-zertifizierten Systemintegrator (SI) bestanden hat.
 
 Führen Sie unter [SAP Support Note #2235581 - SAP HANA: Supported Operating Systems](https://launchpad.support.sap.com/#/notes/2235581/E) (SAP-Supporthinweis #2235581 – SAP HANA: Unterstützte Betriebssysteme) erneut eine Prüfung durch, vor allem bei einer geplanten Installation von HANA 2.0, um sicherzustellen, dass das Betriebssystem von der SAP HANA-Version unterstützt wird, die Sie installiert haben. Sie sehen, dass das unterstützte Betriebssystem für HANA 2.0 stärker eingeschränkt als das Betriebssystem ist, das für HANA 1.0 unterstützt wird. 
+
+> [!IMPORTANT] 
+> Derzeit wird für Einheiten vom Typ II nur die Betriebssystemversion SLES 12 SP2 unterstützt. 
 
 ## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Erste Schritte nach dem Empfang der SAP HANA (große Instanzen)-Einheit(en)
 
@@ -142,6 +145,9 @@ Seit SAP HANA Version 2.0 ist das hdbparam-Framework veraltet. Daher müssen die
 Informationen zum Speicherlayout für Ihre Architektur finden Sie unter [Unterstützte HLI-Szenarien](hana-supported-scenario.md).
 
 ## <a name="operating-system"></a>Betriebssystem
+
+> [!IMPORTANT] 
+> Derzeit wird für Einheiten vom Typ II nur die Betriebssystemversion SLES 12 SP2 unterstützt. 
 
 Der Auslagerungsbereich des bereitgestellten Betriebssystemimage ist gemäß [SAP Support Note #1999997 - FAQ: SAP HANA Memory](https://launchpad.support.sap.com/#/notes/1999997/E) (SAP-Supporthinweis #1999997 – FAQ: SAP HANA-Arbeitsspeicher) auf 2 GB festgelegt. Alle anderen gewünschten Einstellungen müssen von Ihnen als Kunde festgelegt werden.
 

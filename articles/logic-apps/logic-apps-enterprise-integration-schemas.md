@@ -1,27 +1,23 @@
 ---
-title: 'Schemas für XML-Überprüfung: Azure Logic Apps | Microsoft-Dokumentation'
-description: Überprüfen von XML-Dokumenten mit Schemas für Azure Logic Apps und Enterprise Integration Pack
+title: 'Hinzufügen von Schemas für XML-Überprüfung: Azure Logic Apps | Microsoft-Dokumentation'
+description: Erstellen von Schemas zum Überprüfen von XML-Dokumenten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 07/29/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: e23500ec3c16e66b8dc74fcba29e9b58f0b41790
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e03346da1c2b77f885c39d5329f990684979c56e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299061"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123072"
 ---
-# <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas für Azure Logic Apps und Enterprise Integration Pack
+# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas in Azure Logic Apps mit Enterprise Integration Pack
 
 Schemas bestätigen, dass empfangene XML-Dokumente gültig sind und die erwarteten Daten in einem vordefinierten Format enthalten. Schemas dienen zum Überprüfen von Nachrichten, die in einem B2B-Szenario ausgetauscht werden.
 

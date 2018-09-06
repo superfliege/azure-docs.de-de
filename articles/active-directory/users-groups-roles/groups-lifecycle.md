@@ -14,12 +14,12 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 656577211a992432366033326362c9892f7ba6ef
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 29a53101bff8c384d01f952c4498e09d9d970ee3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861224"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841733"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
@@ -43,7 +43,7 @@ Rolle | Berechtigungen
 Globaler Administrator oder Benutzerkontoadministrator | Kann die Einstellungen der Ablaufrichtlinie für Office 365-Gruppen erstellen, lesen, aktualisieren und löschen.<br>Kann beliebige Office 365-Gruppen verlängern
 Benutzer | Kann eine eigene Office 365-Gruppe verlängern<br>Kann eine eigene Office 365-Gruppe wiederherstellen<br>Kann die Einstellungen der Ablaufrichtlinie lesen
 
-Weitere Informationen zu Berechtigungen zum Wiederherstellen von gelöschten Gruppen finden Sie unter [Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau](../fundamentals/active-directory-groups-restore-azure-portal.md).
+Weitere Informationen zu Berechtigungen zum Wiederherstellen von gelöschten Gruppen finden Sie unter [Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau](groups-restore-deleted.md).
 
 ## <a name="set-group-expiration"></a>Festlegen des Gruppenablaufs
 
@@ -71,7 +71,7 @@ Wenn eine Gruppe abläuft, wird die Gruppe einen Tag nach dem Ablaufdatum gelös
 
 ![E-Mail-Benachrichtigung zur Gruppenlöschung](./media/groups-lifecycle/deletion-notification.png)
 
-Die Gruppe kann innerhalb von 30 Tagen nach ihrer Löschung wiederhergestellt werden, indem **Gruppe wiederherstellen** gewählt oder PowerShell-Cmdlets verwendet werden. Dies ist unter [Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau](../fundamentals/active-directory-groups-restore-azure-portal.md) beschrieben.
+Die Gruppe kann innerhalb von 30 Tagen nach ihrer Löschung wiederhergestellt werden, indem **Gruppe wiederherstellen** gewählt oder PowerShell-Cmdlets verwendet werden. Dies ist unter [Wiederherstellen einer gelöschten Office 365-Gruppe in der Azure Active Directory-Vorschau](groups-restore-deleted.md) beschrieben.
     
 Wenn die Gruppe, die Sie wiederherstellen, Dokumente, SharePoint-Websites oder andere beständige Objekte enthält, kann es bis zu 24 Stunden dauern, bis die Gruppe und deren Inhalte vollständig wiederhergestellt werden.
 

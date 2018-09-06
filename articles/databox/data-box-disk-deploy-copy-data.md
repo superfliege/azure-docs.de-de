@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 09/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b0769ba70f495728df5c38b43bae4059b27de88b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010819"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841504"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf den Azure Data Box-Datenträger und Durchführen der Überprüfung
 
@@ -74,10 +74,10 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
     
     Die Parameter und Optionen für den Befehl werden wie folgt in Tabellenform angezeigt:
     
-    |Parameter/Optionen  |Beschreibung |
+    |Parameter/Optionen  |BESCHREIBUNG |
     |--------------------|------------|
-    |<Source>            | Gibt den Pfad zum Quellverzeichnis an.        |
-    |<Destination>       | Gibt den Pfad zum Zielverzeichnis an.        |
+    |Quelle            | Gibt den Pfad zum Quellverzeichnis an.        |
+    |Ziel       | Gibt den Pfad zum Zielverzeichnis an.        |
     |/E                  | Kopiert Unterverzeichnisse, einschließlich der leeren Verzeichnisse. |
     |/MT[:N]             | Erstellt Multithread-Kopien mit N Threads, wobei N hier für eine ganze Zahl zwischen 1 und 128 steht. <br>Der Standardwert für N ist „8“.        |
     |/R: <N>             | Gibt die Anzahl von Wiederholungsversuchen für fehlerhafte Kopiervorgänge an. Der Standardwert von N ist „1.000.000“ (eine Million Wiederholungen).        |
