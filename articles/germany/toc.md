@@ -42,7 +42,7 @@
 ### [Web und Mobil](germany-services-webandmobile.md)
 ### [Internet der Dinge (IoT)](germany-services-iot.md)
 
-# Angeben
+# angeben
 ## [Azure Deutschland-Website](https://azure.microsoft.com/overview/clouds/germany/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://blogs.msdn.microsoft.com/azuregermany/)

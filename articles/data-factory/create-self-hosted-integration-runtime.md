@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044729"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697763"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
@@ -219,7 +219,7 @@ Auf Ebene der **Unternehmensfirewall** müssen Sie die folgenden Domänen und au
 
 Domänennamen | Ports | BESCHREIBUNG
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443, 80 | Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet
+*.servicebus.windows.net | 443 | Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet
 *.core.windows.net | 443 | Wird für das gestaffelte Kopieren mit einem Azure-Blob (sofern konfiguriert) verwendet
 *.frontend.clouddatahub.net | 443 | Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet
 download.microsoft.com | 443 | Wird zum Herunterladen der Aktualisierungen verwendet

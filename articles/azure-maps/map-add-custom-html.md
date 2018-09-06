@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3ee1f394536061cecaa5d775650149b30098560e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5060839be244f55700b40735e598964a0b7b6709
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600220"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382044"
 ---
 # <a name="add-custom-html-to-the-map"></a>Hinzufügen von benutzerdefiniertem HTML-Code zu der Karte
 
@@ -29,13 +29,13 @@ Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Ei
 
 Der zweite Codeblock erstellt ein HTML-Element aus einem Bild.
 
-Im letzten Codeblock wird die [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addhtml)-Funktion der Map-Klasse verwendet, um das Bild an der angegebenen Position auf der Karte hinzuzufügen.
+Im letzten Codeblock wird die [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addhtml)-Funktion der Map-Klasse verwendet, um das Bild an der angegebenen Position auf der Karte hinzuzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden: 
-* [Map](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest)
-    * [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-javascript/map?view=azure-iot-typescript-latest#addhtml)
+* [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+    * [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addhtml)
     
 Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln: 
 * [Anzeigen von Suchergebnissen](./map-search-location.md)

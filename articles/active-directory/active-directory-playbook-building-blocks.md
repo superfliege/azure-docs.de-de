@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4618c8a0298afdac28e7511e9521cf1e26238734
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189037"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340038"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -560,7 +560,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 | Schritt | angeben |
 | --- | --- |
 | Aktivieren Sie die Einstellung „Zertifikatauthentifizierung“ in AD FS. | [Configure Authentication Policies: To configure primary authentication globally in Windows Server 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) (Konfigurieren der Authentifizierungsrichtlinien: Globales Konfigurieren der primären Authentifizierung in Windows Server 2012 R2) |
-| Optional: Aktivieren Sie die zertifikatbasierte Authentifizierung in Azure AD für Exchange Active Sync-Clients. | [Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory](active-directory-certificate-based-authentication-get-started.md) |
+| Optional: Aktivieren Sie die zertifikatbasierte Authentifizierung in Azure AD für Exchange Active Sync-Clients. | [Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory](./authentication/active-directory-certificate-based-authentication-get-started.md) |
 | Navigieren Sie zum Zugriffsbereich und führen Sie die Authentifizierung mit einem Benutzerzertifikat aus. | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Überlegungen

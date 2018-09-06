@@ -3,19 +3,19 @@ title: Problembehandlung bei Azure SQL Data Warehouse | Microsoft-Dokumentation
 description: Problembehandlung bei Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 27445eb754a5e985485db101c9d0fe1ba8aa2451
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: befb4cc075841d45cae769b5ddf924434e65eff3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525246"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307246"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problembehandlung bei Azure SQL Data Warehouse
 Dieses Thema enthält allgemeine Fragen zur Problembehandlung.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b3bd55fd2ed9f392611fcb32b0ebd0f5c6b5e09
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1e3043a6053625f8363e9035e59b53275714a827
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322524"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300608"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell
 
@@ -99,7 +99,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
     
 1. Bearbeiten Sie die JSON-Datei, um den Vorgang `"Microsoft.Support/*"` zur Eigenschaft `Actions` hinzuzufügen. Achten Sie darauf, ein Komma nach dem Lesevorgang einzufügen. Diese Aktion ermöglicht dem Benutzer das Erstellen von Supporttickets.
 
-1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription) ab.
+1. Rufen Sie die ID Ihres Abonnements mithilfe des Befehls [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) ab.
 
     ```azurepowershell
     Get-AzureRmSubscription

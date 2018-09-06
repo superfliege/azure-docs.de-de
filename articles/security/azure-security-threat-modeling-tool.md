@@ -3,23 +3,23 @@ title: Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
 description: Hauptseite für das Microsoft Threat Modeling Tool mit Informationen zu den ersten Schritten mit dem Tool einschließlich des Prozesses zur Modellierung von Bedrohungen
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 6e26b0af2a16a872c8e02b736e24019b47ed5780
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/16/2017
+ms.author: jegeib
+ms.openlocfilehash: 8b0700e76bbcc0913b376e607f706f540b1df2bb
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23043355"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307074"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -44,7 +44,7 @@ Nachfolgend sind einige Funktionen und Innovationen des Tools aufgeführt:
 
 Die folgende Tabelle enthält wichtige Links, um Ihnen den Einstieg in das Threat Modeling Tool zu erleichtern:
 
-| Schritt  | Beschreibung                                                                                   |
+| Schritt  | BESCHREIBUNG                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
 | **1** | [Das Threat Modeling Tool herunterladen](https://aka.ms/tmtpreview)                                |
 | **2** | [Unseren Leitfaden zu den ersten Schritten lesen](./azure-security-threat-modeling-tool-getting-started.md)    |
@@ -52,7 +52,7 @@ Die folgende Tabelle enthält wichtige Links, um Ihnen den Einstieg in das Threa
 | **4** | [Die Kategorien generierter Bedrohungen kennenlernen](./azure-security-threat-modeling-tool-threats.md)   |
 | **5** | [Entschärfungen für generierte Bedrohungen finden](./azure-security-threat-modeling-tool-mitigations.md) |
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 
 Es folgen einige ältere Artikel, die auch heute noch für die Modellierung von Bedrohungen relevant sind:
 

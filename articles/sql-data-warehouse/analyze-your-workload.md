@@ -3,19 +3,19 @@ title: Analysieren Ihrer Workload – Azure SQL Data Warehouse | Microsoft-Dokum
 description: Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure SQL Data Warehouse kennen.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b0d39b81b72615a9522e95558a59007b10bf109
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795356"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248092"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analysieren Ihrer Workload in Azure SQL Data Warehouse
 Lernen Sie Techniken zum Analysieren von Abfrageprioritäten für Ihre Workload in Azure SQL Data Warehouse kennen.
@@ -39,8 +39,7 @@ In der folgenden Tabelle sind die Wichtigkeitszuordnungen für die einzelnen Wor
 | SloDWGroupC07   | 128                      | 12.800                         | 32.000                      | Hoch               |
 | SloDWGroupC08   | 256                      | 25.600                         | 64.000                      | Hoch               |
 
-<!-- where are the allocation and consumption of concurrency slots charts? -->
-Die Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** zeigt, dass ein DW500 jeweils 1, 4, 8 bzw. 16 Parallelitätsslots für smallrc-, mediumrc-, largerc- und xlargerc-Ressourcenklassen verwendet. Um die Wichtigkeit für jede Ressourcenklasse zu ermitteln, schlagen Sie diese Werte in der vorherigen Tabelle nach.
+<!-- where are the allocation and consumption of concurrency slots charts? --> Die Tabelle **Zuordnung und Verbrauch von Parallelitätsslots** zeigt, dass ein DW500 jeweils 1, 4, 8 bzw. 16 Parallelitätsslots für die Ressourcenklassen „smallrc“, „mediumrc“, „largerc“ und „xlargerc“ verwendet. Um die Wichtigkeit für jede Ressourcenklasse zu ermitteln, schlagen Sie diese Werte in der vorherigen Tabelle nach.
 
 ### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500-Zuordnung zwischen Ressourcenklassen und Wichtigkeit
 | Ressourcenklasse | Workloadgruppe | Verwendete Parallelitätsslots | MB/Verteilung | Wichtigkeit |

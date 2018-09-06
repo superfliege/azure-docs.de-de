@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309025"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339976"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Referenz zu Azure AD B2C-Token
 
@@ -73,7 +73,7 @@ Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfo
 | NAME | Anspruch | Beispielwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | Zielgruppe |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Ein „Audience“-Anspruch identifiziert den vorgesehenen Empfänger des Tokens. Für Azure AD B2C ist die Zielgruppe die Anwendungs-ID der App, die Ihrer App im App-Registrierungsportal zugewiesen wurde. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn er nicht übereinstimmt. Die Zielgruppe ist synonym mit der Ressource. |
-| Issuer (Aussteller) |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Dieser Anspruch identifiziert den Sicherheitstokendienst (STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Azure AD-Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre App sollte den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom Endpunkt von Azure Active Directory mit der Version 2.0 stammt. |
+| Issuer (Aussteller) |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Dieser Anspruch identifiziert den Sicherheitstokendienst (STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Azure AD-Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre App sollte den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom Endpunkt von Azure Active Directory mit der Version 2.0 stammt. |
 | Ausgestellt um |`iat` |`1438535543` |Dieser Anspruch ist die Zeit, zu der das Token ausgestellt wurde (dargestellt als Epochenzeit) |
 | Ablaufzeit |`exp` |`1438539443` |Der Ablaufzeit-Anspruch ist die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit) Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
 | Nicht vor |`nbf` |`1438535543` |Dieser Anspruch ist die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Dieser Wert ist normalerweise mit dem Ausstellungszeitpunkt des Tokens identisch. Ihre App sollte mit diesem Anspruch die Gültigkeit der Tokenlebensdauer überprüfen. |
@@ -120,7 +120,7 @@ Azure AD kann unter Umständen zu einem beliebigen Zeitpunkt ein Token mithilfe 
 Azure AD B2C verfügt über einen OpenID Connect-Metadatenendpunkt. Mit diesem kann die App Informationen über Azure AD B2C zur Laufzeit abrufen. Diese Informationen umfassen Endpunkte, Tokeninhalte und Token-Signaturschlüssel. Ihr B2C-Verzeichnis enthält für jede Richtlinie ein JSON-Metadatendokument. Das Metadatendokument für die `b2c_1_sign_in`-Richtlinie in `fabrikamb2c.onmicrosoft.com` befindet sich beispielsweise unter:
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
 ```
 
 `fabrikamb2c.onmicrosoft.com` ist das B2C-Verzeichnis, das zum Authentifizieren des Benutzers verwendet wird, und `b2c_1_sign_in` ist die Richtlinie, die zum Abrufen des Tokens verwendet wird. Sie haben zwei Optionen zum Ermitteln, welche Richtlinie zum Signieren eines Tokens verwendet wurde (und wo die Metadaten abgerufen werden können). Zunächst einmal ist der Richtlinienname im `acr` -Anspruch im Token enthalten. Sie können Ansprüche aus dem Hauptteil des JWT analysieren, indem Sie eine Base64-Decodierung auf den Hauptteil anwenden und die sich ergebende JSON-Zeichenfolge deserialisieren. Der `acr` -Anspruch ist der Name der Richtlinie, die zum Ausstellen des Tokens verwendet wurde.  Eine andere Möglichkeit besteht darin, die Richtlinie beim Übermitteln der Anforderung im Wert des Parameters `state` zu verschlüsseln und später zu entschlüsseln, um die verwendete Richtlinie zu bestimmen. Beide Methoden sind gültig.
@@ -128,7 +128,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/o
 Beim Metadatendokument handelt es sich um ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Speicherort der Endpunkte, die zum Ausführen der OpenID Connect-Authentifizierung erforderlich sind. Außerdem ist ein `jwks_uri` enthalten, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Es wird jedoch empfohlen, ihn dynamisch mithilfe des Metadatendokuments abzurufen und dabei `jwks_uri`zu analysieren:
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
 ```
 
 Das JSON-Dokument unter dieser URL enthält alle Informationen zu den zu einem bestimmten Zeitpunkt verwendeten öffentlichen Schlüsseln. Ihre App kann mit dem Anspruch `kid` im JWT-Header auswählen, welcher öffentliche Schlüssel im JSON-Dokument zum Signieren eines bestimmten Tokens verwendet wird. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.

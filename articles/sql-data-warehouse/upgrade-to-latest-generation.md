@@ -3,25 +3,27 @@ title: Upgrade auf Azure SQL Data Warehouse der neuesten Generation | Microsoft-
 description: Führen Sie ein Upgrade für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation aus.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2993e1f4d28fd5d281ea510121686d3bc37a8c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746961"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306979"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse
 Führen Sie ein Upgrade für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation aus.
 
 ## <a name="why-upgrade"></a>Gründe für ein Upgrade
 Sie können jetzt im Azure-Portal nahtlos ein Upgrade auf die Stufe „SQL Data Warehouse Compute Optimized Gen2“ durchführen. Ein Upgrade wird empfohlen, wenn Sie über ein Data Warehouse der Stufe „Optimiert für Compute Gen 1“ verfügen. Durch das Upgrade können Sie die neueste Generation der Azure-Hardware- und erweiterten Azure-Speicherarchitektur verwenden. Auf diese Weise profitieren Sie von höherer Leistung und Skalierbarkeit sowie unbegrenztem spaltenbasiertem Speicher. 
+
+> [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>Anwendungsbereich
 Dieses Upgrade gilt für Data Warehouses der Stufe „Optimiert für Compute Gen 1“.

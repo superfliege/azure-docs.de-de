@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: heidist
-ms.openlocfilehash: 6c3756e721847a8cb746f5dc755ccd90bfebe9f0
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: b518d86d5cb08f85beecd4afe30efc9e4f70e1f7
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008273"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371467"
 ---
 # <a name="indexing-in-azure-search"></a>Indizierung in Azure Search
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Mit Indexern wird für einen Index eine Verbindung mit einer Datenquelle (normal
 
 ### <a name="how-to-pull-data-into-an-azure-search-index"></a>Übertragen von Daten per Pullvorgang in einen Azure Search-Index
 
-Die Indexer-Funktion steht im [Azure-Portal](search-import-data-portal.md) und für die [REST-API](/rest/api/searchservice/Indexer-operations) und das [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperations) zur Verfügung. 
+Die Indexer-Funktion steht im [Azure-Portal](search-import-data-portal.md) und für die [REST-API](/rest/api/searchservice/Indexer-operations) und das [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperationsextensions) zur Verfügung. 
 
 Ein Vorteil der Verwendung des Portals ist, dass Azure Search normalerweise ein Indexstandardschema für Sie generieren kann, indem die Metadaten des Quelldatasets gelesen werden. Sie können den generierten Index ändern, bis er verarbeitet wird. Nach der Verarbeitung sind nur noch Schemabearbeitungen zulässig, bei denen keine erneute Indizierung erforderlich ist. Wenn die gewünschten Änderungen eine direkte Auswirkung auf das Schema haben, müssen Sie den Index neu erstellen. 
 

@@ -14,19 +14,19 @@ ms.service: sql-database
 ms.custom: ''
 ms.tgt_pltfrm: ''
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 08/30/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: d3e8d34599600512a1d9d0308c0d6014691bf519
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 30ef71d0fc98b168000f7e7b936e4efc6c441498
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442721"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307929"
 ---
 # <a name="transparent-data-encryption-with-bring-your-own-key-support-for-azure-sql-database-and-data-warehouse"></a>Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Data Warehouse
 
-Bring Your Own Key-Unterstützung (BYOK) für [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption) ermöglicht Ihnen das Verschlüsseln des Datenbank-Verschlüsselungsschlüssels (DEK) mit einem asymmetrischen Schlüssel namens TDE-Schutzvorrichtung.  Die TDE-Schutzvorrichtung wird unter Ihrer Kontrolle in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) gespeichert, dem externen Schlüsselverwaltungssystem von Azure. Azure Key Vault ist der erste Schlüsselverwaltungsdienst, bei dem BYOK-Unterstützung in TDE integriert ist. Der auf der Startseite einer Datenbank gespeicherte TDE-DEK wird durch die TDE-Schutzvorrichtung verschlüsselt und entschlüsselt. Die TDE-Schutzvorrichtung ist in Azure Key Vault gespeichert und verlässt den Schlüsseltresor nie. Wenn der Zugriff des Servers auf den Schlüsseltresor widerrufen wird, kann eine Datenbank nicht entschlüsselt und in den Speicher gelesen lesen.  Die TDE-Schutzvorrichtung ist auf der logischen Serverebene festgelegt und wird von allen Datenbanken geerbt, die diesem Server zugeordnet sind. 
+Bring Your Own Key-Unterstützung (BYOK) für [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) ermöglicht Ihnen das Verschlüsseln des Datenbank-Verschlüsselungsschlüssels (DEK) mit einem asymmetrischen Schlüssel namens TDE-Schutzvorrichtung.  Die TDE-Schutzvorrichtung wird unter Ihrer Kontrolle in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) gespeichert, dem externen Schlüsselverwaltungssystem von Azure. Azure Key Vault ist der erste Schlüsselverwaltungsdienst, bei dem BYOK-Unterstützung in TDE integriert ist. Der auf der Startseite einer Datenbank gespeicherte TDE-DEK wird durch die TDE-Schutzvorrichtung verschlüsselt und entschlüsselt. Die TDE-Schutzvorrichtung ist in Azure Key Vault gespeichert und verlässt den Schlüsseltresor nie. Wenn der Zugriff des Servers auf den Schlüsseltresor widerrufen wird, kann eine Datenbank nicht entschlüsselt und in den Speicher gelesen lesen.  Die TDE-Schutzvorrichtung ist auf der logischen Serverebene festgelegt und wird von allen Datenbanken geerbt, die diesem Server zugeordnet sind. 
 
 Mit BYOK-Unterstützung können Benutzer jetzt Aufgaben der Schlüsselverwaltung steuern, z.B. Schlüsselrotationen, Schlüsseltresorberechtigungen und das Löschen von Schlüsseln. Außerdem können sie die Überwachung und Berichterstellung für alle TDE-Schutzvorrichtungen aktivieren, die Azure Key Vault-Funktionalität nutzen. Key Vault bietet eine zentrale Schlüsselverwaltung, verwendet streng überwachte Hardwaresicherheitsmodule (HSMs) und ermöglicht die Aufgabentrennung zwischen dem Verwalten von Schlüsseln und Daten, um gesetzliche Bestimmungen zu erfüllen.  
 

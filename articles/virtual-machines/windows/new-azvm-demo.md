@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: ede8fab67c04eb7ce8d26280de2d1563b6cc8ad2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: defc871caed429eeda1f8672323b48a9c0007c8e
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38678739"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371736"
 ---
 # <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Erstellen eines virtuellen Windows-Computers mithilfe des vereinfachten Cmdlets „New-AzureRMVM“ in Cloud Shell 
 
-Das Cmdlet [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) verfügt über einen vereinfachten Parametersatz für die Erstellung eines neuen virtuellen Computers mithilfe von PowerShell. In diesem Thema erfahren Sie, wie Sie mithilfe von PowerShell in Azure Cloud Shell und der vorinstallierten neuesten Version des Cmdlets „New-AzureVM“ einen neuen virtuellen Computer erstellen. Wir verwenden einen vereinfachten Parametersatz, der auf der Grundlage intelligenter Standardwerte automatisch alle erforderlichen Ressourcen erstellt. 
+Das Cmdlet [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) verfügt über einen vereinfachten Parametersatz für die Erstellung eines neuen virtuellen Computers mithilfe von PowerShell. In diesem Thema erfahren Sie, wie Sie mithilfe von PowerShell in Azure Cloud Shell und der vorinstallierten neuesten Version des Cmdlets „New-AzureVM“ einen neuen virtuellen Computer erstellen. Wir verwenden einen vereinfachten Parametersatz, der auf der Grundlage intelligenter Standardwerte automatisch alle erforderlichen Ressourcen erstellt. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -36,7 +36,7 @@ Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für 
 
 ## <a name="create-the-vm"></a>Erstellen des virtuellen Computers
 
-Mithilfe des Cmdlets [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) können Sie einen virtuellen Computer mit intelligenten Standardwerten erstellen, die unter anderem die Verwendung des Windows Server 2016 Datacenter-Images aus dem Azure Marketplace umfassen. Sie können „New-AzureRMVM“ mit lediglich dem Parameter **-Name** verwenden, und dieser Wert wird dann für alle Ressourcennamen herangezogen. In diesem Beispiel legen wir den Parameter **-Name** auf *myVM* fest. 
+Mithilfe des Cmdlets [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) können Sie einen virtuellen Computer mit intelligenten Standardwerten erstellen, die unter anderem die Verwendung des Windows Server 2016 Datacenter-Images aus dem Azure Marketplace umfassen. Sie können „New-AzureRMVM“ mit lediglich dem Parameter **-Name** verwenden, und dieser Wert wird dann für alle Ressourcennamen herangezogen. In diesem Beispiel legen wir den Parameter **-Name** auf *myVM* fest. 
 
 Vergewissern Sie sich in Cloud Shell, dass **PowerShell** ausgewählt ist, und geben Sie Folgendes ein:
 

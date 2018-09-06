@@ -1,27 +1,24 @@
 ---
-title: 'Logic Apps B2B EDIFACT Decodieren Beheben UNH2.5: Azure Logic Apps | Microsoft-Dokumentation'
-description: Azure Logik-Apps B2B EDIFACT Decodieren Beheben UNH2.5
+title: 'Verarbeiten von EDIFACT-Nachrichten mit UNH2.5-Segmenten: Azure Logic Apps | Microsoft-Dokumentation'
+description: Auflösen von EDIFACT-Dokumenten mit UNH2.5-Segmenten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: padmavc
-manager: jeconnoc
-editor: ''
-ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 04/27/2017
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 3e04e7515a8ddfe512ba2efbbd45c3d1b571c1fd
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9c8b8611347840dcf49759dac51fb506815cd782
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297946"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122007"
 ---
-# <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>Verarbeiten von EDIFACT-Dokumenten mit UNH2.5-Segmenten
+# <a name="handle-edifact-documents-with-unh25-segments-in-azure-logic-apps"></a>Verarbeiten von EDIFACT-Dokumenten mit UNH2.5-Segmenten in Azure Logic Apps
+
 Wenn das Feld „UNH2.5“ im EDIFACT-Dokument vorhanden ist, wird es zur Schemasuche verwendet. 
 
 Beispiel: **EAN008** ist das UNH-Feld in der EDIFACT-Nachricht.  
