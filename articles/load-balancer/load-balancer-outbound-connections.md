@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: e9249f3a5787da9ad54945195b47cf9af0f45fb1
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 1f7e605cbf5aa3d519e04c4fdfd737a4c0926a3e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141374"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122575"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -122,13 +122,23 @@ Bei Verwendung von [Standard Load Balancer mit Verfügbarkeitszonen](load-balanc
 
 Wenn eine öffentliche Load Balancer-Ressource mit VM-Instanzen verknüpft ist, wird jede ausgehende Verbindungsquelle erneut geschrieben. Die Quelle wird aus dem privaten IP-Adressraum des virtuellen Netzwerks in die öffentliche Front-End-IP-Adresse des Lastenausgleichs umgeschrieben. Im öffentlichen IP-Adressraum müssen die fünf Tupel des Datenflusses (IP-Quelladresse, Quellport, IP-Transportprotokoll, IP-Zieladresse, Zielport) eindeutig sein.  Portmaskierung mit SNAT kann mit entweder mit dem TCP- oder UDP IP-Protokoll verwendet werden.
 
-Hierfür werden kurzlebige Ports (SNAT-Ports) verwendet, nachdem die private IP-Quelladresse umgeschrieben wurde, da mehrere Datenflüsse von einer einzelnen öffentlichen IP-Adresse stammen. 
+Hierfür werden kurzlebige Ports (SNAT-Ports) verwendet, nachdem die private IP-Quelladresse umgeschrieben wurde, da mehrere Datenflüsse von einer einzelnen öffentlichen IP-Adresse stammen. Die Portmaskierung mit SNAT-Algorithmus weist SNAT-Ports für UDP und TCP unterschiedlich zu.
 
-Pro Datenfluss zu einer einzelnen IP-Zieladresse, einem Port und einem Protokoll wird ein SNAT-Port genutzt. Bei mehreren Datenflüssen zur gleichen IP-Zieladresse bzw. zum Port und Protokoll belegt jeder Datenfluss einen einzelnen SNAT-Port. Hierdurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse, den gleichen Port und das gleiche Protokoll aufweisen. 
+#### <a name="tcp"></a>TCP-SNAT-Ports
+
+Pro Datenfluss zu einer einzelnen IP-Zieladresse/einem einzelnen Port wird ein SNAT-Port genutzt. Bei mehreren TCP-Datenflüssen zur gleichen IP-Zieladresse bzw. zum Port und Protokoll belegt jeder TCP-Datenfluss einen einzelnen SNAT-Port. Hierdurch wird sichergestellt, dass die Datenflüsse eindeutig sind, wenn sie von der gleichen öffentlichen IP-Adresse stammen und die gleiche IP-Zieladresse, den gleichen Port und das gleiche Protokoll aufweisen. 
 
 Mehrere Datenflüsse mit jeweils anderen Angaben für IP-Zieladresse, Port und Protokoll verwenden gemeinsam einen einzelnen SNAT-Port. Die IP-Adresse, der Port und das Protokoll für das Ziel machen den Datenfluss eindeutig, ohne dass zusätzliche Quellports verwendet werden müssen, um Datenflüsse im öffentlichen IP-Adressraum zu unterscheiden.
 
+#### <a name="udp"></a> UDP-SNAT-Ports
+
+UDP-SNAT-Ports werden von einem anderen Algorithmus als TCP-SNAT-Ports verwaltet.  Load Balancer verwendet für UDP einen Algorithmus, der als „portbeschränktes Cone-NAT“ bezeichnet wird.  Für jeden Datenfluss wird unabhängig von der IP-Zieladresse/dem Zielport ein SNAT-Port genutzt.
+
+#### <a name="exhaustion"></a>Auslastung
+
 Sobald die SNAT-Portressourcen erschöpft sind, sind ausgehende Datenflüsse erst wieder möglich, wenn SNAT-Ports von vorhandenen Datenflüssen freigegeben werden. Der Load Balancer gibt die SNAT-Ports wieder frei, wenn der Datenflussvorgang abgeschlossen ist. Es wird ein [Leerlauftimeout von 4 Minuten](#idletimeout) verwendet, um SNAT-Ports für im Leerlauf befindliche Datenflüsse wieder freizugeben.
+
+UDP-SNAT-Ports erschöpfen aufgrund des Unterschieds im verwendeten Algorithmus in der Regel viel schneller als TCP-SNAT-Ports. Diesen Unterschied müssen Sie beim Entwerfen und Skalieren berücksichtigen.
 
 Im Abschnitt [Verwalten von SNAT](#snatexhaust) werden Muster für das Entschärfen von Bedingungen beschrieben, die häufig zu einer Überlastung von SNAT-Ports führen.
 
@@ -136,7 +146,7 @@ Im Abschnitt [Verwalten von SNAT](#snatexhaust) werden Muster für das Entschär
 
 In Azure wird ein Algorithmus verwendet, um basierend auf der Größe des Back-End-Pools bei der Portmaskierung per SNAT ([PAT](#pat)) die Anzahl von verfügbaren vorab zugeordneten SNAT-Ports zu ermitteln. SNAT-Ports sind kurzlebige Ports, die für eine bestimmte öffentliche IP-Quelladresse verfügbar sind.
 
-Dieselbe Anzahl von SNAT-Ports wird vorab für UDP bzw. TCP zugeordnet und unabhängig voneinander pro IP-Transportprotokoll genutzt. 
+Dieselbe Anzahl von SNAT-Ports wird vorab für UDP bzw. TCP zugeordnet und unabhängig voneinander pro IP-Transportprotokoll genutzt.  Die Verwendung des SNAT-Ports unterscheidet sich jedoch abhängig davon, ob es sich um einen UDP- oder TCP-Datenfluss handelt.
 
 >[!IMPORTANT]
 >Standard-SKU-SNAT Programmierung erfolgt pro IP-Transportprotokoll und wird aus der Lastenausgleichsregel abgeleitet.  Ist nur eine TCP-Lastenausgleichsregel vorhanden, ist SNAT nur für TCP verfügbar. Wenn Sie nur eine TCP-Lastenausgleichsregel haben und ausgehendes SNAT für UDP benötigen, erstellen Sie eine UDP-Lastenausgleichsregel vom selben Front-End- zum selben Back-End-Pool.  Dadurch wird SNAT-Programmierung für UDP ausgelöst.  Eine Arbeitsregel oder ein Integritätstest ist nicht erforderlich.  Basic-SKU-SNAT bewirkt immer, dass SNAT für beide IP-Transportprotokolle programmiert wird, unabhängig von dem Transportprotokoll, das in der Lastenausgleichsregel angegeben ist.

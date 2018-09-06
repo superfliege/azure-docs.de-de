@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: e40d841c07534c9c0074c038d1e3c6e435265564
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 34036c5ec9ccd8c502104ce862e4749c59be62b9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166778"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105327"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 
@@ -30,7 +30,7 @@ Wenn Sie ein *gitRepo*-Volume einbinden, können Sie zum Konfigurieren des Volum
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | -------- | -------- | ----------- |
-| `repository` | Ja | Die vollständige URL (einschließlich `http://` bzw. `https://`) des zu klonenden Git-Repositorys|
+| `repository` | JA | Die vollständige URL (einschließlich `http://` bzw. `https://`) des zu klonenden Git-Repositorys|
 | `directory` | Nein  | Das Verzeichnis, in dem das Repository geklont werden soll. Der Pfad darf `..` weder enthalten noch darf er damit beginnen.  Bei Angabe von `.` wird das Repository im Verzeichnis des Volumes geklont. Andernfalls wird das Git-Repository in einem Unterverzeichnis mit dem angegebenen Namen im Volumeverzeichnis geklont. |
 | `revision` | Nein  | Der Commithash der zu klonenden Version. Wird er nicht angegeben, wird die `HEAD`-Revision geklont. |
 
@@ -69,8 +69,7 @@ Um ein gitRepo-Volume einzubinden, wenn Sie Containerinstanzen mit einer [Azure 
 
 Mit der folgenden Resource Manager-Vorlage wird beispielsweise eine Containergruppe mit einem einzelnen Container erstellt. Der Container klont zwei GitHub-Repositorys, die durch die *gitRepo*-Volumeblöcke angegeben werden. Das zweite Volume enthält zusätzliche Eigenschaften, die ein Verzeichnis zum Klonen angeben, sowie den Commithash einer spezifischen Revision, die geklont werden soll.
 
-<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json -->
-[!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
+<!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-gitrepo.json --> [!code-json[volume-gitrepo](~/azure-docs-json-samples/container-instances/aci-deploy-volume-gitrepo.json)]
 
 Die Verzeichnisstruktur der zwei geklonten Repositorys, die in der vorhergehenden Vorlage definiert werden, sieht wie folgt aus:
 
@@ -80,6 +79,28 @@ Die Verzeichnisstruktur der zwei geklonten Repositorys, die in der vorhergehende
 ```
 
 Ein Beispiel für die Bereitstellung der Containerinstanzen mit einer Azure Resource Manager-Vorlage finden Sie unter [Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances](container-instances-multi-container-group.md).
+
+## <a name="private-git-repo-authentication"></a>Authentifizierung eines privaten Git-Repositorys
+
+Zum Einbinden eines gitRepo-Volumes für ein privates Git-Repository geben Sie Anmeldeinformationen in der Repository-URL an. Anmeldeinformationen bestehen in der Regel aus einem Benutzernamen und einem persönlichen Zugriffstoken (PAT), das bereichsbezogenen Zugriff auf das Repository gewährt.
+
+Beispiel: Der `--gitrepo-url`-Parameter der Azure CLI für ein privates GitHub-Repository würde etwa wie folgt aussehen (dabei steht „gituser“ für den GitHub-Benutzernamen, und „abcdef1234fdsa4321abcdef“ ist das persönliche Zugriffstoken des Benutzers):
+
+```azurecli
+--gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
+```
+
+Für ein VSTS-Git-Repository geben Sie einen Benutzernamen (Sie können wie im folgenden Beispiel „vstsuser“ verwenden) in Kombination mit einem gültigen PAT an:
+
+```azurecli
+--gitrepo-url https://vstsuser:abcdef1234fdsa4321abcdef@vstsaccountname.visualstudio.com/_git/some-private-repository
+```
+
+Weitere Informationen über persönliche Zugriffstoken für GitHub und VSTS finden Sie unter:
+
+GitHub: [Creating a personal access token for the command line][pat-github] (Erstellen eines persönlichen Zugriffstokens für die Befehlszeile)
+
+VSTS: [Create personal access tokens to authenticate access][pat-vsts] (Erstellen von persönlichen Zugriffstoken zur Authentifizierung des Zugriffs)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -91,6 +112,8 @@ Erfahren Sie, wie andere Volumetypen in Azure Container Instances bereitgestellt
 
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
+[pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+[pat-vsts]: https://docs.microsoft.com/vsts/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

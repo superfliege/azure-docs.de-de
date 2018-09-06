@@ -4,15 +4,15 @@ description: Bietet eine Übersicht über die Collectorappliance und deren Konfi
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308458"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122886"
 ---
 # <a name="collector-appliance"></a>Collectorappliance
 
@@ -58,6 +58,30 @@ Die Collectorappliance muss mit dem Internet verbunden sein, um die ermittelten 
 
 > [!NOTE]
 > HTTPS-basierte Proxyserver werden vom Collector nicht unterstützt.
+
+#### <a name="internet-connectivity-with-intercepting-proxy"></a>Internetkonnektivität mit abfangendem Proxy
+
+Wenn der Proxyserver, den Sie für die Verbindung mit dem Internet verwenden, ein abfangender Proxy ist, müssen Sie das Proxyzertifikat auf Ihrem virtuellen Collector-Computer importieren. Anhand der folgenden Schritte können Sie das Zertifikat auf dem virtuellen Collector-Computer importieren.
+
+1. Rufen Sie auf dem virtuellen Collector-Computer das **Startmenü**, und suchen und öffnen Sie **Computerzertifikate verwalten**.
+2. Suchen Sie im linken Bereich im Tool „Zertifikate“ unter **Zertifikate – Lokaler Computer** nach **Vertrauenswürdige Herausgeber**. Klicken Sie unter **Vertrauenswürdige Herausgeber** auf **Zertifikate**, um die Liste der Zertifikate im Bereich auf der rechten Seite anzuzeigen.
+
+    ![Tool „Zertifikate“](./media/concepts-intercepting-proxy/certificates-tool.png)
+
+3. Kopieren Sie Ihr Proxyzertifikat auf den virtuellen Collector-Computer. Möglicherweise müssen Sie sich an das Netzwerk-Administratorteam in Ihrer Organisation wenden, um dieses Zertifikat zu erhalten.
+4. Doppelklicken Sie auf das Zertifikat aus, um es zu öffnen. Klicken Sie auf **Zertifikat installieren**. Daraufhin wird der Zertifikatimport-Assistent gestartet.
+5. Wählen Sie im Zertifikatimport-Assistenten die Option **Lokaler Computer** als Speicherort. Klicken Sie auf **Weiter**.
+
+    ![Zertifikatspeicherort](./media/concepts-intercepting-proxy/certificate-store-location.png)
+
+6. Wählen Sie die Option **Alle Zertifikate in folgendem Speicher speichern**. Klicken Sie auf **Durchsuchen**, und wählen Sie aus der Liste der angezeigten Zertifikate **Vertrauenswürdige Herausgeber** aus. Klicken Sie auf **Weiter**.
+
+    ![Zertifikatspeicher](./media/concepts-intercepting-proxy/certificate-store.png)
+    
+7. Klicken Sie auf **Fertig stellen**. Daraufhin wird das Zertifikat importiert. 
+8. Sie haben die Möglichkeit, zu überprüfen, dass das Zertifikat importiert wurde, indem Sie das Tool „Zertifikate“ wie in Schritt 1 und 2 oben öffnen.
+9. Stellen Sie in der Azure Migrate Collector-App sicher, dass die Überprüfung der Voraussetzungen im Hinblick auf die Internetkonnektivität erfolgreich ist.
+
 
 #### <a name="whitelisting-urls-for-internet-connection"></a>Verwenden von URL-Whitelists für die Internetverbindung
 

@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 06/22/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 427964a6651dd4ab71d0029f89e40afdd34d162a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.topic: reference
+ms.date: 06/22/2018
+ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390703"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093617"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen für die Workflowdefinitionssprache in Azure Logic Apps
 
@@ -56,7 +55,7 @@ Trigger besitzen auf oberster Ebene die folgenden Elemente (einige davon sind op
 | <*trigger-type*> | Zeichenfolge | Triggertyp, z.B. „Http“ oder „ApiConnection“ | 
 | <*trigger-inputs*> | JSON-Objekt | Eingaben, die das Verhalten des Triggers definieren | 
 | <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -137,7 +136,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 | <*method-type*> | Zeichenfolge | HTTP-Methode für die Kommunikation mit der verwalteten API: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*api-operation*> | Zeichenfolge | Aufzurufender API-Vorgang | 
 | <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -158,6 +157,7 @@ Mit diesem Trigger wird ein Endpunkt überprüft bzw.*abgefragt*, indem [von Mic
 |---------|------|-------------| 
 | headers | JSON-Objekt | Header aus der Antwort | 
 | body | JSON-Objekt | Text aus der Antwort | 
+| status code | Ganze Zahl  | Der Statuscode aus der Antwort | 
 |||| 
 
 *Beispiel*
@@ -307,7 +307,7 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 | <*method-type*> | Zeichenfolge | HTTP-Methode zum Abrufen des angegebenen Endpunkts: „GET“, „PUT“, „POST“, „PATCH“, „DELETE“ | 
 | <*endpoint-URL*> | Zeichenfolge | HTTP- oder HTTPS-URL für den abzurufenden Endpunkt <p>Maximal zulässige Zeichenfolgengröße: 2 KB | 
 | <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -330,6 +330,7 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 |---------|------|-------------| 
 | headers | JSON-Objekt | Header aus der Antwort | 
 | body | JSON-Objekt | Text aus der Antwort | 
+| status code | Ganze Zahl  | Der Statuscode aus der Antwort | 
 |||| 
 
 *Erforderliche Voraussetzungen für eingehende Anforderungen*
@@ -337,8 +338,8 @@ Dieser Trigger überprüft den angegebenen Endpunkt basierend auf dem angegebene
 Damit der Endpunkt gut mit Ihrer Logik-App funktioniert, muss er einem bestimmten Triggermuster oder -vertrag entsprechen und diese Eigenschaften erkennen:  
   
 | response | Erforderlich | BESCHREIBUNG | 
-|----------|----------|-------------|  
-| Statuscode | JA | Der Statuscode „200 OK“ startet eine Ausführung. Alle anderen Statuscodes starten keine Ausführung. | 
+|----------|----------|-------------| 
+| Statuscode | Ja | Der Statuscode „200 OK“ startet eine Ausführung. Alle anderen Statuscodes starten keine Ausführung. | 
 | Retry-After-Header | Nein  | Die Anzahl von Sekunden bis zur erneuten Abfrage des Endpunkts durch die Logik-App. | 
 | Adressheader | Nein  | Die URL, die im nächsten Abfrageintervall aufgerufen werden soll. Ohne Angabe wird die ursprüngliche URL verwendet. | 
 |||| 
@@ -424,6 +425,7 @@ Einige Werte, z.B. <*method-type*>, sind sowohl für das Objekt `"subscribe"` al
 |---------|------|-------------| 
 | headers | JSON-Objekt | Header aus der Antwort | 
 | body | JSON-Objekt | Text aus der Antwort | 
+| status code | Ganze Zahl  | Der Statuscode aus der Antwort | 
 |||| 
 
 *Beispiel*
@@ -494,7 +496,7 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 | Wert | Typ | BESCHREIBUNG | 
 |-------|------|-------------| 
 | <*time-unit*> | Zeichenfolge | Zeiteinheit, die beschreibt, wie häufig der Trigger ausgelöst wird: „Second“, „Minute“, „Hour“, „Day“, „Week“, „Month“ | 
-| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1 - 9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| <*number-of-time-units*> | Ganze Zahl  | Wert, mit dem angegeben wird, wie oft der Trigger basierend auf der Häufigkeit ausgelöst wird (Anzahl von Zeiteinheiten der Wartezeit, bis der Trigger erneut ausgelöst wird) <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 |||| 
 
 *Optional*
@@ -569,7 +571,7 @@ Weitere Informationen zu diesem Trigger sowie Beispiele finden Sie unter [Erstel
 
 Durch diesen Trigger wird Ihre Logik-App aufrufbar, indem ein Endpunkt erstellt wird, der eingehende Anforderungen annehmen kann. Geben Sie für diesen Trigger ein JSON-Schema an, das die Nutzlast oder die Eingaben, die der Trigger aus der eingehenden Anforderung empfängt, beschreibt und überprüft. Mit dem Schema kann für spätere Aktionen des Workflows außerdem leichter auf Triggereigenschaften verwiesen werden. 
 
-Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API verwenden, die in der [Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows) beschrieben ist. Informationen zum Verwenden dieses Triggers als HTTP-Endpunkt finden Sie unter [Aufzurufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md).
+Um diesen Trigger aufrufen zu können, müssen Sie die `listCallbackUrl`-API verwenden, die in der [Workflow Service-REST-API](https://docs.microsoft.com/rest/api/logic/workflows) beschrieben ist. Informationen zum Verwenden dieses Triggers als HTTP-Endpunkt finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten in Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 ```json
 "manual": {
@@ -991,7 +993,7 @@ Sie können auch Grenzwerte für eine **ApiConnectionWebhook**-Aktion angeben, w
 
 <a name="compose-action"></a>
 
-### <a name="compose-action"></a>Aktion „Compose“
+### <a name="compose-action"></a>Compose-Aktion
 
 Diese Aktion erstellt eine einzelne Ausgabe aus mehreren Eingaben, z.B. Ausdrücken. Sowohl die Ausgabe als auch die Eingaben können einen beliebigen Typ aufweisen, der von Azure Logic Apps nativ unterstützt wird, z.B. Arrays, JSON-Objekte, XML und Binärdateien.
 Sie können die Ausgabe der Aktion dann in anderen Aktionen verwenden. 
@@ -1045,7 +1047,7 @@ Hier ist die Ausgabe angegeben, die mit dieser Aktion erstellt wird:
 
 <a name="function-action"></a>
 
-### <a name="function-action"></a>Aktion „Function“
+### <a name="function-action"></a>Function-Aktion
 
 Mit dieser Aktion wird eine zuvor erstellte [Azure-Funktion](../azure-functions/functions-create-first-azure-function.md) aufgerufen.
 
@@ -1121,7 +1123,7 @@ Mit dieser Aktionsdefinition wird die zuvor erstellte Funktion „GetProductID�
 
 <a name="http-action"></a>
 
-### <a name="http-action"></a>Aktion „HTTP“
+### <a name="http-action"></a>HTTP-Aktion
 
 Diese Aktion sendet eine Anforderung an den angegebenen Endpunkt und überprüft anhand der Antwort, ob der Workflow ausgeführt werden soll. 
 
@@ -1318,7 +1320,7 @@ Mit der „schema“-Eigenschaft wird das JSON-Schema angegeben, das zum Beschre
 
 <a name="query-action"></a>
 
-### <a name="query-action"></a>Aktion „Query“
+### <a name="query-action"></a>Abfrageaktion
 
 Mit dieser Aktion wird basierend auf einer angegebenen Bedingung oder einem Filter ein Array aus den Elementen eines anderen Arrays erstellt.
 
@@ -1357,7 +1359,7 @@ Mit dieser Aktionsdefinition wird ein Array mit Werten erstellt, die größer al
 
 <a name="response-action"></a>
 
-### <a name="response-action"></a>Aktion „Response“  
+### <a name="response-action"></a>Antwortaktion  
 
 Mit dieser Aktion wird die Nutzlast für die Antwort auf eine HTTP-Anforderung erstellt. 
 
@@ -1431,7 +1433,7 @@ Im Gegensatz zu anderen Aktionen verfügt die Aktion **Response** über speziell
 
 <a name="select-action"></a>
 
-### <a name="select-action"></a>Aktion „Select“
+### <a name="select-action"></a>Aktion select
 
 Diese Aktion erstellt ein Array mit JSON-Objekten, indem Elemente aus einem anderen Array basierend auf der angegebenen Zuordnung transformiert werden. Das Ausgabearray und das Quellarray verfügen immer über die gleiche Anzahl von Elementen. Sie können zwar nicht die Anzahl von Objekten im Ausgabearray ändern, aber Sie können Eigenschaften und die zugehörigen Werte für diese Objekte hinzufügen oder entfernen. Mit der `select`-Eigenschaft wird mindestens ein Schlüssel-Wert-Paar angegeben, mit dem die Zuordnung zum Transformieren von Elementen im Quellarray definiert wird. Ein Schlüssel-Wert-Paar steht für eine Eigenschaft und den zugehörigen Wert für alle Objekte im Ausgabearray. 
 
@@ -1520,7 +1522,7 @@ Sie können dann die Ausgabe der Aktion **Compose** in Ihren anderen Aktionen ve
 
 <a name="table-action"></a>
 
-### <a name="table-action"></a>Aktion „Table“
+### <a name="table-action"></a>Aktion table
 
 Mit dieser Aktion wird aus einer CSV- oder HTML-Tabelle ein Array erstellt. Für Arrays mit JSON-Objekten erstellt diese Aktion aus den Eigenschaftennamen der Objekte automatisch die Spaltenüberschriften. Für Arrays mit anderen Datentypen müssen Sie die Spaltenüberschriften und -werte angeben. Dieses Array enthält beispielsweise die Eigenschaften „ID“ und „Product_Name“, die von dieser Aktion für die Namen von Spaltenüberschriften verwendet werden können:
 
@@ -1609,7 +1611,7 @@ Mit dieser Aktionsdefinition wird eine HTML-Tabelle aus der Variablen „myItemA
 
 Hier ist die HTML-Tabelle angegeben, die mit dieser Aktion erstellt wird: 
 
-<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Apples</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
+<table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Äpfel</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
 
 *Beispiel 3*
 
@@ -1697,7 +1699,7 @@ Mit dieser Aktion wird eine Workflowausführung beendet und der Status der Ausf�
 
 <a name="wait-action"></a>
 
-### <a name="wait-action"></a>Aktion „Wait“  
+### <a name="wait-action"></a>Wait-Aktion  
 
 Mit dieser Aktion wird die Workflowausführung für den angegebenen Zeitraum oder bis zum angegebenen Zeitpunkt (aber nicht beides) unterbrochen. 
 
@@ -1774,7 +1776,7 @@ Mit dieser Aktionsdefinition wird der Workflow bis zum angegebenen Zeitpunkt ang
 
 <a name="workflow-action"></a>
 
-### <a name="workflow-action"></a>Aktion „Workflow“
+### <a name="workflow-action"></a>Workflow-Aktion
 
 Mit dieser Aktion wird eine andere zuvor erstellte Logik-App aufgerufen. Dies bedeutet, dass Sie andere Logik-App-Workflows einfügen und wiederverwenden können. Sie können auch die Ausgaben aus der untergeordneten oder *geschachtelten* Logik-App in Aktionen verwenden, die auf die geschachtelte Logik-App folgen, solange die untergeordnete Logik-App eine Antwort zurückgibt.
 
@@ -1858,7 +1860,7 @@ Nachdem die Aktion „Start_search“ erfolgreich abgeschlossen wurde, wird mit 
 
 <a name="foreach-action"></a>
 
-### <a name="foreach-action"></a>Aktion „Foreach“
+### <a name="foreach-action"></a>ForEach-Aktion
 
 Diese Schleifenaktion durchläuft ein Array und führt Aktionen für die einzelnen Arrayelemente aus. Standardmäßig wird die „for each“-Schleife bis zu einer maximalen Schleifenanzahl parallel ausgeführt. Informationen zu dieser maximalen Anzahl finden Sie unter [Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Informieren Sie sich darüber, [wie Sie „for each“-Schleifen erstellen](../logic-apps/logic-apps-control-flow-loops.md#foreach-loop).
 
@@ -1935,7 +1937,7 @@ Um nur ein Array anzugeben, das als Ausgabe des Triggers übergeben wird, ruft d
 
 <a name="if-action"></a>
 
-### <a name="if-action"></a>Aktion „If“
+### <a name="if-action"></a>If-Aktion
 
 Mit dieser Aktion, bei der es sich um eine *bedingte Anweisung* handelt, wird ein Ausdruck ausgewertet. Dieser stellt eine Bedingung dar und führt in Abhängigkeit davon, ob die Bedingung wahr oder falsch ist, jeweils eine andere Branch aus. Wenn die Bedingung wahr ist, erhält die Bedingung den Status „Succeeded“. Informieren Sie sich darüber, [wie Sie bedingte Anweisungen erstellen](../logic-apps/logic-apps-control-flow-conditional-statement.md).
 
@@ -2021,7 +2023,7 @@ Die folgenden Beispiele veranschaulichen die Verwendung von Ausdrücken in Bedin
 
 <a name="scope-action"></a>
 
-### <a name="scope-action"></a>Aktion „Scope“
+### <a name="scope-action"></a>Scope-Aktion
 
 Mit dieser Aktion werden Aktionen logisch zu *Bereichen* (Scopes) gruppiert, die einen eigenen Status erhalten, nachdem die Ausführung der Aktionen in diesem Bereich beendet ist. Sie können den Status des Bereichs dann verwenden, um zu ermitteln, ob andere Aktionen ausgeführt werden. Informieren Sie sich darüber, [wie Sie Bereiche erstellen](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md).
 
@@ -2053,7 +2055,7 @@ Mit dieser Aktion werden Aktionen logisch zu *Bereichen* (Scopes) gruppiert, die
 
 <a name="switch-action"></a>
 
-### <a name="switch-action"></a>Aktion „Switch“
+### <a name="switch-action"></a>Switch-Aktion
 
 Mit dieser Aktion, die auch als *switch-Anweisung* bezeichnet wird, werden andere Aktionen als *Fälle* organisiert. Jedem Fall, mit Ausnahme des Standardfalls (sofern vorhanden), wird ein Wert zugewiesen. Wenn Ihr Workflow ausgeführt wird, vergleicht die Aktion **Switch** den Wert eines Ausdrucks, Objekts oder Tokens mit den Werten, die für jeden Fall angegeben wurden. Falls die Aktion **Switch** einen übereinstimmenden Fall findet, führt Ihr Workflow nur die Aktionen für diesen Fall aus. Bei jeder Ausführung der Aktion **Switch** ist entweder nur ein übereinstimmender Fall vorhanden, oder es sind keine Übereinstimmungen vorhanden. Falls keine Übereinstimmungen vorhanden sind, werden mit der Aktion **Switch** die Standardaktionen ausgeführt. Erfahren Sie, [wie Sie switch-Anweisungen erstellen](../logic-apps/logic-apps-control-flow-switch-statement.md).
 
@@ -2184,7 +2186,7 @@ Mit dieser Aktionsdefinition wird ausgewertet, ob die Person, die auf die E-Mail
 
 <a name="until-action"></a>
 
-### <a name="until-action"></a>Aktion „Until“
+### <a name="until-action"></a>Until-Aktion
 
 Diese Schleifenaktion enthält Aktionen, die so lange ausgeführt werden, bis die angegebene Bedingung „true“ ist. Mit der Schleife wird die Bedingung als letzter Schritt überprüft, nachdem alle anderen Aktionen ausgeführt wurden. Sie können mehr als eine Aktion in das `"actions"`-Objekt einfügen, und mit der Aktion muss mindestens ein Limit definiert werden. Erfahren Sie, [wie Sie „until“-Schleifen erstellen](../logic-apps/logic-apps-control-flow-loops.md#until-loop). 
 
@@ -2306,7 +2308,7 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 | Vorgangsoption | Typ | BESCHREIBUNG | Trigger oder Aktion | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | Zeichenfolge | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#asynchronous-patterns). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Response](#response-action) | 
+| `DisableAsyncPattern` | Zeichenfolge | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#asynchronous-patterns). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
 | `OptimizedForHighThroughput` | Zeichenfolge | Dient zum Ändern des [Standardlimits](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) für die Anzahl von Aktionsausführungen in einem Zeitraum von fünf Minuten in das [maximale Limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode). | Alle Aktionen | 
 | `Sequential` | Zeichenfolge | Dient zum einzelnen Ausführen der Iterationen von „for each“-Schleifen, anstatt alle auf einmal parallel. <p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.repetitions`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each).| Aktion: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | Zeichenfolge | Dient zum sequenziellen Ausführen des Triggers für jede Logik-App-Instanz. Es wird gewartet, bis die zuvor aktive Ausführung beendet ist, bevor die nächste Logik-App-Instanz ausgelöst wird. <p><p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.runs`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
@@ -2552,6 +2554,159 @@ Für eine einzelne Logik-App-Ausführung gilt für die Anzahl von Aktionen, die 
    "runAfter": {}
 }
 ```
+
+<a name="connector-authentication"></a>
+
+## <a name="authenticate-triggers-or-actions"></a>Authentifizieren von Triggern oder Aktionen
+
+HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Sie können die Authentifizierung für diese HTTP-Trigger und -Aktionen einrichten:
+
+* [HTTP](../connectors/connectors-native-http.md)
+* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
+
+Folgende Arten der Authentifizierung können Sie einrichten:
+
+* [Standardauthentifizierung](#basic-authentication)
+* [Clientzertifikatsauthentifizierung](#client-certificate-authentication)
+* [Azure Active Directory (Azure AD) OAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
+
+<a name="basic-authentication"></a>
+
+### <a name="basic-authentication"></a>Standardauthentifizierung
+
+Für diesen Authentifizierungstyp kann Ihr Trigger oder Ihre Aktion ein `authentication`-JSON-Objekt mit diesen Eigenschaften enthalten:
+
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+|----------|----------|-------|-------------| 
+| **type** | JA | „Basic“ | Der zu verwendende Authentifizierungstyp, hier „Basic“ | 
+| **username** | JA | "@parameters('userNameParam')" | Ein Parameter, der den Benutzernamen zur Authentifizierung für den Zugriff auf den Dienstendpunkt des Ziel übergibt |
+| **password** | JA | "@parameters('passwordParam')" | Ein Parameter, der das Kennwort zur Authentifizierung für den Zugriff auf den Dienstendpunkt des Ziel übergibt |
+||||| 
+
+Beispiel: Hier ist das Format für das `authentication`-Objekt in Ihrer Trigger- oder Aktionsdefinition. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern von vertraulichen Informationen](#secure-info). 
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-authentication"></a>Authentifizierung mit Clientzertifikat
+
+Für diesen Authentifizierungstyp kann Ihr Trigger oder Ihre Aktion ein `authentication`-JSON-Objekt mit diesen Eigenschaften enthalten:
+
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+|----------|----------|-------|-------------| 
+| **type** | JA | „ClientCertificate“ | Der für Secure Sockets Layer (SSL)-Clientzertifikate zu verwendende Authentifizierungstyp | 
+| **pfx** | JA | <*base64-encoded-pfx-file*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) |
+| **password** | JA | "@parameters('passwordParam')" | Ein Parameter mit dem Kennwort für den Zugriff auf die PFX-Datei |
+||||| 
+
+Beispiel: Hier ist das Format für das `authentication`-Objekt in Ihrer Trigger- oder Aktionsdefinition. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern von vertraulichen Informationen](#secure-info). 
+
+```javascript
+"authentication": {
+   "password": "@parameters('passwordParam')",
+   "pfx": "aGVsbG8g...d29ybGQ=",
+   "type": "ClientCertificate"
+}
+```
+
+<a name="azure-active-directory-oauth-authentication"></a>
+
+### <a name="azure-active-directory-ad-oauth-authentication"></a>Azure Active Directory (AD) OAuth-Authentifizierung
+
+Für diesen Authentifizierungstyp kann Ihr Trigger oder Ihre Aktion ein `authentication`-JSON-Objekt mit diesen Eigenschaften enthalten:
+
+| Eigenschaft | Erforderlich | Wert | BESCHREIBUNG | 
+|----------|----------|-------|-------------| 
+| **type** | JA | `ActiveDirectoryOAuth` | Der zu verwendende Authentifizierungstyp, „ActiveDirectoryOAuth“ für Azure AD OAuth | 
+| **authority** | Nein  | <*URL-for-authority-token-issuer*> | Die URL für die Zertifizierungsstelle, die das Authentifizierungstoken bereitstellt |  
+| **tenant** | JA | <*tenant-ID*> | Die Mandanten-ID für den Azure AD-Mandanten | 
+| **audience** | JA | <*resource-to-authorize*> | Die Ressource, die von der Autorisierung verwendet werden soll, z.B. `https://management.core.windows.net/` | 
+| **clientId** | JA | <*client-ID*> | Die Client-ID für die App, die eine Autorisierung anfordert | 
+| **credentialType** | JA | „Secret“ oder „Certificate“ | Der Anmeldeinformationstyp, den der Client zum Anfordern der Autorisierung verwendet. Diese Eigenschaft und der Wert werden nicht in Ihrer zugrunde liegenden Definition angezeigt, bestimmen jedoch den erforderlichen Parameter für den Anmeldeinformationstyp. | 
+| **password** | Ja, nur für den Anmeldeinformationstyp „Certificate“ | "@parameters('passwordParam')" | Ein Parameter mit dem Kennwort für den Zugriff auf die PFX-Datei | 
+| **pfx** | Ja, nur für den Anmeldeinformationstyp „Certificate“ | <*base64-encoded-pfx-file*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) |
+| **secret** | Ja, nur für den Anmeldeinformationstyp „Secret“ | <*secret-for-authentication*> | Das base64-codierte-Geheimnis, das der Client zum Anfordern der Autorisierung verwendet |
+||||| 
+
+Hier ist beispielsweise das Format für das `authentication`-Objekt, wenn Ihre Trigger- oder Aktionsdefinition den Anmeldeinformationstyp „Secret“ verwendet: Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern von vertraulichen Informationen](#secure-info). 
+
+```javascript
+"authentication": {
+   "audience": "https://management.core.windows.net/",
+   "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+   "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
+   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+   "type": "ActiveDirectoryOAuth"
+}
+```
+
+<a name="secure-info"></a>
+
+## <a name="secure-sensitive-information"></a>Sichern von vertraulichen Informationen
+
+Zum Schutz vertraulicher Informationen, die Sie in Ihren Trigger- und Aktionsdefinitionen für die Authentifizierung verwenden, z.B. Benutzernamen und Kennwörter, können Sie Parameter und den `@parameters()`-Ausdruck verwenden, damit diese Informationen nach dem Speichern Ihrer Logik -App nicht sichtbar sind. 
+
+Beispiel: Angenommen, Sie verwenden den Authentifizierungstyp „Basic“ in Ihrer Trigger- oder Aktionsdefinition. Hier ein Beispiel für das `authentication`-Objekt, das einen Benutzernamen und ein Kennwort angibt:
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+Definieren Sie im `parameters`-Abschnitt der Definition Ihrer Logik-App die Parameter, die Sie in Ihrer Trigger- oder Aktionsdefinition verwendet haben:
+
+```javascript
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "HTTP": {
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+},
+```
+
+Wenn Sie eine Azure Resource Manager-Bereitstellungsvorlage erstellen oder verwenden, müssen Sie auch einen äußeren `parameters`-Abschnitt für Ihre Vorlagendefinition einschließen. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern des Zugriffs auf Ihre Logik-Apps](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

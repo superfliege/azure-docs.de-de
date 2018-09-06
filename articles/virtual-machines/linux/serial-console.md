@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 20bd2d61671d89a5c2a13525ea119595cf0b7c93
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: d4ca44268740f48702594d9c87aa568d4f8eecb6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246481"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122404"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Serielle Konsole für virtuelle Computer (Vorschau) 
 
@@ -35,12 +35,20 @@ Die serielle Konsole für virtuelle Computer in Azure ermöglicht den Zugriff au
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 * Sie müssen das Resource Manager-Bereitstellungsmodell verwenden. Klassische Bereitstellungen werden nicht unterstützt. 
-* Für den virtuellen Computer MUSS die [Startdiagnose](boot-diagnostics.md) aktiviert sein. 
-* Das Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
+* Für Ihren virtuellen Computer MUSS die [Startdiagnose](boot-diagnostics.md) aktiviert sein – siehe Screenshot.
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    
+* Das Azure-Konto, das die serielle Konsole verwendet, muss die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md) für den virtuellen Computer und das Speicherkonto [Startdiagnose](boot-diagnostics.md) aufweisen. 
+* Auf dem virtuellen Computer, für den Sie auf die serielle Konsole zugreifen, muss auch ein kennwortbasiertes Konto vorhanden sein. Mit der Funktionalität [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterungen für den Zugriff auf virtuelle Computer können Sie eines erstellen – siehe Screenshot unten.
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
+
 * Spezifische Einstellungen für Linux-Distributionen finden Sie unter [Zugreifen auf die serielle Konsole für Linux](#access-serial-console-for-linux).
 
 
-## <a name="open-the-serial-console"></a>Öffnen der seriellen Konsole
+
+## <a name="get-started-with-serial-console"></a>Erste Schritte mit der seriellen Konsole
 Auf die serielle Konsole für virtuelle Computer kann nur über das [Azure-Portal](https://portal.azure.com) zugegriffen werden. Im Folgenden werden die Schritte für den Zugriff auf die serielle Konsole für virtuelle Computer über das Portal beschrieben. 
 
   1. Öffnen Sie das Azure-Portal.
@@ -64,8 +72,8 @@ Die serielle Konsole kann über den [REST-API-Aufruf zum Deaktivieren der Konsol
 
 Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefehle gezeigt) verwenden, um die serielle Konsole für ein Abonnement zu deaktivieren oder zu aktivieren und den Deaktivierungsstatus der seriellen Konsole anzuzeigen. 
 
-* Abrufen des Deaktivierungsstatus der seriellen Konsole für ein Abonnement:
-    ```
+* So rufen Sie den Deaktivierungsstatus der seriellen Konsole für ein Abonnement ab
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -73,7 +81,7 @@ Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefeh
     $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
     ```
 * Deaktivieren der seriellen Konsole für ein Abonnement:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -81,7 +89,7 @@ Alternativ können Sie den Befehlssatz unten in Cloud Shell (es werden Bashbefeh
     $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
     ```
 * Aktivieren der seriellen Konsole für ein Abonnement:
-    ```
+    ```azurecli-interactive
     $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"')) 
 
     $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
@@ -138,10 +146,10 @@ SUSE        | Für in Azure verfügbare neuere SLES-Images ist der Zugriff auf d
 Oracle Linux        | Für in Azure verfügbare Oracle Linux-Images ist der Zugriff auf die Konsole standardmäßig aktiviert.
 Benutzerdefinierte Linux-Images     | Um die serielle Konsole für Ihr benutzerdefiniertes Linux-VM-Image zu aktivieren, aktivieren Sie den Konsolenzugriff in „/etc/inittab“, um ein Terminal auf ttyS0 auszuführen. Es folgt ein Beispiel, um dies in der Datei „inittab“ hinzuzufügen: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Weitere Informationen zur ordnungsgemäßen Erstellung von benutzerdefinierten Images finden Sie unter [Erstellen und Hochladen einer Linux-VHD in Azure](https://aka.ms/createuploadvhd).
 
-## <a name="errors"></a>Fehler
-Die meisten Fehler sind vorübergehender Natur und können oft durch einen erneuten Versuch der Verbindungsherstellung mit der seriellen Konsole behoben werden. Die Tabelle unten zeigt eine Liste von Fehlern und deren Behebung. 
+## <a name="errors"></a>Errors
+Die meisten Fehler sind vorübergehender Natur und können oft durch einen erneuten Versuch der Verbindungsherstellung mit der seriellen Konsole behoben werden. Die folgende Tabelle zeigt eine Liste von Fehlern und deren Behebung.
 
-Fehler                            |   Lösung 
+Error                            |   Lösung 
 :---------------------------------|:--------------------------------------------|
 Startdiagnoseeinstellungen für „<VMNAME>“ können nicht abgerufen werden. Damit Sie die serielle Konsole verwenden können, stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist. | Stellen Sie sicher, dass für den virtuellen Computer [Startdiagnose](boot-diagnostics.md) aktiviert ist. 
 Der virtuelle Computer befindet sich in einem beendeten Zustand mit aufgehobener Zuordnung. Starten Sie den virtuellen Computer neu, und wiederholen Sie die Verbindung mit der seriellen Konsole. | Der virtuelle Computer muss den Zustand „Gestartet“ aufweisen, um auf die serielle Konsole zugreifen zu können.
@@ -154,7 +162,7 @@ Da wir uns noch in der Vorschauphase für den Zugriff auf die serielle Konsole b
 Problem                           |   Lösung 
 :---------------------------------|:--------------------------------------------|
 Es gibt keine Option der seriellen Konsole für VM-Skalierungsgruppeninstanzen. |  Zum Zeitpunkt der Vorschau wird der Zugriff auf die serielle Konsole für VM-Skalierungsgruppeninstanzen nicht unterstützt.
-Nach dem Drücken der EINGABETASTE nach dem Verbindungsbanner wird keine Anmeldeeingabeaufforderung angezeigt. | [Nach dem Drücken der Eingabetaste geschieht nichts](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md).
+Nach dem Drücken der EINGABETASTE nach dem Verbindungsbanner wird keine Anmeldeeingabeaufforderung angezeigt. | Informieren Sie sich auf dieser Seite: [Nach dem Drücken der EINGABETASTE geschieht nichts](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Dies kann passieren, wenn Sie einen benutzerdefinierten virtuellen Computer, eine Appliance mit verstärkter Sicherheit oder eine GRUB-Konfiguration ausführen, und Linux aufgrund dessen keine ordnungsgemäße Verbindung mit dem seriellen Port herstellen kann.
 Beim Zugriff auf das Speicherkonto für die Startdiagnose dieses virtuellen Computers wurde eine „Forbidden“-Antwort empfangen. | Stellen Sie sicher, dass die Startdiagnose nicht über eine Kontofirewall verfügt. Damit die serielle Konsole funktioniert, ist Zugriff auf ein Startdiagnose-Speicherkonto erforderlich.
 
 
@@ -170,5 +178,5 @@ A. Dieses Vorschaufeature wird durch die Nutzungsbedingungen für die Vorschau a
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden der seriellen Konsole zum [Starten in GRUB und zum Wechseln in den Einzelbenutzermodus](serial-console-grub-single-user-mode.md)
 * Verwenden der seriellen Konsole für [NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md)
-* Die serielle Konsole ist auch für [virtuelle Windows-Computer](../windows/serial-console.md) verfügbar.
+* Die serielle Konsole ist auch für [Windows](../windows/serial-console.md)-VMs verfügbar.
 * Erfahren Sie mehr über die [Startdiagnose](boot-diagnostics.md).

@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/28/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145112"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247935"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -35,6 +35,8 @@ Das folgende Diagramm enthält eine konzeptionelle Darstellung des Verhaltens un
 
 ![Ablauf des Updateverwaltungsprozesses](media/automation-update-management/update-mgmt-updateworkflow.png)
 
+Die Updateverwaltung kann für das systeminterne Integrieren von Computern in mehrere Abonnements im selben Mandanten verwendet werden. Zum Verwalten von Computern in einem anderen Mandanten müssen Sie diese als [Nicht-Azure-Computer](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine) integrieren.
+
 Nachdem ein Computer einen Scanvorgang ausgeführt hat, um die Konformität für das Update zu überprüfen, leitet der Agent die Informationen gesammelt an Azure Log Analytics weiter. Auf einem Windows-Computer wird der Konformitätsscan standardmäßig alle 12 Stunden ausgeführt.
 
 Zusätzlich zum Scanzeitplan wird der Update-Konformitätsscan innerhalb von 15 Minuten initiiert, wenn der MMA neu gestartet wird (jeweils vor und nach der Updateinstallation).
@@ -48,7 +50,7 @@ Die Lösung meldet basierend auf der für die Synchronisierung konfigurierten Qu
 
 Sie können Softwareupdates auf Computern bereitstellen und installieren, für die die Updates erforderlich sind, indem Sie einen geplante Bereitstellung erstellen. Updates, die als *Optional* klassifiziert sind, sind im Bereitstellungsumfang von Windows-Computern nicht enthalten. Nur erforderliche Updates sind im Bereitstellungsumfang enthalten. 
 
-Bei der geplanten Bereitstellung wird definiert, welche Zielcomputer die jeweiligen Updates erhalten: entweder durch das explizite Angeben von Computern oder das Auswählen einer [Computergruppe](../log-analytics/log-analytics-computer-groups.md), die auf Protokollsuchen einer bestimmten Gruppe von Computern basiert. Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen. 
+Bei der geplanten Bereitstellung wird definiert, welche Zielcomputer die jeweiligen Updates erhalten: entweder durch das explizite Angeben von Computern oder das Auswählen einer [Computergruppe](../log-analytics/log-analytics-computer-groups.md), die auf Protokollsuchen einer bestimmten Gruppe von Computern basiert. Außerdem geben Sie einen Zeitplan an, um einen Zeitraum zu genehmigen und festzulegen, in dem Updates installiert werden dürfen.
 
 Updates werden mit Runbooks in Azure Automation installiert. Sie können diese Runbooks nicht anzeigen, und für die Runbooks ist keine Konfiguration erforderlich. Wenn eine Updatebereitstellung erstellt wird, erstellt die Updatebereitstellung einen Zeitplan, nach dem für die einbezogenen Computer zur angegebenen Zeit ein Masterrunbook für das Update gestartet wird. Das Masterrunbook startet ein untergeordnetes Runbook für jeden Agent, um die Installation von erforderlichen Updates auszuführen.
 
@@ -217,10 +219,10 @@ Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellun
 |Betriebssystem| Linux oder Windows|
 | Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Log Analytics finden Sie unter [Computergruppen in Log Analytics](../log-analytics/log-analytics-computer-groups.md). |
 |Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus|
-|Auszuschließende Updates|Geben Sie die auszuschließenden Updates ein. Geben Sie für Windows die KB ohne KB-Präfix ein. Geben Sie für Linux den Paketnamen ein, oder verwenden Sie einen Platzhalter.  |
+|Auszuschließende Updates|Geben Sie die auszuschließenden Updates ein. Geben Sie für Windows die KB ohne das Präfix „KB“ ein. Geben Sie für Linux den Paketnamen ein, oder verwenden Sie einen Platzhalter.  |
 |Zeitplaneinstellungen|Wählen Sie den Startzeitpunkt aus, und geben Sie unter „Wiederholung“ entweder „Einmal“ oder „Serie“ an|
 | Wartungsfenster |Festgelegte Minutenanzahl für Updates Der Wert darf nicht weniger als 30 Minuten und nicht mehr als 6 Stunden betragen |
-| Neustartsteuerung| Legt fest, wie Neustarts behandelt werden sollen.</br>Die verfügbaren Optionen lauten wie folgt:</br>Neu starten bei Bedarf (Standard)</br>Immer neu starten</br>Nie neu starten</br>Nur neu starten – Updates werden nicht installiert|
+| Neustartsteuerung| Legt fest, wie Neustarts behandelt werden sollen. Die verfügbaren Optionen lauten wie folgt:</br>Neu starten bei Bedarf (Standard)</br>Immer neu starten</br>Nie neu starten</br>Nur neu starten – Updates werden nicht installiert|
 
 ## <a name="update-classifications"></a>Updateklassifizierungen
 
@@ -310,7 +312,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Bewertungsabfragen für einzelne virtuelle Azure-Computer (Linux)
 
-Für einige Linux-Distributionen besteht ein [Endianness](https://en.wikipedia.org/wiki/Endianness)-Konflikt mit dem VMUUID-Wert, der auf Azure Resource Manager und die in Log Analytics gespeicherten Daten zurückzuführen ist. Die folgende Abfrage überprüft, ob eine Übereinstimmung für einen der Endianness-Werte vorliegt. Ersetzen Sie die VMUUID-Werte durch das big-endian- bzw. little-endian-Format der GUID, um die Ergebnisse ordnungsgemäß zurückzugeben. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Log Analytics ausführen: `Update | where Computer == "<machine name>"
+Für einige Linux-Distributionen besteht ein Konflikt der [Bytereihenfolge](https://en.wikipedia.org/wiki/Endianness) mit dem VMUUID-Wert, der auf Azure Resource Manager und die in Log Analytics gespeicherten Daten zurückzuführen ist. Die folgende Abfrage überprüft, ob eine Übereinstimmung für einen der Endianness-Werte vorliegt. Ersetzen Sie die VMUUID-Werte durch das big-endian- bzw. little-endian-Format der GUID, um die Ergebnisse ordnungsgemäß zurückzugeben. Sie können die VMUUID ermitteln, die verwendet werden soll, indem Sie die folgende Abfrage in Log Analytics ausführen: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Zusammenfassung fehlender Updates
@@ -510,7 +512,7 @@ Da die Updateverwaltung die Updateergänzung in der Cloud ausführt, werden eini
 
 Allerdings wird die Updateverwaltung diesen Computer wahrscheinlich weiterhin als nicht kompatibel melden, da sie über zusätzliche Informationen zum relevanten Update verfügt.
 
-Das Bereitstellen von Updates nach Updateklassifizierung funktioniert unter CentOS nicht standardmäßig. Für SUSE kann die Auswahl *nur* von „Other Updates“ als Klassifizierung möglicherweise dazu führen, dass einige Sicherheitsupdates installiert werden, wenn zuerst Sicherheitsupdates im Zusammenhang mit zypper (Paket-Manager) oder dessen Abhängigkeiten erforderlich sind. Dies ist eine Einschränkung von zypper. In einigen Fällen ist es möglicherweise erforderlich, die Updatebereitstellung erneut ausführen. Um dies zu überprüfen, überprüfen Sie das Updateprotokoll.
+Das Bereitstellen von Updates nach Updateklassifizierung funktioniert unter CentOS nicht standardmäßig. Für SUSE kann die Auswahl *nur* von „Other Updates“ als Klassifizierung möglicherweise dazu führen, dass einige Sicherheitsupdates installiert werden, wenn zuerst Sicherheitsupdates im Zusammenhang mit zypper (Paket-Manager) oder dessen Abhängigkeiten erforderlich sind. Dies ist eine Einschränkung von zypper. In einigen Fällen müssen Sie die Updatebereitstellung u.U. erneut ausführen. Überprüfen Sie das Updateprotokoll diesbezüglich.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
