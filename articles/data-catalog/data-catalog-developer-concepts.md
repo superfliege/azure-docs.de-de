@@ -1,25 +1,19 @@
 ---
-title: "Data Catalog – Entwicklerkonzepte | Microsoft Docs"
-description: "Eine Einführung in die wichtigsten Konzepte im konzeptionellen Modell von Azure Data Catalog, die durch die Catalog-REST-API verfügbar gemacht werden."
+title: Azure Data Catalog – Entwicklerkonzepte
+description: Eine Einführung in die wichtigsten Konzepte im konzeptionellen Modell von Azure Data Catalog, die durch die Catalog-REST-API verfügbar gemacht werden.
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 48d4a33f7667786f2eb8851ed69dedc206e777ae
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052821"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
 **Azure Data Catalog** von Microsoft ist ein vollständig verwalteter Clouddienst mit Funktionen für die Datenquellenermittlung und das Crowdsourcing von Datenquellenmetadaten. Entwickler können den Dienst über die REST-APIs nutzen. Eine erfolgreiche Integration von **Azure Data Catalog**setzt voraus, dass die Entwickler mit den implementierten Konzepten vertraut sind.
@@ -293,7 +287,7 @@ Die Objekt-ID des speziellen Sicherheitsprinzipals &lt;Everyone&gt; lautet „00
 > 
 > 
 
-**Body**
+**Text**
 
     {
         "roles": [
