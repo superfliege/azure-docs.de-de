@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: e7a5c7f08b34c91512ad2bf5d9f3fcb82feb9e08
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026095"
 documentType: LandingData
 title: Site Recovery-Dokumentation
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 0d66952b5f159ce92b8586f7beb71c25fe7c7b39
-  ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 01/10/2018
-  ms.locfileid: "27740083"
 abstract:
   description: Azure Site Recovery orchestriert und verwaltet die Wiederherstellung im Notfall für Azure-VMs sowie lokale virtuelle Computer und physische Server. Erfahren Sie mit unseren Schnellstarts und Tutorials, wie Sie Replikationen, Failover und Failbacks durchführen.
 sections:
@@ -54,7 +54,7 @@ sections:
     - html: <a href="tutorial-prepare-on-premises-vmware">Prepare on-premises VMware</a> (Lokales Vorbereiten von VMware)
     - html: <a href="tutorial-vmware-to-azure">Set-up disaster recovery</a> (Einrichten der Notfallwiederherstellung)
     - html: <a href="tutorial-dr-drill-azure">Durchführen eines Notfallwiederherstellungsverfahrens</a>
-    - html: <a href="tutorial-vmware-to-azure-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
+    - html: <a href="vmware-azure-tutorial-failover-failback">Run failover and failback</a> (Ausführen von Failover und Failback)
   - type: text
     html: <h3>Hyper-V</h3>
   - type: list
@@ -80,6 +80,6 @@ sections:
     className: cardsD
     items:
     - title: Befehlszeile
-      html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+      html: <p><a href="/powershell/module/azurerm.siterecovery>Azure PowerShell</a></p>
     - title: REST
       html: <p><a href="/rest/api/site-recovery/">REST-API-Referenz</a></p>
