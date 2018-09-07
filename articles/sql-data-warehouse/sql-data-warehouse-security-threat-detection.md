@@ -3,19 +3,19 @@ title: Bedrohungserkennung – Azure SQL Data Warehouse | Microsoft-Dokumentatio
 description: Konfigurieren Sie die Bedrohungserkennung, und untersuchen Sie verdächtige Ereignisse in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 8dc1ef0432536c6bfd4fe069406cd057ca069ea2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 7ff23235e9681301984e13e346b23f277662bb5c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523896"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300933"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Bedrohungserkennung in Azure SQL Data Warehouse
 Konfigurieren Sie die Bedrohungserkennung, und untersuchen Sie verdächtige Ereignisse in Azure SQL Data Warehouse.
@@ -36,7 +36,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
 3. **Aktivieren Sie** auf dem Konfigurationsblatt für die **Überwachung und Bedrohungserkennung** die Überwachung. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
    
     ![Navigationsbereich](media/sql-data-warehouse-security-threat-detection/2_td_turn_on_auditing.png)
-4. Aktivieren **Sie** die Bedrohungserkennung.
+4. **Aktivieren Sie** die Bedrohungserkennung.
 5. Konfigurieren Sie die Liste der E-Mail-Empfänger, die bei Erkennung anomaler Data Warehouse-Aktivitäten eine Sicherheitsbenachrichtigung erhalten sollen.
 6. Klicken Sie auf dem Blatt für die Konfiguration der **Überwachung und Bedrohungserkennung** auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Überwachung und Bedrohungserkennung zu speichern.
    
@@ -47,7 +47,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anormale Datenbankak
    Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (wie etwa Art der anomalen Aktivitäten, Datenbankname, Servername und Zeit des Ereignisses). Darüber hinaus enthält sie Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank.<br/>
    
     ![Navigationsbereich](media/sql-data-warehouse-security-threat-detection/4_td_email.png)
-2. Klicken Sie in der E-Mail auf den Link für das Azure SQL-Überwachungsprotokoll, **um das Azure-Portal aufzurufen** und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
+2. Klicken Sie in der E-Mail auf den Link für das **Azure SQL-Überwachungsprotokoll**, um das Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
    
     ![Navigationsbereich](media/sql-data-warehouse-security-threat-detection/5_td_audit_records.png)
 3. Klicken Sie auf die Überwachungsdatensätze, um weitere Details zu den verdächtigen Datenbankaktivitäten (wie etwa SQL-Anweisung, Fehlerursache und Client-IP) anzuzeigen.
