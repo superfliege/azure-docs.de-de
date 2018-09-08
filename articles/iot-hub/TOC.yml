@@ -301,8 +301,6 @@ items:
         href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: Erweiterte IoT-Szenarien
       items:
-      - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit iothub-explorer
-        href: iot-hub-explorer-cloud-device-messaging.md
       - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit Azure IoT Toolkit für VS Code
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
       - name: Speichern von IoT Hub-Nachrichten in Azure Blob Storage
@@ -315,8 +313,6 @@ items:
         href: iot-hub-weather-forecast-machine-learning.md
       - name: Geräteverwaltung mit Azure IoT Toolkit für VS Code
         href: iot-hub-device-management-iot-toolkit.md
-      - name: Geräteverwaltung mit iothub-explorer
-        href: iot-hub-device-management-iothub-explorer.md
       - name: Geräteverwaltung mit IoT-Erweiterung für Azure CLI 2.0
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: Remoteüberwachung und Benachrichtigungen mit Logic Apps
@@ -405,8 +401,6 @@ items:
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: iothub-diagnostics (Tool)
     href: https://github.com/Azure/iothub-diagnostics
-  - name: iothub-explorer (Tool)
-    href: https://github.com/Azure/iothub-explorer
   - name: Lernpfad
     href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
   - name: MSDN-Forum
@@ -423,9 +417,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: f9ec05dade065966d6ea1b3aa2a63598ca7c859c
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2e2057fc75b808bf5989d263ce561d3cec4b8e2c
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143405"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160982"
