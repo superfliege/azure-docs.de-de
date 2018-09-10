@@ -16,14 +16,21 @@
 ### [Netzwerkarchitektur](hana-network-architecture.md)
 ### [Speicherarchitektur](hana-storage-architecture.md)
 ### [Unterstützte HLI-Szenarien](hana-supported-scenario.md)
-## [Infrastruktur und Konnektivität](hana-overview-infrastructure-connectivity.md)
-## [Installieren von SAP HANA](hana-installation.md)
+## Infrastruktur und Konnektivität
+### [HLI-Bereitstellung](hana-overview-infrastructure-connectivity.md)
+### [Verbinden von virtuellen Azure-Computern mit HANA (große Instanzen)](hana-connect-azure-vm-large-instances.md)
+### [Herstellen einer ExpressRoute-Verbindung zwischen einem VNET und HANA (große Instanzen)](hana-connect-vnet-express-route.md)
+### [Zusätzliche Netzwerkanforderungen](hana-additional-network-requirements.md)
+## Installieren von SAP HANA
+### [Überprüfen der Konfiguration](hana-installation.md)
+### [HANA-Beispielinstallation](hana-example-installation.md)
 ## [Hochverfügbarkeit und Notfallwiederherstellung](hana-overview-high-availability-disaster-recovery.md)
 ## [Problembehandlung und Überwachung](troubleshooting-monitoring.md)
 ## Anleitung
 ### [HA-Einrichtung mit STONITH](ha-setup-with-stonith.md)
 ### [Betriebssystemsicherung für Typ-II-SKUs](os-backup-type-ii-skus.md)
 ### [Betriebssystemupgrade für große HANA-Instanzen](os-upgrade-hana-large-instance.md)
+### [Einrichten eines SMT-Servers für SUSE Linux](hana-setup-smt.md)
 # SAP HANA in Azure Virtual Machines
 ## [SAP HANA-Einzelinstanzinstallation](hana-get-started.md)
 ## [Bereitstellungshandbuch für S/4 HANA oder BW/4 HANA SAP CAL](cal-s4h.md)
