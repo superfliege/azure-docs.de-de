@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 5e4201f3d0684066bb6ba75850191e28405d8e8a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0e45b659508c71a9f1220ef5e76b9a95438fa1e6
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522270"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162239"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Tutorial: 2. Hinzufügen von vordefinierten Absichten und Entitäten
 Fügen Sie der Personal-App aus dem Tutorial vordefinierte Absichten und Entitäten hinzu, um schnell Absichtsvorhersagen und extrahierte Daten zu erhalten. 
@@ -27,7 +27,7 @@ In diesem Tutorial lernen Sie Folgendes:
 * Trainieren und Veröffentlichen
 * Abfragen von LUIS und Empfangen von Vorhersageantworten
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die [Personal](luis-quickstart-intents-only.md)-App aus dem vorherigen Tutorial verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS](luis-reference-regions.md#luis-website)-Website über das GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json)).
@@ -73,15 +73,15 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
 ## <a name="train-and-publish-the-app"></a>Trainieren und Veröffentlichen der App
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>Veröffentlichen der App im Endpunkt
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `I want to cancel on March 3` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
@@ -168,7 +168,7 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

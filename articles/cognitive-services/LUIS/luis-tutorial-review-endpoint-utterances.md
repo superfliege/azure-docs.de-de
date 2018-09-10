@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 5ce08861934305cccca9933a822fccf642746a59
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527703"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160080"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>Tutorial: Überprüfen von Endpunktäußerungen
 In diesem Tutorial erfahren Sie, wie Sie App-Vorhersagen verbessern können, indem Sie die über den LUIS-HTTP-Endpunkt erhaltenen Äußerungen überprüfen bzw. korrigieren. 
@@ -27,7 +27,7 @@ In diesem Tutorial erfahren Sie, wie Sie App-Vorhersagen verbessern können, ind
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personal-App aus dem [Tutorial zur Standpunktanalyse](luis-quickstart-intent-and-sentiment-analysis.md) verfügen, können Sie sie aus dem GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json) importieren. Wenn Sie dieses Tutorial mit einer neuen, importierten App verwenden, müssen Sie auch das Trainieren und Veröffentlichen durchführen und die Äußerungen dem Endpunkt mit einem [Skript](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) oder in einem Browser vom Endpunkt hinzufügen. Fügen Sie die folgenden Äußerungen hinzu:
@@ -104,19 +104,19 @@ Halten Sie die Ausdrucksliste mit allen neu ermittelten Jobnamen auf dem aktuell
 
 LUIS ist erst über die Änderungen informiert, nachdem das Trainieren durchgeführt wurde. 
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
 
 Nach dem Importieren dieser App müssen Sie die Option **Sentiment analysis** (Standpunktanalyse) wählen.
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
 
 Probieren Sie es mit einer Äußerung, die nicht weit von der korrigierten Äußerung abweicht. 
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `Are there any natural language processing jobs in my department right now?` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). 
 
@@ -230,7 +230,7 @@ Die Vorhersagegenauigkeit der App wurde erhöht, indem die Äußerungen vom Endp
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

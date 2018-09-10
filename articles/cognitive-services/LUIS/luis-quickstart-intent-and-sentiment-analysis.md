@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: baa449bb9e78a5c6437b0a9528e5d1f10dfa519f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a89755bcc0ed5ef8bee4ed00b99c73993a57bcb9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520451"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163021"
 ---
 # <a name="tutorial-9--add-sentiment-analysis"></a>Tutorial: 9.  Hinzufügen einer Standpunktanalyse
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive, negative und neutrale Emotionen aus Äußerungen extrahieren.
@@ -27,7 +27,7 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie Sie positive
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort 
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personal-App aus dem Tutorial zur [vordefinierten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json).
@@ -80,7 +80,7 @@ Fügen Sie eine neue Absicht für die Erfassung von internem Mitarbeiterfeedback
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurieren der App zur Aufnahme der Stimmungsanalyse
 Konfigurieren Sie die Standpunktanalyse auf der Seite **Veröffentlichen**. 
@@ -93,11 +93,11 @@ Konfigurieren Sie die Standpunktanalyse auf der Seite **Veröffentlichen**.
 
 ## <a name="publish-app-to-endpoint"></a>Veröffentlichen der App im Endpunkt
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>Abfragen des Endpunkts mit einer Äußerung
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `Jill Jones work with the media team on the public portal was amazing` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `EmployeeFeedback` mit der extrahierten Stimmungsanalyse zurückgeben.
 
@@ -204,7 +204,7 @@ Für LUIS ist diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ei
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

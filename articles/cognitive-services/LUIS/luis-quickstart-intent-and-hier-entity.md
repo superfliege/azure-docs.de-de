@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 41f74ff00e4fad751d4a2b7ae96ebb048bbcdfcd
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 65c7aabb984ad0a6b3e77d0f98003803821e06cc
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492697"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158618"
 ---
 # <a name="tutorial-5-add-hierarchical-entity"></a>Tutorial: 5. Hinzufügen einer Entität vom Typ „Hierarchisch“
 In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie anhand des Kontexts nach zusammengehörenden Datenelementen suchen. 
@@ -27,7 +27,7 @@ In diesem Tutorial erstellen Sie eine App, mit der veranschaulicht wird, wie Sie
 > * Trainieren und Veröffentlichen der App
 > * Abfragen des App-Endpunkts zum Anzeigen der LUIS-JSON-Antwort, einschließlich hierarchischer untergeordneter Elemente 
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personal-App aus dem [Tutorial zu Listenentitäten](luis-quickstart-intent-and-list-entity.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json).
@@ -120,15 +120,15 @@ Fügen Sie die vordefinierte Zahlenentität wieder der Anwendung hinzu.
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
 2. Geben Sie in der Adressleiste am Ende der URL `Please relocation jill-jones@mycompany.com from x-2345 to g-23456` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `MoveEmployee` mit der extrahierten hierarchischen Entität zurückgeben.
@@ -237,7 +237,7 @@ Für die Orte in diesem Beispiel, z.B. `a-1234`, wird ein bestimmtes Format mit 
 
 ## <a name="patterns-with-roles"></a>Muster mit Rollen
 
-[!include[LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
+[!INCLUDE [LUIS Compare hierarchical entities to patterns with roles](../../../includes/cognitive-services-luis-hier-roles.md)]
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Was wurde mit dieser LUIS-App erreicht?
 Diese App mit einigen Absichten und einer hierarchischen Entität hat eine Abfrageabsicht in natürlicher Sprache ermittelt und die extrahierten Daten zurückgegeben. 
@@ -249,7 +249,7 @@ LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (z.B. ein Cha
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 

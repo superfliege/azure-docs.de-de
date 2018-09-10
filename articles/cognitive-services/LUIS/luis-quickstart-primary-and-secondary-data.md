@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 87d97b078927800e4e90c39a70e2acc7163a4c84
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: a69ea8ea45a02399b7c6ad22f0dc514ad8537e06
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493046"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159655"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Tutorial: 7. Hinzufügen einer Entität vom Typ „Einfach“ sowie einer Begriffsliste
 In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der Entität vom Typ **Einfach** ML-Daten aus einer Äußerung extrahiert werden.
@@ -29,7 +29,7 @@ In diesem Tutorial erstellen Sie eine App, die veranschaulicht, wie mithilfe der
 > * Hinzufügen einer Begriffsliste, um das Signal von Stellenwörtern zu verstärken
 > * Trainieren und Veröffentlichen der App und erneutes Abfragen des Endpunkts
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personal-App aus dem [Tutorial zur zusammengesetzten Entität](luis-tutorial-composite-entity.md) verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json).
@@ -127,15 +127,15 @@ Diese LUIS-App verfügt über Stellennamen in verschiedenen Absichten. Durch die
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Veröffentlichen der App zum Abrufen der Endpunkt-URL
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Abfragen des Endpunkts mit einer anderen Äußerung
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Geben Sie in der Adressleiste am Ende der URL `Here is my c.v. for the programmer job` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (die Äußerung **query** (Abfrage)). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Äußerungen vom Typ `ApplyForJob` zurückgeben.
 
@@ -361,7 +361,7 @@ LUIS hat diese Anforderung abgeschlossen. Die aufrufende Anwendung (etwa ein Cha
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
