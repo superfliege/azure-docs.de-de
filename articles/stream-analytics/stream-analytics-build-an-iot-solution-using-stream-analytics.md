@@ -9,12 +9,12 @@ ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 80e287d09fdc5ab7157b9ee46bc830fd2db4d501
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1610e8173d90be3c0b50f05e64d0e84e1c21ad0e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912269"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698042"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -303,7 +303,7 @@ Skalieren Sie den Streamingauftrag wie folgt auf mehr Streamingeinheiten zentral
 
 3. Wählen Sie unter der Überschrift „KONFIGURIEREN“ des Streamingauftrags die Option **Skalieren**.
    
-4. Verschieben Sie den Schieberegler **Streamingeinheiten** von 1 auf 6. Mit den Streamingeinheiten wird die Menge an Rechenleistung definiert, die der Auftrag erhalten kann. Wählen Sie **Speichern** aus.
+4. Verschieben Sie den Schieberegler **Streamingeinheiten** von 1 auf 6. Mit den Streamingeinheiten wird die Menge an Rechenleistung definiert, die der Auftrag erhalten kann. Wählen Sie **Speichern**aus.
 
 5. **Starten** Sie den Streamingauftrag, um die zusätzliche Skalierung zu demonstrieren. Azure Stream Analytics erreicht eine Verteilung der Arbeit auf mehr Computeressourcen und einen besseren Durchsatz, indem die Arbeit über die Spalte, die in der PARTITION BY-Klausel angegeben ist, ressourcenübergreifend partitioniert wird. 
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 426d7b15cd4a98d958ed02329f40becdfb177ceb
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: ea4d33b569ae0932d6091869c4825cf2b5e69664
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259278"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697712"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Erste Schritte mit Azure Stream Analytics zum Verarbeiten der Daten von IoT-Geräten
 In diesem Tutorial erfahren Sie, wie Sie Datenstrom-Verarbeitungslogik erstellen, um Daten von IoT-Geräten (Internet of Things) zu erfassen. Wir verwenden einen echten IoT-Anwendungsfall aus der Praxis, um zu zeigen, wie Sie Ihre Lösung schnell und wirtschaftlich erstellen.
@@ -87,7 +87,7 @@ Die einfachste Form einer Abfrage ist eine Passthrough-Abfrage, bei der alle Ein
     ![Testergebnisse](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Abfrage: Filtern der Daten basierend auf einer Bedingung
-Wir versuchen nun, die Ergebnisse anhand einer Bedingung zu filtern. Wir möchten nur Ergebnisse für die Ereignisse anzeigen, die von „sensorA“ stammen. Die Abfrage ist in der Datei „Filtering.txt“ enthalten.
+Wir versuchen nun, die Ergebnisse anhand einer Bedingung zu filtern. Wir möchten Ihnen Ergebnisse nur für die Ereignisse anzeigen, die von "sensorA" kommen. Die Abfrage ist in der Datei „Filtering.txt“ enthalten.
 
 ![Filtern eines Datenstroms](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 
