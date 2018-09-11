@@ -1,5 +1,5 @@
 # Azure Dev Spaces
-## [Übersicht](azure-dev-spaces.md)
+## [Übersicht](index.yml)
 
 ## Schnellstarts
 ### [Java (VS Code und CLI)](quickstart-java.md)
