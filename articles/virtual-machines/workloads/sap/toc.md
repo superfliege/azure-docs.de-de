@@ -25,7 +25,9 @@
 ### [Überprüfen der Konfiguration](hana-installation.md)
 ### [HANA-Beispielinstallation](hana-example-installation.md)
 ## [Hochverfügbarkeit und Notfallwiederherstellung](hana-overview-high-availability-disaster-recovery.md)
-## [Problembehandlung und Überwachung](troubleshooting-monitoring.md)
+## Problembehandlung und Überwachung
+### [Überwachen von HLI](troubleshooting-monitoring.md)
+### [Überwachung und Problembehandlung auf HANA-Seite](hana-monitor-troubleshoot.md)
 ## Anleitung
 ### [HA-Einrichtung mit STONITH](ha-setup-with-stonith.md)
 ### [Betriebssystemsicherung für Typ-II-SKUs](os-backup-type-ii-skus.md)
