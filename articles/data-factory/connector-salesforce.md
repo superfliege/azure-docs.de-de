@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 19ba4a97b93c01a049f921904d0f5aba4b8c0617
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 56f1721240d4b685133149d50dd7c2a0e6b7e974
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442053"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158840"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -293,7 +293,7 @@ Beim Kopieren von Daten aus Salesforce können Sie eine SOQL- oder eine SQL-Abfr
 | Spaltenauswahl | Die zu kopierenden Felder müssen in der Abfrage aufgezählt werden, z.B. `SELECT field1, filed2 FROM objectname`. | `SELECT *` wird zusätzlich zur Spaltenauswahl unterstützt. |
 | Anführungszeichen | Feld-/Objektnamen dürfen nicht in Anführungszeichen eingeschlossen werden. | Feld-/Objektnamen dürfen in Anführungszeichen eingeschlossen werden, z.B. `SELECT "id" FROM "Account"`. |
 | Datetime-Format |  Details finden Sie [hier](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm), Beispiele im nächsten Abschnitt. | Details finden Sie [hier](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017), Beispiele im nächsten Abschnitt. |
-| Boolesche Werte | Dargestellt als `False` und `Ture`, z.B. `SELECT … WHERE IsDeleted=True`. | Dargestellt als 0 oder 1, z.B. `SELECT … WHERE IsDeleted=1`. |
+| Boolesche Werte | Dargestellt als `False` und `True`, z.B. `SELECT … WHERE IsDeleted=True`. | Dargestellt als 0 oder 1, z.B. `SELECT … WHERE IsDeleted=1`. |
 | Umbenennen von Spalten | Nicht unterstützt. | Unterstützt, z.B. `SELECT a AS b FROM …`. |
 | Beziehung | Unterstützt, z.B. `Account_vod__r.nvs_Country__c`. | Nicht unterstützt. |
 

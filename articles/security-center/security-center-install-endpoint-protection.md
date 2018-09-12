@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: terrylan
-ms.openlocfilehash: abbcb0a8e0206d78ca94520dfa81ab92506c47af
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: a3ac23f3874b85da9c0641264ca6f9c55a7b0515
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
-ms.locfileid: "23497348"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300002"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
 Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
@@ -107,7 +107,7 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Dokumenten:
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Hier erfahren Sie, wie Sie Sicherheitsrichtlinien konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.

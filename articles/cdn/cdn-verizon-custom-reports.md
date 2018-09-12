@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: v-deasim
-ms.openlocfilehash: f09195dc07a96ebcca7f7a9e4bcf521fae13630c
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: f18b6edb900640e48e5ca87639f71cec9287af38
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26343887"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159740"
 ---
 # <a name="custom-reports-from-verizon"></a>Benutzerdefinierte Berichte aus Verizon
 
-[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
 Indem Sie benutzerdefinierte Verizon-Berichte über das Verwaltungsportal für Verizon-Profile verwenden, können Sie den Typ der zu sammelnden Daten für Edgeb CNAMEs-Berichte definieren.
 
@@ -68,7 +68,7 @@ Sie können die Daten im Excel-Format exportieren, indem Sie auf das Excel-Symbo
 
 ## <a name="edge-cnames-custom-report-fields"></a>Felder des benutzerdefinierten Edge CNAMEs-Berichts
 
-| Feld                     | Beschreibung   |
+| Feld                     | BESCHREIBUNG   |
 |---------------------------|---------------|
 | 2xx                       | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die einen 2xx HTTP-Statuscode ergeben (z.B. 200 OK). |
 | 3xx                       | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die einen 3xx HTTP-Statuscode ergeben (z.B. 302 Gefunden oder 304 Nicht geändert). |
@@ -77,11 +77,11 @@ Sie können die Daten im Excel-Format exportieren, indem Sie auf das Excel-Symbo
 | Cachetreffer %               | Gibt den Prozentsatz der zwischenspeicherbaren Anforderungen an, die direkt aus dem Cache für die anfordernde Person bereitgestellt wurden. |
 | Cachetreffer                | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die einen Cachetreffer ergeben (z.B. TCP_EXPIRED_HIT, TCP_HIT oder TCP_PARTIAL_HIT). Ein Cachetreffer wird erzielt, wenn eine zwischengespeicherte Version des angeforderten Inhalts gefunden wird. |
 | Übertragene Daten (MB)     | Gibt die Gesamtmenge der übertragenen Daten (MB) von den Edgeservern an HTTP-Clients (z.B. Webbrowser) für den Edge CNAME an. Die Menge der übertragenen Daten wird durch Hinzufügen der HTTP-Antwortheader zum Antworttext berechnet. Daher ist die Menge der übertragenen Daten für jedes Objekt größer als seine tatsächliche Dateigröße. |
-| Beschreibung               | Identifiziert einen Edge CNAME nach seinem Hostnamen. |
+| BESCHREIBUNG               | Identifiziert einen Edge CNAME nach seinem Hostnamen. |
 | Treffer                      | Gibt die Gesamtanzahl der Anforderungen an den Edge CNAME an. |
 | Cachefehler                    | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die zu einem Cachefehler führen (z.B. TCP_CLIENT_REFRESH_MISS, TCP_EXPIRED_MISS oder TCP_MISS). Ein Cachefehler tritt auf, wenn der angeforderte Inhalt nicht auf dem Edgeserver, der die Anforderung berücksichtigt, zwischengespeichert wurde. | 
 | Kein Cache                  | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die den Cachestatuscode „CONFIG_NOCACHE“ ergeben.  |
-| Sonstige                     | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die einen HTTP-Statuscode ergeben, der außerhalb des Bereichs 2xx–5xx liegt. |
+| Andere                     | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die einen HTTP-Statuscode ergeben, der außerhalb des Bereichs 2xx–5xx liegt. |
 | Plattform                  | Gibt die Plattform an, die den Datenverkehr des Edge CNAME verarbeitet. |
 | Nicht zugewiesen               | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, für die keine Informationen zum Cachestatuscode oder HTTP-Statuscode protokolliert wurden.  |
 | Nicht zwischenspeicherbar               | Gibt die Gesamtanzahl der Anforderungen oder übertragenen Daten (MB) für den Edge CNAME an, die den Cachestatuscode „UNCACHEABLE“ ergeben.  |

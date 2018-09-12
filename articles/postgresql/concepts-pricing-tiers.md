@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/21/2018
-ms.openlocfilehash: 7494f139f824d3794fced3a0eb4f8d676f3961f5
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 18f6647a8412477384a48aa777461f99b2fbcb0a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173706"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379541"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -46,7 +46,7 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 
 | **Azure-Region** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
-| USA (Mitte) | X |  |
+| USA (Mitte) | X | X |
 | USA (Ost) | X | X |
 | USA (Ost) 2 | X | X |
 | USA Nord Mitte | X | X |
@@ -98,7 +98,7 @@ Wenn der Server als schreibgeschützt festgelegt ist, werden alle bestehenden Si
 
 Sie können die Menge des bereitgestellten Speichers für Ihren Server erhöhen oder eine neue Sitzung im Lese-/ Schreibmodus starten und Daten löschen, um Speicherplatz freizugeben. Durch Ausführen von `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` wird die aktuelle Sitzung in den Lese-/Schreibmodus versetzt. Um eine Datenbeschädigung zu verhindern, führen Sie keine Schreibvorgänge durch, solange der Server noch den schreibgeschützten Status aufweist.
 
-Sie sollten eine Benachrichtigung einrichten, die Sie benachrichtigt, wenn sich der Serverspeicher dem Schwellenwert nähert, um zu verhindern, dass Sie in den schreibgeschützten Zustand geraten. Weitere Informationen finden Sie in der Dokumentation zum [Einrichten einer Benachrichtigung](howto-alert-on-metric.md).
+Sie sollten eine Benachrichtigung einrichten, damit Sie informiert werden, wenn sich der Serverspeicher dem Schwellenwert nähert. So können Sie vermeiden, in den schreibgeschützten Zustand zu geraten. Weitere Informationen finden Sie in der Dokumentation zum [Einrichten einer Benachrichtigung](howto-alert-on-metric.md).
 
 ## <a name="backup"></a>Backup
 

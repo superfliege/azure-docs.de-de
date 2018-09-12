@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d05e314cb31aaba96e7db79e0e4dd287e6d2184
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b3ef6e2a6b9b51c271372aa3c9342b52a4260788
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426903"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348105"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning-with-azure-active-directory"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung in Azure Active Directory
 
 Dieses Tutorial zeigt Ihnen die Schritte, die Sie in ServiceNow und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in ServiceNow automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -100,7 +100,7 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die ServiceNow im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen über Bereitstellungsaktivitäten aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer ServiceNow-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

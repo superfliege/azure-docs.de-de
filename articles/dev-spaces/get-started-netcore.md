@@ -11,22 +11,22 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: fdaba2afecd453794dbee3b47ef5202700d005d2
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 0055276e8ce6ba6e22b8c2e664b3d2ae58b12345
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920983"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159723"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Erste Schritte in Azure Dev Spaces mit .NET Core
 
-[!INCLUDE[](includes/learning-objectives.md)]
+[!INCLUDE [](includes/learning-objectives.md)]
 
-[!INCLUDE[](includes/see-troubleshooting.md)]
+[!INCLUDE [](includes/see-troubleshooting.md)]
 
 Sie können nun einen Kubernetes-basierten Entwicklungsbereich in Azure erstellen.
 
-[!INCLUDE[](includes/portal-aks-cluster.md)]
+[!INCLUDE [](includes/portal-aks-cluster.md)]
 
 ## <a name="install-the-azure-cli"></a>Installieren der Azure CLI
 Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minimal. Der Großteil der Konfiguration Ihres Entwicklungsbereichs wird in der Cloud gespeichert und kann gemeinsam mit anderen Benutzern genutzt werden. Auf dem lokalen Computer kann Windows, Mac oder Linux ausgeführt werden. Für Linux werden die folgenden Distributionen unterstützt: Ubuntu (18.04, 16.04 und 14.04), Debian 8 und 9, RHEL 7, Fedora 26 und höhere Versionen, CentOS 7, openSUSE 42.2 und SLES 12.
@@ -36,11 +36,11 @@ Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-az
 > [!IMPORTANT]
 > Falls die Azure CLI bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.43 handelt.
 
-[!INCLUDE[](includes/sign-into-azure.md)]
+[!INCLUDE [](includes/sign-into-azure.md)]
 
-[!INCLUDE[](includes/use-dev-spaces.md)]
+[!INCLUDE [](includes/use-dev-spaces.md)]
 
-[!INCLUDE[](includes/install-vscode-extension.md)]
+[!INCLUDE [](includes/install-vscode-extension.md)]
 
 Während Sie auf die Erstellung des Clusters warten, können Sie mit der Codeentwicklung beginnen.
 
@@ -57,9 +57,9 @@ dotnet new mvc --name webfrontend
 
 Oder **laden Sie Beispielcode von GitHub herunter**. Navigieren Sie dazu zu https://github.com/Azure/dev-spaces, und klicken Sie auf **Klonen oder herunterladen**, um das GitHub-Repository in Ihre lokale Umgebung herunterzuladen. Der Code für diese Anleitung befindet sich in `samples/dotnetcore/getting-started/webfrontend`.
 
-[!INCLUDE[](includes/azds-prep.md)]
+[!INCLUDE [](includes/azds-prep.md)]
 
-[!INCLUDE[](includes/build-run-k8s-cli.md)]
+[!INCLUDE [](includes/build-run-k8s-cli.md)]
 
 ### <a name="update-a-content-file"></a>Aktualisieren einer Inhaltsdatei
 Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
@@ -85,9 +85,9 @@ Es gibt jedoch eine noch *schnellere Methode* für die Codeentwicklung. Sie wird
 
 ## <a name="debug-a-container-in-kubernetes"></a>Debuggen eines Containers in Kubernetes
 
-[!INCLUDE[](includes/debug-intro.md)]
+[!INCLUDE [](includes/debug-intro.md)]
 
-[!INCLUDE[](includes/init-debug-assets-vscode.md)]
+[!INCLUDE [](includes/init-debug-assets-vscode.md)]
 
 
 ### <a name="select-the-azds-debug-configuration"></a>Auswählen der AZDS-Debugkonfiguration
@@ -105,7 +105,7 @@ Drücken Sie **F5**, um Ihren Code in Kubernetes zu debuggen.
 
 Wie beim Befehl `up` wird der Code mit dem Entwicklungsbereich synchronisiert, und ein Container wird erstellt und in Kubernetes bereitgestellt. Dieses Mal ist der Debugger natürlich an den Remotecontainer angefügt.
 
-[!INCLUDE[](includes/tip-vscode-status-bar-url.md)]
+[!INCLUDE [](includes/tip-vscode-status-bar-url.md)]
 
 Legen Sie einen Breakpoint in einer serverseitigen Codedatei fest, beispielsweise in der `Index()`-Funktion in der Quelldatei `Controllers/HomeController.cs`. Durch die Aktualisierung der Browserseite wird der Breakpoint erreicht.
 

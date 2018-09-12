@@ -11,16 +11,16 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: e7b07ba892f8f904b1b2127fa8e76649eb004388
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 776f98269e3e0c31766246ca96636528f60c3e09
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142416"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160625"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Zum Einrichten Ihrer Sicherheitsinformationen müssen Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden und den Registrierungsprozess abschließen. Wenn Sie Ihre Sicherheitsinformationen noch nie eingerichtet haben, werden Sie nun dazu aufgefordert.
 

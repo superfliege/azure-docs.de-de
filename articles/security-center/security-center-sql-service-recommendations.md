@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 0c3a11e9a86767641533b16de1b96b4c59bfdf51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b3b8082412b12a0fffbaea04409a8bbb3f4ac15
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040235"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295376"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL, Daten und Anwendungen.
@@ -27,13 +27,13 @@ Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. W
 In diesem Artikel werden Empfehlungen für den Azure SQL-Dienst und die Daten behandelt. Bei den Empfehlungen steht das Aktivieren der Überwachung für Azure SQL-Server und -Datenbanken sowie das Aktivieren der Verschlüsselung für SQL-Datenbanken und Ihr Azure Storage-Konto im Mittelpunkt.  Der folgenden Tabelle können Sie entnehmen, welche Empfehlungen für den SQL-Dienst und die Daten verfügbar sind und welche Aktionen jeweils ausgeführt werden, wenn Sie sie anwenden.
 
 ## <a name="available-sql-service-and-data-recommendations"></a>Verfügbare Empfehlungen für den SQL-Dienst und die Daten
-| Empfehlung | Beschreibung |
+| Empfehlung | BESCHREIBUNG |
 | --- | --- |
 | [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Servern](security-center-enable-auditing-on-sql-servers.md) |Empfiehlt Ihnen, die Überwachung und die Bedrohungserkennung für Azure SQL-Server zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Computern). |
 | [Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken](security-center-enable-auditing-on-sql-databases.md) |Empfiehlt Ihnen, die Überwachung und die Bedrohungserkennung für Azure SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst, keine Ausführung von SQL auf Ihren virtuellen Computern). |
 | [Transparent Data Encryption für SQL-Datenbanken aktivieren](security-center-enable-transparent-data-encryption.md) |Empfiehlt Ihnen, die Verschlüsselung für SQL-Datenbanken zu aktivieren (nur Azure SQL-Dienst). |
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:
 
 * [Schützen Ihrer virtuellen Computer in Azure Security Center](security-center-virtual-machine-recommendations.md)

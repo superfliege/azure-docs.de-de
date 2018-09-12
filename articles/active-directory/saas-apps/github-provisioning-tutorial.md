@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: ff22ad4f8abae019591150dd9a8ea2cd4ca4e5d9
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: f069134c0665769316b794122cc077b05941f635
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42144903"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346167"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 
@@ -98,7 +98,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Gi
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die GitHub im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
@@ -108,4 +108,4 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)

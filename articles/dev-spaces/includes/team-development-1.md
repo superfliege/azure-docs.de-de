@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 0d3bdb6cc56b90d1975af73be1bb8cc1f73e1213
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 9e0dfccd98592243623613648cdbd076e429dafb
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40129094"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44164270"
 ---
 Bisher haben Sie den Code Ihrer Anwendung so ausgeführt, als wären Sie der einzige Entwickler, der an der App arbeitet. In diesem Abschnitt erfahren Sie, wie Azure Dev Spaces die Teamentwicklung optimiert:
 * Ein Team von Entwicklern kann in der gleichen Umgebung arbeiten und je nach Bedarf einen gemeinsamen oder einen getrennten Entwicklungsbereich nutzen.
@@ -48,11 +48,12 @@ Während der Entwicklung von Code für Ihren Dienst und vor dem Einchecken ist C
 Sehen wir uns jetzt einmal an, wo die Dienste aktuell ausgeführt werden. Führen Sie den Befehl `azds list-up` aus, um eine Ausgabe wie die folgende zu erhalten:
 
 ```
-Name                          DevSpace  Type     Updated      Status
-----------------------------  --------  -------  -----------  ----------------
-mywebapi                      default   Service  10m 1s ago   Running
-mywebapi-54f9cf5b59-bjnkm     default   Pod      10m 4s ago   Running
-webfrontend-5b697958d6-b6v96  default   Pod      26m 38s ago  Init:1/3:mindaro-build
+Name                          DevSpace  Type     Updated  Status
+----------------------------  --------  -------  -------  -------
+mywebapi                      default   Service  3m ago   Running
+mywebapi-56c8f45d9-zs4mw      default   Pod      3m ago   Running
+webfrontend                   default   Service  1m ago   Running
+webfrontend-6b6ddbb98f-fgvnc  default   Pod      1m ago   Running
 ```
 
 Die Spalte „DevSpace“ zeigt, dass beide Dienste in einem Bereich namens `default` ausgeführt werden. Jeder Benutzer, der die öffentliche URL öffnet und zur Web-App navigiert, ruft den von Ihnen geschriebenen Codepfad auf, der beide Dienste durchläuft. Nehmen Sie an, Sie möchten mit der Entwicklung von `mywebapi` fortfahren. Wie nehmen Sie Änderungen am Code vor und testen diese, ohne andere Entwickler zu unterbrechen, die die Entwicklungsumgebung ebenfalls verwenden? Die Lösung: Sie richten Ihren eigenen Bereich ein.

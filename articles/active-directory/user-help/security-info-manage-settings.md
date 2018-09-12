@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: abd2984574f80f03f276861782ff9ee51348d07e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391376"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162715"
 ---
 # <a name="manage-your-security-info-preview"></a>Verwalten der Sicherheitsinformation (Vorschauversion)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Sie können Ihre Sicherheitsinformation für die Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto und für die Zurücksetzung Ihres Kennworts verwenden.
 

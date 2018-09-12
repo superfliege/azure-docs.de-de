@@ -9,17 +9,17 @@ editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: edfabf1f93c78cf29ff3561f437053df11e15bd5
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857479"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159332"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.

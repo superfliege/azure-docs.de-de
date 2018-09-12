@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 9763c7a9e79f4c9e9d6296efb79e944205e8a99c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 7d6056987ee05f68eecf026e954327a2f62cf886
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264146"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348904"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -111,7 +111,7 @@ Optional können Sie die Bereitstellung von Gruppenobjekten von Azure AD in Slac
 
 So werden alle Gruppenobjekte, die Slack im Abschnitt **Benutzer und Gruppen** zugewiesen sind, vollständig von Azure AD nach Slack synchronisiert. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Slack-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen

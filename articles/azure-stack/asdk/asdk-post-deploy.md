@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24f237a04d19d03ab7357db6fb9c7ab60036f3d2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840268"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390992"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Konfigurationsaufgaben nach der Installation des ASDK
 
@@ -39,6 +39,8 @@ Set-PSRepository `
 ```
 
 Sie können API-Versionsprofile verwenden, um mit Azure Stack kompatible AzureRM-Module anzugeben.  API-Versionsprofile bieten eine Möglichkeit, Versionsunterschiede zwischen Azure und Azure Stack zu verwalten. Ein API-Versionsprofil ist eine Gruppe von AzureRM-PowerShell-Modulen mit spezifischen API-Versionen. Das über den PowerShell-Katalog verfügbare Modul **AzureRM.Bootstrapper** stellt PowerShell-Cmdlets bereit, die für die Arbeit mit API-Versionsprofilen erforderlich sind.
+
+ 
 
 Sie können das aktuelle Azure Stack PowerShell-Modul mit oder ohne Internetverbindung mit dem ASDK-Hostcomputer installieren:
 

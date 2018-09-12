@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0238dce3f8cbf838e7fce3afefb866e3aaa791bc
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145615"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348768"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Service Fabric-Anwendungsupgrade mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Erstellen und veröffentlichen Sie die Anwendung, indem Sie mit der rechten Maus
 > 
 > 
 
-Nach dem Erstellen des Projekts in Visual Studio können Sie das Anwendungspaket über den PowerShell-Befehl [Copy-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) in den ImageStore kopieren. Wenn Sie das App-Paket lokal überprüfen möchten, verwenden Sie das Cmdlet [Test-ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage). Nach diesem Schritt folgt die Registrierung der Anwendung bei der Service Fabric-Laufzeit mit dem Cmdlet [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype). Im folgenden Schritt wird mithilfe des Cmdlets [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) eine Instanz der Anwendung gestartet.  Diese drei Schritte entsprechen der Verwendung des Menüelements **Bereitstellen** in Visual Studio.  Nachdem die Bereitstellung abgeschlossen ist, bereinigen Sie das kopierte Anwendungspaket im Imagespeicher, um den Ressourcenverbrauch zu reduzieren.  Wenn ein Anwendungstyp nicht mehr benötigt wird, sollte seine Registrierung aus demselben Grund aufgehoben werden. Weitere Informationen finden Sie unter [Bereitstellen und Entfernen von Anwendungen mit PowerShell](service-fabric-application-upgrade-tutorial-powershell.md).
+Nach dem Erstellen des Projekts in Visual Studio können Sie das Anwendungspaket über den PowerShell-Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) in den ImageStore kopieren. Wenn Sie das App-Paket lokal überprüfen möchten, verwenden Sie das Cmdlet [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage). Nach diesem Schritt folgt die Registrierung der Anwendung bei der Service Fabric-Laufzeit mit dem Cmdlet [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype). Im folgenden Schritt wird mithilfe des Cmdlets [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) eine Instanz der Anwendung gestartet.  Diese drei Schritte entsprechen der Verwendung des Menüelements **Bereitstellen** in Visual Studio.  Nachdem die Bereitstellung abgeschlossen ist, bereinigen Sie das kopierte Anwendungspaket im Imagespeicher, um den Ressourcenverbrauch zu reduzieren.  Wenn ein Anwendungstyp nicht mehr benötigt wird, sollte seine Registrierung aus demselben Grund aufgehoben werden. Weitere Informationen finden Sie unter [Bereitstellen und Entfernen von Anwendungen mit PowerShell](service-fabric-application-upgrade-tutorial-powershell.md).
 
 Nun können Sie mit [Service Fabric Explorer den Cluster und die Anwendung anzeigen](service-fabric-visualizing-your-cluster.md). Die Anwendung verfügt über einen Webdienst, zu dem Sie wechseln können, indem Sie auf der Adressleiste von Internet Explorer [http://localhost:8081/visualobjects](http://localhost:8081/visualobjects) eingeben.  Sie sollten einige unverankerte visuelle Objekte sehen, die sich auf dem Bildschirm bewegen.  Darüber hinaus können Sie [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) zum Überprüfen des Anwendungsstatus verwenden.
 

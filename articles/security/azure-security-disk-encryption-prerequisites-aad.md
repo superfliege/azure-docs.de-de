@@ -1,24 +1,18 @@
 ---
 title: Voraussetzungen für Azure Disk Encryption mit Azure AD-App (Vorgängerversion) | Microsoft-Dokumentation
 description: Dieser Artikel enthält die Voraussetzungen für die Verwendung von Microsoft Azure Disk Encryption für IaaS-VMs.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 973cbdc1-12bc-4e0e-90cd-f19b045417a2
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/28/2018
 ms.author: mstewart
-ms.openlocfilehash: 701418c4c2f17d151061ffde704b5a7f05551d9c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 09/10/2018
+ms.openlocfilehash: 510ca032f77da25238ec060d4122a25345c9fb90
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338460"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346647"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Voraussetzungen für Azure Disk Encryption (Vorgängerversion)
 
@@ -44,7 +38,7 @@ Azure Disk Encryption wird auf folgenden Betriebssystemen unterstützt:
 ## <a name="bkmk_LinuxPrereq"></a> Zusätzliche Voraussetzungen für Linux-IaaS-VMs 
 
 - Azure Disk Encryption für Linux setzt 7 GB RAM auf dem virtuellen Computer voraus, um die Verschlüsselung von Betriebssystemdatenträgern für [unterstützte Images](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) zu aktivieren. Sobald die Verschlüsselung des Betriebssystemdatenträgers abgeschlossen ist, kann die VM so konfiguriert werden, dass sie mit weniger Speicherplatz läuft.
-- Vor dem Aktivieren der Verschlüsselung müssen die zu verschlüsselnden Datenträger ordnungsgemäß in „etc/fstab“ aufgelistet werden. Verwenden Sie für diesen Eintrag einen persistenten Blockgerätenamen, da Gerätenamen im Format „/dev/sdX“ beim Neustart, insbesondere nach Anwendung der Verschlüsselung, nicht zuverlässig mit demselben Datenträger verknüpft werden können. Weitere Informationen zu diesem Verhalten finden Sie unter [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](../virtual-machines/linux/troubleshoot-device-names-problems.md).
+- Vor dem Aktivieren der Verschlüsselung müssen die zu verschlüsselnden Datenträger ordnungsgemäß in „/etc/fstab“ aufgelistet werden. Verwenden Sie für diesen Eintrag einen persistenten Blockgerätenamen, da Gerätenamen im Format „/dev/sdX“ beim Neustart, insbesondere nach Anwendung der Verschlüsselung, nicht zuverlässig mit demselben Datenträger verknüpft werden können. Weitere Informationen zu diesem Verhalten finden Sie unter [Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs](../virtual-machines/linux/troubleshoot-device-names-problems.md).
 - Stellen Sie sicher, dass die Einstellungen für „/etc/fstab“ ordnungsgemäß für die Einbindung konfiguriert sind. Um diese Einstellungen zu konfigurieren, führen Sie den Befehl „mount -a“ aus, oder starten Sie die VM neu, und lösen Sie das Einbinden so erneut aus. Wenn der Vorgang abgeschlossen wurde, überprüfen Sie die Ausgabe des Befehls „lsblk“, um zu sehen, ob das gewünschte Laufwerk noch eingebunden ist. 
     - Wenn die Datei „/etc/fstab“ das Laufwerk vor der Aktivierung der Verschlüsselung nicht richtig einbindet, kann Azure Disk Encryption es nicht richtig einbinden.
     - Azure Disk Encryption verschiebt die Einbindungsinformationen aus „/etc/fstab“ in die eigene Konfigurationsdatei als Teil des Verschlüsselungsprozesses. Der Eintrag fehlt in „/etc/fstab“, nachdem die Verschlüsselung des Datenlaufwerks abgeschlossen wurde.
@@ -65,7 +59,7 @@ Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubi
 **Gruppenrichtlinie:**
  - Die Azure Disk Encryption-Lösung verwendet für virtuelle Windows-IaaS-Computer die externe BitLocker-Schlüsselschutzvorrichtung. Für VMs, die der Domäne beigetreten sind, sollten Sie keine Gruppenrichtlinien nutzen, mit denen TPM-Schutzvorrichtungen durchgesetzt werden. Informationen zur Gruppenrichtlinie „BitLocker ohne kompatibles TPM zulassen“ finden Sie unter [BitLocker Group Policy Reference](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#a-href-idbkmk-unlockpol1arequire-additional-authentication-at-startup) (Referenz zur BitLocker-Gruppenrichtlinie).
 
--  Die BitLocker-Richtlinie für VMs mit Domänenbeitritt und benutzerdefinierten Gruppenrichtlinien muss die folgende Einstellung enthalten: [Speichern von BitLocker-Wiederherstellungsinformationen durch Benutzer konfigurieren -> 256-Bit-Wiederherstellungsschlüssel zulassen](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption schlägt fehl, wenn benutzerdefinierte Einstellungen für die Gruppenrichtlinie nicht mit BitLocker kompatibel sind. Auf Computern ohne korrekte Richtlinieneinstellung ist es ggf. erforderlich, die neue Richtlinie anzuwenden, die Aktualisierung der neuen Richtlinie zu erzwingen (gpupdate.exe /force) und dann einen Neustart durchzuführen.  
+-  Die BitLocker-Richtlinie für VMs mit Domänenbeitritt und benutzerdefinierten Gruppenrichtlinien muss die folgende Einstellung enthalten: [Speichern von BitLocker-Wiederherstellungsinformationen durch Benutzer konfigurieren -> 256-Bit-Wiederherstellungsschlüssel zulassen](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption schlägt fehl, wenn benutzerdefinierte Einstellungen für die Gruppenrichtlinie nicht mit BitLocker kompatibel sind. Auf Computern ohne korrekte Richtlinieneinstellung müssen Sie die neue Richtlinie anwenden und die Aktualisierung der neuen Richtlinie erzwingen (gpupdate.exe /force). Danach ist möglicherweise ein Neustart erforderlich.  
 
 
 ## <a name="bkmk_PSH"></a> Azure PowerShell
@@ -88,7 +82,7 @@ Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubi
       Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
       Get-Module AzureAD -ListAvailable | Select-Object -Property Name,Version,Path
       ```
-4. Melden Sie sich mit dem Cmdlet [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Azure an.
+4. Melden Sie sich mithilfe des Cmdlets [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Azure an.
      
      ```powershell
      Connect-AzureRmAccount

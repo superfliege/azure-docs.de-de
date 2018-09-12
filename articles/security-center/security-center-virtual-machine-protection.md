@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7cf5f86d9a2d121ff54c40e27c6bc50847a4dfdf
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1692e111d48a6e4574b2b114c0de84d9bc9f3203
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132728"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299830"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.

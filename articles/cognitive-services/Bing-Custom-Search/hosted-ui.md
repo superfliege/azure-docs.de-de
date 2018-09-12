@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 593ea4d23f8ddcec8efc4be632afa2aab1a5210f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7f2b97479ffcdb7ec8b3a1a635562d1fe68c3269
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374731"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158418"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurieren der gehosteten Benutzeroberfläche
 Nachdem Sie Ihre Instanz für die benutzerdefinierte Suche konfiguriert haben, können Sie die API für die benutzerdefinierte Suche aufrufen, um die Suchergebnisse abzurufen und in Ihrer App anzuzeigen. Wenn es sich bei Ihrer App um eine Web-App handelt, können Sie alternativ auch die gehostete Benutzeroberfläche der benutzerdefinierten Suche verwenden.   
@@ -58,7 +58,7 @@ Gehen Sie wie folgt vor, um eine gehostete Benutzeroberfläche für Ihre Web-App
 > [!NOTE]
 > Änderungen, die Sie an der Konfiguration der benutzerdefinierten gehosteten Benutzeroberfläche vornehmen, werden im Bereich auf der rechten Seite angezeigt. Bei den angezeigten Ergebnissen handelt es sich nicht um echte Ergebnisse für Ihre Instanz.
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="consume-custom-ui"></a>Nutzen der benutzerdefinierten Benutzeroberfläche
 Die gehostete Benutzeroberfläche kann auf zwei Arten genutzt werden: 

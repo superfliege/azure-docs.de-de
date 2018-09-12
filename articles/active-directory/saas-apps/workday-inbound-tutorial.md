@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445659"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347034"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung (Vorschau)
 
@@ -27,7 +27,7 @@ In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Importieren von 
 
 ## <a name="overview"></a>Übersicht
 
-Der [Azure Active Directory-Benutzerbereitstellungsdienst](../active-directory-saas-app-provisioning.md) ist zum Bereitstellen von Benutzerkonten mit der [Workday Human Resources-API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) integriert. Azure AD nutzt diese Verbindung zum Ermöglichen der folgenden Workflows für die Benutzerbereitstellung:
+Der [Azure Active Directory-Benutzerbereitstellungsdienst](../manage-apps/user-provisioning.md) ist zum Bereitstellen von Benutzerkonten mit der [Workday Human Resources-API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) integriert. Azure AD nutzt diese Verbindung zum Ermöglichen der folgenden Workflows für die Benutzerbereitstellung:
 
 * **Bereitstellung von Benutzern in Active Directory**: Sie können ausgewählte Gruppen von Benutzern aus Workday in eine oder mehrere Active Directory-Gesamtstrukturen synchronisieren.
 
@@ -39,13 +39,13 @@ Der [Azure Active Directory-Benutzerbereitstellungsdienst](../active-directory-s
 
 Die vom Azure AD-Benutzerbereitstellungsdienst unterstützten Workday-Workflows zur Benutzerbereitstellung ermöglichen die Automatisierung der folgenden Szenarien im Personalwesen und bei der Verwaltung des Lebenszyklus von Identitäten:
 
-* **Einstellung neuer Mitarbeiter**: Wenn Workday ein neuer Mitarbeiter hinzugefügt wird, wird in Active Directory, Azure Active Directory und optional Office 365 sowie [anderen von Azure AD unterstützten SaaS-Anwendungen](../active-directory-saas-app-provisioning.md) automatisch ein Benutzerkonto erstellt. Die E-Mail-Adresse wird dabei in Workday zurückgeschrieben.
+* **Einstellung neuer Mitarbeiter**: Wenn Workday ein neuer Mitarbeiter hinzugefügt wird, wird in Active Directory, Azure Active Directory und optional Office 365 sowie [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch ein Benutzerkonto erstellt. Die E-Mail-Adresse wird dabei in Workday zurückgeschrieben.
 
-* **Aktualisierungen von Mitarbeiterattributen und -profil**: Wenn ein Mitarbeiterdatensatz in Workday aktualisiert wird (wie z.B. der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../active-directory-saas-app-provisioning.md) automatisch aktualisiert.
+* **Aktualisierungen von Mitarbeiterattributen und -profil**: Wenn ein Mitarbeiterdatensatz in Workday aktualisiert wird (wie z.B. der Name, Titel oder Vorgesetzte), wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch aktualisiert.
 
-* **Kündigungen von Mitarbeitern** : Wenn einem Mitarbeiter in Workday gekündigt wird, wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../active-directory-saas-app-provisioning.md) automatisch deaktiviert.
+* **Kündigungen von Mitarbeitern** : Wenn einem Mitarbeiter in Workday gekündigt wird, wird das entsprechende Benutzerkonto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch deaktiviert.
 
-* **Erneute Einstellung von Mitarbeitern**: Wenn ein Mitarbeiter in Workday erneut eingestellt wird, kann sein altes Konto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../active-directory-saas-app-provisioning.md) automatisch reaktiviert oder erneut bereitgestellt werden (je nachdem, was Sie bevorzugen).
+* **Erneute Einstellung von Mitarbeitern**: Wenn ein Mitarbeiter in Workday erneut eingestellt wird, kann sein altes Konto in Active Directory, Azure Active Directory und optional Office 365 und [anderen von Azure AD unterstützten SaaS-Anwendungen](../manage-apps/user-provisioning.md) automatisch reaktiviert oder erneut bereitgestellt werden (je nachdem, was Sie bevorzugen).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Für wen ist diese Benutzerbereitstellungslösung am besten geeignet?
 
@@ -327,7 +327,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
          * **Konstante**: Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
 
-         * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+         * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../manage-apps/functions-for-customizing-application-data.md).
 
       * **Quellattribut**: Das Benutzerattribut aus Workday. Wenn das gesuchte Attribut nicht vorhanden ist, finden Sie weitere Informationen unter [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes).
 
@@ -356,7 +356,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 -   Das Attribut „userPrincipalName“ in Active Directory wird durch Verketten der Workday-Benutzer-ID mit einem Domänensuffix generiert.
 
--   [Hier finden Sie Dokumentation zum Schreiben von Ausdrücken](../active-directory-saas-writing-expressions-for-attribute-mappings.md). Die Dokumentation enthält auch Beispiele zum Entfernen von Sonderzeichen.
+-   [Hier finden Sie Dokumentation zum Schreiben von Ausdrücken](../manage-apps/functions-for-customizing-application-data.md). Die Dokumentation enthält auch Beispiele zum Entfernen von Sonderzeichen.
 
   
 | WORKDAY-ATTRIBUT | ACTIVE DIRECTORY-ATTRIBUT |  ÜBEREINSTIMMENDE ID? | ERSTELLEN/AKTUALISIEREN |
@@ -490,7 +490,7 @@ Nach Abschluss der Teile 1 bis 3 können Sie im Azure-Portal den Bereitstellungs
 
 3. Dadurch wird die erste Synchronisierung gestartet, die abhängig von der Anzahl der Benutzer in Workday eine variable Anzahl von Stunden dauern kann.
 
-4. Im Azure-Portal können Sie sich auf der Registerkarte **Überwachungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. Die Überwachungsprotokolle enthalten alle einzelnen Synchronisierungsereignisse des Bereitstellungsdiensts – beispielsweise, welche Benutzer in Workday gelesen und anschließend Active Directory hinzugefügt oder dort aktualisiert wurden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](../active-directory-saas-provisioning-reporting.md)**
+4. Im Azure-Portal können Sie sich auf der Registerkarte **Überwachungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. Die Überwachungsprotokolle enthalten alle einzelnen Synchronisierungsereignisse des Bereitstellungsdiensts – beispielsweise, welche Benutzer in Workday gelesen und anschließend Active Directory hinzugefügt oder dort aktualisiert wurden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](../manage-apps/check-status-user-account-provisioning.md)**
 
 1.  Prüfen Sie im [Windows-Ereignisprotokoll](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) auf dem Windows Server-Computer, der als Host für den Agent fungiert, ob neue Fehler oder Warnungen vorliegen. Starten Sie zum Anzeigen dieser Ereignisse **Eventvwr.msc** auf dem Server, und klicken Sie auf **Windows-Protokolle > Anwendung**. Alle bereitstellungsbezogenen Meldungen werden unter der Quelle **AADSyncAgent** protokolliert.
 
@@ -581,7 +581,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
       * **Konstante**: Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
 
-      * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+      * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../manage-apps/functions-for-customizing-application-data.md).
 
    * **Quellattribut**: Das Benutzerattribut aus Workday. Wenn das gesuchte Attribut nicht vorhanden ist, finden Sie weitere Informationen unter [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes).
 
@@ -611,7 +611,7 @@ Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellung
 
 3. Dadurch wird die erste Synchronisierung gestartet, die abhängig von der Anzahl der Benutzer in Workday eine variable Anzahl von Stunden dauern kann.
 
-4. Einzelne Synchronisierungsereignisse können auf der Registerkarte **Überwachungsprotokolle** angezeigt werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](../active-directory-saas-provisioning-reporting.md)**
+4. Einzelne Synchronisierungsereignisse können auf der Registerkarte **Überwachungsprotokolle** angezeigt werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
 
@@ -669,7 +669,7 @@ Sobald Sie die Teile 1 und 2 abgeschlossen haben, können Sie den Bereitstellung
 
 3. Dadurch wird die erste Synchronisierung gestartet, die abhängig von der Anzahl der Benutzer in Workday eine variable Anzahl von Stunden dauern kann.
 
-4. Einzelne Synchronisierungsereignisse können auf der Registerkarte **Überwachungsprotokolle** angezeigt werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](../active-directory-saas-provisioning-reporting.md)**
+4. Einzelne Synchronisierungsereignisse können auf der Registerkarte **Überwachungsprotokolle** angezeigt werden. **[Ausführliche Anweisungen zum Lesen der Überwachungsprotokolle finden Sie in der Anleitung zur Erstellung von Bereitstellungsberichten.](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Anschließend wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
 
@@ -808,7 +808,7 @@ Die Workday-Bereitstellungslösung für Active Directory benötigt einen Synchro
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
 * [Lesen Sie, wie Sie das einmalige Anmelden zwischen Workday und Azure Active Directory konfigurieren.](workday-tutorial.md)
 * [Erfahren Sie, wie Sie andere SaaS-Anwendungen in Azure Active Directory integrieren.](tutorial-list.md)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 9ece2e0f56522582e53e827ac6db7f33b1c8cb7e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a35682c1a647039fbb946c0ea79d92e0d3806d0c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432547"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347221"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung
 
@@ -113,7 +113,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Direc
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Salesforce im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Salesforce-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

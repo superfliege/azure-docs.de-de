@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 9c9cde23f8f8dc557b99d2f1508c923aaa2dce91
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142751"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346337"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -27,7 +27,7 @@ Wenn Ihre lokalen Apps die SAML-basierte Authentifizierung verwenden, können Si
 
 Dazu müssen Sie die folgenden zwei Schritte ausführen:
 
-- Integrieren Sie die SAML-App wie unter [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../active-directory-saas-custom-apps.md) beschrieben mithilfe der Vorlage „Nicht-Kataloganwendung“. Notieren Sie unbedingt den Wert, den Sie für **Anmelde-URL** angeben.
+- Integrieren Sie die SAML-App wie unter [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../manage-apps/configure-single-sign-on-non-gallery-applications.md) beschrieben mithilfe der Vorlage „Nicht-Kataloganwendung“. Notieren Sie unbedingt den Wert, den Sie für **Anmelde-URL** angeben.
 -  Verwenden Sie den Azure AD-Anwendungsproxy, um die lokale App mit **Azure Active Directory** als Authentifizierungsquelle zu veröffentlichen. Anweisungen dazu finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../manage-apps/application-proxy-publish-azure-portal.md). 
 
    Verwenden Sie beim Konfigurieren der Einstellung **Interne URL** die Anmelde-URL, die Sie in der Vorlage „Nicht-Kataloganwendung“ angegeben haben. Auf diese Weise können Benutzer außerhalb der Unternehmensgrenzen auf die App zugreifen. Der Anwendungsproxy führt das SAML-basierte einmalige Anmelden für die lokale App aus.

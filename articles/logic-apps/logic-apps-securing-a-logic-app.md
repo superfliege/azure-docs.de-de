@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127478"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377393"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Schützen des Zugriffs in Azure Logic Apps
 
@@ -77,7 +77,7 @@ Diese Einstellung kann in den Logik-App-Einstellungen konfiguriert werden:
 1. Klicken Sie unter **Einstellungen** auf das Menüelement **Workfloweinstellungen**.
 1. Geben Sie die Liste der IP-Adressbereiche an, die vom Trigger akzeptiert werden sollen.
 
-Ein gültiger IP-Adressbereich weist das Format `192.168.1.1/255` auf. Wenn die Logik-App nur als geschachtelte Logik-App ausgelöst werden soll, wählen Sie die Option **Nur andere Logik-Apps** aus. Durch diese Option wird ein leeres Array in die Ressource geschrieben. Dies bedeutet, dass nur Aufrufe vom Dienst selbst (übergeordnete Logik-Apps) erfolgreich ausgelöst werden.
+Ein gültiger IP-Adressbereich weist das Format `192.168.1.1/32` auf. Wenn die Logik-App nur als geschachtelte Logik-App ausgelöst werden soll, wählen Sie die Option **Nur andere Logik-Apps** aus. Durch diese Option wird ein leeres Array in die Ressource geschrieben. Dies bedeutet, dass nur Aufrufe vom Dienst selbst (übergeordnete Logik-Apps) erfolgreich ausgelöst werden.
 
 > [!NOTE]
 > Sie können weiterhin eine Logik-App mit einem Anforderungstrigger über REST-API/Management `/triggers/{triggerName}/run` ausführen, unabhängig von der IP. In diesem Szenario ist eine Authentifizierung über die Azure-REST-API erforderlich, und alle Ereignisse werden dann im Azure-Überwachungsprotokoll angezeigt. Legen Sie die Richtlinien für die Zugriffssteuerung entsprechend fest.

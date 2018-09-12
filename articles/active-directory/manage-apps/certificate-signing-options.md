@@ -17,12 +17,12 @@ ms.date: 09/07/2017
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: e86c7e82203e2ecd571d5ce5e450999704218e33
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: c7f2892586dd78f3e4b102deb8c51b9979ed07e2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579162"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348173"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory
 Azure Active Directory (Azure AD) unterstützt im Anwendungskatalog von Azure Active Directory mittlerweile Tausende von vorab integrierten Anwendungen. Hierin sind auch mehr als 500 Anwendungen enthalten, die einmaliges Anmelden mit dem SAML 2.0-Protokoll unterstützen. Wenn sich ein Benutzer mithilfe von SAML über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (per HTTP POST). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token werden mit dem eindeutigen Zertifikat, das in Azure AD generiert wird, und mit spezifischen Standardalgorithmen signiert.
@@ -61,7 +61,7 @@ Azure AD unterstützt zwei Signaturalgorithmen zum Signieren der SAML-Antwort:
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
-* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](configure-federated-single-sign-on-non-gallery-applications.md)
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](../develop/howto-v1-debug-saml-sso-issues.md)
 
 

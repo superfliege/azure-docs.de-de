@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 92e0b485f51ebeb2b743c8c01372e9056af4b6eb
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9043c6583a15d3be9d0d468e83a4bf79b3121794
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124866"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304117"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Microsoft Monitoring Agent Absturzabbilddateien in Ihren Arbeitsbereich.

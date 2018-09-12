@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527363"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157853"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Tutorial: Verbessern der App mit der pattern.any-Entität
 
@@ -26,7 +26,7 @@ In diesem Tutorial verwenden Sie die pattern.any-Entität, um die Vorhersagen zu
 * Erstellen eines Muster, das pattern.any verwendet
 * Überprüfen der Verbesserungen bei Vorhersagen
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Falls Sie nicht über die Personalabteilungs-App aus dem [Musterrollen](luis-tutorial-pattern-roles.md)-Tutorial verfügen, [importieren](luis-how-to-start-new-app.md#import-new-app) Sie den JSON-Code in eine neue App (auf der [LUIS-Website](luis-reference-regions.md#luis-website)). Die zu importierende App befindet sich im GitHub-Repository [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json).
@@ -108,7 +108,7 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 
 ## <a name="train-the-luis-app"></a>Trainieren der LUIS-App
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testen des neuen Musters für das Extrahieren von Freiformdaten
 1. Wählen Sie auf der oberen Leiste **Test** aus, um den Testbereich zu öffnen. 
@@ -125,7 +125,7 @@ Die Pattern.any-Entität extrahiert Entitäten unterschiedlicher Länge. Sie fun
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

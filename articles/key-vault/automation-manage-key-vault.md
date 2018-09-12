@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/29/2016
 ms.author: magoedte
-ms.openlocfilehash: 6484c8c9ae1ad109820c3b3912c3a7ea8d49c2a2
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: be7829c35f299381a5e82621412feb13cc2e8bb2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140754"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299235"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Verwalten des Azure-Schlüsseltresors mit Azure Automation
 Dieser Leitfaden bietet eine Einführung in den Azure Automation-Dienst und zeigt, wie Azure Automation zur einfacheren Verwaltung Ihrer Schlüssel und geheimen Schlüssel im Azure-Schlüsseltresor verwendet werden kann.

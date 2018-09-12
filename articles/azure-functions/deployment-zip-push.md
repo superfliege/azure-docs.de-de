@@ -5,21 +5,17 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 06124a0a0db47d76552ddf2172a7f656c6d869cf
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818466"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347119"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>ZIP-Bereitstellung für Azure Functions
 
@@ -97,7 +93,7 @@ Sie können Ihre Funktionen auch direkt aus der Bereitstellungspaketdatei heraus
 > [!NOTE]
 > Die Möglichkeit zum Ausführen Ihrer Funktions-App aus dem Bereitstellungspaket heraus befindet sich in der Vorschauphase.
 
-Die ZIP-Bereitstellung ist mit diesem Feature integriert. Sie können es aktivieren, indem Sie die Einstellung `WEBSITE_RUN_FROM_ZIP` der Funktions-App auf einen Wert von `1` festlegen. Weitere Informationen finden Sie unter [Ausführen von Functions über eine Bereitstellungspaketdatei](run-functions-from-deployment-package.md).
+Die ZIP-Bereitstellung ist mit diesem Feature integriert. Sie können es aktivieren, indem Sie die Einstellung `WEBSITE_RUN_FROM_PACKAGE` der Funktions-App auf einen Wert von `1` festlegen. Weitere Informationen finden Sie unter [Ausführen von Functions über eine Bereitstellungspaketdatei](run-functions-from-deployment-package.md).
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 0f4d5105b7266ba24fc5efa9af887b4458c05d5e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186195"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160047"
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT Hub-Vorgangsüberwachung
 
@@ -186,26 +186,6 @@ Die Kategorie „Nachrichtenweiterleitung“ verfolgt Fehler, die während der A
 }
 ```
 
-## <a name="view-events"></a>Ereignisse anzeigen
-
-Sie können das Tool *iothub-explorer* verwenden, um schnell zu überprüfen, ob Ihr IoT Hub Überwachungsereignisse generiert. Anweisungen zum Installieren dieses Tools finden Sie im [iothub-explorer][lnk-iothub-explorer] GitHub-Repository.
-
-1. Stellen Sie sicher, dass die Überwachungskategorie **Verbindungen** im Portal auf **Ausführlich** festgelegt ist.
-
-1. Führen Sie an einer Befehlszeile den folgenden Befehl aus, um aus dem Überwachungsendpunkt zu lesen.
-
-    ```
-    iothub-explorer monitor-ops --login {your iothubowner connection string}
-    ```
-
-1. Führen Sie in einer anderen Eingabeaufforderung den folgenden Befehl zum Simulieren eines Geräts, das Gerät-zu-Cloud-Nachrichten sendet, aus:
-
-    ```
-    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
-    ```
-
-1. Die erste Befehlszeile zeigt die Überwachungsereignisse an, wenn das simulierte Gerät eine Verbindung mit Ihrem IoT Hub herstellt.
-
 ## <a name="connect-to-the-monitoring-endpoint"></a>Herstellen einer Verbindung mit dem Überwachungsendpunkt
 
 Der Überwachungsendpunkt in IoT Hub ist ein mit Event Hub kompatibler Endpunkt. Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von Überwachungsnachrichten von diesem Endpunkt verwenden. Im folgenden Beispiel wird ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs][lnk-eventhubs-tutorial].
@@ -303,5 +283,4 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

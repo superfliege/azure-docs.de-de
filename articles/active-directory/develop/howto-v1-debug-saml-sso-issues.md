@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620935"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347782"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
@@ -96,11 +96,11 @@ So beheben Sie den Fehler
     - Im Token ausgestellte Ansprüche
     - Zum Signieren des Tokens verwendetes Zertifikat. Informationen zum Überprüfen der SAML-Antwort finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
 4. Weitere Informationen zur SAML-Antwort finden Sie unter [SAML-Protokoll für einmaliges Anmelden](single-sign-on-saml-protocol.md).
-5. Da Sie nun die SAML-Antwort überprüft haben, suchen Sie unter [Fehler auf der Seite einer Anwendung nach dem Anmelden](../application-sign-in-problem-application-error.md) nach Anleitung zum Auflösen des Problems. 
+5. Da Sie nun die SAML-Antwort überprüft haben, suchen Sie unter [Fehler auf der Seite einer Anwendung nach dem Anmelden](../manage-apps/application-sign-in-problem-application-error.md) nach Anleitung zum Auflösen des Problems. 
 6. Wenn Sie sich immer noch nicht erfolgreich anmelden können, fragen Sie den Anwendungsanbieter, was in der SAML-Antwort fehlt.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Da nun einmaliges Anmelden für Ihre Anwendung funktioniert, können Sie mit [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../active-directory-saas-app-provisioning.md) oder [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](../conditional-access/app-based-conditional-access.md) fortfahren.
+Da nun einmaliges Anmelden für Ihre Anwendung funktioniert, können Sie mit [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md) oder [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](../conditional-access/app-based-conditional-access.md) fortfahren.
 
 

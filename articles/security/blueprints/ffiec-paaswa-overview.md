@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: meladie
-ms.openlocfilehash: 4a124299b8f70ce5c5b1518d923efb2f8e75097f
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: f31bb6fe713514b7b34f5b16693cf7ea31db757f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906356"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302425"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-ffiec-financial-services"></a>Azure Security and Compliance Blueprint – PaaS-Webanwendungen gemäß FFIEC-Finanzdienstleistungen
 
@@ -37,7 +37,7 @@ Diese Azure Security and Compliance Blueprint-Automatisierung stellt eine Refere
 
 Für erweiterte Analysen und Berichterstattungen können Azure SQL-Datenbanken mit Columnstore-Indizes konfiguriert werden. Azure SQL-Datenbanken können abhängig von der Nutzung durch den Kunden zentral hoch- bzw. herunterskaliert oder vollständig ausgeschaltet werden. Jeglicher SQL-Datenverkehr wird mit SSL über selbstsignierte Zertifikate verschlüsselt. Azure empfiehlt als bewährte Methode die Verwendung einer vertrauenswürdigen Zertifizierungsstelle für erweiterte Sicherheit.
 
-Die Lösung verwendet Azure Storage-Konten, die Kunden für die Verwendung von Speicherdienstverschlüsselung konfigurieren können, um die Vertraulichkeit ruhender Daten zu wahren. Azure speichert drei Kopien der Daten im ausgewählten Rechenzentrum eines Kunden, um die Ausfallsicherheit zu gewährleisten. Die geografisch redundante Speicherung stellt sicher, dass die Daten in ein hunderte von Kilometern entferntes sekundäres Rechenzentrum repliziert und dort wieder als drei Kopien gespeichert werden, um zu verhindern, dass ein unerwünschtes Ereignis im primären Rechenzentrum des Kunden zu einem Datenverlust führt.
+Die Lösung verwendet Azure Storage-Konten, die Kunden für die Verwendung von Speicherdienstverschlüsselung konfigurieren können, um die Vertraulichkeit ruhender Daten zu wahren. Azure speichert drei Kopien der Daten im ausgewählten Rechenzentrum eines Kunden, um Resilienz zu gewährleisten. Die geografisch redundante Speicherung stellt sicher, dass die Daten in ein Hunderte von Kilometern entferntes sekundäres Rechenzentrum repliziert und dort wieder als drei Kopien gespeichert werden, um zu verhindern, dass ein unerwünschtes Ereignis im primären Rechenzentrum des Kunden zu einem Datenverlust führt.
 
 Für mehr Sicherheit werden alle Ressourcen in dieser Lösung als Ressourcengruppe über den Azure Resource Manager verwaltet. Die rollenbasierte Zugriffskontrolle von Azure Active Directory dient zur Kontrolle des Zugriffs auf die bereitgestellten Ressourcen, einschließlich ihrer Schlüssel im Azure Key Vault. Die Systemintegrität wird durch Azure Monitor überwacht. Der Kunde konfiguriert das Überwachen von Diensten zum Speichern von Protokollen und Anzeigen der Systemintegration in nur einem Dashboard, durch das man leicht navigieren kann.
 
@@ -88,7 +88,7 @@ Diese Lösung erstellt einen virtuellen Computer als Bastionhost in der Domäne 
 -   Eine [Richtlinie zum automatischen Herunterfahren](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/), um die Nutzung der Ressourcen virtueller Computer zu verringern, wenn sie nicht benötigt werden
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) ist aktiviert, damit Anmeldeinformationen und andere Geheimnisse in einer geschützten Umgebung, die vom ausgeführten Betriebssystem isoliert ist, ausgeführt werden.
 
-**App Service-Umgebung v2**: Die Azure App Service-Umgebung ist ein App Service-Feature, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Anwendungen in größerem Umfang bereitstellt. Dieses Isolationsfeature ist erforderlich, um die FFIEC-Complianceanforderungen zu erfüllen.
+**App Service-Umgebung v2:** Die Azure App Service-Umgebung ist ein App Service-Feature, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Anwendungen in größerem Umfang bereitstellt. Dieses Isolationsfeature ist erforderlich, um die FFIEC-Complianceanforderungen zu erfüllen.
 
 Aufgrund der Isolierung werden in App Service-Umgebungen nur Anwendungen eines einzelnen Kunden ausgeführt. Die Umgebungen werden zudem immer in einem virtuellen Netzwerk bereitgestellt. Dieses Isolationsfeature ermöglicht der Referenzarchitektur eine vollständige Mandantenisolierung und entfernt sie aus Azure-Umgebungen mit mehreren Mandanten, sodass diese Mandanten nicht mehr in der Lage sind, die bereitgestellten Ressourcen der App Service-Umgebung aufzulisten. Kunden haben eine genauere Kontrolle über den eingehenden und ausgehenden Anwendungs-Netzwerkdatenverkehr, und Anwendungen können über virtuelle Netzwerke sichere Hochgeschwindigkeitsverbindungen mit lokalen Unternehmensressourcen herstellen. Kunden können mit der App Service-Umgebung auf Basis von Lastmetriken, verfügbarem Budget oder einem definierten Zeitplan "automatisch skalieren".
 
@@ -103,7 +103,7 @@ Die Verwendung der App Service-Umgebung für diese Architektur ist für die folg
 - [Web Application Firewall – Daten einschränken](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - Zulassen von [Azure SQL-Datenbank-Datenverkehr](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository.
+**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository.
 
 ### <a name="virtual-network"></a>Virtual Network
 
@@ -175,7 +175,7 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf D
 
 Azure Security Center verwendet eine Vielzahl von Erkennungsfunktionen, um Kunden vor potenziellen Angriffen auf ihre Umgebungen zu warnen. Diese Warnungen enthalten wichtige Informationen zum Auslöser der Warnung, zu den möglicherweise betroffenen Ressourcen und zur Quelle des Angriffs. In Azure Security Center steht eine Reihe vordefinierter [Sicherheitswarnungen](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type) zur Verfügung, die ausgelöst werden, wenn eine Bedrohung oder eine verdächtige Aktivität erkannt wird. Mithilfe [benutzerdefinierter Warnungsregeln](https://docs.microsoft.com/en-us/azure/security-center/security-center-custom-alert) in Azure Security Center können Kunden neue Sicherheitswarnungen auf der Grundlage von Daten definieren, die bereits in ihrer Umgebung gesammelt werden.
 
-Azure Security Center bietet priorisierte Sicherheitswarnungen und Incidents, wodurch es für Kunden einfacher wird, potenzielle Sicherheitsprobleme zu erkennen und zu beheben. Ein [Bericht über Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-report) wird zu jeder erkannten Bedrohung generiert, der den Teams, die für die Bearbeitung von Incidents zuständig sind, beim Untersuchen und Beheben von Bedrohungen als Hilfe dient.
+Azure Security Center bietet priorisierte Sicherheitswarnungen und Incidents, sodass es für Kunden einfacher wird, potenzielle Sicherheitsprobleme zu erkennen und zu beheben. Ein [Bericht über Bedrohungen](https://docs.microsoft.com/azure/security-center/security-center-threat-report) wird zu jeder erkannten Bedrohung generiert, der den Teams, die für die Bearbeitung von Incidents zuständig sind, beim Untersuchen und Beheben von Bedrohungen als Hilfe dient.
 
 **Azure Application Gateway**: Die Architektur verringert die Gefahr von Sicherheitsrisiken durch ein Azure Application Gateway mit konfigurierter Web Application Firewall und aktiviertem OWASP-Regelsatz. Weitere Funktionen:
 
@@ -202,7 +202,7 @@ Die folgenden Log Analytics-[Verwaltungslösungen](https://docs.microsoft.com/az
 - [Agent-Integritätsdiagnose:](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-solution-agenthealth) Die Agent-Integritätsdiagnoselösung meldet, wie viele Agents bereitgestellt werden und wie ihre geografische Verteilung ist. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
 -   [Aktivitätsprotokollanalyse:](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Die Aktivitätsprotokollanalyse-Lösung hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
 
-**Azure Automation:** [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) dient der Speicherung, Ausführung und Verwaltung von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Azure SQL-Datenbank erfasst. Die [Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking) von Azure Automation ermöglicht Kunden das Identifizieren von Änderungen in der Umgebung auf einfache Weise.
+**Azure Automation:** [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) dient der Speicherung, Ausführung und Verwaltung von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Azure SQL-Datenbank erfasst. Die [Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking) von Automation ermöglicht Kunden das Identifizieren von Änderungen in der Umgebung auf einfache Weise.
 
 **Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) unterstützt Benutzer beim Nachverfolgen der Leistung, Aufrechterhalten der Sicherheit und Identifizieren von Trends, indem Organisationen das Überwachen, Erstellen von Warnungen und Archivieren von Daten ermöglicht wird, ///z.B. die Nachverfolgung von API-Aufrufen in ihren Azure-Ressourcen.
 

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/27/2018
+ms.date: 09/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e5ced038d5f1ab57939221a0392ab436560c348d
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107104"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160509"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen
 
@@ -26,11 +26,12 @@ Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, um mehrere 
 
 Einige der Ressourcen können erst bereitgestellt werden, wenn eine andere Ressource vorhanden ist. Sie können den virtuellen Computer beispielsweise erst erstellen, wenn sein Speicherkonto und seine Netzwerkschnittstelle vorhanden sind. Diese Beziehung definieren Sie, indem Sie eine Ressource von den anderen Ressourcen abhängig machen. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der Reihenfolge ihrer Abhängigkeiten bereit. Wenn Ressourcen nicht voneinander abhängig sind, stellt Resource Manager sie parallel bereit. Weitere Informationen finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in Azure Resource Manager-Vorlagen](./resource-group-define-dependencies.md).
 
+Dieses Tutorial enthält die folgenden Aufgaben:
+
 > [!div class="checklist"]
 > * Öffnen einer Schnellstartvorlage
 > * Untersuchen der Vorlage
 > * Bereitstellen der Vorlage
-> * Bereinigen von Ressourcen
 
 Anhand der Anweisungen in diesem Tutorial werden ein virtueller Computer, ein virtuelles Netzwerk und einige andere abhängige Ressourcen erstellt. 
 

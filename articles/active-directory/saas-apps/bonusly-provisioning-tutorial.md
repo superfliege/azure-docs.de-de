@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 5a28e1249ab8b1d1e3db3433fcce27dcbcc35176
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 9d9ad137ed8b42c388fdb2dac63846e27f884d56
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992366"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348989"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Bonusly für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Bonusly und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Bonusly zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -137,7 +137,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellung mit Bonusly](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
 
-13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../active-directory-saas-scoping-filters.md).
+13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 14. Um den Azure AD-Bereitstellungsdienst für Bonusly zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -154,7 +154,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Bonusly ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -164,7 +164,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

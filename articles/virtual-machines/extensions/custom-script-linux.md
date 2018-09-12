@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 439b38af14da85a9ad263645be8a0961c1266d73
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e3f4268a3bde9cd7eddb96fbc2e6ec3bca77501b
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414724"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391282"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -92,7 +92,7 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
     "autoUpgradeMinorVersion": true,
     "settings": {
       "skipDos2Unix":false,
-      "timestamp":"123456789",          
+      "timestamp":123456789,          
     },
     "protectedSettings": {
        "commandToExecute": "<command-to-execute>",

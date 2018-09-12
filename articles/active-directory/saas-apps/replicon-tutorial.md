@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 10f4749524c4d4b35b83e5637d35f4ef9a8f9ab6
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 7edfe5a115caf4ee6e4677e5fd7f324b8f3873ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041329"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159043"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Tutorial: Azure Active Directory-Integration mit Replicon
 
@@ -177,7 +177,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-a-replicon-test-user"></a>Erstellen eines Replicon-Testbenutzers
 
-In diesem Abschnitt wird in Replicon eine Benutzerin namens Britta Simon erstellt. Replicon unterstützt die automatische Benutzerbereitstellung, die standardmäßig aktiviert ist. Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](replicon-provisioning-tutorial.md).
+In diesem Abschnitt wird in Replicon eine Benutzerin namens Britta Simon erstellt.
 
 **Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
 
@@ -249,7 +249,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren der Benutzerbereitstellung](replicon-provisioning-tutorial.md)
 
 <!--Image references-->
 

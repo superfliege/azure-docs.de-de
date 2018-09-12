@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 9ab2b22840d162fc0194151c5eec02675aad92dc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 26642fefbb86b2709e110b13d782286fd18d5e60
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427651"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348054"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Asana für die automatische Benutzerbereitstellung
 
@@ -89,7 +89,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Asana-API
 
 1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Asana synchronisieren**.
 
-1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Asana synchronisiert werden sollen. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Asana für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](../active-directory-saas-customizing-attribute-mappings.md).
+1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Asana synchronisiert werden sollen. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Asana für Updatevorgänge verwendet werden. Wählen Sie **Speichern** aus, um Ihre Änderungen zu committen. Weitere Informationen finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](../manage-apps/customize-application-attributes.md).
 
 1. Um den Azure AD-Bereitstellungsdienst für Asana zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -97,7 +97,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Asana-API
 
 Dadurch wird die Erstsynchronisierung aller Benutzer gestartet, die Asana im Abschnitt **Benutzer** zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Überwachen Sie anhand des Abschnitts **Synchronisierungsdetails** den Fortschritt, und navigieren Sie über Links zu Protokollen zur Bereitstellungsaktivität. In den Überwachungsprotokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Asana-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

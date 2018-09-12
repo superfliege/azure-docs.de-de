@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: 6ba2fd9ee81b8551cc2a267cdc9767f47fe27456
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2dc965547511d27ed43a88c1f45b50593b30a937
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229052"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347935"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zendesk für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Zendesk und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Zendesk zu konfigurieren. 
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -143,7 +143,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Zendesk-Bereitstellung](./media/zendesk-provisioning-tutorial/ZenDesk13.png)
 
-14. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](./../active-directory-saas-scoping-filters.md).
+14. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 15. Um den Azure AD-Bereitstellungsdienst für Zendesk zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
@@ -160,7 +160,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Zendesk ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 * Zendesk unterstützt die Verwendung von Gruppen für Benutzer mit ausschließlichen Agent-Rollen. Weitere Informationen finden Sie in der [Zendesk-Dokumentation](https://support.zendesk.com/hc/en-us/articles/203661966-Creating-managing-and-using-groups).
@@ -172,7 +172,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/zendesk-tutorial/tutorial_general_01.png

@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 0f681070df4b4b3384171c05edb3851abec2ab5c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8ff78f46283d3ee4baa7310aa56bcdabde85f2cc
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234165"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159621"
 ---
 # <a name="quickstart-use-the-validation-as-a-service-portal-to-schedule-your-first-test"></a>Schnellstart: Planen des ersten Tests mithilfe des Validation-as-a-Service-Portals
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Hier erfahren Sie, wie Sie mit dem Validation-as-a-Service-Portal (VaaS) Ihren ersten Test planen, um die Hardware zu überprüfen. Der lokale Agent muss vor dem Ausführen von Validierungstests in der zu überprüfenden Azure Stack-Lösung bereitgestellt werden.
 
@@ -98,4 +98,4 @@ Fügen Sie die folgenden allgemeinen Testparameter hinzu:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Überprüfen einer neuen Azure Stack-Lösung](azure-stack-vaas-validate-solution-new.md)  
-- Weitere Informationen finden Sie unter [Azure Stack Validation-as-a-Service](https://docs.microsoft.com/azure/azure-stack/partner).
+- Erfahren Sie mehr zu [Validation-as-a-Service in Azure Stack](https://docs.microsoft.com/azure/azure-stack/partner).

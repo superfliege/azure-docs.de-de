@@ -3,7 +3,7 @@ title: Azure Stack 1710 Update (Build 20171020.1) | Microsoft-Dokumentation
 description: Es wird beschrieben, was in Update 1710 für integrierte Azure Stack-Systeme enthalten ist, welche bekannten Probleme es gibt und wo das Update heruntergeladen werden kann.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: mabrigg
-ms.openlocfilehash: 8c7c39ecdc332c994e5c00f8415462f208e7d20b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: brenduns
+ms.reviewer: justini
+ms.openlocfilehash: cf870551a3dbd9b5ea0ef6f886dc6451e43b2c25
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311922"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377189"
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack Update 1710 (Build 20171020.1)
 
@@ -89,7 +90,7 @@ Dieser Abschnitt enthält bekannte Probleme, die für Build 20171020.1 nach der 
 - Das Blatt **Service Health** wird nicht geladen. Beim Öffnen des Blatts „Service Health“ im Verwaltungs- oder Benutzerportal zeigt Azure Stack eine Fehlermeldung an, und Informationen werden nicht geladen. Dieses Verhalten wird erwartet. Sie können Service Health zwar auswählen und öffnen, dieses Feature ist jedoch noch nicht verfügbar, sondern wird in einer zukünftigen Version von Azure Stack implementiert.
  
 
-### <a name="backup"></a>Sicherung
+### <a name="backup"></a>Backup
 
 - Belassen Sie die Infrastruktursicherung auf dem Blatt **Infrastructure backup** (Infrastruktursicherung) im deaktivierten Zustand.
 

@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 20cc91a1754c3d68b447430abf21a3aad5925e05
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: aa7962e3659618b8c5a4f161d667c5e90477acc9
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365347"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347646"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
@@ -67,7 +67,7 @@ Diese Tabelle zeigt häufiger auftretende Fehler bei der Kerberos-Einrichtung un
 | 13016 – Azure AD kann kein Kerberos-Ticket für den Benutzer abrufen, da kein UPN im Edgetoken oder im Zugriffscookie vorliegt. | Es gibt ein Problem mit der STS-Konfiguration. Korrigieren Sie die UPN-Anspruchskonfiguration im STS. |
 | 13019 – Azure AD kann aufgrund des folgenden allgemeinen API-Fehlers kein Kerberos-Ticket für den Benutzer abrufen. | Dieses Ereignis deutet möglicherweise auf eine falsche Konfiguration zwischen Azure AD und dem Domänencontrollerserver oder ein Problem bei der Konfiguration von Datum und Uhrzeit auf beiden Computern hin. Der Domänencontroller hat das von Azure AD erstellte Kerberos-Ticket abgelehnt. Stellen Sie sicher, dass die Konfiguration von Azure AD und des Back-End-Anwendungsservers korrekt ist, insbesondere die SPN-Konfiguration. Sorgen Sie dafür, dass Azure AD in dieselbe Domäne wie der Domänencontroller eingebunden ist, um sicherzustellen, dass der Domänencontroller eine Vertrauensstellung mit Azure AD herstellt. Stellen Sie sicher, dass die Konfiguration von Datum und Uhrzeit in Azure AD und auf dem Domänencontroller synchronisiert ist. |
 | 13020 – Azure AD kann kein Kerberos-Ticket für den Benutzer abrufen, da der Back-End-Server-SPN nicht definiert ist. | Dieses Ereignis deutet möglicherweise auf eine falsche Konfiguration zwischen Azure AD und dem Domänencontrollerserver oder ein Problem bei der Konfiguration von Datum und Uhrzeit auf beiden Computern hin. Der Domänencontroller hat das von Azure AD erstellte Kerberos-Ticket abgelehnt. Stellen Sie sicher, dass die Konfiguration von Azure AD und des Back-End-Anwendungsservers korrekt ist, insbesondere die SPN-Konfiguration. Sorgen Sie dafür, dass Azure AD in dieselbe Domäne wie der Domänencontroller eingebunden ist, um sicherzustellen, dass der Domänencontroller eine Vertrauensstellung mit Azure AD herstellt. Stellen Sie sicher, dass die Konfiguration von Datum und Uhrzeit in Azure AD und auf dem Domänencontroller synchronisiert ist. |
-| 13022 - Azure AD kann den Benutzer nicht authentifizieren, da der Back-End-Server auf Kerberos-Authentifizierungsversuche mit einem HTTP 401-Fehler reagiert. | Dieses Ereignis deutet möglicherweise auf eine falsche Konfiguration zwischen Azure AD und dem Back-End-Anwendungsserver oder ein Problem bei der Konfiguration von Datum und Uhrzeit auf beiden Computern hin. Der Back-End-Server hat das von Azure AD erstellte Kerberos-Ticket abgelehnt. Stellen Sie sicher, dass Azure AD und der Back-End-Anwendungsserver korrekt konfiguriert sind. Stellen Sie sicher, dass die Konfiguration von Datum und Uhrzeit in Azure AD und auf dem Back-End-Anwendungsserver synchronisiert ist. Weitere Informationen finden Sie unter [Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für Anwendungsproxy](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md).  |
+| 13022 - Azure AD kann den Benutzer nicht authentifizieren, da der Back-End-Server auf Kerberos-Authentifizierungsversuche mit einem HTTP 401-Fehler reagiert. | Dieses Ereignis deutet möglicherweise auf eine falsche Konfiguration zwischen Azure AD und dem Back-End-Anwendungsserver oder ein Problem bei der Konfiguration von Datum und Uhrzeit auf beiden Computern hin. Der Back-End-Server hat das von Azure AD erstellte Kerberos-Ticket abgelehnt. Stellen Sie sicher, dass Azure AD und der Back-End-Anwendungsserver korrekt konfiguriert sind. Stellen Sie sicher, dass die Konfiguration von Datum und Uhrzeit in Azure AD und auf dem Back-End-Anwendungsserver synchronisiert ist. Weitere Informationen finden Sie unter [Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für Anwendungsproxy](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).  |
 
 ## <a name="end-user-errors"></a>Endbenutzerfehler
 

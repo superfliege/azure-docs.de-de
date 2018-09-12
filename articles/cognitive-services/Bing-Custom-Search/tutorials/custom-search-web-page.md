@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: c1431ec852cab943e00d3933ef4f0500a4fdb151
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1f9b689ac6127bc2f7d1e810356ae9a23b8e0996
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374755"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162392"
 ---
 # <a name="build-a-custom-search-web-page"></a>Erstellen einer benutzerdefinierten Suchwebseite
 Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren. Wenn Sie beispielsweise Besitzer einer Kampfsportwebsite sind, die eine Suchbenutzeroberfläche bietet, können Sie die Domänen, Unterwebsites und Webseiten angeben, die Bing durchsucht. Ihre Benutzer sehen Suchergebnisse, die auf den Inhalt zugeschnitten sind, für den sie sich interessieren, anstatt durch allgemeine Suchergebnisse blättern zu müssen, die möglicherweise irrelevante Inhalte enthalten. 
@@ -34,7 +34,7 @@ Die folgenden Aufgaben werden beschrieben:
 - Um dem Tutorial folgen zu können, benötigen Sie einen Abonnementschlüssel für die API für die benutzerdefinierte Bing-Suche.  Unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) erfahren Sie, wie Sie einen Schlüssel erhalten.
 - Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden.
 
-## <a name="create-a-custom-search-instance"></a>Erstellen einer benutzerdefinierten Suchinstanz
+## <a name="create-a-custom-search-instance"></a>Erstellen einer Instanz für die benutzerdefinierte Suche
 So erstellen Sie eine benutzerdefinierte Bing-Suchinstanz:
 
 1.  Öffnen Sie einen Internetbrowser.
@@ -96,7 +96,7 @@ Die benutzerdefinierte Suche stellt eine gehostete Benutzeroberfläche zum Rende
 
     ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
 
-[!INCLUDE[publish or revert](../includes/publish-revert.md)]
+[!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
 <a name="consuminghostedui"></a>
 ## <a name="consuming-hosted-ui"></a>Nutzen der gehosteten Benutzeroberfläche

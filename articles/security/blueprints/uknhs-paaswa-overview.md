@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 319c89969e98eafd792af078bf3094ca0aa9a7dd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 8c5e36daf8d404bd4db3a53769db45754f2734be
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37343196"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301982"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-uk-nhs"></a>Azure Security and Compliance Blueprint: PaaS-Webanwendungen gemäß NHS (Vereinigtes Königreich)
 
@@ -79,7 +79,7 @@ Durch die Verwendung der App Service-Umgebung für diese Architektur sind die fo
 - [Web Application Firewall – Daten einschränken](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - Zulassen von [Azure SQL-Datenbank-Datenverkehr](https://docs.microsoft.com/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository.
+**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository.
 
 ### <a name="virtual-network"></a>Virtual Network
 
@@ -177,7 +177,7 @@ Die folgenden Log Analytics-[Verwaltungslösungen](https://docs.microsoft.com/az
 - [Agent-Integritätsdiagnose:](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth) Die Agent-Integritätsdiagnoselösung meldet, wie viele Agents bereitgestellt werden und wie ihre geografische Verteilung ist. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
 -   [Aktivitätsprotokollanalyse:](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Die Aktivitätsprotokollanalyse-Lösung hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
 
-**Azure Automation:** [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) dient der Speicherung, Ausführung und Verwaltung von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Azure SQL-Datenbank erfasst. Die [Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking) von Azure Automation ermöglicht Kunden das Identifizieren von Änderungen in der Umgebung auf einfache Weise.
+**Azure Automation:** [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) dient der Speicherung, Ausführung und Verwaltung von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Azure SQL-Datenbank erfasst. Die [Änderungsnachverfolgung](https://docs.microsoft.com/azure/automation/automation-change-tracking) von Automation ermöglicht Kunden das Identifizieren von Änderungen in der Umgebung auf einfache Weise.
 
 **Azure Monitor**: [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) unterstützt Benutzer beim Nachverfolgen der Leistung, Aufrechterhalten der Sicherheit und Identifizieren von Trends, indem Organisationen das Überwachen, Erstellen von Warnungen und Archivieren von Daten ermöglicht wird, ///z.B. die Nachverfolgung von API-Aufrufen in ihren Azure-Ressourcen.
 

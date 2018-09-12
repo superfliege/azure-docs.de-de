@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d140cbdb0548de869c7aab6ba5da281046a215f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434111"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Tutorial: Azure Active Directory-Integration mit xMatters OnDemand
 
@@ -202,7 +202,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>Erstellen eines xMatters OnDemand-Testbenutzers
 
-In diesem Abschnitt wird in xMatters OnDemand eine Benutzerin namens Britta Simon erstellt. xMatters OnDemand unterstützt die automatische Benutzerbereitstellung, die standardmäßig aktiviert ist. Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](xmatters-ondemand-provisioning-tutorial.md).
+In diesem Abschnitt wird in xMatters OnDemand eine Benutzerin namens Britta Simon erstellt.
 
 **Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
 
@@ -269,7 +269,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren der Benutzerbereitstellung](xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 

@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: be3fd304e04a66e6564141b6a20efea88cf62553
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2a85277c72b63f248fa6d2b06cc1daa1ccbf5ce5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146475"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298674"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Verwalten von Zugriffsrechten für Azure Storage-Daten mit RBAC (Vorschau)
 
 Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf abgesicherte Ressourcen über die [rollenbasierte Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Azure Storage bietet eine Reihe integrierter RBAC-Rollen mit üblichen Berechtigungssätzen für den Zugriff auf Container und Warteschlangen. Wenn einer Azure AD-Identität eine RBAC-Rolle zugewiesen wird, wird dieser Identität Zugriff auf die jeweiligen Ressourcen gemäß dem angegebenen Umfang gewährt. Der Zugriff kann auf die Ebene des Abonnements, der Ressourcengruppe, des Speicherkontos oder eines einzelnen Containers oder einer Warteschlange begrenzt werden. Sie können diese Zugriffsrechte für Azure Storage-Ressourcen über das Azure-Portal, Azure-Befehlszeilentools und Azure-Verwaltungs-APIs zuweisen. 
 
-Eine Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine *verwaltete Dienstidentität* sein. Ein Sicherheitsprinzipal kann ein Benutzer, eine Gruppe oder ein Anwendungsdienstprinzipal sein. Eine [verwaltete Dienstidentität](../../active-directory/managed-service-identity/overview.md) ist eine automatisch verwaltete Identität, die zur Authentifizierung von Anwendungen dient, die in u.a. virtuellen Azure-Computern, Funktions-Apps und VM-Skalierungsgruppen ausgeführt werden. Einen Überblick über Identität in Azure AD finden Sie unter [Grundlegendes zu Azure-Identitätslösungen](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
+Eine Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine *verwaltete Dienstidentität* sein. Ein Sicherheitsprinzipal kann ein Benutzer, eine Gruppe oder ein Anwendungsdienstprinzipal sein. Eine [verwaltete Dienstidentität](../../active-directory/managed-identities-azure-resources/overview.md) ist eine automatisch verwaltete Identität, die zur Authentifizierung von Anwendungen dient, die in u.a. virtuellen Azure-Computern, Funktions-Apps und VM-Skalierungsgruppen ausgeführt werden. Einen Überblick über Identität in Azure AD finden Sie unter [Grundlegendes zu Azure-Identitätslösungen](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
 
 ## <a name="rbac-roles-for-azure-storage"></a>RBAC-Rollen für Azure Storage
 
@@ -34,10 +34,7 @@ Weitere Informationen dazu, wie integrierte Rollen für Azure Storage definiert 
 
 Sie können für die Verwendung mit Containern und Warteschlangen auch eigene Rollen definieren. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Rollen für die rollenbasierte Zugriffssteuerung in Azure](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
-> [!IMPORTANT]
-> Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. Produktions-SLAs (Service Level Agreements, Vereinbarungen zum Servicelevel) sind erst dann verfügbar, wenn die Azure AD-Integration für Azure Storage als allgemein verfügbar deklariert wird. Wenn die Azure AD-Integration für Ihr Szenario noch nicht unterstützt wird, verwenden Sie in Ihren Anwendungen weiterhin die Autorisierung mit gemeinsam verwendetem Schlüssel oder SAS-Token. Weitere Informationen zur Vorschau finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)](storage-auth-aad.md).
->
-> In der Vorschauphase können RBAC-Rollenzuweisungen bis zu fünf Minuten dauern.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Zuweisen einer Rolle zu einem Sicherheitsprinzipal
 

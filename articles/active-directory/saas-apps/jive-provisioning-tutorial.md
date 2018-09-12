@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c38623bba4c15add9abae289fae97af33be4f393
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4396a16ec78d604b3d6c3bea5571d21ca48d5921
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443465"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346286"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Jive für die automatische Benutzerbereitstellung
 
@@ -97,7 +97,7 @@ Im Rahmen dieses Verfahrens werden Sie zur Angabe eines Benutzersicherheitstoken
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Jive im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Jive-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

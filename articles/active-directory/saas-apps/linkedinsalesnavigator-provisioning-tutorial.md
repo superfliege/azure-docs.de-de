@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 544fcb2c10d2efc4ee02f9ce70c6ce06214c85cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 1c5b8f2f8f8ea43e37bc65eb8f6ad03c3f198878
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215248"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347442"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Sales Navigator für die automatische Benutzerbereitstellung
 
@@ -121,7 +121,7 @@ Der erste Schritt besteht aus dem Abrufen Ihres LinkedIn-Zugriffstokens. Wenn Si
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die LinkedIn Sales Navigator im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer LinkedIn Sales Navigator-App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen

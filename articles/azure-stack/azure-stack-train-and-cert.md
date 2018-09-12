@@ -6,15 +6,14 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-keywords: ''
-ms.openlocfilehash: 19dba180d19967dcd6a01a6b2851d746ad1f9831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154510"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376866"
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack-Training und -Zertifizierung
 
@@ -29,6 +28,7 @@ Die folgenden Trainings- und Zertifizierungsangebote sollen Ihnen helfen, Kenntn
 - [Erwerben Sie berufliche Kenntnisse, die Sie sofort in die Praxis umsetzen können. Azure-Lernpfade auswählen](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>Zertifizierung
+
 Azure Stack-Zertifizierungen werden derzeit entwickelt. Schauen Sie von Zeit zu Zeit nach den neuesten Updates.
 
 ## <a name="next-steps"></a>Nächste Schritte

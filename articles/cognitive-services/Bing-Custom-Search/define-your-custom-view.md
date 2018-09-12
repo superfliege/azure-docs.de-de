@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8ffe3087df398d6310828e41d0c6992199fafbed
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ef8aabc7363db88317a6428301512b0a0d4c055
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374770"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158771"
 ---
 # <a name="configure-your-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche
 Mit einer benutzerdefinierten Suchinstanz können Sie die Benutzeroberfläche für die Suche so anpassen, dass nur Inhalte von Websites einbezogen werden, die Ihre Benutzer interessieren. Anstatt eine webweite Suche auszuführen, durchsucht Bing nur das Segment des Webs, das Sie interessiert.
@@ -69,7 +69,7 @@ Sie können Ihre Suchinstanz im Vorschaubereich auf der rechten Seite testen, um
 ## <a name="adjust-rank"></a>Anpassen der Rangfolge
 Im Portal können Sie die Rangfolge anpassen, um die Ergebnisse zu bearbeiten, die Bing zurückgibt. Geben Sie im Vorschaubereich einen Suchbegriff ein, und führen Sie die Abfrage aus. Im Vorschaubereich wird eine Liste mit dem Suchergebnis für die Abfrage angezeigt. Rechts von jedem Ergebnis befindet sich die Liste der Anpassungen, die Sie vornehmen können. 
 
-- Blockieren. Verschiebt die Domäne, Unterseite oder Webseite in die Liste „Blockiert“. Sie wählen die zu blockierende Ebene aus. Bing schließt Inhalte aus der ausgewählten Website aus den Suchergebnissen aus. 
+- Blockierung. Verschiebt die Domäne, Unterseite oder Webseite in die Liste „Blockiert“. Sie wählen die zu blockierende Ebene aus. Bing schließt Inhalte aus der ausgewählten Website aus den Suchergebnissen aus. 
 - Verstärken. Zeigt Inhalte aus der Domäne oder Unterseite weiter oben in den Suchergebnissen an. Sie wählen aus, ob Inhalt aus der Domäne oder Unterseite, zu der die Webseite gehört, verstärkt werden soll.
 - Tiefer stufen. Stuft Inhalte aus der Domäne oder Unterseite tiefer und zeigt sie weiter unten in den Suchergebnissen an. Sie wählen aus, ob Inhalt aus der Domäne oder Unterseite, zu der die Webseite gehört, tiefer gestuft werden soll. 
 - Oben anheften. Definieren Sie die Webseite, die am Anfang der Ergebnisse angezeigt wird, wenn der Abfragebegriff des Benutzers genau mit dem von Ihnen verwendeten Abfragebegriff übereinstimmt. Die Liste „Aktiv“ muss die Webseite nicht enthalten, damit Sie sie anheften können. 
@@ -111,9 +111,9 @@ Führen Sie die folgenden Schritte aus, um Bing zum Hinzufügen von Segmenten zu
 3.  Wählen Sie Bing im Vorschaubereich auf der rechten Seite aus der Dropdownliste aus.
 4.  Geben Sie in das Suchfeld einen Abfrageausdruck ein, der für Ihre Instanz relevant ist.
 5.  Klicken Sie neben dem Ergebnis, das enthalten sein soll, auf **Website hinzufügen**.
-6.  Klicken Sie auf die Schaltfläche **OK**.
+6.  Klicken Sie auf die Schaltfläche **OK** .
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
 ## <a name="view-statistics"></a>Anzeigen von Statistiken
 Wenn Sie die benutzerdefinierte Suche auf der entsprechenden Ebene abonniert haben (siehe [Preisseiten](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), wird Ihren Produktionsinstanzen eine Registerkarte **Statistiken** hinzugefügt. Die Registerkarte „Statistiken“ zeigt Details zur Verwendung Ihrer benutzerdefinierten Suchendpunkte einschließlich Aufrufaufkommen, häufigste Abfragen, geografische Verteilung, Antwortcodes und sichere Suche an. Sie können die Details mit den bereitgestellten Steuerelementen filtern.

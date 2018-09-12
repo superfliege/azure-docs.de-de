@@ -11,26 +11,26 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 56d207dc47b9e055782568f1c4a4cedc4d19a288
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e527a0eaec433b96b5c37c5ec22f392a7166dfe8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39348017"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162443"
 ---
 # <a name="manage-app-passwords-using-security-info-preview"></a>Verwalten von App-Kennwörtern mit Sicherheitsinformationen (Vorschau)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-Bestimmte Nicht-Browser-Apps wie Outlook 2010 unterstützen keine zweistufige Überprüfung. Aus diesem Unterstützungsmangel resultiert, dass die App bei zweistufiger Überprüfung nicht funktioniert. Um dieses Problem zu umgehen, können Sie ein automatisch generiertes Kennwort für die Verwendung mit jeder Nicht-Browser-App separat von Ihrem normalen Kennwort erstellen.
+Bestimmte Nicht-Browser-Apps wie Outlook 2010 unterstützen keine zweistufige Überprüfung. Dies bedeutet, dass die App bei zweistufiger Überprüfung nicht funktioniert. Um dieses Problem zu umgehen, können Sie ein automatisch generiertes Kennwort für die Verwendung mit jeder Nicht-Browser-App separat von Ihrem normalen Kennwort erstellen.
 
 Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 
 - App-Kennwörter werden automatisch generiert und nur einmal pro Anwendung eingegeben.
 
-- Pro Benutzer können maximal 40 Kennwörter festgelegt werden. Wenn Sie versuchen, eines über diesen Grenzwert hinaus zu erstellen, werden Sie aufgefordert, ein vorhandenes Kennwort zu löschen, bevor Sie ein neues erstellen dürfen.
+- Pro Benutzer können maximal 40 Kennwörter festgelegt werden. Wenn Sie nach Erreichen dieses Maximalwerts versuchen, ein Kennwort zu erstellen, werden Sie aufgefordert, ein vorhandenes Kennwort zu löschen, bevor Sie ein neues erstellen dürfen.
 
-- Verwenden Sie ein App-Kennwort pro Gerät, nicht pro App. Erstellen Sie z.B. ein einziges Kennwort für alle Apps auf Ihrem Laptop und dann ein weiteres einzelnes Kennwort für alle Apps auf Ihrem Desktop.
+- Verwenden Sie ein App-Kennwort pro Gerät, nicht pro App. Erstellen Sie z.B. ein einziges Kennwort für alle Apps auf Ihrem Laptop und dann ein weiteres einziges Kennwort für alle Apps auf Ihrem Desktopcomputer.
 
     >[!Note]
     >Office 2013-Clients (einschließlich Outlook) unterstützen neue Authentifizierungsprotokolle und können für die zweistufige Überprüfung verwendet werden. Diese Unterstützung bedeutet, dass Sie nach Aktivierung der zweistufigen Überprüfung keine App-Kennwörter für Office 2013-Clients mehr benötigen. Weitere Informationen finden Sie im Artikel [Funktionsweise der modernen Authentifizierung in Office 2013- und Office 2016-Client-Apps](https://support.office.com/article/how-modern-authentication-works-for-office-2013-and-office-2016-client-apps-e4c45989-4b1a-462e-a81b-2a13191cf517).
@@ -47,7 +47,7 @@ Wenn Ihr Administrator die Sicherheitsinformationen nicht aktiviert hat, müssen
 
 2. Rufen Sie „myapps.microsoft.com“ auf, und klicken Sie oben rechts auf der Seite auf Ihren Namen und dann auf **Profil**.
 
-3. Klicken Sie im Bereich **Konto verwalten** auf **Sicherheitsinformationen bearbeiten**.
+3. Klicken Sie im Bereich **Konto verwalten** auf **Edit security info** (Sicherheitsinformation bearbeiten).
 
     ![Profilbildschirm mit hervorgehobenem Link „Sicherheitsinformation bearbeiten“](media/security-info/security-info-profile.png)
 
@@ -81,6 +81,6 @@ Wenn Ihr Administrator die Sicherheitsinformationen nicht aktiviert hat, müssen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie Ihre Sicherheitsinformationen aktualisieren müssen, befolgen Sie die Anweisungen im Artikel [Verwalten Ihrer Sicherheitsinformationen (Vorschau)](security-info-manage-settings.md).
+- Wenn Sie Ihre Sicherheitsinformation aktualisieren müssen, befolgen Sie die Anweisungen im Artikel [Verwalten der Sicherheitsinformationen (Vorschauversion)](security-info-manage-settings.md).
 
 - Weitere allgemeine Informationen über Sicherheitsinformationen und darüber, was Sie tun können, finden Sie in der [Übersicht über die Sicherheitsinformation (Vorschau)](user-help-security-info-overview.md). 

@@ -6,36 +6,34 @@ documentationcenter: ''
 author: apwestgarth
 manager: stefsch
 editor: ''
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/10/2018
 ms.author: anwestg
-ms.openlocfilehash: f12eb7d74d9c47567c72cddda8d2813f394fb1de
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0e2b5b9902dbd3e9716801941663667bfa2b9da8
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946592"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379009"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Aktualisieren von Azure App Service in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit vor der Bereitstellung von Azure App Service 1.3 bereit.
 >
 >
 
 Mithilfe der Anweisungen in diesem Artikel können Sie den in einer mit dem Internet verbundenen Azure Stack-Umgebung bereitgestellten [App Service-Ressourcenanbieter](azure-stack-app-service-overview.md) aktualisieren.
 
-> [!IMPORTANT]
+> [!IMPORTANT]  
 > Stellen Sie vor dem Ausführen des Upgrades sicher, dass Sie die [Bereitstellung von Azure App Service im Azure Stack-Ressourcenanbieter](azure-stack-app-service-deploy.md) bereits abgeschlossen haben.
->
->
+
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Ausführen des Installationsprogramms für den App Service-Ressourcenanbieter
 

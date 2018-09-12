@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 4ce76f1156d4d8d85f5e10bb750b012f93ba7afb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1178d85f295c6ac01f367db8adc2c9b855cdc829
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366679"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347830"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -135,12 +135,12 @@ Bei Verwendung der Delegierten Identität für Anmeldung ist der Wert unter Umst
    * Lokaler SAM-Kontoname (je nach Konfiguration des lokalen Domänencontrollers)
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>Problembehandlung bei SSO für verschiedene Identitäten
-Wenn im SSO-Prozess ein Fehler auftritt, wird dieser im Ereignisprotokoll des Connectorcomputers aufgeführt, wie unter [Problembehandlung](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)beschrieben.
+Wenn im SSO-Prozess ein Fehler auftritt, wird dieser im Ereignisprotokoll des Connectorcomputers aufgeführt, wie unter [Problembehandlung](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)beschrieben.
 In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwendung gesendet, während die Anwendung mit verschiedenen anderen HTTP-Antworten reagiert. Die Problembehandlung beginnt in diesen Fällen zweckmäßigerweise mit der Untersuchung der Ereignisnummer 24029 auf dem Connectorcomputer im Sitzungsereignisprotokoll des Anwendungsproxys. Die Benutzeridentität, die für die Delegierung verwendet wurde, wird im Feld „Benutzer“ in den Ereignisdetails angezeigt. Wählen Sie zum Aktivieren des Sitzungsprotokolls im Menü „Ansicht“ der Ereignisanzeige die Option **Analytische und Debugprotokolle einblenden** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Konfigurieren einer Anwendungsproxyanwendung zum Verwenden der eingeschränkten Kerberos-Delegierung](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Konfigurieren einer Anwendungsproxyanwendung zum Verwenden der eingeschränkten Kerberos-Delegierung](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)
 
 

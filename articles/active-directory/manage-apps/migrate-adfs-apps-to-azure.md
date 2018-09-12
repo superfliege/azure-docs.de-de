@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: d22b86ad33db600eb5273e3ab09e71a1b1fd527b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577495"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346762"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrieren von lokalen AD FS-Apps zu Azure 
 
@@ -55,7 +55,7 @@ Für Organisationen, die bereits AD FS, Ping oder einen anderen lokalen Authenti
 - Azure AD unterstützt als Identitätsanbieter für SaaS-Apps zusätzliche Funktionen, z.B.:
   - Tokensignaturzertifikate pro Anwendung
   - [Konfigurierbare Zertifikatablaufdaten](manage-certificates-for-federated-single-sign-on.md)
-  - [Automatisierte Bereitstellung](../active-directory-saas-app-provisioning.md) von Benutzerkonten (in wichtigen Azure Marketplace-Apps) basierend auf Azure AD-Identitäten
+  - [Automatisierte Bereitstellung](user-provisioning.md) von Benutzerkonten (in wichtigen Azure Marketplace-Apps) basierend auf Azure AD-Identitäten
 
 **Bewahren der Vorteile eines lokalen Identitätsanbieters**
 - Sie können in den Genuss der Azure AD-Vorteile kommen und Ihre lokale Lösung für die Authentifizierung beibehalten. Auf diese Weise bleiben Ihnen Vorteile wie lokale Lösungen für die Multi-Factor Authentication, Protokollierung und Überwachung erhalten. 
@@ -232,7 +232,7 @@ Da Sie zuvor unter **Identität** > **Einzelanmeldungseinstellungen** die entspr
 ![Auswählen von Azure AD als Authentifizierungsdienst](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Optional: Konfigurieren der Benutzerbereitstellung in Azure AD
-Wenn Sie möchten, dass Azure AD die Benutzerbereitstellung für eine SaaS-App direkt verarbeitet, helfen Ihnen die Informationen unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../active-directory-saas-app-provisioning.md) weiter.
+Wenn Sie möchten, dass Azure AD die Benutzerbereitstellung für eine SaaS-App direkt verarbeitet, helfen Ihnen die Informationen unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md) weiter.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

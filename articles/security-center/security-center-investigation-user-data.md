@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: operations-management-suite
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: terrylan
-ms.openlocfilehash: 6685db4eeda72928753c74c64b4b26539ccb1eb9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d3b5f0ee4aa656fa66d577aa40f66fc98dff148d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659615"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301649"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Verwalten von Benutzerdaten, die in einer Untersuchung des Azure Security Center gefunden wurden
 Dieser Artikel enthält Informationen zum Verwalten von Benutzerdaten, die mit dem Untersuchungsfeature in Azure Security Center gefunden wurden. Die Untersuchungsdaten werden in [Azure Log Analytics](../log-analytics/log-analytics-overview.md) gespeichert und im Security Center verfügbar gemacht. Bei der Verwaltung der Benutzerdaten haben Sie auch die Möglichkeit, Daten zu löschen oder zu exportieren.

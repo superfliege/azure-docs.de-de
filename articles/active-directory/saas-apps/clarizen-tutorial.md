@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438085"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158670"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Lernprogramm: Azure Active Directory-Integration mit Clarizen
 
@@ -188,7 +188,7 @@ Erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen Britta Simon.
 
 ### <a name="create-a-clarizen-test-user"></a>Erstellen eines Clarizen-Testbenutzers
 
-In diesem Abschnitt wird in Clarizen eine Benutzerin namens Britta Simon erstellt. Clarizen unterstützt die automatische Benutzerbereitstellung, die standardmäßig aktiviert ist. Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](clarizen-provisioning-tutorial.md).
+In diesem Abschnitt wird in Clarizen eine Benutzerin namens Britta Simon erstellt.
 
 **Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
 
@@ -196,11 +196,11 @@ Um für Azure AD-Benutzer das Anmelden bei Clarizen zu aktivieren, müssen Sie B
 
 1. Melden Sie sich bei der Clarizen-Unternehmenswebsite als Administrator an.
 
-1. Klicken Sie auf **People**.
+2. Klicken Sie auf **People**.
 
     ![Klicken Sie auf „People“](./media/clarizen-tutorial/create_aaduser_001.png "Personen")
 
-1. Klicken Sie auf **Invite User**.
+3. Klicken Sie auf **Invite User**.
 
     ![Schaltfläche „Invite User“](./media/clarizen-tutorial/create_aaduser_002.png "Benutzer einladen")
 
@@ -251,7 +251,6 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Clarizen“ klicken, sollten Sie a
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren der Benutzerbereitstellung](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

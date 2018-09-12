@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 2b2b44deacf8278b8e8c2554cc873c5d0b75f6f9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366187"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349142"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
-Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der automatischen Bereitstellung und der Aufhebung der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen – insbesondere für Anwendungen, die aus der Kategorie „Vorgestellt“ des [Azure Active Directory-Anwendungskatalogs](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../active-directory-saas-app-provisioning.md).
+Dieser Artikel beschreibt die Verwendung des [Azure-Portals](https://portal.azure.com) zur Verwaltung der automatischen Bereitstellung und der Aufhebung der Bereitstellung von Benutzerkonten für Anwendungen, die dies unterstützen – insbesondere für Anwendungen, die aus der Kategorie „Vorgestellt“ des [Azure Active Directory-Anwendungskatalogs](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery) hinzugefügt wurden. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
 Alle Anwendungen, die von einem Verzeichnisadministrator mithilfe des [Azure Active Directory-Anwendungskatalogs](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery) konfiguriert werden, können im [Azure-Portal](https://portal.azure.com) angezeigt und verwaltet werden. Sie finden die Anwendungen im Portal im Abschnitt **Alle Dienste** &gt; **Unternehmensanwendungen**. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden.
@@ -46,7 +46,7 @@ Der Bereich **Bereitstellung** beginnt mit dem Menü **Modus**, das anzeigt, wel
 Bei Auswahl der Option **Automatisch** wird ein Bildschirm angezeigt, der in vier Abschnitte unterteilt ist:
 
 ### <a name="admin-credentials"></a>Administratoranmeldeinformationen
-In diesem Abschnitt müssen die Anmeldeinformationen für Azure AD eingegeben werden, um eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herzustellen. Die erforderliche Eingabe variiert je nach Anwendung. Informationen zu den Anmeldeinformationstypen und den Anforderungen für bestimmte Anwendungen finden Sie im [Konfigurationstutorial der jeweiligen Anwendung](../active-directory-saas-app-provisioning.md).
+In diesem Abschnitt müssen die Anmeldeinformationen für Azure AD eingegeben werden, um eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herzustellen. Die erforderliche Eingabe variiert je nach Anwendung. Informationen zu den Anmeldeinformationstypen und den Anforderungen für bestimmte Anwendungen finden Sie im [Konfigurationstutorial der jeweiligen Anwendung](user-provisioning.md).
 
 Durch Auswählen der Schaltfläche **Verbindung testen** können Sie die Anmeldeinformationen testen, indem Azure AD versucht, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
 
@@ -60,7 +60,7 @@ Zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-A
 Unterstützte Anpassungen umfassen:
 
 * Aktivieren und Deaktivieren von Zuordnungen für bestimmte Objekte, z. B. das Azure AD-Benutzerobjekt an das Benutzerobjekt der SaaS-App.
-* Bearbeiten der Attribute, die vom Azure AD-Benutzerobjekt an das Benutzerobjekt der App übermittelt werden Weitere Informationen zur Attributzuordnung finden Sie unter [Grundlegendes zu Attributzuordnungstypen](../active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Bearbeiten der Attribute, die vom Azure AD-Benutzerobjekt an das Benutzerobjekt der App übermittelt werden Weitere Informationen zur Attributzuordnung finden Sie unter [Grundlegendes zu Attributzuordnungstypen](customize-application-attributes.md#understanding-attribute-mapping-types).
 * Filtern Sie die Bereitstellungsaktionen, die Azure AD für die Zielanwendung ausführt. Anstatt eine vollständige Synchronisierung von Objekten durch Azure AD zuzulassen, können Sie die ausgeführten Aktionen beschränken. Beispiel: Wenn Sie nur **Aktualisieren**auswählen, aktualisiert Azure AD nur vorhandene Benutzerkonten in einer Anwendung und erstellt keine neuen. Wird nur **Erstellen**ausgewählt, erstellt Azure nur neue Benutzerkonten, aktualisiert jedoch keine vorhandenen Konten. Dieses Feature ermöglicht Administratoren das Erstellen verschiedener Zuordnungen für die Kontoerstellung und das Aktualisieren von Workflows.
 
 ### <a name="settings"></a>Einstellungen

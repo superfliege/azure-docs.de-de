@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0ed05fd2d55f1c4c80bec9f64925be2eddddc067
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: afc53fc1abce74b247ec2e25bc3e4845bc870860
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043373"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380198"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse
 
@@ -128,7 +128,7 @@ Sie müssen eine Verbindung als Azure-Besitzer, -Mitwirkender oder SQL-Sicherhei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine allgemeine Beschreibung der transparenten Datenverschlüsselung finden Sie unter [Transparente Datenverschlüsselung]((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption).
+- Eine allgemeine Beschreibung der transparenten Datenverschlüsselung finden Sie unter [Transparente Datenverschlüsselung](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Weitere Informationen zur transparenten Datenverschlüsselung mit Bring Your Own Key-Unterstützung für SQL-Datenbank und Data Warehouse finden Sie unter [Transparente Datenverschlüsselung mit Bring Your Own Key-Unterstützung](transparent-data-encryption-byok-azure-sql.md).
 - Weitere Informationen zur Verwendung der transparenten Datenverschlüsselung mit Bring Your Own Key-Unterstützung finden Sie in der Anleitung [Aktivieren der transparenten Datenverschlüsselung mithilfe Ihres eigenen Schlüssels aus Key Vault mit PowerShell](transparent-data-encryption-byok-azure-sql-configure.md).
 - Weitere Informationen zu Key Vault finden Sie in der [Dokumentation zu Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).

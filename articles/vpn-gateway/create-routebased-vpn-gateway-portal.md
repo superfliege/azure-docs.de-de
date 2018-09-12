@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 550f655f6eac5a114636978255578eb3753e0d4b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918131"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391792"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Erstellen eines routenbasierten VPN-Gateways mit dem Azure-Portal
 
@@ -54,12 +54,12 @@ Das Gatewaysubnetz enthält die reservierten IP-Adressen, die von den Diensten d
 2. Klicken Sie auf der Seite „Virtuelles Netzwerk“ auf **Subnetze**, um die Seite **VNet1 – Subnetze** zu erweitern.
 3. Klicken Sie oben auf der Seite auf **+Gatewaysubnetz**, um die Seite **Subnetz hinzufügen** zu öffnen.
 
-  ![Hinzufügen des Gatewaysubnetzes](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Hinzufügen des Gatewaysubnetzes")
+  ![Hinzufügen des Gatewaysubnetzes](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "Hinzufügen des Gatewaysubnetzes")
 4. Als **Name** für Ihr Subnetz wird automatisch der erforderliche Wert „GatewaySubnet“ eingefügt. Passen Sie die automatisch ausgefüllten Werte für **Adressbereich** so an, dass sie folgenden Werten entsprechen:
 
   **Adressbereich (CIDR-Block)**: 10.1.255.0/27
 
-  ![Hinzufügen des Gatewaysubnetzes](./media/create-routebased-vpn-gateway-portal/gateway-subnet.png "Hinzufügen des Gatewaysubnetzes")
+  ![Hinzufügen des Gatewaysubnetzes](./media/create-routebased-vpn-gateway-portal/add-gateway-subnet.png "Hinzufügen des Gatewaysubnetzes")
 5. Klicken Sie unten auf der Seite auf **OK**, um das Gatewaysubnetz zu erstellen.
 
 ## <a name="gwvalues"></a>Konfigurieren der Gatewayeinstellungen

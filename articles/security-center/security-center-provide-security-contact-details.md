@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center | Microsoft-Dokumentation
+title: Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center | Microsoft Docs
 description: In diesem Dokument wird erläutert, wie Sie Sicherheitskontaktinformationen in Azure Security Center bereitstellen.
 services: security-center
 documentationcenter: na
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: c268538cf401b29f68210c6d017c2eac55e88939
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 87ae5e4999b586d431882615ec8a603413f168ed
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146893"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296410"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Bereitstellen von Sicherheitskontaktinformationen in Azure Security Center
 In Azure Security Center wird die Bereitstellung von Sicherheitskontaktinformationen für Ihr Azure-Abonnement empfohlen (sofern noch nicht geschehen). Microsoft kontaktiert Sie anhand dieser Informationen, wenn Microsoft Security Response Center (MSRC) feststellt, dass Personen unrechtmäßig oder unbefugt auf Ihre Kundendaten zugegriffen haben. MSRC führt eine selektive Sicherheitsüberwachung im Azure-Netzwerk und in der Infrastruktur durch und empfängt Threat Intelligence-Daten und Missbrauchsmeldungen von Drittanbietern.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 618180f9cbd1c65863e3e039bac40d1cc493bc37
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8473b2e202dd408cce6658f3ca349d884a28dc3a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918499"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160472"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Einrichten Ihrer Entwicklungsumgebung unter Mac OS X
 > [!div class="op_single_selector"]
@@ -157,14 +157,16 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen einer Se
     ```bash
     npm install -g yo
     ```
-3. Installieren Sie den gewünschten Yeoman-Generator gemäß der Anleitung in der [Dokumentation zu den ersten Schritten](service-fabric-get-started-linux.md). Führen Sie zum Erstellen von Service Fabric-Anwendungen mit Yeoman die folgenden Schritte aus:
+3. Installieren Sie den gewünschten Yeoman-Generator gemäß der Anleitung in der [Dokumentation zu den ersten Schritten](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables). Führen Sie zum Erstellen von Service Fabric-Anwendungen mit Yeoman die folgenden Schritte aus:
 
     ```bash
     npm install -g generator-azuresfjava       # for Service Fabric Java Applications
     npm install -g generator-azuresfguest      # for Service Fabric Guest executables
     npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
     ```
-4. Zur Erstellung einer Service Fabric-Java-Anwendung auf einem Mac müssen JDK 1.8 und Gradle auf dem Hostcomputer installiert sein. Die Software kann wie folgt mithilfe von [HomeBrew](https://brew.sh/) installiert werden: 
+4. Erstellen Sie nach der Installation der Generatoren ausführbare Gastdateien oder Containerdienste, indem Sie `yo azuresfguest` bzw. `yo azuresfcontainer` ausführen.
+
+5. Zur Erstellung einer Service Fabric-Java-Anwendung auf einem Mac müssen JDK 1.8 und Gradle auf dem Hostcomputer installiert sein. Die Software kann wie folgt mithilfe von [HomeBrew](https://brew.sh/) installiert werden: 
 
     ```bash
     brew update

@@ -1,24 +1,18 @@
 ---
 title: Azure Disk Encryption für virtuelle IaaS-Computer | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine Übersicht über Microsoft Azure Disk Encryption für virtuelle IaaS-Computer.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 30324adb-e24c-433a-9214-2d1465cbdf45
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 88500be4bae83049e8a7060719f4f85e7622c645
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/10/2018
+ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886990"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348938"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption für virtuelle IaaS-Computer 
 Bei Microsoft Azure wird sehr darauf geachtet, den Schutz Ihrer Daten und die Datenhoheit sicherzustellen. Außerdem können Sie für Ihre unter Azure gehosteten Daten eine Reihe von modernen Techniken zum Verschlüsseln, Steuern und Verwalten von Verschlüsselungsschlüsseln und Steuern und Überprüfen des Datenzugriffs nutzen. So können Azure-Kunden flexibel eine Lösung auswählen, die Ihre Anforderungen am besten erfüllt. In diesem Artikel lernen Sie die Technologie „Azure Disk Encryption für virtuelle Windows- und Linux-IaaS-Computer“ kennen, die zum Schützen und Absichern Ihrer Daten dient, um Vorgaben in den Bereichen Unternehmenssicherheit und Compliance zu erfüllen. 

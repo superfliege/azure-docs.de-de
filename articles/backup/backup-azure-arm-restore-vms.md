@@ -2,19 +2,19 @@
 title: 'Azure Backup: Wiederherstellen virtueller Computer über das Azure-Portal'
 description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wiederherstellungspunkts über das Azure-Portal
 services: backup
-author: markgalioto
-manager: carmonm
+author: geethalakshmig
+manager: vijayts
 keywords: Sicherung wiederherstellen; Wiederherstellungsschritte; Wiederherstellungspunkt;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
-ms.author: markgal
-ms.openlocfilehash: 872bfc0027fd5b69bb42f391c036f7116789f529
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: geg
+ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431146"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380164"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Wiederherstellen virtueller Computer über das Azure-Portal
 Schützen Sie Ihre Daten, indem Sie in festgelegten Abständen Momentaufnahmen Ihrer Daten erstellen. Diese Momentaufnahmen werden als Wiederherstellungspunkte bezeichnet. Sie werden in Recovery Services-Tresoren gespeichert. Wenn es erforderlich ist, einen virtuellen Computer zu reparieren oder wiederherzustellen, können Sie den virtuellen Computer auf der Grundlage eines gespeicherten Wiederherstellungspunkts wiederherstellen. Beim Herstellen eines Wiederherstellungspunkts haben Sie folgende Möglichkeiten:

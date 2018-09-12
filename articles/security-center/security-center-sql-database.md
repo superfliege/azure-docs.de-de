@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: f109adfd-daed-4257-9692-2042a1399480
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: b507a62db9a80866005cb63d2008fb14612b516f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: d8be831469659993da4f9f392e23b9408eb283e3
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31415944"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302219"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center und Azure SQL-Datenbankdienst
 Mit [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.

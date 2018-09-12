@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 40b8f51c66ebe98cd1c312002b7bd5e96e5032bd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3154a2f8b283f68ec3e10ba621ccba3ee6d77de2
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112704"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324749"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure
 Dieser Artikel enthält eine Liste mit verfügbaren [Verwaltungslösungen](monitoring-solutions.md) von Microsoft sowie Links zur entsprechenden ausführlichen Dokumentation.  Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Anhand der Informationen in diesem Artikel können Sie sich über die verschiedenen verfügbaren Lösungen informieren sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. 
@@ -65,7 +65,7 @@ Erläuterung der Spalten:
 | [Netzwerkleistungsmonitor](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | TCP-Handshakes werden alle fünf Sekunden gesendet, Daten alle drei Minuten |
 | [Office 365-Analyse (Vorschau)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |Bei Benachrichtigung |
 | **Verwaltungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure-Speicher** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
-| [Service Fabric-Analysen (Vorschau)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 Minuten |
+| [Service Fabric-Analysen](../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 Minuten |
 | [Dienstzuordnung](../operations-management-suite/operations-management-suite-service-map.md) | Windows und Linux | &#8226; | &#8226; |  |  |  | 15 Sekunden |
 | [SQL-Bewertung](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 Tage |
 | [SurfaceHub](../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |Bei der Ankunft |

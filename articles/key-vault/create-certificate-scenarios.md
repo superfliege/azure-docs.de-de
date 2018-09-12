@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: 80f350b9b83438ee04540527cce0ea6821d148ca
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 0e24bd56123279a24a72b9b52d8cb51e2a3a5eae
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42142365"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300629"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Überwachen und Verwalten der Zertifikaterstellung
 Gilt für: Azure  
@@ -65,7 +65,7 @@ Die folgenden Beispiele erfordern ein Objekt mit dem Namen „mydigicert“ um b
 
 ```  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 202, ReasonPhrase: 'Accepted'  
@@ -100,7 +100,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 > [!NOTE]
 >  Wenn *request_id* in der Abfrage angegeben ist, verhält sie sich wie ein Filter. Wenn das *request_id*-Element in der Abfrage und im ausstehenden Objekt unterschiedlich ist, wird der HTTP-Statuscode 404 zurückgegeben.  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 200, ReasonPhrase: 'OK'  
@@ -132,7 +132,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
  GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 200, ReasonPhrase: 'OK'  
@@ -164,7 +164,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
  GET  `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 200, ReasonPhrase: 'OK'  
@@ -204,7 +204,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
  GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 404, ReasonPhrase: 'Not Found'  
@@ -252,7 +252,7 @@ StatusCode: 404, ReasonPhrase: 'Not Found'
 
 ```  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 409, ReasonPhrase: 'Conflict'  
@@ -285,7 +285,7 @@ StatusCode: 409, ReasonPhrase: 'Conflict'
 
 ```  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```json
 StatusCode: 403, ReasonPhrase: 'Forbidden'  
@@ -320,7 +320,7 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 
 ```  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 200, ReasonPhrase: 'OK'  
@@ -354,7 +354,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
  DELETE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 200, ReasonPhrase: 'OK'  
@@ -393,7 +393,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 202, ReasonPhrase: 'Accepted'  
@@ -431,7 +431,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |------------------|--------------|----------|-------------|-----------------|  
 |x5c|JA|Array|\<Einführung in Version >|X509-Zertifikatkette als Base-64-Zeichenfolgenarray.|  
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 ```  
 StatusCode: 201, ReasonPhrase: 'Created'  

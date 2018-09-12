@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8411e9d2d4118c4e1f656b5bc6e9dafb311aeb26
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8212788eb775e86918c7111265f3276c7bd99d91
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39392587"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304219"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Vorlage für Azure Security and Compliance: PaaS-Webanwendungen gemäß NIST Special Publication 800-171
 
@@ -83,7 +83,7 @@ Diese Lösung erstellt einen virtuellen Computer als Bastionhost in der Domäne 
 -   Eine [Richtlinie zum automatischen Herunterfahren](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/), um die Nutzung der Ressourcen virtueller Computer zu verringern, wenn sie nicht benötigt werden
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) ist aktiviert, damit Anmeldeinformationen und andere Geheimnisse in einer geschützten Umgebung, die vom ausgeführten Betriebssystem isoliert ist, ausgeführt werden.
 
-**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository.
+**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository.
 
 **App Service-Umgebung v2:** Die [Azure App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/intro) ist ein App Service-Feature, das eine vollständig isolierte und dedizierte Umgebung zur sicheren Ausführung von App Service-Anwendungen in größerem Umfang bereitstellt.
 

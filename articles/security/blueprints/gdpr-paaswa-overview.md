@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: c338fed118e330280824754277a2fc31a1eaa7ba
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 02c8d5b40315f5612564b6ae11bd9cf1861708a9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161873"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297876"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Azure Security and Compliance Blueprint – PaaS-Webanwendungen gemäß DSGVO
 
@@ -61,7 +61,7 @@ Diese Lösung verwendet die folgenden Azure-Dienste. Details zur Bereitstellungs
 - Azure Resource Manager
 
 ## <a name="deployment-architecture"></a>Bereitstellungsarchitektur
-Im folgenden Abschnitt werden die Elemente der Bereitstellung und Implementierung beschrieben.
+Im folgenden Abschnitt werden die Elemente für Entwicklung und Implementierung beschrieben.
 
 **Azure Resource Manager**: Mit [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) können Kunden mit den Ressourcen der Lösung als Gruppe arbeiten. Kunden können alle Ressourcen für die Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Kunden verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z.B. Testing, Staging und Produktion. Resource Manager umfasst Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Kunden ihre Ressourcen nach der Bereitstellung verwalten können.
 
@@ -80,18 +80,18 @@ Die Verwendung von ASUs für diese Architektur ist für die folgenden Steuerelem
 - [WAF – Daten einschränken](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-web-application-firewall)
 - Zulassen von [Azure SQL-Datenbank-Datenverkehr](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-app-service-environment-network-architecture-overview)
 
-**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/en-us/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Visual Studio Team Services oder ein anderes beliebiges Git-Repository.
+**Azure-Web-App**: [Azure-Web-Apps](https://docs.microsoft.com/en-us/azure/app-service/) ermöglichen Kunden das Erstellen und Hosten von Webanwendungen in der Programmiersprache ihrer Wahl, ohne dass eine Infrastruktur verwaltet werden muss. Der Dienst bietet automatische Skalierung und Hochverfügbarkeit, unterstützt Windows und Linux und ermöglicht automatisierte Bereitstellungen über GitHub, Azure DevOps oder ein anderes beliebiges Git-Repository.
 
 ### <a name="virtual-network"></a>Virtual Network
 Die Architektur definiert ein privates VNet mit dem Adressraum 10.200.0.0/16.
 
-**Netzwerksicherheitsgruppen**: [NSGs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) enthalten Zugriffssteuerungslisten (ACLs), die den Datenverkehr in einem VNet zulassen oder verweigern. NSGs können dafür verwendet werden, den Datenverkehr auf der Ebene eines Subnetzes oder einzelner VMs zu schützen. Die folgenden NSGs sind vorhanden:
+**Netzwerksicherheitsgruppen:** [NSGs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) enthalten Zugriffssteuerungslisten, die den Datenverkehr in einem VNet zulassen oder ablehnen. NSGs können dafür verwendet werden, den Datenverkehr auf der Ebene eines Subnetzes oder einzelner VMs zu schützen. Die folgenden NSGs sind vorhanden:
 - 1 NSG für Application Gateway
 - 1 NSG für die App Service-Umgebung
 - 1 NSG für Azure SQL-Datenbank
 
-Jede NSG verfügt über bestimmte offene Ports und Protokolle, damit die Lösung sicher und richtig ausgeführt werden kann. Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
-  - [Diagnoseprotokolle und -ereignisse](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-nsg-manage-log) sind aktiviert und werden in einem Speicherkonto gespeichert.
+Jede der NSGs verfügt über bestimmte offene Ports und Protokolle, damit die Lösung sicher und richtig ausgeführt werden kann. Darüber hinaus werden die folgenden Konfigurationen für jede NSG aktiviert:
+  - [Diagnoseprotokolle und -ereignisse](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-nsg-manage-log) werden aktiviert und in einem Speicherkonto gespeichert.
   - OMS Log Analytics ist mit der [Diagnose der NSG](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json) verbunden.
 
 **Subnetze**: Stellen Sie sicher, dass jedes Subnetz seiner entsprechenden NSG zugeordnet ist.
@@ -110,18 +110,18 @@ Die Architektur schützt ruhende Daten durch die Verwendung von Verschlüsselung
 **Azure Storage**: Um die Anforderungen für verschlüsselte ruhende Daten zu erfüllen, wird für den gesamten [Azure Storage](https://azure.microsoft.com/services/storage/) die [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/storage-service-encryption) verwendet. Dadurch werden personenbezogene Daten geschützt, um die Zusagen und Anforderungen der Organisation im Hinblick auf Sicherheit und Konformität gemäß der DSGVO einzuhalten.
 
 **Azure Disk Encryption**
-[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt die BitLocker-Funktion von Windows, um Volumeverschlüsselung für Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel zu erleichtern.
+[Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) nutzt das BitLocker-Features von Windows, um Volumeverschlüsselung für Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, um die Steuerung und Verwaltung der Datenträgerverschlüsselungsschlüssel zu erleichtern.
 
-**Azure SQL-Datenbank**: In der Azure SQL-Datenbank-Instanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
+**Azure SQL-Datenbank:** In der Azure SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
 -   Die [AD-Authentifizierung und -Autorisierung](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) ermöglicht die zentrale Verwaltung der Identitäten von Datenbankbenutzern und anderen Microsoft-Diensten.
 -   Die [SQL-Datenbank-Überprüfung](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) verfolgt Datenbankereignisse nach und schreibt diese in ein Überwachungsprotokoll in einem Azure Storage-Konto.
--   Die SQL-Datenbank ist so konfiguriert, dass sie [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) für die Echtzeitverschlüsselung und -entschlüsselung der Datenbank, der zugehörigen Sicherungen und der Transaktionsprotokolldateien verwendet, um ruhende Informationen zu schützen. TDE gewährleistet, dass gespeicherte personenbezogene Daten keinen unbefugten Zugriffen ausgesetzt sind.
+-   Azure SQL-Datenbank ist so konfiguriert, dass [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) für die Echtzeitverschlüsselung und -entschlüsselung der Datenbank, der zugehörigen Sicherungen und der Transaktionsprotokolldateien verwendet wird, um ruhende Informationen zu schützen. TDE gewährleistet, dass gespeicherte personenbezogene Daten keinen unbefugten Zugriffen ausgesetzt sind.
 -   [Firewallregeln](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) verhindern sämtlichen Zugriff auf Datenbankserver, bis die richtigen Berechtigungen erteilt werden. Die Firewall gewährt den Datenbankzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
 -   Die [SQL-Bedrohungserkennung](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started) ermöglicht die Erkennung und Reaktion auf potenzielle Bedrohungen, sobald sie auftreten. Dazu werden Sicherheitswarnungen bei verdächtigen Datenbankaktivitäten, potenziellen Sicherheitslücken, Angriffen durch Einschleusung von SQL-Befehlen und anormalen Mustern beim Datenbankzugriff ausgegeben.
 -   [Always Encrypted-Spalten](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault) stellen sicher, dass vertrauliche personenbezogene Daten im Datenbanksystem niemals im Klartextformat angezeigt werden. Nach dem Aktivieren der Datenverschlüsselung können nur Clientanwendungen oder Anwendungsserver, die Zugriff auf die Schlüssel haben, auf Klartextdaten zugreifen.
 - [Erweiterte Eigenschaften](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addextendedproperty-transact-sql) können zum Beenden der Verarbeitung von Datenbesitzern verwendet werden. Benutzern wird es ermöglicht, Datenbankobjekten benutzerdefinierte Eigenschaften hinzuzufügen und Daten als „Eingestellt“ zu markieren und damit Anwendungslogik zu unterstützen, die das Verarbeiten der zugehörigen personenbezogenen Daten verhindert.
 - Die [Sicherheit auf Zeilenebene](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) ermöglicht Benutzern das Festlegen von Richtlinien zum Einschränken des Zugriffs auf Daten, um die Verarbeitung zu beenden.
-- Die [dynamische Datenmaskierung in SQL-Datenbank (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) schränkt die Offenlegung vertraulicher personenbezogener Daten ein, indem diese Daten für nicht berechtigte Benutzer maskiert werden. DDM kann automatisch potenziell vertrauliche Daten ermitteln und eine geeignete Maskierung vorschlagen. Dies hilft bei der Identifikation der personenbezogenen Daten, für die der Schutz durch die DSGVO gilt, und bei der Reduzierung des Zugriffs, sodass sie die Datenbank nicht per nicht autorisiertem Zugriff verlassen. **Hinweis: Kunden müssen die DDM-Einstellungen an ihr Datenbankschema anpassen.**
+- Die [dynamische Datenmaskierung in SQL-Datenbank (DDM)](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) schränkt die Offenlegung vertraulicher personenbezogener Daten ein, indem diese Daten für nicht berechtigte Benutzer maskiert werden. DDM kann automatisch potenziell vertrauliche Daten ermitteln und eine geeignete Maskierung vorschlagen. Dies hilft bei der Identifikation der personenbezogenen Daten, für die der Schutz durch die DSGVO gilt, und bei der Reduzierung des Zugriffs, damit sie die Datenbank nicht per nicht autorisiertem Zugriff verlassen. **Hinweis: Kunden müssen die DDM-Einstellungen an ihr Datenbankschema anpassen.**
 
 ### <a name="identity-management"></a>Identitätsverwaltung
 Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf personenbezogene Daten in der Azure-Umgebung:
@@ -156,20 +156,20 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf p
 
 ### <a name="logging-and-auditing"></a>Protokollierung und Überwachung
 
-OMS ermöglicht eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ist eine OMS-Lösung für die Erfassung und Analyse von Daten, die von Ressourcen in Azure- und lokalen Umgebungen generiert werden.
-- **Aktivitätsprotokolle**: [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) ermöglichen Einblicke in Vorgänge, die für Ressourcen in einem Abonnement durchgeführt werden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
-- **Diagnoseprotokolle**: [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von sämtlichen Ressourcen ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
-- **Protokollarchivierung**: Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Für diese Protokolle wird dann eine Verbindung mit Azure Log Analytics hergestellt, um die Verarbeitung, Speicherung und Dashboardanzeige zu ermöglichen.
+OMS ermöglicht eine umfassende Protokollierung von System- und Benutzeraktivitäten sowie der Systemintegrität. [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ist eine OMS-Lösung für die Erfassung und Analyse von Daten, die von Ressourcen in Azure und lokalen Umgebungen generiert werden.
+- **Aktivitätsprotokolle:** [Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in einem Abonnement ausgeführt wurden. Aktivitätsprotokolle können dabei helfen, den Initiator eines Vorgangs, die Zeit des Auftretens und den Status zu bestimmen.
+- **Diagnoseprotokolle:** [Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) sind alle Protokolle, die von den einzelnen Ressourcen ausgegeben werden. Zu diesen Protokollen gehören Windows-Ereignissystemprotokolle, Azure Storage-Protokolle, Key Vault-Überwachungsprotokolle sowie Application Gateway-Zugriffs- und -Firewallprotokolle.
+- **Protokollarchivierung:** Alle Diagnoseprotokolle werden für die Archivierung in ein zentrales und verschlüsseltes Azure Storage-Konto geschrieben. Die Aufbewahrung kann vom Benutzer konfiguriert werden (bis zu 730 Tage), um den unternehmensspezifischen Aufbewahrungsanforderungen gerecht zu werden. Diese Protokolle werden dann zur Verarbeitung, Speicherung und Dashboardanzeige mit Azure Log Analytics verbunden.
 
 Darüber hinaus sind in dieser Architektur die folgenden OMS-Lösungen enthalten:
--   [Active Directory-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Die Active Directory-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
--   [Antischadsoftwarebewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): Der Antischadsoftwarelösung meldet Schadsoftware, Bedrohungen und den Schutzstatus.
+-   [Active Directory-Bewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment) Die Active Directory-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
+-   [Antischadsoftwarebewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware) Die Antischadsoftwarelösung meldet Schadsoftware, Bedrohungen und den Schutzstatus.
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Die Azure Automation-Lösung dient der Speicherung, Ausführung und Verwaltung von Runbooks. Bei dieser Lösung werden Protokolle über Runbooks für Application Insights und Azure SQL-Datenbank erfasst.
 -   [Sicherheit und Überwachung](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): Das Sicherheits- und Überwachungsdashboard bietet einen allgemeinen Einblick in den Sicherheitszustand von Ressourcen. Hierzu werden Metriken zu Sicherheitsdomänen, relevanten Problemen, Erkennungen, Bedrohungsdaten und allgemeinen Sicherheitsabfragen bereitgestellt.
--   [SQL-Bewertung](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): Die SQL-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt für die Kunden eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
--   [Updateverwaltung](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Der Updateverwaltungslösung ermöglicht die Verwaltung von Betriebssystem-Sicherheitsupdates durch die Kunden. Dies umfasst auch den Status der verfügbaren Updates und den Fortschritt beim Installieren der erforderlichen Updates.
--   [Agent-Integritätsdiagnose](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Die Agent-Integritätsdiagnoselösung meldet, wie viele Agents bereitgestellt werden und wie ihre geografische Verteilung ist. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
--   [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Die Aktivitätsprotokollanalyse-Lösung hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
+-   [SQL-Bewertung:](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment) Die SQL-Lösung zur Integritätsüberprüfung bewertet die Risiken und die Integrität von Serverumgebungen in regelmäßigen Abständen und erstellt für die Kunden eine priorisierte Liste mit spezifischen Empfehlungen für die bereitgestellte Serverinfrastruktur.
+-   [Updateverwaltung:](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management) Die Updateverwaltungslösung ermöglicht die Verwaltung von Betriebssystem-Sicherheitsupdates durch die Kunden. Dies umfasst auch den Status der verfügbaren Updates und den Fortschritt beim Installieren der erforderlichen Updates.
+-   [Agent-Integritätsdiagnose:](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth) Die Agent-Integritätsdiagnoselösung meldet, wie viele Agents bereitgestellt werden und wie ihre geografische Verteilung ist. Außerdem meldet sie, wie viele Agents nicht mehr reagieren und wie viele Agents Betriebsdaten übermitteln.
+-   [Azure-Aktivitätsprotokolle:](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Die Aktivitätsprotokollanalyse-Lösung hilft bei der Analyse der Azure-Aktivitätsprotokolle in allen Azure-Abonnements eines Kunden.
 -   [Änderungsnachverfolgung](https://docs.microsoft.com/en-us/azure/automation/automation-change-tracking): Die Änderungsnachverfolgungslösung ermöglicht Kunden das Identifizieren von Änderungen in der Umgebung auf einfache Weise.
 
 **Azure Monitor**
@@ -185,7 +185,7 @@ Das Datenflussdiagramm für diese Referenzarchitektur steht zum [Download](https
 ![PaaS-Webanwendung für das DSGVO-Bedrohungsmodell](images/gdpr-paaswa-threat-model.png?raw=true "PaaS-Webanwendung für das DSGVO-Bedrohungsmodell")
 
 ## <a name="compliance-documentation"></a>Konformitätsdokumentation
-Unter [Azure Security and Compliance Blueprint – DSGVO-Zuständigkeitsmatrix für Kunden](https://aka.ms/gdprCRM) sind die Aufgaben von Controllern und Verarbeitern für alle DSGVO-Artikel aufgeführt. Beachten Sie, dass der Kunde bei Azure-Diensten in der Regel der Controller und Microsoft der Verarbeiter ist.
+In der Vorlage für die [Azure Security and Compliance – DSGVO-Zuständigkeitsmatrix für Kunden](https://aka.ms/gdprCRM) sind die Aufgaben von Controllern und Verarbeitern für alle DSGVO-Artikel aufgeführt. Beachten Sie, dass der Kunde bei Azure-Diensten in der Regel der Controller und Microsoft der Verarbeiter ist.
 
 [Azure Security and Compliance Blueprint – Implementierungsmatrix für DSGVO-konforme PaaS-Webanwendungen](https://aka.ms/gdprPaaSWeb) enthält Informationen darüber, auf welche DSGVO-Artikel durch die Architektur der PaaS-Webanwendung verwiesen wird, sowie eine detaillierte Beschreibung, wie die Implementierung die Anforderungen der einzelnen Artikel erfüllt.
 

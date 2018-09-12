@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 26715c6abb9c2c940090c84b64a30f7fb701d059
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445688"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346388"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
 In diesem Tutorial erfahren Sie, wie Sie Benutzerkonten aus Azure Active Directory (Azure AD) automatisch für G Suite bereitstellen und die Bereitstellung wieder aufheben.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -172,7 +172,7 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 
 Daraufhin wird die Erstsynchronisierung aller Benutzer oder Gruppen gestartet, die G Suite im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die während der Dienstausführung etwa alle 40 Minuten erfolgen. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und über Links zu Protokollen zur Bereitstellungsaktivität navigieren. In diesen Protokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre App ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

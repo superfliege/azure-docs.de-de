@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 1bdc0b450a0d36c5de00050559750ded61edd7e5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b4c355c864f83bcd76c310fecb0f26dd3372e760
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188893"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162749"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Teamentwicklung mit Azure Dev Spaces
 
@@ -76,7 +76,7 @@ Gut gemacht! Sie besitzen nun eine Anwendung mit mehreren Containern, in der die
 
 ## <a name="learn-about-team-development"></a>Weitere Informationen zur Teamentwicklung
 
-[!INCLUDE[](includes/team-development-1.md)]
+[!INCLUDE [](includes/team-development-1.md)]
 
 Sehen Sie sich das nun in Aktion an:
 1. Wechseln Sie ins VS Code-Fenster für `mywebapi`, und nehmen Sie eine Codeänderung am GET-Standardhandler für `/` vor. Beispiel:
@@ -87,11 +87,11 @@ Sehen Sie sich das nun in Aktion an:
     });
     ```
 
-[!INCLUDE[](includes/team-development-2.md)]
+[!INCLUDE [](includes/team-development-2.md)]
 
-[!INCLUDE[](includes/well-done.md)]
+[!INCLUDE [](includes/well-done.md)]
 
-[!INCLUDE[](includes/clean-up.md)]
+[!INCLUDE [](includes/clean-up.md)]
 
 
 

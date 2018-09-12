@@ -10,19 +10,19 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3e2008315a8b1c728ef1dac50002b8322907eb51
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: c035ef1a79cde7c594c66964052c0653c5c709d9
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248003"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377971"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Schnellstart: Anhalten und Fortsetzen von Computeressourcen in Azure SQL Data Warehouse mit PowerShell
 Halten Sie Computeressourcen in Azure SQL Data Warehouse mithilfe von PowerShell an, um Kosten einzusparen. [Setzen Sie die Computeressourcen fort](sql-data-warehouse-manage-compute-overview.md), wenn Sie das Data Warehouse verwenden möchten.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.1.1 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um zu ermitteln, welche Version Sie verwenden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps.md) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.1.1 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um zu ermitteln, welche Version Sie verwenden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -67,7 +67,7 @@ Führen Sie die folgenden Schritte aus, um nach Informationen zu Ihrem Data Ware
 ## <a name="pause-compute"></a>Anhalten von Computeressourcen
 Um Kosten zu sparen, können Sie Computeressourcen bei Bedarf anhalten und fortsetzen. Wenn Sie die Datenbank z.B. nachts oder am Wochenende nicht verwenden, können Sie sie während dieser Zeiträume anhalten und während des Tages wieder fortsetzen. Für Computeressourcen fallen keine Gebühren an, während die Datenbank angehalten ist. Allerdings wird Ihnen der Speicher weiterhin in Rechnung gestellt.
 
-Um eine Datenbank anzuhalten, verwenden Sie das Cmdlet [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md). Im folgenden Beispiel wird ein Data Warehouse namens **mySampleDataWarehouse** angehalten, das auf einem Server mit dem Namen **newserver-20171113** gehostet wird. Der Server befindet sich in einer Azure-Ressourcengruppe namens **myResourceGroup**.
+Um eine Datenbank anzuhalten, verwenden Sie das Cmdlet [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase). Im folgenden Beispiel wird ein Data Warehouse namens **mySampleDataWarehouse** angehalten, das auf einem Server mit dem Namen **newserver-20171113** gehostet wird. Der Server befindet sich in einer Azure-Ressourcengruppe namens **myResourceGroup**.
 
 
 ```Powershell
@@ -93,7 +93,7 @@ Resume-AzureRmSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "newserver-20171113" -DatabaseName "mySampleDataWarehouse"
 ```
 
-In einer Variation ruft das nächste Beispiel die Datenbank in das $database-Objekt ab. Anschließend wird das Objekt an [Resume-AzureRmSqlDatabase](/powershell/module/azurerm.sql/resume-azurermsqldatabase.md) weitergereicht, und die Ergebnisse werden in „$resultDatabase“ gespeichert. Der letzte Befehl zeigt die Ergebnisse an.
+In einer Variation ruft das nächste Beispiel die Datenbank in das $database-Objekt ab. Anschließend wird das Objekt an [Resume-AzureRmSqlDatabase](/powershell/module/azurerm.sql/resume-azurermsqldatabase) weitergereicht, und die Ergebnisse werden in „$resultDatabase“ gespeichert. Der letzte Befehl zeigt die Ergebnisse an.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 69901c7b-4673-4bd8-acf2-8c6bdd9d1546
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/10/2017
+ms.date: 9/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 69ed08e8f6c820790c432bfa25988e038fd0efbd
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047240"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379688"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Überwachen von Integrität und Warnungen in Azure Stack
 
@@ -37,11 +36,11 @@ Azure Stack umfasst Funktionen zur Infrastrukturüberwachung, mit denen Sie Info
 
 In Azure Stack werden Warnungen mit nur zwei Schweregraden ausgelöst: **Warnung** und **Kritisch**.
 
-**Warning**  
-Ein Operator kann die Warnung auf geplante Weise bearbeiten. Die Warnung wirkt sich in der Regel nicht auf Benutzerworkloads aus.
+- **Warning**  
+  Ein Operator kann die Warnung auf geplante Weise bearbeiten. Die Warnung wirkt sich in der Regel nicht auf Benutzerworkloads aus.
 
-**Critical** (Kritisch)  
-Ein Operator sollte kritische Warnungen mit Dringlichkeit bearbeiten. Hierbei handelt es sich um Probleme, die sich derzeit oder in Kürze auf Azure Stack-Benutzer auswirken. 
+- **Critical** (Kritisch)  
+  Ein Operator sollte kritische Warnungen mit Dringlichkeit bearbeiten. Hierbei handelt es sich um Probleme, die sich derzeit oder in Kürze auf Azure Stack-Benutzer auswirken. 
 
  
  ## <a name="view-and-manage-component-health-state"></a>Anzeigen und Verwalten des Integritätsstatus von Komponenten
@@ -54,8 +53,8 @@ Um den Integritätsstatus im Portal anzuzeigen, klicken Sie auf die Region, die 
 
 Um ausführlichere Informationen anzuzeigen, klicken Sie auf einen Ressourcenanbieter oder eine Infrastrukturrolle.
 
-> [!WARNING]
->Wenn Sie auf eine Infrastrukturrolle und dann auf die Rolleninstanz klicken, werden Optionen zum Starten, Neustarten oder Herunterfahren angezeigt. Verwenden Sie diese Aktionen nicht beim Anwenden von Updates auf ein integriertes System. Verwenden Sie diese Optionen außerdem **nicht** in einer Azure Stack Development Kit-Umgebung. Diese Optionen sind nur für eine Umgebung mit integrierten Systemen konzipiert, in denen es mehr als eine Rolleninstanz pro Infrastrukturrolle gibt. Der Neustart einer Rolleninstanz (insbesondere „AzS-Xrp01“) im Development Kit führt zur Instabilität des Systems. Um Unterstützung bei der Problembehandlung zu erhalten, veröffentlichen Sie Ihr Problem im [Azure Stack-Forum](https://aka.ms/azurestackforum).
+> [!WARNING]  
+> Wenn Sie auf eine Infrastrukturrolle und dann auf die Rolleninstanz klicken, werden Optionen zum Starten, Neustarten oder Herunterfahren angezeigt. Verwenden Sie diese Aktionen nicht beim Anwenden von Updates auf ein integriertes System. Verwenden Sie diese Optionen außerdem **nicht** in einer Azure Stack Development Kit-Umgebung. Diese Optionen sind nur für eine Umgebung mit integrierten Systemen konzipiert, in denen es mehr als eine Rolleninstanz pro Infrastrukturrolle gibt. Der Neustart einer Rolleninstanz (insbesondere „AzS-Xrp01“) im Development Kit führt zur Instabilität des Systems. Um Unterstützung bei der Problembehandlung zu erhalten, veröffentlichen Sie Ihr Problem im [Azure Stack-Forum](https://aka.ms/azurestackforum).
 >
  
 ## <a name="view-alerts"></a>Anzeigen von Warnungen

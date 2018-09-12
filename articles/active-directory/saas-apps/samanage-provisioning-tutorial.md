@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 98a1746804d0d5a9526e264f99d03ed4e8590ad6
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: e5a69fa2ee9a8c4baaeb6586627c7a9a3c9ba4a8
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043367"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347952"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Samanage für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Samanage und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern bzw. Gruppen in Samanage zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../active-directory-saas-app-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -135,7 +135,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Samanage-Bereitstellung](./media/samanage-provisioning-tutorial/GroupAttributeMapping.png)
 
-13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../active-directory-saas-scoping-filters.md).
+13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 14. Um den Azure AD-Bereitstellungsdienst für Samanage zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
@@ -152,7 +152,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Samanage ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -162,7 +162,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../active-directory-saas-provisioning-reporting.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/samanage-provisioning-tutorial/tutorial_general_01.png

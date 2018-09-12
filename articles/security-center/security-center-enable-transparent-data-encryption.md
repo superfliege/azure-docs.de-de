@@ -1,6 +1,6 @@
 ---
 title: Aktivieren von Transparent Data Encryption in Azure Security Center | Microsoft Docs
-description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Aktivieren von Transparent Data Encryption“ umsetzen.
+description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Transparent Data Encryption aktivieren** implementieren.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: e4be8a0e-2118-4ee9-a266-69e52d9f7f8e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 2a2963affdbff3710ad08f86c6ed4e6304335559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13e47de8ff25451f7d4185927477d524d519ce2a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040265"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299558"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Aktivieren von Transparent Data Encryption in Azure Security Center
 Azure Security Center empfiehlt das Aktivieren von Transparent Data Encryption (TDE) für SQL-Datenbanken, sofern noch nicht erfolgt. TDE schützt Ihre Daten und hilft Ihnen beim Erfüllen von Complianceanforderungen, indem Ihre Datenbank, dazugehörige Sicherungen und ruhende Transaktionsprotokolldateien verschlüsselt werden, ohne das Änderungen an Ihrer Anwendung erforderlich sind. Weitere Informationen finden Sie unter [Transparent Data Encryption mit Azure SQL-Datenbank](https://msdn.microsoft.com/library/dn948096).
@@ -54,7 +54,7 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.

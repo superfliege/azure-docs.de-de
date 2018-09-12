@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 81a7be973739cfd6eb3f8fb8dc7a0723623c2b8e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c50e4b5c9eb81c9386e2cb0db96a88de70dcb9e9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234542"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157802"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Die allgemeinen Parameter umfassen Werte, wie z.B. Umgebungsvariablen und Benutzeranmeldeinformationen, die für sämtliche Tests in Validation-as-a-Service (VaaS) erforderlich sind. Sie definieren diese Werte auf Workflowebene. Sie speichern die Werte bei der Erstellung oder Änderung eines Workflows. Zur geplanten Zeit lädt der Workflow die Werte für den Test. 
 
@@ -39,7 +39,7 @@ Umgebungsparameter beschreiben die Azure Stack-Umgebung, die getestet wird. Dies
 | Region | Erforderlich |  | Die Region der Azure Stack-Bereitstellung. |
 | Resource Manager-Endpunkt des Mandanten | Erforderlich |  | Endpunkt für Azure Resource Manager-Vorgänge des Mandanten (z.B. https://management.<ExternalFqdn>) |
 | Resource Manager-Endpunkt des Administrators | JA |  | Endpunkt für Azure Resource Manager-Vorgänge des Mandanten (z.B. https://adminmanagement.<ExternalFqdn>) |
-| Externer FQDN | JA |  | Externer vollqualifizierter Domänenname, der als Suffix für Endpunkte verwendet wird. (Beispiel: local.azurestack.external oder redmond.contoso.com.) |
+| Externer FQDN | JA |  | Externer vollqualifizierter Domänenname, der als Suffix für Endpunkte verwendet wird (Beispiel: local.azurestack.external oder redmond.contoso.com.) |
 | Anzahl von Knoten | JA |  | Die Anzahl der Knoten für die Bereitstellung. |
 
 ## <a name="test-parameters"></a>Testparameter
@@ -59,4 +59,4 @@ Allgemeine Testparameter umfassen vertrauliche Informationen, die nicht in Konfi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Validation-as-a-Service in Azure Stack](https://docs.microsoft.com/azure/azure-stack/partner).
+- Erfahren Sie mehr zu [Validation-as-a-Service in Azure Stack](https://docs.microsoft.com/azure/azure-stack/partner).

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: b52a447bf643510528e1bd8c6d473bf5d77731fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ead6202b0365df770382077618795cd6b6e57cd2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144335"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346728"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -300,7 +300,7 @@ Mit der Azure-Protokollintegration können Sie nicht aufbereitete Protokolle aus
 
 #### <a name="implement-user-provisioning-for-connected-apps"></a>Implementieren der Benutzerbereitstellung für verbundene Apps
 
-Azure AD ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen (SaaS) wie z.B. Dropbox, Salesforce, ServiceNow usw. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../active-directory-saas-app-provisioning.md).
+Azure AD ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen von Benutzeridentitäten in Cloudanwendungen (SaaS) wie z.B. Dropbox, Salesforce, ServiceNow usw. Weitere Informationen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
 
 #### <a name="integrate-information-protection"></a>Integrieren von Information Protection
 

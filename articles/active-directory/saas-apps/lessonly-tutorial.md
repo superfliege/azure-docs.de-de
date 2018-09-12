@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 050e8efed38c40d8c7da292c0d6865869a07c9f9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2a4bae196e956d92548944637509b23f78ceb5d2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121708"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348003"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Tutorial: Azure Active Directory-Integration mit Lessonly.com
 
@@ -126,7 +126,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | `https://<companyname>.lessonly.com/auth/saml/metadata`|
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Lessonly.com-Client](mailto:dev@lessonly.com), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Lessonly.com-Client](mailto:support@lessonly.com), um diese Werte zu erhalten. 
 
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
@@ -165,7 +165,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](./media/lessonly-tutorial/tutorial_lessonly.com_configure.png)
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Lessonly.com** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Lessonly.com-Supportteam](mailto:dev@lessonly.com) senden.
+1. Zum Konfigurieren des einmaligen Anmeldens bei **Lessonly.com** müssen Sie das heruntergeladene **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Lessonly.com-Supportteam](mailto:support@lessonly.com) senden.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
@@ -208,7 +208,7 @@ Das Ziel dieses Abschnitts besteht darin, einen Benutzer namens Britta Simon in 
 Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Lessonly.com ein neuer Benutzer erstellt.
 
 > [!NOTE]
-> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam von Lessonly.com](mailto:dev@lessonly.com) in Verbindung.
+> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam von Lessonly.com](mailto:support@lessonly.com) in Verbindung.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

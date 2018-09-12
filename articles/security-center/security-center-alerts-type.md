@@ -8,18 +8,18 @@ manager: mbaldwin
 editor: ''
 ms.assetid: b3e7b4bc-5ee0-4280-ad78-f49998675af1
 ms.service: security-center
-ms.topic: hero-article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/21/2018
 ms.author: yurid
-ms.openlocfilehash: 3337736ebcf31ec6aa75725c37e51b1c733f5d9d
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6261f78b4943afdbf74236bc40bea6db5cc62329
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778426"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159383"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
 In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
@@ -66,7 +66,7 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
     * Von einem Systemprozess wurde ein ungewöhnlicher Prozess erstellt.
     * Vom Windows Update-Dienst wurde ein ungewöhnlicher Prozess gestartet.
     * Ein Prozess wurde mit einer ungewöhnlichen Befehlszeile ausgeführt. Dies kann darauf hindeuten, dass ein legitimer Prozess zur Ausführung schädlicher Inhalte gekapert wurde.
-    * Es wurde versucht, über die Befehlszeile alle ausführbaren Dateien (\*.EXE-Dateien) in einem Verzeichnis zu starten.
+    * Es wurde versucht, über die Befehlszeile alle ausführbaren Dateien (EXE-Dateien) in einem Verzeichnis zu starten.
     * Ein Prozess wurde vom PsExec-Hilfsprogramm (das zur Remoteausführung von Prozessen verwendet werden kann) ausgeführt.
     * Die übergeordnete ausführbare Datei von Apache Tomcat® (Tomcat#.exe) wurde verwendet, um verdächtige untergeordnete Prozesse zu starten, die zum Hosten oder Starten schädlicher Befehle geeignet sind.
     * Der Programmkompatibilitäts-Assistent (pcalua.exe) von Microsoft Windows wurde verwendet, um potenziell schädlichen ausführbaren Code zu starten.

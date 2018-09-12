@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: b696325c19d4e1d9c9fe6b85a3c46add756340ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443510"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347697"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
 
@@ -84,7 +84,7 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 13. Klicken Sie auf **Speichern**, um den Azure AD-Bereitstellungsdienst zu starten. 
 14. Wenn nur zugewiesene Benutzer und Gruppen synchronisiert werden (empfohlen), klicken Sie auf die Registerkarte **Benutzer und Gruppen**, und weisen Sie die Benutzer und/oder Gruppen zu, die synchronisiert werden sollen.
 
-Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](check-status-user-account-provisioning.md).
 
 >[!NOTE]
 >Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. 
@@ -152,7 +152,7 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 13. Klicken Sie auf **Speichern**, um den Azure AD-Bereitstellungsdienst zu starten. 
 14. Wenn nur zugewiesene Benutzer und Gruppen synchronisiert werden (empfohlen), klicken Sie auf die Registerkarte **Benutzer und Gruppen**, und weisen Sie die Benutzer und/oder Gruppen zu, die synchronisiert werden sollen.
 
-Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../active-directory-saas-provisioning-reporting.md).
+Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](check-status-user-account-provisioning.md).
 
 Der letzte Schritt bei der Überprüfung des Beispiels besteht darin, die Datei „TargetFile.csv“ im Ordner „\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug“ auf Ihrem Windows-Computer zu öffnen. Wenn der Bereitstellungsprozess ausgeführt wird, werden in dieser Datei die Details aller zugewiesenen und bereitgestellten Benutzer und Gruppen angezeigt.
 
@@ -692,11 +692,11 @@ In der folgenden Abbildung sind die Nachrichten dargestellt, die von Azure AD an
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
-* [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](../active-directory-saas-app-provisioning.md)
-* [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](../active-directory-saas-customizing-attribute-mappings.md)
-* [Schreiben von Ausdrücken für Attributzuordnungen](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [Bereichsfilter für die Benutzerbereitstellung](../active-directory-saas-scoping-filters.md)
-* [Kontobereitstellungsbenachrichtigungen](../active-directory-saas-app-provisioning.md)
+* [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)
+* [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](customize-application-attributes.md)
+* [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)
+* [Bereichsfilter für die Benutzerbereitstellung](define-conditional-rules-for-provisioning-user-accounts.md)
+* [Kontobereitstellungsbenachrichtigungen](user-provisioning.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md)
 
 <!--Image references-->

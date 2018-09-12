@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 6bb757fe072f0fc3ecbda5ae125aa2bf928479fb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 4d342efb88d3c6e560fe4d0a1c3629bf84548c73
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41919901"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157897"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Zugreifen auf Azure Key Vault hinter einer Firewall
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>F: Meine Key Vault-Clientanwendung muss hinter einer Firewall angeordnet sein. Welche Ports, Hosts oder IP-Adressen sollten geöffnet sein, um den Zugriff auf einen Schlüsseltresor zu ermöglichen?

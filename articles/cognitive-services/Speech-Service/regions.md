@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: 082002b25b02e1e496221f4686d0e636630dd438
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1cb00035dc8f1cdeabd1beb22ca69f47bf4bd89e
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324390"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379569"
 ---
 # <a name="regions-of-the-speech-service"></a>Regionen des Spracherkennungsdiensts
 
@@ -35,11 +35,16 @@ Im [Sprach-SDK](speech-sdk.md) werden Regionen als Zeichenfolge angegeben (z.B. 
 
 Die folgende Tabelle listet die verfügbaren Regionen für **Spracherkennung** und **Übersetzung** auf:
 
-Region| Wert für den Regionsparameter im Sprach-SDK
+Region| Wert für den Regionsparameter im Sprach-SDK| Portal
 -|-
-USA (Westen)| `westus`
-Asien, Osten| `eastasia`
-Nordeuropa| `northeurope`
+USA (Westen)| `westus`| https://westus.cris.ai
+USA, Westen 2| `westus2`| https://westus2.cris.ai
+USA (Ost)| `eastus`| https://eastus.cris.ai
+USA (Ost 2)| `eastus2`| https://eastus2.cris.ai
+Asien, Osten| `eastasia`| https://eastasia.cris.ai
+Südostasien| `southeastasia`| https://southeastasia.cris.ai
+Nordeuropa| `northeurope`| https://northeurope.cris.ai
+Europa, Westen|  `westeurope`| https://westeurope.cris.ai
 
 ### <a name="regions-for-intent-recognition"></a>Regionen für die Absichtserkennung
 

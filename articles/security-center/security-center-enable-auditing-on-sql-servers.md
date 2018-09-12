@@ -1,6 +1,6 @@
 ---
 title: Aktivieren der Überwachung und Bedrohungserkennung für SQL-Server in Azure Security Center | Microsoft-Dokumentation
-description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Überwachung und Bedrohungserkennung für SQL-Server aktivieren“ implementieren.
+description: In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Überwachung und Bedrohungserkennung für SQL-Server aktivieren** implementieren.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,22 +9,22 @@ editor: ''
 ms.assetid: 042fca4d-7dab-4172-8614-e8c21ccb4960
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: terrylan
-ms.openlocfilehash: 660b537aef8d175a478ff93d60b8391d55fc92ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fade8de73a35b75f6096a25af13335d679caffac
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040455"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300901"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>Aktivieren der Überwachung und Bedrohungserkennung für SQL-Server in Azure Security Center
 Azure Security Center empfiehlt Ihnen, die Überwachung und Bedrohungserkennung für alle Datenbanken auf Ihren Azure SQL-Servern zu aktivieren, sofern noch nicht erfolgt. Die Überwachung und Bedrohungserkennung kann Ihnen dabei helfen, gesetzliche Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftliche Probleme oder mutmaßliche Sicherheitsverstöße hinweisen können.
 
-Nachdem Sie die Überwachung aktiviert haben, können Sie Einstellungen für die Bedrohungserkennung und E-Mails zum Empfangen von Sicherheitswarnungen konfigurieren. Die Bedrohungserkennung erkennt anormale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Dadurch können Sie potenzielle Bedrohungen erkennen und darauf reagieren, sobald sie auftreten.
+Nachdem Sie die Überwachung aktiviert haben, können Sie Einstellungen für die Bedrohungserkennung und E-Mails zum Empfangen von Sicherheitswarnungen konfigurieren. Die Bedrohungserkennung erkennt anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank hindeuten. Dadurch können Sie potenzielle Bedrohungen erkennen und darauf reagieren, sobald sie auftreten.
 
 Diese Empfehlung gilt für nur den Azure SQL-Dienst und nicht für auf Ihren virtuellen Computern in Azure Infrastructure Services (Azure IaaS) ausgeführte SQL-Server.
 
@@ -55,7 +55,7 @@ Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen in Azure Security Center:](security-center-recommendations.md) Hier erfahren Sie, wie Empfehlungen Ihnen beim Schutz der Azure-Ressourcen helfen.
 * [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
+* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) : Hier erfahren Sie, wie Sie Sicherheitswarnungen verwalten und auf diese reagieren.
 * [Überwachen von Partnerlösungen mit Azure Security Center:](security-center-partner-solutions.md) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Neuigkeiten und Informationen zur Azure-Sicherheit.

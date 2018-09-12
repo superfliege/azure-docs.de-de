@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 65cae4d10a4683207474008a18bac39751ce8e96
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9f042779e3463f0d75dc6327b3553156edbf162a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234559"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162222"
 ---
 # <a name="test-parameters-for-validation-as-a-service-azure-stack"></a>Testparameter für Validation-as-a-Service in Azure Stack
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Wählen Sie vor dem Ausführen einer Testsammlung aus Validation-as-a-Service (VaaS) eine Lösung aus, und erstellen Sie einen Testdurchlauf.
 
@@ -86,4 +86,4 @@ Im Rahmen der Tests werden Remotevorgänge durchgeführt. Der Computer, auf dem 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen finden Sie unter [Azure Stack Validation-as-a-Service](https://docs.microsoft.com/azure/azure-stack/partner).
+- Erfahren Sie mehr zu [Validation-as-a-Service in Azure Stack](https://docs.microsoft.com/azure/azure-stack/partner).

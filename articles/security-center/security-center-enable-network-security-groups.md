@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: f53ed853-ffaf-4530-a019-1906ba6f341b
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: fe75781629e8d6416405cc9eec9ce14e61a00b14
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 6430be5cce24091f62a7c17d881af98f9c94da95
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301426"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299541"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Aktivieren von Netzwerksicherheitsgruppen in Azure Security Center
 Azure Security Center empfiehlt die Aktivierung einer Netzwerksicherheitsgruppe (NSG), sofern noch keine aktiviert ist. NSGs enthalten eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von eingehendem Netzwerkdatenverkehr für Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird. Weitere Informationen finden Sie unter [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../virtual-network/security-overview.md)

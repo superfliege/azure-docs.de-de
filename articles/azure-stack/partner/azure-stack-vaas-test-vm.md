@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 9d32c23f66563988d023df3bf6a33efa30237e57
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 78136ab00dcba2f8a99df36ba99d384b49995882
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234156"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159213"
 ---
 # <a name="deploy-the-local-agent-and-test-virtual-machines"></a>Bereitstellen des lokalen Agents und Testen virtueller Computer
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Hier erfahren Sie, wie Sie den lokalen VaaS-Agent (Validation-as-a-Service) zum Überprüfen Ihrer Hardware verwenden. Der lokale Agent muss vor dem Ausführen von Validierungstests in der zu überprüfenden Azure Stack-Lösung bereitgestellt werden.
 
