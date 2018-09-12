@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: b888846056fd60f37cdb1da85904fa14ffe79a39
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 698f96b15a9387cd30d26e684ed03ff4cc3346a7
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376363"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697899"
 ---
 # <a name="data-sources"></a>Datenquellen 
 QnA Maker kann automatisch Frage-Antwort-Paare aus gebräuchlichen semistrukturierten Inhaltsformaten wie Seiten mit häufig gestellten Fragen (FAQs) und Produkthandbüchern extrahieren. Inhalte können der Wissensdatenbank auch aus strukturierten Dateien hinzugefügt werden.
@@ -53,7 +53,7 @@ Strukturierte Dateien wie TSV und XLSX mit formatierten Spalten können während
 
 | Frage  | Antwort  | Metadaten                |
 |-----------|---------|-------------------------|
-| Frage1 | Antwort1 | `Key1:Value1\|Key2:Value2` |
+| Frage1 | Antwort1 | `Key1:Value1|Key2:Value2` |
 | Frage2 | Antwort2 |      `Key:Value`           |
 Alle weiteren Spalten in der Quelldatei werden ignoriert.
 
@@ -62,7 +62,7 @@ Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensd
 
 | Frage  | Antwort  | Quelle| Metadaten                |
 |-----------|---------|----|---------------------|
-| Frage1 | Antwort1 | URL1|`Key1:Value1\|Key2:Value2` |
+| Frage1 | Antwort1 | URL1|`Key1:Value1|Key2:Value2` |
 | Frage2 | Antwort2 | Redaktionelle Änderung|    `Key:Value`       |
 
 ## <a name="editorial"></a>Redaktionelle Änderung
@@ -75,4 +75,4 @@ Wenn Sie nicht über bereits vorhandene Inhalte zum Füllen der Wissensdatenbank
 
 ## <a name="see-also"></a>Weitere Informationen 
 
-[Übersicht zu QnA Maker](../Overview/overview.md)
+[Übersicht über QnA Maker](../Overview/overview.md)

@@ -24,7 +24,11 @@
 ## Installieren von SAP HANA
 ### [Überprüfen der Konfiguration](hana-installation.md)
 ### [HANA-Beispielinstallation](hana-example-installation.md)
-## [Hochverfügbarkeit und Notfallwiederherstellung](hana-overview-high-availability-disaster-recovery.md)
+## Hochverfügbarkeit und Notfallwiederherstellung
+### [Optionen und Überlegungen](hana-overview-high-availability-disaster-recovery.md)
+### [Sichern und Wiederherstellen](hana-backup-restore.md)
+### [Prinzipien und Vorbereitung](hana-concept-preparation.md)
+### [Failoverprozedur für die Notfallwiederherstellung](hana-failover-procedure.md)
 ## Problembehandlung und Überwachung
 ### [Überwachen von HLI](troubleshooting-monitoring.md)
 ### [Überwachung und Problembehandlung auf HANA-Seite](hana-monitor-troubleshoot.md)

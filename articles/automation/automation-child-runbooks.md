@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 037c2714d146bd59b30573df874794342d743e03
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42141352"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782231"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 
@@ -72,7 +72,9 @@ Wenn Sie nicht möchten, dass das übergeordnete Runbook beim Warten blockiert w
 
 Parameter für ein mittels Cmdlet gestartetes untergeordnetes Runbook werden wie unter [Runbook-Parameter](automation-starting-a-runbook.md#runbook-parameters)beschrieben als Hashtabelle bereitgestellt. Es können nur einfache Datentypen verwendet werden. Enthält das Runbook einen Parameter mit einem komplexen Datentyp, muss es inline aufgerufen werden.
 
-Wenn Sie mit mehreren Abonnements arbeiten, geht beim Aufrufen untergeordneter Runbooks möglicherweise der Abonnementkontext verloren. Um sicherzustellen, dass der Abonnementkontext an die untergeordneten Runbooks übergeben wird, fügen Sie den Parameter `DefaultProfile` zum Cmdlet hinzu, und übergeben Sie darin den Kontext.
+Beim Aufrufen untergeordneter Runbooks als separate Aufträge geht möglicherweise der Abonnementkontext verloren. Damit ein untergeordnetes Runbook Azure RM-Cmdlets für ein gewünschtes Azure-Abonnement aufrufen kann, muss sich das untergeordnete Runbook – unabhängig vom übergeordneten Runbook – bei diesem Abonnement authentifizieren.
+
+Wenn Aufträge in demselben Automation-Konto mit mehreren Abonnements arbeiten, ändert sich möglicherweise durch die Auswahl eines Abonnements in einem Auftrag auch der aktuell ausgewählte Abonnementkontext für andere Aufträge, was in der Regel nicht beabsichtigt ist. Um dieses Problem zu vermeiden, speichern Sie nach dem Aufruf des `Select-AzureRmSubscription`-Cmdlets das Ergebnis, und übergeben Sie dieses Objekt an den `DefaultProfile`-Parameter aller nachfolgenden Aufrufe von Azure RM-Cmdlets. Dieses Muster muss einheitlich auf alle Runbooks angewendet werden, die in diesem Automation-Konto ausgeführt werden.
 
 ### <a name="example"></a>Beispiel
 

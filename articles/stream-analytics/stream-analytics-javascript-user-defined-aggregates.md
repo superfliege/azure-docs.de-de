@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: eb433a322f8077c947fd6db1aaa0e2266a109938
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: bdf5b5188dd584c5eb20f72ff4a98ba6904bc53e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187053"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702373"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Aggregate (Vorschau)
  
@@ -80,7 +80,7 @@ Jedes JavaScript-UDA wird durch eine Funktionsobjektdeklaration definiert. Es fo
 
 ### <a name="function-alias"></a>Funktionsalias
 
-Der Funktionsalias ist der UDA-Bezeichner. Verwenden Sie beim Aufrufen in einer Stream Analytics-Abfrage immer der UDA-Alias zusammen mit „uda“ als Präfix.
+Der Funktionsalias ist der UDA-Bezeichner. Verwenden Sie beim Aufrufen in einer Stream Analytics-Abfrage immer den UDA-Alias zusammen mit „uda.“ als Präfix.
 
 ### <a name="function-type"></a>Funktionstyp
 
@@ -175,7 +175,7 @@ Nun erstellen wir ein JavaScript-UDA unter einem vorhandenen ASA-Auftrag über d
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>Aufrufen des JavaScript-UDA in einer ASA-Abfrage
 
-Öffnen Sie Ihrem Auftrag im Azure-Portal, bearbeiten Sie die Abfrage, und rufen Sie die TWA()-Funktion mit dem obligatorischen Präfix „uda“ auf. Beispiel: 
+Öffnen Sie Ihren Auftrag im Azure-Portal, bearbeiten Sie die Abfrage, und rufen Sie die TWA()-Funktion mit dem obligatorischen Präfix „uda.“ auf. Beispiel: 
 
 ````SQL
 WITH value AS

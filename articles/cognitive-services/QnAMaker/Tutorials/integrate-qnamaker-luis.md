@@ -10,19 +10,19 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 0a0eeb3815b793ed81f60b2b239bc459e5574788
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376378"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781746"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrieren Sie QnA Maker und LUIS, um Ihre Wissensdatenbank zu verteilen
 Wenn Ihre QnA Maker-Wissensdatenbank eine bestimmte Größe erreicht, wird es schwierig, sie als einzelnen monolithischen Satz zu warten, und es zeigt sich die Notwendigkeit, die Wissensdatenbank in kleinere logische Abschnitte aufzuteilen.
 
 Zwar ist es ein geradliniger Vorgang, mehrere Wissensdatenbanken in QnA Maker zu erstellen, Sie benötigen jedoch geeignete Logik, um die eingehende Frage an die passende Wissensdatenbank weiterzuleiten. Das können Sie mithilfe von LUIS erledigen.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 
 ![LUIS-Architektur von QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
@@ -32,8 +32,8 @@ Im Szenario oben ruft QnA Maker zuerst die Absicht der eingehenden Frage bei ein
 - Melden Sie sich beim [LUIS](https://www.luis.ai/)-Portal an, und [erstellen Sie eine App](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
 - [Fügen Sie Absichten](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) nach Maßgabe Ihres Szenarios hinzu.
 - [Trainieren](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) und [veröffentlichen](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) Sie Ihre LUIS-App.
-- Melden Sie sich bei [QnA Maker](https://qnamaker.ai) an, und [erstellen Sie Wissensdatenbanken]() nach Maßgabe Ihres Szenarios.
-- [Testen]() und [veröffentlichen]() Sie die Wissensdatenbanken.
+- Melden Sie sich bei [QnA Maker](https://qnamaker.ai) an, und [erstellen Sie Wissensdatenbanken](https://www.qnamaker.ai/Create) nach Maßgabe Ihres Szenarios.
+- Testen und veröffentlichen Sie die Wissensdatenbanken.
 
 ## <a name="qna-maker--luis-bot"></a>QnA Maker + LUIS-Bot
 1. Erstellen Sie zuerst einen Web-App-Bot mit der LUIS-Vorlage, verknüpfen Sie ihn mit der LUIS-App, die Sie oben erstellt haben, und bearbeiten Sie die Absichten. Detaillierte Schritte finden Sie [hier](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).

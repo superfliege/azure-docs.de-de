@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/17/2018
 ms.author: tomsh
-ms.openlocfilehash: 933d0f60b902ae2cb0abcde2ca39a58e59457c6b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145143"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841546"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security-Whitepaper
 | | |
@@ -30,7 +30,8 @@ ms.locfileid: "42145143"
 |[Azure-Protokollierung und -Überwachung](azure-log-audit.md)|Bietet eine Einführung in das Generieren, Sammeln und Analysieren von Sicherheitsprotokollen aus Diensten, die in Azure gehostet werden. Mithilfe dieser Protokolle erhalten Sie sicherheitsbezogene Einblicke in Ihre Azure-Bereitstellungen. |
 |[Azure-Netzwerksicherheit](abstract-azure-network-security.md)|Stellt die Vielzahl von Netzwerkkontrollen vor, die Sie konfigurieren können, um die Sicherheit der von Ihnen in Azure bereitgestellten Lösungen zu erhöhen. Der Fokus liegt auf kundenseitigen Netzwerksicherheitskontrollen.|
 |[Azure Functions und serverlose Plattformsicherheit](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Dieses Whitepaper, das Sie herunterladen können, deckt die Vorteile des serverlosen Computings ab, während gleichzeitig Sicherheitsüberlegungen und Migrationen im Azure-Kontext bereitgestellt werden. |
-|[Azure-Betriebssicherheit](azure-operational-security.md)|Bietet eine umfassende Sicht auf die kundenseitigen Technologien und Dienste für Betriebssicherheit, die mit Azure zur Verfügung stehen.|
+|[Containersicherheit in Microsoft Azure](abstract-container-security-microsoft-azure.md)|Beschrieben werden Container, die Containerbereitstellung und -verwaltung sowie systemeigene Plattformdienste. Darüber hinaus werden Sicherheitsprobleme während der Laufzeit behandelt, die durch die Verwendung von Containern auf der Azure-Plattform auftreten. |
+|[Azure-Betriebssicherheit](abstract-azure-operational-security.md)|Bietet eine umfassende Sicht auf die kundenseitigen Technologien und Dienste für Betriebssicherheit, die mit Azure zur Verfügung stehen.|
 |[Technische Funktionen von Azure Security](azure-security-technical-capabilities.md)|Konzentriert sich auf die unterstützenden Sicherheitsfeatures und -funktionen für Azure Storage, Azure SQL-Datenbanken, das virtuelle Azure-Computermodell sowie die Tools und die Infrastruktur, die alles verwalten.|
 |[Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Umfasst die Sicherheit auf Verwaltungsebene, die Sicherheit auf Datenebene, die Verschlüsselung ruhender Daten, die Verschlüsselung in Aktion und die Speicheranalyse.|
 |[Datenklassifizierung für Cloud Readiness](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03/file/172083/1/Data%20Classification%20for%20Cloud%20Readiness%20(2017-04-11).pdf)  |Dieses herunterladbare Whitepaper stellt die Grundlagen der Datenklassifizierung und ihren Wert im Kontext von Cloud Computing vor. Organisationen, die Cloud Computing für die künftige Nutzung bewerten, oder Organisationen, die derzeit Clouddienste nutzen und nach Möglichkeiten zur Optimierung der Datenverwaltung suchen, werden von diesem Whitepaper am meisten profitieren.|

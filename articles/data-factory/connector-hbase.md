@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b4cbc7224c29d97f235fcc409ce27ee6eea9f01
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049195"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701716"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopieren von Daten aus HBase mithilfe von Azure Data Factory 
 
@@ -42,11 +42,11 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft muss auf **HBase** festgelegt werden. | Ja |
-| host | IP-Adresse oder Hostname des HBase-Servers. (d.h. 192.168.222.160, [Clustername].azurehdinsight.net)  | Ja |
+| type | Die „type“-Eigenschaft muss auf **HBase** festgelegt werden. | JA |
+| host | IP-Adresse oder Hostname des HBase-Servers (d. h. `[clustername].azurehdinsight.net`， `192.168.222.160).  | JA |
 | port | Der TCP-Port, den die HBase-Instanz verwendet, um auf Clientverbindungen zu lauschen. Der Standardwert ist 9090. Geben Sie beim Herstellen einer Verbindung mit Azure HDInsights als Port 443 an. | Nein  |
-| httpPath | Die Teil-URL, die dem HBase-Server entspricht. (z.B. /gateway/sandbox/hbase/version)  | Nein  |
-| authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem HBase-Server verwendet werden soll. <br/>Zulässige Werte: **Anonymous**, **Basic** | Ja |
+| httpPath | Die Teil-URL, die dem HBase-Server entspricht (d. h. `/hbaserest0`).  | Nein  |
+| authenticationType | Der Authentifizierungsmechanismus, der für die Verbindung mit dem HBase-Server verwendet werden soll. <br/>Zulässige Werte: **Anonymous**, **Basic** | JA |
 | username | Der Benutzername, der für die Verbindung mit der HBase-Instanz verwendet wird.  | Nein  |
 | password | Das Kennwort, das zum Benutzernamen gehört. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein  |
 | enableSsl | Gibt an, ob die Verbindungen mit dem Server mit SSL verschlüsselt werden. Der Standardwert ist „false“.  | Nein  |
@@ -54,6 +54,9 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
 | allowHostNameCNMismatch | Gibt an, ob ein von der Zertifizierungsstelle ausgestellter SSL-Zertifikatsname erforderlich ist, der mit dem Hostnamen des Servers übereinstimmt, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert ist „false“.  | Nein  |
 | allowSelfSignedServerCert | Gibt an, ob vom Server selbstsignierte Zertifikate zugelassen werden. Der Standardwert ist „false“.  | Nein  |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
+
+>[!NOTE]
+>Wenn Ihr Cluster keine beständigen Sitzungen wie HDInsight unterstützt, fügen Sie den Knotenindex explizit am Ende der Einstellung für den HTTP-Pfad hinzu (z. B. `/hbaserest0` anstelle von `/hbaserest`).
 
 **Beispiel für HBase in HDInsights:**
 
@@ -65,7 +68,7 @@ Folgende Eigenschaften werden für den mit HBase verknüpften Dienst unterstütz
         "typeProperties": {
             "host" : "<cluster name>.azurehdinsight.net",
             "port" : "443",
-            "httpPath" : "<e.g. hbaserest>",
+            "httpPath" : "/hbaserest0",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {
@@ -143,8 +146,8 @@ Legen Sie zum Kopieren von Daten aus HBase den Quelltyp in der Kopieraktivität 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **HBaseSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **HBaseSource** festgelegt werden. | JA |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | JA |
 
 **Beispiel:**
 

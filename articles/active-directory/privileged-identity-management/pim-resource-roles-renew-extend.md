@@ -1,6 +1,6 @@
 ---
-title: Verlängern oder Erneuern von Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) verlängern oder erneuern.
+title: Verlängern oder Erneuern von Zuweisungen von Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Zuweisungen von Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) verlängern oder erneuern.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189649"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344084"
 ---
-# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>Verlängern oder Erneuern von Azure-Ressourcenrollen in PIM
+# <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Verlängern oder Erneuern von Zuweisungen von Azure-Ressourcenrollen in PIM
 
 Mit Privileged Identity Management (PIM) für Azure-Ressourcen werden neue Steuerelemente zum Verwalten des Zugriffs und des Zuweisungslebenszyklus für Azure-Ressourcen eingeführt. Administratoren können die Mitgliedschaft zuweisen, indem sie Eigenschaften für die Start- und Endzeit verwenden. Wenn das Ende der Zuweisung fast erreicht ist, sendet PIM E-Mail-Benachrichtigungen an die betroffenen Benutzer oder Gruppen. Außerdem werden E-Mail-Benachrichtigungen an Administratoren der Ressource gesendet, um einen entsprechenden Zugriff zu gewährleisten. Zuweisungen können auch verlängert werden. Sie bleiben im abgelaufenen Zustand noch 30 Tage lang sichtbar, auch wenn der Zugriff nicht verlängert wird.
 

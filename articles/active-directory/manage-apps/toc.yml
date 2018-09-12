@@ -1,0 +1,126 @@
+items:
+- name: Dokumentation zur Azure AD-Anwendungsverwaltung
+  href: index.yml
+- name: Übersicht
+  items:
+  - name: Informationen zur Anwendungsverwaltung
+    href: what-is-application-management.md
+- name: Schnellstarts
+  items:
+  - name: 'Hinzufügen einer Anwendung: Portal'
+    href: add-application-portal.md
+  - name: 'Anzeigen von Mandanten-Apps: Portal'
+    href: view-applications-portal.md
+  expanded: true
+- name: Tutorials
+  items:
+  - name: 'Konfigurieren des einmaligen Anmeldens: Portal'
+    href: configure-single-sign-on-portal.md
+- name: Konzepte
+  items:
+  - name: Planen der Integration von Cloud-Apps
+    items:
+    - name: Was beim Hinzufügen einer App geschieht
+      href: plan-an-application-integration.md
+  - name: Planen der Integration von lokalen Apps
+    items:
+    - name: Anwendungsproxy
+      href: application-proxy.md
+    - name: Connectors
+      href: application-proxy-connectors.md
+    - name: Connectorgruppen
+      href: application-proxy-connector-groups.md
+    - name: Sicherheit
+      href: application-proxy-security.md
+    - name: Netzwerktopologie
+      href: application-proxy-network-topology.md
+    - name: Vergleichen von Remotezugriffslösungen
+      href: application-proxy-migration.md
+  - name: Bereitstellen von Benutzern und Gruppen
+    items:
+    - name: Automatische Benutzerbereitstellung
+      href: configure-automatic-user-provisioning-portal.md
+    - name: SCIM-fähige Apps
+      href: use-scim-to-provision-users-and-groups.md
+  - name: Anwendungssicherheit
+    items:
+    - name: Optionen für den App-Zugriff
+      href: what-is-access-management.md
+    - name: Optionen für die Zertifikatsignatur
+      href: certificate-signing-options.md
+    - name: Verwalten von Zertifikaten
+      href: manage-certificates-for-federated-single-sign-on.md
+  - name: Einmaliges Anmelden
+    items:
+    - name: SSO-Methoden
+      href: application-proxy-single-sign-on.md
+    - name: Startbereichsermittlung (Home Realm Discovery, HDR)
+      href: configure-authentication-for-federated-users-portal.md
+    - name: Eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD)
+      href: application-proxy-configure-single-sign-on-with-kcd.md
+    - name: Kennworttresore
+      href: application-proxy-configure-single-sign-on-password-vaulting.md
+    - name: PingAccess
+      href: application-proxy-configure-single-sign-on-with-ping-access.md
+- name: Anleitungen
+  items:
+  - name: Integration von Cloud-Apps
+    items:
+    - name: Namens- oder Logoänderung
+      href: change-name-or-logo-portal.md
+  - name: Integration von lokalen Apps
+    items:
+    - name: Aktivieren des Anwendungsproxys
+      href: application-proxy-enable.md
+    - name: Veröffentlichen einer App für den Remotezugriff
+      href: application-proxy-publish-azure-portal.md
+    - name: Konfigurieren von Connectors
+      href: application-proxy-configure-connectors-with-proxy-servers.md
+    - name: Konfigurieren von Ansprüche unterstützenden Apps
+      href: application-proxy-configure-for-claims-aware-applications.md
+    - name: 'Registrieren des Connectors: Installation im Hintergrund'
+      href: application-proxy-register-connector-powershell.md
+    - name: Konfigurieren nativer Client-Apps
+      href: application-proxy-configure-native-client-application.md
+    - name: Konfigurieren einer benutzerdefinierten Startseite
+      href: application-proxy-configure-custom-home-page.md
+    - name: Übersetzen von Inline-Links
+      href: application-proxy-configure-hard-coded-link-translation.md
+    - name: Veröffentlichen mithilfe von Platzhaltern
+      href: application-proxy-wildcard.md
+    - name: Entfernen von personenbezogenen Daten
+      href: application-proxy-remove-personal-data.md
+    - name: Konfigurieren einer benutzerdefinierten Domäne
+      href: application-proxy-configure-custom-domain.md
+    - name: Integrieren mit Remotedesktop
+      href: application-proxy-integrate-with-remote-desktop-services.md
+    - name: Integrieren mit SharePoint
+      href: application-proxy-integrate-with-sharepoint-server.md
+    - name: Integrieren mit Teams
+      href: application-proxy-integrate-with-teams.md
+    - name: Integrieren mit Tableau
+      href: application-proxy-integrate-with-tableau.md
+    - name: Integrieren mit Qlik
+      href: application-proxy-qlik.md
+    - name: Konfigurationsfehler
+      href: application-proxy-troubleshoot.md
+  - name: Anwendungszugriff
+    items:
+    - name: Zuweisen eines Benutzers zu einer App
+      href: assign-user-or-group-access-portal.md
+    - name: Entfernen des Benutzer- oder Gruppenzugriffs
+      href: remove-user-or-group-access-portal.md
+    - name: Ausblenden einer App für einen Benutzer
+      href: hide-application-from-user-portal.md
+    - name: Deaktivieren der Benutzeranmeldung
+      href: disable-user-sign-in-portal.md
+  - name: Migration
+    items:
+    - name: Migrieren einer ADFS-App zu Azure
+      href: migrate-adfs-apps-to-azure.md
+ms.openlocfilehash: 57a377c56764272b70814bc78b31f718d3d902b7
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44381801"

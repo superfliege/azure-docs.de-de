@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 6976314929ac2e0e099e8c2f07da32970bc57509
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145805"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382506"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Entwickeln und Debuggen von Node.js-Modulen mit Azure IoT Edge für Visual Studio Code
 
@@ -35,9 +35,7 @@ Um ein Modul zu erstellen, benötigen Sie Node.js (enthält npm) zum Erstellen d
 * [Node.js](https://nodejs.org)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) oder [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   >[!TIP]
-   >Sie können anstelle einer Cloudregistrierung auch eine lokale Docker-Registrierung für Prototyp- bzw. Testzwecke verwenden. 
+   * Sie können anstelle einer Cloudregistrierung auch eine lokale Docker-Registrierung für Prototyp- bzw. Testzwecke verwenden. 
 
 Um das Modul auf einem Gerät zu testen, benötigen Sie einen aktiven IoT Hub mit mindestens einem IoT Edge-Gerät. Wenn Ihr Computer als IoT Edge-Gerät verwendet werden soll, können Sie hierzu die Schritte im Tutorial für [Windows](quickstart.md) bzw. [Linux](quickstart-linux.md) ausführen. 
 
@@ -60,9 +58,11 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
 6. Geben Sie einen Namen für die Projektmappe an. 
 7. Wählen Sie **Node.js Module** (Node.js-Modul) als Vorlage für das erste Modul in der Projektmappe aus.
 8. Geben Sie einen Namen für das Modul an. Wählen Sie einen Namen, der in der Containerregistrierung eindeutig ist. 
-9. Geben Sie das Imagerepository für das Modul an. Visual Studio Code trägt den Modulnamen automatisch ein, sodass Sie nur **localhost:5000** durch Ihre eigenen Registrierungsinformationen ersetzen müssen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie „localhost“ nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **\<Registrierungsname\>.azurecr.io**.
+9. Geben Sie das Imagerepository für das Modul an. Visual Studio Code trägt den Modulnamen automatisch ein, sodass Sie nur **localhost:5000** durch Ihre eigenen Registrierungsinformationen ersetzen müssen. Wenn Sie eine lokale Docker-Registrierung zum Testen verwenden, können Sie „localhost“ nutzen. Nutzen Sie den Anmeldeserver aus Ihren Registrierungseinstellungen, wenn Sie Azure Container Registry verwenden. Der Anmeldeserver hat die Form **\<Registrierungsname\>.azurecr.io**. Ersetzen Sie nur den localhost-Teil der Zeichenfolge, löschen Sie nicht Ihren Modulnamen.
 
-Visual Studio Code verwendet die angegebenen Informationen, erstellt eine IoT Edge-Projektmappe und lädt diese in einem neuen Fenster.
+   ![Bereitstellen eines Docker-Imagerepositorys](./media/how-to-develop-node-module/repository.png)
+
+Visual Studio Code verwendet die angegebenen Informationen, erstellt eine IoT Edge-Projektmappe, und lädt diese in einem neuen Fenster.
 
 In der Projektmappe sind drei Elemente enthalten: 
 * Einen Ordner **.vscode**, der Debugkonfigurationen enthält.
@@ -76,7 +76,7 @@ In der Projektmappe sind drei Elemente enthalten:
 
 ## <a name="develop-your-module"></a>Entwickeln Ihres Moduls
 
-Der im Lieferumfang der Projektmappe enthaltene Node.js-Standardcode befindet sich unter **modules** > **\<Name Ihres Moduls\>** > **app.js**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
+Der im Lieferumfang der Projektmappe enthaltene Node.js-Standardcode befindet sich unter **modules** > [Name Ihres Moduls] > **app.js**. Das Modul und die Datei „deployment.template.json“ werden so eingerichtet, dass Sie die Projektmappe erstellen, in Ihre Containerregistrierung verschieben und zum Starten des Tests für ein Gerät bereitstellen können, ohne Code ändern zu müssen. Das Modul ist so konzipiert, dass es einfach eine Eingabe aus einer Quelle akzeptiert (in diesem Fall das Daten simulierende tempSensor-Modul) und IoT Hub übergibt. 
 
 Wenn Sie bereit sind, die Node.js-Vorlage mit Ihrem eigenen Code anzupassen, erstellen Sie mit den [Azure IoT Hub SDKs](../iot-hub/iot-hub-devguide-sdks.md) Module, die die wesentlichen Anforderungen für IoT-Lösungen wie Sicherheit, Geräteverwaltung und Zuverlässigkeit berücksichtigen. 
 
@@ -92,7 +92,7 @@ In jedem Modulordner gibt es mehrere Docker-Dateien für unterschiedliche Contai
 
 2. Geben Sie in der Visual Studio Code-Befehlspalette den Befehl **Azure IoT Edge: Build IoT Edge solution** (Azure IoT Edge: IoT Edge-Projektmappe erstellen) ein, und führen Sie ihn aus.
 3. Wählen Sie in der Befehlspalette die Datei `deployment.template.json` für die Projektmappe aus. 
-4. Klicken Sie im Azure IoT Hub-Geräte-Explorer mit der rechten Maustaste auf eine IoT Edge-Geräte-ID, und wählen Sie dann **Create deployment for IoT Edge device** (Bereitstellung für IoT Edge-Gerät erstellen) aus. 
+4. Klicken Sie im Azure IoT Hub-Geräte-Explorer mit der rechten Maustaste auf eine IoT Edge-Geräte-ID, und wählen Sie dann **Create deployment for Single device** (Bereitstellung für Einzelgerät erstellen) aus. 
 5. Öffnen Sie den Ordner **config** der Projektmappe, und wählen Sie die Datei `deployment.json` aus. Klicken Sie auf **Select Edge Deployment Manifest** (Edge-Bereitstellungsmanifest auswählen). 
 
 Sie können nun sehen, dass die Bereitstellung erfolgreich mit einer Bereitstellungs-ID im integrierten Terminal von VS Code erstellt wurde.

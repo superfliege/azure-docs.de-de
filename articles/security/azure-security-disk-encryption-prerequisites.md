@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: d248a97235ead134f29e468aaafcd04211590e02
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 67c3591b0218beac6343b49ba7867294ebeb3f44
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247489"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381979"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption – Voraussetzungen 
  Dieser Artikel „Azure Disk Encryption – Voraussetzungen“ thematisiert, was Sie beachten müssen, bevor Sie Azure Disk Encryption verwenden können. Azure Disk Encryption ist in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) integriert, um die Verwaltung von Verschlüsselungsschlüsseln zu erleichtern. Zum Konfigurieren von Azure Disk Encryption können Sie [Azure PowerShell](/powershell/azure/overview), die [Azure CLI](/cli/azure/) oder das [Azure-Portal](https://portal.azure.com) verwenden.
@@ -47,7 +47,7 @@ Azure Disk Encryption wird auf folgenden Betriebssystemen unterstützt:
     - Azure Disk Encryption verschiebt die Einbindungsinformationen aus „/etc/fstab“ in die eigene Konfigurationsdatei als Teil des Verschlüsselungsprozesses. Der Eintrag fehlt in „/etc/fstab“, nachdem die Verschlüsselung des Datenlaufwerks abgeschlossen wurde.
     -  Nach dem Neustart dauert es einige Zeit, bis Azure Disk Encryption die neu verschlüsselten Datenträger eingebunden hat. Sie sind nach einem Neustart nicht sofort verfügbar. Der Prozess benötigt Zeit, um die verschlüsselten Laufwerke zu starten, zu entsperren und dann einzubinden, bevor sie für andere Prozesse verfügbar sind. Dies kann je nach Systemeigenschaften mehr als eine Minute nach dem Neustart dauern.
 
-Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubinden und die notwendigen „/etc/fstab“-Einträge zu erstellen, finden Sie in den [Zeilen 197–205 dieser Skriptdatei](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L197-L205). 
+Ein Beispiel für Befehle, die verwendet werden können, um Datenträger einzubinden und die notwendigen „/etc/fstab“-Einträge zu erstellen, finden Sie in den [Zeilen 244–248 dieser Skriptdatei](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
 
 
 ## <a name="bkmk_GPO"></a> Netzwerk und Gruppenrichtlinie
@@ -147,7 +147,7 @@ Azure Disk Encryption ist in [Azure Key Vault](https://azure.microsoft.com/docum
 Sie können mit Azure PowerShell mit dem Cmdlet [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/New-AzureRmKeyVault) einen Schlüsseltresor erstellen. Weitere Cmdlets für Key Vault finden Sie unter [AzureRM.KeyVault](/powershell/module/azurerm.keyvault/). 
 
 1. Stellen Sie ggf. eine [Verbindung mit Ihrem Azure-Abonnement](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH) her. 
-2. Erstellen Sie ggf. mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine neue Ressourcengruppe.  Verwenden Sie [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocationn), um Standorte von Rechenzentren aufzulisten. 
+2. Erstellen Sie ggf. mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine neue Ressourcengruppe.  Verwenden Sie [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation), um Standorte von Rechenzentren aufzulisten. 
      
      ```azurepowershell-interactive
      # Get-AzureRmLocation 

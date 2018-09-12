@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/31/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f89a6bdbe906d490231725cf528396928faebe47
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092093"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840988"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -23,11 +23,15 @@ Durch horizontales Hochskalieren können Clientabfragen auf mehrere *Abfragerepl
 
 In einer typischen Serverbereitstellung fungiert ein einzelner Server sowohl als Verarbeitungs- als auch als Abfrageserver. Wenn die Anzahl von Clientabfragen für Modelle auf dem Server die QPUs (Query Processing Units) für den Tarif Ihres Servers übersteigt oder die Modellverarbeitung mit einem hohen Aufkommen von Abfrageworkloads zusammenfällt, kann sich dies negativ auf die Leistung auswirken. 
 
-Mit der horizontalen Hochskalierung können Sie einen Abfragepool mit bis zu sieben zusätzlichen Replikaten erstellen, sodass Sie zusammen mit Ihrem Server über insgesamt acht verfügen. Sie können die Anzahl von Abfragereplikaten jederzeit skalieren, um die QPU-Anforderungen in kritischen Zeiten zu erfüllen, und Sie können einen Verarbeitungsserver aus dem Abfragepool herauslösen. Alle Abfragereplikate werden in der gleichen Region wie Ihr Server erstellt.
+Mit der horizontalen Hochskalierung können Sie einen Abfragepool mit bis zu sieben zusätzlichen Abfragereplikatressourcen erstellen, sodass Sie zusammen mit Ihrem Server über insgesamt acht verfügen. Sie können die Anzahl von Abfragereplikaten jederzeit skalieren, um die QPU-Anforderungen in kritischen Zeiten zu erfüllen, und Sie können einen Verarbeitungsserver aus dem Abfragepool herauslösen. Alle Abfragereplikate werden in der gleichen Region wie Ihr Server erstellt.
 
-Verarbeitungsworkloads werden unabhängig von der Anzahl von Abfragereplikaten in einem Abfragepool nicht auf Abfragereplikate verteilt. Ein einzelner Server fungiert als Verarbeitungsserver. Abfragereplikate bedienen ausschließlich Abfragen für die Modelle, die zwischen den einzelnen Replikaten im Abfragepool synchronisiert werden. 
+Verarbeitungsworkloads werden unabhängig von der Anzahl von Abfragereplikaten in einem Abfragepool nicht auf Abfragereplikate verteilt. Ein einzelner Server fungiert als Verarbeitungsserver. Abfragereplikate bedienen ausschließlich Abfragen für die Modelle, die zwischen den einzelnen Abfragereplikaten im Abfragepool synchronisiert werden. 
 
-Nach Abschluss von Verarbeitungsvorgängen ist eine Synchronisierung zwischen dem Verarbeitungsserver und den Abfragereplikatservern erforderlich. Wenn Verarbeitungsvorgänge automatisiert werden, muss auch ein Synchronisierungsvorgang konfiguriert werden, der nach erfolgreicher Durchführung von Verarbeitungsvorgängen ausgeführt wird. Die Synchronisierung kann manuell im Portal oder mithilfe von PowerShell oder der REST-API ausgeführt werden.
+Beim horizontalen Hochskalieren werden dem Abfragepool inkrementell neue Abfragereplikate hinzugefügt. Es kann bis zu fünf Minuten dauern, bis neue Abfragereplikatressourcen in den Abfragepool aufgenommen werden und für den Empfang von Clientverbindungen und Abfragen bereit stehen. Wenn alle neuen Abfragereplikate einsatzbereit sind, kommen für neue Clientverbindungen alle Ressourcen im Abfragepool für den Lastenausgleich zum Einsatz. Bestehende Clientverbindungen werden nicht geändert; die Verbindung mit der bisherigen Ressource bleibt bestehen.  Beim horizontalen Herunterskalieren werden alle bestehenden Clientverbindungen mit einer Abfragepoolressource, die aus dem Abfragepool entfernt wird, beendet. Sie werden nach Abschluss des horizontalen Herunterskalierens mit einer der übrigen Abfragepoolressourcen neu verbunden.
+
+Bei der Verarbeitung von Modellen ist nach dem Abschluss der Verarbeitungsvorgänge eine Synchronisierung zwischen dem Verarbeitungsserver und den Abfragereplikaten erforderlich. Wenn Verarbeitungsvorgänge automatisiert werden, muss auch ein Synchronisierungsvorgang konfiguriert werden, der nach erfolgreicher Durchführung von Verarbeitungsvorgängen ausgeführt wird. Die Synchronisierung kann manuell im Portal oder mithilfe von PowerShell oder der REST-API ausgeführt werden. 
+
+Zur Optimierung der Leistung bei Verarbeitungs- und Abfragevorgängen können Sie optional Ihren Verarbeitungsserver vom Abfragepool trennen. Nach der Trennung werden vorhandene und neue Clientverbindungen nur den Abfragereplikaten im Abfragepool zugewiesen. Wenn Verarbeitungsvorgänge nur eine kurze Zeit dauern, können Sie Ihren Verarbeitungsserver auch nur für den Zeitraum vom Abfragepool trennen, der zur Durchführung der Verarbeitungs- und Synchronisierungsvorgänge erforderlich ist, und ihn dann wieder in den Abfragepool aufnehmen. 
 
 > [!NOTE]
 > Horizontales Hochskalieren ist für Server im Standardtarif verfügbar. Jedes Abfragereplikat wird mit dem gleichen Tarif abgerechnet wie Ihr Server.

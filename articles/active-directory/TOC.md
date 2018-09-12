@@ -197,6 +197,7 @@
 #### [Mandanteneinschränkungen](manage-apps/tenant-restrictions.md)
 #### [Verwenden von SCIM zum Bereitstellen von Benutzern](manage-apps/use-scim-to-provision-users-and-groups.md)
 
+### [Grundlegendes zur Zustimmung für Azure AD-Anwendungen](application-consent-experience.md)
 
 ### Problembehandlung
 

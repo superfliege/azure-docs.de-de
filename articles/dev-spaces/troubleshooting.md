@@ -11,16 +11,24 @@ ms.topic: article
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42144085"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841608"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
 Dieses Handbuch enthält Informationen über allgemeine Probleme, die bei Verwendung von Azure Dev Spaces auftreten können.
+
+## <a name="enabling-detailed-logging"></a>Aktivieren der ausführlichen Protokollierung
+
+Um Probleme effektiver zu behandeln, kann es hilfreich sein, ausführlichere Protokolle zur Überprüfung zu erstellen.
+
+Bei der Visual Studio-Erweiterung erreichen Sie dies durch Festlegen der Umgebungsvariable `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` auf 1. Achten Sie darauf, Visual Studio neu zu starten, damit die Umgebungsvariable übernommen wird. Nach der Aktivierung werden detaillierte Protokolle in das Verzeichnis `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` geschrieben.
+
+An der Befehlzeilenschnittstelle (CLI) können Sie während der Befehlsausführung weitere Informationen ausgeben. Verwenden Sie dazu den Schalter `--verbose`.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Fehler „Azure Dev Spaces-Controller kann nicht erstellt werden“
 
@@ -106,6 +114,16 @@ Dieser Fehler kann angezeigt werden, wenn „azds.exe“ nicht installiert oder 
     ```cmd
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
+
+## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Warnung „Aufgrund einer nicht unterstützten Sprache konnte keine Dockerfile generiert werden“
+Azure Dev Spaces bietet systeminternen Support für C# und Node.js. Wenn Sie *azds prep* in einem Verzeichnis ausführen, das in einer dieser Sprachen geschriebenen Code enthält, erstellt Azure Dev Spaces automatisch eine entsprechende Dockerfile-Datei.
+
+Sie können Azure Dev Spaces auch mit Code verwenden, der in anderen Sprachen geschrieben ist. Dann müssen Sie jedoch vor der erstmaligen Ausführung von *azds up* die Dockerfile-Datei selbst erstellen.
+
+### <a name="try"></a>Versuchen Sie Folgendes:
+Wenn Ihre Anwendung in einer Sprache geschrieben ist, die Azure Dev Spaces systemintern nicht unterstützt, müssen Sie zum Erstellen eines Containerimages zum Ausführen des Codes eine entsprechende Dockerfile-Datei bereitstellen. Docker stellt eine [Liste der bewährten Methoden für das Schreiben von Dockerfile-Dateien](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) sowie eine [Dockerfile-Referenz](https://docs.docker.com/engine/reference/builder/) bereit, die Ihnen dabei behilflich sein können.
+
+Wenn Sie eine entsprechende Dockerfile-Datei haben, können Sie die Ausführung von *azds up* fortsetzen, um Ihre Anwendung in Azure Dev Spaces auszuführen.
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Fehler „Upstream-Verbindungsfehler oder Trennung/Reset vor Headern“
 Dieser Fehler kann angezeigt werden, wenn Sie versuchen, auf den Dienst zuzugreifen, beispielsweise, wenn Sie in einem Browser zur URL des Diensts wechseln. 

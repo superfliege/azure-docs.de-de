@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: kumud
-ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: ecc33fc6078dac4affe3942f1be7e039ae9e9e70
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190732"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695424"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -36,7 +36,7 @@ Die verfügbaren Typen von Integritätstests und die Art und Weise, wie sich die
 > [!IMPORTANT]
 > Lastenausgleichs-Integritätstests stammen von der IP-Adresse 168.63.129.16 und dürfen nicht blockiert werden, damit Ihre Instanz beim Test als online markiert wird.  Einzelheiten finden Sie unter [Quell-IP-Adresse von Tests](#probesource).
 
-## <a name="types"></a>Integritätstesttypen
+## <a name="types"></a>Testtypen
 
 Bei Integritätstests kann ein beliebiger Port an einer Back-End-Instanz, einschließlich des Ports, an dem der eigentliche Dienst bereitgestellt wird, überwacht werden. Das Integritätstestprotokoll kann für drei verschiedene Typen von Integritätstests konfiguriert werden:
 

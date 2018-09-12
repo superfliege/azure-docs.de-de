@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
 ms.custom: hdiseo17may2017
-ms.openlocfilehash: ca7b79e02f63875b95f84b8d1e92a2ed2180db24
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ad8d0392b4b0e1e9e8d94e0d5a7a0c72455ecfcb
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043044"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700996"
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Serialisieren von Daten in Hadoop mit der Microsoft Avro-Bibliothek
 
@@ -36,7 +36,7 @@ Die <a href="https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library" targe
 Die serialisierte Darstellung eines Objekts im Avro-System besteht aus zwei Teilen: Schema und tatsächlichem Wert. Das Avro-Schema beschreibt das sprachunabhängige Datenmodell der serialisierten Daten mit JSON. Daneben liegt eine Binärdarstellung der Daten vor. Dank der Trennung von Schema und Binärdarstellung kann jedes Objekt ohne Mehraufwand für die einzelnen Werte geschrieben werden, wodurch eine schnelle Serialisierung und eine kleine Darstellung sichergestellt werden.
 
 ## <a name="the-hadoop-scenario"></a>Das Hadoop-Szenario
-Das Apache Avro-Serialisierungsformat wird in Azure HDInsight und anderen Apache Hadoop-Umgebungen umfassend eingesetzt. Avro bietet eine einfache Methode zur Darstellung komplexer Datenstrukturen in einem Hadoop MapReduce-Job. Das Format von Avro-Dateien (Avro Object Container File) ist darauf ausgelegt, das verteilte MapReduce-Programmiermodell zu unterstützen. Das wichtigste Merkmal, das die Verteilung ermöglicht, ist die "Teilbarkeit" der Dateien; hier bedeutet "teilbar", dass nach einem beliebigen Punkt in der Datei gesucht und ab einem bestimmten Block gelesen werden kann.
+Das Apache Avro-Serialisierungsformat wird in Azure HDInsight und anderen Apache Hadoop-Umgebungen umfassend eingesetzt. Avro bietet eine einfache Methode zur Darstellung komplexer Datenstrukturen in einem Hadoop MapReduce-Job. Das Format von Avro-Dateien (Avro Object Container File) ist darauf ausgelegt, das verteilte MapReduce-Programmiermodell zu unterstützen. Das wichtigste Merkmal, das die Verteilung ermöglicht, ist die „Teilbarkeit“ der Dateien. Hier bedeutet „teilbar“, dass nach einem beliebigen Punkt in der Datei gesucht und ab einem bestimmten Block gelesen werden kann.
 
 ## <a name="serialization-in-avro-library"></a>Serialisierung in der Avro-Bibliothek
 Die .NET-Bibliothek für Avro unterstützt zwei Methoden der Objektserialisierung:

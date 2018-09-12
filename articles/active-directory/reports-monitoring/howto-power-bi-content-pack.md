@@ -14,14 +14,19 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 090e7419f80bc734ee2b1cb4f976911792046a9c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 752e71f3c6b22a6d9f1e2392b58c01deef9de89c
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142748"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782163"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Verwenden des Azure Active Directory-Power BI-Inhaltspakets
+
+|  |
+|--|
+|Das Azure AD-Power-BI-Inhaltspaket verwendet derzeit die Azure AD Graph-APIs zum Abrufen von Daten des Azure AD-Mandanten. Daher ergibt sich möglicherweise ein Unterschied zwischen den Daten im Inhaltspaket und den Daten, die mit den [Microsoft Graph-APIs für die Berichterstellung](concept-reporting-api.md) abgerufen wurden. |
+|  |
 
 Das Verständnis, wie Ihre Benutzer Azure Active Directory-Funktionen annehmen und nutzen, ist für Sie als IT-Administrator sehr wichtig. Mit diesem Wissen können Sie Ihre IT-Infrastruktur und die Kommunikation planen, um die Nutzung zu erhöhen und in den Genuss möglichst vieler Vorteile der AAD-Funktionen zu kommen. Mit dem Power BI-Inhaltspaket für Azure Active Directory können Sie Ihre Daten weiter analysieren, um zu verstehen, wie Sie mithilfe dieser Daten umfassendere Einblicke in Azure Active Directory für die verschiedenen Funktionen gewinnen können, die für Sie wichtig sind.  Mit der Integration von Azure Active Directory-APIs in Power BI können Sie die vorab erstellten Inhaltspakete leicht herunterladen und Einblicke in alle Aktivitäten Ihrer Azure Active Directory-Instanz gewinnen, indem Sie die umfassende Visualisierungsoberfläche von Power BI nutzen. Sie können Ihr eigenes Dashboard erstellen und es leicht für alle anderen Benutzer Ihrer Organisation freigeben. 
 

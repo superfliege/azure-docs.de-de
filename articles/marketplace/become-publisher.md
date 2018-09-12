@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412014"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666383"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie sich als Herausgeber für den Cloud-
 |  | Registrierungsschritt | Duration | Details |  
 |:--- |:--- |:--- |:--- |  
 | 1 | Registrieren im Microsoft Partner Network | 15 Min. | [Registrieren beim Microsoft Partner Network](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Erstellen eines Microsoft-Kontos <ul>(für Azure Marketplace-Transaktionsangebote erforderlich; für andere Benutzer empfohlen)</ul> | 15 Minuten | [Erstellen einer Microsoft-ID](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 2 | Erstellen eines Microsoft-Kontos <ul>(für Azure Marketplace-Transaktionsangebote erforderlich; für andere Benutzer empfohlen)</ul> | 15 Min. | [Erstellen einer Microsoft-ID](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
 | 3 | Übermitteln des Marketplace-Registrierungsformulars | 15 Min. | [Übermitteln des Marketplace-Antragsformulars](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
 | 4 |  Anmelden beim Cloud-Partnerportal | 1 - 3 Tage | [Anmelden beim Cloud-Partnerportal](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
 | 5 | Registrieren beim Microsoft Developer Center (Dev Center) (für Azure Marketplace-Transaktionsangebote) | 5 - 10 Tage | [Registrierung in Dev Center](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
@@ -64,7 +64,7 @@ Mit einem Microsoft-Konto (z.B. *@outlook.com oder @live.com*) können Sie auf e
 ---  
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Übermitteln des Marketplace-Registrierungsformulars  
-| 15 Min. |  
+| 15 Minuten |  
 Füllen Sie dieses kurze [Registrierungsformular](https://azuremarketplace.microsoft.com/en-us/sell/signup) aus, um ein Marketplace-Herausgeber zu werden. Die in diesem Formular übermittelten Informationen werden zur Erstellung eines Herausgeberkontos im Cloud-Partnerportal verwendet, mit dem Sie Marketplace-Angebote erstellen, veröffentlichen und verwalten können.
 
 Sie werden zur Angabe der folgenden Informationen aufgefordert:
@@ -74,7 +74,8 @@ Sie werden zur Angabe der folgenden Informationen aufgefordert:
 
 ---  
 ## <a name="4-sign-into-cloud-partner-portal"></a>4. Anmelden beim Cloud-Partnerportal
-| 1–3 Tage | Unser Marketplace-Onboardingteam überprüft die Details zu Ihrer Marketplace-Registrierung, die Sie in Schritt 3 angegeben haben. Nachdem diese genehmigt wurden, erhalten Sie eine Willkommens-E-Mail mit Kontoanmeldeinformationen und einen Leitfaden zum Anmelden beim [Cloud-Partnerportal](https://cloudpartner.azure.com).
+| 1–3 Tage | <br>
+Unser Marketplace-Onboardingteam überprüft die Details zu Ihrer Marketplace-Registrierung, die Sie in Schritt 3 angegeben haben. Nachdem diese genehmigt wurden, erhalten Sie eine Willkommens-E-Mail mit Kontoanmeldeinformationen und einen Leitfaden zum Anmelden beim [Cloud-Partnerportal](https://cloudpartner.azure.com).
 
 Über das [Cloud-Partnerportal](https://cloudpartner.azure.com) können Sie Marketplace-Angebote erstellen, veröffentlichen und verwalten. Nachdem Sie die Willkommens-E-Mail als Bestätigung erhalten haben, können Sie sich mit Ihrem Microsoft-Konto direkt beim [Cloud-Partnerportal](https://cloudpartner.azure.com) anmelden, um weitere technische Informationen zum Veröffentlichen im Marketplace und Erstellen Ihres Angebots zu erhalten. 
 *   Weitere Informationen zur Verwendung des Cloud-Partnerportals finden Sie im [Artikel zu den ersten Schritten im Abschnitt mit den relevanten Informationen](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). Sie müssen beim Cloud-Partnerportal angemeldet sein, um auf diese Informationen zugreifen zu können.

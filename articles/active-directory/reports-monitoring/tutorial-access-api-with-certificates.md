@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c1f5b88dc8cd6d7f8ff1cd1269d4791d5654e133
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 7e2dd4c50a1d6995302c5a2a6f9b4877253d0a41
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42139959"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382279"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Abrufen von Daten per Berichtserstellungs-API von Azure Active Directory mit Zertifikaten
 
@@ -38,7 +38,7 @@ Dieser Vorgang umfasst die folgenden Schritte:
 
 1. Stellen Sie zuerst sicher, dass Sie die [Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichtserstellungs-API](howto-configure-prerequisites-for-reporting-api.md) erfüllen. 
 
-2. Laden Sie Azure AD Powershell V2 herunter, und führen Sie die Installation durch, indem Sie die Anleitung unter [Azure Active Directory PowerShell](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md) befolgen.
+2. Laden Sie Azure AD Powershell V2 herunter, und führen Sie die Installation durch, indem Sie die Anleitung unter [Azure Active Directory PowerShell https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md) befolgen.
 
 3. Installieren Sie die MSCloudIDUtils über [PowerShell-Katalog: MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Dieses Modul enthält mehrere Hilfsprogramm-Cmdlets, z.B.:
     - Die für die Authentifizierung benötigten ADAL-Bibliotheken

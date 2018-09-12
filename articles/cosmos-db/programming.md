@@ -10,24 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142903"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287443"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
 
 Erfahren Sie, wie Entwickler dank der in die Azure Cosmos DB-Sprache integrierten transaktionalen Ausführung von JavaScript **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) in nativem [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)-JavaScript schreiben können. Durch die JavaScript-Integration können Sie Programmlogik schreiben, die direkt in den Partitionen des Datenbankspeichers bereitgestellt und ausgeführt werden kann. 
 
-Für den Beginn empfiehlt sich folgendes Video, in dem Andrew Liu das serverseitige Datenbankprogrammiermodell von Azure Cosmos DB vorstellt. 
-
-> [!VIDEO https://www.youtube.com/embed/s0cXdHNlVI0]
->
-> 
-
-Kehren Sie dann zurück zu diesem Artikel, in dem Sie die Antworten auf die folgenden Fragen erfahren:  
+In diesem Artikel erhalten Sie Antworten auf die folgenden Fragen:  
 
 * Wie schreibe ich eine gespeicherte Prozedur, einen Trigger oder eine UDF mit JavaScript?
 * Wie gewährleistet Cosmos DB ACID?

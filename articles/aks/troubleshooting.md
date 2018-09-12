@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 614930fb11e65404416e604c94351e2754b8e941
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190981"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287538"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 Beim Erstellen oder Verwalten von AKS-Clustern können gelegentlich Probleme auftreten. In diesem Artikel werden einige allgemeine Probleme und Schritte zur Problembehandlung ausführlich erläutert.
@@ -24,16 +24,16 @@ Beim Erstellen oder Verwalten von AKS-Clustern können gelegentlich Probleme auf
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>Während der Erstellung oder Durchführung eines Upgrades erhalte ich die Fehlermeldung, dass das Kontingent überschritten wurde. Wie sollte ich vorgehen? 
 
-Sie müssen [hier](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) Kerne anfordern
+Sie müssen [hier](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) Kerne anfordern.
 
 ### <a name="what-is-the-max-pods-per-node-setting-for-aks"></a>Wie lautet die maximale Anzahl von Pods pro Knoteneinstellung für AKS?
 
 Die maximale Anzahl von Pods pro Knoten ist standardmäßig auf 30 festgelegt, wenn Sie einen AKS-Cluster im Azure-Portal bereitstellen.
 Die maximale Anzahl von Pods pro Knoten ist standardmäßig auf 110 festgelegt, wenn Sie einen AKS-Cluster in der Azure CLI bereitstellen. (Stellen Sie sicher, dass Sie die neueste Version der Azure CLI verwenden.) Diese Standardeinstellung kann mithilfe von „–max-nodes-per-pod flag“ im Befehl „az aks create“ geändert werden.
 
-### <a name="i-am-getting--insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Während der Bereitstellung eines AKS-Clusters mit erweitertem Netzwerk erhalte ich die Fehlermeldung „InsufficientSubnetSize“. Wie sollte ich vorgehen?
+### <a name="i-am-getting-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Während der Bereitstellung eines AKS-Clusters mit erweitertem Netzwerk erhalte ich die Fehlermeldung „InsufficientSubnetSize“. Wie sollte ich vorgehen?
 
-In der für das Netzwerk während Erstellungen des AKS ausgewählten Option „Benutzerdefiniertes VNET“ wird Azure CNI für IPAM verwendet. Die Anzahl der Knoten in einem AKS-Cluster kann einen beliebigen Wert zwischen 1 und 100 aufweisen. Basierend auf 2) sollte die Subnetzgröße größer als das Produkt der Anzahl von Knoten und der maximalen Anzahl von Pods pro Subnetzgröße eines Knotens sein > Anzahl von Knoten im Cluster * maximale Anzahl von Pods pro Knoten
+In der für das Netzwerk während Erstellungen des AKS ausgewählten Option „Benutzerdefiniertes VNET“ wird Azure CNI für IPAM verwendet. Die Anzahl der Knoten in einem AKS-Cluster kann einen beliebigen Wert zwischen 1 und 100 aufweisen. Basierend auf 2) sollte die Subnetzgröße größer als das Produkt der Anzahl von Knoten und der maximalen Anzahl von Pods pro Subnetzgröße eines Knotens sein > Anzahl von Knoten im Cluster * maximale Anzahl von Pods pro Knoten.
 
 ### <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mein Pod ist im Modus „CrashLoopBackOff“ hängen geblieben. Wie sollte ich vorgehen?
 

@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a9ff23e5182c8cb7c91ad93e368f61f258c84f8
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005394"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841591"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten 
 
@@ -35,19 +35,20 @@ Die folgenden HTTP-Antwortcodes geben an, dass ein Ereignis erfolgreich an den W
 
 ### <a name="failure-codes"></a>Fehlercodes
 
-Die folgenden HTTP-Antwortcodes geben an, dass bei der Übermittlung eines Ereignisses ein Fehler aufgetreten ist. 
+Die folgenden HTTP-Antwortcodes geben an, dass bei der Übermittlung eines Ereignisses ein Fehler aufgetreten ist.
 
 - 400 – Ungültige Anforderung
 - 401 – Nicht autorisiert
 - 404 – Nicht gefunden
 - 408 – Anforderungstimeout
+- 413 – Anforderungsentität zu groß
 - 414 – URI zu lang
 - 429 – Zu viele Anforderungen
 - 500 Interner Serverfehler
 - 503 Dienst nicht verfügbar
 - 504 Gateway-Timeout
 
-Wenn Event Grid eine Fehlermeldung empfängt, die angibt, dass der Endpunkt vorübergehend nicht verfügbar oder eine künftige Anforderung unter Umständen erfolgreich ist, wird versucht, das Ereignis erneut zu senden. Wenn Event Grid eine Fehlermeldung empfängt, die angibt, dass die Bereitstellung nie erfolgreich sein wird und ein [Endpunkt für unzustellbare Nachrichten konfiguriert wurde](manage-event-delivery.md), sendet Event Grid das Ereignis an den Endpunkt für unzustellbare Nachrichten. 
+Wenn Sie [einen Endpunkt für unzustellbare Nachrichten konfiguriert haben](manage-event-delivery.md) und Event Grid den Antwortcode 400 oder 413 erhält, sendet Event Grid das Ereignis sofort an den Endpunkt für unzustellbare Nachrichten. Andernfalls wiederholt Event Grid alle Fehler.
 
 ## <a name="retry-intervals-and-duration"></a>Wiederholungsintervalle und Dauer
 
