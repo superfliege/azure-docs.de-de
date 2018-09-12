@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 08/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
-ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e1d6f2d6181e70fde75907191664dcf6cd0b7252
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698382"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391758"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Überwachen von Batch-Lösungen durch Zählen von Tasks und Knoten nach Status
 
@@ -53,11 +53,9 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 
 Sie können ein ähnliches Muster für REST und andere unterstützte Sprachen verwenden, um die Taskanzahl für einen Auftrag zu erhalten. 
 
-### <a name="counts-for-large-numbers-of-tasks"></a>Gilt für eine große Anzahl von Tasks
-
-Der Vorgang „Get Task Counts“ (Taskanzahl abrufen) gibt die Anzahl der Taskstatus im System zu einem bestimmten Zeitpunkt zurück. Wenn Ihr Auftrag über eine große Anzahl von Tasks verfügt, können bei den von „Get Task Counts“ (Taskanzahl abrufen) zurückgegebenen Ergebnissen die tatsächlichen Taskzustände für einige Sekunden fehlen. Batch stellt die endgültige Konsistenz zwischen den Ergebnissen von „Get Task Counts“ (Taskanzahl abrufen) und den tatsächlichen Taskzuständen (die Sie über die API zum Auflisten der Tasks abfragen können) sicher. Wenn Ihr Auftrag jedoch über eine sehr große Anzahl von Tasks verfügt (> 200.000), wird empfohlen, stattdessen die API zum Auflisten von Tasks mit einer [gefilterten Abfrage](batch-efficient-list-queries.md) zu verwenden, die aktuellere Informationen bereitstellt. 
-
-API-Versionen des Batch-Diensts vor 2018-08-01.7.0 geben auch eine `validationStatus`-Eigenschaft in der Antwort von „Get Task Counts“ zurück. Diese Eigenschaft gibt an, ob Batch die Zustandsanzahl auf Konsistenz mit den von der API zum Auflisten von Tasks angegebenen überprüft hat. Der Wert `validated` bedeutet lediglich, dass Batch mindestens einmal für den Auftrag eine Konsistenzüberprüfung durchgeführt hat. Der Wert der `validationStatus`-Eigenschaft gibt nicht an, ob die von „Get Task Counts“ zurückgegebenen Zahlen auf dem neuesten Stand sind.
+> [!NOTE]
+> API-Versionen des Batch-Diensts vor 2018-08-01.7.0 geben auch eine `validationStatus`-Eigenschaft in der Antwort von „Get Task Counts“ zurück. Diese Eigenschaft gibt an, ob Batch die Zustandsanzahl auf Konsistenz mit den von der API zum Auflisten von Tasks angegebenen überprüft hat. Der Wert `validated` bedeutet lediglich, dass Batch mindestens einmal für den Auftrag eine Konsistenzüberprüfung durchgeführt hat. Der Wert der `validationStatus`-Eigenschaft gibt nicht an, ob die von „Get Task Counts“ zurückgegebenen Zahlen auf dem neuesten Stand sind.
+>
 
 ## <a name="node-state-counts"></a>Knotenstatuszähler
 

@@ -6,23 +6,23 @@ services: key-vault
 author: amitbapat
 manager: mbaldwin
 ms.service: key-vault
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: c58fc56742c0a11771bdd84e4195e6f476622a3b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6315434c1e8acc82e02f5c9e5ae8ab2d1cacc887
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346669"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302052"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
 In dieser Anleitung wird schrittweise erklärt, wie Sie Key Vault-Firewalls und virtuelle Netzwerke konfigurieren, um den Zugriff auf Ihren Schlüsseltresor einzuschränken. Die [Virtual Network-Dienstendpunkte für Key Vault](key-vault-overview-vnet-service-endpoints.md) ermöglichen Ihnen, den Zugriff auf den Schlüsseltresor auf angegebene virtuelle Netzwerk und/oder eine Gruppe von IPv4-Adressbereichen (Internet Protocol, Version 4) zu beschränken.
 
 > [!IMPORTANT]
-> Sobald Firewalls und Regeln für virtuelle Netzwerke in Kraft sind, können alle Vorgänge auf Key Vault-[Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) NUR ausgeführt werden, wenn Aufruferanforderungen aus zulässigen virtuellen Netzwerken oder IPV4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor im Azure-Portal. Während ein Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren kann, kann er möglicherweise keine Schlüssel/Geheimnisse/Zertifikate auflisten, wenn sein Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch die „Key Vault-Auswahl“ anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
+> Sobald Firewalls und Regeln für virtuelle Netzwerke in Kraft sind, können alle Vorgänge auf Key Vault-[Datenebene](../key-vault/key-vault-secure-your-key-vault.md#data-plane-access-control) NUR ausgeführt werden, wenn Aufruferanforderungen aus zulässigen virtuellen Netzwerken oder IPV4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor im Azure-Portal. Obwohl ein Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren kann, kann er möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn sein Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
 
 ## <a name="azure-portal"></a>Azure-Portal
 

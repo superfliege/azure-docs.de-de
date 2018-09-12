@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: carlrab
-ms.openlocfilehash: 350e472a4c17ed878d8506b4093bcd44ad60f469
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c1ea223bf00dea32fb150cf141be7b5ea3239215
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288020"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055419"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
@@ -44,7 +44,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1536|3072|4096|4096|
 |Maximale Protokollgröße (GB)|307|307|461|922|1229|1229|
-|TempDB-Größe (MB)|32|64|128|256|384|384|
+|tempdb-Größe (GB)|32|64|128|256|384|384|
 |Ziel-IOPS (64 KB)|500|1000|2000|4000|7.000|7.000|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|
@@ -66,7 +66,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1536|3072|4096|4096|4096|4096|
 |Maximale Protokollgröße (GB)|307|307|461|614|1229|1229|1229|1229|
-|TempDB-Größe (MB)|64|128|256|384|384|384|384|384|
+|tempdb-Größe (GB)|64|128|256|384|384|384|384|384|
 |Ziel-IOPS (64 KB)|500|1000|2000|4000|6000|7.000|7.000|7.000|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -89,7 +89,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
 |Maximale Protokollgröße (GB)|307|307|307|307|307|307|
-|TempDB-Größe (MB)|32|64|128|256|384|384|
+|tempdb-Größe (GB)|32|64|128|256|384|384|
 |Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|80.000|120000|
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|3200|4800|
@@ -112,7 +112,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|2048|4096|4096|4096|
 |Maximale Protokollgröße (GB)|307|307|307|307|614|1229|1229|1229|
-|TempDB-Größe (MB)|64|128|256|384|384|384|384|384|
+|tempdb-Größe (GB)|64|128|256|384|384|384|384|384|
 |Ziel-IOPS (64 KB)|5.000|10000|20000|40.000|60000|80.000|100.000|200.000
 |Max. gleichzeitige Worker (Anforderungen)|200|400|800|1600|2400|3200|4000|8.000|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -125,4 +125,5 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Antworten auf häufig gestellte Fragen finden Sie unter [SQL-Datenbank – Häufig gestellte Fragen](sql-database-faq.md).
+- Informationen zu Grenzwerten auf dem Server und Abonnementebenen finden Sie unter [Übersicht zu Ressourcenlimits für Azure SQL-Datenbank](sql-database-resource-limits.md).
 - Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
