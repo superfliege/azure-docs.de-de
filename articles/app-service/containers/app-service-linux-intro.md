@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: e40283abd418552f296f7539e554e0ad5232e49a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5ab5452aec5b0371caaf437b6e364ed7b922db3a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031685"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162256"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Einführung in Azure App Service unter Linux
 
@@ -76,7 +76,7 @@ Im Azure-Portal werden nur Features angezeigt, die derzeit für Web-App für Con
 
 Einige Features, z.B. die Integration virtueller Netzwerke, Azure Active Directory-/Drittanbieterauthentifizierung oder Kudu-Websiteerweiterungen, sind noch nicht verfügbar. Sobald diese Features verfügbar sind, aktualisieren wir die Dokumentation entsprechend und veröffentlichen Blog-Beiträge zu den Änderungen.
 
-App Service unter Linux wird nur in den App Service-Plänen [Basic, Standard und Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) unterstützt und verfügt nicht über einen [Free- oder Shared](https://azure.microsoft.com/pricing/details/app-service/plans/)-Tarif. [Linux unter ASE (Tarif „Isolated“)](https://blogs.msdn.microsoft.com/appserviceteam/2018/05/07/announcing-the-linux-on-app-service-environment-public-preview/) befindet sich im Vorschaumodus und wird für Produktionsworkloads derzeit nicht unterstützt. Sie können keine Web-App für Container in einem App Service-Plan erstellen, in dem bereits Web-Apps unter anderen Betriebssystemen als Linux gehostet werden. Derzeit besteht auch die Beschränkung, dass Windows- und Linux-Apps nicht in derselben Ressourcengruppe gemischt werden dürfen.
+App Service unter Linux wird nur in den App Service-Plänen [Basic, Standard und Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) unterstützt und verfügt nicht über einen [Free- oder Shared](https://azure.microsoft.com/pricing/details/app-service/plans/)-Tarif. Sie können keine Web-App für Container in einem App Service-Plan erstellen, in dem bereits Web-Apps unter anderen Betriebssystemen als Linux gehostet werden. Derzeit besteht auch die Beschränkung, dass Windows- und Linux-Apps nicht in derselben Ressourcengruppe gemischt werden dürfen.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

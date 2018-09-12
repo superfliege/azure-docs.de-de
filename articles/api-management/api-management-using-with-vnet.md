@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: deba3ad8a283b111dc94a5361f3fa4e73d95c0b8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: a74d91ad986b606a36a8040ac849e7fcbec03f16
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187382"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093191"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
@@ -109,7 +109,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | Quell-/Zielport(s) | Richtung | Transportprotokoll | Quelle/Ziel | Zweck (*) | Typ des virtuellen Netzwerks |
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |Eingehend |TCP |INTERNET/VIRTUAL_NETWORK|Kommunikation zwischen Clients und API Management|Extern |
-| */3443 |Eingehend |TCP |INTERNET/VIRTUAL_NETWORK|Verwaltungsendpunkt für Azure-Portal und PowerShell |Intern |
+| */3443 |Eingehend |TCP |INTERNET/VIRTUAL_NETWORK|Verwaltungsendpunkt für Azure-Portal und PowerShell |Extern & Intern |
 | * / 80, 443 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|**Abhängigkeit von Azure Storage**, Azure Service Bus und Azure Active Directory (falls zutreffend)|Extern & Intern |
 | * / 1433 |Ausgehend |TCP |VIRTUAL_NETWORK/SQL|**Zugriff auf Azure SQL-Endpunkte** |Extern & Intern |
 | * / 5672 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|Abhängigkeit für Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent |Extern & Intern |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340038"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349227"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -340,7 +340,7 @@ Wenn die Bereitstellung für die Anwendung aktiviert ist, müssen Sie möglicher
 | Schritt | angeben |
 | --- | --- |
 | Entfernen des Benutzers aus der Gruppe, der die App zugewiesen ist | [Verwalten der Gruppenmitgliedschaft für Benutzer in Ihrem Azure Active Directory-Mandanten](fundamentals/active-directory-groups-members-azure-portal.md) |
-| Warten Sie einige Minuten bis zur Aufhebung der Bereitstellung. | [Automatisierte SaaS-Benutzerbereitstellung in Azure AD: Wie funktioniert die automatisierte Bereitstellung?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
+| Warten Sie einige Minuten bis zur Aufhebung der Bereitstellung. | [Automatisierte SaaS-Benutzerbereitstellung in Azure AD: Wie funktioniert die automatisierte Bereitstellung?](manage-apps/user-provisioning.md#how-does-automatic-provisioning-work) |
 | Melden Sie sich in einer anderen Browsersitzung als der Information-Worker beim Portal „Meine Apps“ an, und bestätigen Sie, dass die Kachel fehlt. | http://myapps.microsoft.com |
 
 

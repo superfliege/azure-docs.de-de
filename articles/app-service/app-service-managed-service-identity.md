@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: fc1251cafcb2a535ccaf8354cb5c7c8b6a4afd33
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c7a819f987de41ba7705d21bb6de95475cd3f9c8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337533"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027185"
 ---
 # <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Informationen zum Verwenden der verwalteten Azure-Dienstidentität in App Service und Azure Functions
 
@@ -26,7 +26,7 @@ ms.locfileid: "43337533"
 > [!Important] 
 > Die verwaltete Dienstidentität für App Service und Azure Functions verhält sich nicht wie erwartet, wenn Ihre App von einem zum anderen Abonnement/Mandanten migriert wird. Die App muss eine neue Identität abrufen. Zu diesem Zweck kann die Funktion deaktiviert und dann erneut aktiviert werden. Weitere Informationen finden Sie im Abschnitt [Entfernen einer Identität](#remove) weiter unten. Für nachgeschaltete Ressourcen müssen außerdem die Zugriffsrichtlinien für die Verwendung der neuen Identität aktualisiert werden.
 
-In diesem Thema erfahren Sie, wie eine verwaltete App-Identität für App Service- und Azure Functions-Anwendungen erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Durch eine verwaltete Dienstidentität von Azure Active Directory kann Ihre App mühelos auf andere mit AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zur verwalteten Dienstidentität finden Sie in der [Übersicht über die verwaltete Dienstidentität](../active-directory/managed-service-identity/overview.md).
+In diesem Thema erfahren Sie, wie eine verwaltete App-Identität für App Service- und Azure Functions-Anwendungen erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Durch eine verwaltete Dienstidentität von Azure Active Directory kann Ihre App mühelos auf andere mit AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zur verwalteten Dienstidentität finden Sie in der [Übersicht über die verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Erstellen einer App mit einer Identität
 
@@ -151,7 +151,7 @@ Hierbei werden `<TENANTID>` und `<PRINCIPALID>` durch GUIDs ersetzt. Die Eigensc
 Eine App kann mithilfe ihrer Identität Tokens für andere Ressourcen abrufen, die durch AAD wie Azure Key Vault geschützt sind. Diese Tokens stellen die Anwendung dar, die auf die Ressource zugreift, nicht einen bestimmten Benutzer der Anwendung. 
 
 > [!IMPORTANT]
-> Sie müssen die Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren. Wenn Sie beispielsweise ein Token für Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Tokens für die verwaltete Dienstidentität unterstützen, finden Sie unter [Azure-Dienste mit Unterstützung für die Azure AD-Authentifizierung](../active-directory/managed-service-identity/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
+> Sie müssen die Zielressource möglicherweise für den Zugriff über die Anwendung konfigurieren. Wenn Sie beispielsweise ein Token für Key Vault anfordern, müssen Sie sicherstellen, dass Sie eine Zugriffsrichtlinie hinzugefügt haben, die die Identität Ihrer Anwendung enthält. Andernfalls werden Ihre Aufrufe von Key Vault abgelehnt, auch wenn diese das Token enthalten. Informationen zu den Ressourcen, die Tokens für die verwaltete Dienstidentität unterstützen, finden Sie unter [Azure-Dienste mit Unterstützung für die Azure AD-Authentifizierung](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
 
 Zum Abrufen eines Tokens in App Service und Azure Functions ist ein einfaches REST-Protokoll verfügbar. Für .NET-Anwendungen bietet die Microsoft.Azure.Services.AppAuthentication-Bibliothek eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung.
 
