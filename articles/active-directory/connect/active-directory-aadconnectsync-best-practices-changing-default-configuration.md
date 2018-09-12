@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2c2fc3bcba4b685fba36683f89c0b6ad877dbb1d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0668eb33fe33b062c941ec4f2bff47c5ed77fb51
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595137"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287883"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration
 Dieses Thema dient zur Beschreibung der unterstützten und nicht unterstützten Änderungen der Azure AD Connect-Synchronisierung.
@@ -37,6 +37,9 @@ Ab den Versionen von Build 1.1 (Februar 2016) können Sie den [Scheduler](active
 
 ## <a name="changes-to-synchronization-rules"></a>Änderungen an Synchronisierungsregeln
 Der Installations-Assistent verfügt über eine Konfiguration, die für die meisten gängigen Szenarien funktioniert. Falls Sie Änderungen an der Konfiguration vornehmen müssen, müssen Sie diese Regeln befolgen, um weiterhin über eine unterstützte Konfiguration zu verfügen.
+
+> [!WARNING]
+> Wenn Sie Änderungen an den Standardsynchronisierungsregeln vornehmen, werden diese bei der nächsten Aktualisierung von Azure AD Connect überschrieben. Dies kann zu unerwarteten und wahrscheinlich unerwünschten Synchronisierungsergebnissen führen.
 
 * Sie können [Attributflüsse ändern](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) , wenn die standardmäßig festgelegten direkten Attributflüsse für Ihre Organisation nicht geeignet sind.
 * Wenn Sie das [„Fließen“ eines Attributs verhindern](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) und alle vorhandenen Attributwerte in Azure AD entfernen möchten, müssen Sie für dieses Szenario eine Regel erstellen.

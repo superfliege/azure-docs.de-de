@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: jeedes
-ms.openlocfilehash: f860036f1a69b2d1ab6ac8de763a49380f8fe4bf
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3a394c13092547991bf7f8ae98e5c69e92077701
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42144007"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344783"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Tutorial: Azure Active Directory-Integration mit YouEarnedIt
 
@@ -139,7 +139,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![YouEarnedIt-Konfiguration](./media/youearnedit-tutorial/tutorial_youearnedit_configure.png) 
 
-7. Zum Konfigurieren des einmaligen Anmeldens bei **YouEarnedIt** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die **SAML-Dienst-URL für einmaliges Anmelden** an Ihren zuständigen YouEarnedIt-Kundenservicemanager senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+7. Zum Konfigurieren des einmaligen Anmeldens bei **YouEarnedIt** müssen Sie das heruntergeladene ***Zertifikat (Base64)*** und die ***SAML-Dienst-URL für einmaliges Anmelden*** an Ihren zuständigen **YouEarnedIt**-Kundenservicemanager senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

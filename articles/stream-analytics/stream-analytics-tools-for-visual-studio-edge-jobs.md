@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/13/2018
-ms.openlocfilehash: cfdfa1493857a1731da74c52a616293b482f811a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5dc90a1334b525c02be3eae2985900ab07cf2e05
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030691"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696247"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Entwickeln von Stream Analytics-Edgeaufträgen mit Visual Studio-Tools
 
@@ -93,7 +93,7 @@ Um die Abfrage lokal zu testen, sollten Sie die Beispieldaten hochladen. Sie kö
 4. Sie können die Abfrage lokal ausführen oder an Azure übermitteln. Klicken Sie zum Testen der Abfrage auf **Lokal ausführen**.  
    ![Ausführungsoptionen](./media/stream-analytics-tools-for-visual-studio-edge-jobs/run-options.png)
  
-5. Im Eingabeaufforderungsfenster wird der Status des Auftrags angezeigt. Bei erfolgreicher Ausführung des Auftrags wird ein Ordner wie „2018-02-23-11-31-42“ an Ihrem Projektordnerpfad „Visual Studio 2015\Projekte\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42“ erstellt. Navigieren Sie zum Ordnerpfad, um die Ergebnisse im lokalen Ordner anzuzeigen:
+5. Im Eingabeaufforderungsfenster wird der Status des Auftrags angezeigt. Bei erfolgreicher Ausführung des Auftrags wird ein Ordner wie „2018-02-23-11-31-42“ in Ihrem Projektordnerpfad „Visual Studio 2015\Projekte\MyASAEdgejob\MyASAEdgejob\ASALocalRun\2018-02-23-11-31-42“ erstellt. Navigieren Sie zum Ordnerpfad, um die Ergebnisse im lokalen Ordner anzuzeigen:
 
    Sie können sich auch beim Azure-Portal anmelden und überprüfen, ob der Auftrag erstellt wurde. 
 

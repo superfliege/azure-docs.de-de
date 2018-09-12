@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 58a33b2d3f06deab4f31c76e04d45f8bd0bbba4c
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215066"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841963"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -28,7 +28,7 @@ In diesem Artikel werden häufig gestellte Fragen zur Passthrough-Authentifizier
 
 ## <a name="which-of-the-methods-to-sign-in-to-azure-ad-pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs-should-i-choose"></a>Welche der Methoden für die Anmeldung bei Azure AD (Passthrough-Authentifizierung, Kennworthashsynchronisierung oder Active Directory-Verbunddienste (AD FS)) sollte ich auswählen?
 
-Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und, wie Sie die richtige Anmeldemethode für Ihr Unternehmen wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
+Einen Vergleich der verschiedenen Azure AD-Anmeldemethoden und Informationen, wie Sie die richtige Anmeldemethode für Ihre Organisation wählen, finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/security/azure-ad-choose-authn).
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>Ist die Passthrough-Authentifizierung ein kostenloses Feature?
 
@@ -48,7 +48,7 @@ Ja. Die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzerna
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 
-Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Sie dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) konfigurieren.
+Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) konfigurieren.
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector auf demselben Server wie dem eines Passthrough-Authentifizierungs-Agents installieren?
 
@@ -56,17 +56,17 @@ Ja. Die umbenannten Versionen des Passthrough-Authentifizierungs-Agents (Version
 
 ## <a name="what-versions-of-azure-ad-connect-and-pass-through-authentication-agent-do-you-need"></a>Welche Versionen von Azure AD Connect und dem Passthrough-Authentifizierungs-Agent werden benötigt?
 
-Damit dieses Feature funktioniert, benötigen Sie Version 1.1.486.0 oder höher für Azure AD Connect und 1.5.58.0 oder höher für den Passthrough-Authentifizierungs-Agent. Installieren Sie die gesamte Software auf Servern mit Windows Server 2012 R2 oder höher.
+Damit dieses Feature funktioniert, benötigen Sie Version 1.1.750.0 oder höher für Azure AD Connect und Version 1.5.193.0 oder höher für den Passthrough-Authentifizierungs-Agent. Installieren Sie die gesamte Software auf Servern mit Windows Server 2012 R2 oder höher.
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Was geschieht, wenn das Kennwort des Benutzers abgelaufen ist und er versucht, sich mit der Passthrough-Authentifizierung anzumelden?
 
-Wenn Sie das [Kennwortrückschreiben](../user-help/active-directory-passwords-update-your-own-password.md) für einen bestimmten Benutzer konfiguriert haben und der Benutzer sich mit der Passthrough-Authentifizierung anmeldet, kann er sein Kennwort ändern oder zurücksetzen. Die Kennwörter werden erwartungsgemäß in das lokale Active Directory zurückgeschrieben.
+Wenn Sie das [Kennwortrückschreiben](../authentication/concept-sspr-writeback.md) für einen bestimmten Benutzer konfiguriert haben und der Benutzer sich mit der Passthrough-Authentifizierung anmeldet, kann er sein Kennwort ändern oder zurücksetzen. Die Kennwörter werden erwartungsgemäß in das lokale Active Directory zurückgeschrieben.
 
 Wenn Sie das Kennwortrückschreiben für einen bestimmten Benutzer nicht konfiguriert haben oder der Benutzer keine gültige Azure AD hat, kann der Benutzer sein Kennwort in der Cloud nicht aktualisieren. Das Kennwort lässt sich nicht aktualisieren, auch wenn es bereits abgelaufen ist. Der Benutzer sieht dann folgende Meldung: „Eine Kennwortänderung auf dieser Website wird von Ihrer Organisation nicht gestattet. Ändern Sie Ihr Kennwort anhand der von Ihrer Organisation empfohlenen Methode, oder bitten Sie Ihren Administrator um Hilfe. Der Benutzer oder der Administrator muss das Kennwort im lokalen Active Directory zurücksetzen.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Wie schützt die Passthrough-Authentifizierung vor Brute-Force-Kennwortangriffen?
 
-Weitere Informationen finden Sie unter [Azure Active Directory-Passthrough-Authentifizierung: Smart Lockout](../authentication/howto-password-smart-lockout.md).
+[Lesen Sie die Informationen zu Smart Lockout](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>Was kommunizieren Passthrough-Authentifizierungs-Agents über die Ports 80 und 443?
 
@@ -82,7 +82,7 @@ Ja. Wenn in Ihrer lokalen Umgebung WPAD (Web Proxy Auto-Discovery) aktiviert ist
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Kann ich zwei oder mehr Passthrough-Authentifizierungs-Agents auf dem gleichen Server installieren?
 
-Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einzelnen Server installieren. Wenn Sie die Passthrough-Authentifizierung für Hochverfügbarkeit konfigurieren möchten, befolgen Sie die Anweisungen unter [Azure Active Directory-Passthrough-Authentifizierung: Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
+Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einzelnen Server installieren. Wenn Sie die Passthrough-Authentifizierung für Hochverfügbarkeit konfigurieren möchten, [folgen Sie den hier aufgeführten Anweisungen](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Gewusst wie: Entfernen eines Passthrough-Authentifizierungs-Agents
 
@@ -117,6 +117,10 @@ Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents insgesa
 
 Nein, dieses Szenario wird _nicht_ unterstützt.
 
+## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Warum benötige ich ein rein cloudbasiertes globales Administratorkonto, um die Passthrough-Authentifizierung zu aktivieren?
+
+Es wird empfohlen, die Passthrough-Authentifizierung mit einem rein cloudbasierten globalen Administratorkonto zu aktivieren oder zu deaktivieren. Erfahren Sie, wie Sie ein [rein cloudbasiertes Konto für den globalen Administrator hinzufügen](../active-directory-users-create-azure-portal.md). Auf diese Weise wird sichergestellt, dass Sie sich nicht aus Ihrem Mandanten aussperren.
+
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Wie kann ich die Passthrough-Authentifizierung deaktivieren?
 
 Führen Sie den Azure AD Connect-Assistenten erneut aus, und ändern Sie die Anmeldemethode für Benutzer von der Passthrough-Authentifizierung in eine andere Methode. Diese Änderung deaktiviert die Passthrough-Authentifizierung für den Mandanten und deinstalliert den Authentifizierungs-Agent vom Server. Auf anderen Servern müssen Sie die Authentifizierungs-Agents manuell deinstallieren.
@@ -128,7 +132,7 @@ Wenn Sie einen Passthrough-Authentifizierungs-Agents auf einem Server deinstalli
 ## <a name="next-steps"></a>Nächste Schritte
 - [Aktuelle Einschränkungen:](active-directory-aadconnect-pass-through-authentication-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [Schnellstart:](active-directory-aadconnect-pass-through-authentication-quick-start.md) Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
-- [Migrieren von AD FS zur Passthrough-Authentifizierung:](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung.
+- [Migrieren von AD FS zur Passthrough-Authentifizierung](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx): Ein detaillierter Leitfaden zur Migration von AD FS (oder anderen Verbundtechnologien) zur Passthrough-Authentifizierung
 - [Smart Lockout:](../authentication/howto-password-smart-lockout.md) Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
 - [Technische Einzelheiten:](active-directory-aadconnect-pass-through-authentication-how-it-works.md) Informationen zur Funktionsweise der Passthrough-Authentifizierung
 - [Problembehandlung:](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) Informationen zum Beheben von allgemeinen Problemen, die es bei der Passthrough-Authentifizierung geben kann

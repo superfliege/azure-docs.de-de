@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 735b152f55a9309e5d5dd85dac64a607de6417b0
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443968"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338761"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -77,8 +77,8 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 
 >[!IMPORTANT]
 > Erteilen Sie dem Dienstprinzipal die korrekte Berechtigung in Azure Data Lake Store:
->- Erteilen Sie **als Quelle** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Lesen und Ausführen**, um die Dateien im Ordner/Unterordnern aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren, und wählen Sie das Hinzufügen zu **Diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
->- Erteilen Sie **als Senke** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen, und wählen Sie das Hinzufügen zu **Diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quelle als auch Senke befinden sich in der Cloud), erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**, um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
+>- Erteilen Sie **als Quelle** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Lesen und Ausführen**, um die Dateien in Ordnern/Unterordnern aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
+>- Erteilen Sie **als Senke** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quelle als auch Senke befinden sich in der Cloud), erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**, um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
 
 Folgende Eigenschaften werden unterstützt:
 
@@ -125,8 +125,8 @@ So verwenden Sie die verwaltete Dienstidentitätsauthentifizierung:
 
 >[!IMPORTANT]
 > Stellen Sie sicher, dass Sie der Data Factory-Dienstidentität die richtige Berechtigung in Azure Data Lake Store gewähren:
->- Erteilen Sie **als Quelle** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Lesen und Ausführen**, um die Dateien im Ordner/Unterordnern aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren, und wählen Sie das Hinzufügen zu **Diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
->- Erteilen Sie **als Senke** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen, und wählen Sie das Hinzufügen zu **Diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quelle als auch Senke befinden sich in der Cloud), erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**, um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
+>- Erteilen Sie **als Quelle** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Lesen und Ausführen**, um die Dateien in Ordnern/Unterordnern aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
+>- Erteilen Sie **als Senke** im Daten-Explorer unter „Zugriff“ mindestens die Berechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen, und wählen Sie das Hinzufügen zu **diesem Ordner und allen Unterordnern** für „rekursiv“ und das Hinzufügen als **ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** aus. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quelle als auch Senke befinden sich in der Cloud), erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**, um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
 
 In Azure Data Factory müssen Sie außer den allgemeinen Data Lake Store-Informationen im verknüpften Dienst keine weiteren Eigenschaften angeben.
 

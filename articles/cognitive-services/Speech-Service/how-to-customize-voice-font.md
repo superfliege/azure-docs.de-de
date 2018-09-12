@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 84493ae83515c0458bf5b9e9cf44603300a8b4f7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 35572f046b3702deba56e86819b8ad0cd7ae6e9b
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284886"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842469"
 ---
 # <a name="creating-custom-voice-fonts"></a>Erstellen benutzerdefinierter Voicefonts
 
@@ -22,7 +22,6 @@ Zur Erstellung Ihres Voicefonts laden Sie eine Tonstudioaufnahme und die zugehö
 
 Zu Beginn sind für einen Proof of Concept nur wenige Daten erforderlich. Je mehr Daten Sie anschließend bereitstellen, desto natürlicher und professioneller klingt die Stimme.
 
-Die Stimmanpassung ist für US-amerikanisches Englisch (en-us) und vereinfachtes Chinesisch (zh-CN) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,19 +31,20 @@ Außerdem benötigen Sie ein Azure-Konto und ein Abonnement für den Speech-Dien
 
 1. Melden Sie sich im [Custom Voice-Portal](https://customvoice.ai) mit demselben Microsoft-Konto an, mit dem Sie dem Nutzungsantrag gestellt haben.
 
-2. Klicken Sie oben rechts unter Ihrem Kontonamen auf „Subscriptions“ (Abonnements).
+2. Navigieren Sie oben rechts unter Ihrem Kontonamen zu „Alle Abonnements“.
 
     ![Abonnements](media/custom-voice/subscriptions.png)
 
 3. Klicken Sie auf der Seite „Subscriptions“ (Abonnements) auf „Connect existing subscription“ (Verbindung mit vorhandenem Abonnement herstellen).
-
-     ![Verbindung mit vorhandenem Abonnement herstellen](media/custom-voice/connect-existing-sub.png)
 
 4. Fügen Sie Ihren Abonnementschlüssel wie unten gezeigt in die Tabelle ein. Jedem Abonnement sind zwei Schlüssel zugewiesen. Sie können beide verwenden.
 
      ![Abonnement hinzufügen](media/custom-voice/add-subscription.png)
 
 Es kann losgehen!
+
+> [!IMPORTANT]
+> In der privaten Vorschauphase müssen Abonnements in der Whitelist enthalten sein, damit die Custom Voice-Funktion verwendet werden kann. Führen Sie die Schritte auf der Seite aus, um Ihr Abonnement zur Whitelist hinzuzufügen.
 
 ## <a name="prepare-recordings-and-transcripts"></a>Vorbereiten von Aufnahmen und Transkripten
 
@@ -69,8 +69,6 @@ Die Audiodateien sollten so vorbereitet werden, dass sie die unten aufgeführten
 | Archivformat| ZIP      |
 | Maximale Archivgröße|200 MB|
 
-Stellen Sie alle Dateien in genau einem Ordner ohne Unterverzeichnisse zur Verfügung, und erstellen Sie daraus ein Paket mit einem ZIP-Datei-Archiv.
-
 > [!NOTE]
 > WAVE-Dateien mit einer Samplingrate von unter 16.000 Hz werden zurückgewiesen. Wenn eine ZIP-Datei WAVE-Dateien mit unterschiedlichen Samplingraten enthält, werden nur solche importiert, deren Rate gleich oder höher als 16.000 Hz ist.
 > Aktuell werden im Portal ZIP-Archiv-Importe von bis zu 200 MB unterstützt. Sie haben allerdings die Möglichkeit, auch mehrere Archive hochzuladen. Benutzer des kostenlosen Abonnements können maximal zehn ZIP-Dateien als Datasets hochladen. Bei Benutzern des Standardabonnements liegt die Höchstzahl bei 50.
@@ -90,7 +88,7 @@ Beispiel:
 Das Custom Voice-System normalisiert die Transkripte, indem der Text in Kleinbuchstaben umgewandelt wird und unwichtige Interpunktionszeichen entfernt werden. Entscheidend ist, dass die Transkripte genau mit den zugehörigen Audioaufnahmen übereinstimmen.
 
 > [!TIP]
-> Beim Erstellen von Stimmen mit der Text-to-Speech-API für eine Produktionsumgebung sollten Sie bei der Auswahl der Äußerungen (oder beim Schreiben der Skripte) sowohl auf eine ausreichende Anzahl phonetischer Eigenschaften als auch auf die phonetische Effizienz achten.
+> Beim Erstellen von Stimmen mit der Text-to-Speech-API für eine Produktionsumgebung sollten Sie bei der Auswahl der Äußerungen (oder beim Schreiben der Skripte) sowohl auf eine ausreichende Anzahl phonetischer Eigenschaften als auch auf die phonetische Effizienz achten. Erzielen Sie nicht die gewünschten Ergebnisse? [Wenden Sie sich an das Custom Voice-Team](mailto:tts@microsoft.com), um mehr über die Beratung durch uns zu erfahren.
 
 ## <a name="upload-your-datasets"></a>Hochladen von Datasets
 
@@ -102,8 +100,6 @@ Nach der Vorbereitung des Audiodateiarchivs und der Transkripte können Sie dies
 1. Melden Sie sich beim Portal an.
 
 2. Klicken Sie unter „Custom Voice“ auf der Hauptseite auf **Data** (Daten). 
-
-    ![Meine Projekte](media/custom-voice/my-projects.png)
 
     Die Datentabelle „My Voice Data“ (Meine Stimmdaten) wird angezeigt. Wenn Sie noch keine Datasets für Ihre Stimme hochgeladen haben, ist die Tabelle leer.
 
@@ -124,7 +120,7 @@ Nach der Vorbereitung des Audiodateiarchivs und der Transkripte können Sie dies
 > [!NOTE]
 > Benutzer des kostenlosen Abonnements können zwei Datasets gleichzeitig hochladen. Bei Benutzern des Standardabonnements sind es fünf. Wenn Sie die maximale Uploadanzahl erreicht haben, müssen Sie warten, bis der Importvorgang eines oder mehrerer Datasets beendet wurde. Versuchen Sie es anschließend erneut.
 
-Nach dem Upload wird die Datentabelle „My Voice Data“ (Meine Stimmdaten) erneut angezeigt. In dieser sollte sich ein Eintrag für das hochgeladene Dataset befinden. 
+Nach dem Upload wird die Datentabelle „My Voice Data“ (Meine Stimmdaten) erneut angezeigt. In dieser sollte sich ein Eintrag für das hochgeladene Dataset befinden.
 
 Datasets werden nach dem Hochladen automatisch überprüft. Bei der Datenüberprüfung wird darauf geachtet, dass die Audiodateien im richtigen Format und in der richtigen Größe vorliegen und die korrekte Samplingfrequenz verwendet wird. Bei der Überprüfung der Transkriptionsdateien wird sichergestellt, dass diese im richtigen Dateiformat vorliegen. Außerdem wird eine Textnormalisierung durchgeführt. Die Äußerungen werden mithilfe der Spracherkennung transkribiert. Der daraus entstehende Text wird anschließend mit dem bereitgestellten Transkript verglichen.
 
@@ -191,17 +187,11 @@ Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der R
 
 ## <a name="test-your-voice-font"></a>Testen des Voicefonts
 
-Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereitstellung testen. Klicken Sie in der Spalte „Operations“ (Vorgänge) auf **Test** (Testen). Die Testseite wird für den ausgewählten Voicefont angezeigt. Wenn Sie noch keine Testanforderungen für die Stimme gesendet haben, ist die Tabelle leer.
-
-![Meine Voicefonts, Teil 2](media/custom-voice/my-voice-fonts2.png)
+Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereitstellung testen. Klicken Sie in der Tabelle „Meine Voicefonts“ in der Spalte „Vorgänge“ auf **Testen**. Die Testseite wird für den ausgewählten Voicefont angezeigt. Wenn Sie noch keine Testanforderungen für die Stimme gesendet haben, ist die Tabelle leer.
 
 Klicken Sie unter der Tabellenüberschrift auf **Test with text** (Mit Text testen). Daraufhin wird ein Kontextmenü angezeigt, indem Sie die Textanforderung senden können. Sie können für Ihre Testanforderung entweder Nur-Text oder SSML verwenden. Die maximale Eingabegröße liegt bei 1024 Zeichen einschließlich aller Tags für die SSML-Anforderung. Die Textsprache muss mit der Sprache des Voicefonts übereinstimmen.
 
-![Testen des Voicefonts](media/custom-voice/voice-font-testing.png)
-
 Füllen Sie zuerst das Textfeld aus, und wählen Sie den Eingabemodus aus. Klicken Sie anschließend auf **Yes** (Ja), um Ihre Testanforderung zu senden und zur Testseite zurückzukehren. In der Tabelle befindet sich nun ein Eintrag für die neue Anforderung und die Statusspalte. Die Sprachsynthese kann einige Minuten in Anspruch nehmen. Wenn in der Statusspalte „Succeeded“ (Erfolgreich) angezeigt wird, können Sie die Texteingabe (eine `.txt`-Datei) und die Audioausgabe (eine `.wav`-Datei) herunterladen und die Qualität letzterer überprüfen.
-
-![Testen des Voicefonts, Teil 2](media/custom-voice/voice-font-testing2.png)
 
 ## <a name="create-and-use-a-custom-endpoint"></a>Erstellen und Verwenden eines benutzerdefinierten Endpunkts
 
@@ -224,13 +214,20 @@ Wenn als Bereitstellungsstatus „Succeeded“ (Erfolgreich) angezeigt wird, wir
 Die Onlineüberprüfung des Endpunkts kann auch über das Custom Voice-Portal erfolgen. Wählen Sie zum Testen des Endpunkts **Endpoints testing** (Endpunkte testen) aus dem Custom Voice-Dropdownmenü aus. Die Seite zum Testen des Endpunkts wird angezeigt. Wählen Sie eine bereitgestellte benutzerdefinierte Stimme aus, und geben Sie im Textfeld den Text ein, der vorgelesen werden soll. Als Eingabe kann entweder das Nur-Text- oder SSML-Format verwendet werden.
 
 > [!NOTE] 
-> Wenn Sie das SSML-Format verwenden, muss mit dem `<voice>`-Tag der Namen angegeben werden, den Sie bei der Erstellung Ihrer individuellen Stimme verwendet haben.
+> Wenn Sie das SSML-Format verwenden, muss mit dem `<voice>`-Tag der Namen angegeben werden, den Sie bei der Erstellung Ihrer individuellen Stimme verwendet haben. Wenn Sie Nur-Text senden, wird immer die benutzerdefinierte Stimme verwendet.
 
 Klicken Sie auf **Play** (Wiedergabe), damit der Text von Ihrem benutzerdefinierten Voicefont vorgelesen wird.
 
 ![Testen von Endpunkten](media/custom-voice/endpoint-testing.png)
 
 Der benutzerdefinierte Endpunkt verfügt über dieselben Funktionen wie der Standardendpunkt für Text-to-Speech-API-Anforderungen. Weitere Informationen finden Sie unter [REST-API](rest-apis.md).
+
+## <a name="language-support"></a>Sprachunterstützung
+
+Die Stimmanpassung ist für US-amerikanisches Englisch (en-US), vereinfachtes Chinesisch (zh-CN) und Italienisch (it-IT) verfügbar.
+
+> [!NOTE]
+> Für das italienische Stimmtraining steht zunächst ein DataSet von über 2.000 Äußerungen zur Verfügung. Außerdem werden zweisprachige Chinesisch-Englisch-Modelle mit einem DataSet von über 2.000 Äußerungen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

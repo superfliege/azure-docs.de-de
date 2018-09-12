@@ -10,49 +10,81 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 06/06/2017
+ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9d5fce5a80ac1f281fdbe6afe7f9a97816807ccc
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189554"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287086"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM
-Der globale Administrator, der Azure AD Privileged Identity Management (PIM) für eine Organisation aktiviert, erhält automatisch Rollenzuweisungen und Zugriff auf PIM. Andere Benutzer dagegen erhalten nicht standardmäßig Schreibzugriff, auch nicht die weiteren globalen Administratoren. Andere globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen erhalten schreibgeschützten Zugriff auf Azure AD PIM. Um Zugriff auf PIM zu gewähren, kann der erste Benutzer andere der Rolle **Administrator für privilegierte Rollen** zuweisen.
+
+Der globale Administrator, der Azure AD Privileged Identity Management (PIM) für eine Organisation aktiviert, erhält automatisch Rollenzuweisungen und Zugriff auf PIM. Andere Benutzer dagegen erhalten nicht standardmäßig Schreibzugriff, auch nicht die anderen globalen Administratoren. Andere globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen erhalten schreibgeschützten Zugriff auf PIM. Um Zugriff auf PIM zu gewähren, kann der erste Benutzer anderen die Rolle **Administrator für privilegierte Rollen** zuweisen.
 
 > [!NOTE]
-> Für die Verwaltung von Azure AD PIM ist Azure MFA erforderlich. Da Microsoft-Konten nicht für Azure MFA registriert werden können, kann ein Benutzer, der sich mit einem Microsoft-Konto anmeldet, nicht auf Azure AD PIM zugreifen.
-> 
-> 
+> Für die Verwaltung von PIM ist Azure MFA erforderlich. Da Microsoft-Konten nicht für Azure MFA registriert werden können, kann ein Benutzer, der sich mit einem Microsoft-Konto anmeldet, nicht auf PIM zugreifen.
 
-Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle des Administrators für privilegierte Rollen vorhanden sind, falls ein Benutzer gesperrt oder ein Konto gelöscht wird.
+Stellen Sie sicher, dass immer mindestens zwei Benutzer mit der Rolle „Administrator für privilegierte Rollen“ vorhanden sind, falls ein Benutzer gesperrt oder sein Konto gelöscht wird.
 
-## <a name="give-another-user-access-to-manage-pim"></a>Gewähren des Zugriffs für einen anderen Benutzer zur Verwaltung von PIM
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie auf dem Dashboard die App **Azure AD Privileged Identity Management** aus.
-2. Wählen Sie **Privilegierte Rollen verwalten** > **Administrator für privilegierte Rollen** > **Hinzufügen** aus.
-   
-    ![Administrator für privilegierte Rollen hinzufügen – Screenshot](./media/pim-how-to-give-access-to-pim/PIM_add_PRA.png)
-3. Auf dem Blatt „Verwaltete Benutzer hinzufügen“ ist Schritt 1 bereits abgeschlossen. Wählen Sie Schritt 2 **Benutzer auswählen** aus, und suchen Sie nach dem Benutzer, den Sie hinzufügen möchten.
-   
-    ![Benutzer auswählen – Screenshot](./media/pim-how-to-give-access-to-pim/PIM_select_users.png)
-4. Wählen Sie den Benutzer aus den Suchergebnissen aus, und klicken Sie auf **Fertig**.
-5. Klicken Sie zum Speichern der Auswahl auf **OK** . Der von Ihnen ausgewählte Benutzer wird in der Liste der Administratoren für privilegierte Rollen angezeigt.
-   
-   * Wenn Sie einem Benutzer eine neue Rolle zuweisen, wird er automatisch als berechtigt zum Aktivieren der Rolle eingerichtet. Wenn ihm die Rolle permanent zugewiesen werden soll, klicken Sie auf den Benutzer in der Liste. Wählen Sie im Menü mit den Benutzerinformationen **Als permanent festlegen** aus.
-6. Senden Sie dem Benutzer einen Link zu [Erste Schritte mit Azure AD Privileged Identity Management](pim-getting-started.md).
+## <a name="grant-access-to-manage-pim"></a>Gewähren des Zugriffs zur Verwaltung von PIM
 
-## <a name="remove-another-users-access-rights-for-managing-pim"></a>Entfernen der Zugriffsrechte eines Benutzers für die Verwaltung von PIM
-Bevor Sie einen Benutzer aus der Rolle der Administratoren für privilegierte Rollen entfernen, stellen Sie sicher, dass dieser Rolle danach noch mindestens zwei Benutzer zugewiesen sind.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Klicken Sie auf dem PIM-Dashboard auf die Rolle **Administrator für privilegierte Rollen**.  Es wird eine Liste der Benutzer angezeigt, die diese Rolle derzeit innehaben.
-2. Klicken Sie auf den Benutzer in der Benutzerliste.
-3. Klicken Sie auf **Entfernen**.  Eine Bestätigungsmeldung wird angezeigt.
-4. Klicken Sie auf **Ja** , um den Benutzer aus der Rolle zu entfernen.
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
+
+1. Klicken Sie auf **Rollen**.
+
+    ![Verzeichnisrollen in Azure AD PIM: Rollen](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+
+1. Klicken Sie auf die Rolle **Administrator für privilegierte Rollen**, um die Seite „Mitglieder“ zu öffnen.
+
+    ![Administrator für privilegierte Rollen: Mitglieder](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
+
+1. Klicken Sie auf **Mitglied hinzufügen**, um den Bereich „Verwaltete Mitglieder hinzufügen“ zu öffnen.
+
+1. Klicken Sie auf **Mitglieder auswählen**, um den Bereich „Mitglieder auswählen“ zu öffnen.
+
+    ![Administrator für privilegierte Rollen: Mitglieder auswählen](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
+
+1. Wählen Sie ein Mitglied aus, und klicken Sie dann auf **Auswählen**.
+
+1. Klicken Sie auf **OK**, damit das Mitglied für die Rolle **Administrator für privilegierte Rollen** berechtigt ist.
+
+    Wenn Sie einem Benutzer in PIM eine neue Rolle zuweisen, wird er automatisch als **Berechtigt** zum Aktivieren der Rolle konfiguriert.
+
+1. Um das Mitglied dauerhaft zu machen, klicken Sie in der Mitgliederliste „Administrator für privilegierte Rollen“ auf den Benutzer.
+
+1. Klicken Sie auf **Mehr** und dann auf **Als permanent festlegen**, um die Zuweisung dauerhaft einzurichten.
+
+    ![Administrator für privilegierte Rollen: Als permanent festlegen](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
+
+1. Senden Sie dem Benutzer einen Link für den [Einstieg in PIM](pim-getting-started.md).
+
+## <a name="remove-access-to-manage-pim"></a>Aufheben des Zugriffs zur Verwaltung von PIM
+
+Bevor Sie einen Benutzer von der Rolle „Administrator für privilegierte Rollen“ entfernen, stellen Sie sicher, dass dieser Rolle danach noch mindestens zwei Benutzer zugewiesen sind.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
+
+1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
+
+1. Klicken Sie auf **Rollen**.
+
+1. Klicken Sie auf die Rolle **Administrator für privilegierte Rollen**, um die Seite „Mitglieder“ zu öffnen.
+
+1. Fügen Sie ein Häkchen neben dem Benutzer hinzu, den Sie entfernen möchten, und klicken Sie dann auf **Mitglied entfernen**.
+
+    ![Administrator für privilegierte Rollen: Mitglied entfernen](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
+
+1. Klicken Sie in der Meldung, die angezeigt wird und Sie fragt, ob Sie das Mitglied von der Rolle entfernen möchten, auf **Ja**.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Aktivieren der Abonnementverwaltung in Ihrem Mandanten](pim-resource-roles-enable-subscription-management.md)
+- [Einstieg in die Verwendung von PIM](pim-getting-started.md)

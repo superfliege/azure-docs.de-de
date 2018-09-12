@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ca21355c836a58591bbbd09874d0c5d0b5c17435
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126424"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842616"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Erstellen und Verwalten von Aufträgen für die elastische Datenbank mit Transact-SQL (T-SQL)
 
@@ -184,7 +184,13 @@ Um beispielsweise alle Ergebnisse aus derselben Auftragsausführung zusammen zu 
 
 ## <a name="monitor-database-performance"></a>Überwachen der Datenbankleistung
 
-Im folgenden Beispiel wird ein neuer Auftrag zum Sammeln von Leistungsdaten von mehreren Datenbanken erstellt.  
+Im folgenden Beispiel wird ein neuer Auftrag zum Sammeln von Leistungsdaten von mehreren Datenbanken erstellt.
+
+Standardmäßig versucht der Auftrags-Agent, die Tabelle zum Speichern der zurückgegebenen Ergebnisse zu erstellen. Daher muss die Anmeldung, die den Anmeldeinformationen zugeordnet ist, die für die Anmeldeinformationen für die Ausgabe verwendet werden, über ausreichende Berechtigungen zum Ausführen dieses Vorgangs verfügen. Wenn Sie die Tabelle vorher manuell erstellen möchten, muss sie die folgenden Eigenschaften aufweisen:
+1. Spalten mit den richtigen Namen und Datentypen für das Resultset.
+2. Zusätzliche Spalte für „internal_execution_id“ mit dem Datentyp „uniqueidentifier“.
+3. Ein nicht gruppierter Index mit dem Namen „IX_<TableName>_Internal_Execution_ID“ für die Spalte „internal_execution_id“.
+
 Stellen Sie eine Verbindung mit der [*Auftragsdatenbank*](elastic-jobs-overview.md#job-database) her, und führen Sie die folgenden Befehle aus:
 
 ```sql

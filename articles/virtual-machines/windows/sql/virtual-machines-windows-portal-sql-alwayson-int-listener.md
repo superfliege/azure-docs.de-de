@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 7ef26dc5fa7676ca590d56978c735bf4a195440b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698049"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382738"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurieren eines Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
@@ -298,6 +298,8 @@ Wenn eine Verfügbarkeitsgruppe an einer verteilten Verfügbarkeitsgruppe beteil
    |**Floating IP (Direct Server Return)** | Aktiviert
 
 Wiederholen Sie diese Schritte für den Lastenausgleich in den anderen Verfügbarkeitsgruppen, die Teil der verteilten Verfügbarkeitsgruppe sind.
+
+Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, stellen Sie sicher, dass die Zulassungsregeln die IP-Adressen des virtuellen SQL Server-Back-End-Computers, die Floating IP-Adressen des Lastenausgleichs für den AG-Listener und die IP-Adresse der Hauptressourcen des Clusters (falls zutreffend) umfassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

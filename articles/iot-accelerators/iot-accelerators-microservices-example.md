@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: de42e68116c147d81ed0211426bfa813d070b121
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e15e17a499ad33a270b220fa7483d96c2945f6bb
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627993"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338076"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Anpassen und erneutes Bereitstellen eines Microservice
 
@@ -187,7 +187,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Pullen des neuen Docker-Images
 > * Visualisieren der Änderungen 
 
-Versuchen Sie als Nächstes, [den Gerätesimulator-Microservice in der Remoteüberwachungslösung anzupassen](iot-accelerators-remote-monitoring-test.md).
+Versuchen Sie als Nächstes, [den Gerätesimulator-Microservice in der Remoteüberwachungslösung anzupassen](iot-accelerators-microservices-example.md).
 
 Weitere Entwicklerinformationen zur Remoteüberwachungslösung finden Sie hier:
 

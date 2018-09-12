@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 3a5339200309a50eace5b48dfbd9127b7eb1dae6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 923337291d297832e03892b505f4efa8d3bb3f36
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39632333"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300713"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>Grundlegendes zur Anwendung eines Rabatts für Azure-Reservierungen auf SQL-Datenbank-Instanzen
 
@@ -40,7 +40,7 @@ Bei den übrigen Beispielen wird davon ausgegangen, dass die reservierte SQL-Dat
 - Szenario 3: Sie führen von 13 bis 13:30 Uhr eine SQL-Datenbank-Instanz mit 16 Kernen aus. Sie führen von 13:30 bis 14 Uhr eine weitere SQL-Datenbank-Instanz mit 16 Kernen aus. Beide Instanzen sind durch den Reservierungsrabatt abgedeckt.
 - Szenario 3: Sie führen von 13 bis 13:45 Uhr eine SQL-Datenbank-Instanz mit 16 Kernen aus. Sie führen von 13:30 bis 14 Uhr eine weitere SQL-Datenbank-Instanz mit 16 Kernen aus. Die zusätzlichen 15 Minuten werden Ihnen zu den Preisen der nutzungsbasierten Bezahlung in Rechnung gestellt. Für den restlichen Zeitraum wird der Reservierungsrabatt auf die Computenutzung angewendet.
 
-Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](https://go.microsoft.com/fwlink/?linkid=862757).
+Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

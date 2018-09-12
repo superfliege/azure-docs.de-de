@@ -1,25 +1,18 @@
 ---
 title: Routinganforderungen für Azure ExpressRoute | Microsoft-Dokumentation
 description: Diese Seite enthält ausführliche Anforderungen für das Konfigurieren und Verwalten des Routings für ExpressRoute-Verbindungen.
-documentationcenter: na
 services: expressroute
 author: ganesr
-manager: ganesr
-editor: ''
-ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/09/2018
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: ganesr
-ms.openlocfilehash: 7fd2dd870338dc6778d192658143d14d9d9895cc
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 525d75264ecb54d42d920cacb0712397f4d8c3a8
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072145"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43304356"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute-Routinganforderungen
 Zum Herstellen einer Verbindung mit Microsoft-Clouddiensten per ExpressRoute müssen Sie das Routing einrichten und verwalten. Einige Konnektivitätsanbieter bieten das Einrichten und Verwalten des Routings als verwalteten Dienst an. Fragen Sie bei Ihrem Konnektivitätsanbieter nach, ob dieser Dienst angeboten wird. Ist dies nicht der Fall, müssen Sie folgende Anforderungen erfüllen:
@@ -46,23 +39,16 @@ Sie können entweder private IP-Adressen oder öffentliche IP-Adressen verwenden
   * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.  
 
 #### <a name="example-for-private-peering"></a>Beispiel für privates Peering
-Wenn Sie zum Einrichten des Peerings „a.b.c.d/29“ verwenden, wird eine Unterteilung in zwei /30-Subnetze vorgenommen. Im folgenden Beispiel sehen wir uns an, wie das a.b.c.d/29-Subnetz verwendet wird. 
+Wenn Sie zum Einrichten des Peerings „a.b.c.d/29“ verwenden, wird eine Unterteilung in zwei /30-Subnetze vorgenommen. Beachten Sie im folgenden Beispiel, wie das Subnetz „a.b.c.d/29“ verwendet wird:
 
-„a.b.c.d/29“ wird in „a.b.c.d/30“ und „a.b.c.d+4/30“ unterteilt und über die Bereitstellungs-APIs an Microsoft übergeben. Sie verwenden „a.b.c.d+1“ als VRF-IP für das primäre PE-Element, und Microsoft nutzt „a.b.c.d+2“ als VRF-IP für den primären MSEE. Sie verwenden „a.b.c.d+5“ als VRF-IP für das sekundäre PE-Element, und Microsoft nutzt „a.b.c.d+6“ als VRF-IP für den sekundären MSEE.
+* „a.b.c.d/29“ wird in „a.b.c.d/30“ und „a.b.c.d+4/30“ unterteilt und über die Bereitstellungs-APIs an Microsoft übergeben.
+  * Sie verwenden „a.b.c.d+1“ als VRF-IP für das primäre PE-Element, und Microsoft nutzt „a.b.c.d+2“ als VRF-IP für den primären MSEE.
+  * Sie verwenden „a.b.c.d+5“ als VRF-IP für das sekundäre PE-Element, und Microsoft nutzt „a.b.c.d+6“ als VRF-IP für den sekundären MSEE.
 
 Betrachten wir den Fall, in dem Sie 192.168.100.128/29 zum Einrichten des privaten Peerings auswählen. 192.168.100.128/29 enthält die Adressen von 192.168.100.128 bis 192.168.100.135, für die Folgendes gilt:
 
 * 192.168.100.128/30 wird link1 zugewiesen, wobei der Anbieter 192.168.100.129 und Microsoft 192.168.100.130 verwendet.
 * 192.168.100.132/30 wird link2 zugewiesen, wobei der Anbieter 192.168.100.133 und Microsoft 192.168.100.134 verwendet.
-
-### <a name="ip-addresses-used-for-azure-public-peering"></a>IP-Adressen für öffentliches Azure-Peering
-Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen verwenden. Microsoft muss in der Lage sein, die Eigentümerschaft der IP-Adressen über Routing Internet Registries (RIR) und Internet Routing Registries (IRR) zu überprüfen. 
-
-* Sie müssen ein eindeutiges /29-Subnetz oder zwei /30-Subnetze verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehr als ein Peering verfügen). 
-* Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt. 
-  * Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, das zweite für die sekundäre Verknüpfung.
-  * Für jedes /30-Subnetz müssen Sie zuerst die IP-Adresse des /30-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /30-Subnetzes zum Einrichten einer BGP-Sitzung.
-  * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
 
 ### <a name="ip-addresses-used-for-microsoft-peering"></a>IP-Adressen für Microsoft-Peering
 Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen verwenden. Microsoft muss in der Lage sein, die Eigentümerschaft der IP-Adressen über Routing Internet Registries (RIR) und Internet Routing Registries (IRR) zu überprüfen.
@@ -77,27 +63,29 @@ Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen ver
 * Für jedes /126-Subnetz müssen Sie die erste IP-Adresse des /126-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /126-Subnetzes zum Einrichten einer BGP-Sitzung.
 * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
 
+### <a name="ip-addresses-used-for-azure-public-peering"></a>IP-Adressen für öffentliches Azure-Peering
+
+> [!NOTE]
+> Öffentliches Azure-Peering ist für neue Verbindungen nicht verfügbar.
+> 
+
+Sie müssen eigene öffentliche IP-Adressen zum Einrichten der BGP-Sitzungen verwenden. Microsoft muss in der Lage sein, die Eigentümerschaft der IP-Adressen über Routing Internet Registries (RIR) und Internet Routing Registries (IRR) zu überprüfen. 
+
+* Sie müssen ein eindeutiges /29-Subnetz oder zwei /30-Subnetze verwenden, um das BGP-Peering für jedes Peering pro ExpressRoute-Verbindung einzurichten (falls Sie über mehr als ein Peering verfügen). 
+* Wenn ein /29-Subnetz verwendet wird, wird es in zwei /30-Subnetze unterteilt. 
+  * Das erste /30-Subnetz wird für die primäre Verknüpfung verwendet, das zweite für die sekundäre Verknüpfung.
+  * Für jedes /30-Subnetz müssen Sie zuerst die IP-Adresse des /30-Subnetzes auf dem Router verwenden. Microsoft verwendet die zweite IP-Adresse des /30-Subnetzes zum Einrichten einer BGP-Sitzung.
+  * Sie müssen beide BGP-Sitzungen einrichten, damit unsere [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/) gültig sind.
+
 ## <a name="public-ip-address-requirement"></a>Öffentliche IP-Adresse – Anforderungen
 
 ### <a name="private-peering"></a>Privates Peering
 Sie können für das private Peering öffentliche oder private IPv4-Adressen verwenden. Wir stellen eine End-to-End-Isolation für Ihren Datenverkehr bereit, sodass beim privaten Peering keine Überlappungen von Adressen mit anderen Kunden möglich sind. Diese Adressen werden nicht im Internet angekündigt. 
 
-
-### <a name="public-peering"></a>Öffentliches Peering
-Der öffentliche Azure-Peeringpfad ermöglicht, dass Sie zu allen in Azure gehosteten Diensten über die öffentliche IP-Adresse eine Verbindung herstellen können. Dazu zählen Dienste, die unter [ExpressRoute – Häufig gestellte Fragen](expressroute-faqs.md) aufgeführt sind und die von ISVs auf Microsoft Azure gehostet werden. Die Konnektivität mit Microsoft Azure-Diensten für öffentliches Peering wird immer von Ihrem Netzwerk aus in das Microsoft-Netzwerk initiiert. Sie müssen öffentliche IP-Adressen für den Datenverkehr verwenden, der für das Microsoft-Netzwerk bestimmt ist.
-
-> [!IMPORTANT]
-> Auf alle Azure-PaaS-Dienste kann auch über Microsoft-Peering zugegriffen werden. Wir empfehlen, Microsoft-Peering zu erstellen und eine Verbindung mit Azure-PaaS-Diensten über Microsoft-Peering herzustellen.  
->   
-
-
-Für öffentliches Peering kann eine private AS-Nummer verwendet werden.
-
 ### <a name="microsoft-peering"></a>Microsoft-Peering
-Mit dem Microsoft-Peeringpfad können Sie eine Verbindung mit den Clouddiensten von Microsoft herstellen, die vom öffentlichen Azure-Peeringpfad nicht unterstützt werden. Die Liste der Dienste umfasst Office 365-Dienste wie z.B. Exchange Online, SharePoint Online, Skype for Business und Dynamics 365. Microsoft unterstützt die bidirektionale Konnektivität für das Microsoft-Peering. Für Datenverkehr, der für Microsoft-Clouddienste bestimmt ist, müssen vor dem Eintritt in das Microsoft-Netzwerk gültige, öffentliche IPv4-Adressen verwendet werden.
+Über den Microsoft-Peeringpfad können Sie eine Verbindung mit Microsoft-Clouddiensten herstellen. Die Liste der Dienste umfasst Office 365-Dienste wie z.B. Exchange Online, SharePoint Online, Skype for Business und Dynamics 365. Microsoft unterstützt die bidirektionale Konnektivität für das Microsoft-Peering. Für Datenverkehr, der für Microsoft-Clouddienste bestimmt ist, müssen vor dem Eintritt in das Microsoft-Netzwerk gültige, öffentliche IPv4-Adressen verwendet werden.
 
 Stellen Sie sicher, dass Ihre IP-Adresse und die AS-Nummer für Sie in einer der folgenden Registrierungen registriert sind:
-
 
 * [ARIN](https://www.arin.net/)
 * [APNIC](https://www.apnic.net/)
@@ -115,6 +103,15 @@ Für Microsoft-Peering kann eine private AS-Nummer verwendet werden, dies erford
 > Öffentliche IP-Adressen, die gegenüber Microsoft per ExpressRoute angekündigt werden, dürfen nicht im Internet angekündigt werden. Ansonsten wird die Verbindung mit anderen Microsoft-Diensten unter Umständen unterbrochen. Öffentliche IP-Adressen, die von Servern in Ihrem Netzwerk verwendet werden, für die mit O365-Endpunkten innerhalb von Microsoft kommuniziert wird, können aber über ExpressRoute angekündigt werden. 
 > 
 > 
+
+### <a name="public-peering-deprecated---not-available-for-new-circuits"></a>Öffentliches Peering (veraltet – nicht für neue Verbindungen verfügbar)
+Der öffentliche Azure-Peeringpfad ermöglicht, dass Sie zu allen in Azure gehosteten Diensten über die öffentliche IP-Adresse eine Verbindung herstellen können. Dazu zählen Dienste, die unter [ExpressRoute – Häufig gestellte Fragen](expressroute-faqs.md) aufgeführt sind und die von ISVs auf Microsoft Azure gehostet werden. Die Konnektivität mit Microsoft Azure-Diensten für öffentliches Peering wird immer von Ihrem Netzwerk aus in das Microsoft-Netzwerk initiiert. Sie müssen öffentliche IP-Adressen für den Datenverkehr verwenden, der für das Microsoft-Netzwerk bestimmt ist.
+
+> [!IMPORTANT]
+> Über Microsoft-Peering kann auf alle Azure-PaaS-Dienste zugegriffen werden.
+>   
+
+Für öffentliches Peering kann eine private AS-Nummer verwendet werden.
 
 ## <a name="dynamic-route-exchange"></a>Dynamischer Routenaustausch
 Der Routingaustausch verläuft über das eBGP-Protokoll. EBGP-Sitzungen werden zwischen den MSEEs und Ihren Routern eingerichtet. Die Authentifizierung von BGP-Sitzungen ist nicht unbedingt erforderlich. Bei Bedarf kann ein MD5-Hash konfiguriert werden. Unter [Konfigurieren des Routings](how-to-routefilter-portal.md) und [Bereitstellungsworkflows für ExpressRoute-Verbindungen und Verbindungszustände](expressroute-workflows.md) finden Sie Informationen zum Konfigurieren von BGP-Sitzungen.
@@ -154,7 +151,7 @@ Wenn Sie beispielsweise in Amsterdam per ExpressRoute mit Microsoft verbunden si
 
 Die Seite [ExpressRoute-Partner und Peeringstandorte](expressroute-locations.md) enthält eine ausführliche Liste mit geopolitischen Regionen, dazugehörigen Azure-Regionen und entsprechenden ExpressRoute-Peeringstandorten.
 
-Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf Hochverfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie die gleiche Gruppe von Präfixen, die von Microsoft über die Pfade für das öffentliche Peering und das Microsoft-Peering angekündigt werden. Dies bedeutet, dass Sie dann mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Dies kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Dies kann die Konnektivität für verschiedene Dienste beeinträchtigen. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und [optimales Routing für Benutzer](expressroute-optimize-routing.md) zu bieten.
+Sie können mehr als eine ExpressRoute-Verbindung pro geopolitischer Region erwerben. Wenn Sie über mehrere Verbindungen verfügen, ergeben sich für Sie aufgrund der Georedundanz daraus erhebliche Vorteile in Bezug auf Hochverfügbarkeit. Bei Verwendung mehrerer ExpressRoute-Verbindungen erhalten Sie die gleiche Gruppe von Präfixen, die von Microsoft für das Microsoft-Peering und die öffentlichen Peeringpfade bekannt gegeben werden. Dies bedeutet, dass Sie dann mehrere Pfade aus dem Netzwerk zu Microsoft nutzen können. Dies kann unter Umständen dazu führen, dass in Ihrem Netzwerk suboptimale Routingentscheidungen getroffen werden. Dies kann die Konnektivität für verschiedene Dienste beeinträchtigen. Sie können die Communitywerte nutzen, um die richtigen Routingentscheidungen zu treffen und [optimales Routing für Benutzer](expressroute-optimize-routing.md) zu bieten.
 
 | **Microsoft Azure-Region** | **BGP-Communitywert** |
 | --- | --- |

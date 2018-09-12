@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 260c58ad9099a4532c8a6558cfcf5c13f0fc8d52
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 39edcb97f062693d11fd5c0ce332c206ebd4b54a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282007"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343552"
 ---
 # <a name="border-connectivity"></a>Grenzkonnektivität 
 Die Planung der Netzwerkintegration ist eine wichtige Voraussetzung, um erfolgreich integrierte Azure Stack-Systeme bereitstellen, betreiben und verwalten zu können. Bei der Planung der Konnektivität über Border-Geräte wird zunächst festgelegt, ob dynamisches Routing mit Border Gateway Protocol (BGP) verwendet werden soll. Hierfür muss eine autonome 16-Bit-BGP-Systemnummer (öffentlich oder privat) zugewiesen oder statisches Routing verwendet werden, wenn Border-Geräten eine statische Standardroute zugewiesen wird.
@@ -31,7 +31,7 @@ Die Planung der Netzwerkintegration ist eine wichtige Voraussetzung, um erfolgre
 ## <a name="bgp-routing"></a>BGP-Routing
 Durch ein dynamisches Routingprotokoll wie BGP wird die Erkennung von Netzwerkänderungen durch Ihr System sichergestellt und die Verwaltung vereinfacht. 
 
-Wie im folgenden Diagramm dargestellt, wird die Ankündigung des privaten IP-Bereichs für den TOR-Switch durch eine Präfixliste beschränkt. Die Präfixliste lehnt die privaten IP-Subnetze ab und wendet diese als Routenzuordnung für die Verbindung zwischen dem TOR-Switch und dem Border-Gerät an.
+Wie im folgenden Diagramm dargestellt, wird die Ankündigung des privaten IP-Bereichs für den TOR-Switch durch eine Präfixliste beschränkt. Die Präfixliste definiert die privaten IP-Subnetze und wendet diese als Routenzuordnung für die Verbindung zwischen dem TOR-Switch und dem Border-Gerät an.
 
 Software Load Balancer (SLB) in der Azure Stack-Lösung stellt mittels Peering eine Verbindung mit TOR-Geräten her, damit die VIP-Adressen dynamisch angekündigt werden können.
 
@@ -44,13 +44,19 @@ Statisches Routing erfordert zusätzliche Konfiguration für die Border-Geräte.
 
 Zum Integrieren von Azure Stack in Ihre Netzwerkumgebung mithilfe von statischem Routing müssen alle vier physischen Verknüpfungen zwischen dem Border- und dem Tor-Gerät verbunden sein, und hohe Verfügbarkeit kann aufgrund der Funktionsweise von statischem Routing nicht garantiert werden.
 
-Das Border-Gerät muss für Datenverkehr an die externen Netzwerke oder öffentliche VIP-Adressen und das Infrastrukturnetzwerk mit statischen Routen konfiguriert sein, die auf die P2P-Verbindungen der Tor-Geräte verweisen. Es erfordert statische Routen an das BMC-Netzwerk für die Bereitstellung. Kunden können statische Routen auch in der Border-Vorrichtung beibehalten, um auf Ressourcen im BMC-Netzwerk zuzugreifen.  Das Hinzufügen von statischen Routen zu *Switchinfrastruktur*- und *Switchverwaltungsnetzwerken* ist optional.
+Das Border-Gerät muss für Datenverkehr an die *externen* Netzwerke oder öffentliche VIP-Adressen und das *Infrastrukturnetzwerk* mit statischen Routen konfiguriert sein, die auf die P2P-Verbindungen der Tor-Geräte verweisen. Es benötigt statische Routen zum *BMC*-Netzwerk und *externen* Netzwerken für die Bereitstellung. Betreiber können statische Routen auch in der Border-Vorrichtung beibehalten, um auf Verwaltungsressourcen im *BMC*-Netzwerk zuzugreifen. Das Hinzufügen von statischen Routen zu *Switchinfrastruktur*- und *Switchverwaltungsnetzwerken* ist optional.
 
 Die Tor-Geräte sind mit einer statischen Standardroute vorkonfiguriert, die sämtlichen Datenverkehr an die Border-Geräte sendet. Die einzige Datenverkehrsausnahme von der Standardregel ist der private Bereich. Dieser wird mithilfe einer Zugriffssteuerungsliste für die Verbindung zwischen dem Tor- und Border-Gerät blockiert.
 
 Statisches Routing wird nur auf die Uplinks zwischen den Tor- und Border-Switches angewendet. Im Rack kommt nach wie vor dynamisches BGP-Routing zum Einsatz, da es ein unverzichtbares Hilfsmittel für SLB und andere Komponenten darstellt. Es kann daher nicht deaktiviert oder entfernt werden.
 
 ![Statisches Routing](media/azure-stack-border-connectivity/static-routing.png)
+
+<sup>\*</sup> Das BMC-Netzwerk ist nach der Bereitstellung optional.
+
+<sup>\*\*</sup> Das Switchinfrastrukturnetzwerk ist optional, da das gesamte Netzwerk in das Switchverwaltungsnetzwerk eingeschlossen werden kann.
+
+<sup>\*\*\*</sup> Das Switchverwaltungsnetzwerk ist erforderlich und kann separat aus dem Switchinfrastrukturnetzwerk hinzugefügt werden.
 
 ## <a name="transparent-proxy"></a>Transparenter Proxy
 Wenn Ihr Rechenzentrum verlangt, dass für den gesamten Datenverkehr ein Proxy verwendet wird, müssen Sie einen *transparenten Proxy* konfigurieren. Dieser muss den gesamten Datenverkehr gemäß den Richtlinien verarbeiten und den Datenverkehr zwischen den Zonen in Ihrem Netzwerk trennen.

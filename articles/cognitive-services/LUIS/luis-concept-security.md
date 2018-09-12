@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: fe0ee7d575e69c883ad7f980477e86fbd004778e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fddffbcabba753e9ef214f924d5ff2cee38427a5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397242"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301692"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Zugriff für die Erstellung und Benutzerzugriff auf Endpunkte
 Erstellungszugriff ist für Besitzer und Projektmitarbeiter möglich. Bei einer privaten App ist der Zugriff auf den Endpunkt für Besitzer und Projektmitarbeiter möglich. Bei einer öffentlichen App ist der Zugriff auf den Endpunkt für jede Person möglich, die über ein eigenes LUIS-Konto und die öffentliche App-ID verfügt. 
@@ -60,7 +60,7 @@ Sie konfigurieren eine App auf der Seite **Einstellungen** der App als **öffent
 Ein Benutzer, der nicht Besitzer oder Projektmitarbeiter ist, hat Zugriff auf eine öffentliche App, wenn er die App-ID hat. LUIS verfügt nicht über einen öffentlichen _Markt_ oder eine andere Möglichkeit der Suche nach einer öffentlichen App.  
 
 ## <a name="microsoft-user-accounts"></a>Microsoft-Benutzerkonten
-Ersteller und Projektmitarbeiter können LUIS auf der Seite „Veröffentlichen“ Schlüssel hinzufügen. Das Microsoft-Benutzerkonto, das den LUIS-Schlüssel im Azure-Portal erstellt, muss dem App-Besitzer oder einem App-Projektmitarbeiter zugeordnet sein. 
+Ersteller und Projektmitarbeiter können LUIS auf der Seite „Veröffentlichen“ Schlüssel hinzufügen. Bei dem Microsoft-Benutzerkonto, das den LUIS-Schlüssel im Azure-Portal erstellt, muss es sich um den App-Besitzer oder einen App-Projektmitarbeiter handeln. 
 
 Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-collaborate.md#azure-active-directory-tenant-user) finden Sie weitere Informationen zu Active Directory-Benutzerkonten. 
 

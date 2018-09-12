@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142873"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300912"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Verwalten von App-Kennwörtern für die zweistufige Überprüfung
 
@@ -38,11 +38,46 @@ Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 
 Während der anfänglichen Registrierung für die zweistufige Überprüfung wird Ihnen ein App-Kennwort zugewiesen. Wenn Sie mehr als ein Kennwort benötigen, können Sie weitere Kennwörter erstellen, je nachdem, wie Sie die zweistufige Überprüfung verwenden:
 
-- **Sie verwenden die zweistufige Überprüfung mit Ihrem Microsoft Azure-Konto.** Erstellen und löschen Sie Ihre App-Kennwörter über das [Azure-Portal](https://portal.azure.com). Weitere Informationen finden Sie im Artikel [App-Kennwörter und Überprüfung in zwei Schritten](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification).
+- **Sie verwenden die zweistufige Überprüfung für Ihr Geschäfts-, Schul- oder Unikonto und das MyApps-Portal.** Erstellen und löschen Sie Ihre App-Kennwörter gemäß den Anweisungen im Abschnitt [Erstellen und Löschen von App-Kennwörtern im MyApps-Portal](#create-and-delete-app-passwords-using-the-myapps-portal) dieses Artikels. Unter [Was ist das MyApps-Portal in Azure Active Directory?](active-directory-saas-access-panel-introduction.md) finden Sie weitere Informationen zum MyApps-Portal und dessen Verwendung.
 
-- **Sie verwenden die zweistufige Überprüfung für Ihr persönliches Microsoft-Konto.** Erstellen und löschen Sie Ihre App-Kennwörter über die Seite mit den [Sicherheitsgrundlagen](https://account.microsoft.com/account/) für Ihr Microsoft-Konto. Weitere Informationen finden Sie im Artikel [App-Kennwörter und Überprüfung in zwei Schritten](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification).
+- **Sie verwenden die zweistufige Überprüfung für Ihr Geschäfts-, Schul- oder Unikonto und das Office 365-Portal.** Erstellen und löschen Sie Ihre App-Kennwörter gemäß den Anweisungen im Abschnitt [Erstellen und Löschen von App-Kennwörtern über das Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) dieses Artikels.
 
-- **Sie verwenden die zweistufige Überprüfung für Ihr Geschäfts-, Schul- oder Unikonto und Ihre Office 365-Apps.** Erstellen und löschen Sie Ihre App-Kennwörter gemäß den Anweisungen im Abschnitt [Erstellen und Löschen von App-Kennwörtern über das Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) dieses Artikels.
+- **Sie verwenden die zweistufige Überprüfung für Ihr persönliches Microsoft-Konto.** Erstellen und löschen Sie Ihre App-Kennwörter über die Seite mit den [Sicherheitsgrundlagen](https://account.microsoft.com/account/) für Ihr persönliches Microsoft-Konto. Weitere Informationen finden Sie im Artikel [App-Kennwörter und Überprüfung in zwei Schritten](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification).
+
+## <a name="create-and-delete-app-passwords-using-the-myapps-portal"></a>Erstellen und Löschen von App-Kennwörtern im MyApps-Portal
+Sie können App-Kennwörter über das MyApps-Portal erstellen und löschen.
+
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>So erstellen Sie ein App-Kennwort mithilfe des MyApps-Portals
+
+1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
+
+2. Klicken Sie rechts oben auf Ihren Namen, und wählen Sie **Profil** aus.
+
+3. Wählen Sie **Zusätzliche Sicherheitsüberprüfung** aus.
+
+   ![Auswählen von „Zusätzliche Sicherheitsüberprüfung“, Screenshot](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+
+4. Wählen Sie **App-Kennwörter** aus.
+
+   ![Auswählen von „App-Kennwörter“, Screenshot](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
+
+5. Klicken Sie auf **Create**.
+
+6. Geben Sie einen Namen für das App-Kennwort ein, und klicken Sie auf **Weiter**.
+
+7. Kopieren Sie das App-Kennwort in die Zwischenablage, und fügen Sie es in Ihrer Anwendung hinzu.
+   
+    ![Erstellen eines App-Kennworts](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>So löschen Sie ein App-Kennwort mithilfe des MyApps-Portals
+
+1. Wechseln Sie zu Ihrem Profil, und wählen Sie **Zusätzliche Sicherheitsüberprüfung** aus.
+
+2. Wählen Sie **App-Kennwörter** aus, und klicken Sie dann neben dem App-Kennwort, das Sie löschen möchten, auf **Löschen**.
+
+   ![Löschen eines App-Kennworts](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+
+3. Klicken Sie auf **Ja**, um das Löschen des Kennworts zu bestätigen, und klicken Sie dann auf **Schließen**.
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Erstellen und Löschen von App-Kennwörtern über das Office 365-Portal
 
@@ -77,46 +112,6 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
     Das App-Kennwort wurde erfolgreich gelöscht.
 
 5. Führen Sie die Schritte zum Erstellen eines Kennworts aus, um ein neues App-Kennwort zu erstellen.
-
-## <a name="manage-app-passwords-in-the-azure-portal"></a>Verwalten von App-Kennwörtern im Azure-Portal
-
-Wenn Sie die zweistufige Überprüfung mit Azure verwenden, können Sie App-Kennwörter über das Azure-Portal erstellen.
-
-## <a name="manage-app-passwords-with-the-myapps-portal"></a>Verwalten von App-Kennwörtern im MyApps-Portal
-
-Sie können App-Kennwörter auch über das MyApps-Portal erstellen und löschen.
-
-### <a name="to-create-an-app-password-using-the-my-apps-portal"></a>Erstellen eines App-Kennworts über das MyApps-Portal
-
-1. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
-
-2. Klicken Sie rechts oben auf Ihren Namen, und wählen Sie **Profil** aus.
-
-3. Wählen Sie **Zusätzliche Sicherheitsüberprüfung** aus.
-
-   ![Auswählen von „Zusätzliche Sicherheitsüberprüfung“, Screenshot](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
-
-4. Wählen Sie **App-Kennwörter** aus.
-
-   ![Auswählen von „App-Kennwörter“, Screenshot](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
-
-5. Klicken Sie auf **Create**.
-
-6. Geben Sie einen Namen für das App-Kennwort ein, und klicken Sie auf **Weiter**.
-
-7. Kopieren Sie das App-Kennwort in die Zwischenablage, und fügen Sie es in Ihrer Anwendung hinzu.
-   
-    ![Erstellen eines App-Kennworts](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
-
-### <a name="to-delete-an-app-password-using-the-my-apps-portal"></a>Löschen eines App-Kennworts über das MyApps-Portal
-
-1. Wechseln Sie zu Ihrem Profil, und wählen Sie **Zusätzliche Sicherheitsüberprüfung** aus.
-
-2. Wählen Sie **App-Kennwörter** aus, und klicken Sie dann neben dem App-Kennwort, das Sie löschen möchten, auf **Löschen**.
-
-   ![Löschen eines App-Kennworts](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-
-3. Klicken Sie auf **Ja**, um das Löschen des Kennworts zu bestätigen, und klicken Sie dann auf **Schließen**.
 
 ## <a name="if-your-app-passwords-arent-working-properly"></a>Wenn Ihre App-Kennwörter nicht funktionieren
 

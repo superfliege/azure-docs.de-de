@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970550"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842497"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Hinzufügen von Hostservern für den SQL-Ressourcenanbieter
 
@@ -78,15 +78,15 @@ Führen Sie die folgenden Schritte aus, um einen eigenständigen Hostserver hinz
 
 1. Melden Sie sich beim Azure Stack-Operatorportal als Dienstadministrator an.
 
-2. Wählen Sie **Durchsuchen** &gt; **VERWALTUNGSRESSOURCEN** &gt; **SQL-Hostserver** aus.
+2. Wählen Sie **Alle Dienste** &gt; **VERWALTUNGSRESSOURCEN** &gt; **SQL-Hostserver** aus.
 
    ![SQL-Hostserver](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-   Unter **SQL-Hostserver** können Sie den SQL Server-Ressourcenanbieter mit tatsächlichen SQL Server-Instanzen verbinden, die als Back-End des Ressourcenanbieters dienen.
+   Unter **SQL-Hostserver** können Sie den SQL-Ressourcenanbieter mit SQL Server-Instanzen verbinden, die als Back-End des Ressourcenanbieters dienen.
 
-   ![Dashboard „SQL-Adapter“](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
+   ![Dashboard „SQL-Adapter“](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
 
-3. Geben Sie auf dem Formular **SQL-Hostserver hinzufügen** die Verbindungsdetails für Ihre SQL Server-Instanz an.
+3. Klicken Sie auf **Hinzufügen**, und geben Sie dann auf dem Blatt **SQL-Hostserver hinzufügen** die Verbindungsdetails für Ihre SQL Server-Instanz an.
 
    ![Hinzufügen eines SQL-Hostservers](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 

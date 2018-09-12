@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188985"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666335"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Azure AD-Verzeichnisrollen, die Sie in PIM verwalten können
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -76,13 +76,36 @@ Für den Zugriff auf das Azure-Portal muss der Benutzer Dienst- oder Co-Administ
 Für den Zugriff auf Microsoft Online Services ist es möglicherweise erforderlich, einem Benutzer eine Lizenz zuzuweisen, bevor dieser das Dienstportal öffnen oder Verwaltungsaufgaben ausführen kann.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Zuweisen einer Lizenz an einen Benutzer in Azure AD
+
 1. Melden Sie sich mit einem globalen Administratorkonto oder Co-Administratorkonto beim [Azure-Portal](http://portal.azure.com) an.
-3. Wählen Sie Azure AD und das Verzeichnis aus, das Sie verwenden möchten, und dem Lizenzen zugeordnet sind.
-4. Wählen Sie **Lizenzen** auf der linken Seite aus. Die Liste der verfügbaren Lizenzen wird angezeigt.
-5. Wählen Sie den Lizenzplan aus, der die zu verteilenden Lizenzen enthält.
-6. Wählen Sie **Benutzer zuweisen**aus.
-7. Wählen Sie den Benutzer aus, dem Sie eine Lizenz zuweisen möchten.
-8. Klicken Sie auf die Schaltfläche **Zuweisen** .  Der Benutzer kann sich jetzt bei Azure anmelden.
+
+1. Wählen Sie das Azure AD-Verzeichnis aus, das Sie verwenden möchten, und dem Lizenzen zugeordnet sind.
+
+1. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
+
+1. Klicken Sie auf **Lizenzen**. Die Liste der verfügbaren Lizenzen wird angezeigt.
+
+    ![Azure Active Directory-Lizenzen](./media/pim-roles/licenses-overview.png)
+
+1. Klicken Sie auf Ihr **Produkt**.
+
+1. Wählen Sie den Lizenzplan aus, der die zu verteilenden Lizenzen enthält.
+
+    ![Lizenzierte Produkte](./media/pim-roles/licenses-products.png)
+
+1. Klicken Sie auf **Zuweisen**, um den Bereich „Lizenz zuweisen“ zu öffnen.
+
+    ![Lizenzierte Benutzer](./media/pim-roles/licenses-licensed-users.png)
+
+1. Wählen Sie den Benutzer oder die Gruppe aus, dem bzw. der Sie eine Lizenz zuweisen möchten.
+
+    ![Lizenz zuweisen](./media/pim-roles/licenses-assign-license.png)
+
+1. Klicken Sie auf **Zuweisungsoptionen**, um Ihre Zuweisungsoptionen zu konfigurieren.
+
+    ![Zuweisungsoptionen](./media/pim-roles/licenses-assignment-options.png)
+
+1. Klicken Sie auf **Zuweisen**, um die Lizenz zuzuweisen. Der Benutzer hat nun die Lizenz.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Nächste Schritte

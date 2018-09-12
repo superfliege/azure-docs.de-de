@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 08/22/2018
+ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 69313adea1719324e2b22b45c6a45535ea65097f
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: fbed0f5fb213a18f4450ee3aa96c3b8485b16e8b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125041"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781325"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Azure AD-Nutzungsbedingungen.
@@ -223,7 +223,7 @@ A: Derzeit können Sie ein vorhandenes Dokument mit Nutzungsbedingungen nicht ak
 A: Die PDF-Datei wird standardmäßig im JPEG-Format gerendert, damit Links nicht angeklickt werden können. Benutzer haben die Möglichkeit, auf die Option **Probleme mit der Anzeige? Klicken Sie hier** zu klicken. Dadurch wird die PDF-Datei nativ gerendert, und Links werden unterstützt.
 
 **F: Können Nutzungsbedingungen mehrere Sprachen unterstützen?**</br>
-A: Ja.  Derzeit sind 18 verschiedene Sprachen verfügbar, die ein Administrator für eine einzelne Version der Nutzungsbedingungen konfigurieren kann. 
+A: Ja. Derzeit sind 108 verschiedene Sprachen verfügbar, die ein Administrator für eine einzelne Version der Nutzungsbedingungen konfigurieren kann.
 
 **F: Wann werden die Nutzungsbedingungen ausgelöst?**</br>
 A: Die Nutzungsbedingungen werden bei der Anmeldung ausgelöst.

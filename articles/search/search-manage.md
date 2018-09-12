@@ -7,14 +7,14 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 08/28/2018
 ms.author: heidist
-ms.openlocfilehash: 896a12db1ac196b6de1e57dde9b5910e11dcc8c7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fb09e12a5122f6e6671e55c5b5623afdd6b35c29
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31797041"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842288"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -23,16 +23,16 @@ ms.locfileid: "31797041"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erstellen einer umfassenden Suchoberfläche für benutzerdefinierte Apps. In diesem Artikel werden die Aufgaben der *Dienstverwaltung* beschrieben, die Sie im [Azure-Portal](https://portal.azure.com) für einen zuvor bereitgestellten Suchdienst durchführen können. *Service administration* ist nicht sehr umfangreich und auf die folgenden Aufgaben beschränkt:
+Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erstellen einer umfassenden Suchoberfläche für benutzerdefinierte Apps. In diesem Artikel werden die Dienstverwaltungsaufgaben beschrieben, die Sie im [Azure-Portal](https://portal.azure.com) für einen zuvor bereitgestellten Suchdienst ausführen können. Die Dienstverwaltung ist nicht sehr umfangreich und auf die folgenden Aufgaben beschränkt:
 
-* Verwalten und Schützen des Zugriffs auf die *API-Schlüssel* , die für den Lese- oder Schreibzugriff auf den Dienst verwendet werden
+* Verwalten des Zugriffs auf die *API-Schlüssel*, die für den Lese- oder Schreibzugriff auf den Dienst verwendet werden
 * Anpassen der Dienstkapazität, indem Sie die Zuordnung von Partitionen und Replikaten ändern
 * Überwachen der Ressourcennutzung relativ zu den Grenzwerten Ihrer Dienstebene
 
 Beachten Sie, dass *Upgrade* nicht als administrativer Task aufgeführt ist. Da beim Bereitstellen des Diensts Ressourcen zugewiesen werden, erfordert das Verschieben zu einer anderen Preisstufe einen neuen Dienst. Weitere Informationen finden Sie unter [Erstellen eines Azure Search-Diensts](search-create-service-portal.md).
 
 > [!Tip]
-> Suchen Sie Hilfe zur Analyse von Suchdatenverkehr oder Abfrageleistung? Verschaffen Sie sich Erkenntnisse über das Abfragevolumen, über die Begriffe, nach denen Personen suchen, und darüber, wie erfolgreich Suchergebnisse Kunden zu bestimmten Dokumenten im Index leiten. Anleitungen finden Sie unter [Durchsuchen der Datenverkehrsanalyse für Azure Search](search-traffic-analytics.md), [Überwachen von Nutzung und Abfragemetriken](search-monitor-usage.md) sowie [Leistung und Optimierung](search-performance-optimization.md).
+> Suchen Sie Hilfe zur Analyse von Suchdatenverkehr oder Abfrageleistung? Sie können Folgendes überwachen: das Abfragevolumen, die Begriffe, nach denen Personen suchen, und wie erfolgreich Suchergebnisse Kunden zu bestimmten Dokumenten in Ihrem Index leiten. Weitere Informationen finden Sie unter [Durchsuchen der Datenverkehrsanalyse für Azure Search](search-traffic-analytics.md), [Überwachen der Nutzung und Statistiken](search-monitor-usage.md) und [Leistung und Optimierung](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -66,11 +66,11 @@ Mit der Suchdienst-REST API können Sie Gesamtzahlen für Dokumente und Indizes 
 
 ## <a name="disaster-recovery-and-service-outages"></a>Notfallwiederherstellung und Dienstausfälle
 
-Obwohl wir Ihre Daten retten können, bietet Azure Search kein sofortiges Failover des Diensts, wenn ein Ausfall auf Cluster- oder Rechenzentrumsebene auftritt. Wenn ein Cluster im Rechenzentrum fehlschlägt, wird das Betriebsteam dieses ermitteln und daran arbeiten, den Dienst wiederherzustellen. Während der Dienstwiederherstellung kommt es zu Ausfallzeiten. Sie können laut [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) Dienstguthaben anfordern, um damit die Nichtverfügbarkeit des Diensts kompensieren zu können. 
+Obwohl wir Ihre Daten retten können, bietet Azure Search kein sofortiges Failover des Diensts, wenn ein Ausfall auf Cluster- oder Rechenzentrumsebene auftritt. Wenn ein Cluster im Rechenzentrum fehlschlägt, wird das Betriebsteam dieses ermitteln und daran arbeiten, den Dienst wiederherzustellen. Während der Dienstwiederherstellung kommt es zu Ausfallzeiten, Sie können jedoch laut [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) Dienstguthaben anfordern, um damit die Nichtverfügbarkeit des Diensts kompensieren zu können. 
 
 Sollte ein unterbrechungsfreier Dienst im Falle schwerwiegender Fehler, die nicht der Kontrolle von Microsoft unterliegen, benötigt werden, können Sie [einen zusätzlichen Dienst](search-create-service-portal.md) in einer anderen Region bereitstellen und eine Georeplikationsstrategie implementieren, um sicherzustellen, dass Indizes für alle Dienste vollständig redundant sind.
 
-Kunden, die [Indexer](search-indexer-overview.md) zum Auffüllen und Aktualisieren von Indizes verwenden, können die Notfallwiederherstellung über geospezifische Indizes ausführen, welche die gleiche Datenquelle verwenden. Zwei Dienste in unterschiedlichen Regionen, die jeweils einen Indexer ausführen, könnten aus der gleichen Datenquelle indizieren, um so Georedundanz zu erzielen. Wenn Sie Daten aus Datenquellen indizieren, die auch georedundant sind, sollten Sie darauf achten, dass Azure Search-Indexer eine inkrementelle Indizierung nur aus primären Replikaten ausführen können. Achten Sie im Falle eines Failoverereignisses darauf, den Indexer erneut auf das neue primäre Replikat auszurichten. 
+Kunden, die [Indexer](search-indexer-overview.md) zum Auffüllen und Aktualisieren von Indizes verwenden, können die Notfallwiederherstellung über geospezifische Indizes ausführen, welche die gleiche Datenquelle verwenden. Zwei Dienste in unterschiedlichen Regionen, die jeweils einen Indexer ausführen, könnten die gleiche Datenquelle indizieren, um Georedundanz zu erzielen. Wenn Sie Daten aus Datenquellen indizieren, die auch georedundant sind, sollten Sie darauf achten, dass Azure Search-Indexer eine inkrementelle Indizierung nur aus primären Replikaten ausführen können. Achten Sie im Falle eines Failoverereignisses darauf, den Indexer erneut auf das neue primäre Replikat auszurichten. 
 
 Wenn Sie keine Indexer verwenden, können Sie Ihren Anwendungscode verwenden, um Objekte und Daten gleichzeitig per Pushvorgang an verschiedene Dienste zu übermitteln. Weitere Informationen finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
@@ -78,7 +78,7 @@ Wenn Sie keine Indexer verwenden, können Sie Ihren Anwendungscode verwenden, um
 
 Da Azure Search keine primäre Datenspeicherlösung ist, wird kein formales Verfahren für Self-Service-Sicherung und -Wiederherstellung bereitgestellt. Ihr Anwendungscode, der zum Erstellen und Auffüllung eines Index verwendet wird, ist de facto die Wiederherstellungsoption, wenn Sie aus Versehen einen Index löschen. 
 
-Um einen Index neu zu erstellen, würden Sie ihn (sofern vorhanden) löschen, den Index im Dienst wiederherstellen und ihn erneut laden, indem Sie Daten aus Ihrem primären Datenspeicher abrufen. Alternativ können Sie sich an den [Kundensupport]() wenden, um Indizes zu retten, falls es zu einem regionalen Ausfall kommt.
+Um einen Index neu zu erstellen, würden Sie ihn (sofern vorhanden) löschen, den Index im Dienst wiederherstellen und ihn erneut laden, indem Sie Daten aus Ihrem primären Datenspeicher abrufen.
 
 
 <a id="scale"></a>
@@ -103,12 +103,10 @@ Bei den meisten Dienstanwendungen sind anstelle von Partitionen eher mehr Replik
 In der Preisstufe Standard werden Partitionen jeweils in Teilern von 12 hinzugefügt (1, 2, 3, 4, 6 oder 12). Dies ist ein Artefakt für das Sharding (Horizontales Partitionieren). Indizes werden in 12 Shards erstellt, die entweder in 1 Partition gespeichert oder in gleichen Teilen auf 2, 3, 4, 6 oder 12 Partitionen (1 Shard pro Partition) verteilt werden können.
 
 ### <a name="remove-replicas"></a>Entfernen von Replikaten
-Nach Zeiten mit hohem Abfragevolumen können Sie die Replikate reduzieren, wenn sich die Last wieder normalisiert hat (z.B. nach Abschluss des Weihnachtsgeschäfts).
-
-Schieben Sie hierzu den Schieberegler für Replikate auf eine niedrigere Einstellung. Keine weiteren Schritte sind erforderlich. Beim Senken der Replikatanzahl werden virtuelle Computer im Rechenzentrum freigegeben. Ihre Abfrage- und Datenerfassungsoperationen werden nun auf weniger VMs ausgeführt als zuvor. Die Untergrenze liegt bei einem Replikat.
+Nach Zeiten mit hohem Abfragevolumen können Sie mit dem Schieberegler die Replikate reduzieren, wenn sich die Suchabfragelast wieder normalisiert hat (z. B. nach Abschluss des Weihnachtsgeschäfts). Keine weiteren Schritte sind erforderlich. Beim Senken der Replikatanzahl werden virtuelle Computer im Rechenzentrum freigegeben. Ihre Abfrage- und Datenerfassungsoperationen werden nun auf weniger VMs ausgeführt als zuvor. Als Mindestanforderung muss ein Replikat vorhanden sein.
 
 ### <a name="remove-partitions"></a>Entfernen von Partitionen
-Im Gegensatz zum Entfernen von Replikaten, bei dem Sie keine weiteren Schritte ausführen müssen, erfordert die Senkung des verbrauchten Speicherplatzes unter Umständen einigen Arbeitsaufwand. Wenn Sie in der Lösung beispielsweise drei Partitionen verwenden, wird bei der Reduzierung auf ein oder zwei Partitionen ein Fehler generiert, falls weniger Speicherplatz als nötig vorhanden ist. Wie Sie sicherlich schon vermuten, können Sie entweder Indizes oder Dokumente innerhalb eines Index löschen, um Speicherplatz freizugeben, oder die aktuelle Konfiguration beibehalten.
+Im Gegensatz zum Entfernen von Replikaten, bei dem Sie keine weiteren Schritte ausführen müssen, erfordert die Senkung des verbrauchten Speicherplatzes unter Umständen einigen Arbeitsaufwand. Wenn Sie in der Lösung beispielsweise drei Partitionen verwenden, wird bei der Reduzierung auf ein oder zwei Partitionen ein Fehler generiert, falls der neue Speicherplatz geringer ist als für das Hosten des Indexes erforderlich. Wie Sie sicherlich schon vermuten, können Sie entweder Indizes oder Dokumente innerhalb eines Index löschen, um Speicherplatz freizugeben, oder die aktuelle Konfiguration beibehalten.
 
 Es ist nicht möglich, herauszufinden, welche Index-Shards auf welcher Partition gespeichert sind. Jede Partition bietet ca. 25 GB an Speicherplatz an. Sie müssen Ihren Speicherverbrauch also auf einen Wert senken, der von Ihren konfigurierten Partitionen unterstützt werden kann. Wenn Sie auf eine Partition zurückschalten, müssen alle 12 Shards in diese Partition passen.
 

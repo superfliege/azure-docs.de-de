@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dd0bf50d73b70e37195e8e5e45336b68e4e883e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915638"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337733"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Google-Konto mithilfe von Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Um ein Google-Konto als Identitätsanbieter in Azure Active Directory (Azure AD)
 4. Wählen Sie **Configure consent screen** (Genehmigungsbildschirm konfigurieren) aus.
 5. Wählen Sie unter **Email address** (E-Mail-Adresse) eine gültige Adresse aus, oder geben Sie sie an, geben Sie einen Wert unter **Product name shown to users** (Für Benutzer angezeigter Produktname) ein, und klicken Sie auf **Save** (Speichern).
 6. Wählen Sie unter **Anwendungstyp** die Option **Webanwendung** aus.
-7. Geben Sie einen **Namen** für die Anwendung an, und geben Sie `https://login.microsoftonline.com` unter **Authorized JavaScript origins** (Autorisierte JavaScript-Quellen) und `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“).
+7. Geben Sie einen **Namen** für die Anwendung an, und geben Sie `https://{tenant}.b2clogin.com` unter **Authorized JavaScript origins** (Autorisierte JavaScript-Quellen) und `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c“).
 8. Klicken Sie auf **Create**.
 9. Kopieren Sie die Werte für **Client-ID** und **Clientgeheimnis**. Sie benötigen beide Angaben, um Google als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Das **Clientgeheimnis** ist eine wichtige Anmeldeinformation.
 

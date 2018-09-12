@@ -12,31 +12,31 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 08/30/2018
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: ebaa679c43bd577d4f37feb7f3a025086490e25f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e8d8067fcf30b16dd3dbc7f6cf50129d837aa3a5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785749"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306855"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualisieren von Media Services nach dem Austausch der Speicherzugriffsschlüssel
 
-Wenn Sie ein neues Azure Media Services-Konto (AMS) erstellen, müssen Sie auch ein Azure Storage-Konto auswählen, das zum Speichern Ihrer Medieninhalte verwendet wird. Sie können Ihrem Media Services-Konto mehrere Speicherkonten hinzufügen. In diesem Thema wird das Rotieren von Speicherschlüsseln gezeigt. Außerdem wird erläutert, wie einem Medienkonto Speicherkonten hinzugefügt werden. 
+Wenn Sie ein neues Azure Media Services-Konto (AMS) erstellen, müssen Sie auch ein Azure Storage-Konto auswählen, das zum Speichern Ihrer Medieninhalte verwendet wird. Sie können Ihrem Media Services-Konto mehrere Speicherkonten hinzufügen. In diesem Artikel wird das Rotieren von Speicherschlüsseln erläutert. Außerdem wird erläutert, wie einem Medienkonto Speicherkonten hinzugefügt werden. 
 
-Um die in diesem Thema beschriebenen Aktionen auszuführen, müssen Sie [ARM-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media) verwenden.  Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen mit PowerShell und Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md).
+Um die in diesem Artikel beschriebenen Aktionen auszuführen, müssen Sie [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.media) verwenden.  Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen mit PowerShell und Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md).
 
 ## <a name="overview"></a>Übersicht
 
 Wenn ein neues Speicherkonto erstellt wird, generiert Azure zwei 512-Bit-Speicherzugriffsschlüssel, die zum Authentifizieren des Zugriffs auf das Speicherkonto verwendet werden. Um Ihre Speicherverbindungen sicherer zu gestalten, sollten Sie Ihre Speicherzugriffsschlüssel in regelmäßigen Abständen neu generieren und austauschen. Zwei Zugriffsschlüssel (primär und sekundär) werden zugewiesen, damit Sie Verbindungen zum Speicherkonto mit einem Zugriffsschlüssel aufrechterhalten können, während Sie den anderen Zugriffsschlüssel neu generieren. Dieser Vorgang wird als Austausch der Zugriffsschlüssel bezeichnet.
 
-Für Media Services muss ein Speicherschlüssel bereitgestellt werden. Insbesondere hängen die Locators, mit denen Ihre Assets gestreamt oder heruntergeladen werden, vom angegebenen Speicherzugriffsschlüssel ab. Beim Erstellen eines AMS-Kontos wird standardmäßig die Abhängigkeit vom primären Speicherzugriffsschlüssel übernommen. Sie können als Benutzer aber den Speicherschlüssel von AMS aktualisieren. Sie müssen Media Services darüber informieren, welcher Schlüssel verwendet werden soll. Führen Sie dazu die Schritte in diesem Thema aus.  
+Für Media Services muss ein Speicherschlüssel bereitgestellt werden. Insbesondere hängen die Locators, mit denen Ihre Assets gestreamt oder heruntergeladen werden, vom angegebenen Speicherzugriffsschlüssel ab. Beim Erstellen eines AMS-Kontos wird standardmäßig die Abhängigkeit vom primären Speicherzugriffsschlüssel übernommen. Sie können als Benutzer aber den Speicherschlüssel von AMS aktualisieren. Sie müssen in Media Services angeben, welcher Schlüssel verwendet werden soll. Führen Sie dazu die Schritte in diesem Artikel aus.  
 
 >[!NOTE]
 > Wenn Sie mehrere Speicherkonten verwenden, müssen Sie dieses Verfahren für jedes Speicherkonto einzeln ausführen. Die Reihenfolge beim Rotieren von Speicherschlüsseln ist nicht festgelegt. Sie können zuerst den sekundären Schlüssel und dann den primären Schlüssel rotieren oder auch umgekehrt.
 >
-> Sie sollten vor der Ausführung der in diesem Thema beschriebenen Schritte unter einem Produktionskonto zunächst einen Test unter einem Vorproduktionskonto durchführen.
+> Sie sollten vor der Ausführung der in diesem Artikel beschriebenen Schritte unter einem Produktionskonto zunächst einen Test unter einem Vorproduktionskonto durchführen.
 >
 
 ## <a name="steps-to-rotate-storage-keys"></a>Schritte zum Rotieren von Speicherschlüsseln 
@@ -68,7 +68,7 @@ Das folgende Beispiel veranschaulicht, wie das Speicherkonto abgerufen und mit d
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Schritte zum Hinzufügen von Speicherkonten zu Ihrem AMS-Konto
 
-Im folgenden Thema wird gezeigt, wie Ihrem AMS-Konto Speicherkonten hinzugefügt werden: [Anfügen mehrerer Speicherkonten an ein Media Services-Konto](meda-services-managing-multiple-storage-accounts.md).
+Im folgenden Artikel wird erläutert, wie Ihrem AMS-Konto Speicherkonten hinzugefügt werden: [Anfügen mehrerer Speicherkonten an ein Media Services-Konto](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

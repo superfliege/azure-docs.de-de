@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84b1ad2ecd2c027c7d8a105579059ceb957f41c6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e1949c32833bb1d5e6603a6f5e36e22dc58e8cec
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928997"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336927"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem LinkedIn-Konto mithilfe von Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Um ein LinkedIn-Konto als Identitätsanbieter in Azure Active Directory (Azure A
 3. Geben Sie Informationen für **Company Name** (Firmenname), **Application Name** (Anwendungsname), **Application Description** (Anwendungsbeschreibung), **Application Logo** (Anwendungslogo), **Application Use** (Anwendungsverwendung), **Website URL** (Website-URL), **Business Email** (E-Mail geschäftlich) und **Business Phone** (Telefon geschäftlich) ein.
 4. Akzeptieren Sie die **LinkedIn API Terms of Use**, und klicken Sie auf **Submit**.
 5. Kopieren Sie die Werte für **Client ID** und **Client Secret**. Sie finden sie unter **Authentication Keys** (Authentifizierungsschlüssel). Sie benötigen beide Angaben, um LinkedIn als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. **geheime Clientschlüssel** ist eine wichtige Sicherheitsanmeldeinformation.
-6. Geben Sie `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` unter **Authorized Redirect URLs** (Autorisierte Umleitungs-URLs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contoso.onmicrosoft.com“). Wählen Sie **Add** (Hinzufügen) aus, und klicken Sie dann auf **Update** (Aktualisieren).
+6. Geben Sie `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` unter **Authorized Redirect URLs** (Autorisierte Umleitungs-URLs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c“). Wählen Sie **Add** (Hinzufügen) aus, und klicken Sie dann auf **Update** (Aktualisieren).
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Konfigurieren eines LinkedIn-Kontos als Identitätsanbieter
 

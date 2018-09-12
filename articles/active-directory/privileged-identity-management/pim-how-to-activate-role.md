@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7c990fc0d385af9527bf55339b2fa617e589ec0e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 59dab4651366c3ad6579e0da660baee0c653d1a3
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190585"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666001"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>Aktivieren von Azure AD-Verzeichnisrollen in PIM
 
@@ -26,11 +26,11 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) vereinfac
 
 Wenn Sie für eine Administratorrolle berechtigt sind, können Sie diese Rolle aktivieren, um privilegierte Aufgaben durchzuführen. Wenn Sie z. B. gelegentlich Office 365-Funktionen verwalten, dürfen Ihre privilegierte Rollenadministratoren Ihrer Organisation Sie nicht als permanenten globalen Administrator festlegen, da sich diese Rolle auf andere Dienste auswirkt. Stattdessen gewähren sie Ihnen Berechtigungen für Azure AD-Rollen wie z. B. Exchange Online-Administrator. Sie können eine Aktivierung dieser Rolle anfordern, wenn Sie diese Berechtigungen benötigen, und verfügen damit für einen bestimmten Zeitraum über Administratorkontrolle.
 
-Dieser Artikel richtet sich an Administratoren, die ihre Rolle in PIM aktivieren müssen.
+Dieser Artikel richtet sich an Administratoren, die ihre Azure AD-Rolle in PIM aktivieren müssen.
 
 ## <a name="activate-a-role"></a>Aktivieren einer Rolle
 
-Wenn Sie eine Rolle übernehmen müssen, können Sie über die Navigationsoption **Meine Rollen** deren Aktivierung anfordern.
+Wenn Sie eine Azure AD-Verzeichnisrolle übernehmen müssen, können Sie in PIM über die Navigationsoption **Meine Rollen** deren Aktivierung anfordern.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 

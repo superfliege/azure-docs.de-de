@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: byvinyal
-ms.openlocfilehash: 6b6e713c0da11a3d2c8cfbf388b84940a4542e95
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140776"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782589"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um größere Teile der Plattform abzudecken.
@@ -172,7 +172,7 @@ Weitere Informationen zu Azure Files-Limits finden Sie unter [Azure Files scalab
 
 [!INCLUDE [storage-files-scale-targets](../includes/storage-files-scale-targets.md)]
 
-#### <a name="azure-file-sync-limits"></a>Azure File Sync-Limits
+#### <a name="azure-file-sync-limits"></a>Grenzwerte der Azure-Dateisynchronisierung
 [!INCLUDE [storage-sync-files-scale-targets](../includes/storage-sync-files-scale-targets.md)]
 
 #### <a name="azure-queue-storage-limits"></a>Azure Queue-Speicherlimits
@@ -201,7 +201,7 @@ Weitere Informationen finden Sie unter [Größen virtueller Computer](virtual-ma
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>App Service-Grenzwerte
-Die folgenden App Service-Grenzwerte umfassen Grenzwerte für Web-Apps, Mobile Apps, API-Apps und Logik-Apps.
+Die folgenden App Service-Grenzwerte umfassen Grenzwerte für Web-Apps, Mobile Apps und API-Apps.
 
 [!INCLUDE [azure-websites-limits](../includes/azure-websites-limits.md)]
 

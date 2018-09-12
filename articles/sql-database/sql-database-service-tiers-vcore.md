@@ -6,21 +6,21 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/30/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8266d9e3530969154ac9c8c877badda9f8b4fed3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124996"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307271"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen
 
 Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Es ermöglicht Ihnen auch die Wahl der Hardwaregeneration:
 - Gen 4: bis zu 24 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
-- Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,5. GB pro Kern, schnelle eNVM-SSD
+- Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,1 GB pro Kern, schnelle eNVM-SSD
 
 Beim virtuellen Kern-Modell können Sie außerdem den [Vorteil der Verwendung von Azure-Hybrid für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) nutzen, um Kosten zu sparen.
 
@@ -34,7 +34,7 @@ Die Unterschiede zwischen diesen beiden Tarifen werden in der folgenden Tabelle 
 |---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|
 |Compute|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|Gen4: 1 bis 24 virtuelle Kerne<br/>Gen5: 1 bis 80 virtuelle Kerne|
-|Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,5 GB pro Kern |
+|Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern |
 |Speicher|[Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md),<br/>Einzeldatenbank: 5 GB bis 4 TB<br/>Verwaltete Instanz: 32 GB bis 8 TB |Lokaler SSD-Speicher,<br/>Einzeldatenbank: 5 GB bis 1 TB<br/>Verwaltete Instanz: 32 GB bis 4 TB |
 |E/A-Durchsatz (ungefähr)|Einzeldatenbank: 500 IOPS pro virtuellem Kern (maximal 7.000 IOPS)</br>Verwaltete Instanz: abhängig von der [Dateigröße](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5.000 IOPS pro V-Kern mit maximal 200.000 IOPS|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>Zonenredundante HA|

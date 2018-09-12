@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 08/05/2018
+ms.date: 09/05/2018
 ms.author: juliako
-ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744750"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841834"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -52,7 +52,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein Video Indexer-Konto erstelle
 
 ## <a name="connect-to-azure"></a>Herstellen einer Verbindung mit Azure
 
-1. Melden Sie sich mit diesem Benutzer an, und klicken Sie auf die Schaltfläche **Mit Azure verbinden**:
+1. Melden Sie sich bei [https://www.videoindexer.ai/](https://www.videoindexer.ai/) an, und klicken Sie auf die Schaltfläche **Mit Azure verbinden**:
 
     ![Herstellen einer Verbindung mit Azure](./media/create-account/connect-to-azure.png)
 
@@ -69,9 +69,21 @@ In diesem Artikel wird veranschaulicht, wie Sie ein Video Indexer-Konto erstelle
     * Wählen Sie **Vorhandene Ressource verwenden**, um ein vorhandenes Media Services-Konto zu verwenden. Wählen Sie Ihr Konto in der Liste mit den Konten aus.
 
         Ihr Media Services-Konto muss über dieselbe Region wie Ihr Video Indexer-Konto verfügen. Legen Sie den Typ und die Anzahl von reservierten Einheiten in Ihrem Media Services-Konto auf **10 reservierte S3-Einheiten** fest, um die Indizierungsdauer zu reduzieren und den Durchsatz zu verbessern.
-    * Klicken Sie zum manuellen Konfigurieren Ihrer Verbindung auf den Link **Zur manuellen Konfiguration wechseln**, und geben Sie die erforderlichen Informationen an:
+    * Klicken Sie zum manuellen Konfigurieren Ihrer Verbindung auf den Link **Zur manuellen Konfiguration wechseln**. 
+    
+        Sie möchten Ihre Verbindung möglicherweise manuell konfigurieren, wenn aus irgendeinem Grund die automatische Option nicht vollständig ausgeführt wird, Ihre Einrichtung und Konfiguration von den üblichen Fällen abweicht oder Sie die volle Transparenz und Kontrolle über die Einstellungen wünschen. 
+        
+        Geben Sie in **Video Indexer mit einem Azure-Abonnement verbinden** die folgenden Informationen an.
 
-    ![Herstellen einer Verbindung für Video Indexer mit Azure](./media/create-account/connect-vi-to-azure-subscription-2.png)
+        |Einstellung|Beschreibung|
+        |---|---|
+        |Region für Video Indexer-Konto|Der Name der Region für das Video Indexer-Konto. Zur Verbesserung der Leistung und Senkung der Kosten wird dringend empfohlen, den Namen der Region anzugeben, in der sich die Azure Media Services-Ressourcen und das Azure Storage-Konto befinden. |
+        |Azure Active Directory-Mandant (AAD)|Der Name des Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“. Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.|
+        |Abonnement-ID|Wählen Sie das Azure-Abonnement aus, unter dem die Verbindung erstellt werden soll. Die Abonnement-ID kann über das Azure-Portal abgerufen werden. Klicken Sie im linken Navigationsbereich auf **Alle Dienste**, und suchen Sie nach „Abonnements“. Wählen Sie **Abonnements** und dann in der Liste Ihrer Abonnements die gewünschte ID aus.|
+        |Name der Azure Media Services-Ressourcengruppen|Der Name der Ressourcengruppe mit dem Media Services-Konto.|
+        |Name der Media Services-Ressource|Der Name der Azure Media Services-Ressource.|
+        |Anwendungs-ID|Die Azure AD-Anwendungs-ID mit Berechtigungen für das angegebene Media Services-Konto. Weitere Informationen finden Sie unter [Verwenden der Dienstprinzipalauthentifizierung](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
+        |Anwendungsschlüssel|Weitere Informationen finden Sie unter [Verwenden der Dienstprinzipalauthentifizierung](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
 
 5. Wählen Sie **Verbinden**, wenn Sie fertig sind. Dieser Vorgang kann einige Minuten dauern. 
 

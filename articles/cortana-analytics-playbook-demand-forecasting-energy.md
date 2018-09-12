@@ -1,25 +1,26 @@
 ---
 title: Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs | Microsoft Docs
 description: Lösungsvorlage mit Microsoft Cortana Intelligence, mit deren Hilfe Versorgungsunternehmen im Energiesektor den Bedarf vorhersagen können.
-services: cortana-analytics
+services: machine-learning
 documentationcenter: ''
 author: ilanr9
-manager: ilanr9
+manager: cgronlun
 editor: yijichen
 ms.assetid: 8855dbb9-8543-45b9-b4c6-aa743a04d547
-ms.service: cortana-analytics
+ms.service: machine-learning
+ms.subservice: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
-ms.author: ilanr9;yijichen;garye
-ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yijichen
+ms.openlocfilehash: 6a879faa88cc6cdf586f2c12283bcb6f0263bf57
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23004035"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842580"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence-Lösungsvorlage – Playbook für die Vorhersage des Energiebedarfs
 ## <a name="executive-summary"></a>Kurzfassung
@@ -217,7 +218,7 @@ Sie sehen, dass der Zyklus aus sechs Schritten besteht:
 * Problemformulierung
 * Datenerfassung und Durchsuchen von Daten
 * Datenvorbereitung und Featureentwicklung
-* Modellierung:
+* Modellierung
 * Modellauswertung
 * Entwicklung
 
@@ -256,7 +257,7 @@ Die folgende Tabelle enthält Beispiele für ein gut geeignetes Datenformat für
 | **Date** | **Time** | **Meter ID** | **Phase 1** | **Phase 2** | **Phase 3** |
 | --- | --- | --- | --- | --- | --- |
 | 01.07.2015 |10:00:00 |ABC1234 |7.0 |2.1 |5,3 |
-| 01.07.2015 |10:00:01 |ABC1234 |7,1 |2,2 |4,3 |
+| 01.07.2015 |10:00:01 |ABC1234 |7.1 |2,2 |4,3 |
 | 01.07.2015 |10:00:02 |ABC1234 |6,0 |2,1 |4,0 |
 
 | **Date** | **Time** | **Location** | **Temperature** |
@@ -316,7 +317,7 @@ So wird der Originalwert in einen kleineren Bereich herunterskaliert, meist zwis
 ## <a name="modeling"></a>Modellierung
 In der Modellierungsphase wird die Konvertierung der Daten in ein Modell durchgeführt. Kern dieses Prozesses sind erweiterte Algorithmen, mit denen die Verlaufsdaten (Trainingsdaten) durchsucht und Muster extrahiert werden und anschließend ein Modell erstellt wird. Dieses Modell kann später verwendet werden, um Vorhersagen für neue Daten zu treffen, die nicht zum Erstellen des Modells verwendet wurden.
 
-Nachdem wir über ein funktionierendes zuverlässiges Modell verfügen, können wir es zum Bewerten neuer Daten verwenden, die für die erforderlichen Features (X) strukturiert sind. Für den Bewertungsprozess wird das dauerhafte Modell (Objekt aus der Trainingsphase) verwendet und die Zielvariable vorhergesagt, die mit „Ŷ“ angegeben wird.
+Nachdem wir über ein funktionierendes zuverlässiges Modell verfügen, können wir es zum Bewerten neuer Daten verwenden, die für die erforderlichen Features (X) strukturiert sind. Beim Bewertungsprozess wird das dauerhafte Modell (Objekt aus der Trainingsphase) verwendet und die durch Ŷ gekennzeichnete Zielvariable vorhergesagt.
 
 ### <a name="demand-forecasting-modeling-techniques"></a>Modellierungsverfahren für die Bedarfsvorhersage
 Bei der Bedarfsvorhersage nutzen wir Verlaufsdaten, die nach der Zeit sortiert sind. Im Allgemeinen bezeichnen wir Daten, die die Zeitdimension enthalten, als [Zeitreihe](https://en.wikipedia.org/wiki/Time_series). Das Ziel bei der Zeitreihenmodellierung besteht darin, zeitbezogene Trends, Saisonabhängigkeit und Autokorrelation (Korrelation in Abhängigkeit der Zeit) zu ermitteln und aus diesen Daten ein Modell zu formulieren.

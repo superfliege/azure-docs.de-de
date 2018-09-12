@@ -3,7 +3,7 @@ title: Verwenden von AMQP 1.0 mit der Java Service Bus-API | Microsoft Docs
 description: Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Service Bus und Advanced Message Queuing Protocol (AMQP) 1.0 verwenden.
 services: service-bus-messaging
 documentationcenter: java
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: 0848facd764c4fb0d7f95c1ae89ecb02a32257e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: spelluru
+ms.openlocfilehash: bfab0c374e4b20b09167f37363fe0681144426ac
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23044175"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699344"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0
 AMQP (Advanced Message Queuing Protocol) 1.0 ist ein effizientes, zuverlässiges Messagingprotokoll auf Wire-Ebene, mit dem Sie robuste und plattformübergreifende Messaginganwendungen erstellen können.
@@ -87,7 +87,7 @@ Dabei bedeuten **[namespace]**, **[SASPolicyName]** und **[SASPolicyKey]** Folge
 * **[SASPolicyKey]**: Der Shared Access Signature-Richtlinienschlüssel der Warteschlange.
 
 > [!NOTE]
-> Sie müssen das Kennwort manuell als URL codieren. Ein nützliches URL-Codierungshilfsprogramm ist unter [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp) verfügbar.
+> Sie müssen das Kennwort manuell als URL codieren. Ein nützliches Hilfsprogramm zur URL-Codierung finden Sie unter [http://www.w3schools.com/tags/ref_urlencode.asp](http://www.w3schools.com/tags/ref_urlencode.asp).
 > 
 > 
 
@@ -322,7 +322,7 @@ Sie können Service Bus AMQP 1.0 auch mit anderen Sprachen verwenden, unter ande
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [AMQP 1.0-Unterstützung in Azure Service Bus](service-bus-amqp-overview.md)
-* [Verwenden von AMQP 1.0 mit der .NET-Programmierschnittstelle für Service Bus](service-bus-dotnet-advanced-message-queuing.md)
+* [Gewusst wie: Verwenden von AMQP 1.0 mit der .NET-API für Service Bus](service-bus-dotnet-advanced-message-queuing.md)
 * [Entwicklerhandbuch für Service Bus AMQP 1.0](service-bus-amqp-dotnet.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Java Developer Center](https://azure.microsoft.com/develop/java/)

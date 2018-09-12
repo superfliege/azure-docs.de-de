@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd460d92430f8ab011e90b969495972b744162df
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: d25f46804c3320b7d941a945f3c4d9a5dfb6970c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798711"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702128"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -50,6 +50,18 @@ ms.locfileid: "34798711"
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
+
+* Unterstützung für den Abbruch von Anforderungen hinzugefügt.
+* SetCurrentLocation zu ConnectionPolicy hinzugefügt, sodass automatisch die bevorzugten Standorte basierend auf der Region automatisch aufgefüllt werden.
+* Fehler in partitionsübergreifenden Abfragen mit Min./Max. und einem Filter behoben, durch den keine Dokumente auf einer einzelnen Partition gefunden werden konnten.
+
+### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
+
+* DocumentClient-Methoden haben nun Parität mit IDocumentClient.
+* Direkte TCP-Transportstapel aktualisiert, um die Anzahl der hergestellten Verbindungen zu verringern.
+* Unterstützung von Direktmodus-TCP für Nicht-Windows-Clients hinzugefügt.
+
 ### <a name="a-name12201220"></a><a name="1.22.0"/>1.22.0
 
 * ConsistencyLevel-Eigenschaft zu „FeedOptions“ hinzugefügt.
@@ -297,6 +309,8 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [2.0.0-preview2](#2.0.0-preview2) |26. Juli 2018 |--- |
+| [2.0.0-preview](#2.0.0-preview) |11. Mai 2018 |--- |
 | [1.22.0](#1.22.0) |19. April 2018 |--- |
 | [1.21.1](#1.20.1) |09. März 2018 |--- |
 | [1.20.2](#1.20.1) |21. Februar 2018 |--- |

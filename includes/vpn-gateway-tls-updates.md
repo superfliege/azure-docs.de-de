@@ -5,21 +5,18 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9a17f34333503436d3da340670abdde154e45ef6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f2d7aba05fc01c5a4dcdb123f25242c4e4a72578
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38727525"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43426423"
 ---
-Ab dem 1. Juli 2018 wird die Unterstützung für TLS 1.0 und 1.1 vom Azure-VPN-Gateway entfernt. Das VPN-Gateway unterstützt dann nur noch TLS 1.2. Um TLS-Unterstützung und Konnektivität für Windows 7- und Windows 8-Point-to-Site-Clients, die TLS verwenden, aufrechtzuerhalten, wird empfohlen, die folgenden Updates zu installieren:
-
-•   [Update für die Microsoft EAP-Implementierung, das die Verwendung von TLS ermöglicht](https://support.microsoft.com/help/2977292/microsoft-security-advisory-update-for-microsoft-eap-implementation-th)
-
-•   [Update für die Aktivierung von TLS 1.1 und TLS 1.2 als sichere Standardprotokolle in WinHTTP](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-a-default-secure-protocols-in)
+>[!NOTE]
+>Ab dem 1. Juli 2018 wird die Unterstützung für TLS 1.0 und 1.1 vom Azure-VPN-Gateway entfernt. Das VPN-Gateway unterstützt dann nur noch TLS 1.2. Informationen zum Beibehalten der Unterstützung finden Sie unter [Updates zum Ermöglichen der Unterstützung von TLS 1.2](#tls1).
 
 Die folgenden älteren Algorithmen werden ebenfalls am 1. Juli 2018 für TLS als veraltet markiert:
 
@@ -27,3 +24,7 @@ Die folgenden älteren Algorithmen werden ebenfalls am 1. Juli 2018 für TLS als
 * DES (Data Encryption Algorithm)
 * 3DES (Triple Data Encryption Algorithm)
 * MD5 (Message Digest 5)
+
+### <a name="tls1"></a>Wie aktiviere ich Unterstützung für TLS 1.2 unter Windows 7 und Windows 8.1?
+
+[!INCLUDE [tls 1.2](vpn-gateway-tls-include.md)]

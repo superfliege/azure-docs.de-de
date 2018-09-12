@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142436"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382635"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurieren und Verwenden des Speicheremulators mit Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -33,7 +33,7 @@ Ausführliche Informationen zum Speicheremulator, einschließlich der Systemanfo
 > 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Konfigurieren einer Verbindungszeichenfolge für den Speicheremulator
-Wenn Sie von Code in einer Rolle aus auf den Speicheremulator zugreifen möchten, möchten Sie wahrscheinlich eine Verbindungszeichenfolge konfigurieren, die auf den Speicheremulator verweist und die später so geändert werden kann, dass sie auf ein Azure-Speicherkonto verweist. Eine Verbindungszeichenfolge ist eine Konfigurationseinstellung, die von der Rolle zur Laufzeit gelesen werden kann, um eine Verbindung mit einem Speicherkonto herzustellen. Weitere Informationen zum Erstellen von Verbindungszeichenfolgen finden Sie unter [Konfigurieren der Azure-Anwendung](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
+Wenn Sie von Code in einer Rolle aus auf den Speicheremulator zugreifen möchten, möchten Sie wahrscheinlich eine Verbindungszeichenfolge konfigurieren, die auf den Speicheremulator verweist und die später so geändert werden kann, dass sie auf ein Azure-Speicherkonto verweist. Eine Verbindungszeichenfolge ist eine Konfigurationseinstellung, die von der Rolle zur Laufzeit gelesen werden kann, um eine Verbindung mit einem Speicherkonto herzustellen. Weitere Informationen zum Erstellen von Verbindungszeichenfolgen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](/azure/storage/common/storage-configure-connection-string).
 
 > [!NOTE]
 > Sie können einen Verweis auf das Speicheremulatorkonto aus dem Code zurückgeben, indem Sie die **DevelopmentStorageAccount**-Eigenschaft verwenden. Diese Methode funktioniert ordnungsgemäß, wenn Sie auf den Speicheremulator vom Code aus zugreifen möchten. Wenn die Anwendung jedoch in Azure veröffentlicht werden soll, müssen Sie vor der Veröffentlichung eine Verbindungszeichenfolge für den Zugriff auf das Azure-Speicherkonto erstellen und den Code so ändern, dass die Verbindungszeichenfolge verwendet wird. Wenn Sie häufig zwischen dem Speicheremulatorkonto und einem Azure-Speicherkonto wechseln, wird der Prozess durch eine Verbindungszeichenfolge vereinfacht.

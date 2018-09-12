@@ -3,7 +3,7 @@ title: Verwalten von Nutzung und Abrechnung für Azure Stack als Cloud-Dienstanb
 description: Eine exemplarische Vorgehensweise zum Registrieren von Azure Stack als Cloud-Dienstanbieter (Cloud Solution Provider, CSP) und zum Hinzufügen von Kunden für die Abrechnung.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/30/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 66bab9f4b5099099039aa0f60cd86ef23e73cd1f
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9bb4a4ea81f2dc0fb11e2f7cae1b9d02b0edfdde
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715684"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341434"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Verwalten von Nutzung und Abrechnung für Azure Stack als Cloud-Dienstanbieter 
 
@@ -58,7 +58,7 @@ Cloud-Dienstanbieter-Abonnements (Cloud Service Provider, CSP) sind die bevorzug
 
 ## <a name="register-azure-stack"></a>Registrieren von Azure Stack
 
-Informationen zum Registrieren von Azure Stack finden Sie unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md).
+Verwenden Sie das CSPSS-Abonnement, das Sie anhand der Informationen im vorherigen Abschnitt erstellt haben, um Azure Stack in Azure zu registrieren. Weitere Informationen finden Sie unter [Registrieren von Azure Stack in Ihrem Azure-Abonnement](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Hinzufügen eines Endkunden
 

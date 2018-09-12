@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091823"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286331"
 ---
 # <a name="sql-database-faq"></a>SQL-Datenbank – Häufig gestellte Fragen
 
@@ -22,8 +22,10 @@ ms.locfileid: "43091823"
 Die aktuelle Version von SQL-Datenbank ist V12. Version V11 wurde eingestellt.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Wie lautet die Vereinbarung zum Servicelevel (SLA) für SQL-Datenbank?
-Wir garantieren für die Konnektivität zwischen Ihrer Microsoft Azure SQL-Datenbank und unserem Internetgateway unabhängig von Ihrem Diensttarif eine Betriebszeit von mindestens 99,99%. Weitere Informationen finden Sie unter [SLA](http://azure.microsoft.com/support/legal/sla/).
+Wir garantieren für die Konnektivität zwischen Ihrer Microsoft Azure SQL-Datenbank und unserem Internetgateway unabhängig von Ihrem Diensttarif eine Betriebszeit von mindestens 99,99%. 0,01 % ist für Patches, Upgrades und Failover reserviert. Weitere Informationen finden Sie unter [SLA](http://azure.microsoft.com/support/legal/sla/). Informationen zur Verfügbarkeitsarchitektur von Azure SQL-Datenbank finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md). 
 
+## <a name="can-i-control-when-patching-downtime-occurs"></a>Kann ich den Zeitpunkt der Ausfallzeiten beim Patchen steuern?
+Nein. Die Auswirkungen vom Patchen sind im Allgemeinen nicht merklich, wenn Sie in Ihrer App [Wiederholungslogik einsetzen](sql-database-develop-overview.md#resiliency).
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Was ist das neue V-Kern-basierte Kaufmodell für Azure SQL-Datenbank?
 
 Das neue Kaufmodell gilt zusätzlich zum vorhandenen DTU-basierten Modell. Das V-Kern-basierte Modell soll Kunden Flexibilität, Kontrolle, Transparenz und eine einfache Möglichkeit zum Übertragen der lokalen Workloadanforderungen in die Cloud bieten. Außerdem können Kunden ihre Compute- und Speicherressourcen basierend auf ihren jeweiligen Workloadanforderungen skalieren. Bei den Optionen des V-Kern-Modells für Einzeldatenbanken und Pools für elastische Datenbanken können mit dem [Azure-Hybridnutzungsvorteil für SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) ebenfalls Einsparungen von bis zu 30 Prozent erzielt werden. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md). 

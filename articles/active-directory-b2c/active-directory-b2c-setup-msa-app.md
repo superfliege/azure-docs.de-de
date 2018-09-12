@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16e4dbac4c8146b048d4d9b76544677a6111e2a5
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900828"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341082"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Um ein Microsoft-Konto als Identitätsanbieter in Azure Active Directory (Azure 
 3. Geben Sie einen **Namen** für Ihre Anwendung an, und klicken Sie auf **Erstellen**.
 4. Kopieren Sie auf der Registrierungsseite den Wert für **Anwendungs-ID**. Sie verwenden ihn, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.
 5. Wählen Sie **Plattform hinzufügen** und dann **Web** aus.
-6. Geben Sie `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` unter **Umleitungs-URLs** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“).
+6. Geben Sie `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` unter **Umleitungs-URLs** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z. B. „contosob2c“).
 7. Wählen Sie unter **Anwendungsgeheimnisse** die Option **Neues Kennwort generieren** aus. Kopieren Sie das neue Kennwort, das auf dem Bildschirm angezeigt wird. Sie benötigen es, um das Microsoft-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. Dieses Kennwort ist eine wichtige Anmeldeinformation.
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Konfigurieren eines Microsoft-Kontos als Identitätsanbieter

@@ -7,14 +7,14 @@ author: ashmaka
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 7563a967ed23f98d8626092d58b5a0f5d4d1834c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 75c6476e86ee4a742e32ae0e7ffd27842f591843
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374435"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841761"
 ---
 # <a name="quickstart-for-text-analytics-api-with-ruby"></a>Schnellstart für die Textanalyse-API mit Ruby 
 <a name="HOLTop"></a>
@@ -27,7 +27,7 @@ Die technische Dokumentation für die APIs finden Sie in den [API-Definitionen](
 
 Sie benötigen ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer **Textanalyse-API**. Sie können diesen Schnellstart mit dem **Free-Tarif für 5.000 Transaktionen/Monat** abschließen.
 
-Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md) – beide wurden der Registrierung für Sie generiert. 
+Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md) – beide wurden bei der Registrierung für Sie generiert. 
 
 <a name="Detect"></a>
 
@@ -38,7 +38,7 @@ Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
 2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Ersetzen Sie den Speicherort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
+4. Ersetzen Sie den Standort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
 5. Führen Sie das Programm aus.
 
 ```ruby
@@ -51,7 +51,7 @@ require 'json'
 # **********************************************
 
 # Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
+accessKey = 'ENTER KEY HERE'
 
 # Replace or verify the region.
 #
@@ -62,9 +62,9 @@ accessKey = 'enter key here'
 # NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
 # a free trial access key, you should not need to change this region.
 uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/languages'
+path = '/text/analytics/v2.0/'
 
-uri = URI(uri + path)
+uri = URI(uri + path + 'languages')
 
 documents = { 'documents': [
     { 'id' => '1', 'text' => 'This is a document written in English.' },
@@ -88,7 +88,7 @@ puts JSON::pretty_generate (JSON (response.body))
 
 **Antwort der Spracherkennung**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 
@@ -138,36 +138,10 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 
 Die Standpunktanalyse-API erkennt die Stimmung eines Textdatensatzes mithilfe der [Stimmungsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Im folgenden Beispiel werden zwei Dokumente bewertet, ein englisches und ein spanisches.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Ersetzen Sie den Speicherort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
-5. Führen Sie das Programm aus.
+Fügen Sie dem Code aus dem [vorherigen Abschnitt](#Detect) den folgenden Code hinzu.
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/sentiment'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'sentiment')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -190,7 +164,7 @@ puts JSON::pretty_generate (JSON (response.body))
 
 **Antwort der Stimmungsanalyse**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -212,39 +186,12 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 
 ## <a name="extract-key-phrases"></a>Extrahieren von Schlüsselbegriffen
 
-Die Schlüsselbegriffserkennungs-API extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
+Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Ersetzen Sie den Speicherort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
-5. Führen Sie das Programm aus.
-
+Fügen Sie dem Code aus dem [vorherigen Abschnitt](#SentimentAnalysis) den folgenden Code hinzu.
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/keyPhrases'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'keyPhrases')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -307,41 +254,14 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 ```
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>Erkennen von Entitätsverknüpfungen
+## <a name="identify-linked-entities"></a>Erkennen von verknüpften Entitäten
 
 Die Entitätsverknüpfungs-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsverknüpfungsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Ruby-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Ersetzen Sie den Speicherort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
-5. Führen Sie das Programm aus.
-
+Fügen Sie dem Code aus dem [vorherigen Abschnitt](#KeyPhraseExtraction) den folgenden Code hinzu.
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/entities'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'entities')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -364,7 +284,7 @@ puts JSON::pretty_generate (JSON (response.body))
 
 **Antwort der Entitätsverknüpfung**
 
-Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {

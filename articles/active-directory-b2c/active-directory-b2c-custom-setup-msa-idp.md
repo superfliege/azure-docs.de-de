@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7a83ace83176d75abdac03b354c4c4ac71eb4238
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6a981f112c97ee35b476c92f6f698e68a12a1363
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449133"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336820"
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen des Microsoft-Kontos (Microsoft Account, MSA) als Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 
@@ -58,7 +58,7 @@ Um den Dienst „Microsoft-Konto“ als Identitätsanbieter in Azure Active Dire
 
     ![Microsoft-Konto – „Web“ aus der Liste der Plattformen wählen](media/active-directory-b2c-custom-setup-ms-account-idp/msa-web.png)
 
-7.  Geben Sie im Feld `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp`Umleitungs-URIs **den Wert** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“).
+7.  Geben Sie im Feld `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`Umleitungs-URIs **den Wert** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z. B. „contosob2c“).
 
     ![Microsoft-Konto – Umleitungs-URLs festlegen](media/active-directory-b2c-custom-setup-ms-account-idp/msa-redirect-url.png)
 

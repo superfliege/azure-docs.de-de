@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 08/30/2018
 ms.author: marsma
-ms.openlocfilehash: 5c10c961519614d1560f27c41ba57237085261ba
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: eb3a1745677871211df05d18e28d32061f360bac
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190407"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301815"
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry-SKUs
 
@@ -21,9 +21,9 @@ Azure Container Registry (ACR) steht in verschiedenen Dienstebenen, sogenannten 
 
 | SKU | Verwaltet | BESCHREIBUNG |
 | --- | :-------: | ----------- |
-| **Basic** | JA | Ein kostenoptimierter Einstiegspunkt für Entwickler, die sich mit Azure Container Registry vertraut machen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (Azure Active Directory-Authentifizierungsintegration, Löschen von Images sowie Webhooks). Allerdings bestehen Einschränkungen bei Größe und Nutzung. |
-| **Standard** | JA | Standard-Registrierungen bieten die gleichen Funktionen wie Basic. In Standard gibt es jedoch erweiterte Speicherlimits und einen erhöhten Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse der meisten Produktionsszenarios. |
-| **Premium** | JA | Premium-Registrierungen sind die Grenzwerte für den Speicher und gleichzeitige Vorgänge noch höher, sodass Szenarios mit großen Volumen möglich sind. Zusätzlich zu Funktionen für einen erhöhten Imagedurchsatz enthält Premium Funktionen wie die [Georeplikation][container-registry-geo-replication] zum regionsübergreifenden Verwalten einer Registrierung, sodass die Registrierung jeder Bereitstellung netzwerknah ist. |
+| **Basic** | JA | Ein kostenoptimierter Einstiegspunkt für Entwickler, die sich mit Azure Container Registry vertraut machen. Basic-Registrierungen verfügen über die gleichen Programmfunktionen wie Standard- und Premium-Registrierungen (Azure Active Directory-Authentifizierungsintegration, Löschen von Images sowie Webhooks). Der gebotene Speicher- und Imagedurchsatz ist jedoch für Szenarien mit geringerer Nutzung am besten geeignet. |
+| **Standard** | JA | Standard-Registrierungen bieten die gleichen Funktionen wie Basic, jedoch höhere Speichergrenzwerte und einen höheren Imagedurchsatz. Standard-Registrierungen erfüllen üblicherweise die Bedürfnisse der meisten Produktionsszenarios. |
+| **Premium** | JA | Premium-Registrierungen bieten den größten Umfang an Speicher und gleichzeitigen Vorgängen, sodass Szenarien mit großen Volumen möglich sind. Zusätzlich einem höheren Imagedurchsatz bietet Premium Funktionen wie die [Georeplikation][container-registry-geo-replication] zum regionsübergreifenden Verwalten einer zentralen Registrierung und [ Inhaltsvertrauen (Vorschau)](container-registry-content-trust.md) für das Signieren von Imagetags. |
 | Klassisch<sup>1</sup> | Nein  | Diese SKU ermöglichte das erstmalige Release des Azure Container Registry-Diensts in Azure. Klassische Registrierungen werden von einem Speicherkonto unterstützt, das von Azure in Ihrem Abonnement erstellt wird, das dazu führt, dass ACR nur eingeschränkt allgemeine Funktionen wie einen erhöhten Durchsatz oder die Georeplikation bieten kann. |
 
 <sup>1</sup> Die SKU „Klassisch“ wird im **März 2019** **eingestellt**. Verwenden Sie für alle neuen Containerregistrierungen die SKUs „Basic“, „Standard“ oder „Premium“.

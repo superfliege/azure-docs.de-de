@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056758"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666431"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -42,7 +42,7 @@ Die Größenanforderungen für den Konfigurationsserver richten sich nach der po
 | 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) |18 GB |600 GB |500 GB bis 1 TB |100 bis 150 Computer replizieren |
 | 16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) |32 GB |1 TB |1 TB bis 2 TB |150 bis 200 Computer replizieren |
 
-Wenn Sie mehr als eine VMware-VM replizieren, lesen Sie den Artikel [Überlegungen zur Kapazitätsplanung](/site-recovery-plan-capacity-vmware.md). Führen Sie das [Bereitstellungsplanertool](site-recovery-deployment-planner.md) für die VMware-Replikation aus.
+Wenn Sie mehr als eine VMware-VM replizieren, lesen Sie den Artikel [Überlegungen zur Kapazitätsplanung](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware). Führen Sie das [Bereitstellungsplanertool](site-recovery-deployment-planner.md) für die VMware-Replikation aus.
 
 ## <a name="download-the-template"></a>Herunterladen der Vorlage
 
@@ -81,7 +81,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
 1. Klicken Sie im vSphere-Client mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Einstellungen bearbeiten** aus.
 2. Klicken Sie unter **Hardware** auf **Hinzufügen** > **Ethernet-Adapter**. Klicken Sie anschließend auf **Weiter**.
-3. Wählen Sie einen Adaptertyp und ein Netzwerk aus. 
+3. Wählen Sie einen Adaptertyp und ein Netzwerk aus.
 4. Um die virtuelle NIC zu verbinden, wenn die VM Computer eingeschaltet wird, wählen Sie **Connect at power-on** (Beim Einschalten verbinden) aus. Klicken Sie anschließend auf **Weiter** > **Fertig stellen** > **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Registrieren des Konfigurationsservers bei Azure Site Recovery-Diensten
@@ -102,7 +102,7 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 
     > [!NOTE]
     > Nach der Registrierung kann der Recovery Services-Tresor nicht geändert werden.
-    
+
 3. Gehen Sie unter **Drittanbietersoftware installieren** wie folgt vor:
 
     |Szenario   |Vorgehensweise  |
@@ -144,6 +144,10 @@ Wenn Sie dem Konfigurationsserver eine zusätzliche NIC hinzufügen möchten, f�
 ## <a name="upgrade-the-configuration-server"></a>Aktualisieren Sie den Konfigurationsserver
 
 Um den Konfigurationsserver auf die neueste Version zu aktualisieren, lesen Sie die [hier](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server) aufgeführten Schritte.
+
+## <a name="manage-the-configuration-server"></a>Verwalten des Konfigurationsservers
+
+Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie sicher, dass sich die IP-Adresse des Konfigurationsservers nicht ändert, nachdem der Konfigurationsserver bei einem Tresor registriert wurde. Weitere Informationen zu allgemeinen Aufgaben für die Verwaltung des Konfigurationsservers finden Sie [hier](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Problembehandlung bei Bereitstellungsproblemen
 

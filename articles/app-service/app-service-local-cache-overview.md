@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 6729c87dcc9a85e2e3ccb6b4822213d38e2ba6f7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918015"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666113"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
@@ -44,13 +44,15 @@ Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalt
 * Sie werden nicht durch geplante Upgrades oder ungeplante Downtimes der Server beeinträchtigt, die die Inhaltsfreigabe verwalten, und sie werden nicht durch andere Unterbrechungen im Zusammenhang mit Azure Storage beeinträchtigt.
 * Es sind weniger App-Neustarts aufgrund von Änderungen an der Speicherfreigabe erforderlich.
 
-## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>Auswirkung des lokalen Caches auf das Verhalten von App Service
-* Der lokale Cache ist eine Kopie der Ordner „/site“ und „/siteextensions“ der Web-App. Er wird beim Start der Web-App auf der lokalen VM-Instanz erstellt. Die Größe des lokalen Caches ist pro Web-App standardmäßig auf 300 MB beschränkt, kann aber auf bis zu 2 GB erhöht werden.
-* Der lokale Cache bietet Lese- und Schreibzugriff. Änderungen werden aber verworfen, wenn die Web-App zwischen virtuellen Computern verschoben oder neu gestartet wird. Verwenden Sie den lokalen Cache nicht für Apps, die unternehmenskritische Daten im Inhaltsspeicher speichern.
-* Web-Apps können wie bisher Protokolldateien und Diagnosedaten schreiben. Protokolldateien und Daten werden jedoch lokal auf der VM gespeichert. Diese Daten werden dann in regelmäßigen Abständen in den freigegebenen Inhaltsspeicher kopiert. Der Kopiervorgang in den freigegebenen Inhaltsspeicher erfolgt nach dem „Best Case“-Prinzip, und zurückgeschriebene Daten können bei einem plötzlichen Absturz einer VM-Instanz verloren gehen.
-* Für Web-Apps, die den lokalen Cache verwenden, ergibt sich eine Änderung in Bezug auf die Ordnerstruktur für die LogFiles- und Data-Ordner. Es sind jetzt Unterordner in den Speicherordnern „LogFiles“ und „Data“ vorhanden, die das folgende Benennungsmuster verwenden: „eindeutiger Bezeichner“ + Zeitstempel Jeder dieser Unterordner entspricht einer VM-Instanz, auf der die Web-App ausgeführt wird oder wurde.  
-* Das Veröffentlichen von Änderungen an der Web-App über einen der Veröffentlichungsmechanismen führt zu einer Veröffentlichung im langlebigen freigegebenen Inhaltsspeicher. Zum Aktualisieren des lokalen Caches der Web-App ist ein Neustart erforderlich. Informationen zu einem nahtlosen Lebenszyklus finden Sie weiter unten in diesem Artikel.
-* „D:\Home“ verweist auf den lokalen Cache. „D:\local“ zeigt weiterhin auf den temporären VM-spezifischen Speicher.
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Auswirkung des lokalen Caches auf das Verhalten von App Service
+* _D:\home_ verweist auf den lokalen Cache, der beim Starten der App auf der VM-Instanz erstellt wird. _D:\local_ verweist weiterhin auf den temporären VM-spezifischen Speicher.
+* Der lokale Cache enthält eine einmalige Kopie der Ordner _/site_ und _/siteextensions_ des freigegebenen Inhaltsspeichers unter _D:\home\site_ bzw. _D:\home\siteextensions_. Die Dateien werden beim Starten der App in den lokalen Cache kopiert. Die Größe der zwei Ordner ist pro App standardmäßig auf 300 MB beschränkt, kann aber auf bis zu 2 GB erhöht werden.
+* Der lokale Cache bietet Lese- und Schreibzugriff. Änderungen werden jedoch verworfen, wenn die App zwischen virtuellen Computern verschoben oder neu gestartet wird. Verwenden Sie den lokalen Cache nicht für Apps, die unternehmenskritische Daten im Inhaltsspeicher speichern.
+* _D:\home\LogFiles_ und _D:\home\Data_ enthalten Protokolldateien und App-Daten. Die zwei Unterordner werden lokal auf der VM-Instanz gespeichert und regelmäßig in den freigegebenen Inhaltsspeicher kopiert. Apps können Protokolldateien und Daten speichern, indem sie diese in die jeweiligen Ordner schreiben. Das Kopieren in den freigegebenen Inhaltsspeicher erfolgt jedoch nach dem Prinzip der besten Leistung, daher können Protokolldateien und Daten aufgrund eines plötzlichen Absturzes einer VM-Instanz verloren gehen.
+* Das [Protokollstreaming](web-sites-enable-diagnostic-log.md#streamlogs) wird durch den bestmöglichen Kopiervorgang beeinträchtigt. Bei den gestreamten Protokollen kann es zu einer Verzögerung von bis zu einer Minute kommen.
+* Im freigegebenen Inhaltsspeicher ergibt sich für Apps, die den lokalen Cache verwenden, eine Änderung in der Ordnerstruktur der Ordner _LogFiles_ und _Data_. In diesen Ordnern sind jetzt Unterordner vorhanden, die das Benennungsmuster „eindeutiger Bezeichner + Zeitstempel“ aufweisen. Jeder dieser Unterordner entspricht einer VM-Instanz, auf der die App ausgeführt wird oder wurde.
+* Andere Ordner im Verzeichnis _D:\home_ verbleiben im lokalen Cache und werden nicht in den freigegebenen Inhaltsspeicher kopiert.
+* Bei der App-Bereitstellung über eine unterstützte Methode erfolgt die Veröffentlichung direkt im permanenten freigegebenen Inhaltsspeicher. Zum Aktualisieren der Ordner _D:\home\site_ und _D:\home\siteextensions_ im lokalen Cache muss die App neu gestartet werden. Informationen zu einem nahtlosen Lebenszyklus finden Sie weiter unten in diesem Artikel.
 * Die standardmäßige Inhaltsansicht der SCM-Site ist weiterhin die des freigegebenen Inhaltsspeichers.
 
 ## <a name="enable-local-cache-in-app-service"></a>Aktivieren des lokalen Caches in App Service

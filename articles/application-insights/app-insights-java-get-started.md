@@ -10,21 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a1212befd1cc6aaf74bc596459aa5be1ef689813
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 89f486a00f80ba4b9f4c9f38a0637e88e5bf1ad6
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43703454"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
 
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) ist ein erweiterbarer Analysedienst für Webentwickler, der Ihnen dabei hilft, die Leistung und die Verwendung der Liveanwendung zu verstehen. Verwenden Sie den Dienst, um [Leistungsprobleme und Ausnahmen zu erkennen und zu diagnostizieren](app-insights-detect-triage-diagnose.md), und [schreiben Sie Code][api], um zu verfolgen, welche Aktionen Benutzer mit Ihrer App ausführen.
 
-![Beispieldaten](./media/app-insights-java-get-started/5-results.png)
+![Screenshot der Übersicht über die Beispieldaten](./media/app-insights-java-get-started/overview-graphs.png)
 
 Application Insights unterstützt Java-Apps, die unter Linux, Unix oder Windows ausgeführt werden.
 
@@ -34,6 +35,8 @@ Erforderlich:
 * Ein Abonnement für [Microsoft Azure](https://azure.microsoft.com/).
 
 *Wenn Sie eine Web-App haben, die bereits aktiv ist, könnten Sie das alternative Verfahren nutzen, [um das SDK zur Laufzeit auf dem Webserver hinzuzufügen](app-insights-java-live.md). Diese Alternative vermeidet das Neuerstellen des Codes, jedoch erhalten Sie nicht die Möglichkeit, Code schreiben, um die Benutzeraktivität nachzuverfolgen.*
+
+Wenn Sie das Spring-Framework bevorzugen, lesen Sie den Leitfaden zum [Konfigurieren einer Spring Boot Initializer-App für die Verwendung von Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Abrufen eines Application Insights-Instrumentationsschlüssels
 1. Melden Sie sich beim [Microsoft Azure-Portal](https://portal.azure.com)an.
@@ -219,7 +222,9 @@ package devCamp.WebApp.configurations;
     }
 ```
 
-[!NOTE] Ersetzen Sie bei Verwendung von Spring Boot 1.3.8 oder einer älteren Version die FilterRegistrationBean durch die folgende Zeile.
+> [!NOTE]
+> Ersetzen Sie bei Verwendung von Spring Boot 1.3.8 oder einer älteren Version die FilterRegistrationBean durch die folgende Zeile.
+
 ```Java
     import org.springframework.boot.context.embedded.FilterRegistrationBean;
 ```

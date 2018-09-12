@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 1839f3efee53caa070690fed569a61c1d2b3c965
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 360937d335eadb6d235eb52c0d7df42f896a0de0
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127724"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344730"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub
 
@@ -135,17 +135,17 @@ Führen Sie die folgenden Schritte durch, um die Entwicklungsumgebung für DevKi
 
 1. Öffnen Sie **Datei > Einstellung > Einstellungen**, und fügen Sie die folgenden Zeilen hinzu, um Arduino zu konfigurieren.
     * **Windows:**
-    ```json
+    ```javascript
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
     * **macOS**:
-    ```json
+    ```javascript
     "arduino.path": "/Applications",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
     * **Ubuntu**:
-    ```json
+    ```javascript
     "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
@@ -183,6 +183,9 @@ Jetzt sind Sie mit der Vorbereitung und Konfiguration Ihrer Entwicklungsumgebung
 
 1. Suchen Sie auf der Seite mit IoT Workbench-Beispielen nach **Erste Schritte**, und klicken Sie auf **Beispiel öffnen**. Wählen Sie dann den Standardpfad zum Herunterladen des Beispielcodes aus.
     ![Beispiel öffnen](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/open-sample.png)
+
+1. Wenn die Arduino-Erweiterung nicht in Visual Studio Code installiert ist, klicken Sie im Benachrichtigungsbereich auf **Installieren**.
+    ![Installieren der Arduino-Erweiterung](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-arduino-ext.png)
 
 1. Klicken Sie im neu geöffneten Projektfenster auf `F1`, um die Befehlspalette zu öffnen, geben Sie **IoT Workbench: Cloud** ein, wählen Sie es aus, und wählen Sie dann **Azure-Bereitstellung** aus. Folgen Sie der Schritt-für-Schritt-Anleitung, um die Bereitstellung Ihrer Azure IoT Hub-Instanz und das Erstellen des Geräts fertigzustellen.
     ![Cloudbereitstellung](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/cloud-provision.png)

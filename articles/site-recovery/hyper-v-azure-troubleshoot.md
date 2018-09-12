@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 95941b3f9333273c11208c56a63c62d5d37a9386
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: d5282e5954aa50ce67d6341b194177a89bdbe6cc
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213553"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666400"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 
@@ -22,17 +22,17 @@ In diesem Artikel werden häufig auftretende Probleme bei der Replikation von lo
 
 ## <a name="enable-protection-issues"></a>Probleme beim Aktivieren des Schutzes
 
-Überprüfen Sie Folgendes, wenn beim Aktivieren des Schutzes für virtuelle Hyper-V-Computer Probleme auftreten:
+Überprüfen Sie die folgenden Empfehlungen, wenn beim Aktivieren des Schutzes für virtuelle Hyper-V-Computer Probleme auftreten:
 
-1. Überprüfen Sie, ob die Hyper-V-Hosts und virtuellen Hyper-V-Computer alle [Anforderungen und Voraussetzungen](hyper-v-azure-support-matrix.md) erfüllen.
+1. Prüfen Sie, ob die Hyper-V-Hosts und -VMs alle [Anforderungen und Voraussetzungen](hyper-v-azure-support-matrix.md) erfüllen.
 2. Wenn Hyper-V-Server sich in System Center Virtual Machine Manager-Clouds (VMM-Clouds) befinden, vergewissern Sie sich, dass Sie den [VMM-Server](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional) vorbereitet haben.
 3. Stellen Sie sicher, dass der Hyper-V-Verwaltungsdienst für virtuelle Computer auf den Hyper-V-Hosts ausgeführt wird.
-4. Überprüfen Sie die Probleme, die im Protokoll „Hyper-V-VMMS\Admin“ auf dem virtuellen Computer angezeigt werden. Dieses Protokoll befindet sich unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows**.
+4. Überprüfen Sie auf Probleme, die bei der Hyper-V-VMMS\Admin-Anmeldung bei der VM angezeigt werden. Dieses Protokoll befindet sich unter **Anwendungs- und Dienstprotokolle** > **Microsoft** > **Windows**.
 5. Überprüfen Sie auf dem virtuellen Gastcomputer, ob WMI aktiviert und verfügbar ist.
   - [Informationen zu](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) grundlegenden WMI-Tests.
   - [Problembehandlung](https://aka.ms/WMiTshooting) bei WMI.
   - [Problembehandlung](https://technet.microsoft.com/library/ff406382.aspx#H22) bei WMI-Skripts und WMI-Diensten.
-5. Stellen Sie auf dem virtuellen Gastcomputer sicher, dass die neueste Version von Integration Services ausgeführt wird.
+6. Stellen Sie auf dem virtuellen Gastcomputer sicher, dass die neueste Version von Integration Services ausgeführt wird.
     - [Überprüfen Sie](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services), ob die letzte Version installiert ist.
     - [Halten Sie](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Integration Services auf dem neuesten Stand.
     
@@ -54,8 +54,8 @@ Beheben Sie Probleme bei der anfänglichen und laufenden Replikation wie folgt:
     - Wenn Sie die Replikation mit VMM in der Umgebung durchführen, überprüfen Sie, ob folgende Dienste ausgeführt werden:
         - Überprüfen Sie auf dem Hyper-V-Host, ob der Verwaltungsdienst für virtuelle Computer, der Microsoft Azure Recovery Services-Agent und der WMI Provider Host-Dienst ausgeführt werden.
         - Stellen Sie auf dem VMM-Server sicher, dass der System Center Virtual Machine Manager-Dienst ausgeführt wird.
-4. Überprüfen Sie die Konnektivität zwischen dem Hyper-V-Server und Azure. Öffnen Sie dazu den Task-Manager auf dem Hyper-V-Host. Klicken Sie auf der Registerkarte **Leistung** auf **Ressourcenmonitor öffnen**. Überprüfen Sie auf der Registerkarte **Netzwerk** > **Prozesse mit Netzwerkaktivität**, ob „cbengine.exe“ aktiv große Datenvolumen (MB) sendet.
-5. Überprüfen Sie, ob die Hyper-V-Hosts eine Verbindung mit der Azure Storage Blob-URL herstellen können. Wählen Sie dazu **cbengine.exe** aus, und überprüfen Sie die Datei. Öffnen Sie **TCP-Verbindungen**, um die Konnektivität zwischen dem Host und Azure Storage Blob zu prüfen.
+4. Überprüfen Sie die Konnektivität zwischen dem Hyper-V-Server und Azure. Öffnen Sie zum Überprüfen der Konnektivität den Task-Manager auf dem Hyper-V-Host. Klicken Sie auf der Registerkarte **Leistung** auf **Ressourcenmonitor öffnen**. Überprüfen Sie auf der Registerkarte **Netzwerk** > **Prozess mit Netzwerkaktivität**, ob „cbengine.exe“ aktiv große Datenvolumen (MB) sendet.
+5. Überprüfen Sie, ob die Hyper-V-Hosts eine Verbindung mit der Azure Storage Blob-URL herstellen können. Zum Überprüfen, ob der Host eine Verbindung herstellen kann, wählen und überprüfen Sie **cbengine.exe**. Öffnen Sie **TCP-Verbindungen**, um die Konnektivität zwischen dem Host und Azure Storage Blob zu prüfen.
 6. Überprüfen Sie Leistungsprobleme entsprechend der folgenden Beschreibung.
     
 ### <a name="performance-issues"></a>Leistungsprobleme
@@ -92,7 +92,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 
 1. Stellen Sie sicher, dass die neueste Version von Integration Services installiert ist und ausgeführt wird.  Überprüfen Sie, ob ein Update verfügbar ist. Führen Sie dazu auf dem Hyper-V-Host den folgenden Befehl an einer PowerShell-Eingabeaufforderung mit erhöhten Rechten aus: **get-vm  | select Name, State, IntegrationServicesState**.
 2. Vergewissern Sie sich, dass die VSS-Dienste ausgeführt werden und fehlerfrei sind:
-    - Melden Sie sich dazu bei dem virtuellen Gastcomputer an. Öffnen Sie dann als Administrator eine Eingabeaufforderung, und führen Sie die folgenden Befehle aus, um zu überprüfen, ob alle VSS-Writer fehlerfrei sind.
+    - Um die Dienste zu überprüfen, melden Sie sich bei der Gast-VM an. Öffnen Sie dann als Administrator eine Eingabeaufforderung, und führen Sie die folgenden Befehle aus, um zu überprüfen, ob alle VSS-Writer fehlerfrei sind.
         - **Vssadmin list writers**
         - **Vssadmin list shadows**
         - **Vssadmin list providers**
@@ -111,7 +111,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 5. Überprüfen Sie, ob der Backup-Dienst aktiviert ist. Überprüfen Sie dies unter **Hyper-V-Einstellungen** > **Integration Services**.
 6. Stellen Sie sicher, dass keine Konflikte mit Apps vorliegen, die VSS-Momentaufnahmen erstellen. Wenn mehrere Apps versuchen, gleichzeitig VSS-Momentaufnahmen zu erstellen, können Konflikte auftreten. Dies ist z.B. der Fall, wenn eine Backup-App VSS-Momentaufnahmen erstellt, in der Replikationsrichtlinie jedoch geplant ist, dass Site Recovery eine Momentaufnahme erstellt.   
 7. Überprüfen Sie, ob der virtuelle Computer eine hohe Änderungsrate aufweist:
-    - Sie können die tägliche Datenänderungsrate für die virtuellen Gastcomputer mithilfe von Leistungsindikatoren auf dem Hyper-V-Host messen. Aktivieren Sie dazu den folgenden Leistungsindikator. Aggregieren Sie eine Stichprobe dieses Werts für die VM-Datenträger in einem Zeitraum von 5 bis 15 Minuten, um die Änderungsrate des virtuellen Computers zu ermitteln.
+    - Sie können die tägliche Datenänderungsrate für die virtuellen Gastcomputer mithilfe von Leistungsindikatoren auf dem Hyper-V-Host messen. Aktivieren Sie den folgenden Leistungsindikator zum Messen der Datenänderungsrate. Aggregieren Sie eine Stichprobe dieses Werts für die VM-Datenträger in einem Zeitraum von 5 bis 15 Minuten, um die Änderungsrate des virtuellen Computers zu ermitteln.
         - Kategorie: „Virtuelle Hyper-V-Speichervorrichtung“
         - Leistungsindikator: „Geschriebene Bytes/Sek.“</br>
         - Die Datenänderungsrate erhöht sich oder bleibt hoch, abhängig von der Auslastung des virtuellen Computers oder der zugehörigen Apps.
@@ -138,7 +138,7 @@ Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwend
 **Fehlercode** | **Meldung** | **Details**
 --- | --- | ---
 **0x800700EA** | Hyper-V failed to generate VSS snapshot set for virtual machine: More data is available. (Hyper-V konnte keinen VSS-Momentaufnahmesatz für den virtuellen Computer generieren: Weitere Daten sind verfügbar.) (0x800700EA). VSS snapshot set generation can fail if backup operation is in progress.<br/><br/> Replication operation for virtual machine failed: More data is available. (Beim Generieren von VSS-Momentaufnahmen kann ein Fehler auftreten, wenn derzeit eine Sicherung durchgeführt wird. Beim Replikationsvorgang für den virtuellen Computer ist ein Fehler aufgetreten: Weitere Daten sind verfügbar.) | Überprüfen Sie, ob auf dem virtuellen Computer ein dynamischer Datenträger aktiviert ist. Dies wird nicht unterstützt.
-**0x80070032** | Hyper-V Volume Shadow Copy Requestor failed to connect to virtual machine <./VMname> because the version does not match the version expected by Hyper-V. (Der Hyper-V-Volumeschattenkopie-Anforderer konnte keine Verbindung mit dem virtuellen Computer <./VMname> herstellen, da die Version nicht der von Hyper-V erwarteten Version entspricht.) | Überprüfen Sie, ob die neuesten Windows-Updates installiert sind.<br/><br/> Führen Sie ein [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md#keep-integration-services-up-to-date) auf die neueste Version von Integration Services durch.
+**0x80070032** | Hyper-V Volume Shadow Copy Requestor failed to connect to virtual machine <./VMname> because the version does not match the version expected by Hyper-V. (Der Hyper-V-Volumeschattenkopie-Anforderer konnte keine Verbindung mit dem virtuellen Computer <./VMname> herstellen, da die Version nicht der von Hyper-V erwarteten Version entspricht.) | Überprüfen Sie, ob die neuesten Windows-Updates installiert sind.<br/><br/> Führen Sie ein [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) auf die neueste Version von Integration Services durch.
 
 
 

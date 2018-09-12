@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902961"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287324"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 
@@ -31,12 +31,6 @@ Die **Unterstützung von Änderungsfeeds** in Azure Cosmos DB ermöglicht Ihnen 
 
 > [!NOTE]
 > Unterstützung von Änderungsfeeds wird für alle Datenmodelle und Container in Azure Cosmos DB bereitgestellt. Der Änderungsfeed wird allerdings mithilfe des SQL-Clients gelesen und serialisiert Elemente in das JSON-Format. Aufgrund der JSON-Formatierung tritt bei MongoDB-Clients ein Konflikt zwischen BSON-formatierten Dokumenten und dem JSON-formatierten Änderungsfeed auf.
-
-Im folgenden Video zeigt Azure Cosmos DB-Programm-Manager Andrew Liu, wie der Azure Cosmos DB-Änderungsfeed funktioniert.
-
-> [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
->
->
 
 ## <a name="how-does-change-feed-work"></a>Wie funktioniert der Änderungsfeed?
 
@@ -401,7 +395,7 @@ Es bestehen drei Optionen zum Lesen von Änderungsfeeds:
 
 * **[Mithilfe des Azure Cosmos DB-SQL-API-.NET-SDKs](#sql-sdk)**
    
-   Mit dieser Methode erhalten Sie ein geringes Maß an Kontrolle über den Änderungsfeed. Sie können den Prüfpunkt verwalten, auf einen bestimmten Partitionsschlüssel zugreifen usw. Wenn Sie über mehrere Reader verfügen, können Sie mit [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) die Leselast auf verschiedene Threads oder Clients verteilen. zu erstellen und zu verwalten.
+   Mit dieser Methode erhalten Sie ein geringes Maß an Kontrolle über den Änderungsfeed. Sie können den Prüfpunkt verwalten, auf einen bestimmten Partitionsschlüssel zugreifen usw. Wenn Sie über mehrere Reader verfügen, können Sie mit [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) die Leselast auf verschiedene Threads oder Clients verteilen. .
 
 * **[Mithilfe der Change Feed Processor-Bibliothek von Azure Cosmos DB](#change-feed-processor)**
 

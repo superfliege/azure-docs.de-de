@@ -1,0 +1,52 @@
+---
+title: 'Custom Vision Service: Anmerkungen zu dieser Version'
+services: cognitive-services
+author: anrothMSFT
+manager: corncar
+ms.service: cognitive-services
+ms.component: custom-vision
+ms.date: 08/28/2018
+ms.author: anroth
+ms.openlocfilehash: 8423051fa5169eb8acddc7297e36188e297cb9e4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288655"
+---
+# <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
+
+## <a name="august-14-2018"></a>14. August 2018
+- Widget „Erste Schritte“ zur Website customvision.ai hinzugefügt, um Benutzer durch das Projekttraining zu begleiten. 
+- Weitere Verbesserungen an der Machine Learning-Pipeline zum Vorteil für Projekte mit mehreren Bezeichnungen (neue Verlustebene).
+
+## <a name="june-28-2018"></a>28. Juni 2018
+- Fehlerbehebungen und Back-End-Verbesserungen.
+- Multiklassenklassifizierung für Projekte aktiviert, bei denen Bilder genau eine Bezeichnung haben. In Vorhersagen für den Multiklassenmodus werden Wahrscheinlichkeiten zu 1 summiert (alle Bilder werden unter Ihren angegebenen Tags klassifiziert).
+
+## <a name="june-13-2018"></a>13. Juni 2018
+- Aktualisierung der Benutzeroberfläche mit Fokus auf Benutzerfreundlichkeit und Barrierefreiheit. 
+- Verbesserungen an der Machine Learning-Pipeline zum Vorteil für Projekten mit mehreren Bezeichnungen mit einer großen Anzahl von Tags.
+- Korrektur eines Fehlers beim TensorFlow-Export. Export der Modellversionsverwaltung aktiviert, damit Iterationen mehrmals exportiert werden können. 
+
+## <a name="may-7-2018"></a>7. Mai 2018
+- Einführung der Vorschauversion des Features für die Objekterkennung für Projekte mit eingeschränkter Testversion.
+- Upgrade auf 2.0-APIs
+- S0-Tarif auf bis zu 250 Tags und 50.000 Bilder erweitert. 
+- Umfassende Back-End-Verbesserungen an der Machine Learning-Pipeline für Bildklassifizierungsprojekte. Projekte, die nach dem 27. April 2018 trainiert wurden, profitieren von diesen Updates.
+- Modellexport für ONNX zur Verwendung mit Windows ML hinzugefügt.
+- Modellexport für Dockerfile hinzugefügt. Hiermit können Sie die Artefakte zum Erstellen Ihrer eigenen Windows- oder Linux-Container herunterladen, z.B. eine DockerFile, ein TensorFlow-Modell und Dienstcode. 
+- Für neu trainierte Modelle, die für TensorFlow in die Domänen „General (Compact)“ (Allgemein (Kompakt)) und „Landmark (Compact)“ (Wahrzeichen (Kompakt)) exportiert werden, [betragen die Mittelwerte jetzt (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample). Dies ist der Fall, um für alle Projekte eine übergreifende Konsistenz zu erzielen. 
+
+## <a name="march-1-2018"></a>1. März 2018
+- Kostenpflichtige Vorschauversion und Onboarding im Azure-Portal. Projekte können nun an Azure-Ressourcen mit einem F0- (Free) oder S0-Tarif (Standard) angefügt werden. Einführung von Projekten mit dem S0-Tarif, für die bis zu 100 Tags und 25.000 Bilder zulässig sind. 
+- Back-End-Änderungen am Machine Learning-Pipeline-/Normalisierungsparameter. Kunden erhalten hiermit beim Anpassen des Wahrscheinlichkeitsschwellenwerts eine bessere Steuerungsmöglichkeit in Bezug auf den Precision-Recall-Kompromiss. Im Rahmen dieser Änderungen wurde der Standard-Wahrscheinlichkeitsschwellenwert im CustomVision.ai-Portal auf 50% festgelegt.
+
+## <a name="december-19-2017"></a>19. Dezember 2017
+
+- Export für Android (TensorFlow) hinzugefügt, zusätzlich zum zuvor veröffentlichten Export für iOS (CoreML.) Dies ermöglicht den Export eines trainierten kompakten Modells für die Offlineausführung in einer Anwendung.
+- Domäne „Compact“ (Kompakt) für Einzelhandel und Wahrzeichen hinzugefügt, um hierfür den Modellexport zu ermöglichen.
+- Version [1.2 Trainings-API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/f2d62aa3b93843d79e948fe87fa89554/operations/5a3044ee08fa5e06b890f11f) und [1.1 Vorhersage-API](https://southcentralus.dev.cognitive.microsoft.com/docs/services/57982f59b5964e36841e22dfbfe78fc1/operations/5a3044f608fa5e06b890f164) veröffentlicht. Aktualisierung der API-Unterstützung des Modellexports, neuer Vorhersagevorgang, bei dem keine Bilder unter „Vorhersagen“ gespeichert werden, und Einführung von Batchvorgängen für die Trainings-API.
+- Optimierungen der Benutzeroberfläche, z.B. die Möglichkeit zum Anzeigen, welche Domäne zum Trainieren einer Iteration verwendet wurde.
+- Aktualisierung von [C# SDK und Beispiel](https://github.com/Microsoft/Cognitive-CustomVision-Windows).
+

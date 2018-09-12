@@ -11,33 +11,77 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 08/21/2018
+ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 234c1d71f0ec17d15a4dd589e3db92fd9bf68df2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 59bce2c61db5838bb21a29757d4e354311ecffd5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189488"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666246"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>Aktivieren von Azure-Ressourcenrollen in PIM
-Privileged Identity Management (PIM) bietet eine neue Umgebung zur Aktivierung von Rollen für Azure-Ressourcen. Berechtigte Rollenmitglieder können die Aktivierung für einen späteren Zeitpunkt planen. Zudem können sie eine bestimmte Aktivierungsdauer innerhalb des (von Administratoren konfigurierten) Bereichs auswählen. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren von Rollen in Azure AD Privileged Identity Management](pim-how-to-activate-role.md).
+
+Mit Azure AD Privileged Identity Management (PIM) können für Azure-Ressourcen berechtigte Rollenmitglieder die Aktivierung für ein künftiges Datum und eine künftige Uhrzeit planen. Zudem können sie eine bestimmte Aktivierungsdauer innerhalb des (von Administratoren konfigurierten) Bereichs auswählen.
+
+Dieser Artikel richtet sich an Mitglieder, die ihre Azure-Ressourcenrolle in PIM aktivieren müssen.
 
 ## <a name="activate-a-role"></a>Aktivieren einer Rolle
-Navigieren Sie im linken Bereich zum Abschnitt **My roles** (Meine Rollen). Wählen Sie **Aktivieren** für die Rolle aus, die Sie aktivieren möchten.
 
-![Registerkarte „Berechtigte Rollen“ im Bereich „My roles“ (Meine Rollen)](media/azure-pim-resource-rbac/rbac-roles.png)
+Wenn Sie eine Azure-Ressourcenrolle übernehmen müssen, können Sie in PIM über die Navigationsoption **Meine Rollen** deren Aktivierung anfordern.
 
-Geben Sie im Menü **Aktivierungen** den Startzeitpunkt (Datum und Uhrzeit) für die Rollenaktivierung ein. Verringern Sie optional die Aktivierungsdauer (also den Zeitraum, für den die Rolle aktiv ist), und geben Sie gegebenenfalls eine Begründung ein. Wählen Sie dann **Aktivieren** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-Wenn Startdatum und -uhrzeit nicht geändert werden, wird die Rolle innerhalb der nächsten Sekunden aktiviert. Im Bereich **My roles** (Meine Rollen) wird in einer Bannermeldung angezeigt, dass eine Rolle zur Aktivierung in die Warteschlange gestellt wurde. Wählen Sie die Aktualisierungsschaltfläche aus, um diese Meldung zu löschen.
+1. Öffnen Sie **Azure AD Privileged Identity Management**. Informationen dazu, wie Sie die PIM-Kachel zu Ihrem Dashboard hinzufügen, finden Sie unter [Einstieg in die Verwendung von PIM](pim-getting-started.md).
 
-![Bereich „My roles“ (Meine Rollen) mit einer Bannermeldung und einer Benachrichtigung zu einer ausstehenden Genehmigung](media/azure-pim-resource-rbac/rbac-activate-notification.png)
+1. Klicken Sie auf **Meine Rollen**, um eine Liste der Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen anzuzeigen, für die Sie berechtigt sind.
 
-Wenn die Aktivierung für einen späteren Zeitpunkt geplant wurde, wird die ausstehende Anforderung im linken Bereich auf der Registerkarte **Ausstehende Anforderungen** angezeigt. Wenn die Rollenaktivierung nicht mehr benötigt wird, können Sie die Anforderung durch Auswählen der Schaltfläche **Abbrechen** abbrechen.
+    ![Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen: Liste „Meine Rollen“](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
-![Liste der ausstehenden Anforderungen mit den Schaltflächen „Abbrechen“](media/azure-pim-resource-rbac/rbac-activate-pending.png)
+1. Wechseln Sie in der Liste **Azure-Ressourcenrollen** zur Rolle, die Sie aktivieren möchten.
+
+    ![Azure-Ressourcenrollen: Liste „Meine Rollen“](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+
+1. Klicken Sie auf **Aktivieren**, um den Bereich „Aktivieren“ zu öffnen.
+
+1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen**. Sie müssen sich nur einmal pro Sitzung authentifizieren.
+
+    ![Überprüfung mit MFA vor der Rollenaktivierung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+
+1. Klicken Sie auf **Meine Identität überprüfen**, und folgen Sie den Anweisungen zur Bereitstellung einer zusätzlichen Sicherheitsüberprüfung.
+
+    ![Zusätzliche Sicherheitsüberprüfung](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+
+1. Wenn Sie einen reduzierten Bereich angeben möchten, klicken Sie auf **Bereich**, um „Ressourcenfilter“ zu öffnen.
+
+    Es wird empfohlen, nur Zugriff auf die Ressourcen anzufordern, die Sie benötigen. Im Bereich „Ressourcenfilter“ können Sie die Ressourcengruppen bzw. angeben, auf die Sie Zugriff haben möchten.
+
+    ![Aktivieren: Ressourcenfilter](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+
+1. Falls erforderlich, geben Sie einen Startzeitpunkt für die Aktivierung an. Das Mitglied wird nach dem ausgewählten Zeitpunkt aktiviert.
+
+1. Geben Sie im Feld **Grund** den Grund für die Aktivierungsanforderung ein.
+
+    ![Ausgefüllter Bereich „Aktivieren“](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+
+1. Klicken Sie auf **Aktivieren**.
+
+    Wenn für die Rolle keine Genehmigung erforderlich ist, wird sie jetzt aktiviert und in der Liste der aktiven Rollen angezeigt. Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](pim-resource-roles-approval-workflow.md), werden Sie über eine Benachrichtigung in der oberen rechten Ecke des Browsers darüber informiert, dass die Genehmigung der Anforderung aussteht.
+
+    ![Benachrichtigung über ausstehende Anforderung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+
+## <a name="view-the-status-of-your-requests"></a>Anzeigen des Status Ihrer Anforderungen
+
+Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
+
+1. Öffnen Sie Azure AD Privileged Identity Management.
+
+1. Klicken Sie auf **Meine Anforderungen**, um eine Liste mit Ihren Anforderungen von Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen anzuzeigen.
+
+    ![Azure AD-Verzeichnisrollen und Azure-Ressourcenrollen: Liste „Meine Anforderungen“](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+
+1. Scrollen Sie nach rechts, um die Spalte **Anforderungsstatus** anzuzeigen.
 
 ## <a name="use-a-role-immediately-after-activation"></a>Verwenden einer Rolle sofort nach der Aktivierung
 
@@ -53,18 +97,21 @@ Aufgrund der Zwischenspeicherung werden Aktivierungen im Azure-Portal ohne Aktua
 
     Wenn Sie auf diesen Link klicken, erzwingen Sie eine Aktualisierung, und es wird eine Überprüfung auf neue Rollenzuweisungen für Azure-Ressourcen durchgeführt.
 
-## <a name="apply-just-enough-administration-practices"></a>Methoden zur minimalen Verwaltung
+## <a name="cancel-a-pending-request"></a>Abbrechen einer ausstehenden Anforderung
 
-PIM für Azure-Ressourcen ermöglicht die problemlose Anwendung bewährter Methoden für minimale Verwaltung (Just Enough Administration, JEA) in Verbindung mit Rollenzuweisungen. Benutzer und Gruppenmitglieder mit Zuweisungen in Azure-Abonnements oder Ressourcengruppen können ihre vorhandene Rollenzuweisung in einem eingeschränkten Bereich aktivieren. 
+Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich ist, nicht mehr benötigen, können Sie eine ausstehende Anforderung jederzeit abbrechen.
 
-Suchen Sie über die Suchseite die untergeordnete Ressource, die Sie verwalten möchten.
+1. Öffnen Sie Azure AD Privileged Identity Management.
 
-![Auswählen einer Ressource](media/azure-pim-resource-rbac/azure-resources-02.png)
+1. Klicken Sie auf **Meine Anforderungen**.
 
-Wählen Sie **My roles** (Meine Rollen) im linken Bereich und dann die zu aktivierende Rolle aus. Der Zuweisungstyp lautet **Geerbt**, da die Rolle nicht auf der Ressourcengruppenebene, sondern auf der Abonnementebene zugewiesen wurde.
+1. Klicken Sie für die Rolle, für die Sie eine ausstehende Anforderung abbrechen möchten, auf den Link **Abbrechen**.
 
-![Liste der berechtigten Rollenzuweisungen mit dem hervorgehobenen Zuweisungstyp](media/azure-pim-resource-rbac/my-roles-02.png)
+    Durch das Klicken auf „Abbrechen“ wird die Anforderung abgebrochen. Um die Rolle erneut zu aktivieren, müssen Sie eine neue Anforderung zur Aktivierung übermitteln.
+
+   ![Abbrechen einer ausstehenden Anforderung](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Verlängern oder Erneuern von Azure-Ressourcenrollen in PIM](pim-resource-roles-renew-extend.md)
 - [Aktivieren von Azure AD-Verzeichnisrollen in PIM](pim-how-to-activate-role.md)

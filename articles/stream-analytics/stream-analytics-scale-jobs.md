@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4da97d708f8db2dcee406645a0eee409fa111012
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34652541"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696801"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Skalieren eines Azure Stream Analytics-Auftrags zur Erhöhung des Durchsatzes
 In diesem Artikel erfahren Sie, wie Sie eine Stream Analytics-Abfrage zur Steigerung des Durchsatzes für Stream Analytics-Aufträge optimieren. Im folgenden Leitfaden wird erläutert, wie Sie Ihren Auftrag zur Verarbeitung höherer Lasten skalieren und von einer größeren Menge an Systemressourcen (z.B. Bandbreite, CPU-Ressourcen, Arbeitsspeicher) profitieren können.
@@ -70,7 +70,7 @@ In bestimmten Anwendungsfällen mit ISVs ist es kosteneffizienter, Daten von meh
 2.  Wenn Sie den Event Hub verwenden, reduzieren Sie die Anzahl der Eingabepartitionen auf den kleinstmöglichen Wert 2.
 3.  Führen Sie die Abfrage mit 6 SUs aus. Fügen Sie bei erwarteten Lasten für jede Unterabfrage möglichst viele Unterabfragen hinzu, bis der Auftrag die Systemressourcengrenzen erreicht. Informationen zu den Symptomen, die in diesem Fall auftreten, finden Sie unter [Fall 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions).
 4.  Wenn Sie die oben gemessene Unterabfragegrenze erreicht haben, gehen Sie nun dazu über, die Unterabfrage einem neuen Auftrag hinzuzufügen. Die Anzahl der Aufträge, die in Abhängigkeit von der Anzahl der unabhängigen Abfragen ausgeführt werden muss, sollte relativ linear sein. Dies gilt nur unter der Voraussetzung, dass keine Datenschiefe vorliegt. Sie können dann prognostizieren, wie viele 6-SU-Aufträge in Abhängigkeit von der Anzahl der Mandanten, für die die Bereitstellung erfolgen soll, ausgeführt werden müssen.
-5.  Wenn Sie bei solchen Abfragen die JOIN-Anweisung für Verweisdaten verwenden, sollten Sie die Eingaben zusammenfassen, bevor Sie sie mit den gleichen Verweisdaten zusammenfassen. Anschließend sollten Sie die Ereignisse bei Bedarf ausgliedern. Andernfalls wird bei jeder JOIN-Anweisung für Verweisdaten eine Kopie der Verweisdaten im Arbeitsspeicher gespeichert, wodurch aller Wahrscheinlichkeit nach die Speicherauslastung unnötig in die Höhe schießt.
+5.  Wenn Sie bei solchen Abfragen die JOIN-Anweisung für Verweisdaten verwenden, fassen Sie die Eingaben zusammen, bevor Sie sie mit den gleichen Verweisdaten zusammenfassen. Gliedern Sie anschließend die Ereignisse bei Bedarf aus. Andernfalls wird bei jeder JOIN-Anweisung für Verweisdaten eine Kopie der Verweisdaten im Arbeitsspeicher gespeichert, wodurch aller Wahrscheinlichkeit nach die Speicherauslastung unnötig in die Höhe schießt.
 
 > [!Note] 
 > Wie viele Mandanten sollten in einem Auftrag aufgenommen werden?

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247394"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382253"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -82,7 +82,7 @@ Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswe
     ```
  
 2. Starten Sie PowerShell neu.
-3. Installieren Sie die Module.
+3. Installieren der Module
     
     ```PowerShell
         Install-Module -Name AzureRM.StorageSync -AllowPrerelease
@@ -112,7 +112,7 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 ```
 
 ### <a name="system-requirements"></a>Systemanforderungen
-- Ein Server mit Windows Server 2012 R2 oder Windows Server 2016 
+- Ein Server mit Windows Server 2012 R2 oder Windows Server 2016:
 
     | Version | Unterstützte SKUs | Unterstützte Bereitstellungsoptionen |
     |---------|----------------|------------------------------|
@@ -121,15 +121,15 @@ So zeigen Sie die Ergebnisse in einer CSV-Datei an:
 
     Zukünftige Versionen von Windows Server werden hinzugefügt, sobald sie veröffentlicht werden. Frühere Windows-Versionen werden möglicherweise je nach Benutzerfeedback hinzugefügt.
 
-- Ein Server mit mindestens 2 GB Arbeitsspeicher
+    > [!Important]  
+    > Es wird empfohlen, alle Servercomputer, die für die Azure-Dateisynchronisierung verwendet werden, mit den neuesten Updates von Windows Update auf dem neuesten Stand zu halten. 
+
+- Ein Server mit mindestens 2 GiB Arbeitsspeicher
 
     > [!Important]  
-    > Wenn der Server in einer VM ausgeführt, für die dynamischer Arbeitsspeicher aktiviert ist, muss die VM mit mindestens 2.048 MB Arbeitsspeicher konfiguriert werden.
+    > Wenn der Server auf einem virtuellen Computer ausgeführt wird, für den dynamischer Arbeitsspeicher aktiviert ist, muss der virtuelle Computer mit mindestens 2.048 MiB Arbeitsspeicher konfiguriert werden.
     
 - Ein lokal angeschlossenes Volume, das mit dem NTFS-Dateisystem formatiert ist
-
-> [!Important]  
-> Es wird empfohlen, alle Servercomputer, die für die Azure-Dateisynchronisierung verwendet werden, mit den neuesten Updates von Windows Update auf dem neuesten Stand zu halten. 
 
 ### <a name="file-system-features"></a>Features des Dateisystems
 | Feature | Status der Unterstützung | Notizen |

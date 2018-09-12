@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/27/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128125"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669482"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -27,8 +27,7 @@ Dieser Artikel unterstützt Sie bei der Verwendung der Lösung für die Änderun
 
 Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
 
-* Windows Server 2008 Service Pack 1 (SP1) oder höher
-* Windows 7 SP1 und höher
+* Windows Server 2008 R2 oder höher
 
 ## <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
 
@@ -47,8 +46,8 @@ Die folgenden Linux-Distributionen werden offiziell unterstützt. Der Linux-Agen
 Um mit der Nachverfolgung von Änderungen zu beginnen, müssen Sie die Lösung für die Änderungsnachverfolgung und den Bestand für Ihr Automation-Konto aktivieren.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto.
-1. Wählen Sie **Änderungsnachverfolgung** unter **KONFIGURATION** aus.
-1. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich oder **Neuen Arbeitsbereich erstellen** aus, und klicken Sie auf **Aktivieren**.
+2. Wählen Sie **Änderungsnachverfolgung** unter **KONFIGURATION** aus.
+3. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich oder **Neuen Arbeitsbereich erstellen** aus, und klicken Sie auf **Aktivieren**.
 
 Dadurch wird die Lösung für Ihr Automation-Konto aktiviert. Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Das blaue Banner dient zur Benachrichtigung, wenn die Lösung aktiviert ist. Navigieren Sie zurück zur Seite **Änderungsnachverfolgung**, um die Lösung zu verwalten.
 

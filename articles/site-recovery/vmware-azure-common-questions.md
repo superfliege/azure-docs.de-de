@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238807"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344422"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -45,7 +45,7 @@ Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replik
 
 
 
-## <a name="on-premises"></a>Lokal 
+## <a name="on-premises"></a>Lokal
 
 ### <a name="what-do-i-need-on-premises"></a>Was benötige ich lokal?
 Lokal benötigen Sie Site Recovery-Komponenten, die auf einer einzelnen VMware-VM installiert sind. Sie benötigen auch eine VMware-Infrastruktur mit mindestens einem ESXi-Host, und wir empfehlen einen vCenter-Server. Darüber hinaus benötigen Sie mindestens eine zu replizierende VMware-VM. [Erfahren Sie mehr](vmware-azure-architecture.md) über die VMware-zu-Azure-Architektur.
@@ -72,7 +72,7 @@ Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repli
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Warum kann ich nicht über VPN replizieren?
 
-Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos. Das bedeutet Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering). VPN ist nicht verfügbar. 
+Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos. Das bedeutet Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering). VPN ist nicht verfügbar.
 
 
 
@@ -90,7 +90,7 @@ Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie
 Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kann ich Datenträger ausschließen?
-Ja, sie können Datenträger von der Replikation ausschließen. 
+Ja, sie können Datenträger von der Replikation ausschließen.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Kann ich virtuelle Computer mit dynamischen Datenträgern replizieren?
 Dynamische Datenträger können repliziert werden. Der Betriebssystem-Datenträger muss ein Basisdatenträger sein.
@@ -105,7 +105,7 @@ Für die VMware-Replikation in Azure können Sie die Datenträgergröße ändern
 ## <a name="configuration-server"></a>Konfigurationsserver
 
 ### <a name="what-does-the-configuration-server-do"></a>Was macht der Konfigurationsserver?
-Der Konfigurationsserver führt die lokalen Site Recovery-Komponenten aus, einschließlich: 
+Der Konfigurationsserver führt die lokalen Site Recovery-Komponenten aus, einschließlich:
 - Der Konfigurationsserver, der die Kommunikation zwischen der lokalen Umgebung und Azure koordiniert und die Datenreplikation verwaltet.
 - Der Prozessserver, der als Replikationsgateway fungiert. Er empfängt Replikationsdaten, optimiert sie durch Zwischenspeichern, Komprimieren und Verschlüsseln und sendet sie an Azure-Speicher. Der Prozessserver installiert auch Mobility Service auf virtuellen Computern, die Sie replizieren möchten, und führt die automatische Ermittlung von lokalen VMware-VMs durch.
 - Der Masterzielserver, der die Replikationsdaten während des Failbacks von Azure verarbeitet.
@@ -118,13 +118,13 @@ Für den Konfigurationsserver benötigen Sie eine einzelne hoch verfügbare loka
 Überprüfen Sie die [Voraussetzungen](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Kann ich den Konfigurationsserver manuell einrichten, statt eine Vorlage zu verwenden?
-Sie sollten die neueste Version der OVF-Vorlage verwenden, um [die Konfigurationsserver-VM zu erstellen](vmware-azure-deploy-configuration-server.md). Wenn das aus irgendeinem Grund nicht möglich ist, Sie z.B. keinen Zugriff auf den VMware-Server haben, können Sie aus dem Portal die [einheitliche Setupdatei](physical-azure-set-up-source.md) herunterladen und einem virtuellen Computer ausführen. 
+Sie sollten die neueste Version der OVF-Vorlage verwenden, um [die Konfigurationsserver-VM zu erstellen](vmware-azure-deploy-configuration-server.md). Wenn das aus irgendeinem Grund nicht möglich ist, Sie z.B. keinen Zugriff auf den VMware-Server haben, können Sie aus dem Portal die [einheitliche Setupdatei](physical-azure-set-up-source.md) herunterladen und einem virtuellen Computer ausführen.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Kann ein Konfigurationsserver zu mehreren Regionen replizieren?
 Nein. Zu diesem Zweck müssen Sie in jeder Region eine Konfigurationsserver einrichten.
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Kann ich einen Konfigurationsserver in Azure hosten?
-Dies ist zwar möglich, aber die Azure-VM, die den Konfigurationsserver ausführt, müsste mit Ihrer lokalen VMware-Infrastruktur und den virtuellen Computern kommunizieren. Der Aufwand ist wahrscheinlich nicht sinnvoll.
+Dies ist zwar möglich, aber die Azure-VM, die den Konfigurationsserver ausführt, müsste mit Ihrer lokalen VMware-Infrastruktur und den virtuellen Computern kommunizieren. Dies kann zu höherer Latenz führen und sich auf die laufende Replikation auswirken.
 
 
 ### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Wo erhalte ich die neueste Version der Konfigurationsservervorlage?
@@ -132,6 +132,9 @@ Laden Sie die neueste Version aus dem [Microsoft Download Center](https://aka.ms
 
 ### <a name="how-do-i-update-the-configuration-server"></a>Wie aktualisiere ich den Konfigurationsserver?
 Sie installieren Updaterollups. Die neuesten Updateinformationen finden Sie auf der [Wiki-Updatesseite](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+### <a name="should-i-backup-the-deployed-configuration-server"></a>Soll ich den bereitgestellten Konfigurationsserver sichern?
+Es wird empfohlen, regelmäßige geplante Sicherungen des Konfigurationsservers durchzuführen. Für ein erfolgreiches Failback muss der betreffende virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein, und der Konfigurationsserver muss ausgeführt werden und verbunden sein. Weitere Informationen zu allgemeinen Aufgaben für die Verwaltung des Konfigurationsservers finden Sie [hier](vmware-azure-manage-configuration-server.md).
 
 ## <a name="mobility-service"></a>Mobilitätsdienst
 
@@ -191,7 +194,7 @@ Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback z
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Warum benötige ich ein VPN oder ExpressRoute für ein Failback?
 
-Wenn Sie ein Failback von Azure ausführen, werden Daten aus Azure auf Ihren lokalen virtuellen Computer zurückkopiert und privater Zugriff ist erforderlich. 
+Wenn Sie ein Failback von Azure ausführen, werden Daten aus Azure auf Ihren lokalen virtuellen Computer zurückkopiert und privater Zugriff ist erforderlich.
 
 
 

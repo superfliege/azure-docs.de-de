@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ef1bd613943543f78d358064f4abefc6fa31b63e
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442238"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842334"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -163,9 +163,9 @@ Um die Azure AD-Anwendungstokenauthentifizierung basierend auf der MSI zu verwen
 
 1. **Erstellen Sie eine Gruppe in Azure AD.** Fügen Sie die Factory-MSI der Gruppe als Mitglied hinzu.
 
-    a. Suchen Sie die Data Factory-Dienstidentität im Azure-Portal. Wechseln Sie zu den **Eigenschaften** Ihrer Data Factory. Kopieren Sie die DIENSTIDENTITÄTS-ID.
+    1. Suchen Sie die Data Factory-Dienstidentität im Azure-Portal. Wechseln Sie zu den **Eigenschaften** Ihrer Data Factory. Kopieren Sie die DIENSTIDENTITÄTS-ID.
 
-    b. Installieren Sie das [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)-Modul. Melden Sie sich mit dem Befehl `Connect-AzureAD` an. Führen Sie die folgenden Befehle aus, um eine Gruppe zu erstellen und dieser die Data Factory-MSI als Mitglied hinzuzufügen.
+    1. Installieren Sie das [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)-Modul. Melden Sie sich mit dem Befehl `Connect-AzureAD` an. Führen Sie die folgenden Befehle aus, um eine Gruppe zu erstellen und dieser die Data Factory-MSI als Mitglied hinzuzufügen.
     ```powershell
     $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
@@ -401,13 +401,14 @@ Für SQL Data Warehouse unterstützt PolyBase Azure Blob Storage und Azure Data 
 Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory die Einstellungen und greift bei der Datenverschiebung automatisch auf den BULKINSERT-Mechanismus zurück.
 
 1. Der Typ des **mit der verknüpften Diensts** ist Azure Blob-Speicher (**AzureBLobStorage**/**AzureStorage**) mit Kontoschlüsselauthentifizierung oder Azure Data Lake Storage Gen1 (**AzureDataLakeStore**) mit Dienstprinzipalauthentifizierung.
-1. Das **Eingabedataset** weist einen der Typen **AzureBlob** oder **AzureDataLakeStoreFile** auf. Der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
+2. Das **Eingabedataset** weist einen der Typen **AzureBlob** oder **AzureDataLakeStoreFile** auf. Der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
 
-   1. `rowDelimiter` muss **\n** sein.
-   1. `nullValue` ist entweder auf **eine leere Zeichenfolge** („“) festgelegt, oder der Standardwert wird übernommen, und `treatEmptyAsNull` ist nicht auf „false“ festgelegt.
-   1. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der Standardwert.)
-   1. `escapeChar`, `quoteChar` und `skipLineCount` wurden nicht angegeben. PolyBase unterstützt das Überspringen der Kopfzeile, dies kann in ADF als `firstRowAsHeader` konfiguriert werden.
-   1. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
+   1. `fileName` enthält keinen Platzhalterfilter.
+   2. `rowDelimiter` muss **\n** sein.
+   3. `nullValue` ist entweder auf **eine leere Zeichenfolge** („“) festgelegt, oder der Standardwert wird übernommen, und `treatEmptyAsNull` ist nicht auf „false“ festgelegt.
+   4. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der Standardwert.)
+   5. `escapeChar`, `quoteChar` und `skipLineCount` wurden nicht angegeben. PolyBase unterstützt das Überspringen der Kopfzeile, dies kann in ADF als `firstRowAsHeader` konfiguriert werden.
+   6. `compression` kann auf **keine Komprimierung** oder auf **Gzip** oder **Deflate** (Verkleinern) festgelegt sein.
 
     ```json
     "typeProperties": {

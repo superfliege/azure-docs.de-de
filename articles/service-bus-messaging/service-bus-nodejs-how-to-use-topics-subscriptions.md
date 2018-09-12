@@ -3,7 +3,7 @@ title: Verwenden von Azure Service Bus-Themen und -Abonnements mit Node.js | Mic
 description: Erfahren Sie mehr zur Verwendung von Service Bus-Themen und -Abonnements in Azure aus einer Node.js-App.
 services: service-bus-messaging
 documentationcenter: nodejs
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: b9f5db85-7b6c-4cc7-bd2c-bd3087c99875
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: d3a7ebd135f705a6a3ea91feb4e037a9ed6d0c79
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: daabf711e923e1c4ff3132c5e4765bdbff206948
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704995"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782910"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Verwenden von Service Bus-Themen und -Abonnements mit Node.js
 
@@ -95,7 +95,7 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-Die Methode `createServiceBusService` unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für Themen überschreiben können. Hierzu zählen beispielsweise die Gültigkeitsdauer von Nachrichten und die maximale Themengröße. 
+Die Methode `createTopicIfNotExists` unterstützt zudem weitere Optionen, mit denen Sie Standardeinstellungen für Themen überschreiben können. Hierzu zählen beispielsweise die Gültigkeitsdauer von Nachrichten und die maximale Themengröße. 
 
 Das folgende Beispiel legt die maximale Themengröße auf 5 GB bei einer Gültigkeitsdauer (TTL) von 1 Minute fest:
 
@@ -235,7 +235,7 @@ var rule={
 }
 ```
 
-Wenn jetzt eine Nachricht an `MyTopic` gesendet wird, wird diese an Empfänger zugestellt, die das `AllMessages`-Themenabonnement abonniert haben. Sie wird selektiv an die Empfänger der Themenabonnements `HighMessages` und `LowMessages` zugestellt (je nach Inhalt der Nachricht).
+Wenn jetzt eine Nachricht an `MyTopic` gesendet wird, erfolgt die Zustellung an Empfänger, die das `AllMessages`-Themenabonnement abonniert haben. Sie wird selektiv an die Empfänger der Themenabonnements `HighMessages` und `LowMessages` zugestellt (je nach Inhalt der Nachricht).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Senden von Nachrichten an ein Thema
 Um eine Nachricht an ein Service Bus-Thema zu senden, muss die Anwendung die Methode `sendTopicMessage` des Objekts **ServiceBusService** verwenden.
@@ -268,7 +268,7 @@ Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 Nachrichten werden von einem Abonnement über die Methode `receiveSubscriptionMessage` des Objekts **ServiceBusService** empfangen. Nachrichten werden nach dem Lesen standardmäßig aus dem Abonnement gelöscht. Sie können jedoch den optionalen Parameter `isPeekLock` auf **true** festlegen, um die Nachricht zu lesen (einen kurzen Blick darauf zu werfen) und zu sperren, ohne sie aus dem Abonnement zu löschen.
 
-Das Standardverhalten für das Lesen und Löschen der Nachricht als Teil des Empfangsvorgangs ist das einfachste Modell. Es wird am besten für Szenarios eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da Service Bus die Nachricht als verwendet markiert hat, wird er jene Nachricht auslassen, die vor dem Absturz verwendet wurde, wenn die Anwendung neu startet und erneut mit der Verwendung von Nachrichten beginnt.
+Das Standardverhalten für das Lesen und Löschen der Nachricht als Teil des Empfangsvorgangs ist das einfachste Modell. Es wird am besten für Szenarios eingesetzt, bei denen es eine Anwendung tolerieren kann, wenn eine Nachricht bei Auftreten eines Fehlers nicht verarbeitet wird. Um dieses Verfahren zu verstehen, stellen Sie sich ein Szenario vor, in dem der Consumer die Empfangsanforderung ausstellt und dann abstürzt, bevor diese verarbeitet wird. Da die Nachricht von Service Bus als verarbeitet gekennzeichnet wurde, wird die vor dem Absturz verarbeitete Nachricht nicht berücksichtigt, wenn die Anwendung neu gestartet und die Verarbeitung von Nachrichten wieder aufgenommen wird.
 
 Wenn der Parameter `isPeekLock` auf **true** festgelegt ist, wird der Empfangsvorgang zu einem zweistufigen Vorgang. Dadurch können Anwendungen ohne Toleranz für fehlende Nachrichten unterstützt werden. Wenn Service Bus eine Anforderung erhält, ermittelt der Dienst die nächste zu verarbeitende Nachricht, sperrt diese, um zu verhindern, dass andere Consumer sie erhalten, und sendet sie an die Anwendung zurück.
 Nachdem die Anwendung die Nachricht verarbeitet hat (oder sie zwecks zukünftiger Verarbeitung zuverlässig gespeichert hat), führt sie die zweite Phase des Empfangsprozesses durch Aufruf der Methode **deleteMessage** durch, und stellt die Nachricht bereit, die als Parameter gelöscht werden soll. Die Methode **deleteMessage** markiert die Nachricht als verarbeitet und entfernt sie aus dem Abonnement.

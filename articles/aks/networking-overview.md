@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: 051402a319e1dc26145b5a1602a4caeffa7fba19
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: e78be76d68cf75cf9d59f5b5dff86c65524275a9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445506"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697240"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Netzwerkkonfiguration in Azure Kubernetes Service (AKS)
 
@@ -47,68 +47,75 @@ Die Netzwerkoption „Advanced“ (Erweitert) bietet die folgenden Vorteile:
 
 ## <a name="advanced-networking-prerequisites"></a>Voraussetzungen für erweiterte Netzwerke
 
-* Das VNET des AKS-Clusters muss eine ausgehende Internetkonnektivität zulassen.
+* Das virtuelle Netzwerk des AKS-Clusters muss ausgehende Internetkonnektivität zulassen.
 * In einem Subnetz sollte nicht mehr als ein AKS-Cluster erstellt werden.
 * AKS-Cluster verwenden möglicherweise nicht `169.254.0.0/16`, `172.30.0.0/16` oder `172.31.0.0/16` für den Kubernetes-Dienstadressbereich.
-* Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen als [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) im Subnetz in Ihrem VNET verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
+* Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Planen der IP-Adressierung für Ihren Cluster
 
-Für Cluster, für die die Netzwerkoption „Advanced“ (Erweitert) konfiguriert wird, ist eine zusätzliche Planung erforderlich. Die Größe Ihres VNET und des dazugehörigen Subnetzes muss die Anzahl von Pods, die ausgeführt werden sollen, und die Anzahl von Knoten für den Cluster abdecken.
+Für Cluster, für die die Netzwerkoption „Advanced“ (Erweitert) konfiguriert wird, ist eine zusätzliche Planung erforderlich. Die Größe Ihres virtuellen Netzwerks und des dazugehörigen Subnetzes muss die Anzahl von Pods, die ausgeführt werden sollen, und die Anzahl von Knoten für den Cluster abdecken.
 
-IP-Adressen für die Pods und die Knoten des Clusters werden über das angegebene Subnetz im VNET zugewiesen. Für jeden Knoten werden eine primäre IP-Adresse (die eigentliche IP-Adresse des Knotens) und 30 zusätzliche IP-Adressen konfiguriert (per Azure CNI vorkonfiguriert), die den für den Knoten bestimmten Pods zugewiesen werden. Wenn Sie Ihren Cluster horizontal hochskalieren, wird jeder Knoten auf ähnliche Weise mit IP-Adressen aus dem Subnetz konfiguriert.
+IP-Adressen für die Pods und die Knoten des Clusters werden über das angegebene Subnetz im virtuellen Netzwerk zugewiesen. Für jeden Knoten werden eine primäre IP-Adresse (die eigentliche IP-Adresse des Knotens) und 30 zusätzliche IP-Adressen konfiguriert (per Azure CNI vorkonfiguriert), die den für den Knoten bestimmten Pods zugewiesen werden. Wenn Sie Ihren Cluster horizontal hochskalieren, wird jeder Knoten auf ähnliche Weise mit IP-Adressen aus dem Subnetz konfiguriert.
 
-Der IP-Addressplan eines AKS-Clusters beinhaltet neben einem VNET mindestens ein Subnetz für Knoten und Pods sowie einen Kubernetes-Dienstadressbereich.
+Der IP-Adressplan eines AKS-Clusters enthält neben einem virtuellen Netzwerk mindestens ein Subnetz für Knoten und Pods sowie einen Kubernetes-Dienstadressbereich.
 
 | Adressbereich/Azure-Ressourcen | Grenzen und Kontingente |
 | --------- | ------------- |
-| Virtuelles Netzwerk | Ein Azure-VNET kann eine Größe von bis zu /8 haben, dabei aber nur 16.000 konfigurierte IP-Adressen aufweisen. |
+| Virtuelles Netzwerk | Das virtuelle Azure-Netzwerk kann eine Größe von /8 haben, ist aber auf 65.536 konfigurierte IP-Adressen beschränkt. |
 | Subnetz | Muss groß genug für die Knoten, Pods und alle Kubernetes- und Azure-Ressourcen sein, die in Ihrem Cluster bereitgestellt werden können. Wenn Sie beispielsweise einen internen Azure Load Balancer bereitstellen, werden dessen Front-End-IP-Adressen aus dem Clusternetzwerk zugeordnet, nicht die öffentlichen IP-Adressen. <p/>So wird die *mindestens erforderliche* Subnetzgröße berechnet: `(number of nodes) + (number of nodes * pods per node)` <p/>Beispiel für einen Cluster mit 50 Knoten: `(50) + (50 * 30) = 1,550` (/ 21 oder mehr) |
-| Kubernetes-Dienstadressbereich | Dieser Bereich sollte nicht von Netzwerk-Elementen verwendet werden, die sich in diesem VNET befinden oder damit verbunden sind. Das Dienstadress-CIDR darf höchstens eine Größe von /12 aufweisen. |
+| Kubernetes-Dienstadressbereich | Dieser Bereich darf nicht von Netzwerkelementen verwendet werden, die sich in diesem virtuellen Netzwerk befinden oder damit verbunden sind. Das Dienstadress-CIDR darf höchstens eine Größe von /12 aufweisen. |
 | Kubernetes-DNS-Dienst – IP-Adresse | Die IP-Adresse im Kubernetes-Dienstadressbereich wird bei der Clusterdienstermittlung (kube-dns) verwendet. |
 | Docker-Bridge-Adresse | Die IP-Adresse (in CIDR-Schreibweise) wird auf Knoten als Docker-Bridge-Adresse verwendet. Standard 172.17.0.1/16. |
 
-Jedes VNET, das für die Verwendung mit dem Azure CNI-Plug-In bereitgestellt wird, ist auf **16.000 konfigurierte IP-Adressen** begrenzt.
-
 ## <a name="maximum-pods-per-node"></a>Maximale Pods pro Knoten
 
-Standardmäßig variiert die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster zwischen grundlegenden und erweiterten Netzwerken und je nach Methode für die Clusterbereitstellung.
+Standardmäßig variiert die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster zwischen einfachen und erweiterten Netzwerken und je nach Methode für die Clusterbereitstellung.
 
 ### <a name="default-maximum"></a>Höchstwert (Standard)
 
-* Grundlegende Netzwerke: **110 Pods pro Knoten**
-* Erweiterte Netzwerke: **30 Pods pro Knoten**
+Dies sind die *standardmäßigen* Höchstwerte, wenn Sie einen AKS-Cluster bereitstellen, ohne die maximale Anzahl von Pods zum Zeitpunkt der Bereitstellung anzugeben:
 
-### <a name="configure-maximum"></a>Konfigurieren des Höchstwerts
+| Bereitstellungsmethode | Basic | Erweitert | Bei der Bereitstellung konfigurierbar |
+| -- | :--: | :--: | -- |
+| Azure-Befehlszeilenschnittstelle | 110 | 30 | JA |
+| Resource Manager-Vorlage | 110 | 30 | JA |
+| Portal | 110 | 30 | Nein  |
 
-Je nach Ihrer Bereitstellungsmethode können Sie die maximale Anzahl von Pods pro Knoten in einem AKS-Cluster anpassen.
+### <a name="configure-maximum---new-clusters"></a>Konfigurieren des Höchstwerts: Neue Cluster
+
+So geben Sie eine andere maximale Anzahl von Pods pro Knoten an, wenn Sie einen AKS-Cluster bereitstellen
 
 * **Azure CLI:** Geben Sie das `--max-pods`-Argument an, wenn Sie einen Cluster mit dem Befehl [az aks create][az-aks-create] bereitstellen.
 * **Resource Manager-Vorlage:** Geben Sie die `maxPods`-Eigenschaft im Objekt [ManagedClusterAgentPoolProfile] an, wenn Sie einen Cluster mit einer Resource Manager-Vorlage bereitstellen.
 * **Azure-Portal:** Sie können die maximale Anzahl von Pods pro Knoten nicht ändern, wenn Sie einen Cluster über das Azure-Portal bereitstellen. Die Cluster in erweiterten Netzwerken sind auf 30 Pods pro Knoten beschränkt, wenn diese im Azure-Portal bereitgestellt werden.
 
+### <a name="configure-maximum---existing-clusters"></a>Konfigurieren des Höchstwerts: Vorhandene Cluster
+
+Sie können die maximalen Anzahl von Pods pro Knoten für einen vorhandenen AKS-Cluster nicht ändern. Sie können die Anzahl nur bei der ersten Bereitstellung des Clusters anpassen.
+
 ## <a name="deployment-parameters"></a>Bereitstellungsparameter
 
 Beim Erstellen eines AKS-Clusters können folgende Parameter für erweiterte Netzwerke konfiguriert werden:
 
-**Virtuelles Netzwerk**: Das VNET, in dem Sie den Kubernetes-Cluster bereitstellen möchten. Wenn Sie ein neues VNET für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines virtuellen Netzwerks* ausführen. Das VNET ist auf 16.000 konfigurierte IP-Adressen beschränkt.
+**Virtuelles Netzwerk**: Das virtuelle Netzwerk, in dem Sie den Kubernetes-Cluster bereitstellen möchten. Wenn Sie ein neues virtuelles Netzwerk für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines virtuellen Netzwerks* ausführen. Weitere Informationen zu Grenzwerten und Kontingenten für virtuelle Azure-Netzwerke finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
-**Subnetz**: Das Subnetz im VNET, in dem Sie den Cluster bereitstellen möchten. Wenn Sie ein neues Subnetz im VNET für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines Subnetzes* ausführen.
+**Subnetz**: Das Subnetz im virtuellen Netzwerk, in dem Sie den Cluster bereitstellen möchten. Wenn Sie ein neues Subnetz im virtuellen Netzwerk für Ihren Cluster erstellen möchten, können Sie *Neu erstellen* wählen und die Schritte im Abschnitt *Erstellen eines Subnetzes* ausführen.
 
 **Kubernetes-Dienstadressbereich**: Dies ist der Satz von virtuellen IP-Adressen, die Kubernetes [Diensten][services] in Ihrem Cluster zuweist. Sie können jeden privaten Adressbereich verwenden, der die folgenden Anforderungen erfüllen:
 
-* Er darf nicht innerhalb des VNET-IP-Adressbereichs Ihres Clusters liegen.
-* Er darf sich nicht mit anderen VNETs überlappen, die Peers des Cluster-VNETs sind.
-* Er darf sich nicht mit lokalen IP-Adressen überlappen.
-* Er darf sich nicht in den Bereichen `169.254.0.0/16`, `172.30.0.0/16` oder `172.31.0.0/16` befinden.
+* Darf nicht innerhalb des IP-Adressbereichs des virtuellen Netzwerk Ihres Clusters liegen
+* Darf sich nicht mit anderen virtuellen Netzwerken überlappen, die Peers des virtuellen Netzwerks des Clusters sind
+* Darf sich nicht mit lokalen IP-Adressen überlappen.
+* Darf sich nicht in den Bereichen `169.254.0.0/16`, `172.30.0.0/16` oder `172.31.0.0/16` befinden.
 
-Obwohl es technisch möglich ist, einen Dienstadressbereich im gleichen VNET wie Ihr Cluster anzugeben, wird dies nicht empfohlen. Bei Verwendung sich überlappender IP-Adressbereiche kann es zu unvorhersehbarem Verhalten kommen. Weitere Informationen finden Sie im Abschnitt [Häufig gestellte Fragen](#frequently-asked-questions) in diesem Artikel. Weitere Informationen zu Kubernetes-Diensten finden Sie in der Kubernetes-Dokumentation unter [Dienste][services].
+Obwohl es technisch möglich ist, einen Dienstadressbereich im gleichen virtuellen Netzwerk wie Ihr Cluster anzugeben, wird dies nicht empfohlen. Bei Verwendung sich überlappender IP-Adressbereiche kann es zu unvorhersehbarem Verhalten kommen. Weitere Informationen finden Sie im Abschnitt [Häufig gestellte Fragen](#frequently-asked-questions) in diesem Artikel. Weitere Informationen zu Kubernetes-Diensten finden Sie in der Kubernetes-Dokumentation unter [Dienste][services].
 
 **Kubernetes DNS service IP address** (Kubernetes-DNS-Dienst – IP-Adresse): Die IP-Adresse für den DNS-Dienst des Clusters. Diese Adresse muss innerhalb des *Kubernetes-Dienstadressbereichs* liegen.
 
-**Docker Bridge address** (Docker-Bridge-Adresse): Die IP-Adresse und Netzmaske für die Zuweisung zur Docker-Bridge. Diese IP-Adresse darf nicht innerhalb des VNET-IP-Adressbereichs Ihres Clusters liegen.
+**Docker Bridge address** (Docker-Bridge-Adresse): Die IP-Adresse und Netzmaske für die Zuweisung zur Docker-Bridge. Diese IP-Adresse darf nicht innerhalb des IP-Adressbereichs des virtuellen Netzwerk Ihres Clusters liegen.
 
 ## <a name="configure-networking---cli"></a>Konfigurieren der Netzwerkeinstellungen – CLI
 
@@ -140,7 +147,7 @@ Die folgenden Fragen und Antworten gelten für die Netzwerkkonfiguration vom Typ
 
 * *Kann ich VMs in meinem Clustersubnetz bereitstellen?*
 
-  Nein. Die Bereitstellung von VMs in dem Subnetz, das von Ihrem Kubernetes-Cluster verwendet wird, wird nicht unterstützt. VMs können in demselben VNET bereitgestellt werden, aber es muss ein anderes Subnetz verwendet werden.
+  Nein. Die Bereitstellung von VMs in dem Subnetz, das von Ihrem Kubernetes-Cluster verwendet wird, wird nicht unterstützt. VMs können in demselben virtuellen Netzwerk bereitgestellt werden, aber nur in einem anderen Subnetz.
 
 * *Kann ich Netzwerkrichtlinien pro Pod konfigurieren?*
 
@@ -150,13 +157,15 @@ Die folgenden Fragen und Antworten gelten für die Netzwerkkonfiguration vom Typ
 
   Ja, wenn Sie einen Cluster mit der Azure CLI oder einer Resource Manager-Vorlage bereitstellen. Weitere Informationen finden Sie unter [Maximale Pods pro Knoten](#maximum-pods-per-node).
 
+  Sie können die maximalen Anzahl von Pods pro Knoten für einen vorhandenen Cluster nicht ändern.
+
 * *Wie kann ich zusätzliche Eigenschaften für das Subnetz konfigurieren, das ich während der Erstellung des AKS-Clusters erstellt habe? Beispiel: Dienstendpunkte.*
 
-  Die vollständige Liste mit Eigenschaften für das VNET und Subnetze, die Sie während der Erstellung des AKS-Clusters erstellen, kann im Azure-Portal auf der Standardseite für die VNET-Konfiguration konfiguriert werden.
+  Die vollständige Liste mit Eigenschaften für das virtuelle Netzwerk und Subnetze, die Sie während der Erstellung des AKS-Clusters erstellen, kann im Azure-Portal auf der Standardseite für die Konfiguration des virtuellen Netzwerks konfiguriert werden.
 
-* *Kann ich in meinem Cluster-VNET ein anderes Subnetz für den* **Kubernetes-Dienstadressbereich** verwenden?
+* *Kann ich im virtuellen Netzwerk meines Clusters ein anderes Subnetz für den*  **Kubernetes-Dienstadressbereich** verwenden?
 
-  Es wird zwar nicht empfohlen, diese Konfiguration ist jedoch möglich. Der Dienstadressbereich ist ein Satz von virtuellen IP-Adressen (VIPs), die Kubernetes Diensten in Ihrem Cluster zuweist. Das Azure-Netzwerk hat keinen Einblick in den Dienst-IP-Adressbereich des Kubernetes-Clusters. Aufgrund fehlender Einblicke in den Dienstadressbereich des Clusters ist es möglich, später ein neues Subnetz im Cluster-VNET zu erstellen, das mit dem Dienstadressbereich überlappt. Im Falle einer solchen Überlappung weist Kubernetes einem Dienst ggf. eine IP zu, die bereits von einer anderen Ressource im Subnetz verwendet wird. Dies führt zu unvorhersehbarem Verhalten oder Fehlern. Wenn Sie einen Adressbereich außerhalb des Cluster-VNETs verwenden, können Sie dieses Überlappungsrisiko umgehen.
+  Es wird zwar nicht empfohlen, diese Konfiguration ist jedoch möglich. Der Dienstadressbereich ist ein Satz von virtuellen IP-Adressen (VIPs), die Kubernetes Diensten in Ihrem Cluster zuweist. Das Azure-Netzwerk hat keinen Einblick in den Dienst-IP-Adressbereich des Kubernetes-Clusters. Aufgrund fehlender Einblicke in den Dienstadressbereich des Clusters ist es möglich, später ein neues Subnetz im virtuellen Netzwerk des Clusters zu erstellen, das mit dem Dienstadressbereich überlappt. Im Falle einer solchen Überlappung weist Kubernetes einem Dienst ggf. eine IP zu, die bereits von einer anderen Ressource im Subnetz verwendet wird. Dies führt zu unvorhersehbarem Verhalten oder Fehlern. Wenn Sie einen Adressbereich außerhalb des virtuellen Netzwerk des Clusters verwenden, können Sie dieses Überlappungsrisiko umgehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

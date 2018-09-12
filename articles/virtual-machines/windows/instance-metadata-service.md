@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: de597424c1be01e651068b7900acbece822610b1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d64233883d2dd6fb174c55467fcfcd276b452775
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008374"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782989"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -37,10 +37,10 @@ Der Dienst ist in Azure-Regionen allgemein verfügbar. Unter Umständen sind nic
 
 Regionen                                        | Verfügbarkeit?                                 | Unterstützte Versionen
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02,2017-08-01
-[Azure China](https://www.azure.cn/)                                                           | Allgemein verfügbar | 2017-04-02,2017-08-01
-[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02,2017-08-01
+[Allgemein verfügbar in globalen Azure-Regionen](https://azure.microsoft.com/regions/)     | Allgemein verfügbar   | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Azure China](https://www.azure.cn/)                                                           | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
+[Azure Deutschland](https://azure.microsoft.com/overview/clouds/germany/)                    | Allgemein verfügbar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01
 
 Diese Tabelle wird aktualisiert, wenn Dienstupdates oder neue unterstützte Versionen verfügbar sind.
 
@@ -49,7 +49,7 @@ Um den Instanzmetadatendienst zu testen, erstellen Sie eine VM über den [Azure 
 ## <a name="usage"></a>Verwendung
 
 ### <a name="versioning"></a>Versionsverwaltung
-Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version in globalen Azure-Regionen ist `2017-12-01`. Aktuelle unterstützte Versionen: 2017-04-02, 2017-08-01,2017-12-01
+Für den Instanzmetadatendienst wird die Versionsverwaltung genutzt. Versionen sind obligatorisch, und die aktuelle Version in globalen Azure-Regionen ist `2018-04-02`. Aktuelle unterstützte Versionen: 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
 
 > [!NOTE] 
 > In früheren Vorschauversionen von geplanten Ereignissen wird {latest} als „api-version“ unterstützt. Dieses Format wird nicht mehr unterstützt und wird zukünftig veraltet sein.
@@ -299,6 +299,8 @@ subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01
 tags | [Tags](../../azure-resource-manager/resource-group-using-tags.md) für den virtuellen Computer  | 2017-08-01
 resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
+Tarif | [Tarif] (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im Azure Marketplace-Image, enthält Name, Produkt und Herausgeber | 2017-04-02
+publicKeys | Sammlung von öffentlichen Schlüsseln [https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey], dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2017-04-02
 vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01 
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
@@ -379,6 +381,39 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
+
+### <a name="getting-azure-environment-where-the-vm-is-running"></a>Abrufen der Azure-Umgebung, in der die VM ausgeführt wird 
+
+Azure verfügt über verschiedene Sovereign Clouds wie [Azure Government](https://azure.microsoft.com/overview/clouds/government/). Daher müssen Sie in einigen Fällen die Azure-Umgebung auswählen, um bestimmte Laufzeitentscheidungen zu treffen. Im folgenden Beispiel wird gezeigt, wie Sie dies erreichen können.
+
+**Anforderung**
+
+```
+  $metadataResponse = Invoke-WebRequest "http://169.254.169.254/metadata/instance/compute?api-version=2018-02-01" -H @{"Metadata"="true"} -UseBasicParsing
+  $metadata = ConvertFrom-Json ($metadataResponse.Content)
+ 
+  $endpointsResponse = Invoke-WebRequest "https://management.azure.com/metadata/endpoints?api-version=2017-12-01" -UseBasicParsing
+  $endpoints = ConvertFrom-Json ($endpointsResponse.Content)
+ 
+  foreach ($cloud in $endpoints.cloudEndpoint.PSObject.Properties) {
+    $matchingLocation = $cloud.Value.locations | Where-Object {$_ -match $metadata.location}
+    if ($matchingLocation) {
+      $cloudName = $cloud.name
+      break
+    }
+  }
+ 
+  $environment = "Unknown"
+  switch ($cloudName) {
+    "public" { $environment = "AzureCloud"}
+    "usGovCloud" { $environment = "AzureUSGovernment"}
+    "chinaCloud" { $environment = "AzureChinaCloud"}
+    "germanCloud" { $environment = "AzureGermanCloud"}
+  }
+ 
+  Write-Host $environment
+```
+
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Beispiele zum Aufrufen des Metadatendiensts über verschiedene Sprachen auf der VM 
 
 Sprache | Beispiel 
@@ -404,7 +439,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Der Instanzmetadatendienst unterstützt derzeit nur Instanzen, die mit dem Azure Resource Manager erstellt wurden. In Zukunft kann zusätzliche Unterstützung für Clouddienst-VMs hinzugefügt werden.
 3. Ich habe meinen virtuellen Computer vor einiger Zeit über den Azure Resource Manager erstellt. Warum sehe ich keine Computemetadateninformationen?
    * Fügen Sie für VMs, die nach September 2016 erstellt wurden, ein [Tag](../../azure-resource-manager/resource-group-using-tags.md) hinzu, damit Computemetadaten angezeigt werden. Fügen Sie bei älteren VMs (die vor September 2016 erstellt wurden) Erweiterungen oder Datenträger zur VM hinzu, bzw. entfernen Sie diese, um Metadaten zu aktualisieren.
-4. Nicht alle Daten wurden für die neue Version 2017-08-01 aufgefüllt.
+4. Nicht alle Daten wurden für die neue Version eingetragen.
    * Fügen Sie für VMs, die nach September 2016 erstellt wurden, ein [Tag](../../azure-resource-manager/resource-group-using-tags.md) hinzu, damit Computemetadaten angezeigt werden. Fügen Sie bei älteren VMs (die vor September 2016 erstellt wurden) Erweiterungen oder Datenträger zur VM hinzu, bzw. entfernen Sie diese, um Metadaten zu aktualisieren.
 5. Warum erhalte ich die Fehlermeldung `500 Internal Server Error`?
    * Wiederholen Sie Ihre Anforderung basierend auf dem Exponential-Backoff-System. Wenden Sie sich an den Azure-Support, wenn das Problem weiterhin besteht.
@@ -414,6 +449,10 @@ Puppet | https://github.com/keirans/azuremetadata
    * Ja, der Metadatendienst ist für Skalierungsgruppeninstanzen verfügbar. 
 8. Wie beziehe ich Support für den Dienst?
    * Um Support für den Dienst zu beziehen, erstellen Sie im Azure-Portal ein Supportproblem für die VM, auf der Sie nach wiederholten Versuchen keine Metadatenantwort erhalten. 
+9. Ich erhalte ein Anforderungstimeout für den Aufruf des Diensts.
+   * Metadatenaufrufe müssen von der primären IP-Adresse erfolgen, die der Netzwerkkarte des virtuellen Computers zugewiesen ist. Wenn Sie außerdem Ihre Routen geändert haben, muss eine Route für die Adresse 169.254.0.0/16 von Ihrer Netzwerkkarte aus vorhanden sein.
+10. Ich habe meine Tags in der Skalierungsgruppe für virtuelle Computer aktualisiert, aber sie werden im Gegensatz zu VMs nicht in den Instanzen angezeigt.
+   * Derzeit werden Skalierungsgruppen Tags zu dem virtuellen Computer nur nach einem Neustart, einer Neuerstellung des Images oder der Änderung eines Datenträgers für die Instanz angezeigt. 
 
    ![Instanzmetadatenunterstützung](./media/instance-metadata-service/InstanceMetadata-support.png)
     

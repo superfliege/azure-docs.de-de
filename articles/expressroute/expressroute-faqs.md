@@ -1,25 +1,18 @@
 ---
 title: Häufig gestellte Fragen zu Azure ExpressRoute | Microsoft-Dokumentation
 description: Die FAQs zu ExpressRoute enthalten Informationen zu unterstützten Azure-Diensten, Kosten, Daten und Verbindungen, SLAs, Anbietern und Standorten, Bandbreite sowie zusätzliche technische Details.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: jeconnoc
-editor: ''
-ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/14/2018
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2e332b361a1531eb5f6a8a1d3c46c2f258035258
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5f40b4c9fff57b105b7d96de69780fea83871032
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818792"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302295"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -53,7 +46,7 @@ Ja. ExpressRoute-Verbindungen sind so konfiguriert, dass Sie das erworbene Bandb
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Kann ich dieselbe private Netzwerkverbindung gleichzeitig mit virtuellen Netzwerken und anderen Azure-Diensten verwenden?
 
-Ja. Sobald eine ExpressRoute-Verbindung eingerichtet ist, können Sie gleichzeitig auf Dienste in einem virtuellen Netzwerk und in anderen Azure-Diensten zugreifen. Über einen privaten Peeringpfad können Sie eine Verbindung mit virtuellen Netzwerken herstellen, und über den öffentlichen Peeringpfad stellen Sie die Verbindung mit anderen Diensten her.
+Ja. Sobald eine ExpressRoute-Verbindung eingerichtet ist, können Sie gleichzeitig auf Dienste in einem virtuellen Netzwerk und in anderen Azure-Diensten zugreifen. Über den privaten Peeringpfad können Sie eine Verbindung mit virtuellen Netzwerken herstellen, und über den Microsoft-Peeringpfad stellen Sie eine Verbindung mit anderen Diensten her.
 
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Bietet ExpressRoute eine Service Level Agreement (SLA)?
 
@@ -70,33 +63,18 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 ### <a name="public-peering"></a>Öffentliches Peering
 
 >[!NOTE]
->Microsoft-Peering ist die bevorzugte Methode, um auf alle in Azure gehosteten Dienste zuzugreifen.
+>Öffentliches Peering wurde für neue ExpressRoute-Verbindungen deaktiviert. Azure-Dienste sind über Microsoft-Peering verfügbar.
 >
-
-* Power BI
-* Dynamics 365 for Finance and Operations (früher als „Dynamics AX Online“ bekannt)
-* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br>
-  Die folgenden Dienste werden NICHT unterstützt:
-    * CDN
-    * Visual Studio Team Services-Auslastungstests
-    * Multi-Factor Authentication
-    * Traffic Manager
 
 ### <a name="microsoft-peering"></a>Microsoft-Peering
 
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 for Customer Engagement-Anwendungen (früher als „CRM Online“ bekannt)
-  * Dynamics 365 for Sales
-  * Dynamics 365 for Customer Service
-  * Dynamics 365 for Field Service
-  * Dynamics 365 for Project Service
-* Mit [Routenfiltern](#route-filters-for-microsoft-peering) erhalten Sie Zugriff auf die gleichen öffentlichen Dienste mit Microsoft-Peering:
-  * Power BI
-  * Dynamics 365 for Finance and Operations
-  * Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br>
-  Die folgenden Dienste werden NICHT unterstützt:
+* Dynamics 365 
+* Power BI
+* Azure Active Directory
+* Visual Studio Team Services-Auslastungstests
+* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br>Die folgenden Dienste werden **nicht unterstützt**:
     * CDN
-    * Visual Studio Team Services-Auslastungstests
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -132,7 +110,7 @@ Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Wie stelle ich Hochverfügbarkeit in einem mit ExpressRoute verbundenen virtuellen Netzwerk sicher?
 
-Hochverfügbarkeit erreichen Sie, indem Sie ExpressRoute-Verbindungen an verschiedenen Peeringstandorten (beispielsweise Singapur, Singapur2) mit Ihrem virtuellen Netzwerk verbinden. Sollte eine ExpressRoute-Verbindung ausfallen, erfolgt ein Failover auf eine andere ExpressRoute-Verbindung. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Details zur Verbindungsgewichtung finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
+Hochverfügbarkeit erreichen Sie, indem Sie ExpressRoute-Verbindungen an verschiedenen Peeringstandorten (z. B. Singapur, Singapur2) mit Ihrem virtuellen Netzwerk verbinden. Sollte eine ExpressRoute-Verbindung ausfallen, erfolgt ein Failover auf eine andere ExpressRoute-Verbindung. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Informationen finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
 
 ### <a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
 
@@ -152,7 +130,7 @@ Ja. Ihr Abonnement kann mehr als eine ExpressRoute-Verbindung enthalten. Standar
 
 Ja. Sie können ExpressRoute-Verbindungen von verschiedenen Dienstanbietern verwenden. Jede ExpressRoute-Verbindung ist nur einem Dienstanbieter zugeordnet. 
 
-### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-eg-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Mir werden zwei ExpressRoute-Peeringstandorte in der gleichen Metro angezeigt (beispielweise Singapur und Singapur2). Welchen Peeringstandort sollte ich für die Erstellung meiner ExpressRoute-Verbindung verwenden?
+### <a name="i-see-two-expressroute-peering-locations-in-the-same-metro-for-example-singapore-and-singapore2-which-peering-location-should-i-choose-to-create-my-expressroute-circuit"></a>Mir werden zwei ExpressRoute-Peeringstandorte in der gleichen Metro angezeigt (beispielweise Singapur und Singapur2). Welchen Peeringstandort sollte ich für die Erstellung meiner ExpressRoute-Verbindung verwenden?
 Falls Ihr Dienstanbieter ExpressRoute an beiden Standorten anbietet, können Sie sich bei der Einrichtung von ExpressRoute in Abstimmung mit Ihrem Anbieter für einen beliebigen der beiden Standorte entscheiden. 
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Kann ich über mehrere ExpressRoute-Verbindungen am gleichen Standort verfügen? Kann ich sie mit dem gleichen virtuellen Netzwerk verknüpfen?
@@ -205,7 +183,7 @@ Ja. Wenn Sie über die BGP-Sitzung keine Standardrouten (0.0.0.0/0) oder Interne
 
 Ja. Sie können Standardrouten (0.0.0.0/0) ankündigen, um die Internetkonnektivität von virtuellen Computern in einem virtuellen Netzwerk zu blockieren und den gesamten Datenverkehr über die ExpressRoute-Verbindung zu leiten.
 
-Wenn Sie keine Standardrouten ankündigen, wird der Datenverkehr an Dienste, die über öffentliches Peering (z.B. Azure Storage und SQL-Datenbank) angeboten werden, wieder an Ihren Standort zurückgeleitet. Sie müssen Ihre Router so konfigurieren, dass der Datenverkehr über den öffentlichen Peeringpfad oder über das Internet an Azure zurückgegeben wird. Wenn Sie einen Dienstendpunkt (Vorschauversion) für den Dienst aktiviert haben, wird keine Weiterleitung des für den Dienst bestimmten Datenverkehrs an Ihren lokalen Standort erzwungen. Der Datenverkehr bleibt innerhalb des Azure-Backbonenetzwerks. Weitere Informationen zu Dienstendpunkten finden Sie unter [Dienstendpunkte von virtuellen Netzwerken (Vorschauversion)](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json).
+Wenn Sie Standardrouten ankündigen, wird der Datenverkehr an Dienste, die über Microsoft-Peering (z. B. Azure Storage und SQL-Datenbank) angeboten werden, wieder an Ihren lokalen Standort zurückgeleitet. Sie müssen Ihre Router so konfigurieren, dass der Datenverkehr über den Microsoft-Peeringpfad oder über das Internet an Azure zurückgegeben wird. Wenn Sie einen Dienstendpunkt für den Dienst aktiviert haben, wird keine Weiterleitung des für den Dienst bestimmten Datenverkehrs an Ihren lokalen Standort erzwungen. Der Datenverkehr bleibt innerhalb des Azure-Backbonenetzwerks. Weitere Informationen zu Dienstendpunkten finden Sie unter [Dienstendpunkte von virtuellen Netzwerken (Vorschauversion)](../virtual-network/virtual-network-service-endpoints-overview.md?toc=%2fazure%2fexpressroute%2ftoc.json).
 
 ### <a name="can-virtual-networks-linked-to-the-same-expressroute-circuit-talk-to-each-other"></a>Können virtuelle Netzwerke mit der gleichen ExpressRoute-Verbindung verknüpft sein und miteinander kommunizieren?
 
@@ -223,17 +201,13 @@ Ja. Sie müssen in Ihrem virtuellen Netzwerk ein ExpressRoute-Gateway erstellen.
 
 Die öffentliche IP-Adresse wird nur zur internen Verwaltung benötigt und stellt für Ihr virtuelles Netzwerk kein Sicherheitsrisiko dar.
 
-### <a name="what-do-i-need-to-connect-to-azure-storage-over-expressroute"></a>Was brauche ich, um über ExpressRoute eine Verbindung mit Azure Storage herzustellen?
-
-Sie müssen eine ExpressRoute-Verbindung einrichten und Routen für öffentliches Peering konfigurieren.
-
 ### <a name="are-there-limits-on-the-number-of-routes-i-can-advertise"></a>Gibt es Limits hinsichtlich der Anzahl von Routen, die ich ankündigen kann?
 
-Ja. Wir akzeptieren bis zu 4.000 Routenpräfixe für privates Peering und je 200 für öffentliches Peering und Microsoft-Peering. Sie können diesen Wert auf 10.000 Routen für privates Peering erhöhen, wenn Sie für ExpressRoute das Premium-Feature aktivieren.
+Ja. Wir akzeptieren bis zu 4.000 Routenpräfixe für privates Peering und 200 für Microsoft-Peering. Sie können diesen Wert auf 10.000 Routen für privates Peering erhöhen, wenn Sie für ExpressRoute das Premium-Feature aktivieren.
 
 ### <a name="are-there-restrictions-on-ip-ranges-i-can-advertise-over-the-bgp-session"></a>Gibt es Einschränkungen hinsichtlich der IP-Adressbereiche, die ich über die BGP-Sitzung ankündigen kann?
 
-Wir akzeptieren keine privaten Präfixe (RFC1918) in der öffentlichen und Microsoft-BGP-Peeringsitzung.
+Wir akzeptieren keine privaten Präfixe (RFC1918) in der Microsoft-BGP-Peeringsitzung.
 
 ### <a name="what-happens-if-i-exceed-the-bgp-limits"></a>Was geschieht, wenn ich die BGP-Limits überschreite?
 
@@ -242,18 +216,6 @@ BGP-Sitzungen werden abgebrochen. Sie werden zurückgesetzt, sobald die Präfixa
 ### <a name="what-is-the-expressroute-bgp-hold-time-can-it-be-adjusted"></a>Wie lang ist die BGP-Haltezeit für ExpressRoute? Kann sie angepasst werden?
 
 Die Haltezeit ist 180. Die Keep-Alive-Nachrichten werden alle 60 Sekunden gesendet. Diese Einstellungen werden auf Microsoft-Seite festgelegt und können nicht geändert werden. Sie haben die Möglichkeit, verschiedene Zeitgeber zu konfigurieren. Die BGP-Sitzungsparameter werden daraufhin entsprechend ausgehandelt.
-
-### <a name="after-i-advertise-the-default-route-00000-to-my-virtual-networks-i-cant-activate-windows-running-on-my-azure-vms-how-to-i-fix-this"></a>Nachdem ich die Standardroute (0.0.0.0/0) für meine Virtual Networks angekündigt habe, kann ich Windows, das auf meinen Azure-VMs ausgeführt wird, nicht mehr aktivieren. Wie kann ich dieses Problem beheben?
-
-Die folgenden Schritte helfen Azure dabei, die Aktivierungsanforderung zu erkennen:
-
-1. Richten Sie für die ExpressRoute-Verbindung öffentliches Peering ein.
-2. Führen Sie ein DNS-Lookup durch, und suchen Sie die IP-Adresse von **kms.core.windows.net**
-3. Der Schlüsselverwaltungsdienst muss erkennen, dass die Aktivierungsanforderung von Azure stammt, und die Anforderung bedienen. Führen Sie eine der folgenden drei Aufgaben durch:
-
-   * Leiten Sie in Ihrem lokalen Netzwerk den Datenverkehr für die IP-Adresse, die Sie in Schritt 2 abgerufen haben, über das öffentliche Peering zurück an Azure.
-   * Fordern Sie Ihren Netzwerkdienstanbieter auf, den Datenverkehr über das öffentliche Peering wieder an Azure zurückzuleiten.
-   * Erstellen Sie eine benutzerdefinierte Route, die auf diese IP-Adresse verweist und als nächsten Hop das Internet hat, und wenden Sie sie auf die Subnetze an, in denen sich diese virtuellen Computer befinden.
 
 ### <a name="can-i-change-the-bandwidth-of-an-expressroute-circuit"></a>Kann ich die Bandbreite einer ExpressRoute-Verbindung ändern?
 
@@ -280,7 +242,7 @@ ExpressRoute Premium ist eine Sammlung der folgenden Features:
     **Beispiele:**
 
     *  Sie können ein in „Europa, Westen“ erstelltes VNET mit einer ExpressRoute-Verbindung verknüpfen, die in Silicon Valley erstellt wurde. 
-    *  Beim öffentlichen Peering werden Präfixe anderer geopolitischer Regionen so angekündigt, dass Sie sich z.B. von einer Verbindung im Silicon Valley ausgehend mit SQL Azure in der Region „Europa, Westen“ verbinden können.
+    *  Beim Microsoft-Peering werden Präfixe anderer geopolitischer Regionen so angekündigt, dass Sie sich z. B. über eine Verbindung im Silicon Valley mit SQL Azure in der Region „Europa, Westen“ verbinden können.
 
 
 ### <a name="limits"></a>Wie viele VNETs kann ich mit einer ExpressRoute-Verbindung verknüpfen, wenn ich ExpressRoute Premium aktiviert habe?
@@ -309,11 +271,11 @@ Angaben zu den Preisen finden Sie in der [Preisübersicht](https://azure.microso
 
 Ja. Für ExpressRoute Premium werden neben den ExpressRoute-Verbindungsgebühren und den Gebühren, die vom Konnektivitätsanbieter erhoben werden, zusätzliche Gebühren berechnet.
 
-## <a name="expressroute-for-office-365-and-dynamics-365"></a>ExpressRoute für Office 365 und Dynamics 365
+## <a name="expressroute-for-office-365"></a>ExpressRoute für Office 365
 
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services-and-dynamics-365"></a>Wie erstelle ich eine ExpressRoute-Verbindung mit Office 365-Diensten und Dynamics 365?
+### <a name="how-do-i-create-an-expressroute-circuit-to-connect-to-office-365-services"></a>Wie erstelle ich eine ExpressRoute-Verbindung mit Office 365-Diensten?
 
 1. Überprüfen Sie die Anforderungen auf der Seite mit den [ExpressRoute-Voraussetzungen](expressroute-prerequisites.md), um sicherzustellen, dass Sie die Anforderungen erfüllen.
 2. Um sicherzustellen, dass Ihre Konnektivitätsanforderungen erfüllt werden, überprüfen Sie die Liste der Dienstanbieter und Standorte im Artikel [ExpressRoute-Partner und -Standorte](expressroute-locations.md).
@@ -321,13 +283,9 @@ Ja. Für ExpressRoute Premium werden neben den ExpressRoute-Verbindungsgebühren
 4. Befolgen Sie die Schritte in den Workflows zum Einrichten der Konnektivität unter [ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände](expressroute-workflows.md).
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass das ExpressRoute Premium-Add-On aktiviert ist, wenn Sie die Konnektivität mit Office 365-Diensten und Dynamics 365 konfigurieren.
+> Stellen Sie sicher, dass das ExpressRoute Premium-Add-On aktiviert ist, wenn Sie die Verbindung mit Office 365-Diensten konfigurieren.
 > 
 > 
-
-### <a name="do-i-need-to-enable-azure-public-peering-to-connect-to-office-365-services-and-dynamics-365"></a>Muss ich das öffentliche Azure-Peering aktivieren, um eine Verbindung mit Office 365-Diensten und Dynamics 365 herzustellen?
-
-Nein, Sie müssen nur Microsoft-Peering aktivieren. Der Authentifizierungsdatenverkehr an Azure AD wird über das Microsoft-Peering gesendet. 
 
 ### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>Unterstützen meine vorhandenen ExpressRoute-Verbindungen die Konnektivität mit Office 365-Diensten und Dynamics 365?
 
@@ -337,9 +295,9 @@ Ja. Ihre bestehende ExpressRoute-Verbindung kann so konfiguriert werden, dass si
 
 Eine aktuelle Liste der von ExpressRoute unterstützten Dienste finden Sie unter [URLs und IP-Adressbereiche von Office 365](http://aka.ms/o365endpoints) .
 
-### <a name="how-much-does-expressroute-for-office-365-services-and-dynamics-365-cost"></a>Wie viel kosten ExpressRoute für Office 365-Dienste und Dynamics 365?
+### <a name="how-much-does-expressroute-for-office-365-services-cost"></a>Wie viel kostet ExpressRoute für Office 365-Dienste?
 
-Office 365-Dienste und Dynamics 365 erfordern ein aktiviertes Premium-Add-On. Informationen zu den Kosten finden Sie auf der Seite mit den [Preisdetails](https://azure.microsoft.com/pricing/details/expressroute/).
+Office 365-Dienste erfordern ein aktiviertes Premium-Add-On. Informationen zu den Kosten finden Sie auf der Seite mit den [Preisdetails](https://azure.microsoft.com/pricing/details/expressroute/).
 
 ### <a name="what-regions-is-expressroute-for-office-365-supported-in"></a>In welchen Regionen wird ExpressRoute für Office 365 unterstützt?
 
@@ -356,10 +314,6 @@ Lesen Sie die Empfehlung unter [Hohe Verfügbarkeit und Failover mit Azure Expre
 
 Ja. Office 365 GCC-Dienstendpunkte sind über Azure US Government-ExpressRoute erreichbar. Sie müssen jedoch zunächst im Azure-Portal ein Supportticket öffnen, um die Präfixe bereitzustellen, die Sie Microsoft ankündigen möchten. Nachdem das Support-Ticket erfolgreich bearbeitet wurde, wird die Konnektivität mit den GCC-Diensten von Office 365 hergestellt. 
 
-### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>Kann ich über eine ExpressRoute-Verbindung auf Dynamics 365 for Operations (früher als Dynamics AX Online bekannt) zugreifen?
-
-Ja. [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) wird in Azure gehostet. Sie können das öffentliche Azure-Peering in Ihrer ExpressRoute-Leitung aktivieren, um eine Verbindung mit ExpressRoute herzustellen.
-
 ## <a name="route-filters-for-microsoft-peering"></a>Routenfilter für das Microsoft-Peering
 
 ### <a name="i-am-turning-on-microsoft-peering-for-the-first-time-what-routes-will-i-see"></a>Ich aktiviere das Microsoft-Peering zum ersten Mal. Welche Routen werden angezeigt?
@@ -374,7 +328,7 @@ Jeder Kunde kann bei der Verwendung von Routenfiltern das Microsoft-Peering akti
 
 Nein, Sie benötigen keine Autorisierung für Dynamics 365. Sie können eine Regel erstellen und die Dynamics 365-Community ohne Autorisierung auswählen.
 
-### <a name="i-enabled-microsoft-peering-prior-to-august-1st-2017-how-can-i-take-advantage-of-route-filters"></a>Ich habe Microsoft-Peering vor dem 1. August 2017 aktiviert. Wie kann ich Routenfilter nutzen?
+### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>Ich habe Microsoft-Peering vor dem 1. August 2017 aktiviert. Wie kann ich Routenfilter nutzen?
 
 Ihre vorhandene Verbindung kündigt weiterhin die Präfixe für Office 365 und Dynamics 365 an. Wenn Sie Ankündigungen für öffentliche Azure-Präfixe über das gleiche Microsoft-Peering hinzufügen möchten, können Sie einen Routenfilter erstellen, die anzukündigenden Dienste auswählen (einschließlich der benötigten Office 365-Dienste und Dynamics 365) und den Filter an Ihr Microsoft-Peering anfügen. Weitere Anweisungen finden Sie unter [Konfigurieren von Routenfiltern für das Microsoft-Peering](how-to-routefilter-powershell.md).
 

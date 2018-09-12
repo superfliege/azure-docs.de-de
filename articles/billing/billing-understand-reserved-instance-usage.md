@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: cf1d7c67fe6033bf41317e75a33349ae07ecf643
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1226b2f73d556da2ff7d73f6f322e0bd1590f915
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627882"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307057"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung
 
@@ -93,12 +93,12 @@ Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservieru
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Reservierungen finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
 - [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md)
-- [Verwalten von Reservierungen für Ressourcen in Azure](billing-manage-reserved-vm-instance.md)
+- [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
 - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 8ff2d126fd491ddc40f6223b6d4ec1fc4505b8fb
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ec4869ed5c4d823a8144ba430ebb29c65c2abc13
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630110"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302065"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reservations"></a>Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten
+# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Nicht in reservierten Azure-VM-Instanzen enthaltene Windows-Softwarekosten
 
 Wenn Sie für Ihre reservierten VM-Instanzen keinen Anspruch auf Azure-Hybridvorteil haben, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Windows-Software berechnet.
 
@@ -57,7 +57,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 
 - [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Verwalten von Reservierungen für Ressourcen in Azure](billing-manage-reserved-vm-instance.md)
+- [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
 - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: bce4e05cbc4ecc8a44f2929eecbeee4093d39652
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: de4a771672b45f930385c2c923b3935c65b6c045
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628357"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301645"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer
 
@@ -51,11 +51,11 @@ Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Rese
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Anwendung des Reservierungsrabatts auf virtuelle Windows-Computer
 
-Wenn Sie Windows-VM-Instanzen ausführen, wird die Reservierung angewendet, um die Infrastrukturkosten abzudecken. Die Anwendung der Reservierung auf die VM-Infrastrukturkosten ist bei virtuellen Windows-Computer und virtuellen Nicht-Windows-Computern identisch. Windows-Software wird separat basierend auf vCPU-Basis in Rechnung gestellt. Informationen finden Sie unter [Windows software costs not included with Reserved Instances](https://go.microsoft.com/fwlink/?linkid=862756) (Nicht in reservierten Instanzen enthaltene Windows-Softwarekosten). Sie können Ihre Windows-Lizenzierungskosten mit dem [Azure-Hybridvorteil für Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) decken.
+Wenn Sie Windows-VM-Instanzen ausführen, wird die Reservierung angewendet, um die Infrastrukturkosten abzudecken. Die Anwendung der Reservierung auf die VM-Infrastrukturkosten ist bei virtuellen Windows-Computer und virtuellen Nicht-Windows-Computern identisch. Windows-Software wird separat basierend auf vCPU-Basis in Rechnung gestellt. Informationen finden Sie unter [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](https://go.microsoft.com/fwlink/?linkid=862756). Sie können Ihre Windows-Lizenzierungskosten mit dem [Azure-Hybridvorteil für Windows Server] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) decken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Reservierungen finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
 - [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)

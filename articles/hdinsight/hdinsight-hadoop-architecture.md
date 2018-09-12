@@ -3,18 +3,18 @@ title: Hadoop-Architektur – Azure HDInsight
 description: Beschreibt Hadoop-Speicher und die Verarbeitung in HDInsight-Clustern.
 services: hdinsight
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: ashishth
-ms.openlocfilehash: 039a16e7c33a1b3c09c91103c372553e282b6028
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f22cb6a56e0ef81e3d7799b38e33113f8b175457
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108264"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699429"
 ---
 # <a name="hadoop-architecture-in-hdinsight"></a>Hadoop-Architektur in HDInsight
 
@@ -32,13 +32,13 @@ YARN steuert und orchestriert die Datenverarbeitung in Hadoop. YARN verfügt üb
 * ResourceManager 
 * NodeManager
 
-Der ResourceManager-Dienst gewährt Anwendungen (beispielsweise MapReduce-Aufträgen) Zugriff auf Computeressourcen des Clusters. Die Ressourcen werden in Form von Containern bereitgestellt, wobei sich jeder Container aus einer Zuweisung von CPU-Kernen und Arbeitsspeicher zusammensetzt. Wenn Sie alle in einem Cluster verfügbaren Ressourcen kombinieren und dann auf Blöcke mit einer bestimmten Menge von Kernen und Arbeitsspeicher verteilen, stellt jeder Ressourcenblock einen Container dar. Jeder Knoten im Cluster hat eine Kapazität für eine bestimmte Anzahl von Containern, sodass die Anzahl verfügbarer Container für den Cluster auf einen festen Wert begrenzt ist. Die Zuteilung von Ressourcen in einem Container kann konfiguriert werden. 
+Der ResourceManager-Dienst gewährt Anwendungen (beispielsweise MapReduce-Aufträgen) Zugriff auf Computeressourcen des Clusters. Die Ressourcen werden in Form von Containern bereitgestellt, wobei sich jeder Container aus einer Zuweisung von CPU-Kernen und Arbeitsspeicher zusammensetzt. Wenn Sie alle in einem Cluster verfügbaren Ressourcen kombinieren und dann die Kerne und den Arbeitsspeicher auf Blöcke verteilen, stellt jeder Ressourcenblock einen Container dar. Jeder Knoten im Cluster hat eine Kapazität für eine bestimmte Anzahl von Containern, sodass die Anzahl verfügbarer Container für den Cluster auf einen festen Wert begrenzt ist. Die Zuteilung von Ressourcen in einem Container kann konfiguriert werden. 
 
 Wenn eine MapReduce-Anwendung in einem Cluster ausgeführt wird, stellt der ResourceManager-Dienst der Anwendung die Container zur Verfügung, in denen die Ausführung erfolgt. Der ResourceManager-Dienst überwacht den Status ausgeführter Anwendungen, die verfügbare Clusterkapazität sowie Anwendungen, die abgeschlossen und deren Ressourcen freigegeben werden. 
 
-Darüber hinaus führt der ResourceManager-Dienst einen Webserverprozess aus, der eine Webbenutzeroberfläche zum Überwachen des Status von Anwendungen bereitstellt. 
+Darüber hinaus führt der ResourceManager-Dienst einen Webserverprozess aus, der eine Webbenutzeroberfläche zum Überwachen des Status von Anwendungen bereitstellt.
 
-Wenn ein Benutzer eine MapReduce-Anwendung zur Ausführung im Cluster übermittelt, wird diese an den ResourceManager-Dienst übermittelt. Der ResourceManager-Dienst ordnet wiederum einen Container auf verfügbaren NodeManager-Knoten zu. Auf den NodeManager-Knoten findet die eigentliche Anwendungsausführung statt. Im ersten zugeordneten Container wird eine besondere Anwendung namens „ApplicationMaster“ ausgeführt. Diese ApplicationMaster-Anwendung ist für den Bezug von Ressourcen in Form von weiteren Containern zuständig, die zum Ausführen der übermittelten Anwendung erforderlich sind. Die ApplicationMaster-Anwendung untersucht die Phasen der Anwendung (Zuordnungs- und Reduzierungsphase) und berücksichtigt die zu verarbeitende Datenmenge. Anschließend werden von der ApplicationMaster-Anwendung im Namen der Anwendung die nötigen Ressourcen vom ResourceManager-Dienst angefordert (*ausgehandelt*). Der ResourceManager-Dienst gewährt der ApplicationMaster-Anwendung wiederum Zugriff auf Ressourcen der NodeManager-Instanzen im Cluster, die die Anwendung zur Ausführung der Anwendung verwendet. 
+Wenn ein Benutzer eine MapReduce-Anwendung zur Ausführung im Cluster übermittelt, wird diese an den ResourceManager-Dienst übermittelt. Der ResourceManager-Dienst ordnet wiederum einen Container auf verfügbaren NodeManager-Knoten zu. Auf den NodeManager-Knoten findet die eigentliche Anwendungsausführung statt. Im ersten zugeordneten Container wird eine besondere Anwendung namens „ApplicationMaster“ ausgeführt. Diese ApplicationMaster-Anwendung ist für den Bezug von Ressourcen in Form von weiteren Containern zuständig, die zum Ausführen der übermittelten Anwendung erforderlich sind. Die ApplicationMaster-Anwendung untersucht die Phasen der Anwendung (z.B. die Zuordnungs- und Reduzierungsphase) und berücksichtigt die zu verarbeitende Datenmenge. Anschließend werden von der ApplicationMaster-Anwendung im Namen der Anwendung die nötigen Ressourcen vom ResourceManager-Dienst angefordert (*ausgehandelt*). Der ResourceManager-Dienst gewährt der ApplicationMaster-Anwendung wiederum Zugriff auf Ressourcen der NodeManager-Instanzen im Cluster, die die Anwendung zur Ausführung der Anwendung verwendet. 
 
 Die NodeManager-Instanzen führen die Aufgaben aus, die die Anwendung bilden, und melden ihren Fortschritt und Status wieder der ApplicationMaster-Anwendung. Die ApplicationMaster-Anwendung meldet den Status der Anwendung wiederum dem ResourceManager-Dienst. Der ResourceManager-Dienst gibt die Ergebnisse an den Client zurück.
 

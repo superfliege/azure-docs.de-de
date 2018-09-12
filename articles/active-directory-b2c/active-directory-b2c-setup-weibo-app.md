@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2534e3e39d4a6dd1659dced5a1b0342798c0049e
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 06a79250bac977fc4ade7853594c5307bb11d983
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38969128"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336944"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Weibo-Konto mithilfe von Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Um ein Weibo-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) 
 6. Wählen Sie **保存以上信息** (Speichern) aus.
 7. Wählen Sie **高级信息** (Weitere Informationen) aus.
 8. Wählen Sie neben dem Feld **授权设置** (Umleitungs-URL) für OAuth2.0 die Option **编辑** (Bearbeiten) aus.
-9. Geben Sie für **授权设置** (Umleitungs-URL) für OAuth2.0 die Zeichenfolge `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp` ein. Wenn Ihr `tenant_name` beispielsweise „contoso.onmicrosoft.com“ lautet, setzen Sie die URL auf `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
+9. Geben Sie für **授权设置** (Umleitungs-URL) für OAuth2.0 die Zeichenfolge `https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp` ein. Wenn Ihr `tenant_name` beispielsweise „contoso“ lautet, legen Sie die URL auf `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp` fest.
 10. Wählen Sie **提交** (Senden) aus.  
 
 ## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Konfigurieren eines Weibo-Kontos als Identitätsanbieter

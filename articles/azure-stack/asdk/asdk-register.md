@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 95ab06685452f647884bf92f110e3ab56f3c2714
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c4fb8e1972286776a5fc7a13c5e9a8c91e370dd3
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41946550"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338618"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-Registrierung
 Sie können Ihre ASDK-Installation (Azure Stack Development Kit) bei Azure registrieren, um Marketplace-Elemente von Azure herunterzuladen und die Berichterstellung zu E-Commerce-Daten für Microsoft einzurichten. Die Registrierung ist für die uneingeschränkte Unterstützung aller Azure Stack-Funktionen (einschließlich Marketplace-Syndikation) erforderlich. Es wird empfohlen, eine Registrierung durchzuführen, da Sie hierüber wichtige Azure Stack-Funktionen wie die Marketplace-Syndikation und Berichterstellung zur Verwendung testen können. Nachdem Sie Azure Stack registrieren, wird Ihre Nutzung an den Azure-Commerce übermittelt. Dies wird im Abonnement angezeigt, das Sie zur Registrierung verwendet haben. Die übermittelte Nutzung durch Benutzer des ASDK wird diesen jedoch nicht in Rechnung gestellt.
@@ -84,6 +84,10 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob die Registrierung
 3. Wenn Sie eine Liste der in Azure verfügbaren Elemente sehen, war die Aktivierung erfolgreich.
 
     ![](media/asdk-register/3.PNG)
+
+## <a name="move-a-registration-resource"></a>Verschieben einer Registrierungsressource
+Das Verschieben einer Registrierungsressource zwischen Ressourcengruppen im gleichen Abonnement **wird unterstützt**. Weitere Informationen zum Verschieben von Ressourcen in eine neue Ressourcengruppe finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hinzufügen eines Azure Stack-Marketplace-Elements](.\.\azure-stack-marketplace.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307985"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381794"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 Dieses Thema beschreibt Folgendes:
@@ -42,6 +42,8 @@ Verwandte Themen:
 
 ## <a name="configure-the-windows-firewall"></a>Konfigurieren der Windows-Firewall
 Konfigurieren Sie die Windows-Firewall so, dass der SQL Server-Zugriff zulässig ist. Die Firewallregeln lassen TCP-Verbindungen mit den Ports für die SQL Server-Instanz und den Listenertest zu. Weitere Informationen finden Sie unter [Konfigurieren einer Windows-Firewall für Datenbank-Engine-Zugriff](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Erstellen Sie für den SQL Server-Port und den Testport eine Regel für eingehenden Datenverkehr.
+
+Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, stellen Sie sicher, dass die Zulassungsregeln die IP-Adressen des virtuellen SQL Server-Back-End-Computers, die Floating IP-Adressen des Lastenausgleichs für den AG-Listener und die IP-Adresse der Hauptressourcen des Clusters (falls zutreffend) umfassen.
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Beispielskript: Erstellen eines internen Lastenausgleichsmoduls mit PowerShell
 > [!NOTE]
@@ -195,6 +197,7 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 
 * Bei Verwendung eines internen Load Balancers erfolgt der Zugriff auf den Listener nur innerhalb desselben virtuellen Netzwerks.
 
+* Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, stellen Sie sicher, dass die Zulassungsregeln die IP-Adressen des virtuellen SQL Server-Back-End-Computers, die Floating IP-Adressen des Lastenausgleichs für den AG-Listener und die IP-Adresse der Hauptressourcen des Clusters (falls zutreffend) umfassen.
 
 ## <a name="for-more-information"></a>Weitere Informationen
 Weitere Informationen finden Sie unter [Manuelles Konfigurieren der Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](virtual-machines-windows-portal-sql-availability-group-tutorial.md).

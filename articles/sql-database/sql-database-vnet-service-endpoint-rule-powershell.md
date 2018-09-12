@@ -1,23 +1,29 @@
 ---
-title: PowerShell für virtuelle Netzwerkdienstendpunkte und -regeln in SQL | Microsoft-Dokumentation
-description: Stellt PowerShell-Skripts zum Erstellen und Verwalten von virtuellen Dienstendpunkten für Ihre Azure SQL-Datenbank bereit.
+title: PowerShell für virtuelle Dienstendpunkte und -regeln in Azure SQL | Microsoft-Dokumentation
+description: Stellt PowerShell-Skripts zum Erstellen und Verwalten von virtuellen Dienstendpunkten für Ihre Instanzen von Azure SQL-Datenbank und Azure SQL Data Warehouse bereit.
 services: sql-database
-author: MightyPen
+author: DhruvMsft
 manager: craigg
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.reviewer: genemi
+ms.date: 06/14/2018
+ms.reviewer: genemi, carlrab
 ms.author: dmalik
-ms.openlocfilehash: 503aef620679c9bf3f65cd7f463ba604c6b9e451
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 364dd2709c9000aae082976f3ec28396f92850da
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649515"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43670109"
 ---
-# <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>Verwenden von PowerShell zum Erstellen eines Endpunkts und einer Regel für den virtuellen Dienst für Azure SQL-Datenbank
+# <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database-and-sql-data-warehouse"></a>Verwenden von PowerShell zum Erstellen eines virtuellen Dienstendpunkts und einer Regel für Azure SQL-Datenbank und Azure SQL Data Warehouse
+
+Sowohl [Azure SQL-Datenbank](sql-database-technical-overview.md) als auch [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen virtuelle Dienstendpunkte. 
+
+> [!NOTE]
+> Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
 
 Dieser Artikel stellt ein PowerShell-Skript bereit, das folgende Vorgänge ausführt, und erläutert dieses:
 

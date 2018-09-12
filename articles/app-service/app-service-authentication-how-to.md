@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 191d42f43e500c7f8041a02aeba2fbcb7dfd5379
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226525"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344169"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Anpassen der Authentifizierung und Autorisierung in Azure App Service
 
@@ -34,9 +34,9 @@ Sehen Sie sich eines der folgenden Tutorials an, um sofort loszulegen:
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Microsoft-Kontoanmeldung](app-service-mobile-how-to-configure-microsoft-authentication.md)
 * [Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Twitter-Anmeldung](app-service-mobile-how-to-configure-twitter-authentication.md)
 
-## <a name="configure-multiple-sign-in-options"></a>Konfigurieren mehrerer Anmeldeoptionen
+## <a name="use-multiple-sign-in-providers"></a>Verwenden mehrerer Anmeldungsanbieter
 
-Die Portalkonfiguration bietet keine einfache Möglichkeit, Ihren Benutzern mehrere Anmeldeoptionen (z.B. sowohl Facebook und Twitter) bereitzustellen. Allerdings lässt sich diese Funktionalität Ihrer Web-App problemlos hinzufügen. Dazu sind folgende Schritte erforderlich:
+Die Portalkonfiguration bietet keine einfache Möglichkeit, Ihren Benutzern mehrere Anmeldungsanbieter (z.B. sowohl Facebook als auch Twitter) bereitzustellen. Allerdings lässt sich diese Funktionalität Ihrer Web-App problemlos hinzufügen. Dazu sind folgende Schritte erforderlich:
 
 Zunächst konfigurieren Sie im Azure-Portal auf der Seite **Authentifizierung/Autorisierung** alle Identitätsanbieter, die Sie aktivieren möchten.
 
@@ -58,6 +58,50 @@ Um den Benutzer nach der Anmeldung auf eine benutzerdefinierte URL umzuleiten, v
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="sign-out-of-a-session"></a>Abmelden von einer Sitzung
+
+Benutzer können eine Abmeldung initiieren, indem Sie eine `GET`-Anforderung an den Endpunkt `/.auth/logout` der App senden. Die `GET`-Anforderung bewirkt Folgendes:
+
+- Löscht Authentifizierungscookies aus der aktuellen Sitzung
+- Löscht die Token des aktuellen Benutzers aus dem Tokenspeicher
+- Führt für Azure Active Directory und Google eine serverseitige Abmeldung für den Identitätsanbieter aus
+
+Hier ist ein einfacher Abmeldungslink auf einer Webseite:
+
+```HTML
+<a href="/.auth/logout">Sign out</a>
+```
+
+Standardmäßig wird bei einer erfolgreichen Abmeldung der Client an die URL `/.auth/logout/done` weitergeleitet. Sie können die Weiterleitungsseite nach der Abmeldung ändern, indem Sie den Abfrageparameter `post_logout_redirect_uri` hinzufügen. Beispiel: 
+
+```
+GET /.auth/logout?post_logout_redirect_uri=/index.html
+```
+
+Es wird empfohlen, den Wert von `post_logout_redirect_uri` zu [codieren](https://wikipedia.org/wiki/Percent-encoding).
+
+Wenn Sie vollqualifizierte URLs verwenden, muss die URL in derselben Domäne gehostet oder als zulässige externe Weiterleitungs-URL für Ihre App konfiguriert werden. Im folgenden Beispiel erfolgt einer Weiterleitung an die URL `https://myexternalurl.com`, die nicht in derselben Domäne gehostet wird:
+
+```
+GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
+```
+
+Sie müssen den nachstehenden Befehl in der [Azure Cloud Shell](../cloud-shell/quickstart.md) ausführen:
+
+```azurecli-interactive
+az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
+```
+
+## <a name="preserve-url-fragments"></a>Beibehalten von URL-Fragmenten
+
+Nachdem sich Benutzer bei Ihrer App anmelden, möchten sie in der Regel zum selben Abschnitt aus derselben Seite weitergeleitet werden, z.B. `/wiki/Main_Page#SectionZ`. Da [URL-Fragmente](https://wikipedia.org/wiki/Fragment_identifier) (etwa `#SectionZ`) jedoch nie an den Server gesendet werden, werden sie standardmäßig nach Abschluss der OAuth-Anmeldung und der Weiterleitung zurück zu Ihrer App nicht beibehalten. Benutzer erhalten dadurch ein suboptimales Erlebnis, wenn sie wieder zum gewünschten Anker navigieren müssen. Diese Einschränkung betrifft alle serverseitigen Authentifizierungslösungen.
+
+Bei der App Service-Authentifizierung können Sie die URL-Fragmente während der OAuth-Anmeldung beibehalten. Legen Sie dazu die App-Einstellung `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` auf `true` fest. Sie können dies im [Azure-Portal](https://portal.azure.com) erledigen oder einfach den folgenden Befehl in der [Azure Cloud Shell](../cloud-shell/quickstart.md) ausführen:
+
+```azurecli-interactive
+az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
 ```
 
 ## <a name="access-user-claims"></a>Zugriff auf Benutzeransprüche

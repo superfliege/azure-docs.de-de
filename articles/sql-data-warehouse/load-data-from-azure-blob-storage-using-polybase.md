@@ -3,19 +3,19 @@ title: 'Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehous
 description: Ein Tutorial, in dem das Azure-Portal und SQL Server Management Studio zum Laden von Daten zu New Yorker Taxis aus einem öffentlichen Azure-Blob in Azure SQL Data Warehouse verwendet wird.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: acc7d0a031821b8b6e9c110c92597b0307e216fb
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 06d889686c673adc3941ac7303ab52a6fff408a8
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193232"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288123"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehouse
 
@@ -46,7 +46,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 Ein Azure SQL Data Warehouse wird mit einer definierten Gruppe von [Computeressourcen](memory-and-concurrency-limits.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
 
-Führen Sie die folgenden Schritte aus, um ein leeres SQL ­Data Warehouse zu erstellen. 
+Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz zu erstellen. 
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 

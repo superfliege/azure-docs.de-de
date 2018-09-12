@@ -9,19 +9,32 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: 8a9409c46cac8397bc449c586374729a4d864036
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41929734"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664444"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
-In diesem Artikel wird veranschaulicht, wie Sie die API zum Hochladen eines Videos ([Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)) verwenden, um Ihre Videos mit Azure Video Indexer hochzuladen und zu indizieren. Außerdem werden einige Parameter beschrieben, die Sie für die API festlegen können, um den Prozess und die Ausgabe der API zu ändern.
+In diesem Artikel wird gezeigt, wie Sie ein Video mit Azure Video Indexer hochladen. Die Video Indexer-API bietet zwei Optionen für das Hochladen: 
+
+* Hochladen des Videos von einer URL (bevorzugt)
+* Senden der Videodatei als Bytearray im Hauptteil der Anforderung
+
+In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Videos ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) verwenden, um Ihre Videos über eine URL hochzuladen und zu indizieren. Das Codebeispiel in diesem Artikel schließt den auskommentierten Code ein, der zeigt, wie Sie das Bytearray hochladen.  
+
+Außerdem werden in diesem Artikel einige Parameter beschrieben, die Sie für die API festlegen können, um den Prozess und die Ausgabe der API zu ändern.
 
 > [!Note]
-> Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). <br/>Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. <br/>Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
+> Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). <br/>Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
+
+## <a name="uploading-considerations"></a>Überlegungen zum Hochladen
+    
+- Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
+- Die Option für das Bytearray ist auf 4 GB beschränkt, und nach 30 Minuten erfolgt ein Timeout.
+- Die im Parameter `videoURL` angegebene URL muss codiert sein.
 
 ## <a name="configurations-and-params"></a>Konfigurationen und Parameter
 
@@ -45,17 +58,23 @@ Der Preis richtet sich nach der gewählten Indizierungsoption.
 
 Eine POST-URL für die Benachrichtigung, wenn die Indizierung abgeschlossen ist. Video Indexer fügt zwei Abfragezeichenfolgenparameter hinzu: „id“ und „state“. Wenn die Rückruf-URL beispielsweise „https://test.com/notifyme?projectName=MyProject“ lautet, wird die Benachrichtigung mit zusätzlichen Parametern an „https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed“ gesendet.
 
-Sie können der URL auch weitere Parameter hinzufügen, bevor Sie den Aufruf per POST-Vorgang an Video Indexer senden. Diese Parameter werden in den Rückruf einbezogen. Später im Code können Sie die Abfragezeichenfolge analysieren und alle angegebenen Parameter in der Abfragezeichenfolge zurückerhalten (Daten, die Sie ursprünglich an die URL angefügt haben, sowie die von Video Indexer bereitgestellten Informationen). 
+Sie können der URL auch weitere Parameter hinzufügen, bevor Sie den Aufruf per POST-Vorgang an Video Indexer senden. Diese Parameter werden in den Rückruf einbezogen. Später im Code können Sie die Abfragezeichenfolge analysieren und alle angegebenen Parameter in der Abfragezeichenfolge zurückerhalten (Daten, die Sie ursprünglich an die URL angefügt haben, sowie die von Video Indexer bereitgestellten Informationen). Die URL muss codiert sein.
 
 ### <a name="streamingpreset"></a>streamingPreset
 
 Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden. Anschließend wird der Vorgang mit dem Indizieren und Analysieren des Videos fortgesetzt. Nachdem Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit der Video-ID.  
 
-Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)- oder [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie  auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
+Bei Verwendung der [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)- oder [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?)-API lautet einer der optionalen Parameter `streamingPreset`. Wenn Sie `streamingPreset` auf `Default`, `SingleBitrate` oder `AdaptiveBitrate` festlegen, wird der Codierungsprozess ausgelöst. Wenn die Indizierung und Codierung von Aufträgen abgeschlossen ist, wird das Video veröffentlicht, damit Sie Ihr Video auch streamen können. Der Streamingendpunkt, von dem aus Sie das Video streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
 
 Zum Ausführen der Indizierung und Codierung von Aufträgen sind für das [Azure Media Services-Konto, das mit Ihrem Video Indexer-Konto verbunden ist](connect-to-azure.md), reservierte Einheiten (Reserved Units, RUs) erforderlich. Weitere Informationen finden Sie unter [Übersicht über das Skalieren der Medienverarbeitung](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Da es sich hierbei um rechenintensive Aufträge handelt, wird dringend die Verwendung des Einheitentyps S3 empfohlen. Die Anzahl von RUs definiert die maximale Anzahl von Aufträgen, die parallel ausgeführt werden können. Die Baseline-Empfehlung lautet: zehn RUs vom Typ S3. 
 
 Wenn Sie Ihr Video nicht codieren, sondern nur indizieren möchten, können Sie `streamingPreset`auf `NoStreaming` festlegen.
+
+### <a name="videourl"></a>videoUrl
+
+Eine URL der zu indizierenden Video-/Audiodatei. Die URL muss auf eine Mediendatei zeigen (HTML-Seiten werden nicht unterstützt). Die Datei kann durch ein Zugriffstoken als Teil des URI geschützt werden, und der Endpunkt für die Datei muss mit TLS 1.2 oder höher gesichert werden. Die URL muss codiert sein. 
+
+Wenn `videoUrl` nicht angegeben ist, erwartet Video Indexer, dass Sie die Datei als „multipart/form“ im Hauptteil übergeben.
 
 ## <a name="code-sample"></a>Codebeispiel
 

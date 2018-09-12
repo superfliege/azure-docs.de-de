@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8cab491a874094ee195f12ba6fe7f19a87f09ef2
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522180"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841948"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -42,6 +42,9 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
 * **Verwenden Sie eine unterstützte Azure AD Connect-Topologie**: Stellen Sie sicher, dass Sie eine der [hier](active-directory-aadconnect-topologies.md) beschriebenen, von Azure AD Connect unterstützten Topologien verwenden.
+
+    >[!NOTE]
+    >Nahtloses einmaliges Anmelden (Single Sign-On, SSO) unterstützt mehrere AD-Gesamtstrukturen, unabhängig davon, ob AD-Vertrauensstellungen zwischen ihnen vorhanden sind.
 
 * **Richten Sie Anmeldeinformationen des Domänenadministrators ein:**: Sie benötigen Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur, die:
     * Sie über Azure AD Connect mit Azure AD synchronisieren.
@@ -180,7 +183,7 @@ Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jede
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
-Stellen Sie sicher, dass der Computer mit macOS in AD eingebunden ist. Anweisungen zum Verknüpfen mit AD finden Sie unter [Best Practices for Integrating OS X with Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf) (Bewährte Methoden für die Integration von OS X in Active Directory).
+Stellen Sie sicher, dass der Computer mit macOS in AD eingebunden ist. Anweisungen zum Einbinden Ihres macOS-Geräts in AD werden in diesem Artikel nicht bereitgestellt.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
 

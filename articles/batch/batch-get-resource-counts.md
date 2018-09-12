@@ -6,18 +6,18 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: f4bad3d7058e82a246afce9502d275c7d485cb88
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011948"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698382"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Überwachen von Batch-Lösungen durch Zählen von Tasks und Knoten nach Status
 
-Zum Überwachen und Verwalten umfangreicher Azure Batch-Lösungen benötigen Sie die genaue Anzahl von Ressourcen in verschiedenen Status. Azure Batch ermöglicht effiziente Vorgänge zum Abrufen dieser Werte für Batch-*Tasks* und *Computeknoten*. Verwenden Sie diese Vorgänge anstelle von potenziell zeitaufwendigen-API-Aufrufen, um ausführliche Informationen zu großen Sammlungen von Tasks oder Knoten zurückzugeben.
+Zum Überwachen und Verwalten umfangreicher Azure Batch-Lösungen benötigen Sie die genaue Anzahl von Ressourcen in verschiedenen Status. Azure Batch ermöglicht effiziente Vorgänge zum Abrufen dieser Werte für Batch-*Tasks* und *Computeknoten*. Verwenden Sie diese Vorgänge anstelle von potenziell zeitaufwendigen Listenabfragen, um ausführliche Informationen zu großen Sammlungen von Tasks oder Knoten zurückzugeben.
 
 * [Get Task Counts][rest_get_task_counts] (Taskanzahl abrufen) ruft eine aggregierte Anzahl von aktiven, ausgeführten und abgeschlossenen Tasks in einem Auftrag und von erfolgreichen oder fehlgeschlagenen Tasks ab. 
 
@@ -49,19 +49,15 @@ Console.WriteLine("Task count in preparing or running state: {0}", taskCounts.Ru
 Console.WriteLine("Task count in completed state: {0}", taskCounts.Completed);
 Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
-Console.WriteLine("ValidationStatus: {0}", taskCounts.ValidationStatus);
 ```
 
 Sie können ein ähnliches Muster für REST und andere unterstützte Sprachen verwenden, um die Taskanzahl für einen Auftrag zu erhalten. 
- 
 
-### <a name="consistency-checking-for-task-counts"></a>Konsistenzprüfung für Taskanzahl
+### <a name="counts-for-large-numbers-of-tasks"></a>Gilt für eine große Anzahl von Tasks
 
-Batch bietet eine zusätzliche Überprüfung der Taskstatusanzahl, bei der Konsistenzprüfungen für mehrere Komponenten des Systems durchgeführt werden. Für den relativ unwahrscheinlichen Fall, dass bei der Konsistenzprüfung Fehler gefunden werden, korrigiert Batch das Ergebnis des Vorgangs „Get Tasks Counts“ (Taskanzahl abrufen) basierend auf den Ergebnissen der Konsistenzprüfung.
+Der Vorgang „Get Task Counts“ (Taskanzahl abrufen) gibt die Anzahl der Taskstatus im System zu einem bestimmten Zeitpunkt zurück. Wenn Ihr Auftrag über eine große Anzahl von Tasks verfügt, können bei den von „Get Task Counts“ (Taskanzahl abrufen) zurückgegebenen Ergebnissen die tatsächlichen Taskzustände für einige Sekunden fehlen. Batch stellt die endgültige Konsistenz zwischen den Ergebnissen von „Get Task Counts“ (Taskanzahl abrufen) und den tatsächlichen Taskzuständen (die Sie über die API zum Auflisten der Tasks abfragen können) sicher. Wenn Ihr Auftrag jedoch über eine sehr große Anzahl von Tasks verfügt (> 200.000), wird empfohlen, stattdessen die API zum Auflisten von Tasks mit einer [gefilterten Abfrage](batch-efficient-list-queries.md) zu verwenden, die aktuellere Informationen bereitstellt. 
 
-Mit der Eigenschaft `validationStatus` in der Antwort wird angegeben, ob die Konsistenzprüfung von Batch durchgeführt wurde. Wenn Batch die Statusanzahl nicht anhand der tatsächlichen Status im System überprüft hat, wird die Eigenschaft `validationStatus` auf `unvalidated` festgelegt. Aus Leistungsgründen führt Batch die Konsistenzprüfung nicht durch, wenn der Auftrag mehr als 200.000 Tasks enthält. Die Eigenschaft `validationStatus` ist dann also ggf. auf `unvalidated` festgelegt. (Die Taskanzahl muss in diesem Fall nicht unbedingt falsch sein, da auch die Wahrscheinlichkeit eines geringen Datenverlusts niedrig ist.) 
-
-Wenn sich der Status einer Aufgabe ändert, wird diese von der Aggregationspipeline innerhalb von wenigen Sekunden verarbeitet. Der Vorgang „Get Task Counts“ (Taskanzahl abrufen) spiegelt die aktualisierte Taskanzahl in diesem Zeitraum wider. Falls von der Aggregationspipeline eine Änderung des Taskstatus übersehen wird, wird diese Änderung aber erst beim nächsten Überprüfungslauf registriert. Während dieses Zeitraums ist die Taskanzahl aufgrund des übersehenen Ereignisses ggf. nicht ganz exakt, aber dies wird beim nächsten Überprüfungslauf korrigiert.
+API-Versionen des Batch-Diensts vor 2018-08-01.7.0 geben auch eine `validationStatus`-Eigenschaft in der Antwort von „Get Task Counts“ zurück. Diese Eigenschaft gibt an, ob Batch die Zustandsanzahl auf Konsistenz mit den von der API zum Auflisten von Tasks angegebenen überprüft hat. Der Wert `validated` bedeutet lediglich, dass Batch mindestens einmal für den Auftrag eine Konsistenzüberprüfung durchgeführt hat. Der Wert der `validationStatus`-Eigenschaft gibt nicht an, ob die von „Get Task Counts“ zurückgegebenen Zahlen auf dem neuesten Stand sind.
 
 ## <a name="node-state-counts"></a>Knotenstatuszähler
 

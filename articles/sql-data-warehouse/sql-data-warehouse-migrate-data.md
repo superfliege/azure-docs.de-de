@@ -3,19 +3,19 @@ title: Migrieren Ihrer Daten nach SQL Data Warehouse | Microsoft Docs
 description: Tipps für die Migration von Daten in Azure SQL Data Warehouse zum Entwickeln von Lösungen.
 services: sql-data-warehouse
 author: jrowlandjones
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: ca467ae5fbe784399e4e046c47c920ff7dec638e
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: fc7bf4eaeb073b0337be68632e5057bfce96e06a
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796002"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43310946"
 ---
 # <a name="migrate-your-data"></a>Migrieren von Daten
 Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in Ihr SQL Data Warehouse verschoben werden.  Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
@@ -33,7 +33,7 @@ Auch PolyBase stellt eine leistungsstarke Möglichkeit zum Laden der Daten dar. 
 > 
 > 
 
-Lesen Sie diesen Artikel: [Azure Data Factory – Beispiele][ADF samples].
+Im folgenden Artikel finden Sie einige [ADF-Beispiele][ADF-Beispiele].
 
 ## <a name="integration-services"></a>Integration Services
 Integration Services (SSIS) ist ein leistungsfähiges und flexibles ETL-Tool (Extrahieren Transformieren und Laden), das komplexe Workflows, Datentransformation und verschiedene Optionen zum Laden von Daten unterstützt. Mit SSIS können Sie Daten in Azure oder als Teil einer größeren Migration übertragen.
@@ -182,9 +182,8 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][deve
 
 <!--Article references-->
 [AZCopy]: ../storage/common/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/v1/data-factory-data-movement-activities.md 
-[ADF samples]: ../data-factory/v1/data-factory-samples.md
-[ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
+[ADF Copy]: ../data-factory/copy-activity-overview.md 
+[ADF Copy examples]: ../data-factory/quickstart-create-data-factory-dot-net.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [Migrieren Ihres Schemas]: sql-data-warehouse-migrate-schema.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md

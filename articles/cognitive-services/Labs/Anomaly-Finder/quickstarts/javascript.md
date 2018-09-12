@@ -9,12 +9,12 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 105da0219efd7bf7c9a105a018dda7ea5b084cfd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375347"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665021"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>Verwenden der API für die Suche nach Anomalien mit Javascript
 
@@ -30,7 +30,9 @@ In diesem Artikel finden Sie Informationen und Codebeispiele, die Ihnen bei der 
 
 ### <a name="example-of-time-series-data"></a>Beispiel für Zeitreihendaten
 
-So sieht ein Beispiel für die Datenpunkte der Zeitreihen aus: [!INCLUDE [Request](../includes/request.md)]
+So sieht das Beispiel für die Datenpunkte der Zeitreihen aus:
+
+[!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-javascript-example"></a>Beispiel zum Analysieren von Daten und Abrufen von Anomaliepunkten mit Javascript
 

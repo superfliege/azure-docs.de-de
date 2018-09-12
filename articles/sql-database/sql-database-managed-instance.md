@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/30/2018
 ms.author: bonova
-ms.openlocfilehash: 2c6cdcd5d8d50a54a87e3dabd2aa09eccc646738
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2e1fd7c87931f804433708b6ac30a5960e6006ae
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144351"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287662"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Was ist eine verwaltete Instanz (Vorschauversion)?
 
@@ -71,7 +71,7 @@ Verwaltete Instanz ist in zwei Ebenen verfügbar:
 - **Universell**: Entwickelt für Anwendungen mit typischen Leistungs- und E/A-Latenzanforderungen.
 - **Unternehmenskritisch**: Entwickelt für Anwendungen mit niedrigen E/A-Latenzanforderungen und minimalen Auswirkungen auf zugrunde liegende Wartungsvorgänge für die Workload.
 
-Beide Tarife garantieren eine Verfügbarkeit von 99,99% und ermöglichen es Ihnen, die Speichergröße und Computekapazität unabhängig voneinander auszuwählen. 
+Beide Tarife garantieren eine Verfügbarkeit von 99,99% und ermöglichen es Ihnen, die Speichergröße und Computekapazität unabhängig voneinander auszuwählen. Weitere Informationen zur Hochverfügbarkeitsarchitektur von Azure SQL-Datenbank finden Sie unter [Hochverfügbarkeit und Azure SQL-Datenbank](sql-database-high-availability.md).
 
 > [!IMPORTANT]
 > Das Ändern Ihrer Serviceebene von „Universell“ in „Unternehmenskritisch“ oder umgekehrt wird in Public Preview nicht unterstützt. Wenn Sie Ihre Datenbanken auf eine Instanz in einer anderen Dienstebene migrieren möchten, können Sie eine neue Instanz erstellen, Datenbanken mit Point-in-Time-Wiederherstellung aus der Originalinstanz wiederherstellen und dann die Originalinstanz löschen, wenn sie nicht mehr benötigt wird. 
@@ -97,7 +97,7 @@ Folgende wichtige Merkmale kennzeichnen die Dienstebene „Universell“:
 | Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere | 
 | Anzahl der Protokolldateien (LOG) pro Datenbank | 1 | 
 | Verwaltete automatisierte Sicherungen | JA |
-| Hochverfügbarkeit | Basiert auf Remotespeicher und [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| Hochverfügbarkeit | In Azure Storage und [Azure Service Fabric](../service-fabric/service-fabric-overview.md) gespeicherte Daten |
 | Integrierte Überwachung und Metriken von Instanzen und Datenbanken | JA |
 | Automatische Softwarepatches | JA |
 | VNET – Azure Resource Manager-Bereitstellung | JA |
@@ -131,7 +131,7 @@ Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch�
 | Anzahl der Datendateien (ROWS) pro Datenbank | Mehrere | 
 | Anzahl der Protokolldateien (LOG) pro Datenbank | 1 | 
 | Verwaltete automatisierte Sicherungen | JA |
-| Hochverfügbarkeit | Basierend auf [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) und [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| Hochverfügbarkeit | Auf lokalen SSDs gespeicherte Daten und Verwenden von [Always On-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) und [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Integrierte Überwachung und Metriken von Instanzen und Datenbanken | JA |
 | Automatische Softwarepatches | JA |
 | VNET – Azure Resource Manager-Bereitstellung | JA |

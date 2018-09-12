@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: ddeaf184138bd48d324799ddb45248b0a0ee8eeb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 14e6e8bb723eb236f8fb315454b8697a3bd947ef
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30174973"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286426"
 ---
 # <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Gewähren der Berechtigung zum Zugreifen auf einen Schlüsseltresor für viele Anwendungen
 
-## <a name="q-i-have-several-over-16-applications-that-need-to-access-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>F: Ich verwende mehrere Anwendungen (mehr als 16), für die der Zugriff auf einen Schlüsseltresor ermöglicht werden muss. Wie kann ich dies erreichen, obwohl für Key Vault nur 16 Einträge für die Zugriffssteuerung zulässig sind?
+## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>F: Ich verwende mehrere Anwendungen, für die der Zugriff auf einen Schlüsseltresor ermöglicht werden muss. Wie kann ich für diese Anwendungen (bis zu 1.024) Zugriff auf Key Vault gewähren?
 
-Die Richtlinie für die Key Vault-Zugriffssteuerung unterstützt nur 16 Einträge. Sie können aber eine Azure Active Directory-Sicherheitsgruppe erstellen. Fügen Sie dieser Sicherheitsgruppe alle zugeordneten Dienstprinzipale hinzu, und gewähren Sie dieser Sicherheitsgruppe dann Zugriff auf Key Vault.
+Die Richtlinie für die Key Vault-Zugriffssteuerung unterstützt bis zu 1.024 Einträge. Sie können aber eine Azure Active Directory-Sicherheitsgruppe erstellen. Fügen Sie dieser Sicherheitsgruppe alle zugeordneten Dienstprinzipale hinzu, und gewähren Sie dieser Sicherheitsgruppe dann Zugriff auf Key Vault.
 
 Hier sind die erforderlichen Komponenten angegeben:
 * [Installieren Sie das Azure Active Directory V2-PowerShell-Modul](https://www.powershellgallery.com/packages/AzureAD).

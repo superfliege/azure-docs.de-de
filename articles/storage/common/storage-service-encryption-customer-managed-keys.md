@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 0e1ebd8868cfe5ef69a09219ffc82092fb85a4c8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527085"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781563"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 Es ist uns ein Anliegen, dass Microsoft Azure Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Konformitätsanforderungen Ihrer Organisation unterstützt. Die Azure Storage-Plattform schützt Ihre Daten mittels Speicherdienstverschlüsselung (SSE). Damit werden die Daten beim Schreiben in den Speicher automatisch verschlüsselt und beim Abrufen auch wieder entschlüsselt. Die Ver- und Entschlüsselung erfolgt automatisch und transparent. Dabei wird mit der 256-Bit-[AES-Verschlüsselung](https://wikipedia.org/wiki/Advanced_Encryption_Standard) eine der stärksten verfügbaren Blockchiffren verwendet.
@@ -34,7 +34,7 @@ Um vom Kunden verwaltete Schüssel mit SSE zu verwalten, können Sie einen neuen
 Erstellen Sie zuerst ein Speicherkonto, falls Sie noch kein Konto besitzen. Weitere Informationen finden Sie unter [Erstellen eines neuen Speicherkontos](storage-quickstart-create-account.md).
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Schritt 2: Aktivieren von SSE für Blob und File Storage
-Um SSE mit von Kunden verwalteten Schlüsseln zu aktivieren, müssen zwei Features für den Schlüsselschutz aktiviert werden:„Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen). Mit diesen Einstellungen verhindern Sie versehentliches oder absichtliches Löschen der Schlüssel. Die maximale Beibehaltungsdauer der Schlüssel ist auf 90 Tage festgelegt, um Benutzer vor böswilligen Akteuren oder Ransomware Angriffe zu schützen.
+Um SSE mit von Kunden verwalteten Schlüsseln zu aktivieren, müssen auch zwei Features für den Schlüsselschutz in Azure Key Vault aktiviert werden:„Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen). Mit diesen Einstellungen verhindern Sie versehentliches oder absichtliches Löschen der Schlüssel. Die maximale Beibehaltungsdauer der Schlüssel ist auf 90 Tage festgelegt, um Benutzer vor böswilligen Akteuren oder Ransomware Angriffe zu schützen.
 
 Wenn Sie von Kunden verwaltete Schlüssel für SSE automatisch aktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://docs.microsoft.com/rest/api/storagerp), die [Clientbibliothek des Speicherressourcenanbieters für .NET](https://docs.microsoft.com/dotnet/api), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) oder die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/storage/storage-azure-cli) verwenden.
 

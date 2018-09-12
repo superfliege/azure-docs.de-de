@@ -7,14 +7,14 @@ manager: carmonm
 keywords: Sichern virtueller Computer, Sichern von VMs
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 438c1130486fe1ba2ee484ae01655a2fb115de27
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390754"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286651"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure
 Dieser Artikel enthält leistungs- und ressourcenbezogene Vorschläge, um Ihnen bei der Planung Ihrer Sicherungsinfrastruktur für virtuelle Computer helfen. Darüber hinaus werden in diesem Artikel zentrale Aspekte des Backup-Diensts definiert, die für Ihre Architektur sowie für die Kapazitäts- und Zeitplanung entscheidend sein können. Wenn Sie [Ihre Umgebung vorbereitet](backup-azure-arm-vms-prepare.md) haben, ist die Planung der nächste Schritt, bevor Sie mit dem [Sichern Ihrer virtuellen Computer](backup-azure-arm-vms.md) beginnen. Weitere Informationen zu virtuellen Azure-Computern finden Sie in der [Dokumentation zu Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/). 
@@ -50,17 +50,18 @@ Azure Backup erstellt vollständige VSS-Sicherungen auf virtuellen Windows-Compu
 ```
 
 #### <a name="linux-vms"></a>Virtuelle Linux-Computer
-Azure Backup bietet ein Skripterstellungsframework. Zur Gewährleistung der Anwendungskonsistenz beim Sichern von Linux-VMs erstellen Sie benutzerdefinierte Pre- und Post-Skripts zum Steuern des Workflows und der Umgebung von Sicherungen. Azure Backup ruft das Pre-Skript vor Erstellen der VM-Momentaufnahme und das Post-Skript nach Abschluss des Auftrags zur Erstellung der VM-Momentaufnahme auf. Weitere Informationen finden Sie unter [Anwendungskonsistente Sicherung von Azure Linux-VMs](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+
+Azure Backup stellt ein Skriptframework zum Steuern von Sicherungsworkflow und -umgebung bereit. Um anwendungskonsistente Sicherungen von Linux-VMs zu gewährleisten, erstellen Sie mit dem Skriptframework benutzerdefinierte Pre- und Post-Skripts. Rufen Sie das Pre-Skript vor Erstellen der VM-Momentaufnahme und das Post-Skript nach Abschluss des Auftrags zur Erstellung der VM-Momentaufnahme auf. Weitere Informationen finden Sie im Artikel [Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+
 > [!NOTE]
 > Azure Backup ruft nur vom Kunden geschriebene Pre- und Post-Skripts auf. Wenn das Pre-Skript und das Post-Skript erfolgreich ausgeführt werden, markiert Azure Backup den Wiederherstellungspunkt als anwendungskonsistent. Allerdings ist der Kunde bei Verwendung benutzerdefinierter Skripts letztendlich für die Anwendungskonsistenz verantwortlich.
 >
 
-
-In dieser Tabelle werden die Konsistenztypen aufgeführt und die Umstände erläutert, unter denen sie während der Sicherungs- und Wiederherstellungsvorgänge für virtuelle Azure-Computer auftreten.
+In der folgenden Tabelle werden die Konsistenztypen und die Bedingungen für ihr Auftreten erläutert.
 
 | Konsistenz | VSS-basiert | Erklärung und Details |
 | --- | --- | --- |
-| Anwendungskonsistenz |Ja, für Windows|Anwendungskonsistenz ist ideal für Workloads, da Folgendes gewährleistet wird:<ol><li> Der virtuelle Computer wird *hochgefahren*. <li>Es gibt *keine Datenbeschädigung*. <li>Es gibt *keine Datenverluste*.<li> Die Daten sind mit der Anwendung konsistent, in der die Daten verwendet werden, da die Anwendung zum Zeitpunkt der Sicherung über den VSS oder das Pre-Skript und Post-Skript einbezogen wird.</ol> <li>*Virtuelle Windows-Computer:* Die meisten Microsoft-Workloads verfügen über VSS Writer, die workloadspezifische Aktionen im Hinblick auf die Datenkonsistenz ausführen. Beispielsweise umfasst Microsoft SQL Server einen VSS Writer, der die ordnungsgemäße Ausführung der Schreibvorgänge in die Transaktionsprotokolldatei und die Datenbank gewährleistet. Bei Azure-Sicherungen von virtuellen Windows-Computern muss zum Erstellen eines anwendungskonsistenten Wiederherstellungspunkts die Sicherungserweiterung den VSS-Workflow aufrufen und abschließen, bevor die Momentaufnahme des virtuellen Computers erstellt wird. Damit Momentaufnahmen von virtuellen Azure-Computern akkurat sind, müssen die VSS-Writer aller Azure VM-Anwendungen ebenfalls abgeschlossen werden. (Informieren Sie sich über die [Grundlagen von VSS](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx), und beschäftigen Sie sich ausführlicher mit der [Funktionsweise](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx).) </li> <li> *Linux-VMs:* Kunden können [ein benutzerdefiniertes Pre-Skript und Post-Skript zur Sicherstellung der Anwendungskonsistenz](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) ausführen. </li> |
+| Anwendungskonsistenz |Ja, für Windows|Anwendungskonsistenz ist ideal für Workloads, da Folgendes gewährleistet wird:<ol><li> Der virtuelle Computer wird *hochgefahren*. <li>Es gibt *keine Datenbeschädigung*. <li>Es gibt *keine Datenverluste*.<li> Die Daten sind mit der Anwendung konsistent, in der die Daten verwendet werden, da die Anwendung zum Zeitpunkt der Sicherung über den VSS oder das Pre-Skript und Post-Skript einbezogen wird.</ol> <li>*Virtuelle Windows-Computer:* Die meisten Microsoft-Workloads verfügen über VSS Writer, die workloadspezifische Aktionen im Hinblick auf die Datenkonsistenz ausführen. Beispielsweise stellt der VSS Writer von SQL Server die ordnungsgemäße Ausführung der Schreibvorgänge in die Transaktionsprotokolldatei und die Datenbank sicher. Bei IaaS-Sicherungen von virtuellen Windows-Computern muss zum Erstellen eines anwendungskonsistenten Wiederherstellungspunkts die Sicherungserweiterung den VSS-Workflow aufrufen und abschließen, bevor die Momentaufnahme des virtuellen Computers erstellt wird. Damit Momentaufnahmen von virtuellen Azure-Computern akkurat sind, müssen die VSS-Writer aller Azure VM-Anwendungen ebenfalls abgeschlossen werden. (Informieren Sie sich über die [Grundlagen von VSS](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx), und beschäftigen Sie sich ausführlicher mit der [Funktionsweise](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx).) </li> <li> *Linux-VMs:* Kunden können [ein benutzerdefiniertes Pre-Skript und Post-Skript zur Sicherstellung der Anwendungskonsistenz](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) ausführen. </li> |
 | Dateisystemkonsistenz |Ja, bei Windows-basierten Computern |Es gibt zwei Szenarien, in denen der Wiederherstellungspunkt *dateisystemkonsistent* sein kann:<ul><li>Sicherungen virtueller Linux-Computer in Azure ohne Pre-Skript und Post-Skript oder bei Fehlern des Pre-Skripts oder Post-Skripts. <li>VSS-Fehler bei der Sicherung für virtuelle Windows-Computer in Azure.</li></ul> In beiden Fällen muss Folgendes sichergestellt werden: <ol><li> Der virtuelle Computer wird *hochgefahren*. <li>Es gibt *keine Datenbeschädigung*.<li>Es gibt *keine Datenverluste*.</ol> Anwendungen müssen einen eigenen Reparaturmechanismus für die wiederhergestellten Daten implementieren. |
 | Absturzkonsistenz |Nein  |Diese Situation entspricht dem Absturz eines virtuellen Computers (durch eine Teil- oder Vollrückstellung). Absturzkonsistenz geschieht normalerweise, wenn der virtuelle Azure-Computer zum Zeitpunkt der Sicherung heruntergefahren wird. Ein ausfallsicherer Wiederherstellungspunkt gewährt keine Garantie für die Konsistenz der Daten auf dem Speichermedium – weder im Hinblick auf das Betriebssystem noch auf die Anwendung. Nur die Daten, die zum Zeitpunkt der Sicherung bereits auf dem Datenträger vorhanden sind, werden erfasst und gesichert. <br/> <br/> Auch wenn es keine Garantie gibt, wird das Betriebssystem normalerweise gestartet.In der Regel folgt ein Vorgang zur Datenträgerüberprüfung wie „chkdsk“, um eine eventuelle Datenbeschädigung zu reparieren. Alle Daten im Arbeitsspeicher oder Schreibvorgänge, die nicht vollständig auf den Datenträger übertragen wurden, gehen verloren. Die Anwendung folgt normalerweise mit einem eigenen Überprüfungsmechanismus, falls ein Datenrollback durchgeführt werden muss. <br><br>Falls das Transaktionsprotokoll beispielsweise Einträge enthält, die nicht in der Datenbank vorhanden sind, führt die Datenbanksoftware ein Rollback durch, bis die Daten konsistent sind. Wenn Daten über mehrere virtuelle Laufwerke verteilt sind (z. B. übergreifende Volumes), bietet ein absturzkonsistenter Wiederherstellungspunkt keine Garantie für die Richtigkeit der Daten. |
 
@@ -104,19 +105,22 @@ Ein Wiederherstellungsvorgang umfasst zwei zentrale Vorgänge: das Kopieren von 
 * Zeit für das Kopieren von Daten: Daten werden zuerst aus dem Tresor in das Speicherkonto des Kunden kopiert. Die Wiederherstellungsdauer hängt vom IOPS-Wert und Durchsatz ab, den der Azure Backup-Dienst für das Speicherkonto des ausgewählten Kunden erhält. Wählen Sie ein Speicherkonto aus, das nicht mit anderen Schreib- und Lesevorgängen anderer Anwendungen geladen ist, um die Zeit für das Kopieren zu verringern.
 
 ## <a name="best-practices"></a>Bewährte Methoden
-Berücksichtigen Sie beim Konfigurieren von Sicherungen für virtuelle Computer die folgenden bewährten Methoden für nicht verwaltete Datenträger:
 
-> [!Note]
-> Die folgenden Methoden, die das Ändern oder Verwalten von Speicherkonten empfehlen, gelten nur für VMs mit nicht verwalteten Datenträgern. Wenn Sie verwaltete Datenträger verwenden, übernimmt Azure alle Verwaltungsaktivitäten für den Speicher.
-> 
+Berücksichtigen Sie beim Konfigurieren von Sicherungen für alle virtuellen Computer die folgenden bewährten Methoden:
 
 * Planen Sie niemals die gleichzeitige Sicherung von mehr als 10 klassischen virtuellen Computern aus dem gleichen Clouddienst. Staffeln Sie die Sicherungszeitpläne mit einem Versatz von jeweils einer Stunde, wenn Sie mehrere VMs des gleichen Clouddiensts sichern möchten.
-* Planen Sie keine gleichzeitige Sicherung von mehr als 100 virtuellen Computern in einem einzigen Tresor. 
+* Planen Sie keine Sicherungen für mehr als 100 VMs über einen Tresor zur gleichen Zeit.
 * Planen Sie VM-Sicherungen für Nebenzeiten ein. Auf diese Weise nutzt der Backup-Dienst den IOPS-Wert zum Übertragen von Daten aus dem Speicherkonto des Kunden in den Tresor.
-* Sorgen Sie dafür, dass eine Richtlinie für virtuelle Computer angewendet wird, die auf verschiedene Speicherkonten verteilt sind. Mit einem Sicherungszeitplan sollten insgesamt maximal 20 Datenträger eines einzelnen Speicherkontos geschützt werden. Wenn ein Speicherkonto mehr als 20 Datenträger enthält, verteilen Sie die entsprechenden virtuellen Computer auf mehrere Richtlinien, damit in der Übertragungsphase der Sicherung die erforderlichen IOPS zur Verfügung stehen.
-* Stellen Sie einen virtuellen Computer unter Storage Premium nicht unter dem gleichen Speicherkonto wieder her. Wenn der Wiederherstellungsvorgang zur gleichen Zeit stattfindet wie der Sicherungsvorgang, verringern sich dadurch die für die Sicherung verfügbaren IOPS.
-* Für die Sicherung von Premium-VMs im VM-Sicherungsstapel V1 sollten nur 50 % des gesamten Speicherplatzes des Speicherkontos zugeordnet werden, sodass der Azure Backup-Dienst die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort im Speicherkonto in den Tresor übertragen kann.
 * Stellen Sie sicher, dass auf allen für die Sicherung aktivierten virtuellen Linux-Computern die Python-Version 2.7 oder höher installiert ist.
+
+### <a name="best-practices-for-vms-with-unmanaged-disks"></a>Bewährte Methoden für virtuelle Computer mit nicht verwalteten Datenträgern
+
+Die folgenden Empfehlungen gelten nur für virtuelle Computer mit nicht verwalteten Datenträgern. Wenn Ihre virtuellen Computer verwaltete Datenträger verwenden, verwaltet der Backup-Dienst alle Speichermanagementaktivitäten.
+
+* Wenden Sie unbedingt eine Sicherungsrichtlinie auf VMs an, die auf mehrere Speicherkonten verteilt sind. Mit einem Sicherungszeitplan sollten insgesamt maximal 20 Datenträger eines einzelnen Speicherkontos geschützt werden. Wenn ein Speicherkonto mehr als 20 Datenträger enthält, verteilen Sie die entsprechenden virtuellen Computer auf mehrere Richtlinien, damit in der Übertragungsphase der Sicherung die erforderlichen IOPS zur Verfügung stehen.
+* Stellen Sie einen virtuellen Computer unter Storage Premium nicht unter dem gleichen Speicherkonto wieder her. Wenn der Wiederherstellungsvorgang zur gleichen Zeit stattfindet wie der Sicherungsvorgang, verringern sich dadurch die für die Sicherung verfügbaren IOPS.
+* Für die Sicherung von Premium-VMs im VM-Sicherungsstapel V1 sollten nur 50 % des gesamten Speicherplatzes des Speicherkontos zugeordnet werden, sodass der Backup-Dienst die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort im Speicherkonto in den Tresor übertragen kann.
+
 
 ## <a name="data-encryption"></a>Datenverschlüsselung
 Azure Backup verschlüsselt die Daten während des Sicherungsvorgangs nicht. Sie können jedoch die Daten auf dem virtuellen Computer verschlüsseln und dann die geschützten Daten nahtlos sichern (erfahren Sie mehr über das [Sichern verschlüsselter Daten](backup-azure-vms-encryption.md)).

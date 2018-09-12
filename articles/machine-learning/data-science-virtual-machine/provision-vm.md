@@ -11,14 +11,14 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444041"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782653"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen der Data Science Virtual Machine für Windows in Azure
 Die Microsoft Data Science Virtual Machine (DSVM) ist ein Image des virtuellen Windows Azure-Computers (VM). Sie ist vorinstalliert und mit verschiedenen Tools konfiguriert, die für Datenanalysen und Machine Learning verwendet werden. Die folgenden Tools sind enthalten:
@@ -66,7 +66,7 @@ Um eine Microsoft Data Science Virtual Machine zu erstellen, benötigen Sie ein 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>Erstellen Ihrer Microsoft Data Science Virtual Machine
 Führen Sie die folgenden Schritte aus, um eine Instanz der Microsoft Data Science Virtual Machine zu erstellen:
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016)zur Auflistung der virtuellen Computer.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)zur Auflistung der virtuellen Computer. Wenn Sie sich noch nicht bei Ihrem Azure-Konto angemeldet haben, erhalten Sie eine entsprechende Aufforderung.
 1. Wählen Sie unten auf der Seite die Schaltfläche **Erstellen** aus, um einen Assistenten aufzurufen.
 
   ![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png) 
@@ -126,7 +126,7 @@ Für die Entwicklung mit Python wurden die Anaconda Python-Distributionen 2.7 un
 > 
 > 
 
-Anaconda Python 3.6 wird unter **C:\Anaconda** installiert. Anaconda Python 2.7wird unter **c:\Anaconda\envs\python2** installiert. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](/visualstudio/python/installing-python-interpreters.md). 
+Anaconda Python 3.6 wird unter **C:\Anaconda** installiert. Anaconda Python 2.7wird unter **c:\Anaconda\envs\python2** installiert. Ausführliche Schritte hierzu finden Sie in der [PTVS-Dokumentation](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters). 
 
 ### <a name="the-jupyter-notebook"></a>Das Jupyter Notebook
 Zur Anaconda-Distribution gehört außerdem das Jupyter Notebook, eine Umgebung zum Freigeben von Code und Analysen. Der Jupyter Notebook-Server wurde bereits mit Python 2.7, Python 3.x, PySpark, Julia und R-Kernels konfiguriert. Es ist ein Desktopsymbol mit dem Namen **Jupyter Notebook** vorhanden, um den Jupyter-Server und den Browser für den Zugriff auf den Notebook-Server zu starten. 
@@ -145,7 +145,7 @@ Der Link zu den Beispielen wird Ihnen auf der Startseite für die Notebooks ange
 ### <a name="visual-studio-community-2017"></a>Visual Studio Community 2017
 Visual Studio Community ist auf der VM installiert. Dies ist eine kostenlose Version der beliebten IDE von Microsoft, die Sie zur Evaluierung und für kleine Teams verwenden können. Weitere Informationen finden Sie in den [Lizenzierungsbedingungen](https://www.visualstudio.com/support/legal/mt171547). 
 
-Öffnen Sie Visual Studio durch Doppelklicken auf das Desktopsymbol oder über das **Startmenü**. Suchen Sie nach Programmen (Windows-Taste+S), gefolgt von **Visual Studio**. Von dort aus können Sie Projekte in Sprachen wie C#, Python, R und node.js erstellen. Installierte Plug-Ins erleichtert die Arbeit mit den folgenden Azure-Diensten:
+Öffnen Sie Visual Studio durch Doppelklicken auf das Desktopsymbol oder über das **Startmenü** . Suchen Sie nach Programmen (Windows-Taste+S), gefolgt von **Visual Studio**. Von dort aus können Sie Projekte in Sprachen wie C#, Python, R und node.js erstellen. Installierte Plug-Ins erleichtert die Arbeit mit den folgenden Azure-Diensten:
 * Azure Data Catalog
 * Azure HDInsight Hadoop und Spark
 * Azure Data Lake 

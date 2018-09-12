@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: f81a087a2595db41dbe84a54ad1fd01adf043515
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 7925ef15dc7b3ce25ae919810a5ed2220184fe6e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060402"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700842"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 Da Sie in einer hochgradig vernetzten Welt leben, werden Sie irgendwann Teil **sozialer Netzwerke**. Sie verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was Sie bewegt, mit Menschen mit den gleichen Interessen zu teilen.
@@ -39,7 +39,7 @@ Warum ist SQL in diesem Szenario nicht die beste Option? Sehen wir uns die Struk
 Sie könnten dafür natürlich eine riesige SQL-Instanz mit ausreichend Leistung, um Tausende von Abfragen mit so vielen Verknüpfungen zu bearbeiten, verwenden. Aber, offen gestanden, warum sollten Sie, wenn Sie eine einfachere Lösung zur Hand haben?
 
 ## <a name="the-nosql-road"></a>Der Weg mit NoSQL
-Dieser Artikel gibt eine Einführung in die Modellierung Ihrer Daten für soziale Plattformen mit der NoSQL-Datenbank [Azure Cosmos-DB](https://azure.microsoft.com/services/cosmos-db/) auf kostengünstige Weise. Dabei werden auch andere Azure Cosmos DB-Features wie die [Gremlin Graph-API](../cosmos-db/graph-introduction.md) eingesetzt. Mithilfe eines [NoSQL](https://en.wikipedia.org/wiki/NoSQL)-Ansatzes, der Datenspeicherung im JSON-Format und der [Denormalisierung](https://en.wikipedia.org/wiki/Denormalization) kann der zuvor komplizierte Beitrag in ein einziges [Dokument](https://en.wikipedia.org/wiki/Document-oriented_database) transformiert werden:
+In diesem Artikel wird beschrieben, wie Sie Ihre Daten für soziale Plattformen mit der Azure-NoSQL-Datenbank [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) auf kostengünstige Weise modellieren können. Dabei werden auch andere Azure Cosmos DB-Features wie die [Gremlin Graph-API](../cosmos-db/graph-introduction.md) eingesetzt. Mithilfe eines [NoSQL](https://en.wikipedia.org/wiki/NoSQL)-Ansatzes, der Datenspeicherung im JSON-Format und der [Denormalisierung](https://en.wikipedia.org/wiki/Denormalization) kann der zuvor komplizierte Beitrag in ein einziges [Dokument](https://en.wikipedia.org/wiki/Document-oriented_database) transformiert werden:
 
 
     {
@@ -130,7 +130,7 @@ Um dieses Problem zu lösen, können Sie einen kombinierten Ansatz wählen. Die 
         "totalPoints":11342
     }
 
-Das Diagramm der Follower kann mithilfe der [Gremlin Graph-API](../cosmos-db/graph-introduction.md) von Azure Cosmos DB gespeichert werden, um [Scheitelpunkte](http://mathworld.wolfram.com/GraphVertex.html) für jeden Benutzer und [Kanten](http://mathworld.wolfram.com/GraphEdge.html), die „A-folgt-B“-Beziehungen verwalten, zu erstellen. Mithilfe der Graph-API können Sie nicht nur die Follower eines bestimmten Benutzers abrufen, sondern auch komplexere Abfragen erstellen, um auch gemeinsame Personen vorzuschlagen. Wenn Sie dem Diagramm die bei Benutzern beliebten Inhaltskategorien hinzufügen, können Sie weitere Funktionen einbinden, z.B. die intelligente Inhaltsermittlung, das Vorschlagen von beliebten Inhalten oder das Suchen von Personen, mit denen Sie viele Gemeinsamkeiten aufweisen.
+Das Diagramm der Follower kann mithilfe der [Gremlin-API](../cosmos-db/graph-introduction.md) von Azure Cosmos DB gespeichert werden, um [Scheitelpunkte](http://mathworld.wolfram.com/GraphVertex.html) für jeden Benutzer und [Kanten](http://mathworld.wolfram.com/GraphEdge.html) zu erstellen, die „A-folgt-B“-Beziehungen verwalten. Mithilfe der Gremlin-API können Sie nicht nur die Follower eines bestimmten Benutzers abrufen, sondern auch komplexere Abfragen erstellen, um auch gemeinsame Personen vorzuschlagen. Wenn Sie dem Diagramm die bei Benutzern beliebten Inhaltskategorien hinzufügen, können Sie weitere Funktionen einbinden, z.B. die intelligente Inhaltsermittlung, das Vorschlagen von beliebten Inhalten oder das Suchen von Personen, mit denen Sie viele Gemeinsamkeiten aufweisen.
 
 Das Dokument „User Statistics“ kann weiterhin zum Erstellen von Karten auf der Benutzeroberfläche oder für schnelle Profilvorschauen verwendet werden.
 

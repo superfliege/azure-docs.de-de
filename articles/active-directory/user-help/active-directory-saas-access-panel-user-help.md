@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a6ac780625f6a109797cbdab78dc555e21e18bee
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343609"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306409"
 ---
-# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Behandeln von Problemen bei Zugriff und Verwendung des Portals „Meine Apps“
+# <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Beheben von Problemen bei Zugriff und Verwendung des Portals „Meine Apps“
 
-Wenn Sie Probleme damit haben, sich beim Meine Apps-Portal anzumelden oder das Portal zu verwenden, versuchen Sie diese Problembehandlungstipps, bevor Sie sich an den Helpdesk oder Ihren Administrator wenden.
+Wenn Sie Probleme damit haben, sich beim Portal „Meine Apps“ anzumelden oder das Portal zu verwenden, versuchen Sie diese Problembehandlungstipps, bevor Sie sich an den Helpdesk oder Ihren Administrator wenden.
 
-## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Ich habe Probleme bei der Anmeldung im Portal „Meine Apps“
+## <a name="i-am-having-trouble-signing-into-the-myapps-portal"></a>Ich habe Probleme bei der Anmeldung im Portal „Meine Apps“.
 
 Probieren Sie diese allgemeinen Tipps aus:
 
@@ -45,7 +45,7 @@ Sie können mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Passw
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Ich habe Probleme bei der Installation der Erweiterung zur sicheren Anmeldung bei „Meine Apps“.
 
-Das Meine Apps-Portal erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Wenn Sie kennwortbasierte Apps für einmaliges Anmelden verwenden, muss die dazugehörige Browsererweiterung auch installiert werden. Diese Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung starten, die für kennwortbasierte Apps mit einmaligem Anmelden konfiguriert ist.
+Das Portal „Meine Apps“ erfordert einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Wenn Sie kennwortbasierte Apps für einmaliges Anmelden verwenden, muss die dazugehörige Browsererweiterung auch installiert werden. Diese Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung starten, die für kennwortbasierte Apps mit einmaligem Anmelden konfiguriert ist.
 
 Stellen Sie sicher, dass folgende Browseranforderungen erfüllt sind:
 

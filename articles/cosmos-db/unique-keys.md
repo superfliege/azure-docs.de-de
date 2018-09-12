@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 796971ff541b62a22a70df4022ab78817e7158e9
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003316"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696138"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Eindeutige Schlüssel in Azure Cosmos DB
 
 Eindeutige Schlüssel bieten Entwicklern die Möglichkeit, ihrer Datenbank eine zusätzliche Datenintegritätsebene hinzuzufügen. Durch das Erstellen eine Richtlinie für eindeutige Schlüssel beim Erstellen eines Containers wird die Eindeutigkeit von einem oder mehreren Werten pro [Partitionsschlüssel](partition-data.md) gewährleistet. Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, ist keine Erstellung neuer oder aktualisierter Elemente mit Werten möglich, die von der Einschränkung auf eindeutige Schlüssel festgelegte Werte duplizieren.   
 
 > [!NOTE]
-> Eindeutige Schlüssel werden von den aktuellen Versionen der [.NET](sql-api-sdk-dotnet.md)- und [.NET Core](sql-api-sdk-dotnet-core.md)-SQL SDKs sowie der [MongoDB-API](mongodb-feature-support.md#unique-indexes) unterstützt. Die Tabellen-API und die Graph-API unterstützen derzeit keine eindeutigen Schlüssel. 
+> Eindeutige Schlüssel werden von den aktuellen Versionen der [.NET](sql-api-sdk-dotnet.md)- und [.NET Core](sql-api-sdk-dotnet-core.md)-SQL SDKs sowie der [MongoDB-API](mongodb-feature-support.md#unique-indexes) unterstützt. Die Tabellen-API und die Gremlin-API unterstützen derzeit keine eindeutigen Schlüssel. 
 > 
 >
 

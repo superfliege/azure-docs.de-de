@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bf5ae39d83fd021775fbd18cf23d2e6b9078e748
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6d8e9245e95c08aad69cd05f338b6260e554469b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927895"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337789"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Twitter-Konto mithilfe von Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Um ein Twitter-Konto als Identitätsanbieter in Azure Active Directory (Azure AD
 1. Melden Sie sich auf der Website [Twitter Apps](https://apps.twitter.com/) mit Ihren Twitter-Anmeldeinformationen an.
 2. Wählen Sie **Create New App** (Neue App erstellen) aus.
 3. Geben Sie einen **Namen**, unter **Description** eine Beschreibung und eine **Website** an.
-4. Geben Sie `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp` unter **Callback URLs** (Rückruf-URLs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com) und **{policyId}** durch Ihre Richtlinien-ID (z.B. b2c_1_policy). Sie sollten für alle Richtlinien, die ein Twitter-Konto verwenden, eine Rückruf-URL hinzufügen. Achten Sie darauf, `b2clogin.com` anstelle von ` login.microsoftonline.com` zu verwenden, wenn Sie die Anmelde-ID in Ihrer Anwendung verwenden.
+4. Geben Sie `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp` unter **Callback URLs** (Rückruf-URLs) ein. Achten Sie darauf, **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c“) und **{policyId}** durch Ihre Richtlinien-ID (z.B. „b2c_1_policy“) zu ersetzen. Sie sollten für alle Richtlinien, die ein Twitter-Konto verwenden, eine Rückruf-URL hinzufügen. 
 5. Stimmen Sie dem **Developer Agreement** (Vereinbarung für Entwickler) zu, und wählen Sie **Create your Twitter application** (Ihre Twitter-Anwendung erstellen) aus.
 7. Wählen Sie die Registerkarte **Keys and Access Tokens** .
 8. Kopieren Sie den Wert von **Consumer Key** und **Consumer Secret**. Sie benötigen beide Angaben, um ein Twitter-Konto als Identitätsanbieter in Ihrem Mandanten zu konfigurieren.

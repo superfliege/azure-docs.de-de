@@ -1,25 +1,18 @@
 ---
-title: Schritte zum Konfigurieren einer ExpressRoute-Verbindung | Microsoft Docs
+title: Workflows zum Konfigurieren einer Azure ExpressRoute-Verbindung | Microsoft-Dokumentation
 description: Diese Seite enthält die Workflows zum Konfigurieren von ExpressRoute-Verbindungen und -Peerings.
-documentationcenter: na
 services: expressroute
 author: cherylmc
-manager: carmonm
-editor: ''
-ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.topic: conceptual
+ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: cba1b2cfee379e7d2b079bcb3089981ef1044d66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 765050c9c21c7ba752535fc391cc9bb7d8ac4083
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23013125"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301037"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>ExpressRoute-Workflows für die Verbindungsbereitstellung und Verbindungszustände
 Auf dieser Seite erhalten Sie einen Überblick über die Workflows zur Dienstbereitstellung und Routingkonfiguration.
@@ -33,9 +26,9 @@ Die folgende Abbildung und die dazugehörigen Schritte veranschaulichen die Aufg
 3. Stellen Sie sicher, dass die Verbindung erfolgreich eingerichtet wurde, indem Sie den Bereitstellungszustand der ExpressRoute-Verbindung mithilfe von PowerShell überprüfen. 
 4. Konfigurieren Sie Routingdomänen. Wenn Ihr Konnektivitätsanbieter Layer 3 für Sie verwaltet, konfiguriert er das Routing für Ihre Verbindung. Wenn Ihr Konnektivitätsanbieter nur Layer 2-Dienste anbietet, müssen Sie das Routing gemäß den Richtlinien auf den Seiten [Routinganforderungen](expressroute-routing.md) und [Routingkonfiguration](expressroute-howto-routing-classic.md) konfigurieren.
    
-   * Privates Azure-Peering aktivieren – Sie müssen dieses Peering aktivieren, um eine Verbindung mit virtuellen Computern/Clouddiensten herzustellen, die in virtuellen Netzwerken bereitgestellt werden.
-   * Öffentliches Azure-Peering aktivieren – sie müssen das öffentliche Azure-Peering aktivieren, wenn Sie eine Verbindung mit Azure-Diensten herstellen möchten, die unter öffentlichen IP-Adressen gehostet werden. Dies ist eine Voraussetzung, damit auf Azure-Ressourcen zugegriffen werden kann, wenn Sie das Standardrouting für privates Azure-Peering aktiviert haben.
-   * Microsoft-Peering aktivieren – Sie müssen dieses Peering aktivieren, um auf Office 365 und Dynamics 365 zugreifen zu können. 
+   * Privates Azure-Peering aktivieren – Aktivieren Sie dieses Peering, um eine Verbindung mit virtuellen Computern/Clouddiensten herzustellen, die in virtuellen Netzwerken bereitgestellt werden.
+
+   * Microsoft-Peering aktivieren – Aktivieren Sie dieses Peering, um auf Office 365 und Dynamics 365 zugreifen zu können. Darüber hinaus kann über Microsoft-Peering auf alle Azure-PaaS-Dienste zugegriffen werden.
      
      > [!IMPORTANT]
      > Verwenden Sie für die Verbindung mit Microsoft unbedingt einen anderen Proxy/Edge als für das Internet. Wenn Sie denselben Edge für ExpressRoute und das Internet verwenden, führt das zu asymmetrischem Routing und Konnektivitätsausfällen für Ihr Netzwerk.

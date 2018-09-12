@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: 2eefabcc0484fca0e6e3ad1dd5037684a759d010
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: b1b5d0af3f2b149959bcb97ddaf29ba2fe1f4668
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850445"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702220"
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Leitfaden zur Behandlung von Problemen bei Azure Stream Analytics
 
@@ -66,7 +66,7 @@ Um optimale Ergebnisse bei der Behandlung von Problemen in Bezug auf Stream Anal
                 - Die Abfrageverarbeitung hat zu null Ausgabeereignissen geführt.
                 - Ereignisse oder die jeweiligen Felder sind unter Umständen falsch formatiert, daher wurden bei der Abfrageverarbeitung keine Ausgaben generiert.
                 - Im Rahmen des Auftrags können Daten aus Konnektivitäts- oder Authentifizierungsgründen nicht per Push an die [Ausgabesenke](stream-analytics-select-into.md) übertragen werden.
-        - Für alle zuvor genannten Fehler enthalten die Meldungen der Vorgangsprotokolle weitere Details (einschließlich Details dazu, was geschieht). Ausgenommen sind Fälle, in denen die Abfragelogik alle Ereignisse herausgefiltert hat. Wenn bei der Verarbeitung mehrerer Ereignisse Fehler generiert werden, protokolliert Stream Analytics innerhalb von 10 Minuten die ersten drei Fehlermeldungen desselben Typs in Vorgangsprotokollen. Weitere identische Fehler werden dann mit folgender Meldung unterdrückt: „Es treten zu schnell Fehler auf. Diese werden unterdrückt.“
+        - Für alle zuvor genannten Fehler enthalten die Meldungen der Vorgangsprotokolle weitere Details (einschließlich Details dazu, was geschieht). Ausgenommen sind Fälle, in denen die Abfragelogik alle Ereignisse herausgefiltert hat. Wenn bei der Verarbeitung mehrerer Ereignisse Fehler generiert werden, protokolliert Stream Analytics innerhalb von 10 Minuten die ersten drei Fehlermeldungen desselben Typs in Vorgangsprotokollen. Weitere identische Fehler werden dann mit folgender Meldung unterdrückt: „Es treten zu schnell Fehler auf. Diese werden unterdrückt“.
 
 8. Führen Sie ein Debuggen mithilfe von Überwachungs- und Diagnoseprotokollen durch:
     - Verwenden Sie [Überwachungsprotokolle](../azure-resource-manager/resource-group-audit.md), und filtern Sie diese, um Fehler festzustellen und zu debuggen.

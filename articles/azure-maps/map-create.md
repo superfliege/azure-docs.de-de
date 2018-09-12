@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b86f29e4d3faa1382ac3a79ed828855a5d9f6d7f
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: c5d48e2e7316f33a565fc61a769a29c00834eed5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747218"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343368"
 ---
 # <a name="create-a-map"></a>Erstellen einer Karte
 
@@ -56,7 +56,7 @@ Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
     * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds)
     
 Weitere Codebeispiele, die Sie zu Ihren Karten hinzufügen können, finden Sie in den folgenden Artikeln: 
-* [Hinzufügen von Stecknadeln zur Karte](./map-add-pin.md)
-* [Hinzufügen eines Popups](map-add-popup.md)
+* [Auswählen eines Kartenstils](choose-map-style.md)
+* [Hinzufügen von Kartensteuerelementen](map-add-controls.md)
     
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 28679ef07c2625908f7b08f808ff49c48ddb625b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440949"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339867"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Hinzufügen von Twitter als OAuth1-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -36,9 +36,9 @@ Um Twitter als Identitätsanbieter in Azure Active Directory B2C (Azure AD B2C) 
  
     a. Geben Sie **Name** und **Beschreibung** für Ihre neue App ein. 
 
-    b. Fügen Sie **https://login.microsoftonline.com** ins Feld **Website** ein. 
+    b. Fügen Sie im Feld **Website** die URL **https://{tenant}.b2clogin.com** ein. Dabei stellt **{tenant}** den Namen Ihres Mandanten dar (z. B. https://contosob2c.b2clogin.com).
 
-    c. 4. Geben Sie `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp` in **Callback URL** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com) und **{policyId}** durch Ihre Richtlinien-ID (z.B. b2c_1_policy).  **Die Rückruf-URL muss aus Kleinbuchstaben bestehen.** Sie sollten für alle Richtlinien, die eine Twitter-Anmelde-ID verwenden, eine Rückruf-URL hinzufügen. Achten Sie darauf, `b2clogin.com` anstelle von ` login.microsoftonline.com` zu verwenden, wenn Sie die Anmelde-ID in Ihrer Anwendung verwenden.
+    c. 4. Geben Sie `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp` in **Callback URL** ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z. B. „contosob2c“) und **{policyId}** durch Ihre Richtlinien-ID (z. B. „b2c_1_policy“).  **Die Rückruf-URL muss aus Kleinbuchstaben bestehen.** Sie sollten für alle Richtlinien, die eine Twitter-Anmelde-ID verwenden, eine Rückruf-URL hinzufügen. Achten Sie darauf, `b2clogin.com` anstelle von ` login.microsoftonline.com` zu verwenden, wenn Sie die Anmelde-ID in Ihrer Anwendung verwenden.
 
     d. Lesen und bestätigen Sie die Nutzungsbedingungen am Ende der Seite, und wählen Sie **Create your Twitter application** (Twitter-Anwendung erstellen) aus.
 

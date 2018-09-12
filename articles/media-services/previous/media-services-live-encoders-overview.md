@@ -14,18 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 129364c4ee5924413ed0bccb81d53b905f13d208
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b1166c34f1a0ce3f3e9be932eb6d7fb9d76389ec
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782719"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665756"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Vorgehensweise: Konfigurieren von lokalen Encodern beim Erstellen von Multi-Bitrate-Datenströmen mit Azure Media Services
 Dieses Thema zählt lokale Liveencoder auf, mit denen Sie Ihre Liveereignisse aufzeichnen und zur weiteren Verarbeitung einen Single-Bitrate-Livedatenstrom an AMS-Kanäle (für die die Livecodierung aktiviert ist) senden können. Das Thema enthält auch Links zu Tutorials, in denen die Konfiguration der aufgelisteten Encoder erläutert wird.
-
-## <a name="elemental-live"></a>Elemental Live
-Informationen zum Konfigurieren des [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live)-Encoders zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von Elemental Live](media-services-configure-elemental-live-encoder.md).
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
 Informationen zum Konfigurieren des [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von FMLE](media-services-configure-fmle-live-encoder.md).
@@ -38,6 +35,9 @@ Informationen zum Konfigurieren des [Telestream Wirecast](http://www.telestream.
 
 ## <a name="newtek-tricaster"></a>NewTek TriCaster
 Informationen zum Konfigurieren des [Tricaster](http://newtek.com/products/tricaster-40.html)-Encoders zum Senden eines Single-Bitrate-Livedatenstroms an einen AMS-Kanal finden Sie unter [Konfigurieren von Tricaster](media-services-configure-tricaster-live-encoder.md).
+
+## <a name="elemental-live"></a>Elemental Live
+Weitere Informationen finden Sie unter [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live).
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617289"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783337"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -57,8 +57,7 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   * [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md)
   * [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. Der Dienst muss die Möglichkeit bieten, Ressourcen zu verschieben. In diesem Artikel wird erläutert, welche Dienste das Verschieben von Ressourcen ermöglichen und welche nicht.
-3. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde.
+1. Das Zielabonnement muss für den Ressourcenanbieter der verschobenen Ressource registriert sein. Andernfalls erhalten Sie eine Fehlermeldung, die besagt, dass das **Abonnement nicht für einen Ressourcentyp registriert ist**. Dieses Problem kann auftreten, wenn eine Ressource zu einem neuen Abonnement verschoben wird, dieses aber noch nie mit diesem Ressourcentyp verwendet wurde.
 
   Verwenden Sie für PowerShell die folgenden Befehle zum Abrufen des Registrierungsstatus:
 
@@ -86,14 +85,16 @@ Beim Verschieben einer Ressource sollten Sie einige wichtige Schritte ausführen
   az provider register --namespace Microsoft.Batch
   ```
 
-4. Das Konto, das die Ressourcen verschiebt, muss mindestens über folgende Berechtigungen verfügen:
+1. Das Konto, das die Ressourcen verschiebt, muss mindestens über folgende Berechtigungen verfügen:
 
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** für die Quellressourcengruppe.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** für die Zielressourcengruppe.
 
-5. Überprüfen Sie vor dem Verschieben der Ressource die Abonnementkontingente für das Abonnement, zu dem Sie die Ressourcen verschieben. Wenn das Verschieben der Ressourcen bedeutet, dass das Abonnement seine Einschränkungen überschreitet, müssen Sie prüfen, ob Sie eine Erhöhung des Kontingents anfordern können. Eine vollständige Liste zu diesen Einschränkungen und Informationen zur Anforderung einer Kontingenterhöhung finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+1. Überprüfen Sie vor dem Verschieben der Ressource die Abonnementkontingente für das Abonnement, zu dem Sie die Ressourcen verschieben. Wenn das Verschieben der Ressourcen bedeutet, dass das Abonnement seine Einschränkungen überschreitet, müssen Sie prüfen, ob Sie eine Erhöhung des Kontingents anfordern können. Eine vollständige Liste zu diesen Einschränkungen und Informationen zur Anforderung einer Kontingenterhöhung finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
 
-5. Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschiebevorgänge. Resource Manager gibt bei Versuchen, mehr als 800 Ressourcen in einem einzigen Vorgang zu verschieben, sofort einen Fehler aus. Beim Verschieben von weniger als 800 Ressourcen kann jedoch ebenfalls ein Fehler durch ein Timeout auftreten.
+1. Unterteilen Sie große Verschiebevorgänge nach Möglichkeit in separate Verschiebevorgänge. Resource Manager gibt bei Versuchen, mehr als 800 Ressourcen in einem einzigen Vorgang zu verschieben, sofort einen Fehler aus. Beim Verschieben von weniger als 800 Ressourcen kann jedoch ebenfalls ein Fehler durch ein Timeout auftreten.
+
+1. Der Dienst muss die Möglichkeit bieten, Ressourcen zu verschieben. Um zu ermitteln, ob die Verschiebung erfolgreich verläuft, [überprüfen Sie Ihre Verschiebungsanforderung](#validate-move). In den nachstehenden Abschnitten in diesem Artikel wird erläutert, welche [Dienste das Verschieben von Ressourcen](#services-that-can-be-moved) ermöglichen und welche [nicht](#services-that-cannot-be-moved).
 
 ## <a name="when-to-call-support"></a>Kontaktaufnahme mit dem Support
 
@@ -106,6 +107,59 @@ Wenden Sie sich in folgenden Fällen an den [Support](https://portal.azure.com/#
 
 * Sie verschieben Ihre Ressourcen in ein neues Azure-Konto (und einen neuen Azure Active Directory-Mandanten) und benötigen Unterstützung für die Anweisungen im vorherigen Abschnitt.
 * Verschieben von klassischen Ressourcen, wenn Probleme durch Einschränkungen auftreten
+
+## <a name="validate-move"></a>Überprüfen der Verschiebung
+
+Der [Vorgang zum Überprüfen der Verschiebung](/rest/api/resources/resources/validatemoveresources) ermöglicht Ihnen, Ihr Verschiebungsszenario zu testen, ohne tatsächlich Ressourcen zu verschieben. Verwenden Sie diesen Vorgang, um zu ermitteln, ob die Verschiebung erfolgreich ausgeführt wird. Um diesen Vorgang ausführen zu können, benötigen Sie Folgendes:
+
+* Name der Quellressourcengruppe
+* Ressourcen-ID der Zielressourcengruppe
+* Ressourcen-ID der einzelnen zu verschiebenden Ressourcen
+* [Zugriffstoken](/rest/api/azure/#acquire-an-access-token) für Ihr Konto
+
+Senden Sie die folgende Anforderung:
+
+```
+POST https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<source-group>/validateMoveResources?api-version=2018-02-01
+Authorization: Bearer <access-token>
+Content-type: application/json
+```
+
+Mit dem Anforderungstext:
+
+```json
+{
+ "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
+}
+```
+
+Wenn die Anforderung ordnungsgemäß formatiert ist, gibt der Vorgang Folgendes zurück:
+
+```
+Response Code: 202
+cache-control: no-cache
+pragma: no-cache
+expires: -1
+location: https://management.azure.com/subscriptions/<subscription-id>/operationresults/<operation-id>?api-version=2018-02-01
+retry-after: 15
+...
+```
+
+Die Statuscode 202 gibt an, dass die Überprüfungsanforderung akzeptiert wurde, jedoch noch nicht ermittelt wurde, ob der Verschiebungsvorgang erfolgreich verläuft. Die Wert `location` enthält eine URL, über die Sie den Status des lang andauernden Vorgangs überprüfen können.  
+
+Um den Status zu überprüfen, senden Sie die folgende Anforderung:
+
+```
+GET <location-url>
+Authorization: Bearer <access-token>
+```
+
+Während der Vorgang ausgeführt wird, wird weiterhin der Statuscode 202 angezeigt. Warten Sie die Anzahl von Sekunden, die im Wert `retry-after` angegeben ist, bevor Sie es erneut versuchen. Wenn der Verschiebungsvorgang erfolgreich überprüft wurde, erhalten Sie den Statuscode 204. Wenn bei der Verschiebungsüberprüfung ein Fehler auftritt, erhalten Sie eine Fehlermeldung, z.B.:
+
+```json
+{"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
+```
 
 ## <a name="services-that-can-be-moved"></a>Dienste, die verschoben werden können
 
@@ -122,7 +176,6 @@ Die folgenden Dienste ermöglichen das Verschieben in eine neue Ressourcengruppe
 * Azure Maps
 * Azure Relay
 * Azure Stack: Registrierungen
-* Azure Migrate
 * Batch
 * BizTalk Services
 * Botdienst
@@ -188,6 +241,7 @@ Die folgenden Dienste ermöglichen das Verschieben einer Ressource derzeit nicht
 * Azure Database for PostgreSQL
 * Azure-Datenbankmigration
 * Azure Databricks
+* Azure Migrate
 * Batch AI
 * Certificates – App Service Certificates kann verschoben werden, hochgeladene Zertifikate haben jedoch [Einschränkungen](#app-service-limitations).
 * Container Instances
@@ -237,8 +291,6 @@ Wenn Sie ein virtuelles Netzwerk verschieben, müssen Sie auch dessen abhängige
 Um ein mittels Peering verknüpftes virtuelles Netzwerk zu verschieben, müssen Sie zunächst das Peering des virtuellen Netzwerks deaktivieren. Nach der Deaktivierung können Sie das virtuelle Netzwerk verschieben. Aktivieren Sie nach der Verschiebung das Peering des virtuellen Netzwerks wieder.
 
 Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, wenn das virtuelle Netzwerk ein Subnetz mit Navigationslinks für Ressourcen enthält. Beispiel: Wenn eine Redis Cache-Ressource in einem Subnetz bereitgestellt wird, enthält dieses Subnetz einen Navigationslink für die Ressource.
-
-Ein virtuelles Netzwerk kann nicht in ein anderes Abonnement verschoben werden, wenn das virtuelle Netzwerk einen benutzerdefinierten DNS-Server enthält. Zum Verschieben des virtuellen Netzwerks legen Sie es auf den Standard-DNS-Server (von Azure bereitgestellt) fest. Konfigurieren Sie nach dem Verschieben den benutzerdefinierten DNS-Server neu.
 
 ## <a name="app-service-limitations"></a>App Service-Einschränkungen
 

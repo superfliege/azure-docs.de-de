@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115883"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698059"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrieren aus dem Azure Access Control Service
 
@@ -106,7 +106,7 @@ Kunden von SharePoint 2013, 2016 und SharePoint Online haben ACS lange zu Authen
 
 | Feature | Anleitungen |
 | ------- | -------- |
-| Authentifizieren von Benutzern aus Azure AD | Bisher wurden SAML 1.1-Token, die SharePoint zur Authentifizierung benötigt, von Azure AD nicht unterstützt, und ACS wurde als Zwischenstufe verwendet, die SharePoint mit Azure AD-Tokenformaten kompatibel machte. Jetzt können Sie [mithilfe von Richtlinien zum Ausstellen von Token eine direkte Verbindung von SharePoint mit Azure AD herstellen](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| Authentifizieren von Benutzern aus Azure AD | Bisher wurden SAML 1.1-Token, die SharePoint zur Authentifizierung benötigt, von Azure AD nicht unterstützt, und ACS wurde als Zwischenstufe verwendet, die SharePoint mit Azure AD-Tokenformaten kompatibel machte. Jetzt können Sie [SharePoint mithilfe des Azure AD-App-Katalogs direkt mit Azure AD verbinden](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Lokale App-Authentifizierung und Server-zu-Server-Authentifizierung in SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. | 
 | [Autorisierung auf niedriger Vertrauensebene für SharePoint-Add-Ins (Anbieter gehostet und SharePoint gehostet)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |
 | [SharePoint-Cloudhybridsuche](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |

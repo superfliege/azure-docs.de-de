@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: 7c9367cccf8d59d60dfa474f02567d59b9c8c8c2
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b21debdd6baa0a6587318ad861a821840ec6879c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038148"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666696"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB-Firewallunterstützung
 Zum Sichern von in einem Azure Cosmos DB-Datenbankkonto gespeicherten Daten bietet Azure Cosmos DB Unterstützung für ein auf einem Geheimnis basierendes [Autorisierungsmodell](https://msdn.microsoft.com/library/azure/dn783368.aspx), das einen starken hashbasierten Nachrichtenauthentifizierungscode (HMAC) nutzt. Azure Cosmos DB unterstützt nun neben dem auf einem Geheimnis basierenden Autorisierungsmodell durch Richtlinien gesteuerte IP-basierte Access Control für die eingehende Firewallunterstützung. Dieses Modell ähnelt den Firewallregeln eines herkömmlichen Datenbanksystems und bietet zusätzliche Sicherheit für das Azure Cosmos DB-Datenbankkonto. Mit diesem Modell können Sie nun ein Azure Cosmos DB-Datenbankkonto so konfigurieren, dass es nur über eine genehmigte Gruppe von Computern und/oder Clouddiensten zugänglich ist. Für den Zugriff auf Azure Cosmos DB-Ressourcen über diese genehmigten Gruppen von Computern und Diensten muss der Aufrufer weiterhin ein gültiges Autorisierungstoken vorlegen.
@@ -57,7 +57,12 @@ Zugriff auf das Azure-Portal ist standardmäßig aktiviert, wenn Sie die Firewal
 ![Screenshot: Aktivieren des Zugriffs auf das Azure-Portal](./media/firewall-support/enable-azure-portal.png)
 
 ## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>Verbindungen von globalen Azure-Rechenzentren oder Azure-PaaS-Diensten
-In Azure werden PaaS-Dienste wie Azure Stream Analytics, Azure Functions und Azure App Service in Verbindung mit Azure Cosmos DB verwendet. Um den Zugriff auf ein Azure Cosmos DB-Datenbankkonto über diese Art von Diensten zu ermöglichen, deren IP-Adresse nicht sofort verfügbar ist, fügen Sie die IP-Adresse „0.0.0.0“ der Liste der zulässigen IP-Adressen hinzu, die dem Azure Cosmos DB-Datenbankkonto programmgesteuert zugeordnet ist. 
+
+Azure-PaaS-Dienste wie Azure Stream Analytics und Azure Functions werden in Verbindung mit Azure Cosmos DB verwendet. Damit Anwendungen aus anderen Azure-PaaS-Diensten eine Verbindung mit Ihren Azure Cosmos DB-Ressourcen herstellen können, muss eine Firewalleinstellung aktiviert sein. Um diese Firewalleinstellung zu aktivieren, fügen Sie die IP-Adresse 0.0.0.0 zur Liste der zulässigen IP-Adressen hinzu. 0.0.0.0 beschränkt die Verbindungen mit dem Azure Cosmos DB-Konto auf den IP-Adressbereich des Azure-Rechenzentrums. Diese Einstellung erlaubt keinen anderen IP-Adressbereichen den Zugriff auf das Azure Cosmos DB-Konto.
+
+> [!IMPORTANT]
+> Diese Option konfiguriert die Firewall derart, dass alle von Azure ausgehenden Verbindungen zugelassen werden, einschließlich Verbindungen von den Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
+> 
 
 Der Zugriff auf die Verbindungen von globalen Azure-Rechenzentren aus ist standardmäßig aktiviert, wenn Sie die Firewalleinstellung im Azure-Portal in **Ausgewählte Netzwerke** ändern. 
 

@@ -3,19 +3,19 @@ title: Definieren von Datentypen – Azure SQL Data Warehouse | Microsoft-Dokume
 description: Empfehlungen zum Definieren von Tabellendatentypen in Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 4d8a222a6d4cfa4138fe833fb4e9cc895dbc5f65
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: eb469e6a654414b0411f8c45b73658f99a383751
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31523505"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306582"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Tabellendatentypen in Azure SQL Data Warehouse
 Empfehlungen zum Definieren von Tabellendatentypen in Azure SQL Data Warehouse. 
@@ -34,7 +34,7 @@ Durch das Minimieren der Größe von Datentypen wird die Zeilenlänge verkürzt.
 Wenn Sie die Tabellen mit externen PolyBase-Tabellen laden, darf die definierte Länge der Tabellenzeile 1MB nicht überschreiten. Wenn eine Zeile mit Daten variabler Länge 1 MB überschreitet, können Sie die Zeile mit BCP, jedoch nicht mit PolyBase laden.
 
 ## <a name="identify-unsupported-data-types"></a>Identifizieren nicht unterstützter Datentypen
-Wenn Sie die Datenbank aus einer anderen SQL­Datenbank migrieren,treten ggf. Datentypen auf, die in SQL Data Warehouse nicht unterstützt werden. Verwenden Sie diese Abfrage, um nicht unterstützte Datentypen in Ihrem vorhandenen SQL-Schema zu ermitteln.
+Wenn Sie die Datenbank von einer anderen SQL-Datenbank migrieren, kommen unter Umständen einige Datentypen vor, die in SQL Data Warehouse nicht unterstützt werden. Verwenden Sie diese Abfrage, um nicht unterstützte Datentypen in Ihrem vorhandenen SQL-Schema zu ermitteln.
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]

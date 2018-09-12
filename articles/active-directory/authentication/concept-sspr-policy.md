@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 8ec0947d041dc0d4f5423a48a443ab2dd86949e2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162047"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782534"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -23,7 +23,7 @@ In diesem Artikel sind die Kennwortrichtlinien und Komplexitätsanforderungen be
 
 ## <a name="administrator-reset-policy-differences"></a>Unterschiede zu Richtlinien zum Zurücksetzen von Administratorkennwörtern
 
-**Microsoft erzwingt standardmäßige eine starke *Zwei-Gate*-Richtlinie zur Kennwortzurücksetzung für alle Azure-Administratorrollen**. Diese Richtlinie kann von der Richtlinie abweichen, die Sie für Ihre Benutzer definiert haben, und kann nicht geändert werden. Sie sollten die Funktion zum Zurücksetzen des Kennworts immer als Benutzer ohne zugewiesene Azure-Administratorrollen testen.
+**Microsoft erzwingt standardmäßig eine starke *Zwei-Gate*-Richtlinie zur Kennwortzurücksetzung für alle Azure-Administratorrollen**. Diese Richtlinie kann von der Richtlinie abweichen, die Sie für Ihre Benutzer definiert haben, und nicht geändert werden. Sie sollten die Funktion zum Zurücksetzen des Kennworts immer als Benutzer ohne zugewiesene Azure-Administratorrollen testen.
 
 Mit einer Zwei-Gate-Richtlinie haben **Administratoren nicht die Möglichkeit, Sicherheitsfragen zu verwenden**.
 
@@ -76,11 +76,11 @@ Eine Ein-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus einem Elemen
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName-Richtlinien, die für alle Benutzerkonten gelten
 
-Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges, diesem Konto zugeordnetes Benutzerprinzipalnamen-Attribut (UPN, User Principal Name) verfügen. In der folgenden Tabelle sind die Richtlinien aufgeführt, die sowohl für lokale Active Directory-Benutzerkonten, die mit der Cloud synchronisiert werden, als auch für Benutzerkonten gelten, die ausschließlich in der Cloud verwendet werden:
+Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges, diesem Konto zugeordnetes Benutzerprinzipalnamen-Attribut (UPN, User Principal Name) verfügen. In der folgenden Tabelle sind die Richtlinien aufgeführt, die sowohl für lokale Active Directory-Benutzerkonten, die mit der Cloud synchronisiert werden, als auch für Benutzerkonten, die ausschließlich in der Cloud verwendet werden, gelten:
 
 | Eigenschaft | UserPrincipalName-Richtlinien |
 | --- | --- |
-| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> zu erstellen und zu verwalten. - \_ ! \# ^ \~</li></ul> |
+| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> \. - \_ ! \# ^ \~</li></ul> |
 | Unzulässige Zeichen |<ul> <li>Jedes\@\"-Zeichen, das nicht den Benutzernamen und die Domäne trennt.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem \@\"-Symbol enthalten.</li></ul> |
 | Längenbeschränkungen |<ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>Vor dem \@\"-Symbol sind bis zu 64 Zeichen zulässig.</li><li>Nach dem \@\"-Symbol sind bis zu 48 Zeichen zulässig.</li></ul> |
 
@@ -88,7 +88,7 @@ Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges,
 
 In der folgenden Tabelle sind die verfügbaren Kennwortrichtlinieneinstellungen beschrieben, die auf die in Azure AD erstellten und verwalteten Benutzerkonten angewendet werden können:
 
-| Eigenschaft | Requirements (Anforderungen) |
+| Eigenschaft | Anforderungen |
 | --- | --- |
 | Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
 | Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Nur sichere Kennwörter</li></ul> |

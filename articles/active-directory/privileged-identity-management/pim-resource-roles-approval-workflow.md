@@ -11,41 +11,74 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e5cda31af5ac95e7ebe2b858b1d7355ea3f2a6bb
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c661f2662f48c5aaece142cb4a2223ab8a6d0853
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189803"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666590"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Genehmigen oder Ablehnen von Anforderungen für Azure-Ressourcenrollen in PIM
 
-Sie müssen ein Mitglied der Liste mit den genehmigenden Personen sein, um eine Anforderung genehmigen oder ablehnen zu können. 
+Mit Azure AD Privileged Identity Management (PIM) können Sie Rollen konfigurieren, um die Genehmigung für die Aktivierung anzufordern, und einen oder mehrere Benutzer oder Gruppen als delegierte genehmigende Personen auswählen. Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen für Azure-Ressourcenrollen zu genehmigen oder abzulehnen.
 
-1. Wählen Sie in PIM im linken Menü auf der Registerkarte die Option **Anforderungen genehmigen** aus, und suchen Sie nach der Anforderung.
+## <a name="view-pending-requests"></a>Anzeigen ausstehender Anforderungen
 
-   ![Bereich „Anforderungen genehmigen“](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
+Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, wenn Ihre Genehmigung einer Anforderung für eine Azure-Ressourcenrolle aussteht. Sie können diese ausstehenden Anforderungen in PIM anzeigen.
 
-2. Wählen Sie die Anforderung aus, geben Sie eine Begründung für die Entscheidung an, und wählen Sie **Genehmigen** oder **Ablehnen** aus. Die Anforderung wird dann abgeschlossen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-   ![Ausgewählte Anforderung mit detaillierten Informationen](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
+
+1. Klicken Sie auf **Anforderungen genehmigen**.
+
+    ![Azure-Ressourcen – Anforderungen genehmigen](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+
+    Im Abschnitt **Anforderungen für Rollenaktivierungen** wird eine Liste der Anforderungen angezeigt, die Sie noch genehmigen müssen.
+
+## <a name="approve-requests"></a>Genehmigen von Anforderungen
+
+1. Suchen Sie nach der Anforderung, die Sie genehmigen möchten, und klicken Sie darauf. Es wird ein Genehmigungsbereich angezeigt.
+
+    ![Bereich „Anforderungen genehmigen“](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. Geben Sie im Feld **Begründung** einen Grund ein.
+
+1. Klicken Sie auf **Genehmigen**.
+
+    Es wird eine Benachrichtigung mit Ihrer Genehmigung angezeigt.
+
+    ![Genehmigungsbenachrichtigung](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+
+## <a name="deny-requests"></a>Ablehnen von Anforderungen
+
+1. Suchen Sie nach der Anforderung, die Sie ablehnen möchten, und klicken Sie darauf. Es wird ein Genehmigungsbereich angezeigt.
+
+    ![Bereich „Anforderungen genehmigen“](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. Geben Sie im Feld **Begründung** einen Grund ein.
+
+1. Klicken Sie auf **Ablehnen**.
+
+    Es wird eine Benachrichtigung mit Ihrer Ablehnung angezeigt.
 
 ## <a name="workflow-notifications"></a>Workflowbenachrichtigungen
 
-Einige Fakten zu Workflowbenachrichtigungen:
+Nachfolgend finden Sie einige Informationen zu Workflowbenachrichtigungen:
 
 - Alle Mitglieder der Liste mit den genehmigenden Personen werden per E-Mail benachrichtigt, wenn für die Anforderung einer Rolle die Überprüfung aussteht. E-Mail-Benachrichtigungen enthalten einen direkten Link zur Anforderung, damit diese von der genehmigenden Person genehmigt oder abgelehnt werden kann.
-- Anforderungen werden von dem Mitglied bearbeitet, das in der Liste der genehmigenden Personen an erster Stelle steht. 
-- Wenn eine genehmigende Person auf die Anforderung reagiert, werden alle Mitglieder der Liste über die Aktion informiert. 
-- Ressourcenadministratoren werden benachrichtigt, wenn ein genehmigtes Mitglied in seiner Rolle aktiv wird. 
+- Anforderungen werden von dem Mitglied bearbeitet, das in der Liste der genehmigenden Personen an erster Stelle steht.
+- Wenn eine genehmigende Person auf die Anforderung reagiert, werden alle Mitglieder der Liste über die Aktion informiert.
+- Ressourcenadministratoren werden benachrichtigt, wenn ein genehmigtes Mitglied in seiner Rolle aktiv wird.
 
 >[!Note]
 >Wenn ein Ressourcenadministrator der Meinung ist, dass ein genehmigtes Mitglied nicht aktiv sein sollte, kann er die aktive Rollenzuweisung in PIM entfernen. Ressourcenadministratoren werden zwar nur über ausstehende Anforderungen benachrichtigt, wenn sie Mitglieder der Liste mit den genehmigenden Personen sind, aber sie können ausstehende Anforderungen aller Benutzer anzeigen und abbrechen, indem sie diese in PIM aufrufen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Genehmigen oder Ablehnen von Anforderungen für Azure AD-Verzeichnisrollen in PIM](azure-ad-pim-approval-workflow.md)
+- [Verlängern oder Erneuern von Azure-Ressourcenrollen in PIM](pim-resource-roles-renew-extend.md)
 - [E-Mail-Benachrichtigungen in PIM](pim-email-notifications.md)
+- [Genehmigen oder Ablehnen von Anforderungen für Azure AD-Verzeichnisrollen in PIM](azure-ad-pim-approval-workflow.md)

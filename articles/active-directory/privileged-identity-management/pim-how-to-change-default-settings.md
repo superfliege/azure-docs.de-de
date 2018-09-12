@@ -13,18 +13,20 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 20a704a0d5b61134a61b5cbf02a1c71dbc7039e1
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189336"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665433"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM
 
 Ein Administrator für privilegierte Rollen kann Azure AD Privileged Identity Management (PIM) in der Organisation anpassen und hierbei auch die Art und Weise ändern, in der ein Benutzer eine berechtigte Rollenzuweisung aktiviert.
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
+
+Führen Sie diese Schritte aus, um die Einstellungen für eine Azure AD-Verzeichnisrolle zu öffnen.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
@@ -44,19 +46,19 @@ Ein Administrator für privilegierte Rollen kann Azure AD Privileged Identity Ma
 
 ## <a name="activations"></a>Aktivierungen
 
-Der Schieberegler **Aktivierungen** gibt die maximale Zeit in Stunden an, die eine Rolle aktiv bleibt, bevor sie abläuft. Dieser Wert kann zwischen 1 und 72 Stunden liegen.
+Legen Sie mit dem Schieberegler **Aktivierungen** die maximale Zeit in Stunden fest, die eine Rolle aktiv bleibt, bevor sie abläuft. Dieser Wert kann zwischen 1 und 72 Stunden liegen.
 
 ## <a name="notifications"></a>Benachrichtigungen
 
-Mit dem Schalter **Benachrichtigungen** können Sie entscheiden, ob das System E-Mails an Administratoren sendet, um zu bestätigen, dass sie eine Rolle aktiviert haben. Dies kann für die Erkennung von nicht autorisierten oder unzulässigem Aktivierungen nützlich sein.
+Mit dem Schalter **Benachrichtigungen** können Sie angeben, ob das System E-Mails an Administratoren sendet, um zu bestätigen, dass sie eine Rolle aktiviert haben. Dies kann für die Erkennung von nicht autorisierten oder unzulässigem Aktivierungen nützlich sein.
 
 ## <a name="incidentrequest-ticket"></a>Incident/Ticket anfordern
 
-Mit dem Schalter **Incident/Ticket anfordern** können Sie auswählen, ob berechtigte Administratoren eine Ticketnummer angeben müssen, wenn sie ihre Rolle aktivieren. Dies kann nützlich sein, wenn Sie Rollenzugriffe überprüfen.
+Mit dem Schalter **Incident/Ticket anfordern** können Sie angeben, ob berechtigte Administratoren eine Ticketnummer angeben müssen, wenn sie ihre Rolle aktivieren. Dies kann nützlich sein, wenn Sie Rollenzugriffe überprüfen.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Mit dem Schalter **Multi-Factor Authentication** können Sie auswählen, ob Benutzer ihre Identität mit MFA verifizieren müssen, bevor sie ihre Rollen aktivieren können. Sie müssen dies nur einmal pro Sitzung verifizieren, nicht jedes Mal, wenn sie eine Rolle aktivieren. Beachten Sie zwei Tipps, wenn Sie die MFA aktivieren:
+Mit dem Schalter **Multi-Factor Authentication** können Sie angeben, ob Benutzer ihre Identität mit MFA verifizieren müssen, bevor sie ihre Rollen aktivieren können. Sie müssen dies nur einmal pro Sitzung verifizieren, nicht jedes Mal, wenn sie eine Rolle aktivieren. Beachten Sie zwei Tipps, wenn Sie die MFA aktivieren:
 
 * Benutzer, die Microsoft-Konten als E-Mail-Adressen verwenden (in der Regel @outlook.com, aber nicht immer), können sich nicht für Azure MFA registrieren. Wenn Sie Benutzern mit Microsoft-Konten Rollen zuweisen möchten, sollten Sie sie zu permanenten Administratoren machen oder MFA für diese Rolle deaktivieren.
 * Sie können MFA für sehr privilegierte Rollen für Azure AD und Office 365 nicht deaktivieren. Dies ist ein Sicherheitsfeature, da diese Rollen sorgfältig geschützt werden sollten:  
@@ -80,13 +82,13 @@ Mit dem Schalter **Multi-Factor Authentication** können Sie auswählen, ob Benu
   * Skype for Business-Administrator  
   * Benutzerkontoadministrator  
 
-Weitere Informationen zum Verwenden von MFA mit PIM finden Sie unter [Anfordern der mehrstufigen Authentifizierung für Azure AD-Verzeichnisrollen in PIM](pim-how-to-require-mfa.md).
+Weitere Informationen finden Sie unter [Multi-Factor Authentication (MFA) und PIM](pim-how-to-require-mfa.md).
 
 ## <a name="require-approval"></a>Genehmigung anfordern
 
-Mit dem Schalter **Genehmigung anfordern** können Sie auswählen, ob zur Aktivierung dieser Rolle eine Genehmigung erforderlich ist.
+Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, gehen Sie wie folgt vor.
 
-1. Wenn Sie den Schalter auf **Aktiviert** einstellen, wird der Bereich erweitert und zeigt Optionen zum Auswählen von genehmigenden Personen an.
+1. Legen Sie den Schalter **Genehmigung anfordern** auf **Aktiviert** fest. Der Bereich wird erweitert und zeigt Optionen zum Auswählen von genehmigenden Personen an.
 
     ![Azure AD-Verzeichnisrollen – Einstellungen: Genehmigung anfordern](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
@@ -107,5 +109,5 @@ Mit dem Schalter **Genehmigung anfordern** können Sie auswählen, ob zur Aktivi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anfordern der mehrstufigen Authentifizierung für Azure AD-Verzeichnisrollen in PIM](pim-how-to-require-mfa.md)
+- [Zuweisen von Azure AD-Verzeichnisrollen in PIM](pim-how-to-add-role-to-user.md)
 - [Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-configure-security-alerts.md)

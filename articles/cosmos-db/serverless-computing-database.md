@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858805"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696818"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions
 
@@ -31,7 +31,7 @@ Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverl
 * Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an einen Azure Cosmos DB-Container. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
 
 > [!NOTE]
-> Derzeit funktionieren der Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen ausschließlich mit SQL- und Graph-API-Konten.
+> Derzeit funktionieren der Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen ausschließlich mit SQL- und Gremlin-API-Konten.
 
 In der folgenden Abbildung wird jede einzelne dieser drei Integrationen veranschaulicht: 
 
@@ -82,7 +82,7 @@ In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario 
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>Gaming-Anwendungsfall: Azure Cosmos DB-Trigger und Ausgabebindung
 
-Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Graph-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB-SQL-Datenbank] schreiben, aus der sie leicht abgerufen werden können.
+Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Gremlin-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB-SQL-Datenbank] schreiben, aus der sie leicht abgerufen werden können.
 
 **Implementierung:** Verwenden eines Azure Cosmos DB-Triggers und einer Ausgabebindung
 

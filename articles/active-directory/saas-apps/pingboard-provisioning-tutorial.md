@@ -16,16 +16,16 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: c5cc20b4f20e3a4f746ab15aa5f139c8e7201a2c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447165"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382532"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte beschrieben, die Sie ausführen müssen, um die automatische Bereitstellung und Bereitstellungsaufhebung von Benutzerkonten in Azure Active Directory (Azure AD) und Pingboard zu ermöglichen.
+Zweck dieses Tutorials ist die Beschreibung der Schritte, die Sie ausführen müssen, um die automatische Bereitstellung und Bereitstellungsaufhebung von Benutzerkonten in Azure Active Directory (Azure AD) und Pingboard zu ermöglichen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -36,7 +36,7 @@ Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits ü
 *   Ein Benutzerkonto in Pingboard mit Administratorrechten 
 
 > [!NOTE] 
-> Die Azure AD-Bereitstellungsintegration basiert auf der [Pingboard-API](`https://your_domain.pingboard.com/scim/v2`), die für Ihr Konto verfügbar ist.
+> Die Azure AD-Bereitstellungsintegration basiert auf der [Pingboard-API](https://pingboard.docs.apiary.io/#), die für Ihr Konto verfügbar ist.
 
 ## <a name="assign-users-to-pingboard"></a>Zuweisen von Benutzern zu Pingboard
 
@@ -81,7 +81,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
     e. Kopieren Sie das Token unter **OAuth Bearer Token** (OAuth-Bearertoken), und geben Sie es in das Feld **Geheimes Token** ein.
 
-1. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um sich zu vergewissern, dass Azure AD eine Verbindung mit Ihrer Pingboard-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Pingboard-Konto über Administratorrechte verfügt, und wiederholen Sie den Schritt **Verbindung testen**.
+1. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um zu testen, ob Azure AD eine Verbindung mit Ihrer Pingboard-App herstellen kann. Wenn die Verbindung nicht möglich ist, testen Sie, ob Ihr Pingboard-Konto über Administratorrechte verfügt, und wiederholen Sie den Schritt **Verbindung testen**.
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das darunter befindliche Kontrollkästchen.
 

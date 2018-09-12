@@ -14,14 +14,14 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/09/2017
+ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7dbbfb2d97b7015118edca3db3ae050ad07c51ee
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38531578"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667446"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Manuelles Konfigurieren von AlwaysOn-Verfügbarkeitsgruppen auf virtuellen Azure-Computern
 
@@ -45,7 +45,7 @@ Die folgende Tabelle gibt Aufschluss über die Voraussetzungen, die erfüllt sei
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Dateifreigabe für Clusterzeuge |  
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Dienstkonto | Domänenkonto |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-Agent-Dienstkonto | Domänenkonto |  
-|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Geöffnete Firewallports | - SQL Server: **1433** für Standardinstanz <br/> - Datenbankspiegelungsendpunkt: **5022** oder ein anderer verfügbarer Port <br/> - Azure Load Balancer-Test: **59999** oder ein anderer verfügbarer Port |
+|![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Geöffnete Firewallports | - SQL Server: **1433** für Standardinstanz <br/> - Datenbankspiegelungsendpunkt: **5022** oder ein anderer verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Verfügbarkeitsgruppen: **59999** oder ein anderer verfügbarer Port <br/> - Integritätstest für IP-Adresse des Lastenausgleichs für Hauptressourcen des Clusters: **58888** oder ein anderer verfügbarer Port |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Hinzufügen des Failoverclustering-Features | Dieses Feature wird von beiden SQL Server-Instanzen benötigt. |
 |![Quadrat](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Domänenkonto für die Installation | - Lokaler Administrator in jeder SQL Server-Instanz <br/> - Mitglied der festen SQL Server-Serverrolle „SysAdmin“ für jede Instanz von SQL Server  |
 
@@ -78,7 +78,7 @@ Wenn die Voraussetzungen erfüllt sind, müssen Sie zunächst einen Windows Serv
    | Zugriffspunkt für die Clusterverwaltung |Geben Sie unter **Clustername** einen Clusternamen ein (beispielsweise **SQLAGCluster1**).|
    | Bestätigung |Standardeinstellungen verwenden, es sei denn, Sie verwenden Speicherplätze. Siehe den Hinweis im Anschluss an diese Tabelle. |
 
-### <a name="set-the-cluster-ip-address"></a>Festlegen der Cluster-IP-Adresse
+### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Festlegen der IP-Adresse des Windows Server-Failoverclusters
 
 1. Scrollen Sie im **Failovercluster-Manager** nach unten bis zu **Hauptressourcen des Clusters**, und erweitern Sie die Clusterdetails. Die Ressource **Name** und **IP-Adresse** befinden sich im Zustand **Fehler**. Die IP-Adressressource kann nicht online geschaltet werden, da dem Cluster die gleiche IP-Adresse zugewiesen ist wie dem Computer selbst. Es liegt also eine doppelte Adresse vor.
 
@@ -343,13 +343,15 @@ Sie verfügen nun über eine Verfügbarkeitsgruppe mit Replikaten in zwei Instan
 
 Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe einen Lastenausgleich. Der Lastenausgleich speichert die IP-Adressen für die Verfügbarkeitsgruppenlistener und den Windows Server-Failovercluster. In diesem Abschnitt erfahren Sie, wie Sie den Lastenausgleich über das Azure-Portal erstellen.
 
+Bei Azure Load Balancer kann es sich entweder um Load Balancer Standard oder Load Balancer Basic handeln. Load Balancer Standard verfügt über mehr Funktionen als Load Balancer Basic. Für eine Verfügbarkeitsgruppe ist Load Balancer Standard erforderlich, wenn Sie eine Verfügbarkeitszone (anstelle einer Verfügbarkeitsgruppe) verwenden. Ausführliche Informationen zu den Unterschieden zwischen den Load Balancer-Typen finden Sie unter [Vergleich der Load Balancer-SKUs](../../../load-balancer/load-balancer-overview.md#skus).
+
 1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit Ihren SQL Server-Instanzen, und klicken Sie auf **+ Hinzufügen**.
-2. Suchen Sie nach **Load Balancer**. Wählen Sie den von Microsoft veröffentlichten Lastenausgleich aus.
+1. Suchen Sie nach **Load Balancer**. Wählen Sie den von Microsoft veröffentlichten Lastenausgleich aus.
 
    ![Verfügbarkeitsgruppe im Failovercluster-Manager](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1.  Klicken Sie auf **Create**.
-3. Konfigurieren Sie den Load Balancer mit folgenden Parametern: 
+1. Klicken Sie auf **Create**.
+1. Konfigurieren Sie den Load Balancer mit folgenden Parametern: 
 
    | Einstellung | Field |
    | --- | --- |
@@ -358,7 +360,7 @@ Auf virtuellen Azure-Computern benötigt eine SQL Server-Verfügbarkeitsgruppe e
    | **Virtuelles Netzwerk** |Verwenden Sie den Namen des virtuellen Azure-Netzwerks. |
    | **Subnetz** |Verwenden Sie den Namen des Subnetzes, in dem sich der virtuelle Computer befindet.  |
    | **IP-Adresszuweisung** |statischen |
-   | **IP-Adresse** |Verwenden Sie eine verfügbare Adresse aus dem Subnetz. Beachten Sie, dass diese von Ihrer Cluster-IP-Adresse abweicht. |
+   | **IP-Adresse** |Verwenden Sie eine verfügbare Adresse aus dem Subnetz. Verwenden Sie diese Adresse für den Verfügbarkeitsgruppenlistener. Beachten Sie, dass sich diese von Ihrer Cluster-IP-Adresse unterscheidet.  |
    | **Abonnement** |Verwenden Sie das gleiche Abonnement wie der virtuelle Computer. |
    | **Location** |Verwenden Sie den gleichen Standort wie der virtuelle Computer. |
 
@@ -376,7 +378,9 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
    ![Navigieren zum Lastenausgleich in der Ressourcengruppe](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. Klicken Sie auf den Lastenausgleich, auf **Back-End-Pools** und anschließend auf **+ Hinzufügen**. 
+1. Klicken Sie auf den Lastenausgleich, auf **Back-End-Pools** und anschließend auf **+ Hinzufügen**.
+
+1. Geben Sie einen Namen für den Back-End-Pool ein.
 
 1. Ordnen Sie den Back-End-Pool der Verfügbarkeitsgruppe mit den virtuellen Computern zu.
 
@@ -391,7 +395,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Klicken Sie auf den Lastenausgleich, auf **Integritätstests** und anschließend auf **+ Hinzufügen**.
 
-1. Konfigurieren Sie den Integritätstest wie folgt:
+1. Legen Sie den Integritätstest für den Listener wie folgt fest:
 
    | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
@@ -407,14 +411,14 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Klicken Sie auf den Lastenausgleich, auf **Load balancing rules** (Lastenausgleichsregeln) und anschließend auf **+Hinzufügen**.
 
-1. Konfigurieren Sie die Lastenausgleichsregeln wie folgt:
+1. Konfigurieren Sie die Lastenausgleichsregeln für den Listener wie folgt:
    | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Erstellen des Lastenausgleichs erstellt haben. |
    | **Protokoll** | Wählen Sie „TCP“ aus. |TCP |
-   | **Port** | Verwenden des Ports für den Verfügbarkeitsgruppenlistener | 1435 |
-   | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 1435 |
+   | **Port** | Verwenden des Ports für den Verfügbarkeitsgruppenlistener | 1433 |
+   | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 1433 |
    | **Test** |Der Name, den Sie für den Test angegeben haben. | SQLAlwaysOnEndPointProbe |
    | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
    | **Leerlauftimeout** | Gibt an, wie viele Minuten eine TCP-Verbindung geöffnet bleiben soll. | 4 |
@@ -423,17 +427,17 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
    > [!WARNING]
    > Direct Server Return wird bei der Erstellung festgelegt. Diese Einstellung kann nicht geändert werden.
 
-1. Klicken Sie auf **OK**, um die Lastenausgleichsregeln festzulegen.
+1. Klicken Sie auf **OK**, um die Lastenausgleichsregeln für den Listener festzulegen.
 
-### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>Hinzufügen der Front-End-IP-Adresse für den WSFC
+### <a name="add-the-cluster-core-ip-address-for-the-windows-server-failover-cluster-wsfc"></a>Fügen Sie die IP-Adresse der Hauptressourcen des Clusters für den Windows Server-Failovercluster (WSFC) hinzu.
 
-Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein. 
+Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
-1. Fügen Sie im Portal eine neue Frontend-IP-Konfiguration für den WSFC hinzu. Verwenden Sie die IP-Adresse, die Sie für den WSFC in den Hauptressourcen des Clusters konfiguriert haben. Legen Sie die IP-Adresse als statisch fest. 
+1. Klicken Sie im Portal für den gleichen Azure Load Balancer auf **Front-End-IP-Konfiguration** und dann auf **+Hinzufügen**. Verwenden Sie die IP-Adresse, die Sie für den WSFC in den Hauptressourcen des Clusters konfiguriert haben. Legen Sie die IP-Adresse als statisch fest.
 
-1. Klicken Sie auf den Lastenausgleich, auf **Integritätstests** und anschließend auf **+ Hinzufügen**.
+1. Klicken Sie für den Lastenausgleich auf **Integritätstests** und anschließend auf **+Hinzufügen**.
 
-1. Konfigurieren Sie den Integritätstest wie folgt:
+1. Legen Sie den Integritätstest für die IP-Adresse der Hauptressourcen des WSFC-Clusters wie folgt fest:
 
    | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
@@ -447,13 +451,13 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Legen Sie die Lastenausgleichsregeln fest. Klicken Sie auf **Lastenausgleichsregeln** und auf **+Hinzufügen**.
 
-1. Konfigurieren Sie die Lastenausgleichsregeln wie folgt:
+1. Konfigurieren Sie die Lastenausgleichsregeln für die IP-Adresse der Hauptressourcen des Clusters wie folgt:
    | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
-   | **Name** | Text | WSFCPointListener |
-   | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. |
+   | **Name** | Text | WSFCEndPoint |
+   | **Front-End-IP-Adresse** | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. Diese unterscheidet sich von der IP-Adresse des Listeners. |
    | **Protokoll** | Wählen Sie „TCP“ aus. |TCP |
-   | **Port** | Verwenden des Ports für den Verfügbarkeitsgruppenlistener | 58888 |
+   | **Port** | Verwenden Sie den Port für die Cluster-IP-Adresse. Dies ist ein verfügbarer Port, der nicht als Listenertestport verwendet wird. | 58888 |
    | **Back-End-Port** | Dieses Feld wird nicht verwendet, wenn für Direct Server Return die Option „Floating IP“ festgelegt ist. | 58888 |
    | **Test** |Der Name, den Sie für den Test angegeben haben. | WSFCEndPointProbe |
    | **Session Persistence** (Sitzungspersistenz) | Dropdownliste | **Keine** |
@@ -486,7 +490,7 @@ Legen Sie in SQL Server Management Studio den Listenerport fest.
 
 1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie auf **Eigenschaften**.
 
-1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für „$EndpointPort“ (Standardwert: 1433). Klicken Sie anschließend auf **OK**.
+1. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. 1433 ist die Standardeinstellung. Klicken Sie dann auf **OK**.
 
 Sie verfügen nun über eine SQL Server-Verfügbarkeitsgruppe auf virtuellen Azure-Computern im Azure Resource Manager-Modus.
 
@@ -498,38 +502,20 @@ Gehen Sie wie folgt vor, um die Verbindung zu testen:
 
 1. Testen Sie die Verbindung mithilfe des **sqlcmd** -Hilfsprogramms. Das folgende Skript stellt beispielsweise über den Listener eine **sqlcmd** -Verbindung mit Windows-Authentifizierung mit dem primären Replikat her:
 
-    ```
-    sqlcmd -S <listenerName> -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName> -E
+  ```
 
-    Geben Sie den Port in der Verbindungszeichenfolge an, wenn der Listener einen anderen Port als den Standardport (1433) verwendet. Mit dem folgenden sqlcmd-Befehl wird beispielsweise eine Verbindung mit einem Listener über Port 1435 hergestellt:
+  Geben Sie den Port in der Verbindungszeichenfolge an, wenn der Listener einen anderen Port als den Standardport (1433) verwendet. Mit dem folgenden sqlcmd-Befehl wird beispielsweise eine Verbindung mit einem Listener über Port 1435 hergestellt:
 
-    ```
-    sqlcmd -S <listenerName>,1435 -E
-    ```
+  ```cmd
+  sqlcmd -S <listenerName>,1435 -E
+  ```
 
 Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, die das primäre Replikat hostet.
 
 > [!TIP]
 > Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server geöffnet ist. Beide Server benötigen eine eingehende Regel für den TCP-Port, den Sie verwenden möchten. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](http://technet.microsoft.com/library/cc753558.aspx).
->
->
-
-
-
-<!--**Notes**: *Notes provide just-in-time info: A Note is “by the way” info, an Important is info users need to complete a task, Tip is for shortcuts. Don’t overdo*.-->
-
-
-<!--**Procedures**: *This is the second “step." They often include substeps. Again, use a short title that tells users what they’ll do*. *("Configure a new web project.")*-->
-
-<!--**UI**: *Note the format for documenting the UI: bold for UI elements and arrow keys for sequence. (Ex. Click **File > New > Project**.)*-->
-
-<!--**Screenshot**: *Screenshots really help users. But don’t include too many since they’re difficult to maintain. Highlight areas you are referring to in red.*-->
-
-<!--**No. of steps**: *Make sure the number of steps within a procedure is 10 or fewer. Seven steps is ideal. Break up long procedure logically.*-->
-
-
-<!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

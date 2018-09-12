@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6be00937a6645fbdd266ac0b1aa1ce95ecc6c3d9
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43039291"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301916"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances
 
@@ -68,7 +68,7 @@ Reservierte VM-Instanzen sind für die meisten VM-Größen bis auf einige Ausnah
 
 Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten virtuellen Computer angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie können den Bereich der Reservierung über das [Azure-Portal](https://portal.azure.com), PowerShell, die CLI oder die API aktualisieren.
 
-Informationen zum Verwalten einer Reservierung finden Sie unter [Verwalten von reservierten Instanzen in Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
+Informationen zum Verwalten einer Reservierung finden Sie unter [Verwalten von Azure-Reservierungen](../articles/billing/billing-manage-reserved-vm-instance.md).
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
@@ -77,7 +77,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-- [Nicht in reservierten Azure-Instanzen enthaltene Windows-Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+- [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md)
 - [Verkaufen von Microsoft Azure Reserved VM Instances](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren

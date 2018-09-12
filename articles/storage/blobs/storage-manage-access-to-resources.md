@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398817"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782007"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Verwalten des anonymen Lesezugriffs auf Container und Blobs
 Sie können anonymen öffentlichen Lesezugriff auf einen Container und dessen Blobs in Azure Blob Storage aktivieren. Auf diese Weise können Sie schreibgeschützten Zugriff auf diese Ressourcen gewähren, ohne Ihren Kontoschlüssel freizugeben und eine Shared Access Signature (SAS) zu erfordern.
@@ -39,7 +39,7 @@ Sie können Folgendes verwenden, um Containerberechtigungen festzulegen:
 Um Containerberechtigungen im [Azure-Portal](https://portal.azure.com) festzulegen, führen Sie diese Schritte aus:
 
 1. Öffnen Sie im Portal das Blatt **Speicherkonto**. Sie finden Ihr Speicherkonto, indem Sie auf dem Menüblatt des Hauptportals die Option **Speicherkonten** auswählen.
-1. Wählen Sie auf dem Menüblatt unter **BLOB-DIENST** die Option **Container** aus.
+1. Wählen Sie auf dem Menüblatt unter **BLOB-DIENST** die Option **Blobs** aus.
 1. Klicken Sie mit der rechten Maustaste auf die Containerzeile, oder wählen Sie die Auslassungspunkte aus, um das **Kontextmenü** des Containers zu öffnen.
 1. Wählen Sie im Kontextmenü den Befehl **Zugriffsrichtlinie** aus.
 1. Wählen Sie im Dropdownmenü einen **Zugriffstyp** aus.

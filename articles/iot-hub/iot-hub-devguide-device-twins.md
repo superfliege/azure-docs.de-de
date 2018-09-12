@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: e94b023275f3992bea9595195688eebf42f0f229
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b5e0a0caacab2413b640c58575673e555eeb76a4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186787"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288277"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -254,7 +254,7 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
     }
     ```
 
-* Alle Zeichenfolgenwerte können höchstens 4 KB lang sein.
+* Alle Zeichenfolgenwerte können höchstens 512Byte lang sein.
 
 ## <a name="device-twin-size"></a>Größe des Gerätezwillings
 IoT Hub erzwingt eine Größenbegrenzung von je 8 KB für die jeweiligen Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
@@ -354,6 +354,7 @@ Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie
 
 * [Verwenden des Gerätezwillings][lnk-twin-tutorial]
 * [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties]
+* [Geräteverwaltung mit Azure IoT Toolkit für VS Code][lnk-twin-vscode]
 
 <!-- links and images -->
 
@@ -377,6 +378,7 @@ Um einige der in diesem Artikel beschriebenen Konzepte auszuprobieren, sehen Sie
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-properties]: tutorial-device-twins.md
+[lnk-twin-vscode]: iot-hub-device-management-iot-toolkit.md
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow

@@ -1,25 +1,24 @@
 ---
 title: Installieren eines lokalen Datengateways – Azure Logic Apps | Microsoft-Dokumentation
-description: Hier wird erläutert, wie Sie das lokale Datengateway herunterladen und installieren, damit Sie über Logik-Apps lokal auf Daten zugreifen können.
+description: Bevor Sie über Azure Logic Apps lokal auf Daten zugreifen können, müssen Sie das lokale Datengateway herunterladen und installieren.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503647"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842446"
 ---
-# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure-Logik-Apps
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
-Damit Sie eine Verbindung zwischen Ihren Logik-Apps und lokalen Datenquellen herstellen können, müssen Sie das lokale Datengateway auf einen lokalen Computer herunterladen und installieren. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen (nicht cloudbasierten) Datenquellen und Ihren Logik-Apps bereitstellt. In diesem Artikel wird gezeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten können. 
+Bevor Sie eine Verbindung mit lokalen Datenquellen aus Azure Logic Apps herstellen können, müssen Sie das lokale Datengateway herunterladen und auf einem lokalen Computer installieren. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen (nicht cloudbasierten) Datenquellen und Ihren Logik-Apps bereitstellt. In diesem Artikel wird gezeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten können. 
 
 Sie können die gleiche Gatewayinstallation für andere Dienste verwenden, etwa für Power BI, Microsoft Flow, PowerApps und Azure Analysis Services. Erfahren Sie mehr darüber, [wie das Datengateway funktioniert](#gateway-cloud-service).
 
@@ -52,7 +51,11 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein [Geschäfts-, Schul- oder Unikonto](../active-directory/fundamentals/sign-up-organization.md) mit einem [Azure-Abonnement](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer). Während der Gatewayinstallation melden Sie sich bei diesem Konto an und können die Gatewayinstallation Ihrem Azure-Abonnement zuordnen. Beim Erstellen einer Azure-Ressource für Ihre Gatewayinstallation im Azure-Portal verwenden Sie später ebenfalls das gleiche Konto. Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>.
+* Ein [Geschäfts-, Schul- oder Unikonto](../active-directory/fundamentals/sign-up-organization.md) mit einem [Azure-Abonnement](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) 
+
+  Während der Gatewayinstallation melden Sie sich bei diesem Konto an und können die Gatewayinstallation Ihrem Azure-Abonnement zuordnen. 
+  Beim Erstellen einer Azure-Ressource für Ihre Gatewayinstallation im Azure-Portal verwenden Sie später ebenfalls das gleiche Konto. 
+  Wenn Sie noch kein Azure-Abonnement haben, <a href="https://azure.microsoft.com/free/" target="_blank">melden Sie sich für ein kostenloses Azure-Konto an</a>.
 
 * Dies sind die Anforderungen für den lokalen Computer:
 
@@ -72,8 +75,7 @@ Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den 
     > [!TIP]
     > Um Wartezeiten zu minimieren, können Sie das Gateway so nah wie möglich zur Datenquelle oder auf demselben Computer installieren, vorausgesetzt, Sie haben die Berechtigungen.
 
-  * Installieren Sie das Gateway auf einem Computer, der *nicht* ausgeschaltet oder in den Energiesparmodus versetzt wird oder eine Internetverbindung herstellt. Ansonsten kann das Gateway nicht ausgeführt werden. 
-  Darüber hinaus kann die Gatewayleistung bei Einsatz eines Drahtlosnetzwerks ggf. beeinträchtigt werden.
+  * Installieren Sie das Gateway auf einem Computer, der mit dem Internet verbunden ist, immer eingeschaltet ist und sich *nicht* im Energiesparmodus befindet. Andernfalls kann das Gateway nicht ausgeführt werden. Darüber hinaus kann die Leistung bei Einsatz eines Drahtlosnetzwerks ggf. beeinträchtigt werden.
 
   * Während der Installation können Sie sich nur mit einem von Azure Active Directory (Azure AD) verwalteten [Geschäfts-, Schul- oder Unikonto](../active-directory/sign-up-organization.md) anmelden, nicht mit einem Microsoft-Konto. 
   Stellen Sie außerdem sicher, dass es sich dabei um kein Azure B2B-Konto (Gastkonto) handelt. 

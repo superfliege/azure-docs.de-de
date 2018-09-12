@@ -8,12 +8,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/03/2018
-ms.openlocfilehash: 32e73918b2dd98822d42d74002b705ff730145d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30902973"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699109"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
  
@@ -23,7 +23,7 @@ Der Kompatibilitätsgrad stellt sicher, dass vorhandene Aufträge ohne Fehler au
  
 ## <a name="set-a-compatibility-level"></a>Festlegen eines Kompatibilitätsgrads 
 
-Der Kompatibilitätsgrad steuert das Laufzeitverhalten eines Stream Analytics-Auftrags. Sie können den Kompatibilitätsgrad für einen Stream Analytics-Auftrag über das Portal oder mithilfe des [REST-API-Aufrufs „create job“](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job) festlegen. Azure Stream Analytics unterstützt zurzeit zwei Kompatibilitätsgrade: 1.0 und 1.1. Standardmäßig ist der Kompatibilitätsgrad auf „1.0“ festgelegt, der mit der allgemeinen Verfügbarkeit von Azure Stream Analytics eingeführt wurde. Navigieren Sie zum Aktualisieren des Standardwerts zum vorhandenen Stream Analytics-Auftrag. Wählen Sie die Option **Kompatibilitätsgrad** im Abschnitt **Konfigurieren** aus, und ändern Sie den Wert. 
+Der Kompatibilitätsgrad steuert das Laufzeitverhalten eines Stream Analytics-Auftrags. Sie können den Kompatibilitätsgrad für einen Stream Analytics-Auftrag über das Portal oder mithilfe des [REST-API-Aufrufs „create job“](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job) festlegen. Azure Stream Analytics unterstützt zurzeit zwei Kompatibilitätsgrade: „1.0“ und „1.1“. Standardmäßig ist der Kompatibilitätsgrad auf „1.0“ festgelegt, der mit der allgemeinen Verfügbarkeit von Azure Stream Analytics eingeführt wurde. Navigieren Sie zum Aktualisieren des Standardwerts zum vorhandenen Stream Analytics-Auftrag. Wählen Sie die Option **Kompatibilitätsgrad** im Abschnitt **Konfigurieren** aus, und ändern Sie den Wert. 
 
 Sie müssen den Auftrag beenden, bevor Sie den Kompatibilitätsgrad aktualisieren. Der Kompatibilitätsgrad kann nicht aktualisiert werden, wenn der Auftrag ausgeführt wird. 
 
@@ -40,7 +40,7 @@ Beim Kompatibilitätsgrad 1.1 wurden die folgenden grundlegenden Änderungen ein
 
   * **Vorgängerversionen:** Azure Stream Analytics verwendete DataContractSerializer, damit der Inhalt der Meldung XML-Tags enthielt. Beispiel: 
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ “SensorId”:”1”, “Temperature”:64\}\u0001 
+   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001 
 
   * **Aktuelle Version:** Der Nachrichteninhalt enthält den Datenstrom direkt und ohne weitere Tags. Beispiel: 
   

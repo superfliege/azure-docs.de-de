@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/25/2018
 ms.author: saurse
-ms.openlocfilehash: e7a63167285c06fdfe632e7d45d9fddd3cca7842
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2c8978cfba8fc56d4dbc565cb3a91c75d9d54679
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248521"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700194"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent-issues"></a>Behandeln von Problemen mit dem Microsoft Azure Recovery Services-Agent (MARS)
 ## <a name="recommended-steps"></a>Empfohlene Schritte
@@ -66,7 +66,10 @@ Führen Sie die folgenden Schritte aus, wenn geplante Sicherungen nicht automati
 <li>Doppelklicken Sie auf die Aufgabe „Microsoft-OnlineBackup“, und wechseln Sie zur Registerkarte „Trigger“.
 <li>Überprüfen Sie, ob der „Status“ der Aufgabe „Aktiviert“ lautet. Wenn das nicht der Fall ist, klicken Sie auf „Bearbeiten“, und aktivieren Sie das Kontrollkästchen „Aktiviert“.
 <li>Navigieren Sie auf der Registerkarte *Allgemein* zum Abschnitt *Sicherheitsoptionen*.
-<li>Überprüfen Sie, ob das Benutzerkonto, das zum Ausführen der Aufgabe ausgewählt wurde, *SYSTEM* oder die lokale Administratorgruppe auf dem Server ist. > [!TIP] Es wird empfohlen, den Server neu zu starten, nachdem die obigen Schritten ausgeführt wurden, um sicherzustellen, dass vorgenommene Änderungen konsistent angewendet werden.
+<li>Stellen Sie sicher, dass das für die Ausführung der Aufgabe ausgewählte Benutzerkonto entweder *SYSTEM* oder die Gruppe „Lokale Administratoren“ auf dem Server ist.
+
+> [!TIP]
+> Es wird empfohlen, den Server nach Durchführung der oben genannten Schritte neu zu starten, um sicherzustellen, dass die vorgenommenen Änderungen durchgängig übernommen werden.
 
 
 ## <a name="troubleshooting-restore-issues"></a>Behandeln von Wiederherstellungsproblemen

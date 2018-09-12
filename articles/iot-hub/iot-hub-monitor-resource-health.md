@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: kgremban
-ms.openlocfilehash: c7d8631a8e7b99cca8f84ea1011c361db01e399e
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 4f7eefc7d6b067c360fdc3ce12b9a7ae36080bd8
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141548"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336873"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Schnelle Überwachung der Integrität von Azure IoT Hub und Diagnose von Problemen
 
@@ -45,6 +45,9 @@ Azure Monitor verfolgt verschiedene Vorgänge nach, die in IoT Hub auftreten. Je
 #### <a name="connections"></a>Verbindungen
 
 Die Kategorie für Verbindungen verfolgt Ereignisse zum Herstellen und Trennen von Verbindungen mit einem IoT Hub sowie Fehler nach. Das Nachverfolgen dieser Kategorie ist nützlich zum Bestimmen nicht autorisierter Verbindungsversuche und zum Nachverfolgen, wann eine Verbindung mit Geräten in Bereichen mit schlechter Konnektivität unterbrochen wird.
+
+> [!NOTE]
+> Überprüfen Sie den [Gerätetakt][lnk-devguide-heartbeat], um zuverlässige Informationen zum Verbindungsstatus von Geräten zu erhalten.
 
 ```json
 {
@@ -334,3 +337,4 @@ Weitere Informationen zum Interpretieren von Integritätsdaten finden Sie unter 
 [lnk-AM-schemas]: ../monitoring-and-diagnostics/monitoring-diagnostic-logs-schema.md
 [lnk-ARH-checks]: ../service-health/resource-health-checks-resource-types.md
 [lnk-monitoring-notifications]: iot-hub-monitoring-notifications-with-azure-logic-apps.md
+[lnk-devguide-heartbeat]: iot-hub-devguide-identity-registry.md#device-heartbeat

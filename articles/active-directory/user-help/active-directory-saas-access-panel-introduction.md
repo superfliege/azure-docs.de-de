@@ -1,6 +1,6 @@
 ---
-title: Was ist der Zugriffsbereich in Azure Active Directory? | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Varianten des Zugriffsbereichs (Webbrowser, Android-App, iPhone- und iPad-App) zum Zugreifen auf SaaS-Apps verwenden.
+title: Was ist das Portal „Meine Apps“ in Azure Active Directory? | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Varianten des Portals „Meine Apps“ (Webbrowser, Android-App, iPhone- und iPad-App) zum Zugreifen auf SaaS-Apps verwenden.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42139963"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302276"
 ---
-# <a name="what-is-the-access-panel"></a>Was ist der Zugriffsbereich?
+# <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
 
-Der Zugriffsbereich ist ein webbasiertes Portal. Wenn Sie über ein Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) verfügen, können Sie über den Zugriffsbereich cloudbasierte Anwendungen anzeigen und starten, für die Ihnen ein Azure AD-Administrator Zugriff gewährt hat. Sie können über den Zugriffsbereich auch Self-Service-Funktionen für die Gruppen- und App-Verwaltung nutzen.
+Wenn Sie über ein Geschäfts-, Schul- oder Unikonto in Azure Active Directory (Azure AD) verfügen, können Sie über da Portal „Meine Apps“ cloudbasierte Anwendungen anzeigen und starten, für die Ihnen ein Azure AD-Administrator Zugriff gewährt hat. Sie können über das Portal „Meine Apps“ auch Self-Service-Funktionen für die Gruppen- und App-Verwaltung nutzen.
 
-Der Zugriffsbereich ist vom Azure-Portal getrennt. Er kann auch ohne Azure-Abonnement verwendet werden.
+Das Portal „Meine Apps“ ist vom Azure-Portal getrennt. Er kann auch ohne Azure-Abonnement verwendet werden.
 
-![Zugriffsbereich][1] Über den Zugriffsbereich können Sie einige Ihrer Profileinstellungen bearbeiten und folgende Aktionen durchführen:
+![Portal „Meine Apps“:][1] Über das Portal „Meine Apps“ können Sie einige Ihrer Profileinstellungen bearbeiten und folgende Aktionen durchführen:
 
 - Ändern des Kennworts, das einem Geschäfts-, Schul- oder Unikonto zugeordnet ist.
 
@@ -39,12 +39,9 @@ Der Zugriffsbereich ist vom Azure-Portal getrennt. Er kann auch ohne Azure-Abonn
 
 - Selbstständiges Verwalten von Gruppen. Administratoren können Sicherheitsgruppen erstellen und verwalten und die Mitgliedschaft in Sicherheitsgruppen in Azure AD anfordern. Weitere Informationen finden Sie unter [Self-Service-Gruppenverwaltung für Benutzer in Azure AD](../users-groups-roles/groups-self-service-management.md) und [Verwalten Ihrer Gruppen](../fundamentals/active-directory-manage-groups.md).
 
+## <a name="access-the-myapps-portal"></a>Zugreifen auf das Portal „Meine Apps“
 
-
-
-## <a name="access-the-access-panel"></a>Zugreifen auf den Zugriffsbereich
-
-Auf den Zugriffsbereich können Sie unter `http://myapps.microsoft.com` zugreifen.
+Auf das Portal „Meine Apps“ können Sie unter `http://myapps.microsoft.com` zugreifen.
 
 Wenn Sie benutzerdefiniertes Branding für Ihre Anmeldeseite konfiguriert haben, können Sie das Branding laden, indem Sie die Domäne Ihrer Organisation an die URL anhängen (Beispiel: `http://myapps.microsoft.com/<your domain>.com`).
 
@@ -54,7 +51,7 @@ Geben Sie diese URL an alle Benutzer weiter, die sich bei den in Azure AD integr
 
 ## <a name="authentication"></a>Authentifizierung
 
-Zum Erreichen des Zugriffsbereichs müssen Sie mit einem Geschäfts-, Schul- oder Unikonto in Azure AD authentifiziert sein. Sie können direkt bei Azure AD authentifiziert werden. Wenn Ihre Organisation mithilfe der Active Directory-Verbunddienste (AD FS) oder anderen Technologien einen Verbund konfiguriert hat, können Sie alternativ dazu auch über Windows Server Active Directory authentifiziert werden.
+Zum Erreichen des Portals „Meine Apps“ müssen Sie mit einem Geschäfts-, Schul- oder Unikonto in Azure AD authentifiziert sein. Sie können direkt bei Azure AD authentifiziert werden. Wenn Ihre Organisation mithilfe der Active Directory-Verbunddienste (AD FS) oder anderen Technologien einen Verbund konfiguriert hat, können Sie alternativ dazu auch über Windows Server Active Directory authentifiziert werden.
 
 Wenn Sie über ein Abonnement für Azure oder Office 365 verfügen und das Azure-Portal oder eine Office 365-Anwendung verwendet haben, können Sie die Anwendungsliste ohne erneute Anmeldung anzeigen. Falls Sie nicht authentifiziert sind, werden Sie aufgefordert, sich mit dem Benutzernamen und Kennwort für Ihr Konto in Azure AD anzumelden. Wenn Ihre Organisation einen Verbund konfiguriert hat, reicht die Eingabe des Benutzernamens aus.
 
@@ -62,12 +59,12 @@ Nach der Authentifizierung können Sie mit den Anwendungen interagieren, die Ihr
 
 ## <a name="web-browser-requirements"></a>Webbrowseranforderungen
 
-Die Mindestanforderung für den Zugriffsbereich ist ein Browser mit JavaScript-Unterstützung und CSS-Aktivierung. Zur Verwendung von kennwortbasiertem einmaligem Anmelden (Single Sign-On, SSO) bei Anwendungen muss in Ihrem Browser die Erweiterung für den Zugriffsbereich installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung auswählen, die für kennwortbasiertes einmaliges Anmelden konfiguriert ist.
+Das Portal „Meine Apps“ erfordert mindestens einen Browser, der JavaScript unterstützt und in dem CSS aktiviert ist. Zur Verwendung von kennwortbasiertem einmaligem Anmelden (Single Sign-On, SSO) bei Anwendungen muss in Ihrem Browser die Erweiterung für das Portal „Meine Apps“ installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung auswählen, die für kennwortbasiertes einmaliges Anmelden konfiguriert ist.
 
 Das Installationsprogramm ist architekturspezifisch. Wenn Sie auf Downloadlink klicken, erhalten Sie nur das Installationsprogramm für die BS-Architektur, die Sie derzeit verwenden. Wenn Sie ein Anwendungsadministrator für die Bereitstellung sind, achten Sie darauf, den Downloadlink auf einem 64-Bit- und einem 32-Bit-Gerät aufzurufen, um beide Installationsdateien abzurufen.
 
 
-Die Zugriffsbereichserweiterung ist derzeit verfügbar für:
+Die Portalerweiterung „Meine Apps“ ist derzeit verfügbar für:
 - **Microsoft Edge:** Unter Windows 10 Anniversary Edition oder höher 
 - **Chrome:** Unter Windows 7 oder höher und MacOS X oder höher
 - **Firefox 26.0 oder höher:** Unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
@@ -77,7 +74,7 @@ Die Zugriffsbereichserweiterung ist derzeit verfügbar für:
 Diese Erweiterung muss für kennwortbasiertes einmaliges Anmelden verwendet werden. Nach der Installation der Erweiterung können Sie sich anmelden, um zusätzliche Features zu aktivieren. Klicken Sie hierzu auf **Melden Sie sich an, um loszulegen**. 
 
 - Über die **Anmelde-URL** einer App können Sie sich direkt bei der App anmelden. Wenn Sie die URL der App verwenden, erkenn die Erweiterung die Aktion und ermöglicht die Anmeldung über die Erweiterung.
-- Mit der *Schnellsuche* der Erweiterung können Sie jede Ihrer Apps über den Zugriffsbereich starten. 
+- Mit der *Schnellsuche* der Erweiterung können Sie jede Ihrer Apps über das Portal „Meine Apps“ starten. 
 - Im Bereich **Zuletzt verwendet** werden die drei zuletzt gestarteten Anwendungen angezeigt.
 - Beim Remotezugriff über den [Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started) können Sie interne Unternehmens-URLs verwenden.
 
@@ -111,7 +108,7 @@ Um interne Unternehmens-URLs per Remotezugriff auf die Erweiterung zu verwenden,
 Vom Azure Active Directory-Team wird die mobile App „Meine Apps“ veröffentlicht. Wenn Sie diese App installieren, können Sie sich auf iOS- und Android-Geräten bei Anwendungen anmelden, für die kennwortbasiertes einmaliges Anmelden genutzt wird.
 
 > [!NOTE]
-> Sie können sich auf nahezu jedem Gerät in praktisch jedem Webbrowser bei Anwendungen anmelden, die den Verbund mit Azure AD unterstützen (z.B. Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 und mehr als 70 weitere) – ohne dass ein Plug-In oder eine mobile App erforderlich ist. Bei Verwendung auf einem mobilen Gerät ist für die anderen [Zugriffsbereichsumgebungen](https://myapps.microsoft.com/) auch die mobile App „Meine Apps“ nicht erforderlich.
+> Sie können sich auf nahezu jedem Gerät in praktisch jedem Webbrowser bei Anwendungen anmelden, die den Verbund mit Azure AD unterstützen (z.B. Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 und mehr als 70 weitere) – ohne dass ein Plug-In oder eine mobile App erforderlich ist. Bei Verwendung auf einem mobilen Gerät ist für die anderen [Umgebungen des Portals „Meine Apps“](https://myapps.microsoft.com/) auch die mobile App „Meine Apps“ nicht erforderlich.
 >
 >
 
@@ -145,22 +142,22 @@ Der Intune Managed Browser ist im [Apple App Store](https://itunes.apple.com/us/
 
 ## <a name="tips-for-testing-the-user-experience"></a>Tipps zum Testen der Benutzerfunktionen
 
-Wenn Sie Azure-Administrator und mit einem Konto im Verzeichnis beim Azure-Portal angemeldet sind, werden Sie automatisch mit dem aktuellen Konto beim Zugriffsbereich angemeldet. Diese Ansicht zeigt alle Anwendungen, die Ihnen zugewiesen sind.
+Wenn Sie Azure-Administrator und mit einem Konto im Verzeichnis beim Azure-Portal angemeldet sind, werden Sie automatisch mit dem aktuellen Konto beim Portal „Meine Apps“ angemeldet. Diese Ansicht zeigt alle Anwendungen, die Ihnen zugewiesen sind.
 
 Wenn Sie den Test mit einem *anderen* Benutzerkonto durchführen möchten, gehen Sie wie folgt vor:
 
-1. Klicken Sie rechts oben im Azure-Portal oder Zugriffsbereich auf **Abmelden**. 
-2. Wechseln Sie zum [Zugriffsbereich](http://myapps.microsoft.com).
+1. Wählen Sie rechts oben im Azure-Portal oder im Portal „Meine Apps“ **Abmelden** aus. 
+2. Navigieren Sie zum [Portal Meine Apps](http://myapps.microsoft.com).
 3. Geben Sie auf der Anmeldeseite den Benutzernamen und das Kennwort für das Konto in Ihrem Verzeichnis ein, das Sie testen möchten.
 
 
 ## <a name="starting-applications"></a>Starten von Anwendungen
 
-In diesem Abschnitt werden mehrere Arten von Anwendungen beschrieben, die im Zugriffsbereich angezeigt werden können.
+In diesem Abschnitt werden mehrere Arten von Anwendungen beschrieben, die im Portal „Meine Apps“ angezeigt werden können.
 
 ### <a name="office-365-applications"></a>Office 365-Anwendungen
 
-Wenn Ihre Organisation Office 365-Anwendungen verwendet und Sie für diese lizenziert sind, werden die Office 365-Anwendungen in Ihrem Zugriffsbereich angezeigt.
+Wenn Ihre Organisation Office 365-Anwendungen verwendet und Sie für diese lizenziert sind, werden die Office 365-Anwendungen in Ihrem Portal „Meine Apps“ angezeigt.
 
 Wenn Sie auf eine Anwendungskachel für eine Office 365-Anwendung klicken, werden Sie zu dieser Anwendung weitergeleitet und automatisch angemeldet.
 
@@ -174,7 +171,7 @@ Wenn Sie auf die Kachel für eine Anwendung klicken, werden Sie zu dieser Anwend
 
 Ihr Administrator kann im Abschnitt „Active Directory“ des Azure-Portals Anwendungen mit der SSO-Moduseinstellung **Kennwortbasiertes einmaliges Anmelden** hinzufügen. Alle Benutzer im Verzeichnis können alle Anwendungen anzeigen, die in diesem Modus konfiguriert wurden.
 
-Wenn Sie erstmals auf eine Anwendungskachel klicken, werden Sie aufgefordert, das Kennwort-SSO-Plug-In für Internet Explorer oder Chrome zu installieren. Für die Installation müssen Sie den Webbrowser möglicherweise neu starten. Wenn Sie in den Zugriffsbereich zurückkehren und erneut auf die Anwendungskachel klicken, werden Sie zum Eingeben eines Benutzernamens und Kennworts für die Anwendung aufgefordert. Nachdem Sie Ihren Benutzernamen und Ihr Kennwort eingegeben haben, werden die Anmeldeinformationen in Azure AD sicher gespeichert und mit dem Konto verknüpft.
+Wenn Sie erstmals auf eine Anwendungskachel klicken, werden Sie aufgefordert, das Kennwort-SSO-Plug-In für Internet Explorer oder Chrome zu installieren. Für die Installation müssen Sie den Webbrowser möglicherweise neu starten. Wenn Sie zum Portal „Meine Apps“zurückkehren und erneut die Anwendungskachel auswählen, werden Sie zum Eingeben eines Benutzernamens und Kennworts für die Anwendung aufgefordert. Nachdem Sie Ihren Benutzernamen und Ihr Kennwort eingegeben haben, werden die Anmeldeinformationen in Azure AD sicher gespeichert und mit dem Konto verknüpft.
 
 Wenn Sie das nächste Mal auf die Anwendungskachel klicken, werden Sie automatisch bei der Anwendung angemeldet.  
 
@@ -194,7 +191,7 @@ Ihr Administrator kann im Active Directory-Abschnitt des Azure-Portals Anwendung
 
 Wenn Sie erstmals auf eine Anwendungskachel klicken, werden Sie aufgefordert, das Kennwort-SSO-Plug-In für Internet Explorer oder Chrome zu installieren. Für die Installation müssen Sie den Webbrowser möglicherweise neu starten.  
 
-Wenn Sie zum Zugriffsbereich zurückkehren und erneut auf die Anwendungskachel klicken, werden Sie automatisch bei der Anwendung angemeldet.
+Wenn Sie zum Portal „Meine Apps“ zurückkehren und erneut die Anwendungskachel auswählen, werden Sie automatisch bei der Anwendung angemeldet.
 
 Bei einigen Anwendungen muss das Kennwort ggf. bei der ersten Anmeldung geändert werden. Wenn sich Ihre Anmeldeinformationen in der Drittanbieteranwendung geändert haben, müssen Sie die in Azure AD gespeicherten Anmeldeinformationen aktualisieren. 
 
@@ -206,9 +203,9 @@ Gehen Sie zum Aktualisieren Ihrer Anmeldeinformationen wie folgt vor:
 
 ### <a name="application-with-existing-sso-solutions"></a>Anwendung mit vorhandenen SSO-Lösungen
 
-Im Azure-Portal steht noch eine dritte Option zum Konfigurieren des einmaligen Anmeldens für eine Anwendung zur Verfügung: „Vorhandenes einmaliges Anmelden“. Diese Option ermöglicht es Ihrem Administrator, eine Verknüpfung mit einer Anwendung zu erstellen und sie für ausgewählte Benutzer im Zugriffsbereich zu platzieren.
+Im Azure-Portal steht noch eine dritte Option zum Konfigurieren des einmaligen Anmeldens für eine Anwendung zur Verfügung: „Vorhandenes einmaliges Anmelden“. Diese Option ermöglicht es Ihrem Administrator, eine Verknüpfung mit einer Anwendung zu erstellen und sie für ausgewählte Benutzer im Portal „Meine Apps“ zu platzieren.
 
-Wenn eine Anwendung beispielsweise für die Benutzerauthentifizierung per AD FS 2.0 konfiguriert ist, kann Ihr Administrator die Option „Vorhandenes einmaliges Anmelden“ verwenden, um im Zugriffsbereich eine entsprechende Verknüpfung dafür zu erstellen. Wenn Sie die Verknüpfung verwenden, werden Sie per AD FS 2.0 oder über die SSO-Lösung authentifiziert, die von der Anwendung bereitgestellt wird.
+Wenn eine Anwendung beispielsweise für die Benutzerauthentifizierung per AD FS 2.0 konfiguriert ist, kann Ihr Administrator die Option „Vorhandenes einmaliges Anmelden“ verwenden, um im Portal „Meine Apps“ eine entsprechende Verknüpfung dafür zu erstellen. Wenn Sie die Verknüpfung verwenden, werden Sie per AD FS 2.0 oder über die SSO-Lösung authentifiziert, die von der Anwendung bereitgestellt wird.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

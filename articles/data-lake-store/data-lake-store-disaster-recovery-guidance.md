@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 7401355c7920729933d0fcc3dd4cc8ce610c399e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b51f0c1e0c6ef713bf8d3ff0a124300f446a9373
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199074"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306807"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Leitfaden zur Notfallwiederherstellung für Daten in Data Lake Store
 
-Azure Data Lake Store bietet lokal redundanten Speicher (Locally-Redundant Storage, LRS). Die Daten in Ihrem Azure Data Lake Store-Konto sind darum über automatisierte Replikate vor vorübergehenden Hardwareausfällen innerhalb einer Region geschützt. So wird für Dauerhaftigkeit und Hochverfügbarkeit gesorgt, und die Vereinbarung zum Servicelevel (SLA) für Azure Data Lake Store wird erfüllt. In diesem Artikel wird beschrieben, wie Sie Ihre Daten weiter vor selten auftretenden regionsweiten Ausfällen oder dem versehentlichen Löschen schützen.
+Azure Data Lake Store bietet lokal redundanten Speicher (Locally-Redundant Storage, LRS). Die Daten in Ihrem Azure Data Lake Store-Konto sind daher über automatisierte Replikate vor vorübergehenden Hardwareausfällen innerhalb eines Rechenzentrums geschützt. So wird für Dauerhaftigkeit und Hochverfügbarkeit gesorgt, und die Vereinbarung zum Servicelevel (SLA) für Azure Data Lake Store wird erfüllt. In diesem Artikel wird beschrieben, wie Sie Ihre Daten weiter vor selten auftretenden regionsweiten Ausfällen oder dem versehentlichen Löschen schützen.
 
 ## <a name="disaster-recovery-guidance"></a>Leitfäden zur Notfallwiederherstellung
 Es ist wichtig für jeden Kunden, den eigenen Notfallwiederherstellungsplan zu erstellen. Lesen Sie die Informationen in diesem Artikel, um Ihren Wiederherstellungsplan zu erstellen. Hier sind einige Ressourcen angegeben, die beim Erstellen Ihres eigenen Plans hilfreich sind.

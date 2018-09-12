@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6099a818651cf75a75159f43748720b3eb01e4de
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005474"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287820"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -30,27 +30,28 @@ Mit der JavaScript-Benutzeroberfläche für Azure Functions können Sie ganz ein
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben.
 
 ## <a name="exporting-a-function"></a>Exportieren einer Funktion
-Alle JavaScript-Funktionen müssen über `module.exports` ein einzelnes `function`-Element exportieren, damit die Laufzeit die Funktion finden und ausführen kann. Diese Funktion muss immer ein `context` -Objekt enthalten.
+Jede JavaScript-Funktion muss ein einzelnes `function`-Element über `module.exports` exportieren, damit die Runtime die Funktion finden und ausführen kann. Diese Funktion muss immer ein `context`-Objekt als ersten Parameter entgegennehmen.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
-    if(arguments.length === 4) {
-        context.log('This function has 4 inputs');
-    }
-};
-// or you can include additional inputs in your arguments
+// You must include a context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
+    context.done();
+};
+// You can also use 'arguments' to dynamically handle inputs
+module.exports = function(context) {
+    context.log('Number of inputs: ' + arguments.length);
+    // Iterates through trigger and input binding data
+    for (i = 1; i < arguments.length; i++){
+        context.log(arguments[i]);
+    }
+    context.done();
 };
 ```
 
-Bindungen von `direction === "in"` werden als Funktionsargumente übergeben, sodass Sie mit [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) neue Eingaben dynamisch verarbeiten können (etwa durch Verwendung von `arguments.length` zum vollständigen Durchlaufen Ihrer Eingaben). Diese Funktion ist praktisch, wenn Sie nur einen Trigger ohne weitere Eingaben verwenden, da Sie zuverlässig auf Ihre Triggerdaten zugreifen können, ohne auf Ihr `context`-Objekt zu verweisen.
+Eingabe- und Triggerbindungen (Bindungen des Typs `direction === "in"`) können als Parameter an die Funktion übergeben werden. Sie werden in der Reihenfolge, in der sie in *function.json* definiert sind, an die Funktion übergeben. Sie können Eingaben mithilfe des JavaScript-Objekts [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) dynamisch behandeln. Wenn Sie also beispielsweise `function(context, a, b)` in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[2]` verweisen.
 
-Die Argumente werden in der Reihenfolge an die Funktion übergeben, in der sie in *function.json* vorhanden sind. Dies gilt auch, wenn Sie sie in der Exportanweisung nicht angeben. Wenn Sie also beispielsweise `function(context, a, b)` in `function(context, a)` ändern, können Sie dennoch den Wert von `b` im Funktionscode abrufen, indem Sie auf `arguments[2]` verweisen.
-
-Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt übergeben (siehe folgendes Skript). 
+Alle Bindungen werden unabhängig von der Richtung auch mit dem `context`-Objekt über die `context.bindings`-Eigenschaft übergeben.
 
 ## <a name="context-object"></a>context-Objekt
 Die Laufzeit verwendet ein `context`-Objekt, um Daten an Ihre und von Ihrer Funktion zu übergeben und Ihnen die Kommunikation mit der Laufzeit zu ermöglichen.
@@ -61,6 +62,7 @@ Das `context`-Objekt ist immer der erste Parameter in einer Funktion und muss im
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
     // function logic goes here :)
+    context.done();
 };
 ```
 

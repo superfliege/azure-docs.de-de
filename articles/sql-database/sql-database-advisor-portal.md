@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 7df4033a378ce3b37a99ed0335200e7f71696594
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 67432c8751cd8809649d41195957a7d68b392074
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528645"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665598"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -114,7 +114,7 @@ Wählen Sie eine beliebige Empfehlung aus, und klicken Sie auf **Skript anzeigen
 *Indizes, die manuell erstellt wurden, werden nicht durch den Dienst überwacht und auf ihre tatsächlichen Auswirkungen auf die Leistung überprüft*. Es empfiehlt sich daher, diese Indizes nach der Erstellung zu überwachen. So können Sie sicherstellen, dass sie Leistungssteigerungen bieten, und sie gegebenenfalls anpassen oder löschen. Ausführliche Informationen zum Erstellen von Indizes finden Sie unter [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
 
 ### <a name="canceling-recommendations"></a>Abbrechen von Empfehlungen
-Empfehlungen, die den Status **Ausstehend**, **Wird geprüft** oder **Erfolg** aufweisen, können abgebrochen werden. Empfehlungen mit dem Status **Wird ausgeführt** können nicht abgebrochen werden.
+Empfehlungen, die den Status **Ausstehend**, **Wird geprüft** oder **Erfolg** aufweisen, können verworfen werden. Empfehlungen mit dem Status **Wird ausgeführt** können nicht abgebrochen werden.
 
 1. Wählen Sie im Bereich **Optimierungsverlauf** eine Empfehlung aus, um die Seite **Empfehlungsdetails** zu öffnen.
 2. Klicken Sie auf **Abbrechen** , um den Vorgang zum Anwenden der Empfehlung abzubrechen.
@@ -126,7 +126,7 @@ Eine Empfehlung wird möglicherweise nicht umgehend angewendet. Im Portal finden
 |:--- |:--- |
 | Ausstehend |Der Befehl zum Anwenden der Empfehlung wurde empfangen und ist für die Ausführung geplant. |
 | Wird ausgeführt |Die Empfehlung wird angewendet. |
-| Überprüfen |Die Empfehlung wurde erfolgreich angewendet, und der Dienst berechnet die Vorteile. |
+| Die Überprüfen erfolgt. |Die Empfehlung wurde erfolgreich angewendet, und der Dienst berechnet die Vorteile. |
 | Erfolgreich |Die Empfehlung wurde erfolgreich angewendet, und die Vorteile wurden berechnet. |
 | Error |Beim Vorgang zum Anwenden der Empfehlung ist ein Fehler aufgetreten. Dies kann ein vorübergehendes Problem sein, oder es handelt sich möglicherweise um eine Schemaänderung an der Tabelle, und das Skript ist nicht mehr gültig. |
 | Wird zurückgesetzt |Die Empfehlung wurde angewendet, wird jedoch als nicht leistungsfähig erachtet und automatisch zurückgesetzt. |

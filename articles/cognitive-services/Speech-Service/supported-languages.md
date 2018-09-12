@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e2634db33d760207e9190b9955bd1f2ead179be
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123153"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668579"
 ---
 # <a name="supported-languages-for-speech-service"></a>Unterstützte Sprachen für die Speech-Dienste
 
@@ -39,7 +39,7 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen.
 
 ## <a name="text-to-speech"></a>Text-zu-Sprache
 
-Die **Text-to-Speech-API** bietet die folgenden Stimmen. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
+Die Sprachsynthese-API bietet die folgenden Stimmen. Jede steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
 
 Gebietsschema | Sprache | Geschlecht | Dienstnamenzuordnung
 -------|----------|---------|--------------------
@@ -128,13 +128,16 @@ zh-TW | Chinesisch (Taiwan)|Female | Microsoft Server Speech Text to Speech Voic
 
 ### <a name="customization"></a>Anpassung
 
-Benutzerdefinierte Voicefonts für die **Text-to-Speech**-API unterstützen Englisch (USA) (en-US) und Chinesisch (zh-CN).
+Die Stimmanpassung ist für US-amerikanisches Englisch (en-US), vereinfachtes Chinesisch (zh-CN) und Italienisch (it-IT) verfügbar.
+
+> [!NOTE]
+> Für das italienische Stimmtraining steht zunächst ein Dataset von über 2.000 Äußerungen zur Verfügung. Außerdem werden zweisprachige Chinesisch-Englisch-Modelle mit einem Anfangsdataset von über 2.000 Äußerungen unterstützt.
 
 ## <a name="speech-translation"></a>Sprachübersetzung
 
 Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übersetzung von Sprache in Sprache und Sprache in Text. Die Ausgangssprache muss immer eine der Sprachen aus der unten stehenden Tabelle sein. Welche Zielsprachen verfügbar sind, richtet sich danach, ob es sich beim Übersetzungsziel um Sprache oder Text handelt.
 
-Sie können die Liste der Sprachen entweder programmgesteuert oder über den Sprachenendpunkt der REST-API abrufen. Die Liste enthält alle Sprachcodes sowie den Sprachnamen in Englisch bzw. einer anderen unterstützten Sprache. Sobald eine neue Sprache verfügbar ist, wird diese Liste vom Microsoft Translator-Dienst aktualisiert.
+Sie können die Liste der Sprachen programmgesteuert oder über den Sprachenendpunkt der REST-API abrufen. Die Liste enthält alle Sprachcodes sowie den Sprachnamen in Englisch bzw. einer anderen unterstützten Sprache. Sobald eine neue Sprache verfügbar ist, wird diese Liste vom Microsoft Translator-Dienst aktualisiert.
 
 ### <a name="speech-languages"></a>Sprachen für Sprachausgabe
 

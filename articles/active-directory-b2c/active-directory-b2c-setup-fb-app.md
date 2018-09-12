@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: de059e3875b5f15526cb176d43a019fd2d9ee9b9
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 985285b463d66770f97a431705d5b9198b632592
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901380"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344605"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C
 
@@ -30,13 +30,13 @@ Um ein Facebook-Konto als Identitätsanbieter in Azure Active Directory (Azure A
 5. Klicken Sie auf **Create App ID** (App-ID erstellen). Hierzu müssen Sie möglicherweise die Richtlinien für die Facebook-Plattform akzeptieren und eine Online-Sicherheitsüberprüfung durchführen.
 6. Wählen Sie **Settings** > **Basic** (Einstellungen > Allgemeines) aus.
 7. Wählen Sie unten auf der Seite die Option **Add Platform** (Plattform hinzufügen) und dann **Website** aus.
-8. Geben Sie `https://login.microsoftonline.com/` unter **Site URL** (Website-URL) ein. Geben Sie unter **Privacy Policy URL** (Datenrichtlinien-URL) eine URL ein, z.B. `http://www.contoso.com`.
+8. Geben Sie `https://{tenantname}.b2clogin.com/` unter **Site URL** (Website-URL) ein. Geben Sie unter **Privacy Policy URL** (Datenrichtlinien-URL) eine URL ein, z.B. `http://www.contoso.com`.
 9. Klicken Sie auf **Save changes** (Änderungen speichern).
 11. Kopieren Sie im oberen Bereich der Seite den Wert von **App ID** (App-ID). 
 12. Klicken Sie auf **Show**, und kopieren Sie den Wert unter **App Secret**. Sie benötigen beide Angaben, um Facebook als Identitätsanbieter in Ihrem Mandanten zu konfigurieren. **App Secret** handelt es sich um eine wichtige Sicherheitsinformation für die Anmeldung.
 13. Wählen Sie **Products** (Produkte) und dann **Set up** (Einrichten) unter **Facebook Login** (Facebook-Anmeldung) aus.
 14. Wählen Sie unter **Facebook Login** (Facebook-Anmeldung) die Option **Settings** (Einstellungen) aus.
-15. Geben Sie `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` unter **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c.onmicrosoft.com“). Klicken Sie unten auf der Seite auf **Save Changes**.
+15. Geben Sie `https://{tenantname}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` unter **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) ein. Ersetzen Sie **{tenant}** durch den Namen Ihres Mandanten (z.B. „contosob2c“). Klicken Sie unten auf der Seite auf **Save Changes**.
 16. Um Ihre Facebook-Anwendung in Azure AD B2C verfügbar zu machen, wählen Sie **App Review** (App-Überprüfung) aus, legen Sie **Make My Application public?** (Meine Anwendung öffentlich machen?) auf **YES** (Ja) fest, wählen Sie eine Kategorie aus, z.B. `Business and Pages`, und klicken Sie dann auf **Confirm** (Bestätigen).
 
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurieren eines Facebook-Kontos als Identitätsanbieter

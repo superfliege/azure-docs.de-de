@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 9b4e86e719998c5f19a70734480356bcb98b8d2f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888099"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336803"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 
@@ -135,7 +135,7 @@ Mit dieser Option müssen Sie in Ihrer App keinen Authentifizierungscode schreib
 
 Die Option lautet **Anonyme Anforderungen zulassen**. Diese Option aktiviert die Authentifizierung und Autorisierung in App Service, überlässt Autorisierungsentscheidungen jedoch Ihrem Anwendungscode. Für authentifizierte Anforderungen übergibt App Service auch Authentifizierungsinformationen in den HTTP-Headern. 
 
-Diese Option bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderungen. Beispielsweise können Sie Ihren Benutzern [mehrere Anmeldeoptionen bereitstellen](app-service-authentication-how-to.md#configure-multiple-sign-in-options). Allerdings müssen Sie Code schreiben. 
+Diese Option bietet mehr Flexibilität bei der Verarbeitung anonymer Anforderungen. Beispielsweise können Sie für Ihre Benutzer [mehrere Anmeldungsanbieter bereitstellen](app-service-authentication-how-to.md#use-multiple-sign-in-providers). Sie müssen jedoch Code schreiben. 
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 

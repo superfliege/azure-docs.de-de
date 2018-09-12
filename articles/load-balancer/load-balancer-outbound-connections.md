@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: 1f7e605cbf5aa3d519e04c4fdfd737a4c0926a3e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122575"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842254"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 
@@ -80,7 +80,7 @@ In diesem Szenario gehört die VM nicht zu einem öffentlichen Load Balancer-Poo
 >[!IMPORTANT] 
 >Dieses Szenario gilt auch, wenn __nur__ ein interner Basic Load Balancer verknüpft ist. Szenario 3 ist __nicht verfügbar__, wenn ein interner Standard Load Balancer mit einer VM verknüpft ist.  Sie müssen [Szenario 1](#ilpip) oder [Szenario 2](#lb) zusätzlich zu einem internen Standard Load Balancer explizit erstellen.
 
-Azure verwendet SNAT mit Portmaskierung ([PAT](#pat)) für diese Aufgabe. Dieses Szenario ähnelt [Szenario 2](#lb). Der Unterschied besteht darin, dass keine Steuerung der IP-Adresse verwendet wird. Dies ist ein Fallbackszenario für den Fall, dass Szenario 1 und Szenario 2 nicht vorhanden sind. Dieses Szenario wird nicht empfohlen, wenn eine Kontrolle über die ausgehende Adresse gewünscht ist. Wenn ausgehende Verbindungen ein wichtiger Teil Ihrer Anwendung sind, sollten Sie ein anderes Szenario wählen.
+Azure verwendet SNAT mit Portmaskierung ([PAT](#pat)) für diese Aufgabe. Dieses Szenario ähnelt [Szenario 2](#lb). Der Unterschied besteht darin, dass keine Steuerung der IP-Adresse verwendet wird. Dies ist ein Fallbackszenario für den Fall, dass Szenario 1 und Szenario 2 nicht vorhanden sind. Dieses Szenario wird nicht empfohlen, wenn eine Kontrolle über die ausgehende Adresse gewünscht ist. Wenn ausgehende Verbindungen ein wichtiger Teil Ihrer Anwendung sind, sollten Sie ein anderes Szenario auswählen.
 
 SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben.  Die Anzahl der VMs, die sich eine Verfügbarkeitsgruppe teilen, bestimmt, welche Stufe der Vorabzuordnung gilt.  Eine eigenständige VM ohne Verfügbarkeitsgruppe ist effektiv ein Pool von 1 für die Ermittlung der Vorabzuordnung (1024 SNAT-Ports). SNAT Ports sind begrenzte Ressourcen, die sich erschöpfen können. Es ist wichtig zu verstehen, wie sie [genutzt](#pat) wird. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
 
@@ -219,16 +219,16 @@ Durch das Zuweisen einer öffentlichen IP-Adresse auf Instanzebene erhalten Sie 
 
 #### <a name="multifesnat"></a>Verwenden mehrerer Front-Ends
 
-Bei Verwendung des öffentlichen Standard Load Balancers vergeben Sie [mehrere Front-End-IP-Adressen für ausgehende Verbindungen](#multife) und [multiplizieren die Anzahl der verfügbaren SNAT-Ports](#preallocatedports).  Sie müssen eine Front-End-IP-Konfiguration, eine Regel und einen Back-End-Pool anlegen, um die Programmierung von SNAT auf die öffentliche IP-Adresse des Front-Ends auszulösen.  Die Regel muss nicht funktionieren, und ein Integritätstest muss nicht erfolgreich sein.  Wenn Sie auch für eingehende (und nicht nur für ausgehende) Datenflüsse mehrere Front-Ends verwenden, sollten Sie benutzerdefinierte Integritätstests verwenden, um die Zuverlässigkeit zu gewährleisten.
+Bei Verwendung des öffentlichen Standard Load Balancers vergeben Sie [mehrere Front-End-IP-Adressen für ausgehende Verbindungen](#multife) und [multiplizieren die Anzahl der verfügbaren SNAT-Ports](#preallocatedports).  Sie müssen eine Front-End-IP-Konfiguration, eine Regel und einen Back-End-Pool anlegen, um die Programmierung von SNAT auf die öffentliche IP-Adresse des Front-Ends auszulösen.  Die Regel muss nicht funktionieren, und ein Integritätstest muss nicht erfolgreich sein.  Wenn Sie auch für eingehende (und nicht nur für ausgehende) Datenflüsse mehrere Front-Ends verwenden, sollten Sie benutzerdefinierte Integritätstests verwenden, um die Zuverlässigkeit sicherzustellen.
 
 >[!NOTE]
 >In den meisten Fällen ist die Überlastung der SNAT-Ports ein Zeichen für ein schlechtes Design.  Stellen Sie sicher, dass die Gründe für die Portüberlastung kennen, bevor Sie weitere Front-Ends verwenden, um SNAT-Ports hinzuzufügen.  Möglicherweise verdecken Sie ein Problem, das später zu Fehlern führen kann.
 
 #### <a name="scaleout"></a>Horizontales Skalieren
 
-[Vorab zugeordnete Ports](#preallocatedports) werden anhand der Größe des Back-End-Pools zugewiesen und in Ebenen (Tarifen) gruppiert, um Unterbrechungen zu minimieren, wenn einige der Ports neu zugewiesen werden müssen, um eine Anpassung an die nächstgrößere Back-End-Pool-Größenebene vorzunehmen.  Sie können möglicherweise die Intensität der SNAT-Portnutzung für ein bestimmtes Front-End erhöhen, indem Sie Ihren Back-End-Pool entsprechend der maximalen Größe einer bestimmten Ebene skalieren.  Dies erfordert, dass die Anwendung effizient horizontal skaliert wird.
+[Vorab zugeordnete Ports](#preallocatedports) werden anhand der Größe des Back-End-Pools zugewiesen und in Ebenen gruppiert, um Unterbrechungen zu minimieren, wenn einige der Ports neu zugewiesen werden müssen, um die nächstgrößere Back-End-Pool-Größenebene abzudecken.  Sie können möglicherweise die Intensität der SNAT-Portnutzung für ein bestimmtes Front-End erhöhen, indem Sie Ihren Back-End-Pool entsprechend der maximalen Größe einer bestimmten Ebene skalieren.  Dies erfordert, dass die Anwendung effizient horizontal skaliert wird.
 
-Beispielsweise sind für zwei virtuelle Computer im Back-End-Pool 1024 SNAT Ports pro IP-Konfiguration verfügbar, sodass insgesamt 2048 SNAT-Ports für die Bereitstellung zulässig sind.  Soll die Bereitstellung auf 50 virtuelle Computer vergrößert werden, können, obwohl die Anzahl der vorab zugeordneten Ports pro virtuellem Computer konstant bleibt, insgesamt 51.200 (50 x 1024) SNAT-Ports durch die Bereitstellung genutzt werden.  Wenn Sie Ihre Bereitstellung horizontal skalieren möchten, überprüfen Sie die Anzahl von [vorab zugeordneten Ports](#preallocatedports) pro Ebene, um sicherzustellen, dass Sie die horizontale Skalierung entsprechend dem Maximum der jeweiligen Ebene festlegen.  Hätten Sie sich im vorhergehenden Beispiel zu einer horizontalen Skalierung auf 51 statt auf 50 Instanzen entschieden, würden Sie zur nächsten Ebene gelangen und somit weniger SNAT-Ports pro virtuellem Computer sowie weniger SNAT-Ports insgesamt erhalten.
+Beispielsweise sind für zwei virtuelle Computer im Back-End-Pool 1024 SNAT Ports pro IP-Konfiguration verfügbar, sodass insgesamt 2048 SNAT-Ports für die Bereitstellung zulässig sind.  Soll die Bereitstellung auf 50 virtuelle Computer vergrößert werden, können, obwohl die Anzahl der vorab zugeordneten Ports pro virtuellem Computer konstant bleibt, insgesamt 51.200 (50 x 1024) SNAT-Ports durch die Bereitstellung genutzt werden.  Wenn Sie Ihre Bereitstellung horizontal skalieren möchten, überprüfen Sie die Anzahl von [vorab zugeordneten Ports](#preallocatedports) pro Ebene, um sicherzustellen, dass Sie die horizontale Skalierung entsprechend dem Maximum der jeweiligen Ebene festlegen.  Hätten Sie sich im vorherigen Beispiel zu einer horizontalen Skalierung auf 51 statt 50 Instanzen entschieden, würden Sie zur nächsten Ebene gelangen und somit weniger SNAT-Ports pro VM sowie weniger SNAT-Ports insgesamt erhalten.
 
 Wenn Sie horizontal auf die nächstgrößere Back-End-Poolgröße hochskalieren, erfolgt möglicherweise für einige Ihrer ausgehenden Verbindungen ein Timeout, wenn zugeordnete Ports neu zugeordnet werden müssen.  Wenn Sie nur einige Ihrer SNAT-Ports verwenden, hat das Hochskalieren über die nächstgrößere Back-End-Poolgröße hinaus keine Auswirkungen.  Die Hälfte der vorhandenen Ports wird bei jedem Wechsel zur nächsten Back-End-Poolebene neu zugeordnet.  Soll dies nicht stattfinden, müssen Sie Ihre Bereitstellung an die Ebenengröße anpassen.  Oder Sie stellen sicher, dass Ihre Anwendung geeignet erkennen und wiederholen kann.  TCP-Keepalives können bei der Erkennung unterstützen, wenn SNAT-Ports nicht mehr funktionieren, weil sie neu zugeordnet werden.
 
@@ -253,7 +253,7 @@ Wenn Sie eine Netzwerksicherheitsgruppe einem virtuellen Computer mit Lastenausg
 Wenn eine Netzwerksicherheitsgruppe Anforderungen von Integritätstests vom Standardtag AZURE_LOADBALANCER blockiert, misslingt Ihr VM-Integritätstests, weshalb die VM mit „Außer Betrieb“ markiert wird. Der Lastenausgleich beendet das Senden neuer Datenflüsse an diese VM.
 
 ## <a name="limitations"></a>Einschränkungen
-- DisableOutboundSnat ist bei der Konfiguration einer Lastausgleichsregel im Portal nicht als Option verfügbar.  Verwenden Sie stattdessen REST, eine Vorlage oder Clienttools.
+- „DisableOutboundSnat“ ist bei der Konfiguration einer Lastausgleichsregel im Portal nicht als Option verfügbar.  Verwenden Sie stattdessen REST, eine Vorlage oder Clienttools.
 - Auf Web-Workerrollen ohne VNet und andere Plattformdienste von Microsoft kann aufgrund eines Nebeneffekts der Funktionsweise von Diensten vor VNet und anderen Plattformdiensten nur zugegriffen werden, wenn interner Standard-Load Balancer verwendet wird. Sie dürfen sich nicht auf diesen Nebeneffekt verlassen, da der jeweilige Dienst oder die zugrunde liegende Plattform ohne vorherige Ankündigung geändert werden kann. Sie müssen immer davon ausgehen, dass Sie ausgehende Verbindungen, falls gewünscht, explizit erstellen müssen, wenn Sie nur einen internen Load Balancer im Tarif „Standard“ verwenden. Das in diesem Artikel beschriebene Szenario 3 für [Standard-SNAT](#defaultsnat) ist nicht verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte

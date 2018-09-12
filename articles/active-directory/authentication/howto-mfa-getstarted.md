@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0408b26e687dd31c408dbccc68f56e8198016c8f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716262"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664787"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Bereitstellen von cloudbasierter Azure Multi-Factor Authentication
 

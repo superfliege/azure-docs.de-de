@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d9008956d3a5542d71438ee13050a3951230e101
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144950"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338806"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -81,13 +81,14 @@ Bevor Sie eine Data Science Virtual Machine für Linux erstellen können, benöt
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Erstellen Ihrer Data Science Virtual Machine für Linux
 Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual Machine für Linux:
 
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)zur Auflistung der virtuellen Computer.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu)zur Auflistung der virtuellen Computer. Wenn Sie sich noch nicht bei Ihrem Azure-Konto angemeldet haben, erhalten Sie eine entsprechende Aufforderung. 
 1. Klicken Sie (unten auf der Seite) auf **Erstellen**, um den Assistenten aufzurufen.![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. Die folgenden Abschnitte enthalten die Eingaben für jeden Schritt des Assistenten (im rechten Teil der obigen Abbildung aufgelistet), mit dem die Microsoft Data Science Virtual Machine erstellt wird. Die zum Konfigurieren der einzelnen Schritte erforderlichen Eingaben sind:
    
    a. **Grundlagen**:
    
    * **Name**: Name des Data Science-Servers, den Sie erstellen.
+   * **VM-Datenträgertyp:** Wählen Sie **SSD Premium** aus, wenn Sie ein SSD (Solid State Drive) bevorzugen. Andernfalls wählen Sie **HDD Standard** aus. 
    * **Benutzername**: Die ID für die erste Kontoanmeldung.
    * **Kennwort**: Das erste Kontokennwort (Sie können anstelle eines Kennworts einen öffentlichen SSH-Schlüssel verwenden).
    * **Abonnement:** Wenn Sie über mehrere Abonnements verfügen, wählen Sie eines aus, über das der Computer erstellt und abgerechnet wird. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
@@ -96,23 +97,17 @@ Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual 
    
    b. **Größe**:
    
-   * Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Wählen Sie **Alle anzeigen** aus, um weitere Optionen für VM-Größen anzuzeigen. Wählen Sie einen virtuellen Computer der NC- oder ND-Klasse für das GPU-Training aus. Auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen mit GPUs aufgelistet.
+   * Wählen Sie einen Servertyp aus, der die funktionalen Anforderungen und den Kostenrahmen erfüllt. Wählen Sie einen virtuellen Computer der NC- oder ND-Klasse für GPU-basierte VM-Instanzen aus. Auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen mit GPUs aufgelistet.
    
    c. **Einstellungen**:
    
-   * **Datenträgertyp**: Wählen Sie **Premium** aus, wenn Sie ein SSD (Solid State Drive) bevorzugen. Andernfalls wählen Sie **Standard**aus. GPU-VMs erforderlich einen Datenträger des Standard-Tarifs.
-   * **Speicherkonto**: Sie können ein neues Azure-Speicherkonto in Ihrem Abonnement erstellen oder ein vorhandenes Konto an dem Standort verwenden, der im Schritt **Grundlagen** des Assistenten ausgewählt wurde.
-   * **Andere Parameter**: In den meisten Fällen verwenden Sie einfach die Standardeinstellungen. Bewegen Sie den Mauszeiger über den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch nicht standardmäßige Einstellungen verwenden möchten.
+   * In den meisten Fällen können Sie einfach die Standardeinstellungen verwenden. Bewegen Sie den Mauszeiger über den jeweiligen Informationslink, um Hilfe zu bestimmten Feldern anzuzeigen, falls Sie auch nicht standardmäßige Einstellungen verwenden möchten.
    
    d. **Zusammenfassung**:
    
-   * Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
+   * Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind. Es wird ein Link zu den Nutzungsbedingungen bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. Klicken Sie auf **Erstellen**, um die Bereitstellung zu starten. 
    
-   e. **Kaufen**:
-   
-   * Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten.
-
-Die Bereitstellung sollte ungefähr 5 bis 10 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
+Die Bereitstellung sollte ungefähr 5 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Zugreifen auf die Data Science Virtual Machine für Linux
 
@@ -434,6 +429,6 @@ Informieren Sie sich weiter:
 
 * Die exemplarische Vorgehensweise [Data Science auf der Data Science Virtual Machine für Linux](linux-dsvm-walkthrough.md) zeigt Ihnen, wie Sie mehrere allgemeine Data Science-Aufgaben mit der hier bereitgestellten Linux Data Science VM ausführen. 
 * Informieren Sie sich über die unterschiedlichen Data Science-Tools auf der Data Science VM, indem Sie die in diesem Artikel beschriebenen Tools ausprobieren. Sie können auch *dsvm-more-info* in der Shell auf dem virtuellen Computer ausführen, um eine grundlegende Einführung und Hinweise auf weitere Informationen zu den Tools auf der VM zu erhalten.  
-* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)systematisch vollständige Analyselösungen erstellen.
-* Öffnen Sie den [Cortana Analytics-Katalog](http://gallery.cortanaanalytics.com) , um Anwendungsbeispiele der Cortana Analytics Suite für die Bereiche Machine Learning und Datenanalysen zu erhalten.
+* Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](http://aka.ms/tdsp)systematisch vollständige Analyselösungen erstellen.
+* Besuchen Sie die [Azure AI Gallery](https://gallery.azure.ai/), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure-KI-Dienste verwendet werden.
 

@@ -3,22 +3,22 @@ title: Wiederherstellen einer Azure SQL Data Warehouse-Instanz | Microsoft-Dokum
 description: Anleitung zum Wiederherstellen einer Azure SQL Data Warehouse-Instanz.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 583346f2297f590d8e9484c0a3c19c947de7f740
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191478"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781859"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Wiederherstellen von Azure SQL Data Warehouse 
-In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel erfahren Sie, wie Sie die folgenden Aufgaben im Azure-Portal und mithilfe von PowerShell ausführen:
 
 - Erstellen eines Wiederherstellungspunkts
 - Wiederherstellung anhand eines automatischen oder benutzerdefinierten Wiederherstellungspunkts
@@ -26,15 +26,19 @@ In diesem Artikel lernen Sie Folgendes:
 - Wiederherstellung anhand einer Geosicherung
 - Erstellen einer Kopie Ihrer Data Warehouse-Instanz mithilfe eines benutzerdefinierten Wiederherstellungspunkts
 
+> [!NOTE]
+> Am 27.08. wurde die serverübergreifende Wiederherstellung aufgrund einer bekannten Regression deaktiviert. Wir arbeiten mit höchster Priorität aktiv an der Lösung dieses Problems. Wir entschuldigen uns für die Unannehmlichkeiten. In der Zwischenzeit können Sie die [Geosicherung](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region) zur serverübergreifenden Wiederherstellung nutzen.  
+>
+
 ## <a name="before-you-begin"></a>Voraussetzungen
 **Überprüfen Sie Ihre DTU-Kapazität.** Jedes SQL Data Warehouse wird von einer SQL Server-Instanz gehostet (z.B. myserver.database.windows.net), die über ein Standard-DTU-Kontingent verfügt.  Bevor Sie eine SQL Data Warehouse-Instanz wiederherstellen können, überprüfen Sie, ob Ihre SQL Server-Instanz über ein ausreichendes DTU-Kontingent für die Datenbankwiederherstellung verfügt. Informationen zum Berechnen des DTU-Bedarfs bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung][Request a DTU quota change].
 
-# <a name="restore-through-powershell"></a>Wiederherstellung über PowerShell
+## <a name="restore-through-powershell"></a>Wiederherstellung über PowerShell
 
 ## <a name="install-powershell"></a>Installieren von PowerShell
 Damit Sie Azure PowerShell mit SQL Data Warehouse verwenden können, müssen Sie Azure PowerShell Version 1.0 oder höher installieren.  Sie können die Version überprüfen, indem Sie **Get-Module -ListAvailable -Name AzureRM**ausführen.  Sie können die neueste Version über den [Microsoft-Webplattform-Installer][Microsoft Web Platform Installer] installieren.  Weitere Informationen zum Installieren der neuesten Version finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][How to install and configure Azure PowerShell].
 
-## <a name="restore-an-active-or-paused-database"></a>Wiederherstellen einer aktiven oder angehaltenen Datenbank
+## <a name="restore-an-active-or-paused-database-using-powershell"></a>Wiederherstellen einer aktiven oder angehaltenen Datenbank mithilfe von PowerShell
 Verwenden Sie das PowerShell-Cmdlet [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase], um eine Datenbank auf der Grundlage eines Wiederherstellungspunkts wiederherzustellen.
 
 1. Öffnen Sie Windows PowerShell.
@@ -90,7 +94,7 @@ $RestoredDatabase.status
 > Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung][Configure your database after recovery].
 >
 
-## <a name="copy-your-data-warehouse-with-user-defined-restore-points"></a>Kopieren Ihrer Data Warehouse-Instanz mithilfe von benutzerdefinierten Wiederherstellungspunkten
+## <a name="copy-your-data-warehouse-with-user-defined-restore-points-using-powershell"></a>Kopieren Ihrer Data Warehouse-Datenbank mit benutzerdefinierten Wiederherstellungspunkten mithilfe von PowerShell
 Verwenden Sie das PowerShell-Cmdlet [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase], um eine Datenbank auf der Grundlage eines benutzerdefinierten Wiederherstellungspunkts wiederherzustellen.
 
 1. Öffnen Sie Windows PowerShell.
@@ -98,10 +102,10 @@ Verwenden Sie das PowerShell-Cmdlet [Restore-AzureRmSqlDatabase][Restore-AzureRm
 3. Wählen Sie das Abonnement aus, in dem die wiederherzustellende Datenbank enthalten ist.
 4. Erstellen eines Wiederherstellungspunkts für eine sofortige Kopie Ihrer Datenbank
 5. Benennen Sie Ihre Datenbank temporär um.
-5. Rufen Sie über den angegebenen RestorePointLabel-Wert den letzten Wiederherstellungspunkt ab.
-6. Rufen Sie die Ressourcen-ID der Datenbank ab, um die Wiederherstellung einzuleiten.
-6. Stellen Sie die Datenbank mit dem gewünschten Wiederherstellungspunkt wieder her.
-7. Überprüfen Sie, ob die wiederhergestellte Datenbank online ist.
+6. Rufen Sie über den angegebenen RestorePointLabel-Wert den letzten Wiederherstellungspunkt ab.
+7. Rufen Sie die Ressourcen-ID der Datenbank ab, um die Wiederherstellung einzuleiten.
+8. Stellen Sie die Datenbank mit dem gewünschten Wiederherstellungspunkt wieder her.
+9. Überprüfen Sie, ob die wiederhergestellte Datenbank online ist.
 
 ```Powershell
 
@@ -138,7 +142,7 @@ $RestoredDatabase.status
 
 ```
 
-## <a name="restore-a-deleted-database"></a>Wiederherstellen einer gelöschten Datenbank
+## <a name="restore-a-deleted-database-using-powershell"></a>Wiederherstellen einer gelöschten Datenbank mithilfe von PowerShell
 Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase], um eine gelöschte Datenbank wiederherzustellen.
 
 1. Öffnen Sie Windows PowerShell.
@@ -173,7 +177,7 @@ $RestoredDatabase.status
 > Nach Abschluss der Wiederherstellung können Sie Ihre wiederhergestellte Datenbank konfigurieren. Befolgen Sie hierzu die Anleitung [Konfigurieren der Datenbank nach der Wiederherstellung][Configure your database after recovery].
 >
 
-## <a name="restore-from-an-azure-geographical-region"></a>Wiederherstellen von einer geografischen Azure-Region aus
+## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Wiederherstellen von einer geografischen Azure-Region aus mithilfe von PowerShell
 Verwenden Sie das Cmdlet [Restore-AzureRmSqlDatabase][Restore-AzureRmSqlDatabase], um eine Datenbank wiederherzustellen.
 
 > [!NOTE]
@@ -208,9 +212,9 @@ $GeoRestoredDatabase.status
 
 Für die wiederhergestellte Datenbank ist TDE aktiviert, wenn für die Quelldatenbank TDE aktiviert ist.
 
-# <a name="restore-through-the-azure-portal"></a>Wiederherstellung über das Azure-Portal
+## <a name="restore-through-the-azure-portal"></a>Wiederherstellung über das Azure-Portal
 
-## <a name="create-a-user-defined-restore-point"></a>Erstellen eines benutzerdefinierten Wiederherstellungspunkts
+## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Erstellen eines benutzerdefinierten Wiederherstellungspunkts im Azure-Portal
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 
 2. Navigieren Sie zu der SQL Data Warehouse-Instanz, für die Sie einen Wiederherstellungspunkt erstellen möchten. 
@@ -218,37 +222,37 @@ Für die wiederhergestellte Datenbank ist TDE aktiviert, wenn für die Quelldate
 3. Wählen Sie oben im Blatt „Übersicht“ die Option **Neuer Wiederherstellungspunkt** aus.
 
     ![Neuer Wiederherstellungspunkt](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_0.png)
-    
+
 4. Geben Sie einen Namen für Ihren Wiederherstellungspunkt an.
 
     ![Name für den Wiederherstellungspunkt](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
-## <a name="restore-an-active-or-paused-database"></a>Wiederherstellen einer aktiven oder angehaltenen Datenbank
+## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Wiederherstellen einer aktiven oder angehaltenen Datenbank im Azure-Portal
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 2. Navigieren Sie zu der SQL Data Warehouse-Instanz, mit der Sie die Wiederherstellung durchführen möchten.
 3. Wählen Sie oben im Blatt „Übersicht“ die Option **Wiederherstellen** aus.
 
     ![ Wiederherstellung – Übersicht](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)
-    
+
 4. Wählen Sie entweder die Option **Automatische Wiederherstellungspunkte** oder **Benutzerdefinierte Wiederherstellungspunkte** aus.
 
     ![Automatische Wiederherstellungspunkte](./media/sql-data-warehouse-restore-database-portal/restoring_1.png)
-    
+
 5. Wenn Sie sich für benutzerdefinierte Wiederherstellungspunkte entschieden haben, **wählen Sie einen Wiederherstellungspunkt aus**, oder **erstellen Sie einen neuen benutzerdefinierten Wiederherstellungspunkt**.
 
     ![Benutzerdefinierte Wiederherstellungspunkte](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
-## <a name="restore-a-deleted-database"></a>Wiederherstellen einer gelöschten Datenbank
+## <a name="restore-a-deleted-database-using-the-azure-portal"></a>Wiederherstellen einer gelöschten Datenbank im Azure-Portal
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 2. Navigieren Sie zu der SQL Server-Instanz, auf der Ihre gelöschte Datenbank gehostet wurde.
 3. Wählen Sie im Inhaltsverzeichnis das Symbol für gelöschte Datenbanken aus.
 
     ![Gelöschte Datenbanken](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_0.png)
-    
+
 4. Wählen Sie die gelöschte Datenbank aus, die Sie wiederherstellen möchten.
 
     ![Auswahl von gelöschten Datenbanken](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_1.png)
-    
+
 5. Geben Sie einen neuen Datenbanknamen ein.
 
     ![Angeben eines Datenbanknamens](./media/sql-data-warehouse-restore-database-portal/restoring_deleted_2.png)

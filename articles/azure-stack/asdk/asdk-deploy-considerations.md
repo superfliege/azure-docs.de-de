@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f4b55bb3287f67792b3257c3f62256437f5625ca
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f3cf1232861239069894a8e5fa60c911053f038d
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30164966"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841980"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Überlegungen zur Planung der Azure Stack-Bereitstellung
 Stellen Sie vor der Bereitstellung des Azure Stack Development Kits (ASDK) sicher, dass der Development Kit-Hostcomputer die in diesem Artikel beschriebenen Anforderungen erfüllt.
@@ -66,7 +66,7 @@ OEM-Beispielkonfigurationen sind verfügbar.
 ## <a name="operating-system"></a>Betriebssystem
 |  | **Anforderungen** |
 | --- | --- |
-| **Betriebssystemversion** |Windows Server 2012 R2 oder höher. Die Version des Betriebssystems ist vor dem Starten der Bereitstellung nicht wichtig, da der Hostcomputer auf der virtuellen Festplatte gestartet wird, die in der Azure Stack-Installation enthalten ist. Das Betriebssystem und alle erforderlichen Patches sind bereits in das Image integriert. Verwenden Sie keine Schlüssel zum Aktivieren von Windows Server-Instanzen, die im Development Kit verwendet werden. |
+| **Betriebssystemversion** |Windows Server 2016 oder höher Die Version des Betriebssystems ist vor dem Starten der Bereitstellung nicht wichtig, da der Hostcomputer auf der virtuellen Festplatte gestartet wird, die in der Azure Stack-Installation enthalten ist. Das Betriebssystem und alle erforderlichen Patches sind bereits in das Image integriert. Verwenden Sie keine Schlüssel zum Aktivieren von Windows Server-Instanzen, die im Development Kit verwendet werden. |
 
 > [!TIP]
 > Nach der Installation des Betriebssystems können Sie mit der [Bereitstellungsprüfung für Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) sicherstellen, dass Ihre Hardware alle Anforderungen erfüllt.
@@ -89,10 +89,10 @@ Zum Bereitstellen von Azure Stack über ein Azure AD-Konto müssen Sie vor dem A
    
    | **Azure Active Directory-Konto** | **Unterstützt?** |
    | --- | --- |
-   | Geschäfts-, Schul- oder Unikonto mit gültigem öffentlichem Azure-Abonnement |Ja |
-   | Microsoft-Konto mit gültigem öffentlichem Azure-Abonnement |Ja |
-   | Geschäfts-, Schul- oder Unikonto mit gültigem Azure-Abonnement für China |Ja |
-   | Geschäfts-, Schul- oder Unikonto mit gültigem US Government Azure-Abonnement |Ja |
+   | Geschäfts-, Schul- oder Unikonto mit gültigem öffentlichem Azure-Abonnement |JA |
+   | Microsoft-Konto mit gültigem öffentlichem Azure-Abonnement |JA |
+   | Geschäfts-, Schul- oder Unikonto mit gültigem Azure-Abonnement für China |JA |
+   | Geschäfts-, Schul- oder Unikonto mit gültigem US Government Azure-Abonnement |JA |
 
 ## <a name="network"></a>Netzwerk
 ### <a name="switch"></a>Switch

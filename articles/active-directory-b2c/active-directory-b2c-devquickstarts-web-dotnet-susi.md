@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 66cd3644611c1d837de717661a3515a0c0d3956f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 838717aa8f426ea54f4736453aac8c6fcf9a0099
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308030"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344496"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Erstellen Sie mithilfe von Azure Active Directory B2C eine ASP.NET-Web-App mit Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung.
 
@@ -95,7 +95,7 @@ Unser Beispiel ist so konfiguriert, dass die Richtlinien und die Client-ID unser
 * `ida:ResetPasswordPolicyId` durch den Namen der Richtlinie für „Kennwort zurücksetzen“
 
 ## <a name="launch-the-app"></a>Starten der App
-Starten Sie die App aus Visual Studio heraus. Navigieren Sie zur Registerkarte „Aufgabenliste“, und beachten Sie, dass der URl wie folgt lautet: https://login.microsoftonline.com/*Name_Ihres_Mandanten*/oauth2/v2.0/authorize?p=*Name_Ihrer_Registrierunsrichtlinie*&client_id=*Ihre_Client-ID*.....
+Starten Sie die App aus Visual Studio heraus. Navigieren Sie zur Registerkarte „Aufgabenliste“, und notieren Sie den URl: https://*IhrMandantename*.b2clogin.com/*IhrMandantename*/oauth2/v2.0/authorize?p=*NameIhrerRegistrierungsrichtlinie*&client_id=*IhreClientID*...
 
 Registrieren Sie sich mit Ihrer E-Mail-Adresse oder einem Benutzernamen für die App. Melden Sie sich ab und dann erneut an, und bearbeiten Sie das Profil, oder setzen Sie das Kennwort zurück. Melden Sie sich ab, und melden Sie sich als ein anderer Benutzer an. 
 

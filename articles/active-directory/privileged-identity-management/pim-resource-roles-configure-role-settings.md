@@ -11,78 +11,112 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 901eb5ef43ddb2840ed7a3d83fc08f2f05849461
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: a4aecd276df8e5453f0c35d6290bbe8a8d156ffa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189734"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669362"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM
 
-Wenn Sie Einstellungen konfigurieren, definieren Sie die Standardeinstellungen, die auf Zuweisungen in der PIM-Umgebung (Privileged Identity Management) angewendet werden. Um diese Einstellungen für Ihre Ressource zu definieren, wählen Sie die Registerkarte **Rolleneinstellungen** im linken Bereich aus. Sie können auch die Schaltfläche „Rolleneinstellungen“ aus der Aktionsleiste (in allen Rollen) auswählen, um die aktuellen Optionen anzuzeigen.
+Wenn Sie Einstellungen von Azure-Ressourcenrollen konfigurieren, definieren Sie die Standardeinstellungen, die für Zuweisungen von Azure-Ressourcenrollen in Azure Active Directory Privileged Identity Management (PIM) gelten. Führen Sie die folgenden Schritte aus, um den Genehmigungsworkflow zu konfigurieren und anzugeben, wer Anforderungen genehmigen oder ablehnen kann.
 
-## <a name="overview"></a>Übersicht
+## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 
-Über den Genehmigungsworkflow in Privileged Identity Management (PIM) für Azure-Ressourcenrollen können Administratoren den Zugriff auf wichtige Ressourcen weiter schützen oder einschränken. Das heißt, Administratoren können für die Aktivierung von Rollenzuweisungen die Notwendigkeit einer Genehmigung festlegen. 
+Führen Sie diese Schritte aus, um die Einstellungen für eine Azure-Ressourcenrolle zu öffnen.
 
-Das Konzept der Ressourcenhierarchie gilt nur für Azure-Ressourcenrollen. Diese Hierarchie ermöglicht die Vererbung von Rollenzuweisungen von einem übergeordneten Ressourcenobjekt bis zu allen untergeordneten Ressourcen des übergeordneten Containers. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit einem Benutzer an, der ein Mitglied der Rolle [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ist.
 
-Beispielsweise nutzt Bob als Ressourcenadministrator PIM, um Alice im Contoso-Abonnement der Rolle „Besitzer“ als berechtigtes Mitglied zuzuweisen. Durch diese Zuweisung ist Alice eine berechtigte Besitzerin aller Ressourcengruppencontainer im Contoso-Abonnement. Alice ist zudem eine berechtigte Besitzerin aller Ressourcen (z.B. virtuelle Computer) in den einzelnen Ressourcengruppen des Abonnements. 
+1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-Angenommen, das Contoso-Abonnement enthält drei Ressourcengruppen: Fabrikam Test, Fabrikam Dev und Fabrikam Prod. Jede dieser Ressourcengruppen enthält einen einzelnen virtuellen Computer.
+1. Klicken Sie auf **Azure-Ressourcen**.
 
-PIM-Einstellungen werden für jede Rolle einer Ressource konfiguriert. Im Gegensatz zu Zuweisungen werden diese Einstellungen nicht vererbt und gelten nur für die Ressourcenrolle. [Hier finden Sie weitere Informationen zu berechtigten Zuweisungen und zur Ressourcensichtbarkeit](pim-resource-roles-eligible-visibility.md).
+1. Klicken Sie auf die Ressource, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
 
-Fortführung des Beispiels: Bob nutzt PIM, um für alle Mitglieder der Rolle „Besitzer“ im Contoso-Abonnement die Durchführung des Genehmigungsvorgangs zu erzwingen, bevor die Aktivierung erfolgen kann. Außerdem erzwingt Bob die Genehmigung für Mitglieder der Rolle „Besitzer“ für diese Ressource, um die Ressourcen in der Ressourcengruppe „Fabrikam Prod“ zu schützen. Für die Rollen „Besitzer“ in „Fabrikam Test“ und „Fabrikam Dev“ ist keine Genehmigung für die Aktivierung erforderlich.
+    ![Liste der zu verwaltenden Azure-Ressourcen](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-Wenn Alice die Aktivierung ihrer Rolle „Besitzer“ für das Contoso-Abonnement anfordert, muss die Anforderung von einer Person genehmigt (bzw. abgelehnt) werden, bevor die Rolle für sie aktiviert wird. Wenn Alice den [Umfang der Aktivierung](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) auf die Ressourcengruppe „Fabrikam Prod“ ausweiten möchte, muss diese Anforderung ebenfalls von einer Person genehmigt oder abgelehnt werden. Wenn Alice den Umfang der Aktivierung aber auf „Fabrikam Test“ und/oder „Fabrikam Dev“ ausweiten möchte, ist keine Genehmigung erforderlich.
+1. Klicken Sie auf **Rolleneinstellungen**.
 
-Der Genehmigungsworkflow ist möglicherweise nicht für alle Mitglieder einer Rolle erforderlich. Stellen Sie sich ein Szenario vor, bei dem eine Organisation auf mehrere Vertragspartner zurückgreift, die Unterstützung bei der Entwicklung einer Anwendung leisten, die in einem Azure-Abonnement ausgeführt wird. Als Ressourcenadministrator möchten Sie, dass Mitarbeiter über eine Zugriffsberechtigung verfügen, ohne dass eine Genehmigung erforderlich ist, während für die Vertragspartner eine Genehmigung angefordert werden muss. Zum Konfigurieren des Genehmigungsworkflows nur für die Vertragspartner können Sie eine benutzerdefinierte Rolle mit den gleichen Berechtigungen wie für die Rolle erstellen, die den Mitarbeitern zugewiesen ist. Sie können eine Genehmigung der Aktivierung dieser benutzerdefinierten Rolle erzwingen. [Hier finden Sie weitere Informationen zu benutzerdefinierten Rollen](pim-resource-roles-custom-role-policy.md).
+    ![Rolleneinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-Führen Sie die folgenden Schritte aus, um den Genehmigungsworkflow zu konfigurieren und anzugeben, wer Anforderungen genehmigen oder ablehnen kann.
+1. Klicken Sie auf die Rolle, deren Einstellungen Sie konfigurieren möchten.
+
+    ![Details zur Rolleneinstellung](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+
+1. Klicken Sie auf **Bearbeiten**, um den Bereich „Rolleneinstellungen“ zu öffnen.
+
+    ![Bearbeiten von Rolleneinstellungen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+
+    Im Bereich „Rolleneinstellungen“ für jede Rolle können Sie verschiedene Einstellungen konfigurieren.
+
+## <a name="assignment-duration"></a>Zuweisungsdauer
+
+Bei der Konfiguration von Einstellungen für eine Rolle können Sie für jeden Zuweisungstyp („Berechtigt“ und „Aktiv“) zwischen zwei Optionen für die Zuweisungsdauer wählen. Diese Optionen werden zur maximalen Standarddauer, wenn ein Mitglied der Rolle in PIM zugewiesen wird.
+
+Sie können beim Typ **Berechtigt** eine dieser Optionen für die Zuweisungsdauer wählen:
+
+| | |
+| --- | --- |
+| **Dauerhafte berechtigte Zuweisung zulassen** | Ressourcenadministratoren können eine dauerhafte berechtigte Mitgliedschaft zuweisen. |
+| **Berechtigte Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle berechtigten Zuweisungen ein bestimmtes Start- und Enddatum haben. |
+
+Beim Typ **Aktiv** können Sie eine dieser Optionen für die Zuweisungsdauer wählen:
+
+| | |
+| --- | --- |
+| **Permanente aktive Zuweisung zulassen** | Ressourcenadministratoren können eine permanente aktive Mitgliedschaft zuweisen. |
+| **Aktive Zuweisungen laufen ab nach** | Ressourcenadministratoren können verlangen, dass alle aktiven Zuweisungen ein bestimmtes Start- und Enddatum haben. |
+
+> [!NOTE] 
+> Alle Zuweisungen mit einem angegebenen Enddatum können von Ressourcenadministratoren erneuert werden. Zudem können Mitglieder Self-Service-Anforderungen auslösen, um [Rollenzuweisungen zu verlängern oder zu erneuern](pim-resource-roles-renew-extend.md).
+
+## <a name="require-multi-factor-authentication"></a>Mehrstufige Authentifizierung erforderlich
+
+In PIM ist die optionale Erzwingung der Azure Multi-Factor Authentication (MFA) für zwei bestimmte Szenarien möglich.
+
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Multi-Factor Authentication bei aktiver Zuweisung erforderlich
+
+Es kann vorkommen, dass Sie ein Mitglied einer Rolle für einen kurzen Zeitraum (z.B. einen Tag) zuweisen möchten. In diesem Fall müssen die zugewiesenen Mitglieder die Aktivierung nicht anfordern. In diesem Szenario kann MFA von PIM nicht erzwungen werden, wenn das Mitglied seine Rollenzuweisung verwendet, da die Rolle ab dem Moment der Zuweisung bereits aktiv ist.
+
+Um sicherzustellen, dass der Ressourcenadministrator, der die Zuweisung bearbeitet, auch wirklich die angegebene Person ist, können Sie für die aktive Zuweisung MFA erzwingen, indem Sie das Kontrollkästchen **Multi-Factor Authentication bei aktiver Zuweisung erforderlich** aktivieren.
+
+### <a name="require-multi-factor-authentication-on-activation"></a>Bei Aktivierung Multi-Factor Authentication anfordern
+
+Sie können erzwingen, dass berechtigte Mitglieder einer Rolle zuerst die MFA durchlaufen müssen, bevor sie aktiviert werden können. Mit diesem Prozess wird sichergestellt, dass es sich bei dem Benutzer, der die Aktivierung anfordert, auch wirklich um den angegebenen Benutzer handelt. Durch die Erzwingung dieser Option werden wichtige Ressourcen in Situationen geschützt, in denen das Benutzerkonto unter Umständen kompromittiert wurde.
+
+Um von einem berechtigten Mitglied die MFA vor der Aktivierung zu verlangen, aktivieren Sie das Kontrollkästchen **Bei Aktivierung Multi-Factor Authentication anfordern**.
+
+Weitere Informationen finden Sie unter [Multi-Factor Authentication (MFA) und PIM](pim-how-to-require-mfa.md).
+
+## <a name="activation-maximum-duration"></a>Maximale Aktivierungsdauer
+
+Mit dem Schieberegler **Maximale Aktivierungsdauer** geben Sie die maximale Zeit in Stunden an, die eine Rolle aktiv bleibt, bevor sie abläuft. Möglich ist ein Wert von 1 bis 24 Stunden.
+
+## <a name="require-justification"></a>Verlangen einer Begründung
+
+Sie können verlangen, dass Mitglieder bei aktiver Zuweisung oder bei Aktivierung eine Begründung eingeben. Um eine Begründung zu verlangen, aktivieren Sie das Kontrollkästchen **Begründung für aktive Zuweisung erforderlich** oder **Begründung für Aktivierung erforderlich**.
 
 ## <a name="require-approval-to-activate"></a>Erzwingen der Genehmigung für die Aktivierung
 
-1. Browsen Sie im Azure-Portal zu PIM, und wählen Sie in der Liste eine Ressource aus.
+Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, gehen Sie wie folgt vor.
 
-   ![Bereich „Azure-Ressourcen“ mit einer ausgewählten Ressource](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+1. Aktivieren Sie das Kontrollkästchen **Genehmigung zum Aktivieren anfordern**.
 
-2. Wählen Sie im linken Bereich die Option **Rolleneinstellungen** aus.
+1. Klicken Sie auf **Genehmigende Personen auswählen**, um den Bereich „Mitglied oder Gruppe auswählen“ zu öffnen.
 
-3. Suchen Sie nach einer Rolle, und wählen Sie sie aus. Wählen Sie dann **Bearbeiten** aus, um die Einstellungen zu ändern.
+    ![Mitglied oder Gruppe auswählen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-   ![Schaltfläche „Bearbeiten“ für die Rolle „Operator“](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
+1. Wählen Sie mindestens ein Mitglied oder eine Gruppe aus, und klicken Sie dann auf **Auswählen**. Sie können eine beliebige Kombination von Mitgliedern und Gruppen hinzufügen. Sie müssen mindestens eine genehmigende Person auswählen. Für genehmigende Personen gibt es keine Standardeinstellung.
 
-4. Aktivieren Sie im Abschnitt **Aktivierung** das Kontrollkästchen **Genehmigung zum Aktivieren anfordern**.
+    Ihre Auswahl wird in der Liste der ausgewählten genehmigenden Personen angezeigt.
 
-   ![Abschnitt „Aktivierung“ der Rolleneinstellungen](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
-
-## <a name="specify-approvers"></a>Angeben von genehmigenden Personen
-
-Klicken Sie auf **Genehmigende Personen auswählen**, um den Bereich **Benutzer oder Gruppe auswählen** zu öffnen.
-
->[!NOTE]
->Sie müssen mindestens einen Benutzer oder eine Gruppe auswählen, um die Einstellung zu aktualisieren. Für genehmigende Personen gibt es keine Standardeinstellung.
-
-Ressourcenadministratoren können der Liste mit den genehmigenden Personen eine beliebige Kombination von Benutzern und Gruppen hinzufügen. 
-
-![Bereich „Benutzer oder Gruppe auswählen“ mit einem ausgewählten Benutzer](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
-
-## <a name="request-approval-to-activate"></a>Anfordern der Genehmigung für die Aktivierung
-
-Das Anfordern der Genehmigung hat keine Auswirkungen auf das Verfahren, das ein Mitglied für die Aktivierung einhalten muss. [Sehen Sie sich die Schritte zum Aktivieren einer Rolle an](pim-resource-roles-activate-your-roles.md).
-
-Wenn ein Mitglied die Aktivierung einer Rolle angefordert hat, für die eine Genehmigung erforderlich ist, und die Rolle nicht mehr benötigt wird, kann das Mitglied die Anforderung in PIM stornieren.
-
-Navigieren Sie zum Stornieren zu PIM, und wählen Sie **Eigene Anforderungen** aus. Suchen Sie nach der Anforderung, und wählen Sie **Abbrechen** aus.
-
-![Bereich „Eigene Anforderungen“](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
+1. Wenn Sie alle gewünschten Rolleneinstellungen angegeben haben, klicken Sie auf **Aktualisieren**, um Ihre Änderungen zu speichern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anfordern der mehrstufigen Authentifizierung für Azure-Ressourcenrollen in PIM](pim-resource-roles-require-mfa.md)
+- [Zuweisen von Azure-Ressourcenrollen in PIM](pim-resource-roles-assign-roles.md)
 - [Konfigurieren von Sicherheitswarnungen für Azure-Ressourcenrollen in PIM](pim-resource-roles-configure-alerts.md)

@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: a57d5f8d857a8cfcdc81e86650466aec740f41e3
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344697"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286808"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
@@ -34,9 +34,9 @@ Dieses Thema veranschaulicht die verschiedenen Möglichkeiten zum Testen von Fun
 + Per Timer ausgelöste Funktion
 + Testen der Anwendung oder des Frameworks
 
-Alle diese Testmethoden verwenden eine HTTP-Trigger-Funktion, die Eingaben entweder über einen Abfragezeichenfolgen-Parameter oder über den Anforderungstext akzeptiert. Sie erstellen diese Funktion im ersten Abschnitt.
+Alle diese Testmethoden verwenden eine HTTP-Trigger-Funktion, die Eingaben entweder über einen Abfragezeichenfolgen-Parameter oder über den Anforderungstext akzeptiert. Sie erstellen diese Funktion über das Azure-Portal im ersten Abschnitt.
 
-## <a name="create-a-function-for-testing"></a>Erstellen einer Funktion zum Testen
+## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>Erstellen einer einfachen Funktion für Tests mithilfe des Azure-Portals
 In diesem Tutorial verwenden wir hauptsächlich eine leicht abgeänderte Version der Vorlage für die JavaScript-Funktion HttpTrigger, die beim Erstellen einer Funktion verfügbar ist. Wenn Sie Hilfe zum Erstellen einer Funktion benötigen, nutzen Sie dieses [Tutorial](functions-create-first-azure-function.md). Wählen Sie beim Erstellen der Testfunktion im [Azure-Portal] die **HttpTrigger- JavaScript**-Vorlage.
 
 Die Standardvorlage für die Funktion ist im Grunde eine „Hello World“-Funktion, die den Namen aus dem Anforderungstext oder dem Abfragezeichenfolgen-Parameter `name=<your name>` zurückgibt.  Wir aktualisieren den Code, sodass Sie auch den Namen und eine Adresse als JSON-Inhalte im Anforderungstext bereitstellen können. Die Funktion gibt diese Informationen dann an den Client zurück, wenn sie verfügbar sind.   

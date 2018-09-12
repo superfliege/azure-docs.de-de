@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: marsma
-ms.openlocfilehash: 92e60b4213cb80d193a7c35f68b8f9fd099481d7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 65ff60be992440c69e50a084b467a8efbb19574e
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165094"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307148"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Speichern von Containerimages in Azure Container Registry
 
@@ -43,7 +43,7 @@ Die folgende Tabelle beschreibt das Containerimage und die Speichergrenzen für 
 | Tags | Keine Begrenzung|
 | Speicher | 5 TB |
 
-Eine hohe Anzahl von Repositorys und Tags können die Leistung Ihrer Registrierung beeinträchtigen. Löschen Sie regelmäßig unbenutzte Repositorys, Tags und Images, indem Sie die [Azure CLI](/cli/azure/acr), die [ACR-REST-API](/rest/api/containerregistry/) oder das [Azure-Portal][portal] in die Wartungsroutine für Ihre Registrierung einbinden. Gelöschte Registrierungsressourcen wie Repositorys, Images und Tags können nach dem Löschen *nicht* wiederhergestellt werden.
+Eine hohe Anzahl von Repositorys und Tags können die Leistung Ihrer Registrierung beeinträchtigen. Löschen Sie regelmäßig unbenutzte Repositorys, Tags und Images als Teil der Wartungsroutine für Ihre Registrierung. Gelöschte Registrierungsressourcen wie Repositorys, Images und Tags können nach dem Löschen *nicht* wiederhergestellt werden. Weitere Informationen zum Löschen von Registrierungsressourcen finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).
 
 ## <a name="storage-cost"></a>Speicherkosten
 

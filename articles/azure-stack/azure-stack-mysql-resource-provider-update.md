@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4e894eaee6bb151b480204905d0a98324f5c353b
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 86e72787347cddd399fbdde4cd943b86ba48375f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049594"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697831"
 ---
 # <a name="update-the-mysql-resource-provider"></a>Aktualisieren des MySQL-Ressourcenanbieters 
 
@@ -31,6 +31,7 @@ Unter Umständen wird ein neuer SQL-Ressourcenanbieteradapter veröffentlicht, w
 >Sie müssen die Updates in der Reihenfolge installieren, in der sie veröffentlicht werden. Es können keine Versionen ausgelassen werden. Informationen hierzu finden Sie in der Versionsliste unter [Bereitstellen des Ressourcenanbieters – Voraussetzungen](.\azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 ## <a name="update-the-mysql-resource-provider-adapter-integrated-systems-only"></a>Update des MySQL-Ressourcenanbieteradapters (nur für integrierte Systeme)
+
 Unter Umständen wird ein neuer SQL-Ressourcenanbieteradapter veröffentlicht, wenn Azure Stack-Builds aktualisiert werden. Der vorhandene Adapter funktioniert zwar weiterhin, aber es ist ratsam, so schnell wie möglich das Update auf den aktuellen Build durchzuführen.  
  
 Verwenden Sie zum Aktualisieren des Ressourcenanbieters das Skript **UpdateMySQLProvider.ps1**. Der Prozess ähnelt dem Prozess zum Installieren eines Ressourcenanbieters, wie im Abschnitt [Bereitstellen des Ressourcenanbieters](#deploy-the-resource-provider) dieses Artikels beschrieben. Das Skript ist im Download des Ressourcenanbieters enthalten. 
@@ -97,6 +98,7 @@ Sie können diese Parameter in der Befehlszeile angeben. Wenn Sie keine Paramete
 | **AzCredential** | Die Anmeldeinformationen für das Azure Stack-Dienstadministratorkonto. Verwenden Sie die gleichen Anmeldeinformationen wie bei der Bereitstellung von Azure Stack. | _Erforderlich_ | 
 | **VMLocalCredential** |Die Anmeldeinformationen für das lokale Administratorkonto des virtuellen Computers mit dem SQL-Ressourcenanbieter. | _Erforderlich_ | 
 | **PrivilegedEndpoint** | Die IP-Adresse oder der DNS-Name des privilegierten Endpunkts. |  _Erforderlich_ | 
+| **AzureEnvironment** | Die zum Bereitstellen von Azure Stack verwendete Azure-Umgebung des Dienstadministratorkontos. Nur erforderlich, wenn sie nicht AD FS ist. Unterstützte Umgebungsnamen sind **AzureCloud**, **AzureUSGovernment** oder für Azure Active Directory für China **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Ihre Zertifikatdatei (PFX) muss ebenfalls in diesem Verzeichnis abgelegt werden. | _Optional_ (_obligatorisch_ bei mehreren Knoten) | 
 | **DefaultSSLCertificatePassword** | Das Kennwort für das PFX-Zertifikat. | _Erforderlich_ | 
 | **MaxRetryCount** | Die Anzahl von Wiederholungsversuchen für jeden Vorgang, wenn ein Fehler auftritt.| 2 | 
