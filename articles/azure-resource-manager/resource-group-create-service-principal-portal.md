@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57d017e2320e5cfea15f1716bc3b6518606e2ea4
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: fc0ccd84f493fd69c84515331386592ec11a887e
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282243"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025292"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals
 
@@ -27,7 +27,7 @@ Richten Sie eine Azure Active Directory-Anwendung (AD) ein, wenn Sie über Code 
 In diesem Artikel erfahren Sie, wie diese Schritte über das Portal ausgeführt werden. Es konzentriert sich auf eine Anwendung mit nur einem Mandanten, die nur zur Ausführung in einer einzigen Organisation vorgesehen ist. Anwendungen mit nur einem Mandanten werden in der Regel für innerhalb Ihrer Organisation ausgeführte Branchenanwendungen verwendet.
 
 > [!IMPORTANT]
-> Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung der verwalteten Dienstidentität für Azure AD für Ihre Anwendungsidentität erwägen. Die verwaltete Dienstidentität für Azure AD (Azure AD MSI) ist ein öffentliches Vorschaufeature von Azure Active Directory, mit dem das Erstellen einer Identität für Code vereinfacht wird. Wenn Ihr Code unter einem Dienst ausgeführt wird, der Azure AD MSI unterstützt, und auf Ressourcen zugreift, die die Azure Active Directory-Authentifizierung unterstützen, ist Azure AD MSI für Sie die besser geeignete Option. Weitere Informationen zu Azure AD MSI, z.B. welche Dienste derzeit unterstützt werden, finden Sie unter [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/managed-service-identity/overview.md).
+> Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung der verwalteten Dienstidentität für Azure AD für Ihre Anwendungsidentität erwägen. Die verwaltete Dienstidentität für Azure AD (Azure AD MSI) ist ein öffentliches Vorschaufeature von Azure Active Directory, mit dem das Erstellen einer Identität für Code vereinfacht wird. Wenn Ihr Code unter einem Dienst ausgeführt wird, der Azure AD MSI unterstützt, und auf Ressourcen zugreift, die die Azure Active Directory-Authentifizierung unterstützen, ist Azure AD MSI für Sie die besser geeignete Option. Weitere Informationen zu Azure AD MSI, z.B. welche Dienste derzeit unterstützt werden, finden Sie unter [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 

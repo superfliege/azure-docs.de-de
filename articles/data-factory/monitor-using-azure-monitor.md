@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d0f36551fb06e04b50af464bac6953dda64c6202
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616843"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054147"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Benachrichtigen und Überwachen von Data Factorys mithilfe von Azure Monitor
 Cloudanwendungen sind komplexe Systeme mit zahlreichen Variablen. Die Überwachung stellt Daten bereit, auf deren Grundlage die ordnungsgemäße Ausführung der Anwendung sichergestellt werden kann. Sie trägt auch zur Vermeidung potenzieller Probleme bei und hilft bei der Behandlung bereits aufgetretener Probleme. Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende Erkenntnisse über Ihre Anwendung gewinnen. Mithilfe dieser Kenntnisse können Sie die Leistung oder Wartungsfreundlichkeit der Anwendung verbessern oder Aktionen automatisieren, die andernfalls manuell ausgeführt werden müssten.
@@ -392,7 +392,7 @@ ADFV2 gibt die folgenden Metriken aus.
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Metriken zu erfolgreichen Pipelineausführungen | Count    | Gesamt                | Insgesamt erfolgreiche Pipelineausführungen in einem Zeitfenster von einer Minute |
 | PipelineFailedRuns   | Metriken zu fehlerhaften Pipelineausführungen    | Count    | Gesamt                | Insgesamt fehlerhafte Pipelineausführungen in einem Zeitfenster von einer Minute    |
-| ActiviySucceededRuns | Metriken zu erfolgreichen Aktivitätsausführungen | Count    | Gesamt                | Insgesamt erfolgreiche Aktivitätsausführungen in einem Zeitfenster von einer Minute  |
+| ActivitySucceededRuns | Metriken zu erfolgreichen Aktivitätsausführungen | Count    | Gesamt                | Insgesamt erfolgreiche Aktivitätsausführungen in einem Zeitfenster von einer Minute  |
 | ActivityFailedRuns   | Metriken zu fehlerhaften Aktivitätsausführungen    | Count    | Gesamt                | Insgesamt fehlerhafte Aktivitätsausführungen in einem Zeitfenster von einer Minute     |
 | TriggerSucceededRuns | Metriken zu erfolgreichen Triggerausführungen  | Count    | Gesamt                | Insgesamt erfolgreiche Triggerausführungen in einem Zeitfenster von einer Minute   |
 | TriggerFailedRuns    | Metriken zu fehlerhaften Triggerausführungen     | Count    | Gesamt                | Insgesamt fehlerhafte Triggerausführungen in einem Zeitfenster von einer Minute      |

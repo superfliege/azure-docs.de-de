@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 23e0e487914b6e8810d8db00462c353c99955665
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fa8c4b07f79564a1e9aa4e78b2323789283d4e73
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697467"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054620"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Lokale oder cloudbasierte .NET-Hybridanwendung mit Azure WCF Relay
 
@@ -232,7 +232,7 @@ In diesem Abschnitt erstellen Sie eine einfache ASP.NET-Anwendung, in der von Ih
     ![][18]
 
 7. Wechseln Sie zurück zum Dialogfeld **Neue ASP.NET-Webanwendung**, und klicken Sie auf **OK**, um die MVC-App zu erstellen.
-8. Als Nächstes müssen Sie die Azure-Ressourcen für eine neue Web-App konfigurieren. Führen Sie die Schritte im Abschnitt zum [Veröffentlichen in Azure](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure) in diesem Artikel aus. Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
+8. Als Nächstes müssen Sie die Azure-Ressourcen für eine neue Web-App konfigurieren. Führen Sie die Schritte im Abschnitt zum [Veröffentlichen in Azure](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard) in diesem Artikel aus. Kehren Sie anschließend zu diesem Tutorial zurück, und fahren Sie mit dem nächsten Schritt fort.
 10. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Modelle**, und klicken Sie anschließend auf **Hinzufügen** und dann auf **Klasse**. Geben Sie in das Feld **Name** den Namen **Product.cs** ein. Klicken Sie anschließend auf **Hinzufügen**.
 
     ![][17]

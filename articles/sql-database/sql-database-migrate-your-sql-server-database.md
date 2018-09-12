@@ -9,12 +9,12 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346840"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050203"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank mithilfe von DMA
 
@@ -43,7 +43,7 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-Datenbank
 
@@ -133,7 +133,7 @@ Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbankser
 
 Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserver im Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen für das Herstellen der Verbindung mit Ihrem Azure SQL-Server mithilfe von Clienttools einschließlich Data Migration Assistance und SQL Server Management Studio.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**.
 

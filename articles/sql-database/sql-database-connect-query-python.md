@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: e88c069bed40bcdf1eae9d356403cc772a11ea85
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2f907ccd371a9b2c4601a5ea266326a32c4f665d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704772"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054932"
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Python
 
@@ -27,7 +27,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - Python und die zugehörige Software müssen für das Betriebssystem installiert sein:
 

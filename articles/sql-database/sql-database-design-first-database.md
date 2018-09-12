@@ -9,12 +9,12 @@ ms.custom: mvc,develop databases
 ms.topic: tutorial
 ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ed2d4654163881b3258c4a98632d48acd0e80fb5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091539"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055368"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen Ihrer ersten Azure SQL-Datenbank mit SSMS
 
@@ -41,7 +41,7 @@ Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten insta
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-blank-sql-database"></a>Erstellen einer leeren SQL-Datenbank
 
@@ -131,7 +131,7 @@ Sie können für diese IP-Adresse jetzt eine Verbindung mit dem SQL-Datenbankser
 
 Rufen Sie den vollqualifizierten Servernamen für Ihren Azure SQL-Datenbankserver im Azure-Portal ab. Sie verwenden den vollqualifizierten Servernamen, um mit SQL Server Management Studio eine Verbindung mit Ihrem Server herzustellen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
 3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**.
 

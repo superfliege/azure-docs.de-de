@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 7dbd2585628c64f5baf7df6083e38217d00953be
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4abdbac44f4730d15c36d587190db1f95ea54d19
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140356"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050728"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Steuern und Gewähren des Datenbankzugriffs für SQL-Datenbank und SQL Data Warehouse
 
@@ -49,7 +49,7 @@ Die Konten **Serveradministrator** und **Azure AD-Administrator** weisen die fol
 - Sie können die `sys.sql_logins`-Systemtabelle anzeigen.
 
 ### <a name="configuring-the-firewall"></a>Konfigurieren der Firewall
-Wenn eine Firewall auf Serverebene für eine einzelne IP-Adresse oder einen Bereich konfiguriert wird, kann über **SQL Server-Administrator** und **Azure Active Directory-Administrator** eine Verbindung mit der Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die erste Firewall auf Serverebene kann über das [Azure-Portal](sql-database-get-started-portal.md) konfiguriert werden, indem die [PowerShell](sql-database-get-started-powershell.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx) verwendet wird. Nachdem eine Verbindung hergestellt wurde, können Sie per [Transact-SQL](sql-database-configure-firewall-settings.md) auch weitere Firewallregeln auf Serverebene konfigurieren.
+Wenn eine Firewall auf Serverebene für eine einzelne IP-Adresse oder einen Bereich konfiguriert wird, kann über **SQL Server-Administrator** und **Azure Active Directory-Administrator** eine Verbindung mit der Masterdatenbank und allen Benutzerdatenbanken hergestellt werden. Die erste Firewall auf Serverebene kann über das [Azure-Portal](sql-database-get-started-portal.md) konfiguriert werden, indem die [PowerShell](sql-database-powershell-samples.md) oder die [REST-API](https://msdn.microsoft.com/library/azure/dn505712.aspx) verwendet wird. Nachdem eine Verbindung hergestellt wurde, können Sie per [Transact-SQL](sql-database-configure-firewall-settings.md) auch weitere Firewallregeln auf Serverebene konfigurieren.
 
 ### <a name="administrator-access-path"></a>Administrator-Zugriffspfad
 Wenn die Firewall auf Serverebene richtig konfiguriert ist, können mit **SQL Server-Administrator** und **Azure Active Directory-Administrator** Verbindungen mit Tools wie SQL Server Management Studio oder SQL Server Data Tools hergestellt werden. Nur die neuesten Tools verfügen über alle Features und Funktionen. Das folgende Diagramm zeigt eine typische Konfiguration für die beiden Administratorkonten.

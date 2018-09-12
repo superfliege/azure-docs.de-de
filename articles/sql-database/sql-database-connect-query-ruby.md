@@ -10,12 +10,12 @@ ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: f86c53465636f82cf36d5099699fc9e6efeb55a5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4d9a918ad76e6aed603021abfd348f67d7208d3c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704656"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052155"
 ---
 # <a name="use-ruby-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Ruby
 
@@ -27,7 +27,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - Ruby und die zugehörige Software müssen für das Betriebssystem installiert sein:
     - **MacOS**: Installieren Sie nacheinander Homebrew, rbenv und ruby-build, Ruby und FreeTDS. Weitere Informationen finden Sie unter [Schritt 1.2, 1.3, 1.4 und 1.5](https://www.microsoft.com/sql-server/developer-get-started/ruby/mac/).
@@ -38,7 +38,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
-> Sie benötigen eine Firewallregel für die öffentliche IP-Adresse des Computers, auf dem Sie dieses Tutorial ausführen. Wenn Sie an einem anderen Computer arbeiten oder eine andere öffentliche IP-Adresse verwenden, [erstellen Sie über das Azure-Portal eine Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule). 
+> Sie benötigen eine Firewallregel für die öffentliche IP-Adresse des Computers, auf dem Sie dieses Tutorial ausführen. Wenn Sie an einem anderen Computer arbeiten oder eine andere öffentliche IP-Adresse verwenden, [erstellen Sie über das Azure-Portal eine Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md). 
 
 ## <a name="insert-code-to-query-sql-database"></a>Einfügen von Code zum Abfragen der SQL-Datenbank
 

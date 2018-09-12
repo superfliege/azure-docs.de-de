@@ -3,26 +3,21 @@ title: Aufrufen einer Funktion aus PowerApps | Microsoft-Dokumentation
 description: Erstellen Sie einen benutzerdefinierten Connector, und rufen Sie anschließend mithilfe dieses Connectors eine Funktion auf.
 services: functions
 keywords: Cloud-Apps, Clouddienste, PowerApps, Geschäftsprozesse, Geschäftsanwendung
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586975"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094314"
 ---
 # <a name="call-a-function-from-powerapps"></a>Aufrufen einer Funktion aus PowerApps
 Die Plattform [PowerApps](https://powerapps.microsoft.com) ermöglicht Fachleuten in Unternehmen die Erstellung von Apps ohne herkömmlichen Anwendungscode. Professionelle Entwickler können die Funktionen von PowerApps mithilfe von Azure Functions erweitern und gleichzeitig sicherstellen, dass sich PowerApps-App-Ersteller nicht mit technischen Details beschäftigen müssen.
@@ -212,7 +207,7 @@ Sie verfügen nun über eine App, die Zusammenfassungsdaten für die einzelnen T
 ## <a name="run-the-app"></a>Ausführen der App
 Sie verfügen nun über eine vollständige App! Führen Sie als Nächstes die App aus, um die Funktionsaufrufe in Aktion zu erleben.
 
-1. Klicken Sie rechts oben in PowerApps Studio auf die Schaltfläche zum Ausführen: ![Schaltfläche zum Ausführen der App](media/functions-powerapps-scenario/f5-arrow-sm.png)zu erstellen und zu verwalten.
+1. Klicken Sie rechts oben in PowerApps Studio auf die Schaltfläche zum Ausführen: ![Schaltfläche zum Ausführen der App](media/functions-powerapps-scenario/f5-arrow-sm.png).
 
 1. Wählen Sie eine Turbine aus, die für **ServiceRequired** den Wert `Yes` besitzt, und klicken Sie anschließend auf die Schaltfläche für die Kostenberechnung (**Calculate costs**). Das Ergebnis sollte in etwa wie folgt aussehen:
 

@@ -7,14 +7,14 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: f7a314b3de112ad1fa7a5a356c2325846e9371b1
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 6e793c0227300b836c0a14b4252eeaf63c1bc949
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413381"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054579"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
@@ -27,7 +27,7 @@ Azure SQL-Datenbank bietet die folgenden Bereitstellungsoptionen für eine Azure
 
 Die folgende Abbildung stellt diese Bereitstellungsoptionen dar:
 
-![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
+![Bereitstellungsoptionen](./media/sql-database-technical-overview/deployment-options.png) 
 
 SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). Mit der Cloud-First-Strategie von Microsoft werden die neuesten Funktionen von SQL Server zunächst in SQL-Datenbank und erst dann in SQL Server selbst veröffentlicht. Durch diesen Ansatz verfügen Sie immer über die neuesten Features von SQL Server – ohne den Mehraufwand für Patches oder Updates –, die in Millionen von Datenbanken getestet wurden. Informationen zu angekündigten neuen Funktionen finden Sie unter:
 
@@ -177,8 +177,8 @@ SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.
 - Diese Schnellstarts erleichtern Ihnen den Einstieg:
 
   - [Create a SQL database in the Azure portal](sql-database-get-started-portal.md) (Erstellen einer SQL-Datenbank im Azure-Portal)  
-  - [Erstellen einer SQL-Datenbank mit der Azure CLI](sql-database-get-started-cli.md)
-  - [Erstellen einer SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-powershell.md)
+  - [Erstellen einer SQL-Datenbank mit der Azure CLI](sql-database-cli-samples.md)
+  - [Erstellen einer SQL-Datenbank mithilfe von PowerShell](sql-database-powershell-samples.md)
 
 - Azure CLI- und PowerShell-Beispiele finden Sie unter:
   - [Azure CLI-Beispiele für SQL-Datenbank](sql-database-cli-samples.md)

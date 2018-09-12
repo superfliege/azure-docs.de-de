@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 9213f82a8e3a350312d4830aa2a8e5f695852ca5
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: f30d15c70b33200565f1933a4d8ebe8ed654638c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841837"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055232"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Logischer Azure SQL-Datenbankserver und dessen Verwaltung.
 
@@ -62,7 +62,7 @@ Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://por
 > [!IMPORTANT]
 > Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 
-Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md)
+Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md)
 
 ### <a name="manage-an-existing-sql-server"></a>Verwalten eines vorhandenen SQL-Servers
 
@@ -132,7 +132,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Löscht eine Firewallregel|
 
 > [!TIP]
-> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-get-started-cli.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer einzelnen SQL-Datenbank](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-cli-samples.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer einzelnen SQL-Datenbank](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Transact-SQL

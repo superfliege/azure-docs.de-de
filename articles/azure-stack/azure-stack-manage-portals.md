@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 673b1144fe927e0619f5f8638d7e8ce9a181f48c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248519"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024165"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Verwenden des Administratorportals in Azure Stack
 
@@ -39,7 +39,7 @@ Rufen Sie zum Zugreifen auf das Administratorportal die Portal-URL auf, und meld
 | Integrierte Systeme | https://adminportal.&lt;*Region*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
- ![Das Administratorportal](media/azure-stack-manage-portals/image1.png)
+ ![Das Administratorportal](media/azure-stack-manage-portals/admin-portal.png)
 
 Im Administratorportal können Sie etwa folgende Aktionen ausführen:
 

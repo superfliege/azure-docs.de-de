@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 6fbc49584b040f952fdff147207864d2d1f6377e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5aca1400ddfe1522cd9dc8d68d8cba8a222e4d21
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887440"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095197"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Integration von Service Map in System Center Operations Manager
   > [!NOTE]
@@ -34,7 +34,7 @@ Mit dieser Integration zwischen Service Map und System Center Operations Manager
 * Eine Operations Manager-Verwaltungsgruppe (2012 R2 oder höher), die eine Gruppe von Servern verwaltet.
 * Ein Log Analytics-Arbeitsbereich mit aktivierter Service Map-Lösung.
 * Eine Gruppe von Servern (mindestens eine), die über Operations Manager verwaltet werden und Daten an Service Map senden. Es werden Windows- und Linux-Server unterstützt.
-* Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem Log Analytics-Arbeitsbereich zugeordnet ist. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](#creating-a-service-principal).
+* Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem Log Analytics-Arbeitsbereich zugeordnet ist. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](#create-a-service-principal).
 
 ## <a name="install-the-service-map-management-pack"></a>Installieren des Service Map Management Pack
 Sie aktivieren die Integration zwischen Operations Manager und Service Map durch Importieren des Management Pack-Pakets Microsoft.SystemCenter.ServiceMap (Microsoft.SystemCenter.ServiceMap.mpb). Sie können das Management Pack-Paket aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55763) herunterladen. Das Paket enthält die folgenden Management Packs:

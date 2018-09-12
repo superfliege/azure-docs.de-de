@@ -3,23 +3,19 @@ title: Timer in Durable Functions – Azure
 description: Es wird beschrieben, wie Sie permanente Timer in der Erweiterung Durable Functions für Azure Functions implementieren.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4fd86b70965a7be84c72e265af798292819cbe96
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ff530d1af9a64383568aa53d3f53c59781d868a5
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762267"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090709"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timer in Durable Functions (Azure Functions)
 

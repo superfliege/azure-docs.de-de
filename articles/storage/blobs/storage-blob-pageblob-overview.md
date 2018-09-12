@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: a215771b0126e9048b7d9da4ed1d6073c8e960a4
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39266940"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022687"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Einzigartige Features von Azure-Seitenblobs
 
@@ -71,7 +71,7 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>Schreiben von Seiten in ein Seitenblob
-Verwenden Sie zum Schreiben von Seiten die [CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx)-Methode.  So können Sie eine sequenzielle Reihe von Seiten bis zu 4 MB schreiben. Der Offset, in den geschrieben wird, muss an einer 512-Byte-Begrenzung beginnen (startingOffset % 512 == 0) und an einer 512-Begrenzung -1 enden.  Im folgenden Codebeispiel wird das Aufrufen von **WritePages** für ein Blob veranschaulicht:
+Verwenden Sie zum Schreiben von Seiten die [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_)-Methode.  So können Sie eine sequenzielle Reihe von Seiten bis zu 4 MB schreiben. Der Offset, in den geschrieben wird, muss an einer 512-Byte-Begrenzung beginnen (startingOffset % 512 == 0) und an einer 512-Begrenzung -1 enden.  Im folgenden Codebeispiel wird das Aufrufen von **WritePages** für ein Blob veranschaulicht:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -116,8 +116,6 @@ foreach (PageRange range in pageRanges)
 
 #### <a name="leasing-a-page-blob"></a>Leasen eines Seitenblobs
 Das Leasen eines Blobs richtet eine Sperre für Schreib- und Löschvorgänge für ein Blob ein und verwaltet sie. Dieser Vorgang ist nützlich in Szenarien, in denen mehrere Clients auf ein Seitenblob zugreifen, um sicherzustellen, dass jeweils nur ein einziger Client in das Blob schreiben kann. Azure-Datenträger nutzen diesen Leasemechanismus z.B., um sicherzustellen, dass der Datenträger nur von einem einzelnen virtuellen Computer verwaltet wird. Die Sperrdauer kann 15 bis 60 Sekunden betragen oder unendlich sein. Weitere Informationen finden Sie [hier](/rest/api/storageservices/lease-blob).
-
-> Verwenden Sie den folgenden Link, um [Codebeispiele](/resources/samples/?service=storage&term=blob&sort=0 ) für viele andere Anwendungsszenarien abzurufen. 
 
 Zusätzlich zu umfangreichen REST-APIs bieten Seitenblobs auch freigegebenen Zugriff, Dauerhaftigkeit und verbesserte Sicherheit. Wir werden diese Vorteile ausführlicher in den nächsten Abschnitten behandeln. 
 

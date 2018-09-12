@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919774"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050610"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Instanz
 
@@ -141,4 +141,4 @@ Das Zertifikat ist nun für die angegebene verwaltete Instanz verfügbar, und di
 
 In diesem Artikel haben Sie erfahren, wie das Zertifikat, das den Verschlüsselungsschlüssel der Datenbank mit Transparent Data Encryption schützt, aus dem lokalen oder IaaS-SQL-Server zu einer verwalteten Azure SQL-Instanz migriert wird.
 
-Lesen Sie [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-restore-from-backup-tutorial.md), um zu erfahren, wie Sie eine Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz wiederherstellen können.
+Lesen Sie [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started-restore.md), um zu erfahren, wie Sie eine Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz wiederherstellen können.

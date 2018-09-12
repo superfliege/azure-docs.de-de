@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 483ac248619a6d8a0f403592b1b4e55ad5e973da
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 20039c32ed7bb740ba5d1185d195d7590cff39e2
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841861"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051254"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von logischen Servern und Einzeldatenbanken in Azure SQL-Datenbank 
 
@@ -38,7 +38,7 @@ Zum Erstellen einer Azure SQL-Datenbank mithilfe des [Azure-Portals](https://por
 > [!IMPORTANT]
 > Informationen zum Auswählen des Tarifs für Ihre Datenbank finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 
-Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-create-tutorial-portal.md)
+Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md)
 
 ### <a name="manage-an-existing-sql-server"></a>Verwalten eines vorhandenen SQL-Servers
 
@@ -85,7 +85,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 Verwenden Sie zum Erstellen und Verwalten von Servern, Datenbanken und Firewalls in Azure SQL-Datenbank mithilfe der [Azure CLI](/cli/azure) die folgenden [Azure CLI-SQL-Datenbank](/cli/azure/sql/db)-Befehle. Führen Sie die CLI mithilfe von [Cloud Shell](/azure/cloud-shell/overview) in Ihrem Browser aus, oder [installieren](/cli/azure/install-azure-cli) Sie sie unter macOS, Linux oder Windows. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
 > [!TIP]
-> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-get-started-cli.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer einzelnen SQL-Datenbank](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Eine Schnellstartanleitung zur Azure CLI finden Sie unter [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-cli-samples.md). Azure CLI-Beispielskripts finden Sie unter [Verwenden der Befehlszeilenschnittstelle zum Erstellen einer einzelnen Azure SQL-Datenbank und Konfigurieren einer Firewallregel](scripts/sql-database-create-and-configure-database-cli.md) und [Verwenden der Befehlszeilenschnittstelle zum Überwachen und Skalieren einer einzelnen SQL-Datenbank](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 | Cmdlet | BESCHREIBUNG |

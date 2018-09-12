@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: df1cf093a154b4f7adf59fae93f90fbc70459788
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 57cfa44a0eb114503b89733b2c3e309b65d5b7e5
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038277"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023323"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat
 
@@ -29,7 +29,7 @@ Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine
 * Sie können ein Zertifikat für die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts verwenden.
 
 > [!IMPORTANT]
-> Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung der verwalteten Dienstidentität für Azure AD für Ihre Anwendungsidentität erwägen. Die verwaltete Dienstidentität für Azure AD (Azure AD MSI) ist ein öffentliches Vorschaufeature von Azure Active Directory, mit dem das Erstellen einer Identität für Code vereinfacht wird. Wenn Ihr Code unter einem Dienst ausgeführt wird, der Azure AD MSI unterstützt, und auf Ressourcen zugreift, die die Azure Active Directory-Authentifizierung unterstützen, ist Azure AD MSI für Sie die besser geeignete Option. Weitere Informationen zu Azure AD MSI, z.B. welche Dienste derzeit unterstützt werden, finden Sie unter [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/managed-service-identity/overview.md).
+> Anstatt einen Dienstprinzipal zu erstellen, sollten Sie die Verwendung der verwalteten Dienstidentität für Azure AD für Ihre Anwendungsidentität erwägen. Die verwaltete Dienstidentität für Azure AD (Azure AD MSI) ist ein öffentliches Vorschaufeature von Azure Active Directory, mit dem das Erstellen einer Identität für Code vereinfacht wird. Wenn Ihr Code unter einem Dienst ausgeführt wird, der Azure AD MSI unterstützt, und auf Ressourcen zugreift, die die Azure Active Directory-Authentifizierung unterstützen, ist Azure AD MSI für Sie die besser geeignete Option. Weitere Informationen zu Azure AD MSI, z.B. welche Dienste derzeit unterstützt werden, finden Sie unter [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
 
 In diesem Artikel wird veranschaulicht, wie Sie einen Dienstprinzipal erstellen, der mit einem Zertifikat authentifiziert wird. Informationen zur Einrichtung eines Dienstprinzipals mit einem Kennwort finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 

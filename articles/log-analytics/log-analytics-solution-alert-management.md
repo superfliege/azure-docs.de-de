@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: eb61a48e8c479db4742d65187b202655f29b032d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: acf9e512e188c34c0124832a6a534135790f1e2d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131046"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049200"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
 ![Symbol „Alert Management“](media/log-analytics-solution-alert-management/icon.png)
 
-Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](log-analytics-alerts.md) oder [aus Nagios oder Zabbix importierten](log-analytics-linux-agents.md).  Die Lösung importiert auch Warnungen aus beliebigen [verbundenen System Center Operations Manager-Verwaltungsgruppen](log-analytics-om-agents.md).
+Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](log-analytics-alerts.md) oder [aus Nagios oder Zabbix importierten](log-analytics-linux-agents.md). Die Lösung importiert auch Warnungen aus beliebigen [verbundenen System Center Operations Manager-Verwaltungsgruppen](log-analytics-om-agents.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Die Lösung funktioniert mit allen Einträgen im Log Analytics-Repository mit dem Typ **Warnung**, sodass Sie die jeweilige erforderliche Konfiguration ausführen müssen, um diese Datensätze zu sammeln.
@@ -36,10 +36,10 @@ Die Lösung funktioniert mit allen Einträgen im Log Analytics-Repository mit de
 - Für System Center Operations Manager-Warnungen müssen Sie [Ihre Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich verbinden](log-analytics-om-agents.md).  Alle in System Center Operations Manager erstellten Warnungen werden in Log Analytics importiert.  
 
 ## <a name="configuration"></a>Konfiguration
-Fügen Sie die Warnungsverwaltungslösung dem Log Analytics-Arbeitsbereich hinzu, indem Sie den unter [Hinzufügen von Lösungen](log-analytics-add-solutions.md) beschriebenen Prozess verwenden.  Es ist keine weitere Konfiguration erforderlich.
+Fügen Sie die Warnungsverwaltungslösung dem Log Analytics-Arbeitsbereich hinzu, indem Sie den unter [Hinzufügen von Lösungen](log-analytics-add-solutions.md) beschriebenen Prozess verwenden. Es ist keine weitere Konfiguration erforderlich.
 
 ## <a name="management-packs"></a>Management Packs
-Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich verbunden ist, werden beim Hinzufügen dieser Lösung die folgenden Management Packs in System Center Operations Manager installiert.  Für die Management Packs ist keine Konfiguration oder Wartung erforderlich.  
+Wenn Ihre System Center Operations Manager-Verwaltungsgruppe mit Ihrem Log Analytics-Arbeitsbereich verbunden ist, werden beim Hinzufügen dieser Lösung die folgenden Management Packs in System Center Operations Manager installiert.  Für die Management Packs ist keine Konfiguration oder Wartung erforderlich.
 
 * Microsoft System Center Advisor Alert Management (Microsoft.IntelligencePacks.AlertManagement)
 
@@ -53,7 +53,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 |:--- |:--- |:--- |
 | [Windows-Agents](log-analytics-windows-agent.md) | Nein  |Direkte Windows-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Windows-Agents gesammelt wurden. |
 | [Linux-Agents](log-analytics-linux-agents.md) | Nein  |Direkte Linux-Agents generieren keine Warnungen.  Log Analytics-Warnungen können aus Ereignissen und Leistungsdaten erstellt werden, die von Linux-Agents gesammelt wurden.  Nagios- und Zabbix-Warnungen werden von Servern gesammelt, die den Linux-Agent erfordern. |
-| [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md) |Ja |Warnungen, die auf Operations Manager-Agents generiert werden, werden an die Verwaltungsgruppe übermittelt und dann an Log Analytics weitergeleitet.<br><br>Es ist keine direkte Verbindung von Operations Manager-Agents mit Log Analytics erforderlich. Warnungsdaten werden von der Verwaltungsgruppe an das Log Analytics-Repository weitergeleitet. |
+| [System Center Operations Manager-Verwaltungsgruppe](log-analytics-om-agents.md) |JA |Warnungen, die auf Operations Manager-Agents generiert werden, werden an die Verwaltungsgruppe übermittelt und dann an Log Analytics weitergeleitet.<br><br>Es ist keine direkte Verbindung von Operations Manager-Agents mit Log Analytics erforderlich. Warnungsdaten werden von der Verwaltungsgruppe an das Log Analytics-Repository weitergeleitet. |
 
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit

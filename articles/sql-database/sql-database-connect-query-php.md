@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8fe343587336ff22f82ed0d1ef700fc56c86f577
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 19ffb1043317cf7e7ce4c00fd85d21274dab7c0a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561093"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055521"
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von PHP
 
@@ -27,7 +27,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal-firewall.md) für die öffentliche IP-Adresse des Computers, den Sie für diese Schnellstartanleitung verwenden
 
 - PHP und die zugehörige Software müssen für das Betriebssystem installiert sein:
 

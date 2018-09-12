@@ -17,26 +17,27 @@ ms.workload: database
 ms.date: 04/01/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 6d322ffc9f8aea8cd5c0a54bdefe6d1a9429fb7a
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e7ce894d617445db824ebc317589ff07e9569fb2
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666566"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050451"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Verwenden von PowerShell zum Synchronisieren zwischen mehreren SQL-Datenbanken
  
 In diesem PowerShell-Beispiel wird die Datensynchronisierung für die Synchronisierung zwischen mehreren Azure SQL-Datenbanken konfiguriert.
 
-Für dieses Beispiel ist das Azure PowerShell-Modul Version 4.2 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
- 
-Führen Sie zum Starten `Connect-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen.
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](../sql-database-sync-data.md).
 
 ## <a name="sample-script"></a>Beispielskript
 
-```powershell
+```powershell-interactive
 # prerequisites: 
 # 1. Create an Azure Database from AdventureWorksLT sample database as hub database
 # 2. Create an Azure Database in the same region as sync database

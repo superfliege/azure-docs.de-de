@@ -1,25 +1,21 @@
 ---
-title: Übersicht über Azure Functions-Runtime | Microsoft-Dokumentation
-description: Übersicht über Azure Functions-Runtime – Vorschauversion
+title: Übersicht über Azure Functions Runtime | Microsoft-Dokumentation
+description: Übersicht über Azure Functions Runtime Preview
 services: functions
-documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: ''
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 2be04c7037dd26755300cf8b7794678a6a958278
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4d11af1edc13fa675bef5cf9067dbe95646abff1
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488459"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091916"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Übersicht über Azure Functions-Runtime (Vorschauversion)
 

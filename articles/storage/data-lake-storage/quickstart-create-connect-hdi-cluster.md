@@ -11,12 +11,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: e0816e8609ba1ab0ef1b4f685731339378fee844
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8bfe069ba03aec2476d437f25ebb00f8a934c845
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525585"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025552"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Schnellstart: Einrichten von Hadoop-Clustern in HDInsight
 
@@ -242,7 +242,7 @@ Es kann vorkommen, dass Sie die folgenden Konfigurationsdateien während des Ers
 Weitere Informationen finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](../../hdinsight/hdinsight-hadoop-customize-cluster-bootstrap.md).
 
 ## <a name="advanced-settings-extend-clusters-with-a-virtual-network"></a>Erweiterte Einstellungen: Erweitern von Cluster mit einem virtuellen Netzwerk
-Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, können Sie die erforderlichen Clustertypen über ein [virtuelles Azure-Netzwerk](../../hdinsight/https://docs.microsoft.com/azure/virtual-network) miteinander verbinden. Durch diese Konfiguration können die Cluster und der gesamte Code, den Sie dafür bereitstellen, direkt miteinander kommunizieren.
+Wenn für Ihre Lösung Technologien erforderlich sind, die auf mehrere HDInsight-Clustertypen verteilt sind, können Sie die erforderlichen Clustertypen über ein [virtuelles Azure-Netzwerk](https://docs.microsoft.com/azure/virtual-network) miteinander verbinden. Durch diese Konfiguration können die Cluster und der gesamte Code, den Sie dafür bereitstellen, direkt miteinander kommunizieren.
 
 Weitere Informationen zur Verwendung eines virtuellen Azure-Netzwerks finden Sie unter [Erweitern von HDInsight mit virtuellen Azure-Netzwerken](../../hdinsight/hdinsight-extend-hadoop-virtual-network.md).
 

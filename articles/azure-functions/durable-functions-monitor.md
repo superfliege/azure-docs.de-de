@@ -3,23 +3,19 @@ title: Monitore in Durable Functions – Azure
 description: In diesem Artikel wird erläutert, wie Sie mithilfe der Durable Functions-Erweiterung für Azure Functions einen Statusmonitor implementieren.
 services: functions
 author: kashimiz
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 02c068fc70748584583b2c71659b1a1abdc0a46d
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: f59fcecbb1f321c447e15469cf5584c5be8d7b96
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035770"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094350"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 

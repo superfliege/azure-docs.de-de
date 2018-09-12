@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 1db7219beead4d7ee228baff4c802c105419ba1c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 248ec73b09c25c162c5bdc77ceb18e610d604b77
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524602"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052172"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -41,11 +41,13 @@ Wenn die Anforderungen Ihrer Anwendung die Skalierbarkeitsziele eines einzelnen 
 [!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
 
 ## <a name="azure-files-scale-targets"></a>Skalierbarkeitsziele für Azure Files
-Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files und Azure File Sync finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../files/storage-files-scale-targets.md).
+Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files und die Azure-Dateisynchronisierung finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Files](../files/storage-files-scale-targets.md).
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
-### <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für Azure File Sync
+### <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für die Azure-Dateisynchronisierung
+Bei der Azure-Dateisynchronisierung haben wir als Entwicklungsziel eine unbegrenzte Nutzung vorgesehen, was jedoch nicht immer möglich ist. Die folgende Tabelle zeigt die bei unseren Tests ermittelten Grenzwerte und für welche Ziele tatsächlich feste Grenzen gelten:
+
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ## <a name="azure-queue-storage-scale-targets"></a>Skalierbarkeitsziele für Azure Queue Storage

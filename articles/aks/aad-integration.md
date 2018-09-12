@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 8/9/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 9bbf7ad201a70a315b75ed5e1f35671e4a5604fc
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 5a93cb7b2abbf0eaa25304f61a8a422edf209959
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142531"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091168"
 ---
 # <a name="integrate-azure-active-directory-with-aks"></a>Integrieren von Azure Active Directory in AKS
 
@@ -127,15 +127,15 @@ Stellen Sie den Cluster mit dem Befehl [az aks create][az-aks-create] bereit. Er
 
 ```azurecli
 az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-keys --enable-rbac \
-  --aad-server-app-id 7ee598bb-0000-0000-0000-83692e2d717e \
+  --aad-server-app-id b1536b67-29ab-4b63-b60f-9444d0c15df1 \
   --aad-server-app-secret wHYomLe2i1mHR2B3/d4sFrooHwADZccKwfoQwK2QHg= \
-  --aad-client-app-id 7ee598bb-0000-0000-0000-83692e2d717e \
+  --aad-client-app-id 8aaf8bd5-1bdd-4822-99ad-02bfaa63eea7 \
   --aad-tenant-id 72f988bf-0000-0000-0000-2d7cd011db47
 ```
 
 ## <a name="create-rbac-binding"></a>Erstellen einer RBAC-Bindung
 
-Bevor ein Azure Active Directory-Konto mit dem AKS-Cluster verwendet werden kann, muss eine Rollenbindung oder eine Clusterrollenbindung erstellt werden. *Rollen* definieren die zu erteilenden Berechtigungen, *Bindungen* wenden sie auf den gewünschten Benutzer an. Diese Zuweisungen können auf einen bestimmten Namespace oder im gesamten Cluster angewendet werden. Weitere Informationen finden Sie unter [Verwenden von RBAC-Autorisierung][rbac-authorization].
+Bevor ein Azure Active Directory-Konto mit dem AKS-Cluster verwendet werden kann, muss eine Rollenbindung oder eine Clusterrollenbindung erstellt werden. *Rollen* definieren die zu erteilenden Berechtigungen, und *Bindungen* wenden diese auf die gewünschten Benutzer an. Diese Zuweisungen können auf einen bestimmten Namespace oder im gesamten Cluster angewendet werden. Weitere Informationen finden Sie unter [Verwenden der RBAC-Autorisierung][rbac-authorization].
 
 Verwenden Sie zunächst den Befehl [az aks get-credentials][az-aks-get-credentials] mit dem Argument `--admin`, um sich beim Cluster mit Administratorzugriff anzumelden.
 

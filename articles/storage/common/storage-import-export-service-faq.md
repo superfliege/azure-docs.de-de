@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 6a2d067625e96aefdcb0197e1abb13b0c41fbe7f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: edaff86531a9c40064d25a046bbbb70f48b75c84
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521437"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027128"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure Import/Export-Dienst: Häufig gestellte Fragen 
 Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten. Die Fragen und Antworten sind in folgende Kategorien unterteilt:
@@ -119,7 +119,7 @@ Beim Vorbereiten einer Festplatte für einen Importauftrag wird das Ziel mit dem
 Das ist unterschiedlich. Beim Vorbereiten der Festplatte können Sie angeben, ob die Zieldateien überschrieben oder ignoriert werden sollen. Hierfür verwenden Sie das Feld „Disposition:<rename|no-overwrite|overwrite>“ (umbenennen, nicht überschreiben, überschreiben) in der Dataset-CSV-Datei. In der Standardeinstellung benennt der Dienst die neuen Dateien um, anstatt vorhandene Blobs oder Dateien zu überschreiben.
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Ist das WAImportExport-Tool mit dem 32-Bit-Windows-Betriebssystem kompatibel?
-Nein. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste der unterstützten Betriebssysteme finden Sie unter [Unterstützte Betriebssysteme](). 
+Nein. Das WAImportExport-Tool ist nur mit dem 64-Bit-Windows-Betriebssystem kompatibel. Eine vollständige Liste der unterstützten Betriebssysteme finden Sie unter [Unterstützte Betriebssysteme](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
 
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Welche maximale Blockblob- und Seitenblobgröße wird von Azure Import/Export unterstützt?

@@ -14,22 +14,21 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: a55c99764cf9d77ab3ee269e3f5b0c2a13ec1ac7
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: b509bf9575c3fdeedd1673d4ffe1395d46e3d919
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42023054"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051611"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 
-Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert.
+Mit Azure Key Vault lassen sich folgende Probleme lösen:
+- Azure Key Vault ermöglicht die sichere Speicherung und präzise Steuerung des Zugriffs auf Token, Kennwörter, Zertifikate, API-Schlüssel und andere Geheimnisse.
+- Azure Key Vault kann auch als Schlüsselverwaltungslösung verwendet werden. Azure Key Vault vereinfacht das Erstellen und Verwalten der zur Verschlüsselung Ihrer Daten verwendeten Verschlüsselungsschlüssel. 
+- Darüber hinaus können Sie mit dem Azure Key Vault-Dienst komfortabel öffentliche und private SSL-/TLS-Zertifikate (Secure Sockets Layer/Transport Layer Security) für die Verwendung mit Azure und Ihren internen verbundenen Ressourcen bereitstellen und verwalten. 
+- Die Geheimnisse und Schlüssel können entweder per Software oder mit FIPS 140-2 Level 2 HSMs geschützt werden.
 
-Ihre Anwendungen sind auf Informationen wie Kennwörter, Verbindungszeichenfolgen und Ähnliches angewiesen. Diese Informationen müssen verfügbar, aber auch sicher sein. Hier kommt Azure Key Vault ins Spiel. Azure Key Vault unterstützt Sie bei der sicheren Speicherung und Verwaltung von Anwendungsgeheimnissen.
-
-Mit Key Vault können Sie mehrere sichere Container (so genannte Tresore) erstellen. Diese Tresore basieren auf Hardwaresicherheitsmodulen (HSMs). Tresore zentralisieren die Speicherung von Anwendungsgeheimnissen und verringern so die Gefahr, dass Sicherheitsinformationen abhandenkommen. Darüber hinaus steuern und protokollieren Key Vault-Instanzen auch den Zugriff auf alle darin gespeicherten Daten. Azure Key Vault kann Anforderungen und Verlängerungen von TLS-Zertifikaten (Transport Layer Security) abwickeln und stellt Features bereit, die für eine zuverlässige Zertifikatlebenszyklus-Verwaltungslösung benötigt werden.
-
- Azure Key Vault ist für die Unterstützung jeder Art von Geheimnissen konzipiert. Dies bedeutet, dass Key Vault zur Speicherung von Kennwörtern, Datenbank-Anmeldeinformationen, API-Schlüsseln und Zertifikaten verwendet werden kann, die entweder die software- oder HSM-geschützt sind.
 ## <a name="why-use-azure-key-vault"></a>Gründe für die Verwendung von Azure Key Vault
 
 ### <a name="centralize-application-secrets"></a>Zentralisieren von Anwendungsgeheimnissen

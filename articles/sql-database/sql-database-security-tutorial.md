@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: daredis
-ms.openlocfilehash: 54ec3c1386d6ce2023106367a6af1915e754948f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d805a39831ce2eea204689a4daa069d10b757e8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193460"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054069"
 ---
 # <a name="secure-your-azure-sql-database"></a>Schützen der Azure SQL-Datenbank
 
@@ -46,11 +46,11 @@ Damit Sie dieses Tutorial durcharbeiten können, müssen folgende Voraussetzunge
 
 - Die neueste Version von [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) muss installiert sein. 
 - Microsoft Excel muss installiert sein.
-- Ein Azure SQL Server und eine Azure SQL-Datenbank müssen erstellt sein. Siehe [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-get-started-portal.md), [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-get-started-cli.md) und [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-powershell.md). 
+- Ein Azure SQL Server und eine Azure SQL-Datenbank müssen erstellt sein. Siehe [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-get-started-portal.md), [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe der Azure CLI](sql-database-cli-samples.md) und [Erstellen einer einzelnen Azure SQL-Datenbank mithilfe von PowerShell](sql-database-powershell-samples.md). 
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Erstellen einer Firewallregel auf Serverebene im Azure-Portal
 

@@ -3,26 +3,21 @@ title: Aufrufen einer Azure-Funktion von Microsoft Flow | Microsoft-Dokumentatio
 description: Erstellen Sie einen benutzerdefinierten Connector, und rufen Sie anschließend mithilfe dieses Connectors eine Funktion auf.
 services: functions
 keywords: Cloud-Apps, Clouddienste, Microsoft Flow, Geschäftsprozesse, Geschäftsanwendung
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 57d80ad836a16b8821ba0cce42c822728c654dfd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 662c78fc7074b0dafc53c393962aa4b578779095
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38467743"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092257"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Aufrufen einer Funktion von Microsoft Flow
 
@@ -234,7 +229,7 @@ Nun, da der Workflow abgeschlossen ist, fügen Sie eine Zeile zur SharePoint-Lis
     | **Titel**           | Turbine 60 |
     | **LastServiceDate** | 08/04/2017 |
     | **MaxOutput**       | 2500 |
-    | **ServiceRequired** | Ja |
+    | **ServiceRequired** | JA |
     | **EstimatedEffort** | 10 |
 
 3. Klicken Sie auf **Fertig**.

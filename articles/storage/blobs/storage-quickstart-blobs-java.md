@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: rogarana
-ms.openlocfilehash: 7fc5b164792907644a0a41615436806f998a8b1e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2f5396826da88fd2efdd3588babdbdfdeb42252a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398708"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026142"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-java-sdk-v7"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Java-SDK V7
 
@@ -208,7 +208,7 @@ In diesem Schnellstart haben Sie gelernt, wie Sie mit Java Dateien zwischen eine
 
 > [!div class="nextstepaction"]
 > [Azure Storage SDK für Java](https://github.com/azure/azure-storage-java) 
-> [API-Referenz](https://docs.microsoft.com/en-us/java/api/storage/client?view=azure-java-stable)
+> [API-Referenz](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
 > [Codebeispiele für Java](../common/storage-samples-java.md)
 
 * Weitere Informationen zum Storage-Explorer und Blobs finden Sie unter [Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vorschau)](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
