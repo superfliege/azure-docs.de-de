@@ -232,11 +232,11 @@
 
 
 #### Anwendungsregistrierung
-##### [Eingeben von Feldern für das Anwendungsobjekt](application-dev-registration-config-specific-application-property-how-to.md)
-##### [Ändern der Standardwerte für die Tokengültigkeitsdauer](application-dev-registration-config-change-token-lifetime-how-to.md)
+##### [Eingeben von Feldern für das Anwendungsobjekt](develop/registration-config-specific-application-property-how-to.md)
+##### [Ändern der Standardwerte für die Tokengültigkeitsdauer](develop/registration-config-change-token-lifetime-how-to.md)
 
 #### Authentifizierung
-##### [Konfigurieren von Endpunkten](application-dev-registration-config-how-to.md)
+##### [Konfigurieren von Endpunkten](develop/registration-config-how-to.md)
 
 #### Bedingter Zugriff
 ##### [Der Kunde hat die Voraussetzungen der Geräteregistrierung nicht erfüllt.](active-directory-conditional-access.md)
@@ -248,7 +248,7 @@
 ##### [Welche Anwendungen werden mit bedingtem Zugriff unterstützt?](active-directory-conditional-access-supported-apps.md)
 
 #### Suchen einer API
-##### [Suchen einer API](application-dev-api-find-an-api-how-to.md)
+##### [Suchen einer API](develop/api-find-an-api-how-to.md)
 
 #### Verwalten des Zugriffs
 ##### [Zuweisen von Benutzern und Gruppen zu einer App](manage-apps/methods-for-assigning-users-and-groups.md)
@@ -258,14 +258,14 @@
 ##### [Unerwartete App in der Anwendungsliste](manage-apps/application-types.md)
 
 #### Mehrinstanzenfähige Apps
-##### [Konfigurieren einer neuen App](application-dev-setup-multi-tenant-app.md)
-##### [Hinzufügen zum App-Katalog](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+##### [Konfigurieren einer neuen App](develop/setup-multi-tenant-app.md)
+##### [Hinzufügen zum App-Katalog](develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md)
 
 #### Berechtigungen
-##### [Auswählen von Berechtigungen für eine API](application-dev-perms-for-given-api.md)
-##### [Gewähren von Berechtigungen für meine App](application-dev-registration-config-grant-permissions-how-to.md)
-##### [Delegierte Berechtigungen und Anwendungsberechtigungen](application-dev-delegated-and-app-perms.md)
-##### [Anwendungszustimmung](application-dev-consent-framework.md)
+##### [Auswählen von Berechtigungen für eine API](develop/perms-for-given-api.md)
+##### [Gewähren von Berechtigungen für meine App](develop/registration-config-grant-permissions-how-to.md)
+##### [Delegierte Berechtigungen und Anwendungsberechtigungen](develop/delegated-and-app-perms.md)
+##### [Anwendungszustimmung](develop/consent-framework.md)
 
 #### Bereitstellung
 ##### [Dauer](manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)
@@ -278,7 +278,7 @@
 
 #### Einmaliges Anmelden
 ##### [Auswählen einer Methode](manage-apps/single-sign-on-modes.md)
-##### [Konfigurieren](application-dev-registration-config-sso-how-to.md)
+##### [Konfigurieren](develop/registration-config-sso-how-to.md)
 ##### [Konfigurieren eines Verbunds: Katalog-Apps](manage-apps/configure-federated-single-sign-on-gallery-applications.md)
 ##### [Allgemeine Probleme beim Konfigurieren eines Verbunds: Katalog-Apps](manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md)
 ##### [Konfigurieren eines Verbunds: Nicht-Katalog-Apps](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
@@ -303,7 +303,7 @@
 ##### [Problem mit einer lokalen App: Anwendungsproxy](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
 ### [Entwickeln von Apps](active-directory-applications-guiding-developers-for-lob-applications.md)
-### [Dokumentbibliothek](active-directory-apps-index.md)
+
 
 ## Verwalten Ihres Verzeichnisses
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
