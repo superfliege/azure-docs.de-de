@@ -1,33 +1,36 @@
 ---
-title: 'Tutorial: Informationen zum Aufrufen einer LUIS-App (Language Understanding Intelligent Service) mithilfe von Python | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie eine LUIS-App mithilfe von Python aufrufen.
+title: 'Schnellstart: Aufrufen einer LUIS-App (Language Understanding) mit Python | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine LUIS-App mithilfe von Python aufrufen.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 8671e81f6d8c18c17f34843d2c1b8460306daeb5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 06/27/2018
+ms.author: diberry
+ms.openlocfilehash: bc7ae912d762a98c34b9a1b2d6a82d5630c4794b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264583"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43770004"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-python"></a>Tutorial: Aufrufen eines LUIS-Endpunkts mithilfe von Python
-Übergeben Sie Äußerungen an einen LUIS-Endpunkt, um Absichten und Entitäten zurückzugeben.
+# <a name="quickstart-call-a-luis-endpoint-using-python"></a>Schnellstart: Aufrufen eines LUIS-Endpunkts mit Python
+In dieser Schnellstartanleitung übergeben Sie Äußerungen an einen LUIS-Endpunkt, um Absichten und Entitäten zurückzugeben.
 
 <!-- green checkmark -->
+<!--
 > [!div class="checklist"]
-> * Erstellen eines LUIS-Abonnements und Kopieren des Schlüsselwerts zur späteren Verwendung
-> * Anzeigen von LUIS-Endpunktergebnissen aus dem Browser in der öffentlichen IoT-Beispiel-App
-> * Erstellen einer Visual Studio-C#-Konsolen-App zum Ausführen von HTTPS-Aufrufen für den LUIS-Endpunkt
+> * Create LUIS subscription and copy key value for later use
+> * View LUIS endpoint results from browser to public sample IoT app
+> * Create Visual Studio C# console app to make HTTPS call to LUIS endpoint
+-->
 
-Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Konto für die Erstellung Ihrer LUIS-Anwendung.
+Für diesen Artikel benötigen Sie ein kostenloses [LUIS](luis-reference-regions.md#luis-website)-Konto für die Erstellung Ihrer LUIS-Anwendung.
 
-## <a name="create-luis-subscription-key"></a>Erstellen eines LUIS-Abonnementschlüssels
+<a name="create-luis-subscription-key"></a>
+## <a name="create-luis-endpoint-key"></a>Erstellen eines LUIS-Endpunktschlüssels
 Sie benötigen einen Cognitive Services-API-Schlüssel, um die in dieser exemplarischen Vorgehensweise verwendete LUIS-Beispiel-App aufzurufen. 
 
 Führen Sie zum Abrufen eines API-Schlüssels die folgenden Schritte aus: 
@@ -36,7 +39,7 @@ Führen Sie zum Abrufen eines API-Schlüssels die folgenden Schritte aus:
 
 2. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an. 
 
-3. Führen Sie zum Abrufen eines Schlüssels die Schritte unter [Manage Azure endpoint subscription keys](./luis-how-to-azure-subscription.md) (Verwalten von Azure-Endpunktabonnementschlüsseln) aus.
+3. Führen Sie zum Abrufen eines Schlüssels die Schritte unter [Erstellen von Endpunktschlüsseln mit Azure](./luis-how-to-azure-subscription.md) aus.
 
 4. Kehren Sie zurück zur [LUIS](luis-reference-regions.md)-Website, und melden Sie sich mit Ihrem Azure-Konto an. 
 
@@ -46,7 +49,7 @@ Führen Sie zum Abrufen eines API-Schlüssels die folgenden Schritte aus:
 
 Wenn Sie nachvollziehen möchten, was von einer LUIS-App zurückgegeben wird, fügen Sie die URL einer LUIS-Beispiel-App in ein Browserfenster ein. Die Beispiel-App ist eine IoT-App, die ermittelt, ob der Benutzer Lichter ein- oder ausschalten möchte.
 
-1. Der Endpunkt der Beispiel-App hat dieses Format: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light` Kopieren Sie die URL, und ersetzen Sie den Wert im Feld `subscription-key` durch Ihren Abonnementschlüssel.
+1. Der Endpunkt der Beispiel-App hat folgendes Format: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light` Kopieren Sie die URL, und ersetzen Sie den Wert des Felds `subscription-key` durch Ihren Endpunktschlüssel.
 2. Fügen Sie die URL in ein Browserfenster ein, und drücken Sie die EINGABETASTE. Das im Browser angezeigte JSON-Ergebnis gibt an, dass LUIS die Absicht `HomeAutomation.TurnOn` und die Entität `HomeAutomation.Room` mit dem Wert `bedroom` erkennt.
 
     ![JSON-Ergebnis, das die Absicht „TurnOn“ erkennt](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
@@ -59,25 +62,24 @@ Wenn Sie nachvollziehen möchten, was von einer LUIS-App zurückgegeben wird, f�
 
 Sie können mit Python auf die gleichen Ergebnisse zugreifen, die im vorherigen Schritt im Browserfenster angezeigt wurden.
 
-1. Kopieren Sie einen der folgenden Codeausschnitte:
+1. Kopieren Sie einen der folgenden Codeausschnitte in eine Datei namens `quickstart-call-endpoint.py`:
 
-   [!code-python[Console app code that calls a LUIS endpoint for Python 2.7](~/samples-luis/documentation-samples/endpoint-api-samples/python/quickstart-call-endpoint-2-7.py)]
+   [!code-python[Console app code that calls a LUIS endpoint for Python 2.7](~/samples-luis/documentation-samples/quickstarts/analyze-text/python/2.x/quickstart-call-endpoint-2-7.py)]
 
-   [!code-python[Console app code that calls a LUIS endpoint for Python 3.6](~/samples-luis/documentation-samples/endpoint-api-samples/python/quickstart-call-endpoint-3-6.py)]
+   [!code-python[Console app code that calls a LUIS endpoint for Python 3.6](~/samples-luis/documentation-samples/quickstarts/analyze-text/python/3.x/quickstart-call-endpoint-3-6.py)]
 
+2. Ersetzen Sie den Wert des Felds `Ocp-Apim-Subscription-Key` durch Ihren LUIS-Endpunktschlüssel.
 
-2. Ersetzen Sie den Wert des Felds `Ocp-Apim-Subscription-Key` durch Ihren LUIS-Abonnementschlüssel.
+3. Installieren Sie Abhängigkeiten mit `pip install requests`.
 
-3. Führen Sie das Skript aus. Es wird das gleiche JSON-Ergebnis wie zuvor im Browserfenster angezeigt.
+4. Führen Sie das Skript mit `python ./quickstart-call-endpoint.py` aus. Es wird das gleiche JSON-Ergebnis wie zuvor im Browserfenster angezeigt.
 <!-- 
 ![Console window displays JSON result from LUIS](./media/luis-get-started-python-get-intent/console-turn-on.png)
 -->
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-In diesem Tutorial werden zwei Ressourcen erstellt: der LUIS-Abonnementschlüssel und das C#-Projekt. Löschen Sie den LUIS-Abonnementschlüssel im Azure-Portal. Schließen Sie das Visual Studio-Projekt, und entfernen Sie das Verzeichnis vom Dateisystem. 
+In diesem Schnellstart haben Sie zwei Ressourcen erstellt: den LUIS-Endpunktschlüssel und das C#-Projekt. Löschen Sie den LUIS-Endpunktschlüssel im Azure-Portal. Schließen Sie das Visual Studio-Projekt, und entfernen Sie das Verzeichnis vom Dateisystem. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
 > [Hinzufügen von Äußerungen](luis-get-started-python-add-utterance.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
