@@ -1,62 +1,108 @@
 ---
-title: Aufruf und Antwort – Ruby-Schnellstart für Azure Cognitive Services, Bing-Websuche-API | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Bing-Websuche-API in Microsoft Cognitive Services in Azure einsteigen können.
+title: 'Schnellstart: Verwenden von Ruby zum Aufrufen der Bing-Websuche-API'
+description: In dieser Schnellstartanleitung wird beschrieben, wie Sie die Bing-Websuche-API zum ersten Mal aufrufen, indem Sie Ruby verwenden, und wie Sie eine JSON-Antwort erhalten.
 services: cognitive-services
-documentationcenter: ''
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: b0f5c395fcdf043f4111f63ef16f0d33d5257e74
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: a60bf0ef12272be3b224fdbf9f9819057fe4aa55
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374067"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888704"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-ruby"></a>Aufruf und Antwort: Ihre erste Bing-Websuche-Abfrage in Ruby
+# <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Schnellstart: Verwenden von Ruby zum Aufrufen der Bing-Websuche-API  
 
-Die Bing-Websuche-API ähnelt Bing.com/Search darin, dass Suchergebnisse zurückgegeben werden, die nach Einschätzung von Bing für die Abfrage des Benutzers relevant sind. Die Ergebnisse können möglicherweise Webseiten, Bilder, Videos, Nachrichten und Entitäten sowie verwandte Suchabfragen, Rechtschreibkorrekturen, Zeitzonen, Einheitenkonvertierung, Übersetzungen und Berechnungen enthalten. Welche Arten von Ergebnissen Sie erhalten, hängt von ihrer Relevanz ab und der Ebene der Bing-Suche-APIs, die Sie abonnieren.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Websuche-API zum ersten Mal aufzurufen und innerhalb von weniger als zehn Minuten eine JSON-Antwort zu erhalten.  
 
-Dieser Artikel enthält eine einfache Konsolenanwendung, die eine Abfrage mit der Bing-Websuche-API ausführt und die zurückgegebenen unformatierten, im JSON-Format vorliegenden Suchergebnisse anzeigt. Die Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen stellen und JSON analysieren kann. 
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen dieses Beispielcodes benötigen Sie [Ruby 2.4 oder höher](https://www.ruby-lang.org/en/downloads/).
+Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
-Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs** verfügen. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+* [Ruby 2.4 oder höher](https://www.ruby-lang.org/en/downloads/)
+* Abonnementschlüssel
 
-## <a name="running-the-application"></a>Ausführen der Anwendung
+## <a name="create-a-project-and-declare-required-modules"></a>Erstellen eines Projekts und Deklarieren der erforderlichen Module
 
-Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
+Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Ruby-Projekt. Legen Sie dann `net/https` für Anforderungen, `uri` für die URI-Verarbeitung und `json` für die Analyse der Antwort fest.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Ruby-Projekt.
-2. Fügen Sie den bereitgestellten Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-4. Führen Sie das Programm aus.
+```ruby
+require 'net/https'
+require 'uri'
+require 'json'
+```
+
+## <a name="define-variables"></a>Definieren von Variablen
+
+Bevor wir fortfahren können, müssen einige Variablen festgelegt werden. Vergewissern Sie sich, dass `$uri` und `path` gültig sind, und ersetzen Sie den Wert `accessKey` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. Sie können die Suchabfrage auch anpassen, indem Sie den Wert für `term` ersetzen.
+
+```ruby
+accessKey = "YOUR_SUBSCRIPTION_KEY"
+uri  = "https://api.cognitive.microsoft.com"
+path = "/bing/v7.0/search"
+term = "Microsoft Cognitive Services"
+
+if accessKey.length != 32 then
+    puts "Invalid Bing Search API subscription key!"
+    puts "Please paste yours into the source code."
+    abort
+end
+```
+
+## <a name="make-a-request"></a>Erstellen einer Anforderung
+
+Verwenden Sie diesen Code, um eine Anforderung zu senden und die Antwort zu verarbeiten.
+
+```ruby
+# Construct the endpoint uri.
+uri = URI(uri + path + "?q=" + URI.escape(term))
+puts "Searching the Web for: " + term
+
+# Create the request.
+request = Net::HTTP::Get.new(uri)
+request['Ocp-Apim-Subscription-Key'] = accessKey
+
+# Get the response.
+response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+    http.request(request)
+end
+```
+
+## <a name="print-the-response"></a>Ausgeben der Antwort
+
+Überprüfen Sie die Header, formatieren Sie die Antwortdaten im JSON-Format, und geben Sie die Ergebnisse aus.
+
+```ruby
+puts "\nRelevant Headers:\n\n"
+response.each_header do |key, value|
+    # Header names are lower-cased.
+    if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
+        puts key + ": " + value
+    end
+end
+
+puts "\nJSON Response:\n\n"
+puts JSON::pretty_generate(JSON(response.body))
+```
+
+## <a name="put-it-all-together"></a>Zusammenfügen der Teile
+
+Der letzte Schritt ist das Überprüfen Ihres Codes und dessen Ausführung! Hier ist das vollständige Programm angegeben, falls Sie Ihren Code mit unserem Code vergleichen möchten:
 
 ```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
 accessKey = "enter key here"
-
-# Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-# search APIs.  In the future, regional endpoints may be available.  If you
-# encounter unexpected authorization errors, double-check this value against
-# the endpoint for your Bing Web search instance in your Azure dashboard.
-
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/search"
-
 term = "Microsoft Cognitive Services"
 
 if accessKey.length != 32 then
@@ -66,7 +112,6 @@ if accessKey.length != 32 then
 end
 
 uri = URI(uri + path + "?q=" + URI.escape(term))
-
 puts "Searching the Web for: " + term
 
 request = Net::HTTP::Get.new(uri)
@@ -78,7 +123,6 @@ end
 
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
-    # header names are coerced to lowercase
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
         puts key + ": " + value
     end
@@ -88,9 +132,9 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>JSON-Antwort
+## <a name="sample-response"></a>Beispiel für eine Antwort
 
-Eine Beispielantwort folgt. Um die Länge des JSON-Codes zu beschränken, wird nur ein einzelnes Ergebnis angezeigt, und andere Teile der Antwort wurden abgeschnitten. 
+Antworten der Bing-Websuche-API werden im JSON-Format zurückgegeben. Diese Beispielantwort wurde gekürzt, damit nur ein Ergebnis angezeigt wird.
 
 ```json
 {
@@ -219,9 +263,4 @@ Eine Beispielantwort folgt. Um die Länge des JSON-Codes zu beschränken, wird n
 > [!div class="nextstepaction"]
 > [Tutorial: Einseitige Web-App für die Bing-Websuche](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>Weitere Informationen 
-
-[Übersicht zur Bing-Websuche](../overview.md)  
-[Testen](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[Holen Sie sich einen Zugriffsschlüssel einer kostenlosen Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
-[Referenz zur Bing-Websuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

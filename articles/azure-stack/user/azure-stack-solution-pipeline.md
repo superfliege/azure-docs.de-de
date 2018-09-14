@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/08/2018
+ms.date: 09/04/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579843"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697746"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Tutorial: Bereitstellen von Apps in Azure und Azure Stack
 
@@ -108,7 +108,11 @@ Zum Konfigurieren der Authentifizierung müssen die folgenden Schritte ausgefüh
 
 ### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Gehen Sie gemäß der [Anleitung zum Erstellen eines Dienstprinzipals](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) vor, und wählen Sie als Anwendungstyp die Option **Web-App/API** aus.
+Eine Anleitung zum Erstellen eines Dienstprinzipals finden Sie im Artikel zur [Erstellung eines Dienstprinzipals](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). Wählen Sie **Web-App/API** als Anwendungstyp aus, oder [verwenden Sie das PowerShell-Skript](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) wie unter [Create an Azure Resource Manager service connection with an existing service principal](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) (Erstellen einer Azure Resource Manager-Dienstverbindung mit einem vorhandenen Dienstprinzipal) beschrieben.
+
+ > [!Note]  
+ > Wenn Sie das Skript zum Erstellen eines Azure Resource Manager-Endpunkts für Azure Stack verwenden, müssen Sie die Parameter **-azureStackManagementURL** und **-environmentName** übergeben. Beispiel:   
+> `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
 ### <a name="create-an-access-key"></a>Erstellen eines Zugriffsschlüssels
 
@@ -261,7 +265,19 @@ Durch die Erstellung von Endpunkten kann ein Visual Studio Online-Build Azure Se
 9. Geben Sie unter **Benutzer und Gruppen hinzufügen** einen Benutzernamen ein, und wählen Sie den Benutzer aus der Liste der Benutzer aus.
 10. Klicken Sie auf **Save changes** (Änderungen speichern).
 
-Die Endpunktinformationen sind vorhanden, und die Verbindung zwischen VSTS und Azure Stack kann nun verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von VSTS. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit der Azure Stack-Instanz.
+## <a name="create-an-azure-stack-endpoint"></a>Erstellen eines Azure Stack-Endpunkts
+
+Sie können die Anleitung unter [Create an Azure Resource Manager service connection with an existing service principal ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) (Erstellen einer Azure Resource Manager-Dienstverbindung mit einem vorhandenen Dienstprinzipal) befolgen, um eine Dienstverbindung mit einem vorhandenen Dienstprinzipal zu erstellen und die folgende Zuordnung zu verwenden:
+
+- Umgebung: AzureStack
+- Umgebungs-URL: Beispielsweise `https://management.local.azurestack.external`
+- Abonnement-ID: Benutzerabonnement-ID aus Azure Stack
+- Abonnementname: Benutzerabonnementname aus Azure Stack
+- Dienstprinzipal-Client-ID: Prinzipal-ID aus [diesem Abschnitt](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) des Artikels
+- Dienstprinzipalschlüssel: Der Schlüssel aus demselben Artikel (bzw. das Kennwort, wenn Sie das Skript verwendet haben).
+- Mandanten-ID: Die Mandanten-ID, die Sie nach dem Befolgen der Anleitung zum [Abrufen der Mandanten-ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id) abrufen.
+
+Nachdem der Endpunkt erstellt wurde, kann die Verbindung zwischen VSTS und Azure Stack verwendet werden. Der Build-Agent in Azure Stack erhält Anweisungen von VSTS. Daraufhin übermittelt der Agent Endpunktinformationen für die Kommunikation mit der Azure Stack-Instanz.
 
 ![Build-Agent](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 
@@ -439,7 +455,7 @@ In diesem Abschnitt wird gezeigt, wie Sie alle Ihre Bereitstellungen überwachen
 
     Sie können für eine Genehmigung vor oder nach der Bereitstellung auf das Personensymbol in der Spalte **Aktion** klicken, um zu sehen, wer die Bereitstellung genehmigt (oder abgelehnt) hat, und die angegebene Nachricht anzuzeigen.
 
-2. Nach Abschluss der Bereitstellung wird im rechten Bereich die gesamte Protokolldatei angezeigt. Sie können einen beliebigen **Schritt** im linken Bereich auswählen, um die Protokolldatei für einen einzelnen Schritt (etwa „Auftrag initialisieren“) anzuzeigen. Dank der Möglichkeit zum Anzeigen einzelner Protokolle lassen sich Teile der Gesamtbereitstellung leichter nachverfolgen und debuggen. Sie können die Protokolldatei für einen Schritt auch **speichern** oder **alle Protokolle als ZIP-Datei herunterladen**.
+2. Nach Abschluss der Bereitstellung wird im rechten Bereich die gesamte Protokolldatei angezeigt. Sie können einen beliebigen **Schritt** im linken Bereich auswählen, um die Protokolldatei für einen einzelnen Schritt (z.B. „Auftrag initialisieren“) anzuzeigen. Dank der Möglichkeit zum Anzeigen einzelner Protokolle lassen sich Teile der Gesamtbereitstellung leichter nachverfolgen und debuggen. Sie können die Protokolldatei für einen Schritt auch **speichern** oder **alle Protokolle als ZIP-Datei herunterladen**.
 
     ![Release-Protokolle](media\azure-stack-solution-hybrid-pipeline\203.png)
 
