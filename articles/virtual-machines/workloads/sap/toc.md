@@ -54,6 +54,19 @@
 ## [Bereitstellungshandbuch für SAP IDES unter Windows/SQL Server SAP CALe](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP NetWeaver auf virtuellen Linux-Computern in Azure](suse-quickstart.md)
 ## [Planen und Implementieren von SAP NetWeaver in Azure](planning-guide.md)
+## [Bereitstellungshandbuch für SAP NetWeaver](deployment-guide.md)
+## [SAP LaMa-Connector für Azure](lama-installation.md)
+## DBMS-Bereitstellungshandbücher für SAP-Workloads
+### [Azure Virtual Machines – allgemeine DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)
+### [Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP-Workload](dbms_guide_sqlserver.md)
+### [Azure Virtual Machines – Oracle-DBMS-Bereitstellung für SAP-Workload](dbms_guide_oracle.md)
+### [Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload](dbms_guide_ibm.md)
+### [Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload](dbms_guide_sapase.md)
+### [SAP MaxDB-, liveCache- und Content Server-Bereitstellung in Azure](dbms_guide_maxdb.md)
+### Verfügbarkeit von SAP HANA in Azure Virtual Machines
+### [Verfügbarkeit von SAP HANA in Azure: Übersicht](sap-hana-availability-overview.md)
+### [Verfügbarkeit von SAP HANA in Azure innerhalb einer Azure-Region](sap-hana-availability-one-region.md)
+### [Verfügbarkeit von SAP HANA in Azure in verschiedenen Azure-Regionen](sap-hana-availability-across-regions.md)
 ## Hochverfügbarkeit (High Availability, HA) unter Windows und Linux
 ### [Übersicht](sap-high-availability-guide-start.md)
 ### Hochverfügbarkeitsarchitektur
@@ -74,21 +87,7 @@
 ### SAP-Multi-SID
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [Bereitstellungshandbuch für SAP NetWeaver](deployment-guide.md)
-## DBMS-Bereitstellungshandbücher für SAP-Workloads
-### [Azure Virtual Machines – allgemeine DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)
-### [Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP-Workload](dbms_guide_sqlserver.md)
-### [Azure Virtual Machines – Oracle-DBMS-Bereitstellung für SAP-Workload](dbms_guide_oracle.md)
-### [Azure Virtual Machines – IBM DB2-DBMS-Bereitstellung für SAP-Workload](dbms_guide_ibm.md)
-### [Azure Virtual Machines – SAP ASE-DBMS-Bereitstellung für SAP-Workload](dbms_guide_sapase.md)
-### [SAP MaxDB-, liveCache- und Content Server-Bereitstellung in Azure](dbms_guide_maxdb.md)
-### [SAP HANA in Azure – Betriebshandbuch](hana-vm-operations.md)
-#### Verfügbarkeit von SAP HANA in Azure Virtual Machines
-##### [Verfügbarkeit von SAP HANA in Azure: Übersicht](sap-hana-availability-overview.md)
-##### [Verfügbarkeit von SAP HANA in Azure innerhalb einer Azure-Region](sap-hana-availability-one-region.md)
-##### [Verfügbarkeit von SAP HANA in Azure in verschiedenen Azure-Regionen](sap-hana-availability-across-regions.md)
-## [Azure Site Recovery für die SAP-Notfallwiederherstellung](../../../site-recovery/site-recovery-workload.md#protect-sap)
-## [SAP LaMa-Connector für Azure](lama-installation.md)
+##  [Azure Site Recovery für die SAP-Notfallwiederherstellung](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # AAD-SAP-Identitätsintegration und einmaliges Anmelden
 ## [Integration in SAP Cloud](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD-Integration in SAP Cloud Platform Identity Authentication](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
@@ -97,5 +96,10 @@
 ## [AAD-Integration in SAP Business ByDesign](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [AAD-Integration in SAP HANA DBMS](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[SAP Fiori Launchpad: SAML-SSO mit Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
+# Integration von Azure-Diensten in SAP
+## [Verwenden von SAP HANA in Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-sap-hana)
+## [DirectQuery und SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
+## [Verwenden des SAP BW-Connectors in Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector)
+## [SAP HANA- und Business Warehouse-Datenintegration mit Azure Data Factory](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
