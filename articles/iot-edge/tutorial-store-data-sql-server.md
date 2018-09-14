@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2b393a5b60ba534fba8115ab3ef0f35a26ad3ed4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143499"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300352"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 
@@ -176,7 +176,11 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
 
 1. Öffnen Sie im Visual Studio Code-Explorer die Datei **deployment.template.json**. 
 2. Suchen Sie den Abschnitt **moduleContent.$edgeAgent.properties.desired.modules**. Zwei Module sollten aufgeführt sein: das Modul **tempSensor**, das simulierte Daten generiert, und das Modul **sqlFunction**.
-3. Fügen Sie den folgenden Code hinzu, um ein drittes Modul zu deklarieren:
+3. Ändern Sie bei Verwendung von Windows-Containern den Abschnitt **sqlFunction.settings.image**.
+    ```json
+    "image": "${MODULES.sqlFunction.windows-amd64}"
+    ```
+4. Fügen Sie den folgenden Code hinzu, um ein drittes Modul zu deklarieren. Fügen Sie nach dem Abschnitt „sqlFunction“ ein Komma und dann Folgendes ein:
 
    ```json
    "sql": {
@@ -191,16 +195,18 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
    }
    ```
 
-4. Aktualisieren Sie abhängig vom Betriebssystem des IoT Edge-Geräts die **sql.settings**-Parameter mit dem folgenden Code:
+   Das folgende Beispiel veranschaulicht die Vorgehensweise für das Hinzufügen eines JSON-Elements: ![Hinzufügen eines SQL Server-Containers](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-   * Windows:
+5. Aktualisieren Sie abhängig vom Typ des Docker-Containers auf Ihrem IoT Edge-Gerät die **sql.settings**-Parameter mit dem folgenden Code:
+
+   * Windows-Container:
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-   * Linux:
+   * Linux-Container:
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",
@@ -210,28 +216,20 @@ In einem [Bereitstellungsmanifest](module-composition.md) wird deklariert, welch
    >[!Tip]
    >Bei jedem Erstellen eines SQL Server-Containers in einer Produktionsumgebung sollten Sie [das Standardkennwort für den Systemadministrator ändern](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
 
-5. Speichern Sie die Datei **deployment.template.json**. 
+6. Speichern Sie die Datei **deployment.template.json**.
 
 ## <a name="build-your-iot-edge-solution"></a>Erstellen Ihrer IoT Edge-Projektmappe
 
 In den vorherigen Abschnitten haben Sie eine Projektmappe mit einem Modul erstellt und anschließend ein weiteres Modul zur Bereitstellungsmanifestvorlage hinzugefügt. Nun müssen Sie die Projektmappe sowie Containerimages für die Module erstellen und die Images per Push an die Containerregistrierung übertragen. 
 
-1. Stellen Sie in der Datei „deployment.template.json“ für die IoT Edge-Runtime Ihre Registrierungsanmeldeinformationen bereit, sodass sie auf die Modulimages zugreifen kann. Suchen Sie den Abschnitt **moduleContent.$edgeAgent.properties.desired.runtime.settings**. 
-2. Fügen Sie hinter **loggingOptions** den folgenden JSON-Code ein:
+1. Stellen Sie in der ENV-Datei für die IoT Edge-Runtime Ihre Registrierungsanmeldeinformationen bereit, sodass sie auf die Modulimages zugreifen kann. Suchen Sie die Abschnitte **CONTAINER_REGISTRY_USERNAME** und **CONTAINER_REGISTRY_PASSWORD**, und fügen Sie nach dem Gleichheitszeichen Ihre Anmeldeinformationen ein: 
 
-   ```JSON
-   "registryCredentials": {
-       "myRegistry": {
-           "username": "",
-           "password": "",
-           "address": ""
-       }
-   }
+   ```env
+   CONTAINER_REGISTRY_USERNAME_yourContainerReg=<username>
+   CONTAINER_REGISTRY_PASSWORD_yourContainerReg=<password>
    ```
-
-3. Fügen Sie die Anmeldeinformationen Ihrer Registrierung in die Felder **Benutzername**, **Kennwort** und **Adresse** ein. Verwenden Sie die Werte, die Sie am Anfang des Tutorials beim Erstellen der Azure Container Registry-Instanz kopiert haben.
-4. Speichern Sie die Datei **deployment.template.json**.
-5. Melden Sie sich bei der Containerregistrierung in Visual Studio Code an, sodass Sie die Images per Push an die Registrierung übertragen können. Verwenden Sie die gleichen Anmeldeinformationen, die Sie soeben dem Bereitstellungsmanifest hinzugefügt haben. Geben Sie den folgenden Befehl in das integrierte Terminal ein: 
+2. Speichern Sie die ENV-Datei.
+3. Melden Sie sich bei der Containerregistrierung in Visual Studio Code an, sodass Sie die Images per Push an die Registrierung übertragen können. Verwenden Sie die gleichen Anmeldeinformationen, die Sie der ENV-Datei hinzugefügt haben. Geben Sie den folgenden Befehl in das integrierte Terminal ein:
 
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
@@ -243,7 +241,7 @@ In den vorherigen Abschnitten haben Sie eine Projektmappe mit einem Modul erstel
     Login Succeeded
     ```
 
-6. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **deployment.template.json**, und klicken Sie dann auf **Build IoT Edge solution** (IoT Edge-Projektmappe erstellen). 
+4. Klicken Sie im VS Code-Explorer mit der rechten Maustaste auf die Datei **deployment.template.json**, und klicken Sie anschließend auf **Build and Push IoT Edge solution** (IoT Edge-Projektmappe erstellen und übertragen). 
 
 ## <a name="deploy-the-solution-to-a-device"></a>Bereitstellen der Projektmappe auf einem Gerät
 
@@ -287,7 +285,7 @@ Dieser Abschnitt führt Sie durch das Einrichten der SQL-Datenbank zum Speichern
    * Windows-Container:
 
       ```cmd
-      sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
+      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
       ```
 
    * Linux-Container: 

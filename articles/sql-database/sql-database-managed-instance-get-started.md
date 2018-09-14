@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: quickstart
-ms.date: 08/13/2018
+ms.date: 08/31/2018
 ms.author: jovanpop-msft
-ms.openlocfilehash: cb378c2d2773096992ef688653fd77b2625f8754
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4271f0cef31b0e028ed1f9408166c37d4cbbe109
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023822"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381997"
 ---
 # <a name="create-an-azure-sql-managed-instance"></a>Erstellen einer verwalteten Azure SQL-Instanz
 
@@ -60,7 +60,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Ihre verwaltete Instanz
 2. Suchen Sie nach **Verwaltete Instanz**, und wählen Sie dann die Option **Verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion)**.
 3. Klicken Sie auf **Create**.
 
-   ![Erstellen einer verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![Erstellen einer verwalteten Instanz](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
 4. Wählen Sie Ihr Abonnement aus, und stellen Sie sicher, dass für die Nutzungsbedingungen für die Vorschau **Akzeptiert** angezeigt wird.
 
@@ -77,26 +77,21 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Ihre verwaltete Instanz
    |**Location**|Der zuvor ausgewählte Standort|Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/).|
    |**Virtuelles Netzwerk**|Das zuvor erstellte virtuelle Netzwerk| Wählen Sie das Element **MyNewVNet/ManagedInstances** aus, wenn Sie die Namen im vorherigen Schritt nicht geändert haben. Wählen Sie andernfalls den VNET-Namen und das Subnetz für die verwaltete Instanz aus, die Sie im vorherigen Abschnitt eingegeben haben. **Verwenden Sie nicht das Standardsubnetz, da es nicht als Host für verwaltete Instanzen konfiguriert ist**. |
 
-   ![Formular für die Erstellung der verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
+   ![Formular für die Erstellung der verwalteten Instanz](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
 6. Klicken Sie auf **Tarif**, um die Größe der Compute- und Speicherressourcen festzulegen und die Tarifoptionen zu prüfen. Standardmäßig werden für Ihre Instanz 32 GB an kostenlosem Speicherplatz festgelegt. **Dies reicht für Ihre Anwendungen unter Umständen nicht aus**.
 7. Verwenden Sie die Schieberegler oder Textfelder, um die Speichermenge und die Anzahl von virtuellen Kernen anzugeben. 
-   ![Tarif der verwalteten Instanz](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+   ![Tarif der verwalteten Instanz](./media/sql-database-managed-instance-get-started/managed-instance-pricing-tier.png)
 
 8. Klicken Sie nach Abschluss des Vorgangs auf **Übernehmen**, um Ihre Auswahl zu speichern.  
 9. Klicken Sie auf **Erstellen**, um die verwaltete Instanz bereitzustellen.
 10. Klicken Sie auf das Symbol **Benachrichtigungen**, um den Status der Bereitstellung anzuzeigen.
- 
-   ![Bereitstellungsstatus](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
-
 11. Klicken Sie auf **Die Bereitstellung wird ausgeführt**, um das Fenster für die verwaltete Instanz zu öffnen und den Bereitstellungsstatus weiter zu verfolgen.
- 
-   ![Bereitstellungsstatus 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
 Fahren Sie während der Bereitstellung mit den nächsten Schritten fort.
 
 > [!IMPORTANT]
-> Für die erste Instanz in einem Subnetz ist die Bereitstellungsdauer normalerweise deutlich länger als bei den nachfolgenden Instanzen (in einigen Fällen mehr als 24 Stunden). Brechen Sie den Bereitstellungsvorgang nicht ab, weil er länger als erwartet dauert. Diese Dauer für die Bereitstellung Ihrer ersten Instanz ist eine vorübergehende Situation. Sie können damit rechnen, dass sich die Bereitstellungsdauer kurz nach Beginn der öffentlichen Vorschauversion deutlich reduziert. Das Erstellen der zweiten verwalteten Instanz im Subnetz dauert einige Minuten.
+> Für die erste Instanz in einem Subnetz ist die Bereitstellungsdauer normalerweise deutlich länger als bei den nachfolgenden Instanzen. Brechen Sie den Bereitstellungsvorgang nicht ab, weil er länger als erwartet dauert. Das Erstellen der zweiten verwalteten Instanz im Subnetz dauert einige Minuten.
 
 ## <a name="prepare-client-machine"></a>Vorbereiten des Clientcomputers
 

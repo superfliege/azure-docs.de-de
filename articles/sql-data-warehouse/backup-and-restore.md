@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/24/2018
+ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9b5005fad1eeb13314e1fb6a5708bb02b96cbf9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248648"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092477"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
 Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Momentaufnahmen, um Ihr Data Warehouse mithilfe eines vorherigen Wiederherstellungspunkts in der primären Region wiederherzustellen oder zu kopieren. Mithilfe von georedundanten Data Warehouse-Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen. 
@@ -40,19 +40,20 @@ order by run_id desc
 ```
 
 ## <a name="user-defined-restore-points"></a>Benutzerdefinierte Wiederherstellungspunkte
-Dieses Feature ermöglicht das manuelle Auslösen von Momentaufnahmen, um vor und nach umfangreichen Änderungen Wiederherstellungspunkte Ihres Data Warehouse zu erstellen. Diese Funktion gewährleistet die logische Konsistenz von Wiederherstellungspunkten und sorgt somit für zusätzlichen Datenschutz und eine schnelle Wiederherstellung bei Workloadunterbrechungen oder Benutzerfehlern. Benutzerdefinierte Wiederherstellungspunkte sind sieben Tage lang verfügbar und werden automatisch für Sie gelöscht. Sie können die Aufbewahrungsdauer für benutzerdefinierte Wiederherstellungspunkte nicht ändern. Es werden maximal 42 benutzerdefinierte Wiederherstellungspunkte unterstützt. Vor der Erstellung eines weiteren Wiederherstellungspunkts müssen also erst andere Wiederherstellungspunkte [gelöscht](https://go.microsoft.com/fwlink/?linkid=875299) werden. Sie können Momentaufnahmen zum Erstellen benutzerdefinierter Wiederherstellungspunkte über [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) oder das Azure-Portal auslösen.
+Dieses Feature ermöglicht das manuelle Auslösen von Momentaufnahmen, um vor und nach umfangreichen Änderungen Wiederherstellungspunkte Ihres Data Warehouse zu erstellen. Diese Funktion gewährleistet die logische Konsistenz von Wiederherstellungspunkten und sorgt somit für zusätzlichen Datenschutz und eine schnelle Wiederherstellung bei Workloadunterbrechungen oder Benutzerfehlern. Benutzerdefinierte Wiederherstellungspunkte sind sieben Tage lang verfügbar und werden automatisch für Sie gelöscht. Sie können die Aufbewahrungsdauer für benutzerdefinierte Wiederherstellungspunkte nicht ändern. **42 benutzerdefinierte Wiederherstellungspunkte** werden jeweils garantiert. Vor der Erstellung eines weiteren Wiederherstellungspunkts müssen also erst andere Wiederherstellungspunkte [gelöscht](https://go.microsoft.com/fwlink/?linkid=875299) werden. Sie können Momentaufnahmen zum Erstellen benutzerdefinierter Wiederherstellungspunkte über [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) oder das Azure-Portal auslösen.
 
 
 > [!NOTE]
 > Wenn Wiederherstellungspunkte nach sieben Tagen noch zur Verfügung stehen sollen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points) für diese Funktion ab. Sie können auch einen benutzerdefinierten Wiederherstellungspunkt erstellen und auf der Grundlage dieses neuen Wiederherstellungspunkts ein neues Data Warehouse wiederherstellen. Nach der Wiederherstellung ist das Data Warehouse online, und Sie können es unbegrenzt anhalten, um Computekosten zu sparen. Für die angehaltene Datenbank fallen Speichergebühren nach dem Azure Storage Premium-Tarif an. Falls Sie eine aktive Kopie des wiederhergestellten Data Warehouse benötigen, können Sie die Datenbank fortsetzen. Dies sollte nur wenige Minuten dauern.
 >
 
-### <a name="snapshot-retention-when-a-data-warehouse-is-paused"></a>Momentaufnahmenbeibehaltung, wenn ein Datawarehouse angehalten wird
-Während ein Data Warehouse angehalten ist, erstellt SQL Data Warehouse keine Momentaufnahmen, und Wiederherstellungspunkte laufen nicht ab. Wiederherstellungspunkte ändern sich nicht, während das Data Warehouse angehalten ist. Die Aufbewahrung eines Wiederherstellungspunkts basiert auf der Anzahl von Tagen, die das Data Warehouse online ist, nicht auf Kalendertagen.
-
-Wenn eine Momentaufnahme beispielsweise am 1. Oktober um 16 Uhr gestartet wurde und das Data Warehouse am 3. Oktober um 16 Uhr angehalten wird, sind die Wiederherstellungspunkte bis zu zwei Tage alt. Wenn das Data Warehouse erneut online geschaltet wird, ist der Wiederherstellungspunkt zwei Tage alt. Wenn das Data Warehouse am 5. Oktober um 16 Uhr wieder online geschaltet wird, ist der Wiederherstellungspunkt zwei Tage alt und wird weitere fünf Tage lang aufbewahrt.
-
-Wenn das Data Warehouse wieder online geschaltet wird, setzt SQL Data Warehouse die Erstellung neuer Wiederherstellungspunkte fort, und Wiederherstellungspunkte mit Daten, die älter sind als sieben Tage, laufen ab.
+### <a name="restore-point-retention"></a>Aufbewahrung des Wiederherstellungspunkts
+Nachfolgend werden die Aufbewahrungszeiträume für Wiederherstellungspunkte ausführlich beschrieben:
+1. SQL Data Warehouse löscht einen Wiederherstellungspunkt, wenn die Aufbewahrungsdauer von sieben Tage erreicht wird **und** insgesamt mindestens 42 (benutzerdefinierte und automatische) Wiederherstellungspunkte vorhanden sind.
+2. Wenn ein Data Warehouse angehalten wird, werden keine Momentaufnahmen erstellt.
+3. Das Alter eines Wiederherstellungspunkts basiert auf den absoluten Kalendertagen ab Erstellung des Wiederherstellungspunkts und beinhaltet auch Zeiten, in denen das Data Warehouse angehalten war.
+4. Es wird garantiert, dass ein Data Warehouse jeweils 42 benutzerdefinierte Wiederherstellungspunkte und 42 automatische Wiederherstellungspunkte speichern kann, solange diese Wiederherstellungspunkte nicht die siebentägige Aufbewahrungsdauer erreicht haben.
+5. Wenn eine Momentaufnahme erstellt wird, das Data Warehouse für mehr als sieben Tage angehalten und anschließend fortgesetzt wird, kann der Wiederherstellungspunkt beibehalten werden, bis insgesamt 42 (benutzerdefinierte und automatische) Wiederherstellungspunkte vorhanden sind.
 
 ### <a name="snapshot-retention-when-a-data-warehouse-is-dropped"></a>Aufbewahrung von Momentaufnahmen, wenn ein Data Warehouse gelöscht wird
 Wenn Sie ein Data Warehouse trennen, erstellt SQL Data Warehouse eine letzte Momentaufnahme und speichert diese sieben Tage lang. Sie können das Data Warehouse anhand des letzten Wiederherstellungspunkts wiederherstellen, der zum Zeitpunkt der Löschung erstellt wurde. 
@@ -72,7 +73,7 @@ Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse Gen1 ist,
 
 
 ## <a name="backup-and-restore-costs"></a>Kosten für Sicherung und Wiederherstellung
-Beachten Sie, dass die Azure-Rechnung einen Eintrag für Storage und einen Eintrag für den Speicher für die Notfallwiederherstellung aufweist. Die Storage-Gebühren sind die Gesamtkosten für das Speichern Ihrer Daten in der primären Region und die von Momentaufnahmen erfassten inkrementellen Änderungen. Eine ausführlichere Erläuterung zur Erstellung von Momentaufnahmen finden Sie in dieser [Dokumentation](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Die Gebühr für georedundanten Speicher umfasst die Kosten für das Speichern von Geosicherungen.  
+Beachten Sie, dass die Azure-Rechnung einen Eintrag für Storage und einen Eintrag für den Speicher für die Notfallwiederherstellung aufweist. Die Storage-Gebühren sind die Gesamtkosten für das Speichern Ihrer Daten in der primären Region und die von Momentaufnahmen erfassten inkrementellen Änderungen. Eine ausführlichere Erläuterung zur Erstellung von Momentaufnahmen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?redirectedfrom=MSDN#snapshot-billing-scenarios). Die Gebühr für georedundanten Speicher umfasst die Kosten für das Speichern von Geosicherungen.  
 
 Die Gesamtkosten für Ihr primäres Data Warehouse und die Speicherung von Momentaufnahmenänderungen für sieben Tage werden auf die nächsten TB aufgerundet. Wenn Ihr Data Warehouse beispielsweise 1,5 TB umfasst und die Momentaufnahmen 100 GB erfassen, werden Ihnen 2 TB Daten zum Azure Storage Premium-Tarif in Rechnung gestellt. 
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 9b8b0da6e1572ab79ffb369497f64aad2cd249b9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918217"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343461"
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
 Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter) für Ihre Cloudanwendungen. Da es sich hierbei um vertrauliche und geschäftskritische Daten handelt, empfiehlt es sich, den Zugriff auf Key Vault-Instanzen so zu konfigurieren, dass nur autorisierte Anwendungen und Benutzer auf Key Vault zugreifen können. Dieser Artikel enthält eine Übersicht über das Key Vault-Zugriffsmodell sowie Informationen zur Authentifizierung und Autorisierung. Außerdem erfahren Sie anhand eines Beispiels, wie Sie den Zugriff auf Key Vault für Ihre Cloudanwendungen schützen.
@@ -94,8 +94,8 @@ Mit Key Vault-Zugriffsrichtlinien können separate Berechtigungen für Schlüsse
 
 > [!IMPORTANT]
 > Beachten Sie, dass Key Vault-Zugriffsrichtlinien auf Tresorebene gelten. Wenn einem Benutzer also beispielsweise die Berechtigung zum Erstellen und Löschen von Schlüsseln gewährt wird, kann er diese Vorgänge für alle Schlüssel in dieser Key Vault-Instanz ausführen.
-> 
-> 
+
+Der Datenebenenzugriff kann nicht nur mit Zugriffsrichtlinien, sondern auch mithilfe von [Dienstendpunkten virtueller Netzwerke für Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) eingeschränkt werden. Konfigurieren Sie dazu als zusätzliche Schutzebene [Firewalls und Regeln für virtuelle Netzwerke](key-vault-network-security.md).
 
 ## <a name="example"></a>Beispiel
 Angenommen, Sie entwickeln eine Anwendung, die ein Zertifikat für SSL, Azure Storage zum Speichern von Daten und einen RSA-Schlüssel mit 2048 Bit für Signierungsvorgänge verwendet. Nehmen wir außerdem an, diese Anwendung wird auf einem virtuellen Computer (oder in einer VM-Skalierungsgruppe) ausgeführt. In diesem Fall können Sie alle Anwendungsgeheimnisse sowie das Bootstrap-Zertifikat, mit dem sich die Anwendung über Azure Active Directory authentifiziert, in einer Key Vault-Instanz speichern.
@@ -201,8 +201,8 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis kö
 
 > [!NOTE]
 > Hinweis: Dieses Beispiel zeigt, wie der Key Vault-Zugriff in der Produktion gesperrt wird. Die Entwickler müssen über ein eigenes Abonnement oder über eine eigene Ressourcengruppe mit uneingeschränkten Berechtigungen verfügen, um ihre Tresore, ihre virtuellen Computer und ihr Speicherkonto für die Anwendungsentwicklung verwalten zu können.
-> 
-> 
+
+Es wird dringend empfohlen, den Zugriff auf den Schlüsseltresor durch die [Konfiguration von Key Vault-Firewalls und virtuellen Netzwerken](key-vault-network-security.md) noch weiter zu schützen.
 
 ## <a name="resources"></a>angeben
 * [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
@@ -243,6 +243,8 @@ Bei diesem Beispiel handelt es sich um ein einfaches Szenario. In der Praxis kö
   Links zur Referenzdokumentation für PowerShell-Cmdlets zum Verwalten von Key Vault-Zugriffsrichtlinien.
 
 ## <a name="next-steps"></a>Nächste Schritte
+[Konfigurieren von Key Vault-Firewalls und virtuellen Netzwerken](key-vault-network-security.md)
+
 Ein Tutorial mit ersten Schritten für Administratoren finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
 
 Weitere Informationen zur Nutzungsprotokollierung für Key Vault finden Sie unter [Azure-Schlüsseltresor-Protokollierung](key-vault-logging.md).

@@ -1,0 +1,104 @@
+---
+title: 'Textübersetzung: Ermitteln der Satzlänge mit Ruby | Microsoft-Dokumentation'
+titleSuffix: Microsoft Cognitive Services
+description: In dieser Schnellstartanleitung ermitteln Sie die Länge von Sätzen im Text. Dazu verwenden Sie die Textübersetzungs-API mit Ruby in Cognitive Services.
+services: cognitive-services
+author: noellelacharite
+manager: nolachar
+ms.service: cognitive-services
+ms.component: translator-text
+ms.topic: quickstart
+ms.date: 06/22/2018
+ms.author: nolachar
+ms.openlocfilehash: 3a4fc999961e06b084a0d7da42ed5576962e5722
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "43769674"
+---
+# <a name="quickstart-get-sentence-lengths-with-ruby"></a>Schnellstart: Ermitteln der Satzlänge mit Ruby
+
+In dieser Schnellstartanleitung ermitteln Sie mithilfe der Textübersetzungs-API die Länge von Sätzen im Text.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Zum Ausführen dieses Codes benötigen Sie [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) oder höher.
+
+Damit Sie die Textübersetzungs-API verwenden können, benötigen Sie darüber hinaus einen Abonnementschlüssel. Informationen hierzu finden Sie unter [Registrieren für die Textübersetzungs-API](translator-text-how-to-signup.md).
+
+## <a name="breaksentence-request"></a>BreakSentence-Anforderung
+
+Der folgende Code unterteilt mithilfe der [BreakSentence](./reference/v3-0-break-sentence.md)-Methode den Quelltext in Sätze.
+
+1. Erstellen Sie ein neues Ruby-Projekt in Ihrem bevorzugten Code-Editor.
+2. Fügen Sie den unten stehenden Code hinzu.
+3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+4. Führen Sie das Programm aus.
+
+```ruby
+require 'net/https'
+require 'uri'
+require 'cgi'
+require 'json'
+require 'securerandom'
+
+# **********************************************
+# *** Update or verify the following values. ***
+# **********************************************
+
+# Replace the key string value with your valid subscription key.
+key = 'ENTER KEY HERE'
+
+host = 'https://api.cognitive.microsofttranslator.com'
+path = '/breaksentence?api-version=3.0'
+
+uri = URI (host + path)
+
+text = 'How are you? I am fine. What did you do today?'
+
+content = '[{"Text" : "' + text + '"}]'
+
+request = Net::HTTP::Post.new(uri)
+request['Content-type'] = 'application/json'
+request['Content-length'] = content.length
+request['Ocp-Apim-Subscription-Key'] = key
+request['X-ClientTraceId'] = SecureRandom.uuid
+request.body = content
+
+response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+    http.request (request)
+end
+
+result = response.body.force_encoding("utf-8")
+
+json = JSON.pretty_generate(JSON.parse(result))
+puts json
+```
+
+## <a name="breaksentence-response"></a>BreakSentence-Antwort
+
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
+
+```json
+[
+  {
+    "detectedLanguage": {
+      "language": "en",
+      "score": 1.0
+    },
+    "sentLen": [
+      13,
+      11,
+      22
+    ]
+  }
+]
+```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Sehen Sie sich den Beispielcode für diese und andere Schnellstartanleitungen (einschließlich Übersetzung und Transliteration) sowie weitere Beispielprojekte für die Textübersetzung auf GitHub an.
+
+> [!div class="nextstepaction"]
+> [Ruby-Beispiele auf GitHub](https://aka.ms/TranslatorGitHub?type=&language=ruby)

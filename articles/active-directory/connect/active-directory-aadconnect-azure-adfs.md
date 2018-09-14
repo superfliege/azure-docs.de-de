@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2ebe6c7a70e4e574ea4953ca9ed01801190f80e
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 924269e16ab09cfd144955d3bd462cab7b37aaaf
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917134"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381753"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
 AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche Hochverfügbarkeit mit wenig Aufwand erzielt werden.
@@ -187,12 +187,14 @@ Wählen Sie den neu erstellten ILB im Bereich „Lastenausgleichsmodule“ aus. 
 
 **6.3. Konfigurieren des Tests**
 
-Wählen Sie im Bereich mit den ILB-Einstellungen die Option „Tests“.
+Wählen Sie im Bereich mit den ILB-Einstellungen die Option „Integritätstests“.
 
 1. Klicken Sie auf „Hinzufügen“.
-2. Geben Sie die Details für den Test an. a. **Name**: Name des Tests. b. **Protokoll**: TCP. c. **Port**: 443 (HTTPS). d. **Intervall**: 5 (Standardwert). Dies ist das Intervall, in dem der ILB die Computer im Back-End-Pool testet. e. **Fehlerschwellenwert**: 2 (Standardwert). Dies ist der Schwellenwert für aufeinanderfolgende fehlgeschlagene Tests, nach denen der ILB einen Computer im Back-End-Pool als nicht reagierend deklariert und keinen Datenverkehr mehr sendet.
+2. Geben Sie die Details für den Test an. a. **Name**: Name des Tests. b. **Protokoll**: HTTP c. **Port**: 80 (HTTP) d. **Pfad**: /adfs/probe e. **Intervall**: 5 (Standardwert). Dies ist das Intervall, in dem der ILB die Computer im Back-End-Pool testet. f. **Fehlerschwellenwert**: 2 (Standardwert). Dies ist der Schwellenwert für aufeinanderfolgende fehlgeschlagene Tests, nach denen der ILB einen Computer im Back-End-Pool als nicht reagierend deklariert und keinen Datenverkehr mehr sendet.
 
 ![ILB-Test konfigurieren](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
+
+Hier wird der Endpunkt „/adfs/probe“ verwendet, der explizit für Integritätsprüfungen in einer AD FS-Umgebung erstellt wurde, in der keine vollständige HTTPS-Pfadüberprüfung möglich ist.  Dies ist wesentlich besser als eine allgemeine Überprüfung von Port 443, die den Status einer modernen AD FS-Bereitstellung nicht genau widerspiegelt.  Weitere Informationen dazu finden Sie unter https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/.
 
 **6.4. Erstellen von Lastenausgleichsregeln**
 
@@ -323,7 +325,7 @@ Sie können ein vorhandenes virtuelles Netzwerk verwenden oder beim Bereitstelle
 
 | Parameter | BESCHREIBUNG |
 |:--- |:--- |
-| Speicherort |Die Region, in der die Ressourcen bereitgestellt werden sollen (beispielsweise „USA, Osten“). |
+| Standort |Die Region, in der die Ressourcen bereitgestellt werden sollen (beispielsweise „USA, Osten“). |
 | StorageAccountType |Die Art des zu erstellenden Speicherkontos. |
 | VirtualNetworkUsage |Gibt an, ob ein neues virtuelles Netzwerk erstellt oder ob ein bereits vorhandenes verwendet wird. |
 | VirtualNetworkName |Der Name des zu erstellenden virtuellen Netzwerks. Diese Angabe ist sowohl bei Verwendung eines vorhandenen virtuellen Netzwerks als auch bei Verwendung eines neuen virtuellen Netzwerks obligatorisch. |

@@ -1,26 +1,26 @@
 ---
 title: Erstellen eines VM-Clusters mit Terraform und HCL
 description: Erstellen Sie mit Terraform und HCL (HashiCorp Configuration Language) einen Cluster mit virtuellen Linux-Computern mit Lastenausgleich in Azure.
+services: terraform
+ms.service: terraform
 keywords: Terraform, Devops, virtueller Computer, Netzwerk, Module
 author: tomarcher
-manager: routlaw
-ms.service: virtual-machines-linux
-ms.custom: devops
-ms.topic: article
-ms.date: 11/13/2017
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 2435d694e6a1671a234d02f90860e5cafe98c2df
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.topic: tutorial
+ms.date: 11/13/2017
+ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
-ms.locfileid: "24518799"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667599"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Erstellen eines VM-Clusters mit Terraform und HCL
 
 Dieses Tutorial veranschaulicht das Erstellen eines kleinen Computeclusters mithilfe der [HashiCorp Configuration Language](https://www.terraform.io/docs/configuration/syntax.html) (HCL). Die Konfiguration erstellt einen Lastenausgleich, zwei virtuelle Linux-Computer in einer [Verfügbarkeitsgruppe](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) und alle erforderlichen Netzwerkressourcen.
 
-In diesem Tutorial haben Sie Folgendes durchgeführt:
+In diesem Tutorial führen Sie Folgendes durch:
 
 > [!div class="checklist"]
 > * Einrichten der Azure-Authentifizierung
@@ -220,7 +220,7 @@ In diesem Abschnitt erstellen Sie eine Datei, die Ressourcendefinitionen für di
 
 ## <a name="3-initialize-terraform"></a>3. Initialisieren von Terraform 
 
-Mit dem Befehl [terraform init](https://www.terraform.io/docs/commands/init.html) wird ein Verzeichnis initialisiert, das die Terraform-Konfigurationsdateien enthält – die Dateien, die Sie in den vorherigen Abschnitten erstellt haben. Führen Sie nach dem Schreiben einer neuen Terraform-Konfiguration immer den Befehl `terraform init` aus. 
+Mit dem Befehl [terraform init](https://www.terraform.io/docs/commands/init.html) wird ein Verzeichnis initialisiert, das die Terraform-Konfigurationsdateien enthält – die Dateien, die Sie in den vorherigen Abschnitten erstellt haben. Es empfiehlt sich, nach dem Schreiben einer neuen Terraform-Konfiguration immer den Befehl `terraform init` auszuführen. 
 
 > [!TIP]
 > Der Befehl `terraform init` ist idempotent, d. h., er kann wiederholt aufgerufen werden und erzeugt immer das gleiche Ergebnis. Wenn Sie in einer Zusammenarbeitsumgebung arbeiten und vermuten, dass die Konfigurationsdateien möglicherweise geändert wurden, ist es deshalb immer ratsam, vor dem Ausführen oder Anwenden eines Plans den Befehl `terraform init` aufzurufen.

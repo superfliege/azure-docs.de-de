@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: brenduns
-ms.openlocfilehash: e9e474fe4a32bb99673fba2a88f28a3161f23362
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6380936766bb0f3848811be305783c274867b0fc
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050429"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381866"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-Gatewaykonfigurationseinstellungen für Azure Stack
 
@@ -27,7 +27,7 @@ ms.locfileid: "43050429"
 
 Ein VPN-Gateway ist eine Art von Gateway für virtuelle Netzwerke, mit dem verschlüsselter Datenverkehr zwischen Ihrem virtuellen Netzwerk in Azure Stack und einem Remote-VPN-Gateway gesendet wird. Das Remote-VPN-Gateway kann sich in Azure befinden, es kann sich dabei aber auch um ein Gerät in Ihrem Datencenter oder um ein Gerät an einem anderen Standort handeln.  Falls die beiden Endpunkte über Netzwerkkonnektivität verfügen, können Sie zwischen den beiden Netzwerken eine sichere S2S-VPN-Verbindung (Site-to-Site) herstellen.
 
-Für eine VPN Gateway-Verbindung müssen mehrere Ressourcen konfiguriert werden, die jeweils konfigurierbare Einstellungen enthalten. In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich auf ein im Resource Manager-Bereitstellungsmodell erstelltes VPN-Gateway beziehen. Beschreibungen und Topologiediagramme für die einzelnen Verbindungslösungen finden Sie unter [About VPN gateway for Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md) (Informationen zum VPN-Gateway für Azure Stack).
+Für eine VPN Gateway-Verbindung müssen mehrere Ressourcen konfiguriert werden, die jeweils konfigurierbare Einstellungen enthalten. In diesem Artikel werden die Ressourcen und Einstellungen beschrieben, die sich auf ein im Resource Manager-Bereitstellungsmodell erstelltes VPN-Gateway für ein virtuelles Netzwerk beziehen. Beschreibungen und Topologiediagramme für die einzelnen Verbindungslösungen finden Sie unter [About VPN gateway for Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md) (Informationen zum VPN-Gateway für Azure Stack).
 
 ## <a name="vpn-gateway-settings"></a>Einstellungen von VPN-Gateways
 
@@ -100,7 +100,7 @@ Wenn Sie das Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration
 >
 > Darüber hinaus unterstützt Azure Stack derzeit nicht die Verwendung von richtlinienbasierten Datenverkehrsselektoren für routenbasierte Gateways, da benutzerdefinierte IPSec/IKE-Richtlinienkonfigurationen noch nicht unterstützt werden.
 
-* **PolicyBased:** Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils per Kombination aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure Stack-VNet konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) wird in der Regel als Zugriffsliste in der VPN-Gerätekonfiguration definiert.
+* **PolicyBased:** Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils per Kombination aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure Stack-VNet konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) ist in der Regel eine Zugriffsliste in der VPN-Gerätekonfiguration.
 
   >[!NOTE]
   >„PolicyBased“ wird in Azure, aber nicht in Azure Stack unterstützt.
@@ -184,14 +184,12 @@ Im Gegensatz zu Azure, das mehrere Angebote als Initiator und Antwortdienst unte
 |IKE-Version |IKEv2 |
 |Verschlüsselung und Hashalgorithmen (Verschlüsselung)     | GCMAES256|
 |Verschlüsselung und Hashalgorithmen (Authentifizierung) | GCMAES256|
-|SA-Gültigkeitsdauer (Zeit)  | 27.000 Sekunden<sup>Siehe Hinweis 1</sup> |
-|SA-Gültigkeitsdauer (Bytes) | 33.553.408<sup>Siehe Hinweis 2</sup>     |
-|Perfect Forward Secrecy (PFS) |Keine<sup>Siehe Hinweis 3</sup> |
+|SA-Gültigkeitsdauer (Zeit)  | 27.000 Sekunden  |
+|SA-Gültigkeitsdauer (Bytes) | 33.553.408     |
+|Perfect Forward Secrecy (PFS) |Keine<sup>Siehe Hinweis 1</sup> |
 |Dead Peer Detection | Unterstützt|  
 
-* *Hinweis 1:* Bis zur Version 1803 verwendet Azure Stack für „SA-Gültigkeitsdauer (Zeit)“ den Wert „14.400“.
-* *Hinweis 2:* Bis zur Version 1803 verwendet Azure Stack für „SA-Gültigkeitsdauer (Bytes)“ den Wert „819.200“.
-* *Hinweis 3:* Bis zur Version 1807 verwendet Azure Stack für „Perfect Forward Secrecy (PFS)“ den Wert „PFS2048“.
+* *Hinweis 1:* Bis zur Version 1807 verwendet Azure Stack für „Perfect Forward Secrecy (PFS)“ den Wert „PFS2048“.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

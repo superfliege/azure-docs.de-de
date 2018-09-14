@@ -1,18 +1,20 @@
 ---
 title: Terraform mit Bereitstellungsslots für Azure-Anbieter
 description: Tutorial zur Verwendung von Terraform mit Bereitstellungsslots für Azure-Anbieter
+services: terraform
+ms.service: terraform
 keywords: Terraform, DevOps, virtueller Computer, Azure, Bereitstellungsslots
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 4/05/2018
-ms.topic: article
-ms.openlocfilehash: 3a018dbaf90801604b13efcf8bd7afb6dbc68659
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: bbd06ae8927e6c21607ac1c997f1e5cf37f092bf
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416862"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667235"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Verwenden von Terraform zur Bereitstellung einer Infrastruktur mit Azure-Bereitstellungsslots
 
@@ -217,7 +219,7 @@ Nun haben Sie den Produktionsslot bereitgestellt. Führen Sie zum Bereitstellen 
 
 In den vorherigen Abschnitten haben Sie zwei Slots (**slotAppService** und **slotAppServiceSlotOne**) für die Bereitstellung über verschiedene Verzweigungen in GitHub eingerichtet. Sehen wir uns eine Vorschau der Web-Apps an, um sicherzustellen, dass sie erfolgreich bereitgestellt wurden.
 
-Führen Sie zweimal die folgenden Schritte aus. Wählen Sie in Schritt 3 beim ersten Mal **slotAppService** und beim zweiten Mal **slotAppServiceSlotOne** aus.
+Führen Sie die folgenden Schritte zweimal aus: Wählen Sie in Schritt 3 beim ersten Mal **slotAppService** und beim zweiten Mal **slotAppServiceSlotOne** aus.
 
 1. Klicken Sie im Hauptmenü des Azure-Portals auf **Ressourcengruppen**.
 
