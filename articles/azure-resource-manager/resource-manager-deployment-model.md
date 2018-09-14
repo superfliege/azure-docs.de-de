@@ -13,14 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2fd128ce04ac883396948e6114582dd15288390a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359739"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841626"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
+
+> [!NOTE]
+> Die in diesem Artikel bereitgestellten Informationen gelten nur, wenn Sie von der klassischen Bereitstellung zur Azure Resource Manager-Bereitstellung migrieren.
+
 In diesem Artikel wird sowohl das Azure Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell erläutert. Das Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sind zwei unterschiedliche Methoden zum Bereitstellen und Verwalten Ihrer Azure-Lösungen. Sie nutzen sie unter Verwendung von zwei verschiedenen API-Sätzen, und die bereitgestellten Ressourcen weisen unter Umständen erhebliche Unterschiede auf. Die beiden Modelle sind nicht miteinander kompatibel. In diesem Artikel werden diese Unterschiede beschrieben.
 
 Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung von Resource Manager für alle neuen Ressourcen. Darüber hinaus empfiehlt Microsoft nach Möglichkeit die erneute Bereitstellung vorhandener Ressourcen über den Resource Manager.

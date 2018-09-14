@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918611"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702543"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Tutorial: Definieren eines neuen Gerätetyps in Ihrer Azure IoT Central-Anwendung
 
@@ -280,22 +280,22 @@ Eigenschaften, Einstellungen und Geräteeigenschaften sowie Befehle sind untersc
 
 ## <a name="use-properties--device-properties"></a>Verwenden von Eigenschaften und Geräteeigenschaften
 
-*Eigenschaften* dienen dazu, Geräteinformationen in der Anwendung zu speichern. In diesem Abschnitt fügen Sie der Gerätevorlage **Connected Air Conditioner** Geräteeigenschaften hinzu, um die Seriennummer und die Firmwareversion des jeweiligen Geräts zu speichern. Beachten Sie, dass beides schreibgeschützte Eigenschaften sind, die vom Gerät gemeldet werden. Sie können ihnen keine Werte zuweisen. Zu den Eigenschaften, die Sie verwenden und denen Sie Werte zuweisen können, gehören der Speicherort des Geräts, Angaben zum Besitzer und das Datum bzw. die Uhrzeit der letzten Inbetriebnahme des Geräts.
+*Eigenschaften* dienen dazu, Geräteinformationen in der Anwendung zu speichern. In diesem Abschnitt fügen Sie der Gerätevorlage **Connected Air Conditioner** Cloudeigenschaften hinzu, um den Standort des Geräts und das Datum der letzten Wartung zu speichern. Beachten Sie, dass diese beiden Eigenschaften des Geräts bearbeitet werden können. Es gibt auch schreibgeschützte Eigenschaften des Geräts, die nicht geändert werden können, etwa die Seriennummer des Geräts und die Firmwareversion.
  
 1. Navigieren Sie zur Seite **Eigenschaften** für die Gerätevorlage **Connected Air Conditioner**:
 
     ![Vorbereiten des Hinzufügens einer Eigenschaft](./media/tutorial-define-device-type/deviceaddproperty.png)
 
-    Sie können Geräteeigenschaften unterschiedlicher Art erstellen, wie Zahlen oder Text. Klicken Sie auf **Text**, um Ihrer Gerätevorlage eine Seriennummerneigenschaft hinzuzufügen.
+    Sie können Geräteeigenschaften unterschiedlicher Art erstellen, wie Zahlen oder Text. Klicken Sie auf **Standort**, um Ihrer Gerätevorlage eine Standorteigenschaften hinzuzufügen.
 
-2. Verwenden Sie zum Konfigurieren der Seriennummerneigenschaft die Informationen aus der folgenden Tabelle:
+2. Verwenden Sie zum Konfigurieren der Standorteigenschaft die Informationen aus der folgenden Tabelle:
 
     | Feld                | Wert                |
     | -------------------- | -------------------- |
-    | Anzeigename         | Serial number        |
-    | Feldname           | serialNumber         |
-    | Anfangswert        | cac00001             |
-    | BESCHREIBUNG          | Device serial number |
+    | Anzeigename         | Standort             |
+    | Feldname           | location             |
+    | Anfangswert        | Seattle, WA          |
+    | BESCHREIBUNG          | Gerätestandort      |
 
     Behalten Sie für die anderen Felder die Standardwerte bei.
 
@@ -303,16 +303,16 @@ Eigenschaften, Einstellungen und Geräteeigenschaften sowie Befehle sind untersc
 
     Wählen Sie **Speichern** aus.
 
-3. Klicken Sie auf **Text**, um Ihrer Gerätevorlage eine Firmwareversion als Eigenschaft hinzuzufügen.
+3. Wählen Sie auf **Datum** aus, um Ihrer Gerätevorlage eine Eigenschaft für das Datum der letzten Wartung hinzuzufügen.
 
-4. Um die Firmwareversion als Geräteeigenschaft ordnungsgemäß zu konfigurieren, verwenden Sie die Informationen aus der folgenden Tabelle:
+4. Verwenden Sie zum Konfigurieren der Eigenschaft für das Datum der letzten Wartung die Informationen aus der folgenden Tabelle:
 
     | Feld                | Wert                   |
     | -------------------- | ----------------------- |
-    | Anzeigename         | Firmware version        |
-    | Feldname           | firmwareVersion         |
-    | Anfangswert        | 0,1                     |
-    | BESCHREIBUNG          | Device firmware version |
+    | Anzeigename         | Datum der letzten Wartung       |
+    | Feldname           | serviceDate             |
+    | Anfangswert        | 1/1/2018                |
+    | BESCHREIBUNG          | Datum der letzten Wartung           |
 
     ![Konfigurieren der Geräteeigenschaften](./media/tutorial-define-device-type/configureproperties2.png)
 

@@ -13,18 +13,18 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 26f8f59d940c1e4a25e24229c2a3df75052e63e4
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143541"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783289"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
 
-Mit der Cloudlösung für Microsoft Azure Data Box-Datenträger können Sie Daten im Terabyte-Bereich schnell, kostengünstig und zuverlässig an Azure senden. Diese FAQ-Seite enthält Fragen, die bei der Verwendung von Data Box-Datenträgern im Azure-Portal entstehen können, und die dazugehörigen Antworten. 
+Mit der Cloudlösung für Microsoft Azure Data Box-Datenträger können Sie Daten im Terabyte-Bereich schnell, kostengünstig und zuverlässig an Azure senden. Diese FAQ-Seite enthält Fragen, die bei der Verwendung von Data Box-Datenträgern im Azure-Portal aufkommen können, und die dazugehörigen Antworten. 
 
 Die Fragen und Antworten sind in folgende Kategorien unterteilt:
 
@@ -48,7 +48,7 @@ A. Die Azure Data Box-Datenträger ermöglichen eine schnelle, kostengünstige u
 Datenträger werden mithilfe der Microsoft-BitLocker-Laufwerkverschlüsselung verschlüsselt, und Ihre Verschlüsselungsschlüssel werden über das Azure-Portal verwaltet. Sie kopieren die Daten dann von den Servern des Kunden. Im Rechenzentrum migriert Microsoft Ihre Daten vom Laufwerk zur Cloud, indem ein Link für das schnelle Hochladen ins private Netzwerk verwendet wird, und anschließend werden die Daten in Azure hochgeladen.
 
 ### <a name="q-when-should-i-use-data-box-disks"></a>F: Wann sollte ich Data Box-Datenträger nutzen?
-A. Sie profitieren von der Verwendung von Data Box-Datenträgern, wenn Sie über 35 TB an Daten (oder weniger) verfügen, die Sie an Azure übertragen möchten.
+A. Sie profitieren von der Verwendung von Data Box-Datenträgern, wenn Sie über 40 TB an Daten (oder weniger) verfügen, die Sie an Azure übertragen möchten.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>F: Was kosten Data Box-Datenträger?
 A. Während der Vorschauphase sind Data Box-Datenträger kostenlos verfügbar. Auch der Versand ist kostenlos, aber es fallen die Gebühren für den Azure-Speicher an.
@@ -60,10 +60,10 @@ A.  Um Azure Data Box-Datenträger zu erhalten, müssen Sie sich zunächst für 
 A. Für fünf Datenträger mit jeweils 8 TB (7 TB nutzbare Kapazität) ergibt sich eine maximal nutzbare Kapazität von 35 TB. Sie können also 35 TB an Daten auf einmal übertragen.  Um eine größere Datenmenge zu übertragen, können Sie weitere Datenträger bestellen.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>F: Wie kann ich prüfen, ob Data Box-Datenträger in meiner Region verfügbar sind? 
-A.  Data Box-Datenträger sind während der Vorschauphase in den USA, in Kanada und in allen Ländern der Europäischen Union verfügbar.  
+A.  Data Box-Datenträger sind während der Vorschauphase in den USA, in Kanada, in Australien und in allen Ländern der Europäischen Union verfügbar.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>F: In welchen Regionen kann ich Daten über Data Box-Datenträger speichern?
-A. Die Vorschauversion von Data Box Disk wird für alle Regionen in den USA, in Kanada, in Westeuropa und Nordeuropa unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
+A. Die Vorschauversion von Data Box Disk wird für alle Regionen in den USA, in Kanada, Australien, Westeuropa und Nordeuropa unterstützt. Es werden nur die öffentlichen Azure-Cloudregionen unterstützt. Azure Government oder andere Sovereign Clouds werden nicht unterstützt.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>F: An wen sollte ich mich wenden, falls Probleme mit Data Box-Datenträgern auftreten?
 A. Wenden Sie sich an den [Support für Data Box-Datenträger](mailto:expresspodsupport@microsoft.com), falls Probleme mit Data Box-Datenträgern auftreten.

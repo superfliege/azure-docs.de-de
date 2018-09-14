@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aeb00bf55c578f61e5e1edbaab11c7773b9eab94
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 3840d8d1e18e73c1f08c450859032c07e441cff2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42023205"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699174"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Erstellen der ersten Funktion mit Java und Maven (Vorschau)
 
@@ -175,11 +175,37 @@ curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.
 Hello, AzureFunctionsTest
 ```
 
+## <a name="make-changes-and-redeploy"></a>Vornehmen von Änderungen und erneutes Bereitstellen
+
+Bearbeiten Sie die Quelldatei `src/main.../Function.java` im erstellten Projekt, um den von Ihrer Funktions-App zurückgegebenen Text zu ändern. Ändern Sie diese Zeile:
+
+```java
+return request.createResponse(200, "Hello, " + name);
+```
+
+in Folgendes:
+
+```java
+return request.createResponse(200, "Hi, " + name);
+```
+
+Speichern Sie die Änderungen, und führen Sie eine erneute Bereitstellung durch, indem Sie wie zuvor `azure-functions:deploy` über das Terminal ausführen. Die Funktions-App wird aktualisiert, und die folgende Anforderung:
+
+```bash
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+```
+
+hat die folgende aktualisierte Ausgabe:
+
+```Output
+Hi, AzureFunctionsTest
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie haben eine Java-Funktions-App mit einem einfachen HTTP-Trigger erstellt und für Azure Functions bereitgestellt.
 
 - Weitere Informationen zum Entwickeln von Java-Funktionen finden Sie im [Azure Functions-Java-Entwicklerhandbuch](functions-reference-java.md).
 - Fügen Sie mit `azure-functions:add` als Maven-Ziel zusätzliche Funktionen mit verschiedenen Triggern zu Ihrem Projekt hinzu.
-- Debuggen Sie Funktionen lokal mit Visual Studio Code. Nachdem Sie das [Java-Erweiterungspaket](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) installiert und mit Ihrem Functions-Projekt in Visual Studio Code geöffnet haben, [fügen Sie den Debugger an Port 5005 an](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations). Legen Sie anschließend einen Breakpoint im Editor fest, und lösen Sie Ihre Funktion aus, während sie lokal ausgeführt wird: ![Debuggen von Funktionen in Visual Studio Code](media/functions-create-java-maven/vscode-debug.png)
-- Debuggen Sie Funktionen remote mit Visual Studio Code. Eine entsprechende Anleitung finden Sie in der Dokumentation zum [Schreiben serverloser Java-Anwendungen](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).
+- Schreiben und debuggen Sie Funktionen lokal mit [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) und [Eclipse](functions-create-maven-eclipse.md). 
+- Debuggen Sie in Azure bereitgestellte Funktionen mit Visual Studio Code. Eine entsprechende Anleitung finden Sie in der Visual Studio Code-Dokumentation für [serverlose Java-Anwendungen](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).
