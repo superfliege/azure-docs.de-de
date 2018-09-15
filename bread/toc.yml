@@ -7,6 +7,12 @@ items:
     tocHref: /azure/active-directory/
     topicHref: /azure/active-directory/
     items:
+    - name: Grundlagen
+      tocHref: /azure/active-directory/fundamentals/
+      topicHref: /azure/active-directory/fundamentals/
+    - name: Schutz der Identität (Identity Protection)
+      tocHref: /azure/active-directory/identity-protection/
+      topicHref: /azure/active-directory/identity-protection/
     - name: Geräte
       tocHref: /azure/active-directory/devices/
       topicHref: /azure/active-directory/devices/
@@ -43,6 +49,9 @@ items:
     - name: Benutzer, Gruppen und Rollen
       tocHref: /azure/active-directory/users-groups-roles/
       topicHref: /azure/active-directory/users-groups-roles/
+    - name: Zugriffsüberprüfungen
+      tocHref: /azure/active-directory/governance/
+      topicHref: /azure/active-directory/governance/
     - name: Verwalten von Anwendungen
       tocHref: /azure/active-directory/manage-apps/
       topicHref: /azure/active-directory/manage-apps/
@@ -601,9 +610,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: e681a0b976c36c706962bd1b97cd623edaeee25f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: abdb32ac2ea3522ad88a1c4146fbbd807f356513
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379026"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630051"
