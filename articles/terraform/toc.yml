@@ -40,29 +40,33 @@ items:
     items:
     - name: Installieren der Terraform-Erweiterung für Visual Studio Code
       href: terraform-vscode-extension.md
-- name: Konzepte
-  items:
-  - name: Azure Cloud Shell-Integration
-    href: terraform-cloud-shell.md
 - name: Beispiele
   items:
   - name: Konfigurationsvorlagen
     href: https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples
+- name: Konzepte
+  items:
+  - name: Azure Cloud Shell-Integration
+    href: terraform-cloud-shell.md
+- name: Anleitungen
+  items:
+  - name: Speichern des Zustands in Azure Storage
+    href: terraform-backend.md
 - name: Verweis
   items:
   - name: Azure-Modulregistrierung
     href: https://registry.terraform.io/modules/Azure
   - name: Terraform-Referenz
     href: http://aka.ms/terraform
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure und Terraform
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: e6c4637618d794f96db8ed9ca8eb063a62f704a1
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 6378b8e647afa95666e0a996b546c8d4147e038e
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663535"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604025"

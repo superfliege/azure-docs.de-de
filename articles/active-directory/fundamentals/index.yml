@@ -1,0 +1,53 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 4c9f26c36b0cf79c8bd28e57fc7bdec5dda22764
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45636324"
+documentType: LandingData
+title: Dokumentation mit grundlegenden Informationen zu Azure Active Directory
+metadata:
+  document_id: 
+  title: Dokumentation mit grundlegenden Informationen zu Azure Active Directory
+  description: Hier erhalten Sie Informationen zu den grundlegenden Konzepten und Prozessen, die bei der Verwendung von Azure Active Directory verfügbar sind.
+  services: active-directory
+  ms.component: fundamentals
+  author: eross-msft
+  manager: mtillman
+  ms.service: active-directory
+  ms.topic: landing-page
+  ms.date: 09/07/2018
+  ms.author: lizross
+abstract:
+  description: In dieser Dokumentation erfahren Sie mehr über die grundlegenden Konzepte und Prozesse von Azure Active Directory (Azure AD). Beispielsweise wird erläutert, wie Sie allgemeine Benutzer und Gruppen sowie eine einfache Umgebung für die ersten Schritte erstellen.
+sections:
+- title: Fünfminütige Schnellstarts
+  items:
+  - type: paragraph
+    text: Hier erhalten Sie Informationen zu den ersten Schritten mit dem Azure Active Directory-Portal.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_portal.png
+      text: Zugreifen auf Azure AD zum Erstellen eines Mandanten
+      href: active-directory-access-create-new-tenant.md
+    - image:
+        src: ./media/index/i_tasks.png
+      text: Anzeigen von Gruppen und Mitgliedern
+      href: active-directory-groups-view-azure-portal.md
+- title: Ausführliche Leitfäden
+  items:
+  - type: paragraph
+    text: Hier erfahren Sie, wie Sie allgemeine Einrichtungsaufgaben in der Azure Active Directory-Umgebung ausführen.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrieren für Azure AD Premium</a>
+    - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Hinzufügen eines benutzerdefinierten Domänennamens</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">Hinzufügen von Gruppenbesitzern</a>
+    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Hinzufügen eines neuen Benutzers</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Zuweisen von Rollen zu Benutzern</a>
+    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Zuweisen von Lizenzen zu Benutzern</a>

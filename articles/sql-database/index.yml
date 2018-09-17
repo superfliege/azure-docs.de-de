@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0439f35a8ad7daab780bde301a2ec5fee8aaf1d6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 8c56b4d0bbd4b2726b9673ca537084376ee40d94
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718282"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629322"
 documentType: LandingData
 title: Dokumentation zu Azure SQL-Datenbank
 metadata:
@@ -107,7 +107,7 @@ sections:
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-      - href: /azure/sql-database//scripts/sql-database-create-and-configure-database-powershell
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: 
     - title: Erstellen einer verwalteten SQL-Instanz
       values:
@@ -135,7 +135,7 @@ sections:
     - title: Skalieren einer verwalteten Instanz
       values:
       - href: 
-      - href: 
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
       - href: 
     - title: Konfigurieren des Azure-Netzwerks für eine verwaltete Instanz
@@ -152,9 +152,9 @@ sections:
     style: ordered
     items:
     - html: Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank per <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> oder <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-    - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Migrieren einer vorhandenen SQL Server-Datenbank zur Verwendung von Azure SQL-Datenbank</a>
+    - html: Migrieren einer vorhandenen Datenbank zu Azure mit der <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">Datenbankwiederherstellung</a>, mit dem <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Datenmigrations-Assistenten</a> oder per <a href="/azure/sql-database/sql-database-import">BACPAC-Import</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">Sichern Ihrer SQL-Datenbank</a>
-    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">Implementieren einer geografisch verteilten Datenbank</a>
+    - html: Globales Verteilen von Daten mithilfe einer <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geografisch verteilten Datenbank</a>
 - title: Kostenloses PluralSight-Videotraining
   items:
   - type: list

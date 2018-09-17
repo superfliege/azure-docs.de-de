@@ -45,7 +45,8 @@
 ### [Verfügbarkeit von SAP HANA in Azure: Übersicht](sap-hana-availability-overview.md)
 ### [Verfügbarkeit von SAP HANA in Azure innerhalb einer Azure-Region](sap-hana-availability-one-region.md)
 ### [Verfügbarkeit von SAP HANA in Azure in verschiedenen Azure-Regionen](sap-hana-availability-across-regions.md)
-## [Einrichten der SAP HANA-Systemreplikation auf virtuellen Azure-Computern](sap-hana-high-availability.md)
+## [Einrichten der SAP HANA-Systemreplikation unter SLES](sap-hana-high-availability.md)
+## [Einrichten der SAP HANA-Systemreplikation unter RHEL](sap-hana-high-availability-rhel.md)
 ## [Übersicht über SAP HANA-Sicherungen](sap-hana-backup-guide.md)
 ## [SAP HANA-Sicherungen auf Dateiebene](sap-hana-backup-file-level.md)
 ## [SAP HANA-Sicherungen von Speichermomentaufnahmen](sap-hana-backup-storage-snapshots.md)
@@ -79,11 +80,14 @@
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-file-share.md)
 #### [Hochverfügbarkeit für NFS auf virtuellen Azure-Computern unter SLES](high-availability-guide-suse-nfs.md)
+#### [GlusterFS auf virtuellen Azure-Computern unter Red Hat Enterprise Linux für SAP NetWeaver](high-availability-guide-rhel-glusterfs.md)
 #### [Pacemaker unter SLES](high-availability-guide-suse-pacemaker.md)
+#### [Pacemaker unter RHEL](high-availability-guide-rhel-pacemaker.md)
 ### SAP-Installation
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-file-share.md)
 #### [SUSE Linux mit NFS für die (A)SCS-Instanz](high-availability-guide-suse.md)
+#### [Hochverfügbarkeit für SAP NetWeaver unter Red Hat Enterprise Linux](high-availability-guide-rhel.md)
 ### SAP-Multi-SID
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-ascs-ha-multi-sid-wsfc-file-share.md)
@@ -101,5 +105,5 @@
 ## [DirectQuery und SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
 ## [Verwenden des SAP BW-Connectors in Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector)
 ## [SAP HANA- und Business Warehouse-Datenintegration mit Azure Data Factory](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

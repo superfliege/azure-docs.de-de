@@ -1,0 +1,63 @@
+items:
+- name: Dokumentation zu Identity Protection
+  href: index.yml
+- name: Übersicht
+  items:
+  - name: Was ist Azure AD Identity Protection?
+    href: overview.md
+- name: Schnellstarts
+  items:
+  - name: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
+    href: quickstart-sign-in-risk-policy.md
+- name: Konzepte
+  items:
+  - name: Was sind Sicherheitsrisiken?
+    href: vulnerabilities.md
+  - name: Was sind Benachrichtigungen?
+    href: notifications.md
+  - name: Welche Anmeldeverfahren stehen zur Verfügung?
+    href: flows.md
+  expanded: false
+- name: Anleitungen
+  items:
+  - name: Aktivieren von Azure AD Identity Protection
+    href: enable.md
+  - name: Konfigurieren der MFA-Registrierungsrichtlinie
+    href: howto-mfa-policy.md
+  - name: Konfigurieren der Richtlinie zum Anmelderisiko
+    href: howto-sign-in-risk-policy.md
+  - name: Konfigurieren der Richtlinie zum Benutzerrisiko
+    href: howto-user-risk-policy.md
+  - name: Entsperren von Benutzern
+    href: howto-unblock-user.md
+  - name: Simulieren von Risikoereignissen
+    href: playbook.md
+  - name: Verwenden der Microsoft Graph-API
+    href: graph-get-started.md
+  - name: Häufig gestellte Fragen
+    href: faqs.md
+  expanded: true
+- name: Verweis
+  items:
+  - name: Glossar
+    href: glossary.md
+- name: Ressourcen
+  items:
+  - name: Azure-Feedbackforum
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: MSDN-Forum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Dienstupdates
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Videos
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 651ac43690180fadad6eef7f83d2a58b531752ed
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606710"
