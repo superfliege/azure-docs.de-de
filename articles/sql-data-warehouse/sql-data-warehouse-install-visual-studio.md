@@ -38,7 +38,7 @@ Verwenden Sie die folgenden Links, um Visual Studio herunterzuladen und zu insta
 ## <a name="step-2-install-ssdt"></a>Schritt 2: Installieren von SSDT
 Führen Sie zum Installieren von SSDT für Visual Studio zuerst die folgenden Schritte aus, um in Visual Studio nach einem SSDT-Update zu suchen:
 
-1. Klicken Sie in Visual Studio auf **Tools** / **Erweiterungen und Updates...**  /  **Updates**.
+1. Klicken Sie in Visual Studio auf **Tools** / **Erweiterungen und Updates...** / **Updates**.
 2. Wählen Sie **Produktupdates** aus, und suchen Sie nach **Microsoft SQL Server-Update für Datenbanktools**.
 
 Wird kein Update gefunden, ist bereits die neueste Version installiert.  Klicken Sie auf **Hilfe** / **Info**, und suchen Sie in der Liste nach „SQL Server Data Tools“, um sich zu vergewissern, dass SSDT installiert ist. Die neueste Version von SSDT ist 14.0.60525.0. Falls die Option zur Installation in Visual Studio nicht verfügbar ist, können Sie SSDT auf der Seite für den [SSDT-Download][SSDT Download] manuell herunterladen und installieren.
