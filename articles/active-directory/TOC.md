@@ -12,7 +12,6 @@
 
 
 # Erste Schritte
-## [Erste Schritte mit Azure AD](fundamentals/get-started-azure-ad.md)
 ## [Registrieren für Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [Hinzufügen eines benutzerdefinierten Domänennamens](fundamentals/add-custom-domain.md)
 ## [Konfigurieren des Unternehmensbrandings](fundamentals/customize-branding.md)
@@ -20,6 +19,7 @@
 ## [Zuweisen von Lizenzen zu Benutzern](fundamentals/license-users-groups.md)
 ## [Konfigurieren der Self-Service-Kennwortzurücksetzung](authentication/quickstart-sspr.md)
 ## [Hinzufügen der Datenschutzinformationen Ihrer Organisation in Azure AD](active-directory-properties-area.md)
+## [Zugreifen auf Azure Active Directory zum Erstellen eines neuen Mandanten](fundamentals/active-directory-access-create-new-tenant.md)
 
 
 # Anleitung
@@ -91,11 +91,13 @@
 ### [Gefährdete Benutzer](reports-monitoring/concept-user-at-risk.md)
 ### [Riskante Anmeldungen](reports-monitoring/concept-risky-sign-ins.md)
 ### [Risikoereignisse](reports-monitoring/concept-risk-events.md)
-### [Überwachen von Protokollen mithilfe von Azure Monitor](reports-monitoring/overview-activity-logs-in-azure-monitor.md)
+### [Überwachen von Protokollen mithilfe von Azure Monitor](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
 ### [HÄUFIG GESTELLTE FRAGEN](reports-monitoring/reports-faq.md)
 
 ### Aufgaben
-#### [Konfigurieren benannter Orte](active-directory-named-locations.md)
+#### [Herunterladen eines Anmeldeberichts](reports-monitoring/quickstart-download-sign-in-report.md)
+#### [Herunterladen eines Überwachungsberichts](reports-monitoring/quickstart-download-audit-report.md)
+#### [Konfigurieren benannter Orte](reports-monitoring/quickstart-configure-named-locations.md)
 #### [Suchen nach Aktivitätsberichten](reports-monitoring/howto-find-activity-reports.md)
 #### [Verwenden des Azure AD-Power BI-Inhaltspakets](reports-monitoring/howto-power-bi-content-pack.md)
 #### [Bereinigen von Benutzern mit Risikomarkierung](reports-monitoring/howto-remediate-users-flagged-for-risk.md)

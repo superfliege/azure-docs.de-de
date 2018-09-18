@@ -1,5 +1,5 @@
 items:
-- name: Dokumentation zur Azure AD-Anwendungsverwaltung
+- name: Dokumentation zur Anwendungsverwaltung
   href: index.yml
 - name: Übersicht
   items:
@@ -236,6 +236,8 @@ items:
       href: access-panel-troubleshoot-self-service-access.md
   - name: Migration
     items:
+    - name: Migrationsressourcen
+      href: migration-resources.md
     - name: Migrieren einer ADFS-App zu Azure
       href: migrate-adfs-apps-to-azure.md
   - name: Problembehandlung für Benutzeranmeldung
@@ -262,7 +264,7 @@ items:
       href: application-sign-in-problem-federated-sso-gallery.md
     - name: Problem mit einer benutzerdefinierten App
       href: application-sign-in-problem-custom-dev.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure AD-Bereitstellungspläne
     href: /azure/active-directory/fundamentals/active-directory-deployment-plans?context=azure/active-directory/manage-apps/context/manage-apps-context
@@ -282,9 +284,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 24452d3c2d5991f9dc81b9d740ec9473e2b8a1e0
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 8bd998373a65aa1ef171c665f3b9fbd38acadfa2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579887"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737072"
