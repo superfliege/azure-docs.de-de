@@ -332,7 +332,7 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
 |WebIssuesNotSignin|You're not signed in. (Sie sind nicht angemeldet.) Please {0} to report an issue or post a comment. (Nutzen Sie {0}, um ein Problem zu melden oder einen Kommentar zu hinterlassen.)|  
 |WebIssuesReportIssueButton|Report Issue (Problem melden)|  
 |WebIssuesSignIn|Anmelden|  
-|WebIssuesStatusReportedBy|Status: {0} &#124; Reported by {1} (Status: {0} &#124; Gemeldet von {1})|  
+|WebIssuesStatusReportedBy|Status: {0} &#124; Gemeldet von {1}|  
   
 ###  <a name="NotFoundStrings"></a> NotFoundStrings  
   
