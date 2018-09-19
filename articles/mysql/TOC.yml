@@ -1,211 +1,218 @@
+items:
 - name: Azure-Datenbank für MySQL – Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-    - name: Azure-Datenbank für MySQL
-      href: overview.md
+  - name: Azure-Datenbank für MySQL
+    href: overview.md
 - name: Schnellstarts
-  expanded: true
   items:
-    - name: Erstellen einer Datenbank – Portal
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: Erstellen einer Datenbank – Azure-CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: Verbinden und abfragen
-      items:
-        - name: PHP
-          href: connect-php.md
-        - name: Java
-          href: connect-java.md
-        - name: .Net
-          href: connect-csharp.md
-        - name: Python
-          href: connect-python.md
-        - name: Node.js
-          href: connect-nodejs.md
-        - name: Ruby
-          href: connect-ruby.md
-        - name: C++
-          href: connect-cpp.md
-        - name: Go
-          href: connect-go.md
-        - name: MySQL Workbench
-          href: connect-workbench.md
+  - name: Erstellen einer Datenbank – Portal
+    href: quickstart-create-mysql-server-database-using-azure-portal.md
+  - name: Erstellen einer Datenbank – Azure-CLI
+    href: quickstart-create-mysql-server-database-using-azure-cli.md
+  - name: Verbinden und abfragen
+    items:
+    - name: PHP
+      href: connect-php.md
+    - name: Java
+      href: connect-java.md
+    - name: .Net
+      href: connect-csharp.md
+    - name: Python
+      href: connect-python.md
+    - name: Node.js
+      href: connect-nodejs.md
+    - name: Ruby
+      href: connect-ruby.md
+    - name: C++
+      href: connect-cpp.md
+    - name: Go
+      href: connect-go.md
+    - name: MySQL Workbench
+      href: connect-workbench.md
+  expanded: true
 - name: Tutorials
   items:
-    - name: '1: Erstellen einer Datenbank'
-      items:
-        - name: Azure-Portal
-          href: tutorial-design-database-using-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: tutorial-design-database-using-cli.md
-    - name: '2: Erstellen einer Web-App'
-      items:
-        - name: WordPress – Portal
-          href: 'https://portal.azure.com/#create/WordPress.WordPress'
-        - name: PHP mit MySQL
-          href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
-        - name: Java mit MySQL
-          href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+  - name: '1: Erstellen einer Datenbank'
+    items:
+    - name: Azure-Portal
+      href: tutorial-design-database-using-portal.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: tutorial-design-database-using-cli.md
+  - name: '2: Erstellen einer Web-App'
+    items:
+    - name: WordPress – Portal
+      href: https://portal.azure.com/#create/WordPress.WordPress
+    - name: PHP mit MySQL
+      href: ../app-service/app-service-web-tutorial-php-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
+    - name: Java mit MySQL
+      href: ../app-service/app-service-web-tutorial-java-mysql.md?toc=%2fazure%2fmysql%2ftoc.json
 - name: Beispiele
   items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: sample-scripts-azure-cli.md
+  - name: Azure-Befehlszeilenschnittstelle
+    href: sample-scripts-azure-cli.md
 - name: Konzepte
   items:
-    - name: Datenbank und Server
-      items:
-        - name: Server
-          href: concepts-servers.md
-        - name: Unterstützte Versionen
-          href: concepts-supported-versions.md
-        - name: Serverprotokolle
-          href: concepts-server-logs.md
-        - name: Hochverfügbarkeit
-          href: concepts-high-availability.md
-    - name: angeben
-      items:
-        - name: Tarife
-          href: concepts-pricing-tiers.md
-        - name: Einschränkungen
-          href: concepts-limits.md
-    - name: Datenzugriff und Sicherheit
-      items:
-        - name: Firewallregeln
-          href: concepts-firewall-rules.md
-        - name: Konfigurieren von SSL
-          href: concepts-ssl-connection-security.md
-        - name: VNet
-          href: concepts-data-access-and-security-vnet.md
-    - name: Geschäftskontinuität
-      items:
-        - name: Übersicht
-          href: concepts-business-continuity.md
-        - name: Sichern und Wiederherstellen
-          href: concepts-backup.md
-    - name: Überwachen
-      href: concepts-monitoring.md
-    - name: Entwicklung
-      items:
-        - name: Kompatibilität von Treibern und Tools
-          href: concepts-compatibility.md
-        - name: Anwendungsentwicklung
-          href: concepts-database-application-development.md
-    - name: Replikation
-      items:
-        - name: Replikation eingehender Daten
-          href: concepts-data-in-replication.md
+  - name: Datenbank und Server
+    items:
+    - name: Server
+      href: concepts-servers.md
+    - name: Unterstützte Versionen
+      href: concepts-supported-versions.md
+    - name: Serverprotokolle
+      href: concepts-server-logs.md
+    - name: Hochverfügbarkeit
+      href: concepts-high-availability.md
+  - name: Ressourcen
+    items:
+    - name: Tarife
+      href: concepts-pricing-tiers.md
+    - name: Einschränkungen
+      href: concepts-limits.md
+  - name: Datenzugriff und Sicherheit
+    items:
+    - name: Firewallregeln
+      href: concepts-firewall-rules.md
+    - name: Konfigurieren von SSL
+      href: concepts-ssl-connection-security.md
+    - name: VNet
+      href: concepts-data-access-and-security-vnet.md
+  - name: Geschäftskontinuität
+    items:
+    - name: Übersicht
+      href: concepts-business-continuity.md
+    - name: Sichern und Wiederherstellen
+      href: concepts-backup.md
+  - name: Überwachen
+    href: concepts-monitoring.md
+  - name: Entwicklung
+    items:
+    - name: Kompatibilität von Treibern und Tools
+      href: concepts-compatibility.md
+    - name: Anwendungsentwicklung
+      href: concepts-database-application-development.md
+  - name: Replikation
+    items:
+    - name: Replikation eingehender Daten
+      href: concepts-data-in-replication.md
 - name: Anleitungen
   items:
-    - name: Verwalten eines Servers
-      items:
-        - name: Azure-Portal
-          href: howto-create-manage-server-portal.md
-    - name: Firewallregeln
-      items:
-        - name: Azure-Portal
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: howto-manage-firewall-using-cli.md
-    - name: Wiederherstellen eines Servers
-      items:
-        - name: Azure-Portal
-          href: howto-restore-server-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: howto-restore-server-cli.md
-    - name: Migrieren einer Datenbank
-      items:
-        - name: Sicherung und Wiederherstellung
-          href: concepts-migrate-dump-restore.md
-        - name: Importieren und Exportieren
-          href: concepts-migrate-import-export.md
-        - name: Migration mit minimaler Downtime
-          href: howto-migrate-online.md
-    - name: Herstellen einer Verbindung mit Anwendungen
-      items:
-        - name: Erstellen von Benutzern
-          href: howto-create-users.md
-        - name: Verbindungszeichenfolgen
-          href: howto-connection-string.md
-        - name: Konfigurieren von SSL
-          href: howto-configure-ssl.md
-        - name: Web-Apps
-          href: howto-connect-webapp.md
-    - name: Konfigurieren von Serverparametern
-      items:
-        - name: Azure-Portal
-          href: howto-server-parameters.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: howto-configure-server-parameters-using-cli.md
-    - name: Zugreifen auf Serverprotokolle
-      items:
-        - name: Azure-Portal
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: howto-configure-server-logs-in-cli.md
-    - name: Überwachen
-      items:
-        - name: Erstellen von Warnungen zu Metriken
-          href: howto-alert-on-metric.md
-    - name: Replikation
-      items:
-        - name: Konfigurieren der Replikation eingehender Daten
-          href: howto-data-in-replication.md
-    - name: Problembehandlung
-      items:
-        - name: Beheben von Problemen mit der Abfrageleistung
-          href: howto-troubleshoot-query-performance.md
-        - name: Verwenden von Ansichten im Systemschema
-          href: howto-troubleshoot-sys-schema.md
-    - name: Virtual Network
-      items:
-        - name: Azure-Portal
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure-Befehlszeilenschnittstelle
-          href: howto-manage-vnet-using-cli.md
+  - name: Verwalten eines Servers
+    items:
+    - name: Azure-Portal
+      href: howto-create-manage-server-portal.md
+  - name: Firewallregeln
+    items:
+    - name: Azure-Portal
+      href: howto-manage-firewall-using-portal.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: howto-manage-firewall-using-cli.md
+  - name: Wiederherstellen eines Servers
+    items:
+    - name: Azure-Portal
+      href: howto-restore-server-portal.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: howto-restore-server-cli.md
+  - name: Migrieren einer Datenbank
+    items:
+    - name: Sicherung und Wiederherstellung
+      href: concepts-migrate-dump-restore.md
+    - name: Importieren und Exportieren
+      href: concepts-migrate-import-export.md
+    - name: Migration mit minimaler Downtime
+      href: howto-migrate-online.md
+  - name: Herstellen einer Verbindung mit Anwendungen
+    items:
+    - name: Erstellen von Benutzern
+      href: howto-create-users.md
+    - name: Verbindungszeichenfolgen
+      href: howto-connection-string.md
+    - name: Konfigurieren von SSL
+      href: howto-configure-ssl.md
+    - name: Web-Apps
+      href: howto-connect-webapp.md
+  - name: Konfigurieren von Serverparametern
+    items:
+    - name: Azure-Portal
+      href: howto-server-parameters.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: howto-configure-server-parameters-using-cli.md
+  - name: Zugreifen auf Serverprotokolle
+    items:
+    - name: Azure-Portal
+      href: howto-configure-server-logs-in-portal.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: howto-configure-server-logs-in-cli.md
+  - name: Überwachen
+    items:
+    - name: Erstellen von Warnungen zu Metriken
+      href: howto-alert-on-metric.md
+  - name: Replikation
+    items:
+    - name: Konfigurieren der Replikation eingehender Daten
+      href: howto-data-in-replication.md
+  - name: Problembehandlung
+    items:
+    - name: Beheben von Problemen mit der Abfrageleistung
+      href: howto-troubleshoot-query-performance.md
+    - name: Verwenden von Ansichten im Systemschema
+      href: howto-troubleshoot-sys-schema.md
+  - name: Virtual Network
+    items:
+    - name: Azure-Portal
+      href: howto-manage-vnet-using-portal.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: howto-manage-vnet-using-cli.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: /cli/azure/mysql
-    - name: REST-API
-      href: /rest/api/mysql
-    - name: Gespeicherte Prozeduren für die Replikation eingehender Daten
-      href: reference-data-in-stored-procedures.md
-- name: angeben
+  - name: Azure-Befehlszeilenschnittstelle
+    href: /cli/azure/mysql
+  - name: REST-API
+    href: /rest/api/mysql
+  - name: Gespeicherte Prozeduren für die Replikation eingehender Daten
+    href: reference-data-in-stored-procedures.md
+- name: Ressourcen
   items:
-    - name: Bereitstellungsvorlagen
-      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=databases'
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/mysql/'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-database-mysql'
-    - name: Videos
+  - name: Bereitstellungsvorlagen
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/mysql/
+  - name: MSDN-Forum
+    href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-database-mysql
+  - name: Videos
+    items:
+    - name: Produktvideos
+      href: videos.md
+    - name: Videoserie mit Anleitungen
       items:
-        - name: Produktvideos
-          href: videos.md
-        - name: Videoserie mit Anleitungen
-          items:
-            - name: Informationen zu Produktfeatures und -vorteilen
-              href: 'https://aka.ms/mysql-intro-vid'
-            - name: Migrieren Ihrer MySQL-App zu Azure
-              href: 'https://aka.ms/mysql-migrate-vid'
-            - name: Erstellen und Bereitstellen von Web-Apps
-              href: 'https://aka.ms/mysql-webapps-vid'
-            - name: Herstellen einer Verbindung mit Containern mithilfe von OSBA
-              href: 'https://aka.ms/mysql-osba-vid'
-    - name: Anfordern eines Features
-      href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Supportoptionen
-      href: 'https://azure.microsoft.com/support/options/'
-    - name: Kundenstimmen
-      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
-    - name: Partner
-      href: partners-migration-mysql.md
-    - name: Leitfaden zur Datenbankmigration
-      href: 'https://datamigration.microsoft.com/'
+      - name: Informationen zu Produktfeatures und -vorteilen
+        href: https://aka.ms/mysql-intro-vid
+      - name: Migrieren Ihrer MySQL-App zu Azure
+        href: https://aka.ms/mysql-migrate-vid
+      - name: Erstellen und Bereitstellen von Web-Apps
+        href: https://aka.ms/mysql-webapps-vid
+      - name: Herstellen einer Verbindung mit Containern mithilfe von OSBA
+        href: https://aka.ms/mysql-osba-vid
+  - name: Anfordern eines Features
+    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/regions/services/
+  - name: Supportoptionen
+    href: https://azure.microsoft.com/support/options/
+  - name: Kundenstimmen
+    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"
+  - name: Partner
+    href: partners-migration-mysql.md
+  - name: Leitfaden zur Datenbankmigration
+    href: https://datamigration.microsoft.com/
+ms.openlocfilehash: bc4086d402fa439f2538f4af7d1e5725da705658
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300566"

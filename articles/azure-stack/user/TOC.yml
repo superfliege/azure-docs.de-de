@@ -178,7 +178,7 @@ items:
     href: /azure/azure-stack/
   - name: ASDK-Dokumentation
     href: /azure/azure-stack/asdk/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Roadmap für Azure Stack
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack

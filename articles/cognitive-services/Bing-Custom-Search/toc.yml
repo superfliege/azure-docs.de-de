@@ -1,84 +1,91 @@
+items:
 - name: Benutzerdefinierte Bing-Suche – Dokumentation
   href: index.yml
 - name: Übersicht
-  expanded: true
   items:
-    - name: Was ist die benutzerdefinierte Bing-Suche?
-      href: overview.md
+  - name: Was ist die benutzerdefinierte Bing-Suche?
+    href: overview.md
+  expanded: true
 - name: REST-API-Schnellstartanleitungen
-  expanded: true
   items:
-    - name: Erstellen der ersten Instanz
-      href: quick-start.md
-    - name: 'C#'
-      href: call-endpoint-csharp.md
-    - name: Java
-      href: call-endpoint-java.md
-    - name: Node.js
-      href: call-endpoint-nodejs.md
-    - name: Python
-      href: call-endpoint-python.md
+  - name: Erstellen der ersten Instanz
+    href: quick-start.md
+  - name: C#
+    href: call-endpoint-csharp.md
+  - name: Java
+    href: call-endpoint-java.md
+  - name: Node.js
+    href: call-endpoint-nodejs.md
+  - name: Python
+    href: call-endpoint-python.md
+  expanded: true
 - name: SDK-Schnellstartanleitungen
   items:
-    - name: Übersicht über SDK-Beispiele
-      href: sdk.md
-    - name: 'Schnellstartanleitung für das SDK für die benutzerdefinierte Suche: C#'
-      href: custom-search-sdk-quickstart.md
+  - name: Übersicht über SDK-Beispiele
+    href: sdk.md
+  - name: 'Schnellstartanleitung für das SDK für die benutzerdefinierte Suche: C#'
+    href: custom-search-sdk-quickstart.md
 - name: Tutorials
   items:
-    - name: Erstellen einer Webseite für die benutzerdefinierte Suche
-      href: ./tutorials/custom-search-web-page.md
+  - name: Erstellen einer Webseite für die benutzerdefinierte Suche
+    href: ./tutorials/custom-search-web-page.md
 - name: Beispiele
   items:
-    - name: Codebeispiele
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search'
+  - name: Codebeispiele
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Custom+Search
 - name: Anleitungen
   items:
-    - name: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche
-      href: define-your-custom-view.md
-    - name: Aufrufen der benutzerdefinierten Suche
-      href: search-your-custom-view.md
-    - name: Konfigurieren der gehosteten Benutzeroberfläche
-      href: hosted-ui.md
-    - name: Freigeben der benutzerdefinierten Suche
-      href: share-your-custom-search.md
-    - name: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Vorschlagssuche
-      href: define-custom-suggestions.md
-    - name: Abrufen von benutzerdefinierten Vorschlägen
-      href: get-custom-suggestions.md
-    - name: Behandeln von Trefferhervorhebungen
-      href: hit-highlighting.md
-    - name: Aufteilen von Webseiten auf Seiten
-      href: page-webpages.md
+  - name: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Suche
+    href: define-your-custom-view.md
+  - name: Aufrufen der benutzerdefinierten Suche
+    href: search-your-custom-view.md
+  - name: Konfigurieren der gehosteten Benutzeroberfläche
+    href: hosted-ui.md
+  - name: Freigeben der benutzerdefinierten Suche
+    href: share-your-custom-search.md
+  - name: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Vorschlagssuche
+    href: define-custom-suggestions.md
+  - name: Abrufen von benutzerdefinierten Vorschlägen
+    href: get-custom-suggestions.md
+  - name: Behandeln von Trefferhervorhebungen
+    href: hit-highlighting.md
+  - name: Aufteilen von Webseiten auf Seiten
+    href: page-webpages.md
 - name: Verweis
   items:
-    - name: Bing-API für die benutzerdefinierte Vorschlagssuche – Referenz
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference'
-    - name: Bing-API für die benutzerdefinierte Bildersuche – Referenz
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference'
-    - name: Bing-API für die benutzerdefinierte Suche – Referenz
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference'
-    - name: Anforderungen für die Verwendung und Anzeige der Bing-Suche-API
-      href: use-and-display-requirements.md
+  - name: Bing-API für die benutzerdefinierte Vorschlagssuche – Referenz
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference
+  - name: Bing-API für die benutzerdefinierte Bildersuche – Referenz
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference
+  - name: Bing-API für die benutzerdefinierte Suche – Referenz
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference
+  - name: Anforderungen für die Verwendung und Anzeige der Bing-Suche-API
+    href: use-and-display-requirements.md
 - name: Ressourcen
   items:
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598147-bing-custom-search-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=bing+custom+search'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Wissensdatenbank
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: Abrufen des API-Schlüssels
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api'
-    - name: Testen
-      href: 'https://aka.ms/bingcustomsearchtryit'
-    - name: Endpunkt für die benutzerdefinierte Bing-Suche
-      href: endpoint-custom.md
-    - name: Unterstützte Länder und Märkte
-      href: supported-countries-markets.md
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/598147-bing-custom-search-api
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=bing+custom+search
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Wissensdatenbank
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: Abrufen des API-Schlüssels
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api
+  - name: Testen
+    href: https://aka.ms/bingcustomsearchtryit
+  - name: Endpunkt für die benutzerdefinierte Bing-Suche
+    href: endpoint-custom.md
+  - name: Unterstützte Länder und Märkte
+    href: supported-countries-markets.md
+ms.openlocfilehash: 79e34a3f132a42096e1435d986db2feff421498e
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35415961"

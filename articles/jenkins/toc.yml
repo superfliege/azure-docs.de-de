@@ -48,7 +48,7 @@ items:
   items:
   - name: Beispielaufträge und -skripts
     href: https://github.com/azure/jenkins
-- name: angeben
+- name: Ressourcen
   items:
   - name: Plug-Ins
     items:

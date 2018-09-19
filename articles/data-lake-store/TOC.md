@@ -22,7 +22,7 @@
 ### [Verwenden von DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Verwenden von Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Hochladen von Daten aus Offlinequellen](data-lake-store-offline-bulk-data-upload.md)
-### [Regionsübergreifendes Migrieren von Data Lake Store](data-lake-store-migration-cross-region.md)
+### [Regionsübergreifendes Migrieren von Data Lake Storage Gen1](data-lake-store-migration-cross-region.md)
 
 ## Schützen von Daten
 ### [Sicherheitsübersicht](data-lake-store-security-overview.md)
@@ -94,7 +94,7 @@
 ## [REST](/rest/api/datalakestore)
 ## [Azure-CLI](https://docs.microsoft.com/cli/azure/dls)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Data Lake Store-Blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Feedback über UserVoice](https://feedback.azure.com/forums/327234-data-lake)

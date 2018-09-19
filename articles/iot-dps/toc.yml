@@ -168,7 +168,7 @@ items:
       href: /azure/iot-edge
     - name: IoT-Geräte-SDKs
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure IoT-Beispiele für C# (.NET)
     href: https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/

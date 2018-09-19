@@ -99,7 +99,7 @@ items:
   - name: Event Grid-Schema
     href: ../event-grid/event-schema-container-registry.md
     maintainContext: true
-- name: angeben
+- name: Ressourcen
   items:
   - name: Regionale Verfügbarkeit
     href: https://azure.microsoft.com/regions/services/

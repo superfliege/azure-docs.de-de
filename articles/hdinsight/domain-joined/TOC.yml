@@ -70,7 +70,7 @@ items:
     href: /rest/api/hdinsight/
   - name: REST (Spark)
     href: /rest/api/hdinsightspark/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Versionshinweise
     href: ../hdinsight-release-notes.md

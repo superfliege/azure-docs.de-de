@@ -162,7 +162,7 @@ items:
     href: /dotnet/api/microsoft.azure.management.streamanalytics
   - name: REST
     href: /rest/api/streamanalytics
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

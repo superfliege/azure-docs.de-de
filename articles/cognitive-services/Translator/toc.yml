@@ -1,175 +1,182 @@
+items:
 - name: Dokumentation zur Textübersetzungs-API
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist die Textübersetzungs-API?
-      href: translator-info-overview.md
+  - name: Was ist die Textübersetzungs-API?
+    href: translator-info-overview.md
 - name: Schnellstarts
-  expanded: true
   items:
-    - name: 'C#'
-      items:
-        - name: Text übersetzen
-          href: quickstart-csharp-translate.md
-        - name: Konvertieren eines Textskripts
-          href: quickstart-csharp-transliterate.md
-        - name: Identifizieren der Textsprache
-          href: quickstart-csharp-detect.md
-        - name: Abrufen von alternativen Übersetzungen
-          href: quickstart-csharp-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-csharp-languages.md
-        - name: Abrufen von Satzlängen im Text
-          href: quickstart-csharp-sentences.md
-    - name: Go
-      items:
-        - name: Text übersetzen
-          href: quickstart-go-translate.md
-        - name: Konvertieren eines Textskripts
-          href: quickstart-go-transliterate.md
-        - name: Identifizieren der Textsprache
-          href: quickstart-go-detect.md
-        - name: Abrufen von alternativen Übersetzungen
-          href: quickstart-go-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-go-languages.md
-        - name: Abrufen von Satzlängen im Text
-          href: quickstart-go-sentences.md
-    - name: Java
-      items:
-        - name: Text übersetzen
-          href: quickstart-java-translate.md
-        - name: Konvertieren eines Textskripts
-          href: quickstart-java-transliterate.md
-        - name: Identifizieren der Textsprache
-          href: quickstart-java-detect.md
-        - name: Abrufen von alternativen Übersetzungen
-          href: quickstart-java-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-java-languages.md
-        - name: Abrufen von Satzlängen im Text
-          href: quickstart-java-sentences.md
-    - name: Node.js
-      items:
-        - name: Text übersetzen
-          href: quickstart-nodejs-translate.md
-        - name: Konvertieren eines Textskripts
-          href: quickstart-nodejs-transliterate.md
-        - name: Identifizieren der Textsprache
-          href: quickstart-nodejs-detect.md
-        - name: Abrufen von alternativen Übersetzungen
-          href: quickstart-nodejs-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-nodejs-languages.md
-        - name: Abrufen von Satzlängen im Text
-          href: quickstart-nodejs-sentences.md
-    - name: PHP
-      items:
-        - name: Text übersetzen
-          href: quickstart-php-translate.md
-        - name: Konvertieren eines Textskripts
-          href: quickstart-php-transliterate.md
-        - name: Identifizieren der Textsprache
-          href: quickstart-php-detect.md
-        - name: Abrufen von alternativen Übersetzungen
-          href: quickstart-php-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-php-languages.md
-        - name: Abrufen von Satzlängen im Text
-          href: quickstart-php-sentences.md
-    - name: Python
-      items:
-        - name: Text übersetzen
-          href: quickstart-python-translate.md
-        - name: Konvertieren eines Textskripts
-          href: quickstart-python-transliterate.md
-        - name: Identifizieren der Textsprache
-          href: quickstart-python-detect.md
-        - name: Abrufen von alternativen Übersetzungen
-          href: quickstart-python-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-python-languages.md
-        - name: Abrufen von Satzlängen im Text
-          href: quickstart-python-sentences.md
-    - name: Ruby
-      items:
-        - name: Text übersetzen
-          href: quickstart-ruby-translate.md
-        - name: Konvertieren eines Textskripts
-          href: quickstart-ruby-transliterate.md
-        - name: Identifizieren der Textsprache
-          href: quickstart-ruby-detect.md
-        - name: Abrufen von alternativen Übersetzungen
-          href: quickstart-ruby-dictionary.md
-        - name: Abrufen der unterstützten Sprachen
-          href: quickstart-ruby-languages.md
-        - name: Abrufen von Satzlängen im Text
-          href: quickstart-ruby-sentences.md
+  - name: C#
+    items:
+    - name: Text übersetzen
+      href: quickstart-csharp-translate.md
+    - name: Konvertieren eines Textskripts
+      href: quickstart-csharp-transliterate.md
+    - name: Identifizieren der Textsprache
+      href: quickstart-csharp-detect.md
+    - name: Abrufen von alternativen Übersetzungen
+      href: quickstart-csharp-dictionary.md
+    - name: Abrufen der unterstützten Sprachen
+      href: quickstart-csharp-languages.md
+    - name: Abrufen von Satzlängen im Text
+      href: quickstart-csharp-sentences.md
+  - name: Go
+    items:
+    - name: Text übersetzen
+      href: quickstart-go-translate.md
+    - name: Konvertieren eines Textskripts
+      href: quickstart-go-transliterate.md
+    - name: Identifizieren der Textsprache
+      href: quickstart-go-detect.md
+    - name: Abrufen von alternativen Übersetzungen
+      href: quickstart-go-dictionary.md
+    - name: Abrufen der unterstützten Sprachen
+      href: quickstart-go-languages.md
+    - name: Abrufen von Satzlängen im Text
+      href: quickstart-go-sentences.md
+  - name: Java
+    items:
+    - name: Text übersetzen
+      href: quickstart-java-translate.md
+    - name: Konvertieren eines Textskripts
+      href: quickstart-java-transliterate.md
+    - name: Identifizieren der Textsprache
+      href: quickstart-java-detect.md
+    - name: Abrufen von alternativen Übersetzungen
+      href: quickstart-java-dictionary.md
+    - name: Abrufen der unterstützten Sprachen
+      href: quickstart-java-languages.md
+    - name: Abrufen von Satzlängen im Text
+      href: quickstart-java-sentences.md
+  - name: Node.js
+    items:
+    - name: Text übersetzen
+      href: quickstart-nodejs-translate.md
+    - name: Konvertieren eines Textskripts
+      href: quickstart-nodejs-transliterate.md
+    - name: Identifizieren der Textsprache
+      href: quickstart-nodejs-detect.md
+    - name: Abrufen von alternativen Übersetzungen
+      href: quickstart-nodejs-dictionary.md
+    - name: Abrufen der unterstützten Sprachen
+      href: quickstart-nodejs-languages.md
+    - name: Abrufen von Satzlängen im Text
+      href: quickstart-nodejs-sentences.md
+  - name: PHP
+    items:
+    - name: Text übersetzen
+      href: quickstart-php-translate.md
+    - name: Konvertieren eines Textskripts
+      href: quickstart-php-transliterate.md
+    - name: Identifizieren der Textsprache
+      href: quickstart-php-detect.md
+    - name: Abrufen von alternativen Übersetzungen
+      href: quickstart-php-dictionary.md
+    - name: Abrufen der unterstützten Sprachen
+      href: quickstart-php-languages.md
+    - name: Abrufen von Satzlängen im Text
+      href: quickstart-php-sentences.md
+  - name: Python
+    items:
+    - name: Text übersetzen
+      href: quickstart-python-translate.md
+    - name: Konvertieren eines Textskripts
+      href: quickstart-python-transliterate.md
+    - name: Identifizieren der Textsprache
+      href: quickstart-python-detect.md
+    - name: Abrufen von alternativen Übersetzungen
+      href: quickstart-python-dictionary.md
+    - name: Abrufen der unterstützten Sprachen
+      href: quickstart-python-languages.md
+    - name: Abrufen von Satzlängen im Text
+      href: quickstart-python-sentences.md
+  - name: Ruby
+    items:
+    - name: Text übersetzen
+      href: quickstart-ruby-translate.md
+    - name: Konvertieren eines Textskripts
+      href: quickstart-ruby-transliterate.md
+    - name: Identifizieren der Textsprache
+      href: quickstart-ruby-detect.md
+    - name: Abrufen von alternativen Übersetzungen
+      href: quickstart-ruby-dictionary.md
+    - name: Abrufen der unterstützten Sprachen
+      href: quickstart-ruby-languages.md
+    - name: Abrufen von Satzlängen im Text
+      href: quickstart-ruby-sentences.md
+  expanded: true
 - name: Tutorials
   items:
-    - name: Erstellen einer WPF-App für Textübersetzung
-      href: tutorial-wpf-translation-csharp.md
+  - name: Erstellen einer WPF-App für Textübersetzung
+    href: tutorial-wpf-translation-csharp.md
 - name: Konzepte
   items:
-    - name: Unterstützte Sprachen
-      href: languages.md
-    - name: Anpassen und Verbessern von Textübersetzungen
-      href: customization.md
-    - name: Vorgehensweise der API beim Zählen von Zeichen
-      href: character-counts.md
+  - name: Unterstützte Sprachen
+    href: languages.md
+  - name: Anpassen und Verbessern von Textübersetzungen
+    href: customization.md
+  - name: Vorgehensweise der API beim Zählen von Zeichen
+    href: character-counts.md
 - name: Anleitungen
   items:
-    - name: Registrieren für die Textübersetzungs-API
-      href: translator-text-how-to-signup.md
-    - name: Migrieren zu Version 3 der Text-API
-      href: migrate-to-v3.md
-    - name: Hinzufügen der Filterung für anstößige Ausdrücke
-      href: profanity-filtering.md
-    - name: Empfangen von Informationen zur Wortausrichtung
-      href: word-alignment.md
-    - name: Verwenden der Funktion für das dynamische Wörterbuch
-      href: dynamic-dictionary.md
+  - name: Registrieren für die Textübersetzungs-API
+    href: translator-text-how-to-signup.md
+  - name: Migrieren zu Version 3 der Text-API
+    href: migrate-to-v3.md
+  - name: Hinzufügen der Filterung für anstößige Ausdrücke
+    href: profanity-filtering.md
+  - name: Empfangen von Informationen zur Wortausrichtung
+    href: word-alignment.md
+  - name: Verwenden der Funktion für das dynamische Wörterbuch
+    href: dynamic-dictionary.md
 - name: Verweis
   items:
-    - name: Referenz für Version 3 der Textübersetzungs-API
-      href: reference/v3-0-reference.md
-      items:
-        - name: Sprachen
-          href: reference/v3-0-languages.md
-        - name: Translate
-          href: reference/v3-0-translate.md
-        - name: Transliterate
-          href: reference/v3-0-transliterate.md
-        - name: Erkennen
-          href: reference/v3-0-detect.md
-        - name: BreakSentence
-          href: reference/v3-0-break-sentence.md
-        - name: Wörterbuchsuche
-          href: reference/v3-0-dictionary-lookup.md
-        - name: Wörterbuchbeispiele
-          href: reference/v3-0-dictionary-examples.md
-    - name: Referenz für Version 2 der Textübersetzungs-API (veraltet)
-      href: reference/v2-0-reference.md
-      items:
-        - name: Transformieren von Text
-          href: transform-text.md
-        - name: Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
-          href: ctf-reporting.md
-        - name: Zurückgeben von N besten Übersetzungen
-          href: return-n-best-translations.md
-- name: angeben
+  - name: Referenz für Version 3 der Textübersetzungs-API
+    href: reference/v3-0-reference.md
+    items:
+    - name: Sprachen
+      href: reference/v3-0-languages.md
+    - name: Translate
+      href: reference/v3-0-translate.md
+    - name: Transliterate
+      href: reference/v3-0-transliterate.md
+    - name: Erkennen
+      href: reference/v3-0-detect.md
+    - name: BreakSentence
+      href: reference/v3-0-break-sentence.md
+    - name: Wörterbuchsuche
+      href: reference/v3-0-dictionary-lookup.md
+    - name: Wörterbuchbeispiele
+      href: reference/v3-0-dictionary-examples.md
+  - name: Referenz für Version 2 der Textübersetzungs-API (veraltet)
+    href: reference/v2-0-reference.md
+    items:
+    - name: Transformieren von Text
+      href: transform-text.md
+    - name: Verwenden der CTF-Berichterstellung (Collaborative Translation Framework)
+      href: ctf-reporting.md
+    - name: Zurückgeben von N besten Übersetzungen
+      href: return-n-best-translations.md
+- name: Ressourcen
   items:
-    - name: Codebeispiele auf GitHub
-      href: 'https://aka.ms/TranslatorGitHub'
-    - name: Häufig gestellte Fragen
-      href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: Wissensdatenbank
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/558796-translator'
+  - name: Codebeispiele auf GitHub
+    href: https://aka.ms/TranslatorGitHub
+  - name: Häufig gestellte Fragen
+    href: https://www.microsoft.com/translator/faq.aspx
+  - name: Wissensdatenbank
+    href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/microsoft-translator
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/558796-translator
+ms.openlocfilehash: b5494a613d427160dc0e77488315a570fef1a439
+ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 07/20/2018
+ms.locfileid: "39185600"

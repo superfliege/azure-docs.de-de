@@ -431,7 +431,7 @@ items:
     href: /rest/api/datafactory
   - name: Python
     href: /python/api/overview/azure/datafactory?view=azure-python
-- name: angeben
+- name: Ressourcen
   items:
   - name: 'Stellen Sie eine Frage: MSDN-Forum'
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataFactory&filter=alltypes&sort=lastpostdesc

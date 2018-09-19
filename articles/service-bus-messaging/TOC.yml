@@ -200,7 +200,7 @@ items:
     href: service-bus-messaging-sql-filter.md
   - name: SQLRuleAction-Syntax
     href: service-bus-messaging-sql-rule-action.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen
     href: service-bus-faq.md

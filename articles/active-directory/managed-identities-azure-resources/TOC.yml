@@ -121,7 +121,7 @@ items:
     href: /javascript/api/ms-rest-azure
   - name: Go
     href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen und bekannte Probleme
     href: known-issues.md

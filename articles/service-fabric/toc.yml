@@ -733,7 +733,7 @@ items:
       href: service-fabric-service-model-schema-element-groups.md
   - name: Umgebungsvariablen
     href: service-fabric-environment-variables-reference.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

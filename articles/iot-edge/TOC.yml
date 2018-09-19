@@ -42,6 +42,8 @@ items:
   items:
   - name: IoT Edge-Laufzeit
     href: iot-edge-runtime.md
+  - name: IoT Edge-Zertifikate
+    href: iot-edge-certs.md
   - name: IoT Edge-Module
     href: iot-edge-modules.md
     items:
@@ -56,8 +58,9 @@ items:
   - name: IoT Edge-Gerät als Gateway
     href: iot-edge-as-gateway.md
   - name: Sicherheit
-    href: security.md
     items:
+    - name: Sichern von Azure IoT Edge
+      href: security.md
     - name: IoT Edge Security Manager
       href: iot-edge-security-manager.md
   - name: Plattformunterstützung
@@ -162,7 +165,7 @@ items:
       href: /azure/iot-edge
     - name: IoT-Geräte-SDKs
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure IoT-Beispiele für C# (.NET)
     href: https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/
@@ -204,9 +207,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 5df1ba3edec8108d1fd869778cf0e009296c3e92
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: d2dcc4e642e997903c01b6b375505e88e412d57b
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543910"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294474"

@@ -253,7 +253,7 @@ items:
       href: cognitive-search-skill-ocr.md
     - name: Shaper
       href: cognitive-search-skill-shaper.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Communitysupport
     href: https://azure.microsoft.com/support/community/?product=search

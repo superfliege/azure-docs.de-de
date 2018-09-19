@@ -32,13 +32,16 @@ items:
     href: security-center-data-security.md
 - name: Anleitungen
   items:
+  - name: Verbessern Ihrer Sicherheitsbewertung
+    href: security-center-secure-score.md
   - name: Ausführen eines Upgrades auf erweiterte Sicherheit
     href: security-center-onboarding.md
   - name: Serverschutz mit Windows Defender ATP (Vorschau)
     href: security-center-wdatp.md
-  - name: Festlegen einer Sicherheitsrichtlinie
   - name: Festlegen von Sicherheitsrichtlinien
     href: security-center-azure-policy.md
+  - name: Anpassen der Information Protection-Richtlinie
+    href: security-center-info-protection-policy.md
   - name: Sicherheitsrichtlinieneinstellungen
     href: security-center-policies-overview.md
     items:
@@ -62,30 +65,36 @@ items:
     - name: Compute- und App-Sicherheit
       href: security-center-virtual-machine-protection.md
       items:
-      - name: Empfehlungen für virtuelle Computer
+      - name: Empfehlungen für virtuelle und physische Computer
         href: security-center-virtual-machine-recommendations.md
-      - name: Anwenden der Datenträgerverschlüsselung
-        href: security-center-apply-disk-encryption.md
-      - name: Systemupdates anwenden
-        href: security-center-apply-system-updates.md
-      - name: Aktivieren der Verschlüsselung für das Speicherkonto
-        href: security-center-enable-encryption-for-storage-account.md
-      - name: VM-Agent aktivieren
-        href: security-center-enable-vm-agent.md
-      - name: Endpoint Protection installieren
-        href: security-center-install-endpoint-protection.md
-      - name: Neustart nach Systemupdates
-        href: security-center-apply-system-updates.md#reboot-after-system-updates
-      - name: Optimieren von Sicherheitskonfigurationen
-        href: security-center-remediate-os-vulnerabilities.md
-      - name: Betriebssystemversion aktualisieren
-        href: security-center-update-os-version.md
-      - name: Keine Sicherheitsrisikobewertung installiert
-        href: security-center-vulnerability-assessment-recommendations.md
-      - name: Web Application Firewall hinzufügen
+        items:
+        - name: Anwenden der Datenträgerverschlüsselung
+          href: security-center-apply-disk-encryption.md
+        - name: Systemupdates anwenden
+          href: security-center-apply-system-updates.md
+        - name: Aktivieren der Verschlüsselung für das Speicherkonto
+          href: security-center-enable-encryption-for-storage-account.md
+        - name: VM-Agent aktivieren
+          href: security-center-enable-vm-agent.md
+        - name: Endpoint Protection installieren
+          href: security-center-install-endpoint-protection.md
+        - name: Neustart nach Systemupdates
+          href: security-center-apply-system-updates.md#reboot-after-system-updates
+        - name: Optimieren von Sicherheitskonfigurationen
+          href: security-center-remediate-os-vulnerabilities.md
+        - name: Betriebssystemversion aktualisieren
+          href: security-center-update-os-version.md
+        - name: Keine Sicherheitsrisikobewertung installiert
+          href: security-center-vulnerability-assessment-recommendations.md
+      - name: App-Empfehlungen
         href: security-center-add-web-application-firewall.md
-      - name: Finalize application protection (Anwendungsschutz abschließen)
-        href: security-center-add-web-application-firewall.md#finalize-application-protection
+        items:
+        - name: Web Application Firewall hinzufügen
+          href: security-center-add-web-application-firewall.md
+        - name: Finalize application protection (Anwendungsschutz abschließen)
+          href: security-center-add-web-application-firewall.md#finalize-application-protection
+      - name: Containerempfehlungen
+        href: security-center-container-recommendations.md
     - name: Netzwerksicherheit
       href: security-center-network-recommendations.md
       items:
@@ -97,7 +106,7 @@ items:
         href: security-center-restrict-access-through-internet-facing-endpoints.md
       - name: Datenverkehr nur durch Firewall der nächsten Generation leiten
         href: security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only
-    - name: Speicher- und Datensicherheit
+    - name: Daten- und Speichersicherheit
       href: security-center-sql-service-recommendations.md
       items:
       - name: Aktivieren der Überwachung und Bedrohungserkennung in SQL-Datenbanken
@@ -106,12 +115,12 @@ items:
         href: security-center-enable-auditing-on-sql-servers.md
       - name: Transparent Data Encryption aktivieren
         href: security-center-enable-transparent-data-encryption.md
-    - name: Identität und Zugriff
+    - name: Überwachen der Identität und des Zugriffs
       href: security-center-identity-access.md
+    - name: Verwalten des Just-In-Time-Zugriffs
+      href: security-center-just-in-time.md
   - name: Anwenden von Schutzmaßnahmen für die Cloud
     items:
-    - name: Bedarfsabhängiger Zugriff
-      href: security-center-just-in-time.md
     - name: Adaptive Anwendungssteuerungen
       href: security-center-adaptive-application.md
     - name: Überwachung der Dateiintegrität
@@ -170,6 +179,8 @@ items:
       href: security-center-review-policy-compliance.md
     - name: Bewerten von Abonnements (REST)
       href: security-center-compliance-rest-api.md
+    - name: Automatisieren des Onboardings mithilfe von PowerShell
+      href: security-center-powershell-onboarding.md
   - name: Szenarien
     items:
     - name: Reaktion auf Vorfälle
@@ -184,7 +195,7 @@ items:
     href: https://docs.microsoft.com/rest/api/securitycenter/
   - name: Dienstupdates
     href: https://azure.microsoft.com/updates/?product=security-center
-- name: angeben
+- name: Ressourcen
   items:
   - name: Verwalten von Benutzerdaten
     href: security-center-privacy.md
@@ -212,9 +223,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: Regionale Verfügbarkeit
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 12f463c36edef411f42ff17f2126284a0c89983e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 93407b8b90f31d9297e32eaa4215efc5f57b1b0a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716892"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294295"

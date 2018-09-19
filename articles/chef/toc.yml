@@ -27,7 +27,7 @@ items:
   items:
   - name: Chef-Erweiterung für Azure
     href: https://docs.chef.io/azure_portal.html#azure-chef-extension
-- name: angeben
+- name: Ressourcen
   items:
   - name: Chef Automate
     items:

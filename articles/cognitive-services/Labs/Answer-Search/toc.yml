@@ -1,29 +1,36 @@
+items:
 - name: 'Dokumentation zu „Projekt: Suche nach Antworten“'
 - name: Übersicht
-  expanded: true
   items:
-    - name: 'Worum handelt es sich bei „Projekt: Suche nach Antworten“?'
-      href: overview.md
+  - name: 'Worum handelt es sich bei „Projekt: Suche nach Antworten“?'
+    href: overview.md
+  expanded: true
 - name: Schnellstarts
-  expanded: true
   items:
-    - name: 'C#'
-      href: c-sharp-quickstart.md
-    - name: Java
-      href: java-quickstart.md
-    - name: Knoten
-      href: node-quickstart.md
-    - name: Python
-      href: python-quickstart.md
+  - name: C#
+    href: c-sharp-quickstart.md
+  - name: Java
+    href: java-quickstart.md
+  - name: Knoten
+    href: node-quickstart.md
+  - name: Python
+    href: python-quickstart.md
+  expanded: true
 - name: Konzepte
   items:
-    - name: Faktabfragen
-      href: fact-queries.md
-    - name: Entitätsabfragen
-      href: entity-queries.md
+  - name: Faktabfragen
+    href: fact-queries.md
+  - name: Entitätsabfragen
+    href: entity-queries.md
 - name: Verweis
   items:
-    - name: Verwenden und Anzeigen von Anforderungen
-      href: use-display-requirements.md
-    - name: 'Referenz zu „Projekt: Suche nach Antworten“'
-      href: reference.md
+  - name: Verwenden und Anzeigen von Anforderungen
+    href: use-display-requirements.md
+  - name: 'Referenz zu „Projekt: Suche nach Antworten“'
+    href: reference.md
+ms.openlocfilehash: f1a35a7e5066adc7a805f57820ef56b5414e6035
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35415519"

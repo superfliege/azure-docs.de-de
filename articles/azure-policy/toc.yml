@@ -1,216 +1,223 @@
+items:
 - name: Dokumentation zu Azure Policy
   href: index.yml
 - name: Übersicht
   items:
-    - name: Übersicht zu Azure-Richtlinien
-      href: azure-policy-introduction.md
+  - name: Übersicht zu Azure-Richtlinien
+    href: azure-policy-introduction.md
 - name: Schnellstarts
-  expanded: true
   items:
-    - name: Zuweisen einer Richtlinie – Portal
-      href: assign-policy-definition.md
-    - name: Zuweisen einer Richtlinie – PowerShell
-      href: assign-policy-definition-ps.md
-    - name: Zuweisen einer Richtlinie – Azure CLI
-      href: assign-policy-definition-cli.md
+  - name: Zuweisen einer Richtlinie – Portal
+    href: assign-policy-definition.md
+  - name: Zuweisen einer Richtlinie – PowerShell
+    href: assign-policy-definition-ps.md
+  - name: Zuweisen einer Richtlinie – Azure CLI
+    href: assign-policy-definition-cli.md
+  expanded: true
 - name: Tutorials
   items:
-    - name: Erstellen und Verwalten einer Azure-Richtlinie
-      href: create-manage-policy.md
-    - name: Erkunden von Azure Policy (praktische Übungen)
-      href: 'https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyId=story://Content-Private/content/sp-azuregovernance/1-azpolicy/a-policy'
+  - name: Erstellen und Verwalten einer Azure-Richtlinie
+    href: create-manage-policy.md
+  - name: Erkunden von Azure Policy (praktische Übungen)
+    href: https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyId=story://Content-Private/content/sp-azuregovernance/1-azpolicy/a-policy
 - name: Beispiele
   href: json-samples.md
   items:
-    - name: Allgemein
+  - name: Allgemein
+    items:
+    - name: Benennung
       items:
-        - name: Benennung
-          items:
-            - name: Zulassen mehrerer Namensmuster
-              href: scripts/allow-multiple-name-patterns.md
-            - name: Ähnliches Muster erfordern
-              href: scripts/enforce-like-pattern.md
-            - name: Übereinstimmungsmuster erfordern
-              href: scripts/enforce-match-pattern.md
-            - name: Tagübereinstimmungsmuster erfordern
-              href: scripts/enforce-tag-match-pattern.md
-        - name: Tags
-          items:
-            - name: Anwenden von Tags und den zugehörigen Standardwerten
-              href: scripts/apply-tag-def-val.md
-            - name: Richtlinieninitiative zur Abrechnung von Tags
-              href: scripts/billing-tags-policy-init.md
-            - name: Enforce tag and its value (Tag und zugehörigen Wert erzwingen)
-              href: scripts/enforce-tag-val.md
-            - name: Erzwingen eines Tags und des zugehörigen Werts in Ressourcengruppen
-              href: scripts/enforce-tag-rg.md
-        - name: Standorte
-          items:
-            - name: Allowed locations (Zulässige Speicherorte)
-              href: scripts/allowed-locs.md
-        - name: Ressourcentypen
-          items:
-            - name: Zulässige Ressourcentypen
-              href: scripts/allowed-res-types.md
-            - name: Not allowed resource types (Unzulässige Ressourcentypen)
-              href: scripts/not-allowed-res-type.md
-    - name: Compute
+      - name: Zulassen mehrerer Namensmuster
+        href: scripts/allow-multiple-name-patterns.md
+      - name: Ähnliches Muster erfordern
+        href: scripts/enforce-like-pattern.md
+      - name: Übereinstimmungsmuster erfordern
+        href: scripts/enforce-match-pattern.md
+      - name: Tagübereinstimmungsmuster erfordern
+        href: scripts/enforce-tag-match-pattern.md
+    - name: Tags
       items:
-        - name: Virtuelle Computer
-          items:
-            - name: Zulassen eines benutzerdefinierten VM-Images aus einer Ressourcengruppe
-              href: scripts/allow-custom-vm-image.md
-            - name: Zulässige SKUs für Speicherkonten und virtuelle Computer
-              href: scripts/allowed-skus-storage.md
-            - name: Genehmigte VM-Images
-              href: scripts/allowed-custom-images.md
-            - name: 'Überwachung, wenn keine Erweiterung vorhanden ist'
-              href: scripts/audit-ext-not-exist.md
-            - name: Nicht zulässige VM-Erweiterungen
-              href: scripts/not-allowed-vm-ext.md
-        - name: VM-Skalierungsgruppen
-          items:
-            - name: Überwachen einer VM mithilfe eines verwalteten Datenträgers
-              href: scripts/create-vm-managed-disk.md
-            - name: Erstellen einer VM mithilfe eines verwalteten Datenträgers
-              href: scripts/use-managed-disk-vm.md
-            - name: Verweigern des Hybridnutzungsvorteils
-              href: scripts/deny-hybrid-use.md
-            - name: Zulassen von nur einem bestimmten VM-Plattformimage
-              href: scripts/allow-certain-vm-image.md
-    - name: Data Lake
+      - name: Anwenden von Tags und den zugehörigen Standardwerten
+        href: scripts/apply-tag-def-val.md
+      - name: Richtlinieninitiative zur Abrechnung von Tags
+        href: scripts/billing-tags-policy-init.md
+      - name: Enforce tag and its value (Tag und zugehörigen Wert erzwingen)
+        href: scripts/enforce-tag-val.md
+      - name: Erzwingen eines Tags und des zugehörigen Werts in Ressourcengruppen
+        href: scripts/enforce-tag-rg.md
+    - name: Standorte
       items:
-        - name: Erzwingen der Data Lake Store-Verschlüsselung
-          href: scripts/enforce-datalakestore-encryption.md
-    - name: Überwachung
+      - name: Allowed locations (Zulässige Speicherorte)
+        href: scripts/allowed-locs.md
+    - name: Ressourcentypen
       items:
-        - name: Überwachen der Diagnoseeinstellung
-          href: scripts/audit-diag-setting.md
-    - name: Netzwerk
+      - name: Zulässige Ressourcentypen
+        href: scripts/allowed-res-types.md
+      - name: Not allowed resource types (Unzulässige Ressourcentypen)
+        href: scripts/not-allowed-res-type.md
+  - name: Compute
+    items:
+    - name: Virtuelle Computer
       items:
-        - name: Netzwerkschnittstellen
-          items:
-            - name: NSG X auf jedem Netzwerkadapter
-              href: scripts/nsg-on-nic.md
-            - name: Verwenden eines zulässigen Subnetzes für VM-Netzwerkschnittstellen
-              href: scripts/use-approved-subnet-vm-nics.md
-            - name: Verwenden eines genehmigten virtuellen Netzwerks für VM-Netzwerkschnittstellen
-              href: scripts/use-approved-vnet-vm-nics.md
-        - name: Virtuelle Netzwerke
-          items:
-            - name: Zulässige Anwendungsgateway-SKUs
-              href: scripts/allowed-app-gate-sku.md
-            - name: Kein Netzwerkpeering an ein ER-Netzwerk
-              href: scripts/no-peering-er-net.md
-            - name: Keine benutzerdefinierten Routingtabellen
-              href: scripts/no-user-def-route-table.md
-            - name: NSG X in jedem Subnetz
-              href: scripts/nsg-on-subnet.md
-            - name: Verwenden eines zulässigen Subnetzes für VM-Netzwerkschnittstellen
-              href: scripts/use-approved-subnet-vm-nics.md
-            - name: Verwenden eines genehmigten virtuellen Netzwerks für VM-Netzwerkschnittstellen
-              href: scripts/use-approved-vnet-vm-nics.md
-        - name: Netzwerksicherheitsgruppen
-          items:
-            - name: NSG X auf jedem Netzwerkadapter
-              href: scripts/nsg-on-nic.md
-            - name: NSG X in jedem Subnetz
-              href: scripts/nsg-on-subnet.md
-        - name: ExpressRoutes
-          items:
-            - name: Zulässige ExpressRoute-Bandbreiten
-              href: scripts/allowed-er-band.md
-            - name: Zulässige ExpressRoute-SKUs
-              href: scripts/allowed-er-skus.md
-            - name: Zulässiger Peeringstandort für ExpressRoute
-              href: scripts/allowed-peering-er.md
-        - name: Komponenten zur Netzwerküberwachung
-          items:
-            - name: 'Überwachen, ob Komponenten zur Netzwerküberwachung nicht für die Region aktiviert sind'
-              href: scripts/net-watch-not-enabled.md
-        - name: Anwendungsgateways
-          items:
-            - name: Zulässige Anwendungsgateway-SKUs
-              href: scripts/allowed-app-gate-sku.md
-    - name: SQL
+      - name: Zulassen eines benutzerdefinierten VM-Images aus einer Ressourcengruppe
+        href: scripts/allow-custom-vm-image.md
+      - name: Zulässige SKUs für Speicherkonten und virtuelle Computer
+        href: scripts/allowed-skus-storage.md
+      - name: Genehmigte VM-Images
+        href: scripts/allowed-custom-images.md
+      - name: Überwachung, wenn keine Erweiterung vorhanden ist
+        href: scripts/audit-ext-not-exist.md
+      - name: Nicht zulässige VM-Erweiterungen
+        href: scripts/not-allowed-vm-ext.md
+    - name: VM-Skalierungsgruppen
       items:
-        - name: SQL-Server
-          items:
-            - name: Überwachen bei nicht vorhandenem Azure Active Directory-Administrator
-              href: scripts/audit-no-aad-admin.md
-            - name: Überwachen der Einstellung für die Bedrohungserkennung auf Serverebene
-              href: scripts/audit-sql-ser-threat-det-setting.md
-            - name: Überwachen der SQL Server-Überwachungseinstellungen
-              href: scripts/sql-server-audit.md
-            - name: Überwachen der Überwachungsseinstellung auf SQL Server-Ebene
-              href: scripts/audit-sql-ser-leve-audit-setting.md
-            - name: Require SQL Server version 12.0 (SQL Server-Version 12.0 fordern)
-              href: scripts/req-sql-12.md
-        - name: SQL-DATENBANKEN
-          items:
-            - name: Zulässige SQL-Datenbank-SKUs
-              href: scripts/allowed-sql-db-skus.md
-            - name: Überwachen der Einstellung für die Bedrohungserkennung auf SQL-Datenbank-Ebene
-              href: scripts/audit-db-threat-det-setting.md
-            - name: Überwachen der SQL-Datenbank-Verschlüsselung
-              href: scripts/sql-database-encryption-audit.md
-            - name: Überwachungseinstellung zur Überwachung auf SQL-Datenbank-Ebene
-              href: scripts/audit-sql-db-audit-setting.md
-            - name: Überwachen des Status der transparenten Datenverschlüsselung
-              href: scripts/audit-trans-data-enc-status.md
-    - name: Speicher
+      - name: Überwachen einer VM mithilfe eines verwalteten Datenträgers
+        href: scripts/create-vm-managed-disk.md
+      - name: Erstellen einer VM mithilfe eines verwalteten Datenträgers
+        href: scripts/use-managed-disk-vm.md
+      - name: Verweigern des Hybridnutzungsvorteils
+        href: scripts/deny-hybrid-use.md
+      - name: Zulassen von nur einem bestimmten VM-Plattformimage
+        href: scripts/allow-certain-vm-image.md
+  - name: Data Lake
+    items:
+    - name: Erzwingen der Data Lake Store-Verschlüsselung
+      href: scripts/enforce-datalakestore-encryption.md
+  - name: Überwachung
+    items:
+    - name: Überwachen der Diagnoseeinstellung
+      href: scripts/audit-diag-setting.md
+  - name: Netzwerk
+    items:
+    - name: Netzwerkschnittstellen
       items:
-        - name: Zulässige SKUs für Speicherkonto und virtuelle Computer
-          href: scripts/allowed-skus-storage.md
-        - name: Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)
-          href: scripts/allowed-stor-acct-skus.md
-        - name: Verweigern des kalten Zugriffstierings für Speicherkonten
-          href: scripts/deny-cool-access-tiering.md
-        - name: Gewährleisten eines HTTPS-Datenverkehrs ausschließlich für Speicherkonten
-          href: scripts/ensure-https-stor-acct.md
-        - name: Gewährleisten der Verschlüsselung von Speicherdateien
-          href: scripts/ensure-store-file-enc.md
-        - name: Require storage account encryption (Speicherkontoverschlüsselung fordern)
-          href: scripts/req-store-acct-enc.md
+      - name: NSG X auf jedem Netzwerkadapter
+        href: scripts/nsg-on-nic.md
+      - name: Verwenden eines zulässigen Subnetzes für VM-Netzwerkschnittstellen
+        href: scripts/use-approved-subnet-vm-nics.md
+      - name: Verwenden eines genehmigten virtuellen Netzwerks für VM-Netzwerkschnittstellen
+        href: scripts/use-approved-vnet-vm-nics.md
+    - name: Virtuelle Netzwerke
+      items:
+      - name: Zulässige Anwendungsgateway-SKUs
+        href: scripts/allowed-app-gate-sku.md
+      - name: Kein Netzwerkpeering an ein ER-Netzwerk
+        href: scripts/no-peering-er-net.md
+      - name: Keine benutzerdefinierten Routingtabellen
+        href: scripts/no-user-def-route-table.md
+      - name: NSG X in jedem Subnetz
+        href: scripts/nsg-on-subnet.md
+      - name: Verwenden eines zulässigen Subnetzes für VM-Netzwerkschnittstellen
+        href: scripts/use-approved-subnet-vm-nics.md
+      - name: Verwenden eines genehmigten virtuellen Netzwerks für VM-Netzwerkschnittstellen
+        href: scripts/use-approved-vnet-vm-nics.md
+    - name: Netzwerksicherheitsgruppen
+      items:
+      - name: NSG X auf jedem Netzwerkadapter
+        href: scripts/nsg-on-nic.md
+      - name: NSG X in jedem Subnetz
+        href: scripts/nsg-on-subnet.md
+    - name: ExpressRoutes
+      items:
+      - name: Zulässige ExpressRoute-Bandbreiten
+        href: scripts/allowed-er-band.md
+      - name: Zulässige ExpressRoute-SKUs
+        href: scripts/allowed-er-skus.md
+      - name: Zulässiger Peeringstandort für ExpressRoute
+        href: scripts/allowed-peering-er.md
+    - name: Komponenten zur Netzwerküberwachung
+      items:
+      - name: Überwachen, ob Komponenten zur Netzwerküberwachung nicht für die Region aktiviert sind
+        href: scripts/net-watch-not-enabled.md
+    - name: Anwendungsgateways
+      items:
+      - name: Zulässige Anwendungsgateway-SKUs
+        href: scripts/allowed-app-gate-sku.md
+  - name: SQL
+    items:
+    - name: SQL-Server
+      items:
+      - name: Überwachen bei nicht vorhandenem Azure Active Directory-Administrator
+        href: scripts/audit-no-aad-admin.md
+      - name: Überwachen der Einstellung für die Bedrohungserkennung auf Serverebene
+        href: scripts/audit-sql-ser-threat-det-setting.md
+      - name: Überwachen der SQL Server-Überwachungseinstellungen
+        href: scripts/sql-server-audit.md
+      - name: Überwachen der Überwachungsseinstellung auf SQL Server-Ebene
+        href: scripts/audit-sql-ser-leve-audit-setting.md
+      - name: Require SQL Server version 12.0 (SQL Server-Version 12.0 fordern)
+        href: scripts/req-sql-12.md
+    - name: SQL-DATENBANKEN
+      items:
+      - name: Zulässige SQL-Datenbank-SKUs
+        href: scripts/allowed-sql-db-skus.md
+      - name: Überwachen der Einstellung für die Bedrohungserkennung auf SQL-Datenbank-Ebene
+        href: scripts/audit-db-threat-det-setting.md
+      - name: Überwachen der SQL-Datenbank-Verschlüsselung
+        href: scripts/sql-database-encryption-audit.md
+      - name: Überwachungseinstellung zur Überwachung auf SQL-Datenbank-Ebene
+        href: scripts/audit-sql-db-audit-setting.md
+      - name: Überwachen des Status der transparenten Datenverschlüsselung
+        href: scripts/audit-trans-data-enc-status.md
+  - name: Speicher
+    items:
+    - name: Zulässige SKUs für Speicherkonto und virtuelle Computer
+      href: scripts/allowed-skus-storage.md
+    - name: Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)
+      href: scripts/allowed-stor-acct-skus.md
+    - name: Verweigern des kalten Zugriffstierings für Speicherkonten
+      href: scripts/deny-cool-access-tiering.md
+    - name: Gewährleisten eines HTTPS-Datenverkehrs ausschließlich für Speicherkonten
+      href: scripts/ensure-https-stor-acct.md
+    - name: Gewährleisten der Verschlüsselung von Speicherdateien
+      href: scripts/ensure-store-file-enc.md
+    - name: Require storage account encryption (Speicherkontoverschlüsselung fordern)
+      href: scripts/req-store-acct-enc.md
 - name: Konzepte
   items:
-    - name: Struktur von Azure Policy-Definitionen
-      href: policy-definition.md
-    - name: Grundlegendes zu Richtlinienauswirkungen
-      href: policy-effects.md
+  - name: Struktur von Azure Policy-Definitionen
+    href: policy-definition.md
+  - name: Grundlegendes zu Richtlinienauswirkungen
+    href: policy-effects.md
 - name: Anleitungen
   items:
-    - name: Programmgesteuertes Erstellen von Richtlinien
-      href: policy-insights.md
-    - name: Sammeln von Compliance-Daten
-      href: policy-compliance.md
+  - name: Programmgesteuertes Erstellen von Richtlinien
+    href: policy-insights.md
+  - name: Sammeln von Compliance-Daten
+    href: policy-compliance.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: /cli/azure/policy
-    - name: Azure PowerShell
-      href: '/powershell/module/azurerm.resources/#policies'
-    - name: REST-API
-      items:
-        - name: Ereignisse
-          href: /rest/api/policy-insights/policyevents
-        - name: Zustände
-          href: /rest/api/policy-insights/policystates
-        - name: Assignments
-          href: /rest/api/resources/policyassignments
-        - name: Richtliniendefinitionen
-          href: /rest/api/resources/policydefinitions
-        - name: Initiativendefinitionen
-          href: /rest/api/resources/policysetdefinitions
-- name: angeben
+  - name: Azure-Befehlszeilenschnittstelle
+    href: /cli/azure/policy
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources/#policies
+  - name: REST-API
+    items:
+    - name: Ereignisse
+      href: /rest/api/policy-insights/policyevents
+    - name: Zustände
+      href: /rest/api/policy-insights/policystates
+    - name: Assignments
+      href: /rest/api/resources/policyassignments
+    - name: Richtliniendefinitionen
+      href: /rest/api/resources/policydefinitions
+    - name: Initiativendefinitionen
+      href: /rest/api/resources/policysetdefinitions
+- name: Ressourcen
   items:
-    - name: GitHub – Azure Policy-Beispiele
-      href: 'https://github.com/Azure/azure-policy'
-    - name: Video – Build 2018
-      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
-    - name: Video – Ignite 2017
-      href: 'https://myignite.microsoft.com/videos/54781'
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Preisrechner
-      href: 'https://azure.microsoft.com/pricing/calculator/'
+  - name: GitHub – Azure Policy-Beispiele
+    href: https://github.com/Azure/azure-policy
+  - name: Video – Build 2018
+    href: https://channel9.msdn.com/events/Build/2018/THR2030
+  - name: Video – Ignite 2017
+    href: https://myignite.microsoft.com/videos/54781
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Preisrechner
+    href: https://azure.microsoft.com/pricing/calculator/
+ms.openlocfilehash: 9f3d20193761a4a7a7ad17ad001ce65372c0e113
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751686"

@@ -270,7 +270,7 @@ items:
       href: v2-id-and-access-tokens.md
     - name: Bereiche und Zustimmung
       href: v2-permissions-and-consent.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Hilfe
     href: developer-support-help-options.md

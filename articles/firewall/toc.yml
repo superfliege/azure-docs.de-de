@@ -40,7 +40,7 @@ items:
     href: /rest/api/firewall
   - name: Azure Resource Manager
     href: ../azure-resource-manager/resource-group-overview.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen
     href: firewall-faq.md

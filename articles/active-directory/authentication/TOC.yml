@@ -197,7 +197,7 @@ items:
     href: /powershell/azure/overview
   - name: Dienstgrenzwerte und Einschränkungen
     href: ../users-groups-roles/directory-service-limits-restrictions.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Feedbackforum
     href: https://feedback.azure.com/forums/169401-azure-active-directory

@@ -9,15 +9,17 @@
 ## [Migrieren von SQL Server zu Azure SQL-Datenbank (online)](tutorial-sql-server-azure-sql-online.md)
 ## [Migrieren von SQL Server zu „Verwaltete Azure SQL-Datenbank-Instanz“ (offline)](tutorial-sql-server-to-managed-instance.md)
 ## [Migrieren von MySQL zu Azure Database for MySQL (online)](tutorial-mysql-azure-mysql-online.md)
+## [Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online)](tutorial-postgresql-azure-postgresql-online.md)
 
 # Anleitungen
 ## [Migrieren von SQL Server zu Azure SQL DB mithilfe von PowerShell](howto-sql-server-to-azure-sql-powershell.md)
 ## [Migrieren von SQL Server zu Azure SQL DB MI mithilfe von PowerShell](howto-sql-server-to-azure-sql-mi-powershell.md)
 ## [Überwachen der Migrationsaktivität](how-to-monitor-migration-activity.md)
 
-# angeben
+# Ressourcen
 ## [Bekannte Probleme: Onlinemigration zu Azure SQL-Datenbank](known-issues-azure-sql-online.md)
 ## [Bekannte Probleme: Onlinemigration zu Azure Database for MySQL](known-issues-azure-mysql-online.md)
+## [Bekannte Probleme: Onlinemigration zu Azure Database for PosgreSQL](known-issues-azure-postgresql-online.md)
 ## [User Voice-Feedback](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Leitfaden zur Datenbankmigration](https://aka.ms/datamigration)

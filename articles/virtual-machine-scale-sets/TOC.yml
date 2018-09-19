@@ -251,7 +251,7 @@ items:
     href: ../virtual-machines/azure-cli-arm-commands.md
   - name: REST
     href: /rest/api/virtualmachinescalesets/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=compute

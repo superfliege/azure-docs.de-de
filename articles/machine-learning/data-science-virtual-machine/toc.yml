@@ -1,73 +1,79 @@
+items:
 - name: Dokumentation zu virtuellen Computern für Data Science
   href: index.yml
-  items: null
 - name: Übersicht
-  expanded: true
   items:
-    - name: Was ist die Data Science-VM?
-      href: overview.md
-    - name: Was ist die Deep Learning-VM?
-      href: deep-learning-dsvm-overview.md
-    - name: Was ist die Geo AI Data Science VM?
-      href: geo-ai-dsvm-overview.md
+  - name: Was ist die Data Science-VM?
+    href: overview.md
+  - name: Was ist die Deep Learning-VM?
+    href: deep-learning-dsvm-overview.md
+  - name: Was ist die Geo AI Data Science VM?
+    href: geo-ai-dsvm-overview.md
+  expanded: true
 - name: Erste Schritte
   items:
-    - name: Erstellen einer Data Science-VM für Windows
-      href: provision-vm.md
-    - name: Erstellen einer Data Science-VM für Ubuntu
-      href: dsvm-ubuntu-intro.md
-    - name: Erstellen einer Data Science-VM für CentOS
-      href: linux-dsvm-intro.md
-    - name: Erstellen einer Deep Learning-VM
-      href: provision-deep-learning-dsvm.md
-    - name: Erstellen einer Geo AI Data Science VM
-      href: provision-geo-ai-dsvm.md
+  - name: Erstellen einer Data Science-VM für Windows
+    href: provision-vm.md
+  - name: Erstellen einer Data Science-VM für Ubuntu
+    href: dsvm-ubuntu-intro.md
+  - name: Erstellen einer Data Science-VM für CentOS
+    href: linux-dsvm-intro.md
+  - name: Erstellen einer Deep Learning-VM
+    href: provision-deep-learning-dsvm.md
+  - name: Erstellen einer Geo AI Data Science VM
+    href: provision-geo-ai-dsvm.md
 - name: Anleitung
   items:
-    - name: Verwenden einer Data Science-VM für Windows
-      href: vm-do-ten-things.md
-    - name: Verwenden einer Data Science-VM für Linux
-      href: linux-dsvm-walkthrough.md
-    - name: Verwenden einer Deep Learning-VM
-      href: use-deep-learning-dsvm.md
-    - name: Verwenden einer Geo AI Data Science VM
-      href: use-geo-ai-dsvm.md
+  - name: Verwenden einer Data Science-VM für Windows
+    href: vm-do-ten-things.md
+  - name: Verwenden einer Data Science-VM für Linux
+    href: linux-dsvm-walkthrough.md
+  - name: Verwenden einer Deep Learning-VM
+    href: use-deep-learning-dsvm.md
+  - name: Verwenden einer Geo AI Data Science VM
+    href: use-geo-ai-dsvm.md
 - name: Enterprise-Leitfaden
   items:
-    - name: Übersicht
-      href: dsvm-enterprise-overview.md
-    - name: Skalieren
-      href: dsvm-pools.md
-    - name: Active Directory-Integration
-      href: dsvm-common-identity.md
-    - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
-      href: dsvm-secure-access-keys.md
+  - name: Übersicht
+    href: dsvm-enterprise-overview.md
+  - name: Skalieren
+    href: dsvm-pools.md
+  - name: Active Directory-Integration
+    href: dsvm-common-identity.md
+  - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
+    href: dsvm-secure-access-keys.md
 - name: Verweis
+  items:
+  - name: Ermitteln der DSVM
+    href: dsvm-tools-overview.md
+  - name: Deep Learning- und KI-Frameworks
+    href: dsvm-deep-learning-ai-frameworks.md
+  - name: ML- und Data Science-Tools
+    href: dsvm-ml-data-science-tools.md
+  - name: Sprachen
+    href: dsvm-languages.md
+  - name: Entwicklungstools
+    href: dsvm-tools-development.md
+  - name: Datenerfassungstools
+    href: dsvm-tools-ingestion.md
+  - name: Tools zum Durchsuchen und Visualisieren von Daten
+    href: dsvm-tools-explore-and-visualize.md
+  - name: Datenplattformen
+    href: dsvm-data-platforms.md
+  - name: Beispiele und exemplarische Vorgehensweisen
+    href: dsvm-samples-and-walkthroughs.md
   expanded: true
+- name: Ressourcen
   items:
-    - name: Ermitteln der DSVM
-      href: dsvm-tools-overview.md
-    - name: Deep Learning- und KI-Frameworks
-      href: dsvm-deep-learning-ai-frameworks.md
-    - name: ML- und Data Science-Tools
-      href: dsvm-ml-data-science-tools.md
-    - name: Sprachen
-      href: dsvm-languages.md
-    - name: Entwicklungstools
-      href: dsvm-tools-development.md
-    - name: Datenerfassungstools
-      href: dsvm-tools-ingestion.md
-    - name: Tools zum Durchsuchen und Visualisieren von Daten
-      href: dsvm-tools-explore-and-visualize.md
-    - name: Datenplattformen
-      href: dsvm-data-platforms.md
-    - name: Beispiele und exemplarische Vorgehensweisen
-      href: dsvm-samples-and-walkthroughs.md
-- name: angeben
-  items:
-    - name: Blog
-      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
-    - name: MSDN-Forum
-      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=dsvm'
+  - name: Blog
+    href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
+  - name: MSDN-Forum
+    href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=dsvm
+ms.openlocfilehash: d748ba7c371246ed158218f8584be4baab5889f0
+ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010284"

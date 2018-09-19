@@ -1,87 +1,94 @@
+items:
 - name: Kubernetes in Azure
   href: ./index.yml
 - name: Übersicht
   items:
-    - name: Kubernetes in Azure
-      href: container-service-intro-kubernetes.md
+  - name: Kubernetes in Azure
+    href: container-service-intro-kubernetes.md
 - name: Schnellstarts
-  expanded: true
   items:
-    - name: Kubernetes in Azure
-      href: container-service-kubernetes-walkthrough.md
+  - name: Kubernetes in Azure
+    href: container-service-kubernetes-walkthrough.md
+  expanded: true
 - name: Tutorials
   items:
-    - name: 1. Erstellen von Containerimages
-      href: container-service-tutorial-kubernetes-prepare-app.md
-    - name: 2. Erstellen der Containerregistrierung
-      href: container-service-tutorial-kubernetes-prepare-acr.md
-    - name: 3. Erstellen des Kubernetes-Clusters
-      href: container-service-tutorial-kubernetes-deploy-cluster.md
-    - name: 4. Ausführen der Anwendung
-      href: container-service-tutorial-kubernetes-deploy-application.md
-    - name: 5. Skalieren der Anwendung
-      href: container-service-tutorial-kubernetes-scale.md
-    - name: 6. Aktualisieren der Anwendung
-      href: container-service-tutorial-kubernetes-app-update.md
-    - name: '7: Überwachen mit Log Analytics'
-      href: container-service-tutorial-kubernetes-monitor.md
+  - name: 1. Erstellen von Containerimages
+    href: container-service-tutorial-kubernetes-prepare-app.md
+  - name: 2. Erstellen der Containerregistrierung
+    href: container-service-tutorial-kubernetes-prepare-acr.md
+  - name: 3. Erstellen des Kubernetes-Clusters
+    href: container-service-tutorial-kubernetes-deploy-cluster.md
+  - name: 4. Ausführen der Anwendung
+    href: container-service-tutorial-kubernetes-deploy-application.md
+  - name: 5. Skalieren der Anwendung
+    href: container-service-tutorial-kubernetes-scale.md
+  - name: 6. Aktualisieren der Anwendung
+    href: container-service-tutorial-kubernetes-app-update.md
+  - name: '7: Überwachen mit Log Analytics'
+    href: container-service-tutorial-kubernetes-monitor.md
 - name: Konzepte
   items:
-    - name: Dienstprinzipal – Kubernetes
-      href: container-service-kubernetes-service-principal.md
+  - name: Dienstprinzipal – Kubernetes
+    href: container-service-kubernetes-service-principal.md
 - name: Anleitungen
   items:
-    - name: Kubernetes mit Windows
-      href: container-service-kubernetes-windows-walkthrough.md
-    - name: Kubernetes-Weboberfläche
-      href: container-service-kubernetes-ui.md
-    - name: Verwenden von Helm-Diagrammen
-      href: container-service-kubernetes-helm.md
-    - name: Dauerhafte Speicherung von Daten mit Azure Files
-      href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
-    - name: Verwenden von Draft mit ACS
-      href: container-service-draft-up.md
-    - name: Skalieren von Clustern
-      href: container-service-scale.md
-    - name: Überwachen
-      items:
-        - name: Überwachen mit Log Analytics
-          href: container-service-kubernetes-oms.md
-        - name: Überwachen mit Datadog
-          href: container-service-kubernetes-datadog.md
-        - name: Überwachen mit Sysdig
-          href: container-service-kubernetes-sysdig.md
-        - name: Überwachen mit CoScale
-          href: container-service-kubernetes-coscale.md
-    - name: Bereitstellen von Spring Boot-Apps
-      items:
-        - name: Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service
-          href: container-service-deploy-spring-boot-app-on-linux.md
-        - name: Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service
-          href: container-service-deploy-spring-boot-app-on-kubernetes.md
-        - name: Bereitstellen einer Spring Boot-App unter Verwendung des fabric8 Maven-Plug-Ins
-          href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
+  - name: Kubernetes mit Windows
+    href: container-service-kubernetes-windows-walkthrough.md
+  - name: Kubernetes-Weboberfläche
+    href: container-service-kubernetes-ui.md
+  - name: Verwenden von Helm-Diagrammen
+    href: container-service-kubernetes-helm.md
+  - name: Dauerhafte Speicherung von Daten mit Azure Files
+    href: ../../aks/azure-files.md?toc=%2fazure%2fcontainer-service%2fkubernetes%2ftoc.json
+  - name: Verwenden von Draft mit ACS
+    href: container-service-draft-up.md
+  - name: Skalieren von Clustern
+    href: container-service-scale.md
+  - name: Überwachen
+    items:
+    - name: Überwachen mit Log Analytics
+      href: container-service-kubernetes-oms.md
+    - name: Überwachen mit Datadog
+      href: container-service-kubernetes-datadog.md
+    - name: Überwachen mit Sysdig
+      href: container-service-kubernetes-sysdig.md
+    - name: Überwachen mit CoScale
+      href: container-service-kubernetes-coscale.md
+  - name: Bereitstellen von Spring Boot-Apps
+    items:
+    - name: Bereitstellen einer Spring Boot-Anwendung unter Linux in Azure Container Service
+      href: container-service-deploy-spring-boot-app-on-linux.md
+    - name: Bereitstellen einer Spring Boot-Anwendung in einem Kubernetes-Cluster in Azure Container Service
+      href: container-service-deploy-spring-boot-app-on-kubernetes.md
+    - name: Bereitstellen einer Spring Boot-App unter Verwendung des fabric8 Maven-Plug-Ins
+      href: container-service-deploy-spring-boot-app-using-fabric8-maven-plugin.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
-      href: /cli/azure/acs
-    - name: PowerShell
-      href: /powershell/module/azurerm.compute
-    - name: REST
-      href: /rest/api/container-service
-- name: angeben
+  - name: Azure-Befehlszeilenschnittstelle
+    href: /cli/azure/acs
+  - name: PowerShell
+    href: /powershell/module/azurerm.compute
+  - name: REST
+    href: /rest/api/container-service
+- name: Ressourcen
   items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Häufig gestellte Fragen
-      href: container-service-faq.md
-    - name: Vorlagen – ACS Engine
-      href: 'https://github.com/Azure/acs-engine'
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/container-service/'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
-    - name: Videos
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Häufig gestellte Fragen
+    href: container-service-faq.md
+  - name: Vorlagen – ACS Engine
+    href: https://github.com/Azure/acs-engine
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/container-service/
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/regions/services/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-container-service
+  - name: Videos
+    href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
+ms.openlocfilehash: c9dca5917c2cfe92a5b3ae8b93cdd04b8fc97c53
+ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/16/2018
+ms.locfileid: "31394450"

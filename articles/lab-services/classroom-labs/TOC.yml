@@ -1,52 +1,59 @@
+items:
 - name: Dokumentation zu Lab Services
   href: /azure/lab-services
 - name: Übersicht
   items:
-    - name: Informationen zu Classroom-Labs
-      href: classroom-labs-overview.md
-    - name: Vergleichen von Lab-Typen
-      href: ../compare-lab-types.md
+  - name: Informationen zu Classroom-Labs
+    href: classroom-labs-overview.md
+  - name: Vergleichen von Lab-Typen
+    href: ../compare-lab-types.md
 - name: Tutorials
   items:
-    - name: 1. Einrichten eines Lab-Kontos
-      href: tutorial-setup-lab-account.md
-    - name: 2. Einrichten eines Classroom-Labs
-      href: tutorial-setup-classroom-lab.md
-    - name: 3. Zugreifen auf ein Classroom-Lab
-      href: tutorial-connect-virtual-machine-classroom-lab.md
-    - name: 4. Nachverfolgen der Nutzung eines Classroom-Labs
-      href: tutorial-track-usage.md
+  - name: 1. Einrichten eines Lab-Kontos
+    href: tutorial-setup-lab-account.md
+  - name: 2. Einrichten eines Classroom-Labs
+    href: tutorial-setup-classroom-lab.md
+  - name: 3. Zugreifen auf ein Classroom-Lab
+    href: tutorial-connect-virtual-machine-classroom-lab.md
+  - name: 4. Nachverfolgen der Nutzung eines Classroom-Labs
+    href: tutorial-track-usage.md
 - name: Anleitungen
   items:
-    - name: Verwalten von Lab-Konten
-      href: how-to-manage-lab-accounts.md
-    - name: Verwalten von Classroom-Labs
-      href: how-to-manage-classroom-labs.md
-    - name: Zugreifen auf Classroom-Labs
-      href: how-to-use-classroom-lab.md
+  - name: Verwalten von Lab-Konten
+    href: how-to-manage-lab-accounts.md
+  - name: Verwalten von Classroom-Labs
+    href: how-to-manage-classroom-labs.md
+  - name: Zugreifen auf Classroom-Labs
+    href: how-to-use-classroom-lab.md
 - name: Verweis
   items:
-    - name: CLI 2.0
-      href: /cli/azure/lab
-    - name: PowerShell
-      href: '/powershell/module/azurerm.devtestlabs/#devtest_labs'
-    - name: REST-API
-      href: 'https://docs.microsoft.com/rest/api/dtl/'
-- name: angeben
+  - name: CLI 2.0
+    href: /cli/azure/lab
+  - name: PowerShell
+    href: /powershell/module/azurerm.devtestlabs/#devtest_labs
+  - name: REST-API
+    href: https://docs.microsoft.com/rest/api/dtl/
+- name: Ressourcen
   items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=developer-tools'
-    - name: Preisrechner
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Dienstupdates
-      href: 'https://azure.microsoft.com/updates/?product=devtest-lab'
-    - name: MSDN-Forum
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs'
-    - name: Team-Blog
-      href: 'https://blogs.msdn.microsoft.com/devtestlab/'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-devtest-labs'
-    - name: Videos
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab'
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/devtest-lab/'
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/?category=developer-tools
+  - name: Preisrechner
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Dienstupdates
+    href: https://azure.microsoft.com/updates/?product=devtest-lab
+  - name: MSDN-Forum
+    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs
+  - name: Team-Blog
+    href: https://blogs.msdn.microsoft.com/devtestlab/
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-devtest-labs
+  - name: Videos
+    href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/devtest-lab/
+ms.openlocfilehash: 14396e1105355bf03e1ba5fedb071c57bfed02d8
+ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39436433"

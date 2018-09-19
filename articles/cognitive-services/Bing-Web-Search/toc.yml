@@ -76,7 +76,7 @@ items:
     href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
   - name: Azure PowerShell
     href: https://aka.ms/azure-powershell-cognitiveservices
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen
     href: bing-web-search-resource-faq.md

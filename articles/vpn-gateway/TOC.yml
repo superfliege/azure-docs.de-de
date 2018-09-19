@@ -214,7 +214,7 @@ items:
     href: https://msdn.microsoft.com/library/jj154113
   - name: Azure-Befehlszeilenschnittstelle
     href: /cli/azure/network/vnet-gateway
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen zum VPN-Gateway
     href: vpn-gateway-vpn-faq.md

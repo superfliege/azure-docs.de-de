@@ -361,7 +361,7 @@ items:
     - name: Problembehandlung bei YARN
       href: ../hdinsight-troubleshoot-yarn.md
       maintainContext: true
-    - name: angeben
+    - name: Ressourcen
       items:
       - name: Informationen zur Verwendung von HDInsight unter Linux
         href: ../hdinsight-hadoop-linux-information.md
@@ -505,7 +505,7 @@ items:
     - name: Überwachen von Clustern mit der Ambari-API
       href: ../hdinsight-monitor-use-ambari-api.md
       maintainContext: true
-- name: angeben
+- name: Ressourcen
   items:
   - name: Versionshinweise
     href: ../hdinsight-release-notes.md

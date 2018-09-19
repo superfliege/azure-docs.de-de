@@ -74,7 +74,7 @@ items:
     href: /powershell/module/azurerm.compute
   - name: REST
     href: /rest/api/container-service
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

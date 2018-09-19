@@ -167,7 +167,7 @@ items:
     href: /javascript/api/azure-arm-network
   - name: REST
     href: /rest/api/network-watcher/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

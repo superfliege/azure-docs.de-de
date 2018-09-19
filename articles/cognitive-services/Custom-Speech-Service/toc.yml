@@ -1,39 +1,46 @@
+items:
 - name: Dokumentation zu Custom Speech Service
 - name: Übersicht
   items:
-    - name: Worum handelt es sich bei Custom Speech Service?
-      href: cognitive-services-custom-speech-home.md
+  - name: Worum handelt es sich bei Custom Speech Service?
+    href: cognitive-services-custom-speech-home.md
 - name: Tutorials
   items:
-    - name: Erstellen eines benutzerdefinierten Akustikmodells
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md
-    - name: Erstellen eines benutzerdefinierten Sprachmodells
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md
+  - name: Erstellen eines benutzerdefinierten Akustikmodells
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md
+  - name: Erstellen eines benutzerdefinierten Sprachmodells
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md
 - name: Konzepte
   items:
-    - name: Erkunden der wichtigsten Features
-      href: cognitive-services-custom-speech-get-started.md
-    - name: 'Verbrauchseinheiten, Kontingente und Skalierung'
-      href: cognitive-services-custom-speech-meters.md
+  - name: Erkunden der wichtigsten Features
+    href: cognitive-services-custom-speech-get-started.md
+  - name: Verbrauchseinheiten, Kontingente und Skalierung
+    href: cognitive-services-custom-speech-meters.md
 - name: Anleitungen
   items:
-    - name: Anpassen der Aussprache an Ihre Bedürfnisse
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-custom-pronunciation.md
-    - name: Erstellen eines benutzerdefinierten Spracherkennungsendpunkts
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md
-    - name: Verwenden eines benutzerdefinierten Spracherkennungsendpunkts
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md
-    - name: Abrufen von Abonnementschlüsseln
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md
-    - name: Migrieren zu einem neuen Tarif
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-migrate-tiers.md
-- name: angeben
+  - name: Anpassen der Aussprache an Ihre Bedürfnisse
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-custom-pronunciation.md
+  - name: Erstellen eines benutzerdefinierten Spracherkennungsendpunkts
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md
+  - name: Verwenden eines benutzerdefinierten Spracherkennungsendpunkts
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md
+  - name: Abrufen von Abonnementschlüsseln
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md
+  - name: Migrieren zu einem neuen Tarif
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-migrate-tiers.md
+- name: Ressourcen
   items:
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Richtlinien für die Transkription
-      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-transcription-guidelines.md
-    - name: Häufig gestellte Fragen
-      href: cognitive-services-custom-speech-faq.md
-    - name: Glossar
-      href: cognitive-services-custom-speech-glossary.md
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Richtlinien für die Transkription
+    href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-transcription-guidelines.md
+  - name: Häufig gestellte Fragen
+    href: cognitive-services-custom-speech-faq.md
+  - name: Glossar
+    href: cognitive-services-custom-speech-glossary.md
+ms.openlocfilehash: 0b7ae62691d73ff1dda5393f56ec564309d26a03
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35416267"

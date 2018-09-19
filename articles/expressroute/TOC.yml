@@ -148,7 +148,7 @@ items:
     href: https://msdn.microsoft.com/library/azure/mt586720
   - name: REST (klassisch)
     href: https://msdn.microsoft.com/library/azure/dn606310
-- name: angeben
+- name: Ressourcen
   items:
   - name: ExpressRoute – FAQ
     href: expressroute-faqs.md

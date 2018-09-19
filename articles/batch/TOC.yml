@@ -192,7 +192,7 @@ items:
       href: batch-task-fail-event.md
   - name: Umgebungsvariablen für Batch-Computeknoten
     href: batch-compute-node-environment-variables.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

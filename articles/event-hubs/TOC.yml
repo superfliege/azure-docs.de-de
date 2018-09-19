@@ -162,7 +162,7 @@ items:
     href: event-hubs-messaging-exceptions.md
   - name: Kontingente
     href: event-hubs-quotas.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen
     href: event-hubs-faq.md

@@ -89,7 +89,7 @@ items:
         href: microsoft-storage-multistorageaccountcombo.md
       - name: StorageAccountSelector
         href: microsoft-storage-storageaccountselector.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

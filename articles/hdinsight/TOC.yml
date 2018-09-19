@@ -1,3 +1,4 @@
+items:
 - name: HDInsight-Dokumentation
   href: index.yml
 - name: Hadoop
@@ -16,3 +17,9 @@
   href: ./r-server/r-server-overview.md
 - name: Unternehmensfähigkeit
   href: ./domain-joined/apache-domain-joined-introduction.md
+ms.openlocfilehash: 7d9728daa4811a24c29e5e4abd2d31972f36af4f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050589"

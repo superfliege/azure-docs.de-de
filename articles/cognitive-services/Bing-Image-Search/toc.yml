@@ -34,14 +34,10 @@ items:
       href: image-sdk-java-quickstart.md
 - name: Tutorials
   items:
-  - name: Einzelseiten-Web-App
+  - name: Erstellen einer Webanwendung für die Bildersuche
     href: tutorial-bing-image-search-single-page-app.md
-  - name: Einzelseiten-Web-App (Quellcode)
-    href: tutorial-bing-image-search-single-page-app-source.md
-  - name: Bing-Bildupload für Bildauswertungen
+  - name: Extrahieren von Bilddetails
     href: tutorial-image-post.md
-  - name: Bing-Bildupload für Bildauswertungen (Quellcode)
-    href: tutorial-image-post-source.md
 - name: Beispiele
   items:
   - name: Codebeispiele
@@ -76,7 +72,7 @@ items:
     href: https://aka.ms/azure-powershell-cognitiveservices
   - name: Referenz zur Befehlszeilenschnittstelle für Azure Cognitive Services
     href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen
     href: bing-image-search-resource-faq.md
@@ -104,9 +100,9 @@ items:
     href: UseAndDisplayRequirements.md
   - name: Analysen für Bing-Bildersuche-API
     href: bing-image-stats.md
-ms.openlocfilehash: 452891c553ba69ba30ab74925ddd19289f8dbee6
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74cc9f56aa4d559c7e2644fc6866ae3d97f158f6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576713"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296293"

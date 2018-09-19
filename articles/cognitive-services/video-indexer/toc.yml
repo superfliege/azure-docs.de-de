@@ -37,7 +37,7 @@ items:
   items:
   - name: Video Indexer-API
     href: https://api-portal.videoindexer.ai/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/

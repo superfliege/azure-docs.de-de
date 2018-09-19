@@ -49,7 +49,7 @@ items:
   items:
   - name: Technische Referenz
     href: technical-reference.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Feedbackforum
     href: https://feedback.azure.com/forums/169401-azure-active-directory

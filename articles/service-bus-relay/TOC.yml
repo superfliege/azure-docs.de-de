@@ -65,7 +65,7 @@ items:
     href: relay-exceptions.md
   - name: Porteinstellungen
     href: relay-port-settings.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=enterprise-integration

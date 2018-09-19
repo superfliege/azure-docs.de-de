@@ -22,7 +22,7 @@ items:
     href: /azure/virtual-machines/linux/docker-machine
   - name: Docker-Containerregistrierung
     href: /azure/container-registry/container-registry-get-started-portal
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

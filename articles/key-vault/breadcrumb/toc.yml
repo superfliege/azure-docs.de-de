@@ -1,61 +1,68 @@
+items:
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
   items:
-    - name: Key Vault
-      tocHref: /azure/
-      topicHref: /azure/key-vault/index
+  - name: Key Vault
+    tocHref: /azure/
+    topicHref: /azure/key-vault/index
 - name: Azure
   tocHref: /java/
   topicHref: /azure/index
   items:
-    - name: Key Vault
-      tocHref: /java/azure/
-      topicHref: /azure/key-vault/
-      items:
-        - name: Spring
-          tocHref: /java/azure/spring-framework/
-          topicHref: /java/azure/spring-framework/
+  - name: Key Vault
+    tocHref: /java/azure/
+    topicHref: /azure/key-vault/
+    items:
+    - name: Spring
+      tocHref: /java/azure/spring-framework/
+      topicHref: /java/azure/spring-framework/
 - name: Azure
   tocHref: /powershell/
   topicHref: /azure/index
   items:
-    - name: Key Vault
-      tocHref: /powershell/module/
-      topicHref: /azure/key-vault/
-      items:
-        - name: PowerShell-Cmdlets für Key Vault
-          tocHref: /powershell/module/azurerm.keyvault/
-          topicHref: /powershell/module/azurerm.keyvault/
+  - name: Key Vault
+    tocHref: /powershell/module/
+    topicHref: /azure/key-vault/
+    items:
+    - name: PowerShell-Cmdlets für Key Vault
+      tocHref: /powershell/module/azurerm.keyvault/
+      topicHref: /powershell/module/azurerm.keyvault/
 - name: Azure
   tocHref: /cli/
   topicHref: /azure/index
   items:
-    - name: Key Vault
-      tocHref: /cli/azure/
+  - name: Key Vault
+    tocHref: /cli/azure/
+    topicHref: /azure/key-vault/
+    items:
+    - name: Referenz zur Key Vault-Befehlszeilenschnittstelle
+      tocHref: /cli/azure/keyvault/
       topicHref: /azure/key-vault/
       items:
-        - name: Referenz zur Key Vault-Befehlszeilenschnittstelle
-          tocHref: /cli/azure/keyvault/
-          topicHref: /azure/key-vault/
-          items:
-            - name: Zertifikate
-              tocHref: /cli/azure/keyvault/certificate
-              topicHref: /azure/key-vault/
-            - name: Schlüssel
-              tocHref: /cli/azure/keyvault/key
-              topicHref: /azure/key-vault/
-            - name: Geheimnisse
-              tocHref: /cli/azure/keyvault/secret
-              topicHref: /azure/key-vault/
+      - name: Zertifikate
+        tocHref: /cli/azure/keyvault/certificate
+        topicHref: /azure/key-vault/
+      - name: Schlüssel
+        tocHref: /cli/azure/keyvault/key
+        topicHref: /azure/key-vault/
+      - name: Geheimnisse
+        tocHref: /cli/azure/keyvault/secret
+        topicHref: /azure/key-vault/
 - name: Azure
   tocHref: /sccm/
   topicHref: /azure/index
   items:
-    - name: Key Vault
-      tocHref: /sccm/apps/
+  - name: Key Vault
+    tocHref: /sccm/apps/
+    topicHref: /azure/key-vault/index
+    items:
+    - name: Ausführen von SCCM-Skripts
+      tocHref: /sccm/apps/deploy-use/
       topicHref: /azure/key-vault/index
-      items:
-        - name: Ausführen von SCCM-Skripts
-          tocHref: /sccm/apps/deploy-use/
-          topicHref: /azure/key-vault/index
+ms.openlocfilehash: aaa68d487a967fc0f26e0655dce01a3ac0a31f01
+ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/16/2018
+ms.locfileid: "35682929"

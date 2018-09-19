@@ -260,7 +260,7 @@ items:
     href: functions-app-settings.md
   - name: OpenAPI-Referenz
     href: functions-api-definition.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=compute

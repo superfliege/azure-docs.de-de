@@ -52,7 +52,7 @@ items:
         href: resource-manager-templates-variables.md
       - name: Functions
         href: resource-group-authoring-templates.md#functions
-      - name: angeben
+      - name: Ressourcen
         href: resource-manager-templates-resources.md
       - name: Ausgaben
         href: resource-manager-templates-outputs.md
@@ -212,7 +212,7 @@ items:
     href: http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html
   - name: REST
     href: /rest/api/resources/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=monitoring-management

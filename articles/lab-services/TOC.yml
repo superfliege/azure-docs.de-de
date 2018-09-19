@@ -174,7 +174,7 @@ items:
     href: /powershell/module/azurerm.devtestlabs/#devtest_labs
   - name: REST-API
     href: https://docs.microsoft.com/rest/api/dtl/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=developer-tools

@@ -153,7 +153,7 @@ items:
       href: /azure/templates/microsoft.eventgrid/topics
   - name: SDKs
     href: sdk-overview.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

@@ -52,7 +52,7 @@ items:
     href: /python/api/overview/azure/batchai
   - name: REST
     href: /rest/api/batchai
-- name: angeben
+- name: Ressourcen
   items:
   - name: Trainingsrezepte
     href: https://github.com/Azure/BatchAI

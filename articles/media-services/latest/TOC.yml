@@ -112,7 +112,7 @@ items:
       href: widevine-license-template-overview.md
     - name: FairPlay-Lizenzanforderungen
       href: fairplay-license-overview.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=web-mobile

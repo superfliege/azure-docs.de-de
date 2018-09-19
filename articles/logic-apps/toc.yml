@@ -335,7 +335,7 @@ items:
       href: logic-apps-track-integration-account-x12-tracking-schema.md
     - name: Benutzerdefiniertes Nachverfolgungsschema
       href: logic-apps-track-integration-account-custom-tracking-schema.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Roadmap für Azure Logic Apps
     href: https://aka.ms/logicappsroadmap/

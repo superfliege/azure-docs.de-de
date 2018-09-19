@@ -56,7 +56,7 @@ items:
     href: /azure/azure-stack/
   - name: Benutzerdokumentation zu Azure Stack
     href: /azure/azure-stack/user/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Roadmap für Azure Stack
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack

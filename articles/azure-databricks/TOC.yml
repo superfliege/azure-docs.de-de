@@ -47,7 +47,7 @@ items:
   items:
   - name: REST-API
     href: /rest/api/databricks
-- name: angeben
+- name: Ressourcen
   items:
   - name: Häufig gestellte Fragen
     href: frequently-asked-questions-databricks.md

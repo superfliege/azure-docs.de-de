@@ -276,7 +276,7 @@ items:
   href: security-overviews.md
 - name: Bewährte Methoden
   href: security-best-practices-and-patterns.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: MVP-Programm für die Azure-Sicherheit
     href: azure-security-mvp.md

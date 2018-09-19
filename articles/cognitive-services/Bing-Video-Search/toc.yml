@@ -1,87 +1,94 @@
+items:
 - name: Dokumentation zur Bing-Videosuche
   href: index.yml
 - name: Übersicht
   items:
-    - name: Worum handelt es sich bei der Bing-Videosuche?
-      href: search-the-web.md
+  - name: Worum handelt es sich bei der Bing-Videosuche?
+    href: search-the-web.md
 - name: REST-API-Schnellstartanleitungen
-  expanded: true
   items:
-    - name: Erste Schritte
-      href: quick-start.md
-    - name: 'C#'
-      href: csharp.md
-    - name: Java
-      href: java.md
-    - name: Node.js
-      href: nodejs.md
-    - name: PHP
-      href: php.md
-    - name: Python
-      href: python.md
-    - name: Ruby
-      href: ruby.md
+  - name: Erste Schritte
+    href: quick-start.md
+  - name: C#
+    href: csharp.md
+  - name: Java
+    href: java.md
+  - name: Node.js
+    href: nodejs.md
+  - name: PHP
+    href: php.md
+  - name: Python
+    href: python.md
+  - name: Ruby
+    href: ruby.md
+  expanded: true
 - name: SDK-Schnellstartanleitungen
   items:
-    - name: Übersicht über SDK-Beispiele
-      href: sdk.md
-    - name: 'SDK-Schnellstartanleitung für die Videosuche: C#'
-      href: video-search-sdk-quickstart.md
-    - name: 'SDK-Schnellstartanleitung für die Videosuche: Node'
-      href: video-search-sdk-node-quickstart.md
-    - name: 'SDK-Schnellstartanleitung für die Videosuche: Python'
-      href: video-sdk-python-quickstart.md
-    - name: 'SDK-Schnellstartanleitung für die Videosuche: Java'
-      href: video-sdk-java-quickstart.md
+  - name: Übersicht über SDK-Beispiele
+    href: sdk.md
+  - name: 'SDK-Schnellstartanleitung für die Videosuche: C#'
+    href: video-search-sdk-quickstart.md
+  - name: 'SDK-Schnellstartanleitung für die Videosuche: Node'
+    href: video-search-sdk-node-quickstart.md
+  - name: 'SDK-Schnellstartanleitung für die Videosuche: Python'
+    href: video-sdk-python-quickstart.md
+  - name: 'SDK-Schnellstartanleitung für die Videosuche: Java'
+    href: video-sdk-java-quickstart.md
 - name: Tutorials
   items:
-    - name: Einzelseiten-Web-App
-      href: tutorial-bing-video-search-single-page-app.md
-    - name: Einzelseiten-Web-App (Quellcode)
-      href: tutorial-bing-video-search-single-page-app-source.md
+  - name: Einzelseiten-Web-App
+    href: tutorial-bing-video-search-single-page-app.md
+  - name: Einzelseiten-Web-App (Quellcode)
+    href: tutorial-bing-video-search-single-page-app-source.md
 - name: Beispiele
   items:
-    - name: Codebeispiele
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
+  - name: Codebeispiele
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search
 - name: Anleitungen
   items:
-    - name: Verwenden und Anzeigen von Anforderungen
-      href: UseAndDisplayRequirements.md
-    - name: Gewinnen von Erkenntnissen aus Videos
-      href: video-insights.md
-    - name: Abrufen von beliebten Videos
-      href: trending-videos.md
-    - name: Einteilen von Videos in Seiten
-      href: paging-videos.md
-    - name: Ändern der Größe und Zuschneiden von Miniaturansichten
-      href: resize-and-crop-thumbnails.md
-    - name: Upgrade von v5 auf v7
-      href: bing-video-upgrade-guide-v5-to-v7.md
+  - name: Verwenden und Anzeigen von Anforderungen
+    href: UseAndDisplayRequirements.md
+  - name: Gewinnen von Erkenntnissen aus Videos
+    href: video-insights.md
+  - name: Abrufen von beliebten Videos
+    href: trending-videos.md
+  - name: Einteilen von Videos in Seiten
+    href: paging-videos.md
+  - name: Ändern der Größe und Zuschneiden von Miniaturansichten
+    href: resize-and-crop-thumbnails.md
+  - name: Upgrade von v5 auf v7
+    href: bing-video-upgrade-guide-v5-to-v7.md
 - name: Verweis
   items:
-    - name: Bing-Videosuche-API v7
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference'
-    - name: Bing-Videosuche-API v5
-      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference'
-- name: angeben
+  - name: Bing-Videosuche-API v7
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference
+  - name: Bing-Videosuche-API v5
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference
+- name: Ressourcen
   items:
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/911452-bing-video-search-api'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=bing+video+search'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Knowledge Base
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
-    - name: Abrufen des API-Schlüssels
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api'
-    - name: Testen
-      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8'
-    - name: Bing-Videosuche-Endpunkte
-      href: video-search-endpoints.md
-    - name: Analyse für die Bing-Videosuche-API
-      href: bing-video-stats.md
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/911452-bing-video-search-api
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=bing+video+search
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Knowledge Base
+    href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
+  - name: Abrufen des API-Schlüssels
+    href: https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api
+  - name: Testen
+    href: https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8
+  - name: Bing-Videosuche-Endpunkte
+    href: video-search-endpoints.md
+  - name: Analyse für die Bing-Videosuche-API
+    href: bing-video-stats.md
+ms.openlocfilehash: 893e77b356073bfdc7623351601dd95e280496d4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "35357352"

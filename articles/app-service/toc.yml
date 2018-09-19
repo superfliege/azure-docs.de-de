@@ -205,7 +205,7 @@ items:
     href: /powershell
   - name: REST-API
     href: /rest/api/appservice/
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

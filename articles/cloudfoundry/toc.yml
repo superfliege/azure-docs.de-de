@@ -16,7 +16,7 @@ items:
     href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
   - name: Integrieren von Cloud Foundry in Azure
     href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/

@@ -26,7 +26,7 @@ items:
     href: ./luis/luis-nodejs-tutorial-build-bot-framework-sample.md
   - name: Verbessern der Absichtsgenauigkeit für Befehle
     href: ./luis/luis-tutorial-batch-testing.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=cognitive-services

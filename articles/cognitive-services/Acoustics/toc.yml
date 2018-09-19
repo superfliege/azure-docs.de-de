@@ -16,7 +16,7 @@ items:
     href: bake-ui-walkthrough.md
   - name: Entwerfen von Akustik
     href: design-process.md
-- name: angeben
+- name: Ressourcen
   items:
   - name: Beispielszene für Akustik
     href: sample-walkthrough.md

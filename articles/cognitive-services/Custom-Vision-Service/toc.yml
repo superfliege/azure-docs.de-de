@@ -58,7 +58,7 @@ items:
       href: https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules
     - name: Go
       href: https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices
-- name: angeben
+- name: Ressourcen
   items:
   - name: Versionsinformationen
     href: release-notes.md
