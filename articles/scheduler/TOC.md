@@ -24,7 +24,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
 ## [REST](/rest/api/scheduler)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
 ## [Preise](https://azure.microsoft.com/pricing/details/scheduler/)

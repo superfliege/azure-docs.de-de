@@ -48,7 +48,7 @@
 ## [SQL Server-Treiber](https://docs.microsoft.com/sql/connect/sql-connection-libraries)
 ## [REST](/rest/api/)
 
-# angeben
+# Ressourcen
 ## [Häufig gestellte Fragen](virtual-machines-windows-sql-server-iaas-faq.md)
 ## [Preise](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [PaaS oder IaaS?](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsql%2ftoc.json)

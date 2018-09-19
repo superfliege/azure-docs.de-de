@@ -24,7 +24,7 @@
 ### [Übersicht](integration-hybrid-connection-overview.md)
 ### [Erstellen und Verwalten](integration-hybrid-connection-create-manage.md)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebiztalksvcs)
 ## [Preise](https://azure.microsoft.com/pricing/details/biztalk-services/)

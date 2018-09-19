@@ -24,7 +24,7 @@
 #### [Bedarfsorientiertes Sichern von virtuellen Computern](../../backup/tutorial-backup-vm-at-scale.md)
 ## Anleitungen
 ### [Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten](../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-## angeben
+## Ressourcen
 ### [Azure-Produktkatalog](https://docs.microsoft.com/azure/#pivot=products)
 ### [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ### [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

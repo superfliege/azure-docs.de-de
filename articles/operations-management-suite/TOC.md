@@ -67,6 +67,6 @@
 ## Verwaltungsszenarien
 ### [Sammeln von Analysedaten aus Runbook](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

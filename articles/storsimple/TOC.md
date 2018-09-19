@@ -239,7 +239,7 @@
 # Verwandte Themen
 ## [StorSimple 5000–7000-Serie](http://onlinehelp.storsimple.com)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Marketingblog](http://blogs.technet.com/b/cis/)
 ## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)

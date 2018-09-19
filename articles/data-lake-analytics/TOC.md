@@ -75,7 +75,7 @@
 ## [REST](/rest/api/datalakeanalytics/)
 ## [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://docs.microsoft.com/cli/azure/dla)
 
-# angeben
+# Ressourcen
 ## [Azure Data Lake-Blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Anforderungsänderungen](https://feedback.azure.com/forums/327234-data-lake)

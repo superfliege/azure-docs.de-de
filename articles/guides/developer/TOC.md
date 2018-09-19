@@ -104,7 +104,7 @@
 ### [Azure PowerShell](https://docs.microsoft.com/powershell/)
 ## [Abrechnung](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview)
 
-# angeben
+# Ressourcen
 ## [Azure-Grenzwerte und -Kontingente](../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [Azure-Regionen](https://azure.microsoft.com/regions/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)

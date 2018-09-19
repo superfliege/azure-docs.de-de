@@ -84,7 +84,7 @@
 ## [Tabellenobjektmodell (TOM)](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo)
 ## [Grenzwerte für Ressourcen und Objekte](analysis-services-capacity-limits.md)
 
-# angeben
+# Ressourcen
 
 ## [Beispiele](analysis-services-samples.md)
 ## [Teamblog zu Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/)

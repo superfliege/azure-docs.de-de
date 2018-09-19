@@ -12,7 +12,7 @@
 ### [Configure with PagerDuty (Konfigurieren mit PagerDuty)](service-health-alert-webhook-pagerduty.md)
 ### [Configure with OpsGenie (Konfigurieren mit OpsGenie)](service-health-alert-webhook-opsgenie.md)
 ### [Abrufen von Integritätsereignissen mit REST](service-health-rest.md)
-# angeben
+# Ressourcen
 ## [Häufig gestellte Fragen](resource-health-faq.md)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Über Azure Resource Health verfügbare Ressourcentypen und Integritätsüberprüfungen](resource-health-checks-resource-types.md)

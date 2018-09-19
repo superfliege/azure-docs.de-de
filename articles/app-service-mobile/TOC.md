@@ -166,7 +166,7 @@
 # Verwandte Themen
 ## [GitHub-Repositorys](https://github.com/Azure/azure-mobile-apps)
 
-# angeben
+# Ressourcen
 ## [App Service – Bewährte Methoden](../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile)

@@ -11,7 +11,7 @@
 ## [SQL Server-Treiber](https://msdn.microsoft.com/library/mt654049.aspx)
 ## [REST](/rest/api/)
 
-# angeben
+# Ressourcen
 ## [HÄUFIG GESTELLTE FRAGEN](sql-server-linux-faq.md)
 ## [SQL Server unter Linux: Dokumentation](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 ## [Preise](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)

@@ -29,6 +29,6 @@
 ## [Azure-CLI](/cli/azure)
 ## [Azure PowerShell](/powershell/azure)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
