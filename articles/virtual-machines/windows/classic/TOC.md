@@ -63,7 +63,7 @@
 ## [Network REST](https://msdn.microsoft.com/library/jj157182.aspx)
 ## [Storage REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Preise](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

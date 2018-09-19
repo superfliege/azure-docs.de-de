@@ -103,7 +103,7 @@
 ### [NetworkConfiguration-Schema](schema-cscfg-networkconfiguration.md)
 ## [REST](/rest/api/compute/cloudservices/)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)

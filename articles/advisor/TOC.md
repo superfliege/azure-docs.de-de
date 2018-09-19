@@ -22,7 +22,7 @@
 ## [Redis Cache](https://azure.microsoft.com/documentation/articles/cache-configure/#redis-cache-advisor)
 ## [App Service](https://azure.microsoft.com/documentation/articles/app-service-best-practices/)
 
-# angeben
+# Ressourcen
 ## [Azure Advisor – Videos](https://azure.microsoft.com/resources/videos/index/?services=advisor)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

@@ -63,7 +63,7 @@
 ## [Node.js](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
 ## [REST](https://msdn.microsoft.com/library/mt163658.aspx)
 
-# angeben
+# Ressourcen
 ## [Verfassen von Vorlagen](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=networking)
 ## [Communityvorlagen](https://azure.microsoft.com/resources/templates/)

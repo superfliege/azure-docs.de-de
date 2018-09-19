@@ -118,6 +118,7 @@
 #### [Azure-Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 ### [Konfigurieren von lokalen Encodern für die Verwendung mit einem Cloudencoder](media-services-live-encoders-overview.md)
+#### [Elemental Live-Encoder](media-services-configure-elemental-live-encoder.md)
 #### [FMLE-Encoder](media-services-configure-fmle-live-encoder.md)
 #### [Haivision KB-Encoder](media-services-configure-kb-live-encoder.md)
 #### [NewTek TriCaster-Encoder](media-services-configure-tricaster-live-encoder.md)
@@ -191,7 +192,7 @@
 ### [Übersicht über Filter und dynamische Manifeste](media-services-dynamic-manifest-overview.md)
 #### [Erstellen von Filtern mit .NET](media-services-dotnet-dynamic-manifest.md)
 #### [Erstellen von Filtern mit REST](media-services-rest-dynamic-manifest.md)
-### [CDN-Cachingrichtlinie in der Media Services-Erweiterung](../../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
+### [CDN-Cachingrichtlinie in der Media Services-Erweiterung](../cdn/cdn-caching-policy.md?toc=%2fazure%2fmedia-services%2ftoc.json)
 ### Veröffentlichen von Inhalten
 #### [Azure-Portal](media-services-portal-publish.md)
 #### [.NET](media-services-deliver-streaming-content.md)
@@ -230,7 +231,7 @@
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
-## [Azure PowerShell (Dienstverwaltung)](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)
+## [Azure PowerShell (Dienstverwaltung)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
 ## [REST](/rest/api/media/mediaservice)
 ## Spezifikationen

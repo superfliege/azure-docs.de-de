@@ -24,7 +24,7 @@
 # Verweis
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=sql-server-database)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](https://blogs.technet.microsoft.com/dataplatforminsider/tag/stretch-database/)
 ## [Preise](https://azure.microsoft.com/pricing/details/sql-server-stretch-database/)

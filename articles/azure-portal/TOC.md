@@ -26,7 +26,7 @@
 # Verwandte Themen
 ## [Vorlagenfunktionen in Azure Resource Manager](../azure-resource-manager/resource-group-template-functions.md)
 
-# angeben
+# Ressourcen
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
