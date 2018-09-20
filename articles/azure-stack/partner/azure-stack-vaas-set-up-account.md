@@ -56,7 +56,7 @@ Zu diesen Aufgaben zählen:
 
 ## <a name="set-up-your-tenant"></a>Einrichten Ihres Mandanten
 
-Richten Sie Ihren Mandanten in der Anwendung **Azure Stack Validation Service** (Azure Stack-Validierungsdienst) ein. 
+Richten Sie Ihren Mandanten in der Anwendung **Azure Stack Validation Service** ein. 
 
 1. Senden Sie die folgenden Informationen zum Mandanten unter vaashelp@microsoft.com an Microsoft.
 
@@ -83,8 +83,8 @@ So weisen Sie eine Benutzerrolle zu:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie in der Gruppe **Identität** auf **Alle Dienste** > **Azure Active Directory**.
-3. Klicken Sie auf **Unternehmensanwendungen** > **Azure Stack Validation Service** (Azure Stack-Validierungsdienst).
-4. Wählen Sie **Benutzer und Gruppen**. Auf dem Blatt **Azure Stack Validation Service– Users and group** (Azure Stack-Validierungsdienst – Benutzer und Gruppe) sind die zur Verwendung der Anwendung berechtigten Benutzer aufgeführt.
+3. Klicken Sie auf **Unternehmensanwendungen** > **Azure Stack Validation Service**.
+4. Wählen Sie **Benutzer und Gruppen**. Auf dem Blatt **Azure Stack Validation Service– Users and group** (Azure Stack Validation Service – Benutzer und Gruppe) sind die zur Verwendung der Anwendung berechtigten Benutzer aufgeführt.
 5. Klicken Sie auf **+ Benutzer hinzufügen**, um eine Zuweisung hinzuzufügen.
 
 ## <a name="create-an-azure-storage-blob-to-store-logs"></a>Erstellen eines Azure Storage-Blobs zum Speichern von Protokollen
