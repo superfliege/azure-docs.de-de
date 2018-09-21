@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3eca9e416a18e7389a6ce45cccd3cc99707e9806
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ffc2a9fb7b0ed516645c833f87c9ef5c95ca20ff
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070433"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580751"
 ---
 # <a name="register-in-dev-center"></a>Registrieren bei Dev Center  
 Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind, öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung.  
@@ -108,11 +108,11 @@ Wenn Sie Probleme mit der Registrierung bei Dev Center haben, führen Sie die fo
 > Herausgeber, die in der Auflistungsart Transact veröffentlichen: VM, Azure-Apps: Lösungsvorlagen und verwaltete Apps.  
 
 *   **Wozu wird ein Dev Center-Konto benötigt?**
-> Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Namen des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu Ihrem Unternehmen zu überprüfen. Klicken Sie [hier](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#register-in-dev-center), um weitere Informationen zu erhalten.
+> Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Namen des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu Ihrem Unternehmen zu überprüfen. Klicken Sie [hier](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center), um weitere Informationen zu erhalten.
 
 *   **Wie beginne ich mit der Dev Center-Registrierung?**
 > Überprüfen Sie zur Vermeidung von Duplikaten, ob Ihr Unternehmen nicht bereits ein Dev Center-Konto registriert hat. Sie müssen mit dem Microsoft-Konto angemeldet sein, das Sie Ihrem Entwicklerkonto zuordnen möchten. Wenn Sie noch kein Microsoft-Konto haben, können Sie [hier](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) ein neues erstellen. (Beispiel: contoso_marketplace@live.com) Wechseln Sie zum Anmelden und Registrieren zu https://dev.windows.com/en-us/registration?accountProgram=Azure.
-<br>Weitere Informationen zum Registrierungsprozess finden Sie [hier](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center).</br>
+<br>Weitere Informationen zum Registrierungsprozess finden Sie [hier](https://docs.microsoft.com/azure/marketplace/register-dev-center).</br>
 
 *   **Soll ich für den Kontotyp „Individual“ (Einzelperson) oder „Company“ (Unternehmen) auswählen?**
 > Zum Veröffentlichen eines Transaktionsangebots in Marketplace müssen Sie bei der Registrierung für Ihr Dev Center-Konto „Company“ (Unternehmen) auswählen.
@@ -143,7 +143,7 @@ Wenn Sie Probleme mit der Registrierung bei Dev Center haben, führen Sie die fo
 > Weisen Sie einen temporären Unternehmensnamen zu, wenden Sie sich unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) an den Support, und stellen Sie für die Supportmitarbeiter die Registrierungsunterlagen Ihres Unternehmens bereit.
 
 *   **Wie füge ich meine Steuer- und Auszahlungsinformationen hinzu?**
-> Transaktionsangebote können erst veröffentlicht werden, nachdem die Steuer und Bankdaten im Dev Center-Konto angegeben wurden.  Weitere Informationen zum Hinzufügen von Kontoinformationen finden Sie im Abschnitt [Hinzufügen von Bank- und Steuerinformationen](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information).
+> Transaktionsangebote können erst veröffentlicht werden, nachdem die Steuer und Bankdaten im Dev Center-Konto angegeben wurden.  Weitere Informationen zum Hinzufügen von Kontoinformationen finden Sie im Abschnitt [Hinzufügen von Bank- und Steuerinformationen](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information).
 
 *   **Kann ich das Dev Center Microsoft-Anmeldekonto wechseln?**
 > Nein. Nachdem ein Dev Center-Konto erstellt wurde, kann das Besitzerkonto nicht mehr gewechselt werden. In diesem Fall müssen Sie ein neues Dev Center-Konto mit dem gewünschten Microsoft-Konto einrichten.

@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 359e5e671287c4d330deeb2d3573877d9ee5d1c5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190958"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605526"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Erstellen von Grafiken und Diagrammen aus Log Analytics-Abfragen
 
 > [!NOTE]
 > Vor der Durchführung dieser Lektion sollten Sie [Advanced aggregations in Log Analytics queries (Erweiterte Aggregationen in Log Analytics-Abfragen)](advanced-aggregations.md) lesen.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 In diesem Artikel sind unterschiedliche Visualisierungen in Azure Log Analytics beschrieben, um Ihre Daten unterschiedlich anzuzeigen.
 
 ## <a name="charting-the-results"></a>Darstellen der Ergebnisse in Diagrammen
 Beginnen Sie mit der Überprüfung, wie viele Computer pro Betriebssystem während der letzten Stunde vorhanden waren:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -50,7 +52,7 @@ Wählen Sie **Chart** (Diagramm) und dann die Option **Pie** (Kreisdiagramm), um
 ## <a name="timecharts"></a>Zeitdiagramme
 Zeigen Sie die durchschnittliche, 50. und 95. Quantile der Prozessorzeit in Containern von einer Stunde an. Die Abfrage generiert mehrere Reihen. Sie können auswählen, welche Reihe im Zeitdiagramm angezeigt wird.
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -65,7 +67,7 @@ Wählen Sie die Anzeigeoption **Liniendiagramm** aus:
 
 Eine Bezugslinie kann Ihnen dabei helfen, einfach zu identifizieren, ob die Metrik einen bestimmten Schwellenwert überschritten hat. Erweitern Sie das Dataset mit einer konstanten Spalte, um dem Diagramm eine Zeile hinzuzufügen:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -78,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>Mehrere Dimensionen
 Mit mehreren Ausdrücken in der `by`-Klausel von `summarize` werden mehrere Zeilen in den Ergebnissen erstellt, und zwar eine für jede Kombination der Werte.
 
-```OQL
+```KQL
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

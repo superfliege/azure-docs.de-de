@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: f7cf471a69395cef0aef7d5dd2e3c77218bf97a3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715279"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576119"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -104,7 +104,7 @@ Angenommen, dass das Beispiel repräsentativ ist und zehn Prozent der gesamten D
 
 Einige Kunden bevorzugen, mit dedizierten Ressourcen zu beginnen, die für größere Sampling- und Verarbeitungszeiten geeignet sind, und entwickeln dann während der Entwicklung realistische Schätzungen von Indexmenge, Größe und Abfragevolumen. Zu Beginn wird ein Dienst basierend auf einer Schätzung bereitgestellt, und wenn das Entwicklungsprojekt fortgeschritten ist, wissen Teams in der Regel, ob der derzeitige Dienst für die voraussichtlichen Produktionsworkloads über- oder unterdimensioniert ist. 
 
-1. [Überprüfen Sie in jedem Tarif Dienstgrenzwerte](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity#index-limits), um zu bestimmen, ob niedrigere Tarife die Menge der Indizes, die Sie benötigen, unterstützen können. In den Tarifen **Basic**-**S1**- **S2** betragen die Grenzwerte für Indizes jeweils 15-50-200.
+1. [Überprüfen Sie in jedem Tarif Dienstgrenzwerte](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits), um zu bestimmen, ob niedrigere Tarife die Menge der Indizes, die Sie benötigen, unterstützen können. In den Tarifen **Basic**-**S1**- **S2** betragen die Grenzwerte für Indizes jeweils 15-50-200.
 
 1. [Erstellen Sie einen Dienst unter einem abzurechnenden Tarif](search-create-service-portal.md):
 

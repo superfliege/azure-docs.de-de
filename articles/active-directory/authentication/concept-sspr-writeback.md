@@ -10,22 +10,22 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4f4c2ada08c69b6602ff5a300a15c4ca57090a8e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 8440d8a492105365417190ad286798e0bdf47a0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816052"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295834"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
-Ein cloudbasiertes Hilfsprogramm zum Zurücksetzen von Kennwörtern ist praktisch, aber die meisten Unternehmen haben immer noch ein lokales Verzeichnis, in dem ihre Benutzer existieren. Wie unterstützt Microsoft die Synchronisierung eines traditionellen lokalen Active Directory (AD) mit Kennwortänderungen in der Cloud? Kennwortrückschreiben ist eine Funktion, die mit [Azure AD Connect](./../connect/active-directory-aadconnect.md) aktiviert wurde und es ermöglicht, Kennwortänderungen in der Cloud in Echtzeit in ein vorhandenes lokales Verzeichnis zurückzuschreiben.
+Ein cloudbasiertes Hilfsprogramm zum Zurücksetzen von Kennwörtern ist praktisch, aber die meisten Unternehmen haben immer noch ein lokales Verzeichnis, in dem ihre Benutzer existieren. Wie unterstützt Microsoft die Synchronisierung eines traditionellen lokalen Active Directory (AD) mit Kennwortänderungen in der Cloud? Kennwortrückschreiben ist eine Funktion, die mit [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) aktiviert wurde und es ermöglicht, Kennwortänderungen in der Cloud in Echtzeit in ein vorhandenes lokales Verzeichnis zurückzuschreiben.
 
 Kennwortrückschreiben wird in Umgebungen unterstützt, die folgende Elemente verwenden:
 
-* [Active Directory-Verbunddienste (AD FS)](../connect/active-directory-aadconnect-federation-management.md)
-* [Kennworthashsynchronisierung](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)
-* [Passthrough-Authentifizierung](../connect/active-directory-aadconnect-pass-through-authentication.md)
+* [Active Directory-Verbunddienste (AD FS)](../hybrid/how-to-connect-fed-management.md)
+* [Kennworthashsynchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md)
+* [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md)
 
 Kennwortrückschreiben bietet:
 

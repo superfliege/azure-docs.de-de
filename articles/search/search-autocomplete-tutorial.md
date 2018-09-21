@@ -9,16 +9,16 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 7120080bfdc188c150c7065e1c0639ab8c04f173
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989682"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578173"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Tutorial: Hinzufügen der automatischen Vervollständigung von Azure Search zu Ihrem Suchfeld
 
-In diesem Tutorial erfahren Sie, wie Sie [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggestions), die [automatische Vervollständigung](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete) und [Facets](search-faceted-navigation.md) in der [REST-API für Azure Search](https://docs.microsoft.com/rest/api/searchservice/) und im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) zur Erstellung eines leistungsfähigen Suchfelds verwenden. *Vorschläge* enthalten Empfehlungen von tatsächlichen Ergebnisse basierend auf der Eingabe des Benutzers. Die *automatische Vervollständigung*, [eine neue Vorschaufunktion](search-api-preview.md) in Azure Search, stellt Benennungen aus dem Index bereit, um die Eingabe des Benutzers zu vervollständigen. Im Folgenden werden mehrere Techniken miteinander verglichen, um die Produktivität des Benutzers zu verbessern und auf schnelle und einfache Weise zu finden, wonach der Benutzer sucht, indem die Suchfunktion direkt bei der Eingabe zur Verfügung gestellt wird.
+In diesem Tutorial erfahren Sie, wie Sie [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggestions), die [automatische Vervollständigung](https://docs.microsoft.com/rest/api/searchservice/autocomplete) und [Facets](search-faceted-navigation.md) in der [REST-API für Azure Search](https://docs.microsoft.com/rest/api/searchservice/) und im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) zur Erstellung eines leistungsfähigen Suchfelds verwenden. *Vorschläge* enthalten Empfehlungen von tatsächlichen Ergebnisse basierend auf der Eingabe des Benutzers. Die *automatische Vervollständigung*, [eine neue Vorschaufunktion](search-api-preview.md) in Azure Search, stellt Benennungen aus dem Index bereit, um die Eingabe des Benutzers zu vervollständigen. Im Folgenden werden mehrere Techniken miteinander verglichen, um die Produktivität des Benutzers zu verbessern und auf schnelle und einfache Weise zu finden, wonach der Benutzer sucht, indem die Suchfunktion direkt bei der Eingabe zur Verfügung gestellt wird.
 
 Dieses Tutorial führt Sie durch eine ASP.NET MVC-basierte Anwendung, die C#-Code zum Aufrufen der [Azure Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und JavaScript zum direkten Aufrufen der REST-API für Azure Search verwendet. Die Anwendung für dieses Tutorial ist auf einen Index ausgerichtet, der mit [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)-Beispieldaten aufgefüllt wurde. Sie können entweder den Index verwenden, der in der NYCJobs-Demo bereits konfiguriert wurde, oder Ihren eigenen Index mithilfe eines Datenladers in der NYCJobs-Beispiellösung auffüllen. Im Beispiel werden die JavaScript-Bibliotheken [jQuery UI](https://jqueryui.com/autocomplete/) und [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) zur Erstellung eines Suchfelds verwendet, das die automatische Vervollständigung unterstützt. Bei Verwendung dieser Komponenten mit Azure Search werden Ihnen mehrere Beispiele zur Unterstützung der automatischen Vervollständigung durch Textvervollständigung in Ihrem Suchfeld angezeigt.
 
@@ -214,7 +214,7 @@ Dieses Tutorial veranschaulicht die grundlegenden Schritte zum Erstellen eines S
 Integrieren Sie Vorschläge und die automatische Vervollständigung in Ihre Suchumgebung.  Bedenken Sie, wie die direkte Verwendung des .Net SDK oder der REST-API dabei helfen kann, dass Benutzer zur Steigerung ihrer Produktivität bei der Eingabe von der Leistungsfähigkeit von Azure Search profitieren können.
 
 > [!div class="nextstepaction"]
-> [REST-API zur automatischen Vervollständigung](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)
-> [REST-API für Vorschlage](https://docs.microsoft.com/en-us/rest/api/searchservice/suggestions)
-> [Facets-Indexattribut in einer REST-API zur Indexerstellung](https://docs.microsoft.com/en-us/rest/api/searchservice/create-index)
+> [REST-API zur automatischen Vervollständigung](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> [REST-API für Vorschlage](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [Facets-Indexattribut in einer REST-API zur Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index)
 

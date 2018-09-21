@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a428f76f1239e7e67b99d05b96d26abd601e89c6
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331519"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498690"
 ---
 # <a name="media-intelligence"></a>Medieninformationen
 
@@ -52,7 +52,7 @@ Die Ausgabe umfasst eine JSON-Datei (insights.json) mit allen Informationen, die
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
 |Language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
-|instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz ein Transkript ist, gibt es nur 1 Instanz.|
+|instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz „transcript“ lautet, ist nur eine Instanz vorhanden.|
 
 Beispiel:
 
@@ -126,54 +126,6 @@ Beispiel:
   ],
 ```
 
-### <a name="keywords"></a>keywords
-
-|NAME|BESCHREIBUNG|
-|---|---|
-|id|Die Stichwort-ID.|
-|text|Der Stichworttext.|
-|confidence|Die Zuverlässigkeit der Erkennung des Stichworts.|
-|Language|Die Sprache des Stichworts (sofern übersetzt).|
-|instances|Eine Liste der Zeitbereiche, in denen dieses Stichwort angezeigt wurde (ein Stichwort kann mehrfach vorkommen).|
-
-```json
-"keywords": [
-{
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    },
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
-}
-] 
-
-```
-
 ### <a name="faces"></a>faces
 
 |NAME|BESCHREIBUNG|
@@ -181,13 +133,13 @@ Beispiel:
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
 |confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
-|Beschreibung|Bei einem Prominenten dessen Beschreibung. |
-|thumbnalId|Die ID des Miniaturbilds dieses Gesichts.|
-|knownPersonId|Bei einer bekannten Person deren interne ID.|
-|referenceId|Bei einem Bing-Prominenten dessen Bing-ID.|
+|Beschreibung|Eine Beschreibung des Prominenten. |
+|thumbnalId|Die ID der Miniaturansicht dieses Gesichts.|
+|knownPersonId|Bei einer bekannten Person die interne ID.|
+|referenceId|Bei einem Bing-Prominenten die Bing-ID.|
 |referenceType|Zurzeit nur Bing.|
-|title|Bei einem Prominenten dessen Titel (z.B. „CEO von Microsoft“).|
-|imageUrl|Bei einem Prominenten dessen Bild-URL.|
+|title|Bei einem Prominenten der Titel (z.B. „CEO von Microsoft“).|
+|imageUrl|Bei einem Prominenten die Bild-URL.|
 |instances|Dies sind Vorkommen des Gesichts in einem bestimmten Zeitbereich. Jedes Vorkommen hat auch eine Miniaturbild-ID. |
 
 ```json
@@ -217,6 +169,111 @@ Beispiel:
         "end": "00:10:39.2390000"
     }]
 }]
+```
+
+### <a name="shots"></a>shots
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID der Aufnahme.|
+|keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen). Keyframeinstanzen weisen ein Feld „thumbnailId“ mit der keyFrame-Miniaturansicht-ID auf.|
+|instances|Eine Liste der Zeitbereiche dieser Aufnahme (Aufnahmen kommen nur einmal vor).|
+
+```json
+"Shots": [
+    {
+      "id": 0,
+      "keyFrames": [
+        {
+          "id": 0,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
+              "start": "00: 00: 00.1670000",
+              "end": "00: 00: 00.2000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
+          "start": "00: 00: 00.2000000",
+          "end": "00: 00: 05.0330000"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "keyFrames": [
+        {
+          "id": 1,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
+              "start": "00: 00: 05.2670000",
+              "end": "00: 00: 05.3000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "start": "00: 00: 05.2670000",
+          "end": "00: 00: 10.3000000"
+        }
+      ]
+    }
+  ]
+```
+
+### <a name="statistics"></a>statistics
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|CorrespondenceCount|Anzahl von Korrespondenzen im Video.|
+|WordCount|Die Anzahl von Wörtern pro Sprecher.|
+|SpeakerNumberOfFragments|Die Anzahl von Fragmenten, über die ein Sprecher im Video verfügt.|
+|SpeakerLongestMonolog|Der längste Monolog des Sprechers. Falls der Sprecher bei seinem Monolog Sprechpausen einlegt, ist diese Zeit mit enthalten. Die Ruhephasen am Anfang und Ende des Monologs werden entfernt.| 
+|SpeakerTalkToListenRatio|Die Berechnung basiert auf der Zeit für den Monolog des Sprechers (ohne Sprechpausen) geteilt durch die Gesamtzeit des Videos. Der Zeitwert wird auf die dritte Dezimalstelle gerundet.|
+
+
+### <a name="sentiments"></a>sentiments
+
+Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die Stimmungs-ID.|
+|averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|
+|instances|Eine Liste der Zeitbereiche, in denen diese Stimmung vorkam.|
+|sentimentType |Der Typ kann „Positive“ (Positiv), „Neutral“ (Neutral) oder „Negative“ (Negativ) lauten.|
+
+```json
+"sentiments": [
+{
+    "id": 0,
+    "averageScore": 0.87,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:23",
+        "end": "00:00:41"
+    }
+    ]
+}, {
+    "id": 1,
+    "averageScore": 0.11,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:13",
+        "end": "00:00:21"
+    }
+    ]
+}
+]
 ```
 
 ### <a name="labels"></a>Bezeichnungen
@@ -278,94 +335,92 @@ Beispiel:
   ] 
 ```
 
-### <a name="shots"></a>shots
+### <a name="keywords"></a>keywords
 
 |NAME|BESCHREIBUNG|
 |---|---|
-|id|Die ID der Aufnahme.|
-|keyFrames|Eine Liste mit Keyframes innerhalb der Aufnahme (jede verfügt über eine ID und eine Liste der Zeitbereiche der Vorkommen).|
-|instances|Eine Liste der Zeitbereiche dieser Aufnahme (Aufnahmen kommen nur einmal vor).|
+|id|Die Stichwort-ID.|
+|text|Der Stichworttext.|
+|confidence|Die Zuverlässigkeit der Erkennung des Stichworts.|
+|Language|Die Sprache des Stichworts (sofern übersetzt).|
+|instances|Eine Liste der Zeitbereiche, in denen dieses Stichwort angezeigt wurde (ein Stichwort kann mehrfach vorkommen).|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
-```
-
-
-### <a name="sentiments"></a>sentiments
-
-Stimmungen werden anhand ihres Felds „SentimentType“ (neutral/positiv/negativ) aggregiert. Beispiel: 0-0,1, 0,1-0,2.
-
-|NAME|BESCHREIBUNG|
-|---|---|
-|id|Die Stimmungs-ID.|
-|averageScore |Der Durchschnitt aller Bewertungen aller Vorkommen dieses Stimmungstyps: neutral/positiv/negativ|
-|instances|Eine Liste der Zeitbereiche, in denen diese Stimmung vorkam.|
-
-```json
-"sentiments": [
+"keywords": [
 {
     "id": 0,
-    "averageScore": 0.87,
+    "text": "office",
+    "confidence": 1.6666666666666667,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:23",
-        "end": "00:00:41"
+        "start": "00:00:00.5100000",
+        "end": "00:00:02.7200000"
+    },
+    {
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
     }
     ]
-}, {
+},
+{
     "id": 1,
-    "averageScore": 0.11,
+    "text": "icons",
+    "confidence": 1.4,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:13",
-        "end": "00:00:21"
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
+    },
+    {
+        "start": "00:00:13.9900000",
+        "end": "00:00:15.6100000"
     }
     ]
 }
-]
+] 
 ```
 
+#### <a name="visualcontentmoderation"></a>visualContentModeration
+
+Der visualContentModeration-Block enthält Zeitbereiche, für die von Video Indexer Inhalt ermittelt wurde, der unter Umständen nur für Erwachsene geeignet ist. Wenn „visualContentModeration“ leer ist, wurde kein Inhalt identifiziert, der ggf. nur für Erwachsene geeignet ist.
+
+Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sind unter Umständen nur für die private Wiedergabe verfügbar. Benutzer haben die Möglichkeit, für den Inhalt eine Überprüfung durch einen Menschen anzufordern. In diesem Fall enthält das IsAdult-Attribut das Ergebnis der Überprüfung durch den Menschen.
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID für die Moderation des visuellen Inhalts.|
+|adultScore|Die Bewertung für nicht jugendfreien Inhalt (von Content Moderator).|
+|racyScore|Die Bewertung für Freizügigkeit (von Content Moderator).|
+|instances|Eine Liste mit Zeitbereichen, in denen diese visuelle Inhaltsmoderation durchgeführt wurde.|
+
+```json
+"VisualContentModeration": [
+{
+    "id": 0,
+    "adultScore": 0.00069,
+    "racyScore": 0.91129,
+    "instances": [
+    {
+        "start": "00:00:25.4840000",
+        "end": "00:00:25.5260000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "adultScore": 0.99231,
+    "racyScore": 0.99912,
+    "instances": [
+    {
+        "start": "00:00:35.5360000",
+        "end": "00:00:35.5780000"
+    }
+    ]
+}
+] 
+```
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]

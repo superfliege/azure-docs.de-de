@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347697"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721227"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
 
@@ -691,7 +691,6 @@ In der folgenden Abbildung sind die Nachrichten dargestellt, die von Azure AD an
 *Abbildung 6: Sequenz der Durchführung und Aufhebung einer Gruppenbereitstellung*
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 * [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung](customize-application-attributes.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)

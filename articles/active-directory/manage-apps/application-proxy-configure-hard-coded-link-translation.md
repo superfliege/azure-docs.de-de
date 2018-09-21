@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 618df9b4bcc4a1b6f44d9cabc29c797a2cabcc80
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366791"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982271"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -109,7 +109,7 @@ Die ersten Schritte mit der Linkübersetzung sind einfache Klicks auf Schaltflä
 2. Wechseln Sie zu **Azure Active Directory** > **Unternehmensanwendungen** > **Alle Anwendungen**, wählen Sie die App, die Sie verwaltenden möchten, und dann **Anwendungsproxy** aus.
 3. Legen Sie **URLs im Hauptteil der Anwendung übersetzen** auf **Ja** fest.
 
-   ![Wählen Sie „Ja“ aus, um die URLs im Hauptteil der Anwendung zu übersetzen.](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)zu erstellen und zu verwalten.
+   ![Wählen Sie „Ja“ aus, um die URLs im Hauptteil der Anwendung zu übersetzen.](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. Klicken Sie zum Übernehmen der Änderungen auf **Speichern**.
 
 Wenn Ihre Benutzer auf diese Anwendung zugreifen, scannt der Proxy nun automatisch auf interne URLs, die über Anwendungsproxy für Ihren Mandanten veröffentlicht wurden.

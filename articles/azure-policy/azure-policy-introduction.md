@@ -9,12 +9,12 @@ ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 405f69ae1c37e478758d984ddf7dc0e267910fef
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 381263a39716ad1271c853ec4b7453a5a922b43e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023058"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633706"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -55,8 +55,7 @@ In Azure Policy bieten wir einige integrierte Richtlinien an, die Ihnen standard
 - **Zulässige VM-SKUs**: Mit dieser Richtlinie können Sie eine Gruppe von VM-SKUs angeben, die Ihre Organisation bereitstellen kann.
 - **Tag und seinen Standardwert anwenden**: Diese Richtlinie wendet ein erforderliches Tag und seinen Standardwert an, falls es nicht vom Benutzer angegeben wird.
 - **Tag und seinen Wert erzwingen**: Diese Richtlinie setzt ein erforderliches Tag und seinen Wert bei einer Ressource durch.
-- 
-  **Nicht zulässige Ressourcentypen**: Mit dieser Richtlinie können Sie die Ressourcentypen angeben, die Ihre Organisation nicht bereitstellen kann.
+- **Nicht zulässige Ressourcentypen**: Mit dieser Richtlinie können Sie die Ressourcentypen angeben, die Ihre Organisation nicht bereitstellen kann.
 
 Um diese Richtliniendefinitionen implementieren zu können (integrierte und benutzerdefinierte Definitionen), müssen Sie sie zuweisen. Sie können diese Richtlinien über das Azure-Portal, PowerShell oder die Azure CLI zuweisen.
 
@@ -136,7 +135,7 @@ Im Folgenden sind einige Hinweise zum Erstellen und Verwalten von Richtliniendef
 
 Die folgende Übersicht über Azure Policy stammt von der Build 2018. Folien und den Videodownload finden Sie unter [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) (Steuern Ihrer Azure-Umgebung per Azure Policy) auf Channel 9.
 
-> [!VIDEO https://channel9.msdn.com/events/Build/2018/THR2030/player]
+> [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

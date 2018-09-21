@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745798"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982152"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Verwalten von API-Versionsprofilen in Azure Stack
 
@@ -46,7 +46,7 @@ Dieses Thema enthält folgende Informationen:
     Halbjährliche Veröffentlichung. Bei dieser Veröffentlichung stehen die cloudübergreifende Konsistenz und Stabilität im Vordergrund. Das Ziel dieses Profils ist die optimale Kompatibilität mit Azure Stack.
     - **jjjj-mm-tt-profile** liegt zwischen der optimalen Stabilität und den neuesten Features.
 
-### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure-API-Profile und Azure Stack-Kompatibilität
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure-API-Profile und Azure Stack-Kompatibilität
 
 Die neuesten Azure-API-Profile sind nicht mit Azure Stack kompatibel. Sie können die folgenden Benennungskonventionen verwenden, um die Profile für Ihre Azure Stack-Lösungen zu identifizieren.
 

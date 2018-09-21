@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: dff675fc64d9ee7e01a7e050a42a2724d00ec3ef
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e6166bc815c3065f4c204122b982ffb3c752d489
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696539"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574357"
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-gremlin-api"></a>Azure Cosmos DB: Erstellen einer .NET Framework- oder Core-Anwendung mit der Gremlin-API
 
@@ -76,7 +76,7 @@ Klonen Sie eine Gremlin-API-App aus GitHub, legen Sie die Verbindungszeichenfolg
 5. Stellen Sie die NuGet-Pakete im Projekt wieder her. Diese sollten den Treiber „Gremlin.Net“ und das Paket „Newtonsoft.Json“ umfassen.
 
 
-6. Sie können den Treiber „Gremlin.Net“ aber auch manuell mithilfe des NuGet-Paket-Managers oder des [NuGet-Befehlszeilentools](https://docs.microsoft.com/en-us/nuget/install-nuget-client-tools) installieren: 
+6. Sie können den Treiber „Gremlin.Net“ aber auch manuell mithilfe des NuGet-Paket-Managers oder des [NuGet-Befehlszeilentools](https://docs.microsoft.com/nuget/install-nuget-client-tools) installieren: 
 
     ```bash
     nuget install Gremlin.Net

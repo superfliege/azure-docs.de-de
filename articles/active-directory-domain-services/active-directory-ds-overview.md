@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 4467c193b5ff70a304b4ec5f632276ca14551b08
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d30d164a3e2896b1a300bf665ca09f57ce97fdf3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501997"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295868"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory-Domänendienste (AD)
 ## <a name="overview"></a>Übersicht
@@ -65,7 +65,7 @@ Einige wichtige Aspekte der verwalteten Domäne, die von den Azure AD-Domänendi
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Azure Active Directory-Domänendienste für Hybridunternehmen
 Unternehmen mit einer IT-Hybridinfrastruktur nutzen eine Mischung aus Cloudressourcen und lokalen Ressourcen. In diesen Unternehmen werden Identitätsinformationen im lokalen Verzeichnis mit dem Azure AD-Mandanten synchronisiert. Wenn Hybridorganisationen weitere lokale Anwendungen zur Cloud migrieren möchten, insbesondere verzeichnisfähige Legacyanwendungen, können die Azure AD-Domänendienste hierfür nützlich sein.
 
-Die Litware Corporation hat [Azure AD Connect](../active-directory/active-directory-aadconnect.md)bereitgestellt, um Identitätsinformationen aus dem lokalen Verzeichnis mit dem Azure AD-Mandanten zu synchronisieren. Zu den synchronisierten Identitätsinformationen zählen Benutzerkonten, Anmeldeinformationshashes für die Authentifizierung (Kennwortsynchronisierung) und Gruppenmitgliedschaften.
+Die Litware Corporation hat [Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md)bereitgestellt, um Identitätsinformationen aus dem lokalen Verzeichnis mit dem Azure AD-Mandanten zu synchronisieren. Zu den synchronisierten Identitätsinformationen zählen Benutzerkonten, Anmeldeinformationshashes für die Authentifizierung (Kennwortsynchronisierung) und Gruppenmitgliedschaften.
 
 > [!NOTE]
 > **Die Kennwortsynchronisierung für Hybridorganisationen ist für die Verwendung von Azure AD-Domänendiensten verpflichtend**. Dies liegt daran, dass die Anmeldeinformationen der Benutzer in der von den Azure AD-Domänendiensten bereitgestellten verwalteten Domäne erforderlich sind, um diese Benutzer mithilfe von NTLM- oder Kerberos-Authentifizierungsverfahren authentifizieren zu können.

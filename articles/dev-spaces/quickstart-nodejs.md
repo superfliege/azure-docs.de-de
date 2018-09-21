@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
 manager: douge
-ms.openlocfilehash: 671cf3d274f067354131777b9f69d75c6a9fc934
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3067146b45e0b6b83cc49137a84282cf2ed4bf86
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190325"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721567"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Schnellstart: Erstellen eines Kubernetes-Entwicklungsbereichs mit Azure Dev Spaces (Node.js)
 
@@ -56,7 +56,10 @@ Gehen Sie folgendermaßen vor, um Azure Dev Spaces einzurichten:
 1. Erstellen Sie Ihren Code in AKS, und führen Sie ihn aus. Führen Sie im Terminalfenster unter dem **webfrontend-Ordner** den folgenden Befehl aus: `azds up`.
 1. Suchen Sie in der Konsolenausgabe nach Informationen zu der URL, die durch den Befehl `up` erstellt wurde. Sie weist folgendes Format auf: 
 
-   `Service 'webfrontend' port 'http' is available at <url>` 
+   ```output
+   (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+   Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+   ```
 
    Öffnen Sie diese URL in einem Browserfenster. Dort sollten Sie sehen, dass die Web-App geladen wird. Wenn der Container ausgeführt wird, wird die Ausgabe von `stdout` und `stderr` an das Terminalfenster gestreamt.
    

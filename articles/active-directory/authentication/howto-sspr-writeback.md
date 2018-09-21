@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e613ff742096077fe1765d4b855b6c7d409cc228
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158946"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295817"
 ---
 # <a name="how-to-configure-password-writeback"></a>Vorgehensweise: Konfigurieren des Kennwortrückschreibens
 
-Sie sollten das automatische Update von [Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md) verwenden, wenn Sie das Kennwortrückschreiben nutzen möchten.
+Sie sollten das automatische Update von [Azure AD Connect](../hybrid/how-to-connect-install-express.md) verwenden, wenn Sie das Kennwortrückschreiben nutzen möchten.
 
-Für die folgenden Schritte wird davon ausgegangen, dass Sie Azure AD Connect bereits in Ihrer Umgebung konfiguriert haben, indem Sie die [Express](./../connect/active-directory-aadconnect-get-started-express.md)- oder [benutzerdefinierten](./../connect/active-directory-aadconnect-get-started-custom.md) Einstellungen verwendet haben.
+Für die folgenden Schritte wird davon ausgegangen, dass Sie Azure AD Connect bereits in Ihrer Umgebung konfiguriert haben, indem Sie die [Express](../hybrid/how-to-connect-install-express.md)- oder [benutzerdefinierten](../hybrid/how-to-connect-install-custom.md) Einstellungen verwendet haben.
 
 1. Um das Kennwortrückschreiben zu konfigurieren und zu aktivieren, melden Sie sich bei Ihrem Azure AD Connect-Server an, und starten Sie den **Azure AD Connect**-Konfigurations-Assistenten.
 2. Wählen Sie auf der Seite **Willkommen** die Option **Konfigurieren** aus.

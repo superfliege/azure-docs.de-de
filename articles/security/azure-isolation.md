@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5710ebc1c52737e27aafa88eef5e9ae402f8e53f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018410"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579844"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 ##  <a name="introduction"></a>Einführung
@@ -127,7 +127,7 @@ Wenn für einen zum Speichern verwendeten Datenträger ein Hardwarefehler auftri
 Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit einer großen Auswahl an Computeinstanzen und -diensten, die automatisch zentral hoch- und herunterskaliert werden können, um die Anforderungen Ihrer Anwendung bzw. Ihres Unternehmens zu erfüllen. Diese Computeinstanz bzw. der Computedienst ermöglichen die Isolation auf mehreren Ebenen, um Daten zu schützen, ohne dass auf die von Kunden gewünschte Flexibilität bei der Konfiguration verzichtet werden muss.
 
 ### <a name="isolated-virtual-machine-sizes"></a>Isolierte Größen virtueller Computer
-Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/en-us/blog/nested-virtualization-in-azure/) verwenden.
+Azure Compute bietet VM-Größen, die für einen bestimmten Hardwaretyp isoliert und für einen einzelnen Kunden bestimmt sind.  Diese VM-Größen eignen sich am besten für Workloads, die ein hohes Maß an Isolation von anderen Kunden erfordern, wenn es um Workloads mit Elementen wie Konformität und gesetzlichen Anforderungen geht.  Kunden können auch die Ressourcen dieser isolierten virtuellen Computer weiter unterteilen, indem sie die [Azure-Unterstützung für geschachtelte virtuelle Computer](https://azure.microsoft.com/blog/nested-virtualization-in-azure/) verwenden.
 
 Durch die Verwendung isolierter Größen wird sichergestellt, dass Ihr virtueller Computer als einziger in der jeweiligen Serverinstanz ausgeführt wird.  Zu den aktuellen Angebote isolierter virtueller Computer zählen Folgende:
 * Standard_E64is_v3
@@ -138,7 +138,7 @@ Durch die Verwendung isolierter Größen wird sichergestellt, dass Ihr virtuelle
 * Standard_DS15_v2
 * Standard_D15_v2
 
-Weitere Informationen zu den einzelnen isolierten Größen finden Sie [hier](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory).
+Weitere Informationen zu den einzelnen isolierten Größen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V- und Stammbetriebssystem-Isolation zwischen Stamm-VM und Gast-VMs
 Die Computeplattform von Azure basiert auf der Virtualisierung von Computern. Dies bedeutet, dass der gesamte Kundencode auf einem virtuellen Hyper-V-Computer ausgeführt wird. Auf jedem Azure-Knoten (bzw. Netzwerkendpunkt) ist ein Hypervisor angeordnet, der direkt über die Hardware ausgeführt wird und einen Knoten in eine variable Anzahl von virtuellen Gastcomputern unterteilt.

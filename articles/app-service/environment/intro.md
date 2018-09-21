@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: c6ae2aa46ae17c4ef995211b02112e1c05e2ec2f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 34c041bf96ecc8ce7f4440d7afaa64de775baef7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344476"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576935"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  
@@ -73,7 +73,7 @@ Eine ASE kann entweder für Internetzugriff mit einer öffentlichen IP-Adresse o
 
 Mithilfe von [Netzwerksicherheitsgruppen][NSGs] können Sie die eingehende Netzwerkkommunikation mit dem Subnetz einschränken, das eine ASE enthält. Durch NSGs können Sie Apps hinter Upstreamgeräten und -diensten ausführen, wie WAFs und Netzwerk-SaaS-Anbietern.
 
-Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. Wenn Sie die ASE in einem virtuellen Netzwerk bereitstellen, das über eine VPN-Verbindung mit dem lokalen Netzwerk verfügt, können die Apps in der ASE auf die lokalen Ressourcen zugreifen. Diese Funktion besteht unabhängig davon, ob es sich um ein [Site-to-Site-VPN](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site) oder ein [Azure ExpressRoute-VPN](http://azure.microsoft.com/services/expressroute/) handelt.
+Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und Webdienste zugreifen. Wenn Sie die ASE in einem virtuellen Netzwerk bereitstellen, das über eine VPN-Verbindung mit dem lokalen Netzwerk verfügt, können die Apps in der ASE auf die lokalen Ressourcen zugreifen. Diese Funktion besteht unabhängig davon, ob es sich um ein [Site-to-Site-VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site) oder ein [Azure ExpressRoute-VPN](http://azure.microsoft.com/services/expressroute/) handelt.
 
 Weitere Informationen zur Funktionsweise von ASEs mit virtuellen Netzwerken und lokalen Netzwerken finden Sie unter [Überlegungen zu Netzwerken mit einer App Service-Umgebung][ASENetwork].
 

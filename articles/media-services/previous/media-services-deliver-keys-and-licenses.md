@@ -4,7 +4,7 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Media Services ve
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 09/18/2018
 ms.author: juliako
-ms.openlocfilehash: 84dd4db84fffd5ffc79e55b6ceb1182dcfbc3c55
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 300673ffd62324de1207a29551694f12dd84ea93
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783299"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366368"
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services
+
 Azure Media Services ermöglicht Ihnen das Erfassen, Codieren, Hinzufügen von Inhaltsschutz und Streamen Ihrer Inhalte. Weitere Informationen finden Sie unter [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md). Manche Kunden möchten Media Services nur zum Übermitteln von Lizenzen und/oder Schlüsseln verwenden und das Codieren, Verschlüsseln und Streamen mithilfe eigener, lokaler Server erledigen. Dieser Artikel beschreibt, wie Sie mit Media Services PlayReady- und/oder Widevine-Lizenzen bereitstellen und die restlichen Aufgaben auf Ihren lokalen Servern ausführen können. 
 
 ## <a name="overview"></a>Übersicht
@@ -42,10 +43,11 @@ Informationen zum Herunterladen des in diesem Artikel beschriebenen Beispiels fi
 
 2. Fügen Sie den **appSettings** in Ihrer Datei „app.config“ die folgenden Elemente hinzu:
 
-    add key="Issuer" value="http://testacs.com"/
-    
-    add key="Audience" value="urn:test"/
-
+    ```xml
+    <add key="Issuer" value="http://testissuer.com"/>
+    <add key="Audience" value="urn:test"/>
+    ```
+ 
 ## <a name="net-code-example"></a>Codebeispiel für .NET
 Das folgende Codebeispiel zeigt, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Zum Konfigurieren Ihres lokalen Servers benötigen Sie einen Inhaltsschlüssel, die Schlüssel-ID und die Lizenzerwerbs-URL. Nach dem Konfigurieren Ihres lokalen Servers können Sie von Ihrem eigenen Streamingserver streamen. Da der verschlüsselte Stream auf einen Media Services-Lizenzserver verweist, fordert Ihr Player eine Lizenz bei Media Services an. Wenn Sie sich für Tokenauthentifizierung entscheiden, überprüft der Media Services-Lizenzserver das Token, das Sie per HTTPS gesendet haben. Wenn das Token gültig ist, übermittelt der Lizenzserver die Lizenz an Ihren Player. Das folgende Codebeispiel zeigt nur, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady oder Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlaginhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen. Weitere Informationen finden Sie unter [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselbereitstellungsdiensts](media-services-protect-with-aes128.md).
 

@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: de1ba8b8560e65586ac59f9a04165a93492f3e05
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2acdc2cc7397e169a32a0257c0fc6020338c944f
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190988"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604483"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Arbeiten mit Zeichenfolgen in Log Analytics-Abfragen
 
 
 > [!NOTE]
 > Sie sollten zunächst [Erste Schritte mit dem Analytics-Portal](get-started-analytics-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen, bevor Sie mit diesem Tutorial beginnen.
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Zeichenfolgen bearbeiten, vergleichen, darin suchen und für diese viele weitere Vorgänge ausführen. 
 
@@ -36,13 +38,13 @@ Jedem Zeichen in einer Zeichenfolge ist ein Index zugeordnet, der die Position d
 ## <a name="strings-and-escaping-them"></a>Zeichenfolgen und Escapezeichen
 Zeichenfolgenwerte werden entweder in einfache oder doppelte Anführungszeichen eingeschlossen. Der umgekehrte Schrägstrich (\) wird verwendet, um darauffolgende Zeichen mit einem Escapezeichen zu versehen. „\t“ wird beispielsweise für einen Tabstopp, „\n“ für einen Zeilenvorschub und \" für das Anführungszeichen selbst verwendet.
 
-```OQL
+```KQL
 print "this is a 'string' literal in double \" quotes"
 ```
 
 Wenn „\\“ nicht als Escapezeichen verwendet werden soll, müssen Sie der Zeichenfolge \"\@\" voranstellen.
 
-```OQL
+```KQL
 print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
@@ -106,7 +108,7 @@ Angabe, wie oft die Suchzeichenfolge im Container abgeglichen werden kann. Bei �
 
 #### <a name="plain-string-matches"></a>Übereinstimmungen für einfache Zeichenfolgen
 
-```OQL
+```KQL
 print countof("The cat sat on the mat", "at");  //result: 3
 print countof("aaa", "a");  //result: 3
 print countof("aaaa", "aa");  //result: 3 (not 2!)
@@ -116,7 +118,7 @@ print countof("ababa", "aba");  //result: 2
 
 #### <a name="regex-matches"></a>Übereinstimmungen für reguläre Ausdrücke
 
-```OQL
+```KQL
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
 print countof("ababa", "aba", "regex");  //result: 1
 print countof("abcabc", "a.c", "regex");  // result: 2
@@ -129,7 +131,7 @@ Ermittelt eine Übereinstimmung für einen regulären Ausdruck auf der Grundlage
 
 ### <a name="syntax"></a>Syntax
 
-```OQL
+```KQL
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
@@ -147,7 +149,7 @@ Wenn keine Übereinstimmung vorhanden ist oder bei der Typkonvertierung ein Fehl
 ### <a name="examples"></a>Beispiele
 
 Im folgenden Beispiel wird aus einem Heartbeatdatensatz das letzte Oktett von *ComputerIP* extrahiert:
-```OQL
+```KQL
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -155,7 +157,7 @@ Heartbeat
 ```
 
 Im folgenden Beispiel wird das letzte Oktett extrahiert und in den Typ *real* (Zahl) umgewandelt. Anschließend wird der nächste IP-Wert berechnet.
-```OQL
+```KQL
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -165,7 +167,7 @@ Heartbeat
 ```
 
 Im folgenden Beispiel wird in der Zeichenfolge *Trace* nach der Definition von „Duration“ gesucht. Die Übereinstimmung wird in *real* umgewandelt und mit einer Zeitkonstante (1 s) multipliziert, *durch die „Duration“ in den Typ „timespan“ umgewandelt wird*.
-```OQL
+```KQL
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
@@ -186,7 +188,7 @@ isnotempty(value)
 
 ### <a name="examples"></a>Beispiele
 
-```OQL
+```KQL
 print isempty("");  // result: true
 
 print isempty("0");  // result: false
@@ -211,7 +213,7 @@ parseurl(urlstring)
 
 ### <a name="examples"></a>Beispiele
 
-```OQL
+```KQL
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
@@ -251,7 +253,7 @@ Der Text nach dem Ersetzen aller Übereinstimmungen für reguläre Ausdrücke du
 
 ### <a name="examples"></a>Beispiele
 
-```OQL
+```KQL
 SecurityEvent
 | take 1
 | project Activity 
@@ -282,7 +284,7 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="examples"></a>Beispiele
 
-```OQL
+```KQL
 print split("aaa_bbb_ccc", "_");    // result: ["aaa","bbb","ccc"]
 print split("aa_bb", "_");          // result: ["aa","bb"]
 print split("aaa_bbb_ccc", "_", 1); // result: ["bbb"]
@@ -301,7 +303,7 @@ strcat("string1", "string2", "string3")
 ```
 
 ### <a name="examples"></a>Beispiele
-```OQL
+```KQL
 print strcat("hello", " ", "world") // result: "hello world"
 ```
 
@@ -316,7 +318,7 @@ strlen("text_to_evaluate")
 ```
 
 ### <a name="examples"></a>Beispiele
-```OQL
+```KQL
 print strlen("hello")   // result: 5
 ```
 
@@ -337,7 +339,7 @@ substring(source, startingIndex [, length])
 - `length`: ein optionaler Parameter, mit dem die erforderliche Länge der zurückgegebenen Teilzeichenfolge festgelegt werden kann.
 
 ### <a name="examples"></a>Beispiele
-```OQL
+```KQL
 print substring("abcdefg", 1, 2);   // result: "bc"
 print substring("123456", 1);       // result: "23456"
 print substring("123456", 2, 2);    // result: "34"
@@ -356,7 +358,7 @@ toupper("value")
 ```
 
 ### <a name="examples"></a>Beispiele
-```OQL
+```KQL
 print tolower("HELLO"); // result: "hello"
 print toupper("hello"); // result: "HELLO"
 ```

@@ -1,19 +1,21 @@
 ---
-title: Worum handelt es sich bei der Bing-Websuche? | Microsoft-Dokumentation
-description: Die Bing-Websuche-API ist ein RESTful-Dienst, der Ihrer App die Verwendung der Websuchfunktionen von Bing ermöglicht, die unter anderem Webseiten, Bilder, Videos, Nachrichten und Entitäten sowie verwandte Suchabfragen, Rechtschreibkorrekturen, Zeitzonen, Einheitenkonvertierung, Übersetzungen und Berechnungen umfassen.
+title: Worum handelt es sich bei der Bing-Websuche?
+titleSuffix: Azure Cognitive Services
+description: Die Bing-Websuche-API ist ein RESTful-Dienst, der umgehend Antworten auf Benutzerabfragen liefert. Suchergebnisse lassen sich einfach konfigurieren und können unter anderem Webseiten, Bilder, Videos, Nachrichten und Übersetzungen enthalten. Ergebnisse werden im JSON-Format sowie auf der Grundlage der Suchrelevanz und Ihrer Bing-Websuche-Abonnements zurückgegeben.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: erhopf
-ms.openlocfilehash: ad1069a836a3ff9291ca8094fe86e19979bf7e32
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8482afae2889ccf2153e1864e4a65b635b6ab4c7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889298"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125237"
 ---
 # <a name="what-is-bing-web-search"></a>Worum handelt es sich bei der Bing-Websuche?
 
@@ -27,7 +29,7 @@ Neugierig geworden? Sehen Sie sich unsere [Demo der Bing-Websuche-API](https://a
 
 Neben umgehenden Antworten liefert die Bing-Websuche noch weitere Features und Funktionen, mit denen Sie Suchergebnisse für Ihre Benutzer anpassen können.
 
-| Feature | Beschreibung |
+| Feature | BESCHREIBUNG |
 |---------|-------------|
 | [In Echtzeit vorgeschlagene Suchbegriffe](../bing-autosuggest/get-suggested-search-terms.md) | Verwenden Sie die Bing-Vorschlagssuche-API, um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer Anwendung zu verbessern. |
 | [Filtern und Einschränken von Ergebnissen nach Inhaltstyp](filter-answers.md) | Verwenden Sie Filter und Abfrageparameter für Webseiten, Bilder, Videos, sichere Suche und mehr, um Suchergebnisse anzupassen und einzugrenzen. |

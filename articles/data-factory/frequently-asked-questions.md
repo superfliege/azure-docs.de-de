@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: ebe8745db06113d0508d86554bf031a4235c8e44
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045948"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577131"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Data Factory.  
@@ -82,7 +82,7 @@ Seit der ersten öffentlichen Vorschauversion von 2017 wurden über Data Factory
 -   Azure SQL-Datenbank mit VNET-Dienstendpunkten
 -   Verwaltete Instanz
 -   Pool für elastische Datenbanken
--   Unterstützung für Azure Resource Manager Virtual Network (VNET) zusätzlich zum klassischen VNET, das in Zukunft als veraltet eingestuft wird. Dies ermöglicht es Ihnen, für Ihre Azure-SSIS-Integration Runtime (IR) das Einfügen bzw. den Beitritt zu einem VNET durchzuführen, das für Azure SQL-Datenbank mit VNET-Dienstendpunkten, einer verwalteten Instanz und lokalem Datenzugriff konfiguriert ist (siehe https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) 
+-   Unterstützung für Azure Resource Manager Virtual Network (VNET) zusätzlich zum klassischen VNET, das in Zukunft als veraltet eingestuft wird. Dies ermöglicht es Ihnen, für Ihre Azure-SSIS-Integration Runtime (IR) das Einfügen bzw. den Beitritt zu einem VNET durchzuführen, das für Azure SQL-Datenbank mit VNET-Dienstendpunkten, einer verwalteten Instanz und lokalem Datenzugriff konfiguriert ist (siehe https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) 
 -   Unterstützung für AAD-Authentifizierung (Azure Active Directory) zusätzlich zur SQL-Authentifizierung für die Verbindungsherstellung mit Ihrer SSISDB. Dies ermöglicht es Ihnen, die AAD-Authentifizierung mit Ihrer verwalteten Dienstidentität für ADF zu verwenden
 -   Unterstützung für die Bereitstellung Ihrer eigenen lokalen SQL Server-Lizenz zur Erzielung erheblicher Kosteneinsparungen über den Azure-Hybridvorteil
 -   Unterstützung für die Enterprise Edition von Azure-SSIS-IR, die Ihnen die Verwendung von erweiterten bzw. Premium-Features, des benutzerdefinierten Setups zum Installieren von zusätzlichen Komponenten/Erweiterungen und eines Drittanbieter-Ökosystems ermöglicht (siehe https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/) 

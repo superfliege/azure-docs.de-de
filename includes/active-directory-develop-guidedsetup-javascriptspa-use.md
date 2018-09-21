@@ -1,3 +1,27 @@
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 94d57abc95dabf1da579f6d2105ca6c74140a86f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293712"
+---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Verwenden der MSAL (Microsoft Authentication Library) für die Benutzeranmeldung
 
 1.  Erstellen Sie eine Datei mit dem Namen `app.js`. Wenn Sie Visual Studio verwenden, wählen Sie das Projekt aus (Stammordner des Projekts), klicken Sie mit der rechten Maustaste, und wählen Sie Folgendes aus: `Add` > `New Item` > `JavaScript File`.

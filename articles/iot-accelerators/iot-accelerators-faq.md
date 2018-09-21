@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c5621d5e16e31104ee28cc521386a5c0ca290a8b
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 66494ca6bd9b4d8276469e85f4c6bb435ae245f7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187698"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716399"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Häufig gestellte Fragen zu IoT-Solution Accelerators
 
@@ -73,10 +73,6 @@ Zwei. In einem Azure-Abonnement können für Bing Karten für Unternehmen nur zw
 > Microsoft Azure für DreamSpark wird jetzt als Microsoft Imagine für Schüler und Studenten bezeichnet.
 
 Derzeit können Sie mit einem Konto für [Microsoft Azure für DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) keinen Solution Accelerator erstellen. Sie können jedoch in wenigen Minuten ein [kostenloses Testkonto für Azure](https://azure.microsoft.com/free/) einrichten, mit dem Sie einen Solution Accelerator erstellen können.
-
-### <a name="can-i-create-a-solution-accelerator-if-i-have-cloud-solution-provider-csp-subscription"></a>Kann ich einen Solution Accelerator erstellen, wenn ich über ein CSP-Abonnement (Cloud Solution Provider, Cloudlösungsanbieter) verfüge?
-
-Derzeit können Sie keinen Solution Accelerator erstellen, wenn Sie über ein CSP-Abonnement (Cloud Solution Provider, Cloudlösungsanbieter) verfügen. Sie können jedoch in wenigen Minuten ein [kostenloses Testkonto für Azure](https://azure.microsoft.com/free/) einrichten, mit dem Sie einen Solution Accelerator erstellen können.
 
 ### <a name="how-do-i-delete-an-aad-tenant"></a>Wie lösche ich einen AAD-Mandanten?
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: feefe68fbe6681ee4b450503606ac8c4f25d5a39
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: c908e73a225f90227f09a8bb806a62c690de7632
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130259"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718847"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurieren und Wiederherstellen einer langfristig aufbewahrten Sicherung von Azure SQL-Datenbank mit einem Azure Recovery Services-Tresor
 
@@ -181,7 +181,7 @@ Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGro
 
 ### <a name="create-a-retention-policy"></a>Erstellen einer Aufbewahrungsrichtlinie
 
-In einer Aufbewahrungsrichtlinie wird festgelegt, wie lange eine Datenbanksicherung aufbewahrt werden soll. Rufen Sie mithilfe des Cmdlets [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) die standardmäßige Aufbewahrungsrichtlinie ab, um sie bei der Erstellung neuer Richtlinien als Vorlage zu verwenden. In dieser Vorlage ist die Beibehaltungsdauer auf zwei Jahre festgelegt. Führen Sie als Nächstes [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) aus, um das Erstellen der Richtlinie abzuschließen. 
+In einer Aufbewahrungsrichtlinie wird festgelegt, wie lange eine Datenbanksicherung aufbewahrt werden soll. Rufen Sie mithilfe des Cmdlets [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject) die standardmäßige Aufbewahrungsrichtlinie ab, um sie bei der Erstellung neuer Richtlinien als Vorlage zu verwenden. In dieser Vorlage ist die Beibehaltungsdauer auf zwei Jahre festgelegt. Führen Sie als Nächstes [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) aus, um das Erstellen der Richtlinie abzuschließen. 
 
 > [!NOTE]
 > Bei manchen Cmdlets müssen Sie vor der Ausführung den Tresorkontext festlegen ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), darum sehen Sie dieses Cmdlet in ein paar zugehörigen Codeausschnitten. Der Kontext wird festgelegt, da die Richtlinie Teil des Tresors ist. Sie können mehrere Aufbewahrungsrichtlinien pro Tresor erstellen und dann die gewünschte Richtlinie auf bestimmte Datenbanken anwenden. 

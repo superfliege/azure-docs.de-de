@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3c3f9a0d0dc40de6c62c21dab0f11a501829ef11
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640964"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575305"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Tipps zur Problembehandlung bei der kognitiven Suche
 
@@ -33,7 +33,7 @@ Führen Sie Ihre Dokumentenzusammenstellung durch die End-to-End-Pipeline und pr
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Tipp 2: Stellen Sie sicher, dass Ihre Anmeldeinformationen für die Datenquelle richtig sind.
 Die Datenquellenverbindung wird erst überprüft, wenn Sie einen Indexer definieren, der sie verwendet. Wenn Fehler angezeigt werden, die darauf hinweisen, dass der Indexer nicht auf die Daten zugreifen kann, stellen Sie Folgendes sicher:
 - Die Verbindungszeichenfolge ist korrekt. Insbesondere beim Erstellen von SAS-Token müssen Sie das von Azure Search erwartete Format verwenden. Weitere Informationen zu den verschiedenen unterstützten Formaten finden Sie im Abschnitt [Angeben von Anmeldeinformationen](
-https://docs.microsoft.com/en-us/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials).
+https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials).
 - Der Containername im Indexer ist korrekt.
 
 ## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Tipp 3: Achten Sie darauf, was funktioniert, auch wenn Fehler auftreten.

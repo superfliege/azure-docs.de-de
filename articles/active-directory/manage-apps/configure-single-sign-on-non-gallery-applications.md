@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/09/2018
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 860ca62e6e5ed544fabb1667d6e63c8221f5683e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: fc7510fdc635de03ac4dd4f64118bc5be040e969
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354822"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719408"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind.
 
@@ -172,8 +172,6 @@ Nachdem Sie auf **Weiter** geklickt haben, werden Sie aufgefordert, die URL für
 >
 
 ## <a name="related-articles"></a>Verwandte Artikel
-
-- [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 - [Gewusst wie: Anpassen ausgestellter Ansprüche im SAML-Token für bereits integrierte Apps](../develop/active-directory-saml-claims-customization.md)
 - [Problembehandlung bei SAML-basiertem einmaligem Anmelden](../develop/howto-v1-debug-saml-sso-issues.md)
 

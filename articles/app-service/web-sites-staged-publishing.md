@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 2fabf0d61ffd2f526fab49816eab36a86497a358
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ecd58779262f6580287e6c72d3aa2aecf237a562
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764705"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983105"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -170,10 +170,12 @@ Wenn nach dieser Aktion Fehler in der Produktionswebsite feststellen, führen Si
 ## <a name="custom-warm-up-before-swap"></a>Benutzerdefiniertes Aufwärmen vor dem Austausch
 Einige Apps erfordern benutzerdefinierte Aufwärmaktionen. Über das Konfigurationselement `applicationInitialization` in der Datei „web.config“ können Sie benutzerdefinierte Initialisierungsaktionen angeben, die vor dem Empfang einer Anforderung ausgeführt werden. Der Austauschvorgang wartet, bis diese benutzerdefinierte Aufwärmphase abgeschlossen ist. Im Folgenden finden Sie ein Beispielfragment aus der Datei „Web.config“.
 
-    <applicationInitialization>
-        <add initializationPage="/" hostName="[app hostname]" />
-        <add initializationPage="/Home/About" hostname="[app hostname]" />
-    </applicationInitialization>
+    <system.webServer>
+        <applicationInitialization>
+            <add initializationPage="/" hostName="[app hostname]" />
+            <add initializationPage="/Home/About" hostname="[app hostname]" />
+        </applicationInitialization>
+    </system.webServer>
 
 ## <a name="monitor-swap-progress"></a>Überwachen des Austauschstatus
 

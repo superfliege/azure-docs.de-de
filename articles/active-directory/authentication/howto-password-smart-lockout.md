@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: b0fded9f5543d151091955c0b0d645bf9db16b7d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158582"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296158"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -27,7 +27,7 @@ Smart Lockout ist für alle Azure AD-Kunden ständig aktiv und bietet standardm�
 
 Smart Lockout ist in Hybridbereitstellungen integrierbar und kann mittels Kennworthashsynchronisierung oder Passthrough-Authentifizierung verhindern, dass lokale Active Directory-Konten von Angreifern gesperrt werden. Durch korrektes Festlegen von Smart Lockout-Richtlinien in Azure AD können Angriffe herausgefiltert werden, bevor sie die lokale Active Directory-Instanz erreichen.
 
-Bei Verwendung der [Passthrough-Authentifizierung](../connect/active-directory-aadconnect-pass-through-authentication.md) muss Folgendes sichergestellt werden:
+Bei Verwendung der [Passthrough-Authentifizierung](../hybrid/how-to-connect-pta.md) muss Folgendes sichergestellt werden:
 
    * Der Azure AD-Sperrschwellenwert ist **kleiner** als der Schwellenwert für eine Active Directory-Kontosperrung. Legen Sie die Werte so fest, dass der Schwellenwert für eine Active Directory-Kontosperrung mindestens das Zwei- oder Dreifache des Azure AD-Sperrschwellenwerts beträgt. 
    * Die Azure AD-Sperrdauer (in **Sekunden**) ist **länger** als die Active Directory-Zurücksetzungsdauer des Kontosperrungszählers (in **Minuten**).

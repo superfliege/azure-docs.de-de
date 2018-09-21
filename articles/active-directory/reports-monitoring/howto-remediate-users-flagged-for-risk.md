@@ -14,16 +14,16 @@ ms.component: report-monitor
 ms.date: 05/23/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 385106065322cae9b8e29f66bfd6920d4ebb52f8
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 5fe16ecb2725cf306b5b57c9d45d8601581a3ece
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141260"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578896"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Behandeln von „Benutzer mit Risikomarkierung“ im Azure Active Directory-Portal
 
-Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. Ein [Benutzer mit Risikomarkierung](../identity-protection/overview.md#users-flagged-for-risk) ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto.
+Mit den Sicherheitsberichten in Azure Active Directory (Azure AD) erhalten Sie Einblicke in die Wahrscheinlichkeit für kompromittierte Benutzerkonten in Ihrer Umgebung. Ein Benutzer mit Risikomarkierung ist ein Indikator für ein möglicherweise kompromittiertes Benutzerkonto.
 
 Microsoft ist bestrebt, Sie beim Schutz Ihrer Umgebungen zu unterstützen. Im Rahmen dieses Engagements sucht Microsoft kontinuierlich nach ungewöhnlichen Aktivitäten sowie nach Aktivitäten, die bekannten Angriffsmustern entsprechen. 
 

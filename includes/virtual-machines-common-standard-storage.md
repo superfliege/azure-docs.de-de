@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: 70f80b880fadaeb4d5859524b3ba3b55ececbdda
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ab085d6a5cb38c46cf46a51da6d294732e2fd879
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40260077"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45978932"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
 
@@ -148,7 +148,7 @@ Der Azure Backup-Dienst kann auch in Kombination mit Managed Disks verwendet wer
 
 * [Einführung in Azure Storage](../articles/storage/common/storage-introduction.md)
 
-* [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-create-storage-account.md)
+* [Erstellen Sie ein Speicherkonto](../articles/storage/common/storage-quickstart-create-account.md)
 
 * [Managed Disks Overview](../articles/virtual-machines/linux/managed-disks-overview.md) (Übersicht über Azure Managed Disks)
 

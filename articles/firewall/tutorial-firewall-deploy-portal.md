@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480882"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575996"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -58,7 +58,7 @@ In diesem Tutorial erstellen Sie ein einzelnes VNet mit drei Subnetzen:
 
 ![Netzwerkinfrastruktur des Tutorials](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-In diesem Tutorial wird eine vereinfachte Netzwerkkonfiguration verwendet, um die Bereitstellung zu vereinfachen. Für Produktionsbereitstellungen empfiehlt sich die Verwendung eines [Hub- und Spoke-Modells](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), bei dem sich die Firewall in einem eigenen VNet befindet und die Workloadserver sich in mittels Peering verknüpften VNets in der gleichen Region mit mindestens einem Subnetz befinden.
+In diesem Tutorial wird eine vereinfachte Netzwerkkonfiguration verwendet, um die Bereitstellung zu vereinfachen. Für Produktionsbereitstellungen empfiehlt sich die Verwendung eines [Hub- und Spoke-Modells](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), bei dem sich die Firewall in einem eigenen VNet befindet und die Workloadserver sich in mittels Peering verknüpften VNets in der gleichen Region mit mindestens einem Subnetz befinden.
 
 
 

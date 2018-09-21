@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86a14d12f6621524ef26e2a869d4be532105dc77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528390"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732344"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Verwenden von Azure-Speicher mit einer Hudson-Lösung für die fortlaufende Integration
 ## <a name="overview"></a>Übersicht
@@ -53,7 +53,7 @@ Sie müssen folgende Voraussetzungen erfüllen, um den Blob-Dienst mit Ihrer Hud
      
       Eine typische Hudson CI-Lösung würde zwar zur Ausführung als Service konfiguriert, die Ausführung von "hudson.war" über die Befehlszeile reicht für dieses Lernprogramm jedoch aus.
 * Ein Azure-Konto. Unter <http://www.azure.com> können Sie sich für ein Azure-Konto registrieren.
-* Ein Azure-Speicherkonto. Wenn Sie noch kein Speicherkonto haben, können Sie eines erstellen, indem Sie die Schritte unter [Erstellen eines Speicherkontos](../common/storage-create-storage-account.md#create-a-storage-account)befolgen.
+* Ein Azure-Speicherkonto. Wenn Sie noch kein Speicherkonto haben, können Sie eines erstellen, indem Sie die Schritte unter [Erstellen eines Speicherkontos](../common/storage-quickstart-create-account.md)befolgen.
 * Vorkenntnisse der Hudson CI-Lösung werden empfohlen, sind aber nicht zwingend erforderlich, da in den folgenden Abschnitten ein einfaches Beispiel verwendet wird, um zu zeigen, welche Schritte erforderlich sind, wenn Sie den Blob-Dienst als Repository für Hudson CI-Buildartefakte nutzen möchten.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Verwenden des Blob-Dienstes mit Hudson CI

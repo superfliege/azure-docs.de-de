@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 9fa71c221b276e2173694e2c1e86673e52677e63
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389822"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579291"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -29,7 +29,7 @@ Diese Eingaberessourcen können aus demselben Azure-Abonnement wie dem Ihres Str
 Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequellen. Derzeit werden folgende Verweistypen unterstützt: „Keine“, „GZip“ und „Deflate“. Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung. Wenn das Eingabeformat komprimierte Avro-Daten sind, werden sie transparent behandelt. Sie müssen bei der Avro-Serialisierung keinen Komprimierungstyp angeben. 
 
 ## <a name="create-edit-or-test-inputs"></a>Erstellen, Bearbeiten oder Testen von Eingaben
-Sie können das [Azure-Portal](https://portal.azure.com) verwenden, um [neue Eingaben zu erstellen](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job) und vorhandene Eingaben für Ihren Streamingauftrag anzuzeigen oder zu bearbeiten. Außerdem können Sie anhand von Beispieldaten Eingabeverbindungen und [Abfragen testen](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-manage-job#test-your-query). Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
+Sie können das [Azure-Portal](https://portal.azure.com) verwenden, um [neue Eingaben zu erstellen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-input-to-the-job) und vorhandene Eingaben für Ihren Streamingauftrag anzuzeigen oder zu bearbeiten. Außerdem können Sie anhand von Beispieldaten Eingabeverbindungen und [Abfragen testen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query). Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Streamen von Daten aus Event Hubs

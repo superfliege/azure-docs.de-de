@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441441"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576866"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Erstellen einer Protokollwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel wird beschrieben, wie Sie [Protokollwarnungen](monitor-alerts-unified-log.md) programmgesteuert und skaliert in Azure verwalten können, indem Sie eine [Azure Resource Manager-Vorlage](..//azure-resource-manager/resource-group-authoring-templates.md) über [Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) und [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) verwenden. Derzeit unterstützen Azure-Warnungen Protokollwarnungen zu Abfragen von [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) und [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
@@ -35,12 +35,12 @@ Die REST-API für Log Analytics-Warnungen ist RESTful. Der Zugriff darauf erfolg
 Erfahren Sie mehr über das [Erstellen und Verwalten von Warnungsregeln in Log Analytics mit REST-API](../log-analytics/log-analytics-api-alerts.md). Hier finden Sie auch Beispiele für den Zugriff auf die API aus Powershell.
 
 ## <a name="managing-log-alert-on-application-insights"></a>Verwalten von Protokollwarnungen in Application Insights
-Protokollwarnungen für Azure Application Insights wurden als Teil der neuen Azure-Warnungen unter Azure Monitor eingeführt. Daher werden sie unter der Azure Monitor-API als die REST-Vorgangsgruppe [Scheduled Query Rules](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) (geplante Abfrageregeln) ausgeführt.
+Protokollwarnungen für Azure Application Insights wurden als Teil der neuen Azure-Warnungen unter Azure Monitor eingeführt. Daher werden sie unter der Azure Monitor-API als die REST-Vorgangsgruppe [Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) (geplante Abfrageregeln) ausgeführt.
 
 ### <a name="using-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
-Protokollwarnungen für Application Insights-Ressourcen sind vom Typ `Microsoft.Insights/scheduledQueryRules/`. Weitere Informationen zu diesem Ressourcentyp finden Sie unter [Azure Monitor: Referenz für die Scheduled Query Rules-API](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
+Protokollwarnungen für Application Insights-Ressourcen sind vom Typ `Microsoft.Insights/scheduledQueryRules/`. Weitere Informationen zu diesem Ressourcentyp finden Sie unter [Azure Monitor: Referenz für die Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
-Im folgenden finden Sie die Struktur für die auf der [Scheduled Query Rules-Erstellung](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) basierende Ressourcenvorlage mit einem Stichprobendataset als Variablen.
+Im folgenden finden Sie die Struktur für die auf der [Scheduled Query Rules-Erstellung](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) basierende Ressourcenvorlage mit einem Stichprobendataset als Variablen.
 
 ```json
 {
@@ -113,7 +113,7 @@ Im folgenden finden Sie die Struktur für die auf der [Scheduled Query Rules-Ers
 }
 ```
 > [!IMPORTANT]
-> Das Tag-Feld mit einem ausgeblendetem Link zur Zielressource ist bei Verwendung des API-Aufrufs von [Scheduled Query Rules](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) oder der Ressourcenvorlage zwingend erforderlich. 
+> Das Tag-Feld mit einem ausgeblendetem Link zur Zielressource ist bei Verwendung des API-Aufrufs von [Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) oder der Ressourcenvorlage zwingend erforderlich. 
 
 Die Json-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z. B. als „sampleScheduledQueryRule.json“ gespeichert und mithilfe von [Azure Resource Manager im Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template) bereitgestellt werden.
 

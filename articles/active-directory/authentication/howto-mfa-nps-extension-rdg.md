@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 14607e01c0bd51ca9ae98f969c9cd6e1c8c62bb9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144972"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294270"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -82,7 +82,7 @@ Der NPS-Rollendienst bietet sowohl die RADIUS-Server- und -Clientfunktionalität
 Informationen zum Installieren des NPS-Rollendiensts für Windows Server 2012 oder älter finden Sie unter [Install a NAP Health Policy Server](https://technet.microsoft.com/library/dd296890.aspx) (Installieren eines NAP-Integritätsrichtlinienservers). Eine Beschreibung der bewährten Methoden für NPS einschließlich der Empfehlung zum Installieren von NPS auf einem Domänencontroller finden Sie unter [Best Practices for NPS](https://technet.microsoft.com/library/cc771746) (Bewährte Methoden für NPS).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synchronisiert mit der lokalen Active Directory-Instanz
-Um die NPS-Erweiterung zu verwenden, müssen lokale Benutzer mit Azure AD synchronisiert und für MFA aktiviert werden. Dieser Abschnitt setzt voraus, dass lokale Benutzer mithilfe von AD Connect mit Azure AD synchronisiert werden. Informationen zu Azure AD Connect finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../connect/active-directory-aadconnect.md). 
+Um die NPS-Erweiterung zu verwenden, müssen lokale Benutzer mit Azure AD synchronisiert und für MFA aktiviert werden. Dieser Abschnitt setzt voraus, dass lokale Benutzer mithilfe von AD Connect mit Azure AD synchronisiert werden. Informationen zu Azure AD Connect finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../hybrid/whatis-hybrid-identity.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>GUID-ID von Azure Active Directory
 Um die NPS-Erweiterung zu installieren, müssen Sie die GUID von Azure AD kennen. Nachfolgend sind die Anweisungen für die Suche nach der GUID von Azure AD aufgeführt.
@@ -374,4 +374,4 @@ Die Abbildung unten aus dem Microsoft Message Analyzer zeigt den Netzwerkverkehr
 
 [Remotedesktop-Gateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS](howto-mfaserver-nps-rdg.md)
 
-[Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../connect/active-directory-aadconnect.md)
+[Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

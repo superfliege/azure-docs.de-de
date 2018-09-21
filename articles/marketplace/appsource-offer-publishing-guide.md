@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 76448f57bf710dcb8b3b220cc06b3833a22a6295
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 236859cca623643b9bc7a4484f6ce4e6aa11aad6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39058082"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579784"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Leitfaden für die Veröffentlichung von Angeboten für Office 365, Dynamics 365, Power Apps und Power BI
 
@@ -31,7 +31,7 @@ AppSource verfügt über Listen- und Testangebote mit dem Aktionsaufruf „Konta
 
 ### <a name="office-365"></a>Office 365
 
-Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store).
+Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store).
 
 ### <a name="power-apps"></a>Power Apps
 
@@ -39,15 +39,15 @@ Erfahren Sie, wie Kunden [Ihre App auf AppSource testen können](https://powerap
 
 ### <a name="power-bi"></a>Power BI
 
-Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/en-us/power-bi/developer/office-store).
+Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/power-bi/developer/office-store).
 
 ### <a name="dynamics-365"></a>Dynamics 365
 
 #### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
-Lesen Sie bei der Erstellung für die Enterprise Edition die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).
+Lesen Sie bei der Erstellung für die Enterprise Edition die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source).
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement
-Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource).
+Lesen Sie die Informationen zum [Veröffentlichungsprozess und den Richtlinien](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

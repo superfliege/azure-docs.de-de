@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627915"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578356"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Streamen von Azure-Diagnoseprotokollen an Event Hubs
 **[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Portaloption „In Event Hubs exportieren“ oder durch die Aktivierung der Event Hub-Autorisierungsregel-ID in einer Diagnoseeinstellung (über die Azure PowerShell-Cmdlets oder Azure CLI 2.0).
@@ -41,7 +41,7 @@ Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für d
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Aktivieren des Streamens von Diagnoseprotokollen
 
-Das Streamen von Diagnoseprotokollen kann programmgesteuert, über das Portal oder mithilfe der [Azure Monitor-REST-APIs](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)aktiviert werden. In beiden Fällen erstellen Sie eine Diagnoseeinstellung, in der Sie einen Event Hubs-Namespace und die Protokollkategorien und Metriken angeben, die an den Namespace gesendet werden sollen. Für jede aktivierte Protokollkategorie wird eine Event Hub-Instanz erstellt. Eine **Diagnoseprotokollkategorie** ist ein Protokolltyp, der von einer Ressource erfasst werden kann.
+Das Streamen von Diagnoseprotokollen kann programmgesteuert, über das Portal oder mithilfe der [Azure Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)aktiviert werden. In beiden Fällen erstellen Sie eine Diagnoseeinstellung, in der Sie einen Event Hubs-Namespace und die Protokollkategorien und Metriken angeben, die an den Namespace gesendet werden sollen. Für jede aktivierte Protokollkategorie wird eine Event Hub-Instanz erstellt. Eine **Diagnoseprotokollkategorie** ist ein Protokolltyp, der von einer Ressource erfasst werden kann.
 
 > [!WARNING]
 > Zum Aktivieren und Streamen von Diagnoseprotokollen aus Computeressourcen (beispielsweise virtuelle Computer oder Service Fabric) müssen [andere Schritte](../event-hubs/event-hubs-streaming-azure-diags-data.md)ausgeführt werden.
@@ -93,7 +93,7 @@ Die Event Hub-Autorisierungsregel-ID ist eine Zeichenfolge im folgenden Format: 
 
 ### <a name="via-azure-cli-20"></a>Verwenden von Azure CLI 2.0
 
-Zum Ermöglichen des Streamings per [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest) können Sie den Befehl [az monitor diagnostic-settings create](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) verwenden.
+Zum Ermöglichen des Streamings per [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) können Sie den Befehl [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) verwenden.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

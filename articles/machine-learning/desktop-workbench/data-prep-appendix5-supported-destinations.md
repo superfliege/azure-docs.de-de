@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 4aee24150524c270084ae8ec22f09df94b6e9f36
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 123328010758eea6e7eadce29440e204f91dcef6
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831709"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634651"
 ---
 # <a name="supported-data-exports-for-this-preview"></a>Unterstützte Datenexporte für diese Vorschau 
 Es können Exporte in verschiedene Formate durchgeführt werden. Bei diesen Formaten können die Zwischenergebnisse der Datenvorbereitung beibehalten werden, bevor sie in den restlichen Machine Learning-Workflow integriert werden.
@@ -45,7 +45,7 @@ Bei Ausführungen mit horizontaler Hochskalierung (in Spark) nutzt Azure Machine
 
 #### <a name="caveats"></a>Einschränkungen 
 Beim PARQUET-Format handelt es sich um ein relativ junges Format, das einige Inkonsistenzen bei der Implementierung in verschiedenen Bibliotheken aufweist. Beispielsweise existieren bei Spark Einschränkungen im Hinblick darauf, welche Zeichen beim Schreiben in PARQUET-Dateien in Spaltennamen verwendet werden dürfen. Bei PyArrow ist dies nicht der Fall. Die folgenden Zeichen dürfen in einem Spaltennamen nicht enthalten sein: 
-- dann
+- ,
 - ;
 - {}
 - ()

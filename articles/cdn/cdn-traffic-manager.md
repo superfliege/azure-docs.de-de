@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/28/2018
 ms.author: v-deasim
 ms.custom: ''
-ms.openlocfilehash: b52cad1f32cc3d16cf70bb81640dcb1d9f8614bf
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 88739cb299e453e32c69f5d0d0189da849b345a7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37133364"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573874"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Einrichten des Failovers für mehrere Azure CDN-Endpunkte mit Azure Traffic Manager
 
@@ -46,7 +46,7 @@ Erstellen Sie ein Azure Traffic Manager-Profil, und richten Sie den Lastenausgle
 
     Wählen Sie unter **Routingmethode** die Option **Priorität** aus.
 
-2. Fügen Sie anhand der Schritte unter [Hinzufügen von Traffic Manager-Endpunkten](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints) die CDN-Endpunkte in Ihrem Traffic Manager-Profil ein.
+2. Fügen Sie anhand der Schritte unter [Hinzufügen von Traffic Manager-Endpunkten](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints) die CDN-Endpunkte in Ihrem Traffic Manager-Profil ein.
 
     Wählen Sie unter **Typ** die Option **Externe Endpunkte** aus. Geben Sie unter **Priorität** eine Zahl ein.
 
@@ -92,7 +92,7 @@ Nachdem Sie Ihre CDN- und Traffic Manager-Profile eingerichtet haben, führen Si
 Nachdem Sie diese Schritte abgeschlossen haben, ist der Multi-CDN-Dienst mit Failoverfunktionen in Azure Traffic Manager eingerichtet. Sie können nun in Ihrer benutzerdefinierten Domäne auf die Test-URLs zugreifen. Um die Funktionalität zu testen, deaktivieren Sie den primären CDN-Endpunkt, und überprüfen Sie, ob die Anforderung ordnungsgemäß zum sekundären CDN-Endpunkt verschoben wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können auch andere Routingmethoden einrichten, z.B. das geografische Routing, um die Last auf verschiedene CDN-Endpunkte zu verteilen. Weitere Informationen finden Sie unter [Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
+Sie können auch andere Routingmethoden einrichten, z.B. das geografische Routing, um die Last auf verschiedene CDN-Endpunkte zu verteilen. Weitere Informationen finden Sie unter [Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method).
 
 
 

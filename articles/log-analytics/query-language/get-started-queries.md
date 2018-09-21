@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 71d50a55d9c584b61a1412bb03a03ad99f1bb96c
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 548c94ce502da8c6a8d208daafb5b0fb624de1e1
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39632291"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603936"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Erste Schritte mit Abfragen in Log Analytics
 
@@ -28,6 +28,7 @@ ms.locfileid: "39632291"
 > [!NOTE]
 > Vor der Durchführung dieses Tutorials sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-analytics-portal.md) lesen.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Log Analytics-Abfragen schreiben können. Es wird Folgendes vermittelt:
 
@@ -49,7 +50,7 @@ Abfragen können entweder mit einem Tabellennamen oder dem *search*-Befehl begin
 ### <a name="table-based-queries"></a>Tabellenbasierte Abfragen
 In Azure Log Analytics werden Daten in Tabellen bestehend aus mehreren Spalten organisiert. Alle Tabellen und Spalten werden im Schemabereich im Analytics-Portal angezeigt. Identifizieren Sie eine Tabelle, die Sie interessiert, und untersuchen Sie dann einen Teil der Daten:
 
-```OQL
+```KQL
 SecurityEvent
 | take 10
 ```
@@ -65,7 +66,7 @@ Die Abfrage könnte sogar ohne Hinzufügen von `| take 10` ausgeführt werden. D
 ### <a name="search-queries"></a>Suchabfragen
 Suchabfragen sind weniger strukturiert und in der Regel besser geeignet für die Suche nach Datensätzen, die einen bestimmten Wert in einer der Spalten enthalten:
 
-```OQL
+```KQL
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
@@ -87,7 +88,7 @@ Dies könnte jedoch zu viele Ergebnisse zurückgeben und ebenfalls einige Zeit d
 
 Die beste Möglichkeit, nur die letzten 10 Datensätze zu erhalten, besteht darin, **top** zu verwenden, das die gesamte Tabelle auf der Serverseite sortiert und dann die ersten Datensätze zurückgibt:
 
-```OQL
+```KQL
 SecurityEvent
 | top 10 by TimeGenerated
 ```
@@ -102,7 +103,7 @@ Wie der Name schon angibt, filtern Filter die Daten nach einer bestimmten Beding
 
 Verwenden Sie zum Hinzufügen eines Filters zu einer Abfrage den **where**-Operator gefolgt von einer oder mehreren Bedingungen. Die folgende Abfrage gibt beispielsweise nur *SecurityEvent*-Datensätze zurück, bei denen _Level_ _8_ entspricht:
 
-```OQL
+```KQL
 SecurityEvent
 | where Level == 8
 ```
@@ -118,14 +119,14 @@ Beim Schreiben von Filterbedingungen können Sie folgende Ausdrücke verwenden:
 
 Zum Filtern nach mehreren Bedingungen können Sie einerseits **und** verwenden:
 
-```OQL
+```KQL
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
 Alternativ können Sie hintereinander mehrere **where**-Elemente übergeben:
 
-```OQL
+```KQL
 SecurityEvent
 | where Level == 8 
 | where EventID == 4672
@@ -145,7 +146,7 @@ Die Zeitauswahl in der oberen linken Ecke gibt an, dass nur Datensätze von den 
 ### <a name="time-filter-in-query"></a>Zeitfilter in Abfragen
 Sie können auch einen eigenen Zeitbereich definieren, indem Sie einen Zeitfilter zur Abfrage hinzufügen. Der Zeitfilter sollte idealerweise unmittelbar nach dem Tabellennamen platziert werden: 
 
-```OQL
+```KQL
 SecurityEvent
 | where TimeGenerated > ago(30m) 
 | where toint(Level) >= 10
@@ -157,7 +158,7 @@ SecurityEvent
 ## <a name="project-and-extend-select-and-compute-columns"></a>„project“ und „extend“: Auswählen und Berechnen von Spalten
 Mit **project** können Sie bestimmte Spalten zur Einbeziehung in die Ergebnisse auswählen:
 
-```OQL
+```KQL
 SecurityEvent 
 | top 10 by TimeGenerated 
 | project TimeGenerated, Computer, Activity
@@ -174,7 +175,7 @@ Sie können über **project** auch Spalten umbenennen und neue definieren. Im fo
 * Erstellen Sie eine neue Spalte mit dem Namen *EventCode*. Die Funktion **substring()** wird verwendet, um nur die ersten vier Zeichen aus dem Feld „Activity“ abzurufen.
 
 
-```OQL
+```KQL
 SecurityEvent
 | top 10 by TimeGenerated 
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
@@ -182,7 +183,7 @@ SecurityEvent
 
 **extend** behält alle ursprünglichen Spalten im Resultset bei und definiert weitere Typen. Die folgende Abfrage verwendet **extend**, um eine *localtime*-Spalte hinzuzufügen, die einen lokalisierten TimeGenerated-Wert enthält.
 
-```OQL
+```KQL
 SecurityEvent
 | top 10 by TimeGenerated
 | extend localtime = TimeGenerated-8h
@@ -192,7 +193,7 @@ SecurityEvent
 Identifizieren Sie mit **summarize** Gruppen von Datensätzen entsprechend einer oder mehrerer Spalten, und wenden Sie Aggregationen auf diese an. Am häufigsten wird **summarize** mit *count* verwendet, womit die Anzahl von Ergebnissen in jeder Gruppe zurückgegeben wird.
 
 Die folgende Abfrage überprüft alle *Perf*-Datensätze aus der letzten Stunde, gruppiert diese nach *ObjectName* und zählt die Datensätze in jeder Gruppe: 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
@@ -200,7 +201,7 @@ Perf
 
 Manchmal ist es sinnvoll, Gruppen nach mehreren Dimensionen zu definieren. Jede eindeutige Kombination der folgenden Werte definiert eine separate Gruppe:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName, CounterName
@@ -208,7 +209,7 @@ Perf
 
 Auch die Ausführung von mathematischen oder statistischen Berechnungen für jede Gruppe ist ein häufiger Anwendungsfall. Mit dem folgenden Befehl wird der durchschnittliche *CounterValue* für jeden Computer berechnet:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer
@@ -216,7 +217,7 @@ Perf
 
 Die Ergebnisse dieser Abfrage sind jedoch bedeutungslos, da verschiedene Leistungsindikatoren vermischt wurden. Um diese aussagekräftiger zu gestalten, sollte der Mittelwert separat für jede Kombination von *CounterName* und *Computer* berechnet werden:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer, CounterName
@@ -227,7 +228,7 @@ Die Gruppierung von Ergebnissen kann auch auf einer Zeitspalte oder einem andere
 
 Zum Erstellen von Gruppen, die auf kontinuierlichen Werten basieren, wird empfohlen, den Bereich mittels **bin** in verwaltbare Einheiten zu unterteilen. Die folgende Abfrage analysiert *Perf*-Datensätze, die den freien Arbeitsspeicher (*MBytes*) auf einem bestimmten Computer ermitteln. Berechnet wird der Durchschnittswert für jeden Zeitraum je 1 Stunde in den letzten 2 Tagen:
 
-```OQL
+```KQL
 Perf 
 | where TimeGenerated > ago(2d)
 | where Computer == "ContosoAzADDS2" 

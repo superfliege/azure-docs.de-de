@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 833548a4bfca83a8ee6971f05a4f308cc54d5b5d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 3a0e2b78de8cea3929ac457bab3d5e07a2b85401
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40191113"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603378"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Log Analytics-Abfragen
 
 > [!NOTE]
 > Vor der Durchführung dieser Lektion sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-analytics-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen.
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 In diesem Artikel wird das Arbeiten mit Daten für Datum und Uhrzeit in Log Analytics-Abfragen beschrieben.
 
@@ -47,33 +49,33 @@ Zeiträume werden als Dezimalwert gefolgt von einer Zeiteinheit ausgedrückt:
 
 datetime-Werte können durch Umwandeln einer Zeichenfolge mithilfe des Operators `todatetime` erstellt werden. Zur Überprüfung der in einem bestimmten Zeitraum gesendeten VM-Heartbeats können Sie beispielsweise den[Operator „between“](https://docs.loganalytics.io/docs/Language-Reference/Scalar-operators/between-operator) verwenden, der sich für die Angabe eines bestimmten Zeitraums eignet...
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated between(datetime("2018-06-30 22:46:42") .. datetime("2018-07-01 00:57:27"))
 ```
 
 Ein weiteres gängiges Szenario besteht in dem Vergleich eines datetime-Werts mit dem vorhandenen Wert. Wenn Sie beispielsweise sämtliche Heartbeats der letzten zwei Minuten anzeigen möchten, können Sie den Operator `now` zusammen mit einem timespan-Wert verwenden, der zwei Minuten darstellt:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > now() - 2m
 ```
 
 Für diese Funktion ist auch eine Verknüpfung verfügbar:
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > now(-2m)
 ```
 
 Die kürzeste und am besten lesbare Methode besteht jedoch in der Verwendung des Operators `ago`:
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(2m)
 ```
 
 Angenommen, Ihnen ist die Start- und Endzeit nicht bekannt, sondern die Startzeit und die Dauer. Sie können die Abfrage wie folgt erneut generieren:
 
-```OQL
+```KQL
 let startDatetime = todatetime("2018-06-30 20:12:42.9");
 let duration = totimespan(25m);
 Heartbeat
@@ -84,7 +86,7 @@ Heartbeat
 ## <a name="converting-time-units"></a>Konvertieren von Zeiteinheiten
 Es kann hilfreich sein, einen datetime- oder timespan-Wert in einer nicht standardmäßigen Zeiteinheit auszudrücken. Angenommen beispielsweise, Sie überprüfen Fehlerereignisse der letzten 30 Minuten und benötigen eine berechnete Spalte, in der angezeigt wird, wann das Ereignis aufgetreten ist:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -93,7 +95,7 @@ Event
 
 Sie können sehen, dass die Spalte _timeAgo_ Werte wie z.B. „00:09:31.5118992“ enthält. Diese sind demnach wie folgt formatiert: hh:mm:ss.fffffff. Wenn Sie diese Werte in _numver_ von Minuten seit der Startzeit formatieren möchten, müssen Sie diesen Wert einfach durch „1 Minute“ teilen:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(30m)
 | where EventLevelName == "Error"
@@ -107,7 +109,7 @@ Ein weiteres sehr gängiges Szenario besteht in der Notwendigkeit, Statistiken �
 
 Mit der folgenden Abfrage können Sie die Anzahl der Ereignisse abrufen, die in der letzten halben Stunde alle 5 Minuten aufgetreten sind:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(30m)
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
@@ -125,7 +127,7 @@ Dadurch wird die folgende Tabelle erzeugt:
 
 Eine weitere Möglichkeit zum Erstellen von Buckets für die Ergebnisse besteht in der Verwendung von Funktionen, wie z.B. `startofday`:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(4d)
 | summarize events_count=count() by startofday(TimeGenerated) 
@@ -145,7 +147,7 @@ Dadurch werden die folgenden Ergebnisse erzeugt:
 ## <a name="time-zones"></a>Zeitzonen
 Da alle datetime-Werte in UTC ausgedrückt werden, ist es häufig hilfreich, diese Werte in die lokale Zeitzone zu konvertieren. Verwenden Sie beispielsweise die folgende Berechnung zum Konvertieren von UTC- in PST-Zeiten:
 
-```OQL
+```KQL
 Event
 | extend localTimestamp = TimeGenerated - 8h
 ```

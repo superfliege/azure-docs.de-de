@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 39dc5800edd743cdc950c7a96f7633fb4c0a7c45
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 043b823fe9e2bc272e6f66f7edee396ea52b92e5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210340"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720343"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Ändern des Clusters von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht. In diesem Artikel wird beschrieben, wie Sie einen aktuell ausgeführten Service Fabric-Cluster für die Verwendung des allgemeinen Namens (anstelle des Zertifikatfingerabdrucks) aktualisieren.
@@ -56,12 +56,14 @@ $VmssName                  = "prnninnxj"
 New-AzureRmResourceGroup -Name $KeyVaultResourceGroupName -Location $region
 
 # Create the new key vault
-$newKeyVault = New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName -Location $region -EnabledForDeployment 
+$newKeyVault = New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName `
+    -Location $region -EnabledForDeployment 
 $resourceId = $newKeyVault.ResourceId 
 
 # Add the certificate to the key vault.
 $PasswordSec = ConvertTo-SecureString -String $Password -AsPlainText -Force
-$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName  -FilePath $certFilename -Password $PasswordSec
+$KVSecret = Import-AzureKeyVaultCertificate -VaultName $vaultName -Name $certName `
+    -FilePath $certFilename -Password $PasswordSec
 
 $CertificateThumbprint = $KVSecret.Thumbprint
 $CertificateURL = $KVSecret.SecretId
@@ -82,10 +84,12 @@ $certConfig = New-AzureRmVmssVaultCertificateConfig -CertificateUrl $Certificate
 $vmss = Get-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault `
+    -VaultCertificate $certConfig
 
 # Update the VM scale set 
-Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose
+Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
+    -Name $VmssName -VirtualMachineScaleSet $vmss 
 ```
 
 ## <a name="download-and-update-the-template-from-the-portal"></a>Herunterladen der Vorlage aus dem Portal und Aktualisieren der Vorlage
@@ -107,10 +111,10 @@ Laden Sie die Vorlagedatei und die JSON-Parameterdatei auf Ihren lokalen Compute
 1. Fügen Sie im Abschnitt **parameters** einen Parameter *certificateCommonName* hinzu:
     ```json
     "certificateCommonName": {
-      "type": "string",
-      "metadata": {
-        "description": "Certificate Commonname"
-      }
+        "type": "string",
+        "metadata": {
+            "description": "Certificate Commonname"
+        }
     },
     ```
 
@@ -118,34 +122,36 @@ Laden Sie die Vorlagedatei und die JSON-Parameterdatei auf Ihren lokalen Compute
 
 2. Aktualisieren Sie in der Ressource **Microsoft.Compute/virtualMachineScaleSets** die VM-Erweiterung, damit in den Zertifikateinstellungen anstelle des Fingerabdrucks der allgemeine Name verwendet wird.  Fügen Sie unter **virtualMachineProfile**->**extensionProfile**->**extensions**->**properties**->**settings**->**certificate** den Eintrag `"commonNames": ["[parameters('certificateCommonName')]"],` hinzu, und entfernen Sie `"thumbprint": "[parameters('certificateThumbprint')]",`.
     ```json
-    "virtualMachineProfile": {
-              "extensionProfile": {
-                "extensions": [
-                  {
+        "virtualMachineProfile": {
+        "extensionProfile": {
+            "extensions": [
+                {
                     "name": "[concat('ServiceFabricNodeVmExt','_vmNodeType0Name')]",
                     "properties": {
-                      "type": "ServiceFabricNode",
-                      "autoUpgradeMinorVersion": true,
-                      "protectedSettings": {
-                        "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
-                        "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
-                      },
-                      "publisher": "Microsoft.Azure.ServiceFabric",
-                      "settings": {
-                        "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
-                        "nodeTypeRef": "[variables('vmNodeType0Name')]",
-                        "dataPath": "D:\\SvcFab",
-                        "durabilityLevel": "Bronze",
-                        "enableParallelJobs": true,
-                        "nicPrefixOverride": "[variables('subnet0Prefix')]",
-                        "certificate": {
-                          "commonNames": ["[parameters('certificateCommonName')]"],                          
-                          "x509StoreName": "[parameters('certificateStoreValue')]"
-                        }
-                      },
-                      "typeHandlerVersion": "1.0"
+                        "type": "ServiceFabricNode",
+                        "autoUpgradeMinorVersion": true,
+                        "protectedSettings": {
+                            "StorageAccountKey1": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key1]",
+                            "StorageAccountKey2": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('supportLogStorageAccountName')),'2015-05-01-preview').key2]"
+                        },
+                        "publisher": "Microsoft.Azure.ServiceFabric",
+                        "settings": {
+                            "clusterEndpoint": "[reference(parameters('clusterName')).clusterEndpoint]",
+                            "nodeTypeRef": "[variables('vmNodeType0Name')]",
+                            "dataPath": "D:\\SvcFab",
+                            "durabilityLevel": "Bronze",
+                            "enableParallelJobs": true,
+                            "nicPrefixOverride": "[variables('subnet0Prefix')]",
+                            "certificate": {
+                                "commonNames": [
+                                    "[parameters('certificateCommonName')]"
+                                ],
+                                "x509StoreName": "[parameters('certificateStoreValue')]"
+                            }
+                        },
+                        "typeHandlerVersion": "1.0"
                     }
-                  },
+                },
     ```
 
 3.  Aktualisieren Sie in der Ressource **Microsoft.ServiceFabric/clusters** die API-Version auf „2018-02-01“.  Fügen Sie auch eine Einstellung **certificateCommonNames** mit der Eigenschaft **commonNames** hinzu, und entfernen Sie die Einstellung **certificate** (mit der Eigenschaft „Thumbprint“), wie im folgenden Beispiel gezeigt:
@@ -156,22 +162,22 @@ Laden Sie die Vorlagedatei und die JSON-Parameterdatei auf Ihren lokalen Compute
         "name": "[parameters('clusterName')]",
         "location": "[parameters('clusterLocation')]",
         "dependsOn": [
-        "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
+            "[concat('Microsoft.Storage/storageAccounts/', variables('supportLogStorageAccountName'))]"
         ],
         "properties": {
-        "addonFeatures": [
-            "DnsService",
-            "RepairManager"
-        ],        
-        "certificateCommonNames": {
-            "commonNames": [
-            {
-                "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": ""
-            }
+            "addonFeatures": [
+                "DnsService",
+                "RepairManager"
             ],
-            "x509StoreName": "[parameters('certificateStoreValue')]"
-        },
+            "certificateCommonNames": {
+                "commonNames": [
+                    {
+                        "certificateCommonName": "[parameters('certificateCommonName')]",
+                        "certificateIssuerThumbprint": ""
+                    }
+                ],
+                "x509StoreName": "[parameters('certificateStoreValue')]"
+            },
         ...
     ```
 
@@ -184,7 +190,8 @@ $clusterloc="southcentralus"
 
 New-AzureRmResourceGroup -Name $groupname -Location $clusterloc
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" -Verbose
+New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
+    -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

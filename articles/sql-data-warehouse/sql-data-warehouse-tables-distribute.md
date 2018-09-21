@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b6d6dd5f000c4295ffdf64f7d2f1ece4f625678
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 36db91cd7c4dad3c28c0c110ee837ca6d1284959
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307516"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575379"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Leitfaden für das Entwerfen verteilter Tabellen in Azure SQL Data Warehouse
 Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen in Azure SQL Data Warehouse.
@@ -174,7 +174,7 @@ Um zu entscheiden, ob die Datenschiefe in einer Tabelle beseitigt werden sollte,
 Da die Verteilungsspalte für eine vorhandene Tabelle nicht geändert werden kann, muss die Tabelle zur Behebung der Datenschiefe in der Regel mit einer anderen Verteilungsspalte neu erstellt werden.  
 
 ### <a name="re-create-the-table-with-a-new-distribution-column"></a>Neuerstellen der Tabelle mit einer neuen Verteilungsspalte
-In diesem Beispiel wird [CREATE TABLE AS SELECT](https://docs.microsoft.com/en-us/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) verwendet, um eine Tabelle mit einer anderen Hashverteilungsspalte neu zu erstellen.
+In diesem Beispiel wird [CREATE TABLE AS SELECT](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?view=aps-pdw-2016-au7) verwendet, um eine Tabelle mit einer anderen Hashverteilungsspalte neu zu erstellen.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_CustomerKey]

@@ -3,7 +3,7 @@ title: Erstellen und Veröffentlichen von Marketplace-Elementen mithilfe des Mar
 description: Hier erfahren Sie, wie Sie mithilfe des Veröffentlichungstoolkits in kurzer Zeit Marketplace-Elemente erstellen.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/14/2017
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 61ee3296429f9641643f1c9268ae89e3691fcfa1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ade78dd992e8d1d2eda2cf27d44e52c4030563f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386876"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630924"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Hinzufügen von Marketplace-Elementen mithilfe des Veröffentlichungstools
 Durch Hinzufügen Ihrer Inhalte zum [Azure Stack-Marketplace](azure-stack-marketplace.md) werden Ihre Lösungen für Sie und Ihre Mandanten für die Bereitstellung verfügbar.  Das Marketplace-Toolkit erstellt Azure Marketplace-Paketdateien (AZPKG-Dateien) auf der Grundlage Ihrer IaaS-Azure Resource Manager-Vorlagen oder VM-Erweiterungen.  Darüber hinaus können Sie mit dem Marketplace-Toolkit AZPKG-Dateien veröffentlichen, die entweder mit dem Tool oder [manuell](azure-stack-create-and-publish-marketplace-item.md) erstellt wurden.  In diesem Thema erfahren Sie, wie Sie das Tool herunterladen, ein Marketplace-Element auf der Grundlage einer VM-Vorlage erstellen und das Element anschließend im Azure Stack-Marketplace veröffentlichen.     
@@ -75,7 +75,7 @@ In diesem Abschnitt veröffentlichen Sie das Marketplace-Element in Ihrem Azure 
     |Feld|BESCHREIBUNG|
     |-----|-----|
     | Service Admin Name (Dienstadministratorname) | Das Dienstadministratorkonto.  Beispiel: ServiceAdmin@mydomain.onmicrosoft.com |
-    | Password | Das Kennwort für das Dienstadministratorkonto. |
+    | Kennwort | Das Kennwort für das Dienstadministratorkonto. |
     | API-Endpunkt | Der Azure Stack-Azure Resource Manager-Endpunkt.  Beispiel: management.local.azurestack.external |
 2.  Klicken Sie auf **Veröffentlichen**. Das Veröffentlichungsprotokoll wird angezeigt.
 3.  Nun können Sie Ihr veröffentlichtes Element über das Azure Stack-Portal bereitstellen.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: d5132cf2414045ca1343354215b2a4564f696190
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: efdc9cfbbe9a78571e0a56437e512d0cbbc18b3e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044769"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297270"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Planen von in die Azure-Domäne eingebundenen Hadoop-Clustern in HDInsight
 
@@ -61,7 +61,7 @@ Weitere Informationen finden Sie unter [Konfigurieren von in die Domäne eingebu
 
 Wenn Sie eine lokale Active Directory-Instanz oder komplexere Active Directory-Setups für Ihre Domäne haben, können Sie diese Identitäten anhand von Azure AD Connect mit Azure synchronisieren. Anschließend können Sie Azure AD DS auf diesem Active Directory-Mandanten aktivieren. 
 
-Da Kerberos auf Kennworthashes angewiesen ist, müssen Sie [die Kennworthashsynchronisierung auf Azure AD DS aktivieren](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Wenn Sie die Option „Verbund mit Active Directory Federation Services (AD FS)“ auswählen, können Sie optional die Kennworthashsynchronisierung als zusätzliche Sicherheit für den Fall aktivieren, dass Ihre AD FS-Infrastruktur ausfällt. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). 
+Da Kerberos auf Kennworthashes angewiesen ist, müssen Sie [die Kennworthashsynchronisierung auf Azure AD DS aktivieren](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Wenn Sie die Option „Verbund mit Active Directory Federation Services (AD FS)“ auswählen, können Sie optional die Kennworthashsynchronisierung als zusätzliche Sicherheit für den Fall aktivieren, dass Ihre AD FS-Infrastruktur ausfällt. Weitere Informationen finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md). 
 
 Die alleinige Verwendung von Active Directory oder Active Directory auf IaaS-VMs, ohne Azure AD und Azure AD DS, wird für in die Domäne eingebundene HDInsight-Cluster nicht unterstützt.
 

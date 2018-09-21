@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e64f0cc65ade870425f73989209e8bef8ec8d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4c33466af6e57264e02a7d5c298f7f1f9fbf4ed8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630285"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717300"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Übersicht über die automatische Skalierung mit Azure-VM-Skalierungsgruppen
 Mit einer Azure-VM-Skalierungsgruppe kann die Anzahl von VM-Instanzen, von denen Ihre Anwendung ausgeführt wird, automatisch erhöht oder verringert werden. Mit diesem automatisierten und elastischen Verhalten wird der Verwaltungsaufwand reduziert, der für das Überwachen und Optimieren der Leistung Ihrer Anwendung anfällt. Sie erstellen Regeln, mit denen die angemessene Leistung definiert wird, die für eine positive Kundenerfahrung erforderlich ist. Wenn diese definierten Schwellenwerte erfüllt sind, werden von der automatischen Skalierung die Aktionen zum Anpassen der Kapazität Ihrer Skalierungsgruppe durchgeführt. Außerdem können Sie Ereignisse planen, um die Kapazität Ihrer Skalierungsgruppe zu festen Zeiten automatisch zu erhöhen oder zu verringern. Dieser Artikel enthält eine Übersicht darüber, welche Leistungsmetriken verfügbar sind und welche Aktionen von der automatischen Skalierung durchgeführt werden können.
@@ -106,7 +106,7 @@ Wenn eine Regel für die automatische Skalierung ausgelöst wird, kann Ihre Skal
 | Anzahl erhöhen um   | Es wird eine feste Anzahl von VM-Instanzen erstellt. Nützlich für Skalierungsgruppen mit einer kleineren Anzahl von VMs.                                           |
 | Prozentsatz erhöhen um | Eine prozentuale Erhöhung der VM-Instanzen. Ist gut für größere Skalierungsgruppen geeignet, bei denen eine Erhöhung um eine festgelegte Anzahl nicht zu einer merklichen Verbesserung der Leistung führt. |
 | Anzahl erhöhen auf   | Es werden so viele VM-Instanzen erstellt, wie benötigt werden, um einen gewünschten Maximalwert zu erreichen.                                                            |
-| Anzahl verringern auf   | Es wird eine feste Anzahl von VM-Instanzen entfernt. Nützlich für Skalierungsgruppen mit einer kleineren Anzahl von VMs.                                           |
+| Anzahl verringern um   | Es wird eine feste Anzahl von VM-Instanzen entfernt. Nützlich für Skalierungsgruppen mit einer kleineren Anzahl von VMs.                                           |
 | Prozentsatz verringern um | Eine prozentuale Verringerung der VM-Instanzen. Ist gut für größere Skalierungsgruppen geeignet, bei denen eine Verringerung um eine festgelegte Anzahl nicht zu einer merklichen Verringerung des Ressourcenverbrauchs und der Kosten führt. |
 | Anzahl verringern auf   | Es werden so viele VM-Instanzen entfernt, wie benötigt werden, um einen gewünschten Minimalwert zu erreichen.                                                            |
 

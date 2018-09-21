@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349227"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298301"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -39,14 +39,14 @@ ms.locfileid: "44349227"
 
 Diese Voraussetzungen gelten für Azure AD Premium-PoC in jedem Fall.
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Definierter Azure AD-Mandant mit gültigem Azure-Abonnement | [Einrichten eines Azure Active Directory-Mandanten](develop/quickstart-create-new-tenant.md)<br/>**Hinweis:** Wenn Sie bereits über eine Umgebung mit Azure AD Premium-Lizenzen verfügen, können Sie unter https://aka.ms/accessaad ein Abonnement ohne Obergrenze abschließen. <br/>Weitere Informationen finden Sie unter https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ sowie unter https://technet.microsoft.com/library/dn832618.aspx. |
 | Definierte und überprüfte Domäne | [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Hinweis:** Einige Workloads wie Power BI können einen Azure AD-Mandanten unbemerkt bereitgestellt haben. Navigieren Sie zu https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration, um zu prüfen, ob eine bestimmte Domäne einem Mandanten zugeordnet ist. Bei Erfolg ist die Domäne bereits einem Mandanten zugeordnet. Dann ist möglicherweise eine Übernahme nötig. Wenn dies der Fall ist, hilft Microsoft Ihnen gerne weiter. Weitere Informationen zu den Übernahmeoptionen finden Sie unter: [Was ist die Self-Service-Registrierung für Azure?](users-groups-roles/directory-self-service-signup.md) |
 | Aktivierte Testversion von Azure AD Premium oder EMS | [Azure Active Directory Premium einen Monat lang gratis](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC-Benutzern zugewiesene Azure AD Premium- oder EMS-Lizenzen | [Lizenzieren von sich selbst und Ihrer Benutzer in Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
 | Anmeldeinformationen eines globalen Azure AD-Administrators | [Zuweisen von Administratorrollen in Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
-| Optional, jedoch dringend empfohlen: parallele Laborumgebung als Fallback | [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
+| Optional, jedoch dringend empfohlen: parallele Laborumgebung als Fallback | [Voraussetzungen für Azure AD Connect](hybrid/how-to-connect-install-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Verzeichnissynchronisierung – Kennworthashsynchronisierung – Neue Installation
 
@@ -54,25 +54,25 @@ Geschätzter Zeitaufwand: 60 Minuten für unter 1.000 PoC-Benutzer
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
-| Server zum Ausführen von Azure AD Connect | [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
-| Ausrichtung auf PoC-Benutzer in der gleichen Domäne, die Teil einer Sicherheitsgruppe sind, und auf Organisationseinheiten | [Benutzerdefinierte Installation von Azure AD Connect](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
-| Ermitteln der für den PoC erforderlichen Azure AD Connect-Features | [Herstellen einer Verbindung zwischen Active Directory und Azure Active Directory – Konfigurieren der Synchronisierungsfunktionen](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Besorgen aller notwendigen Anmeldeinformationen für die lokalen und die Cloudumgebungen  | [Azure AD Connect: Konten und Berechtigungen](./connect/active-directory-aadconnect-accounts-permissions.md) |
+| Server zum Ausführen von Azure AD Connect | [Voraussetzungen für Azure AD Connect](hybrid/how-to-connect-install-prerequisites.md) |
+| Ausrichtung auf PoC-Benutzer in der gleichen Domäne, die Teil einer Sicherheitsgruppe sind, und auf Organisationseinheiten | [Benutzerdefinierte Installation von Azure AD Connect](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) |
+| Ermitteln der für den PoC erforderlichen Azure AD Connect-Features | [Herstellen einer Verbindung zwischen Active Directory und Azure Active Directory – Konfigurieren der Synchronisierungsfunktionen](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| Besorgen aller notwendigen Anmeldeinformationen für die lokalen und die Cloudumgebungen  | [Azure AD Connect: Konten und Berechtigungen](hybrid/reference-connect-accounts-permissions.md) |
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Herunterladen der aktuellen Version von Azure AD Connect | [Herunterladen von Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) |
-| Azure AD Connect auf die einfachste Weise installieren: Express <br/>1. Filtern Sie nach der Zielorganisationseinheit, um den Zeitbedarf des Synchronisierungszyklus zu minimieren.<br/>2. Wählen Sie die Zielbenutzer in der lokalen Gruppe aus.<br/>3. Stellen Sie die für den PoC erforderlichen Features bereit. | [Azure AD Connect: Benutzerdefinierte Installation: Filterung von Domänen und Organisationseinheiten](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: Benutzerdefinierte Installation: Gruppenbasierte Filterung](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: Integrieren Ihrer lokalen Identitäten in Azure Active Directory: Konfigurieren der Synchronisierungsfunktionen](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Öffnen Sie die Azure AD Connect-Benutzeroberfläche und zeigen Sie die ausgeführten Profile an (Import, Synchronisation und Export). | [Azure AD Connect Sync: Scheduler](./connect/active-directory-aadconnectsync-feature-scheduler.md) |
+| Azure AD Connect auf die einfachste Weise installieren: Express <br/>1. Filtern Sie nach der Zielorganisationseinheit, um den Zeitbedarf des Synchronisierungszyklus zu minimieren.<br/>2. Wählen Sie die Zielbenutzer in der lokalen Gruppe aus.<br/>3. Stellen Sie die für den PoC erforderlichen Features bereit. | [Azure AD Connect: Benutzerdefinierte Installation: Filterung von Domänen und Organisationseinheiten](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: Benutzerdefinierte Installation: Gruppenbasierte Filterung](hybrid/how-to-connect-install-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: Integrieren Ihrer lokalen Identitäten in Azure Active Directory: Konfigurieren der Synchronisierungsfunktionen](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| Öffnen Sie die Azure AD Connect-Benutzeroberfläche und zeigen Sie die ausgeführten Profile an (Import, Synchronisation und Export). | [Azure AD Connect Sync: Scheduler](hybrid/how-to-connect-sync-feature-scheduler.md) |
 | Öffnen Sie das [Azure AD-Verwaltungsportal](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/), wechseln Sie zum Blatt „Alle Benutzer“ und fügen Sie die Spalte „Autoritätsquelle“ hinzu. Die Benutzer werden mit der Markierung „Windows Server AD“ angezeigt. | [Azure AD-Verwaltungsportal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) |
 
 ### <a name="considerations"></a>Überlegungen
 
-1. Die Überlegungen zur Sicherheit der Kennworthashsynchronisierung [finden Sie hier](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).  Wenn die Kennworthashsynchronisierung für Pilotbenutzer keine Option ist, können Sie diese Alternativen in Betracht ziehen:
+1. Die Überlegungen zur Sicherheit der Kennworthashsynchronisierung [finden Sie hier](hybrid/how-to-connect-password-hash-synchronization.md).  Wenn die Kennworthashsynchronisierung für Pilotbenutzer keine Option ist, können Sie diese Alternativen in Betracht ziehen:
    * Erstellen Sie Testbenutzer in der Produktionsdomäne. Stellen Sie sicher, dass kein anderes Konto synchronisiert wird.
    * Migrieren Sie zu einer UAT-Umgebung.
 2.  Wenn Sie im Verbund arbeiten möchten, sollten Sie die Kosten einer Verbundlösung in Verbindung mit einem lokalen Identitätsanbieter, die nach dem PoC entstehen, kennen und mit den erstrebten Vorteilen abwiegen:
@@ -88,7 +88,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Assets (Bilder, Logos usw.): Achten Sie darauf, dass Assets die richtige Größe für die Visualisierung haben. | [Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure Active Directory](active-directory-branding-custom-signon-azure-portal.md) |
 | Optional: Wenn in der Umgebung ein AD FS-Server vorhanden ist, greifen Sie auf den Server zu, um das Webthema anzupassen. | [AD FS Anmelde-Anpassung durch den Benutzer](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/ad-fs-user-sign-in-customization) |
@@ -97,7 +97,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Wechseln Sie zum Azure AD-Verwaltungsportal. | [Azure AD-Verwaltungsportal: Unternehmensbranding](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
 | Laden Sie die Assets für die Anmeldeseite hoch (Herologo, kleines Logo, Label usw.). Optional: Wenn Sie über AD FS verfügen, passen Sie diese Assets an die AD FS-Anmeldeseiten an. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite: Anpassbare Elemente](fundamentals/customize-branding.md) |
@@ -116,13 +116,13 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Alle PoC-Benutzer sind Teil der Sicherheitsgruppe (Cloud oder lokal). | [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Wechseln Sie zum Blatt „Lizenzen“ im Azure AD-Verwaltungsportal. | [Azure AD-Verwaltungsportal: Lizenzierung](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
 | Weisen Sie die Lizenzen der Sicherheitsgruppe mit PoC-Benutzern zu. | [Zuweisen von Lizenzen zu einer Gruppe von Benutzern in Azure Active Directory](users-groups-roles/licensing-groups-assign.md) |
@@ -137,7 +137,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Testumgebung für die SaaS-Anwendung ist verfügbar. In diesem Handbuch verwendet wir ServiceNow als Beispiel.<br/>Es wird dringend empfohlen, eine Testinstanz zu verwenden, um Unstimmigkeiten beim Navigieren mit der vorhandenen Datenqualität und den Zuordnungen zu minimieren. | Navigieren Sie zu https://developer.servicenow.com/app.do#!/home, um den Prozess zur Beschaffung einer Testinstanz zu starten. |
 | Administratorzugriff auf die Verwaltungskonsole für ServiceNow | [Tutorial: Azure Active Directory-Integration mit ServiceNow](saas-apps/servicenow-tutorial.md) |
@@ -145,7 +145,7 @@ Geschätzter Zeitaufwand: 60 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Teilen Sie das Tutorial über die Microsoft-Dokumentation mit allen Akteuren.  | [Tutorial: Azure Active Directory-Integration mit ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Setzen Sie ein Arbeitstreffen an, und gehen Sie das Tutorial mit jedem Akteur durch. | [Tutorial: Azure Active Directory-Integration mit ServiceNow](saas-apps/servicenow-tutorial.md) |
@@ -172,7 +172,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Testumgebung für SaaS-Anwendungen. Beispiele für Kennwort-SSO sind HipChat und Twitter. Für andere Anwendungen benötigen Sie die genaue URL der Seite, auf der sich das HTML-Anmeldeformular befindet. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
 | Testkonten für die Anwendungen. | [Registrieren bei Twitter](https://twitter.com/signup?lang=en)<br/>[Kostenlos registrieren bei HipChat](https://www.hipchat.com/sign_up) |
@@ -181,7 +181,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
@@ -207,7 +207,7 @@ Geschätzter Zeitaufwand: 30 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Halten Sie die Liste der Zielanwendungen und die genauen Anmelde-URLs bereit. Als Beispiel können Sie Twitter verwenden. | [Twitter auf Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Registrieren bei Twitter](https://twitter.com/signup?lang=en) |
 | Freigegebene Anmeldeinformationen für diese SaaS-Anwendung. | [Gemeinsame Nutzung von Konten mit Azure AD](active-directory-sharing-accounts.md)<br/>[Automatisierte Azure AD-Kennwortrollover für Facebook, Twitter und LinkedIn ab sofort in der Vorschau! – Enterprise Mobility and Security Blog] (Blog zu Enterprise Mobility + Security) (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
@@ -216,7 +216,7 @@ Geschätzter Zeitaufwand: 30 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Installieren der Browsererweiterung | [Zugriffsbereichserweiterung für IE](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Zugriffsbereichserweiterung für Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Zugriffsbereichserweiterung für Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 | Konfigurieren der Anwendung über den Katalog | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Neuer und verbesserter Anwendungskatalog](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
@@ -240,7 +240,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Ein Basic- oder Premium-Abonnement für Microsoft Azure AD und ein Azure AD-Verzeichnis, für das Sie als globaler Administrator fungieren | [Azure Active Directory-Editionen](fundamentals/active-directory-whatis.md) |
 | Eine lokal gehostete Webanwendung, die Sie für Remotezugriff konfigurieren möchten |  |
@@ -251,7 +251,7 @@ Geschätzter Zeitaufwand: 20 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Installieren eines Connectors auf dem Server | [Aktivieren des Anwendungsproxys über das Azure-Portal: Installieren und Registrieren des Connectors](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
 | Veröffentlichen Sie die lokale Anwendung in Azure AD als Anwendungsproxy. | [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](manage-apps/application-proxy-publish-azure-portal.md) |
@@ -273,23 +273,23 @@ Geschätzter Zeitaufwand: 60 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Azure AD Connect ist installiert und konfiguriert. | Baustein: [Verzeichnissynchronisierung – Kennworthashsynchronisierung](#directory-synchronization--password-hash-sync-phs--new-installation) |
 | Die ADLDS-Instanz entspricht den Anforderungen. | [Technische Referenz für den generischen LDAP-Connector: Übersicht über den generischen LDAP-Connector](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
-| Sie verfügen über eine Liste der Workloads der Benutzer und der Attribute dieser Workloads. | [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
+| Sie verfügen über eine Liste der Workloads der Benutzer und der Attribute dieser Workloads. | [Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute](hybrid/reference-connect-sync-attributes-synchronized.md) |
 
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Hinzufügen eines generischen LDAP-Connectors | [Technische Referenz für den generischen LDAP-Connector: Erstellen eines neuen Connectors](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
-| Erstellen Sie Ausführungsprofile für den erstellten Connector (vollständiger Import, Deltaimport, vollständige Synchronisierung, Deltasynchronisierung, Export). | [Create a Management Agent Run Profile](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx) (Erstellen eines Management-Agent-Ausführungsprofils)<br/> [Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
-| Führen Sie ein Profil für den vollständigen Import aus. Überprüfen Sie, dass sich im Connectorbereich Objekte befinden. | [Search for a Connector Space Object](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx) (Suchen nach einem Objekt des Connectorbereichs)<br/>[Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager: Connectorbereich durchsuchen](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| Erstellen Sie Synchronisierungsregeln, damit die Objekte im Metaverse über die erforderlichen Attribute für die Workloads verfügen. | [Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration: Änderungen an Synchronisierungsregeln](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
-| Starten Sie den vollständigen Synchronisierungszyklus. | [Azure AD Connect Sync: Scheduler: Starten des Schedulers](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
-| Führen Sie bei Problemen die Problembehandlung aus. | [Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
+| Erstellen Sie Ausführungsprofile für den erstellten Connector (vollständiger Import, Deltaimport, vollständige Synchronisierung, Deltasynchronisierung, Export). | [Create a Management Agent Run Profile](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx) (Erstellen eines Management-Agent-Ausführungsprofils)<br/> [Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager](hybrid/how-to-connect-sync-service-manager-ui-connectors.md)|
+| Führen Sie ein Profil für den vollständigen Import aus. Überprüfen Sie, dass sich im Connectorbereich Objekte befinden. | [Search for a Connector Space Object](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx) (Suchen nach einem Objekt des Connectorbereichs)<br/>[Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager: Connectorbereich durchsuchen](hybrid/how-to-connect-sync-service-manager-ui-connectors.md#search-connector-space) |
+| Erstellen Sie Synchronisierungsregeln, damit die Objekte im Metaverse über die erforderlichen Attribute für die Workloads verfügen. | [Azure AD Connect-Synchronisierung: Bewährte Methoden zum Ändern der Standardkonfiguration: Änderungen an Synchronisierungsregeln](hybrid/how-to-connect-sync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung](hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)<br/>[Azure AD Connect-Synchronisierung: Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |
+| Starten Sie den vollständigen Synchronisierungszyklus. | [Azure AD Connect Sync: Scheduler: Starten des Schedulers](hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler) |
+| Führen Sie bei Problemen die Problembehandlung aus. | [Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert](hybrid/tshoot-connect-object-not-syncing.md) |
 | Überprüfen Sie, ob der LDAP-Benutzer sich anmelden und auf die Anwendung zugreifen kann. | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Überlegungen
@@ -303,7 +303,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Die SaaS-Anwendung (Verbund-SSO oder Kennwort-SSO) wurde bereits konfiguriert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
 | Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
@@ -313,7 +313,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Identifizieren Sie die Gruppe, der Zugriff auf die Anwendung gewährt wurde, und konfigurieren Sie deren Besitzer.| [Verwalten der Einstellungen für eine Gruppe in Azure Active Directory](fundamentals/active-directory-groups-settings-azure-portal.md) |
 | Melden Sie sich als Besitzer der Gruppe an, und zeigen Sie die Gruppenmitgliedschaft auf der Registerkarte „Gruppen“ im Zugriffsbereich an. | [Azure Active Directory-Gruppenverwaltungsseite](https://account.activedirectory.windowsazure.com/r#/groups) |
@@ -328,7 +328,7 @@ Wenn die Bereitstellung für die Anwendung aktiviert ist, müssen Sie möglicher
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Die SaaS-Anwendung (Verbund-SSO oder Kennwort-SSO) wurde bereits konfiguriert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
 | Die Cloudgruppe, der unter 1. Zugriff auf die Anwendung gewährt wurde, wurde identifiziert. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) <br/>[Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
@@ -337,7 +337,7 @@ Wenn die Bereitstellung für die Anwendung aktiviert ist, müssen Sie möglicher
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Entfernen des Benutzers aus der Gruppe, der die App zugewiesen ist | [Verwalten der Gruppenmitgliedschaft für Benutzer in Ihrem Azure Active Directory-Mandanten](fundamentals/active-directory-groups-members-azure-portal.md) |
 | Warten Sie einige Minuten bis zur Aufhebung der Bereitstellung. | [Automatisierte SaaS-Benutzerbereitstellung in Azure AD: Wie funktioniert die automatisierte Bereitstellung?](manage-apps/user-provisioning.md#how-does-automatic-provisioning-work) |
@@ -354,14 +354,14 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Ermitteln der PoC-Benutzer, die als Teil der Sicherheitsgruppe Zugriff auf die Anwendungen anfordern werden | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
 | Die Zielanwendung ist bereitgestellt. | Baustein: [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Aufrufen des Blatts „Unternehmensanwendungen“ im Azure AD-Verwaltungsportal | [Azure AD-Verwaltungsportal: Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
 | Konfigurieren Sie die Anwendung aus den Voraussetzungen mit Self-Service. | [Neuerungen bei der Verwaltung von Unternehmensanwendungen in Azure Active Directory: Konfigurieren des Self-Service-Anwendungszugriffs](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
@@ -378,7 +378,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Aktivieren Sie die Self-Service-Kennwortverwaltung in Ihrem Mandanten. | [Azure Active Directory – Zurücksetzen von Kennwörtern für IT-Administratoren](user-help/active-directory-passwords-update-your-own-password.md) |
 | Aktivieren Sie das Kennwortrückschreiben, um Kennwörter lokal zu verwalten. Hinweis: Dies erfordert bestimmte Azure AD Connect-Versionen. | [Voraussetzungen für das Zurückschreiben von Kennwörtern](authentication/howto-sspr-writeback.md) |
@@ -387,7 +387,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Navigieren Sie zu „Azure AD-Verwaltungsportal: Kennwortzurücksetzung“. | [Azure AD-Verwaltungsportal: Kennwortzurücksetzung](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) |
 | Legen Sie die Richtlinie für die Kennwortzurücksetzung fest. Für den PoC können Sie Telefonanrufe und Q&A verwenden. Es wird empfohlen, die Pflichtregistrierung für die Anmeldung beim Zugriffsbereich zu aktivieren. |  |
@@ -410,14 +410,14 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Ermitteln der PoC-Benutzer, die MFA verwenden werden  |  |
 | Sie benötigen ein Telefon mit gutem Empfang für die MFA-Überprüfung.  | [Was ist Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md) |
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Navigieren Sie zum Blatt „Benutzer und Gruppen“ im Azure AD-Verwaltungsportal. | [Azure AD-Verwaltungsportal: Benutzer und Gruppen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
 | Wechseln Sie zum Blatt „Alle Benutzer“. |  |
@@ -437,7 +437,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Ermitteln Sie die PoC-Benutzer zum Ausrichten der Richtlinie. Diese Benutzer sollten Mitglied einer Sicherheitsgruppe sein, um den Umfang der Richtlinie für den bedingten Zugriff zu ermitteln. | [SSO-Konfiguration mit SaaS-Verbund](#saas-federated-sso-configuration) |
 | Die SaaS-Anwendung wurde bereits konfiguriert. |  |
@@ -449,7 +449,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Wechseln Sie zum Blatt „Azure AD-Verwaltungsportal: Bedingter Zugriff“. | [Azure AD-Verwaltungsportal: Bedingter Zugriff](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
 | Erstellen Sie die Richtlinie für den bedingten Zugriff:<br/>- Ausrichtung auf PoC-Benutzer unter „Benutzer und Gruppen“<br/>- Ausrichtung auf PoC-Anwendung unter „Cloud-Apps“<br/>- Ausrichtung auf alle Standorte außer vertrauenswürdigen unter „Bedingungen“ > „Standorte“. **Hinweis:** Vertrauenswürdige IPs werden im [MFA-Portal](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx) konfiguriert.<br/>- Erfordern von Multi-Factor Authentication unter „Gewährung“ | [Erstellen Sie Ihre Richtlinie für bedingten Zugriff.](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-mfa#create-your-conditional-access-policy) |
@@ -466,7 +466,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Bestimmen Sie den globalen Administrator, der Teil des PoC für PIM wird. | [Erste Schritte mit Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md) |
 | Bestimmen Sie den globalen Administrator, der Sicherheitsadministrator wird. | [Erste Schritte mit Azure AD Privileged Identity Management](privileged-identity-management/pim-getting-started.md)<br/> [Verschiedene Administratorrollen in Azure Active Directory PIM](privileged-identity-management/pim-roles.md) |
@@ -475,7 +475,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Melden Sie sich unter https://portal.azure.com als globaler Administrator (GA) an, und führen Sie den Bootstrap-Vorgang für das Blatt „PIM“ durch. Für den globalen Administrator, der diesen Schritt ausführt, erfolgt das Seeding als Sicherheitsadministrator.  Nennen wir diesen Akteur „GA1“. | [Verwenden des Sicherheits-Assistenten in Azure AD Privileged Identity Management](privileged-identity-management/pim-security-wizard.md) |
 | Bestimmen Sie den globalen Administrator, und ändern Sie seine Rolle von „Permanent“ in „Berechtigt“. Dabei sollte es sich der Übersichtlichkeit halber um einen anderen Administrator als den in Schritt 1 handeln. Nennen wir diesen Akteur „GA2“. | [Azure AD Privileged Identity Management: Hinzufügen oder Entfernen einer Benutzerrolle](privileged-identity-management/pim-how-to-add-role-to-user.md)<br/>[Was ist Azure AD Privileged Identity Management?: Konfigurieren der Rollenaktivierungseinstellungen](privileged-identity-management/pim-configure.md#configure-the-role-activation-settings)  |
@@ -497,14 +497,14 @@ Geschätzter Zeitaufwand: 20 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Gerät mit heruntergeladenem und installiertem Tor-Browser | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Zugriff auf PoC-Benutzer für die Anmeldung | [Azure Active Directory Identity Protection-Playbook](identity-protection/playbook.md) |
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Öffnen Sie den Tor-Browser. | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Melden Sie sich unter https://myapps.microsoft.com mit dem PoC-Benutzerkonto an. | [Azure Active Directory Identity Protection-Playbook: Simulieren von Risikoereignissen](identity-protection/playbook.md#simulating-risk-events) |
@@ -522,7 +522,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Gerät mit heruntergeladenem und installiertem Tor-Browser | [Herunterladen des Tor-Browsers](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Zugriff als PoC-Benutzer zum Testen |  |
@@ -531,7 +531,7 @@ Geschätzter Zeitaufwand: 10 Minuten
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Melden Sie sich unter https://portal.azure.com als globaler Administrator an, und öffnen Sie das Blatt „Identity Protection“. | https://aka.ms/aadipgetstarted |
 | Aktivieren Sie eine Richtlinie zum Anmelderisiko:<br/>- Zugewiesen zu: PoC-Benutzer<br/>- Bedingungen: Anmelderisiko mittel oder höher (die Anmeldung von einem anonymen Standort aus wird als mittleres Risiko aufgefasst)<br/>- Steuerelemente: Anfordern von MFA | [Azure Active Directory Identity Protection-Playbook: Anmelderisiko](identity-protection/playbook.md) |
@@ -549,15 +549,15 @@ Geschätzter Zeitaufwand: 20 Minuten
 
 ### <a name="pre-requisites"></a>Voraussetzungen
 
-| Voraussetzung | angeben |
+| Voraussetzung | Ressourcen |
 | --- | --- |
 | Gerät mit Benutzerzertifikat (Windows, iOS oder Android) über Unternehmens-PKI bereitgestellt | [Bereitstellen von Benutzerzertifikaten](https://msdn.microsoft.com/library/cc770857.aspx) |
-| Azure AD-Domäne im Verbund mit AD FS | [Azure AD Connect und Verbund](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Active Directory-Zertifikatdienste: Übersicht](https://technet.microsoft.com/library/hh831740.aspx)|
+| Azure AD-Domäne im Verbund mit AD FS | [Azure AD Connect und Verbund](hybrid/how-to-connect-fed-whatis.md)<br/>[Active Directory-Zertifikatdienste: Übersicht](https://technet.microsoft.com/library/hh831740.aspx)|
 | iOS-Geräte: Microsoft Authenticator-App installiert | [Erste Schritte mit der Microsoft Authenticator-App](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Schritte
 
-| Schritt | angeben |
+| Schritt | Ressourcen |
 | --- | --- |
 | Aktivieren Sie die Einstellung „Zertifikatauthentifizierung“ in AD FS. | [Configure Authentication Policies: To configure primary authentication globally in Windows Server 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) (Konfigurieren der Authentifizierungsrichtlinien: Globales Konfigurieren der primären Authentifizierung in Windows Server 2012 R2) |
 | Optional: Aktivieren Sie die zertifikatbasierte Authentifizierung in Azure AD für Exchange Active Sync-Clients. | [Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory](./authentication/active-directory-certificate-based-authentication-get-started.md) |

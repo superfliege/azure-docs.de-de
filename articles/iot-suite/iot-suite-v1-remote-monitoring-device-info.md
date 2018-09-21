@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 80f03a4cef1d79e819c59ca68a786776a5c4edb7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4efea316c05f566add3e175bc5bb18842225ede3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636095"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35758160"
 ---
 # <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>Geräteinformationen-Metadaten in der vorkonfigurierten Lösung für die Remoteüberwachung
 
@@ -33,7 +33,7 @@ Die vorkonfigurierte Lösung für die Azure IoT Suite-Remoteüberwachung ist ein
 
 Für die vorkonfigurierte Lösung für die Remoteüberwachung wird [Azure IoT Hub][lnk-iot-hub] verwendet, um für Ihre Geräte das Senden von Daten an die Cloud zu ermöglichen. Die Lösung speichert Informationen zu Geräten an drei verschiedenen Speicherorten:
 
-| Speicherort | Gespeicherte Informationen | Implementierung |
+| Standort | Gespeicherte Informationen | Implementierung |
 | -------- | ------------------ | -------------- |
 | Identitätsregistrierung | Geräte-ID, Authentifizierungsschlüssel, aktivierter Zustand | In IoT Hub integriert |
 | Gerätezwillinge | Metadaten: gemeldete Eigenschaften, gewünschte Eigenschaften, Tags | In IoT Hub integriert |
@@ -132,4 +132,4 @@ Nachdem Sie erfahren haben, wie Sie die vorkonfigurierten Lösungen anpassen, k�
 
 [lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
 [lnk-faq]: iot-suite-v1-faq.md
-[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up

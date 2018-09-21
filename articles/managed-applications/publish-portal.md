@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 11/02/2017
 ms.author: tomfitz
-ms.openlocfilehash: 69d31a7199347574e8866b275ec17ba3997d80c2
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: e52acd8587203c4729ac2bcd6e4bbc09620ead86
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305122"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35769275"
 ---
 # <a name="publish-a-service-catalog-application-through-azure-portal"></a>Veröffentlichen einer Dienstkataloganwendung über das Azure-Portal
 
@@ -23,7 +23,7 @@ Sie können [verwaltete Anwendungen](overview.md), die für Mitglieder Ihrer Org
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Geben Sie beim Veröffentlichen einer verwalteten Anwendung eine Identität zum Verwalten der Ressourcen an. Es wird empfohlen, eine Azure Active Directory-Benutzergruppe anzugeben. Informationen zum Erstellen einer Azure Active Directory-Benutzergruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md). 
+Geben Sie beim Veröffentlichen einer verwalteten Anwendung eine Identität zum Verwalten der Ressourcen an. Es wird empfohlen, eine Azure Active Directory-Benutzergruppe anzugeben. Informationen zum Erstellen einer Azure Active Directory-Benutzergruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). 
 
 Die ZIP-Datei, die die Definition der verwalteten Anwendung enthält, muss über einen URI verfügbar sein. Es wird empfohlen, die ZIP-Datei in einen Speicherblob hochzuladen. 
 

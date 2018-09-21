@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: deguhath
-ms.openlocfilehash: 559af47bcf41cd6af59f8ba1b27ff8e64e849925
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 9e5018bc4c7b90897f7f8c91169410284217b172
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296897"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577005"
 ---
 # <a name="twitter-sentiment-classification-with-azure-machine-learning-aml-package-for-text-analytics-amlpta-and-team-data-science-process-tdsp"></a>Twitter-Stimmungsklassifizierung mit dem Azure Machine Learning-Paket für Textanalysen (AMLPTA) und dem Team Data Science-Prozess (TDSP)
 
 ## <a name="introduction"></a>Einführung
 Die Standardisierung der Struktur und Dokumentation von Data Science-Projekten, die in einem feststehenden [Data Science-Lebenszyklus](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md) verankert sind, erleichtern die effektive Zusammenarbeit in Data Science-Teams.
 
-Wir haben zuvor ein [GitHub-Repository für die TDSP-Projektstruktur und -Vorlagen](https://github.com/Azure/Azure-TDSP-ProjectTemplate) veröffentlicht. Wir haben jetzt die Erstellung von Azure Machine Learning-Projekten aktiviert, die mit [TDSP-Struktur und -Dokumentationsvorlagen für Azure Machine Learning](https://github.com/amlsamples/tdsp) instanziiert sind. Anweisungen zur Verwendung von TDSP-Struktur und -Vorlagen in Azure Machine Learning werden [hier](https://docs.microsoft.com/en-us/azure/machine-learning/preview/how-to-use-tdsp-in-azure-ml) bereitgestellt. 
+Wir haben zuvor ein [GitHub-Repository für die TDSP-Projektstruktur und -Vorlagen](https://github.com/Azure/Azure-TDSP-ProjectTemplate) veröffentlicht. Wir haben jetzt die Erstellung von Azure Machine Learning-Projekten aktiviert, die mit [TDSP-Struktur und -Dokumentationsvorlagen für Azure Machine Learning](https://github.com/amlsamples/tdsp) instanziiert sind. Anweisungen zur Verwendung von TDSP-Struktur und -Vorlagen in Azure Machine Learning werden [hier](https://docs.microsoft.com/azure/machine-learning/preview/how-to-use-tdsp-in-azure-ml) bereitgestellt. 
 
 In diesem Beispiel veranschaulichen wir die Nutzung des Azure Machine Learning-Pakets für die Textanalyse und TDSP zur Entwicklung und Bereitstellung von Vorhersagemodellen für die Twitter-Stimmungsklassifizierung.
 
@@ -48,7 +48,7 @@ Den Link zum GitHub-Repository finden Sie [hier](https://github.com/Azure/Machin
 ### <a name="purpose"></a>Zweck
 Der Hauptzweck dieses Beispiels ist zu zeigen, wie ein Machine Learning-Projekt mit Team Data Science-Prozess (TDSP)-Struktur und -Vorlagen in Azure Machine Learning Workbench instanziiert und ausgeführt wird. Zu diesem Zweck verwenden wir [Twitter-Stimmungsdaten](http://cs.stanford.edu/people/alecmgo/trainingandtestdata.zip). Mit der Modellierungsaufgabe soll anhand des Texts von Tweets die Stimmungspolarität vorausgesagt werden (positiv oder negativ).
 
-### <a name="scope"></a>Umfang
+### <a name="scope"></a>Bereich
 - Durchsuchen von Daten, Schulungen und Bereitstellung von Machine Learning-Modellen, die das Problem der Vorhersage in der Übersicht der Anwendungsfälle berücksichtigt.
 - Die Projektausführung in Azure Machine Learning verwendet die Vorlage des Team Data Science-Prozesses (TDSP) aus Azure Machine Learning für dieses Projekt. Für die Ausführung und Berichterstattung des Projekts werden wir den TDSP-Lebenszyklus verwenden.
 - Operationalisierung der Projektmappe direkt aus Azure Machine Learning in Azure Container Service.
@@ -56,7 +56,7 @@ Der Hauptzweck dieses Beispiels ist zu zeigen, wie ein Machine Learning-Projekt 
 Das Projekt hebt mehrere Funktionen von Azure Machine Learning hervor, wie z.B. die Instanziierung und Verwendung der TDSP-Struktur, die Ausführung von Code in Azure Machine Learning Workbench und die einfache Operationalisierung in Azure Container Services mit Docker und Kubernetes.
 
 ## <a name="team-data-science-process-tds"></a>Team Data Science-Prozess (TDSP)
-Um dieses Beispiel auszuführen, verwenden Sie die TDSP-Projektstruktur und die Dokumentationsvorlagen. Es folgt dem [TDSP-Lebenszyklus](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle). Das Projekt wird nach den [hier](https://github.com/amlsamples/tdsp/blob/master/docs/how-to-use-tdsp-in-azure-ml.md) bereitgestellten Anweisungen erstellt.
+Um dieses Beispiel auszuführen, verwenden Sie die TDSP-Projektstruktur und die Dokumentationsvorlagen. Es folgt dem [TDSP-Lebenszyklus](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle). Das Projekt wird nach den [hier](https://github.com/amlsamples/tdsp/blob/master/docs/how-to-use-tdsp-in-azure-ml.md) bereitgestellten Anweisungen erstellt.
 
 
 <img src="./media/predict-twitter-sentiment-amltextpackage/tdsp-lifecycle2.png" alt="tdsp-lifecycle" width="800" height="600">
@@ -100,17 +100,17 @@ Wir stellen Code zum Laden und Auswerten von mehreren trainierten Modelle mit Te
 
 
 ### <a name="deploymenthttpsgithubcomazuremachinelearningsamples-amltextpackage-twittersentimentpredictiontreemastercode03deployment"></a>[Bereitstellung](https://github.com/Azure/MachineLearningSamples-AMLTextPackage-TwitterSentimentPrediction/tree/master/code/03_deployment)
-In diesem Teil stellen wir Zeiger zu Anleitungen zum Operationalisieren eines vortrainierten Stimmungsvorhersagemodells für einen Webdienst auf einem Cluster im Azure Container Service (AKS) bereit. Die Operationalisierungsumgebung stellt Docker und Kubernetes im Cluster bereit, um die Bereitstellung der Webdienste zu verwalten. Weitere Informationen zum Operationalisierungsvorgang finden Sie [hier](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-service-deploy).
+In diesem Teil stellen wir Zeiger zu Anleitungen zum Operationalisieren eines vortrainierten Stimmungsvorhersagemodells für einen Webdienst auf einem Cluster im Azure Container Service (AKS) bereit. Die Operationalisierungsumgebung stellt Docker und Kubernetes im Cluster bereit, um die Bereitstellung der Webdienste zu verwalten. Weitere Informationen zum Operationalisierungsvorgang finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy).
 
 ## <a name="conclusion"></a>Zusammenfassung
 Wir haben uns die Details zum Trainieren eines Worteinbettungsmodells mithilfe von Word2Vec und der anschließenden Anwendung der extrahierten Einbettungen als Features zum Trainieren zwei verschiedener Modelle zur Vorhersage der Stimmungspunktzahl von Twitter-Textdaten angesehen. Eines dieser Modelle wird in Azure Container Services (so) bereitgestellt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Einstieg finden Sie in der Dokumentation zum [Azure Machine Learning-Paket für Textanalysen (AMLPTA)](https://docs.microsoft.com/en-us/python/api/overview/azure-machine-learning/textanalytics?view=azure-ml-py-latest) und zum [Team Data Science-Prozess (TDSP)](https://aka.ms/tdsp).
+Weitere Informationen zum Einstieg finden Sie in der Dokumentation zum [Azure Machine Learning-Paket für Textanalysen (AMLPTA)](https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics?view=azure-ml-py-latest) und zum [Team Data Science-Prozess (TDSP)](https://aka.ms/tdsp).
 
 ## <a name="references"></a>Referenzen
-* [Team Data Science-Prozess](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/overview) 
+* [Team Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [How to use Team Data Science Process (TDSP) in Azure Machine Learning (Verwenden von Team Data Science-Prozess (TDSP) in Azure Machine Learning)](https://aka.ms/how-to-use-tdsp-in-aml)
 * [TDSP project template for Azure Machine Learning (TDSP-Projektvorlage für Azure Machine Learning)](https://aka.ms/tdspamlgithubrepo)
-* [Azure ML Workbench](https://docs.microsoft.com/en-us/azure/machine-learning/preview/)
+* [Azure ML Workbench](https://docs.microsoft.com/azure/machine-learning/preview/)
 * [Mikolov, Tomas, et al.: Distributed representations of words and phrases and their compositionality. Advances in neural information processing systems. (Verteilte Darstellung von Wörtern und Ausdrücken und ihre Kompositionalität. Fortschritte bei den neuronalen Systemen für die Informationsverarbeitung.), 2013.](https://arxiv.org/abs/1310.4546)

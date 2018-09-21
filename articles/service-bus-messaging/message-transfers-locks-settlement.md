@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: d4f387d484fe895d8b6c5196c3a5527947ee3925
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: de3f23f58ef34bdd5f9769f820d64ed7e00ca7d8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702060"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715073"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Nachrichtenübertragungen, Sperren und Abgleich
 
@@ -62,7 +62,7 @@ for (int i = 0; i < 100; i++)
 {
   tasks.Add(client.SendAsync(…));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 Dabei ist unbedingt zu beachten, dass alle asynchronen Programmiermodelle eine Form einer speicherbasierten, verborgenen Arbeitswarteschlange verwenden, die ausstehende Vorgänge enthält. Wenn [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) oder **Send** (Java) zurückgegeben wird, wird der Sendetask in dieser Arbeitswarteschlange platziert, die Protokollgeste beginnt jedoch erst, wenn der Task ausgeführt wird. Bei Code, der tendenziell eine Burstübertragung von Nachrichten generiert und bei dem Zuverlässigkeit relevant ist, sollte darauf geachtet werden, dass nicht zu viele Nachrichten gleichzeitig aktiv sind, da alle gesendeten Nachrichten Speicher belegen, bis sie tatsächlich übertragen werden.
@@ -79,7 +79,7 @@ for (int i = 0; i < 100; i++)
 
   tasks.Add(client.SendAsync(…).ContinueWith((t)=>semaphore.Release()));
 }
-await Task.WhenAll(tasks.ToArray());
+await Task.WhenAll(tasks);
 ```
 
 Anwendungen sollten **niemals** einen asynchronen „Fire-and-Forget“-Sendevorgang initiieren, ohne das Ergebnis des Vorgangs abzurufen. Andernfalls kann dies dazu führen, dass die interne und nicht sichtbare Taskwarteschlange bis zur Ausschöpfung des Speichers geladen wird und die Anwendung Sendefehler nicht erkennen kann:

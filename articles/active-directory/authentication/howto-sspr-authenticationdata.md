@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159565"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296243"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung
 
 Damit die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) bereitgestellt werden kann, müssen Authentifizierungsdaten vorhanden sein. Einige Organisationen überlassen es ihren Benutzern, dass diese ihre Authentifizierungsdaten selbst eingeben. Aber viele Organisationen bevorzugen ein Synchronisieren mit Daten, die bereits in Active Directory vorhanden ist. Die synchronisierten Daten werden für Azure AD und SSPR verfügbar gemacht, ohne dass ein Eingreifen eines Benutzers erforderlich ist, wenn Sie:
    * Die Daten ordnungsgemäß in Ihrem lokalen Verzeichnis formatieren.
-   * [Azure AD Connect durch Verwenden der Express-Einstellungen](./../connect/active-directory-aadconnect-get-started-express.md) konfigurieren.
+   * [Azure AD Connect durch Verwenden der Express-Einstellungen](../hybrid/how-to-connect-install-express.md) konfigurieren.
 
 Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: +1 4255551234).
 

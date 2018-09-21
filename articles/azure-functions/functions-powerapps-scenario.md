@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094314"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579122"
 ---
 # <a name="call-a-function-from-powerapps"></a>Aufrufen einer Funktion aus PowerApps
 Die Plattform [PowerApps](https://powerapps.microsoft.com) ermöglicht Fachleuten in Unternehmen die Erstellung von Apps ohne herkömmlichen Anwendungscode. Professionelle Entwickler können die Funktionen von PowerApps mithilfe von Azure Functions erweitern und gleichzeitig sicherstellen, dass sich PowerApps-App-Ersteller nicht mit technischen Details beschäftigen müssen.
@@ -41,7 +41,7 @@ In diesem Thema lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Ein aktives [PowerApps-Konto](https://docs.microsoft.com/en-us/powerapps/maker/signup-for-powerapps) mit den gleichen Anmeldeinformationen wie Ihr Azure-Konto 
++ Ein aktives [PowerApps-Konto](https://docs.microsoft.com/powerapps/maker/signup-for-powerapps) mit den gleichen Anmeldeinformationen wie Ihr Azure-Konto 
 + Excel und die [Excel-Beispieldatei](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) (als Datenquelle für Ihre App)
 + Absolvierung des Tutorials [Erstellen einer OpenAPI-Definition für eine Funktion](functions-openapi-definition.md)
 

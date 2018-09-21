@@ -12,18 +12,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: 93d3e25957fb1f04400fa78423a5658d32f7d5fd
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749717"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576628"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Aktivieren der Azure Active Directory-Authentifizierung für die Azure SSIS Integration Runtime
 
 In diesem Artikel wird das Erstellen einer Azure SSIS IR mit der Azure Data Factory-Dienstidentität veranschaulicht. Die Azure AD-Authentifizierung (Azure Active Directory) mit der verwalteten Dienstidentität (Managed Service Identity, MSI) für die Azure SSIS Integration Runtime können Sie die Data Factory-MSI anstelle der SQL-Authentifizierung verwenden, um eine Azure SSIS Integration Runtime zu erstellen.
 
-Weitere Informationen zur Data Factory-MSI finden Sie unter [Azure Data Factory-Dienstidentität](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity).
+Weitere Informationen zur Data Factory-MSI finden Sie unter [Azure Data Factory-Dienstidentität](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
 > Wenn Sie bereits eine Azure SSIS Integration Runtime mit der SQL-Authentifizierung erstellt haben, können Sie die IR gegenwärtig nicht wieder für die Verwendung der Azure AD-Authentifizierung mit PowerShell konfigurieren.
@@ -53,7 +53,7 @@ Sie können eine vorhandene Azure AD-Gruppe verwenden oder mithilfe von Azure AD
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Fügen Sie der Gruppe die Data Factory-MSI hinzu. Sie können die Schritte unter [Azure Data Factory-Dienstidentität](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity) durchführen, um die DIENSTPRINZIPALIDENTITÄTS-ID abzurufen (z.B. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, aber verwenden Sie nicht die DIENSTIDENTITÄTSANWENDUNGS-ID für diesen Zweck).
+3.  Fügen Sie der Gruppe die Data Factory-MSI hinzu. Sie können die Schritte unter [Azure Data Factory-Dienstidentität](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) durchführen, um die DIENSTPRINZIPALIDENTITÄTS-ID abzurufen (z.B. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, aber verwenden Sie nicht die DIENSTIDENTITÄTSANWENDUNGS-ID für diesen Zweck).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -71,7 +71,7 @@ Azure SQL-Datenbank unterstützt das Erstellen einer Datenbank mit einem Azure A
 
 ### <a name="enable-azure-ad-authentication-for-the-azure-sql-database"></a>Aktivieren der Azure AD-Authentifizierung für Azure SQL-Datenbank
 
-Sie können [die Azure AD-Authentifizierung für SQL-Datenbank](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) mithilfe der folgenden Schritte konfigurieren:
+Sie können [die Azure AD-Authentifizierung für SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) mithilfe der folgenden Schritte konfigurieren:
 
 1.  Wählen Sie im Azure-Portal im Navigationsbereich links **Alle Dienste** -> **SQL-Server** aus.
 
@@ -93,7 +93,7 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studi
 
 2.  Geben Sie im Dialogfeld **Mit Server verbinden** den Namen Ihres SQL-Servers im Feld **Servername** ein.
 
-3.  Wählen Sie im Feld **Authentifizierung** die Option **Active Directory: universell mit MFA-Unterstützung** aus. (Sie können auch andere zwei Active Directory-Authentifizierungstypen verwenden. Weitere Informationen finden Sie unter [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder der verwalteten SQL-Datenbank-Instanz](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure).)
+3.  Wählen Sie im Feld **Authentifizierung** die Option **Active Directory: universell mit MFA-Unterstützung** aus. (Sie können auch andere zwei Active Directory-Authentifizierungstypen verwenden. Weitere Informationen finden Sie unter [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder der verwalteten SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure).)
 
 4.  Geben Sie im Feld **Benutzername** den Namen des Azure AD-Kontos ein, das Sie als Serveradministrator festlegen möchten, z.B. testuser@xxxonline.com.
 
@@ -123,7 +123,7 @@ Für den nächsten Schritt benötigen Sie [Microsoft SQL Server Management Studi
 
 Die verwaltete Azure SQL-Datenbank-Instanz unterstützt nicht die Erstellung einer Datenbank mit anderen Azure AD-Benutzern als AD-Administrator. Daher müssen Sie die Azure AD-Gruppe als Active Directory-Administrator festlegen. Sie müssen keinen in der Datenbank enthaltenen Benutzer erstellen.
 
-Sie können [die Azure AD-Authentifizierung für den Server mit der verwalteten SQL-Datenbank-Instanz](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) mithilfe der folgenden Schritte konfigurieren:
+Sie können [die Azure AD-Authentifizierung für den Server mit der verwalteten SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) mithilfe der folgenden Schritte konfigurieren:
 
 7.  Wählen Sie im Azure-Portal im Navigationsbereich links **Alle Dienste** -> **SQL-Server** aus.
 
@@ -141,7 +141,7 @@ Sie können [die Azure AD-Authentifizierung für den Server mit der verwalteten 
 
 Wenn Sie Ihre Azure SSIS IR mit dem Azure-Portal bereitstellen, aktivieren Sie auf der Seite **SQL-Einstellungen** die Option „AAD Authentifizierung mit der ADF-MSI verwenden“. (Im folgenden Screenshot werden die Einstellungen für die IR mit Azure SQL-Datenbank gezeigt. Für die IR mit der verwalteten Instanz ist die Eigenschaft „Katalogdatenbank-Dienstebene“ nicht verfügbar, was auch bei anderen Einstellungen der Fall ist.)
 
-Weitere Informationen zum Erstellen einer Azure SSIS Integration Runtime finden Sie im Artikel [Erstellen einer Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+Weitere Informationen zum Erstellen einer Azure SSIS Integration Runtime finden Sie im Artikel [Erstellen einer Azure SSIS Integration Runtime in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 ![Einstellungen für die Azure SSIS Integration Runtime](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 

@@ -4,17 +4,17 @@ description: Dieser Artikel beschreibt, wie DSC-Berichtsdaten (Desired State Con
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1b3c0cd71508aef9a608e0c41e32cd079e40d4e5
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 62d201e608864949c86e52d8ac8fbf9ce8538f11
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003465"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631462"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Weiterleiten von Azure Automation DSC-Berichtsdaten an Log Analytics
 
@@ -190,11 +190,11 @@ Log Analytics bietet eine höhere operative Transparenz für Ihre Automation DSC
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Einen Überblick finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md).
-- Eine Einführung in Azure Automation DSC finden Sie unter [Erste Schritte mit Azure Automation DSC](automation-dsc-getting-started.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
-- Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation DSC-Cmdlets](/powershell/module/azurerm.automation/#automation)verfügbar.
-- Eine Preisübersicht finden Sie unter [Azure Automation DSC – Preise](https://azure.microsoft.com/pricing/details/automation/).
+- Einen Überblick finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md).
+- Eine Einführung finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
+- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
+- Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation State Configuration-Cmdlets](/powershell/module/azurerm.automation/#automation) verfügbar.
+- Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
 - Ein Verwendungsbeispiel für Azure Automation DSC in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation DSC und Chocolatey](automation-dsc-cd-chocolatey.md).
 - Wie Sie verschiedene Suchabfragen erstellen und Automation DSC-Protokolle mit Log Analytics überprüfen, erfahren Sie unter [Protokollsuchvorgänge in Log Analytics](../log-analytics/log-analytics-log-searches.md).
 - Weitere Informationen zu Log Analytics und Datenerfassungsquellen finden Sie unter [Sammeln von Azure-Speicherdaten in Log Analytics – Übersicht](../log-analytics/log-analytics-azure-storage.md)

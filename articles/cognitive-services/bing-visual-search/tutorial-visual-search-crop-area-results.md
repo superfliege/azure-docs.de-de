@@ -9,12 +9,12 @@ ms.component: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 9bc3c180f108025f442343d8c5356982a83826a6
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: dd51ed7c710cc51a9fe0e63e55aa0d2c4ea24bee
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958402"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574488"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>Tutorial: SDK für die visuelle Bing-Suche – Bildzuschneidebereich und Ergebnisse
 Das SDK für die visuelle Suche enthält eine Option zum Auswählen eines Bildbereichs und für die Onlinesuche von Bildern, die Ähnlichkeit mit dem Zuschneidebereich des größeren Bilds aufweisen.  In diesem Beispiel ist der Zuschneidebereich mit einer Person aus einem Bild angegeben, auf dem mehrere Personen zu sehen sind.  Der Code sendet den Zuschneidebereich und die URL des größeren Bilds und gibt Ergebnisse zurück, die URLs der Bing-Suche und URLs von ähnlichen online ermittelten Bildern enthalten.
@@ -44,7 +44,7 @@ In diesem Beispiel wird ein Zuschneidebereich des vorherigen Bilds genutzt, bei 
 
 ```
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
-string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
+string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
 
 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -58,7 +58,7 @@ var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest
 ```
 
 ## <a name="get-the-url-data-from-imagemoduleaction"></a>Abrufen der URL-Daten aus ImageModuleAction
-Die Ergebnisse der visuellen Suche sind `ImageTag`-Objekte.  Jedes Tag enthält eine Liste mit `ImageAction`-Objekten.  Jedes `ImageAction`-Objekt enthält ein `Data`-Feld. Hierbei handelt es sich um eine Liste mit Werten, die vom Typ der Aktion abhängen:
+Die Ergebnisse der thematischen Suche sind `ImageTag`-Objekte.  Jedes Tag enthält eine Liste mit `ImageAction`-Objekten.  Jedes `ImageAction`-Objekt enthält ein `Data`-Feld. Hierbei handelt es sich um eine Liste mit Werten, die vom Typ der Aktion abhängen:
 
 Sie können die unterschiedlichen Typen mit dem folgenden Code abrufen:
 ```
@@ -79,7 +79,7 @@ Die vollständige Anwendung gibt Folgendes zurück:
 Wie in der obigen Liste gezeigt, enthält das `ActionType`-Element von `Entity` eine Abfrage der Bing-Suche, mit der Informationen zu einer erkennbaren Person, einem Ort oder einem Gegenstand zurückgegeben werden.  Die Typen `TopicResults` und `ImageResults` enthalten Abfragen für verwandte Bilder. Die URLs in der Liste sind Verknüpfungen zu Bing-Suchergebnissen.
 
 
-## <a name="pagesincluding-actiontype-urls-of-images-found-by-visual-search"></a>PagesIncluding ActionType-URLs von Bildern, die über die visuelle Suche ermittelt wurden
+## <a name="pagesincluding-actiontype-urls-of-images-found-by-visual-search"></a>PagesIncluding ActionType-URLs von Bildern, die mittels thematischer Suche gefunden wurden
 
 Zum Abrufen der eigentlichen Bild-URLs ist eine Umwandlung erforderlich, bei der ein `ActionType`-Element als `ImageModuleAction` gelesen wird, das ein `Data`-Element mit einer Werteliste enthält.  Jeder Wert ist die URL eines Bilds.  Im Folgenden wird der Aktionstyp `PagesIncluding` in `ImageModuleAction` umgewandelt, und die Werte werden gelesen.
 ```
@@ -94,7 +94,7 @@ Zum Abrufen der eigentlichen Bild-URLs ist eine Umwandlung erforderlich, bei der
 
 ## <a name="complete-code"></a>Vollständiger Code
 
-Mit dem folgenden Code werden die vorherigen Beispiele ausgeführt. Im Text der POST-Anforderung wird eine Bildbinärdatei gesendet (zusammen mit einem cropArea-Objekt), und die URLs der Bing-Suche für jeden ActionType werden ausgegeben. Wenn ActionType auf PagesIncluding festgelegt ist, ruft der Code die ImageObject-Elemente in den ImageObject-Daten ab.  Die Daten enthalten eine Liste mit Werten, bei denen es sich um die URLs von Bildern auf Webseiten handelt.  Fügen Sie die sich ergebenden URLs der visuellen Suche in den Browser ein, um die Ergebnisse anzuzeigen. Fügen Sie die ContentUrl-Elemente in den Browser ein, um die Bilder anzuzeigen.
+Mit dem folgenden Code werden die vorherigen Beispiele ausgeführt. Im Text der POST-Anforderung wird eine Bildbinärdatei gesendet (zusammen mit einem cropArea-Objekt), und die URLs der Bing-Suche für jeden ActionType werden ausgegeben. Wenn ActionType auf PagesIncluding festgelegt ist, ruft der Code die ImageObject-Elemente in den ImageObject-Daten ab.  Die Daten enthalten eine Liste mit Werten, bei denen es sich um die URLs von Bildern auf Webseiten handelt.  Fügen Sie die sich ergebenden URLs der visuellen Suche in den Browser ein, um die Ergebnisse anzuzeigen. Kopieren Sie die ContentUrl-Elemente, und fügen Sie sie in den Browser ein, um die Bilder anzuzeigen.
 
 ```
 using System;
@@ -128,7 +128,7 @@ namespace VisualSearchFeatures
                 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
                 
                 // The ImageInfo struct specifies the crop area in the image and the URL of the larger image. 
-                string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
+                string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
                 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
                 
                 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -182,4 +182,4 @@ namespace VisualSearchFeatures
 
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-[Visual Search response](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/overview#the-response) (Visuelle Suche – Antwort)
+[Antwort der thematischen Suche](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)
