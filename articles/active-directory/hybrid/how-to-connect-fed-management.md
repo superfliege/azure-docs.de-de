@@ -189,7 +189,7 @@ Die folgenden Abschnitte enthalten detaillierte Informationen zu einigen häufig
 Zum Ändern des auf der **Anmeldeseite** angezeigten Firmenlogos verwenden Sie das unten angegebene Windows PowerShell-Cmdlet und die entsprechende Syntax.
 
 > [!NOTE]
-> Die empfohlene Größe für das Logo beträgt 260 × 35 bei 96 dpi und einer Dateigröße von höchstens 10 KB.
+> Die empfohlene Größe für das Logo beträgt 260 × 35 \@ 96 dpi und einer Dateigröße von höchstens 10 KB.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
