@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a85cd5287f6947ec17dc19291a70d6dd081e1827
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035859"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578496"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die Marketplace-GTM-Vorteile. Wichtiger ist, dass die Auswahl von Veröffentlichungsoption und Angebotstyp im Cloud-Partnerportal die Interaktion von Benutzern mit Ihrem Marketplace-Angebot definiert.
@@ -80,7 +80,7 @@ Bevor Sie ein Angebot erstellen können, müssen Sie einen Angebotstyp auswähle
 
 Ein einziger Angebotstyp kann im Cloud-Partnerportal unterschiedlich konfiguriert werden, um andere Veröffentlichungsoptionen, Aktionsaufrufe, Bereitstellungen oder Preisgestaltungen zu ermöglichen. Die Veröffentlichungsoption und Konfiguration des Angebotstyps entsprechen auch der Angebotsberechtigung und technischen Anforderungen. 
 
-Bevor Sie Ihr Angebot erstellen, informieren Sie sich in diesem [Herausgeberleitfaden](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide) über die erforderlichen Berechtigungen für Storefront und Angebotstyp und darüber hinaus über die technischen Anforderungen der Veröffentlichung.
+Bevor Sie Ihr Angebot erstellen, informieren Sie sich in diesem [Herausgeberleitfaden](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) über die erforderlichen Berechtigungen für Storefront und Angebotstyp und darüber hinaus über die technischen Anforderungen der Veröffentlichung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

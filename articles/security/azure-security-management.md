@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: efab734cc7d6facf82f622b95c12a1a27e99c5f7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159332"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575931"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
@@ -225,7 +225,7 @@ Die folgenden Ressourcen enthalten allgemeinere Informationen zu Azure und verwa
 
 * [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx) (Schützen des privilegierten Zugriffs): Enthält die technischen Details zum Entwerfen und Erstellen einer sicheren Verwaltungsarbeitsstation für die Azure-Verwaltung.
 * [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure): Enthält Informationen zu Funktionen der Azure-Plattform, mit denen das Azure-Fabric und die unter Azure ausgeführten Workloads geschützt werden.
-* [Microsoft Security Response Center](https://technet.microsoft.com/en-us/security/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z. B. Probleme mit Azure, melden oder eine E-Mail an [secure@microsoft.com](mailto:secure@microsoft.com) schreiben.
+* [Microsoft Security Response Center](https://technet.microsoft.com/security/dn440717.aspx): Hier können Sie Microsoft-Sicherheitsrisiken, z. B. Probleme mit Azure, melden oder eine E-Mail an [secure@microsoft.com](mailto:secure@microsoft.com) schreiben.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier können Sie sich über den aktuellen Stand der Azure-Sicherheit informieren.
 
 <!--Image references-->

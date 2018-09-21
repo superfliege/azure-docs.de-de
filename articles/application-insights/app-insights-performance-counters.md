@@ -1,8 +1,8 @@
 ---
 title: Leistungsindikatoren in Application Insights | Microsoft Docs
-description: "Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungsindikatoren in Application Insights."
+description: Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungsindikatoren in Application Insights.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: 40821d32c5bdfe51bb3cb205660d6f25b2c3fadc
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 7ac0a5c00e0badf8882010ae0643f8ead98b56e0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35636758"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 Windows bietet eine Vielzahl von [Leistungsindikatoren](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters) wie z.B. CPU-Belegung, Arbeitsspeicher, Datenträger und Netzwerkverwendung. Sie können auch eigene definieren. Diese Leistungsindikatoren können in [Application Insights](app-insights-overview.md) angezeigt werden, sofern Ihre Anwendung unter IIS auf einem lokalen Host oder auf einem virtuellen Computer ausgeführt wird, auf den Sie Administratorzugriff haben. In den Diagrammen werden die für Ihre aktive Anwendung verfügbaren Ressourcen angezeigt. Zudem können Sie anhand der Diagramme eine unausgeglichene Belastung der Serverinstanzen erkennen.
@@ -118,7 +119,7 @@ Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `clo
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Leistungsindikatoren in ASP.NET Core-Anwendungen
 Leistungsindikatoren werden nur unterstützt, wenn die Anwendung auf die Vollversion von .NET Framework ausgerichtet ist. Für .NET Core-Anwendungen können keine Leistungsindikatoren erfasst werden.
 
-## <a name="alerts"></a>Warnungen
+## <a name="alerts"></a>Alerts
 Wie bei anderen Metriken können Sie [eine Warnung festlegen](app-insights-alerts.md), damit Sie gewarnt werden, wenn ein Leistungsindikator einen von Ihnen festgelegten Grenzwert überschreitet. Öffnen Sie das Blatt „Warnungen“, und klicken Sie auf „Warnung hinzufügen“.
 
 ## <a name="next"></a>Nächste Schritte
