@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: e1964b7f46259e54c65aeb46aa795713922c3504
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 129d02bea6fe3668a308da0ab2a46ca8b59928e7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114611"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542243"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 In diesem Artikel wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Ein ausführliches Tutorial zum Erstellen einer Vorlage finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
@@ -33,7 +33,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
-    "functions": {  },
+    "functions": [  ],
     "resources": [  ],
     "outputs": {  }
 }
@@ -46,7 +46,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 | Parameter |Nein  |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
 | variables |Nein  |Werte, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen. |
 | functions |Nein  |Benutzerdefinierte Funktionen, die in der Vorlage verfügbar sind. |
-| resources |JA |Ressourcentypen, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden. |
+| ressourcen |JA |Ressourcentypen, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden. |
 | outputs |Nein  |Werte, die nach der Bereitstellung zurückgegeben werden. |
 
 Jedes Element weist Eigenschaften auf, die Sie festlegen können. Das folgende Beispiel zeigt die vollständige Syntax für eine Vorlage:
@@ -262,7 +262,7 @@ Sie rufen die Funktion wie folgt auf:
 ]
 ```
 
-## <a name="resources"></a>angeben
+## <a name="resources"></a>Ressourcen
 Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden. Dieser Abschnitt kann komplizierter werden, da Sie die bereitgestellten Typen verstehen müssen, um die richtigen Werte angeben zu können.
 
 ```json

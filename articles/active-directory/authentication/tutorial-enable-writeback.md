@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 9512c800a35ad4a819c657b07227d781c63c6399
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163341"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295120"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Tutorial: Aktivieren des Kennwortrückschreibens
 
@@ -29,7 +29,7 @@ In diesem Tutorial aktivieren Sie das Kennwortrückschreiben für Ihre Hybridumg
 
 * Zugriff auf einen funktionierenden Azure AD-Mandanten mit mindestens einer zugewiesenen Testlizenz.
 * Eine Konto mit Rechten vom Typ „Globaler Administrator“ in Ihrem Azure AD-Mandanten.
-* Ein vorhandener Server, der für die Ausführung einer aktuellen Version von [Azure AD Connect](../connect/active-directory-aadconnect-get-started-express.md) konfiguriert ist.
+* Ein vorhandener Server, der für die Ausführung einer aktuellen Version von [Azure AD Connect](../hybrid/how-to-connect-install-express.md) konfiguriert ist.
 * Die vorherigen Tutorials zur Self-Service-Kennwortzurücksetzung wurden abgeschlossen.
 
 ## <a name="enable-password-writeback-option-in-azure-ad-connect"></a>Aktivieren der Option für das Kennwortrückschreiben in Azure AD Connect

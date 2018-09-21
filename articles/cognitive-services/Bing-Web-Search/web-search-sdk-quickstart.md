@@ -1,6 +1,7 @@
 ---
 title: 'Schnellstart: Verwenden des Bing-Websuche-SDK für C#'
-description: Erfahren Sie, wie Sie das Bing-Websuche-SDK für C# verwenden.
+titleSuffix: Azure Cognitive Services
+description: Das Bing-Websuche-SDK erleichtert die Integration der Bing-Websuche in Ihre C#-Anwendung. In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Client instanziieren, eine Anforderung senden und die Antwort ausgeben.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: ed958f4a691b878cfa7ff9766a0fb72857cce5db
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: cebeab562a54ec68b69eb6422685cc4b596ac223
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186795"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127883"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Schnellstart: Verwenden des Bing-Websuche-SDK für C#
 
@@ -26,7 +27,7 @@ Möchten Sie den Code sofort sehen? Die [Beispiele zum Bing-Websuche-SDK für C#
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Im Folgenden sind die Tools aufgeführt, die zum Ausführen dieser Schnellstartanleitung benötigen:
+Im Folgenden sind die Tools aufgeführt, die Sie zum Ausführen dieser Schnellstartanleitung benötigen:
 
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/) oder
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
@@ -203,7 +204,7 @@ else
 
 ## <a name="declare-the-main-method"></a>Deklarieren der Main-Methode
 
-In dieser Anwendung enthält die Main-Methode Code, der den Client instanziiert, `subscriptionKey` überprüft und `WebResults` aufruft. Stellen Sie sicher, dass Sie einen gültigen Abonnementschlüssel für Ihr Azure-Konto eingeben, bevor Sie fortfahren.
+In dieser Anwendung enthält die main-Methode Code, der den Client instanziiert, `subscriptionKey` überprüft und `WebResults` aufruft. Geben Sie einen gültigen Abonnementschlüssel für Ihr Azure-Konto ein, bevor Sie fortfahren.
 
 ```csharp
 static void Main(string[] args)

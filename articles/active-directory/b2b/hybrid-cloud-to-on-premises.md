@@ -4,18 +4,18 @@ description: Beschreibt, wie Sie B2B-Cloudbenutzern mit Azure AD B2B-Zusammenarb
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346337"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297213"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -63,7 +63,7 @@ Das folgende Diagramm bietet einen allgemeinen Überblick darüber, wie der Azur
 Sie können die lokalen B2B-Benutzerobjekte mithilfe von Richtlinien für die Lebenszyklusverwaltung verwalten. Beispiel: 
 
 - Sie können Richtlinien für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für den Gastbenutzer einrichten, damit während der Anwendungsproxy-Authentifizierung MFA verwendet wird. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit](conditional-access.md).
-- Alle Sponsorships, Zugriffsüberprüfungen, Kontoüberprüfungen usw., die für die B2B-Cloudbenutzer ausgeführt werden, gelten für die lokalen Benutzer. Wenn der Cloudbenutzer beispielsweise durch Ihre Richtlinien für die Lebenszyklusverwaltung gelöscht wird, wird der lokale Benutzer ebenfalls durch die MIM-Synchronisierung oder Azure AD Connect-Synchronisierung gelöscht. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md).
+- Alle Sponsorships, Zugriffsüberprüfungen, Kontoüberprüfungen usw., die für die B2B-Cloudbenutzer ausgeführt werden, gelten für die lokalen Benutzer. Wenn der Cloudbenutzer beispielsweise durch Ihre Richtlinien für die Lebenszyklusverwaltung gelöscht wird, wird der lokale Benutzer ebenfalls durch die MIM-Synchronisierung oder Azure AD Connect-Synchronisierung gelöscht. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs mit Azure AD-Zugriffsüberprüfungen](../governance/manage-guest-access-with-access-reviews.md).
 
 ### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Erstellen von B2B-Gastbenutzerobjekten über MIM (Vorschau)
 
@@ -85,5 +85,5 @@ Stellen Sie sicher, dass Sie über die richtigen Clientzugriffslizenzen (Client 
 
 - [Azure Active Directory B2B-Zusammenarbeit für Hybridorganisationen](hybrid-organizations.md)
 
-- Eine Übersicht zu Azure AD Connect finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Eine Übersicht zu Azure AD Connect finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 

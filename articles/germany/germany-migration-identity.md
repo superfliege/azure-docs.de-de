@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d417206ead8cd5639a157326762cdf3ffe56a61c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: da5a5c0d17539122a1092f2ecf07c6e1942d46f9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346258"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297461"
 ---
 # <a name="migration-of-identity-resources-from-azure-germany-to-global-azure"></a>Migration von Identity-Ressourcen von Azure Deutschland zu Azure weltweit
 
@@ -153,7 +153,7 @@ Get-AzureADUser -All $true |Where-Object {$_.DirSyncEnabled -ne "True"}
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu [ADConnect](../active-directory/connect/active-directory-aadconnect-dirsync-deprecated.md)
+- Informationen zu [ADConnect](../active-directory/hybrid/reference-connect-dirsync-deprecated.md)
 
 
 

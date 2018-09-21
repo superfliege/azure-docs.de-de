@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/16/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6b58c95b918d820e207e801e62e7897c2ee366
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 32a7b7026df1522abe2ca3dc7b212b06e08ff905
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246223"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544276"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -349,9 +349,8 @@ Führen Sie folgende Schritte aus, um das Zertifikat zu erneuern:
 
     ![Erneuern des Zertifikats für das ausführende Konto](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. Während das Zertifikat erneuert wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.
+1. Während das Zertifikat erneuert wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen. 
 
-Wenn Sie das Zertifikat für das ausführende Konto nicht erneuern können
 ## <a name="limiting-run-as-account-permissions"></a>Einschränken der Berechtigungen für ausführendes Konto
 
 Um die Ausrichtung der Automatisierung für Ressourcen in Azure Automation zu steuern, werden dem ausführenden Konto standardmäßig Berechtigungen als Mitwirkender im Abonnement gewährt. Wenn Sie die Möglichkeiten des ausführenden Dienstprinzipals einschränken müssen, können Sie das Konto aus der Rolle „Mitwirkender“ des Abonnements entfernen und es als „Mitwirkender“ zu den Ressourcengruppen hinzufügen, die Sie angeben möchten.

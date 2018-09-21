@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 4fd85135ea16a5183b1b0d5220d1c160044e8841
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701013"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577819"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen. 
@@ -71,7 +71,7 @@ Um die Autorisierung zu erneuern, klicken Sie in Ihrem Auftrag auf **Beenden**, 
 | Datenbank | Der Name der Datenbank, an die Sie die Ausgabe senden. |
 | Servername | Der Servername der SQL-Datenbank. |
 | Username | Der Benutzername, der Schreibzugriff auf die Datenbank besitzt. |
-| Password | Das Kennwort, um eine Verbindung zur Datenbank herzustellen. |
+| Kennwort | Das Kennwort, um eine Verbindung zur Datenbank herzustellen. |
 | Table | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Für den Tabellennamen muss zwischen Groß-/Kleinschreibung unterschieden werden. Das Schema dieser Tabelle sollte genau mit der Anzahl Felder und ihrer Typen übereinstimmen, die von der Auftragsausgabe generiert werden. |
 
 > [!NOTE]
@@ -299,7 +299,7 @@ In der folgenden Tabelle werden die Partitionsunterstützung und die Anzahl der 
 | Azure Data Lake Store | JA | Verwenden Sie die {date}- und {time}-Tokens im Pfadpräfixmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
 | Azure SQL-Datenbank | Nein  | Keine | Nicht zutreffend | 
 | Azure Blob Storage | JA | Verwenden Sie die Token {date} und {time} aus Ihren Ereignisfeldern im Pfadmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. Im Rahmen der [Vorschauversion](https://aka.ms/ASAPreview) kann die Blobausgabe durch ein einzelnes benutzerdefiniertes Ereignisattribut {fieldname} oder {datetime:\<Spezifizierer>} partitioniert werden. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
-| Azure Event Hub | JA | JA | Variiert je nach Partitionsausrichtung.</br> Wenn der Event Hub-Ausgabepartitionsschlüssel entsprechend am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Event Hub-Ausgabepartitionen identisch. Jeder Schreiber verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) des EventHub-Elements, um Ereignisse an die jeweilige Partition zu senden. </br> Wenn der Event Hub-Ausgabepartitionsschlüssel nicht am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Partitionen in diesem vorherigen Schritt identisch. Für jeden Schreiber wird die [SendBatchAsync-Klasse](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) des EventHubClient-Elements verwendet, um Ereignisse an alle Ausgabepartitionen zu senden. |
+| Azure Event Hub | JA | JA | Variiert je nach Partitionsausrichtung.</br> Wenn der Event Hub-Ausgabepartitionsschlüssel entsprechend am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Event Hub-Ausgabepartitionen identisch. Jeder Schreiber verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) des EventHub-Elements, um Ereignisse an die jeweilige Partition zu senden. </br> Wenn der Event Hub-Ausgabepartitionsschlüssel nicht am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Partitionen in diesem vorherigen Schritt identisch. Für jeden Schreiber wird die [SendBatchAsync-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) des EventHubClient-Elements verwendet, um Ereignisse an alle Ausgabepartitionen zu senden. |
 | Power BI | Nein  | Keine | Nicht zutreffend | 
 | Azure-Tabellenspeicher | JA | Eine beliebige Ausgabespalte.  | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. | 
 | Azure Service Bus-Thema | JA | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen im Ausgabethema.  |

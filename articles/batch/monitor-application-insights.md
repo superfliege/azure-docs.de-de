@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 9f989ada01a2ffced509b42df9e46aa001386ab6
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34077393"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35769644"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Überwachen und Debuggen einer Azure Batch-.NET-Anwendung mit Application Insights
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie die Application Insights-Bibliothek 
 Für diesen Artikel ist auf [GitHub](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) eine begleitende C#-Beispiellösung mit Code verfügbar. In diesem Beispiel wird dem Beispiel [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) Application Insights-Instrumentierungscode hinzugefügt. Falls Sie nicht mit diesem Beispiel vertraut sind, sollten Sie versuchen, zunächst TopNWords zu erstellen und auszuführen. Dadurch können Sie sich mit dem grundlegenden Batch-Workflow der parallelen Verarbeitung eines Satzes von Eingabeblobs auf mehreren Computeknoten vertraut machen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* [Visual Studio IDE](https://www.visualstudio.com/vs) (Visual Studio 2015 oder höher)
+* [Visual Studio 2017](https://www.visualstudio.com/vs)
 
 * [Ein Batch-Konto und ein verknüpftes Speicherkonto](batch-account-create-portal.md)
 
@@ -312,8 +312,8 @@ private const string BatchStartTaskTelemetryRunnerAIConfig = "ApplicationInsight
 CloudPool pool = client.PoolOperations.CreatePool(
     topNWordsConfiguration.PoolId,
     targetDedicated: topNWordsConfiguration.PoolNodeCount,
-    virtualMachineSize: "small",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+    virtualMachineSize: "standard_d1_v2",
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 ...
 
 // Create a start task which will run a dummy exe in background that simply emits performance

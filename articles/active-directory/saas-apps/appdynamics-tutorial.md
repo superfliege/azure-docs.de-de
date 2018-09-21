@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 3600e83d18f8cabd03c46af2ef47445c588cbdb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7f24dad3cfefd5ecb0b1c78f4a2b242c99a01239
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548276"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Lernprogramm: Azure Active Directory-Integration mit AppDynamics
 
@@ -102,17 +102,17 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **AppDynamics** auf **Einmaliges Anmelden**.
 
-    ![Configure Single Sign-On][4]
+    ![Configure single sign-on][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
 
-    ![Configure Single Sign-On](./media/appdynamics-tutorial/tutorial_appdynamics_samlbase.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_samlbase.png)
 
 3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für AppDynamics** durch:
 
-    ![Configure Single Sign-On](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.saas.appdynamics.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.saas.appdynamics.com?accountName=<companyname>`.
 
     b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<companyname>.saas.appdynamics.com/controller`
 
@@ -121,15 +121,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
-    ![Configure Single Sign-On](./media/appdynamics-tutorial/tutorial_appdynamics_certificate.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_certificate.png)
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Configure Single Sign-On](./media/appdynamics-tutorial/tutorial_general_400.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **AppDynamics-Konfiguration** auf **AppDynamics konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
-    ![Configure Single Sign-On](./media/appdynamics-tutorial/tutorial_appdynamics_configure.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_configure.png)
 
 7. Melden Sie sich in einem anderen Webbrowserfenster bei der AppDynamics-Unternehmenswebsite als Administrator an.
 
@@ -189,6 +189,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 ### <a name="creating-an-appdynamics-test-user"></a>Erstellen eines AppDynamics-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in AppDynamics. AppDynamics unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf AppDynamics ein neuer Benutzer erstellt.
+
 >[!Note]
 >Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den AppDynamics-Client](https://www.appdynamics.com/support/) in Verbindung.
 
@@ -206,7 +207,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **AppDynamics** aus.
 
-    ![Configure Single Sign-On](./media/appdynamics-tutorial/tutorial_appdynamics_app.png)
+    ![Configure single sign-on](./media/appdynamics-tutorial/tutorial_appdynamics_app.png)
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 

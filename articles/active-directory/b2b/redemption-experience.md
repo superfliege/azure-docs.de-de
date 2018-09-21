@@ -4,18 +4,18 @@ description: Beschreibt das Einlösen von Einladungen in Azure AD B2B-Zusammenar
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0a0c900bbfbb2778d8fabcbb71e339fd3dabcf47
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 7819ed3e18092e8b7bdf52225e7025b4b6d8146a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259626"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981880"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -47,7 +47,7 @@ Benutzer, die über eine Methode mit Einladungs-E-Mail eingeladen wurden, könne
 
 ## <a name="privacy-policy-agreement"></a>Zustimmung zur Datenschutzrichtlinie
 
-Wenn sich ein Gastbenutzer zum ersten Mal anmeldet, um auf Ressourcen in einer Partnerorganisation zuzugreifen, wird ein**Bildschirm zum Überprüfen** der Berechtigungen angezeigt. Hier kann der Benutzer die Datenschutzbestimmungen der einladenden Organisation prüfen. Der Benutzer muss der Nutzung seiner Informationen gemäß den Datenschutzrichtlinien der Organisation zustimmen, um fortfahren zu können.
+Wenn sich ein Gastbenutzer zum ersten Mal anmeldet, um auf Ressourcen in einer Partnerorganisation zuzugreifen, wird ein**Bildschirm zum Überprüfen**der Berechtigungen angezeigt. Hier kann der Benutzer die Datenschutzbestimmungen der einladenden Organisation prüfen. Der Benutzer muss der Nutzung seiner Informationen gemäß den Datenschutzrichtlinien der Organisation zustimmen, um fortfahren zu können.
 
 ![Screenshot mit Benutzereinstellungen im Zugriffsbereich](media/redemption-experience/ConsentScreen.png) 
 

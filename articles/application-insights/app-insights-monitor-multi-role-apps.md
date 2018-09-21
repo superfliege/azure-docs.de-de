@@ -9,20 +9,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/17/2017
+ms.topic: conceptual
+ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: bf247748415822d5ba1a0e652fdeff384d8e8db1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982050"
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Überwachen von Anwendungen mit mehreren Komponenten mit Application Insights (Vorschau)
 
 Sie können Apps, die aus mehreren Serverkomponenten, Rollen oder Diensten bestehen, mit [Azure Application Insights](app-insights-overview.md) überwachen. Die Integrität der Komponenten und die Beziehungen zwischen ihnen werden in einer einzelnen Anwendungszuordnung angezeigt. Sie können einzelne Vorgänge über mehrere Komponenten mit automatischer HTTP-Korrelation verfolgen. Eine Containerdiagnose kann integriert und mit Anwendungstelemetriedaten korreliert werden. Verwenden Sie eine einzelne Application Insights-Ressource für alle Komponenten Ihrer Anwendung. 
 
-![Anwendungszuordnung mit mehreren Komponenten](./media/app-insights-monitor-multi-role-apps/app-map.png)
+![Anwendungszuordnung mit mehreren Komponenten](./media/app-insights-monitor-multi-role-apps/application-map-001.png)
 
 Wir verwenden „Komponente“ hier für jegliches funktionierende Teil einer umfangreichen Anwendung. Eine typische Geschäftsanwendung kann beispielsweise aus Clientcode bestehen, der in Webbrowsern ausgeführt wird, die mit einem oder mehreren Web-App-Diensten kommunizieren, die wiederum Back-End-Dienste verwenden. Serverkomponenten können lokal oder in der Cloud gehostet werden, Azure-Webrollen und Azure-Workerrollen sein oder in Containern wie Docker oder Service Fabric ausgeführt werden. 
 
@@ -32,7 +33,7 @@ Die wichtigste Technologie ist das Senden von Telemetriedaten von jeder Komponen
 
 Weitere Informationen zum Überschreiben der Eigenschaft `cloud_RoleName` finden Sie unter [Hinzufügen von Eigenschaften: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).  
 
-In einigen Fällen ist dies eventuell nicht möglich, sodass Sie bevorzugt unterschiedliche Ressourcen für verschiedene Gruppen von Komponenten verwenden sollten. Möglicherweise müssen Sie z.B. verschiedene Ressourcen für Verwaltungs- und Abrechnungszwecke verwenden. Die Verwendung unterschiedlicher Ressourcen bedeutet, dass nicht alle Komponenten in einer Anwendungszuordnung angezeigt werden. Außerdem können Sie in [Analytics](app-insights-analytics.md) keine Abfragen über mehrere Komponenten durchführen. Darüber hinaus müssen Sie auch separate Ressourcen einrichten.
+In einigen Fällen ist dies eventuell nicht möglich, sodass Sie bevorzugt unterschiedliche Ressourcen für verschiedene Gruppen von Komponenten verwenden sollten. Möglicherweise müssen Sie z.B. verschiedene Ressourcen für Verwaltungs- und Abrechnungszwecke verwenden.
 
 Trotz dieser Einschränkung gehen wir im verbleibenden Teil dieses Dokuments davon aus, dass Sie Daten von mehreren Komponenten an eine Application Insights-Ressource senden möchten.
 

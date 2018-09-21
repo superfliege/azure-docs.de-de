@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 00c67503f5b9e0027cbb62520e392f56420a75e6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5b10ff3574259fcad329dfb5c7a5bc86861258c5
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701633"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575863"
 ---
 # <a name="optimize-sql-server-performance"></a>Optimierung der Leistung von SQL Server
 
@@ -145,7 +145,7 @@ Für manche Bereitstellungen können durch Verwendung erweiterter Konfigurations
 
 - **Sicherung in Azure** **Storage:** Wenn Sie Sicherungen für SQL Server durchführen, der auf virtuellen Azure Stack-Computern durchgeführt wird, können Sie die SQL Server-Sicherung über URLs verwenden. Dieses Feature steht ab SQL Server 2012 SP1 CU2 zur Verfügung und wird für Sicherungen auf die angefügten Datenträgern für Daten empfohlen.
 
-    Befolgen Sie bei Sicherungen oder Wiederherstellungen mithilfe von Azure Storage die Empfehlungen unter [SQL Server-URL-Sicherung – bewährte Methoden und Problembehandlung](https://msdn.microsoft.com/library/jj919149.aspx) und [Wiederherstellen von in Microsoft Azure gespeicherten Sicherungen](https://docs.microsoft.com/en-us/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). Darüber hinaus können Sie diese Sicherungen mit [automatisierten Sicherungen für SQL Server auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)automatisieren.
+    Befolgen Sie bei Sicherungen oder Wiederherstellungen mithilfe von Azure Storage die Empfehlungen unter [SQL Server-URL-Sicherung – bewährte Methoden und Problembehandlung](https://msdn.microsoft.com/library/jj919149.aspx) und [Wiederherstellen von in Microsoft Azure gespeicherten Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). Darüber hinaus können Sie diese Sicherungen mit [automatisierten Sicherungen für SQL Server auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)automatisieren.
 
 -   **Sicherung im Azure Stack-Speicher:** Sie können Sicherungen im Azure Stack-Speicher auf ähnliche Weise durchführen wie Sicherungen in Azure Storage. Wenn Sie eine Sicherung in SQL Server Management Studio (SSMS) erstellen, müssen Sie die Konfigurationsinformationen manuell eingeben. SSMS können Sie nicht verwenden, um den Speichercontainer oder die Shared Access Signature zu erstellen. Mit SSMS kann nur eine Verbindung mit Azure-Abonnements, jedoch nicht mit Azure Stack-Abonnements hergestellt werden. Stattdessen müssen Sie das Speicherkonto, den Container und die Shared Access Signature im Azure Stack-Portal oder über PowerShell erstellen.
 

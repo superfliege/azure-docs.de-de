@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 384d0fa32b64706c9d9d9baa0e2e0bbb2ac3c522
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701533"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719595"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core in zuverlässigen Service Fabric-Diensten
 
@@ -54,12 +54,12 @@ In der Regel erstellen selbst gehostete ASP.NET Core Anwendungen einen Webhost i
 
 Der Einstiegspunkt der Anwendung ist jedoch nicht der richtige Ort, um einen Webhost in einem zuverlässigen Dienst zu erstellen, da der Einstiegspunkt der Anwendung nur dazu dient, einen Diensttyp bei der Service Fabric-Laufzeit zu registrieren, um Instanzen des Diensttyps erstellen zu können. Der Webhost muss stattdessen direkt in einem zuverlässigen Dienst erstellt werden. Innerhalb des Diensthostprozesses können Dienstinstanzen und/oder -replikate mehrere Lebenszyklen durchlaufen. 
 
-Eine zuverlässige Dienstinstanz wird durch Ihre von `StatelessService` oder `StatefulService` abgeleitete Dienstklasse dargestellt. Der Kommunikationsstapel für einen Dienst befindet sich in Ihrer Dienstklasse in einer `ICommunicationListener`-Implementierung. Die NuGet-Pakete vom Typ `Microsoft.ServiceFabric.Services.AspNetCore.*` enthalten Implementierungen von `ICommunicationListener`, die den ASP.NET Core-Webhost für Kestrel oder HttpSys in einem zuverlässigen Dienst starten und verwalten.
+Eine zuverlässige Dienstinstanz wird durch Ihre von `StatelessService` oder `StatefulService` abgeleitete Dienstklasse dargestellt. Der Kommunikationsstapel für einen Dienst befindet sich in Ihrer Dienstklasse in einer `ICommunicationListener`-Implementierung. Die NuGet-Pakete vom Typ `Microsoft.ServiceFabric.AspNetCore.*` enthalten Implementierungen von `ICommunicationListener`, die den ASP.NET Core-Webhost für Kestrel oder HttpSys in einem zuverlässigen Dienst starten und verwalten.
 
 ![Hosten von ASP.NET Core in einem zuverlässigen Dienst][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ICommunicationListener-Implementierungen für ASP.NET Core
-Die `ICommunicationListener`-Implementierungen für Kestrel und HttpSys in den NuGet-Paketen vom Typ `Microsoft.ServiceFabric.Services.AspNetCore.*` haben ähnliche Verwendungsmuster, führen aber für jeden Webserver geringfügig andere Aktionen aus. 
+Die `ICommunicationListener`-Implementierungen für Kestrel und HttpSys in den NuGet-Paketen vom Typ `Microsoft.ServiceFabric.AspNetCore.*` haben ähnliche Verwendungsmuster, führen aber für jeden Webserver geringfügig andere Aktionen aus. 
 
 Beide Kommunikationslistener bieten einen Konstruktor, der folgende Argumente akzeptiert:
  - **`ServiceContext serviceContext`**: Das `ServiceContext`-Objekt mit Informationen zum ausgeführten Dienst.
@@ -67,7 +67,7 @@ Beide Kommunikationslistener bieten einen Konstruktor, der folgende Argumente ak
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Ein von Ihnen implementiertes Lambda, in dem Sie ein `IWebHost`-Element erstellen und zurückgeben. Dadurch können Sie `IWebHost` in einer ASP.NET Core-Anwendung wie gewohnt konfigurieren. Das Lambda stellt eine URL bereit, die für Sie in Abhängigkeit von den verwendeten Service Fabric-Integrationsoptionen und der angegebenen `Endpoint`-Konfiguration generiert wird. Diese URL kann anschließend geändert oder unverändert verwendet werden, um den Webserver zu starten.
 
 ## <a name="service-fabric-integration-middleware"></a>Middleware für die Service Fabric-Integration
-Das NuGet-Paket `Microsoft.ServiceFabric.Services.AspNetCore` enthält die `UseServiceFabricIntegration`-Erweiterungsmethode für `IWebHostBuilder`, der Service Fabric-fähigen Middleware hinzufügt. Diese Middleware konfiguriert die `ICommunicationListener`-Implementierung von Kestrel oder HttpSys, um eine eindeutige Dienst-URL beim Service Fabric Naming Service zu registrieren, und stellt durch anschließende Überprüfung von Clientanforderungen sicher, dass Clients eine Verbindung mit dem richtigen Dienst herstellen. Das ist in einer Umgebung mit gemeinsam genutztem Host (beispielsweise Service Fabric) erforderlich, in der unter Umständen mehrere Webanwendungen auf dem gleichen physischen oder virtuellen Computer ausgeführt, aber keine eindeutigen Hostnamen verwendet werden, und verhindert, dass Clients irrtümlich eine Verbindung mit dem falschen Dienst herstellen. Dieses Szenario wird im nächsten Abschnitt ausführlicher beschrieben.
+Das NuGet-Paket `Microsoft.ServiceFabric.AspNetCore` enthält die `UseServiceFabricIntegration`-Erweiterungsmethode für `IWebHostBuilder`, der Service Fabric-fähigen Middleware hinzufügt. Diese Middleware konfiguriert die `ICommunicationListener`-Implementierung von Kestrel oder HttpSys, um eine eindeutige Dienst-URL beim Service Fabric Naming Service zu registrieren, und stellt durch anschließende Überprüfung von Clientanforderungen sicher, dass Clients eine Verbindung mit dem richtigen Dienst herstellen. Das ist in einer Umgebung mit gemeinsam genutztem Host (beispielsweise Service Fabric) erforderlich, in der unter Umständen mehrere Webanwendungen auf dem gleichen physischen oder virtuellen Computer ausgeführt, aber keine eindeutigen Hostnamen verwendet werden, und verhindert, dass Clients irrtümlich eine Verbindung mit dem falschen Dienst herstellen. Dieses Szenario wird im nächsten Abschnitt ausführlicher beschrieben.
 
 ### <a name="a-case-of-mistaken-identity"></a>Ein Fall von Identitätsverwechslung
 Dienstreplikate lauschen unabhängig vom Protokoll an einer eindeutigen Kombination aus IP-Adresse und Port. Nachdem ein Dienstreplikat damit begonnen hat, an einem IP:Port-Endpunkt zu lauschen, meldet es die entsprechende Endpunktadresse an den Service Fabric Naming Service, wo sie von Clients oder anderen Diensten ermittelt werden kann. Wenn Dienste dynamisch zugewiesene Anwendungsports verwenden, kann ein Dienstreplikat zufällig den gleichen IP:Port-Endpunkt eines anderen Diensts verwenden, der sich zuvor auf dem gleichen physischen oder virtuellen Computer befand. Das kann dazu führen, dass ein Client irrtümlich eine Verbindung mit dem falschen Dienst herstellt. Dieser Fall kann bei folgendem Ereignisablauf eintreten:

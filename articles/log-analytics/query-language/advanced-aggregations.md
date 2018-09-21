@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 4f2d49233a6eb92f567d4265210fcab394aa6461
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 661ff7c07ba2bb17eb5830b38bb39e1c3e80bb55
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190978"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45602907"
 ---
 # <a name="advanced-aggregations-in-log-analytics-queries"></a>Erweiterte Aggregationen in Log Analytics-Abfragen
 
 > [!NOTE]
 > Vor der Durchführung dieser Lektion sollten Sie [Aggregationen in Log Analytics-Abfragen](./aggregations.md) lesen.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 In diesem Artikel werden einige der erweiterten Aggregationsoptionen beschrieben, die für Log Analytics-Abfragen verfügbar sind.
 
 ## <a name="generating-lists-and-sets"></a>Generieren von Listen und Sätzen
 Sie können mithilfe von `makelist` Daten nach der Reihenfolge der Werte in einer bestimmten Spalte pivotieren. So sollten Sie beispielsweise die Auftragsereignisse untersuchen, die am häufigsten auf Ihren Computern ausgeführt werden. Sie können die Daten im Wesentlichen nach der Reihenfolge der Ereignis-IDs auf den einzelnen Computern pivotieren. 
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -48,7 +50,7 @@ Event
 
 Es ist auch sinnvoll, eine Liste der unterschiedlichen Werte zu erstellen. Diese wird als _Satz_ bezeichnet und kann mit `makeset` generiert werden:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -65,7 +67,7 @@ Wie `makelist` kann `makeset` auch mit sortierten Daten ausgeführt werden und g
 ## <a name="expanding-lists"></a>Erweitern von Listen
 Der Inverse-Vorgang von `makelist` oder `makeset` lautet `mvexpand` und erweitert eine Liste von Werten zum Separieren von Zeilen. Der Vorgang kann, bei JSON und Array, eine Erweiterung über eine beliebige Anzahl von dynamischen Spalten erzielen. Sie könnten beispielsweise die Tabelle *Heartbeat* auf Lösungen überprüfen, indem Sie Daten von Computern senden, die in der vergangenen Stunde einen Heartbeat gesendet haben:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, Solutions
@@ -95,7 +97,7 @@ Heartbeat | where TimeGenerated > ago(1h) | project Computer, split(Solutions, "
 
 Anschließend können Sie erneut `makelist` verwenden, um Elemente zu gruppieren. Zeigen Sie dieses Mal die Liste der Computer pro Lösung an:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
@@ -113,7 +115,7 @@ Heartbeat
 ## <a name="handling-missing-bins"></a>Behandeln fehlender Klassen
 Eine nützliche Anwendung von `mvexpand` ist die Notwendigkeit, Standardwerte für fehlende Klassen einzugeben. Angenommen beispielsweise, Sie suchen nach der Betriebszeit eines bestimmten Computers, indem Sie dessen Heartbeat untersuchen. Sie möchten auch die Quelle des Heartbeats sehen, die in der Spalte _Kategorie_ zu finden ist. Normalerweise würde eine einfache Summarize-Anweisung wie folgt verwendet:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
@@ -129,7 +131,7 @@ Heartbeat
 
 In diesen Ergebnissen fehlt jedoch der Bucket, der „2017-06-06T19:00:00Z“ zugeordnet wurde, da für diese Stunde keine Heartbeatdaten vorhanden sind. Mit der Funktion `make-series` können Sie leeren Buckets einen Standardwert zuweisen. Dadurch wird für jede Kategorie eine Zeile mit zwei zusätzlichen Arrayspalten generiert, von denen eine Spalte für Werte und die andere für übereinstimmende Zeitrahmen vorgesehen ist:
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
@@ -141,7 +143,7 @@ Heartbeat
 
 Das dritte Element des Arrays *count_* ist wie erwartet eine 0 (null). Zudem gibt es im Array _TimeGenerated_ einen übereinstimmenden Zeitrahmen von „2017-06-06T19:00:00.0000000Z“. Dieses Arrayformat ist jedoch schwer zu lesen. Verwenden Sie `mvexpand`, um die Arrays zu erweitern und die gleiche Formatausgabe zu generieren, die von `summarize` generiert wurde:
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 | mvexpand TimeGenerated, count_
@@ -163,7 +165,7 @@ Heartbeat
 In einem häufig auftretenden Szenario werden die Namen einiger bestimmter Entitäten basierend auf einer Reihe von Kriterien ausgewählt. Anschließend wird ein anderes Dataset für diese Reihe von Entitäten weiter gefiltert. Sie könnten beispielsweise nach Computern suchen, auf denen bekanntermaßen Updates fehlen, und IP-Adressen identifizieren, die von diesen Computern aufgerufen wurden:
 
 
-```OQL
+```KQL
 let ComputersNeedingUpdate = toscalar(
     Update
     | summarize makeset(Computer)

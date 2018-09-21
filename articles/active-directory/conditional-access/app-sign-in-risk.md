@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2bd52486a78ca103e0070d94ea423c069f845587
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627507"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604364"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Schnellstart: Blockieren des Zugriffs, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
 
@@ -46,7 +46,7 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 
 - **Tor Browser**: Mit dem [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) können Sie Ihre Privatsphäre online schützen. Identity Protection erkennt eine Anmeldung von einem Tor Browser als **Anmeldungen von anonymen IP-Adressen**. Anmeldungen dieser Art weisen eine mittlere Risikostufe auf. Weitere Informationen finden Sie unter [Azure Active Directory-Risikoereignisse](../reports-monitoring/concept-risk-events.md).  
 
-- **Ein Testkonto mit dem Namen Alain Charon**: Informationen zum Erstellen eines Testkontos finden Sie unter [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
+- **Ein Testkonto mit dem Namen Alain Charon**: Informationen zum Erstellen eines Testkontos finden Sie unter [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 
 ## <a name="test-your-sign-in"></a>Testen Ihrer Anmeldung 
@@ -206,7 +206,7 @@ Melden Sie sich zum Testen der Richtlinie mit dem Tor Browser bei Ihrem [Azure-P
 
 Löschen Sie den Testbenutzer, wenn er nicht mehr benötigt wird, und löschen Sie auch den Tor Browser und die Richtlinie für bedingten Zugriff:
 
-- Wenn Sie nicht wissen, wie ein Azure AD-Benutzer gelöscht wird, lesen Sie [Löschen von Benutzern aus Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Wenn Sie nicht wissen, wie ein Azure AD-Benutzer gelöscht wird, lesen Sie [Löschen von Benutzern aus Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 - Zum Löschen Ihrer Richtlinie wählen Sie die Richtlinie aus, und klicken Sie dann in der Symbolleiste für den Schnellzugriff auf **Löschen**.
 

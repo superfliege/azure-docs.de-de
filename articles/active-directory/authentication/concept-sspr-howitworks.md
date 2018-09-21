@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42145584"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296395"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Funktionsweise der Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -161,8 +161,8 @@ Wenn Sie Azure AD Connect installieren, konfigurieren und aktivieren, stehen fol
 Auf dieser Seite erhalten Sie einen schnellen Überblick über den Status des lokalen Clients für das Rückschreiben. Basierend auf der aktuellen Konfiguration wird eine der folgenden Meldungen angezeigt:
 
 * Ihr lokaler Client für das Rückschreiben ist einsatzbereit.
-* Azure AD Connect ist online und mit Ihrem lokalen Client für das Rückschreiben verbunden. Die installierte Version von Azure AD Connect ist jedoch offenbar veraltet. Ziehen Sie ein [Upgrade von Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) in Betracht, um sicherzustellen, dass Sie über die neuesten Konnektivitätsfeatures und wichtige Fehlerbehebungen verfügen.
-* Leider können wir den Status Ihres lokalen Clients für das Rückschreiben nicht überprüfen, weil die installierte Version von Azure AD Connect nicht aktuell ist. [Aktualisieren Sie Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md), um den Verbindungsstatus überprüfen zu können.
+* Azure AD Connect ist online und mit Ihrem lokalen Client für das Rückschreiben verbunden. Die installierte Version von Azure AD Connect ist jedoch offenbar veraltet. Ziehen Sie ein [Upgrade von Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) in Betracht, um sicherzustellen, dass Sie über die neuesten Konnektivitätsfeatures und wichtige Fehlerbehebungen verfügen.
+* Leider können wir den Status Ihres lokalen Clients für das Rückschreiben nicht überprüfen, weil die installierte Version von Azure AD Connect nicht aktuell ist. [Aktualisieren Sie Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md), um den Verbindungsstatus überprüfen zu können.
 * Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. [Führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.
 * Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen, weil das Kennwortrückschreiben nicht ordnungsgemäß konfiguriert wurde. [Konfigurieren Sie das Kennwortrückschreiben](howto-sspr-writeback.md), um die Verbindung wiederherzustellen.
 * Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. Möglicherweise liegen auf unserer Seite vorübergehende Probleme vor. Wenn das Problem weiterhin besteht, [führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.

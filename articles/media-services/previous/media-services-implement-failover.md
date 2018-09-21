@@ -4,22 +4,21 @@ description: Dieses Thema zeigt die Implementierung eines Failoverstreamingszena
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: fc45d849-eb0d-4739-ae91-0ff648113445
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 09/17/2018
 ms.author: juliako
-ms.openlocfilehash: 9ea18d4131705ac1e7ba12ed6af6d8202e766abd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 618316b6b5979c65bc8906ea7d07c4f4fdf0930d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783699"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124609"
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Implementieren von Failoverstreaming mit Azure Media Services
 
@@ -50,11 +49,6 @@ Es gelten die folgenden Bedingungen:
 * Die aktuelle Version des Media Services-SDKs unterstützt keine programmgesteuerte Generierung von IAssetFile-Informationen, die ein Medienobjekt zu Medienobjektdateien zuordnen würde. Stattdessen wird die Media Services-REST-API „CreateFileInfos“ verwendet. 
 * Im Speicher verschlüsselte Medienobjekte (AssetCreationOptions.StorageEncrypted) werden für die Replikation nicht unterstützt (da sich die Verschlüsselungsschlüssel in beiden Media Services-Konten unterscheiden). 
 * Wenn Sie dynamische Paketerstellung nutzen möchten, stellen Sie sicher, dass der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, den Status **Wird ausgeführt** aufweist.
-
-> [!NOTE]
-> Alternativ zur manuellen Implementierung eines Failoverstreamingszenarios können Sie das [Replikationstool](http://replicator.codeplex.com/) von Media Services verwenden. Dieses Tool ermöglicht die Replikation von Medienobjekten in zwei Media Services-Konten.
-> 
-> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Zwei Media Services-Konten in einem neuen oder vorhandenen Azure-Abonnement. Informationen hierzu finden Sie unter [Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).

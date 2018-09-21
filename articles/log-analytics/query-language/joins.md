@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 823e8694b574acdde122f8d5224b04d3872b6820
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: c24d79d6983f7c32f5c563192bcfe412da586ef2
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40191105"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603486"
 ---
 # <a name="joins-in-log-analytics-queries"></a>Joins in Log Analytics-Abfragen
 
 > [!NOTE]
 > Vor der Durchführung dieser Lektion sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-analytics-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 Mithilfe von Joins können Sie Daten aus mehreren Tabellen in derselben Abfrage analysieren. Diese führen die Zeilen zweier Datasets anhand von übereinstimmenden Werten der angegebenen Spalte zusammen.
 
 
-```OQL
+```KQL
 SecurityEvent 
 | where EventID == 4624     // sign-in events
 | project Computer, Account, TargetLogonId, LogonTime=TimeGenerated
@@ -62,7 +64,7 @@ on $left.key1 == $right.key2
 ## <a name="lookup-tables"></a>Nachschlagetabellen
 Joins werden häufig verwendet, um die statische Zuordnung von Werten mithilfe von `datatable` zu verwenden. Diese kann bei der Transformation der Ergebnisse hilfreich sein, um diese besser darstellen zu können. So können Sie beispielsweise den Sicherheitsereignisdaten den Ereignisnamen für jede Ereignis-ID hinzufügen.
 
-```OQL
+```KQL
 let DimTable = datatable(EventID:int, eventName:string)
   [
     4625, "Account activity",
@@ -86,10 +88,10 @@ SecurityEvent
 ## <a name="join-kinds"></a>Join-Typen
 Geben Sie den Join-Typ mit dem _kind_-Argument an. Jeder Typ führt einen anderen Abgleich zwischen den Datensätzen der angegebenen Tabellen durch. Dies wird in der folgenden Tabelle beschrieben.
 
-| Join-Typ | Beschreibung |
+| Join-Typ | BESCHREIBUNG |
 |:---|:---|
 | innerunique | Dies ist der Standardjoinmodus. Zuerst werden die Werte der übereinstimmenden Spalten in der linken Tabelle ermittelt, und doppelte Werte werden entfernt.  Dann werden die eindeutigen Werte mit der rechten Tabelle verglichen. |
-| inner | Nur übereinstimmende Datensätze in beiden Tabellen sind in den Ergebnissen enthalten. |
+| Innerer Join | Nur übereinstimmende Datensätze in beiden Tabellen sind in den Ergebnissen enthalten. |
 | leftouter | Alle Datensätze in der linken Tabelle sowie übereinstimmende Datensätze in der rechten Tabelle sind in den Ergebnissen enthalten. Nicht übereinstimmende Ausgabeeigenschaften enthalten NULL-Werte.  |
 | leftanti | Datensätze von der linken Seite, für die keine Übereinstimmungen auf der rechten Seite vorhanden sind, sind in den Ergebnissen enthalten. Die Ergebnistabelle enthält nur Spalten aus der linken Tabelle. |
 | leftsemi | Datensätze von der linken Seite, für die Übereinstimmungen auf der rechten Seite vorhanden sind, sind in den Ergebnissen enthalten. Die Ergebnistabelle enthält nur Spalten aus der linken Tabelle. |

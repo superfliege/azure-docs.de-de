@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
-ms.openlocfilehash: e984d3d590021e3dd9e46d0f12493889b2acc229
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ed0b551faba68c0956be89277348eeee60d759c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26604778"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298216"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Gebietsübergreifende, hochverfügbare AD FS-Bereitstellung in Azure mit Azure Traffic Manager
-Unter [AD FS-Bereitstellung in Azure](active-directory-aadconnect-azure-adfs.md) erfahren Sie Schritt für Schritt, wie Sie in Azure eine einfache AD FS-Infrastruktur für Ihre Organisation bereitstellen. Dieser Artikel enthält die nächsten Schritte, mit denen Sie in Azure mithilfe von [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) eine gebietsübergreifende AD FS-Bereitstellung erstellen können. Azure Traffic Manager unterstützt Sie beim Erstellen einer geografisch verteilten, hochverfügbaren und hochleistungsfähigen AD FS-Infrastruktur für Ihre Organisation. Hierbei kommt eine Reihe von Routingmethoden zum Einsatz, die zur Erfüllung der verschiedenen Anforderungen der Infrastruktur zur Verfügung stehen.
+Unter [AD FS-Bereitstellung in Azure](hybrid/how-to-connect-fed-azure-adfs.md) erfahren Sie Schritt für Schritt, wie Sie in Azure eine einfache AD FS-Infrastruktur für Ihre Organisation bereitstellen. Dieser Artikel enthält die nächsten Schritte, mit denen Sie in Azure mithilfe von [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) eine gebietsübergreifende AD FS-Bereitstellung erstellen können. Azure Traffic Manager unterstützt Sie beim Erstellen einer geografisch verteilten, hochverfügbaren und hochleistungsfähigen AD FS-Infrastruktur für Ihre Organisation. Hierbei kommt eine Reihe von Routingmethoden zum Einsatz, die zur Erfüllung der verschiedenen Anforderungen der Infrastruktur zur Verfügung stehen.
 
 Eine hochverfügbare, gebietsübergreifende AD FS-Infrastruktur bietet folgende Vorteile:
 
@@ -45,7 +45,7 @@ Die grundlegenden Entwurfsprinzipien entsprechen den Entwurfsprinzipien aus dem 
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>Schritte zum Integrieren von Azure Traffic Manager
 ### <a name="deploy-ad-fs-in-the-new-geographical-region"></a>Bereitstellen von AD FS in der neuen geografischen Region
-Orientieren Sie sich an den Schritten und Richtlinien in [AD FS-Bereitstellung in Azure](active-directory-aadconnect-azure-adfs.md) , um die gleiche Topologie in der neuen geografischen Region bereitzustellen.
+Orientieren Sie sich an den Schritten und Richtlinien in [AD FS-Bereitstellung in Azure](hybrid/how-to-connect-fed-azure-adfs.md) , um die gleiche Topologie in der neuen geografischen Region bereitzustellen.
 
 ### <a name="dns-labels-for-public-ip-addresses-of-the-internet-facing-public-load-balancers"></a>DNS-Bezeichnungen für öffentliche IP-Adressen der (öffentlichen) Lastenausgleichsmodule mit Internetzugriff
 Wie weiter oben bereits erwähnt, kann Azure Traffic Manager nur auf DNS-Bezeichnungen als Endpunkte verweisen. Daher müssen unbedingt DNS-Bezeichnungen für die öffentlichen IP-Adressen der externen Lastenausgleichsmodule erstellt werden. Der folgende Screenshot zeigt, wie Sie Ihre DNS-Bezeichnung für die öffentliche IP-Adresse konfigurieren können: 
@@ -116,7 +116,7 @@ Die einfachste Möglichkeit zum Testen von AD FS ist die Verwendung der Seite �
     ![AD FS-Test – Authentifizierung erfolgreich](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/adfstest2.png)
 
 ## <a name="related-links"></a>Verwandte Links
-* [AD FS-Bereitstellung in Azure](active-directory-aadconnect-azure-adfs.md)
+* [AD FS-Bereitstellung in Azure](hybrid/how-to-connect-fed-azure-adfs.md)
 * [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md)
 * [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](../traffic-manager/traffic-manager-routing-methods.md)
 

@@ -7,17 +7,17 @@ ms.author: ranku
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: ecd2232dcf77715fdccd4e5518674500231f67ca
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 621601ad3576aad13f2f71062ee2351cf1a394c8
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830265"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35636209"
 ---
 # <a name="combine-columns-by-example-transformation"></a>Transformation „Spalten nach Beispiel kombinieren“
 Diese Transformation ermöglicht Benutzern das Hinzufügen einer neuen Spalte, indem Werte aus mehreren Spalten kombiniert werden. Der Benutzer kann zum Ausführen dieser Transformation ein Trennzeichen oder Beispiele für kombinierte Werte angeben. Wenn der Benutzer Beispiele für Kombinationen angibt, wird die Transformation von derselben **By-Example**-Engine verarbeitet, das bei der Transformation **Spalten nach Beispiel ableiten** verwendet wurde.
@@ -52,7 +52,7 @@ Benutzer können eine vorhandene Transformation vom Typ **Spalten nach Beispiel 
 
 Ein Komma gefolgt von einem Leerzeichen dient als Trennzeichen in diesem Beispiel, um die Spalten *Straße*, *Stadt*, *Bundesstaat* und *PLZ* zu kombinieren.
 
-|Straße|City|State (Zustand)|ZIP|Column|
+|Straße|City|Zustand|ZIP|Column|
 |:----|:----|:----|:----|:----|
 |16011 N.E. 36th Way|REDMOND|WA|98052|16011 N.E. 36th Way, REDMOND, WA, 98052|
 |16021 N.E. 36th Way|REDMOND|WA|98052|16021 N.E. 36th Way, REDMOND, WA, 98052|

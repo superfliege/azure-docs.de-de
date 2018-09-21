@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306979"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580547"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse
 Führen Sie ein Upgrade für Azure SQL Data Warehouse auf die Azure-Hardware- und -Speicherarchitektur der neuesten Generation aus.
@@ -34,7 +34,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 > [!NOTE]
-> Wenn sich Ihr vorhandenes Data Warehouse der Stufe „Optimiert für Compute Gen 1“ nicht in einer Region befindet, in der „Optimiert für Compute Gen 2“ verfügbar ist, können Sie über PowerShell eine [Geowiederherstellung ](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) in einer unterstützten Region durchführen.
+> Wenn sich Ihr vorhandenes Data Warehouse der Stufe „Optimiert für Compute Gen 1“ nicht in einer Region befindet, in der „Optimiert für Compute Gen 2“ verfügbar ist, können Sie über PowerShell eine [Geowiederherstellung ](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) in einer unterstützten Region durchführen.
 > 
 >
 

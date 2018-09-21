@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b44c5b29f41f08ac5c1d5e6aa3c37f8c15ae7c54
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785989"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984656"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST
 
@@ -97,7 +97,7 @@ Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
     1. Wählen Sie die Anwendung aus.
     2. Die **Client-ID** wird im Fenster rechts angezeigt. 
 
-    ![API-Zugriff](./media/connect-with-rest/existing-client-id.png)zu erstellen und zu verwalten.
+    ![API-Zugriff](./media/connect-with-rest/existing-client-id.png)
 
 7.  Rufen Sie den **Schlüssel** der Anwendung (das Clientgeheimnis) ab. 
 

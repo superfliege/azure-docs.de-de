@@ -7,16 +7,20 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: d1869dd689ef090978c3835e0a16fec82dfb5c05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3efee2f9a4b205b87a65eb473271b0ab5e58046d
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648685"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498418"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Erstellen und Verwalten von elastischen Aufträgen für SQL-Datenbank mithilfe von PowerShell (Vorschau)
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
 
 Mit den PowerShell-APIs für **Aufträge für die elastische Datenbank** (Vorschauversion) können Sie eine Gruppe von Datenbanken definieren, für die Skripts ausgeführt werden sollen. In diesem Artikel wird das Erstellen und Verwalten von **Aufträgen für die elastische Datenbank** mithilfe von PowerShell-Cmdlets veranschaulicht. Weitere Informationen finden Sie unter [Übersicht über Aufträge für die elastische Datenbank](sql-database-elastic-jobs-overview.md). 
 
@@ -209,7 +213,7 @@ Die bewährten Sicherheitsverfahren bei Aufträgen für die elastische Datenbank
 * Die Anmeldeinformationen sollten immer nur mit den für die Ausführung von Auftragsaufgaben erforderlichen Mindestberechtigungen ausgestattet sein.  Weitere Informationen finden Sie im MSDN-Artikel [Autorisierung und Berechtigungen in SQL Server](https://msdn.microsoft.com/library/bb669084.aspx) .
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>So erstellen Sie verschlüsselte Anmeldeinformationen für die übergreifende Ausführung von Aufträgen für Datenbanken
-Bei der Erstellung neuer verschlüsselter Anmeldeinformationen fordert das Cmdlet [**Get-Credential**](https://technet.microsoft.com/library/hh849815.aspx) zur Eingabe von Benutzername und Kennwort auf, die an das Cmdlet [**New-AzureSqlJobCredential**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential) übergeben werden können.
+Bei der Erstellung neuer verschlüsselter Anmeldeinformationen fordert das Cmdlet [**Get-Credential**](/powershell/module/microsoft.powershell.security/get-credential) zur Eingabe von Benutzername und Kennwort auf, die an das Cmdlet [**New-AzureSqlJobCredential**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential) übergeben werden können.
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: andrl
-ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038172"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734470"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Festlegen und Abrufen des Durchsatzes für Azure Cosmos DB-Container und -Datenbank
 
@@ -61,7 +61,7 @@ Im nächsten Abschnitt lernen Sie die Schritte zum Konfigurieren des Durchsatzes
 2. Wählen Sie in der linken Navigationsleiste **Alle Ressourcen**, und suchen Sie nach Ihrem Azure Cosmos DB-Konto.  
 3. Sie können den Durchsatz beim Erstellen einer Datenbank konfigurieren oder für eine vorhandene Datenbank aktualisieren.  
 4. Um den Durchsatz während der Erstellung einer Datenbank zuzuweisen, öffnen Sie das Blatt **Daten-Explorer** und wählen **Neue Datenbank** aus.  
-5. Füllen Sie den Wert **Datenbank-ID** aus, aktivieren Sie die Option **Durchsatz bereitstellen**, und konfigurieren Sie den Durchsatzwert. Eine Datenbank kann mit einem Mindestdurchsatz von 50.000 RU/s bereitgestellt werden.  
+5. Füllen Sie den Wert **Datenbank-ID** aus, aktivieren Sie die Option **Durchsatz bereitstellen**, und konfigurieren Sie den Durchsatzwert.  
 
    ![Festlegen des Durchsatzes mit neuer Datenbankoption](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -74,7 +74,7 @@ Im nächsten Abschnitt lernen Sie die Schritte zum Konfigurieren des Durchsatzes
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
 2. Wählen Sie in der linken Navigationsleiste **Alle Ressourcen**, und suchen Sie nach Ihrem Azure Cosmos DB-Konto.  
 3. Erstellen Sie eine Datenbank, und weisen Sie dieser einen Durchsatz zu. Öffnen Sie das Blatt **Daten-Explorer**, und wählen Sie **Neue Datenbank** aus.  
-4. Füllen Sie den Wert **Datenbank-ID** aus, aktivieren Sie die Option **Durchsatz bereitstellen**, und konfigurieren Sie den Durchsatzwert. Eine Datenbank kann mit einem Mindestdurchsatz von 50.000 RU/s bereitgestellt werden.  
+4. Füllen Sie den Wert **Datenbank-ID** aus, aktivieren Sie die Option **Durchsatz bereitstellen**, und konfigurieren Sie den Durchsatzwert.  
 
    ![Festlegen des Durchsatzes mit neuer Datenbankoption](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -107,33 +107,6 @@ Ziehen Sie in den folgenden Fällen die Bereitstellung des Durchsatzes für eine
 * Wenn Sie über eine geringe Anzahl von Azure Cosmos DB-Containern verfügen.  
 
 * Wenn Sie einen garantierten Durchsatz für einen bestimmten Container unter Berücksichtigung der SLA benötigen.
-
-## <a name="throughput-ranges"></a>Durchsatzspannen
-
-In der folgenden Tabelle sind die für Container verfügbaren Durchsätze aufgeführt:
-
-<table border="0" cellspacing="0" cellpadding="0">
-    <tbody>
-        <tr>
-            <td valign="top"><p></p></td>
-            <td valign="top"><p><strong>Container mit nur einer Partition</strong></p></td>
-            <td valign="top"><p><strong>Partitionierte Container</strong></p></td>
-            <td valign="top"><p><strong>Gruppe von Containern</strong></p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>Minimaler Durchsatz</p></td>
-            <td valign="top"><p>400 Anforderungseinheiten pro Sekunde</p></td>
-            <td valign="top"><p>1.000 Anforderungseinheiten pro Sekunde</p></td>
-            <td valign="top"><p>50.000 Anforderungseinheiten pro Sekunde</p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>Maximaler Durchsatz</p></td>
-            <td valign="top"><p>10.000 Anforderungseinheiten pro Sekunde</p></td>
-            <td valign="top"><p>Unbegrenzt</p></td>
-            <td valign="top"><p>Unbegrenzt</p></td>
-        </tr>
-    </tbody>
-</table>
 
 <a id="set-throughput-sdk"></a>
 

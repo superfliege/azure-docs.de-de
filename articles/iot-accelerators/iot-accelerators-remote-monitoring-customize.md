@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 36e63d26bf7ada2d23fa3cd9fddbb5ba90494527
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7971a5aeadd2b2edaa43da8bacae9743937ce30e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126021"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127345"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Anpassen des Solution Accelerators für Remoteüberwachung
 
@@ -35,7 +35,7 @@ Die folgenden Schritte beschreiben den Prozess zum Einrichten einer lokalen Umge
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
     ```
 
-    Sie sollten nur während der Test- und Entwicklungsphase SSH-Zugriff aktivieren. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-azure-virtual-machines).
+    Sie sollten nur während der Test- und Entwicklungsphase SSH-Zugriff aktivieren. Wenn Sie SSH aktivieren, [sollten Sie es so bald wie möglich wieder deaktivieren](../security/azure-security-network-security-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
 1. Suchen Sie über das Azure-Portal oder mit [az CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) den Namen und die öffentliche IP-Adresse des virtuellen Computers. Beispiel: 
 
@@ -454,8 +454,8 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 Um die Darstellungs- und Visualisierungsschicht in der Remoteüberwachungslösung weiter zu ändern, können Sie den Code bearbeiten. Relevante GitHub-Repositorys:
 
-* [The configuration microservice for Azure IoT Solutions (.NET) (Der Konfigurations-Microservice für Azure IoT-Lösungen [.NET])](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [The configuration microservice for Azure IoT Solutions (Java) (Der Konfigurations-Microservice für Azure IoT-Lösungen [Java])](https://github.com/Azure/pcs-ui-config-java/)
+* [The configuration microservice for Azure IoT Solutions (.NET) (Der Konfigurations-Microservice für Azure IoT-Lösungen [.NET])](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)
+* [The configuration microservice for Azure IoT Solutions (Java) (Der Konfigurations-Microservice für Azure IoT-Lösungen [Java])](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
 * [Azure IoT PCS Remote Monitoring Web UI (Azure IoT PCS-Remoteüberwachungs-Webbenutzeroberfläche)](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>Nächste Schritte

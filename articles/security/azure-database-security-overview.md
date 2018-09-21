@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 398594c37cb01cd337da983307a5f56753e54fd2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051524"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574758"
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
@@ -69,7 +69,7 @@ Sie können verschiedene Vorsichtsmaßnahmen zum Schützen der Datenbank ergreif
 
 Eine Lösung besteht darin, die vertraulichen Daten in der Datenbank zu verschlüsseln und die Schlüssel zu schützen, die zum Verschlüsseln der Daten mit einem Zertifikat verwendet werden. Bei dieser Lösung wird verhindert, dass Personen ohne Schlüssel die Daten verwenden. Diese Art des Schutzes muss allerdings geplant werden.
 
-Zur Lösung dieses Problems unterstützen SQL Server und SQL-Datenbank die [transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017). Die transparente Datenverschlüsselung verschlüsselt Datendateien von SQL Server und SQL-Datenbank. Dies wird als Verschlüsselung ruhender Daten bezeichnet.
+Zur Lösung dieses Problems unterstützen SQL Server und SQL-Datenbank die [transparente Datenverschlüsselung (Transparent Data Encryption, TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017). Die transparente Datenverschlüsselung verschlüsselt Datendateien von SQL Server und SQL-Datenbank. Dies wird als Verschlüsselung ruhender Daten bezeichnet.
 
 Die transparente Datenverschlüsselung bietet Schutz vor Bedrohungen durch böswillige Aktivitäten. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind.  
 

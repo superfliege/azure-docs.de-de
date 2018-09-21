@@ -11,12 +11,12 @@ ms.topic: article
 description: Verwenden Sie einen benutzerdefinierten NuGet-Feed für den Zugriff auf und die Verwendung von NuGet-Paketen in Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
 manager: ghogen
-ms.openlocfilehash: 3badd15bcfd09c97b43744a20c5df05f4ff57e84
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 04b89f6d12c58e2f4915a84d3e0a7988d0e3192f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34199108"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579210"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces
 
@@ -25,7 +25,7 @@ Ein NuGet-Feed stellt eine einfache Möglichkeit dar, Paketquellen zu einem Proj
 ## <a name="set-up-a-nuget-feed"></a>Einrichten eines NuGet-Feeds
 
 So richten Sie einen NuGet-Feed ein:
-1. Fügen Sie einen [Paketverweis](https://docs.microsoft.com/en-us/nuget/consume-packages/package-references-in-project-files) zur `*.csproj`-Datei unter dem `PackageReference`-Knoten hinzu.
+1. Fügen Sie einen [Paketverweis](https://docs.microsoft.com/nuget/consume-packages/package-references-in-project-files) zur `*.csproj`-Datei unter dem `PackageReference`-Knoten hinzu.
 
    ```xml
    <ItemGroup>
@@ -35,7 +35,7 @@ So richten Sie einen NuGet-Feed ein:
    </ItemGroup>
    ```
 
-2. Erstellen Sie eine [NuGet.Config](https://docs.microsoft.com/en-us/nuget/reference/nuget-config-file)-Datei im Projektordner.
+2. Erstellen Sie eine [NuGet.Config](https://docs.microsoft.com/nuget/reference/nuget-config-file)-Datei im Projektordner.
      * Verwenden Die den Abschnitt `packageSources`, um auf den Speicherort Ihres NuGet-Feeds zu verweisen. Wichtig: Der NuGet-Feed muss öffentlich zugänglich sein.
      * Verwenden Sie den Abschnitt `packageSourceCredentials`, um die Anmeldeinformationen (Benutzernamen und Kennwort) zu konfigurieren. 
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448974"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296276"
 ---
 # <a name="authentication-and-user-permissions"></a>Authentifizierung und Benutzerberechtigungen
 Azure Analysis Services verwendet Azure Active Directory (Azure AD) zur Identitätsverwaltung und Benutzerauthentifizierung. Jeder Benutzer, der einen Azure Analysis Services-Server erstellt, verwaltet oder eine Verbindung mit diesem herstellt, muss über eine gültige Benutzeridentität in einem [Azure AD-Mandanten](../active-directory/fundamentals/active-directory-administer.md) im selben Abonnement verfügen.
@@ -33,7 +33,7 @@ Abhängig von den verwendeten Clientanwendungen oder Tools können sich die Art 
 
 Power BI Desktop, SSDT und SSMS unterstützen die universelle Active Directory-Authentifizierung, eine interaktive Methode, die auch die Azure Multi-Factor Authentication (MFA) unterstützt. Azure MFA hilft beim Schützen des Zugriffs auf Daten und Anwendungen und stellt gleichzeitig ein einfaches Anmeldeverfahren bereit. Es bietet eine sichere Authentifizierung über verschiedene einfache Überprüfungsoptionen (Telefonanruf, SMS, Smartcard mit PIN oder Benachrichtigung in einer mobilen App). Bei der interaktiven MFA mit Azure AD kann ein Popupdialogfeld zur Überprüfung geöffnet werden. **Universelle Authentifizierung wird empfohlen**.
 
-Wenn Sie sich über ein Windows-Konto bei Azure anmelden und universelle Authentifizierung nicht aktiviert oder verfügbar ist (Excel), ist [Active Directory-Verbunddienste (AD FS)](../active-directory/connect/active-directory-aadconnect-azure-adfs.md) erforderlich. Mit den Verbunddiensten werden Azure AD- und Office 365-Benutzer über lokale Anmeldeinformationen authentifiziert und können auf Azure-Ressourcen zugreifen.
+Wenn Sie sich über ein Windows-Konto bei Azure anmelden und universelle Authentifizierung nicht aktiviert oder verfügbar ist (Excel), ist [Active Directory-Verbunddienste (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) erforderlich. Mit den Verbunddiensten werden Azure AD- und Office 365-Benutzer über lokale Anmeldeinformationen authentifiziert und können auf Azure-Ressourcen zugreifen.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 Azure Analysis Services-Server unterstützen Verbindungen über [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und höher mithilfe der Windows-Authentifizierung, Active Directory-Kennwortauthentifizierung und der universellen Active Directory-Authentifizierung. Im Allgemeinen empfiehlt sich die Verwendung der universellen Active Directory-Authentifizierung aus folgenden Gründen:

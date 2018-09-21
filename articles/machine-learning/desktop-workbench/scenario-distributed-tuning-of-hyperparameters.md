@@ -11,12 +11,12 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 6347500b8968394a922969dd3dd2f00dd51cb6dd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034863"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578734"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Verteilte Optimierung von Hyperparametern mit Azure Machine Learning Workbench
 
@@ -157,7 +157,7 @@ Wählen Sie anschließend in der Liste den Container „dataset“ aus, und klic
 
 Das Hochladen der Dateien kann je nach vorhandener Internetverbindung einige Minuten dauern. 
 
-In unserem Code verwenden wir das [Azure Storage-SDK](https://docs.microsoft.com/en-us/python/azure/) zum Herunterladen des Datasets aus dem Blobspeicher in die aktuelle Ausführungsumgebung. Der Download erfolgt in der load\_data()-Funktion in der Datei „load_data.py“. Zum Verwenden dieses Codes müssen Sie <ACCOUNT_NAME> und <ACCOUNT_KEY> durch den Namen und den Primärschlüssel Ihres Speicherkontos ersetzen, welches das Dataset hostet. In der linken oberen Ecke der Azure-Seite Ihres Speicherkontos wird der Kontoname angezeigt. Wählen Sie zum Abrufen des Kontoschlüssels auf der Azure-Seite des Speicherkontos „Zugriffsschlüssel“ (siehe erster Screenshot im Abschnitt zur Datenerfassung) aus, und kopieren Sie die lange Zeichenfolge in die erste Spalte der Schlüsselspalte:
+In unserem Code verwenden wir das [Azure Storage-SDK](https://docs.microsoft.com/python/azure/) zum Herunterladen des Datasets aus dem Blobspeicher in die aktuelle Ausführungsumgebung. Der Download erfolgt in der load\_data()-Funktion in der Datei „load_data.py“. Zum Verwenden dieses Codes müssen Sie <ACCOUNT_NAME> und <ACCOUNT_KEY> durch den Namen und den Primärschlüssel Ihres Speicherkontos ersetzen, welches das Dataset hostet. In der linken oberen Ecke der Azure-Seite Ihres Speicherkontos wird der Kontoname angezeigt. Wählen Sie zum Abrufen des Kontoschlüssels auf der Azure-Seite des Speicherkontos „Zugriffsschlüssel“ (siehe erster Screenshot im Abschnitt zur Datenerfassung) aus, und kopieren Sie die lange Zeichenfolge in die erste Spalte der Schlüsselspalte:
  
 ![Zugriffsschlüssel](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 
