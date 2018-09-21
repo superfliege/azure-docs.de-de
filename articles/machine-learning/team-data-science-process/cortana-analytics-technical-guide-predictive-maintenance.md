@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 985010457413c15622f85e8ce8c6955a64ae40e9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099659"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985897"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
 
@@ -154,7 +154,7 @@ Nach dem Start des Daten-Generators füllt sich die Pipeline mit Daten, und die 
 1. Einer der Stream Analytics-Aufträge schreibt die unformatierten eingehenden Daten in Blobspeicher. Wenn Sie auf dem Bildschirm, auf dem Sie die Lösung erfolgreich bereitgestellt haben, auf die Komponente Blob Storage und anschließend im rechten Bereich auf „Öffnen“ klicken, gelangen Sie zum [Azure-Portal](https://portal.azure.com/). Klicken Sie dort auf „Blobs“. Im nächsten Bereich sehen Sie eine Liste mit Containern. Klicken Sie auf **maintenancesadata**. Im nächsten Bereich befindet sich der Ordner **rawdata**. Innerhalb des Ordners „rawdata“ befinden sich Ordner mit Namen wie „hour=17“ und „hour=18“. Das Vorhandensein dieser Ordner zeigt an, dass die unformatierten Daten auf Ihrem Computer erstellt und im Blobspeicher gespeichert wurden. In diesen Ordnern sollten CSV-Dateien mit Größen in MB angezeigt werden.
 2. Der letzte Schritt der Pipeline ist das Schreiben von Daten (z. B. Prognosen aus Machine Learning) in die SQL-Datenbank. Möglicherweise müssen Sie bis zu drei Stunden warten, bis die Daten in Azure SQL-Datenbank angezeigt werden. Die Menge der in Ihrer SQL-Datenbank verfügbaren Daten kann unter anderem über das [Azure-Portal](https://portal.azure.com/) überwacht werden. Suchen Sie im linken Bereich nach SQL-DATENBANKEN ![SQL-Symbol](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-SQL-databases.png), und klicken Sie darauf. Suchen Sie Ihre Datenbank **pmaintenancedb**, und klicken Sie darauf. Klicken Sie auf der nächsten Seite unten auf VERWALTEN.
    
-    ![Symbol „Verwalten“](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)zu erstellen und zu verwalten.
+    ![Symbol „Verwalten“](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)
    
     Hier können Sie auf „Neue Abfrage“ klicken und dann die Anzahl der Zeilen (z. B. „select count(*)“ aus PMResult) abfragen. Wenn Ihre Datenbank wächst, nimmt auch die Anzahl der Zeilen in der Tabelle zu.
 

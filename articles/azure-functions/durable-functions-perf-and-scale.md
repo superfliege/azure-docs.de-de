@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 52582a6fe3f6c8ccc22c57268e20a94139be9e6f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 669a436293ddf6f13760db5e6802aaae82ddd74b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094857"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577512"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -27,13 +27,13 @@ Zum Verständnis des Skalierungsverhaltens müssen Sie einige Details der zugrun
 
 Die **Verlaufstabelle** ist eine Azure Storage-Tabelle, die die Verlaufsereignisse für alle Orchestrierungsinstanzen innerhalb eines Aufgabenhubs enthält. Der Name dieser Tabelle hat das Format „*Aufgabenhubname*History“. Während Instanzen ausgeführt werden, werden dieser Tabelle neue Zeilen hinzugefügt. Der Partitionsschlüssel dieser Tabelle wird von der Instanzen-ID der Orchestrierung abgeleitet. Eine Instanz-ID wird in den meisten Fällen auf Zufallsbasis generiert, um die optimale Verteilung von internen Partitionen in Azure Storage sicherzustellen.
 
-Wenn eine Orchestrierungsinstanz ausgeführt werden muss, werden die entsprechenden Zeilen der Verlaufstabelle in den Speicher geladen. Diese *Verlaufsereignisse* werden dann im Orchestratorfunktionscode erneut wiedergegeben, um diesen wieder in den Zustand des vorherigen Prüfpunkts zu versetzen. Die Verwendung des Ausführungsverlaufs zum Neuerstellen des Zustands auf diese Weise hängt vom [Ereignissourcingmuster](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing) ab.
+Wenn eine Orchestrierungsinstanz ausgeführt werden muss, werden die entsprechenden Zeilen der Verlaufstabelle in den Speicher geladen. Diese *Verlaufsereignisse* werden dann im Orchestratorfunktionscode erneut wiedergegeben, um diesen wieder in den Zustand des vorherigen Prüfpunkts zu versetzen. Die Verwendung des Ausführungsverlaufs zum Neuerstellen des Zustands auf diese Weise hängt vom [Ereignissourcingmuster](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) ab.
 
 ## <a name="instances-table"></a>Instanzentabellen
 
 Die **Instanzentabelle** ist eine andere Azure Storage-Tabelle, die die Statuswerte aller Orchestrierungsinstanzen innerhalb eines Aufgabenhubs enthält. Während der Erstellung von Instanzen werden dieser Tabelle neue Zeilen hinzugefügt. Der Partitionsschlüssel dieser Tabelle ist die Orchestrierungsinstanz-ID, und der Zeilenschlüssel ist eine feste Konstante. Es gibt eine Zeile pro Orchestrierungsinstanz.
 
-Diese Tabelle wird verwendet, um Instanzabfrageanforderungen über die [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_)-API sowie die [HTTP-Statusabfrage-API](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-http-api#get-instance-status) zu erfüllen. Sie wird letztendlich konsistent mit dem Inhalt der oben genannten **Verlaufstabelle** gehalten. Die Verwendung einer separaten Azure Storage-Tabelle zur wirksamen Erfüllung von Instanzabfragevorgängen auf diese Weise hängt vom [CQRS-Muster (Command and Query Responsibility Segregation)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs) ab.
+Diese Tabelle wird verwendet, um Instanzabfrageanforderungen über die [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_)-API sowie die [HTTP-Statusabfrage-API](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status) zu erfüllen. Sie wird letztendlich konsistent mit dem Inhalt der oben genannten **Verlaufstabelle** gehalten. Die Verwendung einer separaten Azure Storage-Tabelle zur wirksamen Erfüllung von Instanzabfragevorgängen auf diese Weise hängt vom [CQRS-Muster (Command and Query Responsibility Segregation)](https://docs.microsoft.com/azure/architecture/patterns/cqrs) ab.
 
 ## <a name="internal-queue-triggers"></a>Interne Warteschlangentrigger
 

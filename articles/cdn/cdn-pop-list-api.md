@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: v-deasim
 ms.custom: ''
-ms.openlocfilehash: f796d18a03e14fdf652af72366762e1365523f09
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 9605b352755933b37819527cecbc4e1ccc30e8aa
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754287"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579070"
 ---
 # <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Abrufen der aktuellen Verizon-POP-Liste für Azure CDN
 
@@ -34,4 +34,4 @@ Aus Sicherheitsgründen können Sie diese IP-Liste verwenden, um zu erzwingen, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur REST-API finden Sie unter [Azure CDN-REST-APIs](https://docs.microsoft.com/en-us/rest/api/cdn/).
+Informationen zur REST-API finden Sie unter [Azure CDN-REST-APIs](https://docs.microsoft.com/rest/api/cdn/).

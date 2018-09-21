@@ -1,5 +1,5 @@
 ---
-title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft-Dokumentation
+title: Unterstützte Szenarien für SAP HANA in Azure (große Instanzen) | Microsoft Docs
 description: Unterstützte Szenarien und ihre Architekturdetails für SAP HANA in Azure (große Instanzen)
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859951"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576492"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieses Dokument beschreibt die unterstützten Szenarien sowie deren Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
@@ -198,7 +198,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 
 ## <a name="3-single-node-with-dr-normal"></a>3. Einzelner Knoten mit DR (normal)
  
@@ -235,9 +235,9 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure).
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure).
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 
@@ -284,9 +284,9 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
@@ -335,7 +335,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - STONITH: Eine SBD wird für das STONITH-Setup konfiguriert. Die Verwendung von STONITH ist jedoch optional.
 
 
@@ -391,11 +391,11 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
-- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 - STONITH: Eine SBD wird für das STONITH-Setup konfiguriert. Die Verwendung von STONITH ist jedoch optional.
 - Am DR-Standort: **Zwei Sätze von Speichervolumes** sind für die Replikation des primären und sekundären Knotens erforderlich.
 - Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
 - Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
@@ -559,10 +559,10 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 -  Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
-- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
+- Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure). 
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu HLI finden Sie unter [Infrastruktur und Konnektivität](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity).
-- Weitere Informationen zu HLI finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).
+- Weitere Informationen zu HLI finden Sie unter [Infrastruktur und Konnektivität](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity).
+- Weitere Informationen zu HLI finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery).

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347119"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717217"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>ZIP-Bereitstellung für Azure Functions
 
@@ -89,9 +89,6 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle auf ihrem lokalen Computer verwend
 ## <a name="run-functions-from-the-deployment-package"></a>Ausführen von Funktionen aus dem Bereitstellungspaket
 
 Sie können Ihre Funktionen auch direkt aus der Bereitstellungspaketdatei heraus ausführen. Bei dieser Methode wird der Bereitstellungsschritt übersprungen, indem Dateien aus dem Paket in das `wwwroot`-Verzeichnis Ihrer Funktions-App kopiert werden. Stattdessen wird die Paketdatei durch die Functions-Laufzeit bereitgestellt, und der Inhalt des `wwwroot` Verzeichnisses ist schreibgeschützt.  
-
-> [!NOTE]
-> Die Möglichkeit zum Ausführen Ihrer Funktions-App aus dem Bereitstellungspaket heraus befindet sich in der Vorschauphase.
 
 Die ZIP-Bereitstellung ist mit diesem Feature integriert. Sie können es aktivieren, indem Sie die Einstellung `WEBSITE_RUN_FROM_PACKAGE` der Funktions-App auf einen Wert von `1` festlegen. Weitere Informationen finden Sie unter [Ausführen von Functions über eine Bereitstellungspaketdatei](run-functions-from-deployment-package.md).
 

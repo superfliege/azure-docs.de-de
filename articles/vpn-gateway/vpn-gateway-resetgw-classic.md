@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.openlocfilehash: e61e41c41888d8d2ca65961dd5bea73fd9b6bd21
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: d23ed383bee3346cfbb20c6935dd3630e137c179
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927688"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573898"
 ---
 # <a name="reset-a-vpn-gateway"></a>Zurücksetzen einer VPN Gateway-Instanz
 
@@ -75,7 +75,7 @@ Wenn ein Ergebnis zurückgegeben wird, können Sie davon ausgehen, dass das Gate
 
 ### <a name="resetclassic"></a> Klassisches Bereitstellungsmodell
 
-Das Cmdlet zum Zurücksetzen eines Gateways ist **Reset-AzureVNetGateway**. Stellen Sie vor dem Zurücksetzen sicher, dass Sie die aktuelle Version der [Dienstverwaltungs-PowerShell-Cmdlets](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) installiert haben. Im folgenden Beispiel wird das Gateway für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt:
+Das Cmdlet zum Zurücksetzen eines Gateways ist **Reset-AzureVNetGateway**. Stellen Sie vor dem Zurücksetzen sicher, dass Sie die aktuelle Version der [Dienstverwaltungs-PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) installiert haben. Im folgenden Beispiel wird das Gateway für das virtuelle Netzwerk „ContosoVNet“ zurückgesetzt:
 
 ```powershell
 Reset-AzureVNetGateway –VnetName “ContosoVNet”

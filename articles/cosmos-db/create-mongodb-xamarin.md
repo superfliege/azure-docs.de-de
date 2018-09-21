@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: masoucou
-ms.openlocfilehash: 255f23906bc93ce78b28f4f0806d7076a97b0ef2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e002f99cc16721b78d85284105ce22ee7d1eb9a3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698688"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574826"
 ---
 # <a name="quickstart-build-a-mongodb-api-xamarinforms-app-with-net-and-the-azure-portal"></a>Schnellstart: Erstellen einer Xamarin.Forms-App mit einer MongoDB-API mit .NET und dem Azure-Portal
 
@@ -173,7 +173,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 2. Klicken Sie auf **Restore all NuGet packages** (Alle NuGet-Pakete wiederherstellen).
 3. Klicken Sie mit der rechten Maustaste auf **TaskList.Android**, und wählen Sie **Als Startprojekt festlegen** aus.
 4. Drücken Sie die F5-TASTE, um das Debuggen der Anwendung zu starten.
-5. Wenn Sie die App unter iOS ausführen möchten, müssen Sie Ihren Computer zunächst mit einem Mac-Gerät verbinden (Anweisungen finden Sie [hier](https://docs.microsoft.com/en-us/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)).
+5. Wenn Sie die App unter iOS ausführen möchten, müssen Sie Ihren Computer zunächst mit einem Mac-Gerät verbinden (Anweisungen finden Sie [hier](https://docs.microsoft.com/xamarin/ios/get-started/installation/windows/introduction-to-xamarin-ios-for-visual-studio)).
 6. Klicken Sie mit der rechten Maustaste auf das Projekt **TaskList.iOS**, und wählen Sie **Als Startprojekt festlegen** aus.
 7. Drücken Sie die F5-TASTE, um das Debuggen der Anwendung zu starten.
 

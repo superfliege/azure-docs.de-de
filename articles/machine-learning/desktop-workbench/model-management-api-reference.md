@@ -8,17 +8,17 @@ manager: hjerez
 editor: jasonwhowell
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 233ae50246619c3e503e42081c3b4de88090f411
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835031"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35636933"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>API zum Azure Machine Learning-Modellverwaltungskonto – Referenz
 
@@ -81,12 +81,12 @@ Dient zum Registrieren eines Modells.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
-| model | body | Nutzlast, die zum Registrieren eines Modells verwendet wird | Ja | [Modell](#model) |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
+| model | body | Nutzlast, die zum Registrieren eines Modells verwendet wird | JA | [Modell](#model) |
 
 
 ### <a name="responses"></a>Antworten
@@ -107,11 +107,11 @@ Dient zum Abfragen der Liste mit den Modellen in einem Konto. Sie können die Er
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 | name | query | Objektname | Nein  | Zeichenfolge |
 | tag | query | Modelltag | Nein  | Zeichenfolge |
 | count | query | Anzahl von Elementen, die pro Seite abgerufen werden sollen | Nein  | Zeichenfolge |
@@ -136,12 +136,12 @@ Dient zum Abrufen eines Modells nach der ID.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Objekt-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Objekt-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -162,12 +162,12 @@ Dient zum Registrieren eines Manifests beim registrierten Modell und allen Abhä
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
-| manifestRequest | body | Nutzlast, die zum Registrieren eines Manifests verwendet wird | Ja | [Manifest](#manifest) |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
+| manifestRequest | body | Nutzlast, die zum Registrieren eines Manifests verwendet wird | JA | [Manifest](#manifest) |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -188,11 +188,11 @@ Dient zum Abfragen der Liste mit den Manifesten in einem Konto. Sie können die 
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 | modelId | query | Modell-ID | Nein  | Zeichenfolge |
 | manifestName | query | Manifestname | Nein  | Zeichenfolge |
 | count | query | Anzahl von Elementen, die pro Seite abgerufen werden sollen | Nein  | Zeichenfolge |
@@ -217,12 +217,12 @@ Dient zum Abrufen des Manifests nach der ID.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Objekt-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Objekt-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -243,12 +243,12 @@ Dient zum Erstellen eines Image als Docker-Image in Azure Container Registry.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
-| imageRequest | body | Nutzlast, die zum Erstellen eines Image verwendet wird | Ja | [ImageRequest](#imagerequest) |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
+| imageRequest | body | Nutzlast, die zum Erstellen eines Image verwendet wird | JA | [ImageRequest](#imagerequest) |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Header | Schema |
@@ -269,11 +269,11 @@ Dient zum Abfragen der Liste mit den Images in einem Konto. Sie können die Erge
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 | manifestId | query | Manifest-ID | Nein  | Zeichenfolge |
 | manifestName | query | Manifestname | Nein  | Zeichenfolge |
 | count | query | Anzahl von Elementen, die pro Seite abgerufen werden sollen | Nein  | Zeichenfolge |
@@ -298,12 +298,12 @@ Dient zum Abrufen eines Image nach der ID.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Image-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Image-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -325,12 +325,12 @@ Dient zum Erstellen eines Diensts aus einem Image.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
-| serviceRequest | body | Nutzlast, die zum Erstellen eines Diensts verwendet wird | Ja | [ServiceCreateRequest](#servicecreaterequest) |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
+| serviceRequest | body | Nutzlast, die zum Erstellen eines Diensts verwendet wird | JA | [ServiceCreateRequest](#servicecreaterequest) |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Header | Schema |
@@ -352,11 +352,11 @@ Dient zum Abfragen der Liste mit den Diensten in einem Konto. Sie können die Er
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 | serviceName | query | Dienstname | Nein  | Zeichenfolge |
 | modelId | query | Modellname | Nein  | Zeichenfolge |
 | modelName | query | Modell-ID | Nein  | Zeichenfolge |
@@ -386,12 +386,12 @@ Dient zum Abrufen eines Diensts nach der ID.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Objekt-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Objekt-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -412,13 +412,13 @@ Dient zum Aktualisieren eines vorhandenen Diensts.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Objekt-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
-| serviceUpdateRequest | body | Nutzlast, die zum Aktualisieren eines vorhandenen Diensts verwendet wird | Ja |  [ServiceUpdateRequest](#serviceupdaterequest) |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Objekt-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
+| serviceUpdateRequest | body | Nutzlast, die zum Aktualisieren eines vorhandenen Diensts verwendet wird | JA |  [ServiceUpdateRequest](#serviceupdaterequest) |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Header | Schema |
@@ -440,12 +440,12 @@ Dient zum Löschen eines Diensts.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Objekt-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Objekt-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -467,12 +467,12 @@ Dient zum Abrufen von Dienstschlüsseln.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Dienst-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Dienst-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -493,13 +493,13 @@ Dient zum erneuten Generieren und Zurückgeben von Dienstschlüsseln.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Dienst-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
-| regenerateKeyRequest | body | Nutzlast, die zum Aktualisieren eines vorhandenen Diensts verwendet wird | Ja | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Dienst-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
+| regenerateKeyRequest | body | Nutzlast, die zum Aktualisieren eines vorhandenen Diensts verwendet wird | JA | [ServiceRegenerateKeyRequest](#serviceregeneratekeyrequest) |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -520,11 +520,11 @@ Dient zum Abfragen der Liste mit den Bereitstellungen eines Kontos. Sie können 
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 | serviceId | query | Dienst-ID | Nein  | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
@@ -546,12 +546,12 @@ Dient zum Abrufen der Bereitstellung nach der ID.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Bereitstellungs-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Bereitstellungs-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |
@@ -572,12 +572,12 @@ Dient zum Abrufen des Status von asynchronen Vorgängen nach Vorgangs-ID.
 ### <a name="parameters"></a>Parameter
 | NAME | Enthalten in | BESCHREIBUNG | Erforderlich | Schema
 |--------------------|--------------------|--------------------|--------------------|--------------------|
-| subscriptionId | path | Die Azure-Abonnement-ID. | Ja | Zeichenfolge |
-| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | Ja | Zeichenfolge |
-| .<Name der Region | path | Name des Modellverwaltungskontos | Ja | Zeichenfolge |
-| id | path | Vorgangs-ID | Ja | Zeichenfolge |
-| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | Zeichenfolge |
-| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | Zeichenfolge |
+| subscriptionId | path | Die Azure-Abonnement-ID. | JA | Zeichenfolge |
+| resourceGroupName | path | Name der Ressourcengruppe, in der sich das Modellverwaltungskonto befindet | JA | Zeichenfolge |
+| .<Name der Region | path | Name des Modellverwaltungskontos | JA | Zeichenfolge |
+| id | path | Vorgangs-ID | JA | Zeichenfolge |
+| api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | JA | Zeichenfolge |
+| Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | JA | Zeichenfolge |
 
 ### <a name="responses"></a>Antworten
 | Code | BESCHREIBUNG | Schema |

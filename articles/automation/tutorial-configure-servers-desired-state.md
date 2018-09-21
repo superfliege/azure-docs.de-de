@@ -4,17 +4,17 @@ description: 'Tutorial: Verwalten von Serverkonfigurationen mit der Azure Automa
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 3b4ecc7596af52312785ea7acaad18a7af8a5087
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 000875e4e591bcfe94ec99f8b16c8ec40bf52cf4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005956"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629881"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurieren von Servern mit einem gewünschten Status und Verwalten der Abweichung mit Azure Automation
 
@@ -86,7 +86,7 @@ Dies erstellt eine Konfiguration mit dem Namen `TestConfig.WebServer` in Ihrem A
 
 ## <a name="register-a-vm-to-be-managed-by-state-configuration"></a>Registrieren eines virtuellen Computers für die Verwaltung durch die Zustandskonfiguration
 
-Mit der Azure Automation-Zustandskonfiguration können Sie virtuelle Azure-Computer (mit dem klassischen Modell oder dem Resource Manager-Modell), lokale virtuelle Computer, Linux-Computer, virtuelle AWS-Computer und lokale physische Computer verwalten. In diesem Thema wird das Registrieren von ausschließlich Azure Resource Manager-VMs behandelt. Informationen zum Registrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md).
+Mit Azure Automation State Configuration können Sie virtuelle Azure-Computer (mit dem klassischen Modell oder dem Resource Manager-Modell), lokale virtuelle Computer, Linux-Computer, virtuelle AWS-Computer und lokale physische Computer verwalten. In diesem Thema wird das Registrieren von ausschließlich Azure Resource Manager-VMs behandelt. Informationen zum Registrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md).
 
 Rufen Sie das Cmdlet `Register-AzureRmAutomationDscNode` auf, um Ihren virtuellen Computer bei der Azure Automation-Zustandskonfiguration zu registrieren.
 
@@ -148,9 +148,9 @@ $reports[0]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Eine Einführung finden Sie unter [Erste Schritte mit der Azure Automation-Zustandskonfiguration](automation-dsc-getting-started.md).
-- Weitere Informationen zum Integrieren von Knoten finden Sie unter [Integrieren von Computern für die Verwaltung durch die Azure Automation-Zustandskonfiguration](automation-dsc-onboarding.md).
-- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in der Azure Automation-Zustandskonfiguration](automation-dsc-compile.md).
-- Eine PowerShell-Cmdlet-Referenz ist unter [Cmdlets der Azure Automation-Zustandskonfiguration](/powershell/module/azurerm.automation/#automation) verfügbar.
-- Eine Preisübersicht finden Sie unter [Azure Automation-Zustandskonfiguration: Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Ein Verwendungsbeispiel für die Azure Automation-Zustandskonfiguration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit der Azure Automation-Zustandskonfiguration und Chocolatey](automation-dsc-cd-chocolatey.md).
+- Eine Einführung finden Sie unter [Erste Schritte mit Azure Automation State Configuration](automation-dsc-getting-started.md).
+- Weitere Informationen zum Integrieren von Knoten finden Sie unter [Onboarding von Computern zur Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
+- Wie Sie DSC-Konfigurationen kompilieren und anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation DSC](automation-dsc-compile.md).
+- Eine PowerShell-Cmdlet-Referenz ist unter [Azure Automation State Configuration-Cmdlets](/powershell/module/azurerm.automation/#automation) verfügbar.
+- Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
+- Ein Verwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Continuous Deployment mit Azure Automation State Configuration und Chocolatey](automation-dsc-cd-chocolatey.md).

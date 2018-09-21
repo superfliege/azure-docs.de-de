@@ -7,16 +7,21 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: e1089db848b30945e5e61765c762262f5478450e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 395bbf50373d3a6e3848fba9fd3db0d6989023f4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645887"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35637034"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>Deinstallieren von Komponenten der Aufträge für die elastische Datenbank
+
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
 **Aufträge für die elastische Datenbank** können wahlweise mithilfe des Azure-Portals oder von PowerShell deinstalliert werden.
 
 ## <a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Deinstallieren von Komponenten der Aufträge für die elastische Datenbank mithilfe des Azure-Portals

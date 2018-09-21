@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b13b5a7d5366a0bce97d8e735dbf3822186d21cb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9ebd949460f826c9529b9f392bc4a7f4918ee170
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44354976"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715039"
 ---
 # <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer
 Dieser Artikel hilft Ihnen bei der Behandlung der folgenden Probleme:
@@ -91,7 +91,6 @@ So deinstallieren Sie die Zugriffsbereichserweiterung auf Ihrem Computer:
 Wenn beim Deinstallieren der Erweiterung Probleme auftreten, können Sie diese auch mithilfe des Tools [Microsoft Fix it](https://go.microsoft.com/?linkid=9779673) entfernen.
 
 ## <a name="related-articles"></a>Verwandte Artikel
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
 * [Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory](what-is-single-sign-on.md)
 * [How to Deploy the Access Panel Extension for Internet Explorer using Group Policy (auf Englisch)](deploy-access-panel-browser-extension.md)
 

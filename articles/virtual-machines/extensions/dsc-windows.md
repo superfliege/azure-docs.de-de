@@ -3,8 +3,8 @@ title: Handler der Azure-DSC-Erweiterung (Desired State Configuration) | Microso
 description: Hochladen und Anwenden einer PowerShell-DSC-Konfiguration auf einer Azure-VM mithilfe der DSC-Erweiterung
 services: virtual-machines-windows
 documentationcenter: ''
-author: eshaparmar
-manager: jeconnoc
+author: bobbytreed
+manager: carmonm
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
-ms.author: esparmar
-ms.openlocfilehash: b34314951980f7dbe2269119883dec52a90a0587
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: robreed
+ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944812"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630929"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC-Erweiterung
 

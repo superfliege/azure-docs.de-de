@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 807b8a17570dfdcefa07a42719b7b0b24e4f31d7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145593"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297161"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault-Funktionen für Kundendaten
 
@@ -37,7 +37,7 @@ Die folgenden Informationen identifizieren Kundendaten in Azure Key Vault:
 - Zertifikatkontakte können E-Mail-Adressen, Namen oder Telefonnummern von Benutzern enthalten.
 - Zertifikataussteller können E-Mail-Adressen, Namen, Telefonnummern, Kontoanmeldeinformationen und organisatorische Details enthalten.
 - Auf Objekte in Azure Key Vault können beliebige Tags angewendet werden. Zu diesen Objekten gehören Tresore, Schlüssel, Geheimnisse, Zertifikate und Speicherkonten. Die verwendeten Tags können persönliche Daten enthalten.
-- Azure Key Vault-Zugriffsprotokolle enthalten Objekt-IDs, [UPNs](../active-directory/connect/active-directory-aadconnect-userprincipalname.md) und IP-Adressen für jeden REST-API-Aufruf.
+- Azure Key Vault-Zugriffsprotokolle enthalten Objekt-IDs, [UPNs](../active-directory/hybrid/plan-connect-userprincipalname.md) und IP-Adressen für jeden REST-API-Aufruf.
 - Azure Key Vault-Diagnoseprotokolle können Objekt-IDs und IP-Adressen für REST-API-Aufrufe enthalten.
 
 ## <a name="deleting-customer-data"></a>Löschen von Kundendaten

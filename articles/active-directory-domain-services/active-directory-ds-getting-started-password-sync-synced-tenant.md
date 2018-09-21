@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 261cb45bd3b7b7f284eff3397aca141917a82502
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 33cbc65ec5971f8bfe0133e5dca181194cd0bbdd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504854"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46293998"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Aktivieren der Kennwortsynchronisierung für Azure Active Directory Domain Services
 In vorherigen Aufgaben haben Sie Azure Active Directory Domain Services für Ihren Azure AD-Mandanten (Azure Active Directory) aktiviert. Die nächste Aufgabe besteht darin, die Synchronisierung der Anmeldeinformationshashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services zu ermöglichen. Nach der Einrichtung der Synchronisierung von Anmeldeinformationen können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden.
@@ -59,7 +59,7 @@ Empfohlene Version: **1.1.614.0** – veröffentlicht am 5. September 2017.
 >
 >
 
-Installationshinweise für Azure AD Connect finden Sie im folgenden Artikel: [Erste Schritte mit Azure AD Connect](../active-directory/active-directory-aadconnect.md)
+Installationshinweise für Azure AD Connect finden Sie im folgenden Artikel: [Erste Schritte mit Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md)
 
 ### <a name="enable-synchronization-of-ntlm-and-kerberos-credential-hashes-to-azure-ad"></a>Aktivieren der Synchronisierung von Hashes für NTLM- und Kerberos-Anmeldeinformationen mit Azure AD
 Führen Sie für jede Active Directory-Gesamtstruktur das folgende PowerShell-Skript aus. Dadurch können die NTLM- und Kerberos-Kennworthashes aller lokalen Benutzer mit Ihrem Azure AD-Mandanten synchronisiert werden. Darüber hinaus initiiert das Skript eine vollständige Synchronisierung in Azure AD Connect.

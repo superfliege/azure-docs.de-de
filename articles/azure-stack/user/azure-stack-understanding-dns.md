@@ -14,18 +14,18 @@ ms.topic: get-started-article
 ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 9123160f42adea57c28dff265bd5b5dbbcbb7918
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 100c444fb5b3109c197fff69062586f9facb0932
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724257"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580581"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Einführung in iDNS für Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-iDNS ist ein Netzwerkfeature von Azure Stack, mit dem Sie externe DNS-Namen (z.B. http://www.bing.com.) auflösen können. Darüber hinaus ermöglicht das Feature die Registrierung interner virtueller Netzwerknamen. Auf diese Weise können Sie virtuelle Computer im selben virtuellen Netzwerk nach dem Namen statt der IP-Adresse auflösen. Bei diesem Ansatz müssen keine benutzerdefinierten DNS-Servereinträge angegeben werden. Weitere Informationen zu DNS finden Sie unter [Azure DNS – Übersicht](https://docs.microsoft.com/en-us/azure/dns/dns-overview).
+iDNS ist ein Netzwerkfeature von Azure Stack, mit dem Sie externe DNS-Namen (z.B. http://www.bing.com.) auflösen können. Darüber hinaus ermöglicht das Feature die Registrierung interner virtueller Netzwerknamen. Auf diese Weise können Sie virtuelle Computer im selben virtuellen Netzwerk nach dem Namen statt der IP-Adresse auflösen. Bei diesem Ansatz müssen keine benutzerdefinierten DNS-Servereinträge angegeben werden. Weitere Informationen zu DNS finden Sie unter [Azure DNS – Übersicht](https://docs.microsoft.com/azure/dns/dns-overview).
 
 ## <a name="what-does-idns-do"></a>Wozu dient iDNS?
 

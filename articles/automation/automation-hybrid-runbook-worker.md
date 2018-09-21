@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e834a1cfa7eba3c1ff12523982e6704c73ef8078
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 92ebd399cea88440e0f76ee1f34cb5930d3121d9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488507"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578683"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker
 
@@ -97,7 +97,7 @@ Um eine Gruppe zu entfernen, müssen Sie zunächst den Hybrid Runbook Worker von
 
 Damit der Hybrid Runbook Worker eine Verbindung mit Log Analytics herstellen und sich bei dem Dienst registrieren kann, benötigt er Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs. Dieser Zugriff wird zusätzlich zu den [für Microsoft Monitoring Agent erforderlichen Ports und URLs](../log-analytics/log-analytics-agent-windows.md) für das Herstellen einer Verbindung mit Log Analytics benötigt. 
 
-Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem Log Analytics-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist. Wenn Sie das OMS-Gateway als Proxy verwenden, achten Sie darauf, das es für Hybrid Worker konfiguriert ist. Anweisungen dazu finden Sie unter [Konfigurieren des OMS-Gateways für Automation Hybrid Worker](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem Log Analytics-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist. Wenn Sie das OMS-Gateway als Proxy verwenden, achten Sie darauf, das es für Hybrid Worker konfiguriert ist. Anweisungen dazu finden Sie unter [Konfigurieren des OMS-Gateways für Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 
 Nachfolgend sind der Port und die URLs aufgeführt, die für die Kommunikation zwischen der Hybrid Runbook Worker-Rolle und Automation erforderlich sind:
 

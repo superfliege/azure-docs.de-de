@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: overview
 ms.date: 08/15/2018
 ms.author: diberry
-ms.openlocfilehash: e74abb30709f186d3c1139793cf34d3e033ff967
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: aadf80df388a25e07051f6dd0a83cd4da7c2ef83
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40191635"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629796"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -179,7 +179,7 @@ Microsoft-Clientanwendungen für LUIS:
 * [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/): In diesem [Mixed Reality-Kurs](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) mit LUIS erfahren Sie mehr. 
 
 Microsoft-Tools zur Verwendung von LUIS mit einem Bot:
-* [Dispatch](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) ermöglicht die Verwendung mehrerer LUIS- und QnA Maker-Apps aus einer übergeordneten App mithilfe eines Verteilermodells.
+* [Dispatch](https://aka.ms/dispatch-tool) ermöglicht die Verwendung mehrerer LUIS- und QnA Maker-Apps aus einer übergeordneten App mithilfe eines Verteilermodells.
 * Das [Unterhaltungslernmodul](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview) ermöglicht Ihnen mit LUIS ein schnelleres Erstellen von Bot-Konversationen.
 * [Projekt: Chat mit Profil](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview) für Smalltalk mit dem Bot.
 

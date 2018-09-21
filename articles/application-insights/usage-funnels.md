@@ -1,22 +1,23 @@
 ---
 title: Azure Application Insights-Trichter
-description: "In diesem Artikel wird erläutert, wie Sie Trichter dazu verwenden können, sich über die Interaktionen der Kunden mit Ihrer Anwendung zu informieren."
+description: In diesem Artikel wird erläutert, wie Sie Trichter dazu verwenden können, sich über die Interaktionen der Kunden mit Ihrer Anwendung zu informieren.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: bbb25af888f34737f6a61cf43890ff248c4cc4de
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 527f9d4a6086f92dcba8a342162b955431b8b315
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35634250"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Informieren Sie sich mit Application Insights-Trichtern darüber, wie die Kunden Ihre Anwendung verwenden
 
@@ -50,7 +51,7 @@ Der obige Screenshot enthält fünf hervorgehobene Bereiche. Dies sind Features 
 ## <a name="next-steps"></a>Nächste Schritte
   * [Nutzungsübersicht](app-insights-usage-overview.md)
   * [Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights](app-insights-usage-segmentation.md)
-  * [Aufbewahrung](app-insights-usage-retention.md)
+  * [Vermerkdauer](app-insights-usage-retention.md)
   * [Arbeitsmappen](app-insights-usage-workbooks.md)
   * [Hinzufügen von Benutzerkontext](app-insights-usage-send-user-context.md)
   * [Exportieren nach Power BI](app-insights-export-power-bi.md)

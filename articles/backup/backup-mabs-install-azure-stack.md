@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970882"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576696"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -310,7 +310,7 @@ Azure Backup Server und Data Protection Manager teilen sich Code. Deshalb finden
 
 ## <a name="add-backup-storage"></a>Hinzufügen von Backup Storage
 
-Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azure Backup Server-Computer zugeordnet ist. Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Hinzufügen von Speicher zu DPM 2016](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
+Die erste Sicherungskopie wird in einem Speicherbereich vorgehalten, der dem Azure Backup Server-Computer zugeordnet ist. Weitere Informationen zum Hinzufügen von Datenträgern finden Sie unter [Hinzufügen von Speicher zu DPM 2016](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Sie müssen auch dann Backup Storage hinzufügen, wenn Sie Daten an Azure senden möchten. In der Architektur von Azure Backup Server enthält der Recovery Services-Tresor die *zweite* Kopie der Daten, während der lokale Speicher die erste (obligatorische) Sicherungskopie enthält.
@@ -360,10 +360,10 @@ Sie können auch [Azure Backup – Häufig gestellte Fragen](backup-azure-backup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Der Artikel [Vorbereiten der Umgebung für DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801) enthält Informationen zu unterstützten Azure Backup Server-Konfigurationen.
+Der Artikel [Vorbereiten der Umgebung für DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801) enthält Informationen zu unterstützten Azure Backup Server-Konfigurationen.
 
 In den folgenden Artikeln finden Sie weiteführende Informationen zum Schutz von Workloads mit Microsoft Azure Backup Server.
 
-- [SQL Server-Sicherung](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
-- [SharePoint Server-Sicherung](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [SQL Server-Sicherung](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+- [SharePoint Server-Sicherung](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Sicherung eines anderen Servers](backup-azure-alternate-dpm-server.md)

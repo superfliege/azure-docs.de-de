@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1ef4467862f47a833e0592c94c662170ca2946d8
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781448"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578936"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Route zu einem Point of Interest mit Azure Maps
 
@@ -27,14 +27,15 @@ In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Maps-Konto und das Ro
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie vor dem Fortfahren die Schritte zum [Erstellen eines Azure Maps-Kontos](./tutorial-search-location.md#createaccount) und [Abrufen des Abonnementschlüssels für Ihr Konto](./tutorial-search-location.md#getkey) im vorherigen Tutorial aus. 
+Führen Sie vor dem Fortfahren die Schritte zum [Erstellen eines Azure Maps-Kontos](./tutorial-search-location.md#createaccount) und [Abrufen des Abonnementschlüssels für Ihr Konto](./tutorial-search-location.md#getkey) im vorherigen Tutorial aus.
 
 <a id="getcoordinates"></a>
 
-## <a name="create-a-new-map"></a>Erstellen einer neuen Karte 
-Die folgenden Schritte veranschaulichen, wie Sie eine statische HTML-Seite erstellen, in die die Kartensteuerelement-API eingebettet ist. 
+## <a name="create-a-new-map"></a>Erstellen einer neuen Karte
 
-1. Erstellen Sie auf dem lokalen Computer eine neue Datei, und nennen Sie sie **MapRoute.html**. 
+Die folgenden Schritte veranschaulichen, wie Sie eine statische HTML-Seite erstellen, in die die Kartensteuerelement-API eingebettet ist.
+
+1. Erstellen Sie auf dem lokalen Computer eine neue Datei, und nennen Sie sie **MapRoute.html**.
 2. Fügen Sie der Datei die folgenden HTML-Komponenten hinzu:
 
     ```HTML
@@ -45,9 +46,9 @@ Die folgenden Schritte veranschaulichen, wie Sie eine statische HTML-Seite erste
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <title>Map Route</title>
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css"/> 
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script> 
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script> 
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css"/>
+        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
+        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script>
         <style>
             html,
             body {
@@ -86,13 +87,13 @@ Die folgenden Schritte veranschaulichen, wie Sie eine statische HTML-Seite erste
     ```
     Mit **atlas.Map** – einer Komponente der Azure-Kartensteuerelement-API – wird das Steuerelement für eine visuelle und interaktive Webkarte bereitgestellt.
 
-4. Speichern Sie die Datei, und öffnen Sie sie im Browser. Nun besitzen Sie eine einfache Karte, die Sie weiter anpassen können. 
+4. Speichern Sie die Datei, und öffnen Sie sie im Browser. Nun besitzen Sie eine einfache Karte, die Sie weiter anpassen können.
 
    ![Anzeigen der einfachen Karte](./media/tutorial-route-location/basic-map.png)
 
 ## <a name="set-start-and-end-points"></a>Festlegen von Start- und Endpunkten
 
-Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Ziel eine Tankstelle in Seattle fest. 
+Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Ziel eine Tankstelle in Seattle fest.
 
 1. Fügen Sie im gleichen *script*-Block der Datei **MapRoute.html** den folgenden JavaScript-Code hinzu, um den Start- und Endpunkt für die Route zu erstellen:
 
@@ -110,7 +111,7 @@ Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Ziel eine Tankstel
         icon: "pin-blue"
     });
     ```
-    Mit diesem Code werden zwei [GeoJSON-Objekte](https://en.wikipedia.org/wiki/GeoJSON) erstellt, die für den Start- bzw. Endpunkt der Route stehen. 
+    Mit diesem Code werden zwei [GeoJSON-Objekte](https://en.wikipedia.org/wiki/GeoJSON) erstellt, die für den Start- bzw. Endpunkt der Route stehen.
 
 2. Fügen Sie den folgenden JavaScript-Code hinzu, um der Karte die Pins für den Start- und Endpunkt hinzuzufügen:
 
@@ -131,10 +132,10 @@ Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Ziel eine Tankstel
         textFont: "SegoeUi-Regular",
         textOffset: [0, -20]
     });
-    ``` 
+    ```
     Mit **map.setCameraBounds** wird das Kartenfenster gemäß den Koordinaten des Start- und Endpunkts angepasst. Mit der API **map.addPins** werden die Punkte dem Kartensteuerelement als visuelle Komponenten hinzugefügt.
 
-7. Speichern Sie die Datei **MapRoute.html**, und aktualisieren Sie den Browser. Die Karte ist nun auf Seattle zentriert, und Sie sehen die runde blaue Markierung für den Startpunkt und die blaue Markierung für das Ziel.
+3. Speichern Sie die Datei **MapRoute.html**, und aktualisieren Sie den Browser. Die Karte ist nun auf Seattle zentriert, und Sie sehen die runde blaue Markierung für den Startpunkt und die blaue Markierung für das Ziel.
 
    ![Anzeigen der Karte mit markiertem Start- und Endpunkt](./media/tutorial-route-location/map-pins.png)
 
@@ -143,7 +144,6 @@ Legen Sie in diesem Tutorial als Startpunkt Microsoft und als Ziel eine Tankstel
 ## <a name="get-directions"></a>Abrufen einer Wegbeschreibung
 
 In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Maps verwenden, um die Route von einem bestimmten Startpunkt zu einem Ziel zu ermitteln. Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route zwischen zwei Orten bereit. Benutzer können zukünftige Routen planen, indem sie die umfassende Azure-Datenbank zum Verkehrsverlauf nutzen und die Routendauern für beliebige Tage und Uhrzeiten vorhersagen. Weitere Informationen finden Sie unter [Get route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) (Abrufen von Wegbeschreibungen).
-
 
 1. Fügen Sie der Karte zunächst eine neue Ebene (*LineString*) hinzu, um die Route anzuzeigen. Fügen Sie dem *script*-Block den folgenden JavaScript-Code hinzu.
 
@@ -160,44 +160,44 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Maps 
     });
     ```
 
-2.  Fügen Sie dem Skriptblock den folgenden Javascript-Code hinzu, um den Clientdienst zu instanziieren.
+2. Fügen Sie dem Skriptblock den folgenden Javascript-Code hinzu, um den Clientdienst zu instanziieren.
     ```JavaScript
-    var client = new atlas.service.Client(subscriptionKey);
+    var client = new atlas.service.Client(MapsAccountKey);
     ```
 
 3. Fügen Sie den folgenden Codeblock hinzu, um eine Routenabfragezeichenfolge zu erstellen.
     ```JavaScript
-    // Construct the route query string 
-        var routeQuery = startPoint.coordinates[1] + 
-            "," + 
-            startPoint.coordinates[0] + 
-            ":" + 
-            destinationPoint.coordinates[1] + 
-            "," + 
-            destinationPoint.coordinates[0];     
+    // Construct the route query string
+    var routeQuery = startPoint.coordinates[1] +
+        "," +
+        startPoint.coordinates[0] +
+        ":" +
+        destinationPoint.coordinates[1] +
+        "," +
+        destinationPoint.coordinates[0];
     ```
 
 4. Fügen Sie zum Abrufen der Route den folgenden Codeblock zum Skript hinzu. Damit wird der Azure Maps-Routingdienst über die [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections)-Methode abgefragt und die Antwort anschließend im GeoJSON-Format unter Verwendung von [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes)analysiert. Alle Antwortlinien werden dann zur Karte hinzugefügt, um die Route zu rendern. Weitere Informationen finden Sie unter [Hinzufügen einer Linie zur Karte](./map-add-shape.md#addALine).
 
     ```JavaScript
     // Execute the query then add the route to the map once a response is received  
-    client.route.getRouteDirections(routeQuery).then(response => { 
-         // Parse the response into GeoJSON 
-         var geoJsonResponse = new atlas.service.geojson.GeoJsonRouteDirectionsResponse(response); 
- 
-         // Get the first in the array of routes and add it to the map 
-         map.addLinestrings([geoJsonResponse.getGeoJsonRoutes().features[0]], { 
-             name: routeLinesLayerName 
-         }); 
-    }); 
+    client.route.getRouteDirections(routeQuery).then(response => {
+         // Parse the response into GeoJSON
+         var geoJsonResponse = new atlas.service.geojson.GeoJsonRouteDirectionsResponse(response);
+
+         // Get the first in the array of routes and add it to the map
+         map.addLinestrings([geoJsonResponse.getGeoJsonRoutes().features[0]], {
+             name: routeLinesLayerName
+         });
+    });
     ```
 
 5. Speichern Sie die Datei **MapRoute.html**, und aktualisieren Sie den Webbrowser. Bei einer erfolgreichen Verbindungsherstellung mit den Maps-APIs sollte eine Karte angezeigt werden, die in etwa wie folgt aussieht:
 
     ![Azure-Kartensteuerelement und -Routendienst](./media/tutorial-route-location/map-route.png)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
@@ -205,7 +205,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Festlegen von Adressenkoordinaten
 > * Abfragen des Routendiensts nach der Wegbeschreibung zum Point of Interest
 
-Im nächsten Tutorial erfahren Sie, wie Sie eine Routenabfrage mit Einschränkungen wie Fortbewegungsart oder Frachttyp erstellen und anschließend mehrere Routen auf der gleichen Karte anzeigen. 
+Im nächsten Tutorial erfahren Sie, wie Sie eine Routenabfrage mit Einschränkungen wie Fortbewegungsart oder Frachttyp erstellen und anschließend mehrere Routen auf der gleichen Karte anzeigen.
 
 > [!div class="nextstepaction"]
 > [Ermitteln von Routen für verschiedene Fortbewegungsarten](./tutorial-prioritized-routes.md)

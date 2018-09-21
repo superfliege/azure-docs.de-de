@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9f7fb5009468dccae50190ee40a53d11040d0348
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903746"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578309"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Datenverkehrsanalysen
 
@@ -58,7 +58,7 @@ So überprüfen Sie die einem Benutzer für ein Abonnement zugewiesenen Rollen
 
 3. Listen Sie mit **Get-AzureRmRoleAssignment -SignInName [E-Mail-Adresse des Benutzers] -IncludeClassicAdministrators** alle Rollen auf, die einem bestimmten Benutzer zugewiesen sind. 
 
-Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell).
+Falls keine Ausgabe erfolgt, wenden Sie sich an den zuständigen Abonnementadministrator, um den zur Ausführung der Befehle erforderlichen Zugriff zu erhalten. Weitere Informationen finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>In welchen Azure-Regionen ist Traffic Analytics verfügbar?
@@ -196,7 +196,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Traffic Analytics ist getaktet. Die Taktung basiert auf der Verarbeitung von Flussprotokolldaten durch den Dienst und der Speicherung der resultierenden verbesserten Protokolle in einem Log Analytics-Arbeitsbereich. 
 
-Beispiel, gemäß dem [Tarif](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) und der Region „USA, Westen-Mitte“: Wenn in einem von Traffic Analytics verarbeiteten Speicherkonto gespeicherte Flowprotokolldaten 10 GB und im Log Analytics-Arbeitsbereich erfasste erweiterte Protokolle 1 GB umfassen, fallen als Gebühren an: 10 x 2,3 $ + 1 x 2,76 $ = 25,76 $
+Beispiel, gemäß dem [Tarif](https://azure.microsoft.com/pricing/details/network-watcher/) und der Region „USA, Westen-Mitte“: Wenn in einem von Traffic Analytics verarbeiteten Speicherkonto gespeicherte Flowprotokolldaten 10 GB und im Log Analytics-Arbeitsbereich erfasste erweiterte Protokolle 1 GB umfassen, fallen als Gebühren an: 10 x 2,3 $ + 1 x 2,76 $ = 25,76 $
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Wie kann ich mit der Tastatur in der geografischen Kartenansicht navigieren?
 

@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 634143f56bc9134f240ff42b7b5989605c8bffde
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979384"
+---
 ## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
 
 Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies umfasst das Erstellen einer ASP.NET MVC-App, das Hinzufügen einer Verbindung mit verbundenen Diensten, das Hinzufügen eines Controllers und das Angeben der erforderlichen Namespacedirektiven.
@@ -29,7 +46,7 @@ Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies 
 1. Wählen Sie im Dialogfeld **Azure Storage** das Azure-Speicherkonto aus, das für dieses Tutorial verwendet werden soll. Um ein neues Azure-Speicherkonto zu erstellen, wählen Sie **Neues Azure-Speicherkonto erstellen** aus, und füllen Sie das Formular aus. Wählen Sie **Hinzufügen** aus, nachdem Sie entweder ein vorhandenes Speicherkonto ausgewählt oder ein neues Speicherkonto erstellt haben. Visual Studio installiert das NuGet-Paket für Azure Storage und eine Speicherverbindungszeichenfolge in **Web.config**.
 
 > [!TIP]
-> Informationen zum Erstellen eines Speicherkontos mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Informationen zu Azure-Speicherkonten](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+> Informationen zum Erstellen eines Speicherkontos mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Informationen zu Azure-Speicherkonten](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 >
 > Sie können ein Azure-Speicherkonto auch mit [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [Azure CLI](../articles/storage/common/storage-azure-cli.md) oder [Azure Cloud Shell](../articles/cloud-shell/overview.md) erstellen.
 

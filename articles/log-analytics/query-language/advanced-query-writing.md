@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 72c151fec0637822411f8cac44f4e13a8df96445
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f7594b7d1eb7d41508be435cdd0a6203433727c1
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40191011"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603055"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Schreiben erweiterter Abfragen in Log Analytics
 
 > [!NOTE]
 > Vor der Durchführung dieser Lektion sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-analytics-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 ## <a name="reusing-code-with-let"></a>Wiederverwenden von Code mit let
 Sie können mit `let` einer Variable Ergebnisse zuweisen und später in der Abfrage darauf verweisen:
 
-```OQL
+```KQL
 // get all events that have level 2 (indicates warning level)
 let warning_events=
 Event
@@ -42,7 +44,7 @@ warning_events
 
 Sie können Variablen auch konstante Werte zuweisen. Dies unterstützt eine Methode zum Einrichten von Parametern für die Felder, die Sie bei jeder Ausführung der Abfrage ändern müssen. Ändern Sie die Parameter nach Bedarf. Geben Sie beispielsweise zum Berechnen des freien Speicherplatzes auf dem Datenträger und des freien Arbeitsspeichers (in Perzentil) in einem bestimmten Zeitfenster Folgendes ein:
 
-```OQL
+```KQL
 let startDate = datetime(2018-08-01T12:55:02);
 let endDate = datetime(2018-08-02T13:21:35);
 let FreeDiskSpace =
@@ -63,7 +65,7 @@ Dies erleichtert Ihnen das Ändern der Start- und Endzeit bei der nächsten Ausf
 ### <a name="local-functions-and-parameters"></a>Lokale Funktionen und Parameter
 Sie können mit `let`-Anweisungen Funktionen erstellen, die in derselben Abfrage verwendet werden können. Definieren Sie beispielsweise eine Funktion, die ein datetime-Feld (im UTC-Format) auswählt und in ein US-Standardformat konvertiert. 
 
-```OQL
+```KQL
 let utc_to_us_date_format = (t:datetime)
 {
   strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
@@ -78,7 +80,7 @@ Event
 ## <a name="functions"></a>Functions
 Sie können eine Abfrage mit einem Funktionsalias speichern, damit durch andere Abfragen darauf verwiesen werden kann. Die folgende Standardabfrage gibt beispielsweise sämtliche fehlenden Sicherheitsupdates zurück, die am Vortag gemeldet wurden:
 
-```OQL
+```KQL
 Update
 | where TimeGenerated > ago(1d) 
 | where Classification == "Security Updates" 
@@ -87,7 +89,7 @@ Update
 
 Sie können diese Abfrage als Funktion speichern und ihr einen Alias zuweisen, wie z.B. _security_updates_last_day_. Anschließend können Sie sie in einer anderen Abfrage für die Suche nach SQL-bezogenen, erforderlichen Sicherheitsupdates verwenden:
 
-```OQL
+```KQL
 security_updates_last_day | where Title contains "SQL"
 ```
 
@@ -100,7 +102,7 @@ Klicken Sie zum Speichern einer Abfrage als Funktion im Portal auf die Schaltfl�
 ## <a name="print"></a>print
 `print` gibt eine Tabelle mit einer einzelnen Spalte und einer einzelnen Zeile zurück, in der das Ergebnis einer Berechnung angezeigt wird. Diese Funktion wird häufig in Fällen verwendet, in denen Sie eine einfache Berechnung benötigen. Geben Sie beispielsweise Folgendes ein, um die aktuelle Uhrzeit in PST zu finden und eine Spalte mit EST hinzuzufügen:
 
-```OQL
+```KQL
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
@@ -108,7 +110,7 @@ print nowPst = now()-8h
 ## <a name="datatable"></a>datatable
 `datatable` ermöglicht Ihnen das Definieren einer Reihe von Daten. Sie geben ein Schema und eine Reihe von Werten an und übergeben die Tabelle anschließend in beliebige andere Abfrageelemente. Geben Sie beispielsweise Folgendes ein, um eine Tabelle zur RAM-Nutzung zu erstellen und den Durchschnittswert pro Stunde zu berechnen:
 
-```OQL
+```KQL
 datatable (TimeGenerated: datetime, usage_percent: double)
 [
   "2018-06-02T15:15:46.3418323Z", 15.5,
@@ -125,7 +127,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 
 datatable-Konstrukte sind zudem bei der Erstellung einer Nachschlagetabelle sehr nützlich. Erstellen Sie beispielsweise zum Zuordnen von Tabellendaten, wie z.B. Ereignis-IDs, aus der Tabelle _SecurityEvent_ zu anderswo aufgeführten Ereignistypen mithilfe von `datatable` eine Nachschlagetabelle mit den Ereignistypen, und verknüpfen Sie diese Datentabelle mit _SecurityEvent_-Daten:
 
-```OQL
+```KQL
 let eventCodes = datatable (EventID: int, EventType:string)
 [
     4625, "Account activity",

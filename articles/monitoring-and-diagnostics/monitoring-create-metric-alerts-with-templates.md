@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 7289259214f90507c5b9cf527f19f0cf7026798c
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: be0ec31a05c0c1454e1af58b4a9c4ca959acbecf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391452"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577159"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) [neuere Metrikwarnungen](monitoring-near-real-time-metric-alerts.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported) verfügbar.
@@ -184,7 +184,7 @@ Speichern Sie die JSON-Datei unten als „simplemetricalert.json“ für diese e
 }
 ```
 
-Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel [finden Sie hier](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
+Eine Erläuterung des Schemas und der Eigenschaften für eine Warnungsregel [finden Sie hier](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
 Sie können die Werte für die Parameter in der Befehlszeile oder über eine Parameterdatei festlegen. Eine Beispieldatei für Parameter finden Sie weiter unten. 
 

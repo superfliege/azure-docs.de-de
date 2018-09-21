@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: a066d2a55f6949eea316eaf0a2956500667a996f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8a7346f884a065a21b6f0a822b2236fa7ce5dff0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340270"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732556"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Verarbeiten von Apache Kafka für Event Hubs-Ereignisse mithilfe von Stream Analytics 
 Dieser Artikel zeigt, wie Daten in Kafka-fähige Event Hubs gestreamt und mit Azure Stream Analytics verarbeitet werden können. Die folgenden Schritte werden behandelt: 
@@ -27,7 +27,7 @@ Dieser Artikel zeigt, wie Daten in Kafka-fähige Event Hubs gestreamt und mit Az
 2. Erstellen eines Kafka-Clients, der Nachrichten an den Event Hub sendet
 3. Erstellen eines Stream Analytics-Auftrags, der Daten aus dem Event Hub in Azure Blob Storage kopiert 
 
-Sie müssen Ihre Protokollclients nicht ändern oder eigene Cluster betreiben, wenn Sie den Kafka-Endpunkt verwenden, der von einem Event Hub verfügbar gemacht wird. Azure Event Hubs unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html) und höher. 
+Sie müssen Ihre Protokollclients nicht ändern oder eigene Cluster betreiben, wenn Sie den Kafka-Endpunkt verwenden, der von einem Event Hub verfügbar gemacht wird. Azure Event Hubs unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html). und höher. 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -38,7 +38,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 * [Java Development Kit (JDK) 1.7 oder höher](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Ein binäres Maven-Archiv ([Download](http://maven.apache.org/download.cgi)/[Installationsanleitung](http://maven.apache.org/install.html))
 * [Git-Client](https://www.git-scm.com/)
-* Ein **Azure Storage-Konto** Wenn keine öffentliche IP-Adresse vorhanden ist, [erstellen Sie jetzt eine](../storage/common/storage-create-storage-account.md#create-a-storage-account), ehe Sie fortfahren. Der Stream Analytics-Auftrag in dieser exemplarischen Vorgehensweise speichert die Ausgabedaten in Azure Blob Storage. 
+* Ein **Azure Storage-Konto** Wenn keine öffentliche IP-Adresse vorhanden ist, [erstellen Sie jetzt eine](../storage/common/storage-quickstart-create-account.md), ehe Sie fortfahren. Der Stream Analytics-Auftrag in dieser exemplarischen Vorgehensweise speichert die Ausgabedaten in Azure Blob Storage. 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Erstellen eines Kafka-fähigen Event Hubs-Namespace
@@ -55,7 +55,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
     4. Wählen Sie das **Azure-Abonnement** aus, in dem der Event Hub-Namespace erstellt werden soll. 
     5. Erstellen Sie eine neue **Ressourcengruppe**, oder wählen Sie eine vorhandene Ressourcengruppe aus. 
     6. Wählen Sie einen **Standort** aus. 
-    7. Klicken Sie auf **Erstellen**.
+    7. Klicken Sie auf **Create**.
     
         ![Erstellen eines Namespace](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
 4. Wählen Sie in der **Benachrichtigungsmeldung** den Namen der **Ressourcengruppe** aus. 
@@ -64,7 +64,7 @@ Für diese Schnellstartanleitung benötigen Sie Folgendes:
 1. Wählen Sie den **Event Hub-Namespace** in der Ressourcengruppe aus. 
 2. Wählen nach dem Erstellen des Namespace unter **EINSTELLUNGEN** die Option **Freigegebene Zugriffsrichtlinien** aus.
 
-    ![Klicken auf „Freigegebene Zugriffsrichtlinien“.](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
+    ![Klicken auf „SAS-Richtlinien“](./media/event-hubs-kafka-stream-analytics/shared-access-policies.png)
 5. Sie können die Standardrichtlinie **RootManageSharedAccessKey** auswählen oder eine neue Richtlinie hinzufügen. Klicken Sie auf den Richtliniennamen, und kopieren Sie die **Verbindungszeichenfolge**. Sie verwenden die Verbindungszeichenfolge, um den Kafka-Client zu konfigurieren. 
     
     ![Auswählen einer Richtlinie](./media/event-hubs-kafka-stream-analytics/connection-string.png)  
@@ -114,7 +114,7 @@ Nun können Sie Ereignisse von Ihren Anwendungen streamen, die das Kafka-Protoko
     ![Event Hub-Nachrichten](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>Verarbeiten von Ereignisdaten mithilfe eines Stream Analytics-Auftrags
-In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag. Der Kafka-Client sendet Ereignisse an den Event Hub. Sie erstellen einen Stream Analytics-Auftrag, der Ereignisdaten als Eingabe verwendet und diese in Azure Blob Storage ausgibt. Wenn Sie kein **Azure Storage-Konto** haben, müssen Sie eines [erstellen](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag. Der Kafka-Client sendet Ereignisse an den Event Hub. Sie erstellen einen Stream Analytics-Auftrag, der Ereignisdaten als Eingabe verwendet und diese in Azure Blob Storage ausgibt. Wenn Sie kein **Azure Storage-Konto** haben, müssen Sie eines [erstellen](../storage/common/storage-quickstart-create-account.md).
 
 Die Abfrage im Stream Analytics-Auftrag durchläuft die Daten, ohne eine Analyse vorzunehmen. Sie können eine Abfrage erstellen, die die Eingabedaten transformiert, um Ausgabedaten in einem anderen Format oder mit gewonnenen Erkenntnissen zu erzeugen.  
 
@@ -124,7 +124,7 @@ Die Abfrage im Stream Analytics-Auftrag durchläuft die Daten, ohne eine Analyse
 2. Wählen Sie **Analytics** im Menü **Azure Marketplace** und dann **Stream Analytics-Auftrag** aus. 
 3. Gehen Sie auf der Seite **Neuer Stream Analytics-Auftrag** wie folgt vor: 
     1. Geben Sie einen **Namen** für den Auftrag ein. 
-    2. Wählen Sie Ihr **Abonnement** aus.
+    2. Wählen Sie Ihr **Abonnement**aus.
     3. Klicken Sie für die **Ressourcengruppe** auf **Neu erstellen**, und geben Sie den Namen ein. Sie können auch eine **vorhandene** Ressourcengruppe verwenden. 
     4. Wählen Sie einen **Speicherort** für den Auftrag aus.
     5. Klicken Sie auf **Erstellen**, um den Auftrag zu erstellen. 
@@ -144,7 +144,7 @@ Die Abfrage im Stream Analytics-Auftrag durchläuft die Daten, ohne eine Analyse
     2. Wählen Sie Ihr Azure-**Abonnement** aus.
     3. Wählen Sie den **Event Hub-Namespace** aus, den Sie zuvor erstellt haben. 
     4. Wählen Sie **test** als **Event Hub** aus. 
-    5. Klicken Sie auf **Speichern**. 
+    5. Wählen Sie **Speichern**aus. 
 
         ![Event Hub-Eingabekonfiguration](./media/event-hubs-kafka-stream-analytics/event-hub-input-configuration.png)
 
@@ -157,7 +157,7 @@ Die Abfrage im Stream Analytics-Auftrag durchläuft die Daten, ohne eine Analyse
     2. Wählen Sie Ihr Azure- **Abonnement**aus. 
     3. Wählen Sie Ihr **Azure Storage-Konto** aus. 
     4. Geben Sie einen **Namen für den Container** ein, in dem die Ausgabedaten der Stream Analytics-Abfrage gespeichert werden.
-    5. Klicken Sie auf **Speichern**.
+    5. Wählen Sie **Speichern**aus.
 
         ![Blob Storage-Ausgabekonfiguration](./media/event-hubs-kafka-stream-analytics/output-blob-settings.png)
  
@@ -168,7 +168,7 @@ Nachdem Sie einen Stream Analytics-Auftrag eingerichtet haben, um einen eingehen
 1. Wählen Sie **Abfrage**.
 2. Ersetzen Sie im Abfragefenster `[YourOutputAlias]` durch den Ausgabealias, den Sie zuvor erstellt haben.
 3. Ersetzen Sie `[YourInputAlias]` durch den Eingabealias, den Sie zuvor erstellt haben. 
-4. Klicken Sie auf der Symbolleiste auf **Speichern**. 
+4. Wählen Sie auf der Symbolleiste **Speichern** aus. 
 
     ![Abfragen](./media/event-hubs-kafka-stream-analytics/query.png)
 

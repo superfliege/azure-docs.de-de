@@ -7,18 +7,18 @@ ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ca9b46335105e62b023e7db16e0ead4061fbfd00
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ef5f6f3dc7ae0c555b2afe000b54c443313800f1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830713"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35636891"
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Unterstützte Inspektoren für die Azure Machine Learning-Datenvorbereitung
 Dieses Dokument beschreibt den in dieser Vorschau verfügbaren Satz von Inspektoren.
@@ -57,7 +57,7 @@ Dieser Inspektor unterstützt den Halo-Effekt.
 - Logarithmische Skala verwenden
 
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 Dieser Inspektor unterstützt das Filtern über Buckets, was Einfach- oder Mehrfachauswahlbuckets umfassen kann. Wenden Sie Filter wie zuvor beschrieben an.
 
 ## <a name="value-counts"></a>Werteanzahl
@@ -71,7 +71,7 @@ Dieser Inspektor bietet eine Häufigkeitstabelle der Werte für die derzeit ausg
 - Logarithmische Skala verwenden
 
 
-### <a name="actions"></a>Actions 
+### <a name="actions"></a>Aktionen 
 Dieser Inspektor unterstützt das Filtern über Balken, was Einfach- oder Mehrfachauswahlbalken umfassen kann. Wenden Sie Filter wie zuvor beschrieben an.
 
 ## <a name="box-plot"></a>Boxplot 
@@ -99,7 +99,7 @@ Ein Liniendiagramm mit Zeiterfassung auf der X-Achse
 - Stichprobengröße
 
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 Dieser Inspektor unterstützt das Filtern mit der „Klicken-und-Ziehen“-Auswahlmethode, um einen Bereich im Diagramm auszuwählen. Wenden Sie nach Abschluss der Auswahl die Filter wie oben beschrieben an.
 
 
@@ -113,7 +113,7 @@ Eine Karte mit gezeichneten Punkten, wobei vorausgesetzt wird, dass Breiten- und
 - Gruppieren nach Spalte
 
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 Dieser Inspektor unterstützt das Filtern über Punktauswahl auf der Karte. Drücken Sie **STRG**, und bilden Sie dann durch Klicken und Ziehen mit der Maus ein Quadrat um die Punkte. Wenden Sie dann wie zuvor beschrieben Filter an.
 
 Durch Auswahl von **E** auf der linken Seite der Karte können Sie die Größe der Karte schnell anpassen, um alle möglichen Punkte anzuzeigen.
@@ -130,5 +130,5 @@ Dieser Inspektor zeigt eine Liste von Mustern in der ausgewählten Zeichenfolgen
 - Absteigend
 - Halo anzeigen
 
-### <a name="actions"></a>Actions
+### <a name="actions"></a>Aktionen
 Dieser Inspektor unterstützt das Filtern anhand angezeigter Muster. Drücken Sie die **STRG**-Taste, und wählen Sie dann die gefüllten Balken im Musterinspektor aus. Wenden Sie dann wie zuvor beschrieben Filter an. Als Ergebnis der Benutzeraktion wird ein erweiterter Filterschritt hinzugefügt. Sie können den generierten Python-Code mit der Bearbeitungsoption im erweiterten Filterschritt anzeigen und ändern.

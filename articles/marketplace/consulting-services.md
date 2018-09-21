@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 104ef98aac3e34e30a86854a0d759cf11106b55b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414700"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575306"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Azure Marketplace-Beratungsdienste
 Beratungsdienste in Azure Marketplace ermöglichen Microsoft-Partnern, Verbindungen zwischen Kunden und Diensten herzustellen, um ihre Nutzung von Azure zu unterstützen und auszuweiten. Azure Marketplace unterstützt die Auflistung der Beratungsdiensteangebote von Systemintegrator-Partnern (SI) von Microsoft. 
@@ -73,7 +73,7 @@ Erfahren Sie mehr zu den [Kompetenzen über das Microsoft Partner Network](https
 Der Start von Azure Marketplace-Beratungsdiensten wird in bestimmten geografischen Region live geschaltet. Der erste Start findest statt in: USA, Kanada, Großbritannien und Australien. Die Kataloge für andere Länder werden online verfügbar sein, sobald eine bedeutende Anzahl und überzeugende Auswahl von Dienstangeboten von Partnern übermittelt und von Microsoft genehmigt wurden.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Registrieren für Beratungsdienste im Azure Marketplace
-Registrieren Sie zunächst Ihre Beratungsdienste in [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher) finden Herausgeber eine vollständige Prüfliste der Registrierungsanforderungen. 
+Registrieren Sie zunächst Ihre Beratungsdienste in [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Unter [Ihr Weg zum Herausgeber im Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher) finden Herausgeber eine vollständige Prüfliste der Registrierungsanforderungen. 
 
 **Was erwartet Sie nach der Registrierung:** Das Onboardingteam sendet Ihnen innerhalb von 1 bis 3 Arbeitstagen eine Willkommens-E-Mail mit Ihren Anmeldeinformationen für das Cloud-Partnerportal (CPP). Das [Cloud-Partnerportal](https://cloudpartner.azure.com) ist das Portal für die Angebotsauflistung, über das Herausgeber Auflistungsinformationen und Einreichungen übermitteln. 
 
@@ -150,7 +150,7 @@ Bei der Prüfung von Angebotsbeschreibungen und -zusammenfassungen berücksichti
 |**Proof of Concept**    |    Erläutern Sie, welche Entwicklungsänderungen, technischen oder andere Artefakte ein Kunde als Ergebnis des Auftrags erwarten kann.     | Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.        |
 |**Workshop**    |   Fügen Sie abhängig von der gewählten Dauer Ihres Angebots eine detaillierte Tages-, Wochen- oder Monatsplanung hinzu. Formulieren Sie die Lernziele oder andere Ergebnisse Ihres Workshops.     |   Optimieren Sie Ihre Angebotszusammenfassung mit Ihren Top-Stichwörtern zur Suchmaschinenoptimierung.      |
 
-Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown) Formatierungen hinzufügen. Dies ist eine schlanke Designsprache, die Ihnen hilft, Ihr Angebot attraktiver zu gestalten. 
+Im Cloud-Partnerportal können Sie Ihrem Angebot mithilfe von [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown) Formatierungen hinzufügen. Dies ist eine schlanke Designsprache, die Ihnen hilft, Ihr Angebot attraktiver zu gestalten. 
 
 **Anmerkungen zu Markdown**
 *   Hinzufügen von * am Anfang und Ende des Kopieblocks ohne Leerzeichen für Kursivschrift (z.B. *Inhalt*)

@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 6fa0bab5d2b402c85ea3ee70e7356f8c8c989ab9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446781"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576781"
 ---
 # <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Erstellen einer App mit mehreren Containern (Vorschauversion) mit Web-App für Container
 
-[Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen. Für Kubernetes und eine vollständige End-to-End-Lösung mit Azure-Datenbank für MySQL führen Sie die Anweisungen im [Tutorial zu Apps mit mehreren Containern](tutorial-multi-container-app.md).
+[Web-App für Container](app-service-linux-intro.md) umfasst eine flexible Möglichkeit zum Verwenden von Docker-Images. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie eine App mit mehreren Containern für Web-App für Container in [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) per Docker Compose-Konfiguration bereitstellen. Für Kubernetes und eine vollständige End-to-End-Lösung mit Azure-Datenbank für MySQL führen Sie die Anweisungen im [Tutorial zu Apps mit mehreren Containern](tutorial-multi-container-app.md).
 
 In diesem Schnellstart wird Cloud Shell verwendet. Die Befehle können aber auch lokal über die [Azure CLI](/cli/azure/install-azure-cli) (2.0.32 oder höher) ausgeführt werden. 
 

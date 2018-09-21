@@ -9,12 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: ecbf583a9b64868004b246bb01e7f174a21496b0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4fb8d45c285ee3c1651039619808b8964c5313cd
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607463"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983079"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
@@ -163,7 +163,7 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
  
 7. Nachdem das Sicherungselement überprüft wurde (ein Häkchen wird angezeigt), wird die Schaltfläche **Sicherung beenden** aktiviert. Klicken Sie auf **Sicherung beenden**, um die Richtlinie zu beenden und die Wiederherstellungspunkte zu löschen. 
 
-    ![Klicken Sie auf „Sicherung beenden“, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)zu erstellen und zu verwalten.
+    ![Klicken Sie auf „Sicherung beenden“, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
 8. Klicken Sie im Menü von **myRecoveryServicesVault** auf **Löschen**.
 

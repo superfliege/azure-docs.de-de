@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9d6bf29909393846ec17a1bcc210fb989efd7f99
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939799"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578462"
 ---
 # <a name="manage-budgets"></a>Verwalten von Budgets
 
@@ -83,5 +83,5 @@ Klicken Sie im Bericht mit dem Vergleich der Kosten und des Budgets im Laufe der
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls Sie das erste Tutorial zu Cost Management noch nicht abgeschlossen haben, lesen Sie es unter [Überprüfen der Nutzung und der Kosten](https://docs.microsoft.com/en-us/azure/cost-management/tutorial-review-usage).
+- Falls Sie das erste Tutorial zu Cost Management noch nicht abgeschlossen haben, lesen Sie es unter [Überprüfen der Nutzung und der Kosten](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage).
 - Erfahren Sie mehr über die [in Cost Management verfügbaren Berichte](use-reports.md).

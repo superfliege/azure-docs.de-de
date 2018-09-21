@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 7/16/2018
 ms.author: victorh
-ms.openlocfilehash: 3657b619dc57b994158c711c46d4db6924aa2930
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5e8048dc6b49a0f6c9a465e82a7278e491351034
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089820"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574129"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -57,12 +57,12 @@ Alle Ereignisse sind in Azure Monitor integriert, sodass Sie Protokolle in einem
 Die Public Preview von Azure Firewall weist die folgenden bekannten Probleme auf:
 
 
-|Problem  |Beschreibung  |Lösung  |
+|Problem  |BESCHREIBUNG  |Lösung  |
 |---------|---------|---------|
 |Interoperabilität mit NSGs     |Wenn eine Netzwerksicherheitsgruppe (NSG) für das Firewall-Subnetz angewendet wird, blockiert diese möglicherweise ausgehende Internetverbindungen, selbst wenn die NSG für ausgehenden Internetzugriff konfiguriert ist. Ausgehende Internetverbindungen sind so gekennzeichnet, dass sie aus einem VirtualNetwork stammen und das Ziel das Internet ist. Für eine NSG ist VirtualNetwork standardmäßig auf *zulassen* gesetzt, jedoch nicht, wenn das Ziel das Internet ist.|Zur Problembehebung fügen Sie die folgende eingehende Regel zu der NSG hinzu, die auf das Firewall-Subnetz angewendet wird:<br><br>Quelle: VirtualNetwork-Quellports: Alle <br><br>Ziel: Alle Zielports: Alle <br><br>Protokoll: Vollzugriff: Zulassen|
 |Konflikt mit Just-in-Time (JIT)-Funktion von Azure Security Center (ASC)|Wenn auf einen virtuellen Computer mithilfe von JIT zugegriffen wird und sich dieser in einem Subnetz mit einer benutzerdefinierten Route befindet, die auf Azure Firewall als ein Standardgateway verweist, funktioniert ASC JIT nicht. Dies ist eine Folge des asymmetrischen Routings: Ein Paket trifft über die öffentliche IP-Adresse des virtuellen Computers ein (JIT hat den Zugriff geöffnet), aber der Rückgabepfad verläuft über die Firewall, die das Paket verwirft, da keine Sitzung in der Firewall erstellt wird.|Um dieses Problem zu umgehen, platzieren Sie die virtuellen JIT-Computer in einem separaten Subnetz, das keine benutzerdefinierte Route zur Firewall aufweist.|
-|Hub und Spoke mit globalem Peering funktioniert nicht|Das Hub- und Spoke-Modell, bei dem Hub und Firewall in einer Azure-Region bereitgestellt werden und die Spokes in einer anderen Azure-Region, die mit dem Hub über globales VNet-Peering verbunden ist, wird nicht unterstützt.|Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints).|
-Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktionieren nicht für den Internetdatenverkehr|Netzwerkfilterregeln für andere Protokolle als TCP/UDP funktionieren nicht mit SNAT für Ihre öffentliche IP-Adresse. Nicht-TCP/UDP-Protokolle werden zwischen Spoke-Subnetzen und VNets unterstützt.|Azure Firewall verwendet Standard Load Balancer, [das SNAT für IP-Protokolle derzeit nicht unterstützt](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview#limitations). Wir prüfen Möglichkeiten, um dieses Szenario in einer zukünftigen Version zu unterstützen.
+|Hub und Spoke mit globalem Peering funktioniert nicht|Das Hub- und Spoke-Modell, bei dem Hub und Firewall in einer Azure-Region bereitgestellt werden und die Spokes in einer anderen Azure-Region, die mit dem Hub über globales VNet-Peering verbunden ist, wird nicht unterstützt.|Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints).|
+Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktionieren nicht für den Internetdatenverkehr|Netzwerkfilterregeln für andere Protokolle als TCP/UDP funktionieren nicht mit SNAT für Ihre öffentliche IP-Adresse. Nicht-TCP/UDP-Protokolle werden zwischen Spoke-Subnetzen und VNets unterstützt.|Azure Firewall verwendet Standard Load Balancer, [das SNAT für IP-Protokolle derzeit nicht unterstützt](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Wir prüfen Möglichkeiten, um dieses Szenario in einer zukünftigen Version zu unterstützen.
 
 
 

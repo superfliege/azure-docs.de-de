@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 8486b0be1fb5e1385da3c7ad55f6410a1059df93
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea8d53ee71e9272167a045e2ea1780828f974d30
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309247"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573590"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf Data Science Virtual Machine basierende Teamanalyse und KI-Umgebung 
 [Data Science Virtual Machine](overview.md) (DSVM) bietet eine umfangreiche Umgebung in der Azure-Plattform mit vorgefertigter Software für künstliche Intelligenz (KI) und Datenanalyse. 
@@ -51,4 +51,4 @@ In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem der vorangegange
 * [Verschlüsselung](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Datenermittlung und Governance](https://docs.microsoft.com/azure/data-catalog/)
 
-Das [Azure-Architekturzentrum](https://docs.microsoft.com/en-us/azure/architecture/) bietet detaillierte End-to-End-Architekturen und Muster für den Aufbau und die Verwaltung Ihrer cloudbasierten Analyseinfrastruktur. 
+Das [Azure-Architekturzentrum](https://docs.microsoft.com/azure/architecture/) bietet detaillierte End-to-End-Architekturen und Muster für den Aufbau und die Verwaltung Ihrer cloudbasierten Analyseinfrastruktur. 

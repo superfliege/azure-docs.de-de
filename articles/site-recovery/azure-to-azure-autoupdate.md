@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922748"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574402"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Aktualisierung von Mobility Service in der Replikation zwischen Azure-Standorten
 
@@ -79,8 +79,8 @@ Für den Fall, dass die Schaltfläche „Reparieren“ nicht verfügbar ist, bea
 
  - **Fehler**: Das ausführende Konto verfügt nicht über die Berechtigung zum Zugriff auf die Recovery Services-Ressource.
 
-    **Empfohlene Aktion**: Löschen und anschließendes [Neuerstellen des ausführenden Kontos](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account), oder stellen Sie sicher, dass das ausführende Automatisierungskonto der Azure Active Directory-Anwendung Zugriff auf die Recovery Services-Ressource hat.
+    **Empfohlene Aktion**: Löschen und anschließendes [Neuerstellen des ausführenden Kontos](https://docs.microsoft.com/azure/automation/automation-create-runas-account), oder stellen Sie sicher, dass das ausführende Automatisierungskonto der Azure Active Directory-Anwendung Zugriff auf die Recovery Services-Ressource hat.
 
 - **Fehler**: Ausführendes Konto wurde nicht gefunden. Eine der folgenden Komponenten wurde gelöscht oder nicht erstellt – Azure Active Directory-Anwendung, Dienstprinzipal, Rolle, Automation-Zertifikatasset, Automation-Verbindungsasset – oder der Fingerabdruck im Zertifikat ist nicht identisch mit dem der Verbindung. 
 
-    **Empfohlene Aktion**: Löschen und [Neuerstellen des ausführenden Kontos](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
+    **Empfohlene Aktion**: Löschen und [Neuerstellen des ausführenden Kontos](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

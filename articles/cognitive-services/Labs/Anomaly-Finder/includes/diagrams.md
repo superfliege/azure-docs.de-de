@@ -17,7 +17,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 06/23/2018
 ms.locfileid: "35375298"
 ---
-Die mit dem erwarteten Wert und den standardmäßigen Ober- und Untergrenzen zurückgegebenen Daten. In der Praxis können Sie einen Parameter [sensitivity] (Empfindlichkeit) definieren und dann (ExpectedValue + sensitivity * UpperMargin) als Obergrenze und (ExpectedValue - sensitivity * LowerMargin) als Untergrenze verwenden, um den Anomaliepunkt ihrerseits zu optimieren. Der Wert von [sensitivity] sollte größer als 1 sein. Unten finden Sie einige Diagramme für die Optimierung.
+Die mit dem erwarteten Wert und den standardmäßigen Ober- und Untergrenzen zurückgegebenen Daten. In der Praxis können Sie einen Parameter [sensitivity] \(Empfindlichkeit) definieren und dann (ExpectedValue + sensitivity * UpperMargin) als Obergrenze und (ExpectedValue - sensitivity * LowerMargin) als Untergrenze verwenden, um den Anomaliepunkt ihrerseits zu optimieren. Der Wert von [sensitivity] sollte größer als 1 sein. Unten finden Sie einige Diagramme für die Optimierung.
 
 > [!NOTE]
 > Die Diagramme werden nicht von der Beispielanwendung erstellt. Sie werden von einem separaten Tool mit der Beispielanwendung erstellt.
