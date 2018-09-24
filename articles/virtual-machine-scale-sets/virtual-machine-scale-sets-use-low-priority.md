@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: 5c0726ea0da288d5306e28b101e4d3b59605b443
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894900"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953870"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>VMs mit niedriger Priorität in Skalierungsgruppen (Vorschau)
 
@@ -43,7 +43,7 @@ Wenn Sie möchten, dass die virtuellen Computer in Ihrer Skalierungsgruppe mit n
 
 Zum Bereitstellen von VMs mit niedriger Priorität in Skalierungsgruppen können Sie das neue *Priorität*-Flag auf *Niedrig* setzen. Für alle virtuellen Computer in Ihrer Skalierungsgruppe wird niedrige Priorität festgelegt. Verwenden Sie zum Erstellen einer Skalierungsgruppe mit niedriger Priorität eine der folgenden Methoden:
 - [Azure-Portal](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure-CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure-Ressourcen-Manager-Vorlagen](#use-azure-resource-manager-templates)
 
@@ -51,7 +51,7 @@ Zum Bereitstellen von VMs mit niedriger Priorität in Skalierungsgruppen können
 
 Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird in diesem [Schnellstartartikel](quick-create-portal.md) ausführlich beschrieben. Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Flag für niedrige Priorität und die Entfernungsrichtlinie festlegen: ![Skalierungsgruppe mit MVs mit niedriger Priorität erstellen](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
-## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
 Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im [Artikel zum Einstieg](quick-create-cli.md) ausführlich beschrieben. Fügen Sie einfach den „--Priority“-Parameter dem CLI-Aufruf hinzu, und setzen Sie ihn auf *Low*, wie im folgenden Beispiel gezeigt:
 

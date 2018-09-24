@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e1211241ec3a2b32647260d1a5c7dc561019cfdf
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1ebca858632a64b5822658182a3b83c48f310164
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092240"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953032"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnose in Durable Functions (Azure Functions)
 
@@ -80,7 +80,7 @@ Zum Aktivieren der Ausgabe der Wiedergabeereignisse mit ausführlicher Orchestri
 
 ### <a name="single-instance-query"></a>Abfrage für einzelne Instanzen
 
-Mit der folgenden Abfrage werden Verlaufsdaten für die Nachverfolgung einer Einzelinstanz der [Hello Sequence](durable-functions-sequence.md)-Funktionsorchestrierung angezeigt. Sie wurde mit der [Application Insights Query Language (AIQL)](https://docs.loganalytics.io/docs/Language-Reference) geschrieben. Die Wiedergabeausführung wird herausgefiltert, sodass nur der *logische* Ausführungspfad angezeigt wird. Ereignisse können angeordnet werden, indem nach `timestamp` und `sequenceNumber` sortiert wird, wie in der folgenden Abfrage gezeigt: 
+Mit der folgenden Abfrage werden Verlaufsdaten für die Nachverfolgung einer Einzelinstanz der [Hello Sequence](durable-functions-sequence.md)-Funktionsorchestrierung angezeigt. Sie wurde mit der [Application Insights Query Language (AIQL)](https://aka.ms/LogAnalyticsLanguageReference) geschrieben. Die Wiedergabeausführung wird herausgefiltert, sodass nur der *logische* Ausführungspfad angezeigt wird. Ereignisse können angeordnet werden, indem nach `timestamp` und `sequenceNumber` sortiert wird, wie in der folgenden Abfrage gezeigt: 
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";

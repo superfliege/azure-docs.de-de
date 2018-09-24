@@ -10,18 +10,18 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.openlocfilehash: decc0271ae0e7c359f72648d7c4d0076892285da
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: fd48dfaf7b863ab026da1758751509d9911ae01e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125174"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948008"
 ---
 # <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>Überwachen von B2B-Nachrichten und Einrichten der Protokollierung für Integrationskonten in Azure Logic Apps
 
 Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei laufenden Geschäftsprozessen oder -anwendungen eingerichtet haben, können diese Entitäten untereinander Nachrichten austauschen. Um zu prüfen, ob die Kommunikation erwartungsgemäß funktioniert, können Sie über den Dienst [Azure Log Analytics](../log-analytics/log-analytics-overview.md) die Überwachung für AS2-, X12- und EDIFACT-Nachrichten sowie die Diagnoseprotokollierung für Ihr Integrationskonto einrichten. Dieser Dienst überwacht sowohl Ihre Cloudumgebung als auch Ihre lokale Umgebung und unterstützt Sie nicht nur dabei, deren Verfügbarkeit und Leistung zu gewährleisten, sondern erfasst auch Laufzeitdetails und Ereignisse für ein ausführlicheres Debugging. Darüber hinaus können Sie diese [Diagnosedaten mit anderen Diensten verwenden](#extend-diagnostic-data) (beispielsweise mit Azure Storage und Azure Event Hubs).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 * Eine Logik-App, für die die Diagnoseprotokollierung eingerichtet ist. Informationen zum Einrichten der Protokollierung für diese Logik-App finden Sie [hier](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
@@ -32,7 +32,7 @@ Nachdem Sie über Ihr Integrationskonto die B2B-Kommunikation zwischen zwei lauf
 
 ## <a name="turn-on-diagnostics-logging-for-your-integration-account"></a>Aktivieren der Diagnoseprotokollierung für Ihr Integrationskonto
 
-Die Protokollierung kann entweder direkt über Ihr Integrationskonto oder [über den Azure Monitor-Dienst](#azure-monitor-service) aktiviert werden. Azure Monitor bietet eine grundlegende Überwachung mit Daten der Infrastrukturebene. Weitere Informationen zu Azure Monitor finden Sie [hier](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md).
+Die Protokollierung kann entweder direkt über Ihr Integrationskonto oder [über den Azure Monitor-Dienst](#azure-monitor-service) aktiviert werden. Azure Monitor bietet eine grundlegende Überwachung mit Daten der Infrastrukturebene. Weitere Informationen zu Azure Monitor finden Sie [hier](../azure-monitor/overview.md).
 
 ### <a name="turn-on-diagnostics-logging-directly-from-your-integration-account"></a>Aktivieren der Diagnoseprotokollierung direkt über das Integrationskonto
 

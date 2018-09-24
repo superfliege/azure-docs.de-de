@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 5fe292b92557b4786d638ac21c7adb1f50566feb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3edf49484e5bc05a297b8d8969632fb902aa1714
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35637791"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953734"
 ---
 # <a name="split-column-by-example-transformation"></a>Transformation „Aufteilen von Spalten anhand eines Beispiels“
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Diese Transformation teilt den Inhalt einer Spalte vorausschauend auf aussagekräftige Begrenzungen auf, ohne dass eine Benutzereingabe erforderlich ist. Der Splitalgorithmus wählt die Begrenzungen aus, nachdem der Inhalt der Spalte analysiert wurde. Diese Begrenzungen können von Folgendem definiert werden:
 * einem festgelegten Trennzeichen
 * mehreren beliebigen Trennzeichen, die in bestimmten Kontexten auftreten oder
@@ -182,4 +187,4 @@ Im folgenden Beispiel möchten wir Gewichtswerte von den Maßeinheiten trennen. 
 
 ## <a name="technical-notes"></a>Technische Hinweise
 
-Die Split-Transformationsfunktion basiert auf der Technologie der **Predictive Program Synthesis** (Vorausschauenden Programmsynthese). Mit dieser Technologie werden Datenumwandlungsprogramme automatisch basierend auf den Eingabedaten erlernt. Die Programme werden in einer domänenspezifischen Sprache synthetisiert. Die DSL basiert auf Trennzeichen und Feldern, die in bestimmten Kontexten regulärer Ausdrücke vorkommen. Weitere Informationen zu dieser Technologie finden Sie in einer [neuen Veröffentlichung zu diesem Thema](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/). 
+Die Split-Transformationsfunktion basiert auf der Technologie der **Predictive Program Synthesis** (Vorausschauenden Programmsynthese). Mit dieser Technologie werden Datenumwandlungsprogramme automatisch basierend auf den Eingabedaten erlernt. Die Programme werden in einer domänenspezifischen Sprache synthetisiert. Die DSL basiert auf Trennzeichen und Feldern, die in bestimmten Kontexten regulärer Ausdrücke vorkommen. Weitere Informationen zu dieser Technologie finden Sie in einer [neuen Veröffentlichung zu diesem Thema](https://www.microsoft.com/research/publication/automated-data-extraction-using-predictive-program-synthesis/). 

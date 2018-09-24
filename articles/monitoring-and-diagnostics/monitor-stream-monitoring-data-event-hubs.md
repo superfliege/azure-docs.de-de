@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 18c0f8176a85eef79000fff8ed717ad7e57f20d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049123"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954839"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool
 
@@ -76,7 +76,7 @@ Azure-Ressourcen geben zwei Arten von Überwachungsdaten aus:
 Beide Arten von Daten werden mithilfe einer Ressourcendiagnoseeinstellung an einen Event Hub gesendet. [Befolgen Sie die Schritte in diesem Handbuch](./monitoring-stream-diagnostic-logs-to-event-hubs.md) zum Einrichten einer Ressourcendiagnoseeinstellung für eine bestimmte Ressource. Legen Sie für jede Ressource, für die Protokolle gesammelt werden sollen, eine Ressourcendiagnoseeinstellung fest.
 
 > [!TIP]
-> Mit Azure Policy können Sie [durch den DeployIfNotExists-Effekt in der Richtlinienregel](../azure-policy/policy-definition.md#policy-rule) sicherstellen, dass alle Ressourcen innerhalb eines bestimmten Bereichs stets mit einer Diagnoseeinstellung eingerichtet werden. DeployIfNotExists wird derzeit nur für integrierte Richtlinien unterstützt.
+> Mit Azure Policy können Sie [durch den DeployIfNotExists-Effekt in der Richtlinienregel](../governance/policy/concepts/definition-structure.md#policy-rule) sicherstellen, dass alle Ressourcen innerhalb eines bestimmten Bereichs stets mit einer Diagnoseeinstellung eingerichtet werden.
 
 ## <a name="guest-os-data"></a>Daten zum Gastbetriebssystem
 

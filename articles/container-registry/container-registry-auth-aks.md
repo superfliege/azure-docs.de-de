@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: c9ade4d61a1b95d5041a13f9436f0d02a7951758
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715828"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981658"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 
@@ -21,7 +21,7 @@ Wenn Sie Azure Container Registry (ACR) mit dem Azure Kubernetes Service (AKS) n
 
 ## <a name="grant-aks-access-to-acr"></a>Gewähren von AKS-Zugriff auf ACR
 
-Wenn Sie einen AKS-Cluster erstellen, erstellt Azure auch einen Dienstprinzipal zur Unterstützung der Clusteroperabilität mit anderen Azure-Ressourcen. Sie können diesen automatisch generierten Dienstprinzipal auch für die Authentifizierung bei einer ACR-Registrierung verwenden. Dazu müssen Sie eine Azure AD-[Rollenzuweisung](../role-based-access-control/overview.md#role-assignment) erstellen, die dem Dienstprinzipal des Clusters Zugriff auf die Containerregistrierung gewährt.
+Wenn Sie einen AKS-Cluster erstellen, erstellt Azure auch einen Dienstprinzipal zur Unterstützung der Clusteroperabilität mit anderen Azure-Ressourcen. Sie können diesen automatisch generierten Dienstprinzipal auch für die Authentifizierung bei einer ACR-Registrierung verwenden. Dazu müssen Sie eine Azure AD-[Rollenzuweisung](../role-based-access-control/overview.md#role-assignments) erstellen, die dem Dienstprinzipal des Clusters Zugriff auf die Containerregistrierung gewährt.
 
 Verwenden Sie das folgende Skript, um dem mit AKS generierten Dienstprinzipal Zugriff auf eine Azure-Containerregistrierung zu gewähren. Ändern Sie die Variablen `AKS_*` und `ACR_*` für Ihre Umgebung, bevor Sie das Skript ausführen.
 

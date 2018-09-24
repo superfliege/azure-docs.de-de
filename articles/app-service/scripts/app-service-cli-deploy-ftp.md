@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 12/12/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8be2bc575649febe7870129b5b4c9996d7de0728
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 21f3c48da2e91849d476ec4d16a17fd2b67708c4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30281697"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952510"
 ---
 # <a name="create-a-web-app-and-deploy-files-with-ftp"></a>Erstellen einer Web-App und Bereitstellen von Dateien über FTP
 
@@ -30,7 +30,7 @@ Dieses Beispielskript erstellt in App Service eine Web-App mit den zugehörigen 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Beispielskript
 

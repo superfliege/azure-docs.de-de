@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: 5e8d1739aa3d7f5be6c6450edcad43bc83db71fb
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8e896b70d0da143151d57b45e62a5c14d4d4e3b0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29875401"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969602"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe der CLI
 
@@ -36,7 +36,7 @@ In diesem Artikel können Sie virtuelle Netzwerke (VNETs) mithilfe der CLI mit A
 
 ## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
 
-* Sie benötigen die neueste Version der Befehlszeilenschnittstelle (CLI). Weitere Informationen finden Sie unter [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Sie benötigen die neueste Version der Befehlszeilenschnittstelle (CLI). Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 * Stellen Sie sicher, dass Sie vor Beginn der Konfiguration die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md) gelesen haben.
 

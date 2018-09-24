@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f5b678f9936a6d405c06ff085a802fcd76328ebe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bb3df82e66024b49e399ab2f7795a27932f7559e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525653"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953972"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Migrieren von lokalen Daten zum Cloudspeicher mithilfe von AzCopy
 
@@ -37,7 +37,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Um dieses Tutorial zu absolvieren, laden Sie die neueste Version von AzCopy unter [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux#download-and-install-azcopy) oder [Windows](http://aka.ms/downloadazcopy) herunter. 
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 >[!NOTE]
 >Wenn Sie Blobs aus einer sekundären Region in Ihren lokalen Speicher und umgekehrt herunterladen können möchten, legen Sie **Replikation** auf **Lesezugriff (georedundant)** fest. Nach Auswahl dieser Option wird ein Konto für einen [georedundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy#geo-redundant-storage) erstellt. 

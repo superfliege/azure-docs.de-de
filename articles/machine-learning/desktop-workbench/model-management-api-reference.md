@@ -13,14 +13,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07f8a31244acca48a0bbae8ad26b0c5b509f0c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636933"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959579"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>API zum Azure Machine Learning-Modellverwaltungskonto – Referenz
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Informationen zur Einrichtung der Bereitstellungsumgebung finden Sie unter [Model Management account setup](deployment-setup-configuration.md) (Einrichtung des Modellverwaltungskontos).
 
@@ -34,7 +37,7 @@ Mit der API zum Azure Machine Learning-Modellverwaltungskonto werden die folgend
 Sie können dieses Image verwenden, um einen Webdienst entweder lokal oder in einem Azure Container Service-Remotecluster oder einer anderen Umgebung mit Docker-Unterstützung Ihrer Wahl zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Stellen Sie sicher, dass Sie die Installationsschritte im Dokument [Install and create Quickstart](../service/quickstart-installation.md) (Schnellstart zum Installieren und Erstellen) ausgeführt haben.
+Stellen Sie sicher, dass Sie die Installationsschritte im Dokument [Install and create Quickstart](quickstart-installation.md) (Schnellstart zum Installieren und Erstellen) ausgeführt haben.
 
 Folgendes ist erforderlich, bevor Sie fortfahren können:
 1. Bereitstellung des Modellverwaltungskontos

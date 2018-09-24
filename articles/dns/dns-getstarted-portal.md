@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 421c4e0464eac22a7feba01e2e84660b02a32455
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3ec2c44c168b47fd66d1ffa9a0c8d0069600ecb0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174648"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958100"
 ---
 # <a name="quickstart-configure-azure-dns-for-name-resolution-using-the-azure-portal"></a>Schnellstart: Konfigurieren von Azure DNS für die Namensauflösung über das Azure-Portal
 
@@ -24,7 +24,7 @@ In dieser Schnellstartanleitung erstellen Sie eine Testdomäne und anschließend
 Es ist wichtig zu wissen, dass alle in dieser Schnellstartanleitung verwendeten Namen und IP-Adressen lediglich Beispiele sind und kein reales Szenario darstellen. Allerdings werden ggf. auch reale Szenarien beschrieben.
 
 <!---
-You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI 2.0](dns-getstarted-cli.md).
+You can also perform these steps using [Azure PowerShell](dns-getstarted-powershell.md) or the cross-platform [Azure CLI](dns-getstarted-cli.md).
 --->
 
 Eine DNS-Zone wird die DNS-Einträge für eine bestimmte Domäne enthalten. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Die folgenden Schritte veranschaulichen die Vorgehensweise.

@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 04/19/2018
+ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8dfec4c30a9610d8f30ceea131ebd7d2e1d64aa1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f721af16e894ec24e85cdb1ff100d83d58ffadd8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432727"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954601"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -37,7 +37,7 @@ Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.c
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.20 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.20 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
 

@@ -15,12 +15,12 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: d5a67cdcef7f39830b747dec5f2c980483e1ab91
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437648"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978334"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen
 
@@ -125,7 +125,7 @@ Folgende Schritte sind für den Einstieg grundlegend:
 
    ![Option „Log Analytics“ im Portal](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Verwenden Sie optional die Seite [Protokollsuche](../log-analytics/log-analytics-log-search.md) oder das [Advanced Analytics-Portal](https://docs.loganalytics.io/docs/Learn), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen zu diesen beiden Optionen finden Sie unter [Log Search page or the Advanced Analytics portal (Seite „Protokollsuche“ bzw. das Advanced Analytics-Portal)](../log-analytics/log-analytics-log-search-portals.md).
+1. Verwenden Sie optional die Seite [Protokollsuche](../log-analytics/log-analytics-log-search.md) oder das [Advanced Analytics-Portal](../log-analytics/query-language/get-started-analytics-portal.md), um die Protokolle abzufragen und anzuzeigen. Weitere Informationen zu diesen beiden Optionen finden Sie unter [Log Search page or the Advanced Analytics portal (Seite „Protokollsuche“ bzw. das Advanced Analytics-Portal)](../log-analytics/log-analytics-log-search-portals.md).
 
 Im Folgenden finden Sie eine Abfrage, die neue Rollenzuweisungen zurückgibt, die vom Anbieter der Zielressource geordnet wurden:
 

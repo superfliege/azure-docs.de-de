@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: b68b3f311312a952ab55c15083ff5ed562443be2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 07ad8fc873a483b5d71d7ddd21f8f2a820bbfadc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702002"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982374"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über die CLI und mit Themen/Abonnements
 
@@ -44,7 +44,7 @@ Für die Entwicklung einer Service Bus-App mit Java muss Folgendes installiert s
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-Themen und -Abonnements
 
@@ -345,5 +345,5 @@ Fahren Sie mit dem nächsten Tutorial fort, um weitere Informationen zur Verwend
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
-[Install Azure CLI 2.0]: /cli/azure/install-azure-cli
+[Install the Azure CLI]: /cli/azure/install-azure-cli
 [az group create]: /cli/azure/group#az_group_create

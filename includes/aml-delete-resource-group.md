@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/27/2018
-ms.openlocfilehash: 2ce7e083444eb6c4e02f04f36eb0810ea37d8ae7
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dcd2854585e2c776f361aa4718af6b99d8cbb593
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39514121"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47002000"
 ---
 >[!IMPORTANT]
 >Die von Ihnen erstellten Ressourcen können ggf. auch in anderen Azure Machine Learning-Tutorials und -Anleitungen verwendet werden. 
@@ -32,4 +32,4 @@ Wenn Sie die hier erstellten Komponenten nicht weiter verwenden, löschen Sie di
 
 1. Geben Sie den Ressourcengruppennamen ein, und wählen Sie dann **Löschen**.
 
-   Wenn der Fehler „Ressource kann nicht gelöscht werden, bevor verschachtelte Ressourcen gelöscht wurden.“ angezeigt wird, müssen Sie zunächst alle verschachtelten Ressourcen löschen. Ausführliche Informationen finden Sie in [diesem Abschnitt](../articles/machine-learning/service/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account) zur Problembehandlung. 
+   Wenn der Fehler „Ressource kann nicht gelöscht werden, bevor verschachtelte Ressourcen gelöscht wurden.“ angezeigt wird, müssen Sie zunächst alle verschachtelten Ressourcen löschen. Ausführliche Informationen finden Sie in [diesem Abschnitt](../articles/machine-learning/desktop-workbench/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account) zur Problembehandlung. 

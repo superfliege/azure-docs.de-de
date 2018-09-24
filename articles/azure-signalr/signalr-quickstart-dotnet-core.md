@@ -14,16 +14,15 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 398ba001bfe9c8b2dd77b66535f5cb4aaf5f6270
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b667f38c4e3d2a3fad323171a3b3b49ed3619fd9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667347"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959477"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Schnellstart: Erstellen eines Chatraums per SignalR Service
 
-Der Microsoft Azure SignalR-Dienst befindet sich derzeit in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure SignalR Service ist ein Azure-Dienst, der Entwicklern die einfache Erstellung von Webanwendungen mit Echtzeitfunktionen ermöglicht. Dieser Dienst basiert auf [SignalR für ASP.NET Core 2.0](https://docs.microsoft.com/aspnet/core/signalr/introduction).
 

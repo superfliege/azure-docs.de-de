@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 1b9a8e4a8706dea43e33331cd196fbe2ad877a3a
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: ff0514a3432ed74baa6df2574157066daff895bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605554"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961262"
 ---
 # <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>Arbeiten mit JSON und Datenstrukturen in Log Analytics-Abfragen
 
@@ -40,7 +40,7 @@ Greifen Sie mit `extractjson` auf ein bestimmtes JSON-Element in einem bekannten
 
 Verwenden Sie Klammern für Indizes und Punkte zum Trennen von Elementen:
 
-```KQL
+```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
@@ -48,7 +48,7 @@ print hosts_report
 
 Das gleiche Ergebnis mit der Klammernotation erhalten Sie wie folgt:
 
-```KQL
+```Kusto
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report 
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
@@ -56,7 +56,7 @@ print hosts_report
 
 Wenn nur ein Element vorhanden ist, können Sie nur die Punktnotation verwenden:
 
-```KQL
+```Kusto
 let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
 print hosts_report 
 | extend status = hosts_report.status
@@ -68,7 +68,7 @@ print hosts_report
 ### <a name="parsejson"></a>parsejson
 Sie können besonders leicht auf mehrere Elemente in Ihrer JSON-Struktur zugreifen, wenn der Zugriff über ein dynamisches Objekt erfolgt. Wandeln Sie die Textdaten mit `parsejson` in ein dynamisches Objekt um. Anschließend können Sie die Daten mithilfe zusätzlicher Funktionen analysieren.
 
-```KQL
+```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
@@ -79,7 +79,7 @@ print hosts_object
 ### <a name="arraylength"></a>arraylength
 Verwenden Sie `arraylength`, um die Anzahl der Elemente in einem Array zählen zu lassen:
 
-```KQL
+```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend hosts_num=arraylength(hosts_object.hosts)
@@ -88,7 +88,7 @@ print hosts_object
 ### <a name="mvexpand"></a>mvexpand
 Verwenden Sie `mvexpand`, um die Eigenschaften eines Objekts in separate Zeilen aufzuteilen.
 
-```KQL
+```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | mvexpand hosts_object.hosts[0]
@@ -99,7 +99,7 @@ print hosts_object
 ### <a name="buildschema"></a>buildschema
 Verwenden Sie `buildschema`, um das Schema für zulässige Objektwerte abzurufen:
 
-```KQL
+```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)
@@ -123,7 +123,7 @@ Diese Ausgabe enthält die Namen der Objektfelder und die übereinstimmenden Dat
 
 Für geschachtelte Objekte liegen möglicherweise wie im folgenden Beispiel verschiedene Schemas vor:
 
-```KQL
+```Kusto
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)

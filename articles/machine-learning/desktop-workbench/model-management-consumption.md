@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ROBOTS: NOINDEX
+ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973172"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950626"
 ---
 # <a name="consuming-web-services"></a>Nutzen von Webdiensten
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Sobald Sie ein Modell als in Echtzeit arbeitenden Webdienst bereitgestellt haben, können Sie Daten an ihn senden und Vorhersagen von verschiedenen Plattformen und Anwendungen abrufen. Der in Echtzeit arbeitende Webdienst macht eine REST-API zum Abrufen von Vorhersagen verfügbar. Sie können Daten im ein- oder mehrzeiligen Format an den Webdienst senden, um eine oder mehrere Vorhersagen gleichzeitig zu erhalten.
 
 Bei Nutzung eines [Azure Machine Learning-Webdiensts](model-management-service-deploy.md) kommuniziert eine externe Anwendung synchron mit einem Vorhersagemodell, indem ein HTTP POST-Aufruf an die Dienst-URL gerichtet wird. Um einen Webdienst aufrufen zu können, muss die Clientanwendung den API-Schlüssel angeben, der beim Bereitstellen einer Vorhersage erstellt wird, und die Anforderungsdaten in den POST-Anforderungstext einfügen.

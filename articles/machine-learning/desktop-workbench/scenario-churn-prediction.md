@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: 7c7b50098cfd1bcac534156dd905b37affab80bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0210e65c0859b00caac0fe66baa1c73063f644c8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635593"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947940"
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Vorhersehen der Kundenabwanderung mithilfe von Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Im Durchschnitt kostet die Bewahrung von Bestandskunden fünfmal weniger als die Gewinnung von Neukunden. Daher versuchen Marketingverantwortliche häufig, die Wahrscheinlichkeit einer Abwanderung von Kunden einzuschätzen und die notwendigen Maßnahmen zur Minimierung der Abwanderungsquote zu finden.
 
@@ -61,7 +66,7 @@ In dieser Lösung verwenden wir ein konkretes Beispiel für den Aufbau eines Mod
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar).
 
-* Eine gemäß dem [Schnellstart-Installationshandbuch](../service/quickstart-installation.md) installierte Instanz von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
+* Eine gemäß dem [Schnellstart-Installationshandbuch](quickstart-installation.md) installierte Instanz von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 
 * Für die Operationalisierung wird empfohlen, dass Sie die Docker-Engine installieren und lokal ausführen. Wenn dies nicht erfolgt, können Sie die Clusteroption verwenden. Beachten Sie allerdings, dass die Ausführung eines Azure Container Service (ACS) häufig sehr kostspielig sein kann.
 

@@ -5,21 +5,21 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 725d37a6521c874d14291ea7e3c53ea94907eb17
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 75567fd1521c48c1731c8d7756da69dfef153a61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138098"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003804"
 ---
 ### <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 |  |  |
 |---------|---------|
-| [Erstellen einer VM mithilfe eines verwalteten Datenträgers](../articles/azure-policy/scripts/create-vm-managed-disk.md) | Überwacht, ob ein virtueller Computer erstellt wird, der keine verwalteten Datenträger verwendet.|
-| [Erstellen einer VM mithilfe eines verwalteten Datenträgers](../articles/azure-policy/scripts/use-managed-disk-vm.md) | Erfordert, dass virtuelle Computer verwaltete Datenträger verwenden.|
-| [Verweigern des Hybridnutzungsvorteils](../articles/azure-policy/scripts/deny-hybrid-use.md) | Untersagt die Verwendung des Hybridnutzungsvorteils für Azure. Nutzen Sie diese Funktion, wenn Sie die Verwendung von lokalen Lizenzen nicht zulassen möchten. |
-| [Zulassen von nur einem bestimmten VM-Plattformimage](../articles/azure-policy/scripts/allow-certain-vm-image.md) | Erfordert, dass virtuelle Computer eine bestimmte Version von UbuntuServer verwenden. |
+| [Erstellen einer VM mithilfe eines verwalteten Datenträgers](../articles/governance/policy/samples/create-vm-managed-disk.md) | Überwacht, ob ein virtueller Computer erstellt wird, der keine verwalteten Datenträger verwendet.|
+| [Erstellen einer VM mithilfe eines verwalteten Datenträgers](../articles/governance/policy/samples/use-managed-disk-vm.md) | Erfordert, dass virtuelle Computer verwaltete Datenträger verwenden.|
+| [Verweigern des Hybridnutzungsvorteils](../articles/governance/policy/samples/deny-hybrid-use.md) | Untersagt die Verwendung des Hybridnutzungsvorteils für Azure. Nutzen Sie diese Funktion, wenn Sie die Verwendung von lokalen Lizenzen nicht zulassen möchten. |
+| [Zulassen von nur einem bestimmten VM-Plattformimage](../articles/governance/policy/samples/allow-certain-vm-image.md) | Erfordert, dass virtuelle Computer eine bestimmte Version von UbuntuServer verwenden. |

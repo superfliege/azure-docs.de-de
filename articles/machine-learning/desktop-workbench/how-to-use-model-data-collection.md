@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 435ef29192682f1bf19a9a53923dd043676256ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450330"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954941"
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Sammeln von Modelldaten mithilfe der Datensammlung
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Mithilfe des Features „Modelldatensammlung“ in Azure Machine Learning können Sie Modelleingaben und Vorhersagen eines Machine Learning-Webdiensts archivieren.
 
@@ -105,7 +108,7 @@ So zeigen Sie die gesammelten Daten im Blobspeicher an:
 Daten aus Azure-Blobs können auf verschiedene Arten sowohl mit Microsoft-Software als auch Open Source-Tools genutzt werden. Hier einige Beispiele:
 - Azure Machine Learning Workbench: Öffnen Sie die CSV-Datei in Azure Machine Learning Workbench, indem Sie sie als Datenquelle hinzufügen.
 - Excel: Öffnen Sie die täglichen CSV-Dateien als Tabelle.
-- [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): Erstellen Sie Diagramme, für die Daten aus den CSV-Daten in Blobs genutzt werden.
+- [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): Erstellen Sie Diagramme, für die Daten aus den CSV-Daten in Blobs genutzt werden.
 - [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): Erstellen Sie einen Datenrahmen mit einem hohen Anteil von CSV-Daten.
     ```python
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")

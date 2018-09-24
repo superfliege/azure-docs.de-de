@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: ebf8605a0f4686a69f89adf0c36d072f12d3c750
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 07d1d1f7050437306d5c2737b9f62b5615753869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525255"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980422"
 ---
 # <a name="manage-azure-file-shares-using-azure-cli"></a>Verwalten von Azure-Dateifreigaben mit der Azure CLI
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können unter Windows, Linux und macOS bereitgestellt werden. In diesem Artikel werden die Grundlagen der Arbeit mit Azure-Dateifreigaben per Azure CLI Schritt für Schritt beschrieben. In diesem Artikel werden folgende Themen erläutert: 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie sich für die lokale Installation und Nutzung der Azure CLI entscheiden, müssen Sie für die Schritte dieses Artikels Azure CLI Version 2.0.4 oder höher ausführen. Führen Sie den Befehl **az --version** aus, um Ihre Azure CLI-Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie sich für die lokale Installation und Nutzung der Azure CLI entscheiden, müssen Sie für die Schritte dieses Artikels Azure CLI Version 2.0.4 oder höher ausführen. Führen Sie den Befehl **az --version** aus, um Ihre Azure CLI-Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
 Standardmäßig wird für Azure CLI-Befehle JSON-Code (JavaScript Object Notation) zurückgegeben. JSON ist die Standardmethode zum Senden und Empfangen der Nachrichten von REST-APIs. Um die Verwendung von JSON-Antworten zu ermöglichen, wird in einigen Beispielen dieses Artikels für Azure CLI-Befehle der Parameter *query* verwendet. Für diesen Parameter wird die [JMESPath-Abfragesprache](http://jmespath.org/) zum Analysieren des JSON-Codes genutzt. Weitere Informationen zur Verwendung der Ergebnisse von Azure CLI-Befehlen per JMESPath-Abfragesprache erhalten Sie im [JMESPath-Tutorial](http://jmespath.org/tutorial.html).
 

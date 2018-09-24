@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ae29108aad2a538bb90484a048742be0b5c4764a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dc3bd6258d2da331c83d0aaa9c6c0e57b44f2930
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094908"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950079"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell
 
@@ -54,7 +54,7 @@ Die Ressourcengruppe wird beim Erstellen oder Ändern eines virtuellen Computers
 
 Beim Erstellen eines virtuellen Computers stehen mehrere Optionen zur Verfügung, z.B. Betriebssystemimage, Netzwerkkonfiguration und Administratoranmeldeinformationen. In diesem Beispiel wird ein virtueller Computer mit dem Namen *myVM* erstellt, auf dem die neueste Standardversion von Windows Server 2016 Datacenter ausgeführt wird.
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest:
+Legen Sie mit [Get-Credential](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential

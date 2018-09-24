@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8533023a16cb350828127d0603e6add0876b37a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144512"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948848"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Einkommensklassifizierung mit dem Team Data Science-Prozessprojekt (TDSP)
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 ## <a name="introduction"></a>Einführung
 
@@ -55,7 +60,7 @@ Weitere Informationen unter [Team Data Science-Prozesslebenszyklus (TDSP)](https
 1. Ein [Azure-Abonnement](https://azure.microsoft.com). Sie erhalten ein [kostenloses Abonnement](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg), um dieses Beispiel auszuführen.
 2. Eine [Azure Data Science Virtual Machine (DSVM) Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (VM-Größe: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) mit 4 virtuellen CPUs und 14 GB Arbeitsspeicher). Obwohl es auf einem Azure-DSVM getestet wird, funktioniert es wahrscheinlich auf jedem beliebigen Windows 10-Computer.
 3. Überprüfen Sie die Dokumentation zu Azure Machine Learning und die zugehörigen Dienste (Links siehe unten).
-4. Stellen Sie sicher, dass Sie Azure Machine Learning ordnungsgemäß mit dem [Schnellstart-Installationshandbuch](../service/quickstart-installation.md) installiert haben.
+4. Stellen Sie sicher, dass Sie Azure Machine Learning ordnungsgemäß mit dem [Schnellstart-Installationshandbuch](quickstart-installation.md) installiert haben.
 
 Das Dataset für dieses Beispiel kommt aus dem UCI ML-Repository [[Link]](https://archive.ics.uci.edu/ml/datasets/adult). Es stammt aus der US Census-Datenbank von 1994 und enthält Volkszählungs- und Einkommensdaten für ca. 50.000 Personen. Dieses strukturierte Dataset verfügt über numerische und kategorische Funktionen und ein kategorisches Ziel mit zwei Einkommenskategorien ('>50 K' oder '<=50 K'). 
 
@@ -65,7 +70,7 @@ Wenn Sie Ihr Projekt und seine Inhalte speichern möchten, benötigen Sie ein Re
 ### <a name="informational-about-azure-machine-learning"></a>Informationen zu Azure Machine Learning
 * [FAQ – Erste Schritte](frequently-asked-questions.md)
 * [Übersicht](../service/overview-what-is-azure-ml.md)
-* [Installation](../service/quickstart-installation.md)
+* [Installation](quickstart-installation.md)
 * [Ausführung](experimentation-service-configuration.md)
 * [Verwenden von TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Lesen und Schreiben von Dateien](how-to-read-write-files.md)

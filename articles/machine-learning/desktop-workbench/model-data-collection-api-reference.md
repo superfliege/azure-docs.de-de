@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: d9fee56d7748cdfd34f982fe79467f7d61c54926
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c047555c30481f34b607197f71483197bc64620c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634352"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961466"
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Referenz zur Modelldatensammlungs-API für Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Mithilfe der Modelldatensammlung können Sie Modelleingaben und Vorhersagen eines Machine Learning-Webdiensts archivieren. In der [Anleitung zur Modelldatensammlung](how-to-use-model-data-collection.md) erfahren Sie, wie Sie `azureml.datacollector` auf Ihrem Windows- und Linux-Computer installieren.
 

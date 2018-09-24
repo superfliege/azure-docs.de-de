@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 142305cf371135e71424ca38885c40595398a74d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 75703b4b10bbf3864076952990df2e6c2a9ab28d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427836"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969647"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI
 
@@ -25,7 +25,7 @@ Die Azure CLI dient zum Erstellen und Verwalten von Azure-Ressourcen über die B
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.20 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.20 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

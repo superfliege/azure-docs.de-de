@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: b1dd37c07f3c887005d87e3231f62a4bca2f4a3d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 893495a5c37495438d9620595719ca6e733df012
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093114"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958117"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -35,7 +35,7 @@ Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstütz
 * Sie können die Stichprobenerstellung auch manuell festlegen. Dazu verwenden Sie entweder die Seite „Nutzung und geschätzte Kosten“ im Portal, oder Sie nutzen die CONFIG-Datei im ASP.NET-SDK bzw. die Datei „ApplicationInsights.xml“ im Java-SDK, um auch den Netzwerkdatenverkehr zu reduzieren.
 * Wenn Sie benutzerdefinierte Ereignisse protokollieren und sicherstellen möchten, dass ein Satz von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen Sie sicherstellen, dass alle Einzelereignisse den gleichen Wert für „OperationId“ haben.
 * Der Stichprobenteiler *n* wird in jedem Datensatz in der Eigenschaft `itemCount` gemeldet, die in der Suche unter dem Anzeigenamen „Anforderungsanzahl“ oder „Ereignisanzahl“ angezeigt wird. Wenn keine Stichprobenerstellung aktiv ist, `itemCount==1`.
-* Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](app-insights-analytics-tour.md#counting-sampled-data). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
+* Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](../log-analytics/query-language/aggregations.md). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
 
 ## <a name="types-of-sampling"></a>Arten der Stichprobenerstellung
 Es gibt drei alternative Methoden zur Stichprobenerstellung:

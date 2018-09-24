@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 07/03/2013
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 8d8b96cec202edd1e93e9f7c04a5e508ed68a40e
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 689764543f5d927273f92deecbfd43e282fc028c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162732"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961364"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-function-app"></a>Binden eines benutzerdefinierten SSL-Zertifikats an eine Funktionen-App
 
@@ -33,7 +33,7 @@ Um ein SSL-Zertifikat zu binden, muss Ihre Funktionen-App in einem App Service-P
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie mindestens die Version 2.0 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie mindestens die Version 2.0 der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Beispielskript
 

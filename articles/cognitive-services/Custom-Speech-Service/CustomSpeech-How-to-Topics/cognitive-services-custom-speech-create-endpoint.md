@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: panosper
-ms.openlocfilehash: 99bc275db1f0c1b45b3db440d2e03d0db9ab5cf6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373074"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952221"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Erstellen eines benutzerdefinierten Spracherkennungsendpunkts
 Nachdem Sie benutzerdefinierte Akustik- oder Sprachmodelle erstellt haben, können Sie diese einem benutzerdefinierten Endpunkt für die Spracherkennung bereitstellen. 
@@ -69,7 +70,7 @@ Wenn die Bereitstellung bereit ist, wird der Name der Bereitstellung zu einem Li
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Tutorials finden Sie auf folgenden Seiten:
+Weitere Tutorials finden Sie auf den folgenden Seiten:
 * [Verwenden eines benutzerdefinierten Spracherkennungsendpunkts](cognitive-services-custom-speech-use-endpoint.md)
 * [Erstellen eines benutzerdefinierten Akustikmodells](cognitive-services-custom-speech-create-acoustic-model.md)
 * [Erstellen eines benutzerdefinierten Sprachmodells](cognitive-services-custom-speech-create-language-model.md)

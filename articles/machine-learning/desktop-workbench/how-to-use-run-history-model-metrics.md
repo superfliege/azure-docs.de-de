@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 52b02460d444464211fc74c8982379424abebb5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634795"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965513"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Verwenden des Ausführungsverlaufs und der Modellmetriken in Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Azure Machine Learning Workbench unterstützt das Data Science-Experimentieren über die Funktionen für den **Ausführungsverlauf** und die **Modellmetriken**.
 Der **Ausführungsverlauf** bietet die Möglichkeit, die Ausgaben der Machine Learning-Experimente nachzuverfolgen und dann das Filtern und Vergleichen der Ergebnisse zu aktivieren.
@@ -27,8 +32,8 @@ Dieser Artikel beschreibt die effektive Nutzung dieser Funktionen, um Rate und Q
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung müssen Sie folgende Vorbereitungen treffen:
-* [Create and Install Azure Machine Learning (Erstellen und Installieren von Azure Machine Learning)](../service/quickstart-installation.md)
-- [Create a Project (Erstellen eines Projekts)](../service/quickstart-installation.md)
+* [Create and Install Azure Machine Learning (Erstellen und Installieren von Azure Machine Learning)](quickstart-installation.md)
+- [Create a Project (Erstellen eines Projekts)](quickstart-installation.md)
 
 
 ## <a name="azure-ml-logging-api-overview"></a>Übersicht über die Azure ML-Protokollierungs-API
@@ -51,7 +56,7 @@ logger.log("all values", [5, 6, 7])
 Es ist einfach, die Protokollierung innerhalb Ihrer Azure ML Workbench-Projekte zu verwenden. Die Vorgehensweise wird in diesem Artikel erläutert.
 
 ## <a name="create-a-project-in-azure-ml-workbench"></a>Erstellen eines Projekts in Azure ML Workbench
-Wenn Sie noch nicht über ein Projekt verfügen, können Sie eines über [Create and Install Quickstart (Schnellstart für das Erstellen und Installieren)](../service/quickstart-installation.md) im **Projektdashboard** erstellen und das Skript **iris_sklearn.py** wie dargestellt öffnen.
+Wenn Sie noch nicht über ein Projekt verfügen, können Sie eines über [Create and Install Quickstart (Schnellstart für das Erstellen und Installieren)](quickstart-installation.md) im **Projektdashboard** erstellen und das Skript **iris_sklearn.py** wie dargestellt öffnen.
 
 ![Zugreifen auf ein Skript aus der Registerkarte „Dateien“](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 

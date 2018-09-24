@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 15fcea6ca8f9c66ee4907018a11481b6c714b81a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616282"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947533"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Tutorial: Erstellen von Containerimages für einen Linux-Service Fabric-Cluster
 
@@ -44,7 +44,7 @@ In dieser Tutorialreihe lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Einrichtung der Linux-Entwicklungsumgebung für Service Fabric. Befolgen Sie die [hier](service-fabric-get-started-linux.md) aufgeführten Anweisungen, um die Linux-Umgebung einzurichten.
-* Für dieses Tutorial müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+* Für dieses Tutorial müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli).
 * Außerdem ist es erforderlich, dass Sie über ein Azure-Abonnement verfügen. Weitere Informationen zu einer kostenlosen Testversion finden Sie [hier](https://azure.microsoft.com/free/).
 
 ## <a name="get-application-code"></a>Abrufen von Anwendungscode

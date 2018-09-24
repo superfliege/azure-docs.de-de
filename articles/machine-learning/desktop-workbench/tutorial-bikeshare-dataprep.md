@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: cae80408a7440136b504647596c84a459a0d679c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439899"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971704"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Tutorial: Erweiterte Datenvorbereitung (Bikesharing-Daten) mit Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure Machine Learning (Vorschauversion) ist eine integrierte End-to-End-Lösung für Data Science-Anwendungen und erweiterte Analysen, die sich an professionelle Datenspezialisten richtet und zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau verwendet werden kann.
 
 In diesem Tutorial verwenden Sie Machine Learning (Vorschauversion), um Folgendes zu lernen:
@@ -36,7 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Eine lokale Installation von Azure Machine Learning Workbench. Weitere Informationen finden Sie in der [Schnellstartanleitung für die Installation](../service/quickstart-installation.md).
+* Eine lokale Installation von Azure Machine Learning Workbench. Weitere Informationen finden Sie in der [Schnellstartanleitung für die Installation](quickstart-installation.md).
 * Sollte die Azure-Befehlszeilenschnittstelle bei Ihnen nicht installiert sein, führen Sie die Schritte unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) aus.
 * Ein in Azure erstellter [HDInsight Spark-Cluster](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal).
 * Ein Azure-Speicherkonto.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: c125d5a741331d5c9476da23766057ac0c42cdbf
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: ffd8a82fb03c23a661223e16e75d2964249d2b96
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493726"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965822"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services
 
@@ -312,9 +312,9 @@ Was passiert, wenn das Schlüsselrollover ausgeführt wird, nachdem Azure AD ein
 Da ein Schlüsselrollover jederzeit erfolgen kann, steht im Dokument mit den Verbundmetadaten immer mehr als ein gültiger öffentlicher Schlüssel zur Verfügung. Die Media Services-Lizenzbereitstellung kann jeden der im Dokument angegebenen Schlüssel verwenden. Da für einen Schlüssel möglicherweise bald ein Rollover ausgeführt wird, dient der andere als Ersatz.
 
 ### <a name="where-is-the-access-token"></a>Wo befindet sich das Zugriffstoken?
-Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../../active-directory/develop/authentication-scenarios.md#web-application-to-web-api) ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
+Wenn Sie sich unter [Anwendungsidentität mit OAuth 2.0-Clientanmeldeinformationen](../../active-directory/develop/web-api.md) ansehen, wie eine Web-App eine API-App aufruft, ist der Ablauf der Authentifizierung wie folgt:
 
-* Ein Benutzer meldet sich in der Webanwendung bei Azure AD an. Weitere Informationen finden Sie unter [Webbrowser zu Webanwendung](../../active-directory/develop/authentication-scenarios.md#web-browser-to-web-application).
+* Ein Benutzer meldet sich in der Webanwendung bei Azure AD an. Weitere Informationen finden Sie unter [Webbrowser zu Webanwendung](../../active-directory/develop/web-app.md).
 * Der Azure AD-Autorisierungsendpunkt leitet den Benutzer-Agent mit einem Autorisierungscode zurück zur Clientanwendung. Der Benutzer-Agent gibt den Autorisierungscode an den Umleitungs-URI der Clientanwendung zurück.
 * Die Webanwendung muss ein Zugriffstoken abrufen, damit sie sich gegenüber der Web-API authentifizieren und die gewünschte Ressource abrufen kann. Sie sendet eine Anforderung an den Azure AD-Tokenendpunkt und gibt die Anmeldeinformationen, die Client-ID sowie den Anwendungs-ID-URI der Web-API an. Sie legt den Autorisierungscode vor, um zu belegen, dass der Benutzer zugestimmt hat.
 * Azure AD authentifiziert die Anwendung und gibt ein JWT-Zugriffstoken zurück, das zum Aufrufen der Web-API verwendet wird.
