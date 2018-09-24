@@ -44,6 +44,7 @@
 ### [Erstellen eines gruppenverwalteten Dienstkontos in einer verwalteten Domäne](active-directory-ds-create-gmsa.md)
 ### [Verwalten von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [Konfigurieren von Kennwortrichtlinien für eine verwaltete Domäne](active-directory-ds-password-policy.md)
+### [Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit einer verwalteten Domäne](active-directory-ds-scoped-synchronization.md)
 ## [Auswählen eines virtuellen Netzwerks](active-directory-ds-networking.md)
 ## Bereitstellen von Anwendungen
 ### [Konfigurieren der Unterstützung für die Profilsynchronisierung für SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)
