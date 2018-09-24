@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: c24d79d6983f7c32f5c563192bcfe412da586ef2
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 39a461a27e8d9d6d1b9712449586bfabf6124d22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603486"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989446"
 ---
 # <a name="joins-in-log-analytics-queries"></a>Joins in Log Analytics-Abfragen
 
@@ -32,7 +32,7 @@ ms.locfileid: "45603486"
 Mithilfe von Joins können Sie Daten aus mehreren Tabellen in derselben Abfrage analysieren. Diese führen die Zeilen zweier Datasets anhand von übereinstimmenden Werten der angegebenen Spalte zusammen.
 
 
-```KQL
+```Kusto
 SecurityEvent 
 | where EventID == 4624     // sign-in events
 | project Computer, Account, TargetLogonId, LogonTime=TimeGenerated
@@ -64,7 +64,7 @@ on $left.key1 == $right.key2
 ## <a name="lookup-tables"></a>Nachschlagetabellen
 Joins werden häufig verwendet, um die statische Zuordnung von Werten mithilfe von `datatable` zu verwenden. Diese kann bei der Transformation der Ergebnisse hilfreich sein, um diese besser darstellen zu können. So können Sie beispielsweise den Sicherheitsereignisdaten den Ereignisnamen für jede Ereignis-ID hinzufügen.
 
-```KQL
+```Kusto
 let DimTable = datatable(EventID:int, eventName:string)
   [
     4625, "Account activity",

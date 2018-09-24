@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: d3969114323f5675c5e14ab36990b124e84ead37
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: e5cac34a9aead209bec90cfd5f89e94a005a1995
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427566"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980354"
 ---
 # <a name="obtain-subscription-keys"></a>Erhalten von Abonnementschlüsseln
 Zunächst müssen Sie mit Azure Custom Speech Service Ihr Benutzerkonto mit einem Azure-Abonnement verknüpfen. Es stehen Abonnements im Free-Tarif und in zahlungspflichtigen Tarifen zur Verfügung. Informationen zu den Tarifen finden Sie auf der [Seite mit den Preisangaben](https://www.microsoft.com/cognitive-services/en-us/pricing).

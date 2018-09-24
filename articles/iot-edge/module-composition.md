@@ -8,12 +8,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: af4a831c084ae10b381b8e08fd0ce4798b21b394
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: a65eb029dbf10b194bd28bf7ad82f5aa839338a2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382170"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990619"
 ---
 # <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Bereitstellen von Modulen und Einrichten von Routen mithilfe von Bereitstellungsmanifesten
 
@@ -148,7 +148,7 @@ Sie können Abfragen für alle drei Parameter erstellen. Verwenden Sie dazu die 
 * Anwendungseigenschaften: `<propertyName>`
 * Texteigenschaften: `$body.<propertyName>` 
 
-Beispiele zum Erstellen von Abfragen für Nachrichteneigenschaften finden Sie unter [D2C-Nachrichtenrouten-Abfrageausdrücke](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+Beispiele zum Erstellen von Abfragen für Nachrichteneigenschaften finden Sie unter [D2C-Nachrichtenrouten-Abfrageausdrücke](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 Ein spezifisches Beispiel für IoT Edge ist das Filtern nach Nachrichten, die von einem Blattgerät gesendet wurden und bei einem Gatewaygerät eingegangen sind. Nachrichten von Modulen enthalten eine spezifische Systemeigenschaft namens **connectionModuleId**. Wenn Sie Nachrichten von Blattgeräten direkt an IoT Hub weiterleiten möchten, verwenden Sie die folgende Route, um Modulnachrichten auszuschließen:
 
@@ -265,7 +265,7 @@ Dies ist ein Beispiel für das JSON-Dokument eines Bereitstellungsmanifests.
 * Sie wissen jetzt, wie IoT Edge-Module verwendet werden. Im nächsten Schritt lernen Sie [die Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen][lnk-module-dev] kennen.
 
 [lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md
+[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
 [lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
 [lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
 [lnk-module-dev]: module-development.md

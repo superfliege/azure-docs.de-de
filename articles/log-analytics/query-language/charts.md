@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: e63345c0265d52fdd80fe4542efb7f13324926cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605526"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989617"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Erstellen von Grafiken und Diagrammen aus Log Analytics-Abfragen
 
@@ -34,7 +34,7 @@ In diesem Artikel sind unterschiedliche Visualisierungen in Azure Log Analytics 
 ## <a name="charting-the-results"></a>Darstellen der Ergebnisse in Diagrammen
 Beginnen Sie mit der Überprüfung, wie viele Computer pro Betriebssystem während der letzten Stunde vorhanden waren:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -52,7 +52,7 @@ Wählen Sie **Chart** (Diagramm) und dann die Option **Pie** (Kreisdiagramm), um
 ## <a name="timecharts"></a>Zeitdiagramme
 Zeigen Sie die durchschnittliche, 50. und 95. Quantile der Prozessorzeit in Containern von einer Stunde an. Die Abfrage generiert mehrere Reihen. Sie können auswählen, welche Reihe im Zeitdiagramm angezeigt wird.
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -67,7 +67,7 @@ Wählen Sie die Anzeigeoption **Liniendiagramm** aus:
 
 Eine Bezugslinie kann Ihnen dabei helfen, einfach zu identifizieren, ob die Metrik einen bestimmten Schwellenwert überschritten hat. Erweitern Sie das Dataset mit einer konstanten Spalte, um dem Diagramm eine Zeile hinzuzufügen:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -80,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>Mehrere Dimensionen
 Mit mehreren Ausdrücken in der `by`-Klausel von `summarize` werden mehrere Zeilen in den Ergebnissen erstellt, und zwar eine für jede Kombination der Werte.
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

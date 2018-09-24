@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f2ebd2a021d3803b6e3f7d805b9253d181cb16c3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293638"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999700"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -133,7 +133,7 @@ Klicken Sie auf einen Anforderungsfehler, und sehen Sie sich die zugeordneten Er
 ![Klicken Sie auf den Anforderungstyp, klicken Sie auf die Instanz, um eine andere Ansicht derselben Instanz abzurufen, und klicken Sie darauf, um Details zur Ausnahme zu erhalten.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analytics
-Sie können Abhängigkeiten in der [Log Analytics-Abfragesprache](https://docs.loganalytics.io/) nachverfolgen. Hier einige Beispiele.
+Sie können Abhängigkeiten in der [Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguage) nachverfolgen. Hier einige Beispiele.
 
 * Suchen fehlgeschlagener Abhängigkeitsaufrufe:
 

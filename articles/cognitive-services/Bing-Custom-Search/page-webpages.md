@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: f2f545a5a9195fc65515ea716f277723600cbb78
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5692776736090c55547c2fe934e2c0aaf840d3c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372778"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982357"
 ---
 # <a name="paging-webpages"></a>Durchsuchen von Webseiten 
 
@@ -45,7 +45,7 @@ Wenn Sie pro Seite 15 Webseiten anzeigen möchten, setzen Sie `count` auf 15 und
 Unten sehen Sie ein Beispiel, bei dem 15 Webseiten ab Offset 45 angefordert werden.  
   
 ```  
-GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us HTTP/1.1  
+GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&count=15&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
 Ocp-Apim-Subscription-Key: <subscription ID>
 Host: api.cognitive.microsoft.com  
 ```  
@@ -53,7 +53,7 @@ Host: api.cognitive.microsoft.com
 Wenn der `count`-Standardwert für Ihre Implementierung das gewünschte Ergebnis erzielt, müssen Sie nur den `offset`-Abfrageparameter angeben.  
   
 ```  
-GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us HTTP/1.1  
+GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+dinghies&offset=45&mkt=en-us&customConfig=123456 HTTP/1.1  
 Ocp-Apim-Subscription-Key: <subscription ID>  
 Host: api.cognitive.microsoft.com  
 ```  

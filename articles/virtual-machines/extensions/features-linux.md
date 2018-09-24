@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: e172b9d6a59f14f741a09450d31602b0d2d9ee5a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 66c3da4f14141bdb5c357dbabfaec5dabf0ab521
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412626"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971381"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Informationen zu Erweiterungen und Features für virtuelle Computer für Linux
 
@@ -83,7 +83,7 @@ Azure-VM-Erweiterungen können auf vorhandenen VMs ausgeführt werden, was nütz
 
 Die folgenden Methoden können verwendet werden, um eine Erweiterung für eine vorhandene VM auszuführen.
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Azure VM-Erweiterungen können mit dem Befehl [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) für einen vorhandenen virtuellen Computer ausgeführt werden. Im folgenden Beispiel wird die benutzerdefinierte Skripterweiterung für einen virtuellen Computer mit dem Namen *myVM* in der Ressourcengruppe *myResourceGroup* ausgeführt:
 

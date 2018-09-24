@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140528"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965454"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -39,7 +39,7 @@ Falls Sie einen anderen Typ von Endpunkt nutzen, z.B. eine auf einem HTTP-Trigge
 
 2. **ValidationURL-basierter Handshake (Manueller Handshake)**: In bestimmten Fällen können Sie ggf. nicht den Quellcode des Endpunkts steuern, um den ValidationCode-basierten Handshake implementieren zu können. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z.B. [Zapier](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten. Ab Version 2018-05-01-preview unterstützt EventGrid daher jetzt einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement per SDK bzw. mit Tools erstellen, für die diese neue API-Version (2018-05-01-preview) verwendet wird, sendet EventGrid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft (zusätzlich zur `validationCode`-Eigenschaft). Senden Sie zum Durchführen des Handshakes einfach eine GET-Anforderung für diese URL, und zwar entweder über einen REST-Client oder Ihren Webbrowser. Die für die Überprüfung angegebene URL gilt nur für ungefähr 10 Minuten. Während dieser Zeit lautet der Bereitstellungsstatus des Ereignisabonnements `AwaitingManualAction`. Wenn Sie die manuelle Überprüfung nicht innerhalb von 10 Minuten abschließen, wird der Bereitstellungsstatus auf `Failed` eingestellt. Sie müssen die Erstellung des Ereignisabonnements wiederholen, bevor Sie versuchen, die manuelle Überprüfung erneut auszuführen.
 
-Dieser Mechanismus der manuellen Überprüfung befindet sich in der Vorschauphase. Sie müssen die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für [AZ CLI 2.0](/cli/azure/install-azure-cli) installieren, um sie zu verwenden. Diese können Sie mit `az extension add --name eventgrid` installieren. Wenn Sie die REST-API verwenden, achten Sie darauf, `api-version=2018-05-01-preview` zu verwenden.
+Dieser Mechanismus der manuellen Überprüfung befindet sich in der Vorschauphase. Sie müssen die [Event Grid-Erweiterung](/cli/azure/azure-cli-extensions-list) für die [Azure CLI](/cli/azure/install-azure-cli) installieren, um es zu verwenden. Diese können Sie mit `az extension add --name eventgrid` installieren. Wenn Sie die REST-API verwenden, achten Sie darauf, `api-version=2018-05-01-preview` zu verwenden.
 
 ### <a name="validation-details"></a>Überprüfungsdetails
 

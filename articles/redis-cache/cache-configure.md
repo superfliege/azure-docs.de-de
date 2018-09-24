@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 0cd21c0367a95d3e866137797ac32fc5bdd196c0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 58e913aa2b4a89a573f6d901803979e662c27af2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31420727"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954040"
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Gewusst wie: Konfigurieren von Azure Redis Cache
 In diesem Thema sind die für Ihre Azure Redis Cache-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Redis Cache-Instanzen behandelt.
@@ -260,7 +260,7 @@ Das Blatt **Georeplikation** bietet einen Mechanismus zum Verknüpfen von zwei A
 > 
 > 
 
-### <a name="virtual-network"></a>Virtuelles Netzwerk
+### <a name="virtual-network"></a>Virtual Network
 Im Abschnitt **Virtuelles Netzwerk** können Sie die Einstellungen des virtuellen Netzwerks für Ihren Cache konfigurieren. Weitere Informationen zum Erstellen eines Premium-Caches mit VNET-Unterstützung sowie zum Aktualisieren der Einstellungen finden Sie unter [Konfigurieren der Unterstützung virtueller Netzwerke für Azure Redis Cache vom Typ „Premium“](cache-how-to-premium-vnet.md).
 
 > [!IMPORTANT]
@@ -353,10 +353,10 @@ Klicken Sie auf **Warnregeln**, um Warnungen basierend auf Redis Cache-Metriken 
 
 ### <a name="diagnostics"></a>Diagnose
 
-Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
+Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../monitoring/monitoring-data-collection.md#metrics) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, klicken Sie zum **Konfigurieren des Speicherkontos** für Cachediagnosedaten auf [Diagnose](cache-how-to-monitor.md#export-cache-metrics).
 
 >[!NOTE]
->Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Log Analytics senden](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics).
+>Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Log Analytics senden](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md).
 >
 >
 

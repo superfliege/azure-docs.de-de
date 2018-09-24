@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: cb05139241f92eb930a99c387e2f06cabac35caf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580409"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990500"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Nutzungsbedingungen und Datenschutzerklärung für registrierte Azure Active Directory-Apps
 
@@ -54,12 +54,14 @@ Beispiele: `https://myapp.com/terms-of-service` und `https://myapp.com/privacy-s
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Hinzufügen von Links zu den Nutzungsbedingungen und Datenschutzbestimmungen
 
 Nachdem die Nutzungsbedingungen und Datenschutzbestimmungen fertig konfiguriert sind, können Sie diesen Dokumenten mit einer der folgenden Methoden Links in Ihrer App hinzufügen:
+
 * [Über das Azure-Portal](#registered-in-azure-portal)
 * [Im App-Registrierungsportal oder Dev Center](#registered-in-app-reg-portal)
 * [Mithilfe des JSON-Codes des App-Objekts](#app-object-json)
 * [Mithilfe der Betaversion der MSGraph-REST-API](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>Bei Registrierung der App im Azure-Portal
+
 Führen Sie folgende Schritte aus, wenn Sie Ihre App im Azure-Portal registriert haben.
 
 1. Melden Sie sich beim  [Azure-Portal](https://portal.azure.com/) an.
@@ -68,9 +70,10 @@ Führen Sie folgende Schritte aus, wenn Sie Ihre App im Azure-Portal registriert
 4. Füllen Sie die Felder  **Terms of Service URL**  (URL zu den Nutzungsbedingungen) und  **URL zur Datenschutzerklärung**  aus.
 5. Speichern Sie die Änderungen.
 
-![Abschnitt „Eigenschaften“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Abschnitt „Eigenschaften“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="registered-in-app-reg-portal"></a>Bei Registrierung der App im App-Registrierungsportal
+
 Gehen Sie folgendermaßen vor, wenn Sie Ihre App im App-Registrierungsportal oder Dev Center registriert haben.
 
 1. Melden Sie sich beim  [App-Registrierungsportal](https://apps.dev.microsoft.com/) an.
@@ -78,9 +81,10 @@ Gehen Sie folgendermaßen vor, wenn Sie Ihre App im App-Registrierungsportal ode
 3. Füllen Sie die Felder  **Terms of Service URL**  (URL zu den Nutzungsbedingungen) und  **URL zur Datenschutzerklärung**  aus.
 4. Speichern Sie die Änderungen.
 
-![Abschnitt „Profil“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![Abschnitt „Profil“ der App mit URLs zu den Nutzungsbedingungen und zur Datenschutzerklärung](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Verwenden des JSON-Codes des App-Objekts
+
 Wenn Sie direkt den JSON-Code des App-Objekts ändern möchten, können Sie über den Manifest-Editor im Azure-Portal oder App-Registrierungsportal Links zu den Nutzungsbedingungen und Datenschutzbestimmungen Ihrer App einfügen.
 
 ```json
@@ -91,6 +95,7 @@ Wenn Sie direkt den JSON-Code des App-Objekts ändern möchten, können Sie übe
 ```
 
 ### <a name="msgraph-beta-rest-api"></a>Verwenden der Betaversion der MSGraph-REST-API
+
 Um alle Ihre Apps programmgesteuert zu aktualisieren, können Sie die Betaversion der MSGraph-REST-API verwenden, um alle Ihre Apps so zu ändern, dass sie Links zu den Dokumenten zu den Nutzungsbedingungen und Datenschutzbestimmungen enthalten.
 
 ```

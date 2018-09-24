@@ -16,14 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450670"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964700"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Vorhersagen der Serverworkload in Terabyte
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 In diesem Artikel wird beschrieben, wie Azure Machine Learning Workbench von Data Scientists zum Entwickeln von Lösungen verwendet werden kann, für die die Nutzung von Big Data erforderlich ist. Sie können mit einem Auszug eines großen Datasets beginnen, die Datenvorbereitung, die Featureentwicklung und das Machine Learning durchlaufen und den Prozess dann auf den gesamten Umfang des großen Datasets erweitern. 
 
@@ -49,17 +52,17 @@ In diesem Szenario liegt der Schwerpunkt auf der Prognose der Workload für die 
 Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
-* Eine installierte Kopie von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Informationen zum Installieren des Programms und Erstellen eines Arbeitsbereichs finden Sie in der [Schnellstartanleitung für die Installation](../service/quickstart-installation.md). Wenn Sie mehrere Abonnements haben, können Sie [festlegen, dass das aktuell aktive Abonnement das gewünschte Abonnement ist](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
+* Eine installierte Kopie von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Informationen zum Installieren des Programms und Erstellen eines Arbeitsbereichs finden Sie in der [Schnellstartanleitung für die Installation](quickstart-installation.md). Wenn Sie mehrere Abonnements haben, können Sie [festlegen, dass das aktuell aktive Abonnement das gewünschte Abonnement ist](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
 * Windows 10 (Anleitungen in diesem Beispiel sind für macOS-Systeme im Allgemeinen identisch).
 * Ein virtueller Data Science-Computer (Data Science Virtual Machine, DSVM) für Linux (Ubuntu), vorzugsweise in der Region „USA, Osten“, wo sich die Daten befinden. Sie können einen Ubuntu-DSVM bereitstellen, indem Sie [diese Anleitung](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) befolgen. Sie können auch [diese Schnellstartanleitung](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu) verwenden. Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 32 GB Arbeitsspeicher zu verwenden. 
 
-Gehen Sie gemäß dieser [Anweisung](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) vor, um auf dem virtuellen Computer für AML Workbench kennwortlosen Zugriff über sudo zu aktivieren.  Sie haben die Wahl, [Authentifizierung über SSH-Schlüssel zum Erstellen und Verwenden des virtuellen Computers in AML Workbench](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets) zu verwenden. In diesem Beispiel wird ein Kennwort verwendet, um auf den virtuellen Computer zuzugreifen.  Speichern Sie die folgende Tabelle mit den DSVM-Informationen für die Verwendung in späteren Schritten:
+Gehen Sie gemäß dieser [Anweisung](../desktop-workbench/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) vor, um auf dem virtuellen Computer für AML Workbench kennwortlosen Zugriff über sudo zu aktivieren.  Sie haben die Wahl, [Authentifizierung über SSH-Schlüssel zum Erstellen und Verwenden des virtuellen Computers in AML Workbench](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets) zu verwenden. In diesem Beispiel wird ein Kennwort verwendet, um auf den virtuellen Computer zuzugreifen.  Speichern Sie die folgende Tabelle mit den DSVM-Informationen für die Verwendung in späteren Schritten:
 
  Feldname| Wert |  
  |------------|------|
 DSVM-IP-Adresse | xxx|
  Benutzername  | xxx|
- Password   | xxx|
+ Kennwort   | xxx|
 
 
  Sie können eine beliebige VM verwenden, auf der die [Docker-Engine](https://docs.docker.com/engine/) installiert ist.
@@ -70,7 +73,7 @@ DSVM-IP-Adresse | xxx|
  |------------|------|
  Clustername| xxx|
  Benutzername  | xxx (standardmäßig „sshuser“)|
- Password   | xxx|
+ Kennwort   | xxx|
 
 
 * Azure Storage-Konto Sie können [diese Anleitung](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) befolgen, um ein Konto zu erstellen. Erstellen Sie in diesem Speicherkonto außerdem zwei private Blobcontainer mit den Namen `fullmodel` und `onemonthmodel`. Im Speicherkonto werden Compute-Zwischenergebnisse und Machine Learning-Modelle gespeichert. Sie benötigen den Speicherkontonamen und den Zugriffsschlüssel, um dieses Beispiel durchzuarbeiten. Speichern Sie die folgende Tabelle mit den Azure-Speicherkontoinformationen für die Verwendung in späteren Schritten:

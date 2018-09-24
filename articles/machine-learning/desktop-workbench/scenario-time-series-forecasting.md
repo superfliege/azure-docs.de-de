@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 934d37783165c2e57dcabd0ff764747e1ab4b65e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635083"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946858"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>Vorhersagen von Zeitreihen für den Energiebedarf
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 
 Bei der Zeitreihenvorhersage werden zukünftige Werte in einer zeitlich geordneten Sequenz von Beobachtungen prognostiziert. Diese ist ein häufig auftretendes Problem, das in vielen Branchen Anwendung findet. Einzelhandelsunternehmen müssen beispielsweise zukünftige Produktverkäufe vorhersagen, damit sie ihre Lieferketten effektiv an den Bedarf anpassen können. Auf ähnliche Weise müssen Paketzusteller den Bedarf an ihren Diensten schätzen, um die erforderlichen Mitarbeiter und Lieferrouten im Voraus zu planen. In vielen Fällen stellen ungenaue Vorhersagen erhebliche finanzielle Risiken dar. Daher ist die Vorhersage häufig eine sehr wichtige Geschäftsaktivität.
@@ -57,7 +62,7 @@ Dieses Szenario enthält Informationen zur Erstellung einer Lösung für die Vor
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
-- Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](../service/quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
+- Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 - In diesem Beispiel wird davon ausgegangen, dass Sie die Azure ML Workbench mit einer lokal installierten [Docker-Engine](https://www.docker.com/) unter Windows 10 ausführen. Wenn Sie macOS verwenden, sind die Anweisungen weitgehend identisch.
 - Installierte Azure Machine Learning-Operationalisierung mit einer lokal eingerichteten Bereitstellungsumgebung und einem Konto zur Modellverwaltung, das wie in diesem [Handbuch](./model-management-configuration.md) beschrieben erstellt wurde.
 - Als Voraussetzung für dieses Beispiel müssen Sie die Pandas-Installation auf Version 0.20.3 oder höher aktualisieren und matplotlib installieren. Klicken Sie in der Workbench im Menü *Datei* auf *Eingabeaufforderung öffnen*, und führen Sie die folgenden Befehle aus, um diese Abhängigkeiten zu installieren:

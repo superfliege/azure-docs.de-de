@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: e91b383f8b87af8b1c4c74728ecf8d9ffd0a003e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: a8d6898745abff6a90827758e3b3fed55c84c8b0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346249"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963484"
 ---
 # <a name="migration-of-management-tools-resources-from-azure-germany-to-global-azure"></a>Migration von Verwaltungstoolressourcen von Azure Deutschland zu Azure weltweit
 
@@ -214,11 +214,11 @@ az policy assignment list
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Frischen Sie Ihre Kenntnisse zu Azure Policy anhand [dieses schrittweisen Tutorials](../azure-policy/create-manage-policy.md) auf.
+- Frischen Sie Ihre Kenntnisse zu Azure Policy anhand [dieses schrittweisen Tutorials](../governance/policy/tutorials/create-and-manage.md) auf.
 
 ## <a name="references"></a>Referenzen
 
-- [Anzeigen von Richtlinien mit der CLI](../azure-policy/create-manage-policy.md#view-policy-definitions-with-azure-cli)
-- [Erstellen der Richtliniendefinition mit der CLI](../azure-policy/create-manage-policy.md#create-a-policy-definition-with-azure-cli)
-- [Anzeigen von Richtlinien mit PowerShell](../azure-policy/create-manage-policy.md#view-policy-definitions-with-powershell)
-- [Erstellen der Richtliniendefinition mit PowerShell](../azure-policy/create-manage-policy.md#create-a-policy-definition-with-powershell)
+- [Anzeigen von Richtlinien mit der CLI](../governance/policy/tutorials/create-and-manage.md#view-policy-definitions-with-azure-cli)
+- [Erstellen der Richtliniendefinition mit der CLI](../governance/policy/tutorials/create-and-manage.md#create-a-policy-definition-with-azure-cli)
+- [Anzeigen von Richtlinien mit PowerShell](../governance/policy/tutorials/create-and-manage.md#view-policy-definitions-with-powershell)
+- [Erstellen der Richtliniendefinition mit PowerShell](../governance/policy/tutorials/create-and-manage.md#create-a-policy-definition-with-powershell)

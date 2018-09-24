@@ -9,12 +9,12 @@ ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: a0e4878987d55b57587fe949d3bdaa8921599a14
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ec0e8c11a1d60d4454d962b8ec4c363e35d1182a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053366"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988749"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Was ist Azure Data Lake Analytics?
 
@@ -46,6 +46,6 @@ Data Lake Analytics kann mit Azure Data Lake Store verwendet werden, erzielt die
 
 ### <a name="next-steps"></a>Nächste Schritte
  
-  * Erste Schritte mit Data Lake Analytics mithilfe [des Azure-Portals](data-lake-analytics-get-started-portal.md) | [von Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [der CLI](data-lake-analytics-get-started-cli2.md)
+  * Erste Schritte mit Data Lake Analytics mithilfe [des Azure-Portals](data-lake-analytics-get-started-portal.md) | [von Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [der CLI](data-lake-analytics-get-started-cli.md)
   * Verwalten von Azure Data Lake Analytics mithilfe [des Azure-Portals](data-lake-analytics-manage-use-portal.md) | [von Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [von CLI](data-lake-analytics-manage-use-cli.md) | [des Azure .NET-SDKs](data-lake-analytics-manage-use-dotnet-sdk.md) | [von Node.js](data-lake-analytics-manage-use-nodejs.md)
   * [Kostenkontrolle und -einsparung mit Data Lake Analytics](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

@@ -15,19 +15,19 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: victorh
-ms.openlocfilehash: ae61e3a8308e95c16ccde71de37fb10666ef0df9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 30df26dc3a9697d3435779f91c32b2d99a747b88
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769119"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990466"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](application-gateway-customize-waf-rules-portal.md)
 > * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+> * [Azure-CLI](application-gateway-customize-waf-rules-cli.md)
 
 Die Web Application Firewall (WAF) von Azure Application Gateway bietet Schutz für Webanwendungen. Diese Schutzmaßnahmen werden durch die Kernregeln (Core Rule Set, CRS) des Open Web Application Security-Projekts (OWASP) bereitgestellt. Einige Regeln können falsche positive Ergebnisse ausgeben und den realen Datenverkehr blockieren. Aus diesem Grund bietet Application Gateway die Möglichkeit, Regelgruppen und Regeln anzupassen. Weitere Informationen zu den jeweiligen Regelgruppen und Regeln finden Sie in der [Liste der CRS-Regelgruppen und -Regeln der Web Application Firewall](application-gateway-crs-rulegroups-rules.md).
 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 72859f68fc1bb76a6c71bbd7b98cd713f1f0fe02
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8161fda80b5fa498f9321371c9ad2c8a2d97441a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296399"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962418"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigation und Dashboards im Application Insights-Portal
 Nachdem Sie [Application Insights für Ihr Projekt eingerichtet haben](app-insights-overview.md), werden Telemetriedaten zur Leistung und Nutzung Ihrer App in der Application Insights-Ressource Ihres Projekts im [Azure-Portal](https://portal.azure.com) angezeigt.
@@ -63,7 +63,7 @@ Das Diagramm wird automatisch mit einer Häufigkeit aktualisiert, die vom Zeitbe
 * Zeitbereich von mehr als 24 Stunden: (Zeitbereich)/60.
 
 ### <a name="pin-any-query-in-analytics"></a>Anheften von beliebigen Abfragen in Analytics
-Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](app-insights-analytics-using.md#pin-to-dashboard). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. 
+Sie können Analysediagramme auch an ein [freigegebenes](#share-dashboards-with-your-team) Dashboard [anheften](../log-analytics/query-language/get-started-analytics-portal.md). Dadurch können Sie neben Standardmetriken Diagramme einer beliebigen Abfrage hinzufügen. 
 
 Die Ergebnisse werden automatisch einmal pro Stunde neu berechnet. Klicken Sie auf das Aktualisierungssymbol im Diagramm, um die Neuberechnung sofort auszuführen. (Durch die Aktualisierung des Browserfensters erfolgt keine Neuberechnung.)
 

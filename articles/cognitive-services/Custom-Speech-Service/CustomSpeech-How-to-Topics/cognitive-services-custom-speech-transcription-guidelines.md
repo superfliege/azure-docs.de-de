@@ -9,12 +9,13 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: 2785a35ac7583ac3d9503cb721d10078d86aa365
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2772665107f94a273731d2147154e546225b22dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373338"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999731"
 ---
 # <a name="transcription-guidelines"></a>Richtlinien für die Transkription
 Halten Sie sich an die folgenden Richtlinien für die Transkription, um sicherzustellen, dass Ihre Textdaten für die Anpassung des Akustik- und Sprachmodells bestmöglich genutzt werden. Diese Richtlinien sind sprachspezifisch.
@@ -103,7 +104,7 @@ Dieser Spracherkennungsdienst führt die folgende Textnormalisierung für Daten 
 *   Konvertieren von Buchstaben normaler Breite in Buchstaben halber Breite
 *   Großschreibung aller englischen Wörter
 
-Einige Beispiele (in chinesischer Sprache):
+Hier einige Beispiele:
 
 | Ursprünglicher Text | Nach der Normalisierung |
 |----- | ----- |

@@ -5,20 +5,20 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 6d18e1bdc6649eebbeae2e01bbbc0a12ba09e4c5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 217525fcf3a049bbc143c054bc72c071c3a36800
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664572"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003875"
 ---
 ### <a name="express-route"></a>ExpressRoute
 
 |  |  |
 |---------|---------|
-| [Zulässige ExpressRoute-Bandbreiten](../articles/azure-policy/scripts/allowed-er-band.md) | Verlangt, dass ExpressRoutes verschiedene angegebene Bandbreiten verwenden. Sie geben ein Array von SKUs an, das für ExpressRoute angegeben werden kann. |
-| [Zulässige ExpressRoute-SKUs](../articles/azure-policy/scripts/allowed-er-skus.md) | Verlangt, dass ExpressRoutes eine zulässige SKU verwenden. Sie geben ein Array von zulässigen SKUs an. |
-| [Zulässige Peeringstandorte für ExpressRoute](../articles/azure-policy/scripts/allowed-peering-er.md) | Verlangt, dass ExpressRoute angegebene Peeringstandorte verwendet. Sie geben ein Array von zulässigen Peeringstandorten an. |
+| [Zulässige ExpressRoute-Bandbreiten](../articles/governance/policy/samples/allowed-er-band.md) | Verlangt, dass ExpressRoutes verschiedene angegebene Bandbreiten verwenden. Sie geben ein Array von SKUs an, das für ExpressRoute angegeben werden kann. |
+| [Zulässige ExpressRoute-SKUs](../articles/governance/policy/samples/allowed-er-skus.md) | Verlangt, dass ExpressRoutes eine zulässige SKU verwenden. Sie geben ein Array von zulässigen SKUs an. |
+| [Zulässige Peeringstandorte für ExpressRoute](../articles/governance/policy/samples/allowed-peering-er.md) | Verlangt, dass ExpressRoute angegebene Peeringstandorte verwendet. Sie geben ein Array von zulässigen Peeringstandorten an. |

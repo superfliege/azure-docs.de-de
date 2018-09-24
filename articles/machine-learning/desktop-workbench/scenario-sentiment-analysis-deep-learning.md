@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 97e3a621e291935db2e0c70eb2b596e77c7bffb7
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: e2fbb0b7b0dede198be0e57ffcd2b58a7da7fce7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35637815"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947770"
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Standpunktanalyse mithilfe von Deep Learning und Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Die Standpunktanalyse ist eine übliche Aufgabe im Bereich der maschinellen Verarbeitung natürlicher Sprache. Bei einer Reihe von Texten geht es darum, die Stimmung des jeweiligen Texts zu bestimmen. Ziel dieser Lösung ist die Verwendung von Deep Learning zur Vorhersage von Standpunkten aus Filmkritiken.
 
@@ -45,7 +50,7 @@ Um aus der Standpunktanalyse einen Nutzen zu ziehen, müssen Unternehmen in der 
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
 
-* Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](../service/quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
+* Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 
 * Für die Operationalisierung wird empfohlen, dass Sie die Docker-Engine installieren und lokal ausführen. Falls nicht gewünscht, können Sie die Clusteroption nutzen. Das Ausführen eines Azure Container Service (ACS) kann allerdings kostspielig sein.
 

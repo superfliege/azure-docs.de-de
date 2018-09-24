@@ -14,15 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 2019324030b2e4c469d0b9ba937fb40a9d0675f1
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 7cd7f0f37f0d351d1d50d4c15e7132f072b5125d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099710"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982204"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Bereitstellen von Azure File Storage auf Linux-VMs per SMB
-
 
 In diesem Artikel wird beschrieben, wie Sie den Azure File Storage-Dienst auf einem virtuellen Linux-Computer über eine SMB-Bereitstellung mit der Azure-Befehlszeilenschnittstelle verwenden. Der Azure-Dateispeicher verfügt über Dateifreigaben in der Cloud unter Verwendung des standardmäßigen SMB-Protokolls. 
 
@@ -30,7 +29,7 @@ File Storage bietet Dateifreigaben in der Cloud, die das standardmäßige SMB-Pr
 
 Das Verschieben von Dateien von einem virtuellen Computer auf eine in File Storage gehostete SMB-Bereitstellung ist eine gute Möglichkeit zum Debuggen von Protokollen. Dieselbe SMB-Freigabe kann lokal auf Ihrer Mac-, Linux- oder Windows-Arbeitsstation bereitgestellt werden. SMB ist nicht die ideale Lösung zum Streamen von Linux- oder Anwendungsprotokollen in Echtzeit, da das SMB-Protokoll nicht auf so anspruchsvolle Protokollierungsaufgaben ausgelegt ist. Ein dediziertes Tool wie Fluentd mit vereinheitlichter Protokollierungsebene ist eine bessere Wahl als SMB, wenn es um das Erfassen der Linux- und Anwendungsprotokollausgabe geht.
 
-Für diese Führungslinie müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie **az --version** aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
+Für diese Führungslinie müssen Sie mindestens Version 2.0.4 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie **az --version** aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe

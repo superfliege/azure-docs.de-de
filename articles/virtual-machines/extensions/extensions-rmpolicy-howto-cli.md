@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: f11d08e56fe1970aa7a0d82f368eb73589ece2fe
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 08fcb244ada319dccf62c134a0155dd117e79184
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412298"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977039"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Linux-Computern einzuschränken
 
 Wenn Sie die Verwendung oder Installation von bestimmten Erweiterungen auf Ihren virtuellen Linux-Computern verhindern möchten, können Sie mithilfe der CLI eine Azure-Richtlinie zum Einschränken von Erweiterungen für virtuelle Computer innerhalb einer Ressourcengruppe erstellen. 
 
-Dieses Tutorial verwendet die CLI innerhalb der Azure Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie die Azure CLI lokal ausführen möchten, müssen Sie Version 2.0.26 oder höher installieren. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Dieses Tutorial verwendet die CLI innerhalb der Azure Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie die Azure CLI lokal ausführen möchten, müssen Sie Version 2.0.26 oder höher installieren. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 14854960aa8db50507b407d4fab7c4113618235c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 03c6d45cb3a20244ddbb9c0aec693f7802a95b22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071545"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976357"
 ---
 # <a name="how-to-monitor-azure-redis-cache"></a>Überwachen von Azure Redis Cache
 Azure Redis Cache bietet über [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) verschiedene Optionen zum Überwachen Ihrer Cache-Instanzen. Sie können Metriken anzeigen, Metrikdiagramme an das Startmenü anheften, Daten- und Zeitbereiche für Überwachungsdiagramme anpassen, Metriken aus Diagrammen hinzufügen und entfernen sowie Warnungen festlegen, die ausgelöst werden, wenn bestimmte Bedingungen erfüllt sind. Diese Tools ermöglichen es Ihnen, die Integrität Ihrer Azure Redis Cache-Instanzen zu überwachen und unterstützen Sie beim Verwalten Ihrer Cachinganwendungen.
@@ -61,7 +61,7 @@ Weitere Informationen zum Verwenden von Metriken mit Azure Monitor finden Sie un
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>Exportieren von Cachemetriken
-Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#store-and-archive) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
+Cachemetriken werden in Azure Monitor standardmäßig [30 Tage lang gespeichert](../monitoring/monitoring-data-collection.md#metrics) und anschließend gelöscht. Um Cachemetriken länger als 30 Tage beizubehalten, können Sie [ein Speicherkonto festlegen](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md) und eine Richtlinie **Aufbewahrung (Tage)** für die Cachemetriken angeben. 
 
 So konfigurieren Sie ein Speicherkonto für die Cachemetriken
 
@@ -75,11 +75,11 @@ So konfigurieren Sie ein Speicherkonto für die Cachemetriken
 ![Redis-Diagnose](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Log Analytics senden](../monitoring-and-diagnostics/monitoring-overview-metrics.md#export-metrics).
+>Neben dem Archivieren der Cachemetriken im Speicher können Sie sie auch [an einen Event Hub streamen oder an Log Analytics senden](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md#retrieve-metric-values).
 >
 >
 
-Um auf die Metriken zuzugreifen, können Sie sie im Azure-Portal anzeigen (wie weiter oben in diesem Artikel beschrieben) oder dazu die [Azure Monitor-REST-API für Metriken](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api) verwenden.
+Um auf die Metriken zuzugreifen, können Sie sie im Azure-Portal anzeigen (wie weiter oben in diesem Artikel beschrieben) oder dazu die [Azure Monitor-REST-API für Metriken](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md) verwenden.
 
 > [!NOTE]
 > Wenn Sie das Speicherkonto ändern, sind die Daten im zuvor konfigurierten Speicherkonto weiterhin zum Download verfügbar, werden im Azure-Portal jedoch nicht angezeigt.  

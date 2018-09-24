@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: b6a42e1a0b0256a6b19220958f98940764273a2d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 42b62c819fd3d26c6ea944f968e0d5956a7f055e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114383"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987457"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Anwenden von Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
@@ -106,7 +106,7 @@ Verwenden Sie einen Platzhalter, um die vorhergehende Richtlinie so zu ändern, 
 }
 ```
 
-Informationen zu Richtlinienfeldern finden Sie unter [Richtlinienaliase](../../azure-policy/policy-definition.md#aliases).
+Informationen zu Richtlinienfeldern finden Sie unter [Richtlinienaliase](../../governance/policy/concepts/definition-structure.md#aliases).
 
 ## <a name="managed-disks"></a>Verwaltete Datenträger
 

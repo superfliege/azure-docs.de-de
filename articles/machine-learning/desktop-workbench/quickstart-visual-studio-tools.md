@@ -2,23 +2,27 @@
 title: Schnellstartanleitung für Visual Studio-Tools für Machine Learning in Azure | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Visual Studio-Tools für Machine Learning verwenden, um ein Experiment zu erstellen, das Modell zu trainieren und einen Webdienst zu operationalisieren.
 services: machine-learning
-ms.workload: data-services
 author: chris-lauren
-ms.author: chris.lauren
+ms.author: clauren
 ms.service: machine-learning
 ms.component: core
+ms.workload: data-services
 ms.custom: mvc, vs-azure
 ms.topic: quickstart
 ms.date: 11/15/2017
-ms.openlocfilehash: 94bca4d7670b1ec6fba5057b8295f7a3caac2968
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ROBOTS: NOINDEX
+ms.openlocfilehash: a32739623f9b4809db6623f0d4d1b9737b0fff51
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42024367"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984091"
 ---
 # <a name="visual-studio-tools-for-ai"></a>Visual Studio-Tools für AI
-Visual Studio-Tools für AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](http://www.microsoft.com/en-us/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. Außerdem ermöglicht die Erweiterung vereinfachten Zugriff auf [Azure Batch AI (Vorschauversion)](https://docs.microsoft.com/azure/batch-ai/).
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+Visual Studio-Tools für AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](http://www.microsoft.com/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. Außerdem ermöglicht die Erweiterung vereinfachten Zugriff auf [Azure Batch AI (Vorschauversion)](https://docs.microsoft.com/azure/batch-ai/).
  
 ## <a name="getting-started"></a>Erste Schritte 
 Als Erstes müssen Sie [Visual Studio](https://www.visualstudio.com/downloads/) herunterladen und installieren. Führen Sie die folgenden Schritte aus, nachdem Visual Studio geöffnet wurde:
@@ -28,7 +32,7 @@ Als Erstes müssen Sie [Visual Studio](https://www.visualstudio.com/downloads/) 
 3. Klicken Sie auf die Schaltfläche **Herunterladen** . 
 4. Starten Sie Visual Studio nach der Installation neu. 
 
-Nachdem Visual Studio neu geladen wurde, ist die Erweiterung aktiv. [Hier finden Sie weitere Informationen zum Suchen nach Erweiterungen](hhttps://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions).
+Nachdem Visual Studio neu geladen wurde, ist die Erweiterung aktiv. [Hier finden Sie weitere Informationen zum Suchen nach Erweiterungen](h https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions).
 
 > [!NOTE]
 > Für Visual Studio-Tools für AI ist Visual Studio 2015 oder 2017 erforderlich (Professional oder Enterprise Edition). Die Version Apple OSX wird nicht unterstützt. 

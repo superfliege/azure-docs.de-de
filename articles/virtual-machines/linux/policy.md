@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: singhkay
-ms.openlocfilehash: fa6c95c3986a398bdb4593235116b305a80616fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 04a172c40c24e4e0daaf17b495d2320f3a897a47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653792"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975257"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Anwenden von Richtlinien auf virtuelle Linux-Computer mit Azure Resource Manager
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
@@ -89,7 +89,7 @@ Verwenden Sie einen Platzhalter, um die vorhergehende Richtlinie so zu ändern, 
 }
 ```
 
-Informationen zu Richtlinienfeldern finden Sie unter [Richtlinienaliase](../../azure-policy/policy-definition.md#aliases).
+Informationen zu Richtlinienfeldern finden Sie unter [Richtlinienaliase](../../governance/policy/concepts/definition-structure.md#aliases).
 
 ## <a name="managed-disks"></a>Verwaltete Datenträger
 

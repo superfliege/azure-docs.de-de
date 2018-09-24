@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ROBOTS: NOINDEX
+ms.openlocfilehash: 762955103aeb48eb8a9b62f4e3ffe193bba71a38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947216"
 ---
 # <a name="document-collection-analysis"></a>Analysieren von Dokumentsammlungen
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Dieses Szenario veranschaulicht, wie Sie eine umfangreiche Sammlung von Dokumenten zusammenfassen und analysieren. Dazu gehören auch Techniken wie das Lernen von Ausdrücken, das Modellieren von Themen und die Themenmodellanalyse mithilfe der Azure ML Workbench. Die Azure Machine Learning Workbench ermöglicht das einfache zentrale Hochskalieren sehr großer Dokumentsammlungen und stellt Verfahren zum Trainieren und Optimieren von Modellen in einer Vielzahl von Rechenkontexten bereit – angefangen bei lokalen Computeoperationen bis hin zu Data Science bei VMs in Spark-Clustern. Die einfache Entwicklung wird über Jupyter Notebooks in der Azure Machine Learning Workbench gewährleistet.
 
@@ -60,7 +65,7 @@ Folgende Techniken/Algorithmen zum maschinellen Lernen werden in diesem Szenario
 
 Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 
-* Stellen Sie sicher, dass Sie [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) ordnungsgemäß installiert haben. Gehen Sie dazu wie in der [Schnellstartanleitung zum Installieren und Erstellen](../service/quickstart-installation.md) beschrieben vor.
+* Stellen Sie sicher, dass Sie [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) ordnungsgemäß installiert haben. Gehen Sie dazu wie in der [Schnellstartanleitung zum Installieren und Erstellen](quickstart-installation.md) beschrieben vor.
 
 * Dieses Beispiel kann in beliebigen Rechenkontexten ausgeführt werden. Es wird jedoch empfohlen, für die Ausführung einen Computer mit mehreren Kernen und mindestens 16 GB Arbeitsspeicher und 5 GB Speicherplatz auf dem Datenträger zu verwenden.
 
@@ -90,12 +95,12 @@ Es gibt neun Datenfelder in der Datendatei. Die Datenfeldnamen und Beschreibunge
 | `ID` | Zeichenfolge | Die ID des Gesetzes bzw. Beschlusses. Das Format dieses Felds lautet [Gesetzesart][Nummer]-[Kongress]. „hconres1-93“ bedeutet z.B., dass die Gesetzesart „hconres“ (für „House Concurrent Resolution“, siehe [dieses Dokument](https://github.com/unitedstates/congress/wiki/bills#basic-information)), die Gesetznummer „1“ und die Kongressnummer „93“ lauten. | Nein  |
 | `Text` | Zeichenfolge | Der Inhalt des Gesetzes bzw. Beschlusses. | Nein  |
 | `Date` | Zeichenfolge | Das Datum, an dem das Gesetz/der Beschluss ursprünglich eingereicht wurde. Im Format „jjjj-mm-tt“. | Nein  |
-| `SponsorName` | Zeichenfolge | Der Name des ursprünglichen Unterstützers, der das Gesetz/den Beschluss eingereicht hat. | Ja |
-| `Type` | Zeichenfolge | Der Titeltyp des primären Unterstützers, entweder „rep“ (Representative) oder „s“ (Senator). | Ja |
-| `State` | Zeichenfolge | Der Status des ursprünglichen Unterstützers. | Ja |
-| `District` | Ganze Zahl  | Die Distriktnummer des ursprünglichen Unterstützers, wenn der Titeltyp „Representative“ ist. | Ja |
-| `Party` | Zeichenfolge | Die Partei des ursprünglichen Unterstützers. | Ja |
-| `Subjects` | Zeichenfolge | Die Themenbegriffe, die dem Gesetz von der Library of Congress kumulativ hinzugefügt wurden. Die Ausdrücke werden durch Kommas getrennt. Diese Begriffe werden von einer Person in der Library of Congress geschrieben und sind in der Regel noch nicht enthalten, wenn die Informationen zum Gesetz das erste Mal veröffentlicht werden. Sie können jederzeit hinzugefügt werden. Daher ist es möglich, dass einige Begriffe am Ende des Lebenszyklus eines Gesetzes nicht mehr relevant sind. | Ja |
+| `SponsorName` | Zeichenfolge | Der Name des ursprünglichen Unterstützers, der das Gesetz/den Beschluss eingereicht hat. | JA |
+| `Type` | Zeichenfolge | Der Titeltyp des primären Unterstützers, entweder „rep“ (Representative) oder „s“ (Senator). | JA |
+| `State` | Zeichenfolge | Der Status des ursprünglichen Unterstützers. | JA |
+| `District` | Ganze Zahl  | Die Distriktnummer des ursprünglichen Unterstützers, wenn der Titeltyp „Representative“ ist. | JA |
+| `Party` | Zeichenfolge | Die Partei des ursprünglichen Unterstützers. | JA |
+| `Subjects` | Zeichenfolge | Die Themenbegriffe, die dem Gesetz von der Library of Congress kumulativ hinzugefügt wurden. Die Ausdrücke werden durch Kommas getrennt. Diese Begriffe werden von einer Person in der Library of Congress geschrieben und sind in der Regel noch nicht enthalten, wenn die Informationen zum Gesetz das erste Mal veröffentlicht werden. Sie können jederzeit hinzugefügt werden. Daher ist es möglich, dass einige Begriffe am Ende des Lebenszyklus eines Gesetzes nicht mehr relevant sind. | JA |
 
 ## <a name="scenario-structure"></a>Szenariostruktur
 

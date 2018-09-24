@@ -12,14 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: e0f6148e1fb28838bf99c63fbfbfbfe8cd127c8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143359"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973202"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Zuordnung von Fragen und Antworten mit Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Die Beantwortung von offenen Fragen ist schwierig und erfordert oft manuellen Aufwand von Experten (SMEs). Um die Arbeitsbelastung der internen SMEs zu reduzieren, erstellen Unternehmen oft Listen mit häufig gestellten Fragen (FAQs), um die Benutzer zu unterstützen. Dieses Beispiel zeigt, wie verschiedene effektive Machine Learning-Methoden verwendet werden können, um offene Abfragen bereits vorhandenen, häufig gestellten Frage/Antwort-Paaren zuzuordnen. Dieses Beispiel zeigt einen einfachen Entwicklungsprozess für die Erstellung einer Lösung, die Azure Machine Learning Workbench verwendet. 
 
 ## <a name="link-to-the-gallery-github-repository"></a>Link zum Katalog des GitHub-Repositorys
@@ -42,7 +47,7 @@ Die wichtigsten erforderlichen Schritte für diese Lösung sind die folgenden:
 Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 
 1. Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
-2. Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](../service/quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
+2. Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 3. Dieses Beispiel kann in beliebigen Computekontexten ausgeführt werden. Es wird jedoch empfohlen, für die Ausführung einen Computer mit mehreren Kernen und mindestens 16 GB Arbeitsspeicher und 5 GB Speicherplatz auf dem Datenträger zu verwenden.
 
 ## <a name="create-a-new-workbench-project"></a>Erstellen eines neuen Workbench-Projekts

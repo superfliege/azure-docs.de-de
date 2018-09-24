@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6b73a802b186e5fcf2380f5f4c80c1bb67d253fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781563"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981864"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Storage Service Encryption mit von Kunden verwalteten Schlüsseln in Azure Key Vault
 Es ist uns ein Anliegen, dass Microsoft Azure Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Konformitätsanforderungen Ihrer Organisation unterstützt. Die Azure Storage-Plattform schützt Ihre Daten mittels Speicherdienstverschlüsselung (SSE). Damit werden die Daten beim Schreiben in den Speicher automatisch verschlüsselt und beim Abrufen auch wieder entschlüsselt. Die Ver- und Entschlüsselung erfolgt automatisch und transparent. Dabei wird mit der 256-Bit-[AES-Verschlüsselung](https://wikipedia.org/wiki/Advanced_Encryption_Standard) eine der stärksten verfügbaren Blockchiffren verwendet.
@@ -31,7 +31,7 @@ Warum sollten Sie eigene Schlüssel erstellen? Benutzerdefinierte Schlüssel bie
 Um vom Kunden verwaltete Schüssel mit SSE zu verwalten, können Sie einen neuen Schlüsseltresor und Schlüssel erstellen oder bereits vorhandene verwenden. Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören. 
 
 ### <a name="step-1-create-a-storage-account"></a>Schritt 1: Erstellen eines Speicherkontos
-Erstellen Sie zuerst ein Speicherkonto, falls Sie noch kein Konto besitzen. Weitere Informationen finden Sie unter [Erstellen eines neuen Speicherkontos](storage-quickstart-create-account.md).
+Erstellen Sie zuerst ein Speicherkonto, falls Sie noch kein Konto besitzen. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Schritt 2: Aktivieren von SSE für Blob und File Storage
 Um SSE mit von Kunden verwalteten Schlüsseln zu aktivieren, müssen auch zwei Features für den Schlüsselschutz in Azure Key Vault aktiviert werden:„Soft Delete“ (Vorläufig löschen) und „Do Not Purge“ (Nicht bereinigen). Mit diesen Einstellungen verhindern Sie versehentliches oder absichtliches Löschen der Schlüssel. Die maximale Beibehaltungsdauer der Schlüssel ist auf 90 Tage festgelegt, um Benutzer vor böswilligen Akteuren oder Ransomware Angriffe zu schützen.

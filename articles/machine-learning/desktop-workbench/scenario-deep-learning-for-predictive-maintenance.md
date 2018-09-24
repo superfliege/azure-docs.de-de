@@ -13,14 +13,19 @@ ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 83e1f14db317f59ab2063a9d020adbdb6fe78e5f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d52433a32d8dc764c7535dacf5872e55f0082ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35637983"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995515"
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>Deep Learning für Predictive Maintenance in der Praxis
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Deep Learning ist einer der beliebtesten Trends im Bereich Machine Learning, der Anwendungen für viele Bereiche beinhaltet, u.a.:
 - Selbstfahrende Kraftfahrzeuge und Robotik
@@ -75,7 +80,7 @@ Dieser Befehl bietet einen Authentifizierungsschlüssel für die Verwendung mit 
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Hinsichtlich der Arbeitsspeicher- und Speicherplatzanforderungen wird die Ausführung auf einem [virtuellen Data Science-Computer (Data Science Virtual Machine, DSVM) für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) empfohlen. Nachdem die DSVM konfiguriert ist, bereiten Sie die Remote-Docker-Umgebung mit den folgenden zwei Befehlen vor:
+Hinsichtlich der Arbeitsspeicher- und Speicherplatzanforderungen wird die Ausführung auf einem [virtuellen Data Science-Computer (Data Science Virtual Machine, DSVM) für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) empfohlen. Nachdem die DSVM konfiguriert ist, bereiten Sie die Remote-Docker-Umgebung mit den folgenden zwei Befehlen vor:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

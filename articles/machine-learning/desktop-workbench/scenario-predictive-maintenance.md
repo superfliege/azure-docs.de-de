@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: a5531ae256a263f1c34496819ac435ce67156b49
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636878"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996212"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Predictive Maintenance in der Praxis – Szenarien
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Die Auswirkungen von ungeplanten Ausfällen von Ausrüstung können für jedes Unternehmen schädlich sein. Es ist entscheidend, für den ausfallsicheren Betrieb der Feldausrüstung zu sorgen, um die Auslastung und Leistung zu erhöhen und teure, ungeplante Ausfallzeiten zu minimieren. Eine frühzeitige Identifizierung von Problemen ermöglicht die Bereitstellung eingeschränkter Wartungsressourcen auf kosteneffektive Weise und eine Verbesserung der Qualitäts- und Lieferkettenprozesse. 
 
@@ -41,10 +46,10 @@ Das Geschäftsproblem für diese simulierten Daten ist die Vorhersage von Proble
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
-* Eine installierte Kopie von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Gehen Sie zum Installieren des Programms und zum Erstellen eines Arbeitsbereichs nach der [Schnellstartanleitung für die Installation](../service/quickstart-installation.md) vor.
+* Eine installierte Kopie von [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Gehen Sie zum Installieren des Programms und zum Erstellen eines Arbeitsbereichs nach der [Schnellstartanleitung für die Installation](quickstart-installation.md) vor.
 * Die Azure Machine Learning-Operationalisierung erfordert eine lokal eingerichtete Bereitstellungsumgebung und ein [Azure Machine Learning-Modellverwaltungskonto](model-management-overview.md).
 
-Dieses Beispiel kann für jeden Machine Learning Workbench-Computekontext ausgeführt werden. Es wird jedoch empfohlen, das Beispiel mit mindestens 16 GB Arbeitsspeicher auszuführen. Dieses Szenario wurde auf einem Windows 10-Computer mit einem remote ausgeführten [virtuellen Data Science-Computer (DSVM) für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) vom Typ „DS4_V2 Standard“ erstellt und getestet.
+Dieses Beispiel kann für jeden Machine Learning Workbench-Computekontext ausgeführt werden. Es wird jedoch empfohlen, das Beispiel mit mindestens 16 GB Arbeitsspeicher auszuführen. Dieses Szenario wurde auf einem Windows 10-Computer mit einem remote ausgeführten [virtuellen Data Science-Computer (DSVM) für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) vom Typ „DS4_V2 Standard“ erstellt und getestet.
 
 Die Modelloperationalisierung erfolgte mit der Version 0.1.0a22 der Azure Machine Learning-CLI.
 
@@ -71,7 +76,7 @@ Dieser Befehl stellt einen Authentifizierungsschlüssel für die Verwendung mit 
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Hinsichtlich der Arbeitsspeicher- und Speicherplatzanforderungen wird die Ausführung auf einem [DSVM für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) empfohlen. Nachdem die DSVM konfiguriert ist, bereiten Sie die Remote-Docker-Umgebung mit den folgenden zwei Befehlen vor:
+Hinsichtlich der Arbeitsspeicher- und Speicherplatzanforderungen wird die Ausführung auf einem [DSVM für Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) empfohlen. Nachdem die DSVM konfiguriert ist, bereiten Sie die Remote-Docker-Umgebung mit den folgenden zwei Befehlen vor:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

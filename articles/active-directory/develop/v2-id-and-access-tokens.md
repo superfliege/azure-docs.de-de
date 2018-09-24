@@ -17,22 +17,22 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23d041311c33110bf11efc78d162243a4bb25778
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596499"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997759"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Azure Active Directory v2.0-Tokenreferenz
+
 Der Azure Active Directory (Azure AD) v2.0-Endpunkt stellt bei jedem [Authentifizierungsfluss](v2-app-types.md) verschiedene Arten von Sicherheitstoken aus. Dieses Dokument beschreibt das Format, die Sicherheitsmerkmale und den Inhalt der einzelnen Tokentypen.
 
 > [!NOTE]
 > Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure Active Directory. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
->
->
 
 ## <a name="types-of-tokens"></a>Tokentypen
+
 Der v2.0-Endpunkt unterstützt das [OAuth 2.0-Autorisierungsprotokoll](active-directory-v2-protocols.md), das Zugriffstoken und Aktualisierungstoken verwendet. Der v2.0-Endpunkt unterstützt auch die Authentifizierung und die Anmeldung über [OpenID Connect](active-directory-v2-protocols.md). OpenID Connect führt einen dritten Tokentyp ein, das ID-Token. Alle diese Token werden als *Bearertoken* dargestellt.
 
 Ein Bearertoken ist ein einfaches Sicherheitstoken, das dem Inhaber („Bearer“) den Zugriff auf eine geschützte Ressource ermöglicht. Der Bearer ist jede beliebige Partei, die das Token vorweisen kann. Um das Bearertoken zu erhalten, muss sich die Partei zwar bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann es von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine Verwendung durch nicht autorisierte Parteien verhindert. Bearertoken besitzen diesen Mechanismus jedoch nicht. Bearertoken müssen über einen sicheren Kanal wie z.B. Transport Layer Security (HTTPS) übertragen werden. Wird ein Bearertoken ohne eine derartige Sicherheit gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abrufen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](http://tools.ietf.org/html/rfc6750).
@@ -40,6 +40,7 @@ Ein Bearertoken ist ein einfaches Sicherheitstoken, das dem Inhaber („Bearer�
 Viele der vom v2.0-Endpunkt ausgestellten Token werden als JSON-Webtoken (JWTs) implementiert. Ein JWT stellt eine kompakte, URL-sichere Methode zum Übertragen von Informationen zwischen zwei Parteien dar. Die in einem JWT abgerufenen Informationen werden als *Anspruch* bezeichnet. Hierbei handelt es sich um Assertionen von Informationen zum Träger und zum Antragsteller des Tokens. Bei den Ansprüchen in einem JWT handelt es sich um JavaScript Object Notation-Objekte (JSON), die für die Übertragung codiert und serialisiert wurden. Da die vom v2.0-Endpunkt ausgestellten JWTs signiert, aber nicht verschlüsselt sind, können Sie den Inhalt eines JWT problemlos für Debugzwecke untersuchen. Weitere Informationen zu JWTs finden Sie unter [JWT-Spezifikationen](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ### <a name="id-tokens"></a>ID-Token
+
 Ein ID-Token ist eine Form eines Anmeldesicherheitstokens, das Ihre App empfängt, wenn sie die Authentifizierung mit [OpenID Connect](active-directory-v2-protocols.md) ausführt. ID-Token werden als [JWTs](#types-of-tokens)dargestellt und enthalten Ansprüche, die Sie zum Anmelden der Benutzer bei Ihrer App verwenden können. Sie können die Ansprüche in einem ID-Token auf unterschiedliche Weise verwenden. Im Allgemeinen setzen Administratoren ID-Token zum Anzeigen von Kontoinformationen oder für Entscheidungen hinsichtlich der Zugriffssteuerung in einer App ein. Der v2.0-Endpunkt stellt nur einen ID-Token-Typen aus. Dieser enthält unabhängig vom angemeldeten Benutzertyp einen konsistenten Satz von Ansprüchen. Das Format und der Inhalt der ID-Token sind für persönliche Microsoft-Kontobenutzer und für Geschäfts- oder Schulkonten gleich.
 
 ID-Token sind zum gegenwärtigen Zeitpunkt zwar signiert, aber nicht verschlüsselt. Wenn Ihre App ein ID-Token empfängt, muss sie [die Signatur überprüfen](#validating-tokens), um die Authentizität des Tokens nachzuweisen. Zudem müssen einige Ansprüche im Token überprüft werden, um seine Gültigkeit zu belegen. Je nach den Anforderungen des Szenarios können die von einer App überprüften Ansprüche variieren. Einige [allgemeine Anspruchsüberprüfungen](#validating-tokens) muss Ihre App aber in jedem Szenario durchführen.
@@ -47,16 +48,16 @@ ID-Token sind zum gegenwärtigen Zeitpunkt zwar signiert, aber nicht verschlüss
 In den folgenden Abschnitten finden Sie die vollständigen Details zu Ansprüchen in ID-Token sowie ein ID-Beispieltoken. Beachten Sie, dass die Ansprüche in ID-Token nicht in einer bestimmten Reihenfolge zurückgegeben werden. Darüber hinaus können jederzeit neue Ansprüche in ID-Token eingeführt werden. Ihre App sollte nicht unterbrochen werden, wenn neue Ansprüche eingeführt werden. Die folgende Liste enthält die Ansprüche, die Ihre App gegenwärtig zuverlässig interpretieren kann. Weitere Informationen finden Sie in der [OpenID Connect-Spezifikation](http://openid.net/specs/openid-connect-core-1_0.html).
 
 #### <a name="sample-id-token"></a>ID-Beispieltoken
+
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiI2NzMxZGU3Ni0xNGE2LTQ5YWUtOTdiYy02ZWJhNjkxNDM5MWUiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vYjk0MTk4MTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMWYzNzZlL3YyLjAiLCJpYXQiOjE0NTIyODUzMzEsIm5iZiI6MTQ1MjI4NTMzMSwiZXhwIjoxNDUyMjg5MjMxLCJuYW1lIjoiQmFiZSBSdXRoIiwibm9uY2UiOiIxMjM0NSIsIm9pZCI6ImExZGJkZGU4LWU0ZjktNDU3MS1hZDkzLTMwNTllMzc1MGQyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InRoZWdyZWF0YmFtYmlub0BueXkub25taWNyb3NvZnQuY29tIiwic3ViIjoiTUY0Zi1nZ1dNRWppMTJLeW5KVU5RWnBoYVVUdkxjUXVnNWpkRjJubDAxUSIsInRpZCI6ImI5NDE5ODE4LTA5YWYtNDljMi1iMGMzLTY1M2FkYzFmMzc2ZSIsInZlciI6IjIuMCJ9.p_rYdrtJ1oCmgDBggNHB9O38KTnLCMGbMDODdirdmZbmJcTHiZDdtTc-hguu3krhbtOsoYM2HJeZM3Wsbp_YcfSKDY--X_NobMNsxbT7bqZHxDnA2jTMyrmt5v2EKUnEeVtSiJXyO3JWUq9R0dO-m4o9_8jGP6zHtR62zLaotTBYHmgeKpZgTFB9WtUq8DVdyMn_HSvQEfz-LWqckbcTwM_9RNKoGRVk38KChVJo4z5LkksYRarDo8QgQ7xEKmYmPvRr_I7gvM2bmlZQds2OeqWLB1NSNbFZqyFOCgYn3bAQ-nEQSKwBaA36jYGPOVG2r2Qv1uKcpSOxzxaQybzYpQ
 ```
 
 > [!TIP]
 > Überprüfen Sie zu Übungszwecken die Ansprüche im ID-Beispieltoken, indem Sie das Token in [jwt.ms](http://jwt.ms/) einfügen.
->
->
 
 #### <a name="claims-in-id-tokens"></a>Ansprüche in ID-Token
+
 | NAME | Anspruch | Beispielwert | BESCHREIBUNG |
 | --- | --- | --- | --- |
 | audience |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |Identifiziert den vorgesehenen Empfänger des Tokens. Die Zielgruppe von ID-Token ist die Anwendungs-ID Ihrer App, die der App im Microsoft-Anwendungsregistrierungsportal zugewiesen wurde. Ihre App sollte diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. |
@@ -82,22 +83,25 @@ Der v2.0-Endpunkt ermöglicht den bei Azure AD registrierten Drittanbieter-Apps 
 Beim Anfordern eines Zugriffstokens vom v2.0-Endpunkt gibt der Endpunkt auch Metadaten zum Zugriffstoken für die Nutzung durch Ihre App zurück. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Diese Metadaten ermöglichen Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass hierbei das Zugriffstoken selbst analysiert werden muss.
 
 ### <a name="refresh-tokens"></a>Aktualisierungstoken
+
 Aktualisierungstoken sind Sicherheitstoken, mit denen Ihre App neue Zugriffstoken in einem OAuth 2.0-Fluss abrufen kann. Ihre App kann Aktualisierungstoken verwenden, um langfristig Zugriff auf Ressourcen im Auftrag eines Benutzers zu erhalten, ohne dass ein Benutzereingriff erforderlich ist.
 
 Aktualisierungstoken bestehen aus mehreren Ressourcen. Ein Aktualisierungstoken, das bei einer Tokenanforderung für eine Ressource empfangen wurde, kann als Zugriffstoken bei einer völlig anderen Ressource eingelöst werden.
 
 Um eine Aktualisierung bei einer Tokenantwort zu erhalten, muss Ihre App den `offline_access`-Bereich anfordern, und dieser Bereich muss gewährt werden. Weitere Informationen zum `offline_access`-Bereich finden Sie im Artikel zu [Bereichen und Zustimmungen](v2-permissions-and-consent.md).
 
-Aktualisierungstoken sind für Ihre App niemals transparent. Sie werden vom Azure AD v2.0-Endpunkt ausgestellt und können nur von diesem v2.0-Endpunkt überprüft und interpretiert werden. Sie sind zwar sehr lange gültig, in Ihrer App darf aber nicht von einer unbegrenzten Gültigkeitsdauer ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Ausführlichere Informationen finden Sie im Abschnitt zum [Widerrufen von Token](v1-id-and-access-tokens.md#token-revocation). Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung auf dem v2.0-Endpunkt aus.
+Aktualisierungstoken sind für Ihre App niemals transparent. Sie werden vom Azure AD v2.0-Endpunkt ausgestellt und können nur von diesem v2.0-Endpunkt überprüft und interpretiert werden. Sie sind zwar sehr lange gültig, in Ihrer App darf aber nicht von einer unbegrenzten Gültigkeitsdauer ausgegangen werden. Aktualisierungstoken können jederzeit aus unterschiedlichen Gründen ungültig werden. Ausführlichere Informationen finden Sie im Abschnitt zum [Widerrufen von Token](access-tokens.md#revocation). Die einzige Möglichkeit für Ihre App, die Gültigkeit eines Aktualisierungstokens zu überprüfen, besteht in der Einlösung des Tokens. Führen Sie dazu eine Tokenanforderung auf dem v2.0-Endpunkt aus.
 
 Wenn Sie ein Aktualisierungstoken für ein neues Zugriffstoken einlösen (und wenn Ihrer App der `offline_access`-Bereich zugeteilt wurde), erhalten Sie ein neues Aktualisierungstoken in der Tokenantwort. Speichern Sie das neu ausgestellte Aktualisierungstoken, um das in der Anforderung verwendete Token zu ersetzen. Dadurch wird sichergestellt, dass die Aktualisierungstoken möglichst lange gültig bleiben.
 
 ## <a name="validating-tokens"></a>Überprüfen von Token
+
 Zum aktuellen Zeitpunkt müssen Ihre Apps nur ID-Token überprüfen. Zur Überprüfung eines ID-Tokens muss Ihre App sowohl die Signatur des ID-Tokens als auch die Ansprüche im ID-Token überprüfen.
 
 <!-- TODO: Link --> Microsoft bietet Bibliotheken und Codebeispiele, die zeigen, wie die Tokenüberprüfung problemlos ausgeführt werden kann. In den nächsten Abschnitten wird der zugrunde liegende Prozess beschrieben. Einige Drittanbieter-Open-Source-Bibliotheken sind auch für die JWT-Überprüfung verfügbar. Es gibt mindestens eine Bibliotheksoption für nahezu jede Plattform und Sprache.
 
 ### <a name="validate-the-signature"></a>Überprüfen der Signatur
+
 Ein JWT enthält drei Segmente, die durch das Zeichen `.` getrennt sind. Das erste Segment wird als *Header*, das zweite als *Text* und das dritte als *Signatur* bezeichnet. Mit dem Signatursegment kann die Authentizität des ID-Tokens überprüft werden, sodass es für Ihre App als vertrauenswürdig eingestuft werden kann.
 
 ID-Token werden mit branchenüblichen asymmetrischen Verschlüsselungsalgorithmen wie etwa RSA 256 signiert. Der Header des ID-Tokens enthält Informationen zum Schlüssel und zur Verschlüsselungsmethode, die zum Signieren des Tokens verwendet wird. Beispiel: 
@@ -131,6 +135,7 @@ Bei diesem Metadatendokument handelt es sich um ein JSON-Objekt, das zahlreiche 
 Die Signaturüberprüfung geht über den Rahmen dieses Dokuments hinaus. Hilfreiche Informationen stehen jedoch in zahlreichen Open Source-Bibliotheken zur Verfügung.
 
 ### <a name="validate-the-claims"></a>Überprüfen der Ansprüche
+
 Wenn Ihre App bei der Benutzeranmeldung ein ID-Token empfängt, sollte sie auch die Ansprüche im ID-Token überprüfen. Dazu gehören unter anderem folgende Ansprüche:
 
 * Anspruch **audience** (Zielgruppe): zum Überprüfen, ob das ID-Token an Ihre App übergeben werden sollte
@@ -143,6 +148,7 @@ Eine vollständige Liste der Anspruchsüberprüfungen, die von Ihrer App ausgef�
 Details zu den erwarteten Werten für diese Ansprüche finden Sie oben im Abschnitt zu den [ID-Token](# ID tokens).
 
 ## <a name="token-lifetimes"></a>Tokengültigkeitsdauer
+
 Die folgenden Tokengültigkeitsdauern werden nur zu Informationszwecken angegeben. Diese Informationen können Sie beim Entwickeln und Debuggen von Apps unterstützen. Beim Schreiben Ihrer Apps darf nicht davon ausgegangen werden, dass die Gültigkeitsdauer konstant bleibt. Die Gültigkeitsdauer von Token kann und wird sich zu einem beliebigen Zeitpunkt ändern.
 
 | Tokenverschlüsselung | Gültigkeitsdauer | BESCHREIBUNG |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 18d9a2dade271e61fa3db423da610a7f982aa47b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42139952"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949671"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Erstellen einer VM-Skalierungsgruppe, die Verfügbarkeitszonen verwendet
 
@@ -65,7 +65,7 @@ Wenn Sie eine Skalierungsgruppe in einer einzelnen Zone erstellen, können Sie s
 Damit Verfügbarkeitszonen verwendet werden können, muss Ihre Skalierungsgruppe in einer [unterstützten Azure-Region](../availability-zones/az-overview.md#regions-that-support-availability-zones) erstellt werden. Sie können mit einer der folgenden Methoden eine Skalierungsgruppe erstellen, die Verfügbarkeitszonen verwendet:
 
 - [Azure-Portal](#use-the-azure-portal)
-- [Azure CLI 2.0](#use-the-azure-cli-20)
+- [Azure-CLI](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure-Ressourcen-Manager-Vorlagen](#use-azure-resource-manager-templates)
 
@@ -77,7 +77,7 @@ Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone ver
 
 Die Skalierungsgruppe und die unterstützenden Ressourcen, wie etwa der Azure Load Balancer und die öffentliche IP-Adresse, werden in der von Ihnen angegebenen einzelnen Zone erstellt.
 
-## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
 Der Erstellungsprozess einer Skalierungsgruppe, die eine Verfügbarkeitszone verwendet, ist der gleiche, der im [Artikel „Erste Schritte“](quick-create-cli.md) ausführlich beschrieben wird. Damit Verfügbarkeitszonen verwendet werden können, müssen Sie Ihre Skalierungsgruppe in einer unterstützten Azure-Region erstellen.
 

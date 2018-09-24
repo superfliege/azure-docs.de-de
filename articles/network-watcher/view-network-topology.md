@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 1725a3d6a4eb82ca57078f648efa14866d2fe390
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e5e9901d6265b48a7b57cdf2c146ebb623ad5c3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "35771127"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992201"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Anzeigen der Topologie eines virtuellen Azure-Netzwerks
 
@@ -52,7 +52,7 @@ Die im Diagramm dargestellten Ressourcen sind eine Teilmenge der Netzwerkkompone
 
 Sie können die Befehle in den einzelnen Schritten folgendermaßen ausführen:
 - In Azure Cloud Shell durch Auswählen von **Try It** (Ausprobieren) rechts oben vom jeweiligen Befehl. Azure Cloud Shell ist eine kostenlose interaktive Shell, in der häufig verwendete Azure-Tools vorinstalliert sind und die für die Verwendung mit Ihrem Konto konfiguriert wurde.
-- Durch Ausführen der Befehlszeilenschnittstelle auf Ihrem Computer. Wenn Sie die Befehlszeilenschnittstelle auf Ihrem Computer ausführen, ist für die Schritte in diesem Artikel mindestens Version 2.0.31 von Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+- Durch Ausführen der Befehlszeilenschnittstelle auf Ihrem Computer. Wenn Sie die Befehlszeilenschnittstelle auf Ihrem Computer ausführen, ist für die Schritte in diesem Artikel mindestens Version 2.0.31 von Azure CLI erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Das verwendete Konto muss über die erforderlichen [Berechtigungen](required-rbac-permissions.md) verfügen.
 

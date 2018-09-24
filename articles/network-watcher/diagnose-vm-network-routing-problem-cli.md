@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 15fb39a74047bdeffed0076501f0129eb00de4e8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 8b881e51bfac25b83a828ad1f44fcd6d7da1c791
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443322"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948048"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostizieren eines Netzwerkroutingproblems eines virtuellen Computers – Azure CLI
 
@@ -32,7 +32,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.28 der Azure CLI ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Führen Sie nach der Überprüfung der CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure zu erstellen. Die CLI-Befehle in diesem Artikel sind für die Ausführung in einer Bash-Shell formatiert.
+Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 2.0.28 der Azure CLI ausführen. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Führen Sie nach der Überprüfung der CLI-Version den Befehl `az login` aus, um eine Verbindung mit Azure zu erstellen. Die CLI-Befehle in diesem Artikel sind für die Ausführung in einer Bash-Shell formatiert.
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 

@@ -11,14 +11,19 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ROBOTS: NOINDEX
+ms.openlocfilehash: f74889cdf727bc132723d16df295849769001ce9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578734"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951966"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Verteilte Optimierung von Hyperparametern mit Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 In diesem Szenario wird beschrieben, wie Sie mit Azure Machine Learning Workbench Hyperparameter von Machine Learning-Algorithmen, die die scikit-learn-API implementieren, mit horizontaler Hochskalierung optimieren. Dabei wird erläutert, wie ein Docker-Remotecontainer und ein Spark-Cluster als Ausführungs-Back-End zum Optimieren von Hyperparametern konfiguriert und verwendet werden.
 
@@ -38,7 +43,7 @@ Die Rastersuche unter Verwendung der Kreuzvalidierung kann sehr zeitaufwendig se
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
-* Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstarthandbuch zum Installieren und Erstellen](../service/quickstart-installation.md), um die Workbench zu installieren und Konten zu erstellen.
+* Eine installierte Kopie der [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) nach dem [Schnellstarthandbuch zum Installieren und Erstellen](quickstart-installation.md), um die Workbench zu installieren und Konten zu erstellen.
 * In diesem Szenario wird davon ausgegangen, dass Sie die Azure ML Workbench mit einer lokal installierten Docker-Engine unter Windows 10 oder macOS ausführen. 
 * Um das Szenario mit einem Docker-Remotecontainer auszuführen, stellen Sie die Ubuntu Data Science Virtual Machine (DSVM) bereit. Befolgen Sie dazu die entsprechenden [Anweisungen](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 28 GB Arbeitsspeicher zu verwenden. D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. 
 * Zum Ausführen dieses Szenarios mit einem Spark-Cluster stellen Sie anhand dieser [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) einen Spark HDInsight-Cluster bereit. Wir empfehlen die Verwendung eines Clusters mit der folgenden Konfiguration im Header- und Workerknoten:

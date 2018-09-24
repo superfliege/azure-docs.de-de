@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f6ce43c2d290bacee10e102cc6c382981db9917f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 775d0701f9eeaf7d26a83b814711bea630efb2a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143834"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973761"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Erkennung von biomedizinischen Entitäten unter Verwendung der Team Data Science-Prozessvorlage (TDSP)
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Die Entitätsextraktion ist eine Unteraufgabe der Informationsextraktion (auch bekannt als [Named Entity Recognition (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition) und Entitätsidentifikation). Ziel dieses realen Szenarios ist es, zu verdeutlichen, wie mithilfe von Azure Machine Learning Workbench eine komplexere NLP-Aufgabe (Natural Language Processing, Verarbeitung natürlicher Sprache), z.B. die Extraktion von Entitäten aus unstrukturiertem Text, gelöst werden kann:
 
@@ -95,7 +100,7 @@ Es folgt der Link zum öffentlichen GitHub-Repository des realen Szenarios, das 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 * Ein [Azure-Abonnement](https://azure.microsoft.com/free/)
-* Azure Machine Learning Workbench. Weitere Informationen finden Sie in der [Installationsanweisung](../service/quickstart-installation.md). Derzeit kann Azure Machine Learning Workbench nur unter folgenden Betriebssystemen installiert werden: 
+* Azure Machine Learning Workbench. Weitere Informationen finden Sie in der [Installationsanweisung](quickstart-installation.md). Derzeit kann Azure Machine Learning Workbench nur unter folgenden Betriebssystemen installiert werden: 
     * Windows 10 oder Windows Server 2016
     * macOS Sierra (oder neuer)
 
@@ -118,7 +123,7 @@ Alle erforderlichen Abhängigkeiten sind in der Datei „aml_config/conda_depend
 
 ### <a name="basic-instructions-for-azure-machine-learning-aml-workbench"></a>Allgemeine Anweisungen für Azure Machine Learning (AML) Workbench
 * [Übersicht](../service/overview-what-is-azure-ml.md)
-* [Installation](../service/quickstart-installation.md)
+* [Installation](quickstart-installation.md)
 * [Verwenden von TDSP](how-to-use-tdsp-in-azure-ml.md)
 * [Lesen und Schreiben von Dateien](how-to-read-write-files.md)
 * [Verwenden von Jupyter Notebooks](how-to-use-jupyter-notebooks.md)
