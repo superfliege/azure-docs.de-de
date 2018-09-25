@@ -7,6 +7,7 @@
 #### [Registrierung in Dev Center](./register-dev-center.md) 
 #### [Abrechnungsoptionen für Azure Marketplace](./billing-options-azure-marketplace.md)  
 #### [Zuordnung der Nutzung durch Kunden von Azure-Partnern](./azure-partner-customer-usage-attribution.md)
+#### [Leadverwaltung für Cloud Marketplace](./lead-management-for-cloud-marketplace.md)
 
 ### [Storefronts](./comparing-appsource-azure-marketplace.md)  
 

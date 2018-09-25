@@ -28,7 +28,7 @@ items:
   - name: Erstellen einer App mit mehreren Containern
     href: quickstart-multi-container.md
   expanded: true
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: App mit Datenbank
     items:
@@ -68,6 +68,8 @@ items:
     href: ../azure-web-sites-web-hosting-plans-in-depth-overview.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service-Umgebung
     href: ../environment/intro.md
+  - name: Entwicklerhandbuch für Java
+    href: app-service-linux-java.md
   - name: Eingehende und ausgehende IPs
     href: ../app-service-ip-addresses.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Authentifizierung und Autorisierung
@@ -232,9 +234,9 @@ items:
         href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
         href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 8a48c7dc5994a64141665a310fad58f8b22b9146
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 91086dcfd6f786fd49fc5f8864da292831999286
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172988"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063981"
