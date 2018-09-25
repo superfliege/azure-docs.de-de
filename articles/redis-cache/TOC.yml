@@ -19,7 +19,7 @@ items:
     href: cache-java-get-started.md
   - name: Erstellen einer Python-App
     href: cache-python-get-started.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Verwenden von Caching mit Bestenlisten
     href: cache-web-app-cache-aside-leaderboard.md
@@ -121,6 +121,8 @@ items:
     href: https://docs.microsoft.com/rest/api/redis/
 - name: Ressourcen
   items:
+  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+    href: /learn/browse/?products=azure-redis-cache
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=databases
   - name: Preise
@@ -131,9 +133,9 @@ items:
     href: https://www.youtube.com/results?search_query=azure+redis+cache
   - name: MSDN-Forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecache&filter=alltypes&sort=lastpostdesc
-ms.openlocfilehash: ec4b4b52e500160a6b0d793b4ca9c1dac03c5263
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f4a4b37bd3b864cbf6d60060fecfd5033f14729
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640131"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998405"

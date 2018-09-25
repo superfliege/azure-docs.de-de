@@ -1,36 +1,63 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bec19b959aa2ce99a7237894a50c49666341827b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 460c0708bf51966bd1b6862445a6541436723688
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42440320"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952289"
 documentType: LandingData
-title: Speech-Dienst und SDK (Vorschauversion)
+title: 'Spracherkennungsdienst-SDK: Dokumentation'
 metadata:
-  title: Dokumentation zum Spracherkennungsdienst – Tutorials, Schnellstarts, API-Referenz – Cognitive Services | Microsoft-Dokumentation
+  title: Dokumentation zum Spracherkennungsdienst-SDK – Tutorials, Schnellstarts, API-Referenz – Cognitive Services | Microsoft-Dokumentation
   meta.description: >
     The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications.
 
     Examples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: nitinme
+  manager: cgronlun
   layout: LandingPage
   ms.service: cognitive-services
   ms.component: speech-service
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/16/2018
-  ms.author: nolachar
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
-  description: >
-    Der <a href="overview">Speech-Dienst</a> unterstützt Entwickler über das Speech SDK beim Hinzufügen von Sprachfunktionen zu ihren Apps.
-
-    Enthaltene Features&#58; <i>Spracherkennung</i> (Speech Recognition, SR), <i>Absicht</i>, <i>Übersetzung</i> und <i>Text-zu-Sprache</i> (Text-To-Speech, TTS).
+  description: Erfahren Sie, wie Sie mit dem Spracherkennungsdienst und dem Sprach-SDK Ihren Apps sprachaktivierte Features hinzufügen. Sie können mit dem Sprach-SDK Ihren Apps Funktionen für <i>Sprache-zu-Text</i> (Spracherkennung (Speech Recognition, SR)), <i>Absicht</i>, <i>Übersetzung</i> und <i>Sprachsynthese</i> (Text-to-Speech, TTS) hinzufügen. Der Spracherkennungsdienst verfügt auch über eine REST-API, die mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen beherrscht.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/speech-landing-page-video.png
+      width: 250
+    title: Übersicht zum Spracherkennungsdienst (10:34)
+    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-overview-of-advanced-speech-capabilities/
+    width: 250
 sections:
-- title: SDK-Download und Schnellstart (5 Minuten)
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/speech-service/overview
+      html: <p>Weitere Informationen zum Azure-Spracherkennungsdienst.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Was ist der Spracherkennungsdienst?
+    - href: /azure/cognitive-services/speech-service/get-started
+      html: <p>Erfahren Sie, wie Sie sich kostenlos für den Spracherkennungsdienst registrieren können.</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: Registrieren für den Spracherkennungsdienst
+    - href: /azure/cognitive-services/speech-service/speech-devices-sdk
+      html: <p>Lernen Sie die Referenz zu sprachaktivierter Hardware kennen.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Speech-Geräte-SDK
+- title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
     text: Klicken Sie unten auf den gewünschten Pfeil, um Informationen zum Download, zur Installation und zur Verwendung zu erhalten <img src="media/index/link.jpg" height="15" width="15"></img> .
@@ -48,6 +75,10 @@ sections:
     - image:
         src: media/index/logo_java.jpg
     - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
         src: media/index/logo_rest_sr.svg
     - image:
         src: media/index/logo_rest_tts.svg
@@ -61,12 +92,16 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Windows 10 (x86)
       values:
       - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -79,11 +114,15 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Linux (x86)
       values:
       - href: 
       - href: 
       - href: quickstart-cpp-linux
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -97,6 +136,8 @@ sections:
       - href: quickstart-java-android
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Geräte-SDK (ARM64)
       values:
       - href: 
@@ -106,6 +147,19 @@ sections:
       - href: speech-devices-sdk
       - href: 
       - href: 
+      - href: 
+      - href: 
+    - title: iOS (ARM64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
     - title: Web
       values:
       - href: 
@@ -113,49 +167,51 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: 
+      - href: quickstart-js-browser
       - href: rest-apis
       - href: rest-apis
-- title: 'Speech SDK: Beispiele und Referenz'
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: 'Erfahren Sie, wie Anwendungen unter Verwendung des Spracherkennungsdiensts entwickelt werden:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="speech-to-text-sample.md">Spracherkennung (SR)</a><br/>
+    - html: <a href="intent.md">Absichtserkennung</a><br/>
+    - html: <a href="translation.md">Übersetzung</a>
+- title: Beispiele
+  items:
+  - type: paragraph
+    text: 'Suchen Sie auf Github nach Beispielen für den Spracherkennungsdienst:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">Dienst-SDK-Beispiele</a><br/>
+    - html: <a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">Geräte-SDK-Beispiele</a><br/>
+- title: Verweis
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: Beispiele
+    - title: SDK-Verweis
       html: >
-        &nbsp;&#8226; <a href="speech-to-text-sample.md">Spracherkennung (SR)</a><br/>
+        <p><a href="https://aka.ms/csspeech/csharpref">C#-API (UWP und .NET)</a></p>
 
-        &nbsp;&#8226; <a href="intent.md">Absichtserkennung</a><br/>
+        <p><a href="https://aka.ms/csspeech/cppref">C++-API</a></p>
 
-        &nbsp;&#8226; <a href="translation.md">Übersetzung</a>
-    - title: API-Referenz
+        <p><a href="https://aka.ms/csspeech/javaref">Java-API</a></p>
+
+        <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C-API</a></p>
+
+        <p><a href="https://aka.ms/csspeech/javascript">JavaScript-API</a></p>
+    - title: REST-API
       html: >
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/csharpref">C#-API (UWP und .NET)</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/cppref">C++-API</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/javaref">Java-API</a>
-    - title: Häufig gestellte Fragen
+        <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">REST-API</a></p>
+    - title: PowerShell
       html: >
-        &nbsp;&#8226; <a href="faq-stt">Spracherkennung</a><br/>
-
-        &nbsp;&#8226; <a href="faq-text-to-speech">Sprachsynthese</a><br/>
-
-        &nbsp;&#8226; <a href="https://www.microsoft.com/translator/faq.aspx">Übersetzung</a>
-  - type: paragraph
-    text: Verwenden Sie die Beispiele und die API oben mit Ihrem Abonnementschlüssel (siehe <a href="get-started.md">Kostenloses Testen des Speech-Diensts</a>).
-- title: Anpassen gesprochener Sprache mit Ihren eigenen Daten
-  items:
-  - type: paragraph
-    text: >
-      Mit dem Speech-Dienst können Sie Modelle anpassen, um spezielles Vokabular, laute Umgebungen und verschiedene Sprechweisen abzudecken.<br/>
-
-      &nbsp;&#8226; <a href="how-to-customize-speech-models">Angepasste Spracherkennung</a><br/>
-
-      &nbsp;&#8226; <a href="https://www.microsoft.com/translator/customization.aspx">Angepasste Sprachübersetzung</a><br/>
-
-      &nbsp;&#8226; <a href="https://cris.ai/Home/customvoice">Angepasste Sprachsynthese</a>
-- title: Referenzentwurf für Hardware mit Sprachfunktionen
-  items:
-  - type: paragraph
-    text: Wenn Sie neue Gerätehardware mit Sprachfunktionen entwickeln möchten, sehen Sie sich das Referenzgerät unter <a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Informationen zum Speech-Geräte-SDK (Vorschau)</a> an.
+        <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Befehlszeilenschnittstelle (CLI)
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure-CLI</a></p>

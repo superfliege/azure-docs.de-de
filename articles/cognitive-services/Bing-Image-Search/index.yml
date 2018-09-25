@@ -1,28 +1,49 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 94663fc33c172497c0ff1b129dd557eda0f4344a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: cb9fe97bf1b71731f6d4a09b22cf2fb4d6de47a1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35624289"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965377"
 documentType: LandingData
-title: Dokumentation zur Bing-Bildersuche
+title: Dokumentation zur Bing-Bildersuche-API
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Dokumentation zur Bing-Bildersuche: Tutorials, Schnellstartanleitungen, API-Referenzen | Microsoft-Dokumentation'
+  title: 'Dokumentation zur Bing-Bildersuche-API: Tutorials, Schnellstartanleitungen, API-Referenzen | Microsoft-Dokumentation'
   description: Hier erfahren Sie, wie Sie mit der Bing-Bildersuche-API für Benutzerabfragen relevante Bilder aus dem Web abrufen. In Tutorials wird gezeigt, wie Sie Apps erstellen, die den Dienst nutzen.
   services: cognitive-services
-  author: v-jerkin
-  manager: carolz
+  author: nitinme
+  manager: cgronlun
   ms.service: bing-image-search
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jerkin
+  ms.date: 9/24/2018
+  ms.author: nitinme
 abstract:
   description: Die Bing-Bildersuche-API ähnelt Bing.com/images darin, dass Bilder zurückgegeben werden, die nach Einschätzung von Bing für eine Abfrage des Benutzers relevant sind.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-image-search/overview
+      html: <p>Informationen zur Bing-Bildersuche-API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Was ist die Bing-Bildersuche?
+    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries
+      html: <p>So senden Sie Bildersuchabfragen an Bing</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Bildersuchabfragen
+    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
+      html: <p>Verstehen der Antwort auf die Bildersuche</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Antwort auf die Bildersuche
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
@@ -61,15 +82,27 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-bing-image-search-single-page-app">Einzelseiten-Web-App</a> &#124; <a href="tutorial-bing-image-search-single-page-app-source">Quellcode</a>
-    - html: <a href="tutorial-image-post">Bing-Bildupload für Bildauswertungen</a> &#124; <a href="tutorial-image-post-source">Quellcode</a>
+    - html: <a href="tutorial-bing-image-search-single-page-app">Einzelseiten-Web-App</a>
+    - html: <a href="tutorial-image-post">Bing-Bildupload für Bildauswertungen</a>
+- title: Beispiele
+  items:
+  - type: paragraph
+    text: 'Suchen Sie Beispiele für die Bing-Bildersuche-API:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Image+Search">Codebeispiele</a>
 - title: Verweis
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: APIs
+    - title: REST
       html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference">Bing-Bildersuche-API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference/">Bing-Bildersuche-API v5</p>
     - title: SDKs
       html: <p><a href="sdk.md">SKD für die Bing-Suche</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Befehlszeilenschnittstelle (CLI)
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure-CLI</a></p>

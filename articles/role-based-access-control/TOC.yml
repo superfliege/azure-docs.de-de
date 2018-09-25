@@ -11,7 +11,7 @@ items:
   items:
   - name: Gewähren des Zugriffs für einen Benutzer
     href: quickstart-assign-role-user-portal.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: 'Gewähren des Zugriffs für einen Benutzer: PowerShell'
     href: tutorial-role-assignments-user-powershell.md
@@ -25,6 +25,8 @@ items:
   items:
   - name: Grundlegendes zu Rollendefinitionen
     href: role-definitions.md
+  - name: Grundlegendes zum Verweigern von Zuweisungen
+    href: deny-assignments.md
   - name: Privileged Identity Management (PIM) für RBAC
     href: pim-azure-resource.md
   - name: Bedingter Zugriff für die Azure-Verwaltung
@@ -43,6 +45,10 @@ items:
       href: role-assignments-rest.md
     - name: Vorlage
       href: role-assignments-template.md
+  - name: Zugriff verweigern
+    items:
+    - name: REST-API
+      href: deny-assignments-rest.md
   - name: Benutzerdefinierte Rollen
     href: custom-roles.md
     items:
@@ -74,9 +80,9 @@ items:
     href: /cli/azure/role?view=azure-cli-latest
   - name: REST-API
     href: /rest/api/authorization/
-ms.openlocfilehash: 8159a5eb32e09e1bd5d62a2735196d3f74a73c5f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 8a113e60cd9af0e7f9c0f192bc20ca674c56c0f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204778"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982782"

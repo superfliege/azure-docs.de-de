@@ -21,13 +21,11 @@ items:
   expanded: true
 - name: SDK-Schnellstartanleitungen
   items:
-  - name: Übersicht über SDK-Beispiele
-    href: sdk.md
-  - name: 'Schnellstartanleitung für das SDK für die benutzerdefinierte Suche: C#'
-    href: custom-search-sdk-quickstart.md
-- name: Tutorials
+  - name: C#-SDK-Schnellstartanleitung
+    href: sdk-csharp-quick-start.md
+- name: Lernprogramme
   items:
-  - name: Erstellen einer Webseite für die benutzerdefinierte Suche
+  - name: Erstellen einer benutzerdefinierten Suchwebseite
     href: ./tutorials/custom-search-web-page.md
 - name: Beispiele
   items:
@@ -43,10 +41,12 @@ items:
     href: hosted-ui.md
   - name: Freigeben der benutzerdefinierten Suche
     href: share-your-custom-search.md
+  - name: Abrufen von Bildern aus Ihrer Instanz
+    href: get-images-from-instance.md
+  - name: Abrufen von Videos aus Ihrer Instanz
+    href: get-videos-from-instance.md
   - name: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Vorschlagssuche
     href: define-custom-suggestions.md
-  - name: Abrufen von benutzerdefinierten Vorschlägen
-    href: get-custom-suggestions.md
   - name: Behandeln von Trefferhervorhebungen
     href: hit-highlighting.md
   - name: Aufteilen von Webseiten auf Seiten
@@ -59,6 +59,8 @@ items:
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference
   - name: Bing-API für die benutzerdefinierte Suche – Referenz
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference
+  - name: Bing-API für die benutzerdefinierte Videosuche – Referenz
+    href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference
   - name: Anforderungen für die Verwendung und Anzeige der Bing-Suche-API
     href: use-and-display-requirements.md
 - name: Ressourcen
@@ -83,9 +85,9 @@ items:
     href: endpoint-custom.md
   - name: Unterstützte Länder und Märkte
     href: supported-countries-markets.md
-ms.openlocfilehash: 79e34a3f132a42096e1435d986db2feff421498e
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: 2617e733aaae4a78d064e734ab440a03954930c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35415961"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999663"

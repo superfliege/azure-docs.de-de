@@ -12,16 +12,30 @@ items:
     href: service-fabric-mesh-quickstart-deploy-container.md
   - name: Erstellen und Bereitstellen einer Web-App in Azure Service Fabric Mesh
     href: service-fabric-mesh-quickstart-dotnet-core.md
-- name: Tutorials
+- name: Lernprogramme
   items:
-  - name: Erstellen, Debuggen und Bereitstellen einer Service Fabric Mesh-Web-App mit mehreren Diensten
+  - name: Erstellen und Bereitstellen einer Mesh-App mit Visual Studio
     items:
-    - name: '1: Erstellen einer Service Fabric Mesh-Web-App'
+    - name: 1 – Erstellen einer Mesh-App
       href: service-fabric-mesh-tutorial-create-dotnetcore.md
-    - name: '2: Debuggen einer Service Fabric Mesh-Web-App'
+    - name: 2 – Debuggen einer Mesh-App
       href: service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md
-    - name: '3: Bereitstellen einer Service Fabric Mesh-Web-App'
+    - name: 3 – Bereitstellen einer Mesh-App
       href: service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md
+    - name: 4 – Aktualisieren einer Mesh-App
+      href: service-fabric-mesh-tutorial-upgrade.md
+    - name: 5 – Bereinigen von Mesh-Ressourcen
+      href: service-fabric-mesh-tutorial-cleanup-resources.md
+  - name: Bereitstellen, Skalieren und Aktualisieren einer Service Fabric Mesh-App mithilfe einer Vorlage
+    items:
+    - name: 1 – Bereitstellen einer Service Fabric Mesh-App
+      href: service-fabric-mesh-tutorial-template-deploy-app.md
+    - name: 2 – Skalieren von Diensten in einer Anwendung
+      href: service-fabric-mesh-tutorial-template-scale-services.md
+    - name: 3 – Aktualisieren einer Anwendung
+      href: service-fabric-mesh-tutorial-template-upgrade-app.md
+    - name: 4 – Entfernen einer Anwendung
+      href: service-fabric-mesh-tutorial-template-remove-app.md
 - name: Konzepte
   items:
   - name: Begriff
@@ -68,9 +82,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric-mesh
   - name: Regionale Verfügbarkeit
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: ecaff46dcc0be586cb262a7e8bb49283580d714a
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: aeb4b1581f73523927c7cdc087036c55dacb548f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284442"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997313"

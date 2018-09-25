@@ -8,6 +8,9 @@ items:
   - name: Hadoop-Komponenten in HDInsight
     href: ../hdinsight-component-versioning.md
     maintainContext: true
+  - name: HDInsight 4.0
+    href: ../hdinsight-version-release.md
+    maintainContext: true
 - name: Erste Schritte
   items:
   - name: Einstieg in HBase und NoSQL
@@ -110,7 +113,7 @@ items:
       - name: Verwenden des .NET SDK
         href: ../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
         maintainContext: true
-      - name: Verwenden der Azure-CLI
+      - name: Verwenden der klassischen Azure-Befehlszeilenschnittstelle
         href: ../hdinsight-hadoop-create-linux-clusters-azure-cli.md
         maintainContext: true
       - name: Verwenden des Azure-Portals
@@ -132,7 +135,7 @@ items:
       - name: Mithilfe von Azure PowerShell
         href: ../hdinsight-administer-use-powershell.md
         maintainContext: true
-      - name: Verwenden der Azure-CLI
+      - name: Verwenden der klassischen Azure-Befehlszeilenschnittstelle
         href: ../hdinsight-administer-use-command-line.md
         maintainContext: true
       maintainContext: true
@@ -356,9 +359,9 @@ items:
   - name: Windows-Tools für HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 24bb82902637fcec4b47bf4c62ee8a58a06d901d
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: bec73898983c03cdf5a2b9e4b9806f2790b4c1ed
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434749"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960866"

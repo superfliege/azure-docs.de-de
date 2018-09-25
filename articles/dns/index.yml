@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2ee8284861d62d4405d0f949ee74b1992440b66e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 701bf7db8304189b9348cad1c920f3e5ec1fecf1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184559"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991129"
 documentType: LandingData
 title: Azure DNS-Dokumentation
 metadata:
@@ -48,11 +48,14 @@ sections:
   - type: paragraph
     text: Hier erfahren Sie, wie Sie Ihre Domäne in Azure DNS hosten, mithilfe von Azure DNS benutzerdefinierte DNS-Einträge für eine Web-App generieren sowie eine private DNS-Zone und Einträge erstellen.
   - type: list
-    style: ordered
+    style: unordered
     items:
     - html: <a href="/azure/dns/dns-delegate-domain-azure-dns">Hosten Ihrer Domäne in Azure DNS</a>
     - html: <a href="/azure/dns/dns-web-sites-custom-domain">Erstellen von benutzerdefinierten DNS-Einträgen für eine Web-App</a>
     - html: <a href="/azure/dns/private-dns-getstarted-powershell">Erstellen einer privaten DNS-Zone und eines Eintrags</a>
+    - html: <a href="/azure/dns/tutorial-alias-pip">Konfigurieren eines Aliasdatensatzes zum Verweisen auf eine öffentliche Azure-IP-Adresse</a>
+    - html: <a href="/azure/dns/tutorial-alias-tm">Konfigurieren eines Aliasdatensatzes zur Unterstützung von Apex-Domänennamen mit Traffic Manager</a>
+    - html: <a href="/azure/dns/tutorial-alias-rr">Konfigurieren eines Aliasdatensatzes für Zonendatensätze</a>
 - title: Kostenloses PluralSight-Videotraining
   items:
   - type: list

@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986512"
 documentType: LandingData
-title: Azure Data Box-Dokumentation
+title: Azure Data Box zur Offlineübertragung
 metadata:
-  title: Azure Data Box-Dokumentation
-  description: Der Azure Data Box-Dienst ermöglicht Ihnen das schnelle, kostengünstige und zuverlässige Übertragen von Terabytes an Daten. Microsoft beschleunigt die sichere Datenübertragung durch den Versand von Datenträgern und das Verarbeiten der End-to-End-Logistik.
+  title: Dokumentation zu Azure Data Box zur Offlineübertragung
+  description: Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Verwenden Sie die Data Box-Geräte zur Offlinedatenübertragung bei Einschränkungen hinsichtlich Zeit, Kosten oder Netzwerk.
   services: databox
   author: alkohli
   manager: twooley
@@ -11,36 +17,35 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/10/2018
+  ms.date: 09/24/2018
   ms.author: alkohli
-  ms.openlocfilehash: 5077d0ba77b6bdce99f1dfdf258182980a367b6c
-  ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 07/13/2018
-  ms.locfileid: "39010139"
 abstract:
-  description: 'Der Azure Data Box-Dienst ermöglicht Ihnen das schnelle, kostengünstige und zuverlässige Übertragen von Terabytes an Daten. Microsoft beschleunigt die sichere Datenübertragung durch den Versand von Datenträgern und das Verarbeiten der End-to-End-Logistik.<p>Übertragen Sie große Datenmengen in 4 einfachen Schritten an Azure: Datenträger bestellen, erhalten, Daten darauf kopieren, Datenträger an Azure zurücksenden. Nach dem Erhalt der Datenträger werden die Daten in Azure erfasst und die Datenträger sicher gelöscht.<p><a href="/azure/databox/data-box-disk-overview">Weitere Informationen zu Data Box-Datenträgern</a></p>'
+  description: Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Verwenden Sie die Data Box-Geräte zur Offlinedatenübertragung bei Einschränkungen hinsichtlich Zeit, Kosten oder Netzwerk.<p>Treffen Sie je nach Ihrem Datenvolumen Ihre Wahl aus Data Box Disk, Data Box-<SUP>Vorschau</SUP> oder Data Box Heavy-<SUP>Vorschau</SUP>. Für jedes Gerät erfolgt die Übertragung in Azure in 4 mühelosen Schritten – bestellen, empfangen, Daten auf das Gerät kopieren und Gerät an Azure zurücksenden. Im Azure-Rechenzentrum werden die Daten hochgeladen und anschließend vom Datenträger gelöscht.</p><p>Erfahren Sie aus unseren Schnellstarts und Tutorials, wie Sie Data Box für Ihre Offlinedatenübertragung nutzen können.</p>
 sections:
 - title: Schnellstart
   items:
-  - type: paragraph
-    text: Erfahren Sie, wie Data Box-Datenträger zur Übertragung von Daten an Azure verwendet werden.
   - type: list
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure-Portal
+        src: https://docs.microsoft.com/media/common/i_quick-start.svg
+      text: Einrichten von Data Box im Azure-Portal
+      href: /azure/databox/data-box-quickstart-portal
+    - image:
+        src: https://docs.microsoft.com/media/common/i_quick-start.svg
+      text: Einrichten von Data Box Disk-<SUP>Vorschau</SUP> im Azure-Portal
       href: /azure/databox/data-box-disk-quickstart-portal
-- title: Schrittweises Tutorial
+    - image:
+        src: https://docs.microsoft.com/media/common/i_quick-start.svg
+      text: Registrieren für Data Box Heavy-<SUP>Vorschau</SUP>
+      href: /azure/databox/data-box-heavy-overview#sign-up
+- title: Lernprogramme
   items:
-  - type: paragraph
-    text: Erfahren Sie, wie Sie mit Data Box-Datenträgern Daten in Azure importieren.
   - type: list
-    style: ordered
+    style: cards
+    className: cardsD
     items:
-    - html: <a href="data-box-disk-deploy-ordered">Data Box-Datenträger bestellen</a>
-    - html: <a href="data-box-disk-deploy-set-up">Data Box-Datenträger einrichten</a>
-    - html: <a href="data-box-disk-deploy-copy-data">Daten auf Data Box-Datenträger kopieren</a>
-    - html: <a href="data-box-disk-deploy-picked-up">Data Box-Datenträger zurücksenden und Daten in Azure hochladen</a>
+    - title: Für Data Box
+      html: <p><a href="/azure/databox/data-box-deploy-ordered">Bestellen von Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-set-up">Verkabeln und Herstellen einer Verbindung mit Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-copy-data">Kopieren von Daten auf Azure Data Box</a></p><p><a href="/azure/databox/data-box-deploy-picked-up">Zurücksenden von Azure Data Box und Überprüfen des Hochladens</a></p>
+    - title: Für Data Box Disk-<SUP>Vorschau</SUP>
+      html: <p><a href="/azure/databox/data-box-disk-deploy-ordered">Bestellen von Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-set-up">Auspacken, Verbinden und Entsperren von Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-copy-data">Kopieren von Daten auf Azure Data Box Disk</a></p><p><a href="/azure/databox/data-box-disk-deploy-picked-up">Zurücksenden von Azure Data Box Disk und Überprüfen des Hochladens</a></p>
