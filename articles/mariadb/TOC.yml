@@ -1,0 +1,122 @@
+items:
+- name: Azure DB for MariaDB – Dokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+  - name: Azure DB for MariaDB
+    href: overview.md
+- name: Schnellstarts
+  items:
+  - name: Erstellen einer Datenbank – Portal
+    href: quickstart-create-mariadb-server-database-using-azure-portal.md
+  - name: Erstellen einer Datenbank – Azure-CLI
+    href: quickstart-create-mariadb-server-database-using-azure-cli.md
+  - name: Verbinden und abfragen
+    items:
+    - name: MySQL Workbench
+      href: connect-workbench.md
+  expanded: true
+- name: Lernprogramme
+  items:
+  - name: '1: Erstellen einer Datenbank'
+    items:
+    - name: Azure-Portal
+      href: tutorial-design-database-using-portal.md
+- name: Konzepte
+  items:
+  - name: Datenbank und Server
+    items:
+    - name: Server
+      href: concepts-servers.md
+    - name: Unterstützte Versionen
+      href: concepts-supported-versions.md
+    - name: Serverprotokolle
+      href: concepts-server-logs.md
+    - name: Hochverfügbarkeit
+      href: concepts-high-availability.md
+  - name: Ressourcen
+    items:
+    - name: Tarife
+      href: concepts-pricing-tiers.md
+    - name: Einschränkungen
+      href: concepts-limits.md
+  - name: Datenzugriff und Sicherheit
+    items:
+    - name: Firewallregeln
+      href: concepts-firewall-rules.md
+    - name: Konfigurieren von SSL
+      href: concepts-ssl-connection-security.md
+  - name: Geschäftskontinuität
+    items:
+    - name: Übersicht
+      href: concepts-business-continuity.md
+    - name: Sichern und Wiederherstellen
+      href: concepts-backup.md
+  - name: Replikation
+    items:
+    - name: Replikation eingehender Daten
+      href: concepts-data-in-replication.md
+- name: Anleitungen
+  items:
+  - name: Firewallregeln
+    items:
+    - name: Azure-Portal
+      href: howto-manage-firewall-portal.md
+  - name: Wiederherstellen eines Servers
+    items:
+    - name: Azure-Portal
+      href: howto-restore-server-portal.md
+  - name: Migrieren einer Datenbank
+    items:
+    - name: Sicherung und Wiederherstellung
+      href: howto-migrate-dump-restore.md
+  - name: Herstellen einer Verbindung mit Anwendungen
+    items:
+    - name: Erstellen von Benutzern
+      href: howto-create-users.md
+    - name: Verbindungszeichenfolgen
+      href: howto-connection-string.md
+    - name: Konfigurieren von SSL
+      href: howto-configure-ssl.md
+  - name: Konfigurieren von Serverparametern
+    items:
+    - name: Azure-Portal
+      href: howto-server-parameters.md
+  - name: Zugreifen auf Serverprotokolle
+    items:
+    - name: Azure-Portal
+      href: howto-configure-server-logs-portal.md
+  - name: Replikation
+    items:
+    - name: Konfigurieren der Replikation eingehender Daten
+      href: howto-data-in-replication.md
+- name: Verweis
+  items:
+  - name: REST-API
+    href: /rest/api/mariadb
+  - name: Gespeicherte Prozeduren für die Replikation eingehender Daten
+    href: reference-data-in-stored-procedures.md
+- name: Ressourcen
+  items:
+  - name: Bereitstellungsvorlagen
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/mariadb/
+  - name: MSDN-Forum
+    href: https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-database-mariadb
+  - name: Anfordern eines Features
+    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+  - name: Regionale Verfügbarkeit
+    href: https://azure.microsoft.com/regions/services/
+  - name: Supportoptionen
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: a1b24ca3800866f00a97647d59e1f7353a0bdcc9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958491"

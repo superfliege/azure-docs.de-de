@@ -14,7 +14,7 @@ items:
   - name: Erstellen eines virtuellen Netzwerks – Azure CLI
     href: quick-create-cli.md
   expanded: true
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Filtern des Netzwerkdatenverkehrs
     href: tutorial-filter-network-traffic.md
@@ -42,16 +42,22 @@ items:
     href: virtual-networks-udr-overview.md
   - name: Dienstendpunkte
     href: virtual-network-service-endpoints-overview.md
+  - name: Dienstendpunkt-Richtlinien
+    href: virtual-network-service-endpoint-policies-overview.md
   - name: Peering
     href: virtual-network-peering-overview.md
+  - name: Virtual Network TAP
+    href: virtual-network-tap-overview.md
   - name: Dienste für virtuelle Netzwerke in Azure
     href: virtual-network-for-azure-services.md
   - name: Containernetzwerke
-    href: ../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+    href: container-networking-overview.md
   - name: Geschäftskontinuität
     href: virtual-network-disaster-recovery-guidance.md
   - name: IP-Adressierung
     href: virtual-network-ip-addresses-overview-arm.md
+  - name: Präfix für öffentliche IP-Adressen
+    href: public-ip-address-prefix.md
   - name: DDoS-Schutz
     href: ddos-protection-overview.md
   - name: Klassisch
@@ -86,6 +92,8 @@ items:
         href: tutorial-restrict-network-access-to-resources-powershell.md
       - name: Azure-Befehlszeilenschnittstelle
         href: tutorial-restrict-network-access-to-resources-cli.md
+    - name: Dienstendpunkt-Richtlinien – Portal
+      href: virtual-network-service-endpoint-policies-portal.md
     - name: Peering in virtuellen Netzwerken
       items:
       - name: Gleiches Bereitstellungsmodell – gleiches Abonnement
@@ -100,6 +108,12 @@ items:
         href: create-peering-different-deployment-models.md
       - name: Andere Bereitstellungsmodelle – andere Abonnements
         href: create-peering-different-deployment-models-subscriptions.md
+    - name: Virtual Network TAP
+      items:
+      - name: Azure-Befehlszeilenschnittstelle
+        href: tutorial-tap-virtual-network-cli.md
+    - name: Containernetzwerke
+      href: deploy-container-networking.md
     - name: Virtuelle Computer
       items:
       - name: Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse
@@ -201,6 +215,8 @@ items:
         href: virtual-network-network-interface-addresses.md
     - name: Öffentliche IP-Adressen
       href: virtual-network-public-ip-address.md
+    - name: Präfix für öffentliche IP-Adressen
+      href: manage-public-ip-address-prefix.md
   - name: Problembehandlung
     items:
     - name: Netzwerksicherheitsgruppen
@@ -244,7 +260,7 @@ items:
       items:
       - name: Azure PowerShell
         href: virtual-networks-create-nsg-classic-ps.md
-      - name: Azure-Befehlszeilenschnittstelle 1.0
+      - name: Klassische Azure-Befehlszeilenschnittstelle
         href: virtual-networks-create-nsg-classic-cli.md
     - name: Erstellen einer Routingtabelle
       items:
@@ -311,6 +327,8 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=virtual-network
 - name: Ressourcen
   items:
+  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+    href: /learn/browse/
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/?category=networking
   - name: Netzwerkblog
@@ -325,9 +343,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-virtual-network
   - name: Häufig gestellte Fragen
     href: virtual-networks-faq.md
-ms.openlocfilehash: 75964613a93503c20410ba9c79012e119f617445
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 7e6f0ac46a45e0b429572b870ca0ab657c2628c6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503358"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989888"

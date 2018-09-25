@@ -29,7 +29,7 @@ items:
     href: quickstart-control-device-java.md
   - name: Steuern eines Geräts (Python)
     href: quickstart-control-device-python.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Weiterleiten von Nachrichten
     href: tutorial-routing.md
@@ -69,18 +69,21 @@ items:
     - name: Senden und Empfangen von Nachrichten
       href: iot-hub-devguide-messaging.md
       items:
-      - name: Senden von D2C-Nachrichten an IoT Hub
+      - name: Verwenden der Nachrichtenweiterleitung zum Senden von D2C-Nachrichten
         href: iot-hub-devguide-messages-d2c.md
-      - name: Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
-        href: iot-hub-devguide-messages-read-builtin.md
+        items:
+        - name: Erstellen und Lesen von IoT Hub-Nachrichten
+          href: iot-hub-devguide-messages-construct.md
+        - name: Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
+          href: iot-hub-devguide-messages-read-builtin.md
+        - name: Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten
+          href: iot-hub-devguide-messages-read-custom.md
+        - name: Hinzufügen von Abfragen zu Nachrichtenrouten
+          href: iot-hub-devguide-routing-query-syntax.md
       - name: Reagieren auf IoT Hub-Ereignisse
         href: iot-hub-event-grid.md
-      - name: Verwenden von benutzerdefinierten Endpunkten und Routingregeln für D2C-Nachrichten
-        href: iot-hub-devguide-messages-read-custom.md
       - name: Senden von C2D-Nachrichten von IoT Hub
         href: iot-hub-devguide-messages-c2d.md
-      - name: Erstellen und Lesen von IoT Hub-Nachrichten
-        href: iot-hub-devguide-messages-construct.md
       - name: Auswählen eines Kommunikationsprotokolls
         href: iot-hub-devguide-protocols.md
     - name: Hochladen von Dateien von einem Gerät
@@ -305,8 +308,6 @@ items:
       items:
       - name: Verwalten von Cloud-zu-Gerät-Nachrichten mit Azure IoT Toolkit für VS Code
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
-      - name: Speichern von IoT Hub-Nachrichten in Azure Blob Storage
-        href: iot-hub-store-data-in-azure-table-storage.md
       - name: Datenvisualisierung in Power BI
         href: iot-hub-live-data-visualization-in-power-bi.md
       - name: Datenvisualisierung mit Web-Apps
@@ -315,7 +316,7 @@ items:
         href: iot-hub-weather-forecast-machine-learning.md
       - name: Geräteverwaltung mit Azure IoT Toolkit für VS Code
         href: iot-hub-device-management-iot-toolkit.md
-      - name: Geräteverwaltung mit IoT-Erweiterung für Azure CLI 2.0
+      - name: Geräteverwaltung mit IoT-Erweiterung für Azure CLI
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: Remoteüberwachung und Benachrichtigungen mit Logic Apps
         href: iot-hub-monitoring-notifications-with-azure-logic-apps.md
@@ -419,9 +420,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 20d59ad7f529c8c191a8149272a851f46684561e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 57ffc64e9c644e27f24ada67366f820708860660
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629918"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064131"

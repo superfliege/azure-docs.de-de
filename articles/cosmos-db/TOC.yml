@@ -15,8 +15,6 @@ items:
       href: create-sql-api-java.md
     - name: Node.js
       href: create-sql-api-nodejs.md
-    - name: 'Node.js: v2-Vorschau'
-      href: create-sql-api-nodejs-preview.md
     - name: Python
       href: create-sql-api-python.md
     - name: Xamarin
@@ -76,6 +74,17 @@ items:
     href: sql-api-resources.md
   - name: Globale Verteilung
     href: distribute-data-globally.md
+    items:
+    - name: Hauptvorteile
+      href: distribute-data-globally-benefits.md
+    - name: Aktivieren der globalen Verteilung
+      href: distribute-data-globally-turnkey.md
+    - name: Aktivieren von Multimaster
+      href: enable-multi-master.md
+    - name: Multimaster mit OSS-NoSQL-Datenbanken
+      href: multi-master-oss-nosql.md
+    - name: Konfliktlösung
+      href: multi-master-conflict-resolution.md
   - name: Throughput
     href: request-units.md
     items:
@@ -87,11 +96,6 @@ items:
     href: indexing-policies.md
   - name: Konsistenzmodelle
     href: consistency-levels.md
-  - name: Mehrere Master
-    href: multi-region-writers.md
-    items:
-    - name: Einrichtung mit mehreren Mastern
-      href: multi-master-workaround.md
   - name: Änderungsfeed
     href: change-feed.md
   - name: Gültigkeitsdauer
@@ -111,6 +115,8 @@ items:
       href: vnet-service-endpoint.md
     - name: Unterstützung für Schlüsseltresore
       href: access-secrets-from-keyvault.md
+  - name: Vorauszahlen für eine reservierte Kapazität
+    href: cosmos-db-reserved-capacity.md
   - name: Sichern und Wiederherstellen
     href: online-backup-and-restore.md
   - name: Hochverfügbarkeit
@@ -125,7 +131,7 @@ items:
       href: sql-api-sql-query.md
     - name: Modelldokumentdaten
       href: modeling-data.md
-    - name: Tutorials
+    - name: Lernprogramme
       items:
       - name: '1: Erstellen eines Kontos'
         items:
@@ -141,8 +147,6 @@ items:
             href: sql-api-async-java-get-started.md
           - name: Node.js
             href: sql-api-nodejs-get-started.md
-          - name: 'Node.js: v2-Vorschau'
-            href: sql-api-nodejs-get-started-preview.md
         - name: Erstellen einer Web-App
           items:
           - name: .NET
@@ -151,10 +155,6 @@ items:
             href: sql-api-java-application.md
           - name: Node.js
             href: sql-api-nodejs-application.md
-          - name: 'Node.js: v2-Vorschau'
-            href: sql-api-nodejs-application-preview.md
-          - name: Python
-            href: sql-api-python-application.md
           - name: Xamarin
             href: mobile-apps-with-xamarin.md
       - name: 2. Migrieren von Daten
@@ -173,8 +173,6 @@ items:
         href: sql-api-async-java-samples.md
       - name: Beispiele für Node.js
         href: sql-api-nodejs-samples.md
-      - name: 'Node.js: v2-Vorschaubeispiele'
-        href: sql-api-nodejs-samples-preview.md
       - name: Python-Beispiele
         href: sql-api-python-samples.md
       - name: PowerShell
@@ -225,7 +223,7 @@ items:
       href: mongodb-introduction.md
     - name: MongoDB-Unterstützung
       href: mongodb-feature-support.md
-    - name: Tutorials
+    - name: Lernprogramme
       items:
       - name: '1: Erstellen eines Kontos'
         items:
@@ -275,7 +273,7 @@ items:
       href: graph-introduction.md
     - name: Gremlin-Unterstützung
       href: gremlin-support.md
-    - name: Tutorials
+    - name: Lernprogramme
       items:
       - name: 1. Abfragen von Daten
         href: tutorial-query-graph.md
@@ -287,17 +285,45 @@ items:
     items:
     - name: Einführung
       href: cassandra-introduction.md
-    - name: Tutorials
+    - name: Cassandra-Unterstützung
+      href: cassandra-support.md
+    - name: Lernprogramme
       items:
-      - name: '1: Erstellen eines Kontos'
-        href: tutorial-develop-cassandra-java.md
-      - name: 2. Migrieren von Daten
+      - name: '1: Erstellen eines Kontos und einer Datenbank'
+        href: create-cassandra-api-account-java.md
+      - name: '2: Laden von Daten'
+        href: cassandra-api-load-data.md
+      - name: 3. Abfragen von Daten
+        href: cassandra-api-query-data.md
+      - name: '4: Migrieren von Daten'
         href: cassandra-import-data.md
+    - name: Cassandra und Spark
+      items:
+      - name: Einführung
+        href: cassandra-spark-generic.md
+      - name: Herstellen einer Verbindung mit Databricks
+        href: cassandra-spark-databricks.md
+      - name: Herstellen einer Verbindung mit HDInsight
+        href: cassandra-spark-hdinsight.md
+      - name: Erstellen eines Keyspace und einer Tabelle
+        href: cassandra-spark-ddl-ops.md
+      - name: Einfügen von Daten
+        href: cassandra-spark-create-ops.md
+      - name: Lesen von Daten
+        href: cassandra-spark-read-ops.md
+      - name: Durchführen von Upsert für Daten
+        href: cassandra-spark-upsert-ops.md
+      - name: Löschen von Daten
+        href: cassandra-spark-delete-ops.md
+      - name: Aggregationsvorgänge
+        href: cassandra-spark-aggregation-ops.md
+      - name: Kopieren von Tabellendaten
+        href: cassandra-spark-table-copy-ops.md
   - name: Tabellen-API-Dokumentation
     items:
     - name: Einführung
       href: table-introduction.md
-    - name: Tutorials
+    - name: Lernprogramme
       items:
       - name: '1: Erstellen eines Kontos'
         href: tutorial-develop-table-dotnet.md
@@ -438,6 +464,8 @@ items:
       href: bulk-executor-java.md
 - name: Ressourcen
   items:
+  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+    href: /learn/browse/?products=azure-cosmos-db
   - name: Cheat Sheet für die Abfrage
     href: query-cheat-sheet.md
   - name: Arbeiten mit SQL
@@ -460,9 +488,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: 2bc1fcfab7399cc52500b832721e7ca7509758fd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 8d217ae35c38017061bbb1fb96d09de5928b2205
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737276"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042311"

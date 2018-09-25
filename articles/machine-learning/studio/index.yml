@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bd9988925b3c9a253d8c7e4632fea303a070fe38
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: d7c8e534095da9144cb72c11a162af93699eb013
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782862"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957930"
 documentType: LandingData
 title: Azure Machine Learning Studio-Dokumentation
 metadata:
@@ -18,11 +18,21 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
+  ms.date: 09/24/2018
   ms.author: jmartens
 abstract:
   description: Azure Machine Learning Studio ist ein Tool für die Zusammenarbeit per Drag & Drop, mit der Sie Lösungen für Vorhersageanalysen erstellen, testen und bereitstellen können, die mit Ihren Daten arbeiten. Anhand von Tutorials, Videos und Beispielmodellen wird gezeigt, wie Sie Machine Learning-Modelle mit Studio erstellen und bereitstellen.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsB
+    columns: 1
+    items:
+    - html: <p>Beginnen Sie mit dem Erstellen und Bereitstellen von Modellen über die Drag & Drop-Benutzeroberfläche von Studio.</p>
+      image:
+        src: /azure/machine-learning/media/index/machine-learning-studio.svg
+      title: Azure Machine Learning Studio
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
@@ -51,7 +61,7 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: Azure Machine Learning-Dienste (Vorschauversion)
+    - title: Azure Machine Learning-Dienst (Vorschauversion)
       href: /azure/machine-learning/service/
       image:
         src: media/index/i_machine-learning.svg

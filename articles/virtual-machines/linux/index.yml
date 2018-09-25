@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 078da85f8ad4addd23a35b456a49d5a8248fc59b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cfe8611def427577cb000efe0e7c0568193aa4f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294373"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993441"
 documentType: LandingData
 title: Virtuelle Linux-Computer
 metadata:
@@ -74,6 +74,24 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">CI/CD mit Azure Pipelines</a>
     - html: Erstellen eines Webserverstapels mit <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> oder <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Sichern eines Webservers mit SSL</a>
+- title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: " Erstellen eines virtuellen Linux-Computers in Azure"
+      href: /learn/modules/create-linux-virtual-machine-in-azure/
+      image:
+        src: /learn/achievements/create-linux-virtual-machine-in-azure.svg
+        href: /learn/modules/create-linux-virtual-machine-in-azure/
+    - title: Erstellen und Ausführen einer Webanwendung mit dem MEAN-Stapel auf einem virtuellen Azure Linux-Computer
+      href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
+      image:
+        src: /learn/achievements/build-a-web-app-with-mean-on-a-linux-vm.svg
+        href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-virtual-machines">Mehr interaktives Lernen...</a>
 - title: Kostenloses PluralSight-Videotraining
   items:
   - type: list
