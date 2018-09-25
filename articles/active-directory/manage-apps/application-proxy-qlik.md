@@ -51,8 +51,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 ### <a name="application-2"></a>Anwendung 2: 
 Führen Sie die gleichen Schritte aus wie für Anwendung 1 – mit folgenden Ausnahmen: 
 
-**Schritt 5**: Die interne URL sollte jetzt die QlikSense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Die Standardeinstellung ist **4244** für HTTPS und 4248 für HTTP. Beispiel: **https&#58;//demo.qlik.com:4244**</br></br> 
-**Schritt 10:** Richten Sie nicht SSO ein, und lassen Sie das **einmalige Anmelden deaktiviert**
+**Schritt 5**: Die interne URL sollte jetzt die QlikSense-URL mit dem von der Anwendung verwendeten Authentifizierungsport sein. Die Standardeinstellung ist **4244** für HTTPS und 4248 für HTTP. Beispiel: **https&#58;//demo.qlik.com:4244**</br></br>**Schritt 10:** Richten Sie nicht SSO ein, und lassen Sie das **einmalige Anmelden deaktiviert**
  
  
 ## <a name="testing"></a>Testen 
