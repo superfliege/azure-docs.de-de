@@ -50,7 +50,7 @@ Ausführliche Anweisungen finden Sie unter [Konfigurieren von Azure Key Vault-Fi
 > [!NOTE]
 > * Maximal 127 VNET-Regeln und 127 IPv4-Regeln sind zulässig. 
 > * Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt. Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden.
-> * IP-Netzwerkregeln sind nur für öffentliche IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (gemäß RFC 1918) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit *10.**, *172.16.** und *192.168.** beginnen. 
+> * IP-Netzwerkregeln sind nur für öffentliche IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (gemäß RFC 1918) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit *10.**, *172.16.**, und *192.168.** beginnen. 
 > * Derzeit werden nur IPv4-Adressen unterstützt.
 
 ## <a name="trusted-services"></a>Vertrauenswürdige Dienste
