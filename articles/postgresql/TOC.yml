@@ -28,7 +28,7 @@ items:
     - name: Go
       href: connect-go.md
   expanded: true
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: '1: Erstellen einer Datenbank'
     items:
@@ -38,6 +38,8 @@ items:
       href: tutorial-design-database-using-azure-cli.md
   - name: '2: Erstellen einer Web-App – Python'
     href: ../app-service-web/app-service-web-tutorial-docker-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
+  - name: '3: Überwachen und Optimieren'
+    href: tutorial-monitor-and-tune.md
 - name: Beispiele
   items:
   - name: Azure-Befehlszeilenschnittstelle
@@ -68,6 +70,8 @@ items:
       href: concepts-firewall-rules.md
     - name: Konfigurieren von SSL
       href: concepts-ssl-connection-security.md
+    - name: Erweiterter Schutz vor Bedrohungen
+      href: concepts-data-access-and-security-threat-protection.md
     - name: VNet
       href: concepts-data-access-and-security-vnet.md
   - name: Geschäftskontinuität
@@ -76,8 +80,22 @@ items:
       href: concepts-business-continuity.md
     - name: Sichern und Wiederherstellen
       href: concepts-backup.md
-  - name: Überwachen
-    href: concepts-monitoring.md
+  - name: Überwachen und Optimieren
+    items:
+    - name: Überwachen und Optimieren
+      href: concepts-monitoring.md
+    - name: Abfragespeicher
+      items:
+      - name: Abfragespeicher
+        href: concepts-query-store.md
+      - name: Verwendungsszenarien für den Abfragespeicher
+        href: concepts-query-store-scenarios.md
+      - name: Bewährte Methoden für den Abfragespeicher
+        href: concepts-query-store-best-practices.md
+    - name: Query Performance Insight
+      href: concepts-query-performance-insight.md
+    - name: Empfehlungen zur Leistung
+      href: concepts-performance-recommendations.md
   - name: Entwicklung
     items:
     - name: Verbindungsbibliotheken
@@ -122,6 +140,10 @@ items:
     items:
     - name: Erstellen von Warnungen zu Metriken
       href: howto-alert-on-metric.md
+  - name: Erweiterter Schutz vor Bedrohungen
+    items:
+    - name: Azure-Portal
+      href: howto-database-threat-protection-portal.md
   - name: Virtual Network
     items:
     - name: Azure-Portal
@@ -136,6 +158,8 @@ items:
     href: /rest/api/postgresql
 - name: Ressourcen
   items:
+  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+    href: /learn/browse/
   - name: Bereitstellungsvorlagen
     href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql
   - name: Azure-Roadmap
@@ -174,9 +198,9 @@ items:
     href: partners-migration-postgresql.md
   - name: Leitfaden zur Datenbankmigration
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: f806229680b9e1c425bed4b87e67b0f03dce208e
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 21bcff530d362451133ab983dfcd4d32591457bf
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301181"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033869"

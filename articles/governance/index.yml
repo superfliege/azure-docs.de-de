@@ -1,0 +1,79 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: b2ee21b77fc3bb26a1ca449ede198f8873a090c0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036846"
+documentType: LandingData
+title: Azure-Verwaltung – Governance
+metadata:
+  title: Azure-Verwaltung – Governance
+  description: Enthält Informationen zu den Konzepten und Azure-Diensten, die für die Verwaltung Ihrer Umgebung auf einheitliche Weise und mit explizitem Design und Regeln verfügbar sind, sowie zur Überwachung der Konformität.
+  services: governance
+  author: DCtheGeek
+  manager: carmonm
+  ms.service: governance
+  ms.topic: landing-page
+  ms.date: 09/18/2018
+  ms.author: dacoulte
+abstract:
+  description: Azure Governance ist eine Sammlung mit Konzepten und Diensten, die für die bedarfsabhängige Verwaltung Ihrer unterschiedlichen Azure-Ressourcen konzipiert sind. Diese Dienste ermöglichen es Ihnen, Ihre Abonnements auf logische Weise zu organisieren und zu strukturieren, wiederverwendbare und native Azure-Pakete mit Ressourcen zu erstellen und bereitzustellen, Ihre Ressourcen zu definieren, zu überwachen und Probleme dafür zu lösen und mehr. Verwenden Sie diese Seite, um mehr zu diesen Konzepten und Diensten und zu deren Aktivierung und Verwendung in Ihrer aktuellen Umgebung zu erfahren.
+  aside:
+    image:
+      alt: 
+      height: 225
+      src: ./media/video.png
+      width: 250
+    title: Geschwindigkeit und Kontrolle über Ressourcen mit Azure Governance (1:47)
+    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
+    width: 250
+sections:
+- title: Komponenten und Dienste
+- items:
+  - type: list
+    style: cards
+    className: cardsD
+    columns: 2
+    items:
+    - href: ./management-groups/overview
+      html: <p>Enthält Informationen zum Gruppieren und Organisieren Ihrer Abonnements in einer logischen Hierarchie, um die strukturierte Bereitstellung anderer Governance-Dienste zu unterstützen.<br /></p>
+      image:
+        src: ./media/management-groups-illustration.svg
+      title: Verwaltungsgruppen
+    - href: ./resource-graph/
+      html: <p>Verwenden Sie ein leistungsfähiges Befehlszeilentool (Azure CLI und Azure PowerShell werden unterstützt), um schnell komplexe Details zu Ihren Azure-Ressourcen abzufragen. Sie können Informationen suchen und verfügbar machen, für die zuvor komplexe und iterative Skripts erforderlich waren, um diese Ressourcen bedarfsabhängig zu ermitteln.</p>
+      image:
+        src: ./media/resource-graph-illustration.svg
+      title: Resource Graph
+    - href: ./policy/
+      html: <p>Dient zum Definieren und Anwenden von Standards auf Ressourcen in Ihrer Umgebung. Verhindern Sie die Erstellung von unerwünschten Ressourcen, erweitern Sie neue Ressourcen um zusätzliche Elemente, und führen Sie für Ressourcen, die sich bereits in Ihrer Umgebung befinden, die Überwachung und Problemlösung durch.</p>
+      image:
+        src: ./media/policy-illustration.svg
+      title: Richtlinie
+    - href: ./blueprints/
+      html: <p>Erstellen Sie ein natives Azure-Paket mit <i>Artefakten</i> (Ressourcengruppen, Richtlinien, Rollenzuweisungen, Resoure Manager-Vorlagen und mehr), die dynamisch für Abonnements bereitgestellt werden können, um einheitliche, wiederholbare Umgebungen zu erstellen.</p>
+      image:
+        src: ./media/blueprints-illustration.svg
+      title: Blaupausen
+- title: Implementierungen
+- items:
+  - type: list
+    style: cards
+    className: cardsZ
+    columns: 3
+    items:
+    - href: /azure/architecture/cloud-adoption/governance/what-is-governance?toc=/azure/governance/toc.json
+      html: <p>Früher lagen die Eigentumsrechte und die Verantwortlichkeit für alle Ebenen der Technologie von der Infrastruktur bis zur Software beim Unternehmen. Jetzt bietet die Cloud die Möglichkeit zu einer grundlegenden Veränderung der Nutzung von Technologie durch Unternehmen, indem Ressourcen bedarfsorientiert bereitgestellt und verbraucht werden.</p>
+      title: Enterprise Cloud-Einführung
+    - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+      html: <p>Hiermit können Administratoren sicherstellen, dass Workloads in einer Organisation die minimalen Anforderungen an die Governance erfüllen, ohne zu verhindern, dass Unternehmensgruppen und Entwickler schnell ihre eigenen Ziele erreichen.<br /><br /></p>
+      title: Unternehmensgerüst
+- title: Verweis
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Richtlinie
+      html: <p>Befehlszeile<ul><li><a href="/cli/azure/policy">Azure-CLI</a></li></ul></p><p>PowerShell<ul><li><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></li></ul></p><p>REST-API<ul><li><a href="/rest/api/policy-insights/policyevents">Ereignisse</a></li><li><a href="/rest/api/policy-insights/policystates">Zustände</a></li><li><a href="/rest/api/resources/policyassignments">Zuweisungen</a></li><li><a href="/rest/api/resources/policydefinitions">Richtliniendefinitionen</a></li><li><a href="/rest/api/resources/policysetdefinitions">Initiativendefinitionen</a></li></ul></p>

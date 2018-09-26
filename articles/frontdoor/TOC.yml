@@ -1,0 +1,77 @@
+items:
+- name: Front Door Service – Dokumentation
+  href: index.yml
+- name: Übersicht
+  items:
+  - name: Was ist Azure Front Door Service?
+    href: front-door-overview.md
+- name: Schnellstarts
+  items:
+  - name: Erstellen einer „Front Door“
+    href: quickstart-create-front-door.md
+- name: Lernprogramme
+  items:
+  - name: Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“
+    href: front-door-custom-domain.md
+  - name: Aktivieren von HTTPS für eine benutzerdefinierte Domäne
+    href: front-door-custom-domain-https.md
+- name: Beispiele
+  items:
+  - name: Resource Manager-Vorlagen
+    href: front-door-quickstart-template-samples.md
+- name: Konzepte
+  items:
+  - name: Back-Ends und Back-End-Pools
+    href: front-door-backend-pool.md
+  - name: Sicherheit für Anwendungsschichten
+    href: front-door-application-security.md
+  - name: Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
+    href: front-door-lb-with-azure-app-delivery-suite.md
+  - name: Routingarchitektur
+    href: front-door-routing-architecture.md
+  - name: Routingmethoden für Datenverkehr
+    href: front-door-routing-methods.md
+  - name: Front Door-Routingabgleich für eine Anforderung
+    href: front-door-route-matching.md
+  - name: Integritätstests
+    href: front-door-health-probes.md
+  - name: URL Rewrite
+    href: front-door-url-rewrite.md
+  - name: Zwischenspeicherung mit Front Door
+    href: front-door-caching.md
+  - name: HTTP/2-Unterstützung
+    href: front-door-http2.md
+  - name: HTTP-Header-Protokollunterstützung
+    href: front-door-http-headers-protocol.md
+  - name: Überwachung
+    href: front-door-diagnostics.md
+- name: Anleitungen
+  items:
+  - name: Problembehandlung
+    items:
+    - name: Problembehandlung für Routingfehler
+      href: front-door-troubleshoot-routing.md
+    - name: Zulässige Zertifizierungsstellen
+      href: front-door-troubleshoot-allowed-ca.md
+- name: Verweis
+  items:
+  - name: Azure PowerShell
+    href: front-door-powershell-reference.md
+  - name: REST-API
+    href: front-door-rest-api.md
+- name: Ressourcen
+  items:
+  - name: Azure-Roadmap
+    href: https://azure.microsoft.com/roadmap/
+  - name: Preise
+    href: https://azure.microsoft.com/pricing/details/frontdoor/
+  - name: Preisrechner
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Dienstupdates
+    href: https://azure.microsoft.com/updates/?product=frontdoor
+ms.openlocfilehash: ef2336af29de4fd7f707041d2b730b40cc7536fe
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037761"

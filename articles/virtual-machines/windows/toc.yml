@@ -14,7 +14,7 @@ items:
   - name: Erstellen eines virtuellen Computers – Azure-CLI
     href: quick-create-cli.md
   expanded: true
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: '1: Erstellen/Verwalten eines virtuellen Computers'
     href: tutorial-manage-vm.md
@@ -99,6 +99,8 @@ items:
       href: premium-storage.md
     - name: Standard-SSDs
       href: disks-standard-ssd.md
+    - name: Ultra-SSDs
+      href: disks-ultra-ssd.md
     - name: Storage Premium-Leistung
       href: premium-storage-performance.md
     - name: Standardspeicher
@@ -231,6 +233,14 @@ items:
       href: reserved-vm-instance-size-flexibility.md
   - name: Verwenden von Images
     items:
+    - name: Freigegebene Images (Vorschau)
+      items:
+      - name: Übersicht
+        href: shared-image-galleries.md
+      - name: Erstellen freigegebener Images mithilfe der CLI
+        href: ../linux/shared-images.md
+      - name: Problembehandlung für freigegebene Images
+        href: troubleshooting-shared-images.md
     - name: Suchen und Verwenden von Images
       href: cli-ps-findimage.md
     - name: Vorbereiten des virtuellen Computers für den Upload
@@ -320,6 +330,8 @@ items:
       href: using-managed-disks-template-deployments.md
     - name: Aktivieren der Schreibbeschleunigung
       href: how-to-enable-write-accelerator.md
+    - name: Verwenden einer Ultra-SSD
+      href: disks-enable-ultra-ssd.md
     - name: Migrieren zu Managed Disks
       href: migrate-to-managed-disks.md
       items:
@@ -482,6 +494,8 @@ items:
   items:
   - name: Verfassen von Vorlagen
     href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+    href: /learn/browse/?products=azure-virtual-machines
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: Communityvorlagen
@@ -496,9 +510,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Häufig gestellte Fragen
     href: faq.md
-ms.openlocfilehash: af9685fcf53366785a7473a5e6c246907929a3fc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 84b76400e029c835f3a070fa7bdc80afe3f147d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985514"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035894"

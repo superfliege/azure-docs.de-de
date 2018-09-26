@@ -1,5 +1,5 @@
 ---
-title: Azure Policy-Beispieleindex
+title: Index von Azure Policy-Beispielen
 description: Index von Beispielen für Azure Policy
 services: azure-policy
 author: DCtheGeek
@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 356cf2848985edea4b112f89de2582332386509c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 32a1ef9b20314bb0b55277faeb20f2bdc1da2d11
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980745"
+ms.locfileid: "47054675"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
