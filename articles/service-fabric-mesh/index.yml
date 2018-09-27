@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3425a7b65ce81ca3d45a0ccdfe613ffdfef4f90f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 14938e25cc41ea11baef94b6a9e01e070ffac654
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953615"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158189"
 documentType: LandingData
 title: Azure Service Fabric Mesh-Dokumentation
 metadata:
@@ -40,11 +40,12 @@ sections:
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: Es wird beschrieben, wie Sie mit Visual Studio eine Mesh-App erstellen und bereitstellen.
+    text: Hier wird beschrieben, wie Sie mit Visual Studio oder der Azure CLI eine Mesh-App erstellen und bereitstellen.
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Webanwendung mit mehreren Diensten in Service Fabric Mesh</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Webanwendung mit mehreren Diensten in Service Fabric Mesh mithilfe von Visual Studio</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-template-deploy-app">Bereitstellen, Skalieren und Aktualisieren einer Service Fabric Mesh-App mithilfe einer Vorlage</a>
 - title: Verweis
   items:
   - type: list

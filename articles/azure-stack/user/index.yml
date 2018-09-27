@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: e10dbc5ef0899134a1d629a058412b1eb36df335
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163408"
 documentType: LandingData
 title: Benutzerdokumentation zu Azure Stack
 metadata:
@@ -12,14 +18,8 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/13/2018
+  ms.date: 09/25/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: 4b258290b197ff4fdee9490012a36519b041622c
-  ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 05/04/2018
-  ms.locfileid: "33205430"
 abstract:
   description: Azure Stack ist eine Hybrid Cloud-Plattform, mit der Sie Azure-Dienste aus dem Rechenzentrum Ihres Unternehmens oder Ihres Service Providers verwenden können. Als Entwickler können Sie Apps in Azure Stack erstellen. Anschließend können Sie diese Apps in Azure Stack bzw. Azure bereitstellen, oder Sie können echte Hybrid-Apps erstellen, für die die Konnektivität zwischen einer Azure Stack-Cloud und Azure genutzt wird. Erfahren Sie, wie Sie mit unseren Schnellstarts und Tutorials Ressourcen erstellen und Apps bereitstellen.<br/><br/>Wenn Sie ein Azure Stack-Betreiber sind, der die Infrastruktur verwaltet und Dienste anbietet, hilft Ihnen die <a href="/azure/azure-stack/">Dokumentation für Betreiber</a> weiter.<br/><br/>Wenn Sie als Azure Stack-Bediener das Azure Stack Development Kit (ASDK) verwenden möchten, können Sie eine kostenlose Azure Stack-Bereitstellung mit einem Knoten herunterladen. Weitere Informationen finden Sie in der <a href="/azure/azure-stack/asdk">ASDK-Dokumentation</a>.
 sections:
@@ -69,6 +69,12 @@ sections:
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-pipeline">Deploy apps to Azure Stack and Azure</a> (Bereitstellen von Apps in Azure Stack und Azure)
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-identity">Konfigurieren einer Hybrid Cloud-Identität mit Azure- und Azure Stack-Anwendungen</a>
     - html: <a href="/azure/azure-stack/user/azure-stack-solution-hybrid-connectivity">Konfigurieren der Hybrid Cloud-Konnektivität mit Azure und Azure Stack</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-machine-learning">Erstellen einer Machine Learning-Edge-Lösung mit Azure und Azure Stack</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-staged-data-analytics">Erstellen einer gestaffelten Lösung für die Datenanalyse mit Azure und Azure Stack</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-cloud-burst">Erstellen von cloudübergreifenden Skalierungslösungen mit Azure</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-solution-geo-distributed">Erstellen einer geografisch verteilten App-Lösung mit Azure und Azure Stack</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-sql">Erstellen von hoch verfügbaren SQL-Datenbanken</a>
+    - html: <a href="/azure/azure-stack/user/azure-stack-tutorial-mysql">Erstellen von hoch verfügbaren MySQL-Datenbanken</a>
 - title: Verweis
   items:
   - type: list

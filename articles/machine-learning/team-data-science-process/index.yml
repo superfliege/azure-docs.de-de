@@ -1,15 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a2a5b1bfa40adfee9106e111deaf045737221937
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 608ba8a5bb6fe4376a569eb3ee5d630b1517061a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983853"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391937"
 documentType: LandingData
 metadata:
   author: cjgronlund
-  description: Hier erfahren Sie, wie Sie den Team Data Science-Prozess verwenden.
-  manager: cgronlun
+  description: Hier erhalten Sie Informationen zur Verwendung des Team Data Science-Prozesses. Dabei handelt es sich um eine flexible, iterative Data Science-Methodik zur effizienten Bereitstellung von Predictive Analytics-Lösungen und intelligenten Anwendungen. Mit dem TDSP können die Zusammenarbeit und das Lernen im Team verbessert werden. Er umfasst eine Zusammenfassung der Best Practices und Strukturen von Microsoft und anderen Anbietern der Branche, die die erfolgreiche Implementierung von Data Science-Initiativen erleichtern. Ziel ist die Unterstützung von Unternehmen bei der umfassenden Nutzung ihrer Analyseprogramme.
   ms.author: cgronlun
   ms.component: team-data-science-process
   ms.date: 01/18/2018

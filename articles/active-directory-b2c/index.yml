@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 9fd163db5b727c5284756e2d24a35c6c6e57a794
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181380"
 documentType: LandingData
 title: Azure Active Directory B2C-Dokumentation
 metadata:
@@ -12,24 +18,39 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/29/2018
   ms.author: davidmu
-  ms.openlocfilehash: a70e3fe60291a0ee50dbaa4bd3caa460ff12ffef
-  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 06/20/2018
-  ms.locfileid: "36284264"
 abstract:
   description: Azure Active Directory (Azure AD) B2C ist ein Identitätsverwaltungsdienst, mit dem Sie die Kundenregistrierung und -anmeldung anpassen und steuern sowie Profile bei der Verwendung Ihrer Anwendungen verwalten können. Dazu gehören u.a. für iOS, Android und .NET entwickelte Anwendungen. Azure AD B2C ermöglicht diese Aktionen und schützt gleichzeitig die Identitäten Ihrer Kunden. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Azure AD B2C verwenden.
   aside:
     image:
       alt: 
       height: 110
-      src: https://docs.microsoft.com/azure/active-directory-b2c/media/index/active-directory-b2c-video.PNG
+      src: ./media/index/active-directory-b2c-video.PNG
       width: 250
-    title: Business-to-Consumer-Identitätsverwaltung mit Azure Active Directory B2C (12:56)
-    href: https://azure.microsoft.com/resources/videos/build-2016-business-to-consumer-identity-management-with-azure-active-directory-b2c/
+    title: Kundenidentitätsverwaltung mit Azure AD B2C (20:56)
+    href: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
     width: 250
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/active-directory-b2c/active-directory-b2c-overview
+      html: <p>Hier erfahren Sie mehr über Azure AD B2C und seine Features und Funktionen.</p>
+      image:
+        src: ./media/index/i_get-started.svg
+      title: Informationen zu Azure AD B2C
+    - href: /azure/active-directory-b2c/solution-articles
+      html: <p>Untersuchen Sie Lösungs- und Trainingsmöglichkeiten mit Azure AD B2C.</p>
+      image:
+        src: ./media/index/i_advanced.svg
+      title: Lösungen und Training
+    - href: /azure/active-directory-b2c/trustframeworkpolicy
+      html: <p>Erstellen Sie erweiterte Registrierungs- und Anmeldeszenarien mit benutzerdefinierten Richtlinien in Azure AD B2C.</p>
+      image:
+        src: ./media/index/i_investigate.svg
+      title: Identity Experience Framework
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
@@ -58,11 +79,11 @@ sections:
     className: cardsD
     items:
     - title: ASP.NET
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Registrieren einer Anwendung</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Authentifizieren von Benutzern</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Gewähren des API-Zugriffs</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Erstellen eines Mandanten</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Authentifizieren von Benutzern</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Gewähren des API-Zugriffs</a></p>
     - title: Desktop
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Registrieren einer Anwendung</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Authentifizieren von Benutzern</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">Gewähren des API-Zugriffs</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Erstellen eines Mandanten</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app">Authentifizieren von Benutzern</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-desktop-app-webapi">Gewähren des API-Zugriffs</a></p>
     - title: Einseitig
-      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-register-applications">Registrieren einer Anwendung</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Authentifizieren von Benutzern</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">Gewähren des API-Zugriffs</a></p>
+      html: <p>1. <a href="/azure/active-directory-b2c/tutorial-create-tenant">Erstellen eines Mandanten</a></p><p>2. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa">Authentifizieren von Benutzern</a></p><p>3. <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-spa-webapi">Gewähren des API-Zugriffs</a></p>
 - title: Beispiele
   items:
   - type: paragraph
