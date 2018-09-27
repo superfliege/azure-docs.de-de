@@ -5,37 +5,35 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 8/13/2018
+ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: a63a12658bd0a4b4d018d51824af9814691a3cbf
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40183910"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47020471"
 ---
 ### <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
-Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Es ist eine vollständig zustandsbehaftete Firewall als ein Dienst mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit. Sie können Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend für Abonnements und virtuelle Netzwerke zentral erstellen, erzwingen und protokollieren. Azure Firewall ist zurzeit als öffentliche Vorschauversion verfügbar.
+Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Es ist eine vollständig zustandsbehaftete Firewall als ein Dienst mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit. Sie können Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend für Abonnements und virtuelle Netzwerke zentral erstellen, erzwingen und protokollieren.
 
-### <a name="which-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Welche Funktionen werden in der öffentlichen Vorschauversion von Azure Firewall unterstützt?  
+### <a name="what-capabilities-are-supported-in-azure-firewall"></a>Welche Funktionen werden in Azure Firewall unterstützt?  
 
 * Zustandsbehaftete Firewall als Dienst
 * Integrierte Hochverfügbarkeit mit uneingeschränkter Cloudskalierbarkeit
-* FQDN-Filterung 
+* FQDN-Filterung
+* FQDN-Tags
 * Filterregeln für den Netzwerkdatenverkehr
 * SNAT-Unterstützung für ausgehenden Datenverkehr
-* Die Fähigkeit zur zentralen Erstellung, Erzwingung und Protokollierung von Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend für Abonnements und virtuelle Netzwerke
+* DNAT-Unterstützung für eingehenden Datenverkehr
+* Zentrale Erstellung, Erzwingung und Protokollierung der Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend für Abonnements und VNETs
 * Vollständige Integration in Azure Monitor für Protokollierung und Analysen 
-
-### <a name="how-can-i-join-the-azure-firewall-public-preview"></a>Wie kann ich der öffentlichen Vorschauversion von Azure Firewall beitreten?
-
-Azure Firewall ist derzeit eine verwaltete öffentliche Vorschauversion, der Sie mit dem Befehl „Register-AzureRmProviderFeature PowerShell“ beitreten können. Dieser Befehl wird in der Dokumentation zur öffentlichen Vorschauversion von Azure Firewall beschrieben.
 
 ### <a name="what-is-the-pricing-for-azure-firewall"></a>Wie sieht das Preismodell für Azure Firewall aus?
 
-Azure Firewall setzt sich aus festen und variablen Gebühren zusammen. Die Preise sind unten aufgeführt, und im Rahmen der öffentlichen Vorschauversion erhalten Sie Nachlass von 50 %.
+Azure Firewall setzt sich aus festen und variablen Gebühren zusammen:
 
 * Feste Gebühr: 1,25 USD/Firewall/Stunde
 * Variable Gebühr: 0,03 USD/von der Firewall verarbeiteten GB (ein- oder ausgehend)
@@ -59,7 +57,7 @@ Es gibt zwei Arten von Regelsammlungen:
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Unterstützt Azure Firewall das Filtern des eingehenden Datenverkehrs?
 
-Die öffentliche Vorschauversion von Azure Firewall unterstützt nur das Filtern des ausgehenden Datenverkehrs. Der Schutz des eingehenden Datenverkehrs für HTTP/S-fremde Protokolle (z.B. RDP, SSH oder FTP) ist vorläufig für Azure Firewall GA geplant.  
+Azure Firewall unterstützt Filter für eingehenden und ausgehenden Datenverkehr. Der Schutz des eingehenden Datenverkehrs ist für Nicht-HTTP/S-Protokolle bestimmt, z. B. RDP-, SSH- und FTP-Protokolle.
  
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welche Protokollierungs- und Analysedienste werden von Azure Firewall unterstützt?
 
@@ -110,3 +108,11 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 * Eine Azure Firewall-Instanz, die in einem zentralen virtuellen Netzwerk ausgeführt wird, weist Einschränkungen für das virtuelle Netzwerkpeering auf, mit maximal 50 virtuellen Spoke-Netzwerken.  
 * Azure Firewall arbeitet nicht mit globalem Peering. Daher sollten Sie mindestens eine Firewall pro Region bereitstellen.
 * Azure Firewall unterstützt 10.000 Anwendungsregeln und 10.000 Netzwerkregeln.
+
+### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Kann Azure Firewall in einem virtuellen Hubnetzwerk den Netzwerkdatenverkehr zwischen zwei virtuellen Spoke-Netzwerken weiterleiten und filtern?
+
+Ja, Sie können Azure Firewall in einem virtuellen Hubnetzwerk verwenden, um den Datenverkehr zwischen zwei virtuellen Spoke-Netzwerken weiterzuleiten und zu filtern. Subnetze in jedem der virtuellen Spoke-Netzwerke müssen über eine UDR verfügen, die auf die Azure Firewall als Standardgateway verweist, damit dieses Szenario ordnungsgemäß funktioniert.
+
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Kann Azure Firewall den Netzwerkdatenverkehr zwischen Subnetzen im selben virtuellen Netzwerk weiterleiten und filtern?
+
+Datenverkehr zwischen Subnetzen im selben virtuellen Netzwerk oder in einem direkt mittels Peering verknüpften virtuellen Netzwerk wird direkt weitergeleitet, selbst wenn die UDR auf Azure Firewall als Standardgateway verweist. Die empfohlene Methode für die interne Netzwerksegmentierung ist die Verwendung von Netzwerksicherheitsgruppen. Um in diesem Szenario Subnetz-zu-Subnetz-Datenverkehr an die Firewall zu senden, muss die UDR explizit den Zielsubnetzwerk-Präfix in beiden Subnetzen enthalten.

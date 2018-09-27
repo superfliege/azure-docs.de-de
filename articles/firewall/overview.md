@@ -6,30 +6,26 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 7/16/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 5e8048dc6b49a0f6c9a465e82a7278e491351034
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2961f6cc8607ba7ec670b297a1858bf433c3ec89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574129"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960786"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
 Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Es ist eine vollständig zustandsbehaftete Firewall als ein Dienst mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit. 
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
 ![Firewallübersicht](media/overview/firewall-overview.png)
-
-
 
 Sie können Richtlinien zur Anwendungs- und Netzwerkkonnektivität übergreifend für Abonnements und virtuelle Netzwerke zentral erstellen, erzwingen und protokollieren. Azure Firewall verwendet eine statische öffentliche IP-Adresse für Ihre virtuellen Netzwerkressourcen, die es außenstehenden Firewalls ermöglicht, Datenverkehr aus Ihrem virtuellen Netzwerk zu identifizieren.  Der Dienst ist für Protokollierung und Analyse vollständig in Azure Monitor integriert.
 
 ## <a name="features"></a>Features
 
-Die Public Preview von Azure Firewall bietet die folgenden Features:
+Azure Firewall bietet die folgenden Features:
 
 ### <a name="built-in-high-availability"></a>Integrierte Hochverfügbarkeit
 Hochverfügbarkeit ist integriert, sodass keine zusätzlichen Lastenausgleichsmodule erforderlich sind und Sie nichts konfigurieren müssen.
@@ -37,16 +33,25 @@ Hochverfügbarkeit ist integriert, sodass keine zusätzlichen Lastenausgleichsmo
 ### <a name="unrestricted-cloud-scalability"></a>Uneingeschränkte Cloudskalierbarkeit 
 Azure Firewall kann entsprechend Ihren Anforderungen zentral hochskaliert werden, um einem sich ändernden Netzwerkdatenverkehr zu entsprechen, sodass Sie nicht für Ihre Spitzenlasten budgetieren müssen.
 
-### <a name="fqdn-filtering"></a>FQDN-Filterung 
+### <a name="application-fqdn-filtering-rules"></a>FQDN-Anwendungsfilterregeln
+
 Sie können den ausgehenden HTTP/S-Datenverkehr auf eine angegebene Liste vollständig qualifizierter Domänennamen (FQDN) einschließlich Platzhalter beschränken. Diese Funktion erfordert keine SSL-Beendigung.
 
 ### <a name="network-traffic-filtering-rules"></a>Filterregeln für den Netzwerkdatenverkehr
 
 Sie können Netzwerkfilterregeln zum *Zulassen* oder *Verweigern* nach Quell- und Ziel-IP-Adresse, Port und Protokoll zentral erstellen. Azure Firewall ist vollständig zustandsbehaftet, sodass zwischen legitimen Paketen für verschiedene Arten von Verbindungen unterschieden werden kann. Regeln werden übergreifend für mehrere Abonnements und virtuelle Netzwerke erzwungen und protokolliert.
 
+### <a name="fqdn-tags"></a>FQDN-Tags
+
+FQDN-Tags erleichtern es Ihnen, Netzwerkdatenverkehr bekannter Azure-Dienste durch die Firewall zuzulassen. Angenommen, Sie möchten Netzwerkdatenverkehr von Windows Update durch die Firewall zulassen. Sie erstellen eine entsprechende Anwendungsregel, und schließen das Windows Update-Tag ein. Jetzt kann der Netzwerkdatenverkehr von Windows Update durch Ihre Firewall fließen.
+
 ### <a name="outbound-snat-support"></a>SNAT-Unterstützung für ausgehenden Datenverkehr
 
 Alle IP-Adressen für ausgehenden Datenverkehr des virtuellen Netzwerks werden in die öffentliche IP-Adresse der Azure Firewall übersetzt (Source Network Address Translation). Sie können Datenverkehr aus Ihrem virtuellen Netzwerk an Remoteziele im Internet identifizieren und zulassen.
+
+### <a name="inbound-dnat-support"></a>DNAT-Unterstützung für eingehenden Datenverkehr
+
+Der eingehende Netzwerkdatenverkehr zur öffentlichen IP-Adresse Ihrer Firewall wird in die privaten IP-Adressen in Ihren virtuellen Netzwerken übersetzt (Destination Network Address Translation) und gefiltert. 
 
 ### <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 
@@ -54,17 +59,16 @@ Alle Ereignisse sind in Azure Monitor integriert, sodass Sie Protokolle in einem
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-Die Public Preview von Azure Firewall weist die folgenden bekannten Probleme auf:
+Azure Firewall weist die folgenden bekannten Probleme auf:
 
 
 |Problem  |BESCHREIBUNG  |Lösung  |
 |---------|---------|---------|
-|Interoperabilität mit NSGs     |Wenn eine Netzwerksicherheitsgruppe (NSG) für das Firewall-Subnetz angewendet wird, blockiert diese möglicherweise ausgehende Internetverbindungen, selbst wenn die NSG für ausgehenden Internetzugriff konfiguriert ist. Ausgehende Internetverbindungen sind so gekennzeichnet, dass sie aus einem VirtualNetwork stammen und das Ziel das Internet ist. Für eine NSG ist VirtualNetwork standardmäßig auf *zulassen* gesetzt, jedoch nicht, wenn das Ziel das Internet ist.|Zur Problembehebung fügen Sie die folgende eingehende Regel zu der NSG hinzu, die auf das Firewall-Subnetz angewendet wird:<br><br>Quelle: VirtualNetwork-Quellports: Alle <br><br>Ziel: Alle Zielports: Alle <br><br>Protokoll: Vollzugriff: Zulassen|
 |Konflikt mit Just-in-Time (JIT)-Funktion von Azure Security Center (ASC)|Wenn auf einen virtuellen Computer mithilfe von JIT zugegriffen wird und sich dieser in einem Subnetz mit einer benutzerdefinierten Route befindet, die auf Azure Firewall als ein Standardgateway verweist, funktioniert ASC JIT nicht. Dies ist eine Folge des asymmetrischen Routings: Ein Paket trifft über die öffentliche IP-Adresse des virtuellen Computers ein (JIT hat den Zugriff geöffnet), aber der Rückgabepfad verläuft über die Firewall, die das Paket verwirft, da keine Sitzung in der Firewall erstellt wird.|Um dieses Problem zu umgehen, platzieren Sie die virtuellen JIT-Computer in einem separaten Subnetz, das keine benutzerdefinierte Route zur Firewall aufweist.|
 |Hub und Spoke mit globalem Peering funktioniert nicht|Das Hub- und Spoke-Modell, bei dem Hub und Firewall in einer Azure-Region bereitgestellt werden und die Spokes in einer anderen Azure-Region, die mit dem Hub über globales VNet-Peering verbunden ist, wird nicht unterstützt.|Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints).|
-Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktionieren nicht für den Internetdatenverkehr|Netzwerkfilterregeln für andere Protokolle als TCP/UDP funktionieren nicht mit SNAT für Ihre öffentliche IP-Adresse. Nicht-TCP/UDP-Protokolle werden zwischen Spoke-Subnetzen und VNets unterstützt.|Azure Firewall verwendet Standard Load Balancer, [das SNAT für IP-Protokolle derzeit nicht unterstützt](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Wir prüfen Möglichkeiten, um dieses Szenario in einer zukünftigen Version zu unterstützen.
-
-
+Netzwerkfilterregeln für andere Protokolle als TCP/UDP (z.B. ICMP) funktionieren nicht für den Internetdatenverkehr|Netzwerkfilterregeln für andere Protokolle als TCP/UDP funktionieren nicht mit SNAT für Ihre öffentliche IP-Adresse. Nicht-TCP/UDP-Protokolle werden zwischen Spoke-Subnetzen und VNets unterstützt.|Azure Firewall verwendet Standard Load Balancer, [das SNAT für IP-Protokolle derzeit nicht unterstützt](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Wir prüfen Möglichkeiten, um dieses Szenario in einer zukünftigen Version zu unterstützen.|
+|DNAT funktioniert nicht für Port 80 und Port 22.|Das Zielportfeld in der NAT-Regelsammlung kann Port 80 oder Port 22 nicht einbeziehen.|Wir arbeiten daran, dieses Problem in der nahen Zukunft zu beheben. Verwenden Sie in der Zwischenzeit einen anderen Port als Zielport in NAT-Regeln. Port 80 oder Port 22 kann weiterhin als übersetzter Port verwendet werden (z. B. können Sie „public ip:81“ und „private ip:80“ einander zuordnen).|
+|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
