@@ -6,21 +6,21 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b00d774ec59755288b8660d238c7b8dfc9a89eab
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ef1422db799db6d635ad9f03908e3a34f312e408
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089892"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974237"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
-Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](monitoring-overview.md). 
+Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](monitoring-overview.md).
 
 ## <a name="linux-agent"></a>Linux-Agent
-Für virtuelle Computer mit Linux ist eine [Linux-Version der Erweiterung](../virtual-machines/linux/diagnostic-extension.md) verfügbar. Die gesammelten Statistiken und das Verhalten unterscheiden sich von der Windows-Version. 
+Für virtuelle Computer mit Linux ist eine [Linux-Version der Erweiterung](../virtual-machines/linux/diagnostic-extension.md) verfügbar. Die gesammelten Statistiken und das Verhalten unterscheiden sich von der Windows-Version.
 
 ## <a name="data-you-can-collect"></a>Erfassbare Daten
 Die Azure-Diagnoseerweiterung kann die folgenden Datentypen erfassen:
@@ -37,13 +37,20 @@ Die Azure-Diagnoseerweiterung kann die folgenden Datentypen erfassen:
 | Benutzerdefinierte Fehlerprotokolle |Von Ihrer Anwendung oder Ihrem Dienst erstellte Protokolle |
 | Infrastrukturprotokolle der Azure-Diagnose |Informationen zur Diagnose selbst |
 
-(1) Um eine Liste der ETW-Anbieter zu erhalten, führen Sie `c:\Windows\System32\logman.exe query providers` in einem Konsolenfenster auf dem Computer aus, von dem Sie die Informationen sammeln möchten. 
+(1) Um eine Liste der ETW-Anbieter zu erhalten, führen Sie `c:\Windows\System32\logman.exe query providers` in einem Konsolenfenster auf dem Computer aus, von dem Sie die Informationen sammeln möchten.
 
 ## <a name="data-storage"></a>Datenspeicher
-Die Erweiterung speichert ihre Daten in einem von Ihnen angegebenen [Azure Storage-Konto](azure-diagnostics-storage.md). 
+Die Erweiterung speichert ihre Daten in einem von Ihnen angegebenen [Azure Storage-Konto](azure-diagnostics-storage.md).
 
-Sie können auch an [Application Insights](../application-insights/app-insights-cloudservices.md) gesendet werden. Als weitere Option können sie auch an [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) gestreamt werden, was Ihnen wiederum ermöglicht, sie an Überwachungsdienste außerhalb von Azure zu senden. 
+Sie können auch an [Application Insights](../application-insights/app-insights-cloudservices.md) gesendet werden. Als weitere Option können sie auch an [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) gestreamt werden, was Ihnen wiederum ermöglicht, sie an Überwachungsdienste außerhalb von Azure zu senden.
 
+### <a name="azure-monitor"></a>Azure Monitor
+Sie können Ihre Daten auch an Azure Monitor senden. Zur Zeit ist diese Senke nur für Leistungsindikatoren anwendbar. Sie ermöglicht es Ihnen, Leistungsindikatoren, die auf Ihrem virtuellen Computer, Ihrer VMSS oder in Ihrem Clouddienst gesammelt wurden, als benutzerdefinierte Metriken an Azure Monitor zu senden. Die Azure Monitor-Senke unterstützt Folgendes:
+* Abrufen aller Leistungsindikatoren, die über die [APIs der Azure Monitor-Metriken](https://docs.microsoft.com/rest/api/monitor/) an Azure Monitor gesendet wurden.
+* Benachrichtigung für alle Leistungsindikatoren, die über die neue [vereinheitlichte Oberfläche für Warnungen](monitoring-overview-unified-alerts.md) in Azure Monitor an Azure Monitor gesendet werden.
+* Behandeln von Platzhalteroperatoren in Leistungsindikatoren als die Dimension „Instanz“ in Ihrer Metrik.  Wenn Sie z. B. den Indikator „LogicalDisk(\*)/DiskWrites/Sek.“ erfasst haben, können Sie die Dimension „Instanz“ filtern und aufteilen, um für jeden logischen Datenträger auf dem virtuellen Computer (C:, D: usw.) Schreibvorgänge pro Sekunde darzustellen oder hinsichtlich dieser Vorgänge Warnungen auszugeben.
+
+Weitere Informationen zur Konfiguration dieser Senke finden Sie in der Dokumentation zum [Azur-Diagnoseschema](azure-diagnostics-schema-1dot3-and-later.md).
 
 ## <a name="versioning-and-configuration-schema"></a>Schema für Versionsverwaltung und Konfiguration
 Siehe [Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas](azure-diagnostics-versioning-history.md).

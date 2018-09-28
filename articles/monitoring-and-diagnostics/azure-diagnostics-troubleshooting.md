@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6ea68bce81094f4745616e32c7434d6c833a45ee
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263845"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952578"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](azure-diagnostics.md).
@@ -53,7 +53,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<Diagnoseversion>\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrikdaten werden nicht im Azure-Portal angezeigt
-Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind. 
+Bei der Azure-Diagnose werden Metrikdaten bereitgestellt, die im Azure-Portal angezeigt werden können. Falls Sie Probleme beim Anzeigen der Daten im Portal haben, können Sie die Tabelle „WADMetrics\*“ im Azure-Diagnose-Speicherkonto überprüfen, um festzustellen, ob die entsprechenden Metrikdatensätze vorhanden sind.
 
 Hier ist der **PartitionKey** der Tabelle die Ressourcen-ID, der virtuelle Computer oder die VM-Skalierungsgruppe. **RowKey** ist der Metrikname (auch als Leistungsindikatorname bezeichnet).
 
@@ -83,7 +83,7 @@ Wenn die Konfiguration richtig festgelegt ist und die Metrikdaten trotzdem nicht
 
 
 ## <a name="azure-diagnostics-isnt-starting"></a>Azure-Diagnose wird nicht gestartet
-Informationen dazu, warum die Azure-Diagnose nicht gestartet wurde, finden Sie in den Dateien **DiagnosticsPluginLauncher.log** und **DiagnosticsPlugin.log** am zuvor angegebenen Speicherort der Protokolldateien. 
+Informationen dazu, warum die Azure-Diagnose nicht gestartet wurde, finden Sie in den Dateien **DiagnosticsPluginLauncher.log** und **DiagnosticsPlugin.log** am zuvor angegebenen Speicherort der Protokolldateien.
 
 Die Angabe `Monitoring Agent not reporting success after launch` in diesen Protokollen bedeutet, dass beim Starten von „MonAgentHost.exe“ ein Fehler aufgetreten ist. Sehen Sie sich die Protokolle an dem Speicherort an, der im vorherigen Abschnitt für `MonAgentHost log file` angegeben ist.
 
@@ -105,14 +105,14 @@ Die häufigste Ursache dafür, dass keine Ereignisdaten angezeigt werden, ist di
 
 Lösung: Korrigieren Sie die Diagnosekonfiguration, und installieren Sie die Diagnose erneut.
 
-Wenn das Speicherkonto richtig konfiguriert wurde, sollten Sie den Remotezugriff auf den Computer durchführen und überprüfen, ob „DiagnosticsPlugin.exe“ und „MonAgentCore.exe“ ausgeführt werden. Wenn nicht, sollten Sie die Schritte unter [Die Azure-Diagnose wird nicht gestartet](#azure-diagnostics-is-not-starting) ausführen. 
+Wenn das Speicherkonto richtig konfiguriert wurde, sollten Sie den Remotezugriff auf den Computer durchführen und überprüfen, ob „DiagnosticsPlugin.exe“ und „MonAgentCore.exe“ ausgeführt werden. Wenn nicht, sollten Sie die Schritte unter [Die Azure-Diagnose wird nicht gestartet](#azure-diagnostics-is-not-starting) ausführen.
 
 Wenn die Prozesse ausgeführt werden, können Sie zu [Lokale Erfassung von Daten](#is-data-getting-captured-locally) navigieren und die angegebene Anleitung befolgen.
 
 ### <a name="part-of-the-data-is-missing"></a>Ein Teil der Daten fehlt
 Wenn Sie nicht alle Daten erhalten, sondern nur einige, bedeutet dies, dass die Pipeline für die Datensammlung bzw. -übertragung richtig eingerichtet ist. Mit den Informationen in den folgenden Unterabschnitten können Sie die Ursache des Problems eingrenzen:
 
-#### <a name="is-the-collection-configured"></a>Konfiguration der Sammlung 
+#### <a name="is-the-collection-configured"></a>Konfiguration der Sammlung
 Die Diagnosekonfiguration enthält eine Anleitung zum Sammeln von Daten eines bestimmten Typs. [Überprüfen Sie Ihre Konfiguration](#how-to-check-diagnostics-extension-configuration), um sicherzustellen, dass Sie nur nach den für die Sammlung konfigurierten Daten suchen.
 
 #### <a name="is-the-host-generating-data"></a>Generierung von Daten durch den Host
@@ -127,16 +127,16 @@ Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen 
 
 #### <a name="is-data-getting-captured-locally"></a>Lokale Erfassung von Daten
 Stellen Sie als Nächstes sicher, dass die Daten lokal erfasst werden.
-Die Daten werden lokal in `*.tsf`-Dateien im [lokalen Speicher für die Diagnosedaten gespeichert](#log-artifacts-path). Verschiedene Arten von Protokollen werden in unterschiedlichen `.tsf`-Dateien erfasst. Die Namen ähneln den Tabellennamen in Azure Storage. 
+Die Daten werden lokal in `*.tsf`-Dateien im [lokalen Speicher für die Diagnosedaten gespeichert](#log-artifacts-path). Verschiedene Arten von Protokollen werden in unterschiedlichen `.tsf`-Dateien erfasst. Die Namen ähneln den Tabellennamen in Azure Storage.
 
 `Performance Counters` werden beispielsweise in `PerformanceCountersTable.tsf` gesammelt. Ereignisprotokolle werden in `WindowsEventLogsTable.tsf` gesammelt. Nutzen Sie die Anleitung im Abschnitt [Extraktion von lokalen Protokollen](#local-log-extraction), um die lokalen Sammlungsdateien zu öffnen, und vergewissern Sie sich, dass die Erfassung auf dem Datenträger erfolgt.
 
-Wenn Sie nicht erkennen können, dass Protokolle lokal erfasst werden, und bereits überprüft haben, dass der Host Daten generiert, liegt vermutlich ein Konfigurationsproblem vor. Überprüfen Sie die Konfigurationseinstellungen sorgfältig. 
+Wenn Sie nicht erkennen können, dass Protokolle lokal erfasst werden, und bereits überprüft haben, dass der Host Daten generiert, liegt vermutlich ein Konfigurationsproblem vor. Überprüfen Sie die Konfigurationseinstellungen sorgfältig.
 
 Überprüfen Sie auch die Konfiguration, die für die MonitoringAgent-Datei [MaConfig.xml](#log-artifacts-path) generiert wurde. Stellen Sie sicher, dass ein Abschnitt vorhanden ist, in dem die relevante Protokollquelle beschrieben wird. Vergewissern Sie sich anschließend, dass diese bei der Übersetzung zwischen der Diagnosekonfiguration und der Monitoring Agent-Konfiguration nicht verloren geht.
 
 #### <a name="is-data-getting-transferred"></a>Übertragung von Daten
-Führen Sie die folgenden Schritte aus, wenn Sie sich davon überzeugt haben, dass Daten zwar lokal erfasst werden, in Ihrem Speicherkonto aber immer noch nicht angezeigt werden: 
+Führen Sie die folgenden Schritte aus, wenn Sie sich davon überzeugt haben, dass Daten zwar lokal erfasst werden, in Ihrem Speicherkonto aber immer noch nicht angezeigt werden:
 
 - Vergewissern Sie sich, dass Sie ein richtiges Speicherkonto angegeben und für das jeweilige Speicherkonto keinen Rollover für Schlüssel durchgeführt haben. Bei Azure Cloud Services kommt es manchmal vor, dass Benutzer `useDevelopmentStorage=true` nicht aktualisieren.
 
@@ -215,7 +215,7 @@ Die einfachste Möglichkeit zum Überprüfen Ihrer Erweiterungskonfiguration ist
 
 Greifen Sie alternativ dazu per Remotedesktop auf den Computer zu, und sehen Sie sich die Datei für die Azure-Diagnosekonfiguration an, die im [Abschnitt zum Protokollartefaktpfad](#log-artifacts-path) beschrieben ist.
 
-Suchen Sie jeweils nach **Microsoft.Azure.Diagnostics** und dann nach dem Feld **xmlCfg** oder **WadCfg**. 
+Suchen Sie jeweils nach **Microsoft.Azure.Diagnostics** und dann nach dem Feld **xmlCfg** oder **WadCfg**.
 
 Wenn Sie auf einem virtuellen Computer suchen und das Feld **WadCfg** vorhanden ist, bedeutet dies, dass die Konfiguration im JSON-Format vorliegt. Wenn das Feld **xmlCfg** vorhanden ist, bedeutet dies, dass die Konfigurationsdatei im XML-Format vorliegt und Base64-codiert ist. Sie müssen sie [decodieren](http://www.bing.com/search?q=base64+decoder), um die von der Diagnose geladenen XML-Daten anzuzeigen.
 
@@ -247,22 +247,22 @@ Das Plug-In gibt die folgenden Exitcodes zurück:
 | -112 |Allgemeiner Fehler |
 
 ### <a name="local-log-extraction"></a>Extraktion von lokalen Protokollen
-Der Überwachungs-Agent sammelt Protokolle und Artefakte in Form von `.tsf`-Dateien. Die `.tsf`-Datei ist nicht lesbar, aber Sie können sie wie folgt in eine `.csv`-Datei konvertieren: 
+Der Überwachungs-Agent sammelt Protokolle und Artefakte in Form von `.tsf`-Dateien. Die `.tsf`-Datei ist nicht lesbar, aber Sie können sie wie folgt in eine `.csv`-Datei konvertieren:
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
 Eine neue Datei mit dem Namen `<relevantLogFile>.csv` wird unter demselben Pfad wie die entsprechende `.tsf`-Datei erstellt.
 
->[!NOTE] 
+>[!NOTE]
 > Sie müssen dieses Hilfsprogramm nur für die TSF-Hauptdatei (z.B. „PerformanceCountersTable.tsf“) ausführen. Die dazugehörigen Dateien (z.B. „PerformanceCountersTables_\*\*001.tsf“, „PerformanceCountersTables_\*\*002.tsf“ usw.) werden automatisch verarbeitet.
 
-### <a name="more-about-missing-trace-logs"></a>Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen 
+### <a name="more-about-missing-trace-logs"></a>Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen
 
 >[!NOTE]
-> Die folgenden Informationen gelten hauptsächlich für Azure Cloud Services, sofern Sie nicht das DiagnosticsMonitorTraceListener-Element für eine Anwendung konfiguriert haben, die auf Ihrer IaaS-VM ausgeführt wird. 
+> Die folgenden Informationen gelten hauptsächlich für Azure Cloud Services, sofern Sie nicht das DiagnosticsMonitorTraceListener-Element für eine Anwendung konfiguriert haben, die auf Ihrer IaaS-VM ausgeführt wird.
 
-- Stellen Sie sicher, dass das **DiagnosticMonitorTraceListener**-Element in „web.config“ oder „app.config“ konfiguriert wurde.  In Clouddienstprojekten ist es standardmäßig konfiguriert. Einige Kunden kommentieren das Element aber aus, und dies führt dazu, dass die Überwachungsanweisungen von der Diagnose nicht gesammelt werden. 
+- Stellen Sie sicher, dass das **DiagnosticMonitorTraceListener**-Element in „web.config“ oder „app.config“ konfiguriert wurde.  In Clouddienstprojekten ist es standardmäßig konfiguriert. Einige Kunden kommentieren das Element aber aus, und dies führt dazu, dass die Überwachungsanweisungen von der Diagnose nicht gesammelt werden.
 
 - Falls die Protokolle nicht mit der **OnStart**- oder **Run**-Methode geschrieben werden, sollten Sie sicherstellen, dass das **DiagnosticMonitorTraceListener**-Element in „app.config“ enthalten ist.  Standardmäßig ist es in der Datei „web.config“ enthalten, aber dies gilt nur für Code, der in „w3wp.exe“ ausgeführt wird. Sie benötigen es in „app.config“, um Ablaufverfolgungen zu erfassen, die in „WaIISHost.exe“ ausgeführt werden.
 
@@ -275,11 +275,11 @@ Die folgende Liste enthält bekannte Probleme und Lösungen:
 
 **1. .NET 4.5-Abhängigkeit**
 
-Die Windows Azure-Diagnoseerweiterung verfügt über eine Laufzeitabhängigkeit von .NET 4.5 Framework oder höher. Zum Zeitpunkt der Abfassung dieses Artikels ist für alle Computer, die für Azure Cloud Services bereitgestellt werden, sowie für alle Images, die auf virtuellen Azure-Computern basieren, .NET 4.5 oder höher installiert. 
+Die Windows Azure-Diagnoseerweiterung verfügt über eine Laufzeitabhängigkeit von .NET 4.5 Framework oder höher. Zum Zeitpunkt der Abfassung dieses Artikels ist für alle Computer, die für Azure Cloud Services bereitgestellt werden, sowie für alle Images, die auf virtuellen Azure-Computern basieren, .NET 4.5 oder höher installiert.
 
 Es kann trotzdem zu einer Situation kommen, in der Sie versuchen, die Windows Azure-Diagnoseerweiterung auf einem Computer auszuführen, der nicht über .NET 4.5 oder höher verfügt. Dies passiert, wenn Sie Ihren Computer aus einem alten Image oder einer alten Momentaufnahme erstellen oder einen eigenen benutzerdefinierten Datenträger verwenden.
 
-Hierbei tritt im Allgemeinen der Exitcode **255** auf, wenn **DiagnosticsPluginLauncher.exe** ausgeführt wird. Fehler aufgrund des folgenden Ausnahmefehlers: 
+Hierbei tritt im Allgemeinen der Exitcode **255** auf, wenn **DiagnosticsPluginLauncher.exe** ausgeführt wird. Fehler aufgrund des folgenden Ausnahmefehlers:
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
@@ -290,8 +290,6 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 Auf der Portaloberfläche auf den virtuellen Computern werden bestimmte Leistungsindikatoren standardmäßig angezeigt. Überprüfen Sie Folgendes, wenn die Leistungsindikatoren nicht angezeigt werden und Sie sicher sind, dass die Daten generiert werden, weil sie im Speicher verfügbar sind:
 
-- Haben die Daten im Speicher englische Indikatornamen? Wenn die Indikatornamen nicht auf Englisch sind, können sie vom Portalmetrikdiagramm nicht erkannt werden.
+- Haben die Daten im Speicher englische Indikatornamen? Wenn die Indikatornamen nicht auf Englisch sind, können sie vom Portalmetrikdiagramm nicht erkannt werden. **Lösung**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. Wählen Sie hierzu **Systemsteuerung** > **Region** > **Verwaltung** > **Einstellungen kopieren**. Deaktivieren Sie als Nächstes die Option **Willkommensseite und Systemkonten**, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird.
 
-- Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren.
-
-**Lösung**: Ändern Sie die Sprache des Computers für Systemkonten in Englisch. Wählen Sie hierzu **Systemsteuerung** > **Region** > **Verwaltung** > **Einstellungen kopieren**. Deaktivieren Sie als Nächstes die Option **Willkommensseite und Systemkonten**, damit die benutzerdefinierte Sprache nicht auf das Systemkonto angewendet wird. Stellen Sie auch sicher, dass Sie keine Platzhalter verwenden, wenn Sie das Portal als vorrangige Benutzeroberfläche nutzen möchten.
+- Wenn Sie in den Namen Ihrer Leistungsindikatoren Platzhalter (\*) verwenden, ist es für das Portal nicht möglich, den konfigurierten und erfassten Indikator zu korrelieren, wenn die Leistungsindikatoren an die Azure Storage-Senke gesendet werden. **Risikominderung**: Um sicherzustellen, dass Sie Platzhalter verwenden können und das Portal zudem den (\*) erweitert, leiten Sie Ihre Leistungsindikatoren an die [„Azure Monitor“-Senke](azure-diagnostics-schema.md#diagnostics-extension-111) weiter.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 9d2a20ce681ea7e7c4ff2f9b492653e9d9a57b2b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 630c8e5f48ba475755c3c9ffe632fcba086437e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248165"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983112"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -45,7 +45,7 @@ Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle:
 Sie können ein Speicherkonto oder Event Hubs-Namespace verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden RBAC-Zugriff auf beide Abonnements.
 
 > [!NOTE]
->  Sie können derzeit keine Daten in einem Speicherkonto archivieren, das sich hinter einem geschützten virtuellen Netzwerk befindet.
+>  Sie können derzeit keine Netzwerkflussprotokolle in einem Speicherkonto archivieren, das sich hinter einem geschützten virtuellen Netzwerk befindet.
 
 > [!WARNING]
 > Das Format der Protokolldaten im Speicherkonto wird am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./monitor-diagnostic-logs-append-blobs.md) 
@@ -145,9 +145,9 @@ Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen 
 
 Sie können derzeit keine Diagnoseeinstellungen für Mandanten mit Azure PowerShell konfigurieren.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen per Azure CLI 2.0
+### <a name="enable-collection-of-resource-diagnostic-logs-via-the-azure-cli"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen über die Azure CLI
 
-Zum Aktivieren der Auflistung von Ressourcendiagnoseprotokollen über die Azure CLI 2.0 verwenden Sie den Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
+Zum Aktivieren der Auflistung von Ressourcendiagnoseprotokollen über die Azure CLI verwenden Sie den Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 Aktivieren der Speicherung von Diagnoseprotokollen in einem Speicherkonto:
 

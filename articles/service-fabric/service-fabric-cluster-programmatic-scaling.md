@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: dcf4721012fb8ec39bcd1de02c294747357b3539
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ff02f79321823e42c25897e9de30dfbb6fac46b0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213060"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949617"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
 Service Fabric-Cluster, die in Azure ausgeführt werden, basieren auf VM-Skalierungsgruppen.  Im Artikel zur [Clusterskalierung](./service-fabric-cluster-scale-up-down.md) wird beschrieben, wie Service Fabric-Cluster entweder manuell oder mit Regeln für die automatische Skalierung skaliert werden können. In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen verwalten und einen Cluster horizontal hoch- oder herunterskalieren, indem Sie das Azure Fluent-Compute-SDK verwenden. Dies ist ein anspruchsvolleres Szenario. Eine Übersicht hierzu finden Sie in dem Artikel, in dem die [programmgesteuerten Methoden zum Koordinieren von Azure-Skalierungsvorgängen](service-fabric-cluster-scaling.md#programmatic-scaling) beschrieben werden. 
 
 ## <a name="manage-credentials"></a>Verwalten von Anmeldeinformationen
-Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit [Azure CLI 2.0](https://github.com/azure/azure-cli) erstellen [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
+Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit der [Azure CLI](https://github.com/azure/azure-cli) erstellen [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
 
 Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
 

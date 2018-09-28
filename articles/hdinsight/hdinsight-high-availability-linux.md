@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: c10ff022d54510c4fb81bf1f922aeaaf4e9036bb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104853"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953586"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
@@ -208,13 +208,13 @@ Wählen Sie auf der Ambari-Webbenutzeroberfläche den Dienst, für den Sie Proto
 
 Die Größe eines Knotens kann nur beim Erstellen des Clusters ausgewählt werden. Eine Liste der verschiedenen VM-Größen, die für HDInsight verfügbar sind, finden Sie auf der Seite [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die folgenden Informationen bieten eine Anleitung, wie die Größe im [Azure-Portal][preview-portal], mit [Azure PowerShell][azure-powershell] und mit der [Azure CLI][azure-cli] festgelegt werden kann:
+Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die folgenden Informationen bieten eine Anleitung, wie die Größe im [Azure-Portal][preview-portal], mit [Azure PowerShell][azure-powershell] und mit der [klassischen Azure CLI][azure-cli] festgelegt werden kann:
 
 * **Azure-Portal**: Beim Erstellen eines Clusters können Sie die Größe der vom Cluster genutzten Knoten festlegen:
 
     ![Screenshot des Assistenten zur Clustererstellung mit der Auswahl der Knotengröße](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure-Befehlszeilenschnittstelle**: Die Größe der Haupt-, Worker- und Zookeeper-Knoten kann bei Verwendung des Befehls `azure hdinsight cluster create` mit den Parametern `--headNodeSize`, `--workerNodeSize` und `--zookeeperNodeSize` angegeben werden.
+* **Klassische Azure CLI**: Die Größe der Haupt-, Worker- und ZooKeeper-Knoten kann bei Verwendung des Befehls `azure hdinsight cluster create` mit den Parametern `--headNodeSize`, `--workerNodeSize` und `--zookeeperNodeSize` angegeben werden.
 
 * **Azure PowerShell**: Die Größe der Haupt-, Worker- und Zookeeper-Knoten kann bei Verwendung des Cmdlets `New-AzureRmHDInsightCluster` mit den Parametern `-HeadNodeVMSize`, `-WorkerNodeSize` und `-ZookeeperNodeSize` angegeben werden.
 
@@ -223,7 +223,7 @@ Beim Erstellen eines Clusters können Sie die Größe der Knoten angeben. Die fo
 Über die folgenden Links erhalten Sie weiterführende Informationen.
 
 * [Ambari-REST-Referenz](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)
+* [Installieren der klassischen Azure CLI](../cli-install-nodejs.md)
 * [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)
 * [Verwalten von HDInsight mit Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Bereitstellen Linux-basierter HDInsight-Cluster](hdinsight-hadoop-provision-linux-clusters.md)

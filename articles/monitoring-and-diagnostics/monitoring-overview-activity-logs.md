@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 51cc4c37ba661feb63880c138e98200c981f6054
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918480"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948961"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -43,11 +43,12 @@ Sehen Sie sich dieses Video zum Aktivitätsprotokoll an.
 Das Aktivitätsprotokoll enthält verschiedene Kategorien von Daten. Umfassende Informationen zu den Schemas dieser Kategorien finden Sie in [diesem Artikel](monitoring-activity-log-schema.md). Das umfasst:
 * **Administration**: Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Zu den Ereignissen in dieser Kategorie gehören das Erstellen eines virtuellen Computers und das Löschen einer Netzwerksicherheitsgruppe. Jede Aktion, die von einem Benutzer oder einer Anwendung mithilfe von Resource Manager ausgeführt wird, wird als Vorgang für einen bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp „Schreiben“, „Löschen“ oder „Aktion“ ist, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Administration“ aufgezeichnet. Die Kategorie „Administration“ enthält außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement.
 * **Dienstintegrität**: Diese Kategorie enthält Datensätze zu allen Incidents im Zusammenhang mit der Dienstintegrität, die in Azure aufgetreten sind. Ein Beispiel für ein Ereignis in dieser Kategorie ist „Ausfallzeiten bei SQL Azure in der Region ‚USA, Osten‘“. Für Ereignisse zur Dienstintegrität gibt es fünf Varianten: Aktion erforderlich, unterstützte Wiederherstellung, Incident, Wartung, Information oder Sicherheit. Sie werden nur angezeigt, wenn eine Ressource in Ihrem Abonnement von dem Ereignis betroffen wäre.
+* **Ressourcenintegrität**: Diese Kategorie enthält Datensätze zu allen Ereignissen im Zusammenhang mit der Ressourcenintegrität, die für Ihre Azure-Ressourcen aufgetreten sind. Ein Beispiel für die Art der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Integritätsstatus des virtuellen Computers ist zu Nicht verfügbar gewechselt“. Ereignisse zur Ressourcenintegrität können einen von vier Integritätsstatus darstellen: Verfügbar, Nicht verfügbar, Heruntergestuft und Unbekannt. Darüber hinaus können Ereignisse zur Ressourcenintegrität kategorisiert werden. Dabei sind die Kategorien „Von der Plattform initiiert“ oder „Vom Benutzer initiiert“ verfügbar.
 * **Warnung**: Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnungen. Ein Beispiel für ein Ereignis in dieser Kategorie ist „CPU-Auslastung auf ‚myVM‘ liegt in den letzten 5 Minuten über 80“. Eine Vielzahl von Azure-Systemen weist ein Konzept für Warnungen auf: Sie können eine Regel definieren und erhalten eine Benachrichtigung, wenn die Bedingungen mit der Regel übereinstimmen. Jedes Mal, wenn ein unterstützter Azure-Warnungstyp „aktiviert“ wird oder die Bedingungen erfüllt sind, sodass eine Benachrichtigung generiert wird, wird ein Datensatz der Aktivierung auch in dieser Kategorie des Aktivitätsprotokolls abgelegt.
 * **Autoskalierung**: Diese Kategorie enthält Datensätze zu Ereignissen im Zusammenhang mit der Engine für die automatische Skalierung – basierend auf den Einstellungen für die automatische Skalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für Ereignisse in dieser Kategorie ist „Fehler beim automatischen zentralen Hochskalieren“. Mit der automatischen Skalierung können Sie die Anzahl der Instanzen eines unterstützten Ressourcentyps basierend auf der Tageszeit und/oder Lastdaten (Metrik) mithilfe einer Einstellung für die automatische Skalierung automatisch horizontal hoch- oder herunterskalieren. Wenn die Bedingungen zum zentralen Hoch- oder Herunterskalieren erfüllt sind, werden Ereignisse zum Start und zum Erfolg bzw. Fehler in dieser Kategorie aufgezeichnet.
 * **Empfehlung**: Diese Kategorie enthält Empfehlungsereignisse aus Azure Advisor.
 * **Sicherheit**: Diese Kategorie enthält Datensätze von Warnungen, die vom Azure Security Center generiert wurden. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
-* **Richtlinie und Ressourcenintegrität**: Diese Kategorien enthalten keine Ereignisse; sie sind für die künftige Verwendung reserviert.
+* **Richtlinie**: Diese Kategorie enthält keine Ereignisse, sie ist für die zukünftige Verwendung reserviert. 
 
 ## <a name="event-schema-per-category"></a>Ereignisschema nach Kategorie
 [Lesen Sie diesen Artikel, um sich über die Grundlagen des Aktivitätsprotokoll-Ereignisschemas nach Kategorie zu informieren.](monitoring-activity-log-schema.md)
@@ -146,11 +147,11 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| NAME |Ja |Name des Protokollprofils. |
+| NAME |JA |Name des Protokollprofils. |
 | StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein  |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Standort |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| Standort |JA |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
+| RetentionInDays |JA |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Category (Kategorie) |Nein  |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### <a name="remove-a-log-profile"></a>Entfernen eines Protokollprofils
@@ -158,7 +159,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Konfigurieren von Protokollprofilen mit der Azure CLI 2.0
+### <a name="configure-log-profiles-using-the-azure-cli"></a>Konfigurieren von Protokollprofilen mit der Azure CLI
 
 #### <a name="get-existing-log-profile"></a>Abrufen eines vorhandenen Protokollprofils
 

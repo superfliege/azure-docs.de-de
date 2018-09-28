@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426692"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989293"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
-Wenn eine [Warnung in Azure erstellt](monitor-alerts-unified-usage.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
+Wenn eine [Protokollwarnung in Azure erstellt](alert-log.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](monitoring-action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
 
 
 ## <a name="webhook-actions"></a>Webhookaktionen
 
-Mit Webhookaktionen können Sie einen externen Prozess über eine HTTP POST-Anforderung aufrufen.  Der aufgerufene Dienst sollte Webhooks unterstützen, und es sollte festgelegt werden, wie empfangene Nutzlasten verwendet werden.   Beispiele für die Verwendung eines Webhooks als Antwort auf eine Warnung sind das Senden einer Nachricht in [Slack](http://slack.com) oder Erstellen eines Vorfalls in [PagerDuty](http://pagerduty.com/).  
+Mit Webhookaktionen können Sie einen externen Prozess über eine HTTP POST-Anforderung aufrufen.  Der aufgerufene Dienst sollte Webhooks unterstützen, und es sollte festgelegt werden, wie empfangene Nutzlasten verwendet werden.    
 
 Für Webhookaktionen sind die in der folgenden Tabelle aufgeführten Eigenschaften erforderlich:
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Webhook-URL |Die URL des Webhooks. |
-| Benutzerdefinierte JSON-Nutzlast |Benutzerdefinierte Nutzlast zum Senden mit dem Webhook, wenn diese Option während der Warnungserstellung ausgewählt wird. Ausführliche Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor – Warnungen (Vorschauversion)](monitor-alerts-unified-usage.md). |
+| Benutzerdefinierte JSON-Nutzlast |Benutzerdefinierte Nutzlast zum Senden mit dem Webhook, wenn diese Option während der Warnungserstellung ausgewählt wird. Unter [Protokollwarnungen verwalten](alert-log.md) verfügbare Details |
 
 > [!NOTE]
-> Die Schaltfläche „Testwebhook“ neben der Option *Benutzerdefinierte JSON-Nutzlast für Webhook einschließen* für die Protokollwarnung löst einen Pseudoaufruf zum Testen der Webhook-URL aus. Es sind keine tatsächlichen Daten enthalten, und der Vorgang ist für ein JSON-Schema für Protokollwarnungen repräsentativ. 
+> Die Schaltfläche „Webhook anzeigen“ neben der Option *Benutzerdefinierte JSON-Nutzlast für Webhook einschließen* für die Protokollwarnung zeigt eine Beispielnutzlast für Webhook für die bereitgestellte Anpassung an. Es sind keine tatsächlichen Daten enthalten, und der Vorgang ist für ein JSON-Schema für Protokollwarnungen repräsentativ. 
 
 Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um die an den externen Dienst gesendeten Daten handelt.  Standardmäßig enthält die Nutzlast die Werte in der folgenden Tabelle: Sie können diese Nutzlast durch eine eigene benutzerdefinierte Nutzlast ersetzen, wenn Sie dies wünschen.  In diesem Fall können Sie die Variablen in der Tabelle für die einzelnen Parameter verwenden, um deren Wert in die benutzerdefinierte Nutzlast einzubinden.
 
@@ -54,7 +54,7 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | Abonnement-ID |#subscriptionid |ID Ihres Azure-Abonnements, das für Application Insights verwendet wird 
 
 > [!NOTE]
-> „LinkToSearchResults“ übergibt Parameter wie „SearchQuery“, „Startzeit für das Suchintervall“ und „Endzeit für das Suchintervall“ in der URL an das Azure-Portal, damit sie im Analytics-Abschnitt angezeigt werden können. Für das Azure-Portal gilt eine URI-Größenbeschränkung von etwa 2000 Zeichen. Es wird geöffnet, wenn Parameterwerte diese Beschränkung überschreiten. Benutzer können Details manuell eingeben, um die Ergebnisse im Analytics-Portal anzuzeigen. Sie können auch die [Application Insights Analytics-REST-API](https://dev.applicationinsights.io/documentation/Using-the-API) oder die [Log Analytics-REST-API](https://dev.loganalytics.io/reference) zum programmgesteuerten Abrufen der Ergebnisse verwenden. 
+> „LinkToSearchResults“ übergibt Parameter wie „SearchQuery“, „Startzeit für das Suchintervall“ und „Endzeit für das Suchintervall“ in der URL an das Azure-Portal, damit sie im Analytics-Abschnitt angezeigt werden können. Für das Azure-Portal gilt eine URI-Größenbeschränkung von etwa 2000 Zeichen. In Warnungen bereitgestellte Links werden *nicht* geöffnet, wenn Parameterwerte diese Beschränkung überschreiten. Benutzer können Details manuell eingeben, um die Ergebnisse im Analytics-Portal anzuzeigen. Sie können auch die [Application Insights Analytics-REST-API](https://dev.applicationinsights.io/documentation/Using-the-API) oder die [Log Analytics-REST-API](https://dev.loganalytics.io/reference) zum programmgesteuerten Abrufen der Ergebnisse verwenden. 
 
 Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält.  Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter.
 
@@ -198,6 +198,7 @@ Im Folgenden sehen Sie eine Beispielnutzlast für eine benutzerdefinierte Webhoo
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](monitor-alerts-unified-log.md).
+- Grundlegendes zur [Verwaltung von Protokollwarnungen in Azure](alert-log.md)
 - Erstellen und Verwalten von [Aktionsgruppen in Azure](monitoring-action-groups.md)
 - Weitere Informationen zu [Application Insights](../application-insights/app-insights-analytics.md)
 - Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md). 

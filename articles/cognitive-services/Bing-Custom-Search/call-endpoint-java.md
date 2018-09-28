@@ -9,34 +9,34 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 03d622e3c7a3315238f2bceedae529bbe06af299
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378502"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951813"
 ---
 # <a name="call-bing-custom-search-endpoint-java"></a>Aufrufen des Endpunkts für die benutzerdefinierte Bing-Suche (Java)
 
-Dieser Schnellstart veranschaulicht das Anfordern von Suchergebnissen aus Ihrer Instanz der benutzerdefinierten Suche unter Verwendung von Java zum Aufrufen des Endpunkts der benutzerdefinierten Bing-Suche. 
+Dieser Schnellstart veranschaulicht, wie Suchergebnisse aus Ihrer Instanz der benutzerdefinierten Suche mittels Java angefordert werden, um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
-- Eine Instanz der benutzerdefinierten Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 
+- Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
 - Installation von [Java](https://www.java.com)
-
-- Ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.
+- Abonnementschlüssel Sie erhalten einen Abonnementschlüssel, wenn Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktivieren, oder Sie können einen kostenpflichtigen Abonnementschlüssel über Ihr Azure-Dashboard beziehen (siehe [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgendermaßen vor:
+Führen Sie diese Schritte aus, um das Beispiel auszuführen:
 
-1. Erstellen Sie ein Paket mit der Java-IDE Ihrer Wahl.
-2. Erstellen Sie die Datei „CustomSrchJava.java“, und kopieren Sie den folgenden Code in diese:
-3. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Schlüssel bzw. Ihre Konfigurations-ID.
-
-    ``` Java
+1. Erstellen Sie ein Paket mit der Java-IDE Ihrer Wahl.  
+  
+2. Erstellen Sie eine Datei mit dem Namen „CustomSrchJava.java“ im Paket, und fügen Sie folgenden Code ein. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Abonnementschlüssel und Ihre Konfigurations-ID.  
+  
+    ```java
     import java.io.InputStream;
     import java.net.URL;
     import java.net.URLEncoder;
@@ -58,9 +58,9 @@ Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgend
         static String subscriptionKey = "YOUR-SUBSCRIPTION-KEY"; 
         static String customConfigId = "YOUR-CUSTOM-CONFIG-ID";  
     
-        static String searchTerm = "Microsoft";  // Replace with search term specific to your defined sources.
+        static String searchTerm = "Microsoft";  // Replace with search term specific to your search scenario.
     
-        public static SearchResults SearchImages (String searchQuery) throws Exception {
+        public static SearchResults SearchWeb (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
             URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchTerm, "UTF-8") + "&CustomConfig=" + customConfigId);
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -96,15 +96,15 @@ Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgend
     
         public static void main (String[] args) {
             if (subscriptionKey.length() != 32) {
-                System.out.println("Invalid Bing Search API subscription key!");
+                System.out.println("Invalid Custom Search subscription key!");
                 System.out.println("Please paste yours into the source code.");
                 System.exit(1);
             }
     
             try {
-                System.out.println("Searching the Web for: " + searchTerm);
+                System.out.println("Searching your slice of the Web for: " + searchTerm);
     
-                SearchResults result = SearchImages(searchTerm);
+                SearchResults result = SearchWeb(searchTerm);
     
                 System.out.println("\nRelevant HTTP Headers:\n");
                 for (String header : result.relevantHeaders.keySet())
@@ -130,11 +130,11 @@ Um den Endpunkt der benutzerdefinierten Bing-Suche aufzurufen, gehen Sie folgend
         }
     
     }
-    
-    ```
+    ```  
+  
 4. Führen Sie das Programm aus.
     
 ## <a name="next-steps"></a>Nächste Schritte
 - [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
-- [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](./hit-highlighting.md)
+- [Verwenden von Decorator-Markierungen zum Hervorheben von Text](./hit-highlighting.md)
 - [Einteilen von Webseiten](./page-webpages.md)

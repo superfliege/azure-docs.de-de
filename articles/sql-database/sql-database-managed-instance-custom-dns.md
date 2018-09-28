@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 09/23/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: be32bc4b3f91fbc71305ee9f16fec17ff472cd4c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2d1bb7e8522da32dd33933261ea41b578f8afac1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049574"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949484"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurieren eines benutzerdefinierten DNS für eine verwaltete Azure SQL-Datenbank-Instanz
 
-In einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) muss eine verwaltete Azure SQL-Datenbank-Instanz (Vorschauversion) bereitgestellt werden. Es gibt einige Szenarien (z.B. Verbindungsserver für andere SQL-Instanzen in Ihrer Cloud- oder Hybridumgebung), bei denen private Hostnamen von der verwalteten Instanz aufgelöst werden müssen. In diesem Fall müssen Sie einen benutzerdefinierten DNS in Azure konfigurieren. Da die verwaltete Instanz den gleichen DNS für deren interne Funktionsweise verwendet, muss die DNS-Konfiguration des virtuellen Netzwerks mit der verwalteten Instanz kompatibel sein. 
+In einem [virtuellen Azure-Netzwerk (VNET)](../virtual-network/virtual-networks-overview.md) muss eine verwaltete Azure SQL-Datenbank-Instanz bereitgestellt werden. Es gibt einige Szenarien (z.B. Verbindungsserver für andere SQL-Instanzen in Ihrer Cloud- oder Hybridumgebung), bei denen private Hostnamen von der verwalteten Instanz aufgelöst werden müssen. In diesem Fall müssen Sie einen benutzerdefinierten DNS in Azure konfigurieren. Da die verwaltete Instanz den gleichen DNS für deren interne Funktionsweise verwendet, muss die DNS-Konfiguration des virtuellen Netzwerks mit der verwalteten Instanz kompatibel sein. 
 
 Um dafür zu sorgen, dass eine benutzerdefinierte DNS-Konfiguration mit der verwalteten Instanz kompatibel ist, müssen Sie folgende Schritte ausführen: 
 - Konfigurieren Sie einen benutzerdefinierten DNS-Server für die Auflösung von öffentlichen Domänennamen. 

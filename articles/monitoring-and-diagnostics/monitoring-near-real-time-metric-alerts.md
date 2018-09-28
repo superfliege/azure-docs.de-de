@@ -1,6 +1,6 @@
 ---
-title: Unterstützte Ressourcen für neuere Azure Monitor-Metrikwarnungen
-description: Referenz zu Supportmetriken und -protokollen für neuere Azure-Metrikwarnungen nahezu in Echtzeit.
+title: Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
+description: Referenz zu Supportmetriken und -protokollen für Metrikwarnungen in Azure Monitor
 author: snehithm
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 019f245a7cc1feedcbd520c336f53a60ed1e9ddc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 102f087f31aa304aaaee49e0e39ff8c6874127b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579088"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966794"
 ---
-# <a name="supported-resources-for-newer-azure-monitor-metric-alerts"></a>Unterstützte Ressourcen für neuere Azure Monitor-Metrikwarnungen
-Azure Monitor unterstützt jetzt einen [neuen Metrikwarnungstyp](monitoring-overview-unified-alerts.md), der erhebliche Vorteile gegenüber älteren [klassischen Metrikwarnungen](insights-alerts-portal.md) aufweist. Metriken stehen für [eine umfangreiche Liste von Azure-Diensten](monitoring-supported-metrics.md) zur Verfügung. Die neueren Warnungen unterstützen eine (stetig wachsende) Teilmenge der Ressourcentypen. In diesem Artikel wird diese Teilmenge aufgeführt. 
+# <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
-Sie können neuere Metrikwarnungen auch für gängige Log Analytics-Protokolle verwenden, die als Metriken aus der Protokollvorschau extrahiert wurden.  
+Azure Monitor unterstützt jetzt einen [neuen Metrikwarnungstyp](monitoring-overview-unified-alerts.md), der erhebliche Vorteile gegenüber älteren [klassischen Metrikwarnungen](insights-alerts-portal.md) aufweist. Metriken stehen für [eine umfangreiche Liste von Azure-Diensten](monitoring-supported-metrics.md) zur Verfügung. Die neueren Warnungen unterstützen eine (stetig wachsende) Teilmenge der Ressourcentypen. In diesem Artikel wird diese Teilmenge aufgeführt.
+
+Sie können neuere Metrikwarnungen auch für gängige Log Analytics-Protokolle verwenden, die als Metriken aus Protokollen extrahiert wurden. 
 - [Leistungsindikatoren](../log-analytics/log-analytics-data-sources-performance-counters.md) für Windows- und Linux-Computer
 - [Heartbeat-Datensätze für Agent-Integritätsdiagnose](../operations-management-suite/oms-solution-agenthealth.md)
 - Datensätze der [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)
@@ -28,7 +29,7 @@ Sie können neuere Metrikwarnungen auch für gängige Log Analytics-Protokolle v
 > Bestimmte Metriken und/oder Dimensionen werden nur angezeigt, wenn im gewählten Zeitraum dafür Daten vorhanden sind. Diese Metriken sind für Kunden mit Azure Log Analytics-Arbeitsbereichen in folgenden den Regionen verfügbar: USA, Osten; USA, Westen-Mitte und Europa, Westen. Metriken aus Log Analytics befinden sich zurzeit in der öffentlichen Vorschau und unterliegt Änderungen.
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portal, PowerShell, Befehlszeilenschnittstelle, REST-Unterstützung
-Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal, in der [REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) oder in [Resource Manager-Vorlagen](monitoring-create-metric-alerts-with-templates.md) erstellen. Die Konfiguration neuerer Warnungen über PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI 2.0) wird in Kürze unterstützt.
+Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal, in der [REST-API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) oder in [Resource Manager-Vorlagen](monitoring-create-metric-alerts-with-templates.md) erstellen. Die Konfiguration neuerer Warnungen über PowerShell und die Azure-Befehlszeilenschnittstelle (Azure CLI, Version 2.0 und höher) wird in Kürze unterstützt.
 
 ## <a name="metrics-and-dimensions-supported"></a>Unterstützte Metriken und Dimensionen
 Neuere Metrikwarnungen unterstützen Warnungen für Metriken mit Dimensionen. Mithilfe von Dimensionen können Sie die Metrik nach der richtigen Ebene filtern. Sie können alle unterstützten Metriken und die dazugehörigen Dimensionen unter [Azure Monitor-Metrik-Explorer](monitoring-metric-charts.md) erkunden und visualisieren.
@@ -66,7 +67,9 @@ Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Storage/storageAccounts/services     |     JA    | [Blobdienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [Dateidienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [Warteschlangendienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) und [Tabellendienste](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  N/V       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | JA | [App Service-Pläne](monitoring-supported-metrics.md#microsoftwebserverfarms)  |
-|Microsoft.OperationalInsights/workspaces (Vorschau) | JA|[Log Analytics-Arbeitsbereiche](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
+| Microsoft.Web/sites | JA | [App Services](monitoring-supported-metrics.md#microsoftwebsites-excluding-functions) und [Functions](monitoring-supported-metrics.md#microsoftwebsites-functions)|
+| Microsoft.Web/sites/slots | JA | [App Service-Slots](monitoring-supported-metrics.md#microsoftwebsitesslots)|
+|Microsoft.OperationalInsights/workspaces| JA|[Log Analytics-Arbeitsbereiche](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
 
 
 

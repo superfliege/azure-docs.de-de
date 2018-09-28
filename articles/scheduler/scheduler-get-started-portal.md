@@ -1,155 +1,152 @@
 ---
-title: Erste Schritte mit Azure Scheduler im Azure-Portal | Microsoft Docs
-description: Erste Schritte mit Azure Scheduler im Azure-Portal
+title: Erstellen von geplanten Aufträgen mit Azure Scheduler – Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihren ersten automatisierten Auftrag mit Azure Scheduler im Azure-Portal erstellen, planen und ausführen können.
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/10/2016
+ms.suite: infrastructure-services
+author: derek1ee
 ms.author: deli
-ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: klam
+ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.topic: hero-article
+ms.date: 09/17/2018
+ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413429"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949586"
 ---
-# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Erste Schritte mit Azure Scheduler im Azure-Portal
-Das Erstellen geplanter Aufträge in Azure Scheduler ist einfach. In diesem Tutorial erfahren Sie, wie ein Auftrag erstellt wird. Außerdem erhalten Sie Informationen zu den Überwachungs- und Verwaltungsfunktionen von Scheduler.
+# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Erstellen und Planen des ersten Auftrags mit Azure Scheduler – Azure-Portal
 
-## <a name="create-a-job"></a>Erstellen eines Auftrags
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.  
-2. Klicken Sie auf **+Neu** > geben Sie im Suchfeld *Scheduler* ein > wählen Sie in den Ergebnissen **Scheduler** > klicken Sie auf **Erstellen**.
-   
-    ![][marketplace-create]
-3. In diesem Beispiel erstellen wir einen einfachen Auftrag mit einer GET-Anforderung für http://www.microsoft.com/. Geben Sie auf dem Bildschirm **Scheduler-Auftrag** die folgenden Informationen ein:
-   
-   1. **Name:**`getmicrosoft`  
-   2. **Abonnement:** Ihr Azure-Abonnement   
-   3. **Auftragssammlung:** Wählen Sie eine vorhandene Auftragssammlung aus, oder klicken Sie auf **Neu erstellen**, und geben Sie einen Namen ein.
-4. Definieren Sie dann unter **Aktionseinstellungen**die folgenden Werte:
-   
-   1. **Aktionstyp:**` HTTP`  
-   2. **Methode:**`GET`  
-   3. **URL:**` http://www.microsoft.com`  
-      
-      ![][action-settings]
-5. Jetzt definieren wir einen Zeitplan. Der Auftrag kann natürlich auch als einmaliger Auftrag definiert werden, in diesem Beispiel verwenden wir aber einen Wiederholungszeitplan.
-   
-   1. **Wiederholung**: `Recurring`
-   2. **Start**: Heutiges Datum
-   3. **Wiederholen alle**: `12 Hours`
-   4. **Endet am**: Zwei Tage nach dem heutigen Datum  
-      
-      ![][recurrence-schedule]
-6. Klicken Sie auf **Erstellen**
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) ersetzt Azure Scheduler, der eingestellt wird. Zum Planen von Aufträgen, sollten Sie [stattdessen Azure Logic Apps testen](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-## <a name="manage-and-monitor-jobs"></a>Verwalten und Überwachen Aufträgen
-Sobald ein Auftrag erstellt wurde, wird er im Azure-Hauptdashboard angezeigt. Wenn Sie auf den Auftrag klicken, wird ein neues Fenster mit folgenden Registerkarten angezeigt:
+In diesem Tutorial wird gezeigt, wie Sie einen Auftrag erstellen und planen und diesen Auftrag dann überwachen und verwalten können. 
 
-1. Eigenschaften  
-2. Aktionseinstellungen  
-3. Schedule  
-4. Verlauf
-5. Benutzer
+Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+
+## <a name="create-job"></a>Erstellen eines Auftrags
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.  
+
+1. Wählen Sie im Azure-Menü **Ressource erstellen** aus. Geben Sie „scheduler“ in das Suchfeld ein. Wählen Sie in der Ergebnisliste **Scheduler** und dann **Erstellen** aus.
+
+   ![Erstellen einer Ressource in Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
+
+   Erstellen Sie nun einen Auftrag, der eine GET-Anforderung an die folgende URL sendet: `http://www.microsoft.com/` 
+
+1. Geben Sie unter **Scheduler-Auftrag** folgende Informationen ein:
+
+   | Eigenschaft | Beispielwert | BESCHREIBUNG |
+   |----------|---------------|-------------| 
+   | **Name** | getMicrosoft | Der Name für Ihren Auftrag. | 
+   | **Auftragssammlung** | <*job-collection-name*> | Erstellen Sie eine Auftragssammlung, oder wählen Sie eine vorhandene Sammlung aus. | 
+   | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements | 
+   |||| 
+
+1. Wählen Sie **Aktionseinstellungen – Konfigurieren** aus, geben Sie die jeweiligen Informationen ein, und klicken Sie dann auf **OK**:
+
+   | Eigenschaft | Beispielwert | BESCHREIBUNG |
+   |----------|---------------|-------------| 
+   | **Aktion** | **Http** | Der Typ der auszuführenden Aktion. | 
+   | **Methode** | **Get** | Die aufzurufende Methode. | 
+   | **URL** | **http://www.microsoft.com** | Die Ziel-URL. | 
+   |||| 
    
-   ![][job-overview]
+   ![Definieren eines Auftrags](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)
+
+1. Wählen Sie **Zeitplan – Konfigurieren** aus, definieren Sie den Zeitplan, und klicken Sie dann auf **OK**:
+
+   Sie können zwar einen einmaligen Auftrag erstellen, in diesem Beispiel wird jedoch ein Wiederholungszeitplan eingerichtet.
+
+   | Eigenschaft | Beispielwert | BESCHREIBUNG |
+   |----------|---------------|-------------| 
+   | **Serie** | **Serie** | Ein einmaliger Auftrag oder ein wiederkehrender Auftrag | 
+   | **Start am** | <*today's-date*> | Startdatum des Auftrags | 
+   | **Wiederholen alle** | **Stündlich** | Das Wiederholungsintervall und die Häufigkeit. | 
+   | **Ende** | **Endet am**: Zwei Tage nach dem heutigen Datum | Enddatum des Auftrags | 
+   | **UTC-Abweichung** | **UTC +08:00** | Der Zeitunterschied zwischen Coordinated Universal Time (UTC) und dem beobachteten Zeitpunkt Ihres Standorts | 
+   |||| 
+
+   ![Definieren eines Zeitplans](./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png)
+
+1. Wählen Sie abschließend **Erstellen** aus.
+
+   Nach der Erstellung Ihres Auftrags stellt Azure Ihren Auftrag bereit, der auf dem Azure-Dashboard angezeigt wird. 
+
+1. Wenn in Azure eine Benachrichtigung angezeigt wird, dass die Bereitstellung erfolgreich war, klicken Sie auf **An Dashboard anheften**. Klicken Sie andernfalls auf der Azure-Symbolleiste auf das Symbol **Benachrichtigungen** (Glocke) und dann auf **An Dashboard anheften**.
+
+## <a name="monitor-and-manage-jobs"></a>Überwachen und Verwalten von Aufträgen
+
+Um Ihren Auftrag zu überprüfen, zu überwachen und zu verwalten, wählen Sie ihn auf dem Azure-Dashboard aus. Unter **Einstellungen** werden die Bereiche angezeigt, die Sie für Ihren Auftrag überprüfen und verwalten können:
+
+![Auftragseinstellungen](./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png)
+
+Um weitere Informationen zu diesen Bereichen anzuzeigen, wählen Sie einen Bereich aus:
+
+* [**Eigenschaften**](#properties)
+* [**Aktionseinstellungen**](#action-settings)
+* [**Zeitplan**](#schedule)
+* [**Verlauf**](#history)
+* [**Benutzer**](#users)
+
+<a name="properties"></a>
 
 ### <a name="properties"></a>Eigenschaften
-Diese schreibgeschützte Eigenschaften beschreiben die Metadaten für den Scheduler-Auftrag.
 
-   ![][job-properties]
+Um schreibgeschützte Eigenschaften anzuzeigen, die die Verwaltungsmetadaten für Ihren Auftrag beschreiben, klicken Sie auf **Eigenschaften**.
+
+![Anzeigen von Auftragseigenschaften](./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png)
+
+<a name="action-settings"></a>
 
 ### <a name="action-settings"></a>Aktionseinstellungen
-Wenn Sie auf dem Bildschirm **Aufträge** auf einen Auftrag klicken, können Sie diesen konfigurieren. Hier können Sie erweiterte Einstellungen konfigurieren, wenn Sie diese nicht bereits im Schnellerstellungs-Assistenten konfiguriert haben.
 
-Sie können die Wiederholungsrichtlinie und die Fehleraktion für alle Aktionstypen ändern.
+Um die erweiterten Einstellungen Ihres Auftrags zu ändern, klicken Sie auf **Aktionseinstellungen**. 
 
-Bei HTTP- und HTTPS Auftragsaktionstypen können Sie für die Methode ein beliebiges zulässiges HTTP-Verb festlegen. Darüber hinaus können Sie die Header sowie grundlegende Authentifizierungsinformationen hinzufügen, löschen oder ändern.
+![Überprüfen von Aktionseinstellungen](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-Bei Speicherwarteschlangen-Aktionstypen können Sie das Speicherkonto, den Warteschlangennamen, das SAS-Token und den Text ändern.
+| Aktionstyp | BESCHREIBUNG | 
+|-------------|-------------| 
+| Alle Typen | Sie können die Einstellung **Wiederholungsrichtlinie** und die **Fehleraktion** ändern. | 
+| HTTP und HTTPS | Sie können die **Methode** in eine zulässige Methode ändern. Darüber hinaus können Sie die Header sowie Standardauthentifizierungsinformationen hinzufügen, löschen oder ändern. | 
+| Speicherwarteschlange| Sie können das Speicherkonto, den Warteschlangennamen, den SAS-Token und den Text ändern. | 
+| Service Bus | Sie können den Namespace, den Thema- oder Warteschlangenpfad, die Authentifizierungseinstellungen, den Transporttyp, die Nachrichteneigenschaften und den Nachrichtentext ändern. | 
+||| 
 
-Für Service Bus-Aktionstypen können Sie den Namespace, den Thema-/Warteschlangenpfad, die Authentifizierungseinstellungen, den  Transporttyp, die Nachrichteneigenschaften und den Nachrichtentext ändern.
+<a name="schedule"></a>
 
-   ![][job-action-settings]
+### <a name="schedule"></a>Schedule
 
-### <a name="schedule"></a>Zeitplan
-Damit können Sie den Zeitplan neu konfigurieren, wenn Sie den im Schnellerstellungs-Assistenten erstellten Zeitplan ändern möchten.
+Wenn Sie einen Zeitplan über den Auftragsassistenten einrichten, können Sie diesen Zeitplan ändern, z.B. Startdatum und -zeit, Wiederholungszeitplan und Enddatum und -zeit für wiederkehrende Aufträge.
+Zudem können Sie [komplexere Zeitpläne und fortgeschrittener Serien erstellen](scheduler-advanced-complexity.md).
 
-Dies ist eine Möglichkeit zum Erstellen [komplexer Zeitpläne und erweiterter Serien in Ihrem Auftrag](scheduler-advanced-complexity.md)
+Um die Ansicht anzuzeigen oder Ihren Auftragszeitplan zu ändern, klicken Sie auf **Zeitplan**:
 
-Sie können die Startzeit (Datum und Uhrzeit), den Wiederholungszeitplan und die Endzeit (Datum und Uhrzeit) ändern (sofern es sich um einen wiederkehrenden Auftrag handelt).
+![Anzeigen des Auftragszeitplans](./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png)
 
-   ![][job-schedule]
+<a name="history"></a>
 
 ### <a name="history"></a>Verlauf
-Die Registerkarte **Verlauf** zeigt ausgewählte Metriken für jede Auftragsausführung im System für den ausgewählten Auftrag an. Diese Metriken liefern Echtzeitwerte zum Status von Scheduler:
 
-1. Status  
-2. Details  
-3. Wiederholungsversuche
-4. Vorkommen: 1., 2., 3. usw.
-5. Startzeit der Ausführung  
-6. Endzeit der Ausführung
-   
-   ![][job-history]
+Um Metriken zu jeder Ausführung für einen ausgewählten Auftrag anzuzeigen, klicken Sie auf **Verlauf**. Diese Metriken liefern Echtzeitwerte zur Integrität Ihres Auftrags, wie Status, Anzahl von Wiederholungen, Anzahl der Vorkommen, Startzeit und Endzeit.
 
-Klicken Sie auf eine Ausführung, um die **Verlaufsdetails**anzuzeigen, einschließlich der vollständigen Antwort für jede Ausführung. In diesem Dialogfeld können Sie auch die Antwort in die Zwischenablage kopieren.
+![Anzeigen des Auftragsverlaufs und der Metriken](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png)
 
-   ![][job-history-details]
+Um die Details zum Verlauf der einzelnen Ausführungen anzuzeigen (z.B. vollständige Antwort für jede Ausführung), wählen Sie unter **Verlauf** die jeweilige Ausführung aus. 
+
+![Anzeigen von Auftragsverlaufsdetails](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png)
+
+<a name="users"></a>
 
 ### <a name="users"></a>Benutzer
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure Scheduler. Informationen zur Verwendung der Registerkarte „Benutzer“ finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="see-also"></a>Weitere Informationen
- [Was ist Azure Scheduler?](scheduler-intro.md)
+Mit der rollenbasierten Zugriffssteuerung (RBAC) in Azure können Sie den Zugriff auf Azure Scheduler für jeden Benutzer auf granularer Ebene verwalten. Informationen zum Einrichten des Zugriffs basierend auf Rollen finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
 
- [Scheduler-Konzepte, -Terminologie und -Entitätshierarchie](scheduler-concepts-terms.md)
+## <a name="next-steps"></a>Nächste Schritte
 
- [Pläne und Abrechnung in Azure Scheduler](scheduler-plans-billing.md)
-
- [Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler](scheduler-advanced-complexity.md)
-
- [Scheduler-REST-API – Referenz](https://msdn.microsoft.com/library/mt629143)
-
- [Scheduler – PowerShell-Cmdlets-Referenz](scheduler-powershell-reference.md)
-
- [Scheduler – hohe Verfügbarkeit und Zuverlässigkeit](scheduler-high-availability-reliability.md)
-
- [Einschränkungen, Standardwerte und Fehlercodes für Scheduler](scheduler-limits-defaults-errors.md)
-
- [Ausgehende Authentifizierung von Scheduler](scheduler-outbound-authentication.md)
-
-[marketplace-create]: ./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png
-[action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png
-[recurrence-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png
-[job-properties]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png
-[job-overview]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png
-[job-action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png
-[job-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png
-[job-history]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png
-[job-history-details]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png
-
-
-[1]: ./media/scheduler-get-started-portal/scheduler-get-started-portal001.png
-[2]: ./media/scheduler-get-started-portal/scheduler-get-started-portal002.png
-[3]: ./media/scheduler-get-started-portal/scheduler-get-started-portal003.png
-[4]: ./media/scheduler-get-started-portal/scheduler-get-started-portal004.png
-[5]: ./media/scheduler-get-started-portal/scheduler-get-started-portal005.png
-[6]: ./media/scheduler-get-started-portal/scheduler-get-started-portal006.png
-[7]: ./media/scheduler-get-started-portal/scheduler-get-started-portal007.png
-[8]: ./media/scheduler-get-started-portal/scheduler-get-started-portal008.png
-[9]: ./media/scheduler-get-started-portal/scheduler-get-started-portal009.png
-[10]: ./media/scheduler-get-started-portal/scheduler-get-started-portal010.png
-[11]: ./media/scheduler-get-started-portal/scheduler-get-started-portal011.png
-[12]: ./media/scheduler-get-started-portal/scheduler-get-started-portal012.png
-[13]: ./media/scheduler-get-started-portal/scheduler-get-started-portal013.png
-[14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
-[15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
+* Erfahren Sie mehr über [Konzepte, Terminologie und Entitäten in Azure Scheduler](scheduler-concepts-terms.md).
+* [Erstellen von erweiterten Zeitplänen und Wiederholungen für Aufträge im Azure Scheduler](scheduler-advanced-complexity.md)
+* Erfahren Sie mehr über die [Hochverfügbarkeit und Zuverlässigkeit bei Azure Scheduler](scheduler-high-availability-reliability.md).
+* Erfahren Sie mehr über [Grenzwerte, Kontingente und Drosselungsschwellenwerte im Azure Scheduler](scheduler-limits-defaults-errors.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264087"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978418"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor-Metrik-Explorer
 
@@ -29,37 +29,7 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
 Metriken in Microsoft Azure sind eine Reihe von gemessenen Werten und Zahlen, die im Laufe der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken hingegen werden von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) an Azure gesendet. Zusammen mit anderen anwendungsspezifischen Metriken werden benutzerdefinierte Metriken in den Application Insights-Ressourcen gespeichert.
 
-## <a name="what-are-multi-dimensional-metrics"></a>Was sind mehrdimensionale Metriken?
 
-Eine Vielzahl der Azure-Ressourcen weisen nun mehrdimensionale Metriken auf. Diese Metriken verfolgen verschiedene Werte für eine oder mehrere benannte Dimensionen nach. Eine Metrik namens „Verfügbarer Speicherplatz“ kann z.B. eine Dimension mit dem Namen „Laufwerk“ und den Werten „C:“ und „D:“ aufweisen. In diesem Fall kann der verfügbare Speicherplatz entweder für beide Laufwerke oder für jedes Laufwerk separat angezeigt werden. 
-
-Im folgenden Beispiel werden zwei Datasets für eine hypothetische Metrik namens „Netzwerkdurchsatz“ dargestellt. Das erste Dataset weist keine Dimensionen auf. Das zweite Dataset enthält Werte mit den zwei Dimensionen „IP-Adresse“ und „Richtung“:
-
-### <a name="network-throughput"></a>Netzwerkdurchsatz
-(Diese Metrik weist keine Dimensionen auf.)
-
- |Zeitstempel        | Metrikwert | 
-   | ------------- |:-------------| 
-   | 8/9/2017 8:14 | 1.331,8 KBit/s | 
-   | 8/9/2017 8:15 | 1.141,4 KBit/s |
-   | 8/9/2017 8:16 | 1.110,2 KBit/s |
-
-Diese nichtdimensionale Metrik kann nur grundlegende Fragen wie etwa Folgende beantworten: „Wie hoch war mein Netzwerkdurchsatz zu einem bestimmten Zeitpunkt?“.
-
-### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Netzwerkdurchsatz mit zwei Dimensionen („IP“ und „Richtung“)
-
-| Zeitstempel          | Dimension „IP“ | Dimension „Richtung“ | Metrikwert| 
-   | ------------- |:-----------------|:------------------- |:-----------|  
-   | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Send"    | 646,5 KBit/s |
-   | 8/9/2017 8:14 | IP="192.168.5.2" | Direction="Receive" | 420,1 KBit/s |
-   | 8/9/2017 8:14 | IP="10.24.2.15"  | Direction="Send"    | 150,0 KBit/s | 
-   | 8/9/2017 8:14 | IP="10.24.2.15"  | Direction="Receive" | 115,2 KBit/s |
-   | 8/9/2017 8:15 | IP="192.168.5.2" | Direction="Send"    | 515,2 KBit/s |
-   | 8/9/2017 8:15 | IP="192.168.5.2" | Direction="Receive" | 371,1 KBit/s |
-   | 8/9/2017 8:15 | IP="10.24.2.15"  | Direction="Send"    | 155,0 KBit/s |
-   | 8/9/2017 8:15 | IP="10.24.2.15"  | Direction="Receive" | 100,1 KBit/s |
-
-Diese Metrik kann Fragen wie die folgenden beantworten: „Wie hoch war der Netzwerkdurchsatz für jede IP-Adresse?“ und „Wie viele Daten wurden gesendet und empfangen?“. Mehrdimensionale Metriken enthalten im Gegensatz zu nichtdimensionalen Metriken zusätzlich einen Analyse- und Diagnosewert. 
 
 ## <a name="how-do-i-create-a-new-chart"></a>Wie erstelle ich ein neues Diagramm?
 
@@ -69,24 +39,24 @@ Diese Metrik kann Fragen wie die folgenden beantworten: „Wie hoch war der Netz
 1. Öffnen Sie das Azure-Portal.
 2. Navigieren Sie zur neuen Registerkarte **Überwachen**, und wählen Sie dann die Option **Metriken (Vorschau)** aus.
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/001.png)
+   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0001.png)
 
 3. Der **Metrikselektor** wird automatisch für Sie geöffnet. Wählen Sie eine Ressource aus der Liste aus, um die zugehörigen Metriken anzuzeigen. Nur Ressourcen mit Metriken werden in der Liste angezeigt.
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/002.png)
+   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
    >Wenn Sie mehrere Azure-Abonnements besitzen, ruft der Metrik-Explorer die Ressourcen aller Abonnements ab, die in der Liste unter „Portaleinstellungen“ > „Nach Abonnements filtern“ ausgewählt sind. Um dies zu ändern, klicken Sie oben auf dem Bildschirm unter „Portaleinstellungen“ auf das Zahnradsymbol, und wählen Sie die Abonnements aus, die Sie verwenden möchten.
 
-4. Für einige Ressourcentypen (d.h. Speicherkonten und virtuelle Computer) müssen Sie vor der Auswahl einer Metrik einen **Subdienst** auswählen. Jeder Subdienst ist mit einer eigenen Gruppe von Metriken ausgestattet, die nur für den jeweiligen Subdienst und nicht für andere Subdienste relevant sind.
+4. Für einige Ressourcentypen (d. h. Speicherkonten und virtuelle Computer) müssen Sie vor der Auswahl einer Metrik einen **Namespace** auswählen. Jeder Namespace ist mit einer eigenen Gruppe von Metriken ausgestattet, die nur für den jeweiligen Namespace und nicht für andere Namespaces relevant sind.
 
    Beispielsweise weist jede Azure Storage-Instanz Metriken für die Subdienste „Blobs“, „Dateien“, „Warteschlangen“ und „Tabellen“ auf, die alle zum Speicherkonto gehören. Die Metrik „Anzahl der Warteschlangenmeldungen“ gilt jedoch folgerichtig für den Subdienst „Warteschlange“ und nicht für andere Subdienste des Speicherkontos.
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/003.png)
+   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0003.png)
 
 5. Wählen Sie in der Liste eine Metrik aus. Wenn Sie einen Teil des Namens der gewünschten Metrik kennen, können Sie diesen bereits eingeben. Daraufhin wird eine gefilterte Liste der verfügbaren Metriken angezeigt:
 
-   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/004.png)
+   ![Abbildung der Ansicht „Metriken (Vorschau)“](./media/monitoring-metric-charts/0004.png)
 
 6. Nach der Auswahl einer Metrik wird das Diagramm mit der Standardaggregation für die ausgewählte Metrik gerendert. An dieser Stelle können Sie einfach außerhalb des **Metrikselektors** klicken, um ihn zu schließen. Optional können Sie auch in eine andere Aggregation des Diagramms wechseln. Bei einigen Metriken können Sie beim Wechseln der Aggregation auswählen, welcher Wert im Diagramm angezeigt werden soll. Beispielsweise können Sie zwischen den durchschnittlichen, minimalen und maximalen Werten wechseln. 
 
@@ -105,15 +75,15 @@ Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweise
 
 2. Wählen Sie aus, nach welcher Dimension (Eigenschaft) gefiltert werden soll.
 
-   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/006.png)
+   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/0006.png)
 
 3. Wählen Sie beim Zeichnen des Diagramms aus, welche Dimensionswerte eingeschlossen werden sollen (in diesem Beispiel werden die Filterergebnisse erfolgreicher Speichertransaktionen gezeigt):
 
-   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/007.png)
+   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/0007.png)
 
 4. Klicken Sie nach der Auswahl der Filterwerte außerhalb des Filterselektors, um ihn zu schließen. Nun zeigt das Diagramm an, wie viele Speichertransaktionen fehlerhaft sind:
 
-   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/008.png)
+   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/0008.png)
 
 5. Sie können die Schritte 1 bis 4 wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
 
@@ -130,11 +100,11 @@ Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segment
 
 2. Wählen Sie eine Dimension, in der Ihr Diagramm segmentiert werden soll: 
 
-   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/010.png)
+   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/0010.png)
 
    Das Diagramm zeigt nun mehrere Zeilen an, eine Zeile für jedes Segment der Dimension:
 
-   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/012.png)
+   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/0012.png)
 
 3. Klicken Sie außerhalb des **Gruppierungsselektors**, um ihn zu schließen.
 
@@ -149,7 +119,7 @@ So heften Sie ein konfiguriertes Diagramm an ein Dashboard an
 
 Klicken Sie nach der Konfiguration Ihres Diagramms rechts oben im Diagramm auf das Menü **Diagrammaktionen** und dann auf **An Dashboard anheften**.
 
-   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/013.png)
+   ![Abbildung eines Diagramms mit Metriken](./media/monitoring-metric-charts/0013.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

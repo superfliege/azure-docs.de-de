@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 56223b2ed8e9d9b1a08f5313940920113a650bfe
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f515ddc58a9f9b434e40f44ca7cc50d738ed69f0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128331"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993115"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Installieren der Azure IoT Edge-Runtime unter Linux (x64)
 
@@ -202,6 +202,8 @@ sudo iotedge list
 Sie benötigen erhöhte Rechte zum Ausführen von `iotedge`-Befehlen. Melden Sie sich der Installation der Runtime von Ihrem Computer ab und anschließend wieder an, um Ihres Berechtigungen automatisch zu aktualisieren. Verwenden Sie bis dahin **sudo** vor allen `iotedge`-Befehlen.
 
 Auf Geräten mit Ressourceneinschränkungen wird dringend empfohlen, die Umgebungsvariable *OptimizeForPerformance* auf *false* zu setzen, wie im [Leitfaden zur Problembehandlung][lnk-trouble] beschrieben.
+
+Wenn Ihr Netzwerk über einen Proxyserver verfügt, befolgen Sie die Schritte in [Konfigurieren eines IoT Edge-Geräts zur Kommunikation über einen Proxyserver](how-to-configure-proxy-support.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

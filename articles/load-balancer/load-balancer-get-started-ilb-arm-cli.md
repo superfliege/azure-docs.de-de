@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines internen Load Balancers im Tarif „Basic“ – Azure CLI 2.0 | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie mit Azure CLI 2.0 einen internen Load Balancer erstellen.
+title: Erstellen eines internen Load Balancers im Tarif „Basic“ – Azure CLI | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit der Azure CLI einen internen Load Balancer erstellen.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: kumud
-ms.openlocfilehash: bd4dda835279a21509f77814f4d5f9e30e8a42c1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7e556d3900d257410050e37b714d2005675e185d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439197"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967709"
 ---
-# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli-20"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit Azure CLI 2.0
+# <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI
 
 In diesem Artikel wird veranschaulicht, wie Sie einen internen Load Balancer erstellen, um einen Lastenausgleich für VMs durchzuführen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Ubuntu-Server zum Durchführen eines Lastenausgleichs für eine Web-App bereit.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.28 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

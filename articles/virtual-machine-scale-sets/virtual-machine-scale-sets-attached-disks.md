@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 4dd13f1feedf53255daa351bd087845ec5cc845a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cfe49e7f4e3692518c890b48582a2f4a6aa16faa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187867"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952459"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure-VM-Skalierungsgruppen und angefügte Datenträger
 Zur Erweiterung des verfügbaren Speicherplatzes unterstützen [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) VM-Instanzen mit angefügten Datenträgern. Datenträger können einer Skalierungsgruppe beim Erstellen der Skalierungsgruppe oder zu einem späteren Zeitpunkt hinzugefügt werden.
 
 > [!NOTE]
->  Wenn Sie eine Skalierungsgruppe mit angefügten Datenträgern erstellen, müssen Sie die Datenträger über einen virtuellen Computer einbinden und formatieren, um sie verwenden zu können – genau wie bei eigenständigen virtuellen Azure-Computern. Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Skript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren. Beispiele hierzu finden Sie unter [Azure CLI 2.0](tutorial-use-disks-cli.md#prepare-the-data-disks) bzw. unter [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
+>  Wenn Sie eine Skalierungsgruppe mit angefügten Datenträgern erstellen, müssen Sie die Datenträger über einen virtuellen Computer einbinden und formatieren, um sie verwenden zu können – genau wie bei eigenständigen virtuellen Azure-Computern. Eine einfache Möglichkeit ist die Verwendung einer benutzerdefinierten Skripterweiterung, die ein Skript aufruft, um alle Datenträger auf einem virtuellen Computer zu partitionieren und zu formatieren. Beispiele hierzu finden Sie unter [Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) bzw. unter [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks).
 
 
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>Erstellen und Verwalten von Datenträgern in einer Skalierungsgruppe
 Ausführliche Informationen zum Erstellen einer Skalierungsgruppe mit angefügten Datenträgern, zum Vorbereiten und Formatieren sowie zum Hinzufügen und Entfernen von Datenträgern finden Sie in den folgenden Tutorials:
 
-- [Azure CLI 2.0](tutorial-use-disks-cli.md)
+- [Azure-CLI](tutorial-use-disks-cli.md)
 - [Azure PowerShell](tutorial-use-disks-powershell.md)
 
 Im weiteren Verlauf dieses Artikels werden bestimmte Verwendungsfälle behandelt – beispielsweise Service Fabric-Cluster, die Datenträger benötigen, oder das Anfügen vorhandener Datenträger mit Inhalt an eine Skalierungsgruppe.

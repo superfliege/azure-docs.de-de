@@ -11,14 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 5a772f8792c02139e45977e207b5be4bebc63a9c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a2dff4dd57bdb0b010bbb4568d796f1e197a728
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906326"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971500"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Beibehalten von Änderungen und Arbeiten mit großen Dateien
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Mit dem Azure Machine Learning-Experimentieren-Dienst können Sie viele verschiedene Ausführungsziele konfigurieren. Einige Ziele sind lokale Ziele, z.B. ein lokaler Computer oder ein Docker-Container auf einem lokalen Computer. Andere Ziele sind Remoteziele, z.B. ein Docker-Container auf einem Remotecomputer oder ein HDInsight-Cluster. Weitere Informationen finden Sie unter [Übersicht über den Azure Machine Learning-Experimentieren-Ausführungsdienst](experimentation-service-configuration.md). 
 
 Bevor die Ausführung auf einem Ziel möglich ist, müssen Sie den Projektordner auf das Computeziel kopieren. Dies ist auch bei einer lokalen Ausführung erforderlich, bei der für diesen Zweck ein lokaler temporärer Ordner verwendet wird. 
@@ -48,6 +52,9 @@ Gängige Anwendungsfälle:
 * Trainieren eines Modells
 * Erstellen eines Datasets
 * Plotten eines Graphen als Imagedatei im Rahmen Ihrer Trainingsausführung für Modelle 
+
+>[!Note]
+> Max. Größe der nachverfolgten Datei im outputs-Ordner nach der Ausführung: 512MB. Dies bedeutet Folgendes: Wenn Ihr Skript im Ordner „Outputs“ eine Datei erzeugt, die größer als 512 MB ist, wird sie hier nicht in die Sammlung einbezogen. 
 
 Außerdem ist es ratsam, diese Ausgaben für mehrere Ausführungen zu vergleichen, eine Ausgabedatei auszuwählen (z.B. ein Modell), die bei einer vorherigen Ausführung erstellt wurde, und die Datei dann für eine nachfolgende Aufgabe (z.B. eine Bewertung) zu nutzen.
 

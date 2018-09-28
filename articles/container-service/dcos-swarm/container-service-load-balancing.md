@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 7e71b279d6681696b8666846cfbd27007f464679
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 8e8ad913c6e5b8e947b17ed8920285de3fcfd8ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37864858"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964359"
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Durchführen des Lastenausgleichs für Container in einem Azure Container Service-DC/OS-Cluster
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie einen internen Lastenausgleich in ei
 
 Sie benötigen einen ACS DC/OS-Cluster, um die Schritte in diesem Tutorial auszuführen. Bei Bedarf können Sie mit diesem [Beispielskript](./../kubernetes/scripts/container-service-cli-deploy-dcos.md) einen erstellen.
 
-Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle]( /cli/azure/install-azure-cli) weitere Informationen. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

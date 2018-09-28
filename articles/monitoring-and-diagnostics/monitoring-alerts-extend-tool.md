@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 21ba95a7b3efff177afe63d22da3f6ba9848ded2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301030"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990245"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Erweitern von Warnungen aus Log Analytics in Azure-Warnungen
 Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im Rahmen dieses Übergangs werden Warnungen, die Sie ursprünglich in Log Analytics konfiguriert haben, auf Azure erweitert. Wenn Sie nicht warten möchten, bis diese automatisch in Azure verschoben werden, können Sie den Prozess auslösen:
@@ -22,7 +22,7 @@ Die Warnfunktion in Azure Log Analytics wird durch Azure-Warnungen ersetzt. Im R
 - Programmgesteuert mithilfe der AlertsVersion-API  
 
 > [!NOTE]
-> Ab dem 14. Mai 2018 erweitert Microsoft in Log Analytics erstellte Warnungen automatisch in einer wiederholten Serie bis zum vollständigen Abschluss auf Azure-Warnungen. Microsoft legt die Migration der Warnungen zu Azure in einem Zeitplan fest. Während dieses Übergangs können Warnungen sowohl über das Operations Management Suite-Portal als auch über das Azure-Portal verwaltet werden. Bei diesem Vorgang wird nichts zerstört oder unterbrochen.  
+> Ab dem 14. Mai 2018 erweitert Microsoft in Public Cloud-Instanzen von Log Analytics erstellte Warnungen automatisch in einer wiederholten Serie bis zum vollständigen Abschluss auf Azure-Warnungen. Wenn beim Erstellen von [Aktionsgruppen](monitoring-action-groups.md) irgendwelche Probleme auftreten, verwenden Sie [diese Wartungsschritte](monitoring-alerts-extend-tool.md#troubleshooting), um Aktionsgruppen automatisch erstellen zu lassen. Sie können diese Schritte bis zum 5. Juli 2018 verwenden. *Gilt nicht für Azure Goverment und Soveriegn-Cloudbenutzer von Log Analytics*. 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Option 1: Starten über das Operations Management Suite-Portal
 Die folgenden Schritte beschreiben, wie Sie Warnungen für den Arbeitsbereich über das Operations Management Suite-Portal erweitern.  
@@ -457,7 +457,7 @@ Das Skript ist sehr detailliert und gibt während der Ausführung die einzelnen 
 Bei der Erweiterung von Warnungen können Probleme verhindern, dass das System die erforderlichen [Aktionsgruppen](monitoring-action-groups.md) erstellt. In solchen Fällen wird Ihnen eine Fehlermeldung in einem Banner im Abschnitt **Warnung** des Operations Management Suite-Portals oder im an die API gerichteten GET-Aufruf angezeigt.
 
 > [!IMPORTANT]
-> Wenn Sie die folgenden Wiederherstellungsschritte nicht vor dem 5. Juli 2018 durchführen, werden Warnungen in Azure ausgeführt, lösen aber keine Aktion oder Benachrichtigung aus. Um Benachrichtigungen für Warnungen zu erhalten, müssen Sie [Aktionsgruppen](monitoring-action-groups.md) manuell bearbeiten und hinzufügen oder das oben beschriebene [benutzerdefinierte PowerShell-Skript](#option-3---using-custom-powershell-script) verwenden.
+> Wenn die auf der Azure Public Cloud basierenden Log Analytics-Benutzer die folgenden Wiederherstellungsschritte nicht vor dem 5. Juli 2018 durchführen, werden Warnungen in Azure ausgeführt, lösen aber keine Aktion oder Benachrichtigung aus. Um Benachrichtigungen für Warnungen zu erhalten, müssen Sie [Aktionsgruppen](monitoring-action-groups.md) manuell bearbeiten und hinzufügen oder das oben beschriebene [benutzerdefinierte PowerShell-Skript](#option-3---using-custom-powershell-script) verwenden.
 
 Hier werden die Wiederherstellungsschritte für die einzelnen Fehler aufgeführt:
 - **Error: Scope Lock is present at subscription/resource group level for write operations** (Fehler: Bereichssperre auf Abonnement-/Ressourcengruppenebene für Schreibvorgänge):   ![Screenshot der Seite „Warnungseinstellungen“ im Operations Management Suite-Portal mit hervorgehobener Fehlermeldung zur Bereichssperre](./media/monitor-alerts-extend/ErrorScopeLock.png)
