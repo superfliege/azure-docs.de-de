@@ -1,22 +1,23 @@
 ---
-title: Hochladen und Indizieren Ihrer Videos mit Azure Video Indexer | Microsoft-Dokumentation
-description: In diesem Thema wird veranschaulicht, wie Sie APIs zum Hochladen und Indizieren Ihrer Videos mit Azure Video Indexer verwenden.
+title: 'Beispiel: Hochladen und Indizieren von Videos mit Video Indexer'
+titlesuffix: Azure Cognitive Services
+description: In diesem Thema wird veranschaulicht, wie Sie APIs zum Hochladen und Indizieren Ihrer Videos mit Video Indexer verwenden.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 08/17/2018
+ms.component: video-indexer
+ms.topic: sample
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664444"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983884"
 ---
-# <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
+# <a name="example-upload-and-index-your-videos"></a>Beispiel: Hochladen und Indizieren Ihrer Videos  
 
 In diesem Artikel wird gezeigt, wie Sie ein Video mit Azure Video Indexer hochladen. Die Video Indexer-API bietet zwei Optionen für das Hochladen: 
 
@@ -33,7 +34,7 @@ Außerdem werden in diesem Artikel einige Parameter beschrieben, die Sie für di
 ## <a name="uploading-considerations"></a>Überlegungen zum Hochladen
     
 - Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
-- Die Option für das Bytearray ist auf 4 GB beschränkt, und nach 30 Minuten erfolgt ein Timeout.
+- Die Option für das Bytearray ist auf 2 GB bei einem Zeitlimit von 30 Minuten beschränkt.
 - Die im Parameter `videoURL` angegebene URL muss codiert sein.
 
 ## <a name="configurations-and-params"></a>Konfigurationen und Parameter
