@@ -20,7 +20,7 @@ items:
     - name: Bereitstellen einer Reliable Services-Anwendung
       href: service-fabric-quickstart-java-reliable-services.md
   expanded: true
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Bereitstellen einer .NET-App
     items:
@@ -74,8 +74,8 @@ items:
       href: service-fabric-tutorial-scale-cluster.md
     - name: 3 – Aktualisieren der Clusterruntime
       href: service-fabric-tutorial-upgrade-cluster.md
-    - name: 4 – Bereitstellen von API Management mit Service Fabric
-      href: service-fabric-tutorial-deploy-api-management.md
+    - name: 4. Löschen eines Clusters
+      href: service-fabric-tutorial-delete-cluster.md
   - name: Erstellen eines eigenständigen Clusters in AWS
     items:
     - name: 1. Erstellen der Infrastruktur in AWS
@@ -430,6 +430,8 @@ items:
       href: service-fabric-get-started-tomcat.md
     - name: Konfigurieren der Sicherheit
       items:
+      - name: Integration in API Management
+        href: service-fabric-tutorial-deploy-api-management.md
       - name: Verwalten von Anwendungsgeheimnissen
         href: service-fabric-application-secret-management.md
       - name: Konfigurieren eines Reverseproxys für eine sichere Kommunikation
@@ -588,8 +590,6 @@ items:
         href: service-fabric-cluster-rollover-cert-cn.md
       - name: Verwalten von Clusterzertifikaten
         href: service-fabric-cluster-security-update-certs-azure.md
-      - name: Löschen
-        href: service-fabric-cluster-delete.md
       - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
         href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
     - name: Eigenständige Cluster
@@ -757,9 +757,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: b204469b3d3dba8a9e8da870bcb3264e5089c4ca
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 7bd6ee339aa1eafbf260e9df4925f50cba49bdf8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380317"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406056"

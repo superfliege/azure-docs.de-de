@@ -1,38 +1,39 @@
 ---
-title: Verwenden von Azure Video Indexer zum Erstellen von Videoinformationen aus vorhandenen Videos | Microsoft-Dokumentation
-description: In diesem Thema wird veranschaulicht, wie Sie Videoinformationen (Erkenntnisse) basierend auf den Daten eines anderen Videos erstellen und veröffentlichen.
+title: 'Tutorial: Gewinnen von Erkenntnissen aus vorhandenen Videos'
+titlesuffix: Azure Cognitive Services
+description: In diesem Thema wird veranschaulicht, wie Sie Erkenntnisse basierend auf vorhandenen Videodateien gewinnen und veröffentlichen.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 161a47f72a0f8038a515c09f25ec2a8e8a520547
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 3a3e5c62d9eb96563d395106db62cc91a8307658
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390839"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983916"
 ---
-# <a name="create-highlights-from-existing-videos"></a>Erstellen von Highlights aus vorhandenen Videos
+# <a name="tutorial-create-highlights-from-existing-videos"></a>Tutorial: Erstellen von Highlights aus vorhandenen Videos
 
-In diesem Thema wird veranschaulicht, wie Sie Videoinformationen (Erkenntnisse) basierend auf den Daten eines anderen Videos erstellen und veröffentlichen.
+In diesem Thema wird veranschaulicht, wie Sie Erkenntnisse basierend auf anderem Videomaterial gewinnen und veröffentlichen.
 
-1. Melden Sie sich an Ihrem [Video Indexer](https://api-portal.videoindexer.ai/)-Konto an.
+1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
 2. Suchen Sie nach einem Video, für das Sie die Videoinformationen erstellen möchten.
 3. Klicken Sie auf die Schaltfläche für die **Wiedergabe**.
 
     Auf der Seite werden die zusammengefassten Informationen des Videos dargestellt. 
 
-    ![Erkenntnisse](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
+    ![Einblicke](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
 
 3. Klicken Sie auf die Schaltfläche **Bearbeiten**.
 
     Auf dieser Seite wird eine vollständige Aufstellung der Daten eines Videos angezeigt. Die Aufstellung ist in einzelne Blöcke unterteilt. Die Blöcke sollen das Durchgehen der Daten vereinfachen. Die Unterteilung in Blöcke kann beispielsweise darauf basieren, dass sich der Sprecher ändert oder dass es zu einer längeren Pause kommt. Sie können Ihre eigene Wiedergabeliste erstellen, die nur die gewünschten Zeilen enthält. Wenn Sie nur bestimmte Teile des Quellvideos anzeigen möchten, können Sie nach Themen/Schlüsselwörtern, Stimmungen, Personen oder Sprechern filtern. Sie können auch angeben, dass nur das Transkript oder die OCR-Daten des Videos angezeigt werden sollen.    
 
-    ![Erkenntnisse](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
+    ![Einblicke](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
 
 4. Erstellen Sie Ihre Wiedergabeliste.
 
@@ -57,4 +58,4 @@ Nachdem Sie die neue Wiedergabeliste erstellt haben, können Sie mit ihrer Verar
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion)) 
+[Was ist Video Indexer?](video-indexer-overview.md) 

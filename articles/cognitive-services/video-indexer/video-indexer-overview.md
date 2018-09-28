@@ -1,44 +1,57 @@
 ---
-title: Übersicht über Azure Video Indexer | Microsoft-Dokumentation
+title: Was ist Video Indexer?
+titlesuffix: Azure Cognitive Services
 description: Dieses Thema bietet eine Übersicht über den Video Indexer-Dienst.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 07/25/2018
+ms.date: 09/15/2018
 ms.author: nolachar
-ms.openlocfilehash: f52c4af29d0c7de8b5edbe869640ffc5dddb5c5e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397890"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983013"
 ---
-# <a name="what-is-video-indexer-preview"></a>Was ist Video Indexer? (Vorschauversion)
+# <a name="what-is-video-indexer"></a>Was ist Video Indexer?
 
-Video Indexer ist eine Cloudanwendung, die mit Azure Media Analytics, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und Custom Speech Service) sowie Azure Search erstellt wurde. Sie ermöglicht es Ihnen, mithilfe von KI-Technologien (Künstliche Intelligenz) die folgenden Erkenntnisse aus Ihren Videos zu extrahieren:
-
-- **Automatische Sprachenerkennung**: Video Indexer kann die Sprache des Videos automatisch erkennen. Die automatische Sprachenerkennung unterstützt derzeit Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch (vereinfacht), Japanisch und Russisch. Wenn die Sprache nicht erkannt werden kann, wird Englisch als Fallbacksprache verwendet.
-- **Audiotranskription**: Video Indexer verfügt über eine Sprache-in-Text-Funktion, mit der Kunden ein Transkript des gesprochenen Textes abrufen können. Zu den unterstützten Sprachen zählen Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch (vereinfacht), Portugiesisch (Brasilien), Japanisch und Russisch (viele weitere Sprachen werden in Zukunft hinzukommen). 
-- **Gesichtserkennung und -identifikation**: Gesichtserkennungstechnologien ermöglichen die Erkennung von Gesichtern in einem Video. Die erkannten Gesichter werden mit einer Datenbank von Prominenten abgeglichen, um auszuwerten, ob berühmte Personen im Video zu sehen sind. Kunden können auch Gesichter, die keinem Prominenten entsprechen, mit einer Bezeichnung versehen. Video Indexer erstellt basierend auf diesen Bezeichnungen ein Gesichtsmodell und kann die entsprechenden Gesichter in künftig übermittelten Videos erkennen.
-- **Sprecherindizierung**: Video Indexer erkennt, wann welche Worte von welchem Sprecher gesprochen wurde, und kann entsprechende Zuordnungen vornehmen.
-- **Erkennung von sichtbarem Text**: Mit dieser Technologie extrahiert der Video Indexer-Dienst in den Videos angezeigten Text.  
-- **Sprechaktivitätserkennung**: Mithilfe dieser Funktion kann Video Indexer Hintergrundgeräusche und Sprachaktivität voneinander trennen. 
-- **Szenenerkennung**: Video Indexer kann eine visuelle Analyse des Videos durchführen, um Änderungen der Szene in einem Video zu ermitteln.
-- **Keyframeextraktion**: Video Indexer erkennt Keyframes in einem Video automatisch. 
-- **Stimmungsanalyse**: Video Indexer führt mithilfe der Sprache-in-Text-Funktion und der optischen Zeichenerkennung eine Stimmungsanalyse für den extrahierten Text durch und stellt diese Informationen zusammen mit Zeitcodes in Form von positiven, negativen oder neutralen Stimmungen bereit.
-- **Übersetzung**: Video Indexer bietet die Möglichkeit, das Audiotranskript von einer Sprache in eine andere zu übersetzen. Die folgenden Sprachen werden unterstützt: Englisch, Spanisch, Französisch, Deutsch, Italienisch, Chinesisch (vereinfacht), Portugiesisch (Brasilien), Japanisch und Russisch. Nach der Übersetzung kann der Benutzer sogar Untertitel im Videoplayer in anderen Sprachen abrufen.
-- **Moderation von Videoinhalten**: Diese Technologie ermöglicht die Erkennung von nicht jugendfreiem und/oder freizügigem Material im Video und kann zur Inhaltsfilterung verwendet werden. 
-- **Extraktion von Schlüsselwörtern**: Video Indexer extrahiert Schlüsselwörter basierend auf dem Transkript des gesprochenen Textes und Text, der von der Erkennung von sichtbarem Text erkannt wird.
-- **Bezeichnungen**: Video Indexer bietet Bezeichnungen für visuelle Objekte wie Katze, Hund, Tisch und Auto sowie Aktionen wie Stehen, Laufen oder Fliegen.
-- **Marken**: Video Indexer extrahiert Unternehmensmarken basierend auf dem Transkript des gesprochenen Textes und Text, der von der Erkennung von sichtbarem Text erkannt wird.
+Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, Azure Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und Custom Speech Service) basiert. Sie ermöglicht Ihnen, mithilfe der folgenden Video Indexer-Modelle Erkenntnisse aus Ihren Videos zu gewinnen:
+ 
+- **Automatische Spracherkennung**: Die Lösung identifiziert automatisch die vorherrschend gesprochene Sprache. Unterstützt werden Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Spanisch und Russisch. Wenn die Sprache nicht erkannt werden kann, wird Englisch als Fallbacksprache verwendet.
+- **Audiotranskription**: Wandelt Spracherkennung in 10 Sprachen um und lässt Erweiterungen zu. Unterstützt werden Arabisch, Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Spanisch und Russisch.
+- **Untertitel für Hörgeschädigte**: Erstellt Untertitel in den drei Formaten VTT, TTML und SRT.
+- **Verarbeitung von zwei Kanälen**: Erkennt automatisch ein getrenntes Transkript und sorgt für eine Zusammenführung auf einer einzelnen Zeitachse.
+- **Rauschunterdrückung**: Bereinigt (basierend auf Skype-Filtern) Telefonieaudio oder verrauschte Aufnahmen.
+- **Transkriptanpassung (Custom Recognition Intelligent Service, CRIS)**: Ermöglicht das Trainieren und Ausführen erweiterter benutzerdefinierter Spracherkennungsmodelle zur Erstellung branchenspezifischer Transkripte.
+- **Sprecheraufzählung**: Kann erkennen und zuordnen, welcher Sprecher wann was gesagt hat.
+- **Sprecherstatistik**: Bietet Statistiken zum Verhältnis zwischen Sprechern und ihrem Anteil an der Konversation.
+- **Optische Zeichenerkennung (OCR)**: Extrahiert im Video angezeigten Text.
+- **Keyframeextraktion**: Erkennt stabile Keyframes in einem Video.
+- **Standpunktanalyse**: Erkennt anhand von Sprache und sichtbarem Text positive, negative und neutrale Stimmungen.
+- **Moderation von Videoinhalten**: Erkennt jugendgefährdende und/oder anzügliche visuelle Elemente.
+- **Extraktion von Stichwörtern**: Extrahiert Stichwörter aus Sprache und sichtbarem Text.
+- **Erkennung von Bezeichnungen**: Identifiziert angezeigte visuelle Objekte und Aktionen.
+- **Extraktion von Marken**: Extrahiert Marken aus Sprache und sichtbarem Text.
+- **Gesichtserkennung**: Erkennt und gruppiert im Video gezeigte Gesichter.
+- **Extraktion von Gesichtern als Miniaturbild („bestes Gesicht“)**: Identifiziert automatisch das am besten aufgenommene Gesicht in der jeweiligen Gruppe von Gesichtern (basierend auf Qualität, Größe und frontaler Position) und extrahiert es als Bildobjekt.
+- **Prominentenerkennung**: Erkennt Prominente im Video mithilfe einer Datenbank mit 1 Mio. Prominenten. Als Quellen dienen IMDB, Wikipedia und Top-Influencer auf Linkedin.
+- **Benutzerdefinierte Gesichtserkennung**: Erkennt Gesichter im Video basierend auf einem benutzerdefinierten Modell, das für das jeweilige Konto trainiert wurde.
+- **Moderation von Textinhalten**: Erkennt im Transkript des Audios anstößigen Text.
+- **Szenenwechselerkennung**: Erkennt, wenn sich im Video eine Szene ändert.
+- **Erkennung schwarzer Frames**: Erkennt schwarze Frames im Video.
+- **Audioeffekte**: Erkennt Audioeffekte wie Händeklatschen, Sprache und Stille.
+- **Rückschluss auf Themen**: Zieht in den Transkripten einen Rückschluss auf Hauptthemen. Eine [IPTC](https://iptc.org/standards/media-topics/)-Taxonomie erster Ebene ist eingeschlossen.
+- **Erkennung von Emotionen**: Erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.
+- **Artefakte**: Extrahiert für jedes der Modelle eine umfangreiche Menge von Artefakten mit höherem Detailgrad.
+- **Übersetzung**: Erstellt Übersetzungen des Audiotranskripts in 54 Sprachen.
 
 Nachdem Video Indexer die Verarbeitung und Analyse abgeschlossen hat, können Sie die Erkenntnisse aus dem Video überprüfen, zusammenstellen, suchen und veröffentlichen.
 
-Ganz gleich, ob Sie ein Inhaltsmanager oder ein Entwickler sind – der Video Indexer-Dienst kann all Ihren Anforderungen gerecht werden. Inhaltsmanager können den Dienst über das Video Indexer-Webportal nutzen, ohne eine einzige Codezeile schreiben zu müssen. Weitere Informationen finden Sie unter [Get started using the Video Indexer portal](video-indexer-get-started.md) (Erste Schritte mit dem Video Indexer-Portal). Entwickler können APIs zur bedarfsorientierten Verarbeitung von Inhalten nutzen. Weitere Informationen finden Sie unter [Verwenden der Video Indexer-REST-API](video-indexer-use-apis.md). Der Dienst bietet Kunden auch die Möglichkeit, mithilfe von Widgets Videodatenströme und extrahierte Erkenntnisse in ihren eigenen Anwendungen zu veröffentlichen. Weitere Informationen finden Sie unter [Embed visual widgets in your application](video-indexer-embed-widgets.md) (Einbetten von visuellen Widgets in Ihre Anwendung).
+Ganz gleich, ob Sie ein Inhaltsmanager oder ein Entwickler sind – der Video Indexer-Dienst kann all Ihren Anforderungen gerecht werden. Inhaltsverantwortliche können den Dienst über das Video Indexer-Webportal nutzen, ohne eine einzige Codezeile schreiben zu müssen. Weitere Informationen finden Sie unter [Tutorial: Registrieren und Hochladen Ihres ersten Videos](video-indexer-get-started.md). Entwickler können APIs zur bedarfsorientierten Verarbeitung von Inhalten nutzen. Weitere Informationen finden Sie unter [Verwenden der Video Indexer-REST-API](video-indexer-use-apis.md). Der Dienst bietet Kunden auch die Möglichkeit, mithilfe von Widgets Videodatenströme und extrahierte Erkenntnisse in ihren eigenen Anwendungen zu veröffentlichen. Weitere Informationen finden Sie unter [Embed visual widgets in your application](video-indexer-embed-widgets.md) (Einbetten von visuellen Widgets in Ihre Anwendung).
 
 Sie können sich mit einem vorhandenen AAD-, LinkedIn-, Facebook-, Google- oder MSA-Konto für den Dienst registrieren. Weitere Informationen finden Sie unter [Getting Started](video-indexer-get-started.md) (Erste Schritte).
 
@@ -58,6 +71,6 @@ Weitere Informationen finden Sie in diesem [Blog](http://aka.ms/videoindexerblog
 
 Sind Sie bereit für die ersten Schritte mit Video Indexer? Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Get started with the Video Indexer portal](video-indexer-get-started.md) (Erste Schritte mit dem Video Indexer-Portal)
+- [Tutorial: Registrieren und Hochladen Ihres ersten Videos](video-indexer-get-started.md)
 - [Verarbeiten von Inhalten mit der Video Indexer-REST-API](video-indexer-use-apis.md)
-- [Embed visual widgets in your application](video-indexer-embed-widgets.md) (Einbetten von visuellen Widgets in Ihre Anwendung)
+- [Einbetten von visuellen Widgets in Ihre Anwendung](video-indexer-embed-widgets.md)

@@ -1,51 +1,52 @@
 ---
-title: Registrieren für Azure Video Indexer und Hochladen Ihres ersten Videos | Microsoft-Dokumentation
-description: In diesem Thema wird veranschaulicht, wie Sie sich registrieren und mit dem Video Indexer-Portal das erste Video hochladen.
+title: 'Tutorial: Registrieren für Video Indexer und Hochladen Ihres ersten Videos'
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie sich beim Video Indexer-Portal registrieren und Ihr erstes Video hochladen.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: a05b7b71cf7af54140167c99ea6cc2d7e306d2de
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f7c86985d12d52ac2dc8b4d2952f048969d3c339
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390857"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984473"
 ---
-# <a name="how-to-sign-up-and-upload-your-first-video"></a>Registrieren und Hochladen Ihres ersten Videos
+# <a name="tutorial-how-to-sign-up-and-upload-your-first-video"></a>Tutorial: Registrieren und Hochladen Ihres ersten Videos
 
-In diesem kurzen Tutorial zu den ersten Schritten wird veranschaulicht, wie Sie sich für Video Indexer registrieren und Ihr erstes Video hochladen.
+In diesem Tutorial zu den ersten Schritten wird veranschaulicht, wie Sie sich bei der Video Indexer-Website anmelden und Ihr erstes Video hochladen.
 
-> [!Note]
-> Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). <br/>Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. <br/>Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
+Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Die Indizierungszeit wird minutenweise abgerechnet. Außerdem fallen Gebühren für das Azure Media Services-Konto an. 
 
-## <a name="sign-up-and-sign-in"></a>Registrieren und Anmelden
+## <a name="sign-up-for-video-indexer"></a>Registrieren bei Video Indexer
 
-Um mit der Verwendung von Video Indexer für die Entwicklung zu beginnen, müssen Sie sich registrieren und am [Video Indexer](https://api-portal.videoindexer.ai/)-Portal anmelden. 
-     
-Weitere Informationen finden Sie unter [Verwenden der Azure Video Indexer-API](video-indexer-use-apis.md).
+Um mit der Entwicklung mit Video Indexer zu beginnen, müssen Sie sich bei der [Video Indexer](https://www.videoindexer.com)-Website registrieren.
 
-## <a name="upload-a-video-using-the-video-indexer-portal"></a>Hochladen eines Videos mit dem Video Indexer-Portal
+## <a name="upload-a-video-using-the-video-indexer-website"></a>Hochladen eines Videos auf der Video Indexer-Website
 
-1. Melden Sie sich bei [https://www.videoindexer.ai/](https://www.videoindexer.ai/) an.
-2. Wählen Sie die Schaltfläche bzw. den Link „Hochladen“, um ein Video hochzuladen.
+1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
+2. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen**, um ein Video hochzuladen.
 
- ![Hochladen](./media/video-indexer-get-started/video-indexer-upload.png)
+    ![Hochladen](./media/video-indexer-get-started/video-indexer-upload.png)
 
-Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos.
+    Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos.
 
-![Hochgeladen](./media/video-indexer-get-started/video-indexer-uploaded.png) 
+    ![Hochgeladen](./media/video-indexer-get-started/video-indexer-uploaded.png) 
 
-Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, Themen, OCR-Daten.
+    Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine Benachrichtigung mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, Themen, OCR-Daten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können nun das [Video Indexer-Portal](video-indexer-view-edit.md) oder die [API](video-indexer-use-apis.md) verwenden, um die Erkenntnisse zum Video anzuzeigen. 
+Sie können nun die [Video Indexer-Website](video-indexer-view-edit.md) oder das [Portal für Video Indexer-Entwickler](video-indexer-use-apis.md) verwenden, um die aus dem Video gewonnenen Erkenntnisse anzuzeigen. 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))
+[Was ist Video Indexer?](video-indexer-overview.md)
+
+[Einstieg in APIs](video-indexer-use-apis.md)
+

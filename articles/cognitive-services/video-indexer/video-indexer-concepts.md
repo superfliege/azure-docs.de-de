@@ -1,36 +1,29 @@
 ---
-title: Azure Video Indexer-Konzepte | Microsoft-Dokumentation
+title: Video Indexer-Konzepte
+titlesuffix: Azure Cognitive Services
 description: In diesem Thema werden einige Konzepte des Video Indexer-Diensts beschrieben.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/31/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 224c8b05027f51fb99c8d58be34c3604032c0f77
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 740f13e90397650ed9274937b16254e46c6deced
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399494"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984119"
 ---
 # <a name="video-indexer-concepts"></a>Video Indexer-Konzepte
  
-In diesem Thema werden einige Konzepte des Video Indexer-Diensts beschrieben.
+In diesem Artikel werden einige Konzepte des Video Indexer-Diensts vorgestellt.
     
 ## <a name="summarized-insights"></a>Zusammenfassung der Erkenntnisse
 
-Die Zusammenfassung der Erkenntnisse enthält eine aggregierte Ansicht der Daten: Gesichter, Schlüsselwörter, Stimmungen. Beispielsweise müssen nicht Tausende von Zeitbereichen durchlaufen werden, um zu überprüfen, welche Gesichter darin enthalten sind. Die zusammengefassten Erkenntnisse enthalten alle Gesichter und dazu jeweils die Zeitbereiche und den prozentualen Anteil der Sichtbarkeit.
-
-## <a name="topicskeywords"></a>Themen/Schlüsselwörter
-
-Themen/Schlüsselwörter sind in der Liste mit den Schlüsselbegriffen enthalten, die mit Video Indexer aus dem Text extrahiert werden. Ein Scott Guthrie-Video kann beispielsweise die folgenden Themen/Schlüsselwörter enthalten: Sicherheit, Azure, Microsoft Cloud, Umsatz.
-
-## <a name="sentiments"></a>Stimmungen
-
-Wenn mit Video Indexer Transkripts analysiert werden, werden auch Stimmungen erkannt. Ein Beispiel für eine positive Stimmung ist die Aussage „dies ist eine sehr interessante Veranstaltung“.
+Die Zusammenfassung der Erkenntnisse enthält eine aggregierte Ansicht der Daten: Gesichter, Themen, Emotionen. Beispielsweise müssen nicht Tausende von Zeitbereichen durchlaufen werden, um zu überprüfen, welche Gesichter darin enthalten sind. Die zusammengefassten Erkenntnisse enthalten alle Gesichter und dazu jeweils die Zeitbereiche und den prozentualen Anteil der Sichtbarkeit.
 
 ## <a name="time-range-vs-adjusted-time-range"></a>Vergleich: Zeitbereich und angepasster Zeitbereich
 
@@ -46,4 +39,4 @@ Informationen zu den ersten Schritten finden Sie unter [Registrieren und Hochlad
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))
+[Was ist Video Indexer?](video-indexer-overview.md)

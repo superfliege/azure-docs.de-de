@@ -1,0 +1,120 @@
+items:
+- name: Problembehandlung für virtuelle Azure-Computer
+  href: index.md
+- name: Fehler bei der Zuordnung
+  items:
+  - name: Fehler bei der Zuordnung
+    href: allocation-failure.md
+  - name: Zuordnungsfehler bei klassischen Bereitstellungen
+    href: allocation-failure-classic.md
+- name: Startdiagnose
+  href: boot-diagnostics.md
+- name: RDP
+  items:
+  - name: Zurücksetzen des RDP
+    href: reset-rdp.md
+  - name: Problembehandlung für RDP
+    href: troubleshoot-rdp-connection.md
+  - name: Detaillierte Problembehandlung für RDP
+    href: detailed-troubleshoot-rdp.md
+  - name: Behandeln spezifischer Fehler
+    href: troubleshoot-specific-rdp-errors.md
+- name: SSH
+  items:
+  - name: Problembehandlung für SSH
+    href: troubleshoot-ssh-connection.md
+  - name: Detaillierte Problembehandlung für SSH
+    href: detailed-troubleshoot-ssh-connection.md
+- name: Häufige Fehlermeldungen
+  href: error-messages.md
+- name: Leistungsprobleme im Zusammenhang mit virtuellen Windows-Computern
+  href: performance-diagnostics.md
+  items:
+  - name: Verwenden von PerfInsights
+    href: how-to-use-perfInsights.md
+  - name: Erweiterung für die Leistungsdiagnose
+    href: performance-diagnostics-vm-extension.md
+- name: Offlineinstallation des Windows-VM-Agents
+  href: install-vm-agent-offline.md
+- name: Erneutes Bereitstellen eines virtuellen Computers
+  items:
+  - name: Linux
+    href: redeploy-to-new-node-linux.md
+  - name: Windows
+    href: redeploy-to-new-node-windows.md
+- name: Zurücksetzen des Kennworts des virtuellen Computers
+  items:
+  - name: Windows
+    href: reset-local-password-without-agent.md
+  - name: Linux
+    href: reset-password.md
+- name: Zurücksetzen der NIC
+  href: reset-network-interface.md
+- name: Neustart oder Größenänderung eines virtuellen Computers
+  href: restart-resize-error-troubleshooting.md
+- name: Verwenden der seriellen Konsole
+  items:
+  - name: Linux-VM
+    href: serial-console-linux.md
+    items:
+    - name: Serielle Konsole – GRUB-/Einzelbenutzermodus
+      href: serial-console-grub-single-user-mode.md
+    - name: Serielle Konsole – NMI/SysRq
+      href: serial-console-nmi-sysrq.md
+  - name: Windows-VM
+    href: serial-console-windows.md
+    items:
+    - name: CMD und PowerShell-Befehle
+      href: serial-console-cmd-ps-commands.md
+- name: Fehler beim Löschen von Speicherressourcen
+  href: storage-resource-deletion-errors.md
+- name: Unerwartete Neustarts von virtuellen Computern mit angefügten VHDs
+  href: unexpected-reboots-attached-vhds.md
+- name: Probleme bei der Windows-Aktivierung
+  href: troubleshoot-activation-problems.md
+- name: Probleme beim Anwendungszugriff
+  href: troubleshoot-app-connection.md
+- name: Neue VM-Bereitstellungen
+  items:
+  - name: Linux
+    href: troubleshoot-deployment-new-vm-linux.md
+  - name: Windows
+    href: troubleshoot-deployment-new-vm-windows.md
+- name: Behandeln von Bereitstellungsproblemen
+  items:
+  - name: Linux
+    href: troubleshoot-deploy-vm-linux.md
+  - name: Windows
+    href: troubleshoot-deploy-vm-windows.md
+- name: Änderung von Gerätenamen
+  href: troubleshoot-device-names-problems.md
+- name: Zugriff auf die VM-Wiederherstellung
+  items:
+  - name: Windows
+    items:
+    - name: PowerShell
+      href: troubleshoot-recovery-disks-windows.md
+    - name: Azure-Portal
+      href: troubleshoot-recovery-disks-portal-windows.md
+  - name: Linux
+    items:
+    - name: Befehlszeilenschnittstelle (CLI)
+      href: troubleshoot-recovery-disks-linux.md
+    - name: Azure-Portal
+      href: troubleshoot-recovery-disks-portal-linux.md
+- name: BitLocker-Fehler
+  href: troubleshoot-bitlocker-boot-error.md
+- name: Überprüfen von Dateisystemfehlern
+  href: troubleshoot-check-disk-boot-error.md
+- name: Drosselungsfehler
+  href: troubleshooting-throttling-errors.md
+- name: Verwenden der geschachtelten Virtualisierung
+  href: troubleshoot-vm-by-use-nested-virtualization.md
+- name: Informationen zum Systemneustart
+  href: understand-vm-reboot.md
+ms.openlocfilehash: b00e785c3ae31171ce3189edd9cffe094bc71024
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410738"

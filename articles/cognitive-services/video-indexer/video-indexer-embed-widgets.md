@@ -1,47 +1,52 @@
 ---
-title: Einbetten von Azure Video Indexer-Widgets in Ihre Anwendungen | Microsoft-Dokumentation
-description: ''
+title: 'Beispiel: Einbetten von Video Indexer-Widgets in Ihre Anwendungen'
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie Video Indexer-Widgets in Ihre Anwendungen einbetten.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 08/25/2018
+ms.component: video-indexer
+ms.topic: sample
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: b8de9e8d73ba899fb7f3036d871c5d30daf101de
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 0d75a58ddf0607286d41867828119fdd05e07d22
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049355"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985579"
 ---
-# <a name="embed-video-indexer-widgets-into-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
+# <a name="example-embed-video-indexer-widgets-into-your-applications"></a>Beispiel: Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
-Video Indexer unterstützt das Einbetten von zwei Widget-Typen in Ihre Anwendung: **Kognitive Erkenntnisse** und **Player**. 
+In diesem Artikel wird gezeigt, wie Sie Video Indexer-Widgets in Ihre Anwendungen einbetten können. Video Indexer unterstützt das Einbetten von zwei Widget-Typen in Ihre Anwendung: **Kognitive Erkenntnisse** und **Player**. 
+## <a name="widget-types"></a>Typen von Widgets
 
-* Ein Widget vom Typ **Kognitive Erkenntnisse** enthält alle visuellen Erkenntnisse, die für Sie aus dem Prozess der Videoindizierung extrahiert wurden. 
-    Für das Widget vom Typ „Kognitive Erkenntnisse“ werden die folgenden optionalen URL-Parameter unterstützt:
+### <a name="cognitive-insights-widget"></a>Widget „Kognitive Erkenntnisse“
 
-    |NAME|Definition|BESCHREIBUNG|
-    |---|---|---|
-    |Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit **widgets=people,brands** werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Schlüsselwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche) | 
-* Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate streamen.
+Ein Widget vom Typ **Kognitive Erkenntnisse** enthält alle visuellen Erkenntnisse, die für Sie aus dem Prozess der Videoindizierung extrahiert wurden. Für das Widget vom Typ „Kognitive Erkenntnisse“ werden die folgenden optionalen URL-Parameter unterstützt:
 
-    Für das Player-Widget werden die folgenden optionalen URL-Parameter unterstützt:
+|NAME|Definition|BESCHREIBUNG|
+|---|---|---|
+|Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Der URL-Parameter **widgets** wird bei Verwenden von **version=2** nicht unterstützt. |
+|version|Versionen des Widgets **Kognitive Erkenntnisse**|Zum Abrufen der neuesten Updates für das Widget „Kognitive Erkenntnisse“ fügen Sie den Abfrageparameter `?version=2` an die Einbettungs-URL an. Beispiel: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Um die ältere Version abzurufen, entfernen Sie einfach `version=2` aus der URL.
 
-    |NAME|Definition|BESCHREIBUNG|
-    |---|---|---|
-    |t|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/>Beispiel: t=60|
-    |captions|Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die Beschriftungen verfügbar sind.<br/>Beispiel: captions=en-Us|
-    |showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: showCaptions=true|
-    |type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: type=audio|
-    |autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: „true“).<br/>Beispiel: autoplay=false|
-    |Language|Sprachcode|Dienst zum Steuern der Lokalisierung der Player-Steuerelemente (Standardeinstellung: „en-US“).<br/>Beispiel: language=de-DE|
+### <a name="player-widget"></a>Player-Widget
+
+Mit einem **Player**-Widget können Sie das Video mit einer adaptiven Bitrate streamen. Für das Player-Widget werden die folgenden optionalen URL-Parameter unterstützt:
+
+|NAME|Definition|BESCHREIBUNG|
+|---|---|---|
+|t|Sekunden ab Start|Aktiviert die Wiedergabe durch den Player ab dem angegebenen Zeitpunkt.<br/>Beispiel: t=60|
+|captions|Sprachcode|Ruft die Beschriftungen beim Laden des Widgets in der angegebenen Sprache ab, damit sie im Menü für die Beschriftungen verfügbar sind.<br/>Beispiel: captions=en-US|
+|showCaptions|Boolescher Wert|Dient zum Laden des Players mit bereits geladenen Beschriftungen.<br/>Beispiel: showCaptions=true|
+|type||Aktiviert ein Design für den Audioplayer (Videoteil wird entfernt).<br/>Beispiel: type=audio|
+|autoplay|Boolescher Wert|Gibt an, ob der Player beim Laden mit der Wiedergabe des Videos beginnen soll (Standardeinstellung: TRUE).<br/>Beispiel: autoplay=false|
+|Language|Sprachcode|Dienst zum Steuern der Sprache des Players (Standardeinstellung: en-US)<br/>Beispiel: language=de-DE|
 
 ## <a name="embedding-public-content"></a>Einbetten von öffentlichen Inhalten
 
-1. Melden Sie sich an Ihrem [Video Indexer](https://api-portal.videoindexer.ai/)-Konto an. 
+1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
 2. Klicken Sie auf die Schaltfläche „Einbetten“, die unter dem Video angezeigt wird.
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
@@ -60,9 +65,9 @@ Sie können Codes aus eingebetteten Popups (wie im vorherigen Abschnitt gezeigt)
 
 Wenn Sie ein **privates** Video einbetten möchten, müssen Sie ein Zugriffstoken im Attribut **src** von **iframe** übergeben:
 
-     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<VideoId>/?accessToken=<accessToken>
+     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>
     
-Verwenden Sie die API [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) (Insights-Widget abrufen), um den Inhalt des Widgets vom Typ „Kognitive Erkenntnisse“ abzurufen. Oder verwenden Sie [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) (Videozugriffstoken abrufen), und fügen Sie es wie oben gezeigt der URL als Abfrageparameter hinzu. Geben Sie diese URL als **src**-Wert von **iframe** an.
+Verwenden Sie die API des [**Widgets „Einblicke erhalten“**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?), um den Inhalt des Widgets des Typs „Kognitive Erkenntnisse“ abzurufen. Oder verwenden Sie [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) (Videozugriffstoken abrufen), und fügen Sie es wie oben gezeigt der URL als Abfrageparameter hinzu. Geben Sie diese URL als **src**-Wert von **iframe** an.
 
 Wenn Sie für Ihr eingebettetes Widget Funktionen zum Bearbeiten von Erkenntnissen bereitstellen möchten (wie in unserer Webanwendung), müssen Sie ein Zugriffstoken mit Bearbeitungsberechtigungen übergeben. Verwenden Sie [**Get Insights Widget**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) oder [**Get Video Access Token**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) mit **&allowEdit=true**. 
 
@@ -216,24 +221,24 @@ Sie können die gewünschten Erkenntnisse auswählen, indem Sie sie als Wert fü
 
 Mögliche Werte: people (Personen), keywords (Schlüsselwörter), sentiments (Stimmungen), transcript (Transkript), search (Suche).
 
-Wenn Sie beispielsweise ein Widget einbetten möchten, das nur Erkenntnisse zu Personen und zur Suche enthalten soll, sieht die iframe-URL für die Einbettung wie folgt aus: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?widgets=people,search
+Wenn Sie beispielsweise ein Widget einbetten möchten, das nur Erkenntnisse zu Personen und zur Suche enthalten soll, sieht die iframe-URL für die Einbettung wie folgt aus: https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search
 
 Der Titel des iframe-Fensters kann auch angepasst werden, indem für die iframe-URL **&title=**<YourTitle> angegeben wird. (Dient zum Anpassen des HTML-Werts \<title>.)
-Falls Sie Ihrem iframe-Fenster beispielsweise den Titel „MyInsights“ geben möchten, sieht die URL wie folgt aus: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?title=MyInsights. Beachten Sie, dass diese Option nur in Fällen relevant ist, in denen Sie die Erkenntnisse in einem neuen Fenster öffnen müssen.
+Falls Sie Ihrem iframe-Fenster beispielsweise den Titel „MyInsights“ geben möchten, sieht die URL wie folgt aus: https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights. Beachten Sie, dass diese Option nur in Fällen relevant ist, in denen Sie die Erkenntnisse in einem neuen Fenster öffnen müssen.
 
 ### <a name="player-widget"></a>Player-Widget
 Wenn Sie den Video Indexer-Player einbetten, können Sie die Größe des Players wählen, indem Sie die iframe-Größe angeben.
 
-Beispiel:
+Beispiel: 
 
-    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/{id}” frameborder="0" allowfullscreen />
+    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />
 
 Standardmäßig verfügt der Video Indexer-Player über automatisch generierte Untertitel, die auf dem Transkript des Videos basieren. Diese Daten wurden aus dem Video mit der Quellsprache extrahiert, die beim Hochladen des Videos gewählt wurde.
 
-Wenn Sie für das Einbetten eine andere Sprache verwenden möchten, können Sie der URL für die Einbettung des Players **&captions=< Language | ”all” | “false” >** hinzufügen oder „all“ als Wert angeben, falls die Untertitel aller Sprachen verfügbar sein sollen.
+Wenn Sie für das Einbetten eine andere Sprache verwenden möchten, können Sie der URL für die Einbettung des Players **&captions=< Sprache | „all“ | „false“ >** hinzufügen oder „all“ als Wert angeben, falls die Untertitel aller Sprachen verfügbar sein sollen.
 Falls die Untertitel standardmäßig angezeigt werden sollen, können Sie **&showCaptions=true** übergeben.
 
-Die URL für die Einbettung sieht dann wie folgt aus: https://www.videoindexer.ai/embed/player/9a296c6ec3/?captions=italian. Wenn Sie Untertitel deaktivieren möchten, können Sie „false“ als Wert für den Parameter „captions“ übergeben.
+Die Einbettungs-URL sieht dann wie folgt aus: https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian. Wenn Sie Untertitel deaktivieren möchten, können Sie FALSE als Wert für den Parameter „captions“ übergeben.
 
 Automatische Wiedergabe: Standardmäßig beginnt der Player mit der Wiedergabe des Videos. Sie können dies deaktivieren, indem Sie für die obige URL für die Einbettung „&autoplay=false“ übergeben.
 

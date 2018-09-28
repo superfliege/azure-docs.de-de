@@ -1,29 +1,30 @@
 ---
-title: Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe | Microsoft-Dokumentation
+title: Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
+titlesuffix: Azure Cognitive Services
 description: In diesem Thema wird die Video Indexer-Ausgabe untersucht, die von der v2-API erstellt wird.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 76f83e7ad70e3e1906bc1aa90c74d600053aeb6f
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40187372"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985643"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
 
 > [!Note]
 > Die v1-API von Video Indexer gilt ab dem 1. August 2018 als veraltet. Es ist ratsam, jetzt die v2-API von Video Indexer zu verwenden. <br/>Eine Anleitung zur Entwicklung mit den v2-APIs für Video Indexer finden Sie [hier](https://api-portal.videoindexer.ai/). 
 
-Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort. Die JSON-Daten enthalten Details zu den angegebenen Erkenntnissen aus Videos. Zu diesen Erkenntnissen gehören beispielsweise folgende Dimensionen: Transkripts, OCRs, Gesichter, Themen, Blöcke usw. Die Dimensionen verfügen über Instanzen von Zeitbereichen, die angezeigt werden, wenn die einzelnen Dimensionen im Video angezeigt werden.  
+Wenn Sie die API zum Abrufen des Videoindex (**Get Video Index**) aufrufen und der Antwortstatus „OK“ lautet, erhalten Sie eine ausführliche JSON-Ausgabe als Inhalt der Antwort. Die JSON-Daten enthalten Details zu den angegebenen Erkenntnissen aus Videos. Zu diesen Erkenntnissen gehören beispielsweise folgende Dimensionen: Transkripte, OCRs, Gesichter, Themen, Blöcke usw. Die Dimensionen verfügen über Instanzen von Zeitbereichen, die angezeigt werden, wenn die einzelnen Dimensionen im Video angezeigt werden.  
 
-Sie können die zusammengefassten Erkenntnisse des Videos auch visuell untersuchen, indem Sie im Video Indexer-Portal die Schaltfläche für die **Wiedergabe** drücken. Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
+Sie können die zusammengefassten Erkenntnisse des Videos auch visuell untersuchen, indem Sie auf der [Video Indexer-Website](https://www.videoindexer.ai/) auf die Schaltfläche **Wiedergabe** klicken. Weitere Informationen finden Sie unter [View and edit video insights](video-indexer-view-edit.md) (Anzeigen und Bearbeiten von Videoinformationen).
 
 ![Einblicke](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
@@ -90,6 +91,8 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |Bezeichnungen| Kann null oder mehr Bezeichnungen enthalten. Weitere Informationen finden Sie unter [labels](#labels).|
 |brands| Kann null oder mehr Marken enthalten. Ausführlichere Informationen finden Sie unter [brands](#brands).|
 |statistics | Ausführlichere Informationen finden Sie unter [statistics](#statistics).|
+|emotions| Kann null oder mehrere Emotionen enthalten. Ausführlichere Informationen finden Sie unter [emotions](#emotions).|
+|topics|Kann null oder mehrere Themen enthalten. Die Dimension [topics](#topics).|
 
 ## <a name="videos"></a>videos
 
@@ -165,6 +168,8 @@ Ein Gesicht kann eine ID, einen Namen, eine Miniaturansicht, andere Metadaten un
 |sentiments|Die Dimension [sentiments](#sentiments).|
 |visualContentModeration|Die Dimension [visualContentModeration](#visualcontentmoderation).|
 |textualConentModeration|Die Dimension [textualConentModeration](#textualconentmoderation).|
+|emotions| Die Dimension [emotions](#emotions).|
+|topics|Die Dimension [topics](#topics).|
 
 Beispiel:
 
@@ -200,7 +205,7 @@ instances|Eine Liste mit Zeitbereichen dieses Blocks.|
 |---|---|
 |id|Die Zeilen-ID.|
 |text|Das Transkript selbst.|
-|Language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripts, bei denen jede Zeile eine andere Sprache enthalten kann.|
+|Language|Die Sprache des Transkripts. Vorgesehen zur Unterstützung von Transkripten, bei denen jede Zeile eine andere Sprache enthalten kann.|
 |instances|Eine Liste der Zeitbereiche, in denen diese Zeile angezeigt wurde. Wenn die Instanz „transcript“ lautet, ist nur eine Instanz vorhanden.|
 
 Beispiel:
@@ -320,7 +325,6 @@ Beispiel:
     ]
 }
 ] 
-
 ```
 
 #### <a name="faces"></a>faces
@@ -444,7 +448,7 @@ Beispiel:
           "id": 0,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
               "start": "00: 00: 00.1670000",
               "end": "00: 00: 00.2000000"
             }
@@ -453,7 +457,7 @@ Beispiel:
       ],
       "instances": [
         {
-       "thumbnailId": "00000000-0000-0000-0000-000000000000",   
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
           "start": "00: 00: 00.2000000",
           "end": "00: 00: 05.0330000"
         }
@@ -466,7 +470,7 @@ Beispiel:
           "id": 1,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",        
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
               "start": "00: 00: 05.2670000",
               "end": "00: 00: 05.3000000"
             }
@@ -667,10 +671,144 @@ Videos, für die nicht jugendfreier bzw. freizügiger Inhalt ermittelt wird, sin
 |bannedWordsCount |Die Anzahl von gesperrten Wörtern.|
 |bannedWordsRatio |Das Verhältnis der gesperrten Wörter zu den Gesamtwörtern.|
 
+#### <a name="emotions"></a>emotions
+
+Video Indexer erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den erkannten Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID der Emotion.|
+|type|Der Moment der Emotion, der basierend auf Sprach- und Audiosignalen erkannt wurde. Bei den Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.|
+|instances|Eine Liste der Zeitbereiche, in denen diese Emotion aufgetaucht ist.|
+
+```json
+"emotions": [{
+    "id": 0,
+    "type": "Fear",
+    "instances": [{
+      "adjustedStart": "0:00:39.47",
+      "adjustedEnd": "0:00:45.56",
+      "start": "0:00:39.47",
+      "end": "0:00:45.56"
+    },
+    {
+      "adjustedStart": "0:07:19.57",
+      "adjustedEnd": "0:07:23.25",
+      "start": "0:07:19.57",
+      "end": "0:07:23.25"
+    }]
+  },
+  {
+    "id": 1,
+    "type": "Anger",
+    "instances": [{
+      "adjustedStart": "0:03:55.99",
+      "adjustedEnd": "0:04:05.06",
+      "start": "0:03:55.99",
+      "end": "0:04:05.06"
+    },
+    {
+      "adjustedStart": "0:04:56.5",
+      "adjustedEnd": "0:05:04.35",
+      "start": "0:04:56.5",
+      "end": "0:05:04.35"
+    }]
+  },
+  {
+    "id": 2,
+    "type": "Joy",
+    "instances": [{
+      "adjustedStart": "0:12:23.68",
+      "adjustedEnd": "0:12:34.76",
+      "start": "0:12:23.68",
+      "end": "0:12:34.76"
+    },
+    {
+      "adjustedStart": "0:12:46.73",
+      "adjustedEnd": "0:12:52.8",
+      "start": "0:12:46.73",
+      "end": "0:12:52.8"
+    },
+    {
+      "adjustedStart": "0:30:11.29",
+      "adjustedEnd": "0:30:16.43",
+      "start": "0:30:11.29",
+      "end": "0:30:16.43"
+    },
+    {
+      "adjustedStart": "0:41:37.23",
+      "adjustedEnd": "0:41:39.85",
+      "start": "0:41:37.23",
+      "end": "0:41:39.85"
+    }]
+  },
+  {
+    "id": 3,
+    "type": "Sad",
+    "instances": [{
+      "adjustedStart": "0:13:38.67",
+      "adjustedEnd": "0:13:41.3",
+      "start": "0:13:38.67",
+      "end": "0:13:41.3"
+    },
+    {
+      "adjustedStart": "0:28:08.88",
+      "adjustedEnd": "0:28:18.16",
+      "start": "0:28:08.88",
+      "end": "0:28:18.16"
+    }]
+  }
+],
+```
+
+#### <a name="topics"></a>topics
+
+Video Indexer zieht in den Transkripten einen Rückschluss auf Hauptthemen. Falls möglich, ist eine [IPTC](https://iptc.org/standards/media-topics/)-Taxonomie erster Ebene eingeschlossen. 
+
+|NAME|BESCHREIBUNG|
+|---|---|
+|id|Die ID des Themas.|
+|name|Der Name des Themas (z.B. „Pharmazeutika“).|
+|referenceId|Brotkrümel, die die Hierarchie der Themen reflektieren. Beispiel: „Gesundheit und Wohlbefinden/Medizin und Gesundheitswesen/Pharmazeutika“.|
+|confidence|Die Zuverlässigkeitsbewertung im Bereich [0,1]. Je höher, desto zuverlässiger.|
+|Language|Die im Thema verwendete Sprache.|
+|iptcName|Falls erkannt, der Codename von IPTC-Medien.|
+|instances |Derzeit indiziert Video Indexer ein Thema nicht in Zeitintervallen, weshalb das gesamte Video als Intervall verwendet wird.|
+
+```json
+"topics": [{
+    "id": 0,
+    "name": "INTERNATIONAL RELATIONS",
+    "referenceId": "POLITICS AND GOVERNMENT/FOREIGN POLICY/INTERNATIONAL RELATIONS",
+    "referenceType": "VideoIndexer",
+    "confidence": 1,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}, {
+    "id": 1,
+    "name": "Politics and Government",
+    "referenceType": "VideoIndexer",
+    "iptcName": "Politics",
+    "confidence": 0.9041,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}]
+. . .
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Video Indexer-API](https://api-portal.videoindexer.ai)
+[Entwicklerportal für Video Indexer](https://api-portal.videoindexer.ai)
 
 Informationen dazu, wie Sie Widgets in Ihre Anwendung einbetten, finden Sie unter [Embed Video Indexer widgets into your applications](video-indexer-embed-widgets.md) (Einbetten von Video Indexer-Widgets in Ihre Anwendungen). 
 

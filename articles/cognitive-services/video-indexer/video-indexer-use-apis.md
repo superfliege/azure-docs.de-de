@@ -1,45 +1,43 @@
 ---
-title: Verwenden der Azure Video Indexer-API | Microsoft-Dokumentation
+title: 'Tutorial: Verwenden der Azure Video Indexer-API'
+titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird veranschaulicht, wie Sie in die Verwendung der Video Indexer-API einsteigen.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449478"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985564"
 ---
-# <a name="use-azure-video-indexer-api"></a>Verwenden der Azure Video Indexer-API
+# <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Azure Video Indexer-API
 
 > [!Note]
 > Die v1-API von Video Indexer gilt ab dem 1. August 2018 als veraltet. Es ist ratsam, jetzt die v2-API von Video Indexer zu verwenden. <br/>Eine Anleitung zur Entwicklung mit den v2-APIs für Video Indexer finden Sie [hier](https://api-portal.videoindexer.ai/). 
 
 In Video Indexer ist unterschiedliche KI-Technologie (Künstliche Intelligenz) für Audio- und Videodaten zusammengefasst, und der Dienst wird von Microsoft als integrierter Dienst angeboten, um die Entwicklung zu vereinfachen. Die APIs sind so konzipiert, dass sich Entwickler auf die Nutzung der KI-Technologie für Medien konzentrieren können, ohne sich um Dinge wie die Skalierung, globale Reichweite, Verfügbarkeit und Zuverlässigkeit der Cloudplattform kümmern zu müssen. Sie können die API verwenden, um Ihre Dateien hochzuladen, ausführliche Videoinformationen zu erhalten, URLs von Insights- und Player-Widgets abzurufen, um diese in Ihre Anwendung einzubetten, und andere Aufgaben durchzuführen.
 
-Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
+Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Die Indizierungszeit wird minutenweise abgerechnet. Außerdem fallen Gebühren für das Azure Media Services-Konto an. 
 
-In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](https://api-portal.videoindexer.ai/) nutzen können. Eine ausführlichere Übersicht über den Video Indexer-Dienst finden Sie im Artikel mit der [Übersicht](video-indexer-overview.md).
+In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](https://api-portal.videoindexer.ai/) nutzen können.
 
 ## <a name="subscribe-to-the-api"></a>Abonnieren der API
 
-1. Melden Sie sich an.
-
-    Um mit der Verwendung von Video Indexer für die Entwicklung zu beginnen, müssen Sie sich am [Video Indexer](https://api-portal.videoindexer.ai/)-Portal anmelden. 
+1. Melden Sie sich beim [Portal für Video Indexer-Entwickler an](https://api-portal.videoindexer.ai/).
     
-    ![Registrieren](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![Anmelden](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
     > * Sie müssen denselben Anbieter verwenden, den Sie beim Anmelden für Video Indexer genutzt haben.
     > * Persönliche Google- und Microsoft-Konten (outlook/live) können nur für Testkonten verwendet werden. Für Konten, die über eine Verbindung mit Azure verfügen, ist Azure AD erforderlich.
     > * Pro E-Mail-Adresse kann nur ein aktives Konto vorhanden sein. Wenn ein Benutzer versucht, sich mit user@gmail.com für LinkedIn anzumelden, und anschließend user@gmail.com auch für Google verwendet, wird für die zweite Anmeldung eine Fehlerseite mit dem Hinweis angezeigt, dass der Benutzer bereits vorhanden ist.
-
 
 2. Führen Sie den Schritt zum Abonnieren aus.
 
@@ -91,15 +89,15 @@ Es gelten die in der folgenden Tabelle beschriebenen Werte. Der **Parameterwert*
 
 Der Parameter für die Konto-ID (Account ID) ist in allen API-Aufrufen für Vorgänge erforderlich. Die Konto-ID ist eine GUID, die auf eine der folgenden Arten abgerufen werden kann:
 
-* Verwenden Sie das Video Indexer-Portal, um die Konto-ID abzurufen:
+* Rufen Sie auf der **Video Indexer**-Website die Konto-ID ab:
 
-    1. Melden Sie sich an [videoindexer](https://www.videoindexer.ai/) an.
+    1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
     2. Navigieren Sie zur Seite **Einstellungen**.
     3. Kopieren Sie die Konto-ID.
 
         ![Konto-ID](./media/video-indexer-use-apis/account-id.png)
 
-* Verwenden Sie die API, um die Konto-ID programmgesteuert abzurufen.
+* Im  **Portal für Video Indexer-Entwickler** können Sie die Konto-ID programmgesteuert abrufen.
 
     Verwenden Sie die API [Get accounts](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) (Konten abrufen).
     
@@ -226,6 +224,4 @@ Debug.WriteLine(playerWidgetLink);
 
 [Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe](video-indexer-output-json.md)
 
-## <a name="see-also"></a>Weitere Informationen
-
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))
+[Was ist Video Indexer?](video-indexer-overview.md)

@@ -1,31 +1,33 @@
 ---
-title: Anzeigen und Bearbeiten von Azure Video Indexer-Erkenntnissen | Microsoft-Dokumentation
+title: Anzeigen und Bearbeiten von Video Indexer-Auswertungen
+titlesuffix: Azure Cognitive Services
 description: In diesem Thema wird veranschaulicht, wie Sie Video Indexer-Erkenntnisse anzeigen und bearbeiten.
 services: cognitive services
-documentationcenter: ''
 author: juliako
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/31/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 797c09d72402cfc1ee2524e7792cc1310a53fb1e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c9b229e2fb3297d724ec8de02bf54e9765689ab7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399476"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984537"
 ---
-# <a name="view-and-edit-video-indexer-insights"></a>Anzeigen und Bearbeiten von Video Indexer-Erkenntnissen
+# <a name="view-and-edit-video-indexer-insights"></a>Anzeigen und Bearbeiten von Video Indexer-Auswertungen
 
 In diesem Thema wird veranschaulicht, wie Sie die Video Indexer-Erkenntnisse eines Videos anzeigen und bearbeiten.
 
-1. Melden Sie sich an Ihrem [Video Indexer](https://api-portal.videoindexer.ai/)-Konto an.
+1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
 2. Suchen Sie nach einem Video, für das Sie Ihre Video Indexer-Erkenntnisse erstellen möchten. Weitere Informationen finden Sie unter [Suchen bestimmter Momente in Videos](video-indexer-search.md).
 3. Klicken Sie auf die Schaltfläche für die **Wiedergabe**.
 
     Auf der Seite werden die zusammengefassten Informationen des Videos dargestellt. 
 
-    ![Erkenntnisse](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
+    ![Einblicke](./media/video-indexer-view-edit/video-indexer-summarized-insights.png)
 
 4. Zeigen Sie die zusammengefassten Informationen des Videos an. 
 
@@ -37,7 +39,7 @@ In diesem Thema wird veranschaulicht, wie Sie die Video Indexer-Erkenntnisse ein
 
     Wählen Sie unter dem Video die Schaltfläche „Bearbeiten“. Die Seite mit der vollständigen Aufstellung des Videos wird angezeigt. Die Aufstellung ist in einzelne Blöcke unterteilt. Die Blöcke sollen das Durchgehen der Daten vereinfachen. Die Unterteilung in Blöcke kann beispielsweise darauf basieren, dass sich der Sprecher ändert oder dass es zu einer längeren Pause kommt. Sie können Ihre eigene Wiedergabeliste erstellen, die nur die gewünschten Zeilen enthält. Wenn Sie nur bestimmte Teile des Quellvideos anzeigen möchten, können Sie nach Themen/Schlüsselwörtern, Stimmungen, Personen oder Sprechern filtern. Sie können auch angeben, dass nur das Transkript oder die OCR-Daten des Videos angezeigt werden sollen.  
 
-    ![Erkenntnisse](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
+    ![Einblicke](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -45,5 +47,5 @@ In diesem Thema wird veranschaulicht, wie Sie die Video Indexer-Erkenntnisse ein
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))
+[Was ist Video Indexer?](video-indexer-overview.md)
 
