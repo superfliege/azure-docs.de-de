@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit .NET-Web-APIs in Azure AD | Microsoft-Dokumentation
+title: Erstellen einer.NET-Web-API, die für Authentifizierung und Autorisierung in Azure AD integriert wird | Microsoft Docs
 description: In diesem Thema erfahren Sie, wie eine .NET-MVC-Web-API erstellt wird, die sich für die Authentifizierung und Autorisierung in Azure AD integriert.
 services: active-directory
 documentationcenter: .net
@@ -12,58 +12,61 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 01/23/2017
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
+ms.reviewer: jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: ca506d821fe3534468c0d370dd51464e5df90f79
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 239c0d0adbe89dd3d1d7bc7244a52ab079a36ad4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580757"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952544"
 ---
-# <a name="azure-ad-net-web-api-getting-started"></a>Erste Schritte mit .NET-Web-APIs in Azure AD
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+# <a name="quickstart-build-a-net-web-api-that-integrates-with-azure-ad-for-authentication-and-authorization"></a>Schnellstart: Erstellen einer.NET-Web-API, die für Authentifizierung und Autorisierung in Azure AD integriert wird
 
-Wenn Sie eine Anwendung erstellen, die Zugriff auf geschützte Ressourcen bietet, müssen Sie wissen, wie Sie diese Ressourcen vor unbefugtem Zugriff schützen.
-Mit Azure Active Directory (Azure AD) lässt sich eine Web-API mit nur wenigen Codezeilen unkompliziert und einfach mithilfe von OAuth 2.0-Bearerzugriffstoken schützen.
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-Für ASP.NET-Web-Apps erreichen Sie diesen Schutz mithilfe der Microsoft-Implementierung der von der Community gestützten und in .NET Framework 4.5 enthaltenen Middleware OWIN. Hier verwenden wir OWIN zur Erstellung einer Web-API mit einer Aufgabenliste, die folgende Aufgaben ausführt:
+Wenn Sie eine Anwendung erstellen, die Zugriff auf geschützte Ressourcen bietet, müssen Sie wissen, wie Sie diese Ressourcen vor unbefugtem Zugriff schützen. Mit Azure Active Directory (Azure AD) lässt sich eine Web-API mit nur wenigen Codezeilen unkompliziert und einfach mithilfe von OAuth 2.0-Bearerzugriffstoken schützen.
+
+Für ASP.NET-Web-Apps erreichen Sie diesen Schutz mithilfe der Microsoft-Implementierung der von der Community gestützten und in .NET Framework 4.5 enthaltenen Middleware OWIN. Hier verwenden Sie OWIN zum Erstellen einer Web-API mit einer Aufgabenliste, die folgende Aufgaben ausführt:
 
 * Festlegen, welche APIs geschützt sind.
 * Prüfen, ob die Web-API-Aufrufe ein gültiges Zugriffstoken enthalten.
 
-Zum Erstellen der „ToDoList“-API müssen Sie zunächst so vorgehen:
+In diesem Schnellstart erstellen Sie die Aufgabenlisten-API und erfahren, wie die folgenden Aufgaben ausgeführt werden:
 
 1. Registrieren Sie eine Anwendung in Azure AD.
 2. Konfigurieren Sie die App für die Verwendung der OWIN-Authentifizierungspipeline.
 3. Konfigurieren Sie eine Clientanwendung für den Aufruf der Web-API.
 
-Beginnen Sie, indem Sie das [Anwendungsgerüst](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) oder [das vollständige Beispiel herunterladen](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip). Bei beidem handelt es sich um eine Visual Studio 2013-Lösung. Außerdem benötigen Sie einen Azure AD-Mandanten, bei dem Sie Ihre Anwendung registrieren. Wenn Sie noch keinen Mandanten haben, [erfahren Sie hier, wie Sie einen erhalten](quickstart-create-new-tenant.md).
+## <a name="prerequisites"></a>Voraussetzungen
+
+Führen Sie zum Einstieg die folgenden erforderlichen Schritte aus:
+
+* Laden Sie das [Anwendungsgerüst](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/skeleton.zip) oder [das vollständige Beispiel](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip) herunter. Bei beidem handelt es sich um eine Visual Studio 2013-Lösung.
+* Stellen Sie einen Azure AD-Mandanten bereit, bei dem Sie Ihre Anwendung registrieren. Wenn Sie noch keinen Mandanten haben, [erfahren Sie hier, wie Sie einen erhalten](quickstart-create-new-tenant.md).
 
 ## <a name="step-1-register-an-application-with-azure-ad"></a>Schritt 1: Registrieren einer Anwendung in Azure AD
+
 Zum Schutz Ihrer Anwendung müssen Sie in Ihrem Mandanten zunächst eine Anwendung erstellen und Azure AD einige wichtige Informationen bereitstellen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie Ihr Konto in der oberen rechten Ecke der Seite, das Navigationselement **Verzeichnis wechseln** und dann den entsprechenden Mandanten auswählen.
+    * Überspringen Sie diesen Schritt, wenn Ihr Konto nur einen Azure AD-Mandanten enthält oder wenn Sie bereits den entsprechenden Azure AD-Mandanten ausgewählt haben.
 
-2. Wählen Sie Ihren Azure AD-Mandanten aus, indem Sie in der rechten oberen Ecke der Seite auf Ihr Konto klicken. Klicken Sie anschließend auf die Navigation **Verzeichnis wechseln**, und wählen Sie dann den entsprechenden Mandanten aus.
- * Überspringen Sie diesen Schritt, wenn Ihr Konto nur einen Azure AD-Mandanten enthält oder wenn Sie bereits den entsprechenden Azure AD-Mandanten ausgewählt haben.
-
-3. Klicken Sie im linken Navigationsbereich auf **Azure Active Directory**.
-
-4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
-
+3. Wählen Sie im linken Navigationsbereich **Azure Active Directory** aus.
+4. Wählen Sie **App-Registrierungen** und dann **Hinzufügen** aus.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **Webanwendung und/oder Web-API**.
-  * **Name**: Beschreibt die Anwendung für Benutzer. Geben Sie **TodoListService** ein.
-  * Der **Umleitungs-URI** ist eine Kombination aus einem Schema und einer Zeichenfolge, die Azure AD für die Rückgabe der von der Anforderung angeforderten Token verwendet. Geben Sie hier `https://localhost:44321/` ein.
+    * **Name**: Beschreibt die Anwendung für Benutzer. Geben Sie **TodoListService** ein.
+    * Der **Umleitungs-URI** ist eine Kombination aus einem Schema und einer Zeichenfolge, die Azure AD für die Rückgabe der von der Anforderung angeforderten Token verwendet. Geben Sie hier `https://localhost:44321/` ein.
 
-6. Aktualisieren Sie auf der Seite **Einstellungen** -> **Eigenschaften** für Ihre Anwendung den App-ID-URI. Geben Sie einen mandantenspezifischen Bezeichner ein. Geben Sie z. B. Folgendes ein: `https://contoso.onmicrosoft.com/TodoListService`.
-
+6. Aktualisieren Sie auf der Seite **Einstellungen > Eigenschaften** für Ihre Anwendung den App-ID-URI. Geben Sie einen mandantenspezifischen Bezeichner ein. Geben Sie z. B. Folgendes ein: `https://contoso.onmicrosoft.com/TodoListService`.
 7. Speichern Sie die Konfiguration. Lassen Sie das Portal geöffnet, da Sie in Kürze auch Ihre Clientanwendung registrieren müssen.
 
 ## <a name="step-2-set-up-the-app-to-use-the-owin-authentication-pipeline"></a>Schritt 2: Konfigurieren der App für die Verwendung der OWIN-Authentifizierungspipeline
+
 Um eingehende Anforderungen und Token zu überprüfen, müssen Sie Ihre Anwendung für die Kommunikation mit Azure AD einrichten.
 
 1. Öffnen Sie dazu zunächst die Projektmappe, und fügen Sie dem Projekt „TodoListService“ über die Paket-Manager-Konsole die NuGet-Pakete der OWIN-Middleware hinzu.
@@ -73,7 +76,7 @@ Um eingehende Anforderungen und Token zu überprüfen, müssen Sie Ihre Anwendun
     PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
     ```
 
-2. Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu.  Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen** > **Neues Element** aus, und suchen Sie dann nach **OWIN**. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
+2. Fügen Sie dem Projekt „TodoListService“ eine OWIN-Startklasse mit dem Namen `Startup.cs`hinzu.  Klicken Sie mit der rechten Maustaste auf das Projekt, wählen Sie **Hinzufügen > Neues Element** aus, und suchen Sie dann nach **OWIN**. Die OWIN-Middleware ruft beim Starten Ihrer Anwendung die Methode `Configuration(…)` auf.
 
 3. Ändern Sie die Klassendeklaration in `public partial class Startup`. Wir haben für Sie einen Teil dieser Klasse in einer anderen Datei bereits implementiert. Rufen Sie in der `Configuration(…)`-Methode `ConfgureAuth(…)` auf, um die Authentifizierung für Ihre Web-App einzurichten.
 
@@ -101,7 +104,7 @@ Um eingehende Anforderungen und Token zu überprüfen, müssen Sie Ihre Anwendun
     }
     ```
 
-5. Nun können Sie Ihre Controller und Aktionen mit `[Authorize]`-Attributen durch eine JWT-Bearerauthentifizierung (JSON Web Token) schützen. Geben Sie für die Klasse `Controllers\TodoListController.cs` ein Autorisierungstag an. Dadurch wird der Benutzer gezwungen, sich vor dem Zugriff auf diese Seite anzumelden.
+5. Verwenden Sie die `[Authorize]`-Attribute, um Ihre Controller und Aktionen durch eine JWT-Bearerauthentifizierung (JSON Web Token) zu schützen. Ergänzen Sie die `Controllers\TodoListController.cs`-Klasse durch ein Autorisierungstag, das den Benutzer zwingt, sich vor dem Zugriff auf diese Seite anzumelden.
 
     ```csharp
     [Authorize]
@@ -109,9 +112,9 @@ Um eingehende Anforderungen und Token zu überprüfen, müssen Sie Ihre Anwendun
     {
     ```
 
-    Wenn ein autorisierter Aufrufer eine der `TodoListController` -APIs erfolgreich aufruft, muss die Aktion möglicherweise auf Informationen über den Aufrufer zugreifen können. OWIN stellt über das Objekt `ClaimsPrincpal` Zugriff auf die Ansprüche innerhalb des Bearertokens bereit.  
+    Wenn ein autorisierter Aufrufer eine der `TodoListController` -APIs erfolgreich aufruft, muss die Aktion möglicherweise auf Informationen über den Aufrufer zugreifen können. OWIN stellt über das Objekt `ClaimsPrincpal` Zugriff auf die Ansprüche innerhalb des Bearer-Tokens bereit.  
 
-6. Eine häufige Anforderung an Web-APIs ist das Überprüfen der im Token vorhandenen „Bereiche“. Dadurch wird sichergestellt, dass der Benutzer den für den Zugriff auf den „TodoListService“ erforderlichen Berechtigungen zugestimmt hat.
+6. Im Allgemeinen müssen Web-APIs jedoch die „Bereiche“ innerhalb des Tokens überprüfen. So wird sichergestellt, dass der Endbenutzer den für den Zugriff auf den Dienst „TodoListService“ erforderlichen Berechtigungen zugestimmt hat.
 
     ```csharp
     public IEnumerable<TodoItem> Get()
@@ -129,31 +132,30 @@ Um eingehende Anforderungen und Token zu überprüfen, müssen Sie Ihre Anwendun
     ```
 
 7. Öffnen Sie im Stammverzeichnis des Projekts „TodoListService“ die Datei `web.config`, und geben Sie Ihre Konfigurationswerte im Abschnitt `<appSettings>` ein.
-  * `ida:Tenant`: Der Name Ihres Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“.
-  * `ida:Audience`: Der App-ID-URI der Anwendung, den Sie in das Azure-Portal eingegeben haben.
+    * `ida:Tenant`: Der Name Ihres Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“.
+    * `ida:Audience`: Der App-ID-URI der Anwendung, den Sie in das Azure-Portal eingegeben haben.
 
 ## <a name="step-3-configure-a-client-application-and-run-the-service"></a>Schritt 3: Konfigurieren einer Clientanwendung und Ausführen des Diensts
+
 Um „TodoListService“ in Aktion sehen zu können, müssen Sie den TodoList-Client so konfigurieren, dass er Token von Azure AD erhält und Aufrufe an den Dienst richten kann.
 
 1. Wechseln Sie zurück zum [Azure-Portal](https://portal.azure.com).
+1. Erstellen Sie in Ihrem Azure AD-Mandanten eine neue Anwendung, und wählen Sie an der Eingabeaufforderung **Systemeigene Clientanwendung** aus.
+    * **Name**: Beschreibt die Anwendung für Benutzer.
+    * Geben Sie `http://TodoListClient/` als Wert für den **Umleitungs-URI** ein.
 
-2. Erstellen Sie in Ihrem Azure AD-Mandanten eine neue Anwendung, und wählen Sie an der Eingabeaufforderung **Systemeigene Clientanwendung** aus.
-  * **Name**: Beschreibt die Anwendung für Benutzer.
-  * Geben Sie als **Umleitungs-URI** `http://TodoListClient/` ein.
+1. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Schritten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
+1. Wählen Sie auf der Seite **Einstellungen** zunächst **Erforderliche Berechtigungen** und dann **Hinzufügen** aus. Suchen Sie den „TodoListService“, wählen Sie ihn aus, und fügen Sie unter **Delegierte Berechtigungen** die Berechtigung **Auf TodoListService zugreifen** hinzu. Wählen Sie anschließend **Fertig** aus.
+1. Öffnen Sie in Visual Studio im Projekt „TodoListClient“ die Datei `App.config`, und geben Sie dann Ihre Konfigurationswerte im Abschnitt `<appSettings>` ein.
 
-3. Nach Abschluss der Registrierung weist Azure AD Ihrer App eine eindeutige Anwendungs-ID zu. Diesen Wert benötigen Sie in den nächsten Schritten. Daher sollten Sie ihn von der Anwendungsseite kopieren.
+    * `ida:Tenant`: Der Name Ihres Azure AD-Mandanten, z.B. contoso.onmicrosoft.com.
+    * `ida:ClientId`: Die App-ID, die Sie aus dem Azure-Portal kopiert haben.
+    * `todo:TodoListResourceId`: Der App-ID-URI der Anwendung „TodoListService“, den Sie im Azure-Portal eingegeben haben.
 
-4. Wählen Sie auf der Seite **Einstellungen** zunächst **Erforderliche Berechtigungen** und dann **Hinzufügen** aus. Suchen Sie den „TodoListService“, wählen Sie ihn aus, und fügen Sie unter **Delegierte Berechtigungen** die Berechtigung **Auf TodoListService zugreifen** hinzu. Klicken Sie anschließend auf **Fertig**.
-
-5. Öffnen Sie in Visual Studio im Projekt „TodoListClient“ die Datei `App.config`, und geben Sie dann Ihre Konfigurationswerte im Abschnitt `<appSettings>` ein.
-
-  * `ida:Tenant`: Der Name Ihres Azure AD-Mandanten, z.B. „contoso.onmicrosoft.com“.
-  * `ida:ClientId`: Die App-ID, die Sie aus dem Azure-Portal kopiert haben.
-  * `todo:TodoListResourceId`: Der App-ID-URI der Anwendung „TodoListService“, den Sie im Azure-Portal eingegeben haben.
+1. Bereinigen und erstellen Sie jedes Projekt, und führen Sie es dann aus.
+1. Wenn dies noch nicht geschehen ist, erstellen Sie in Ihrem Mandanten einen neuen Benutzer mit einer *.onmicrosoft.com-Domäne.
+1. Melden Sie sich unter diesem Benutzer beim TodoList-Client an, und fügen Sie der Aufgabenliste des Benutzers einige Aufgaben hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Bereinigen, erstellen und führen Sie zum Schluss alle Projekte aus. Falls noch nicht geschehen, ist es nun Zeit, in Ihrem Mandanten einen neuen Benutzer mit einer *.onmicrosoft.com-Domäne zu erstellen. Melden Sie sich unter diesem Benutzer beim TodoList-Client an, und fügen Sie der Aufgabenliste des Benutzers einige Aufgaben hinzu.
 
-Das vollständige Beispiel (ohne Ihre Konfigurationswerte) steht in [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip) zur Verfügung. Sie können sich nun weiteren Identitätsszenarien zuwenden.
-
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+* Zu Referenzzwecken können Sie das vollständige Beispiel (ohne Ihre Konfigurationswerte) von [GitHub](https://github.com/AzureADQuickStarts/WebAPI-Bearer-DotNet/archive/complete.zip) herunterladen. Sie können sich nun weiteren Identitätsszenarien zuwenden.

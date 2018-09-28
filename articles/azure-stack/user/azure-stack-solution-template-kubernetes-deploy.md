@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen eines Kubernetes-Clusters in Azure Stack | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie einen Kubernetes-Cluster in Azure Stack bereitstellen.
+title: Bereitstellen von Kubernetes in Azure Stack | Microsoft Docs
+description: Erfahren Sie, wie Kubernetes in Azure Stack bereitgestellt wird.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,28 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 67e82a4809253123e15305b5f2ecd8cc5f7ee4ed
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046849"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977535"
 ---
-# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Bereitstellen eines Kubernetes-Clusters in Azure Stack
+# <a name="deploy-kubernetes-to-azure-stack"></a>Bereitstellen von Kubernetes in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!Note]  
-> Azure Kubernetes Services (AKS) in Azure Stack befindet sich in der privaten Vorschau. Ihr Azure Stack-Bediener muss Zugriff auf das Marketplace-Element für Kubernetes anfordern, um die Anweisungen in diesem Artikel auszuführen.
+> Kubernetes in Azure Stack befindet sich in der Vorschauphase. Ihr Azure Stack-Operator muss Zugriff auf das Marketplace-Element für den Kubernetes-Cluster anfordern, um die Anweisungen in diesem Artikel auszuführen.
 
-Im folgenden Artikel wird die Verwendung einer Azure Resource Manager-Lösungsvorlage zum Bereitstellen der Ressourcen für Kubernetes in einem einzelnen, koordinierten Vorgang erläutert. Sie müssen die erforderlichen Informationen zu Ihrer Azure Stack-Installation sammeln, die Vorlage generieren und dann die Bereitstellung in der Cloud ausführen.
+Im folgenden Artikel wird die Verwendung einer Azure Resource Manager-Lösungsvorlage zum Bereitstellen der Ressourcen für Kubernetes in einem einzelnen, koordinierten Vorgang erläutert. Sie müssen die erforderlichen Informationen zu Ihrer Azure Stack-Installation sammeln, die Vorlage generieren und dann die Bereitstellung in der Cloud ausführen. Beachten Sie, dass die Vorlage nicht derselbe verwaltete AKS-Dienst ist, der im globalen Azure angeboten wird, sondern dem ACS-Dienst ähnlicher ist.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes und Container
 
-Sie können Kubernetes mithilfe von Azure Resource Manager-Vorlagen, die mit der Azure Kubernetes Services-Engine (AKS) generiert wurden, in Azure Stack installieren. [Kubernetes](https://kubernetes.io) ist ein Open Source-System für die Automatisierung der Bereitstellung, Skalierung und Verwaltung von Anwendungen in Containern. Ein [Container](https://www.docker.com/what-container) ist ähnlich wie ein virtueller Computer in einem Image enthalten. Im Gegensatz zu einem virtuellen Computer enthält das Containerimage jedoch nur die Ressourcen, die zum Ausführen einer Anwendung benötigt werden, etwa den Code, die Runtime zum Ausführen des Codes, bestimmte Bibliotheken und Einstellungen.
+Sie können Kubernetes mithilfe von Azure Resource Manager-Vorlagen, die mit der ACS-Engine generiert wurden, in Azure Stack installieren. [Kubernetes](https://kubernetes.io) ist ein Open Source-System für die Automatisierung der Bereitstellung, Skalierung und Verwaltung von Anwendungen in Containern. Ein [Container](https://www.docker.com/what-container) ist ähnlich wie ein virtueller Computer in einem Image enthalten. Im Gegensatz zu einem virtuellen Computer enthält das Containerimage jedoch nur die Ressourcen, die zum Ausführen einer Anwendung benötigt werden, etwa den Code, die Runtime zum Ausführen des Codes, bestimmte Bibliotheken und Einstellungen.
 
 Sie können Kubernetes für Folgendes verwenden:
 
@@ -59,7 +59,11 @@ Stellen Sie zum Einstieg sicher, dass Sie über die erforderlichen Berechtigunge
 ## <a name="create-a-service-principal-in-azure-ad"></a>Erstellen eines Dienstprinzipals in Azure AD
 
 1. Melden Sie sich beim globalen [Azure-Portal](http://portal.azure.com) an.
-1. Sie müssen mit dem der Azure Stack-Instanz zugeordneten Azure AD-Mandanten angemeldet sein.
+
+1. Sie müssen mit dem der Azure Stack-Instanz zugeordneten Azure AD-Mandanten angemeldet sein. Sie können Ihre Anmeldung wechseln, indem Sie auf das Filtersymbol in der Azure-Symbolleiste klicken.
+
+    ![Auswählen des AD-Mandanten](media/azure-stack-solution-template-kubernetes-deploy/tenantselector.png)
+
 1. Erstellen Sie eine Azure AD-Anwendung.
 
     a. Wählen Sie **Azure Active Directory** > **+ App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.
@@ -83,34 +87,33 @@ Stellen Sie zum Einstieg sicher, dass Sie über die erforderlichen Berechtigunge
     c. Wählen Sie **Speichern**aus. Notieren Sie sich die Schlüsselzeichenfolge. Sie benötigen die Schlüsselzeichenfolge bei der Clustererstellung. Der Schlüssel wird als **Clientgeheimnis des Dienstprinzipals** bezeichnet.
 
 
-
 ## <a name="give-the-service-principal-access"></a>Erteilen des Zugriffs für den Dienstprinzipal
 
 Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressourcen erstellen kann.
 
 1.  Melden Sie sich beim [Azure Stack-Portal](https://portal.local.azurestack.external/) an.
 
-1. Wählen Sie **Weitere Dienste** > **Abonnements** aus.
+1. Wählen Sie **Alle Dienste** > **Abonnements** aus.
 
-1. Wählen Sie das von Ihnen erstellte Abonnement aus.
+1. Wählen Sie das von Ihrem Operator für die Verwendung des Kubernetes-Clusters erstellte Abonnement aus.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** > **+ Hinzufügen**.
 
-1. Wählen Sie die Rolle **Besitzer**.
+1. Wählen Sie die Rolle **Mitwirkender** aus.
 
 1. Wählen Sie den für Ihren Dienstprinzipal erstellten Anwendungsnamen aus. Unter Umständen müssen Sie den Namen in das Suchfeld eingeben.
 
 1. Klicken Sie auf **Speichern**.
 
-## <a name="deploy-a-kubernetes-cluster"></a>Bereitstellen eines Kubernetes-Clusters
+## <a name="deploy-a-kubernetes"></a>Bereitstellen von Kubernetes
 
 1. Öffnen Sie das [Azure Stack-Portal](https://portal.local.azurestack.external).
 
-1. Klicken Sie auf **+Neu** > **Compute** > **Kubernetes-Cluster**. Klicken Sie auf **Create**.
+1. Wählen Sie **+ Ressource erstellen** > **Compute** > **Kubernetes-Cluster** aus. Klicken Sie auf **Create**.
 
     ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. Wählen Sie in „Kubernetes-Cluster erstellen“ die Option **Grundlagen** aus.
+1. Wählen Sie in „Kubernetes erstellen“ die Option **Grundlagen** aus.
 
     ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
@@ -145,7 +148,6 @@ Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressource
 
 1. Geben Sie unter **Tenant Arm Endpoint** (ARM-Mandantenendpunkt) den Endpunkt ein. Dabei handelt es sich um den Azure Resource Manager-Endpunkt für die Verbindungsherstellung, um die Ressourcengruppe für den Kubernetes-Cluster zu erstellen. Bei einem integrierten System müssen Sie den Endpunkt vom Azure Stack-Bediener erfragen. Für das Azure Stack Development Kit (ASDK) können Sie `https://management.local.azurestack.external` verwenden.
 
-1. Geben Sie die **Mandanten-ID** für den Mandanten ein. Wenn Sie Unterstützung beim Ermitteln dieses Werts benötigen, lesen Sie die Informationen unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
 
 ## <a name="connect-to-your-cluster"></a>Herstellen einer Clusterverbindung
 
@@ -155,6 +157,6 @@ Sie können zudem den **Helm**-Paket-Manager zum Installieren und Bereitstellen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Hinzufügen eines Kubernetes-Clusters zum Marketplace (für Azure Stack-Bediener)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Hinzufügen von Kubernetes zum Marketplace (für den Azure Stack-Operator)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes in Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

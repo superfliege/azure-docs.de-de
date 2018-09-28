@@ -13,21 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 3479aa8dd319c81f320b6c7ead086c266454acc6
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 8af6846da78d12460b7866297c9802c5dab20a69
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579594"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967522"
 ---
-# <a name="azure-ad-xamarin-getting-started"></a>Erste Schritte in Azure AD Xamarin
-[!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
+# <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Schnellstart: Erstellen einer Xamarin-App, die Microsoft-Anmeldung integriert
 
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+[!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
 Mithilfe von Xamarin können Sie mobile Apps in C# schreiben, die unter iOS, Android und Windows (sowohl auf mobilen Geräten als auch PCs) ausgeführt werden können. Bei der Entwicklung einer App mit Xamarin können Sie Benutzer mit Azure Active Directory (Azure AD) einfach und problemlos über deren Azure AD-Konten authentifizieren. Die App kann auf sichere Weise alle Web-APIs nutzen, die per Azure AD geschützt sind, z.B. die Office 365-APIs oder die Azure-API.
 
@@ -37,18 +36,21 @@ Für Xamarin-Apps, die auf geschützte Ressourcen zugreifen müssen, bietet Azur
 * Verwendung einer einzigen portablen Klassenbibliothek (PCL) zur Authentifizierung der Benutzer und zum Abrufen der Token für die Azure AD Graph-API
 * Durchsuchen eines Verzeichnisses nach Benutzern mit einem bestimmten UPN
 
-## <a name="before-you-get-started"></a>Bevor Sie beginnen
+## <a name="prerequisites"></a>Voraussetzungen
+
 * Laden Sie das [Gerüstprojekt](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/skeleton.zip) oder [vollständige Beispiel](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip) herunter. Bei beiden Downloads handelt es sich um eine Visual Studio 2013-Projektmappe.
 * Außerdem benötigen Sie einen Azure AD-Mandanten, in dem Sie Benutzer erstellen und bei dem Sie die App registrieren. Wenn Sie über noch keinen Mandanten verfügen, [erfahren Sie hier, wie Sie einen erhalten](quickstart-create-new-tenant.md).
 
 Wenn Sie bereit sind, führen Sie die Verfahren in den folgenden vier Abschnitten aus.
 
 ## <a name="step-1-set-up-your-xamarin-development-environment"></a>Schritt 1: Einrichten der Xamarin-Entwicklungsumgebung
+
 Da in diesem Tutorial Projekte für iOS, Android und Windows erstellt werden, benötigen Sie sowohl Visual Studio als auch Xamarin. Befolgen Sie zum Erstellen der erforderlichen Umgebung alle Schritte in der Anleitung [Setup und Installation von Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) auf MSDN. In dieser Anleitung finden Sie auch Materialien mit weiteren Informationen zu Xamarin, die Sie während der Installation lesen können.
 
 Öffnen Sie nach Abschluss des Setups die Projektmappe in Visual Studio. Sie enthält sechs Projekte: fünf plattformspezifische Projekte und die PLC „DirectorySearcher.cs“, die auf allen Plattformen verwendet werden kann.
 
 ## <a name="step-2-register-the-directorysearcher-app"></a>Schritt 2: Registrieren der App DirectorySearcher
+
 Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst bei Ihrem Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen. Das geht so:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -63,6 +65,7 @@ Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst bei Ihrem Azu
 8. Wählen Sie **Microsoft Graph** als API aus. Fügen Sie unter **Delegierte Berechtigungen** die Berechtigung **Verzeichnisdaten lesen** hinzu. Mit dieser Berechtigung kann die App die Graph-API auf Benutzer abfragen.
 
 ## <a name="step-3-install-and-configure-adal"></a>Schritt 3: Installieren und Konfigurieren der ADAL
+
 Nachdem Sie nun eine App in Azure AD erstellt haben, können Sie die ADAL installieren und Ihren identitätsbezogenen Code schreiben. Damit die ADAL mit Azure AD kommunizieren kann, müssen Sie ihr einige Informationen zur App-Registrierung bereitstellen.
 
 1. Fügen Sie die ADAL mithilfe der Paket-Manager-Konsole dem Projekt „DirectorySearcher“ hinzu.
@@ -96,6 +99,7 @@ Nachdem Sie nun eine App in Azure AD erstellt haben, können Sie die ADAL instal
   * *returnUri* ist der Umleitungs-URI, den Sie im Portal eingegeben haben (beispielsweise http://DirectorySearcher).
 
 ## <a name="step-4-use-adal-to-get-tokens-from-azure-ad"></a>Schritt 4: Verwenden der ADAL zum Abrufen von Token aus Azure AD
+
 Nahezu die gesamte Authentifizierungslogik der App befindet sich in `DirectorySearcher.SearchByAlias(...)`. In den plattformspezifischen Projekten müssen Sie an die PCL von `DirectorySearcher` daher nur noch einen kontextbezogenen Parameter übergeben.
 
 1. Öffnen Sie „DirectorySearcher.cs“, und fügen Sie dann der `SearchByAlias(...)`-Methode einen neuen Parameter hinzu. `IPlatformParameters` ist der kontextbezogene Parameter, der die plattformspezifischen Objekte kapselt, die die ADAL benötigt, um die Authentifizierung auszuführen.
@@ -154,6 +158,7 @@ Mehr ist für die PCL von `DirectorySearcher` und den identitätsbezogenen Code 
     ```
 
 ### <a name="windows-desktop"></a>Windows Desktop
+
 Richten Sie in „MainWindow.xaml.cs“ einen Aufruf an `SearchByAlias(...)`, indem Sie `WindowInteropHelper` an das Objekt `PlatformParameters` des Desktops übergeben:
 
 ```csharp
@@ -180,18 +185,18 @@ List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(
 ...
 ```
 
-## <a name="whats-next"></a>Nächste Schritte
 Sie verfügen nun über eine funktionsfähige Xamarin-App, die Benutzer auf fünf verschiedenen Plattformen authentifizieren und Web-APIs über OAuth 2.0 sicher aufrufen kann.
+
+## <a name="step-5-populate-your-tenant"></a>Schritt 5: Auffüllen Ihres Mandanten mit Daten 
 
 Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen.
 
 1. Führen Sie danach Ihre App „DirectorySearcher“ aus, und melden Sie sich als einer der Benutzer an.
 2. Suchen Sie anhand des UPN nach anderen Benutzern.
 
+## <a name="next-steps"></a>Nächste Schritte
+
 Die ADAL erleichtert Ihnen die Integration allgemeiner Identitätsfunktionen in die App. Sie übernimmt die unangenehmen Verwaltungsarbeiten für Sie, wie z.B. die Cacheverwaltung, Unterstützung des OAuth-Protokolls, Anzeige einer Anmeldeschnittstelle für den Benutzer und Aktualisierung abgelaufener Token. Sie müssen lediglich einen einzigen API-Aufruf kennen: `authContext.AcquireToken*(…)`.
 
-Zur Referenz können Sie das [vollständige Beispiel](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip) (ohne Ihre Konfigurationswerte) herunterladen.
-
-Sie können sich nun weiteren Identitätsszenarien zuwenden. Sehen Sie sich z.B. das [Schützen einer .NET Web-API mit Azure AD](quickstart-v1-dotnet-webapi.md) an.
-
-[!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
+* Sie können das [vollständige Beispiel](https://github.com/AzureADQuickStarts/NativeClient-MultiTarget-DotNet/archive/complete.zip) (ohne Ihre Konfigurationswerte) herunterladen.
+* Informieren Sie sich über das [Schützen einer .NET Web-API mit Azure AD](quickstart-v1-dotnet-webapi.md).

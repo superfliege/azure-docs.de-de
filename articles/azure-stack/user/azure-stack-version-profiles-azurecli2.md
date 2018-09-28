@@ -10,23 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: f57a7f1cc255f9c4553384a7568beee1c2ed1752
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41954849"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972809"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI 2.0 in Azure Stack
+# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI in Azure Stack
 
 Mit den Schritten in diesem Artikel können Sie die Azure-Befehlszeilenschnittstelle (CLI) zum Verwalten von Azure Stack Development Kit-Ressourcen über Linux- und Mac-Clientplattformen einrichten.
 
 ## <a name="install-cli"></a>Installieren der CLI
 
-Melden Sie sich an Ihrer Entwicklungsarbeitsstation an und installieren die CLI. Azure Stack erfordert Version 2.0 der Azure CLI. Mithilfe der im Artikel [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) beschriebenen Schritte können Sie diese Version installieren. Öffnen Sie ein Terminal oder ein Eingabeaufforderungsfenster, und führen Sie den folgenden Befehl aus, um zu überprüfen, ob die Installation erfolgreich war:
+Melden Sie sich an Ihrer Entwicklungsarbeitsstation an und installieren die CLI. Azure Stack erfordert Version 2.0 oder höher der Azure CLI. Mithilfe der im Artikel [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) beschriebenen Schritte können Sie diese Version installieren. Öffnen Sie ein Terminal oder ein Eingabeaufforderungsfenster, und führen Sie den folgenden Befehl aus, um zu überprüfen, ob die Installation erfolgreich war:
 
 ```azurecli
 az --version
@@ -94,7 +94,7 @@ $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
 $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
 $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
 $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
-$sha1Entry    = [string]::Format("# SHA1 Finterprint: {0}", $sha1Hash)
+$sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
 $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
 $certText = (Get-Content -Path $pemFile -Raw).ToString().Replace("`r`n","`n")
 
@@ -160,8 +160,11 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure Stack herzu
 
    ```azurecli
    az cloud update \
-     --profile 2017-03-09-profile
+     --profile 2018-03-01-hybrid
    ```
+
+    >[!NOTE]  
+    >Wenn Sie eine Version von Azure Stack vor Build 1808 ausführen, müssen Sie das API-Versionsprofil **2017-03-09-profile** anstelle des API-Versionsprofils **2018-03-01-hybrid** verwenden.
 
 1. Melden Sie sich bei der Azure Stack-Umgebung an, indem Sie den Befehl `az login` ausführen. Sie können sich entweder als Benutzer oder als [Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects) an der Azure Stack-Umgebung anmelden. 
 

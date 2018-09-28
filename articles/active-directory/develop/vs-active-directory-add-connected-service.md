@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 2e446bad042965e8466e74b9b1abd8661ea88f8b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 9b61362525962c5e01d7fef6d317cf9861dfd0a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145956"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977892"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Hinzufügen von Azure Active Directory mithilfe von verbundenen Diensten in Visual Studio
 
@@ -35,7 +35,7 @@ Derzeit unterstützt der verbundene Dienst für Active Directory keine ASP.NET C
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Herstellen einer Verbindung mit Azure Active Directory über das Dialogfeld „Verbundene Dienste“
 
-1. Erstellen oder öffnen Sie in Visual Studio ein ASP.NET MVC-Projekt oder ein ASP.NET-Web-API-Projekt. Sie können die Vorlagen „MVC“, „Web-API“, „Single-Page-Anwendung“, „Azure-API-App“, „Azure Mobile App“ und „Azure Mobile Service“ verwenden.
+1. Erstellen oder öffnen Sie in Visual Studio ein ASP.NET MVC-Projekt oder ein ASP.NET-Web-API-Projekt. Sie können die Vorlagen „MVC“, „Web-API“, „Single-Page-Webanwendung“, „Azure-API-App“, „Azure Mobile App“ und „Azure Mobile Service“ verwenden.
 
 1. Wählen Sie den Menübefehl **Projekt > Verbundenen Dienst hinzufügen...**, oder doppelklicken Sie unter dem Projekt im Projektmappen-Explorer auf den Knoten **Verbundene Dienste**.
 

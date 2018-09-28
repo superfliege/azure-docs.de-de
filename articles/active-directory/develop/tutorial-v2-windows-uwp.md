@@ -16,14 +16,18 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 48d03b590d718cf82d692dc177a69f6d54de43d1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 4afd4ce5b8a0ab4c076ebc3c587605dfe1204b8a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495914"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966383"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
+
+
+> [!div renderon="docs"]
+> [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 Diese Anleitung veranschaulicht, wie eine native Universelle Windows-Plattform-Anwendung (UWP) ein Zugriffstoken abrufen und anschließend die Microsoft Graph-API aufrufen kann. Die Anleitung bezieht sich außerdem auf andere APIs, die Zugriffstoken von einem Azure Active Directory v2-Endpunkt anfordern.
 
@@ -71,11 +75,14 @@ In der in diesem Leitfaden erstellten Anwendung werden eine Schaltfläche, über
 2. Kopieren Sie folgenden Befehl, und fügen Sie ihn in das Fenster **Paket-Manager-Konsole** ein:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
     ```
 
 > [!NOTE]
 > Der obige Befehl installiert die [Microsoft Authentication Library (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). Die MSAL kümmert sich um das Erfassen, Zwischenspeichern und Aktualisieren von Benutzertoken für den Zugriff auf APIs, die von Azure Active Directory v2 geschützt werden.
+
+> [!NOTE]
+> Dieses Tutorial verwendet noch nicht die neueste Version von MSAL.NET, aber wir arbeiten an der Aktualisierung.
 
 ## <a name="initialize-msal"></a>MSAL initialisieren
 In diesem Schritt erfahren Sie, wie Sie eine Klasse zur Handhabung der Interaktion mit MSAL (beispielsweise die Handhabung von Token) erstellen.
@@ -381,7 +388,6 @@ Wenn Sie sich in einer Azure Active Directory-Verbunddomäne bei Ihrer Anwendung
 
 ### <a name="issue-2"></a>Problem 2:
 Nach der Aktivierung von [Integrierte Authentifizierung für Verbunddomänen](#enable-integrated-authentication-on-federated-domains-optional) und dem Versuch, sich über Windows Hello auf einem Windows 10-Computer bei einer Umgebung mit konfigurierter mehrstufiger Authentifizierung anzumelden, wird die Liste mit den Zertifikaten angezeigt. Wenn Sie Ihre PIN verwenden möchten, wird das Fenster „PIN“ jedoch nie angezeigt.
-
 
 **Ursache**: Bekannte Einschränkung des Webauthentifizierungsbrokers in UWP-Anwendungen, die unter Windows 10 Desktop ausgeführt werden (funktioniert unter Windows 10 Mobile).
 

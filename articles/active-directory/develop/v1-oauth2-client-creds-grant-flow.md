@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8f7c6c2bef747d00188cac2c3601fdad739b92a8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: eb43589b04be8b2b9c3be45d33c94592e97d308e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580562"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948263"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat)
 Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein *vertraulicher Client*) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines anderen Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit kann der aufrufende Dienst anstelle eines gemeinsamen Geheimnisses auch ein Zertifikat als Anmeldeinformationen verwenden.
@@ -61,7 +61,7 @@ Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zug
 | resource |required |Geben Sie den App-ID-URI des empfangenden Webdiensts ein. Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Azure Active Directory**, auf **App-Registrierungen**, auf die Dienstanwendung und anschließend auf **Einstellungen** und **Eigenschaften**. |
 
 #### <a name="example"></a>Beispiel
-Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken für den Webdienst https://service.contoso.com/ angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
+Mit dem folgenden HTTP POST-Element wird ein [Zugriffstoken](access-tokens.md) für den Webdienst https://service.contoso.com/ angefordert. Mit der `client_id` wird der Webdienst identifiziert, der das Zugriffstoken anfordert.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1

@@ -1,9 +1,9 @@
 ---
-title: Schnellstart für die Azure AD Graph-API | Microsoft Docs
-description: Die Azure Active Directory Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über OData-REST-API-Endpunkte. Anwendungen können die Azure AD Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen.
+title: Verwenden der Azure AD-Graph-API
+description: Die Azure Active Directory (Azure AD) Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über OData-REST-API-Endpunkte. Anwendungen können die Azure AD Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen.
 services: active-directory
 documentationcenter: n/a
-author: mtillman
+author: CelesteDG
 manager: mtillman
 editor: ''
 tags: ''
@@ -11,28 +11,29 @@ ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2018
-ms.author: mtillman
+ms.date: 09/24/2018
+ms.author: celested
+ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 3298b39fc92f6e5867900ed151149ff936e2733c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 7b7f2133634a91b828d7e978c9041b12873fa3a1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492628"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997215"
 ---
-# <a name="quickstart-for-the-azure-ad-graph-api"></a>Schnellstart für die Azure AD Graph-API
-Die Azure Active Directory (AD) Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über OData-REST-API-Endpunkte. Anwendungen können die Azure AD Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen. Beispielsweise können Sie die Azure AD Graph-API verwenden, um einen neuen Benutzer zu erstellen, Eigenschaften des Benutzers anzuzeigen oder zu aktualisieren, das Kennwort des Benutzers zu ändern, die Gruppenmitgliedschaft für den rollenbasierten Zugriff zu überprüfen und den Benutzer zu deaktivieren oder zu löschen. Weitere Informationen zu den Azure AD Graph-API-Features und Anwendungsszenarios finden Sie unter [Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) und [Voraussetzungen für die Azure AD Graph-API](https://msdn.microsoft.com/library/hh974476.aspx). 
+# <a name="how-to-use-the-azure-ad-graph-api"></a>Gewusst wie: Verwenden der Azure AD Graph-API
+
+Die Azure Active Directory (Azure AD) Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über OData-REST-API-Endpunkte. Anwendungen können die Azure AD Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen. Beispielsweise können Sie die Azure AD Graph-API verwenden, um einen neuen Benutzer zu erstellen, Eigenschaften des Benutzers anzuzeigen oder zu aktualisieren, das Kennwort des Benutzers zu ändern, die Gruppenmitgliedschaft für den rollenbasierten Zugriff zu überprüfen und den Benutzer zu deaktivieren oder zu löschen. Weitere Informationen zu den Azure AD Graph-API-Features und Anwendungsszenarios finden Sie unter [Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) und [Voraussetzungen für die Azure AD Graph-API](https://msdn.microsoft.com/library/hh974476.aspx).
 
 > [!IMPORTANT]
 > Es wird dringend empfohlen, dass Sie [Microsoft Graph](https://developer.microsoft.com/graph) anstelle der Azure AD Graph-API für den Zugriff auf Azure Active Directory-Ressourcen verwenden. Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Die Szenarien, für die die Azure AD Graph-API möglicherweise weiterhin geeignet ist, ist nur sehr begrenzt. Weitere Informationen dazu finden Sie im Blogbeitrag [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) (Microsoft Graph oder Azure AD Graph) im Office Dev Center.
-> 
-> 
 
 ## <a name="how-to-construct-a-graph-api-url"></a>Erstellen einer Graph-API-URL
+
 In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (also Ressourcen oder Entitäten), für die Sie CRUD-Vorgänge ausführen möchten, URLs verwenden, die auf dem OData-Protokoll (Open Data) basieren. Die URLs, die in der Graph-API verwendet werden, bestehen aus vier Hauptkomponenten: Dienststamm, Mandanten-ID, Ressourcenpfad und Optionen für Abfragezeichenfolgen: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Betrachten Sie beispielsweise die folgende URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
 * **Dienststamm:** In der Azure AD Graph-API ist der Dienststamm immer https://graph.windows.net.
@@ -41,12 +42,15 @@ In der Graph-API können Sie für den Zugriff auf Verzeichnisdaten und Objekte (
 * **Abfrageparameter:** Ein Fragezeichen (?) trennt den Abschnitt für den Ressourcenpfad vom Abschnitt für Abfrageparameter. Der Abfrageparameter „api-version“ ist für alle Anforderungen in der Azure AD Graph-API erforderlich. Die Azure AD Graph-API unterstützt außerdem die folgenden OData-Abfrageoptionen: **$filter**, **$orderby**, **$expand**, **$top** und **$format**. Die folgenden Abfrageoptionen werden zurzeit nicht unterstützt: **$count**, **$inlinecount** und **$skip**. Weitere Informationen finden Sie unter [Unterstützte Abfragen, Filter und Paginierungsoptionen in der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
 ## <a name="graph-api-versions"></a>Graph-API-Versionen
+
 Sie geben die Version für eine Graph-API-Anforderung im Abfrageparameter "api-version" an. Verwenden Sie ab Version 1.5 einen numerischen Versionswert; api-version=1.6 Für frühere Versionen verwenden Sie eine Datumszeichenfolge, die dem Format JJJJ-MM-TT entspricht, beispielsweise „api-version=2013-11-08“. Verwenden Sie für Funktionen der Vorschauversion die Zeichenfolge "beta", beispielsweise "api-version=beta". Weitere Informationen zu den Unterschieden zwischen den Graph-API-Versionen finden Sie unter [Versionsverwaltung der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
 
 ## <a name="graph-api-metadata"></a>Graph-API-Metadaten
+
 Um die Metadatendatei der Azure AD Graph-API zurückzugeben, fügen Sie in der URL nach dem Mandantenbezeichner das Segment „$metadata“ hinzu. Beispielsweise gibt die folgende URL Metadaten für ein Demonstrationsunternehmen zurück: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Sie können diese URL in die Adressleiste eines Webbrowsers eingeben, um die Metadaten anzuzeigen. Das zurückgegebene CSDL-Metadatendokument beschreibt die Entitäten und komplexen Typen, deren Eigenschaften und die Funktionen und Aktionen, die von der angeforderten Graph-API-Version verfügbar gemacht werden. Wenn der Parameter „api-version“ nicht angegeben wird, werden Metadaten für die neueste Version zurückgegeben.
 
 ## <a name="common-queries"></a>Allgemeine Abfragen
+
 Unter [Allgemeine Abfragen der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) werden allgemeine Abfragen aufgeführt, die mit Azure AD Graph verwendet werden können. Dazu gehören auch Abfragen, die für den Zugriff auf Ressourcen der obersten Ebene in Ihrem Verzeichnis verwendet werden können, und Abfragen zum Ausführen von Vorgängen in Ihrem Verzeichnis.
 
 Beispielsweise gibt `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` Unternehmensinformationen für das Verzeichnis "contoso.com" zurück.
@@ -75,6 +79,7 @@ Beachten Sie die folgenden Funktionen und Einschränkungen für den Azure AD Gra
 * Keine Unterstützung für das Anzeigen oder Hochladen einer Miniaturansicht von Fotos.
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>Verwenden von Fiddler zum Schreiben in das Verzeichnis
+
 Im Rahmen dieses Schnellstarthandbuchs können Sie den Fiddler-Webdebugger verwenden, um Schreibvorgänge in das Azure AD-Verzeichnis zu üben. Sie können z.B. das Profilfoto eines Benutzers abrufen und hochladen (dies ist mit dem Azure AD Graph-Explorer nicht möglich). Weitere Informationen – auch zur Installation – von Fiddler finden Sie unter [http://www.telerik.com/fiddler](http://www.telerik.com/fiddler).
 
 Im folgenden Beispiel verwenden Sie den Fiddler-Webdebugger, um die neue Sicherheitsgruppe „MyTestGroup“ in Ihrem Azure AD-Verzeichnis zu erstellen.
@@ -89,8 +94,7 @@ Im folgenden Beispiel verwenden Sie den Fiddler-Webdebugger, um die neue Sicherh
    
    > [!NOTE]
    > Ersetzen Sie „{mytenantdomain}“ mit dem Domänennamen Ihres eigenen Azure AD-Verzeichnisses.
-   > 
-   > 
+
 4. Geben Sie im Feld direkt unterhalb des Pulldownmenüs „Post“ folgenden HTTP-Header ein:
    
     ```
@@ -101,8 +105,7 @@ Im folgenden Beispiel verwenden Sie den Fiddler-Webdebugger, um die neue Sicherh
    
    > [!NOTE]
    > Ersetzen Sie &lt;your access token&gt; durch das Zugriffstoken für Ihr Azure AD-Verzeichnis.
-   > 
-   > 
+
 5. Geben Sie im Feld **Anforderungstext** folgenden JSON-Code ein:
    
     ```
@@ -119,6 +122,6 @@ Im folgenden Beispiel verwenden Sie den Fiddler-Webdebugger, um die neue Sicherh
 Weitere Informationen zu Azure AD-Entitäten und -Typen, die von Graph bereitgestellt werden, und Informationen zu den Vorgängen, die mit Graph durchgeführt werden können, finden Sie unter [Azure AD Graph-REST-API-Referenz](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Erfahren Sie mehr über die [Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 * Erfahren Sie mehr zu [Berechtigungsbereiche der Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
-

@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9173dfcbb5f73c2292bce7d28c2dae5dbece79cd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 69b025a06abb24bfa3b8ff6b692a2559b3947681
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41947936"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995269"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 
@@ -27,8 +27,8 @@ ms.locfileid: "41947936"
 
 Stellen Sie App Service anhand der Informationen in diesem Artikel in Azure Stack bereit.
 
->[!IMPORTANT]  
->Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) vor der Bereitstellung von Azure App Service 1.3 bereit.
+> [!IMPORTANT]  
+> Wenden Sie Update 1807 auf Ihr integriertes Azure Stack-System an, oder stellen Sie das aktuelle Azure Stack Development Kit (ASDK) vor der Bereitstellung von Azure App Service 1.3 bereit.
 
 Sie können Ihren Benutzern ermöglichen, Web- und API-Anwendungen zu erstellen. Damit Benutzer diese Anwendungen erstellen können, ist Folgendes erforderlich:
 
@@ -97,7 +97,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 8. Geben Sie die Informationen für die Dateifreigabe ein, und wählen Sie dann **Weiter** aus. Die Adresse der Dateifreigabe muss den vollqualifizierten Domänennamen (FQDN) oder die IP-Adresse Ihres Dateiservers enthalten. Beispiel: \\„\appservicefileserver.local.cloudapp.azurestack.external\websites“ oder \\„\10.0.0.1\websites“.
 
    >[!NOTE]
-   >Das Installationsprogramm versucht, die Konnektivität mit der Dateifreigabe zu testen, bevor es fortgesetzt wird. Wenn Sie die Bereitstellung aber in einem vorhandenen virtuellen Netzwerk durchführen, können bei diesem Konnektivitätstest Fehler auftreten. Es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten. Wenn die Dateifreigabeinformationen korrekt sind, fahren Sie mit der Bereitstellung fort.
+   >Das Installationsprogramm versucht, die Konnektivität mit der Dateifreigabe zu testen, bevor es fortgesetzt wird. Wenn Sie die Bereitstellung aber in einem vorhandenen virtuellen Netzwerk durchführen, können bei diesem Konnektivitätstest ggf. Fehler auftreten. Es wird eine Warnung mit der Frage angezeigt, ob Sie den Vorgang fortsetzen möchten. Wenn die Dateifreigabeinformationen korrekt sind, fahren Sie mit der Bereitstellung fort.
 
    ![App Service-Installationsprogramm][7]
 
@@ -228,7 +228,7 @@ Nachdem Sie den App Service-Ressourcenanbieter bereitgestellt und registriert ha
 
 Führen Sie die folgenden Schritte aus, um eine Test-Web-App zu erstellen:
 
-1. Wählen Sie im Azure Stack-Mandantenportal die Optionen **Neu** > **Web und mobil** > **Web-App** aus.
+1. Wählen Sie im Azure Stack-Benutzerportal **Ressource erstellen** > **Web + Mobil** > **Web-App** aus.
 
 2. Geben Sie unter **Web-App**, einen Namen in **Web-App** ein.
 

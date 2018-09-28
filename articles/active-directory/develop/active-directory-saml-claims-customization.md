@@ -1,5 +1,5 @@
 ---
-title: Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory | Microsoft-Dokumentation
+title: Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory | Microsoft Docs
 description: Hier erfahren Sie, wie Sie im SAML-Token ausgestellte Ansprüche für Unternehmensanwendungen in Azure Active Directory anpassen.
 services: active-directory
 documentationcenter: ''
@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 2405f1a8ab5ef03e5ed2992b7a089571077ce59b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 80842f7e99ee0c58f1615892f3c3c4adf03119b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348513"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956967"
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure Active Directory
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-ad"></a>Gewusst wie: Anpassen ausgestellter Ansprüche im SAML-Token für Unternehmensanwendungen in Azure AD
+
 Derzeit unterstützt Azure Active Directory einmaliges Anmelden für die meisten Unternehmensanwendungen, einschließlich bereits im Azure AD-App-Katalog integrierte Anwendungen sowie benutzerdefinierte Anwendungen. Wenn sich ein Benutzer mithilfe des SAML 2.0-Protokolls über Azure AD bei einer Anwendung authentifiziert, sendet Azure AD ein Token an die Anwendung (über eine HTTP POST-Anfrage). Die Anwendung überprüft und verwendet dann das Token, um den Benutzer anzumelden, anstatt den Benutzernamen und das Kennwort anzufordern. Diese SAML-Token enthalten Informationen über den Benutzer, die als „Ansprüche“ bezeichnet werden.
 
 Im technischen Jargon bezeichnet ein Anspruch (Claim) Informationen über den Benutzer, die ein Identitätsanbieter im Benutzertoken übergibt. Im [SAML-Token](http://en.wikipedia.org/wiki/SAML_2.0) sind diese Daten in der Regel in der SAML-Attributanweisung enthalten. Die eindeutige ID des Benutzers wird normalerweise im SAML-Betreff dargestellt und auch als Namensbezeichner bezeichnet.
@@ -73,7 +74,7 @@ Sie können beispielsweise die Abteilung des Benutzers in seiner Organisation al
 > Wenn für einen bestimmten Benutzer kein Wert für ein ausgewähltes Attribut gespeichert ist, wird dieser Anspruch nicht in dem Token ausgestellt.
 
 > [!TIP]
-> Die Optionen **user.onpremisesecurityidentifier** und **user.onpremisesamaccountname** werden nur beim Synchronisieren von Benutzerdaten aus der lokalen Active Directory-Instanz mithilfe des Tools [Azure AD Connect](../active-directory-aadconnect.md) unterstützt.
+> Die Optionen **user.onpremisesecurityidentifier** und **user.onpremisesamaccountname** werden nur beim Synchronisieren von Benutzerdaten aus der lokalen Active Directory-Instanz mithilfe des Tools [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) unterstützt.
 
 ## <a name="restricted-claims"></a>Eingeschränkte Ansprüche
 
@@ -129,7 +130,7 @@ In SAML gibt es einige eingeschränkte Ansprüche. Wenn Sie diese Ansprüche hin
     | http://schemas.microsoft.com/identity/claims/scope |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](../active-directory-apps-index.md)
+* [Anwendungsverwaltung in Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Problembehandlung bei SAML-basiertem einmaligem Anmelden](howto-v1-debug-saml-sso-issues.md)
 
