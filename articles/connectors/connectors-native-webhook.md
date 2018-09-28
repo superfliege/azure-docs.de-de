@@ -85,7 +85,7 @@ Im Folgenden finden Sie weitere Details zu den von Webhooks unterstützten Trigg
 #### <a name="http-webhook"></a>HTTP-Webhook
 
 Abonnieren Sie eine Rückruf-URL für einen Dienst, der die URL aufrufen kann, um die Logik-App nach Bedarf auszulösen.
-Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+Mit einem * gekennzeichnete Felder sind Pflichtfelder.
 
 | Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |
@@ -121,7 +121,7 @@ Webhookanforderung
 #### <a name="http-webhook"></a>HTTP-Webhook
 
 Abonnieren Sie eine Rückruf-URL für einen Dienst, der die URL aufrufen kann, um einen Workflowschritt nach Bedarf fortzusetzen.
-Mit einem Sternchen gekennzeichnete Felder sind Pflichtfelder.
+Mit einem * gekennzeichnete Felder sind Pflichtfelder.
 
 | Anzeigename | Eigenschaftenname | BESCHREIBUNG |
 | --- | --- | --- |

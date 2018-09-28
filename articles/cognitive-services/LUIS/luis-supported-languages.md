@@ -27,7 +27,7 @@ Wenn Sie eine mehrsprachige LUIS-Clientanwendung benötigen, z.B. einen Chatbot,
 LUIS versteht Äußerungen in den folgenden Sprachen:
 
 
-| Sprache |Gebietsschema  |  Vordefinierte Domäne | Vordefinierte Entität | Ausdrucksvorschläge | **[Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Stimmung und<br>Schlüsselwörter)| 
+| Sprache |Gebietsschema  |  Vordefinierte Domäne | Vordefinierte Entität | Ausdrucksvorschläge | \**[Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(Stimmung und<br>Schlüsselwörter)| 
 |--|--|:--:|:--:|:--:|:--:|
 | Englisch (USA) |`en-US` | ✔ | ✔  |✔|✔|
 | Französisch (Kanada) |`fr-CA` |-|   -   |-|✔|

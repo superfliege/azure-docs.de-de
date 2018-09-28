@@ -22,9 +22,9 @@ ms.locfileid: "39514068"
 |**VpnGw3**| Maximal 30*                         | Maximal 128\*\*             | 1,25 GBit/s                   |
 |**Basic** | Maximal 10                         | Maximal 128               | 100 MBit/s                    | 
 
-* (*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
+* (\*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
 
-* (**) Wenden Sie sich an den Support, wenn zusätzliche Verbindungen erforderlich sind. Dies gilt nur für IKEv2. Die Anzahl von Verbindungen für SSTP kann nicht erhöht werden.
+* (\*\*) Wenden Sie sich an den Support, wenn zusätzliche Verbindungen erforderlich sind. Dies gilt nur für IKEv2. Die Anzahl von Verbindungen für SSTP kann nicht erhöht werden.
 
 * Der Benchmark für den aggregierten Durchsatz basiert auf Messungen von mehreren, durch ein Gateway aggregierten Tunneln. Aufgrund der Bedingungen für den Internetdatenverkehr und dem Verhalten Ihrer Anwendung kann der Durchsatz nicht garantiert werden.
 
