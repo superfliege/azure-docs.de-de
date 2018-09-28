@@ -5,22 +5,21 @@ services: active-directory
 keywords: ''
 author: CelesteDG
 manager: mtillman
-editor: PatAltimore
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 07/19/2017
+ms.date: 09/24/2018
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 229f74367262e07128fa9ea6c895d448b854ae0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958253"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -40,9 +39,9 @@ Dabei werden Kenntnisse über [einzel](quickstart-v1-integrate-apps-with-azure-a
 
 ### <a name="app-types-impacted"></a>Betroffene App-Typen
 
-In den meisten gängigen Fällen verändert der bedingte Zugriff das Verhalten einer App nicht. Er erfordert auch keine Änderungen seitens des Entwicklers. Nur in bestimmten Fällen, wenn eine App im Hintergrund oder indirekt ein Token für einen Dienst anfordert, sind Änderungen am Code einer App erforderlich, um die besonderen Anforderungen des bedingten Zugriffs zu erfüllen. Dafür kann manchmal nur das Ausführen einer Anforderung für die interaktive Anmeldung erforderlich sein. 
+In den meisten gängigen Fällen verändert der bedingte Zugriff das Verhalten einer App nicht. Er erfordert auch keine Änderungen seitens des Entwicklers. Nur in bestimmten Fällen, wenn eine App im Hintergrund oder indirekt ein Token für einen Dienst anfordert, sind Änderungen am Code einer App erforderlich, um die besonderen Anforderungen des bedingten Zugriffs zu erfüllen. Dafür kann manchmal nur das Ausführen einer Anforderung für die interaktive Anmeldung erforderlich sein.
 
-Insbesondere die folgenden Szenarien erfordern Code zum Behandeln der speziellen Anforderungen des bedingten Zugriffs: 
+Insbesondere die folgenden Szenarien erfordern Code zum Behandeln der speziellen Anforderungen des bedingten Zugriffs:
 
 * Apps mit Zugriff auf Microsoft Graph
 * Apps für den „Im Auftrag von“-Ablauf
@@ -147,7 +146,7 @@ Codebeispiele, die veranschaulichen, wie die Anspruchsanforderung behandelt werd
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Szenario: Apps für den „Im Auftrag von“-Ablauf
 
-In diesem Szenario wird der Fall behandelt, bei dem eine native App einen Webdienst bzw. eine API aufruft. Der Dienst wiederum führt den [„Im-Auftrag-von“-Fluss](authentication-scenarios.md#application-types-and-scenarios) aus, um einen Downstreamdienst aufzurufen. In diesem Fall haben wir die Richtlinie für den bedingten Zugriff auf den Downstreamdienst (Web-API 2) angewendet und verwenden eine native App anstelle einer Server-/Daemon-App. 
+In diesem Szenario wird der Fall behandelt, bei dem eine native App einen Webdienst bzw. eine API aufruft. Der Dienst wiederum führt den Fluss „Im-Auftrag-von“ aus, um einen Downstreamdienst aufzurufen. In diesem Fall haben wir die Richtlinie für den bedingten Zugriff auf den Downstreamdienst (Web-API 2) angewendet und verwenden eine native App anstelle einer Server-/Daemon-App. 
 
 ![Flussdiagramm für Apps mit „Im Auftrag von“-Ablauf](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -192,7 +191,7 @@ Wenn die App die ADAL-Bibliothek verwendet, wird bei einem Fehler beim Abrufen d
 
 ## <a name="scenario-single-page-app-spa-using-adaljs"></a>Szenario: Einzelseiten-App mit ADAL.js
 
-In diesem Szenario werden Einzelseiten-Apps (Single Page App, SPA) behandelt, die ADAL.js für das Aufrufen einer Web-API, die durch den bedingten Zugriff geschützt ist, verwendet. Dies ist eine einfache Architektur, die jedoch einige Feinheiten beinhaltet, die bei der Entwicklung für bedingten Zugriff berücksichtigt werden müssen.
+In diesem Szenario werden Single-Page-Webanwendungen (Single-Page Applications, SPAs) behandelt, die ADAL.js zum Aufrufen einer durch den bedingten Zugriff geschützten Web-API verwendet. Dies ist eine einfache Architektur, die jedoch einige Feinheiten beinhaltet, die bei der Entwicklung für bedingten Zugriff berücksichtigt werden müssen.
 
 In ADAL.js stehen mehrere Funktionen für das Abrufen von Token zur Verfügung: `login()`, `acquireToken(...)`, `acquireTokenPopup(…)` und `acquireTokenRedirect(…)`. 
 

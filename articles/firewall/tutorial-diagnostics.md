@@ -1,27 +1,22 @@
 ---
-title: 'Tutorial: Überwachen von Azure Firewall-Protokollen'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall-Protokolle aktivieren und verwalten.
+title: 'Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken'
+description: In diesem Tutorial erfahren Sie, wie Sie Azure Firewall-Protokolle und -Metriken aktivieren und verwalten.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/11/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: a4922fda80b957138a9929090f9d3c349348185d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991906"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991044"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs"></a>Tutorial: Überwachen von Azure Firewall-Protokollen
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-In den Beispielen der Azure Firewall-Artikel wird davon ausgegangen, dass Sie bereits die Public Preview von Azure Firewall aktiviert haben. Weitere Informationen finden Sie unter [Aktivieren der Public Preview von Azure Firewall](public-preview.md).
-
-Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen.
+Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen. Mithilfe von Metriken können Sie Leistungsindikatoren im Portal anzeigen. 
 
 Sie können auf einige dieser Protokolle über das Portal zugreifen. Protokolle können an [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage und Event Hubs gesendet und in Log Analytics oder durch andere Tools wie Excel oder Power BI analysiert werden.
 
@@ -32,69 +27,12 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Aktivieren der Protokollierung mit PowerShell
 > * Anzeigen und Analysieren des Aktivitätsprotokolls
 > * Anzeigen und Analysieren der Netzwerk- und Anwendungsregelprotokolle
+> * Anzeigen von Metriken
 
-## <a name="diagnostic-logs"></a>Diagnoseprotokolle
+## <a name="prerequisites"></a>Voraussetzungen
 
- Für Azure Firewall sind folgende Diagnoseprotokolle verfügbar:
+Lesen Sie vor Beginn dieses Tutorials die Informationen zu [Azure Firewall-Protokollen und -Metriken](logs-and-metrics.md), um einen Überblick über die für Azure Firewall verfügbaren Protokolle und Metriken zu erhalten.
 
-* **Anwendungsregelprotokoll**
-
-   Das Anwendungsregelprotokoll wird nur dann in einem Speicherkonto gespeichert, an Event Hubs gestreamt und/oder an Log Analytics gesendet, wenn Sie es für die einzelnen Azure Firewall-Instanzen aktiviert haben. Jede neue Verbindung, die einer Ihrer konfigurierten Anwendungsregeln entspricht, führt zu einem Protokoll für die akzeptierte/abgelehnte Verbindung. Die Daten werden im JSON-Format protokolliert, wie im folgenden Beispiel zu sehen:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-   {
-    "category": "AzureFirewallApplicationRule",
-    "time": "2018-04-16T23:45:04.8295030Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallApplicationRuleLog",
-    "properties": {
-        "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
-    }
-   }
-   ```
-
-* **Netzwerkregelprotokoll**
-
-   Das Netzwerkregelprotokoll wird nur dann in einem Speicherkonto gespeichert, an Event Hubs gestreamt und/oder an Log Analytics gesendet, wenn Sie es für die einzelnen Azure Firewall-Instanzen aktiviert haben. Jede neue Verbindung, die einer Ihrer konfigurierten Netzwerkregeln entspricht, führt zu einem Protokoll für die akzeptierte/abgelehnte Verbindung. Die Daten werden im JSON-Format protokolliert, wie im folgenden Beispiel zu sehen:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-  {
-    "category": "AzureFirewallNetworkRule",
-    "time": "2018-06-14T23:44:11.0590400Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallNetworkRuleLog",
-    "properties": {
-        "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
-    }
-   }
-
-   ```
-
-Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
-
-* **Speicherkonto:** Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
-* **Event Hubs:** Event Hubs sind eine hervorragende Möglichkeit für die Integration in andere SIEM-Tools (Security Information and Event Management), um Warnungen für Ihre Ressourcen zu erhalten.
-* **Log Analytics:** Log Analytics ist am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends geeignet.
-
-## <a name="activity-logs"></a>Aktivitätsprotokolle
-
-   Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
-
-   Mit dem Feature [Azure-Aktivitätsprotokolle](../azure-resource-manager/resource-group-audit.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie alle an Ihr Azure-Abonnement übermittelten Vorgänge anzeigen.
 
 ## <a name="enable-diagnostic-logging-through-the-azure-portal"></a>Aktivieren der Diagnoseprotokollierung über das Azure-Portal
 
@@ -105,8 +43,8 @@ Nach dem Aktivieren der Diagnoseprotokollierung kann es noch einige Minuten daue
 
    Für Azure Firewall sind zwei dienstspezifische Protokolle verfügbar:
 
-   * Anwendungsregelprotokoll
-   * Netzwerkregelprotokoll
+   * AzureFirewallApplicationRule
+   * AzureFirewallNetworkRule
 
 3. Klicken Sie auf **Diagnose aktivieren** , um die Erfassung von Daten zu starten.
 4. Auf der Seite **Diagnoseeinstellungen** befinden sich die Einstellungen für die Diagnoseprotokolle. 
@@ -163,6 +101,8 @@ Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON
 > [!TIP]
 > Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von GitHub verwenden.
 
+## <a name="view-metrics"></a>Anzeigen von Metriken
+Navigieren Sie zu einer Azure Firewall-Instanz, und klicken Sie unter **Überwachung** auf **Metriken**. Um die verfügbaren Werte anzuzeigen, wählen Sie die Dropdownliste **METRIK** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

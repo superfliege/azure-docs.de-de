@@ -6,15 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 7/11/2018
+ms.date: 09/24/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 727d38cae6c2f98d2922d5760f116ab85d75b8ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575996"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983513"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -31,7 +31,9 @@ Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet
 
 Anwendungs- und Netzwerkregeln werden in *Regelsammlungen* gespeichert. Eine Regelsammlung ist eine Liste von Regeln mit gleicher Aktion und Priorität.  Eine Netzwerkregelsammlung ist eine Liste von Netzwerkregeln; eine Anwendungsregelsammlung ist eine Liste von Anwendungsregeln.
 
-Netzwerkregelsammlungen werden immer vor Anwendungsregelsammlungen verarbeitet. Alle Regeln sind beendigend. Wird also in einer Netzwerkregelsammlung eine Übereinstimmung gefunden, werden die nachfolgenden Anwendungsregelsammlungen für die Sitzung nicht mehr verarbeitet.
+Azure Firewall verfügt nicht über ein Konzept mit Regeln für eingehenden und ausgehenden Datenverkehr. Es gibt Anwendungsregeln und Netzwerkregeln, die auf den gesamten Datenverkehr angewendet werden, der für die Firewall eingeht. Die Netzwerkregeln werden zuerst angewendet, und anschließend die Anwendungsregeln. Diese Regeln können dazu führen, dass ein Vorgang beendet wird.
+
+Wenn sich beispielsweise für eine Netzwerkregel eine Übereinstimmung ergibt, wird das Paket von den Anwendungsregeln nicht ausgewertet. Wenn sich keine Übereinstimmung für eine Netzwerkregel ergibt und als Paketprotokoll HTTP/HTTPS verwendet wird, wird das Paket von den Anwendungsregeln ausgewertet. Falls sich immer noch keine Übereinstimmung ergibt, wird das Paket von der Regelsammlung der Infrastruktur ausgewertet. Wenn sich auch hierbei keine Übereinstimmung ergibt, wird das Paket standardmäßig abgelehnt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -46,10 +48,6 @@ In diesem Tutorial lernen Sie Folgendes:
 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-In den Beispielen der Azure Firewall-Artikel wird davon ausgegangen, dass Sie bereits die Public Preview von Azure Firewall aktiviert haben. Weitere Informationen finden Sie unter [Aktivieren der Public Preview von Azure Firewall](public-preview.md).
 
 In diesem Tutorial erstellen Sie ein einzelnes VNet mit drei Subnetzen:
 - **FW-SN:** Das Subnetz mit der Firewall.
@@ -83,9 +81,7 @@ Erstellen Sie zunächst eine Ressourcengruppe für die Ressourcen, die zum Berei
 7. Wählen Sie unter **Abonnement** Ihr Abonnement aus.
 8. Klicken Sie unter **Ressourcengruppe** auf **Vorhandene verwenden**, und wählen Sie anschließend **Test-FW-RG** aus.
 9. Wählen Sie unter **Standort** den gleichen Standort aus wie zuvor.
-10. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein.
-
-    Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
+10. Geben Sie unter **Subnetz** als **Name** die Zeichenfolge **AzureFirewallSubnet** ein. Die Firewall befindet sich diesem Subnetz, und der Subnetzname **muss** „AzureFirewallSubnet“ lauten.
 11. Geben Sie unter **Adressbereich** die Zeichenfolge **10.0.1.0/24** ein.
 12. Lassen Sie die restlichen Standardeinstellungen unverändert, und klicken Sie auf **Erstellen**.
 
@@ -207,25 +203,21 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 
 
 1. Öffnen Sie **Test-FW-RG**, und klicken Sie auf die Firewall **Test-FW01**.
-1. Klicken Sie auf der Seite **Test-FW01** unter **Einstellungen** auf **Regeln**.
-2. Klicken Sie auf **Anwendungsregelsammlung hinzufügen**.
-3. Geben Sie unter **Name** die Zeichenfolge **App-Coll01** ein.
-1. Geben Sie für **Priorität** den Wert **200** ein.
-2. Wählen Sie für **Aktion** die Option **Zulassen** aus.
+2. Klicken Sie auf der Seite **Test-FW01** unter **Einstellungen** auf **Regeln**.
+3. Klicken Sie auf **Anwendungsregelsammlung hinzufügen**.
+4. Geben Sie unter **Name** die Zeichenfolge **App-Coll01** ein.
+5. Geben Sie für **Priorität** den Wert **200** ein.
+6. Wählen Sie für **Aktion** die Option **Zulassen** aus.
+7. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowGH** ein.
+8. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
+9. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein. 
+10. Geben Sie unter **Ziel-FQDNs** die Zeichenfolge **github.com** ein.
+11. Klicken Sie auf **Hinzufügen**.
 
-6. Geben Sie unter **Regeln** für **Name** die Zeichenfolge **AllowGH** ein.
-7. Geben Sie unter **Quelladressen** die Zeichenfolge **10.0.2.0/24** ein.
-8. Geben Sie unter **Protokoll:Port** die Zeichenfolge **http, https** ein. 
-9. Geben Sie unter **Ziel-FQDNs** die Zeichenfolge **github.com** ein.
-10. Klicken Sie auf **Hinzufügen**.
+Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs, die standardmäßig zulässig sind. Diese FQDNs sind plattformspezifisch und können nicht für andere Zwecke verwendet werden. Weitere Informationen finden Sie unter [Infrastruktur-FQDNs](infrastructure-fqdns.md).
 
-> [!NOTE]
-> Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs, die standardmäßig zulässig sind. Diese FQDNs sind plattformspezifisch und können nicht für andere Zwecke verwendet werden. Zu den zulässigen Infrastruktur-FQDNs zählen folgende:
->- Computezugriff auf das Speicher-PIR (Platform Image Repository, PIR)
->- Speicherzugriff auf den Status verwalteter Datenträger
->- Windows-Diagnose
->
-> Diese integrierte Infrastrukturregelsammlung kann außer Kraft gesetzt werden. Erstellen Sie hierzu eine Anwendungsregelsammlung vom Typ *Alle ablehnen*, die ganz zum Schluss verarbeitet wird. Sie wird immer vor der Infrastrukturregelsammlung verarbeitet. Alles, was sich nicht in der Infrastrukturregelsammlung befindet, wird standardmäßig abgelehnt.
+> [!Note]
+> FQDN-Tags können derzeit nur mit Azure PowerShell und REST konfiguriert werden. [Klicken Sie hier](https://aka.ms/firewallapplicationrule), um weitere Informationen zu erhalten. 
 
 ## <a name="configure-network-rules"></a>Konfigurieren von Netzwerkregeln
 

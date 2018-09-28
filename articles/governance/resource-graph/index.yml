@@ -38,4 +38,4 @@ sections:
 - title: Feedback
   items:
   - type: paragraph
-    text: Wenn Sie Feedback zu diesem Feature übermitteln möchten oder Unterstützung bei Abfragen benötigen, rufen Sie im Azure-Portal über <b>Azure Policy</b> die Seite <b>Resource Graph (preview)</b> (Ressourcen-Graph (Vorschau)) auf, und klicken Sie auf „Feedback“. Sie können uns auch Vorschläge auf <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a> senden.
+    text: Wenn Sie Feedback zu diesem Feature übermitteln möchten oder Unterstützung bei Abfragen benötigen, rufen Sie im Azure-Portal über <b>Azure Policy</b> die Seite <b>Resource Graph (preview)</b> (Resource Graph (Vorschau)) auf, und klicken Sie auf „Feedback“. Sie können uns auch Vorschläge auf <a href="https://feedback.azure.com/forums/915958-azure-governance">UserVoice</a> senden.

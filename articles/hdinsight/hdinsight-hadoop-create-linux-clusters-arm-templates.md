@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a48b3ff9769e2757ac7930feb14d6537d96fae3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4cf516550e9f9852ec50981932c2df8f236d0358
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109237"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961313"
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Erstellen von Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -27,7 +27,7 @@ In diesem Artikel lernen Sie verschiedene Möglichkeiten zum Erstellen von Azure
 Um die Anweisungen in diesem Artikel befolgen zu können, benötigen Sie:
 
 * Ein [Azure-Abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Azure PowerShell und/oder Azure CLI.
+* Azure PowerShell und/oder klassische Azure-Befehlszeilenschnittstelle.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 Eine Resource Manager-Vorlage vereinfacht das Erstellen der folgenden Ressourcen für Ihre Anwendung in einem einzelnen koordinierten Vorgang:
@@ -49,7 +49,7 @@ Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen R
 
 - Azure-Portal: Weitere Informationen finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](../azure-resource-manager/resource-manager-export-template.md).
 - Azure PowerShell: Weitere Informationen finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen mit PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md).
-- Azure-Befehlszeilenschnittstelle: Weitere Informationen finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen mit der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-manager-export-template-cli.md).
+- Klassische Azure-Befehlszeilenschnittstelle: Weitere Informationen finden Sie unter [Exportieren von Azure Resource Manager-Vorlagen mit der klassischen Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-manager-export-template-cli.md).
 
 
 ## <a name="deploy-using-the-portal"></a>Bereitstellen mit dem Portal
@@ -60,9 +60,9 @@ Sie können eine Resource Manager-Vorlage über das Azure-Portal bereitstellen. 
 
 Sie können eine Resource Manager-Vorlage mithilfe von Azure PowerShell bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) und [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](../azure-resource-manager/resource-manager-powershell-sas-token.md).
 
-## <a name="deploy-using-cli"></a>Bereitstellen mit der Befehlszeilenschnittstelle
+## <a name="deploy-using-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
-Sie können eine Resource Manager-Vorlage mit der Azure-Befehlszeilenschnittstelle bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md) und [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-manager-cli-sas-token.md).
+Sie können eine Resource Manager-Vorlage mit der klassischen Befehlszeilenschnittstelle bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md) und [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-manager-cli-sas-token.md).
 
 ## <a name="deploy-using-the-rest-api"></a>Bereitstellen mit der REST-API
 Sie können eine Resource Manager-Vorlage mit der REST-API bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md).

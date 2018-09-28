@@ -1,36 +1,66 @@
 ---
-title: Funktionsweise der Anwendungszustimmung | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Funktionsweise des Azure AD-Zustimmungsframeworks und dessen Verwendung beim Entwickeln von Anwendungen in Azure AD
+title: Azure Active Directory-Zustimmungsframework
+description: Hier erfahren Sie mehr über das Zustimmungsframework in Azure Active Directory und darüber, wie es die Entwicklung von mehrinstanzenfähigen Webanwendungen sowie nativen Clientanwendungen vereinfacht.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
 manager: mtillman
-ms.assetid: ''
+editor: ''
 ms.service: active-directory
-ms.component: app-mgmt
-ms.workload: identity
-ms.tgt_pltfrm: na
+ms.component: develop
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/24/2018
 ms.author: celested
-ms.openlocfilehash: 5d8d526e67a69959687fb79ac6406d8313a417a8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: zachowd, lenalepa, jesakowi
+ms.custom: aaddev
+ms.openlocfilehash: b01cd43d1c38a9db50937a6cff9b416b8c6acd0e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44723770"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946475"
 ---
-# <a name="how-application-consent-works"></a>Funktionsweise der Anwendungszustimmung
+# <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-Zustimmungsframework
 
-In diesem Artikel erfahren Sie, wie das Azure AD-Zustimmungsframework funktioniert, das Sie für eine effizientere Entwicklung von Anwendungen verwenden können.
+Das Azure Active Directory-Zustimmungsframework (Azure AD) vereinfacht die Entwicklung von mehrinstanzenfähigen Webanwendungen und nativen Clientanwendungen. Diese Anwendungen ermöglichen die Anmeldung mit Benutzerkonten über einen Azure AD-Mandanten, der sich von dem Mandanten unterscheidet, unter dem die Anwendung registriert ist. Außerdem kann der Zugriff auf Web-APIs, etwa die Microsoft Graph-API (zum Zugreifen auf Azure AD, Intune und Office 365-Dienste), und andere APIs von Microsoft-Diensten zusätzlich zu Ihren eigenen Web-APIs erforderlich sein.
 
-## <a name="recommended-documents"></a>Empfohlene Dokumente
+Das Framework basiert darauf, dass Benutzer oder Administratoren ihre Zustimmung zur Registrierung einer Anwendung in ihrem Verzeichnis erteilen. Diese Zustimmung kann auch den Zugriff auf Verzeichnisdaten umfassen. Wenn beispielsweise eine Webclientanwendung Kalenderinformationen über einen Benutzer aus Office 365 lesen muss, muss dieser Benutzer der Clientanwendung zuerst seine Zustimmung erteilen. Anschließend kann die Clientanwendung die Microsoft Graph-API im Namen des Benutzers aufrufen und die Kalenderinformationen nach Bedarf verwenden. Die [Microsoft Graph-API](https://graph.microsoft.io) ermöglicht den Zugriff auf Daten in Office 365 (z.B. Kalender und Nachrichten aus Exchange, Websites und Listen aus SharePoint, Dokumente aus OneDrive, OneNote-Notizbücher, Aufgaben aus dem Planer, Arbeitsmappen aus Excel usw.) sowie auf Benutzer und Gruppen von Azure AD und andere Datenobjekte aus weiteren Microsoft Cloud Services.
 
-- Eine allgemeine Übersicht über die [Steuerung des Anwendungszugriffs auf Ressourcen durch einen Ressourcenbesitzer mittels Zustimmung](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#consent)
-- Eine ausführliche Übersicht über die [Zustimmungsimplementierung mit dem Azure AD-Zustimmungsframework](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework)
-- Ausführlichere Informationen zur [Verwendung des Zustimmungsframeworks durch mehrinstanzenfähige Anwendungen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) zur Implementierung von Benutzer- und Administratorzustimmung mit Unterstützung für erweiterte Anwendungsmuster mit mehreren Ebenen
-- Ausführlichere Informationen zur [OAuth 2.0-Protokollunterstützung für Zustimmung während des Flows zum Gewähren des Autorisierungscodes](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
+Das Consent Framework basiert auf OAuth 2.0 und seinen verschiedenen Datenflüssen, z. B. Authorization Code Grant und Client Credentials Grant. Dabei kommen öffentliche oder vertrauliche Clients zum Einsatz. Durch die Verwendung von OAuth 2.0 ermöglicht Azure AD die Entwicklung zahlreicher verschiedener Typen von Clientanwendungen, beispielsweise für Telefon, Tablet, Server oder Web, und ermöglicht den Zugriff auf die erforderlichen Ressourcen.
+
+Weitere Informationen zur Verwendung des Zustimmungsframeworks mit OAuth2.0-Autorisierungsgewährungen finden Sie unter [Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes](v1-protocols-oauth-code.md) und [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md). Informationen dazu, wie Sie autorisierten Zugriff auf Office 365 über Microsoft Graph erhalten, finden Sie auf der Seite zur [App-Authentifizierung mit Microsoft Graph](https://graph.microsoft.io/docs/authorization/auth_overview).
+
+## <a name="consent-experience---an-example"></a>Oberfläche für die Zustimmung: ein Beispiel
+
+Die folgenden Schritte zeigen, wie das Zustimmungsframework auf der Benutzeroberfläche für den Anwendungsentwickler und für den Benutzer umgesetzt wird.
+
+1. Angenommen, Sie verfügen über eine Webclientanwendung, die für den Zugriff auf eine Ressource oder API bestimmte Berechtigungen anfordern muss. Im nächsten Abschnitt wird beschrieben, wie Sie diese Konfiguration durchführen. Im Wesentlichen wird aber das Azure-Portal verwendet, um zur Konfigurationszeit Berechtigungsanforderungen zu deklarieren. Wie andere Konfigurationseinstellungen auch, werden diese Teil der Azure AD-Registrierung der Anwendung:
+
+  ![Berechtigungen für andere Anwendungen](./media/quickstart-v1-integrate-apps-with-azure-ad/requiredpermissions.png)
+
+1. Angenommen, die Berechtigungen für Ihre Anwendung wurden aktualisiert, die Anwendung wird ausgeführt, und ein Benutzer möchte die Anwendung zum ersten Mal verwenden. Zuerst muss die Anwendung vom `/authorize`-Endpunkt von Azure AD einen Autorisierungscode erhalten. Der Autorisierungscode kann dann genutzt werden, um ein neues Zugriffs- und Aktualisierungstoken zu beschaffen.
+
+1. Wenn der Benutzer noch nicht authentifiziert ist, wird er vom `/authorize`-Endpunkt von Azure AD zum Anmelden aufgefordert.
+
+  ![Benutzer- oder Administratoranmeldung bei Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+
+1. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob für den Benutzer eine Seite für die Zustimmungserteilung angezeigt werden muss. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat. Wenn die Zustimmung noch nicht erteilt wurde, fordert Azure AD den Benutzer zur Zustimmung auf und zeigt an, welche Berechtigungen für die Funktionalität benötigt werden. Der Berechtigungssatz, der im Dialogfeld für die Zustimmung angezeigt wird, ist identisch mit der Auswahl unter **Delegierte Berechtigungen** im Azure-Portal.
+
+  ![Oberfläche für die Benutzerzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
+
+1. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen wird. Weitere Informationen zu diesem Ablauf finden Sie unter [Web API](web-api.md) (Web-API).
+
+1. Als Administrator können Sie auch für alle Benutzer in Ihrem Mandanten den delegierten Berechtigungen einer Anwendung zustimmen. Durch die Administratorzustimmung wird verhindert, dass das Zustimmungsdialogfeld für jeden Benutzer im Mandanten angezeigt wird. Dies kann im [Azure-Portal](https://portal.azure.com) von Benutzern durchgeführt werden, die über die Administratorrolle verfügen. Wählen Sie auf der Seite **Einstellungen** für Ihre Anwendung **Erforderliche Berechtigungen** und dann die Schaltfläche **Berechtigungen erteilen** aus.
+
+  ![Erteilen von Berechtigungen für explizite Administratorzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+
+  > [!IMPORTANT]
+  > Das explizite Gewähren der Zustimmung über die Schaltfläche **Berechtigungen erteilen** ist derzeit für Single-Page-Webanwendungen (Single-Page Applications, SPAs) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure AD bei Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+
+* Lesen Sie die Informationen unter [Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](howto-convert-app-to-be-multi-tenant.md).
+* Ausführlichere Informationen zur [OAuth 2.0-Protokollunterstützung für Zustimmung während des Flows zum Gewähren des Autorisierungscodes](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)

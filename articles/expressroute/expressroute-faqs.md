@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5f40b4c9fff57b105b7d96de69780fea83871032
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2a7842a50690049507e00b85c8736e63da002503
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302295"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950164"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -66,15 +66,25 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 >Öffentliches Peering wurde für neue ExpressRoute-Verbindungen deaktiviert. Azure-Dienste sind über Microsoft-Peering verfügbar.
 >
 
+* Power BI
+* Dynamics 365 for Finance and Operations (früher als „Dynamics AX Online“ bekannt)
+* Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br>
+  Die folgenden Dienste werden NICHT unterstützt:
+    * CDN
+    * Azure DevOps Services-Auslastungstests
+    * Multi-Factor Authentication
+    * Traffic Manager
+
 ### <a name="microsoft-peering"></a>Microsoft-Peering
 
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
-* Visual Studio Team Services-Auslastungstests
+* Azure DevOps Services-Auslastungstests
 * Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br>Die folgenden Dienste werden **nicht unterstützt**:
     * CDN
+    * Azure DevOps Services-Auslastungstests
     * Multi-Factor Authentication
     * Traffic Manager
 
@@ -337,3 +347,11 @@ Ihre vorhandene Verbindung kündigt weiterhin die Präfixe für Office 365 und D
 * Beim Microsoft-Peering von ExpressRoute-Verbindungen, die vor dem 1. August 2017 konfiguriert wurden, werden alle Dienstpräfixe über das Microsoft-Peering angekündigt, auch wenn keine Routenfilter definiert sind.
 
 * Beim Microsoft-Peering von ExpressRoute-Verbindungen, die am oder nach dem 1. August 2017 konfiguriert wurden, werden Präfixe erst angekündigt, wenn der Verbindung ein Routenfilter hinzugefügt wurde. Standardmäßig werden dabei keine Präfixe angezeigt.
+
+## <a name="globalreach"></a>ExpressRoute Direct (Vorschau)
+
+[!INCLUDE [Global Reach](../../includes/expressroute-direct-faq-include.md)]
+
+## <a name="globalreach"></a>Global Reach (Vorschau)
+
+[!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

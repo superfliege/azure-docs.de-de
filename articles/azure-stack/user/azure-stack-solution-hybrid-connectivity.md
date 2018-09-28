@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/25/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 72c5c4b0f0ab752bb02e6bee7cd038afca44ee1b
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 652d39b4d15569b9365543e02f170664a88715fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605194"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953258"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Tutorial: Konfigurieren der Hybrid Cloud-Konnektivität mit Azure und Azure Stack
 
@@ -32,6 +32,13 @@ In diesem Tutorial erstellen Sie eine Beispielumgebung, die Folgendes ermöglich
 > [!div class="checklist"]
 > - Lokale Aufbewahrung von Daten zur Erfüllung datenschutzbezogener und rechtlicher Anforderungen bei gleichzeitigem Zugriff auf globale Azure-Ressourcen
 > - Verwendung eines Legacysystems sowie einer über die Cloud skalierten App-Bereitstellung und entsprechender Ressourcen in globalen Azure-Instanzen
+
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack ist eine Erweiterung von Azure. Mit Azure Stack holen Sie sich die Agilität und Innovation von Cloud Computing in Ihre lokale Umgebung. Sie erhalten die einzige Hybrid Cloud, mit der Sie Hybrid-Apps überall entwickeln und bereitstellen können.  
+> 
+> Im Whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) (Entwurfsüberlegungen für Hybridanwendungen) werden die wichtigen Aspekte in Bezug auf die Softwarequalität (Platzierung, Skalierbarkeit, Verfügbarkeit, Resilienz, Verwaltbarkeit und Sicherheit) beschrieben, die für das Entwerfen, Bereitstellen und Betreiben von Hybridanwendungen erforderlich sind. Die Überlegungen zum Entwurf dienen als Hilfe beim Optimieren des Designs von Hybridanwendungen, um für Produktionsumgebungen das Auftreten von Problemen zu minimieren.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

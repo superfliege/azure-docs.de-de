@@ -8,14 +8,15 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f64645db782b055e1c544f257149411f29fc99d7
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 2ab2ac1e98e25da4065611d32fb50aa8ce809361
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806314"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060313"
 ---
 ## <a name="about-vhds"></a>Informationen zu VHDs
+
 Die in Azure verwendeten VHDs sind VHD-Dateien, die als Seiten-Blobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Informationen zu Seitenblobs finden Sie unter [Grundlegendes zu Blockblobs und Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/). Ausführliche Informationen zu Storage Premium finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md).
 
 Azure unterstützt das VHD-Format mit eingebauten („festen“) Datenträgern. Das feste Format legt den logischen Datenträger in der Datei linear aus, daher wird Datenträger-Offset X bei Blob-Offset X gespeichert. Eine kleinere Fußzeile am Ende des Blobs beschreibt die Eigenschaften der VHD. Oftmals verschwendet das feste Format Speicherplatz, da die meisten Datenträger über große ungenutzte Bereiche davon verfügen. Azure speichert VHD-Dateien jedoch in einem platzsparenden Format. Daher profitieren Sie gleichzeitig von den Vorteilen fester und dynamischer Datenträger. Nähere Informationen finden Sie unter [Erste Schritte mit virtuellen Festplatten](https://technet.microsoft.com/library/dd979539.aspx).
@@ -29,40 +30,47 @@ Um eine VHD-Quelldatei löschen zu können, müssen Sie die Lease entfernen, ind
 > [!WARNING]
 > Wenn Sie eine VHD-Quelldatei aus dem Speicher löschen oder das Speicherkonto löschen, kann Microsoft diese Daten nicht wiederherstellen.
 
-## <a name="types-of-disks"></a>Datenträgertypen 
+## <a name="types-of-disks"></a>Datenträgertypen
+
 Azure-Datenträger sind auf eine Verfügbarkeit von 99,999% ausgelegt. Azure-Datenträger stellen durchgängig eine Dauerhaftigkeit auf Unternehmensniveau bereit, mit einer branchenweit führenden auf das Jahr umgerechneten Fehlerrate von NULL%.
 
 Es gibt drei Leistungsstufen, zwischen denen Sie beim Erstellen Ihrer Datenträger wählen können: Premium SSD-Datenträger, Standard SSD (Vorschau) und Standard-HDD-Speicher. Außerdem gibt es zwei Arten von Datenträgern: nicht verwaltet und verwaltet.
 
 ### <a name="standard-hdd-disks"></a>Standard-HDD-Datenträger
+
 Standard-HDD-Datenträger basieren auf HDDs (Festplattenlaufwerken) und ermöglichen eine kosteneffiziente Speicherung. Standard-HDD-Speicher kann lokal in einem einzelnen Datencenter repliziert oder georedundant mit primärem und sekundärem Rechenzentrum verwendet werden. Weitere Informationen zur Speicherreplikation finden Sie unter [Azure Storage-Replikation](../articles/storage/common/storage-redundancy.md). 
 
 Weitere Informationen zur Verwendung von Standard-HDD-Datenträgern finden Sie unter [Standard-Speicher und -Datenträger](../articles/virtual-machines/windows/standard-storage.md).
 
-### <a name="standard-ssd-disks-preview"></a>Standard-SSD-Datenträger (Vorschau)
-Standard-SSD-Datenträger sind für die gleichen Workloads wie Standard-HDD-Datenträger ausgelegt, aber sie bieten eine konsistentere Leistung und Zuverlässigkeit als HDDs. In Standard-SSD-Datenträgern sind Elemente von Premium-SSD-Datenträgern und Standard-HDD-Datenträgern kombiniert. Hieraus ergibt sich eine kosteneffiziente Lösung, die am besten für Anwendungen wie Webserver geeignet ist, für die in Bezug auf Datenträger kein hoher IOPS-Wert benötigt wird. Falls verfügbar, sind Standard-SSD-Datenträger die empfohlene Bereitstellungsoption für die meisten Workloads. Standard-SSD-Datenträger sind nur als verwaltete Datenträger und während der Vorschauphase nur in [ausgewählten Regionen](../articles/virtual-machines/windows/faq-for-disks.md) und mit dem Resilienztyp „Lokal redundanter Speicher“ (LRS) verfügbar.
+### <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 
-### <a name="premium-ssd-disks"></a>Premium-SSD-Datenträger 
+Standard-SSD-Datenträger sind für die gleichen Workloads wie Standard-HDD-Datenträger ausgelegt, aber sie bieten eine konsistentere Leistung und Zuverlässigkeit als HDDs. In Standard-SSD-Datenträgern sind Elemente von Premium-SSD-Datenträgern und Standard-HDD-Datenträgern kombiniert. Hieraus ergibt sich eine kosteneffiziente Lösung, die am besten für Anwendungen wie Webserver geeignet ist, für die in Bezug auf Datenträger kein hoher IOPS-Wert benötigt wird. Falls verfügbar, sind Standard-SSD-Datenträger die empfohlene Bereitstellungsoption für die meisten Workloads. SSD Standard-Datenträger sind in allen Regionen als verwaltete Datenträger verfügbar, zurzeit allerdings nur mit dem Resilienztyp „LRS“ (lokal redundanter Speicher).
+
+### <a name="premium-ssd-disks"></a>Premium-SSD-Datenträger
+
 Premium-SSD-Datenträger basieren auf SSDs und verfügen über eine hohe Leistung und geringe Latenz für virtuelle Computer mit E/A-intensiven Workloads. In der Regel können Sie Premium-SSD-Datenträger mit Größen verwenden, deren Serienname ein „s“ enthält. Es gibt beispielsweise die Dv3-Serie und die Dsv3-Serie. Letztere kann mit Premium-SSD-Datenträgern verwendet werden.  Weitere Informationen finden Sie unter [Storage Premium](../articles/virtual-machines/windows/premium-storage.md).
 
 ### <a name="unmanaged-disks"></a>Nicht verwaltete Datenträger
+
 Bei nicht verwalteten Datenträgern handelt es sich um den herkömmlichen Datenträgertyp für virtuelle Computer. Bei diesen Datenträgern erstellen Sie Ihr eigenes Speicherkonto und geben es beim Erstellen des Datenträgers an. Achten Sie darauf, dass Sie nicht zu viele Datenträger unter dem gleichen Speicherkonto erstellen, da Sie ansonsten unter Umständen die [Skalierbarkeitsziele](../articles/storage/common/storage-scalability-targets.md) des Speicherkontos (beispielsweise 20.000 IOPS) überschreiten, was eine Drosselung der virtuellen Computer zur Folge hat. Bei nicht verwalteten Datenträgern müssen Sie herausfinden, wie Sie einzelne oder mehrere Speicherkonten optimal nutzen, um die bestmögliche Leistung für Ihre virtuellen Computer zu erzielen.
 
-### <a name="managed-disks"></a>Verwaltete Datenträger 
-Managed Disks nimmt Ihnen die Speicherkontoerstellung und -verwaltung ab und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzwerte des Speicherkontos machen müssen. Sie geben einfach die Datenträgergröße und die Leistungsstufe (Standard/Premium) an und überlassen Azure die Erstellung und Verwaltung der Datenträger. So müssen Sie sich beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen. 
+### <a name="managed-disks"></a>Verwaltete Datenträger
+
+Managed Disks nimmt Ihnen die Speicherkontoerstellung und -verwaltung ab und sorgt dafür, dass Sie sich keine Gedanken mehr über die Skalierbarkeitsgrenzwerte des Speicherkontos machen müssen. Sie geben einfach die Datenträgergröße und die Leistungsstufe (Standard/Premium) an und überlassen Azure die Erstellung und Verwaltung der Datenträger. So müssen Sie sich beim Hinzufügen von Datenträgern oder beim Skalieren virtueller Computer keine Gedanken mehr über den verwendeten Speicher machen.
 
 Darüber hinaus können Sie Ihre benutzerdefinierten Images in einem einzelnen Speicherkonto pro Azure-Region verwalten und mit diesen Hunderte von virtuellen Computern im gleichen Abonnement erstellen. Weitere Informationen zu Managed Disk finden Sie in der [Übersicht über Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
 
 Wir empfehlen, Azure Managed Disks für neue virtuelle Computer zu verwenden und bislang nicht verwaltete Datenträger in verwaltete Datenträger umzuwandeln, um von den zahlreichen Features zu profitieren, die in Managed Disks zur Verfügung stehen.
 
 ### <a name="disk-comparison"></a>Datenträgervergleich
-Die folgende Tabelle enthält eine Gegenüberstellung von Standard-HDD, Standard-SSD und Premium-SSD (sowohl für nicht verwaltete als auch für verwaltete Datenträger), um Ihnen die Entscheidung zu erleichtern.
 
-|    | Azure-Premium-Datenträger |Azure-Standard-SSD-Datenträger (Vorschau)| Azure-Standard-HDD-Datenträger 
-|--- | ------------------ | ------------------------------- | ----------------------- 
+Die folgende Tabelle enthält eine Gegenüberstellung von Standard-HDD, Standard-SSD und Premium-SSD (sowohl für nicht verwaltete als auch für verwaltete Datenträger), um Ihnen die Entscheidung zu erleichtern. Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau.
+
+|    | Azure-Premium-Datenträger |Azure SSD Standard-Datenträger | Azure-Standard-HDD-Datenträger
+|--- | ------------------ | ------------------------------- | -----------------------
 | Datenträgertyp | Solid-State-Laufwerke (SSD) | Solid-State-Laufwerke (SSD) | Festplattenlaufwerke (HDD)  
 | Übersicht  | SSD-basierte Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer mit E/A-intensiven Workloads oder zum Hosten unternehmenskritischer Produktionsumgebungen |Konsistentere und höhere Zuverlässigkeit als HDD. Für Workloads mit niedrigem IOPS-Wert optimiert| HDD-basierter kosteneffizienter Datenträger für sporadischen Zugriff
-| Szenario  | Produktionsworkloads und leistungsabhängige Workloads |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test| Sicherung, nicht kritisch, sporadischer Zugriff 
-| Datenträgergröße | P4: 32 GiB (nur verwaltete Datenträger)<br>P6: 64 GiB (nur verwaltete Datenträger)<br>P10: 128 GiB<br>P15: 256 GiB (nur verwaltete Datenträger)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4095 GiB |Nur verwaltete Datenträger:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB | Nicht verwaltete Datenträger: 1 GiB - 4 TiB (4095 GiB) <br><br>Verwaltete Datenträger:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB
-| Max. Durchsatz pro Datenträger | 250 MiB/s | Bis zu 60 MiB/s | Bis zu 60 MiB/s 
-| Max. IOPS pro Datenträger | 7500 IOPS | Bis zu 500 IOPS | Bis zu 500 IOPS 
+| Szenario  | Produktionsworkloads und leistungsabhängige Workloads |Webserver, wenig genutzte Unternehmensanwendungen und Dev/Test| Sicherung, nicht kritisch, sporadischer Zugriff
+| Datenträgergröße | P4: 32 GiB (nur verwaltete Datenträger)<br>P6: 64 GiB (nur verwaltete Datenträger)<br>P10: 128 GiB<br>P15: 256 GiB (nur verwaltete Datenträger)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4095 GiB<br>P60: 8192 GiB * (8 TiB)<br>P70: 16384 GiB * (16 TiB)<br>P80: 32767 GiB * (32 TiB) |Nur verwaltete Datenträger:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8192 GiB * (8 TiB)<br>E70: 16384 GiB * (16 TiB)<br> E80: 32767 GiB * (32 TiB) | Nicht verwaltete Datenträger: 1 GiB - 4 TiB (4095 GiB) <br><br>Verwaltete Datenträger:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8192 GiB * (8 TiB)<br>S70: 16384 GiB * (16 TiB)<br>S80: 32384 GiB * (32 TiB)
+| Max. Durchsatz pro Datenträger | P4: 25 MiB/s<br> P6: 50 MiB/s<br> P10: 100 MiB/s<br> P15: 200 MiB/s<br> P20: 150 MiB/s<br> P30: 200 MiB/s<br> P40–P50: 250 MiB/s<br> P60: 480 MiB/s<br> P70–P80: 750 MiB/s | E10–E50: bis zu 60 MiB/s<br> E60: Bis zu 300 MiB/s *<br> E70–E80: 500 MiB/s *| S4–S50: bis zu 60 MiB/s<br> S60: bis zu 300 MiB/s *<br> S70–S80: bis zu 500 MiB/s *
+| Max. IOPS pro Datenträger | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100 IOPS<br> P20: 2300 IOPS<br> P30: 500 IOPS<br> P40–P50: 7500 IOPS<br> P60: 12500 IOPS *<br> P70: 15000 IOPS *<br> P80: 20000 IOPS * | E10–E50: bis zu 500 IOPS<br> E60: bis zu 1300 IOPS *<br> E70–E80: bis zu 2000 IOPS * | S4–S50: bis zu 500 IOPS<br> S60: bis zu 1300 IOPS *<br> S70–S80: bis zu 2000 IOPS *

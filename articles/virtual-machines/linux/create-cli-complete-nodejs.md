@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0 | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Load Balancer, eine Netzwerkschnittstellenkarte, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle 1.0 von Grund auf neu erstellen.
+title: Erstellen einer vollständigen Linux-Umgebung mit der klassischen Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Speicher, einen virtuellen Linux-Computer, ein virtuelles Netzwerk mitsamt Subnetz, einen Lastenausgleich, einen Netzwerkadapter, eine öffentliche IP-Adresse und eine Netzwerksicherheitsgruppe über die klassische Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) von Grund auf neu erstellen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932339"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952799"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Erstellen einer vollständigen Linux-Umgebung mit der Azure CLI 1.0
+# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Erstellen einer vollständigen Linux-Umgebung mit der klassischen Azure-Befehlszeilenschnittstelle
 In diesem Artikel erstellen wir ein einfaches Netzwerk mit einem Load Balancer und zwei virtuellen Computern, die zu Entwicklungszwecken und für einfache Berechnungen nützlich sind. Wir führen Sie Befehl für Befehl durch den Prozess, bis Sie über zwei funktionierende, sichere virtuelle Linux-Computer verfügen, mit denen Sie über das Internet von jedem Ort aus eine Verbindung herstellen können. Anschließend können Sie sich mit komplexeren Netzwerken und Umgebungen beschäftigen.
 
 Im Laufe dieses Vorgangs lernen Sie die Abhängigkeitshierarchie kennen, die Sie mit dem Resource Manager-Bereitstellungsmodell erhalten, sowie die damit verbundene hohe Leistungsfähigkeit. Wenn Sie wissen, wie das System aufgebaut ist, können Sie es mithilfe von [Azure Resource Manager-Vorlagen](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)deutlich schneller neu erstellen. Und wenn Sie wissen, wie die einzelnen Komponenten Ihrer Umgebung zusammenwirken, ist die Erstellung von Vorlagen für deren Automatisierung viel einfacher.
@@ -33,20 +33,20 @@ Die Umgebung enthält:
 * Load Balancer mit Lastenausgleichsregel an Port 80
 * Regeln für Netzwerksicherheitsgruppen (NSG) zum Schutz der virtuellen Computer vor unerwünschtem Datenverkehr
 
-Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [Azure-Befehlszeilenschnittstelle 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) im Resource Manager-Modus (`azure config mode arm`). Sie benötigen außerdem ein JSON-Analysetool. In diesem Beispiel wird [jq](https://stedolan.github.io/jq/)verwendet.
+Um diese benutzerdefinierte Umgebung zu erstellen, benötigen Sie die aktuelle [klassische Azure-Befehlszeilenschnittstelle](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) im Resource Manager-Modus (`azure config mode arm`). Sie benötigen außerdem ein JSON-Analysetool. In diesem Beispiel wird [jq](https://stedolan.github.io/jq/)verwendet.
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
 Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
-- [Azure-CLI 1.0](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
-- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
+- [Klassische Azure-Befehlszeilenschnittstelle](#quick-commands): Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell (in diesem Artikel)
+- [Azure-Befehlszeilenschnittstelle](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Im folgenden Abschnitt werden die grundlegenden Befehlen zum Hochladen eines virtuellen Computers in Azure beschrieben, falls Sie die Aufgabe schnell durchführen müssen. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#detailed-walkthrough)).
 
-Vergewissern Sie sich, ob die [Azure-Befehlszeilenschnittstelle 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
+Vergewissern Sie sich, dass die [klassische Azure-Befehlszeilenschnittstelle](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
 
 ```azurecli
 azure config mode arm
@@ -270,7 +270,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>Ausführliche exemplarische Vorgehensweise
 In den folgenden ausführlichen Schritten wird erklärt, was jeder Befehl macht, wenn Sie Ihre Umgebung erstellen. Diese Konzepte helfen Ihnen beim Erstellen Ihrer eigenen benutzerdefinierten Umgebungen für Entwicklung oder Produktion.
 
-Vergewissern Sie sich, ob die [Azure-Befehlszeilenschnittstelle 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
+Vergewissern Sie sich, dass die [klassische Azure-Befehlszeilenschnittstelle](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) angemeldet ist und den Resource Manager-Modus nutzt:
 
 ```azurecli
 azure config mode arm

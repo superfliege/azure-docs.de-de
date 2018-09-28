@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2017
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: cd4e31336fd0e90b13f1c3984de89f24e65b052b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 21cd06692fe1c26cfa276d1f8ec7ace77b11d3c2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23479609"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979980"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit der CLI
 
@@ -37,7 +37,7 @@ Dieser Artikel beschreibt, wie eine Azure ExpressRoute-Verbindung mit der Befehl
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-* Installieren Sie als Vorbereitung die aktuelle Version der CLI-Befehle (2.0 oder höher). Informationen zum Installieren der CLI-Befehle finden Sie unter [Install Azure CLI 2.0](/cli/azure/install-azure-cli) (Installieren der Azure CLI 2.) und [Get Started with Azure CLI 2.0](/cli/azure/get-started-with-azure-cli) (Erste Schritte mit der Azure CLI 2.0).
+* Installieren Sie als Vorbereitung die aktuelle Version der CLI-Befehle (2.0 oder höher). Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli).
 * Lesen Sie vor Beginn der Konfiguration die Seiten zu den [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
 
 ## <a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
@@ -125,7 +125,7 @@ Die Antwort ähnelt dem folgenden Beispiel:
 
 Überprüfen Sie die Antwort dahingehend, ob Ihr Konnektivitätsanbieter aufgeführt ist. Notieren Sie sich die folgenden Informationen, da Sie diese beim Erstellen einer Verbindung benötigen:
 
-* Name
+* NAME
 * PeeringLocations
 * BandwidthsOffered
 

@@ -12,48 +12,68 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/21/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: f83ca06843b94aecf44a4e4a58959d35f00532c2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: da8eebb2fc6b87b8916e944495679b45aa34dbf2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125115"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960327"
 ---
-# <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Bereiche, Berechtigungen und Zustimmung im Azure Active Directory v2. 0-Endpunkt
+# <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Berechtigungen und Einwilligung im Azure Active Directory v2.0-Endpunkt
 
-Apps, die sich in Azure Active Directory (Azure AD) integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer festlegen können, wie eine App auf ihre Daten zugreift. Die v2.0-Implementierung dieses Autorisierungsmodells wurde aktualisiert, sodass die Art und Weise, wie eine App mit Azure AD interagieren muss, nun anders ist. Dieser Artikel behandelt die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung.
+[!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
+
+Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Die Implementierung des Autorisierungsmodells wurde für den v2.0-Endpunkt aktualisiert. Eine App muss daher jetzt auf andere Weise mit der Microsoft Identity Platform interagieren. Dieser Artikel behandelt die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung.
 
 > [!NOTE]
-> Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure Active Directory. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 ## <a name="scopes-and-permissions"></a>Bereiche und Berechtigungen
 
-Azure AD implementiert das [OAuth 2.0](active-directory-v2-protocols.md)-Autorisierungsprotokoll. OAuth 2.0 ist eine Methode, über die eine Drittanbieter-App im Auftrag eines Benutzers auf im Web gehostete Ressourcen zugreifen kann. Alle im Web gehosteten Ressourcen, die in Azure AD integriert werden können, verfügen über eine Ressourcen-ID oder einen *Anwendungs-ID-URI*. Zu den von Microsoft im Web gehosteten Ressourcen zählen beispielsweise:
+Die Microsoft Identity Platform implementiert das [OAuth 2.0](active-directory-v2-protocols.md)-Autorisierungsprotokoll. OAuth 2.0 ist eine Methode, über die eine Drittanbieter-App im Auftrag eines Benutzers auf im Web gehostete Ressourcen zugreifen kann. Alle im Web gehosteten Ressourcen, die in die Microsoft Identity Platform integriert werden können, verfügen über einen Ressourcenbezeichner bzw. *Anwendungs-ID-URI*. Zu den von Microsoft im Web gehosteten Ressourcen zählen beispielsweise:
 
-* die Office 365 Unified Mail-API: `https://outlook.office.com`
-* die Azure AD Graph-API: `https://graph.windows.net`
 * Microsoft Graph: `https://graph.microsoft.com`
+* API für Office 365-E-Mail: `https://outlook.office.com`
+* Microsoft Azure AD Graph: `https://graph.windows.net`
 
-Dasselbe gilt für alle Ressourcen von Drittanbietern, die in Azure AD integriert wurden. Diese Ressourcen können auch einen Satz von Berechtigungen definieren, die zum Unterteilen der Funktionalität der Ressource in kleinere Einheiten verwendet werden können. Beispielsweise verfügt [Microsoft Graph](https://graph.microsoft.io) über definierte Berechtigungen, um unter anderem folgende Aufgaben auszuführen:
+> [!NOTE]
+> Es wird dringend empfohlen, Microsoft Graph anstelle von Microsoft Azure AD Graph, der API für Office 365-E-Mail usw. zu verwenden.
+
+Dasselbe gilt für alle Ressourcen von Drittanbietern, die in die Microsoft Identity Platform integriert wurden. Diese Ressourcen können auch einen Satz von Berechtigungen definieren, die zum Unterteilen der Funktionalität der Ressource in kleinere Einheiten verwendet werden können. Beispielsweise verfügt [Microsoft Graph](https://graph.microsoft.com) über definierte Berechtigungen, um unter anderem folgende Aufgaben auszuführen:
 
 * Lesen des Kalenders eines Benutzers
 * Schreiben in den Kalender eines Benutzers
 * Senden von E-Mails als Benutzer
 
-Durch das Definieren dieser Berechtigungstypen hat die Ressource eine präzisere Kontrolle über die Daten und die Art und Weise, wie sie verfügbar gemacht werden. Eine Drittanbieter-App kann von einem App-Benutzer diese Berechtigungen anfordern. Der App-Benutzer muss die Berechtigungen genehmigen, bevor die App im Auftrag des Benutzers agieren kann. Durch Segmentieren der Ressourcenfunktionalität in kleinere Berechtigungssätze können Drittanbieter-Apps so erstellt werden, dass nur die spezifischen Berechtigungen angefordert werden, die diese Apps zum Durchführen ihrer Funktion benötigen. Endbenutzer können genau erkennen, wie eine App ihre Daten verwendet, sodass sie sicher sein können, dass sich die App ohne bösartige Absichten verhält.
+Durch das Definieren dieser Berechtigungstypen hat die Ressource eine präzisere Kontrolle über die Daten und die Art und Weise, wie API-Funktionen verfügbar gemacht werden. Eine Drittanbieter-App kann diese Berechtigungen von Benutzern und Administratoren anfordern. Diese müssen die Anforderung dann genehmigen, bevor die App auf Daten zugreifen oder im Namen eines Benutzers agieren kann. Durch Segmentieren der Ressourcenfunktionalität in kleinere Berechtigungssätze können Drittanbieter-Apps so erstellt werden, dass nur die spezifischen Berechtigungen angefordert werden, die diese Apps zum Durchführen ihrer Funktion benötigen. Benutzer und Administratoren können genau erkennen, auf welche Daten die App zugreifen kann, sodass sie sicher sein können, dass die App keine böswilligen Absichten verfolgt. Entwickler sollten sich immer an die Regel der geringsten Rechte halten und nur die Berechtigungen anfordern, die für die Funktion ihrer Anwendungen erforderlich sind.
 
-In Azure AD und OAuth werden diese Berechtigungen *Bereiche* genannt. Manchmal werden sie auch als *OAuth2-Berechtigungen* bezeichnet. Ein Bereich wird in Azure AD als Zeichenfolgenwert dargestellt. Um beim Beispiel von Microsoft Graph zu bleiben, lautet der Bereichswert für jede Berechtigung wie folgt:
+In OAuth werden diese Berechtigungstypen *Bereiche* genannt. Oft werden sie auch einfach als *Berechtigungen* bezeichnet. Eine Berechtigung wird in der Microsoft Identity Platform als Zeichenfolgenwert dargestellt. Im Beispiel von Microsoft Graph lautet der Zeichenfolgenwert für jede Berechtigung wie folgt:
 
 * Lesen des Kalenders eines Benutzers mit `Calendars.Read`
 * Schreiben in den Kalender eines Benutzers mit `Calendars.ReadWrite`
 * Senden von E-Mails als Benutzer mit `Mail.Send`
 
-Eine Anwendung kann diese Berechtigungen durch Angabe der Bereiche in den Anforderungen an den v2.0-Endpunkt anfordern.
+Eine App fordert diese Berechtigungen meist durch Angabe der Bereiche in Anforderungen an den v2.0-Autorisierungsendpunkt an. Bestimmte erhöhte Berechtigungen können jedoch nur mit der Einwilligung des Administrators gewährt werden und werden in der Regel mit dem [Endpunkt für die Administratoreinwilligung](v2-permissions-and-consent.md#admin-restricted-scopes) angefordert/gewährt. Weitere Informationen finden Sie im Folgenden.
+
+## <a name="permission-types"></a>Berechtigungstypen
+
+Die Microsoft Identity Platform unterstützt zwei Arten von Berechtigungen: **delegierte Berechtigungen** und **Anwendungsberechtigungen**.
+
+- **Delegierte Berechtigungen** werden von Apps verwendet, bei denen ein angemeldeter Benutzer vorhanden ist. Für diese Apps willigt entweder der Benutzer oder ein Administrator in die Erteilung der von der App angeforderten Berechtigungen ein, und die App erhält die delegierte Berechtigung, bei Aufrufen an die Zielressource als der angemeldete Benutzer zu agieren. Bei manchen delegierten Berechtigungen können Benutzer ohne Administratorrechte die Einwilligung erteilen, einige erhöhte Berechtigungen erfordern jedoch eine [Administratoreinwilligung](v2-permissions-and-consent.md#admin-restricted-scopes).  
+
+- **Anwendungsberechtigungen** werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps sein, die als Hintergrunddienste oder Daemons ausgeführt werden.  Für Anwendungsberechtigungen ist immer die [Einwilligung eines Administrators](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant) erforderlich. 
+
+_Effektive Berechtigungen_ sind die Berechtigungen, über die Ihre App verfügt, wenn sie Anforderungen an die Zielressource sendet. Es ist wichtig, den Unterschied zwischen den delegierten Berechtigungen und Anwendungsberechtigungen, die Ihrer App gewährt werden, und ihren effektiven Berechtigungen beim Durchführen von Aufrufen an die Zielressource zu verstehen.
+
+- Bei delegierten Berechtigungen sind die _effektiven Berechtigungen_ Ihrer App die jeweils geringsten Rechte, die sich zusammen genommen aus den delegierten Berechtigungen, die der App (per Einwilligung) gewährt wurden, und den Berechtigungen des derzeit angemeldeten Benutzers ergeben. Ihre App kann niemals über mehr Berechtigungen als der angemeldete Benutzer verfügen. In Organisationen können die Berechtigungen des angemeldeten Benutzers anhand einer Richtlinie oder der Mitgliedschaft in einer oder mehreren Administratorrollen bestimmt werden. Weitere Informationen zu Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+  Angenommen, Ihrer App wurde die delegierte Berechtigung _User.ReadWrite.All_ gewährt. Mit dieser Berechtigung wird Ihrer App nominell die Berechtigung zum Lesen und Aktualisieren des Profils jedes Benutzers einer Organisation gewährt. Wenn es sich beim angemeldeten Benutzer um einen globalen Administrator handelt, kann Ihre App das Profil jedes Benutzers in der Organisation aktualisieren. Falls der angemeldete Benutzer aber keine Administratorrolle innehat, kann Ihre App nur das Profil des angemeldeten Benutzers aktualisieren. Sie kann die Profile von anderen Benutzern der Organisation nicht aktualisieren, da der Benutzer, für den die App die Berechtigung zum Durchführen von Aktionen in dessen Namen hat, nicht über diese Berechtigungen verfügt.
+  
+- Bei Anwendungsberechtigungen umfassen die _effektiven Berechtigungen_ Ihrer App die vollständige Berechtigungsstufe, die mit der Berechtigung verbunden ist. Beispielsweise kann eine App mit der Anwendungsberechtigung _User.ReadWrite.All_ das Profil aller Benutzer in der Organisation aktualisieren. 
 
 ## <a name="openid-connect-scopes"></a>OpenID Connect-Bereiche
 
@@ -69,7 +89,7 @@ Der Bereich `email` kann zusammen mit dem Bereich `openid` und weiteren Bereiche
 
 ### <a name="profile"></a>Profil
 
-Der Bereich `profile` kann zusammen mit dem Bereich `openid` und weiteren Bereichen verwendet werden. Er ermöglicht der App Zugriff auf eine Vielzahl von Benutzerinformationen. Dazu gehören u.a. Vorname, Nachname, bevorzugter Benutzername und Objekt-ID des Benutzers. Eine vollständige Liste der im Parameter id_tokens verfügbaren Profilansprüche für einen bestimmten Benutzer finden Sie in der [v2.0-Tokenreferenz](v2-id-and-access-tokens.md).
+Der Bereich `profile` kann zusammen mit dem Bereich `openid` und weiteren Bereichen verwendet werden. Er ermöglicht der App Zugriff auf eine Vielzahl von Benutzerinformationen. Dazu gehören u.a. Vorname, Nachname, bevorzugter Benutzername und Objekt-ID des Benutzers. Eine vollständige Liste der verfügbaren Profilansprüche im Parameter „id_tokens“ für einen bestimmten Benutzer finden Sie in der [`id_tokens`-Referenz](id-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
 
@@ -78,19 +98,6 @@ Mit dem [`offline_access`-Bereich](http://openid.net/specs/openid-connect-core-1
 Wenn die App den `offline_access`-Bereich nicht anfordert, werden auch keine Aktualisierungstoken empfangen. Dies bedeutet, dass Sie beim Einlösen eines Autorisierungscodes im [OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols.md) nur ein Zugriffstoken vom `/token`-Endpunkt erhalten. Das Zugriffstoken ist für eine kurze Zeit gültig. Das Zugriffstoken läuft in der Regel nach einer Stunde ab. Zu diesem Zeitpunkt muss Ihre App den Benutzer zurück auf den `/authorize`-Endpunkt leiten, um einen neuen Autorisierungscode abzurufen. Während dieser Umleitung muss der Benutzer möglicherweise seine Anmeldeinformationen erneut eingeben oder den Berechtigungen erneut zustimmen, je nach App-Typ.
 
 Weitere Informationen zum Abrufen und Verwenden von Aktualisierungstoken finden Sie in der [v2.0-Protokollreferenz](active-directory-v2-protocols.md).
-
-## <a name="accessing-v10-resources"></a>Zugreifen auf v1.0-Ressourcen
-v2.0-Anwendungen können Token und Zustimmung für v1.0-Anwendungen (z.B. die Power BI-API `https://analysis.windows.net/powerbi/api` oder die SharePoint-API `https://{tenant}.sharepoint.com`) anfordern.  Dazu können Sie auf den App-URI und die Bereichszeichenfolge im Parameter `scope` verweisen.  Mit `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All` wird beispielsweise die Power BI-Berechtigung `View all Datasets` für die Anwendung angefordert. 
-
-Um mehrere Berechtigungen anzufordern, fügen Sie den vollständigen URI mit einem Leerzeichen oder `+` an, z.B. `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://analysis.windows.net/powerbi/api/Report.Read.All`.  Damit werden die Berechtigung `View all Datasets` sowie die Berechtigung `View all Reports` angefordert.  Beachten Sie, dass wie bei allen Bereichen und Berechtigungen in Azure AD Anwendungen nur jeweils eine Anforderung an eine Ressource senden können. Daher wird die Anforderung `scope=https://analysis.windows.net/powerbi/api/Dataset.Read.All+https://api.skypeforbusiness.com/Conversations.Initiate`, bei der sowohl die Power BI-Berechtigung `View all Datasets` als auch die Skype for Business-Berechtigung `Initiate conversations` angefordert wird, abgelehnt, da Berechtigungen für zwei verschiedene Ressourcen angefordert werden.  
-
-### <a name="v10-resources-and-tenancy"></a>v1.0-Ressourcen und Mandanten
-Die Azure AD v1.0- und die Azure AD v2.0-Protokolle verwenden einen im URI (`https://login.microsoftonline.com/{tenant}/oauth2/`) eingebetteten `{tenant}`-Parameter.  Wenn Sie den v2.0-Endpunkt verwenden, um auf eine v1.0-Organisationsressource zuzugreifen, können die Mandanten `common` und `consumers` nicht verwendet werden, da auf diese Ressourcen nur über (Azure AD-)Organisationskonten zugegriffen werden kann.  Daher kann beim Zugriff auf diese Ressourcen nur die Mandanten-GUID oder `organizations` als `{tenant}`-Parameter verwendet werden.  
-
-Wenn eine Anwendung versucht, über einen falschen Mandanten auf eine v1.0-Organisationsressource zuzugreifen, wird ein Fehler ähnlich dem folgenden zurückgegeben. 
-
-`AADSTS90124: Resource 'https://analysis.windows.net/powerbi/api' (Microsoft.Azure.AnalysisServices) is not supported over the /common or /consumers endpoints. Please use the /organizations or tenant-specific endpoint.`
-
 
 ## <a name="requesting-individual-user-consent"></a>Anfordern der Zustimmung einzelner Benutzer
 
@@ -108,40 +115,51 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
 
-Der `scope` -Parameter ist eine durch Leerzeichen getrennte Liste von Bereichen, die von der App angefordert wird. Jeder Bereich wird durch Anhängen des Bereichswerts an den Ressourcenbezeichner (Anwendungs-ID-URI) angegeben. Die Anforderung im Beispiel gibt an, dass die Anwendung eine Berechtigung zum Lesen des Kalenders des Benutzers und Senden von E-Mails als Benutzer benötigt.
+Der `scope`-Parameter ist eine durch Leerzeichen getrennte Liste von delegierten Berechtigungen, die von der App angefordert werden. Jede Berechtigung wird durch Anfügen des Berechtigungswerts an den Ressourcenbezeichner (Anwendungs-ID-URI) angegeben. Die Anforderung im Beispiel gibt an, dass die Anwendung eine Berechtigung zum Lesen des Kalenders des Benutzers und Senden von E-Mails als Benutzer benötigt.
 
-Nachdem der Benutzer seine Anmeldeinformationen eingegeben hat, überprüft der v2.0-Endpunkt, ob es einen übereinstimmenden Datensatz der *Benutzerzustimmung* gibt. Wenn der Benutzer den angeforderten Berechtigungen in der Vergangenheit nicht zugestimmt hat, fragt der v2.0-Endpunkt den Benutzer nach den erforderlichen Berechtigungen.
+Nachdem der Benutzer seine Anmeldeinformationen eingegeben hat, überprüft der v2.0-Endpunkt, ob es einen übereinstimmenden Datensatz der *Benutzerzustimmung* gibt. Wenn der Benutzer in der Vergangenheit für keine der angeforderten Berechtigungen seine Einwilligung erteilt hat und auch kein Administrator für die gesamte Organisation in die Erteilung dieser Berechtigungen eingewilligt hat, fordert der v2.0-Endpunkt den Benutzer auf, die angeforderten Berechtigungen zu gewähren.
 
 ![Zustimmung im Arbeitskonto](./media/v2-permissions-and-consent/work_account_consent.png)
 
-Wenn der Benutzer die Berechtigung genehmigt, wird die Zustimmung aufgezeichnet, damit der Benutzer bei nachfolgenden Anmeldevorgängen nicht erneut seine Zustimmung geben muss.
+Wenn der Benutzer die Berechtigungsanforderung genehmigt, wird die Einwilligung aufgezeichnet, und der Benutzer muss bei nachfolgenden Anmeldungen bei der Anwendung nicht erneut seine Einwilligung erteilen.
 
 ## <a name="requesting-consent-for-an-entire-tenant"></a>Anfordern der Zustimmung für einen gesamten Mandanten
 
-Wenn eine Organisation Lizenzen oder Abonnements für eine Anwendung erwirbt, soll die Anwendung häufig in vollem Umfang den Mitarbeitern bereitgestellt werden. Im Rahmen dieses Prozesses kann ein Administrator die Zustimmung für die Anwendung im Namen aller Mitarbeiter erteilen. Wenn der Administrator seine Zustimmung für den gesamten Mandanten erteilt hat, sehen die Mitarbeiter des Unternehmens keine Zustimmungsseite für die Anwendung.
+Organisationen, die Lizenzen oder Abonnements für eine Anwendung erwerben, möchten die Anwendung oft proaktiv zur Verwendung durch alle Mitglieder der Organisation einrichten. Im Rahmen dieses Prozesses kann ein Administrator der Anwendung die Einwilligung erteilen, im Auftrag beliebiger Benutzer im Mandanten zu agieren. Wenn der Administrator seine Einwilligung für den gesamten Mandanten erteilt, sehen die Benutzer der Organisation keine Einwilligungsseite für die Anwendung.
 
-Um die Zustimmung für alle Benutzer in einem Mandanten anzufordern, kann Ihre App den Endpunkt für die Administratorzustimmung verwenden.
+Um die Einwilligung für delegierte Berechtigungen für alle Benutzer in einem Mandanten anzufordern, kann Ihre App den Endpunkt für die Administratoreinwilligung verwenden.
 
-## <a name="admin-restricted-scopes"></a>Auf den Administrator beschränkte Bereiche
+Darüber hinaus müssen Anwendungen den Endpunkt für die Administratoreinwilligung zum Anfordern von Anwendungsberechtigungen verwenden.
 
-Einige hochrangige Berechtigungen im Microsoft-Ökosystem können als *auf den Administrator beschränkt* gesetzt werden. Beispiele für derartige Bereiche beinhalten die folgenden Berechtigungen:
+## <a name="admin-restricted-permissions"></a>Auf den Administrator beschränkte Berechtigungen
 
-* Lesen der Verzeichnisdaten einer Organisation mit `Directory.Read`
-* Schreiben von Daten in das Verzeichnis einer Organisation mit `Directory.ReadWrite`
-* Lesen von Sicherheitsgruppen im Verzeichnis einer Organisation mit `Groups.Read.All`
+Einige hochrangige Berechtigungen im Microsoft-Ökosystem können als *auf den Administrator beschränkt* gesetzt werden. Im Folgenden sehen Sie einige Beispiele für derartige Berechtigungen:
+
+* Lesen der vollständigen Profile aller Benutzer mit `User.Read.All`
+* Schreiben von Daten in das Verzeichnis einer Organisation mit `Directory.ReadWrite.All`
+* Lesen aller Gruppen im Verzeichnis einer Organisation mit `Groups.Read.All`
 
 Obwohl ein Endbenutzer einer Anwendung den Zugriff auf diese Daten gewähren kann, dürfen Organisationsbenutzer den Zugriff auf denselben Satz sensibler Unternehmensdaten nicht erteilen. Wenn Ihre Anwendung von einem Organisationsbenutzer Zugriff auf eine dieser Berechtigungen anfordert, wird dem Benutzer in einer Fehlermeldung mitgeteilt, dass er nicht befugt ist, den Berechtigungen Ihrer App zuzustimmen.
 
 Wenn Ihre App den Zugriff auf diese dem Administrator vorbehaltenen Bereiche für Organisationen benötigt, sollten Sie diese ebenfalls über den Endpunkt für die Administratorzustimmung direkt von einem Unternehmensadministrator anfordern, wie im Folgenden beschrieben.
 
-Wenn ein Administrator diese Berechtigungen über den Endpunkt für die Administratorzustimmung erteilt, wird die Zustimmung allen Benutzern im Mandanten gewährt.
+Wenn die Anwendung erhöhte delegierte Berechtigungen anfordert und ein Administrator diese über den Endpunkt für die Administratoreinwilligung gewährt, wird die Einwilligung für alle Benutzer im Mandanten erteilt.
+
+Wenn die Anwendung Anwendungsberechtigungen anfordert und ein Administrator diese über den Endpunkt für die Administratoreinwilligung gewährt, erfolgt diese Gewährung nicht für einen bestimmten Benutzer. Stattdessen werden der Clientanwendung *direkt* Berechtigungen gewährt. Diese Berechtigungstypen werden in der Regel nur von Daemondiensten und anderen nicht interaktiven Anwendungen verwendet, die im Hintergrund ausgeführt werden.
 
 ## <a name="using-the-admin-consent-endpoint"></a>Verwenden des Endpunkts für die Administratorzustimmung
 
-Mithilfe dieser Schritte kann Ihre App Berechtigungen für alle Benutzer in einem Mandanten sammeln, einschließlich der auf Administratoren beschränkten Bereiche. Ein Codebeispiel, in dem die beschriebenen Schritte implementiert sind, finden Sie unter [Beispiel für auf Administratoren beschränkte Bereiche](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2).
+Wenn ein Unternehmensadministrator Ihre Anwendung verwendet und zum Autorisierungsendpunkt geleitet wird, erkennt die Microsoft Identity Platform die Rolle des Benutzers, und er wird gefragt, ob er seine Einwilligung für die angeforderten Berechtigungen für den gesamten Mandanten erteilen möchte. Es ist jedoch auch ein dedizierter Endpunkt für die Administratoreinwilligung verfügbar, den Sie verwenden können, wenn Sie die Gewährung von Berechtigungen proaktiv für den gesamten Mandanten von einem Administrator anfordern möchten. Dieser Endpunkt ist auch zum Anfordern von Anwendungsberechtigungen erforderlich (diese können nicht mit dem Autorisierungsendpunkt angefordert werden).
+
+Anhand dieser Schritte kann Ihre App Berechtigungen für alle Benutzer in einem Mandanten anfordern, einschließlich der auf Administratoren beschränkten Bereiche. Dieser Vorgang erfordert erhöhte Rechte und sollte nur ausgeführt werden, wenn er für Ihr Szenario erforderlich ist.
+
+Ein Codebeispiel, in dem die beschriebenen Schritte implementiert sind, finden Sie unter [Beispiel für auf Administratoren beschränkte Bereiche](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2).
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>Anfordern der Berechtigungen im App-Registrierungsportal
 
+Die Administratoreinwilligung akzeptiert keinen Bereichsparameter. Alle angeforderten Berechtigungen müssen daher in der Registrierung der Anwendung statisch definiert sein. Stellen Sie nach Möglichkeit sicher, dass die statisch definierten Berechtigungen für eine bestimmte Anwendung eine Obermenge der Berechtigungen sind, die die Anwendung dynamisch/inkrementell anfordert.
+
+So konfigurieren Sie die Liste statisch angeforderter Berechtigungen für eine Anwendung: 
 1. Wechseln Sie zur Anwendung im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), oder zu [Erstellen einer App](quickstart-v2-register-an-app.md), sofern noch nicht geschehen.
 2. Suchen Sie den Abschnitt **Microsoft Graph-Berechtigungen**, und fügen Sie die Berechtigungen hinzu, die von Ihrer App benötigt werden.
 3. **Speichern** Sie die App-Registrierung.
@@ -233,3 +251,7 @@ Content-Type: application/json
 Sie können das resultierende Zugriffstoken in HTTP-Anforderungen an die Ressource verwenden. Es zeigt der Ressource zuverlässig, dass die App über die erforderliche Berechtigung verfügt, eine bestimmte Aufgabe auszuführen. 
 
 Weitere Informationen zum OAuth 2.0-Protokoll und zum Abrufen von Zugriffstoken finden Sie in der [Protokollreferenz zum v2.0-Endpunkt](active-directory-v2-protocols.md).
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Falls Sie oder die Benutzer Ihrer Anwendung während des Einwilligungsprozesses unerwartete Fehler feststellen, finden Sie im Artikel [Unerwarteter Fehler beim Vorgang des Genehmigens einer Anwendung](../manage-apps/application-sign-in-unexpected-user-consent-error.md) Anleitungen zur Problembehandlung.

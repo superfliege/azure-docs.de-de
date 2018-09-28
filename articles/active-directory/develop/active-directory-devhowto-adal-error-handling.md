@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.custom: ''
-ms.openlocfilehash: b28e1931b9f615ae0eebe40b101f1959e9fcb40a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: db1d2f16c6497ce3c14d162a9c354dda995058f6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39593042"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974781"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -182,7 +182,7 @@ Das Betriebssystem kann auch eine Reihe von Fehlern generieren, die abhängig vo
 
 - Native Clientanwendungen (iOS, Android, .NET Desktop oder Xamarin)
 - Webanwendungen, die eine Ressourcen-API aufrufen (.NET)
-- Single-Page-Anwendungen (JavaScript)
+- Single-Page-Webanwendungen (JavaScript)
 - Service-to-Service-Anwendungen (.NET, Java)
   - Alle Szenarien einschließlich „Im Auftrag von“
   - „Im Auftrag von“-spezifische Szenarien
@@ -365,9 +365,9 @@ catch (AdalException e) {
 }
 ```
 
-### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Fehlerfälle und umsetzbare Schritte: Single-Page-Anwendungen („adal.js“)
+### <a name="error-cases-and-actionable-steps-single-page-applications-adaljs"></a>Fehlerfälle und umsetzbare Schritte: Single-Page-Webanwendungen (adal.js)
 
-Wenn Sie eine Single-Page-Anwendung mit „adal.js“ mit AcquireToken erstellen, ist der Fehlerbehandlungscode ähnlich dem eines typischen automatischen Aufrufs. Insbesondere in „adal.js“ zeigt AcquireToken nie eine Benutzeroberfläche an. 
+Wenn Sie eine Single-Page-Webanwendung mit „adal.js“ mit AcquireToken erstellen, ist der Fehlerbehandlungscode ähnlich dem eines typischen automatischen Aufrufs. Insbesondere in „adal.js“ zeigt AcquireToken nie eine Benutzeroberfläche an. 
 
 Für ein fehlgeschlagenes AcquireToken gelten die folgenden Fällen:
 

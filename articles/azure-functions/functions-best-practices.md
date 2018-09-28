@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fe8b2cc09c7a08ab6d897a0fe1f1204d1903eca
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dbb21e63a25d6e357287f2f91181f2326850a898
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090862"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952850"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -73,6 +73,10 @@ Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform v
 ## <a name="scalability-best-practices"></a>Skalierbarkeit: Bewährte Methoden
 
 Zahlreiche Faktoren beeinflussen die Skalierung von Instanzen Ihrer Funktionen-App. Ausführliche Informationen finden Sie in der Dokumentation zum [Skalieren von Funktionen-Apps](functions-scale.md).  Hier finden Sie bewährten Methoden, um die optimale Skalierbarkeit einer Funktionen-App sicherzustellen.
+
+### <a name="share-and-manage-connections"></a>Freigeben und Verwalten von Verbindungen
+
+Verwenden Sie Verbindungen mit externen Ressourcen nach Möglichkeit wieder.  Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](./manage-connections.md).
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Vermeiden Sie es, Test- und Produktionscodes in der derselben Funktionen-App zu mischen.
 

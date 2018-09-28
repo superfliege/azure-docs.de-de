@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 07/13/2018
+ms.date: 09/21/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: ea36a3d4a2471cee6a18d70275aaf2e83ffc6f39
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 20ba28632710ee044d4273ba12900774310711c7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159650"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981354"
 ---
-# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan-preview"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN (Vorschauversion)
+# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
-In diesem Tutorial wird beschrieben, wie Sie Virtual WAN zum Verbinden Ihrer Ressourcen in Azure über eine IPsec/IKE-VPN-Verbindung (IKEv2) nutzen. Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine extern zugängliche, öffentliche IP-Adresse zugewiesen ist. Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
+In diesem Tutorial wird beschrieben, wie Sie Virtual WAN zum Verbinden Ihrer Ressourcen in Azure über eine IPsec/IKE-VPN-Verbindung (IKEv1 und IKEv2) nutzen. Für diese Art von Verbindung wird ein lokales VPN-Gerät benötigt, dem eine extern zugängliche, öffentliche IP-Adresse zugewiesen ist. Weitere Informationen zu Virtual WAN finden Sie auf der Seite mit der [Übersicht über Virtual WAN](virtual-wan-about.md).
 
 > [!NOTE]
 > Falls Sie über viele Sites verfügen, verwenden Sie normalerweise einen [Virtual WAN-Partner](https://aka.ms/virtualwan), um diese Konfiguration zu erstellen. Sie können diese Konfiguration aber auch selbst erstellen, wenn Sie mit Netzwerken vertraut sind und sich mit der Konfiguration Ihres eigenen VPN-Geräts auskennen.
@@ -38,108 +38,57 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Anzeigen der Ressourcenintegrität
 > * Überwachen einer Verbindung
 
-> [!IMPORTANT]
-> Azure Virtual WAN befindet sich derzeit in der verwalteten Vorschauphase (Public Preview). Für die Nutzung von Virtual WAN müssen Sie sich [für die Vorschauversion registrieren](#enroll).
->
-> Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
+[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-* Stellen Sie sicher, dass Sie über ein kompatibles routenbasiertes VPN-Gerät (IKEv2-fähig) verfügen und dass das Gerät von einer Person konfiguriert werden kann. Wenn Sie mit einem Virtual WAN-Partner zusammenarbeiten, werden die Konfigurationseinstellungen automatisch erstellt, und Sie müssen sich keine Gedanken über die manuelle Konfiguration des Geräts machen.
-* Vergewissern Sie sich, dass Sie über eine externe öffentliche IPv4-Adresse für Ihr VPN-Gerät verfügen. Diese IP-Adresse darf sich nicht hinter einer NAT befinden.
-* Falls Sie bereits über ein virtuelles Netzwerk verfügen, mit dem Sie eine Verbindung herstellen möchten, sollten Sie Folgendes sicherstellen: Kein Subnetz Ihres lokalen Netzwerks darf sich mit den virtuellen Netzwerken überlappen, mit denen eine Verbindung hergestellt werden soll. Für Ihr virtuelles Netzwerk ist kein Gatewaysubnetz erforderlich, und es können keine Gateways für virtuelle Netzwerke verwendet werden. Falls Sie nicht über ein virtuelles Netzwerk verfügen, können Sie mit den Schritten in diesem Artikel ein Netzwerk dieser Art erstellen.
-* Beschaffen Sie sich einen IP-Adressbereich für Ihre Hubregion. Der Hub ist ein virtuelles Netzwerk, und der von Ihnen für die Hubregion angegebene Adressbereich darf sich nicht mit einem Ihrer vorhandenen virtuellen Netzwerke überlappen, mit denen Sie eine Verbindung herstellen. Außerdem ist keine Überlappung mit Ihren Adressbereichen möglich, mit denen Sie lokal eine Verbindung herstellen. Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann.
-* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+## <a name="vnet"></a>1. Erstellen eines virtuellen Netzwerks
 
-## <a name="enroll"></a>1. Registrieren in der Vorschau
+[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
-Bevor Sie Virtual WAN konfigurieren können, müssen Sie Ihr Abonnement zunächst für die Vorschauversion registrieren. Andernfalls können Sie Virtual WAN im Portal nicht verwenden. Senden Sie für die Registrierung eine E-Mail mit Ihrer Abonnement-ID an **azurevirtualwan@microsoft.com**. Sie erhalten eine E-Mail zurück, nachdem Ihr Abonnement registriert wurde.
+## <a name="openvwan"></a>2. Erstellen eines virtuellen WAN
 
-## <a name="vnet"></a>2. Erstellen eines virtuellen Netzwerks
+Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 
-Falls Sie noch nicht über ein VNET verfügen, können Sie mit PowerShell schnell eins erstellen. Sie können auch über das Azure-Portal ein VNET erstellen.
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-* Stellen Sie sicher, dass sich der Adressraum für das von Ihnen erstellte VNET nicht mit den Adressbereichen anderer VNETs, mit denen Sie eine Verbindung herstellen möchten, oder mit Ihren Adressräumen des lokalen Netzwerks überlappt. 
-* Wenn Sie bereits über ein VNET verfügen, sollten Sie sich vergewissern, dass es die erforderlichen Kriterien erfüllt und dass kein Gateway für virtuelle Netzwerke verwendet wird.
-
-Sie können Ihr VNET leicht erstellen, indem Sie in diesem Artikel die Option zum Ausprobieren verwenden, um eine PowerShell-Konsole zu öffnen. Passen Sie die Werte an, und kopieren Sie die Befehle dann in das Konsolenfenster.
-
-### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-
-Passen Sie die PowerShell-Befehle an, und erstellen Sie anschließend eine Ressourcengruppe.
-
-```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName WANTestRG -Location WestUS
-```
-
-### <a name="create-a-vnet"></a>Erstellen eines VNET
-
-Passen Sie die PowerShell-Befehle an, um das VNET zu erstellen, das für Ihre Umgebung kompatibel ist.
-
-```azurepowershell-interactive
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd -AddressPrefix "10.1.0.0/24"
-$vnet   = New-AzureRmVirtualNetwork `
-            -Name WANVNet1 `
-            -ResourceGroupName WANTestRG `
-            -Location WestUS `
-            -AddressPrefix "10.1.0.0/16" `
-            -Subnet $fesub1
-```
-
-## <a name="wan"></a>3. Erstellen eines virtuellen WAN
-
-1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
-2. Sie können auf Virtual WAN zugreifen, indem Sie zu **Alle Dienste** navigieren und nach Virtual WAN suchen. Sie können auch im Azure-Portal oben im Suchfeld nach Virtual WAN suchen. Klicken Sie auf **Virtual WAN**, um die Seite zu öffnen.
-3. Klicken Sie auf **Erstellen**, um die Seite **WAN erstellen** zu öffnen. Wenn die Seite nicht verfügbar ist, haben Sie noch keine Genehmigung für diese Vorschauversion erhalten.
-
-  ![Erstellen des WAN](./media/virtual-wan-site-to-site-portal/createwan.png)
-4. Füllen Sie auf der Seite „WAN erstellen“ die unten angegebenen Felder aus.
-
-  * **Name**: Wählen Sie den Namen aus, den Sie Ihrem WAN geben möchten.
-  * **Abonnement**: Wählen Sie das Abonnement aus, das Sie verwenden möchten.
-  * **Ressourcengruppe**: Erstellen Sie eine neue oder verwenden Sie eine vorhandene Ressourcengruppe.
-  * **Ressourcenspeicherort**: Wählen Sie in der Dropdownliste einen Ressourcenspeicherort aus. Ein WAN ist eine globale Ressource, die nicht in einer bestimmten Region angeordnet ist. Sie müssen aber eine Region auswählen, damit Sie die von Ihnen erstellte WAN-Ressource leichter verwalten und finden können.
-5. Klicken Sie auf **Erstellen**, um das WAN zu erstellen.
-
-## <a name="site"></a>4. Erstellen einer Site
+## <a name="site"></a>3. Erstellen einer Site
 
 Erstellen Sie beliebig viele Sites, die Ihren physischen Standorten entsprechen. Erstellen Sie beispielsweise drei separate Sites, wenn Sie jeweils über eine Filiale in New York, London und Los Angeles verfügen. Diese Sites enthalten Ihre lokalen VPN-Geräteendpunkte. Derzeit können Sie für Ihre Site nur eine private Adresse angeben.
 
-1. Navigieren Sie zu **Alle Ressourcen**.
-2. Klicken Sie auf das virtuelle WAN, das Sie erstellt haben.
-3. Klicken Sie oben auf der Seite auf **+Create site** (+Site erstellen), um die Seite **Create site** (Site erstellen) zu öffnen.
+1. Klicken Sie auf das von Ihnen erstellte WAN. Klicken Sie auf der WAN-Seite unter **WAN Architecture** (WAN-Architektur) auf **VPN sites** (VPN-Standorte), um die entsprechende Seite zu öffnen.
+2. Klicken Sie auf der Seite **VPN sites** (VPN-Standorte) auf **+Create site** (+ Site erstellen).
+3. Füllen Sie auf der Seite **Create site** (Site erstellen) die folgenden Felder aus:
 
-  ![Neue Site](media/virtual-wan-site-to-site-portal/createsite.png)
-4. Füllen Sie auf der Seite **Create site** (Site erstellen) die folgenden Felder aus:
+  * **Name**: Dies ist der Name, den Sie Ihrer lokalen Site geben möchten.
+  * **Öffentliche IP-Adresse**: Dies ist die öffentliche IP-Adresse des VPN-Geräts, das sich in Ihrer lokalen Site befindet.
+  * **Privater Adressraum**: Dies ist der IP-Adressraum Ihrer lokalen Site. Der Datenverkehr, der für diesen Adressraum bestimmt ist, wird an Ihre lokale Site geleitet.
+  * **Abonnement**: Überprüfen Sie das Abonnement.
+  * **Ressourcengruppe**: Die Ressourcengruppe, die Sie verwenden möchten.
+  * **Standort**.
+4. Klicken Sie auf **Show advanced** (Erweiterte anzeigen), um die zusätzlichen Einstellungen anzuzeigen. Sie können **BGP** wählen, um BGP zu aktivieren. Diese Funktionalität wird dann für alle Verbindungen aktiviert, die für diese Site in Azure erstellt werden. Sie können auch unter **Geräteinformationen** (optionale Felder) eingeben. Das Azure-Team kann Ihre Umgebung so besser verstehen und in Zukunft weitere Optimierungsmöglichkeiten hinzufügen oder Sie bei der Problembehandlung unterstützen.
+5. Klicken Sie auf **Confirm** (Bestätigen).
+6. Nach dem Klicken auf **Confirm** (Bestätigen) können Sie den Status auf der Seite „VPN sites“ (VPN-Standorte) anzeigen. Für den Standort ändert sich der Status von **Wird bereitgestellt** in **Bereitgestellt**.
 
-  *  **Name**: Dies ist der Name, den Sie Ihrer lokalen Site geben möchten.
-  *  **Öffentliche IP-Adresse**: Dies ist die öffentliche IP-Adresse des VPN-Geräts, das sich in Ihrer lokalen Site befindet.
-  *  **Privater Adressraum**: Dies ist der IP-Adressraum Ihrer lokalen Site. Der Datenverkehr, der für diesen Adressraum bestimmt ist, wird an Ihre lokale Site geleitet.
-  *  **Abonnement**: Überprüfen Sie das Abonnement.
-  *  **Ressourcengruppe**: Die Ressourcengruppe, die Sie verwenden möchten.
-5. Klicken Sie auf **Show advanced** (Erweiterte anzeigen), um die zusätzlichen Einstellungen anzuzeigen. Sie können **BGP aktivieren** (optionales Feld) wählen, um diese Funktionalität für alle Verbindungen zu aktivieren, die für diese Site in Azure erstellt werden. Sie können auch unter **Geräteinformationen** (optionales Feld) Informationen eingeben. Das Azure-Team kann Ihre Umgebung so besser verstehen und in Zukunft weitere Optimierungsmöglichkeiten hinzufügen oder Sie bei der Problembehandlung unterstützen.
+## <a name="hub"></a>4. Erstellen eines Hubs
 
-  ![BGP](media/virtual-wan-site-to-site-portal/sitebgp.png)
-6. Klicken Sie auf **Bestätigen**, um die Site zu erstellen.
-7. Wiederholen Sie diese Schritte für jede Site, die Sie erstellen möchten.
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="hub"></a>5. Erstellen eines Hubs und Verbinden von Sites
+## <a name="associate"></a>5. Zuordnen der Standorte zum Hub
 
-1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Sites**.
-2. Unter **Unassociated sites** (Nicht zugeordnete Sites) wird eine Liste mit Sites angezeigt, die noch nicht mit einem Hub verbunden wurden.
-3. Wählen Sie die Sites aus, die Sie zuordnen möchten.
-4. Wählen Sie in der Dropdownliste die Region aus, der Ihr Hub zugeordnet werden soll. Sie sollten Ihren Hub der Region zuordnen, in der sich die VNETs befinden, mit denen eine Verbindung hergestellt werden soll.
-5. Klicken Sie auf **Confirm** (Bestätigen). Falls sich in dieser Region noch kein Hub befindet, wird automatisch ein VNET mit virtuellem Hub erstellt. In diesem Fall wird die Seite **Regionale Hubs erstellen** angezeigt.
-6. Geben Sie auf der Seite **Regionale Hubs erstellen** den Adressbereich für Ihr Hub-VNET ein. Dies ist das VNET, das Ihre Hubdienste enthält. Der hier eingegebene Bereich muss ein privater IP-Adressbereich sein und darf sich nicht mit Ihren lokalen Adressräumen oder Ihren VNET-Adressräumen überlappen. Im Hub-VNET wird ein nachfolgender VPN-Endpunkt erstellt. (Die automatische Erstellung von Hub und Gateway ist nur im Portal verfügbar.)
-7. Klicken Sie auf **Create**.
+Hubs sollten normalerweise Standorten zugeordnet werden, die sich in derselben Region wie das VNet befinden.
+
+1. Wählen Sie auf der Seite **VPN sites** (VPN-Standorte) die Standorte aus, die Sie dem Hub zuordnen möchten, und klicken Sie dann auf **+New hub association** (+ Neue Hubzuordnung).
+2. Wählen Sie auf der Seite **Associate sites with one or more hubs** (Standorten einen oder mehrere Hubs zuordnen) in der Dropdownliste einen Hub aus. Sie können einem Standort zusätzliche Hubs zuordnen, indem Sie auf **+ Zuordnung hinzufügen** klicken.
+3. Sie können hier auch einen bestimmten **PSK** hinzufügen oder den Standardwert verwenden.
+4. Klicken Sie auf **Confirm** (Bestätigen).
+5. Sie können den Verbindungsstatus auf der Seite **VPN sites** (VPN-Standorte) anzeigen.
 
 ## <a name="vnet"></a>6. Verbinden Ihres VNET mit einem Hub
 
 In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und einem VNET. Wiederholen Sie diese Schritte für jedes VNET, mit dem Sie eine Verbindung herstellen möchten.
 
-1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Virtual network connection** (VNET-Verbindung).
+1. Klicken Sie auf der Seite für Ihr virtuelles WAN auf **Virtuelle Netzwerkverbindungen**.
 2. Klicken Sie auf der Seite für die VNET-Verbindung auf **+Add connection** (+Verbindung hinzufügen).
 3. Füllen Sie auf der Seite **Add connection** (Verbindung hinzufügen) die folgenden Felder aus:
 
@@ -147,6 +96,7 @@ In diesem Schritt erstellen Sie die Peeringverbindung zwischen Ihrem Hub und ein
     * **Hubs**: Wählen Sie den Hub aus, den Sie dieser Verbindung zuordnen möchten.
     * **Abonnement**: Überprüfen Sie das Abonnement.
     * **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, das Sie mit diesem Hub verbinden möchten. Für das virtuelle Netzwerk kann nicht bereits ein Gateway für virtuelle Netzwerke vorhanden sein.
+4. Klicken Sie auf **OK**, um die Peeringverbindung zu erstellen.
 
 ## <a name="device"></a>7. Herunterladen der VPN-Konfiguration
 
@@ -290,14 +240,14 @@ Die Gerätekonfigurationsdatei enthält die Einstellungen, die beim Konfiguriere
 ### <a name="configuring-your-vpn-device"></a>Konfigurieren Ihres VPN-Geräts
 
 >[!NOTE]
-> Wenn Sie mit einer Lösung eines Virtual WAN-Partners arbeiten, wird die VPN-Gerätekonfiguration automatisch durchgeführt. Der Gerätecontroller erhält die Konfigurationsdatei von Azure und wendet sie auf das Gerät an, um die Verbindung mit Azure einzurichten. Dies bedeutet, dass Sie nicht wissen müssen, wie Sie Ihr VPN-Gerät manuell konfigurieren.
+> Wenn Sie mit einer Virtual WAN-Partnerlösung arbeiten, wird die VPN-Gerätekonfiguration automatisch durchgeführt. Der Gerätecontroller ruft die Konfigurationsdatei aus Azure ab und wendet sie auf das Gerät an, um die Verbindung mit Azure einzurichten. Dies bedeutet, dass Sie nicht wissen müssen, wie Sie Ihr VPN-Gerät manuell konfigurieren.
 >
 
 Falls Sie eine Anleitung für die Konfiguration Ihres Geräts benötigen, können Sie die Anleitung auf der [Seite mit den Schritten für die VPN-Gerätekonfiguration](~/articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#configscripts) verwenden. Beachten Sie hierbei aber die folgenden Einschränkungen:
 
 * Die Anleitung auf der Seite für die VPN-Geräte wurde nicht für Virtual WAN geschrieben, aber Sie können die Virtual WAN-Werte aus der Konfigurationsdatei verwenden, um Ihr VPN-Gerät manuell zu konfigurieren. 
 * Die herunterladbaren Skripts für die Gerätekonfiguration, die für VPN Gateway bestimmt sind, funktionieren nicht für Virtual WAN, da sich die Konfiguration unterscheidet.
-* Für Virtual WAN kann nur IKEv2 verwendet werden (nicht IKEv1).
+* Für eine neue Virtual WAN-Instanz können IKEv1 und IKEv2 unterstützt werden.
 * Für Virtual WAN können nur routenbasierte VPN-Geräte und die entsprechenden Geräteanweisungen verwendet werden.
 
 ## <a name="viewwan"></a>8. Anzeigen Ihrer Virtual WAN-Instanz
@@ -322,10 +272,6 @@ Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie den Befehl [Remove-
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
-
-## <a name="feedback"></a>Feedback zur Vorschauversion
-
-Wir schätzen Ihr Feedback. Senden Sie eine E-Mail an <azurevirtualwan@microsoft.com>, um Probleme zu melden oder Feedback zu Virtual WAN zu geben (positiv oder negativ). Fügen Sie den Namen Ihres Unternehmens in eckigen Klammern in die Betreffzeile ein. Wenn Sie ein Problem melden, geben Sie auch Ihre Abonnement-ID an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

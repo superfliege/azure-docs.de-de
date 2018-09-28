@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: Änderung, Nachverfolgung, Automatisierung
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 08/27/2018
+ms.date: 09/12/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120584"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995256"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problembehandlung für Änderungen in Ihrer Umgebung
 
@@ -32,6 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Aktivieren der Aktivitätsprotokollverbindung
 > * Auslösen eines Ereignisses
 > * Anzeigen von Änderungen
+> * Konfigurieren von Warnungen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +42,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Ein [Automation-Konto](automation-offering-get-started.md) für die Watcher- und Aktionsrunbooks und den Watchertask.
 * Einen [virtuellen Computer](../virtual-machines/windows/quick-create-portal.md), der integriert werden soll.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
@@ -57,7 +58,7 @@ In diesem Tutorial müssen Sie zuerst die Änderungsnachverfolgung und die Besta
 Mit einem [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Bestandsfunktion generiert werden.
 Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 
-Beim Onboarding wird die VM mit dem Microsoft Monitoring Agent (MMA) und Hybrid Worker bereitgestellt.
+Beim Onboarding wird der virtuelle Computer mit Microsoft Monitoring Agent (MMA) und Hybrid Worker bereitgestellt.
 Dieser Agent wird verwendet, um mit dem virtuellen Computer zu kommunizieren und Informationen zur installierten Software abzurufen.
 
 Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen.
@@ -66,20 +67,22 @@ Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse
 
 ## <a name="using-change-tracking-in-log-analytics"></a>Verwenden der Änderungsnachverfolgung in Log Analytics
 
-Bei der Änderungsnachverfolgung werden Protokolldaten generiert, die an Log Analytics gesendet werden. Um die Protokolle per Ausführung von Abfragen zu durchsuchen, klicken Sie oben im Fenster **Änderungsnachverfolgung** auf **Log Analytics**.
-Die Daten der Änderungsnachverfolgung werden unter dem Typ **ConfigurationChange** gespeichert. Mit der folgenden Log Analytics-Beispielabfrage werden alle Windows-Dienste zurückgegeben, die beendet wurden.
+Bei der Änderungsnachverfolgung werden Protokolldaten generiert, die an Log Analytics gesendet werden.
+Um die Protokolle per Ausführung von Abfragen zu durchsuchen, klicken Sie oben im Fenster **Änderungsnachverfolgung** auf **Log Analytics**.
+Die Daten der Änderungsnachverfolgung werden unter dem Typ **ConfigurationChange** gespeichert.
+Mit der folgenden Log Analytics-Beispielabfrage werden alle Windows-Dienste zurückgegeben, die beendet wurden.
 
 ```
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Protokolldateien in Log Analytics finden Sie unter [Azure Log Analytics](https://docs.loganalytics.io/index).
+Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Protokolldateien in Log Analytics finden Sie unter [Azure Log Analytics](../log-analytics/log-analytics-queries.md).
 
 ## <a name="configure-change-tracking"></a>Konfigurieren der Änderungsnachverfolgung
 
 Die Änderungsnachverfolgung ermöglicht Ihnen das Nachverfolgen von Konfigurationsänderungen auf Ihrer VM. In den folgenden Schritten wird veranschaulicht, wie Sie die Nachverfolgung von Registrierungsschlüsseln und Dateien konfigurieren.
- 
+
 Wählen Sie oben auf der Seite **Änderungsnachverfolgung** die Option **Einstellungen bearbeiten**, um anzugeben, welche Dateien und Registrierungsschlüssel erfasst und nachverfolgt werden sollen.
 
 > [!NOTE]
@@ -92,7 +95,7 @@ Fügen Sie im Fenster **Arbeitsbereichskonfiguration** wie in den nächsten drei
 1. Wählen Sie auf der Registerkarte **Windows-Registrierung** die Option **Hinzufügen**.
     Das Fenster **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** wird geöffnet.
 
-3. Geben Sie unter **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und klicken Sie auf **Speichern**.
+1. Geben Sie unter **Windows-Registrierung für Änderungsnachverfolgung hinzufügen** die Informationen zu dem Schlüssel ein, der nachverfolgt werden soll, und klicken Sie auf **Speichern**.
 
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
@@ -168,6 +171,49 @@ Wenn Sie eine Änderung vom Typ **WindowsServices** wählen, wird das Fenster mi
 
 ![Anzeigen von Details zu den Änderungen im Portal](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
+## <a name="configure-alerts"></a>Konfigurieren von Warnungen
+
+Das Anzeigen von Änderungen im Azure-Portal kann praktisch sein, es ist jedoch nützlicher, über Änderungen (etwa einen beendeten Dienst) informiert zu werden.
+
+Wechseln Sie im Azure-Portal zu **Überwachen**, um eine Warnung für einen beendeten Dienst zu erhalten. Wählen Sie dann unter **Gemeinsame Dienste** die Option **Warnungen** aus, und klicken Sie auf **+ Neue Warnungsregel**.
+
+Klicken Sie unter **1. Warnungsbedingung definieren** auf **+ Ziel auswählen**. Wählen Sie unter **Nach Ressourcentyp filtern** die Option **Log Analytics**. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Fertig**.
+
+![Auswählen einer Ressource](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+
+Klicken Sie auf **+ Kriterien hinzufügen**.
+Klicken Sie unter **Signallogik konfigurieren** in der Tabelle auf **Benutzerdefinierte Protokollsuche**. Geben Sie im Textfeld „Suchabfrage“ die folgende Abfrage ein:
+
+```loganalytics
+ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+```
+
+Diese Abfrage gibt die Computer zurück, auf denen der W3SVC-Dienst im angegebenen Zeitraum beendet wurde.
+
+Geben Sie unter **Warnungslogik** für **Schwellenwert** den Wert **0** ein. Klicken Sie auf **Fertig**, wenn Sie fertig sind.
+
+![Konfigurieren der Signallogik](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+
+Wählen Sie unter **2. Warnungsdetails definieren** einen Namen und eine Beschreibung für die Warnung ein. Legen Sie **Schweregrad** auf **Information (Schweregrad 2)**, **Warnung (Schweregrad 1)** oder **Kritisch (Schweregrad 0)** fest.
+
+![Definieren von Warnungsdetails](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
+
+Klicken Sie unter **3. Aktionsgruppe definieren** auf **Neue Aktionsgruppe**. Eine Aktionsgruppe ist eine Gruppe mit Aktionen, die Sie übergreifend für mehrere Warnungen verwenden können. Dies können beispielsweise E-Mail-Benachrichtigungen, Runbooks, Webhooks und vieles mehr sein. Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](../monitoring-and-diagnostics/monitoring-action-groups.md).
+
+Geben Sie im Feld **Name der Aktionsgruppe** einen Namen für die Warnung und darunter einen Kurznamen ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
+
+Geben Sie unter **Aktionen** einen Namen für die Aktion ein, beispielsweise **E-Mail-Administratoren**. Wählen Sie unter **AKTIONSTYP** die Option **E-Mail/SMS/Push/Sprachanruf** aus. Wählen Sie unter **DETAILS** die Option **Details bearbeiten**.
+
+![Hinzufügen einer Aktionsgruppe](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+Geben Sie auf der Seite **E-Mail/SMS/Push/Sprachanruf** einen Namen ein. Aktivieren Sie das Kontrollkästchen **E-Mail**, und geben Sie eine gültige E-Mail-Adresse ein. Klicken Sie auf der Seite **E-Mail/SMS/Push/Sprachanruf** auf **OK** und anschließend auf der Seite **Aktionsgruppe hinzuzufügen** ebenfalls auf **OK**.
+
+Wenn Sie den Betreff der Warnungs-E-Mail anpassen möchten, klicken Sie unter **Regel erstellen** und **Aktionen anpassen** auf **E-Mail-Betreff**. Klicken Sie abschließend auf **Warnungsregel erstellen**. Die Warnung informiert Sie, wenn die Bereitstellung eines Updates erfolgreich war. Außerdem wird angegeben, welche Computer Teil der durchgeführten Updatebereitstellung waren.
+
+Die folgende Abbildung zeigt eine Beispiel-E-Mail, die bei Beendigung des W3SVC-Diensts eingeht.
+
+![E-Mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
@@ -179,6 +225,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Aktivieren der Aktivitätsprotokollverbindung
 > * Auslösen eines Ereignisses
 > * Anzeigen von Änderungen
+> * Konfigurieren von Warnungen
 
 Fahren Sie mit der Übersicht über die Lösung für die Änderungsnachverfolgung und den Bestand fort, um mehr darüber zu erfahren.
 

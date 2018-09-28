@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: ab085d6a5cb38c46cf46a51da6d294732e2fd879
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45978932"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060476"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Kostengünstiger Standardspeicher und verwaltete/nicht verwaltete Azure-VM-Datenträger
 
@@ -25,7 +25,7 @@ Dieser Artikel beschäftigt sich hauptsächlich mit der Verwendung von Standard-
 
 Standarddatenträger für virtuelle Azure-Computer können in zwei Varianten erstellt werden:
 
-**Nicht verwaltete Datenträger:** Bei diesem Datenträgertyp verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 256 TB erreicht werden.
+**Nicht verwaltete Datenträger:** Bei diesem Datenträgertyp verwalten Sie die Speicherkonten, die zum Speichern der VHD-Dateien für die VM-Datenträger verwendet werden. VHD-Dateien werden als Seitenblobs in Speicherkonten gespeichert. Nicht verwaltete Datenträger können an jede beliebige Azure-VM-Größe angefügt werden – auch an virtuelle Computer, die in erster Linie Storage Premium verwenden (wie etwa die DSv2- und die GS-Serie). Virtuelle Azure-Computer unterstützen das Anfügen mehrerer Standarddatenträger. Dadurch kann pro virtuellem Computer eine Speicherkapazität von bis zu 256 PiB erreicht werden. Wenn Sie die Datenträgergrößen der Vorschau verwenden, können Sie pro virtuellem Computer bis zu 2 PiB Speicher verwenden. 
 
 [**Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Dieses Feature nimmt Ihnen die Verwaltung der Speicherkonten ab, die für die VM-Datenträger verwendet werden. Sie geben die Art (Premium-SSD, Standard-SSD oder Standard-HDD) und die benötigte Größe des Datenträgers an, und Azure erstellt und verwaltet ihn für Sie. Sie müssen die Datenträger nicht selbst auf mehrere Speicherkonten verteilen, um sicherzustellen, dass Sie die Skalierbarkeitsgrenzwerte für die Speicherkonten einhalten. Dies erledigt Azure für Sie.
 
@@ -36,15 +36,15 @@ Informationen zu den ersten Schritten mit Azure-Standardspeicher finden Sie unte
 Informationen zum Erstellen eines virtuellen Computers mit Managed Disks finden Sie in den folgenden Artikeln.
 
 * [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../articles/virtual-machines/windows/quick-create-powershell.md)
-* [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/quick-create-cli.md)
 
-## <a name="standard-storage-features"></a>Features von Standardspeicher 
+## <a name="standard-storage-features"></a>Features von Standardspeicher
 
 In diesem Abschnitt werden einige der Features von Standardspeicher erläutert. Ausführlichere Informationen finden Sie unter [Einführung in Microsoft Azure Storage](../articles/storage/common/storage-introduction.md).
 
 **Standardspeicher:** Azure-Standardspeicher unterstützt Azure-Datenträger, Azure-Blobs, Azure-Dateien, Azure-Tabellen und Azure-Warteschlangen. Wenn Sie Standardspeicherdienste verwenden möchten, beginnen Sie mit der [Erstellung eines Azure Storage-Kontos](../articles/storage/common/storage-quickstart-create-account.md).
 
-**Standard-SSD-Datenträger:** Standard-SSD-Datenträger bieten eine zuverlässigere Leistung als Standard-HDD-Datenträger und sind derzeit in der Vorschau verfügbar. Weitere Informationen zur Verfügbarkeit von Standard-SSD-Datenträgern in verschiedenen Regionen finden Sie unter [Regionsverfügbarkeit von Standard-SSD-Datenträgern (Vorschau)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+**SSD Standard-Datenträger:** SSD Standard-Datenträger bieten eine zuverlässigere Leistung als HDD Standard-Datenträger und sind derzeit verfügbar. Weitere Informationen zur Verfügbarkeit von SSD Standard-Datenträgern in verschiedenen Regionen finden Sie unter [Regionale Verfügbarkeit von SSD Standard-Datenträgern](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
 **Standard-HDD-Datenträger:** Standard-HDD-Datenträger können an beliebige virtuelle Azure-Computer angefügt werden. Dies schließt auch virtuelle Computer aus Größenserien mit Storage Premium (beispielsweise die DSv2- und die GS-Serie) mit ein. Ein Standard-HDD-Datenträger kann nur an einen einzelnen virtuellen Computer angefügt werden. An einen virtuellen Computer können allerdings mehrere dieser Datenträger angefügt werden (bis zur maximalen, für die VM-Größe definierten Datenträgeranzahl). Die Spezifikationen werden im folgenden Abschnitt zu Skalierbarkeits- und Leistungszielen für Standardspeicher ausführlicher beschrieben.
 
@@ -81,11 +81,11 @@ Im Gegensatz zu Premium-Datenträgern werden für Standarddatenträger keine E/A
 
 | **VM-Tarif**            | **Virtueller Computer – Basic-Tarif** | **Virtueller Computer – Standard-Tarif** |
 |------------------------|-------------------|----------------------|
-| Maximale Datenträgergröße          | 4095 GB           | 4095 GB              |
-| Max. 8 KB an IOPS pro Datenträger | Bis zu 300         | Bis zu 500            |
-| Max. Bandbreite pro Datenträger | Bis zu 60 MB/s     | Bis zu 60 MB/s        |
+| Maximale Datenträgergröße          | 32767 GiB           | 32767 GiB        |
+| Max. 8 KB an IOPS pro Datenträger | Bis zu 2000         | Bis zu 2000        |
+| Max. Bandbreite pro Datenträger | Bis zu 500 MB/s     | Bis zu 500 MB/s      |
 
-Wenn Ihre Workload Datenträgerunterstützung für hohe Leistung und geringe Latenz erfordert, empfiehlt sich unter Umständen die Verwendung von Storage Premium. Weitere Informationen zu den Vorteilen von Storage Premium finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md). 
+Wenn Ihre Workload Datenträgerunterstützung für hohe Leistung und geringe Latenz erfordert, empfiehlt sich unter Umständen die Verwendung von Storage Premium. Weitere Informationen zu den Vorteilen von Storage Premium finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md).
 
 ## <a name="snapshots-and-copy-blob"></a>Momentaufnahmen und Kopieren von Blobs
 
@@ -121,9 +121,9 @@ Bei Verwendung von Standardspeicher sind folgende Abrechnungsaspekte zu berücks
 
 **Verwaltete Datenträger:** Die Abrechnung für verwaltete Standard-Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standard-Datenträger erstellen und eine bereitgestellte Größe von 200 GiB angeben, erfolgt die Abrechnung gemäß den Preisen für den Datenträgertyp S15.
 
-| **Verwalteter Standard-HDD-<br>Datenträgertyp** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
-| Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1.024 GiB (1 TiB) | 2.048 GiB (2 TiB) | 4.096 GiB (4 TiB) | 
+| **Verwalteter Standard-HDD-<br>Datenträgertyp** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Datenträgergröße        | 32 GiB  | 64 GiB  | 128 GB | 256 GiB | 512 GB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16385 GiB (16 TiB) | 32767 GiB (32 TiB) |
 
 
 **Momentaufnahmen:** Für Momentaufnahmen von Standarddatenträgern wird die zusätzliche Kapazität in Rechnung gestellt, die von den Momentaufnahmen beansprucht wird. Informationen zu Momentaufnahmen finden Sie unter [Erstellen einer Momentaufnahme eines Blobs](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
@@ -138,7 +138,7 @@ Ausführliche Informationen zu den Preisen für Standardspeicher, Virtual Machin
 * [Preisgestaltung für virtuelle Computer](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Preise für Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks)
 
-## <a name="azure-backup-service-support"></a>Azure Backup-Dienst – Unterstützung 
+## <a name="azure-backup-service-support"></a>Azure Backup-Dienst – Unterstützung
 
 Virtuelle Azure-Computer mit nicht verwalteten Datenträgern können mithilfe von Azure Backup gesichert werden. [Weitere Informationen](../articles/backup/backup-azure-vms-first-look-arm.md)
 
@@ -154,4 +154,4 @@ Der Azure Backup-Dienst kann auch in Kombination mit Managed Disks verwendet wer
 
 * [Erstellen eines virtuellen Computers mithilfe von Resource Manager und PowerShell](../articles/virtual-machines/windows/quick-create-powershell.md)
 
-* [Erstellen eines virtuellen Linux-Computers mit Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Erstellen einer Linux-VM von Grund auf mit der Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/quick-create-cli.md)

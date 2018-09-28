@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3b799cde0a696b4a764893c545a8d55d363a4800
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188239"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989021"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrieren von Anwendungen in Azure Active Directory
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
 Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service) können kommerzielle Clouddienste oder Branchenanwendungen entwickeln, die in Azure Active Directory (Azure AD) integriert werden können, um eine sichere Anmeldung und Autorisierung für ihre Dienste bereitzustellen. Um eine Anwendung oder einen Dienst in Azure AD zu integrieren, muss ein Entwickler die Anwendung zuerst bei Azure AD registrieren.
 
@@ -33,9 +34,11 @@ In diesem Artikel wird veranschaulicht, wie Sie die Registrierung einer Anwendun
 Weitere Informationen zu den beiden Azure AD-Objekten, die eine registrierte Anwendung darstellen, und der Beziehung zwischen ihnen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md). Weitere Informationen zu den Richtlinien zum Branding bei der Anwendungsentwicklung mit Azure Active Directory finden Sie unter [Brandingrichtlinien für integrierte Apps](howto-add-branding-in-azure-ad-apps.md).
 
 ## <a name="adding-an-application"></a>Hinzufügen einer Anwendung
+
 Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um die Funktionen von Azure AD nutzen zu können. Dieser Registrierungsvorgang umfasst das Angeben von Details zu Ihrer Anwendung in Azure AD. Beispielsweise muss die URL für den Speicherort angegeben werden, die URL, an die nach der Authentifizierung eines Benutzers Antworten gesendet werden sollen, die URI zum Identifizieren der App usw.
 
 ### <a name="to-register-a-new-application-using-the-azure-portal"></a>Registrieren einer neuen Anwendung mit dem Azure-Portal
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen** und **Registrierung einer neuen Anwendung**.
@@ -59,10 +62,9 @@ Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um
 
   > [!NOTE]
   > Eine neu registrierte Webanwendung wird standardmäßig so konfiguriert, dass sich **nur** Benutzer desselben Mandanten an Ihrer Anwendung anmelden können.
-  > 
-  > 
 
 ## <a name="updating-an-application"></a>Aktualisieren einer Anwendung
+
 Nachdem Ihre Anwendung in Azure AD registriert wurde, muss sie ggf. aktualisiert werden, um Zugriff auf Web-APIs bereitzustellen, für andere Unternehmen zur Verfügung gestellt zu werden usw.  In diesem Abschnitt werden verschiedene Möglichkeiten beschrieben, wie Sie Ihre Anwendung weiter konfigurieren können. Wir beginnen mit einer Übersicht über das Zustimmungs-Framework. Damit sollten Sie vertraut sein, wenn Sie Anwendungen erstellen, die von anderen Benutzern oder Anwendungen verwendet werden müssen.
 
 ### <a name="overview-of-the-consent-framework"></a>Übersicht über das Consent Framework
@@ -93,16 +95,17 @@ Die folgenden Schritte zeigen, wie das Zustimmungs-Framework in der Benutzerober
    
   ![Oberfläche für die Benutzerzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
-5. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen wird. Weitere Informationen zu diesem Datenfluss finden Sie im [Abschnitt „Webanwendung zu Web-API“ im Thema „Authentifizierungsszenarios für Azure AD“](authentication-scenarios.md#web-application-to-web-api).
+5. Nachdem der Benutzer seine Zustimmung erteilt hat, wird ein Autorisierungscode an Ihre Anwendung zurückgegeben, mit dem ein Zugriffs- und Aktualisierungstoken abgerufen wird. Weitere Informationen zu diesem Datenfluss finden Sie unter [Web-API]](web-api.md).
 
 6. Als Administrator können Sie auch für alle Benutzer in Ihrem Mandanten den delegierten Berechtigungen einer Anwendung zustimmen. Durch die Administratorzustimmung wird verhindert, dass das Zustimmungsdialogfeld für jeden Benutzer im Mandanten angezeigt wird. Dies kann im [Azure-Portal](https://portal.azure.com) von Benutzern durchgeführt werden, die über die Administratorrolle verfügen. Klicken Sie auf der Seite **Einstellungen** für Ihre Anwendung auf **Erforderliche Berechtigungen** und dann auf die Schaltfläche **Berechtigungen erteilen**. 
 
   ![Erteilen von Berechtigungen für explizite Administratorzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
     
   > [!NOTE]
-  > Das explizite Gewähren der Zustimmung über die Schaltfläche **Berechtigungen erteilen** ist derzeit für Single-Page-Anwendungen (SPA) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird. 
+  > Das explizite Gewähren der Zustimmung über die Schaltfläche **Berechtigungen erteilen** ist derzeit für Single-Page-Webanwendungen (Single-Page Applications, SPAs) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird. 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs
+
 Damit eine Webanwendung oder vertrauliche Clientanwendung an einem Flow zur Autorisierungsgenehmigung teilnehmen kann, bei dem eine Authentifizierung (und das Abrufen eines Zugriffstokens) erforderlich ist, benötigt sie sichere Anmeldeinformationen. Die Standardauthentifizierungsmethode im Azure-Portal ist „Client-ID + geheimer Schlüssel“. In diesem Abschnitt werden die Konfigurationsschritte behandelt, die erforderlich sind, um den geheimen Schlüssel mit den Anmeldeinformationen Ihres Clients bereitzustellen.
 
 Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwendung (z.B. Microsoft Graph-API) bereitgestellt wird, stellt das Zustimmungs-Framework außerdem sicher, dass dem Client die erforderlichen Berechtigungen basierend auf den angeforderten Berechtigungen erteilt werden. Standardmäßig können alle Anwendungen unter „Windows Azure Active Directory“ (Graph-API) und „Windows Azure-Dienstverwaltungs-API“ Berechtigungen auswählen. Die [Graph-API-Berechtigung „Anmelden und Benutzerprofil lesen“](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails) ist standardmäßig ebenfalls ausgewählt. Wenn Ihr Client unter einem Mandanten registriert wird, der über Konten mit Abonnements von Office 365 verfügt, können auch Web-APIs und Berechtigungen für SharePoint und Exchange Online ausgewählt werden. Sie können für jede gewünschte Web-API zwischen [zwei Arten von Berechtigungen](developer-glossary.md#permissions) wählen:
@@ -115,6 +118,7 @@ Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwe
   > Durch Hinzufügen einer delegierten Berechtigung zu einer Anwendung erteilen Sie den Benutzern im Mandanten nicht automatisch Ihre Zustimmung. Benutzer müssen den zusätzlichen delegierten Berechtigungen weiterhin zur Laufzeit manuell zustimmen, sofern der Administrator nicht im Namen aller Benutzer die Zustimmung erteilt hat.
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>So fügen Sie Anmeldeinformationen für Anwendungen oder Zugriffsberechtigungen für Web-APIs hinzu
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf.
@@ -213,8 +217,6 @@ Eine vollständige Erläuterung der Bereiche, die von der Microsoft Graph-API ve
 
 > [!NOTE]
 > Aufgrund einer aktuellen Einschränkung können systemeigene Clientanwendungen die Azure AD Graph-API nur aufrufen, wenn sie die Berechtigung "Zugriff auf das Verzeichnis Ihrer Organisation" verwenden. Diese Einschränkung gilt nicht für Webanwendungen.
-> 
-> 
 
 ### <a name="configuring-multi-tenant-applications"></a>Konfigurieren von mehrinstanzenfähigen Anwendungen
 
@@ -260,9 +262,9 @@ Weitere Informationen zu den Anwendungsänderungen, die zur Unterstützung von m
 - Liste mit [Codebeispielen für Mehrinstanzenfähigkeit](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) 
 - [Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD](../fundamentals/customize-branding.md)
 
-### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>Aktivieren der impliziten OAuth 2.0-Gewährung für Single-Page-Anwendungen
+### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>Aktivieren der impliziten OAuth 2.0-Gewährung für Single-Page-Webanwendungen
 
-Single-Page-Anwendungen (SPAs) basieren in der Regel auf einem JavaScript-intensiven Front-End, das im Browser ausgeführt wird. Hierüber wird das Web-API-Back-End der Anwendung zum Ausführen der Geschäftslogik aufgerufen. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Gewährung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an die dazugehörige Back-End-Web-API schützen können. 
+Single-Page-Webanwendungen (SPAs) basieren in der Regel auf einem JavaScript-intensiven Front-End, das im Browser ausgeführt wird. Hierüber wird das Web-API-Back-End der Anwendung zum Ausführen der Geschäftslogik aufgerufen. Für SPAs, die in Azure AD gehostet werden, verwenden Sie die implizite OAuth 2.0-Gewährung zum Authentifizieren des Benutzers für Azure AD und rufen ein Token ab, mit dem Sie Aufrufe vom JavaScript-Client der Anwendung an die dazugehörige Back-End-Web-API schützen können. 
 
 Nachdem der Benutzer seine Zustimmung erteilt hat, können mit dem gleichen Authentifizierungsprotokoll Token zum Sichern von Aufrufen zwischen dem Client und anderen für die Anwendung konfigurierten Web-API-Ressourcen abgerufen werden. Weitere Informationen zur impliziten Gewährung der Autorisierung, damit Sie entscheiden können, ob diese sich für Ihr Anwendungsszenario eignet, finden Sie unter [Grundlegendes zum Ablauf der impliziten OAuth2-Gewährung in Azure Active Directory (AD)](v1-oauth2-implicit-grant-flow.md).
 
@@ -272,7 +274,6 @@ Die implizite OAuth 2.0-Gewährung ist für Anwendungen standardmäßig deaktivi
 
 > [!NOTE]
 > Ausführliche Informationen zur Bearbeitung des Anwendungsmanifests finden Sie im vorherigen Abschnitt [Konfigurieren einer Ressourcenanwendung zum Bereitstellen von Web-APIs](#configuring-a-resource-application-to-expose-web-apis).
->
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
@@ -285,12 +286,15 @@ Die implizite OAuth 2.0-Gewährung ist für Anwendungen standardmäßig deaktivi
 5. Speichern Sie das aktualisierte Manifest. Nach dem Speichern des Manifests ist Ihre Web-API für die Verwendung der impliziten OAuth 2.0-Gewährung zum Authentifizieren von Benutzern konfiguriert.
 
 ## <a name="removing-an-application"></a>Entfernen einer Anwendung
+
 In diesem Abschnitt wird die Vorgehensweise beim Entfernen der Registrierung einer Anwendung aus Ihrem Azure AD-Mandanten beschrieben.
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>Entfernen einer Anwendung, die von Ihrer Organisation erstellt wurde
+
 Anwendungen, die von Ihrer Organisation registriert wurden, werden unter dem Filter „Meine Apps“ auf der Hauptseite „App-Registrierungen“ Ihres Mandanten angezeigt. Dies sind die Anwendungen, die Sie manuell über das Azure-Portal oder programmgesteuert per PowerShell oder Graph-API registriert haben. Genauer gesagt, werden sie sowohl durch ein Anwendungs- als auch Dienstprinzipalobjekt in Ihrem Mandanten dargestellt. Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>So entfernen Sie eine Einzelinstanzanwendung aus Ihrem Verzeichnis
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet.
@@ -298,6 +302,7 @@ Anwendungen, die von Ihrer Organisation registriert wurden, werden unter dem Fil
 5. Klicken Sie in der Bestätigungsmeldung auf **Ja** .
 
 #### <a name="to-remove-a-multi-tenant-application-from-its-home-directory"></a>So entfernen Sie eine mehrinstanzenfähige Anwendung aus ihrem Stammverzeichnis
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet.
@@ -306,15 +311,16 @@ Anwendungen, die von Ihrer Organisation registriert wurden, werden unter dem Fil
 6. Klicken Sie in der Bestätigungsmeldung auf **Ja** .
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Entfernen einer mehrinstanzenfähigen Anwendung, die von einer anderen Organisation autorisiert ist
+
 Bei einer Teilmenge der Anwendungen, die auf der Hauptseite „App-Registrierungen“ Ihres Mandanten unter dem Filter „Alle Apps“ (mit Ausnahme der Registrierungen vom Typ „Meine Apps“) angezeigt werden, handelt es sich um mehrinstanzenfähige Anwendungen. In technischer Hinsicht stammen diese mehrinstanzenfähigen Anwendungen von einem anderen Mandanten und wurden während des Zustimmungsprozesses unter Ihrem Mandanten registriert. Genauer gesagt: Sie werden unter Ihrem Mandanten nur von einem Dienstprinzipalobjekt ohne entsprechendes Anwendungsobjekt repräsentiert. Weitere Informationen zu den Unterschieden zwischen Anwendungs- und Dienstprinzipalobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure AD](app-objects-and-service-principals.md).
 
 Der Administrator des Unternehmens muss seinen Dienstprinzipal entfernen, um für eine mehrinstanzenfähige Anwendung den Zugriff auf Ihr Verzeichnis zu entfernen (nachdem die Zustimmung erteilt wurde). Der Administrator muss über globalen Administratorzugriff verfügen und kann die Entfernung durchführen – entweder über das Azure-Portal oder über die [Azure AD-PowerShell-Cmdlets](http://go.microsoft.com/fwlink/?LinkId=294151).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](authentication-scenarios.md).
 - Unter [Brandingrichtlinien für integrierte Apps](howto-add-branding-in-azure-ad-apps.md) finden Sie Tipps zu Darstellungsfragen für Ihre App.
 - Weitere Informationen zu den Beziehungen zwischen Anwendungsobjekten und Dienstprinzipalobjekten der Anwendung finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](app-objects-and-service-principals.md).
 - Weitere Informationen zur Rolle des App-Manifests finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest](reference-app-manifest.md).
 - Unter [Azure AD-Entwicklerglossar](developer-glossary.md) finden Sie Definitionen für einige der wichtigsten Konzepte für Azure AD-Entwickler.
 - Im [Active Directory-Entwicklerhandbuch](azure-ad-developers-guide.md) finden Sie eine Übersicht über alle für Entwickler relevanten Inhalte.
-

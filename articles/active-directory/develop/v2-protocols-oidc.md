@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4c7b46972a8c07675e1318a900c1f07043beb3de
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 51c7bacbfa30a74aef89abba133e48c483375032
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591934"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971449"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 und das OpenID Connect-Protokoll
 
@@ -139,7 +139,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| id_token |Das ID-Token, das die App angefordert hat. Sie können mit dem Parameter `id_token` die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen. Weitere Informationen zu ID-Token und deren Inhalt finden Sie in der [Azure Active Directory v2.0-Tokenreferenz](v2-id-and-access-tokens.md). |
+| id_token |Das ID-Token, das die App angefordert hat. Sie können mit dem Parameter `id_token` die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen. Weitere Informationen zu ID-Token und deren Inhalt finden Sie in der [`id_tokens`-Referenz](id-tokens.md). |
 | state |Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
 
 ### <a name="error-response"></a>Fehlerantwort
@@ -175,20 +175,18 @@ Die folgende Tabelle beschreibt die Fehlercodes, die im Parameter `error` der Fe
 
 ## <a name="validate-the-id-token"></a>Überprüfen des ID-Tokens
 
-Das Empfangen eines ID-Tokens reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen außerdem die Signatur des ID-Tokens validieren und die Ansprüche im Token gemäß den Anforderungen Ihrer App überprüfen. Der v2.0-Endpunkt verwendet [JSON-Webtoken (JSTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
+Das Empfangen eines ID-Tokens allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen die Signatur des ID-Tokens validieren und die Ansprüche im Token gemäß der App-Anforderungen überprüfen. Der v2.0-Endpunkt verwendet [JSON-Webtoken (JSTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
 
-Sie können das ID-Token auch im Clientcode überprüfen. Üblicherweise wird das ID-Token jedoch an einen Back-End-Server gesendet, um die Überprüfung dort vorzunehmen. Nachdem Sie die Signatur des ID-Tokens validiert haben, müssen Sie noch einige Ansprüche überprüfen. Weitere Informationen, unter anderem zum [Überprüfen von Token](v2-id-and-access-tokens.md#validating-tokens), sowie [wichtige Informationen zum Signaturschlüsselrollover](v2-id-and-access-tokens.md#validating-tokens) finden Sie in der [v2.0-Tokenreferenz](v2-id-and-access-tokens.md). Es wird empfohlen, eine Bibliothek zu verwenden, um Token zu analysieren und zu validieren. Für die meisten Sprachen und Plattformen ist mindestens einer dieser Bibliotheken verfügbar.
+Sie können `id_token` auch im Clientcode überprüfen. Es ist jedoch eine bewährte Methode, `id_token` an einen Back-End-Server zu senden und die Überprüfung dort auszuführen. Nachdem Sie die Signatur des ID-Tokens validiert haben, müssen Sie noch einige Ansprüche überprüfen. Weitere Informationen finden Sie in der [`id_token`-Referenz](id-tokens.md). Dort finden Sie auch Einzelheiten zum [Überprüfen von Token](id-tokens.md#validating-idtokens) und wichtige Informationen zum [Rollover von Signaturschlüsseln](active-directory-signing-key-rollover.md). Wir empfehlen, zum Analysieren und Überprüfen von Token eine Bibliothek zu verwenden. Für die meisten Sprachen und Plattformen ist mindestens eine Bibliothek verfügbar.
 <!--TODO: Improve the information on this-->
 
 Sie können je nach Szenario auch zusätzliche Ansprüche überprüfen. Einige allgemeinen Überprüfungen umfassen:
 
-* Sicherstellen, dass sich der Benutzer bzw. die Organisation für die App angemeldet hat.
-* Sicherstellen, dass der Benutzer die Autorisierung oder Berechtigungen angefordert hat.
-* Sicherstellen, dass eine bestimmte Stärke der Authentifizierung aufgetreten ist, z.B. die Multi-Factor Authentication.
+* Sicherstellen, dass sich der Benutzer/die Organisation für die App angemeldet hat.
+* Sicherstellen, dass der Benutzer über eine ordnungsgemäße Autorisierung und Berechtigungen verfügt.
+* Sicherstellen, dass eine bestimmte Stärke der Authentifizierung aufgetreten ist, z.B. die mehrstufige Authentifizierung.
 
-Weitere Informationen zu den Ansprüchen in einem ID-Token finden Sie in der [v2.0-Tokenreferenz](v2-id-and-access-tokens.md).
-
-Nachdem Sie das ID-Token vollständig überprüft haben, können Sie eine Sitzung mit dem Benutzer beginnen. Verwenden Sie die Ansprüche im ID-Token, um Informationen über den Benutzer in Ihrer App zu erhalten. Diese Informationen können für die Anzeige, für Aufzeichnungen, für die Autorisierung usw. verwendet werden.
+Nachdem Sie das ID-Token vollständig überprüft haben, können Sie mit dem Benutzer eine Sitzung beginnen und die Ansprüche im ID-Token zum Abrufen von Informationen über den Benutzer in der App verwenden. Diese Informationen können für die Anzeige, für Datensätze, für die Personalisierung usw. verwendet werden.
 
 ## <a name="send-a-sign-out-request"></a>Senden einer Abmeldeanforderung
 
@@ -257,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| id_token |Das ID-Token, das die App angefordert hat. Sie können mit dem ID-Token die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen. Weitere Informationen zu ID-Token und deren Inhalt finden Sie in der [v2.0-Tokenreferenz](v2-id-and-access-tokens.md). |
+| id_token |Das ID-Token, das die App angefordert hat. Sie können mit dem ID-Token die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen. Weitere Informationen zu ID-Token und deren Inhalt finden Sie in der [`id_tokens`-Referenz](id-tokens.md). |
 | code |Der Autorisierungscode, den die App angefordert hat. Die App kann den Autorisierungscode zum Anfordern eines Zugriffstokens für die Zielressource verwenden. Ein Autorisierungscode ist von sehr kurzer Lebensdauer. Ein Autorisierungscode läuft in der Regel nach ungefähr 10 Minuten ab. |
 | state |Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
 
@@ -280,4 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Eine Beschreibung der möglichen Fehlercodes und der jeweils empfohlenen Clientantwort finden Sie unter [Fehlercodes beim Autorisierungsendpunktfehler](#error-codes-for-authorization-endpoint-errors).
 
-Nachdem Sie einen Autorisierungscode und ein ID-Token erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen. Zum Anmelden des Benutzers müssen Sie das ID-Token [genau wie beschrieben](#validate-the-id-token) überprüfen. Zum Abrufen von Zugriffstoken können Sie die in der [Dokumentation zum OAuth-Protokoll](v2-oauth2-auth-code-flow.md#request-an-access-token) beschriebenen Schritte ausführen.
+Nachdem Sie einen Autorisierungscode und ein ID-Token erhalten haben, können Sie den Benutzer anmelden und Zugriffstoken in seinem Namen abrufen. Zum Anmelden des Benutzers müssen Sie das ID-Token [genau wie beschrieben](id-tokens.md#validating-idtokens) überprüfen. Führen Sie zum Abrufen von Zugriffstoken die in der [Dokumentation zum OAuth-Codefluss](v2-oauth2-auth-code-flow.md#request-an-access-token) beschriebenen Schritte aus.

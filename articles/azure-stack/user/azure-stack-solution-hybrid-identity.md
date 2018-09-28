@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/22/2018
+ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a57afb4a90da5877879afddc35545e0bfef622a7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bed67c0213ed5715b8b3d8fd393d8d856e0ea15b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808161"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964989"
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Tutorial: Konfigurieren einer Hybrid Cloud-Identität für Azure- und Azure Stack-Anwendungen
 
@@ -37,10 +37,17 @@ Dienstprinzipale werden verwendet, um den Zugriff auf Ihre Azure Stack-Anwendung
 In diesem Tutorial erstellen Sie eine Beispielumgebung, die Folgendes ermöglicht:
 
 > [!div class="checklist"]
-> * Einrichten einer Hybrididentität in globalen Azure- und Azure Stack-Instanzen
-> * Abrufen eines Tokens für den Zugriff auf die Azure Stack-API
+> - Einrichten einer Hybrididentität in globalen Azure- und Azure Stack-Instanzen
+> - Abrufen eines Tokens für den Zugriff auf die Azure Stack-API
 
 Sie benötigen Azure Stack-Bedienerberechtigungen für die Schritte in diesem Tutorial.
+
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack ist eine Erweiterung von Azure. Mit Azure Stack holen Sie sich die Agilität und Innovation von Cloud Computing in Ihre lokale Umgebung. Sie erhalten die einzige Hybrid Cloud, mit der Sie Hybrid-Apps überall entwickeln und bereitstellen können.  
+> 
+> Im Whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) (Entwurfsüberlegungen für Hybridanwendungen) werden die wichtigen Aspekte in Bezug auf die Softwarequalität (Platzierung, Skalierbarkeit, Verfügbarkeit, Resilienz, Verwaltbarkeit und Sicherheit) beschrieben, die für das Entwerfen, Bereitstellen und Betreiben von Hybridanwendungen erforderlich sind. Die Überlegungen zum Entwurf dienen als Hilfe beim Optimieren des Designs von Hybridanwendungen, um für Produktionsumgebungen das Auftreten von Problemen zu minimieren.
+
 
 ## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>Erstellen eines Dienstprinzipals für Azure AD über das Portal
 

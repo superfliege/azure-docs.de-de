@@ -12,27 +12,32 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/27/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 735c5a3645f5e2e0f31bac4d4b2f61d73dfe069e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128778"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959970"
 ---
-# <a name="permissions-in-azure-active-directory"></a>Berechtigungen in Azure Active Directory
+# <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Berechtigungen und Zustimmung im Azure Active Directory-v1.0-Endpunkt
 
-In Azure Active Directory (Azure AD) werden Berechtigungen sowohl für OAuth- als auch für OIDC-Datenflüsse (OpenID Connect) viel eingesetzt. Wenn Ihre App ein Zugriffstoken von Azure AD empfängt, sind darin Ansprüche enthalten. Mit diesen Ansprüchen werden die Berechtigungen beschrieben, über die Ihre App in Bezug auf eine bestimmte Ressource verfügt. Berechtigungen, die auch als Bereiche bezeichnet werden, vereinfachen die Autorisierung für die Ressource. Die Ressource muss lediglich prüfen, ob das Token die richtige Berechtigung für die API enthält, die von der App jeweils aufgerufen wird. 
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
+In Azure Active Directory (Azure AD) werden Berechtigungen sowohl für OAuth- als auch für OIDC-Datenflüsse (OpenID Connect) viel eingesetzt. Wenn Ihre App ein Zugriffstoken von Azure AD empfängt, sind darin Ansprüche enthalten. Mit diesen Ansprüchen werden die Berechtigungen beschrieben, über die Ihre App in Bezug auf eine bestimmte Ressource verfügt.
+
+*Berechtigungen*, die auch als *Bereiche* bezeichnet werden, vereinfachen die Autorisierung für die Ressource. Die Ressource muss lediglich prüfen, ob das Token die richtige Berechtigung für die API enthält, die von der App jeweils aufgerufen wird.
 
 ## <a name="types-of-permissions"></a>Arten von Berechtigungen
 
-Azure AD definiert zwei Arten von Berechtigungen: 
+Azure AD definiert zwei Arten von Berechtigungen:
+
 * **Delegierte Berechtigungen:** Werden von Apps verwendet, für die ein angemeldeter Benutzer vorhanden ist. Für diese Apps stimmt entweder der Benutzer oder ein Administrator den von der App angeforderten Berechtigungen zu. An die App wird die Berechtigung delegiert, als angemeldeter Benutzer zu fungieren, wenn eine API aufgerufen wird. Je nach API kann der Benutzer unter Umständen der API nicht direkt zustimmen und [benötigt stattdessen einen Administrator, der seine Zustimmung erteilt](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
-* **Anwendungsberechtigungen:** Werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps ein, die als Hintergrunddienste oder Daemons ausgeführt werden. Anwendungsberechtigungen können ihre [Zustimmung nur durch einen Administrator](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) erhalten, da sie normalerweise leistungsfähig sind und den Zugriff auf Daten über Benutzergrenzen hinweg oder auf Daten zulassen, die sonst nur für Administratoren zugänglich sind. 
+* **Anwendungsberechtigungen:** Werden von Apps verwendet, die ohne vorhandenen angemeldeten Benutzer ausgeführt werden. Dies können beispielsweise Apps ein, die als Hintergrunddienste oder Daemons ausgeführt werden. Anwendungsberechtigungen können ihre [Zustimmung nur durch einen Administrator](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant) erhalten, da sie normalerweise leistungsfähig sind und den Zugriff auf Daten über Benutzergrenzen hinweg oder auf Daten zulassen, die sonst nur für Administratoren zugänglich sind.
 
 Effektive Berechtigungen sind die Berechtigungen, über die Ihre App verfügt, wenn Anforderungen an eine API gesendet werden. 
 

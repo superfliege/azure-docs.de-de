@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 7fe4fdbf6c6b3cbbd6d01ef5309699c3d3991d53
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3a74450ca8025f07b00dc18c9b81b147afa7439c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003813"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975297"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -35,7 +35,7 @@ Führen Sie zuerst die folgenden Aufgaben aus, ehe Sie die Schritte in den Absch
 - Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/free) registrieren.
 - Öffnen Sie bei Verwendung des Portals https://portal.azure.com, und melden Sie sich mit Ihrem Azure-Konto an.
 - Wenn Sie PowerShell-Befehle zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/powershell) oder durch Ausführen von PowerShell auf Ihrem Computer aus. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.7.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
-- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist die Azure CLI-Version 2.0.31 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
+- Wenn Sie Befehle der Azure-Befehlszeilenschnittstelle (CLI) zum Durchführen von Aufgaben in diesem Artikel verwenden, führen Sie die Befehle entweder in [Azure Cloud Shell](https://shell.azure.com/bash) oder durch Ausführen der CLI auf Ihrem Computer aus. Für dieses Tutorial ist die Azure CLI-Version 2.0.31 oder höher erforderlich. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli). Wenn Sie die Azure CLI lokal ausführen, müssen Sie auch `az login` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Das Konto, bei dem Sie sich anmelden oder das Sie zum Herstellen einer Verbindung mit Azure verwenden, muss der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden unter [Berechtigungen für Netzwerkschnittstellen](virtual-network-network-interface.md#permissions) aufgeführten Aktionen zugewiesen wurden.
 
@@ -188,7 +188,7 @@ Jede Netzwerkschnittstelle benötigt eine [primäre](#primary) IP-Konfiguration 
 Sie können der sekundären IP-Konfiguration einer Netzwerkschnittstelle null oder eine private [IPv6](#ipv6)-Adresse zuweisen. Die Netzwerkschnittstelle kann nicht über sekundäre IP-Konfigurationen verfügen. Sie können über das Portal keine IP-Konfiguration mit einer IPv6-Adresse hinzufügen. Verwenden Sie PowerShell oder die Befehlszeilenschnittstelle, um einer vorhandenen Netzwerkschnittstelle eine IP-Konfiguration mit einer privaten IPv6-Adresse hinzuzufügen. Die Netzwerkschnittstelle kann nicht an vorhandene virtuelle Computer angefügt werden.
 
 > [!NOTE]
-> Sie können über das Portal zwar eine Netzwerkschnittstelle mit einer IPv6-Adresse erstellen, es ist jedoch nicht möglich, einem neuen oder vorhandenen virtuellen Computer über das Portal eine vorhandene Netzwerkschnittstelle hinzuzufügen. Verwenden Sie PowerShell oder Azure CLI 2.0, um eine Netzwerkschnittstelle mit einer privaten IPv6-Adresse zu erstellen, und fügen Sie die Netzwerkschnittstelle dann beim Erstellen eines virtuellen Computers an. Eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können einer IP-Konfiguration für eine beliebige Netzwerkschnittstelle eines virtuellen Computers keine private IPv6-Adresse hinzufügen (egal ob mit Portal, CLI oder PowerShell).
+> Sie können über das Portal zwar eine Netzwerkschnittstelle mit einer IPv6-Adresse erstellen, es ist jedoch nicht möglich, einem neuen oder vorhandenen virtuellen Computer über das Portal eine vorhandene Netzwerkschnittstelle hinzuzufügen. Verwenden Sie PowerShell oder die Azure-Befehlszeilenschnittstelle, um eine Netzwerkschnittstelle mit einer privaten IPv6-Adresse zu erstellen, und fügen Sie die Netzwerkschnittstelle dann beim Erstellen eines virtuellen Computers an. Eine Netzwerkschnittstelle mit einer zugewiesenen privaten IPv6-Adresse kann nicht einem vorhandenen virtuellen Computer angefügt werden. Sie können einer IP-Konfiguration für eine beliebige Netzwerkschnittstelle eines virtuellen Computers keine private IPv6-Adresse hinzufügen (egal ob mit Portal, CLI oder PowerShell).
 
 Sie können eine öffentliche IPv6-Adresse nicht einer primären oder sekundären IP-Konfiguration zuweisen.
 

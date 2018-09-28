@@ -8,33 +8,31 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: fd1fb978fb47c69b2eb672bc27baee73dfdd0a29
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 2e2db54f4c356a754144e17b11cf25fdf3f12d9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143357"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994002"
 ---
-# <a name="log-alerts-in-azure-monitor---alerts"></a>Protokollwarnungen in Azure Monitor – Warnungen 
-Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
+# <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
+Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der [Azure-Warnungen](monitoring-overview-unified-alerts.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
 
+Protokollwarnungen umfassen Regeln für die Protokollsuche, die für [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) erstellt werden. Weitere Informationen zur Verwendung finden Sie unter [Erstellen von Protokollwarnungen in Azure](alert-log.md).
 
-Protokollwarnungen umfassen Regeln für die Protokollsuche, die für [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) oder [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) erstellt werden. Preise für Protokollwarnungen sind auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/en-us/pricing/details/monitor/) aufgeführt. In Azure-Rechnungen sind Protokollwarnungen als Typ `microsoft.insights/scheduledqueryrules` wie folgt angegeben:
-- Protokollwarnungen für Application Insights werden mit dem genauen Namen der Warnung zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
-- Protokollwarnungen für Log Analytics werden mit dem Namen der Warnung als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
+> [!NOTE]
+> Gängige Protokolldaten aus [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) sind nun auch auf der Metrikplattform in Azure Monitor verfügbar. Eine Detailansicht finden Sie unter [Metrikwarnung für Protokolle](monitoring-metric-alerts-logs.md).
 
-    > [!NOTE]
-    > Die Namen aller gespeicherten Suchvorgänge, Zeitpläne und Aktionen, die mit der Log Analytics-API erstellt werden, müssen in Kleinbuchstaben geschrieben werden. Wenn ungültige Zeichen wie `<, >, %, &, \, ?, /` verwendet werden, werden sie in der Rechnung durch `_` ersetzt.
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Warnungsregel für Protokollsuche – Definition und Typen
 
 Regeln für die Protokollsuche werden von Azure-Warnungen erstellt, um in regelmäßigen Abständen automatisch angegebene Protokollabfragen auszuführen.  Wenn die Ergebnisse der Protokollabfrage bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt. Die Regel kann mithilfe von [Aktionsgruppen](monitoring-action-groups.md) dann automatisch eine oder mehrere Aktionen durchführen. 
 
 Regeln für die Protokollsuche werden anhand der folgenden Details definiert:
-- **Protokollabfrage**:  Die Abfrage, die bei jeder Auslösung der Warnungsregel ausgeführt wird.  Mit den von dieser Abfrage zurückgegebenen Datensätzen wird ermittelt, ob eine Warnung erstellt werden muss. Eine *Azure Application Insights*-Abfrage kann auch [anwendungsübergreifende Aufrufe](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) umfassen, sofern der Benutzer über Zugriffsrechte für die externen Anwendungen verfügt. 
+- **Protokollabfrage**:  Die Abfrage, die bei jeder Auslösung der Warnungsregel ausgeführt wird.  Mit den von dieser Abfrage zurückgegebenen Datensätzen wird ermittelt, ob eine Warnung erstellt werden muss. Eine Analytics-Abfrage kann auch [anwendungsübergreifende Aufrufe](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery), arbeitsbereichsübergreifende Aufrufe und [ressourcenübergreifende Aufrufe](../log-analytics/log-analytics-cross-workspace-search.md) umfassen, sofern der Benutzer über Zugriffsrechte für die externen Anwendungen verfügt. 
 
     > [!IMPORTANT]
-    > Die Unterstützung von [anwendungsübergreifenden Abfragen für Application Insights](https://dev.applicationinsights.io/ai/documentation/2-Using-the-API/CrossResourceQuery) befindet sich in der Vorschauphase – die Funktionalität ist auf die Verwendung mit zwei oder mehr Apps eingeschränkt, und die Benutzeroberfläche kann sich noch ändern. Die Verwendung von [übergreifenden Abfragen für Arbeitsbereiche](https://dev.loganalytics.io/oms/documentation/3-Using-the-API/CrossResourceQuery) und [ressourcenübergreifenden Abfragen für Log Analytics](../log-analytics/log-analytics-cross-workspace-search.md) wird für Azure-Warnungen derzeit **nicht unterstützt**.
+    > Der Benutzer muss über die Rolle [Mitwirkender der Azure-Überwachung](monitoring-roles-permissions-security.md) zum Erstellen, Ändern und Aktualisieren von Protokollwarnungen in Azure Monitor sowie über Zugriffs- und Abfrageausführungsrechte für die Analyseziele in der Warnungsregel oder Warnungsabfrage verfügen. Wenn der erstellende Benutzer nicht Zugriff auf alle Analyseziele in der Warnungsregel oder Warnungsabfrage hat, kann bei der Regelerstellung ein Fehler auftreten oder die Protokollwarnungsregel wird mit Teilergebnissen ausgeführt.
 
 - **Zeitraum**:  Gibt den Zeitraum für die Abfrage an. Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden. Mit dem Zeitraum werden die Daten eingeschränkt, die für eine Protokollabfrage abgerufen werden, um Missbrauch zu verhindern, und alle in einer Protokollabfrage verwendeten Zeitbefehle (z.B. „ago“) werden umgangen. <br>*Wenn der Zeitraum beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden, um die Protokollabfrage auszuführen. Falls für die Protokollabfrage ein Zeitbefehl wie „ago (7d)“ verwendet wird, wird die Protokollabfrage nur für Daten zwischen 12:15 und 13:15 Uhr ausgeführt, als ob nur Daten für die letzten 60 Minuten vorhanden wären. Und nicht Daten für sieben Tage, wie in der Protokollabfrage angegeben.*
 - **Häufigkeit**:  Gibt an, wie oft die Abfrage ausgeführt werden soll. Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Er sollte kleiner als oder gleich dem Zeitraumwert sein.  Wenn der Wert größer als der Zeitraum ist, besteht das Risiko, dass Datensätze ausgelassen werden.<br>*Angenommen, Sie verwenden einen Zeitraum von 30 Minuten und eine Häufigkeit von 60 Minuten.  Wenn die Abfrage um 13:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 12:30 und 13:00 Uhr zurück.  Wenn die Abfrage dann das nächste Mal um 14 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 13:30 und 14:00 Uhr zurück.  Alle Datensätze, die zwischen 13:00 und 13:30 erstellt werden, werden also nicht ausgewertet.*
@@ -59,7 +57,7 @@ Wenn eine Warnung für ein einzelnes Ereignis generiert werden soll, legen Sie d
 
 Es kann auch vorkommen, dass Sie eine Warnung erstellen möchten, ohne dass ein entsprechendes Ereignis vorliegt.  Für einen Prozess können beispielsweise regelmäßig Ereignisse protokolliert werden, um anzugeben, dass er richtig funktioniert.  Wenn innerhalb eines bestimmten Zeitraums nicht eines dieser Ereignisse protokolliert wird, sollte eine Warnung erstellt werden.  In diesem Fall sollten Sie den Schwellenwert auf **Kleiner als 1** festlegen.
 
-#### <a name="example"></a>Beispiel
+#### <a name="example-of-number-of-records-type-log-alert"></a>Beispiel für den Protokollwarnungstyp „Anzahl von Datensätze“
 Angenommen, Sie möchten wissen, wann Ihre webbasierte App einem Benutzer eine Antwort mit dem Code 500 (interner Fehler) zurückgibt. Dazu erstellen Sie eine Warnungsregel mit den folgenden Details:  
 - **Abfrage:** requests | where resultCode == "500"<br>
 - **Zeitraum:** 30 Minuten<br>
@@ -80,11 +78,11 @@ In diesem Fall wird die Abfrage alle fünf Minuten mit Daten für 30 Minuten aus
 - **Intervall**: Definiert das Zeitintervall, über das die Daten aggregiert werden.  Bei Angabe von **Fünf Minuten** wird beispielsweise ein Datensatz für jede Instanz des Gruppenfelds erstellt, das für den für die Warnung angegebenen Zeitraum in 5-Minuten-Intervallen aggregiert wird.
 
     > [!NOTE]
-    > Die Funktion „bin“ muss in der Abfrage zum Angeben des Intervalls verwendet werden. Da „bin()“ zu ungleichen Zeitintervallen führen kann, wird der Befehl „bin“ für die Warnung zur Laufzeit in den Befehl „bin_at“ mit der richtigen Zeit konvertiert, um Ergebnisse mit Fixpunkt sicherzustellen.
+    > Die Funktion „bin“ muss in der Abfrage zum Angeben des Intervalls verwendet werden. Da „bin()“ zu ungleichen Zeitintervallen führen kann, wird der Befehl „bin“ für die Warnung zur Laufzeit in den Befehl „bin_at“ mit der richtigen Zeit konvertiert, um Ergebnisse mit Fixpunkt sicherzustellen. Der Protokollwarnungstyp „Metrische Maßeinheit“ wurde für die Arbeit mit Abfragen konzipiert, die einen einzelnen bin()-Befehl aufweisen.
     
 - **Schwellenwert**: Der Schwellenwert für Warnungsregeln des Typs „Metrische Maßeinheit“ wird mittels eines Aggregatwerts und einer Anzahl von Verstößen definiert.  Wenn bei der Protokollsuche ein Datenpunkt diesen Wert überschreitet, gilt dies als Verstoß.  Wenn die Anzahl der Verstöße für ein beliebiges Objekt in den Ergebnissen den angegebenen Wert überschreitet, wird eine Warnung für dieses Objekt generiert.
 
-#### <a name="example"></a>Beispiel
+#### <a name="example-of-metric-measurement-type-log-alert"></a>Beispiel für den Protokollwarnungstyp „Metrische Maßeinheit“
 Angenommen, Sie wünschen sich eine Warnung, wenn ein beliebiger Computer binnen 30 Minuten dreimal die Prozessornutzung von 90 % überschreitet.  Dazu erstellen Sie eine Warnungsregel mit den folgenden Details:  
 
 - **Abfrage:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
@@ -97,45 +95,31 @@ Die Abfrage ermittelt einen Durchschnittswert für jeden Computer in 5-Minuten-I
 
 ![Ergebnisse der Beispielabfrage](./media/monitor-alerts-unified/metrics-measurement-sample-graph.png)
 
-Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da diese Computer im Zeitraum dreimal gegen den Schwellenwert 90% verstoßen haben.  Wenn **Warnung auslösen basierend auf** in **Aufeinander folgend** geändert wird, wird nur für srv03 eine Warnung generiert, da dieser bei drei aufeinander folgenden Stichproben gegen den Schwellenwert verstoßen hat.
+Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da diese Computer im Zeitraum dreimal gegen den Schwellenwert 90 % verstoßen haben.  Wenn **Warnung auslösen basierend auf** in **Aufeinander folgend** geändert wird, wird nur für srv03 eine Warnung generiert, da dieser bei drei aufeinander folgenden Stichproben gegen den Schwellenwert verstoßen hat.
+
+## <a name="log-search-alert-rule---firing-and-state"></a>Warnungsregel für die Protokollsuche – Auslösung und Zustand
+Die Warnungsregel für die Protokollsuche funktioniert nach der Logik, die vom Benutzer gemäß der Konfiguration und der verwendeten benutzerdefinierten Analyseabfrage festgelegt wurde. Da die Logik der genauen Bedingung, warum die Warnungsregel ausgelöst werden soll, in einer Analytics-Abfrage gekapselt ist – diese kann in jeder Protokollwarnungsregel unterschiedlich sein. Azure-Warnungen verfügt über wenige Informationen über die spezifische zugrunde liegende Ursache innerhalb der Protokollergebnisse, wenn die Schwellenwertbedingung der Warnungsregel der Protokollsuche erfüllt oder überschritten wird. Daher werden Protokollwarnungen als zustandslos bezeichnet und jedes Mal ausgelöst, wenn das Protokollsuchergebnis ausreicht, um den in den Protokollwarnungen angegebenen Schwellenwert der Bedingungsart *Anzahl der Ergebnisse* oder *metrische Maßeinheit* zu überschreiten. Und die Protokollwarnungsregeln werden kontinuierlich weiter ausgelöst, solange die Warnungsbedingung durch das Ergebnis der bereitgestellten benutzerdefinierten Analytics-Abfrage erfüllt wird; ohne dass die Warnung aufgelöst wird. Da die Logik der genauen Grundursache für den Überwachungsfehler innerhalb der vom Benutzer bereitgestellten Analytics-Abfrage maskiert wird, gibt es keine Möglichkeit, mit der Azure-Warnungen abschließend feststellen kann, ob die Lösung des Problems dadurch angezeigt wird, dass das Protokollsuchergebnis den Schwellenwert nicht erreicht.
+
+Nehmen Sie jetzt an, es gibt eine Protokollwarnungsregel namens *Contoso-Log-Alert*, wie in der Konfiguration im bereitgestellten [Beispiel für den Protokollwarnungstyp „Anzahl von Ergebnissen“](#example-of-number-of-records-type-log-alert) angegeben. 
+- Um 13:05 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 0 Datensätze. Dies liegt unterhalb des Schwellenwerts und daher wurde die Warnung nicht ausgelöst. 
+- Bei der nächsten Ausführung um 13:10 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 5 Datensätze. Dadurch wurde der Schwellenwert überschritten und kurz danach die Warnung ausgelöst, indem die zugehörige [Aktionsgruppe](monitoring-action-groups.md) ausgelöst wurde. 
+- Um 13:15 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 2 Datensätze. Dadurch wurde der Schwellenwert überschritten und kurz danach die Warnung ausgelöst, indem die zugehörige [Aktionsgruppe](monitoring-action-groups.md) ausgelöst wurde.
+- Bei der nächsten Ausführung um 13:20 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis erneut 0 Datensätze. Dies liegt unterhalb des Schwellenwerts und daher wurde die Warnung nicht ausgelöst.
+
+Aber im oben genannten Fall kann Azure-Warnungen um 13:15 Uhr nicht feststellen, dass die zugrundeliegenden Probleme, die um 13:10 Uhr erkannt wurden, bestehen bleiben und ob neue Fehler auftreten. Da die vom Benutzer bereitgestellte Abfrage möglicherweise frühere Datensätze berücksichtigt – kann Azure-Warnungen sicher sein. Um also auf Nummer sicher zu gehen, wird „Contoso-Log-Alert“ um 13:15 Uhr über die konfigurierte [Aktionsgruppe](monitoring-action-groups.md) erneut ausgelöst. Wenn jetzt um 13:20 Uhr keine Datensätze mehr angezeigt werden, kann Azure-Warnungen sicher sein, dass die Ursache der Datensätze behoben wurde. Daher wechselt „Contoso-Log-Alert“ im Azure Alert-Dashboard nicht zu „Gelöst“ und/oder es werden Benachrichtigungen gesendet, um die Lösung einer Warnung anzuzeigen.
 
 
-## <a name="log-search-alert-rule---creation-and-modification"></a>Warnungsregel für Protokollsuche – Erstellung und Änderung
+## <a name="pricing-and-billing-of-log-alerts"></a>Preise und Abrechnung von Protokollwarnungen
+Preise für Protokollwarnungen sind auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/en-us/pricing/details/monitor/) aufgeführt. In Azure-Rechnungen sind Protokollwarnungen als Typ `microsoft.insights/scheduledqueryrules` wie folgt angegeben:
+- Protokollwarnungen für Application Insights werden mit dem genauen Namen der Warnung zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
+- Protokollwarnungen für Log Analytics werden mit dem Namen der Warnung als `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` zusammen mit der Ressourcengruppe und Warnungseigenschaften angezeigt.
 
-Sie können die Protokollwarnung und die dazugehörige Warnungsregel für die Protokollsuche hier anzeigen, erstellen oder ändern:
-- Azure-Portal
-- REST-APIs (einschließlich PowerShell)
-- Azure Resource Manager-Vorlagen
-
-### <a name="azure-portal"></a>Azure-Portal
-Seit Einführung der [neuen Azure-Warnungen](monitoring-overview-unified-alerts.md) können Benutzer jetzt alle Arten von Warnungen zentral im Azure-Portal und mit ähnlichen Schritten für die Nutzung verwalten. Informieren Sie sich über die [Verwendung der neuen Azure-Warnungen](monitor-alerts-unified-usage.md).
-
-Benutzer können ihre Abfragen zudem in der Analytics-Plattform ihrer Wahl in Azure optimieren und anschließend *die Abfrage speichern, um sie in Warnungen zu importieren*. Vorgehensweise:
-- *Für Application Insights*: Überprüfen Sie die Abfrage und die dazugehörigen Ergebnisse im Analytics-Portal. Speichern Sie sie dann unter einem eindeutigen Namen in *Freigegebene Abfragen*.
-- *Für Log Analytics*: Überprüfen Sie die Abfrage und die dazugehörigen Ergebnisse in der Protokollsuche. Speichern Sie sie dann unter einem eindeutigen Namen in einer beliebigen Kategorie.
-
-Die gespeicherte Warnung wird daraufhin beim [Erstellen einer Protokollwarnung in Warnungen](monitor-alerts-unified-usage.md) als Signaltyp **Protokoll (gespeicherte Abfrage)** aufgelistet, wie im folgenden Beispiel zu sehen: ![In Warnungen importierte gespeicherte Abfrage](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
-
-> [!NOTE]
-> Die Verwendung von **Protokoll (gespeicherte Abfrage)** hat einen Import in Warnungen zur Folge. Dies bedeutet, dass jegliche Änderung, die danach in Analytics vorgenommen wird, in den Warnungsregeln der Protokollsuche nicht berücksichtigt wird (und umgekehrt).
-
-### <a name="rest-apis"></a>REST-APIs
-Für Protokollwarnungen bereitgestellte APIs sind „RESTful“, und es kann über die Azure Resource Manager-REST-API darauf zugegriffen werden. Daher ist auch der Zugriff per PowerShell und andere Optionen möglich, um die APIs zu nutzen.
-
-Ausführliche Informationen und Beispiele für die Verwendung der REST-API finden Sie unter:
-- [Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API](../log-analytics/log-analytics-api-alerts.md): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Log Analytics erstellen und verwalten.
-- [Azure Monitor Scheduled Query Rules REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) (Azure Monitor-Regeln für geplante Abfragen – REST-API): Enthält eine Beschreibung, wie Sie Warnungsregeln der Protokollsuche für Azure Application Insights erstellen und verwalten.
-
-### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
-Benutzer können auch die Flexibilität von [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) nutzen, um Ressourcen zu erstellen und zu aktualisieren, die für die Erstellung oder Aktualisierung von Protokollwarnungen dienen.
-
-Ausführliche Informationen und Beispiele zur Verwendung von Resource Manager-Vorlagen finden Sie unter:
-- [Verwaltung gespeicherter Suchen und Warnungen](monitor-alerts-unified-log-template.md#managing-log-alert-on-log-analytics) für Protokollwarnungen, die auf Azure Log Analytics basieren
-- [Geplante Abfrageregel](monitor-alerts-unified-log-template.md#managing-log-alert-on-application-insights) für Protokollwarnungen basierend auf Azure Application Insights
- 
+    > [!NOTE]
+    > Die Namen aller gespeicherten Suchvorgänge, Zeitpläne und Aktionen, die mit der Log Analytics-API erstellt werden, müssen in Kleinbuchstaben geschrieben werden. Wenn ungültige Zeichen wie `<, >, %, &, \, ?, /` verwendet werden, werden sie in der Rechnung durch `_` ersetzt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+* Erfahren Sie mehr über das [Erstellen von Protokollwarnungen in Azure](alert-log.md).
 * Machen Sie sich mit [Webhooks in Protokollwarnungen in Azure](monitor-alerts-unified-log-webhook.md) vertraut.
-* Informieren Sie sich über die neuen [Azure-Warnungen](monitoring-overview-unified-alerts.md).
+* Erfahren Sie mehr über [Azure-Warnungen](monitoring-overview-unified-alerts.md).
 * Erfahren Sie mehr über [Application Insights](../application-insights/app-insights-analytics.md).
 * Erfahren Sie mehr über [Log Analytics](../log-analytics/log-analytics-overview.md).    

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e8005da056c08b21bf0b91dc71b3dafac281de1f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c0c215c4c599bbd5551891cdf6f999719983d31e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40238256"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47061046"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -101,7 +101,7 @@ Kunden können eine Momentaufnahme ihrer verwalteten Datenträger erstellen und 
 
 Ja, es werden verwaltete und nicht verwaltete Datenträger unterstützt. Allerdings wird empfohlen, für neue Workloads verwaltete Datenträger zu verwenden und aktuelle Workloads zu verwalteten Datenträgern zu migrieren.
 
-**Wenn ich einen Datenträger mit einer Größe von 128 GB erstelle und die Größe anschließend auf 130 GB erhöhe, wird mir dann die nächsthöhere Datenträgergröße (256 GB) in Rechnung gestellt?**
+**Wenn ich einen 128-GB-Datenträger erstelle und dann die Größe auf 130 GiB erhöhe, wird mir dann die nächsthöhere Datenträgergröße (256 GiB) in Rechnung gestellt?**
 
 Ja.
 
@@ -137,10 +137,10 @@ Nein. Wenn der neue Datenträger erstellt wird, handelt es sich dabei um eine vo
 
 Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen nicht verwalteten Datenträger umbenennen, sofern dieser aktuell nicht an eine virtuelle Festplatte oder einen virtuellen Computer angefügt ist.
 
-## <a name="standard-ssd-disks-preview"></a>Standard-SSD-Datenträger (Vorschau)
+## <a name="standard-ssd-disks"></a>Standard-SSD-Datenträger
 
 **Was sind Azure-Standard-SSD-Datenträger?**
-Standard-SSD-Datenträger sind Standarddatenträger mit Unterstützung durch SSD-Medien, die als kostengünstige Speicher für Workloads optimiert sind, bei denen eine konsistente Leistung auf niedrigeren IOPS-Ebenen benötigt wird. In der Vorschau sind sie in einer begrenzten Anzahl von Regionen und mit eingeschränkter Verwaltbarkeit (über Resource Manager-Vorlagen) verfügbar.
+Standard-SSD-Datenträger sind Standarddatenträger mit Unterstützung durch SSD-Medien, die als kostengünstige Speicher für Workloads optimiert sind, bei denen eine konsistente Leistung auf niedrigeren IOPS-Ebenen benötigt wird.
 
 <a id="standard-ssds-azure-regions"></a>**Welche Regionen werden derzeit für Standard-SSD-Datenträger unterstützt?**
 Alle Azure-Regionen unterstützen jetzt Standard-SSD-Datenträger.
@@ -275,7 +275,7 @@ Es fallen feste Kosten für die Datenträgergröße an, und es gelten bestimmte 
 
 **Welche IOPS- und Durchsatzgrenzwerte gelten für den Datenträgercache?**
 
-Die kombinierte Beschränkung für den Cache und die lokale SSD für virtuelle Computer der DS-Serie liegt bei 4000 IOPS pro Kern und 33 MB pro Sekunde und Kern. Die GS-Serie bietet 5000 IOPS pro Kern und 50 MB pro Sekunde und Kern.
+Die kombinierten Grenzwerte für den Cache und die lokale SSD für virtuelle Computer der DS-Serie liegt bei 4000 IOPS pro Kern und 33 MiB pro Sekunde und Kern. Die GS-Serie bietet 5000 IOPS pro Kern und 50 MiB pro Sekunde und Kern.
 
 **Wird für virtuelle Computer mit Managed Disks die lokale SSD unterstützt?**
 
@@ -287,38 +287,60 @@ Es gibt keinen Nachteil bei der Verwendung von TRIM auf Azure-Datenträger auf P
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Neue Datenträgergrößen: verwaltet und nicht verwaltet
 
-**Was ist die größte Datenträgergröße, die für Betriebssystem- und Datenträger unterstützt wird?**
+**Welche ist die maximale Größe verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
 
-Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße bis zu 2 TB. Die maximale Größe, die Azure für einen Betriebssystemdatenträger unterstützt beträgt 2 TB. Azure unterstützt für Datenträger bis zu 4 TB. 
+Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen Betriebssystemdatenträger unterstützt, beträgt 2 TiB. Für verwaltete Datenträger unterstützt Azure bis zu 32 TiB. Größen verwalteter Datenträger von mehr als 4 TiB befinden sich in der Vorschau. Weitere Informationen finden Sie in unserem [Blogbeitrag](http://aka.ms/azure-large-disk-32TB-preview-blog).
+
+**Welche ist die maximale Größe nicht verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
+
+Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen nicht verwalteten Betriebssystemdatenträger unterstützt, beträgt 2 TiB. Für nicht verwaltete Datenträger für Daten unterstützt Azure bis zu 4 TiB.
 
 **Was ist die größte Seitenblobgröße, die unterstützt wird?**
 
-Die größte Seitenblobgröße, die von Azure unterstützt wird, ist 8 TB (8.191 GB). Die maximale Seitenblobgröße beim Anfügen an einen virtuellen Computer als Daten- oder Betriebssystem-Datenträger beträgt 4 TB (4.095 GB).
+Die maximale Seitenblobgröße, die von Azure unterstützt wird, ist 8 TiB (8.191 GiB). Die maximale Seitenblobgröße beim Anfügen an einen virtuellen Computer als Daten- oder Betriebssystem-Datenträger beträgt 4 TiB (4.095 GiB).
 
-**Benötige ich eine neue Version der Azure-Tools, um Datenträger, die größer als 1TB sind, erstellen, anfügen, anpassen und hochladen zu können?**
+**Benötige ich eine neue Version der Azure-Tools, um Datenträger, die größer als 1TiB sind, erstellen, anfügen, anpassen und hochladen zu können?**
 
-Sie müssen Ihrer vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, die größer als 1 TB sind, erstellen, anfügen oder anpassen zu können. Um eine VHD-Datei von einem lokalen Speicherort als Seitenblob oder als nicht verwalteten Datenträger direkt in Azure hochladen zu können, müssen Sie die neuesten Tools verwenden:
+Sie müssen Ihre vorhandenen Azure-Tools nicht aktualisieren, um Datenträger, die größer als 1 TiB sind, erstellen, anfügen oder anpassen zu können. Um Ihre VHD-Datei von einem lokalen Speicherort als Seitenblob oder als nicht verwalteten Datenträger direkt in Azure hochladen zu können, müssen Sie die neuesten Toolsets verwenden, die im Folgenden aufgeführt sind. Wir unterstützen nur VHD-Uploads von bis zu 8 TiB.
 
 |Azure-Tools      | Unterstützte Versionen                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Versionsnummer 4.1.0: Version Juni 2017 oder höher|
 |Azure-CLI V1     | Versionsnummer 0.10.13: Version Mai 2017 oder höher|
+|Azure CLI v2     | Versionsnummer 2.0.12: Release von Juli 2017 oder höher|
 |AzCopy           | Versionsnummer 6.1.0: Version Juni 2017 oder höher|
-
-Die Unterstützung für Azure CLI V2 und den Azure Storage-Explorer ist bald verfügbar. 
 
 **Werden P4- und P6-Datenträgergrößen für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
 
-Nein. P4-Datenträger (32 GB) und P6-Datenträgergrößen (64 GB) werden nur für verwaltete Datenträger unterstützt. Die Unterstützung für nicht verwaltete Datenträger und Seitenblobs ist bald verfügbar.
+Die Datenträgergrößen P4 (32 GiB) und P6 (64 GiB) werden nicht als Standarddatenträgertarife für nicht verwaltete Datenträger und Seitenblobs unterstützt. Sie müssen den [Blobtarif](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) explizit auf P4 und P6 festlegen, damit Ihr Datenträger diesen Tarifen zugeordnet wird. Wenn Sie einen nicht verwalteten Datenträger oder ein Seitenblob mit einer Datenträgergröße oder Inhaltslänge von weniger als 32 GiB oder zwischen 32 GiB und 64 GiB bereitstellen, ohne den Blobtarif festzulegen, gilt für Sie weiterhin P10 mit 500 IOPS und 100 MiB/s sowie der zugehörige Tarif.
 
-**Wenn mein vorhandener verwalteter Premium-Datenträger mit weniger als 64 GB erstellt wurde, bevor der kleine Datenträger aktiviert wurde (circa 15. Juni 2017), wie wird dies berechnet?**
+**Wie wird mein vorhandener verwalteter Premium-Datenträger mit weniger als 64 GiB abgerechnet, wenn er vor der Aktivierung des kleinen Datenträgers (um den 15. Juni 2017) erstellt wurde?**
 
-Vorhandene kleinen Premium-Datenträger mit weniger als 64 GB werden weiterhin gemäß dem P10-Tarif in Rechnung gestellt. 
+Vorhandene kleine Premium-Datenträger mit weniger als 64 GiB werden weiterhin gemäß dem P10-Tarif in Rechnung gestellt.
 
-**Wie kann ich den Datenträgertarif von kleinen Premium-Datenträgern mit weniger als 64 GB von P10 in P4 oder P6 ändern?**
+**Wie kann ich den Datenträgertarif von kleinen Premium-Datenträgern mit weniger als 64 GiB von P10 in P4 oder P6 ändern?**
 
-Machen Sie eine Momentaufnahme Ihres kleinen Datenträgers, und erstellen Sie dann einen Datenträger, damit der Tarif automatisch in P4 oder P6 basierend auf der bereitgestellten Größe geändert wird. 
+Machen Sie eine Momentaufnahme Ihres kleinen Datenträgers, und erstellen Sie dann einen Datenträger, damit der Tarif automatisch in P4 oder P6 basierend auf der bereitgestellten Größe geändert wird.
 
+**Kann man vorhandene verwaltete Datenträger mit einer Größe von weniger als 4 TiB in die neu eingeführten Datenträgergrößen von bis zu 32 TiB ändern?**
+
+Die neuen Größen für verwaltete Datenträger von 8 TiB, 16 TiB und 32 TiB befinden sich derzeit in der Vorschau. Eine Änderung der Größe vorhandener Datenträger in die neuen Datenträgergrößen wird noch nicht unterstützt.
+
+**Welche Datenträgergröße wird vom Azure Backup- und vom Azure Site Recovery-Dienst maximal unterstützt?**
+
+Die maximale Datenträgergröße, die vom Azure Backup- und vom Azure Site Recovery-Dienst unterstützt wird, ist 4 TiB.
+
+**Welche VM-Größen werden für große Datenträger (> 4 TiB) empfohlen, damit SSD Standard- und HDD Standard-Datenträger optimale Werte für IOPS und Bandbreite erzielen?**
+
+Um den Datenträgerdurchsatz großer SSD Standard- und HDD Standard-Datenträger (> 4 TB) von über 500 IOPS und 60 MiB/s zu erzielen, verwenden Sie zur Leistungsoptimierung eine der folgenden VM-Größen: B-Serie, DSv2-Serie, Dsv3-Serie, ESv3-Serie, Fs-Serie Fsv2-Serie, M-Serie, GS-Serie, NCv2-Serie, NCv3-Serie oder Ls-Serie.
+
+**In welchen Regionen werden Größen von mehr als 4 TiB für verwaltete Datenträger unterstützt?**
+
+Zum Zeitpunkt der Vorschau werden die Größen verwalteter Datenträger nur in den USA, Westen-Mitte, unterstützt.
+
+**Wird die Aktivierung der Hostzwischenspeicherung auf den neueren Datenträgergrößen unterstützt?**
+
+Die Hostzwischenspeicherung mit Schreibschutz und Lese-/Schreibzugriff wird für Datenträgergrößen von höchstens 4TiB unterstützt. Für Datenträgergrößen von mehr als 4 TiB wird nur die Zwischenspeicherungsoption „Keine“ unterstützt. Es wird empfohlen, die Zwischenspeicherung für kleinere Datenträgergrößen zu nutzen, bei denen durch das Zwischenspeichern von Daten auf der VM eine Leistungssteigerung zu erwarten ist.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 

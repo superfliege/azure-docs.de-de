@@ -6,21 +6,21 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: a52ab4ff65312088e65d56006b6f99a7470b88f6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 575c8a5bec4c7763c75154835830ba350f009e93
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287249"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946935"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Tutorial: Konfigurieren der Nachrichtenweiterleitung mit IoT Hub
 
-Die Nachrichtenweiterleitung ermöglicht das Senden von Telemetriedaten von Ihren IoT-Geräten an integrierte, Event Hub-kompatible Endpunkte oder benutzerdefinierte Endpunkte wie Blob Storage-Instanzen, Service Bus-Warteschlangen, Service Bus-Themen und Event Hubs. Beim Konfigurieren der Nachrichtenweiterleitung können Sie Routingregeln erstellen, um die Route anzupassen, die einer bestimmten Regel entspricht. Nach der Einrichtung werden die eingehenden Daten von IoT Hub automatisch an die Endpunkte weitergeleitet. 
+Die [Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md) ermöglicht das Senden von Telemetriedaten von Ihren IoT-Geräten an integrierte, Event Hub-kompatible Endpunkte oder benutzerdefinierte Endpunkte wie Blob Storage-Instanzen, Service Bus-Warteschlangen, Service Bus-Themen und Event Hubs. Beim Konfigurieren der Nachrichtenweiterleitung können Sie [Routingabfragen](iot-hub-devguide-routing-query-syntax.md) erstellen, um die Route anzupassen, die einer bestimmten Bedingung entspricht. Nach der Einrichtung werden die eingehenden Daten von IoT Hub automatisch an die Endpunkte weitergeleitet. 
 
-In diesem Tutorial erfahren Sie, wie Sie Routingregeln mit IoT Hub einrichten und verwenden. Sie leiten Nachrichten von einem IoT-Gerät an einen von mehreren Diensten weiter, wie z.B. Blob Storage oder eine Service Bus-Warteschlange. Nachrichten an die Service Bus-Warteschlange werden von einer Logik-App aufgenommen und über E-Mail gesendet. Nachrichten ohne speziell eingerichtete Weiterleitung werden an den Standardendpunkt gesendet und in einer Power BI-Visualisierung angezeigt.
+In diesem Tutorial haben Sie gelernt, wie Sie Routingabfragen mit IoT Hub einrichten und verwenden. Sie leiten Nachrichten von einem IoT-Gerät an einen von mehreren Diensten weiter, wie z.B. Blob Storage oder eine Service Bus-Warteschlange. Nachrichten an die Service Bus-Warteschlange werden von einer Logik-App aufgenommen und über E-Mail gesendet. Nachrichten ohne speziell eingerichtete Weiterleitung werden an den Standardendpunkt gesendet und in einer Power BI-Visualisierung angezeigt.
 
 In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
@@ -39,58 +39,35 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Installieren Sie [Visual Studio für Windows](https://www.visualstudio.com/). 
+- Installieren Sie [Visual Studio](https://www.visualstudio.com/). 
 
 - Ein Power BI-Konto zum Ausführen von Stream Analytics-Funktionen des Standardendpunkts. ([Power BI kostenlos testen](https://app.powerbi.com/signupredirect?pbi_source=web))
 
 - Ein Office 365-Konto zum Senden von Benachrichtigungs-E-Mails. 
 
-Sie benötigen entweder die Azure-Befehlszeilenschnittstelle oder Azure PowerShell, um die Einrichtungsschritte für dieses Tutorial auszuführen. 
-
-Sie können zwar die Azure-Befehlszeilenschnittstelle lokal installieren, wir empfehlen jedoch die Verwendung von Azure Cloud Shell. Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie Skripts der Azure-Befehlszeilenschnittstelle ausführen können. Häufig verwendete Azure-Tools sind in Cloud Shell vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Daher müssen Sie die Tools nicht lokal installieren. 
-
-Wenn Sie PowerShell verwenden möchten, installieren Sie das Tool lokal gemäß der unten stehenden Anleitung. 
-
-### <a name="azure-cloud-shell"></a>Azure Cloud Shell
-
-Cloud Shell kann auf mehrere Arten geöffnet werden:
-
-|  |   |
-|-----------------------------------------------|---|
-| Klicken Sie in der rechten oberen Ecke eines Codeblocks auf **Ausprobieren**. | ![Cloud Shell in diesem Artikel](./media/tutorial-routing/cli-try-it.png) |
-| Öffnen Sie Cloud Shell in Ihrem Browser. | [![https://shell.azure.com/bash](./media/tutorial-routing/launchcloudshell.png)](https://shell.azure.com) |
-| Klicken Sie im [Azure-Portal](https://portal.azure.com) rechts oben im Menü auf die Schaltfläche **Cloud Shell**: |    ![Cloud Shell im Portal](./media/tutorial-routing/cloud-shell-menu.png) |
-|  |  |
-
-### <a name="using-azure-cli-locally"></a>Lokale Verwendung der Azure-Befehlszeilenschnittstelle
-
-Wenn Sie lieber eine Befehlszeilenschnittstelle verwenden als Cloud Shell, benötigen Sie die Azure CLI-Modulversion 2.0.30.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu. 
-
-### <a name="using-powershell-locally"></a>Lokale Verwendung von PowerShell
-
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 5.7 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-resources"></a>Einrichten von Ressourcen
 
-Für dieses Tutorial benötigen Sie eine IoT Hub-Instanz, ein Speicherkonto und eine Service Bus-Warteschlange. All diese Ressourcen können mithilfe der Azure-Befehlszeilenschnittstelle oder über Azure PowerShell erstellt werden. Verwenden Sie für alle Ressourcen die gleiche Ressourcengruppe und den gleichen Speicherort. Am Ende dieses Tutorials können Sie dann sämtliche Elemente in einem Schritt entfernen, indem Sie die Ressourcengruppe löschen.
+Für dieses Tutorial benötigen Sie eine IoT Hub-Instanz, ein Speicherkonto und eine Service Bus-Warteschlange. Diese Ressourcen können mithilfe der Azure-Befehlszeilenschnittstelle oder über Azure PowerShell erstellt werden. Verwenden Sie für alle Ressourcen die gleiche Ressourcengruppe und den gleichen Speicherort. Am Ende dieses Tutorials können Sie dann sämtliche Elemente in einem Schritt entfernen, indem Sie die Ressourcengruppe löschen.
 
 In den folgenden Abschnitten wird beschrieben, wie Sie diese Schritte ausführen. Führen Sie die Anweisungen zur Installation der Befehlszeilenschnittstelle *oder* von PowerShell aus.
 
 1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). 
 
-    <!-- When they add the Basic tier, change this to use Basic instead of Standard. -->
+2. Erstellen Sie eine IoT Hub-Instanz im Tarif S1. Fügen Sie Ihrer IoT Hub-Instanz eine Consumergruppe hinzu. Die Consumergruppe wird beim Abrufen von Daten von Azure Stream Analytics verwendet.
 
-1. Erstellen Sie eine IoT Hub-Instanz im Tarif S1. Fügen Sie Ihrer IoT Hub-Instanz eine Consumergruppe hinzu. Die Consumergruppe wird beim Abrufen von Daten von Azure Stream Analytics verwendet.
+3. Erstellen Sie ein Speicherkonto des Typs „Standard V1“ mit Standard_LRS-Replikation.
 
-1. Erstellen Sie ein Speicherkonto des Typs „Standard V1“ mit Standard_LRS-Replikation.
+4. Erstellen Sie einen Service Bus-Namespace und eine Service Bus-Warteschlange. 
 
-1. Erstellen Sie einen Service Bus-Namespace und eine Service Bus-Warteschlange. 
+5. Erstellen Sie eine Geräteidentität für das simulierte Gerät, das Nachrichten an Ihren Hub sendet. Speichern Sie den Schlüssel für die Testphase.
 
-1. Erstellen Sie eine Geräteidentität für das simulierte Gerät, das Nachrichten an Ihren Hub sendet. Speichern Sie den Schlüssel für die Testphase.
+### <a name="set-up-your-resources-using-azure-cli"></a>Einrichten Ihrer Ressourcen per Azure CLI
 
-### <a name="azure-cli-instructions"></a>Anleitung für die Azure-Befehlszeilenschnittstelle
+Kopieren Sie dieses Skript, und fügen Sie es in Cloud Shell ein. Sofern Sie bereits angemeldet sind, wird das Skript Zeile für Zeile ausgeführt. 
 
-Am einfachsten lässt sich dieses Skript verwenden, indem Sie es kopieren und in Cloud Shell einfügen. Sofern Sie bereits angemeldet sind, wird das Skript Zeile für Zeile ausgeführt. 
+Die Variablen, die global eindeutig sein müssen, verfügen über den Zusatz `$RANDOM`. Wenn das Skript ausgeführt und die Variablen festgelegt werden, wird eine zufällige numerische Zeichenfolge generiert und am Ende der feststehenden Zeichenfolge angefügt, um sie eindeutig zu machen.
 
 ```azurecli-interactive
 
@@ -182,9 +159,11 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ```
 
-### <a name="powershell-instructions"></a>Anleitung für PowerShell
+### <a name="set-up-your-resources-using-azure-powershell"></a>Einrichten Ihrer Ressourcen per Azure PowerShell
 
-Am einfachsten lässt sich dieses Skript verwenden, indem Sie [PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise?view=powershell-6) öffnen, das Skript in die Zwischenablage kopieren und dann das gesamte Skript in das Skriptfenster einfügen. Danach ändern Sie die Werte für die Ressourcennamen (sofern gewünscht), und führen das gesamte Skript aus. 
+Kopieren Sie dieses Skript, und fügen Sie es in Cloud Shell ein. Sofern Sie bereits angemeldet sind, wird das Skript Zeile für Zeile ausgeführt.
+
+Die Variablen, die global eindeutig sein müssen, verfügen über den Zusatz `$(Get-Random)`. Wenn das Skript ausgeführt und die Variablen festgelegt werden, wird eine zufällige numerische Zeichenfolge generiert und am Ende der feststehenden Zeichenfolge angefügt, um sie eindeutig zu machen.
 
 ```azurepowershell-interactive
 # Log into Azure account.
@@ -265,15 +244,15 @@ Als Nächstes erstellen Sie eine Geräteidentität und speichern den zugehörige
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich bei Ihrem Azure-Konto an.
 
-1. Klicken Sie auf **Ressourcengruppen**, und wählen Sie Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet.
+2. Klicken Sie auf **Ressourcengruppen**, und wählen Sie Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet.
 
-1. Klicken Sie in der Liste der Ressourcen auf Ihre IoT Hub-Instanz. In diesem Tutorial wird **ContosoTestHub** verwendet. Wählen Sie im Bereich „Hub“ die Option **IoT-Geräte** aus.
+3. Klicken Sie in der Liste der Ressourcen auf Ihre IoT Hub-Instanz. In diesem Tutorial wird **ContosoTestHub** verwendet. Wählen Sie im Bereich „Hub“ die Option **IoT-Geräte** aus.
 
-1. Klicken Sie auf **+ Hinzufügen**. Geben Sie im Bereich „Gerät hinzufügen“ die Geräte-ID an. In diesem Tutorial wird **Contoso-Test-Device** verwendet. Lassen Sie die Felder für die Schlüssel leer, und aktivieren Sie das Kontrollkästchen **Schlüssel automatisch generieren**. Stellen Sie sicher, dass die Option **Gerät mit IoT Hub verbinden** aktiviert ist. Klicken Sie auf **Speichern**.
+4. Klicken Sie auf **+ Hinzufügen**. Geben Sie im Bereich „Gerät hinzufügen“ die Geräte-ID an. In diesem Tutorial wird **Contoso-Test-Device** verwendet. Lassen Sie die Felder für die Schlüssel leer, und aktivieren Sie das Kontrollkästchen **Schlüssel automatisch generieren**. Stellen Sie sicher, dass die Option **Gerät mit IoT Hub verbinden** aktiviert ist. Klicken Sie auf **Speichern**.
 
    ![Screenshot: Bildschirm zum Hinzufügen von Geräten](./media/tutorial-routing/add-device.png)
 
-1. Nachdem das Gerät erstellt wurde, klicken Sie darauf, um die generierten Schlüssel anzuzeigen. Klicken Sie beim primären Schlüssel auf das Symbol „Kopieren“, und speichern Sie den Schlüssel für die Testphase dieses Tutorials an einem Ort wie beispielsweise dem Editor.
+5. Nachdem das Gerät erstellt wurde, klicken Sie darauf, um die generierten Schlüssel anzuzeigen. Klicken Sie beim primären Schlüssel auf das Symbol „Kopieren“, und speichern Sie den Schlüssel für die Testphase dieses Tutorials an einem Ort wie beispielsweise dem Editor.
 
    ![Screenshot: Gerätedetails, einschließlich Schlüssel](./media/tutorial-routing/device-details.png)
 
@@ -289,69 +268,85 @@ Sie leiten Nachrichten an verschiedene Ressourcen weiter, abhängig von Eigensch
 
 ### <a name="routing-to-a-storage-account"></a>Weiterleiten an ein Speicherkonto 
 
-Richten Sie jetzt die Weiterleitung für das Speicherkonto ein. Definieren Sie einen Endpunkt, und richten Sie dann eine Route für diesen Endpunkt ein. Nachrichten, deren **level**Eigenschaft auf **storage** festgelegt wurde, werden automatisch in ein Speicherkonto geschrieben.
+Richten Sie jetzt die Weiterleitung für das Speicherkonto ein. Wechseln Sie zum Bereich „Nachrichtenrouting“, und fügen Sie eine Route hinzu. Definieren Sie beim Hinzufügen der Route einen neuen Endpunkt für die Route. Nach der Einrichtung werden Nachrichten, deren **level**-Eigenschaft auf **storage** festgelegt wurde, automatisch in ein Speicherkonto geschrieben.
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressourcengruppen**, und wählen Sie dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet. Klicken Sie in der Liste der Ressourcen auf Ihre IoT Hub-Instanz. In diesem Tutorial wird **ContosoTestHub** verwendet. Klicken Sie auf **Endpunkte**. Klicken Sie im Bereich **Endpunkte** auf **+ Hinzufügen**. Geben Sie Folgendes ein:
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressourcengruppen**, und wählen Sie dann Ihre Ressourcengruppe aus. In diesem Tutorial wird **ContosoResources** verwendet. 
 
-   **Name**: Geben Sie einen Namen für den Endpunkt an. In diesem Tutorial wird **StorageContainer** verwendet.
+2. Klicken Sie in der Liste der Ressourcen auf Ihre IoT Hub-Instanz. In diesem Tutorial wird **ContosoTestHub** verwendet. 
+
+3. Klicken Sie auf **Nachrichtenrouting**. Klicken Sie im Bereich **Nachrichtenrouting** auf **+ Hinzufügen**. Klicken Sie im Bereich **Route hinzufügen** neben dem Feld „Endpunkt“ auf **+ Hinzufügen**, wie in der folgenden Abbildung gezeigt:
+
+   ![Screenshot zum Hinzufügen eines Endpunkts für eine Route](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+
+4. Wählen Sie **Blob Storage** aus. Der Bereich **Speicherendpunkt hinzufügen** wird angezeigt. 
+
+   ![Screenshot: Hinzufügen eines Endpunkts](./media/tutorial-routing/message-routing-add-storage-ep.png)
+
+5. Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **StorageContainer** verwendet.
+
+6. Klicken Sie auf **Container auswählen**. Dadurch gelangen Sie zu einer Liste Ihrer Speicherkonten. Wählen Sie das Konto aus, das Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **contosostorage** verwendet. Es zeigt eine Liste der Container in diesem Speicherkonto. Wählen Sie den Container aus, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **contosoresults** verwendet. Klicken Sie auf **Auswählen**. Sie wechseln zurück zum Bereich **Endpunkt hinzufügen**. 
+
+7. Verwenden Sie in den restlichen Feldern die Standardwerte. Klicken Sie auf **Erstellen**, um den Speicherendpunkt zu erstellen und der Route hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**.
+
+8.  Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an den Speichercontainer, den Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus. 
+
+   **Name:** Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **StorageRoute** verwendet.
+
+   **Endpunkt:** zeigt den Endpunkt an, den Sie gerade eingerichtet haben. 
    
-   **Endpunkttyp**: Wählen Sie **Azure Storage-Container** aus der Dropdownliste aus.
+   **Datenquelle:** Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
 
-   Klicken Sie auf **Container auswählen**, um die Liste der Speicherkonten anzuzeigen. Wählen Sie dann Ihr Speicherkonto aus. In diesem Tutorial wird **contosostorage** verwendet. Wählen Sie als Nächstes den Container aus. In diesem Tutorial wird **contosoresults** verwendet. Klicken Sie auf **Auswählen**. Dadurch gelangen Sie wieder zum Bereich **Endpunkt hinzufügen**. 
+   **Route aktivieren:** Achten Sie darauf, dass diese Option aktiviert ist.
    
-   ![Screenshot: Hinzufügen eines Endpunkts](./media/tutorial-routing/add-endpoint-storage-account.png)
-   
-   Klicken Sie auf **OK**, um das Hinzufügen des Endpunkts abzuschließen.
-   
-1. Klicken Sie in Ihrer IoT Hub-Instanz auf **Routen**. Sie erstellen eine Routingregel, die Nachrichten an den Speichercontainer weiterleitet, den Sie gerade als Endpunkt hinzugefügt haben. Klicken Sie oben im Bereich „Routen“ auf **+ Hinzufügen**. Füllen Sie die Felder auf dem Bildschirm aus. 
+   **Routingabfrage:** Geben Sie als Abfragezeichenfolge `level="storage"` ein. 
 
-   **Name**: Geben Sie einen Namen ein Sie einen Namen für Ihre Routingregel ein. In diesem Tutorial wird **StorageRule** verwendet.
-
-   **Datenquelle**: Wählen Sie **Gerätemeldungen** aus der Dropdownliste aus.
-
-   **Endpunkt**: Wählen Sie den Endpunkt aus, den Sie gerade eingerichtet haben. In diesem Tutorial wird **StorageContainer** verwendet. 
+   ![Screenshot zum Erstellen einer Routingabfrage für das Speicherkonto](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
-   **Abfragezeichenfolge**: Geben Sie `level="storage"` als Abfragezeichenfolge ein. 
-
-   ![Screenshot: Erstellen einer Routingregel für das Speicherkonto](./media/tutorial-routing/create-a-new-routing-rule-storage.png)
-   
-   Klicken Sie auf **Speichern**. Wenn der Speichervorgang abgeschlossen ist, werden Sie wieder zum Bereich „Routen“ geleitet, in dem Sie Ihre neue Routingregel für die Speicherung anzeigen können. Schließen Sie den Bereich „Routen“. Daraufhin werden Sie wieder zur Seite der Ressourcengruppe geleitet.
+   Klicken Sie auf **Speichern**. Wenn der Speichervorgang abgeschlossen ist, werden Sie wieder zum Bereich „Nachrichtenrouting“ geleitet, in dem Sie Ihre neue Routingabfrage für die Speicherung anzeigen können. Schließen Sie den Bereich „Routen“. Daraufhin werden Sie wieder zur Seite der Ressourcengruppe geleitet.
 
 ### <a name="routing-to-a-service-bus-queue"></a>Weiterleitung in eine Service Bus-Warteschlange 
 
-Richten Sie jetzt die Weiterleitung für die Service Bus-Warteschlange ein. Definieren Sie einen Endpunkt, und richten Sie dann eine Route für diesen Endpunkt ein. Nachrichten, bei denen die **level**-Eigenschaft auf **critical** festgelegt ist, werden in die Service Bus-Warteschlange geschrieben. Diese löst eine Logik-App aus, die dann eine E-Mail mit den Informationen sendet. 
+Richten Sie jetzt die Weiterleitung für die Service Bus-Warteschlange ein. Wechseln Sie zum Bereich „Nachrichtenrouting“, und fügen Sie eine Route hinzu. Definieren Sie beim Hinzufügen der Route einen neuen Endpunkt für die Route. Nach der Einrichtung werden Nachrichten, bei denen die **level**-Eigenschaft auf **critical** festgelegt ist, in die Service Bus-Warteschlange geschrieben. Diese löst eine Logik-App aus, die dann eine E-Mail mit den Informationen sendet. 
 
-1. Klicken Sie auf der Seite der Ressourcengruppe auf Ihre IoT Hub-Instanz und dann auf **Endpunkte**. Klicken Sie im Bereich **Endpunkte** auf **+ Hinzufügen**. Geben Sie Folgendes ein:
+1. Klicken Sie auf der Seite der Ressourcengruppe auf Ihre IoT Hub-Instanz und dann auf **Nachrichtenrouting**. 
 
-   **Name**: Geben Sie einen Namen für den Endpunkt an. In diesem Tutorial wird **CriticalQueue** verwendet. 
+2. Klicken Sie im Bereich **Nachrichtenrouting** auf **+ Hinzufügen**. 
 
-   **Endpunkttyp**: Wählen Sie **Service Bus-Warteschlange** aus der Dropdownliste aus.
+3. Klicken Sie im Bereich **Route hinzufügen** neben dem Feld „Endpunkt“ auf **+ Hinzufügen**. Wählen Sie **Service Bus-Warteschlange** aus. Der Bereich **Service Bus-Endpunkt hinzufügen** wird angezeigt. 
 
-   **Service Bus-Namespace**: Wählen Sie den Service Bus-Namespace für dieses Tutorial aus der Dropdownliste aus. In diesem Tutorial wird **ContosoSBNamespace** verwendet.
+   ![Screenshot zum Hinzufügen eines Service Bus-Endpunkts](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
 
-   **Service Bus-Warteschlange**: Wählen Sie die Service Bus-Warteschlange aus der Dropdownliste aus. In diesem Tutorial wird **contososbqueue** verwendet.
+4. Füllen Sie die Felder aus:
 
-   ![Screenshot: Hinzufügen eines Endpunkts für die Service Bus-Warteschlange](./media/tutorial-routing/add-endpoint-sb-queue.png)
-
-   Klicken Sie auf **OK**, um den Endpunkt zu speichern. Wenn der Speichervorgang abgeschlossen ist, schließen Sie den Bereich „Endpunkte“. 
-    
-1. Klicken Sie in Ihrer IoT Hub-Instanz auf **Routen**. Sie erstellen eine Routingregel, die Nachrichten an die Service Bus-Warteschlange weiterleitet, die Sie gerade als Endpunkt hinzugefügt haben. Klicken Sie oben im Bereich „Routen“ auf **+ Hinzufügen**. Füllen Sie die Felder auf dem Bildschirm aus. 
-
-   **Name**: Geben Sie einen Namen ein Sie einen Namen für Ihre Routingregel ein. In diesem Tutorial wird **SBQueueRule** verwendet. 
-
-   **Datenquelle**: Wählen Sie **Gerätemeldungen** aus der Dropdownliste aus.
-
-   **Endpunkt**: Wählen Sie den Endpunkt aus, den Sie gerade eingerichtet haben – **CriticalQueue**.
-
-   **Abfragezeichenfolge**: Geben Sie `level="critical"` als Abfragezeichenfolge ein. 
-
-   ![Screenshot: Erstellen einer Routingregel für die Service Bus-Warteschlange](./media/tutorial-routing/create-a-new-routing-rule-sbqueue.png)
+   **Endpunktname:** Geben Sie einen Namen für den Endpunkt an. In diesem Tutorial wird **CriticalQueue** verwendet.
    
-   Klicken Sie auf **Speichern**. Wenn Sie zum Bereich „Routen“ zurückkehren, sehen Sie Ihre beiden neuen Routingregeln, wie hier gezeigt.
+   **Service Bus-Namespace:** Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden. Wählen Sie den Service Bus-Namespace aus, den Sie in den Vorbereitungsschritten eingerichtet haben. In diesem Tutorial wird **ContosoSBNamespace** verwendet.
 
-   ![Screenshot: die von Ihnen eingerichteten Routen](./media/tutorial-routing/show-routing-rules-for-hub.png)
+   **Service Bus-Warteschlange:** Klicken Sie auf dieses Feld, um die Dropdownliste einzublenden und die Service Bus-Warteschlange auszuwählen. In diesem Tutorial wird **contososbqueue** verwendet.
 
-   Schließen Sie den Bereich „Routen“. Daraufhin werden Sie wieder zur Seite der Ressourcengruppe geleitet.
+5. Klicken Sie auf **Erstellen**, um den Endpunkt für die Service Bus-Warteschlange hinzuzufügen. Sie wechseln zurück zum Bereich **Route hinzufügen**. 
+
+6.  Geben Sie nun die restlichen Routingabfrageinformationen an. Diese Abfrage gibt die Kriterien für das Senden von Nachrichten an die Service Bus-Warteschlange, die Sie gerade als Endpunkt hinzugefügt haben, an. Füllen Sie die Felder auf dem Bildschirm aus. 
+
+   **Name:** Geben Sie einen Namen für Ihre Routingabfrage ein. In diesem Tutorial wird **SBQueueRoute** verwendet. 
+
+   **Endpunkt:** zeigt den Endpunkt an, den Sie gerade eingerichtet haben.
+
+   **Datenquelle:** Wählen Sie in der Dropdownliste **Gerätetelemetriemeldungen** aus.
+
+   **Routingabfrage:** Geben Sie als Abfragezeichenfolge `level="critical"` ein. 
+
+   ![Screenshot zum Erstellen einer Routingabfrage für die Service Bus-Warteschlange](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
+
+7. Klicken Sie auf **Speichern**. Wenn Sie zum Bereich „Routen“ zurückkehren, sehen Sie Ihre beiden neuen Routen, wie hier gezeigt.
+
+   ![Screenshot: die von Ihnen eingerichteten Routen](./media/tutorial-routing/message-routing-show-both-routes.png)
+
+8. Sie zeigen die von Ihnen eingerichteten benutzerdefinierten Endpunkte an, indem Sie auf die Registerkarte **Benutzerdefinierte Endpunkte** klicken.
+
+   ![Screenshot der gerade eingerichteten benutzerdefinierten Endpunkte](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
+
+9. Schließen Sie den Bereich „Nachrichtenrouting“. Daraufhin werden Sie wieder zum Bereich der Ressourcengruppe geleitet.
 
 ## <a name="create-a-logic-app"></a>Erstellen einer Logik-App  
 

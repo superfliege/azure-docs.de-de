@@ -14,16 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 4856f4cdba7618884a42341f16d4828cb062e75c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667649"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974322"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Tutorial: Azure SignalR-Dienstauthentifizierung
-
-Der Microsoft Azure SignalR-Dienst befindet sich derzeit in der [öffentlichen Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Dieses Tutorial baut auf der Chatroomanwendung auf, die im Schnellstart eingeführt wurde. Wenn Sie noch keinen [Chatroom mit dem SignalR-Dienst erstellt haben](signalr-quickstart-dotnet-core.md), führen Sie diese Übung zuerst durch. 
 
@@ -396,7 +394,7 @@ In diesem Abschnitt aktivieren Sie die echte Authentifizierung, indem Sie der Hu
 
 In diesem Abschnitt verwenden Sie die Azure-Befehlszeilenschnittstelle (CLI) aus der Azure Cloud Shell, um eine neue [Azure-Web-App](https://docs.microsoft.com/azure/app-service/) zum Hosten Ihrer ASP.NET-Anwendung in Azure zu erstellen. Die Web-App wird so konfiguriert, dass sie die lokale Git-Bereitstellung verwendet. Die Web-App wird auch mit Ihrer SignalR-Verbindungszeichenfolge, den geheimen GitHub-OAuth-App-Daten und einem Bereitstellungsbenutzer konfiguriert.
 
-Für die Schritte in diesem Abschnitt wird die Erweiterung *signalr* für die Azure CLI verwendet. Führen Sie den folgenden Befehl aus, um die Erweiterung *signalr* für die Azure CLI 2.0 zu installieren:
+Für die Schritte in diesem Abschnitt wird die Erweiterung *signalr* für die Azure CLI verwendet. Führen Sie den folgenden Befehl aus, um die Erweiterung *signalr* für die Azure CLI zu installieren:
 
 ```azurecli-interactive
 az extension add -n signalr

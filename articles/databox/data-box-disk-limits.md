@@ -1,6 +1,6 @@
 ---
-title: Begrenzungen für Azure Data Box-Datenträger | Microsoft-Dokumentation
-description: Beschreibt Systembegrenzungen und empfohlene Größen für den Microsoft Azure Data Box-Datenträger.
+title: Für Azure Data Box-Datenträger geltende Einschränkungen | Microsoft-Dokumentation
+description: Beschreibt für das System geltende Einschränkungen und empfohlene Größen für den Microsoft Azure Data Box-Datenträger.
 services: databox
 documentationcenter: NA
 author: alkohli
@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 09/04/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 3b26c5f9a6d75725fb102d89192e77988b295dea
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b7de39ca8723df2d15da7677b7032c98e84ecb1d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782024"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960616"
 ---
-# <a name="azure-data-box-disk-limits-preview"></a>Begrenzungen für Azure Data Box-Datenträger (Vorschau)
+# <a name="azure-data-box-disk-limits-preview"></a>Für Azure Data Box-Datenträger geltende Einschränkungen (Vorschau)
 
 
 Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betreiben Ihrer Microsoft Azure Data Box-Datenträgerlösung. 
@@ -42,7 +42,7 @@ Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die Dat
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 
-In diesem Abschnitt werden die Grenzwerte für den Azure Storage-Dienst und die erforderlichen Benennungskonventionen für Azure Files, Azure-Blockblobs und Azure-Seitenblobs beschrieben, sofern mit dem Data Box-Dienst verfügbar. Machen Sie sich sorgfältig mit den Speichergrenzwerten vertraut, und beachten Sie alle Empfehlungen.
+In diesem Abschnitt werden die geltenden Einschränkungen für den Azure Storage-Dienst und die Benennungskonventionen für Azure Files, Azure-Blockblobs und Azure-Seitenblobs beschrieben, sofern für den Data Box-Dienst zutreffend. Machen Sie sich sorgfältig mit den Speichergrenzwerten vertraut, und beachten Sie alle Empfehlungen.
 
 Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährte Vorgehensweisen für die Benennung von Freigaben, Containern und Dateien finden Sie hier:
 
@@ -78,7 +78,7 @@ Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stelle
 | Azure-Objekttyp | Standardlimit                                             |
 |-------------------|-----------------------------------------------------------|
 | Blockblob        | ~ 8TB                                                 |
-| Seitenblob         | 1 TB <br> (Jede Datei, die im Seitenblobformat hochgeladen wird, muss einem ganzzahligen Vielfachen von 512Bytes entsprechen, andernfalls tritt beim Hochladen ein Fehler auf. <br> VHD- und VHDX-Dateien entsprechen einem ganzzahligen Vielfachen von 512Bytes.) |
+| Seitenblob         | 1 TB <br> (Jede Datei, die im Seitenblobformat hochgeladen wird, muss einem ganzzahligen Vielfachen von 512 Bytes entsprechen. Andernfalls tritt beim Hochladen ein Fehler auf. <br> VHD- und VHDX-Dateien entsprechen einem ganzzahligen Vielfachen von 512 Bytes.) |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Benennungskonventionen für Azure-Blockblobs und -Seitenblobs
@@ -87,3 +87,7 @@ Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stelle
 |----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Containernamen für Blockblob und Seitenblob | Es muss sich um einen gültigen DNS-Namen mit einer Länge von 3 bis 63 Zeichen handeln. <br>  Sie muss mit einem Buchstaben oder einer Zahl beginnen. <br> Nur Kleinbuchstaben, Zahlen und Bindestriche (-) sind zulässig. <br> Vor und nach jedem Bindestrich (-) muss unmittelbar ein Buchstabe oder eine Ziffer stehen. <br> Aufeinanderfolgende Bindestriche sind in Namen nicht zulässig. |
 | Blobnamen für Blockblobs und Seitenblobs      | Für Blobnamen wird die Groß-/Kleinschreibung beachtet, und sie können eine beliebige Kombination von Zeichen enthalten. <br> Ein Blobname muss zwischen 1 und 1.024 Zeichen lang sein. <br> Reservierte URL-Zeichen müssen korrekt mit Escapezeichen versehen sein. <br>Die Anzahl von Pfadsegmenten, aus denen der Blobname besteht, darf 254 nicht überschreiten. Ein Pfadsegment ist die Zeichenfolge zwischen aufeinanderfolgenden Trennzeichen (z.B. der Schrägstrich (/)), die für den Namen eines virtuellen Verzeichnisses steht. |
+
+
+## <a name="next-steps"></a>Nächste Schritte
+* Überprüfen der [Systemanforderungen für Data Box](data-box-system-requirements.md)

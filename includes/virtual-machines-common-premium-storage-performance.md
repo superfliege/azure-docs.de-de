@@ -1,3 +1,20 @@
+---
+title: Includedatei
+description: Includedatei
+services: virtual-machines
+author: roygara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 09/24/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060807"
+---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
 Dieser Artikel bietet Leitlinien zum Erstellen leistungsstarker Anwendungen mit Azure Storage Premium. Sie können die Anweisungen in diesem Dokument kombiniert mit den bewährten Methoden für hohe Leistung befolgen, die für von Ihrer Anwendung verwendeten Technologien gelten. Um die Leitlinien zu veranschaulichen, haben wir SQL Server in Storage Premium im gesamten Dokument als Beispiel verwendet.
@@ -17,16 +34,19 @@ Wir stellen diese Leitlinien speziell für Storage Premium bereit, da in Storage
 Falls Sie noch nicht mit Storage Premium vertraut sind, lesen Sie zunächst die Artikel [Storage Premium: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../articles/virtual-machines/windows/premium-storage.md) und [Skalierbarkeits- und Leistungsziele für Azure Storage](../articles/storage/common/storage-scalability-targets.md).
 
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
+
 Die Leistung einer Anwendung (ob gut oder schlecht) bewerten wir mithilfe von Leistungsindikatoren wie z. B. Geschwindigkeit der Verarbeitung einer Benutzeranforderung, Menge der verarbeiteten Daten pro Anforderung, Anzahl der in einem bestimmten Zeitraum verarbeiteten Anforderungen und Wartezeit des Benutzers auf eine Antwort nach Übermittlung einer Anforderung. Die technische Begriffe für diese Leistungsindikatoren sind IOPS, Durchsatz oder Bandbreite und Latenz (Wartezeit).
 
 In diesem Abschnitt erörtern wir gängige Leistungsindikatoren im Zusammenhang mit Storage Premium. Im folgenden Abschnitt, „Erfassen von Anwendungsanforderungen“, erfahren Sie, wie Sie diese Leistungsindikatoren für Ihre Anwendung messen. Im Anschluss lernen Sie unter „Optimieren der Anwendungsleistung“ die Faktoren, die sich auf diese Leistungsindikatoren auswirken, und Empfehlungen zu ihrer Optimierung kennen.
 
 ## <a name="iops"></a>IOPS
+
 IOPS beschreibt die Anzahl von Anforderungen, die Ihre Anwendung pro Sekunde an Speicherdatenträger sendet. Ein E/A-Vorgang kann ein sequenzieller oder zufälliger Lese- oder Schreibvorgang sein. OLTP-Anwendungen wie die Website eines Onlinehändlers müssen viele gleichzeitige Benutzeranforderungen sofort verarbeiten. Die Benutzeranforderungen sind einfüge- und aktualisierungsintensive Datenbanktransaktionen, die die Anwendung rasch verarbeiten muss. Deshalb benötigen OLTP-Anwendungen eine sehr hohe IOPS-Leistung. Solche Anwendungen verarbeiten Millionen kleiner und zufälliger E/A-Anforderungen. Wenn Sie eine solche Anwendung haben, müssen Sie die Anwendungsinfrastruktur für die IOPS-Optimierung entwerfen. Im Abschnitt *Optimieren der Anwendungsleistung*weiter unten erörtert wir detailliert alle Faktoren, die Sie berücksichtigen müssen, um hohe IOPS-Raten zu erzielen.
 
 Wenn Sie einen Storage Premium-Datenträger an Ihre Hochleistungs-VM anfügen, stellt Ihnen Azure gemäß der Datenträgerspezifikation eine garantierte IOPS-Anzahl bereit. Beispielsweise stellt ein Datenträger vom Typ „P50“ 7500 IOPS bereit. Jeder Typ von Hochleistungs-VM weist außerdem einen bestimmtes IOPS-Limit auf. Bei einer Standard-VM vom Typ GS5 ist das Limit beispielsweise 80.000 IOPS.
 
 ## <a name="throughput"></a>Throughput
+
 Durchsatz oder Bandbreite ist die Menge der Daten, die Ihre Anwendung in einem angegebenen Intervall an die Speicherdatenträger überträgt. Wenn Ihre Anwendung E/A-Vorgänge mit hohen E/A-Einheitsgrößen durchführt, benötigt sie hohen Durchsatz. Data Warehouse-Anwendungen führen meist suchintensive Vorgänge, bei denen jeweils auf große Datenmengen zugegriffen wird, und üblicherweise Massenvorgänge durch. Aus diesem Grund erfordern solche Anwendungen einen höheren Durchsatz. Wenn Sie eine solche Anwendung haben, müssen Sie die Anwendungsinfrastruktur für eine Durchsatzoptimierung entwerfen. Im nächsten Abschnitt geht es im Detail um die Faktoren, die Sie optimieren müssen, um dies zu erreichen.
 
 Wenn Sie einen Storage Premium-Datenträger an eine Hochleistungs-VM anfügen, bietet Azure Durchsatz gemäß der Spezifikation dieses Datenträgers. Ein P50-Datenträger stellt z.B. einen Datenträgerdurchsatz von 250 MB pro Sekunde bereit. Jeder Typ von Hochleistungs-VM weist außerdem ein bestimmtes Durchsatzlimit auf. Eine Standard-VM vom Typ GS5 bietet beispielsweise einen maximalen Durchsatz von 2.000 MB pro Sekunde. 
@@ -38,18 +58,20 @@ Zwischen Durchsatz und IOPS gibt es, wie in der folgenden Formel dargestellt, ei
 Aus diesem Grund ist es wichtig, die optimalen Durchsatz- und IOPS-Werte zu bestimmen, die Ihre Anwendung benötigt. Beim Versuch, einen der Faktoren zu optimieren, ist der andere ebenfalls betroffen. Im Abschnitt *Optimieren der Anwendungsleistung*weiter unten werden weitere Details zum Optimieren von IOPS und Durchsatz erläutert.
 
 ## <a name="latency"></a>Latency
+
 Latenz ist die Zeit, die eine Anwendung zum Empfangen einer einzelnen Anforderung, deren Übertragung an die Speicherdatenträger und zum Zurücksenden der Antwort an den Client benötigt. Neben IOPS und Durchsatz ist dies ein weiterer wichtiger Messwert für die Leistung einer Anwendung. Die Latenz eines Storage Premium-Datenträgers ist die benötigte Zeit zum Abrufen der Informationen für eine Anforderung und deren Übermittlung zurück an die Anwendung. Storage Premium bietet durchgängig eine niedrige Latenz. Wenn Sie das Hostcache-Einstellung „ReadOnly“ für Storage Premium-Datenträger aktivieren, erhalten Sie bei Lesevorgängen eine wesentlich niedrigere Latenz. Der Datenträgercache wird weiter unten im Abschnitt *Optimieren der Anwendungsleistung*ausführlicher erläutert.
 
 Wenn Sie Ihre Anwendung optimieren, um höhere IOPS- und Durchsatzwerte zu erzielen, wirkt sich dies auf die Latenz der Anwendung aus. Prüfen Sie nach einer Optimierung der Anwendungsleistung stets die Latenz, um unerwartet hohe Latenzen zu vermeiden.
 
 ## <a name="gather-application-performance-requirements"></a>Erfassen von Anforderungen an die Anwendungsleistung
+
 Der erste Schritt beim Entwerfen hochleistungsfähiger Anwendungen in Azure Storage Premium besteht darin, sich mit den Leistungsanforderungen der Anwendung vertraut zu machen. Nach dem Erfassen von Anforderungen können Sie Ihre Anwendung optimieren, um eine optimale Leistung zu erzielen.
 
 Im vorherigen Abschnitt wurden mit IOPS, Durchsatz und Latenz die gängigsten Leistungsindikatoren vorgestellt. Sie müssen bestimmen, welche dieser Leistungsindikatoren für Ihre Anwendung wichtig sind, um Benutzern die gewünschte Funktionalität zu bieten. Eine hohe IOPS-Leistung spielt z. B. bei OLTP-Anwendungen, die Millionen von Transaktionen pro Sekunde verarbeiten, die größte Rolle. Ein hoher Durchsatz ist hingegen für Data Warehouse-Anwendungen von Bedeutung, die pro Sekunde große Datenmengen verarbeiten. Eine überaus niedrige Latenz ist entscheidend für Echtzeitanwendungen wie Websites für das Livestreaming von Video.
 
 Messen Sie als Nächstes die maximalen Leistungsanforderungen der Anwendung während ihrer Lebensdauer. Nutzen Sie als Ausgangspunkt die nachstehende Beispielprüfliste. Zeichnen Sie die maximalen Leistungsanforderungen von Workloads während des Normalbetriebs, zu Spitzenzeiten und außerhalb der Geschäftszeiten auf. Indem Sie Anforderungen für alle Workloadstufen bestimmen, können Sie die Gesamtleistungsanforderungen Ihrer Anwendung feststellen. Der normale Workload einer E-Commerce-Website besteht beispielsweise aus den Transaktionen, die während der meisten Tage eines Jahres verarbeitet werden. Den Spitzenworkload der Website bilden die Transaktionen, die in der Vorweihnachtszeit oder bei Sonderverkaufsaktionen verarbeitet werden. Der Spitzenworkload fällt meist nur in einem begrenzten Zeitraum an, kann allerdings erfordern, dass Ihre Anwendung im Vergleich zum Normalbetrieb um das Zwei- bis Dreifache skaliert werden muss. Finden Sie die Anforderungen für das 50. Perzentil, das 90. Perzentil und 99. Perzentil heraus. Dadurch können Sie Ausreißer in den Leistungsanforderungen herausfiltern und sich auf die Maßnahmen für eine Optimierung entsprechend den richtigen Werten konzentrieren.
 
-**Prüfliste für das Erfassen von Anforderungen an die Anwendungsleistung**
+### <a name="application-performance-requirements-checklist"></a>Prüfliste für Anforderungen an die Anwendungsleistung
 
 | **Leistungsanforderungen** | **50. Perzentil** | **90. Perzentil** | **99. Perzentil** |
 | --- | --- | --- | --- |
@@ -71,14 +93,13 @@ Messen Sie als Nächstes die maximalen Leistungsanforderungen der Anwendung wäh
 
 > [!NOTE]
 > Es empfiehlt sich, diese Zahlen basierend auf dem erwarteten zukünftigen Wachstum Ihrer Anwendung zu skalieren. Es ist stets eine gute Idee, für Wachstum im Voraus zu planen, da es schwieriger sein könnte, die Infrastruktur zur Verbesserung der Leistung später zu ändern.
->
->
 
 Wenn Sie eine vorhandene Anwendung haben, die in Storage Premium verschoben werden soll, erstellen Sie für diese Anwendung zunächst die obige Prüfliste. Erstellen Sie anschließend einen Prototyp der Anwendung in Storage Premium, und entwerfen Sie die Anwendung basierend auf den Leitlinien unter *Optimieren der Anwendungsleistung* weiter unten in diesem Dokument. Im nächsten Abschnitt werden die Tools beschrieben, die Sie verwenden können, um die Leistungsindikatoren zu erfassen.
 
 Erstellen Sie eine Prüfliste ähnlich derjenigen für die vorhandene Anwendung für den Prototyp. Mithilfe von Benchmarktools können Sie die Workloads simulieren und die Leistung der Prototypanwendung messen. Im Abschnitt [Benchmarktests](#benchmarking) erfahren Sie mehr dazu. Auf diese Weise Sie bestimmen können, ob die Anforderungen Ihrer Anwendung mit Storage Premium erfüllt oder gar übertroffen werden. Anschließend können Sie dieselben Richtlinien für Ihre Produktionsanwendung implementieren.
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>Indikatoren zum Messen der Leistungsanforderungen der Anwendung
+
 Die beste Methode zum Messen der Leistungsanforderungen Ihrer Anwendung ist die Verwendung von Leistungsüberwachungstools, die vom Betriebssystem des Servers bereitgestellt werden. Sie können Systemmonitor (PerfMon) für Windows und iostat für Linux verwenden. Diese Tools erfassen Indikatoren für jede im vorherigen Abschnitt erläuterte Messgröße. Sie müssen die Werte dieser Indikatoren erfassen, wenn in der Anwendung Workloads im Normalbetrieb, zu Spitzenzeiten und außerhalb der Geschäftszeiten ausgeführt werden.
 
 Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher und alle logischen und physischen Datenträger Ihres Servers verfügbar. Bei Verwenden von Storage Premium-Datenträgern mit einem virtuellen Computer gelten die Indikatoren für physische Datenträger für jeden Storage Premium-Datenträger. Die Indikatoren für logische Datenträger gelten für jedes Volume, das auf den Storage Premium-Datenträgern erstellt wurde. Sie müssen die Werte für die Datenträger erfassen, die den Workload Ihrer Anwendung hosten. Wenn es eine 1: 1-Zuordnung zwischen logischen und physischen Datenträgern gilt, beziehen Sie sich auf die Leistungsindikatoren für physische Datenträger und andernfalls auf die Leistungsindikatoren für logische Datenträger. Unter Linux erzeugt der Befehl „iostat“ einen Bericht der CPU- und Festplattenauslastung. Der Bericht zur Datenträgerauslastung bietet Statistiken pro physischem Gerät bzw. pro Partition. Wenn Sie einen Datenbankserver mit Daten- und Protokolldateien auf getrennten Datenträgern nutzen, erfassen Sie diese Daten für beide Datenträger. In der folgenden Tabelle werden die Leistungsindikatoren für Datenträger, Prozessor und Arbeitsspeicher beschrieben:
@@ -97,6 +118,7 @@ Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher u
 Weitere Informationen zu [iostat](https://linux.die.net/man/1/iostat) und [PerfMon](https://msdn.microsoft.com/library/aa645516.aspx) (Systemmonitor)
 
 ## <a name="optimizing-application-performance"></a>Optimieren der Anwendungsleistung
+
 Die wichtigsten Faktoren für die Leistung einer Anwendung, die in Storage Premium ausgeführt wird, sind die Art der E/A-Anforderungen, VM-Größe, Datenträgergröße, Anzahl der Datenträger, die Datenträgerzwischenspeicherung, Multithreading und Warteschlangenlänge. Sie können einige dieser Faktoren mithilfe vom System bereitgestellter Einstellungsmöglichkeiten steuern. Die meisten Anwendungen bieten jedoch möglicherweise keine Option, die E/A-Größe und Warteschlangenlänge direkt zu ändern. In SQL Server können Sie z. B. die E/A-Größe und Warteschlangenlänge nicht festlegen. SQL Server wählt optimale Einstellungen für E/A-Größe und Warteschlangenlänge, um die beste Leistung zu erzielen. Es ist wichtig, die Auswirkungen beider Arten von Faktoren auf die Leistung Ihrer Anwendung zu verstehen, damit Sie entsprechende Ressourcen zum Erfüllen der Leistungsanforderungen bereitstellen können.
 
 Nehmen Sie in diesem gesamten Abschnitt Bezug auf die von Ihnen erstellte Prüfliste mit den Anwendungsanforderungen, um zu bestimmen, was für die Optimierung der Leistung Ihrer Anwendung erforderlich ist. Auf dieser Basis können Sie bestimmen, welche Faktoren in diesem Abschnitt Sie optimieren müssen. Führen Sie zum Überprüfen der Auswirkungen der einzelnen Faktoren auf die Anwendungsleistung Benchmarktools aus. Im Abschnitt [Benchmarktests](#Benchmarking) am Ende dieses Artikels finden Sie Anweisungen zum Ausführen gängiger Benchmarktools für Windows- und Linux-VMs.
@@ -122,6 +144,7 @@ Weitere Informationen zu VM-Größen und zu den verfügbaren IOPS, Durchsätzen 
 | **Warteschlangenlänge** |Höhere Warteschlangenlänge führt zu mehr IOPS. |Höhere Warteschlangenlänge führt zu höherem Durchsatz. |Niedrigere Warteschlangenlänge führt zu niedrigeren Latenzen. |
 
 ## <a name="nature-of-io-requests"></a>Art der E/A-Anforderungen
+
 Eine E/A-Anforderung ist eine E/A-Vorgangseinheit, die Ihre Anwendung ausführt. Das Bestimmen der Art der E/A-Anforderungen – zufällig oder sequenziell, Lese- oder Schreibvorgang, klein oder groß – hilft beim Ermitteln der Leistungsanforderungen Ihrer Anwendung. Sie müssen sich unbedingt mit der Art der E/A-Anforderungen vertraut machen, um beim Entwurf der Infrastruktur Ihrer Anwendung die richtigen Entscheidungen zu treffen.
 
 Die E/A-Größe ist einer der wichtigsten Faktoren. Die E/A-Größe ist die Größe des angeforderten E/A-Vorgangs, den Ihre Anwendung generiert hat. Die E/A-Größe hat einen erheblichen Einfluss auf die Leistung, insbesondere auf die IOPS und Bandbreite, die die Anwendung erzielen kann. Die folgende Formel zeigt die Beziehung zwischen IOPS, E/A-Größe und Bandbreite/Durchsatz.  
@@ -152,12 +175,11 @@ Um eine IOPS-Rate und Bandbreite zu erzielen, die höher als der Maximalwert ein
 
 > [!NOTE]
 > Wenn Sie entweder die IOPS-Rate oder den Durchsatz erhöhen, sollten Sie sicherstellen, dass Sie dabei nicht das Durchsatz- oder IOPS-Limit des Datenträgers oder der VM überschreiten.
->
->
 
 Führen Sie zum Überprüfen der Auswirkungen der E/A-Größe auf die Anwendungsleistung in Ihrer VM und auf Ihren Datenträgern Benchmarktools aus. Erstellen Sie mehrere Testläufe, und wählen Sie für jeden Lauf eine andere E/A-Größe, um die Auswirkungen zu prüfen. Im Abschnitt [Benchmarktests](#Benchmarking) am Ende dieses Artikels finden Sie weitere Details.
 
 ## <a name="high-scale-vm-sizes"></a>Größen von Hochleistungs-VMs
+
 Beim Entwerfen einer Anwendung ist eine der ersten Aufgaben das Wählen einer VM zum Hosten Ihrer Anwendung. Storage Premium bietet verschiedene Größen von Hochleistungs-VMs zum Ausführen von Anwendungen, die eine höhere Rechenleistung und einen lokalen Datenträger mit hoher E/A-Leistung benötigen. Diese VMs bieten schnellere Prozessoren, ein höheres Arbeitsspeicher/Kern-Verhältnis und ein SSD-Laufwerk (Solid State Drive) als lokalen Datenträger. Beispiele für Hochleistungs-VMs, die Storage Premium unterstützen, sind die DS-, DSv2- und GS-Serien-VMs.
 
 Hochleistungs-VMs stehen in mehreren Größen mit jeweils einer anderen Anzahl von CPU-Kernen, Arbeitsspeicher- und temporären Datenträgergröße und einem anderen Betriebssystem zur Verfügung. Jede VM-Größe weist außerdem eine maximale Anzahl von Datenträgern auf, die Sie an die VM anfügen können. Daher beeinflusst die gewählte VM-Größe die Verarbeitungs-, Arbeitsspeicher- und Speicherkapazität, die für Ihre Anwendung zur Verfügung steht. Sie hat außerdem Einfluss auf die Compute- und Speicherkosten. Nachstehend sehen Sie beispielsweise die Spezifikationen der höchsten VM-Größen in den DS-, DSv2- und GS-Serien:
@@ -196,14 +218,14 @@ Mit Azure Storage Premium erhalten Sie unter Windows und Linux das gleiche Maß 
 Überprüfen Sie bei Ausführen von Linux mit Storage Premium die neuesten Updates hinsichtlich erforderlicher Treiber, um eine hohe Leistung zu gewährleisten.
 
 ## <a name="premium-storage-disk-sizes"></a>Größen von Storage Premium-Datenträgern
-Für Azure Storage Premium werden derzeit acht Datenträgergrößen angeboten. Jede Datenträgergröße hat ein anderes Skalierungslimit hinsichtlich IOPS, Bandbreite und Speicher. Wählen Sie abhängig von den Anwendungsanforderungen und der Größe der Hochleistungs-VM die richtige Storage Premium-Datenträgergröße. Die folgende Tabelle zeigt die acht verschiedenen Datenträgergrößen und ihre Kapazitäten. Die Datenträgergrößen P4, P6 und P15 werden aktuell nur für verwaltete Datenträger unterstützt.
 
-| Premium-Datenträgertyp  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Datenträgergröße           | 32 GB | 64 GB | 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS pro Datenträger       | 120   | 240   | 500   | 1100 | 2.300              | 5.000              | 7.500              | 7.500              | 
-| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde |125 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 
+Azure Storage Premium bietet acht allgemein verfügbare Datenträgergrößen und drei Datenträgergrößen, die sich derzeit in der Vorschau befinden. Jede Datenträgergröße hat ein anderes Skalierungslimit hinsichtlich IOPS, Bandbreite und Speicher. Wählen Sie abhängig von den Anwendungsanforderungen und der Größe der Hochleistungs-VM die richtige Storage Premium-Datenträgergröße. Die folgende Tabelle zeigt die elf verschiedenen Datenträgergrößen und ihre Funktionen. Die Datenträgergrößen P4, P6, P15, P60, P70 und P80 werden aktuell nur für verwaltete Datenträger unterstützt.
 
+| Premium-Datenträgertyp  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Datenträgergröße           | 32 GiB | 64 GiB | 128 GB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16384 GiB (16 TiB)    | 32767 GiB (32 GiB)    |
+| IOPS pro Datenträger       | 120   | 240   | 500   | 1100 | 2.300              | 5.000              | 7.500              | 7.500              | 12.500              | 15.000              | 20.000              |
+| Durchsatz pro Datenträger | 25 MiB pro Sekunde  | 50 MiB pro Sekunde  | 100 MiB pro Sekunde |125 MiB pro Sekunde | 150 MiB pro Sekunde | 200 MiB pro Sekunde | 250 MiB pro Sekunde | 250 MiB pro Sekunde | 480 MiB pro Sekunde | 750 MiB pro Sekunde | 750 MiB pro Sekunde |
 
 Die zu wählende Anzahl von Datenträgern hängt von der gewählten Datenträgergröße ab. Zum Erfüllen Ihrer Anwendungsanforderung können Sie entweder einen einzelnen P50- oder mehrere P10-Datenträger verwenden. Berücksichtigen Sie bei Ihrer Wahl die nachstehenden Aspekte.
 
@@ -216,8 +238,6 @@ Beispiel: Angenommen, eine Anwendungsanforderung hat einen Durchsatz von maximal
 > Leseanforderungen, die aus dem Cache erfüllt werden, bleiben bei der IOPS- und Durchsatzleistung des Datenträgers unberücksichtigt und unterliegen deshalb keinen Datenträgerlimits. Für den Cache gelten separate IOPS- und Durchsatzlimits pro VM.
 >
 > Beispielsweise erfolgen Ihre Lese- und Schreibvorgänge anfänglich mit 60 MB/s bzw. 40 MB/s. Mit der Zeit füllt sich der Cache auf, sodass immer mehr Leseanforderungen aus dem Cache erfüllt werden. Dadurch erhalten Sie einen höheren Schreibdurchsatz vom Datenträger.
->
->
 
 *Anzahl der Datenträger*  
 Bestimmen Sie die benötigte Anzahl der Datenträger, indem Sie die Anwendungsanforderungen prüfen. Für jede VM gilt auch ein Limit für die Anzahl der Datenträger, die an die VM angefügt werden können. In der Regel ist dies die doppelte Anzahl der Kerne. Stellen Sie sicher, dass die gewählte VM-Größe die erforderliche Anzahl von Datenträgern unterstützt.
@@ -225,12 +245,12 @@ Bestimmen Sie die benötigte Anzahl der Datenträger, indem Sie die Anwendungsan
 Wie schon erwähnt, bieten Storage Premium-Datenträger eine höhere Leistung als Storage Standard-Datenträger. Wenn Sie also Ihre Anwendung aus einer Azure IaaS-VM mit Storage Standard zu Storage Premium migrieren, benötigen Sie wahrscheinlich weniger Premium-Datenträger, um für Ihre Anwendung dieselbe oder eine höhere Leistung zu erzielen.
 
 ## <a name="disk-caching"></a>Nutzung des Datenträgercaches
+
 Hochleistungs-VMs mit Azure Storage Premium arbeiten mit einer mehrschichtigen Cachetechnologie mit dem Namen BlobCache. BlobCache verwendet für das Zwischenspeichern eine Kombination aus RAM des virtuellen Computers und lokalem SSD-Laufwerk. Dieser Cache ist für die permanenten Storage Premium-Datenträger und die lokalen VM-Datenträger verfügbar. Standardmäßig ist diese Cacheeinstellung auf „Read/Write“ für Betriebssystem-Datenträger und auf und „ReadOnly“ für in Storage Premium gehostete Datenträger festgelegt. Bei aktiviertem Cache auf den Storage Premium-Datenträgern können die Hochleistungs-VMs überaus hohe Leistungsgrade erreichen, die die zugrunde liegende Datenträgerleistung übersteigen.
 
 > [!WARNING]
+> Die Datenträgerzwischenspeicherung wird nur für Datenträgergrößen von bis zu 4 TiB unterstützt.
 > Durch Ändern der Cacheeinstellung eines Azure-Datenträgers wird der Zieldatenträger getrennt und erneut angefügt. Wenn es sich um den Betriebssystemdatenträger handelt, wird der virtuelle Computer neu gestartet. Beenden Sie alle Anwendungen und Dienste, die von dieser Unterbrechung betroffen sein könnten, bevor Sie die Cacheeinstellung des Datenträgers ändern.
->
->
 
 Weitere Informationen zur Funktionsweise von BlobCache finden Sie im Blogbeitrag [Inside Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) .
 
@@ -267,6 +287,7 @@ Als Beispiel können Sie diese Leitlinien auf SQL Server in Storage Premium anwe
    a.  Protokolldateien zeichnen sich hauptsächlich durch schreibintensive Vorgänge aus. Aus diesem Grund profitieren sie nicht vom „ReadOnly“-Cache.
 
 ## <a name="disk-striping"></a>Datenträgerstriping
+
 Wenn an eine Hochleistungs-VM mehrere beständige Storage Premium-Datenträger angefügt werden, können diese Datenträger ein Stripeset bilden, um ihre IOPS-, Bandbreiten- und Speicherkapazitäten zusammenzuführen.
 
 Unter Windows können Sie das Feature „Speicherplätze“ verwenden, um Datenträger in einem Stripeset zu verbinden. Sie müssen für jeden Datenträger in einem Pool eine Spalte konfigurieren. Andernfalls kann die Gesamtleistung des Stripesetvolume aufgrund einer ungleichen Verteilung des Datenverkehrs auf die Datenträger niedriger sein als erwartet.
@@ -284,10 +305,9 @@ Wählen Sie abhängig vom Workload Ihrer Anwendung eine geeignete Stripegröße 
 
 > [!NOTE]
 > Bei einer VM der DS-Serie können Sie ein Stripeset mit maximal 32 Storage Premium-Datenträgern und bei einer VM der GS-Serie mit maximal 64 Storage Premium-Datenträgern bilden.
->
->
 
 ## <a name="multi-threading"></a>Multithreading
+
 Azure hat die Storage Premium-Plattform mit einem hohen Grad an Parallelität ausgelegt. Aus diesem Grund wird mit einer Multithreadanwendung eine wesentlich höhere Leistung als mit einer Singlethreadanwendung erreicht. Eine Multithreadanwendung teilt ihre Aufgaben auf mehrere Threads auf und steigert die Effizienz ihrer Ausführung durch den maximalen Einsatz der VM- und Datenträgerressourcen.
 
 Wenn Ihre Anwendung in einer VM mit einem Kern mithilfe zweier Threads ausgeführt wird, kann die CPU zwischen den beiden Threads umschalten, um für Effizienz zu sorgen. Während ein Thread auf den Abschluss eines Datenträger-E/A-Vorgangs wartet, kann die CPU zum anderen Thread umschalten. Auf diese Weise können zwei Threads mehr erreichen als einem einzelnem Thread möglich ist. Wenn die VM mehr als einen Kern hat, verkürzt sich die Ausführungszeit weiter, da jeder Kern Aufgaben parallel ausführt.
@@ -301,6 +321,7 @@ Angenommen, Ihre mit SQL Server arbeitende Anwendung führt gleichzeitig eine um
 Lesen Sie die weiteren Informationen zu [Graden an Parallelität](https://technet.microsoft.com/library/ms188611.aspx) in SQL Server. Hier erfahren Sie mehr zu Einstellungen, mit denen das Multithreading in Ihrer Anwendung und deren Konfiguration zum Optimieren der Leistung beeinflusst werden können.
 
 ## <a name="queue-depth"></a>Warteschlangenlänge
+
 Die Warteschlangenlänge ist die Anzahl ausstehender E/A-Anforderungen im System. Der Wert der Warteschlangenlänge bestimmt, wie viele E/A-Vorgänge Ihre Anwendung in die Schlange stellen kann, die von den Speicherdatenträgern verarbeitet werden sollen. Dieser Wert betrifft alle drei Anwendungsleistungsindikatoren, die wir in diesem Artikel behandelt haben: IOPS, Durchsatz und Latenz.
 
 Warteschlangenlänge und Multithreading stehen in enger Beziehung. Der Wert der Warteschlangenlänge gibt an, wie viel Multithreading von der Anwendung erreicht werden kann. Wenn die Warteschlangenlänge hoch ist, kann die Anwendung mehr Vorgänge gleichzeitig ausführen, also mehr Multithreading unterstützen. Wenn die Warteschlangenlänge niedrig ist, obwohl die Anwendung mit mehreren Threads arbeitet, stehen nicht genügend Anforderungen für die gleichzeitige Ausführung in der Schlange.
@@ -327,9 +348,11 @@ Für ein Stripesetvolume muss die Warteschlangenlänge so hoch sein, dass jeder 
     ![](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Drosselung
+
 Azure Storage Premium stellt abhängig von den gewählten VM- und Datenträgergrößen die angegebene IOPS- und Durchsatzrate bereit. Immer wenn die Anwendung versucht, eine IOPS- oder Durchsatzrate über diese Limits der VM oder des Datenträgers hinaus zu nutzen, erfolgt eine Drosselung durch Storage Premium. Dies zeigt sich in Form von Leistungseinbußen in Ihrer Anwendung. Folgen sind höhere Latenz, weniger Durchsatz oder weniger IOPS. Wenn Storage Premium keine Drosselung vornimmt, kann Ihre Anwendung vollständig ausfallen, sobald die zur Verfügung stehenden Ressourcen überschritten werden. Um also Leistungsprobleme aufgrund der Drosselung zu vermeiden, stellen Sie Ihrer Anwendung stets ausreichend Ressourcen zur Verfügung. Berücksichtigen Sie, was zuvor in den Abschnitt „VM-Größen“ und „Datenträgergrößen“ erörtert wurde. Benchmarktests sind die beste Möglichkeit, um herauszufinden, welche Ressourcen Sie zum Hosten der Anwendung benötigen.
 
 ## <a name="benchmarking"></a>Benchmarktests
+
 Bei Benchmarktests werden verschiedene Workloads Ihrer Anwendung simuliert und die Anwendungsleistung für jeden Workload gemessen. Unter Befolgung der in einem vorherigen Abschnitt beschriebenen Schritte haben Sie die Leistungsanforderungen der Anwendung gesammelt. Durch Ausführen von Benchmarktools in den VMs, die die Anwendung hosten, können Sie die Leistungsgrade bestimmen, die Ihre Anwendung mit Storage Premium erreichen kann. In diesem Abschnitt bieten wir Beispiele für Benchmarktests einer Standard-VM der DS14-Serie, die mit Azure Storage Premium-Datenträgern bereitgestellt wurde.
 
 Wir haben für Windows und Linux gängige Benchmarktools wie Iometer und FIO verwendet. Diese Tools erzeugen mehrere Threads zum Simulieren eines produktionsähnlichen Workloads und Messen der Systemleistung. Mithilfe der Tools können Sie auch Parameter wie Blockgröße und Warteschlangenlänge konfigurieren, die Sie normalerweise nicht für eine Anwendung ändern können. Dadurch können Sie flexibler die Maximalleistung einer Hochleistungs-VM ermitteln, die für verschiedene Typen von Anwendungsworkloads mit Premium-Datenträgern bereitgestellt ist. Weitere Informationen zu den einzelnen Benchmarktools finden Sie unter [Iometer](http://www.iometer.org/) und [FIO](http://freecode.com/projects/fio).
@@ -341,10 +364,9 @@ Der Datenträger mit der Hostcache-Einstellung „ReadOnly“ bietet eine IOPS-R
 
 > **Wichtig:**  
 > Immer wenn die VM neu gestartet wird, müssen Sie den Cache vor dem Ausführen von Benchmarktests auffüllen.
->
->
 
 #### <a name="iometer"></a>Iometer
+
 [das Tool Iometer](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) auf den virtuellen Computer herunter.
 
 *Testdatei*  
@@ -414,6 +436,7 @@ Nachstehend sehen Sie Screenshots der Iometer-Testergebnisse für kombinierte IO
 ![](media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
+
 FIO ist ein beliebtes Tool für Benchmarktests des Speichers von Linux-VMs. Es ermöglicht die flexible Auswahl unterschiedlicher E/A-Größen sowie sequenzieller oder zufälliger Lese- und Schreibvorgänge. FIO erzeugt Arbeitsthreads oder Prozesse zum Ausführen der angegebenen E/A-Vorgänge. Mithilfe von Auftragsdateien können Sie den Typ der E/A-Vorgänge angeben, den jeder Arbeitsthread ausführen soll. Wir haben eine Auftragsdatei pro Szenario erstellt, was in den folgenden Beispielen veranschaulicht wird. Sie können die Spezifikationen in diesen Auftragsdateien ändern, um Benchmarktests für verschiedene Workloads in Storage Premium auszuführen. In den Beispielen verwenden wir eine Standard-VM vom Typ DS 14 unter **Ubuntu**. Verwenden Sie dieselbe Einrichtung wie am Anfang des Abschnitts [Benchmarktests](#Benchmarking) beschrieben, und wärmen Sie den Cache vor dem Ausführen der Benchmarktests auf.
 
 Laden Sie zunächst [FIO](https://github.com/axboe/fio) herunter, und installieren Sie es auf dem virtuellen Computer.
@@ -567,6 +590,7 @@ Während der Testausführung können Sie die Anzahl der kombinierten Lese- und S
 Um den maximalen kombinierten Lese- und Schreibdurchsatz zu erhalten, wählen Sie eine höhere Blockgröße und Warteschlangenlänge mit mehreren Threads, die Lese- und Schreibvorgänge ausführen. Sie können eine Blockgröße von 64 KB und Warteschlangenlänge von 128 verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu Azure Storage Premium:
 
 * [Premium-Speicher: Hochleistungsspeicher für Workloads in Azure Virtual Machine](../articles/virtual-machines/windows/premium-storage.md)  
