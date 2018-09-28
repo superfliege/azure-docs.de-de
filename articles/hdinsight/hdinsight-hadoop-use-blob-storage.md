@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 027204065429a9eebd2e8121cbac8bc18b9d9ce6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 91be34468dae0fb1c24080fbe53c3c8056e8c1a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091434"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967847"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 
@@ -133,11 +133,11 @@ Nach dem [Installieren und Konfigurieren von Azure PowerShell][powershell-instal
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+### <a name="use-azure-classic-cli"></a>Verwenden der klassischen Azure-Befehlszeilenschnittstelle
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Wenn Sie [die Befehlszeilenschnittstelle von Azure (Azure-CLI) installiert und konfiguriert](../cli-install-nodejs.md)haben, können Sie zur Erstellung eines Speicherkontos und Containers den folgenden Befehl verwenden.
+Wenn Sie [die klassische Befehlszeilenschnittstelle von Azure (Azure-CLI) installiert und konfiguriert](../cli-install-nodejs.md) haben, können Sie zur Erstellung eines Speicherkontos und Containers den folgenden Befehl verwenden.
 
     azure storage account create <storageaccountname> --type LRS
 
@@ -264,24 +264,24 @@ $clusterName = "<HDInsightClusterName>"
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+### <a name="use-azure-classic-cli"></a>Verwenden der klassischen Azure-Befehlszeilenschnittstelle
 Verwenden Sie den folgenden Befehl, um die Blob-bezogenen Befehle aufzulisten:
 
     azure storage blob
 
-**Beispiel für die Verwendung der Azure-CLI zum Hochladen einer Datei**
+**Beispiel für die Verwendung der klassischen Azure-CLI zum Hochladen einer Datei**
 
     azure storage blob upload <sourcefilename> <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Beispiel für die Verwendung der Azure-CLI zum Herunterladen einer Datei**
+**Beispiel für die Verwendung der klassischen Azure-CLI zum Herunterladen einer Datei**
 
     azure storage blob download <containername> <blobname> <destinationfilename> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Beispiel für die Verwendung der Azure-CLI zum Löschen einer Datei**
+**Beispiel für die Verwendung der klassischen Azure-CLI zum Löschen einer Datei**
 
     azure storage blob delete <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Beispiel für die Verwendung der Azure-CLI zum Auflisten von Dateien**
+**Beispiel für die Verwendung der klassischen Azure-CLI zum Auflisten von Dateien**
 
     azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
 

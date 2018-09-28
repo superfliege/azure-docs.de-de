@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9ec049ebbfaa8e6ee5dbf585488d5c2e8ff25802
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715062"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949705"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -49,7 +49,7 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppe
 
 **F.** Wie erstelle ich eine Skalierungsgruppe mit einem benutzerdefinierten Image?
 
-**A.** Erstellen und erfassen Sie ein VM-Image, und verwenden Sie es dann als Quelle für Ihre Skalierungsgruppe. Ein Tutorial zum Erstellen und Verwenden eines benutzerdefinierten VM-Images finden Sie unter [Azure CLI 2.0](tutorial-use-custom-image-cli.md) oder [Azure PowerShell](tutorial-use-custom-image-powershell.md).
+**A.** Erstellen und erfassen Sie ein VM-Image, und verwenden Sie es dann als Quelle für Ihre Skalierungsgruppe. Ein Tutorial zum Erstellen und Verwenden eines benutzerdefinierten VM-Images finden Sie unter [Azure CLI](tutorial-use-custom-image-cli.md) oder [Azure PowerShell](tutorial-use-custom-image-powershell.md).
 
 **F.** Welche virtuellen Computer werden entfernt, wenn ich meine Kapazität für Skalierungsgruppen von 20 auf 15 verringere?
 
@@ -129,7 +129,7 @@ Als Metrik, für die eine Warnung festgelegt werden soll, können Sie einen beli
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Wie richte ich die automatische Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell ein?
 
-Informationen zum Einrichten der automatischen Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell finden Sie unter dem Thema [Automatische Skalierung einer VM-Skalierungsgruppe](tutorial-autoscale-powershell.md). Außerdem können Sie die automatische Skalierung mit [Azure CLI 2.0](tutorial-autoscale-cli.md) und [Azure-Vorlagen](tutorial-autoscale-template.md) konfigurieren.
+Informationen zum Einrichten der automatischen Skalierung für eine VM-Skalierungsgruppe mithilfe von PowerShell finden Sie unter dem Thema [Automatische Skalierung einer VM-Skalierungsgruppe](tutorial-autoscale-powershell.md). Außerdem können Sie die automatische Skalierung mit [Azure CLI](tutorial-autoscale-cli.md) und [Azure-Vorlagen](tutorial-autoscale-template.md) konfigurieren.
 
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Wird eine VM, wenn ich sie beendet (d.h. deren Zuordnung aufgehoben) habe, bei einer automatischen Skalierung erneut gestartet?
@@ -269,7 +269,7 @@ Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linu
 linuxConfiguration-Elementname | Erforderlich | Typ | BESCHREIBUNG
 --- | --- | --- | --- |  ---
 ssh | Nein  | Sammlung | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
-path | JA | Zeichenfolge | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
+path | Ja | Zeichenfolge | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
 keyData | JA | Zeichenfolge | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
 
 Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).

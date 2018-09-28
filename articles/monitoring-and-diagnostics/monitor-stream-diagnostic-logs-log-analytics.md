@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 134c33ac28c6a094bdc50deb7206db95bf4436fc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574529"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993016"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Streamen von Azure-Diagnoseprotokollen an Log Analytics
 
-**[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können über das Portal, über PowerShell-Cmdlets oder Azure CLI 2.0 nahezu in Echtzeit an Azure Log Analytics gestreamt werden.
+**[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können über das Portal, über PowerShell-Cmdlets oder über die Azure CLI nahezu in Echtzeit an Azure Log Analytics gestreamt werden.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle in Log Analytics
 
@@ -73,9 +73,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resour
 
 Beachten Sie, dass die workspaceID-Eigenschaft die gesamte Azure-Ressourcen-ID des Arbeitsbereichs benötigt, nicht die im Log Analytics-Portal angezeigte Kombination aus Arbeitsbereichs-ID und Schlüssel.
 
-### <a name="via-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+### <a name="via-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-Zum Ermöglichen des Streamings per [Azure CLI 2.0](insights-cli-samples.md) können Sie den Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) verwenden.
+Zum Ermöglichen des Streamings per [Azure CLI](insights-cli-samples.md) können Sie den Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) verwenden.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

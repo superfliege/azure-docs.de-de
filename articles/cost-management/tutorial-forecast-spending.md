@@ -1,25 +1,25 @@
 ---
-title: 'Tutorial: Prognostizieren der Ausgaben mit Azure Cost Management | Microsoft-Dokumentation'
+title: 'Tutorial: Prognostizieren von Ausgaben mit Cloudyn in Azure | Microsoft-Dokumentation'
 description: In diesem Tutorial wird beschrieben, wie Sie die Ausgaben prognostizieren, indem Sie die Daten zum Nutzungsverlauf und zu den Ausgaben verwenden.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 411b4797510b26dec43ea7f2232457199808c857
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 587459be69fe250b3e73fb9eb9d5cd08cf2e7a42
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162193"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953683"
 ---
 # <a name="tutorial-forecast-future-spending"></a>Tutorial: Prognostizieren zukünftiger Ausgaben
 
-Azure Cost Management ermöglicht es Ihnen, zukünftige Ausgaben mithilfe der historischen Nutzung und Ausgabendaten zu prognostizieren. Sie verwenden Cloudyn-Berichte, um alle Kostenprognosedaten anzuzeigen. Die Beispiele dieses Tutorials führen Sie in einer exemplarischen Vorgehensweise durch das Überprüfen der Kostenprognosen mithilfe der Berichte. In diesem Tutorial lernen Sie Folgendes:
+Cloudyn ermöglicht es Ihnen, zukünftige Ausgaben mit Daten zum Nutzungsverlauf und zu Ausgaben zu prognostizieren. Sie verwenden Cloudyn-Berichte, um alle Kostenprognosedaten anzuzeigen. Die Beispiele dieses Tutorials führen Sie in einer exemplarischen Vorgehensweise durch das Überprüfen der Kostenprognosen mithilfe der Berichte. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Vorhersage zukünftiger Ausgaben
@@ -28,8 +28,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Sie benötigen ein Azure-Abonnement.
-- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
+- Sie benötigen ein Azure-Konto.
+- Sie müssen entweder über eine Registrierung für die Testversion oder über ein kostenpflichtiges Abonnement für Cloudyn verfügen.
 
 ## <a name="forecast-future-spending"></a>Vorhersage zukünftiger Ausgaben
 
@@ -37,7 +37,7 @@ Cloudyn enthält Kostenprognoseberichte, anhand derer Sie Ausgaben basierend auf
 
 Der Bericht über die aktuellen monatlichen vorhergesagten Kosten zeigt die Kosten für Ihre Dienste. Er bezieht sich auf Kosten ab Anfang des Monats und des vorhergehenden Monats, um die voraussichtlichen Kosten anzuzeigen. Klicken Sie im Berichtsmenü am oberen Rand des Portals auf **Cost** > **Projection and Budget** > **Current Month Projected Cost**. Die folgende Abbildung zeigt ein Beispiel.
 
-![Vorhergesagte Kosten im aktuellen Monat](./media/tutorial-forecast-spending/project-month01.png)
+![Vorhergesagte Kosten für den aktuellen Monat](./media/tutorial-forecast-spending/project-month01.png)
 
 Im Beispiel können Sie sehen, für welche Dienste die höchsten Kosten entstanden sind. Azure-Kosten waren niedriger als AWS Kosten. Wenn Sie die Kostenprognose für Azure-VMs im Detail sehen möchten, wählen Sie in der Liste **Filter** **Azure/VM**.
 

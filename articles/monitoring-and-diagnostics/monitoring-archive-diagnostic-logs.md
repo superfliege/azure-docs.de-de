@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 1686c283b0aa9f0713317b22e2ef2abd16e6b187
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: caa8f1a10652c16e181c47fbbe4f9f0c815cfd67
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579910"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983683"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivieren von Azure-Diagnoseprotokollen
 
@@ -81,7 +81,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | RetentionEnabled |Nein  |Boolescher Wert, der angibt, ob eine Aufbewahrungsrichtlinie für diese Ressource aktiviert ist |
 | RetentionInDays |Nein  |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
 
-## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archivieren von Diagnoseprotokollen mit Azure CLI 2.0
+## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>Archivieren von Diagnoseprotokollen mit Azure CLI
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -99,7 +99,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
     }]'
 ```
 
-Sie können das Diagnoseprotokoll mit weiteren Kategorien ergänzen, indem Sie dem JSON-Array, das als der `--logs`-Parameter übergeben wird, Wörterbücher hinzufügen.
+Sie können das Diagnoseprotokoll um weitere Kategorien ergänzen, indem Sie dem JSON-Array, das als `--logs`-Parameter übergeben wird, Wörterbücher hinzufügen.
 
 Das `--resource-group`-Argument ist nur erforderlich, wenn `--storage-account` keine Objekt-ID ist. Die vollständige Dokumentation für die Archivierung von Diagnoseprotokollen im Speicher finden Sie in der [CLI-Befehlsreferenz](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 

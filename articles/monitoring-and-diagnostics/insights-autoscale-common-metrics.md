@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 7b6f454a8d4c8794b8c56494fd9ed573f8b79852
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 48c53b1b0c037e6bcfea3be49fdd2110e1e694b3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262238"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970701"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Allgemeine Metriken für die automatische Skalierung in Azure Monitor
-Mit der automatischen Skalierung in Azure Monitor können Sie die Anzahl der ausgeführten Instanzen basierend auf Telemetriedaten (Metriken) zentral hoch- oder herunterskalieren. Dieses Dokument beschreibt allgemeine Metriken, die Sie verwenden möchten. Im Azure-Portal für Cloud Services und Serverfarmen können Sie die Metrik der Ressource für die Skalierung auswählen. Sie können jedoch auch eine Metrik aus einer anderen Ressource für die Skalierung auswählen.
+Mit der automatischen Skalierung in Azure Monitor können Sie die Anzahl der ausgeführten Instanzen basierend auf Telemetriedaten (Metriken) zentral hoch- oder herunterskalieren. Dieses Dokument beschreibt allgemeine Metriken, die Sie verwenden möchten. Im Azure-Portal können Sie die Metrik der Ressource für die Skalierung auswählen. Sie können jedoch auch eine Metrik aus einer anderen Ressource für die Skalierung auswählen.
 
-Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
+Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
 
 ## <a name="compute-metrics-for-resource-manager-based-vms"></a>Berechnen von Metriken für Resource Manager-basierte virtuelle Computer
 Standardmäßig geben Resource Manager-basierte virtuelle Computer und VM-Skalierungsgruppen grundlegende Metriken (also Metriken auf der Hostebene) aus. Wenn Sie die Erfassung von Diagnosedaten für einen virtuellen Azure-Computer und eine VM-Skalierungsgruppe konfigurieren, gibt die Azure-Diagnoseerweiterung darüber hinaus Leistungsmetriken für das Gastbetriebssystem (so genannte „Gastbetriebssystem-Metriken“) aus.  Diese Metriken werden alle in Regeln für die automatische Skalierung verwendet.

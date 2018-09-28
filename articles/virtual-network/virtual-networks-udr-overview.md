@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811912"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978914"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -105,13 +105,13 @@ Es ist nicht möglich, **VNet-Peering** oder **VirtualNetworkServiceEndpoint** a
 
 Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unterscheidet sich für das Azure-Portal und Befehlszeilentools und die Bereitstellungsmodelle „Azure Resource Manager“ und „klassisch“. In der folgenden Tabelle sind die Namen aufgeführt, die zum Verweisen auf den Typ des nächsten Hops mit den unterschiedlichen Tools und [Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwendet werden:
 
-|Typ des nächsten Hops                   |Azure CLI 2.0 und PowerShell (Resource Manager) |Azure CLI 1.0 und PowerShell (klassisch)|
+|Typ des nächsten Hops                   |Die Azure CLI und PowerShell (Resource Manager) |Die klassische Azure CLI und PowerShell (klassisch)|
 |-------------                   |---------                                       |-----|
 |Gateway des virtuellen Netzwerks         |VirtualNetworkGateway                           |VPNGateway|
-|Virtuelles Netzwerk                 |VNetLocal                                       |VNETLocal (im ASM-Modus in CLI 1.0 nicht verfügbar)|
-|Internet                        |Internet                                        |Internet (im ASM-Modus in CLI 1.0 nicht verfügbar)|
+|Virtuelles Netzwerk                 |VNetLocal                                       |VNETLocal (im ASM-Modus in der klassischen CLI nicht verfügbar)|
+|Internet                        |Internet                                        |Internet (im ASM-Modus in der klassischen CLI nicht verfügbar)|
 |Virtuelles Gerät               |VirtualAppliance                                |VirtualAppliance|
-|Keine                            |Keine                                            |Null (im ASM-Modus in CLI 1.0 nicht verfügbar)|
+|Keine                            |Keine                                            |NULL (im ASM-Modus in der klassischen CLI nicht verfügbar)|
 |Peering in virtuellen Netzwerken         |VNet-Peering                                    |Nicht zutreffend|
 |Dienstendpunkt des virtuellen Netzwerks|VirtualNetworkServiceEndpoint                   |Nicht zutreffend|
 
@@ -181,7 +181,7 @@ Zur Erläuterung der Konzepte in diesem Artikel wird in den nächsten Abschnitte
 > [!NOTE]
 > Dieses Beispiel ist nicht als empfohlene Implementierung oder bewährte Methode gedacht. Es soll nur dem besseren Verständnis der Konzepte in diesem Artikel dienen.
 
-### <a name="requirements"></a>Anforderungen
+### <a name="requirements"></a>Requirements (Anforderungen)
 
 1. Implementieren Sie zwei virtuelle Netzwerke in derselben Azure-Region, und ermöglichen Sie für Ressourcen die Kommunikation zwischen den virtuellen Netzwerken.
 2. Ermöglichen Sie für ein lokales Netzwerk die sichere Kommunikation mit beiden virtuellen Netzwerken per VPN-Tunnel über das Internet. *Alternativ hierzu können Sie auch eine ExpressRoute-Verbindung verwenden, aber in diesem Beispiel wird eine VPN-Verbindung genutzt.*
@@ -208,7 +208,7 @@ Mit den Pfeilen ist der Weg des Datenverkehrs angegeben.
 
 Die Routentabelle für *Subnet1* in der Abbildung enthält die folgenden Routen:
 
-|ID  |Quelle |State (Zustand)  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
+|ID  |Quelle |Zustand  |Adresspräfixe    |Typ des nächsten Hops          |IP-Adresse des nächsten Hops|Name der benutzerdefinierten Route| 
 |----|-------|-------|------              |-------                |--------           |--------      |
 |1   |Standard|Ungültig|10.0.0.0/16         |Virtuelles Netzwerk        |                   |              |
 |2   |Benutzer   |Aktiv |10.0.0.0/16         |Virtuelles Gerät      |10.0.100.4         |Within-VNet1  |
@@ -242,7 +242,7 @@ Es folgen Erklärungen der einzelnen Routen-IDs:
 
 Die Routentabelle für *Subnet2* in der Abbildung enthält die folgenden Routen:
 
-|Quelle  |State (Zustand)  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
+|Quelle  |Zustand  |Adresspräfixe    |Typ des nächsten Hops             |IP-Adresse des nächsten Hops|
 |------- |-------|------              |-------                   |--------           
 |Standard |Aktiv |10.0.0.0/16         |Virtuelles Netzwerk           |                   |
 |Standard |Aktiv |10.1.0.0/16         |VNet-Peering              |                   |

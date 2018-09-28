@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen von LUIS-Daten zu Application Insights mit Node.js | Microsoft-Dokumentation
-titleSuffix: Azure
+title: Application Insights-Daten aus LUIS mit C#
+titleSuffix: Azure Cognitive Services
 description: Erstellen Sie mit Node.js einen Bot, der in eine LUIS-Anwendung und Application Insights integriert ist.
 services: cognitive-services
 author: diberry
@@ -8,17 +8,19 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 12ac9f74c685e07ddb21db7cf5e3b726092891b2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236838"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954295"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Hinzufügen von LUIS-Ergebnissen zu Application Insights von einem Web-App-Bot
+# <a name="add-luis-results-to-application-insights"></a>Hinzufügen von LUIS-Ergebnissen zu Application Insights
 In diesem Tutorial werden [Application Insights](https://azure.microsoft.com/services/application-insights/)-Telemetriedatenspeichern Informationen aus LUIS-Anforderungen und -Antworten hinzugefügt. Sobald Sie über diese Daten verfügen, können Sie sie mit der Sprache Kusto oder mit Power BI abfragen, um Absichten und Entitäten einer Äußerung in Echtzeit zu analysieren, zu aggregieren und Berichte dazu zu erstellen. Diese Analyse hilft Ihnen dabei, zu ermitteln, ob Sie die Absichten und Entitäten aus Ihrer LUIS-App hinzufügen oder bearbeiten sollten.
+
+Der Bot wird mit Bot Framework 3.x und dem Azure Web-App-Bot erstellt.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -151,7 +153,7 @@ In Application Insights können Sie Daten mit der Sprache [Kusto](https://docs.m
     ![Spalte „topIntent“ der Analyse](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-Erfahren Sie mehr über die [Abfragesprache Kusto](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries), oder [exportieren Sie die Daten in Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Erfahren Sie mehr über die [Abfragesprache Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries), oder [exportieren Sie die Daten in Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

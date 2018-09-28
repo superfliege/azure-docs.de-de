@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da4f06ff4e1478043bc147c2c08083e118bccbe4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4532355130fff987e25c5c804630fb6bdd7699df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723118"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959834"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Tutorial: Automatisches Skalieren einer VM-Skalierungsgruppe mit einer Azure-Vorlage
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren. In diesem Tutorial lernen Sie Folgendes:
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens die Azure CLI-Version 2.0.29 ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli). 
 
 
 ## <a name="define-an-autoscale-profile"></a>Definieren eines Profils für die automatische Skalierung
@@ -272,7 +272,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial wurde beschrieben, wie Sie für eine Skalierungsgruppe mit Azure CLI 2.0 das automatische horizontale Herunter- oder Hochskalieren durchführen:
+In diesem Tutorial wurde beschrieben, wie Sie für eine Skalierungsgruppe mit Azure CLI das automatische horizontale Herunter- oder Hochskalieren durchführen:
 
 > [!div class="checklist"]
 > * Verwenden der automatischen Skalierung mit einer Skalierungsgruppe
@@ -280,7 +280,7 @@ In diesem Tutorial wurde beschrieben, wie Sie für eine Skalierungsgruppe mit Az
 > * Durchführen eines Belastungstests für VM-Instanzen und Auslösen von Regeln für die automatische Skalierung
 > * Zurückfahren der automatischen Skalierung bei einer Reduzierung des Bedarfs
 
-Weitere Beispiele für VM-Skalierungsgruppen in Aktion finden Sie in den folgenden Azure CLI 2.0-Beispielskripts:
+Weitere Beispiele für VM-Skalierungsgruppen in Aktion finden Sie in den folgenden Azure CLI-Beispielskripts:
 
 > [!div class="nextstepaction"]
-> [Skalierungsgruppen-Skriptbeispiele für Azure CLI 2.0](cli-samples.md)
+> [Skalierungsgruppen-Skriptbeispiele für Azure CLI](cli-samples.md)

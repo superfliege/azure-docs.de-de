@@ -5,20 +5,20 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2016
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264669"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946985"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
 
-Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/).
+Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 > [!NOTE]
 > Azure verfügt über zwei Methoden für die automatische Skalierung. Eine ältere Version der automatischen Skalierung gilt für virtuelle Computer (Verfügbarkeitsgruppen). Diese Funktion verfügt über eingeschränkten Support. Wir empfehlen die Migration zu Skalierungsgruppen für virtuelle Computer, um für einen schnelleren und zuverlässigeren Support der automatischen Skalierung zu sorgen. Dieser Artikel enthält einen Link zur Verwendung der älteren Technologie.  
@@ -41,7 +41,7 @@ Ressourcen geben Metriken aus, die später von Regeln verarbeitet werden. Metrik
 Für Skalierungsgruppen für virtuelle Computer werden Telemetriedaten von Azure-Diagnose-Agents verwendet, während die Telemetriedaten für Web-Apps und Clouddienste direkt aus der Azure-Infrastruktur stammen. Einige häufig verwendete Statistiken sind CPU-Nutzung, Arbeitsspeichernutzung, Threadanzahl, Warteschlangenlänge und Datenträgerverwendung. Eine Liste mit den Telemetriedaten, die Sie verwenden können, finden Sie unter [Allgemeine Metriken für die automatische Skalierung](insights-autoscale-common-metrics.md).
 
 ## <a name="custom-metrics"></a>Benutzerdefinierte Metriken
-Sie können auch eigene benutzerdefinierten Metriken verwenden, die von Ihren Anwendungen ausgegeben werden können. Wenn Sie Ihre Anwendungen für das Senden von Metriken an Application Insights konfiguriert haben, können Sie anhand dieser Metriken entscheiden, ob die Skalierung angewendet werden soll oder nicht. 
+Sie können auch eigene benutzerdefinierten Metriken verwenden, die von Ihren Anwendungen ausgegeben werden können. Wenn Sie Ihre Anwendungen für das Senden von Metriken an Application Insights konfiguriert haben, können Sie anhand dieser Metriken entscheiden, ob die Skalierung angewendet werden soll oder nicht.
 
 ## <a name="time"></a>Zeit
 Für zeitplanbasierte Regeln gilt die UTC-Zeit. Sie müssen die Zeitzone richtig einrichten, wenn Sie Ihre Regeln festlegen.  
@@ -110,6 +110,7 @@ Zum Einrichten der automatischen Skalierung können Sie Folgendes verwenden:
 | Virtuelle Computer: Windows-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
 | Virtuelle Computer: Linux-Skalierungsgruppen |[Skalieren von VM-Skalierungsgruppen in Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
 | Virtuelle Computer: Windows-Beispiel |[Erweiterte Konfiguration der automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| API Management-Dienst|[Automatisches Skalieren einer Azure API Management-Instanz](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur automatischen Skalierung können Sie den obigen exemplarischen Vorgehensweisen für die automatische Skalierung oder den folgenden Ressourcen entnehmen:

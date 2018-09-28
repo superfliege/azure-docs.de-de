@@ -1,29 +1,29 @@
 ---
-title: 'Tutorial: Zuweisen des Zugriffs in Azure Cost Management | Microsoft-Dokumentation'
-description: In diesem Tutorial wird beschrieben, wie Sie den Zugriff auf Kostenverwaltungsdaten mit Benutzerkonten zuweisen, die Ebenen für den Zugriff auf Entitäten definieren.
+title: 'Tutorial: Zuweisen des Zugriffs mit Cloudyn in Azure | Microsoft-Dokumentation'
+description: In diesem Tutorial wird beschrieben, wie Sie den Zugriff auf Cloudyn-Daten mit Benutzerkonten zuweisen, die Ebenen für den Zugriff auf Entitäten definieren.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/10/2018
+ms.date: 09/18/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 4b45d917118d5be1252c3bb232e4b24e68d7857f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b3dcfc1756932d75f9885490baa8d09af54d111c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188181"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957466"
 ---
-# <a name="tutorial-assign-access-to-cost-management-data"></a>Tutorial: Zuweisen des Zugriffs auf Kostenverwaltungsdaten
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Tutorial: Zuweisen des Zugriffs auf Cloudyn-Daten
 
-Der Zugriff auf Kostenverwaltungsdaten wird über die Benutzer- oder Entitätsverwaltung bereitgestellt. Cloudyn-Benutzerkonten steuern den Zugriff auf *Entitäten* und administrative Funktionen. Es gibt zwei Arten des Zugriffs: Administrator und Benutzer. Sofern keine benutzerspezifische Änderung erfolgt, ermöglicht der Administratorzugriff eine unbeschränkte Nutzung sämtlicher Funktionen im Cloudyn-Portal, einschließlich Benutzerverwaltung, Empfängerlistenverwaltung und des Zugriffs auf alle Entitätsdaten auf Stammentitätsebene. Der Benutzerzugriff ist für Endbenutzer ausgelegt, die über ihren Zugriff auf Entitätsdaten Berichte anzeigen oder erstellen.
+Der Zugriff auf Cloudyn-Daten wird über die Benutzer- oder Entitätsverwaltung bereitgestellt. Cloudyn-Benutzerkonten steuern den Zugriff auf *Entitäten* und administrative Funktionen. Es gibt zwei Arten des Zugriffs: Administrator und Benutzer. Sofern keine benutzerspezifische Änderung erfolgt, ermöglicht der Administratorzugriff eine unbeschränkte Nutzung sämtlicher Funktionen im Cloudyn-Portal, einschließlich Benutzerverwaltung, Empfängerlistenverwaltung und des Zugriffs auf alle Entitätsdaten auf Stammentitätsebene. Der Benutzerzugriff ist für Endbenutzer ausgelegt, die über ihren Zugriff auf Entitätsdaten Berichte anzeigen oder erstellen.
 
 Entitäten geben die hierarchische Struktur Ihrer Geschäftsorganisation wieder. Sie stehen für Abteilungen, Geschäftsbereiche und Teams in Ihrer Organisation in Cloudyn. Die Entitätshierarchie hilft Ihnen dabei, die Ausgaben nach Entitäten genau nachzuverfolgen.
 
-Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein Konto mit Administratorberechtigung in Cloudyn erstellt, sodass Sie alle Schritte in diesem Tutorial ausführen können. Dieses Tutorial behandelt den Zugriff auf Kostenverwaltungsdaten, einschließlich Benutzerverwaltung und Entitätsverwaltung. Folgendes wird vermittelt:
+Bei der Registrierung Ihrer Azure-Vereinbarung oder Ihres Azure-Kontos wurde ein Konto mit Administratorberechtigung in Cloudyn erstellt, sodass Sie alle Schritte in diesem Tutorial ausführen können. Dieses Tutorial behandelt den Zugriff auf Cloudyn-Daten, einschließlich Benutzerverwaltung und Entitätsverwaltung. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Benutzers mit Administratorzugriff
@@ -38,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie benötigen ein Azure-Konto.
-- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Azure Cost Management verfügen.
+- Sie müssen entweder über eine Registrierung für die Testversion oder ein kostenpflichtiges Abonnement für Cloudyn verfügen.
 
 ## <a name="create-a-user-with-admin-access"></a>Erstellen eines Benutzers mit Administratorzugriff
 
@@ -50,7 +50,7 @@ Unter **User has admin access** (Benutzer verfügt über Administratorzugriff) i
   ![Neuen Benutzer mit Administratorzugriff hinzufügen](.\media\tutorial-user-access\new-admin-access.png)
 
 ## <a name="create-a-user-with-user-access"></a>Erstellen eines Benutzers mit Benutzerzugriff
-Typische Benutzer, die Zugriff auf Kostenverwaltungsdaten wie Dashboards oder Berichte benötigen, sollten über den entsprechenden Benutzerzugriff zum Anzeigen verfügen. Erstellen Sie einen neuen Benutzer mit Benutzerzugriff ähnlich dem, den Sie mit Administratorzugriff erstellt haben, jedoch mit folgenden Unterschieden:
+Typische Benutzer, die Zugriff auf Cloudyn-Daten wie Dashboards oder Berichte benötigen, sollten über den entsprechenden Benutzerzugriff zum Anzeigen verfügen. Erstellen Sie einen neuen Benutzer mit Benutzerzugriff ähnlich dem, den Sie mit Administratorzugriff erstellt haben, jedoch mit folgenden Unterschieden:
 
 - Deaktivieren Sie **Allow User Management** (Benutzerverwaltung zulassen) und **Allow Recipient lists Management** (Empfängerlistenverwaltung zulassen), und deaktivieren Sie alle Elemente in der Liste **User has admin access** (Benutzer verfügt über Administratorzugriff).
 - Aktivieren Sie in der Liste **User has user access** (Benutzer verfügt über Benutzerzugriff) die Entitäten, für die der Benutzer Zugriff benötigt.
@@ -58,7 +58,7 @@ Typische Benutzer, die Zugriff auf Kostenverwaltungsdaten wie Dashboards oder Be
 
 ![Neuen Benutzer mit Benutzerzugriff erstellen](.\media\tutorial-user-access\new-user-access.png)
 
-Ein Videotutorial zum Hinzufügen von Benutzern finden Sie unter [Adding Users to Azure Cost Management](https://youtu.be/Nzn7GLahx30) (Hinzufügen von Benutzern zu Azure Cost Management).
+Ein Videotutorial zum Hinzufügen von Benutzern finden Sie unter [Adding Users to Cloudyn](https://youtu.be/Nzn7GLahx30) (Hinzufügen von Benutzern zu Cloudyn).
 
 ## <a name="delete-a-user"></a>Löschen eines Benutzers
 
@@ -92,7 +92,7 @@ Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, 
 
 Klicken Sie neben **Entities** (Entitäten) auf **Add Entity** (Entität hinzufügen). Geben Sie Informationen zu der Person oder Abteilung ein, die Sie hinzufügen möchten. Die Eingaben in den Feldern **Full Name** (Vollständiger Name) und **Email** müssen keinen vorhandenen Benutzern entsprechen. Wenn Sie eine Liste von Zugriffsebenen anzeigen möchten, suchen Sie in der Hilfe nach *Adding an entity* (Hinzufügen einer Entität).
 
-![Entität hinzufügen](.\media\tutorial-user-access\add-entity.png)
+![Hinzufügen einer Entität](.\media\tutorial-user-access\add-entity.png)
 
 **Speichern** Sie nach Abschluss die Entität.
 
@@ -114,9 +114,9 @@ Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, 
 
 Sie können einer Entität auch mehrere Konten zuordnen. Wählen Sie die Konten aus, und klicken Sie dann auf **Verschieben**. Wählen Sie im Feld zum Verschieben von Konten die Entität aus, in die Sie das Konto verschieben möchten, und klicken Sie dann auf **Speichern**. Im Feld zum Verschieben von Konten müssen Sie bestätigen, dass Sie die Konten verschieben möchten. Klicken Sie auf **Ja** und dann auf **OK**.
 
-Ein Videotutorial zum Erstellen einer Kostenentitätshierarchie finden Sie unter [Creating a Cost Entity Hierarchy in Azure Cost Management](https://youtu.be/dAd9G7u0FmU) (Erstellen einer Kostenentitätshierarchie in Azure Cost Management).
+Ein Videotutorial zum Erstellen einer Kostenentitätshierarchie finden Sie unter [Creating a Cost Entity Hierarchy in Cloudyn](https://youtu.be/dAd9G7u0FmU) (Erstellen einer Kostenentitätshierarchie in Cloudyn).
 
-Wenn Sie über ein Azure Enterprise Agreement verfügen, finden Sie ein Videotutorial zum Zuordnen von Konten und Abonnements zu Entitäten unter [Connecting to Azure Resource Manager with Azure Cost Management](https://youtu.be/oCIwvfBB6kk) (Herstellen einer Verbindung mit Azure Resource Manager mit Azure Cost Management).
+Wenn Sie über ein Azure Enterprise Agreement verfügen, finden Sie ein Videotutorial zum Zuordnen von Konten und Abonnements zu Entitäten unter [Connecting to Azure Resource Manager with Cloudyn](https://youtu.be/oCIwvfBB6kk) (Herstellen einer Verbindung mit Azure Resource Manager mit Cloudyn).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

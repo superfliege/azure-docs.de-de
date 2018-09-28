@@ -8,7 +8,6 @@ ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
@@ -16,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144644"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970922"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Strukturieren von Projekten mit Team Data Science-Prozessvorlagen
 
-Dieses Dokument enthält Anleitungen zum Erstellen von Data Science-Projekten in Azure Machine Learning mit Team Data Science-Prozessvorlagen (TDSP). Diese Vorlagen helfen, Projekte für Zusammenarbeit und Reproduzierbarkeit zu strukturieren. 
+Dieses Dokument enthält Anleitungen zum Erstellen von Data Science-Projekten in früheren Versionen von Azure Machine Learning mithilfe von Team Data Science-Prozessvorlagen (TDSP). Diese Vorlagen helfen, Projekte für Zusammenarbeit und Reproduzierbarkeit zu strukturieren. 
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 ## <a name="what-is-the-team-data-science-process"></a>Was ist der Team Data Science-Prozess (TDSP)?
 Beim TDSP handelt es sich um einen agilen, iterativen Data Science-Prozess zum Ausführen und Bereitstellen erweiterter Analysemethoden. Der Prozess dient zum Verbessern der Zusammenarbeit und Effizienz von Data Science-Teams in Unternehmen. Es werden diese Ziele mit vier Hauptkomponenten unterstützt:
@@ -52,7 +53,7 @@ Wir haben zuvor ein [GitHub-Repository für die TDSP-Projektstruktur und -Vorlag
 * Überprüfen Sie die [TDSP Machine Learning](https://aka.ms/tdspamlgithubrepo)-Vorlage.
 * Inhalte (außer denen, die im Ordner „docs“ bereits vorhanden sind) müssen kleiner als 25 MB sein. Siehe den Hinweis, der auf diese Liste folgt.
 * Der Ordner „sample\_data“ ist nur für kleine Datendateien (weniger als 5 MB) gedacht, mit denen Sie Ihren Code testen oder eine frühen Entwicklung starten können.
-* Durch Speichern von Dateien wie Word- und PowerPoint-Dateien kann sich die Größe des Ordners „docs“ wesentlich erhöhen. Es wird empfohlen, eine auf Zusammenarbeit ausgelegte Ressource wie ein Wiki, [SharePoint](https://products.office.com/en-us/sharepoint/collaboration) o.ä. zu bestimmen, um solche Dateien zu speichern.
+* Durch Speichern von Dateien wie Word- und PowerPoint-Dateien kann sich die Größe des Ordners „docs“ wesentlich erhöhen. Es wird empfohlen, eine auf Zusammenarbeit ausgelegte Ressource wie ein Wiki, [SharePoint](https://products.office.com/sharepoint/collaboration) o.ä. zu bestimmen, um solche Dateien zu speichern.
 * Informationen zum Umgang mit großen Dateien und Ausgaben in Machine Learning finden Sie unter [Beibehalten von Änderungen und Arbeiten mit großen Dateien](http://aka.ms/aml-largefiles).
 
 > [!NOTE]

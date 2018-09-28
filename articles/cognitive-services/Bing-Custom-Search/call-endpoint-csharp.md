@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 32644fe0cf0a6e1666d2d1ee6efb826bf753f001
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ed00b75fa956d0197d3672d84b097f99ec3c35ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814862"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956382"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>Aufrufen eines Endpunkts für die benutzerdefinierte Bing-Suche (C#)
 
@@ -22,31 +22,32 @@ In dieser Schnellstartanleitung wird das Anfordern von Suchergebnissen aus Ihrer
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
--  Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
--  Installation von [.NET Core](https://www.microsoft.com/net/download/core).
-- Ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit **Bing-Suche-APIs**. Die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) ist für diesen Schnellstart ausreichend. Sie benötigen den Zugriffsschlüssel, den Sie beim Aktivieren Ihrer kostenlosen Testversion erhalten, oder Sie können den Schlüssel eines kostenpflichtigen Abonnements von Ihrem Azure-Dashboard verwenden.  
+Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
-  >[!NOTE]  
-  >Bestehende Kunden der benutzerdefinierten Bing-Suche, die am oder vor dem 15. Oktober 2017 einen Schlüssel für eine Vorschauversion bereitgestellt haben, können ihre Schlüssel bis zum 30. November 2017 nutzen (bzw. bis sie die maximal zulässige Anzahl von Abfragen ausgeschöpft haben). Danach müssen sie zur allgemein verfügbaren Version in Azure migrieren. 
- 
+- Eine einsatzbereite Instanz für die benutzerdefinierte Suche. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Instanz der benutzerdefinierten Bing-Suche](quick-start.md).
+- Installation von [.NET Core](https://www.microsoft.com/net/download/core).
+- Abonnementschlüssel Sie erhalten einen Abonnementschlüssel, wenn Sie Ihre [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) aktivieren, oder Sie können einen kostenpflichtigen Abonnementschlüssel über Ihr Azure-Dashboard beziehen (siehe [Erstellen eines Cognitive Services-APIs-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+
+
 ## <a name="run-the-code"></a>Ausführen des Codes
 
 Führen Sie diese Schritte aus, um das Beispiel auszuführen:
 
-1. Erstellen Sie einen Ordner für Ihren Code.
-2. Navigieren Sie an einer Eingabeaufforderung oder einem Terminal zu dem Ordner, den Sie gerade erstellt haben.
+1. Erstellen Sie einen Ordner für Ihren Code.  
+  
+2. Navigieren Sie an einer Eingabeaufforderung oder einem Terminal zu dem Ordner, den Sie gerade erstellt haben.  
+  
 3. Führen Sie die folgenden Befehle aus:
     ```
     dotnet new console -o BingCustomSearch
     cd BingCustomSearch
     dotnet add package Newtonsoft.Json
     dotnet restore
-   ```
+    ```
+  
+4. Kopieren Sie den folgenden Code in die Datei „Program.cs“. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Abonnementschlüssel und Ihre Konfigurations-ID.
 
-4. Kopieren Sie den folgenden Code in die Datei „Program.cs“.
-5. Ersetzen Sie **YOUR-SUBSCRIPTION-KEY** und **YOUR-CUSTOM-CONFIG-ID** durch Ihren Schlüssel bzw. Ihre Konfigurations-ID.
-
-    ``` CSharp
+    ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
@@ -124,7 +125,7 @@ Führen Sie diese Schritte aus, um das Beispiel auszuführen:
     dotnet build 
     </pre>
     
-7. Führen Sie die Anwendung aus, indem Sie den folgenden Befehl verwenden und **PATH TO OUTPUT** durch den Pfad aus dem Buildschritt ersetzen.
+7. Führen Sie die Anwendung aus, indem Sie den folgenden Befehl verwenden und **PATH TO OUTPUT** durch den in Schritt 6 angegebenen DLL-Pfad ersetzen.
 
     <pre>    
     dotnet **PATH TO OUTPUT**

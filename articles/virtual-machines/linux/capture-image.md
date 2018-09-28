@@ -1,6 +1,6 @@
 ---
-title: Erfassen eines Image einer Linux-VM in Azure mit CLI 2.0 | Microsoft-Dokumentation
-description: Erfassen Sie ein Image von einer Azure-VM, das für Massenbereitstellungen mit Azure CLI 2.0 verwendet werden soll.
+title: Erfassen eines Image einer Linux-VM in Azure mit Azure CLI | Microsoft-Dokumentation
+description: Erfassen Sie mit Azure CLI ein Image einer Azure-VM, das für Massenbereitstellungen verwendet werden soll.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ea202cad06130cfaaa134cad94ac08bede2f41a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 98d98c1337830ce54c7ff96c19812169be129584
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867700"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946815"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Vorgehensweise zum Erstellen eines Image von einem virtuellen Computer oder einer VHD
 
@@ -38,7 +38,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 * Sie müssen mit verwalteten Datenträgern eine Azure-VM im Resource Manager-Bereitstellungsmodell erstellen. Wenn Sie keine Linux-VM erstellt haben, können Sie das [Portal](quick-create-portal.md), die [Azure CLI](quick-create-cli.md) oder [Resource Manager-Vorlagen](create-ssh-secured-vm-from-template.md) dazu verwenden. Konfigurieren Sie die VM den Anforderungen entsprechend. Sie können beispielsweise [Datenträger hinzufügen](add-disk.md), Updates einspielen und Anwendungen installieren. 
 
-* Zudem muss die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
+* Zudem muss die neueste Version von [Azure CLI](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sein.
 
 ## <a name="quick-commands"></a>Schnellbefehle
 
@@ -62,7 +62,7 @@ Sie heben die Bereitstellung der VM mithilfe des Azure-VM-Agents auf, um compute
 4. Geben Sie nach Abschluss des Befehls **exit** ein. Dieser Schritt schließt den SSH-Client.
 
 ## <a name="step-2-create-vm-image"></a>Schritt 2: Erstellen des VM-Image
-Verwenden Sie die Azure CLI 2.0, um die VM als generalisiert zu kennzeichnen und das Image zu erfassen. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *myVnet* und *myVM*.
+Verwenden Sie Azure CLI, um die VM als generalisiert zu kennzeichnen und das Image zu erfassen. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u.a. *myResourceGroup*, *myVnet* und *myVM*.
 
 1. Heben Sie die Zuordnung des virtuellen Computers auf, dessen Bereitstellung Sie mit [az vm deallocate](/cli//azure/vm#deallocate) aufgehoben haben. Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
    
@@ -146,4 +146,4 @@ Sie können mehrere virtuelle Computer aus dem Image des virtuellen Quellcompute
 - Führen Sie erneut die Schritte zum Aufheben der Bereitstellung, zum Aufheben der Zuordnung, zum Generalisieren und zum Erstellen eines Images aus.
 - Verwenden Sie dieses neue Image für zukünftige Bereitstellungen. Löschen Sie bei Bedarf das ursprüngliche Image.
 
-Weitere Informationen zum Verwalten Ihrer virtuellen Computer mit der Befehlszeilenschnittstelle finden Sie unter [Azure CLI 2.0](/cli/azure).
+Weitere Informationen zum Verwalten Ihrer virtuellen Computer mit der Befehlszeilenschnittstelle finden Sie unter [Azure CLI](/cli/azure).

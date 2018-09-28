@@ -14,19 +14,19 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 220132f5f8c926999ac18299c3e8362be78d23a8
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171788"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990177"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Verwalten von DNS-Einträgen und -Ressourceneintragssätzen in Azure DNS über Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+> * [Die klassische Azure CLI](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure-CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell DNS-Einträge für Ihre DNS-Zone verwalten. DNS-Einträge können auch mithilfe der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwaltet werden.

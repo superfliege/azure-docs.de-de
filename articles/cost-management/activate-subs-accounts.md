@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: ec56f9fdf21459857c8115222da921b6681a3ac5
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 1726cf947ad027eabd79aa35da92df37e1681003
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247235"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959613"
 ---
-# <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivieren von Azure-Abonnements und -Konten mit Azure Cost Management
+# <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Aktivieren von Azure-Abonnements und -Konten mit Cloudyn
 
-Durch das Hinzufügen oder Aktualisieren Ihrer Azure Resource Manager-Anmeldeinformationen kann Azure Cost Management alle Konten und Abonnements in Ihrem Azure-Mandanten ermitteln. Wenn Sie auf Ihren virtuellen Computern außerdem die Erweiterung „Azure-Diagnose“ aktiviert haben, kann Azure Cost Management erweiterte Metriken wie z.B. CPU- und Arbeitsspeicherdaten sammeln. In diesem Artikel wird beschrieben, wie Sie den Zugriff mithilfe von Azure Resource Manager-APIs für neue und vorhandene Konten aktivieren. Darüber hinaus wird erläutert, wie Sie häufige Probleme im Zusammenhang mit Konten beheben.
+Durch das Hinzufügen oder Aktualisieren Ihrer Azure Resource Manager-Anmeldeinformationen kann Cloudyn alle Konten und Abonnements in Ihrem Azure-Mandanten ermitteln. Wenn Sie auf Ihren virtuellen Computern außerdem die Erweiterung „Azure-Diagnose“ aktiviert haben, kann Cloudyn erweiterte Metriken wie CPU- und Arbeitsspeicherdaten sammeln. In diesem Artikel wird beschrieben, wie Sie den Zugriff mithilfe von Azure Resource Manager-APIs für neue und vorhandene Konten aktivieren. Darüber hinaus wird erläutert, wie Sie häufige Probleme im Zusammenhang mit Konten beheben.
 
-Azure Cost Management kann auf die meisten Ihrer Azure-Abonnementdaten nicht zugreifen, wenn das Abonnement _nicht aktiviert_ ist. Sie müssen _nicht aktivierte_ Konten bearbeiten, damit Azure Cost Management darauf zugreifen kann.
+Cloudyn kann auf die meisten Ihrer Azure-Abonnementdaten nicht zugreifen, wenn das Abonnement _nicht aktiviert_ ist. Sie müssen _nicht aktivierte_ Konten bearbeiten, damit Cloudyn darauf zugreifen kann.
 
 ## <a name="required-azure-permissions"></a>Erforderliche Azure-Berechtigungen
 
@@ -47,17 +47,17 @@ Wenn Ihr Konto der Rolle **Mitwirkender** zugewiesen ist, verfügen Sie nicht ü
 
 ## <a name="add-an-account-or-update-a-subscription"></a>Hinzufügen eines Kontos oder Aktualisieren eines Abonnements
 
-Wenn Sie ein Konto hinzufügen oder ein Abonnement aktualisieren, gewähren Sie Azure Cost Management Zugriff auf Ihre Azure-Daten.
+Wenn Sie ein Konto hinzufügen oder ein Abonnement aktualisieren, gewähren Sie Cloudyn Zugriff auf Ihre Azure-Daten.
 
 ### <a name="add-a-new-account-subscription"></a>Hinzufügen eines neuen Kontos (Abonnements)
 
-1. Klicken Sie im Azure Cost Management-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Cloudkonten** aus.
+1. Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Cloud Accounts** (Cloudkonten) aus.
 2. Klicken Sie auf **Neues Konto hinzufügen**. Das Feld **Neues Konto hinzufügen** wird angezeigt. Geben Sie die erforderlichen Informationen ein.  
     ![Feld „Neues Konto hinzufügen“](./media/activate-subs-accounts//add-new-account.png)
 
 ### <a name="update-a-subscription"></a>Aktualisieren eines Abonnements
 
-1. Wenn Sie ein _nicht aktiviertes_ Abonnement aktualisieren möchten, das bereits in der Kontoverwaltung von Azure Cost Management vorhanden ist, klicken Sie zum Bearbeiten auf das Stiftsymbol rechts neben der übergeordneten _Mandanten-GUID_. Abonnements werden unter einem übergeordneten Mandanten zusammengefasst, aktivieren Sie Abonnements daher nicht einzeln.
+1. Wenn Sie ein _nicht aktiviertes_ Abonnement aktualisieren möchten, das bereits in der Kontoverwaltung von Cloudyn vorhanden ist, klicken Sie zum Bearbeiten auf das Stiftsymbol rechts neben der übergeordneten _Mandanten-GUID_. Abonnements werden unter einem übergeordneten Mandanten zusammengefasst, aktivieren Sie Abonnements daher nicht einzeln.
     ![Abonnements neu ermitteln](./media/activate-subs-accounts/existing-sub.png)
 2. Geben Sie, falls erforderlich, die Mandanten-ID ein. Wenn Sie Ihre Mandanten-ID nicht kennen, führen Sie die folgenden Schritte aus, um sie nachzusehen:
     1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
@@ -71,39 +71,42 @@ Wenn Sie ein Konto hinzufügen oder ein Abonnement aktualisieren, gewähren Sie 
     3. Wählen Sie unter **Meine Abonnements** das gewünschte Abonnement aus.
     4. Ihre Abrechnungs-ID wird unter **Angebots-ID** angezeigt. Kopieren Sie die Angebots-ID für das Abonnement.
 4. Klicken Sie in „Neues Konto hinzufügen“ (oder „Abonnement bearbeiten“) auf **Speichern** (oder **Weiter**). Sie werden zum Azure-Portal umgeleitet.
-5. Melden Sie sich beim Portal an. Klicken Sie auf **Akzeptieren**, um Azure Cost Management Collector Zugriff auf Ihr Azure-Konto zu gewähren.
+5. Melden Sie sich beim Portal an. Klicken Sie auf **Akzeptieren**, um Cloudyn Collector Zugriff auf Ihr Azure-Konto zu gewähren.
 
-    Sie werden auf die Verwaltungsseite für Azure Cost Management-Konten umgeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Unter der Resource Manager-Spalte sollte ein grünes Häkchen angezeigt werden.
+    Sie werden auf die Verwaltungsseite für Cloudyn-Konten weitergeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Unter der Resource Manager-Spalte sollte ein grünes Häkchen angezeigt werden.
 
     Wenn für einige Abonnements kein grünes Häkchen angezeigt wird, bedeutet dies, dass Sie nicht zum Erstellen der Lese-App (CloudynCollector) für das Abonnement berechtigt sind. Ein Benutzer mit höheren Berechtigungen für das Abonnement muss den Vorgang wiederholen.
 
-Sehen Sie sich das Video [Connecting to Azure Resource Manager with Azure Cost Management](https://youtu.be/oCIwvfBB6kk) (Herstellen einer Verbindung mit Azure Resource Manager über Azure Cost Management) an, das Sie durch diesen Vorgang leitet.
+Sehen Sie sich das Video [Connecting to Azure Resource Manager with Cloudyn](https://youtu.be/oCIwvfBB6kk) (Herstellen einer Verbindung mit Azure Resource Manager über Cloudyn) an, das Sie durch diesen Vorgang leitet.
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
 ## <a name="resolve-common-indirect-enterprise-set-up-problems"></a>Beheben häufiger indirekter Probleme bei der Enterprise-Einrichtung
 
-Wenn Sie das Azure Cost Management-Portal zum ersten Mal verwenden, werden möglicherweise die folgenden Meldungen angezeigt, wenn Sie ein Enterprise Agreement nutzen oder ein CSP-Benutzer (Cloud Solution Provider) sind:
+Wenn Sie das Cloudyn-Portal zum ersten Mal verwenden, werden möglicherweise die folgenden Meldungen angezeigt, wenn Sie ein Benutzer von Enterprise Agreement oder Cloud Solution Provider (CSP) sind:
 
-- Im *Assistenten für die Einrichtung von Azure Cost Management*: **Der angegebene API-Schlüssel ist kein Schlüssel für die Registrierung auf der obersten Ebene**.
+- Im *Assistenten für die Einrichtung von Cloudyn*: **Der angegebene API-Schlüssel ist kein Schlüssel für die Registrierung auf der obersten Ebene**.
 - Im Enterprise Agreement-Portal: *Direkte Registrierung – Nein*.
-- Im Cloudyn-Portal: *No usage data was found for the last 30 days. Wenden Sie sich an Ihren Distributor, um sicherzustellen, dass für Ihr Azure-Konto Markup aktiviert wurde.*
+- Im Cloudyn-Portal: *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* (Für die letzten 30 Tage wurden keine Nutzungsdaten gefunden. Wenden Sie sich an Ihren Distributor, um sicherzustellen, dass für Ihr Azure-Konto Markup aktiviert wurde.).
 
-Mit den obigen Fehlermeldungen wird angegeben, dass Sie über einen Handelspartner oder CSP ein Azure Enterprise Agreement (EA) erworben haben. Ihr Handelspartner oder CSP muss _Markup_ für Ihr Azure-Konto aktivieren, damit Sie Ihre Daten in Azure Cost Management anzeigen können.
+Mit den obigen Fehlermeldungen wird angegeben, dass Sie über einen Handelspartner oder CSP ein Azure Enterprise Agreement (EA) erworben haben. Ihr Handelspartner oder CSP muss _Markup_ für Ihr Azure-Konto aktivieren, damit Sie Ihre Daten in Cloudyn anzeigen können.
 
 Sie können die Probleme wie folgt beheben:
 
 1. Ihr Handelspartner muss _Markup_ für Ihr Konto aktivieren. Die Anleitung finden Sie unter [Indirect Customer Onboarding Guide (Anleitung für indirektes Kundenonboarding)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
-2. Generieren Sie den Azure Enterprise Agreement-Schlüssel für die Verwendung mit Azure Cost Management. Entsprechende Anweisungen finden Sie unter [Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
+2. Sie generieren den Azure EA-Schlüssel für die Verwendung mit Cloudyn. Entsprechende Anweisungen finden Sie unter [Registrieren eines Azure Enterprise Agreements und Anzeigen von Kostendaten](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
 
-Sie müssen die Azure-Abrechnungs-API aktivieren, bevor Sie den Azure Enterprise Agreement-API-Schlüssel für die Einrichtung von Azure Cost Management generieren können. Befolgen Sie hierzu diese Anweisungen:
+Sie müssen die Azure-Abrechnungs-API aktivieren, bevor Sie den Azure EA-API-Schlüssel für die Einrichtung von Cloudyn generieren können. Befolgen Sie hierfür diese Anleitungen:
 
 - [Überblick über Berichterstellungs-APIs für Unternehmenskunden](../billing/billing-enterprise-api.md)
 - [Microsoft Azure Enterprise Portal-Berichterstellungs-API](https://ea.azure.com/helpdocs/reportingAPI) unter **Aktivieren des Datenzugriffs für die API**
 
 Unter Umständen müssen Sie auch Abteilungsadministratoren, Kontobesitzern und Unternehmensadministratoren Berechtigungen zum _Anzeigen von Gebühren_ per Abrechnungs-API gewähren.
 
-Cost Management kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend. Sie können die Administratoranforderung jedoch umgehen. Sie können anfordern, dass der Azure Active Directory-Administrator die Berechtigung zum Autorisieren von **CloudynAzureCollector** mit einem PowerShell-Skript gewährt. Das folgende Skript gewährt die Berechtigung zum Registrieren des Azure Active Directory-Dienstprinzipals **CloudynAzureCollector**. Bei erfolgreicher Ausführung wird am Ende des Vorgangs im Browser die URL http://localhost:8080/CloudynJava angezeigt.
+<<<<<<< HEAD Cost Management kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend. Sie können die Administratoranforderung jedoch umgehen. Sie können anfordern, dass der Azure Active Directory-Administrator die Berechtigung zum Autorisieren von **CloudynAzureCollector** mit einem PowerShell-Skript gewährt. Das folgende Skript gewährt die Berechtigung zum Registrieren des Azure Active Directory-Dienstprinzipals **CloudynAzureCollector**. Bei erfolgreicher Ausführung wird am Ende des Vorgangs im Browser die URL http://localhost:8080/CloudynJava angezeigt.
+======= Cloudyn kann nur von einem Azure-Dienstadministrator aktiviert werden. Co-Administrator-Berechtigungen sind nicht ausreichend. Sie können die Administratoranforderung jedoch umgehen. Sie können anfordern, dass der Azure Active Directory-Administrator die Berechtigung zum Autorisieren von **CloudynAzureCollector** mit einem PowerShell-Skript gewährt. Das folgende Skript gewährt die Berechtigung zum Registrieren des Azure Active Directory-Dienstprinzipals **CloudynAzureCollector**.
+
+>>>>>>> 9f3b4a46614ba7306c044dce8be6ee7cc3bf101d
 
 ```
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -132,4 +135,4 @@ $url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&res
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls Sie das erste Tutorial zu Kostenverwaltung noch nicht abgeschlossen haben, lesen Sie es unter [Überprüfen der Nutzung und der Kosten](tutorial-review-usage.md).
+- Falls Sie das erste Tutorial zu Cloudyn noch nicht abgeschlossen haben, lesen Sie es unter [Überprüfen der Nutzung und der Kosten](tutorial-review-usage.md).

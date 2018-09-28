@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Hadoop-Clustern mit der Azure CLI – Azure HDInsight
-description: Erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle Hadoop-Cluster in Azure HDInsight verwalten. Die Azure-Befehlszeilenschnittstelle funktioniert unter Windows, Mac und Linux.
+title: Verwalten von Hadoop-Clustern mit der klassischen Azure CLI – Azure HDInsight
+description: Erfahren Sie, wie Sie mithilfe der klassischen Azure CLI Hadoop-Cluster in Azure HDInsight verwalten.
 services: hdinsight
 ms.reviewer: jasonh
 author: jasonwhowell
@@ -9,33 +9,33 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 8d77f6f902ad0d1f6ee2b3dd1da5a38364f1da9b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2586b9219eb145b2033fe2d8fc64b8ae72f34eda
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103743"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958287"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Verwalten von Hadoop-Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle
+# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Verwalten von Hadoop-Clustern in HDInsight mit der klassischen Azure CLI
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Hier erfahren Sie, wie Sie mit der [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) Hadoop-Cluster in Azure HDInsight verwalten. Die Azure-CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux. HDInsight unterstützt derzeit nicht die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure).
+Erfahren Sie, wie Sie mit der [klassischen Azure CLI](../cli-install-nodejs.md) Hadoop-Cluster in Azure HDInsight verwalten. Die klassische CLI ist in Node.js implementiert. Sie kann auf allen Plattformen verwendet werden, die Node.js unterstützen, inklusive Windows, Mac und Linux.
 
-In diesem Artikel wird lediglich die Verwendung der Azure-CLI mit HDInsight behandelt. Eine allgemeine Anleitung zur Verwendung der Azure-Befehlszeilenschnittstelle finden Sie unter [Installieren und Konfigurieren der Azure-Befehlszeilenschnittstelle][azure-command-line-tools].
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Artikel beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Azure-CLI** – Informationen zur Installation und Konfiguration finden Sie unter [Installieren und Konfigurieren der Azure-CLI](../cli-install-nodejs.md) .
+* **Die klassische Azure CLI:** Informationen zur Installation und Konfiguration finden Sie unter [Install and configure the Azure Classic CLI (Installieren und Konfigurieren der klassischen Azure CLI)](../cli-install-nodejs.md).
 * Stellen Sie über den folgenden Befehl **eine Verbindung mit Azure** her:
 
     ```cli
     azure login
     ```
   
-    Weitere Informationen zur Authentifizierung mit einem Geschäfts- oder Schulkonto finden Sie unter [Herstellen einer Verbindung mit einem Azure-Abonnement über die Azure-Befehlszeilenschnittstelle](/cli/azure/authenticate-azure-cli).
-* Wechseln Sie mit dem folgenden Befehl in den **Azure-Ressourcen-Manager-Modus**:
+    Weitere Informationen zur Authentifizierung mit einem Geschäfts-, Schul- oder Unikonto finden Sie unter [Connect to an Azure subscription from the Azure Classic CLI (Herstellen einer Verbindung mit einem Azure-Abonnement über die klassische Azure CLI)](/cli/azure/authenticate-azure-cli).
+* **Wechseln Sie in den Azure-Ressourcen-Manager-Modus:**
   
     ```cli
     azure config mode arm
@@ -48,7 +48,7 @@ azure hdinsight cluster create -h
 ```
 
 ## <a name="create-clusters-with-the-cli"></a>Erstellen von Clustern mit der Befehlszeilenschnittstelle
-Weitere Informationen finden Sie unter [Erstellen von Clustern in HDInsight mit der Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
+Weitere Informationen finden Sie unter [Create clusters in HDInsight using the Azure Classic CLI (Erstellen von Clustern in HDInsight mit der klassischen Azure CLI)](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
 
 ## <a name="list-and-show-cluster-details"></a>Auflisten und Anzeigen von Clusterdetails
 Mit den folgenden Befehlen können Sie Clusterdetails auflisten und anzeigen:
@@ -101,7 +101,7 @@ Sie sind nun in der Lage, verschiedene Verwaltungsaufgaben für HDInsight-Cluste
 * [Verwalten von HDInsight mit dem Azure-Portal][hdinsight-admin-portal]
 * [Verwalten von HDInsight mit Azure PowerShell][hdinsight-admin-powershell]
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
-* [Verwenden der Azure-Befehlszeilenschnittstelle][azure-command-line-tools]
+* [How to use the Azure Classic CLI (Verwenden der klassischen Azure CLI)][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md

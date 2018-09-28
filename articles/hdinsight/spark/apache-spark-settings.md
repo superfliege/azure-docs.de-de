@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/26/2018
-ms.openlocfilehash: 5678cc17cde833c02c21090a7b5f7b70c01eec9e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 926ce58872b06b41a0c7942b7090dcb4d5c8df03
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045312"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956488"
 ---
 # <a name="configure-spark-settings"></a>Konfigurieren von Spark-Einstellungen
 
@@ -37,7 +37,7 @@ Beim Erstellen eines neuen Clusters können Sie eine der folgenden aktuellen Spa
 Spark 2.x kann wesentlich besser ausgeführt werden als Spark 1.x. Spark 2.x bietet eine Reihe von Leistungsoptimierungen wie Tungsten, Catalyst Query Optimization und mehr.  
 
 > [!NOTE]
-> Die Standardversion von Apache Spark im HDInsight-Dienst kann ohne vorherige Ankündigung geändert werden. Wenn eine Versionsabhängigkeit vorliegt, empfiehlt Microsoft, die spezifische Version anzugeben, wenn Sie Cluster mit .NET SDK/Azure PowerShell und der Azure-Befehlszeilenschnittstelle erstellen.
+> Die Standardversion von Apache Spark im HDInsight-Dienst kann ohne vorherige Ankündigung geändert werden. Wenn eine Versionsabhängigkeit vorliegt, empfiehlt Microsoft, die spezifische Version anzugeben, wenn Sie Cluster mit .NET SDK, Azure PowerShell und der klassischen Azure-Befehlszeilenschnittstelle erstellen.
 
 Apache Spark verfügt über drei Speicherorte für die Systemkonfiguration:
 

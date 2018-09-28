@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 19f066bea9de580cf1245aec74fbe563bf8ba449
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578356"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996552"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Streamen von Azure-Diagnoseprotokollen an Event Hubs
-**[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Portaloption „In Event Hubs exportieren“ oder durch die Aktivierung der Event Hub-Autorisierungsregel-ID in einer Diagnoseeinstellung (über die Azure PowerShell-Cmdlets oder Azure CLI 2.0).
+**[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Portaloption „In Event Hubs exportieren“ oder durch Aktivieren der Event Hub-Autorisierungsregel-ID in einer Diagnoseeinstellung (über die Azure PowerShell-Cmdlets oder über die Azure CLI).
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle und Event Hubs
 Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für das Streamen von Diagnoseprotokollen:
@@ -91,9 +91,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizati
 
 Die Event Hub-Autorisierungsregel-ID ist eine Zeichenfolge im folgenden Format: `{Event Hub namespace resource ID}/authorizationrules/{key name}`. Beispiel: `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Sie können zurzeit mit PowerShell keinen bestimmten Event Hub-Namen auswählen.
 
-### <a name="via-azure-cli-20"></a>Verwenden von Azure CLI 2.0
+### <a name="via-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-Zum Ermöglichen des Streamings per [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) können Sie den Befehl [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) verwenden.
+Zum Ermöglichen des Streamings per [Azure CLI](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest) können Sie den Befehl [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) verwenden.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

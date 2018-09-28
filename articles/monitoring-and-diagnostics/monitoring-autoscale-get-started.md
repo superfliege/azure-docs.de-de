@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
 ms.component: autoscale
-ms.openlocfilehash: b303632c236e492bbf57ee60d5e7b0cc7b2f9e5c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e96e3abc05353aa3ea134b7d11256a29fe64c300
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448967"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989225"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
 
-Die automatische Skalierung von Azure Monitor gilt nur für VM-Skalierungsgruppen, Clouddienste, Azure App Service-Pläne und App Service-Umgebungen. 
+Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Ermitteln der Einstellungen der automatischen Skalierung in Abonnements
 Sie können alle Ressourcen ermitteln, für die die automatische Skalierung in Azure Monitor angewendet wird. Befolgen Sie die folgenden Schritte für eine ausführliche exemplarische Vorgehensweise:
@@ -47,8 +47,8 @@ Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erst
 1. Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf **Regel hinzufügen**. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf **Hinzufügen**.
   ![Erstellen der Skalierungseinstellung für eine Web-App][6]
 1. Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Skala in der Regel einzufügen. Gehen Sie dazu wie folgt vor:
-  
-    a. Klicken Sie auf **Hinzufügen einer Regel** 
+
+    a. Klicken Sie auf **Hinzufügen einer Regel**
 
     b. Legen Sie **Operator** auf **Weniger als** fest.
 
@@ -62,7 +62,7 @@ Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erst
 
 Glückwunsch! Sie haben nun Ihre erste Skalierungseinstellung erfolgreich für die automatische Skalierung Ihrer Web-App basierend auf der CPU-Auslastung konfiguriert.
 
-> [!NOTE] 
+> [!NOTE]
 > Diese Schritte gelten auch für die ersten Schritte mit der VM-Skalierungsgruppe oder einer Clouddienstrolle.
 
 ## <a name="other-considerations"></a>Weitere Überlegungen
@@ -105,8 +105,8 @@ Es kann möglicherweise vorkommen, dass Sie Ihre aktuelle Skalierungseinstellung
 Klicken Sie oben auf die Schaltfläche **Automatische Skalierung deaktivieren**.
 ![Deaktivieren der automatischen Skalierung][13]
 
-> [!NOTE] 
-> Diese Option deaktiviert Ihre Konfiguration. Sie können jedoch zu ihr zurückgelangen, wenn Sie die automatische Skalierung erneut aktivieren. 
+> [!NOTE]
+> Diese Option deaktiviert Ihre Konfiguration. Sie können jedoch zu ihr zurückgelangen, wenn Sie die automatische Skalierung erneut aktivieren.
 
 Nun können Sie die Anzahl der Instanzen festlegen, die manuell skaliert werden sollen.
 
@@ -133,4 +133,3 @@ Sie können immer zur automatischen Skalierung zurückkehren, indem Sie auf **Au
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
-

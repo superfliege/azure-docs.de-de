@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 1c6751d980a7bb28e58a3aa00514411959f515d7
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725865"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953700"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle und des Azure-Portals eine [Linux-VHD-Datei (virtuelle Festplatte)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) von Azure herunterladen. 
 
-Installieren Sie [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2), falls Sie dies noch nicht getan haben.
+Installieren Sie [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2), falls Sie dies noch nicht getan haben.
 
 ## <a name="stop-the-vm"></a>Beenden des virtuellen Computers
 
@@ -86,6 +86,6 @@ Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe von Azure CLI 2.0](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+- Informationen zum [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe von Azure CLI](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 - [Verwalten von Azure-Datenträgern mit der Azure-CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
