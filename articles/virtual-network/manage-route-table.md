@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 00a15d42084b660ee2ec4db2b012a5e47fc02b41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 790d327be27dae0c963c37e6e55f1721bf571c80
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988445"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222113"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Erstellen, Ändern oder Löschen einer Routingtabelle
 
@@ -64,7 +64,7 @@ Geben Sie im Suchfeld oben im Portal den Suchbegriff *Routingtabellen* ein. Wäh
 1. Geben Sie im Suchfeld oben im Portal den Suchbegriff *Routingtabellen* ein. Wählen Sie **Routingtabellen** aus, wenn dieser Begriff in den Suchergebnissen angezeigt wird.
 2. Wählen Sie in der Liste die Routingtabelle aus, für die Sie Details anzeigen möchten. Unter **EINSTELLUNGEN** können Sie die **Routen** in der Routingtabelle und die **Subnetze** anzeigen, denen die Routingtabelle zugeordnet ist.
 3. Weitere Informationen zu allgemeinen Azure-Einstellungen finden Sie in den folgenden Artikeln:
-    *   [Aktivitätsprotokoll](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
+    *   [Aktivitätsprotokoll](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
     *   [Zugriffssteuerung (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Sperren](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

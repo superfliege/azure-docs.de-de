@@ -9,32 +9,32 @@ ms.component: bing-news-search
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: b8ae99698926a818bf22b0b4027af8610413aaa6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372907"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433683"
 ---
 # <a name="news-search-endpoints"></a>News-Suche-Endpunkte
-Die **News-Suche-API** gibt Nachrichtenartikel, Webseiten, Bilder, Videos und [Entitäten](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) zurück. Entitäten enthalten zusammenfassende Informationen zur einer Person, einem Ort oder einem Thema. 
+Die **News-Suche-API** gibt Nachrichtenartikel, Webseiten, Bilder, Videos und [Entitäten](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) zurück. Entitäten enthalten zusammenfassende Informationen zur einer Person, einem Ort oder einem Thema.
 ## <a name="endpoints"></a>Endpunkte
 Um mithilfe der Bing-API News-Suchergebnisse zu erhalten, senden Sie eine `GET`-Anforderung an einen der folgenden Endpunkte. Die Header und die URL-Parameter definieren weitere Spezifikationen.
 
-**Endpunkt 1:** gibt Nachrichten auf Grundlage der Suchabfrage des Benutzers zurück. Wenn die Suchabfrage leer ist, gibt der Aufruf die obersten Nachrichtenartikel zurück. Die Abfrageoption `?q=""` kann auch mit der `/news`-URL verwendet werden. Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder und Märkte](supported-countries-markets.md#supported-markets-for-news-search-endpoint).
+**Endpunkt 1:** gibt Nachrichten auf Grundlage der Suchabfrage des Benutzers zurück. Wenn die Suchabfrage leer ist, gibt der Aufruf die obersten Nachrichtenartikel zurück. Die Abfrageoption `?q=""` kann auch mit der `/news`-URL verwendet werden. Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder und Märkte](language-support.md#supported-markets-for-news-search-endpoint).
 ```
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search 
-``` 
+GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
+```
 
-**Endpunkt 2:** gibt die obersten Nachrichten geordnet nach Kategorie zurück. Mit `category=business`, `category=sports` oder `category=entertainment` können Sie insbesondere die obersten Artikel aus den Bereichen „Wirtschaft“, „Sport“ oder „Unterhaltung“ anfordern.  Der `category`-Parameter kann nur mit der `/news`-URL verwendet werden. Es gibt einige formale Anforderungen für die Angabe von Kategorien; siehe `category` in der Dokumentation der [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder und Märkte](supported-countries-markets.md#supported-markets-for-news-endpoint). 
+**Endpunkt 2:** gibt die obersten Nachrichten geordnet nach Kategorie zurück. Mit `category=business`, `category=sports` oder `category=entertainment` können Sie insbesondere die obersten Artikel aus den Bereichen „Wirtschaft“, „Sport“ oder „Unterhaltung“ anfordern.  Der `category`-Parameter kann nur mit der `/news`-URL verwendet werden. Es gibt einige formale Anforderungen für die Angabe von Kategorien; siehe `category` in der Dokumentation der [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters). Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder und Märkte](language-support.md#supported-markets-for-news-endpoint).
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-**Endpunkt 3:** gibt Nachrichtenthemen zurück, die derzeit in sozialen Netzwerken beliebt sind. Wenn die `/trendingtopics`-Option enthalten ist, ignoriert die Bing-Suche einige andere Parameter, wie z.B. `freshness` und `?q=""`. Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder und Märkte](supported-countries-markets.md#supported-markets-for-news-trending-endpoint).
+**Endpunkt 3:** gibt Nachrichtenthemen zurück, die derzeit in sozialen Netzwerken beliebt sind. Wenn die `/trendingtopics`-Option enthalten ist, ignoriert die Bing-Suche einige andere Parameter, wie z.B. `freshness` und `?q=""`. Informationen zur Verfügbarkeit finden Sie unter [Unterstützte Länder und Märkte](language-support.md#supported-markets-for-news-trending-endpoint).
 ```
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics 
-``` 
+GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
+```
 
 Weitere Informationen zu Headern, Parametern, Marktcodes, Antwortobjekten, Fehlern usw. finden Sie in der Referenz [API für die Bing-News-Suche v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference).
 ## <a name="response-json"></a>JSON-Antwort

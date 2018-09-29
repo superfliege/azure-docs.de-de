@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: 424782be2d814df6d598591198b5005fb494d3da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fe4cc3c06af6868396f5db6fd88804022f5f9793
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302864"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432476"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
 
@@ -46,7 +46,7 @@ Abbildung 2 zeigt die gleichen Informationen, sie sind allerdings nach Endpunkte
 *Abbildung 2: Unterteilte Ansicht mit Abfragevolumen, dargestellt pro zurückgegebenem Endpunkt*
 
 ## <a name="endpoint-status-by-endpoint"></a>Endpunktstatus nach Endpunkt
-Verwenden Sie [diese Metrik](../monitoring-and-diagnostics/monitoring-supported-metrics.md), um den Integritätsstatus der Endpunkte im Profil zu verstehen. Zwei Werte sind möglich:
+Verwenden Sie [diese Metrik](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworktrafficmanagerprofiles), um den Integritätsstatus der Endpunkte im Profil zu verstehen. Zwei Werte sind möglich:
  - Verwenden Sie **1**, wenn der Endpunkt aktiv ist.
  - Verwenden Sie **0**, wenn der Endpunkt ausgefallen ist.
 

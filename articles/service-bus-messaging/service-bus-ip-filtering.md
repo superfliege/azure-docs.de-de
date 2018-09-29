@@ -8,14 +8,14 @@ manager: timlt
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: e009bb9120fafc6edf60b68fab3336b9d1add507
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034783"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394827"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
@@ -49,7 +49,7 @@ Wenn Sie beispielsweise Adressen im Bereich 70.37.104.0/24 zulassen und alle and
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNet-Regel mit Azure Resource Manager-Vorlagen
 
-Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNet-Regel hinzufügen.
+Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Service Bus-Namespace eine VNET-Regel hinzufügen.
 
 Vorlagenparameter:
 

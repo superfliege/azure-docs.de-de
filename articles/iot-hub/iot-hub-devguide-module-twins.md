@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 8f567ba43c1657783f9898863aef980627800481
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 0df1170079e66bda95e38bcf17dcce738269eeb0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436318"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039378"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
@@ -250,7 +250,7 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
     }
     ```
 
-* Alle Zeichenfolgenwerte können höchstens 4 KB lang sein.
+* Alle Zeichenfolgenwerte können höchstens 512Byte lang sein.
 
 ## <a name="module-twin-size"></a>Größe des Modulzwillings
 IoT Hub erzwingt eine Größenbegrenzung von je 8 KB für die jeweiligen Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.

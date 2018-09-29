@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f6cfb7bb988b080189da444cb77e0c258417b1ac
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9a07fa2010eef22c4d1477641d07dee70ab5a9cb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574707"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227441"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Verwalten von Konnektivität und zuverlässigem Messaging mithilfe von Azure IoT Hub-Geräte-SDKs
 
@@ -54,7 +54,7 @@ Verbindungsfehler können auf vielen Ebenen auftreten:
 - Fehler auf Protokollebene beim HTTP-, AMQP- und MQTT-Transport, wie z.B. getrennte Verbindungen oder abgelaufene Sitzungen
 - Fehler auf Anwendungsebene, die entweder aus lokalen Fehlern wie ungültigen Anmeldeinformationen oder einem Dienstverhalten wie Kontingentüberschreitung oder Drosselung resultieren
 
-Die Geräte-SDKs erkennen Fehler auf allen drei Ebenen.  Fehler im Zusammenhang mit dem Betriebssystem und Hardwarefehler werden von den Geräte-SDKs weder erkannt noch behandelt.  Der Entwurf basiert auf der Anleitung [Behandeln vorübergehender Fehler](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) im Azure Architecture Center.
+Die Geräte-SDKs erkennen Fehler auf allen drei Ebenen.  Fehler im Zusammenhang mit dem Betriebssystem und Hardwarefehler werden von den Geräte-SDKs weder erkannt noch behandelt.  Der Entwurf basiert auf der Anleitung [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults#general-guidelines) im Azure Architecture Center.
 
 ### <a name="retry-patterns"></a>Wiederholungsmuster
 

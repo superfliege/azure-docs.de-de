@@ -2,18 +2,18 @@
 title: Dokumentieren von Datenquellen in Azure Data Catalog
 description: Anleitungsartikel, in dem die Dokumentation von Datenressourcen in Azure Data Catalog beschrieben wird
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 4d3dfac425caf36e9ca9a4d3593bba336b18b7a3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a7379ffea173cdae3b10a751b0d83e06e679e3c5
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053193"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406208"
 ---
 # <a name="document-data-sources"></a>Dokumentdatenquellen
 ## <a name="introduction"></a>Einführung

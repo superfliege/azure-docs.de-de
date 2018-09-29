@@ -15,20 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: victorh
-ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174311"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451391"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal
-
-> [!div class="op_single_selector"]
-> * [Azure-Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
-> * [PowerShell](dns-operations-recordsets.md)
 
 In diesem Artikel wird gezeigt, wie Sie Ressourceneintragssätze und Einträge für die DNS-Zone im Azure-Portal verwalten.
 
@@ -95,7 +89,7 @@ Sie können Einträge mit dem Azure-Portal aus einem Ressourceneintragssatz entf
 
 1. Klicken Sie auf dem Blatt **Eigenschaften des Ressourceneintragssatzes** Ihres Ressourceneintragssatzes auf **Entfernen**.
 
-    ![Löschen eines Eintragssatzes](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![Löschen eines Eintragssatzes](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
 2. Sie werden in einer Meldung gefragt, ob Sie den Ressourceneintragssatz wirklich löschen möchten.
 3. Überprüfen Sie, ob der Name des Ressourceneintragssatzes dem entspricht, den Sie entfernen möchten, und klicken Sie dann auf **Ja**.

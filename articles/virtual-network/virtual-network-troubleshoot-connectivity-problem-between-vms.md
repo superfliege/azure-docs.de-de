@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 6decb0e9188db00608be35d9ba4e84df92ceb671
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 02f6e2648c007cfe87984e8de886b8b76e1e8d16
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072333"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409914"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Problembehandlung bei Konnektivitätsproblemen zwischen Azure-VMs
 
@@ -103,7 +103,7 @@ Alle VMs, die Sie mit dem klassischen Bereitstellungsmodell in Azure erstellen, 
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>Schritt 8: Versuchen Sie, eine Verbindung mit einer VM-Netzwerkfreigabe herzustellen
 
-Wenn Sie keine Verbindung mit einer VM-Netzwerkfreigabe herstellen können, kann die Ursache des Problems sein, dass keine NICs auf dem virtuellen Computer verfügbar sind. Hinweise zum Löschen nicht verfügbarer NICs finden Sie unter [Löschen Sie die nicht verfügbaren NICs](../virtual-machines/windows/reset-network-interface.md#delete-the-unavailable-nics).
+Wenn Sie keine Verbindung mit einer VM-Netzwerkfreigabe herstellen können, kann die Ursache des Problems sein, dass keine NICs auf dem virtuellen Computer verfügbar sind. Hinweise zum Löschen nicht verfügbarer NICs finden Sie unter [Löschen Sie die nicht verfügbaren NICs](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics).
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>Schritt 9: Überprüfen Sie die VNET-übergreifende Konnektivität
 

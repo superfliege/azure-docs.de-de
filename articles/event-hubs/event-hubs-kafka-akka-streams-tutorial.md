@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 7c09656f62f3a8a2efd889cf28f12bd5a42e309a
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 063f8bc050064d191dd502b74156be85df4f0031
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745495"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182207"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Verwenden von Akka Streams mit Event Hubs für Apache Kafka
 Dieses Tutorial veranschaulicht, wie Sie Akka Streams mit Kafka-fähigen Event Hubs verbinden können, ohne Ihre Protokollclients ändern oder Ihre eigenen Cluster ausführen zu müssen. Azure Event Hubs für Kafka unterstützt [Apache Kafka Version 1.0](https://kafka.apache.org/10/documentation.html).
@@ -27,8 +27,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Event Hubs-Namespace
 > * Klonen des Beispielprojekts
-> * Ausführen des Flink-Producers 
-> * Ausführen des Flink-Consumers
+> * Ausführen des Akka Streams-Producers 
+> * Ausführen des Akka Streams-Consumers
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -142,8 +142,8 @@ In diesem Tutorial haben Sie erfahren, wie Sie Akka Streams mit Kafka-fähigen E
 > [!div class="checklist"]
 > * Erstellen eines Event Hubs-Namespace
 > * Klonen des Beispielprojekts
-> * Ausführen des Flink-Producers 
-> * Ausführen des Flink-Consumers
+> * Ausführen des Akka Streams-Producers 
+> * Ausführen des Akka Streams-Consumers
 
 Weitere Informationen zu Event Hubs und Event Hubs für Kafka finden Sie unter folgendem Thema:  
 

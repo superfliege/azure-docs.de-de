@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2a7842a50690049507e00b85c8736e63da002503
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950164"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419303"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -348,9 +348,9 @@ Ihre vorhandene Verbindung kündigt weiterhin die Präfixe für Office 365 und D
 
 * Beim Microsoft-Peering von ExpressRoute-Verbindungen, die am oder nach dem 1. August 2017 konfiguriert wurden, werden Präfixe erst angekündigt, wenn der Verbindung ein Routenfilter hinzugefügt wurde. Standardmäßig werden dabei keine Präfixe angezeigt.
 
-## <a name="globalreach"></a>ExpressRoute Direct (Vorschau)
+## <a name="expressRouteDirect"></a>ExpressRoute Direct (Vorschau)
 
-[!INCLUDE [Global Reach](../../includes/expressroute-direct-faq-include.md)]
+[!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
 ## <a name="globalreach"></a>Global Reach (Vorschau)
 

@@ -1,5 +1,5 @@
 ---
-title: Überprüfen von Abrechnungsdaten der Azure Enterprise-Registrierung mit REST-API | Microsoft-Dokumentation
+title: Überprüfen von Abrechnungsdaten der Azure Enterprise-Registrierung mit REST-API | Microsoft Docs
 description: Erfahren Sie, wie Sie Azure-REST-APIs zum Überprüfen von Abrechnungsinformationen der Enterprise-Registrierung verwenden.
 services: billing
 documentationcenter: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
-ms.author: alleonar
-ms.openlocfilehash: 71143549916fc7440d5f21bcb03f1f795ddc73ac
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.author: erikre
+ms.openlocfilehash: f4b5fccefb08597a13fcc91eda11bbf3eb122914
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142384"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394845"
 ---
 # <a name="review-enterprise-enrollment-billing-using-rest-apis"></a>Überprüfen von Abrechnungsdaten der Enterprise-Registrierung mit REST-APIs
 
@@ -41,7 +41,7 @@ Der Parameter `{billingAccountId}` ist erforderlich und sollte die ID für das K
 
 Die folgenden Header sind erforderlich: 
 
-|Anforderungsheader|Beschreibung|  
+|Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Inhaltstyp*:|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
 |*Autorisierung*:|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
@@ -49,7 +49,7 @@ Die folgenden Header sind erforderlich:
 In diesem Beispiel wird ein synchroner Aufruf gezeigt, der Details für den aktuellen Abrechnungszyklus zurückgibt. Aus Leistungsgründen geben synchrone Aufrufe Informationen des letzten Monats zurück.  Sie können auch die [API asynchron](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) aufrufen, um Daten von 36 Monaten zurückzugeben.
 
 
-## <a name="response"></a>Antwort  
+## <a name="response"></a>response  
 
 Bei einer erfolgreichen Antwort wird der Statuscode 200 (OK) zurückgegeben, der eine Liste der detaillierten Kosten für das Konto enthält.
 
@@ -94,14 +94,14 @@ Der Parameter `{departmentId}` ist erforderlich und sollte die ID für die Abtei
 
 Die folgenden Header sind erforderlich: 
 
-|Anforderungsheader|Beschreibung|  
+|Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Inhaltstyp*:|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
 |*Autorisierung*:|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
 
 In diesem Beispiel wird ein synchroner Aufruf gezeigt, der Details für den aktuellen Abrechnungszyklus zurückgibt. Aus Leistungsgründen geben synchrone Aufrufe Informationen des letzten Monats zurück.  Sie können auch die [API asynchron](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) aufrufen, um Daten von 36 Monaten zurückzugeben.
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 Bei einer erfolgreichen Antwort wird der Statuscode 200 (OK) zurückgegeben, der eine Liste mit detaillierten Nutzungsinformationen und Kosten für einen angegebenen Abrechnungszeitraum und die Rechnungs-ID für die Abteilung enthält.
 
@@ -150,14 +150,14 @@ Der Parameter `{enrollmentAccountId}` ist erforderlich und sollte die ID für da
 
 Die folgenden Header sind erforderlich: 
 
-|Anforderungsheader|Beschreibung|  
+|Anforderungsheader|BESCHREIBUNG|  
 |--------------------|-----------------|  
 |*Inhaltstyp*:|Erforderlich. Legen Sie diese Option auf `application/json` fest.|  
 |*Autorisierung*:|Erforderlich. Legen Sie diese Option auf einen gültigen `Bearer`-[API-Schlüssel](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) fest. |  
 
 In diesem Beispiel wird ein synchroner Aufruf gezeigt, der Details für den aktuellen Abrechnungszyklus zurückgibt. Aus Leistungsgründen geben synchrone Aufrufe Informationen des letzten Monats zurück.  Sie können auch die [API asynchron](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#asynchronous-call-polling-based) aufrufen, um Daten von 36 Monaten zurückzugeben.
 
-### <a name="response"></a>Antwort  
+### <a name="response"></a>response  
 
 Bei einer erfolgreichen Antwort wird der Statuscode 200 (OK) zurückgegeben, der eine Liste mit detaillierten Nutzungsinformationen und Kosten für einen angegebenen Abrechnungszeitraum und die Rechnungs-ID für die Abteilung enthält.
 

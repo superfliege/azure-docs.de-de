@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0ad22562bd1f36bba7c0ab99fe504e82645033d3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: dcdc84f100ce534ea517f0201b0c090c3059a318
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131409"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160928"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filter in Log Analytics-Ansichten
 Mit **Filtern** in einer [Log Analytics-Ansicht](log-analytics-view-designer.md) können Benutzer die Daten in der Ansicht anhand des Werts einer bestimmten Eigenschaft filtern, ohne die Ansicht selbst zu ändern.  Beispielsweise können Sie Benutzern Ihrer Ansicht ermöglichen, die Ansicht nach Daten nur von einem bestimmten Computer oder eine Gruppe von Computern zu filtern.  Sie können mehrere Filter für eine einzelne Ansicht erstellen, um Benutzern das Filtern nach mehreren Eigenschaften zu ermöglichen.  Dieser Artikel beschreibt, wie Sie Filter verwenden und einer benutzerdefinierten Ansicht hinzufügen.
@@ -49,7 +49,7 @@ In der folgenden Tabelle werden die Einstellungen für Filter beschrieben.
 | Einstellung | BESCHREIBUNG |
 |:---|:---|
 | Feldname | Der Name des zum Filtern verwendeten Felds.  Dieser muss dem Zusammenfassungsfeld unter **Werte abfragen** entsprechen. |
-| Werte abfragen | Die Abfrage, die zum Auffüllen der Filterdropdownliste für den Benutzer ausgeführt werden soll.  Hierfür muss [Zusammenfassen](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) oder [Verschieden](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator) verwendet werden, um eindeutige Werte für ein bestimmtes Feld bereitzustellen, und die Abfrage muss dem **Feldnamen** entsprechen.  Sie können [Sortieren](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator) verwenden, um die dem Benutzer angezeigten Werte zu sortieren. |
+| Werte abfragen | Die Abfrage, die zum Auffüllen der Filterdropdownliste für den Benutzer ausgeführt werden soll.  Hierfür muss [Zusammenfassen](/azure/kusto/query/summarizeoperator) oder [Verschieden](/azure/kusto/query/distinctoperator) verwendet werden, um eindeutige Werte für ein bestimmtes Feld bereitzustellen, und die Abfrage muss dem **Feldnamen** entsprechen.  Sie können [Sortieren](/azure/kusto/query/sortoperator) verwenden, um die dem Benutzer angezeigten Werte zu sortieren. |
 | Tag | Name für das Feld, der in Abfragen mit dem Filter verwendet und dem Benutzer angezeigt wird. |
 
 ### <a name="examples"></a>Beispiele

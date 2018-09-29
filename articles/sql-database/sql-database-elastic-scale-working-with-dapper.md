@@ -2,19 +2,22 @@
 title: Verwenden der Clientbibliothek für elastische Datenbanken mit Dapper | Microsoft Docs
 description: Verwenden der Clientbibliothek für elastische Datenbanken.
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 6619f2dfe5f58cd23dbd0ffe6e2b545b803f3acc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 1b0200413fe40acac997570fdccc970a78cf6ece
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647927"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162226"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Verwenden der Clientbibliothek für elastische Datenbanken
 Dieses Dokument ist für Entwickler bestimmt, die Anwendungen mithilfe von Dapper erstellen, aber auch mithilfe von [Tools für elastische Datenbanken](sql-database-elastic-scale-introduction.md) Anwendungen erstellen möchten, die zum horizontalen Hochskalieren ihrer Datenebene Sharding implementieren.  Dieses Dokument veranschaulicht, welche Änderungen in Dapper-basierten Anwendungen erforderlich sind, um Tools für elastische Datenbanken zu integrieren. Wir konzentrieren uns darauf, die Shardverwaltung für elastische Datenbanken und das datenabhängige Routing in Dapper zu integrieren. 

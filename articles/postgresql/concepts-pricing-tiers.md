@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 07/21/2018
-ms.openlocfilehash: 18f6647a8412477384a48aa777461f99b2fbcb0a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.date: 09/27/2018
+ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379541"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423543"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -74,6 +74,11 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | Japan, Westen | X | X |
 | Korea, Mitte |  | X |
 | Korea, Süden |  | X |
+| Deutschland, Mitte |  | X |
+| US DoD, Mitte  | X |  |
+| US DoD, Osten  | X |  |
+| US Gov Arizona |  | X |
+| US Gov Texas |  | X |
 
 ## <a name="storage"></a>Speicher
 
@@ -120,4 +125,4 @@ Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL
 
 - Informieren Sie sich, wie Sie [im Portal eine PostgreSQL-Serverinstanz erstellen](tutorial-design-database-using-azure-portal.md).
 - Erfahren Sie etwas über das [Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI](scripts/sample-scale-server-up-or-down.md).
-- Informieren Sie sich über die [Beschränkungen](concepts-limits.md).
+- Informieren Sie sich über die [Beschränkungen](concepts-limits.md). 

@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9a9a86d445deaea4872615f443ad53f76638a758
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446723"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056521"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Verwenden einer Altersbeschränkung in Active Directory B2C
 
 >[!IMPORTANT]
->Dieses Feature befindet sich in der privaten Vorschau.  Einzelheiten finden Sie in unserem [Dienstblog](https://blogs.msdn.microsoft.com/azureadb2c/), sobald dieser verfügbar ist, oder wenden Sie sich an AADB2CFeedback@microsoft.com.  Verwenden Sie dies NICHT für Produktionsverzeichnisse, da die Nutzung dieser neuen Funktionen zu Datenverlusten und zu unerwarteten Verhaltensänderungen führen kann, solange sie noch nicht allgemein verfügbar sind.  
+>Dieses Feature befindet sich in der privaten Vorschau.  Einzelheiten finden Sie in unserem [Dienstblog](https://blogs.msdn.microsoft.com/azureadb2c/), sobald dieser verfügbar ist, oder wenden Sie sich an AADB2CPreview@microsoft.com.  Verwenden Sie dies NICHT für Produktionsverzeichnisse, da die Nutzung dieser neuen Funktionen zu Datenverlusten und zu unerwarteten Verhaltensänderungen führen kann, solange sie noch nicht allgemein verfügbar sind.  
 >
 
 ##<a name="age-gating"></a>Altersbeschränkung
@@ -56,13 +56,3 @@ Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides z
 Bei Benutzerflows, die entweder eine Registrierung, eine Anmeldung oder beides zulassen, können Sie festlegen, ob Minderjährige ohne Zustimmung für die Anwendung gesperrt werden.  Es gibt zwei Optionen, wie in Active Directory B2C gesperrte Benutzer behandelt werden sollen:
 * JSON-Funktion zurück an die Anwendung senden: Diese Option sendet eine Antwort zurück an die Anwendung, dass ein Minderjähriger gesperrt wurde.
 * Fehlerseite anzeigen: Dem Benutzer wird eine Seite angezeigt, die ihn darüber informiert, dass er nicht auf die Anwendung zugreifen kann.
-
-##<a name="known-issues"></a>Bekannte Probleme
-###<a name="format-for-the-response-when-a-minor-is-blocked"></a>Das Format für die Antwort, wenn ein Minderjähriger blockiert ist.
-Die Antwort ist derzeit nicht korrekt formatiert. Dieser Fehler wird in einem kommenden Update behoben.
-
-###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Die Altersbeschränkung ist ggf. nicht möglich, wenn bestimmte, während der Einrichtung hinzugefügte Attribute gelöscht wurden.
-Bei der Einrichtung für die Altersbeschränkung haben Sie Ihr Verzeichnis über eine Option in Ihren `Properties` konfiguriert.  Wenn Sie entweder `legalCountry` oder `dateOfBirth` über Graph löschen, kann Ihr Verzeichnis keine Altersbeschränkung mehr verwenden und diese Eigenschaften können nicht wiederhergestellt werden.
-
-###<a name="list-of-countries-is-incomplete"></a>Liste der Länder ist unvollständig.
-Derzeit ist die Liste der Länder für „legalCountry“ unvollständig. Die restlichen Länder werden in einem kommenden Update hinzugefügt.

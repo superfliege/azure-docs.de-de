@@ -2,13 +2,13 @@
 author: tomarcher
 ms.service: ansible
 ms.topic: include
-ms.date: 08/23/2018
+ms.date: 09/28/2018
 ms.author: tarcher
-ms.openlocfilehash: f6e763f3220205ee00a80db70802cb30fd896998
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: fe747500f19284f019ab6512581a6eea67816f94
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819089"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454594"
 ---
- Sollten Sie keinen Zugriff auf einen virtuellen Linux-Computer haben, können Sie [mit Ansible einen virtuellen Computer erstellen](/azure/virtual-machines/linux/ansible-create-vm.md).
+ Sollten Sie keinen Zugriff auf einen virtuellen Linux-Computer haben, können Sie [mit Ansible einen virtuellen Computer erstellen](/azure/virtual-machines/linux/ansible-create-vm).

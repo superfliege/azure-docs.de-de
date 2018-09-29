@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 217e36b7814bb7fe092ca915afd09bfc76b6ffa3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 68352db238b92d39119b420ed0d573e88a95bc78
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094670"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394453"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue Storage-Bindungen für Azure Functions
 
@@ -535,14 +535,15 @@ Verwenden Sie in JavaScript-Funktionen `context.bindings.<name>`, um auf die Aus
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md)
+
+<!--
 > [!div class="nextstepaction"]
-> [Erstellen einer Funktion, die durch Azure Queue Storage ausgelöst wird](functions-create-storage-queue-triggered-function.md)
+> [Go to a quickstart that uses a Queue storage trigger](functions-create-storage-queue-triggered-function.md)
+-->
 
 > [!div class="nextstepaction"]
 > [Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions](functions-integrate-storage-queue-output-binding.md)
-
-> [!div class="nextstepaction"]
-> [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md)
 
 <!-- LINKS -->
 

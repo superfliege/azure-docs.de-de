@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
 ms.openlocfilehash: c07a9d92cac13d6325e66f44426f1a64e8ac53cb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35769596"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096199"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Freigeben von Azure-Dashboards mithilfe der rollenbasierter Zugriffssteuerung
 Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Sie gewähren anderen Benutzern den Zugriff auf Ihr Dashboard über die [rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) von Azure. Sie weisen einem Benutzer oder einer Gruppe von Benutzern einer Rolle zu, und mit dieser Rolle wird dann definiert, ob diese Benutzer das veröffentlichte Dashboard anzeigen oder ändern können. 

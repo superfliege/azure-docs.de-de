@@ -1,22 +1,23 @@
 ---
 title: Wiederherstellen einer Azure SQL-Datenbank-Instanz in einer mehrinstanzenfähigen SaaS-App | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die SQL-Datenbank-Instanz eines einzelnen Mandanten nach versehentlichem Löschen von Daten wiederherstellen.
-keywords: Tutorial zur SQL-Datenbank
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: 319195ceb98b5b760d4d92055faa6e09c8fb0e3d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 228f5135165cbf8806516e5e932f210586013402
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644347"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056742"
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>Wiederherstellen eines einzelnen Mandanten mit einer SaaS-Anwendung mit einer Datenbank pro Mandant
 

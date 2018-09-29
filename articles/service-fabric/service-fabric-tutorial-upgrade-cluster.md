@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d467bc88e1ed3b8dbe42a17095e4f0d14f14fe9a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2191ffabee31d12fb5b581280f924546b0078255
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950232"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405463"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Tutorial: Upgraden der Runtime eines Service Fabric-Clusters in Azure
 
@@ -42,7 +42,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oder [Linux-Clusters](service-fabric-tutorial-create-vnet-and-linux-cluster.md) in Azure mithilfe einer Vorlage
 > * [Horizontales Herunter- oder Hochskalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
 > * Aktualisieren der Runtime eines Service Fabric-Clusters
-> * [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * [Löschen eines Clusters](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -204,6 +204,3 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Aktualisieren der Clusterruntime
 > * Überwachen des Upgrades
 
-Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie API Management mit einem Service Fabric-Cluster bereitstellen.
-> [!div class="nextstepaction"]
-> [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)

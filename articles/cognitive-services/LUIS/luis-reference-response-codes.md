@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Es wird beschrieben, welche HTTP-Antwortcodes über die Erstellungs- und Endpunkt-APIs von LUIS zurückgegeben werden.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: diberry
-ms.openlocfilehash: 5fd64b5fa3e3c084aee1e63c5233ccffc93917ae
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 07982716ff655f980844ca3dbcf7e8d7df1827c4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237937"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031219"
 ---
 # <a name="luis-api-http-response-codes"></a>LUIS-API – HTTP-Antwortcodes
 Die APIs für die Erstellung ([authoring](https://aka.ms/luis-authoring-apis)) und für Endpunkte ([endpoint](https://aka.ms/luis-endpoint-apis)) geben HTTP-Antwortcodes zurück. Antwortnachrichten enthalten spezifische Informationen zu einer Anforderung, aber es wird ein allgemeiner HTTP-Antwortstatuscode verwendet. 

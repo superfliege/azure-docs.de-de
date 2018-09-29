@@ -2,20 +2,22 @@
 title: Notfallwiederherstellung für SQL-Datenbank | Microsoft Docs
 description: Erfahren Sie, wie Sie eine Datenbank nach Störungen in einem regionalen Rechenzentrum oder dessen Ausfall mithilfe der aktiven Georeplikation oder der Geowiederherstellung von Azure SQL-Datenbank wiederherstellen.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dba78d3fb63ed6b2f867539fc471199ab72afe6a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: f04b17ec052e4d55ccb39c803b2d690589cb27d2
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092595"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161674"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
 Azure SQL-Datenbank bietet die folgenden Features zur Wiederherstellung nach einem Ausfall:

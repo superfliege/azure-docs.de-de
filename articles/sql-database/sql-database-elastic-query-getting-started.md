@@ -2,19 +2,22 @@
 title: Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken (horizontale Partitionierung) | Microsoft Docs
 description: Verwenden Sie datenbankübergreifende Datenbankabfragen, um Berichte zu mehreren Datenbanken zu erstellen.
 services: sql-database
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: e2393980d966d5a476a2fedf0e70b0614e803e06
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f6e9c36634435c759004e6102148a072bbdba94a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646438"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166689"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>Erstellen von Berichten für horizontal hochskalierte Clouddatenbanken
 Sie können mit einer [elastischen Abfrage](sql-database-elastic-query-overview.md)Berichte aus mehreren Azure SQL-Datenbanken über nur einen Verbindungspunkt erstellen. Die Datenbanken müssen horizontal partitioniert werden (auch als „Sharding“ bezeichnet).

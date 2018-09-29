@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9b0c58fdbfb0d55b3b8998f4edfc1222b9a3d4aa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3a90fa5fb9eadd56b6b01306b251ff9581256bab
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988597"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161164"
 ---
 # <a name="working-with-date-time-values-in-log-analytics-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Log Analytics-Abfragen
 
@@ -40,14 +40,14 @@ Zeiträume werden als Dezimalwert gefolgt von einer Zeiteinheit ausgedrückt:
 |Kurzform   | Zeiteinheit    |
 |:---|:---|
 |d           | day          |
-|h.           | hour         |
+| h.           | hour         |
 |m           | Minute       |
 |s           | Sekunde       |
 |ms          | Millisekunde  |
 |Mikrosekunde | Mikrosekunde  |
 |Takt        | Nanosekunde   |
 
-datetime-Werte können durch Umwandeln einer Zeichenfolge mithilfe des Operators `todatetime` erstellt werden. Zur Überprüfung der in einem bestimmten Zeitraum gesendeten VM-Heartbeats können Sie beispielsweise den[Operator „between“](https://docs.loganalytics.io/docs/Language-Reference/Scalar-operators/between-operator) verwenden, der sich für die Angabe eines bestimmten Zeitraums eignet...
+datetime-Werte können durch Umwandeln einer Zeichenfolge mithilfe des Operators `todatetime` erstellt werden. Zur Überprüfung der in einem bestimmten Zeitraum gesendeten VM-Heartbeats können Sie beispielsweise den[Operator „between“](/azure/kusto/query/betweenoperator) verwenden, der sich für die Angabe eines bestimmten Zeitraums eignet...
 
 ```Kusto
 Heartbeat
@@ -156,11 +156,11 @@ Event
 
 | Category (Kategorie) | Funktion |
 |:---|:---|
-| Konvertieren von Datentypen | [todatetime](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/todatetime())  [totimespan](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/totimespan())  |
-| Runden eines Werts auf die bin-Größe | [bin](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/bin()) |
-| Abrufen einer bestimmten Datums oder einer bestimmten Uhrzeit | [ago](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/ago()) [now](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/now())   |
-| Abrufen eines Teils des Werts | [datetime_part](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/datetime_part()) [getmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/getmonth()) [monthofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/monthofyear()) [getyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/getyear()) [dayofmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofmonth()) [dayofweek](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofweek()) [dayofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/dayofyear()) [weekofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/weekofyear()) |
-| Abrufen eines Datums relativ zum Wert  | [endofday](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofday()) [endofweek](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofweek()) [endofmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofmonth()) [endofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/endofyear()) [startofday](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofday()) [startofweek](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofweek()) [startofmonth](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofmonth()) [startofyear](https://docs.loganalytics.io/docs/Language-Reference/Scalar-functions/startofyear()) |
+| Konvertieren von Datentypen | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
+| Runden eines Werts auf die bin-Größe | [bin](/azure/kusto/query/binfunction) |
+| Abrufen einer bestimmten Datums oder einer bestimmten Uhrzeit | [ago](/azure/kusto/query/agofunction) [now](/azure/kusto/query/nowfunction)   |
+| Abrufen eines Teils des Werts | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweek) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
+| Abrufen eines Datums relativ zum Wert  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:

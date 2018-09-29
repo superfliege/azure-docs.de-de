@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 50a8e491998b37a7ffebd5551cf755e8a9ca738a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 281d74b6836516e03771d82c96fab628eac12f1a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093307"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395830"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB-Bindungen für Azure Functions 1.x
 
@@ -1607,11 +1607,10 @@ Standardmäßig wird beim Schreiben in den Ausgabeparameter in Ihrer Funktion ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Lesen Sie einen Schnellstart, der einen Cosmos DB-Trigger Timer verwendet.](functions-create-cosmos-db-triggered-function.md)
+* [Informieren Sie sich über serverlose Datenbankberechnungen mit Cosmos DB.](..\cosmos-db\serverless-computing-database.md)
+* [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md)
 
+<!---
 > [!div class="nextstepaction"]
-> [Informieren Sie sich über serverlose Datenbankberechnungen mit Cosmos DB.](..\cosmos-db\serverless-computing-database.md)
-
-> [!div class="nextstepaction"]
-> [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md)
+> [Go to a quickstart that uses a Cosmos DB trigger](functions-create-cosmos-db-triggered-function.md)
+--->

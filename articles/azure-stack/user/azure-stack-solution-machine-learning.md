@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 30dbdff584f1bea955072e96a5e0f03cfe4c92c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963729"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410203"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer Machine Learning-Edge-Lösung mit Azure und Azure Stack
 
@@ -71,7 +71,7 @@ Vorkenntnisse in Bezug auf Azure und Azure Stack sind erforderlich. Beginnen Sie
 
  -  [Azure Stack Key Concepts (Wichtige Begriffe für Azure Stack)](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
- -  [Azure Stack-CI/CD-Hybridlösung – Leitfaden](/azure-stack-solution-pipeline.md)
+ -  [Azure Stack-CI/CD-Hybridlösung – Leitfaden](/azure/azure-stack/user/azure-stack-solution-pipeline)
 
 **Azure**
 
@@ -240,7 +240,7 @@ apt-get -y autoremove
 
 Stellen Sie Azure Machine Learning Services in Azure bereit.
 
-Azure Machine Learning Services (Vorschauversion) sind eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Sie stellt eine Hilfe für professionelle Datenanalysten dar, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
+Azure Machine Learning-Dienste (Vorschauversion) sind eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Sie stellt eine Hilfe für professionelle Datenanalysten dar, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
 
 In diesem Abschnitt wird Folgendes beschrieben:
 
@@ -295,7 +295,7 @@ Verwenden Sie das Azure-Portal für die Bereitstellung der Azure Machine Learnin
     | Workspace for Experimentation account (Arbeitsbereich für Experimentieren-Konto) | IrisGarden<br>(in Tutorials verwendeter Name) | Geben Sie einen Namen für einen Arbeitsbereich für dieses Konto an. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind. |
     | Assign owner for the workspace (Besitzer für den Arbeitsbereich zuweisen) | Das Konto | Wählen Sie das eigene Konto als Besitzer des Arbeitsbereichs aus. |
     | Erstellen eines Kontos für die Modellverwaltung | **check** | Erstellen Sie ein Modellverwaltungskonto. Es wird verwendet, um die Modelle als Echtzeit-Webdienste bereitzustellen und zu verwalten. <br><br>Dieser Schritt ist zwar optional, aber es wird empfohlen, das Modellverwaltungskonto zur gleichen Zeit wie das Experimentieren-Konto zu erstellen. |
-    | Kontoname | Eindeutiger Name | Wählen Sie einen eindeutigen Namen, mit dem das Modellverwaltungskonto identifiziert wird. Verwenden Sie den Abteilungs- oder Projektnamen, mit dem das Experiment am besten identifiziert wird. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. |
+    | Kontoname | Eindeutiger Name | Wählen Sie einen eindeutigen Namen, mit dem das Modellverwaltungskonto identifiziert wird. Verwenden Sie einen Abteilungs- oder Projektnamen, mit dem das Experiment am besten beschrieben wird. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. |
     | Model Management pricing tier (Modellverwaltungstarif) | **DEVTEST** | Wählen Sie **Es wurde kein Tarif ausgewählt**, um den Tarif für das neue Konto für die Modellverwaltung anzugeben. Um Kosten zu sparen, können Sie den Tarif DEVTEST wählen, falls er für das Abonnement verfügbar ist (eingeschränkte Verfügbarkeit). Wählen Sie andernfalls den Tarif S1. Wählen Sie „Auswählen“, um die Tarifauswahl zu speichern. |
     | An Dashboard anheften | Häkchen | Wählen Sie die Option **An Dashboard anheften**, um das Machine Learning-Experimentieren-Konto komfortabel auf der Titelseite des Dashboards im Azure-Portal nachverfolgen zu können. |
 
@@ -1586,13 +1586,13 @@ Legen Sie den Umfang auf Abonnement-, Ressourcengruppen- oder Ressourcenebene fe
 
 1.  Wählen Sie **Speichern** aus, um das Zuweisen der Rolle abzuschließen. Die Anwendung wird in der Liste mit den Benutzern angezeigt, die einer Rolle für diesen Bereich zugewiesen sind.
 
-### <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+### <a name="role-based-access-control"></a>Rollenbasierte Access Control
 
 Die rollenbasierte Zugriffssteuerung in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure und Azure Stack. Mit RBAC können den Benutzern nur die Zugriffsrechte gewährt werden, die diese zum Ausführen ihrer Aufgaben benötigen. Weitere Informationen zur rollenbasierten Zugriffssteuerung finden Sie unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
 **VSTS-Agentpools**
 
-Agents werden in **Agentpools** zusammengefasst, um sie nicht alle einzeln verwalten zu müssen. Ein Agentpool definiert die Freigabegrenze für alle Agents in diesem Pool. In VSTS gelten Agentpools für das gesamte VSTS-Konto und können daher zwischen Teamprojekten gemeinsam genutzt werden. Weitere Informationen sowie ein Tutorial zum Erstellen von VSTS-Agentpools finden Sie unter [Agent pools and queues](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts) (Agent-Pools und -Warteschlangen).
+Agents werden in **Agentpools** zusammengefasst, um sie nicht alle einzeln verwalten zu müssen. Ein Agent-Pool definiert die Freigabegrenze für alle Agents in diesem Pool. In VSTS gelten Agentpools für das gesamte VSTS-Konto und können daher zwischen Teamprojekten gemeinsam genutzt werden. Weitere Informationen sowie ein Tutorial zum Erstellen von VSTS-Agentpools finden Sie unter [Agent pools and queues](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts) (Agent-Pools und -Warteschlangen).
 
 **Hinzufügen eines persönlichen Zugriffstokens (PAT) für Azure Stack**
 

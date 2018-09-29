@@ -3,20 +3,21 @@ title: PowerShell für den DNS-Alias für Azure SQL-Datenbank | Microsoft-Dokume
 description: Mit PowerShell-Cmdlets wie New-AzureRMSqlServerDNSAlias können Sie neue Clientverbindungen mit einem anderen Azure SQL-Datenbankserver umleiten, ohne Clientkonfigurationen vornehmen zu müssen.
 keywords: dns sql database
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
+ms.subservice: operations
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.reviewer: genemi;amagarwa;maboja
+author: DhruvMsft
 ms.author: dmalik
-ms.openlocfilehash: 0353f503ea099b1355b6879efe0748a377115474
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: genemi,amagarwa,maboja
+manager: craigg
+ms.date: 02/05/2018
+ms.openlocfilehash: 809eea7787e63a0e7a2be457b47d05c0dca0d36e
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644313"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054556"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>PowerShell für den DNS-Alias für Azure SQL-Datenbank
 

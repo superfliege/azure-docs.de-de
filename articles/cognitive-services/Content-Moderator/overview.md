@@ -1,20 +1,21 @@
 ---
-title: Übersicht über Azure Content Moderator | Microsoft-Dokumentation
+title: Was ist Content Moderator?
+titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Content Moderator verwenden, um nicht angemessene Inhalte in von Benutzern generierten Inhalten nachzuverfolgen, zu kennzeichnen, zu bewerten und zu filtern.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: overview
 ms.date: 06/15/2017
 ms.author: sajagtap
-ms.openlocfilehash: cd9e2e9c10e9dc5ba118c8319f76174bf6f0da9f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e109376f47d921fb18d7bb9a6252e80315419ec0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377754"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226040"
 ---
 # <a name="what-is-content-moderator"></a>Was ist Content Moderator?
 

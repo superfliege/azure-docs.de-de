@@ -2,19 +2,22 @@
 title: Öffentliche Datasets für Azure-Analysen | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zu öffentlichen Datasets, mit denen Sie einen Prototyp Ihrer Analysedienste und -lösungen in Azure erstellen und diese Dienste und Lösungen testen können.
 services: sql-database
-author: douglaslMS
-manager: craigg
-ms.custom: reference
 ms.service: sql-database
-ms.topic: conceptual
-ms.date: 04/01/2018
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
+ms.topic: reference
+author: douglaslMS
 ms.author: douglasl
-ms.openlocfilehash: be93dbff39c47ed1d8834efa3ef6c033525b4bea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 6977995fb33d221b48a633076f61d3ee39d6ba40
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648913"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160416"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Öffentliche Datasets zum Testen und Erstellen von Prototypen
 

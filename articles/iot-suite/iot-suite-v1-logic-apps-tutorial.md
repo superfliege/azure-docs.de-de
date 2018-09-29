@@ -1,12 +1,12 @@
 ---
 title: Azure IoT Suite und Logik-Apps | Microsoft Docs
-description: "Tutorial zum Einbinden von Logik-Apps in Azure IoT Suite für Geschäftsprozesse."
-services: 
+description: Tutorial zum Einbinden von Logik-Apps in Azure IoT Suite für Geschäftsprozesse.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4629a7af-56ca-4b21-a769-5fa18bc3ab07
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
 ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106386"
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Tutorial: Verbinden einer Logik-App mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite
 Die vorkonfigurierte Remoteüberwachungslösung von [Microsoft Azure IoT Suite][lnk-internetofthings] eignet sich besonders gut für die ersten Schritte mit einem lückenlosen Featuresatz zum Veranschaulichen einer IoT-Lösung. In diesem Tutorial wird erläutert, wie Sie Ihrer vorkonfigurierten Remoteüberwachungslösung von Microsoft Azure IoT Suite eine Logik-App hinzufügen. Diese Schritte veranschaulichen, wie Sie mit Ihrer IoT-Lösung noch mehr erreichen können, indem Sie sie mit einem Geschäftsprozess verbinden.
@@ -42,7 +43,7 @@ Richten Sie zunächst die Logik-App ein, die mit der vorkonfigurierten Lösung v
 ## <a name="set-up-the-logic-app"></a>Einrichten der Logik-App
 1. Klicken Sie im Azure-Portal oben auf dem Blatt „Ressourcengruppe“ auf **Hinzufügen**.
 2. Suchen Sie **Logik-App**, wählen Sie diese Option aus, und klicken Sie dann auf **Erstellen**.
-3. Geben Sie den **Namen** ein, und wählen Sie für **Abonnement** und **Ressourcengruppe** die Angaben, die Sie bei der Bereitstellung Ihrer Remoteüberwachungslösung verwendet haben. Klicken Sie auf **Erstellen**.
+3. Geben Sie den **Namen** ein, und wählen Sie für **Abonnement** und **Ressourcengruppe** die Angaben, die Sie bei der Bereitstellung Ihrer Remoteüberwachungslösung verwendet haben. Klicken Sie auf **Create**.
    
     ![](media/iot-suite-v1-logic-apps-tutorial/createlogicapp.png)
 4. Sobald die Bereitstellung abgeschlossen ist, sehen Sie, dass die Logik-App als Ressource in der Ressourcengruppe aufgeführt ist.
@@ -106,7 +107,7 @@ Richten Sie zunächst die Logik-App ein, die mit der vorkonfigurierten Lösung v
 ## <a name="set-up-the-eventprocessor-web-job"></a>Einrichten des EventProcessor-Webauftrags
 In diesem Abschnitt verbinden Sie Ihre vorkonfigurierte Lösung mit der Logik-App, die Sie erstellt haben. Zu diesem Zweck fügen Sie die URL hinzu, um die Logik-App für die Aktion auszulösen, die eingeleitet wird, wenn ein Gerätesensorwert einen Schwellenwert überschreitet.
 
-1. Verwenden Sie Ihren Git-Client zum Klonen der neuesten Version des Github-Repositorys [azure-iot-remote-monitoring][lnk-rmgithub]. Beispiel:
+1. Verwenden Sie Ihren Git-Client zum Klonen der neuesten Version des Github-Repositorys [azure-iot-remote-monitoring][lnk-rmgithub]. Beispiel: 
    
     ```cmd
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git

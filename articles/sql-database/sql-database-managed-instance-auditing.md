@@ -2,20 +2,22 @@
 title: Verwaltete Azure SQL-Datenbank-Instanz – Überwachung | Microsoft-Dokumentation
 description: Lernen Sie die ersten Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen mit T-SQL kennen.
 services: sql-database
-author: giladm
-manager: craigg
-ms.reviewer: vanto
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/28/2018
+author: giladm
 ms.author: giladm
-ms.openlocfilehash: 7671b49921799e63b01d0eb85e90a8b75b2d5a48
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 38dee577ff57e6ba440fb4062315b57e4eb7957b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544293"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162252"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Erste Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -104,7 +106,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
     Wenn keine Angabe erfolgt, hat `RETENTION_DAYS` den Standardwert „0“ (unbegrenzte Aufbewahrungsdauer).
 
     Weitere Informationen:
-    - [Unterschiede bei der Überwachung zwischen verwalteten Instanzen, Azure SQL-Datenbank und SQL Server](#subheading-3)
+    - [Unterschiede bei der Überwachung zwischen verwalteten Instanzen, Azure SQL-Datenbank und SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
     - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
     - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 

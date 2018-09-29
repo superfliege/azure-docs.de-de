@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bce9e7de13ff95024685ccf916541357f5362727
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 622a8777f5ed329636c7023bb52790756f8d7206
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070650"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422625"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Ändern Ihrer Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer
 
@@ -55,10 +55,6 @@ Informationen zum Aktualisieren der Abrechnungsinformationen finden Sie unter [�
 ### <a name="why-cant-i-update-the-country"></a>Warum kann ich das Land nicht aktualisieren?
 
 Aufgrund technischer Einschränkungen kann das Land für ein vorhandenes Konto nicht geändert werden. Sie können jedoch ein Konto im gewünschten Land erstellen und dann den Azure-Support kontaktieren, um Ihre Dienste zu diesem Konto zu migrieren.
-
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Welche E-Mail-Adresse wird für das Feature Azure-Abrechnungswarnungen (Vorschau) verwendet?
-
-Sie erhalten Warnbenachrichtigungen unter der E-Mail-Adresse, die Sie bei der Registrierung für die Warnungen hinzufügen. Die für die Warnungen verwendete E-Mail-Adresse unterscheidet sich von der E-Mail-Adresse für den Kontoadministrator. Weitere Informationen finden Sie unter [Einrichten von Abrechnungswarnungen für Microsoft Azure-Abonnements](billing-set-up-alerts.md).
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

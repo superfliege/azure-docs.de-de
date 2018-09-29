@@ -2,28 +2,22 @@
 title: 'PowerShell und CLI: Aktivieren von SQL-TDE – Ihr Schlüssel – Azure SQL-Datenbank | Microsoft-Dokumentation'
 description: Erfahren Sie, wie eine Azure SQL-Datenbank- und Data Warehouse-Instanz mithilfe von PowerShell oder CLI für die Verwendung von Transparent Data Encryption (TDE) zur Verschlüsselung ruhender Daten konfiguriert wird.
 services: sql-database
-keywords: ''
-documentationcenter: ''
-author: aliceku
-manager: craigg
-editor: ''
-ms.prod: ''
-ms.reviewer: vanto
-ms.suite: sql
-ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
-ms.tgt_pltfrm: ''
-ms.devlang: azurecli, powershell
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/28/2018
+author: aliceku
 ms.author: aliceku
-monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 11e190e1a4d0309bdbdcb7a578fccaf84fabb8e3
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 0fad0cd32e8df38c5a9c06ecf01a14340f1bc9ef
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543776"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165074"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell und CLI: Aktivieren von Transparent Data Encryption mithilfe eines eigenen Azure Key Vault-Schlüssels
 
@@ -35,11 +29,11 @@ In diesem Artikel wird die Verwendung eines Schlüssels aus Azure Key Vault für
 - [Empfohlen, aber optional] Sie sollten über ein Hardwaresicherheitsmodul (HSM) oder einen lokalen Schlüsselspeicher zum Erstellen einer lokalen Kopie des Schlüsselmaterials der TDE-Schutzvorrichtung verfügen.
 - Azure PowerShell Version 4.2.0.x oder höher muss installiert sein und ausgeführt werden. 
 - Erstellen Sie eine Azure Key Vault-Instanz und einen Schlüssel zur Verwendung für TDE.
-   - [PowerShell-Anweisungen aus Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)
-   - [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [PowerShell-Anweisungen aus Key Vault](../key-vault/key-vault-get-started.md)
+   - [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Der Schlüsseltresor muss die folgende Eigenschaft aufweisen, um für TDE verwendet werden zu können:
-   - [soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) 
+   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+   - [Verwenden des vorläufigen Löschens in Key Vault mit PowerShell](../key-vault/key-vault-soft-delete-powershell.md) 
 - Der Schlüssel muss die folgenden Attribute aufweisen, um für TDE verwendet werden zu können:
    - Kein Ablaufdatum
    - Nicht deaktiviert
@@ -201,11 +195,11 @@ Rufen Sie den Verschlüsselungsstatus mit dem Cmdlet [Get-AzureRMSqlDatabaseTran
 - [Empfohlen, aber optional] Sie sollten über ein Hardwaresicherheitsmodul (HSM) oder einen lokalen Schlüsselspeicher zum Erstellen einer lokalen Kopie des Schlüsselmaterials der TDE-Schutzvorrichtung verfügen.
 - Befehlszeilenschnittstellen-Version 2.0 oder höher. Informationen zum Installieren der aktuellen Version und Verbindungsaufbau mit Ihrem Azure-Abonnement, finden Sie unter [Installieren und Konfigurieren der plattformübergreifenden Azure-Befehlszeilenschnittstelle 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 - Erstellen Sie eine Azure Key Vault-Instanz und einen Schlüssel zur Verwendung für TDE.
-   - [Verwalten von Key Vault mit CLI 2.0](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2)
-   - [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [Verwalten von Key Vault mit CLI 2.0](../key-vault/key-vault-manage-with-cli2.md)
+   - [Anweisungen zur Verwendung eines Hardwaresicherheitsmodells (HSM) und Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Der Schlüsseltresor muss die folgende Eigenschaft aufweisen, um für TDE verwendet werden zu können:
-   - [soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli) 
+   - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+   - [Verwenden des vorläufigen Löschens in Key Vault mit der CLI](../key-vault/key-vault-soft-delete-cli.md) 
 - Der Schlüssel muss die folgenden Attribute aufweisen, um für TDE verwendet werden zu können:
    - Kein Ablaufdatum
    - Nicht deaktiviert
