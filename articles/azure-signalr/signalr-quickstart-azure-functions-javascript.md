@@ -1,0 +1,100 @@
+---
+title: 'Schnellstart: Serverlose Anwendungen mit dem Azure SignalR-Dienst – JavaScript | Microsoft Docs'
+description: Eine Schnellstartanleitung für die Verwendung des Azure SignalR-Diensts und von Azure Functions zum Erstellen eines Chatraums.
+services: signalr
+documentationcenter: ''
+author: sffamily
+manager: cfowler
+editor: ''
+ms.assetid: ''
+ms.service: signalr
+ms.devlang: javascript
+ms.topic: quickstart
+ms.tgt_pltfrm: Node.js
+ms.workload: tbd
+ms.date: 09/23/2018
+ms.author: zhshang
+ms.openlocfilehash: 12ac64a89f27744e1e731633d784135c97c423e0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991027"
+---
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Schnellstart: Erstellen eines Chatraums mit Azure Functions und dem SignalR-Dienst mithilfe von JavaScript
+
+Mit dem Azure SignalR-Dienst können Sie Ihrer Anwendung ganz einfach Echtzeitfunktionen hinzufügen. Azure Functions ist eine serverlose Plattform, mit der Sie Ihren Code ohne Verwaltung von Infrastruktur ausführen können. Erfahren Sie in diesem Schnellstart, wie Sie den SignalR-Dienst und Azure Functions verwenden, um eine serverlose Chatanwendung in Echtzeit zu erstellen.
+
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Dieser Schnellstart kann unter MacOS, Windows oder Linux ausgeführt werden.
+
+Stellen Sie sicher, dass Sie einen Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/) installiert haben.
+
+Installieren Sie die [Azure Functions Core Tools (v2)](https://github.com/Azure/azure-functions-core-tools#installing), um Azure Functions-Apps lokal auszuführen.
+
+Um Erweiterungen zu installieren, erfordern die Azure Functions Core Tools zurzeit die Installation des [.NET Core SDK](https://www.microsoft.com/net/download). Allerdings sind keine Kenntnisse von .NET erforderlich, um JavaScript Azure Functions-Apps zu erstellen.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+
+## <a name="log-in-to-azure"></a>Anmelden an Azure
+
+Melden Sie sich unter <https://portal.azure.com/> mit Ihrem Azure-Konto beim Azure-Portal an.
+
+
+[!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
+
+[!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
+
+
+## <a name="configure-and-run-the-azure-function-app"></a>Konfigurieren und Ausführen der Azure Functions-App
+
+1. Bestätigen Sie im Browser, in dem das Azure-Portal geöffnet ist, dass die von Ihnen zuvor bereitgestellte SignalR-Dienstinstanz erfolgreich erstellt wurde, indem Sie nach ihrem Namen im Suchfeld oben im Portal suchen. Wählen Sie die Instanz aus, um sie zu öffnen.
+
+    ![Suchen nach der SignalR-Dienstinstanz](media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-search-instance.png)
+
+1. Wählen Sie **Schlüssel** aus, um die Verbindungszeichenfolgen für die SignalR-Dienstinstanz anzuzeigen.
+
+1. Wählen Sie die primäre Verbindungszeichenfolge aus, und kopieren Sie diese.
+
+    ![Erstellen des SignalR-Diensts](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+
+1. Öffnen Sie in Ihrem Code-Editor den Ordner *chat/src/javascript* im geklonten Repository.
+
+1. Benennen Sie *local.settings.sample.json* in *local.settings.json* um.
+
+1. Fügen Sie in **local.settings.json** die Verbindungszeichenfolge in den Wert der **AzureSignalRConnectionString**-Einstellung ein. Speichern Sie die Datei .
+
+1. JavaScript-Funktionen werden in Ordnern organisiert. In jedem Ordner befinden sich zwei Dateien: *function.json* definiert die Bindungen, die in der Funktion verwendet werden, und *index.js* ist der Textkörper der Funktion. Es gibt zwei durch HTTP ausgelöste Funktionen in dieser Funktions-App:
+
+    - **negotiate**: Verwendet die *SignalRConnectionInfo*-Eingabebindung, um gültige Verbindungsinformationen zu generieren und zurückzugeben.
+    - **messages**: Empfängt eine Chatnachricht im Anforderungstext und verwendet die *SignalR*-Ausgabebindung, um die Nachricht an alle verbundenen Clientanwendungen zu senden.
+
+1. Stellen Sie im Terminal sicher, dass Sie sich im Ordner *chat/src/javascript* befinden. Verwenden Sie die Azure Functions Core Tools zum Installieren von Erweiterungen, die zum Ausführen der App erforderlich sind.
+
+    ```bash
+    func extensions install
+    ```
+
+1. Führen Sie die Funktions-App aus.
+
+    ```bash
+    func start
+    ```
+
+    ![Erstellen des SignalR-Diensts](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
+
+
+[!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
+
+
+[!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In diesem Schnellstart haben Sie eine serverlose Echtzeitanwendung in Visual Studio erstellt und ausgeführt. Erfahren Sie im nächsten Schritt mehr darüber, wie Sie Azure Functions mit Visual Studio entwickeln und bereitstellen können.
+
+> [!div class="nextstepaction"]
+> [Entwickeln von Azure Functions mithilfe von Visual Studio](../azure-functions/functions-develop-vs.md)

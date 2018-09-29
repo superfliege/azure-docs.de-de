@@ -10,30 +10,37 @@ ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "43185419"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958865"
 ---
 # <a name="branding-guidelines-for-applications"></a>Brandingrichtlinien für Anwendungen
 
-Dieser Artikel behandelt die empfohlenen Brandingrichtlinien für die Entwicklung von Anwendungen mit Azure Active Directory (Azure AD). Die Richtlinien stellen sicher, dass sich Kunden besser zurechtfinden, die sich über ihr in Azure AD verwaltetes Geschäfts- oder Schulkonto (oder über ihr persönliches Konto) bei Ihrer Anwendung registrieren und anmelden möchten.
+Wenn Sie Anwendungen mit Azure Active Directory (Azure AD) entwickeln, müssen Sie Ihre Kunden entsprechend anweisen, wenn sie ihr Geschäfts-, Schul- oder Unikonto (verwaltet in Azure AD) oder ihr persönliches Konto für die Registrierung und Anmeldung bei Ihrer Anwendung verwenden möchten.
+
+In diesem Artikel werden die folgenden Themen behandelt:
+
+- Weitere Informationen zu den beiden Arten von Benutzerkonten, die von Microsoft verwaltet werden, und dazu, wie Sie auf Azure AD-Konten in Ihrer Anwendung verweisen können.
+- Informationen dazu, wie Sie vorgehen müssen, um das Microsoft-Logo für die Verwendung in Ihrer App hinzuzufügen.
+- Herunterladen der offiziellen **Anmelden**- oder **Bei Microsoft anmelden**-Bilder zu Verwendung in Ihrer App.
+- Informationen zum Branding und zu Navigationsempfehlungen und -einschränkungen.
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Gegenüberstellung von persönlichen Konten und Geschäfts- oder Schulkonten von Microsoft
 
 Microsoft verwaltet zwei Arten von Benutzerkonten:
 
-* **Persönliche Konten** (ehemals Windows Live ID). Diese Konten stellen die Beziehung zwischen *einzelnen* Benutzern und Microsoft dar und werden für den Zugriff auf Verbrauchergeräte und -dienste von Microsoft verwendet. Konten dieser Art sind für den persönlichen Gebrauch vorgesehen.
-* **Geschäfts- oder Schulkonten.** Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Office 365 und anderen Unternehmensdiensten von Microsoft.
+- **Persönliche Konten** (ehemals Windows Live ID). Diese Konten stellen die Beziehung zwischen *einzelnen* Benutzern und Microsoft dar und werden für den Zugriff auf Verbrauchergeräte und -dienste von Microsoft verwendet. Konten dieser Art sind für den persönlichen Gebrauch vorgesehen.
+- **Geschäfts- oder Schulkonten.** Diese Konten werden von Microsoft für Unternehmen verwaltet, die Azure Active Directory verwenden. Konten dieser Art dienen zur Anmeldung bei Office 365 und anderen Unternehmensdiensten von Microsoft.
 
 Geschäfts- oder Schulkonten von Microsoft werden den Endbenutzern (Angestellten, Schülern/Studenten, Behördenmitarbeitern) üblicherweise von der jeweiligen Organisation (Unternehmen, Bildungseinrichtung, Behörde) zugewiesen. Diese Konten werden direkt in der Cloud (über die Azure AD-Plattform) verwaltet oder über ein lokales Verzeichnis wie z.B. Windows Server Active Directory mit Azure AD synchronisiert. Microsoft fungiert als *Verwaltungsberechtigter* des Geschäfts- oder Schulkontos, die Konten gehören aber der Organisation und werden auch von dieser gesteuert.
 
@@ -41,8 +48,8 @@ Geschäfts- oder Schulkonten von Microsoft werden den Endbenutzern (Angestellten
 
 Microsoft verwendet die Markennamen „Azure“ und „Active Directory“ nicht gegenüber Endbenutzern – eine Regel, an die auch Sie sich halten sollten.
 
-* Verwenden Sie nach der Anmeldung eines Benutzers möglichst häufig den Namen und das Logo der Organisation. Das ist besser als die Verwendung generischer Formulierungen wie „Ihre Organisation“.
-* Wenn Benutzer nicht angemeldet sind, bezeichnen Sie ihre Konten als „Geschäfts- oder Schulkonto“, und machen Sie durch die Verwendung des Microsoft-Logos deutlich, dass das Konto von Microsoft verwaltet wird. Verwenden Sie keine Begriffe wie „Unternehmenskonto“, „Business-Konto“ oder „Firmenkonto“, die den Benutzer verwirren können.
+- Verwenden Sie nach der Anmeldung eines Benutzers möglichst häufig den Namen und das Logo der Organisation. Das ist besser als die Verwendung generischer Formulierungen wie „Ihre Organisation“.
+- Wenn Benutzer nicht angemeldet sind, bezeichnen Sie ihre Konten als „Geschäfts- oder Schulkonto“, und machen Sie durch die Verwendung des Microsoft-Logos deutlich, dass das Konto von Microsoft verwaltet wird. Verwenden Sie keine Begriffe wie „Unternehmenskonto“, „Business-Konto“ oder „Firmenkonto“, die den Benutzer verwirren können.
 
 ## <a name="user-account-pictogram"></a>Piktogramm für Benutzerkonten
 
@@ -94,7 +101,6 @@ Um die offiziellen Bilddateien zur Verwendung in Ihrer App herunterzuladen, klic
 | Mit Microsoft anmelden (helles Design) | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Schaltfläche „Mit Microsoft anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
 | Anmelden (dunkles Design)                 | ![Schaltfläche „Anmelden“, dunkles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Schaltfläche „Anmelden“, dunkles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
 | Anmelden (helles Design)                | ![Schaltfläche „Anmelden“, helles Design, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Schaltfläche „Anmelden“, helles Design, SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
-
 
 ## <a name="branding-dos-and-donts"></a>Brandingempfehlungen
 
