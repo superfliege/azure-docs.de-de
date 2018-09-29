@@ -1,78 +1,184 @@
 ---
-title: Überblick über klassische Warnungen in Microsoft Azure und Microsoft Azure Monitor
-description: Mit Warnungen können Sie Metriken, Ereignisse oder Protokolle für Ihre Azure-Ressourcen überwachen. Lassen Sie sich benachrichtigen, wenn eine von Ihnen festgelegte Bedingung erfüllt ist.
+title: Übersicht über die Benachrichtigung und Benachrichtigungsüberwachung in Azure
+description: Übersicht über Benachrichtigungen in Azure Warnungen, klassische Warnungen und die Schnittstelle für Warnungen.
 author: rboucher
-services: azure-monitor
+services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/15/2018
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: a0abcbdaa7e998413efb717be6e0addc5607ec5c
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 7565c536b5d24c859b164a960f74bd1e2ce97b63
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114010"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960633"
 ---
-# <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
+# <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
-> [!NOTE]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](monitoring-overview-unified-alerts.md). 
->
-
-Durch die Verwendung von Warnungen können Sie Bedingungen für Daten konfigurieren und benachrichtigt werden, wenn die Bedingungen Übereinstimmungen mit den aktuellen Überwachungsdaten ergeben.
+In diesem Artikel wird beschrieben, was Warnungen sind, welche Vorteile sie haben und wie Sie mit der Nutzung beginnen.  
 
 
-## <a name="alerts-on-azure-monitor-data"></a>Warnungen zu Azure Monitor-Daten
-Es sind zwei Arten von klassischen Warnungen verfügbar: Metrikwarnungen und Aktivitätsprotokollwarnungen.
+## <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?
+Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. 
 
-* **Klassische Metrikwarnungen**: Diese Warnung wird ausgelöst, wenn der Wert für eine bestimmte Metrik einen von Ihnen definierten Schwellenwert überschreitet. Die Warnung generiert eine Benachrichtigung, wenn sie „aktiviert“ ist (wenn der Schwellenwert überschritten wird und die Warnbedingung erfüllt ist). Es wird außerdem eine Benachrichtigung generiert, wenn die Warnung „gelöst“ ist (wenn der Schwellenwert erneut überschritten wird und die Warnbedingung nicht mehr erfüllt ist). 
+In diesem Artikel wird die einheitliche Oberfläche für Warnungen in Azure Monitor behandelt, das nun auch Log Analytics und Application Insights umfasst. Die [früheren Erfahrungen mit Warnungen](monitoring-overview-alerts.md) und Warnungstypen werden als **klassische Warnungen** bezeichnet. Sie können diese älteren Erfahrungen und den älteren Warnungstyp anzeigen, indem Sie oben auf der Warnungsseite auf **Klassische Warnungen anzeigen** klicken. 
 
-* **Klassische Aktivitätsprotokollwarnungen**: Diese Streamingprotokollwarnung wird ausgelöst, wenn ein Aktivitätsprotokollereignis generiert wird, das von Ihnen zugewiesene Filterkriterien erfüllt. Diese Warnungen haben nur einen Status: „Aktiviert“. Dies liegt daran, dass die Warnungs-Engine die Filterkriterien einfach auf ein neues Ereignis anwendet. Diese Warnungen können Sie darüber informieren, dass ein neuer Service Health-Vorfall eintritt oder ein Benutzer oder eine Anwendung in Ihrem Abonnement einen Vorgang durchführt, z.B. „Virtuellen Computer löschen“.
 
-Um Diagnoseprotokolldaten zu erhalten, die über Azure Monitor verfügbar sind, leiten Sie die Daten in Log Analytics (ehemals Operations Management Suite) weiter und verwenden Sie eine Log Analytics-Abfragewarnung. Log Analytics verwendet jetzt die [neue Warnmethode](monitoring-overview-unified-alerts.md). 
+## <a name="overview"></a>Übersicht
 
-Das folgende Diagramm enthält eine Zusammenfassung der Quellen von Daten in Azure Monitor und erläutert, wie Sie Warnungen aus diesen Daten erzeugen können.
+Das folgende Diagramm stellt die allgemeinen Begriffe und den Ablauf von Warnungen dar. 
 
-![Warnungen im Überblick](./media/monitoring-overview-alerts/Alerts_Overview_Resource_v4.png)
+![Warnungsablauf](media/monitoring-overview-alerts/Azure-Monitor-Alerts.svg)
 
-## <a name="taxonomy-of-azure-monitor-alerts-classic"></a>Taxonomie von Azure Monitor-Warnungen (klassisch)
-In Azure werden die folgenden Begriffe verwendet, um klassische Warnungen und ihre Funktionen zu beschreiben:
-* **Warnung**: Die Definition von Kriterien (mindestens eine Regel oder Bedingung), die aktiviert wird, wenn die Kriterien erfüllt sind.
-* **Aktiv**: Der Status, der auftritt, wenn die für eine klassische Warnung definierten Kriterien erfüllt sind.
-* **Gelöst**: Der Status, der auftritt, wenn die für eine klassische Warnung definierten Kriterien nicht mehr erfüllt sind, nachdem dies zuvor der Fall war.
-* **Benachrichtigung**: Die Aktion, die durchgeführt wird, wenn eine klassische Warnung aktiv wird.
-* **Aktion**: Der spezifische Aufruf, der an den Empfänger einer Benachrichtigung gesendet wird (z.B. eine E-Mail oder eine Nachricht an eine Webhook-URL). Benachrichtigungen können in der Regel mehrere Aktionen auslösen.
+Die Warnungsregeln sind von den Warnungen und Aktionen getrennt, die beim Auslösen einer Warnung ergriffen werden. 
 
-## <a name="how-do-i-receive-notifications-from-an-azure-monitor-classic-alert"></a>Wie erhalte ich Benachrichtigungen von einer klassischen Azure Monitor-Warnung?
-Bisher wurden für Azure-Warnungen unterschiedlicher Dienste die eigenen integrierten Benachrichtigungsmethoden verwendet. 
+- **Warnungsregel**: Die Warnungsregel erfasst das Ziel und die Kriterien für Warnungen. Die Warnungsregel kann sich im Zustand „Aktiviert“ oder „Deaktiviert“ befinden. Warnungen werden nur ausgelöst, wenn sie aktiviert sind. Die wichtigsten Attribute einer Warnungsregel sind:
+    - **Zielressource**: Ein Ziel kann eine beliebige Azure-Ressource sein. Eine Zielressource definiert den Umfang und die für Warnungen verfügbaren Signale. Beispiele für Ziele: Virtuelle Computer, Speicherkonten, VM-Skalierungsgruppen, Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen. Für bestimmte Ressourcen (z. B. virtuelle Computer) können Sie mehrere Ressourcen als Ziel einer Warnungsregel angeben.
+    - **Signal**: Signale werden von der Zielressource ausgegeben und können verschiedene Typen annehmen. Metrik, Aktivitätsprotokoll, Application Insights und Protokoll.
+    - **Kriterien**: Kriterien sind eine Kombination aus Signal und Logik, die auf eine Ressource angewendet wird. Beispiele: 
+         - CPU in Prozent > 70 %
+         - Serverantwortzeit > 4 ms 
+         - Anzahl der Ergebnisse einer Protokollabfrage > 100
+- **Warnungsname**: Ein bestimmter Name für die Warnungsregel, der vom Benutzer konfiguriert wird.
+- **Warnungsbeschreibung**: Eine Beschreibung für die Warnungsregel, die vom Benutzer konfiguriert wird.
+- **Schweregrad**: Der Schweregrad der Warnung, nachdem die in der Warnungsregel angegebene Kriterien erfüllt sind. Der Schweregrad kann zwischen 0 und 4 liegen.
+- **Aktion**: Eine bestimmte Aktion, die ausgeführt wird, sobald die Warnung ausgelöst wird. Weitere Informationen finden Sie unter „Aktionsgruppen“.
 
-In Azure Monitor gibt es eine wiederverwendbare Benachrichtigungsgruppierung mit der Bezeichnung *Aktionsgruppen*. Aktionsgruppen geben einen Reihe von Empfängern für eine Benachrichtigung an. Wenn eine Warnung aktiviert wird, die auf die Aktionsgruppe verweist, erhalten alle Empfänger diese Benachrichtigung. Durch diese Funktionalität ist es möglich, eine Gruppierung von Empfängern (z.B. Ihre Liste mit Technikern in Bereitschaft) für viele Warnungsobjekte wiederzuverwenden. Aktionsgruppen unterstützen Benachrichtigungen über verschiedene Methoden. Diese Methoden können Nachrichten an eine Webhook-URL, das Versenden von E-Mails, SMS-Nachrichten und eine Reihe anderer Aktionen umfassen. Weitere Informationen erhalten Sie unter [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](monitoring-action-groups.md). 
+## <a name="what-you-can-alert-on"></a>Wofür Sie Warnungen ausgeben können
 
-Ältere klassische Aktivitätsprotokollwarnungen verwenden Aktionsgruppen.
+Sie können Warnungen gemäß der Beschreibung in [Überwachen von Datenquellen](monitoring-data-sources.md) für Metriken und Protokolle ausgeben. Dazu gehören unter anderem folgende Ansprüche:
+- Metrikwerte
+- Protokollsuchabfragen
+- Aktivitätsprotokollereignisse
+- Integrität der zugrunde liegenden Azure-Plattform
+- Tests für die Verfügbarkeit von Websites
 
-Für die älteren Metrikwarnungen werden jedoch keine Aktionsgruppen verwendet. Sie können stattdessen die folgenden Aktionen konfigurieren: 
-* Senden von E-Mail-Benachrichtigungen an den Dienstadministrator, an Co-Administratoren oder an zusätzliche von Ihnen festgelegte E-Mail-Adressen
-* Aufrufen eines Webhooks, um zusätzliche automatisierte Aktionen auszuführen
 
-Webhooks ermöglichen die Automatisierung und Fehlerbehebung, z.B. mit folgenden Diensten:
-- Azure Automation-Runbook
-- Azure-Funktionen
-- Azure-Logik-App
-- Ein Drittanbieterdienst
+
+## <a name="manage-alerts"></a>Warnungen verwalten
+Sie können den Status einer Warnung festlegen, um anzugeben, an welchem Punkt des Lösungsprozesses sie sich befindet. Wenn die in der Warnungsregel angegebenen Kriterien erfüllt sind, wird eine Warnung erstellt oder ausgelöst, die den Status *Neu* aufweist. Sie können den Status ändern, wenn Sie eine Warnung bestätigen oder schließen. Alle Statusänderungen werden im Warnungsverlauf gespeichert.
+
+Die folgenden Warnungsstatus werden unterstützt.
+
+| Zustand | BESCHREIBUNG |
+|:---|:---|
+| Neu | Das Problem wurde gerade erkannt und noch nicht überprüft. |
+| Bestätigt | Ein Administrator hat die Warnung überprüft und mit deren Bearbeitung begonnen. |
+| Geschlossen | Das Problem wurde gelöst. Nachdem eine Warnung geschlossen wurde, können Sie diese erneut öffnen, indem Sie den Status ändern. |
+
+Der Status einer Warnung unterscheidet sich von der Überwachungsbedingung. Der Warnungsstatus wird vom Benutzer festgelegt und ist unabhängig von der Überwachungsbedingung. Wenn die zugrunde liegende Bedingung für die ausgelöste Warnung beseitigt ist, wird die Überwachungsbedingung für die Warnung als „Gelöst“ festgelegt. Obwohl die Überwachungsbedingung vom System auf „Gelöst“ festgelegt werden kann, ändert sich der Warnungsstatus erst dann, wenn er vom Benutzer geändert wird. Erfahren Sie mehr über das [Ändern des Zustands Ihrer Warnungen und intelligenten Gruppen](https://aka.ms/managing-alert-smart-group-states).
+
+## <a name="smart-groups"></a>Intelligente Gruppen 
+Intelligente Gruppen befinden sich in der Vorschauversion. 
+
+Intelligente Gruppen sind Aggregationen von Warnungen, die auf Machine Learning-Algorithmen basieren, die dabei helfen können, Störungen bei Warnungen zu verringern und Probleme zu beheben. [Erfahren Sie mehr über intelligente Gruppen](https://aka.ms/smart-groups) und [zum Verwalten Ihrer intelligenten Gruppen](https://aka.ms/managing-smart-groups).
+
+
+## <a name="alerts-experience"></a>Benutzeroberfläche „Warnungen“ 
+Die Standardseite „Warnungen“ enthält eine Zusammenfassung der Warnungen, die in einem bestimmten Zeitfenster erstellt werden. Sie zeigt die gesamten Warnungen für jeden Schweregrad mit Spalten an, in denen die Gesamtanzahl der Warnungen im jeweiligen Status für jeden Schweregrad angegeben ist. Klicken Sie auf einen der Schweregrade, um die Seite [Alle Warnungen](#all-alerts-page) gefiltert nach diesem Schweregrad zu öffnen.
+
+Es werden keine älteren [klassischen Warnungen](#classic-alerts) angezeigt oder verfolgt. Sie können die Abonnements oder Filterparameter ändern, um die Seite zu aktualisieren. 
+
+![Seite „Warnungen“](media/monitoring-overview-alerts/alerts-page.png)
+
+Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
+
+| Column | BESCHREIBUNG |
+|:---|:---|
+| Abonnement | Wählen Sie bis zu fünf Azure-Abonnements aus. Nur Warnungen in den ausgewählten Abonnements sind in der Ansicht enthalten. |
+| Ressourcengruppe | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
+| Zeitbereich | Nur Warnungen, die innerhalb des ausgewählten Zeitfensters ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
+
+Klicken Sie auf die folgenden Werte am oberen Rand der Seite „Warnungen“, um eine andere Seite zu öffnen.
+
+| Wert | BESCHREIBUNG |
+|:---|:---|
+| Warnungen gesamt | Die Gesamtanzahl der Warnungen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Ansicht „Alle Warnungen“ ohne Filter zu öffnen. |
+| Intelligente Gruppen | Die Gesamtanzahl anhand von Warnungen erstellter intelligenter Gruppen, die den ausgewählten Kriterien entsprechen. Wählen Sie diesen Wert aus, um die Liste „Intelligente Gruppen“ in der Ansicht „Alle Warnungen“ zu öffnen.
+| Warnungsregeln gesamt | Die Gesamtanzahl der Warnungsregeln im ausgewählten Abonnement und der ausgewählten Ressourcengruppe. Wählen Sie diesen Wert aus, um die Ansicht „Regeln“ gefiltert nach ausgewählten Abonnements und ausgewählter Ressourcengruppe zu öffnen.
+
+
+## <a name="manage-alert-rules"></a>Verwalten von Warnungsregeln
+Klicken Sie auf **Warnungsregeln verwalten**, um die Seite **Regeln** anzuzeigen. Unter **Regeln** können Sie alle Warnungsregeln in Ihren Azure-Abonnements verwalten. Sie listet alle Warnungsregeln auf und kann basierend auf Zielressourcen, Ressourcengruppen, Regelnamen oder Status sortiert werden. Warnungsregeln können auf dieser Seite auch bearbeitet, aktiviert und deaktiviert werden.  
+
+ ![Warnungsregeln](./media/monitoring-overview-alerts/alerts-preview-rules.png)
+
+
+## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
+Warnungen können unabhängig vom Überwachungsdienst oder Signaltyp auf konsistente Weise erstellt werden. Alle ausgelösten Warnungen und zugehörigen Details sind auf einer einzelnen Seite verfügbar.
+ 
+Sie erstellen eine neue Warnungsregel anhand der folgenden drei Schritte:
+1. Wählen Sie das _Ziel_ für die Warnung aus.
+1. Wählen Sie das _Signal_ aus den verfügbaren Signalen für das Ziel aus.
+1. Geben Sie die _Logik_ an, die auf Daten vom Signal angewendet werden soll.
+ 
+Bei dieser vereinfachten Erstellung müssen Sie nicht mehr die Überwachungsquelle oder -signale kennen, die unterstützt werden, bevor eine Azure-Ressource ausgewählt wird. Die Liste verfügbarer Signale wird automatisch auf Grundlage der ausgewählten Zielressource gefiltert und führt Sie durch die Festlegung der Logik für die Warnungsregel.
+
+Weitere Informationen zum Erstellen von Warnungsregeln finden Sie unter [Erstellen, Anzeigen und Verwalten von Warnungen mithilfe von Azure Monitor](monitor-alerts-unified-usage.md).
+
+Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie die jeweiligen Dienste verwenden, finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](./monitoring-overview.md). Die folgende Tabelle enthält eine Liste der in Azure verfügbaren Warnungsregeltypen. Sie gibt an, was derzeit in den einzelnen Benutzeroberflächen für Warnungen unterstützt wird.
+
+Zuvor verfügten Azure Monitor, Application Insights, Log Analytics und Service Health über separate Benachrichtigungsfunktionen. Im Laufe der Zeit verbesserte und kombinierte Azure sowohl die Benutzeroberfläche als auch verschiedene Benachrichtigungsmethoden. Diese Konsolidierung ist noch nicht abgeschlossen. Infolgedessen gibt es noch einige Benachrichtigungsfunktionen, die im neuen Warnungssystem noch nicht vorhanden sind.  
+
+| **Überwachungsquelle** | **Signaltyp**  | **Beschreibung** | 
+|-------------|----------------|-------------|
+| Dienstintegrität | Aktivitätsprotokoll  | Nicht unterstützt. Siehe [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](monitoring-activity-log-alerts-on-service-notifications.md).  |
+| Application Insights | Webverfügbarkeitstests | Nicht unterstützt. Siehe [Webtestwarnungen](../application-insights/app-insights-monitor-web-app-availability.md). Verfügbar für jede Website, die für das Senden von Daten an Application Insights instrumentiert ist. Sie erhalten eine Benachrichtigung, wenn die Verfügbarkeit oder Reaktionsfähigkeit einer Website nicht den Erwartungen entspricht. |
+
+
+## <a name="all-alerts-page"></a>Seite „Alle Warnungen“ 
+Klicken Sie auf „Warnungen gesamt“, um die Seite mit allen Warnungen anzuzeigen. Hier können Sie eine Liste der Warnungen anzeigen, die innerhalb des ausgewählten Zeitfensters erstellt wurden. Sie können entweder eine Liste der einzelnen Warnungen oder eine Liste der intelligenten Gruppen anzeigen, die diese Warnungen enthalten. Klicken Sie auf das Banner am oberen Rand der Seite, um zwischen den Ansichten zu wechseln.
+
+![Seite „Alle Warnungen“](media/monitoring-overview-alerts/all-alerts-page.png)
+
+Zum Filtern der Ansicht können Sie die folgenden Werte in den Dropdownmenüs am oberen Rand der Seite auswählen.
+
+| Column | BESCHREIBUNG |
+|:---|:---|
+| Abonnement | Wählen Sie bis zu fünf Azure-Abonnements aus. Nur Warnungen in den ausgewählten Abonnements sind in der Ansicht enthalten. |
+| Ressourcengruppe | Wählen Sie eine einzelne Ressourcengruppe aus. Nur Warnungen mit Zielen in der ausgewählten Ressourcengruppe sind in der Ansicht enthalten. |
+| Ressourcentyp | Wählen Sie mindestens einen Ressourcentyp aus. Nur Warnungen mit Zielen des ausgewählten Typs sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem eine Ressourcengruppe angegeben wurde. |
+| Ressource | Wählen Sie eine Ressource aus. Nur Warnungen mit dieser Ressource als Ziel sind in der Ansicht enthalten. Diese Spalte ist nur verfügbar, nachdem ein Ressourcentyp angegeben wurde. |
+| Severity | Wählen Sie einen Warnungsschweregrad oder *Alle* aus, um Warnungen aller Schweregrade einzuschließen. |
+| Überwachungsbedingung | Wählen Sie eine Überwachungsbedingung oder *Alle* aus, um Warnungen aller Bedingungen einzuschließen. |
+| Warnungsstatus | Wählen Sie einen Warnungsstatus oder *Alle* aus, um Warnungen aller Statusarten einzuschließen. |
+| Überwachungsdienst | Wählen Sie einen Dienst oder *Alle* aus, um alle Dienste einzuschließen. Nur Warnungen, die anhand von Regeln erstellt wurden, die diesen Dienst als Ziel verwenden, sind enthalten. |
+| Zeitbereich | Nur Warnungen, die innerhalb des ausgewählten Zeitfensters ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
+
+Klicken Sie am oberen Rand der Seite auf **Spalten**, um die anzuzeigenden Spalten auszuwählen. 
+
+## <a name="alert-detail-page"></a>Seite „Warnungsdetails“
+Die Seite „Warnungsdetails“ wird angezeigt, wenn Sie auf eine Warnung klicken. Sie enthält Details der Warnung und ermöglicht Ihnen das Ändern des Status.
+
+![Warnungsdetails](media/monitoring-overview-alerts/alert-detail2.png)
+
+Die Seite „Warnungsdetails“ enthält die folgenden Abschnitte.
+
+| Abschnitt | BESCHREIBUNG |
+|:---|:---|
+| Zusammenfassung | Zeigt die Eigenschaften und andere wichtige Informationen zur Warnung an. |
+| Verlauf | Listet die einzelnen Aktionen, die von der Warnung ausgeführt wurden, und alle an der Warnung vorgenommenen Änderungen auf. Dies ist derzeit auf Statusänderungen beschränkt. |
+| Intelligente Gruppe | Informationen zur intelligenten Gruppe, der die Warnung angehört. Die *Warnungsanzahl* bezieht sich auf die Anzahl der Warnungen, die in der intelligenten Gruppe enthalten sind. Dies schließt die anderen Warnungen in der gleichen intelligenten Gruppe ein, die in den letzten 30 Tagen erstellt wurden.  Dies ist unabhängig vom Zeitfilter auf der Listenseite für Warnungen. Klicken Sie auf eine Warnung, um deren Details anzuzeigen. |
+| Weitere Informationen | Zeigt weitere kontextbezogene Informationen für die Warnung an. Diese sind normalerweise für den Typ der Quelle spezifisch, die die Warnung erstellt hat. |
+
+
+## <a name="classic-alerts"></a>Klassische Warnungen 
+
+Die vor Juni 2018 verwendeten Azure Monitor-Metriken und Benachrichtigungsfunktionen für das Aktivitätsprotokoll werden als „Warnungen (klassisch)“ bezeichnet. 
+
+Weitere Informationen finden Sie unter [Warnungen (klassisch)](./monitoring-overview-alerts-classic.md).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen über Warnregeln und deren Konfiguration finden Sie in der folgenden Dokumentation:
 
-* Weitere Informationen zu [Metriken](monitoring-overview-metrics.md)
-* Konfigurieren von [klassischen Metrikwarnungen über das Azure-Portal](insights-alerts-portal.md)
-* Konfigurieren von [klassischen Metrikwarnungen mit PowerShell](insights-alerts-powershell.md)
-* Konfigurieren von [klassischen Metrikwarnungen über die Azure-Befehlszeilenschnittstelle](insights-alerts-command-line-interface.md)
-* Konfigurieren von [klassischen Metrikwarnungen über die Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
-* Weitere Informationen zu [Aktivitätsprotokollen](monitoring-overview-activity-logs.md)
-* Konfigurieren von [Aktivitätsprotokollwarnungen über das Azure-Portal](monitoring-activity-log-alerts.md)
-* Konfigurieren von [Aktivitätsprotokollwarnungen mit Ressourcen-Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
-* Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](monitoring-activity-log-alerts-webhook.md)
-* Weitere Informationen zu [Aktionsgruppen](monitoring-action-groups.md)
-* Konfigurieren [neuerer Warnungen](monitor-alerts-unified-usage.md)
+- [Weitere Informationen zu intelligenten Gruppen](https://aka.ms/smart-groups)
+- [Informationen zu Aktionsgruppen](monitoring-action-groups.md)
+- [Verwalten Ihrer Warnungsinstanzen in Azure](https://aka.ms/managing-alert-instances)
+- [Verwalten intelligenter Gruppen](https://aka.ms/managing-smart-groups)
+
+
+
+
+

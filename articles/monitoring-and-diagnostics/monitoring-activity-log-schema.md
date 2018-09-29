@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d267ffd5085c27c60e9eb229e2d9026fa83ef848
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003830"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998230"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./monitoring-diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.
@@ -192,6 +192,95 @@ Diese Kategorie enthält Datensätze zu allen Incidents im Zusammenhang mit der 
 }
 ```
 Informationen zu den Werten in den Eigenschaften finden Sie im Artikel [Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal](./monitoring-service-notifications.md).
+
+## <a name="resource-health"></a>Ressourcenintegrität
+Diese Kategorie enthält Datensätze zu allen Ereignissen im Zusammenhang mit der Ressourcenintegrität, die für Ihre Azure-Ressourcen aufgetreten sind. Ein Beispiel für die Art der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Integritätsstatus des virtuellen Computers ist zu Nicht verfügbar gewechselt“. Ereignisse zur Ressourcenintegrität können einen von vier Integritätsstatus darstellen: Verfügbar, Nicht verfügbar, Heruntergestuft und Unbekannt. Darüber hinaus können Ereignisse zur Ressourcenintegrität kategorisiert werden. Dabei sind die Kategorien „Von der Plattform initiiert“ oder „Vom Benutzer initiiert“ verfügbar.
+
+### <a name="sample-event"></a>Beispielereignis
+
+```json
+{
+    "channels": "Admin, Operation",
+    "correlationId": "28f1bfae-56d3-7urb-bff4-194d261248e9",
+    "description": "",
+    "eventDataId": "a80024e1-883d-37ur-8b01-7591a1befccb",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "ResourceHealth",
+        "localizedValue": "Resource Health"
+    },
+    "eventTimestamp": "2018-09-04T15:33:43.65Z",
+    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "level": "Critical",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Resourcehealth/healthevent/Activated/action",
+        "localizedValue": "Health Event Activated"
+    },
+    "resourceGroupName": "<resource group>",
+    "resourceProviderName": {
+        "value": "Microsoft.Resourcehealth/healthevent/action",
+        "localizedValue": "Microsoft.Resourcehealth/healthevent/action"
+    },
+    "resourceType": {
+        "value": "Microsoft.Compute/virtualMachines",
+        "localizedValue": "Microsoft.Compute/virtualMachines"
+    },
+    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
+    "subscriptionId": "<subscription Id>",
+    "properties": {
+        "stage": "Active",
+        "title": "Virtual Machine health status changed to unavailable",
+        "details": "Virtual machine has experienced an unexpected event",
+        "healthStatus": "Unavailable",
+        "healthEventType": "Downtime",
+        "healthEventCause": "PlatformInitiated",
+        "healthEventCategory": "Unplanned"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="property-descriptions"></a>Beschreibungen der Eigenschaften
+| Elementname | BESCHREIBUNG |
+| --- | --- |
+| channels | Immer „Admin, Operation“ |
+| correlationId | Eine GUID im Zeichenfolgenformat. |
+| Beschreibung |Statische Beschreibung des Warnungsereignisses. |
+| eventDataId |Eindeutiger Bezeichner des Warnungsereignisses. |
+| category | Immer „ResourceHealth“ |
+| eventTimestamp |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
+| level |Ebene des Ereignisses. Einer der folgenden Werte: „Kritisch“, „Fehler“, „Warnung“, „Information“ und „Ausführlich“ |
+| operationId |Eine GUID, die von den Ereignissen eines einzelnen Vorgangs gemeinsam genutzt wird. |
+| operationName |Name des Vorgangs. |
+| resourceGroupName |Der Name der Ressourcengruppe, die die Ressource enthält. |
+| resourceProviderName |Immer „Microsoft.Resourcehealth/healthevent/action“. |
+| resourceType | Der Typ der Ressource, die von einem Resource Health-Ereignis betroffen war. |
+| Ressourcen-ID | Der Name der Ressourcen-ID für die betroffene Ressource. |
+| status |Zeichenfolge, die den Status des Integritätsereignisses beschreibt. Mögliche Werte: „Aktiv“, „Gelöst“, „In Bearbeitung“, „Aktualisiert“. |
+| subStatus | In der Regel für Warnungen null. |
+| submissionTimestamp |Zeitstempel des Zeitpunkts, ab dem das Ereignis für Abfragen verfügbar war. |
+| subscriptionId |Azure-Abonnement-ID |
+| Eigenschaften |Satz mit `<Key, Value>`-Paaren (Wörterbuch), die Details des Ereignisses beschreiben.|
+| properties.title | Eine benutzerfreundliche Zeichenkette, die den Integritätsstatus der Ressource beschreibt. |
+| properties.details | Eine benutzerfreundliche Zeichenkette, die weitere Details zum Ereignis aufführt. |
+| properties.currentHealthStatus | Der aktuelle Integritätsstatus der Ressource. Mögliche Werte: „Verfügbar“, „Nicht verfügbar“, „Heruntergestuft“ und „Unbekannt“. |
+| properties.previousHealthStatus | Der vorherige Integritätsstatus der Ressource. Mögliche Werte: „Verfügbar“, „Nicht verfügbar“, „Heruntergestuft“ und „Unbekannt“. |
+| properties.type | Eine Beschreibung des Typs des Resource Health-Ereignisses. |
+| properties.cause | Eine Beschreibung der Ursache des Resource Health-Ereignisses. Entweder „UserInitiated“ oder „PlatformInitiated“. |
+
 
 ## <a name="alert"></a>Warnung
 Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnungen. Ein Beispiel für ein Ereignis in dieser Kategorie ist „CPU-Auslastung auf „myVM“ lag in den letzten 5 Minuten über 80“. Eine Vielzahl von Azure-Systemen weist ein Konzept für Warnungen auf: Sie können eine Regel definieren und erhalten eine Benachrichtigung, wenn die Bedingungen mit der Regel übereinstimmen. Jedes Mal, wenn ein unterstützter Azure-Warnungstyp „aktiviert“ wird oder die Bedingungen erfüllt sind, sodass eine Benachrichtigung generiert wird, wird ein Datensatz der Aktivierung auch in dieser Kategorie des Aktivitätsprotokolls abgelegt.

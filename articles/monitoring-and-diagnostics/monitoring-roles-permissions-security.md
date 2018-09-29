@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: a30c6a8d02b46656a0d76cf8438bdf0b3361ae91
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: c99186d73886041d92bea38b0dd4dc17f55001e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248460"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977858"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 Viele Teams müssen den Zugriff auf Überwachungsdaten und -einstellungen streng regulieren. Wenn einige Ihrer Teammitglieder beispielsweise ausschließlich an der Überwachung arbeiten (Supporttechniker, DevOps-Techniker) oder wenn Sie einen verwalteten Dienstanbieter verwenden, sollten Sie diesen nur Zugriff auf Überwachungsdaten erteilen und deren Möglichkeit zum Erstellen, Ändern oder Löschen von Ressourcen einschränken. Dieser Artikel beschreibt, wie Sie schnell eine integrierte RBAC-Rolle zur Überwachung auf einen Benutzer in Azure anwenden oder Ihre eigene benutzerdefinierte Rolle für einen Benutzer erstellen, der eingeschränkte Überwachungsberechtigungen benötigt. Anschließend werden Sicherheitsaspekte für Ihre Azure Monitor-Ressourcen erörtert, und es wird beschrieben, wie Sie den Zugriff auf die darin enthaltenen Daten beschränken können.
@@ -171,6 +171,24 @@ Für Event Hubs können Sie einem ähnlichen Muster folgen, jedoch müssen Sie z
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
    New-AzureRmRoleDefinition -Role $role 
    ```
+
+## <a name="monitoring-within-a-secured-virtual-network"></a>Überwachung innerhalb eines gesicherten virtuellen Netzwerks
+
+Azure Monitor benötigt Zugriff auf Ihre Azure-Ressourcen, um die von Ihnen aktivierten Dienste bereitzustellen. Wenn Sie Ihre Azure-Ressourcen überwachen und dennoch vor dem Zugriff auf das öffentliche Internet schützen möchten, können Sie die folgenden Einstellungen aktivieren.
+
+### <a name="secured-storage-accounts"></a>Geschützte Speicherkonten 
+
+Überwachungsdaten werden häufig in ein Speicherkonto geschrieben. Sie sollten sicherstellen, dass die auf ein Speicherkonto kopierten Daten nicht von nicht autorisierten Benutzern eingesehen werden können. Für zusätzliche Sicherheit können Sie den Netzwerkzugriff sperren, um nur Ihren autorisierten Ressourcen und vertrauenswürdigen Microsoft-Diensten den Zugriff auf ein Speicherkonto zu ermöglichen, indem Sie ein Speicherkonto auf die Verwendung durch „ausgewählte Netzwerke“ beschränken.
+![Dialogfeld „Azure Storage-Einstellungen“](./media/monitoring-roles-permissions-security/secured-storage-example.png): Azure Monitor gilt als einer dieser „vertrauenswürdigen Microsoft-Dienste“. Wenn Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf Ihren geschützten Speicher erlauben, hat Azure Monitor Zugriff auf Ihr geschütztes Speicherkonto und kann unter diesen geschützten Bedingungen Diagnoseprotokolle, Aktivitätsprotokolle und Metriken von Azure Monitor in Ihr Speicherkonto schreiben. Dadurch kann Log Analytics auch Protokolle aus dem geschützten Speicher lesen.   
+
+Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen und Azure Storage](../storage/common/storage-network-security.md).
+ 
+### <a name="secured-virtual-networks-with-service-endpoints"></a>Geschützte virtuelle Netzwerke mit Dienstendpunkten 
+
+Virtuelle Netzwerke (VNets) ermöglichen es, den Datenverkehr einzuschränken, damit nur bestimmter Datenverkehr mit Ihren Azure-Ressourcen kommunizieren kann. Sie können Dienstendpunkte angeben, um Ihr VNet zu erweitern und Azure Monitor einzubinden. Dies ermöglicht es Ihren Ressourcen, weiterhin sicher Protokollierungs- und Metrikinformationen aus virtuellen Netzwerken an Azure Monitor zu senden.  
+
+Weitere Informationen finden Sie unter [Endpunkte von virtuellen Netzwerken](../virtual-network/virtual-network-service-endpoints-overview.md). 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Weitere Informationen zu RBAC und Berechtigungen in Resource Manager](../role-based-access-control/overview.md)

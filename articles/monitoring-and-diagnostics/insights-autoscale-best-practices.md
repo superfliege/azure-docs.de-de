@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: e9fc5a4c5d2e23750493cc320dffa380724347fb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 30210d15950302ead0a2406ffb59a61a28d4e54e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262442"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997314"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
-In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
+Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="autoscale-concepts"></a>Konzepte der automatischen Skalierung
 * Eine Ressource kann nur *eine* Einstellung für die automatische Skalierung haben.
@@ -24,9 +24,9 @@ In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in
 * Eine Einstellung für die automatische Skalierung skaliert Instanzen horizontal *hoch*, indem die Anzahl der Instanzen erhöht, und *herunter*, indem die Anzahl der Instanzen verringert wird.
   Eine Einstellung für die automatische Skalierung hat einen Höchst-, Mindest- und Standardwert von Instanzen.
 * Eine automatische Skalierungsaufgabe liest die zugeordnete Skalierungsmetrik und überprüft dabei, ob die konfigurierten Schwellenwerte zum horizontalen Hoch- oder Herunterskalieren überschritten wurden. Eine Liste der Metriken, nach der die automatische Skalierung vorgenommen werden kann, finden Sie unter [Übliche Metriken für die automatische Skalierung in Azure Monitor](insights-autoscale-common-metrics.md).
-* Alle Schwellenwerte werden auf Instanzebene berechnet. Beispielsweise besagt „Skaliere um eine Instanz horizontal hoch, wenn die durchschnittliche CPU-Auslastung > 80 % und die Instanzenanzahl 2 ist“, dass horizontal hochskaliert werden soll, wenn die durchschnittliche CPU-Auslastung über alle Instanzen hinweg größer als 80 % ist.
-* Alle Fehler bei der automatischen Skalierung werden im Aktivitätsprotokoll protokolliert. Anschließend können Sie eine [Warnung für das Aktivitätsprotokoll](./monitoring-activity-log-alerts.md) konfigurieren, damit Sie per E-Mail, SMS, Webhook usw. benachrichtigt werden, wenn bei der automatischen Skalierung ein Fehler auftritt.
-* Auf ähnliche Weise werden alle erfolgreichen Skalierungsaktionen im Aktivitätsprotokoll erfasst. Anschließend können Sie eine Warnung für das Aktivitätsprotokoll konfigurieren, damit Sie per E-Mail, SMS, Webhook usw. benachrichtigt werden, wenn die automatischen Skalierung erfolgreich abgeschlossen wurde. Sie können auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
+* Alle Schwellenwerte werden auf Instanzebene berechnet. Beispielsweise besagt „Skaliere um eine Instanz horizontal hoch, wenn die durchschnittliche CPU-Auslastung > 2 % und die Instanzenanzahl 80 ist“, dass horizontal hochskaliert werden soll, wenn die durchschnittliche CPU-Auslastung über alle Instanzen hinweg größer als 80 % ist.
+* Alle Fehler bei der automatischen Skalierung werden im Aktivitätsprotokoll protokolliert. Anschließend können Sie eine [Warnung für das Aktivitätsprotokoll](./monitoring-activity-log-alerts.md) konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn bei der automatischen Skalierung ein Fehler auftritt.
+* Auf ähnliche Weise werden alle erfolgreichen Skalierungsaktionen im Aktivitätsprotokoll erfasst. Anschließend können Sie eine Warnung für das Aktivitätsprotokoll konfigurieren, damit Sie per E-Mail, SMS oder Webhook benachrichtigt werden, wenn die automatischen Skalierung erfolgreich abgeschlossen wurde. Sie können auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="autoscale-best-practices"></a>Empfohlene Methoden für die automatische Skalierung
 Verwenden Sie die folgenden Best Practices für die automatische Skalierung.
@@ -35,10 +35,10 @@ Verwenden Sie die folgenden Best Practices für die automatische Skalierung.
 Falls Ihre Einstellung ein Minimum von „2“ und ein Maximum von „2“ hat und dabei die Anzahl der aktuellen Instanzen „2“ ist, kann keine automatische Skalierung durchgeführt werden. Behalten Sie eine passende Spanne zwischen der maximalen und der minimalen Instanzenanzahl bei. Beide Werte gelten dabei als inklusive. Die automatische Skalierung skaliert immer zwischen diesen Grenzwerten.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Die manuelle Skalierung wird durch die Mindest- und Höchstwerte der automatischen Skalierung außer Kraft gesetzt.
-Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert die Engine für die automatische Skalierung automatisch auf den Mindestwert (sofern der Wert niedriger ist) oder den Höchstwert (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert die Engine für die automatische Skalierung bei der nächsten Ausführung auf 3 Instanzen. Wenn Sie manuell die Skalierung auf 8 Instanzen festlegen, wird ebenso bei der nächsten Ausführung der automatischen Skalierung wieder auf 6 Instanzen herunterskaliert.  Die manuelle Skalierung ist äußerst temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
+Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert die Engine für die automatische Skalierung automatisch auf den Mindestwert (sofern der Wert niedriger ist) oder den Höchstwert (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert die Engine für die automatische Skalierung bei der nächsten Ausführung auf drei Instanzen. Wenn Sie manuell die Skalierung auf acht Instanzen festlegen, wird ebenso bei der nächsten Ausführung der automatischen Skalierung wieder auf sechs Instanzen herunterskaliert.  Die manuelle Skalierung ist temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Verwenden Sie immer eine Regelkombination für das horizontale Hoch- und Herunterskalieren, die eine Erhöhung und Verringerung durchführt.
-Falls Sie nur einen Teil dieser Kombination verwenden („nur horizontal Hochskalieren“ oder „nur horizontal Herunterskalieren“), wird die automatische Skalierung die Hoch- oder Herunterskalierung vornehmen, bis das Maximum oder das Minimum erreicht ist.
+Wenn Sie nur einen Teil der Kombination verwenden, wird die Autoskalierung nur in eine Richtung (horizontal hochskalieren oder herunterskalieren) wirken, bis sie die im Profil definierte maximale oder minimale Anzahl von Instanzen erreicht. Dies ist nicht optimal, da Sie Ihre Ressource in Zeiten hoher Auslastung vorzugsweise horizontal hochskalieren möchten, um die Verfügbarkeit sicherzustellen. Ebenso möchten Sie in Zeiten geringer Auslastung, dass Ihre Ressource horizontal herunterskaliert wird, damit Sie Kosteneinsparungen realisieren können.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wählen Sie die passende Statistik für Ihre Diagnosemetrik aus
 Für die Diagnosemetriken können Sie zwischen *Durchschnitt*, *Minimum*, *Maximum* und *Gesamt* als Metrik, nach der skaliert werden soll, auswählen. Die am häufigsten verwendete Statistik ist *Durchschnitt*.
@@ -53,11 +53,11 @@ Wir empfehlen Ihnen, die Einstellungen für die automatische Skalierung *nicht* 
 
 Sehen wir uns nun ein Beispiel an, das zu möglicherweise verwirrendem Verhalten führen kann. Gehen Sie dabei von der folgenden Abfolge aus.
 
-1. Nehmen Sie an, es gibt anfangs 2 Instanzen, und die durchschnittliche Anzahl der Threads pro Instanz wächst auf 625.
-2. Die automatische Skalierung skaliert hoch und fügt eine dritte Instanz hinzu.
+1. Nehmen Sie an, es gibt anfangs zwei Instanzen, und die durchschnittliche Anzahl der Threads pro Instanz wächst auf 625.
+2. Die automatische Skalierung skaliert horizontal hoch und fügt eine dritte Instanz hinzu.
 3. Nehmen Sie jetzt an, dass sich die durchschnittliche Threadanzahl über alle Instanzen hinweg auf 575 verringert.
 4. Bevor herunterskaliert wird, versucht die automatische Skalierung, den Endzustand nach ausgeführtem Herunterskalieren abzuschätzen. Falls beispielsweise 575 x 3 (aktuelle Instanzenanzahl) = 1.725 / 2 (Anzahl der Instanzen, wenn zentral herunterskaliert wird) = 862,5 Threads. Das bedeutet, dass die automatische Skalierung nach dem horizontalen Herunterskalieren sofort wieder horizontal hochskalieren muss, falls die durchschnittliche Threadanzahl gleich bleibt oder sich gar nur leicht verringert. Falls jedoch wieder horizontal hochskaliert wird, würde sich der ganze Vorgang wiederholen, was zu einer Endlosschleife führen würde.
-5. Um diese Fluktuation zu vermeiden, wird gar nicht erst zentral herunterskaliert. Stattdessen wird diese Bedingung übersprungen und beim nächsten Ausführen dieses Dienstauftrags neu bewertet. Das könnte viele Leute verwirren, da die automatische Skalierung scheinbar bei einer durchschnittlichen Threadanzahl von 575 nicht funktioniert.
+5. Um diese Fluktuation zu vermeiden, wird gar nicht erst zentral herunterskaliert. Stattdessen wird diese Bedingung übersprungen und beim nächsten Ausführen dieses Dienstauftrags neu bewertet. Das kann viele Leute verwirren, da die automatische Skalierung scheinbar bei einer durchschnittlichen Threadanzahl von 575 nicht funktioniert.
 
 Die Schätzung während eines horizontalen Herunterskalierens soll „Pendelsituationen“ vermeiden, in denen horizontales Herunter- und Hochskalieren ständig wechseln. Behalten Sie dieses Verhalten im Hinterkopf , wenn Sie für das horizontale Hoch- und Herunterskalieren die gleichen Schwellenwerte auswählen.
 
@@ -88,7 +88,7 @@ Gehen Sie dabei von der folgenden Abfolge aus:
 2. Es treffen weiterhin Nachrichten ein, und die Anzahl beim Ansehen der Speicherwarteschlange liegt bei 50. Sie könnten davon ausgehen, dass die automatische Skalierung eine horizontale Hochskalierungsaktion durchführt. Beachten Sie jedoch, dass es sich immer noch um 50 / 2 = 25 Nachrichten pro Instanz handelt. Daher wird keine horizontale Hochskalierung ausgeführt. Damit die erste horizontale Hochskalierung ausgeführt wird, sollte die Gesamtanzahl der Nachrichten in der Speicherwarteschlange 100 sein.
 3. Nehmen Sie jetzt an, dass die Gesamtanzahl der Nachrichten 100 erreicht.
 4. Eine dritte Instanz der Speicherwarteschlange wird aufgrund einer horizontalen Hochskalierungsaktion hinzugefügt.  Die nächste horizontale Hochskalierungsaktion wird erst durchgeführt, wenn die Gesamtzahl der Nachrichten in der Warteschlange 150 erreicht, da 150 / 3 = 50.
-5. Jetzt nimmt die Anzahl der Nachrichten in der Warteschlange ab. Bei 3 Instanzen wird die erste horizontale Herunterskalierungsaktion durchgeführt, wenn die Gesamtzahl der Nachrichten in der Warteschlange 30 beträgt, da 30 / 3 = 10 Nachrichten pro Instanz ergeben – den Schwellenwert zum horizontalen Herunterskalieren.
+5. Jetzt nimmt die Anzahl der Nachrichten in der Warteschlange ab. Bei drei Instanzen wird die erste horizontale Herunterskalierungsaktion durchgeführt, wenn die Gesamtzahl der Nachrichten in der Warteschlange 30 beträgt, da 30/3 = 10 Nachrichten pro Instanz ergeben – den Schwellenwert zum horizontalen Herunterskalieren.
 
 ### <a name="considerations-for-scaling-when-multiple-profiles-are-configured-in-an-autoscale-setting"></a>Überlegungen zur Skalierung, wenn mehrere Profile in einer Einstellung für die automatische Skalierung konfiguriert sind
 In einer Einstellung für die automatische Skalierung können Sie ein Standardprofil wählen, das immer angewendet wird, unabhängig von Zeitplänen oder der Zeit. Alternativ können Sie aber auch ein periodisches Profil oder ein Profil für eine festgelegte Periode mit Datums- und Zeitbereich wählen.
@@ -103,9 +103,9 @@ Sobald die Bedingung eines Profils erfüllt wird, überprüft die automatische S
 
 Sehen wir uns dies mithilfe eines Beispiels an:
 
-Die Abbildung unten zeigt eine Einstellung für die automatische Skalierung mit einem Standardprofil mit einem Instanzenminimum von 2 und einem Instanzenmaximum von 10. In diesem Beispiel wurden die Regeln so konfiguriert, dass horizontal hochskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange größer als 10 ist, und horizontal herunterskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange kleiner als 3 ist. Die Ressource kann jetzt also zwischen 2 und 10 Instanzen hoch- bzw. -herunterskalieren.
+Die Abbildung unten zeigt eine Einstellung für die automatische Skalierung mit einem Standardprofil mit einem Instanzenminimum von 2 und einem Instanzenmaximum von 10. In diesem Beispiel wurden die Regeln so konfiguriert, dass horizontal hochskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange größer als 10 ist, und horizontal herunterskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange kleiner als drei ist. Die Ressource kann jetzt also zwischen zwei und zehn Instanzen hoch- bzw. herunterskalieren.
 
-Zusätzlich wurde ein periodisches Profil für Montag eingerichtet. Für dieses wurde ein Instanzenminimum von 3 und ein Instanzenmaximum von 10 festgelegt. Das heißt, dass am Montag bei der erstmaligen Überprüfung dieser Bedingung durch die automatische Skalierung, diese auf das neue Minimum von 3 horizontal hochskaliert, falls die Instanzenanzahl bereits 2 ist. Solange die automatische Skalierung bei der Überprüfung feststellt, dass diese Profilbedingung erfüllt ist (Montag), wird sie nur die CPU-basierten Regeln für das horizontale Skalieren (hoch/herunter) ausführen, die für dieses Profil konfiguriert wurden. Zu diesem Zeitpunkt wird die Länge der Warteschlange nicht überprüft. Falls Sie jedoch wollen, dass die Bedingung der Länge der Warteschlange ebenfalls überprüft wird, sollten Sie diese Regeln aus dem Standardprofil auch in Ihr Montagsprofil übernehmen.
+Zusätzlich wurde ein periodisches Profil für Montag eingerichtet. Für dieses wurde ein Instanzenminimum von 3 und ein Instanzenmaximum von 10 festgelegt. Das heißt, dass am Montag bei der erstmaligen Überprüfung dieser Bedingung durch die automatische Skalierung, diese auf das neue Minimum von drei horizontal hochskaliert, falls die Instanzenanzahl bereits zwei ist. Solange die automatische Skalierung bei der Überprüfung feststellt, dass diese Profilbedingung erfüllt ist (Montag), wird sie nur die CPU-basierten Regeln für das horizontale Skalieren (hoch/herunter) ausführen, die für dieses Profil konfiguriert wurden. Zu diesem Zeitpunkt wird die Länge der Warteschlange nicht überprüft. Falls Sie jedoch wollen, dass die Bedingung der Länge der Warteschlange ebenfalls überprüft wird, sollten Sie diese Regeln aus dem Standardprofil auch in Ihr Montagsprofil übernehmen.
 
 Wenn die automatische Skalierung zurück zum Standardprofil wechselt, wird ebenfalls zuerst überprüft, ob die Höchst- und Mindestbedingungen erfüllt werden. Falls die Anzahl der Instanzen zu diesem Zeitpunkt 12 ist, wird auf 10, den für das Standardprofil zulässigen Höchstwert, herunterskaliert.
 
