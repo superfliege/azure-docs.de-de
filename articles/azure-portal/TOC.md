@@ -1,7 +1,5 @@
 # Übersicht
 ## [Informationen zum Azure-Portal](../azure-portal-overview.md)
-# Lernprogramme
-## [DevOps mit dem Azure-Portal](tutorial-azureportal-devops.md)
 # Konzepte
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Tastenkombinationen](azure-portal-keyboard-shortcuts.md)

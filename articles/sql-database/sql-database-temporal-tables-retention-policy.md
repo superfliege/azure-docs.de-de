@@ -2,19 +2,22 @@
 title: Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie | Microsoft Docs
 description: Erfahren Sie, wie Sie eine temporale Aufbewahrungsrichtlinie verwenden, um die Kontrolle über Verlaufsdaten zu behalten.
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: develop databases
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: f65f7ec44ccbeb6f64d43d20b1bd7a77329fa97f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f339cadc63d5e5cd934d07e7b0fffc6342ca04c7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649022"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159096"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie
 Temporale Tabellen können die Größe einer Datenbank mehr erhöhen als reguläre Tabellen, insbesondere, wenn Sie Verlaufsdaten für einen längeren Zeitraum beibehalten. Daher stellt eine Aufbewahrungsrichtlinie für Verlaufsdaten einen wichtigen Aspekt der Planung und Verwaltung des Lebenszyklus jeder temporalen Tabelle dar. Temporale Tabellen in Azure SQL-Datenbank verfügen über einen benutzerfreundlichen Aufbewahrungsmechanismus, der Sie bei dieser Aufgabe unterstützt.

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0e31f311c123fa8ace523cfde21ebdf2f707fce5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1af54e3b0237d1d62ae7fb47939e7786fa1219b8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303875"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434669"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>Erste Schritte mit Azure AD Connect mit Expresseinstellungen
 Die **Expresseinstellungen** von Azure AD Connect werden verwendet, wenn Sie eine Topologie mit einer einzelnen Gesamtstruktur und die [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) für die Authentifizierung verwenden. **Expresseinstellungen** sind die Standardoption und werden für die häufigsten Bereitstellungsszenarien verwendet. Mit nur wenigen Klicks können Sie Ihr lokales Verzeichnis auf die Cloud erweitern.
@@ -46,7 +46,7 @@ Im Abschnitt [Videos](#videos) können Sie diese Schritte in Aktion sehen.
    Wenn diese Seite angezeigt wird, sollten Sie jede Domäne überprüfen, die als **Nicht hinzugefügt** und **Nicht überprüft** gekennzeichnet ist. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Klicken Sie auf das Symbol zum Aktualisieren, wenn Sie Ihre Domänen überprüft haben.
 8. Klicken Sie im Bildschirm "Bereit zur Konfiguration" auf **Installieren**.
    * Optional können Sie auf der Seite „Bereit zur Konfiguration“ das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, sobald die Konfiguration abgeschlossen wurde** deaktivieren. Deaktivieren Sie dieses Kontrollkästchen, wenn Sie weitere Konfigurationseinstellungen vornehmen möchten, z.B. [Filtern](how-to-connect-sync-configure-filtering.md). Wenn Sie diese Option deaktivieren, konfiguriert der Assistent die Synchronisierung, der Scheduler bleibt jedoch deaktiviert. Er wird erst ausgeführt, wenn Sie ihn manuell aktivieren, indem Sie den [Installations-Assistenten erneut ausführen](how-to-connect-installation-wizard.md).
-   * Bleibt das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, sobald die Konfiguration abgeschlossen wurde** aktiviert, wird sofort eine vollständige Synchronisierung aller Benutzer, Gruppen und Kontakte mit Azure AD ausgelöst. 
+   * Bleibt das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, sobald die Konfiguration abgeschlossen wurde** aktiviert, wird sofort eine vollständige Synchronisierung aller Benutzer, Gruppen und Kontakte mit Azure AD ausgelöst.
    * Wenn Sie in Ihrer lokalen Active Directory-Instanz Exchange nutzen, können Sie auch [**Hybridbereitstellungen in Exchange**](https://technet.microsoft.com/library/jj200581.aspx) aktivieren. Aktivieren Sie diese Option, wenn Sie Exchange-Postfächer gleichzeitig in der Cloud und lokal bereitstellen möchten.
      ![Bereit zur Konfiguration von Azure AD Connect](./media/how-to-connect-install-express/readytoconfigure.png)
 9. Klicken Sie nach Abschluss der Installation auf **Beenden**.

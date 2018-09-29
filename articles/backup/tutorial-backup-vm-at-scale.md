@@ -9,12 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 4fb8d45c285ee3c1651039619808b8964c5313cd
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983079"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434539"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
@@ -42,7 +42,7 @@ Der Recovery Services-Tresor enthält die Sicherungsdaten, und Sicherungsrichtli
 
     ![Tresormenü öffnen](./media/tutorial-backup-vm-at-scale/provide-vault-detail-2.png)
 
-3. Führen Sie im Menü „Recovery Services-Tresor“ folgende Aktionen durch: 
+3. Führen Sie im Menü „Recovery Services-Tresor“ folgende Aktionen durch:
 
     - Geben Sie *myRecoveryServicesVault* in **Name** ein.
     - Die aktuelle Abonnement-ID wird unter **Abonnement** angezeigt. Wenn Sie über weitere Abonnements verfügen, können Sie ein anderes Abonnement für den neuen Tresor auswählen.
@@ -76,7 +76,7 @@ Nach dem Erstellen des Recovery Services-Tresors konfigurieren Sie im nächsten 
 
     ![Workload auswählen](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
-5. Geben Sie im Menü **Sicherungsrichtlinie** für **Richtlinienname** den Namen *Finance* ein. Geben Sie die folgenden Änderungen für die Sicherungsrichtlinie ein: 
+5. Geben Sie im Menü **Sicherungsrichtlinie** für **Richtlinienname** den Namen *Finance* ein. Geben Sie die folgenden Änderungen für die Sicherungsrichtlinie ein:
     - Legen Sie für **Sicherungshäufigkeit** die Zeitzone auf *Central Time* fest. Der Sportkomplex befindet sich in Texas, und der Besitzer möchte die lokale Zeit verwenden. Lassen Sie die Sicherungshäufigkeit auf täglich um 3:30 Uhr festgelegt.
     - Legen Sie für **Aufbewahrung für täglichen Sicherungspunkt** den Zeitraum auf 90 Tage fest.
     - Verwenden Sie für **Aufbewahrung für wöchentlichen Sicherungspunkt** den Wiederherstellungspunkt *Monday*, und legen Sie als Aufbewahrungszeit 52 Wochen fest.
@@ -84,21 +84,21 @@ Nach dem Erstellen des Recovery Services-Tresors konfigurieren Sie im nächsten 
     - Deaktivieren Sie die Option **Aufbewahrung für jährlichen Sicherungspunkt**. Der Leiter der Finanzabteilung möchte die Daten nicht länger als 36 Monate aufbewahren.
     - Klicken Sie auf **OK**, um die Sicherungsrichtlinie zu erstellen.
 
-    ![Workload auswählen](./media/tutorial-backup-vm-at-scale/set-new-policy.png) 
+    ![Workload auswählen](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
     Nach ihrer Erstellung weisen Sie die Sicherungsrichtlinie den virtuellen Computern zu.
 
-6. Wählen Sie im Dialogfeld **Virtuelle Computer auswählen** den virtuellen Computer *myVM* aus, und klicken Sie auf **OK**, um die Sicherungsrichtlinie auf die virtuellen Computer anzuwenden. 
+6. Wählen Sie im Dialogfeld **Virtuelle Computer auswählen** den virtuellen Computer *myVM* aus, und klicken Sie auf **OK**, um die Sicherungsrichtlinie auf die virtuellen Computer anzuwenden.
 
     Es werden alle virtuellen Computer am gleichen Standort angezeigt, die noch keiner Sicherungsrichtlinie zugeordnet sind. *myVMH1* und *myVMR1* wurden für die Richtlinie *Finance* ausgewählt.
 
-    ![Workload auswählen](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png) 
+    ![Workload auswählen](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
 
     Wenn die Bereitstellung abgeschlossen ist, erhalten Sie eine Benachrichtigung darüber, dass die Bereitstellung erfolgreich abgeschlossen wurde.
 
 ## <a name="initial-backup"></a>Erste Sicherung
 
-Sie haben zwar die Sicherung für die Recovery Services-Tresore aktiviert, aber noch keine erste Sicherung erstellt. Es wird für die Notfallwiederherstellung empfohlen, eine erste Sicherung auszulösen, damit Ihre Daten geschützt sind. 
+Sie haben zwar die Sicherung für die Recovery Services-Tresore aktiviert, aber noch keine erste Sicherung erstellt. Es wird für die Notfallwiederherstellung empfohlen, eine erste Sicherung auszulösen, damit Ihre Daten geschützt sind.
 
 So führen Sie einen bedarfsgesteuerten Sicherungsauftrag aus
 
@@ -130,10 +130,10 @@ So führen Sie einen bedarfsgesteuerten Sicherungsauftrag aus
 
     Anhand von Bereitstellungsbenachrichtigungen werden Sie darüber informiert, dass der Sicherungsauftrag ausgelöst wurde und dass Sie den Status des Auftrags auf der Seite „Sicherungsaufträge“ überwachen können. Je nach Größe Ihres virtuellen Computers kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
-    Nach Abschluss des Auftrags für die erste Sicherung wird sein Status im Menü „Sicherungsauftrag“ angezeigt. Der manuell ausgelöste Sicherungsauftrag hat den ersten Wiederherstellungspunkt für *myVM* erstellt. Wenn Sie weitere virtuelle Computer sichern möchten, wiederholen Sie diese Schritte für jeden virtuellen Computer. 
+    Nach Abschluss des Auftrags für die erste Sicherung wird sein Status im Menü „Sicherungsauftrag“ angezeigt. Der manuell ausgelöste Sicherungsauftrag hat den ersten Wiederherstellungspunkt für *myVM* erstellt. Wenn Sie weitere virtuelle Computer sichern möchten, wiederholen Sie diese Schritte für jeden virtuellen Computer.
 
     ![Kachel „Sicherungsaufträge“](./media/tutorial-backup-vm-at-scale/initial-backup-complete.png)
-  
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die in diesem Tutorial erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte durchführen, um alle in diesem Tutorial erstellten Ressourcen im Azure-Portal zu löschen.
@@ -153,15 +153,15 @@ Wenn Sie planen, mit den nachfolgenden Tutorials fortzufahren, sollten Sie die i
 
     ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. Wählen Sie im Kontextmenü **Sicherung beenden** aus, um das Menü „Sicherung beenden“ zu öffnen. 
+4. Wählen Sie im Kontextmenü **Sicherung beenden** aus, um das Menü „Sicherung beenden“ zu öffnen.
 
     ![Symbol „Einstellungen“](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
 5. Wählen Sie im Menü **Sicherung beenden** das obere Dropdownmenü und dann **Sicherungsdaten löschen** aus.
 
 6. Geben Sie im Dialogfeld **Geben Sie den Namen des Sicherungselements ein** den Namen *myVM* ein.
- 
-7. Nachdem das Sicherungselement überprüft wurde (ein Häkchen wird angezeigt), wird die Schaltfläche **Sicherung beenden** aktiviert. Klicken Sie auf **Sicherung beenden**, um die Richtlinie zu beenden und die Wiederherstellungspunkte zu löschen. 
+
+7. Nachdem das Sicherungselement überprüft wurde (ein Häkchen wird angezeigt), wird die Schaltfläche **Sicherung beenden** aktiviert. Klicken Sie auf **Sicherung beenden**, um die Richtlinie zu beenden und die Wiederherstellungspunkte zu löschen.
 
     ![Klicken Sie auf „Sicherung beenden“, um den Tresor zu löschen.](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
@@ -183,7 +183,7 @@ In diesem Tutorial haben Sie das Azure-Portal zu folgenden Zwecken verwendet:
 > * Zuweisen der Sicherungsrichtlinie zum Schützen mehrerer virtueller Computer
 > * Auslösen einer bedarfsabhängigen Sicherung für virtuelle Computer
 
-Im nächsten Tutorial stellen Sie einen virtuellen Azure-Computer von einem Datenträger wieder her. 
+Im nächsten Tutorial stellen Sie einen virtuellen Azure-Computer von einem Datenträger wieder her.
 
 > [!div class="nextstepaction"]
 > [Verwalten von virtuellen Computern mithilfe der Befehlszeilenschnittstelle](./tutorial-restore-disk.md)

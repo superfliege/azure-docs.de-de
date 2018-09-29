@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 2157af8d6c3b8eea372c060a70c78559d8ffe6ad
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 30ef00fa1bfd2933df5e5c966cb8266d7c598a47
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634742"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162167"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
@@ -110,7 +110,7 @@ Die beiden vorherigen Kohorten wurden durch Verwenden von Dropdownlisten definie
 
     * Ein Abschnitt für Abfragen, in dem Sie die Kohorte definieren, indem Sie eine Analyseabfrage verwenden.
 
-    Im Abschnitt für Abfragen [schreiben Sie eine Analyseabfrage](https://docs.loganalytics.io/index). In der Abfrage wird genau die Gruppe von Zeilen ausgewählt, die die Kohorte beschreiben, die Sie definieren möchten. Im Tool „Kohorten“ wird dann der Abfrage implizit die Klausel „| summarize by user_Id“ hinzugefügt. Diese Daten werden als Vorschau in einer Tabelle unterhalb der Abfrage angezeigt, sodass Sie überprüfen können, ob die Abfrage Ergebnisse zurückgibt.
+    Im Abschnitt für Abfragen [schreiben Sie eine Analyseabfrage](/azure/kusto/query). In der Abfrage wird genau die Gruppe von Zeilen ausgewählt, die die Kohorte beschreiben, die Sie definieren möchten. Im Tool „Kohorten“ wird dann der Abfrage implizit die Klausel „| summarize by user_Id“ hinzugefügt. Diese Daten werden als Vorschau in einer Tabelle unterhalb der Abfrage angezeigt, sodass Sie überprüfen können, ob die Abfrage Ergebnisse zurückgibt.
 
     > [!NOTE]
     > Wenn die Abfrage nicht zu sehen ist, vergrößern Sie den Abschnitt, sodass die Abfrage angezeigt wird. In der animierten GIF-Datei am Anfang dieses Abschnitts wird das Verhalten bei der Größenanpassung veranschaulicht.

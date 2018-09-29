@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 01/19/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 85be7763535b8b067c5a52729fb2be855ffa4b77
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 69d31caf161e63233cee10e4820ea5150c6f9b61
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608456"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159330"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Python-API
 
@@ -128,9 +128,10 @@ blob_client = azureblob.BlockBlobService(
 Die App verwendet den `blob_client`-Verweis, um im Speicherkonto einen Container zu erstellen und Datendateien in den Container hochzuladen. Die Dateien im Speicher werden als Batch-[ResourceFile](/python/api/azure.batch.models.resourcefile)-Objekte definiert, die von Batch später auf Computeknoten heruntergeladen werden können.
 
 ```python
-input_file_paths = [os.path.realpath('./data/taskdata0.txt'),
-                    os.path.realpath('./data/taskdata1.txt'),
-                    os.path.realpath('./data/taskdata2.txt')]
+input_file_paths =  [os.path.join(sys.path[0], 'taskdata0.txt'),
+                     os.path.join(sys.path[0], 'taskdata1.txt'),
+                     os.path.join(sys.path[0], 'taskdata2.txt')]
+
 input_files = [
     upload_file_to_container(blob_client, input_container_name, file_path)
     for file_path in input_file_paths]
@@ -139,8 +140,8 @@ input_files = [
 Die App erstellt ein [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-Objekt zum Erstellen und Verwalten von Pools, Aufträgen und Aufgaben im Batch-Dienst. Für den Batch-Client im Beispiel wird die Authentifizierung mit gemeinsam verwendetem Schlüssel genutzt. Batch unterstützt auch die Azure Active Directory-Authentifizierung.
 
 ```python
-credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
-    BATCH_ACCOUNT_KEY)
+credentials = batch_auth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
+    _BATCH_ACCOUNT_KEY)
 
 batch_client = batch.BatchServiceClient(
     credentials,
@@ -179,8 +180,8 @@ Ein Batch-Auftrag ist eine logische Gruppierung für eine oder mehrere Aufgaben.
 
 ```python
 job = batch.models.JobAddParameter(
-    job_id,
-    batch.models.PoolInformation(pool_id=pool_id))
+    id=job_id,
+    pool_info=batch.models.PoolInformation(pool_id=pool_id))
 batch_service_client.job.add(job)
 ```
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: dddda5a222bf4e9fd81a3e13987ccdf443302083
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978903"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433411"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Was ist der Azure Machine Learning-Dienst (Vorschauversion)?
 
@@ -26,7 +26,7 @@ Machine Learning ist ein Data Science-Verfahren, mit dem Computer aus vorhandene
 
 Dank solcher Vorhersagen oder Prognosen aus Machine Learning können Apps und Geräte „intelligenter“ werden. Wenn Sie beispielsweise online einkaufen, trägt maschinelles Lernen dazu bei, dass Ihnen anhand der gekauften Produkte weitere Produkte empfohlen werden, die Ihnen gefallen könnten. Ein weiteres Beispiel ist die Nutzung Ihrer Kreditkarte. Dabei wird mithilfe von maschinellem Lernen die Transaktion mit einer Transaktionsdatenbank verglichen, wodurch Betrugsfälle erkannt werden können. Auch wenn ein automatischer Staubsauger ein Zimmer saugt, wird mit maschinellem Lernen entschieden, ob die Arbeit erledigt ist.
 
-## <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
+## <a name="what-is-azure-machine-learning-service"></a>Was ist der Azure Machine Learning-Dienst?
 
 Der Azure Machine Learning-Dienst umfasst eine cloudbasierte Umgebung, auf die Sie zum Entwickeln, Trainieren, Testen, Bereitstellen, Verwalten und Nachverfolgen von Machine Learning-Modellen zurückgreifen können.
 

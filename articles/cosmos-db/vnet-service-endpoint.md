@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109741"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037139"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts
 
@@ -25,9 +25,6 @@ Azure Cosmos DB ist ein global verteilter Datenbankdienst mit Unterstützung meh
 ![Architektur eines Virtual Network-Dienstendpunkts](./media/vnet-service-endpoint/vnet-service-endpoint-architecture.png)
 
 Nachdem ein Azure Cosmos DB-Konto mit einem Virtual Network-Dienstendpunkt konfiguriert wurde, kann nur vom angegebenen Subnetz aus darauf zugegriffen werden, jeglicher öffentliche Zugriff oder Zugriff aus dem Internet wird entfernt. Detaillierte Informationen zu Dienstendpunkten finden Sie im Artikel [Dienstendpunkte im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md).
-
-> [!NOTE]
-> Derzeit können Virtual Network-Dienstendpunkte für Azure Cosmos DB SQL-API- oder Mongo-API-Konten konfiguriert werden. Die Möglichkeit zur Konfiguration von Dienstendpunkten für andere APIs und unabhängige Clouds wie Azure Deutschland oder Azure Government wird bald verfügbar sein. Wenn für Ihr Azure Cosmos DB-Konto eine IP-Firewall konfiguriert ist, notieren Sie sich die Firewallkonfiguration, entfernen die IP-Firewall und konfigurieren die Zugriffssteuerungsliste (Access Control List, ACL) für den Dienstendpunkt. Nachdem Sie den Dienstendpunkt konfiguriert haben, können Sie die IP-Firewall bei Bedarf wieder aktivieren.
 
 ## <a name="configure-service-endpoint-by-using-azure-portal"></a>Konfigurieren des Dienstendpunkts über das Azure-Portal
 ### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Konfigurieren des Dienstendpunkts für ein vorhandenes Azure Virtual Network und Subnetz

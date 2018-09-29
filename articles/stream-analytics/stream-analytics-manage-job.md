@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 6b924e0555ea7a57f8d5e5309a266b6d2fb44f44
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702526"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433989"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Erstellen eines Stream Analytics-Auftrags zum Analysieren von Telefonanrufdaten und Visualisieren von Ergebnissen in einem Power BI-Dashboard
  
@@ -101,12 +101,12 @@ Vor dem Starten der TelcoGenerator-App sollten Sie diese so konfigurieren, dass 
 5. Öffnen Sie als Nächstes ein Befehlsfenster, ändern Sie den Ordner an dem Speicherort, an dem Sie die TelcoGenerator-Anwendung entzippt haben, und geben Sie den folgenden Befehl ein:
 
    ```
-   telcodatagen.exe 1000 .2 2
+   telcodatagen.exe 1000 0.2 2
    ```
 
    Für diesen Befehl werden die folgenden Parameter verwendet:
    * **Anzahl von Anrufdatensätzen pro Stunde**.  
-   * **Betrugswahrscheinlichkeit in Prozent**: Gibt an, wie oft die App einen betrügerischen Anruf simulieren soll. Der Wert „.2“ bedeutet, dass etwa 20 % der Anrufdatensätze betrügerische Anrufe simulieren.  
+   * **Betrugswahrscheinlichkeit in Prozent**: Gibt an, wie oft die App einen betrügerischen Anruf simulieren soll. Der Wert „0.2“ bedeutet, dass etwa 20 Prozent der Anrufdatensätze betrügerische Anrufe simulieren.  
    * **Dauer in Stunden**: Der Zeitraum von Stunden, über den die App ausgeführt werden soll. Sie können die App auch jederzeit beenden, indem Sie den Prozess in der Befehlszeile beenden (STRG+C).
 
    Nach wenigen Sekunden werden auf dem Bildschirm in der App die Telefonanrufdatensätze angezeigt, während diese an den Event Hub gesendet werden. Die Telefonanrufdaten enthalten die folgenden Felder:
@@ -228,7 +228,7 @@ Sie können eine Abfrage über den Abfrage-Editor testen, und Sie benötigen fü
 
 3. Legen Sie **Minuten** auf 3 fest, und wählen Sie **OK**. Für einen Zeitraum von drei Minuten werden Stichprobendaten aus dem Eingabedatenstrom entnommen, und Sie werden benachrichtigt, wenn die Beispieldaten bereit sind. Sie können den Status der Stichprobenentnahme in der Benachrichtigungsleiste anzeigen. 
 
-   Die Beispieldaten werden vorübergehend gespeichert und sind verfügbar, solange das Abfragefenster geöffnet ist. Wenn Sie das Abfragefenster schließen, werden die Beispieldaten verworfen, und Sie müssen einen neuen Satz von Beispieldaten erstellen. Alternativ können Sie über [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample Data/telco.json) eine JSON-Datei mit Beispieldaten abrufen und diese JSON-Datei dann zur Verwendung als Beispieldaten für die Eingabe „CallStream“ hochladen.  
+   Die Beispieldaten werden vorübergehend gespeichert und sind verfügbar, solange das Abfragefenster geöffnet ist. Wenn Sie das Abfragefenster schließen, werden die Beispieldaten verworfen, und Sie müssen einen neuen Satz von Beispieldaten erstellen. Alternativ können Sie über [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) eine JSON-Datei mit Beispieldaten abrufen und diese JSON-Datei dann zur Verwendung als Beispieldaten für die Eingabe „CallStream“ hochladen.  
 
 4. Wählen Sie **Testen**, um die Abfrage zu testen. Sie sollten Ausgabeergebnisse wie im folgenden Screenshot erhalten:  
 
@@ -262,7 +262,7 @@ Sie können eine Abfrage über den Abfrage-Editor testen, und Sie benötigen fü
 
 Für diesen Teil des Tutorials verwenden Sie eine [ASP.NET](http://asp.net/)-Beispielwebanwendung, die vom Power BI-Team zum Einbetten Ihres Dashboards erstellt wurde. Weitere Informationen zum Einbetten von Dashboards finden Sie im Artikel [Einbetten mit Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
 
-In diesem Tutorial führen wir die Schritte für den Benutzer aus, bei dem es sich um den Besitzer der Datenanwendung handelt. Navigieren Sie zum Einrichten der Anwendung zum GitHub-Repository [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples), und befolgen Sie die Anleitung im Abschnitt **User Owns Data** (Benutzer ist Besitzer der Daten). (Verwenden Sie die Umleitungs- und Startseiten-URLs im Unterabschnitt **integrate-dashboard-web-app**.) Da wir das Dashboard-Beispiel verwenden, können Sie den Beispielcode für „integrate-dashboard-web-app“ aus dem [GitHub-Repository](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User Owns Data/integrate-dashboard-web-app) nutzen.
+In diesem Tutorial führen wir die Schritte für den Benutzer aus, bei dem es sich um den Besitzer der Datenanwendung handelt. Navigieren Sie zum Einrichten der Anwendung zum GitHub-Repository [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples), und befolgen Sie die Anleitung im Abschnitt **User Owns Data** (Benutzer ist Besitzer der Daten). (Verwenden Sie die Umleitungs- und Startseiten-URLs im Unterabschnitt **integrate-dashboard-web-app**.) Da wir das Dashboard-Beispiel verwenden, können Sie den Beispielcode für „integrate-dashboard-web-app“ aus dem [GitHub-Repository](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app) nutzen.
 Nachdem die Anwendung in Ihrem Browser ausgeführt wird, können Sie das Dashboard, das Sie zuvor erstellt haben, mit diesen Schritten in die Webseite einbetten:
 
 1. Wählen Sie die Option **Bei Power BI anmelden**, mit der der Anwendung Zugriff auf die Dashboards in Ihrem Power BI-Konto gewährt wird.  

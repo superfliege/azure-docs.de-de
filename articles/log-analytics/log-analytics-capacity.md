@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: e9163b3c29fd304c80eff46426a30c4fa0ce3b15
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130342"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182619"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (Vorschau)
 
@@ -50,9 +50,9 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |---|---|---|
-| [Windows-Agents](log-analytics-windows-agent.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
+| [Windows-Agents](log-analytics-windows-agent.md) | JA | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
 | [Linux-Agents](log-analytics-linux-agents.md) | Nein     | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
-| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
+| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | JA |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
 | [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
 ## <a name="prerequisites"></a>Voraussetzungen

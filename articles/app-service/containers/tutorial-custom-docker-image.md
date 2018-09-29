@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 161207b96deb2f7bd605d845a9207393f9f59c23
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 517926a3c78e9c95a9ecef9ae058c33e47566adb
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444741"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432606"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container
 
@@ -559,4 +559,4 @@ Die Ausgabe des Befehls ähnelt der folgenden JSON-Zeichenfolge und zeigt an, da
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Docker Python- und PostgreSQL-Web-App in Azure](tutorial-docker-python-postgresql-app.md)
+> [Erstellen einer Docker Python- und PostgreSQL-Web-App in Azure](tutorial-python-postgresql-app.md)

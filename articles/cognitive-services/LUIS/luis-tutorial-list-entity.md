@@ -4,18 +4,18 @@ description: Erfahren Sie, wie Sie eine Listenentität hinzufügen, um den LUIS 
 services: cognitive-services
 author: diberry
 titleSuffix: Azure
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 12a6cfbe7267d3575fbb33978d7ea6e743802d12
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237161"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036778"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
 Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  

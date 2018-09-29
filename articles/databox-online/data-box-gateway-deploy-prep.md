@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: f4c3cf5329c10cda3691370e946b8397662a8d66
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c21245e05625f65b6b5dcf5f7081f5f5d1abb52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953411"
+ms.locfileid: "47030604"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Data Box Gateway (Vorschauversion)
 
@@ -40,7 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 
 > [!IMPORTANT]
-> - Data Box Gateway ist als Vorschauversion verfügbar. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
+> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
 
 ### <a name="get-started"></a>Erste Schritte
 
@@ -89,7 +89,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 ## <a name="create-a-new-resource"></a>Neue Ressource erstellen
 
-Eine einzelne Instanz der Data Box Gateway-Ressource kann mehrere virtuelle Data Box Gateway-Geräte verwalten. Führen Sie die folgenden Schritte aus, um eine neue Data Box Gateway-Ressource zu erstellen. 
+Führen Sie die folgenden Schritte aus, um eine neue Data Box Gateway-Ressource zu erstellen. 
 
 Falls Sie eine vorhandene Data Box Gateway-Ressource zum Verwalten Ihrer virtuellen Geräte haben, überspringen Sie diesen Schritt, und fahren Sie mit [Abrufen des Aktivierungsschlüssels](#get-the-activation-key) fort.
 

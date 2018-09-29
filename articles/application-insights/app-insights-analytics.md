@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 170cd76c72e8aeb5de48c711ae4637a0244742fb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6db98332fc7d896613a3318421e9a96bbb50cd15
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294199"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159141"
 ---
 # <a name="analytics-in-application-insights"></a>Analytics in Application Insights
 Analytics ist das leistungsfähige Such- und Abfragetool von [Application Insights](app-insights-overview.md). Analytics ist ein Webtool, sodass keine Installation erforderlich ist. Wenn Sie Application Insights bereits für eine Ihrer Apps konfiguriert haben, können Sie die Daten Ihrer App analysieren, indem Sie Analytics vom [Übersichtsblatt](app-insights-dashboards.md) Ihrer App aus öffnen.
@@ -48,9 +48,9 @@ Wir zählen dann die Anzahl der Datensätze pro Land (diese Daten befinden sich 
 
 Die Sprache verfügt über viele attraktive Features:
 
-* [Filtern](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator) der Rohdaten Ihrer App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
-* [Verbinden](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
-* Leistungsstarke statistische [Aggregationen](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions).
+* [Filtern](/azure/kusto/query/whereoperator) der Rohdaten Ihrer App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
+* [Verbinden](/azure/kusto/query/joinoperator) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
+* Leistungsstarke statistische [Aggregationen](/azure/kusto/query/summarizeoperator).
 * Sofortige und leistungsfähige Visualisierungen.
 * Eine [REST-API](https://dev.applicationinsights.io/), die Sie verwenden können, um Abfragen programmgesteuert auszuführen, z.B. über PowerShell.
 

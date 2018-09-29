@@ -2,20 +2,22 @@
 title: Entwerfen von Lösungen für die Notfallwiederherstellung – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie durch Wahl des richtigen Failovermusters Ihre Cloud-Lösung für die Notfallwiederherstellung entwerfen können.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: elastic-pools
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/27/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8f365d123a234f367a1415232a714d2c18663b63
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+manager: craigg
+ms.date: 08/27/2018
+ms.openlocfilehash: 9ed01103a83073d1bbb22f476a9115af816571aa
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124069"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166553"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit Pools für elastische SQL-Datenbank-Instanzen
 Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über verschiedene Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und einzelne Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für Pools für elastische Datenbanken beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.

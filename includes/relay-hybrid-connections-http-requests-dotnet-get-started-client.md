@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: e07d82b8a3aea4f0db0f5a071d78ea360cd611ab
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 8d73a22473ffff358c7424249c7581f6af740718
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177252"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452805"
 ---
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
@@ -24,8 +24,10 @@ Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Fr
 ### <a name="add-the-relay-nuget-package"></a>Hinzufügen des Relay-NuGet-Pakets
 
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-2. Klicken Sie auf **Durchsuchen**, und suchen Sie nach **Microsoft.Azure.Relay**. Klicken Sie in den Suchergebnissen auf **Microsoft Azure-Relay**. 
-3. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie das Dialogfeld.
+2. Wählen Sie die Option **Vorabversion einbeziehen** aus. 
+3. Klicken Sie auf **Durchsuchen**, und suchen Sie nach **Microsoft.Azure.Relay**. Klicken Sie in den Suchergebnissen auf **Microsoft Azure-Relay**.
+4. Wählen Sie **2.0.0-preview1-20180523** als Version aus. 
+5. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie das Dialogfeld.
 
 ### <a name="write-code-to-send-requests"></a>Schreiben von Code zum Senden von Anforderungen
 
