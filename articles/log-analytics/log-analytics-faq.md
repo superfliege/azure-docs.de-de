@@ -12,24 +12,79 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 06b30d1381d8fba1d6f053576f6556e6d02f2ae9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128529"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949161"
 ---
 # <a name="log-analytics-faq"></a>Häufig gestellte Fragen zu Log Analytics
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Log Analytics in Microsoft Azure. Wenn Sie weiteren Fragen zu Log Analytics haben, besuchen Sie das [Diskussionsforum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
 
+
+## <a name="new-logs-experience"></a>Neue Oberfläche für Protokolle
+
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>F: Was ist der Unterschied zwischen der neuen Benutzeroberfläche für Protokolle und Log Analytics?
+
+A: Es handelt sich um das gleiche. [Log Analytics ist als Feature in Azure Monitor integriert](../azure-monitor/azure-monitor-rebrand.md), um eine einheitlichere Überwachungsoberfläche zu realisieren. Die neue Protokolloberfläche in Azure Monitor ist exakt die gleiche wie die Log Analytics-Abfragen, die viele Kunden bereits verwenden.
+
+### <a name="q-can-i-still-use-log-search"></a>Q: Kann ich die Protokollsuche immer noch verwenden? 
+
+A: Die Protokollsuche ist aktuell noch auf dem OMS-Portal und dem Azure-Portal unter dem Namen **Protokolle (klassisch)** verfügbar. Das OMS-Portal wird am 15. Januar 2019 offiziell außer Betrieb gesetzt. Die klassische Protokolloberfläche im Azure-Portal wird nach und nach außer Betrieb gehen und wird durch die neue Protokolloberfläche ersetzt. 
+
+### <a name="q-can-i-still-use-advanced-analytics-portal"></a>F: Kann ich das Advanced Analytics-Portal weiterhin verwenden? 
+Die neue Oberfläche für Protokolle im Azure-Portal basiert auf dem [Advanced Analytics-Portal](https://portal.loganalytics.io/), auf dieses kann jedoch nach wie vor von außerhalb des Portals zugegriffen werden. Der Zeitplan für die Außerbetriebstellung dieses externen Portals wird in Kürze bekannt gegeben.
+
+### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>F: Warum kann ich in der neuen Benutzeroberfläche für Protokolle die Schaltflächen „Abfrage-Explorer“ und „Speichern“ nicht finden?
+
+Die Schaltflächen **Abfrage-Explorer**, **Speichern** und **Benachrichtigung festlegen** sind beim Untersuchen von Protokollen im Kontext einer bestimmten Ressource nicht verfügbar. Zum Erstellen von Benachrichtigungen und zum Speichern oder Laden von Abfragen muss Protokolle auf einen Arbeitsbereich festgelegt sein. Um Protokolle im Arbeitsbereichkontext zu öffnen, wählen Sie **Alle Dienste** > **Überwachen** > **Protokolle** aus. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. Weitere Informationen finden Sie unter [Anzeigen und Analysieren von Daten in Log Analytics](../log-analytics/log-analytics-log-search-portals.md).
+
+### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>F: Wie extrahiere ich benutzerdefinierte Felder in der neuen Oberfläche für Protokolle? 
+
+A: Das Extrahieren von benutzerdefinierten Feldern wird zurzeit in der klassischen Protokolloberfläche unterstützt. 
+
+### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>F: Wo finde ich die Listenansicht in der neuen Oberfläche für Protokolle? 
+
+A: In der neuen Oberfläche für Protokolle ist keine Listenansicht verfügbar. Links neben jedem Datensatz in der Ergebnistabelle befindet sich ein Pfeil. Klicken Sie auf diesen Pfeil, um die Details für einen bestimmten Datensatz zu öffnen. 
+
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>F: Nach dem Ausführen einer Abfrage wird eine Liste mit vorgeschlagenen Filtern angezeigt, in der aber nicht alle Filter enthalten sind. Wie kann ich die restlichen anzeigen? 
+
+A: Was Sie aktuell sehen, ist eine Vorschau der neuen Implementierung der Filter. Diese basiert jetzt auf der vollständigen Ergebnismenge, statt durch den Grenzwert der Benutzeroberfläche von 10.000 Datensätzen eingeschränkt zu sein. Zurzeit wird eine Liste der zehn beliebtesten Filter und der zehn gebräuchlichsten Werte für jeden Filter verwendet. 
+
+### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>F: Warum wird in Protokolle nach einem Drilldown aus einer VM die Fehlermeldung „Registrieren Sie den Ressourcenanbieter ‚Microsoft.Insights‘ für dieses Abonnement, um diese Abfrage zu aktivieren“ angezeigt? 
+
+A: Viele Ressourcenanbieter werden standardmäßig automatisch registriert, dennoch müssen Sie unter Umständen einige Ressourcenanbieter manuell registrieren. Dadurch wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Der Gültigkeitsbereich der Registrierung ist immer das Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md#portal).
+
+### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>F: Warum erhalte ich beim Zugriff auf Protokolle von einer VM-Seite aus keine Zugriffsfehlermeldung? 
+
+A: Um VM-Protokolle anzuzeigen, muss Ihnen die Leseberechtigung für die Arbeitsbereiche erteilt worden sein, in denen die VM-Protokolle gespeichert sind. In diesen Fällen muss Ihnen Ihr Administrator diese Berechtigungen in Azure erteilen.
+
+### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>F: Warum kann ich im OMS-Portal auf meinen Arbeitsbereich zugreifen, erhalte aber im Azure-Portal die Fehlermeldung „Sie haben keinen Zugriff“?  
+
+A: Um auf einen Arbeitsbereich in Azure zuzugreifen, müssen Ihnen Azure-Berechtigungen erteilt worden sein. Es kann Fälle geben, in denen Sie nicht über die entsprechenden Zugriffsberechtigungen verfügen. In diesen Fällen muss Ihnen Ihr Administrator Berechtigungen in Azure erteilen. Weitere Informationen finden Sie unter [OMS portal moving to Azure](../log-analytics/log-analytics-oms-portal-transition.md) (Übergang vom OMS-Portal zu Azure).
+
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>F: Warum kann ich den Ansicht-Designer-Eintrag in Protokolle nicht sehen? 
+A: Ansicht-Designer ist in Protokolle nur für Benutzer verfügbar, denen mindestens Berechtigungen als Mitwirkender zugewiesen wurden.
+
+
 ## <a name="general"></a>Allgemein
+
+### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>F: Wie kann ich meine Ansichten und Lösungen im Azure-Portal anzeigen? 
+
+A: Die Liste der Ansichten und der installierten Lösungen ist im Azure-Portal verfügbar. Klicken Sie auf **Alle Dienste**. Wählen Sie in der Liste der Ressourcen **Überwachen** aus, und klicken Sie dann auf **...Mehr**. Der zuletzt verwendete Arbeitsbereich ist ausgewählt, Sie können aber jeden anderen Arbeitsbereich auswählen. 
+
+### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>F: Warum kann ich keine Arbeitsbereiche in der Region USA, Westen-Mitte erstellen? 
+
+A: Diese Region ist temporär an ihrer Kapazitätsgrenze. Es ist geplant, dieses Problem in der ersten Jahreshälfte 2019 zu lösen.
+
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>F: Verwendet Log Analytics denselben Agent wie das Azure Security Center?
 
-A. Seit Anfang Juni 2017 verwendet Azure Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Plattformmigration des Azure Security Center – FAQs](../security-center/security-center-platform-migration-faq.md).
+A: Seit Anfang Juni 2017 verwendet Azure Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Plattformmigration des Azure Security Center – FAQs](../security-center/security-center-platform-migration-faq.md).
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>F: Welche Überprüfungen werden von den AD- und SQL-Bewertungslösungen durchgeführt?
 

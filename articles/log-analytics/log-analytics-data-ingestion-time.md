@@ -11,23 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2018
+ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: 0e513cc4f6a7d5d030ded807870de9eb0fdc0ed8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973182"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955250"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Datenerfassungszeit in Log Analytics
-Azure Log Analytics ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Daten bis zu ihrer Verfügbarkeit in Log Analytics zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
+Azure Log Analytics ist ein Hochleistungs-Datendienst in Azure Monitor, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Daten bis zu ihrer Verfügbarkeit in Log Analytics zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
 
 ## <a name="typical-latency"></a>Typische Wartezeit
-Wartezeit bezeichnet hier die Zeitspanne zwischen der Erstellung der Daten auf dem überwachten System und dem Zeitpunkt, zu dem sie für die Analyse in Log Analytics verfügbar werden. Die typische Wartezeit für die Erfassung von Daten in Log Analytics liegt zwischen 3 und 10 Minuten, wobei 95 % der Daten in unter 7 Minuten erfasst werden. Die spezifische Wartezeit für bestimmte Daten hängt von einer Reihe von Faktoren ab, die nachfolgend erläutert werden.
+Wartezeit bezeichnet hier die Zeitspanne zwischen der Erstellung der Daten auf dem überwachten System und dem Zeitpunkt, zu dem sie für die Analyse in Log Analytics verfügbar werden. Die typische Wartezeit für die Erfassung von Daten in Log Analytics liegt zwischen 2 und 5 Minuten. Die spezifische Wartezeit für bestimmte Daten hängt von einer Reihe von Faktoren ab, die nachfolgend erläutert werden.
 
-## <a name="sla-for-log-analytics"></a>SLA für Log Analytics
-Die [Vereinbarung zum Servicelevel (Service Level Agreement, SLA) für Log Analytics](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) ist ein rechtlich bindender Vertrag, der definiert, in welchen Fällen Microsoft zur Erstattung an Kunden verpflichtet ist, wenn der Dienst die vereinbarten Ziele verfehlt. Dabei wird nicht die normale Leistung des Systems zugrunde gelegt, sondern der schlimmste anzunehmende Fall, der die Ursache potenziell schwerwiegender Situationen bildet.
 
 ## <a name="factors-affecting-latency"></a>Faktoren, die die Wartezeit beeinflussen
 Die gesamte Erfassungszeit für ein bestimmtes Dataset kann in die folgenden allgemeinen Bereiche aufgeteilt werden. 
@@ -60,7 +58,7 @@ Einige Lösungen sammeln ihre Daten nicht mithilfe eines Agents, sondern verwend
 Informationen zur Erfassungshäufigkeit der einzelnen Lösungen finden Sie in der Dokumentation der jeweiligen Lösung.
 
 ### <a name="pipeline-process-time"></a>Pipeline-Verarbeitungszeit
-Sobald Protokolldatensätze in der Log Analytics-Pipeline erfasst werden, werden sie in einen temporären Speicher geschrieben, um Mandantenisolation und Schutz vor Datenverlust sicherzustellen. Dieser Vorgang wirkt sich normalerweise mit zusätzlichen 5–15 Sekunden aus. Einige Verwaltungslösungen implementieren aufwändigere Algorithmen zum Aggregieren von Daten und Ableiten von Erkenntnissen aus im Datenstrom eingehenden Daten. Beispielsweise aggregiert die Netzwerkleistungsüberwachung Daten über 3-Minuten-Intervalle, wodurch sich die Wartezeit um 3 Minuten verlängert.
+Sobald Protokolldatensätze in der Log Analytics-Pipeline erfasst werden, werden sie in einen temporären Speicher geschrieben, um Mandantenisolation und Schutz vor Datenverlust sicherzustellen. Dieser Vorgang wirkt sich normalerweise mit zusätzlichen 5–15 Sekunden aus. Einige Verwaltungslösungen implementieren aufwändigere Algorithmen zum Aggregieren von Daten und Ableiten von Erkenntnissen aus im Datenstrom eingehenden Daten. Beispielsweise aggregiert die Netzwerkleistungsüberwachung Daten über 3-Minuten-Intervalle, wodurch sich die Wartezeit um 3 Minuten verlängert. Ein anderer Prozess, durch den die Latenz erhöht wird, ist der Prozess, der benutzerdefinierte Protokolle verarbeitet. In manchen Fällen kann dieser Prozess eine Latenz von einigen Minuten zu Protokollen hinzufügen, die vom Agent aus Dateien gesammelt werden.
 
 ### <a name="new-custom-data-types-provisioning"></a>Bereitstellung von neuen, benutzerdefinierten Datentypen
 Wenn aus einem [benutzerdefinierten Protokoll](../log-analytics/log-analytics-data-sources-custom-logs.md) oder der [Datensammler-API](../log-analytics/log-analytics-data-collector-api.md) ein neuer benutzerdefinierter Datentyp erstellt wird, erstellt das System einen dedizierten Speichercontainer. Dies bedingt einen einmaligen Mehraufwand, der nur beim ersten Auftreten dieses Datentyps eintritt.

@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit der Log Analytics-Seite im Azure-Portal | Microsoft-Dokumentation
-description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen mithilfe der Log Analytics-Seite veranschaulicht wird.
+title: Erste Schritte mit Log Analytics im Azure-Portal | Microsoft-Dokumentation
+description: Dieser Artikel ist ein Tutorial zum Schreiben von Abfragen mithilfe von Log Analytics im Azure-Portal.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,14 +15,16 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146793"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978198"
 ---
-# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Erste Schritte mit der Log Analytics-Seite im Azure-Portal
+# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Erste Schritte mit Log Analytics im Azure-Portal
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie mithilfe der Log Analytics-Seite im Azure-Portal (derzeit in der Vorschauphase) Log Analytics-Abfragen schreiben können. Es wird Folgendes vermittelt:
 
@@ -45,7 +47,7 @@ Die Log Analytics-Seite ist ein Webtool, das zum Schreiben und Ausführen von Az
 ## <a name="basic-queries"></a>Grundlegende Abfragen
 Mithilfe von Abfragen können Suchbegriffe verwendet, Trends identifiziert, Muster analysiert und viele andere Informationen basierend auf Ihren Daten ermittelt werden. Beginnen Sie mit einer einfachen Abfrage:
 
-```OQL
+```Kusto
 Event | search "error"
 ```
 
@@ -55,7 +57,7 @@ Abfragen können entweder mit einem Tabellennamen oder einem **search**-Befehl b
 
 Eine andere Möglichkeit, die gleiche Abfrage zu schreiben, wäre Folgende:
 
-```OQL
+```Kusto
 search in (Event) "error"
 ```
 
@@ -79,7 +81,7 @@ In jeder Tabelle sind Daten in Spalten mit unterschiedlichen Datentypen angeordn
 ## <a name="filter-the-results"></a>Filtern der Ergebnisse
 Fügen Sie zunächst alle Elemente in die _Event_-Tabelle ein.
 
-```OQL
+```Kusto
 Event
 ```
 
@@ -133,7 +135,7 @@ Wenn die Abfrage explizit einen Filter für _TimeGenerated_ enthält, zeigt der 
 ## <a name="charts"></a>Diagramme
 Ergebnisse können nicht nur in einer Tabelle zurückgegeben werden, sondern auch in visuellen Formaten dargestellt werden. Verwenden Sie als Beispiel folgende Abfrage:
 
-```OQL
+```Kusto
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 
