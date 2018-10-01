@@ -29,7 +29,7 @@ Sie sollten Ihre Einstellungen unbedingt exportieren und überprüfen, bevor Sie
 
 **Exportieren und Löschen Ihrer Portaleinstellungen**
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
 2. Wählen Sie rechts oben im Portal den Befehl **Einstellungen** aus.
 
     ![Screenshot des Zahnradsymbols der Portaleinstellungen](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
