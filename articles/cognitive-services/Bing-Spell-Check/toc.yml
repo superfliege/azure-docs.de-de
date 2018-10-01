@@ -26,7 +26,7 @@ items:
     href: sdk-quickstart-spell-check.md
   - name: Übersicht über SDK-Beispiele
     href: sdk.md
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Erstellen einer Rechtschreibprüfungs-Web-App
     href: tutorials/spellcheck.md
@@ -50,6 +50,8 @@ items:
     href: bing-spell-check-stats.md
   - name: Häufig gestellte Fragen
     href: bing-spell-check-resource-faq.md
+  - name: Sprach- und Regionsunterstützung
+    href: language-support.md
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/
   - name: Regionale Verfügbarkeit
@@ -58,15 +60,13 @@ items:
     href: https://stackoverflow.com/questions/tagged/bing-api
   - name: Abonnementschlüssel
     href: https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api
-  - name: Unterstützte Sprachen
-    href: bing-spell-check-supported-languages.md
   - name: Testen
     href: https://azure.microsoft.com/services/cognitive-services/spell-check/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
-ms.openlocfilehash: 14772ab2a0ef34dbfea8a63576563381e8552f55
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 539de32b27a8fdb00479b280c0a0a18fe887f2b4
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445420"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432680"

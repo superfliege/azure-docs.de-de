@@ -16,8 +16,6 @@ items:
     href: image-moderation-api.md
   - name: Textmoderation
     href: text-moderation-api.md
-  - name: Textmoderation – Sprachen
-    href: Text-Moderation-API-Languages.md
   - name: Videomoderation
     href: video-moderation-human-review.md
   - name: Aufträge und Überprüfungen
@@ -116,6 +114,8 @@ items:
   items:
   - name: Häufig gestellte Fragen
     href: FAQs.md
+  - name: Sprach- und Regionsunterstützung
+    href: language-support.md
   - name: Regionale Verfügbarkeit
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Preise
@@ -132,9 +132,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: On-Demand-Webinar
     href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: 42a1e40c8e20590465c1ad7c31f66bf6e6a4965a
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 32f0c64253836d3080cc815753e361d810e1f2e8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902484"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433804"
