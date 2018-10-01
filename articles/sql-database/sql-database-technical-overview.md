@@ -59,7 +59,7 @@ Sie können zu geringen monatlichen Kosten Ihre erste App in einer kleinen Einze
 
 Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten. Eine einzelne Azure SQL-Datenbank unterstützt die manuelle dynamische Skalierbarkeit, aber keine automatischen Skalierung. Ein höheres Maß an *Automatisierung* lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf der Grundlage individueller Datenbankanforderungen ermöglichen. Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine einzelne Azure SQL-Datenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md). 
 
-Die verwaltete Azure SQL-Datenbank-Instanz befindet sich in der Vorschauphase und stellt eine einzelne Dienstebene bereit. Weitere Informationen finden Sie unter [What is a Managed Instance (preview)?](sql-database-managed-instance.md) (Was ist eine verwaltete Instanz (Vorschauversion)?).
+Die verwaltete Azure SQL-Datenbank-Instanz befindet sich in der Vorschauphase und stellt eine einzelne Dienstebene bereit. Weitere Informationen finden Sie unter [Was ist eine verwaltete Instanz (Vorschauversion)?](sql-database-managed-instance.md).
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pools für elastische Datenbanken zum Maximieren der Ressourcenverwendung
 
