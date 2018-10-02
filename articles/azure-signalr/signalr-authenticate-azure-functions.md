@@ -356,7 +356,7 @@ Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen
 
 1. Öffnen Sie die VS Code-Befehlspalette (`Ctrl-Shift-P`, macOS: `Cmd-Shift-P`).
 
-1. Suchen Sie den Befehl **Azure Functions: Upload local settings** (Azure Functions: Lokale Einstellung hochladen), und wählen Sie ihn aus.
+1. Suchen Sie den Befehl **Azure Functions: Upload local settings** (Azure Functions: Lokale Einstellungen hochladen), und wählen Sie ihn aus.
 
 1. Geben Sie bei entsprechender Aufforderung die folgenden Informationen ein:
 

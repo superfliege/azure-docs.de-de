@@ -57,8 +57,8 @@ Navigieren Sie in einem Browser zum [Azure-Portal](http://aka.ms/azurevirtualwan
 Erstellen Sie beliebig viele Sites, die Ihren physischen Standorten entsprechen. Erstellen Sie beispielsweise drei separate Sites, wenn Sie jeweils über eine Filiale in New York, London und Los Angeles verfügen. Diese Sites enthalten Ihre lokalen VPN-Geräteendpunkte. Derzeit können Sie für Ihre Site nur eine private Adresse angeben.
 
 1. Klicken Sie auf das von Ihnen erstellte WAN. Klicken Sie auf der WAN-Seite unter **WAN Architecture** (WAN-Architektur) auf **VPN sites** (VPN-Standorte), um die entsprechende Seite zu öffnen.
-2. Klicken Sie auf der Seite **VPN sites** (VPN-Standorte) auf **+Create site** (+ Site erstellen).
-3. Füllen Sie auf der Seite **Create site** (Site erstellen) die folgenden Felder aus:
+2. Klicken Sie auf der Seite **VPN sites** (VPN-Standorte) auf **+Create site** (+ Standort erstellen).
+3. Füllen Sie auf der Seite **Create site** (Standort erstellen) die folgenden Felder aus:
 
   * **Name**: Dies ist der Name, den Sie Ihrer lokalen Site geben möchten.
   * **Öffentliche IP-Adresse**: Dies ist die öffentliche IP-Adresse des VPN-Geräts, das sich in Ihrer lokalen Site befindet.
