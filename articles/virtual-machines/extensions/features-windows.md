@@ -3,7 +3,7 @@ title: Erweiterungen und Features für virtuelle Azure-Computer für Windows | M
 description: Sie erhalten einen Überblick über die Erweiterungen für virtuelle Azure-Computer, gruppiert nach den bereitgestellten oder verbesserten Funktionen.
 services: virtual-machines-windows
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc2433b8ac12bc1d485b6f23b56f356041e5128e
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: d7b183a5b87d5777609deac02e4424d9451e9643
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783099"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452495"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -66,7 +66,7 @@ Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In dies
 Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie unterstütze Versionen der Agents verwenden (siehe [Minimum version support for virtual machine agents in Azure (Unterstütze Mindestversion für VM-Agents in Azure)](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)), müssen Sie den Zugriff auf Azure Storage in der VM-Region nicht zulassen. Sie können den Agent verwenden, um die Kommunikation mit Agents an den Azure Fabric Controller umzuleiten. Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
 
 > [!IMPORTANT]
-> Wenn Sie den Zugriff auf *168.63.129.1* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
+> Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall blockiert haben, schlagen die Erweiterungen unabhängig von den gerade beschriebenen Szenarios fehl.
 
 Agents können nur zum Herunterladen von Erweiterungspaketen und für Statusberichte verwendet werden. Wenn z.B. bei der Installation einer Erweiterung ein Skript aus GitHub heruntergeladen werden muss (Custom Script) oder Zugriff auf Azure Storage (Azure Backup) notwendig ist, müssen zusätzliche Firewallports/Netzwerksicherheitsgruppen-Ports geöffnet werden. Verschiedene Erweiterungen haben verschiedene Voraussetzungen, da es sich bei ihnen um eigenständige Anwendungen handelt. Für Erweiterungen, die Zugriff auf Azure Storage benötigen, können Sie den Zugriff über Azure-NSG-Diensttags für [Storage](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) gewähren.
 

@@ -5,65 +5,72 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 58245478cf49c030c435b487e233bbc893a2b9a3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: bc3eb2721dd9fc0c4cde407a8257f6be73201a2a
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296355"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423356"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Hinzufügen erweiterter Metriken für virtuelle Azure-Computer
 
-Der Cost Management-Dienst verwendet Azure-Metrikdaten aus Ihren Azure-VMs, um ausführliche Informationen zu den zugehörigen Ressourcen anzuzeigen. Metrikdaten – auch Leistungsindikatoren genannt – werden in Cost Management zum Generieren von Berichten verwendet. In Cost Management werden jedoch nicht automatisch alle Azure-Metrikdaten von Gast-VMs erfasst – Sie müssen die Metrikerfassung aktivieren. Dieser Artikel unterstützt Sie dabei, zusätzliche Diagnosemetriken für Ihre Azure-VMs zu aktivieren und zu konfigurieren.
+Cloudyn verwendet Azure-Metrikdaten aus Ihren Azure-VMs, um ausführliche Informationen zu den zugehörigen Ressourcen anzuzeigen. Metrikdaten – auch Leistungsindikatoren genannt – werden in Cloudyn zum Generieren von Berichten verwendet. In Cloudyn werden jedoch nicht automatisch alle Azure-Metrikdaten von Gast-VMs erfasst – Sie müssen die Metrikerfassung aktivieren. Dieser Artikel unterstützt Sie dabei, zusätzliche Diagnosemetriken für Ihre Azure-VMs zu aktivieren und zu konfigurieren.
 
 Das Aktivieren der Metrikerfassung ermöglicht Folgendes:
 
 - Benachrichtigung über das Erreichen von Arbeitsspeicher-, Datenträger- und CPU-Limits für Ihre VMs
 - Erkennen von Nutzungstrends und Anomalien
 - Steuern Ihrer Kosten durch eine Dimensionierung gemäß Nutzung
-- Erhalt von Optimierungsempfehlungen für eine kosteneffiziente Größenanpassung von Cost Management
+- Erhalten von Optimierungsempfehlungen für eine kosteneffiziente Größenanpassung von Cloudyn.
 
 Angenommen, Sie möchten die CPU-Auslastung in % und die Arbeitsspeicherauslastung in % für Ihre Azure-VMs überwachen. Die entsprechenden Azure-VM-Metriken lauten _[Host] CPU in Prozent_ und _[Gast] Arbeitsspeicherprozentsatz_.
 
-## <a name="verify-that-metrics-are-enabled-on-vms"></a>Überprüfen, ob Metriken auf VMs aktiviert sind
+> [!NOTE]
+> Das Sammeln von erweiterten Metriken wird nur zusammen mit Azure-Überwachung auf Gastebene unterstützt. Cloudyn ist nicht mit der Log Analytics-VM-Erweiterung kompatibel.
+
+## <a name="determine-whether-extended-metrics-are-enabled"></a>Bestimmen, ob erweiterte Metriken aktiviert sind
 
 1. Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 2. Wählen Sie unter **Virtuelle Computer** eine VM aus, und klicken Sie unter **Überwachung** auf **Metriken**. Eine Liste der verfügbaren Metriken wird angezeigt.
 3. Wählen Sie einige Metriken aus, und die Daten für diese Metriken werden in einem Diagramm angezeigt.  
     ![Beispielmetrik: CPU-Auslastung in Prozent für den Host](./media/azure-vm-extended-metrics/metric01.png)
 
-Im vorangehenden Beispiel steht ein eingeschränkter Satz mit Standardmetriken für Ihre Hosts bereit, es sind jedoch keine Metriken zum Arbeitsspeicher verfügbar. Arbeitsspeichermetriken gehören zu den erweiterten Metriken. Sie müssen einige zusätzliche Schritte ausführen, um die erweiterten Metriken zu aktivieren. Nachfolgend wird die Vorgehensweise zum Aktivieren dieser erweiterten Metriken beschrieben.
+Im vorangehenden Beispiel steht ein eingeschränkter Satz mit Standardmetriken für Ihre Hosts bereit, es sind jedoch keine Metriken zum Arbeitsspeicher verfügbar. Arbeitsspeichermetriken gehören zu den erweiterten Metriken. In diesem Fall sind erweiterte Metriken nicht für den virtuellen Computer aktiviert. Sie müssen einige zusätzliche Schritte ausführen, um die erweiterten Metriken zu aktivieren. Nachfolgend wird die Vorgehensweise zum Aktivieren dieser erweiterten Metriken beschrieben.
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Aktivieren erweiterter Metriken im Azure-Portal
 
 Die Standardmetriken sind Metriken zum Hostcomputer. Ein Beispiel ist die Metrik _[Host] CPU in Prozent_. Darüber hinaus stehen grundlegende Metriken für Gast-VMs zur Verfügung, diese werden auch als erweiterte Metriken bezeichnet. Beispiele für erweiterte Metriken sind _[Gast] Arbeitsspeicherprozentsatz_ und _[Gast] Verfügbarer Arbeitsspeicher_.
 
-Das Aktivieren der erweiterten Metriken ist einfach. Aktivieren Sie für jede VM die Überwachung auf Gastebene. Wenn Sie die Überwachung auf Gastebene aktivieren, wird der Azure-Diagnose-Agent auf der VM installiert. Das folgende Verfahren ist für klassische und reguläre VMs sowie für Windows- und Linux-VMs identisch.
+Das Aktivieren der erweiterten Metriken ist einfach. Aktivieren Sie für jede VM die Überwachung auf Gastebene. Wenn Sie die Überwachung auf Gastebene aktivieren, wird der Azure-Diagnose-Agent auf der VM installiert. Standardmäßig wird ein grundlegender Satz von erweiterten Metriken hinzugefügt. Das folgende Verfahren ist für klassische und reguläre VMs sowie für Windows- und Linux-VMs identisch.
+
+Denken Sie daran, dass Überwachung auf Gastebene sowohl bei Azure als auch bei Linux ein Speicherkonto erfordert. Wenn Sie Überwachung auf Gastebene aktivieren und kein vorhandenes Speicherkonto auswählen, wird eins für Sie erstellt.
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Aktivieren der Überwachung auf Gastebene für vorhandene VMs
 
 1. Zeigen Sie in **Virtuelle Computer** die Liste Ihrer VMs an, und wählen Sie eine VM aus.
-2. Wählen Sie unter **Überwachung** die Option **Metriken**.
-3. Klicken Sie auf **Diagnoseeinstellungen**.
-4. Klicken Sie auf der Seite „Diagnoseeinstellungen“ auf **Überwachung auf Gastebene aktivieren**. Für Linux-VMs ist ein vorhandenes Speicherkonto erforderlich. Wenn Sie kein Speicherkonto für eine Windows-VM auswählen, wird ein Speicherkonto für Sie erstellt.  
+2. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
+3. Klicken Sie auf der Seite „Diagnoseeinstellungen“ auf **Überwachung auf Gastebene aktivieren**.  
     ![Überwachung auf Gastebene aktivieren](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
-5. Nach einigen Minuten wird der Azure-Diagnose-Agent auf der VM installiert. Aktualisieren Sie die Seite. Die Liste der verfügbaren Metriken wird mit Gastmetriken aktualisiert.  
+4. Nach einigen Minuten wird der Azure-Diagnose-Agent auf der VM installiert. Ein grundlegender Satz von Metriken wird hinzugefügt. Aktualisieren Sie die Seite. Die hinzugefügten Leistungsindikatoren werden auf der Registerkarte „Übersicht“ angezeigt.
+5. Wählen Sie unter „Überwachung“ **Metriken** aus.
+6. Wählen Sie im Metrikdiagramm unter **Metrik-Namespace** die Option **Gast (klassisch)** aus.
+7. In der Metrikliste können Sie alle verfügbaren Leistungsindikatoren für die Gast-VM anzeigen.  
     ![Erweiterte Metriken](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Aktivieren der Überwachung auf Gastebene für neue VMs
 
-Stellen Sie beim Erstellen neuer VMs sicher, dass Sie **Diagnose des Gastbetriebssystems** aktivieren. Für Linux-VMs ist ein vorhandenes Speicherkonto erforderlich. Wenn Sie kein Speicherkonto für eine Windows-VM auswählen, wird ein Speicherkonto für Sie erstellt.
+Wenn Sie neue virtuelle Computer erstellen, wählen Sie auf der Registerkarte „Verwaltung“ **Ein** für **Diagnose des Gastbetriebssystems** aus.
 
 ![Aktivieren der Diagnose des Gastbetriebssystems](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
 ## <a name="resource-manager-credentials"></a>Resource Manager-Anmeldeinformationen
 
-Nach dem Aktivieren der erweiterten Metriken müssen Sie sicherstellen, dass der Cost Management-Dienst Zugriff auf Ihre [Resource Manager-Anmeldeinformationen](activate-subs-accounts.md) hat. Ihre Anmeldeinformationen werden für Cost Management benötigt, um Leistungsdaten für Ihre VMs zu erfassen und anzuzeigen. Außerdem werden die Daten verwendet, um Empfehlungen zur Kostenoptimierung zu erstellen. Cost Management muss mindestens drei Tage lang Leistungsdaten von einer Instanz erhalten, um entscheiden zu können, ob es sich um einen Kandidaten für eine Verkleinerungsempfehlung handelt.
+Nach dem Aktivieren der erweiterten Metriken müssen Sie sicherstellen, dass Cloudyn Zugriff auf Ihre [Resource Manager-Anmeldeinformationen](activate-subs-accounts.md) hat. Ihre Anmeldeinformationen werden für Cloudyn benötigt, um Leistungsdaten für Ihre VMs zu erfassen und anzuzeigen. Außerdem werden die Daten verwendet, um Empfehlungen zur Kostenoptimierung zu erstellen. Cloudyn muss mindestens drei Tage lang Leistungsdaten von einer Instanz erhalten, um entscheiden zu können, ob es sich um einen Kandidaten für eine Verkleinerungsempfehlung handelt.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>Aktivieren von VM-Metriken mit einem Skript
 
