@@ -1,21 +1,22 @@
 ---
-title: Verwenden der benutzerdefinierten Aussprache mit Custom Speech Service in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit Custom Speech Service in Microsoft Cognitive Services ein Sprachmodell erstellen.
+title: Verwenden der benutzerdefinierten Aussprache – Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie mit Custom Speech Service ein Sprachmodell erstellen.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: c51ef6b25b454d0b8bf450b791f5c0fa9c6dfdee
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6442eec3e622282ecf6a3bf884110cd435fc18be
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999374"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223473"
 ---
 # <a name="enable-custom-pronunciation"></a>Aktivieren der benutzerdefinierten Aussprache
 Durch die benutzerdefinierte Aussprache können Benutzer die phonetische Form und Darstellung eines Worts oder einer Benennung definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist lediglich eine Aussprachedatei (eine einfache TXT-Datei).

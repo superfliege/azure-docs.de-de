@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702175"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031713"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Informationen zu Point-to-Site-VPN-Routing
 
@@ -148,7 +148,7 @@ Clients, die Windows oder ein anderes unterstütztes Betriebssystem verwenden, k
 
 In diesem Beispiel gilt die Point-to-Site-VPN-Gatewayverbindung für VNet1. Für VNet1 ist keine Verbindung bzw. kein Peering mit einem beliebigen anderen virtuellen Netzwerk vorhanden, es ist jedoch mit einem lokalen Standort über eine Site-to-Site-VPN-Verbindung verbunden, die nicht BGP ausführt.
 
-Windows-Clients können auf VNet1 und die Filiale (Site1) zugreifen, die Routen zu Site1 müssen dem Client aber manuell hinzugefügt werden. Nicht-Windows-Clients können auf VNet1 sowie die lokale Site1 zugreifen.
+Windows-Clients und Nicht-Windows-Clients können nur auf VNet1 zugreifen.
 
 ![Routing mit einem VNet und einer Filiale](./media/vpn-gateway-about-point-to-site-routing/5.jpg "Routing mit einem VNet und einer Filiale")
 
@@ -162,7 +162,7 @@ Windows-Clients können auf VNet1 und die Filiale (Site1) zugreifen, die Routen 
 
 * Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
-* Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 10.101.0.0/16, 192.168.0.0/24
+* Nicht-Windows-Clients hinzugefügte Routen: 10.1.0.0/16, 192.168.0.0/24
 
 ### <a name="access"></a>Access
 

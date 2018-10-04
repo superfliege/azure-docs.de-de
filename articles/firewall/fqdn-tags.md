@@ -7,19 +7,16 @@ ms.service: firewall
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 536c0915cae17aa6f4201c62eae5f5b077805274
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6dc7d20d31d9399355b2b3de90ea90f2f3e07af5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999476"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224646"
 ---
 # <a name="fqdn-tags-overview"></a>Übersicht über FQDN-Tags
 
 Ein FQDN-Tag stellt eine Gruppe von vollständig qualifizierten Domänennamen (FQDNs) dar, die bekannten Microsoft-Diensten zugeordnet sind. Sie können ein FQDN-Tag in den Anwendungsregeln verwenden, um den erforderlichen ausgehenden Netzwerkdatenverkehr über die Firewall zuzulassen.
-
->[!NOTE]
->Das FQDN-Tags-Feature ist derzeit nur in Azure PowerShell und REST verfügbar.
 
 Um beispielsweise den Netzwerkdatenverkehr von Windows Update manuell über Ihre Firewall zuzulassen, müssen Sie mehrere Anwendungsregeln gemäß der Microsoft-Dokumentation erstellen. Mithilfe von FQDN-Tags können Sie eine Anwendungsregel erstellen, das Tag **Windows Updates** einfügen, damit der Netzwerkdatenverkehr zu Microsoft Windows Update-Endpunkten durch Ihre Firewall fließen kann.
 
@@ -36,6 +33,9 @@ Die folgende Tabelle enthält die aktuellen FQDN-Tags, die Sie verwenden können
 |Microsoft Active Protection Service (MAPS)|Erlaubt den ausgehenden Zugriff auf [MAPS](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
 |App Service-Umgebung (ASE)|Erlaubt den ausgehenden Zugriff auf den Datenverkehr der ASE-Plattform. Dieses Tag umfasst keine kundenspezifischen Speicher und SQL-Endpunkte, die von ASE erstellt wurden. Diese müssen über [Dienstendpunkte](../virtual-network/tutorial-restrict-network-access-to-resources.md) aktiviert oder manuell hinzugefügt werden.|
 |Azure Backup|Erlaubt den ausgehenden Zugriff auf die Azure Backup-Dienste.
+
+> [!NOTE]
+> Beim Auswählen des FQDN-Tags in einer Anwendungsregel muss das Feld „protocol:port“ auf **https** festgelegt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

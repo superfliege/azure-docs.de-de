@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 479fd902ef68bf24306bcd699da0be08415592a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ac31818a68aa2b4624410b423b7559b84275777
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956988"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409370"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen in Azure Monitor
+# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
 Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Die Metrikwarnungen funktionieren mit einer Reihe von mehrdimensionalen Plattformmetriken, benutzerdefinierten Metriken sowie Standard- und benutzerdefinierten Metriken von Application Insights. In diesem Artikel wird beschrieben, wie Sie Metrikwarnungsregeln über das Azure-Portal und die Azure CLI erstellen, anzeigen und verwalten können. Sie können Metrikwarnungsregeln auch mithilfe von Azure Resource Manager-Vorlagen erstellen, die in [einem separaten Artikel](monitoring-enable-alerts-using-template.md) beschrieben sind.
 
 Sie können weitere Informationen zur Funktionsweise von Metrikwarnungen in der [Übersicht zu Metrikwarnungen](alert-metric-overview.md) erhalten.
 
-## <a name="create-a-metric-alert-rule-using-azure-portal"></a>Erstellen einer Metrikwarnungsregel über das Azure-Portal
+## <a name="create-with-azure-portal"></a>Erstellen mit dem Azure-Portal
 
 Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azure-Portal erstellen:
 
@@ -58,7 +58,7 @@ Im folgenden Verfahren wird beschrieben, wie Sie eine Metrikwarnungsregel im Azu
 > [!NOTE]
 > Über das Portal erstellte Metrikwarnungsregeln werden in derselben Ressourcengruppe erstellt wie die Zielressource.
 
-## <a name="view-and-manage-metric-alert-rules-using-azure-portal"></a>Anzeigen und Verwalten von Metrikwarnungsregeln über das Azure-Portal
+## <a name="view-and-manage-with-azure-portal"></a>Anzeigen und Verwalten mit dem Azure-Portal
 
 Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „Regeln verwalten“ unter „Warnungen“ verwenden. Das folgende Verfahren zeigt Ihnen, wie Sie Ihre Metrikwarnungsregeln anzeigen und eine davon bearbeiten können.
 
@@ -80,7 +80,7 @@ Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „
 
 6. Klicken Sie auf **Fertig**, um Ihre Änderungen zu speichern.
 
-## <a name="create-view-and-manage-metric-alert-rules-using-azure-cli"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungsregeln über die Azure CLI
+## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
 In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest). Für diesen Artikel werden wir die Cloud Shell verwenden.
 

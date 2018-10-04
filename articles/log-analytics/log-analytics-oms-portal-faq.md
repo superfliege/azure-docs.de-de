@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 09/25/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 503d5913efe67bd0de738f68921b9631c63acfa8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.component: ''
+ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116043"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223830"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -83,7 +83,7 @@ Verwalten Sie die meisten Einstellungen von „Verbunden Quelle“ im Menü **Er
 | Azure Storage     | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | System Center     | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | Office 365        | Einzelheiten zur Konfiguration finden Sie in der [Dokumentation für die Office 365-Verwaltungslösung](../operations-management-suite/oms-solution-office-365.md). |
-| Windows-Telemetrie | Noch nicht im Azure-Portal verfügbar. |
+| Windows-Telemetrie | Menü „Einstellungen“ für die Lösung. Die Konfigurationsdetails finden Sie unter [Windows Analytics im Azure-Portal](/windows/deployment/update/windows-analytics-azure-portal). |
 | ITSM-Connector    | Anweisungen für die Verbindung mit Ihrem ITSM-Dienst mit Log Analytics finden Sie unter [Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector](../log-analytics/log-analytics-itsmc-connections.md). |
 
 ### <a name="data"></a>Daten

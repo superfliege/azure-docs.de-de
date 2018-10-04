@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: faf4e06b714714fce206ef8227a934df8c290447
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: a68c35ba2f740720e3d7940d6fafa2dcfe183589
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144380"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064372"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurieren von Service Map in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -41,12 +41,14 @@ Im folgenden Abschnitt sind die unterstützten Betriebssysteme für den Dependen
 >
 
 ### <a name="windows-server"></a>Windows Server
+- Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 
 ### <a name="windows-desktop"></a>Windows Desktop
+- Windows 10 1803
 - Windows 10
 - Windows 8.1
 - Windows 8
@@ -123,8 +125,8 @@ Im folgenden Abschnitt sind die unterstützten Betriebssysteme für den Dependen
 
 | Datei | Betriebssystem | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.5.0 | 8B8FE0F6B0A9F589C4B7B52945C2C25DF008058EB4D4866DC45EE2485062C9D7 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.5.1 | 09D56EF43703A350FF586B774900E1F48E72FE3671144B5C99BB1A494C201E9E |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 Die Dienstzuordnung ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agent basiert auf dem Log Analytics-Agent, da er dessen Verbindungen mit Log Analytics benötigt. Dies bedeutet, dass auf einem Server der Log Analytics-Agent mit dem Dependency-Agent installiert und konfiguriert sein muss.  In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von Service Map unterstützt werden.
@@ -382,4 +384,18 @@ Wenn die Installation des Dependency-Agents erfolgreich war, der Server aber nic
 **Windows**: Suchen Sie nach dem Dienst „Microsoft Dependency-Agent“.<br>
 **Linux**: Suchen Sie nach dem laufenden Prozess „microsoft-dependency-agent“.
 
-* Nutzen Sie den [Free-Tarif von Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Der kostenlose Plan (�
+* Nutzen Sie den [Free-Tarif von Operations Management Suite/Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Der kostenlose Plan („Free“) erlaubt bis zu fünf einzelne Service Map-Server. Alle weiteren Server werden in der Service Map nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.
+
+* Sendet Ihr Server Protokoll- und Leistungsdaten an Log Analytics? Wechseln Sie zur Protokollsuche, und führen Sie die folgende Abfrage für Ihren Computer aus: 
+
+        Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+
+Haben Sie eine Vielzahl von Ereignissen in den Ergebnissen erhalten? Sind die Daten aktuell? Wenn dies der Fall ist, funktioniert Ihr Log Analytics-Agent ordnungsgemäß und kommuniziert mit Log Analytics. Wenn nicht, überprüfen Sie den Agent auf dem Server: [Log Analytics-Agent for Windows troubleshooting](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) (Behandeln von Problemen mit dem Log Analytics-Agent für Windows) oder [Behandeln von Problemen beim Linux-Agent für Log Analytics](../log-analytics/log-analytics-agent-linux-support.md).
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Der Server wird in Service Map angezeigt, enthält aber keine Prozesse
+Wenn Ihr Server in der Dienstzuordnung angezeigt wird, aber keine Prozess- oder Verbindungsdaten enthält, weist dies darauf hin, dass der Dependency-Agent installiert ist und ausgeführt wird, der Kerneltreiber aber nicht geladen wurde. 
+
+Überprüfen Sie die Datei „C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log“ (Windows) bzw. die Datei „/var/opt/microsoft/dependency-agent/log/service.log“ (Linux). Die letzten Zeilen der Datei sollten den Grund angeben, warum der Kernel nicht geladen wurde. Beispielsweise, weil der Kernel nicht unterstützt wird, was unter Linux nach der Aktualisierung des Kernels auftreten kann.
+
+## <a name="next-steps"></a>Nächste Schritte
+- Erfahren Sie, wie Sie nach Bereitstellung und Konfiguration [Service Map verwenden]( monitoring-service-map.md) können.

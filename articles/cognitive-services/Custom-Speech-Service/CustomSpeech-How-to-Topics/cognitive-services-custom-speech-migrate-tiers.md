@@ -1,21 +1,22 @@
 ---
-title: Migrieren der Tarife von Endpunkten für den Custom Speech Service in Azure | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Bereitstellungen von Custom Speech Service-Endpunkten in Cognitive Services aus den Tarifen S0 und S1 zu S2 migrieren.
+title: Migrieren der Tarife von Endpunkten – Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Es wird beschrieben, wie Sie Bereitstellungen von Custom Speech Service-Endpunkten aus den Tarifen S0 und S1 zu S2 migrieren.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 44411e0c92f4e24e274761821dd99efbe60c5f5d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 560aa0a7b9748f75cdde99691db7f33e2fc10221
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964972"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224850"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>Migrieren von Bereitstellungen zum neuen Preismodell
 Ab Juli 2017 wird für den Custom Speech Service ein [neues Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) angeboten. Das neue Modell ist *einfacher zu verstehen*, *die Kosten können leichter berechnet werden*, und es ist in Bezug auf die Skalierung *flexibler*. Für die Skalierung hat Microsoft das Konzept der Skalierungseinheit eingeführt. Jede Skalierungseinheit kann gleichzeitig fünf Anforderungen verarbeiten. Die Skalierung für gleichzeitige Anforderungen war im alten Modell für den Tarif S0 auf fünf gleichzeitige Anforderungen und für den Tarif S1 auf zwölf gleichzeitige Anforderungen festgelegt. Wir haben diese Grenzwerte aufgehoben, damit Sie in Bezug auf die Anforderungen Ihrer Anwendungsfälle flexibler vorgehen können.

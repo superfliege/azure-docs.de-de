@@ -1,21 +1,22 @@
 ---
-title: Abrufen von Abonnementschlüsseln für Custom Speech Service in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Abonnementschlüssel für Aufrufe für Custom Speech Service in Cognitive Services abrufen können.
+title: Erhalten von Abonnementschlüsseln – Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Es wird beschrieben, wie Sie Abonnementschlüssel für Aufrufe von Custom Speech Service erhalten.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: e5cac34a9aead209bec90cfd5f89e94a005a1995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e4694928baf98bdb0d6aacead8dffec6bb73d6f7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980354"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224766"
 ---
 # <a name="obtain-subscription-keys"></a>Erhalten von Abonnementschlüsseln
 Zunächst müssen Sie mit Azure Custom Speech Service Ihr Benutzerkonto mit einem Azure-Abonnement verknüpfen. Es stehen Abonnements im Free-Tarif und in zahlungspflichtigen Tarifen zur Verfügung. Informationen zu den Tarifen finden Sie auf der [Seite mit den Preisangaben](https://www.microsoft.com/cognitive-services/en-us/pricing).

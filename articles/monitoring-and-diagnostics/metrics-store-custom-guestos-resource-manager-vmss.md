@@ -8,18 +8,18 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d896cb01c7dc2cd4ed028db418f838809c7ce25c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986998"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434924"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
 Die [Windows Azure-Diagnoseerweiterung](azure-diagnostics.md) (WAD) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird.  Die Erweiterung kann Telemetriedaten an viele verschiedene Standorte senden, die im zuvor verlinkten Artikel aufgeführt sind.  
 
-In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für eine VM-Skalierungsgruppe von Windows an den Azure Monitor-Datenspeicher beschrieben. Ab WAD Version 1.11 können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie sie an dieser Position speichern, können Sie auf die gleichen Aktionen zugreifen, die auch für Plattformmetriken verfügbar sind.  Aktionen sind nahezu in Echtzeit Warnungen, Diagramme, routing, REST-API und vieles mehr zugreifen.  In der Vergangenheit hat die WAD-Erweiterung in Azure Storage geschrieben, aber nicht der Azure Monitor-Datenspeicher.  
+In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für eine VM-Skalierungsgruppe von Windows an den Azure Monitor-Datenspeicher beschrieben. Ab WAD Version 1.11 können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie sie an dieser Position speichern, können Sie auf die gleichen Aktionen zugreifen, die auch für Plattformmetriken verfügbar sind.  Zu den Maßnahmen gehören zeitnahe Benachrichtigung, Diagrammerstellung, Routing, Zugriff über die REST-API und vieles mehr.  In der Vergangenheit hat die WAD-Erweiterung in Azure Storage geschrieben, aber nicht der Azure Monitor-Datenspeicher.  
 
 Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, erfahren Sie mehr über [Vorlagenbereitstellungen](../azure-resource-manager/resource-group-overview.md) sowie deren Struktur und Syntax.  
 
@@ -83,7 +83,7 @@ Suchen Sie in der VM-Skalierungsgruppenressource den Abschnitt **virtualMachineP
 
 Fügen Sie in **extensionProfile** eine neue Erweiterung zur Vorlage hinzu, wie im Abschnitt zur **VMSS-WAD-Erweiterung** veranschaulicht.  Dieser Abschnitt ist die MSI-Erweiterung (verwaltete Dienstidentität), die sicherstellt, dass die ausgegebenen Metriken von Azure Monitor akzeptiert werden. Das Feld **Name** kann einen beliebigen Namen enthalten. 
 
-Der Code unterhalb der MSI-Erweiterung fügt auch die Diagnoseerweiterung und -konfiguration als Erweiterungsressource zur VM-Skalierungsgruppenressource hinzu. Sie können Leistungsindikatoren nach Bedarf hinzufügen/entfernen. 
+Mit dem unten angegebenen Code aus der MSI-Erweiterung wird die Diagnoseerweiterung und -konfiguration der VM-Skalierungsgruppenressource auch als Erweiterungsressource hinzugefügt. Sie können Leistungsindikatoren nach Bedarf hinzufügen/entfernen. 
 
 ```json
           "extensionProfile": { 

@@ -1,21 +1,22 @@
 ---
-title: Richtlinien für die Transkription im Custom Speech Service unter Azure | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Ihre Daten für den Custom Speech Service in Cognitive Services vorbereiten.
+title: Transkriptionsrichtlinien – Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Es wird beschrieben, wie Sie Ihre Daten für den Custom Speech Service vorbereiten.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2772665107f94a273731d2147154e546225b22dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a5daca2dbb3fc792850264bca7d8b0c59e7c8faa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999731"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220617"
 ---
 # <a name="transcription-guidelines"></a>Richtlinien für die Transkription
 Halten Sie sich an die folgenden Richtlinien für die Transkription, um sicherzustellen, dass Ihre Textdaten für die Anpassung des Akustik- und Sprachmodells bestmöglich genutzt werden. Diese Richtlinien sind sprachspezifisch.

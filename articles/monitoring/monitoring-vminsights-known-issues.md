@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: magoedte
-ms.openlocfilehash: c03adc239ea7025fe154db315daa17b26f8237f1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 819c3e74355cf80c7a998abb8b02b10c9e077059
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980207"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47062767"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms"></a>Bekannte Probleme bei Azure Monitor for VMs
 
@@ -39,3 +39,6 @@ Die folgende Aufstellung enthält bekannte Probleme beim Integritätsfeature von
 - Die Schwellenwerte für einige Windows-Integritätskriterien, wie die Integrität des DNS-Clientdiensts, können nicht geändert werden, da ihr fehlerfreier Status bereits im Status **wird ausgeführt**, **verfügbar** des Diensts oder der Entität – je nach Kontext – gesperrt ist.  Stattdessen wird der Wert durch die Zahl 4 dargestellt – diese wird in einer kommenden Version in die eigentliche Anzeigezeichenfolge konvertiert.  
 - Schwellenwerte für einige Linux-Integritätskriterien lassen sich nicht ändern, wie etwa die Integrität von logischen Datenträgern, da für sie bereits die Auslösung bei fehlerhaftem Zustand festgelegt ist.  Diese Schwellenwerte zeigen an, ob etwas online/offline oder ein oder aus ist und werden durch die Werte 1 und 0 dargestellt und auch so angezeigt.
 - Das Aktualisieren des Ressourcengruppenfilters in einer beliebigen Ressourcengruppe bei Verwendung der Massenansicht in der Listenansicht Azure Monitor > „Virtual Machines“ > „Integrität“ > „Alle“ mit vorausgewähltem Abonnement und vorausgewählter Ressourcengruppe bewirkt, dass die Listenansicht **Kein Ergebnis** anzeigt.  Wechseln Sie zurück zur Registerkarte Azure Monitor > „Virtual Machines“ > „Integrität“, wählen Sie das gewünschte Abonnement und die gewünschte Ressourcengruppe aus, und navigieren Sie dann zur Listenansicht.
+
+## <a name="next-steps"></a>Nächste Schritte
+Informationen zu den Anforderungen und Methoden für die Aktivierung Ihrer virtuellen Computer finden Sie unter [Führen Sie das Onboarding von Azure Monitor for VMs durch](monitoring-vminsights-onboard.md).

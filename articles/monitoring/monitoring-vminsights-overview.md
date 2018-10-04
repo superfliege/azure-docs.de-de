@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 79f507c342f5a13c4d3784cf312f0bf8aeffa3e3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26fcc3eb78af53360cca57382b4c06b017f36c0e
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957250"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063267"
 ---
-## <a name="what-is-azure-monitor-for-vms"></a>Was ist Azure Monitor for VMs?
+# <a name="what-is-azure-monitor-for-vms"></a>Was ist Azure Monitor for VMs?
 
 Azure Monitor for VMs überwacht Ihre Azure-VMs nach Maß durch Analysieren der Leistung und Integrität der Windows- und Linux-VMs, einschließlich ihrer verschiedenen Prozesse und miteinander verbundenen Abhängigkeiten von anderen Ressourcen und externen Prozessen. Die Lösung umfasst Unterstützung für die Überwachung von Leistung und Anwendungsabhängigkeiten für VMs, die lokal oder bei einem anderen Cloudanbieter gehostet sind.  Sie beinhaltet drei wichtige Features, um diesen tiefgreifenden Einblick zu ermöglichen:
 
@@ -57,4 +57,4 @@ Sobald Sie das Onboarding von Azure Monitor for VMs ausführen, werden die von I
 Die Protokollgröße unterscheidet sich je nach der Zeichenfolgenlänge von Indikatoren und kann mit der Anzahl der logischen Datenträger und Netzwerkadapter anwachsen.  Wenn Sie bereits über einen Arbeitsbereich verfügen und diese Indikatoren sammeln, erfolgt keine doppelte Belastung.  Wenn Sie bereits die Dienstzuordnung verwenden, besteht die einzige für Sie sichtbare Veränderung in den zusätzlichen Verbindungsdaten, die an Azure Monitor gesendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Onboarding von Azure Monitor for VMs](monitoring-vminsights-onboard.md), um mit der Überwachung Ihrer Azure-VMs zu beginnen.
+Informationen zu den Anforderungen und Methoden für die Aktivierung Ihrer virtuellen Computer finden Sie unter [Führen Sie das Onboarding von Azure Monitor for VMs durch](monitoring-vminsights-onboard.md).

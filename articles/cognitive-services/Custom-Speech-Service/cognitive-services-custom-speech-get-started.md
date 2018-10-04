@@ -1,21 +1,22 @@
 ---
-title: Erste Schritte mit Custom Speech Service in Azure | Microsoft-Dokumentation
+title: Erste Schritte mit Custom Speech Service
+titlesuffix: Azure Cognitive Services
 description: Abonnieren Sie Custom Speech Service, und verknüpfen Sie die Dienstaktivitäten mit einem Azure-Abonnement, um ein Modell zu trainieren und eine Bereitstellung durchzuführen.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: bf674261a58aab4fee37920d12ce6a2ac54b58b8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ae72edd626bd91dea7cd2812a3ef821b905f59a4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975782"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225241"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Erste Schritte mit Custom Speech Service
 
@@ -51,7 +52,7 @@ Wenn Sie benutzerdefinierte Akustik- und/oder Sprachmodelle erstellt haben, kön
 Eine ausführliche Beschreibung zur Erstellung eines benutzerdefinierten Spracherkennungsendpunkts finden Sie [hier](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md).
 
 ## <a name="using-a-custom-speech-endpoint"></a>Verwendung eines benutzerdefinierten Spracherkennungsendpunkts
-Anforderungen können in sehr ähnlicher Weise wie beim Spracherkennungsendpunkt von Microsoft Cognitive Services an den Spracherkennungsendpunkt des CRIS gesendet werden. Beachten Sie, dass diese Endpunkte funktionell mit den Standardendpunkten der Sprach-API identisch sind. Folglich steht die gleiche Funktionalität über die Clientbibliothek oder REST-API für die Sprach-API auch für Ihren benutzerdefinierten Endpunkt zur Verfügung.
+Anforderungen können in sehr ähnlicher Weise wie beim Spracherkennungsendpunkt von Azure Cognitive Services an den Spracherkennungsendpunkt des CRIS gesendet werden. Beachten Sie, dass diese Endpunkte funktionell mit den Standardendpunkten der Sprach-API identisch sind. Folglich steht die gleiche Funktionalität über die Clientbibliothek oder REST-API für die Sprach-API auch für Ihren benutzerdefinierten Endpunkt zur Verfügung.
 
 Eine ausführliche Beschreibung zur Verwendung eines benutzerdefinierten Spracherkennungsendpunkts finden Sie [hier](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md).
 

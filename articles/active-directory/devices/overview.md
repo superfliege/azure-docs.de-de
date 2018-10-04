@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 456b28c50bd5e7d69c3f16dd3e76a9ced20112f9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 3baa48113022bed1bdc7caa5854a231334c975af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048861"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224629"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Worum handelt es sich bei der Geräteverwaltung in Azure Active Directory?
 
@@ -121,7 +121,7 @@ Seit über zehn Jahren verwenden viele Unternehmen den Domänenbeitritt für das
 
 Unternehmen mit einem lokalen Fußabdruck nutzen normalerweise Verfahren für die Imageerstellung, um Geräte bereitzustellen, und häufig **System Center Configuration Manager (SCCM)** oder **Gruppenrichtlinien** für die Verwaltung der Geräte.
 
-Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD eingebundene Hybridgeräte implementieren. Hierbei handelt es sich um Geräte, die sowohl in Ihr lokales Active Directory als auch in Ihr Azure Active Directory eingebunden sind.
+Wenn Ihre Umgebung über einen lokalen AD-Fußabdruck verfügt und Sie zudem die Funktionen von Azure Active Directory nutzen möchten, können Sie in Azure AD eingebundene Hybridgeräte implementieren. Hierbei handelt es sich um Geräte, die in Ihre lokale Active Directory-Instanz eingebunden und dafür registriert sind.
 
 ![Bei Azure AD registrierte Geräte](./media/overview/01.png)
 

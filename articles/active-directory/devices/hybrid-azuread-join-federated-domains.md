@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: f4659d2dc8dfd52ae6f7ec19dc29ec31c9b3ca6b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047341"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391803"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Tutorial: Konfigurieren der Azure Active Directory-Hybrideinbindung für Verbunddomänen
 
@@ -122,7 +122,7 @@ Zum Konfigurieren einer Azure AD-Hybrideinbindung mithilfe von Azure AD Connect 
 
     a. Wählen Sie die Gesamtstruktur aus.
 
-    b. Wählen Sie den Authentifizierungsdienst aus.
+    b. Wählen Sie den Authentifizierungsdienst aus. Sie müssen „AD FS-Server“ auswählen, sofern Ihre Organisation nicht ausschließlich Windows 10-Clients nutzt.
 
     c. Klicken Sie auf **Hinzufügen**, um die Anmeldeinformationen eines Unternehmensadministrators einzugeben.
 
@@ -170,7 +170,7 @@ Die folgende Richtlinie muss auf **Alle** festgelegt sein: **Benutzer dürfen ih
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>Konfigurieren der lokalen Intraneteinstellungen für die Geräteregistrierung
 
-Um die Azure AD-Hybrideinbindung Ihrer kompatiblen Windows-Geräte erfolgreich abzuschließen und Zertifikataufforderungen bei der Authentifizierung von Geräten bei Azure AD zu vermeiden, können Sie eine Richtlinie auf Ihre in die Domäne eingebundenen Geräte übertragen, um die folgende URL in Internet Explorer den lokalen Intranetzonen hinzuzufügen:
+Um die Einbindung in Hybrid-Azure AD für Ihre kompatiblen Windows-Geräte erfolgreich abzuschließen und Zertifikataufforderungen bei der Authentifizierung von Geräten gegenüber Azure AD zu vermeiden, können Sie eine Richtlinie auf Ihre in die Domäne eingebundenen Geräte übertragen, mit der die folgende URL in Internet Explorer der Zone „Lokales Intranet“ hinzugefügt wird:
 
 - `https://device.login.microsoftonline.com`
 

@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 08/27/2018
+ms.date: 09/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665433"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038999"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM
 
@@ -63,24 +63,23 @@ Mit dem Schalter **Multi-Factor Authentication** können Sie angeben, ob Benutze
 * Benutzer, die Microsoft-Konten als E-Mail-Adressen verwenden (in der Regel @outlook.com, aber nicht immer), können sich nicht für Azure MFA registrieren. Wenn Sie Benutzern mit Microsoft-Konten Rollen zuweisen möchten, sollten Sie sie zu permanenten Administratoren machen oder MFA für diese Rolle deaktivieren.
 * Sie können MFA für sehr privilegierte Rollen für Azure AD und Office 365 nicht deaktivieren. Dies ist ein Sicherheitsfeature, da diese Rollen sorgfältig geschützt werden sollten:  
   
-  * Anwendungsadministrator
-  * Serveradministrator des Anwendungsproxys
-  * Abrechnungsadministrator  
-  * Complianceadministrator  
+  * Abrechnungsadministrator
+  * Cloudanwendungsadministrator
+  * Complianceadministrator
+  * Administrator für den bedingten Zugriff
   * CRM-Dienstadministrator
   * Genehmigende Person für den LockBox-Kundenzugriff
-  * Verzeichnisautor  
-  * Exchange-Administrator  
+  * Verzeichnis schreiben
+  * Exchange-Administrator
   * Globaler Administrator
+  * Information Protection-Administrator
   * Intune-Dienstadministrator
-  * Postfachadministrator  
-  * Partnersupport der Ebene 1  
-  * Partnersupport der Ebene 2  
+  * Power BI-Dienstadministrator
   * Administrator für privilegierte Rollen
-  * Sicherheitsadministrator  
-  * SharePoint-Administrator  
-  * Skype for Business-Administrator  
-  * Benutzerkontoadministrator  
+  * Sicherheitsadministrator
+  * SharePoint-Dienstadministrator
+  * Skype for Business-Administrator
+  * Benutzeradministrator
 
 Weitere Informationen finden Sie unter [Multi-Factor Authentication (MFA) und PIM](pim-how-to-require-mfa.md).
 

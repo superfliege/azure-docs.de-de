@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e325335d43ef31c44ac812aca66309132f5372a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e0c9cc342bb4b06053f53abc891ee1c415327998
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951609"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409999"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen mit Azure Monitor
 
 Klassische Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Klassische Metrikwarnungen sind eine ältere Funktionalität, die es ermöglicht, nur bei nichtdimensionalen Metriken zu warnen. Es gibt eine neuere Funktionalität namens Metrikwarnungen, die die Funktionalität gegenüber klassischen Metrikwarnungen verbessert hat. Weitere Informationen zur Funktionsweise von neuen Metrikwarnungen finden Sie in der [Übersicht zu Metrikwarnungen](alert-metric-overview.md). In diesem Artikel wird beschrieben, wie Sie klassische Metrikwarnungsregeln über das Azure-Portal, die Azure CLI und PowerShell erstellen, anzeigen und verwalten können.
 
-## <a name="create-a-classic-metric-alert-rule-using-azure-portal"></a>Erstellen einer klassischen Metrikwarnungsregel über das Azure-Portal
+## <a name="with-azure-portal"></a>Mit dem Azure-Portal
 
 1. Suchen Sie im [Portal](https://portal.azure.com/) die Ressource, die Sie überwachen möchten, und wählen Sie sie aus.
 
@@ -46,15 +46,13 @@ Klassische Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrich
 
 Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 
-## <a name="manage-your-classic-metric-alert-rules-using-azure-portal"></a>Verwalten Ihrer klassischen Metrikwarnungsregel über das Azure-Portal
-
 Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und eine der folgenden Aufgaben ausführen:
 
 * Anzeigen eines Diagramms, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt.
 * bearbeiten oder löschen.
 * sie **deaktivieren** oder **aktivieren**, wenn Sie den Empfang von Benachrichtigungen zu dieser Warnung vorübergehend beenden oder fortsetzen möchten.
 
-## <a name="creating-and-managing-classic-metric-alert-rule-using-azure-cli"></a>Erstellen und Verwalten von klassischen Metrikwarnungsregeln mithilfe der Azure CLI
+## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
 In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest).
 
@@ -86,7 +84,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
 az monitor alert delete --name <alert name> --resource-group <group name>
 ```
 
-### <a name="create-view-and-manage-classic-metric-alerts-using-powershell"></a>Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen mit PowerShell
+## <a name="with-powershell"></a>Mit PowerShell
 
 In diesem Abschnitt wird gezeigt, wie Sie mit PowerShell-Befehlen klassische Metrikwarnungen erstellen, anzeigen und verwalten können. Die Beispiele im Artikel veranschaulichen, wie Sie Azure Monitor-Cmdlets für klassische Metrikwarnungen verwenden können.
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: ea1117e202868465e3ea4004d21cf62d175a357a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0eec1100c5246bb9f5c281971453ac60abc0339f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963916"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225017"
 ---
 # <a name="web-apps"></a>Web-Apps
 
@@ -44,7 +44,7 @@ Sehen Sie sich die Codebeispiele für Szenarien vom Typ „Webbrowser zu Webanwe
 
 ## <a name="app-registration"></a>App-Registrierung
 
-Wenn Sie eine Web-App registrieren möchten, lesen Sie [Registrieren einer App mit dem Azure AD v2.0-Endpunkt](quickstart-v2-register-an-app.md).
+Wenn Sie eine Web-App registrieren möchten, helfen Ihnen die Informationen unter [Registrieren einer App mit dem Azure AD v1.0-Endpunkt](quickstart-v1-add-azure-ad-app.md) weiter.
 
 * Einzelinstanzenfähige Anwendung: Wenn Sie eine Anwendung nur für Ihre Organisation erstellen, muss diese über das Azure-Portal im Verzeichnis Ihres Unternehmens registriert werden.
 * Mehrinstanzenfähige Anwendung: Wenn Sie eine Anwendung erstellen, die von Benutzern außerhalb Ihrer Organisation verwendet werden kann, muss diese ebenfalls im Verzeichnis Ihres Unternehmens registriert werden. Darüber hinaus muss sie aber auch im Verzeichnis jeder anderen Organisation registriert werden, von der die Anwendung verwendet wird. Um Ihre Anwendung in deren Verzeichnis verfügbar zu machen, können Sie einen Registrierungsprozess für Ihre Kunden einschließen, über den sie Ihrer Anwendung zustimmen können. Bei der Registrierung für Ihre Anwendung erscheint ein Dialogfeld mit den erforderlichen Berechtigungen für die Anwendung sowie mit einer Zustimmungsoption. Je nachdem, welche Berechtigungen erforderlich sind, wird unter Umständen die Zustimmung eines Administrators aus der anderen Organisation benötigt. Wenn der Benutzer oder Administrator seine Zustimmung gibt, wird die Anwendung in dessen Verzeichnis registriert.

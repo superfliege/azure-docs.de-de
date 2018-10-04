@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 09/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90aa19d690b1b4ab28c3a65a287a10aaf6a03ac6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: fbb57753117f3c60010fe910616b8d0af5178360
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929031"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434822"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualisieren von Azure PowerShell-Modulen in Azure Automation
 
@@ -28,6 +28,12 @@ Da Module von der Produktgruppe regelmäßig aktualisiert werden, können Änder
 ## <a name="updating-azure-modules"></a>Aktualisieren von Azure-Modulen
 
 1. Auf der Seite „Module“ Ihres Automation-Kontos gibt es eine Option namens **Azure-Module aktualisieren**. Sie ist immer aktiviert.<br><br> ![Option zum Aktualisieren von Azure-Modulen auf der Seite „Module“](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+
+  > [!NOTE]
+  > Es wird empfohlen, Ihre Azure-Module vor dem Aktualisieren in einem Automation-Testkonto zu aktualisieren. So wird sichergestellt, dass Ihre vorhandenen Skripts wie erwartet funktionieren, bevor die Aktualisierung für Ihre Azure-Module durchgeführt wird.
+  >
+  > Die Schaltfläche **Azure-Module aktualisieren** ist nur in der öffentlichen Cloud verfügbar. In [Regionen mit Datenhoheit](https://azure.microsoft.com/global-infrastructure/) ist sie nicht verfügbar. Weitere Informationen finden Sie im Abschnitt [Andere Möglichkeiten zum Aktualisieren Ihrer Module](#alternative-ways-to-update-your-modules).
+
 
 2. Klicken Sie auf **Azure-Module aktualisieren**. Daraufhin wird eine Bestätigungsbenachrichtigung angezeigt, in der Sie gefragt werden, ob Sie den Vorgang fortsetzen möchten.<br><br> ![Benachrichtigung zum Aktualisieren von Azure-Modulen](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
@@ -44,13 +50,25 @@ Da Module von der Produktgruppe regelmäßig aktualisiert werden, können Änder
 
     Wenn die Module bereits auf dem neuesten Stand sind, ist der Prozess in wenigen Sekunden abgeschlossen. Wenn der Updatevorgang abgeschlossen ist, werden Sie benachrichtigt.<br><br> ![Aktualisierungsstatus beim Aktualisieren der Azure-Module](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
+    Die .NET Core-AzureRm-Module (AzureRm.*.Core) werden in Azure Automation nicht unterstützt und können nicht importiert werden.
+
 > [!NOTE]
-> In Azure Automation werden die neuesten Module in Ihrem Automation-Konto verwendet, wenn ein neuer geplanter Auftrag ausgeführt wird.    
+> In Azure Automation werden die neuesten Module in Ihrem Automation-Konto verwendet, wenn ein neuer geplanter Auftrag ausgeführt wird.  
 
 Wenn Sie Cmdlets aus diesen Azure PowerShell-Modulen in Ihren Runbooks verwenden, dann sollten Sie diesen Updatevorgang ungefähr jeden Monat ausführen, um sicherzustellen, dass Sie über die neuesten Module verfügen. Azure Automation verwendet die „AzureRunAsConnection“-Verbindung, um sich beim Aktualisieren der Module zu authentifizieren. Wenn der Dienstprinzipal abgelaufen ist oder auf Abonnementebene nicht mehr vorhanden ist, misslingt die Modulaktualisierung.
+
+## <a name="alternative-ways-to-update-your-modules"></a>Andere Möglichkeiten zum Aktualisieren Ihrer Module
+
+Wie bereits erwähnt, ist die Schaltfläche**Azure-Module aktualisieren** in „Sovereign Clouds“ nicht verfügbar, sondern nur in der globalen Azure-Cloud. Der Grund ist, dass die aktuelle Version der Azure PowerShell-Module aus dem PowerShell-Katalog unter Umständen nicht mit den Resource Manager-Diensten funktioniert, die in diesen Clouds derzeit bereitgestellt wurden.
+
+Die Aktualisierung der Module ist trotzdem möglich, indem das Runbook [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) in Ihr Automation-Konto importiert und ausgeführt wird.
+
+Verwenden Sie den Parameter `AzureRmEnvironment`, um die richtige Umgebung an das Runbook zu übergeben.  Zulässige Werte sind **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud** und **AzureUSGovernmentCloud**. Wenn Sie keinen Wert an diesen Parameter übergeben, wird für das Runbook standardmäßig die öffentliche Azure-Cloud (**AzureCloud**) verwendet.
+
+Falls Sie nicht die aktuelle Version des Azure PowerShell-Moduls aus dem PowerShell-Katalog, sondern eine bestimmte andere Version verwenden möchten, können Sie diese Version an den optionalen Parameter `ModuleVersionOverrides` des Runbooks **Update-AzureModule** übergeben. Beispiele hierzu finden Sie im Runbook [Update-AzureModule.ps1](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1). Azure PowerShell-Module, die im Parameter `ModuleVersionOverrides` nicht erwähnt werden, werden mit den aktuellen Modulversionen aus dem PowerShell-Katalog aktualisiert. Wenn an den Parameter `ModuleVersionOverrides` nichts übergeben wird, werden alle Module mit den aktuellen Modulversionen aus dem PowerShell-Katalog aktualisiert. Dies ist das Verhalten der Schaltfläche **Azure-Module aktualisieren**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Integrationsmodulen und zum Erstellen benutzerdefinierter Module, um Automation weiter in andere Systeme, Dienste oder Lösungen zu integrieren, finden Sie unter [Integrationsmodule](automation-integration-modules.md).
 
-* Sie sollten die Verwendung der Integration von Quellcodeverwaltung mit [GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) oder [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) in Betracht ziehen, um Releases Ihrer Automation-Runbooks und Konfigurationsportfolios zentral zu verwalten und zu steuern.  
+* Sie sollten die Verwendung der Integration von Quellcodeverwaltung mit [GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) oder [Azure DevOps](automation-scenario-source-control-integration-with-vsts.md) in Betracht ziehen, um Releases Ihrer Automation-Runbooks und Konfigurationsportfolios zentral zu verwalten und zu steuern.  

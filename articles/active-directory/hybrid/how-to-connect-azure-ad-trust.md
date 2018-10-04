@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 4eeb716e4eeae8dc560f9588c6c3ce252daf741e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309759"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432052"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect
 
@@ -41,7 +41,7 @@ Azure AD Connect verwaltet **nur** Einstellungen im Zusammenhang mit der Azure A
 | Einstellung | BESCHREIBUNG |
 | :--- | :--- |
 | Tokensignaturzertifikat | Azure AD Connect kann verwendet werden, um die Vertrauensstellung mit Azure AD zurückzusetzen und neu zu erstellen. Azure AD Connect nimmt einen einmaligen sofortigen Rollover der Tokensignaturzertifikate für AD FS vor und aktualisiert die Verbundeinstellungen der Azure AD-Domäne.|
-| Tokensignaturalgorithmus | Microsoft empfiehlt die Verwendung von SHA-256 als Tokensignaturalgorithmus. Azure AD Connect kann erkennen, ob der Tokensignaturalgorithmus auf einen Wert festgelegt ist, der weniger sicher als SHA-256 ist. Die Einstellung wird im nächsten möglichen Konfigurationsvorgang in SHA-256 aktualisiert. |
+| Tokensignaturalgorithmus | Microsoft empfiehlt die Verwendung von SHA-256 als Tokensignaturalgorithmus. Azure AD Connect kann erkennen, ob der Tokensignaturalgorithmus auf einen Wert festgelegt ist, der weniger sicher als SHA-256 ist. Die Einstellung wird im nächsten möglichen Konfigurationsvorgang in SHA-256 aktualisiert. Andere Vertrauensstellungen der vertrauenden Seite müssen aktualisiert werden, damit das neue Tokensignaturzertifikat verwendet wird. |
 | Bezeichner der Azure AD-Vertrauensstellung | Azure AD Connect legt den richtigen Bezeichnerwert für die Azure AD-Vertrauensstellung fest. AD FS identifiziert die Azure AD-Vertrauensstellung mit dem Bezeichnerwert eindeutig. |
 | Azure AD-Endpunkte | Azure AD Connect stellt sicher, dass die für die Azure AD-Vertrauensstellung konfigurierten Endpunkte immer den aktuellen empfohlenen Werten für Stabilität und Leistung entsprechen. |
 | Ausstellungstransformationsregeln | Es gibt viele Anspruchsregeln, die für eine optimale Leistung der Features von Azure AD in einer verbundenen Umgebung erforderlich sind. Azure AD Connect stellt sicher, dass die Azure AD-Vertrauensstellung immer mit der richtigen Gruppe von empfohlenen Anspruchsregeln konfiguriert ist. |

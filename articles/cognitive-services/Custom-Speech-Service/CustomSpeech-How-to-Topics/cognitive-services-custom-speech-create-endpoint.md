@@ -1,21 +1,22 @@
 ---
-title: Erstellen eines benutzerdefinierten Spracherkennungsendpunkts mit Custom Speech Service in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen benutzerdefinierten Endpunkt für die Spracherkennung mit Custom Speech Service in Cognitive Services erstellen.
+title: Erstellen eines benutzerdefinierten Spracherkennungsendpunkts – Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Erfahren Sie, wie Sie einen benutzerdefinierten Endpunkt für die Spracherkennung mit Custom Speech Service erstellen.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 958e97f708e7c6920bcb0d65d91656fcf00cd71a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952221"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219022"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Erstellen eines benutzerdefinierten Spracherkennungsendpunkts
 Nachdem Sie benutzerdefinierte Akustik- oder Sprachmodelle erstellt haben, können Sie diese einem benutzerdefinierten Endpunkt für die Spracherkennung bereitstellen. 

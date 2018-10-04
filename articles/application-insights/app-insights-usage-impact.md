@@ -1,22 +1,24 @@
 ---
-title: "Azure Application Insights – Auswirkungen der Nutzung | Microsoft-Dokumentation"
-description: "Analysieren Sie, wie verschiedene Eigenschaften potenziell die Konvertierungsraten für Teile Ihrer Apps beeinflussen."
+title: Azure Application Insights – Auswirkungen der Nutzung | Microsoft-Dokumentation
+description: Analysieren Sie, wie verschiedene Eigenschaften potenziell die Konvertierungsraten für Teile Ihrer Apps beeinflussen.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2018
-ms.author: mbullwin ; daviste
-ms.openlocfilehash: d76db02647ce878343f60fc84cf063c5b7833438
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 9188776fdd213f01523069b08bd898f48bee57a4
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091480"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Auswirkungsanalyse mit Application Insights
 
@@ -66,7 +68,7 @@ In diesem Fall passen die Ergebnisse nicht mehr wie im ersten Beispiel in ein Mo
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Wie berechnet das Impact-Tool diese Konvertierungsraten?
 
-Hinter den Kulissen verwendet das Impact-Tool den [Pearson-Korrelationskoeffizienten] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Ergebnisse werden zwischen -1 und 1 berechnet, wobei -1 die Nullkorrelation und 1 eine positive Korrelation darstellt.
+Im Hintergrund nutzt das Impact-Tool den [Pearson-Korrelationskoeffizienten] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient). Ergebnisse werden zwischen -1 und 1 berechnet, wobei -1 die Nullkorrelation und 1 eine positive Korrelation darstellt.
 
 Die grundlegende Aufschlüsselung der Funktionsweise der Auswirkungsanalyse lautet wie folgt:
 

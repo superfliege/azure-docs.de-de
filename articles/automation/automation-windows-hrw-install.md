@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e449e6e457c4fa568b5a4de5823014b4dcea82d0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064349"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032987"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Bereitstellen eines Windows Hybrid Runbook Workers
 
@@ -30,7 +30,7 @@ Zum Installieren und Konfigurieren eines Windows Hybrid Runbook Workers können 
 Die folgenden Mindestanforderungen gelten für einen Windows Hybrid Runbook Worker:
 
 * Windows Server 2012 oder höher
-* Windows PowerShell 4.0 oder höher ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855)). Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616)) empfohlen.
+* Windows PowerShell 5.1 oder höher ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616)).
 * .NET Framework 4.6.2 oder höher
 * Zwei Kerne.
 * 4 GB RAM.
@@ -49,13 +49,13 @@ Lesen Sie nach dem erfolgreichen Bereitstellen eines Runbook Workers [Running ru
 
 Führen Sie die folgenden Schritte aus, um die Installation und Konfiguration der Windows Hybrid Worker-Rolle zu automatisieren:
 
-1. Laden Sie das Skript „New-OnPremiseHybridWorker.ps1“ aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/DisplayScript) direkt über den Computer herunter, auf dem die Hybrid Runbook Worker-Rolle ausgeführt wird, oder laden Sie es über einen anderen Computer in Ihrer Umgebung herunter. Kopieren Sie das Skript auf den Worker.
+1. Laden Sie das Skript „New-OnPremiseHybridWorker.ps1“ aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) direkt über den Computer herunter, auf dem die Hybrid Runbook Worker-Rolle ausgeführt wird, oder laden Sie es über einen anderen Computer in Ihrer Umgebung herunter. Kopieren Sie das Skript auf den Worker.
 
    Das Skript „New-OnPremiseHybridWorker.ps1“ erfordert während der Ausführung die folgenden Parameter:
 
    * *AutomationAccountName* (verbindlich): Der Name Ihres Automation-Kontos.
    * *AAResourceGroupName* (verbindlich): Der Name der Ressourcengruppe, die Ihrem Automation-Konto zugeordnet ist.
-   * *OMSResourceGroupName* (optional): Der Name der Ressourcengruppe für den Operations Management Suite-Arbeitsbereich. Wenn diese Ressourcengruppe nicht angegeben wird, wird *AAResourceGroupName* verwendet.
+   * *OMSResourceGroupName* (optional): Der Name der Ressourcengruppe für den Log Analytics-Arbeitsbereich. Wenn diese Ressourcengruppe nicht angegeben wird, wird *AAResourceGroupName* verwendet.
    * *HybridGroupName* (verbindlich): Der Name einer Hybrid Runbook Worker-Gruppe, die Sie als Ziel für die Runbooks angeben, die dieses Szenario unterstützen.
    * *SubscriptionID* (verbindlich): Die Azure-Abonnement-ID Ihres Automation-Kontos.
    * *WorkspaceName* (optional): Der Name des Log Analytics-Arbeitsbereichs. Falls kein Log Analytics-Arbeitsbereich vorhanden ist, wird dieser durch das Skript erstellt und konfiguriert.
@@ -63,8 +63,8 @@ Führen Sie die folgenden Schritte aus, um die Installation und Konfiguration de
      > [!NOTE]
      > Derzeit werden für die Automation-Log Analytics-Integration lediglich folgende Regionen unterstützt: **Australien, Südosten**, **USA, Osten 2**, **Asien, Südosten** und **Europa, Westen**. Falls sich Ihr Automation-Konto nicht in einer dieser Regionen befindet, erstellt das Skript zwar einen Log Analytics-Arbeitsbereich, weist Sie aber in einer Warnung darauf hin, dass keine Verknüpfung möglich ist.
 
-1. Öffnen Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm** im Administratormodus.
-1. Navigieren Sie in der PowerShell-Befehlszeilenshell zu dem Ordner, der das Skript enthält, das Sie heruntergeladen haben. Ändern Sie die Werte für die Parameter *-AutomationAccountName*, *-AAResourceGroupName*, *-OMSResourceGroupName*, *-HybridGroupName*, *-SubscriptionId* und *-WorkspaceName*. Führen Sie das Skript dann aus.
+2. Öffnen Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm** im Administratormodus.
+3. Navigieren Sie in der PowerShell-Befehlszeilenshell zu dem Ordner, der das Skript enthält, das Sie heruntergeladen haben. Ändern Sie die Werte für die Parameter *-AutomationAccountName*, *-AAResourceGroupName*, *-OMSResourceGroupName*, *-HybridGroupName*, *-SubscriptionId* und *-WorkspaceName*. Führen Sie das Skript dann aus.
 
      > [!NOTE]
      > Nach dem Ausführen des Skripts werden Sie aufgefordert, sich bei Azure zu authentifizieren. Sie *müssen* sich mit einem Konto anmelden, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist.
@@ -75,9 +75,9 @@ Führen Sie die folgenden Schritte aus, um die Installation und Konfiguration de
    -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
    ```
 
-1. Sie werden aufgefordert, der Installation von NuGet zuzustimmen und sich mit Ihren Azure-Anmeldeinformationen zu authentifizieren.
+4. Sie werden aufgefordert, der Installation von NuGet zuzustimmen und sich mit Ihren Azure-Anmeldeinformationen zu authentifizieren.
 
-1. Nachdem das Skript abgeschlossen wurde, werden auf der Seite **Hybrid Worker-Gruppen** die neue Gruppe und die Anzahl der Mitglieder angezeigt. Wenn die Gruppe bereits vorhanden ist, wird die Anzahl der Mitglieder erhöht. Sie können die Gruppe aus der Liste auf der Seite **Hybrid Worker-Gruppen** auswählen und dann auf die Kachel **Hybrid Worker** klicken. Auf der Seite **Hybrid Worker** werden die einzelnen Mitglieder der Gruppe aufgelistet.
+5. Nachdem das Skript abgeschlossen wurde, werden auf der Seite **Hybrid Worker-Gruppen** die neue Gruppe und die Anzahl der Mitglieder angezeigt. Wenn die Gruppe bereits vorhanden ist, wird die Anzahl der Mitglieder erhöht. Sie können die Gruppe aus der Liste auf der Seite **Hybrid Worker-Gruppen** auswählen und dann auf die Kachel **Hybrid Worker** klicken. Auf der Seite **Hybrid Worker** werden die einzelnen Mitglieder der Gruppe aufgelistet.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
 

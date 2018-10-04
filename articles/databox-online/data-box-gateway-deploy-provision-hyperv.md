@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: bf744d2aaab168b8ce918f7b776d8855cdc5ad16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad498dc8c5bea9516bef5a62495fc0d0cc8f7399
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975242"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419694"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in Hyper-V (Vorschauversion)
 
@@ -40,7 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!IMPORTANT]
-> - Data Box Gateway ist als Vorschauversion verfügbar. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
+> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -74,7 +74,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein Gerät bereitstellen:
 Vorbereitungen
 
 - Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Data Box Gateway, und konfigurieren Sie das Netzwerk des Datencenters gemäß den Anforderungen. Weitere Informationen finden Sie unter [Data Box Gateway – Netzwerkanforderungen](data-box-gateway-system-requirements.md#networking-requirements).
-- Stellen Sie sicher, dass die Internetbandbreite mindestens 20 MBit/s beträgt, um eine optimale Funktion des Geräts zu ermöglichen.
+- Stellen Sie sicher, dass die Internetbandbreite mindestens 20 MBit/s beträgt, um die optimale Nutzung des Geräts zu ermöglichen.
 
 
 ## <a name="check-the-host-system"></a>Überprüfen des Hostsystems
@@ -87,7 +87,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 
     * Mindestens 4 Kerne
     * Mindestens 8 GB RAM
-    * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann. .
+    * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann. 
     * Einen Betriebssystemdatenträger mit 250 GB
     * Einen virtuellen Datenträger mit 2 TB für Systemdaten
 
@@ -105,9 +105,6 @@ Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustel
    ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Computer auf **Weiter**.
 5. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** für Ihr virtuelles Gerät an. Klicken Sie auf **Weiter**.
-   
-   > [!IMPORTANT]
-   > In diesem Release können Sie nur Großbuchstaben für den Namen Ihres virtuellen Geräts verwenden.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. Wählen Sie auf der Seite **Generation angeben** die Option **Generation 2** für den VHDX-Imagetyp des Geräts aus, und klicken Sie anschließend auf **Weiter**.    
@@ -171,17 +168,10 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 3. Unter Umständen müssen Sie 10 bis 15 Minuten warten, bis das Gerät bereit ist. In der Konsole wird eine Statusmeldung angezeigt, die den Fortschritt angibt. Wenn das Gerät bereit ist, wählen Sie **Aktion**. Drücken Sie `Ctrl + Alt + Delete`, um sich beim virtuellen Gerät anzumelden. Der Standardbenutzer ist *EdgeUser*, und das Standardkennwort lautet *Password1*.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-4. Aus Sicherheitsgründen gilt das Kennwort des Geräteadministrators nur für die erste Anmeldung. Sie werden aufgefordert, das Kennwort zu ändern.
-
-   Geben Sie ein Kennwort ein, das mindestens acht Zeichen lang ist. Das Kennwort muss mindestens drei der folgenden vier Anforderungen erfüllen: Großbuchstaben, Kleinbuchstaben, Zahlen und Sonderzeichen. Geben Sie das Kennwort erneut ein, um es zu bestätigen. Sie werden benachrichtigt, dass das Kennwort geändert wurde.
    
-5. Nachdem das Kennwort erfolgreich geändert wurde, wird das virtuelle Gerät unter Umständen neu gestartet. Warten Sie, bis das Gerät gestartet wurde.  Die Windows PowerShell-Konsole des Geräts wird zusammen mit der Statusanzeige angezeigt.
-
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image22.png)
-
-6. Die Schritte 6 bis 8 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Falls Sie sich in einer DHCP-Umgebung befinden, sollten Sie diese Schritte überspringen und mit Schritt 9 fortfahren. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt.
+6. Die Schritte 5 bis 7 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Wenn Sie in einer DHCP-Umgebung arbeiten, können Sie diese Schritte überspringen. Wenn Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt.
     
-7. Verwenden Sie zum Konfigurieren des Netzwerks den Befehl `Get-HcsIpAddress`, um die Netzwerkschnittstellen aufzulisten, die auf dem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `DATA1`zugewiesen.
+7. Verwenden Sie zum Konfigurieren des Netzwerks den Befehl `Get-HcsIpAddress`, um die Netzwerkschnittstellen aufzulisten, die auf dem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `Ethernet`zugewiesen.
 
 8. Verwenden Sie das `Set-HcsIpAddress` -Cmdlet, um das Netzwerk zu konfigurieren. Siehe folgendes Beispiel:
 
@@ -192,7 +182,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
-Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt. Sie müssen die Gerätekonfiguration ändern, damit der Computer über ausreichende Ressourcen verfügt und die Mindestanforderungen erfüllen kann. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt. Sie müssen die Gerätekonfiguration ändern, damit der Computer über ausreichende Ressourcen verfügt und die Mindestanforderungen erfüllen kann. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Überprüfen des Hostsystems](#check-the-host-system).
 
 <!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 
