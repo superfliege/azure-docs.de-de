@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/18/2018
+ms.date: 9/28/2018
 ms.author: rithorn
-ms.openlocfilehash: d031059f9811cedb703fec4920e00fd1b2e3f877
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6b369c8209e62ff3c98b3fdf78378b403b0a0d2d
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045344"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017652"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -62,19 +62,30 @@ Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Ver
   - Jeder Benutzer, der Zugriff auf ein Abonnement besitzt, kann den Kontext erkennen, in dem sich das Abonnement in der Hierarchie befindet.  
   - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Verzeichnisadministratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen.  Sobald sie über Zugriff verfügen, können die Verzeichnisadministratoren eine beliebige RBAC-Rolle anderen Benutzern zum Verwalten zuweisen.  
 
-> [!NOTE]
-> Wenn Ihr Verzeichnis mit der Verwendung des Verwaltungsgruppendiensts vor dem 25.06.2018 begonnen hat, ist Ihr Verzeichnis ggf. nicht mit allen Abonnements in der Hierarchie eingerichtet. Das Verwaltungsgruppenteam aktualisiert im Juli/August 2018 rückwirkend jedes Verzeichnis, das mit der Verwendung von Verwaltungsgruppen in der öffentlichen Vorschauversion vor diesem Datum begonnen hat. Alle Abonnements in den Verzeichnissen werden zuvor zu untergeordneten Elementen in der Stammverwaltungsgruppe erklärt.
->
-> Wenn Sie Fragen zu diesem rückwirkenden Vorgang haben, wenden Sie sich an: managementgroups@microsoft.com  
-  
-## <a name="initial-setup-of-management-groups"></a>Erstmalige Einrichtung von Verwaltungsgruppen
-
-Wenn ein Benutzer mit der Verwendung von Verwaltungsgruppen beginnt, findet ein erster Einrichtungsvorgang statt. Der erste Schritt besteht darin, dass die Stammverwaltungsgruppe im Verzeichnis erstellt wird. Sobald diese Gruppe erstellt wurde, werden alle Abonnements, die im Verzeichnis vorhanden sind, zu untergeordneten Elementen der Stammverwaltungsgruppe erklärt. Der Grund für diesen Vorgang besteht im Sicherstellen, dass nur eine Verwaltungsgruppenhierarchie in einem Verzeichnis vorhanden ist. Die einzige Hierarchie innerhalb des Verzeichnisses kann administrative Kunden das Anwenden von globalem Zugriff und globalen Richtlinien ermöglichen, die andere Kunden im Verzeichnis nicht umgehen können. Alles, was dem Stamm zugewiesen wird, gilt für alle Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen innerhalb des Verzeichnisses, weil eine Hierarchie im Verzeichnis vorhanden ist.
-
 > [!IMPORTANT]
 > Jede Zuweisung von Benutzerzugriff oder Richtlinienzuweisung für die Stammverwaltungsgruppe **gilt für alle Ressourcen im Verzeichnis**.
 > Aus diesem Grund sollten alle Kunden die Notwendigkeit untersuchen, Elemente in diesem Bereich zu definieren.
 > Benutzerzugriff und Richtlinienzuweisungen sollten nur in diesem Bereich ein „Muss“ sein.  
+
+## <a name="initial-setup-of-management-groups"></a>Erstmalige Einrichtung von Verwaltungsgruppen
+
+Wenn ein Benutzer mit der Verwendung von Verwaltungsgruppen beginnt, findet ein erster Einrichtungsvorgang statt. Der erste Schritt besteht darin, dass die Stammverwaltungsgruppe im Verzeichnis erstellt wird. Sobald diese Gruppe erstellt wurde, werden alle Abonnements, die im Verzeichnis vorhanden sind, zu untergeordneten Elementen der Stammverwaltungsgruppe erklärt. Der Grund für diesen Vorgang besteht im Sicherstellen, dass nur eine Verwaltungsgruppenhierarchie in einem Verzeichnis vorhanden ist. Die einzige Hierarchie innerhalb des Verzeichnisses kann administrative Kunden das Anwenden von globalem Zugriff und globalen Richtlinien ermöglichen, die andere Kunden im Verzeichnis nicht umgehen können. Alles, was dem Stamm zugewiesen wird, gilt für alle Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen innerhalb des Verzeichnisses, weil eine Hierarchie im Verzeichnis vorhanden ist.
+
+## <a name="trouble-seeing-all-subscriptions"></a>Probleme beim Anzeigen aller Abonnements
+
+Bei einigen Verzeichnissen, bei denen früh in der Vorschauphase (vor dem 25. Juni 2018) mit der Verwendung von Verwaltungsgruppen begonnen wurde, trat ein Problem auf, aufgrund dessen die Abonnements nicht in die Hierarchie aufgenommen wurden.  Das lag daran, dass der Prozess zum Aufnehmen von Abonnements in die Hierarchie implementiert wurde, nachdem eine Rollen- oder Richtlinienzuweisung für die Stammverwaltungsgruppe im Verzeichnis durchgeführt wurde.
+
+### <a name="how-to-resolve-the-issue"></a>So lösen Sie das Problem:
+
+Es gibt zwei Self-Service-Optionen zum Beheben dieses Problems.
+
+1. Entfernen aller Rollen- und Richtlinienzuweisungen aus der Stammverwaltungsgruppe
+    1. Werden alle Richtlinien- und Rollenzuweisungen aus der Stammverwaltungsgruppe entfernt, gleicht der Dienst beim nächsten Zyklus über Nacht alle Abonnements mit der Hierarchie ab.  Mit dieser Überprüfung soll sichergestellt werden, dass nicht versehentlich Zugriff auf alle Mandantenabonnements gewährt oder eine Richtlinienzuweisung für diese Abonnements ausgeführt wurde.
+    1. Die beste Methode für diesen Vorgang ohne Beeinträchtigung Ihrer Dienste besteht darin, die Rollen- oder Richtlinienzuweisungen auf der Ebene unterhalb der Stammverwaltungsgruppe anzuwenden. Anschließend können Sie alle Zuweisungen aus dem Stammbereich entfernen.
+1. Direktes Aufrufen der API, um den Abgleichvorgang zu starten.
+    1. Jeder autorisierte Kunde im Verzeichnis kann die API *TenantBackfillStatusRequest* oder *StartTenantBackfillRequest* aufrufen. Wird die StartTenantBackfillRequest-API aufgerufen, initiiert sie den ersten Einrichtungsvorgang, bei dem alle Abonnements in die Hierarchie verschoben werden. Bei diesem Vorgang wird außerdem damit begonnen, die Festlegung aller neuen Abonnements als untergeordnetes Element der Stammverwaltungsgruppe zu erzwingen. Der Vorgang kann ausgeführt werden, ohne Zuweisungen auf Stammebene zu ändern, da Sie angeben, dass die Anwendung einer Richtlinien- oder Zugriffszuweisung auf Stammebene auf alle Abonnements akzeptabel ist.
+
+Sollten Sie Fragen zu diesem Abgleichvorgang haben, wenden Sie sich an managementgroups@microsoft.com.  
   
 ## <a name="management-group-access"></a>Zugriff auf die Verwaltungsgruppe
 

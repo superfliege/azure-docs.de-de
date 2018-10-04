@@ -22,6 +22,8 @@
 ## [Überprüfen der Integrität einer verwalteten Domäne](active-directory-ds-check-health.md)
 ## [Verwenden von Azure AD Domain Services in Azure CSP-Abonnements](active-directory-ds-csp.md)
 ## [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
+## [Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit einer verwalteten Domäne](active-directory-ds-scoped-synchronization.md)
+## [Schützen Ihrer verwalteten Domäne](active-directory-ds-secure-your-domain.md)
 ## Beitreten zu einer verwalteten Domäne
 ### [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [Virtueller Windows Server-Computer aus einer Vorlage](active-directory-ds-join-windows-vm-template.md)
@@ -44,7 +46,6 @@
 ### [Erstellen eines gruppenverwalteten Dienstkontos in einer verwalteten Domäne](active-directory-ds-create-gmsa.md)
 ### [Verwalten von Gruppenrichtlinien für eine verwaltete Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [Konfigurieren von Kennwortrichtlinien für eine verwaltete Domäne](active-directory-ds-password-policy.md)
-### [Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit einer verwalteten Domäne](active-directory-ds-scoped-synchronization.md)
 ## [Auswählen eines virtuellen Netzwerks](active-directory-ds-networking.md)
 ## Bereitstellen von Anwendungen
 ### [Konfigurieren der Unterstützung für die Profilsynchronisierung für SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)
