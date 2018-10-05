@@ -1,6 +1,6 @@
 ---
-title: Zuweisen von Administratorrollen in Azure Active Directory | Microsoft Docs
-description: Eine Administratorrolle kann zum Hinzufügen von Benutzern, zum Zuweisen von Administratorrollen, zum Zurücksetzen von Benutzerkennwörtern sowie zum Verwalten von Benutzerlizenzen oder Domänen verwendet werden. Ein Benutzer, dem eine Administratorrolle zugewiesen wurde, verfügt für alle Dienste, die Ihre Organisation abonniert hat, über die gleichen Berechtigungen.
+title: Berechtigungen der Administratorrolle in Azure Active Directory | Microsoft-Dokumentation
+description: Eine Administratorrolle kann zum Hinzufügen von Benutzern, zum Zuweisen von Administratorrollen, zum Zurücksetzen von Benutzerkennwörtern sowie zum Verwalten von Benutzerlizenzen oder Domänen verwendet werden.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,28 +10,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/31/2018
+ms.date: 09/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 384afb36f2a63fcbf290fa96ed15db2a1f469f55
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 293d8376d83d729588aab0aeaa1040d9b3e5e0b5
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337850"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182279"
 ---
-# <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
+# <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
 Mithilfe von Azure Active Directory (Azure AD) können Sie verschiedene Administratoren bestimmen, um unterschiedliche Funktionen zu erfüllen. Administratoren können im Azure AD-Portal für Aufgaben wie das Hinzufügen oder Ändern von Benutzern, das Zuweisen von Administratorrollen, das Zurücksetzen von Benutzerkennwörtern, das Verwalten von Benutzerlizenzen oder das Verwalten von Domänennamen festgelegt werden.
 
-## <a name="details-about-the-global-administrator-role"></a>Details zur globalen Administratorrolle
-
-Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Standardmäßig wird der Person, die sich für ein Azure-Abonnement registriert, die globale Administratorrolle für das Verzeichnis zugewiesen. Nur globale Administratoren können weitere Administratorrollen zuweisen.
+Der globale Administrator hat Zugriff auf alle administrativen Funktionen. Der Person, die sich für ein Azure-Abonnement registriert, wird standardmäßig die globale Administratorrolle für das Verzeichnis zugewiesen. Nur globale Administratoren können Administratorrollen delegieren.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Zuweisen oder Entfernen von Administratorrollen
 
-Um zu erfahren, wie in Azure Active Directory einem Benutzer Administratorrollen zugewiesen werden, lesen Sie [Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory](../fundamentals/active-directory-users-assign-role-azure-portal.md).
+Anweisungen zum Zuweisen von Administratorrollen zu einem Benutzer in Azure Active Directory finden Sie unter [Anzeigen und Zuweisen von Administratorrollen in Azure Active Directory](directory-manage-roles-portal.md).
 
 ## <a name="available-roles"></a>Verfügbare Rollen
 
@@ -44,6 +42,8 @@ Die folgenden Administratorrollen sind verfügbar:
 * **[Rechnungsadministrator:](#billing-administrator)** Erledigt Käufe, verwaltet Abonnements, verwaltet Supporttickets und überwacht die Dienstintegrität.
 
 * **[Cloudanwendungsadministrator:](#cloud-application-administrator)** Benutzer in dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Diese Rolle ermöglicht die Erstellung und Verwaltung aller Aspekte von Unternehmensanwendungen und Anwendungsregistrierungen. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Mitglieder dieser Rolle werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
+
+* **[Cloudgeräteadministrator](#cloud-device-administrator)**: Benutzer in dieser Rolle können Geräte in Azure AD aktivieren, deaktivieren und löschen sowie Windows 10-BitLocker-Schlüssel (falls vorhanden) im Azure-Portal lesen. Die Rolle gewährt keine Berechtigungen für die Verwaltung anderer Eigenschaften auf dem Gerät.
 
 * **[Complianceadministrator:](#compliance-administrator)** Benutzer mit dieser Rolle verfügen über Verwaltungsberechtigungen in Office 365 Security & Compliance Center und Exchange Admin Center. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -84,7 +84,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[Partnersupport der Ebene 2:](#partner-tier2-support)** Verwenden Sie diese Rolle nicht. Diese Rolle wurde als veraltet markiert und wird aus Azure AD entfernt. Diese Rolle ist für einige wenige Wiederverkaufspartner von Microsoft und nicht zur allgemeinen Verwendung vorgesehen.
 
-* **[Kennwortadministrator/Helpdeskadministrator:](#helpdesk-administrator)** Benutzer mit dieser Rolle können Kennwörter ändern, Dienstanforderungen verwalten und die Integrität des Diensts überwachen. Helpdeskadministratoren können Kennwörter nur für Benutzer und andere Helpdeskadministratoren ändern. 
+* **[Kennwortadministrator/Helpdeskadministrator:](#helpdesk-administrator)** Benutzer mit dieser Rolle können Kennwörter ändern, Aktualisierungstoken für ungültig erklären, Dienstanforderungen verwalten und die Integrität des Diensts überwachen. Helpdeskadministratoren können nur für Benutzer und andere Helpdeskadministratoren Kennwörter ändern und Aktualisierungstoken für ungültig erklären. Wenn ein Aktualisierungstoken für ungültig erklärt wird, muss sich der Benutzer erneut anmelden.
 
   > [!NOTE]
   > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Helpdeskadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com/) lautet diese „Kennwortadministrator“.
@@ -97,7 +97,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[Berichtsleser:](#reports-reader)** Benutzer mit dieser Rolle können Verwendungsberichtsdaten und das Berichtsdashboard in Office 365 Admin Center und das Anpassungskontextpaket in Power BI anzeigen. Darüber hinaus stellt die Rolle Zugriff auf Anmeldeberichte und -aktivitäten in Azure AD und von der Microsoft Graph-Berichterstellungs-API zurückgegebene Daten zur Verfügung. Ein Benutzer, dem die Rolle „Meldet Reader“ zugewiesen ist, kann nur auf relevante Nutzungs- und Anpassungsmetriken zugreifen. Sie verfügen nicht über Administratorrechte, um Einstellungen zu konfigurieren oder auf produktspezifische Verwaltungskonsolen wie das Exchange Admin Center zuzugreifen. 
 
-* **[Sicherheitsadministrator:](#security-administrator)** Benutzer mit dieser Rolle verfügen über alle Leseberechtigungen der Rolle „Sicherheit lesen“ sowie die Möglichkeit, die Konfiguration für sicherheitsrelevante Dienste zu verwalten (z.B. Azure Active Directory Identity Protection, Azure Information Protection, Privileged Identity Management oder Office 365 Security & Compliance Center). Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **[Sicherheitsadministrator:](#security-administrator)** Benutzer mit dieser Rolle verfügen über alle Leseberechtigungen der Rolle „Benutzer mit Leseberechtigung für Sicherheitsfunktionen“ sowie die Möglichkeit, die Konfiguration für sicherheitsrelevante Dienste zu verwalten (z.B. Azure Active Directory Identity Protection, Azure Information Protection oder Office 365 Security & Compliance Center). Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
   
   | Geben Sie in | Möglich |
   | --- | --- |
@@ -117,35 +117,30 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[SharePoint-Dienstadministrator:](#sharepoint-service-administrator)** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft SharePoint Online, wenn der Dienst vorhanden ist, sowie die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zu Administratorrollen von Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Skype for Business-/Lync-Dienstadministrator:](#lync-service-administrator)** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Skype for Business, wenn der Dienst vorhanden ist, sowie die Berechtigung zur Verwaltung von Skype-spezifischen Benutzerattributen in Azure Active Directory. Darüber hinaus bietet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Weitere Informationen finden Sie unter [Informationen zur Skype for Business-Administratorrolle](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5).
+* **[Skype for Business-/Lync-Dienstadministrator:](#skype-for-business-administrator)** Benutzer mit dieser Rolle verfügen über globale Berechtigungen in Microsoft Skype for Business, wenn der Dienst vorhanden ist, sowie die Berechtigung zur Verwaltung von Skype-spezifischen Benutzerattributen in Azure Active Directory. Darüber hinaus bietet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen, sowie auf Teams und Skype for Business Admin Center zuzugreifen. Das Konto muss auch für Teams lizenziert sein, andernfalls kann es keine PowerShell-Cmdlets von Teams ausführen. Weitere Informationen dazu finden Sie unter [Skype for Business Online-Administrator](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) und Informationen zur Teams-Lizenzierung unter [Add-On-Lizenzierung für Skype for Business und Microsoft Teams](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing).
 
   > [!NOTE]
   > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Lync-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com/) lautet diese „Skype for Business-Dienstadministrator“.
   >
   >
 
-* **[Benutzerkontoadministrator:](#user-account-administrator)** Benutzer mit dieser Rolle können sämtliche Benutzer und Gruppen erstellen und verwalten. Darüber hinaus beinhaltet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Es gelten einige Einschränkungen. So lässt diese Rolle beispielsweise nicht das Löschen eines globalen Administrators zu. Benutzerkontoadministratoren können Kennwörter für Benutzer, Helpdeskadministratoren und andere Benutzerkontoadministratoren ändern.
+* **[Teams-Kommunikationsadministrator](#teams-communications-administrator)**: Benutzer in dieser Rolle können Aspekte der Microsoft Teams-Workload im Zusammenhang mit Sprache und Telefonie verwalten. Dazu gehören die Verwaltungstools für die Telefonnummernzuweisung, Sprach- und Besprechungsrichtlinien und der uneingeschränkte Zugriff auf das Toolset zur Anrufanalyse.
+
+* **[Teams-Kommunikationssupporttechniker](#teams-communications-support-engineer)**: Benutzer in dieser Rolle können Kommunikationsprobleme in Microsoft Teams und Skype for Business mithilfe der Tools zur Problembehandlung für Benutzeraufrufe im Admin Center von Microsoft Teams und Skype for Business behandeln. Benutzer in dieser Rolle können vollständige Anrufdatensatzinformationen für alle Teilnehmer anzeigen.
+
+* **[Teams-Kommunikationssupportspezialist](#teams-communications-support-specialist)**: Benutzer in dieser Rolle können Kommunikationsprobleme in Microsoft Teams und Skype for Business mithilfe der Tools zur Problembehandlung für Benutzeraufrufe im Admin Center von Microsoft Teams und Skype for Business behandeln. Benutzer in dieser Rolle können Benutzerdetails im Anruf nur für den bestimmten Benutzer anzeigen, nach dem sie gesucht haben.
+
+* **[Teams-Dienstadministrator](#teams-service-administrator)**: Benutzer in dieser Rolle können alle Aspekte der Microsoft Teams-Workload über das Admin Center von Microsoft Teams und Skype for Business und die entsprechenden PowerShell-Module verwalten. Dazu zählen unter anderem alle Verwaltungstools im Zusammenhang mit Telefonie, Messaging, Besprechungen und den Teams selbst. Diese Rolle gewährt auch die Berechtigung zum Verwalten von Office 365-Gruppen.
+
+* **[Benutzerkontoadministrator:](#user-account-administrator)** Benutzer mit dieser Rolle können sämtliche Benutzer und Gruppen erstellen und verwalten. Darüber hinaus beinhaltet diese Rolle die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen. Es gelten einige Einschränkungen. So lässt diese Rolle beispielsweise nicht das Löschen eines globalen Administrators zu. Benutzerkontoadministratoren können für Benutzer, Helpdeskadministratoren und andere Benutzerkontoadministratoren Kennwörter ändern und Aktualisierungstoken für ungültig erklären. Wenn ein Aktualisierungstoken für ungültig erklärt wird, muss sich der Benutzer erneut anmelden.
 
 | Möglich | Nicht möglich |
 | --- | --- |
 | <p>Anzeigen von Unternehmens- und Benutzerinformationen</p><p>Verwalten von Office-Supporttickets</p><p>Ändern von Kennwörtern nur für Benutzer, Helpdeskadministratoren und andere Benutzerkontoadministratoren durch Benutzerkontoadministratoren</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Erstellen, Bearbeiten und Löschen von Benutzern und Gruppen, Verwalten von Benutzerlizenzen (mit Einschränkungen). Er oder Sie kann keinen globalen Administrator löschen oder andere Administratoren erstellen.</p> |<p>Durchführen von Abrechnungs- und Kaufvorgängen für Office-Produkte</p><p>Verwalten von Domänen</p><p>Verwalten von Unternehmensinformationen</p><p>Delegieren von Administratorrollen an andere Benutzer</p><p>Verwenden der Verzeichnissynchronisierung</p><p>Aktivieren und Deaktivieren der Multi-Factor Authentication</p><p>Anzeigen von Überwachungsprotokollen</p> |
 
-## <a name="deprecated-roles"></a>Veraltete Rollen
+In den folgenden Tabellen werden die spezifischen Berechtigungen der einzelnen Rollen in Azure Active Directory beschrieben. Einige Rollen können zusätzliche Berechtigungen in Microsoft-Diensten außerhalb von Azure Active Directory aufweisen.
 
-Die folgenden Rollen sollten nicht verwendet werden. Sie wurden als veraltet markiert und werden aus Azure AD entfernt.
-
-* Ad-hoc-Lizenzadministrator
-* Geräteeinbindung
-* Geräte-Manager
-* Gerätebenutzer
-* Benutzererstellung mit E-Mail-Überprüfung
-* Postfachadministrator
-* Geräteeinbindung am Arbeitsplatz
-
-## <a name="detailed-azure-active-directory-permissions"></a>Ausführliche Azure Active Directory-Berechtigungen
-In den folgenden Tabellen werden die spezifischen Berechtigungen der einzelnen Rollen in Azure Active Directory beschrieben. Einige Rollen, z.B. der globale Administrator, können zusätzliche Berechtigungen in Microsoft-Diensten außerhalb von Azure Active Directory aufweisen.
-
-### <a name="adhoc-license-administrator"></a>Ad-hoc-Lizenzadministrator
+## <a name="adhoc-license-administrator"></a>Ad-hoc-Lizenzadministrator
 Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verwalten.
 
   > [!NOTE]
@@ -179,7 +174,7 @@ Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verw
 | microsoft.aad.directory/users/ownedObjects/read | Lesen der users.ownedObjects-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/registeredDevices/read | Lesen der users.registeredDevices-Eigenschaft in Azure Active Directory |
 
-### <a name="application-administrator"></a>Anwendungsadministrator
+## <a name="application-administrator"></a>Anwendungsadministrator
 Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verwalten.
 
   > [!NOTE]
@@ -189,24 +184,28 @@ Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verw
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
-| microsoft.aad.directory/applications/create | Erstellen von Anwendungen in Azure Active Directory |
+| microsoft.aad.directory/applications/audience/update | Aktualisieren der applications.audience-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/applications/authentication/update | Aktualisieren der applications.authentication-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/applications/default/update | Aktualisieren der Basiseigenschaften für Anwendungen in Azure Active Directory |
+| microsoft.aad.directory/applications/create | Erstellen von Anwendungen in Azure Active Directory |
+| microsoft.aad.directory/applications/credentials/update | Aktualisieren der applications.credentials-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/applications/delete | Löschen von Anwendungen in Azure Active Directory |
 | microsoft.aad.directory/applications/owners/update | Aktualisieren der applications.owners-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/applications/permissions/update | Aktualisieren der applications.permissions-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/create | Erstellen von appRoleAssignments in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/read | Lesen von appRoleAssignments in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/update | Aktualisieren von appRoleAssignments in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/delete | Löschen von appRoleAssignments in Azure Active Directory |
-| microsoft.aad.directory/policies/applicationConfiguration/create | Erstellen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/applicationConfiguration/default/read | Lesen der policies.applicationConfiguration-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/policies/applicationConfiguration/default/update | Aktualisieren der policies.applicationConfiguration-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/policies/applicationConfiguration/create | Erstellen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Löschen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Lesen der policies.applicationConfiguration-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Aktualisieren der policies.applicationConfiguration-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Lesen der policies.applicationConfiguration-Eigenschaft in Azure Active Directory |
-| microsoft.aad.directory/servicePrincipals/create | Erstellen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/default/update | Aktualisieren der Basiseigenschaften für servicePrincipals in Azure Active Directory |
+| microsoft.aad.directory/servicePrincipals/create | Erstellen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/delete | Löschen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren der servicePrincipals.appRoleAssignedTo-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Aktualisieren der servicePrincipals.appRoleAssignments-Eigenschaft in Azure Active Directory |
@@ -219,7 +218,7 @@ Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verw
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="application-developer"></a>Anwendungsentwickler
+## <a name="application-developer"></a>Anwendungsentwickler
 Erstellen von Anwendungsregistrierungen unabhängig von der Einstellung „Benutzer können Anwendungen registrieren“
 
   > [!NOTE]
@@ -234,7 +233,7 @@ Erstellen von Anwendungsregistrierungen unabhängig von der Einstellung „Benut
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | Erstellen von oAuth2PermissionGrants in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Erstellen von servicePrincipals in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
 
-### <a name="billing-administrator"></a>Abrechnungsadministrator
+## <a name="billing-administrator"></a>Abrechnungsadministrator
 Ausführen von allgemeinen Abrechnungsaufgaben wie der Aktualisierung der Zahlungsinformationen.
 
   > [!NOTE]
@@ -258,7 +257,7 @@ Ausführen von allgemeinen Abrechnungsaufgaben wie der Aktualisierung der Zahlun
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="cloud-application-administrator"></a>Cloudanwendungsadministrator
+## <a name="cloud-application-administrator"></a>Cloudanwendungsadministrator
 Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterprise-Apps außer App-Proxy.
 
   > [!NOTE]
@@ -268,10 +267,14 @@ Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterpri
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
-| microsoft.aad.directory/applications/create | Erstellen von Anwendungen in Azure Active Directory |
+| microsoft.aad.directory/applications/audience/update | Aktualisieren der applications.audience-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/applications/authentication/update | Aktualisieren der applications.authentication-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/applications/default/update | Aktualisieren der Basiseigenschaften für Anwendungen in Azure Active Directory |
+| microsoft.aad.directory/applications/create | Erstellen von Anwendungen in Azure Active Directory |
+| microsoft.aad.directory/applications/credentials/update | Aktualisieren der applications.credentials-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/applications/delete | Löschen von Anwendungen in Azure Active Directory |
 | microsoft.aad.directory/applications/owners/update | Aktualisieren der applications.owners-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/applications/permissions/update | Aktualisieren der applications.permissions-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/create | Erstellen von appRoleAssignments in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/update | Aktualisieren von appRoleAssignments in Azure Active Directory |
@@ -285,8 +288,8 @@ Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterpri
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Lesen der policies.applicationConfiguration-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren der servicePrincipals.appRoleAssignedTo-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Aktualisieren der servicePrincipals.appRoleAssignments-Eigenschaft in Azure Active Directory |
-| microsoft.aad.directory/servicePrincipals/create | Erstellen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/default/update | Aktualisieren der Basiseigenschaften für servicePrincipals in Azure Active Directory |
+| microsoft.aad.directory/servicePrincipals/create | Erstellen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/delete | Löschen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/owners/update | Aktualisieren der servicePrincipals.owners-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/policies/update | Aktualisieren der servicePrincipals.policies-Eigenschaft in Azure Active Directory |
@@ -297,7 +300,24 @@ Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterpri
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="company-administrator"></a>Unternehmensadministrator
+## <a name="cloud-device-administrator"></a>Cloudgeräteadministrator
+Vollzugriff zum Verwalten von Geräten in Azure AD.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.directory/devices/delete | Löschen von Geräten in Azure Active Directory |
+| microsoft.aad.directory/devices/disable | Deaktivieren von Geräten in Azure Active Directory |
+| microsoft.aad.directory/devices/enable | Aktivieren von Geräten in Azure Active Directory |
+| microsoft.aad.reports/allEntities/read | Lesen von Azure AD-Berichten. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+
+## <a name="company-administrator"></a>Unternehmensadministrator
 Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-Identitäten verwenden.
 
   > [!NOTE]
@@ -347,9 +367,9 @@ Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.commerce.billing/allEntities/allTasks | Verwalten sämtlicher Aspekte der Office 365-Abrechnung. |
+| microsoft.intune/allEntities/allTasks | Verwalten sämtlicher Aspekte von Intune. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Verwalten sämtlicher Aspekte von Office 365 Compliance-Manager |
 | microsoft.office365.exchange/allEntities/allTasks | Verwalten sämtlicher Aspekte von Exchange Online. |
-| microsoft.intune/allEntities/allTasks | Verwalten sämtlicher Aspekte von Intune. |
 | microsoft.office365.lockbox/allEntities/allTasks | Verwalten sämtlicher Aspekte der Office 365 Kunden-Lockbox |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Verwalten sämtlicher Aspekte von Power BI. |
 | microsoft.office365.protectionCenter/allEntities/allTasks | Verwalten sämtlicher Aspekte von Office 365 Protection Center |
@@ -359,7 +379,7 @@ Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 | microsoft.powerApps.dynamics365/allEntities/allTasks | Verwalten sämtlicher Aspekte von Dynamics 365. |
 
-### <a name="compliance-administrator"></a>Complianceadministrator
+## <a name="compliance-administrator"></a>Complianceadministrator
 Lesen und Verwalten der Konformitätskonfiguration und der zugehörigen Berichte in Azure AD und Office 365.
 
   > [!NOTE]
@@ -384,7 +404,7 @@ Lesen und Verwalten der Konformitätskonfiguration und der zugehörigen Berichte
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Verwalten sämtlicher Aspekte von Skype for Business Online |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="conditional-access-administrator"></a>Administrator für den bedingten Zugriff
+## <a name="conditional-access-administrator"></a>Administrator für den bedingten Zugriff
 Verwalten von Funktionen zum bedingten Zugriff.
 
   > [!NOTE]
@@ -394,37 +414,15 @@ Verwalten von Funktionen zum bedingten Zugriff.
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
-| microsoft.aad.directory/policies/conditionalAccess/create | Erstellen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/conditionalAccess/default/read | Lesen der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/policies/conditionalAccess/default/update | Aktualisieren der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/policies/conditionalAccess/create | Erstellen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/conditionalAccess/delete | Löschen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/conditionalAccess/owners/read | Lesen der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | Aktualisieren der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/policies/conditionalAccess/policiesAppliedTo/read | Lesen der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
 
-### <a name="crm-service-administrator"></a>CRM-Dienstadministrator
-Verwalten sämtlicher Aspekte des Produkts Dynamics 365.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
-  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
-  >
-  >
-
-| **Aktionen** | **Beschreibung** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
-| microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
-| microsoft.powerApps.dynamics365/allEntities/allTasks | Verwalten sämtlicher Aspekte von Dynamics 365. |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
-| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
-
-### <a name="customer-lockbox-access-approver"></a>Genehmigende Person für den LockBox-Kundenzugriff
+## <a name="customer-lockbox-access-approver"></a>Genehmigende Person für den LockBox-Kundenzugriff
 Kann Microsoft-Supportanfragen zum Zugriff auf Benutzerorganisationsdaten genehmigen.
 
   > [!NOTE]
@@ -442,7 +440,7 @@ Kann Microsoft-Supportanfragen zum Zugriff auf Benutzerorganisationsdaten genehm
 | microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
 | microsoft.office365.lockbox/allEntities/allTasks | Verwalten sämtlicher Aspekte der Office 365 Kunden-Lockbox |
 
-### <a name="device-administrators"></a>Geräteadministratoren
+## <a name="device-administrators"></a>Geräteadministratoren
 Mitglieder dieser Rolle werden der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten hinzugefügt.
 
   > [!NOTE]
@@ -455,7 +453,7 @@ Mitglieder dieser Rolle werden der lokalen Administratorgruppe auf in Azure AD e
 | microsoft.aad.directory/groupSettings/default/read | Lesen der Basiseigenschaften für groupSettings in Azure Active Directory |
 | microsoft.aad.directory/groupSettingTemplates/default/read | Lesen der Basiseigenschaften für groupSettingTemplates in Azure Active Directory |
 
-### <a name="device-managers"></a>Geräte-Manager
+## <a name="device-managers"></a>Geräte-Manager
 Kann Microsoft-Supportanfragen zum Zugriff auf Benutzerorganisationsdaten genehmigen.
 
   > [!NOTE]
@@ -478,7 +476,7 @@ Kann Microsoft-Supportanfragen zum Zugriff auf Benutzerorganisationsdaten genehm
 | microsoft.aad.directory/devices/registeredUsers/read | Lesen der devices.registeredUsers-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/devices/registeredUsers/update | Aktualisieren der devices.registeredUsers-Eigenschaft in Azure Active Directory |
 
-### <a name="directory-readers"></a>Rolle „Verzeichnis lesen“
+## <a name="directory-readers"></a>Rolle „Verzeichnis lesen“
 Lesen von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf Anwendungen
 
   > [!NOTE]
@@ -490,6 +488,7 @@ Lesen von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf
 | --- | --- |
 | microsoft.aad.directory/administrativeUnits/default/read | Lesen der Basiseigenschaften für administrativeUnits in Azure Active Directory |
 | microsoft.aad.directory/administrativeUnits/members/read | Lesen der administrativeUnits.members-Eigenschaft in Azure Active Directory |
+Azure Active Directory |
 | microsoft.aad.directory/applications/default/read | Lesen der Basiseigenschaften für Anwendungen in Azure Active Directory |
 | microsoft.aad.directory/applications/owners/read | Lesen der applications.owners-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/contacts/default/read | Lesen der Basiseigenschaften für Kontakte in Azure Active Directory |
@@ -535,7 +534,7 @@ Lesen von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf
 | microsoft.aad.directory/users/ownedObjects/read | Lesen der users.ownedObjects-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/registeredDevices/read | Lesen der users.registeredDevices-Eigenschaft in Azure Active Directory |
 
-### <a name="directory-synchronization-accounts"></a>Konten zur Verzeichnissynchronisierung
+## <a name="directory-synchronization-accounts"></a>Konten zur Verzeichnissynchronisierung
 Nur vom Azure AD Connect-Dienst verwendet.
 
   > [!NOTE]
@@ -557,9 +556,9 @@ Nur vom Azure AD Connect-Dienst verwendet.
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren der servicePrincipals.appRoleAssignedTo-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Lesen der servicePrincipals.appRoleAssignments-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Aktualisieren der servicePrincipals.appRoleAssignments-Eigenschaft in Azure Active Directory |
-| microsoft.aad.directory/servicePrincipals/create | Erstellen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/default/read | Lesen der Basiseigenschaften für servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/default/update | Aktualisieren der Basiseigenschaften für servicePrincipals in Azure Active Directory |
+| microsoft.aad.directory/servicePrincipals/create | Erstellen von servicePrincipals in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | Lesen der servicePrincipals.memberOf-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Lesen der servicePrincipals.oAuth2PermissionGrants-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/owners/read | Lesen der servicePrincipals.owners-Eigenschaft in Azure Active Directory |
@@ -569,7 +568,7 @@ Nur vom Azure AD Connect-Dienst verwendet.
 | microsoft.aad.directory/servicePrincipals/policies/update | Aktualisieren der servicePrincipals.policies-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directorySync/allEntities/allTasks | Ausführen sämtlicher Aktionen in Azure AD Connect. |
 
-### <a name="directory-writers"></a>Verzeichnis schreiben
+## <a name="directory-writers"></a>Verzeichnis schreiben
 Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Zum Gewähren des Zugriffs auf Anwendungen
 
   > [!NOTE]
@@ -586,8 +585,8 @@ Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Zum Gewähren de
 | microsoft.aad.directory/groups/members/update | Aktualisieren der groups.members-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/owners/update | Aktualisieren der groups.owners-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/settings/update | Aktualisieren der groups.settings-Eigenschaft in Azure Active Directory |
-| microsoft.aad.directory/groupSettings/create | Erstellen der groupSettings in Azure Active Directory |
 | microsoft.aad.directory/groupSettings/default/update | Aktualisieren der Basiseigenschaften für groupSettings in Azure Active Directory |
+| microsoft.aad.directory/groupSettings/create | Erstellen der groupSettings in Azure Active Directory |
 | microsoft.aad.directory/groupSettings/delete | Löschen von groupSettings in Azure Active Directory |
 | microsoft.aad.directory/users/appRoleAssignments/update | Aktualisieren der users.appRoleAssignments-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/assignLicense | Verwalten der Lizenzen für Benutzer in Azure Active Directory |
@@ -596,7 +595,29 @@ Lesen und Schreiben von grundlegenden Verzeichnisinformationen. Zum Gewähren de
 | microsoft.aad.directory/users/manager/update | Aktualisieren der users.manager-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/userPrincipalName/update | Aktualisieren der users.userPrincipalName-Eigenschaft in Azure Active Directory |
 
-### <a name="exchange-service-administrator"></a>Exchange-Dienstadministrator
+## <a name="dynamics-365-administrator"></a>Dynamics 365-Administrator
+Verwalten sämtlicher Aspekte des Produkts Dynamics 365. Ehemals „CRM-Dienstadministrator“.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
+| microsoft.powerApps.dynamics365/allEntities/allTasks | Verwalten sämtlicher Aspekte von Dynamics 365. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+
+## <a name="exchange-service-administrator"></a>Exchange-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Exchange.
 
   > [!NOTE]
@@ -618,11 +639,11 @@ Verwalten sämtlicher Aspekte des Produkts Exchange.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="guest"></a>Gast
+## <a name="guest"></a>Gast
 Die Standardrolle für Gastbenutzer. Lesen einer begrenzten Anzahl von Verzeichnisinformationen.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle.
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Benutzerrolle.
   >
   >
 
@@ -664,11 +685,11 @@ Die Standardrolle für Gastbenutzer. Lesen einer begrenzten Anzahl von Verzeichn
 | microsoft.aad.directory/users/registeredDevices/read | Lesen der users.registeredDevices-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/scopedAdministratorOf/read | Lesen der users.scopedAdministratorOf-Eigenschaft in Azure Active Directory |
 
-### <a name="guest-inviter"></a>Gasteinladender
-Einladen von Gastbenutzern unabhängig von der Einstellung „Mitglieder können Gäste einladen“.
+## <a name="guest-inviter"></a>Gasteinladender
+Kann Gastbenutzer unabhängig von der Einstellung „Mitglieder können Gäste einladen �Mitglieder können Gäste einladen� einladen.
 
   > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle.
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Benutzerrolle.
   >
   >
 
@@ -687,7 +708,7 @@ Einladen von Gastbenutzern unabhängig von der Einstellung „Mitglieder können
 | microsoft.aad.directory/users/ownedObjects/read | Lesen der users.ownedObjects-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/registeredDevices/read | Lesen der users.registeredDevices-Eigenschaft in Azure Active Directory |
 
-### <a name="helpdesk-administrator"></a>Helpdeskadministrator
+## <a name="helpdesk-administrator"></a>Helpdeskadministrator
 Zurücksetzen von Kennwörtern für Nicht-Administratoren und Helpdeskadministratoren.
 
   > [!NOTE]
@@ -705,7 +726,7 @@ Zurücksetzen von Kennwörtern für Nicht-Administratoren und Helpdeskadministra
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="information-protection-administrator"></a>Information Protection-Administrator
+## <a name="information-protection-administrator"></a>Information Protection-Administrator
 Verwalten sämtlicher Aspekte des Produkts Azure Information Protection.
 
   > [!NOTE]
@@ -726,7 +747,7 @@ Verwalten sämtlicher Aspekte des Produkts Azure Information Protection.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="intune-service-administrator"></a>Intune-Dienstadministrator
+## <a name="intune-service-administrator"></a>Intune-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Intune.
 
   > [!NOTE]
@@ -741,18 +762,18 @@ Verwalten sämtlicher Aspekte des Produkts Intune.
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
-| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/default/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
+| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
-| microsoft.aad.directory/devices/create | Erstellen von Geräten in Azure Active Directory |
 | microsoft.aad.directory/devices/default/update | Aktualisieren der Basiseigenschaften für Geräte in Azure Active Directory |
+| microsoft.aad.directory/devices/create | Erstellen von Geräten in Azure Active Directory |
 | microsoft.aad.directory/devices/delete | Löschen von Geräten in Azure Active Directory |
 | microsoft.aad.directory/devices/registeredOwners/update | Aktualisieren der devices.registeredOwners-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/devices/registeredUsers/update | Aktualisieren der devices.registeredUsers-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Aktualisieren der groups.appRoleAssignments-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/groups/default/update | Aktualisieren der Basiseigenschaften für Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/create | Erstellen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/createAsOwner | Erstellen von Gruppen in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
-| microsoft.aad.directory/groups/default/update | Aktualisieren der Basiseigenschaften für Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/delete | Löschen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/hiddenMembers/read | Lesen der groups.hiddenMembers-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/members/update | Aktualisieren der groups.members-Eigenschaft in Azure Active Directory |
@@ -766,7 +787,7 @@ Verwalten sämtlicher Aspekte des Produkts Intune.
 | microsoft.intune/allEntities/allTasks | Verwalten sämtlicher Aspekte von Intune. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="license-administrator"></a>Lizenzadministrator
+## <a name="license-administrator"></a>Lizenzadministrator
 Kann Produktlizenzen für Benutzer und Gruppen verwalten.
 
   > [!NOTE]
@@ -782,29 +803,7 @@ Kann Produktlizenzen für Benutzer und Gruppen verwalten.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 
-### <a name="lync-service-administrator"></a>Lync-Dienstadministrator
-Verwalten sämtlicher Aspekte des Produkts Skype for Business.
-
-  > [!NOTE]
-  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
-  >
-  >
-
-  > [!NOTE]
-  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
-  >
-  >
-
-| **Aktionen** | **Beschreibung** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
-| microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
-| microsoft.office365.skypeForBusiness/allEntities/allTasks | Verwalten sämtlicher Aspekte von Skype for Business Online |
-| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
-
-### <a name="message-center-reader"></a>Nachrichtencenter-Leser
+## <a name="message-center-reader"></a>Nachrichtencenter-Leser
 Lesen von Nachrichten und Updates für die Organisation ausschließlich im Office 365-Nachrichtencenter. 
 
   > [!NOTE]
@@ -822,7 +821,7 @@ Lesen von Nachrichten und Updates für die Organisation ausschließlich im Offic
 | microsoft.aad.accessmessagecenter/allEntities/allTasks | Erstellen und Löschen aller Ressourcen und Lesen und Aktualisieren der Standardeigenschaften im Nachrichtencenter. |
 | microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
 
-### <a name="partner-tier1-support"></a>Partnersupport der Ebene 1
+## <a name="partner-tier1-support"></a>Partnersupport der Ebene 1
 Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vorgesehen.
 
   > [!NOTE]
@@ -837,8 +836,8 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
-| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/default/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
+| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/groups/create | Erstellen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/createAsOwner | Erstellen von Gruppen in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
@@ -859,7 +858,7 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="partner-tier2-support"></a>Partnersupport der Ebene 2
+## <a name="partner-tier2-support"></a>Partnersupport der Ebene 2
 Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vorgesehen.
 
   > [!NOTE]
@@ -874,8 +873,8 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
-| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/default/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
+| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/domains/allTasks | Erstellen und Löschen von Domänen und Lesen und Aktualisieren der Standardeigenschaften in Azure Active Directory |
 | microsoft.aad.directory/groups/create | Erstellen von Gruppen in Azure Active Directory |
@@ -899,7 +898,7 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="power-bi-service-administrator"></a>Power BI-Dienstadministrator
+## <a name="power-bi-service-administrator"></a>Power BI-Dienstadministrator
 Verwalten sämtlicher Aspekte des Produkts Power BI.
 
   > [!NOTE]
@@ -921,7 +920,7 @@ Verwalten sämtlicher Aspekte des Produkts Power BI.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="privileged-role-administrator"></a>Administrator für privilegierte Rollen
+## <a name="privileged-role-administrator"></a>Administrator für privilegierte Rollen
 Verwalten von Rollenzuweisungen in Azure AD.
 
   > [!NOTE]
@@ -939,7 +938,7 @@ Verwalten von Rollenzuweisungen in Azure AD.
 | microsoft.aad.directory/directoryRoles/update | Aktualisieren von directoryRoles in Azure Active Directory |
 | microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | Erstellen und Löschen aller Ressourcen und Lesen und Aktualisieren von Standardeigenschaften in microsoft.aad.privilegedIdentityManagement |
 
-### <a name="reports-reader"></a>Meldet Reader
+## <a name="reports-reader"></a>Meldet Reader
 Lesen von Anmeldungs- und Überwachungsberichten.
 
   > [!NOTE]
@@ -959,7 +958,7 @@ Lesen von Anmeldungs- und Überwachungsberichten.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.usageReports/allEntities/read | Lesen von Office 365-Nutzungsberichten. |
 
-### <a name="security-administrator"></a>Sicherheitsadministrator
+## <a name="security-administrator"></a>Sicherheitsadministrator
 Lesen von Sicherheitsinformationen und Berichten
 
   > [!NOTE]
@@ -975,8 +974,8 @@ Lesen von Sicherheitsinformationen und Berichten
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
-| microsoft.aad.directory/policies/create | Erstellen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/default/update | Aktualisieren der Basiseigenschaften für Richtlinien in Azure Active Directory |
+| microsoft.aad.directory/policies/create | Erstellen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/delete | Löschen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/owners/update | Aktualisieren der policies.owners-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/policies/update | Aktualisieren der servicePrincipals.policies-Eigenschaft in Azure Active Directory |
@@ -989,7 +988,7 @@ Lesen von Sicherheitsinformationen und Berichten
 | microsoft.office365.protectionCenter/allEntities/update | Aktualisieren aller Ressourcen in microsoft.office365.protectionCenter |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 
-### <a name="security-reader"></a>Sicherheit lesen
+## <a name="security-reader"></a>Sicherheit lesen
 Lesen von Sicherheitsinformationen und Berichten in Azure AD und Office 365.
 
   > [!NOTE]
@@ -1011,7 +1010,7 @@ Lesen von Sicherheitsinformationen und Berichten in Azure AD und Office 365.
 | microsoft.office365.protectionCenter/allEntities/read | Lesen sämtlicher Aspekte von Office 365 Protection Center. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 
-### <a name="service-support-administrator"></a>Dienstunterstützungsadministrator
+## <a name="service-support-administrator"></a>Dienstunterstützungsadministrator
 Lesen von Service Health-Informationen und Verwalten von Supporttickets.
 
   > [!NOTE]
@@ -1032,7 +1031,7 @@ Lesen von Service Health-Informationen und Verwalten von Supporttickets.
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="sharepoint-service-administrator"></a>SharePoint-Dienstadministrator
+## <a name="sharepoint-service-administrator"></a>SharePoint-Dienstadministrator
 Verwalten sämtlicher Aspekte des SharePoint-Diensts.
 
   > [!NOTE]
@@ -1054,7 +1053,116 @@ Verwalten sämtlicher Aspekte des SharePoint-Diensts.
 | microsoft.office365.sharepoint/allEntities/allTasks | Erstellen und Löschen aller Ressourcen und Lesen und Aktualisieren von Standardeigenschaften in microsoft.office365.sharepoint |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="user-account-administrator"></a>Benutzerkontoadministrator
+## <a name="skype-for-business-administrator"></a>Skype for Business-Administrator
+Verwalten sämtlicher Aspekte des Produkts Skype for Business. Ehemals „Lync-Dienstadministrator“.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Verwalten sämtlicher Aspekte von Skype for Business Online |
+| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+
+## <a name="teams-communications-administrator"></a>Teams-Kommunikationsadministrator
+Kann Anruf- und Besprechungsfunktionen im Microsoft Teams-Dienst verwalten.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.directory/policies/basic/read | Lesen der Basiseigenschaften für Richtlinien in Azure Active Directory |
+| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.office365.usageReports/allEntities/read | Lesen von Office 365-Nutzungsberichten. |
+
+## <a name="teams-communications-support-engineer"></a>Teams-Kommunikationssupporttechniker
+Kann Kommunikationsprobleme in Teams mithilfe von erweiterten Tools behandeln.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.directory/policies/basic/read | Lesen der Basiseigenschaften für Richtlinien in Azure Active Directory |
+| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+
+## <a name="teams-communications-support-specialist"></a>Teams-Kommunikationssupportspezialist
+Kann Kommunikationsprobleme in Teams mithilfe von allgemeinen Tools behandeln.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.directory/policies/basic/read | Lesen der Basiseigenschaften für Richtlinien in Azure Active Directory |
+| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+
+## <a name="teams-service-administrator"></a>Teams-Dienstadministrator
+Kann den Microsoft Teams-Dienst verwalten.
+
+  > [!NOTE]
+  > Diese Rolle erbt zusätzliche Berechtigungen von der Rolle „Verzeichnis lesen“.
+  >
+  >
+
+  > [!NOTE]
+  > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung weiter oben.
+  >
+  >
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.aad.directory/groups/hiddenMembers/read | Lesen der groups.hiddenMembers-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/policies/basic/read | Lesen der Basiseigenschaften für Richtlinien in Azure Active Directory |
+| microsoft.azure.accessService/allEntities/allTasks | Verwalten sämtlicher Aspekte des Azure-Zugriffsdiensts |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.office365.usageReports/allEntities/read | Lesen von Office 365-Nutzungsberichten. |
+
+## <a name="user-account-administrator"></a>Benutzerkontoadministrator
 Verwalten sämtlicher Aspekte von Benutzern und Gruppen
 
   > [!NOTE]
@@ -1067,13 +1175,13 @@ Verwalten sämtlicher Aspekte von Benutzern und Gruppen
 | microsoft.aad.directory/appRoleAssignments/create | Erstellen von appRoleAssignments in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/delete | Löschen von appRoleAssignments in Azure Active Directory |
 | microsoft.aad.directory/appRoleAssignments/update | Aktualisieren von appRoleAssignments in Azure Active Directory |
-| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/default/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
+| microsoft.aad.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Aktualisieren der groups.appRoleAssignments-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/groups/default/update | Aktualisieren der Basiseigenschaften für Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/create | Erstellen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/createAsOwner | Erstellen von Gruppen in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
-| microsoft.aad.directory/groups/default/update | Aktualisieren der Basiseigenschaften für Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/delete | Löschen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/hiddenMembers/read | Lesen der groups.hiddenMembers-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/members/update | Aktualisieren der groups.members-Eigenschaft in Azure Active Directory |
@@ -1082,8 +1190,8 @@ Verwalten sämtlicher Aspekte von Benutzern und Gruppen
 | microsoft.aad.directory/groups/settings/update | Aktualisieren der groups.settings-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/appRoleAssignments/update | Aktualisieren der users.appRoleAssignments-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/assignLicense | Verwalten der Lizenzen für Benutzer in Azure Active Directory |
-| microsoft.aad.directory/users/create | Erstellen von Benutzern in Azure Active Directory |
 | microsoft.aad.directory/users/default/update | Aktualisieren der Basiseigenschaften für Benutzer in Azure Active Directory |
+| microsoft.aad.directory/users/create | Erstellen von Benutzern in Azure Active Directory |
 | microsoft.aad.directory/users/delete | Löschen von Benutzern in Azure Active Directory |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Kennzeichnen sämtlicher Aktualisierungstoken für Benutzer in Azure Active Directory als ungültig. |
 | microsoft.aad.directory/users/manager/update | Aktualisieren der users.manager-Eigenschaft in Azure Active Directory |
@@ -1096,7 +1204,7 @@ Verwalten sämtlicher Aspekte von Benutzern und Gruppen
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 
-### <a name="user"></a>Benutzer
+## <a name="user"></a>Benutzer
 Die Standardrolle für Mitgliedsbenutzer. Lesen aller und Schreiben einer begrenzten Anzahl von Verzeichnisinformationen.
 
   > [!NOTE]
@@ -1107,30 +1215,31 @@ Die Standardrolle für Mitgliedsbenutzer. Lesen aller und Schreiben einer begren
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Erstellen von Anwendungen in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
-| microsoft.aad.directory/groups/createAsOwner | Erstellen von Gruppen in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
 | microsoft.aad.directory/groups/default/read | Lesen der Basiseigenschaften für Gruppen in Azure Active Directory |
+| microsoft.aad.directory/groups/createAsOwner | Erstellen von Gruppen in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
 | microsoft.aad.directory/oAuth2PermissionGrants/create | Erstellen von oAuth2PermissionGrants in Azure Active Directory |
 | microsoft.aad.directory/oAuth2PermissionGrants/delete | Löschen von oAuth2PermissionGrants in Azure Active Directory |
 | microsoft.aad.directory/oAuth2PermissionGrants/update | Aktualisieren von oAuth2PermissionGrants in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Erstellen von servicePrincipals in Azure Active Directory Der Ersteller wird als erster Besitzer hinzugefügt, und das erstellte Objekt wird auf das Kontingent von 250 erstellten Objekten angerechnet, das für den Ersteller gilt. |
 | microsoft.aad.directory/users/activateServicePlan | Aktivieren von Serviceplanbenutzern in Azure Active Directory |
 | microsoft.aad.directory/users/inviteGuest | Einladen von Gastbenutzern in Azure Active Directory. |
-| microsoft.aad.directory/applications/delete | Löschen von Anwendungen in Azure Active Directory |
-| microsoft.aad.directory/applications/restore | Wiederherstellen von Anwendungen in Azure Active Directory |
 | microsoft.aad.directory/applications/default/update | Aktualisieren der Basiseigenschaften für Anwendungen in Azure Active Directory |
+| microsoft.aad.directory/applications/delete | Löschen von Anwendungen in Azure Active Directory |
 | microsoft.aad.directory/applications/owners/update | Aktualisieren der applications.owners-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/applications/permissions/update | Aktualisieren der applications.permissions-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
+| microsoft.aad.directory/applications/restore | Wiederherstellen von Anwendungen in Azure Active Directory |
 | microsoft.aad.directory/devices/disable | Deaktivieren von Geräten in Azure Active Directory |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Aktualisieren der groups.appRoleAssignments-Eigenschaft in Azure Active Directory |
-| microsoft.aad.directory/groups/delete | Löschen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/default/update | Aktualisieren der Basiseigenschaften für Gruppen in Azure Active Directory |
+| microsoft.aad.directory/groups/delete | Löschen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/dynamicMembershipRule/update | Aktualisieren der groups.dynamicMembershipRule-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/members/update | Aktualisieren der groups.members-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/owners/update | Aktualisieren der groups.owners-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/groups/restore | Wiederherstellen von Gruppen in Azure Active Directory |
 | microsoft.aad.directory/groups/settings/update | Aktualisieren der groups.settings-Eigenschaft in Azure Active Directory |
-| microsoft.aad.directory/policies/delete | Löschen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/default/update | Aktualisieren der Basiseigenschaften für Richtlinien in Azure Active Directory |
+| microsoft.aad.directory/policies/delete | Löschen von Richtlinien in Azure Active Directory |
 | microsoft.aad.directory/policies/owners/update | Aktualisieren der policies.owners-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Aktualisieren der servicePrincipals.appRoleAssignedTo-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Aktualisieren der servicePrincipals.appRoleAssignments-Eigenschaft in Azure Active Directory |
@@ -1144,8 +1253,20 @@ Die Standardrolle für Mitgliedsbenutzer. Lesen aller und Schreiben einer begren
 | microsoft.aad.directory/users/mobile/update | Aktualisieren der users.mobile-Eigenschaft in Azure Active Directory |
 | microsoft.aad.directory/users/searchableDeviceKey/update | Aktualisieren der users.searchableDeviceKey-Eigenschaft in Azure Active Directory |
 
+## <a name="deprecated-roles"></a>Veraltete Rollen
+
+Die folgenden Rollen sollten nicht verwendet werden. Sie wurden als veraltet markiert und werden aus Azure AD entfernt.
+
+* Ad-hoc-Lizenzadministrator
+* Geräteeinbindung
+* Geräte-Manager
+* Gerätebenutzer
+* Benutzererstellung mit E-Mail-Überprüfung
+* Postfachadministrator
+* Geräteeinbindung am Arbeitsplatz
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Ändern von Administratoren für ein Azure-Abonnement finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../../billing/billing-add-change-azure-subscription-administrator.md)
+* Weitere Informationen zum Zuweisen eines Benutzers als Administrator eines Azure-Abonnements finden Sie unter [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 * Informationen dazu, wie der Zugriff auf Ressourcen in Microsoft Azure gesteuert wird, finden Sie unter [Grundlegendes zum Zugriff auf Ressourcen in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Weitere Informationen zur Beziehung zwischen Azure Active Directory und Ihrem Azure-Abonnement finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md)
