@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: e5421ca791ae9d0059639000f33b77be57f4d891
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2f0568064eed556429675ffb34c84d588ac670d5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968032"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064355"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Onboardingmethoden für den Azure Monitor for VMs 
 In diesem Artikel wird beschrieben, wie Sie Azure Monitor for VMs für die Überwachung der Betriebssystemintegrität Ihrer Azure-VMs und für die Erkennung und Zuordnung von Anwendungsabhängigkeiten der auf ihnen ggf. gehosteten Anwendungen einrichten.  
@@ -52,23 +52,90 @@ Um die Lösung zu aktivieren, müssen Sie der Rolle „Log Analytics-Mitwirkende
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Die folgenden Versionen der Betriebssysteme Windows und Linux werden in Kombination mit Azure Monitor for VMs offiziell unterstützt:
+Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für Azure Monitor for VMs unterstützt werden.  Eine vollständige Liste mit ausführlicheren Informationen zu den unterstützten größeren und kleineren Release- und Kernelversionen des Linux-Betriebssystems ist weiter unten in diesem Abschnitt angegeben.
 
 |Betriebssystemversion |Leistung |Karten |Health |  
 |-----------|------------|-----|-------|  
+|Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |  
 |Windows Server 2012 R2 | X | X | |  
 |Windows Server 2012 | X | X | |  
 |Windows Server 2008 R2 | X | X| |  
 |RHEL 7, 6| X | X| X |  
-|Ubuntu 18.04, 16.04, 14.04 | X | X| X |  
-|Cent OS Linux 7, 6 | X | X| X |  
+|Ubuntu 18.04, 16.04, 14.04 | X | X | X |  
+|Cent OS Linux 7, 6 | X | X | X |  
 |SLES 12 | X | X | X |  
 |Oracle Linux 7 | X<sup>1</sup> | | X |  
 |Oracle Linux 6 | X | X | X |  
 |Debian 9.4, 8 | X<sup>1</sup> | | X | 
 
 <sup>1</sup> Das Leistungsfeature von Azure Monitor for VMs steht nur in Azure Monitor zur Verfügung, nicht aber beim direkten Zugriff über den linken Bereich der Azure-VM.  
+
+>[!NOTE]
+>Die folgenden Informationen gelten für die Unterstützung des Linux-Betriebssystems:  
+> - Es werden nur die Standardversion und SMP-Version des Linux-Kernels unterstützt.  
+> - Nicht-Standardversionen des Kernels, z.B. PAE und Xen, werden für keine Linux-Distribution unterstützt. Beispielsweise wird ein System mit der Versionszeichenfolge „2.6.16.21-0.8-xen“ nicht unterstützt.  
+> - Benutzerdefinierte Kernels, einschließlich Neukompilierungen von Standardkernels, werden nicht unterstützt.  
+> - Der CentOSPlus-Kernel wird nicht unterstützt.  
+
+
+#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
+
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| 7.0 | 3.10.0-123 |
+| 7.1 | 3.10.0-229 |
+| 7.2 | 3.10.0-327 |
+| 7.3 | 3.10.0-514 |
+| 7.4 | 3.10.0-693 |
+| 7,5 | 3.10.0-862 |
+
+#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
+
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| 6,0 | 2.6.32-71 |
+| 6.1 | 2.6.32-131 |
+| 6.2 | 2.6.32-220 |
+| 6.3 | 2.6.32-279 |
+| 6.4. | 2.6.32-358 |
+| 6,5 | 2.6.32-431 |
+| 6.6 | 2.6.32-504 |
+| 6.7 | 2.6.32-573 |
+| 6,8 | 2.6.32-642 |
+| 6.9 | 2.6.32-696 |
+
+#### <a name="ubuntu-server"></a>Ubuntu Server
+
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| Ubuntu 18.04 | Kernel 4.15.* |
+| Ubuntu 16.04.3 | Kernel 4.15.* |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
+
+#### <a name="oracle-enterprise-linux-6-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 6 mit Unbreakable Enterprise Kernel
+| Betriebssystemversion | Kernelversion
+|:--|:--|
+| 6.2 | Oracle 2.6.32-300 (UEK R1) |
+| 6.3 | Oracle 2.6.39-200 (UEK R2) |
+| 6.4. | Oracle 2.6.39-400 (UEK R2) |
+| 6,5 | Oracle 2.6.39-400 (UEK R2 i386) |
+| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
+
+#### <a name="oracle-enterprise-linux-5-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 5 mit Unbreakable Enterprise Kernel
+
+| Betriebssystemversion | Kernelversion
+|:--|:--|
+| 5.10 | Oracle 2.6.39-400 (UEK R2) |
+| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+
+#### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
+
+| Betriebssystemversion | Kernelversion
+|:--|:--|
+|12 SP2 | 4.4.* |
+|12 SP3 | 4.4.* |
 
 ### <a name="hybrid-environment-connected-sources"></a>Verbundene Quellen in Hybridumgebungen
 Das Zuordnungsfeature in Azure Monitor for VMs erhält seine Daten vom Microsoft Dependency-Agent. Der Dependency-Agent baut auf dem Log Analytics-Agent auf und ist auf dessen Verbindung mit Log Analytics angewiesen. Dies bedeutet, dass auf einem System der Log Analytics-Agent mit dem Dependency-Agent installiert und konfiguriert sein muss.  In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die vom Zuordnungsfeature in einer Hybridumgebung unterstützt werden.
@@ -89,8 +156,8 @@ Der Dependency-Agent kann von den folgenden Speicherorten heruntergeladen werden
 
 | Datei | Betriebssystem | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.5.0 | 8B8FE0F6B0A9F589C4B7B52945C2C25DF008058EB4D4866DC45EE2485062C9D7 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.5.1 | 09D56EF43703A350FF586B774900E1F48E72FE3671144B5C99BB1A494C201E9E |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.1 | 55030ABF553693D8B5112569FB2F97D7C54B66E9990014FC8CC43EFB70DE56C6 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.1 | 43C75EF0D34471A0CBCE5E396FFEEF4329C9B5517266108FA5D6131A353D29FE |
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
 Wenn Sie den Azure Monitor-Dienst verwenden, sammelt Microsoft automatisch Nutzungs- und Leistungsdaten. Microsoft verwendet diese Daten, um die Qualität, Sicherheit und Integrität des Diensts sicherzustellen und zu verbessern. Zu den Daten vom Zuordnungsfeature gehören Informationen zur Konfiguration Ihrer Software, z.B. Betriebssystem und Betriebssystemversion sowie IP-Adresse, DNS-Name und Name der Arbeitsstation, um exakte und effiziente Funktionen für die Problembehandlung bereitzustellen. Microsoft erfasst weder Namen noch Adressen oder andere Kontaktinformationen.
@@ -152,7 +219,7 @@ Gehen Sie wie folgt vor, um die Überwachung Ihrer Azure-VM im Azure-Portal zu a
 5. Wenn Sie im selben Abonnement einen Log Analytics-Arbeitsbereich haben, wählen Sie ihn auf der Seite **Azure Monitor Insights Onboarding** (Onboarding von Azure Monitor Insights) in der Dropdownliste aus.  Mit der Liste werden der Standardarbeitsbereich und der Speicherort, an dem die VM im Abonnement bereitgestellt wird, vorausgewählt. 
 
     >[!NOTE]
-    >Wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus der VM erstellen möchten, befolgen Sie die Anweisungen in [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md). Achten Sie darauf, dass Sie den Arbeitsbereich in demselben Abonnement erstellen, in dem die VM bereitgestellt wird. 
+    >Befolgen Sie die Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs](../log-analytics/log-analytics-quick-create-workspace.md) für eine der oben aufgeführten unterstützten Regionen, wenn Sie einen neuen Log Analytics-Arbeitsbereich zum Speichern der Überwachungsdaten aus der VM erstellen möchten.   
 
 Nach dem Aktivieren der Überwachung kann es ca. 10 Minuten dauern, bis Integritätsmetriken für die VM angezeigt werden. 
 

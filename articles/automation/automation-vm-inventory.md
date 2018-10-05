@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5f9bae34dabba71861adc9b2aeb0d33b8a1e226
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 30569c3a89de320769d433b5b3a4af9cf4e08e66
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195946"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091405"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
@@ -88,6 +88,24 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 |Recursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
 |Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
+
+## <a name="manage-machine-groups"></a>Verwalten von Computergruppen
+
+Mit der Option „Inventar“ können Sie in Log Analytics Computergruppen erstellen und anzeigen. Computergruppen sind Sammlungen von Computern, die mit einer Abfrage in Log Analytics definiert werden.
+
+Wählen Sie zum Anzeigen Ihrer Computergruppen auf der Seite „Inventar“ die Option **Computergruppen**.
+
+![Anzeigen der Computergruppen auf der Seite „Inventar“](./media/automation-vm-inventory/inventory-machine-groups.png)
+
+Wenn Sie in der Liste eine Computergruppe auswählen, wird die Seite „Computergruppen“ geöffnet. Diese Seite enthält Informationen zur Computergruppe. Hierzu gehört auch die Log Analytics-Abfrage, die zum Definieren der Gruppe verwendet wird. Unten auf der Seite befindet sich eine Liste mit den Computern (ggf. auf mehreren Seiten), die Teil der Gruppe sind.
+
+![Anzeigen der Seite „Computergruppe“](./media/automation-vm-inventory/machine-group-page.png)
+
+Klicken Sie auf die Schaltfläche **+ Klonen**, um die Computergruppe zu klonen. Hier müssen Sie für die Gruppe einen neuen Namen und einen Alias angeben. Die Definition kann jetzt geändert werden. Wählen Sie nach dem Ändern der Abfrage die Option **Abfrage validieren**, um eine Vorschau für die Computer anzuzeigen, die ausgewählt werden sollen. Wenn Sie mit der Gruppe zufrieden sind, können Sie auf **Erstellen** klicken, um die Computergruppe zu erstellen.
+
+Wählen Sie **+ Create a machine group** (+ Computergruppe erstellen), um eine neue Computergruppe zu erstellen. Mit dieser Schaltfläche wird die Seite **Create a machine group** (Computergruppe erstellen) geöffnet, auf der Sie die neue Gruppe definieren können. Klicken Sie auf **Erstellen**, um die Gruppe zu erstellen.
+
+![Erstellen der neuen Computergruppe](./media/automation-vm-inventory/create-new-group.png)
 
 ## <a name="disconnect-your-virtual-machine-from-management"></a>Trennen des virtuellen Computers von der Verwaltung
 

@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0a624d850b8c3260acb24cb17566090e8ad0043e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233936"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039427"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -43,17 +43,62 @@ Die folgende Abbildung zeigt die Updateverwaltung. Änderungsnachverfolgung und 
 
 Die Liste der virtuellen Computer wird gefiltert, um nur die virtuellen Computer anzuzeigen, die sich in demselben Abonnement und Speicherort befinden. Wenn sich Ihr virtueller Computer in mehr als drei Ressourcengruppen befindet, werden die ersten drei Ressourcengruppen ausgewählt.
 
+### <a name="resource-group-limit"></a> Onboarding-Einschränkungen
+
+Für die Anzahl von Ressourcengruppen, die Sie für das Onboarding nutzen können, gelten [Resource Manager-Bereitstellungsgrenzwerte](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Resource Manager-Bereitstellungen (nicht zu verwechseln mit Updatebereitstellungen) sind auf fünf Ressourcengruppen pro Bereitstellung beschränkt. Zur Sicherstellung der Onboarding-Integrität sind zwei dieser Ressourcengruppen für die Konfiguration des Log Analytics-Arbeitsbereichs, des Automation-Kontos und der zugehörigen Ressourcen reserviert. Sie können also drei Ressourcengruppen für die Bereitstellung auswählen.
+
 Verwenden Sie die Filtersteuerelemente, um virtuelle Computer aus verschiedenen Abonnements, Speicherorten und Ressourcengruppen auszuwählen.
 
 ![Integrieren der Updateverwaltungslösung](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Schauen Sie sich die Auswahlmöglichkeiten für den Log Analytics-Arbeitsbereich und das Automation-Konto an. Standardmäßig sind ein neuer Arbeitsbereich und ein neues Automation-Konto ausgewählt. Wenn Sie einen vorhandenen Log Analytics-Arbeitsbereich und ein vorhandenes Automation-Konto nutzen möchten, klicken Sie auf **Ändern**, und wählen Sie sie auf der Seite **Konfiguration** aus. Klicken Sie anschließend auf **Speichern**.
+Schauen Sie sich die Auswahlmöglichkeiten für den Log Analytics-Arbeitsbereich und das Automation-Konto an. Standardmäßig sind ein vorhandener Arbeitsbereich und ein neues Automation-Konto ausgewählt. Wenn Sie einen anderen Log Analytics-Arbeitsbereich und ein anderes Automation-Konto verwenden möchten, können Sie auf **BENUTZERDEFINIERT** klicken, um diese Komponenten auf der Seite **Benutzerdefinierte Konfiguration** auszuwählen. Wenn Sie einen Log Analytics-Arbeitsbereich auswählen, wird überprüft, ob eine Verknüpfung mit einem Automation-Konto besteht. Falls ein verknüpftes Automation-Konto gefunden wird, wird der folgende Bildschirm angezeigt. Klicken Sie auf **OK**, wenn Sie fertig sind.
 
 ![Auswählen von Arbeitsbereich und Konto](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+
+Wenn der ausgewählte Arbeitsbereich nicht mit einem Automation-Konto verknüpft ist, wird der folgende Bildschirm angezeigt. Wählen Sie ein Automation-Konto aus, und klicken Sie auf **OK**, wenn Sie fertig sind.
+
+![Kein Arbeitsbereich](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
 Deaktivieren Sie das Kontrollkästchen neben jedem virtuellen Computern, den Sie nicht aktivieren möchten. Die Auswahl für virtuelle Computer, die nicht aktiviert werden können, ist bereits aufgehoben.
 
 Klicken Sie auf **Aktivieren**, um die Lösung zu aktivieren. Es dauert ungefähr 15 Minuten, bis die Lösung aktiviert ist.
+
+## <a name="unlink-workspace"></a>Aufheben der Verknüpfung mit dem Arbeitsbereich
+
+Die folgenden Lösungen sind vom Log Analytics-Arbeitsbereich abhängig:
+
+* [Updateverwaltung](automation-update-management.md)
+* [Änderungsnachverfolgung](automation-change-tracking.md)
+* [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
+
+Wenn Sie Ihr Automation-Konto nicht länger in Log Analytics integriert sein soll, können Sie die Verknüpfung direkt im Azure-Portal aufheben. Bevor Sie fortfahren, müssen Sie zuerst die zuvor erwähnten Lösungen entfernen, da dieser Prozess andernfalls nicht fortgesetzt werden kann. Lesen Sie den Artikel für die jeweilige Lösung, die Sie importiert haben, um die Schritte zu deren Entfernung zu verstehen.
+
+Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführen, um die Verknüpfung Ihres Automation-Kontos aufzuheben.
+
+> [!NOTE]
+> Einige Lösungen – einschließlich früherer Versionen der Azure SQL-Überwachungslösung – haben möglicherweise Automatisierungsressourcen erstellt und müssen möglicherweise vor dem Aufheben der Verknüpfung des Arbeitsbereichs entfernt werden.
+
+1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
+
+1. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
+
+   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+
+   Sie werden gefragt, ob Sie fortfahren möchten.
+
+1. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
+
+Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
+
+* Zeitpläne für Updates: Diese verfügen über Namen, die den Updatebereitstellungen entsprechen, die Sie erstellt haben.
+
+* Für die Lösung erstellte Hybrid Worker-Gruppen: Jede wird ähnlich wie „machine1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8“ benannt.
+
+Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
+
+* Starten und beenden Sie Zeitpläne für VM-Runbooks.
+* Starten und beenden Sie VM-Runbooks.
+* Variables
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

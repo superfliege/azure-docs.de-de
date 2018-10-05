@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: ''
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d0da9107fe1dd34481ca0bf1aa9a0b260bb10951
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e47ffbe15291275a7104d5e201a597d084cdbdd9
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946628"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422863"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Häufig gestellte Fragen
 
@@ -117,7 +117,7 @@ A.
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>F: Die LED zur Anzeige von Systemfehlern auf dem vorderen Bedienfeld leuchtet. Wie sollte ich vorgehen?
-A. Wenn die LED zur Anzeige von Systemfehlern leuchtet, bedeutet dies, dass Ihr System nicht fehlerfrei ist. Erkundigen Sie sich beim Support von Microsoft nach den weiteren Schritten.
+A. Wenn die LED zur Anzeige von Systemfehlern leuchtet, bedeutet dies, dass Ihr System nicht fehlerfrei ist. [Wenden Sie sich an den Microsoft Support](data-box-disk-contact-microsoft-support.md) für weitere Schritte.
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>F: Ich kann im Azure-Portal nicht auf das Kennwort zum Entsperren der Data Box zugreifen. Was könnte der Grund sein?
 A. Wenn Sie im Azure-Portal nicht auf das Entsperrkennwort zugreifen können, überprüfen Sie die Berechtigungen in Ihrem Abonnement und Speicherkonto. Vergewissern Sie sich, dass Sie auf Ressourcengruppenebene über die Berechtigung „Mitwirkender“ oder „Besitzer“ verfügen. Falls nicht, benötigen Sie mindestens die Berechtigung des Data Box-Bedieners, um die Anmeldeinformationen für den Zugriff einzusehen.
@@ -127,8 +127,8 @@ A. Wenn Sie im Azure-Portal nicht auf das Entsperrkennwort zugreifen können, ü
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>F: Wie kann ich für die Data Box den Status ab der Erteilung des Auftrags bis zur Rücksendung des Geräts nachverfolgen? 
 A.  Sie können den Status des Data Box-Auftrags im Azure-Portal nachverfolgen. Beim Erstellen des Auftrags werden Sie auch aufgefordert, eine E-Mail-Adresse für Benachrichtigungen anzugeben. Wenn Sie eine E-Mail-Adresse angegeben haben, werden Sie per E-Mail über alle Statusänderungen des Auftrags informiert. [Hier finden Sie weitere Informationen zum Konfigurieren von E-Mail-Benachrichtigungen](data-box-portal-ui-admin.md#edit-notification-details).
 
-### <a name="q-how-do-i-return-the-disks"></a>F: Wie kann ich die Datenträger zurücksenden? 
-A.  Microsoft zeigt auf der E-Ink-Anzeige ein Adressetikett an. Befestigen Sie das Etikett am Versandpaket, und geben Sie das sicher verschlossene Paket beim Paketdienst ab. Falls das Etikett beschädigt oder nicht mehr vorhanden ist, können Sie unter **Übersicht > Versandetikett herunterladen** ein neues Versandetikett erhalten.
+### <a name="q-how-do-i-return-the-device"></a>F: Wie kann ich das Gerät zurücksenden? 
+A.  Microsoft zeigt auf der E-Ink-Anzeige ein Versandetikett an. Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, falls das Versandetikett nicht auf der E-Ink-Anzeige erscheint. Laden Sie das Etikett herunter, und drucken Sie es aus. Legen Sie das Etikett in die am Gerät angebrachte Klarsichthülle aus Kunststoff ein, und geben Sie das Gerät bei Ihrem Paketdienst ab. 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>F: Ich habe eine E-Mail-Benachrichtigung erhalten, dass mein Gerät im Azure-Rechenzentrum angekommen ist. Wie erfahre ich, ob das Hochladen der Daten im Gange ist?
 A. Navigieren Sie im Azure-Portal zu Ihrem Data Box-Auftrag und dann zu **Übersicht**. Wenn das Hochladen der Daten in Azure gestartet wurde, sehen Sie im rechten Bereich den Status des Kopiervorgangs. 
@@ -181,11 +181,11 @@ A. Wenn Ihr Gerät beschädigt zugestellt wurde oder es Anzeichen von Manipulati
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>F: Kann ich für den Versand der Data Box meinen eigenen Zustelldienst nutzen?
 A. Beim Data Box-Dienst übernimmt Microsoft den Versand zum und aus dem Azure Rechenzentrum. Wenn Sie Ihren eigenen Zustelldienst nutzen möchten, können Sie den Azure Import/Export-Dienst verwenden. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](../storage/common/storage-import-export-service.md)
 
-### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>F: In der-E Ink-Anzeige wird das Rücksendeetikett nicht angezeigt. Wie sollte ich vorgehen?
-A. Wenn in der-E Ink-Anzeige das Rücksendeetikett nicht angezeigt wird, gehen Sie so vor:
+### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>F: In der E-Ink-Anzeige wird das Rücksendeetikett nicht angezeigt. Wie sollte ich vorgehen?
+A. Führen Sie die folgenden Schritte aus, wenn in der E-Ink-Anzeige das Rücksendeetikett nicht angezeigt wird:
 - Entfernen Sie das alte Adressetikett und alle zur vorherigen Lieferung gehörigen Etiketten.
-- Wechseln Sie im Azure-Portal zu Ihrem Auftrag. Navigieren Sie zu „Übersicht“, und laden Sie das Adressetikett herunter. Weitere Informationen finden Sie unter [Herunterladen von Adressetiketten](data-box-portal-admin.md#download-shipping-label).
-- Drucken Sie das Adressetikett, und stecken Sie es in die am Gerät angebrachte Klarsichthülle. 
+- Wechseln Sie im Azure-Portal zu Ihrem Auftrag. Navigieren Sie zu **Übersicht** und **Versandetikett herunterladen**. Weitere Informationen finden Sie unter [Herunterladen von Adressetiketten](data-box-portal-admin.md#download-shipping-label).
+- Drucken Sie das Adressetikett, und stecken Sie es in die am Gerät angebrachte Klarsichthülle aus Kunststoff. 
 - Stellen Sie sicher, dass das Adressetikett gut sichtbar ist. 
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>F: Wie sind meine Daten während des Versands geschützt? 
@@ -204,12 +204,11 @@ A. Ja. Sie können das Gerät einschalten und weitere Daten hinzufügen. Sie mü
 A.  Sobald der Auftragsstatus für **Datenkopiervorgang** als **Abgeschlossen** angezeigt wird, sollten Sie sofort auf Ihre Daten zugreifen können.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>F: Wo befinden sich meine Daten nach dem Upload in Azure?
-A.  Wenn Sie die Daten in die Data Box kopieren, je nachdem, ob es sich dabei um Blockblob-, Seitenblob- oder Azure-Dateien handelt, werden die Daten in einen dieser Pfade in Ihrem Azure Storage-Konto hochgeladen:
- - `<You_storage_account_name_BlockBlob>/<my_container>/Blob` 
- - `<Your_storage_account_name_PageBlob>/<my_container>/Blob`
- - `<Your_storage_account_name_AzFile>/` 
-
-Unter Blockblob- und Seitenblobfreigaben sind Entitäten erster Ebene Container. Entitäten zweiter Ebene sind Blobs. Unter Freigaben für Azure Files sind Entitäten erster Ebene Freigaben. Entitäten zweiter Ebene sind Dateien.
+A.  Wenn Sie die Daten in die Data Box kopieren, werden die Daten in einen der folgenden Pfade in Ihrem Azure Storage-Konto hochgeladen – je nachdem, ob es sich dabei um Blockblob-, Seitenblob- oder Azure-Dateien handelt.
+ - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
+ -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
+ 
+ Alternativ hierzu können Sie auch im Azure-Portal auf Ihr Azure-Speicherkonto zugreifen und von dort aus entsprechend navigieren.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>F: Ich habe gerade festgestellt, dass ich mich für meine Container nicht an die Azure-Anforderungen für die Benennung gehalten habe. Können meine Daten deshalb nicht in Azure hochgeladen werden?
 A.  Falls die Containernamen Großbuchstaben enthalten, werden sie automatisch in Kleinbuchstaben konvertiert. Wenn die Namen auf sonstige Weise nicht konform sind (Sonderzeichen, andere Sprachen usw.), tritt beim Upload ein Fehler auf. Weitere Informationen zu bewährten Methoden für die Benennung von Freigaben, Containern und Dateien finden Sie hier: 

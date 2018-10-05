@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 7619056ace5d9b3cf083a40a6cfa06a0cac0561e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2668279b33d2d8d1c0adf92c138cc6347c95bd4d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949688"
+ms.locfileid: "47035350"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Anmerkungen zu dieser Vorschauversion von Azure Data Box Gateway
 
@@ -35,7 +35,7 @@ Die Vorschauversion entspricht der Softwareversion **Data Box Gateway Preview-Ve
 
 Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser Version behoben wurden:
 
-| Nr. | Problem |
+| Nein. | Problem |
 | --- | --- |
 | 1 | Wenn in dieser Version eine Datei, die von einem anderen Tool (AzCopy) hochgeladen wurde, aktualisiert und dann so aktualisiert wird, dass sich die Dateigröße erhöht, tritt der folgende Fehler auf: *Fehler 400: InvalidBlobOrBlock (Der angegebene Blob- oder Blockinhalt ist ungültig.)*|
 
@@ -44,7 +44,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Probleme, die in dieser V
 
 Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in dieser Vorschauversion von Data Box Gateway.
 
-| Nr. | Feature | Problem | Problemumgehung/Kommentare |
+| Nein. | Feature | Problem | Problemumgehung/Kommentare |
 | --- | --- | --- | --- |
 | **1.** |Aktualisierungen |Die in den früheren Vorschauversionen erstellten Data Box Gateway-Geräte können nicht auf diese Version aktualisiert werden. |Laden Sie die Images der virtuellen Datenträger aus der neuen Version herunter, konfigurieren Sie neue Geräte, und stellen Sie sie bereit. Weitere Informationen finden Sie unter [Vorbereiten der Bereitstellung von Azure Data Box Gateway](data-box-gateway-deploy-prep.md). |
 | **2.** |Bereitgestellter Datenträger |Nachdem Sie einen Datenträger einer bestimmten Größe bereitgestellt und das entsprechende Data Box Gateway erstellt haben, dürfen Sie den Datenträger nicht verkleinern. Der Versuch, den Datenträger zu verkleinern, führt zum Verlust aller lokalen Daten auf dem Gerät. | |
@@ -53,8 +53,10 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in die
 | **5.** |Kopieren| Wenn eine schreibgeschützte Datei auf das Gerät kopiert wird, bleibt der Schreibschutz nicht erhalten. | |
 | **6.** |Protokolle| Aufgrund eines Fehlers in dieser Version kann der Fehlercode 110 in *error.xml* mit nicht erkennbaren Elementnamen auftreten. | |
 | **7.** |Hochladen | Aufgrund eines Fehlers in dieser Version kann während des Uploads bestimmter Dateien der Fehlercode 2003 auftreten. | |
-| **8.** |Löschen | Aufgrund eines Fehlers in dieser Version wird beim Löschen einer NFS-Freigabe die Freigabe möglicherweise nicht gelöscht. Als Status der Freigabe wird *Wird gelöscht* angezeigt.  |Dies erfolgt nur, wenn die Freigabe einen nicht unterstützten Dateinamen verwendet. |
-| **9.** |Onlinehilfe |Die Links des Typs „Hilfe“ im Azure-Portal sind möglicherweise nicht mit der Dokumentation verknüpft.|Diese Links werden in der allgemein verfügbaren Version funktionieren. |
+| **8.** |Dateitypen | Die folgenden Linux-Dateitypen werden nicht unterstützt: Zeichendateien, Blockdateien, Sockets, Pipes, symbolische Verknüpfungen.  |Das Kopieren dieser Dateien führt dazu, dass auf der NFS-Freigabe Dateien mit Nulllänge erstellt werden. Diese Dateien verbleiben in einem Fehlerzustand und werden außerdem in *error.xml* gemeldet. |
+| **9.** |Löschen | Aufgrund eines Fehlers in dieser Version wird beim Löschen einer NFS-Freigabe die Freigabe möglicherweise nicht gelöscht. Als Status der Freigabe wird *Wird gelöscht* angezeigt.  |Dies erfolgt nur, wenn die Freigabe einen nicht unterstützten Dateinamen verwendet. |
+| **10.** |Aktualisieren | Berechtigungen und Zugriffssteuerungslisten (ACLs) werden über einen Aktualisierungsvorgang hinaus nicht beibehalten.  | |
+| **11.** |Onlinehilfe |Die Links des Typs „Hilfe“ im Azure-Portal sind möglicherweise nicht mit der Dokumentation verknüpft.|Diese Links werden in der allgemein verfügbaren Version funktionieren. |
 
 
 

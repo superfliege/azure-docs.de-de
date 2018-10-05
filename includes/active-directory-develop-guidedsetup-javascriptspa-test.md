@@ -1,22 +1,49 @@
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: b2950720ae7038f435a8e2dfb24333afc49984b1
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060920"
+---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
+### <a name="test-with-node"></a>Testen mit Node
+Wenn Sie nicht Visual Studio verwenden, stellen Sie sicher, dass Ihr Webserver gestartet wurde.
+1. Konfigurieren Sie den Server zum Lauschen am TCP-Port, der auf dem Speicherort Ihrer Datei **index.html** basiert. Starten Sie für Node den Webserver, um über den Port zu lauschen, indem Sie an einer Eingabeaufforderung im Anwendungsordner die folgenden Befehle ausführen:
+
+    ```bash
+    npm install
+    node server.js
+    ```
+1. Öffnen Sie den Browser, und geben Sie „http://<span></span>localhost:30662“ oder „http://<span></span>localhost:{Port}“ ein. Hierbei steht **Port** für den Port, an dem Ihr Webserver lauscht. Der Inhalt der Datei „index.html“ und die Schaltfläche **Anmelden** sollten angezeigt werden.
+
+<p/><!-- -->
+
 ### <a name="test-with-visual-studio"></a>Testen mit Visual Studio
-Wenn Sie Visual Studio verwenden, drücken Sie **F5**, um Ihr Projekt auszuführen. Der Browser wird geöffnet und leitet Sie zu „http://<span></span>localhost:{Port}“ weiter, wo die Schaltfläche **Microsoft Graph-API aufrufen** angezeigt wird.
+Stellen Sie bei Verwendung von Visual Studio sicher, dass Sie die Projektlösung auswählen und **F5** drücken, um Ihr Projekt auszuführen. Der Browser wird geöffnet, und Sie werden zu „http://<span></span>localhost:{Port}“ weitergeleitet, wo die Schaltfläche **Anmelden** angezeigt wird.
 
-<p/><!-- --> 
-
-### <a name="test-with-python-or-other-web-server"></a>Testen mit Python oder einem anderen Webserver
-Wenn Sie nicht Visual Studio verwenden, stellen Sie sicher, dass Ihr Webserver gestartet wurde. Konfigurieren Sie den Server zum Lauschen am TCP-Port, der auf dem Speicherort Ihrer Datei **index.html** basiert. Beginnen Sie bei Python mit dem Lauschen am Port, indem Sie im Anwendungsordner den Befehl über die Eingabeaufforderung oder das Terminal ausführen:
- 
-```bash
-python -m http.server 8080
-```
-Öffnen Sie den Browser, und geben Sie „http://<span></span>localhost:8080“ oder „http://<span></span>localhost:{Port}“ ein. Hierbei entspricht **Port** dem Port, an dem Ihr Webserver lauscht. Über die Schaltfläche **Microsoft Graph-API aufrufen** sollten Sie den Inhalt Ihrer Datei „index.html“ sehen.
 
 ## <a name="test-your-application"></a>Testen Ihrer Anwendung
 
-Nachdem der Browser Ihre Datei „index.html“ geladen hat, klicken Sie auf **Microsoft Graph-API aufrufen**. Beim ersten Mal, bei dem Sie Ihre Anwendung ausführen, leitet der Browser Sie zum Microsoft Azure Active Directory v2.0-Endpunkt (Azure AD) um. Sie werden aufgefordert, sich anzumelden:
- 
+Klicken Sie auf **Anmelden**, nachdem der Browser die Datei „index.html“ geladen hat. Sie werden aufgefordert, sich mit dem Microsoft Azure Active Directory (Azure AD) v2.0-Endpunkt anzumelden:
+
 ![Anmelden bei Ihrem JavaScript SPA-Konto](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
 
@@ -27,23 +54,21 @@ Bei der ersten Anmeldung bei Ihrer Anwendung werden Sie aufgefordert, Ihre Zusti
 ![Zustimmen zum Anwendungszugriff](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
-Nachdem Sie sich angemeldet haben, sollten Sie im Feld **Antwort auf Graph-API-Aufruf** die Benutzerprofilinformationen sehen.
- 
-![Erwartete Ergebnisse aus dem Microsoft Graph-API-Aufruf](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
+Nach der Anmeldung sollten Ihre Benutzerprofilinformationen angezeigt werden, die in der Antwort der Microsoft Graph-API zurückgegeben werden.
 
-Außerdem sollten in den Feldern **Zugriffstoken** und **ID-Tokenansprüche** grundlegende Informationen zum abgerufenen Token angezeigt werden.
+![Erwartete Ergebnisse aus dem Microsoft Graph-API-Aufruf](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 
-Die Microsoft Graph-API benötigt den Bereich **user.read**, um das Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die im Registrierungsportal registriert ist. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt den Bereich **Calendars.Read**, um die Kalender des Benutzers aufzuführen.
+Die Microsoft Graph-API benötigt den Bereich `user.read`, um ein Benutzerprofil zu lesen. Dieser Bereich wird standardmäßig jeder Anwendung automatisch hinzugefügt, die im Registrierungsportal registriert ist. Andere Microsoft Graph-APIs sowie benutzerdefinierte APIs für Ihren Back-End-Server erfordern unter Umständen zusätzliche Bereiche. Die Microsoft Graph-API benötigt beispielsweise den Bereich `Calendars.Read`, um die Kalender des Benutzers aufzuführen.
 
-Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung **Calendars.Read** hinzufügen. Fügen Sie dann dem Aufruf von **acquireTokenSilent** den Bereich **Calendars.Read** hinzu. 
+Um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können, müssen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung `Calendars.Read` hinzufügen. Fügen Sie anschließend den Bereich `Calendars.Read` dem Aufruf `acquireTokenSilent` hinzu.
 
 >[!NOTE]
 >Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
 
-Wenn eine Back-End-API keinen Bereich erfordert (nicht empfohlen), können Sie **clientId** als Bereich in den Aufrufen **acquireTokenSilent** und **acquireTokenRedirect** verwenden.
+Wenn eine Back-End-API keinen Bereich benötigt (nicht empfohlen), können Sie `clientId` bei den Aufrufen zum Beschaffen von Token als Bereich verwenden.
 
 <!--end-collapse-->
 

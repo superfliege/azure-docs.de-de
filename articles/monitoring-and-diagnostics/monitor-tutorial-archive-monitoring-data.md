@@ -9,16 +9,22 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918270"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409489"
 ---
-# <a name="archive-azure-monitoring-data"></a>Archivieren von Azure-Überwachungsdaten
+# <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivieren von Azure-Metriken und -Protokolldaten mithilfe von Azure Storage
 
-Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten generiert, die in einem Azure Storage-Konto archiviert werden können. Dies bietet sich an, um einen Verlauf von Überwachungsdaten über einen längeren Zeitraum in einem preiswerten, nicht durchsuchbaren Speicher beizubehalten, nachdem die Daten die Aufbewahrungsfrist in Log Analytics oder Azure Monitor überschritten haben. In diesem Tutorial durchlaufen Sie die Schritte zum Konfigurieren Ihrer Azure-Umgebung für das Archivieren von Daten in einem Speicherkonto.
+Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten generiert, die in einem Azure Storage-Konto archiviert werden können. Dies bietet sich an, um einen Verlauf von Überwachungsdaten über einen längeren Zeitraum in einem preiswerten, nicht durchsuchbaren Speicher beizubehalten, nachdem die Daten die Aufbewahrungsfrist überschritten haben. 
+
+- Metriken werden auf der Azure Monitor-Plattform 93 Tage lang aufbewahrt. 
+- Ressourcendiagnoseprotokolle werden nur angezeigt, wenn sie an Log Analytics weitergeleitet werden. Dort verfügen sie über einen konfigurierbaren Aufbewahrungszeitraum von mindestens 30 Tagen. 
+- Aktivitätsprotokolleinträge werden 90 Tage lang aufbewahrt.  
+
+In diesem Tutorial durchlaufen Sie die Schritte zum Konfigurieren Ihrer Azure-Umgebung für das Archivieren von Daten in einem Speicherkonto.
 
 > [!div class="checklist"]
 > * Erstellen eines Speicherkontos zum Speichern der Überwachungsdaten

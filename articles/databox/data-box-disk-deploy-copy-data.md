@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841504"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452614"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Tutorial: Kopieren von Daten auf den Azure Data Box-Datenträger und Durchführen der Überprüfung
 
@@ -30,17 +30,14 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Kopieren von Daten auf den Data Box-Datenträger
-> * Überprüfen der Integrität von Daten
+> * Überprüfen der Daten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie haben das [Tutorial: Installieren und Konfigurieren Ihres Azure Data Box-Datenträgers](data-box-disk-deploy-set-up.md) durchgearbeitet.
-- Ihre Datenträger wurden ausgepackt und eingeschaltet.
-- Sie verfügen über einen Hostcomputer zum Kopieren der Daten auf die Datenträger. Für Ihren Hostcomputer müssen die folgenden Bedingungen erfüllt sein:
-    - Es muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md) ausgeführt werden.
-    - [Windows PowerShell 4 muss installiert sein](https://www.microsoft.com/download/details.aspx?id=40855).
-    - [.NET Framework 4.5 muss installiert sein](https://www.microsoft.com/download/details.aspx?id=30653).
+- Ihre Datenträger sind entsperrt und mit einem Clientcomputer verbunden.
+- Auf Ihrem Clientcomputer, der zum Kopieren von Daten auf die Datenträger verwendet wird, muss ein [unterstütztes Betriebssystem](data-box-disk-system-requirements.md) ausgeführt werden.
 
 
 ## <a name="copy-data-to-disks"></a>Kopieren von Daten auf Datenträger
@@ -59,6 +56,7 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
 
     Befolgen Sie die Anforderungen an die Azure-Benennungsanforderungen für Namen von Containern und Blobs.
 
+    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>Azure-Namenskonventionen für Namen von Containern und Blobs
     |Entität   |Konventionen  |
     |---------|---------|
     |Containernamen für Blockblob und Seitenblob     |Müssen mit einem Buchstaben oder einer Zahl beginnen und dürfen nur Kleinbuchstaben, Zahlen und Bindestriche (-) enthalten. Vor und nach jedem Bindestrich (-) muss unmittelbar ein Buchstabe oder eine Ziffer stehen. Aufeinanderfolgende Bindestriche sind in Namen nicht zulässig. <br>Es muss sich um einen gültigen DNS-Namen mit einer Länge von 3 bis 63 Zeichen handeln.          |
@@ -165,17 +163,21 @@ Führen Sie die folgenden Schritte aus, um eine Verbindung herzustellen und Date
 > -  Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box-Datenträger](data-box-disk-limits.md) beschrieben sind. 
 > - Falls vom Data Box-Datenträger hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb des Data Box-Datenträgers hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
 
-## <a name="verify-data-integrity"></a>Überprüfen der Integrität von Daten
+## <a name="verify-data"></a>Überprüfen der Daten 
 
-Führen Sie die folgenden Schritte aus, um die Datenintegrität zu überprüfen.
+Führen Sie die folgenden Schritte aus, um die Daten zu überprüfen.
 
-1. Führen Sie die Datei `AzureExpressDiskService.ps1` zur Überprüfung der Prüfsumme aus. Navigieren Sie im Datei-Explorer zum Ordner *AzureImportExport* des Laufwerks. Klicken Sie mit der rechten Maustaste, und wählen Sie **Mit PowerShell ausführen**. 
+1. Führen Sie die Datei `DataBoxDiskValidation.cmd` für die Überprüfung der Prüfsumme im Ordner *AzureImportExport* Ihres Laufwerks aus. 
+    
+    ![Ausgabe des Data Box Disk-Überprüfungstools](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
-    ![Durchführen der Prüfsummenüberprüfung](media/data-box-disk-deploy-copy-data/data-box-disk-checksum.png)
-
-2. Je nach Größe Ihrer Daten kann dieser Schritt eine Weile dauern. Eine Zusammenfassung der Überprüfung der Datenintegrität und die Dauer dieses Vorgangs werden angezeigt, nachdem das Skript abgeschlossen wurde. Sie können die **EINGABETASTE** drücken, um das Befehlsfenster zu beenden.
+2. Wählen Sie die geeignete Option. **Es wird empfohlen, die Dateien immer zu überprüfen und Prüfsummen zu generieren, indem Option 2 gewählt wird**. Je nach Größe Ihrer Daten kann dieser Schritt eine Weile dauern. Nachdem das Skript abgeschlossen wurde, können Sie das Befehlsfenster beenden. Falls bei der Überprüfung und Generierung der Prüfsumme Fehler auftreten, werden Sie benachrichtigt und erhalten einen Link zu den Fehlerprotokollen.
 
     ![Ausgabe der Prüfsumme](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
+
+    > [!TIP]
+    > - Setzen Sie das Tool zwischen zwei Ausführungen zurück.
+    > - Verwenden Sie Option 1 zum Überprüfen der Dateien nur, wenn Sie ein großes Dataset mit kleinen Dateien (im KB-Bereich) nutzen. In diesen Fällen kann das Generieren der Prüfsumme sehr lange dauern und die Leistung beeinträchtigt werden.
 
 3. Führen Sie den Befehl für jeden Datenträger einzeln aus, wenn Sie mehrere Datenträger verwenden möchten.
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/27/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 831b52a27a1ccfc349b9b54f8c3d874e41ddc322
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.component: ''
+ms.openlocfilehash: 5eab8e4bf6b1aa90a9eef3e26dfc3020e3e3179b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363142"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423509"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -40,6 +40,10 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 >Log Analytics erfasst doppelte Einträge in der Protokolldatei.  Allerdings sind die Suchergebnisse inkonsistent, wenn die Filterergebnisse eine größere Anzahl von Ereignissen als Ergebnissen angezeigt.  Sie müssen unbedingt das Protokoll überprüfen, um festzustellen, ob dieses Verhalten durch die Anwendung, die es erstellt, verursacht wird, und es nach Möglichkeit vor der Erstellung der benutzerdefinierten Protokollsammlungsdefinition beheben.  
 >
   
+>[!NOTE]
+> Wenn Ihre Anwendung jeden Tag eine neue Protokolldatei erstellt oder eine bestimmte Größe erreicht, werden diese vom Log Analytics-Agent für Linux erst nach dem Neustart ermittelt. Der Grund ist, dass der Agent erst nach dem Start eine Enumeration durchführt und mit der Überwachung für Muster mit den angegebenen Protokollen beginnt. Daher müssen Sie dies entsprechend planen, indem Sie den Neustart des Agents automatisieren.  Diese Einschränkung gilt nicht für den Log Analytics-Agent für Windows.  
+>
+
 ## <a name="defining-a-custom-log"></a>Definieren eines benutzerdefinierten Protokolls
 Gehen Sie zum Definieren einer benutzerdefinierten Protokolldatei wie folgt vor.  Am Ende dieses Artikels finden Sie eine exemplarische Vorgehensweise für das Hinzufügen eines benutzerdefinierten Protokolls.
 
@@ -66,9 +70,13 @@ Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einz
 5. Klicken Sie auf **Weiter**.
 
 ### <a name="step-3-add-log-collection-paths"></a>Schritt 3: Hinzufügen von Protokollsammlungspfaden
-Definieren Sie für den Agent mindestens einen Pfad, an dem sich das benutzerdefinierte Protokoll befindet.  Sie können entweder einen bestimmten Pfad und Namen für die Protokolldatei angeben oder einen Pfad mit einem Platzhalter für den Namen verwenden.  Dadurch werden Anwendungen unterstützt, die täglich oder bei Erreichen einer bestimmten Dateigröße eine neue Datei erstellen.  Sie können auch mehrere Pfade für eine einzelne Protokolldatei angeben.
+Definieren Sie für den Agent mindestens einen Pfad, an dem sich das benutzerdefinierte Protokoll befindet.  Sie können entweder einen bestimmten Pfad und Namen für die Protokolldatei angeben oder einen Pfad mit einem Platzhalter für den Namen verwenden. Dadurch werden Anwendungen unterstützt, die täglich oder bei Erreichen einer bestimmten Dateigröße eine neue Datei erstellen. Sie können auch mehrere Pfade für eine einzelne Protokolldatei angeben.
 
 Ein Beispiel: Angenommen, eine Anwendung erstellt jeden Tag eine Protokolldatei, und das Datum ist jeweils Teil des Dateinamens (etwa „log20100316.txt“). In einem solchen Fall kann beispielsweise ein Muster wie *log\*.txt* verwendet werden, um sämtliche Protokolldateien abzudecken, die nach dem Benennungsschema der Anwendung erstellt werden.
+
+>[!NOTE]
+> Wenn Ihre Anwendung jeden Tag eine neue Protokolldatei erstellt oder eine bestimmte Größe erreicht, werden diese vom Log Analytics-Agent für Linux erst nach dem Neustart ermittelt. Der Grund ist, dass der Agent erst nach dem Start eine Enumeration durchführt und mit der Überwachung für Muster mit den angegebenen Protokollen beginnt. Daher müssen Sie dies entsprechend planen, indem Sie den Neustart des Agents automatisieren.  Diese Einschränkung gilt nicht für den Log Analytics-Agent für Windows.  
+>
 
 Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Protokolldateien:
 

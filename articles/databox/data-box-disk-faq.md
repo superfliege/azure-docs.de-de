@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/04/2018
+ms.date: 09/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 26f8f59d940c1e4a25e24229c2a3df75052e63e4
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 611dcb2cb904b5d3ee6ce0f571c2d04cfd7e7c35
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783289"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451749"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Was ist ein Azure Data Box-Datenträger? (Vorschau)
 
@@ -74,10 +74,12 @@ A. Wenden Sie sich an den [Support für Data Box-Datenträger](mailto:expresspod
 A.  Nein. Sie erhalten je nach Datenumfang und Verfügbarkeit einen oder mehrere Datenträger mit 8 TB Speicherplatz (maximal fünf Datenträger).  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>F: Wie entsperre ich die Data Box-Datenträger? 
-A.  Navigieren Sie im Azure-Portal zu Ihrem Auftrag für Data Box-Datenträger und dann zu **Gerätedetails**. Kopieren Sie den Hauptschlüssel. Laden Sie das Tool zum Entsperren von Data Box-Datenträgern über das Azure-Portal herunter, und extrahieren Sie es. Führen Sie *DataBoxDiskUnlock.exe* auf dem Computer mit den Daten aus, die Sie auf die Datenträger kopieren möchten. Geben Sie den Hauptschlüssel an, um Ihre Datenträger zu entsperren. Alle Datenträger werden mit demselben Hauptschlüssel entsperrt.
+A.  Navigieren Sie im Azure-Portal zu Ihrem Auftrag für Data Box-Datenträger und dann zu **Gerätedetails**. Kopieren Sie den Hauptschlüssel. Laden Sie das Tool zum Entsperren von Data Box-Datenträgern für Ihr Betriebssystem über das Azure-Portal herunter, und extrahieren Sie es. Führen Sie das Tool auf dem Computer mit den Daten aus, die Sie auf die Datenträger kopieren möchten. Geben Sie den Hauptschlüssel an, um Ihre Datenträger zu entsperren. Alle Datenträger werden mit demselben Hauptschlüssel entsperrt. 
+
+Eine Schritt-für-Schritt-Anleitung finden Sie unter den Informationen zum [Entsperren von Datenträgern auf einem Windows-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client) bzw. [Entsperren von Datenträgern auf einem Linux-Client](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client).
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>F: Kann ich einen Linux-Hostcomputer verwenden, um eine Verbindung herzustellen und die Daten auf die Data Box-Datenträger zu kopieren?
-A.  Nein. Es werden nur Windows-Computer unterstützt. Weitere Informationen finden Sie in der Liste mit den [unterstützten Betriebssystemen](data-box-disk-system-requirements.md) für Ihren Hostcomputer.
+A.  Ja. Sowohl der Linux- als auch der Windows-Client können verwendet werden, um eine Verbindung herzustellen und Daten auf die Data Box-Datenträger zu kopieren. Weitere Informationen finden Sie in der Liste mit den [unterstützten Betriebssystemen](data-box-disk-system-requirements.md) für Ihren Hostcomputer.
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>F: Meine Datenträger wurden versendet, aber ich möchte den Auftrag jetzt stornieren. Warum ist die Schaltfläche zum Stornieren nicht verfügbar?
 A.  Sie können den Auftrag nur stornieren, wenn die Datenträger bestellt, aber noch nicht versendet wurden. Nachdem die Datenträger versendet wurden, ist eine Stornierung des Auftrags nicht mehr möglich. Während der Vorschauphase können Sie Ihre Datenträger kostenlos zurücksenden, aber dies wird sich voraussichtlich ändern, wenn die Lösung die Phase der allgemeinen Verfügbarkeit erreicht. 
@@ -139,10 +141,10 @@ A.  Nachdem der Auftragsstatus für das Kopieren der Daten als „Abgeschlossen�
 A.  Wenn Sie die Daten in die Ordner *BlockBlob* und *PageBlob* auf Ihrem Datenträger kopieren, wird unter dem Azure-Speicherkonto für jeden Unterordner von *BlockBlob* und *PageBlob* ein Container erstellt. Falls Sie die Dateien direkt in den Ordnern *BlockBlob* und *PageBlob* abgelegt haben, befinden sich diese im Standardcontainer *$root* unter dem Azure Storage-Konto. 
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>F: Ich habe gerade festgestellt, dass ich mich für meine Container nicht an die Azure-Anforderungen für die Benennung gehalten habe. Können meine Daten deshalb nicht in Azure hochgeladen werden?
-A. Falls die Containernamen Großbuchstaben enthalten, werden sie automatisch in Kleinbuchstaben konvertiert. Wenn die Namen auf andere Art nicht konform sind (Sonderzeichen, andere Sprachen usw.), tritt beim Upload ein Fehler auf.
+A. Falls die Containernamen Großbuchstaben enthalten, werden sie automatisch in Kleinbuchstaben konvertiert. Wenn die Namen auf andere Art nicht konform sind (Sonderzeichen, andere Sprachen usw.), tritt beim Upload ein Fehler auf. Weitere Informationen finden Sie unter den [Benennungskonventionen für Azure](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions).
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>F: Wie kann ich die Daten überprüfen, die auf mehrere Data Box-Datenträger kopiert wurden?
-A.  Nach Abschluss des Kopiervorgangs für die Daten können Sie `AzureExpressDiskService.cmd` aus dem Ordner *AzureImportExport* ausführen, um Prüfsummen für die Validierung zu generieren. Falls Sie über mehrere Datenträger verfügen, müssen Sie pro Datenträger ein Befehlsfenster öffnen und diesen Befehl ausführen. Beachten Sie, dass dieser Vorgang je nach Größe Ihrer Daten ggf. lange dauern kann (mehrere Stunden).
+A.  Nach Abschluss des Kopiervorgangs für die Daten können Sie `DataBoxDiskValidation.cmd` aus dem Ordner *DataBoxDiskImport* ausführen, um Prüfsummen für die Validierung zu generieren. Falls Sie über mehrere Datenträger verfügen, müssen Sie pro Datenträger ein Befehlsfenster öffnen und diesen Befehl ausführen. Beachten Sie, dass dieser Vorgang je nach Größe Ihrer Daten ggf. lange dauern kann (mehrere Stunden).
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-disks"></a>F: Was passiert mit meinen Daten, nachdem ich die Datenträger zurückgesendet habe?
 A.  Nach Abschluss des Kopiervorgangs für die Daten nach Azure werden die Daten gemäß den NIST-Richtlinien (SP 800-88 Revision 1) auf sichere Weise gelöscht.  

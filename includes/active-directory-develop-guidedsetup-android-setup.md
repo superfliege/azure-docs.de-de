@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 45e8668ce0a7eb2edd79271096f58b56ca1af5f0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 02b36d8f8c8c9be2532b440bd9858766e8b524ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205568"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060381"
 ---
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 
@@ -37,7 +37,7 @@ Möchten Sie stattdessen das Android Studio-Projekt dieses Beispiels herunterlad
 1.  Wählen Sie in Android Studio **Gradle Scripts** > **build.gradle (Module: app)** (Gradle-Skripts > build.gradle (Module: app)).
 2.  Fügen Sie unter **Dependencies** (Abhängigkeiten) den folgenden Code ein:
 
-    ```ruby  
+    ```gradle  
     compile ('com.microsoft.identity.client:msal:0.1.+') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
@@ -47,10 +47,10 @@ Möchten Sie stattdessen das Android Studio-Projekt dieses Beispiels herunterlad
 <!--start-collapse-->
 ### <a name="about-this-package"></a>Informationen zu diesem Paket
 
-Das Paket im obigen Code installiert Microsoft Authentication Library (MSAL). MSAL übernimmt die Erfassung, Zwischenspeicherung und Aktualisierung von Benutzertoken für den Zugriff auf die durch den Azure Active Directory v2-Endpunkt geschützten APIs.
+Das Paket im obigen Code installiert Microsoft Authentication Library (MSAL). Mit der MSAL werden alle Tokenvorgänge durchgeführt, z.B. Beschaffen, Zwischenspeichern, Aktualisieren und Löschen.  Die Token sind für den Zugriff auf die APIs erforderlich, die mit der Microsoft Identity Platform geschützt sind.
 <!--end-collapse-->
 
-## <a name="create-the-application-ui"></a>Erstellen der Anwendungsbenutzeroberfläche
+## <a name="create-the-apps-ui"></a>Erstellen der App-Benutzeroberfläche
 
 1. Navigieren Sie zu **res** > **Layout**, und öffnen Sie die Datei **activity_main.xml**. 
 2. Ändern Sie das Layout der Aktivität von `android.support.constraint.ConstraintLayout` o.ä. in `LinearLayout`.

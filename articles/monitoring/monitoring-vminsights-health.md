@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: c8a8598640e31f59476b5b3351fdb2eab7b66a6c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5c9211486fa40e49afd91eba7c432990b0ee860b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952918"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160620"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>Verstehen Sie die Integrität Ihrer Azure-VMs mit Azure Monitor for VMs
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Log Analytics oder Azure Monitor verschiedene Bedingungen überwachen, diese waren aber nicht dafür ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
@@ -99,11 +99,11 @@ Diese Integritätsstatus sind für eine VM definiert:
 * **Warnung** – es wurde mindestens ein Problem entdeckt, das behandelt werden muss, weil sonst der Übergang zu einem kritischen Integritätszustand erfolgen kann.  
 * **Unbekannt** – wenn der Dienst keine Verbindung mit einer VM herstellen konnte, wechselt der Status zu „Unbekannt“.  
 
-Durch Auswählen von **Integritätsdiagnose anzeigen** wird eine Seite geöffnet, auf der alle Komponenten der VM mit den ihnen zugeordneten Integritätskriterien, Statusänderungen und sonstigen wichtigen Problemen dargestellt sind, die durch Überwachung der mit der VM zusammenhängenden Komponenten gefunden wurden. Weitere Details finden Sie in der [Integritätsdiagnose](#health-diagnostics). 
+Durch Auswählen von **Integritätsdiagnose anzeigen** wird eine Seite geöffnet, auf der alle Komponenten der VM mit den ihnen zugeordneten Integritätskriterien, Statusänderungen und sonstigen wichtigen Problemen dargestellt sind, die durch Überwachung der mit der VM zusammenhängenden Komponenten gefunden wurden. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics). 
 
 Die Tabelle unter dem Abschnitt **Integrität der Komponente** zeigt einen Integritätsrollupstatus der wichtigsten Leistungskategorien, die anhand von Integritätskriterien für die betreffenden Bereiche überwacht werden, im Einzelnen **CPU**, **Arbeitsspeicher**, **Datenträger** und **Netzwerk**.  Durch Auswählen einer der Komponenten wird eine Seite geöffnet, auf der alle Integritätsaspekte für die einzelnen Integritätskriterien der betreffenden Komponente mit dem jeweiligen Integritätsstatus aufgelistet sind.  
 
-Beim Zugriff auf die Integrität aus einer Azure-VM, die das Betriebssystem Windows ausführt, wird der Integritätsstatus der fünf wichtigsten Windows-Kerndienste unter **Integrität der Kerndienste** angezeigt.  Durch Auswählen eines der Dienste wird eine Seite geöffnet, auf der die Integritätskriterien zur Überwachung der betreffenden Komponente und ihr Integritätsstatus aufgelistet werden.  Ein Klick auf den Namen eines Integritätskriteriums öffnet dessen Eigenschaftenseite, auf der Sie die Konfigurationsdetails überprüfen können, darunter auch, ob für das Integritätskriterium eine entsprechende Azure Monitor-Warnung definiert ist. Weitere Informationen hierzu finden Sie unter [Health Diagnostics and working with health criteria](#health-diagnostics) (Integritätsdiagnose und das Arbeiten mit Integritätskriterien).  
+Beim Zugriff auf die Integrität aus einer Azure-VM, die das Betriebssystem Windows ausführt, wird der Integritätsstatus der fünf wichtigsten Windows-Kerndienste unter **Integrität der Kerndienste** angezeigt.  Durch Auswählen eines der Dienste wird eine Seite geöffnet, auf der die Integritätskriterien zur Überwachung der betreffenden Komponente und ihr Integritätsstatus aufgelistet werden.  Ein Klick auf den Namen eines Integritätskriteriums öffnet dessen Eigenschaftenseite, auf der Sie die Konfigurationsdetails überprüfen können, darunter auch, ob für das Integritätskriterium eine entsprechende Azure Monitor-Warnung definiert ist. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics) im Abschnitt zur Verwendung von Integritätskriterien.  
 
 ## <a name="aggregate-virtual-machine-perspective"></a>Aggregieren der VM-Perspektive
 Um die Integritätssammlung aller Ihrer virtuellen Computer in einer Ressourcengruppe anzuzeigen, wählen Sie in der Navigationsliste im Portal **Azure Monitor** und dann **Virtual Machines (Vorschau)** aus.  
@@ -136,7 +136,7 @@ Sie können auf ein beliebiges Spaltenelement klicken – **VM-Anzahl**, **Kriti
 
 ![Beispielrollup von Red Hat Linux-VMs](./media/monitoring-vminsights-health/vminsights-rollup-vm-rehl-01.png)
  
-Wenn Sie auf der Seite **Virtual Machines** in der Spalte **VM-Name** den Namen einer VM auswählen, werden Sie zur Seite der VM-Instanz geführt, die weitere Details zu den Warnungen und erkannten Problemen bei Integritätskriterien enthält, die die ausgewählte VM betreffen.  Hier können Sie die Details zum Integritätsstatus filtern, indem Sie auf das Symbol **Integritätsstatus** in der oberen linken Ecke der Seite klicken, um zu sehen, welche Komponenten fehlerhaft sind; alternativ können Sie die Warnungen zur VM-Integrität anzeigen, die von einer fehlerhaften Komponente ausgelöst wurden, kategorisiert nach Schweregrad der Warnung.    
+Wenn Sie auf der Seite **Virtual Machines** in der Spalte **VM-Name** den Namen einer VM auswählen, werden Sie zur Seite der VM-Instanz geführt, die weitere Details zu den Warnungen und erkannten Problemen bei Integritätskriterien enthält, die die ausgewählte VM betreffen.  Hier können Sie die Details zum Integritätsstatus filtern, indem Sie auf das Symbol **Integritätsstatus** in der oberen linken Ecke der Seite klicken, um zu sehen, welche Komponenten fehlerhaft sind. Alternativ können Sie die Warnungen zur VM-Integrität anzeigen, die von einer fehlerhaften Komponente ausgelöst wurden, kategorisiert nach Schweregrad der Warnung.    
 
 In der VM-Listenansicht wird durch Klicken auf den Namen einer VM die Seite **Integrität** der ausgewählten VM geöffnet, auf ähnliche Weise wie durch direktes Auswählen von **Insights (Vorschau)** aus der VM.
 
@@ -175,7 +175,7 @@ In Integritätsdiagnosen sind die Integritätsinformationen nach den folgenden K
  
 Alle für ein ausgewähltes Ziel definierten Integritätskriterien werden in der entsprechenden Kategorie angezeigt. 
 
-Der Integritätsstatus für Integritätskriterien ist durch einen dieser drei Status definiert – *Kritisch*, *Warnung* und *Fehlerfrei*. Es gibt einen weiteren Status, *Unbekannt*, der keinem Integritätsstatus zugeordnet ist, sondern seinen eigenen bekannten Überwachungsstatus für das Feature darstellt.  
+Der Integritätsstatus für Integritätskriterien ist durch einen dieser drei Status definiert: *Kritisch*, *Warnung* und *Fehlerfrei*. Es gibt einen weiteren Status, *Unbekannt*, der keinem Integritätsstatus zugeordnet ist, sondern seinen eigenen bekannten Überwachungsstatus für das Feature darstellt.  
 
 Die folgende Tabelle stellt Details zu den Integritätsstatus bereit, die in der Integritätsdiagnose dargestellt sind.
 
@@ -197,7 +197,7 @@ Die Seite „Integritätsdiagnose“ weist drei Hauptabschnitte auf:
 ### <a name="component-model"></a>Komponentenmodell
 Die Spalte ganz links auf einer Integritätsdiagnoseseite ist das Komponentenmodell. In dieser Spalte werden alle Komponenten und die von ihnen erkannten Instanzen, die der VM zugeordnet sind, angezeigt. 
 
-Im folgenden Beispiel sind die erkannten Instanzen Datenträger, logischer Datenträger, Prozessor, Arbeitsspeicher und Betriebssystem. Mehrere Instanzen dieser Komponenten wurden erkannt und werden in dieser Spalte angezeigt, zwei Instanzen von logischen Datenträgern**/**, **/boot** und **/mnt/resource**, eine Instanz des Netzwerkadapters **eth0**, zwei Instanzen von Datenträgern, **sda** und **sdb**, zwei Instanzen von Prozessoren **0 und 1** und eine Instanz von **Red Hat Enterprise Linux Server, Version 7.4 (Maipo) (Betriebssystem)**. 
+Im folgenden Beispiel sind die erkannten Instanzen Datenträger, logischer Datenträger, Prozessor, Arbeitsspeicher und Betriebssystem. Mehrere Instanzen dieser Komponenten wurden erkannt und werden in dieser Spalte angezeigt: zwei Instanzen von logischen Datenträgern**/**, **/boot** und **/mnt/resource**, eine Instanz des Netzwerkadapters **eth0**, zwei Instanzen von Datenträgern, **sda** und **sdb**, zwei Instanzen von Prozessoren **0 und 1** und eine Instanz von **Red Hat Enterprise Linux Server, Version 7.4 (Maipo) (Betriebssystem)**. 
 
 ![Beispiel für die Darstellung eines Komponentenmodells in der Integritätsdiagnose](./media/monitoring-vminsights-health/health-diagnostics-page-component.png)
 
@@ -228,7 +228,8 @@ Im Konfigurationsbereich für das ausgewählte Integritätskriterium, in diesem 
 
 ![Beispiel für das Konfigurieren eines Integritätskriteriums für einen Einheitenmonitor](./media/monitoring-vminsights-health/health-diagnostics-linuxvm-example-04.png)
 
-
+Wenn Sie mehr zum Integritätsindikator erfahren möchten, können Sie Wissensartikel verwenden, um Probleme, Ursachen und Lösungen zu identifizieren.  Klicken Sie auf der Seite auf den Link **Informationen anzeigen**. In Ihrem Browser wird eine neue Registerkarte mit dem entsprechenden Wissensartikel geöffnet.  Sie können sich [hier](https://docs.microsoft.com/azure/monitoring/infrastructure-health/) jederzeit alle Wissensartikel zu Integritätskriterien ansehen, die im Integritätsfeature von Azure Monitor for VMs enthalten sind.
+  
 ### <a name="state-changes"></a>Zustandsänderungen
 Die ganz rechte Spalte auf der Seite Integritätsdiagnose ist **Zustandsänderungen**. Sie listet alle Zustandsänderungen auf, die den im Abschnitt **Integritätskriterien** ausgewählten Integritätskriterien zugeordnet sind, oder die Zustandsänderungen einer VM, wenn in der Spalte **Komponentenmodell** oder **Integritätskriterien** der Tabelle eine VM ausgewählt ist. 
 
@@ -273,4 +274,4 @@ Die Seite **Warnungsdetail** wird angezeigt, wenn Sie eine Warnung auswählen, s
 Der Warnungszustand kann außerdem für eine oder mehrere Warnungen geändert werden, indem Sie in der oberen linken Ecke der Seite **Alle Warnungen** den Befehl **Status ändern** auswählen. Im Bereich **Warnungsstatus ändern** wählen Sie einen der Status aus, fügen eine Beschreibung der Änderung im Feld **Kommentar** hinzu und klicken dann auf **OK**, um Ihre Änderungen zu committen. Während die Informationen überprüft und die Änderungen übernommen werden, können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Erkennen von Engpässen und Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [View Azure VM Performance](monitoring-vminsights-performance.md) (Anzeigen der Leistung von Azure-VMs); Informationen zu erkannten Anwendungsabhängigkeiten finden Sie unter [View Azure Monitor for VMs Map](monitoring-vminsights-maps.md) (Anzeigen der Zuordnung von Azure Monitor for VMs). 
+Informationen zum Erkennen von Engpässen und Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [View Azure VM Performance](monitoring-vminsights-performance.md) (Anzeigen der Leistung von Azure-VMs). Informationen zu erkannten Anwendungsabhängigkeiten finden Sie unter [View Azure Monitor for VMs Map](monitoring-vminsights-maps.md) (Anzeigen der Zuordnung von Azure Monitor for VMs). 

@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ef2b5dd393974ddf700235991b60ec66031e34c2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024072"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222266"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Was ist Baselineschutz (Vorschauversion)?  
 
@@ -56,7 +56,7 @@ In dieser Basisrichtlinie haben Sie die Möglichkeit, Benutzer und Gruppen auszu
 
 ## <a name="enable-a-baseline-policy"></a>Aktivieren einer Basisrichtlinie 
 
-Solange sich die Basisrichtlinien in der Vorschau befinden, sind sie standardmäßig nicht aktiviert. Sie müssen eine Richtlinie manuell aktivieren, wenn Sie sie aktivieren möchten. Sobald dieses Feature allgemein verfügbar ist, sind die Richtlinien standardmäßig aktiviert. Die geplante Verhaltensänderung ist der Grund, warum Sie zusätzlich eine dritte Option zum Festlegen des Status einer Richtlinie aktivieren bzw. deaktivieren müssen: **Richtlinie zukünftig automatisch aktivieren**. Durch Auswahl dieser Option entscheidet Microsoft, wann eine Richtlinie aktiviert wird.      
+Solange sich die Basisrichtlinien in der Vorschau befinden, sind sie standardmäßig nicht aktiviert. Sie müssen eine Richtlinie manuell aktivieren, wenn Sie sie aktivieren möchten. Wenn Sie die Basisrichtlinien in der Vorschauphase explizit aktivieren, bleiben sie aktiv, wenn dieses Feature den Status der allgemeinen Verfügbarkeit erreicht. Die geplante Verhaltensänderung ist der Grund, warum Sie zusätzlich zur Aktivierung und Deaktivierung noch eine dritte Option zum Festlegen des Status einer Richtlinie haben: **Richtlinie zukünftig automatisch aktivieren**. Wenn Sie diese Option auswählen, können Sie die Deaktivierung der Richtlinien während der Vorschauphase beibehalten und sie dann von Microsoft automatisch aktivieren lassen, wenn dieses Feature den Status der allgemeinen Verfügbarkeit erreicht. Wenn Sie die Basisrichtlinien jetzt nicht explizit aktivieren und auch die Option **Richtlinie zukünftig automatisch aktivieren** nicht aktivieren, bleiben die Richtlinien deaktiviert, wenn dieses Feature die allgemeine Verfügbarkeit erreicht.
 
 
 **So aktivieren Sie eine Basisrichtlinie:**  

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399048"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409843"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -31,6 +31,9 @@ Die aktuelle Lösung hat die folgenden Einschränkungen:
 - Mit dieser Lösung können VMs in allen Regionen verwaltet werden. Allerdings lässt sie sich nur unter demselben Abonnement wie Ihr Azure Automation-Konto verwenden.
 - Diese Lösung ist in Azure und Azure Government für jede Region verfügbar, die einen Log Analytics-Arbeitsbereich, ein Azure Automation-Konto und Warnungen unterstützt. Azure Government-Regionen unterstützen derzeit keine E-Mail-Funktionalität.
 
+> [!NOTE]
+> Wenn Sie die Lösung für klassische virtuelle Computer verwenden, werden alle Ihre VMs nacheinander nach Clouddienst verarbeitet. Die parallele Auftragsverarbeitung wird für verschiedene Clouddienste weiterhin unterstützt.
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Runbooks für diese Lösung wird ein [ausführendes Azure-Konto](automation-create-runas-account.md) verwendet. Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
@@ -45,28 +48,28 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
 
    > [!NOTE]
    > Sie können Ressourcen auch von überall im Azure-Portal erstellen, indem Sie auf **Ressource erstellen** klicken. Geben Sie auf der Seite „Marketplace“ ein Schlüsselwort ein, z.B. **Starten** oder **Starten/Beenden**. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Alternativ hierzu können Sie ein oder mehrere Schlüsselwörter des vollständigen Namens der Lösung eingeben und dann die EINGABETASTE drücken. Wählen Sie in den Suchergebnissen **VMs außerhalb der Geschäftszeiten starten/beenden** aus.
-1. Überprüfen Sie auf der Seite **VMs außerhalb der Geschäftszeiten starten/beenden** die Zusammenfassung der ausgewählten Lösung, und klicken Sie dann auf **Erstellen**.
+2. Überprüfen Sie auf der Seite **VMs außerhalb der Geschäftszeiten starten/beenden** die Zusammenfassung der ausgewählten Lösung, und klicken Sie dann auf **Erstellen**.
 
    ![Azure-Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
-1. Die Seite **Lösung hinzufügen** wird angezeigt. Sie werden aufgefordert, die Lösung vor dem Importieren in Ihr Automation-Abonnement zu konfigurieren.
+3. Die Seite **Lösung hinzufügen** wird angezeigt. Sie werden aufgefordert, die Lösung vor dem Importieren in Ihr Automation-Abonnement zu konfigurieren.
 
    ![Seite „Lösung hinzufügen“ der VM-Verwaltung](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Arbeitsbereich** aus. Wählen Sie einen Log Analytics-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, unter dem sich das Automation-Konto befindet. Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, wenn kein Arbeitsbereich vorhanden ist. Führen Sie auf der Seite **OMS-Arbeitsbereich** die folgenden Schritte aus:
-   - Geben Sie einen Namen für den neuen **OMS-Arbeitsbereich** an.
+4. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Arbeitsbereich** aus. Wählen Sie einen Log Analytics-Arbeitsbereich aus, der mit demselben Azure-Abonnement verknüpft ist, unter dem sich das Automation-Konto befindet. Wählen Sie die Option **Neuen Arbeitsbereich erstellen**, wenn kein Arbeitsbereich vorhanden ist. Führen Sie auf der Seite **Log Analytics-Arbeitsbereich** die folgenden Schritte aus:
+   - Geben Sie einen Namen für den neuen **Log Analytics-Arbeitsbereich** an.
    - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    - Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
    - Wählen Sie einen **Speicherort**aus. Derzeit sind nur die Standorte **Australien, Südosten**, **Kanada, Mitte**, **Indien, Mitte**, **USA, Osten**, **Japan, Osten**, **Asien, Südosten**, **Vereinigtes Königreich, Süden** und **Europa, Westen** verfügbar.
    - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Log Analytics wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert und der Tarif „Pro GB“ ist die einzige Option.
 
-1. Klicken Sie nach dem Angeben der erforderlichen Informationen auf der Seite **OMS-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
-1. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, können Sie ein neues Automation- Konto erstellen, das diesem zugeordnet wird, oder ein vorhandenes Automation-Konto auswählen, das nicht bereits mit einem Log Analystics-Arbeitsbereich verknüpft ist. Wählen Sie ein vorhandenes Automation-Konto aus, oder klicken Sie auf **Automation-Konto erstellen**, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
+5. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen auf der Seite **Log Analytics-Arbeitsbereich** auf **Erstellen**. Sie können den Status unter **Benachrichtigungen** über das Menü nachverfolgen, und nach Abschluss des Vorgangs gelangen Sie zurück zur Seite **Lösung hinzufügen**.
+6. Wählen Sie auf der Seite **Lösung hinzufügen** die Option **Automation-Konto** aus. Wenn Sie einen neuen Log Analytics-Arbeitsbereich erstellen, können Sie ein neues Automation- Konto erstellen, das diesem zugeordnet wird, oder ein vorhandenes Automation-Konto auswählen, das nicht bereits mit einem Log Analystics-Arbeitsbereich verknüpft ist. Wählen Sie ein vorhandenes Automation-Konto aus, oder klicken Sie auf **Automation-Konto erstellen**, und geben Sie auf der Seite **Automation-Konto hinzufügen** Folgendes an:
    - Geben Sie im Feld **Name** den Namen des Automation-Kontos ein.
 
     Alle anderen Optionen werden basierend auf dem Log Analytics-Arbeitsbereich automatisch aufgefüllt. Diese Optionen können nicht geändert werden. Ein ausführendes Azure-Konto ist die Standardmethode für die Authentifizierung von Runbooks in dieser Lösung. Nach dem Klicken auf **OK** werden die Konfigurationsoptionen überprüft, und das Automation-Konto wird erstellt. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
-1. Wählen Sie abschließend auf der Seite **Lösung hinzufügen**die Option **Konfiguration** aus. Die Seite **Parameter** wird angezeigt.
+7. Wählen Sie abschließend auf der Seite **Lösung hinzufügen**die Option **Konfiguration** aus. Die Seite **Parameter** wird angezeigt.
 
    ![Seite „Parameter“ für die Lösung](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -83,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
      > [!IMPORTANT]
      > Der Standardwert für **ResourceGroup-Zielnamen** ist ein **&ast;**. Dies betrifft alle VMs in einem Abonnement. Wenn die Lösung nicht alle VMs als Zielversion in Ihrem Abonnement festlegen soll, muss dieser Wert vor der Aktivierung der Zeitpläne auf eine Liste der Ressourcengruppennamen aktualisiert werden.
 
-1. Nachdem Sie die erforderlichen Anfangseinstellungen für die Lösung konfiguriert haben, klicken Sie auf **OK**, um die Seite **Parameter** zu schließen, und wählen Sie dann **Erstellen** aus. Nachdem alle Einstellungen überprüft wurden, wird die Lösung für Ihr Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
+8. Nachdem Sie die erforderlichen Anfangseinstellungen für die Lösung konfiguriert haben, klicken Sie auf **OK**, um die Seite **Parameter** zu schließen, und wählen Sie dann **Erstellen** aus. Nachdem alle Einstellungen überprüft wurden, wird die Lösung für Ihr Abonnement bereitgestellt. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
 
 ## <a name="scenarios"></a>Szenarien
 

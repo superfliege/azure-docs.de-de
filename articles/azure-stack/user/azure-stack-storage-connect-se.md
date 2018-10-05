@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 06/15/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 9704f05cc6da97e33c0043b93acedc9e66bdcc36
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2f974b7773e7a4cbc0eda32a267bb5ab939644d8
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714900"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095115"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement oder -Speicherkonto
 
@@ -65,9 +65,9 @@ Für das Azure Stack Development Kit müssen Sie das Stammzertifikat der Azure S
 
     ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack als Ziel)](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
-## <a name="connect-to-an-azure-stack-subscription"></a>Herstellen einer Verbindung mit einem Azure Stack-Abonnement
+## <a name="connect-to-an-azure-stack-subscription-with-azure-ad"></a>Herstellen einer Verbindung mit einem Azure Stack-Abonnement mit Azure AD
 
-Stellen Sie mithilfe der folgenden Schritte eine Verbindung zwischen dem Storage-Explorer und einem Azure Stack-Abonnement her.
+Verwenden Sie die folgenden Schritte, um den Storage-Explorer mit einem Azure Stack-Abonnement zu verbinden, das zu einem Azure AD-Konto (Azure Active Directory) gehört.
 
 1. Wählen Sie im linken Bereich des Storage-Explorers die Option **Konten verwalten** aus. 
     Alle von Ihnen angemeldeten Microsoft-Abonnements werden angezeigt.
@@ -87,6 +87,44 @@ Stellen Sie mithilfe der folgenden Schritte eine Verbindung zwischen dem Storage
     Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure Stack-Abonnements verknüpft sind.
 
     ![Liste mit Speicherkonten, einschließlich Azure Stack-Abonnementkonten](./media/azure-stack-storage-connect-se/azure-stack-storage-account-list.png)
+
+## <a name="connect-to-an-azure-stack-subscription-with-ad-fs-account"></a>Herstellen einer Verbindung mit einem Azure Stack-Abonnement mit einem AD FS-Konto
+
+> [!Note]  
+> Der Bereich für die AD FS-Anmeldung (Active Directory-Verbunddienste) unterstützt Storage-Explorer 1.2.0 oder neuere Versionen mit Azure Stack 1804 oder einem neueren Update.
+Verwenden Sie die folgenden Schritte, um Storage-Explorer mit einem Azure Stack-Abonnement zu verbinden, das zu einem AD FS-Konto gehört.
+
+1. Wählen Sie **Konten verwalten**. Im Explorer werden die Microsoft-Abonnements aufgeführt, an denen Sie sich angemeldet haben.
+2. Wählen Sie zum Herstellen einer Verbindung mit dem Azure Stack-Abonnement die Option **Konto hinzufügen**.
+
+    ![Konto hinzufügen](media/azure-stack-storage-connect-se/add-an-account.png)
+
+3. Klicken Sie auf **Weiter**. Wählen Sie im Dialogfeld „Verbindung mit Azure-Speicher herstellen“ unter **Azure-Umgebung** die Option **Use Custom Environment** (Benutzerdefinierte Umgebung verwenden), und klicken Sie anschließend auf **Weiter**.
+
+    ![Herstellen einer Verbindung mit Azure Storage](media/azure-stack-storage-connect-se/connect-to-azure-storage.png)
+
+4. Geben Sie die erforderlichen Informationen in der benutzerdefinierten Azure Stack-Umgebung ein. 
+
+    | Feld | Notizen |
+    | ---   | ---   |
+    | Umgebungsname | Dieses Feld kann vom Benutzer angepasst werden. |
+    | Azure Resource Manager-Endpunkt | Die Beispiele von Azure Resource Manager-Ressourcenendpunkten des Azure Stack Development Kit.<br>Für Bediener: https://adminmanagement.local.azurestack.external <br> Für Benutzer: https://management.local.azurestack.external |
+
+    Wenn Sie in einem integrierten Azure Stack-System arbeiten und Ihren Verwaltungsendpunkt nicht kennen, können Sie sich an den entsprechenden Bediener wenden.
+
+    ![Konto hinzufügen](./media/azure-stack-storage-connect-se/custom-environments.png)
+
+5. Wählen Sie **Anmelden**, um eine Verbindung mit dem Azure Stack-Konto herzustellen, das mindestens einem aktiven Azure Stack-Abonnement zugeordnet ist.
+
+
+
+6. Wählen Sie die Azure Stack-Abonnements aus, die Sie verwenden möchten. Wählen Sie **Übernehmen**.
+
+    ![Kontenverwaltung](./media/azure-stack-storage-connect-se/account-management.png)
+
+    Im linken Bereich werden die Speicherkonten angezeigt, die mit den ausgewählten Azure Stack-Abonnements verknüpft sind.
+
+    ![Liste mit den zugeordneten Abonnements](./media/azure-stack-storage-connect-se/list-of-associated-subscriptions.png)
 
 ## <a name="connect-to-an-azure-stack-storage-account"></a>Herstellen einer Verbindung mit einem Azure Stack-Speicherkonto
 

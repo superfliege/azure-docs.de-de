@@ -12,46 +12,43 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 23b7ca44b72b8840579f369954f41f554d4c8852
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: a1cd25012461ae8bb445dcb1de8fe5be49e04760
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943418"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060757"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
+# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer Android-App
 
-Dieser Leitfaden veranschaulicht, wie eine native Android-Anwendung ein Zugriffstoken abrufen und die Microsoft Graph-API und andere APIs aufrufen kann, die Zugriffstoken vom Azure Active Directory v2-Endpunkt anfordern.
+In diesem Tutorial wird beschrieben, wie Sie eine Android-Anwendung erstellen und diese in die Microsoft Identity Platform integrieren. Mit dieser App wird ein Benutzer angemeldet, ein Zugriffstoken zum Aufrufen der Microsoft Graph-API abgerufen und eine einfache Anforderung an die Microsoft Graph-API gesendet.  
 
-Am Ende dieses Leitfadens kann Ihre Anwendung Anmeldungen von persönlichen Konten (z.B. outlook.com, live.com u.a.) sowie von Geschäfts,- Schul- oder Unikonten von Unternehmen oder Organisationen akzeptieren, die Azure Active Directory nutzen. Die Anwendung ruft dann eine API auf, die durch den Azure Active Directory v2-Endpunkt geschützt wird.  
+Am Ende dieses Leitfadens akzeptiert Ihre Anwendung Anmeldungen von persönlichen Microsoft-Konten (z.B. outlook.com, live.com u.a.) sowie von Geschäfts,- Schul- oder Unikonten von allen Unternehmen oder Organisationen, die Azure Active Directory nutzen. 
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 ![Funktionsweise dieses Beispiels](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
-Die in diesem Leitfaden erstellte Beispielanwendung basiert auf einem Szenario, bei dem mit einer Android-Anwendung eine Web-API abgefragt wird, die Token vom Azure Active Directory v2-Endpunkt akzeptiert (in diesem Fall Microsoft Graph-API). In diesem Szenario fügt Ihre Anwendung HTTP-Anforderungen das abgerufene Token über den Autorisierungsheader hinzu. Tokenabruf und -erneuerung werden für Sie von der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) gehandhabt.
+Mit der App in diesem Beispiel werden Benutzer angemeldet und Daten in deren Namen abgerufen.  Auf diese Daten wird über eine Remote-API (hier: Microsoft Graph-API) zugegriffen, für die eine Autorisierung erforderlich ist und die über die Microsoft Identity Platform geschützt ist. 
+
+Dies umfasst insbesondere Folgendes: 
+* Ihre App startet eine Webseite für die Anmeldung des Benutzers.
+* Ihre App stellt ein Zugriffstoken für die Microsoft Graph-API aus.
+* Das Zugriffstoken ist in der HTTP-Anforderung an die Web-API enthalten.
+* Die Microsoft Graph-Antwort wird verarbeitet. 
+
+In diesem Beispiel wird die Microsoft Authentication Library (MSAL) für Android genutzt, um die Authentifizierung zu koordinieren und als Hilfe dafür zu dienen. Mit MSAL werden Token automatisch verlängert, das einmalige Anmelden zwischen anderen Apps auf dem Gerät wird bereitgestellt, Hilfe bei der Kontoverwaltung wird geleistet, und die meisten Fälle mit bedingtem Zugriff können verarbeitet werden. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Dieses Setup mit Anleitung konzentriert sich auf Android Studio. Andere Android-Anwendungsentwicklungsumgebungen sind jedoch ebenfalls akzeptabel. 
-* Android SDK 21 oder höher ist erforderlich (SDK 25 empfohlen).
+* In diesem angeleiteten Setup wird Android Studio 3.0 verwendet. 
+* Android 21 oder höher ist erforderlich (25+ empfohlen).
 * Google Chrome oder ein Webbrowser mit benutzerdefinierten Registerkarten ist für diese Version der MSAL für Android erforderlich.
 
-> [!NOTE]
-> Google Chrome ist nicht im Visual Studio-Emulator für Android enthalten. Wir empfehlen Ihnen, diesen Code in einem Emulator mit API 25 oder einem Image mit API 21 oder höher zu testen, in dem Google Chrome installiert ist.
+## <a name="library"></a>Bibliothek
 
-## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Verarbeiten des Beziehens von Token für den Zugriff auf geschützte Web-APIs
-
-Nach der Authentifizierung des Benutzers empfängt die Beispielanwendung ein Zugriffstoken, mit dem eine durch Azure Active Directory v2 geschützte Microsoft Graph-API oder Web-API abgefragt werden kann.
-
-APIs wie Microsoft Graph benötigen ein Zugriffstoken, um den Zugriff auf bestimmte Ressourcen zu ermöglichen. Ein Zugriffstoken ist beispielsweise erforderlich, um das Profil eines Benutzers zu lesen, auf den Kalender eines Benutzers zuzugreifen oder eine E-Mail zu senden. Ihre Anwendung kann unter Verwendung von MSAL ein Zugriffstoken anfordern, um auf diese Ressourcen durch Angeben von API-Bereichen zuzugreifen. Dieses Zugriffstoken wird dann dem HTTP-Autorisierungsheader für jeden Aufruf hinzugefügt, der für die geschützte Ressource erfolgt. 
-
-MSAL nimmt Ihrer Anwendung die Verwaltung der Zwischenspeicherung und Aktualisierung von Zugriffstoken ab.
-
-## <a name="libraries"></a>Bibliotheken
-
-In dieser Anleitung werden die folgenden Bibliotheken verwendet:
+In dieser Anleitung wird die folgende Authentifizierungsbibliothek verwendet:
 
 |Bibliothek|BESCHREIBUNG|
 |---|---|

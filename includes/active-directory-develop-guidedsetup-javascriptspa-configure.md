@@ -1,4 +1,27 @@
-
+---
+title: Includedatei
+description: Includedatei
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 07aac49e7aed7c95863a2058a9de3d1e8f2cd1ad
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060781"
+---
 ## <a name="register-your-application"></a>Anwendung registrieren
 
 Es gibt mehrere Möglichkeiten, eine Anwendung zu erstellen – bitte wählen Sie eine aus:
@@ -6,46 +29,46 @@ Es gibt mehrere Möglichkeiten, eine Anwendung zu erstellen – bitte wählen Si
 ### <a name="option-1-register-your-application-express-mode"></a>Option 1: Registrieren Sie Ihre Anwendung (Expressmodus)
 Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* registrieren:
 
-1.  Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=singlePageApp&appTech=javascriptSpa&step=configure).
+1.  Registrieren Sie Ihre Anwendung über das [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app?appType=singlePageApp&appTech=javascriptSpa&step=configure).
 2.  Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
-3.  Stellen Sie sicher, dass die Option *Geführtes Setup* aktiviert ist.
+3.  Stellen Sie sicher, dass die Option für **Angeleitetes Setup** aktiviert ist.
 4.  Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
 
 ### <a name="option-2-register-your-application-advanced-mode"></a>Option 2: Registrieren Sie Ihre Anwendung (Erweiterter Modus)
 
 1. Registrieren Sie Ihre Anwendung im [Microsoft-Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/portal/register-app).
-2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein. 
-3. Stellen Sie sicher, dass die Option *Geführtes Setup* deaktiviert ist.
-4.  Klicken Sie auf `Add Platform`, und wählen Sie dann `Web` aus.
-5. Fügen Sie die `Redirect URL` hinzu, die der URL der Anwendung Ihrem Webserver gemäß entspricht. Informationen über Anweisungen zum Festlegen/Abrufen der Umleitungs-URL in Visual Studio und Python finden Sie in den folgenden Abschnitten.
-6. Klicken Sie unten auf der Seite auf *Speichern*.
+2. Geben Sie einen Namen für Ihre Anwendung und Ihre E-Mail-Adresse ein.
+3. Stellen Sie sicher, dass die Option für **Angeleitetes Setup** aktiviert ist.
+4.  Klicken Sie auf **Plattform hinzufügen**, und wählen Sie dann die Option **Web**.
+5. Fügen Sie die **Umleitungs-URL** hinzu, die der URL der Anwendung gemäß Ihrem Webserver entspricht. Informationen über Anweisungen zum Festlegen und Abrufen der Umleitungs-URL in Visual Studio und Node finden Sie in den folgenden Abschnitten.
+6. Wählen Sie **Speichern**aus.
 
-> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>Visual Studio-Anweisungen zum Abrufen der Umleitungs-URL
-> Zum Abrufen Ihrer Umleitungs-URL befolgen Sie die folgenden Anweisungen:
-> 1.    Wählen Sie im *Projektmappen-Explorer* das Projekt aus. Untersuchen Sie das Fenster `Properties` (wenn es nicht angezeigt wird, drücken Sie `F4`).
-> 2.    Kopieren Sie den Wert von `URL` in die Zwischenablage:<br/> ![Projekteigenschaften](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    Wechseln Sie zurück zum *Portal für die Anwendungsregistrierung*, fügen Sie den Wert als `Redirect URL` ein, und klicken Sie auf „Speichern“.
+> #### <a name="setting-redirect-url-for-node"></a>Festlegen der Umleitungs-URL für Node
+> Für Node.js können Sie den Webserverport in der Datei *server.js* festlegen. In diesem Tutorial wird Port 30662 als Referenz verwendet. Sie können aber auch beliebige andere verfügbare Ports nutzen. Befolgen Sie in jedem Fall die nachstehenden Anweisungen zum Einrichten einer Umleitungs-URL in den Registrierungsinformationen der Anwendung:<br/>
+> - Wechseln Sie zurück zum *Portal für die Anwendungsregistrierung*, und legen Sie `http://localhost:30662/` als `Redirect URL` fest, oder verwenden Sie `http://localhost:[port]/`, wenn Sie einen benutzerdefinierten TCP-Port einsetzen (wobei *[port]* die benutzerdefinierte TCP-Portnummer ist), und klicken Sie auf „Speichern“.
 
 <p/>
 
-> #### <a name="setting-redirect-url-for-python"></a>Festlegen der Umleitungs-URL für Python
-> Für Python können Sie den Webserverport über die Befehlszeile festlegen. Diese ausführliche Anleitung verwendet den Port 8080. Sie können aber auch beliebige andere verfügbare Ports verwenden. Befolgen Sie in jedem Fall die nachstehenden Anweisungen zum Einrichten einer Umleitungs-URL in den Registrierungsinformationen der Anwendung:<br/>
-> - Wechseln Sie zurück zum *Portal für die Anwendungsregistrierung*, und legen Sie `http://localhost:8080/` als `Redirect URL` fest, oder verwenden Sie `http://localhost:[port]/`, wenn Sie einen benutzerdefinierten TCP-Port einsetzen (wobei *[port]* die benutzerdefinierte TCP-Portnummer ist), und klicken Sie auf „Speichern“.
+> #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>Visual Studio-Anleitung zum Abrufen der Umleitungs-URL
+> Führen Sie diese Schritte aus, um die Umleitungs-URL zu erhalten:
+> 1.    Wählen Sie im **Projektmappen-Explorer** das Projekt aus, und sehen Sie sich das **Eigenschaftenfenster** an. Wenn kein **Eigenschaftenfenster** angezeigt wird, können Sie **F4** drücken.
+> 2.    Kopieren Sie den Wert aus **URL** in die Zwischenablage:<br/> ![Projekteigenschaften](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3.    Wechseln Sie zurück zum *Portal für die Anwendungsregistrierung*, und fügen Sie den Wert als **Umleitungs-URL** ein. Wählen Sie anschließend **Speichern**.
 
 
 #### <a name="configure-your-javascript-spa"></a>Konfigurieren Ihrer JavaScript-SPA
 
-1.  Erstellen Sie eine Datei namens `msalconfig.js` mit den Informationen für die Anwendungsregistrierung. Wenn Sie Visual Studio verwenden, wählen Sie das Projekt aus (Stammordner des Projekts), klicken Sie mit der rechten Maustaste, und wählen Sie Folgendes aus: `Add` > `New Item` > `JavaScript File`. Vergeben Sie den Namen `msalconfig.js`.
-2.  Fügen Sie Ihrer Datei `msalconfig.js` den folgenden Code hinzu:
+1.  Fügen Sie in der Datei `index.html`, die beim Einrichten des Projekts erstellt wurde, die Informationen für die Anwendungsregistrierung hinzu. Fügen Sie in den Tags `<script></script>` oben im Text der Datei `index.html` den folgenden Code hinzu:
 
 ```javascript
-var msalconfig = {
-    clientID: "Enter_the_Application_Id_here",
-    redirectUri: location.origin
+var applicationConfig = {
+    clientID: "[Enter the application Id here]",
+    graphScopes: ["user.read"],
+    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 ```
 <ol start="3">
 <li>
-Ersetzen Sie <code>Enter_the_Application_Id_here</code> durch die Anwendungs-ID, die Sie gerade registriert haben.
+Ersetzen Sie <code>Enter the application Id here</code> durch die Anwendungs-ID, die Sie gerade registriert haben.
 </li>
 </ol>

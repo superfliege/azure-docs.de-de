@@ -3,7 +3,7 @@ title: 'Vergleich: Azure AD v2.0-Endpunkt und v1.0-Endpunkt | Microsoft-Dokument
 description: Machen Sie sich mit den Unterschieden zwischen dem Azure AD v2.0-Endpunkt und dem v1.0-Endpunkt vertraut
 services: active-directory
 documentationcenter: ''
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/27/2018
 ms.author: andret
-ms.reviewer: hirsin, celested
+ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: 02c7edc84d2ac3a91c33d8f266d022db5cd5cb40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948956"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406531"
 ---
-# <a name="comparing-the-azure-ad-v20-endpoint-with-v10-endpoint"></a>Vergleich: Azure AD v2.0-Endpunkt und v1.0-Endpunkt
+# <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Vergleich: Azure AD v2.0-Endpunkt und v1.0-Endpunkt
 
 Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede zwischen v1.0- und v2.0-Endpunkten kennen. Unten sind die Hauptunterschiede sowie einige vorhandene Einschränkungen für den v2.0-Endpunkt aufgeführt.
 
 > [!NOTE]
-> Nicht alle Szenarien und Features von Azure AD werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](#limitations), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Nicht alle Szenarien und Funktionen von Azure Active Directory (Azure D) werden vom v2.0-Endpunkt unterstützt. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](#limitations), um zu bestimmen, ob Sie den v2.0-Endpunkt verwenden sollten.
 
 ## <a name="who-can-sign-in"></a>Wer kann sich anmelden?
 
@@ -37,7 +37,7 @@ Beim Entwickeln einer neuen Anwendung ist es wichtig, dass Sie die Unterschiede 
 
 * Beim v1.0-Endpunkt ist die Anmeldung an Ihrer Anwendung (Azure AD) nur mit Geschäfts-, Schul- und Unikonten möglich.
 
-* Mit dem v2.0-Endpunkt können sich Geschäfts-, Schul- und Unikonten über Azure Active Directory und persönliche Konten (MSA) (hotmail.com, outlook.com, msn.com) anmelden.
+* Mit dem v2.0-Endpunkt können sich Geschäfts-, Schul- und Unikonten über Azure AD und persönliche Konten (MSA) (hotmail.com, outlook.com, msn.com) anmelden.
 
 * Sowohl für v1.0- als auch für v2.0-Endpunkte werden außerdem Anmeldungen von *[Gastbenutzern](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* eines Azure AD-Verzeichnisses für Anwendungen akzeptiert, die für *[einen Mandanten](single-and-multi-tenant-apps.md)* konfiguriert sind, oder für Anwendungen mit *mehreren Mandanten*, für die ein Verweis auf den mandantenspezifischen Endpunkt (`https://login.microsoftonline.com/{TenantId_or_Name}`) konfiguriert ist.
 
@@ -214,15 +214,13 @@ Die Bibliotheksunterstützung für den v2.0-Endpunkt ist gegenwärtig eingeschr�
 
 Der v2.0-Endpunkt unterstützt keinen SAML- oder WS-Verbund, sondern nur Open ID Connect und OAuth 2.0. Nicht alle Features und Funktionen von OAuth-Protokollen wurden in den v2.0-Endpunkt integriert.
 
-Die folgenden Protokollfeatures und -funktionen sind aktuell für den v2. 0-Endpunkt *nicht verfügbar*:
+Die folgenden Protokollfeatures und -funktionen sind derzeit für den v2. 0-Endpunkt *nicht verfügbar* oder werden *nicht unterstützt*:
 
-* Derzeit wird der Anspruch `email` nur zurückgegeben, wenn ein optionaler Anspruch konfiguriert und „scope=email“ in der Anforderung angegeben wurde. Allerdings wird sich dieses Verhalten ändern, da der v2.0-Endpunkt aktualisiert wird, um mehr Kompatibilität mit den Standards Open ID Connect und OAuth 2.0 herzustellen.
+* Der Anspruch `email` wird nur zurückgegeben, wenn ein optionaler Anspruch konfiguriert und „scope=email“ in der Anforderung angegeben wurde. Allerdings wird sich dieses Verhalten ändern, wenn der v2.0-Endpunkt aktualisiert wird, um mehr Kompatibilität mit den Standards Open ID Connect und OAuth 2.0 herzustellen.
 
 * Die Ausgabe von Rollen- oder Gruppenansprüchen in ID-Token wird vom v2.0-Endpunkt nicht unterstützt.
 
-* [OAuth 2.0 Resource Owner Password Credentials Grant](https://tools.ietf.org/html/rfc6749#section-4.3) (Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers) wird vom v2.0-Endpunkt nicht unterstützt.
-
-Darüber hinaus unterstützt der v2.0-Endpunkt keine SAML- oder WS-Verbundprotokolle.
+* [OAuth 2.0 Resource Owner Password Credentials Grant](https://tools.ietf.org/html/rfc6749#section-4.3) (OAuth 2.0: Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers) wird vom v2.0-Endpunkt nicht unterstützt.
 
 Informationen zum Umfang der vom v2.0-Endpunkt unterstützten Protokollfunktionen finden Sie in der Referenz [v2.0-Protokolle – OAuth 2.0 und OpenID Connect](active-directory-v2-protocols.md).
 

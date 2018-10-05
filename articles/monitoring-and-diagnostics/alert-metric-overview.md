@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 1ec47ddf5769dd8ed624277a86db57f449581b90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948688"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405919"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
-Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können Plattformmetriken, benutzerdefinierte Metriken (Vorschau), gängige Protokolle von Log Analytics, die in Metriken umgewandelt wurden, und Standardmetriken von Application Insights sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet, d. h. sie senden Benachrichtigungen nur dann aus, wenn sich der Zustand ändert.
+Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können Plattformmetriken, [benutzerdefinierte Metriken](metrics-custom-overview.md), [gängige Protokolle von Log Analytics, die in Metriken umgewandelt wurden](monitoring-metric-alerts-logs.md), und Standardmetriken von Application Insights sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
 
 ## <a name="how-do-metric-alerts-work"></a>Funktionsweise von Metrikwarnungen
 
@@ -75,11 +75,17 @@ Angenommen, Sie verfügen über eine Web-App, die eine massive Nachfrage verzeic
 
 Diese Regel überwacht automatisch alle Werte für die Instanz, d. h. Sie können Ihre Instanzen überwachen, sobald sie auftreten, ohne Ihre Metrikwarnungsregel erneut ändern zu müssen.
 
-### <a name="monitoring-multiple-resource-using-metric-alerts"></a>Überwachen mehrerer Ressourcen mithilfe von Metrikwarnungen
+### <a name="monitoring-multiple-resources-using-metric-alerts"></a>Überwachen mehrerer Ressourcen mithilfe von Metrikwarnungen
 
-Wie Sie bereits im vorherigen Abschnitt gesehen haben, ist es möglich, eine einzelne Metrikwarnungsregel zu verwenden, die jede einzelne Dimensionskombination (d. h. eine metrische Zeitreihe) überwacht. Sie sind jedoch nach wie vor darauf beschränkt, eine Ressource nach der anderen zu bearbeiten. Metrikwarnungen unterstützen jetzt auch die Überwachung mehrerer Ressourcen mit einer Regel in der Vorschau. Wenn in Ihrem Abonnement 100 VMs enthalten sind, können Sie deren Überwachung mit diesem neuen Feature schnell einrichten. 
+Wie Sie bereits im vorherigen Abschnitt gesehen haben, ist es möglich, eine einzelne Metrikwarnungsregel zu verwenden, die jede einzelne Dimensionskombination (d. h. eine metrische Zeitreihe) überwacht. Vorher galt weiterhin die Beschränkung, dass eine Ressource nach der anderen bearbeitet werden muss. Azure Monitor unterstützt auch die Überwachung von mehreren Ressourcen mit einer Metrikwarnungsregel. Dieses Feature befindet sich derzeit in der Vorschauphase und wird nur auf virtuellen Computern unterstützt. Mit nur einer Metrikwarnung können die Ressourcen einer Azure-Region überwacht werden.
 
-Diese Funktion steht derzeit als Vorschau zur Verfügung. Die Erstellung von Metrikwarnungsregeln zur Überwachung mehrerer Ressourcen wird derzeit nicht vom Azure-Portal unterstützt. Sie können diese Regeln über Azure Resource Manager-Vorlagen erstellen.
+Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnung auf drei Arten angeben:
+
+- Als Liste mit virtuellen Computern einer Azure-Region unter einem Abonnement
+- Alle virtuellen Computer (in einer Azure-Region) in einer oder mehreren Ressourcengruppen eines Abonnements
+- Alle virtuellen Computer (in einer Azure-Region) unter einem Abonnement
+
+Die Erstellung von Metrikwarnungsregeln zur Überwachung mehrerer Ressourcen wird derzeit nicht vom Azure-Portal unterstützt. Sie können diese Regeln mit [Azure Resource Manager-Vorlagen](monitoring-create-metric-alerts-with-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources) erstellen. Sie erhalten für jeden virtuellen Computer gesonderte Benachrichtigungen. 
 
 ## <a name="typical-latency"></a>Typische Wartezeit
 

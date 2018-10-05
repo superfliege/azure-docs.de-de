@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b02f1b04756f1e3f01426e58c5f8c625cb746f05
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143647"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163901"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
@@ -93,11 +93,18 @@ Dieser Fehler tritt auf, wenn der Name des Abonnements ungültig ist oder der Az
 
 Führen Sie die folgenden Schritte aus, um zu ermitteln, ob die Authentifizierung in Azure richtig erfolgt ist und ob Sie Zugriff auf das Abonnement haben, das Sie auswählen möchten:  
 
-1. Achten Sie darauf, **Add-AzureAccount** auszuführen, bevor Sie das Cmdlet **Select-AzureSubscription** ausführen.  
-2. Wenn diese Fehlermeldung weiterhin angezeigt wird, ändern Sie Ihren Code, indem Sie das Cmdlet **Get-AzureSubscription** nach dem Cmdlet **Add-AzureAccount** hinzufügen und dann den Code ausführen. Überprüfen Sie jetzt, ob die Ausgabe von Get-AzureSubscription Ihre Abonnementdetails enthält.  
+1. Achten Sie darauf, das Cmdlet **Add-AzureAccount** auszuführen, bevor Sie das Cmdlet **Select-AzureSubscription** ausführen.  
+2. Wenn diese Fehlermeldung weiterhin angezeigt wird, sollten Sie Ihren Code ändern, indem Sie den Parameter **-AzureRmContext** nach dem Parameter **Add-AzureAccount** hinzufügen und dann den Code ausführen.
 
-   * Falls in der Ausgabe keine Abonnementdetails angezeigt werden, bedeutet dies, dass das Abonnement noch nicht initialisiert wurde.  
-   * Wenn Sie die Abonnementdetails in der Ausgabe angezeigt werden, bestätigen Sie mithilfe des Cmdlets **Select-AzureSubscription**, dass Sie den richtigen Abonnementnamen bzw. die richtige ID verwenden.
+   ```powershell
+   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
+   $context = Get-AzureRmContext
+
+   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
+   ```
 
 ### <a name="auth-failed-mfa"></a>Szenario: Fehler bei der Authentifizierung bei Azure, da die mehrstufige Authentifizierung aktiviert ist
 
@@ -151,7 +158,7 @@ Das untergeordnete Runbook verwendet beim Ausführen nicht den richtigen Kontext
 
 #### <a name="resolution"></a>Lösung
 
-Wenn Sie mit mehreren Abonnements arbeiten, geht beim Aufrufen untergeordneter Runbooks möglicherweise der Abonnementkontext verloren. Um sicherzustellen, dass der Abonnementkontext an die untergeordneten Runbooks übergeben wird, fügen Sie den Parameter `DefaultProfile` zum Cmdlet hinzu, und übergeben Sie darin den Kontext.
+Wenn Sie mit mehreren Abonnements arbeiten, geht beim Aufrufen untergeordneter Runbooks möglicherweise der Abonnementkontext verloren. Um sicherzustellen, dass der Abonnementkontext an die untergeordneten Runbooks übergeben wird, fügen Sie den Parameter `AzureRmContext` zum Cmdlet hinzu, und übergeben Sie darin den Kontext.
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
@@ -171,7 +178,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRmContext $AzureContext `
     –Parameters $params –wait
 ```
 
@@ -216,17 +223,19 @@ Dieser Fehler kann die folgenden Gründe haben:
 
 1. Arbeitsspeicherlimit. Es gibt dokumentierte Beschränkungen, wie viel Speicherplatz den [Automatisierungsdienstgrenzwerten](../../azure-subscription-service-limits.md#automation-limits) einer Sandbox zugeordnet sind. Ein Auftrag schlägt also möglicherweise fehl, wenn mehr als 400 MB Arbeitsspeicher verwendet werden.
 
-2. Modul inkompatibel. Dies kann auftreten, wenn Modulabhängigkeiten nicht korrekt sind. Wenn dies der Fall ist, gibt Ihr Runbook in der Regel die Benachrichtigung „Befehl wurde nicht gefunden“ oder „Der Parameter kann nicht gebunden werden“.
+1. Netzwerksockets. Azure-Sandboxes sind auf 1.000 gleichzeitige Netzwerksockets beschränkt, wie unter [Automatisierungsgrenzwerte](../../azure-subscription-service-limits.md#automation-limits) beschrieben.
+
+1. Modul inkompatibel. Dies kann auftreten, wenn Modulabhängigkeiten nicht korrekt sind. Wenn dies der Fall ist, gibt Ihr Runbook in der Regel die Benachrichtigung „Befehl wurde nicht gefunden“ oder „Der Parameter kann nicht gebunden werden“.
 
 #### <a name="resolution"></a>Lösung
 
 Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 
-* Empfohlene Methoden, die innerhalb des Arbeitsspeichergrenzwerts funktionieren, sollen die Workload zwischen mehreren Runbooks aufteilen und nicht so viel Daten im Speicher verarbeiten, keine unnötige Ausgabe aus den Runbooks schreiben oder ermitteln, wie viele Prüfpunkt Sie in Ihre PowerShell-Workflow-Runbooks schreiben.  
+* Die empfohlenen Methoden für die Einhaltung des Arbeitsspeichergrenzwerts sind die Aufteilung der Workload zwischen mehreren Runbooks und die Verarbeitung von weniger Daten im Arbeitsspeicher, die Vermeidung des Schreibens von unnötigen Ausgaben aus den Runbooks oder die Ermittlung, wie viele Prüfpunkte Sie in Ihre PowerShell-Workflow-Runbooks schreiben. Sie können die clear-Methode verwenden, z.B. `$myVar.clear()`, um die Variable zu löschen, und dann `[GC]::Collect()` verwenden, um sofort die Garbage Collection durchzuführen. Auf diese Weise wird der Speicherbedarf Ihres Runbooks während der Laufzeit reduziert.
 
 * Aktualisieren Sie Ihre Azure-Module, indem Sie die Schritte unter [Aktualisieren von Azure PowerShell-Modulen in Azure Automation](../automation-update-azure-modules.md) befolgen.  
 
-* Eine andere Lösung ist das Ausführen des Runbooks in einem [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybrid Worker unterliegen nicht den von der [gleichmäßigen Verteilung](../automation-runbook-execution.md#fair-share) in Azure-Sandboxes vorgegebenen Grenzwerten.
+* Eine andere Lösung ist das Ausführen des Runbooks in einem [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybrid Worker unterliegen nicht den vom Arbeitsspeicher und Netzwerk vorgegebenen Grenzwerten, die für Azure-Sandboxes gelten.
 
 ### <a name="fails-deserialized-object"></a>Szenario: Runbookfehler aufgrund eines deserialisierten Objekts
 

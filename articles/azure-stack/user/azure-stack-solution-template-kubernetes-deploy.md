@@ -11,24 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 82d99f575837b47a29bd6d8330ee58f442b6110a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977535"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409353"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Bereitstellen von Kubernetes in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes in Azure Stack befindet sich in der Vorschauphase. Ihr Azure Stack-Operator muss Zugriff auf das Marketplace-Element für den Kubernetes-Cluster anfordern, um die Anweisungen in diesem Artikel auszuführen.
+> Kubernetes in Azure Stack befindet sich in der Vorschauphase.
 
-Im folgenden Artikel wird die Verwendung einer Azure Resource Manager-Lösungsvorlage zum Bereitstellen der Ressourcen für Kubernetes in einem einzelnen, koordinierten Vorgang erläutert. Sie müssen die erforderlichen Informationen zu Ihrer Azure Stack-Installation sammeln, die Vorlage generieren und dann die Bereitstellung in der Cloud ausführen. Beachten Sie, dass die Vorlage nicht derselbe verwaltete AKS-Dienst ist, der im globalen Azure angeboten wird, sondern dem ACS-Dienst ähnlicher ist.
+Im folgenden Artikel wird die Verwendung einer Azure Resource Manager-Lösungsvorlage zum Bereitstellen der Ressourcen für Kubernetes in einem einzelnen, koordinierten Vorgang erläutert. Sie müssen die erforderlichen Informationen zu Ihrer Azure Stack-Installation sammeln, die Vorlage generieren und dann die Bereitstellung in der Cloud ausführen. Beachten Sie, dass die Vorlage nicht derselbe verwaltete AKS-Dienst ist, der in der globalen Azure-Umgebung angeboten wird.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes und Container
 
@@ -54,7 +54,9 @@ Stellen Sie zum Einstieg sicher, dass Sie über die erforderlichen Berechtigunge
 
 1. Stellen Sie sicher, dass Sie ein gültiges Abonnement im Azure Stack-Mandantenportal besitzen und ausreichend öffentliche IP-Adressen zum Hinzufügen neuer Anwendungen verfügbar sind.
 
-    Der Cluster kann nicht in einem Azure Stack-Abonnement vom Typ **Administrator** bereitgestellt werden. Sie müssen ein Abonnement des Typs Benutzer verwenden. 
+    Der Cluster kann nicht in einem Azure Stack-Abonnement vom Typ **Administrator** bereitgestellt werden. Sie müssen ein Abonnement vom Typ **Benutzer** verwenden. 
+
+1. Falls der Kubernetes-Cluster auf Ihrem Marketplace nicht verfügbar ist, können Sie sich an den Administrator von Azure Stack wenden.
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>Erstellen eines Dienstprinzipals in Azure AD
 
@@ -113,9 +115,23 @@ Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressource
 
     ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. Wählen Sie in „Kubernetes erstellen“ die Option **Grundlagen** aus.
+### <a name="1-basics"></a>1. Grundlagen
+
+1. Wählen Sie unter „Kubernetes-Cluster erstellen“ die Option **Grundlagen**.
 
     ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+
+1. Wählen Sie die ID für Ihr **Abonnement** aus.
+
+1. Geben Sie den Namen einer neuen Ressourcengruppe ein, oder wählen Sie eine vorhandene Ressourcengruppe aus. Der Ressourcenname muss alphanumerisch und in Kleinbuchstaben angegeben sein.
+
+1. Wählen Sie den **Standort** der Ressourcengruppe aus. Dies ist die Region, die Sie für die Azure Stack-Installation auswählen.
+
+### <a name="2-kubernetes-cluster-settings"></a>2. Einstellungen für Kubernetes-Cluster
+
+1. Wählen Sie unter „Kubernetes Cluster erstellen“ die Option **Kubernetes Cluster Settings** (Einstellungen für Kubernetes-Cluster).
+
+    ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
 1. Geben Sie unter **Linux VM Admin Username** (Benutzername des Linux-VM-Administrators) einen Namen ein. Hierbei handelt es sich um den Benutzernamen für die virtuellen Linux-Computer, die Teil des Kubernetes-Clusters und des DVM (Deployment Virtual Machine, virtueller Computer für die Bereitstellung) sind.
 
@@ -126,28 +142,29 @@ Erteilen Sie dem Dienstprinzipal Zugriff auf Ihr Abonnement, sodass er Ressource
     > [!Note]  
     > Verwenden Sie für jeden Cluster ein neues, eindeutiges DNS-Präfix des Masterprofils.
 
-1. Geben Sie unter **Agent Pool Profile Count** (Agentpool-Profilanzahl) einen Wert ein. Er gibt die Anzahl von Agents im Cluster an. Sie können einen Wert von 1 bis 4 angeben.
+1. Wählen Sie **Kubernetes Master Pool Profile Count** (Kubernetes-Masterpool-Profilanzahl). Die Anzahl gibt die Anzahl von Knoten im Masterpool an. Sie können einen Wert von 1 bis 7 angeben. Dieser Wert sollte eine ungerade Zahl sein.
 
-1. Geben Sie unter **Service Principal ClientId** (Dienstprinzipal-ClientId) einen Wert ein. Dieser wird vom Kubernetes Azure-Cloudanbieter verwendet.
+1. Wählen Sie **The VMSize of the Kubernetes master VMs** (VM-Größe der Kubernetes-Master-VMs).
 
-1. Geben Sie unter **Service Principal Client Secret** das Clientgeheimnis des Dienstprinzipals ein, das Sie beim Erstellen der Dienstprinzipalanwendung generiert haben.
+1. Wählen Sie **Kubernetes Node Pool Profile Count** (Kubernetes-Knotenpool-Profilanzahl). Er gibt die Anzahl von Agents im Cluster an. 
+
+1. Wählen Sie **Storage Profile** (Speicherprofil). Sie können **Blob Disk** (Blobdatenträger) oder **Managed Disk** (Verwalteter Datenträger) wählen. Hiermit wird die VM-Größe der Kubernetes-Knoten-VMs angegeben. 
+
+1. Geben Sie unter **Service Principal ClientId** (Dienstprinzipal-ClientId) einen Wert ein. Dieser wird vom Kubernetes Azure-Cloudanbieter verwendet. Die als Anwendungs-ID identifizierte Client-ID, wenn Sie Ihren Dienstprinzipal erstellt haben.
+
+1. Geben Sie unter **Clientgeheimnis des Dienstprinzipals** das Clientgeheimnis des Dienstprinzipals ein, das Sie beim Erstellen Ihres Dienstprinzipals generiert haben.
 
 1. Geben Sie die **Version des Kubernetes Azure Cloudanbieters** ein. Dabei handelt es sich um die Version des Kubernetes Azure-Anbieters. Azure Stack veröffentlicht für jede Azure Stack-Version einen benutzerdefinierten Kubernetes-Build.
 
-1. Wählen Sie die ID für Ihr **Abonnement** aus.
+### <a name="3-summary"></a>3. Zusammenfassung
 
-1. Geben Sie den Namen einer neuen Ressourcengruppe ein, oder wählen Sie eine vorhandene Ressourcengruppe aus. Der Ressourcenname muss alphanumerisch und in Kleinbuchstaben angegeben sein.
+1. Wählen Sie „Zusammenfassung“. Auf dem Blatt wird eine Überprüfungsnachricht für Ihre Konfigurationseinstellungen des Kubernetes-Clusters angezeigt.
 
-1. Wählen Sie den **Standort** der Ressourcengruppe aus. Dies ist die Region, die Sie für die Azure Stack-Installation auswählen.
+    ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
 
-### <a name="specify-the-azure-stack-settings"></a>Angeben der Einstellungen für Azure Stack
+2. Überprüfen Sie Ihre Einstellungen.
 
-1. Wählen Sie **Azure Stack Stamp Settings** (Azure Stack-Stempeleinstellungen) aus.
-
-    ![Bereitstellen einer Lösungsvorlage](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
-
-1. Geben Sie unter **Tenant Arm Endpoint** (ARM-Mandantenendpunkt) den Endpunkt ein. Dabei handelt es sich um den Azure Resource Manager-Endpunkt für die Verbindungsherstellung, um die Ressourcengruppe für den Kubernetes-Cluster zu erstellen. Bei einem integrierten System müssen Sie den Endpunkt vom Azure Stack-Bediener erfragen. Für das Azure Stack Development Kit (ASDK) können Sie `https://management.local.azurestack.external` verwenden.
-
+3. Wählen Sie **OK**, um Ihren Cluster bereitzustellen.
 
 ## <a name="connect-to-your-cluster"></a>Herstellen einer Clusterverbindung
 
