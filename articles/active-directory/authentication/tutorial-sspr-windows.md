@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920984"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166876"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -45,8 +45,6 @@ Die Bereitstellung der Konfigurationsänderung zum Aktivieren der Kennwortzurüc
    * Geben Sie optional eine aussagekräftige Beschreibung des Profils an.
    * Plattform **Windows 10 und höher**
    * Profiltyp **Benutzerdefiniert**
-
-   ![CreateProfile][CreateProfile]
 
 3. Konfigurieren von **Einstellungen**
    * Fügen Sie mit **Hinzufügen** die folgende OMA-URI-Einstellung hinzu, um den Link „Kennwort zurücksetzen“ zu aktivieren.
@@ -100,7 +98,6 @@ Was ändert sich für die Benutzer, nachdem die Richtlinie nun konfiguriert und 
 ![LoginScreen][LoginScreen]
 
 Wenn Benutzer versuchen, sich anzumelden, wird jetzt der Link „Kennwort zurücksetzen“ angezeigt. Mit diesem Link wird die Oberfläche für die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm geöffnet. Mit dieser Funktion können Benutzer ihr Kennwort zurücksetzen, ohne ein anderes Gerät für den Zugriff auf einen Webbrowser verwenden zu müssen.
-Wenn Benutzer versuchen, sich anzumelden, wird jetzt der Link „Kennwort zurücksetzen“ angezeigt. Mit diesem Link wird die Oberfläche für die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm geöffnet. Mit dieser Funktion können Benutzer ihr Kennwort zurücksetzen, ohne ein anderes Gerät für den Zugriff auf einen Webbrowser verwenden zu müssen.
 
 Eine Anleitung für Benutzer zur Verwendung dieses Features befindet sich unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
 
@@ -116,6 +113,10 @@ Beim Testen dieser Funktionalität per Remotedesktop wird der Link „Kennwort z
 
 Wenn der Windows-Sperrbildschirm mithilfe eines Registrierungsschlüssels oder einer Gruppenrichtlinie deaktiviert wurde, ist **Kennwort zurücksetzen** nicht verfügbar.
 
+Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zum Clienttyp, für die das Kennwort zurückgesetzt wurde.
+
+![Beispiel: Kennwortzurücksetzung auf dem Anmeldebildschirm im Azure AD-Überwachungsprotokoll](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die im Rahmen dieses Tutorials konfigurierte Funktion nicht mehr nutzen möchten, löschen Sie das von Ihnen erstellte Intune-Gerätekonfigurationsprofil bzw. den Registrierungsschlüssel.
@@ -127,6 +128,5 @@ In diesem Tutorial haben Sie Benutzern das Zurücksetzen ihrer Kennwörter über
 > [!div class="nextstepaction"]
 > [Tutorial: Use risk events to trigger Multi-Factor Authentication and password changes](tutorial-risk-based-sspr-mfa.md) (Tutorial: Auslösen von Multi-Factor Authentication und Kennwortänderungen mithilfe von Risikoereignissen)
 
-[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Erstellen eines Intune-Gerätekonfigurationsprofils zum Aktivieren des Links „Kennwort zurücksetzen“ auf dem Windows 10-Anmeldebildschirm"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Zuweisen der Intune-Gerätekonfigurationsrichtlinie zu einer Gruppe mit Windows 10-Geräten"
 [LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Link „Kennwort zurücksetzen“ auf dem Windows 10-Anmeldebildschirm"

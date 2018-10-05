@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 727d38cae6c2f98d2922d5760f116ab85d75b8ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983513"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221649"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -31,9 +31,7 @@ Die konfigurierten Firewallregeln werden auf den Netzwerkdatenverkehr angewendet
 
 Anwendungs- und Netzwerkregeln werden in *Regelsammlungen* gespeichert. Eine Regelsammlung ist eine Liste von Regeln mit gleicher Aktion und Priorität.  Eine Netzwerkregelsammlung ist eine Liste von Netzwerkregeln; eine Anwendungsregelsammlung ist eine Liste von Anwendungsregeln.
 
-Azure Firewall verfügt nicht über ein Konzept mit Regeln für eingehenden und ausgehenden Datenverkehr. Es gibt Anwendungsregeln und Netzwerkregeln, die auf den gesamten Datenverkehr angewendet werden, der für die Firewall eingeht. Die Netzwerkregeln werden zuerst angewendet, und anschließend die Anwendungsregeln. Diese Regeln können dazu führen, dass ein Vorgang beendet wird.
-
-Wenn sich beispielsweise für eine Netzwerkregel eine Übereinstimmung ergibt, wird das Paket von den Anwendungsregeln nicht ausgewertet. Wenn sich keine Übereinstimmung für eine Netzwerkregel ergibt und als Paketprotokoll HTTP/HTTPS verwendet wird, wird das Paket von den Anwendungsregeln ausgewertet. Falls sich immer noch keine Übereinstimmung ergibt, wird das Paket von der Regelsammlung der Infrastruktur ausgewertet. Wenn sich auch hierbei keine Übereinstimmung ergibt, wird das Paket standardmäßig abgelehnt.
+Azure Firewall verfügt über NAT-Regeln, Netzwerkregeln und Anwendungsregeln. Weitere Informationen zur Logik für die Azure Firewall-Regelverarbeitung finden Sie unter [Logik für die Azure Firewall-Regelverarbeitung](rule-processing.md).
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -215,9 +213,6 @@ Konfigurieren Sie die ausgehende Standardroute für das Subnetz **Workload-SN** 
 11. Klicken Sie auf **Hinzufügen**.
 
 Azure Firewall enthält eine integrierte Regelsammlung für Infrastruktur-FQDNs, die standardmäßig zulässig sind. Diese FQDNs sind plattformspezifisch und können nicht für andere Zwecke verwendet werden. Weitere Informationen finden Sie unter [Infrastruktur-FQDNs](infrastructure-fqdns.md).
-
-> [!Note]
-> FQDN-Tags können derzeit nur mit Azure PowerShell und REST konfiguriert werden. [Klicken Sie hier](https://aka.ms/firewallapplicationrule), um weitere Informationen zu erhalten. 
 
 ## <a name="configure-network-rules"></a>Konfigurieren von Netzwerkregeln
 

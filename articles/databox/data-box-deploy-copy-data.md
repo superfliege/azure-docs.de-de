@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/25/2018
 ms.author: alkohli
-ms.openlocfilehash: 0204445464a9d61b4e25be1d71373ce8394b32f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957670"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161929"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Tutorial: Kopieren von Daten auf die Azure Data Box 
 
@@ -45,10 +45,10 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 ## <a name="connect-to-data-box"></a>Herstellen einer Verbindung mit der Data Box
 
 Je nach ausgewähltem Speicherkonto erstellt Data Box bis zu:
-- Drei Freigaben für jedes verknüpfte Speicherkonto (GPv1 und GPv2)
+- Drei Freigaben für jedes verknüpfte Speicherkonto für GPv1 und GPv2
 - Eine Freigabe für ein Premium- oder BLOB-Speicherkonto 
 
-Unter Blockblob- und Seitenblobfreigaben sind Entitäten der ersten Ebene Container, und Entitäten der zweiten Ebene sind Blobs. Unter Freigaben für Azure Files sind Entitäten der ersten Ebene Freigaben, und Entitäten der zweiten Ebene sind Dateien.
+Unter Blockblob- und Seitenblobfreigaben sind Entitäten der ersten Ebene Container, und Entitäten der zweiten Ebene sind Blobs. Unter Freigaben für Azure Files sind Entitäten erster Ebene Freigaben. Entitäten zweiter Ebene sind Dateien.
 
 Betrachten Sie das folgende Beispiel. 
 
@@ -233,7 +233,7 @@ Um die Datenintegrität zu gewährleisten, wird inline eine Prüfsumme berechnet
 
 Wenn Sie einen Linux-Hostcomputer verwenden, verwenden Sie ein Kopierhilfsprogramm wie Robocopy. Einige der verfügbaren Alternativen in Linux sind [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) oder [Ultracopier](https://ultracopier.first-world.info/).  
 
-Der cp-Befehl ist eine der besten Optionen zum Kopieren eines Verzeichnisses. Weitere Informationen zur Verwendung finden Sie auf den [Handbuchseiten zum cp-Befehl](http://man7.org/linux/man-pages/man1/cp.1.html).
+Der `cp`-Befehl ist eine der besten Optionen zum Kopieren eines Verzeichnisses. Weitere Informationen zur Verwendung finden Sie auf den [Handbuchseiten zum cp-Befehl](http://man7.org/linux/man-pages/man1/cp.1.html).
 
 Befolgen Sie die nachstehenden Richtlinien, wenn Sie die rsync-Option für einen Multithread-Kopiervorgang verwenden:
 
@@ -273,7 +273,7 @@ Der letzte Schritt ist die Vorbereitung des Geräts für den Versands. In diesem
    
     ![Versandvorbereitung 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
 
-2. Wenn die Prüfsumme nicht aktiviert wurde, können Sie dies jetzt noch nachholen. Wir empfehlen, die Prüfsummenüberprüfung auszuführen, um die Integrität Ihrer Daten sicherzustellen. Wenn Sie **Prüfsumme aktivieren** auswählen, wird die Prüfsummenberechnung ausgelöst. Diese kann je nach Größe Ihrer Daten einige Zeit in Anspruch nehmen. Klicken Sie auf **Vorbereitung starten**.
+2. Prüfsummen werden standardmäßig inline während der Vorbereitung für den Versand berechnet. Die Berechnung der Prüfsumme dauert je nach Größe Ihrer Daten einige Zeit. Klicken Sie auf **Vorbereitung starten**.
     1. Die Gerätefreigaben werden offline geschaltet, und das Gerät wird gesperrt, wenn der Versand vorbereitet wird.
         
         ![Versandvorbereitung 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9a2eb8ab4e3ee65e97de578c825bf106aee1b829
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480339"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040600"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Erstellen einer dynamischen Gruppe und Überprüfen des Status
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie im Azure-Portal eine Regel für die 
 
 ## <a name="to-create-a-group-membership-rule"></a>So erstellen Sie eine Regel für die Gruppenmitgliedschaft
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzerkontoadministrator konfiguriert ist.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das zur Rolle des globalen Administrators, Intune-Dienstadministrators oder Benutzerkontoadministrators in Ihrem Mandanten gehört.
 2. Wählen Sie **Gruppen** aus.
 3. Wählen Sie **Alle Gruppen** und **Neue Gruppe** aus.
 

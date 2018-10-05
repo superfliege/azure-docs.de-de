@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9fe18c5e9514d7b8ecc3e38b394ddb4fadcc4393
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303943"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452631"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -56,10 +56,10 @@ Nach der Installation der erforderlichen Komponenten werden Sie aufgefordert, di
 | Verbund mit AD FS |Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Die Benutzer werden für die Anmeldung jeweils an ihre lokale AD FS-Instanz umgeleitet, und die Authentifizierung erfolgt lokal. |
 | Verbund mit PingFederate|Benutzer können sich bei Microsoft Cloud Services wie Office 365 mit dem Kennwort anmelden, das sie auch in ihrem lokalen Netzwerk verwenden.  Die Benutzer werden für die Anmeldung jeweils zu ihrer lokalen PingFederate-Instanz umgeleitet, und die Authentifizierung erfolgt lokal. |
 | Nicht konfigurieren |Kein Feature für die Benutzeranmeldung wird installiert oder konfiguriert. Wählen Sie diese Option aus, wenn Sie bereits über einen Verbundserver eines Drittanbieters verfügen oder eine andere vorhandene Lösung eingesetzt wird. |
-|Einmaliges Anmelden aktivieren|Diese Option ist sowohl mit Kennwortsynchronisierung als auch mit Passthrough-Authentifizierung verfügbar und ermöglicht das einmalige Anmelden für Desktopbenutzer im Unternehmensnetzwerk. Weitere Informationen finden Sie unter [Einmaliges Anmelden](how-to-connect-sso.md). </br>Beachten Sie, dass diese Option für AD FS-Kunden nicht verfügbar ist, da AD FS bereits das einmalige Anmelden dieser Art ermöglicht</br>
+|Einmaliges Anmelden aktivieren|Diese Option ist sowohl mit Kennworthashsynchronisierung als auch mit Passthrough-Authentifizierung verfügbar und ermöglicht das einmalige Anmelden für Desktopbenutzer im Unternehmensnetzwerk. Weitere Informationen finden Sie unter [Einmaliges Anmelden](how-to-connect-sso.md). </br>Beachten Sie, dass diese Option für AD FS-Kunden nicht verfügbar ist, da AD FS bereits das einmalige Anmelden dieser Art ermöglicht</br>
 
 ### <a name="connect-to-azure-ad"></a>Stellen Sie eine Verbindung mit Azure AD her.
-Geben Sie im Bildschirm "Mit Azure AD verbinden" ein Konto und ein Kennwort für den globalen Administrator ein. Wenn Sie auf der vorherigen Seite **Verbund mit AD FS** ausgewählt haben, melden Sie sich nicht mit einem Konto in einer Domäne an, die Sie für den Verbund aktivieren möchten. Wir empfehlen Ihnen die Verwendung eines Kontos in der standardmäßigen Domäne **onmicrosoft.com** , die in Ihrem Azure AD-Verzeichnis enthalten ist.
+Geben Sie im Bildschirm "Mit Azure AD verbinden" ein Konto und ein Kennwort für den globalen Administrator ein. Wenn Sie auf der vorherigen Seite **Verbund mit AD FS** ausgewählt haben, melden Sie sich nicht mit einem Konto in einer Domäne an, die Sie für den Verbund aktivieren möchten. Wir empfehlen Ihnen die Verwendung eines Kontos in der standardmäßigen Domäne **onmicrosoft.com**, die in Ihrem Azure AD-Mandanten enthalten ist.
 
 Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD und wird nach Abschluss des Assistenten nicht mehr verwendet.  
 ![Benutzeranmeldung](./media/how-to-connect-install-custom/connectaad.png)
@@ -93,7 +93,7 @@ Auf dieser Seite können Sie die UPN-Domänen anzeigen, die in der lokalen AD DS
 ![Nicht überprüfte Domänen](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 Überprüfen Sie alle Domänen, die als **Nicht hinzugefügt** und **Nicht überprüft** markiert sind. Stellen Sie sicher, dass die verwendeten Domänen in Azure AD überprüft wurden. Klicken Sie auf das Symbol zum Aktualisieren, wenn Sie Ihre Domänen überprüft haben. Weitere Informationen finden Sie unter [Hinzufügen und Überprüfen der Domäne](../active-directory-domains-add-azure-portal.md).
 
-**userPrincipalName** : Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Die verwendeten Domänen, auch als UPN-Suffix bezeichnet, sollte in Azure AD überprüft werden, bevor die Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. So können Sie beispielsweise „email“ als Attribut mit der Anmelde-ID verwenden. Wenn Sie ein anderes Attribut als „userPrincipalName“ verwenden, wird dieses als **alternative ID**bezeichnet. Der Attributwert der alternativen ID muss dem RFC822-Standard entsprechen. Eine alternative ID kann sowohl für die Kennwortsynchronisierung als auch in einem Verbund verwendet werden. Das Attribut darf in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat.
+**userPrincipalName** : Das userPrincipalName-Attribut wird von Benutzern verwendet, wenn sie sich bei Azure AD und Office 365 anmelden. Die verwendeten Domänen, auch als UPN-Suffix bezeichnet, sollte in Azure AD überprüft werden, bevor die Benutzer synchronisiert werden. Microsoft empfiehlt, das Standardattribut „userPrincipalName“ beizubehalten. Wenn dieses Attribut nicht routingfähig ist und nicht überprüft werden kann, können Sie ein anderes Attribut auswählen. So können Sie beispielsweise „email“ als Attribut mit der Anmelde-ID verwenden. Wenn Sie ein anderes Attribut als „userPrincipalName“ verwenden, wird dieses als **alternative ID**bezeichnet. Der Attributwert der alternativen ID muss dem RFC822-Standard entsprechen. Eine alternative ID kann mit Kennworthashsynchronisierung, Pass-Through-Authentifizierung und Verbund verwendet werden. Das Attribut darf in Active Directory nicht als mehrwertiges Attribut definiert werden, auch wenn es nur einen einzelnen Wert hat.
 
 >[!NOTE]
 > Beim Aktivieren der Passthrough-Authentifizierung müssen Sie mindestens über eine verifizierte Domäne verfügen, um im Assistenten fortfahren zu können.
@@ -139,7 +139,7 @@ Das sourceAnchor-Attribut ist während der Lebensdauer eines Benutzerobjekts unv
 | Ich möchte den Quellanker durch Azure verwalten lassen | Wählen Sie diese Option aus, wenn Azure AD das Attribut für Sie auswählen soll. Wenn Sie diese Option auswählen, wendet der Azure AD Connect-Assistent die Auswahllogik für das sourceAnchor-Attribut an, die im Abschnitt [Azure AD Connect: Designkonzepte – Verwenden von ms-DS-ConsistencyGuid als sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor) beschrieben wird. Nach Abschluss der benutzerdefinierten Installation informiert der Assistent Sie darüber, welches Attribut als Quellankerattribut ausgewählt wurde. |
 | Ein bestimmtes Attribut | Wählen Sie diese Option aus, wenn Sie ein vorhandenes AD-Attribut als sourceAnchor-Attribut angeben möchten. |
 
-Da das Attribut nicht geändert werden kann, müssen Sie sorgfältig planen, welches Attribut Sie verwenden möchten. Hier empfiehlt sich "objectGUID". Dieses Attribut wird nicht geändert, es sei denn, das Benutzerkonto wird zwischen Gesamtstrukturen/Domänen verschoben. In einer Umgebung mit mehreren Gesamtstrukturen, in der Sie Konten zwischen Gesamtstrukturen verschieben, muss ein anderes Attribut verwendet werden, z. B. ein Attribut mit der Mitarbeiter-ID. Vermeiden Sie die Verwendung von Attributen, die sich ändern, wenn eine Person heiratet oder den Aufgabenbereich wechselt. Sie können keine Attribute mit einem @-signZeichen verwenden, sodass E-Mail-Adressen und Benutzerprinzipalnamen ungeeignet sind. Bei dem Attribut wird die Groß-/Kleinschreibung beachtet. Beim Verschieben von Objekten zwischen Gesamtstrukturen muss daher die Groß-/Kleinschreibung beibehalten werden. Binäre Attribute werden base64-codiert, andere Attributtypen bleiben dagegen unverschlüsselt. In Verbundszenarien und bei einigen Azure AD-Schnittstellen wird dieses Attribut auch als immutableID-Attribut bezeichnet. Weitere Informationen zum Quellanker finden Sie unter [Entwurfskonzepte](plan-connect-design-concepts.md#sourceanchor).
+Da das Attribut nicht geändert werden kann, müssen Sie sorgfältig planen, welches Attribut Sie verwenden möchten. Hier empfiehlt sich "objectGUID". Dieses Attribut wird nicht geändert, es sei denn, das Benutzerkonto wird zwischen Gesamtstrukturen/Domänen verschoben. Vermeiden Sie die Verwendung von Attributen, die sich ändern, wenn eine Person heiratet oder den Aufgabenbereich wechselt. Sie können keine Attribute mit einem @-signZeichen verwenden, sodass E-Mail-Adressen und Benutzerprinzipalnamen ungeeignet sind. Bei dem Attribut wird die Groß-/Kleinschreibung beachtet. Beim Verschieben von Objekten zwischen Gesamtstrukturen muss daher die Groß-/Kleinschreibung beibehalten werden. Binäre Attribute werden base64-codiert, andere Attributtypen bleiben dagegen unverschlüsselt. In Verbundszenarien und bei einigen Azure AD-Schnittstellen wird dieses Attribut auch als immutableID-Attribut bezeichnet. Weitere Informationen zum Quellanker finden Sie unter [Entwurfskonzepte](plan-connect-design-concepts.md#sourceanchor).
 
 ### <a name="sync-filtering-based-on-groups"></a>Synchronisierungsfilterung anhand von Gruppen
 Mit der Filterung nach Gruppen haben Sie die Möglichkeit, nur eine kleine Teilmenge von Objekten für einen Piloten zu synchronisieren. Erstellen Sie dazu in Ihrem lokalen Active Directory eine Gruppe für diesen Zweck. Fügen Sie anschließend Benutzer und Gruppen hinzu, die als direkte Mitglieder mit Azure AD synchronisiert werden sollen. Später können Sie Benutzer hinzufügen und entfernen, um die Liste mit den Objekten zu verwalten, die in Azure AD vorhanden sein sollen. Alle Objekte, die Sie synchronisieren möchten, müssen direkte Mitglieder der Gruppe sein. Benutzer, Gruppen, Kontakte und Computer/Geräte müssen jeweils direkte Mitglieder sein. Geschachtelte Gruppenmitgliedschaften werden nicht aufgelöst. Wenn Sie eine Gruppe als Mitglied hinzufügen, wird nur die Gruppe hinzugefügt, nicht aber ihre Mitglieder.
@@ -220,7 +220,7 @@ Auf einem Computer mit den Gruppenrichtlinien-Verwaltungstools:
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-    
+
 
 5.  Es sollte in etwa wie folgt aussehen:  
 ![Intranetzonen](./media/how-to-connect-install-custom/sitezone.png)
@@ -382,7 +382,7 @@ Um zu überprüfen, ob die End-to-End-Authentifizierung erfolgreich war, sollten
 ## <a name="troubleshooting"></a>Problembehandlung
 Der folgende Abschnitt enthält Details zur Problembehandlung sowie Informationen, die hilfreich sind, wenn bei der Installation von Azure AD Connect Probleme auftreten.
 
-### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>“The ADSync database already contains data and cannot be overwritten” (Die ADSync-Datenbank enthält bereits Daten und kann nicht überschrieben werden) 
+### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>“The ADSync database already contains data and cannot be overwritten” (Die ADSync-Datenbank enthält bereits Daten und kann nicht überschrieben werden)
 Wenn Sie die benutzerdefinierte Installation von Azure AD Connect durchführen und die Option **Use an existing SQL server** (Vorhandenen SQL-Server verwenden) auf der Seite **Install required components** (Erforderliche Komponenten installieren) verwenden, wird unter Umständen der folgende Fehler angezeigt: **The ADSync database already contains data and cannot be overwritten. Please remove the existing database and try again.** (Die ADSync-Datenbank enthält bereits Daten und kann nicht überschrieben werden. Entfernen Sie die vorhandene Datenbank, und versuchen Sie es noch mal.)
 
 ![Error](./media/how-to-connect-install-custom/error1.png)
@@ -393,7 +393,7 @@ Dies tritt in der Regel nach der Deinstallation von Azure AD Connect auf.  Die D
 
 Um dieses Problem zu beheben, stellen Sie zunächst sicher, dass die **ADSync**-Datenbank, die von Azure AD Connect vor der Deinstallation verwendet wurde, nicht mehr verwendet wird.
 
-Als Nächstes empfiehlt es sich, dass Sie die Datenbank vor dem Löschen sichern. 
+Als Nächstes empfiehlt es sich, dass Sie die Datenbank vor dem Löschen sichern.
 
 Zu guter Letzt müssen Sie die Datenbank löschen.  Verwenden Sie hierfür **Microsoft SQL Server Management Studio**, und stellen Sie eine Verbindung mit der SQL-Instanz her. Suchen Sie die **ADSync**-Datenbank, klicken Sie mit der rechten Maustaste darauf, und wählen Sie im Kontextmenü die Option **Löschen**.  Klicken Sie anschließend zum Löschen auf die Schaltfläche **OK**.
 

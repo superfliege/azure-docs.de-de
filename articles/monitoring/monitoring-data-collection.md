@@ -7,17 +7,17 @@ manager: carmonm
 editor: tysonn
 ms.service: monitoring
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: d71dc77eac89fef3ae7f8aeb69a05197456ac865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962929"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406039"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Von Azure Monitor gesammelte Überwachungsdaten
 [Azure Monitor](../azure-monitor/overview.md) ist ein Dienst, der Sie bei der Überwachung Ihrer Anwendungen und der Ressourcen, auf denen sie aufbauen, unterstützt. Im Zentrum dieser Funktionalität steht die Speicherung von Telemetriedaten und weiteren Daten aus überwachten Ressourcen. Dieser Artikel enthält eine vollständige Beschreibung der Weise, in der diese Daten von Azure Monitor gespeichert und verwendet werden.
@@ -155,7 +155,7 @@ Log Analytics kann Daten aus einer Vielzahl von Quellen sammeln, sowohl innerhal
 Dies sind einige der Aufgaben, die Sie mit Protokollen ausführen können:
 
 - Verwenden der [Log Analytics-Seite](../log-analytics/query-language/get-started-analytics-portal.md) im Azure-Portal zum Schreiben von Abfragen zur Analyse von Protokolldaten.  Anheften der als Tabellen oder Diagramme gerenderten Ergebnisse an ein [Azure-Dashboard](../azure-portal/azure-portal-dashboards.md).
-- Konfigurieren einer [Protokollwarnungsregel](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](../monitoring-and-diagnostics/monitoring-action-groups.md) ausführt, wenn die Ergebnisse der Abfrage mit einem bestimmten Ergebnis übereinstimmen.
+- Konfigurieren einer [Protokollwarnungsregel](../monitoring-and-diagnostics/alert-log.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](../monitoring-and-diagnostics/monitoring-action-groups.md) ausführt, wenn die Ergebnisse der Abfrage mit einem bestimmten Ergebnis übereinstimmen.
 - Erstellen eines auf Daten in Log Analytics basierenden Workflows mithilfe von [Logik-Apps]().
 - Exportieren der Ergebnisse einer Abfrage nach [Power BI](../log-analytics/log-analytics-powerbi.md), um verschiedene Visualisierungen zu verwenden und sie mit Benutzern außerhalb von Azure zu teilen.
 - Zugreifen auf Metrikwerte von einer Befehlszeile oder einer benutzerdefinierten Anwendung aus mithilfe von [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) oder [REST-API](https://dev.loganalytics.io/).
@@ -175,7 +175,7 @@ Eine Anleitung zum Sammeln von Metriken aus Azure-Ressourcen finden Sie unter [S
 ### <a name="logs-to-metrics"></a>Protokolle auf Metriken
 Wie oben beschrieben, sind Metriken reaktionsschneller als Protokolle, sodass Sie Warnungen mit geringerer Wartezeit und zu geringeren Kosten erstellen können. Log Analytics sammelt eine bedeutende Menge an numerischen Daten, die für Metriken geeignet wären, aber nicht im Azure-Metrikspeicher gespeichert sind.  Ein häufiges Beispiel sind aus Agents und Verwaltungslösungen gesammelte Leistungsdaten. Einige dieser Werte können in den Metrikspeicher kopiert werden, wo sie für Warnungen und Analysen mit dem Metrik-Explorer zur Verfügung stehen.
 
-Erläuterungen zu diesem Feature finden Sie unter [Faster Metric Alerts for Logs now in public preview](https://azure.microsoft.com/blog/faster-metric-alerts-for-logs-now-in-limited-public-preview/) (Schnellere Metrikwarnungen für Protokolle jetzt in öffentlicher Vorschauversion). Die Liste der unterstützten Werte finden Sie unter [Unterstützte Metriken und Erstellungsmethoden für neue Metrikwarnungen](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md).
+Erläuterungen zu diesem Feature finden Sie unter [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Die Liste der unterstützten Werte finden Sie unter [Unterstützte Metriken von Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Streamen von Daten zu externen Systemen
 Über die Verwendung der Tools in Azure für die Analyse von Überwachungsdaten hinaus besteht bei Ihnen möglicherweise die Anforderung, diese auch an ein externes Tool wie ein SIEM-Produkt (Security Information and Event Management) weiterzuleiten. Diese Weiterleitung erfolgt normalerweise mithilfe von [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) direkt von den überwachten Ressourcen aus. 

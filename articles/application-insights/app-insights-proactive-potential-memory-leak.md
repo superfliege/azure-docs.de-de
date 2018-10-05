@@ -1,8 +1,8 @@
 ---
-title: "Intelligente Erkennung – Von Azure Application Insights erkannter potenzieller Arbeitsspeicherverlust | Microsoft Docs"
-description: "Überwachen Sie Anwendungen mit Azure Application Insights auf potenzielle Arbeitsspeicherverluste."
+title: Intelligente Erkennung – Von Azure Application Insights erkannter potenzieller Arbeitsspeicherverlust | Microsoft Docs
+description: Überwachen Sie Anwendungen mit Azure Application Insights auf potenzielle Arbeitsspeicherverluste.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: e98caaa387418d746905990436b69925a591b260
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 25d26db3cd11fff7f7e9ba472247a920ecddea33
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090733"
 ---
 # <a name="memory-leak-detection-preview"></a>Arbeitsspeicherverlusterkennung (Vorschau)
 
@@ -25,12 +26,10 @@ Application Insights analysiert die Arbeitsspeichernutzung der einzelnen Prozess
 
 Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration von Leistungsindikatoren](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) für Ihre App. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten für Arbeitsspeicher-Leistungsindikatoren (z. B. Private Bytes) generiert.
 
-
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wann erhalte ich diese Art von Benachrichtigung der intelligenten Erkennung?
-Eine typische Benachrichtigung folgt auf einen stetigen Anstieg der Arbeitsspeichernutzung über einen längeren Zeitraum (einige Stunden) eines oder mehrerer Prozesse und/oder eines oder mehrerer Computer, die Teil Ihrer Anwendung sind.
-Machine Learning-Algorithmen werden verwendet, um eine erhöhte Arbeitsspeichernutzung zu erkennen, die einem Muster eines Arbeitsspeicherverlusts entspricht, im Gegensatz zu einer erhöhten Arbeitsspeichernutzung aufgrund einer natürlich zunehmenden Anwendungsnutzung.
+Eine typische Benachrichtigung folgt auf einen stetigen Anstieg der Arbeitsspeichernutzung über einen längeren Zeitraum eines oder mehrerer Prozesse und/oder eines oder mehrerer Computer, die Teil Ihrer Anwendung sind. Machine Learning-Algorithmen werden für die Erkennung einer erhöhten Arbeitsspeichernutzung verwendet, die dem Muster eines Speicherverlusts entspricht.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Liegt wirklich ein Problem mit meiner App vor?
+## <a name="does-my-app-really-have-a-problem"></a>Liegt wirklich ein Problem mit meiner App vor?
 Nein, eine Benachrichtigung bedeutet nicht zwingend, dass ein Problem mit Ihrer App vorliegt. Obwohl Muster von Arbeitsspeicherverlusten in der Regel auf ein Anwendungsproblem hinweisen, könnten diese Muster typisch für Ihren spezifischen Prozess sein oder einen natürlichen geschäftlichen Grund haben und ignoriert werden.
 
 ## <a name="how-do-i-fix-it"></a>Wie behebe ich das Problem?

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/26/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 0d511c1f6dfd482e5754741da15b2852ee77c11e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: db85f85011154dcc7adfa9d569e9015a9c5c33ca
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33207526"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055057"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Übersicht über die Überwachung von Containern in Azure
 Mit Azure können Sie effizient Workloads überwachen und verwalten, die in Azure-Containern mit Kubernetes oder Docker bereitgestellt werden. Es ist wichtig zu verstehen, wie Container mit mehreren Microserviceanwendungen funktionieren, um einen zuverlässigen Dienst im großen Maßstab bereitstellen und Ihren Überwachungsplan unterstützen zu können. Dieser Artikel enthält eine kurze Übersicht über die Verwaltungs- und Überwachungsfunktionen in Azure, in denen ihre Eignung gemäß Ihren Anforderungen beschrieben werden.
 
-Mit der [Azure Monitor-Containerintegrität](monitoring-container-health.md) können Sie auf einen Blick die Leistung und Integrität Ihrer Linux-Containerinfrastruktur einsehen und rasch Problemen auf den Grund gehen. Die Telemetriedaten werden in einem Log Analytics-Arbeitsbereich gespeichert und sind im Azure-Portal integriert, in dem Sie aggregierte Daten über Dashboards untersuchen , filtern und segmentieren können. So behalten Sie die Last, Leistung und Integrität stets im Auge.  
+Mit [Azure Monitor für Container](monitoring-container-insights-overview.md) können Sie auf einen Blick die Leistung und Integrität Ihrer Linux-Containerinfrastruktur einsehen und rasch Problemen auf den Grund gehen. Die Telemetriedaten werden in einem Log Analytics-Arbeitsbereich gespeichert und sind im Azure-Portal integriert, in dem Sie aggregierte Daten über Dashboards untersuchen , filtern und segmentieren können. So behalten Sie die Last, Leistung und Integrität stets im Auge.  
 
 Bei Containern, die außerhalb des gehosteten Azure Kubernetes-Diensts ausgeführt werden, können Sie mit der [Log Analytics-Lösung für Windows und Docker-Container](../log-analytics/log-analytics-containers.md) Windows- und Docker-Containerhosts anzeigen und verwalten. In Ihrem Log Analytics-Arbeitsbereich können Sie die Bestandsdetails, Leistung und Ereignisse von Knoten und Containern in der Umgebung einsehen. Zudem können Sie ausführliche Überwachungsinformationen einsehen, in denen Befehle mit Containern verwendet werden, und Probleme durch Anzeigen und Durchsuchen zentralisierter Protokolle behandeln, ohne remote auf Docker- oder Windows-Hosts zugreifen zu müssen.
 

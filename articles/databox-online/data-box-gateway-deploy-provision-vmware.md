@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: d0c6f8723909b71501894c9363932c752c1e130c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989854"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419541"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware (Vorschauversion)
 
@@ -34,13 +34,13 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Sicherstellen, dass der Host die Mindestanforderungen für Geräte erfüllt
-> * Bereitstellen eines virtuellen Geräts in Hypervisor
+> * Bereitstellen eines virtuellen Geräts in VMware
 > * Starten des virtuellen Geräts und Abrufen der IP-Adresse
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 > [!IMPORTANT]
-> - Data Box Gateway ist als Vorschauversion verfügbar. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
+> - Data Box Gateway ist in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -74,7 +74,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Gerät bereitstellen:
 Vorbereitungen
 
 - Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Data Box Gateway, und konfigurieren Sie das Netzwerk des Datencenters gemäß den Anforderungen. Weitere Informationen finden Sie unter [Data Box Gateway – Netzwerkanforderungen](data-box-gateway-system-requirements.md#networking-requirements).
-- Stellen Sie sicher, dass die Internetbandbreite mindestens 20 MBit/s beträgt, um eine optimale Funktion des Geräts zu ermöglichen.
+- Stellen Sie sicher, dass die Internetbandbreite mindestens 20 MBit/s beträgt, um die optimale Nutzung des Geräts zu ermöglichen.
 
 ## <a name="check-the-host-system"></a>Überprüfen des Hostsystems
 
@@ -198,7 +198,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 
 6. Die Schritte 5 bis 7 gelten nur beim Starten in anderen Umgebungen als einer DHCP-Umgebung. Wenn Sie in einer DHCP-Umgebung arbeiten, überspringen Sie diese Schritte, und fahren Sie mit Schritt 8 fort. Falls Sie Ihr Gerät in einer anderen Umgebung als einer DHCP-Umgebung gestartet haben, wird eine entsprechende Meldung angezeigt. **Verwenden Sie das Set-HcsIPAddress-Cmdlet zum Konfigurieren des Netzwerks**. 
    
-7. Führen Sie zum Konfigurieren des Netzwerks an der Eingabeaufforderung den Befehl `Get-HcsIpAddress` aus, um die Netzwerkschnittstellen aufzulisten, die auf dem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `DATA1`zugewiesen.
+7. Führen Sie zum Konfigurieren des Netzwerks an der Eingabeaufforderung den Befehl `Get-HcsIpAddress` aus, um die Netzwerkschnittstellen aufzulisten, die auf dem virtuellen Gerät aktiviert sind. Wenn für das Gerät eine einzelne Netzwerkschnittstelle aktiviert ist, wird dieser Schnittstelle der Standardname `Ethernet`zugewiesen.
 
 8. Verwenden Sie das `Set-HcsIpAddress` -Cmdlet, um das Netzwerk zu konfigurieren. Unten ist ein Beispiel angegeben:
 
@@ -208,7 +208,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und 
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
-Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit sie über ausreichende Ressourcen zum Erfüllen der Mindestanforderungen verfügt. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
+Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit sie über ausreichende Ressourcen zum Erfüllen der Mindestanforderungen verfügt. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Überprüfen des Hostsystems](#check-the-host-system).
 
 <!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 
@@ -221,7 +221,7 @@ In diesem Tutorial haben Sie sich mit den folgenden Themen zu Data Box Gateway b
 
 > [!div class="checklist"]
 > * Sicherstellen, dass der Host die Mindestanforderungen für Geräte erfüllt
-> * Bereitstellen eines virtuellen Geräts in Hypervisor
+> * Bereitstellen eines virtuellen Geräts in VMware
 > * Starten des virtuellen Geräts und Abrufen der IP-Adresse
 
 Im nächsten Tutorial erfahren Sie, wie Sie Ihr virtuelles Gerät verbinden, einrichten und aktivieren.

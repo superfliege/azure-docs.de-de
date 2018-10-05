@@ -6,15 +6,15 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: a0d75b13369cff4e99bef6f57a3b01f3d8eee6e4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050414"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227162"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Einführung in virtuelle Azure Stack-Computer
 
@@ -99,7 +99,7 @@ Die Ressourcen in der folgenden Tabelle werden vom virtuellen Computer verwendet
 |Ressource|Erforderlich|BESCHREIBUNG|
 |---------|---------|---------|
 |Ressourcengruppe|JA|Der virtuelle Computer muss sich in einer Ressourcengruppe befinden.|
-|Speicherkonto|JA|Der virtuelle Computer benötigt das Speicherkonto zum Speichern der virtuellen Festplatten.|
+|Speicherkonto|Nein |Bei Verwendung von Managed Disks benötigt der virtuelle Computer das Speicherkonto nicht, um die virtuellen Festplatten zu speichern. <br>Bei Verwendung von nicht verwalteten Datenträgern benötigt der virtuelle Computer das Speicherkonto, um die virtuellen Festplatten zu speichern.|
 |Virtuelles Netzwerk|JA|Der virtuelle Computer muss einem virtuellen Netzwerk angehören.|
 |Öffentliche IP-Adresse|Nein |Für den Remotezugriff kann dem virtuellen Computer eine öffentliche IP-Adresse zugewiesen werden.|
 |Netzwerkschnittstelle|JA|Der virtuelle Computer benötigt die Netzwerkschnittstelle für die Kommunikation im Netzwerk.|

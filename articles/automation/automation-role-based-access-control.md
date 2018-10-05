@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fd96a6cfebe44bd02e3f44a44d91119ad1c2c5a9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598751"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094216"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
@@ -47,7 +47,7 @@ Die folgenden Tabellen beschreiben die spezifischen Berechtigungen der einzelnen
 
 Ein Besitzer kann alles verwalten, einschließlich des Zugriffs. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
 
-|Actions|BESCHREIBUNG|
+|Aktionen|BESCHREIBUNG|
 |---|---|
 |Microsoft.Automation/automationAccounts/|Erstellen und Verwalten von Ressourcen aller Typen|
 
@@ -78,12 +78,21 @@ Ein Operator für Automation kann Aufträge erstellen und verwalten sowie Runboo
 |**Aktionen**  |**Beschreibung**  |
 |---------|---------|
 |Microsoft.Authorization/*/read|Lesen von Autorisierungen|
+|Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read|Lesen von Hybrid Runbook Worker-Ressourcen|
 |Microsoft.Automation/automationAccounts/jobs/read|Auflisten von Aufträgen des Runbooks|
 |Microsoft.Automation/automationAccounts/jobs/resume/action|Fortsetzen eines angehaltenen Auftrags|
 |Microsoft.Automation/automationAccounts/jobs/stop/action|Abbrechen eines Auftrags in Bearbeitung|
 |Microsoft.Automation/automationAccounts/jobs/streams/read|Lesen der Auftragsdatenströme und -ausgabe|
+|Microsoft.Automation/automationAccounts/jobs/output/read|Abrufen der Ausgabe eines Auftrags|
 |Microsoft.Automation/automationAccounts/jobs/suspend/action|Anhalten eines Auftrags in Bearbeitung|
 |Microsoft.Automation/automationAccounts/jobs/write|Erstellen von Aufträgen|
+|Microsoft.Automation/automationAccounts/jobSchedules/read|Abrufen eines Azure Automation-Auftragszeitplans|
+|Microsoft.Automation/automationAccounts/jobSchedules/write|Erstellen eines Azure Automation-Auftragszeitplans|
+|Microsoft.Automation/automationAccounts/linkedWorkspace/read|Abrufen des Arbeitsbereichs, der mit dem Automation-Konto verknüpft ist|
+|Microsoft.Automation/automationAccounts/read|Abrufen eines Azure Automation-Kontos|
+|Microsoft.Automation/automationAccounts/runbooks/read|Abrufen eines Azure Automation-Runbooks|
+|Microsoft.Automation/automationAccounts/schedules/read|Abrufen eines Azure Automation-Zeitplanassets|
+|Microsoft.Automation/automationAccounts/schedules/write|Erstellen oder Aktualisieren eines Azure Automation-Zeitplanassets|
 |Microsoft.Resources/subscriptions/resourceGroups/read      |Lesen von Rollen und Rollenzuweisungen         |
 |Microsoft.Resources/deployments/*      |Erstellen und Verwalten von Ressourcengruppenbereitstellungen         |
 |Microsoft.Insights/alertRules/*      | Erstellen und Verwalten von Warnungsregeln        |
@@ -416,5 +425,5 @@ Wenn Benutzer, denen im Runbookbereich die Rolle „Operator für Automation“ 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu den verschiedenen Möglichkeiten, die rollenbasierte Zugriffsteuerung für Azure Automation zu konfigurieren, finden Sie unter [Verwalten der rollenbasierten Zugriffssteuerung mit Azure PowerShell](../role-based-access-control/role-assignments-powershell.md).
-* Weitere Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
-* Weitere Informationen zu verschiedenen Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md).
+* Weitere Informationen zu verschiedenen Methoden zum Starten eines Runbooks finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
+* Weitere Informationen zu verschiedenen Runbooktypen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)

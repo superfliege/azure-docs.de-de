@@ -1,45 +1,133 @@
 ---
-title: Anzeigen aller vorhandenen Gruppen in Azure AD | Microsoft-Dokumentation
-description: Anzeigen von oder Suchen nach Gruppen in Azure Active Directory
+title: Schnellstartanleitung zum Anzeigen der Gruppen und Mitglieder Ihrer Organisation in Azure Active Directory | Microsoft-Dokumentation
+description: Schnellstartanleitung mit Schritten zum Suchen und Anzeigen der Gruppen Ihrer Organisation und ihrer zugewiesenen Mitglieder über das Azure-Portal
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: quickstart
-ms.date: 08/28/2017
+ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: H1Hack27Feb2017;it-pro
+ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 4022bfc465f87fe086de5d7198dac1d748ddbca6
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9da9f055163f5df4ea064bd46caa811e39fba20c
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860371"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056402"
 ---
-# <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Anzeigen von oder Suchen nach Ihren Benutzergruppen in Azure Active Directory
-In diesem Artikel wird erläutert, wie Sie Gruppen in Azure Active Directory (Azure AD) anzeigen. Eines der Features der Benutzerverwaltung von Azure AD ist, dass Sie Gruppen verwenden können, um Verwaltungsaufgaben auszuführen, z.B. gleichzeitig einer Anzahl von Benutzern Lizenzen und Berechtigungen zuweisen.
+<!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-## <a name="how-do-i-see-all-the-groups"></a>Wie zeige ich alle Gruppen an?
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
-2. Wählen Sie **Alle Dienste** aus, geben Sie **Benutzer und Gruppen** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>Schnellstart: Anzeigen der Gruppen und Mitglieder Ihrer Organisation in Azure Active Directory
+Über das Azure-Portal können Sie die vorhandenen Gruppen und Gruppenmitglieder Ihrer Organisation anzeigen. Gruppen werden zur Verwaltung von Benutzern (Mitgliedern) verwendet, die alle die gleichen Zugriffsstufen und Berechtigungen für potenziell eingeschränkte Apps und Dienste benötigen.
 
-   ![Öffnen von Benutzern und Gruppen](./media/active-directory-groups-view-azure-portal/search-user-management.png)
-3. Wählen Sie auf dem Blatt **Benutzer und Gruppen** die Option **Alle Gruppen** aus.
+In dieser Schnellstartanleitung zeigen Sie alle vorhandenen Gruppen Ihrer Organisation sowie die zugewiesenen Mitglieder an.
 
-   ![Öffnen des Blatts „Gruppen“](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
-4. Auf dem Blatt **Benutzer und Gruppen – Alle Gruppen** können Sie anzuzeigende Spalten hinzufügen oder entfernen, die Liste zur Suche nach einer Gruppe filtern oder Änderungen an Gruppen vornehmen, für die Sie über ausreichende Berechtigungen zum Ändern verfügen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+
+## <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie beginnen, müssen Sie den folgenden Schritt ausführen:
+
+- Erstellen eines Azure Active Directory-Mandanten. Weitere Informationen finden Sie unter [Quickstart: Access Azure Active Directory to create a new tenant](active-directory-access-create-new-tenant.md) (Schnellstart: Zugreifen auf Azure Active Directory zum Erstellen eines neuen Mandanten).
+
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+Melden Sie sich mit dem globalen Administratorkonto für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
+
+## <a name="create-a-new-group"></a>Erstellen einer neuen Gruppe 
+Erstellen Sie eine neue Gruppe mit dem Namen _MDM policy - West_ (MDM-Richtlinie – Westen). Weitere Informationen zum Erstellen einer Gruppe finden Sie unter [Erstellen einer Gruppe und Hinzufügen von Mitgliedern in Azure Active Directory](active-directory-groups-create-azure-portal.md).
+
+1. Wählen Sie **Azure Active Directory** > **Gruppen** und anschließend **Neue Gruppe** aus.
+
+2. Geben Sie auf der Seite **Gruppe** die entsprechenden Informationen ein:
+    
+    - **Gruppentyp:** Wählen Sie **Sicherheit** aus.
+    
+    - **Gruppenname:** Geben Sie _MDM policy - West_ (MDM-Richtlinie – Westen) ein.
+    
+    - **Mitgliedschaftstyp:** Wählen Sie **Zugewiesen** aus.
+
+3. Klicken Sie auf **Erstellen**.
+
+## <a name="create-a-new-user"></a>Erstellen eines neuen Benutzers
+Erstellen Sie einen neuen Benutzer mit dem Namen _Alain Charon_. Ein Benutzer muss vorhanden sein, bevor Sie ihn als Mitglied einer Gruppe hinzufügen können. Weitere Informationen zum Erstellen eines Benutzers finden Sie unter [Schnellstart: Hinzufügen neuer Benutzer in Azure Active Directory](add-users-azure-active-directory.md).
+
+1. Wählen Sie **Azure Active Directory** > **Benutzer** und anschließend **Neuer Benutzer** aus.
+
+2. Geben Sie auf der Seite **Benutzer** die entsprechenden Informationen ein:
+
+    - **Name:** Geben Sie _Alain Charon_ ein.
+
+    - **Benutzername:** Geben Sie *alain@contoso.com* ein.
+
+3. Kopieren Sie das automatisch generierte Kennwort im Feld **Kennwort**, und wählen Sie dann **Erstellen** aus.
+
+## <a name="add-a-group-member"></a>Hinzufügen eines Gruppenmitglieds
+Sie haben eine Gruppe und einen Benutzer erstellt und können nun _Alain Charon_ als Mitglied zur Gruppe _MDM policy - West_ (MDM-Richtlinie – Westen) hinzufügen. Weitere Informationen zum Hinzufügen von Gruppenmitgliedern finden Sie unter [Verwalten der Gruppenmitgliedschaft für Benutzer in Ihrem Azure Active Directory-Mandanten](active-directory-groups-members-azure-portal.md).
+
+1. Klicken Sie auf **Azure Active Directory** > **Gruppen**.
+
+2. Suchen Sie auf der Seite **Gruppen – Alle Gruppen** nach der Gruppe **MDM policy - West** (MDM-Richtlinie – Westen), und wählen Sie sie aus.
+
+3. Wählen Sie auf der Übersichtsseite für **MDM policy - West** (MDM-Richtlinie – Westen) im Bereich **Verwalten** die Option **Mitglieder** aus.
+
+4. Wählen Sie **Mitglieder hinzufügen**, suchen Sie nach **Alain Charon**, und wählen Sie den Benutzer aus.
+
+5. Wählen Sie **Auswählen**.
+
+## <a name="view-all-groups"></a>Anzeigen aller Gruppen
+Im Azure-Portal auf der Seite **Gruppen – Alle Gruppen** können Sie alle Gruppen Ihrer Organisation anzeigen.
+
+- Wählen Sie **Azure Active Directory** > **Gruppen** aus.
+
+    Die Seite **Gruppen – Alle Gruppen** wird mit all Ihren aktiven Gruppen angezeigt.
+
+    ![Seite „Gruppen – Alle Gruppen“ mit allen vorhandenen Gruppen](media/active-directory-groups-view-azure-portal/groups-all-groups-blade-with-all-groups.png)
+
+## <a name="search-for-the-group"></a>Suchen der Gruppe
+Suchen Sie auf der Seite **Gruppen – Alle Gruppen** die Gruppe **MDM policy - West** (MDM-Richtlinie – Westen).
+
+1. Geben Sie auf der Seite **Gruppen – Alle Gruppen** den Begriff _MDM_ ins Feld **Suche** ein.
+
+    Die Suchergebnisse, einschließlich der Gruppe _MDM policy - West_ (MDM-Richtlinie – Westen), werden unterhalb des Felds **Suche** angezeigt.
+
+    ![Seite „Gruppen – Alle Gruppen“ mit ausgefülltem Suchfeld](media/active-directory-groups-view-azure-portal/search-for-specific-group.png)
+
+3. Wählen Sie die Gruppe **MDM policy – West** (MDM-Richtlinie – Westen) aus.
+
+4. Zeigen Sie die Gruppeninformationen (u.a. die Anzahl von Mitgliedern dieser Gruppe) auf der Übersichtsseite für **MDM policy - West** (MDM-Richtlinie – Westen) an.
+
+    ![Übersichtsseite für „MDM policy – West“ (MDM-Richtlinie – Westen) mit Mitgliedsinformationen](media/active-directory-groups-view-azure-portal/group-overview-blade.png)
+
+## <a name="view-group-members"></a>Anzeigen von Gruppenmitgliedern
+Sie haben die Gruppe gefunden und können nun alle zugewiesenen Mitglieder anzeigen.
+
+- Wählen Sie im Bereich **Verwalten** die Option **Mitglieder** aus, und überprüfen Sie dann die vollständige Liste der dieser bestimmten Gruppe zugewiesenen Mitgliedernamen, einschließlich _Alain Charon_.
+
+    ![Liste der Mitglieder, die der Gruppe „MDM policy - West“(MDM-Richtlinie – Westen) zugewiesen sind](media/active-directory-groups-view-azure-portal/groups-all-members.png)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Diese Gruppe wird in mehreren Anleitungen verwendet, die im Abschnitt **Anleitungen** dieser Dokumentation verfügbar sind. Wenn Sie diese Gruppe jedoch nicht verwenden möchten, können Sie sie und die zugewiesenen Mitglieder mithilfe der folgenden Schritte löschen:
+
+1. Suchen Sie auf der Seite **Gruppen – Alle Gruppen** nach der Gruppe **MDM policy - West** (MDM-Richtlinie – Westen).
+
+2.  Wählen Sie die Gruppe **MDM policy – West** (MDM-Richtlinie – Westen) aus.
+
+    Die Übersichtsseite für **MDM policy - West** (MDM-Richtlinie – Westen) wird angezeigt.
+
+3. Klicken Sie auf **Löschen**.
+
+    Die Gruppe und die zugewiesenen Mitglieder werden gelöscht.
+
+    ![Übersichtsseite „MDM policy - West“ (MDM-Richtlinie – Westen) mit hervorgehobenem Link „Löschen“](media/active-directory-groups-view-azure-portal/group-overview-blade-delete.png)
+
+    >[!Important]
+    >Dadurch wird nicht der Benutzer Alain Charon, sondern nur seine Mitgliedschaft in der gelöschten Gruppe gelöscht.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Diese Artikel enthalten zusätzliche Informationen zu Azure Active Directory.
+Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie Ihrem Azure AD-Verzeichnis ein Abonnement zuordnen.
 
-* [Anzeigen vorhandener Gruppen](active-directory-groups-view-azure-portal.md)
-* [Erstellen einer neuen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
-* [Verwalten der Einstellungen einer Gruppe](active-directory-groups-settings-azure-portal.md)
-* [Verwalten der Mitglieder einer Gruppe](active-directory-groups-members-azure-portal.md)
-* [Verwalten der Mitgliedschaften einer Gruppe](active-directory-groups-membership-azure-portal.md)
-* [Verwalten dynamischer Regeln für Benutzer in einer Gruppe](../users-groups-roles/groups-dynamic-membership.md)
+> [!div class="nextstepaction"]
+> [Zuordnen eines Azure-Abonnements](active-directory-how-subscriptions-associated-directory.md)

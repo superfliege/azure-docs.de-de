@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 839e462522be4f492010ca1c22631cb4dd6affe4
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521882"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064430"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
-Dieses Feature von Azure Application Insights ist normalerweise für das Feature „Web-Apps“ von Azure App Service verfügbar und befindet sich in der Vorschau für Azure-Computeressourcen. Informationen zur [lokalen Verwendung von Profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers) finden Sie hier.
+Dieses Feature von Azure Application Insights ist allgemein für das Feature „Web-Apps“ von Azure App Service und für Azure-Computeressourcen verfügbar. Informationen zur [lokalen Verwendung von Profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers) finden Sie hier.
 
 In diesem Artikel wird erläutert, wie viel Zeit die einzelnen Methoden Ihrer Live-Webanwendung in Anspruch nehmen, wenn Sie [Application Insights](app-insights-overview.md) verwenden. Das Tool Application Insights Profiler zeigt detaillierte Profile von Liveanforderungen, die von Ihrer Anwendung verarbeitet wurden. Profiler hebt den *langsamsten Pfad* hervor, der die meiste Zeit benötigt. Für Anforderungen mit unterschiedlichen Antwortzeiten wird anhand von Stichproben ein Profil erstellt. Indem Sie mehrere unterschiedliche Verfahren verwenden, können Sie den Mehraufwand im Zusammenhang mit der Anwendung minimieren.
 
@@ -45,9 +45,9 @@ Nachdem Sie eine Web-App unabhängig davon bereitgestellt haben, ob Sie das App-
 
     ![App-Einstellung für Profiler][profiler-app-setting]
 
-### <a name="enable-profiler-for-azure-compute-resources-preview"></a>Aktivieren von Profiler für Azure-Computeressourcen (Vorschau)
+### <a name="enable-profiler-for-azure-compute-resources"></a>Aktivieren von Profiler für Azure-Computeressourcen
 
-Informationen finden Sie in der [Vorschauversion von Profiler für Azure-Computeressourcen](https://go.microsoft.com/fwlink/?linkid=848155).
+Informationen finden Sie in der [Version von Profiler für Azure-Computeressourcen](https://go.microsoft.com/fwlink/?linkid=848155).
 
 ## <a name="view-profiler-data"></a>Anzeigen von Profiler-Daten
 
@@ -204,7 +204,7 @@ Wenn Sie Ihre Web-App für eine Web-Apps-Ressource erneut bereitstellen und Prof
 
 *Verzeichnis nicht leer „D:\\home\\site\\wwwroot\\App_Data\\jobs“*
 
-Dieser Fehler tritt auf, wenn Sie Web Deploy über Skripts oder die Visual Studio Team Services-Bereitstellungspipeline ausführen. Als Lösung fügen Sie die folgenden zusätzlichen Bereitstellungsparameter zum Web Deploy-Task hinzu:
+Dieser Fehler tritt auf, wenn Sie Web Deploy über Skripts oder die Azure DevOps-Bereitstellungspipeline ausführen. Als Lösung fügen Sie die folgenden zusätzlichen Bereitstellungsparameter zum Web Deploy-Task hinzu:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

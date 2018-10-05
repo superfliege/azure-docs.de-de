@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 1bf716d4e5a37739de2e820725449be2576054ea
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136907"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038769"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 Search ist eine Funktion in [Application Insights](app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
@@ -123,8 +123,8 @@ Dies sind einige Suchausdrücke, die Sie verwenden können:
 | Beispielabfrage | Wirkung |
 | --- | --- |
 | `apple` |Findet alle Ereignisse im Uhrzeitbereich, deren Felder den Begriff „apple“ enthalten. |
-| `apple AND banana` |Findet Ereignisse, die beide Wörter enthalten. Verwenden Sie „AND“ in Großbuchstaben, nicht „and“. |
-| `apple OR banana`<br/>`apple banana` |Findet Ereignisse, die eines der beiden Wörter enthalten. Verwenden Sie „OR“ in Großbuchstaben, nicht „or“.<br/>Kurzform. |
+| `apple AND banana` <br/>`apple banana` |Findet Ereignisse, die beide Wörter enthalten. Verwenden Sie „AND“ in Großbuchstaben, nicht „and“. <br/>Kurzform. |
+| `apple OR banana` |Findet Ereignisse, die eines der beiden Wörter enthalten. Verwenden Sie „OR“ in Großbuchstaben, nicht „or“. |
 | `apple NOT banana` |Findet Ereignisse, die das eine Wort enthalten, aber nicht das andere. |
 
 ## <a name="sampling"></a>Stichproben
@@ -133,13 +133,13 @@ Wenn die Anwendung viele Telemetriedaten generiert (und Sie die ASP.NET SDK-Vers
 [Erfahren Sie mehr über das Erstellen von Stichproben.](app-insights-sampling.md)
 
 ## <a name="create-work-item"></a>Erstellen eines Arbeitselements
-Sie können einen Fehler mit den Details aus einem beliebigen Telemetrieelement in GitHub oder Visual Studio Team Services erstellen. 
+Sie können einen Fehler mit den Details aus einem beliebigen Telemetrieelement in GitHub oder Azure DevOps erstellen. 
 
 ![Klicken Sie auf „Neues Arbeitselement“, bearbeiten Sie die Felder, und klicken Sie dann auf „OK“.](./media/app-insights-diagnostic-search/42.png)
 
-Wenn Sie diesen Vorgang zum ersten Mal ausführen, werden Sie aufgefordert, einen Link zu Ihrem Team Services-Konto und -Projekt zu konfigurieren.
+Wenn Sie diesen Vorgang zum ersten Mal ausführen, werden Sie aufgefordert, einen Link zu Ihrer Azure DevOps-Organisation und Ihrem Projekt zu konfigurieren.
 
-![Geben Sie die URL Ihres Team Services-Servers und den Projektnamen ein, und klicken Sie auf „Autorisieren“.](./media/app-insights-diagnostic-search/41.png)
+![Geben Sie die URL Ihrer Azure DevOps Services-Instanz und den Projektnamen ein, und klicken Sie auf „Autorisieren“.](./media/app-insights-diagnostic-search/41.png)
 
 (Sie können den Link auch auf dem Blatt „Arbeitsaufgaben“ konfigurieren.)
 

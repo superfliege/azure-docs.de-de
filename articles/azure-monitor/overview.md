@@ -10,15 +10,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/14/2018
+ms.topic: conceptual
+ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 97cc6d6e922ab0bedd729eddca754ae016f041bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958015"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220974"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -47,7 +47,7 @@ Die Log Analytics-Abfragesprache ist für einfache Protokollabfragen geeignet, a
 ![Protokolle](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Welche Daten sammelt Azure Monitor?
-Log Analytics kann Daten aus vielen verschiedenen Quellen sammeln. Sie können sich das Überwachen von Daten für Ihre Anwendungen in Schichten vorstellen, die von Ihrer Anwendung über Betriebssystem und Dienste, auf denen sie aufbaut, bis zur Plattform selbst hinunterreichen. Azure Monitor sammelt Daten aus jeder der folgenden Schichten:
+Azure Monitor kann Daten aus vielen verschiedenen Quellen sammeln. Sie können sich das Überwachen von Daten für Ihre Anwendungen in Schichten vorstellen, die von Ihrer Anwendung über Betriebssystem und Dienste, auf denen sie aufbaut, bis zur Plattform selbst hinunterreichen. Azure Monitor sammelt Daten aus jeder der folgenden Schichten:
 
 - **Überwachungsdaten zur Anwendung:** Daten zur Leistung und Funktionalität des von Ihnen geschriebenen Codes, unabhängig von seiner Plattform.
 - **Überwachungsdaten zum Gast-BS:** Daten zum Betriebssystem, unter dem die Anwendung ausgeführt wird. Es kann in Azure, einer anderen Cloud oder lokal ausgeführt werden. 
@@ -145,9 +145,6 @@ Oft besteht die Anforderung, Azure Monitor in andere Systeme zu integrieren und 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen:
 
-* [Azure Monitor](https://azure.microsoft.com/services/monitor/) zum Einstieg in die Metriken und Warnungen der Kernüberwachung.
-* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) diagnostiziert Probleme mit Ihrer App Service-Web-App.
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) zur Analyse der gesammelten Überwachungsdaten und -protokolle.
-
-
-
+* [Metriken und Protokolle](../monitoring/monitoring-data-collection.md) für die von Azure Monitor gesammelten Daten
+* [Datenquellen](../monitoring/monitoring-data-sources.md) dazu, wie die verschiedenen Komponenten Ihrer Anwendung Telemetriedaten senden
+* [Log Analytics](../log-analytics/log-analytics-queries.md) zur Analyse der gesammelten Daten

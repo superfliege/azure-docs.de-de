@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b019523227bcd45e502ec84055cfb09025918331
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144942"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406123"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Sichern und Wiederherstellen von Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App
 
@@ -78,12 +78,12 @@ Bei persönlichen Microsoft-Konten können Sie Ihre Identität bestätigen, inde
 
     ![Microsoft Authenticator-App mit den verfügbaren Konten und den zugehörigen Dropdownpfeilen](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
 
-2.  Wählen Sie **Scan QR code to recover** (Zur Wiederherstellung QR-Code scannen), und scannen Sie dann den vom Administrator bereitgestellten QR-Code.
+2.  Wählen Sie **Scan QR code to recover** (Zur Wiederherstellung QR-Code scannen), und scannen Sie dann den QR-Code.
 
     ![Microsoft Authenticator-App, die das Scannen des QR-Codes ermöglicht](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Weitere Informationen dazu, wie Sie einen QR-Code erhalten, finden Sie im Abschnitt [„Hinzufügen von Konten zur App“ des Artikels „Erste Schritte mit der Microsoft Authenticator-App“](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app).
+    >Weitere Informationen zum Abrufen eines QR-Codes finden Sie unter [Erste Schritte mit der Microsoft Authenticator-App](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) oder [Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App (Vorschau)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app) – basierend darauf, ob Ihr Administrator die Sicherheitsinformation aktiviert hat.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Beheben von Problemen bei Sicherung und Wiederherstellung
 Es gibt einige Gründe, warum die Sicherung möglicherweise nicht verfügbar ist:
