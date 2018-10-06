@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 05/29/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1813367a2d143f75fb51a3160dd00219c709c57b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: dc03f49a684bfeb43ffd8bac9f551a67f034a04f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935795"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042876"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Unterstützte Verteilungen und Treiber
 
@@ -26,11 +26,11 @@ NVIDIA CUDA-Treiber für virtuelle Computer der Serien NC, NCv2, NCv3 und ND (op
 
 | Distribution | Treiber |
 | --- | -- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 oder 7.4<br/><br/> 7.3 oder 7.4 (CentOS-basiert), 7.4 HPC (CentOS-basiert) | NVIDIA CUDA 9.1, Treiberbranch R390 |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3 oder 7.4<br/><br/> 7.3 oder 7.4 (CentOS-basiert), 7.4 HPC (CentOS-basiert) | NVIDIA CUDA 10.0, Treiberbranch R410 |
 
 ### <a name="nvidia-grid-drivers"></a>NVIDIA GRID-Treiber
 
-Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuelle Computer der NV-Serie, die als virtuelle Arbeitsstationen oder für virtuelle Anwendungen verwendet werden. Installieren Sie nur diese GRID-Treiber auf Azure NV-VMs, und zwar nur unter den in der folgenden Tabelle aufgeführten Distributionen. In diesen Treibern ist die Lizenzierung für virtuelle GRID-GPU-Software in Azure enthalten.
+Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuelle Computer der NV- und NVv2-Serie, die als virtuelle Arbeitsstationen oder für virtuelle Anwendungen verwendet werden. Installieren Sie nur diese GRID-Treiber auf Azure NV-VMs, und zwar nur unter den in der folgenden Tabelle aufgeführten Distributionen. In diesen Treibern ist die Lizenzierung für virtuelle GRID-GPU-Software in Azure enthalten.
 
 | Distribution | Treiber |
 | --- | -- |

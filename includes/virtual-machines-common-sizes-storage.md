@@ -8,16 +8,21 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 512f251a91a035d3d48566c414076b1a5b6d8805
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 961f82cd4970abfdd11a30b2847a14f8ff1880b0
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37907099"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454348"
 ---
 Datenspeicheroptimierte VM-Größen eignen sich dank hohem Datenträgerdurchsatz und hoher E/A-Raten perfekt für Big Data-, SQL- und NoSQL-Datenbanken. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
-Die Ls-Reihe bietet bis zu 32 vCPUs aus der [Intel® Xeon® E5 v3-Prozessorfamilie](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Die Ls-Serie erreicht die gleiche CPU-Leistung wie die G/GS-Serie und bietet 8 GiB Arbeitsspeicher pro vCPU.  
+Die Ls-Reihe bietet bis zu 32 vCPUs aus der [Intel® Xeon® E5 v3-Prozessorfamilie](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Die Ls-Serie erreicht die gleiche CPU-Leistung wie die G/GS-Serie und bietet 8 GiB Arbeitsspeicher pro vCPU.  VMs der Ls-Serie eignen sich ideal für Anwendungen, die geringe Latenz, hohen Durchsatz und sehr viel lokalen Speicherplatz benötigen. 
+
+Mögliche Anwendungsfälle umfassen NoSQL-Datenbanken wie Cassandra, MongoDB, Cloudera und Redis, Data Warehousing sowie große Transaktionsdatenbanken.
+
+> [!NOTE]
+> Die Ls-Serie ist für die Verwendung des an den virtuellen Computer angefügten temporären Datenträgers optimiert, statt für die Verwendung dauerhafter Datenträger. Dank des hohen Durchsatzes und der IOPS des temporären Datenträgers eignet sich die Ls-Serie ideal für NoSQL-Speicher wie Apache Cassandra und MongoDB, die Daten über mehrere virtuelle Computer replizieren, um Persistenz im Falle eines Ausfalls eines einzelnen virtuellen Computers zu erzielen. Die Ls-Serie unterstützt nicht die Erstellung eines lokalen Caches, um die von dauerhaften Datenträgern erreichbaren IOPS zu erhöhen.
 
 ## <a name="ls-series"></a>Ls-Serie
 

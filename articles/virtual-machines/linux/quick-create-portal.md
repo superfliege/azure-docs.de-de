@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108805"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227281"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Linux-Computers im Azure-Portal
 
@@ -49,26 +49,27 @@ Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
-2. Suchen Sie im Suchfeld oberhalb der Liste der Azure Marketplace-Ressourcen nach **Ubuntu Server 16.04 LTS** von Canonical, und klicken Sie auf **Erstellen**.
+1. Suchen Sie im Suchfeld oberhalb der Liste der Azure Marketplace-Ressourcen nach **Ubuntu Server 16.04 LTS** von Canonical, und klicken Sie auf **Erstellen**.
 
-3. Geben Sie einen Namen für den virtuellen Computer ein, etwa *myVM*, übernehmen Sie den Datenträgertyp *SSD*, und geben Sie einen Benutzernamen (etwa *azureuser*) an.
+1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** unter **Ressourcengruppe**  aus. Geben Sie in dem Popup *myResourceGroup* als Namen der Ressourcengruppe ein, und wählen Sie dann *OK* aus. 
 
-4. Wählen Sie unter **Authentifizierungstyp** die Option **Öffentlicher SSH-Schlüssel** aus, und fügen Sie Ihren öffentlichen Schlüssel in das Textfeld ein. Entfernen Sie in Ihrem öffentlichen SSH-Schlüssel alle voran- bzw. nachgestellten Leerzeichen.
+    ![Erstellen einer neuen Ressourcengruppe für Ihre VM](./media/quick-create-portal/project-details.png)
 
-    ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-vm-portal-basic-blade.png)
+1. Geben Sie unter **Instanzdetails** *myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Region** aus. Behalten Sie die restlichen Standardwerte bei.
 
-5. Klicken Sie unter „Ressourcengruppe“ auf **Neu erstellen**, und geben Sie einen Namen (etwa *myResourceGroup*) ein. Wählen Sie den gewünschten **Standort**, und klicken Sie dann auf **OK**.
+    ![Abschnitt „Instanzdetails“](./media/quick-create-portal/instance-details.png)
 
-4. Wählen Sie eine Größe für den virtuellen Computer. Sie können beispielsweise nach *Computetyp* oder *Datenträgertyp* filtern. Eine mögliche VM-Größe ist beispielsweise *D2s_v3*.
+1. Wählen Sie unter **Administratorkonto** die Option **Öffentlicher SSH-Schlüssel** aus, geben Sie Ihren Benutzernamen ein, und fügen Sie Ihren öffentlichen Schlüssel in das Textfeld ein. Entfernen Sie in Ihrem öffentlichen Schlüssel alle führenden bzw. nachgestellten Leerzeichen.
 
-    ![Screenshot: VM-Größen](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
+    ![Administratorkonto](./media/quick-create-portal/administrator-account.png)
 
-5. Wählen Sie auf der Seite **Einstellungen** unter **Netzwerk** > **Netzwerksicherheitsgruppe** > **Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **SSH (22)**. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK**.
+1. Wählen Sie unter **Regeln für eingehende Ports** > **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **SSH (22)** und **HTTP-(80)** aus der Dropdownliste aus. 
 
-6. Wählen Sie auf der Seite „Zusammenfassung“ die Option **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten.
+    ![Öffnen von Ports für RDP und HTTP](./media/quick-create-portal/inbound-port-rules.png)
 
-7. Der virtuelle Computer wird auf dem Dashboard des Azure-Portals angeheftet. Nach Abschluss der Bereitstellung wird automatisch die VM-Zusammenfassung geöffnet.
+1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
 
+    
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
 Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer her.

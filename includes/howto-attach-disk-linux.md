@@ -1,10 +1,9 @@
-
 Weitere Informationen zu Datenträgern finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Anfügen eines leeren Datenträgers
-1. Öffnen Sie Azure CLI 1.0, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/authenticate-azure-cli). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
+1. Öffnen Sie die klassische Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/authenticate-azure-cli). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 2. Geben Sie wie im folgenden Beispiel gezeigt den Befehl `azure vm disk attach-new` ein, um einen neuen Datenträger zu erstellen und anzufügen. Ersetzen Sie dabei *myVM* durch den Namen Ihres virtuellen Linux-Computers, und geben Sie die Größe des Datenträgers in GB ein. In diesem Beispiel sind es *100 GB*:
 
     ```azurecli
@@ -37,7 +36,7 @@ Weitere Informationen zu Datenträgern finden Sie unter [Informationen zu Datent
 ## <a name="attach-an-existing-disk"></a>Anfügen eines vorhandenen Datenträgers
 Zum Anfügen eines vorhandenen Datenträgers wird eine VHD-Datei im Speicherkonto benötigt.
 
-1. Öffnen Sie Azure CLI 1.0, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/authenticate-azure-cli). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
+1. Öffnen Sie die klassische Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/authenticate-azure-cli). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 2. Überprüfen Sie, ob die VHD, die Sie anfügen möchten, bereits in Ihr Azure-Abonnement hochgeladen wurde:
    
     ```azurecli

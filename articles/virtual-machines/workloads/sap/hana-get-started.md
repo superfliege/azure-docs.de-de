@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112138"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032078"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Schnellstart: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs
 ## <a name="introduction"></a>Einführung
@@ -45,7 +45,9 @@ Darüber hinaus wird in dieser Anleitung vorausgesetzt, dass Sie mit Folgendem v
    * Einzelheiten zum Steigern der Effizienz bei der Nutzung einer Multi-SID-Installation von ASCS/SCS in Azure. Siehe [Erstellen einer SAP NetWeaver Multi-SID-Konfiguration](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid). 
    * Prinzipien der Ausführung von SAP NetWeaver basierend auf Linux-VMs in Azure. Siehe [Ausführen von SAP NetWeaver auf Microsoft Azure SUSE-Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart). Dieser Leitfaden enthält spezifische Einstellungen für Linux auf Azure-VMs sowie Details zum richtigen Anfügen von Azure-Speicherdatenträgern an Linux-VMs.
 
-Derzeit sind Azure-VMs von SAP nur für SAP HANA-Konfigurationen mit zentraler Hochskalierung zertifiziert. Konfigurationen mit horizontaler Hochskalierung mit SAP HANA-Workloads werden noch nicht unterstützt. Informationen zur hohen Verfügbarkeit von SAP HANA bei Konfigurationen mit zentraler Hochskalierung finden Sie unter [Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
+Die Arten von virtuellen Azure-Computern, die für Produktionsszenarien verwendet werden können, sind in der [SAP-Dokumentation für IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html) aufgeführt. Für Nicht-Produktionsszenarien ist eine größere Auswahl von virtuellen Azure-Computern verfügbar.
+Weitere Details zur Konfiguration und dem Betrieb von VMs finden Sie in dem Dokument [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
+Informationen zur SAP HANA-Hochverfügbarkeit finden Sie in [Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
 
 Wenn Sie eine SAP HANA-Instanz oder S/4HANA oder ein BW/4HANA-System sehr schnell bereitstellen möchten, sollten Sie die Verwendung der [SAP Cloud Appliance Library](http://cal.sap.com) erwägen. Eine Dokumentation zum Bereitstellen z.B. eines S/4HANA-Systems über SAP CAL in Azure finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Sie benötigen lediglich ein Azure-Abonnement und einen SAP-Benutzer, der bei der SAP Cloud Appliance Library registriert werden kann.
 
@@ -91,6 +93,11 @@ Azure-VM-Typen, die von SAP für SAP NetWeaver oder die S/4HANA-Anwendungsschich
 >Die SAP-Linux-Azure-Integration wird nur für Azure Resource Manager und nicht für das klassische Bereitstellungsmodell unterstützt. 
 
 ## <a name="manual-installation-of-sap-hana"></a>Manuelle Installation von SAP HANA
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass das von Ihnen ausgewählte Betriebssystem SAP-zertifiziert ist für SAP HANA auf den spezifischen VM-Typen, die Sie verwenden. Die Liste der SAP HANA-zertifizierten VM-Typen und BS-Releases für diese kann unter [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) nachgeschlagen werden. Stellen Sie sicher, dass Sie in die Details des jeweils aufgeführten VM-Typs klicken, um die vollständige Liste der von SAP HANA unterstützten BS-Releases für den spezifischen VM-Typ anzuzeigen. Beachten Sie, dass wir in dem Beispiel in diesem Dokument ein SLES BS-Release verwendet haben, das von SAP für SAP HANA auf VMs der M-Serie nicht unterstützt wird.
+>
+
 In dieser Anleitung werden zwei unterschiedliche Möglichkeiten zum manuellen Installieren von SAP HANA auf Azure-VMs beschrieben:
 
 * Mit dem SAP Software Provisioning Manager (SWPM) im Rahmen einer verteilten NetWeaver-Installation im Schritt „Datenbankinstanzinstallation“

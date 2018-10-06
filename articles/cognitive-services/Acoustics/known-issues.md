@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: b0dd5e0c365c65fc7b29752f7885acb71bdb3df8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181281"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431986"
 ---
 # <a name="known-issues"></a>Bekannte Probleme
 Bei Verwendung der Designervorschau für Project Acoustics können die folgenden bekannten Probleme auftreten.
@@ -27,7 +27,7 @@ Wenn Sie eine Szene umbenennen, werden nicht alle zu dieser Szene gehörenden ak
 
 Standardmäßig sollte hier eigentlich ein relativer Pfad angezeigt werden, um die gemeinsame Nutzung von Projekten durch mehrere Projektmitarbeiter zu erleichtern. Sie können dieses Problem umgehen, indem Sie den Pfad in ein relatives Projektverzeichnis ändern.
 
-## <a name="runtime-voxels-are-a-different-size-than-design-time-voxels"></a>Voxel haben zur Laufzeit eine andere Größe als zur Entwurfszeit
+## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>Voxel haben zur Laufzeit eine andere Größe als während der Szenenvorschau
 
 Wenn Sie auf der Registerkarte **Tests** eine **Berechnung** durchführen und die Voxel anzeigen, anschließend einen Bake-Vorgang durchführen und die Voxel zur Laufzeit für dieselbe Szene anzeigen, weisen die Voxel unterschiedliche Größen auf. Bei den Voxel vor dem Bake-Vorgang handelt es sich um die in der Simulation verwendeten Voxel. Die zur Laufzeit angezeigten Voxel werden für die Interpolation zwischen Testpunkten verwendet. Dies kann eine Unstimmigkeit verursachen, bei der Portale zur Laufzeit offen zu sein scheinen, jedoch tatsächlich nicht offen sind.
 

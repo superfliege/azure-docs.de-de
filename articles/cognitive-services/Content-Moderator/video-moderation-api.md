@@ -1,26 +1,27 @@
 ---
-title: Azure Content Moderator – Videomoderation | Microsoft-Dokumentation
+title: Videomoderation – Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Videomoderation, um Scans auf mögliche nicht jugendfreie und anzügliche Inhalte durchzuführen.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: sajagtap
-ms.openlocfilehash: ef58f5990d4a0a19ab2b8c61b42ab2a0754dc6fa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b6240ef0883e1a523c50c9b641065deb2669d53
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377691"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226534"
 ---
 # <a name="video-moderation"></a>Videomoderation
 
 Heutzutage generieren Online-Viewer Milliarden von Videoaufrufen auf beliebten und regionalen Websites von sozialen Medien. Durch das Anwenden von Diensten, die auf maschinellem Lernen basieren, um mögliche nicht jugendfreie und anzügliche Inhalte vorherzusagen, können Sie Ihre Moderationskosten senken.
 
-## <a name="sign-up-for-the-content-moderator-media-processor-public-preview"></a>Anmelden für den Content Moderator-Medienprozessor (öffentliche Vorschauversion)
+## <a name="sign-up-for-the-content-moderator-media-processor-preview"></a>Anmelden für den Content Moderator-Medienprozessor (Preview)
 
 ### <a name="create-a-free-azure-account"></a>Erstellen eines kostenlosen Azure-Kontos
 
@@ -369,7 +370,7 @@ Nachdem der Content Moderator-Auftrag abgeschlossen ist, analysieren Sie die JSO
 > - `adultScore` gibt das mögliche Vorhandensein und die Vorhersage von Inhalten an, die in bestimmten Situationen als explizit sexuell oder nicht jugendfrei betrachtet werden können.
 > - `racyScore` gibt das mögliche Vorhandensein und die Vorhersage von Inhalten an, die in bestimmten Situationen als zweideutig/freizügig oder als für Erwachsene bestimmt betrachtet werden können.
 > - `adultScore` und `racyScore` liegen zwischen 0 und 1. Je höher der Wert ist, desto höher ist die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Vorschauversion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
-> - `reviewRecommended` ist entweder TRUE oder FALSE (abhängig von den internen Ergebnisschwellenwerten). Kunden müssen entscheiden, ob sie diesen Wert verwenden oder auf der Grundlage ihrer Inhaltsrichtlinien eigene Schwellenwerte festlegen möchten.
+> - `reviewRecommended` ist entweder „true“ oder „false“ (abhängig von den internen Ergebnisschwellenwerten). Kunden müssen entscheiden, ob sie diesen Wert verwenden oder auf der Grundlage ihrer Inhaltsrichtlinien eigene Schwellenwerte festlegen möchten.
 >
 
     {

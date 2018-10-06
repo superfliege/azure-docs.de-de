@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a7a4e4b487c324bada818d4815f253110f7f7a60
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: f8ca716f4ab991fecca52ca2d5fed080e6f4c177
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234815"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060850"
 ---
 # <a name="standard-ssd-managed-disks-for-azure-virtual-machine-workloads"></a>Verwaltete Standard-SSD-Datenträger für Workloads virtueller Azure-Computer
 
@@ -39,9 +39,12 @@ Die folgende Tabelle enthält die Datenträgergrößen, die derzeit für „Stan
 |E10     |128 GB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
 |E15     |256 GiB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
 |E20     |512 GB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
-|E30     |1024 GiB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
-|E40     |2048 GiB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
-|E50     |4095 GiB         |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
+|E30     |1.024 GiB       |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
+|E40     |2.048 GiB       |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
+|E50     |4.095 GiB       |Bis zu 500         |Bis zu 60 MiB pro Sekunde         |
+|E60     |8.192 GiB       |Bis zu 1.300       |Bis zu 300 MiB pro Sekunde        |
+|E70     |16.384 GiB      |Bis zu 2000       |Bis zu 500 MiB pro Sekunde        |
+|E80     |32767 GiB      |Bis zu 2000       |Bis zu 500 MiB pro Sekunde        |
 
 Standard-SSDs sind dafür ausgelegt, Latenzen im einstelligen Millisekundenbereich für die meisten E/A-Vorgänge zu erzielen sowie IOPS und Durchsätze bis zu den in der obigen Tabelle genannten Grenzwerten bereitzustellen. Die Istwerte für IOPS und Durchsätze können in einigen Fällen je nach Datenverkehrsmuster variieren. Standard-SSDs stellen eine konstantere Leistung und geringere Latenzen als HDD-Datenträger bereit.
 

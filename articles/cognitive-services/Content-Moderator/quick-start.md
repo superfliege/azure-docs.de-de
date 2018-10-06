@@ -1,27 +1,28 @@
 ---
-title: Erste Schritte mit Azure Content Moderator | Microsoft-Dokumentation
-description: Erste Schritte mit Azure Content Moderator
+title: Erste Schritte mit Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Beschreibt die ersten Schritte mit Content Moderator.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: sajagtap
-ms.openlocfilehash: ae4333047ebd95733c7baaed0323a0c2c477d323
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c2ac0ccd89b5f1436a151e3d69c5d7423090f244
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374315"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225293"
 ---
 # <a name="get-started-with-content-moderator"></a>Erste Schritte mit Content Moderator
 
-Sie können die Content Moderator-APIs und das Prüfungstool folgendermaßen nutzen:
+Sie können die ersten Schritte mit Content Moderator folgendermaßen unternehmen:
 
-- [Mit dem Prüfungstool](#start-with-the-review-tool) können Sie sowohl API-Schlüssel als auch ein Prüfungsteam erstellen. Erkunden Sie das Prüfungstool, und erfahren Sie, wie Sie mit Content Moderator-APIs Integrationen vornehmen.
-- [Abonnieren Sie Content Moderator](#start-with-the-apis) im Azure-Portal. Sie müssen sich online registrieren, um ein Prüfungsteam zu erstellen.
+- [Beginnen Sie mit dem Prüfungstool](#start-with-the-review-tool), um den API-Schlüssel abzurufen und ein Prüfungsteam zu erstellen. Der Vorteil ist, dass Sie den API-Schlüssel verwenden können, um die Moderations-APIs aufzurufen, um Inhalte zu überprüfen, sowie die Überprüfungs-APIs, um Bewertungen zu generieren, ohne zusätzliche Schritte zu unternehmen.
+- [Abonnieren Sie Content Moderator](#start-with-the-apis) in Azure, um den API-Schlüssel abzurufen. Lesen Sie die [API-Referenz](api-reference.md) und die [SDKs](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net). Sie müssen sich online registrieren, um ein Prüfungsteam zu erstellen.
 - [Verwenden Sie den Flow-Connector und Flow-Vorlagen](https://flow.microsoft.com/connectors/shared_cognitiveservicescontentmoderator/content-moderator/), um zahlreiche Integrationen mit einem einfach zu bedienenden Dienst zu testen.
 
 Unabhängig von der ausgewählten Option erfahren Sie mehr über Ihre API-Anmeldeinformationen im Artikel [Verwalten von Anmeldeinformationen](review-tool-user-guide/credentials.md).
@@ -55,9 +56,9 @@ Lernen Sie alle [Funktionen des Prüfungstools](Review-Tool-User-Guide/human-in-
 
 ### <a name="use-the-apis"></a>Verwenden der APIs
 
-Sie haben die Inhaltsmoderation und das Prüfungstool kennengelernt. Lesen Sie nun, wie Sie Content Moderator in Ihre Geschäftsanwendungen integrieren. Der folgende Abschnitt enthält weitere Informationen zu Software Development Kits (SDKs) und Beispiele.
+Erfahren Sie, wie Sie Content Moderator in Ihre Geschäftsanwendungen integrieren. Lesen Sie die [API-Referenz](api-reference.md) und die [SDKs](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net).
 
-## <a name="start-with-the-apis"></a>Erste Schritte mit den APIs
+## <a name="subscribe-in-the-azure-portal"></a>Abonnieren im Azure-Portal
 
 [Abonnieren Sie Content Moderator](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator) im Azure-Portal. Beginnen Sie mit einer der folgenden APIs:
 
@@ -85,4 +86,4 @@ Wählen Sie zuerst die API für den Auftrag, die Überprüfung und den Workflow 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Inhaltsmoderation mit der [Bildmoderations-API](image-moderation-api.md).
+Lesen Sie die [API-Referenz](api-reference.md) und die [SDKs](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net). Beschleunigen Sie Ihre Integration mit den [.NET SDK-Beispielen](sdk-and-samples.md#net-sdk-samples), den [REST-API-Beispiele in C#](https://github.com/sanjeev3/azure-docs-pr/blob/master/articles/cognitive-services/Content-Moderator/sdk-and-samples.md#rest-api-samples-in-c) und [Lernprogrammen](sdk-and-samples.md#tutorials).

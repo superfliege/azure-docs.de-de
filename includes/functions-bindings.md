@@ -2,7 +2,7 @@ Die folgende Tabelle zeigt die Bindungen, die in den beiden Hauptversionen der A
 
 | Typ | 1.x | 2.x | Trigger | Eingabe | Output |  
 | ---- | :-: | :-: | :------: | :---: | :----: |
-| [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔<sup>1</sup>|✔|✔|✔|  
+| [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|  
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|  
 | [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |  
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|  
@@ -14,16 +14,16 @@ Die folgende Tabelle zeigt die Bindungen, die in den beiden Hauptversionen der A
 | [Microsoft Graph<br/>Outlook-E-Mail](../articles/azure-functions/functions-bindings-microsoft-graph.md)  ||✔| | |✔|
 | [Microsoft Graph<br/>Ereignis](../articles/azure-functions/functions-bindings-microsoft-graph.md)         ||✔|✔|✔|✔|
 | [Microsoft Graph<br/>Authentifizierungstoken](../articles/azure-functions/functions-bindings-microsoft-graph.md)    ||✔| |✔| |
-| [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔|✔| |✔|✔|  
+| [Mobile Apps](../articles/azure-functions/functions-bindings-mobile-apps.md)             |✔| | |✔|✔|  
 | [Notification Hubs](../articles/azure-functions/functions-bindings-notification-hubs.md) |✔|| | |✔|
-| [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔<sup>1</sup>|✔| |✔|  
+| [Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)         |✔|✔|✔| |✔|  
 | [SendGrid](../articles/azure-functions/functions-bindings-sendgrid.md)                   |✔|✔| | |✔|
 | [Service Bus](../articles/azure-functions/functions-bindings-service-bus.md)             |✔|✔|✔| |✔|  
-| [Table Storage](../articles/azure-functions/functions-bindings-storage-table.md)         |✔|✔<sup>1</sup>| |✔|✔|  
-| [Zeitgeber](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
+| [Table Storage](../articles/azure-functions/functions-bindings-storage-table.md)         |✔|✔| |✔|✔|  
+| [Zeitgeber](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔<sup>1</sup>|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 | [Webhooks](../articles/azure-functions/functions-bindings-http-webhook.md)             |✔||✔| |✔|
   
-<sup>1</sup> In 2.x müssen alle Bindungen außer HTTP, Timer und Azure Storage registriert sein. Siehe [Registrieren von Bindungserweiterungen](../articles/azure-functions/functions-triggers-bindings.md#register-binding-extensions).
+<sup>1</sup> In 2.x müssen alle Bindungen außer HTTP und Timer registriert sein. Siehe [Registrieren von Bindungserweiterungen](../articles/azure-functions/functions-triggers-bindings.md#register-binding-extensions).
 
 <sup>2</sup> Experimentell – keine Unterstützung und möglicherweise in Zukunft entfernt.

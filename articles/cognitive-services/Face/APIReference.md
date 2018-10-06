@@ -1,21 +1,9 @@
+<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->
 ---
-title: API-Referenz zum Gesichtserkennungs-API-Dienst | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: Die API-Referenz bietet Informationen zu den APIs „Person Management“, „LargePersonGroup/PersonGroup Management“, „LargeFaceList/FaceList Management“ und „Face Algorithms“.
-services: cognitive-services
-author: SteveMSFT
-manager: corncar
-ms.service: cognitive-services
-ms.component: face-api
-ms.topic: article
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 94c03d4f07a18c0c63d76965b1b31dce66388843
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378075"
+title: API-Referenz – Face API titleSuffix: Azure Cognitive Services description: Die API-Referenz bietet Informationen zu den APIs „Person Management“, „LargePersonGroup/PersonGroup Management“, „LargeFaceList/FaceList Management“ und „Face Algorithms“.
+services: cognitive-services author: SteveMSFT manager: cgronlun
+
+ms.service: cognitive-services ms.component: face-api ms.topic: reference ms.date: 03/01/2018 ms.author: sbowles
 ---
 # <a name="api-reference"></a>API-Referenz
 

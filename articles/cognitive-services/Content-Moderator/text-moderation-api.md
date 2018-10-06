@@ -1,20 +1,20 @@
 ---
-title: Azure Content Moderator – Textmoderation | Microsoft-Dokumentation
+title: Textmoderation – Content Moderator
 description: Verwenden Sie Textmoderation für möglicherweise unerwünschten Text, personenbezogene Informationen und benutzerdefinierte Begriffslisten.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085758"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226567"
 ---
 # <a name="text-moderation"></a>Textmoderation
 
@@ -25,7 +25,7 @@ Sie können Inhalte basierend auf Ihren Richtlinien und Schwellenwerten entweder
 Die Antwort des Diensts enthält folgende Informationen:
 
 - Obszönitäten: begriffsbasierter Abgleich mit einer integrierten Liste anstößiger Begriffe in verschiedenen Sprachen
-- Klassifizierung: computergestützte Klassifizierung in drei Kategorien
+- Klassifizierung: Computergestützte Klassifizierung in drei Kategorien
 - Personenbezogene Informationen (Personally Identifiable Information, PII)
 - Automatisch korrigierter Text
 - Ursprünglicher Text
@@ -48,7 +48,7 @@ Wenn die API anstößige Begriffe in einer der [unterstützten Sprachen](Text-Mo
 >
 > Verwenden Sie für die Erkennung **anstößiger Begriffe** den [ISO 639-3-Code](http://www-01.sil.org/iso639-3/codes.asp) der unterstützten Sprachen aus diesem Artikel, oder lassen Sie ihn leer.
 
-## <a name="classification"></a>Klassifizierung
+## <a name="classification"></a>Classification
 
 Das computergestützte **Textklassifizierungsfeature** von Content Moderator wird **nur für Englisch** unterstützt und hilft bei der Erkennung potenziell unerwünschter Inhalte. Die gekennzeichneten Inhalte werden je nach Kontext unter Umständen als ungeeignet bewertet. Das Feature vermittelt die Wahrscheinlichkeit jeder Kategorie und kann eine Überprüfung durch Personen empfehlen. Für das Feature wird ein trainiertes Modell verwendet, um Äußerungen zu identifizieren, die unter Umständen beleidigend, abfällig oder diskriminierend sind. Dieses schließt Jargon und Abkürzungen sowie anstößige und absichtlich falsch geschriebene Wörter für die Überprüfung ein. 
 
@@ -72,7 +72,7 @@ Der folgende Auszug aus dem JSON-Auszug zeigt eine Beispielausgabe:
 - `Category1` gibt an, dass unter Umständen Sprache vorhanden ist, die in bestimmten Situationen als sexuell freizügig oder nicht jugendfrei betrachtet werden kann.
 - `Category2` gibt an, dass unter Umständen Sprache vorhanden ist, die in bestimmten Situationen als zweideutig bzw. anzüglich oder als nur für Erwachsene bestimmt betrachtet werden kann.
 - `Category3` gibt an, dass unter Umständen Sprache vorhanden ist, die in bestimmten Situationen als anstößig betrachtet werden kann.
-- `Score` ist ein Wert zwischen 0 und 1. Je höher der Wert, desto höher die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Vorschauversion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
+- `Score` ist ein Wert zwischen 0 und 1. Je höher der Wert, desto höher die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Funktion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
 - `ReviewRecommended` ist entweder „true“ oder „false“ (abhängig von den internen Ergebnisschwellenwerten). Kunden müssen entscheiden, ob sie diesen Wert verwenden oder auf der Grundlage ihrer Inhaltsrichtlinien eigene Schwellenwerte festlegen möchten.
 
 ## <a name="personally-identifiable-information-pii"></a>Personenbezogene Informationen (Personally Identifiable Information, PII)

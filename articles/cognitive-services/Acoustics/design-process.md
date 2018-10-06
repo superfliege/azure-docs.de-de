@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 3b35f78d66a6ae66b0a56818f5d4be455ce00de5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 8f594be67c4677fae00cb01598d3899e30dae1e8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181276"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433223"
 ---
 # <a name="design-process-overview"></a>Übersicht über den Entwurfsprozess
-Sie können Ihre Entwurfsabsicht in allen drei Phasen des Project Acoustics-Workflows zum Ausdruck bringen: Entwurf vor dem Bake-Vorgang, bei der Platzierung der Tonquelle und Entwurf nach dem Bake-Vorgang. Für den Prozess muss mit der Platzierung von Halllautstärken weniger Aufschlag verknüpft werden, während der Entwickler die Kontrolle darüber behält, wie eine Szene klingt.
+Sie können Ihre Entwurfsabsicht in allen drei Phasen des Project Acoustics-Workflows zum Ausdruck bringen: Szeneneinrichtung vor dem Bake-Vorgang, bei der Platzierung der Tonquelle und Entwurf nach dem Bake-Vorgang. Für den Prozess muss mit der Platzierung von Halllautstärken weniger Aufschlag verknüpft werden, während der Entwickler die Kontrolle darüber behält, wie eine Szene klingt.
 
 ## <a name="pre-bake-design"></a>Entwurf vor dem Bake-Vorgang
-Beim Entwurfsprozess vor dem Bake-Vorgang werden die Szene und Metadaten generiert, die für die Simulation von Akustikwellen verwendet werden. Hierzu gehört die Auswahl von Szenenelementen für die Simulation zur Bereitstellung von Okklusionen, Reflektionen und von Hall. Bei den Metadaten für die Szene handelt es sich um die Auswahl von akustischen Materialien für die einzelnen Szenenelemente. Die akustischen Materialien bestimmten die Menge an Schallenergie, die von der Oberfläche reflektiert wird.
+Beim Szeneneinrichtungsprozess vor dem Bake-Vorgang werden die Szene und Metadaten generiert, die für die Simulation von Akustikwellen verwendet werden. Hierzu gehört die Auswahl von Szenenelementen für die Simulation zur Bereitstellung von Okklusionen, Reflektionen und von Hall. Bei den Metadaten für die Szene handelt es sich um die Auswahl von akustischen Materialien für die einzelnen Szenenelemente. Die akustischen Materialien bestimmten die Menge an Schallenergie, die von der Oberfläche reflektiert wird.
 
 Der Absorptionskoeffizient für alle Oberflächen beträgt standardmäßig 0,04, was für eine stark reflektierende Oberfläche steht. Ästhetische Effekte und Gameplay-Effekte können Sie erzielen, indem Sie die Absorptionskoeffizienten der unterschiedlichen Materialien in der gesamten Szene optimieren. Diese sind für die Zuhörer besonders auffällig, wenn sie die Übergänge von einem Bereich der Szene in einen anderen hören. Der Übergang von einem dunklen Raum mit Hall in eine helle Szene im Freien ohne Hall verstärkt die Wirkung des Übergangs beispielsweise. Um diesen Effekt zu erzielen, legen Sie für die Absorptionskoeffizienten für die Materialien der Szene im Freien höhere Werte fest.
 

@@ -1,26 +1,27 @@
 ---
-title: Azure Content Moderator – Videomoderation | Microsoft-Dokumentation
+title: Videomoderation mit Überprüfung durch Personen – Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die computergestützte Videomoderation und Tools für die Überprüfung durch Personen, um unangemessene Inhalte zu moderieren.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: fb26c9af55381c80a3f520b1a0068d8f72c91061
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 33956e1986265b36f6df9a2d19909cb974bd3197
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35372938"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222079"
 ---
-# <a name="video-moderation"></a>Videomoderation
+# <a name="video-moderation-with-human-review"></a>Videomoderation mit Überprüfung durch Personen
 
 Verwenden Sie die in Content Moderator integrierten computergestützten Tools für die [Videomoderation](video-moderation-api.md) und [Überprüfungen durch Personen](Review-Tool-User-Guide/human-in-the-loop.md), um Videos und Transkripte für Inhalte für Erwachsene (explizite) und freizügige Inhalte (Anzüglichkeiten) zu moderieren, um die besten Ergebnisse für Ihr Unternehmen zu erzielen.
 
-## <a name="video-trained-classifier"></a>Durch Videos trainierte Klassifizierung
+## <a name="video-trained-classifier-preview"></a>Durch Videos trainierte Klassifizierung (Preview)
 
 Die computergestützte Videoklassifizierung erfolgt entweder mit durch Bilder oder Videos trainierte Modelle. Im Gegensatz zu durch Bilder trainierte Klassifizierungen wird die Klassifizierung für Inhalte für Erwachsene und freizügige Inhalte von Microsoft mit Videos trainiert. Dies führt zu besseren Übereinstimmungen.
 

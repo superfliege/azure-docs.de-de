@@ -1,24 +1,25 @@
 ---
-title: Azure Content Moderator – Erstellen von Videoüberprüfungen per .NET | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Videoüberprüfungen mit dem Azure Content Moderator SDK für .NET erstellen.
+title: Erstellen von Videoüberprüfungen mit .NET – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Es wird beschrieben, wie Sie Videoüberprüfungen mit dem Content Moderator SDK für .NET erstellen.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41929912"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219039"
 ---
 # <a name="create-video-reviews-using-net"></a>Erstellen von Videoüberprüfungen per .NET
 
-Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den schnellen Einstieg in die Verwendung des Content Moderator SDK mit C# erleichtern, um Folgendes durchzuführen:
+Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den schnellen Einstieg in die Verwendung des [Content Moderator SDK mit C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Folgendes durchzuführen:
 
 - Erstellen einer Videoüberprüfung für menschliche Moderatoren
 - Hinzufügen von Frames zu einer Überprüfung
@@ -32,11 +33,22 @@ In diesem Artikel wird vorausgesetzt, dass Sie [das Video moderiert haben (siehe
 
 Außerdem wird in diesem Artikel davon ausgegangen, dass Sie bereits mit Visual Studio und C# vertraut sind.
 
-### <a name="sign-up-for-content-moderator-services"></a>Registrieren für Content Moderator-Dienste
+## <a name="sign-up-for-content-moderator"></a>Registrieren für Content Moderator
 
 Um Content Moderator-Dienste über die REST-API oder über das SDK verwenden zu können, benötigen Sie einen Abonnementschlüssel.
+Informationen zum Abrufen des Schlüssels finden Sie in [diesem Schnellstart](quick-start.md).
 
-Im Content Moderator-Dashboard befindet sich Ihr Abonnementschlüssel unter **Einstellungen** > **Anmeldeinformationen** > **API** > **Trial Ocp-Apim-Subscription-Key** (Ocp-Apim-Subscription-Key – Testversion). Weitere Informationen finden Sie in der [Übersicht](overview.md).
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrieren für ein Überprüfungstoolkonto, falls dies nicht bereits im vorhergehenden Schritt geschehen ist
+
+Wenn Sie Ihren Content Moderator über das Azure-Portal erhalten haben, müssen Sie sich auch [für das Überprüfungstoolkonto registrieren](https://contentmoderator.cognitive.microsoft.com/) und ein Überprüfungsteam erstellen. Sie benötigen die Team-ID und das Überprüfungstool, um die Überprüfungs-API aufzurufen, einen Auftrag zu starten sowie die Überprüfungen im Tool anzuzeigen.
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Sicherstellen, dass Ihr API-Schlüssel die Überprüfungs-API zur Erstellung der Überprüfung aufrufen kann
+
+Nach Abschluss der vorhergehenden Schritte verfügen Sie möglicherweise über zwei Content Moderator-Schlüssel, wenn Sie über das Azure-Portal begonnen haben. 
+
+Wenn Sie den von Azure bereitgestellten API-Schlüssel in Ihrem SDK-Beispiel verwenden möchten, führen Sie die Schritte im Abschnitt [Verwenden des Azure-Schlüssels bei der Überprüfungs-API](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) aus, damit Ihre Anwendung die Überprüfungs API aufrufen und Überprüfungen erstellen kann.
+
+Wenn Sie den vom Überprüfungstool generierten Schlüssel für eine kostenlose Testversion verwenden, ist der Schlüssel dem Überprüfungstoolkonto bereits bekannt. Deshalb sind keine weiteren Schritte erforderlich.
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Vorbereiten Ihres Videos und der Videoframes für die Überprüfung
 
@@ -118,9 +130,9 @@ Ersetzen Sie die Beispielwerte für diese Eigenschaften wie angegeben.
             /// </summary>
             /// <remarks>This must be the team name you used to create your 
             /// Content Moderator account. You can retrieve your team name from
-            /// the Conent Moderator web site. Your team name is the Id associated 
+            /// the Content Moderator web site. Your team name is the Id associated 
             /// with your subscription.</remarks>
-            public static readonly string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
+            private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
             /// <summary>
             /// The base URL fragment for Content Moderator calls.
@@ -150,7 +162,7 @@ Fügen Sie dem VideoReviews-Namespace (Program-Klasse) die folgende Methodendefi
     {
         return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
         {
-            BaseUrl = AzureBaseURL
+            Endpoint = AzureBaseURL
         };
     }
 
@@ -391,7 +403,7 @@ Fügen Sie dem VideoReviews-Namespace (Program-Klasse) die **Main**-Methodendefi
 
             Console.WriteLine("Open your Content Moderator Dashboard and select Review > Video to see the review.");
             Console.WriteLine("Press any key to close the application.");
-            Console.Read();
+            Console.ReadKey();
         }
     }
 
@@ -536,8 +548,8 @@ Abschließend zeigen Sie die Videoüberprüfung in Ihrem Konto für das Content 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Rufen Sie das [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) und die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dafür sowie andere Content Moderator-Schnellstarts für .NET ab.
+
 Informieren Sie sich über das Hinzufügen der [Transkriptmoderation](video-transcript-moderation-review-tutorial-dotnet.md) zur Videoüberprüfung. 
 
 Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation](video-transcript-moderation-review-tutorial-dotnet.md) an.
-
-Laden Sie die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) für diesen und andere Content Moderator-Schnellstarts für .NET herunter.

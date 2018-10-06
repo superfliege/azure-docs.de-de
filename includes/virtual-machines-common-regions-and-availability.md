@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: e54813896eee8a58ae456f14f76151318ac1b9fc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7ab67e878e7cf08fe983ab172731209328b1a474
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38766965"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454449"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regionen und Verfügbarkeit für virtuelle Computer in Azure
 Azure wird in mehreren Rechenzentren weltweit betrieben. Diese Rechenzentren sind in geografische Regionen unterteilt, sodass Sie auswählen können, wo Sie Ihre Anwendungen erstellen möchten. Es ist wichtig zu verstehen, wie und wo Ihre virtuellen Computer (VMs) in Azure betrieben werden. Dies gilt auch für die Optionen zum Verbessern der Leistung, Verfügbarkeit und Redundanz. Dieser Artikel enthält eine Übersicht über die Verfügbarkeits- und Redundanzfunktionen von Azure.
@@ -24,8 +24,7 @@ Azure-Ressourcen werden in definierten geografischen Regionen wie „USA, Westen
 ## <a name="special-azure-regions"></a>Spezielle Azure-Regionen
 Azure stellt einige spezielle Regionen zur Verfügung, die Sie aus Compliancegründen oder aus rechtlichen Gründen verwenden können, wenn Sie Ihre Anwendung erstellen. Es gibt die folgenden speziellen Regionen:
 
-* 
-  **US Gov Virginia** und **US Gov Iowa**
+* **US Gov Virginia** und **US Gov Iowa**
   * Eine physische und logische vom Netzwerk isolierte Instanz von Azure für US-Regierungsbehörden und Partner, die von überprüften Personen aus den USA betreiben wird. Sie umfasst zusätzliche Compliancezertifizierungen, z.B. [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) und [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Erfahren Sie mehr über [Azure Government](https://azure.microsoft.com/features/gov/).
 * **China, Osten** und **China, Norden**
   * Diese Regionen sind über eine einzigartige Partnerschaft zwischen Microsoft und 21Vianet verfügbar, wobei Microsoft die Rechenzentren nicht direkt betreut. Weitere Informationen finden Sie unter [Microsoft Azure in China](http://www.windowsazure.cn/).
@@ -73,8 +72,8 @@ Die folgende Tabelle bietet einen schnellen Überblick über die Unterschiede zw
 
 | Replikationsstrategie | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| Daten werden in mehreren Datencentern repliziert. |Nein  |Ja |Ja |Ja |
-| Daten können vom sekundären Standort und vom primären Standort aus gelesen werden. |Nein  |Nein  |Nein  |Ja |
+| Daten werden in mehreren Datencentern repliziert. |Nein  |Ja |Ja |JA |
+| Daten können vom sekundären Standort und vom primären Standort aus gelesen werden. |Nein  |Nein  |Nein  |JA |
 | Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden. |3 |3 |6 |6 |
 
 Sie erhalten weitere Informationen über [Azure Storage-Replikationsoptionen hier](../articles/storage/common/storage-redundancy.md). Weitere Informationen zu verwalteten Datenträgern finden Sie in der [Übersicht über Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md).
@@ -103,8 +102,12 @@ Eine Fehlerdomäne ist eine logische Gruppe von zugrunde liegender Hardware mit 
 ### <a name="update-domains"></a>Updatedomänen
 Eine Updatedomäne ist eine logische Gruppe von zugrunde liegender Hardware, die zur gleichen Zeit gewartet oder neu gestartet werden kann. Wenn Sie VMs in einer Verfügbarkeitsgruppe erstellen, werden Ihre VMs von der Azure-Plattform automatisch auf diese Updatedomänen verteilt. Mit diesem Ansatz wird sichergestellt, dass mindestens eine Instanz Ihrer Anwendung immer ausgeführt wird, wenn für die Azure-Plattform die regelmäßige Wartung durchgeführt wird. Während einer geplanten Wartung werden die Updatedomänen unter Umständen nicht der Reihe nach neu gestartet, sondern es wird jeweils nur eine Updatedomäne neu gestartet.
 
+![Verfügbarkeitsgruppen](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
+
 ### <a name="managed-disk-fault-domains"></a>Fehlerdomänen für verwaltete Datenträger
 Virtuelle Computer mit [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) werden bei Verwendung einer verwalteten Verfügbarkeitsgruppe auf Fehlerdomänen für verwaltete Datenträger ausgerichtet. Diese Ausrichtung stellt sicher, dass sich alle verwalteten, an einen virtuellen Computer angefügten Datenträger innerhalb der gleichen Fehlerdomäne für verwaltete Datenträger befinden. Nur virtuelle Computer mit verwalteten Datenträgern können in einer verwalteten Verfügbarkeitsgruppe erstellt werden. Die Anzahl der Fehlerdomänen für verwaltete Datenträger variiert je nach Region – pro Region sind entweder zwei oder drei Fehlerdomänen für verwaltete Datenträger vorhanden. Sie können sich weiter über diese Fehlerdomänen für verwaltete Datenträger für [Linux-VMs](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) oder [Windows-VMs](../articles/virtual-machines/windows/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) informieren.
+
+![Verwaltete Verfügbarkeitsgruppe](./media/virtual-machines-common-manage-availability/md-fd-updated.png)
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 

@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7e27b5117f5f0ea98916ecfefcbb0dac9323e1d9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a71e867bd23cf64b2ac7fc8cd1c54c55d92ce924
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181234"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431787"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ## <a name="what-is-project-acoustics"></a>Was ist „Projekt: Akustik“?
 
-Beim Unity-Plug-In „Project Acoustics“ handelt es sich um ein Akustiksystem, mit dem das Verhalten von Akustikwellen ähnlich wie bei der statischen Beleuchtung vor der Laufzeit berechnet wird. Der Großteil der Wellenphysik wird zur Entwurfszeit in der Cloud umgesetzt, sodass die CPU-Kosten zur Laufzeit niedrig sind.  
+Beim Unity-Plug-In „Project Acoustics“ handelt es sich um ein Akustiksystem, mit dem das Verhalten von Akustikwellen ähnlich wie bei der statischen Beleuchtung vor der Laufzeit berechnet wird. Der Großteil der Wellenphysikberechnungen wird von der Cloud erledigt, sodass die CPU-Kosten zur Laufzeit niedrig sind.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Wo kann ich das Plug-In herunterladen?
 
@@ -28,7 +28,7 @@ Wenn Sie an der Evaluierung des Akustik-Plug-Ins interessiert sind, registrieren
 
 ## <a name="is-azure-used-at-runtime"></a>Wird Azure zur Laufzeit verwendet?
 
-Nein, die Cloudintegration wird nur während der Vorausberechnungsphase zur Entwurfszeit verwendet.
+Nein, die Cloudintegration wird nur während der Vorausberechnungsphase als Teil der Szeneneinrichtung verwendet.
  
 ## <a name="what-is-simulation-input"></a>Was ist eine Simulationseingabe? 
 

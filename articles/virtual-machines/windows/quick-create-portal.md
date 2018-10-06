@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f5a92d421bbf7bfe485252c148d5f64ae2fb8e23
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 692d8c0a1a427fa65a94d474f78792b1a071de46
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916114"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219718"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Windows-Computer im Azure-Portal
 
@@ -37,23 +37,28 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
 
-2. Suchen Sie im Suchfeld oberhalb der Liste der Azure Marketplace-Ressourcen nach **Windows Server 2016 Datacenter**, und klicken Sie auf **Erstellen**.
+1. Suchen Sie im Suchfeld oberhalb der Liste der Azure Marketplace-Ressourcen nach **Windows Server 2016 Datacenter**, und klicken Sie auf **Erstellen**.
 
-3. Geben Sie einen Namen für den virtuellen Computer ein, etwa *myVM*, übernehmen Sie den Datenträgertyp *SSD*, und geben Sie einen Benutzernamen (etwa *azureuser*) an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
+1. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie als Namen *myResourceGroup* ein. 
 
-    ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)
+    ![Erstellen einer neuen Ressourcengruppe für Ihre VM](./media/quick-create-portal/project-details.png)
 
-5. Klicken Sie unter „Ressourcengruppe“ auf **Neu erstellen**, und geben Sie einen Namen (etwa *myResourceGroup*) ein. Wählen Sie den **Standort**, und klicken Sie dann auf **OK**.
+1. Geben Sie unter **Instanzdetails** *myVM* als **Namen des virtuellen Computers** ein, und wählen Sie *USA, Osten* als Ihre **Ort** aus. Behalten Sie die restlichen Standardwerte bei.
 
-4. Wählen Sie eine Größe für den virtuellen Computer. Sie können beispielsweise nach *Computetyp* oder *Datenträgertyp* filtern. Eine mögliche VM-Größe ist beispielsweise *D2s_v3*. Klicken Sie auf **Auswählen**, nachdem Sie eine Größe gewählt haben.
+    ![Abschnitt „Instanzdetails“](./media/quick-create-portal/instance-details.png)
 
-    ![Screenshot: VM-Größen](./media/quick-create-portal/create-windows-vm-portal-sizes.png)
+1. Geben Sie unter **Administratorkonto** einen Benutzernamen wie *azureuser* an sowie ein Kennwort. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
 
-5. Wählen Sie auf der Seite **Einstellungen** unter **Netzwerk** > **Netzwerksicherheitsgruppe** > **Öffentliche Eingangsports hinzufügen** in der Dropdownliste die Optionen **HTTP** und **RDP (3389)**. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK**.
+    ![Geben Sie Ihren Benutzernamen und Ihr Kennwort ein.](./media/quick-create-portal/administrator-account.png)
 
-6. Wählen Sie auf der Seite „Zusammenfassung“ die Option **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten.
+1. Wählen Sie unter **Regeln für eingehende Ports** die Option **Ausgewählte Ports zulassen** aus, und wählen Sie dann **RDP (3389)** und **HTTP** aus der Dropdownliste aus.
 
-7. Der virtuelle Computer wird auf dem Dashboard des Azure-Portals angeheftet. Nach Abschluss der Bereitstellung wird automatisch die VM-Zusammenfassung geöffnet.
+    ![Öffnen von Ports für RDP und HTTP](./media/quick-create-portal/inbound-port-rules.png)
+
+1. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
+
+    ![Überprüfen und Erstellen](./media/quick-create-portal/review-create.png)
+
 
 ## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
 
@@ -61,7 +66,7 @@ Erstellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer. In diese
 
 1. Klicken Sie auf der Seite mit den Eigenschaften des virtuellen Computers auf die Schaltfläche **Verbinden**. 
 
-    ![Herstellen einer Verbindung mit einem virtuellen Azure-Computer über das Portal](./media/quick-create-portal/quick-create-portal/portal-quick-start-9.png)
+    ![Herstellen einer Verbindung mit einem virtuellen Azure-Computer über das Portal](./media/quick-create-portal/portal-quick-start-9.png)
     
 2. Übernehmen Sie auf der Seite zum **Herstellen der Verbindung mit dem virtuellen Computer** die Standardoptionen, um basierend auf dem DNS-Namen eine Verbindung über Port 3389 herzustellen. Klicken Sie anschließend auf **RDP-Datei herunterladen**.
 

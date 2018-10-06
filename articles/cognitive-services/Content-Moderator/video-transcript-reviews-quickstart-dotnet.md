@@ -1,24 +1,25 @@
 ---
-title: Azure Content Moderator – Erstellen von Videotranskriptüberprüfungen per .NET | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie Videotranskriptüberprüfungen mit dem Azure Content Moderator SDK für .NET erstellen.
+title: Erstellen von Videotranskriptüberprüfungen mit .NET – Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Erstellen von Videotranskriptüberprüfungen mit dem Content Moderator SDK für .NET
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: sajagtap
-ms.openlocfilehash: 3286da6e38f0fba02386d877a835fb694ed0fdec
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4e862a8b74339bc8dd1de6c0b231ddb15425974c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35374162"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220940"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Erstellen von Videotranskriptüberprüfungen per .NET
 
-Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den schnellen Einstieg in die Verwendung des Content Moderator SDK mit C# erleichtern, um Folgendes durchzuführen:
+Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den schnellen Einstieg in die Verwendung des [Content Moderator SDK mit C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern, um Folgendes durchzuführen:
 
 - Erstellen einer Videoüberprüfung für menschliche Moderatoren
 - Hinzufügen eines moderierten Transkripts zur Überprüfung
@@ -28,15 +29,26 @@ Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den schnellen
 
 In diesem Artikel wird vorausgesetzt, dass Sie [das Video moderiert](video-moderation-api.md) und [die Videoüberprüfung erstellt](video-reviews-quickstart-dotnet.md) haben, indem Sie das Prüfungstool für die Entscheidungsfindung durch Menschen verwendet haben. Nun möchten Sie im Prüfungstool moderierte Videotranskripts hinzufügen.
 
-In diesem Artikel wird auch davon ausgegangen, dass Sie bereits mit Visual Studio und C# vertraut sind.
+Außerdem wird in diesem Artikel davon ausgegangen, dass Sie bereits mit Visual Studio und C# vertraut sind.
 
-### <a name="sign-up-for-content-moderator-services"></a>Registrieren für Content Moderator-Dienste
+## <a name="sign-up-for-content-moderator"></a>Registrieren für Content Moderator
 
 Um Content Moderator-Dienste über die REST-API oder über das SDK verwenden zu können, benötigen Sie einen Abonnementschlüssel.
+Informationen zum Abrufen des Schlüssels finden Sie in [diesem Schnellstart](quick-start.md).
 
-Im Content Moderator-Dashboard befindet sich Ihr Abonnementschlüssel unter **Einstellungen** > **Anmeldeinformationen** > **API** > **Trial Ocp-Apim-Subscription-Key** (Ocp-Apim-Subscription-Key – Testversion). Weitere Informationen finden Sie in der [Übersicht](overview.md).
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Registrieren für ein Überprüfungstoolkonto, falls dies nicht bereits im vorhergehenden Schritt geschehen ist
 
-### <a name="prepare-your-video-for-review"></a>Vorbereiten Ihres Videos auf die Überprüfung
+Wenn Sie Ihren Content Moderator über das Azure-Portal erhalten haben, müssen Sie sich auch [für das Überprüfungstoolkonto registrieren](https://contentmoderator.cognitive.microsoft.com/) und ein Überprüfungsteam erstellen. Sie benötigen die Team-ID und das Überprüfungstool, um die Überprüfungs-API aufzurufen, einen Auftrag zu starten sowie die Überprüfungen im Tool anzuzeigen.
+
+## <a name="ensure-your-api-key-can-call-the-review-api-job-creation"></a>Sicherstellen, dass Ihr API-Schlüssel die Überprüfungs-API aufrufen kann (Auftragserstellung)
+
+Nach Abschluss der vorhergehenden Schritte verfügen Sie möglicherweise über zwei Content Moderator-Schlüssel, wenn Sie über das Azure-Portal begonnen haben. 
+
+Wenn Sie den von Azure bereitgestellten API-Schlüssel in Ihrem SDK-Beispiel verwenden möchten, führen Sie die Schritte im Abschnitt [Verwenden des Azure-Schlüssels bei der Überprüfungs-API](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) aus, damit Ihre Anwendung die Überprüfungs API aufrufen und Überprüfungen erstellen kann.
+
+Wenn Sie den vom Überprüfungstool generierten Schlüssel für eine kostenlose Testversion verwenden, ist der Schlüssel dem Überprüfungstoolkonto bereits bekannt. Deshalb sind keine weiteren Schritte erforderlich.
+
+## <a name="prepare-your-video-for-review"></a>Vorbereiten Ihres Videos auf die Überprüfung
 
 Fügen Sie das Transkript einer Videoüberprüfung hinzu. Das Video muss online veröffentlicht werden. Sie benötigen seinen Streamingendpunkt. Mit dem Streamingendpunkt kann der Videoplayer des Prüfungstools das Video wiedergeben.
 
@@ -105,9 +117,9 @@ Ersetzen Sie die Beispielwerte für diese Eigenschaften wie angegeben.
             /// </summary>
             /// <remarks>This must be the team name you used to create your 
             /// Content Moderator account. You can retrieve your team name from
-            /// the Conent Moderator web site. Your team name is the Id associated 
+            /// the Content Moderator web site. Your team name is the Id associated 
             /// with your subscription.</remarks>
-            public static readonly string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
+            private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
             /// <summary>
             /// The base URL fragment for Content Moderator calls.
@@ -137,7 +149,7 @@ Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace 
     {
         return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
         {
-            BaseUrl = AzureBaseURL
+            Endpoint = AzureBaseURL
         };
     }
 
@@ -292,7 +304,7 @@ Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace 
 
 Sie veröffentlichen eine Videoüberprüfung mit **ContentModeratorClient.Reviews.PublishVideoReview**. **PublishVideoReview** verfügt über die folgenden erforderlichen Parameter:
 1. Ihr Content Moderator-Teamname.
-1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung
+1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
 
 Fügen Sie dem VideoReviews-Namespace (Program-Klasse) die folgende Methodendefinition hinzu.
 
@@ -342,7 +354,7 @@ Fügen Sie die **Main**-Methodendefinition dem VideoTranscriptReviews-Namespace 
 
             Console.WriteLine("Open your Content Moderator Dashboard and select Review > Video to see the review.");
             Console.WriteLine("Press any key to close the application.");
-            Console.Read();
+            Console.ReadKey();
         }
     }
 
@@ -370,8 +382,8 @@ Die folgenden Features werden angezeigt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Rufen Sie das [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) und die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dafür sowie andere Content Moderator-Schnellstarts für .NET ab.
+
 Informieren Sie sich darüber, wie Sie im Prüfungstool [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) generieren.
 
-Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation an](video-transcript-moderation-review-tutorial-dotnet.md).
-
-Laden Sie die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) für diesen und andere Content Moderator-Schnellstarts für .NET herunter.
+Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation](video-transcript-moderation-review-tutorial-dotnet.md) an.

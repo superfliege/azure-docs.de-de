@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c0c215c4c599bbd5551891cdf6f999719983d31e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7208eb112b5f4a5b458c0374541dff113906aa0c
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47061046"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47185731"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
 
@@ -144,6 +144,9 @@ Standard-SSD-Datenträger sind Standarddatenträger mit Unterstützung durch SSD
 
 <a id="standard-ssds-azure-regions"></a>**Welche Regionen werden derzeit für Standard-SSD-Datenträger unterstützt?**
 Alle Azure-Regionen unterstützen jetzt Standard-SSD-Datenträger.
+
+**Ist Azure Backup verfügbar, wenn Standard-SSDs verwendet werden?**
+Nein, Azure Backup ist noch nicht verfügbar.
 
 **Wie erstelle ich Standard-SSD-Datenträger?**
 Sie können Standard-SSD-Datenträger mithilfe von Azure Resource Manager-Vorlagen, SDKs, PowerShell oder CLI erstellen. Im Folgenden werden die in der Resource Manager-Vorlage zum Erstellen von Standard-SSD-Datenträgern erforderlichen Parameter aufgeführt:

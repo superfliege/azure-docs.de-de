@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b738cc2fc7db6987b8f4ad54a2c53cc9e69989b3
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181194"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434091"
 ---
 # <a name="unity-sample-walkthrough"></a>Exemplarische Vorgehensweise zu Unity
 Dies ist eine exemplarische Vorgehensweise zum Project Acoustics-Beispiel. Weitere Informationen dazu, was Project Acoustics ist, finden Sie unter [Introduction to Project Acoustics (Einführung in Project Acoustics)](what-is-acoustics.md). Unterstützung beim Hinzufügen des Project Acoustics-Pakets zu einem bereits vorhandenen Unity-Projekt finden Sie im [Leitfaden für erste Schritte](getting-started.md).
@@ -29,13 +29,13 @@ Dies ist eine exemplarische Vorgehensweise zum Project Acoustics-Beispiel. Weite
 Laden Sie das Paket **MicrosoftAcoustics.Sample.unitypackage** herunter, und importieren Sie es. Beim Importieren werden Projekteinstellungen wie **Spatializer** und **Skriptlaufzeitversion** entsprechend der Anforderungen des Plug-Ins aktualisiert. Nach dem Importieren wird in der Unity-Konsole eine Fehlermeldung von **AcousticsGeometry.cs** zum Ändern der Skriptlaufzeitversion in **.NET 4.x Equivalent** (.NET 4.x-Entsprechung) angezeigt. Diese Einstellung wird im Rahmen des Paketimports geändert. Danach muss Unity neu gestartet werden, damit die Änderung wirksam wird. Starten Sie Unity jetzt neu.
 
 ## <a name="running-the-sample"></a>Ausführen des Beispiels
-Das Beispiel enthält die Demoszene **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Diese Szene enthält eine verräumlichte Audioquelle, die über einen Floating-Cube (mit der Bezeichnung **AudioHolder** in der **Hierarchie**) wiedergegeben wird. Zur Unterstützung beim Erstellen eines allgemeinen Navigationsskripts ist die Hauptkamera ein untergeordnetes Element des Objekts „CameraHolder“. 
+Das Beispiel enthält die Demoszene **Assets/AcousticsDemo/ProjectAcousticsDemo.unity**. Diese Szene verfügt über drei Soundquellen. Standardmäßig wird nur eine Soundquelle wiedergegeben, und die anderen zwei sind angehalten. Diese befinden sich unter **Soundquellen** in der **Hierarchie**. Zur Unterstützung beim Erstellen eines allgemeinen Navigationsskripts ist die Hauptkamera ein untergeordnetes Element des Objekts „CameraHolder“. 
 
 ![Hierarchieansicht](media/SampleHierarchyView.png)
 
 Die Szene wurde bereits erstellt und enthält eine ACE-Datei, die dem Prefab **MicrosoftAcoustics** in der **Hierarchie** zugeordnet ist. 
 
-Hören Sie sich an, wie die Szene klingt, indem Sie im Unity-Editor auf die Wiedergabeschaltfläche klicken. Navigieren Sie mit den Tasten W, A, S und D sowie mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, klicken Sie mit der linken Maustaste, oder drücken Sie die Taste des primären Controllers. Um die verschiedenen Tonquellen zu durchlaufen, klicken Sie mit der rechten Maustaste, oder drücken Sie die Zurück-Taste am Controller.
+Hören Sie sich an, wie die Szene klingt, indem Sie im Unity-Editor auf die Wiedergabeschaltfläche klicken. Navigieren Sie auf dem Desktop mit den Tasten W, A, S und D sowie mit der Maus. Um zu vergleichen, wie die Szene mit und ohne Akustik klingt, drücken Sie so lange die Taste **R**, bis der Überlagerungstext rot wird und besagt "Akustik: Deaktiviert". Um Tastenkombinationen für weitere Steuerelemente anzuzeigen, drücken Sie **F1**. Alle Steuerelemente können auch verwendet werden, indem Sie mit der rechten Maustaste klicken, um die auszuführende Aktion auszuwählen, und dann durch Klicken mit der linken Maustaste die Aktion ausführen.
 
 ## <a name="targeting-other-platforms"></a>Verwenden von anderen Plattformen als Ziel
 Das Beispiel enthält Einstellungen zum Ausführen unter Windows Desktop, UWP, Windows Mixed Reality, Android und Oculus Go. Standardmäßig ist das Projekt für Windows Desktop konfiguriert. Wenn Sie eine VR-Plattform als Ziel verwenden möchten, wechseln Sie zu den Playereinstellungen (**Edit > Project Settings > Player** (Bearbeiten > Projekteinstellungen > Player)), suchen Sie die **XR Settings** (VR-Einstellungen), und aktivieren Sie das Kontrollkästchen **Virtual Reality Supported** (Virtuelle Realität unterstützen).
