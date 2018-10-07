@@ -1,21 +1,21 @@
 ---
-title: Bearbeiten einer Wissensdatenbank – Microsoft Cognitive Services | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Informationen zum Bearbeiten einer Wissensdatenbank
+title: 'Bearbeiten einer Wissensdatenbank: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: eaa65bf3d257399fceadaa42f0d9ddbbf8afe234
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376354"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451883"
 ---
 # <a name="edit-a-knowledge-base"></a>Bearbeiten einer Wissensdatenbank
 
@@ -30,8 +30,24 @@ Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerf
     ![Meine Wissensdatenbanken](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
 2. Wählen Sie eine bestimmte Wissensdatenbank aus, um Änderungen daran vorzunehmen.
+ 
+3. Klicken Sie auf **Einstellungen**.
 
-3. Nachdem Sie alle Änderungen an der Wissensdatenbank vorgenommen haben, klicken Sie in der oberen rechten Ecke der Seite auf **Speichern und trainieren**, um die Änderungen dauerhaft zu speichern.    
+   Hier können Sie das Pflichtfeld „Dienstname“ bearbeiten.
+  
+   Sie können neue URLs hinzufügen, um neue FAQ-Inhalte zur Wissensdatenbank hinzuzufügen, indem Sie auf den Link **Wissensdatenbank verwalten > „+ URL hinzufügen“** klicken.
+   
+   Sie können vorhandene URLs löschen, indem Sie auf das **Löschsymbol** klicken.
+   
+   Wenn die Wissensdatenbank den neuesten Inhalt vorhandener URLs durchforsten soll, aktivieren Sie das Kontrollkästchen **„Aktualisieren“**, um die Wissensdatenbank mit dem neuesten URL-Inhalt zu aktualisieren.
+   
+Sie können unterstützte Dateidokumente als Teil der Wissensdatenbank hinzufügen, indem Sie auf **Wissensdatenbank verwalten > „+ Datei hinzufügen“** klicken.
+
+Sie können auch jede vorhandene Wissensdatenbank importieren, indem Sie auf die Schaltfläche **„Wissensdatenbank importieren“** klicken. 
+   
+Die Aktualisierung der Wissensdatenbank hängt davon ab, ob der **Tarif für Verwaltung** bei der Erstellung des QnA Maker-Diensts verwendet wird, der Ihrer Wissensdatenbank zugeordnet ist. Sie können den Verwaltungstarif auch über das Azure-Portal aktualisieren, wenn erforderlich.
+
+4. Nachdem Sie alle Änderungen an der Wissensdatenbank vorgenommen haben, klicken Sie in der oberen rechten Ecke der Seite auf **Speichern und trainieren**, um die Änderungen dauerhaft zu speichern.    
 
     ![Speichern und trainieren](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 

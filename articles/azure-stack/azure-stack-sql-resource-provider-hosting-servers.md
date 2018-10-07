@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.reviewer: quying
+ms.openlocfilehash: 8fc24e58af51a249e3305dbe1496c499387be6b1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842497"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407908"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Hinzufügen von Hostservern für den SQL-Ressourcenanbieter
 
 Sie können eine SQL-Instanz auf einem virtuellen Computer (VM) in [Azure Stack](azure-stack-poc.md) oder auf einer VM außerhalb Ihrer Azure Stack-Umgebung hosten, solange sich der SQL-Ressourcenanbieter mit der Instanz verbinden kann.
+
+> [!NOTE]
+> SQL-Datenbanken sollten auf dem Server des SQL-Ressourcenanbieters erstellt werden. Der SQL-Ressourcenanbieter sollte im Standardanbieterabonnement erstellt werden, während SQL-Hostingserver in einem abrechenbaren Benutzerabonnement erstellt werden sollten. Der Server des Ressourcenanbieters sollte nicht zum Hosten von Benutzerdatenbanken verwendet werden.
 
 ## <a name="overview"></a>Übersicht
 
@@ -45,6 +48,9 @@ Sie können eine SQL-Instanz auf einem virtuellen Computer (VM) in [Azure Stack]
 Images für SQL-IaaS-VMs sind über das Marketplace-Verwaltungsfeature verfügbar. Diese Images sind mit den in Azure verfügbaren SQL-VMs identisch.
 
 Laden Sie vor dem Bereitstellen eines virtuellen SQL-Computers mit einem Marketplace-Element unbedingt immer die neueste Version der **SQL-IaaS-Erweiterung** herunter. Die IaaS-Erweiterung und die zugehörigen Portalerweiterungen stellen zusätzliche Features wie das automatische Patchen und Sicherungen bereit. Weitere Informationen zu dieser Erweiterung finden Sie unter [Automatisieren von Verwaltungsaufgaben auf virtuellen Azure-Computern mit der SQL Server-Agent-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+
+> [!NOTE]
+> Die SQL IaaS-Erweiterung ist für alle SQL unter Windows-Images in Marketplace _erforderlich_. Der virtuelle Computer wird nicht bereitgestellt, wenn Sie die Erweiterung nicht heruntergeladen haben. Sie wird nicht mit Linux-basierten Images virtueller SQL-Computer verwendet.
 
 Es gibt noch weitere Optionen für die Bereitstellung von SQL-VMs, einschließlich Vorlagen im [Schnellstartkatalog für Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -125,7 +131,7 @@ Um das automatische Seeding für alle Instanzen zu aktivieren, bearbeiten Sie de
   GO
   ```
 
-Beachten Sie, dass die Verfügbarkeitsgruppe in eckige Klammern eingeschlossen sein muss.
+Die Verfügbarkeitsgruppe muss in eckige Klammern eingeschlossen sein.
 
 Führen Sie auf den sekundären Knoten den folgenden SQL-Befehl aus:
 

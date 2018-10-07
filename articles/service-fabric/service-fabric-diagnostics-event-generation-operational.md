@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 529df0147d2563c62c4a9578e47184bd98b01761
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: da4a779bca806fe6aa392db96eafc6c20f8ddcf6
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212958"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182160"
 ---
 # <a name="list-of-service-fabric-events"></a>Liste mit Service Fabric-Ereignissen 
 
@@ -34,180 +34,177 @@ Die folgende Liste enthält alle verfügbaren Ereignisse der Plattform – sorti
 
 **Ereignisse für Clusterupgrades**
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 29627 | ClusterUpgradeStartOperational | CM | Information | 1 |
-| 29628 | ClusterUpgradeCompleteOperational | CM | Information | 1 |
-| 29629 | ClusterUpgradeRollbackStartOperational | CM | Information | 1 |
-| 29630 | ClusterUpgradeRollbackCompleteOperational | CM | Information | 1 |
-| 29631 | ClusterUpgradeDomainCompleteOperational | CM | Information | 1 |
-
-**Ereignisse für Clusterintegritätsberichte**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 54428 | ProcessClusterReportOperational | HM | Information | 1 |
-| 54437 | ExpiredClusterEventOperational | HM | Information | 1 |
-
-**Chaosdienstereignisse**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 50021 | ChaosStartedEvent | Prüfbarkeit | Information | 1 |
-| 50023 | ChaosStoppedEvent | Prüfbarkeit | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | --- | --- | --- | --- |
+| 29627 | ClusterUpgradeStarted | Ein Clusterupgrade wurde gestartet. | CM | Information | 1 |
+| 29628 | ClusterUpgradeCompleted | Ein Clusterupgrade wurde abgeschlossen.| CM | Information | 1 |
+| 29629 | ClusterUpgradeRollbackStarted | Das Rollback eines Clusterupgrades wurde gestartet. | CM | Information | 1 |
+| 29630 | ClusterUpgradeRollbackCompleted | Das Rollback eines Clusterupgrades wurde abgeschlossen. | CM | Information | 1 |
+| 29631 | ClusterUpgradeDomainCompleted | Ein Domänenupgrade wurde während eines Clusterupgrades abgeschlossen. | CM | Information | 1 |
 
 ## <a name="node-events"></a>Knotenereignisse
 
 **Ereignisse für den Knotenlebenszyklus** 
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 18602 | DeactivateNodeCompletedOperational | FM | Information | 1 |
-| 18603 | NodeUpOperational | FM | Information | 1 |
-| 18604 | NodeDownOperational | FM | Information | 1 |
-| 18605 | NodeAddedOperational | FM | Information | 1 |
-| 18606 | NodeRemovedOperational | FM | Information | 1 |
-| 18607 | DeactivateNodeStartOperational | FM | Information | 1 |
-| 25620 | NodeOpening | FabricNode | Information | 1 |
-| 25621 | NodeOpenedSuccess | FabricNode | Information | 1 |
-| 25622 | NodeOpenedFailed | FabricNode | Information | 1 |
-| 25623 | NodeClosing | FabricNode | Information | 1 |
-| 25624 | NodeClosed | FabricNode | Information | 1 |
-| 25625 | NodeAborting | FabricNode | Information | 1 |
-| 25626 | NodeAborted | FabricNode | Information | 1 |
-
-**Ereignisse für Knotenintegritätsberichte**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 54423 | ProcessNodeReportOperational | HM | Information | 1 |
-| 54432 | ExpiredNodeEventOperational | HM | Information | 1 |
-
-**Chaosknotenereignisse**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 50033 | ChaosRestartNodeFaultScheduledEvent | Prüfbarkeit | Information | 1 |
-| 50087 | ChaosRestartNodeFaultCompletedEvent | Prüfbarkeit | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 18602 | NodeDeactivateCompleted | Die Deaktivierung eines Knotens wurde abgeschlossen. | FM | Information | 1 |
+| 18603 | NodeUp | Der Cluster hat erkannt, dass ein Knoten gestartet wurde. | FM | Information | 1 |
+| 18604 | NodeDown | Der Cluster hat erkannt, dass ein Knoten heruntergefahren wurde. |  FM | Information | 1 |
+| 18605 | NodeAddedToCluster | Ein neuer Knoten wurde dem Cluster hinzugefügt. | FM | Information | 1 |
+| 18606 | NodeRemovedFromCluster | Ein Knoten wurde aus dem Cluster entfernt. | FM | Information | 1 |
+| 18607 | NodeDeactivateStarted | Die Deaktivierung eines Knotens wurde gestartet. | FM | Information | 1 |
+| 25620 | NodeOpening | Der Knoten wird gestartet. Erste Phase des Knotenlebenszyklus | FabricNode | Information | 1 |
+| 25621 | NodeOpenSucceeded | Ein Knoten wurde erfolgreich gestartet. | FabricNode | Information | 1 |
+| 25622 | NodeOpenFailed | Ein Knoten konnte nicht gestartet werden. | FabricNode | Information | 1 |
+| 25623 | NodeClosing | Ein Knoten wird heruntergefahren. Beginn der Endphase des Knotenlebenszyklus | FabricNode | Information | 1 |
+| 25624 | NodeClosed | Ein Knoten wurde erfolgreich heruntergefahren. | FabricNode | Information | 1 |
+| 25625 | NodeAborting | Ein Knoten wird nicht ordnungsgemäß heruntergefahren. | FabricNode | Information | 1 |
+| 25626 | NodeAborted | Ein Knoten wurde nicht ordnungsgemäß heruntergefahren. | FabricNode | Information | 1 |
 
 ## <a name="application-events"></a>Anwendungsereignisse
 
 **Ereignisse für den Anwendungslebenszyklus**
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 29620 | ApplicationCreatedOperational | CM | Information | 1 |
-| 29625 | ApplicationDeletedOperational | CM | Information | 1 |
-| 23083 | ProcessExitedOperational | Hosting | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 29620 | ApplicationCreated | Eine neue Anwendung wurde erstellt. | CM | Information | 1 |
+| 29625 | ApplicationDeleted | Eine vorhandene Anwendung wurde gelöscht. | CM | Information | 1 |
+| 23083 | ApplicationProcessExited | Ein Prozess in einer Anwendung wurde beendet. | Hosting | Information | 1 |
 
 **Ereignisse für Anwendungsupgrades**
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 29621 | ApplicationUpgradeStartOperational | CM | Information | 1 |
-| 29622 | ApplicationUpgradeCompleteOperational | CM | Information | 1 |
-| 29623 | ApplicationUpgradeRollbackStartOperational | CM | Information | 1 |
-| 29624 | ApplicationUpgradeRollbackCompleteOperational | CM | Information | 1 |
-| 29626 | ApplicationUpgradeDomainCompleteOperational | CM | Information | 1 |
-
-**Ereignisse für Anwendungsintegritätsberichte**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 54425 | ProcessApplicationReportOperational | HM | Information | 1 |
-| 54426 | ProcessDeployedApplicationReportOperational | HM | Information | 1 |
-| 54427 | ProcessDeployedServicePackageReportOperational | HM | Information | 1 |
-| 54434 | ExpiredApplicationEventOperational | HM | Information | 1 |
-| 54435 | ExpiredDeployedApplicationEventOperational | HM | Information | 1 |
-| 54436 | ExpiredDeployedServicePackageEventOperational | HM | Information | 1 |
-
-**Chaosanwendungsereignisse**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 50053 | ChaosRestartCodePackageFaultScheduledEvent | Prüfbarkeit | Information | 1 |
-| 50101 | ChaosRestartCodePackageFaultCompletedEvent | Prüfbarkeit | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 29621 | ApplicationUpgradeStarted | Ein Anwendungsupgrade wurde gestartet. | CM | Information | 1 |
+| 29622 | ApplicationUpgradeStarted | Ein Anwendungsupgrade wurde abgeschlossen. | CM | Information | 1 |
+| 29623 | ApplicationUpgradeRollbackStarted | Das Rollback eines Anwendungsupgrades wurde gestartet. |CM | Information | 1 |
+| 29624 | ApplicationUpgradeRollbackCompleted | Das Rollback eines Anwendungsupgrades wurde abgeschlossen. | CM | Information | 1 |
+| 29626 | ApplicationUpgradeDomainCompleted | Ein Domänenupgrade wurde während eines Anwendungsupgrades abgeschlossen. | CM | Information | 1 |
 
 ## <a name="service-events"></a>Dienstereignisse
 
 **Ereignisse für den Dienstlebenszyklus**
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 18602 | ServiceCreatedOperational | FM | Information | 1 |
-| 18658 | ServiceDeletedOperational | FM | Information | 1 |
-
-**Ereignisse für Dienstintegritätsberichte**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 54424 | ProcessServiceReportOperational | HM | Information | 1 |
-| 54433 | ExpiredServiceEventOperational | HM | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 18657 | ServiceCreated | Ein neuer Dienst wurde erstellt. | FM | Information | 1 |
+| 18658 | ServiceDeleted | Ein vorhandener Dienst wurde gelöscht. | FM | Information | 1 |
 
 ## <a name="partition-events"></a>Partitionsereignisse
 
 **Ereignisse für Partitionsverschiebungen**
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 18940 | ReconfigurationCompleted | RA | Information | 1 |
-
-**Ereignisse für Partitionsintegritätsberichte**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 54422 | ProcessPartitionReportOperational | HM | Information | 1 |
-| 54431 | ExpiredPartitionEventOperational | HM | Information | 1 |
-
-**Chaospartitionsereignisse**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 50069 | ChaosMovePrimaryFaultScheduledEvent | Prüfbarkeit | Information | 1 |
-| 50077 | ChaosMoveSecondaryFaultScheduledEvent | Prüfbarkeit | Information | 1 |
-
-**Ereignisse für die Partitionsanalyse**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 65003 | PrimaryMoveAnalysisEvent | Prüfbarkeit | Information | 1 |
-
-## <a name="replica-events"></a>Replikatereignisse
-
-**Ereignisse für Replikatintegritätsberichte**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 54429 | ProcessStatefulReplicaReportOperational | HM | Information | 1 |
-| 54430 | ProcessStatelessInstanceReportOperational | HM | Information | 1 |
-| 54438 | ExpiredStatefulReplicaEventOperational | HM | Information | 1 |
-| 54439 | ExpiredStatelessInstanceEventOperational | HM | Information | 1 |
-
-**Chaosreplikatereignisse**
-
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 50047 | ChaosRestartReplicaFaultScheduledEvent | Prüfbarkeit | Information | 1 |
-| 50051 | ChaosRemoveReplicaFaultScheduledEvent | Prüfbarkeit | Information | 1 |
-| 50093 | ChaosRemoveReplicaFaultCompletedEvent | Prüfbarkeit | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 18940 | PartitionReconfigured | Die Neukonfiguration einer Partition wurde abgeschlossen. | RA | Information | 1 |
 
 ## <a name="container-events"></a>Containerereignisse
 
 **Ereignisse für den Containerlebenszyklus** 
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 23074 | ContainerActivatedOperational | Hosting | Information | 1 |
-| 23075 | ContainerDeactivatedOperational | Hosting | Information | 1 |
-| 23082 | ContainerExitedOperational | Hosting | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 23074 | ContainerActivated | Ein Container wurde gestartet. | Hosting | Information | 1 |
+| 23075 | ContainerDeactivated | Ein Container wurde beendet. | Hosting | Information | 1 |
+| 23082 | ContainerExited | Ein Container wurde beendet. Überprüfen Sie das UnexpectedTermination-Flag. | Hosting | Information | 1 |
+
+## <a name="health-reports"></a>Integritätsberichte
+
+**Ereignisse für Clusterintegritätsberichte**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | --- | --- | --- | --- |
+| 54428 | ClusterNewHealthReport | Ein Integritätsbericht für einen neuen Cluster ist verfügbar. | HM | Information | 1 |
+| 54437 | ClusterHealthReportExpired | Ein Integritätsbericht für einen vorhandenen Cluster ist abgelaufen. | HM | Information | 1 |
+
+**Ereignisse für Knotenintegritätsberichte**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 54423 | NodeNewHealthReport | Ein Integritätsbericht für einen neuen Knoten ist verfügbar. | HM | Information | 1 |
+| 54432 | NodeHealthReportExpired | Ein Integritätsbericht für einen vorhandenen Knoten ist abgelaufen. | HM | Information | 1 |
+
+**Ereignisse für Anwendungsintegritätsberichte**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 54425 | ApplicationNewHealthReport | Ein Integritätsbericht für eine neue Anwendung wurde erstellt. Dies gilt für nicht bereitgestellte Anwendungen. | HM | Information | 1 |
+| 54426 | DeployedApplicationNewHealthReport | Ein Integritätsbericht für eine neue bereitgestellte Anwendung wurde erstellt. | HM | Information | 1 |
+| 54427 | DeployedServicePackageNewHealthReport | Ein Integritätsbericht für einen neuen bereitgestellten Dienst wurde erstellt. | HM | Information | 1 |
+| 54434 | ApplicationHealthReportExpired | Ein Integritätsbericht für eine vorhandene Anwendung ist abgelaufen. | HM | Information | 1 |
+| 54435 | DeployedApplicationHealthReportExpired | Ein Integritätsbericht für eine vorhandene bereitgestellte Anwendung ist abgelaufen. | HM | Information | 1 |
+| 54436 | DeployedServicePackageHealthReportExpired | Ein Integritätsbericht für einen vorhandenen bereitgestellten Dienst ist abgelaufen. | HM | Information | 1 |
+
+**Ereignisse für Dienstintegritätsberichte**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 54424 | ServiceNewHealthReport | Ein Integritätsbericht für einen neuen Dienst wurde erstellt. | HM | Information | 1 |
+| 54433 | ServiceHealthReportExpired | Ein Integritätsbericht für einen vorhandenen Dienst ist abgelaufen. | HM | Information | 1 |
+
+**Ereignisse für Partitionsintegritätsberichte**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 54422 | PartitionNewHealthReport | Ein Integritätsbericht für eine neue Anwendung wurde erstellt. | HM | Information | 1 |
+| 54431 | PartitionHealthReportExpired | Ein Integritätsbericht für eine vorhandene Partition ist abgelaufen. | HM | Information | 1 |
+
+**Ereignisse für Replikatintegritätsberichte**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 54429 | StatefulReplicaNewHealthReport | Ein Integritätsbericht für ein zustandsbehaftetes Replikat wurde erstellt. | HM | Information | 1 |
+| 54430 | StatelessInstanceNewHealthReport | Ein Integritätsbericht für ein neues zustandsloses Replikat wurde erstellt. | HM | Information | 1 |
+| 54438 | StatefulReplicaHealthReportExpired | Ein Integritätsbericht für ein vorhandenes zustandsbehaftetes Replikat ist abgelaufen. | HM | Information | 1 |
+| 54439 | StatelessInstanceHealthReportExpired | Ein Integritätsbericht für eine vorhandene zustandslose Instanz ist abgelaufen. | HM | Information | 1 |
+
+## <a name="chaos-testing-events"></a>Chaostestereignisse 
+
+**Chaossitzungsereignisse**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 50021 | ChaosStarted | Eine Chaostestsitzung wurde gestartet. | Prüfbarkeit | Information | 1 |
+| 50023 | ChaosStopped | Eine Chaostestsitzung wurde beendet. | Prüfbarkeit | Information | 1 |
+
+**Chaosknotenereignisse**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 50033 | ChaosNodeRestartScheduled | Der Neustart eines Knoten wurde als Teil einer Chaostestsitzung geplant. | Prüfbarkeit | Information | 1 |
+| 50087 | ChaosNodeRestartCompleted | Der Neustart eines Knoten wurde als Teil einer Chaostestsitzung beendet. | Prüfbarkeit | Information | 1 |
+
+**Chaosanwendungsereignisse**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 50053 | ChaosCodePackageRestartScheduled | Ein Neustart eines Codepakets wurde während einer Chaostestsitzung geplant. | Prüfbarkeit | Information | 1 |
+| 50101 | ChaosCodePackageRestartCompleted | Ein Neustart eines Codepakets wurde während einer Chaostestsitzung abgeschlossen. | Prüfbarkeit | Information | 1 |
+
+**Chaospartitionsereignisse**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 50069 | ChaosPartitionPrimaryMoveScheduled | Die Verschiebung einer primären Partition wurde als Teil einer Chaostestsitzung geplant. | Prüfbarkeit | Information | 1 |
+| 50077 | ChaosPartitionSecondaryMoveScheduled | Die Verschiebung einer sekundären Partition wurde als Teil einer Chaostestsitzung geplant. | Prüfbarkeit | Information | 1 |
+| 65003 | PartitionPrimaryMoveAnalysis | Die Tiefenanalyse der Verschiebung der primären Partition ist verfügbar. | Prüfbarkeit | Information | 1 |
+
+**Chaosreplikatereignisse**
+
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 50047 | ChaosReplicaRestartScheduled | Ein Neustart eines Replikats wurde als Teil einer Chaostestsitzung geplant. | Prüfbarkeit | Information | 1 |
+| 50051 | ChaosReplicaRemovalScheduled | Die Entfernung eines Replikats wurde als Teil einer Chaostestsitzung geplant. | Prüfbarkeit | Information | 1 |
+| 50093 | ChaosReplicaRemovalCompleted | Die Entfernung eines Replikats wurde als Teil einer Chaostestsitzung abgeschlossen. | Prüfbarkeit | Information | 1 |
 
 ## <a name="other-events"></a>Sonstige Ereignisse
 
 **Korrelationsereignisse**
 
-| EventId | NAME | Quelle (Aufgabe) | Ebene | Version |
-| --- | --- | --- | --- | --- |
-| 65011 | CorrelationOperational | Prüfbarkeit | Information | 1 |
+| EventId | NAME | BESCHREIBUNG |Quelle (Aufgabe) | Ebene | Version |
+| --- | --- | ---| --- | --- | --- |
+| 65011 | CorrelationOperational | Eine Korrelation wurde getrennt. | Prüfbarkeit | Information | 1 |
 
 ## <a name="events-prior-to-version-62"></a>Ereignisse vor Version 6.2
 

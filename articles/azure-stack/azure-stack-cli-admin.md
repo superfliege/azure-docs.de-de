@@ -1,30 +1,31 @@
 ---
-title: "Aktivieren der Azure CLI für Azure Stack-Benutzer | Microsoft-Dokumentation"
-description: "Es wird beschrieben, wie Sie die plattformübergreifende Befehlszeilenschnittstelle (Command-Line Interface, CLI) verwenden, um Ressourcen in Azure Stack zu verwalten und bereitzustellen."
+title: Aktivieren der Azure CLI für Azure Stack-Benutzer | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie die plattformübergreifende Befehlszeilenschnittstelle (Command-Line Interface, CLI) verwenden, um Ressourcen in Azure Stack zu verwalten und bereitzustellen.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 06/11/2018
 ms.author: mabrigg
-ms.openlocfilehash: e2483bda5a0c6a6b270759946f146c37c5dad5b1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 09c551ea7196ae20a60a5dd34c1cda889ff5df46
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091059"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Aktivieren der Azure CLI für Azure Stack-Benutzer
 
-*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Es gibt keine bedienerspezifischen Azure Stack-Aufgaben, die Sie über die Azure CLI ausführen können. Bevor Benutzer jedoch Ressourcen über die Befehlszeilenschnittstelle verwalten können, müssen Azure Stack-Bediener den Benutzern Folgendes bereitstellen:
+Sie können das CA-Stammzertifikat Benutzern in Azure Stack zur Verfügung stellen, damit sie die Azure CLI auf ihren Entwicklungscomputern verwenden können. Ihre Benutzer benötigen das Zertifikat, um Ressourcen über die CLI zu verwalten.
 
 * Das **Azure Stack-Zertifizierungsstellen-Stammzertifikat** ist erforderlich, wenn Benutzer die CLI auf einer Arbeitsstation außerhalb von Azure Stack Development Kit verwenden.  
 
@@ -34,7 +35,7 @@ In den folgenden Abschnitten wird beschrieben, wie Sie diese Werte abrufen.
 
 ## <a name="export-the-azure-stack-ca-root-certificate"></a>Exportieren des Azure Stack-Zertifizierungsstellen-Stammzertifikats
 
-Das Azure Stack-Zertifizierungsstellen-Stammzertifikat ist im Development Kit und auf einem virtuellen Mandantencomputer verfügbar, der innerhalb der Development Kit-Umgebung ausgeführt wird. Um das Azure Stack-Stammzertifikat im PEM-Format zu exportieren, melden Sie sich bei Ihrem Development Kit oder dem virtuellen Mandantencomputer an, und führen Sie das folgende Skript aus:
+Sie finden das Azure Stack CA-Stammzertifikat im Development Kit und auf einem virtuellen Mandantencomputer, der innerhalb der Development Kit-Umgebung ausgeführt wird. Um das Azure Stack-Stammzertifikat im PEM-Format zu exportieren, melden Sie sich bei Ihrem Development Kit oder dem virtuellen Mandantencomputer an, und führen Sie das folgende Skript aus:
 
 ```powershell
 $label = "AzureStackSelfSignedRootCert"
@@ -58,19 +59,17 @@ certutil -encode root.cer root.pem
 Azure Stack-Betreiber sollten einen öffentlich zugänglichen Endpunkt einrichten, der eine VM-Aliasdatei hostet. Bei der VM-Aliasdatei handelt es sich um eine JSON-Datei, die einen allgemeinen Namen für ein Image bereitstellt. Dieser Name wird später bei der Bereitstellung einer VM als Azure CLI-Parameter angegeben.  
 
 Stellen Sie vor dem Hinzufügen eines Eintrags zu einer Aliasdatei sicher, dass Sie [Images aus dem Azure Marketplace heruntergeladen](azure-stack-download-azure-marketplace-item.md) oder [ein eigenes benutzerdefiniertes Image veröffentlicht](azure-stack-add-vm-image.md) haben. Wenn Sie ein benutzerdefiniertes Image veröffentlichen, notieren Sie sich die während der Veröffentlichung angegebenen Informationen zu Herausgeber, Angebot, SKU und Version. Wenn es sich um ein Image aus dem Marketplace handelt, können Sie die Informationen mithilfe des ```Get-AzureVMImage```-Cmdlets anzeigen.  
-   
+
 Eine [Aliasbeispieldatei](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) mit zahlreichen allgemeinen Imagealiasen ist verfügbar. Sie können diese als Ausgangspunkt verwenden. Hosten Sie diese Datei an einem Ort, auf den die CLI-Clients zugreifen können. Eine Möglichkeit besteht darin, die Datei in einem Blob Storage-Konto zu hosten und die URL für Ihre Benutzer freizugeben:
 
 1. Laden Sie die [Beispieldatei](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) von GitHub herunter.
 2. Erstellen Sie ein neues Speicherkonto in Azure Stack. Erstellen Sie anschließend einen neuen Blobcontainer. Legen Sie die Zugriffsrichtlinie auf „Öffentlich“ fest.  
-3. Laden Sie die JSON-Datei in den neuen Container hoch. Anschließend können Sie die URL des Blobs anzeigen, indem Sie auf den Blobnamen klicken und dann die URL aus den Blobeigenschaften auswählen.
-
+3. Laden Sie die JSON-Datei in den neuen Container hoch. Anschließend können Sie die URL des Blobs anzeigen, indem Sie den Blobnamen auswählen und dann die URL aus den Blobeigenschaften auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen von Vorlagen mit der Azure CLI](azure-stack-deploy-template-command-line.md)
+- [Bereitstellen von Vorlagen mit der Azure CLI](azure-stack-deploy-template-command-line.md)
 
-[Verbinden mit PowerShell](azure-stack-connect-powershell.md)
+- [Verbinden mit PowerShell](azure-stack-connect-powershell.md)
 
-[Verwalten von Benutzerberechtigungen](azure-stack-manage-permissions.md)
-
+- [Verwalten von Benutzerberechtigungen](azure-stack-manage-permissions.md)

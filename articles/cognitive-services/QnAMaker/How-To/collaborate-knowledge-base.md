@@ -1,25 +1,25 @@
 ---
-title: Zusammenarbeiten an einer Wissensdatenbank – Microsoft Cognitive Services | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Informationen zum Zusammenarbeiten an einer QnA Maker-Wissensdatenbank
+title: 'Zusammenarbeit an der Wissensdatenbank: Qna Maker'
+titleSuffix: Azure Cognitive Services
+description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Dieses Feature wird im Rahmen der rollenbasierten Zugriffssteuerung in Azure bereitgestellt.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: e18d656236276595fc5186a6656349bf28974ead
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376163"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035231"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>Zusammenarbeiten an einer Wissensdatenbank
 
-QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Diese Funktion wird im Rahmen der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) in Azure bereitgestellt. 
+QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank zusammenzuarbeiten. Diese Funktion wird im Rahmen der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) in Azure bereitgestellt. 
 
 Führen Sie die folgenden Schritte aus, um Ihren QnA Maker-Dienst für andere freizugeben:
 

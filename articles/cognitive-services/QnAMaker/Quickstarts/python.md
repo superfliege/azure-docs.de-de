@@ -1,20 +1,21 @@
 ---
-title: 'Python-Schnellstart für die Microsoft QnA Maker-API (V4): Azure Cognitive Services | Microsoft-Dokumentation'
-description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell erste Schritte mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure ausführen können.
+title: 'Schnellstart: Python für die QnA Maker-API (v4)'
+titleSuffix: Azure Cognitive Services
+description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: c0d02a0f586857f6dd303fc98407da71b2addb9b
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 5e95bf768cc00935067edd3365cc3d101be6a00a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869118"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034740"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Schnellstart für die Microsoft QnA Maker-API mit Python 
 <a name="HOLTop"></a>
@@ -22,23 +23,25 @@ ms.locfileid: "37869118"
 In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overview/overview.md) mit Python verwenden können, um folgende Aktionen auszuführen:
 
 - [Erstellen einer neuen Wissensdatenbank](#Create)
-- [Aktualisieren einer Wissensdatenbank](#Update)
+- [Aktualisieren einer vorhandenen Wissensdatenbank](#Update)
 - [Abrufen des Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank](#Status)
-- [Veröffentlichen einer Wissensdatenbank](#Publish)
-- [Ersetzen der Inhalte einer Wissensdatenbank](#Replace)
-- [Herunterladen von Inhalten einer Wissensdatenbank](#GetQnA)
+- [Veröffentlichen einer vorhandenen Wissensdatenbank](#Publish)
+- [Ersetzen der Inhalte einer vorhandenen Wissensdatenbank](#Replace)
+- [Herunterladen der Inhalte einer Wissensdatenbank](#GetQnA)
 - [Abrufen von Antworten auf Fragen mithilfe einer Wissensdatenbank](#GetAnswers)
-- [Abrufen von Details zu einer Wissensdatenbank](#GetKB)
-- [Abrufen von Details zu allen Wissensdatenbanken eines bestimmten Benutzers](#GetKBsByUser)
+- [Abrufen von Informationen zu einer Wissensdatenbank](#GetKB)
+- [Abrufen von Informationen zu allen Wissensdatenbanken eines bestimmten Benutzers](#GetKBsByUser)
 - [Löschen einer Wissensdatenbank](#Delete)
 - [Abrufen der aktuellen Endpunktschlüssel](#GetKeys)
 - [Erneutes Generieren der aktuellen Endpunktschlüssel](#PutKeys)
 - [Abrufen der aktuellen Wortvarianten](#GetAlterations)
 - [Ersetzen der aktuellen Wortvarianten](#PutAlterations)
 
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen des Codes benötigen Sie [Python 3.x](https://www.python.org/downloads/).
+Zum Ausführen dieses Codes benötigen Sie [Python 3.x](https://www.python.org/downloads/).
 
 Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit der **Microsoft QnA Maker-API** verfügen. Sie benötigen einen kostenpflichtigen Abonnementschlüssel aus Ihrem [Azure-Dashboard](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
@@ -49,7 +52,7 @@ Sie müssen über ein [Cognitive Services-API-Konto](https://docs.microsoft.com/
 Über den folgenden Code können Sie mithilfe der [Methode zum Erstellen einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) eine neue Wissensdatenbank erstellen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -146,7 +149,7 @@ while False == done:
 
 **Antwort auf das Erstellen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -184,7 +187,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie eine Wissensdatenbank mithilfe der [Methode zum Aktualisieren einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) aktualisieren.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -286,7 +289,7 @@ while False == done:
 
 **Antwort auf das Aktualisieren einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -312,9 +315,9 @@ Press any key to continue.
 
 <a name="Status"></a>
 
-## <a name="get-request-status"></a>Abrufen eines Anforderungsstatus
+## <a name="get-request-status"></a>Abrufen des Anforderungsstatus
 
-Sie können die [Methode für Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die [Methoden zum Erstellen](#Create) oder [zum Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
+Sie können die Methode für [Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die Methoden zum [Erstellen](#Create) oder [Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
 
 [Nach oben](#HOLTop)
 
@@ -325,7 +328,7 @@ Sie können die [Methode für Vorgänge](https://westus.dev.cognitive.microsoft.
 Über den folgenden Code können Sie eine Wissensdatenbank mithilfe der [Methode zum Veröffentlichen](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) veröffentlichen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -375,7 +378,7 @@ print (pretty_print(result))
 
 **Antwort auf das Veröffentlichen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -392,7 +395,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie den Inhalt einer angegebenen Wissensdatenbank mithilfe der [Methode zum Ersetzen](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) ersetzen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -463,7 +466,7 @@ print (pretty_print(result))
 
 **Antwort auf das Ersetzen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -480,7 +483,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie die Inhalte einer angegebenen Datenbank über die [Methode zum Herunterladen einer Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) herunterladen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -527,7 +530,7 @@ print (pretty_print(result))
 
 **Antwort auf das Herunterladen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -571,8 +574,8 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
 1. Fügen Sie den unten stehenden Code hinzu.
 1. Ersetzen Sie den `host`-Wert durch den Websitenamen für Ihr QnA Maker-Abonnement. Weitere Informationen finden Sie unter [Erstellen eines QnA Maker-Diensts](../How-To/set-up-qnamaker-service-azure.md).
-1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel über die [Methode zum Abrufen von Endpunktschlüsseln](#GetKeys) abrufen.
-1. Ersetzen Sie den `kb`-Wert durch die ID der Wissensdatenbank, die Sie auf Antworten abfragen möchten. Beachten Sie, dass diese Wissensdatenbank bereits mithilfe der [Methode zum Veröffentlichen](#Publish) veröffentlicht worden sein muss.
+1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel über die Methode zum [Abrufen von Endpunktschlüsseln](#GetKeys) abrufen.
+1. Ersetzen Sie den `kb`-Wert durch die ID der Wissensdatenbank, die Sie auf Antworten abfragen möchten. Beachten Sie, dass diese Wissensdatenbank bereits mithilfe der Methode zum [Veröffentlichen](#Publish) veröffentlicht worden sein muss.
 1. Führen Sie das Programm aus.
 
 ```python
@@ -628,7 +631,7 @@ print (pretty_print(result))
 
 **Antwort auf das Abrufen von Antworten**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -657,7 +660,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie Informationen zur angegebenen Wissensdatenbank abrufen, indem Sie die Methode [zum Abrufen von Details zur Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) verwenden.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -701,7 +704,7 @@ print (pretty_print(result))
 
 **Antwort auf das Abrufen von Details zur Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -730,7 +733,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie Informationen zu allen Wissensdatenbanken für einen angegebenen Benutzer abrufen, indem Sie die [Methode zum Abrufen von Details zur Wissensdatenbank](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) verwenden.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -771,7 +774,7 @@ print (pretty_print(result))
 
 **Antwort auf das Abrufen von Wissensdatenbanken für Benutzer**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -816,7 +819,7 @@ Press any key to continue.
 Über den folgenden Code werden die Inhalte einer angegebenen Datenbank mithilfe der [Methode zum Löschen von Wissensdatenbanken](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) gelöscht.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -866,7 +869,7 @@ print (pretty_print(result))
 
 **Antwort auf das Löschen von Wissensdatenbanken**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -883,7 +886,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie mithilfe der [Methode zum Abrufen von Endpunktschlüsseln](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) die aktuellen Endpunktschlüssel abrufen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -924,7 +927,7 @@ print (pretty_print(result))
 
 **Antwort auf das Abrufen von Endpunktschlüsseln**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -942,7 +945,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 Über den folgenden Code können Sie mithilfe der [Methode zum Aktualisieren von Endpunktschlüsseln](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) die aktuellen Endpunktschlüssel aktualisieren.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -992,7 +995,7 @@ print (pretty_print(result))
 
 **Antwort auf das Aktualisieren von Endpunktschlüsseln**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1005,12 +1008,12 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 
 <a name="GetAlterations"></a>
 
-## <a name="get-word-alterations"></a>Abrufen von Wortvarianten
+## <a name="get-word-alterations"></a>Abrufen von Wortänderungen
 
 Über den folgenden Code können Sie aktuelle Wortvarianten mithilfe der [Methode zum Herunterladen von Varianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) abrufen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1051,7 +1054,7 @@ print (pretty_print(result))
 
 **Antwort auf das Abrufen von Wortvarianten**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1070,12 +1073,12 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Ersetzen von Wortvarianten
+## <a name="replace-word-alterations"></a>Ersetzen von Wortänderungen
 
 Über den folgenden Code können Sie die aktuellen Wortvarianten mithilfe der [Methode zum Ersetzen von Varianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) ersetzen.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Python-Projekt.
-2. Fügen Sie den untenstehenden Code hinzu.
+2. Fügen Sie den unten stehenden Code hinzu.
 3. Ersetzen Sie den `key`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 4. Führen Sie das Programm aus.
 
@@ -1135,7 +1138,7 @@ print (pretty_print(result))
 
 **Antwort auf das Ersetzen von Wortvarianten**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1148,7 +1151,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Referenz zur QnA Maker-REST-API (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [REST-API-Referenz für QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Weitere Informationen 
 

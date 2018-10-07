@@ -1,26 +1,29 @@
 ---
-title: Aktualisieren einer Wissensdatenbank, Schnellstart für C# – Azure Cognitive Services | Microsoft-Dokumentation
+title: 'Schnellstart: C#-Update der Wissensdatenbank – QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie eine Wissensdatenbank in C# für QnA Maker aktualisieren.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: bac699461e07afc813844bfd59337275a0bbca79
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: c07f2272ed370060fc7334dfe3c52514a726dc33
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "43769836"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035826"
 ---
 # <a name="update-a-knowledge-base-in-c"></a>Aktualisieren einer Wissensdatenbank in C#
 
 Der folgende Code aktualisiert mithilfe der Methode zum [Aktualisieren](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) eine vorhandene Wissensdatenbank.
 
-Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellstartanleitung eine Beispieldatenbank erstellen: [Create a new knowledge base in C#](create-new-kb-csharp.md) (Erstellen einer neuen Wissensdatenbank in C#)
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
+
+Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellstartanleitung eine Beispieldatenbank erstellen: [Create a new knowledge base in Python](create-new-kb-csharp.md) (Erstellen einer neuen Wissensdatenbank in Python)
 
 1. Erstellen Sie eine neue .NET Framework-C#-Konsolenanwendung in Ihrer bevorzugten IDE.
 1. Fügen Sie den unten stehenden Code hinzu.
@@ -276,7 +279,7 @@ namespace QnAMaker
 
 ## <a name="understand-what-qna-maker-returns"></a>Informationen zur QnA Maker-Rückgabe
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt. Ihre Ergebnisse können geringfügig abweichen. Wird mit dem letzten Aufruf der Status „Succeeded“ zurückgegeben, wurde die Wissensdatenbank erfolgreich aktualisiert. Informationen zur Problembehandlung finden Sie in den Antwortcodes für [Update Knowledgebase](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) der QnA Maker-API.
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt. Ihre Ergebnisse können geringfügig abweichen. Wird mit dem letzten Aufruf der Status „Succeeded“ zurückgegeben, wurde die Wissensdatenbank erfolgreich aktualisiert. Informationen zur Problembehandlung finden Sie in den Antwortcodes für [Update Knowledgebase](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) (Wissensdatenbank aktualisieren) der QnA Maker-API.
 
 ```json
 {

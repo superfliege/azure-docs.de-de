@@ -1,20 +1,21 @@
 ---
-title: Node.js-Schnellstart für die Microsoft QnA Maker-API (V4) – Azure Cognitive Services | Microsoft-Dokumentation
-description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell erste Schritte mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure ausführen können.
+title: 'Schnellstart: Node.js für die QnA Maker-API (v4)'
+titleSuffix: Azure Cognitive Services
+description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 6da1ec00e04ea993923a97c4641880a5f31d18fa
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 05a15ddf8d7668896052c38afc549bc7b3cb056a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868173"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434329"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>Schnellstart für die Microsoft QnA Maker-API mit Node.js 
 <a name="HOLTop"></a>
@@ -22,19 +23,21 @@ ms.locfileid: "37868173"
 In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overview/overview.md) mit Node.js verwenden können, um Folgendes zu tun.
 
 - [Erstellen einer neuen Wissensdatenbank](#Create)
-- [Aktualisieren einer Wissensdatenbank](#Update)
+- [Aktualisieren einer vorhandenen Wissensdatenbank](#Update)
 - [Abrufen des Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank](#Status)
-- [Veröffentlichen einer Wissensdatenbank](#Publish)
-- [Ersetzen der Inhalte einer Wissensdatenbank](#Replace)
-- [Herunterladen von Inhalten einer Wissensdatenbank](#GetQnA)
+- [Veröffentlichen einer vorhandenen Wissensdatenbank](#Publish)
+- [Ersetzen der Inhalte einer vorhandenen Wissensdatenbank](#Replace)
+- [Herunterladen der Inhalte einer Wissensdatenbank](#GetQnA)
 - [Abrufen von Antworten auf Fragen mithilfe einer Wissensdatenbank](#GetAnswers)
-- [Abrufen von Details zu einer Wissensdatenbank](#GetKB)
-- [Abrufen von Details zu allen Wissensdatenbanken eines bestimmten Benutzers](#GetKBsByUser)
+- [Abrufen von Informationen zu einer Wissensdatenbank](#GetKB)
+- [Abrufen von Informationen zu allen Wissensdatenbanken eines bestimmten Benutzers](#GetKBsByUser)
 - [Löschen einer Wissensdatenbank](#Delete)
 - [Abrufen der aktuellen Endpunktschlüssel](#GetKeys)
 - [Erneutes Generieren der aktuellen Endpunktschlüssel](#PutKeys)
 - [Abrufen der aktuellen Wortvarianten](#GetAlterations)
 - [Ersetzen der aktuellen Wortvarianten](#PutAlterations)
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -106,7 +109,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -207,7 +210,7 @@ create_kb (path, content, function (result) {
 
 **Antwort auf das Erstellen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -305,7 +308,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -407,7 +410,7 @@ update_kb (path, content, function (result) {
 
 **Antwort auf das Aktualisieren einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -433,9 +436,9 @@ Press any key to continue.
 
 <a name="Status"></a>
 
-## <a name="get-request-status"></a>Abrufen eines Anforderungsstatus
+## <a name="get-request-status"></a>Abrufen des Anforderungsstatus
 
-Sie können die [Methode für Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die [Methoden zum Erstellen](#Create) oder [zum Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
+Sie können die Methode für [Vorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) aufrufen, um den Status einer Anforderung zum Erstellen oder Aktualisieren einer Wissensdatenbank zu prüfen. Sie können dem Beispielcode für die Methoden zum [Erstellen](#Create) oder [Aktualisieren](#Update) entnehmen, wie diese Methode verwendet wird.
 
 [Nach oben](#HOLTop)
 
@@ -506,7 +509,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -541,7 +544,7 @@ publish_kb (path, '', function (result) {
 
 **Antwort auf das Veröffentlichen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -618,7 +621,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -674,7 +677,7 @@ replace_kb (path, content, function (result) {
 
 **Antwort auf das Ersetzen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -780,7 +783,7 @@ get_qna (path, function (result) {
 
 **Antwort auf das Herunterladen einer Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -824,8 +827,8 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
 1. Fügen Sie den untenstehenden Code hinzu.
 1. Ersetzen Sie den `host`-Wert durch den Websitenamen für Ihr QnA Maker-Abonnement. Weitere Informationen finden Sie unter [Erstellen eines QnA Maker-Diensts](../How-To/set-up-qnamaker-service-azure.md).
-1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel über die [Methode zum Abrufen von Endpunktschlüsseln](#GetKeys) abrufen.
-1. Ersetzen Sie den `kb`-Wert durch die ID der Wissensdatenbank, die Sie auf Antworten abfragen möchten. Beachten Sie, dass diese Wissensdatenbank bereits mithilfe der [Methode zum Veröffentlichen](#Publish) veröffentlicht worden sein muss.
+1. Ersetzen Sie den `endpoint_key`-Wert durch einen für Ihr Abonnement gültigen Endpunktschlüssel. Beachten Sie, dass es sich dabei nicht um den Abonnementschlüssel handelt. Sie können Ihre Endpunktschlüssel über die Methode zum [Abrufen von Endpunktschlüsseln](#GetKeys) abrufen.
+1. Ersetzen Sie den `kb`-Wert durch die ID der Wissensdatenbank, die Sie auf Antworten abfragen möchten. Beachten Sie, dass diese Wissensdatenbank bereits mithilfe der Methode zum [Veröffentlichen](#Publish) veröffentlicht worden sein muss.
 1. Führen Sie das Programm aus.
 
 ```nodejs
@@ -894,7 +897,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Authorization' : 'EndpointKey ' + endpoint_key,
         }
     };
@@ -924,7 +927,7 @@ get_answers (method, content, function (result) {
 
 **Antwort auf das Abrufen von Antworten**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1039,7 +1042,7 @@ get_kb (path, function (result) {
 
 **Antwort auf das Abrufen von Details zur Wissensdatenbank**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1151,7 +1154,7 @@ get_kbs (path, function (result) {
 
 **Antwort auf das Abrufen von Wissensdatenbanken für Benutzer**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1256,7 +1259,7 @@ let http_delete = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1291,7 +1294,7 @@ delete_kb (path, '', function (result) {
 
 **Antwort auf das Löschen von Wissensdatenbanken**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1391,7 +1394,7 @@ get_keys (path, function (result) {
 
 **Antwort auf das Abrufen von Endpunktschlüsseln**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1469,7 +1472,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1517,7 +1520,7 @@ refresh_keys (path, content, function (result) {
 
 **Antwort auf das Aktualisieren von Endpunktschlüsseln**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1530,7 +1533,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 
 <a name="GetAlterations"></a>
 
-## <a name="get-word-alterations"></a>Abrufen von Wortvarianten
+## <a name="get-word-alterations"></a>Abrufen von Wortänderungen
 
 Über den folgenden Code können Sie aktuelle Wortvarianten mithilfe der [Methode zum Herunterladen von Varianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) abrufen.
 
@@ -1618,7 +1621,7 @@ get_alterations (path, function (result) {
 
 **Antwort auf das Abrufen von Wortvarianten**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1637,7 +1640,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Ersetzen von Wortvarianten
+## <a name="replace-word-alterations"></a>Ersetzen von Wortänderungen
 
 Über den folgenden Code können Sie die aktuellen Wortvarianten mithilfe der [Methode zum Ersetzen von Varianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) ersetzen.
 
@@ -1699,7 +1702,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1747,7 +1750,7 @@ put_alterations (path, content, function (result) {
 
 **Antwort auf das Ersetzen von Wortvarianten**
 
-Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurückgegeben: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
 
 ```json
 {
@@ -1760,7 +1763,7 @@ Es wird wie im folgenden Beispiel eine erfolgreiche Antwort im JSON-Format zurü
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Referenz zur QnA Maker-REST-API (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [REST-API-Referenz für QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Weitere Informationen 
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/11/2018
 ms.author: patricka
-ms.openlocfilehash: e61b4457cd88c236145ce7595ee7db4340538465
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330540"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451770"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Mehrinstanzenfähigkeit in Azure Stack
 
@@ -101,6 +101,19 @@ Register-AzSWithMyDirectoryTenant `
 > Wenn Ihr Azure Stack-Administrator künftig neue Dienste oder Updates installiert, müssen Sie dieses Skript möglicherweise erneut ausführen.
 >
 > Führen Sie dieses Skript zu einem beliebigen Zeitpunkt erneut aus, um den Status der Azure Stack-Anwendungen in Ihrem Verzeichnis zu überprüfen.
+> 
+> Wenn Sie Probleme beim Erstellen von virtuellen Computern in Managed Disks festgestellt haben (eingeführt im Update 1808): Es wurde ein neuer **Datenträger-Ressourcenanbieter** hinzugefügt, der eine erneute Ausführung dieses Skripts erfordert.
+
+### <a name="activate-the-administrator-and-tenant-portals"></a>Aktivieren des Administrator- und Mandantenportals
+Nach Bereitstellungen, für die Azure AD verwendet wird, müssen Sie sowohl das Azure Stack-Administratorportal als auch das Mandantenportal aktivieren. Mit dieser Aktivierung wird die Zustimmung erteilt, dass dem Azure Stack-Portal und Azure Resource Manager die richtigen Berechtigungen (auf der Zustimmungsseite aufgeführt) für alle Benutzer des Verzeichnisses gewährt werden können.
+
+- Navigieren Sie zum Administratorportal unter https://adminportal.local.azurestack.external/guest/signup, lesen Sie die Informationen, und klicken Sie dann auf Akzeptieren. Nach dem Akzeptieren können Sie Dienstadministratoren hinzufügen, die nicht gleichzeitig Verzeichnismandantenadministratoren sind.
+- Navigieren Sie zum Mandantenportal unter https://portal.local.azurestack.external/guest/signup, lesen Sie die Informationen, und klicken Sie dann auf Akzeptieren. Nach dem Akzeptieren können sich Benutzer im Verzeichnis am Mandantenportal anmelden. 
+ 
+> [!NOTE] 
+> Wenn die Portale nicht aktiviert sind, kann sich nur der Verzeichnisadministrator anmelden und die Portale verwenden. Anderen Benutzern, die sich anmelden, wird ein Fehler mit dem Hinweis angezeigt, dass der Administrator keine Berechtigungen für andere Benutzer erteilt hat. Falls der Administrator nicht nativ dem Verzeichnis angehört, für das Azure Stack registriert ist, muss das Azure Stack-Verzeichnis an die Aktivierungs-URL angefügt werden. Wenn Azure Stack z.B. für fabrikam.onmicrosoft.com registriert und der Administratorbenutzer admin@contoso.com ist, navigieren Sie zu https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com, um das Portal zu aktivieren.
+
+
 
 ### <a name="direct-users-to-sign-in"></a>Weiterleiten von Benutzern zur Anmeldung
 

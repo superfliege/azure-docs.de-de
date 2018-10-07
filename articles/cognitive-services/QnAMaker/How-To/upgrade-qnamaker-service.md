@@ -1,21 +1,21 @@
 ---
-title: Ausführen eines Upgrades für Ihren QnA Maker-Dienst – Microsoft Cognitive Services | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Ausführen eines Upgrades für Ihren QnA Maker-Dienst
+title: 'Ausführen eines Upgrades für Ihren QnA Maker-Dienst: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Sie können sich nach der erstmaligen Erstellung für ein Upgrade einzelner Komponenten des QnA Maker-Stapels entscheiden.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: e8d3713d6729c4e30da9a64a382e9d5a647dfefd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 8542b1f6dfe031de58ea6eeb931027ee03bd81f2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376290"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030964"
 ---
 # <a name="upgrade-your-qna-maker-service"></a>Upgrade Ihres QnA Maker-Diensts
 Sie können sich nach der erstmaligen Erstellung für ein Upgrade einzelner Komponenten des QnA Maker-Stapels entscheiden. Die Details der abhängigen Komponenten und die Auswahl der SKUs finden Sie [hier](https://aka.ms/qnamaker-docs-capacity).

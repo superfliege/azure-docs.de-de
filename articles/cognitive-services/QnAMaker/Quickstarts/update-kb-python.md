@@ -1,24 +1,26 @@
 ---
-title: Aktualisieren einer Wissensdatenbank, Schnellstart für Python – Azure Cognitive Services | Microsoft-Dokumentation
+title: 'Schnellstart: Python-Update der Wissensdatenbank – QnA Maker'
 description: Hier erfahren Sie, wie Sie eine Wissensdatenbank in Python für QnA Maker aktualisieren.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: 79b2af150558aa5da8e060e1b5117b91ffd34387
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: d58e12df30ab1b45e460cf8a4ea098d350164ec3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "43769913"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031933"
 ---
 # <a name="update-a-knowledge-base-in-python"></a>Aktualisieren einer Wissensdatenbank in Python
 
 Der folgende Code aktualisiert mithilfe der Methode zum [Aktualisieren](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) eine vorhandene Wissensdatenbank.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellstartanleitung eine Beispieldatenbank erstellen: [Create a new knowledge base in Python](create-new-kb-python.md) (Erstellen einer neuen Wissensdatenbank in Python)
 

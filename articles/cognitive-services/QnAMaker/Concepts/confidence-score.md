@@ -1,21 +1,21 @@
 ---
-title: Zuverlässigkeitsbewertung – Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
-description: Erläutern der Zuverlässigkeitsbewertung
+title: 'Zuverlässigkeitsbewertung: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Eine Zuverlässigkeitsbewertung gibt den Grad der Übereinstimmung zwischen der Benutzerfrage und der zurückgegebenen Antwort an.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: c97bdb7e57275ebd1893bc28248c4ecc6b35c153
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 33da5cf5724b8314ce813f12eb077d9a15ec1b2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376307"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041522"
 ---
 # <a name="confidence-score"></a>Zuverlässigkeitsbewertung
 
@@ -62,7 +62,7 @@ Wenn das Rangfolgemodul keine gute Übereinstimmung findet, wird die Zuverlässi
 
 4. Starten Sie Ihren App-Dienst neu.
 
-    ![QnA Maker-App-Dienst neu starten](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Neustart des QnA Maker App Service](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

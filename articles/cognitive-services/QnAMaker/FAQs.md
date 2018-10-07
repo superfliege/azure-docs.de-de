@@ -1,21 +1,21 @@
 ---
-title: Häufig gestellte Fragen – Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
-description: Häufig gestellte Fragen
+title: 'FAQ: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Liste häufig gestellter Fragen zu QnA Maker-Dienst
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: a6bf32549715d0357771b3f3b0ff72f64788ec20
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: efefd595c43d7f46ff1ead91577d070cf8fb90e4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376338"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164615"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -87,6 +87,6 @@ Folgen Sie den Anweisungen in [dieser](./Tutorials/create-qna-bot.md) Dokumentat
 Führen Sie die folgenden Schritte aus, um den QnA Maker-Dienst als Webchat-Steuerelement in Ihre Website einzubetten:
 
 1. Erstellen Sie Ihren FAQ-Bot, indem Sie den [hier](./Tutorials/create-qna-bot.md) angegebenen Anweisungen folgen.
-2. Aktivieren Sie den Webchat, indem Sie die [hier](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-webchat) aufgeführten Schritte ausführen.
+2. Aktivieren Sie den Webchat, indem Sie die [hier](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) aufgeführten Schritte ausführen.
 
 

@@ -1,21 +1,21 @@
 ---
-title: Entwicklungszyklus einer Knowledge Base – Microsoft Cognitive Services | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Entwicklungszyklus einer Knowledge Base
+title: 'Entwicklungslebenszyklus einer Wissensdatenbank: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: QnA Maker lernt am besten in einem iterativen Zyklus aus Modelländerungen, Ausdrucksbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: 9ecdd2c7823eed145621b214690eff7681065507
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 5af829b3355c6d68bace959b66f9511877d08b83
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35378771"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040913"
 ---
 # <a name="knowledge-base-lifecycle"></a>Lebenszyklus einer Knowledge Base
 QnA Maker lernt am besten in einem iterativen Zyklus aus Modelländerungen, Ausdrucksbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 

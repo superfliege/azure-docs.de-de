@@ -6,23 +6,22 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071384"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452325"
 ---
-# <a name="manage-storage-capacity-for-azure-stack"></a>Verwalten der Speicherkapazität für Azure Stack
+# <a name="manage-storage-capacity-for-azure-stack"></a>Verwalten der Speicherkapazität für Azure Stack 
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
@@ -86,10 +85,15 @@ Als Cloudbetreiber können Sie die Speicherkapazität einer Freigabe mithilfe de
 - **Verwendete Kapazität** ist die Menge von Daten (in Bytes), die von allen Erweiterungen für die Dateien genutzt wird, die die Mandantendaten und die dazugehörigen Metadaten speichern.
 
 ### <a name="use-the-administrator-portal"></a>Verwenden des Administratorportals
-Als Cloudbetreiber können Sie die Speicherkapazität für alle Freigaben im Administratorportal anzeigen. Navigieren Sie zu **Storage** > **Dateifreigaben**, um die Dateifreigabeliste mit den Nutzungsinformationen zu öffnen.
-![Beispiel: Storage > Dateifreigaben](media/azure-stack-manage-storage-shares/storage-file-shares.png)
-- **GESAMT** ist der gesamte Speicherplatz (in Bytes), der auf der Freigabe zur Verfügung steht. Dieser Speicherplatz wird für Daten und Metadaten verwendet, die von den Speicherdiensten verwaltet werden.
-- **VERWENDET** ist die Menge von Daten (in Bytes), die von allen Erweiterungen für die Dateien genutzt wird, die die Mandantendaten und die dazugehörigen Metadaten speichern.
+Als Cloudbetreiber können Sie die Speicherkapazität für alle Freigaben im Administratorportal anzeigen.
+
+1. Melden Sie sich am [Administratorportal](https://adminportal.local.azurestack.external) an.
+2. Wählen Sie **Alle Dienst** > **Speicher** aus, um die Dateifreigabeliste mit den Nutzungsinformationen zu öffnen. 
+
+  ![Beispiel: Speicherdateifreigaben](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+
+  - **GESAMT** ist der gesamte Speicherplatz (in Bytes), der auf der Freigabe zur Verfügung steht. Dieser Speicherplatz wird für Daten und Metadaten verwendet, die von den Speicherdiensten verwaltet werden.
+  - **VERWENDET** ist die Menge von Daten (in Bytes), die von allen Erweiterungen für die Dateien genutzt wird, die die Mandantendaten und die dazugehörigen Metadaten speichern.
 
 ### <a name="storage-space-alerts"></a>Speicherplatzbenachrichtigungen
 Bei Verwendung des Administratorportals erhalten Sie Benachrichtigungen zu Freigaben, bei denen der Speicherplatz knapp wird.

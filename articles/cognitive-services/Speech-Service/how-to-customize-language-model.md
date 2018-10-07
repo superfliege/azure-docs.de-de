@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Sprachmodells mit dem Spracherkennungsdienst – Microsoft Cognitive Services
-description: Es wird beschrieben, wie Sie mit dem Spracherkennungsdienst in Microsoft Cognitive Services ein Sprachmodell erstellen.
+title: Erstellen eines Sprachmodells mit Speech Services – Microsoft Cognitive Services
+description: Erfahren Sie, wie ein Sprachmodell mit den Speech Services in Microsoft Cognitive Services erstellt wird.
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,16 +8,16 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 97659bf38b6d06464eee37a33e87d0c528cdcd37
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 54bf38bf5a5858a2d7ac7237f58fc4db386dbac1
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126937"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423322"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Tutorial: Erstellen eines benutzerdefinierten Sprachmodells
 
-In diesem Dokument erstellen Sie ein benutzerdefiniertes Sprachmodell, das Sie dann mit modernsten Sprachmodellen von Microsoft kombinieren können, um für Ihre App die Interaktion per Spracheingabe zu ermöglichen.
+In diesem Dokument erstellen Sie ein benutzerdefiniertes Sprachmodell. Dieses benutzerdefinierte Sprachmodell kann mit modernsten Sprachmodellen von Microsoft kombiniert werden, um für Ihre App die Interaktion per Spracheingabe zu ermöglichen.
 
 Im Dokument wird Folgendes beschrieben:
 > [!div class="checklist"]
@@ -29,24 +29,24 @@ Sollten Sie über kein Cognitive Services-Konto verfügen, können Sie ein [kost
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vergewissern Sie sich auf der Seite [Cognitive Services Subscriptions](https://customspeech.ai/Subscriptions) (Cognitive Services-Abonnements), dass Ihr Cognitive Services-Konto mit einem Abonnement verbunden ist.
+Um sicherzustellen, dass Ihr Cognitive Services-Konto mit einem Abonnement verbunden ist, öffnen Sie die Seite [Cognitive Services-Abonnements](https://customspeech.ai/Subscriptions).
 
-Sie können auf die Schaltfläche **Verbindung mit vorhandenem Abonnement herstellen** klicken, um eine Verbindung mit einem Speech Service-Abonnement herzustellen, das im Azure-Portal erstellt wurde.
+Sie können die Schaltfläche **Verbindung mit vorhandenem Abonnement herstellen** auswählen, um eine Verbindung mit einem Speech Services-Abonnement herzustellen, das im Azure-Portal erstellt wurde.
 
-Informationen zur Erstellung eines Speech Service-Abonnements im Azure-Portal finden Sie auf der Seite zu den [ersten Schritten](get-started.md).
+Informationen zur Erstellung eines Speech Services-Abonnements im Azure-Portal finden Sie auf der Seite [Erste Schritte](get-started.md).
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
-Wenn Sie ein benutzerdefiniertes Sprachmodell für Ihre Anwendung erstellen möchten, müssen Sie eine Liste mit Beispieläußerungen für das System bereitstellen. Beispielsweise:
+Um ein benutzerdefiniertes Sprachmodell für Ihre Anwendung zu erstellen, müssen Sie eine Liste mit Beispieläußerungen für das System bereitstellen, beispielsweise:
 
-*   „Der Patient litt letzte Woche an Urtikaria.“
+*   "Der Patient litt in der letzten Woche an Nesselsucht."
 *   „Die Herniorrhaphie-Narbe des Patienten ist gut verheilt.“
 
-Die Sätze müssen nicht vollständig oder grammatisch korrekt sein, sondern sollen vielmehr Spracheingaben entsprechen, mit denen das System nach der Bereitstellung voraussichtlich konfrontiert wird. Diese Beispiele sollten Art und Inhalt der Aufgabe widerspiegeln, die Benutzer mit Ihrer Anwendung ausführen.
+Die Sätze müssen nicht vollständig oder grammatikalisch richtig sein, aber sie sollten die gesprochenen Eingaben, auf die das System bei der Bereitstellung voraussichtlich treffen wird, genau wiedergeben. Diese Beispiele sollten Art und Inhalt der Aufgabe widerspiegeln, die Benutzer mit Ihrer Anwendung ausführen.
 
 Die Sprachmodelldaten sollten im Format „UTF-8 BOM“ (UTF-8-Bytereihenfolge-Marke) verfasst werden. Die Textdatei muss pro Zeile jeweils ein Beispiel (Satz, Äußerung oder Abfrage) enthalten.
 
-Wenn Sie möchten, dass einige Begriffe eine höhere Gewichtung (Wichtigkeit) erhalten, können Sie mehrere Äußerungen hinzufügen, die den Begriff in Ihren Daten enthalten. 
+Wenn Sie möchten, dass einige Begriffe eine höhere Gewichtung (Wichtigkeit) erhalten, können Sie Ihren Daten mehrere Äußerungen hinzufügen, die den Begriff enthalten. 
 
 In der folgenden Tabelle sind die wichtigsten Anforderungen für die Sprachdaten zusammengefasst:
 
@@ -56,63 +56,71 @@ In der folgenden Tabelle sind die wichtigsten Anforderungen für die Sprachdaten
 | Anzahl von Äußerungen pro Zeile | 1 |
 | Maximale Dateigröße | 1,5 GB |
 | Anmerkungen | Vermeiden Sie Zeichenwiederholungen mit mehr als vier Zeichen (z.B. „aaaaa“).|
-| Anmerkungen | Verwenden Sie keine Sonderzeichen wie „\t“ oder andere UTF-8-Zeichen über U+00A1 in der [Unicode-Zeichentabelle](http://www.utf8-chartable.de/).|
+| Anmerkungen | Keine Sonderzeichen wie „\t“ oder andere UTF-8-Zeichen über U+00A1 in der [Unicode-Zeichentabelle](http://www.utf8-chartable.de/)|
 | Anmerkungen | URIs werden ebenfalls abgelehnt, da es keine eindeutige Aussprache für URIs gibt.|
 
 Beim Importieren des Texts wird dieser normalisiert, damit er vom System verarbeitet werden kann. Einige wichtige Normalisierungen müssen jedoch noch _vor_ dem Hochladen durch den Benutzer vorgenommen werden. Informationen zu geeigneter Sprache bei der Vorbereitung Ihrer Sprachdaten finden Sie in den [Richtlinien für die Transkription](prepare-transcription.md).
 
 ## <a name="language-support"></a>Sprachunterstützung
 
-Die folgenden Sprachen werden für benutzerdefinierte **Sprache-zu-Text**-Sprachmodelle unterstützt.
+Weitere Informationen zu benutzerdefinierten **Speech-to-Text**-Sprachmodellen finden Sie in der vollständigen Liste der [ unterstützten Sprachen](supported-languages.md).
 
-Klicken Sie hier, um eine vollständige Liste der [unterstützten Sprachen](supported-languages.md) anzuzeigen
+
 
 ## <a name="import-the-language-data-set"></a>Importieren des Sprachdatasets
 
-Klicken Sie in der Zeile „Language Datasets“ (Sprachdatasets) auf „Importieren“. Daraufhin wird eine Seite zum Hochladen eines neuen Datasets angezeigt.
+Wählen Sie in der Zeile **Sprachdatasets** die Schaltfläche **Importieren** aus. Daraufhin wird eine Seite zum Hochladen eines neuen Datasets angezeigt.
 
-Melden Sie sich am [Spracherkennungsdienst-Portal](https://customspeech.ai) an, wenn Sie Ihr Sprachdataset für den Import vorbereitet haben.  Klicken Sie anschließend auf dem oberen Menüband auf das Dropdownmenü „Custom Speech“, und wählen Sie „Adaptation Data“ (Anpassungsdaten) aus. Beim ersten Versuch, Daten für den Spracherkennungsdienst hochzuladen, wird eine leere Tabelle mit dem Namen „Datasets“ angezeigt.
+Melden Sie sich am [Speech Services-Portal](https://customspeech.ai) an, wenn Sie bereit sind, Ihr Sprachdataset zu importieren. Wählen Sie zunächst auf dem oberen Menüband das Dropdownmenü **Custom Speech** aus. Wählen Sie dann **Anpassungsdaten** aus. Beim ersten Versuch, Daten für Speech Services hochzuladen, wird eine leere Tabelle mit dem Namen **Datasets** angezeigt.
 
-Klicken Sie in der Zeile „Language Datasets“ (Sprachdatasets) auf „Importieren“, um ein neues Dataset zu importieren. Daraufhin wird eine Seite zum Hochladen eines neuen Datasets angezeigt. Geben Sie einen Namen und eine Beschreibung ein, um das Dataset später identifizieren zu können, und wählen Sie das Gebietsschema aus. Klicken Sie anschließend auf die Schaltfläche „Datei auswählen“, und navigieren Sie zu der Textdatei mit den Sprachdaten. Klicken Sie auf „Importieren“, um das Dataset hochzuladen. Der Importvorgang kann je nach Größe des Datasets mehrere Minuten dauern.
+Um ein neues Dataset zu importieren, wählen Sie die Schaltfläche **Importieren** in der Zeile **Sprachdatasets** aus. Danach zeigt die Website eine Seite zum Hochladen eines neuen Datasets an. Geben Sie einen **Namen** und eine **Beschreibung** ein, um das Dataset später identifizieren zu können, und wählen Sie dann das Gebietsschema aus. 
 
-![Versuch](media/stt/speech-language-datasets-import.png)
+Klicken Sie anschließend auf die Schaltfläche **Datei auswählen**, und navigieren Sie zu der Textdatei mit den Sprachdaten. Wählen Sie anschließend **Importieren** aus. Das Dataset wird nun hochgeladen. Der Importvorgang kann je nach Größe des Datasets mehrere Minuten dauern.
 
-Nach Abschluss des Importvorgangs wird wieder die Tabelle mit den Sprachdaten angezeigt, die nun einen Eintrag für Ihr Sprachdataset enthält. Wie Sie sehen, wurde ihm eine eindeutige ID (GUID) zugewiesen. Außerdem haben die Daten einen Status, der ihrem aktuellen Zustand entspricht: „Waiting“ (Warten) bedeutet, dass sich die Daten in einer Verarbeitungswarteschlange befinden. „Processing“ (Verarbeitung) bedeutet, dass die Daten gerade überprüft werden. „Complete“ (Abgeschlossen) bedeutet, dass die Daten verwendungsbereit sind. Bei der Datenüberprüfung werden verschiedene Aspekte des Texts in der Datei geprüft und einige Textnormalisierungen für die Daten durchgeführt.
+![Testen](media/stt/speech-language-datasets-import.png)
 
-Wenn der Status „Complete“ (Abgeschlossen) lautet, können Sie auf „Bericht anzeigen“ klicken, um den Überprüfungsbericht für die Sprachdaten anzuzeigen. Die Anzahl von Äußerungen, die die Überprüfung bestanden oder nicht bestanden haben, sowie Details zu den fehlerhaften Äußerungen werden angezeigt. Im folgenden Beispiel haben zwei Beispiele die Überprüfung aufgrund von unzulässigen Zeichen nicht bestanden. (In diesem Dataset enthielt die erste Zeile zwei Tabulatorzeichen, die zweite enthielt mehrere Zeichen außerhalb des druckbaren ASCII-Zeichensatzes, und die dritte Zeile war leer.)
+Nach Abschluss des Imports weisen die Sprachdaten einen Eintrag auf, der Ihrem Sprachdataset entspricht. Wie Sie sehen, wurde ihm eine eindeutige ID (GUID) zugewiesen. Darüber hinaus weisen die Daten einen Status auf, der ihrem aktuellen Zustand entspricht. **Warten** bedeutet, dass sich die Daten in einer Verarbeitungswarteschlange befinden. **Verarbeitung** bedeutet, dass die Daten aktuell überprüft werden. **Abgeschlossen** bedeutet, dass die Daten verwendungsbereit sind. Bei der Datenüberprüfung werden verschiedene Aspekte des Texts in der Datei geprüft. Außerdem werden einige Textnormalisierungen für die Daten ausgeführt.
 
-![Versuch](media/stt/speech-language-datasets-report.png)
+Wenn der Status **Abgeschlossen** lautet, können Sie **Bericht anzeigen** auswählen, um den Überprüfungsbericht für die Sprachdaten anzuzeigen. Die Anzahl von Äußerungen, die die Überprüfung bestanden oder nicht bestanden haben, sowie Details zu den fehlerhaften Äußerungen werden angezeigt. Im folgenden Beispiel haben zwei Beispiele die Überprüfung wegen falscher Zeichen nicht bestanden. (In diesem Dataset wies die erste Zeile zwei Tabulatorzeichen auf, die zweite mehrere Zeichen, die nicht Teil des druckbaren ASCII-Zeichensatzes sind, und die dritte Zeile war leer).
 
-Wenn der Status des Sprachdatasets „Complete“ (Abgeschlossen) lautet, kann es zur Erstellung eines benutzerdefinierten Sprachmodells verwendet werden.
+![Testen](media/stt/speech-language-datasets-report.png)
 
-![Versuch](media/stt/speech-language-datasets.png)
+Wenn der Status des Sprachdatasets **Abgeschlossen** lautet, kann es zur Erstellung eines benutzerdefinierten Sprachmodells verwendet werden.
+
+![Testen](media/stt/speech-language-datasets.png)
 
 ## <a name="create-a-custom-language-model"></a>Erstellen eines benutzerdefinierten Sprachmodells
 
-Wenn Ihre Sprachdaten bereit sind, klicken Sie im Dropdownmenü „Menü“ auf „Language Models“ (Sprachmodelle), um mit der Erstellung eines benutzerdefinierten Sprachmodells zu beginnen. Auf dieser Seite befindet sich eine Tabelle namens „Language Models“ (Sprachmodelle) mit Ihren aktuellen benutzerdefinierten Sprachmodellen. Falls Sie noch keine benutzerdefinierten Sprachmodelle erstellt haben, ist die Tabelle leer. Das aktuelle Gebietsschema wird in der Tabelle neben dem relevanten Dateneintrag angezeigt.
+Wenn Ihre Sprachdaten bereit sind, wählen Sie im Dropdownmenü **Menü** die Option **Sprachmodelle** aus, um mit der Erstellung eines benutzerdefinierten Sprachmodells zu beginnen. Auf dieser Seite befindet sich eine Tabelle namens **Sprachmodelle** mit Ihren aktuellen benutzerdefinierten Sprachmodellen. Falls Sie noch keine benutzerdefinierten Sprachmodelle erstellt haben, ist die Tabelle leer. Das aktuelle Gebietsschema wird in der Tabelle neben dem relevanten Dateneintrag angezeigt.
 
-Das entsprechende Gebietsschema muss ausgewählt werden, bevor Aktionen durchgeführt werden. Das aktuelle Gebietsschema ist im Tabellentitel auf allen Daten-, Modell- und Bereitstellungsseiten angegeben. Klicken Sie zum Ändern des Gebietsschemas auf die Schaltfläche „Change Locale“ (Gebietsschema ändern) unterhalb des Tabellentitels. Sie gelangen auf eine Seite zum Bestätigen des Gebietsschemas. Klicken Sie auf „OK“, um zur Tabelle zurückzukehren.
+Das entsprechende Gebietsschema muss ausgewählt werden, bevor Aktionen durchgeführt werden. Das aktuelle Gebietsschema ist im Tabellentitel auf allen Daten-, Modell- und Bereitstellungsseiten angegeben. Wählen Sie zum Ändern des Gebietsschemas die Schaltfläche **Gebietsschema ändern** unterhalb des Tabellentitels aus.  Sie gelangen auf eine Seite zum Bestätigen des Gebietsschemas. Klicken Sie auf **OK**, um zur Tabelle zurückzukehren.
 
-Geben Sie auf der Seite zum Erstellen des Sprachmodells einen Namen und eine Beschreibung ein, um wichtige Informationen zu diesem Modell (etwa das verwendete Dataset) zu erfassen. Wählen Sie als Nächstes im Dropdownmenü das Basissprachmodell aus. Dieses Modell bildet den Ausgangspunkt für Ihre Anpassung. Sie können zwischen zwei Basissprachmodellen wählen: Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. Ein neues Modell mit dem Namen „Universell“ ist ebenfalls öffentlich verfügbar. „Universell“ soll für alle Szenarien gelten und die Modelle vom Typ „Suche und Diktieren“ und „Konversation“ letztendlich ersetzen.
+Geben Sie auf der Seite „Sprachmodell erstellen“ einen **Namen** und eine **Beschreibung** ein, um wichtige Informationen zu diesem Modell (etwa das verwendete Dataset) zu erfassen. Wählen Sie im nächsten Schritt das **Basissprachmodell** im Dropdownmenü aus. Dieses Modell bildet den Ausgangspunkt für Ihre Anpassung. 
 
-5.  Wählen Sie im Beispiel unten nach dem Angeben des Basissprachmodells über das Dropdownmenü „Language Data“ (Sprachdaten) das Sprachdataset aus, das Sie für die Anpassung verwenden möchten.
+Sie können zwischen zwei Basissprachmodellen wählen: Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. 
 
-![Versuch](media/stt/speech-language-models-create2.png)
+Geben Sie auf der Seite „Sprachmodell erstellen“ einen **Namen** und eine **Beschreibung** ein, um wichtige Informationen zu diesem Modell (etwa das verwendete Dataset) zu erfassen. Wählen Sie im nächsten Schritt das **Basissprachmodell** im Dropdownmenü aus. Dieses Modell bildet den Ausgangspunkt für Ihre Anpassung. Sie können zwischen zwei Basissprachmodellen wählen: 
+
+Das Modell für Suche und Diktat eignet sich für anwendungsspezifische Spracheingaben wie Befehle, Suchabfragen oder diktierten Text. Das Konversationsmodell eignet sich für die Erkennung von Spracheingaben im Gesprächsstil. Diese Art von Spracheingabe richtet sich üblicherweise an eine andere Person und wird in Callcentern oder Besprechungen verwendet. Ein neues Modell mit dem Namen „Universell“ ist ebenfalls öffentlich verfügbar. „Universell“ soll für alle Szenarien gelten und die Modelle vom Typ „Suche und Diktieren“ und „Konversation“ letztendlich ersetzen.
+
+Verwenden Sie (wie im folgenden Beispiel gezeigt) nach dem Angeben des Basissprachmodells das Dropdownmenü **Sprachdaten**, um das Sprachdataset auszuwählen, das Sie für die Anpassung verwenden möchten.
+
+![Testen](media/stt/speech-language-models-create2.png)
 
 Genau wie bei der Erstellung des Akustikmodells können Sie sich optional dafür entscheiden, Ihr neues Modell nach der Verarbeitung offline zu testen. Für Modellevaluierungen ist ein akustisches Dataset erforderlich.
 
-Wenn Sie Ihr Sprachmodell offline testen möchten, aktivieren Sie das Kontrollkästchen „Offlinetests“. Wählen Sie anschließend über das Dropdownmenü ein Akustikmodell aus. Falls Sie noch keine benutzerdefinierten Akustikmodelle erstellt haben, enthält das Menü nur die grundlegenden Akustikmodelle von Microsoft. Bei Verwendung eines Konversationssprachmodells muss hier ein Konversationsakustikmodell verwendet werden. Bei Verwendung eines Sprachmodells für Suche und Diktat muss auch ein Akustikmodell für Suche und Diktat gewählt werden.
+Wenn Sie Ihr Sprachmodell offline testen möchten, aktivieren Sie das Kontrollkästchen **Offlinetests**. Wählen Sie anschließend über das Dropdownmenü ein Akustikmodell aus. Falls Sie noch keine benutzerdefinierten Akustikmodelle erstellt haben, enthält das Menü nur die grundlegenden Akustikmodelle von Microsoft. Bei Verwendung eines Konversationssprachmodells muss hier ein Konversationsakustikmodell verwendet werden. Bei Verwendung eines Sprachmodells für Suche und Diktat muss auch ein Akustikmodell für Suche und Diktat ausgewählt werden.
 
 Wählen Sie abschließend das Akustikdataset aus, das für die Auswertung verwendet werden soll.
 
-Wenn Sie mit der Verarbeitung beginnen möchten, können Sie „Create“ (Erstellen) wählen, um zur Tabelle mit den Sprachmodellen zu gelangen. Die Tabelle enthält einen neuen Eintrag für dieses Modell. Der Status gibt den Zustand des Modells an – von „Waiting“ (Warten) über „Processing“ (Verarbeitung) bis hin zu „Complete“ (Abgeschlossen).
+Wählen Sie **Erstellen** aus, wenn Sie zum Starten der Verarbeitung bereit sind. Nun wird die Tabelle der Sprachmodelle angezeigt. Die Tabelle enthält einen neuen Eintrag für dieses Modell. Der Status gibt den Zustand des Modells an: von **Warten** über **Verarbeitung** bis hin zu **Abgeschlossen**.
 
-Wenn das Modell den Zustand „Complete“ (Abgeschlossen) erreicht hat, kann es an einem Endpunkt bereitgestellt werden. Wenn Sie auf „Ergebnis anzeigen“ klicken, werden die Ergebnisse der Offlinetests angezeigt (sofern Offlinetests durchgeführt wurden).
+Wenn das Modell den Zustand **Abgeschlossen** erreicht hat, kann es an einem Endpunkt bereitgestellt werden. Wenn Sie **Ergebnis anzeigen** auswählen, werden die Ergebnisse der Offlinetests angezeigt (sofern Offlinetests ausgeführt wurden).
 
-Wenn Sie nachträglich den Namen oder die Beschreibung des Modells ändern möchten, klicken Sie in der entsprechenden Zeile der Sprachmodelltabelle auf den Link „Bearbeiten“.
+Wenn Sie nachträglich den **Namen** oder die **Beschreibung** des Modells ändern möchten, klicken Sie in der entsprechenden Zeile der Sprachmodelltabelle auf den Link **Bearbeiten**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen Ihres Testabonnements für die Spracherkennung](https://azure.microsoft.com/try/cognitive-services/)
+- [Abrufen Ihres Speech Services-Testabonnements](https://azure.microsoft.com/try/cognitive-services/)
 - [Erkennen von Sprache in C#](quickstart-csharp-dotnet-windows.md)
 - [Git-Beispieldaten](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

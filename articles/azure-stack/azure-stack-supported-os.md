@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 09/26/2018
 ms.author: sethm
-ms.reviewer: JeffGoldner
-ms.openlocfilehash: 65e9b4371eab4e4e4978e91184ab9712b9ecc9eb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: ''
+ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629373"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405596"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Für Azure Stack unterstützte Gastbetriebssysteme
 
@@ -40,11 +40,12 @@ Azure Stack unterstützt die Windows-Gastbetriebssysteme aus der folgenden Tabel
 | Windows Server 2008 SP2 | 64 Bit |  Verwendung eigener Images (Bring Your Own Image, BYOI) |
 | Windows 10 *(siehe Hinweis 1)* | 64 Bit, Pro und Enterprise | Verwendung eigener Images (Bring Your Own Image, BYOI) |
 
-***Hinweis 1:*** *Wenn Sie Windows 10-Clientbetriebssysteme für Azure Stack bereitstellen möchten, müssen Sie über eine [benutzerspezifische Windows-Lizenzierung](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) verfügen oder den Kauf über einen [QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx) (Qualified Multitenant Hoster) abwickeln.*
+> [!NOTE]
+> Wenn Sie Windows 10-Clientbetriebssysteme für Azure Stack bereitstellen möchten, müssen Sie über eine [benutzerspezifische Windows-Lizenzierung](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) verfügen oder den Kauf über einen [QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx) (Qualified Multitenant Hoster) abwickeln.
 
 Marketplace-Images stehen für eine Lizenzierung mit nutzungsbasierter Abrechnung oder für eine BYOL-Lizenzierung (EA/SPLA) zur Verfügung. Es kann jedoch nicht beides für die gleiche Azure Stack-Instanz verwendet werden. Während der Bereitstellung fügt Azure Stack eine geeignete Version des Gast-Agents in das Image ein.
 
- Datacenter-Editionen stehen im Marketplace zum Download zur Verfügung. Kunden können ihre eigenen Serverimages mit anderen Editionen verwenden. Windows-Clientimages stehen im Marketplace nicht zur Verfügung.
+Datacenter-Editionen stehen im Marketplace zum Download zur Verfügung. Kunden können ihre eigenen Serverimages mit anderen Editionen verwenden. Windows-Clientimages stehen im Marketplace nicht zur Verfügung.
 
 ## <a name="linux"></a>Linux
 
@@ -70,6 +71,11 @@ Die im Marketplace verfügbaren Linux-Distributionen enthalten den erforderliche
 | Ubuntu 16.04-LTS | 64 Bit | Canonical | JA |
 | Ubuntu 18.04-LTS | 64 Bit | Canonical | JA |
 
-Andere Linux-Distributionen können in Zukunft unterstützt werden.
-
 Informationen zur Unterstützung von Red Hat Enterprise Linux finden Sie unter [Red Hat und Azure Stack: Häufig gestellte Fragen](https://access.redhat.com/articles/3413531) (in englischer Sprache).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Azure Stack Marketplace finden Sie in den folgenden Artikeln:
+
+[Herunterladen von Marketplace-Elementen](azure-stack-download-azure-marketplace-item.md)  
+[Erstellen und Veröffentlichen eines Marketplace-Elements](azure-stack-create-and-publish-marketplace-item.md)

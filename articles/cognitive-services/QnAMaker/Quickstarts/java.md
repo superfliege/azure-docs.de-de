@@ -1,20 +1,21 @@
 ---
-title: Java-Schnellstart für die Microsoft QnA Maker-API (v4) – Azure Cognitive Services | Microsoft-Dokumentation
+title: 'Schnellstart: Java für die QnA Maker-API (v4)'
+titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen und Codebeispiele, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: d8df77d43441331bdda38814e4bddfb29d1576c1
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 8cf9df5130f11fd07dbf468ad0ad93dff4584b21
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868397"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031482"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>Schnellstart für die Microsoft QnA Maker-API mit Java 
 <a name="HOLTop"></a>
@@ -35,6 +36,8 @@ In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overvie
 - [Erneutes Generieren der aktuellen Endpunktschlüssel](#PutKeys)
 - [Abrufen der aktuellen Wortvarianten](#GetAlterations)
 - [Ersetzen der aktuellen Wortvarianten](#PutAlterations)
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

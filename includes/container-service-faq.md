@@ -32,13 +32,13 @@ Weitere ausführliche Informationen finden Sie in unserer [Support-Richtlinie f�
 
 Für die Authentifizierung bei den virtuellen Linux-Computern Ihres Clusters können Sie mithilfe der Standardtools Ihres Betriebssystems ein Paar aus einem öffentlichen und einem privaten SSH-RSA-Schlüssel erstellen. Eine entsprechende Anleitung finden Sie im Leitfaden für [OS X und Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md) bzw. im Leitfaden für [Windows](../articles/virtual-machines/linux/ssh-from-windows.md). 
 
-Wenn Sie einen Containerdienstcluster mithilfe von [Azure CLI 2.0-Befehlen](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) bereitstellen, können SSH-Schlüssel automatisch für Ihren Cluster generiert werden.
+Wenn Sie einen Containerdienstcluster mithilfe von [Azure CLI-Befehlen](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) bereitstellen, können SSH-Schlüssel automatisch für Ihren Cluster generiert werden.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Wie erstelle ich einen Dienstprinzipal für meinen Kubernetes-Cluster?
 
 Eine Azure Active Directory-Dienstprinzipal-ID und ein Kennwort werden auch für die Erstellung eines Kubernetes-Clusters in Azure Container Service benötigt. Weitere Informationen finden Sie im Artikel zum [Dienstprinzipal für einen Kubernetes-Cluster](../articles/container-service/kubernetes/container-service-kubernetes-service-principal.md).
 
-Wenn Sie einen Kubernetes-Cluster mithilfe von [Azure CLI 2.0-Befehlen](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) bereitstellen, können Dienstprinzipal-Anmeldeinformationen automatisch für Ihren Cluster generiert werden.
+Wenn Sie einen Kubernetes-Cluster mithilfe von [Azure CLI-Befehlen](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) bereitstellen, können Dienstprinzipal-Anmeldeinformationen automatisch für Ihren Cluster generiert werden.
 
 ### <a name="how-large-a-cluster-can-i-create"></a>Welche Clustergrößen kann ich erstellen?
 Sie können einen Cluster mit einem, drei oder fünf Masterknoten erstellen. Außerdem können Sie bis zu 100 Agent-Knoten auswählen.
@@ -105,4 +105,4 @@ Unter Windows gibt es einige bekannte DNS-Probleme, für die momentan noch Korre
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Informieren Sie sich ausführlicher](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) über Azure Container Service.
-* Stellen Sie einen Azure Container Service-Cluster über das [Portal](../articles/container-service/dcos-swarm/container-service-deployment.md) oder mithilfe von [Azure CLI 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) bereit.
+* Stellen Sie einen Azure Container Service-Cluster über das [Portal](../articles/container-service/dcos-swarm/container-service-deployment.md) oder mithilfe der [Azure CLI](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) bereit.

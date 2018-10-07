@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/03/2018
+ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301035"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220465"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>Einrichten von Log Analytics für einen Cluster
 
@@ -76,117 +76,22 @@ Damit haben Sie die Service Fabric-Analyse-Lösung einem Log Analytics-Arbeitsbe
 
 Beim Bereitstellen eines Clusters mithilfe einer Resource Manager-Vorlage wird mit der Vorlage ein neuer Log Analytics-Arbeitsbereich erstellt, diesem die Service Fabric-Lösung hinzugefügt und der Arbeitsbereich so konfiguriert, dass Daten aus den entsprechenden Speichertabellen gelesen werden.
 
-Sie können [diese Beispielvorlage](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) verwenden und entsprechend Ihren Anforderungen ändern.
+Sie können [diese Beispielvorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) verwenden und entsprechend Ihren Anforderungen ändern. Mit dieser Vorlage werden die folgenden Aktionen ausgeführt
 
-Nehmen Sie folgende Änderungen vor:
-1. Fügen Sie Ihren Parametern `omsWorkspaceName` und `omsRegion` hinzu, indem Sie den in der Datei *template.json* definierten Parametern den folgenden Codeausschnitt hinzufügen. Die Standardwerte können nach Bedarf geändert werden. Fügen Sie die beiden neuen Parameter auch in der Datei *parameters.json* hinzu, um ihre Werte für die Ressourcenbereitstellung zu definieren:
-    
-    ```json
-    "omsWorkspacename": {
-        "type": "string",
-        "defaultValue": "sfomsworkspace",
-        "metadata": {
-            "description": "Name of your Log Analytics Workspace"
-        }
-    },
-    "omsRegion": {
-        "type": "string",
-        "defaultValue": "East US",
-        "allowedValues": [
-            "West Europe",
-            "East US",
-            "Southeast Asia"
-        ],
-        "metadata": {
-            "description": "Specify the Azure Region for your Log Analytics workspace"
-        }
-    }
-    ```
+* Erstellen eines neuen Service Fabric-Clusters mit 5 Knoten
+* Erstellen eines Log Analytics-Arbeitsbereichs und einer Service Fabric-Lösung
+* Konfigurieren des OMS-Agents zum Erfassen und Senden von 2 Beispielleistungsindikatoren an den Arbeitsbereich
+* Konfigurieren von WAD zum Erfassen von Service Fabric und Senden an Azure Storage-Tabellen (WADServiceFabric*EventTable)
+* Konfigurieren des Log Analytics-Arbeitsbereichs zum Lesen der Ereignisse aus diesen Tabellen
 
-    Die `omsRegion`-Werte müssen einem bestimmten Satz der Werte entsprechen. Wählen Sie denjenigen aus, der sich möglichst nah an der Bereitstellung Ihres Clusters befindet.
 
-2. Wenn Sie Anwendungsprotokolle an Log Analytics senden, vergewissern Sie sich zunächst, dass `applicationDiagnosticsStorageAccountType` und `applicationDiagnosticsStorageAccountName` als Parameter in der Vorlage enthalten sind. Wenn dies nicht der Fall ist, fügen Sie sie dem Abschnitt „variables“ hinzu, und bearbeiten Sie die Werte nach Bedarf. Sie können sie auch als Parameter einfügen. Verwenden Sie dabei das oben angegebene Format.
+Sie können die Vorlage als Resource Manager-Upgrade für Ihren Cluster bereitstellen. Verwenden Sie dazu die `New-AzureRmResourceGroupDeployment`-API im AzureRM-PowerShell-Modul. Beispielbefehl:
 
-    ```json
-    "applicationDiagnosticsStorageAccountType": "Standard_LRS",
-    "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
-    ```
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
+``` 
 
-3. Fügen Sie die Service Fabric-Lösung den Variablen Ihrer Vorlage hinzu:
-
-    ```json
-    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
-    "solutionName": "ServiceFabric"
-    ```
-
-4. Fügen Sie am Ende des Abschnitts „resources“ (nach der Deklaration der Service Fabric-Clusterressource) Folgendes hinzu:
-
-    ```json
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[parameters('omsWorkspacename')]",
-        "type": "Microsoft.OperationalInsights/workspaces",
-        "properties": {
-            "sku": {
-                "name": "Free"
-            }
-        },
-        "resources": [
-            {
-                "apiVersion": "2015-11-01-preview",
-                "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
-                "type": "storageinsightconfigs",
-                "dependsOn": [
-                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
-                    "[concat('Microsoft.Storage/storageAccounts/', parameters('applicationDiagnosticsStorageAccountName'))]"
-                ],
-                "properties": {
-                    "containers": [ ],
-                    "tables": [
-                        "WADServiceFabric*EventTable",
-                        "WADWindowsEventLogsTable",
-                        "WADETWEventTable"
-                    ],
-                    "storageAccount": {
-                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', parameters('applicationDiagnosticsStorageAccountName'))]",
-                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[variables('solution')]",
-        "type": "Microsoft.OperationsManagement/solutions",
-        "id": "[resourceId('Microsoft.OperationsManagement/solutions/', variables('solution'))]",
-        "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('OMSWorkspacename'))]"
-        ],
-        "properties": {
-            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
-        },
-        "plan": {
-            "name": "[variables('solution')]",
-            "publisher": "Microsoft",
-            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
-            "promotionCode": ""
-        }
-    }
-    ```
-    
-    > [!NOTE]
-    > Wenn Sie `applicationDiagnosticsStorageAccountName` als Variable hinzugefügt haben, ändern Sie jeden Verweis darauf in `variables('applicationDiagnosticsStorageAccountName')` anstelle von `parameters('applicationDiagnosticsStorageAccountName')`.
-
-5. Stellen Sie die Vorlage als Resource Manager-Upgrade für Ihren Cluster bereit. Verwenden Sie dazu die `New-AzureRmResourceGroupDeployment`-API im AzureRM-PowerShell-Modul. Beispielbefehl:
-
-    ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName "sfcluster1" -TemplateFile "<path>\template.json" -TemplateParameterFile "<path>\parameters.json"
-    ``` 
-
-    Azure Resource Manager erkennt, dass es sich bei diesem Befehl um ein Update für eine vorhandene Ressource handelt. Daher werden nur die Änderungen zwischen der Vorlage für die vorhandene Bereitstellung und der neu bereitgestellten Vorlage verarbeitet.
+Azure Resource Manager erkennt, dass es sich bei diesem Befehl um ein Update für eine vorhandene Ressource handelt. Daher werden nur die Änderungen zwischen der Vorlage für die vorhandene Bereitstellung und der neu bereitgestellten Vorlage verarbeitet.
 
 ## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Bereitstellen von Log Analytics mithilfe von Azure PowerShell
 

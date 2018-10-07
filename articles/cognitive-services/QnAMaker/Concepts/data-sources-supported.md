@@ -1,72 +1,136 @@
 ---
-title: Unterstützte Datenquellen – Microsoft Cognitive Services | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Unterstützte Datenquellen
+title: 'Unterstützte Datenquellen: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: QnA Maker extrahiert automatisch Frage-Antwort-Paare aus semistrukturierten Inhalten wie FAQs, Produkthandbüchern, Leitfäden, Supportdokumenten und Richtlinien, die als Webseiten, PDF-Dateien oder MS Word-Dokumente gespeichert sind. Inhalte können der Wissensdatenbank auch aus strukturierten QnA-Inhaltsdateien hinzugefügt werden.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: 698f96b15a9387cd30d26e684ed03ff4cc3346a7
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 09/25/2018
+ms.author: tulasim
+ms.openlocfilehash: 29e894b0666b37d32f36b016603fda408e9d2746
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697899"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161049"
 ---
-# <a name="data-sources"></a>Datenquellen 
-QnA Maker kann automatisch Frage-Antwort-Paare aus gebräuchlichen semistrukturierten Inhaltsformaten wie Seiten mit häufig gestellten Fragen (FAQs) und Produkthandbüchern extrahieren. Inhalte können der Wissensdatenbank auch aus strukturierten Dateien hinzugefügt werden.
+# <a name="data-sources-for-qna-maker-content"></a>Datenquellen für QnA Maker-Inhalt
 
-## <a name="plain-faq-pages"></a>Einfache FAQ-Seiten
+QnA Maker extrahiert automatisch Frage-Antwort-Paare aus semistrukturierten Inhalten wie FAQs, Produkthandbüchern, Leitfäden, Supportdokumenten und Richtlinien, die als Webseiten, PDF-Dateien oder MS Word-Dokumente gespeichert sind. Inhalte können der Wissensdatenbank auch aus strukturierten QnA-Inhaltsdateien hinzugefügt werden. 
+
+Die folgende Tabelle fasst die Inhaltstypen und Dateiformate zusammen, die von QnA Maker unterstützt werden.
+
+|Quellentyp|Inhaltstyp| Beispiele|
+|--|--|--|
+|URL|FAQs (flach, mit Abschnitten oder mit einer Themenstartseite)|[Einfache FAQ](https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs), [FAQ mit Links](https://www.microsoft.com/software-download/faq), [FAQ mit Themenstartseite](https://support.microsoft.com/products/windows?os=windows-10)|
+|PDF/DOC|FAQs, Produkthandbücher, Broschüren, Artikel, Flyerrichtlinie, Supporthandbuch, strukturierte QnA usw.|[Strukturiertes QnA.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Bot%20Service%20Sample%20FAQ.docx), [Beispielprodukthandbuch.pdf](http://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf), [semistrukturiertes Beispiel.doc](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx), [Beispielewhitepaper.pdf](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-stack-wortmann-bring-the-power-of-the-public-cloud-into-your-data-center/Azure_Stack_Wortmann_Bring_the_Power_of_the_Public_Cloud_into_Your_Data_Center.pdf)|
+|Excel|Strukturierte QnA-Datei (einschließlich RTF-, HTML-Unterstützung)|[QnA-Beispiel-FAQ.xls](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/QnA%20Maker%20Sample%20FAQ.xlsx)|
+|TXT/TSV|Strukturierte QnA-Datei|[Beispielgeplauder.tsv](https://raw.githubusercontent.com/Microsoft/BotBuilder-PersonalityChat/master/CSharp/Datasets/Queries_Responses_Friendly_QnAMaker.tsv)|
+
+## <a name="faq-urls"></a>FAQ-URLs
+
+QnA Maker kann FAQ-Webseiten in 3 verschiedenen Formaten unterstützen: einfache FAQ-Seiten, FAQ-Seiten mit Links, FAQ-Seiten mit einer Themenstartseite.
+
+### <a name="plain-faq-pages"></a>Einfache FAQ-Seiten
+
 Dies ist der am häufigsten verwendete Typ einer FAQ-Seite, bei der auf der gleichen Seite die Antworten unmittelbar auf die Fragen folgen. 
+
+Unten sehen Sie ein Beispiel für eine einfache FAQ-Seite:
 
 ![Einfache FAQ-Seite](../media/qnamaker-concepts-datasources/plain-faq.png) 
 
  
+### <a name="faq-pages-with-links"></a>FAQ-Seiten mit Links 
 
-## <a name="faq-pages-with-section-links"></a>FAQ-Seiten mit Abschnittsverknüpfungen 
-Bei diesem FAQ-Seitentyp sind Fragen zusammengefasst und mit Antworten verknüpft, die sich in verschiedenen Abschnitten auf derselben Seite befinden.
+Bei diesem FAQ-Seitentyp sind Fragen zusammengefasst und mit Antworten verknüpft, die sich in verschiedenen Abschnitten auf derselben Seite oder auf verschiedenen Seiten befinden.
+
+Unten sehen Sie ein Beispiel für eine FAQ-Seite mit Links in Abschnitten, die sich auf derselben Seite befinden:
 
  ![FAQ-Seite mit Abschnittsverknüpfung](../media/qnamaker-concepts-datasources/sectionlink-faq.png) 
 
 
-## <a name="faq-pages-with-links-to-different-pages"></a>FAQ-Seiten mit Links zu anderen Seiten 
-Dieser FAQ-Seitentyp ähnelt einer FAQ-Seite mit Abschnittsverknüpfung, mit dem Unterschied, dass die Links zu einer anderen Seite führen. QnA Maker durchsucht alle verknüpften Seiten, um die entsprechenden Antworten zu extrahieren.
+### <a name="faq-pages-with-a-topics-homepage"></a>FAQ-Seiten mit einer Themenstartseite
 
- ![FAQ-Seite mit Deep-Link](../media/qnamaker-concepts-datasources/deeplink-faq.png) 
+Dieser Typ von FAQ weist eine Startseite mit den Themen auf, wobei jedes Thema ein Link zu seinen relevanten QnAs auf einer anderen Seite ist. In diesem Fall durchsucht QnA Maker alle verknüpften Seiten, um die entsprechenden Fragen und Antworten zu extrahieren.
+
+Unten sehen Sie ein Beispiel für eine FAQ-Seite, auf der eine Themenstartseite Links zu FAQ-Abschnitten auf verschiedenen Seiten enthält. 
+
+ ![FAQ-Seite mit Deep-Link](../media/qnamaker-concepts-datasources/topics-faq.png) 
 
 
-## <a name="product-manuals"></a>Produkthandbücher
+## <a name="pdf-doc-files"></a>PDF-/DOC-Dateien
+
+QnA Maker kann semistrukturierte Inhalte in einer PDF- oder DOC-Datei verarbeiten und in QnAs konvertieren. Eine geeignete Datei, die gut extrahiert werden kann, ist eine Datei, in der der Inhalt in einer strukturierten Form organisiert ist und in wohldefinierten Abschnitten dargestellt wird. Die Abschnitte können weiter in Unterabschnitte oder Unterthemen unterteilt werden. Die Extraktion funktioniert am besten für Dokumente, die eine klare Struktur mit hierarchischen Überschriften aufweisen.
+
+QnA Maker identifiziert Abschnitte und Unterabschnitte sowie Beziehungen in der Datei anhand von visuellen Hinweisen wie Schriftgröße, Schriftstil, Nummerierung, Farben usw. Semistrukturierte PDF- oder DOC-Dateien können Handbücher, FAQs, Leitfäden, Richtlinien, Broschüren, Flyer und viele andere Dateitypen sein. Nachfolgend finden Sie einige Beispieltypen für diese Dateien.
+
+### <a name="product-manuals"></a>Produkthandbücher
 
 Bei einem Handbuch handelt es sich in der Regel um Anleitungen, die mit einem Produkt geliefert werden. Es hilft dem Benutzer beim Einrichten, Verwenden und Warten des Produkts sowie der Problembehandlung. Wenn QnA Maker ein Handbuch verarbeitet, werden die Überschriften und Unterüberschriften als Fragen und die nachfolgenden Inhalte als Antworten extrahiert. Ein Beispiel finden Sie [hier](http://download.microsoft.com/download/2/9/B/29B20383-302C-4517-A006-B0186F04BE28/surface-pro-4-user-guide-EN.pdf).
+
+Unten sehen Sie ein Beispiel für ein Handbuch mit einer Indexseite und hierarchischen Inhalten.
+
+ ![Beispiel für ein Produkthandbuch](../media/qnamaker-concepts-datasources/product-manual.png) 
 
 > [!NOTE]
 > Das Extrahieren funktioniert am besten bei Handbüchern, die über ein Inhaltsverzeichnis und/oder eine Indexseite verfügen und eine klare Struktur mit hierarchischen Überschriften aufweisen.
 
+### <a name="brochures-guidelines-papers-and-other-files"></a>Broschüren, Richtlinien, Artikel und andere Dateien
 
-## <a name="structured-data-format-through-file-upload"></a>Strukturiertes Datenformat durch Dateiupload
+Viele andere Arten von Dokumenten können ebenfalls verarbeitet werden, um QA-Paare zu generieren, vorausgesetzt, sie weisen eine klare Struktur und ein klares Layout auf. Dazu gehören: Broschüren, Leitfäden, Berichte, Whitepaper, wissenschaftliche Veröffentlichungen, Richtlinien, Bücher usw. Ein Beispiel finden Sie [hier](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx).
 
-Strukturierte Dateien wie TSV und XLSX mit formatierten Spalten können während der Erstellung der Wissensdatenbank ebenfalls in QnA Maker hochgeladen werden. Sie können Dateien auch über die Registerkarte **Einstellungen** einer Wissensdatenbank hochladen.
+Unten sehen Sie ein Beispiel für ein semistrukturiertes Dokument ohne Index:
+
+ ![Semistrukturiertes Azure Blob Storage-Dokument](../media/qnamaker-concepts-datasources/semi-structured-doc.png) 
+
+### <a name="structured-qna-document"></a>Strukturiertes QnA-Dokument
+
+Das Format für strukturierte Fragen/Antworten in DOC-Dateien besteht aus abwechselnden Fragen und Antworten pro Zeile: eine Frage pro Zeile, gefolgt von ihrer Antwort in der folgenden Zeile, wie unten gezeigt: 
+
+```
+Question1
+
+Answer1
+
+Question2
+
+Answer2
+```
+
+Unten sehen Sie ein Beispiel für ein strukturiertes QnA-Word-Dokument:
+
+ ![Strukturiertes QnA-Dokument](../media/qnamaker-concepts-datasources/structured-qna-doc.png) 
+
+## <a name="structured-txt-tsv-and-xls-files"></a>Strukturierte *TXT*-, *TSV*- und *XLS*-Dateien
+
+QnAs in Form von strukturierten *TXT*-, *TSV*- oder *XLS*-Dateien können auch in QnA Maker hochgeladen werden, um eine Wissensdatenbank zu erstellen oder zu erweitern.  Dabei kann es sich um Nur-Text-Dateien oder um Dateien mit Inhalten im RTF- oder HTML-Format handeln. 
 
 | Frage  | Antwort  | Metadaten                |
 |-----------|---------|-------------------------|
-| Frage1 | Antwort1 | `Key1:Value1|Key2:Value2` |
+| Frage1 | Antwort1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Frage2 | Antwort2 |      `Key:Value`           |
+
 Alle weiteren Spalten in der Quelldatei werden ignoriert.
 
+Unten sehen Sie ein Beispiel für eine strukturierte QnA-*XLS*-Datei mit HTML-Inhalten:
+
+ ![Strukturierte QnA-Excel-Datei](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
 ## <a name="structured-data-format-through-import"></a>Strukturiertes Datenformat durch Import
+
 Beim Importieren einer Wissensdatenbank wird der Inhalt der vorhandenen Wissensdatenbank ersetzt. Der Import erfordert eine strukturierte TSV-Datei, die Informationen zur Datenquelle enthält. Diese Informationen helfen QnA Maker beim Gruppieren der Frage-Antwort-Paare und dem Zuweisen zu einer bestimmten Datenquelle.
 
 | Frage  | Antwort  | Quelle| Metadaten                |
 |-----------|---------|----|---------------------|
-| Frage1 | Antwort1 | URL1|`Key1:Value1|Key2:Value2` |
+| Frage1 | Antwort1 | URL1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | Frage2 | Antwort2 | Redaktionelle Änderung|    `Key:Value`       |
 
-## <a name="editorial"></a>Redaktionelle Änderung
-Wenn Sie nicht über bereits vorhandene Inhalte zum Füllen der Wissensdatenbank verfügen, können Sie diese auch redaktionell zur QnA Maker-Wissensdatenbank hinzufügen. Informationen zum Aktualisieren Ihrer Wissensdatenbank finden Sie [hier](../How-To/edit-knowledge-base.md).
+## <a name="editorially-add-to-knowledge-base"></a>Redaktionelles Hinzufügen zur Wissensdatenbank
+
+Wenn Sie nicht über bereits vorhandene Inhalte zum Füllen der Wissensdatenbank verfügen, können QnAs auch redaktionell zur QnA Maker-Wissensdatenbank hinzufügen. Informationen zum Aktualisieren Ihrer Wissensdatenbank finden Sie [hier](../How-To/edit-knowledge-base.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

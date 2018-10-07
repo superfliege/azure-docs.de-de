@@ -1,21 +1,21 @@
 ---
-title: Beheben von Problemen mit QnA Maker | Microsoft-Dokumentation
-titleSuffix: Azure
-description: Beheben von Problemen mit der QnA Maker-Runtime
+title: 'Problembehandlung: QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: QnA Maker besteht aus Komponenten, die im Azure-Konto des Benutzers gehostet werden. Für das Debuggen kann es notwendig sein, dass Benutzer ihre Azure-Ressourcen für QnA Maker bearbeiten oder dem QnA Maker-Supportteam zusätzliche Informationen zu ihrer Installation bereitstellen.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 06/04/2018
-ms.author: saneppal
-ms.openlocfilehash: 23847c81a39ea392b6e64575406c9dc338b852de
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: ad3c01ebf37c8b544830b281144090694eeadfcd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35378772"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033725"
 ---
 # <a name="qnamaker-troubleshooting"></a>QnA Maker – Problembehandlung
 QnA Maker besteht aus Komponenten, die im Azure-Konto des Benutzers gehostet werden. Für das Debuggen kann es notwendig sein, dass Benutzer ihre Azure-Ressourcen für QnA Maker bearbeiten oder dem QnA Maker-Supportteam zusätzliche Informationen zu ihrer Installation bereitstellen.

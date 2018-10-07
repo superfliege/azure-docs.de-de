@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 09b698f66e074a58ebe7ccb1c2fc308d74740294
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2d67d7d2993130945ddf52676f7f2d4991e62ee6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130284"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219301"
 ---
 # <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
 Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
@@ -63,6 +63,7 @@ In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunk
 | TrafficManagerDnsSuffix                  | azuretrafficmanager.de |
 | AzureKeyVaultDnsSuffix                   | vault.microsoftazure.de |
 | AzureKeyVaultServiceEndpointResourceId   | https://vault.microsoftazure.de |
+| Service Bus-Suffix                       | servicebus.cloudapi.de |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

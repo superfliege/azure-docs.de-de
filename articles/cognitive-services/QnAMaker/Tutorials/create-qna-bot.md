@@ -1,22 +1,23 @@
 ---
-title: Erstellen eines QnA-Bots mit Azure Bot Service – Azure Cognitive Services | Microsoft-Dokumentation
+title: 'QnA-Bot mit Azure Bot Service: QnA Maker'
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: fc430bf3aa7cad279d7a93bb6892aa19abee3378
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 74c7bc5c601cd36a8dd2454506745406bc00dac0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109268"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031287"
 ---
-# <a name="create-a-qna-bot-with-azure-bot-service"></a>Erstellen eines QnA-Bots mit Azure Bot Service
-In diesem Tutorial wird erläutert, wie Sie einen QnA-Bot mit Azure Bot Service im Azure-Portal erstellen.
+# <a name="create-a-qna-bot-with-azure-bot-service-v3"></a>Erstellen eines QnA-Bots mit Azure Bot Service v3
+In diesem Tutorial wird erläutert, wie Sie einen QnA-Bot mit Azure Bot Service v3 im Azure-Portal erstellen.
 
 ## <a name="prerequisite"></a>Voraussetzung
 Führen Sie vor der Erstellung des Bots die unter [Erstellen einer Knowledge Base](../How-To/create-knowledge-base.md) beschriebenen Schritte aus, um einen QnA Maker-Dienst mit Fragen und Antworten zu erstellen.
@@ -32,16 +33,24 @@ Der Bot antwortet über QnAMakerDialog auf Fragen aus der von Ihnen erstellten K
 
     ![Auswahl des Botdiensts](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
 
-3. Geben Sie im **Blatt für den Botdienst** die erforderlichen Informationen an, und wählen Sie **Erstellen** aus. Der Botdienst wird über QnAMakerDialog in Azure erstellt und bereitgestellt.
+3. Geben Sie auf dem Blatt **Botdienst** die erforderlichen Informationen an.
 
     - Legen Sie den **App-Namen** auf den Namen Ihres Bots fest. Der Name wird als Unterdomäne verwendet, wenn Ihr Bot in der Cloud bereitgestellt wird (z.B. meinnotizbot.azurewebsites.net).
     - Wählen Sie das Abonnement, die Ressourcengruppe, den App Service-Plan und den Standort aus.
-    - Wählen Sie die Vorlage **Question and Answer** (Node.js oder C#) für das Feld „Bot template“ (Botvorlage) aus.
-    - Aktivieren Sie das Kontrollkästchen zur Bestätigung der rechtlichen Hinweise. Die Bestimmungen der rechtlichen Hinweise werden unterhalb des Kontrollkästchens angezeigt.
 
-        ![Auswahl des Botdiensts](../media/qnamaker-tutorials-create-bot/bot-service-qna-template.PNG)
+4. Anweisungen zum Erstellen eines QnA-Bots mit SDK v4 finden Sie unter [QnA v4-Botvorlage](https://aka.ms/qna-bot-v4). Um die v3-Vorlagen zu verwenden, wählen Sie die SDK-Version **SDK v3** und die SDK-Sprache **C#** oder **Node.js** aus.
 
-4. Vergewissern Sie sich, dass der Botdienst bereitgestellt wurde.
+    ![Bot-SDK-Einstellungen](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+
+5. Wählen Sie die Vorlage **Frage und Antwort** für das Feld „Bot-Vorlage“ aus, und speichern Sie die Vorlageneinstellungen, indem Sie **Auswählen** auswählen.
+
+    ![Auswahl des Botdiensts](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+
+6. Überprüfen Sie Ihre Einstellungen, und wählen Sie dann **Erstellen** aus. Der Botdienst wird über QnAMakerDialog in Azure erstellt und bereitgestellt.
+
+    ![Auswahl des Botdiensts](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+
+7. Vergewissern Sie sich, dass der Botdienst bereitgestellt wurde.
 
     - Wählen Sie **Benachrichtigungen** (Glockensymbol im oberen Bereich des Azure-Portals) aus. Die Benachrichtigung ändert sich von **Bereitstellung gestartet** in **Bereitstellung erfolgreich**.
     - Nachdem die Benachrichtigung sich in **Bereitstellung erfolgreich** geändert hat, wählen Sie **Zu Ressource wechseln** für diese Benachrichtigung aus.

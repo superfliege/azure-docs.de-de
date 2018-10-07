@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Services, Dokumentation zur Cognitive Services Speech SDK-API – Tutorials, API-Referenz
+title: 'Azure Cognitive Services, Dokumentation zur Cognitive Services Speech SDK-API: Tutorials, API-Referenz'
 description: Informationen zum Erstellen und Entwickeln von Apps mit dem Cognitive Services Speech SDK
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 65ff0e47cf7a53d519bfd0c50ea4c3ebd09a5766
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 4bfede8df88c64e795e33620650efb579f43ebba
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41936742"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404307"
 ---
-# <a name="shipping-an-application"></a>Versenden einer Anwendung
+# <a name="ship-an-application"></a>Ausliefern einer Anwendung
 
-Beachten Sie bei der Verteilung des Cognitive Services Speech SDK die [Lizenzbedingungen für das Speech SDK](license.md) sowie die [Hinweise und Informationen zu Drittanbietersoftware](third-party-notices.md). Lesen Sie außerdem die [Datenschutzerklärung von Microsoft](https://aka.ms/csspeech/privacy).
+Beachten Sie beim Verteilen des Azure Cognitive Services Speech SDK die [Lizenzbedingungen für das Speech SDK](https://aka.ms/csspeech/license201809) sowie die [Hinweise und Informationen zu Drittanbietersoftware](https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html). Lesen Sie außerdem die [Datenschutzerklärung von Microsoft](https://aka.ms/csspeech/privacy).
 
 Je nach Plattform bestehen unterschiedliche Abhängigkeiten zum Ausführen Ihrer Anwendung.
 
@@ -31,9 +31,9 @@ Für das Cognitive Services Speech SDK muss [Microsoft Visual C++ Redistributabl
 - [Win32](https://aka.ms/vs/15/release/vc_redist.x86.exe)
 - [x64](https://aka.ms/vs/15/release/vc_redist.x64.exe)
 
-Wenn in der Anwendung verwalteter Code verwendet wird, muss `.NET Framework 4.6.1` oder höher auf dem Zielcomputer installiert sein.
+Wenn Ihre Anwendung verwalteten Code verwendet, muss `.NET Framework 4.6.1` oder höher auf dem Zielcomputer installiert sein.
 
-Für die Mikrofoneingabe müssen die Media Foundation-Bibliotheken installiert werden. Diese Bibliotheken sind Bestandteil von Windows 10 und Windows Server 2016. Das Speech SDK kann ohne diese Bibliotheken verwendet werden, wenn als Audioeingabegerät kein Mikrofon verwendet wird.
+Für die Mikrofoneingabe müssen die Media Foundation-Bibliotheken installiert sein. Diese Bibliotheken sind Bestandteil von Windows 10 und Windows Server 2016. Das Speech SDK kann ohne diese Bibliotheken verwendet werden, wenn als Audioeingabegerät kein Mikrofon verwendet wird.
 
 Die erforderlichen Speech SDK-Dateien können im gleichen Verzeichnis wie die Anwendung bereitgestellt werden. Auf diese Weise kann die Anwendung direkt auf die Bibliotheken zugreifen. Stellen Sie sicher, dass Sie die richtige, der Anwendung entsprechende Version (Win32/x64) auswählen.
 
@@ -45,15 +45,15 @@ Die erforderlichen Speech SDK-Dateien können im gleichen Verzeichnis wie die An
 
 ## <a name="linux"></a>Linux
 
-Für eine native Anwendung müssen Sie die Speech SDK-Bibliothek `libMicrosoft.CognitiveServices.Speech.core.so` versenden.
-Stellen Sie sicher, dass Sie die der Anwendung entsprechende Version (x86, x64) auswählen. Je nach verwendeter Linux-Version müssen Sie möglicherweise auch die folgenden Abhängigkeiten einfügen:
+Für eine native Anwendung müssen Sie die Speech SDK-Bibliothek `libMicrosoft.CognitiveServices.Speech.core.so` ausliefern.
+Stellen Sie sicher, dass Sie die der Anwendung entsprechende Version (x86, x64) auswählen. Je nach verwendeter Linux-Version müssen Sie möglicherweise auch die folgenden Abhängigkeiten einbinden:
 
 * Freigegebene Bibliotheken der GNU C-Bibliothek (einschließlich der POSIX Threads Programming-Bibliothek `libpthreads`)
 * OpenSSL-Bibliothek (`libssl.so.1.0.0`)
 * cURL-Bibliothek (`libcurl.so.4`)
 * Freigegebene Bibliothek für ALSA-Anwendungen (`libasound.so.2`)
 
-Unter Ubuntu 16.04 sollten die GNU C-Bibliotheken z.B. bereits standardmäßig installiert sein. Die letzten drei können mit folgenden Befehlen installiert werden:
+Unter Ubuntu 16.04 sollten die GNU C-Bibliotheken z.B. bereits standardmäßig installiert sein. Die letzten drei Bibliotheken können mit folgenden Befehlen installiert werden:
 
 ```sh
 sudo apt-get update

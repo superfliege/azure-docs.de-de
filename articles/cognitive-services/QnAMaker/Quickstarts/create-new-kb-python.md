@@ -1,24 +1,27 @@
 ---
-title: 'Erstellen einer neuen Wissensdatenbank: Python-Schnellstart für die Microsoft QnA Maker-API (V4) – Azure Cognitive Services | Microsoft-Dokumentation'
-description: Erstellen Sie eine Wissensdatenbank in Python für Ihre häufig gestellten Fragen oder Produkthandbücher, um die ersten Schritte mit QnA Maker auszuführen.
+title: 'Schnellstart: API Python – Erstellen einer Wissensdatenbank – QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Diese Schnellstartanleitung führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: a8e3ae73c76c13d44267f221d37a07eea721a608
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 9a3b801058a2614b9b484a3ebf414a9225c5371e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43769821"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033293"
 ---
 # <a name="create-a-new-knowledge-base-in-python"></a>Erstellen einer neuen Wissensdatenbank in Python
 
 Diese Schnellstartanleitung führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 Weiter unten finden Sie zwei Beispiel-URLs für häufig gestellte Fragen (im **req**-Wörterbuchelement „urls“). QnA Maker extrahiert automatisch Fragen und Antworten aus teilweise strukturiertem Inhalt (etwa häufig gestellten Fragen). Dies wird in diesem Dokument zu [Datenquellen](../Concepts/data-sources-supported.md) ausführlicher erläutert. Sie können in diesem Schnellstart auch Ihre eigenen URLs für häufig gestellte Fragen verwenden.
 

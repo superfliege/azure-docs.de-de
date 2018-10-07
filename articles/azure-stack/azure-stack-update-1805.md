@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 60b4658d18d39797d30055e86cb21689cfb661fa
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5224829b59e7ad425fb01a242a702e0d4cad8657
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631661"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392379"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack-Update 1805
 
@@ -91,6 +91,9 @@ Installieren Sie nach der Installation von 1805 alle entsprechenden Hotfixes. We
 Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversion vorgestellt.
 
 ### <a name="portal"></a>Portal  
+
+- Die technische Dokumentation für Azure Stack konzentriert sich auf das neueste Release. Aufgrund von Portaländerungen zwischen den Releases kann das, was bei der Verwendung der Azure Stack-Portale angezeigt wird, von dem abweichen, was in der Dokumentation angezeigt wird. 
+
 - <!-- 2931230 – IS  ASDK --> Pläne, die einem Benutzerabonnement als Add-On-Plan hinzugefügt wurden, können nicht gelöscht werden, auch wenn Sie den Plan aus dem Benutzerabonnement entfernen. Der Plan ist so lange vorhanden, bis die Abonnements gelöscht werden, die auf den Add-On-Plan verweisen. 
 
 - <!-- TBD - IS ASDK --> Sie können mit dieser Version von Azure Stack keine Treiberupdates mit einem OEM-Erweiterungspaket durchführen.  Dafür gibt es keine Problemumgehung.

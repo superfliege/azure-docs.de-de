@@ -1,21 +1,21 @@
 ---
-title: Schlüsselverwaltung – Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
-description: Verwalten Ihrer QnA Maker-Schlüssel
+title: 'Ressourcen- und Schlüsselverwaltung: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: 'Ihr QnA Maker-Dienst verwendet zwei Arten von Schlüsseln: Abonnementschlüssel und Endpunktschlüssel.'
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: b402187f4949dac34fa476648c81b980ba3efc96
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: f48b4b7da4990de0efb9b7de5d97731d748f0e7f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376331"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040447"
 ---
 # <a name="key-management"></a>Schlüsselverwaltung
 

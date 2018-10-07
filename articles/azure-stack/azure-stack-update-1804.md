@@ -3,7 +3,7 @@ title: Azure Stack-Update 1804 | Microsoft-Dokumentation
 description: Erfahren Sie, welche integrierten Azure Stack-Systeme Update 1804 enthält, welche bekannten Probleme es gibt und wo das Update heruntergeladen werden kann.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
-ms.author: brenduns
+ms.date: 09/26/2018
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 16f12d8119a14e668a7502d99fa2d9c976d23833
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413515"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393518"
 ---
 # <a name="azure-stack-1804-update"></a>Azure Stack-Update 1804
 
@@ -102,6 +102,9 @@ Installieren Sie nach der Installation von 1804 alle entsprechenden Hotfixes. We
 Im Folgenden werden bekannte Probleme nach der Installation zum Build **20180513.1** vorgestellt.
 
 #### <a name="portal"></a>Portal
+
+- Die technische Dokumentation für Azure Stack konzentriert sich auf das neueste Release. Aufgrund von Portaländerungen zwischen den Releases kann das, was bei der Verwendung der Azure Stack-Portale angezeigt wird, von dem abweichen, was in der Dokumentation angezeigt wird. 
+
 - <!-- TBD - IS ASDK --> Sie können mit dieser Version von Azure Stack keine Treiberupdates mit einem OEM-Erweiterungspaket durchführen.  Dafür gibt es keine Problemumgehung.
 
 - <!-- 1272111 - IS --> Nach der Installation dieser Azure Stack-Version oder dem Update auf diese können möglicherweise keine Azure Stack-Skalierungseinheiten im Administratorportal angezeigt werden.  

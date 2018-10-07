@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 847f18b2-49a9-4931-9c09-9374e932a071
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ac22ba34bff1d5321c05bc0a0a1b14ca742079a7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e4bb17bd068076a9ffa9bcab5826f0efa84a19d7
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051497"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406004"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Häufig gestellte Fragen zur Azure Stack-Nutzungs-API
 
@@ -29,7 +28,7 @@ In diesem Artikel werden einige häufig gestellte Fragen zur Azure Stack-Nutzung
 ## <a name="what-meter-ids-can-i-see"></a>Welche Verbrauchseinheits-IDs kann ich sehen?
 Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 
-**Netzwerk**  
+### <a name="network"></a>Netzwerk
   
 **Meter ID**: F271A8A388C44D93956A063E1D2FA80B  
 **Messung:** Nutzung von statischen IP-Adressen  
@@ -41,7 +40,7 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **Einheit:** IP-Adressen  
 **Hinweise:** Anzahl verwendeter IP-Adressen. Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die IP-Adresse multipliziert mit der Anzahl von Stunden zurück.  
   
-**Speicher**  
+### <a name="storage"></a>Speicher
   
 **Messungs-ID:** B4438D5D-453B-4EE1-B42A-DC72E377F1E4  
 **Messung:** TableCapacity  
@@ -107,22 +106,8 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **Messung:** QueueDataTransOut  
 **Einheit:** ausgehende Daten in GB  
 **Hinweise:** Ausgang von Warteschlangendienstdaten in GB  
-  
-**Sql RP**  
-  
-**Messungs-ID:** CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
-**Messung:** DatabaseSizeHourSqlMeter  
-**Einheit:** MB\*Stunden  
-**Hinweise:** Gesamtkapazität der Datenbank bei Erstellung Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.  
-  
-**MySql RP**  
-  
-**Messungs-ID:** E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
-**Messung:** DatabaseSizeHourMySqlMeter  
-**Einheit:** MB\*Stunden  
-**Hinweise:** Gesamtkapazität der Datenbank bei Erstellung Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.  
-  
-**Compute**  
+
+### <a name="compute"></a>Compute 
   
 **Meter ID**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
 **Messung:** Basis-VM-Größe – Stunden  
@@ -139,7 +124,122 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **Einheit:** VM-Stunden  
 **Hinweise:** Erfasst sowohl die Basis- als auch die Windows-VM Wird für Kerne nicht angepasst  
   
-**Schlüsseltresor**  
+### <a name="managed-disks"></a>Managed Disks
+
+**ID der Verbrauchseinheit**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
+**Name der Verbrauchseinheit**: S4   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Standard – 32 GB 
+
+**ID der Verbrauchseinheit**: dc9fc6a9-0782-432a-b8dc-978130457494   
+**Name der Verbrauchseinheit**: S6   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Standard – 64 GB 
+
+**ID der Verbrauchseinheit**: e5572fce-9f58-49d7-840c-b168c0f01fff   
+**Name der Verbrauchseinheit**: S10   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Standard – 128 GB 
+
+**ID der Verbrauchseinheit**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
+**Name der Verbrauchseinheit**: S15   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Standard – 256 GB 
+
+**ID der Verbrauchseinheit**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
+**Name der Verbrauchseinheit**: S20   
+**Einheit**: Anzahl der Datenträger      
+**Hinweise**: Managed Disks Standard – 512 GB 
+
+**ID der Verbrauchseinheit**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
+**Name der Verbrauchseinheit**: S30   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Standard – 1.024 GB 
+
+**ID der Verbrauchseinheit**: d9aac1eb-a5d1-42f2-b617-9e3ea94fed88   
+**Name der Verbrauchseinheit**: S40   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Standard – 2.048 GB 
+
+**ID der Verbrauchseinheit**: a54899dd-458e-4a40-9abd-f57cafd936a7   
+**Name der Verbrauchseinheit**: S50   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Standard – 4.096 GB 
+
+**ID der Verbrauchseinheit**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
+**Name der Verbrauchseinheit**: P4   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Premium – 32 GB 
+
+**ID der Verbrauchseinheit**: 518b412b-1927-4f25-985f-4aea24e55c4f   
+**Name der Verbrauchseinheit**: P6   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Premium – 64 GB 
+
+**ID der Verbrauchseinheit**: 5cfb1fed-0902-49e3-8217-9add946fd624   
+**Name der Verbrauchseinheit**: P10   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Premium – 128 GB  
+
+**ID der Verbrauchseinheit**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
+**Name der Verbrauchseinheit**: P15  
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Premium – 256 GB 
+
+**ID der Verbrauchseinheit**: c7e7839c-293b-4761-ae4c-848eda91130b   
+**Name der Verbrauchseinheit**: P20   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Premium – 512 GB 
+
+**ID der Verbrauchseinheit**: 9f502103-adf4-4488-b494-456c95d23a9f   
+**Name der Verbrauchseinheit**: P30   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Premium – 1.024 GB 
+
+**ID der Verbrauchseinheit**: 043757fc-049f-4e8b-8379-45bb203c36b1   
+**Name der Verbrauchseinheit**: P40   
+**Einheit**: Anzahl der Datenträger    
+**Hinweise**: Managed Disks Premium – 2.048 GB 
+
+**ID der Verbrauchseinheit**: c0342c6f-810b-4942-85d3-6eaa561b6570   
+**Name der Verbrauchseinheit**: P50   
+**Einheit**: Anzahl der Datenträger   
+**Hinweise**: Managed Disks Premium – 4.096 GB 
+
+**ID der Verbrauchseinheit**: 8a409390-1913-40ae-917b-08d0f16f3c38   
+**Name der Verbrauchseinheit**: ActualStandardDiskSize   
+**Einheit**: Byte      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Standard  
+
+**ID der Verbrauchseinheit**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
+**Name der Verbrauchseinheit**: ActualPremiumDiskSize   
+**Einheit**: Byte      
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Premium 
+
+**ID der Verbrauchseinheit**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
+**Name der Verbrauchseinheit**: ActualStandardSnapshotSize   
+**Einheit**: Byte   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Disks Snapshot.  
+
+**ID der Verbrauchseinheit**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
+**Name der Verbrauchseinheit**: ActualPremiumSnapshotSize   
+**Einheit**: Byte   
+**Hinweise**: Die tatsächliche Größe auf dem Datenträger von Managed Premium.   
+
+### <a name="sql-rp"></a>Sql RP
+  
+**Messungs-ID:** CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
+**Messung:** DatabaseSizeHourSqlMeter  
+**Einheit:** MB\*Stunden  
+**Hinweise:** Gesamtkapazität der Datenbank bei Erstellung Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.  
+  
+### <a name="mysql-rp"></a>MySql RP   
+  
+**Messungs-ID:** E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
+**Messung:** DatabaseSizeHourMySqlMeter  
+**Einheit:** MB\*Stunden  
+**Hinweise:** Gesamtkapazität der Datenbank bei Erstellung Wenn Sie die Nutzungs-API täglich aufrufen, gibt die Verbrauchseinheit die Anzahl von MB multipliziert mit der Anzahl von Stunden zurück.    
+### <a name="key-vault"></a>Key Vault   
   
 **Messungs-ID:** EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
 **Messung:** Key Vault-Transaktionen  
@@ -151,7 +251,7 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **Einheit:** 10.000 Transaktionen  
 **Hinweise:** Transaktionen für RSA 3K/4K-, ECC-Schlüssel (Vorschauversion)  
   
-*App Service**  
+### <a name="app-service"></a>App Service   
   
 **Messungs-ID:** 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **Messung:** App Service  
@@ -193,7 +293,7 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **Einheit:** 1 Stunde  
 **Hinweise:** wird anhand der Größe und Anzahl der Instanzen berechnet.  
   
-**Benutzerdefinierte Workertarife**  
+### <a name="custom-worker-tiers"></a>Benutzerdefinierte Workertarife   
   
 **Messungs-ID:** *benutzerdefinierte Workertarife*  
 **Messung:** benutzerdefinierte Workertarife  
@@ -221,10 +321,10 @@ Der Verbrauch wird für die folgenden Ressourcenanbieter gemeldet:
 **Hinweise:** Gesamtanzahl der eingehenden Anforderungsantwortbytes + Gesamtanzahl der ausgehenden Anforderungsantwortbytes + Gesamtanzahl der eingehenden FTP-Anforderungsantwortbytes + Gesamtanzahl der eingehenden Web Deploy-Anforderungsantwortbytes  
   
 
-## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Wie unterscheiden sich die Azure Stack-Nutzungs-APIs von der [Azure-Nutzungs-API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (aktuell in der öffentlichen Vorschau)?
+## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsdocsmicrosoftcomazurebillingbilling-usage-rate-card-overviewazure-resource-usage-api-preview-currently-in-public-preview"></a>Wie unterscheiden sich die Azure Stack-Nutzungs-APIs von der [Azure-Nutzungs-API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (aktuell in der öffentlichen Vorschau)?
 * Die Nutzungs-API für Mandanten stimmt in den meisten Punkten mit der Azure-API überein. Der einzige Unterschied besteht darin, dass das Flag *showDetails* aktuell in Azure Stack nicht unterstützt wird.
 * Die Nutzungs-API für Anbieter gibt es nur in Azure Stack.
-* Die [RateCard-API](https://msdn.microsoft.com/library/azure/mt219004.aspx) ist zwar in Azure verfügbar, aber noch nicht in Azure Stack.
+* Die [RateCard-API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview) ist zwar in Azure verfügbar, aber noch nicht in Azure Stack.
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>Was ist der Unterschied zwischen der Nutzungszeit und der gemeldeten Zeit?
 Nutzungsdatenberichte haben zwei Hauptzeitwerte:

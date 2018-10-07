@@ -1,27 +1,28 @@
 ---
-title: Grenzwerte für QnA Maker – Azure Cognitive Services | Microsoft-Dokumentation
-description: Grenzwerte für QnA Maker
+title: 'Einschränkungen und Begrenzungen: QnA Maker'
+titleSuffix: Azure Cognitive Services
+description: Umfassende Liste der für QnA Maker geltenden Grenzwerte.
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 93471faab9aac94616c770cbee21fb0364f73639
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: efdcf57fb0f175be51e6b9f8e72e4a02fcbeb5f3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501859"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162320"
 ---
 # <a name="qna-maker-limits"></a>Grenzwerte für QnA Maker
 Umfassende Liste der für QnA Maker geltenden Grenzwerte.
 
 ## <a name="knowledge-bases"></a>Knowledge Bases
 
-* Die maximale Anzahl von Knowledge Bases basiert auf den [Grenzwerten des Azure Search-Tarifs](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity).
+* Die maximale Anzahl von Knowledge Bases basiert auf den [Grenzwerten des Azure Search-Tarifs](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity).
 
 |**Azure Search-Tarif** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
@@ -32,7 +33,7 @@ Umfassende Liste der für QnA Maker geltenden Grenzwerte.
 * Maximale Anzahl der Deep-Links, die zum Extrahieren von Fragen und Antworten (QnA) aus FAQ-HTML-Seiten durchlaufen werden können: 20
 
 ## <a name="metadata-limits"></a>Grenzwerte für Metadaten
-* Die maximale Anzahl von Metadatenfeldern pro Knowledge Base basiert auf den [Grenzwerten des Azure Search-Tarifs](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity).
+* Die maximale Anzahl von Metadatenfeldern pro Knowledge Base basiert auf den [Grenzwerten des Azure Search-Tarifs](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity).
 
 |**Azure Search-Tarif** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|

@@ -1,6 +1,6 @@
 ---
-title: Azure Cognitive Services – Speech Service
-description: Hier erfahren Sie, wie Sie die Aussprache mit dem Speech Service der Cognitive Services anpassen.
+title: Anpassen der Aussprache mit den Spracherkennungsdiensten in Azure Cognitive Services
+description: Erfahren Sie, wie Sie die Aussprache mit den Spracherkennungsdiensten in Azure Cognitive Services anpassen.
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 93fec1ea78263798588a43b2314ffdea736cdbbc
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a608d1e48112fbb2adb56191eeb7f168de507e77
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745350"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423203"
 ---
 # <a name="enable-custom-pronunciation"></a>Aktivieren der benutzerdefinierten Aussprache
 Durch die benutzerdefinierte Aussprache können Sie die phonetische Form und Darstellung eines Worts oder einer Benennung definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist lediglich eine Aussprachedatei (eine einfache TXT-Datei).
@@ -33,13 +33,13 @@ Die folgende Tabelle enthält einige Beispiele:
 | CNTK | see n tea k|
 
 ## <a name="requirements-for-the-spoken-form"></a>Anforderungen für die gesprochene Form
-Die gesprochene Form muss in Kleinbuchstaben geschrieben werden, was beim Import erzwungen werden kann. Darüber hinaus müssen Sie diese im Datenimportprogramm überprüfen. Es sind keine Tabstopps in der gesprochenen Form oder der Darstellungsform zulässig. Es kann jedoch weitere verbotene Zeichen in der Darstellungsform geben (z.B. ~ und ^).
+Die gesprochene Form muss in Kleinbuchstaben geschrieben werden, was beim Import erzwungen werden kann. Darüber hinaus müssen Sie Überprüfungen im Datenimportprogramm bereitstellen. Es sind keine Tabstopps in der gesprochenen Form oder der Darstellungsform zulässig. Es kann jedoch weitere verbotene Zeichen in der Darstellungsform geben (z.B. ~ und ^).
 
 Jede .txt-Datei kann mehrere Einträge aufweisen, wie in der folgenden Abbildung gezeigt:
 
 ![Beispiele für die Akronymaussprache](media/stt/custom-speech-pronunciation-file.png)
 
-Die gesprochene Form ist die Lautfolge der Darstellungsform. Sie besteht aus Buchstaben, Wörtern oder Silben. Derzeit sind keine weiteren Leitfäden oder Standards verfügbar, die bei der Formulierung der gesprochenen Form Orientierung bieten könnten. 
+Die gesprochene Form ist die Lautfolge der Darstellungsform. Sie besteht aus Buchstaben, Wörtern oder Silben. Zurzeit sind keine weiteren Leitfäden oder Standards verfügbar, die bei der Formulierung der gesprochenen Form Orientierung bieten könnten. 
 
 ## <a name="supported-pronunciation-characters"></a>Unterstützte Zeichen für die Aussprache
 Die benutzerdefinierte Aussprache wird derzeit nur für US-amerikanisches Englisch (en-US) und Deutsch (de-DE) unterstützt. Der Zeichensatz, der zum Ausdruck der gesprochenen Form einer Benennung (in der benutzerdefinierten Aussprachedatei) verwendet werden kann, wird in der folgenden Tabelle aufgeführt: 
@@ -47,7 +47,7 @@ Die benutzerdefinierte Aussprache wird derzeit nur für US-amerikanisches Englis
 | Sprache | Zeichen |
 |---------- |----------|
 | Englisch (en-US) | a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
-| Deutsch (de-de) | ä, ö, ü, ẞ, a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
+| Deutsch (de-de) | ä, ö, ü, ?, a, b, c, d, e, f, g, h, i, j, k, l, o, p, q, r, s, t, u, v, w, x, y, z |
 
 > [!NOTE]
 > Die Darstellungsform einer Benennung (in einer Aussprachedatei) sollte genauso geschrieben werden wie ein Dataset für die Sprachadaption.

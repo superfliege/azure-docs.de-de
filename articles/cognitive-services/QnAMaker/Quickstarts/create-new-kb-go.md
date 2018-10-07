@@ -1,20 +1,21 @@
 ---
-title: 'Erstellen einer neuen Wissensdatenbank: Go-Schnellstart für die Microsoft QnA Maker-API (v4) – Azure Cognitive Services | Microsoft-Dokumentation'
-description: Erstellen Sie eine Wissensdatenbank in Go für Ihre häufig gestellten Fragen oder Produkthandbücher, um die ersten Schritte mit QnA Maker auszuführen.
+title: 'Schnellstart: API Go – Erstellen einer Wissensdatenbank – QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: Diese Schnellstartanleitung führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: fe763dada6d40822148423443be12df7c1626687
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 17d4a03966b1d6e3f278d5a507e46f9f6fcafa05
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "43769575"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034058"
 ---
 # <a name="create-a-new-knowledge-base-in-go"></a>Erstellen einer neuen Wissensdatenbank in Go
 

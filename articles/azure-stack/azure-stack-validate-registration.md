@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 84eb1c08cc3f9ef104e2eb0b96ed397315c3f374
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 57869de8a99c65810da0c75f81c75d93eac88412
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937566"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090815"
 ---
 # <a name="validate-azure-registration"></a>Überprüfen der Azure-Registrierung 
 Verwenden Sie das Tool Azure Stack Readiness Checker (AzsReadinessChecker), um zu überprüfen, ob Ihr Azure-Abonnement mit Azure Stack verwendet werden kann. Überprüfen Sie die Registrierung, bevor Sie mit einer Azure Stack-Bereitstellung beginnen. Bei der Überprüfung der Bereitschaft wird auf Folgendes geprüft:
 - Bei dem Azure-Abonnement, das Sie verwenden, handelt es sich um einen unterstützten Typ. Bei Abonnements muss es sich um einen Cloud-Dienstanbieter (Cloud Service Provider, CSP) oder einen Enterprise Agreement (EA) handeln. 
-- Das Konto, mit dem Sie Ihr Abonnement bei Azure registrieren, kann sich bei Azure anmelden und gehört einem Besitzer eines Abonnements. 
+- Das Konto, mit dem Sie Ihr Abonnement bei Azure registrieren, kann sich bei Azure anmelden und ist der Besitzer eines Abonnements. 
 
 Weitere Informationen zur Azure Stack-Registrierung finden Sie unter [Registrieren von Azure Stack in Azure](azure-stack-registration.md). 
 

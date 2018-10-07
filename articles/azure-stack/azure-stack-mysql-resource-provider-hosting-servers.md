@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.reviewer: quying
+ms.openlocfilehash: b11ce8bbbf4b270f7a3b9689f95b0cbfca3b14c9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38302312"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408877"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Hinzufügen von Hostservern für den MySQL-Ressourcenanbieter
 
 Sie können eine MySQL-Instanz auf einem virtuellen Computer (VM) in [Azure Stack](azure-stack-poc.md) oder auf einer VM außerhalb Ihrer Azure Stack-Umgebung hosten, solange sich der MySQL-Ressourcenanbieter mit der Instanz verbinden kann.
+
+> [!NOTE]
+> MySQL-Datenbanken sollten auf dem Server des MySQL-Ressourcenanbieters erstellt werden. Der MySQL-Ressourcenanbieter sollte im Standardanbieterabonnement erstellt werden, während MySQL-Hostingserver in einem abrechenbaren Benutzerabonnement erstellt werden sollten. Der Server des Ressourcenanbieters sollte nicht zum Hosten von Benutzerdatenbanken verwendet werden.
 
 Die MySQL-Versionen 5.6, 5.7 und 8.0 können für Ihre Hostingserver verwendet werden. Der MySQL RP unterstützt keine caching_sha2_password-Authentifizierung. Diese Unterstützung wird im nächsten Release hinzugefügt. MySQL-8.0-Server müssen für die Verwendung von mysql_native_password konfiguriert werden. MariaDB wird ebenfalls unterstützt.
 
@@ -32,8 +35,8 @@ Die MySQL-Versionen 5.6, 5.7 und 8.0 können für Ihre Hostingserver verwendet w
 Stellen Sie sicher, dass Sie über die Anmeldeinformationen für ein Konto mit Systemadministratorrechten verfügen. Gehen Sie folgendermaßen vor, um einen Hostserver hinzuzufügen:
 
 1. Melden Sie sich beim Azure Stack-Operatorportal als Dienstadministrator an.
-2. Wählen Sie **Weitere Dienste**.
-3. Wählen Sie **VERWALTUNGSRESSOURCEN** > **MySQL-Hostserver** > **+ Hinzufügen** aus. Es wird das Dialogfeld **Einen MySQL-Hostserver hinzufügen** geöffnet, wie in der folgenden Bildschirmaufnahme dargestellt.
+2. Wählen Sie **Alle Dienste** aus.
+3. Wählen Sie unter der Kategorie **VERWALTUNGSRESSOURCEN** die Option **MySQL-Hostserver** > **+Hinzufügen** aus. Es wird das Dialogfeld **Einen MySQL-Hostserver hinzufügen** geöffnet, wie in der folgenden Bildschirmaufnahme dargestellt.
 
    ![Einen Hostserver konfigurieren](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 

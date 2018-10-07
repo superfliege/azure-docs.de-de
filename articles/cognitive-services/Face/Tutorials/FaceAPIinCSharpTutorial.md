@@ -1,21 +1,21 @@
 ---
-title: Tutorial zur Gesichtserkennungs-API in C# | Microsoft-Dokumentation
-titleSuffix: Microsoft Cognitive Services
-description: In diesem Tutorial erstellen Sie eine Windows-App, mit der der Cognitive Services-Dienst für die Gesichtserkennung genutzt wird, um Gesichter in einem Bild zu erkennen und zu umranden.
+title: Erkennen und Umranden von Gesichtern in einem Bild – Gesichtserkennungs-API, C#
+titleSuffix: Azure Cognitive Services
+description: In diesem Tutorial erstellen Sie eine Windows-App, die die Gesichtserkennungs-API verwendet, um Gesichter in einem Bild zu erkennen und zu umranden.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: nolachar
-ms.openlocfilehash: e4f2192c40f0b650b31ed59642dee89e42eca703
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125937"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162610"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer WPF-App zum Erkennen und Umranden von Gesichtern in einem Bild
 
@@ -36,7 +36,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 - Zum Ausführen des Beispiels benötigen Sie einen Abonnementschlüssel. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie Abonnementschlüssel für eine kostenlose Testversion abrufen.
 - Eine beliebige Edition von [Visual Studio 2015 oder 2017](https://www.visualstudio.com/downloads/). Für Visual Studio 2017 ist die Workload für die .NET-Desktopanwendungsentwicklung erforderlich. In diesem Tutorial wird die Visual Studio 2017 Community Edition verwendet.
-- Das NuGet-Paket [Microsoft.Azure.CognitiveServices.Vision.Face 2.0.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.0.0-preview) mit der Clientbibliothek. Es ist nicht erforderlich, das Paket herunterzuladen. Unten ist die Installationsanleitung angegeben.
+- Das NuGet-Paket [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) mit der Clientbibliothek. Es ist nicht erforderlich, das Paket herunterzuladen. Unten ist die Installationsanleitung angegeben.
 
 ## <a name="create-the-visual-studio-solution"></a>Erstellen der Visual Studio-Projektmappe
 
@@ -54,7 +54,7 @@ Verwenden Sie die folgende Anleitung, um die Clientbibliothek zu installieren:
 1. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole**.
 1. Fügen Sie in der **Paket-Manager-Konsole** Folgendes ein, und drücken Sie die **EINGABETASTE**.
 
-    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.0.0-preview`
+    `Install-Package Microsoft.Azure.CognitiveServices.Vision.Face -Version 2.2.0-preview`
 
 ## <a name="add-the-initial-code"></a>Hinzufügen des anfänglichen Codes
 
@@ -122,8 +122,8 @@ namespace FaceTutorial
         // NOTE: Free trial subscription keys are generated in the westcentralus
         // region, so if you are using a free trial subscription key, you should
         // not need to change this region.
-        private const string baseUri =
-            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+        private const string faceEndpoint =
+            "https://westcentralus.api.cognitive.microsoft.com";
 
         private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials(subscriptionKey),
@@ -137,13 +137,13 @@ namespace FaceTutorial
         {
             InitializeComponent();
 
-            if (Uri.IsWellFormedUriString(baseUri, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(faceEndpoint, UriKind.Absolute))
             {
-                faceClient.BaseUri = new Uri(baseUri);
+                faceClient.Endpoint = faceEndpoint;
             }
             else
             {
-                MessageBox.Show(baseUri,
+                MessageBox.Show(faceEndpoint,
                     "Invalid URI", MessageBoxButton.OK, MessageBoxImage.Error);
                 Environment.Exit(0);
             }
@@ -197,8 +197,8 @@ namespace FaceTutorial
 - Suchen Sie in *MainWindow.xaml.cs* nach der folgenden Zeile, und ersetzen Sie die Azure-Region, die Ihrem Abonnementschlüssel zugeordnet ist, bzw. verifizieren Sie sie:
 
     ```csharp
-    private const string baseUri =
-        "https://westcentralus.api.cognitive.microsoft.com/face/v1.0";
+    private const string Endpoint =
+        "https://westcentralus.api.cognitive.microsoft.com";
     ```
 
     Stellen Sie sicher, dass dies derselbe Standort ist, von dem Sie Ihre Abonnementschlüssel erhalten haben. Wenn Sie Ihre Abonnementschlüssel in der Region **westus** erhalten haben, ersetzen Sie beispielsweise `Westcentralus` durch `Westus`.

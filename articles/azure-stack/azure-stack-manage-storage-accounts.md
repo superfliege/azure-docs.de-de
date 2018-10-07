@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43050397"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452274"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
 Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkapazität basierend auf Geschäftsanforderungen zu suchen, wiederherzustellen und freizugeben.
@@ -28,19 +27,19 @@ Erfahren Sie, wie Speicherkonten in Azure Stack verwaltet werden, um Speicherkap
 ## <a name="find"></a>Suchen eines Speicherkontos
 Die Liste der Speicherkonten in der Region kann in Azure Stack folgendermaßen angezeigt werden:
 
-1. Rufen Sie in einem Internetbrowser https://adminportal.local.azurestack.external auf.
-2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
-3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten – beispielsweise **(lokal)**.
+1. Melden Sie sich am [Administratorportal](https://adminportal.local.azurestack.external) an.
+
+2. Wählen Sie **Alle Dienste** > **Regionsverwaltung** unter **Verwaltung** aus.
+
+3. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
    
-   ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
+   ![Speicherressourcenanbieter](media/azure-stack-manage-storage-accounts/image1.png)
+
+5. Wählen Sie **Speicherkonten** unter **Speicher** aus.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Scrollen Sie dann im Administratorbereich für Speicherressourcenanbieter nach unten zur Registerkarte **Speicherkonten**, und klicken Sie darauf.
    
-   ![](media/azure-stack-manage-storage-accounts/image3.png)
-   
-   Daraufhin wird die Seite mit der Liste der Speicherkonten in dieser Region angezeigt.
+   Das Blatt zeigt die Liste der Speicherkonten in dieser Region an.
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -76,7 +75,7 @@ Es gibt Situationen, in denen Sie ein gelöschtes Konto wiederherstellen müssen
 
 In Azure Stack gibt es hierfür eine einfache Möglichkeit:
 
-1. Navigieren Sie zur Liste der Speicherkonten. Weitere Informationen finden Sie in diesem Thema unter [Suchen eines Speicherkontos](#find).
+1. Navigieren Sie zur Liste der Speicherkonten. Weitere Informationen finden Sie in diesem Artikel unter [Suchen eines Speicherkontos](#find).
 2. Suchen Sie das gewünschte Konto in der Liste. Möglicherweise müssen Sie filtern.
 3. Überprüfen Sie den *Status* des Kontos. Dieser müsste **Gelöscht** lauten.
 4. Klicken Sie auf das Konto, um den Bereich mit den Kontodetails zu öffnen.
@@ -97,19 +96,18 @@ In Azure Stack gibt es hierfür eine einfache Möglichkeit:
   Die Entfernung aus der Aufbewahrung bedeutet, dass der Aufbewahrungszeitraum für das gelöschte Konto überschritten ist und es unter Umständen nicht wiederhergestellt werden kann.
 * Das gelöschte Konto wird nicht in der Liste der Benutzerkonten angezeigt.
   
-  Ihr Konto wird in der Kontoliste ggf. nicht angezeigt, wenn für das gelöschte Konto bereits der Garbage Collection-Vorgang durchgeführt wurde. In diesem Fall kann es nicht wiederhergestellt werden. Siehe [Freigeben von Kapazität](#reclaim) in diesem Thema.
+  Ihr Konto wird in der Kontoliste ggf. nicht angezeigt, wenn für das gelöschte Konto bereits der Garbage Collection-Vorgang durchgeführt wurde. In diesem Fall kann es nicht wiederhergestellt werden. Siehe [Freigeben von Kapazität](#reclaim) in diesem Artikel.
 
 ## <a name="set-the-retention-period"></a>Festlegen des Aufbewahrungszeitraums
 Die Einstellung für den Aufbewahrungszeitraum ermöglicht einem Cloudbetreiber das Festlegen eines Zeitraums in Tagen (zwischen 0 und 9999 Tage), in dem gelöschte Konten ggf. wiederhergestellt werden können. Der Standardaufbewahrungszeitraum ist auf 0 Tage festgelegt. Mit dem Wert „0“ wird festgelegt, dass alle gelöschten Konten sofort aus der Aufbewahrung entfernt und für die regelmäßige automatische Speicherbereinigung markiert werden.
 
 **Ändern des Aufbewahrungszeitraums:**
 
-1. Rufen Sie in einem Internetbrowser https://adminportal.local.azurestack.external auf.
-2. Melden Sie sich als Cloudbetreiber (mit den Anmeldeinformationen, die Sie während der Bereitstellung angegeben haben) beim Azure Stack-Verwaltungsportal an.
-3. Suchen Sie auf dem Standarddashboard nach der Liste **Regionsverwaltung**, und klicken Sie auf die Region, die Sie untersuchen möchten – beispielsweise **(lokal)**.
-4. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
-5. Klicken Sie oben auf **Einstellungen**, um den Bereich mit den Einstellungen zu öffnen.
-6. Klicken Sie auf **Konfiguration**, und bearbeiten Sie dann den Wert für den Aufbewahrungszeitraum.
+1. Melden Sie sich am [Administratorportal](https://adminportal.local.azurestack.external) an.
+2. Wählen Sie **Alle Dienste** > **Regionsverwaltung** unter **Verwaltung** aus.
+3. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Speicher** aus.
+4. Klicken Sie oben auf **Einstellungen**, um den Bereich mit den Einstellungen zu öffnen.
+5. Klicken Sie auf **Konfiguration**, und bearbeiten Sie dann den Wert für den Aufbewahrungszeitraum.
 
    Legen Sie die Anzahl von Tagen fest, und speichern Sie sie.
    
@@ -142,7 +140,7 @@ Sie können auch PowerShell verwenden, um den Aufbewahrungszeitraum explizit au�
    Weitere Informationen zu Azure Resource Manager-Cmdlets finden Sie unter [Verwenden von Azure PowerShell mit Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767).
 2. Führen Sie die folgenden Cmdlets aus:
 
-> [!NOTE]
+> [!NOTE]  
 > Wenn Sie diese Cmdlets ausführen, wird das Konto samt Inhalt endgültig gelöscht. Es kann nicht wiederhergestellt werden. Verwenden Sie diese Option mit Umsicht.
 
 ```PowerShell  
