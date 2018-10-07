@@ -1,20 +1,21 @@
 ---
-title: SDKs und Beispiele zur Inhaltsmoderation für Azure Content Moderator | Microsoft-Dokumentation
+title: SDKs und Beispiele – Content Moderator, Python, Java, Node.js und .NET
+titlesuffix: Azure Cognitive Services
 description: Abrufen von SDKs und Beispielen für Content Moderator
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: sample
 ms.date: 02/27/2018
 ms.author: sajagtap
-ms.openlocfilehash: 40b8fc0f63383e837f0813f876f20806e6e8c6eb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a57f6a312b00d7ec3d927c6fda319f1de8663c9c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373211"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220447"
 ---
 # <a name="content-moderator-sdks-and-samples"></a>SDKs und Beispiele für Content Moderator
 
@@ -39,7 +40,7 @@ Die folgende Liste enthält Links zu den Codebeispielen, die mit dem Azure Conte
 > Die Obergrenze liegt bei **fünf Bildlisten**, wobei jede Liste **max. 10.000 Bilder** enthalten kann.
 >
 
-- **Textmoderation**: [Prüfen Sie Texte auf anstößige Ausdrücke und personenbezogene Informationen (Personally Identifiable Information, PII)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Weitere Informationen finden Sie im [Schnellstart](text-moderation-quickstart-dotnet.md).
+- **Textmoderation**: [Prüfen Sie Texte auf unerwünschte Ausdrücke und personenbezogene Informationen (Personally Identifiable Information, PII)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TextModeration/Program.cs). Weitere Informationen finden Sie im [Schnellstart](text-moderation-quickstart-dotnet.md).
 - **Benutzerdefinierte Benennungen**: [Moderieren Sie Benennungen mit benutzerdefinierten Benennungslisten](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/ContentModerator/TermListManagement/Program.cs). Weitere Informationen finden Sie im [Schnellstart](term-lists-quickstart-dotnet.md).
 
 > [!NOTE]
@@ -66,7 +67,7 @@ Alle .NET-Beispiele finden Sie auf [GitHub bei den .NET-Beispielen zu Content Mo
 
 Im [On-Demand-Webinar](https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html) finden Sie exemplarische Vorgehensweisen zu diesen Beispielen.
 
-## <a name="tutorials"></a>Tutorials
+## <a name="tutorials"></a>Lernprogramme
 - [Moderation von E-Commerce-Katalogen](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration). Weitere Informationen finden Sie im [Tutorial](ecommerce-retail-catalog-moderation.md).
 - [Moderation von Facebook-Inhalten](https://github.com/MicrosoftContentModerator/samples-fbPageModeration). Weitere Informationen finden Sie im [Tutorial](facebook-post-moderation.md).
 - [Lösung für die Video- und Transkriptmoderation und -überprüfung](https://github.com/MicrosoftContentModerator/VideoReviewConsoleApp). Weitere Informationen finden Sie im [Tutorial](video-transcript-moderation-review-tutorial-dotnet.md).

@@ -1,19 +1,18 @@
 ---
 title: Ändern und erneutes Bereitstellen eines Microservice | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie, wie Sie einen Microservice in der Remoteüberwachungslösung ändern und erneut bereitstellen.
-author: giyeh
-manager: hegate
-ms.author: giyeh
+author: dominicbetts
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: e15e17a499ad33a270b220fa7483d96c2945f6bb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0b206d7b56fc8a65c422a4ce22b2f5585e71c8da
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338076"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219424"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Anpassen und erneutes Bereitstellen eines Microservice
 
@@ -47,28 +46,29 @@ In diesem Teil rufen Sie die Standard-API des IoT Hub-Manager-Microservice auf. 
 2. Navigieren Sie zu dem Speicherort, an den Sie Postman heruntergeladen haben, und öffnen Sie die Anwendung.
 3. Geben Sie in Postman die folgende GET-Anforderung ein: http://localhost:8080/iothubmanager/v1/status.
 4. In der Rückgabe sollte Folgendes angezeigt werden: "Status": "OK:Alive and Well".
-![Postman-Meldung: „Alive and Well“](./media/iot-accelerators-microservices-example/postman-alive-well.png)
+
+    ![Postman-Meldung „Alive and Well“](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
 ## <a name="change-the-status-and-build-the-image"></a>Ändern des Status und Erstellen des Images
 
 Ändern Sie nun die Statusmeldung des Iot Hub-Manager-Microservice in „New Edits Made Here!“, und erstellen Sie das Docker-Image mit diesem neuen Status neu. Informationen zur Vorgehensweise bei Problemen finden Sie im Abschnitt zur [Problembehandlung](#Troubleshoot).
 
 1. Öffnen Sie bei Bedarf Ihr Terminal, und wechseln Sie zu dem Verzeichnis, in dem Sie die Remoteüberwachungslösung geklont haben. 
-2. Wechseln Sie zum Verzeichnis „..azure-iot-pcs-remote-monitoring-dotnet/iothub-manager/WebService/v1/Controllers“.
+2. Wechseln Sie zum Verzeichnis „azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/WebService/v1/Controllers“.
 3. Öffnen Sie „StatusController.cs“ in einem beliebigen Text-Editor oder in einer beliebigen IDE. 
 4. Suchen Sie den folgenden Code:
 
-    ```javascript
+    ```csharp
     return new StatusApiModel(true, "Alive and well");
     ```
 
     Ändern Sie ihn in den folgenden Code, und speichern Sie die Datei.
 
-    ```javascript
+    ```csharp
     return new StatusApiModel(true, "New Edits Made Here!");
     ```
 
-5. Kehren Sie zu Ihrem Terminal zurück, und wechseln Sie zu folgendem Verzeichnis: ...azure-iot-pcs-remote-monitoring-dotnet/iothub-manager/scripts/docker.
+5. Kehren Sie zu Ihrem Terminal zurück, und wechseln Sie zu folgendem Verzeichnis: „azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker“.
 6. Geben Sie Folgendes ein, um Ihr neues Docker-Image zu erstellen:
 
     ```cmd/sh
@@ -113,24 +113,24 @@ Bevor Sie Ihr neues Docker-Image an einen Docker-Hub pushen, erwartet Docker, da
 ## <a name="update-your-remote-monitoring-solution"></a>Aktualisieren Ihrer Remoteüberwachungslösung
 Nun müssen Sie Ihre lokale Datei „docker-compose.yml“ aktualisieren, um Ihr neues Docker-Image aus Ihrem Docker-Hub zu pullen. Informationen zur Vorgehensweise bei Problemen finden Sie im Abschnitt zur [Problembehandlung](#Troubleshoot).
 
-1. Kehren Sie zum Terminal zurück, und wechseln Sie zu folgendem Verzeichnis: ...azure-iot-pcs-remote-monitoring-dotnet/scripts/local.
+1. Kehren Sie zum Terminal zurück, und wechseln Sie zu folgendem Verzeichnis: „azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local“.
 2. Öffnen Sie „docker-compose.yml“ in einem beliebigen Text-Editor oder in einer beliebigen IDE.
 3. Suchen Sie den folgenden Code:
 
     ```docker
-    image: azureiotpcs/pcs-auth-dotnet:testing
+    image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
     Ändern Sie ihn wie in der folgenden Abbildung gezeigt, und speichern Sie die Datei.
 
     ```cmd/sh
-    image: [docker ID]/pcs-auth-dotnet:testing
+    image: [docker ID]/iothub-manager-dotnet:testing
     ```
 
 ## <a name="view-the-new-response-status"></a>Anzeigen des neuen Antwortstatus
 Stellen Sie abschließend erneut eine lokale Instanz der Remoteüberwachungslösung bereit, und sehen Sie sich die neue Statusantwort in Postman an.
 
-1. Kehren Sie zu Ihrem Terminal zurück, und wechseln Sie zu folgendem Verzeichnis: ...azure-iot-pcs-remote-monitoring-dotnet/scripts/local.
+1. Kehren Sie zu Ihrem Terminal zurück, und wechseln Sie zu folgendem Verzeichnis: „azure-iot-pcs-remote-monitoring-dotnet/scripts/local“.
 2. Geben Sie den folgenden Befehl in das Terminal ein, um Ihre lokale Instanz der Remoteüberwachungslösung zu starten:
 
     ```cmd/sh

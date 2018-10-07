@@ -1,23 +1,23 @@
 ---
 title: Lokales Bereitstellen der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: In diesem Tutorial wird gezeigt, wie der Solution Accelerator für Remoteüberwachung auf Ihrem lokalen Computer für Test und Entwicklung bereitgestellt wird.
-author: dominicbetts
+description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird.
+author: asdonald
 manager: timlt
-ms.author: dobett
+ms.author: asdonald
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 03/07/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21bc8c27a44c940279b0c5bdcdbe04e579dc4bfa
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7007b1406dbcfab3af4700418ac2ce07b9e521c0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188660"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407432"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung
 
-In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Dieser Ansatz stellt die Microservices in einem lokalen Docker-Container bereit und nutzt IoT Hub-, Cosmos DB- und Azure-Speicherdienste in der Cloud. Sie verwenden die CLI für Solution Accelerators (PCS, Preconfigured Solutions), um die Azure-Clouddienste bereitzustellen.
+In diesem Artikel wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken auf Ihrem lokalen Computer bereitgestellt wird. Der in diesem Artikel beschriebene Ansatz stellt die Microservices in einem lokalen Docker-Container bereit und nutzt IoT Hub-, Cosmos DB- und Azure Time Series Insights-Dienste in der Cloud. Wenn Sie erfahren möchten, wie der Solution Accelerator für die Remoteüberwachung in einer IDE auf Ihrem lokalen Computer ausgeführt wird, lesen Sie [Starten von Microservices in lokaler Umgebung](https://github.com/Azure/remote-monitoring-services-java/blob/master/docs/LOCAL_DEPLOYMENT.md) auf GitHub.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,83 +30,62 @@ Um die lokale Bereitstellung abzuschließen, müssen die folgenden Tools auf dem
 * [Git-Client](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Docker Compose](https://docs.docker.com/compose/install/)
-* [Node.js](https://nodejs.org/) – diese Software ist eine Voraussetzung für die PCS-CLI.
-* PCS-CLI
-* Lokales Repository des Quellcodes
+* [Node.js v8](https://nodejs.org/) – Diese Software ist eine Voraussetzung für die PCS-CLI, die von den Skripts zum Erstellen von Azure-Ressourcen genutzt wird. Verwenden Sie nicht Node.js v10.
 
 > [!NOTE]
 > Diese Tools sind auf vielen Plattformen einschließlich Windows, Linux und iOS verfügbar.
 
-### <a name="install-the-pcs-cli"></a>Installieren der PCS-CLI
-
-Führen Sie zum Installieren der PCS-CLI mit dem NPM (Network Performance Monitor, Netzwerkleistungsmonitor) den folgenden Befehl in der Befehlszeilenumgebung aus:
-
-```cmd/sh
-npm install iot-solutions -g
-```
-
-Weitere Informationen zur Befehlszeilenschnittstelle finden Sie unter [How to use the CLI](https://github.com/Azure/pcs-cli/blob/master/README.md) (Verwenden der Befehlszeilenschnittstelle).
-
 ### <a name="download-the-source-code"></a>Herunterladen des Quellcodes
 
- Das Quellcoderepository für die Remoteüberwachung umfasst die Docker-Konfigurationsdateien, die Sie benötigen, um die Docker-Images, die die Microservices enthalten, herunterzuladen, zu konfigurieren und auszuführen. Um eine lokale Version des Repositorys zu klonen und zu erstellen, navigieren Sie über Ihre bevorzugte Befehlszeile oder Ihr bevorzugtes Terminal zu einem geeigneten Ordner auf dem lokalen Computer, und führen Sie einen der folgenden Befehle aus:
+Das GitHub-Quellcoderepository für die Remoteüberwachung umfasst die Docker-Konfigurationsdateien, die Sie benötigen, um die Docker-Images, die die Microservices enthalten, herunterzuladen, zu konfigurieren und auszuführen. Um eine lokale Version des Repositorys zu klonen und zu erstellen, navigieren Sie über Ihre Befehlszeilenumgebung zu einem geeigneten Ordner auf dem lokalen Computer, und führen Sie einen der folgenden Befehle aus:
 
-Führen Sie zum Installieren der Java-Implementierungen der Microservices Folgendes aus:
+Um die neueste Version der Java-Microservice-Implementierungen herunterzuladen, führen Sie Folgendes aus:
 
 ```cmd/sh
-git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
+git clone https://github.com/Azure/remote-monitoring-services-java.git
 ```
 
-Führen Sie zum Installieren der .Net-Implementierungen der Microservices Folgendes aus:
+Um die neueste Version der .NET-Microservice-Implementierungen herunterzuladen, führen Sie Folgendes aus:
 
 ```cmd\sh
-git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
+git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
 ```
 
-Vorkonfigurierte Lösung für die Remoteüberwachung – Repository und Submodule [ [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) | [.Net](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) ]
-
 > [!NOTE]
-> Diese Befehle laden den Quellcode für alle Microservices herunter. Obwohl Sie den Quellcode nicht zum Ausführen der Microservices in Docker benötigen, ist der Quellcode hilfreich, wenn Sie später die vorkonfigurierte Lösung ändern und Ihre Änderungen lokal testen möchten.
+> Diese Befehle laden den Quellcode für alle Microservices zusätzlich zu den Skripts herunter, mit denen Sie die Microservices lokal ausführen. Obwohl Sie den Quellcode zum Ausführen der Microservices in Docker nicht benötigen, ist er hilfreich, wenn Sie den Solution Accelerator später ändern und Ihre Änderungen lokal testen möchten.
 
 ## <a name="deploy-the-azure-services"></a>Bereitstellen von Azure-Diensten
 
-In diesem Artikel erfahren Sie zwar, wie Sie die Microservices lokal ausführen, doch sie hängen von drei Azure-Diensten ab, die in der Cloud ausgeführt werden. Sie können diese Azure-Dienste [manuell über das Azure-Portal bereitstellen](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup) oder die PCS-CLI verwenden. Dieser Artikel beschreibt, wie Sie das `pcs`-Tool verwenden.
+In diesem Artikel erfahren Sie zwar, wie Sie die Microservices lokal ausführen, doch sie hängen von Azure-Diensten ab, die in der Cloud ausgeführt werden. Sie können diese Azure-Dienste [manuell über das Azure-Portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup) bereitstellen oder das dafür vorgesehene Skript verwenden. Bei den nachstehenden Skriptbeispielen wird davon ausgegangen, dass Sie das .NET-Repository auf einem Windows-Computer verwenden. Wenn Sie in einer anderen Umgebung arbeiten, passen Sie die Pfade, Dateierweiterungen und Pfadtrennzeichen entsprechend an. So verwenden Sie die bereitgestellten Skripts für folgende Aufgaben:
 
-### <a name="sign-in-to-the-cli"></a>Anmelden bei der Befehlszeilenschnittstelle
+### <a name="create-new-azure-resources"></a>Erstellen neuer Azure-Ressourcen
 
-Damit Sie den Solution Accelerator bereitstellen können, müssen Sie sich wie folgt über die CLI bei Ihrem Azure-Abonnement anmelden:
+Wenn Sie die erforderlichen Azure-Ressourcen noch nicht erstellt haben, führen Sie die folgenden Schritte aus:
 
-```cmd/sh
-pcs login
-```
+1. Navigieren Sie in Ihrer Befehlszeilenumgebung zum Ordner **remote-monitoring-services-dotnet\scripts\local\launch** in Ihrer geklonten Kopie des Repositorys.
 
-Befolgen Sie die Anweisungen auf dem Bildschirm, um den Anmeldevorgang abzuschließen. Achten Sie darauf, dass Sie nicht an einer beliebigen Stelle in die CLI klicken, da sonst bei der Anmeldung ein Fehler auftreten kann. Bei erfolgreicher Anmeldung wird eine entsprechende Meldung in der CLI angezeigt. 
+2. Führen Sie das Skript **start.cmd** aus, und folgen Sie den Anweisungen. Das Skript fordert Sie auf, sich bei Ihrem Azure-Konto anzumelden und das Skript neu zu starten. Anschließend fordert es Sie zur Eingabe der folgenden Informationen auf:
+    * Ein Lösungsname.
+    * Das zu verwendende Azure-Abonnement.
+    * Der Speicherort des zu verwendenden Azure-Rechenzentrums.
 
-### <a name="run-a-local-deployment"></a>Ausführen einer lokalen Bereitstellung
+    Das Skript erstellt die Ressourcengruppe in Azure mit dem Namen Ihrer Projektmappe. Diese Ressourcengruppe enthält die Azure-Ressourcen, die der Solution Accelerator verwendet.
 
-Verwenden Sie den folgenden Befehl zum Starten der lokalen Bereitstellung. Damit werden die erforderlichen Azure-Ressourcen erstellt und Umgebungsvariablen in der Konsole ausgegeben. 
+3. Nachdem das Skript abgeschlossen wurde, zeigt es eine Liste von Umgebungsvariablen an. Folgen Sie den Anweisungen in der Befehlsausgabe, um diese Variablen in der Datei **remote-monitoring-services-dotnet\\scripts\\local\\.env** zu speichern.
 
-```cmd/pcs
-pcs -s local
-```
+### <a name="use-existing-azure-resources"></a>Verwenden vorhandener Azure-Ressourcen
 
-Das Skript fordert Sie zur Eingabe der folgenden Informationen auf:
-
-* Ein Lösungsname.
-* Das zu verwendende Azure-Abonnement.
-* Der Speicherort des zu verwendenden Azure-Rechenzentrums.
-
-> [!NOTE]
-> Das Skript erstellt eine IoT Hub-Instanz, eine Cosmos DB-Instanz und ein Azure-Speicherkonto in einer Ressourcengruppe in Ihrem Azure-Abonnement. Der Name der Ressourcengruppe ist der Name der Lösung, die Sie ausgewählt haben, als Sie oben das `pcs`-Tool ausgeführt haben. 
-
-> [!IMPORTANT]
-> Die Ausführung des Skripts dauert mehrere Minuten. Wenn der Vorgang abgeschlossen ist, sehen Sie eine Meldung `Copy the following environment variables to /scripts/local/.env file:`. Notieren Sie die Umgebungsvariablendefinitionen, die der Nachricht folgen, denn Sie werden sie in einem späteren Schritt verwenden.
+Wenn Sie die erforderlichen Azure-Ressourcen bereits erstellt haben, bearbeiten Sie die Definitionen der Umgebungsvariablen in der Datei **remote-monitoring-services-dotnet\\scripts\\local\\.env** mit den erforderlichen Werten. Die **.env**-Datei enthält detaillierte Informationen zum Speicherort der erforderlichen Werte.
 
 ## <a name="run-the-microservices-in-docker"></a>Ausführen der Microservices in Docker
 
-Zum Ausführen der Microservices in Docker bearbeiten Sie zunächst die **scripts\\local\\.env**-Datei in der lokalen Kopie des Repositorys, das Sie in einem früheren Schritt geklont haben. Ersetzen Sie den gesamten Inhalt der Datei mit den Definitionen der Umgebungsvariablen, die Sie im letzten Schritt bei der Ausführung des `pcs`-Befehls notiert haben. Diese Umgebungsvariablen ermöglichen den Microservices im Docker-Container, eine Verbindung mit den Azure-Diensten herzustellen, die vom `pcs`-Tool erstellt wurden.
+Die in den lokalen Docker-Containern ausgeführten Microservices müssen auf die in Azure ausgeführten Dienste zugreifen. Sie können die Internetkonnektivität Ihrer Docker-Umgebung mit dem folgenden Befehl testen, der einen kleinen Container startet und versucht, eine Internetadresse zu pingen:
 
-Navigieren Sie zum Ausführen des Solution Accelerators zum Ordner **scripts\local** in Ihrer Befehlszeilenumgebung, und führen Sie den folgenden Befehl aus:
+```cmd/sh
+docker run --rm -ti library/alpine ping google.com
+```
+
+Navigieren Sie zum Ausführen des Solution Accelerators zum Ordner **remote-monitoring-services-dotnet\\scripts\\local** in Ihrer Befehlszeilenumgebung, und führen Sie den folgenden Befehl aus:
 
 ```cmd\sh
 docker-compose up
@@ -120,7 +99,7 @@ Navigieren Sie für den Zugriff auf das Dashboard der Remoteüberwachungslösung
 
 ## <a name="clean-up"></a>Bereinigen
 
-Um unnötige Gebühren zu vermeiden, entfernen Sie nach Abschluss Ihrer Tests die Clouddienste aus Ihrem Azure-Abonnement. Am einfachsten entfernen Sie die Dienste, indem Sie zum [Azure-Portal](https://ms.portal.azure.com) navigieren und die vom `pcs`-Tool erstellte Ressourcengruppe löschen.
+Um unnötige Gebühren zu vermeiden, entfernen Sie nach Abschluss Ihrer Tests die Clouddienste aus Ihrem Azure-Abonnement. Am einfachsten entfernen Sie die Dienste, indem Sie zum [Azure-Portal](https://ms.portal.azure.com) navigieren und die Ressourcengruppe löschen, die bei der Ausführung des Skripts **start.cmd** erstellt wurde.
 
 Entfernen Sie mit dem `docker-compose down --rmi all`-Befehl die Docker-Images, und geben Sie Speicherplatz auf dem lokalen Computer frei. Sie können auch die lokale Kopie des Remoteüberwachungsrepositorys löschen, die erstellt wurde, als Sie den Quellcode aus GitHub geklont haben.
 

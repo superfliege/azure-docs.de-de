@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d25f46804c3320b7d941a945f3c4d9a5dfb6970c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7de476c6b96856e9b783ed8182985846bb39cfa
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702128"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452393"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK für SQL-API: Download und Anmerkungen zum Release
 > [!div class="op_single_selector"]
@@ -50,6 +50,24 @@ ms.locfileid: "43702128"
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* Mehr Resilienz gegenüber vorübergehenden Anforderungsfehlern in mehreren Regionen hinzugefügt.
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* Unterstützung für Schreibvorgänge in mehreren Regionen hinzugefügt.
+* Partitionsübergreifende Verbesserungen der Abfrageleistung bei TOP und MaxBufferedItemCount.
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* Unterstützung für den Abbruch von Anforderungen hinzugefügt.
+* SetCurrentLocation zu ConnectionPolicy hinzugefügt, sodass automatisch die bevorzugten Standorte basierend auf der Region automatisch aufgefüllt werden.
+* Fehler in partitionsübergreifenden Abfragen mit Min./Max. und einem Filter behoben, durch den keine Dokumente auf einer einzelnen Partition gefunden werden konnten.
+* DocumentClient-Methoden haben nun Parität mit IDocumentClient.
+* Direkte TCP-Transportstapel aktualisiert, um die Anzahl der hergestellten Verbindungen zu verringern.
+* Unterstützung von Direktmodus-TCP für Nicht-Windows-Clients hinzugefügt.
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * Unterstützung für den Abbruch von Anforderungen hinzugefügt.
@@ -309,8 +327,9 @@ Anforderungen an Azure Cosmos DB mithilfe eines deaktivierten SDK werden vom Die
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |26. Juli 2018 |--- |
-| [2.0.0-preview](#2.0.0-preview) |11. Mai 2018 |--- |
+| [2.1.1](#2.1.1) |27. September 2018 |--- |
+| [2.1.0](#2.1.0) |21. September 2018 |--- |
+| [2.0.0](#2.0.0) |07. September 2018 |--- |
 | [1.22.0](#1.22.0) |19. April 2018 |--- |
 | [1.21.1](#1.20.1) |09. März 2018 |--- |
 | [1.20.2](#1.20.1) |21. Februar 2018 |--- |

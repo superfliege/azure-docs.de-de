@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1a5df1081edeb8b8e7520064a71534f70a9a9d33
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 52aabcfd908afeea3bb9bf36eefad706b74d8ba9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344299"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227145"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -27,11 +27,11 @@ Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repe
 ## <a name="automatic-device-configuration"></a>Automatische Gerätekonfiguration
 Ihr Lösungs-Back-End kann [automatische Gerätekonfigurationen](iot-hub-auto-device-config.md) verwenden, um einer Gruppe von [Gerätezwillingen](#device-twin) gewünschte Eigenschaften zuzuweisen und den Status anhand von Systemmetriken und benutzerdefinierten Metriken zu melden. 
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-Die [Azure CLI](../cli-install-nodejs.md) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Version wird mithilfe von Node.js implementiert.
+## <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
+Die [klassische Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese Version der Befehlszeilenschnittstelle sollte nur für klassische Bereitstellungen verwendet werden.
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
-Die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure. Diese CLI-Vorschauversion wird mithilfe von Python implementiert.
+## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ein plattformübergreifendes Open-Source-Befehlstool auf Shell-Basis und ermöglicht das Erstellen und Verwalten von Ressourcen in Microsoft Azure.
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT-Geräte-SDKs
@@ -185,8 +185,8 @@ Sie können die [IoT Hub-Ressourcen-REST-API](https://docs.microsoft.com/rest/ap
 ## <a name="iot-solution-accelerators"></a>IoT Solution Accelerators
 In Azure IoT-Solution Accelerators werden mehrere Azure-Dienste zu Lösungen zusammengepackt. Diese Lösungen ermöglichen eine schnelle End-to-End-Implementierung gängiger IoT-Szenarien. Weitere Informationen finden Sie unter [Vergleich von Azure IoT-Optionen](../iot-accelerators/about-iot-accelerators.md).
 
-## <a name="the-iot-extension-for-azure-cli-20"></a>Die IoT-Erweiterung für Azure CLI 2.0
-Die [IoT-Erweiterung für Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) ist ein plattformübergreifendes Befehlszeilentool. Mit dem Tool können Sie Ihre Geräte in der [Identitätsregistrierung](#identity-registry) verwalten, Nachrichten und Dateien für Ihre Geräte senden und empfangen und die IoT Hub-Vorgänge überwachen.
+## <a name="the-iot-extension-for-azure-cli"></a>Die IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle 
+Die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) ist ein plattformübergreifendes Befehlszeilentool. Mit dem Tool können Sie Ihre Geräte in der [Identitätsregistrierung](#identity-registry) verwalten, Nachrichten und Dateien für Ihre Geräte senden und empfangen und die IoT Hub-Vorgänge überwachen.
 
 ## <a name="job"></a>Auftrag
 Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](iot-hub-devguide-jobs.md) Aktivitäten für eine Gruppe von Geräten planen und nachverfolgen, die bei Ihrem IoT Hub registriert sind. Aktivitäten sind beispielsweise das Aktualisieren der [gewünschten Eigenschaften](#desired-properties) von Gerätezwillingen und ihrer [Tags](#tags) sowie das Aufrufen [direkter Methoden](#direct-method). [IoT Hub](#iot-hub) nutzt zudem Aufträge zum [Importieren und Exportieren](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) aus der [Identitätsregistrierung](#identity-registry).
@@ -219,7 +219,7 @@ Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) handelt es
 [Azure Resource Manager](#azure-resource-manager) nutzt Ressourcengruppen, um zusammengehörige Ressourcen zu gruppieren. Sie können eine Ressourcengruppe verwenden, um Vorgänge für alle Ressourcen der Gruppe gleichzeitig durchzuführen.
 
 ## <a name="retry-policy"></a>Wiederholungsrichtlinie
-Sie verwenden eine Wiederholungsrichtlinie, um [vorübergehende Fehler](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) zu verarbeiten, wenn Sie eine Verbindung mit einem Clouddienst herstellen.
+Sie verwenden eine Wiederholungsrichtlinie, um [vorübergehende Fehler](/azure/architecture/best-practices/transient-faults) zu verarbeiten, wenn Sie eine Verbindung mit einem Clouddienst herstellen.
 
 ## <a name="routing-rules"></a>Routingregeln
 Sie konfigurieren [Routingregeln](iot-hub-devguide-messages-read-custom.md) in Ihrem IoT Hub, um D2C-Nachrichten an einen [integrierten Endpunkt](#built-in-endpoints) oder [benutzerdefinierte Endpunkte](#custom-endpoints) für die Verarbeitung durch Ihr Lösungs-Back-End weiterzuleiten.

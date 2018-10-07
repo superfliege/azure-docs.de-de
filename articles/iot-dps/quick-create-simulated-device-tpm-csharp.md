@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 055a1f09cf30665321d570978d800e1fbb3c0cf7
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: fd16defdcd3c3cb0c78994e9259b55f3d687163b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42022698"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032647"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des C#-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 
@@ -66,9 +66,9 @@ Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie 
     ![Befehlsfensterausgabe](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
 
-4. Wählen Sie im Azure-Portal auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Individuelle Registrierungen** im oberen Bereich auf die Schaltfläche **Hinzufügen**. 
+4. Wählen Sie im Azure-Portal auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten**. Wählen Sie die Registerkarte **Individuelle Registrierungen** aus, und klicken Sie oben auf die Schaltfläche **Individuelle Registrierung hinzufügen**. 
 
-5. Geben Sie unter **Registrierungslisteneintrag hinzufügen** folgende Informationen ein:
+5. Geben Sie unter **Registrierung hinzufügen** die folgenden Informationen ein:
     - Wählen Sie **TPM** als *Mechanismus* für den Nachweis der Identität.
     - Geben Sie die *Registrierungs-ID* und den *Endorsement Key* für Ihr TPM-Gerät ein. 
     - Wählen Sie optional eine mit Ihrem Bereitstellungsdienst verknüpfte IoT Hub-Instanz aus.
@@ -76,7 +76,7 @@ Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie 
     - Aktualisieren Sie **Initial device twin state** (Anfänglicher Gerätezwillingsstatus) mit der gewünschten Anfangskonfiguration für das Gerät.
     - Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
-    ![Eingeben von Geräteregistrierungsinformationen auf dem Portalblatt](./media/quick-create-simulated-device-tpm-csharp/enter-device-enrollment.png)  
+    ![Eingeben von Geräteregistrierungsinformationen auf dem Portalblatt](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    Nach erfolgreicher Registrierung wird die *Registrierungs-ID* Ihres Geräts in der Liste auf der Registerkarte *Individual Enrollments* (Individuelle Registrierungen) angezeigt. 
 
@@ -84,7 +84,7 @@ Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie 
 
 1. Vergewissern Sie sich, dass das Gerät bereitgestellt wurde. Nachdem das simulierte Gerät erfolgreich für die mit Ihrem Bereitstellungsdienst verknüpfte IoT Hub-Instanz bereitgestellt wurde, wird die Geräte-ID auf dem Blatt **IoT-Geräte** des Hubs angezeigt. 
 
-    ![Geräteregistrierung bei der IoT Hub-Instanz](./media/quick-create-simulated-device-tpm-csharp/hub-registration.png) 
+    ![Geräteregistrierung bei der IoT Hub-Instanz](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 
     Wenn Sie den *anfänglichen Gerätezwillingsstatus* im Registrierungseintrag für Ihr Gerät gegenüber dem Standardwert geändert haben, kann der gewünschte Zwillingsstatus vom Hub abgerufen werden, und es können entsprechende Aktionen durchgeführt werden. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).
 

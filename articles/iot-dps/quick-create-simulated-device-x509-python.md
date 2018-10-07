@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: c058d991d2655985d24b66cc1c6f30da3ddb7785
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: b2346276def178461a04eed008cc21fb22dc8464
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42022531"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040549"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des Python-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -57,26 +57,38 @@ Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie 
 
 ## <a name="create-a-self-signed-x509-device-certificate-and-individual-enrollment-entry"></a>Erstellen eines selbstsignierten X.509-Gerätezertifikats und eines individuellen Registrierungseintrags
 
-In diesem Abschnitt verwenden Sie ein selbstsigniertes X.509-Zertifikat, wobei Folgendes zu beachten ist:
+In diesem Abschnitt verwenden Sie ein selbstsigniertes X.509-Zertifikat. Dabei sollten Sie unbedingt die folgenden Punkte berücksichtigen:
 
 * Selbstsignierte Zertifikate dienen nur zu Testzwecken und sollten nicht in der Produktion verwendet werden.
-* Die Standardgültigkeitsdauer für ein selbstsigniertes Zertifikat beträgt 1 Jahr.
+* Die Standardgültigkeitsdauer für ein selbstsigniertes Zertifikat beträgt ein Jahr.
 
 Sie verwenden Beispielcode aus dem Azure IoT C SDK, um das Zertifikat zu erstellen, das mit dem individuellen Registrierungseintrag für das simulierte Gerät verwendet werden soll.
 
 1. Öffnen Sie die im Ordner *cmake* generierte Projektmappe `azure_iot_sdks.sln`, und erstellen Sie sie in Visual Studio.
 
-2. Klicken Sie im Ordner **Provision\_Tools** mit der rechten Maustaste auf das Projekt **dice\_device\_enrollment**, und wählen Sie die Option **Als Startprojekt festlegen** aus. Führen Sie die Lösung aus. Geben Sie im Ausgabefenster `i` für die individuelle Registrierung ein, wenn die Aufforderung angezeigt wird. Im Ausgabefenster wird ein lokal generiertes X.509-Zertifikat für Ihr simuliertes Gerät angezeigt. Kopieren Sie die Ausgabe zwischen *-----BEGIN CERTIFICATE-----* und *-----END CERTIFICATE-----* in die Zwischenablage, und schließen Sie dabei auch diese beiden Zeile mit ein. 
+2. Klicken Sie im Ordner **Provision\_Tools** mit der rechten Maustaste auf das Projekt **dice\_device\_enrollment**, und wählen Sie die Option **Als Startprojekt festlegen** aus. Führen Sie die Lösung aus. 
+
+3. Geben Sie im Ausgabefenster `i` für die individuelle Registrierung ein, wenn die Aufforderung angezeigt wird. Im Ausgabefenster wird ein lokal generiertes X.509-Zertifikat für Ihr simuliertes Gerät angezeigt. 
+    
+    Kopieren Sie das erste Zertifikat in die Zwischenablage. Beginnen Sie mit dem ersten Vorkommen von:
+    
+        -----BEGIN CERTIFICATE----- 
+        
+    Beenden Sie den Kopiervorgang nach dem ersten Vorkommen von:
+    
+        -----END CERTIFICATE-----
+        
+    Achten Sie darauf, auch diese beiden Zeilen einzuschließen. 
 
     ![Anwendung „dice_device_enrollment“](./media/python-quick-create-simulated-device-x509/dice-device-enrollment.png)
  
-3. Erstellen Sie eine Datei mit dem Namen **_X509testcertificate.pem_** auf Ihrem Windows-Computer, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt der Zwischenablage in diese Datei. Speichern Sie die Datei . 
+4. Erstellen Sie eine Datei mit dem Namen **_X509testcertificate.pem_** auf Ihrem Windows-Computer, öffnen Sie sie in einem Editor Ihrer Wahl, und kopieren Sie den Inhalt der Zwischenablage in diese Datei. Speichern Sie die Datei . 
 
-4. Melden Sie sich am Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Provisioning-Dienst.
+5. Melden Sie sich am Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Provisioning-Dienst.
 
-5. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. 
+6. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Wählen Sie die Registerkarte **Individuelle Registrierungen** aus, und klicken Sie oben auf die Schaltfläche **Individuelle Registrierung hinzufügen**. 
 
-6. Geben Sie im Bereich **Add enrollment** (Registrierung hinzufügen) die folgenden Informationen ein:
+7. Geben Sie im Bereich **Registrierung hinzufügen** die folgenden Informationen ein:
     - Wählen Sie **X.509** als *Mechanismus* für den Nachweis der Identität.
     - Klicken Sie unter *Primary certificate .pem or .cer file* (PEM- oder CER-Datei des primären Zertifikats) auf *Datei auswählen*, und wählen Sie die in den vorherigen Schritten erstellte Zertifikatdatei **X509testcertificate.pem** aus.
     - Optional können Sie die folgenden Informationen angeben:
@@ -85,7 +97,7 @@ Sie verwenden Beispielcode aus dem Azure IoT C SDK, um das Zertifikat zu erstell
       - Aktualisieren Sie **Initial device twin state** (Anfänglicher Gerätezwillingsstatus) mit der gewünschten Anfangskonfiguration für das Gerät.
     - Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
-    [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/python-quick-create-simulated-device-x509/individual-enrollment.png)](./media/python-quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
+    [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/python-quick-create-simulated-device-x509/device-enrollment.png)](./media/python-quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
    Nach der Registrierung wird Ihr X.509-Gerät auf der Registerkarte *Individuelle Registrierungen* in der Spalte *Registrierungs-ID* als **riot-device-cert** angezeigt. 
 
@@ -132,7 +144,7 @@ Sie verwenden Beispielcode aus dem Azure IoT C SDK, um das Zertifikat zu erstell
 
 8. Navigieren Sie im Portal zu dem IoT Hub, der mit Ihrem Provisioning-Dienst verknüpft ist, und öffnen Sie das Blatt **Device Explorer**. Nach der erfolgreichen Bereitstellung des simulierten X.509-Geräts auf dem Hub wird die dazugehörige Geräte-ID auf dem Blatt **Device Explorer** mit dem *STATUS* **Aktiviert** angezeigt. Falls das Blatt bereits vor dem Ausführen der Beispielgeräteanwendung geöffnet war, müssen Sie unter Umständen im oberen Bereich auf die Schaltfläche **Aktualisieren** klicken. 
 
-    ![Geräteregistrierung bei der IoT Hub-Instanz](./media/python-quick-create-simulated-device-x509/hub-registration.png) 
+    ![Geräteregistrierung bei der IoT Hub-Instanz](./media/python-quick-create-simulated-device-x509/registration.png) 
 
 > [!NOTE]
 > Wenn Sie den *anfänglichen Gerätezwillingsstatus* im Registrierungseintrag für Ihr Gerät gegenüber dem Standardwert geändert haben, kann der gewünschte Zwillingsstatus vom Hub abgerufen werden, und es können entsprechende Aktionen durchgeführt werden. Weitere Informationen finden Sie unter [Verstehen und Verwenden von Gerätezwillingen in IoT Hub](../iot-hub/iot-hub-devguide-device-twins.md).

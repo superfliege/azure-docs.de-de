@@ -2,38 +2,38 @@
 title: Informationen zu direkten Azure IoT Hub-Methoden | Microsoft Docs
 description: Entwicklerhandbuch – Verwenden von direkten Methoden zum Aufrufen von Code auf Ihren Geräten von einer Service-App
 author: nberdy
-manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 4d55c152bdc938d943c90a3e51af37b45f6a8eb5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: f2e04c793f5c238716930bcbdcaa090e6a133588
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301395"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452586"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
+
 IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Dieser Ansatz eignet sich für Szenarien, in denen die Vorgehensweise bei sofortigen Aktionen unterschiedlich ist, je nachdem, ob das Gerät reagieren konnte oder nicht.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Jedes Gerätemethode hat ein einzelnes Gerät als Ziel. [Aufträge][lnk-devguide-jobs] bieten eine Möglichkeit zum Aufrufen von direkten Methoden auf mehreren Geräten und zum Planen von Methodenaufrufen für nicht verbundene Geräte.
+Jede Gerätemethode hat ein einzelnes Gerät als Ziel. [Aufträge auf mehreren Geräten planen](iot-hub-devguide-jobs.md) bietet eine Möglichkeit zum Aufrufen von direkten Methoden auf mehreren Geräten und zum Planen von Methodenaufrufen für nicht verbundene Geräte.
 
 Jeder Benutzer mit der Berichtigung **Dienstverbindung** für IoT Hub kann eine Methode auf einem Gerät aufrufen.
 
 Direkte Methoden entsprechen einem Anforderung/Antwort-Schema und sind für Kommunikation bestimmt, die sofortige Bestätigung ihres Ergebnisses erfordert. Ein Beispiel hierfür ist die interaktive Steuerung des Geräts, wie das Einschalten eines Lüfters.
 
-Falls Sie weitere Informationen dazu benötigen, was die Verwendung von gewünschten Eigenschaften, direkten Methoden oder C2D-Nachrichten betrifft, hilft Ihnen der [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance] weiter.
+Falls Sie weitere Informationen dazu benötigen, was die Verwendung von gewünschten Eigenschaften, direkten Methoden oder C2D-Nachrichten betrifft, hilft Ihnen der [Leitfaden zur C2D-Kommunikation](iot-hub-devguide-c2d-guidance.md) weiter.
 
 ## <a name="method-lifecycle"></a>Methodenlebenszyklus
-Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnungsgemäße Instanziierung null oder mehr Eingaben in der Methodennutzlast erfordern. Sie rufen eine direkte Methode über einen dienstseitigen URI (`{iot hub}/twins/{device id}/methods/`) auf. Ein Gerät empfängt direkte Methoden über ein gerätespezifisches MQTT-Thema (`$iothub/methods/POST/{method name}/`) oder über AMQP-Links (Anwendungseigenschaften `IoThub-methodname` und `IoThub-status`). 
+
+Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnungsgemäße Instanziierung null oder mehr Eingaben in der Methodennutzlast erfordern. Sie rufen eine direkte Methode über einen dienstseitigen URI (`{iot hub}/twins/{device id}/methods/`) auf. Ein Gerät empfängt direkte Methoden über ein gerätespezifisches MQTT-Thema (`$iothub/methods/POST/{method name}/`) oder über AMQP-Links (die Anwendungseigenschaften `IoThub-methodname` und `IoThub-status`). 
 
 > [!NOTE]
 > Wenn Sie eine direkte Methode auf einem Gerät aufrufen, können Eigenschaftennamen und -werte nur druckbare alphanumerische US-ASCII-Zeichen mit Ausnahme der folgenden enthalten: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
-> 
 > 
 
 Direkte Methoden sind synchron und werden nach der Wartezeit (Standardeinstellung: 30 Sekunden, einstellbar bis 3.600 Sekunden) entweder mit einem Erfolg oder Fehler abgeschlossen. Direkte Methoden sind hilfreich bei interaktiven Szenarios, in denen ein Gerät genau dann agieren soll, wenn es online ist und Befehle empfängt. Beispiel: Einschalten von Beleuchtung über ein Telefon. In diesen Szenarios soll der Erfolg oder Misserfolg unmittelbar erkennbar sein, damit der Clouddienst so schnell wie möglich auf das Ergebnis reagieren kann. Das Gerät kann einen Nachrichtentext als Ergebnis der Methode zurückgeben, dies ist für die Methode aber nicht erforderlich. Es gibt keine Garantie für die Sortierung oder eine Parallelitätssemantik für Methodenaufrufe.
@@ -43,8 +43,12 @@ Direkte Methoden erfolgen von der Cloudseite nur über HTTPS und von der Geräte
 Die Nutzlast für Methodenanforderungen und -antworten ist ein JSON-Dokument mit bis zu 128 KB.
 
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>Aufrufen einer direkten Methode aus einer Back-End-App
+
+Rufen Sie jetzt eine direkte Methode aus einer Back-End-App auf.
+
 ### <a name="method-invocation"></a>Methodenaufruf
-Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die Folgendes umfassen:
+
+Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die aus den folgenden Elementen bestehen:
 
 * Der *Anforderungs-URI* für das Gerät neben der [API-Version](/rest/api/iothub/service/invokedevicemethod):
 
@@ -52,9 +56,11 @@ Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die Folgendes umfas
     https://fully-qualified-iothubname.azure-devices.net/twins/{deviceId}/methods?api-version=2018-06-30
     ```
 
-* Die POST-*Methode*
-* *Header*, die Autorisierung, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
-* Einen transparenten JSON-*Haupttext* im folgenden Format:
+* Der POST-*Methode*
+
+* *Headern*, die Autorisierung, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
+
+* Einem transparenten JSON-*Haupttext* im folgenden Format:
 
     ```json
     {
@@ -89,11 +95,14 @@ curl -X POST \
 ```
 
 ### <a name="response"></a>response
-Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
 
-* *HTTP-Statuscode*, der für Fehler von IoT Hub verwendet wird. Dazu gehören z.B. 404-Fehler für Geräte, die derzeit nicht verbunden sind
-* *Header*, die ETag, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
-* Einen JSON-*Haupttext* im folgenden Format:
+Die Back-End-App empfängt eine Antwort, die aus den folgenden Elementen besteht:
+
+* *HTTP-Statuscode*, der für Fehler von IoT Hub verwendet wird. Dazu gehören z.B. 404-Fehler für Geräte, die derzeit nicht verbunden sind.
+
+* *Headern*, die ETag, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten.
+
+* Einem JSON-*Haupttext* im folgenden Format:
 
     ```json
     {
@@ -105,14 +114,22 @@ Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
     `status` und `body` werden vom Gerät bereitgestellt und für die Antwort mit dem Statuscode und/oder der Beschreibung des Geräts verwendet.
 
 ### <a name="method-invocation-for-iot-edge-modules"></a>Methodenaufruf für IoT Edge-Module
-Der Aufruf von direkten Methoden mithilfe einer Modul-ID wird im C#-SDK unterstützt ([hier](https://www.nuget.org/packages/Microsoft.Azure.Devices/) verfügbar).
+
+Der Aufruf von direkten Methoden mithilfe einer Modul-ID wird im [IoT Service Client C# SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) unterstützt.
 
 Zu diesem Zweck verwenden Sie die `ServiceClient.InvokeDeviceMethodAsync()`-Methode und übergeben `deviceId` und `moduleId` als Parameter.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Behandeln einer direkten Methode auf einem Gerät
+
+Sehen wir uns an, wie eine direkte Methode auf einem IoT-Gerät behandelt wird.
+
 ### <a name="mqtt"></a>MQTT
+
+Der nachstehende Abschnitt erläutert das MQTT-Protokoll.
+
 #### <a name="method-invocation"></a>Methodenaufruf
-Geräte empfangen direkte Methodenanforderungen zum MQTT-Thema: `$iothub/methods/POST/{method name}/?$rid={request id}`
+
+Geräte empfangen direkte Methodenanforderungen zum MQTT-Thema: `$iothub/methods/POST/{method name}/?$rid={request id}`. Die Anzahl der Abonnements pro Gerät ist auf 5 begrenzt. Deshalb wird empfohlen, nicht jede direkte Methode einzeln zu abonnieren. Erwägen Sie stattdessen das Abonnieren von `$iothub/methods/POST/#`. Filtern Sie dann die übermittelten Nachrichten, basierend auf den gewünschten Methodennamen.
 
 Der vom Gerät empfangene Text weist das folgende Format auf:
 
@@ -126,57 +143,63 @@ Der vom Gerät empfangene Text weist das folgende Format auf:
 Methodenanforderungen sind QoS 0.
 
 #### <a name="response"></a>response
+
 Das Gerät sendet Antworten an `$iothub/methods/res/{status}/?$rid={request id}`, wobei Folgendes gilt:
 
 * Die `status`-Eigenschaft ist der vom Gerät bereitgestellte Status der Methodenausführung.
+
 * Die `$rid`-Eigenschaft ist die Anforderungs-ID des von IoT Hub empfangenen Methodenaufrufs.
 
 Der Haupttext wird durch das Gerät festgelegt und kann jeden beliebigen Status aufweisen.
 
 ### <a name="amqp"></a>AMQP
+
+Der nachstehende Abschnitt erläutert das AMQP-Protokoll.
+
 #### <a name="method-invocation"></a>Methodenaufruf
+
 Das Gerät empfängt Anforderungen direkter Methoden durch Erstellen eines Empfangslinks für die Adresse `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
 
-Die AMQP-Nachricht geht bei dem Empfangslink ein, der die Methodenanforderung darstellt. Sie umfasst Folgendes:
-* Die Korrelations-ID-Eigenschaft, die eine Anforderungs-ID enthält, die mit der entsprechenden Methodenantwort zurückgegeben werden soll
+Die AMQP-Nachricht geht bei dem Empfangslink ein, der die Methodenanforderung darstellt. Sie enthält die folgenden Abschnitte:
+
+* Die Korrelations-ID-Eigenschaft mit einer Anforderungs-ID, die mit der entsprechenden Methodenantwort zurückgegeben werden soll
+
 * Eine Anwendungseigenschaft namens `IoThub-methodname`, die den Namen der aufgerufenen Methode enthält
+
 * Den AMQP-Nachrichtentext mit der Methodennutzlast im JSON-Format
 
 #### <a name="response"></a>response
+
 Das Gerät erstellt einen Sendelink, um die Methodenantwort an der Adresse `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` zurückzugeben.
 
 Die Antwort der Methode wird über den Sendelink zurückgegeben und umfasst Folgendes:
-* Die Korrelations-ID-Eigenschaft, die die Anforderungs-ID enthält, die in der Anforderungsnachricht der Methode übergeben wurde
+
+* Die Korrelations-ID-Eigenschaft mit der Anforderungs-ID, die in der Anforderungsnachricht der Methode übergeben wurde
+
 * Eine Anwendungseigenschaft namens `IoThub-status`, die den vom Benutzer angegebenen Methodenstatus enthält
+
 * Den AMQP-Nachrichtentext mit der Methodenantwort im JSON-Format
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
+
 Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
-* Unter [IoT Hub-Endpunkte][lnk-endpoints] werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge bereitstellt.
-* Unter [Einschränkung und Kontingente][lnk-quotas] werden die Kontingente und das Einschränkungsverhalten beschrieben, die bei Verwendung von IoT Hub zu erwarten sind.
-* Unter [Azure IoT-SDKs für Geräte und Dienste][lnk-sdks] werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
-* Unter [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting][lnk-query] wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
-* [IoT Hub-MQTT-Unterstützung][lnk-devguide-mqtt] enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
+* Unter [IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md) werden die verschiedenen Endpunkte beschrieben, die jeder IoT-Hub für Laufzeit- und Verwaltungsvorgänge verfügbar macht.
+
+* Unter [Einschränkung und Kontingente](iot-hub-devguide-quotas-throttling.md) werden die Kontingente und das Einschränkungsverhalten beschrieben, die bei Verwendung von IoT Hub zu erwarten sind.
+
+* Unter [Azure IoT-SDKs für Geräte und Dienste](iot-hub-devguide-sdks.md) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
+
+* Unter [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md) wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
+
+* [IoT Hub-MQTT-Unterstützung](iot-hub-mqtt-support.md) enthält weitere Informationen zur Unterstützung für das MQTT-Protokoll in IoT Hub.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie erfahren haben, wie Sie direkte Methoden verwenden, sind möglicherweise die folgenden Themen im IoT Hub-Entwicklerhandbuch für Sie interessant:
 
-* [Planen von Aufträgen auf mehreren Geräten][lnk-devguide-jobs]
+* [Planen von Aufträgen auf mehreren Geräten](iot-hub-devguide-jobs.md)
 
 Wenn Sie einige der in diesem Artikel beschriebenen Konzepte ausprobieren möchten, ist möglicherweise das folgende IoT Hub-Tutorial für Sie interessant:
 
-* [Verwenden von direkten Methoden][lnk-methods-tutorial]
-
-<!-- links and images -->
-
-[lnk-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-
-[lnk-devguide-jobs]: iot-hub-devguide-jobs.md
-[lnk-methods-tutorial]: quickstart-control-device-node.md
-[lnk-devguide-messages]: iot-hub-devguide-messaging.md
-[lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
+* [Verwenden von direkten Methoden](quickstart-control-device-node.md)

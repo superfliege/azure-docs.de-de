@@ -1,22 +1,23 @@
 ---
-title: SDK für Azure Content Moderator SDK für die .NET-Hilfsmethode| Microsoft-Dokumentation
+title: 'Schnellstart: Content Moderator SDK für die .NET-Hilfsmethode'
+titlesuffix: Azure Cognitive Services
 description: Rückgabe eines Content Moderator-Clients mit dem Content Moderator SDK für .NET
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 36f2124708731f78f34849d8210ed39ea8f59140
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0c167de3af8aea6820962e7cc8d0c21f5ba61807
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372851"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223269"
 ---
-# <a name="helper-code-to-return-a-content-moderator-client"></a>Hilfscode zum Zurückgeben eines Content Moderator-Clients
+# <a name="quickstart-helper-code-to-return-a-content-moderator-client"></a>Schnellstart: Hilfscode zum Zurückgeben eines Content Moderator-Clients
 
 Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des Content Moderator SDK für .NET erleichtern, um einen Content Moderator-Client für Ihr Abonnement zu erstellen.
 
@@ -108,4 +109,4 @@ Jetzt kennen Sie einen schnelle Möglichkeit, wie Sie einen Content Moderator-Cl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Laden Sie die [entsprechende Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) sowie andere Content Moderator-Schnellstarts für .NET herunter, und beginnen Sie mit der Integration.
+[Laden Sie die entsprechende Visual Studio-Projektmappe sowie andere Content Moderator-Schnellstarts für .NET herunter](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator), und beginnen Sie mit der Integration.

@@ -16,7 +16,8 @@ Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des IoT Hub De
 
 Der Device Provisioning-Dienst drosselt Anforderungen, wenn die folgenden Kontingente überschritten werden:
 
-| Drosselung | Wert pro Dienst |
+| Drosselung | Wert pro Einheit |
 | --- | --- |
-| Vorgänge | 100 pro Minute |
-| Geräteregistrierungen | 100 pro Minute |
+| Vorgänge | 200/Minute/Dienst |
+| Geräteregistrierungen | 200/Minute/Dienst |
+| Abrufvorgang für Geräte | 5/10 Sekunden/Gerät |

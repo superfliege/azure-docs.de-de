@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 905873a695635ba80de258cbf458c8dd3e18d443
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e73b0e88a98c1b06216378078626b4338c598816
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700337"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422965"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Erstellen, Abfragen und Traversieren in der Gremlin-Konsole
 
@@ -90,21 +90,16 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 5. Führen Sie als Nächstes `:remote console` aus, um alle Konsolenbefehle an den Remoteserver umzuleiten.
 
+   > [!NOTE]
+   > Wenn Sie den `:remote console`-Befehl nicht ausführen, aber alle Konsolenbefehle an den Remoteserver umleiten möchten, sollten Sie dem Befehl ein `:>` voranstellen. So sollten Sie den Befehl beispielsweise als `:> g.V().count()` ausführen. Dieses Präfix ist ein Teil des Befehls und wichtig bei der Verwendung der Gremlin-Konsole mit Azure Cosmos DB. Wenn Sie das Präfix weglassen, wird die Konsole angewiesen, den Befehl lokal auszuführen. Dies wird häufig für einen In-Memory-Graphen durchgeführt. Mit diesem Präfix – `:>` – weisen Sie die Konsole an, einen Remotebefehl auszuführen – in diesem Fall für Azure Cosmos DB (entweder der localhost-Emulator oder eine Azure-Instanz).
+
 Prima. Damit ist die Einrichtung abgeschlossen. Jetzt können Sie mit dem Ausführen von Konsolenbefehlen beginnen.
 
 Probieren Sie einen einfachen count()-Befehl aus. Geben Sie an der Eingabeaufforderung in der Konsole Folgendes ein:
-```
-:> g.V().count()
-```
 
-> [!TIP]
-> Fallen Ihnen die Zeichen `:>` vor dem Text `g.V().count()` auf? 
->
-> Dies ist Teil des Befehls, den Sie eingeben müssen. Dies ist wichtig bei der Verwendung der Gremlin-Konsole mit Azure Cosmos DB.  
->
-> Wenn Sie das Präfix `:>` weglassen, wird die Konsole angewiesen, den Befehl lokal auszuführen. Dies wird häufig für einen In-Memory-Graphen durchgeführt.
-> Mit `:>` weisen Sie die Konsole an, einen Remotebefehl auszuführen – in diesem Fall für Cosmos DB (entweder der localhost-Emulator oder eine Azure-Instanz).
-
+```
+g.V().count()
+```
 
 ## <a name="create-vertices-and-edges"></a>Erstellen von Scheitelpunkten und Kanten
 
@@ -113,7 +108,7 @@ Fügen Sie zunächst fünf Scheitelpunkte für Personen hinzu: *Thomas*, *Mary K
 Eingabe (Thomas):
 
 ```
-:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
+g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
 ```
 
 Ausgabe:
@@ -124,7 +119,7 @@ Ausgabe:
 Eingabe (Mary Kay):
 
 ```
-:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
 
 ```
 
@@ -138,7 +133,7 @@ Ausgabe:
 Eingabe (Robin):
 
 ```
-:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
+g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
 ```
 
 Ausgabe:
@@ -150,7 +145,7 @@ Ausgabe:
 Eingabe (Ben):
 
 ```
-:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
 
 ```
 
@@ -163,7 +158,7 @@ Ausgabe:
 Eingabe (Jack):
 
 ```
-:> g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
 ```
 
 Ausgabe:
@@ -178,7 +173,7 @@ Fügen Sie als Nächstes Kanten für die Personenbeziehungen hinzu.
 Eingabe (Thomas -> Mary Kay):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
 Ausgabe:
@@ -190,7 +185,7 @@ Ausgabe:
 Eingabe (Thomas -> Robin):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
 Ausgabe:
@@ -202,7 +197,7 @@ Ausgabe:
 Eingabe (Robin -> Ben):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
+g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
 Ausgabe:
@@ -217,7 +212,7 @@ Aktualisieren Sie den Scheitelpunkt *Thomas* mit dem neuen Alter *45*.
 
 Eingabe:
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
+g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 Ausgabe:
 
@@ -234,7 +229,7 @@ Führen Sie zunächst eine Abfrage mit einem Filter durch, um nur Personen zurü
 Eingabe (Filterabfrage):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40))
+g.V().hasLabel('person').has('age', gt(40))
 ```
 
 Ausgabe:
@@ -248,7 +243,7 @@ Projizieren Sie als Nächstes die Vornamen aller Personen, die älter als 40 sin
 Eingabe (Filter + Abfrage zur Projektion):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40)).values('firstName')
+g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
 Ausgabe:
@@ -264,7 +259,7 @@ Traversieren Sie den Graph, um alle Freunde von Thomas zurückzugeben.
 Eingabe (Freunde von Thomas):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
 Ausgabe: 
@@ -279,7 +274,7 @@ Gehen Sie dann zur nächsten Scheitelpunktebene über. Traversieren Sie den Grap
 Eingabe (Freunde von Freunden von Thomas):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 Ausgabe:
 
@@ -294,7 +289,7 @@ Löschen Sie jetzt einen Scheitelpunkt aus der Graphdatenbank.
 Eingabe (Löschen des Scheitelpunkts „Jack“):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Jack').drop()
+g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
 ## <a name="clear-your-graph"></a>Bereinigen des Graphs
@@ -304,8 +299,8 @@ Löschen Sie zum Schluss alle Scheitelpunkte und Kanten aus der Datenbank.
 Eingabe:
 
 ```
-:> g.E().drop()
-:> g.V().drop()
+g.E().drop()
+g.V().drop()
 ```
 
 Glückwunsch! Sie haben das Tutorial zur Azure Cosmos DB-Gremlin-API erfolgreich abgeschlossen.

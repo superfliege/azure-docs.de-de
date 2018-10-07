@@ -9,20 +9,20 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1aa4cf5d0cae728392f09626293de0506c81757f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2e455845a145e07bc59378818b95e23e572cb577
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976974"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227100"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Gerätesimulator auf einem Windows-Entwicklungscomputer erstellen und ausführen. Sie konfigurieren dieses simulierte Gerät so, dass es zum Authentifizieren bei einer Device Provisioning Service-Instanz einen symmetrischen Schlüssel verwendet und einem IoT Hub zugewiesen wird. Beispielcode aus dem [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) wird verwendet, um eine Startsequenz für das Gerät zu simulieren, die die Bereitstellung einleitet. Das Gerät wird anhand der individuellen Registrierung bei einer Device Provisioning Service-Instanz erkannt und dem IoT Hub zugeordnet.
 
-In diesem Artikel wird zwar die Bereitstellung mit einer individuellen Registrierung gezeigt, aber Sie können die gleichen Prozeduren mit Registrierungsgruppen verwenden. Der einzige Unterschied ist, dass Sie einen abgeleiteten Geräteschlüssel mit einer eindeutigen Registrierungs-ID für das Gerät verwenden müssen. Mit Registrierungsgruppen werden symmetrischer Registrierungsschlüssel und Registrierungs-ID nicht direkt verwendet. [Bereitstellen veralteter Geräte mit Nachweis durch symmetrischen Schlüssel](how-to-legacy-device-symm-key.md) enthält ein Beispiel, ist aber nicht auf veraltete Geräte begrenzt. Weitere Informationen finden Sie unter [Gruppenregistrierungen für Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md#group-enrollments).
+In diesem Artikel wird zwar die Bereitstellung mit einer individuellen Registrierung gezeigt, aber Sie können die gleichen Prozeduren mit Registrierungsgruppen verwenden. Der einzige Unterschied ist, dass Sie einen abgeleiteten Geräteschlüssel mit einer eindeutigen Registrierungs-ID für das Gerät verwenden müssen. Mit Registrierungsgruppen wird der symmetrische Schlüssel bei der Registrierung nicht direkt verwendet. Obwohl Registrierungsgruppen mit symmetrischem Schlüssel nicht auf veraltete Geräte begrenzt sind, enthält [Bereitstellen veralteter Geräte mit Nachweis durch symmetrischen Schlüssel](how-to-legacy-device-symm-key.md) ein Beispiel für eine Registrierungsgruppe. Weitere Informationen finden Sie unter [Gruppenregistrierungen für Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md#group-enrollments).
 
-Weitere grundlegende Informationen zum Nachweis des symmetrischen Schlüssels finden Sie unter [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md). Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md). 
+Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md). 
 
 Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie mit dieser Schnellstartanleitung fortfahren. In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie bereits eine Device Provisioning-Instanz erstellt haben.
 

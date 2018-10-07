@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ef3cfb77a47face18ea5f3b75cbbf08d3e275d2e
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 956bdf4770bd2a42a9ede6f59c2aa80d44d9429a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023829"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041590"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des Node.js-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 
@@ -132,9 +132,9 @@ Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie 
 
 1. Melden Sie sich beim Azure-Portal an, klicken Sie im Menü auf der linken Seite auf die Schaltfläche **Alle Ressourcen**, und öffnen Sie Ihren Device Provisioning-Dienst.
 
-1. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Manage enrollments** (Registrierungen verwalten) aus. Klicken Sie auf der Registerkarte **Individual Enrollments** (Individuelle Registrierungen) im oberen Bereich auf die Schaltfläche **Hinzufügen**. 
+1. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Wählen Sie die Registerkarte **Individuelle Registrierungen** aus, und klicken Sie oben auf die Schaltfläche **Individuelle Registrierung hinzufügen**. 
 
-1. Geben Sie unter **Add enrollment list entry** (Registrierungslisteneintrag hinzufügen) die folgenden Informationen ein:
+1. Geben Sie im Bereich **Registrierung hinzufügen** die folgenden Informationen ein:
     - Wählen Sie **TPM** als *Mechanismus* für den Nachweis der Identität.
     - Geben Sie die *Registrierungs-ID* und den *Endorsement Key* für Ihr TPM-Gerät ein.
     - Optional können Sie die folgenden Informationen angeben:

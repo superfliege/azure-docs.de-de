@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 7925ef15dc7b3ce25ae919810a5ed2220184fe6e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 5c916f847bf5098145c3ed14fad87c7669d916c8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700842"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222691"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 Da Sie in einer hochgradig vernetzten Welt leben, werden Sie irgendwann Teil **sozialer Netzwerke**. Sie verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was Sie bewegt, mit Menschen mit den gleichen Interessen zu teilen.
@@ -39,7 +39,7 @@ Warum ist SQL in diesem Szenario nicht die beste Option? Sehen wir uns die Struk
 Sie könnten dafür natürlich eine riesige SQL-Instanz mit ausreichend Leistung, um Tausende von Abfragen mit so vielen Verknüpfungen zu bearbeiten, verwenden. Aber, offen gestanden, warum sollten Sie, wenn Sie eine einfachere Lösung zur Hand haben?
 
 ## <a name="the-nosql-road"></a>Der Weg mit NoSQL
-In diesem Artikel wird beschrieben, wie Sie Ihre Daten für soziale Plattformen mit der Azure-NoSQL-Datenbank [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) auf kostengünstige Weise modellieren können. Dabei werden auch andere Azure Cosmos DB-Features wie die [Gremlin Graph-API](../cosmos-db/graph-introduction.md) eingesetzt. Mithilfe eines [NoSQL](https://en.wikipedia.org/wiki/NoSQL)-Ansatzes, der Datenspeicherung im JSON-Format und der [Denormalisierung](https://en.wikipedia.org/wiki/Denormalization) kann der zuvor komplizierte Beitrag in ein einziges [Dokument](https://en.wikipedia.org/wiki/Document-oriented_database) transformiert werden:
+In diesem Artikel wird beschrieben, wie Sie Ihre Daten für soziale Plattformen mit der Azure-NoSQL-Datenbank [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) auf kostengünstige Weise modellieren können. Dabei werden auch andere Azure Cosmos DB-Features wie die [Gremlin-API](../cosmos-db/graph-introduction.md) eingesetzt. Mithilfe eines [NoSQL](https://en.wikipedia.org/wiki/NoSQL)-Ansatzes, der Datenspeicherung im JSON-Format und der [Denormalisierung](https://en.wikipedia.org/wiki/Denormalization) kann der zuvor komplizierte Beitrag in ein einziges [Dokument](https://en.wikipedia.org/wiki/Document-oriented_database) transformiert werden:
 
 
     {
@@ -190,7 +190,7 @@ Und ein Beitrag würde wie folgt aussehen:
         }
     }
 
-Wenn eine Änderung für eines der Attribute der Chunks anfällt, sind die betroffenen Dokumente mithilfe von Abfragen, die auf die indizierten Attribute verweisen (SELECT * FROM posts p WHERE p.createdBy.id == “edited_user_id”), leicht auffindbar und die Chunks ebenso einfach zu aktualisieren.
+Wenn eine Änderung für eines der Attribute der Chunks anfällt, sind die betroffenen Dokumente mithilfe von Abfragen, die auf die indizierten Attribute verweisen (SELECT * FROM posts p WHERE p.createdBy.id == „edited_user_id“), leicht auffindbar und die Chunks ebenso einfach zu aktualisieren.
 
 ## <a name="the-search-box"></a>Das Suchfeld
 Benutzer generieren (glücklicherweise) viel Inhalt. Sie sollten daher auch in der Lage sein, Inhalte zu suchen, die nicht direkt in ihrem Stream erscheinen, da Sie vielleicht dem jeweiligen Ersteller nicht folgen oder einen eigenen, sechs Monate alten Post suchen.

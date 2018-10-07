@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8004500df2e29ab865a8eb78adf278ef61d5ee8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7000fc13a792f4f6def592e78dc759c8cf165881
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702434"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451917"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -52,6 +52,24 @@ ms.locfileid: "43702434"
 ## <a name="release-notes"></a>Versionsinformationen
 
 Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuesten Version des [Azure Cosmos DB .NET SDKs](sql-api-sdk-dotnet.md) identisch.
+
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* Mehr Resilienz gegenüber vorübergehenden Anforderungsfehlern in mehreren Regionen hinzugefügt.
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* Unterstützung für Schreibvorgänge in mehreren Regionen hinzugefügt.
+* Partitionsübergreifende Verbesserungen der Abfrageleistung bei TOP und MaxBufferedItemCount.
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* Unterstützung für den Abbruch von Anforderungen hinzugefügt.
+* SetCurrentLocation zu ConnectionPolicy hinzugefügt, sodass automatisch die bevorzugten Standorte basierend auf der Region automatisch aufgefüllt werden.
+* Fehler in partitionsübergreifenden Abfragen mit Min./Max. und einem Filter behoben, durch den keine Dokumente auf einer einzelnen Partition gefunden werden konnten.
+* DocumentClient-Methoden haben nun Parität mit IDocumentClient.
+* Direkte TCP-Transportstapel aktualisiert, um die Anzahl der hergestellten Verbindungen zu verringern.
+* Unterstützung von Direktmodus-TCP für Nicht-Windows-Clients hinzugefügt.
 
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -186,8 +204,9 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |26. Juli 2018 |--- |
-| [2.0.0-preview](#2.0.0-preview) |11. Mai 2018 |--- |
+| [2.1.1](#2.1.1) |27. September 2018 |--- |
+| [2.1.0](#2.1.0) |21. September 2018 |--- |
+| [2.0.0](#2.0.0) |07. September 2018 |--- |
 | [1.9.1](#1.9.1) |09. März 2018 |--- |
 | [1.8.2](#1.8.2) |21. Februar 2018 |--- |
 | [1.8.1](#1.8.1) |05. Februar 2018 |--- |

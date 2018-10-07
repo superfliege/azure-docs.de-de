@@ -4,16 +4,16 @@ description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/27/2017
+ms.date: 09/21/2017
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0e085d6c2962ec2a2324bfc134b0e201df04a336
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: e1825bcdd8dbb06ef027919416b2d0532a7df9c2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37028964"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422829"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
@@ -22,14 +22,14 @@ Der Zweck von Gateways in IoT-Lösungen ist lösungsspezifisch und vereint Gerä
 ## <a name="patterns"></a>Muster
 Es gibt drei Muster für die Verwendung eines IoT Edge-Geräts als Gateway: transparent, Protokollübersetzung und Identitätsübersetzung:
 * **Transparent**: Geräte, die theoretisch eine Verbindung mit dem IoT Hub herstellen könnten, können stattdessen eine Verbindung mit einem Gatewaygerät herstellen. Dies bedeutet, dass die nachgeschalteten Geräte über ihre eigenen IoT Hub-Identitäten verfügen und MQTT-, AMQP- oder HTTP-Protokolle verwenden. Das Gateway übergibt einfach die Kommunikation zwischen den Geräten und IoT Hub. Die Geräte erkennen nicht, dass sie über ein Gateway mit der Cloud kommunizieren, und auch ein Benutzer, der mit den Geräten in IoT Hub interagiert, weiß nichts vom zwischengeschalteten Gatewaygerät. Daher ist das Gateway transparent. Einzelheiten zur Verwendung eines IoT Edge-Geräts als transparentes Gateway finden Sie in der Vorgehensweise [Erstellen eines transparenten Gateways][lnk-iot-edge-as-transparent-gateway].
-* **Protokollübersetzung**: Geräte, die MQTT, AMQP oder HTTP nicht unterstützen, senden Daten über ein Gatewaygerät an IoT Hub. Das Gateway ist intelligent genug, um das von den nachgeschalteten Geräten verwendete Protokoll zu verstehen; es handelt sich jedoch um einzige Gerät mit Identität in IoT Hub. Alle Informationen scheinen von einem Gerät – dem Gateway – zu stammen. Dies bedeutet, dass nachgeschaltete Geräte zusätzliche Informationen in ihre Nachrichten einbetten müssen, wenn Cloudanwendungen die Daten pro Gerät begründen möchten. Außerdem sind IoT Hub-Methoden und -Grundtypen wie Zwillinge nur für das Gateway-Gerät und nicht für nachgeschaltete Geräte verfügbar.
+* **Protokollübersetzung** – Auch bekannt als "transparentes Gatewaymuster": Geräte, die MQTT, AMQP oder HTTP nicht unterstützen, senden Daten über ein Gatewaygerät an IoT Hub. Das Gateway ist intelligent genug, um das von den nachgeschalteten Geräten verwendete Protokoll zu verstehen; es handelt sich jedoch um einzige Gerät mit Identität in IoT Hub. Alle Informationen scheinen von einem Gerät – dem Gateway – zu stammen. Dies bedeutet, dass nachgeschaltete Geräte zusätzliche Informationen in ihre Nachrichten einbetten müssen, wenn Cloudanwendungen die Daten pro Gerät begründen möchten. Außerdem sind IoT Hub-Methoden und -Grundtypen wie Zwillinge nur für das Gateway-Gerät und nicht für nachgeschaltete Geräte verfügbar.
 * **Identitätsübersetzung**: Geräte, die keine Verbindung mit IoT Hub herstellen können, stellen eine Verbindung mit einem Gatewaygerät her, das im Namen der nachgeschalteten Geräte IoT Hub-Identität und Protokollübersetzung bereitstellt. Das Gateway ist intelligent genug, um das von den nachgeschalteten Geräten verwendete Protokoll zu verstehen, ihnen Identität bereitzustellen und IoT Hub-Grundtypen zu übersetzen. Nachgeschaltete Geräte werden in IoT Hub als erstrangige Geräte mit Zwillingen und Methoden angezeigt. Ein Benutzer kann mit den Geräten in IoT Hub interagieren, weiß jedoch nichts vom zwischengeschalteten Gatewaygerät.
 
 ![Diagramme von Gatewaymustern][1]
 
 ## <a name="use-cases"></a>Anwendungsfälle
 Alle Gatewaymuster bieten folgende Vorteile:
-* **Edgeanalysen**: Verwenden Sie lokal KI-Dienste zur Verarbeitung von Daten, die von nachgeschalteten Geräten stammen, ohne vollständige Telemetriedanten in die Cloud zu senden. Suchen und reagieren Sie lokal auf Informationen, senden Sie nur eine Teilmenge von Daten an IoT Hub. 
+* **Edgeanalysen**: Verwenden Sie lokal KI-Dienste zur Verarbeitung von Daten, die von nachgeschalteten Geräten stammen, ohne vollständige Telemetriedaten in die Cloud zu senden. Suchen und reagieren Sie lokal auf Informationen, senden Sie nur eine Teilmenge von Daten an IoT Hub. 
 * **Isolierung von nachgeschalteten Geräten**: Das Gatewaygerät kann alle nachgeschalteten Geräte vor dem Zugriff über das Internet schützen. Es kann sich zwischen einem OT-Netzwerk ohne Konnektivität und einem IT-Netzwerk mit Internetzugriff befinden. 
 * **Multiplexing der Verbindung**: Alle Geräte, die über ein IoT Edge-Gerät mit IoT Hub verbunden sind, verwenden dieselbe zugrunde liegende Verbindung.
 * **Glättung des Datenverkehrs**: Das IoT Edge-Gerät implementiert im Fall einer IoT Hub-Drosselung automatisch exponentiellen Backoff, wobei die Nachrichten lokal beibehalten werden. Dadurch wird Ihre Lösung unempfindlich gegenüber Spitzen im Datenverkehr.
@@ -40,7 +40,7 @@ Ein Gateway, das Protokollübersetzungen vornimmt, kann auch Edgeanalysen, Gerä
 Ein Gateway, das Identitätsübersetzungen vornimmt, bietet die Vorteile der Protokollübersetzung und ermöglicht außerdem die vollständige Verwaltbarkeit von nachgeschalteten Geräten über die Cloud. Alle Geräte in Ihrer IoT-Lösung werden unabhängig vom Protokoll, mit dem sie kommunizieren, in IoT Hub angezeigt.
 
 ## <a name="cheat-sheet"></a>Cheat Sheet
-Hier finden Sie ein schnelles Cheat Sheet, das IoT Hub-Grundtypen bei Verwendung von transparenten, nicht transparenten und Proxy-Gateways vergleicht.
+Hier finden Sie ein schnelles Cheat Sheet, das IoT Hub-Grundtypen bei Verwendung von transparenten, nicht transparenten (Protokoll) und Proxy-Gateways vergleicht.
 
 | &nbsp; | Transparentes Gateway | Protokollübersetzung | Identitätsübersetzung |
 |--------|-------------|--------|--------|

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 73b7604e3072e76c69383481259e1cd8990f4df4
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f4729ce996ca918f43df1777a1962d4cd225a38e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44169108"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47061004"
 ---
 ## <a name="extended-iot-scenarios"></a>Erweiterte IoT-Szenarien
 
@@ -22,7 +22,7 @@ Verwenden Sie andere Azure-Dienste und -Tools. Wenn Sie Ihr Gerät mit IoT Hub v
 | Szenario                                                   | Azure-Dienst oder -Tool              |
 |----------------------------------------------------------- |------------------------------------|
 | [Verwalten von IoT Hub-Nachrichten][Mg_IoT_Toolkit]                  | Azure IoT-Toolkit-Erweiterung für VS Code|
-| [Verwalten von IoT-Geräten][Mg_IoT_Dv]                        | Azure CLI 2.0 und die IoT-Erweiterung|
+| [Verwalten von IoT-Geräten][Mg_IoT_Dv]                        | Azure CLI und die IoT-Erweiterung    |
 | [Verwalten von IoT-Geräten][Mg_IoT_Dv_Toolkit]                | Azure IoT-Toolkit-Erweiterung für VS Code|
 | [Speichern von IoT Hub-Nachrichten in Azure Storage][Sv_IoT_Msg_Stor]  | Azure Table Storage                |
 | [Visualisieren von Sensordaten][Vis_Data_PBI]                      | Microsoft Power BI                 |

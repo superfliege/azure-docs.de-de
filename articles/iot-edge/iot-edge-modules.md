@@ -4,16 +4,16 @@ description: Informationen zu Azure IoT Edge-Modulen und deren Konfiguration
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140718"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423390"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Grundlegendes zu Azure IoT Edge-Modulen
 
@@ -67,7 +67,7 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>Offlinefunktionen
 
-Azure IoT Edge unterstützt Offlinevorgänge auf Ihren IoT Edge-Geräten. Diese Funktionen sind jetzt eingeschränkt, und es werden zusätzliche Szenarien entwickelt. 
+Azure IoT Edge unterstützt Offlinevorgänge auf Ihren IoT Edge-Geräten. Diese Funktionen sind jetzt eingeschränkt. 
 
 IoT Edge-Module können sich längere Zeit im Offlinemodus befinden, solange die folgenden Anforderungen erfüllt sind: 
 
@@ -76,7 +76,10 @@ IoT Edge-Module können sich längere Zeit im Offlinemodus befinden, solange die
 * **Das Modul, mit dem die Nachrichten im Offlinezustand gesendet wurden, ist noch betriebsbereit, wenn die Konnektivität wiederhergestellt wird**. Beim Wiederherstellen der Verbindung mit dem IoT Hub muss der Edge Hub ein neues Modultoken überprüfen (falls das vorherige abgelaufen ist), bevor er die Modulnachrichten weiterleiten kann. Wenn das Modul nicht verfügbar ist, um ein neues Token bereitzustellen, kann der Edge Hub für die gespeicherten Nachrichten des Moduls keine Aktionen durchführen. 
 * **Der Edge Hub verfügt auf dem Datenträger über Speicherplatz für die Nachrichten**. Nachrichten werden standardmäßig im Dateisystem des Edge Hub-Containers gespeichert. Es ist eine Konfigurationsoption zum Angeben eines bereitgestellten Volumes vorhanden, auf dem die Nachrichten stattdessen gespeichert werden können. In beiden Fällen muss Platz zum Speichern der Nachrichten für die verzögerte Bereitstellung für einen IoT Hub vorhanden sein.  
 
+Zusätzliche Offlinefunktionen sind in der öffentlichen Vorschauversion verfügbar. Weitere Informationen finden Sie unter [Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte](offline-capabilities.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
+ - [Grundlegendes zu den Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen][lnk-mod-dev]
  - [Grundlegendes zur Azure IoT Edge-Laufzeit und ihrer Architektur][lnk-runtime]
 
 <!-- Images -->
@@ -87,3 +90,4 @@ IoT Edge-Module können sich längere Zeit im Offlinemodus befinden, solange die
 [lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-runtime]: iot-edge-runtime.md
+[lnk-mod-dev]: module-development.md

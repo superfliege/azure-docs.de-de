@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 40d6d149d07f55784e8428eb0faa943814195a47
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9eb80b085f979208999b6764d6e4014cdbcfd2a0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023826"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159124"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Schnellstart: Bereitstellen eines simulierten X.509-Geräts mithilfe des Azure IoT C SDK
 
@@ -39,12 +39,20 @@ Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie 
 
 In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstellen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) verwendet wird, das den Beispielcode für die X.509-Startsequenz enthält.
 
-1. Laden Sie die aktuelle Version des [CMake-Buildsystems](https://cmake.org/download/) herunter. Suchen Sie auf derselben Website den kryptografischen Hash für die Version der ausgewählten binären Verteilung. Überprüfen Sie die heruntergeladene Binärdatei mit dem entsprechenden kryptografischen Hashwert. Im folgenden Beispiel wird Windows PowerShell verwendet, um den kryptografischen Hash für Version 3.11.4 der x64 MSI-Verteilung zu überprüfen:
+1. Laden Sie Version 3.11.4 des [Buildsystems CMake](https://cmake.org/download/) herunter. Überprüfen Sie die heruntergeladene Binärdatei mit dem entsprechenden kryptografischen Hashwert. Im folgenden Beispiel wird Windows PowerShell verwendet, um den kryptografischen Hash für Version 3.11.4 der x64 MSI-Verteilung zu überprüfen:
 
     ```PowerShell
-    PS C:\Users\wesmc\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
-    PS C:\Users\wesmc\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
+    PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
+    PS C:\Downloads> $hash.Hash -eq "56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869"
     True
+    ```
+    
+    Zum Zeitpunkt der Erstellung dieses Artikels wurden auf der Website von CMake die folgenden Hashwerte für Version 3.11.4 aufgeführt:
+
+    ```
+    6dab016a6b82082b8bcd0f4d1e53418d6372015dd983d29367b9153f1a376435  cmake-3.11.4-Linux-x86_64.tar.gz
+    72b3b82b6d2c2f3a375c0d2799c01819df8669dc55694c8b8daaf6232e873725  cmake-3.11.4-win32-x86.msi
+    56e3605b8e49cd446f3487da88fcc38cb9c3e9e99a20f5d4bd63e54b7a35f869  cmake-3.11.4-win64-x64.msi
     ```
 
     Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
@@ -95,10 +103,10 @@ In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstelle
 
 ## <a name="create-a-self-signed-x509-device-certificate"></a>Erstellen eines selbstsignierten X.509-Gerätezertifikats
 
-In diesem Abschnitt verwenden Sie ein selbstsigniertes X.509-Zertifikat, wobei Folgendes zu beachten ist:
+In diesem Abschnitt verwenden Sie ein selbstsigniertes X.509-Zertifikat, wobei folgende Punkte zu beachten sind:
 
 * Selbstsignierte Zertifikate dienen nur zu Testzwecken und sollten nicht in der Produktion verwendet werden.
-* Die Standardgültigkeitsdauer für ein selbstsigniertes Zertifikat beträgt 1 Jahr.
+* Die Standardgültigkeitsdauer für ein selbstsigniertes Zertifikat beträgt ein Jahr.
 
 Sie verwenden Beispielcode aus dem Azure IoT C SDK, um das Zertifikat zu erstellen, das mit dem individuellen Registrierungseintrag für das simulierte Gerät verwendet werden soll.
 
@@ -112,7 +120,7 @@ Sie verwenden Beispielcode aus dem Azure IoT C SDK, um das Zertifikat zu erstell
 
     Im Ausgabefenster wird ein lokal generiertes selbstsigniertes X.509-Zertifikat für Ihr simuliertes Gerät angezeigt. Kopieren Sie die Ausgabe zwischen **-----BEGIN CERTIFICATE-----** und dem ersten Vorkommen von **-----END CERTIFICATE-----** in die Zwischenablage, und schließen Sie dabei auch diese beiden Zeile mit ein. Sie benötigen nur das erste Zertifikat aus dem Ausgabefenster.
  
-5. Speichern Sie das Zertifikat mithilfe eines Text-Editors in eine neue Datei namens **_X509testcert.pem_**. 
+5. Speichern Sie das Zertifikat mithilfe eines Text-Editors in einer neuen Datei namens **_X509testcert.pem_**. 
 
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>Erstellen eines Geräteregistrierungseintrags im Portal
@@ -127,7 +135,7 @@ Sie verwenden Beispielcode aus dem Azure IoT C SDK, um das Zertifikat zu erstell
     - **PEM- oder CER-Datei des primären Zertifikats:** Klicken Sie auf **Datei auswählen**, und wählen Sie die zuvor erstellte Zertifikatdatei „X509testcert.pem“ aus.
     - **IoT Hub-Geräte-ID:** Geben Sie **test-docs-cert-device** ein, um dem Gerät eine ID zuzuweisen.
 
-    [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/quick-create-simulated-device-x509/individual-enrollment.png)](./media/quick-create-simulated-device-x509/individual-enrollment.png#lightbox)
+    [![Hinzufügen einer individuellen Registrierung für den X.509-Nachweis im Portal](./media/quick-create-simulated-device-x509/device-enrollment.png)](./media/quick-create-simulated-device-x509/device-enrollment.png#lightbox)
 
     Nach der erfolgreichen Registrierung wird Ihr X.509-Gerät als **riot-device-cert**auf der Registerkarte *Individuelle Registrierungen* in der Spalte *Registrierungs-ID* angezeigt. 
 
@@ -180,7 +188,7 @@ Aktualisieren Sie in diesem Abschnitt den Beispielcode, um die Startsequenz des 
     test-docs-hub.azure-devices.net, deviceId: test-docs-cert-device    
     ```
 
-7. Navigieren Sie im Portal zu der mit Ihrem Bereitstellungsdienst verknüpften IoT Hub-Instanz, und klicken Sie auf die Registerkarte **IoT-Geräte**. Nach erfolgreicher Bereitstellung des simulierten X.509-Geräts auf dem Hub wird die dazugehörige Geräte-ID auf dem Blatt **IoT-Geräte** angezeigt, und der *STATUS* lautet **Aktiviert**. Beachten Sie, dass Sie unter Umständen oben auf die Schaltfläche **Aktualisieren** klicken müssen. 
+7. Navigieren Sie im Portal zu der mit Ihrem Bereitstellungsdienst verknüpften IoT Hub-Instanz, und klicken Sie auf die Registerkarte **IoT-Geräte**. Nach erfolgreicher Bereitstellung des simulierten X.509-Geräts auf dem Hub wird die dazugehörige Geräte-ID auf dem Blatt **IoT-Geräte** angezeigt, und der *STATUS* lautet **Aktiviert**. Unter Umständen müssen Sie oben auf die Schaltfläche **Aktualisieren** klicken. 
 
     ![Geräteregistrierung bei der IoT Hub-Instanz](./media/quick-create-simulated-device/hub-registration.png) 
 

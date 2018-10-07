@@ -20,7 +20,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte:
 | Maximale Anzahl von Geräte-Identitäten,<br/> die bei einem einzelnen Aufruf zurückgegeben wird |1000 |
 | Maximale Beibehaltungsdauer von IoT Hub-Nachrichten für D2C-Nachrichten |7 Tage |
 | Maximale Größe einer Nachricht von einem Gerät an die Cloud |256 KB |
-| Maximale Größe eines Batches, das vom Gerät an die Cloud gesendet wird |256 KB |
+| Maximale Größe eines Batches, das vom Gerät an die Cloud gesendet wird |AMQP und HTTP: 256 KB für den gesamten Batch <br/>MQTT: 256 KB für jede Nachricht |
 | Maximale Anzahl von Nachrichten im Batch, das vom Gerät an die Cloud gesendet wird |500 |
 | Maximale Größe einer Nachricht von der Cloud an das Gerät |64 KB |
 | Maximale Gültigkeitsdauer von Nachrichten von der Cloud an das Gerät |2 Tage |
